@@ -53,7 +53,12 @@ func (s *GetMezzanineInfoResponseBody) SetRequestId(v string) *GetMezzanineInfoR
 }
 
 func (s *GetMezzanineInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Mezzanine != nil {
+		if err := s.Mezzanine.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMezzanineInfoResponseBodyMezzanine struct {
@@ -77,6 +82,7 @@ type GetMezzanineInfoResponseBodyMezzanine struct {
 	//
 	// 42.4930
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileMD5  *string `json:"FileMD5,omitempty" xml:"FileMD5,omitempty"`
 	// The name of the file.
 	//
 	// example:
@@ -221,6 +227,10 @@ func (s *GetMezzanineInfoResponseBodyMezzanine) GetDuration() *string {
 	return s.Duration
 }
 
+func (s *GetMezzanineInfoResponseBodyMezzanine) GetFileMD5() *string {
+	return s.FileMD5
+}
+
 func (s *GetMezzanineInfoResponseBodyMezzanine) GetFileName() *string {
 	return s.FileName
 }
@@ -297,6 +307,11 @@ func (s *GetMezzanineInfoResponseBodyMezzanine) SetDuration(v string) *GetMezzan
 	return s
 }
 
+func (s *GetMezzanineInfoResponseBodyMezzanine) SetFileMD5(v string) *GetMezzanineInfoResponseBodyMezzanine {
+	s.FileMD5 = &v
+	return s
+}
+
 func (s *GetMezzanineInfoResponseBodyMezzanine) SetFileName(v string) *GetMezzanineInfoResponseBodyMezzanine {
 	s.FileName = &v
 	return s
@@ -368,7 +383,25 @@ func (s *GetMezzanineInfoResponseBodyMezzanine) SetWidth(v int64) *GetMezzanineI
 }
 
 func (s *GetMezzanineInfoResponseBodyMezzanine) Validate() error {
-	return dara.Validate(s)
+	if s.AudioStreamList != nil {
+		for _, item := range s.AudioStreamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoStreamList != nil {
+		for _, item := range s.VideoStreamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMezzanineInfoResponseBodyMezzanineAudioStreamList struct {

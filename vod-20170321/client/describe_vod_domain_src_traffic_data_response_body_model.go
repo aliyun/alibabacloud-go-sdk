@@ -138,7 +138,12 @@ func (s *DescribeVodDomainSrcTrafficDataResponseBody) SetTotalTraffic(v string) 
 }
 
 func (s *DescribeVodDomainSrcTrafficDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SrcTrafficDataPerInterval != nil {
+		if err := s.SrcTrafficDataPerInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval struct {
@@ -163,7 +168,16 @@ func (s *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval) S
 }
 
 func (s *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule struct {

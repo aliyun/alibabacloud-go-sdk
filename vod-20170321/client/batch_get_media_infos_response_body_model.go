@@ -79,7 +79,16 @@ func (s *BatchGetMediaInfosResponseBody) SetRequestId(v string) *BatchGetMediaIn
 }
 
 func (s *BatchGetMediaInfosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaInfos != nil {
+		for _, item := range s.MediaInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfos struct {
@@ -142,7 +151,26 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfos) SetPlayInfoList(v []*BatchGet
 }
 
 func (s *BatchGetMediaInfosResponseBodyMediaInfos) Validate() error {
-	return dara.Validate(s)
+	if s.MediaInfo != nil {
+		if err := s.MediaInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MezzanineInfo != nil {
+		if err := s.MezzanineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PlayInfoList != nil {
+		for _, item := range s.PlayInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosMediaInfo struct {
@@ -504,6 +532,7 @@ type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo struct {
 	//
 	// 42.4930
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileMD5  *string `json:"FileMD5,omitempty" xml:"FileMD5,omitempty"`
 	// The name of the file.
 	//
 	// example:
@@ -588,6 +617,10 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo) GetDuration() *s
 	return s.Duration
 }
 
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo) GetFileMD5() *string {
+	return s.FileMD5
+}
+
 func (s *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo) GetFileName() *string {
 	return s.FileName
 }
@@ -644,6 +677,11 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo) SetDuration(v st
 	return s
 }
 
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo) SetFileMD5(v string) *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo {
+	s.FileMD5 = &v
+	return s
+}
+
 func (s *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo) SetFileName(v string) *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo {
 	s.FileName = &v
 	return s
@@ -690,7 +728,25 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo) SetWidth(v int64
 }
 
 func (s *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo) Validate() error {
-	return dara.Validate(s)
+	if s.AudioStreamList != nil {
+		for _, item := range s.AudioStreamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoStreamList != nil {
+		for _, item := range s.VideoStreamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoAudioStreamList struct {

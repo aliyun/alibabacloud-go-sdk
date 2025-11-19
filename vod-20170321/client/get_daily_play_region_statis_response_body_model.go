@@ -74,7 +74,16 @@ func (s *GetDailyPlayRegionStatisResponseBody) SetRequestId(v string) *GetDailyP
 }
 
 func (s *GetDailyPlayRegionStatisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DailyPlayRegionStatisList != nil {
+		for _, item := range s.DailyPlayRegionStatisList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDailyPlayRegionStatisResponseBodyDailyPlayRegionStatisList struct {

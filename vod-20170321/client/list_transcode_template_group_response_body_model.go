@@ -53,7 +53,16 @@ func (s *ListTranscodeTemplateGroupResponseBody) SetTranscodeTemplateGroupList(v
 }
 
 func (s *ListTranscodeTemplateGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TranscodeTemplateGroupList != nil {
+		for _, item := range s.TranscodeTemplateGroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupList struct {

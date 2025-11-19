@@ -66,7 +66,16 @@ func (s *GetVideoInfosResponseBody) SetVideoList(v []*GetVideoInfosResponseBodyV
 }
 
 func (s *GetVideoInfosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VideoList != nil {
+		for _, item := range s.VideoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetVideoInfosResponseBodyVideoList struct {

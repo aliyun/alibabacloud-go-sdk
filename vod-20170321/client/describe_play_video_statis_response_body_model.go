@@ -53,7 +53,12 @@ func (s *DescribePlayVideoStatisResponseBody) SetVideoPlayStatisDetails(v *Descr
 }
 
 func (s *DescribePlayVideoStatisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VideoPlayStatisDetails != nil {
+		if err := s.VideoPlayStatisDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePlayVideoStatisResponseBodyVideoPlayStatisDetails struct {
@@ -78,7 +83,16 @@ func (s *DescribePlayVideoStatisResponseBodyVideoPlayStatisDetails) SetVideoPlay
 }
 
 func (s *DescribePlayVideoStatisResponseBodyVideoPlayStatisDetails) Validate() error {
-	return dara.Validate(s)
+	if s.VideoPlayStatisDetail != nil {
+		for _, item := range s.VideoPlayStatisDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePlayVideoStatisResponseBodyVideoPlayStatisDetailsVideoPlayStatisDetail struct {

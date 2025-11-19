@@ -59,5 +59,10 @@ func (s *GetVideoPlayAuthResponse) SetBody(v *GetVideoPlayAuthResponseBody) *Get
 }
 
 func (s *GetVideoPlayAuthResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

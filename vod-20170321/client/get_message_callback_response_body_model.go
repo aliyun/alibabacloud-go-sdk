@@ -53,7 +53,12 @@ func (s *GetMessageCallbackResponseBody) SetRequestId(v string) *GetMessageCallb
 }
 
 func (s *GetMessageCallbackResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MessageCallback != nil {
+		if err := s.MessageCallback.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMessageCallbackResponseBodyMessageCallback struct {

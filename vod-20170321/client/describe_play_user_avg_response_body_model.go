@@ -53,7 +53,12 @@ func (s *DescribePlayUserAvgResponseBody) SetUserPlayStatisAvgs(v *DescribePlayU
 }
 
 func (s *DescribePlayUserAvgResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserPlayStatisAvgs != nil {
+		if err := s.UserPlayStatisAvgs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePlayUserAvgResponseBodyUserPlayStatisAvgs struct {
@@ -78,7 +83,16 @@ func (s *DescribePlayUserAvgResponseBodyUserPlayStatisAvgs) SetUserPlayStatisAvg
 }
 
 func (s *DescribePlayUserAvgResponseBodyUserPlayStatisAvgs) Validate() error {
-	return dara.Validate(s)
+	if s.UserPlayStatisAvg != nil {
+		for _, item := range s.UserPlayStatisAvg {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePlayUserAvgResponseBodyUserPlayStatisAvgsUserPlayStatisAvg struct {

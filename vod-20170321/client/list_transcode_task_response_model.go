@@ -59,5 +59,10 @@ func (s *ListTranscodeTaskResponse) SetBody(v *ListTranscodeTaskResponseBody) *L
 }
 
 func (s *ListTranscodeTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

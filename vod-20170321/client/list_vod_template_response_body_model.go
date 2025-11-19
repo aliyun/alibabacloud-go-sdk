@@ -53,7 +53,16 @@ func (s *ListVodTemplateResponseBody) SetVodTemplateInfoList(v []*ListVodTemplat
 }
 
 func (s *ListVodTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VodTemplateInfoList != nil {
+		for _, item := range s.VodTemplateInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVodTemplateResponseBodyVodTemplateInfoList struct {

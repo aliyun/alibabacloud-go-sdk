@@ -52,7 +52,16 @@ func (s *DescribeVodPlayerCollectDataResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeVodPlayerCollectDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataList != nil {
+		for _, item := range s.DataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVodPlayerCollectDataResponseBodyDataList struct {

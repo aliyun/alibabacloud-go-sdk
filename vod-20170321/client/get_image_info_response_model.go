@@ -59,5 +59,10 @@ func (s *GetImageInfoResponse) SetBody(v *GetImageInfoResponseBody) *GetImageInf
 }
 
 func (s *GetImageInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

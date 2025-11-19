@@ -59,5 +59,10 @@ func (s *DeleteAIImageInfosResponse) SetBody(v *DeleteAIImageInfosResponseBody) 
 }
 
 func (s *DeleteAIImageInfosResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

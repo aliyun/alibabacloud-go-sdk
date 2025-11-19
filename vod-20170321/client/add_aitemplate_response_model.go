@@ -59,5 +59,10 @@ func (s *AddAITemplateResponse) SetBody(v *AddAITemplateResponseBody) *AddAITemp
 }
 
 func (s *AddAITemplateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *GetAITemplateResponseBody) SetTemplateInfo(v *GetAITemplateResponseBody
 }
 
 func (s *GetAITemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TemplateInfo != nil {
+		if err := s.TemplateInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAITemplateResponseBodyTemplateInfo struct {

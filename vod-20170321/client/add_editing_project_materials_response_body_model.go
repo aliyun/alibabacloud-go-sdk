@@ -53,7 +53,16 @@ func (s *AddEditingProjectMaterialsResponseBody) SetRequestId(v string) *AddEdit
 }
 
 func (s *AddEditingProjectMaterialsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MaterialList != nil {
+		for _, item := range s.MaterialList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddEditingProjectMaterialsResponseBodyMaterialList struct {

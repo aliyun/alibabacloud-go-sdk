@@ -53,7 +53,12 @@ func (s *SubmitDynamicImageJobResponseBody) SetRequestId(v string) *SubmitDynami
 }
 
 func (s *SubmitDynamicImageJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DynamicImageJob != nil {
+		if err := s.DynamicImageJob.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitDynamicImageJobResponseBodyDynamicImageJob struct {

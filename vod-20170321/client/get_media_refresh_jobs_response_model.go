@@ -59,5 +59,10 @@ func (s *GetMediaRefreshJobsResponse) SetBody(v *GetMediaRefreshJobsResponseBody
 }
 
 func (s *GetMediaRefreshJobsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

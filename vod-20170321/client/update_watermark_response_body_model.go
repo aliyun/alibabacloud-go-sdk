@@ -53,7 +53,12 @@ func (s *UpdateWatermarkResponseBody) SetWatermarkInfo(v *UpdateWatermarkRespons
 }
 
 func (s *UpdateWatermarkResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WatermarkInfo != nil {
+		if err := s.WatermarkInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateWatermarkResponseBodyWatermarkInfo struct {

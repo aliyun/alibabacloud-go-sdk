@@ -59,5 +59,10 @@ func (s *RegisterMediaResponse) SetBody(v *RegisterMediaResponseBody) *RegisterM
 }
 
 func (s *RegisterMediaResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

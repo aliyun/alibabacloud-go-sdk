@@ -72,7 +72,12 @@ func (s *SubmitTranscodeJobsResponseBody) SetTranscodeTaskId(v string) *SubmitTr
 }
 
 func (s *SubmitTranscodeJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TranscodeJobs != nil {
+		if err := s.TranscodeJobs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitTranscodeJobsResponseBodyTranscodeJobs struct {
@@ -97,7 +102,16 @@ func (s *SubmitTranscodeJobsResponseBodyTranscodeJobs) SetTranscodeJob(v []*Subm
 }
 
 func (s *SubmitTranscodeJobsResponseBodyTranscodeJobs) Validate() error {
-	return dara.Validate(s)
+	if s.TranscodeJob != nil {
+		for _, item := range s.TranscodeJob {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitTranscodeJobsResponseBodyTranscodeJobsTranscodeJob struct {

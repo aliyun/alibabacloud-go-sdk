@@ -70,7 +70,12 @@ func (s *SearchEditingProjectResponseBody) SetTotal(v int32) *SearchEditingProje
 }
 
 func (s *SearchEditingProjectResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProjectList != nil {
+		if err := s.ProjectList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchEditingProjectResponseBodyProjectList struct {
@@ -95,7 +100,16 @@ func (s *SearchEditingProjectResponseBodyProjectList) SetProject(v []*SearchEdit
 }
 
 func (s *SearchEditingProjectResponseBodyProjectList) Validate() error {
-	return dara.Validate(s)
+	if s.Project != nil {
+		for _, item := range s.Project {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchEditingProjectResponseBodyProjectListProject struct {

@@ -53,7 +53,16 @@ func (s *DescribeVodTieringStorageRetrievalDataResponseBody) SetRetrievalData(v 
 }
 
 func (s *DescribeVodTieringStorageRetrievalDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RetrievalData != nil {
+		for _, item := range s.RetrievalData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVodTieringStorageRetrievalDataResponseBodyRetrievalData struct {

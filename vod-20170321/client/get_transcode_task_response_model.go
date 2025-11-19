@@ -59,5 +59,10 @@ func (s *GetTranscodeTaskResponse) SetBody(v *GetTranscodeTaskResponseBody) *Get
 }
 
 func (s *GetTranscodeTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

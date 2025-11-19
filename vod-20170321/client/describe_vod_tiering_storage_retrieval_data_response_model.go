@@ -59,5 +59,10 @@ func (s *DescribeVodTieringStorageRetrievalDataResponse) SetBody(v *DescribeVodT
 }
 
 func (s *DescribeVodTieringStorageRetrievalDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

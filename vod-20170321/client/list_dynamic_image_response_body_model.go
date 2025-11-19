@@ -53,7 +53,16 @@ func (s *ListDynamicImageResponseBody) SetRequestId(v string) *ListDynamicImageR
 }
 
 func (s *ListDynamicImageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DynamicImageList != nil {
+		for _, item := range s.DynamicImageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDynamicImageResponseBodyDynamicImageList struct {

@@ -59,5 +59,10 @@ func (s *GetAppInfosResponse) SetBody(v *GetAppInfosResponseBody) *GetAppInfosRe
 }
 
 func (s *GetAppInfosResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

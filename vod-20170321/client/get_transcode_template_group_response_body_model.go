@@ -53,7 +53,12 @@ func (s *GetTranscodeTemplateGroupResponseBody) SetTranscodeTemplateGroup(v *Get
 }
 
 func (s *GetTranscodeTemplateGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TranscodeTemplateGroup != nil {
+		if err := s.TranscodeTemplateGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroup struct {
@@ -192,7 +197,16 @@ func (s *GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroup) SetTransco
 }
 
 func (s *GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroup) Validate() error {
-	return dara.Validate(s)
+	if s.TranscodeTemplateList != nil {
+		for _, item := range s.TranscodeTemplateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplateList struct {

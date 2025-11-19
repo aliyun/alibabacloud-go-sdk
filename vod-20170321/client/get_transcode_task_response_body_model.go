@@ -79,7 +79,21 @@ func (s *GetTranscodeTaskResponseBody) SetTranscodeTask(v *GetTranscodeTaskRespo
 }
 
 func (s *GetTranscodeTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TranscodeJobInfoList != nil {
+		for _, item := range s.TranscodeJobInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TranscodeTask != nil {
+		if err := s.TranscodeTask.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTranscodeTaskResponseBodyTranscodeJobInfoList struct {
@@ -296,7 +310,12 @@ func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoList) SetTranscodeTemplateI
 }
 
 func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.OutputFile != nil {
+		if err := s.OutputFile.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile struct {
@@ -651,7 +670,16 @@ func (s *GetTranscodeTaskResponseBodyTranscodeTask) SetVideoId(v string) *GetTra
 }
 
 func (s *GetTranscodeTaskResponseBodyTranscodeTask) Validate() error {
-	return dara.Validate(s)
+	if s.TranscodeJobInfoList != nil {
+		for _, item := range s.TranscodeJobInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTranscodeTaskResponseBodyTranscodeTaskTranscodeJobInfoList struct {
@@ -870,7 +898,12 @@ func (s *GetTranscodeTaskResponseBodyTranscodeTaskTranscodeJobInfoList) SetTrans
 }
 
 func (s *GetTranscodeTaskResponseBodyTranscodeTaskTranscodeJobInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.OutputFile != nil {
+		if err := s.OutputFile.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTranscodeTaskResponseBodyTranscodeTaskTranscodeJobInfoListOutputFile struct {

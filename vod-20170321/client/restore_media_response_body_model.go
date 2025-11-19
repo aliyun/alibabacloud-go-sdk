@@ -83,7 +83,17 @@ func (s *RestoreMediaResponseBody) SetSuccess(v bool) *RestoreMediaResponseBody 
 }
 
 func (s *RestoreMediaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ForbiddenList != nil {
+		if err := s.ForbiddenList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IgnoredList != nil {
+		if err := s.IgnoredList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RestoreMediaResponseBodyForbiddenList struct {
@@ -108,7 +118,16 @@ func (s *RestoreMediaResponseBodyForbiddenList) SetMediaForbiddenReasonDTO(v []*
 }
 
 func (s *RestoreMediaResponseBodyForbiddenList) Validate() error {
-	return dara.Validate(s)
+	if s.MediaForbiddenReasonDTO != nil {
+		for _, item := range s.MediaForbiddenReasonDTO {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RestoreMediaResponseBodyForbiddenListMediaForbiddenReasonDTO struct {

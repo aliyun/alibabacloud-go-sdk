@@ -53,7 +53,12 @@ func (s *GetEditingProjectMaterialsResponseBody) SetRequestId(v string) *GetEdit
 }
 
 func (s *GetEditingProjectMaterialsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MaterialList != nil {
+		if err := s.MaterialList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEditingProjectMaterialsResponseBodyMaterialList struct {
@@ -78,7 +83,16 @@ func (s *GetEditingProjectMaterialsResponseBodyMaterialList) SetMaterial(v []*Ge
 }
 
 func (s *GetEditingProjectMaterialsResponseBodyMaterialList) Validate() error {
-	return dara.Validate(s)
+	if s.Material != nil {
+		for _, item := range s.Material {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetEditingProjectMaterialsResponseBodyMaterialListMaterial struct {
@@ -350,7 +364,17 @@ func (s *GetEditingProjectMaterialsResponseBodyMaterialListMaterial) SetTitle(v 
 }
 
 func (s *GetEditingProjectMaterialsResponseBodyMaterialListMaterial) Validate() error {
-	return dara.Validate(s)
+	if s.Snapshots != nil {
+		if err := s.Snapshots.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Sprites != nil {
+		if err := s.Sprites.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEditingProjectMaterialsResponseBodyMaterialListMaterialSnapshots struct {

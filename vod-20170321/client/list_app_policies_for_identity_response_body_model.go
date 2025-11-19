@@ -55,7 +55,16 @@ func (s *ListAppPoliciesForIdentityResponseBody) SetRequestId(v string) *ListApp
 }
 
 func (s *ListAppPoliciesForIdentityResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppPolicyList != nil {
+		for _, item := range s.AppPolicyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAppPoliciesForIdentityResponseBodyAppPolicyList struct {

@@ -66,7 +66,16 @@ func (s *GetImageInfosResponseBody) SetRequestId(v string) *GetImageInfosRespons
 }
 
 func (s *GetImageInfosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImageInfo != nil {
+		for _, item := range s.ImageInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetImageInfosResponseBodyImageInfo struct {
@@ -282,7 +291,12 @@ func (s *GetImageInfosResponseBodyImageInfo) SetURL(v string) *GetImageInfosResp
 }
 
 func (s *GetImageInfosResponseBodyImageInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Mezzanine != nil {
+		if err := s.Mezzanine.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetImageInfosResponseBodyImageInfoMezzanine struct {

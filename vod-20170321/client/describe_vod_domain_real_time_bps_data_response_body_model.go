@@ -53,7 +53,12 @@ func (s *DescribeVodDomainRealTimeBpsDataResponseBody) SetRequestId(v string) *D
 }
 
 func (s *DescribeVodDomainRealTimeBpsDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVodDomainRealTimeBpsDataResponseBodyData struct {
@@ -78,7 +83,16 @@ func (s *DescribeVodDomainRealTimeBpsDataResponseBodyData) SetBpsModel(v []*Desc
 }
 
 func (s *DescribeVodDomainRealTimeBpsDataResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.BpsModel != nil {
+		for _, item := range s.BpsModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVodDomainRealTimeBpsDataResponseBodyDataBpsModel struct {

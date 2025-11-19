@@ -70,7 +70,16 @@ func (s *DescribeMediaDistributionResponseBody) SetTotal(v int64) *DescribeMedia
 }
 
 func (s *DescribeMediaDistributionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaDistributionList != nil {
+		for _, item := range s.MediaDistributionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMediaDistributionResponseBodyMediaDistributionList struct {

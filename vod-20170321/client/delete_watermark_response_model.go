@@ -59,5 +59,10 @@ func (s *DeleteWatermarkResponse) SetBody(v *DeleteWatermarkResponseBody) *Delet
 }
 
 func (s *DeleteWatermarkResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *RestoreMediaResponse) SetBody(v *RestoreMediaResponseBody) *RestoreMedi
 }
 
 func (s *RestoreMediaResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

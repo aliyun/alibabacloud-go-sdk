@@ -59,5 +59,10 @@ func (s *UpdateVideoInfoResponse) SetBody(v *UpdateVideoInfoResponseBody) *Updat
 }
 
 func (s *UpdateVideoInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

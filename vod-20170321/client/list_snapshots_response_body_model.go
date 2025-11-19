@@ -53,7 +53,12 @@ func (s *ListSnapshotsResponseBody) SetRequestId(v string) *ListSnapshotsRespons
 }
 
 func (s *ListSnapshotsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaSnapshot != nil {
+		if err := s.MediaSnapshot.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSnapshotsResponseBodyMediaSnapshot struct {
@@ -139,7 +144,12 @@ func (s *ListSnapshotsResponseBodyMediaSnapshot) SetTotal(v int64) *ListSnapshot
 }
 
 func (s *ListSnapshotsResponseBodyMediaSnapshot) Validate() error {
-	return dara.Validate(s)
+	if s.Snapshots != nil {
+		if err := s.Snapshots.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSnapshotsResponseBodyMediaSnapshotSnapshots struct {
@@ -164,7 +174,16 @@ func (s *ListSnapshotsResponseBodyMediaSnapshotSnapshots) SetSnapshot(v []*ListS
 }
 
 func (s *ListSnapshotsResponseBodyMediaSnapshotSnapshots) Validate() error {
-	return dara.Validate(s)
+	if s.Snapshot != nil {
+		for _, item := range s.Snapshot {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSnapshotsResponseBodyMediaSnapshotSnapshotsSnapshot struct {

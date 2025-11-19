@@ -53,7 +53,12 @@ func (s *GetMediaAuditResultDetailResponseBody) SetRequestId(v string) *GetMedia
 }
 
 func (s *GetMediaAuditResultDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaAuditResultDetail != nil {
+		if err := s.MediaAuditResultDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaAuditResultDetailResponseBodyMediaAuditResultDetail struct {
@@ -94,7 +99,16 @@ func (s *GetMediaAuditResultDetailResponseBodyMediaAuditResultDetail) SetTotal(v
 }
 
 func (s *GetMediaAuditResultDetailResponseBodyMediaAuditResultDetail) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaAuditResultDetailResponseBodyMediaAuditResultDetailList struct {

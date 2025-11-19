@@ -53,7 +53,12 @@ func (s *AddCategoryResponseBody) SetRequestId(v string) *AddCategoryResponseBod
 }
 
 func (s *AddCategoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Category != nil {
+		if err := s.Category.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddCategoryResponseBodyCategory struct {

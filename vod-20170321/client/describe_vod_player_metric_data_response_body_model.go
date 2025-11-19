@@ -109,7 +109,21 @@ func (s *DescribeVodPlayerMetricDataResponseBody) SetTotalCnt(v int64) *Describe
 }
 
 func (s *DescribeVodPlayerMetricDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataList != nil {
+		for _, item := range s.DataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Extend != nil {
+		if err := s.Extend.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVodPlayerMetricDataResponseBodyDataList struct {

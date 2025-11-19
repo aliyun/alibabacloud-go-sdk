@@ -53,7 +53,16 @@ func (s *UploadMediaByURLResponseBody) SetUploadJobs(v []*UploadMediaByURLRespon
 }
 
 func (s *UploadMediaByURLResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UploadJobs != nil {
+		for _, item := range s.UploadJobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UploadMediaByURLResponseBodyUploadJobs struct {

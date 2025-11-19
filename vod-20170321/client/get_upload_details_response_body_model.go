@@ -79,7 +79,16 @@ func (s *GetUploadDetailsResponseBody) SetUploadDetails(v []*GetUploadDetailsRes
 }
 
 func (s *GetUploadDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UploadDetails != nil {
+		for _, item := range s.UploadDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetUploadDetailsResponseBodyUploadDetails struct {

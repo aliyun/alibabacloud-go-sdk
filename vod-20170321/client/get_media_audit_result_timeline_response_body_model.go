@@ -53,7 +53,12 @@ func (s *GetMediaAuditResultTimelineResponseBody) SetRequestId(v string) *GetMed
 }
 
 func (s *GetMediaAuditResultTimelineResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaAuditResultTimeline != nil {
+		if err := s.MediaAuditResultTimeline.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimeline struct {
@@ -123,7 +128,52 @@ func (s *GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimeline) SetTer
 }
 
 func (s *GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimeline) Validate() error {
-	return dara.Validate(s)
+	if s.Ad != nil {
+		for _, item := range s.Ad {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Live != nil {
+		for _, item := range s.Live {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Logo != nil {
+		for _, item := range s.Logo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Porn != nil {
+		for _, item := range s.Porn {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Terrorism != nil {
+		for _, item := range s.Terrorism {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineAd struct {

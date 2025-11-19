@@ -59,5 +59,10 @@ func (s *DescribeVodAIDataResponse) SetBody(v *DescribeVodAIDataResponseBody) *D
 }
 
 func (s *DescribeVodAIDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

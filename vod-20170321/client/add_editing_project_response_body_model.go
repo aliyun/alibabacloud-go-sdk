@@ -53,7 +53,12 @@ func (s *AddEditingProjectResponseBody) SetRequestId(v string) *AddEditingProjec
 }
 
 func (s *AddEditingProjectResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Project != nil {
+		if err := s.Project.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddEditingProjectResponseBodyProject struct {

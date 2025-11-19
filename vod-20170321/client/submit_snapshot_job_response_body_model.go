@@ -53,7 +53,12 @@ func (s *SubmitSnapshotJobResponseBody) SetSnapshotJob(v *SubmitSnapshotJobRespo
 }
 
 func (s *SubmitSnapshotJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SnapshotJob != nil {
+		if err := s.SnapshotJob.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitSnapshotJobResponseBodySnapshotJob struct {

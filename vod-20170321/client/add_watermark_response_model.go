@@ -59,5 +59,10 @@ func (s *AddWatermarkResponse) SetBody(v *AddWatermarkResponseBody) *AddWatermar
 }
 
 func (s *AddWatermarkResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

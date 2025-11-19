@@ -53,7 +53,12 @@ func (s *UpdateImageInfosResponseBody) SetRequestId(v string) *UpdateImageInfosR
 }
 
 func (s *UpdateImageInfosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NonExistImageIds != nil {
+		if err := s.NonExistImageIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateImageInfosResponseBodyNonExistImageIds struct {

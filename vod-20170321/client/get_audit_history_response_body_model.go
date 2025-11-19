@@ -91,7 +91,16 @@ func (s *GetAuditHistoryResponseBody) SetTotal(v int64) *GetAuditHistoryResponse
 }
 
 func (s *GetAuditHistoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Histories != nil {
+		for _, item := range s.Histories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAuditHistoryResponseBodyHistories struct {

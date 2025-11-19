@@ -59,5 +59,10 @@ func (s *AddCategoryResponse) SetBody(v *AddCategoryResponseBody) *AddCategoryRe
 }
 
 func (s *AddCategoryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

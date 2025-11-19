@@ -53,7 +53,12 @@ func (s *GetAIMediaAuditJobResponseBody) SetRequestId(v string) *GetAIMediaAudit
 }
 
 func (s *GetAIMediaAuditJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaAuditJob != nil {
+		if err := s.MediaAuditJob.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJob struct {
@@ -207,7 +212,12 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJob) SetType(v string) *GetAIMe
 }
 
 func (s *GetAIMediaAuditJobResponseBodyMediaAuditJob) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobData struct {
@@ -337,7 +347,39 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobData) SetVideoResult(v *GetA
 }
 
 func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobData) Validate() error {
-	return dara.Validate(s)
+	if s.AudioResult != nil {
+		for _, item := range s.AudioResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ImageResult != nil {
+		for _, item := range s.ImageResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TextResult != nil {
+		for _, item := range s.TextResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoResult != nil {
+		if err := s.VideoResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult struct {
@@ -542,7 +584,16 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResult) SetUrl(v st
 }
 
 func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResult) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResultResult struct {
@@ -958,7 +1009,32 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResult) SetTerroris
 }
 
 func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResult) Validate() error {
-	return dara.Validate(s)
+	if s.AdResult != nil {
+		if err := s.AdResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LiveResult != nil {
+		if err := s.LiveResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LogoResult != nil {
+		if err := s.LogoResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PornResult != nil {
+		if err := s.PornResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TerrorismResult != nil {
+		if err := s.TerrorismResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResult struct {
@@ -1083,7 +1159,25 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResult) Set
 }
 
 func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResult) Validate() error {
-	return dara.Validate(s)
+	if s.CounterList != nil {
+		for _, item := range s.CounterList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TopList != nil {
+		for _, item := range s.TopList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResultCounterList struct {
@@ -1360,7 +1454,25 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResult) S
 }
 
 func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResult) Validate() error {
-	return dara.Validate(s)
+	if s.CounterList != nil {
+		for _, item := range s.CounterList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TopList != nil {
+		for _, item := range s.TopList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultCounterList struct {
@@ -1609,7 +1721,25 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResult) S
 }
 
 func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResult) Validate() error {
-	return dara.Validate(s)
+	if s.CounterList != nil {
+		for _, item := range s.CounterList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TopList != nil {
+		for _, item := range s.TopList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultCounterList struct {
@@ -1850,7 +1980,25 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResult) S
 }
 
 func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResult) Validate() error {
-	return dara.Validate(s)
+	if s.CounterList != nil {
+		for _, item := range s.CounterList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TopList != nil {
+		for _, item := range s.TopList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultCounterList struct {
@@ -2113,7 +2261,25 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResu
 }
 
 func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResult) Validate() error {
-	return dara.Validate(s)
+	if s.CounterList != nil {
+		for _, item := range s.CounterList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TopList != nil {
+		for _, item := range s.TopList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResultCounterList struct {

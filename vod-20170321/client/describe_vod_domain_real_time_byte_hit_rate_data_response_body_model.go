@@ -53,7 +53,12 @@ func (s *DescribeVodDomainRealTimeByteHitRateDataResponseBody) SetRequestId(v st
 }
 
 func (s *DescribeVodDomainRealTimeByteHitRateDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVodDomainRealTimeByteHitRateDataResponseBodyData struct {
@@ -78,7 +83,16 @@ func (s *DescribeVodDomainRealTimeByteHitRateDataResponseBodyData) SetByteHitRat
 }
 
 func (s *DescribeVodDomainRealTimeByteHitRateDataResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ByteHitRateDataModel != nil {
+		for _, item := range s.ByteHitRateDataModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVodDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel struct {

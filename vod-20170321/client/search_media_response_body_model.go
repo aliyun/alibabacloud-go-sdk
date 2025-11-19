@@ -87,7 +87,16 @@ func (s *SearchMediaResponseBody) SetTotal(v int64) *SearchMediaResponseBody {
 }
 
 func (s *SearchMediaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaList != nil {
+		for _, item := range s.MediaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchMediaResponseBodyMediaList struct {
@@ -221,7 +230,37 @@ func (s *SearchMediaResponseBodyMediaList) SetVideo(v *SearchMediaResponseBodyMe
 }
 
 func (s *SearchMediaResponseBodyMediaList) Validate() error {
-	return dara.Validate(s)
+	if s.AiData != nil {
+		if err := s.AiData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiRoughData != nil {
+		if err := s.AiRoughData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AttachedMedia != nil {
+		if err := s.AttachedMedia.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Audio != nil {
+		if err := s.Audio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Image != nil {
+		if err := s.Image.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Video != nil {
+		if err := s.Video.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchMediaResponseBodyMediaListAiData struct {
@@ -258,7 +297,25 @@ func (s *SearchMediaResponseBodyMediaListAiData) SetOcrInfo(v []*SearchMediaResp
 }
 
 func (s *SearchMediaResponseBodyMediaListAiData) Validate() error {
-	return dara.Validate(s)
+	if s.AiLabelInfo != nil {
+		for _, item := range s.AiLabelInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OcrInfo != nil {
+		for _, item := range s.OcrInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchMediaResponseBodyMediaListAiDataAiLabelInfo struct {
@@ -329,7 +386,16 @@ func (s *SearchMediaResponseBodyMediaListAiDataAiLabelInfo) SetOccurrences(v []*
 }
 
 func (s *SearchMediaResponseBodyMediaListAiDataAiLabelInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Occurrences != nil {
+		for _, item := range s.Occurrences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchMediaResponseBodyMediaListAiDataAiLabelInfoOccurrences struct {
@@ -727,7 +793,16 @@ func (s *SearchMediaResponseBodyMediaListAttachedMedia) SetURL(v string) *Search
 }
 
 func (s *SearchMediaResponseBodyMediaListAttachedMedia) Validate() error {
-	return dara.Validate(s)
+	if s.Categories != nil {
+		for _, item := range s.Categories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchMediaResponseBodyMediaListAttachedMediaCategories struct {

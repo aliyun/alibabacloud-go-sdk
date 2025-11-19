@@ -80,7 +80,16 @@ func (s *DescribeVodEditingUsageDataResponseBody) SetStartTime(v string) *Descri
 }
 
 func (s *DescribeVodEditingUsageDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EditingData != nil {
+		for _, item := range s.EditingData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVodEditingUsageDataResponseBodyEditingData struct {

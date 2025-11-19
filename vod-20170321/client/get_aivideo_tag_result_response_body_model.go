@@ -53,7 +53,12 @@ func (s *GetAIVideoTagResultResponseBody) SetVideoTagResult(v *GetAIVideoTagResu
 }
 
 func (s *GetAIVideoTagResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VideoTagResult != nil {
+		if err := s.VideoTagResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAIVideoTagResultResponseBodyVideoTagResult struct {
@@ -123,7 +128,52 @@ func (s *GetAIVideoTagResultResponseBodyVideoTagResult) SetTime(v []*GetAIVideoT
 }
 
 func (s *GetAIVideoTagResultResponseBodyVideoTagResult) Validate() error {
-	return dara.Validate(s)
+	if s.Category != nil {
+		for _, item := range s.Category {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Keyword != nil {
+		for _, item := range s.Keyword {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Location != nil {
+		for _, item := range s.Location {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Person != nil {
+		for _, item := range s.Person {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Time != nil {
+		for _, item := range s.Time {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAIVideoTagResultResponseBodyVideoTagResultCategory struct {

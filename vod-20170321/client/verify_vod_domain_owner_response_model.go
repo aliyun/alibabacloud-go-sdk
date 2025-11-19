@@ -59,5 +59,10 @@ func (s *VerifyVodDomainOwnerResponse) SetBody(v *VerifyVodDomainOwnerResponseBo
 }
 
 func (s *VerifyVodDomainOwnerResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

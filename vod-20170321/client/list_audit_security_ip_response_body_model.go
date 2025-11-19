@@ -53,7 +53,16 @@ func (s *ListAuditSecurityIpResponseBody) SetSecurityIpList(v []*ListAuditSecuri
 }
 
 func (s *ListAuditSecurityIpResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityIpList != nil {
+		for _, item := range s.SecurityIpList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAuditSecurityIpResponseBodySecurityIpList struct {

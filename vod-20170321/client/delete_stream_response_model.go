@@ -59,5 +59,10 @@ func (s *DeleteStreamResponse) SetBody(v *DeleteStreamResponseBody) *DeleteStrea
 }
 
 func (s *DeleteStreamResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -66,7 +66,16 @@ func (s *RegisterMediaResponseBody) SetRequestId(v string) *RegisterMediaRespons
 }
 
 func (s *RegisterMediaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RegisteredMediaList != nil {
+		for _, item := range s.RegisteredMediaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RegisterMediaResponseBodyRegisteredMediaList struct {

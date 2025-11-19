@@ -161,7 +161,12 @@ func (s *DescribeVodDomainMax95BpsDataResponseBody) SetStartTime(v string) *Desc
 }
 
 func (s *DescribeVodDomainMax95BpsDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DetailData != nil {
+		if err := s.DetailData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVodDomainMax95BpsDataResponseBodyDetailData struct {
@@ -186,7 +191,16 @@ func (s *DescribeVodDomainMax95BpsDataResponseBodyDetailData) SetMax95Detail(v [
 }
 
 func (s *DescribeVodDomainMax95BpsDataResponseBodyDetailData) Validate() error {
-	return dara.Validate(s)
+	if s.Max95Detail != nil {
+		for _, item := range s.Max95Detail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail struct {

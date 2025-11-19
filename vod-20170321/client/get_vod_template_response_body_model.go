@@ -53,7 +53,12 @@ func (s *GetVodTemplateResponseBody) SetVodTemplateInfo(v *GetVodTemplateRespons
 }
 
 func (s *GetVodTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VodTemplateInfo != nil {
+		if err := s.VodTemplateInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVodTemplateResponseBodyVodTemplateInfo struct {

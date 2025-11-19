@@ -59,5 +59,10 @@ func (s *AddVodStorageForAppResponse) SetBody(v *AddVodStorageForAppResponseBody
 }
 
 func (s *AddVodStorageForAppResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

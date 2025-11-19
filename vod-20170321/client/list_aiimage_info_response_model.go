@@ -59,5 +59,10 @@ func (s *ListAIImageInfoResponse) SetBody(v *ListAIImageInfoResponseBody) *ListA
 }
 
 func (s *ListAIImageInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

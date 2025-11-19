@@ -74,7 +74,12 @@ func (s *DescribeVodTranscodeDataResponseBody) SetTranscodeData(v *DescribeVodTr
 }
 
 func (s *DescribeVodTranscodeDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TranscodeData != nil {
+		if err := s.TranscodeData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVodTranscodeDataResponseBodyTranscodeData struct {
@@ -99,7 +104,16 @@ func (s *DescribeVodTranscodeDataResponseBodyTranscodeData) SetTranscodeDataItem
 }
 
 func (s *DescribeVodTranscodeDataResponseBodyTranscodeData) Validate() error {
-	return dara.Validate(s)
+	if s.TranscodeDataItem != nil {
+		for _, item := range s.TranscodeDataItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVodTranscodeDataResponseBodyTranscodeDataTranscodeDataItem struct {
@@ -140,7 +154,12 @@ func (s *DescribeVodTranscodeDataResponseBodyTranscodeDataTranscodeDataItem) Set
 }
 
 func (s *DescribeVodTranscodeDataResponseBodyTranscodeDataTranscodeDataItem) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVodTranscodeDataResponseBodyTranscodeDataTranscodeDataItemData struct {
@@ -165,7 +184,16 @@ func (s *DescribeVodTranscodeDataResponseBodyTranscodeDataTranscodeDataItemData)
 }
 
 func (s *DescribeVodTranscodeDataResponseBodyTranscodeDataTranscodeDataItemData) Validate() error {
-	return dara.Validate(s)
+	if s.DataItem != nil {
+		for _, item := range s.DataItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVodTranscodeDataResponseBodyTranscodeDataTranscodeDataItemDataDataItem struct {

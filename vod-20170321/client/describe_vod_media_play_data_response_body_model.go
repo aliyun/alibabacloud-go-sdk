@@ -104,7 +104,16 @@ func (s *DescribeVodMediaPlayDataResponseBody) SetTotalCount(v int64) *DescribeV
 }
 
 func (s *DescribeVodMediaPlayDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QoeInfoList != nil {
+		for _, item := range s.QoeInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVodMediaPlayDataResponseBodyQoeInfoList struct {

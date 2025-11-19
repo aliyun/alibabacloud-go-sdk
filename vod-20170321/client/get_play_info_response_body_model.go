@@ -66,7 +66,17 @@ func (s *GetPlayInfoResponseBody) SetVideoBase(v *GetPlayInfoResponseBodyVideoBa
 }
 
 func (s *GetPlayInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PlayInfoList != nil {
+		if err := s.PlayInfoList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoBase != nil {
+		if err := s.VideoBase.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPlayInfoResponseBodyPlayInfoList struct {
@@ -91,7 +101,16 @@ func (s *GetPlayInfoResponseBodyPlayInfoList) SetPlayInfo(v []*GetPlayInfoRespon
 }
 
 func (s *GetPlayInfoResponseBodyPlayInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.PlayInfo != nil {
+		for _, item := range s.PlayInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {

@@ -59,5 +59,10 @@ func (s *SubmitAIImageJobResponse) SetBody(v *SubmitAIImageJobResponseBody) *Sub
 }
 
 func (s *SubmitAIImageJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

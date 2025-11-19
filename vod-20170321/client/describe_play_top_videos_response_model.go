@@ -59,5 +59,10 @@ func (s *DescribePlayTopVideosResponse) SetBody(v *DescribePlayTopVideosResponse
 }
 
 func (s *DescribePlayTopVideosResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

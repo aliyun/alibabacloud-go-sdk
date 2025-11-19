@@ -53,7 +53,12 @@ func (s *GetMediaAuditResultResponseBody) SetRequestId(v string) *GetMediaAuditR
 }
 
 func (s *GetMediaAuditResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaAuditResult != nil {
+		if err := s.MediaAuditResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaAuditResultResponseBodyMediaAuditResult struct {
@@ -175,7 +180,39 @@ func (s *GetMediaAuditResultResponseBodyMediaAuditResult) SetVideoResult(v *GetM
 }
 
 func (s *GetMediaAuditResultResponseBodyMediaAuditResult) Validate() error {
-	return dara.Validate(s)
+	if s.AudioResult != nil {
+		for _, item := range s.AudioResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ImageResult != nil {
+		for _, item := range s.ImageResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TextResult != nil {
+		for _, item := range s.TextResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoResult != nil {
+		if err := s.VideoResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaAuditResultResponseBodyMediaAuditResultAudioResult struct {
@@ -374,7 +411,16 @@ func (s *GetMediaAuditResultResponseBodyMediaAuditResultImageResult) SetUrl(v st
 }
 
 func (s *GetMediaAuditResultResponseBodyMediaAuditResultImageResult) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaAuditResultResponseBodyMediaAuditResultImageResultResult struct {
@@ -734,7 +780,32 @@ func (s *GetMediaAuditResultResponseBodyMediaAuditResultVideoResult) SetTerroris
 }
 
 func (s *GetMediaAuditResultResponseBodyMediaAuditResultVideoResult) Validate() error {
-	return dara.Validate(s)
+	if s.AdResult != nil {
+		if err := s.AdResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LiveResult != nil {
+		if err := s.LiveResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LogoResult != nil {
+		if err := s.LogoResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PornResult != nil {
+		if err := s.PornResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TerrorismResult != nil {
+		if err := s.TerrorismResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaAuditResultResponseBodyMediaAuditResultVideoResultAdResult struct {
@@ -841,7 +912,25 @@ func (s *GetMediaAuditResultResponseBodyMediaAuditResultVideoResultAdResult) Set
 }
 
 func (s *GetMediaAuditResultResponseBodyMediaAuditResultVideoResultAdResult) Validate() error {
-	return dara.Validate(s)
+	if s.CounterList != nil {
+		for _, item := range s.CounterList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TopList != nil {
+		for _, item := range s.TopList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaAuditResultResponseBodyMediaAuditResultVideoResultAdResultCounterList struct {
@@ -1076,7 +1165,25 @@ func (s *GetMediaAuditResultResponseBodyMediaAuditResultVideoResultLiveResult) S
 }
 
 func (s *GetMediaAuditResultResponseBodyMediaAuditResultVideoResultLiveResult) Validate() error {
-	return dara.Validate(s)
+	if s.CounterList != nil {
+		for _, item := range s.CounterList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TopList != nil {
+		for _, item := range s.TopList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaAuditResultResponseBodyMediaAuditResultVideoResultLiveResultCounterList struct {
@@ -1311,7 +1418,25 @@ func (s *GetMediaAuditResultResponseBodyMediaAuditResultVideoResultLogoResult) S
 }
 
 func (s *GetMediaAuditResultResponseBodyMediaAuditResultVideoResultLogoResult) Validate() error {
-	return dara.Validate(s)
+	if s.CounterList != nil {
+		for _, item := range s.CounterList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TopList != nil {
+		for _, item := range s.TopList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaAuditResultResponseBodyMediaAuditResultVideoResultLogoResultCounterList struct {
@@ -1542,7 +1667,25 @@ func (s *GetMediaAuditResultResponseBodyMediaAuditResultVideoResultPornResult) S
 }
 
 func (s *GetMediaAuditResultResponseBodyMediaAuditResultVideoResultPornResult) Validate() error {
-	return dara.Validate(s)
+	if s.CounterList != nil {
+		for _, item := range s.CounterList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TopList != nil {
+		for _, item := range s.TopList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaAuditResultResponseBodyMediaAuditResultVideoResultPornResultCounterList struct {
@@ -1805,7 +1948,25 @@ func (s *GetMediaAuditResultResponseBodyMediaAuditResultVideoResultTerrorismResu
 }
 
 func (s *GetMediaAuditResultResponseBodyMediaAuditResultVideoResultTerrorismResult) Validate() error {
-	return dara.Validate(s)
+	if s.CounterList != nil {
+		for _, item := range s.CounterList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TopList != nil {
+		for _, item := range s.TopList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaAuditResultResponseBodyMediaAuditResultVideoResultTerrorismResultCounterList struct {

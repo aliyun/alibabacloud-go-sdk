@@ -53,7 +53,16 @@ func (s *ListAITemplateResponseBody) SetTemplateInfoList(v []*ListAITemplateResp
 }
 
 func (s *ListAITemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TemplateInfoList != nil {
+		for _, item := range s.TemplateInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAITemplateResponseBodyTemplateInfoList struct {

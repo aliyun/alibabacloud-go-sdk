@@ -53,7 +53,16 @@ func (s *GetAIImageJobsResponseBody) SetRequestId(v string) *GetAIImageJobsRespo
 }
 
 func (s *GetAIImageJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AIImageJobList != nil {
+		for _, item := range s.AIImageJobList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAIImageJobsResponseBodyAIImageJobList struct {

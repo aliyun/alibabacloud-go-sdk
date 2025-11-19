@@ -123,7 +123,12 @@ func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBody) SetStartTime(v strin
 }
 
 func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RealTimeHttpCodeData != nil {
+		if err := s.RealTimeHttpCodeData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeData struct {
@@ -148,7 +153,16 @@ func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeData) 
 }
 
 func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeData) Validate() error {
-	return dara.Validate(s)
+	if s.UsageData != nil {
+		for _, item := range s.UsageData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageData struct {
@@ -189,7 +203,12 @@ func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUs
 }
 
 func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageData) Validate() error {
-	return dara.Validate(s)
+	if s.Value != nil {
+		if err := s.Value.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValue struct {
@@ -214,7 +233,16 @@ func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUs
 }
 
 func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValue) Validate() error {
-	return dara.Validate(s)
+	if s.RealTimeCodeProportionData != nil {
+		for _, item := range s.RealTimeCodeProportionData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValueRealTimeCodeProportionData struct {

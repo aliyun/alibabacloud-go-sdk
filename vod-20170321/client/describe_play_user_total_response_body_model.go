@@ -53,7 +53,12 @@ func (s *DescribePlayUserTotalResponseBody) SetUserPlayStatisTotals(v *DescribeP
 }
 
 func (s *DescribePlayUserTotalResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserPlayStatisTotals != nil {
+		if err := s.UserPlayStatisTotals.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePlayUserTotalResponseBodyUserPlayStatisTotals struct {
@@ -78,7 +83,16 @@ func (s *DescribePlayUserTotalResponseBodyUserPlayStatisTotals) SetUserPlayStati
 }
 
 func (s *DescribePlayUserTotalResponseBodyUserPlayStatisTotals) Validate() error {
-	return dara.Validate(s)
+	if s.UserPlayStatisTotal != nil {
+		for _, item := range s.UserPlayStatisTotal {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotal struct {
@@ -160,7 +174,17 @@ func (s *DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTota
 }
 
 func (s *DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotal) Validate() error {
-	return dara.Validate(s)
+	if s.UV != nil {
+		if err := s.UV.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VV != nil {
+		if err := s.VV.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalUV struct {

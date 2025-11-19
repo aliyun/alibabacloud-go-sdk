@@ -53,7 +53,12 @@ func (s *GetMediaDNAResultResponseBody) SetRequestId(v string) *GetMediaDNAResul
 }
 
 func (s *GetMediaDNAResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DNAResult != nil {
+		if err := s.DNAResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaDNAResultResponseBodyDNAResult struct {
@@ -79,7 +84,16 @@ func (s *GetMediaDNAResultResponseBodyDNAResult) SetVideoDNA(v []*GetMediaDNARes
 }
 
 func (s *GetMediaDNAResultResponseBodyDNAResult) Validate() error {
-	return dara.Validate(s)
+	if s.VideoDNA != nil {
+		for _, item := range s.VideoDNA {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaDNAResultResponseBodyDNAResultVideoDNA struct {
@@ -135,7 +149,16 @@ func (s *GetMediaDNAResultResponseBodyDNAResultVideoDNA) SetSimilarity(v string)
 }
 
 func (s *GetMediaDNAResultResponseBodyDNAResultVideoDNA) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		for _, item := range s.Detail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaDNAResultResponseBodyDNAResultVideoDNADetail struct {
@@ -172,7 +195,17 @@ func (s *GetMediaDNAResultResponseBodyDNAResultVideoDNADetail) SetInput(v *GetMe
 }
 
 func (s *GetMediaDNAResultResponseBodyDNAResultVideoDNADetail) Validate() error {
-	return dara.Validate(s)
+	if s.Duplication != nil {
+		if err := s.Duplication.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaDNAResultResponseBodyDNAResultVideoDNADetailDuplication struct {

@@ -70,7 +70,12 @@ func (s *GetVideoPlayAuthResponseBody) SetVideoMeta(v *GetVideoPlayAuthResponseB
 }
 
 func (s *GetVideoPlayAuthResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VideoMeta != nil {
+		if err := s.VideoMeta.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVideoPlayAuthResponseBodyVideoMeta struct {

@@ -104,7 +104,12 @@ func (s *DescribePlayTopVideosResponseBody) SetTotalNum(v int64) *DescribePlayTo
 }
 
 func (s *DescribePlayTopVideosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TopPlayVideos != nil {
+		if err := s.TopPlayVideos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePlayTopVideosResponseBodyTopPlayVideos struct {
@@ -129,7 +134,16 @@ func (s *DescribePlayTopVideosResponseBodyTopPlayVideos) SetTopPlayVideoStatis(v
 }
 
 func (s *DescribePlayTopVideosResponseBodyTopPlayVideos) Validate() error {
-	return dara.Validate(s)
+	if s.TopPlayVideoStatis != nil {
+		for _, item := range s.TopPlayVideoStatis {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePlayTopVideosResponseBodyTopPlayVideosTopPlayVideoStatis struct {

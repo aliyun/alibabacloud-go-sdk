@@ -59,5 +59,10 @@ func (s *GetMezzanineInfoResponse) SetBody(v *GetMezzanineInfoResponseBody) *Get
 }
 
 func (s *GetMezzanineInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

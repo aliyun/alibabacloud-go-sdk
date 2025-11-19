@@ -53,7 +53,16 @@ func (s *DescribeVodTieringStorageDataResponseBody) SetStorageData(v []*Describe
 }
 
 func (s *DescribeVodTieringStorageDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StorageData != nil {
+		for _, item := range s.StorageData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVodTieringStorageDataResponseBodyStorageData struct {

@@ -87,7 +87,17 @@ func (s *UpdateMediaStorageClassResponseBody) SetStatus(v string) *UpdateMediaSt
 }
 
 func (s *UpdateMediaStorageClassResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ForbiddenList != nil {
+		if err := s.ForbiddenList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IgnoredList != nil {
+		if err := s.IgnoredList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateMediaStorageClassResponseBodyForbiddenList struct {
@@ -112,7 +122,16 @@ func (s *UpdateMediaStorageClassResponseBodyForbiddenList) SetMediaForbiddenReas
 }
 
 func (s *UpdateMediaStorageClassResponseBodyForbiddenList) Validate() error {
-	return dara.Validate(s)
+	if s.MediaForbiddenReasonDTO != nil {
+		for _, item := range s.MediaForbiddenReasonDTO {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateMediaStorageClassResponseBodyForbiddenListMediaForbiddenReasonDTO struct {

@@ -70,7 +70,12 @@ func (s *ListLiveRecordVideoResponseBody) SetTotal(v int32) *ListLiveRecordVideo
 }
 
 func (s *ListLiveRecordVideoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveRecordVideoList != nil {
+		if err := s.LiveRecordVideoList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLiveRecordVideoResponseBodyLiveRecordVideoList struct {
@@ -95,7 +100,16 @@ func (s *ListLiveRecordVideoResponseBodyLiveRecordVideoList) SetLiveRecordVideo(
 }
 
 func (s *ListLiveRecordVideoResponseBodyLiveRecordVideoList) Validate() error {
-	return dara.Validate(s)
+	if s.LiveRecordVideo != nil {
+		for _, item := range s.LiveRecordVideo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideo struct {
@@ -211,7 +225,12 @@ func (s *ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideo) SetV
 }
 
 func (s *ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideo) Validate() error {
-	return dara.Validate(s)
+	if s.Video != nil {
+		if err := s.Video.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo struct {
@@ -446,7 +465,12 @@ func (s *ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo)
 }
 
 func (s *ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo) Validate() error {
-	return dara.Validate(s)
+	if s.Snapshots != nil {
+		if err := s.Snapshots.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideoSnapshots struct {

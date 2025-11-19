@@ -53,7 +53,12 @@ func (s *SubmitAIJobResponseBody) SetRequestId(v string) *SubmitAIJobResponseBod
 }
 
 func (s *SubmitAIJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AIJobList != nil {
+		if err := s.AIJobList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitAIJobResponseBodyAIJobList struct {
@@ -78,7 +83,16 @@ func (s *SubmitAIJobResponseBodyAIJobList) SetAIJob(v []*SubmitAIJobResponseBody
 }
 
 func (s *SubmitAIJobResponseBodyAIJobList) Validate() error {
-	return dara.Validate(s)
+	if s.AIJob != nil {
+		for _, item := range s.AIJob {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitAIJobResponseBodyAIJobListAIJob struct {

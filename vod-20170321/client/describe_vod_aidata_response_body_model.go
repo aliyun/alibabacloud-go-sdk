@@ -74,7 +74,12 @@ func (s *DescribeVodAIDataResponseBody) SetRequestId(v string) *DescribeVodAIDat
 }
 
 func (s *DescribeVodAIDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AIData != nil {
+		if err := s.AIData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVodAIDataResponseBodyAIData struct {
@@ -99,7 +104,16 @@ func (s *DescribeVodAIDataResponseBodyAIData) SetAIDataItem(v []*DescribeVodAIDa
 }
 
 func (s *DescribeVodAIDataResponseBodyAIData) Validate() error {
-	return dara.Validate(s)
+	if s.AIDataItem != nil {
+		for _, item := range s.AIDataItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVodAIDataResponseBodyAIDataAIDataItem struct {
@@ -140,7 +154,12 @@ func (s *DescribeVodAIDataResponseBodyAIDataAIDataItem) SetTimeStamp(v string) *
 }
 
 func (s *DescribeVodAIDataResponseBodyAIDataAIDataItem) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVodAIDataResponseBodyAIDataAIDataItemData struct {
@@ -165,7 +184,16 @@ func (s *DescribeVodAIDataResponseBodyAIDataAIDataItemData) SetDataItem(v []*Des
 }
 
 func (s *DescribeVodAIDataResponseBodyAIDataAIDataItemData) Validate() error {
-	return dara.Validate(s)
+	if s.DataItem != nil {
+		for _, item := range s.DataItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVodAIDataResponseBodyAIDataAIDataItemDataDataItem struct {

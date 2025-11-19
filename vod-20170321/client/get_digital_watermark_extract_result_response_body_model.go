@@ -53,7 +53,16 @@ func (s *GetDigitalWatermarkExtractResultResponseBody) SetRequestId(v string) *G
 }
 
 func (s *GetDigitalWatermarkExtractResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AiExtractResultList != nil {
+		for _, item := range s.AiExtractResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList struct {

@@ -83,7 +83,16 @@ func (s *GetAppInfosResponseBody) SetRequestId(v string) *GetAppInfosResponseBod
 }
 
 func (s *GetAppInfosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppInfoList != nil {
+		for _, item := range s.AppInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAppInfosResponseBodyAppInfoList struct {

@@ -121,7 +121,12 @@ func (s *DescribeVodDomainReqHitRateDataResponseBody) SetStartTime(v string) *De
 }
 
 func (s *DescribeVodDomainReqHitRateDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVodDomainReqHitRateDataResponseBodyData struct {
@@ -146,7 +151,16 @@ func (s *DescribeVodDomainReqHitRateDataResponseBodyData) SetDataModule(v []*Des
 }
 
 func (s *DescribeVodDomainReqHitRateDataResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVodDomainReqHitRateDataResponseBodyDataDataModule struct {

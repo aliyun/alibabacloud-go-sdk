@@ -53,7 +53,12 @@ func (s *DescribeVodDomainDetailResponseBody) SetRequestId(v string) *DescribeVo
 }
 
 func (s *DescribeVodDomainDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainDetail != nil {
+		if err := s.DomainDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVodDomainDetailResponseBodyDomainDetail struct {
@@ -266,7 +271,12 @@ func (s *DescribeVodDomainDetailResponseBodyDomainDetail) SetWeight(v string) *D
 }
 
 func (s *DescribeVodDomainDetailResponseBodyDomainDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Sources != nil {
+		if err := s.Sources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVodDomainDetailResponseBodyDomainDetailSources struct {
@@ -291,7 +301,16 @@ func (s *DescribeVodDomainDetailResponseBodyDomainDetailSources) SetSource(v []*
 }
 
 func (s *DescribeVodDomainDetailResponseBodyDomainDetailSources) Validate() error {
-	return dara.Validate(s)
+	if s.Source != nil {
+		for _, item := range s.Source {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVodDomainDetailResponseBodyDomainDetailSourcesSource struct {

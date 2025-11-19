@@ -53,7 +53,12 @@ func (s *GetMediaAuditAudioResultDetailResponseBody) SetRequestId(v string) *Get
 }
 
 func (s *GetMediaAuditAudioResultDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaAuditAudioResultDetail != nil {
+		if err := s.MediaAuditAudioResultDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetail struct {
@@ -109,7 +114,16 @@ func (s *GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetail) 
 }
 
 func (s *GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetail) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetailList struct {

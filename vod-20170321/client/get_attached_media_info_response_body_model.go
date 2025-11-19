@@ -66,7 +66,16 @@ func (s *GetAttachedMediaInfoResponseBody) SetRequestId(v string) *GetAttachedMe
 }
 
 func (s *GetAttachedMediaInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AttachedMediaList != nil {
+		for _, item := range s.AttachedMediaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAttachedMediaInfoResponseBodyAttachedMediaList struct {
@@ -275,7 +284,16 @@ func (s *GetAttachedMediaInfoResponseBodyAttachedMediaList) SetURL(v string) *Ge
 }
 
 func (s *GetAttachedMediaInfoResponseBodyAttachedMediaList) Validate() error {
-	return dara.Validate(s)
+	if s.Categories != nil {
+		for _, item := range s.Categories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAttachedMediaInfoResponseBodyAttachedMediaListCategories struct {

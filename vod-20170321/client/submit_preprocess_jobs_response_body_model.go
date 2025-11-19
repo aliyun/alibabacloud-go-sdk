@@ -53,7 +53,12 @@ func (s *SubmitPreprocessJobsResponseBody) SetRequestId(v string) *SubmitPreproc
 }
 
 func (s *SubmitPreprocessJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PreprocessJobs != nil {
+		if err := s.PreprocessJobs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitPreprocessJobsResponseBodyPreprocessJobs struct {
@@ -78,7 +83,16 @@ func (s *SubmitPreprocessJobsResponseBodyPreprocessJobs) SetPreprocessJob(v []*S
 }
 
 func (s *SubmitPreprocessJobsResponseBodyPreprocessJobs) Validate() error {
-	return dara.Validate(s)
+	if s.PreprocessJob != nil {
+		for _, item := range s.PreprocessJob {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitPreprocessJobsResponseBodyPreprocessJobsPreprocessJob struct {

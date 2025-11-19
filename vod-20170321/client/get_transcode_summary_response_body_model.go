@@ -66,7 +66,16 @@ func (s *GetTranscodeSummaryResponseBody) SetTranscodeSummaryList(v []*GetTransc
 }
 
 func (s *GetTranscodeSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TranscodeSummaryList != nil {
+		for _, item := range s.TranscodeSummaryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTranscodeSummaryResponseBodyTranscodeSummaryList struct {
@@ -177,7 +186,16 @@ func (s *GetTranscodeSummaryResponseBodyTranscodeSummaryList) SetVideoId(v strin
 }
 
 func (s *GetTranscodeSummaryResponseBodyTranscodeSummaryList) Validate() error {
-	return dara.Validate(s)
+	if s.TranscodeJobInfoSummaryList != nil {
+		for _, item := range s.TranscodeJobInfoSummaryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTranscodeSummaryResponseBodyTranscodeSummaryListTranscodeJobInfoSummaryList struct {

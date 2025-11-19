@@ -70,7 +70,12 @@ func (s *GetVideoListResponseBody) SetVideoList(v *GetVideoListResponseBodyVideo
 }
 
 func (s *GetVideoListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VideoList != nil {
+		if err := s.VideoList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVideoListResponseBodyVideoList struct {
@@ -95,7 +100,16 @@ func (s *GetVideoListResponseBodyVideoList) SetVideo(v []*GetVideoListResponseBo
 }
 
 func (s *GetVideoListResponseBodyVideoList) Validate() error {
-	return dara.Validate(s)
+	if s.Video != nil {
+		for _, item := range s.Video {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetVideoListResponseBodyVideoListVideo struct {
@@ -430,7 +444,12 @@ func (s *GetVideoListResponseBodyVideoListVideo) SetVideoId(v string) *GetVideoL
 }
 
 func (s *GetVideoListResponseBodyVideoListVideo) Validate() error {
-	return dara.Validate(s)
+	if s.Snapshots != nil {
+		if err := s.Snapshots.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVideoListResponseBodyVideoListVideoSnapshots struct {

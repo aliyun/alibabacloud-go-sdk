@@ -108,7 +108,27 @@ func (s *GetJobDetailResponseBody) SetWorkflowTaskDetail(v *GetJobDetailResponse
 }
 
 func (s *GetJobDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AIJobDetail != nil {
+		if err := s.AIJobDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SnapshotJobDetail != nil {
+		if err := s.SnapshotJobDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TranscodeJobDetail != nil {
+		if err := s.TranscodeJobDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WorkflowTaskDetail != nil {
+		if err := s.WorkflowTaskDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobDetailResponseBodyAIJobDetail struct {
@@ -674,7 +694,12 @@ func (s *GetJobDetailResponseBodyWorkflowTaskDetail) SetWorkflow(v *GetJobDetail
 }
 
 func (s *GetJobDetailResponseBodyWorkflowTaskDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Workflow != nil {
+		if err := s.Workflow.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobDetailResponseBodyWorkflowTaskDetailWorkflow struct {

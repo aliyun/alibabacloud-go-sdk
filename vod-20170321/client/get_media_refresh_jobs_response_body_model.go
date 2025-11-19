@@ -53,7 +53,16 @@ func (s *GetMediaRefreshJobsResponseBody) SetRequestId(v string) *GetMediaRefres
 }
 
 func (s *GetMediaRefreshJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaRefreshJobs != nil {
+		for _, item := range s.MediaRefreshJobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaRefreshJobsResponseBodyMediaRefreshJobs struct {

@@ -70,7 +70,16 @@ func (s *ListAppInfoResponseBody) SetTotal(v int32) *ListAppInfoResponseBody {
 }
 
 func (s *ListAppInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppInfoList != nil {
+		for _, item := range s.AppInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAppInfoResponseBodyAppInfoList struct {

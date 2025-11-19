@@ -59,5 +59,10 @@ func (s *GetVodTemplateResponse) SetBody(v *GetVodTemplateResponseBody) *GetVodT
 }
 
 func (s *GetVodTemplateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

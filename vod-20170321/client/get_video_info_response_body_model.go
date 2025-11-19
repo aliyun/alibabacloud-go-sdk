@@ -53,7 +53,12 @@ func (s *GetVideoInfoResponseBody) SetVideo(v *GetVideoInfoResponseBodyVideo) *G
 }
 
 func (s *GetVideoInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Video != nil {
+		if err := s.Video.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVideoInfoResponseBodyVideo struct {
@@ -470,7 +475,12 @@ func (s *GetVideoInfoResponseBodyVideo) SetVideoId(v string) *GetVideoInfoRespon
 }
 
 func (s *GetVideoInfoResponseBodyVideo) Validate() error {
-	return dara.Validate(s)
+	if s.Snapshots != nil {
+		if err := s.Snapshots.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVideoInfoResponseBodyVideoSnapshots struct {

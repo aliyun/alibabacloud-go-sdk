@@ -83,7 +83,17 @@ func (s *GetCategoriesResponseBody) SetSubTotal(v int64) *GetCategoriesResponseB
 }
 
 func (s *GetCategoriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Category != nil {
+		if err := s.Category.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubCategories != nil {
+		if err := s.SubCategories.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCategoriesResponseBodyCategory struct {
@@ -208,7 +218,16 @@ func (s *GetCategoriesResponseBodySubCategories) SetCategory(v []*GetCategoriesR
 }
 
 func (s *GetCategoriesResponseBodySubCategories) Validate() error {
-	return dara.Validate(s)
+	if s.Category != nil {
+		for _, item := range s.Category {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCategoriesResponseBodySubCategoriesCategory struct {

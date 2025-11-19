@@ -74,7 +74,12 @@ func (s *DescribeVodStorageDataResponseBody) SetStorageData(v *DescribeVodStorag
 }
 
 func (s *DescribeVodStorageDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StorageData != nil {
+		if err := s.StorageData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVodStorageDataResponseBodyStorageData struct {
@@ -99,7 +104,16 @@ func (s *DescribeVodStorageDataResponseBodyStorageData) SetStorageDataItem(v []*
 }
 
 func (s *DescribeVodStorageDataResponseBodyStorageData) Validate() error {
-	return dara.Validate(s)
+	if s.StorageDataItem != nil {
+		for _, item := range s.StorageDataItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVodStorageDataResponseBodyStorageDataStorageDataItem struct {

@@ -59,5 +59,10 @@ func (s *SetEditingProjectMaterialsResponse) SetBody(v *SetEditingProjectMateria
 }
 
 func (s *SetEditingProjectMaterialsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *GetImageInfoResponseBody) SetRequestId(v string) *GetImageInfoResponseB
 }
 
 func (s *GetImageInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImageInfo != nil {
+		if err := s.ImageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetImageInfoResponseBodyImageInfo struct {
@@ -275,7 +280,12 @@ func (s *GetImageInfoResponseBodyImageInfo) SetURL(v string) *GetImageInfoRespon
 }
 
 func (s *GetImageInfoResponseBodyImageInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Mezzanine != nil {
+		if err := s.Mezzanine.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetImageInfoResponseBodyImageInfoMezzanine struct {

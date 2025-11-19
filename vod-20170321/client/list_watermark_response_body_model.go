@@ -53,7 +53,16 @@ func (s *ListWatermarkResponseBody) SetWatermarkInfos(v []*ListWatermarkResponse
 }
 
 func (s *ListWatermarkResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WatermarkInfos != nil {
+		for _, item := range s.WatermarkInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWatermarkResponseBodyWatermarkInfos struct {

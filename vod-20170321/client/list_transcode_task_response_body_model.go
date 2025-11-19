@@ -53,7 +53,16 @@ func (s *ListTranscodeTaskResponseBody) SetTranscodeTaskList(v []*ListTranscodeT
 }
 
 func (s *ListTranscodeTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TranscodeTaskList != nil {
+		for _, item := range s.TranscodeTaskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTranscodeTaskResponseBodyTranscodeTaskList struct {
