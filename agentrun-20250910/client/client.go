@@ -359,10 +359,6 @@ func (client *Client) CreateMemoryWithOptions(request *CreateMemoryRequest, head
 		body["name"] = request.Name
 	}
 
-	if !dara.IsNil(request.Permanent) {
-		body["permanent"] = request.Permanent
-	}
-
 	if !dara.IsNil(request.ShortTtl) {
 		body["shortTtl"] = request.ShortTtl
 	}
@@ -1231,6 +1227,10 @@ func (client *Client) ListAgentRuntimeEndpointsWithOptions(agentRuntimeId *strin
 		query["pageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.SearchMode) {
+		query["searchMode"] = request.SearchMode
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -1381,6 +1381,10 @@ func (client *Client) ListAgentRuntimesWithOptions(request *ListAgentRuntimesReq
 
 	if !dara.IsNil(request.PageSize) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SearchMode) {
+		query["searchMode"] = request.SearchMode
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1617,16 +1621,16 @@ func (client *Client) ListMemoryWithOptions(request *ListMemoryRequest, headers 
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.NamePrefix) {
-		query["namePrefix"] = request.NamePrefix
-	}
-
 	if !dara.IsNil(request.PageNumber) {
 		query["pageNumber"] = request.PageNumber
 	}
 
 	if !dara.IsNil(request.PageSize) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Pattern) {
+		query["pattern"] = request.Pattern
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2138,10 +2142,6 @@ func (client *Client) UpdateMemoryWithOptions(memoryName *string, request *Updat
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.LongTtl) {
 		body["longTtl"] = request.LongTtl
-	}
-
-	if !dara.IsNil(request.Permanent) {
-		body["permanent"] = request.Permanent
 	}
 
 	if !dara.IsNil(request.ShortTtl) {

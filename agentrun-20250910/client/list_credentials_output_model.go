@@ -9,10 +9,10 @@ type iListCredentialsOutput interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetItems(v *CredentialListItem) *ListCredentialsOutput
-	GetItems() *CredentialListItem
-	SetPageNum(v string) *ListCredentialsOutput
-	GetPageNum() *string
+	SetItems(v []*CredentialListItem) *ListCredentialsOutput
+	GetItems() []*CredentialListItem
+	SetPageNumber(v string) *ListCredentialsOutput
+	GetPageNumber() *string
 	SetPageSize(v string) *ListCredentialsOutput
 	GetPageSize() *string
 	SetTotal(v string) *ListCredentialsOutput
@@ -20,10 +20,10 @@ type iListCredentialsOutput interface {
 }
 
 type ListCredentialsOutput struct {
-	Items    *CredentialListItem `json:"items,omitempty" xml:"items,omitempty"`
-	PageNum  *string             `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize *string             `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Total    *string             `json:"total,omitempty" xml:"total,omitempty"`
+	Items      []*CredentialListItem `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	PageNumber *string               `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *string               `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Total      *string               `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListCredentialsOutput) String() string {
@@ -34,12 +34,12 @@ func (s ListCredentialsOutput) GoString() string {
 	return s.String()
 }
 
-func (s *ListCredentialsOutput) GetItems() *CredentialListItem {
+func (s *ListCredentialsOutput) GetItems() []*CredentialListItem {
 	return s.Items
 }
 
-func (s *ListCredentialsOutput) GetPageNum() *string {
-	return s.PageNum
+func (s *ListCredentialsOutput) GetPageNumber() *string {
+	return s.PageNumber
 }
 
 func (s *ListCredentialsOutput) GetPageSize() *string {
@@ -50,13 +50,13 @@ func (s *ListCredentialsOutput) GetTotal() *string {
 	return s.Total
 }
 
-func (s *ListCredentialsOutput) SetItems(v *CredentialListItem) *ListCredentialsOutput {
+func (s *ListCredentialsOutput) SetItems(v []*CredentialListItem) *ListCredentialsOutput {
 	s.Items = v
 	return s
 }
 
-func (s *ListCredentialsOutput) SetPageNum(v string) *ListCredentialsOutput {
-	s.PageNum = &v
+func (s *ListCredentialsOutput) SetPageNumber(v string) *ListCredentialsOutput {
+	s.PageNumber = &v
 	return s
 }
 
@@ -72,8 +72,12 @@ func (s *ListCredentialsOutput) SetTotal(v string) *ListCredentialsOutput {
 
 func (s *ListCredentialsOutput) Validate() error {
 	if s.Items != nil {
-		if err := s.Items.Validate(); err != nil {
-			return err
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil

@@ -21,6 +21,8 @@ type iCreateAgentRuntimeInput interface {
 	GetCpu() *float32
 	SetCredentialId(v string) *CreateAgentRuntimeInput
 	GetCredentialId() *string
+	SetCredentialName(v string) *CreateAgentRuntimeInput
+	GetCredentialName() *string
 	SetDescription(v string) *CreateAgentRuntimeInput
 	GetDescription() *string
 	SetEnvironmentVariables(v map[string]*string) *CreateAgentRuntimeInput
@@ -82,12 +84,20 @@ type CreateAgentRuntimeInput struct {
 	//
 	// 2.0
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// Deprecated
+	//
 	// 用于访问外部服务的凭证ID，智能体运行时将使用此凭证进行身份验证
 	//
 	// example:
 	//
 	// cred-1234567890abcdef
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
+	// 用于访问智能体的凭证名称，访问智能体运行时将使用此凭证进行身份验证
+	//
+	// example:
+	//
+	// my-credential
+	CredentialName *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
 	// 智能体运行时的描述信息，用于说明该运行时的用途和功能
 	//
 	// example:
@@ -194,6 +204,10 @@ func (s *CreateAgentRuntimeInput) GetCredentialId() *string {
 	return s.CredentialId
 }
 
+func (s *CreateAgentRuntimeInput) GetCredentialName() *string {
+	return s.CredentialName
+}
+
 func (s *CreateAgentRuntimeInput) GetDescription() *string {
 	return s.Description
 }
@@ -265,6 +279,11 @@ func (s *CreateAgentRuntimeInput) SetCpu(v float32) *CreateAgentRuntimeInput {
 
 func (s *CreateAgentRuntimeInput) SetCredentialId(v string) *CreateAgentRuntimeInput {
 	s.CredentialId = &v
+	return s
+}
+
+func (s *CreateAgentRuntimeInput) SetCredentialName(v string) *CreateAgentRuntimeInput {
+	s.CredentialName = &v
 	return s
 }
 

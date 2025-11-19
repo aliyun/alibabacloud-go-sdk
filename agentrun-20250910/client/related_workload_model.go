@@ -9,18 +9,18 @@ type iRelatedWorkload interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetWorkloadId(v string) *RelatedWorkload
-	GetWorkloadId() *string
-	SetWorkloadName(v string) *RelatedWorkload
-	GetWorkloadName() *string
-	SetWorkloadType(v string) *RelatedWorkload
-	GetWorkloadType() *string
+	SetResourceId(v string) *RelatedWorkload
+	GetResourceId() *string
+	SetResourceName(v string) *RelatedWorkload
+	GetResourceName() *string
+	SetResourceType(v string) *RelatedWorkload
+	GetResourceType() *string
 }
 
 type RelatedWorkload struct {
-	WorkloadId   *string `json:"workloadId,omitempty" xml:"workloadId,omitempty"`
-	WorkloadName *string `json:"workloadName,omitempty" xml:"workloadName,omitempty"`
-	WorkloadType *string `json:"workloadType,omitempty" xml:"workloadType,omitempty"`
+	ResourceId   *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
 func (s RelatedWorkload) String() string {
@@ -31,30 +31,30 @@ func (s RelatedWorkload) GoString() string {
 	return s.String()
 }
 
-func (s *RelatedWorkload) GetWorkloadId() *string {
-	return s.WorkloadId
+func (s *RelatedWorkload) GetResourceId() *string {
+	return s.ResourceId
 }
 
-func (s *RelatedWorkload) GetWorkloadName() *string {
-	return s.WorkloadName
+func (s *RelatedWorkload) GetResourceName() *string {
+	return s.ResourceName
 }
 
-func (s *RelatedWorkload) GetWorkloadType() *string {
-	return s.WorkloadType
+func (s *RelatedWorkload) GetResourceType() *string {
+	return s.ResourceType
 }
 
-func (s *RelatedWorkload) SetWorkloadId(v string) *RelatedWorkload {
-	s.WorkloadId = &v
+func (s *RelatedWorkload) SetResourceId(v string) *RelatedWorkload {
+	s.ResourceId = &v
 	return s
 }
 
-func (s *RelatedWorkload) SetWorkloadName(v string) *RelatedWorkload {
-	s.WorkloadName = &v
+func (s *RelatedWorkload) SetResourceName(v string) *RelatedWorkload {
+	s.ResourceName = &v
 	return s
 }
 
-func (s *RelatedWorkload) SetWorkloadType(v string) *RelatedWorkload {
-	s.WorkloadType = &v
+func (s *RelatedWorkload) SetResourceType(v string) *RelatedWorkload {
+	s.ResourceType = &v
 	return s
 }
 

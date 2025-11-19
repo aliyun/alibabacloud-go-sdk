@@ -11,25 +11,31 @@ type iCredentialListItem interface {
 	GoString() string
 	SetCreatedAt(v string) *CredentialListItem
 	GetCreatedAt() *string
-	SetId(v string) *CredentialListItem
-	GetId() *string
-	SetName(v string) *CredentialListItem
-	GetName() *string
-	SetRelatedWorloads(v []*RelatedWorkload) *CredentialListItem
-	GetRelatedWorloads() []*RelatedWorkload
-	SetType(v string) *CredentialListItem
-	GetType() *string
+	SetCredentialAuthType(v string) *CredentialListItem
+	GetCredentialAuthType() *string
+	SetCredentialId(v string) *CredentialListItem
+	GetCredentialId() *string
+	SetCredentialName(v string) *CredentialListItem
+	GetCredentialName() *string
+	SetCredentialSourceType(v string) *CredentialListItem
+	GetCredentialSourceType() *string
+	SetEnabled(v bool) *CredentialListItem
+	GetEnabled() *bool
+	SetRelatedResourceCount(v int32) *CredentialListItem
+	GetRelatedResourceCount() *int32
 	SetUpdatedAt(v string) *CredentialListItem
 	GetUpdatedAt() *string
 }
 
 type CredentialListItem struct {
-	CreatedAt       *string            `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	Id              *string            `json:"id,omitempty" xml:"id,omitempty"`
-	Name            *string            `json:"name,omitempty" xml:"name,omitempty"`
-	RelatedWorloads []*RelatedWorkload `json:"relatedWorloads,omitempty" xml:"relatedWorloads,omitempty" type:"Repeated"`
-	Type            *string            `json:"type,omitempty" xml:"type,omitempty"`
-	UpdatedAt       *string            `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	CreatedAt            *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CredentialAuthType   *string `json:"credentialAuthType,omitempty" xml:"credentialAuthType,omitempty"`
+	CredentialId         *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
+	CredentialName       *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
+	CredentialSourceType *string `json:"credentialSourceType,omitempty" xml:"credentialSourceType,omitempty"`
+	Enabled              *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	RelatedResourceCount *int32  `json:"relatedResourceCount,omitempty" xml:"relatedResourceCount,omitempty"`
+	UpdatedAt            *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 }
 
 func (s CredentialListItem) String() string {
@@ -44,20 +50,28 @@ func (s *CredentialListItem) GetCreatedAt() *string {
 	return s.CreatedAt
 }
 
-func (s *CredentialListItem) GetId() *string {
-	return s.Id
+func (s *CredentialListItem) GetCredentialAuthType() *string {
+	return s.CredentialAuthType
 }
 
-func (s *CredentialListItem) GetName() *string {
-	return s.Name
+func (s *CredentialListItem) GetCredentialId() *string {
+	return s.CredentialId
 }
 
-func (s *CredentialListItem) GetRelatedWorloads() []*RelatedWorkload {
-	return s.RelatedWorloads
+func (s *CredentialListItem) GetCredentialName() *string {
+	return s.CredentialName
 }
 
-func (s *CredentialListItem) GetType() *string {
-	return s.Type
+func (s *CredentialListItem) GetCredentialSourceType() *string {
+	return s.CredentialSourceType
+}
+
+func (s *CredentialListItem) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *CredentialListItem) GetRelatedResourceCount() *int32 {
+	return s.RelatedResourceCount
 }
 
 func (s *CredentialListItem) GetUpdatedAt() *string {
@@ -69,23 +83,33 @@ func (s *CredentialListItem) SetCreatedAt(v string) *CredentialListItem {
 	return s
 }
 
-func (s *CredentialListItem) SetId(v string) *CredentialListItem {
-	s.Id = &v
+func (s *CredentialListItem) SetCredentialAuthType(v string) *CredentialListItem {
+	s.CredentialAuthType = &v
 	return s
 }
 
-func (s *CredentialListItem) SetName(v string) *CredentialListItem {
-	s.Name = &v
+func (s *CredentialListItem) SetCredentialId(v string) *CredentialListItem {
+	s.CredentialId = &v
 	return s
 }
 
-func (s *CredentialListItem) SetRelatedWorloads(v []*RelatedWorkload) *CredentialListItem {
-	s.RelatedWorloads = v
+func (s *CredentialListItem) SetCredentialName(v string) *CredentialListItem {
+	s.CredentialName = &v
 	return s
 }
 
-func (s *CredentialListItem) SetType(v string) *CredentialListItem {
-	s.Type = &v
+func (s *CredentialListItem) SetCredentialSourceType(v string) *CredentialListItem {
+	s.CredentialSourceType = &v
+	return s
+}
+
+func (s *CredentialListItem) SetEnabled(v bool) *CredentialListItem {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CredentialListItem) SetRelatedResourceCount(v int32) *CredentialListItem {
+	s.RelatedResourceCount = &v
 	return s
 }
 
@@ -95,14 +119,5 @@ func (s *CredentialListItem) SetUpdatedAt(v string) *CredentialListItem {
 }
 
 func (s *CredentialListItem) Validate() error {
-	if s.RelatedWorloads != nil {
-		for _, item := range s.RelatedWorloads {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
-		}
-	}
-	return nil
+	return dara.Validate(s)
 }

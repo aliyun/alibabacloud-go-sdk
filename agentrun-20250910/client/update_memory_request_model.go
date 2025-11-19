@@ -11,8 +11,6 @@ type iUpdateMemoryRequest interface {
 	GoString() string
 	SetLongTtl(v int32) *UpdateMemoryRequest
 	GetLongTtl() *int32
-	SetPermanent(v bool) *UpdateMemoryRequest
-	GetPermanent() *bool
 	SetShortTtl(v int32) *UpdateMemoryRequest
 	GetShortTtl() *int32
 	SetStrategy(v []*string) *UpdateMemoryRequest
@@ -24,10 +22,6 @@ type UpdateMemoryRequest struct {
 	//
 	// 365
 	LongTtl *int32 `json:"longTtl,omitempty" xml:"longTtl,omitempty"`
-	// example:
-	//
-	// true
-	Permanent *bool `json:"permanent,omitempty" xml:"permanent,omitempty"`
 	// example:
 	//
 	// 30
@@ -47,10 +41,6 @@ func (s *UpdateMemoryRequest) GetLongTtl() *int32 {
 	return s.LongTtl
 }
 
-func (s *UpdateMemoryRequest) GetPermanent() *bool {
-	return s.Permanent
-}
-
 func (s *UpdateMemoryRequest) GetShortTtl() *int32 {
 	return s.ShortTtl
 }
@@ -61,11 +51,6 @@ func (s *UpdateMemoryRequest) GetStrategy() []*string {
 
 func (s *UpdateMemoryRequest) SetLongTtl(v int32) *UpdateMemoryRequest {
 	s.LongTtl = &v
-	return s
-}
-
-func (s *UpdateMemoryRequest) SetPermanent(v bool) *UpdateMemoryRequest {
-	s.Permanent = &v
 	return s
 }
 

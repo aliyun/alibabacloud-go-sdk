@@ -94,10 +94,6 @@ type GetMemoryResponseBodyData struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//
-	// false
-	Permanent *bool `json:"permanent,omitempty" xml:"permanent,omitempty"`
-	// example:
-	//
 	// 30
 	ShortTtl *int32    `json:"shortTtl,omitempty" xml:"shortTtl,omitempty"`
 	Strategy []*string `json:"strategy,omitempty" xml:"strategy,omitempty" type:"Repeated"`
@@ -127,10 +123,6 @@ func (s *GetMemoryResponseBodyData) GetName() *string {
 	return s.Name
 }
 
-func (s *GetMemoryResponseBodyData) GetPermanent() *bool {
-	return s.Permanent
-}
-
 func (s *GetMemoryResponseBodyData) GetShortTtl() *int32 {
 	return s.ShortTtl
 }
@@ -156,11 +148,6 @@ func (s *GetMemoryResponseBodyData) SetLongTtl(v int32) *GetMemoryResponseBodyDa
 
 func (s *GetMemoryResponseBodyData) SetName(v string) *GetMemoryResponseBodyData {
 	s.Name = &v
-	return s
-}
-
-func (s *GetMemoryResponseBodyData) SetPermanent(v bool) *GetMemoryResponseBodyData {
-	s.Permanent = &v
 	return s
 }
 

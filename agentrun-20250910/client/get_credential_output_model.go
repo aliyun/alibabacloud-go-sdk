@@ -9,38 +9,42 @@ type iGetCredentialOutput interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetConfig(v map[string]*string) *GetCredentialOutput
-	GetConfig() map[string]*string
 	SetCreatedAt(v string) *GetCredentialOutput
 	GetCreatedAt() *string
+	SetCredentialAuthType(v string) *GetCredentialOutput
+	GetCredentialAuthType() *string
+	SetCredentialId(v string) *GetCredentialOutput
+	GetCredentialId() *string
+	SetCredentialName(v string) *GetCredentialOutput
+	GetCredentialName() *string
+	SetCredentialPublicConfig(v map[string]*string) *GetCredentialOutput
+	GetCredentialPublicConfig() map[string]*string
+	SetCredentialSecret(v string) *GetCredentialOutput
+	GetCredentialSecret() *string
+	SetCredentialSourceType(v string) *GetCredentialOutput
+	GetCredentialSourceType() *string
 	SetDescription(v string) *GetCredentialOutput
 	GetDescription() *string
-	SetId(v string) *GetCredentialOutput
-	GetId() *string
-	SetName(v string) *GetCredentialOutput
-	GetName() *string
-	SetSecret(v string) *GetCredentialOutput
-	GetSecret() *string
-	SetType(v string) *GetCredentialOutput
-	GetType() *string
+	SetEnabled(v bool) *GetCredentialOutput
+	GetEnabled() *bool
+	SetRelatedResources(v []*RelatedResource) *GetCredentialOutput
+	GetRelatedResources() []*RelatedResource
 	SetUpdatedAt(v string) *GetCredentialOutput
 	GetUpdatedAt() *string
 }
 
 type GetCredentialOutput struct {
-	// 凭证的配置参数，以键值对形式存储
-	//
-	// example:
-	//
-	// api_endpoint=https://api.example.com,timeout=30
-	Config      map[string]*string `json:"config,omitempty" xml:"config,omitempty"`
-	CreatedAt   *string            `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	Description *string            `json:"description,omitempty" xml:"description,omitempty"`
-	Id          *string            `json:"id,omitempty" xml:"id,omitempty"`
-	Name        *string            `json:"name,omitempty" xml:"name,omitempty"`
-	Secret      *string            `json:"secret,omitempty" xml:"secret,omitempty"`
-	Type        *string            `json:"type,omitempty" xml:"type,omitempty"`
-	UpdatedAt   *string            `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	CreatedAt              *string            `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CredentialAuthType     *string            `json:"credentialAuthType,omitempty" xml:"credentialAuthType,omitempty"`
+	CredentialId           *string            `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
+	CredentialName         *string            `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
+	CredentialPublicConfig map[string]*string `json:"credentialPublicConfig,omitempty" xml:"credentialPublicConfig,omitempty"`
+	CredentialSecret       *string            `json:"credentialSecret,omitempty" xml:"credentialSecret,omitempty"`
+	CredentialSourceType   *string            `json:"credentialSourceType,omitempty" xml:"credentialSourceType,omitempty"`
+	Description            *string            `json:"description,omitempty" xml:"description,omitempty"`
+	Enabled                *bool              `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	RelatedResources       []*RelatedResource `json:"relatedResources,omitempty" xml:"relatedResources,omitempty" type:"Repeated"`
+	UpdatedAt              *string            `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 }
 
 func (s GetCredentialOutput) String() string {
@@ -51,45 +55,82 @@ func (s GetCredentialOutput) GoString() string {
 	return s.String()
 }
 
-func (s *GetCredentialOutput) GetConfig() map[string]*string {
-	return s.Config
-}
-
 func (s *GetCredentialOutput) GetCreatedAt() *string {
 	return s.CreatedAt
+}
+
+func (s *GetCredentialOutput) GetCredentialAuthType() *string {
+	return s.CredentialAuthType
+}
+
+func (s *GetCredentialOutput) GetCredentialId() *string {
+	return s.CredentialId
+}
+
+func (s *GetCredentialOutput) GetCredentialName() *string {
+	return s.CredentialName
+}
+
+func (s *GetCredentialOutput) GetCredentialPublicConfig() map[string]*string {
+	return s.CredentialPublicConfig
+}
+
+func (s *GetCredentialOutput) GetCredentialSecret() *string {
+	return s.CredentialSecret
+}
+
+func (s *GetCredentialOutput) GetCredentialSourceType() *string {
+	return s.CredentialSourceType
 }
 
 func (s *GetCredentialOutput) GetDescription() *string {
 	return s.Description
 }
 
-func (s *GetCredentialOutput) GetId() *string {
-	return s.Id
+func (s *GetCredentialOutput) GetEnabled() *bool {
+	return s.Enabled
 }
 
-func (s *GetCredentialOutput) GetName() *string {
-	return s.Name
-}
-
-func (s *GetCredentialOutput) GetSecret() *string {
-	return s.Secret
-}
-
-func (s *GetCredentialOutput) GetType() *string {
-	return s.Type
+func (s *GetCredentialOutput) GetRelatedResources() []*RelatedResource {
+	return s.RelatedResources
 }
 
 func (s *GetCredentialOutput) GetUpdatedAt() *string {
 	return s.UpdatedAt
 }
 
-func (s *GetCredentialOutput) SetConfig(v map[string]*string) *GetCredentialOutput {
-	s.Config = v
+func (s *GetCredentialOutput) SetCreatedAt(v string) *GetCredentialOutput {
+	s.CreatedAt = &v
 	return s
 }
 
-func (s *GetCredentialOutput) SetCreatedAt(v string) *GetCredentialOutput {
-	s.CreatedAt = &v
+func (s *GetCredentialOutput) SetCredentialAuthType(v string) *GetCredentialOutput {
+	s.CredentialAuthType = &v
+	return s
+}
+
+func (s *GetCredentialOutput) SetCredentialId(v string) *GetCredentialOutput {
+	s.CredentialId = &v
+	return s
+}
+
+func (s *GetCredentialOutput) SetCredentialName(v string) *GetCredentialOutput {
+	s.CredentialName = &v
+	return s
+}
+
+func (s *GetCredentialOutput) SetCredentialPublicConfig(v map[string]*string) *GetCredentialOutput {
+	s.CredentialPublicConfig = v
+	return s
+}
+
+func (s *GetCredentialOutput) SetCredentialSecret(v string) *GetCredentialOutput {
+	s.CredentialSecret = &v
+	return s
+}
+
+func (s *GetCredentialOutput) SetCredentialSourceType(v string) *GetCredentialOutput {
+	s.CredentialSourceType = &v
 	return s
 }
 
@@ -98,23 +139,13 @@ func (s *GetCredentialOutput) SetDescription(v string) *GetCredentialOutput {
 	return s
 }
 
-func (s *GetCredentialOutput) SetId(v string) *GetCredentialOutput {
-	s.Id = &v
+func (s *GetCredentialOutput) SetEnabled(v bool) *GetCredentialOutput {
+	s.Enabled = &v
 	return s
 }
 
-func (s *GetCredentialOutput) SetName(v string) *GetCredentialOutput {
-	s.Name = &v
-	return s
-}
-
-func (s *GetCredentialOutput) SetSecret(v string) *GetCredentialOutput {
-	s.Secret = &v
-	return s
-}
-
-func (s *GetCredentialOutput) SetType(v string) *GetCredentialOutput {
-	s.Type = &v
+func (s *GetCredentialOutput) SetRelatedResources(v []*RelatedResource) *GetCredentialOutput {
+	s.RelatedResources = v
 	return s
 }
 
@@ -124,5 +155,14 @@ func (s *GetCredentialOutput) SetUpdatedAt(v string) *GetCredentialOutput {
 }
 
 func (s *GetCredentialOutput) Validate() error {
-	return dara.Validate(s)
+	if s.RelatedResources != nil {
+		for _, item := range s.RelatedResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

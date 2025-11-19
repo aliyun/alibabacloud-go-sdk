@@ -9,29 +9,33 @@ type iCreateCredentialInput interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetConfig(v map[string]*string) *CreateCredentialInput
-	GetConfig() map[string]*string
+	SetCredentialAuthType(v string) *CreateCredentialInput
+	GetCredentialAuthType() *string
+	SetCredentialName(v string) *CreateCredentialInput
+	GetCredentialName() *string
+	SetCredentialPublicConfig(v *CredentialPublicConfig) *CreateCredentialInput
+	GetCredentialPublicConfig() *CredentialPublicConfig
+	SetCredentialSecret(v string) *CreateCredentialInput
+	GetCredentialSecret() *string
+	SetCredentialSourceType(v string) *CreateCredentialInput
+	GetCredentialSourceType() *string
 	SetDescription(v string) *CreateCredentialInput
 	GetDescription() *string
-	SetName(v string) *CreateCredentialInput
-	GetName() *string
-	SetSecret(v string) *CreateCredentialInput
-	GetSecret() *string
-	SetType(v string) *CreateCredentialInput
-	GetType() *string
+	SetEnabled(v bool) *CreateCredentialInput
+	GetEnabled() *bool
 }
 
 type CreateCredentialInput struct {
-	// 凭证的配置参数，以键值对形式存储
-	//
-	// example:
-	//
-	// api_endpoint=https://api.example.com,timeout=30
-	Config      map[string]*string `json:"config,omitempty" xml:"config,omitempty"`
-	Description *string            `json:"description,omitempty" xml:"description,omitempty"`
-	Name        *string            `json:"name,omitempty" xml:"name,omitempty"`
-	Secret      *string            `json:"secret,omitempty" xml:"secret,omitempty"`
-	Type        *string            `json:"type,omitempty" xml:"type,omitempty"`
+	// This parameter is required.
+	CredentialAuthType *string `json:"credentialAuthType,omitempty" xml:"credentialAuthType,omitempty"`
+	// This parameter is required.
+	CredentialName         *string                 `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
+	CredentialPublicConfig *CredentialPublicConfig `json:"credentialPublicConfig,omitempty" xml:"credentialPublicConfig,omitempty"`
+	CredentialSecret       *string                 `json:"credentialSecret,omitempty" xml:"credentialSecret,omitempty"`
+	// This parameter is required.
+	CredentialSourceType *string `json:"credentialSourceType,omitempty" xml:"credentialSourceType,omitempty"`
+	Description          *string `json:"description,omitempty" xml:"description,omitempty"`
+	Enabled              *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
 func (s CreateCredentialInput) String() string {
@@ -42,28 +46,56 @@ func (s CreateCredentialInput) GoString() string {
 	return s.String()
 }
 
-func (s *CreateCredentialInput) GetConfig() map[string]*string {
-	return s.Config
+func (s *CreateCredentialInput) GetCredentialAuthType() *string {
+	return s.CredentialAuthType
+}
+
+func (s *CreateCredentialInput) GetCredentialName() *string {
+	return s.CredentialName
+}
+
+func (s *CreateCredentialInput) GetCredentialPublicConfig() *CredentialPublicConfig {
+	return s.CredentialPublicConfig
+}
+
+func (s *CreateCredentialInput) GetCredentialSecret() *string {
+	return s.CredentialSecret
+}
+
+func (s *CreateCredentialInput) GetCredentialSourceType() *string {
+	return s.CredentialSourceType
 }
 
 func (s *CreateCredentialInput) GetDescription() *string {
 	return s.Description
 }
 
-func (s *CreateCredentialInput) GetName() *string {
-	return s.Name
+func (s *CreateCredentialInput) GetEnabled() *bool {
+	return s.Enabled
 }
 
-func (s *CreateCredentialInput) GetSecret() *string {
-	return s.Secret
+func (s *CreateCredentialInput) SetCredentialAuthType(v string) *CreateCredentialInput {
+	s.CredentialAuthType = &v
+	return s
 }
 
-func (s *CreateCredentialInput) GetType() *string {
-	return s.Type
+func (s *CreateCredentialInput) SetCredentialName(v string) *CreateCredentialInput {
+	s.CredentialName = &v
+	return s
 }
 
-func (s *CreateCredentialInput) SetConfig(v map[string]*string) *CreateCredentialInput {
-	s.Config = v
+func (s *CreateCredentialInput) SetCredentialPublicConfig(v *CredentialPublicConfig) *CreateCredentialInput {
+	s.CredentialPublicConfig = v
+	return s
+}
+
+func (s *CreateCredentialInput) SetCredentialSecret(v string) *CreateCredentialInput {
+	s.CredentialSecret = &v
+	return s
+}
+
+func (s *CreateCredentialInput) SetCredentialSourceType(v string) *CreateCredentialInput {
+	s.CredentialSourceType = &v
 	return s
 }
 
@@ -72,21 +104,16 @@ func (s *CreateCredentialInput) SetDescription(v string) *CreateCredentialInput 
 	return s
 }
 
-func (s *CreateCredentialInput) SetName(v string) *CreateCredentialInput {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateCredentialInput) SetSecret(v string) *CreateCredentialInput {
-	s.Secret = &v
-	return s
-}
-
-func (s *CreateCredentialInput) SetType(v string) *CreateCredentialInput {
-	s.Type = &v
+func (s *CreateCredentialInput) SetEnabled(v bool) *CreateCredentialInput {
+	s.Enabled = &v
 	return s
 }
 
 func (s *CreateCredentialInput) Validate() error {
-	return dara.Validate(s)
+	if s.CredentialPublicConfig != nil {
+		if err := s.CredentialPublicConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -19,6 +19,8 @@ type iUpdateAgentRuntimeInput interface {
 	GetContainerConfiguration() *ContainerConfiguration
 	SetCpu(v float32) *UpdateAgentRuntimeInput
 	GetCpu() *float32
+	SetCredentialName(v string) *UpdateAgentRuntimeInput
+	GetCredentialName() *string
 	SetDescription(v string) *UpdateAgentRuntimeInput
 	GetDescription() *string
 	SetEnvironmentVariables(v map[string]*string) *UpdateAgentRuntimeInput
@@ -70,6 +72,12 @@ type UpdateAgentRuntimeInput struct {
 	//
 	// 1.0
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// 用于访问智能体的凭证名称，访问智能体运行时将使用此凭证进行身份验证
+	//
+	// example:
+	//
+	// my-credential
+	CredentialName *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
 	// example:
 	//
 	// 更新后的智能体运行时描述
@@ -160,6 +168,10 @@ func (s *UpdateAgentRuntimeInput) GetCpu() *float32 {
 	return s.Cpu
 }
 
+func (s *UpdateAgentRuntimeInput) GetCredentialName() *string {
+	return s.CredentialName
+}
+
 func (s *UpdateAgentRuntimeInput) GetDescription() *string {
 	return s.Description
 }
@@ -226,6 +238,11 @@ func (s *UpdateAgentRuntimeInput) SetContainerConfiguration(v *ContainerConfigur
 
 func (s *UpdateAgentRuntimeInput) SetCpu(v float32) *UpdateAgentRuntimeInput {
 	s.Cpu = &v
+	return s
+}
+
+func (s *UpdateAgentRuntimeInput) SetCredentialName(v string) *UpdateAgentRuntimeInput {
+	s.CredentialName = &v
 	return s
 }
 

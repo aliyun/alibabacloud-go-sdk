@@ -11,11 +11,19 @@ type iPublishRuntimeVersionInput interface {
 	GoString() string
 	SetDescription(v string) *PublishRuntimeVersionInput
 	GetDescription() *string
+	SetPublisher(v string) *PublishRuntimeVersionInput
+	GetPublisher() *string
 }
 
 type PublishRuntimeVersionInput struct {
 	// 此版本的描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 发布此版本的用户或系统标识
+	//
+	// example:
+	//
+	// user123
+	Publisher *string `json:"publisher,omitempty" xml:"publisher,omitempty"`
 }
 
 func (s PublishRuntimeVersionInput) String() string {
@@ -30,8 +38,17 @@ func (s *PublishRuntimeVersionInput) GetDescription() *string {
 	return s.Description
 }
 
+func (s *PublishRuntimeVersionInput) GetPublisher() *string {
+	return s.Publisher
+}
+
 func (s *PublishRuntimeVersionInput) SetDescription(v string) *PublishRuntimeVersionInput {
 	s.Description = &v
+	return s
+}
+
+func (s *PublishRuntimeVersionInput) SetPublisher(v string) *PublishRuntimeVersionInput {
+	s.Publisher = &v
 	return s
 }
 

@@ -13,8 +13,6 @@ type iCreateMemoryRequest interface {
 	GetLongTtl() *int32
 	SetName(v string) *CreateMemoryRequest
 	GetName() *string
-	SetPermanent(v bool) *CreateMemoryRequest
-	GetPermanent() *bool
 	SetShortTtl(v int32) *CreateMemoryRequest
 	GetShortTtl() *int32
 	SetStrategy(v []*string) *CreateMemoryRequest
@@ -34,10 +32,6 @@ type CreateMemoryRequest struct {
 	//
 	// test-memory
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// false
-	Permanent *bool `json:"permanent,omitempty" xml:"permanent,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -66,10 +60,6 @@ func (s *CreateMemoryRequest) GetName() *string {
 	return s.Name
 }
 
-func (s *CreateMemoryRequest) GetPermanent() *bool {
-	return s.Permanent
-}
-
 func (s *CreateMemoryRequest) GetShortTtl() *int32 {
 	return s.ShortTtl
 }
@@ -85,11 +75,6 @@ func (s *CreateMemoryRequest) SetLongTtl(v int32) *CreateMemoryRequest {
 
 func (s *CreateMemoryRequest) SetName(v string) *CreateMemoryRequest {
 	s.Name = &v
-	return s
-}
-
-func (s *CreateMemoryRequest) SetPermanent(v bool) *CreateMemoryRequest {
-	s.Permanent = &v
 	return s
 }
 

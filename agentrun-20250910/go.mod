@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/agentrun-20250910/v2
+module github.com/alibabacloud-go/agentrun-20250910/v3
 
 go 1.14
 

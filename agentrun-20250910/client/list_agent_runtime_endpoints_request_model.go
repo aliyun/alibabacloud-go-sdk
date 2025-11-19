@@ -15,6 +15,8 @@ type iListAgentRuntimeEndpointsRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListAgentRuntimeEndpointsRequest
 	GetPageSize() *int32
+	SetSearchMode(v string) *ListAgentRuntimeEndpointsRequest
+	GetSearchMode() *string
 }
 
 type ListAgentRuntimeEndpointsRequest struct {
@@ -36,6 +38,12 @@ type ListAgentRuntimeEndpointsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// 查询模式，支持精确查询和模糊查询
+	//
+	// example:
+	//
+	// fuzzy
+	SearchMode *string `json:"searchMode,omitempty" xml:"searchMode,omitempty"`
 }
 
 func (s ListAgentRuntimeEndpointsRequest) String() string {
@@ -58,6 +66,10 @@ func (s *ListAgentRuntimeEndpointsRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListAgentRuntimeEndpointsRequest) GetSearchMode() *string {
+	return s.SearchMode
+}
+
 func (s *ListAgentRuntimeEndpointsRequest) SetEndpointName(v string) *ListAgentRuntimeEndpointsRequest {
 	s.EndpointName = &v
 	return s
@@ -70,6 +82,11 @@ func (s *ListAgentRuntimeEndpointsRequest) SetPageNumber(v int32) *ListAgentRunt
 
 func (s *ListAgentRuntimeEndpointsRequest) SetPageSize(v int32) *ListAgentRuntimeEndpointsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListAgentRuntimeEndpointsRequest) SetSearchMode(v string) *ListAgentRuntimeEndpointsRequest {
+	s.SearchMode = &v
 	return s
 }
 

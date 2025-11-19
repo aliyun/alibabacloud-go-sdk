@@ -9,29 +9,21 @@ type iUpdateCredentialInput interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetConfig(v map[string]*string) *UpdateCredentialInput
-	GetConfig() map[string]*string
+	SetCredentialPublicConfig(v *CredentialPublicConfig) *UpdateCredentialInput
+	GetCredentialPublicConfig() *CredentialPublicConfig
+	SetCredentialSecret(v string) *UpdateCredentialInput
+	GetCredentialSecret() *string
 	SetDescription(v string) *UpdateCredentialInput
 	GetDescription() *string
-	SetName(v string) *UpdateCredentialInput
-	GetName() *string
-	SetSecret(v string) *UpdateCredentialInput
-	GetSecret() *string
-	SetType(v string) *UpdateCredentialInput
-	GetType() *string
+	SetEnabled(v bool) *UpdateCredentialInput
+	GetEnabled() *bool
 }
 
 type UpdateCredentialInput struct {
-	// 凭证的配置参数，以键值对形式存储
-	//
-	// example:
-	//
-	// api_endpoint=https://api.example.com,timeout=30
-	Config      map[string]*string `json:"config,omitempty" xml:"config,omitempty"`
-	Description *string            `json:"description,omitempty" xml:"description,omitempty"`
-	Name        *string            `json:"name,omitempty" xml:"name,omitempty"`
-	Secret      *string            `json:"secret,omitempty" xml:"secret,omitempty"`
-	Type        *string            `json:"type,omitempty" xml:"type,omitempty"`
+	CredentialPublicConfig *CredentialPublicConfig `json:"credentialPublicConfig,omitempty" xml:"credentialPublicConfig,omitempty"`
+	CredentialSecret       *string                 `json:"credentialSecret,omitempty" xml:"credentialSecret,omitempty"`
+	Description            *string                 `json:"description,omitempty" xml:"description,omitempty"`
+	Enabled                *bool                   `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
 func (s UpdateCredentialInput) String() string {
@@ -42,28 +34,29 @@ func (s UpdateCredentialInput) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateCredentialInput) GetConfig() map[string]*string {
-	return s.Config
+func (s *UpdateCredentialInput) GetCredentialPublicConfig() *CredentialPublicConfig {
+	return s.CredentialPublicConfig
+}
+
+func (s *UpdateCredentialInput) GetCredentialSecret() *string {
+	return s.CredentialSecret
 }
 
 func (s *UpdateCredentialInput) GetDescription() *string {
 	return s.Description
 }
 
-func (s *UpdateCredentialInput) GetName() *string {
-	return s.Name
+func (s *UpdateCredentialInput) GetEnabled() *bool {
+	return s.Enabled
 }
 
-func (s *UpdateCredentialInput) GetSecret() *string {
-	return s.Secret
+func (s *UpdateCredentialInput) SetCredentialPublicConfig(v *CredentialPublicConfig) *UpdateCredentialInput {
+	s.CredentialPublicConfig = v
+	return s
 }
 
-func (s *UpdateCredentialInput) GetType() *string {
-	return s.Type
-}
-
-func (s *UpdateCredentialInput) SetConfig(v map[string]*string) *UpdateCredentialInput {
-	s.Config = v
+func (s *UpdateCredentialInput) SetCredentialSecret(v string) *UpdateCredentialInput {
+	s.CredentialSecret = &v
 	return s
 }
 
@@ -72,21 +65,16 @@ func (s *UpdateCredentialInput) SetDescription(v string) *UpdateCredentialInput 
 	return s
 }
 
-func (s *UpdateCredentialInput) SetName(v string) *UpdateCredentialInput {
-	s.Name = &v
-	return s
-}
-
-func (s *UpdateCredentialInput) SetSecret(v string) *UpdateCredentialInput {
-	s.Secret = &v
-	return s
-}
-
-func (s *UpdateCredentialInput) SetType(v string) *UpdateCredentialInput {
-	s.Type = &v
+func (s *UpdateCredentialInput) SetEnabled(v bool) *UpdateCredentialInput {
+	s.Enabled = &v
 	return s
 }
 
 func (s *UpdateCredentialInput) Validate() error {
-	return dara.Validate(s)
+	if s.CredentialPublicConfig != nil {
+		if err := s.CredentialPublicConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
