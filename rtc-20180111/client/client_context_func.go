@@ -5988,6 +5988,10 @@ func (client *Client) RtcSipInviteMemberWithContext(ctx context.Context, request
 		query["SipUserPassword"] = request.SipUserPassword
 	}
 
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
 	if !dara.IsNil(request.Uid) {
 		query["Uid"] = request.Uid
 	}

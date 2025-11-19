@@ -35,6 +35,8 @@ type iRtcSipInviteMemberRequest interface {
 	GetSipUserId() *string
 	SetSipUserPassword(v string) *RtcSipInviteMemberRequest
 	GetSipUserPassword() *string
+	SetTaskId(v string) *RtcSipInviteMemberRequest
+	GetTaskId() *string
 	SetUid(v string) *RtcSipInviteMemberRequest
 	GetUid() *string
 }
@@ -106,6 +108,10 @@ type RtcSipInviteMemberRequest struct {
 	//
 	// 123
 	SipUserPassword *string `json:"SipUserPassword,omitempty" xml:"SipUserPassword,omitempty"`
+	// example:
+	//
+	// taskId
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -174,6 +180,10 @@ func (s *RtcSipInviteMemberRequest) GetSipUserPassword() *string {
 	return s.SipUserPassword
 }
 
+func (s *RtcSipInviteMemberRequest) GetTaskId() *string {
+	return s.TaskId
+}
+
 func (s *RtcSipInviteMemberRequest) GetUid() *string {
 	return s.Uid
 }
@@ -240,6 +250,11 @@ func (s *RtcSipInviteMemberRequest) SetSipUserId(v string) *RtcSipInviteMemberRe
 
 func (s *RtcSipInviteMemberRequest) SetSipUserPassword(v string) *RtcSipInviteMemberRequest {
 	s.SipUserPassword = &v
+	return s
+}
+
+func (s *RtcSipInviteMemberRequest) SetTaskId(v string) *RtcSipInviteMemberRequest {
+	s.TaskId = &v
 	return s
 }
 
