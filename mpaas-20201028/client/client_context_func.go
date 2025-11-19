@@ -6759,6 +6759,11 @@ func (client *Client) StartUserAppAsyncEnhanceInMsaWithContext(ctx context.Conte
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NewShieldConfig) {
+		query["NewShieldConfig"] = request.NewShieldConfig
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApkProtector) {
 		body["ApkProtector"] = request.ApkProtector
@@ -6836,12 +6841,17 @@ func (client *Client) StartUserAppAsyncEnhanceInMsaWithContext(ctx context.Conte
 		body["UseAShield"] = request.UseAShield
 	}
 
+	if !dara.IsNil(request.UseYShield) {
+		body["UseYShield"] = request.UseYShield
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		body["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("StartUserAppAsyncEnhanceInMsa"),
@@ -7406,6 +7416,10 @@ func (client *Client) UploadUserAppToMsaWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.TenantId) {
 		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.UseYShield) {
+		body["UseYShield"] = request.UseYShield
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {

@@ -17,6 +17,8 @@ type iUploadUserAppToMsaRequest interface {
 	GetFileUrl() *string
 	SetTenantId(v string) *UploadUserAppToMsaRequest
 	GetTenantId() *string
+	SetUseYShield(v bool) *UploadUserAppToMsaRequest
+	GetUseYShield() *bool
 	SetWorkspaceId(v string) *UploadUserAppToMsaRequest
 	GetWorkspaceId() *string
 }
@@ -27,7 +29,8 @@ type UploadUserAppToMsaRequest struct {
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileUrl  *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	// This parameter is required.
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TenantId   *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	UseYShield *bool   `json:"UseYShield,omitempty" xml:"UseYShield,omitempty"`
 	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -56,6 +59,10 @@ func (s *UploadUserAppToMsaRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *UploadUserAppToMsaRequest) GetUseYShield() *bool {
+	return s.UseYShield
+}
+
 func (s *UploadUserAppToMsaRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -77,6 +84,11 @@ func (s *UploadUserAppToMsaRequest) SetFileUrl(v string) *UploadUserAppToMsaRequ
 
 func (s *UploadUserAppToMsaRequest) SetTenantId(v string) *UploadUserAppToMsaRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *UploadUserAppToMsaRequest) SetUseYShield(v bool) *UploadUserAppToMsaRequest {
+	s.UseYShield = &v
 	return s
 }
 

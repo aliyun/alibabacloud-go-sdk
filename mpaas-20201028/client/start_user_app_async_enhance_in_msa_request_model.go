@@ -31,6 +31,8 @@ type iStartUserAppAsyncEnhanceInMsaRequest interface {
 	GetNativeDebugger() *int32
 	SetNativeHook(v int32) *StartUserAppAsyncEnhanceInMsaRequest
 	GetNativeHook() *int32
+	SetNewShieldConfig(v string) *StartUserAppAsyncEnhanceInMsaRequest
+	GetNewShieldConfig() *string
 	SetPackageTampered(v int32) *StartUserAppAsyncEnhanceInMsaRequest
 	GetPackageTampered() *int32
 	SetRoot(v int32) *StartUserAppAsyncEnhanceInMsaRequest
@@ -47,6 +49,8 @@ type iStartUserAppAsyncEnhanceInMsaRequest interface {
 	GetTotalSwitch() *bool
 	SetUseAShield(v bool) *StartUserAppAsyncEnhanceInMsaRequest
 	GetUseAShield() *bool
+	SetUseYShield(v bool) *StartUserAppAsyncEnhanceInMsaRequest
+	GetUseYShield() *bool
 	SetWorkspaceId(v string) *StartUserAppAsyncEnhanceInMsaRequest
 	GetWorkspaceId() *string
 }
@@ -65,6 +69,7 @@ type StartUserAppAsyncEnhanceInMsaRequest struct {
 	MemoryDump      *int32  `json:"MemoryDump,omitempty" xml:"MemoryDump,omitempty"`
 	NativeDebugger  *int32  `json:"NativeDebugger,omitempty" xml:"NativeDebugger,omitempty"`
 	NativeHook      *int32  `json:"NativeHook,omitempty" xml:"NativeHook,omitempty"`
+	NewShieldConfig *string `json:"NewShieldConfig,omitempty" xml:"NewShieldConfig,omitempty"`
 	PackageTampered *int32  `json:"PackageTampered,omitempty" xml:"PackageTampered,omitempty"`
 	Root            *int32  `json:"Root,omitempty" xml:"Root,omitempty"`
 	RunMode         *string `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
@@ -74,6 +79,7 @@ type StartUserAppAsyncEnhanceInMsaRequest struct {
 	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	TotalSwitch *bool   `json:"TotalSwitch,omitempty" xml:"TotalSwitch,omitempty"`
 	UseAShield  *bool   `json:"UseAShield,omitempty" xml:"UseAShield,omitempty"`
+	UseYShield  *bool   `json:"UseYShield,omitempty" xml:"UseYShield,omitempty"`
 	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -130,6 +136,10 @@ func (s *StartUserAppAsyncEnhanceInMsaRequest) GetNativeHook() *int32 {
 	return s.NativeHook
 }
 
+func (s *StartUserAppAsyncEnhanceInMsaRequest) GetNewShieldConfig() *string {
+	return s.NewShieldConfig
+}
+
 func (s *StartUserAppAsyncEnhanceInMsaRequest) GetPackageTampered() *int32 {
 	return s.PackageTampered
 }
@@ -160,6 +170,10 @@ func (s *StartUserAppAsyncEnhanceInMsaRequest) GetTotalSwitch() *bool {
 
 func (s *StartUserAppAsyncEnhanceInMsaRequest) GetUseAShield() *bool {
 	return s.UseAShield
+}
+
+func (s *StartUserAppAsyncEnhanceInMsaRequest) GetUseYShield() *bool {
+	return s.UseYShield
 }
 
 func (s *StartUserAppAsyncEnhanceInMsaRequest) GetWorkspaceId() *string {
@@ -221,6 +235,11 @@ func (s *StartUserAppAsyncEnhanceInMsaRequest) SetNativeHook(v int32) *StartUser
 	return s
 }
 
+func (s *StartUserAppAsyncEnhanceInMsaRequest) SetNewShieldConfig(v string) *StartUserAppAsyncEnhanceInMsaRequest {
+	s.NewShieldConfig = &v
+	return s
+}
+
 func (s *StartUserAppAsyncEnhanceInMsaRequest) SetPackageTampered(v int32) *StartUserAppAsyncEnhanceInMsaRequest {
 	s.PackageTampered = &v
 	return s
@@ -258,6 +277,11 @@ func (s *StartUserAppAsyncEnhanceInMsaRequest) SetTotalSwitch(v bool) *StartUser
 
 func (s *StartUserAppAsyncEnhanceInMsaRequest) SetUseAShield(v bool) *StartUserAppAsyncEnhanceInMsaRequest {
 	s.UseAShield = &v
+	return s
+}
+
+func (s *StartUserAppAsyncEnhanceInMsaRequest) SetUseYShield(v bool) *StartUserAppAsyncEnhanceInMsaRequest {
+	s.UseYShield = &v
 	return s
 }
 
