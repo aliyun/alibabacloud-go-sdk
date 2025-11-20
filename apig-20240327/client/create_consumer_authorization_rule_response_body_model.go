@@ -20,15 +20,22 @@ type iCreateConsumerAuthorizationRuleResponseBody interface {
 }
 
 type CreateConsumerAuthorizationRuleResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                                          `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response payload.
 	Data *CreateConsumerAuthorizationRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The status message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6CC83C32-3B5A-57EE-9AFE-D0D51822C7BA
@@ -89,6 +96,8 @@ func (s *CreateConsumerAuthorizationRuleResponseBody) Validate() error {
 }
 
 type CreateConsumerAuthorizationRuleResponseBodyData struct {
+	// Filters the list of operations based on a specific consumer authorization rule ID. Only authorized operations are returned in the response.
+	//
 	// example:
 	//
 	// car-d06p196m1hkg9ukum5pg

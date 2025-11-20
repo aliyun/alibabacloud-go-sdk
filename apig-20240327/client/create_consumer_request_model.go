@@ -26,21 +26,32 @@ type iCreateConsumerRequest interface {
 }
 
 type CreateConsumerRequest struct {
-	AkSkIdentityConfigs  []*AkSkIdentityConfig `json:"akSkIdentityConfigs,omitempty" xml:"akSkIdentityConfigs,omitempty" type:"Repeated"`
+	// The list of AK/SK identity configurations.
+	AkSkIdentityConfigs []*AkSkIdentityConfig `json:"akSkIdentityConfigs,omitempty" xml:"akSkIdentityConfigs,omitempty" type:"Repeated"`
+	// The configuration for the API key authentication method.
 	ApikeyIdentityConfig *ApiKeyIdentityConfig `json:"apikeyIdentityConfig,omitempty" xml:"apikeyIdentityConfig,omitempty"`
+	// The description of the consumer.
+	//
 	// example:
 	//
 	// consumer for test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Indicates if enabled.
+	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The type of the gateway.
+	//
 	// example:
 	//
 	// API
-	GatewayType       *string            `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	// The configuration of the JWT identity.
 	JwtIdentityConfig *JwtIdentityConfig `json:"jwtIdentityConfig,omitempty" xml:"jwtIdentityConfig,omitempty"`
+	// The name of the consumer.
+	//
 	// example:
 	//
 	// test

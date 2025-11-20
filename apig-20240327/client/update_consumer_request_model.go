@@ -22,13 +22,23 @@ type iUpdateConsumerRequest interface {
 }
 
 type UpdateConsumerRequest struct {
-	AkSkIdentityConfigs  []*AkSkIdentityConfig `json:"akSkIdentityConfigs,omitempty" xml:"akSkIdentityConfigs,omitempty" type:"Repeated"`
+	// The list of AK/SK authentication configurations.
+	AkSkIdentityConfigs []*AkSkIdentityConfig `json:"akSkIdentityConfigs,omitempty" xml:"akSkIdentityConfigs,omitempty" type:"Repeated"`
+	// The API key authentication configurations.
 	ApikeyIdentityConfig *ApiKeyIdentityConfig `json:"apikeyIdentityConfig,omitempty" xml:"apikeyIdentityConfig,omitempty"`
-	Description          *string               `json:"description,omitempty" xml:"description,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// This is the description.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Specifies the enablement status.
+	//
 	// example:
 	//
 	// false
-	Enable            *bool              `json:"enable,omitempty" xml:"enable,omitempty"`
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The JWT authentication configuration.
 	JwtIdentityConfig *JwtIdentityConfig `json:"jwtIdentityConfig,omitempty" xml:"jwtIdentityConfig,omitempty"`
 }
 

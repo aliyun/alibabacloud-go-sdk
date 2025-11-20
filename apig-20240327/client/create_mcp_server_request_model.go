@@ -36,39 +36,60 @@ type iCreateMcpServerRequest interface {
 }
 
 type CreateMcpServerRequest struct {
+	// The list of assembly sources. This parameter is required when the type parameter is set to AssemblyMCP.
 	AssembledSources []*CreateMcpServerRequestAssembledSources `json:"assembledSources,omitempty" xml:"assembledSources,omitempty" type:"Repeated"`
-	BackendConfig    *CreateMcpServerRequestBackendConfig      `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	CreateFromType   *string                                   `json:"createFromType,omitempty" xml:"createFromType,omitempty"`
+	// The backend service configurations for the route.
+	BackendConfig *CreateMcpServerRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
+	// Creates the MCP server from the specified type.
+	CreateFromType *string `json:"createFromType,omitempty" xml:"createFromType,omitempty"`
+	// The MCP server description.
+	//
 	// example:
 	//
 	// mcp tool fetch time
-	Description *string   `json:"description,omitempty" xml:"description,omitempty"`
-	DomainIds   []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The domain IDs.
+	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
+	// The exposed URI path. This parameter is required when the protocol parameter is set to SSE or StreamableHTTP, and the type parameter is set to RealMCP.
+	//
 	// example:
 	//
 	// /sse
 	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
+	// The ID of the gateway.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gw-cq7l5s5lhtgi6qac0
-	GatewayId *string         `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	Match     *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The route match rule.
+	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	// Specifies whether MCP observability is enabled. Default: false.
+	//
 	// example:
 	//
 	// false
 	McpStatisticsEnable *bool `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
+	// The name of the MCP server. The name must match the regular expression ^[a-z0-9](%5B-a-z0-9%5D\\*%5Ba-z0-9%5D)?(.[a-z0-9](%5B-a-z0-9%5D\\*%5Ba-z0-9%5D)?)\\*$ and can be up to 64 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// fetch-time
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The protocol type. Valid values: HTTP, HTTPS, SSE, and StreamableHTTP
+	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The type. Valid value:
+	//
+	// RealMCP: regular MCP service
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -217,17 +238,20 @@ func (s *CreateMcpServerRequest) Validate() error {
 }
 
 type CreateMcpServerRequestAssembledSources struct {
-	// MCP Server ID
+	// The MCP server ID.
 	//
 	// example:
 	//
 	// mcp-sdfa3qgavz
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
+	// The name of the MCP server.
+	//
 	// example:
 	//
 	// test-mcp
-	McpServerName *string   `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
-	Tools         []*string `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
+	McpServerName *string `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
+	// The list of the MCP tools.
+	Tools []*string `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
 }
 
 func (s CreateMcpServerRequestAssembledSources) String() string {
@@ -270,10 +294,13 @@ func (s *CreateMcpServerRequestAssembledSources) Validate() error {
 }
 
 type CreateMcpServerRequestBackendConfig struct {
+	// The scenario of the backend service.
+	//
 	// example:
 	//
 	// SingleService
-	Scene    *string                                        `json:"scene,omitempty" xml:"scene,omitempty"`
+	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The backend services.
 	Services []*CreateMcpServerRequestBackendConfigServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
@@ -317,22 +344,36 @@ func (s *CreateMcpServerRequestBackendConfig) Validate() error {
 }
 
 type CreateMcpServerRequestBackendConfigServices struct {
+	// The backend node port of the service.
+	//
 	// example:
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The service protocol. Valid values:
+	//
+	// 	- HTTP
+	//
+	// 	- HTTPS
+	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// svc-crbgq0dlhtgr***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// 2.1.6
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The weight.
+	//
 	// example:
 	//
 	// 49

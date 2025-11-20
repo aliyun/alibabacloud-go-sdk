@@ -20,15 +20,22 @@ type iListPoliciesResponseBody interface {
 }
 
 type ListPoliciesResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response payload.
 	Data *ListPoliciesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The status message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID for API call tracing.
+	//
 	// example:
 	//
 	// 393E2630-DBE7-5221-AB35-9E740675491A
@@ -89,15 +96,22 @@ func (s *ListPoliciesResponseBody) Validate() error {
 }
 
 type ListPoliciesResponseBodyData struct {
+	// The list of policies.
 	Items []*PolicyInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 18

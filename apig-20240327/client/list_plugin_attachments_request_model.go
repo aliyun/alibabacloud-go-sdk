@@ -30,38 +30,56 @@ type iListPluginAttachmentsRequest interface {
 }
 
 type ListPluginAttachmentsRequest struct {
+	// The resource attachment ID.
+	//
 	// example:
 	//
 	// hr-cv2h58em1hkg7c6vt43g
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
+	// The resource attachment type (not yet in use).
+	//
 	// example:
 	//
 	// GatewayRoute
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
+	// The resource attachment types, separated by commas.
+	//
 	// example:
 	//
 	// GatewayRoute
 	AttachResourceTypes *string `json:"attachResourceTypes,omitempty" xml:"attachResourceTypes,omitempty"`
+	// The environment ID.
+	//
 	// example:
 	//
 	// env-crlnqhtlhtgqflkqislg
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// gw-cr79f75lhtgme744084g
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The page number to return. Pages start from 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The plug-in ID.
+	//
 	// example:
 	//
 	// pl-ct8181um1hkiqns9f6e0
 	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+	// Specifies whether to return parent resource attachments.
+	//
 	// example:
 	//
 	// false

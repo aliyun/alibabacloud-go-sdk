@@ -20,18 +20,26 @@ type iListConsumersRequest interface {
 }
 
 type ListConsumersRequest struct {
+	// The instance type. Valid values: **AI*	- and **API**.
+	//
 	// example:
 	//
 	// AI
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	// The name used to perform a fuzzy search for operations.
+	//
 	// example:
 	//
 	// UI-test
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
+	// The page number to return. Pages start from 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10

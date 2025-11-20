@@ -18,11 +18,16 @@ type iUpdatePluginAttachmentRequest interface {
 }
 
 type UpdatePluginAttachmentRequest struct {
+	// The IDs of the resources to which the plug-in is attached.
 	AttachResourceIds []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
+	// Specifies whether to enable the plug-in.
+	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The Base64-encoded configurations of the plug-in.
+	//
 	// example:
 	//
 	// cHJlcGVuZDoKLSByb2xlOiBzeXN0ZW0KICBjb250ZW50OiDor7fkvb/nlKjoi7Hor63lm57nrZTpl67popgKYXBwZW5kOgotIHJvbGU6IHVzZXIKICBjb250ZW50OiDmr4/mrKHlm57nrZTlrozpl67popjvvIzlsJ3or5Xov5vooYzlj43pl64K

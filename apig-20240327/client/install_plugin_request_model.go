@@ -16,7 +16,10 @@ type iInstallPluginRequest interface {
 }
 
 type InstallPluginRequest struct {
+	// The list of gateway IDs.
 	GatewayIds []*string `json:"gatewayIds,omitempty" xml:"gatewayIds,omitempty" type:"Repeated"`
+	// The plug-in type ID.
+	//
 	// example:
 	//
 	// pls-csqmjndlhtguk0loef21

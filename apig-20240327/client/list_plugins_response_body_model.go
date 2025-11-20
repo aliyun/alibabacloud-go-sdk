@@ -20,15 +20,22 @@ type iListPluginsResponseBody interface {
 }
 
 type ListPluginsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                      `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response payload.
 	Data *ListPluginsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The status message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 168BA42D-F822-569D-A67F-FC59E6ABC2B1
@@ -89,15 +96,22 @@ func (s *ListPluginsResponseBody) Validate() error {
 }
 
 type ListPluginsResponseBodyData struct {
+	// The list of plug-in information.
 	Items []*ListPluginsResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -162,9 +176,14 @@ func (s *ListPluginsResponseBodyData) Validate() error {
 }
 
 type ListPluginsResponseBodyDataItems struct {
-	AttachmentInfo  *ListPluginsResponseBodyDataItemsAttachmentInfo  `json:"attachmentInfo,omitempty" xml:"attachmentInfo,omitempty" type:"Struct"`
-	GatewayInfo     *ListPluginsResponseBodyDataItemsGatewayInfo     `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty" type:"Struct"`
+	// The attachment information.
+	AttachmentInfo *ListPluginsResponseBodyDataItemsAttachmentInfo `json:"attachmentInfo,omitempty" xml:"attachmentInfo,omitempty" type:"Struct"`
+	// The gateway instance information.
+	GatewayInfo *ListPluginsResponseBodyDataItemsGatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty" type:"Struct"`
+	// The plug-in type information.
 	PluginClassInfo *ListPluginsResponseBodyDataItemsPluginClassInfo `json:"pluginClassInfo,omitempty" xml:"pluginClassInfo,omitempty" type:"Struct"`
+	// The plug-in ID.
+	//
 	// example:
 	//
 	// pl-cvu6r4um1hko3b3ti0a0
@@ -235,10 +254,14 @@ func (s *ListPluginsResponseBodyDataItems) Validate() error {
 }
 
 type ListPluginsResponseBodyDataItemsAttachmentInfo struct {
+	// Indicates if enabled.
+	//
 	// example:
 	//
 	// false
 	Enable *string `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The attachment ID.
+	//
 	// example:
 	//
 	// pa-ct2irn6m1hkreaen0t40
@@ -276,10 +299,14 @@ func (s *ListPluginsResponseBodyDataItemsAttachmentInfo) Validate() error {
 }
 
 type ListPluginsResponseBodyDataItemsGatewayInfo struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// gw-cq7og15lhtxx6qasrj60
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// apitest-gw
@@ -317,31 +344,53 @@ func (s *ListPluginsResponseBodyDataItemsGatewayInfo) Validate() error {
 }
 
 type ListPluginsResponseBodyDataItemsPluginClassInfo struct {
+	// The alias.
+	//
+	// example:
+	//
+	// key-based rate limit
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// The execution priority.
+	//
 	// example:
 	//
 	// 999
 	ExecutePriority *string `json:"executePriority,omitempty" xml:"executePriority,omitempty"`
+	// The execution stage.
+	//
 	// example:
 	//
 	// AUTHZ
 	ExecuteStage *string `json:"executeStage,omitempty" xml:"executeStage,omitempty"`
+	// The name of the plug-in.
+	//
 	// example:
 	//
 	// key-rate-limit
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The plug-in type ID.
+	//
 	// example:
 	//
 	// pls-cqebrgh46ppatmpri
 	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
+	// The source of the plug-in.
+	//
 	// example:
 	//
 	// HigressOfficial
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The version.
+	//
 	// example:
 	//
 	// 2.0.3
-	Version            *string `json:"version,omitempty" xml:"version,omitempty"`
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The description of the version.
+	//
+	// example:
+	//
+	// version description
 	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
 }
 

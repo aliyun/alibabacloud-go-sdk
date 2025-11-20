@@ -18,15 +18,19 @@ type iDeletePluginAttachmentResponseBody interface {
 }
 
 type DeletePluginAttachmentResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

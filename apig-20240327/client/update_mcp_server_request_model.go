@@ -32,26 +32,40 @@ type iUpdateMcpServerRequest interface {
 }
 
 type UpdateMcpServerRequest struct {
+	// The list of assembly sources. This parameter is required when the type parameter is set to AssemblyMCP.
 	AssembledSources []*UpdateMcpServerRequestAssembledSources `json:"assembledSources,omitempty" xml:"assembledSources,omitempty" type:"Repeated"`
-	BackendConfig    *UpdateMcpServerRequestBackendConfig      `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	CreateFromType   *string                                   `json:"createFromType,omitempty" xml:"createFromType,omitempty"`
-	Description      *string                                   `json:"description,omitempty" xml:"description,omitempty"`
-	DomainIds        []*string                                 `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
+	// The backend service configurations for the route.
+	BackendConfig *UpdateMcpServerRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
+	// Specifies the type of source for MCP server creation.
+	CreateFromType *string `json:"createFromType,omitempty" xml:"createFromType,omitempty"`
+	// The description.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The domain IDs.
+	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
+	// The exposed URI path. This parameter is required when the protocol parameter is set to SSE or StreamableHTTP and the type parameter is set to RealMCP.
+	//
 	// example:
 	//
 	// /sse
-	ExposedUriPath *string         `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
-	Match          *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
+	// The route match rule.
+	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	// Specifies if MCP observability is enabled. Default value: false.
+	//
 	// example:
 	//
 	// false
 	McpStatisticsEnable *bool `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
+	// The service protocol. Valid values: HTTP, HTTPS, SSE, and StreamableHTTP.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The MCP server type. Valid values: RealMCP and AssemblyMCP.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -182,17 +196,20 @@ func (s *UpdateMcpServerRequest) Validate() error {
 }
 
 type UpdateMcpServerRequestAssembledSources struct {
-	// MCP Server ID
+	// The MCP server ID.
 	//
 	// example:
 	//
 	// mcp-afaefaefaf
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
+	// The name of the MCP server.
+	//
 	// example:
 	//
 	// test-mcp
-	McpServerName *string   `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
-	Tools         []*string `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
+	McpServerName *string `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
+	// The MCP tools.
+	Tools []*string `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
 }
 
 func (s UpdateMcpServerRequestAssembledSources) String() string {
@@ -235,10 +252,13 @@ func (s *UpdateMcpServerRequestAssembledSources) Validate() error {
 }
 
 type UpdateMcpServerRequestBackendConfig struct {
+	// The backend service scenario.
+	//
 	// example:
 	//
 	// SingleService
-	Scene    *string                                        `json:"scene,omitempty" xml:"scene,omitempty"`
+	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The backend services.
 	Services []*UpdateMcpServerRequestBackendConfigServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
@@ -282,22 +302,38 @@ func (s *UpdateMcpServerRequestBackendConfig) Validate() error {
 }
 
 type UpdateMcpServerRequestBackendConfigServices struct {
+	// The service port (omit for dynamic ports).
+	//
 	// example:
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The service protocol. Valid values:
+	//
+	// 	- TCP
+	//
+	// 	- HTTP
+	//
+	// 	- DUBBO
+	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// svc-cr6pk4tlhtgm58e***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The traffic weight percentage.
+	//
 	// example:
 	//
 	// 49

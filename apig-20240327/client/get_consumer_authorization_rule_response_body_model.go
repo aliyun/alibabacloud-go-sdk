@@ -38,47 +38,68 @@ type iGetConsumerAuthorizationRuleResponseBody interface {
 }
 
 type GetConsumerAuthorizationRuleResponseBody struct {
+	// The API information.
 	ApiInfo *HttpApiApiInfo `json:"apiInfo,omitempty" xml:"apiInfo,omitempty"`
+	// Filters the list of operations by a specific consumer authorization rule ID. Only authorized operations are returned in the response.
+	//
 	// example:
 	//
 	// car-ctgdn8em1hko5krqq03g
 	ConsumerAuthorizationRuleId *string `json:"consumerAuthorizationRuleId,omitempty" xml:"consumerAuthorizationRuleId,omitempty"`
+	// The consumer ID.
+	//
 	// example:
 	//
 	// cs-ctgdn2um1hkossul8gvg
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
+	// The creation timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1750852089975
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// The publishing status of the API in the current environment.
+	//
 	// example:
 	//
 	// ""
-	DeployStatus    *string          `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
+	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
+	// The environment information.
 	EnvironmentInfo *EnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
+	// The expiry mode. Valid values: LongTerm and ShortTerm.
+	//
 	// example:
 	//
 	// LongTerm
 	ExpireMode *string `json:"expireMode,omitempty" xml:"expireMode,omitempty"`
+	// The rule status.
+	//
 	// example:
 	//
 	// true
 	ExpireStatus *string `json:"expireStatus,omitempty" xml:"expireStatus,omitempty"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 1750852089975
-	ExpireTimestamp *int64       `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
-	GatewayInfo     *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
-	// Id of the request
+	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
+	// The gateway information.
+	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
+	// The request ID.
 	//
 	// example:
 	//
 	// 53102737-1E4E-5A8B-8E0A-4184B0959B84
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// API
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The update timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1750852089975

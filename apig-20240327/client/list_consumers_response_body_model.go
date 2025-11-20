@@ -20,16 +20,21 @@ type iListConsumersResponseBody interface {
 }
 
 type ListConsumersResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                        `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response payload.
 	Data *ListConsumersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The status message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -91,15 +96,22 @@ func (s *ListConsumersResponseBody) Validate() error {
 }
 
 type ListConsumersResponseBodyData struct {
+	// The list of consumer information.
 	Items []*ListConsumersResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 18
@@ -164,27 +176,44 @@ func (s *ListConsumersResponseBodyData) Validate() error {
 }
 
 type ListConsumersResponseBodyDataItems struct {
+	// The consumer ID.
+	//
 	// example:
 	//
 	// cs-csheiftlhtgmp0j0hp4g
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
+	// The creation timestamp.
+	//
 	// example:
 	//
 	// 1721097861050
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// The deployment status of the API in the current environment.
+	//
 	// example:
 	//
 	// {}
 	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
-	Description  *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// This is the description.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Indicates if enabled.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The consumer name.
+	//
 	// example:
 	//
 	// user-service
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The last update timestamp.
+	//
 	// example:
 	//
 	// 1721123855214

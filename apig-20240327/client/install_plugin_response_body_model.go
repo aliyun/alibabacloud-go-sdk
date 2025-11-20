@@ -20,16 +20,21 @@ type iInstallPluginResponseBody interface {
 }
 
 type InstallPluginResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                        `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response payload.
 	Data *InstallPluginResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The status message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -91,6 +96,7 @@ func (s *InstallPluginResponseBody) Validate() error {
 }
 
 type InstallPluginResponseBodyData struct {
+	// The installation result.
 	InstallPluginResults []*InstallPluginResponseBodyDataInstallPluginResults `json:"installPluginResults,omitempty" xml:"installPluginResults,omitempty" type:"Repeated"`
 }
 
@@ -125,10 +131,14 @@ func (s *InstallPluginResponseBodyData) Validate() error {
 }
 
 type InstallPluginResponseBodyDataInstallPluginResults struct {
+	// The gateway ID.
+	//
 	// example:
 	//
 	// gw-d28mjcmm1hkub84mdbi0
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The plug-in ID.
+	//
 	// example:
 	//
 	// pl-cvs7gbum1hkhs6us6vbg

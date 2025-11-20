@@ -20,16 +20,21 @@ type iCreateConsumerResponseBody interface {
 }
 
 type CreateConsumerResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                         `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response payload.
 	Data *CreateConsumerResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The status message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -91,6 +96,8 @@ func (s *CreateConsumerResponseBody) Validate() error {
 }
 
 type CreateConsumerResponseBodyData struct {
+	// The consumer ID.
+	//
 	// example:
 	//
 	// cs-cvnjramm1hks1r3fmmug

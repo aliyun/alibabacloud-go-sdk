@@ -276,7 +276,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// # CreateAndAttachPolicy
+// Creates and associates a policy.
 //
 // @param request - CreateAndAttachPolicyRequest
 //
@@ -351,7 +351,7 @@ func (client *Client) CreateAndAttachPolicyWithOptions(request *CreateAndAttachP
 
 // Summary:
 //
-// # CreateAndAttachPolicy
+// Creates and associates a policy.
 //
 // @param request - CreateAndAttachPolicyRequest
 //
@@ -370,7 +370,7 @@ func (client *Client) CreateAndAttachPolicy(request *CreateAndAttachPolicyReques
 
 // Summary:
 //
-// 创建消费者
+// Creates a consumer.
 //
 // @param request - CreateConsumerRequest
 //
@@ -441,7 +441,7 @@ func (client *Client) CreateConsumerWithOptions(request *CreateConsumerRequest, 
 
 // Summary:
 //
-// 创建消费者
+// Creates a consumer.
 //
 // @param request - CreateConsumerRequest
 //
@@ -460,7 +460,7 @@ func (client *Client) CreateConsumer(request *CreateConsumerRequest) (_result *C
 
 // Summary:
 //
-// 创建消费者授权规则
+// Creates a consumer authorization rule.
 //
 // @param request - CreateConsumerAuthorizationRuleRequest
 //
@@ -523,7 +523,7 @@ func (client *Client) CreateConsumerAuthorizationRuleWithOptions(consumerId *str
 
 // Summary:
 //
-// 创建消费者授权规则
+// Creates a consumer authorization rule.
 //
 // @param request - CreateConsumerAuthorizationRuleRequest
 //
@@ -825,7 +825,7 @@ func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_res
 
 // Summary:
 //
-// 创建云原生网关
+// Creates a cloud-native gateway.
 //
 // @param request - CreateGatewayRequest
 //
@@ -912,7 +912,7 @@ func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, he
 
 // Summary:
 //
-// 创建云原生网关
+// Creates a cloud-native gateway.
 //
 // @param request - CreateGatewayRequest
 //
@@ -1217,7 +1217,7 @@ func (client *Client) CreateHttpApiRoute(httpApiId *string, request *CreateHttpA
 
 // Summary:
 //
-// 创建MCP server
+// Creates an MCP server.
 //
 // @param request - CreateMcpServerRequest
 //
@@ -1308,7 +1308,7 @@ func (client *Client) CreateMcpServerWithOptions(request *CreateMcpServerRequest
 
 // Summary:
 //
-// 创建MCP server
+// Creates an MCP server.
 //
 // @param request - CreateMcpServerRequest
 //
@@ -1327,7 +1327,7 @@ func (client *Client) CreateMcpServer(request *CreateMcpServerRequest) (_result 
 
 // Summary:
 //
-// 创建API
+// Attaches a plug-in.
 //
 // @param request - CreatePluginAttachmentRequest
 //
@@ -1398,7 +1398,7 @@ func (client *Client) CreatePluginAttachmentWithOptions(request *CreatePluginAtt
 
 // Summary:
 //
-// 创建API
+// Attaches a plug-in.
 //
 // @param request - CreatePluginAttachmentRequest
 //
@@ -1663,7 +1663,7 @@ func (client *Client) CreateService(request *CreateServiceRequest) (_result *Cre
 
 // Summary:
 //
-// 删除消费者
+// Deletes a consumer.
 //
 // @param headers - map
 //
@@ -1696,7 +1696,7 @@ func (client *Client) DeleteConsumerWithOptions(consumerId *string, headers map[
 
 // Summary:
 //
-// 删除消费者
+// Deletes a consumer.
 //
 // @return DeleteConsumerResponse
 func (client *Client) DeleteConsumer(consumerId *string) (_result *DeleteConsumerResponse, _err error) {
@@ -1713,7 +1713,7 @@ func (client *Client) DeleteConsumer(consumerId *string) (_result *DeleteConsume
 
 // Summary:
 //
-// 删除消费者授权规则
+// Deletes a consumer authorization rule.
 //
 // @param headers - map
 //
@@ -1746,7 +1746,7 @@ func (client *Client) DeleteConsumerAuthorizationRuleWithOptions(consumerAuthori
 
 // Summary:
 //
-// 删除消费者授权规则
+// Deletes a consumer authorization rule.
 //
 // @return DeleteConsumerAuthorizationRuleResponse
 func (client *Client) DeleteConsumerAuthorizationRule(consumerAuthorizationRuleId *string, consumerId *string) (_result *DeleteConsumerAuthorizationRuleResponse, _err error) {
@@ -2184,7 +2184,7 @@ func (client *Client) DeleteMcpServer(mcpServerId *string) (_result *DeleteMcpSe
 
 // Summary:
 //
-// 删除挂载规则API
+// Deletes a plug-in attachment.
 //
 // @param headers - map
 //
@@ -2217,7 +2217,7 @@ func (client *Client) DeletePluginAttachmentWithOptions(pluginAttachmentId *stri
 
 // Summary:
 //
-// 删除挂载规则API
+// Deletes a plug-in attachment.
 //
 // @return DeletePluginAttachmentResponse
 func (client *Client) DeletePluginAttachment(pluginAttachmentId *string) (_result *DeletePluginAttachmentResponse, _err error) {
@@ -2334,7 +2334,7 @@ func (client *Client) DeletePolicyAttachment(policyAttachmentId *string) (_resul
 
 // Summary:
 //
-// 删除服务
+// Deletes a service.
 //
 // @param headers - map
 //
@@ -2367,7 +2367,7 @@ func (client *Client) DeleteServiceWithOptions(serviceId *string, headers map[st
 
 // Summary:
 //
-// 删除服务
+// Deletes a service.
 //
 // @return DeleteServiceResponse
 func (client *Client) DeleteService(serviceId *string) (_result *DeleteServiceResponse, _err error) {
@@ -2458,7 +2458,7 @@ func (client *Client) DeployHttpApi(httpApiId *string, request *DeployHttpApiReq
 
 // Summary:
 //
-// 发布MCP server
+// Deploys an MCP server.
 //
 // @param headers - map
 //
@@ -2491,7 +2491,7 @@ func (client *Client) DeployMcpServerWithOptions(mcpServerId *string, headers ma
 
 // Summary:
 //
-// 发布MCP server
+// Deploys an MCP server.
 //
 // @return DeployMcpServerResponse
 func (client *Client) DeployMcpServer(mcpServerId *string) (_result *DeployMcpServerResponse, _err error) {
@@ -2558,7 +2558,7 @@ func (client *Client) ExportHttpApi(httpApiId *string) (_result *ExportHttpApiRe
 
 // Summary:
 //
-// 查询消费者
+// Obtains the information of a consumer.
 //
 // @param headers - map
 //
@@ -2591,7 +2591,7 @@ func (client *Client) GetConsumerWithOptions(consumerId *string, headers map[str
 
 // Summary:
 //
-// 查询消费者
+// Obtains the information of a consumer.
 //
 // @return GetConsumerResponse
 func (client *Client) GetConsumer(consumerId *string) (_result *GetConsumerResponse, _err error) {
@@ -2608,7 +2608,7 @@ func (client *Client) GetConsumer(consumerId *string) (_result *GetConsumerRespo
 
 // Summary:
 //
-// 查询消费者授权规则
+// Obtains a consumer authentication rule.
 //
 // @param headers - map
 //
@@ -2641,7 +2641,7 @@ func (client *Client) GetConsumerAuthorizationRuleWithOptions(consumerAuthorizat
 
 // Summary:
 //
-// 查询消费者授权规则
+// Obtains a consumer authentication rule.
 //
 // @return GetConsumerAuthorizationRuleResponse
 func (client *Client) GetConsumerAuthorizationRule(consumerAuthorizationRuleId *string, consumerId *string) (_result *GetConsumerAuthorizationRuleResponse, _err error) {
@@ -3103,7 +3103,11 @@ func (client *Client) GetHttpApiRoute(httpApiId *string, routeId *string) (_resu
 
 // Summary:
 //
-// 获取MCP server
+// Queries the detailed information of an MCP server.
+//
+// Description:
+//
+// You can call this operation to create multiple services at a time.
 //
 // @param headers - map
 //
@@ -3136,7 +3140,11 @@ func (client *Client) GetMcpServerWithOptions(mcpServerId *string, headers map[s
 
 // Summary:
 //
-// 获取MCP server
+// Queries the detailed information of an MCP server.
+//
+// Description:
+//
+// You can call this operation to create multiple services at a time.
 //
 // @return GetMcpServerResponse
 func (client *Client) GetMcpServer(mcpServerId *string) (_result *GetMcpServerResponse, _err error) {
@@ -3153,7 +3161,7 @@ func (client *Client) GetMcpServer(mcpServerId *string) (_result *GetMcpServerRe
 
 // Summary:
 //
-// GetPluginAttachment。
+// Queries a plug-in attachment.
 //
 // @param headers - map
 //
@@ -3186,7 +3194,7 @@ func (client *Client) GetPluginAttachmentWithOptions(pluginAttachmentId *string,
 
 // Summary:
 //
-// GetPluginAttachment。
+// Queries a plug-in attachment.
 //
 // @return GetPluginAttachmentResponse
 func (client *Client) GetPluginAttachment(pluginAttachmentId *string) (_result *GetPluginAttachmentResponse, _err error) {
@@ -3599,7 +3607,7 @@ func (client *Client) ImportHttpApi(request *ImportHttpApiRequest) (_result *Imp
 
 // Summary:
 //
-// # InstallPlugin
+// Installs a plug-in.
 //
 // @param request - InstallPluginRequest
 //
@@ -3650,7 +3658,7 @@ func (client *Client) InstallPluginWithOptions(request *InstallPluginRequest, he
 
 // Summary:
 //
-// # InstallPlugin
+// Installs a plug-in.
 //
 // @param request - InstallPluginRequest
 //
@@ -3669,7 +3677,7 @@ func (client *Client) InstallPlugin(request *InstallPluginRequest) (_result *Ins
 
 // Summary:
 //
-// 查询消费者列表
+// Queries a list of consumers.
 //
 // @param request - ListConsumersRequest
 //
@@ -3728,7 +3736,7 @@ func (client *Client) ListConsumersWithOptions(request *ListConsumersRequest, he
 
 // Summary:
 //
-// 查询消费者列表
+// Queries a list of consumers.
 //
 // @param request - ListConsumersRequest
 //
@@ -3923,6 +3931,56 @@ func (client *Client) ListEnvironments(request *ListEnvironmentsRequest) (_resul
 	headers := make(map[string]*string)
 	_result = &ListEnvironmentsResponse{}
 	_body, _err := client.ListEnvironmentsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Gateway的Features
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGatewayFeaturesResponse
+func (client *Client) ListGatewayFeaturesWithOptions(gatewayId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewayFeaturesResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGatewayFeatures"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/gateway-features"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGatewayFeaturesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Gateway的Features
+//
+// @return ListGatewayFeaturesResponse
+func (client *Client) ListGatewayFeatures(gatewayId *string) (_result *ListGatewayFeaturesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListGatewayFeaturesResponse{}
+	_body, _err := client.ListGatewayFeaturesWithOptions(gatewayId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4394,7 +4452,11 @@ func (client *Client) ListHttpApis(request *ListHttpApisRequest) (_result *ListH
 
 // Summary:
 //
-// 获取MCP server列表
+// Retrieves a list of MCP servers.
+//
+// Description:
+//
+// You can call this operation to create multiple services at a time.
 //
 // @param request - ListMcpServersRequest
 //
@@ -4465,7 +4527,11 @@ func (client *Client) ListMcpServersWithOptions(request *ListMcpServersRequest, 
 
 // Summary:
 //
-// 获取MCP server列表
+// Retrieves a list of MCP servers.
+//
+// Description:
+//
+// You can call this operation to create multiple services at a time.
 //
 // @param request - ListMcpServersRequest
 //
@@ -4484,7 +4550,7 @@ func (client *Client) ListMcpServers(request *ListMcpServersRequest) (_result *L
 
 // Summary:
 //
-// 获取挂载列表
+// Retrieves a list of plug-in attachments.
 //
 // @param request - ListPluginAttachmentsRequest
 //
@@ -4563,7 +4629,7 @@ func (client *Client) ListPluginAttachmentsWithOptions(request *ListPluginAttach
 
 // Summary:
 //
-// 获取挂载列表
+// Retrieves a list of plug-in attachments.
 //
 // @param request - ListPluginAttachmentsRequest
 //
@@ -4582,7 +4648,7 @@ func (client *Client) ListPluginAttachments(request *ListPluginAttachmentsReques
 
 // Summary:
 //
-// # ListPlugins
+// Queries plug-ins.
 //
 // @param request - ListPluginsRequest
 //
@@ -4665,7 +4731,7 @@ func (client *Client) ListPluginsWithOptions(request *ListPluginsRequest, header
 
 // Summary:
 //
-// # ListPlugins
+// Queries plug-ins.
 //
 // @param request - ListPluginsRequest
 //
@@ -4684,7 +4750,7 @@ func (client *Client) ListPlugins(request *ListPluginsRequest) (_result *ListPlu
 
 // Summary:
 //
-// # ListPolicies
+// Queries policies.
 //
 // @param request - ListPoliciesRequest
 //
@@ -4751,7 +4817,7 @@ func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, head
 
 // Summary:
 //
-// # ListPolicies
+// Queries policies.
 //
 // @param request - ListPoliciesRequest
 //
@@ -5284,7 +5350,7 @@ func (client *Client) RestartGateway(gatewayId *string) (_result *RestartGateway
 
 // Summary:
 //
-// 取消发布MCP server
+// Undeploys an MCP server.
 //
 // @param headers - map
 //
@@ -5317,7 +5383,7 @@ func (client *Client) UnDeployMcpServerWithOptions(mcpServerId *string, headers 
 
 // Summary:
 //
-// 取消发布MCP server
+// Undeploys an MCP server.
 //
 // @return UnDeployMcpServerResponse
 func (client *Client) UnDeployMcpServer(mcpServerId *string) (_result *UnDeployMcpServerResponse, _err error) {
@@ -5412,7 +5478,7 @@ func (client *Client) UndeployHttpApi(httpApiId *string, request *UndeployHttpAp
 
 // Summary:
 //
-// # UninstallPlugin
+// Uninstalls a plug-in.
 //
 // @param headers - map
 //
@@ -5445,7 +5511,7 @@ func (client *Client) UninstallPluginWithOptions(pluginId *string, headers map[s
 
 // Summary:
 //
-// # UninstallPlugin
+// Uninstalls a plug-in.
 //
 // @return UninstallPluginResponse
 func (client *Client) UninstallPlugin(pluginId *string) (_result *UninstallPluginResponse, _err error) {
@@ -5462,7 +5528,7 @@ func (client *Client) UninstallPlugin(pluginId *string) (_result *UninstallPlugi
 
 // Summary:
 //
-// # UpdateAndAttachPolicy
+// Updates and associates a policy.
 //
 // @param request - UpdateAndAttachPolicyRequest
 //
@@ -5533,7 +5599,7 @@ func (client *Client) UpdateAndAttachPolicyWithOptions(policyId *string, request
 
 // Summary:
 //
-// # UpdateAndAttachPolicy
+// Updates and associates a policy.
 //
 // @param request - UpdateAndAttachPolicyRequest
 //
@@ -5552,7 +5618,7 @@ func (client *Client) UpdateAndAttachPolicy(policyId *string, request *UpdateAnd
 
 // Summary:
 //
-// 更新消费者
+// Updates a consumer.
 //
 // @param request - UpdateConsumerRequest
 //
@@ -5615,7 +5681,7 @@ func (client *Client) UpdateConsumerWithOptions(consumerId *string, request *Upd
 
 // Summary:
 //
-// 更新消费者
+// Updates a consumer.
 //
 // @param request - UpdateConsumerRequest
 //
@@ -5634,7 +5700,7 @@ func (client *Client) UpdateConsumer(consumerId *string, request *UpdateConsumer
 
 // Summary:
 //
-// 更新消费者授权规则
+// Updates a consumer authorization rule.
 //
 // @param request - UpdateConsumerAuthorizationRuleRequest
 //
@@ -5689,7 +5755,7 @@ func (client *Client) UpdateConsumerAuthorizationRuleWithOptions(consumerId *str
 
 // Summary:
 //
-// 更新消费者授权规则
+// Updates a consumer authorization rule.
 //
 // @param request - UpdateConsumerAuthorizationRuleRequest
 //
@@ -6291,7 +6357,11 @@ func (client *Client) UpdateHttpApiRoute(httpApiId *string, routeId *string, req
 
 // Summary:
 //
-// 更新MCP server
+// Updates an MCP server.
+//
+// Description:
+//
+// You can only update the listening Ingress configuration for sources of the **ACK*	- type.
 //
 // @param request - UpdateMcpServerRequest
 //
@@ -6374,7 +6444,11 @@ func (client *Client) UpdateMcpServerWithOptions(mcpServerId *string, request *U
 
 // Summary:
 //
-// 更新MCP server
+// Updates an MCP server.
+//
+// Description:
+//
+// You can only update the listening Ingress configuration for sources of the **ACK*	- type.
 //
 // @param request - UpdateMcpServerRequest
 //
@@ -6393,7 +6467,7 @@ func (client *Client) UpdateMcpServer(mcpServerId *string, request *UpdateMcpSer
 
 // Summary:
 //
-// 更新挂载规则API
+// Updates a plug-in attachment.
 //
 // @param request - UpdatePluginAttachmentRequest
 //
@@ -6448,7 +6522,7 @@ func (client *Client) UpdatePluginAttachmentWithOptions(pluginAttachmentId *stri
 
 // Summary:
 //
-// 更新挂载规则API
+// Updates a plug-in attachment.
 //
 // @param request - UpdatePluginAttachmentRequest
 //

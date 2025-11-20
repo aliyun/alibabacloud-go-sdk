@@ -170,7 +170,7 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # CreateAndAttachPolicy
+// Creates and associates a policy.
 //
 // @param request - CreateAndAttachPolicyRequest
 //
@@ -245,7 +245,7 @@ func (client *Client) CreateAndAttachPolicyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建消费者
+// Creates a consumer.
 //
 // @param request - CreateConsumerRequest
 //
@@ -316,7 +316,7 @@ func (client *Client) CreateConsumerWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建消费者授权规则
+// Creates a consumer authorization rule.
 //
 // @param request - CreateConsumerAuthorizationRuleRequest
 //
@@ -594,7 +594,7 @@ func (client *Client) CreateEnvironmentWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 创建云原生网关
+// Creates a cloud-native gateway.
 //
 // @param request - CreateGatewayRequest
 //
@@ -910,7 +910,7 @@ func (client *Client) CreateHttpApiRouteWithContext(ctx context.Context, httpApi
 
 // Summary:
 //
-// 创建MCP server
+// Creates an MCP server.
 //
 // @param request - CreateMcpServerRequest
 //
@@ -1001,7 +1001,7 @@ func (client *Client) CreateMcpServerWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 创建API
+// Attaches a plug-in.
 //
 // @param request - CreatePluginAttachmentRequest
 //
@@ -1257,7 +1257,7 @@ func (client *Client) CreateServiceWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// 删除消费者
+// Deletes a consumer.
 //
 // @param headers - map
 //
@@ -1290,7 +1290,7 @@ func (client *Client) DeleteConsumerWithContext(ctx context.Context, consumerId 
 
 // Summary:
 //
-// 删除消费者授权规则
+// Deletes a consumer authorization rule.
 //
 // @param headers - map
 //
@@ -1603,7 +1603,7 @@ func (client *Client) DeleteMcpServerWithContext(ctx context.Context, mcpServerI
 
 // Summary:
 //
-// 删除挂载规则API
+// Deletes a plug-in attachment.
 //
 // @param headers - map
 //
@@ -1702,7 +1702,7 @@ func (client *Client) DeletePolicyAttachmentWithContext(ctx context.Context, pol
 
 // Summary:
 //
-// 删除服务
+// Deletes a service.
 //
 // @param headers - map
 //
@@ -1790,7 +1790,7 @@ func (client *Client) DeployHttpApiWithContext(ctx context.Context, httpApiId *s
 
 // Summary:
 //
-// 发布MCP server
+// Deploys an MCP server.
 //
 // @param headers - map
 //
@@ -1856,7 +1856,7 @@ func (client *Client) ExportHttpApiWithContext(ctx context.Context, httpApiId *s
 
 // Summary:
 //
-// 查询消费者
+// Obtains the information of a consumer.
 //
 // @param headers - map
 //
@@ -1889,7 +1889,7 @@ func (client *Client) GetConsumerWithContext(ctx context.Context, consumerId *st
 
 // Summary:
 //
-// 查询消费者授权规则
+// Obtains a consumer authentication rule.
 //
 // @param headers - map
 //
@@ -2239,7 +2239,11 @@ func (client *Client) GetHttpApiRouteWithContext(ctx context.Context, httpApiId 
 
 // Summary:
 //
-// 获取MCP server
+// Queries the detailed information of an MCP server.
+//
+// Description:
+//
+// You can call this operation to create multiple services at a time.
 //
 // @param headers - map
 //
@@ -2272,7 +2276,7 @@ func (client *Client) GetMcpServerWithContext(ctx context.Context, mcpServerId *
 
 // Summary:
 //
-// GetPluginAttachment。
+// Queries a plug-in attachment.
 //
 // @param headers - map
 //
@@ -2593,7 +2597,7 @@ func (client *Client) ImportHttpApiWithContext(ctx context.Context, request *Imp
 
 // Summary:
 //
-// # InstallPlugin
+// Installs a plug-in.
 //
 // @param request - InstallPluginRequest
 //
@@ -2644,7 +2648,7 @@ func (client *Client) InstallPluginWithContext(ctx context.Context, request *Ins
 
 // Summary:
 //
-// 查询消费者列表
+// Queries a list of consumers.
 //
 // @param request - ListConsumersRequest
 //
@@ -2837,6 +2841,39 @@ func (client *Client) ListEnvironmentsWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEnvironmentsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Gateway的Features
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGatewayFeaturesResponse
+func (client *Client) ListGatewayFeaturesWithContext(ctx context.Context, gatewayId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewayFeaturesResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGatewayFeatures"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/gateway-features"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGatewayFeaturesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3233,7 +3270,11 @@ func (client *Client) ListHttpApisWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 获取MCP server列表
+// Retrieves a list of MCP servers.
+//
+// Description:
+//
+// You can call this operation to create multiple services at a time.
 //
 // @param request - ListMcpServersRequest
 //
@@ -3304,7 +3345,7 @@ func (client *Client) ListMcpServersWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 获取挂载列表
+// Retrieves a list of plug-in attachments.
 //
 // @param request - ListPluginAttachmentsRequest
 //
@@ -3383,7 +3424,7 @@ func (client *Client) ListPluginAttachmentsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # ListPlugins
+// Queries plug-ins.
 //
 // @param request - ListPluginsRequest
 //
@@ -3466,7 +3507,7 @@ func (client *Client) ListPluginsWithContext(ctx context.Context, request *ListP
 
 // Summary:
 //
-// # ListPolicies
+// Queries policies.
 //
 // @param request - ListPoliciesRequest
 //
@@ -3920,7 +3961,7 @@ func (client *Client) RestartGatewayWithContext(ctx context.Context, gatewayId *
 
 // Summary:
 //
-// 取消发布MCP server
+// Undeploys an MCP server.
 //
 // @param headers - map
 //
@@ -4012,7 +4053,7 @@ func (client *Client) UndeployHttpApiWithContext(ctx context.Context, httpApiId 
 
 // Summary:
 //
-// # UninstallPlugin
+// Uninstalls a plug-in.
 //
 // @param headers - map
 //
@@ -4045,7 +4086,7 @@ func (client *Client) UninstallPluginWithContext(ctx context.Context, pluginId *
 
 // Summary:
 //
-// # UpdateAndAttachPolicy
+// Updates and associates a policy.
 //
 // @param request - UpdateAndAttachPolicyRequest
 //
@@ -4116,7 +4157,7 @@ func (client *Client) UpdateAndAttachPolicyWithContext(ctx context.Context, poli
 
 // Summary:
 //
-// 更新消费者
+// Updates a consumer.
 //
 // @param request - UpdateConsumerRequest
 //
@@ -4179,7 +4220,7 @@ func (client *Client) UpdateConsumerWithContext(ctx context.Context, consumerId 
 
 // Summary:
 //
-// 更新消费者授权规则
+// Updates a consumer authorization rule.
 //
 // @param request - UpdateConsumerAuthorizationRuleRequest
 //
@@ -4681,7 +4722,11 @@ func (client *Client) UpdateHttpApiRouteWithContext(ctx context.Context, httpApi
 
 // Summary:
 //
-// 更新MCP server
+// Updates an MCP server.
+//
+// Description:
+//
+// You can only update the listening Ingress configuration for sources of the **ACK*	- type.
 //
 // @param request - UpdateMcpServerRequest
 //
@@ -4764,7 +4809,7 @@ func (client *Client) UpdateMcpServerWithContext(ctx context.Context, mcpServerI
 
 // Summary:
 //
-// 更新挂载规则API
+// Updates a plug-in attachment.
 //
 // @param request - UpdatePluginAttachmentRequest
 //

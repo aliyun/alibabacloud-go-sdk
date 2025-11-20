@@ -26,29 +26,60 @@ type iUpdateAndAttachPolicyRequest interface {
 }
 
 type UpdateAndAttachPolicyRequest struct {
+	// The association IDs.
+	//
 	// This parameter is required.
 	AttachResourceIds []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
+	// The supported associated resource type. Valid values:
+	//
+	// 	- HttpApi: an HTTP API
+	//
+	// 	- Operation: an operation in an HTTP API
+	//
+	// 	- GatewayRoute: a route
+	//
+	// 	- GatewayService: a service
+	//
+	// 	- GatewayServicePort: a service port
+	//
+	// 	- Domain: a domain name
+	//
+	// 	- Gateway: an instance
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HttpApi
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
+	// The policy configurations. The value is a JSON string.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {\\"enable\\":false}
-	Config      *string `json:"config,omitempty" xml:"config,omitempty"`
+	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// The policy description.
+	//
+	// example:
+	//
+	// This is the description.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The environment ID.
+	//
 	// example:
 	//
 	// env-cq2avtllhtgja4dk5djg
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// gw-cq2avtllhtgja4dk5djg
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The policy name.
+	//
 	// example:
 	//
 	// test

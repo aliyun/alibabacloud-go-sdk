@@ -22,19 +22,28 @@ type iCreateConsumerAuthorizationRuleRequest interface {
 }
 
 type CreateConsumerAuthorizationRuleRequest struct {
+	// The list of resource authorization information.
 	AuthorizationResourceInfos []*AuthorizationResourceInfo `json:"authorizationResourceInfos,omitempty" xml:"authorizationResourceInfos,omitempty" type:"Repeated"`
+	// The expiry mode. Valid values: LongTerm and ShortTerm.
+	//
 	// example:
 	//
 	// LongTerm
 	ExpireMode *string `json:"expireMode,omitempty" xml:"expireMode,omitempty"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 1750852089975
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
+	// The type of the parent resource.
+	//
 	// example:
 	//
 	// API
 	ParentResourceType *string `json:"parentResourceType,omitempty" xml:"parentResourceType,omitempty"`
+	// The resource type,
+	//
 	// example:
 	//
 	// API

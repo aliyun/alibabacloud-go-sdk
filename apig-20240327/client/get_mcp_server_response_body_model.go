@@ -20,16 +20,21 @@ type iGetMcpServerResponseBody interface {
 }
 
 type GetMcpServerResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response payload.
 	Data *GetMcpServerResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The status message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -91,67 +96,110 @@ func (s *GetMcpServerResponseBody) Validate() error {
 }
 
 type GetMcpServerResponseBodyData struct {
+	// The list of assembly sources. This parameter is required when the type parameter is set to AssemblyMCP.
 	AssembledSources []*GetMcpServerResponseBodyDataAssembledSources `json:"assembledSources,omitempty" xml:"assembledSources,omitempty" type:"Repeated"`
-	Backend          *Backend                                        `json:"backend,omitempty" xml:"backend,omitempty"`
+	// The backend service of the route.
+	Backend *Backend `json:"backend,omitempty" xml:"backend,omitempty"`
+	// Indicates the type of source for MCP server creation. Valid values:
+	//
+	// ApiGatewayHttpToMCP
+	//
+	// ApiGatewayMcpHosting
+	//
+	// ApiGatewayAssembly
+	//
+	// NacosHttpToMCP
+	//
+	// NacosMcpHosting
+	//
 	// example:
 	//
 	// ApiGatewayHttpToMCP
 	CreateFromType *string `json:"createFromType,omitempty" xml:"createFromType,omitempty"`
+	// The publishing status of the API in the current environment.
+	//
 	// example:
 	//
 	// Deployed
-	DeployStatus *string                                    `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
-	Description  *string                                    `json:"description,omitempty" xml:"description,omitempty"`
-	DomainIds    []*string                                  `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
-	DomainInfos  []*GetMcpServerResponseBodyDataDomainInfos `json:"domainInfos,omitempty" xml:"domainInfos,omitempty" type:"Repeated"`
+	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
+	// The description.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The domain name IDs.
+	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
+	// The list of domain information.
+	DomainInfos []*GetMcpServerResponseBodyDataDomainInfos `json:"domainInfos,omitempty" xml:"domainInfos,omitempty" type:"Repeated"`
+	// The environment ID.
+	//
 	// example:
 	//
 	// env-cq7l5s5lhtgi6qasrdc0
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// The exposed URI path. This parameter is required when the protocol parameter is set to SSE or StreamableHTTP, and the type parameter is set to RealMCP.
+	//
 	// example:
 	//
 	// /sse
 	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
+	// The gateway instance ID.
+	//
 	// example:
 	//
 	// gw-cq2vundlhtg***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The route match rule.
+	//
 	// example:
 	//
 	// {\\"product_code\\":\\"apigw\\"}
-	Match           *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
-	McpServerConfig *string         `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty"`
+	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	// The HTTP-to-MCP configurations.
+	McpServerConfig *string `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty"`
+	// The attachment ID for the MCP server plug-in configuration.
+	//
 	// example:
 	//
 	// pa-adfaefwaef
 	McpServerConfigPluginAttachmentId *string `json:"mcpServerConfigPluginAttachmentId,omitempty" xml:"mcpServerConfigPluginAttachmentId,omitempty"`
-	// MCP Server ID
+	// The ID of the MCP server.
 	//
 	// example:
 	//
 	// mcp-adfefz24afg
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
+	// The MCP server access path provided by the gateway.
+	//
 	// example:
 	//
 	// /mcp-servers/test-mcp
 	McpServerPath *string `json:"mcpServerPath,omitempty" xml:"mcpServerPath,omitempty"`
+	// Indicates whether MCP observability is enabled. Default value: false.
+	//
 	// example:
 	//
 	// false
-	McpStatisticsEnable *bool                                         `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
-	NacosMcpSyncInfo    *GetMcpServerResponseBodyDataNacosMcpSyncInfo `json:"nacosMcpSyncInfo,omitempty" xml:"nacosMcpSyncInfo,omitempty" type:"Struct"`
+	McpStatisticsEnable *bool `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
+	// The MCP information managed and synchronized by Nacos.
+	NacosMcpSyncInfo *GetMcpServerResponseBodyDataNacosMcpSyncInfo `json:"nacosMcpSyncInfo,omitempty" xml:"nacosMcpSyncInfo,omitempty" type:"Struct"`
+	// The name of the MCP server.
+	//
 	// example:
 	//
 	// test-mcp
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The service protocol.
+	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The route ID.
+	//
 	// example:
 	//
 	// hr-cr82undlhtgrlej***
 	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
+	// The type of the MCP server.
+	//
 	// example:
 	//
 	// RealMCP
@@ -393,17 +441,20 @@ func (s *GetMcpServerResponseBodyData) Validate() error {
 }
 
 type GetMcpServerResponseBodyDataAssembledSources struct {
-	// MCP Server ID
+	// The ID of the MCP server.
 	//
 	// example:
 	//
 	// mcp-xdafeafzz
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
+	// The name of the MCP server.
+	//
 	// example:
 	//
 	// test-mcp
-	McpServerName *string   `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
-	Tools         []*string `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
+	McpServerName *string `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
+	// The list of the MCP tools.
+	Tools []*string `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
 }
 
 func (s GetMcpServerResponseBodyDataAssembledSources) String() string {
@@ -446,17 +497,23 @@ func (s *GetMcpServerResponseBodyDataAssembledSources) Validate() error {
 }
 
 type GetMcpServerResponseBodyDataDomainInfos struct {
+	// The domain name ID.
+	//
 	// example:
 	//
 	// www.abc.com
 	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// verifyicket
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The protocol. Valid values: HTTP and HTTPS.
+	//
 	// example:
 	//
-	// HTTP,HTTPS
+	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 }
 
@@ -500,14 +557,20 @@ func (s *GetMcpServerResponseBodyDataDomainInfos) Validate() error {
 }
 
 type GetMcpServerResponseBodyDataNacosMcpSyncInfo struct {
+	// The Nacos instance.
+	//
 	// example:
 	//
 	// mse-xxxxx
 	ImportInstanceId *string `json:"importInstanceId,omitempty" xml:"importInstanceId,omitempty"`
+	// The synchronized MCP server ID.
+	//
 	// example:
 	//
 	// test-mcp
 	ImportMcpServerId *string `json:"importMcpServerId,omitempty" xml:"importMcpServerId,omitempty"`
+	// The Nacos namespace.
+	//
 	// example:
 	//
 	// test-ns

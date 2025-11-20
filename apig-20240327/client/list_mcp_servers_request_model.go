@@ -26,36 +26,50 @@ type iListMcpServersRequest interface {
 }
 
 type ListMcpServersRequest struct {
+	// The type of source to create from.
+	//
 	// example:
 	//
 	// ApiGatewayHttpToMCP
 	CreateFromTypes *string `json:"createFromTypes,omitempty" xml:"createFromTypes,omitempty"`
+	// The deployment status of the MCP server.
+	//
 	// example:
 	//
 	// Deployed
 	DeployStatuses *string `json:"deployStatuses,omitempty" xml:"deployStatuses,omitempty"`
+	// The gateway instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gw-co370icmjeu****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The name to perform a fuzzy search on the MCP server.
+	//
 	// example:
 	//
 	// test
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
+	// The page number to return. Pages start from 1. Default value: 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The type of the MCP server.
+	//
 	// example:
 	//
 	// RealMCP

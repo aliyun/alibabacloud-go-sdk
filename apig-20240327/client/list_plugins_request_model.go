@@ -32,39 +32,76 @@ type iListPluginsRequest interface {
 }
 
 type ListPluginsRequest struct {
+	// The resource attachment ID.
+	//
 	// example:
 	//
 	// api-cuip2pum1hksng6oni3g
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
+	// The resource attachment type.
+	//
+	// - HttpApi: HttpApi.
+	//
+	// - Operation: Operation of HttpApi.
+	//
+	// - GatewayRoute: Gateway route.
+	//
+	// - GatewayService: Gateway service.
+	//
+	// - GatewayServicePort: Gateway service port.
+	//
+	// - Domain: Gateway domain.
+	//
+	// - Gateway: Gateway.
+	//
 	// example:
 	//
 	// HttpApi
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
+	// The gateway instance ID for filtering.
+	//
 	// example:
 	//
 	// gw-csrhgn6m1hkt65qbxxgg
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The instance type. Valid values: **AI*	- and **API**.
+	//
 	// example:
 	//
 	// AI
-	GatewayType             *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	IncludeBuiltinAiGateway *bool   `json:"includeBuiltinAiGateway,omitempty" xml:"includeBuiltinAiGateway,omitempty"`
+	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	// Specifies whether to include built-in AI plug-ins in the returned results. Default: false.
+	//
+	// example:
+	//
+	// false
+	IncludeBuiltinAiGateway *bool `json:"includeBuiltinAiGateway,omitempty" xml:"includeBuiltinAiGateway,omitempty"`
+	// The page number to return. Pages start from 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The plug-in type ID for filtering.
+	//
 	// example:
 	//
 	// pls-dn82a9djd8z****
 	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
+	// The plug-in type name for filtering.
+	//
 	// example:
 	//
 	// key-auth
 	PluginClassName *string `json:"pluginClassName,omitempty" xml:"pluginClassName,omitempty"`
+	// Specifies whether the returned results should include plug-in attachment information corresponding to the attachResourceId.
+	//
 	// example:
 	//
 	// false

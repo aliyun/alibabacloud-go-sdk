@@ -20,16 +20,21 @@ type iGetConsumerResponseBody interface {
 }
 
 type GetConsumerResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                      `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response payload.
 	Data *GetConsumerResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The status message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -91,30 +96,50 @@ func (s *GetConsumerResponseBody) Validate() error {
 }
 
 type GetConsumerResponseBodyData struct {
-	AkSkIdentityConfigs  *AkSkIdentityConfig   `json:"akSkIdentityConfigs,omitempty" xml:"akSkIdentityConfigs,omitempty"`
+	// The AK/SK authentication configurations.
+	AkSkIdentityConfigs *AkSkIdentityConfig `json:"akSkIdentityConfigs,omitempty" xml:"akSkIdentityConfigs,omitempty"`
+	// The API key authentication configurations.
 	ApiKeyIdentityConfig *ApiKeyIdentityConfig `json:"apiKeyIdentityConfig,omitempty" xml:"apiKeyIdentityConfig,omitempty"`
+	// The consumer ID.
+	//
 	// example:
 	//
 	// cs-cvgbtk6m1hkji5sb8dr0
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
+	// The creation timestamp.
+	//
 	// example:
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// The publishing status of the API in the current environment.
+	//
 	// example:
 	//
 	// ""
 	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
-	Description  *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// This is the description.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Indicates if enabled.
+	//
 	// example:
 	//
 	// true
-	Enable            *bool              `json:"enable,omitempty" xml:"enable,omitempty"`
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The JWT authentication configurations.
 	JwtIdentityConfig *JwtIdentityConfig `json:"jwtIdentityConfig,omitempty" xml:"jwtIdentityConfig,omitempty"`
+	// The consumer name.
+	//
 	// example:
 	//
 	// consumer-1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The last update timestamp.
+	//
 	// example:
 	//
 	// 1719386834548

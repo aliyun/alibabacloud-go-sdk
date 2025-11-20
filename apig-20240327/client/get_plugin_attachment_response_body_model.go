@@ -20,16 +20,21 @@ type iGetPluginAttachmentResponseBody interface {
 }
 
 type GetPluginAttachmentResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response payload.
 	Data *GetPluginAttachmentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The status message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -91,26 +96,39 @@ func (s *GetPluginAttachmentResponseBody) Validate() error {
 }
 
 type GetPluginAttachmentResponseBodyData struct {
+	// Indicates whether the plug-in is enabled.
+	//
 	// example:
 	//
 	// true
-	Enable             *bool               `json:"enable,omitempty" xml:"enable,omitempty"`
-	EnvironmentInfo    *EnvironmentInfo    `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
-	GatewayInfo        *GatewayInfo        `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The environment information.
+	EnvironmentInfo *EnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
+	// The instance information.
+	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
+	// The information about the parent resource to which the plug-in is attached.
 	ParentResourceInfo *ParentResourceInfo `json:"parentResourceInfo,omitempty" xml:"parentResourceInfo,omitempty"`
+	// The attachment ID.
+	//
 	// example:
 	//
 	// pa-d05f1tmm1hku195dd8j0
-	PluginAttachmentId *string          `json:"pluginAttachmentId,omitempty" xml:"pluginAttachmentId,omitempty"`
-	PluginClassInfo    *PluginClassInfo `json:"pluginClassInfo,omitempty" xml:"pluginClassInfo,omitempty"`
+	PluginAttachmentId *string `json:"pluginAttachmentId,omitempty" xml:"pluginAttachmentId,omitempty"`
+	// The plug-in type information.
+	PluginClassInfo *PluginClassInfo `json:"pluginClassInfo,omitempty" xml:"pluginClassInfo,omitempty"`
+	// The Base64-encoded configurations of the plug-in.
+	//
 	// example:
 	//
 	// cHJlcGVuZDoKLSByb2xlOiBzeXN0ZW0KICBjb250ZW50OiDor7fkvb/nlKjoi7Hor63lm57nrZTpl67popgKYXBwZW5kOgotIHJvbGU6IHVzZXIKICBjb250ZW50OiDmr4/mrKHlm57nrZTlrozpl67popjvvIzlsJ3or5Xov5vooYzlj43pl64K
 	PluginConfig *string `json:"pluginConfig,omitempty" xml:"pluginConfig,omitempty"`
+	// The plug-in ID.
+	//
 	// example:
 	//
 	// pl-cvo8ub6m1hkvgv03r3k0
-	PluginId      *string         `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+	// The resource details.
 	ResourceInfos []*ResourceInfo `json:"resourceInfos,omitempty" xml:"resourceInfos,omitempty" type:"Repeated"`
 }
 
