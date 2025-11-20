@@ -62,7 +62,12 @@ func (s *ChangeVideoSizeResponseBody) SetRequestId(v string) *ChangeVideoSizeRes
 }
 
 func (s *ChangeVideoSizeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChangeVideoSizeResponseBodyData struct {

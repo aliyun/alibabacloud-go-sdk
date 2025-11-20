@@ -7,98 +7,6 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-// @param request - AbstractEcommerceVideoRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return AbstractEcommerceVideoResponse
-func (client *Client) AbstractEcommerceVideoWithContext(ctx context.Context, request *AbstractEcommerceVideoRequest, runtime *dara.RuntimeOptions) (_result *AbstractEcommerceVideoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.Duration) {
-		body["Duration"] = request.Duration
-	}
-
-	if !dara.IsNil(request.Height) {
-		body["Height"] = request.Height
-	}
-
-	if !dara.IsNil(request.VideoUrl) {
-		body["VideoUrl"] = request.VideoUrl
-	}
-
-	if !dara.IsNil(request.Width) {
-		body["Width"] = request.Width
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("AbstractEcommerceVideo"),
-		Version:     dara.String("2020-03-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &AbstractEcommerceVideoResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - AbstractFilmVideoRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return AbstractFilmVideoResponse
-func (client *Client) AbstractFilmVideoWithContext(ctx context.Context, request *AbstractFilmVideoRequest, runtime *dara.RuntimeOptions) (_result *AbstractFilmVideoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.Length) {
-		body["Length"] = request.Length
-	}
-
-	if !dara.IsNil(request.VideoUrl) {
-		body["VideoUrl"] = request.VideoUrl
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("AbstractFilmVideo"),
-		Version:     dara.String("2020-03-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &AbstractFilmVideoResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
 // Summary:
 //
 // 视频人脸融合模板增加
@@ -109,9 +17,11 @@ func (client *Client) AbstractFilmVideoWithContext(ctx context.Context, request 
 //
 // @return AddFaceVideoTemplateResponse
 func (client *Client) AddFaceVideoTemplateWithContext(ctx context.Context, request *AddFaceVideoTemplateRequest, runtime *dara.RuntimeOptions) (_result *AddFaceVideoTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.VideoScene) {
@@ -151,9 +61,11 @@ func (client *Client) AddFaceVideoTemplateWithContext(ctx context.Context, reque
 //
 // @return AdjustVideoColorResponse
 func (client *Client) AdjustVideoColorWithContext(ctx context.Context, request *AdjustVideoColorRequest, runtime *dara.RuntimeOptions) (_result *AdjustVideoColorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Mode) {
@@ -205,9 +117,11 @@ func (client *Client) AdjustVideoColorWithContext(ctx context.Context, request *
 //
 // @return ChangeVideoSizeResponse
 func (client *Client) ChangeVideoSizeWithContext(ctx context.Context, request *ChangeVideoSizeRequest, runtime *dara.RuntimeOptions) (_result *ChangeVideoSizeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.B) {
@@ -269,56 +183,6 @@ func (client *Client) ChangeVideoSizeWithContext(ctx context.Context, request *C
 	return _result, _err
 }
 
-// @param request - ConvertHdrVideoRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ConvertHdrVideoResponse
-func (client *Client) ConvertHdrVideoWithContext(ctx context.Context, request *ConvertHdrVideoRequest, runtime *dara.RuntimeOptions) (_result *ConvertHdrVideoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.Bitrate) {
-		body["Bitrate"] = request.Bitrate
-	}
-
-	if !dara.IsNil(request.HDRFormat) {
-		body["HDRFormat"] = request.HDRFormat
-	}
-
-	if !dara.IsNil(request.MaxIlluminance) {
-		body["MaxIlluminance"] = request.MaxIlluminance
-	}
-
-	if !dara.IsNil(request.VideoURL) {
-		body["VideoURL"] = request.VideoURL
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ConvertHdrVideo"),
-		Version:     dara.String("2020-03-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ConvertHdrVideoResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
 // Summary:
 //
 // 视频人脸融合模板删除
@@ -329,9 +193,11 @@ func (client *Client) ConvertHdrVideoWithContext(ctx context.Context, request *C
 //
 // @return DeleteFaceVideoTemplateResponse
 func (client *Client) DeleteFaceVideoTemplateWithContext(ctx context.Context, request *DeleteFaceVideoTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteFaceVideoTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -371,9 +237,11 @@ func (client *Client) DeleteFaceVideoTemplateWithContext(ctx context.Context, re
 //
 // @return EnhancePortraitVideoResponse
 func (client *Client) EnhancePortraitVideoWithContext(ctx context.Context, request *EnhancePortraitVideoRequest, runtime *dara.RuntimeOptions) (_result *EnhancePortraitVideoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.VideoUrl) {
@@ -409,9 +277,11 @@ func (client *Client) EnhancePortraitVideoWithContext(ctx context.Context, reque
 //
 // @return EnhanceVideoQualityResponse
 func (client *Client) EnhanceVideoQualityWithContext(ctx context.Context, request *EnhanceVideoQualityRequest, runtime *dara.RuntimeOptions) (_result *EnhanceVideoQualityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Bitrate) {
@@ -471,9 +341,11 @@ func (client *Client) EnhanceVideoQualityWithContext(ctx context.Context, reques
 //
 // @return EraseVideoLogoResponse
 func (client *Client) EraseVideoLogoWithContext(ctx context.Context, request *EraseVideoLogoRequest, runtime *dara.RuntimeOptions) (_result *EraseVideoLogoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Boxes) {
@@ -513,9 +385,11 @@ func (client *Client) EraseVideoLogoWithContext(ctx context.Context, request *Er
 //
 // @return EraseVideoSubtitlesResponse
 func (client *Client) EraseVideoSubtitlesWithContext(ctx context.Context, request *EraseVideoSubtitlesRequest, runtime *dara.RuntimeOptions) (_result *EraseVideoSubtitlesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BH) {
@@ -571,9 +445,11 @@ func (client *Client) EraseVideoSubtitlesWithContext(ctx context.Context, reques
 //
 // @return GenerateHumanAnimeStyleVideoResponse
 func (client *Client) GenerateHumanAnimeStyleVideoWithContext(ctx context.Context, request *GenerateHumanAnimeStyleVideoRequest, runtime *dara.RuntimeOptions) (_result *GenerateHumanAnimeStyleVideoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CartoonStyle) {
@@ -613,9 +489,11 @@ func (client *Client) GenerateHumanAnimeStyleVideoWithContext(ctx context.Contex
 //
 // @return GenerateVideoResponse
 func (client *Client) GenerateVideoWithContext(ctx context.Context, request *GenerateVideoRequest, runtime *dara.RuntimeOptions) (_result *GenerateVideoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Duration) {
@@ -691,9 +569,11 @@ func (client *Client) GenerateVideoWithContext(ctx context.Context, request *Gen
 //
 // @return GetAsyncJobResultResponse
 func (client *Client) GetAsyncJobResultWithContext(ctx context.Context, request *GetAsyncJobResultRequest, runtime *dara.RuntimeOptions) (_result *GetAsyncJobResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -729,9 +609,11 @@ func (client *Client) GetAsyncJobResultWithContext(ctx context.Context, request 
 //
 // @return InterpolateVideoFrameResponse
 func (client *Client) InterpolateVideoFrameWithContext(ctx context.Context, request *InterpolateVideoFrameRequest, runtime *dara.RuntimeOptions) (_result *InterpolateVideoFrameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Bitrate) {
@@ -775,9 +657,11 @@ func (client *Client) InterpolateVideoFrameWithContext(ctx context.Context, requ
 //
 // @return MergeVideoFaceResponse
 func (client *Client) MergeVideoFaceWithContext(ctx context.Context, request *MergeVideoFaceRequest, runtime *dara.RuntimeOptions) (_result *MergeVideoFaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AddWatermark) {
@@ -833,9 +717,11 @@ func (client *Client) MergeVideoFaceWithContext(ctx context.Context, request *Me
 //
 // @return MergeVideoModelFaceResponse
 func (client *Client) MergeVideoModelFaceWithContext(ctx context.Context, request *MergeVideoModelFaceRequest, runtime *dara.RuntimeOptions) (_result *MergeVideoModelFaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AddWatermark) {
@@ -895,9 +781,11 @@ func (client *Client) MergeVideoModelFaceWithContext(ctx context.Context, reques
 //
 // @return QueryFaceVideoTemplateResponse
 func (client *Client) QueryFaceVideoTemplateWithContext(ctx context.Context, request *QueryFaceVideoTemplateRequest, runtime *dara.RuntimeOptions) (_result *QueryFaceVideoTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNo) {
@@ -935,57 +823,17 @@ func (client *Client) QueryFaceVideoTemplateWithContext(ctx context.Context, req
 	return _result, _err
 }
 
-// Summary:
-//
-// 视频降噪
-//
-// @param request - ReduceVideoNoiseRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ReduceVideoNoiseResponse
-func (client *Client) ReduceVideoNoiseWithContext(ctx context.Context, request *ReduceVideoNoiseRequest, runtime *dara.RuntimeOptions) (_result *ReduceVideoNoiseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.VideoUrl) {
-		body["VideoUrl"] = request.VideoUrl
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ReduceVideoNoise"),
-		Version:     dara.String("2020-03-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ReduceVideoNoiseResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
 // @param request - SuperResolveVideoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SuperResolveVideoResponse
 func (client *Client) SuperResolveVideoWithContext(ctx context.Context, request *SuperResolveVideoRequest, runtime *dara.RuntimeOptions) (_result *SuperResolveVideoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BitRate) {
@@ -1011,52 +859,6 @@ func (client *Client) SuperResolveVideoWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SuperResolveVideoResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ToneSdrVideoRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ToneSdrVideoResponse
-func (client *Client) ToneSdrVideoWithContext(ctx context.Context, request *ToneSdrVideoRequest, runtime *dara.RuntimeOptions) (_result *ToneSdrVideoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.Bitrate) {
-		body["Bitrate"] = request.Bitrate
-	}
-
-	if !dara.IsNil(request.RecolorModel) {
-		body["RecolorModel"] = request.RecolorModel
-	}
-
-	if !dara.IsNil(request.VideoURL) {
-		body["VideoURL"] = request.VideoURL
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ToneSdrVideo"),
-		Version:     dara.String("2020-03-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ToneSdrVideoResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

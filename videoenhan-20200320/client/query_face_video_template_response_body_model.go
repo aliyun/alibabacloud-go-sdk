@@ -50,7 +50,12 @@ func (s *QueryFaceVideoTemplateResponseBody) SetRequestId(v string) *QueryFaceVi
 }
 
 func (s *QueryFaceVideoTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryFaceVideoTemplateResponseBodyData struct {
@@ -85,7 +90,16 @@ func (s *QueryFaceVideoTemplateResponseBodyData) SetTotal(v int64) *QueryFaceVid
 }
 
 func (s *QueryFaceVideoTemplateResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Elements != nil {
+		for _, item := range s.Elements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryFaceVideoTemplateResponseBodyDataElements struct {
@@ -175,7 +189,16 @@ func (s *QueryFaceVideoTemplateResponseBodyDataElements) SetUserId(v string) *Qu
 }
 
 func (s *QueryFaceVideoTemplateResponseBodyDataElements) Validate() error {
-	return dara.Validate(s)
+	if s.FaceInfos != nil {
+		for _, item := range s.FaceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryFaceVideoTemplateResponseBodyDataElementsFaceInfos struct {

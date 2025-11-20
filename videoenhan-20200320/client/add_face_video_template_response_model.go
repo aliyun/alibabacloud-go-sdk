@@ -59,5 +59,10 @@ func (s *AddFaceVideoTemplateResponse) SetBody(v *AddFaceVideoTemplateResponseBo
 }
 
 func (s *AddFaceVideoTemplateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

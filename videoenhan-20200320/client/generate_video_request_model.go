@@ -188,7 +188,16 @@ func (s *GenerateVideoRequest) SetWidth(v int32) *GenerateVideoRequest {
 }
 
 func (s *GenerateVideoRequest) Validate() error {
-	return dara.Validate(s)
+	if s.FileList != nil {
+		for _, item := range s.FileList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GenerateVideoRequestFileList struct {

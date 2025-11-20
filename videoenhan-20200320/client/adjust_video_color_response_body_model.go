@@ -62,7 +62,12 @@ func (s *AdjustVideoColorResponseBody) SetRequestId(v string) *AdjustVideoColorR
 }
 
 func (s *AdjustVideoColorResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AdjustVideoColorResponseBodyData struct {

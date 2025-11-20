@@ -62,7 +62,12 @@ func (s *EraseVideoSubtitlesResponseBody) SetRequestId(v string) *EraseVideoSubt
 }
 
 func (s *EraseVideoSubtitlesResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.Data != nil {
+    if err := s.Data.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type EraseVideoSubtitlesResponseBodyData struct {

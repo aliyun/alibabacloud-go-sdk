@@ -62,7 +62,12 @@ func (s *SuperResolveVideoResponseBody) SetRequestId(v string) *SuperResolveVide
 }
 
 func (s *SuperResolveVideoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SuperResolveVideoResponseBodyData struct {

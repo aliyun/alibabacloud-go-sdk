@@ -62,7 +62,12 @@ func (s *EnhancePortraitVideoResponseBody) SetRequestId(v string) *EnhancePortra
 }
 
 func (s *EnhancePortraitVideoResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.Data != nil {
+    if err := s.Data.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type EnhancePortraitVideoResponseBodyData struct {

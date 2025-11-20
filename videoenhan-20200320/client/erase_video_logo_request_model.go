@@ -52,7 +52,16 @@ func (s *EraseVideoLogoRequest) SetVideoUrl(v string) *EraseVideoLogoRequest {
 }
 
 func (s *EraseVideoLogoRequest) Validate() error {
-  return dara.Validate(s)
+  if s.Boxes != nil {
+    for _, item := range s.Boxes {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type EraseVideoLogoRequestBoxes struct {

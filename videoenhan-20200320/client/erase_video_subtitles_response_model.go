@@ -59,6 +59,11 @@ func (s *EraseVideoSubtitlesResponse) SetBody(v *EraseVideoSubtitlesResponseBody
 }
 
 func (s *EraseVideoSubtitlesResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

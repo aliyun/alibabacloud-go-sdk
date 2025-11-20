@@ -59,6 +59,11 @@ func (s *EnhanceVideoQualityResponse) SetBody(v *EnhanceVideoQualityResponseBody
 }
 
 func (s *EnhanceVideoQualityResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

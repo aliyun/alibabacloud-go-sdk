@@ -59,6 +59,11 @@ func (s *EnhancePortraitVideoResponse) SetBody(v *EnhancePortraitVideoResponseBo
 }
 
 func (s *EnhancePortraitVideoResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

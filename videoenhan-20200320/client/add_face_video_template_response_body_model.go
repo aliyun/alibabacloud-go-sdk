@@ -62,7 +62,12 @@ func (s *AddFaceVideoTemplateResponseBody) SetRequestId(v string) *AddFaceVideoT
 }
 
 func (s *AddFaceVideoTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Date != nil {
+		if err := s.Date.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddFaceVideoTemplateResponseBodyDate struct {
@@ -110,7 +115,16 @@ func (s *AddFaceVideoTemplateResponseBodyDate) SetTransResult(v string) *AddFace
 }
 
 func (s *AddFaceVideoTemplateResponseBodyDate) Validate() error {
-	return dara.Validate(s)
+	if s.FaceInfos != nil {
+		for _, item := range s.FaceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddFaceVideoTemplateResponseBodyDateFaceInfos struct {

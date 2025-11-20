@@ -103,7 +103,16 @@ func (s *MergeVideoModelFaceRequest) SetWatermarkType(v string) *MergeVideoModel
 }
 
 func (s *MergeVideoModelFaceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MergeInfos != nil {
+		for _, item := range s.MergeInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MergeVideoModelFaceRequestMergeInfos struct {

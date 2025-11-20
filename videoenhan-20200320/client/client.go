@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -36,30 +37,83 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	return nil
 }
 
-func (client *Client) _postOSSObject(bucketName *string, form map[string]interface{}) (_result map[string]interface{}, _err error) {
-	request_ := dara.NewRequest()
-	boundary := dara.GetBoundary()
-	request_.Protocol = dara.String("HTTPS")
-	request_.Method = dara.String("POST")
-	request_.Pathname = dara.String("/")
-	request_.Headers = map[string]*string{
-		"host":       dara.String(dara.ToString(form["host"])),
-		"date":       openapiutil.GetDateUTCString(),
-		"user-agent": openapiutil.GetUserAgent(dara.String("")),
-	}
-	request_.Headers["content-type"] = dara.String("multipart/form-data; boundary=" + boundary)
-	request_.Body = dara.ToFileForm(form, boundary)
-	response_, _err := dara.DoRequest(request_, nil)
-	if _err != nil {
-		return nil, _err
+func (client *Client) _postOSSObject(bucketName *string, form map[string]interface{}, runtime *dara.RuntimeOptions) (_result map[string]interface{}, _err error) {
+	_runtime := dara.NewRuntimeObject(map[string]interface{}{
+		"key":            dara.ToString(dara.Default(dara.StringValue(runtime.Key), dara.StringValue(client.Key))),
+		"cert":           dara.ToString(dara.Default(dara.StringValue(runtime.Cert), dara.StringValue(client.Cert))),
+		"ca":             dara.ToString(dara.Default(dara.StringValue(runtime.Ca), dara.StringValue(client.Ca))),
+		"readTimeout":    dara.ForceInt(dara.Default(dara.IntValue(runtime.ReadTimeout), dara.IntValue(client.ReadTimeout))),
+		"connectTimeout": dara.ForceInt(dara.Default(dara.IntValue(runtime.ConnectTimeout), dara.IntValue(client.ConnectTimeout))),
+		"httpProxy":      dara.ToString(dara.Default(dara.StringValue(runtime.HttpProxy), dara.StringValue(client.HttpProxy))),
+		"httpsProxy":     dara.ToString(dara.Default(dara.StringValue(runtime.HttpsProxy), dara.StringValue(client.HttpsProxy))),
+		"noProxy":        dara.ToString(dara.Default(dara.StringValue(runtime.NoProxy), dara.StringValue(client.NoProxy))),
+		"socks5Proxy":    dara.ToString(dara.Default(dara.StringValue(runtime.Socks5Proxy), dara.StringValue(client.Socks5Proxy))),
+		"socks5NetWork":  dara.ToString(dara.Default(dara.StringValue(runtime.Socks5NetWork), dara.StringValue(client.Socks5NetWork))),
+		"maxIdleConns":   dara.ForceInt(dara.Default(dara.IntValue(runtime.MaxIdleConns), dara.IntValue(client.MaxIdleConns))),
+		"retryOptions":   client.RetryOptions,
+		"ignoreSSL":      dara.ForceBoolean(dara.Default(dara.BoolValue(runtime.IgnoreSSL), false)),
+		"tlsMinVersion":  dara.StringValue(client.TlsMinVersion),
+	})
+
+	var retryPolicyContext *dara.RetryPolicyContext
+	var request_ *dara.Request
+	var response_ *dara.Response
+	var _resultErr error
+	retriesAttempted := int(0)
+	retryPolicyContext = &dara.RetryPolicyContext{
+		RetriesAttempted: retriesAttempted,
 	}
 
-	_result, _err = _postOSSObject_opResponse(response_)
-	if _err != nil {
-		return nil, _err
-	}
+	_result = make(map[string]interface{})
+	for dara.ShouldRetry(_runtime.RetryOptions, retryPolicyContext) {
+		_resultErr = nil
+		_backoffDelayTime := dara.GetBackoffDelay(_runtime.RetryOptions, retryPolicyContext)
+		dara.Sleep(_backoffDelayTime)
 
-	return _result, nil
+		request_ = dara.NewRequest()
+		boundary := dara.GetBoundary()
+		request_.Protocol = dara.String("HTTPS")
+		request_.Method = dara.String("POST")
+		request_.Pathname = dara.String("/")
+		request_.Headers = map[string]*string{
+			"host":       dara.String(dara.ToString(form["host"])),
+			"date":       openapiutil.GetDateUTCString(),
+			"user-agent": openapiutil.GetUserAgent(dara.String("")),
+		}
+		request_.Headers["content-type"] = dara.String("multipart/form-data; boundary=" + boundary)
+		request_.Body = dara.ToFileForm(form, boundary)
+		response_, _err = dara.DoRequest(request_, _runtime)
+		if _err != nil {
+			retriesAttempted++
+			retryPolicyContext = &dara.RetryPolicyContext{
+				RetriesAttempted: retriesAttempted,
+				HttpRequest:      request_,
+				HttpResponse:     response_,
+				Exception:        _err,
+			}
+			_resultErr = _err
+			continue
+		}
+
+		_result, _err = _postOSSObject_opResponse(response_)
+		if _err != nil {
+			retriesAttempted++
+			retryPolicyContext = &dara.RetryPolicyContext{
+				RetriesAttempted: retriesAttempted,
+				HttpRequest:      request_,
+				HttpResponse:     response_,
+				Exception:        _err,
+			}
+			_resultErr = _err
+			continue
+		}
+
+		return _result, _err
+	}
+	if dara.BoolValue(client.DisableSDKError) != true {
+		_resultErr = dara.TeaSDKError(_resultErr)
+	}
+	return _result, _resultErr
 }
 
 func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
@@ -81,340 +135,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-// @param request - AbstractEcommerceVideoRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return AbstractEcommerceVideoResponse
-func (client *Client) AbstractEcommerceVideoWithOptions(request *AbstractEcommerceVideoRequest, runtime *dara.RuntimeOptions) (_result *AbstractEcommerceVideoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.Duration) {
-		body["Duration"] = request.Duration
-	}
-
-	if !dara.IsNil(request.Height) {
-		body["Height"] = request.Height
-	}
-
-	if !dara.IsNil(request.VideoUrl) {
-		body["VideoUrl"] = request.VideoUrl
-	}
-
-	if !dara.IsNil(request.Width) {
-		body["Width"] = request.Width
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("AbstractEcommerceVideo"),
-		Version:     dara.String("2020-03-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &AbstractEcommerceVideoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - AbstractEcommerceVideoRequest
-//
-// @return AbstractEcommerceVideoResponse
-func (client *Client) AbstractEcommerceVideo(request *AbstractEcommerceVideoRequest) (_result *AbstractEcommerceVideoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AbstractEcommerceVideoResponse{}
-	_body, _err := client.AbstractEcommerceVideoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) AbstractEcommerceVideoAdvance(request *AbstractEcommerceVideoAdvanceRequest, runtime *dara.RuntimeOptions) (_result *AbstractEcommerceVideoResponse, _err error) {
-	// Step 0: init client
-	if dara.IsNil(client.Credential) {
-		_err = &openapi.ClientError{
-			Code:    dara.String("InvalidCredentials"),
-			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
-		}
-		return _result, _err
-	}
-
-	credentialModel, _err := client.Credential.GetCredential()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
-	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
-	securityToken := dara.StringValue(credentialModel.SecurityToken)
-	credentialType := dara.StringValue(credentialModel.Type)
-	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
-	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
-		openPlatformEndpoint = "openplatform.aliyuncs.com"
-	}
-
-	if dara.IsNil(dara.String(credentialType)) {
-		credentialType = "access_key"
-	}
-
-	authConfig := &openapiutil.Config{
-		AccessKeyId:     dara.String(accessKeyId),
-		AccessKeySecret: dara.String(accessKeySecret),
-		SecurityToken:   dara.String(securityToken),
-		Type:            dara.String(credentialType),
-		Endpoint:        dara.String(openPlatformEndpoint),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openapi.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := map[string]*string{
-		"Product":  dara.String("videoenhan"),
-		"RegionId": client.RegionId,
-	}
-	authReq := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(authRequest),
-	}
-	authParams := &openapiutil.Params{
-		Action:      dara.String("AuthorizeFileUpload"),
-		Version:     dara.String("2019-12-19"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	authResponse := map[string]interface{}{}
-	fileObj := &dara.FileField{}
-	ossHeader := map[string]interface{}{}
-	tmpBody := map[string]interface{}{}
-	useAccelerate := false
-	authResponseBody := make(map[string]*string)
-	abstractEcommerceVideoReq := &AbstractEcommerceVideoRequest{}
-	openapiutil.Convert(request, abstractEcommerceVideoReq)
-	if !dara.IsNil(request.VideoUrlObject) {
-		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-
-		tmpBody = dara.ToMap(authResponse["body"])
-		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
-		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
-		fileObj = &dara.FileField{
-			Filename:    authResponseBody["ObjectKey"],
-			Content:     request.VideoUrlObject,
-			ContentType: dara.String(""),
-		}
-		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
-			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
-			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
-			"Signature":             dara.StringValue(authResponseBody["Signature"]),
-			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
-			"file":                  fileObj,
-			"success_action_status": "201",
-		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
-		if _err != nil {
-			return _result, _err
-		}
-		abstractEcommerceVideoReq.VideoUrl = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
-	}
-
-	abstractEcommerceVideoResp, _err := client.AbstractEcommerceVideoWithOptions(abstractEcommerceVideoReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = abstractEcommerceVideoResp
-	return _result, _err
-}
-
-// @param request - AbstractFilmVideoRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return AbstractFilmVideoResponse
-func (client *Client) AbstractFilmVideoWithOptions(request *AbstractFilmVideoRequest, runtime *dara.RuntimeOptions) (_result *AbstractFilmVideoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.Length) {
-		body["Length"] = request.Length
-	}
-
-	if !dara.IsNil(request.VideoUrl) {
-		body["VideoUrl"] = request.VideoUrl
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("AbstractFilmVideo"),
-		Version:     dara.String("2020-03-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &AbstractFilmVideoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - AbstractFilmVideoRequest
-//
-// @return AbstractFilmVideoResponse
-func (client *Client) AbstractFilmVideo(request *AbstractFilmVideoRequest) (_result *AbstractFilmVideoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AbstractFilmVideoResponse{}
-	_body, _err := client.AbstractFilmVideoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) AbstractFilmVideoAdvance(request *AbstractFilmVideoAdvanceRequest, runtime *dara.RuntimeOptions) (_result *AbstractFilmVideoResponse, _err error) {
-	// Step 0: init client
-	if dara.IsNil(client.Credential) {
-		_err = &openapi.ClientError{
-			Code:    dara.String("InvalidCredentials"),
-			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
-		}
-		return _result, _err
-	}
-
-	credentialModel, _err := client.Credential.GetCredential()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
-	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
-	securityToken := dara.StringValue(credentialModel.SecurityToken)
-	credentialType := dara.StringValue(credentialModel.Type)
-	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
-	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
-		openPlatformEndpoint = "openplatform.aliyuncs.com"
-	}
-
-	if dara.IsNil(dara.String(credentialType)) {
-		credentialType = "access_key"
-	}
-
-	authConfig := &openapiutil.Config{
-		AccessKeyId:     dara.String(accessKeyId),
-		AccessKeySecret: dara.String(accessKeySecret),
-		SecurityToken:   dara.String(securityToken),
-		Type:            dara.String(credentialType),
-		Endpoint:        dara.String(openPlatformEndpoint),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openapi.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := map[string]*string{
-		"Product":  dara.String("videoenhan"),
-		"RegionId": client.RegionId,
-	}
-	authReq := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(authRequest),
-	}
-	authParams := &openapiutil.Params{
-		Action:      dara.String("AuthorizeFileUpload"),
-		Version:     dara.String("2019-12-19"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	authResponse := map[string]interface{}{}
-	fileObj := &dara.FileField{}
-	ossHeader := map[string]interface{}{}
-	tmpBody := map[string]interface{}{}
-	useAccelerate := false
-	authResponseBody := make(map[string]*string)
-	abstractFilmVideoReq := &AbstractFilmVideoRequest{}
-	openapiutil.Convert(request, abstractFilmVideoReq)
-	if !dara.IsNil(request.VideoUrlObject) {
-		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-
-		tmpBody = dara.ToMap(authResponse["body"])
-		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
-		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
-		fileObj = &dara.FileField{
-			Filename:    authResponseBody["ObjectKey"],
-			Content:     request.VideoUrlObject,
-			ContentType: dara.String(""),
-		}
-		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
-			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
-			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
-			"Signature":             dara.StringValue(authResponseBody["Signature"]),
-			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
-			"file":                  fileObj,
-			"success_action_status": "201",
-		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
-		if _err != nil {
-			return _result, _err
-		}
-		abstractFilmVideoReq.VideoUrl = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
-	}
-
-	abstractFilmVideoResp, _err := client.AbstractFilmVideoWithOptions(abstractFilmVideoReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = abstractFilmVideoResp
-	return _result, _err
-}
-
 // Summary:
 //
 // 视频人脸融合模板增加
@@ -425,9 +145,11 @@ func (client *Client) AbstractFilmVideoAdvance(request *AbstractFilmVideoAdvance
 //
 // @return AddFaceVideoTemplateResponse
 func (client *Client) AddFaceVideoTemplateWithOptions(request *AddFaceVideoTemplateRequest, runtime *dara.RuntimeOptions) (_result *AddFaceVideoTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.VideoScene) {
@@ -570,7 +292,7 @@ func (client *Client) AddFaceVideoTemplateAdvance(request *AddFaceVideoTemplateA
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -592,9 +314,11 @@ func (client *Client) AddFaceVideoTemplateAdvance(request *AddFaceVideoTemplateA
 //
 // @return AdjustVideoColorResponse
 func (client *Client) AdjustVideoColorWithOptions(request *AdjustVideoColorRequest, runtime *dara.RuntimeOptions) (_result *AdjustVideoColorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Mode) {
@@ -745,7 +469,7 @@ func (client *Client) AdjustVideoColorAdvance(request *AdjustVideoColorAdvanceRe
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -767,9 +491,11 @@ func (client *Client) AdjustVideoColorAdvance(request *AdjustVideoColorAdvanceRe
 //
 // @return ChangeVideoSizeResponse
 func (client *Client) ChangeVideoSizeWithOptions(request *ChangeVideoSizeRequest, runtime *dara.RuntimeOptions) (_result *ChangeVideoSizeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.B) {
@@ -936,7 +662,7 @@ func (client *Client) ChangeVideoSizeAdvance(request *ChangeVideoSizeAdvanceRequ
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -952,177 +678,6 @@ func (client *Client) ChangeVideoSizeAdvance(request *ChangeVideoSizeAdvanceRequ
 	return _result, _err
 }
 
-// @param request - ConvertHdrVideoRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ConvertHdrVideoResponse
-func (client *Client) ConvertHdrVideoWithOptions(request *ConvertHdrVideoRequest, runtime *dara.RuntimeOptions) (_result *ConvertHdrVideoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.Bitrate) {
-		body["Bitrate"] = request.Bitrate
-	}
-
-	if !dara.IsNil(request.HDRFormat) {
-		body["HDRFormat"] = request.HDRFormat
-	}
-
-	if !dara.IsNil(request.MaxIlluminance) {
-		body["MaxIlluminance"] = request.MaxIlluminance
-	}
-
-	if !dara.IsNil(request.VideoURL) {
-		body["VideoURL"] = request.VideoURL
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ConvertHdrVideo"),
-		Version:     dara.String("2020-03-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ConvertHdrVideoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ConvertHdrVideoRequest
-//
-// @return ConvertHdrVideoResponse
-func (client *Client) ConvertHdrVideo(request *ConvertHdrVideoRequest) (_result *ConvertHdrVideoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ConvertHdrVideoResponse{}
-	_body, _err := client.ConvertHdrVideoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ConvertHdrVideoAdvance(request *ConvertHdrVideoAdvanceRequest, runtime *dara.RuntimeOptions) (_result *ConvertHdrVideoResponse, _err error) {
-	// Step 0: init client
-	if dara.IsNil(client.Credential) {
-		_err = &openapi.ClientError{
-			Code:    dara.String("InvalidCredentials"),
-			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
-		}
-		return _result, _err
-	}
-
-	credentialModel, _err := client.Credential.GetCredential()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
-	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
-	securityToken := dara.StringValue(credentialModel.SecurityToken)
-	credentialType := dara.StringValue(credentialModel.Type)
-	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
-	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
-		openPlatformEndpoint = "openplatform.aliyuncs.com"
-	}
-
-	if dara.IsNil(dara.String(credentialType)) {
-		credentialType = "access_key"
-	}
-
-	authConfig := &openapiutil.Config{
-		AccessKeyId:     dara.String(accessKeyId),
-		AccessKeySecret: dara.String(accessKeySecret),
-		SecurityToken:   dara.String(securityToken),
-		Type:            dara.String(credentialType),
-		Endpoint:        dara.String(openPlatformEndpoint),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openapi.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := map[string]*string{
-		"Product":  dara.String("videoenhan"),
-		"RegionId": client.RegionId,
-	}
-	authReq := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(authRequest),
-	}
-	authParams := &openapiutil.Params{
-		Action:      dara.String("AuthorizeFileUpload"),
-		Version:     dara.String("2019-12-19"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	authResponse := map[string]interface{}{}
-	fileObj := &dara.FileField{}
-	ossHeader := map[string]interface{}{}
-	tmpBody := map[string]interface{}{}
-	useAccelerate := false
-	authResponseBody := make(map[string]*string)
-	convertHdrVideoReq := &ConvertHdrVideoRequest{}
-	openapiutil.Convert(request, convertHdrVideoReq)
-	if !dara.IsNil(request.VideoURLObject) {
-		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-
-		tmpBody = dara.ToMap(authResponse["body"])
-		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
-		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
-		fileObj = &dara.FileField{
-			Filename:    authResponseBody["ObjectKey"],
-			Content:     request.VideoURLObject,
-			ContentType: dara.String(""),
-		}
-		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
-			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
-			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
-			"Signature":             dara.StringValue(authResponseBody["Signature"]),
-			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
-			"file":                  fileObj,
-			"success_action_status": "201",
-		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
-		if _err != nil {
-			return _result, _err
-		}
-		convertHdrVideoReq.VideoURL = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
-	}
-
-	convertHdrVideoResp, _err := client.ConvertHdrVideoWithOptions(convertHdrVideoReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = convertHdrVideoResp
-	return _result, _err
-}
-
 // Summary:
 //
 // 视频人脸融合模板删除
@@ -1133,9 +688,11 @@ func (client *Client) ConvertHdrVideoAdvance(request *ConvertHdrVideoAdvanceRequ
 //
 // @return DeleteFaceVideoTemplateResponse
 func (client *Client) DeleteFaceVideoTemplateWithOptions(request *DeleteFaceVideoTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteFaceVideoTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -1193,9 +750,11 @@ func (client *Client) DeleteFaceVideoTemplate(request *DeleteFaceVideoTemplateRe
 //
 // @return EnhancePortraitVideoResponse
 func (client *Client) EnhancePortraitVideoWithOptions(request *EnhancePortraitVideoRequest, runtime *dara.RuntimeOptions) (_result *EnhancePortraitVideoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.VideoUrl) {
@@ -1334,7 +893,7 @@ func (client *Client) EnhancePortraitVideoAdvance(request *EnhancePortraitVideoA
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1356,9 +915,11 @@ func (client *Client) EnhancePortraitVideoAdvance(request *EnhancePortraitVideoA
 //
 // @return EnhanceVideoQualityResponse
 func (client *Client) EnhanceVideoQualityWithOptions(request *EnhanceVideoQualityRequest, runtime *dara.RuntimeOptions) (_result *EnhanceVideoQualityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Bitrate) {
@@ -1517,7 +1078,7 @@ func (client *Client) EnhanceVideoQualityAdvance(request *EnhanceVideoQualityAdv
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1539,9 +1100,11 @@ func (client *Client) EnhanceVideoQualityAdvance(request *EnhanceVideoQualityAdv
 //
 // @return EraseVideoLogoResponse
 func (client *Client) EraseVideoLogoWithOptions(request *EraseVideoLogoRequest, runtime *dara.RuntimeOptions) (_result *EraseVideoLogoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Boxes) {
@@ -1680,7 +1243,7 @@ func (client *Client) EraseVideoLogoAdvance(request *EraseVideoLogoAdvanceReques
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1702,9 +1265,11 @@ func (client *Client) EraseVideoLogoAdvance(request *EraseVideoLogoAdvanceReques
 //
 // @return EraseVideoSubtitlesResponse
 func (client *Client) EraseVideoSubtitlesWithOptions(request *EraseVideoSubtitlesRequest, runtime *dara.RuntimeOptions) (_result *EraseVideoSubtitlesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BH) {
@@ -1855,7 +1420,7 @@ func (client *Client) EraseVideoSubtitlesAdvance(request *EraseVideoSubtitlesAdv
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1881,9 +1446,11 @@ func (client *Client) EraseVideoSubtitlesAdvance(request *EraseVideoSubtitlesAdv
 //
 // @return GenerateHumanAnimeStyleVideoResponse
 func (client *Client) GenerateHumanAnimeStyleVideoWithOptions(request *GenerateHumanAnimeStyleVideoRequest, runtime *dara.RuntimeOptions) (_result *GenerateHumanAnimeStyleVideoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CartoonStyle) {
@@ -2026,7 +1593,7 @@ func (client *Client) GenerateHumanAnimeStyleVideoAdvance(request *GenerateHuman
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2048,9 +1615,11 @@ func (client *Client) GenerateHumanAnimeStyleVideoAdvance(request *GenerateHuman
 //
 // @return GenerateVideoResponse
 func (client *Client) GenerateVideoWithOptions(request *GenerateVideoRequest, runtime *dara.RuntimeOptions) (_result *GenerateVideoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Duration) {
@@ -2228,7 +1797,7 @@ func (client *Client) GenerateVideoAdvance(request *GenerateVideoAdvanceRequest,
 					"file":                  fileObj,
 					"success_action_status": "201",
 				}
-				_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+				_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 				if _err != nil {
 					return _result, _err
 				}
@@ -2255,9 +1824,11 @@ func (client *Client) GenerateVideoAdvance(request *GenerateVideoAdvanceRequest,
 //
 // @return GetAsyncJobResultResponse
 func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultRequest, runtime *dara.RuntimeOptions) (_result *GetAsyncJobResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -2307,9 +1878,11 @@ func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest) (_res
 //
 // @return InterpolateVideoFrameResponse
 func (client *Client) InterpolateVideoFrameWithOptions(request *InterpolateVideoFrameRequest, runtime *dara.RuntimeOptions) (_result *InterpolateVideoFrameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Bitrate) {
@@ -2452,7 +2025,7 @@ func (client *Client) InterpolateVideoFrameAdvance(request *InterpolateVideoFram
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2474,9 +2047,11 @@ func (client *Client) InterpolateVideoFrameAdvance(request *InterpolateVideoFram
 //
 // @return MergeVideoFaceResponse
 func (client *Client) MergeVideoFaceWithOptions(request *MergeVideoFaceRequest, runtime *dara.RuntimeOptions) (_result *MergeVideoFaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AddWatermark) {
@@ -2627,7 +2202,7 @@ func (client *Client) MergeVideoFaceAdvance(request *MergeVideoFaceAdvanceReques
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2657,7 +2232,7 @@ func (client *Client) MergeVideoFaceAdvance(request *MergeVideoFaceAdvanceReques
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2683,9 +2258,11 @@ func (client *Client) MergeVideoFaceAdvance(request *MergeVideoFaceAdvanceReques
 //
 // @return MergeVideoModelFaceResponse
 func (client *Client) MergeVideoModelFaceWithOptions(request *MergeVideoModelFaceRequest, runtime *dara.RuntimeOptions) (_result *MergeVideoModelFaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AddWatermark) {
@@ -2844,7 +2421,7 @@ func (client *Client) MergeVideoModelFaceAdvance(request *MergeVideoModelFaceAdv
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2870,9 +2447,11 @@ func (client *Client) MergeVideoModelFaceAdvance(request *MergeVideoModelFaceAdv
 //
 // @return QueryFaceVideoTemplateResponse
 func (client *Client) QueryFaceVideoTemplateWithOptions(request *QueryFaceVideoTemplateRequest, runtime *dara.RuntimeOptions) (_result *QueryFaceVideoTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNo) {
@@ -2928,182 +2507,17 @@ func (client *Client) QueryFaceVideoTemplate(request *QueryFaceVideoTemplateRequ
 	return _result, _err
 }
 
-// Summary:
-//
-// 视频降噪
-//
-// @param request - ReduceVideoNoiseRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ReduceVideoNoiseResponse
-func (client *Client) ReduceVideoNoiseWithOptions(request *ReduceVideoNoiseRequest, runtime *dara.RuntimeOptions) (_result *ReduceVideoNoiseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.VideoUrl) {
-		body["VideoUrl"] = request.VideoUrl
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ReduceVideoNoise"),
-		Version:     dara.String("2020-03-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ReduceVideoNoiseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 视频降噪
-//
-// @param request - ReduceVideoNoiseRequest
-//
-// @return ReduceVideoNoiseResponse
-func (client *Client) ReduceVideoNoise(request *ReduceVideoNoiseRequest) (_result *ReduceVideoNoiseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReduceVideoNoiseResponse{}
-	_body, _err := client.ReduceVideoNoiseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ReduceVideoNoiseAdvance(request *ReduceVideoNoiseAdvanceRequest, runtime *dara.RuntimeOptions) (_result *ReduceVideoNoiseResponse, _err error) {
-	// Step 0: init client
-	if dara.IsNil(client.Credential) {
-		_err = &openapi.ClientError{
-			Code:    dara.String("InvalidCredentials"),
-			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
-		}
-		return _result, _err
-	}
-
-	credentialModel, _err := client.Credential.GetCredential()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
-	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
-	securityToken := dara.StringValue(credentialModel.SecurityToken)
-	credentialType := dara.StringValue(credentialModel.Type)
-	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
-	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
-		openPlatformEndpoint = "openplatform.aliyuncs.com"
-	}
-
-	if dara.IsNil(dara.String(credentialType)) {
-		credentialType = "access_key"
-	}
-
-	authConfig := &openapiutil.Config{
-		AccessKeyId:     dara.String(accessKeyId),
-		AccessKeySecret: dara.String(accessKeySecret),
-		SecurityToken:   dara.String(securityToken),
-		Type:            dara.String(credentialType),
-		Endpoint:        dara.String(openPlatformEndpoint),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openapi.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := map[string]*string{
-		"Product":  dara.String("videoenhan"),
-		"RegionId": client.RegionId,
-	}
-	authReq := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(authRequest),
-	}
-	authParams := &openapiutil.Params{
-		Action:      dara.String("AuthorizeFileUpload"),
-		Version:     dara.String("2019-12-19"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	authResponse := map[string]interface{}{}
-	fileObj := &dara.FileField{}
-	ossHeader := map[string]interface{}{}
-	tmpBody := map[string]interface{}{}
-	useAccelerate := false
-	authResponseBody := make(map[string]*string)
-	reduceVideoNoiseReq := &ReduceVideoNoiseRequest{}
-	openapiutil.Convert(request, reduceVideoNoiseReq)
-	if !dara.IsNil(request.VideoUrlObject) {
-		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-
-		tmpBody = dara.ToMap(authResponse["body"])
-		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
-		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
-		fileObj = &dara.FileField{
-			Filename:    authResponseBody["ObjectKey"],
-			Content:     request.VideoUrlObject,
-			ContentType: dara.String(""),
-		}
-		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
-			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
-			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
-			"Signature":             dara.StringValue(authResponseBody["Signature"]),
-			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
-			"file":                  fileObj,
-			"success_action_status": "201",
-		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
-		if _err != nil {
-			return _result, _err
-		}
-		reduceVideoNoiseReq.VideoUrl = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
-	}
-
-	reduceVideoNoiseResp, _err := client.ReduceVideoNoiseWithOptions(reduceVideoNoiseReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = reduceVideoNoiseResp
-	return _result, _err
-}
-
 // @param request - SuperResolveVideoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SuperResolveVideoResponse
 func (client *Client) SuperResolveVideoWithOptions(request *SuperResolveVideoRequest, runtime *dara.RuntimeOptions) (_result *SuperResolveVideoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BitRate) {
@@ -3242,7 +2656,7 @@ func (client *Client) SuperResolveVideoAdvance(request *SuperResolveVideoAdvance
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -3255,173 +2669,6 @@ func (client *Client) SuperResolveVideoAdvance(request *SuperResolveVideoAdvance
 	}
 
 	_result = superResolveVideoResp
-	return _result, _err
-}
-
-// @param request - ToneSdrVideoRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ToneSdrVideoResponse
-func (client *Client) ToneSdrVideoWithOptions(request *ToneSdrVideoRequest, runtime *dara.RuntimeOptions) (_result *ToneSdrVideoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.Bitrate) {
-		body["Bitrate"] = request.Bitrate
-	}
-
-	if !dara.IsNil(request.RecolorModel) {
-		body["RecolorModel"] = request.RecolorModel
-	}
-
-	if !dara.IsNil(request.VideoURL) {
-		body["VideoURL"] = request.VideoURL
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ToneSdrVideo"),
-		Version:     dara.String("2020-03-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ToneSdrVideoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ToneSdrVideoRequest
-//
-// @return ToneSdrVideoResponse
-func (client *Client) ToneSdrVideo(request *ToneSdrVideoRequest) (_result *ToneSdrVideoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ToneSdrVideoResponse{}
-	_body, _err := client.ToneSdrVideoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ToneSdrVideoAdvance(request *ToneSdrVideoAdvanceRequest, runtime *dara.RuntimeOptions) (_result *ToneSdrVideoResponse, _err error) {
-	// Step 0: init client
-	if dara.IsNil(client.Credential) {
-		_err = &openapi.ClientError{
-			Code:    dara.String("InvalidCredentials"),
-			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
-		}
-		return _result, _err
-	}
-
-	credentialModel, _err := client.Credential.GetCredential()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
-	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
-	securityToken := dara.StringValue(credentialModel.SecurityToken)
-	credentialType := dara.StringValue(credentialModel.Type)
-	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
-	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
-		openPlatformEndpoint = "openplatform.aliyuncs.com"
-	}
-
-	if dara.IsNil(dara.String(credentialType)) {
-		credentialType = "access_key"
-	}
-
-	authConfig := &openapiutil.Config{
-		AccessKeyId:     dara.String(accessKeyId),
-		AccessKeySecret: dara.String(accessKeySecret),
-		SecurityToken:   dara.String(securityToken),
-		Type:            dara.String(credentialType),
-		Endpoint:        dara.String(openPlatformEndpoint),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openapi.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := map[string]*string{
-		"Product":  dara.String("videoenhan"),
-		"RegionId": client.RegionId,
-	}
-	authReq := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(authRequest),
-	}
-	authParams := &openapiutil.Params{
-		Action:      dara.String("AuthorizeFileUpload"),
-		Version:     dara.String("2019-12-19"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	authResponse := map[string]interface{}{}
-	fileObj := &dara.FileField{}
-	ossHeader := map[string]interface{}{}
-	tmpBody := map[string]interface{}{}
-	useAccelerate := false
-	authResponseBody := make(map[string]*string)
-	toneSdrVideoReq := &ToneSdrVideoRequest{}
-	openapiutil.Convert(request, toneSdrVideoReq)
-	if !dara.IsNil(request.VideoURLObject) {
-		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-
-		tmpBody = dara.ToMap(authResponse["body"])
-		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
-		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
-		fileObj = &dara.FileField{
-			Filename:    authResponseBody["ObjectKey"],
-			Content:     request.VideoURLObject,
-			ContentType: dara.String(""),
-		}
-		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
-			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
-			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
-			"Signature":             dara.StringValue(authResponseBody["Signature"]),
-			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
-			"file":                  fileObj,
-			"success_action_status": "201",
-		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
-		if _err != nil {
-			return _result, _err
-		}
-		toneSdrVideoReq.VideoURL = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
-	}
-
-	toneSdrVideoResp, _err := client.ToneSdrVideoWithOptions(toneSdrVideoReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = toneSdrVideoResp
 	return _result, _err
 }
 
