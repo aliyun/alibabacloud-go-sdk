@@ -9,6 +9,8 @@ type iGenerateWuyingServerSceneUrlRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApiKey(v string) *GenerateWuyingServerSceneUrlRequest
+	GetApiKey() *string
 	SetClientId(v string) *GenerateWuyingServerSceneUrlRequest
 	GetClientId() *string
 	SetClientIp(v string) *GenerateWuyingServerSceneUrlRequest
@@ -38,6 +40,8 @@ type iGenerateWuyingServerSceneUrlRequest interface {
 }
 
 type GenerateWuyingServerSceneUrlRequest struct {
+	// This parameter is required.
+	ApiKey        *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
 	ClientId      *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	ClientIp      *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
 	ClientOS      *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
@@ -45,13 +49,11 @@ type GenerateWuyingServerSceneUrlRequest struct {
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
 	EndUserId     *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	LoginRegionId *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
-	// This parameter is required.
-	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	LoginToken    *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
 	// This parameter is required.
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// This parameter is required.
-	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// This parameter is required.
+	Scene     *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	Uuid      *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 	// This parameter is required.
@@ -64,6 +66,10 @@ func (s GenerateWuyingServerSceneUrlRequest) String() string {
 
 func (s GenerateWuyingServerSceneUrlRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GenerateWuyingServerSceneUrlRequest) GetApiKey() *string {
+	return s.ApiKey
 }
 
 func (s *GenerateWuyingServerSceneUrlRequest) GetClientId() *string {
@@ -116,6 +122,11 @@ func (s *GenerateWuyingServerSceneUrlRequest) GetUuid() *string {
 
 func (s *GenerateWuyingServerSceneUrlRequest) GetWuyingServerId() *string {
 	return s.WuyingServerId
+}
+
+func (s *GenerateWuyingServerSceneUrlRequest) SetApiKey(v string) *GenerateWuyingServerSceneUrlRequest {
+	s.ApiKey = &v
+	return s
 }
 
 func (s *GenerateWuyingServerSceneUrlRequest) SetClientId(v string) *GenerateWuyingServerSceneUrlRequest {

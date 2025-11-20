@@ -833,6 +833,10 @@ func (client *Client) GenerateWuyingServerSceneUrlWithOptions(request *GenerateW
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKey) {
+		body["ApiKey"] = request.ApiKey
+	}
+
 	if !dara.IsNil(request.ClientId) {
 		body["ClientId"] = request.ClientId
 	}
