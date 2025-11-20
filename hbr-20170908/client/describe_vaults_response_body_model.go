@@ -161,7 +161,12 @@ func (s *DescribeVaultsResponseBody) SetVaults(v *DescribeVaultsResponseBodyVaul
 }
 
 func (s *DescribeVaultsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Vaults != nil {
+		if err := s.Vaults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVaultsResponseBodyVaults struct {
@@ -186,7 +191,16 @@ func (s *DescribeVaultsResponseBodyVaults) SetVault(v []*DescribeVaultsResponseB
 }
 
 func (s *DescribeVaultsResponseBodyVaults) Validate() error {
-	return dara.Validate(s)
+	if s.Vault != nil {
+		for _, item := range s.Vault {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVaultsResponseBodyVaultsVault struct {
@@ -838,7 +852,32 @@ func (s *DescribeVaultsResponseBodyVaultsVault) SetWormEnabled(v bool) *Describe
 }
 
 func (s *DescribeVaultsResponseBodyVaultsVault) Validate() error {
-	return dara.Validate(s)
+	if s.BackupPlanStatistics != nil {
+		if err := s.BackupPlanStatistics.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReplicationProgress != nil {
+		if err := s.ReplicationProgress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceTypes != nil {
+		if err := s.SourceTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TrialInfo != nil {
+		if err := s.TrialInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics struct {
@@ -1173,7 +1212,16 @@ func (s *DescribeVaultsResponseBodyVaultsVaultTags) SetTag(v []*DescribeVaultsRe
 }
 
 func (s *DescribeVaultsResponseBodyVaultsVaultTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVaultsResponseBodyVaultsVaultTagsTag struct {

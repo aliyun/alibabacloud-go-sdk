@@ -59,5 +59,10 @@ func (s *DescribeRestoreJobs2Response) SetBody(v *DescribeRestoreJobs2ResponseBo
 }
 
 func (s *DescribeRestoreJobs2Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

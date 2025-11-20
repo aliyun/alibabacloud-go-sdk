@@ -125,7 +125,16 @@ func (s *DescribeUdmSnapshotsResponseBody) SetTotalCount(v int64) *DescribeUdmSn
 }
 
 func (s *DescribeUdmSnapshotsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Snapshots != nil {
+		for _, item := range s.Snapshots {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUdmSnapshotsResponseBodySnapshots struct {
@@ -614,7 +623,12 @@ func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetUpdatedTime(v int64) *Des
 }
 
 func (s *DescribeUdmSnapshotsResponseBodySnapshots) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		if err := s.Detail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUdmSnapshotsResponseBodySnapshotsDetail struct {

@@ -163,7 +163,12 @@ func (s *DescribeRestoreJobs2ResponseBody) SetTotalCount(v int32) *DescribeResto
 }
 
 func (s *DescribeRestoreJobs2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RestoreJobs != nil {
+		if err := s.RestoreJobs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRestoreJobs2ResponseBodyRestoreJobs struct {
@@ -188,7 +193,16 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobs) SetRestoreJob(v []*Describ
 }
 
 func (s *DescribeRestoreJobs2ResponseBodyRestoreJobs) Validate() error {
-	return dara.Validate(s)
+	if s.RestoreJob != nil {
+		for _, item := range s.RestoreJob {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob struct {
@@ -955,7 +969,17 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetVaultId(v str
 }
 
 func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) Validate() error {
-	return dara.Validate(s)
+	if s.OtsDetail != nil {
+		if err := s.OtsDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Report != nil {
+		if err := s.Report.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail struct {

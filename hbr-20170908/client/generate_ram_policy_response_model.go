@@ -59,5 +59,10 @@ func (s *GenerateRamPolicyResponse) SetBody(v *GenerateRamPolicyResponseBody) *G
 }
 
 func (s *GenerateRamPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

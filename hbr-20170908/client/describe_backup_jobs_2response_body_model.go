@@ -159,7 +159,12 @@ func (s *DescribeBackupJobs2ResponseBody) SetTotalCount(v int64) *DescribeBackup
 }
 
 func (s *DescribeBackupJobs2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BackupJobs != nil {
+		if err := s.BackupJobs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackupJobs2ResponseBodyBackupJobs struct {
@@ -184,7 +189,16 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobs) SetBackupJob(v []*DescribeBa
 }
 
 func (s *DescribeBackupJobs2ResponseBodyBackupJobs) Validate() error {
-	return dara.Validate(s)
+	if s.BackupJob != nil {
+		for _, item := range s.BackupJob {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
@@ -916,7 +930,27 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetVaultId(v string
 }
 
 func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		if err := s.Detail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OtsDetail != nil {
+		if err := s.OtsDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Paths != nil {
+		if err := s.Paths.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Report != nil {
+		if err := s.Report.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail struct {
@@ -1105,7 +1139,12 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail) SetNativeSnap
 }
 
 func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail) Validate() error {
-	return dara.Validate(s)
+	if s.DiskNativeSnapshotIdList != nil {
+		if err := s.DiskNativeSnapshotIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetailDiskNativeSnapshotIdList struct {
@@ -1156,7 +1195,12 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobOtsDetail) SetTableNa
 }
 
 func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobOtsDetail) Validate() error {
-	return dara.Validate(s)
+	if s.TableNames != nil {
+		if err := s.TableNames.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackupJobs2ResponseBodyBackupJobsBackupJobOtsDetailTableNames struct {

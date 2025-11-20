@@ -121,7 +121,16 @@ func (s *DescribePolicyBindingsRequest) SetSourceType(v string) *DescribePolicyB
 }
 
 func (s *DescribePolicyBindingsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filters != nil {
+		for _, item := range s.Filters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePolicyBindingsRequestFilters struct {

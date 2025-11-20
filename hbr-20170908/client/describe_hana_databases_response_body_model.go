@@ -159,7 +159,12 @@ func (s *DescribeHanaDatabasesResponseBody) SetTotalCount(v int64) *DescribeHana
 }
 
 func (s *DescribeHanaDatabasesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HanaDatabases != nil {
+		if err := s.HanaDatabases.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHanaDatabasesResponseBodyHanaDatabases struct {
@@ -184,7 +189,16 @@ func (s *DescribeHanaDatabasesResponseBodyHanaDatabases) SetHanaDatabase(v []*De
 }
 
 func (s *DescribeHanaDatabasesResponseBodyHanaDatabases) Validate() error {
-	return dara.Validate(s)
+	if s.HanaDatabase != nil {
+		for _, item := range s.HanaDatabase {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase struct {

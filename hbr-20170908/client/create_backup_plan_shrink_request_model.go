@@ -601,7 +601,16 @@ func (s *CreateBackupPlanShrinkRequest) SetVaultId(v string) *CreateBackupPlanSh
 }
 
 func (s *CreateBackupPlanShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Rule != nil {
+		for _, item := range s.Rule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateBackupPlanShrinkRequestRule struct {

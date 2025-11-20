@@ -59,5 +59,10 @@ func (s *DescribeRecoverableOtsInstancesResponse) SetBody(v *DescribeRecoverable
 }
 
 func (s *DescribeRecoverableOtsInstancesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

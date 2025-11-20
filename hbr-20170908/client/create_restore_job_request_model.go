@@ -560,5 +560,10 @@ func (s *CreateRestoreJobRequest) SetVaultId(v string) *CreateRestoreJobRequest 
 }
 
 func (s *CreateRestoreJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.OtsDetail != nil {
+		if err := s.OtsDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

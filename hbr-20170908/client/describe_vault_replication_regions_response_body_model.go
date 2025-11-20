@@ -108,7 +108,12 @@ func (s *DescribeVaultReplicationRegionsResponseBody) SetSuccess(v bool) *Descri
 }
 
 func (s *DescribeVaultReplicationRegionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Regions != nil {
+		if err := s.Regions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVaultReplicationRegionsResponseBodyRegions struct {

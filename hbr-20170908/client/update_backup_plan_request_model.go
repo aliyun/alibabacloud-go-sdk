@@ -376,7 +376,21 @@ func (s *UpdateBackupPlanRequest) SetVaultId(v string) *UpdateBackupPlanRequest 
 }
 
 func (s *UpdateBackupPlanRequest) Validate() error {
-	return dara.Validate(s)
+	if s.OtsDetail != nil {
+		if err := s.OtsDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rule != nil {
+		for _, item := range s.Rule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateBackupPlanRequestRule struct {

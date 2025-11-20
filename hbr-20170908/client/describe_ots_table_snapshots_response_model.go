@@ -59,5 +59,10 @@ func (s *DescribeOtsTableSnapshotsResponse) SetBody(v *DescribeOtsTableSnapshots
 }
 
 func (s *DescribeOtsTableSnapshotsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

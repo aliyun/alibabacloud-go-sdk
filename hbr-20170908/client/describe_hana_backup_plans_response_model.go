@@ -59,5 +59,10 @@ func (s *DescribeHanaBackupPlansResponse) SetBody(v *DescribeHanaBackupPlansResp
 }
 
 func (s *DescribeHanaBackupPlansResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

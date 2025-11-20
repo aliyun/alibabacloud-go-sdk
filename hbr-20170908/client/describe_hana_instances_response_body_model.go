@@ -159,7 +159,12 @@ func (s *DescribeHanaInstancesResponseBody) SetTotalCount(v int32) *DescribeHana
 }
 
 func (s *DescribeHanaInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Hanas != nil {
+		if err := s.Hanas.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHanaInstancesResponseBodyHanas struct {
@@ -184,7 +189,16 @@ func (s *DescribeHanaInstancesResponseBodyHanas) SetHana(v []*DescribeHanaInstan
 }
 
 func (s *DescribeHanaInstancesResponseBodyHanas) Validate() error {
-	return dara.Validate(s)
+	if s.Hana != nil {
+		for _, item := range s.Hana {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHanaInstancesResponseBodyHanasHana struct {
@@ -451,7 +465,12 @@ func (s *DescribeHanaInstancesResponseBodyHanasHana) SetVaultId(v string) *Descr
 }
 
 func (s *DescribeHanaInstancesResponseBodyHanasHana) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHanaInstancesResponseBodyHanasHanaTags struct {
@@ -476,7 +495,16 @@ func (s *DescribeHanaInstancesResponseBodyHanasHanaTags) SetTag(v []*DescribeHan
 }
 
 func (s *DescribeHanaInstancesResponseBodyHanasHanaTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHanaInstancesResponseBodyHanasHanaTagsTag struct {

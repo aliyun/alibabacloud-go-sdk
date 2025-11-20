@@ -159,7 +159,12 @@ func (s *DescribeHanaBackupPlansResponseBody) SetTotalCount(v int64) *DescribeHa
 }
 
 func (s *DescribeHanaBackupPlansResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HanaBackupPlans != nil {
+		if err := s.HanaBackupPlans.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHanaBackupPlansResponseBodyHanaBackupPlans struct {
@@ -184,7 +189,16 @@ func (s *DescribeHanaBackupPlansResponseBodyHanaBackupPlans) SetHanaBackupPlan(v
 }
 
 func (s *DescribeHanaBackupPlansResponseBodyHanaBackupPlans) Validate() error {
-	return dara.Validate(s)
+	if s.HanaBackupPlan != nil {
+		for _, item := range s.HanaBackupPlan {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan struct {

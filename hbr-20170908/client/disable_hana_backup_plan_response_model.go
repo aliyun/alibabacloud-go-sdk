@@ -59,5 +59,10 @@ func (s *DisableHanaBackupPlanResponse) SetBody(v *DisableHanaBackupPlanResponse
 }
 
 func (s *DisableHanaBackupPlanResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *CreatePolicyV2Response) SetBody(v *CreatePolicyV2ResponseBody) *CreateP
 }
 
 func (s *CreatePolicyV2Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,16 @@ func (s *CreatePolicyBindingsRequest) SetPolicyId(v string) *CreatePolicyBinding
 }
 
 func (s *CreatePolicyBindingsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PolicyBindingList != nil {
+		for _, item := range s.PolicyBindingList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreatePolicyBindingsRequestPolicyBindingList struct {
@@ -290,7 +299,12 @@ func (s *CreatePolicyBindingsRequestPolicyBindingList) SetSpeedLimit(v string) *
 }
 
 func (s *CreatePolicyBindingsRequestPolicyBindingList) Validate() error {
-	return dara.Validate(s)
+	if s.AdvancedOptions != nil {
+		if err := s.AdvancedOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions struct {
@@ -360,7 +374,32 @@ func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions) SetUdmDeta
 }
 
 func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions) Validate() error {
-	return dara.Validate(s)
+	if s.CommonFileSystemDetail != nil {
+		if err := s.CommonFileSystemDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CommonNasDetail != nil {
+		if err := s.CommonNasDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FileDetail != nil {
+		if err := s.FileDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OssDetail != nil {
+		if err := s.OssDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UdmDetail != nil {
+		if err := s.UdmDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonFileSystemDetail struct {

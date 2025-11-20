@@ -601,7 +601,21 @@ func (s *CreateBackupPlanRequest) SetVaultId(v string) *CreateBackupPlanRequest 
 }
 
 func (s *CreateBackupPlanRequest) Validate() error {
-	return dara.Validate(s)
+	if s.OtsDetail != nil {
+		if err := s.OtsDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rule != nil {
+		for _, item := range s.Rule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateBackupPlanRequestRule struct {

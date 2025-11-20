@@ -159,7 +159,12 @@ func (s *DescribeHanaRestoresResponseBody) SetTotalCount(v int32) *DescribeHanaR
 }
 
 func (s *DescribeHanaRestoresResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HanaRestore != nil {
+		if err := s.HanaRestore.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHanaRestoresResponseBodyHanaRestore struct {
@@ -184,7 +189,16 @@ func (s *DescribeHanaRestoresResponseBodyHanaRestore) SetHanaRestores(v []*Descr
 }
 
 func (s *DescribeHanaRestoresResponseBodyHanaRestore) Validate() error {
-	return dara.Validate(s)
+	if s.HanaRestores != nil {
+		for _, item := range s.HanaRestores {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores struct {

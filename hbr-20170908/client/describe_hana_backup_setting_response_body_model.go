@@ -108,7 +108,12 @@ func (s *DescribeHanaBackupSettingResponseBody) SetSuccess(v bool) *DescribeHana
 }
 
 func (s *DescribeHanaBackupSettingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HanaBackupSetting != nil {
+		if err := s.HanaBackupSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHanaBackupSettingResponseBodyHanaBackupSetting struct {

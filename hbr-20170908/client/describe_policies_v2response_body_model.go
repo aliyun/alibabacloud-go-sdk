@@ -161,7 +161,16 @@ func (s *DescribePoliciesV2ResponseBody) SetTotalCount(v int64) *DescribePolicie
 }
 
 func (s *DescribePoliciesV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Policies != nil {
+		for _, item := range s.Policies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePoliciesV2ResponseBodyPolicies struct {
@@ -306,7 +315,16 @@ func (s *DescribePoliciesV2ResponseBodyPolicies) SetUpdatedTime(v int64) *Descri
 }
 
 func (s *DescribePoliciesV2ResponseBodyPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePoliciesV2ResponseBodyPoliciesRules struct {
@@ -522,7 +540,34 @@ func (s *DescribePoliciesV2ResponseBodyPoliciesRules) SetVaultId(v string) *Desc
 }
 
 func (s *DescribePoliciesV2ResponseBodyPoliciesRules) Validate() error {
-	return dara.Validate(s)
+	if s.DataSourceFilters != nil {
+		for _, item := range s.DataSourceFilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RetentionRules != nil {
+		for _, item := range s.RetentionRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TagFilters != nil {
+		for _, item := range s.TagFilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters struct {

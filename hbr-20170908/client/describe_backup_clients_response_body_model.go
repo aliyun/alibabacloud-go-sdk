@@ -163,7 +163,16 @@ func (s *DescribeBackupClientsResponseBody) SetTotalCount(v int64) *DescribeBack
 }
 
 func (s *DescribeBackupClientsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Clients != nil {
+		for _, item := range s.Clients {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackupClientsResponseBodyClients struct {
@@ -499,7 +508,21 @@ func (s *DescribeBackupClientsResponseBodyClients) SetZoneId(v string) *Describe
 }
 
 func (s *DescribeBackupClientsResponseBodyClients) Validate() error {
-	return dara.Validate(s)
+	if s.Settings != nil {
+		if err := s.Settings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackupClientsResponseBodyClientsSettings struct {

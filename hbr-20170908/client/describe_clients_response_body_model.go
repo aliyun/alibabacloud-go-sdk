@@ -159,7 +159,12 @@ func (s *DescribeClientsResponseBody) SetTotalCount(v int32) *DescribeClientsRes
 }
 
 func (s *DescribeClientsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Clients != nil {
+		if err := s.Clients.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClientsResponseBodyClients struct {
@@ -184,7 +189,16 @@ func (s *DescribeClientsResponseBodyClients) SetClient(v []*DescribeClientsRespo
 }
 
 func (s *DescribeClientsResponseBodyClients) Validate() error {
-	return dara.Validate(s)
+	if s.Client != nil {
+		for _, item := range s.Client {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClientsResponseBodyClientsClient struct {

@@ -172,7 +172,16 @@ func (s *DescribeOtsTableSnapshotsRequest) SetStartTime(v int64) *DescribeOtsTab
 }
 
 func (s *DescribeOtsTableSnapshotsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.OtsInstances != nil {
+		for _, item := range s.OtsInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOtsTableSnapshotsRequestOtsInstances struct {

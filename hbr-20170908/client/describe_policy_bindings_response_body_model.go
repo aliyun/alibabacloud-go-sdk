@@ -161,7 +161,16 @@ func (s *DescribePolicyBindingsResponseBody) SetTotalCount(v int64) *DescribePol
 }
 
 func (s *DescribePolicyBindingsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PolicyBindings != nil {
+		for _, item := range s.PolicyBindings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindings struct {
@@ -456,7 +465,21 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetUpdatedTime(v int6
 }
 
 func (s *DescribePolicyBindingsResponseBodyPolicyBindings) Validate() error {
-	return dara.Validate(s)
+	if s.AdvancedOptions != nil {
+		if err := s.AdvancedOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HitTags != nil {
+		for _, item := range s.HitTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions struct {
@@ -526,7 +549,32 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions) SetUdm
 }
 
 func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions) Validate() error {
-	return dara.Validate(s)
+	if s.CommonFileSystemDetail != nil {
+		if err := s.CommonFileSystemDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CommonNasDetail != nil {
+		if err := s.CommonNasDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FileDetail != nil {
+		if err := s.FileDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OssDetail != nil {
+		if err := s.OssDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UdmDetail != nil {
+		if err := s.UdmDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonFileSystemDetail struct {

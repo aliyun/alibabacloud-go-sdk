@@ -125,7 +125,16 @@ func (s *UninstallBackupClientsResponseBody) SetTaskId(v string) *UninstallBacku
 }
 
 func (s *UninstallBackupClientsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceStatuses != nil {
+		for _, item := range s.InstanceStatuses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UninstallBackupClientsResponseBodyInstanceStatuses struct {

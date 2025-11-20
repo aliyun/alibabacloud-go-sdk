@@ -209,7 +209,12 @@ func (s *UpdatePolicyBindingRequest) SetSpeedLimit(v string) *UpdatePolicyBindin
 }
 
 func (s *UpdatePolicyBindingRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AdvancedOptions != nil {
+		if err := s.AdvancedOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdatePolicyBindingRequestAdvancedOptions struct {
@@ -257,7 +262,22 @@ func (s *UpdatePolicyBindingRequestAdvancedOptions) SetUdmDetail(v *UpdatePolicy
 }
 
 func (s *UpdatePolicyBindingRequestAdvancedOptions) Validate() error {
-	return dara.Validate(s)
+	if s.CommonFileSystemDetail != nil {
+		if err := s.CommonFileSystemDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OssDetail != nil {
+		if err := s.OssDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UdmDetail != nil {
+		if err := s.UdmDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdatePolicyBindingRequestAdvancedOptionsCommonFileSystemDetail struct {

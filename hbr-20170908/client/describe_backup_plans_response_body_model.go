@@ -159,7 +159,12 @@ func (s *DescribeBackupPlansResponseBody) SetTotalCount(v int64) *DescribeBackup
 }
 
 func (s *DescribeBackupPlansResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BackupPlans != nil {
+		if err := s.BackupPlans.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackupPlansResponseBodyBackupPlans struct {
@@ -184,7 +189,16 @@ func (s *DescribeBackupPlansResponseBodyBackupPlans) SetBackupPlan(v []*Describe
 }
 
 func (s *DescribeBackupPlansResponseBodyBackupPlans) Validate() error {
-	return dara.Validate(s)
+	if s.BackupPlan != nil {
+		for _, item := range s.BackupPlan {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackupPlansResponseBodyBackupPlansBackupPlan struct {
@@ -862,7 +876,37 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetVaultId(v stri
 }
 
 func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) Validate() error {
-	return dara.Validate(s)
+	if s.HitTags != nil {
+		if err := s.HitTags.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OtsDetail != nil {
+		if err := s.OtsDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Paths != nil {
+		if err := s.Paths.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Resources != nil {
+		if err := s.Resources.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		if err := s.Rules.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TrialInfo != nil {
+		if err := s.TrialInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags struct {
@@ -887,7 +931,16 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags) SetHitTag(
 }
 
 func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags) Validate() error {
-	return dara.Validate(s)
+	if s.HitTag != nil {
+		for _, item := range s.HitTag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag struct {
@@ -977,7 +1030,12 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanOtsDetail) SetTable
 }
 
 func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanOtsDetail) Validate() error {
-	return dara.Validate(s)
+	if s.TableNames != nil {
+		if err := s.TableNames.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackupPlansResponseBodyBackupPlansBackupPlanOtsDetailTableNames struct {
@@ -1052,7 +1110,16 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanResources) SetResou
 }
 
 func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanResources) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		for _, item := range s.Resource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackupPlansResponseBodyBackupPlansBackupPlanResourcesResource struct {
@@ -1137,7 +1204,16 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanRules) SetRule(v []
 }
 
 func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanRules) Validate() error {
-	return dara.Validate(s)
+	if s.Rule != nil {
+		for _, item := range s.Rule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackupPlansResponseBodyBackupPlansBackupPlanRulesRule struct {

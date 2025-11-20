@@ -59,5 +59,10 @@ func (s *UninstallBackupClientsResponse) SetBody(v *UninstallBackupClientsRespon
 }
 
 func (s *UninstallBackupClientsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

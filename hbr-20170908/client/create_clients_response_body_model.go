@@ -125,7 +125,12 @@ func (s *CreateClientsResponseBody) SetTaskId(v string) *CreateClientsResponseBo
 }
 
 func (s *CreateClientsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceStatuses != nil {
+		if err := s.InstanceStatuses.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateClientsResponseBodyInstanceStatuses struct {
@@ -150,7 +155,16 @@ func (s *CreateClientsResponseBodyInstanceStatuses) SetInstanceStatus(v []*Creat
 }
 
 func (s *CreateClientsResponseBodyInstanceStatuses) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceStatus != nil {
+		for _, item := range s.InstanceStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateClientsResponseBodyInstanceStatusesInstanceStatus struct {

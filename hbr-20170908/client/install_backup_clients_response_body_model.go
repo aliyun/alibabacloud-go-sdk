@@ -125,7 +125,16 @@ func (s *InstallBackupClientsResponseBody) SetTaskId(v string) *InstallBackupCli
 }
 
 func (s *InstallBackupClientsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceStatuses != nil {
+		for _, item := range s.InstanceStatuses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InstallBackupClientsResponseBodyInstanceStatuses struct {

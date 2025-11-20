@@ -108,7 +108,16 @@ func (s *DescribeRecoverableOtsInstancesResponseBody) SetSuccess(v bool) *Descri
 }
 
 func (s *DescribeRecoverableOtsInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OtsInstances != nil {
+		for _, item := range s.OtsInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRecoverableOtsInstancesResponseBodyOtsInstances struct {

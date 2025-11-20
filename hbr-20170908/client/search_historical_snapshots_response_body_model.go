@@ -159,7 +159,12 @@ func (s *SearchHistoricalSnapshotsResponseBody) SetTotalCount(v int32) *SearchHi
 }
 
 func (s *SearchHistoricalSnapshotsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Snapshots != nil {
+		if err := s.Snapshots.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchHistoricalSnapshotsResponseBodySnapshots struct {
@@ -184,7 +189,16 @@ func (s *SearchHistoricalSnapshotsResponseBodySnapshots) SetSnapshot(v []*Search
 }
 
 func (s *SearchHistoricalSnapshotsResponseBodySnapshots) Validate() error {
-	return dara.Validate(s)
+	if s.Snapshot != nil {
+		for _, item := range s.Snapshot {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot struct {
@@ -836,7 +850,12 @@ func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetVaultId(v st
 }
 
 func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) Validate() error {
-	return dara.Validate(s)
+	if s.Paths != nil {
+		if err := s.Paths.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchHistoricalSnapshotsResponseBodySnapshotsSnapshotPaths struct {

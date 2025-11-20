@@ -59,5 +59,10 @@ func (s *DescribeVaultsResponse) SetBody(v *DescribeVaultsResponseBody) *Describ
 }
 
 func (s *DescribeVaultsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

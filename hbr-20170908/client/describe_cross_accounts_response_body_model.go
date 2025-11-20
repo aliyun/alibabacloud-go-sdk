@@ -159,7 +159,12 @@ func (s *DescribeCrossAccountsResponseBody) SetTotalCount(v int64) *DescribeCros
 }
 
 func (s *DescribeCrossAccountsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CrossAccounts != nil {
+		if err := s.CrossAccounts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCrossAccountsResponseBodyCrossAccounts struct {
@@ -184,7 +189,16 @@ func (s *DescribeCrossAccountsResponseBodyCrossAccounts) SetCrossAccount(v []*De
 }
 
 func (s *DescribeCrossAccountsResponseBodyCrossAccounts) Validate() error {
-	return dara.Validate(s)
+	if s.CrossAccount != nil {
+		for _, item := range s.CrossAccount {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount struct {

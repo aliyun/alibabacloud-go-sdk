@@ -97,7 +97,16 @@ func (s *CreatePolicyV2Request) SetRules(v []*CreatePolicyV2RequestRules) *Creat
 }
 
 func (s *CreatePolicyV2Request) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreatePolicyV2RequestRules struct {
@@ -299,7 +308,34 @@ func (s *CreatePolicyV2RequestRules) SetVaultId(v string) *CreatePolicyV2Request
 }
 
 func (s *CreatePolicyV2RequestRules) Validate() error {
-	return dara.Validate(s)
+	if s.DataSourceFilters != nil {
+		for _, item := range s.DataSourceFilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RetentionRules != nil {
+		for _, item := range s.RetentionRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TagFilters != nil {
+		for _, item := range s.TagFilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreatePolicyV2RequestRulesDataSourceFilters struct {

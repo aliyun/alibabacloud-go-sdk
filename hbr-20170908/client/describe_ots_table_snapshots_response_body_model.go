@@ -142,7 +142,16 @@ func (s *DescribeOtsTableSnapshotsResponseBody) SetSuccess(v bool) *DescribeOtsT
 }
 
 func (s *DescribeOtsTableSnapshotsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Snapshots != nil {
+		for _, item := range s.Snapshots {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOtsTableSnapshotsResponseBodySnapshots struct {
