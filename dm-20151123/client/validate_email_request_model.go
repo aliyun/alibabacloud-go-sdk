@@ -9,6 +9,8 @@ type iValidateEmailRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCheckGraylist(v bool) *ValidateEmailRequest
+	GetCheckGraylist() *bool
 	SetEmail(v string) *ValidateEmailRequest
 	GetEmail() *string
 	SetTimeout(v int64) *ValidateEmailRequest
@@ -16,6 +18,7 @@ type iValidateEmailRequest interface {
 }
 
 type ValidateEmailRequest struct {
+	CheckGraylist *bool `json:"CheckGraylist,omitempty" xml:"CheckGraylist,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -36,12 +39,21 @@ func (s ValidateEmailRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ValidateEmailRequest) GetCheckGraylist() *bool {
+	return s.CheckGraylist
+}
+
 func (s *ValidateEmailRequest) GetEmail() *string {
 	return s.Email
 }
 
 func (s *ValidateEmailRequest) GetTimeout() *int64 {
 	return s.Timeout
+}
+
+func (s *ValidateEmailRequest) SetCheckGraylist(v bool) *ValidateEmailRequest {
+	s.CheckGraylist = &v
+	return s
 }
 
 func (s *ValidateEmailRequest) SetEmail(v string) *ValidateEmailRequest {

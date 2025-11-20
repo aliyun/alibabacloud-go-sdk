@@ -4314,6 +4314,10 @@ func (client *Client) ValidateEmailWithContext(ctx context.Context, request *Val
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CheckGraylist) {
+		query["CheckGraylist"] = request.CheckGraylist
+	}
+
 	if !dara.IsNil(request.Email) {
 		query["Email"] = request.Email
 	}

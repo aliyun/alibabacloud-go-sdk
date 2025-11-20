@@ -14,6 +14,9 @@ type iDeleteValidateFileRequest interface {
 }
 
 type DeleteValidateFileRequest struct {
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxx
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
 }
 
