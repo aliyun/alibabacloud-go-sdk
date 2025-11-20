@@ -62,7 +62,21 @@ func (s *CreateRunResponseBody) SetRun(v *CreateRunResponseBodyRun) *CreateRunRe
 }
 
 func (s *CreateRunResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		for _, item := range s.Messages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Run != nil {
+		if err := s.Run.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateRunResponseBodyMessages struct {
@@ -175,7 +189,17 @@ func (s *CreateRunResponseBodyMessages) SetThreadId(v string) *CreateRunResponse
 }
 
 func (s *CreateRunResponseBodyMessages) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ContentStruct != nil {
+		if err := s.ContentStruct.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateRunResponseBodyMessagesContent struct {
@@ -268,7 +292,37 @@ func (s *CreateRunResponseBodyMessagesContent) SetType(v string) *CreateRunRespo
 }
 
 func (s *CreateRunResponseBodyMessagesContent) Validate() error {
-	return dara.Validate(s)
+	if s.CardCallback != nil {
+		if err := s.CardCallback.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DingCard != nil {
+		if err := s.DingCard.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DingNormalCard != nil {
+		if err := s.DingNormalCard.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Markdown != nil {
+		if err := s.Markdown.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructView != nil {
+		if err := s.StructView.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Text != nil {
+		if err := s.Text.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateRunResponseBodyMessagesContentCardCallback struct {
@@ -458,7 +512,26 @@ func (s *CreateRunResponseBodyMessagesContentDingNormalCard) SetPrivateData(v ma
 }
 
 func (s *CreateRunResponseBodyMessagesContentDingNormalCard) Validate() error {
-	return dara.Validate(s)
+	if s.CardData != nil {
+		if err := s.CardData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CardUpdateOptions != nil {
+		if err := s.CardUpdateOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DynamicDataSourceConfigs != nil {
+		for _, item := range s.DynamicDataSourceConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateRunResponseBodyMessagesContentDingNormalCardCardData struct {
@@ -578,7 +651,12 @@ func (s *CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConf
 }
 
 func (s *CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.PullConfig != nil {
+		if err := s.PullConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig struct {
@@ -687,7 +765,16 @@ func (s *CreateRunResponseBodyMessagesContentStructView) SetParts(v []*CreateRun
 }
 
 func (s *CreateRunResponseBodyMessagesContentStructView) Validate() error {
-	return dara.Validate(s)
+	if s.Parts != nil {
+		for _, item := range s.Parts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateRunResponseBodyMessagesContentStructViewParts struct {
@@ -828,7 +915,32 @@ func (s *CreateRunResponseBodyMessagesContentStructViewParts) SetType(v string) 
 }
 
 func (s *CreateRunResponseBodyMessagesContentStructViewParts) Validate() error {
-	return dara.Validate(s)
+	if s.DataPart != nil {
+		if err := s.DataPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReasonPart != nil {
+		if err := s.ReasonPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RecommendPart != nil {
+		if err := s.RecommendPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReferencePart != nil {
+		if err := s.ReferencePart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextPart != nil {
+		if err := s.TextPart.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateRunResponseBodyMessagesContentStructViewPartsDataPart struct {
@@ -906,7 +1018,16 @@ func (s *CreateRunResponseBodyMessagesContentStructViewPartsRecommendPart) SetRe
 }
 
 func (s *CreateRunResponseBodyMessagesContentStructViewPartsRecommendPart) Validate() error {
-	return dara.Validate(s)
+	if s.Recommends != nil {
+		for _, item := range s.Recommends {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateRunResponseBodyMessagesContentStructViewPartsRecommendPartRecommends struct {
@@ -976,7 +1097,16 @@ func (s *CreateRunResponseBodyMessagesContentStructViewPartsReferencePart) SetRe
 }
 
 func (s *CreateRunResponseBodyMessagesContentStructViewPartsReferencePart) Validate() error {
-	return dara.Validate(s)
+	if s.References != nil {
+		for _, item := range s.References {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences struct {
@@ -1160,7 +1290,16 @@ func (s *CreateRunResponseBodyMessagesContentStruct) SetParts(v []*CreateRunResp
 }
 
 func (s *CreateRunResponseBodyMessagesContentStruct) Validate() error {
-	return dara.Validate(s)
+	if s.Parts != nil {
+		for _, item := range s.Parts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateRunResponseBodyMessagesContentStructParts struct {
@@ -1301,7 +1440,32 @@ func (s *CreateRunResponseBodyMessagesContentStructParts) SetType(v string) *Cre
 }
 
 func (s *CreateRunResponseBodyMessagesContentStructParts) Validate() error {
-	return dara.Validate(s)
+	if s.DataPart != nil {
+		if err := s.DataPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReasonPart != nil {
+		if err := s.ReasonPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RecommendPart != nil {
+		if err := s.RecommendPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReferencePart != nil {
+		if err := s.ReferencePart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextPart != nil {
+		if err := s.TextPart.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateRunResponseBodyMessagesContentStructPartsDataPart struct {
@@ -1379,7 +1543,16 @@ func (s *CreateRunResponseBodyMessagesContentStructPartsRecommendPart) SetRecomm
 }
 
 func (s *CreateRunResponseBodyMessagesContentStructPartsRecommendPart) Validate() error {
-	return dara.Validate(s)
+	if s.Recommends != nil {
+		for _, item := range s.Recommends {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateRunResponseBodyMessagesContentStructPartsRecommendPartRecommends struct {
@@ -1449,7 +1622,16 @@ func (s *CreateRunResponseBodyMessagesContentStructPartsReferencePart) SetRefere
 }
 
 func (s *CreateRunResponseBodyMessagesContentStructPartsReferencePart) Validate() error {
-	return dara.Validate(s)
+	if s.References != nil {
+		for _, item := range s.References {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences struct {

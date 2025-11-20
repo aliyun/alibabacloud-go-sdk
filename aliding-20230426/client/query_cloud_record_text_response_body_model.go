@@ -67,7 +67,16 @@ func (s *QueryCloudRecordTextResponseBody) SetRequestId(v string) *QueryCloudRec
 }
 
 func (s *QueryCloudRecordTextResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ParagraphList != nil {
+		for _, item := range s.ParagraphList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryCloudRecordTextResponseBodyParagraphList struct {
@@ -196,7 +205,16 @@ func (s *QueryCloudRecordTextResponseBodyParagraphList) SetUserId(v string) *Que
 }
 
 func (s *QueryCloudRecordTextResponseBodyParagraphList) Validate() error {
-	return dara.Validate(s)
+	if s.SentenceList != nil {
+		for _, item := range s.SentenceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryCloudRecordTextResponseBodyParagraphListSentenceList struct {
@@ -273,7 +291,16 @@ func (s *QueryCloudRecordTextResponseBodyParagraphListSentenceList) SetWordList(
 }
 
 func (s *QueryCloudRecordTextResponseBodyParagraphListSentenceList) Validate() error {
-	return dara.Validate(s)
+	if s.WordList != nil {
+		for _, item := range s.WordList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryCloudRecordTextResponseBodyParagraphListSentenceListWordList struct {

@@ -47,7 +47,12 @@ func (s *FinishTicketHeaders) SetAccountContext(v *FinishTicketHeadersAccountCon
 }
 
 func (s *FinishTicketHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FinishTicketHeadersAccountContext struct {

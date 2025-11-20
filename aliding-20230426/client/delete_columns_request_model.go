@@ -103,7 +103,12 @@ func (s *DeleteColumnsRequest) SetWorkbookId(v string) *DeleteColumnsRequest {
 }
 
 func (s *DeleteColumnsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteColumnsRequestTenantContext struct {

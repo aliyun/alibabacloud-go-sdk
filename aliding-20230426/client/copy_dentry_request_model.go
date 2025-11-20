@@ -144,7 +144,12 @@ func (s *CopyDentryRequest) SetToPrevDentryId(v string) *CopyDentryRequest {
 }
 
 func (s *CopyDentryRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CopyDentryRequestTenantContext struct {

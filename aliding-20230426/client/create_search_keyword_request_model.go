@@ -107,7 +107,12 @@ func (s *CreateSearchKeywordRequest) SetUserIdList(v []*string) *CreateSearchKey
 }
 
 func (s *CreateSearchKeywordRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSearchKeywordRequestTenantContext struct {

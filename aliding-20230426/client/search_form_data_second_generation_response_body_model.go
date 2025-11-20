@@ -110,7 +110,16 @@ func (s *SearchFormDataSecondGenerationResponseBody) SetVendorType(v string) *Se
 }
 
 func (s *SearchFormDataSecondGenerationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchFormDataSecondGenerationResponseBodyData struct {
@@ -305,7 +314,17 @@ func (s *SearchFormDataSecondGenerationResponseBodyData) SetVersion(v int64) *Se
 }
 
 func (s *SearchFormDataSecondGenerationResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ModifyUser != nil {
+		if err := s.ModifyUser.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Originator != nil {
+		if err := s.Originator.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchFormDataSecondGenerationResponseBodyDataModifyUser struct {
@@ -343,7 +362,12 @@ func (s *SearchFormDataSecondGenerationResponseBodyDataModifyUser) SetUserId(v s
 }
 
 func (s *SearchFormDataSecondGenerationResponseBodyDataModifyUser) Validate() error {
-	return dara.Validate(s)
+	if s.Name != nil {
+		if err := s.Name.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchFormDataSecondGenerationResponseBodyDataModifyUserName struct {
@@ -419,7 +443,12 @@ func (s *SearchFormDataSecondGenerationResponseBodyDataOriginator) SetUserId(v s
 }
 
 func (s *SearchFormDataSecondGenerationResponseBodyDataOriginator) Validate() error {
-	return dara.Validate(s)
+	if s.Name != nil {
+		if err := s.Name.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchFormDataSecondGenerationResponseBodyDataOriginatorName struct {

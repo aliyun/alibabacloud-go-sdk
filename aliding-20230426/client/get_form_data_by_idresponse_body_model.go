@@ -122,7 +122,12 @@ func (s *GetFormDataByIDResponseBody) SetVendorType(v string) *GetFormDataByIDRe
 }
 
 func (s *GetFormDataByIDResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Originator != nil {
+		if err := s.Originator.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFormDataByIDResponseBodyOriginator struct {
@@ -186,7 +191,12 @@ func (s *GetFormDataByIDResponseBodyOriginator) SetUserId(v string) *GetFormData
 }
 
 func (s *GetFormDataByIDResponseBodyOriginator) Validate() error {
-	return dara.Validate(s)
+	if s.Name != nil {
+		if err := s.Name.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFormDataByIDResponseBodyOriginatorName struct {

@@ -111,7 +111,17 @@ func (s *ListMultiDimTableRecordsRequest) SetTenantContext(v *ListMultiDimTableR
 }
 
 func (s *ListMultiDimTableRecordsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMultiDimTableRecordsRequestFilter struct {
@@ -149,7 +159,16 @@ func (s *ListMultiDimTableRecordsRequestFilter) SetConditions(v []*ListMultiDimT
 }
 
 func (s *ListMultiDimTableRecordsRequestFilter) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMultiDimTableRecordsRequestFilterConditions struct {

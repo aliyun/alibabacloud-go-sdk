@@ -84,7 +84,12 @@ func (s *StartMinutesRequest) SetRecordAudio(v bool) *StartMinutesRequest {
 }
 
 func (s *StartMinutesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartMinutesRequestTenantContext struct {

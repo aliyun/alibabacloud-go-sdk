@@ -110,7 +110,16 @@ func (s *QueryScheduleConferenceInfoResponseBody) SetVendorType(v string) *Query
 }
 
 func (s *QueryScheduleConferenceInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ConferenceList != nil {
+		for _, item := range s.ConferenceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryScheduleConferenceInfoResponseBodyConferenceList struct {

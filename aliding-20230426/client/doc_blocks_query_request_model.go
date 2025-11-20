@@ -97,7 +97,12 @@ func (s *DocBlocksQueryRequest) SetTenantContext(v *DocBlocksQueryRequestTenantC
 }
 
 func (s *DocBlocksQueryRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DocBlocksQueryRequestTenantContext struct {

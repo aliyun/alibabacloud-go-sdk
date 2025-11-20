@@ -79,7 +79,21 @@ func (s *UpdateTodoTaskExecutorStatusRequest) SetTaskId(v string) *UpdateTodoTas
 }
 
 func (s *UpdateTodoTaskExecutorStatusRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExecutorStatusList != nil {
+		for _, item := range s.ExecutorStatusList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateTodoTaskExecutorStatusRequestTenantContext struct {

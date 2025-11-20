@@ -59,5 +59,10 @@ func (s *CreateMultiDimTableFieldResponse) SetBody(v *CreateMultiDimTableFieldRe
 }
 
 func (s *CreateMultiDimTableFieldResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

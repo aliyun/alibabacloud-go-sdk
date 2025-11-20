@@ -125,7 +125,12 @@ func (s *GetFileUploadInfoResponseBody) SetVendorType(v string) *GetFileUploadIn
 }
 
 func (s *GetFileUploadInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HeaderSignatureInfo != nil {
+		if err := s.HeaderSignatureInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFileUploadInfoResponseBodyHeaderSignatureInfo struct {

@@ -52,7 +52,16 @@ func (s *GetMeetingRoomsScheduleResponseBody) SetScheduleInformation(v []*GetMee
 }
 
 func (s *GetMeetingRoomsScheduleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ScheduleInformation != nil {
+		for _, item := range s.ScheduleInformation {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMeetingRoomsScheduleResponseBodyScheduleInformation struct {
@@ -103,7 +112,16 @@ func (s *GetMeetingRoomsScheduleResponseBodyScheduleInformation) SetScheduleItem
 }
 
 func (s *GetMeetingRoomsScheduleResponseBodyScheduleInformation) Validate() error {
-	return dara.Validate(s)
+	if s.ScheduleItems != nil {
+		for _, item := range s.ScheduleItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMeetingRoomsScheduleResponseBodyScheduleInformationScheduleItems struct {
@@ -174,7 +192,22 @@ func (s *GetMeetingRoomsScheduleResponseBodyScheduleInformationScheduleItems) Se
 }
 
 func (s *GetMeetingRoomsScheduleResponseBodyScheduleInformationScheduleItems) Validate() error {
-	return dara.Validate(s)
+	if s.End != nil {
+		if err := s.End.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Organizer != nil {
+		if err := s.Organizer.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Start != nil {
+		if err := s.Start.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMeetingRoomsScheduleResponseBodyScheduleInformationScheduleItemsEnd struct {

@@ -1,3 +1,10 @@
+2025-11-20 Version: v2.45.0
+- Support API DocBlocksDelete.
+- Support API DocBlocksModify.
+- Update API InvokeSkill: add request parameters sourceIdOfAssistantId.
+- Update API InvokeSkill: add request parameters AccountContext.ssoTicket.
+
+
 2025-08-20 Version: v2.44.2
 - Update API GetOrgLiveList: add response parameters Body.result.NewLive.LiveList.$.AnchorUnionIdInAlibaba.
 - Update API GetOrgLiveList: add response parameters Body.result.UpdateLive.LiveList.$.AnchorUnionIdInAlibaba.

@@ -88,7 +88,12 @@ func (s *UpdateSubscribedCalendarsRequest) SetSubscribeScope(v *UpdateSubscribed
 }
 
 func (s *UpdateSubscribedCalendarsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SubscribeScope != nil {
+		if err := s.SubscribeScope.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateSubscribedCalendarsRequestSubscribeScope struct {

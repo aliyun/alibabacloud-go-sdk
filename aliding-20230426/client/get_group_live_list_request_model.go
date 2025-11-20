@@ -86,7 +86,12 @@ func (s *GetGroupLiveListRequest) SetTenantContext(v *GetGroupLiveListRequestTen
 }
 
 func (s *GetGroupLiveListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGroupLiveListRequestTenantContext struct {

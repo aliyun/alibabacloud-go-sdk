@@ -52,7 +52,12 @@ func (s *QueryCloudRecordVideoRequest) SetConferenceId(v string) *QueryCloudReco
 }
 
 func (s *QueryCloudRecordVideoRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCloudRecordVideoRequestTenantContext struct {

@@ -52,7 +52,12 @@ func (s *DeleteMeetingRoomGroupRequest) SetTenantContext(v *DeleteMeetingRoomGro
 }
 
 func (s *DeleteMeetingRoomGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteMeetingRoomGroupRequestTenantContext struct {

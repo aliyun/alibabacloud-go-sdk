@@ -80,7 +80,16 @@ func (s *QueryRecordMinutesUrlResponseBody) SetVendorType(v string) *QueryRecord
 }
 
 func (s *QueryRecordMinutesUrlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecordMinutesUrls != nil {
+		for _, item := range s.RecordMinutesUrls {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryRecordMinutesUrlResponseBodyRecordMinutesUrls struct {

@@ -92,7 +92,17 @@ func (s *CommitFileRequest) SetUploadKey(v string) *CommitFileRequest {
 }
 
 func (s *CommitFileRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Option != nil {
+		if err := s.Option.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CommitFileRequestOption struct {
@@ -169,7 +179,16 @@ func (s *CommitFileRequestOption) SetSize(v int64) *CommitFileRequestOption {
 }
 
 func (s *CommitFileRequestOption) Validate() error {
-	return dara.Validate(s)
+	if s.AppProperties != nil {
+		for _, item := range s.AppProperties {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CommitFileRequestOptionAppProperties struct {

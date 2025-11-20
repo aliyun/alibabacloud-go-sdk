@@ -206,7 +206,30 @@ func (s *GetProcessDefinitionResponseBody) SetVendorType(v string) *GetProcessDe
 }
 
 func (s *GetProcessDefinitionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Originator != nil {
+		if err := s.Originator.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Owners != nil {
+		for _, item := range s.Owners {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tasks != nil {
+		for _, item := range s.Tasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetProcessDefinitionResponseBodyOriginator struct {
@@ -348,7 +371,16 @@ func (s *GetProcessDefinitionResponseBodyOriginator) SetUserInfo(v string) *GetP
 }
 
 func (s *GetProcessDefinitionResponseBodyOriginator) Validate() error {
-	return dara.Validate(s)
+	if s.MasterDataDepartments != nil {
+		for _, item := range s.MasterDataDepartments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetProcessDefinitionResponseBodyOriginatorMasterDataDepartments struct {
@@ -609,7 +641,16 @@ func (s *GetProcessDefinitionResponseBodyOwners) SetUserInfo(v string) *GetProce
 }
 
 func (s *GetProcessDefinitionResponseBodyOwners) Validate() error {
-	return dara.Validate(s)
+	if s.MasterDataDepartments != nil {
+		for _, item := range s.MasterDataDepartments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetProcessDefinitionResponseBodyOwnersMasterDataDepartments struct {
@@ -792,7 +833,12 @@ func (s *GetProcessDefinitionResponseBodyTasks) SetTaskId(v int64) *GetProcessDe
 }
 
 func (s *GetProcessDefinitionResponseBodyTasks) Validate() error {
-	return dara.Validate(s)
+	if s.Activity != nil {
+		if err := s.Activity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetProcessDefinitionResponseBodyTasksActivity struct {

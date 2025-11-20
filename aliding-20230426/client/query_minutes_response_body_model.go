@@ -80,7 +80,16 @@ func (s *QueryMinutesResponseBody) SetVendorType(v string) *QueryMinutesResponse
 }
 
 func (s *QueryMinutesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AudioList != nil {
+		for _, item := range s.AudioList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMinutesResponseBodyAudioList struct {

@@ -59,5 +59,10 @@ func (s *UploadMediaResponse) SetBody(v *UploadMediaResponseBody) *UploadMediaRe
 }
 
 func (s *UploadMediaResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

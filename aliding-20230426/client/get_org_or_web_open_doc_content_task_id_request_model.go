@@ -94,7 +94,12 @@ func (s *GetOrgOrWebOpenDocContentTaskIdRequest) SetTenantContext(v *GetOrgOrWeb
 }
 
 func (s *GetOrgOrWebOpenDocContentTaskIdRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOrgOrWebOpenDocContentTaskIdRequestTenantContext struct {

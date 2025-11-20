@@ -141,7 +141,17 @@ func (s *CreateDingtalkPersonalTodoTaskRequest) SetUserToken(v string) *CreateDi
 }
 
 func (s *CreateDingtalkPersonalTodoTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NotifyConfigs != nil {
+		if err := s.NotifyConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDingtalkPersonalTodoTaskRequestNotifyConfigs struct {

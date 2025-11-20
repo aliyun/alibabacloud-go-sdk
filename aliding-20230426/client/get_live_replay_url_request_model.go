@@ -52,7 +52,12 @@ func (s *GetLiveReplayUrlRequest) SetTenantContext(v *GetLiveReplayUrlRequestTen
 }
 
 func (s *GetLiveReplayUrlRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLiveReplayUrlRequestTenantContext struct {

@@ -113,7 +113,16 @@ func (s *GetCardTemplateResponseBody) SetVendorType(v string) *GetCardTemplateRe
 }
 
 func (s *GetCardTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CommonVariableList != nil {
+		for _, item := range s.CommonVariableList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCardTemplateResponseBodyCommonVariableList struct {

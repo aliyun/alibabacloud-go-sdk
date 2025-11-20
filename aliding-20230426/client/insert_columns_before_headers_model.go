@@ -47,7 +47,12 @@ func (s *InsertColumnsBeforeHeaders) SetAccountContext(v *InsertColumnsBeforeHea
 }
 
 func (s *InsertColumnsBeforeHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InsertColumnsBeforeHeadersAccountContext struct {

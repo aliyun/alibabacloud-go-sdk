@@ -110,7 +110,16 @@ func (s *GetInstancesResponseBody) SetVendorType(v string) *GetInstancesResponse
 }
 
 func (s *GetInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstancesResponseBodyData struct {
@@ -272,7 +281,21 @@ func (s *GetInstancesResponseBodyData) SetVersion(v int64) *GetInstancesResponse
 }
 
 func (s *GetInstancesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ActionExecutor != nil {
+		for _, item := range s.ActionExecutor {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Originator != nil {
+		if err := s.Originator.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstancesResponseBodyDataActionExecutor struct {
@@ -336,7 +359,12 @@ func (s *GetInstancesResponseBodyDataActionExecutor) SetUserId(v string) *GetIns
 }
 
 func (s *GetInstancesResponseBodyDataActionExecutor) Validate() error {
-	return dara.Validate(s)
+	if s.Name != nil {
+		if err := s.Name.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstancesResponseBodyDataActionExecutorName struct {
@@ -454,7 +482,12 @@ func (s *GetInstancesResponseBodyDataOriginator) SetUserId(v string) *GetInstanc
 }
 
 func (s *GetInstancesResponseBodyDataOriginator) Validate() error {
-	return dara.Validate(s)
+	if s.Name != nil {
+		if err := s.Name.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstancesResponseBodyDataOriginatorName struct {

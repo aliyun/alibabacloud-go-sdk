@@ -83,7 +83,12 @@ func (s *GetAssistantCapabilityResponseBody) SetRequestId(v string) *GetAssistan
 }
 
 func (s *GetAssistantCapabilityResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CapabilityAssessment != nil {
+		if err := s.CapabilityAssessment.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAssistantCapabilityResponseBodyCapabilityAssessment struct {
@@ -124,7 +129,16 @@ func (s *GetAssistantCapabilityResponseBodyCapabilityAssessment) SetCapabilityLi
 }
 
 func (s *GetAssistantCapabilityResponseBodyCapabilityAssessment) Validate() error {
-	return dara.Validate(s)
+	if s.CapabilityList != nil {
+		for _, item := range s.CapabilityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList struct {

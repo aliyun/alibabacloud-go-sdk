@@ -101,7 +101,12 @@ func (s *SyncDingTypeRequest) SetWorkNo(v string) *SyncDingTypeRequest {
 }
 
 func (s *SyncDingTypeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SyncDingTypeRequestTenantContext struct {

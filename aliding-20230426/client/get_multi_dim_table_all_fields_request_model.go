@@ -69,7 +69,12 @@ func (s *GetMultiDimTableAllFieldsRequest) SetTenantContext(v *GetMultiDimTableA
 }
 
 func (s *GetMultiDimTableAllFieldsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMultiDimTableAllFieldsRequestTenantContext struct {

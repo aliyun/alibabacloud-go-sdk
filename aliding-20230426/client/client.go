@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -67,9 +68,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AddAttendeeResponse
 func (client *Client) AddAttendeeWithOptions(tmpReq *AddAttendeeRequest, tmpHeader *AddAttendeeHeaders, runtime *dara.RuntimeOptions) (_result *AddAttendeeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddAttendeeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -168,9 +171,11 @@ func (client *Client) AddAttendee(request *AddAttendeeRequest) (_result *AddAtte
 //
 // @return AddDriveSpaceResponse
 func (client *Client) AddDriveSpaceWithOptions(tmpReq *AddDriveSpaceRequest, tmpHeader *AddDriveSpaceHeaders, runtime *dara.RuntimeOptions) (_result *AddDriveSpaceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddDriveSpaceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -257,9 +262,11 @@ func (client *Client) AddDriveSpace(request *AddDriveSpaceRequest) (_result *Add
 //
 // @return AddFolderResponse
 func (client *Client) AddFolderWithOptions(tmpReq *AddFolderRequest, tmpHeader *AddFolderHeaders, runtime *dara.RuntimeOptions) (_result *AddFolderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddFolderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -362,9 +369,11 @@ func (client *Client) AddFolder(request *AddFolderRequest) (_result *AddFolderRe
 //
 // @return AddMeetingRoomsResponse
 func (client *Client) AddMeetingRoomsWithOptions(tmpReq *AddMeetingRoomsRequest, tmpHeader *AddMeetingRoomsHeaders, runtime *dara.RuntimeOptions) (_result *AddMeetingRoomsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddMeetingRoomsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -455,9 +464,11 @@ func (client *Client) AddMeetingRooms(request *AddMeetingRoomsRequest) (_result 
 //
 // @return AddMultiDimTableResponse
 func (client *Client) AddMultiDimTableWithOptions(tmpReq *AddMultiDimTableRequest, tmpHeader *AddMultiDimTableHeaders, runtime *dara.RuntimeOptions) (_result *AddMultiDimTableResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddMultiDimTableShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -556,9 +567,11 @@ func (client *Client) AddMultiDimTable(request *AddMultiDimTableRequest) (_resul
 //
 // @return AddPermissionResponse
 func (client *Client) AddPermissionWithOptions(tmpReq *AddPermissionRequest, tmpHeader *AddPermissionHeaders, runtime *dara.RuntimeOptions) (_result *AddPermissionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddPermissionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -665,9 +678,11 @@ func (client *Client) AddPermission(request *AddPermissionRequest) (_result *Add
 //
 // @return AddRecordPermissionResponse
 func (client *Client) AddRecordPermissionWithOptions(tmpReq *AddRecordPermissionRequest, tmpHeader *AddRecordPermissionHeaders, runtime *dara.RuntimeOptions) (_result *AddRecordPermissionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddRecordPermissionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -762,9 +777,11 @@ func (client *Client) AddRecordPermission(request *AddRecordPermissionRequest) (
 //
 // @return AddScenegroupMemberResponse
 func (client *Client) AddScenegroupMemberWithOptions(request *AddScenegroupMemberRequest, tmpHeader *AddScenegroupMemberHeaders, runtime *dara.RuntimeOptions) (_result *AddScenegroupMemberResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &AddScenegroupMemberShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -845,9 +862,11 @@ func (client *Client) AddScenegroupMember(request *AddScenegroupMemberRequest) (
 //
 // @return AddTicketMemoResponse
 func (client *Client) AddTicketMemoWithOptions(tmpReq *AddTicketMemoRequest, tmpHeader *AddTicketMemoHeaders, runtime *dara.RuntimeOptions) (_result *AddTicketMemoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddTicketMemoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -946,9 +965,11 @@ func (client *Client) AddTicketMemo(request *AddTicketMemoRequest) (_result *Add
 //
 // @return AddWorkspaceResponse
 func (client *Client) AddWorkspaceWithOptions(tmpReq *AddWorkspaceRequest, tmpHeader *AddWorkspaceHeaders, runtime *dara.RuntimeOptions) (_result *AddWorkspaceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddWorkspaceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1043,9 +1064,11 @@ func (client *Client) AddWorkspace(request *AddWorkspaceRequest) (_result *AddWo
 //
 // @return AddWorkspaceDocMembersResponse
 func (client *Client) AddWorkspaceDocMembersWithOptions(tmpReq *AddWorkspaceDocMembersRequest, tmpHeader *AddWorkspaceDocMembersHeaders, runtime *dara.RuntimeOptions) (_result *AddWorkspaceDocMembersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddWorkspaceDocMembersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1144,9 +1167,11 @@ func (client *Client) AddWorkspaceDocMembers(request *AddWorkspaceDocMembersRequ
 //
 // @return AddWorkspaceMembersResponse
 func (client *Client) AddWorkspaceMembersWithOptions(tmpReq *AddWorkspaceMembersRequest, tmpHeader *AddWorkspaceMembersHeaders, runtime *dara.RuntimeOptions) (_result *AddWorkspaceMembersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddWorkspaceMembersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1241,9 +1266,11 @@ func (client *Client) AddWorkspaceMembers(request *AddWorkspaceMembersRequest) (
 //
 // @return AssignTicketResponse
 func (client *Client) AssignTicketWithOptions(tmpReq *AssignTicketRequest, tmpHeader *AssignTicketHeaders, runtime *dara.RuntimeOptions) (_result *AssignTicketResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AssignTicketShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1358,9 +1385,11 @@ func (client *Client) AssignTicket(request *AssignTicketRequest) (_result *Assig
 //
 // @return AuthorizeSkillResponse
 func (client *Client) AuthorizeSkillWithOptions(tmpReq *AuthorizeSkillRequest, tmpHeader *AuthorizeSkillHeaders, runtime *dara.RuntimeOptions) (_result *AuthorizeSkillResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AuthorizeSkillShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1443,9 +1472,11 @@ func (client *Client) AuthorizeSkill(request *AuthorizeSkillRequest) (_result *A
 //
 // @return BatchGetFormDataByIdListResponse
 func (client *Client) BatchGetFormDataByIdListWithOptions(tmpReq *BatchGetFormDataByIdListRequest, tmpHeader *BatchGetFormDataByIdListHeaders, runtime *dara.RuntimeOptions) (_result *BatchGetFormDataByIdListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BatchGetFormDataByIdListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1544,9 +1575,11 @@ func (client *Client) BatchGetFormDataByIdList(request *BatchGetFormDataByIdList
 //
 // @return BatchRemovalByFormInstanceIdListResponse
 func (client *Client) BatchRemovalByFormInstanceIdListWithOptions(tmpReq *BatchRemovalByFormInstanceIdListRequest, tmpHeader *BatchRemovalByFormInstanceIdListHeaders, runtime *dara.RuntimeOptions) (_result *BatchRemovalByFormInstanceIdListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BatchRemovalByFormInstanceIdListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1649,9 +1682,11 @@ func (client *Client) BatchRemovalByFormInstanceIdList(request *BatchRemovalByFo
 //
 // @return BatchSaveFormDataResponse
 func (client *Client) BatchSaveFormDataWithOptions(tmpReq *BatchSaveFormDataRequest, tmpHeader *BatchSaveFormDataHeaders, runtime *dara.RuntimeOptions) (_result *BatchSaveFormDataResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BatchSaveFormDataShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1758,9 +1793,11 @@ func (client *Client) BatchSaveFormData(request *BatchSaveFormDataRequest) (_res
 //
 // @return BatchUpdateFormDataByInstanceIdResponse
 func (client *Client) BatchUpdateFormDataByInstanceIdWithOptions(tmpReq *BatchUpdateFormDataByInstanceIdRequest, tmpHeader *BatchUpdateFormDataByInstanceIdHeaders, runtime *dara.RuntimeOptions) (_result *BatchUpdateFormDataByInstanceIdResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BatchUpdateFormDataByInstanceIdShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1875,9 +1912,11 @@ func (client *Client) BatchUpdateFormDataByInstanceId(request *BatchUpdateFormDa
 //
 // @return BatchUpdateFormDataByInstanceMapResponse
 func (client *Client) BatchUpdateFormDataByInstanceMapWithOptions(tmpReq *BatchUpdateFormDataByInstanceMapRequest, tmpHeader *BatchUpdateFormDataByInstanceMapHeaders, runtime *dara.RuntimeOptions) (_result *BatchUpdateFormDataByInstanceMapResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BatchUpdateFormDataByInstanceMapShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1988,9 +2027,11 @@ func (client *Client) BatchUpdateFormDataByInstanceMap(request *BatchUpdateFormD
 //
 // @return CancelScheduleConferenceResponse
 func (client *Client) CancelScheduleConferenceWithOptions(tmpReq *CancelScheduleConferenceRequest, tmpHeader *CancelScheduleConferenceHeaders, runtime *dara.RuntimeOptions) (_result *CancelScheduleConferenceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CancelScheduleConferenceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2077,9 +2118,11 @@ func (client *Client) CancelScheduleConference(request *CancelScheduleConference
 //
 // @return ChangeDingTalkIdResponse
 func (client *Client) ChangeDingTalkIdWithOptions(tmpReq *ChangeDingTalkIdRequest, tmpHeader *ChangeDingTalkIdHeaders, runtime *dara.RuntimeOptions) (_result *ChangeDingTalkIdResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ChangeDingTalkIdShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2166,9 +2209,11 @@ func (client *Client) ChangeDingTalkId(request *ChangeDingTalkIdRequest) (_resul
 //
 // @return CheckAlibabaStaffResponse
 func (client *Client) CheckAlibabaStaffWithOptions(tmpReq *CheckAlibabaStaffRequest, tmpHeader *CheckAlibabaStaffHeaders, runtime *dara.RuntimeOptions) (_result *CheckAlibabaStaffResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CheckAlibabaStaffShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2255,9 +2300,11 @@ func (client *Client) CheckAlibabaStaff(request *CheckAlibabaStaffRequest) (_res
 //
 // @return CheckUserIsGroupMemberResponse
 func (client *Client) CheckUserIsGroupMemberWithOptions(request *CheckUserIsGroupMemberRequest, tmpHeader *CheckUserIsGroupMemberHeaders, runtime *dara.RuntimeOptions) (_result *CheckUserIsGroupMemberResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &CheckUserIsGroupMemberShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -2334,9 +2381,11 @@ func (client *Client) CheckUserIsGroupMember(request *CheckUserIsGroupMemberRequ
 //
 // @return ClearResponse
 func (client *Client) ClearWithOptions(tmpReq *ClearRequest, tmpHeader *ClearHeaders, runtime *dara.RuntimeOptions) (_result *ClearResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ClearShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2431,9 +2480,11 @@ func (client *Client) Clear(request *ClearRequest) (_result *ClearResponse, _err
 //
 // @return ClearDataResponse
 func (client *Client) ClearDataWithOptions(tmpReq *ClearDataRequest, tmpHeader *ClearDataHeaders, runtime *dara.RuntimeOptions) (_result *ClearDataResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ClearDataShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2528,9 +2579,11 @@ func (client *Client) ClearData(request *ClearDataRequest) (_result *ClearDataRe
 //
 // @return CloseVideoConferenceResponse
 func (client *Client) CloseVideoConferenceWithOptions(tmpReq *CloseVideoConferenceRequest, tmpHeader *CloseVideoConferenceHeaders, runtime *dara.RuntimeOptions) (_result *CloseVideoConferenceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CloseVideoConferenceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2617,9 +2670,11 @@ func (client *Client) CloseVideoConference(request *CloseVideoConferenceRequest)
 //
 // @return CommentListReportResponse
 func (client *Client) CommentListReportWithOptions(tmpReq *CommentListReportRequest, tmpHeader *CommentListReportHeaders, runtime *dara.RuntimeOptions) (_result *CommentListReportResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CommentListReportShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2714,9 +2769,11 @@ func (client *Client) CommentListReport(request *CommentListReportRequest) (_res
 //
 // @return CommitFileResponse
 func (client *Client) CommitFileWithOptions(tmpReq *CommitFileRequest, tmpHeader *CommitFileHeaders, runtime *dara.RuntimeOptions) (_result *CommitFileResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CommitFileShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2819,9 +2876,11 @@ func (client *Client) CommitFile(request *CommitFileRequest) (_result *CommitFil
 //
 // @return CopyDentryResponse
 func (client *Client) CopyDentryWithOptions(tmpReq *CopyDentryRequest, tmpHeader *CopyDentryHeaders, runtime *dara.RuntimeOptions) (_result *CopyDentryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CopyDentryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2928,9 +2987,11 @@ func (client *Client) CopyDentry(request *CopyDentryRequest) (_result *CopyDentr
 //
 // @return CreateAlidingAssistantResponse
 func (client *Client) CreateAlidingAssistantWithOptions(tmpReq *CreateAlidingAssistantRequest, tmpHeader *CreateAlidingAssistantHeaders, runtime *dara.RuntimeOptions) (_result *CreateAlidingAssistantResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateAlidingAssistantShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3057,9 +3118,11 @@ func (client *Client) CreateAlidingAssistant(request *CreateAlidingAssistantRequ
 //
 // @return CreateDeliveryPlanResponse
 func (client *Client) CreateDeliveryPlanWithOptions(tmpReq *CreateDeliveryPlanRequest, tmpHeader *CreateDeliveryPlanHeaders, runtime *dara.RuntimeOptions) (_result *CreateDeliveryPlanResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDeliveryPlanShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3170,9 +3233,11 @@ func (client *Client) CreateDeliveryPlan(request *CreateDeliveryPlanRequest) (_r
 //
 // @return CreateDingtalkPersonalTodoTaskResponse
 func (client *Client) CreateDingtalkPersonalTodoTaskWithOptions(tmpReq *CreateDingtalkPersonalTodoTaskRequest, tmpHeader *CreateDingtalkPersonalTodoTaskHeaders, runtime *dara.RuntimeOptions) (_result *CreateDingtalkPersonalTodoTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDingtalkPersonalTodoTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3295,9 +3360,11 @@ func (client *Client) CreateDingtalkPersonalTodoTask(request *CreateDingtalkPers
 //
 // @return CreateEventResponse
 func (client *Client) CreateEventWithOptions(tmpReq *CreateEventRequest, tmpHeader *CreateEventHeaders, runtime *dara.RuntimeOptions) (_result *CreateEventResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateEventShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3476,9 +3543,11 @@ func (client *Client) CreateEvent(request *CreateEventRequest) (_result *CreateE
 //
 // @return CreateLiveResponse
 func (client *Client) CreateLiveWithOptions(tmpReq *CreateLiveRequest, tmpHeader *CreateLiveHeaders, runtime *dara.RuntimeOptions) (_result *CreateLiveResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateLiveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3585,9 +3654,11 @@ func (client *Client) CreateLive(request *CreateLiveRequest) (_result *CreateLiv
 //
 // @return CreateMeetingRoomResponse
 func (client *Client) CreateMeetingRoomWithOptions(tmpReq *CreateMeetingRoomRequest, tmpHeader *CreateMeetingRoomHeaders, runtime *dara.RuntimeOptions) (_result *CreateMeetingRoomResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateMeetingRoomShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3722,9 +3793,11 @@ func (client *Client) CreateMeetingRoom(request *CreateMeetingRoomRequest) (_res
 //
 // @return CreateMeetingRoomGroupResponse
 func (client *Client) CreateMeetingRoomGroupWithOptions(tmpReq *CreateMeetingRoomGroupRequest, tmpHeader *CreateMeetingRoomGroupHeaders, runtime *dara.RuntimeOptions) (_result *CreateMeetingRoomGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateMeetingRoomGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3815,9 +3888,11 @@ func (client *Client) CreateMeetingRoomGroup(request *CreateMeetingRoomGroupRequ
 //
 // @return CreateMessageResponse
 func (client *Client) CreateMessageWithOptions(request *CreateMessageRequest, headers *CreateMessageHeaders, runtime *dara.RuntimeOptions) (_result *CreateMessageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssistantId) {
@@ -3908,9 +3983,11 @@ func (client *Client) CreateMessage(request *CreateMessageRequest) (_result *Cre
 //
 // @return CreateMultiDimTableFieldResponse
 func (client *Client) CreateMultiDimTableFieldWithOptions(tmpReq *CreateMultiDimTableFieldRequest, tmpHeader *CreateMultiDimTableFieldHeaders, runtime *dara.RuntimeOptions) (_result *CreateMultiDimTableFieldResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateMultiDimTableFieldShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4017,9 +4094,11 @@ func (client *Client) CreateMultiDimTableField(request *CreateMultiDimTableField
 //
 // @return CreateOrUpdateFormDataResponse
 func (client *Client) CreateOrUpdateFormDataWithOptions(request *CreateOrUpdateFormDataRequest, tmpHeader *CreateOrUpdateFormDataHeaders, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateFormDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &CreateOrUpdateFormDataShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -4120,9 +4199,11 @@ func (client *Client) CreateOrUpdateFormData(request *CreateOrUpdateFormDataRequ
 //
 // @return CreateOrgHonorTemplateResponse
 func (client *Client) CreateOrgHonorTemplateWithOptions(tmpReq *CreateOrgHonorTemplateRequest, tmpHeader *CreateOrgHonorTemplateHeaders, runtime *dara.RuntimeOptions) (_result *CreateOrgHonorTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateOrgHonorTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4233,9 +4314,11 @@ func (client *Client) CreateOrgHonorTemplate(request *CreateOrgHonorTemplateRequ
 //
 // @return CreatePersonalTodoTaskResponse
 func (client *Client) CreatePersonalTodoTaskWithOptions(tmpReq *CreatePersonalTodoTaskRequest, tmpHeader *CreatePersonalTodoTaskHeaders, runtime *dara.RuntimeOptions) (_result *CreatePersonalTodoTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreatePersonalTodoTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4358,9 +4441,11 @@ func (client *Client) CreatePersonalTodoTask(request *CreatePersonalTodoTaskRequ
 //
 // @return CreateReportResponse
 func (client *Client) CreateReportWithOptions(tmpReq *CreateReportRequest, tmpHeader *CreateReportHeaders, runtime *dara.RuntimeOptions) (_result *CreateReportResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateReportShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4496,9 +4581,11 @@ func (client *Client) CreateRunWithSSE(request *CreateRunRequest, headers *Creat
 //
 // @return CreateRunResponse
 func (client *Client) CreateRunWithOptions(request *CreateRunRequest, headers *CreateRunHeaders, runtime *dara.RuntimeOptions) (_result *CreateRunResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AllowStructViewContent) {
@@ -4593,9 +4680,11 @@ func (client *Client) CreateRun(request *CreateRunRequest) (_result *CreateRunRe
 //
 // @return CreateScenegroupResponse
 func (client *Client) CreateScenegroupWithOptions(request *CreateScenegroupRequest, tmpHeader *CreateScenegroupHeaders, runtime *dara.RuntimeOptions) (_result *CreateScenegroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &CreateScenegroupShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -4748,9 +4837,11 @@ func (client *Client) CreateScenegroup(request *CreateScenegroupRequest) (_resul
 //
 // @return CreateScheduleConferenceResponse
 func (client *Client) CreateScheduleConferenceWithOptions(tmpReq *CreateScheduleConferenceRequest, tmpHeader *CreateScheduleConferenceHeaders, runtime *dara.RuntimeOptions) (_result *CreateScheduleConferenceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateScheduleConferenceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4853,9 +4944,11 @@ func (client *Client) CreateScheduleConference(request *CreateScheduleConference
 //
 // @return CreateSearchDomeResponse
 func (client *Client) CreateSearchDomeWithOptions(tmpReq *CreateSearchDomeRequest, tmpHeader *CreateSearchDomeHeaders, runtime *dara.RuntimeOptions) (_result *CreateSearchDomeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateSearchDomeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4962,9 +5055,11 @@ func (client *Client) CreateSearchDome(request *CreateSearchDomeRequest) (_resul
 //
 // @return CreateSearchKeywordResponse
 func (client *Client) CreateSearchKeywordWithOptions(tmpReq *CreateSearchKeywordRequest, tmpHeader *CreateSearchKeywordHeaders, runtime *dara.RuntimeOptions) (_result *CreateSearchKeywordResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateSearchKeywordShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5071,9 +5166,11 @@ func (client *Client) CreateSearchKeyword(request *CreateSearchKeywordRequest) (
 //
 // @return CreateSheetResponse
 func (client *Client) CreateSheetWithOptions(tmpReq *CreateSheetRequest, tmpHeader *CreateSheetHeaders, runtime *dara.RuntimeOptions) (_result *CreateSheetResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateSheetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5164,9 +5261,11 @@ func (client *Client) CreateSheet(request *CreateSheetRequest) (_result *CreateS
 //
 // @return CreateSubscribedCalendarResponse
 func (client *Client) CreateSubscribedCalendarWithOptions(tmpReq *CreateSubscribedCalendarRequest, tmpHeader *CreateSubscribedCalendarHeaders, runtime *dara.RuntimeOptions) (_result *CreateSubscribedCalendarResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateSubscribedCalendarShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5265,9 +5364,11 @@ func (client *Client) CreateSubscribedCalendar(request *CreateSubscribedCalendar
 //
 // @return CreateThreadResponse
 func (client *Client) CreateThreadWithOptions(request *CreateThreadRequest, headers *CreateThreadHeaders, runtime *dara.RuntimeOptions) (_result *CreateThreadResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssistantId) {
@@ -5350,9 +5451,11 @@ func (client *Client) CreateThread(request *CreateThreadRequest) (_result *Creat
 //
 // @return CreateTicketResponse
 func (client *Client) CreateTicketWithOptions(tmpReq *CreateTicketRequest, tmpHeader *CreateTicketHeaders, runtime *dara.RuntimeOptions) (_result *CreateTicketResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateTicketShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5479,9 +5582,11 @@ func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *Creat
 //
 // @return CreateTodoTaskResponse
 func (client *Client) CreateTodoTaskWithOptions(tmpReq *CreateTodoTaskRequest, tmpHeader *CreateTodoTaskHeaders, runtime *dara.RuntimeOptions) (_result *CreateTodoTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateTodoTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5658,9 +5763,11 @@ func (client *Client) CreateTodoTask(request *CreateTodoTaskRequest) (_result *C
 //
 // @return CreateVideoConferenceResponse
 func (client *Client) CreateVideoConferenceWithOptions(tmpReq *CreateVideoConferenceRequest, tmpHeader *CreateVideoConferenceHeaders, runtime *dara.RuntimeOptions) (_result *CreateVideoConferenceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateVideoConferenceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5751,9 +5858,11 @@ func (client *Client) CreateVideoConference(request *CreateVideoConferenceReques
 //
 // @return CreateWorkspaceResponse
 func (client *Client) CreateWorkspaceWithOptions(tmpReq *CreateWorkspaceRequest, tmpHeader *CreateWorkspaceHeaders, runtime *dara.RuntimeOptions) (_result *CreateWorkspaceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateWorkspaceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5844,9 +5953,11 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 //
 // @return CreateWorkspaceDocResponse
 func (client *Client) CreateWorkspaceDocWithOptions(tmpReq *CreateWorkspaceDocRequest, tmpHeader *CreateWorkspaceDocHeaders, runtime *dara.RuntimeOptions) (_result *CreateWorkspaceDocResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateWorkspaceDocShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5949,9 +6060,11 @@ func (client *Client) CreateWorkspaceDoc(request *CreateWorkspaceDocRequest) (_r
 //
 // @return DeleteAlidingAssistantResponse
 func (client *Client) DeleteAlidingAssistantWithOptions(tmpReq *DeleteAlidingAssistantRequest, tmpHeader *DeleteAlidingAssistantHeaders, runtime *dara.RuntimeOptions) (_result *DeleteAlidingAssistantResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteAlidingAssistantShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6034,9 +6147,11 @@ func (client *Client) DeleteAlidingAssistant(request *DeleteAlidingAssistantRequ
 //
 // @return DeleteColumnsResponse
 func (client *Client) DeleteColumnsWithOptions(tmpReq *DeleteColumnsRequest, tmpHeader *DeleteColumnsHeaders, runtime *dara.RuntimeOptions) (_result *DeleteColumnsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteColumnsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6135,9 +6250,11 @@ func (client *Client) DeleteColumns(request *DeleteColumnsRequest) (_result *Del
 //
 // @return DeleteDentryResponse
 func (client *Client) DeleteDentryWithOptions(tmpReq *DeleteDentryRequest, tmpHeader *DeleteDentryHeaders, runtime *dara.RuntimeOptions) (_result *DeleteDentryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteDentryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6232,9 +6349,11 @@ func (client *Client) DeleteDentry(request *DeleteDentryRequest) (_result *Delet
 //
 // @return DeleteDriveSpaceResponse
 func (client *Client) DeleteDriveSpaceWithOptions(tmpReq *DeleteDriveSpaceRequest, tmpHeader *DeleteDriveSpaceHeaders, runtime *dara.RuntimeOptions) (_result *DeleteDriveSpaceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteDriveSpaceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6321,9 +6440,11 @@ func (client *Client) DeleteDriveSpace(request *DeleteDriveSpaceRequest) (_resul
 //
 // @return DeleteEventResponse
 func (client *Client) DeleteEventWithOptions(request *DeleteEventRequest, tmpHeader *DeleteEventHeaders, runtime *dara.RuntimeOptions) (_result *DeleteEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &DeleteEventShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -6408,9 +6529,11 @@ func (client *Client) DeleteEvent(request *DeleteEventRequest) (_result *DeleteE
 //
 // @return DeleteFormDataResponse
 func (client *Client) DeleteFormDataWithOptions(request *DeleteFormDataRequest, tmpHeader *DeleteFormDataHeaders, runtime *dara.RuntimeOptions) (_result *DeleteFormDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &DeleteFormDataShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -6495,9 +6618,11 @@ func (client *Client) DeleteFormData(request *DeleteFormDataRequest) (_result *D
 //
 // @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, tmpHeader *DeleteInstanceHeaders, runtime *dara.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &DeleteInstanceShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -6582,9 +6707,11 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 //
 // @return DeleteLiveResponse
 func (client *Client) DeleteLiveWithOptions(tmpReq *DeleteLiveRequest, tmpHeader *DeleteLiveHeaders, runtime *dara.RuntimeOptions) (_result *DeleteLiveResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteLiveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6671,9 +6798,11 @@ func (client *Client) DeleteLive(request *DeleteLiveRequest) (_result *DeleteLiv
 //
 // @return DeleteMeetingRoomResponse
 func (client *Client) DeleteMeetingRoomWithOptions(tmpReq *DeleteMeetingRoomRequest, tmpHeader *DeleteMeetingRoomHeaders, runtime *dara.RuntimeOptions) (_result *DeleteMeetingRoomResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteMeetingRoomShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6760,9 +6889,11 @@ func (client *Client) DeleteMeetingRoom(request *DeleteMeetingRoomRequest) (_res
 //
 // @return DeleteMeetingRoomGroupResponse
 func (client *Client) DeleteMeetingRoomGroupWithOptions(tmpReq *DeleteMeetingRoomGroupRequest, tmpHeader *DeleteMeetingRoomGroupHeaders, runtime *dara.RuntimeOptions) (_result *DeleteMeetingRoomGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteMeetingRoomGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6849,9 +6980,11 @@ func (client *Client) DeleteMeetingRoomGroup(request *DeleteMeetingRoomGroupRequ
 //
 // @return DeleteMultiDimTableFieldResponse
 func (client *Client) DeleteMultiDimTableFieldWithOptions(tmpReq *DeleteMultiDimTableFieldRequest, tmpHeader *DeleteMultiDimTableFieldHeaders, runtime *dara.RuntimeOptions) (_result *DeleteMultiDimTableFieldResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteMultiDimTableFieldShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6946,9 +7079,11 @@ func (client *Client) DeleteMultiDimTableField(request *DeleteMultiDimTableField
 //
 // @return DeleteMultiDimTableRecordsResponse
 func (client *Client) DeleteMultiDimTableRecordsWithOptions(tmpReq *DeleteMultiDimTableRecordsRequest, tmpHeader *DeleteMultiDimTableRecordsHeaders, runtime *dara.RuntimeOptions) (_result *DeleteMultiDimTableRecordsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteMultiDimTableRecordsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7047,9 +7182,11 @@ func (client *Client) DeleteMultiDimTableRecords(request *DeleteMultiDimTableRec
 //
 // @return DeletePermissionResponse
 func (client *Client) DeletePermissionWithOptions(tmpReq *DeletePermissionRequest, tmpHeader *DeletePermissionHeaders, runtime *dara.RuntimeOptions) (_result *DeletePermissionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeletePermissionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7148,9 +7285,11 @@ func (client *Client) DeletePermission(request *DeletePermissionRequest) (_resul
 //
 // @return DeleteRowsResponse
 func (client *Client) DeleteRowsWithOptions(tmpReq *DeleteRowsRequest, tmpHeader *DeleteRowsHeaders, runtime *dara.RuntimeOptions) (_result *DeleteRowsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteRowsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7249,9 +7388,11 @@ func (client *Client) DeleteRows(request *DeleteRowsRequest) (_result *DeleteRow
 //
 // @return DeleteScenegroupMemberResponse
 func (client *Client) DeleteScenegroupMemberWithOptions(request *DeleteScenegroupMemberRequest, tmpHeader *DeleteScenegroupMemberHeaders, runtime *dara.RuntimeOptions) (_result *DeleteScenegroupMemberResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &DeleteScenegroupMemberShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -7332,9 +7473,11 @@ func (client *Client) DeleteScenegroupMember(request *DeleteScenegroupMemberRequ
 //
 // @return DeleteSheetResponse
 func (client *Client) DeleteSheetWithOptions(tmpReq *DeleteSheetRequest, tmpHeader *DeleteSheetHeaders, runtime *dara.RuntimeOptions) (_result *DeleteSheetResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteSheetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7425,9 +7568,11 @@ func (client *Client) DeleteSheet(request *DeleteSheetRequest) (_result *DeleteS
 //
 // @return DeleteSubscribedCalendarResponse
 func (client *Client) DeleteSubscribedCalendarWithOptions(request *DeleteSubscribedCalendarRequest, tmpHeader *DeleteSubscribedCalendarHeaders, runtime *dara.RuntimeOptions) (_result *DeleteSubscribedCalendarResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &DeleteSubscribedCalendarShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -7504,9 +7649,11 @@ func (client *Client) DeleteSubscribedCalendar(request *DeleteSubscribedCalendar
 //
 // @return DeleteTodoTaskResponse
 func (client *Client) DeleteTodoTaskWithOptions(tmpReq *DeleteTodoTaskRequest, tmpHeader *DeleteTodoTaskHeaders, runtime *dara.RuntimeOptions) (_result *DeleteTodoTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteTodoTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7597,9 +7744,11 @@ func (client *Client) DeleteTodoTask(request *DeleteTodoTaskRequest) (_result *D
 //
 // @return DeleteWorkspaceDocMembersResponse
 func (client *Client) DeleteWorkspaceDocMembersWithOptions(tmpReq *DeleteWorkspaceDocMembersRequest, tmpHeader *DeleteWorkspaceDocMembersHeaders, runtime *dara.RuntimeOptions) (_result *DeleteWorkspaceDocMembersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteWorkspaceDocMembersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7698,9 +7847,11 @@ func (client *Client) DeleteWorkspaceDocMembers(request *DeleteWorkspaceDocMembe
 //
 // @return DeleteWorkspaceMembersResponse
 func (client *Client) DeleteWorkspaceMembersWithOptions(tmpReq *DeleteWorkspaceMembersRequest, tmpHeader *DeleteWorkspaceMembersHeaders, runtime *dara.RuntimeOptions) (_result *DeleteWorkspaceMembersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteWorkspaceMembersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7785,6 +7936,204 @@ func (client *Client) DeleteWorkspaceMembers(request *DeleteWorkspaceMembersRequ
 
 // Summary:
 //
+// 删除块元素
+//
+// @param tmpReq - DocBlocksDeleteRequest
+//
+// @param tmpHeader - DocBlocksDeleteHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DocBlocksDeleteResponse
+func (client *Client) DocBlocksDeleteWithOptions(tmpReq *DocBlocksDeleteRequest, tmpHeader *DocBlocksDeleteHeaders, runtime *dara.RuntimeOptions) (_result *DocBlocksDeleteResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DocBlocksDeleteShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &DocBlocksDeleteShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BlockId) {
+		body["BlockId"] = request.BlockId
+	}
+
+	if !dara.IsNil(request.DentryUuid) {
+		body["DentryUuid"] = request.DentryUuid
+	}
+
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DocBlocksDelete"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/documents/docBlocksDelete"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DocBlocksDeleteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除块元素
+//
+// @param request - DocBlocksDeleteRequest
+//
+// @return DocBlocksDeleteResponse
+func (client *Client) DocBlocksDelete(request *DocBlocksDeleteRequest) (_result *DocBlocksDeleteResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &DocBlocksDeleteHeaders{}
+	_result = &DocBlocksDeleteResponse{}
+	_body, _err := client.DocBlocksDeleteWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新块元素
+//
+// @param tmpReq - DocBlocksModifyRequest
+//
+// @param tmpHeader - DocBlocksModifyHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DocBlocksModifyResponse
+func (client *Client) DocBlocksModifyWithOptions(tmpReq *DocBlocksModifyRequest, tmpHeader *DocBlocksModifyHeaders, runtime *dara.RuntimeOptions) (_result *DocBlocksModifyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DocBlocksModifyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &DocBlocksModifyShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Element) {
+		request.ElementShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Element, dara.String("Element"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BlockId) {
+		body["BlockId"] = request.BlockId
+	}
+
+	if !dara.IsNil(request.DentryUuid) {
+		body["DentryUuid"] = request.DentryUuid
+	}
+
+	if !dara.IsNil(request.ElementShrink) {
+		body["Element"] = request.ElementShrink
+	}
+
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DocBlocksModify"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/documents/docBlocksModify"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DocBlocksModifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新块元素
+//
+// @param request - DocBlocksModifyRequest
+//
+// @return DocBlocksModifyResponse
+func (client *Client) DocBlocksModify(request *DocBlocksModifyRequest) (_result *DocBlocksModifyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &DocBlocksModifyHeaders{}
+	_result = &DocBlocksModifyResponse{}
+	_body, _err := client.DocBlocksModifyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询块元素
 //
 // @param tmpReq - DocBlocksQueryRequest
@@ -7795,9 +8144,11 @@ func (client *Client) DeleteWorkspaceMembers(request *DeleteWorkspaceMembersRequ
 //
 // @return DocBlocksQueryResponse
 func (client *Client) DocBlocksQueryWithOptions(tmpReq *DocBlocksQueryRequest, tmpHeader *DocBlocksQueryHeaders, runtime *dara.RuntimeOptions) (_result *DocBlocksQueryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DocBlocksQueryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7896,9 +8247,11 @@ func (client *Client) DocBlocksQuery(request *DocBlocksQueryRequest) (_result *D
 //
 // @return DocUpdateContentResponse
 func (client *Client) DocUpdateContentWithOptions(tmpReq *DocUpdateContentRequest, tmpHeader *DocUpdateContentHeaders, runtime *dara.RuntimeOptions) (_result *DocUpdateContentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DocUpdateContentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7993,9 +8346,11 @@ func (client *Client) DocUpdateContent(request *DocUpdateContentRequest) (_resul
 //
 // @return ExecuteBatchTaskResponse
 func (client *Client) ExecuteBatchTaskWithOptions(request *ExecuteBatchTaskRequest, tmpHeader *ExecuteBatchTaskHeaders, runtime *dara.RuntimeOptions) (_result *ExecuteBatchTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &ExecuteBatchTaskShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -8088,9 +8443,11 @@ func (client *Client) ExecuteBatchTask(request *ExecuteBatchTaskRequest) (_resul
 //
 // @return ExecutePlatformTaskResponse
 func (client *Client) ExecutePlatformTaskWithOptions(request *ExecutePlatformTaskRequest, tmpHeader *ExecutePlatformTaskHeaders, runtime *dara.RuntimeOptions) (_result *ExecutePlatformTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &ExecutePlatformTaskShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -8195,9 +8552,11 @@ func (client *Client) ExecutePlatformTask(request *ExecutePlatformTaskRequest) (
 //
 // @return ExecuteTaskResponse
 func (client *Client) ExecuteTaskWithOptions(request *ExecuteTaskRequest, tmpHeader *ExecuteTaskHeaders, runtime *dara.RuntimeOptions) (_result *ExecuteTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &ExecuteTaskShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -8310,9 +8669,11 @@ func (client *Client) ExecuteTask(request *ExecuteTaskRequest) (_result *Execute
 //
 // @return ExpandGroupCapacityResponse
 func (client *Client) ExpandGroupCapacityWithOptions(tmpReq *ExpandGroupCapacityRequest, tmpHeader *ExpandGroupCapacityHeaders, runtime *dara.RuntimeOptions) (_result *ExpandGroupCapacityResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExpandGroupCapacityShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8399,9 +8760,11 @@ func (client *Client) ExpandGroupCapacity(request *ExpandGroupCapacityRequest) (
 //
 // @return FinishTicketResponse
 func (client *Client) FinishTicketWithOptions(tmpReq *FinishTicketRequest, tmpHeader *FinishTicketHeaders, runtime *dara.RuntimeOptions) (_result *FinishTicketResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FinishTicketShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8508,9 +8871,11 @@ func (client *Client) FinishTicket(request *FinishTicketRequest) (_result *Finis
 //
 // @return GetActivityListResponse
 func (client *Client) GetActivityListWithOptions(request *GetActivityListRequest, tmpHeader *GetActivityListHeaders, runtime *dara.RuntimeOptions) (_result *GetActivityListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetActivityListShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -8599,9 +8964,11 @@ func (client *Client) GetActivityList(request *GetActivityListRequest) (_result 
 //
 // @return GetAlidingAssistantInfoResponse
 func (client *Client) GetAlidingAssistantInfoWithOptions(tmpReq *GetAlidingAssistantInfoRequest, tmpHeader *GetAlidingAssistantInfoHeaders, runtime *dara.RuntimeOptions) (_result *GetAlidingAssistantInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetAlidingAssistantInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8688,9 +9055,11 @@ func (client *Client) GetAlidingAssistantInfo(request *GetAlidingAssistantInfoRe
 //
 // @return GetAllSheetsResponse
 func (client *Client) GetAllSheetsWithOptions(tmpReq *GetAllSheetsRequest, tmpHeader *GetAllSheetsHeaders, runtime *dara.RuntimeOptions) (_result *GetAllSheetsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetAllSheetsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8777,9 +9146,11 @@ func (client *Client) GetAllSheets(request *GetAllSheetsRequest) (_result *GetAl
 //
 // @return GetAssistantCapabilityResponse
 func (client *Client) GetAssistantCapabilityWithOptions(request *GetAssistantCapabilityRequest, headers *GetAssistantCapabilityHeaders, runtime *dara.RuntimeOptions) (_result *GetAssistantCapabilityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssistantId) {
@@ -8874,9 +9245,11 @@ func (client *Client) GetAssistantCapability(request *GetAssistantCapabilityRequ
 //
 // @return GetCardTemplateResponse
 func (client *Client) GetCardTemplateWithOptions(tmpReq *GetCardTemplateRequest, tmpHeader *GetCardTemplateHeaders, runtime *dara.RuntimeOptions) (_result *GetCardTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetCardTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8959,9 +9332,11 @@ func (client *Client) GetCardTemplate(request *GetCardTemplateRequest) (_result 
 //
 // @return GetConversaionSpaceResponse
 func (client *Client) GetConversaionSpaceWithOptions(tmpReq *GetConversaionSpaceRequest, tmpHeader *GetConversaionSpaceHeaders, runtime *dara.RuntimeOptions) (_result *GetConversaionSpaceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetConversaionSpaceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9048,9 +9423,11 @@ func (client *Client) GetConversaionSpace(request *GetConversaionSpaceRequest) (
 //
 // @return GetCorpAccomplishmentTasksResponse
 func (client *Client) GetCorpAccomplishmentTasksWithOptions(request *GetCorpAccomplishmentTasksRequest, tmpHeader *GetCorpAccomplishmentTasksHeaders, runtime *dara.RuntimeOptions) (_result *GetCorpAccomplishmentTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetCorpAccomplishmentTasksShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -9163,9 +9540,11 @@ func (client *Client) GetCorpAccomplishmentTasks(request *GetCorpAccomplishmentT
 //
 // @return GetCorpTasksResponse
 func (client *Client) GetCorpTasksWithOptions(request *GetCorpTasksRequest, tmpHeader *GetCorpTasksHeaders, runtime *dara.RuntimeOptions) (_result *GetCorpTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetCorpTasksShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -9274,9 +9653,11 @@ func (client *Client) GetCorpTasks(request *GetCorpTasksRequest) (_result *GetCo
 //
 // @return GetDeptNoResponse
 func (client *Client) GetDeptNoWithOptions(tmpReq *GetDeptNoRequest, tmpHeader *GetDeptNoHeaders, runtime *dara.RuntimeOptions) (_result *GetDeptNoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetDeptNoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9359,9 +9740,11 @@ func (client *Client) GetDeptNo(request *GetDeptNoRequest) (_result *GetDeptNoRe
 //
 // @return GetDocContentResponse
 func (client *Client) GetDocContentWithOptions(tmpReq *GetDocContentRequest, tmpHeader *GetDocContentHeaders, runtime *dara.RuntimeOptions) (_result *GetDocContentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetDocContentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9456,9 +9839,11 @@ func (client *Client) GetDocContent(request *GetDocContentRequest) (_result *Get
 //
 // @return GetDocContentTakIdResponse
 func (client *Client) GetDocContentTakIdWithOptions(tmpReq *GetDocContentTakIdRequest, tmpHeader *GetDocContentTakIdHeaders, runtime *dara.RuntimeOptions) (_result *GetDocContentTakIdResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetDocContentTakIdShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9553,9 +9938,11 @@ func (client *Client) GetDocContentTakId(request *GetDocContentTakIdRequest) (_r
 //
 // @return GetEventResponse
 func (client *Client) GetEventWithOptions(request *GetEventRequest, tmpHeader *GetEventHeaders, runtime *dara.RuntimeOptions) (_result *GetEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetEventShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -9642,9 +10029,11 @@ func (client *Client) GetEvent(request *GetEventRequest) (_result *GetEventRespo
 //
 // @return GetFieldDefByUuidResponse
 func (client *Client) GetFieldDefByUuidWithOptions(request *GetFieldDefByUuidRequest, tmpHeader *GetFieldDefByUuidHeaders, runtime *dara.RuntimeOptions) (_result *GetFieldDefByUuidResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetFieldDefByUuidShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -9729,9 +10118,11 @@ func (client *Client) GetFieldDefByUuid(request *GetFieldDefByUuidRequest) (_res
 //
 // @return GetFileDownloadInfoResponse
 func (client *Client) GetFileDownloadInfoWithOptions(tmpReq *GetFileDownloadInfoRequest, tmpHeader *GetFileDownloadInfoHeaders, runtime *dara.RuntimeOptions) (_result *GetFileDownloadInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetFileDownloadInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9830,9 +10221,11 @@ func (client *Client) GetFileDownloadInfo(request *GetFileDownloadInfoRequest) (
 //
 // @return GetFileUploadInfoResponse
 func (client *Client) GetFileUploadInfoWithOptions(tmpReq *GetFileUploadInfoRequest, tmpHeader *GetFileUploadInfoHeaders, runtime *dara.RuntimeOptions) (_result *GetFileUploadInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetFileUploadInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9931,9 +10324,11 @@ func (client *Client) GetFileUploadInfo(request *GetFileUploadInfoRequest) (_res
 //
 // @return GetFormComponentDefinitionListResponse
 func (client *Client) GetFormComponentDefinitionListWithOptions(request *GetFormComponentDefinitionListRequest, tmpHeader *GetFormComponentDefinitionListHeaders, runtime *dara.RuntimeOptions) (_result *GetFormComponentDefinitionListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetFormComponentDefinitionListShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -10022,9 +10417,11 @@ func (client *Client) GetFormComponentDefinitionList(request *GetFormComponentDe
 //
 // @return GetFormDataByIDResponse
 func (client *Client) GetFormDataByIDWithOptions(request *GetFormDataByIDRequest, tmpHeader *GetFormDataByIDHeaders, runtime *dara.RuntimeOptions) (_result *GetFormDataByIDResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetFormDataByIDShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -10113,9 +10510,11 @@ func (client *Client) GetFormDataByID(request *GetFormDataByIDRequest) (_result 
 //
 // @return GetFormListInAppResponse
 func (client *Client) GetFormListInAppWithOptions(request *GetFormListInAppRequest, tmpHeader *GetFormListInAppHeaders, runtime *dara.RuntimeOptions) (_result *GetFormListInAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetFormListInAppShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -10208,9 +10607,11 @@ func (client *Client) GetFormListInApp(request *GetFormListInAppRequest) (_resul
 //
 // @return GetGroupLiveListResponse
 func (client *Client) GetGroupLiveListWithOptions(tmpReq *GetGroupLiveListRequest, tmpHeader *GetGroupLiveListHeaders, runtime *dara.RuntimeOptions) (_result *GetGroupLiveListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetGroupLiveListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10305,9 +10706,11 @@ func (client *Client) GetGroupLiveList(request *GetGroupLiveListRequest) (_resul
 //
 // @return GetInnerGroupMembersResponse
 func (client *Client) GetInnerGroupMembersWithOptions(request *GetInnerGroupMembersRequest, tmpHeader *GetInnerGroupMembersHeaders, runtime *dara.RuntimeOptions) (_result *GetInnerGroupMembersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetInnerGroupMembersShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -10392,9 +10795,11 @@ func (client *Client) GetInnerGroupMembers(request *GetInnerGroupMembersRequest)
 //
 // @return GetInstanceByIdResponse
 func (client *Client) GetInstanceByIdWithOptions(request *GetInstanceByIdRequest, tmpHeader *GetInstanceByIdHeaders, runtime *dara.RuntimeOptions) (_result *GetInstanceByIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetInstanceByIdShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -10483,9 +10888,11 @@ func (client *Client) GetInstanceById(request *GetInstanceByIdRequest) (_result 
 //
 // @return GetInstanceIdListResponse
 func (client *Client) GetInstanceIdListWithOptions(request *GetInstanceIdListRequest, tmpHeader *GetInstanceIdListHeaders, runtime *dara.RuntimeOptions) (_result *GetInstanceIdListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetInstanceIdListShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -10618,9 +11025,11 @@ func (client *Client) GetInstanceIdList(request *GetInstanceIdListRequest) (_res
 //
 // @return GetInstancesResponse
 func (client *Client) GetInstancesWithOptions(request *GetInstancesRequest, tmpHeader *GetInstancesHeaders, runtime *dara.RuntimeOptions) (_result *GetInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetInstancesShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -10757,9 +11166,11 @@ func (client *Client) GetInstances(request *GetInstancesRequest) (_result *GetIn
 //
 // @return GetInstancesByIdListResponse
 func (client *Client) GetInstancesByIdListWithOptions(request *GetInstancesByIdListRequest, tmpHeader *GetInstancesByIdListHeaders, runtime *dara.RuntimeOptions) (_result *GetInstancesByIdListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetInstancesByIdListShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -10848,9 +11259,11 @@ func (client *Client) GetInstancesByIdList(request *GetInstancesByIdListRequest)
 //
 // @return GetLiveReplayUrlResponse
 func (client *Client) GetLiveReplayUrlWithOptions(tmpReq *GetLiveReplayUrlRequest, tmpHeader *GetLiveReplayUrlHeaders, runtime *dara.RuntimeOptions) (_result *GetLiveReplayUrlResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetLiveReplayUrlShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10937,9 +11350,11 @@ func (client *Client) GetLiveReplayUrl(request *GetLiveReplayUrlRequest) (_resul
 //
 // @return GetMeCorpSubmissionResponse
 func (client *Client) GetMeCorpSubmissionWithOptions(request *GetMeCorpSubmissionRequest, tmpHeader *GetMeCorpSubmissionHeaders, runtime *dara.RuntimeOptions) (_result *GetMeCorpSubmissionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetMeCorpSubmissionShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -11052,9 +11467,11 @@ func (client *Client) GetMeCorpSubmission(request *GetMeCorpSubmissionRequest) (
 //
 // @return GetMeetingRoomsScheduleResponse
 func (client *Client) GetMeetingRoomsScheduleWithOptions(tmpReq *GetMeetingRoomsScheduleRequest, tmpHeader *GetMeetingRoomsScheduleHeaders, runtime *dara.RuntimeOptions) (_result *GetMeetingRoomsScheduleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetMeetingRoomsScheduleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11145,9 +11562,11 @@ func (client *Client) GetMeetingRoomsSchedule(request *GetMeetingRoomsScheduleRe
 //
 // @return GetMineWorkspaceResponse
 func (client *Client) GetMineWorkspaceWithOptions(tmpReq *GetMineWorkspaceRequest, tmpHeader *GetMineWorkspaceHeaders, runtime *dara.RuntimeOptions) (_result *GetMineWorkspaceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetMineWorkspaceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11238,9 +11657,11 @@ func (client *Client) GetMineWorkspace(request *GetMineWorkspaceRequest) (_resul
 //
 // @return GetMultiDimTableAllFieldsResponse
 func (client *Client) GetMultiDimTableAllFieldsWithOptions(tmpReq *GetMultiDimTableAllFieldsRequest, tmpHeader *GetMultiDimTableAllFieldsHeaders, runtime *dara.RuntimeOptions) (_result *GetMultiDimTableAllFieldsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetMultiDimTableAllFieldsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11331,9 +11752,11 @@ func (client *Client) GetMultiDimTableAllFields(request *GetMultiDimTableAllFiel
 //
 // @return GetMultiDimTableAllSheetsResponse
 func (client *Client) GetMultiDimTableAllSheetsWithOptions(tmpReq *GetMultiDimTableAllSheetsRequest, tmpHeader *GetMultiDimTableAllSheetsHeaders, runtime *dara.RuntimeOptions) (_result *GetMultiDimTableAllSheetsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetMultiDimTableAllSheetsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11420,9 +11843,11 @@ func (client *Client) GetMultiDimTableAllSheets(request *GetMultiDimTableAllShee
 //
 // @return GetMultiDimTableRecordResponse
 func (client *Client) GetMultiDimTableRecordWithOptions(tmpReq *GetMultiDimTableRecordRequest, tmpHeader *GetMultiDimTableRecordHeaders, runtime *dara.RuntimeOptions) (_result *GetMultiDimTableRecordResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetMultiDimTableRecordShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11517,9 +11942,11 @@ func (client *Client) GetMultiDimTableRecord(request *GetMultiDimTableRecordRequ
 //
 // @return GetMultiDimTableSheetResponse
 func (client *Client) GetMultiDimTableSheetWithOptions(tmpReq *GetMultiDimTableSheetRequest, tmpHeader *GetMultiDimTableSheetHeaders, runtime *dara.RuntimeOptions) (_result *GetMultiDimTableSheetResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetMultiDimTableSheetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11610,9 +12037,11 @@ func (client *Client) GetMultiDimTableSheet(request *GetMultiDimTableSheetReques
 //
 // @return GetMultipartFileUploadInfosResponse
 func (client *Client) GetMultipartFileUploadInfosWithOptions(tmpReq *GetMultipartFileUploadInfosRequest, tmpHeader *GetMultipartFileUploadInfosHeaders, runtime *dara.RuntimeOptions) (_result *GetMultipartFileUploadInfosResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetMultipartFileUploadInfosShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11715,9 +12144,11 @@ func (client *Client) GetMultipartFileUploadInfos(request *GetMultipartFileUploa
 //
 // @return GetNewestInnerGroupsResponse
 func (client *Client) GetNewestInnerGroupsWithOptions(tmpReq *GetNewestInnerGroupsRequest, tmpHeader *GetNewestInnerGroupsHeaders, runtime *dara.RuntimeOptions) (_result *GetNewestInnerGroupsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetNewestInnerGroupsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11800,9 +12231,11 @@ func (client *Client) GetNewestInnerGroups(request *GetNewestInnerGroupsRequest)
 //
 // @return GetNodeResponse
 func (client *Client) GetNodeWithOptions(tmpReq *GetNodeRequest, tmpHeader *GetNodeHeaders, runtime *dara.RuntimeOptions) (_result *GetNodeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetNodeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11897,9 +12330,11 @@ func (client *Client) GetNode(request *GetNodeRequest) (_result *GetNodeResponse
 //
 // @return GetNodeByUrlResponse
 func (client *Client) GetNodeByUrlWithOptions(tmpReq *GetNodeByUrlRequest, tmpHeader *GetNodeByUrlHeaders, runtime *dara.RuntimeOptions) (_result *GetNodeByUrlResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetNodeByUrlShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11994,9 +12429,11 @@ func (client *Client) GetNodeByUrl(request *GetNodeByUrlRequest) (_result *GetNo
 //
 // @return GetNodesResponse
 func (client *Client) GetNodesWithOptions(tmpReq *GetNodesRequest, tmpHeader *GetNodesHeaders, runtime *dara.RuntimeOptions) (_result *GetNodesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetNodesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12095,9 +12532,11 @@ func (client *Client) GetNodes(request *GetNodesRequest) (_result *GetNodesRespo
 //
 // @return GetNotifyMeResponse
 func (client *Client) GetNotifyMeWithOptions(request *GetNotifyMeRequest, tmpHeader *GetNotifyMeHeaders, runtime *dara.RuntimeOptions) (_result *GetNotifyMeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetNotifyMeShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -12218,9 +12657,11 @@ func (client *Client) GetNotifyMe(request *GetNotifyMeRequest) (_result *GetNoti
 //
 // @return GetOpenUrlResponse
 func (client *Client) GetOpenUrlWithOptions(request *GetOpenUrlRequest, tmpHeader *GetOpenUrlHeaders, runtime *dara.RuntimeOptions) (_result *GetOpenUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetOpenUrlShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -12313,9 +12754,11 @@ func (client *Client) GetOpenUrl(request *GetOpenUrlRequest) (_result *GetOpenUr
 //
 // @return GetOperationRecordsResponse
 func (client *Client) GetOperationRecordsWithOptions(request *GetOperationRecordsRequest, tmpHeader *GetOperationRecordsHeaders, runtime *dara.RuntimeOptions) (_result *GetOperationRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetOperationRecordsShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -12400,9 +12843,11 @@ func (client *Client) GetOperationRecords(request *GetOperationRecordsRequest) (
 //
 // @return GetOrgLiveListResponse
 func (client *Client) GetOrgLiveListWithOptions(tmpReq *GetOrgLiveListRequest, tmpHeader *GetOrgLiveListHeaders, runtime *dara.RuntimeOptions) (_result *GetOrgLiveListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetOrgLiveListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12505,9 +12950,11 @@ func (client *Client) GetOrgLiveList(request *GetOrgLiveListRequest) (_result *G
 //
 // @return GetOrgOrWebOpenDocContentTaskIdResponse
 func (client *Client) GetOrgOrWebOpenDocContentTaskIdWithOptions(tmpReq *GetOrgOrWebOpenDocContentTaskIdRequest, tmpHeader *GetOrgOrWebOpenDocContentTaskIdHeaders, runtime *dara.RuntimeOptions) (_result *GetOrgOrWebOpenDocContentTaskIdResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetOrgOrWebOpenDocContentTaskIdShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12606,9 +13053,11 @@ func (client *Client) GetOrgOrWebOpenDocContentTaskId(request *GetOrgOrWebOpenDo
 //
 // @return GetProcessDefinitionResponse
 func (client *Client) GetProcessDefinitionWithOptions(request *GetProcessDefinitionRequest, tmpHeader *GetProcessDefinitionHeaders, runtime *dara.RuntimeOptions) (_result *GetProcessDefinitionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetProcessDefinitionShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -12717,9 +13166,11 @@ func (client *Client) GetProcessDefinition(request *GetProcessDefinitionRequest)
 //
 // @return GetRangeResponse
 func (client *Client) GetRangeWithOptions(tmpReq *GetRangeRequest, tmpHeader *GetRangeHeaders, runtime *dara.RuntimeOptions) (_result *GetRangeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetRangeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12818,9 +13269,11 @@ func (client *Client) GetRange(request *GetRangeRequest) (_result *GetRangeRespo
 //
 // @return GetRelatedWorkspacesResponse
 func (client *Client) GetRelatedWorkspacesWithOptions(tmpReq *GetRelatedWorkspacesRequest, tmpHeader *GetRelatedWorkspacesHeaders, runtime *dara.RuntimeOptions) (_result *GetRelatedWorkspacesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetRelatedWorkspacesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12907,9 +13360,11 @@ func (client *Client) GetRelatedWorkspaces(request *GetRelatedWorkspacesRequest)
 //
 // @return GetReportTemplateByNameResponse
 func (client *Client) GetReportTemplateByNameWithOptions(tmpReq *GetReportTemplateByNameRequest, tmpHeader *GetReportTemplateByNameHeaders, runtime *dara.RuntimeOptions) (_result *GetReportTemplateByNameResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetReportTemplateByNameShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12996,9 +13451,11 @@ func (client *Client) GetReportTemplateByName(request *GetReportTemplateByNameRe
 //
 // @return GetReportUnReadCountResponse
 func (client *Client) GetReportUnReadCountWithOptions(tmpReq *GetReportUnReadCountRequest, tmpHeader *GetReportUnReadCountHeaders, runtime *dara.RuntimeOptions) (_result *GetReportUnReadCountResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetReportUnReadCountShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13089,9 +13546,11 @@ func (client *Client) GetReportUnReadCount(request *GetReportUnReadCountRequest)
 //
 // @return GetRunningTasksResponse
 func (client *Client) GetRunningTasksWithOptions(request *GetRunningTasksRequest, tmpHeader *GetRunningTasksHeaders, runtime *dara.RuntimeOptions) (_result *GetRunningTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetRunningTasksShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -13184,9 +13643,11 @@ func (client *Client) GetRunningTasks(request *GetRunningTasksRequest) (_result 
 //
 // @return GetScheduleResponse
 func (client *Client) GetScheduleWithOptions(tmpReq *GetScheduleRequest, tmpHeader *GetScheduleHeaders, runtime *dara.RuntimeOptions) (_result *GetScheduleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetScheduleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13285,9 +13746,11 @@ func (client *Client) GetSchedule(request *GetScheduleRequest) (_result *GetSche
 //
 // @return GetSheetResponse
 func (client *Client) GetSheetWithOptions(tmpReq *GetSheetRequest, tmpHeader *GetSheetHeaders, runtime *dara.RuntimeOptions) (_result *GetSheetResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetSheetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13378,9 +13841,11 @@ func (client *Client) GetSheet(request *GetSheetRequest) (_result *GetSheetRespo
 //
 // @return GetSheetContentJobIdResponse
 func (client *Client) GetSheetContentJobIdWithOptions(tmpReq *GetSheetContentJobIdRequest, tmpHeader *GetSheetContentJobIdHeaders, runtime *dara.RuntimeOptions) (_result *GetSheetContentJobIdResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetSheetContentJobIdShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13471,9 +13936,11 @@ func (client *Client) GetSheetContentJobId(request *GetSheetContentJobIdRequest)
 //
 // @return GetSpaceDirectoriesResponse
 func (client *Client) GetSpaceDirectoriesWithOptions(tmpReq *GetSpaceDirectoriesRequest, tmpHeader *GetSpaceDirectoriesHeaders, runtime *dara.RuntimeOptions) (_result *GetSpaceDirectoriesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetSpaceDirectoriesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13572,9 +14039,11 @@ func (client *Client) GetSpaceDirectories(request *GetSpaceDirectoriesRequest) (
 //
 // @return GetSubscribedCalendarResponse
 func (client *Client) GetSubscribedCalendarWithOptions(request *GetSubscribedCalendarRequest, tmpHeader *GetSubscribedCalendarHeaders, runtime *dara.RuntimeOptions) (_result *GetSubscribedCalendarResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetSubscribedCalendarShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -13651,9 +14120,11 @@ func (client *Client) GetSubscribedCalendar(request *GetSubscribedCalendarReques
 //
 // @return GetTaskCopiesResponse
 func (client *Client) GetTaskCopiesWithOptions(request *GetTaskCopiesRequest, tmpHeader *GetTaskCopiesHeaders, runtime *dara.RuntimeOptions) (_result *GetTaskCopiesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &GetTaskCopiesShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -13762,9 +14233,11 @@ func (client *Client) GetTaskCopies(request *GetTaskCopiesRequest) (_result *Get
 //
 // @return GetTemplateListByUserIdResponse
 func (client *Client) GetTemplateListByUserIdWithOptions(tmpReq *GetTemplateListByUserIdRequest, tmpHeader *GetTemplateListByUserIdHeaders, runtime *dara.RuntimeOptions) (_result *GetTemplateListByUserIdResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetTemplateListByUserIdShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13855,9 +14328,11 @@ func (client *Client) GetTemplateListByUserId(request *GetTemplateListByUserIdRe
 //
 // @return GetTicketResponse
 func (client *Client) GetTicketWithOptions(tmpReq *GetTicketRequest, tmpHeader *GetTicketHeaders, runtime *dara.RuntimeOptions) (_result *GetTicketResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetTicketShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13948,9 +14423,11 @@ func (client *Client) GetTicket(request *GetTicketRequest) (_result *GetTicketRe
 //
 // @return GetTodoTaskResponse
 func (client *Client) GetTodoTaskWithOptions(tmpReq *GetTodoTaskRequest, tmpHeader *GetTodoTaskHeaders, runtime *dara.RuntimeOptions) (_result *GetTodoTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetTodoTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14037,9 +14514,11 @@ func (client *Client) GetTodoTask(request *GetTodoTaskRequest) (_result *GetTodo
 //
 // @return GetUserResponse
 func (client *Client) GetUserWithOptions(tmpReq *GetUserRequest, tmpHeader *GetUserHeaders, runtime *dara.RuntimeOptions) (_result *GetUserResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetUserShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14126,9 +14605,11 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 //
 // @return GetUserIdResponse
 func (client *Client) GetUserIdWithOptions(tmpReq *GetUserIdRequest, tmpHeader *GetUserIdHeaders, runtime *dara.RuntimeOptions) (_result *GetUserIdResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetUserIdShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14215,9 +14696,11 @@ func (client *Client) GetUserId(request *GetUserIdRequest) (_result *GetUserIdRe
 //
 // @return GetUserIdByOrgIdAndStaffIdResponse
 func (client *Client) GetUserIdByOrgIdAndStaffIdWithOptions(tmpReq *GetUserIdByOrgIdAndStaffIdRequest, tmpHeader *GetUserIdByOrgIdAndStaffIdHeaders, runtime *dara.RuntimeOptions) (_result *GetUserIdByOrgIdAndStaffIdResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetUserIdByOrgIdAndStaffIdShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14304,9 +14787,11 @@ func (client *Client) GetUserIdByOrgIdAndStaffId(request *GetUserIdByOrgIdAndSta
 //
 // @return GetUserLatestPlanResponse
 func (client *Client) GetUserLatestPlanWithOptions(tmpReq *GetUserLatestPlanRequest, tmpHeader *GetUserLatestPlanHeaders, runtime *dara.RuntimeOptions) (_result *GetUserLatestPlanResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetUserLatestPlanShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14389,9 +14874,11 @@ func (client *Client) GetUserLatestPlan(request *GetUserLatestPlanRequest) (_res
 //
 // @return GetWorkspaceResponse
 func (client *Client) GetWorkspaceWithOptions(tmpReq *GetWorkspaceRequest, tmpHeader *GetWorkspaceHeaders, runtime *dara.RuntimeOptions) (_result *GetWorkspaceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetWorkspaceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14482,9 +14969,11 @@ func (client *Client) GetWorkspace(request *GetWorkspaceRequest) (_result *GetWo
 //
 // @return GetWorkspacesResponse
 func (client *Client) GetWorkspacesWithOptions(tmpReq *GetWorkspacesRequest, tmpHeader *GetWorkspacesHeaders, runtime *dara.RuntimeOptions) (_result *GetWorkspacesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetWorkspacesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14583,9 +15072,11 @@ func (client *Client) GetWorkspaces(request *GetWorkspacesRequest) (_result *Get
 //
 // @return GrantHonorResponse
 func (client *Client) GrantHonorWithOptions(tmpReq *GrantHonorRequest, tmpHeader *GrantHonorHeaders, runtime *dara.RuntimeOptions) (_result *GrantHonorResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GrantHonorShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14716,9 +15207,11 @@ func (client *Client) GrantHonor(request *GrantHonorRequest) (_result *GrantHono
 //
 // @return InitMultipartFileUploadResponse
 func (client *Client) InitMultipartFileUploadWithOptions(tmpReq *InitMultipartFileUploadRequest, tmpHeader *InitMultipartFileUploadHeaders, runtime *dara.RuntimeOptions) (_result *InitMultipartFileUploadResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InitMultipartFileUploadShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14813,9 +15306,11 @@ func (client *Client) InitMultipartFileUpload(request *InitMultipartFileUploadRe
 //
 // @return InsertColumnsBeforeResponse
 func (client *Client) InsertColumnsBeforeWithOptions(tmpReq *InsertColumnsBeforeRequest, tmpHeader *InsertColumnsBeforeHeaders, runtime *dara.RuntimeOptions) (_result *InsertColumnsBeforeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InsertColumnsBeforeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14914,9 +15409,11 @@ func (client *Client) InsertColumnsBefore(request *InsertColumnsBeforeRequest) (
 //
 // @return InsertContentWithOptionsResponse
 func (client *Client) InsertContentWithOptionsWithOptions(tmpReq *InsertContentWithOptionsRequest, tmpHeader *InsertContentWithOptionsHeaders, runtime *dara.RuntimeOptions) (_result *InsertContentWithOptionsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InsertContentWithOptionsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15023,9 +15520,11 @@ func (client *Client) InsertContentWithOptions(request *InsertContentWithOptions
 //
 // @return InsertDropDownListResponse
 func (client *Client) InsertDropDownListWithOptions(tmpReq *InsertDropDownListRequest, tmpHeader *InsertDropDownListHeaders, runtime *dara.RuntimeOptions) (_result *InsertDropDownListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InsertDropDownListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15128,9 +15627,11 @@ func (client *Client) InsertDropDownList(request *InsertDropDownListRequest) (_r
 //
 // @return InsertMultiDimTableRecordResponse
 func (client *Client) InsertMultiDimTableRecordWithOptions(tmpReq *InsertMultiDimTableRecordRequest, tmpHeader *InsertMultiDimTableRecordHeaders, runtime *dara.RuntimeOptions) (_result *InsertMultiDimTableRecordResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InsertMultiDimTableRecordShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15229,9 +15730,11 @@ func (client *Client) InsertMultiDimTableRecord(request *InsertMultiDimTableReco
 //
 // @return InsertRowsBeforeResponse
 func (client *Client) InsertRowsBeforeWithOptions(tmpReq *InsertRowsBeforeRequest, tmpHeader *InsertRowsBeforeHeaders, runtime *dara.RuntimeOptions) (_result *InsertRowsBeforeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InsertRowsBeforeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15330,9 +15833,11 @@ func (client *Client) InsertRowsBefore(request *InsertRowsBeforeRequest) (_resul
 //
 // @return InviteUsersResponse
 func (client *Client) InviteUsersWithOptions(tmpReq *InviteUsersRequest, tmpHeader *InviteUsersHeaders, runtime *dara.RuntimeOptions) (_result *InviteUsersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InviteUsersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15452,9 +15957,11 @@ func (client *Client) InvokeAssistantWithSSE(request *InvokeAssistantRequest, he
 //
 // @return InvokeAssistantResponse
 func (client *Client) InvokeAssistantWithOptions(request *InvokeAssistantRequest, headers *InvokeAssistantHeaders, runtime *dara.RuntimeOptions) (_result *InvokeAssistantResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssistantId) {
@@ -15566,9 +16073,11 @@ func (client *Client) InvokeSkillWithSSE(tmpReq *InvokeSkillRequest, tmpHeader *
 //
 // @return InvokeSkillResponse
 func (client *Client) InvokeSkillWithOptions(tmpReq *InvokeSkillRequest, tmpHeader *InvokeSkillHeaders, runtime *dara.RuntimeOptions) (_result *InvokeSkillResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InvokeSkillShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15593,6 +16102,10 @@ func (client *Client) InvokeSkillWithOptions(tmpReq *InvokeSkillRequest, tmpHead
 
 	if !dara.IsNil(request.Stream) {
 		body["Stream"] = request.Stream
+	}
+
+	if !dara.IsNil(request.SourceIdOfAssistantId) {
+		body["sourceIdOfAssistantId"] = request.SourceIdOfAssistantId
 	}
 
 	realHeaders := make(map[string]*string)
@@ -15659,9 +16172,11 @@ func (client *Client) InvokeSkill(request *InvokeSkillRequest) (_result *InvokeS
 //
 // @return ListApplicationResponse
 func (client *Client) ListApplicationWithOptions(request *ListApplicationRequest, tmpHeader *ListApplicationHeaders, runtime *dara.RuntimeOptions) (_result *ListApplicationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &ListApplicationShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -15758,9 +16273,11 @@ func (client *Client) ListApplication(request *ListApplicationRequest) (_result 
 //
 // @return ListCalendarsResponse
 func (client *Client) ListCalendarsWithOptions(tmpReq *ListCalendarsRequest, tmpHeader *ListCalendarsHeaders, runtime *dara.RuntimeOptions) (_result *ListCalendarsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListCalendarsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15843,9 +16360,11 @@ func (client *Client) ListCalendars(request *ListCalendarsRequest) (_result *Lis
 //
 // @return ListDentriesResponse
 func (client *Client) ListDentriesWithOptions(tmpReq *ListDentriesRequest, tmpHeader *ListDentriesHeaders, runtime *dara.RuntimeOptions) (_result *ListDentriesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDentriesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15956,9 +16475,11 @@ func (client *Client) ListDentries(request *ListDentriesRequest) (_result *ListD
 //
 // @return ListDriveSpacesResponse
 func (client *Client) ListDriveSpacesWithOptions(tmpReq *ListDriveSpacesRequest, tmpHeader *ListDriveSpacesHeaders, runtime *dara.RuntimeOptions) (_result *ListDriveSpacesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDriveSpacesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16053,9 +16574,11 @@ func (client *Client) ListDriveSpaces(request *ListDriveSpacesRequest) (_result 
 //
 // @return ListEventsResponse
 func (client *Client) ListEventsWithOptions(request *ListEventsRequest, tmpHeader *ListEventsHeaders, runtime *dara.RuntimeOptions) (_result *ListEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &ListEventsShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -16164,9 +16687,11 @@ func (client *Client) ListEvents(request *ListEventsRequest) (_result *ListEvent
 //
 // @return ListEventsViewResponse
 func (client *Client) ListEventsViewWithOptions(request *ListEventsViewRequest, tmpHeader *ListEventsViewHeaders, runtime *dara.RuntimeOptions) (_result *ListEventsViewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &ListEventsViewShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -16263,9 +16788,11 @@ func (client *Client) ListEventsView(request *ListEventsViewRequest) (_result *L
 //
 // @return ListFormRemarksResponse
 func (client *Client) ListFormRemarksWithOptions(tmpReq *ListFormRemarksRequest, tmpHeader *ListFormRemarksHeaders, runtime *dara.RuntimeOptions) (_result *ListFormRemarksResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListFormRemarksShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16360,9 +16887,11 @@ func (client *Client) ListFormRemarks(request *ListFormRemarksRequest) (_result 
 //
 // @return ListMessageResponse
 func (client *Client) ListMessageWithOptions(request *ListMessageRequest, headers *ListMessageHeaders, runtime *dara.RuntimeOptions) (_result *ListMessageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssistantId) {
@@ -16461,9 +16990,11 @@ func (client *Client) ListMessage(request *ListMessageRequest) (_result *ListMes
 //
 // @return ListMultiDimTableRecordsResponse
 func (client *Client) ListMultiDimTableRecordsWithOptions(tmpReq *ListMultiDimTableRecordsRequest, tmpHeader *ListMultiDimTableRecordsHeaders, runtime *dara.RuntimeOptions) (_result *ListMultiDimTableRecordsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListMultiDimTableRecordsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16570,9 +17101,11 @@ func (client *Client) ListMultiDimTableRecords(request *ListMultiDimTableRecords
 //
 // @return ListNavigationByFormTypeResponse
 func (client *Client) ListNavigationByFormTypeWithOptions(request *ListNavigationByFormTypeRequest, tmpHeader *ListNavigationByFormTypeHeaders, runtime *dara.RuntimeOptions) (_result *ListNavigationByFormTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &ListNavigationByFormTypeShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -16661,9 +17194,11 @@ func (client *Client) ListNavigationByFormType(request *ListNavigationByFormType
 //
 // @return ListNodesResponse
 func (client *Client) ListNodesWithOptions(tmpReq *ListNodesRequest, tmpHeader *ListNodesHeaders, runtime *dara.RuntimeOptions) (_result *ListNodesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListNodesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16762,9 +17297,11 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 //
 // @return ListPermissionsResponse
 func (client *Client) ListPermissionsWithOptions(tmpReq *ListPermissionsRequest, tmpHeader *ListPermissionsHeaders, runtime *dara.RuntimeOptions) (_result *ListPermissionsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListPermissionsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16859,9 +17396,11 @@ func (client *Client) ListPermissions(request *ListPermissionsRequest) (_result 
 //
 // @return ListReportResponse
 func (client *Client) ListReportWithOptions(tmpReq *ListReportRequest, tmpHeader *ListReportHeaders, runtime *dara.RuntimeOptions) (_result *ListReportResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListReportShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16972,9 +17511,11 @@ func (client *Client) ListReport(request *ListReportRequest) (_result *ListRepor
 //
 // @return ListSkillResponse
 func (client *Client) ListSkillWithOptions(request *ListSkillRequest, tmpHeader *ListSkillHeaders, runtime *dara.RuntimeOptions) (_result *ListSkillResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &ListSkillShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -17051,9 +17592,11 @@ func (client *Client) ListSkill(request *ListSkillRequest) (_result *ListSkillRe
 //
 // @return ListTableDataByFormInstanceIdTableIdResponse
 func (client *Client) ListTableDataByFormInstanceIdTableIdWithOptions(request *ListTableDataByFormInstanceIdTableIdRequest, tmpHeader *ListTableDataByFormInstanceIdTableIdHeaders, runtime *dara.RuntimeOptions) (_result *ListTableDataByFormInstanceIdTableIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &ListTableDataByFormInstanceIdTableIdShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -17154,9 +17697,11 @@ func (client *Client) ListTableDataByFormInstanceIdTableId(request *ListTableDat
 //
 // @return ListTeamsResponse
 func (client *Client) ListTeamsWithOptions(tmpReq *ListTeamsRequest, tmpHeader *ListTeamsHeaders, runtime *dara.RuntimeOptions) (_result *ListTeamsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListTeamsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17247,9 +17792,11 @@ func (client *Client) ListTeams(request *ListTeamsRequest) (_result *ListTeamsRe
 //
 // @return ListTemplateResponse
 func (client *Client) ListTemplateWithOptions(tmpReq *ListTemplateRequest, tmpHeader *ListTemplateHeaders, runtime *dara.RuntimeOptions) (_result *ListTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17348,9 +17895,11 @@ func (client *Client) ListTemplate(request *ListTemplateRequest) (_result *ListT
 //
 // @return ListTicketOperateRecordResponse
 func (client *Client) ListTicketOperateRecordWithOptions(tmpReq *ListTicketOperateRecordRequest, tmpHeader *ListTicketOperateRecordHeaders, runtime *dara.RuntimeOptions) (_result *ListTicketOperateRecordResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListTicketOperateRecordShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17441,9 +17990,11 @@ func (client *Client) ListTicketOperateRecord(request *ListTicketOperateRecordRe
 //
 // @return ListWorkspacesResponse
 func (client *Client) ListWorkspacesWithOptions(tmpReq *ListWorkspacesRequest, tmpHeader *ListWorkspacesHeaders, runtime *dara.RuntimeOptions) (_result *ListWorkspacesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListWorkspacesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17546,9 +18097,11 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 //
 // @return PatchEventResponse
 func (client *Client) PatchEventWithOptions(tmpReq *PatchEventRequest, tmpHeader *PatchEventHeaders, runtime *dara.RuntimeOptions) (_result *PatchEventResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PatchEventShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17707,9 +18260,11 @@ func (client *Client) PatchEvent(request *PatchEventRequest) (_result *PatchEven
 //
 // @return QueryCloudRecordTextResponse
 func (client *Client) QueryCloudRecordTextWithOptions(tmpReq *QueryCloudRecordTextRequest, tmpHeader *QueryCloudRecordTextHeaders, runtime *dara.RuntimeOptions) (_result *QueryCloudRecordTextResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryCloudRecordTextShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17812,9 +18367,11 @@ func (client *Client) QueryCloudRecordText(request *QueryCloudRecordTextRequest)
 //
 // @return QueryCloudRecordVideoResponse
 func (client *Client) QueryCloudRecordVideoWithOptions(tmpReq *QueryCloudRecordVideoRequest, tmpHeader *QueryCloudRecordVideoHeaders, runtime *dara.RuntimeOptions) (_result *QueryCloudRecordVideoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryCloudRecordVideoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17901,9 +18458,11 @@ func (client *Client) QueryCloudRecordVideo(request *QueryCloudRecordVideoReques
 //
 // @return QueryCloudRecordVideoPlayInfoResponse
 func (client *Client) QueryCloudRecordVideoPlayInfoWithOptions(tmpReq *QueryCloudRecordVideoPlayInfoRequest, tmpHeader *QueryCloudRecordVideoPlayInfoHeaders, runtime *dara.RuntimeOptions) (_result *QueryCloudRecordVideoPlayInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryCloudRecordVideoPlayInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17998,9 +18557,11 @@ func (client *Client) QueryCloudRecordVideoPlayInfo(request *QueryCloudRecordVid
 //
 // @return QueryConferenceInfoResponse
 func (client *Client) QueryConferenceInfoWithOptions(request *QueryConferenceInfoRequest, tmpHeader *QueryConferenceInfoHeaders, runtime *dara.RuntimeOptions) (_result *QueryConferenceInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &QueryConferenceInfoShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -18077,9 +18638,11 @@ func (client *Client) QueryConferenceInfo(request *QueryConferenceInfoRequest) (
 //
 // @return QueryConferenceInfoByRoomCodeResponse
 func (client *Client) QueryConferenceInfoByRoomCodeWithOptions(tmpReq *QueryConferenceInfoByRoomCodeRequest, tmpHeader *QueryConferenceInfoByRoomCodeHeaders, runtime *dara.RuntimeOptions) (_result *QueryConferenceInfoByRoomCodeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryConferenceInfoByRoomCodeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18174,9 +18737,11 @@ func (client *Client) QueryConferenceInfoByRoomCode(request *QueryConferenceInfo
 //
 // @return QueryConferenceMembersResponse
 func (client *Client) QueryConferenceMembersWithOptions(tmpReq *QueryConferenceMembersRequest, tmpHeader *QueryConferenceMembersHeaders, runtime *dara.RuntimeOptions) (_result *QueryConferenceMembersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryConferenceMembersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18271,9 +18836,11 @@ func (client *Client) QueryConferenceMembers(request *QueryConferenceMembersRequ
 //
 // @return QueryDentriesInfoResponse
 func (client *Client) QueryDentriesInfoWithOptions(tmpReq *QueryDentriesInfoRequest, tmpHeader *QueryDentriesInfoHeaders, runtime *dara.RuntimeOptions) (_result *QueryDentriesInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryDentriesInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18380,9 +18947,11 @@ func (client *Client) QueryDentriesInfo(request *QueryDentriesInfoRequest) (_res
 //
 // @return QueryDentryResponse
 func (client *Client) QueryDentryWithOptions(tmpReq *QueryDentryRequest, tmpHeader *QueryDentryHeaders, runtime *dara.RuntimeOptions) (_result *QueryDentryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryDentryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18477,9 +19046,11 @@ func (client *Client) QueryDentry(request *QueryDentryRequest) (_result *QueryDe
 //
 // @return QueryGroupLiveInfoResponse
 func (client *Client) QueryGroupLiveInfoWithOptions(tmpReq *QueryGroupLiveInfoRequest, tmpHeader *QueryGroupLiveInfoHeaders, runtime *dara.RuntimeOptions) (_result *QueryGroupLiveInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryGroupLiveInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18570,9 +19141,11 @@ func (client *Client) QueryGroupLiveInfo(request *QueryGroupLiveInfoRequest) (_r
 //
 // @return QueryLiveInfoResponse
 func (client *Client) QueryLiveInfoWithOptions(tmpReq *QueryLiveInfoRequest, tmpHeader *QueryLiveInfoHeaders, runtime *dara.RuntimeOptions) (_result *QueryLiveInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryLiveInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18659,9 +19232,11 @@ func (client *Client) QueryLiveInfo(request *QueryLiveInfoRequest) (_result *Que
 //
 // @return QueryLiveWatchDetailResponse
 func (client *Client) QueryLiveWatchDetailWithOptions(tmpReq *QueryLiveWatchDetailRequest, tmpHeader *QueryLiveWatchDetailHeaders, runtime *dara.RuntimeOptions) (_result *QueryLiveWatchDetailResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryLiveWatchDetailShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18748,9 +19323,11 @@ func (client *Client) QueryLiveWatchDetail(request *QueryLiveWatchDetailRequest)
 //
 // @return QueryLiveWatchUserListResponse
 func (client *Client) QueryLiveWatchUserListWithOptions(tmpReq *QueryLiveWatchUserListRequest, tmpHeader *QueryLiveWatchUserListHeaders, runtime *dara.RuntimeOptions) (_result *QueryLiveWatchUserListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryLiveWatchUserListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18845,9 +19422,11 @@ func (client *Client) QueryLiveWatchUserList(request *QueryLiveWatchUserListRequ
 //
 // @return QueryMeetingRoomResponse
 func (client *Client) QueryMeetingRoomWithOptions(tmpReq *QueryMeetingRoomRequest, tmpHeader *QueryMeetingRoomHeaders, runtime *dara.RuntimeOptions) (_result *QueryMeetingRoomResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryMeetingRoomShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18934,9 +19513,11 @@ func (client *Client) QueryMeetingRoom(request *QueryMeetingRoomRequest) (_resul
 //
 // @return QueryMeetingRoomGroupResponse
 func (client *Client) QueryMeetingRoomGroupWithOptions(tmpReq *QueryMeetingRoomGroupRequest, tmpHeader *QueryMeetingRoomGroupHeaders, runtime *dara.RuntimeOptions) (_result *QueryMeetingRoomGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryMeetingRoomGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19023,9 +19604,11 @@ func (client *Client) QueryMeetingRoomGroup(request *QueryMeetingRoomGroupReques
 //
 // @return QueryMeetingRoomGroupListResponse
 func (client *Client) QueryMeetingRoomGroupListWithOptions(tmpReq *QueryMeetingRoomGroupListRequest, tmpHeader *QueryMeetingRoomGroupListHeaders, runtime *dara.RuntimeOptions) (_result *QueryMeetingRoomGroupListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryMeetingRoomGroupListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19116,9 +19699,11 @@ func (client *Client) QueryMeetingRoomGroupList(request *QueryMeetingRoomGroupLi
 //
 // @return QueryMeetingRoomListResponse
 func (client *Client) QueryMeetingRoomListWithOptions(tmpReq *QueryMeetingRoomListRequest, tmpHeader *QueryMeetingRoomListHeaders, runtime *dara.RuntimeOptions) (_result *QueryMeetingRoomListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryMeetingRoomListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19209,9 +19794,11 @@ func (client *Client) QueryMeetingRoomList(request *QueryMeetingRoomListRequest)
 //
 // @return QueryMinutesResponse
 func (client *Client) QueryMinutesWithOptions(tmpReq *QueryMinutesRequest, tmpHeader *QueryMinutesHeaders, runtime *dara.RuntimeOptions) (_result *QueryMinutesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryMinutesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19298,9 +19885,11 @@ func (client *Client) QueryMinutes(request *QueryMinutesRequest) (_result *Query
 //
 // @return QueryMinutesSummaryResponse
 func (client *Client) QueryMinutesSummaryWithOptions(tmpReq *QueryMinutesSummaryRequest, tmpHeader *QueryMinutesSummaryHeaders, runtime *dara.RuntimeOptions) (_result *QueryMinutesSummaryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryMinutesSummaryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19395,9 +19984,11 @@ func (client *Client) QueryMinutesSummary(request *QueryMinutesSummaryRequest) (
 //
 // @return QueryMinutesTextResponse
 func (client *Client) QueryMinutesTextWithOptions(tmpReq *QueryMinutesTextRequest, tmpHeader *QueryMinutesTextHeaders, runtime *dara.RuntimeOptions) (_result *QueryMinutesTextResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryMinutesTextShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19496,9 +20087,11 @@ func (client *Client) QueryMinutesText(request *QueryMinutesTextRequest) (_resul
 //
 // @return QueryOrgHonorsResponse
 func (client *Client) QueryOrgHonorsWithOptions(tmpReq *QueryOrgHonorsRequest, tmpHeader *QueryOrgHonorsHeaders, runtime *dara.RuntimeOptions) (_result *QueryOrgHonorsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryOrgHonorsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19593,9 +20186,11 @@ func (client *Client) QueryOrgHonors(request *QueryOrgHonorsRequest) (_result *Q
 //
 // @return QueryOrgTodoTasksResponse
 func (client *Client) QueryOrgTodoTasksWithOptions(tmpReq *QueryOrgTodoTasksRequest, tmpHeader *QueryOrgTodoTasksHeaders, runtime *dara.RuntimeOptions) (_result *QueryOrgTodoTasksResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryOrgTodoTasksShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19686,9 +20281,11 @@ func (client *Client) QueryOrgTodoTasks(request *QueryOrgTodoTasksRequest) (_res
 //
 // @return QueryRecordMinutesUrlResponse
 func (client *Client) QueryRecordMinutesUrlWithOptions(tmpReq *QueryRecordMinutesUrlRequest, tmpHeader *QueryRecordMinutesUrlHeaders, runtime *dara.RuntimeOptions) (_result *QueryRecordMinutesUrlResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryRecordMinutesUrlShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19779,9 +20376,11 @@ func (client *Client) QueryRecordMinutesUrl(request *QueryRecordMinutesUrlReques
 //
 // @return QueryReportDetailResponse
 func (client *Client) QueryReportDetailWithOptions(tmpReq *QueryReportDetailRequest, tmpHeader *QueryReportDetailHeaders, runtime *dara.RuntimeOptions) (_result *QueryReportDetailResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryReportDetailShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19868,9 +20467,11 @@ func (client *Client) QueryReportDetail(request *QueryReportDetailRequest) (_res
 //
 // @return QueryScheduleConferenceResponse
 func (client *Client) QueryScheduleConferenceWithOptions(tmpReq *QueryScheduleConferenceRequest, tmpHeader *QueryScheduleConferenceHeaders, runtime *dara.RuntimeOptions) (_result *QueryScheduleConferenceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryScheduleConferenceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19957,9 +20558,11 @@ func (client *Client) QueryScheduleConference(request *QueryScheduleConferenceRe
 //
 // @return QueryScheduleConferenceInfoResponse
 func (client *Client) QueryScheduleConferenceInfoWithOptions(tmpReq *QueryScheduleConferenceInfoRequest, tmpHeader *QueryScheduleConferenceInfoHeaders, runtime *dara.RuntimeOptions) (_result *QueryScheduleConferenceInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryScheduleConferenceInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -20054,9 +20657,11 @@ func (client *Client) QueryScheduleConferenceInfo(request *QueryScheduleConferen
 //
 // @return QueryUserHonorsResponse
 func (client *Client) QueryUserHonorsWithOptions(tmpReq *QueryUserHonorsRequest, tmpHeader *QueryUserHonorsHeaders, runtime *dara.RuntimeOptions) (_result *QueryUserHonorsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryUserHonorsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -20155,9 +20760,11 @@ func (client *Client) QueryUserHonors(request *QueryUserHonorsRequest) (_result 
 //
 // @return RecallHonorResponse
 func (client *Client) RecallHonorWithOptions(tmpReq *RecallHonorRequest, tmpHeader *RecallHonorHeaders, runtime *dara.RuntimeOptions) (_result *RecallHonorResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RecallHonorShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -20252,9 +20859,11 @@ func (client *Client) RecallHonor(request *RecallHonorRequest) (_result *RecallH
 //
 // @return ReceiverListReportResponse
 func (client *Client) ReceiverListReportWithOptions(tmpReq *ReceiverListReportRequest, tmpHeader *ReceiverListReportHeaders, runtime *dara.RuntimeOptions) (_result *ReceiverListReportResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ReceiverListReportShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -20349,9 +20958,11 @@ func (client *Client) ReceiverListReport(request *ReceiverListReportRequest) (_r
 //
 // @return RedirectTaskResponse
 func (client *Client) RedirectTaskWithOptions(request *RedirectTaskRequest, tmpHeader *RedirectTaskHeaders, runtime *dara.RuntimeOptions) (_result *RedirectTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &RedirectTaskShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -20456,9 +21067,11 @@ func (client *Client) RedirectTask(request *RedirectTaskRequest) (_result *Redir
 //
 // @return RemoveAttendeeResponse
 func (client *Client) RemoveAttendeeWithOptions(tmpReq *RemoveAttendeeRequest, tmpHeader *RemoveAttendeeHeaders, runtime *dara.RuntimeOptions) (_result *RemoveAttendeeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RemoveAttendeeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -20549,9 +21162,11 @@ func (client *Client) RemoveAttendee(request *RemoveAttendeeRequest) (_result *R
 //
 // @return RemoveMeetingRoomsResponse
 func (client *Client) RemoveMeetingRoomsWithOptions(tmpReq *RemoveMeetingRoomsRequest, tmpHeader *RemoveMeetingRoomsHeaders, runtime *dara.RuntimeOptions) (_result *RemoveMeetingRoomsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RemoveMeetingRoomsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -20642,9 +21257,11 @@ func (client *Client) RemoveMeetingRooms(request *RemoveMeetingRoomsRequest) (_r
 //
 // @return RespondEventResponse
 func (client *Client) RespondEventWithOptions(tmpReq *RespondEventRequest, tmpHeader *RespondEventHeaders, runtime *dara.RuntimeOptions) (_result *RespondEventResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RespondEventShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -20739,9 +21356,11 @@ func (client *Client) RespondEvent(request *RespondEventRequest) (_result *Respo
 //
 // @return RetrieveRunResponse
 func (client *Client) RetrieveRunWithOptions(request *RetrieveRunRequest, headers *RetrieveRunHeaders, runtime *dara.RuntimeOptions) (_result *RetrieveRunResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssistantId) {
@@ -20828,9 +21447,11 @@ func (client *Client) RetrieveRun(request *RetrieveRunRequest) (_result *Retriev
 //
 // @return SaveContentResponse
 func (client *Client) SaveContentWithOptions(tmpReq *SaveContentRequest, tmpHeader *SaveContentHeaders, runtime *dara.RuntimeOptions) (_result *SaveContentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SaveContentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -20929,9 +21550,11 @@ func (client *Client) SaveContent(request *SaveContentRequest) (_result *SaveCon
 //
 // @return SaveFormDataResponse
 func (client *Client) SaveFormDataWithOptions(request *SaveFormDataRequest, tmpHeader *SaveFormDataHeaders, runtime *dara.RuntimeOptions) (_result *SaveFormDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &SaveFormDataShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -21024,9 +21647,11 @@ func (client *Client) SaveFormData(request *SaveFormDataRequest) (_result *SaveF
 //
 // @return SaveFormRemarkResponse
 func (client *Client) SaveFormRemarkWithOptions(request *SaveFormRemarkRequest, tmpHeader *SaveFormRemarkHeaders, runtime *dara.RuntimeOptions) (_result *SaveFormRemarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &SaveFormRemarkShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -21127,9 +21752,11 @@ func (client *Client) SaveFormRemark(request *SaveFormRemarkRequest) (_result *S
 //
 // @return SearchEmployeeFieldValuesResponse
 func (client *Client) SearchEmployeeFieldValuesWithOptions(request *SearchEmployeeFieldValuesRequest, tmpHeader *SearchEmployeeFieldValuesHeaders, runtime *dara.RuntimeOptions) (_result *SearchEmployeeFieldValuesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &SearchEmployeeFieldValuesShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -21246,9 +21873,11 @@ func (client *Client) SearchEmployeeFieldValues(request *SearchEmployeeFieldValu
 //
 // @return SearchFormDataIdListResponse
 func (client *Client) SearchFormDataIdListWithOptions(request *SearchFormDataIdListRequest, tmpHeader *SearchFormDataIdListHeaders, runtime *dara.RuntimeOptions) (_result *SearchFormDataIdListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &SearchFormDataIdListShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -21369,9 +21998,11 @@ func (client *Client) SearchFormDataIdList(request *SearchFormDataIdListRequest)
 //
 // @return SearchFormDataSecondGenerationResponse
 func (client *Client) SearchFormDataSecondGenerationWithOptions(request *SearchFormDataSecondGenerationRequest, tmpHeader *SearchFormDataSecondGenerationHeaders, runtime *dara.RuntimeOptions) (_result *SearchFormDataSecondGenerationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &SearchFormDataSecondGenerationShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -21492,9 +22123,11 @@ func (client *Client) SearchFormDataSecondGeneration(request *SearchFormDataSeco
 //
 // @return SearchFormDataSecondGenerationNoTableFieldResponse
 func (client *Client) SearchFormDataSecondGenerationNoTableFieldWithOptions(request *SearchFormDataSecondGenerationNoTableFieldRequest, tmpHeader *SearchFormDataSecondGenerationNoTableFieldHeaders, runtime *dara.RuntimeOptions) (_result *SearchFormDataSecondGenerationNoTableFieldResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &SearchFormDataSecondGenerationNoTableFieldShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -21615,9 +22248,11 @@ func (client *Client) SearchFormDataSecondGenerationNoTableField(request *Search
 //
 // @return SearchFormDatasResponse
 func (client *Client) SearchFormDatasWithOptions(request *SearchFormDatasRequest, tmpHeader *SearchFormDatasHeaders, runtime *dara.RuntimeOptions) (_result *SearchFormDatasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &SearchFormDatasShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -21742,9 +22377,11 @@ func (client *Client) SearchFormDatas(request *SearchFormDatasRequest) (_result 
 //
 // @return SearchInnerGroupsResponse
 func (client *Client) SearchInnerGroupsWithOptions(request *SearchInnerGroupsRequest, tmpHeader *SearchInnerGroupsHeaders, runtime *dara.RuntimeOptions) (_result *SearchInnerGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &SearchInnerGroupsShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -21825,9 +22462,11 @@ func (client *Client) SearchInnerGroups(request *SearchInnerGroupsRequest) (_res
 //
 // @return SendBannerResponse
 func (client *Client) SendBannerWithOptions(tmpReq *SendBannerRequest, tmpHeader *SendBannerHeaders, runtime *dara.RuntimeOptions) (_result *SendBannerResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SendBannerShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -21926,9 +22565,11 @@ func (client *Client) SendBanner(request *SendBannerRequest) (_result *SendBanne
 //
 // @return SendPopupResponse
 func (client *Client) SendPopupWithOptions(tmpReq *SendPopupRequest, tmpHeader *SendPopupHeaders, runtime *dara.RuntimeOptions) (_result *SendPopupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SendPopupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -22027,9 +22668,11 @@ func (client *Client) SendPopup(request *SendPopupRequest) (_result *SendPopupRe
 //
 // @return SendSearchShadeResponse
 func (client *Client) SendSearchShadeWithOptions(tmpReq *SendSearchShadeRequest, tmpHeader *SendSearchShadeHeaders, runtime *dara.RuntimeOptions) (_result *SendSearchShadeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SendSearchShadeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -22128,9 +22771,11 @@ func (client *Client) SendSearchShade(request *SendSearchShadeRequest) (_result 
 //
 // @return SetColumnsVisibilityResponse
 func (client *Client) SetColumnsVisibilityWithOptions(tmpReq *SetColumnsVisibilityRequest, tmpHeader *SetColumnsVisibilityHeaders, runtime *dara.RuntimeOptions) (_result *SetColumnsVisibilityResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SetColumnsVisibilityShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -22233,9 +22878,11 @@ func (client *Client) SetColumnsVisibility(request *SetColumnsVisibilityRequest)
 //
 // @return SetConferenceHostsResponse
 func (client *Client) SetConferenceHostsWithOptions(tmpReq *SetConferenceHostsRequest, tmpHeader *SetConferenceHostsHeaders, runtime *dara.RuntimeOptions) (_result *SetConferenceHostsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SetConferenceHostsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -22334,9 +22981,11 @@ func (client *Client) SetConferenceHosts(request *SetConferenceHostsRequest) (_r
 //
 // @return SetRowsVisibilityResponse
 func (client *Client) SetRowsVisibilityWithOptions(tmpReq *SetRowsVisibilityRequest, tmpHeader *SetRowsVisibilityHeaders, runtime *dara.RuntimeOptions) (_result *SetRowsVisibilityResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SetRowsVisibilityShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -22439,9 +23088,11 @@ func (client *Client) SetRowsVisibility(request *SetRowsVisibilityRequest) (_res
 //
 // @return SimpleListReportResponse
 func (client *Client) SimpleListReportWithOptions(tmpReq *SimpleListReportRequest, tmpHeader *SimpleListReportHeaders, runtime *dara.RuntimeOptions) (_result *SimpleListReportResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SimpleListReportShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -22544,9 +23195,11 @@ func (client *Client) SimpleListReport(request *SimpleListReportRequest) (_resul
 //
 // @return StartCloudRecordResponse
 func (client *Client) StartCloudRecordWithOptions(tmpReq *StartCloudRecordRequest, tmpHeader *StartCloudRecordHeaders, runtime *dara.RuntimeOptions) (_result *StartCloudRecordResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &StartCloudRecordShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -22641,9 +23294,11 @@ func (client *Client) StartCloudRecord(request *StartCloudRecordRequest) (_resul
 //
 // @return StartInstanceResponse
 func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, tmpHeader *StartInstanceHeaders, runtime *dara.RuntimeOptions) (_result *StartInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &StartInstanceShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -22748,9 +23403,11 @@ func (client *Client) StartInstance(request *StartInstanceRequest) (_result *Sta
 //
 // @return StartMinutesResponse
 func (client *Client) StartMinutesWithOptions(tmpReq *StartMinutesRequest, tmpHeader *StartMinutesHeaders, runtime *dara.RuntimeOptions) (_result *StartMinutesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &StartMinutesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -22845,9 +23502,11 @@ func (client *Client) StartMinutes(request *StartMinutesRequest) (_result *Start
 //
 // @return StatisticsListByTypeReportResponse
 func (client *Client) StatisticsListByTypeReportWithOptions(tmpReq *StatisticsListByTypeReportRequest, tmpHeader *StatisticsListByTypeReportHeaders, runtime *dara.RuntimeOptions) (_result *StatisticsListByTypeReportResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &StatisticsListByTypeReportShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -22946,9 +23605,11 @@ func (client *Client) StatisticsListByTypeReport(request *StatisticsListByTypeRe
 //
 // @return StatisticsReportResponse
 func (client *Client) StatisticsReportWithOptions(tmpReq *StatisticsReportRequest, tmpHeader *StatisticsReportHeaders, runtime *dara.RuntimeOptions) (_result *StatisticsReportResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &StatisticsReportShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -23035,9 +23696,11 @@ func (client *Client) StatisticsReport(request *StatisticsReportRequest) (_resul
 //
 // @return StopCloudRecordResponse
 func (client *Client) StopCloudRecordWithOptions(tmpReq *StopCloudRecordRequest, tmpHeader *StopCloudRecordHeaders, runtime *dara.RuntimeOptions) (_result *StopCloudRecordResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &StopCloudRecordShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -23124,9 +23787,11 @@ func (client *Client) StopCloudRecord(request *StopCloudRecordRequest) (_result 
 //
 // @return StopMinutesResponse
 func (client *Client) StopMinutesWithOptions(tmpReq *StopMinutesRequest, tmpHeader *StopMinutesHeaders, runtime *dara.RuntimeOptions) (_result *StopMinutesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &StopMinutesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -23213,9 +23878,11 @@ func (client *Client) StopMinutes(request *StopMinutesRequest) (_result *StopMin
 //
 // @return SubscribeCalendarResponse
 func (client *Client) SubscribeCalendarWithOptions(request *SubscribeCalendarRequest, tmpHeader *SubscribeCalendarHeaders, runtime *dara.RuntimeOptions) (_result *SubscribeCalendarResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &SubscribeCalendarShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -23292,9 +23959,11 @@ func (client *Client) SubscribeCalendar(request *SubscribeCalendarRequest) (_res
 //
 // @return SubscribeEventResponse
 func (client *Client) SubscribeEventWithOptions(tmpReq *SubscribeEventRequest, tmpHeader *SubscribeEventHeaders, runtime *dara.RuntimeOptions) (_result *SubscribeEventResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubscribeEventShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -23381,9 +24050,11 @@ func (client *Client) SubscribeEvent(request *SubscribeEventRequest) (_result *S
 //
 // @return SwitchMainOrgResponse
 func (client *Client) SwitchMainOrgWithOptions(tmpReq *SwitchMainOrgRequest, tmpHeader *SwitchMainOrgHeaders, runtime *dara.RuntimeOptions) (_result *SwitchMainOrgResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SwitchMainOrgShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -23466,9 +24137,11 @@ func (client *Client) SwitchMainOrg(request *SwitchMainOrgRequest) (_result *Swi
 //
 // @return SyncDingTypeResponse
 func (client *Client) SyncDingTypeWithOptions(tmpReq *SyncDingTypeRequest, tmpHeader *SyncDingTypeHeaders, runtime *dara.RuntimeOptions) (_result *SyncDingTypeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SyncDingTypeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -23567,9 +24240,11 @@ func (client *Client) SyncDingType(request *SyncDingTypeRequest) (_result *SyncD
 //
 // @return TerminateInstanceResponse
 func (client *Client) TerminateInstanceWithOptions(request *TerminateInstanceRequest, tmpHeader *TerminateInstanceHeaders, runtime *dara.RuntimeOptions) (_result *TerminateInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &TerminateInstanceShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -23658,9 +24333,11 @@ func (client *Client) TerminateInstance(request *TerminateInstanceRequest) (_res
 //
 // @return TransferTicketResponse
 func (client *Client) TransferTicketWithOptions(tmpReq *TransferTicketRequest, tmpHeader *TransferTicketHeaders, runtime *dara.RuntimeOptions) (_result *TransferTicketResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TransferTicketShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -23775,9 +24452,11 @@ func (client *Client) TransferTicket(request *TransferTicketRequest) (_result *T
 //
 // @return UnsubscribeCalendarResponse
 func (client *Client) UnsubscribeCalendarWithOptions(request *UnsubscribeCalendarRequest, tmpHeader *UnsubscribeCalendarHeaders, runtime *dara.RuntimeOptions) (_result *UnsubscribeCalendarResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &UnsubscribeCalendarShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -23854,9 +24533,11 @@ func (client *Client) UnsubscribeCalendar(request *UnsubscribeCalendarRequest) (
 //
 // @return UnsubscribeEventResponse
 func (client *Client) UnsubscribeEventWithOptions(tmpReq *UnsubscribeEventRequest, tmpHeader *UnsubscribeEventHeaders, runtime *dara.RuntimeOptions) (_result *UnsubscribeEventResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UnsubscribeEventShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -23943,9 +24624,11 @@ func (client *Client) UnsubscribeEvent(request *UnsubscribeEventRequest) (_resul
 //
 // @return UpdateAlidingAssistantResponse
 func (client *Client) UpdateAlidingAssistantWithOptions(tmpReq *UpdateAlidingAssistantRequest, tmpHeader *UpdateAlidingAssistantHeaders, runtime *dara.RuntimeOptions) (_result *UpdateAlidingAssistantResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateAlidingAssistantShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -24072,9 +24755,11 @@ func (client *Client) UpdateAlidingAssistant(request *UpdateAlidingAssistantRequ
 //
 // @return UpdateConvExtensionResponse
 func (client *Client) UpdateConvExtensionWithOptions(tmpReq *UpdateConvExtensionRequest, tmpHeader *UpdateConvExtensionHeaders, runtime *dara.RuntimeOptions) (_result *UpdateConvExtensionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateConvExtensionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -24173,9 +24858,11 @@ func (client *Client) UpdateConvExtension(request *UpdateConvExtensionRequest) (
 //
 // @return UpdateFormDataResponse
 func (client *Client) UpdateFormDataWithOptions(request *UpdateFormDataRequest, tmpHeader *UpdateFormDataHeaders, runtime *dara.RuntimeOptions) (_result *UpdateFormDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &UpdateFormDataShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -24272,9 +24959,11 @@ func (client *Client) UpdateFormData(request *UpdateFormDataRequest) (_result *U
 //
 // @return UpdateInstanceResponse
 func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, tmpHeader *UpdateInstanceHeaders, runtime *dara.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &UpdateInstanceShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -24367,9 +25056,11 @@ func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *U
 //
 // @return UpdateLiveResponse
 func (client *Client) UpdateLiveWithOptions(tmpReq *UpdateLiveRequest, tmpHeader *UpdateLiveHeaders, runtime *dara.RuntimeOptions) (_result *UpdateLiveResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateLiveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -24476,9 +25167,11 @@ func (client *Client) UpdateLive(request *UpdateLiveRequest) (_result *UpdateLiv
 //
 // @return UpdateMeetingRoomResponse
 func (client *Client) UpdateMeetingRoomWithOptions(tmpReq *UpdateMeetingRoomRequest, tmpHeader *UpdateMeetingRoomHeaders, runtime *dara.RuntimeOptions) (_result *UpdateMeetingRoomResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateMeetingRoomShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -24617,9 +25310,11 @@ func (client *Client) UpdateMeetingRoom(request *UpdateMeetingRoomRequest) (_res
 //
 // @return UpdateMeetingRoomGroupResponse
 func (client *Client) UpdateMeetingRoomGroupWithOptions(tmpReq *UpdateMeetingRoomGroupRequest, tmpHeader *UpdateMeetingRoomGroupHeaders, runtime *dara.RuntimeOptions) (_result *UpdateMeetingRoomGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateMeetingRoomGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -24710,9 +25405,11 @@ func (client *Client) UpdateMeetingRoomGroup(request *UpdateMeetingRoomGroupRequ
 //
 // @return UpdateMultiDimTableResponse
 func (client *Client) UpdateMultiDimTableWithOptions(tmpReq *UpdateMultiDimTableRequest, tmpHeader *UpdateMultiDimTableHeaders, runtime *dara.RuntimeOptions) (_result *UpdateMultiDimTableResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateMultiDimTableShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -24807,9 +25504,11 @@ func (client *Client) UpdateMultiDimTable(request *UpdateMultiDimTableRequest) (
 //
 // @return UpdateMultiDimTableFieldResponse
 func (client *Client) UpdateMultiDimTableFieldWithOptions(tmpReq *UpdateMultiDimTableFieldRequest, tmpHeader *UpdateMultiDimTableFieldHeaders, runtime *dara.RuntimeOptions) (_result *UpdateMultiDimTableFieldResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateMultiDimTableFieldShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -24916,9 +25615,11 @@ func (client *Client) UpdateMultiDimTableField(request *UpdateMultiDimTableField
 //
 // @return UpdateMultiDimTableRecordsResponse
 func (client *Client) UpdateMultiDimTableRecordsWithOptions(tmpReq *UpdateMultiDimTableRecordsRequest, tmpHeader *UpdateMultiDimTableRecordsHeaders, runtime *dara.RuntimeOptions) (_result *UpdateMultiDimTableRecordsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateMultiDimTableRecordsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -25017,9 +25718,11 @@ func (client *Client) UpdateMultiDimTableRecords(request *UpdateMultiDimTableRec
 //
 // @return UpdatePermissionResponse
 func (client *Client) UpdatePermissionWithOptions(tmpReq *UpdatePermissionRequest, tmpHeader *UpdatePermissionHeaders, runtime *dara.RuntimeOptions) (_result *UpdatePermissionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdatePermissionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -25126,9 +25829,11 @@ func (client *Client) UpdatePermission(request *UpdatePermissionRequest) (_resul
 //
 // @return UpdateRangeResponse
 func (client *Client) UpdateRangeWithOptions(tmpReq *UpdateRangeRequest, tmpHeader *UpdateRangeHeaders, runtime *dara.RuntimeOptions) (_result *UpdateRangeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateRangeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -25251,9 +25956,11 @@ func (client *Client) UpdateRange(request *UpdateRangeRequest) (_result *UpdateR
 //
 // @return UpdateScheduleConfSettingsResponse
 func (client *Client) UpdateScheduleConfSettingsWithOptions(tmpReq *UpdateScheduleConfSettingsRequest, tmpHeader *UpdateScheduleConfSettingsHeaders, runtime *dara.RuntimeOptions) (_result *UpdateScheduleConfSettingsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateScheduleConfSettingsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -25348,9 +26055,11 @@ func (client *Client) UpdateScheduleConfSettings(request *UpdateScheduleConfSett
 //
 // @return UpdateScheduleConferenceResponse
 func (client *Client) UpdateScheduleConferenceWithOptions(tmpReq *UpdateScheduleConferenceRequest, tmpHeader *UpdateScheduleConferenceHeaders, runtime *dara.RuntimeOptions) (_result *UpdateScheduleConferenceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateScheduleConferenceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -25449,9 +26158,11 @@ func (client *Client) UpdateScheduleConference(request *UpdateScheduleConference
 //
 // @return UpdateStatusResponse
 func (client *Client) UpdateStatusWithOptions(tmpReq *UpdateStatusRequest, tmpHeader *UpdateStatusHeaders, runtime *dara.RuntimeOptions) (_result *UpdateStatusResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateStatusShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -25554,9 +26265,11 @@ func (client *Client) UpdateStatus(request *UpdateStatusRequest) (_result *Updat
 //
 // @return UpdateSubscribedCalendarsResponse
 func (client *Client) UpdateSubscribedCalendarsWithOptions(tmpReq *UpdateSubscribedCalendarsRequest, tmpHeader *UpdateSubscribedCalendarsHeaders, runtime *dara.RuntimeOptions) (_result *UpdateSubscribedCalendarsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateSubscribedCalendarsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -25659,9 +26372,11 @@ func (client *Client) UpdateSubscribedCalendars(request *UpdateSubscribedCalenda
 //
 // @return UpdateTodoTaskResponse
 func (client *Client) UpdateTodoTaskWithOptions(tmpReq *UpdateTodoTaskRequest, tmpHeader *UpdateTodoTaskHeaders, runtime *dara.RuntimeOptions) (_result *UpdateTodoTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateTodoTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -25780,9 +26495,11 @@ func (client *Client) UpdateTodoTask(request *UpdateTodoTaskRequest) (_result *U
 //
 // @return UpdateTodoTaskExecutorStatusResponse
 func (client *Client) UpdateTodoTaskExecutorStatusWithOptions(tmpReq *UpdateTodoTaskExecutorStatusRequest, tmpHeader *UpdateTodoTaskExecutorStatusHeaders, runtime *dara.RuntimeOptions) (_result *UpdateTodoTaskExecutorStatusResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateTodoTaskExecutorStatusShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -25881,9 +26598,11 @@ func (client *Client) UpdateTodoTaskExecutorStatus(request *UpdateTodoTaskExecut
 //
 // @return UpdateUserAvatarResponse
 func (client *Client) UpdateUserAvatarWithOptions(request *UpdateUserAvatarRequest, tmpHeader *UpdateUserAvatarHeaders, runtime *dara.RuntimeOptions) (_result *UpdateUserAvatarResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	headers := &UpdateUserAvatarShrinkHeaders{}
 	openapiutil.Convert(tmpHeader, headers)
@@ -25960,9 +26679,11 @@ func (client *Client) UpdateUserAvatar(request *UpdateUserAvatarRequest) (_resul
 //
 // @return UpdateVideoConferenceSettingResponse
 func (client *Client) UpdateVideoConferenceSettingWithOptions(tmpReq *UpdateVideoConferenceSettingRequest, tmpHeader *UpdateVideoConferenceSettingHeaders, runtime *dara.RuntimeOptions) (_result *UpdateVideoConferenceSettingResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateVideoConferenceSettingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -26073,9 +26794,11 @@ func (client *Client) UpdateVideoConferenceSetting(request *UpdateVideoConferenc
 //
 // @return UpdateWorkspaceDocMembersResponse
 func (client *Client) UpdateWorkspaceDocMembersWithOptions(tmpReq *UpdateWorkspaceDocMembersRequest, tmpHeader *UpdateWorkspaceDocMembersHeaders, runtime *dara.RuntimeOptions) (_result *UpdateWorkspaceDocMembersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateWorkspaceDocMembersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -26174,9 +26897,11 @@ func (client *Client) UpdateWorkspaceDocMembers(request *UpdateWorkspaceDocMembe
 //
 // @return UpdateWorkspaceMembersResponse
 func (client *Client) UpdateWorkspaceMembersWithOptions(tmpReq *UpdateWorkspaceMembersRequest, tmpHeader *UpdateWorkspaceMembersHeaders, runtime *dara.RuntimeOptions) (_result *UpdateWorkspaceMembersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateWorkspaceMembersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -26271,9 +26996,11 @@ func (client *Client) UpdateWorkspaceMembers(request *UpdateWorkspaceMembersRequ
 //
 // @return UploadMediaResponse
 func (client *Client) UploadMediaWithOptions(tmpReq *UploadMediaRequest, tmpHeader *UploadMediaHeaders, runtime *dara.RuntimeOptions) (_result *UploadMediaResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UploadMediaShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -26372,9 +27099,11 @@ func (client *Client) UploadMedia(request *UploadMediaRequest) (_result *UploadM
 //
 // @return WearOrgHonorResponse
 func (client *Client) WearOrgHonorWithOptions(tmpReq *WearOrgHonorRequest, tmpHeader *WearOrgHonorHeaders, runtime *dara.RuntimeOptions) (_result *WearOrgHonorResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &WearOrgHonorShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -26462,10 +27191,12 @@ func (client *Client) WearOrgHonor(request *WearOrgHonorRequest) (_result *WearO
 }
 
 func (client *Client) createRunWithSSE_opYieldFunc(_yield chan *CreateRunResponse, _yieldErr chan error, request *CreateRunRequest, headers *CreateRunHeaders, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AllowStructViewContent) {
@@ -26540,10 +27271,12 @@ func (client *Client) createRunWithSSE_opYieldFunc(_yield chan *CreateRunRespons
 }
 
 func (client *Client) invokeAssistantWithSSE_opYieldFunc(_yield chan *InvokeAssistantResponse, _yieldErr chan error, request *InvokeAssistantRequest, headers *InvokeAssistantHeaders, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssistantId) {
@@ -26618,10 +27351,12 @@ func (client *Client) invokeAssistantWithSSE_opYieldFunc(_yield chan *InvokeAssi
 }
 
 func (client *Client) invokeSkillWithSSE_opYieldFunc(_yield chan *InvokeSkillResponse, _yieldErr chan error, tmpReq *InvokeSkillRequest, tmpHeader *InvokeSkillHeaders, runtime *dara.RuntimeOptions) {
-	_err := tmpReq.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	request := &InvokeSkillShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -26646,6 +27381,10 @@ func (client *Client) invokeSkillWithSSE_opYieldFunc(_yield chan *InvokeSkillRes
 
 	if !dara.IsNil(request.Stream) {
 		body["Stream"] = request.Stream
+	}
+
+	if !dara.IsNil(request.SourceIdOfAssistantId) {
+		body["sourceIdOfAssistantId"] = request.SourceIdOfAssistantId
 	}
 
 	realHeaders := make(map[string]*string)

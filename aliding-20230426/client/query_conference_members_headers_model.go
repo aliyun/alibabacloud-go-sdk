@@ -47,7 +47,12 @@ func (s *QueryConferenceMembersHeaders) SetAccountContext(v *QueryConferenceMemb
 }
 
 func (s *QueryConferenceMembersHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryConferenceMembersHeadersAccountContext struct {

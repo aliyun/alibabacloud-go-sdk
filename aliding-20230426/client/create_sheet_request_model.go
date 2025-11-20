@@ -69,7 +69,12 @@ func (s *CreateSheetRequest) SetWorkbookId(v string) *CreateSheetRequest {
 }
 
 func (s *CreateSheetRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSheetRequestTenantContext struct {

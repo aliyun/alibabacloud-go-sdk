@@ -73,7 +73,12 @@ func (s *CreateSubscribedCalendarRequest) SetSubscribeScope(v *CreateSubscribedC
 }
 
 func (s *CreateSubscribedCalendarRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SubscribeScope != nil {
+		if err := s.SubscribeScope.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSubscribedCalendarRequestSubscribeScope struct {

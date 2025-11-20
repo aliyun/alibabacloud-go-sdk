@@ -215,7 +215,73 @@ func (s *CreateEventRequest) SetStart(v *CreateEventRequestStart) *CreateEventRe
 }
 
 func (s *CreateEventRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Attendees != nil {
+		for _, item := range s.Attendees {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CardInstances != nil {
+		for _, item := range s.CardInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.End != nil {
+		if err := s.End.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Location != nil {
+		if err := s.Location.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OnlineMeetingInfo != nil {
+		if err := s.OnlineMeetingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Recurrence != nil {
+		if err := s.Recurrence.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Reminders != nil {
+		for _, item := range s.Reminders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RichTextDescription != nil {
+		if err := s.RichTextDescription.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UiConfigs != nil {
+		for _, item := range s.UiConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Start != nil {
+		if err := s.Start.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateEventRequestAttendees struct {
@@ -433,7 +499,17 @@ func (s *CreateEventRequestRecurrence) SetRange(v *CreateEventRequestRecurrenceR
 }
 
 func (s *CreateEventRequestRecurrence) Validate() error {
-	return dara.Validate(s)
+	if s.Pattern != nil {
+		if err := s.Pattern.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Range != nil {
+		if err := s.Range.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateEventRequestRecurrencePattern struct {

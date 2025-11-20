@@ -52,7 +52,12 @@ func (s *GetMineWorkspaceResponseBody) SetWorkspace(v *GetMineWorkspaceResponseB
 }
 
 func (s *GetMineWorkspaceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Workspace != nil {
+		if err := s.Workspace.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMineWorkspaceResponseBodyWorkspace struct {
@@ -259,7 +264,12 @@ func (s *GetMineWorkspaceResponseBodyWorkspace) SetWorkspaceId(v string) *GetMin
 }
 
 func (s *GetMineWorkspaceResponseBodyWorkspace) Validate() error {
-	return dara.Validate(s)
+	if s.Icon != nil {
+		if err := s.Icon.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMineWorkspaceResponseBodyWorkspaceIcon struct {

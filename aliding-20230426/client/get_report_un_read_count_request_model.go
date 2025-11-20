@@ -50,7 +50,12 @@ func (s *GetReportUnReadCountRequest) SetTenantContext(v *GetReportUnReadCountRe
 }
 
 func (s *GetReportUnReadCountRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetReportUnReadCountRequestTenantContext struct {

@@ -59,5 +59,10 @@ func (s *RedirectTaskResponse) SetBody(v *RedirectTaskResponseBody) *RedirectTas
 }
 
 func (s *RedirectTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

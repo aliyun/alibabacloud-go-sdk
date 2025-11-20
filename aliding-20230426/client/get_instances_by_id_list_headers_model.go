@@ -47,7 +47,12 @@ func (s *GetInstancesByIdListHeaders) SetAccountContext(v *GetInstancesByIdListH
 }
 
 func (s *GetInstancesByIdListHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstancesByIdListHeadersAccountContext struct {

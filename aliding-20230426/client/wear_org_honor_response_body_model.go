@@ -119,7 +119,12 @@ func (s *WearOrgHonorResponseBody) SetSuccess(v bool) *WearOrgHonorResponseBody 
 }
 
 func (s *WearOrgHonorResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type WearOrgHonorResponseBodyContent struct {

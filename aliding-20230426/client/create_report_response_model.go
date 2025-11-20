@@ -59,5 +59,10 @@ func (s *CreateReportResponse) SetBody(v *CreateReportResponseBody) *CreateRepor
 }
 
 func (s *CreateReportResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

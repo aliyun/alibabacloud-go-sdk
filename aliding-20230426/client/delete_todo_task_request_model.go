@@ -67,7 +67,12 @@ func (s *DeleteTodoTaskRequest) SetTaskId(v string) *DeleteTodoTaskRequest {
 }
 
 func (s *DeleteTodoTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteTodoTaskRequestTenantContext struct {

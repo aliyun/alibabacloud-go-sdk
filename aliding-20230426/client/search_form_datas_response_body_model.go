@@ -110,7 +110,16 @@ func (s *SearchFormDatasResponseBody) SetVendorType(v string) *SearchFormDatasRe
 }
 
 func (s *SearchFormDatasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchFormDatasResponseBodyData struct {
@@ -321,7 +330,17 @@ func (s *SearchFormDatasResponseBodyData) SetVersion(v int64) *SearchFormDatasRe
 }
 
 func (s *SearchFormDatasResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ModifyUser != nil {
+		if err := s.ModifyUser.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Originator != nil {
+		if err := s.Originator.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchFormDatasResponseBodyDataModifyUser struct {
@@ -359,7 +378,12 @@ func (s *SearchFormDatasResponseBodyDataModifyUser) SetUserName(v *SearchFormDat
 }
 
 func (s *SearchFormDatasResponseBodyDataModifyUser) Validate() error {
-	return dara.Validate(s)
+	if s.UserName != nil {
+		if err := s.UserName.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchFormDatasResponseBodyDataModifyUserUserName struct {
@@ -448,7 +472,12 @@ func (s *SearchFormDatasResponseBodyDataOriginator) SetUserName(v *SearchFormDat
 }
 
 func (s *SearchFormDatasResponseBodyDataOriginator) Validate() error {
-	return dara.Validate(s)
+	if s.UserName != nil {
+		if err := s.UserName.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchFormDatasResponseBodyDataOriginatorUserName struct {

@@ -105,7 +105,22 @@ func (s *TransferTicketRequest) SetTicketMemo(v *TransferTicketRequestTicketMemo
 }
 
 func (s *TransferTicketRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Notify != nil {
+		if err := s.Notify.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TicketMemo != nil {
+		if err := s.TicketMemo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TransferTicketRequestNotify struct {
@@ -216,7 +231,16 @@ func (s *TransferTicketRequestTicketMemo) SetMemo(v string) *TransferTicketReque
 }
 
 func (s *TransferTicketRequestTicketMemo) Validate() error {
-	return dara.Validate(s)
+	if s.Attachments != nil {
+		for _, item := range s.Attachments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TransferTicketRequestTicketMemoAttachments struct {

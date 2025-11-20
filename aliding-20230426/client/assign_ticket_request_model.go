@@ -105,7 +105,22 @@ func (s *AssignTicketRequest) SetTicketMemo(v *AssignTicketRequestTicketMemo) *A
 }
 
 func (s *AssignTicketRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Notify != nil {
+		if err := s.Notify.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TicketMemo != nil {
+		if err := s.TicketMemo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AssignTicketRequestNotify struct {
@@ -216,7 +231,16 @@ func (s *AssignTicketRequestTicketMemo) SetMemo(v string) *AssignTicketRequestTi
 }
 
 func (s *AssignTicketRequestTicketMemo) Validate() error {
-	return dara.Validate(s)
+	if s.Attachments != nil {
+		for _, item := range s.Attachments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AssignTicketRequestTicketMemoAttachments struct {

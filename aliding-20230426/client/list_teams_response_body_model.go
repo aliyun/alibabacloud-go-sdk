@@ -95,7 +95,16 @@ func (s *ListTeamsResponseBody) SetVendorType(v string) *ListTeamsResponseBody {
 }
 
 func (s *ListTeamsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Teams != nil {
+		for _, item := range s.Teams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTeamsResponseBodyTeams struct {
@@ -237,7 +246,12 @@ func (s *ListTeamsResponseBodyTeams) SetTeamId(v string) *ListTeamsResponseBodyT
 }
 
 func (s *ListTeamsResponseBodyTeams) Validate() error {
-	return dara.Validate(s)
+	if s.Icon != nil {
+		if err := s.Icon.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTeamsResponseBodyTeamsIcon struct {

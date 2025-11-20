@@ -80,7 +80,16 @@ func (s *UpdateMultiDimTableRecordsResponseBody) SetVendorType(v string) *Update
 }
 
 func (s *UpdateMultiDimTableRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Value != nil {
+		for _, item := range s.Value {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateMultiDimTableRecordsResponseBodyValue struct {

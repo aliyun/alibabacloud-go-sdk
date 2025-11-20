@@ -95,7 +95,16 @@ func (s *ListDriveSpacesResponseBody) SetVendorType(v string) *ListDriveSpacesRe
 }
 
 func (s *ListDriveSpacesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Spaces != nil {
+		for _, item := range s.Spaces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDriveSpacesResponseBodySpaces struct {

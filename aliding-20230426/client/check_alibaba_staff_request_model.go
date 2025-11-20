@@ -50,7 +50,12 @@ func (s *CheckAlibabaStaffRequest) SetTenantContext(v *CheckAlibabaStaffRequestT
 }
 
 func (s *CheckAlibabaStaffRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CheckAlibabaStaffRequestTenantContext struct {

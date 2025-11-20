@@ -326,7 +326,17 @@ func (s *CopyDentryResponseBody) SetVisitorInfo(v map[string]interface{}) *CopyD
 }
 
 func (s *CopyDentryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LinkSourceInfo != nil {
+		if err := s.LinkSourceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Space != nil {
+		if err := s.Space.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CopyDentryResponseBodyLinkSourceInfo struct {
@@ -403,7 +413,12 @@ func (s *CopyDentryResponseBodyLinkSourceInfo) SetSpaceId(v string) *CopyDentryR
 }
 
 func (s *CopyDentryResponseBodyLinkSourceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.IconUrl != nil {
+		if err := s.IconUrl.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CopyDentryResponseBodyLinkSourceInfoIconUrl struct {
@@ -587,7 +602,36 @@ func (s *CopyDentryResponseBodySpace) SetVisitorInfo(v *CopyDentryResponseBodySp
 }
 
 func (s *CopyDentryResponseBodySpace) Validate() error {
-	return dara.Validate(s)
+	if s.HdIconVO != nil {
+		if err := s.HdIconVO.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IconVO != nil {
+		if err := s.IconVO.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Owner != nil {
+		if err := s.Owner.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RecentList != nil {
+		for _, item := range s.RecentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VisitorInfo != nil {
+		if err := s.VisitorInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CopyDentryResponseBodySpaceHdIconVO struct {
@@ -954,7 +998,32 @@ func (s *CopyDentryResponseBodySpaceRecentList) SetVisitorInfo(v *CopyDentryResp
 }
 
 func (s *CopyDentryResponseBodySpaceRecentList) Validate() error {
-	return dara.Validate(s)
+	if s.Creator != nil {
+		if err := s.Creator.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LinkSourceInfo != nil {
+		if err := s.LinkSourceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StatisticalInfo != nil {
+		if err := s.StatisticalInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Updater != nil {
+		if err := s.Updater.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VisitorInfo != nil {
+		if err := s.VisitorInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CopyDentryResponseBodySpaceRecentListCreator struct {
@@ -1072,7 +1141,12 @@ func (s *CopyDentryResponseBodySpaceRecentListLinkSourceInfo) SetSpaceId(v strin
 }
 
 func (s *CopyDentryResponseBodySpaceRecentListLinkSourceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.IconUrl != nil {
+		if err := s.IconUrl.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CopyDentryResponseBodySpaceRecentListLinkSourceInfoIconUrl struct {

@@ -80,7 +80,16 @@ func (s *GetInstancesByIdListResponseBody) SetVendorType(v string) *GetInstances
 }
 
 func (s *GetInstancesByIdListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstancesByIdListResponseBodyResult struct {
@@ -203,7 +212,21 @@ func (s *GetInstancesByIdListResponseBodyResult) SetTitle(v string) *GetInstance
 }
 
 func (s *GetInstancesByIdListResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.ActionExecutor != nil {
+		for _, item := range s.ActionExecutor {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Originator != nil {
+		if err := s.Originator.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstancesByIdListResponseBodyResultActionExecutor struct {
@@ -267,7 +290,12 @@ func (s *GetInstancesByIdListResponseBodyResultActionExecutor) SetUserId(v strin
 }
 
 func (s *GetInstancesByIdListResponseBodyResultActionExecutor) Validate() error {
-	return dara.Validate(s)
+	if s.Name != nil {
+		if err := s.Name.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstancesByIdListResponseBodyResultActionExecutorName struct {
@@ -385,7 +413,12 @@ func (s *GetInstancesByIdListResponseBodyResultOriginator) SetUserId(v string) *
 }
 
 func (s *GetInstancesByIdListResponseBodyResultOriginator) Validate() error {
-	return dara.Validate(s)
+	if s.Name != nil {
+		if err := s.Name.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstancesByIdListResponseBodyResultOriginatorName struct {

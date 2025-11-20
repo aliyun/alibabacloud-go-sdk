@@ -50,7 +50,12 @@ func (s *CreateThreadResponseBody) SetThread(v *CreateThreadResponseBodyThread) 
 }
 
 func (s *CreateThreadResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Thread != nil {
+		if err := s.Thread.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateThreadResponseBodyThread struct {

@@ -69,7 +69,12 @@ func (s *SubscribeEventRequest) SetTenantContext(v *SubscribeEventRequestTenantC
 }
 
 func (s *SubscribeEventRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubscribeEventRequestTenantContext struct {

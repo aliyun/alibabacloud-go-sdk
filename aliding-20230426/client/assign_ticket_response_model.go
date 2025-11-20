@@ -59,5 +59,10 @@ func (s *AssignTicketResponse) SetBody(v *AssignTicketResponseBody) *AssignTicke
 }
 
 func (s *AssignTicketResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

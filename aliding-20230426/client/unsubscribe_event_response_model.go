@@ -59,5 +59,10 @@ func (s *UnsubscribeEventResponse) SetBody(v *UnsubscribeEventResponseBody) *Uns
 }
 
 func (s *UnsubscribeEventResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -86,7 +86,21 @@ func (s *SaveContentRequest) SetTenantContext(v *SaveContentRequestTenantContext
 }
 
 func (s *SaveContentRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Contents != nil {
+		for _, item := range s.Contents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SaveContentRequestContents struct {

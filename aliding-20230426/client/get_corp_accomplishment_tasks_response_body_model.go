@@ -113,7 +113,16 @@ func (s *GetCorpAccomplishmentTasksResponseBody) SetVendorType(v string) *GetCor
 }
 
 func (s *GetCorpAccomplishmentTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCorpAccomplishmentTasksResponseBodyData struct {

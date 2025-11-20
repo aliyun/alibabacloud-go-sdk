@@ -77,7 +77,12 @@ func (s *SendSearchShadeRequest) SetTenantContext(v *SendSearchShadeRequestTenan
 }
 
 func (s *SendSearchShadeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SendSearchShadeRequestTenantContext struct {

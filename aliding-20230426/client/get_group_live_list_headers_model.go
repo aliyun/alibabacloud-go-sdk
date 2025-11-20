@@ -47,7 +47,12 @@ func (s *GetGroupLiveListHeaders) SetAccountContext(v *GetGroupLiveListHeadersAc
 }
 
 func (s *GetGroupLiveListHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGroupLiveListHeadersAccountContext struct {

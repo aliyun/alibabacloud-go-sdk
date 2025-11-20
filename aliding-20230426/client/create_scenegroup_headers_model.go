@@ -47,7 +47,12 @@ func (s *CreateScenegroupHeaders) SetAccountContext(v *CreateScenegroupHeadersAc
 }
 
 func (s *CreateScenegroupHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateScenegroupHeadersAccountContext struct {

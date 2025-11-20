@@ -316,7 +316,88 @@ func (s *GetEventResponseBody) SetUpdateTime(v string) *GetEventResponseBody {
 }
 
 func (s *GetEventResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Attendees != nil {
+		for _, item := range s.Attendees {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Categories != nil {
+		for _, item := range s.Categories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.End != nil {
+		if err := s.End.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExtendedProperties != nil {
+		if err := s.ExtendedProperties.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Location != nil {
+		if err := s.Location.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MeetingRooms != nil {
+		for _, item := range s.MeetingRooms {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OnlineMeetingInfo != nil {
+		if err := s.OnlineMeetingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Organizer != nil {
+		if err := s.Organizer.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OriginStart != nil {
+		if err := s.OriginStart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Recurrence != nil {
+		if err := s.Recurrence.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Reminders != nil {
+		for _, item := range s.Reminders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RichTextDescription != nil {
+		if err := s.RichTextDescription.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Start != nil {
+		if err := s.Start.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEventResponseBodyAttendees struct {
@@ -500,7 +581,12 @@ func (s *GetEventResponseBodyExtendedProperties) SetSharedProperties(v *GetEvent
 }
 
 func (s *GetEventResponseBodyExtendedProperties) Validate() error {
-	return dara.Validate(s)
+	if s.SharedProperties != nil {
+		if err := s.SharedProperties.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEventResponseBodyExtendedPropertiesSharedProperties struct {
@@ -825,7 +911,17 @@ func (s *GetEventResponseBodyRecurrence) SetRange(v *GetEventResponseBodyRecurre
 }
 
 func (s *GetEventResponseBodyRecurrence) Validate() error {
-	return dara.Validate(s)
+	if s.Pattern != nil {
+		if err := s.Pattern.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Range != nil {
+		if err := s.Range.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEventResponseBodyRecurrencePattern struct {

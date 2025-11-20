@@ -47,7 +47,12 @@ func (s *ClearHeaders) SetAccountContext(v *ClearHeadersAccountContext) *ClearHe
 }
 
 func (s *ClearHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ClearHeadersAccountContext struct {

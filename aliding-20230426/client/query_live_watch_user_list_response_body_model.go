@@ -64,7 +64,25 @@ func (s *QueryLiveWatchUserListResponseBody) SetRequestId(v string) *QueryLiveWa
 }
 
 func (s *QueryLiveWatchUserListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OrgUsesList != nil {
+		for _, item := range s.OrgUsesList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutOrgUserList != nil {
+		for _, item := range s.OutOrgUserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryLiveWatchUserListResponseBodyOrgUsesList struct {

@@ -77,7 +77,12 @@ func (s *SendPopupRequest) SetTenantContext(v *SendPopupRequestTenantContext) *S
 }
 
 func (s *SendPopupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SendPopupRequestTenantContext struct {

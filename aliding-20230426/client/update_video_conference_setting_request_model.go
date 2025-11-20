@@ -142,7 +142,12 @@ func (s *UpdateVideoConferenceSettingRequest) SetConferenceId(v string) *UpdateV
 }
 
 func (s *UpdateVideoConferenceSettingRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateVideoConferenceSettingRequestTenantContext struct {

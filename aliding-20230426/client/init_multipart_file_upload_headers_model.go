@@ -47,7 +47,12 @@ func (s *InitMultipartFileUploadHeaders) SetAccountContext(v *InitMultipartFileU
 }
 
 func (s *InitMultipartFileUploadHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InitMultipartFileUploadHeadersAccountContext struct {

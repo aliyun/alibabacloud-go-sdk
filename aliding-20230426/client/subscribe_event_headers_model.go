@@ -47,7 +47,12 @@ func (s *SubscribeEventHeaders) SetAccountContext(v *SubscribeEventHeadersAccoun
 }
 
 func (s *SubscribeEventHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubscribeEventHeadersAccountContext struct {

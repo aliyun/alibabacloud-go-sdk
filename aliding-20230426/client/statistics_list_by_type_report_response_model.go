@@ -59,5 +59,10 @@ func (s *StatisticsListByTypeReportResponse) SetBody(v *StatisticsListByTypeRepo
 }
 
 func (s *StatisticsListByTypeReportResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

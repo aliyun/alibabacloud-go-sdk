@@ -144,7 +144,12 @@ func (s *ListDentriesRequest) SetWithThumbnail(v bool) *ListDentriesRequest {
 }
 
 func (s *ListDentriesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDentriesRequestTenantContext struct {

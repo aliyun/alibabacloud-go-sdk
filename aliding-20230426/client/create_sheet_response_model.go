@@ -59,5 +59,10 @@ func (s *CreateSheetResponse) SetBody(v *CreateSheetResponseBody) *CreateSheetRe
 }
 
 func (s *CreateSheetResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

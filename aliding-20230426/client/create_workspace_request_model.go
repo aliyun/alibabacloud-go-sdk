@@ -60,7 +60,12 @@ func (s *CreateWorkspaceRequest) SetTenantContext(v *CreateWorkspaceRequestTenan
 }
 
 func (s *CreateWorkspaceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateWorkspaceRequestTenantContext struct {

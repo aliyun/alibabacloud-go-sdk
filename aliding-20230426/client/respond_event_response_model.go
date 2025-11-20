@@ -59,5 +59,10 @@ func (s *RespondEventResponse) SetBody(v *RespondEventResponseBody) *RespondEven
 }
 
 func (s *RespondEventResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

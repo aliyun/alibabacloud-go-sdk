@@ -80,7 +80,12 @@ func (s *GetConversaionSpaceResponseBody) SetVendorType(v string) *GetConversaio
 }
 
 func (s *GetConversaionSpaceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Space != nil {
+		if err := s.Space.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConversaionSpaceResponseBodySpace struct {

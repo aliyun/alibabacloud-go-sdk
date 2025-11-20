@@ -15,6 +15,8 @@ type iInvokeSkillRequest interface {
 	GetSkillId() *string
 	SetStream(v bool) *InvokeSkillRequest
 	GetStream() *bool
+	SetSourceIdOfAssistantId(v string) *InvokeSkillRequest
+	GetSourceIdOfAssistantId() *string
 }
 
 type InvokeSkillRequest struct {
@@ -27,8 +29,9 @@ type InvokeSkillRequest struct {
 	// example:
 	//
 	// a1d033dd-xxxx-49cf-b49b-2068081bb551
-	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
-	Stream  *bool   `json:"Stream,omitempty" xml:"Stream,omitempty"`
+	SkillId               *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	Stream                *bool   `json:"Stream,omitempty" xml:"Stream,omitempty"`
+	SourceIdOfAssistantId *string `json:"sourceIdOfAssistantId,omitempty" xml:"sourceIdOfAssistantId,omitempty"`
 }
 
 func (s InvokeSkillRequest) String() string {
@@ -51,6 +54,10 @@ func (s *InvokeSkillRequest) GetStream() *bool {
 	return s.Stream
 }
 
+func (s *InvokeSkillRequest) GetSourceIdOfAssistantId() *string {
+	return s.SourceIdOfAssistantId
+}
+
 func (s *InvokeSkillRequest) SetParams(v map[string]interface{}) *InvokeSkillRequest {
 	s.Params = v
 	return s
@@ -63,6 +70,11 @@ func (s *InvokeSkillRequest) SetSkillId(v string) *InvokeSkillRequest {
 
 func (s *InvokeSkillRequest) SetStream(v bool) *InvokeSkillRequest {
 	s.Stream = &v
+	return s
+}
+
+func (s *InvokeSkillRequest) SetSourceIdOfAssistantId(v string) *InvokeSkillRequest {
+	s.SourceIdOfAssistantId = &v
 	return s
 }
 

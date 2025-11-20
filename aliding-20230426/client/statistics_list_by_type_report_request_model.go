@@ -103,7 +103,12 @@ func (s *StatisticsListByTypeReportRequest) SetType(v int64) *StatisticsListByTy
 }
 
 func (s *StatisticsListByTypeReportRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StatisticsListByTypeReportRequestTenantContext struct {

@@ -47,7 +47,12 @@ func (s *GetDeptNoHeaders) SetAccountContext(v *GetDeptNoHeadersAccountContext) 
 }
 
 func (s *GetDeptNoHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDeptNoHeadersAccountContext struct {

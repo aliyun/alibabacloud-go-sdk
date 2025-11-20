@@ -47,7 +47,12 @@ func (s *BatchUpdateFormDataByInstanceMapHeaders) SetAccountContext(v *BatchUpda
 }
 
 func (s *BatchUpdateFormDataByInstanceMapHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchUpdateFormDataByInstanceMapHeadersAccountContext struct {

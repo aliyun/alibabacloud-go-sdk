@@ -59,5 +59,10 @@ func (s *GetUserLatestPlanResponse) SetBody(v *GetUserLatestPlanResponseBody) *G
 }
 
 func (s *GetUserLatestPlanResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

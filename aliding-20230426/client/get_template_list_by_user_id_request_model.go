@@ -69,7 +69,12 @@ func (s *GetTemplateListByUserIdRequest) SetTenantContext(v *GetTemplateListByUs
 }
 
 func (s *GetTemplateListByUserIdRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTemplateListByUserIdRequestTenantContext struct {

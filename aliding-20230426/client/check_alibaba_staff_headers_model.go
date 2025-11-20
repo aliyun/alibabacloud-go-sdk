@@ -47,7 +47,12 @@ func (s *CheckAlibabaStaffHeaders) SetAccountContext(v *CheckAlibabaStaffHeaders
 }
 
 func (s *CheckAlibabaStaffHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CheckAlibabaStaffHeadersAccountContext struct {

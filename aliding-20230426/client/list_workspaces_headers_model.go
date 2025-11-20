@@ -47,7 +47,12 @@ func (s *ListWorkspacesHeaders) SetAccountContext(v *ListWorkspacesHeadersAccoun
 }
 
 func (s *ListWorkspacesHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWorkspacesHeadersAccountContext struct {

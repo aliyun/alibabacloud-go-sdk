@@ -86,7 +86,12 @@ func (s *CommentListReportRequest) SetTenantContext(v *CommentListReportRequestT
 }
 
 func (s *CommentListReportRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CommentListReportRequestTenantContext struct {

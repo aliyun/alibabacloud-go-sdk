@@ -52,7 +52,12 @@ func (s *DeleteAlidingAssistantRequest) SetTenantContext(v *DeleteAlidingAssista
 }
 
 func (s *DeleteAlidingAssistantRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteAlidingAssistantRequestTenantContext struct {

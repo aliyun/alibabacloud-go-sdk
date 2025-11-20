@@ -52,7 +52,12 @@ func (s *ListCalendarsResponseBody) SetResponse(v *ListCalendarsResponseBodyResp
 }
 
 func (s *ListCalendarsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Response != nil {
+		if err := s.Response.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCalendarsResponseBodyResponse struct {
@@ -77,7 +82,16 @@ func (s *ListCalendarsResponseBodyResponse) SetCalendars(v []*ListCalendarsRespo
 }
 
 func (s *ListCalendarsResponseBodyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Calendars != nil {
+		for _, item := range s.Calendars {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCalendarsResponseBodyResponseCalendars struct {

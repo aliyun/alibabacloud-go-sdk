@@ -69,7 +69,12 @@ func (s *QueryGroupLiveInfoRequest) SetTenantContext(v *QueryGroupLiveInfoReques
 }
 
 func (s *QueryGroupLiveInfoRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryGroupLiveInfoRequestTenantContext struct {

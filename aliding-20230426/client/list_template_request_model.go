@@ -99,7 +99,12 @@ func (s *ListTemplateRequest) SetWorkspaceId(v string) *ListTemplateRequest {
 }
 
 func (s *ListTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTemplateRequestTenantContext struct {

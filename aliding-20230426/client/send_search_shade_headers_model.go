@@ -47,7 +47,12 @@ func (s *SendSearchShadeHeaders) SetAccountContext(v *SendSearchShadeHeadersAcco
 }
 
 func (s *SendSearchShadeHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SendSearchShadeHeadersAccountContext struct {

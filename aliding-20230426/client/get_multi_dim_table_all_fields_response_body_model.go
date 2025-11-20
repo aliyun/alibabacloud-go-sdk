@@ -83,7 +83,16 @@ func (s *GetMultiDimTableAllFieldsResponseBody) SetVendorType(v string) *GetMult
 }
 
 func (s *GetMultiDimTableAllFieldsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Value != nil {
+		for _, item := range s.Value {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMultiDimTableAllFieldsResponseBodyValue struct {

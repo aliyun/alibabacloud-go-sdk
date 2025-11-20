@@ -82,7 +82,16 @@ func (s *GetSpaceDirectoriesResponseBody) SetRequestId(v string) *GetSpaceDirect
 }
 
 func (s *GetSpaceDirectoriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Children != nil {
+		for _, item := range s.Children {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSpaceDirectoriesResponseBodyChildren struct {
@@ -326,7 +335,37 @@ func (s *GetSpaceDirectoriesResponseBodyChildren) SetVisitorInfo(v *GetSpaceDire
 }
 
 func (s *GetSpaceDirectoriesResponseBodyChildren) Validate() error {
-	return dara.Validate(s)
+	if s.Creator != nil {
+		if err := s.Creator.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LinkSourceInfo != nil {
+		if err := s.LinkSourceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Space != nil {
+		if err := s.Space.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StatisticalInfo != nil {
+		if err := s.StatisticalInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Updater != nil {
+		if err := s.Updater.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VisitorInfo != nil {
+		if err := s.VisitorInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSpaceDirectoriesResponseBodyChildrenCreator struct {
@@ -444,7 +483,12 @@ func (s *GetSpaceDirectoriesResponseBodyChildrenLinkSourceInfo) SetSpaceId(v str
 }
 
 func (s *GetSpaceDirectoriesResponseBodyChildrenLinkSourceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.IconUrl != nil {
+		if err := s.IconUrl.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSpaceDirectoriesResponseBodyChildrenLinkSourceInfoIconUrl struct {
@@ -628,7 +672,27 @@ func (s *GetSpaceDirectoriesResponseBodyChildrenSpace) SetVisitorInfo(v *GetSpac
 }
 
 func (s *GetSpaceDirectoriesResponseBodyChildrenSpace) Validate() error {
-	return dara.Validate(s)
+	if s.HdIconVO != nil {
+		if err := s.HdIconVO.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IconVO != nil {
+		if err := s.IconVO.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Owner != nil {
+		if err := s.Owner.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VisitorInfo != nil {
+		if err := s.VisitorInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSpaceDirectoriesResponseBodyChildrenSpaceHdIconVO struct {

@@ -113,7 +113,16 @@ func (s *GetTaskCopiesResponseBody) SetVendorType(v string) *GetTaskCopiesRespon
 }
 
 func (s *GetTaskCopiesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTaskCopiesResponseBodyData struct {
@@ -479,7 +488,16 @@ func (s *GetTaskCopiesResponseBodyData) SetVersion(v int64) *GetTaskCopiesRespon
 }
 
 func (s *GetTaskCopiesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CurrentActivityInstances != nil {
+		for _, item := range s.CurrentActivityInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTaskCopiesResponseBodyDataCurrentActivityInstances struct {

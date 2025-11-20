@@ -55,7 +55,16 @@ func (s *GetAllSheetsResponseBody) SetValue(v []*GetAllSheetsResponseBodyValue) 
 }
 
 func (s *GetAllSheetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Value != nil {
+		for _, item := range s.Value {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAllSheetsResponseBodyValue struct {

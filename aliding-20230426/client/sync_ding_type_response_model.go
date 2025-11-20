@@ -59,5 +59,10 @@ func (s *SyncDingTypeResponse) SetBody(v *SyncDingTypeResponseBody) *SyncDingTyp
 }
 
 func (s *SyncDingTypeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

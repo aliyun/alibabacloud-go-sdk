@@ -64,7 +64,17 @@ func (s *GetWorkspacesRequest) SetWorkspaceIds(v []*string) *GetWorkspacesReques
 }
 
 func (s *GetWorkspacesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Option != nil {
+		if err := s.Option.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWorkspacesRequestOption struct {

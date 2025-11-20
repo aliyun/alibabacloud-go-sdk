@@ -52,7 +52,12 @@ func (s *GetUserIdRequest) SetUnionId(v string) *GetUserIdRequest {
 }
 
 func (s *GetUserIdRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserIdRequestTenantContext struct {

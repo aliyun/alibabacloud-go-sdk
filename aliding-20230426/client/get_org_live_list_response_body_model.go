@@ -80,7 +80,12 @@ func (s *GetOrgLiveListResponseBody) SetVendorType(v string) *GetOrgLiveListResp
 }
 
 func (s *GetOrgLiveListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOrgLiveListResponseBodyResult struct {
@@ -121,7 +126,17 @@ func (s *GetOrgLiveListResponseBodyResult) SetUpdateLive(v *GetOrgLiveListRespon
 }
 
 func (s *GetOrgLiveListResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.NewLive != nil {
+		if err := s.NewLive.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UpdateLive != nil {
+		if err := s.UpdateLive.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOrgLiveListResponseBodyResultNewLive struct {
@@ -201,7 +216,16 @@ func (s *GetOrgLiveListResponseBodyResultNewLive) SetTotalCount(v int64) *GetOrg
 }
 
 func (s *GetOrgLiveListResponseBodyResultNewLive) Validate() error {
-	return dara.Validate(s)
+	if s.LiveList != nil {
+		for _, item := range s.LiveList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOrgLiveListResponseBodyResultNewLiveLiveList struct {
@@ -407,7 +431,16 @@ func (s *GetOrgLiveListResponseBodyResultUpdateLive) SetTotalCount(v int64) *Get
 }
 
 func (s *GetOrgLiveListResponseBodyResultUpdateLive) Validate() error {
-	return dara.Validate(s)
+	if s.LiveList != nil {
+		for _, item := range s.LiveList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOrgLiveListResponseBodyResultUpdateLiveLiveList struct {

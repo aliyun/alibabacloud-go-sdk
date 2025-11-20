@@ -86,7 +86,12 @@ func (s *RespondEventRequest) SetTenantContext(v *RespondEventRequestTenantConte
 }
 
 func (s *RespondEventRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RespondEventRequestTenantContext struct {

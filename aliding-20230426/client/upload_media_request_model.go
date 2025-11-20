@@ -101,7 +101,12 @@ func (s *UploadMediaRequest) SetUrl(v string) *UploadMediaRequest {
 }
 
 func (s *UploadMediaRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UploadMediaRequestTenantContext struct {

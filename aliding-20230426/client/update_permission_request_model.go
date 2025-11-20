@@ -90,7 +90,26 @@ func (s *UpdatePermissionRequest) SetTenantContext(v *UpdatePermissionRequestTen
 }
 
 func (s *UpdatePermissionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Members != nil {
+		for _, item := range s.Members {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Option != nil {
+		if err := s.Option.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdatePermissionRequestMembers struct {

@@ -59,5 +59,10 @@ func (s *GetMultiDimTableSheetResponse) SetBody(v *GetMultiDimTableSheetResponse
 }
 
 func (s *GetMultiDimTableSheetResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

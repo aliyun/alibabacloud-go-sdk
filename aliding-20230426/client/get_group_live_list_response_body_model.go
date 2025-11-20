@@ -80,7 +80,12 @@ func (s *GetGroupLiveListResponseBody) SetVendorType(v string) *GetGroupLiveList
 }
 
 func (s *GetGroupLiveListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGroupLiveListResponseBodyResult struct {
@@ -108,7 +113,16 @@ func (s *GetGroupLiveListResponseBodyResult) SetGroupLiveList(v []*GetGroupLiveL
 }
 
 func (s *GetGroupLiveListResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.GroupLiveList != nil {
+		for _, item := range s.GroupLiveList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGroupLiveListResponseBodyResultGroupLiveList struct {

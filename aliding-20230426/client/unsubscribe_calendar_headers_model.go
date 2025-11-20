@@ -47,7 +47,12 @@ func (s *UnsubscribeCalendarHeaders) SetAccountContext(v *UnsubscribeCalendarHea
 }
 
 func (s *UnsubscribeCalendarHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UnsubscribeCalendarHeadersAccountContext struct {

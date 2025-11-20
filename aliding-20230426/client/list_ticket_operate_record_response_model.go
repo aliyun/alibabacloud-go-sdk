@@ -59,5 +59,10 @@ func (s *ListTicketOperateRecordResponse) SetBody(v *ListTicketOperateRecordResp
 }
 
 func (s *ListTicketOperateRecordResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

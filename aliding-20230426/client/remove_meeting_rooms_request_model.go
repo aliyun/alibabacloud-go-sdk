@@ -69,7 +69,16 @@ func (s *RemoveMeetingRoomsRequest) SetMeetingRoomsToRemove(v []*RemoveMeetingRo
 }
 
 func (s *RemoveMeetingRoomsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MeetingRoomsToRemove != nil {
+		for _, item := range s.MeetingRoomsToRemove {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RemoveMeetingRoomsRequestMeetingRoomsToRemove struct {

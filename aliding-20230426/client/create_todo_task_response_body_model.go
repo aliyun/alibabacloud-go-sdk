@@ -340,7 +340,26 @@ func (s *CreateTodoTaskResponseBody) SetSubject(v string) *CreateTodoTaskRespons
 }
 
 func (s *CreateTodoTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ContentFieldList != nil {
+		for _, item := range s.ContentFieldList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DetailUrl != nil {
+		if err := s.DetailUrl.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NotifyConfigs != nil {
+		if err := s.NotifyConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateTodoTaskResponseBodyContentFieldList struct {

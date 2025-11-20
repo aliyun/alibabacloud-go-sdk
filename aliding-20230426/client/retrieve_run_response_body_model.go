@@ -50,7 +50,12 @@ func (s *RetrieveRunResponseBody) SetRun(v *RetrieveRunResponseBodyRun) *Retriev
 }
 
 func (s *RetrieveRunResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Run != nil {
+		if err := s.Run.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RetrieveRunResponseBodyRun struct {

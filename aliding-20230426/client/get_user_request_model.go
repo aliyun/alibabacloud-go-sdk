@@ -50,7 +50,12 @@ func (s *GetUserRequest) SetLanguage(v string) *GetUserRequest {
 }
 
 func (s *GetUserRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserRequestTenantContext struct {

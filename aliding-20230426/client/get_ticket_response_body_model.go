@@ -251,7 +251,31 @@ func (s *GetTicketResponseBody) SetVendorType(v string) *GetTicketResponseBody {
 }
 
 func (s *GetTicketResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Creator != nil {
+		if err := s.Creator.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Processor != nil {
+		if err := s.Processor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Takers != nil {
+		for _, item := range s.Takers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Template != nil {
+		if err := s.Template.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTicketResponseBodyCreator struct {

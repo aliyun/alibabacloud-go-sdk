@@ -95,7 +95,12 @@ func (s *GetFileDownloadInfoResponseBody) SetVendorType(v string) *GetFileDownlo
 }
 
 func (s *GetFileDownloadInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HeaderSignatureInfo != nil {
+		if err := s.HeaderSignatureInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFileDownloadInfoResponseBodyHeaderSignatureInfo struct {

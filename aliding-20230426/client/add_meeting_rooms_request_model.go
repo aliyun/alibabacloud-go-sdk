@@ -70,7 +70,16 @@ func (s *AddMeetingRoomsRequest) SetMeetingRoomsToAdd(v []*AddMeetingRoomsReques
 }
 
 func (s *AddMeetingRoomsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MeetingRoomsToAdd != nil {
+		for _, item := range s.MeetingRoomsToAdd {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddMeetingRoomsRequestMeetingRoomsToAdd struct {

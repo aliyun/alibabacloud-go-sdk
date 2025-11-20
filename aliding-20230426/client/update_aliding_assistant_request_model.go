@@ -166,7 +166,12 @@ func (s *UpdateAlidingAssistantRequest) SetWelcomeContent(v string) *UpdateAlidi
 }
 
 func (s *UpdateAlidingAssistantRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateAlidingAssistantRequestTenantContext struct {

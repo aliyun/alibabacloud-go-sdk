@@ -47,7 +47,12 @@ func (s *QueryDentriesInfoHeaders) SetAccountContext(v *QueryDentriesInfoHeaders
 }
 
 func (s *QueryDentriesInfoHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryDentriesInfoHeadersAccountContext struct {

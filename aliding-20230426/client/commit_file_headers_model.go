@@ -47,7 +47,12 @@ func (s *CommitFileHeaders) SetAccountContext(v *CommitFileHeadersAccountContext
 }
 
 func (s *CommitFileHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CommitFileHeadersAccountContext struct {

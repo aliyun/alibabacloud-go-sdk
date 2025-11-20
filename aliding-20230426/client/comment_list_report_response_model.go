@@ -59,5 +59,10 @@ func (s *CommentListReportResponse) SetBody(v *CommentListReportResponseBody) *C
 }
 
 func (s *CommentListReportResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

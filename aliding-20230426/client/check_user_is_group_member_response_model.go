@@ -59,5 +59,10 @@ func (s *CheckUserIsGroupMemberResponse) SetBody(v *CheckUserIsGroupMemberRespon
 }
 
 func (s *CheckUserIsGroupMemberResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

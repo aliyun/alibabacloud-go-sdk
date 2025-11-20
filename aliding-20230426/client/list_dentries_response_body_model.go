@@ -95,7 +95,16 @@ func (s *ListDentriesResponseBody) SetVendorType(v string) *ListDentriesResponse
 }
 
 func (s *ListDentriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Dentries != nil {
+		for _, item := range s.Dentries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDentriesResponseBodyDentries struct {
@@ -361,7 +370,17 @@ func (s *ListDentriesResponseBodyDentries) SetVersion(v int64) *ListDentriesResp
 }
 
 func (s *ListDentriesResponseBodyDentries) Validate() error {
-	return dara.Validate(s)
+	if s.Properties != nil {
+		if err := s.Properties.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Thumbnail != nil {
+		if err := s.Thumbnail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDentriesResponseBodyDentriesProperties struct {

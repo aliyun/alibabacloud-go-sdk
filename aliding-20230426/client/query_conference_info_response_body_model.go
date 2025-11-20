@@ -52,7 +52,12 @@ func (s *QueryConferenceInfoResponseBody) SetRequestId(v string) *QueryConferenc
 }
 
 func (s *QueryConferenceInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ConfInfo != nil {
+		if err := s.ConfInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryConferenceInfoResponseBodyConfInfo struct {

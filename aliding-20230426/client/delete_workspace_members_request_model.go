@@ -65,7 +65,21 @@ func (s *DeleteWorkspaceMembersRequest) SetWorkspaceId(v string) *DeleteWorkspac
 }
 
 func (s *DeleteWorkspaceMembersRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Members != nil {
+		for _, item := range s.Members {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteWorkspaceMembersRequestMembers struct {

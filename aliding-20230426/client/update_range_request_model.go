@@ -146,7 +146,12 @@ func (s *UpdateRangeRequest) SetWorkbookId(v string) *UpdateRangeRequest {
 }
 
 func (s *UpdateRangeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateRangeRequestHyperlinks struct {

@@ -130,7 +130,34 @@ func (s *GetReportTemplateByNameResponseBody) SetUserid(v string) *GetReportTemp
 }
 
 func (s *GetReportTemplateByNameResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DefaultReceivedConvs != nil {
+		for _, item := range s.DefaultReceivedConvs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DefaultReceivers != nil {
+		for _, item := range s.DefaultReceivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Fields != nil {
+		for _, item := range s.Fields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetReportTemplateByNameResponseBodyDefaultReceivedConvs struct {

@@ -80,7 +80,12 @@ func (s *QueryDentriesInfoResponseBody) SetVendorType(v string) *QueryDentriesIn
 }
 
 func (s *QueryDentriesInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Dentry != nil {
+		if err := s.Dentry.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryDentriesInfoResponseBodyDentry struct {
@@ -337,7 +342,17 @@ func (s *QueryDentriesInfoResponseBodyDentry) SetVersion(v int64) *QueryDentries
 }
 
 func (s *QueryDentriesInfoResponseBodyDentry) Validate() error {
-	return dara.Validate(s)
+	if s.Properties != nil {
+		if err := s.Properties.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Thumbnail != nil {
+		if err := s.Thumbnail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryDentriesInfoResponseBodyDentryProperties struct {

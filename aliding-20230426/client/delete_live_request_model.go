@@ -52,7 +52,12 @@ func (s *DeleteLiveRequest) SetTenantContext(v *DeleteLiveRequestTenantContext) 
 }
 
 func (s *DeleteLiveRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteLiveRequestTenantContext struct {

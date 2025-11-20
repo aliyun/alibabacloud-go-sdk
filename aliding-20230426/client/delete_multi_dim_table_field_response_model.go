@@ -59,5 +59,10 @@ func (s *DeleteMultiDimTableFieldResponse) SetBody(v *DeleteMultiDimTableFieldRe
 }
 
 func (s *DeleteMultiDimTableFieldResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

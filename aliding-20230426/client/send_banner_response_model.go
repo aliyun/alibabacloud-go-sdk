@@ -59,5 +59,10 @@ func (s *SendBannerResponse) SetBody(v *SendBannerResponseBody) *SendBannerRespo
 }
 
 func (s *SendBannerResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *GetFormComponentDefinitionListResponse) SetBody(v *GetFormComponentDefi
 }
 
 func (s *GetFormComponentDefinitionListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

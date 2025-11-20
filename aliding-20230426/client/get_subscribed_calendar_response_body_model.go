@@ -124,7 +124,12 @@ func (s *GetSubscribedCalendarResponseBody) SetSubscribeScope(v *GetSubscribedCa
 }
 
 func (s *GetSubscribedCalendarResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SubscribeScope != nil {
+		if err := s.SubscribeScope.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSubscribedCalendarResponseBodySubscribeScope struct {

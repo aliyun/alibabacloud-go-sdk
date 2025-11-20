@@ -47,7 +47,12 @@ func (s *GetNodesHeaders) SetAccountContext(v *GetNodesHeadersAccountContext) *G
 }
 
 func (s *GetNodesHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNodesHeadersAccountContext struct {

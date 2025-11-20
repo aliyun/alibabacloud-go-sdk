@@ -80,7 +80,12 @@ func (s *CommitFileResponseBody) SetVendorType(v string) *CommitFileResponseBody
 }
 
 func (s *CommitFileResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Dentry != nil {
+		if err := s.Dentry.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CommitFileResponseBodyDentry struct {
@@ -359,7 +364,17 @@ func (s *CommitFileResponseBodyDentry) SetVersion(v int64) *CommitFileResponseBo
 }
 
 func (s *CommitFileResponseBodyDentry) Validate() error {
-	return dara.Validate(s)
+	if s.Properties != nil {
+		if err := s.Properties.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Thumbnail != nil {
+		if err := s.Thumbnail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CommitFileResponseBodyDentryProperties struct {

@@ -62,7 +62,17 @@ func (s *InitMultipartFileUploadRequest) SetTenantContext(v *InitMultipartFileUp
 }
 
 func (s *InitMultipartFileUploadRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Option != nil {
+		if err := s.Option.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InitMultipartFileUploadRequestOption struct {
@@ -113,7 +123,12 @@ func (s *InitMultipartFileUploadRequestOption) SetStorageDriver(v string) *InitM
 }
 
 func (s *InitMultipartFileUploadRequestOption) Validate() error {
-	return dara.Validate(s)
+	if s.PreCheckParam != nil {
+		if err := s.PreCheckParam.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InitMultipartFileUploadRequestOptionPreCheckParam struct {

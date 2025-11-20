@@ -50,7 +50,12 @@ func (s *GetUserIdByOrgIdAndStaffIdRequest) SetTenantContext(v *GetUserIdByOrgId
 }
 
 func (s *GetUserIdByOrgIdAndStaffIdRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserIdByOrgIdAndStaffIdRequestTenantContext struct {

@@ -131,7 +131,12 @@ func (s *GetOrgLiveListRequest) SetUserId(v string) *GetOrgLiveListRequest {
 }
 
 func (s *GetOrgLiveListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOrgLiveListRequestTenantContext struct {

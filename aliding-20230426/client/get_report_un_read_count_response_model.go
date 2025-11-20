@@ -59,5 +59,10 @@ func (s *GetReportUnReadCountResponse) SetBody(v *GetReportUnReadCountResponseBo
 }
 
 func (s *GetReportUnReadCountResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -47,7 +47,12 @@ func (s *ListTableDataByFormInstanceIdTableIdHeaders) SetAccountContext(v *ListT
 }
 
 func (s *ListTableDataByFormInstanceIdTableIdHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTableDataByFormInstanceIdTableIdHeadersAccountContext struct {

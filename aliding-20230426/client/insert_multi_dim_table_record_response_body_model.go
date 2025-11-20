@@ -80,7 +80,16 @@ func (s *InsertMultiDimTableRecordResponseBody) SetVendorType(v string) *InsertM
 }
 
 func (s *InsertMultiDimTableRecordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Value != nil {
+		for _, item := range s.Value {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InsertMultiDimTableRecordResponseBodyValue struct {

@@ -112,7 +112,12 @@ func (s *QueryCloudRecordTextRequest) SetConferenceId(v string) *QueryCloudRecor
 }
 
 func (s *QueryCloudRecordTextRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCloudRecordTextRequestTenantContext struct {

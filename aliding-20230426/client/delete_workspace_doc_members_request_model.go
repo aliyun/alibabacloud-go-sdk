@@ -82,7 +82,21 @@ func (s *DeleteWorkspaceDocMembersRequest) SetWorkspaceId(v string) *DeleteWorks
 }
 
 func (s *DeleteWorkspaceDocMembersRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Members != nil {
+		for _, item := range s.Members {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteWorkspaceDocMembersRequestMembers struct {

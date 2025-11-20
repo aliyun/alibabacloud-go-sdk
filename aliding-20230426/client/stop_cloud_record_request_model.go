@@ -52,7 +52,12 @@ func (s *StopCloudRecordRequest) SetConferenceId(v string) *StopCloudRecordReque
 }
 
 func (s *StopCloudRecordRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StopCloudRecordRequestTenantContext struct {

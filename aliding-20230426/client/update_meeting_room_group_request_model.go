@@ -67,7 +67,12 @@ func (s *UpdateMeetingRoomGroupRequest) SetTenantContext(v *UpdateMeetingRoomGro
 }
 
 func (s *UpdateMeetingRoomGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateMeetingRoomGroupRequestTenantContext struct {

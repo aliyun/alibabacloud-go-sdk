@@ -98,7 +98,17 @@ func (s *CreateScheduleConferenceRequest) SetTitle(v string) *CreateScheduleConf
 }
 
 func (s *CreateScheduleConferenceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ScheduleConfSettingModel != nil {
+		if err := s.ScheduleConfSettingModel.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateScheduleConferenceRequestScheduleConfSettingModel struct {
@@ -208,7 +218,17 @@ func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) SetScreenShare
 }
 
 func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) Validate() error {
-	return dara.Validate(s)
+	if s.MoziConfOpenRecordSetting != nil {
+		if err := s.MoziConfOpenRecordSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MoziConfVirtualExtraSetting != nil {
+		if err := s.MoziConfVirtualExtraSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting struct {
@@ -425,7 +445,16 @@ func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualE
 }
 
 func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) Validate() error {
-	return dara.Validate(s)
+	if s.MoziConfExtensionAppSettings != nil {
+		for _, item := range s.MoziConfExtensionAppSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings struct {

@@ -83,7 +83,16 @@ func (s *BatchGetFormDataByIdListResponseBody) SetVendorType(v string) *BatchGet
 }
 
 func (s *BatchGetFormDataByIdListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchGetFormDataByIdListResponseBodyResult struct {
@@ -278,7 +287,17 @@ func (s *BatchGetFormDataByIdListResponseBodyResult) SetVersion(v int64) *BatchG
 }
 
 func (s *BatchGetFormDataByIdListResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.ModifyUser != nil {
+		if err := s.ModifyUser.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Originator != nil {
+		if err := s.Originator.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchGetFormDataByIdListResponseBodyResultModifyUser struct {
@@ -316,7 +335,12 @@ func (s *BatchGetFormDataByIdListResponseBodyResultModifyUser) SetUserId(v strin
 }
 
 func (s *BatchGetFormDataByIdListResponseBodyResultModifyUser) Validate() error {
-	return dara.Validate(s)
+	if s.Name != nil {
+		if err := s.Name.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchGetFormDataByIdListResponseBodyResultModifyUserName struct {
@@ -392,7 +416,12 @@ func (s *BatchGetFormDataByIdListResponseBodyResultOriginator) SetUserId(v strin
 }
 
 func (s *BatchGetFormDataByIdListResponseBodyResultOriginator) Validate() error {
-	return dara.Validate(s)
+	if s.Name != nil {
+		if err := s.Name.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchGetFormDataByIdListResponseBodyResultOriginatorName struct {

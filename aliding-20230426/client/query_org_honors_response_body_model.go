@@ -67,7 +67,16 @@ func (s *QueryOrgHonorsResponseBody) SetRequestId(v string) *QueryOrgHonorsRespo
 }
 
 func (s *QueryOrgHonorsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OpenHonors != nil {
+		for _, item := range s.OpenHonors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryOrgHonorsResponseBodyOpenHonors struct {

@@ -59,5 +59,10 @@ func (s *CheckAlibabaStaffResponse) SetBody(v *CheckAlibabaStaffResponseBody) *C
 }
 
 func (s *CheckAlibabaStaffResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

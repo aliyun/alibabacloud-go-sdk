@@ -67,7 +67,16 @@ func (s *QueryUserHonorsResponseBody) SetRequestId(v string) *QueryUserHonorsRes
 }
 
 func (s *QueryUserHonorsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Honors != nil {
+		for _, item := range s.Honors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryUserHonorsResponseBodyHonors struct {
@@ -138,7 +147,16 @@ func (s *QueryUserHonorsResponseBodyHonors) SetHonorName(v string) *QueryUserHon
 }
 
 func (s *QueryUserHonorsResponseBodyHonors) Validate() error {
-	return dara.Validate(s)
+	if s.GrantHistory != nil {
+		for _, item := range s.GrantHistory {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryUserHonorsResponseBodyHonorsGrantHistory struct {

@@ -146,7 +146,12 @@ func (s *CreateOrgHonorTemplateRequest) SetUserId(v string) *CreateOrgHonorTempl
 }
 
 func (s *CreateOrgHonorTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOrgHonorTemplateRequestTenantContext struct {

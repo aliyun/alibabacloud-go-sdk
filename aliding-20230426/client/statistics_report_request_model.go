@@ -52,7 +52,12 @@ func (s *StatisticsReportRequest) SetTenantContext(v *StatisticsReportRequestTen
 }
 
 func (s *StatisticsReportRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StatisticsReportRequestTenantContext struct {

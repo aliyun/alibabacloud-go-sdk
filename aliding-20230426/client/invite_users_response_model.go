@@ -59,5 +59,10 @@ func (s *InviteUsersResponse) SetBody(v *InviteUsersResponseBody) *InviteUsersRe
 }
 
 func (s *InviteUsersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

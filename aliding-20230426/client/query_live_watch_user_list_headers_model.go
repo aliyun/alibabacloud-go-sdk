@@ -47,7 +47,12 @@ func (s *QueryLiveWatchUserListHeaders) SetAccountContext(v *QueryLiveWatchUserL
 }
 
 func (s *QueryLiveWatchUserListHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryLiveWatchUserListHeadersAccountContext struct {

@@ -47,7 +47,12 @@ func (s *GetRunningTasksHeaders) SetAccountContext(v *GetRunningTasksHeadersAcco
 }
 
 func (s *GetRunningTasksHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRunningTasksHeadersAccountContext struct {

@@ -59,5 +59,10 @@ func (s *AuthorizeSkillResponse) SetBody(v *AuthorizeSkillResponseBody) *Authori
 }
 
 func (s *AuthorizeSkillResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

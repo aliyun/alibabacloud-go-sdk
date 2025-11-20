@@ -48,7 +48,12 @@ func (s *AddDriveSpaceRequest) SetTenantContext(v *AddDriveSpaceRequestTenantCon
 }
 
 func (s *AddDriveSpaceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddDriveSpaceRequestTenantContext struct {

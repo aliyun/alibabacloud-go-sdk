@@ -59,5 +59,10 @@ func (s *GetCardTemplateResponse) SetBody(v *GetCardTemplateResponseBody) *GetCa
 }
 
 func (s *GetCardTemplateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

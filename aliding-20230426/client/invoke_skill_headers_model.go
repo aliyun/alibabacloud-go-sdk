@@ -47,7 +47,12 @@ func (s *InvokeSkillHeaders) SetAccountContext(v *InvokeSkillHeadersAccountConte
 }
 
 func (s *InvokeSkillHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InvokeSkillHeadersAccountContext struct {
@@ -57,6 +62,7 @@ type InvokeSkillHeadersAccountContext struct {
 	//
 	// 012345
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	SsoTicket *string `json:"ssoTicket,omitempty" xml:"ssoTicket,omitempty"`
 }
 
 func (s InvokeSkillHeadersAccountContext) String() string {
@@ -71,8 +77,17 @@ func (s *InvokeSkillHeadersAccountContext) GetAccountId() *string {
 	return s.AccountId
 }
 
+func (s *InvokeSkillHeadersAccountContext) GetSsoTicket() *string {
+	return s.SsoTicket
+}
+
 func (s *InvokeSkillHeadersAccountContext) SetAccountId(v string) *InvokeSkillHeadersAccountContext {
 	s.AccountId = &v
+	return s
+}
+
+func (s *InvokeSkillHeadersAccountContext) SetSsoTicket(v string) *InvokeSkillHeadersAccountContext {
+	s.SsoTicket = &v
 	return s
 }
 

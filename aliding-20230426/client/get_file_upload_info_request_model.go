@@ -77,7 +77,17 @@ func (s *GetFileUploadInfoRequest) SetTenantContext(v *GetFileUploadInfoRequestT
 }
 
 func (s *GetFileUploadInfoRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Option != nil {
+		if err := s.Option.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFileUploadInfoRequestOption struct {
@@ -141,7 +151,12 @@ func (s *GetFileUploadInfoRequestOption) SetStorageDriver(v string) *GetFileUplo
 }
 
 func (s *GetFileUploadInfoRequestOption) Validate() error {
-	return dara.Validate(s)
+	if s.PreCheckParam != nil {
+		if err := s.PreCheckParam.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFileUploadInfoRequestOptionPreCheckParam struct {

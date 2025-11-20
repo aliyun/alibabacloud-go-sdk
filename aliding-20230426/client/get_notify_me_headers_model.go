@@ -47,7 +47,12 @@ func (s *GetNotifyMeHeaders) SetAccountContext(v *GetNotifyMeHeadersAccountConte
 }
 
 func (s *GetNotifyMeHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNotifyMeHeadersAccountContext struct {

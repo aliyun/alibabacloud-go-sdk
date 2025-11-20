@@ -35,7 +35,12 @@ func (s *GetUserLatestPlanRequest) SetTenantContext(v *GetUserLatestPlanRequestT
 }
 
 func (s *GetUserLatestPlanRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserLatestPlanRequestTenantContext struct {

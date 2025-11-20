@@ -47,7 +47,12 @@ func (s *SearchEmployeeFieldValuesHeaders) SetAccountContext(v *SearchEmployeeFi
 }
 
 func (s *SearchEmployeeFieldValuesHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchEmployeeFieldValuesHeadersAccountContext struct {

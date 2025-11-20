@@ -59,5 +59,10 @@ func (s *InitMultipartFileUploadResponse) SetBody(v *InitMultipartFileUploadResp
 }
 
 func (s *InitMultipartFileUploadResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

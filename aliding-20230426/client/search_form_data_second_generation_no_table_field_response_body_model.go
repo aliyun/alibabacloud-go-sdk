@@ -110,7 +110,16 @@ func (s *SearchFormDataSecondGenerationNoTableFieldResponseBody) SetVendorType(v
 }
 
 func (s *SearchFormDataSecondGenerationNoTableFieldResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchFormDataSecondGenerationNoTableFieldResponseBodyData struct {
@@ -305,7 +314,17 @@ func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyData) SetVersion(
 }
 
 func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ModifyUser != nil {
+		if err := s.ModifyUser.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Originator != nil {
+		if err := s.Originator.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUser struct {
@@ -343,7 +362,12 @@ func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUser) S
 }
 
 func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUser) Validate() error {
-	return dara.Validate(s)
+	if s.Name != nil {
+		if err := s.Name.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUserName struct {
@@ -419,7 +443,12 @@ func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginator) S
 }
 
 func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginator) Validate() error {
-	return dara.Validate(s)
+	if s.Name != nil {
+		if err := s.Name.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginatorName struct {

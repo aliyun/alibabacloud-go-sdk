@@ -59,5 +59,10 @@ func (s *GetInstanceIdListResponse) SetBody(v *GetInstanceIdListResponseBody) *G
 }
 
 func (s *GetInstanceIdListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

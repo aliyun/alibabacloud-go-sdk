@@ -47,7 +47,12 @@ func (s *DeleteWorkspaceDocMembersHeaders) SetAccountContext(v *DeleteWorkspaceD
 }
 
 func (s *DeleteWorkspaceDocMembersHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteWorkspaceDocMembersHeadersAccountContext struct {

@@ -152,7 +152,17 @@ func (s *GetMultiDimTableRecordResponseBody) SetVendorType(v string) *GetMultiDi
 }
 
 func (s *GetMultiDimTableRecordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CreatedBy != nil {
+		if err := s.CreatedBy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LastModifiedBy != nil {
+		if err := s.LastModifiedBy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMultiDimTableRecordResponseBodyCreatedBy struct {

@@ -47,7 +47,12 @@ func (s *CreateMeetingRoomGroupHeaders) SetAccountContext(v *CreateMeetingRoomGr
 }
 
 func (s *CreateMeetingRoomGroupHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMeetingRoomGroupHeadersAccountContext struct {

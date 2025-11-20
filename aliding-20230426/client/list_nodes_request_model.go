@@ -97,7 +97,12 @@ func (s *ListNodesRequest) SetWithPermissionRole(v bool) *ListNodesRequest {
 }
 
 func (s *ListNodesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNodesRequestTenantContext struct {

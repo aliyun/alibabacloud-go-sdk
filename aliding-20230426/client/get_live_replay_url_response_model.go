@@ -59,5 +59,10 @@ func (s *GetLiveReplayUrlResponse) SetBody(v *GetLiveReplayUrlResponseBody) *Get
 }
 
 func (s *GetLiveReplayUrlResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

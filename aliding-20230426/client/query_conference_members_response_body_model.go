@@ -82,7 +82,16 @@ func (s *QueryConferenceMembersResponseBody) SetTotalCount(v int32) *QueryConfer
 }
 
 func (s *QueryConferenceMembersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MemberModels != nil {
+		for _, item := range s.MemberModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryConferenceMembersResponseBodyMemberModels struct {

@@ -59,5 +59,10 @@ func (s *GetGroupLiveListResponse) SetBody(v *GetGroupLiveListResponseBody) *Get
 }
 
 func (s *GetGroupLiveListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

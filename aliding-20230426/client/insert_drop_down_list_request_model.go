@@ -99,7 +99,21 @@ func (s *InsertDropDownListRequest) SetWorkbookId(v string) *InsertDropDownListR
 }
 
 func (s *InsertDropDownListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Options != nil {
+		for _, item := range s.Options {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InsertDropDownListRequestOptions struct {

@@ -47,7 +47,12 @@ func (s *QueryCloudRecordTextHeaders) SetAccountContext(v *QueryCloudRecordTextH
 }
 
 func (s *QueryCloudRecordTextHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCloudRecordTextHeadersAccountContext struct {

@@ -52,7 +52,12 @@ func (s *GetAllSheetsRequest) SetWorkbookId(v string) *GetAllSheetsRequest {
 }
 
 func (s *GetAllSheetsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAllSheetsRequestTenantContext struct {

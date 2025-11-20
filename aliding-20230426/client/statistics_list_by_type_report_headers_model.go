@@ -47,7 +47,12 @@ func (s *StatisticsListByTypeReportHeaders) SetAccountContext(v *StatisticsListB
 }
 
 func (s *StatisticsListByTypeReportHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StatisticsListByTypeReportHeadersAccountContext struct {

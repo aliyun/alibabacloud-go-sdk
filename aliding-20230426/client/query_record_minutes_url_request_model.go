@@ -69,7 +69,12 @@ func (s *QueryRecordMinutesUrlRequest) SetTenantContext(v *QueryRecordMinutesUrl
 }
 
 func (s *QueryRecordMinutesUrlRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryRecordMinutesUrlRequestTenantContext struct {

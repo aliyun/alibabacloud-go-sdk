@@ -80,7 +80,16 @@ func (s *InvokeAssistantResponseBody) SetStreamEnd(v bool) *InvokeAssistantRespo
 }
 
 func (s *InvokeAssistantResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		for _, item := range s.Messages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InvokeAssistantResponseBodyMessages struct {
@@ -144,7 +153,12 @@ func (s *InvokeAssistantResponseBodyMessages) SetRole(v string) *InvokeAssistant
 }
 
 func (s *InvokeAssistantResponseBodyMessages) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InvokeAssistantResponseBodyMessagesContent struct {
@@ -237,7 +251,37 @@ func (s *InvokeAssistantResponseBodyMessagesContent) SetType(v string) *InvokeAs
 }
 
 func (s *InvokeAssistantResponseBodyMessagesContent) Validate() error {
-	return dara.Validate(s)
+	if s.CardCallback != nil {
+		if err := s.CardCallback.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DingCard != nil {
+		if err := s.DingCard.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DingNormalCard != nil {
+		if err := s.DingNormalCard.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Markdown != nil {
+		if err := s.Markdown.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructView != nil {
+		if err := s.StructView.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Text != nil {
+		if err := s.Text.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InvokeAssistantResponseBodyMessagesContentCardCallback struct {
@@ -427,14 +471,30 @@ func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCard) SetPrivateDat
 }
 
 func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCard) Validate() error {
-	return dara.Validate(s)
+	if s.CardData != nil {
+		if err := s.CardData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CardUpdateOptions != nil {
+		if err := s.CardUpdateOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DynamicDataSourceConfigs != nil {
+		for _, item := range s.DynamicDataSourceConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData struct {
-	// example:
-	//
-	// {}
-	CardParamMap map[string]interface{} `json:"cardParamMap,omitempty" xml:"cardParamMap,omitempty"`
+	CardParamMap interface{} `json:"cardParamMap,omitempty" xml:"cardParamMap,omitempty"`
 }
 
 func (s InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData) String() string {
@@ -445,11 +505,11 @@ func (s InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData) GoStri
 	return s.String()
 }
 
-func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData) GetCardParamMap() map[string]interface{} {
+func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData) GetCardParamMap() interface{} {
 	return s.CardParamMap
 }
 
-func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData) SetCardParamMap(v map[string]interface{}) *InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData {
+func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData) SetCardParamMap(v interface{}) *InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData {
 	s.CardParamMap = v
 	return s
 }
@@ -550,7 +610,12 @@ func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSour
 }
 
 func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.PullConfig != nil {
+		if err := s.PullConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig struct {
@@ -659,7 +724,16 @@ func (s *InvokeAssistantResponseBodyMessagesContentStructView) SetParts(v []*Inv
 }
 
 func (s *InvokeAssistantResponseBodyMessagesContentStructView) Validate() error {
-	return dara.Validate(s)
+	if s.Parts != nil {
+		for _, item := range s.Parts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InvokeAssistantResponseBodyMessagesContentStructViewParts struct {
@@ -800,7 +874,32 @@ func (s *InvokeAssistantResponseBodyMessagesContentStructViewParts) SetType(v st
 }
 
 func (s *InvokeAssistantResponseBodyMessagesContentStructViewParts) Validate() error {
-	return dara.Validate(s)
+	if s.DataPart != nil {
+		if err := s.DataPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReasonPart != nil {
+		if err := s.ReasonPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RecommendPart != nil {
+		if err := s.RecommendPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReferencePart != nil {
+		if err := s.ReferencePart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextPart != nil {
+		if err := s.TextPart.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InvokeAssistantResponseBodyMessagesContentStructViewPartsDataPart struct {
@@ -878,7 +977,16 @@ func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPart)
 }
 
 func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPart) Validate() error {
-	return dara.Validate(s)
+	if s.Recommends != nil {
+		for _, item := range s.Recommends {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPartRecommends struct {
@@ -948,7 +1056,16 @@ func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePart)
 }
 
 func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePart) Validate() error {
-	return dara.Validate(s)
+	if s.References != nil {
+		for _, item := range s.References {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences struct {

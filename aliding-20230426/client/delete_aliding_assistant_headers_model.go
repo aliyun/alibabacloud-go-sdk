@@ -47,7 +47,12 @@ func (s *DeleteAlidingAssistantHeaders) SetAccountContext(v *DeleteAlidingAssist
 }
 
 func (s *DeleteAlidingAssistantHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteAlidingAssistantHeadersAccountContext struct {

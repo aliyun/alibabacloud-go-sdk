@@ -59,5 +59,10 @@ func (s *AddRecordPermissionResponse) SetBody(v *AddRecordPermissionResponseBody
 }
 
 func (s *AddRecordPermissionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

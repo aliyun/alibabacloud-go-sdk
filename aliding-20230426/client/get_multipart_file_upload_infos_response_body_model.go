@@ -80,7 +80,16 @@ func (s *GetMultipartFileUploadInfosResponseBody) SetVendorType(v string) *GetMu
 }
 
 func (s *GetMultipartFileUploadInfosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MultipartHeaderSignatureInfos != nil {
+		for _, item := range s.MultipartHeaderSignatureInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfos struct {
@@ -118,7 +127,12 @@ func (s *GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfos) S
 }
 
 func (s *GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfos) Validate() error {
-	return dara.Validate(s)
+	if s.HeaderSignatureInfo != nil {
+		if err := s.HeaderSignatureInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo struct {

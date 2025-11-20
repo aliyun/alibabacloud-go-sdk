@@ -208,7 +208,50 @@ func (s *PatchEventResponseBody) SetUpdateTime(v string) *PatchEventResponseBody
 }
 
 func (s *PatchEventResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Attendees != nil {
+		for _, item := range s.Attendees {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.End != nil {
+		if err := s.End.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Location != nil {
+		if err := s.Location.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Organizer != nil {
+		if err := s.Organizer.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Recurrence != nil {
+		if err := s.Recurrence.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Reminders != nil {
+		for _, item := range s.Reminders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Start != nil {
+		if err := s.Start.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PatchEventResponseBodyAttendees struct {
@@ -482,7 +525,17 @@ func (s *PatchEventResponseBodyRecurrence) SetRange(v *PatchEventResponseBodyRec
 }
 
 func (s *PatchEventResponseBodyRecurrence) Validate() error {
-	return dara.Validate(s)
+	if s.Pattern != nil {
+		if err := s.Pattern.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Range != nil {
+		if err := s.Range.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PatchEventResponseBodyRecurrencePattern struct {

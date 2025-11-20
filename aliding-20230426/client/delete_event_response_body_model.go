@@ -124,7 +124,12 @@ func (s *DeleteEventResponseBody) SetSuccess(v bool) *DeleteEventResponseBody {
 }
 
 func (s *DeleteEventResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteEventResponseBodyContent struct {

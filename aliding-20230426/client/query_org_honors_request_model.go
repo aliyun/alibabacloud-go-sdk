@@ -84,7 +84,12 @@ func (s *QueryOrgHonorsRequest) SetOrgId(v int64) *QueryOrgHonorsRequest {
 }
 
 func (s *QueryOrgHonorsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryOrgHonorsRequestTenantContext struct {

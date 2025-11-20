@@ -59,5 +59,10 @@ func (s *AddWorkspaceMembersResponse) SetBody(v *AddWorkspaceMembersResponseBody
 }
 
 func (s *AddWorkspaceMembersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

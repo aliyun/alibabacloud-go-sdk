@@ -99,7 +99,12 @@ func (s *QueryMinutesTextRequest) SetNextToken(v string) *QueryMinutesTextReques
 }
 
 func (s *QueryMinutesTextRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMinutesTextRequestTenantContext struct {

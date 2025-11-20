@@ -59,5 +59,10 @@ func (s *RecallHonorResponse) SetBody(v *RecallHonorResponseBody) *RecallHonorRe
 }
 
 func (s *RecallHonorResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

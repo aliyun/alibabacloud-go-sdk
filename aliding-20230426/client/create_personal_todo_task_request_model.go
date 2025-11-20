@@ -141,7 +141,17 @@ func (s *CreatePersonalTodoTaskRequest) SetTenantContext(v *CreatePersonalTodoTa
 }
 
 func (s *CreatePersonalTodoTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NotifyConfigs != nil {
+		if err := s.NotifyConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePersonalTodoTaskRequestNotifyConfigs struct {

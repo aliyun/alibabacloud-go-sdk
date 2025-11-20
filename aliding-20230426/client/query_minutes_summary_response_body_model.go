@@ -80,7 +80,12 @@ func (s *QueryMinutesSummaryResponseBody) SetVendorType(v string) *QueryMinutesS
 }
 
 func (s *QueryMinutesSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Summary != nil {
+		if err := s.Summary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMinutesSummaryResponseBodySummary struct {
@@ -186,7 +191,44 @@ func (s *QueryMinutesSummaryResponseBodySummary) SetQuestionsAnsweringSummary(v 
 }
 
 func (s *QueryMinutesSummaryResponseBodySummary) Validate() error {
-	return dara.Validate(s)
+	if s.Actions != nil {
+		if err := s.Actions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AutoChapters != nil {
+		for _, item := range s.AutoChapters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ConversationalSummary != nil {
+		for _, item := range s.ConversationalSummary {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.KeySentences != nil {
+		if err := s.KeySentences.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QuestionsAnsweringSummary != nil {
+		for _, item := range s.QuestionsAnsweringSummary {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMinutesSummaryResponseBodySummaryActions struct {

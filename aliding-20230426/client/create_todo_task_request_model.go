@@ -256,7 +256,45 @@ func (s *CreateTodoTaskRequest) SetSubject(v string) *CreateTodoTaskRequest {
 }
 
 func (s *CreateTodoTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ActionList != nil {
+		for _, item := range s.ActionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ContentFieldList != nil {
+		for _, item := range s.ContentFieldList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DetailUrl != nil {
+		if err := s.DetailUrl.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NotifyConfigs != nil {
+		if err := s.NotifyConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RemindNotifyConfigs != nil {
+		if err := s.RemindNotifyConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateTodoTaskRequestTenantContext struct {
@@ -369,7 +407,12 @@ func (s *CreateTodoTaskRequestActionList) SetUrl(v string) *CreateTodoTaskReques
 }
 
 func (s *CreateTodoTaskRequestActionList) Validate() error {
-	return dara.Validate(s)
+	if s.Param != nil {
+		if err := s.Param.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateTodoTaskRequestActionListParam struct {

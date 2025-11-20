@@ -59,5 +59,10 @@ func (s *GetOpenUrlResponse) SetBody(v *GetOpenUrlResponseBody) *GetOpenUrlRespo
 }
 
 func (s *GetOpenUrlResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

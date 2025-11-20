@@ -52,7 +52,12 @@ func (s *GetTodoTaskRequest) SetTenantContext(v *GetTodoTaskRequestTenantContext
 }
 
 func (s *GetTodoTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTodoTaskRequestTenantContext struct {

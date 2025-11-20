@@ -84,7 +84,12 @@ func (s *QueryLiveWatchUserListRequest) SetTenantContext(v *QueryLiveWatchUserLi
 }
 
 func (s *QueryLiveWatchUserListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryLiveWatchUserListRequestTenantContext struct {

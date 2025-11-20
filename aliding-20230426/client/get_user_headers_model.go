@@ -47,7 +47,12 @@ func (s *GetUserHeaders) SetAccountContext(v *GetUserHeadersAccountContext) *Get
 }
 
 func (s *GetUserHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserHeadersAccountContext struct {

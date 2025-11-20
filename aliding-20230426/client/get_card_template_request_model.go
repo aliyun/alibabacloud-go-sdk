@@ -52,7 +52,12 @@ func (s *GetCardTemplateRequest) SetTenantContext(v *GetCardTemplateRequestTenan
 }
 
 func (s *GetCardTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCardTemplateRequestTenantContext struct {

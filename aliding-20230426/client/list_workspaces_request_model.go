@@ -110,7 +110,12 @@ func (s *ListWorkspacesRequest) SetWithPermissionRole(v bool) *ListWorkspacesReq
 }
 
 func (s *ListWorkspacesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWorkspacesRequestTenantContext struct {

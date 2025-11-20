@@ -52,7 +52,12 @@ func (s *GetNodeByUrlResponseBody) SetRequestId(v string) *GetNodeByUrlResponseB
 }
 
 func (s *GetNodeByUrlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Node != nil {
+		if err := s.Node.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNodeByUrlResponseBodyNode struct {
@@ -259,7 +264,12 @@ func (s *GetNodeByUrlResponseBodyNode) SetWorkspaceId(v string) *GetNodeByUrlRes
 }
 
 func (s *GetNodeByUrlResponseBodyNode) Validate() error {
-	return dara.Validate(s)
+	if s.StatisticalInfo != nil {
+		if err := s.StatisticalInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNodeByUrlResponseBodyNodeStatisticalInfo struct {

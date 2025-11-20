@@ -47,7 +47,12 @@ func (s *GetTodoTaskHeaders) SetAccountContext(v *GetTodoTaskHeadersAccountConte
 }
 
 func (s *GetTodoTaskHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTodoTaskHeadersAccountContext struct {

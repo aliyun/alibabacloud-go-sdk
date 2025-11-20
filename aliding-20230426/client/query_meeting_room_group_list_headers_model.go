@@ -47,7 +47,12 @@ func (s *QueryMeetingRoomGroupListHeaders) SetAccountContext(v *QueryMeetingRoom
 }
 
 func (s *QueryMeetingRoomGroupListHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMeetingRoomGroupListHeadersAccountContext struct {

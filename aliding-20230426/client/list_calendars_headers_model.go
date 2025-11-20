@@ -47,7 +47,12 @@ func (s *ListCalendarsHeaders) SetAccountContext(v *ListCalendarsHeadersAccountC
 }
 
 func (s *ListCalendarsHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCalendarsHeadersAccountContext struct {

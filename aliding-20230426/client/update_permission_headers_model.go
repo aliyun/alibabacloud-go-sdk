@@ -47,7 +47,12 @@ func (s *UpdatePermissionHeaders) SetAccountContext(v *UpdatePermissionHeadersAc
 }
 
 func (s *UpdatePermissionHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdatePermissionHeadersAccountContext struct {

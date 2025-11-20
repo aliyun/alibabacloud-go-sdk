@@ -389,7 +389,12 @@ func (s *GetTodoTaskResponseBody) SetVendorType(v string) *GetTodoTaskResponseBo
 }
 
 func (s *GetTodoTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DetailUrl != nil {
+		if err := s.DetailUrl.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTodoTaskResponseBodyDetailUrl struct {

@@ -47,7 +47,12 @@ func (s *UpdateConvExtensionHeaders) SetAccountContext(v *UpdateConvExtensionHea
 }
 
 func (s *UpdateConvExtensionHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateConvExtensionHeadersAccountContext struct {

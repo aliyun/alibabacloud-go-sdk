@@ -82,7 +82,12 @@ func (s *GetNodeRequest) SetWithStatisticalInfo(v bool) *GetNodeRequest {
 }
 
 func (s *GetNodeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNodeRequestTenantContext struct {

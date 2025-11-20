@@ -113,7 +113,16 @@ func (s *ListMultiDimTableRecordsResponseBody) SetVendorType(v string) *ListMult
 }
 
 func (s *ListMultiDimTableRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMultiDimTableRecordsResponseBodyRecords struct {
@@ -200,7 +209,17 @@ func (s *ListMultiDimTableRecordsResponseBodyRecords) SetLastModifiedTime(v int6
 }
 
 func (s *ListMultiDimTableRecordsResponseBodyRecords) Validate() error {
-	return dara.Validate(s)
+	if s.CreatedBy != nil {
+		if err := s.CreatedBy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LastModifiedBy != nil {
+		if err := s.LastModifiedBy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMultiDimTableRecordsResponseBodyRecordsCreatedBy struct {

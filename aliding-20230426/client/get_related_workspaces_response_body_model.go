@@ -80,7 +80,16 @@ func (s *GetRelatedWorkspacesResponseBody) SetWorkspaces(v []*GetRelatedWorkspac
 }
 
 func (s *GetRelatedWorkspacesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Workspaces != nil {
+		for _, item := range s.Workspaces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRelatedWorkspacesResponseBodyWorkspaces struct {
@@ -196,7 +205,16 @@ func (s *GetRelatedWorkspacesResponseBodyWorkspaces) SetWorkspaceId(v string) *G
 }
 
 func (s *GetRelatedWorkspacesResponseBodyWorkspaces) Validate() error {
-	return dara.Validate(s)
+	if s.RecentList != nil {
+		for _, item := range s.RecentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRelatedWorkspacesResponseBodyWorkspacesRecentList struct {

@@ -47,7 +47,12 @@ func (s *CreateAlidingAssistantHeaders) SetAccountContext(v *CreateAlidingAssist
 }
 
 func (s *CreateAlidingAssistantHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAlidingAssistantHeadersAccountContext struct {

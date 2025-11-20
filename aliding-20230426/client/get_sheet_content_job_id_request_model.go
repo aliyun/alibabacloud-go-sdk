@@ -65,7 +65,12 @@ func (s *GetSheetContentJobIdRequest) SetTenantContext(v *GetSheetContentJobIdRe
 }
 
 func (s *GetSheetContentJobIdRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSheetContentJobIdRequestTenantContext struct {

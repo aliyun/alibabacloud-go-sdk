@@ -103,7 +103,12 @@ func (s *UpdateScheduleConferenceRequest) SetTitle(v string) *UpdateScheduleConf
 }
 
 func (s *UpdateScheduleConferenceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateScheduleConferenceRequestTenantContext struct {

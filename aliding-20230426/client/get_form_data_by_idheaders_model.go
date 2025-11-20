@@ -47,7 +47,12 @@ func (s *GetFormDataByIDHeaders) SetAccountContext(v *GetFormDataByIDHeadersAcco
 }
 
 func (s *GetFormDataByIDHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFormDataByIDHeadersAccountContext struct {

@@ -103,7 +103,12 @@ func (s *InsertRowsBeforeRequest) SetWorkbookId(v string) *InsertRowsBeforeReque
 }
 
 func (s *InsertRowsBeforeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InsertRowsBeforeRequestTenantContext struct {

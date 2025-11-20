@@ -59,5 +59,10 @@ func (s *DeleteColumnsResponse) SetBody(v *DeleteColumnsResponseBody) *DeleteCol
 }
 
 func (s *DeleteColumnsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

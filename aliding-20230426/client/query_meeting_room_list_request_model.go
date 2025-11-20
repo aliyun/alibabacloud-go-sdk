@@ -65,7 +65,12 @@ func (s *QueryMeetingRoomListRequest) SetTenantContext(v *QueryMeetingRoomListRe
 }
 
 func (s *QueryMeetingRoomListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMeetingRoomListRequestTenantContext struct {

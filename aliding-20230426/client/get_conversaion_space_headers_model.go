@@ -47,7 +47,12 @@ func (s *GetConversaionSpaceHeaders) SetAccountContext(v *GetConversaionSpaceHea
 }
 
 func (s *GetConversaionSpaceHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConversaionSpaceHeadersAccountContext struct {

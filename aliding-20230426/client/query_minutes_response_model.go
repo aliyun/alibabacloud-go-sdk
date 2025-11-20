@@ -59,5 +59,10 @@ func (s *QueryMinutesResponse) SetBody(v *QueryMinutesResponseBody) *QueryMinute
 }
 
 func (s *QueryMinutesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

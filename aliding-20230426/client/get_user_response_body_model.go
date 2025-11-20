@@ -518,7 +518,39 @@ func (s *GetUserResponseBody) SetWorkPlace(v string) *GetUserResponseBody {
 }
 
 func (s *GetUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeptOrderList != nil {
+		for _, item := range s.DeptOrderList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LeaderInDept != nil {
+		for _, item := range s.LeaderInDept {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RoleList != nil {
+		for _, item := range s.RoleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UnionEmpExt != nil {
+		if err := s.UnionEmpExt.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserResponseBodyDeptOrderList struct {
@@ -690,7 +722,16 @@ func (s *GetUserResponseBodyUnionEmpExt) SetUserid(v string) *GetUserResponseBod
 }
 
 func (s *GetUserResponseBodyUnionEmpExt) Validate() error {
-	return dara.Validate(s)
+	if s.UnionEmpMapList != nil {
+		for _, item := range s.UnionEmpMapList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetUserResponseBodyUnionEmpExtUnionEmpMapList struct {

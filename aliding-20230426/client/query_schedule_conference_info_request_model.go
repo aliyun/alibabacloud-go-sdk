@@ -80,7 +80,12 @@ func (s *QueryScheduleConferenceInfoRequest) SetTenantContext(v *QueryScheduleCo
 }
 
 func (s *QueryScheduleConferenceInfoRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryScheduleConferenceInfoRequestTenantContext struct {

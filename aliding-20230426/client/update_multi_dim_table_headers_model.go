@@ -47,7 +47,12 @@ func (s *UpdateMultiDimTableHeaders) SetAccountContext(v *UpdateMultiDimTableHea
 }
 
 func (s *UpdateMultiDimTableHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateMultiDimTableHeadersAccountContext struct {

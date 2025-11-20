@@ -47,7 +47,12 @@ func (s *AddRecordPermissionHeaders) SetAccountContext(v *AddRecordPermissionHea
 }
 
 func (s *AddRecordPermissionHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddRecordPermissionHeadersAccountContext struct {

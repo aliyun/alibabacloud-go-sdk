@@ -52,7 +52,12 @@ func (s *ChangeDingTalkIdRequest) SetTenantContext(v *ChangeDingTalkIdRequestTen
 }
 
 func (s *ChangeDingTalkIdRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChangeDingTalkIdRequestTenantContext struct {

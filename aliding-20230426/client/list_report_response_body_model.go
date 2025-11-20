@@ -97,7 +97,16 @@ func (s *ListReportResponseBody) SetSize(v int64) *ListReportResponseBody {
 }
 
 func (s *ListReportResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataList != nil {
+		for _, item := range s.DataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListReportResponseBodyDataList struct {
@@ -253,7 +262,16 @@ func (s *ListReportResponseBodyDataList) SetTemplateName(v string) *ListReportRe
 }
 
 func (s *ListReportResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.Contents != nil {
+		for _, item := range s.Contents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListReportResponseBodyDataListContents struct {

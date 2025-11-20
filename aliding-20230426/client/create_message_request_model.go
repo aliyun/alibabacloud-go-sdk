@@ -115,7 +115,16 @@ func (s *CreateMessageRequest) SetThreadId(v string) *CreateMessageRequest {
 }
 
 func (s *CreateMessageRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		for _, item := range s.Messages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateMessageRequestMessages struct {
@@ -179,7 +188,12 @@ func (s *CreateMessageRequestMessages) SetRole(v string) *CreateMessageRequestMe
 }
 
 func (s *CreateMessageRequestMessages) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMessageRequestMessagesContent struct {
@@ -272,7 +286,37 @@ func (s *CreateMessageRequestMessagesContent) SetType(v string) *CreateMessageRe
 }
 
 func (s *CreateMessageRequestMessagesContent) Validate() error {
-	return dara.Validate(s)
+	if s.CardCallback != nil {
+		if err := s.CardCallback.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DingCard != nil {
+		if err := s.DingCard.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DingNormalCard != nil {
+		if err := s.DingNormalCard.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Markdown != nil {
+		if err := s.Markdown.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructView != nil {
+		if err := s.StructView.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Text != nil {
+		if err := s.Text.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMessageRequestMessagesContentCardCallback struct {
@@ -466,7 +510,26 @@ func (s *CreateMessageRequestMessagesContentDingNormalCard) SetPrivateData(v map
 }
 
 func (s *CreateMessageRequestMessagesContentDingNormalCard) Validate() error {
-	return dara.Validate(s)
+	if s.CardData != nil {
+		if err := s.CardData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CardUpdateOptions != nil {
+		if err := s.CardUpdateOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DynamicDataSourceConfigs != nil {
+		for _, item := range s.DynamicDataSourceConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateMessageRequestMessagesContentDingNormalCardCardData struct {
@@ -589,7 +652,12 @@ func (s *CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfi
 }
 
 func (s *CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.PullConfig != nil {
+		if err := s.PullConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig struct {
@@ -698,7 +766,16 @@ func (s *CreateMessageRequestMessagesContentStructView) SetParts(v []*CreateMess
 }
 
 func (s *CreateMessageRequestMessagesContentStructView) Validate() error {
-	return dara.Validate(s)
+	if s.Parts != nil {
+		for _, item := range s.Parts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateMessageRequestMessagesContentStructViewParts struct {
@@ -839,7 +916,32 @@ func (s *CreateMessageRequestMessagesContentStructViewParts) SetType(v string) *
 }
 
 func (s *CreateMessageRequestMessagesContentStructViewParts) Validate() error {
-	return dara.Validate(s)
+	if s.DataPart != nil {
+		if err := s.DataPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReasonPart != nil {
+		if err := s.ReasonPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RecommendPart != nil {
+		if err := s.RecommendPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReferencePart != nil {
+		if err := s.ReferencePart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextPart != nil {
+		if err := s.TextPart.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMessageRequestMessagesContentStructViewPartsDataPart struct {
@@ -917,7 +1019,16 @@ func (s *CreateMessageRequestMessagesContentStructViewPartsRecommendPart) SetRec
 }
 
 func (s *CreateMessageRequestMessagesContentStructViewPartsRecommendPart) Validate() error {
-	return dara.Validate(s)
+	if s.Recommends != nil {
+		for _, item := range s.Recommends {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateMessageRequestMessagesContentStructViewPartsRecommendPartRecommends struct {
@@ -987,7 +1098,16 @@ func (s *CreateMessageRequestMessagesContentStructViewPartsReferencePart) SetRef
 }
 
 func (s *CreateMessageRequestMessagesContentStructViewPartsReferencePart) Validate() error {
-	return dara.Validate(s)
+	if s.References != nil {
+		for _, item := range s.References {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences struct {

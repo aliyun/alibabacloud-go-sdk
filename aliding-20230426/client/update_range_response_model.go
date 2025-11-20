@@ -59,5 +59,10 @@ func (s *UpdateRangeResponse) SetBody(v *UpdateRangeResponseBody) *UpdateRangeRe
 }
 
 func (s *UpdateRangeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

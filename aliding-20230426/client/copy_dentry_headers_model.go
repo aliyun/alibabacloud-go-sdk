@@ -47,7 +47,12 @@ func (s *CopyDentryHeaders) SetAccountContext(v *CopyDentryHeadersAccountContext
 }
 
 func (s *CopyDentryHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CopyDentryHeadersAccountContext struct {

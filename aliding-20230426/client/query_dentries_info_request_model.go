@@ -113,7 +113,12 @@ func (s *QueryDentriesInfoRequest) SetWithThumbnail(v bool) *QueryDentriesInfoRe
 }
 
 func (s *QueryDentriesInfoRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryDentriesInfoRequestTenantContext struct {

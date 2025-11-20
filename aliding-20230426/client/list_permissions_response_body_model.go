@@ -110,7 +110,16 @@ func (s *ListPermissionsResponseBody) SetVendorType(v string) *ListPermissionsRe
 }
 
 func (s *ListPermissionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Permissions != nil {
+		for _, item := range s.Permissions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPermissionsResponseBodyPermissions struct {
@@ -158,7 +167,17 @@ func (s *ListPermissionsResponseBodyPermissions) SetRole(v *ListPermissionsRespo
 }
 
 func (s *ListPermissionsResponseBodyPermissions) Validate() error {
-	return dara.Validate(s)
+	if s.Member != nil {
+		if err := s.Member.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Role != nil {
+		if err := s.Role.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPermissionsResponseBodyPermissionsMember struct {

@@ -80,7 +80,16 @@ func (s *GetScheduleResponseBody) SetVendorType(v string) *GetScheduleResponseBo
 }
 
 func (s *GetScheduleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ScheduleInformation != nil {
+		for _, item := range s.ScheduleInformation {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetScheduleResponseBodyScheduleInformation struct {
@@ -131,7 +140,16 @@ func (s *GetScheduleResponseBodyScheduleInformation) SetUserId(v string) *GetSch
 }
 
 func (s *GetScheduleResponseBodyScheduleInformation) Validate() error {
-	return dara.Validate(s)
+	if s.ScheduleItems != nil {
+		for _, item := range s.ScheduleItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetScheduleResponseBodyScheduleInformationScheduleItems struct {
@@ -179,7 +197,17 @@ func (s *GetScheduleResponseBodyScheduleInformationScheduleItems) SetStatus(v st
 }
 
 func (s *GetScheduleResponseBodyScheduleInformationScheduleItems) Validate() error {
-	return dara.Validate(s)
+	if s.End != nil {
+		if err := s.End.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Start != nil {
+		if err := s.Start.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetScheduleResponseBodyScheduleInformationScheduleItemsEnd struct {

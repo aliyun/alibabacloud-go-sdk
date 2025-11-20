@@ -47,7 +47,12 @@ func (s *UpdateSubscribedCalendarsHeaders) SetAccountContext(v *UpdateSubscribed
 }
 
 func (s *UpdateSubscribedCalendarsHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateSubscribedCalendarsHeadersAccountContext struct {

@@ -119,7 +119,12 @@ func (s *SwitchMainOrgResponseBody) SetSuccess(v bool) *SwitchMainOrgResponseBod
 }
 
 func (s *SwitchMainOrgResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SwitchMainOrgResponseBodyContent struct {

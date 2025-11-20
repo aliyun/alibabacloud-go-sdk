@@ -142,7 +142,12 @@ func (s *UpdateTodoTaskRequest) SetTaskId(v string) *UpdateTodoTaskRequest {
 }
 
 func (s *UpdateTodoTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateTodoTaskRequestTenantContext struct {

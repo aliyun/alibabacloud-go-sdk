@@ -67,7 +67,16 @@ func (s *QueryOrgTodoTasksResponseBody) SetTodoCards(v []*QueryOrgTodoTasksRespo
 }
 
 func (s *QueryOrgTodoTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TodoCards != nil {
+		for _, item := range s.TodoCards {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryOrgTodoTasksResponseBodyTodoCards struct {
@@ -222,7 +231,12 @@ func (s *QueryOrgTodoTasksResponseBodyTodoCards) SetTaskId(v string) *QueryOrgTo
 }
 
 func (s *QueryOrgTodoTasksResponseBodyTodoCards) Validate() error {
-	return dara.Validate(s)
+	if s.DetailUrl != nil {
+		if err := s.DetailUrl.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryOrgTodoTasksResponseBodyTodoCardsDetailUrl struct {

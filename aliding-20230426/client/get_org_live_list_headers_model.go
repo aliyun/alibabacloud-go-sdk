@@ -47,7 +47,12 @@ func (s *GetOrgLiveListHeaders) SetAccountContext(v *GetOrgLiveListHeadersAccoun
 }
 
 func (s *GetOrgLiveListHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOrgLiveListHeadersAccountContext struct {

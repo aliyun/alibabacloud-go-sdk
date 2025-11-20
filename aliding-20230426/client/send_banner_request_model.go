@@ -77,7 +77,12 @@ func (s *SendBannerRequest) SetTenantContext(v *SendBannerRequestTenantContext) 
 }
 
 func (s *SendBannerRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SendBannerRequestTenantContext struct {

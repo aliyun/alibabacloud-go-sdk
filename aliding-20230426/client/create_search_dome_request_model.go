@@ -107,7 +107,12 @@ func (s *CreateSearchDomeRequest) SetUserIdList(v []*string) *CreateSearchDomeRe
 }
 
 func (s *CreateSearchDomeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSearchDomeRequestTenantContext struct {

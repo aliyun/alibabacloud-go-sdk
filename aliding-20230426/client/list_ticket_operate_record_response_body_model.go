@@ -80,7 +80,16 @@ func (s *ListTicketOperateRecordResponseBody) SetVendorType(v string) *ListTicke
 }
 
 func (s *ListTicketOperateRecordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTicketOperateRecordResponseBodyRecords struct {
@@ -180,7 +189,17 @@ func (s *ListTicketOperateRecordResponseBodyRecords) SetTicketMemo(v *ListTicket
 }
 
 func (s *ListTicketOperateRecordResponseBodyRecords) Validate() error {
-	return dara.Validate(s)
+	if s.Operator != nil {
+		if err := s.Operator.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TicketMemo != nil {
+		if err := s.TicketMemo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTicketOperateRecordResponseBodyRecordsOperator struct {
@@ -259,7 +278,16 @@ func (s *ListTicketOperateRecordResponseBodyRecordsTicketMemo) SetMemo(v string)
 }
 
 func (s *ListTicketOperateRecordResponseBodyRecordsTicketMemo) Validate() error {
-	return dara.Validate(s)
+	if s.Attachments != nil {
+		for _, item := range s.Attachments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTicketOperateRecordResponseBodyRecordsTicketMemoAttachments struct {

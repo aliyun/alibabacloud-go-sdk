@@ -59,5 +59,10 @@ func (s *ListFormRemarksResponse) SetBody(v *ListFormRemarksResponseBody) *ListF
 }
 
 func (s *ListFormRemarksResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

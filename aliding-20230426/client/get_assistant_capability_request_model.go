@@ -143,7 +143,16 @@ func (s *GetAssistantCapabilityRequest) SetTimeout(v int32) *GetAssistantCapabil
 }
 
 func (s *GetAssistantCapabilityRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		for _, item := range s.Messages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAssistantCapabilityRequestMessages struct {
@@ -207,7 +216,12 @@ func (s *GetAssistantCapabilityRequestMessages) SetRole(v string) *GetAssistantC
 }
 
 func (s *GetAssistantCapabilityRequestMessages) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAssistantCapabilityRequestMessagesContent struct {
@@ -300,7 +314,37 @@ func (s *GetAssistantCapabilityRequestMessagesContent) SetType(v string) *GetAss
 }
 
 func (s *GetAssistantCapabilityRequestMessagesContent) Validate() error {
-	return dara.Validate(s)
+	if s.CardCallback != nil {
+		if err := s.CardCallback.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DingCard != nil {
+		if err := s.DingCard.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DingNormalCard != nil {
+		if err := s.DingNormalCard.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Markdown != nil {
+		if err := s.Markdown.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructView != nil {
+		if err := s.StructView.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Text != nil {
+		if err := s.Text.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAssistantCapabilityRequestMessagesContentCardCallback struct {
@@ -494,7 +538,26 @@ func (s *GetAssistantCapabilityRequestMessagesContentDingNormalCard) SetPrivateD
 }
 
 func (s *GetAssistantCapabilityRequestMessagesContentDingNormalCard) Validate() error {
-	return dara.Validate(s)
+	if s.CardData != nil {
+		if err := s.CardData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CardUpdateOptions != nil {
+		if err := s.CardUpdateOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DynamicDataSourceConfigs != nil {
+		for _, item := range s.DynamicDataSourceConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAssistantCapabilityRequestMessagesContentDingNormalCardCardData struct {
@@ -614,7 +677,12 @@ func (s *GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSo
 }
 
 func (s *GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.PullConfig != nil {
+		if err := s.PullConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig struct {
@@ -723,7 +791,16 @@ func (s *GetAssistantCapabilityRequestMessagesContentStructView) SetParts(v []*G
 }
 
 func (s *GetAssistantCapabilityRequestMessagesContentStructView) Validate() error {
-	return dara.Validate(s)
+	if s.Parts != nil {
+		for _, item := range s.Parts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAssistantCapabilityRequestMessagesContentStructViewParts struct {
@@ -864,7 +941,32 @@ func (s *GetAssistantCapabilityRequestMessagesContentStructViewParts) SetType(v 
 }
 
 func (s *GetAssistantCapabilityRequestMessagesContentStructViewParts) Validate() error {
-	return dara.Validate(s)
+	if s.DataPart != nil {
+		if err := s.DataPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReasonPart != nil {
+		if err := s.ReasonPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RecommendPart != nil {
+		if err := s.RecommendPart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReferencePart != nil {
+		if err := s.ReferencePart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextPart != nil {
+		if err := s.TextPart.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAssistantCapabilityRequestMessagesContentStructViewPartsDataPart struct {
@@ -942,7 +1044,16 @@ func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPar
 }
 
 func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPart) Validate() error {
-	return dara.Validate(s)
+	if s.Recommends != nil {
+		for _, item := range s.Recommends {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPartRecommends struct {
@@ -1012,7 +1123,16 @@ func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePar
 }
 
 func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePart) Validate() error {
-	return dara.Validate(s)
+	if s.References != nil {
+		for _, item := range s.References {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences struct {

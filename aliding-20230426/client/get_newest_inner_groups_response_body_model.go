@@ -80,7 +80,16 @@ func (s *GetNewestInnerGroupsResponseBody) SetVendorType(v string) *GetNewestInn
 }
 
 func (s *GetNewestInnerGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GroupInfos != nil {
+		for _, item := range s.GroupInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetNewestInnerGroupsResponseBodyGroupInfos struct {

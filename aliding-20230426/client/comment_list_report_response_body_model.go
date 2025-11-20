@@ -82,7 +82,16 @@ func (s *CommentListReportResponseBody) SetRequestId(v string) *CommentListRepor
 }
 
 func (s *CommentListReportResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Comments != nil {
+		for _, item := range s.Comments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CommentListReportResponseBodyComments struct {

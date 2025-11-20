@@ -59,5 +59,10 @@ func (s *CreateSearchDomeResponse) SetBody(v *CreateSearchDomeResponseBody) *Cre
 }
 
 func (s *CreateSearchDomeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

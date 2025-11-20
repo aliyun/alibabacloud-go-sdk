@@ -48,7 +48,12 @@ func (s *AddDriveSpaceHeaders) SetAccountContext(v *AddDriveSpaceHeadersAccountC
 }
 
 func (s *AddDriveSpaceHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddDriveSpaceHeadersAccountContext struct {

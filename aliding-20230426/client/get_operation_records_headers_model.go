@@ -47,7 +47,12 @@ func (s *GetOperationRecordsHeaders) SetAccountContext(v *GetOperationRecordsHea
 }
 
 func (s *GetOperationRecordsHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOperationRecordsHeadersAccountContext struct {

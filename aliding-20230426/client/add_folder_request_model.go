@@ -94,7 +94,17 @@ func (s *AddFolderRequest) SetTenantContext(v *AddFolderRequestTenantContext) *A
 }
 
 func (s *AddFolderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Option != nil {
+		if err := s.Option.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddFolderRequestOption struct {
@@ -132,7 +142,16 @@ func (s *AddFolderRequestOption) SetConflictStrategy(v string) *AddFolderRequest
 }
 
 func (s *AddFolderRequestOption) Validate() error {
-	return dara.Validate(s)
+	if s.AppProperties != nil {
+		for _, item := range s.AppProperties {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddFolderRequestOptionAppProperties struct {

@@ -59,5 +59,10 @@ func (s *UpdateScheduleConferenceResponse) SetBody(v *UpdateScheduleConferenceRe
 }
 
 func (s *UpdateScheduleConferenceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

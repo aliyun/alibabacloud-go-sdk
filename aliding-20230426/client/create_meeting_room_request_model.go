@@ -170,7 +170,22 @@ func (s *CreateMeetingRoomRequest) SetTenantContext(v *CreateMeetingRoomRequestT
 }
 
 func (s *CreateMeetingRoomRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ReservationAuthority != nil {
+		if err := s.ReservationAuthority.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RoomLocation != nil {
+		if err := s.RoomLocation.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMeetingRoomRequestReservationAuthority struct {
@@ -195,7 +210,16 @@ func (s *CreateMeetingRoomRequestReservationAuthority) SetAuthorizedMembers(v []
 }
 
 func (s *CreateMeetingRoomRequestReservationAuthority) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizedMembers != nil {
+		for _, item := range s.AuthorizedMembers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateMeetingRoomRequestReservationAuthorityAuthorizedMembers struct {

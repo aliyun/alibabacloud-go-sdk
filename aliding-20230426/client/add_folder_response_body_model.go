@@ -80,7 +80,12 @@ func (s *AddFolderResponseBody) SetVendorType(v string) *AddFolderResponseBody {
 }
 
 func (s *AddFolderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Dentry != nil {
+		if err := s.Dentry.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddFolderResponseBodyDentry struct {
@@ -336,7 +341,12 @@ func (s *AddFolderResponseBodyDentry) SetVersion(v int64) *AddFolderResponseBody
 }
 
 func (s *AddFolderResponseBodyDentry) Validate() error {
-	return dara.Validate(s)
+	if s.Properties != nil {
+		if err := s.Properties.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddFolderResponseBodyDentryProperties struct {

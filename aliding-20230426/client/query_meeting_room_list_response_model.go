@@ -59,5 +59,10 @@ func (s *QueryMeetingRoomListResponse) SetBody(v *QueryMeetingRoomListResponseBo
 }
 
 func (s *QueryMeetingRoomListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

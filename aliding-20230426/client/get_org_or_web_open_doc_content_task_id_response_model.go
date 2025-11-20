@@ -59,5 +59,10 @@ func (s *GetOrgOrWebOpenDocContentTaskIdResponse) SetBody(v *GetOrgOrWebOpenDocC
 }
 
 func (s *GetOrgOrWebOpenDocContentTaskIdResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

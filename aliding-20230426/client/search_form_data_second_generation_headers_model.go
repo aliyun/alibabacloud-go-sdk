@@ -47,7 +47,12 @@ func (s *SearchFormDataSecondGenerationHeaders) SetAccountContext(v *SearchFormD
 }
 
 func (s *SearchFormDataSecondGenerationHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchFormDataSecondGenerationHeadersAccountContext struct {

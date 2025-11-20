@@ -86,7 +86,12 @@ func (s *QueryCloudRecordVideoPlayInfoRequest) SetTenantContext(v *QueryCloudRec
 }
 
 func (s *QueryCloudRecordVideoPlayInfoRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCloudRecordVideoPlayInfoRequestTenantContext struct {

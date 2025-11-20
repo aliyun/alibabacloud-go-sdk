@@ -94,7 +94,16 @@ func (s *AddAttendeeRequest) SetPushNotification(v bool) *AddAttendeeRequest {
 }
 
 func (s *AddAttendeeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AttendeesToAdd != nil {
+		for _, item := range s.AttendeesToAdd {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddAttendeeRequestAttendeesToAdd struct {

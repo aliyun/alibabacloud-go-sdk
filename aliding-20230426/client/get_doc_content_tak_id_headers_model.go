@@ -47,7 +47,12 @@ func (s *GetDocContentTakIdHeaders) SetAccountContext(v *GetDocContentTakIdHeade
 }
 
 func (s *GetDocContentTakIdHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDocContentTakIdHeadersAccountContext struct {

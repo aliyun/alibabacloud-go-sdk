@@ -47,7 +47,12 @@ func (s *StopCloudRecordHeaders) SetAccountContext(v *StopCloudRecordHeadersAcco
 }
 
 func (s *StopCloudRecordHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StopCloudRecordHeadersAccountContext struct {

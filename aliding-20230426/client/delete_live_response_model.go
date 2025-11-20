@@ -59,5 +59,10 @@ func (s *DeleteLiveResponse) SetBody(v *DeleteLiveResponseBody) *DeleteLiveRespo
 }
 
 func (s *DeleteLiveResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

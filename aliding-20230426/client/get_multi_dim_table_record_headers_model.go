@@ -47,7 +47,12 @@ func (s *GetMultiDimTableRecordHeaders) SetAccountContext(v *GetMultiDimTableRec
 }
 
 func (s *GetMultiDimTableRecordHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMultiDimTableRecordHeadersAccountContext struct {

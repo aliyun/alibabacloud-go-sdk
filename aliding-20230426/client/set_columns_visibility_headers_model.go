@@ -47,7 +47,12 @@ func (s *SetColumnsVisibilityHeaders) SetAccountContext(v *SetColumnsVisibilityH
 }
 
 func (s *SetColumnsVisibilityHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AccountContext != nil {
+		if err := s.AccountContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetColumnsVisibilityHeadersAccountContext struct {

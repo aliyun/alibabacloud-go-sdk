@@ -110,7 +110,16 @@ func (s *QueryMinutesTextResponseBody) SetVendorType(v string) *QueryMinutesText
 }
 
 func (s *QueryMinutesTextResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ParagraphList != nil {
+		for _, item := range s.ParagraphList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMinutesTextResponseBodyParagraphList struct {
@@ -229,7 +238,16 @@ func (s *QueryMinutesTextResponseBodyParagraphList) SetUserId(v string) *QueryMi
 }
 
 func (s *QueryMinutesTextResponseBodyParagraphList) Validate() error {
-	return dara.Validate(s)
+	if s.SentenceList != nil {
+		for _, item := range s.SentenceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMinutesTextResponseBodyParagraphListSentenceList struct {
@@ -309,7 +327,16 @@ func (s *QueryMinutesTextResponseBodyParagraphListSentenceList) SetWordList(v []
 }
 
 func (s *QueryMinutesTextResponseBodyParagraphListSentenceList) Validate() error {
-	return dara.Validate(s)
+	if s.WordList != nil {
+		for _, item := range s.WordList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMinutesTextResponseBodyParagraphListSentenceListWordList struct {

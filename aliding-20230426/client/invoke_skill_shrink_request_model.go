@@ -15,6 +15,8 @@ type iInvokeSkillShrinkRequest interface {
 	GetSkillId() *string
 	SetStream(v bool) *InvokeSkillShrinkRequest
 	GetStream() *bool
+	SetSourceIdOfAssistantId(v string) *InvokeSkillShrinkRequest
+	GetSourceIdOfAssistantId() *string
 }
 
 type InvokeSkillShrinkRequest struct {
@@ -27,8 +29,9 @@ type InvokeSkillShrinkRequest struct {
 	// example:
 	//
 	// a1d033dd-xxxx-49cf-b49b-2068081bb551
-	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
-	Stream  *bool   `json:"Stream,omitempty" xml:"Stream,omitempty"`
+	SkillId               *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	Stream                *bool   `json:"Stream,omitempty" xml:"Stream,omitempty"`
+	SourceIdOfAssistantId *string `json:"sourceIdOfAssistantId,omitempty" xml:"sourceIdOfAssistantId,omitempty"`
 }
 
 func (s InvokeSkillShrinkRequest) String() string {
@@ -51,6 +54,10 @@ func (s *InvokeSkillShrinkRequest) GetStream() *bool {
 	return s.Stream
 }
 
+func (s *InvokeSkillShrinkRequest) GetSourceIdOfAssistantId() *string {
+	return s.SourceIdOfAssistantId
+}
+
 func (s *InvokeSkillShrinkRequest) SetParamsShrink(v string) *InvokeSkillShrinkRequest {
 	s.ParamsShrink = &v
 	return s
@@ -63,6 +70,11 @@ func (s *InvokeSkillShrinkRequest) SetSkillId(v string) *InvokeSkillShrinkReques
 
 func (s *InvokeSkillShrinkRequest) SetStream(v bool) *InvokeSkillShrinkRequest {
 	s.Stream = &v
+	return s
+}
+
+func (s *InvokeSkillShrinkRequest) SetSourceIdOfAssistantId(v string) *InvokeSkillShrinkRequest {
+	s.SourceIdOfAssistantId = &v
 	return s
 }
 

@@ -155,7 +155,22 @@ func (s *CreateTicketRequest) SetTitle(v string) *CreateTicketRequest {
 }
 
 func (s *CreateTicketRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Notify != nil {
+		if err := s.Notify.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SceneContext != nil {
+		if err := s.SceneContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantContext != nil {
+		if err := s.TenantContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateTicketRequestNotify struct {
@@ -264,7 +279,16 @@ func (s *CreateTicketRequestSceneContext) SetTopicId(v string) *CreateTicketRequ
 }
 
 func (s *CreateTicketRequestSceneContext) Validate() error {
-	return dara.Validate(s)
+	if s.GroupMsgs != nil {
+		for _, item := range s.GroupMsgs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTicketRequestSceneContextGroupMsgs struct {

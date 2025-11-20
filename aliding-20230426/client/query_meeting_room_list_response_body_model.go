@@ -82,7 +82,16 @@ func (s *QueryMeetingRoomListResponseBody) SetResult(v []*QueryMeetingRoomListRe
 }
 
 func (s *QueryMeetingRoomListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMeetingRoomListResponseBodyResult struct {
@@ -231,7 +240,26 @@ func (s *QueryMeetingRoomListResponseBodyResult) SetRoomStatus(v int32) *QueryMe
 }
 
 func (s *QueryMeetingRoomListResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.RoomGroup != nil {
+		if err := s.RoomGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RoomLabels != nil {
+		for _, item := range s.RoomLabels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RoomLocation != nil {
+		if err := s.RoomLocation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMeetingRoomListResponseBodyResultRoomGroup struct {

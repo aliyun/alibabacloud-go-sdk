@@ -59,5 +59,10 @@ func (s *SearchInnerGroupsResponse) SetBody(v *SearchInnerGroupsResponseBody) *S
 }
 
 func (s *SearchInnerGroupsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

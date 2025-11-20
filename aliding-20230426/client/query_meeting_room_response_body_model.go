@@ -82,7 +82,12 @@ func (s *QueryMeetingRoomResponseBody) SetVendorType(v string) *QueryMeetingRoom
 }
 
 func (s *QueryMeetingRoomResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMeetingRoomResponseBodyResult struct {
@@ -277,7 +282,31 @@ func (s *QueryMeetingRoomResponseBodyResult) SetRoomUnionId(v string) *QueryMeet
 }
 
 func (s *QueryMeetingRoomResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.ReservationAuthority != nil {
+		if err := s.ReservationAuthority.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RoomGroup != nil {
+		if err := s.RoomGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RoomLabels != nil {
+		for _, item := range s.RoomLabels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RoomLocation != nil {
+		if err := s.RoomLocation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMeetingRoomResponseBodyResultReservationAuthority struct {
@@ -302,7 +331,16 @@ func (s *QueryMeetingRoomResponseBodyResultReservationAuthority) SetAuthorizedMe
 }
 
 func (s *QueryMeetingRoomResponseBodyResultReservationAuthority) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizedMembers != nil {
+		for _, item := range s.AuthorizedMembers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMeetingRoomResponseBodyResultReservationAuthorityAuthorizedMembers struct {
