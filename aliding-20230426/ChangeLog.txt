@@ -1,3 +1,6 @@
+2025-11-20 Version: v2.45.1
+- Generated golang 2023-04-26 for aliding.
+
 2025-11-20 Version: v2.45.0
 - Support API DocBlocksDelete.
 - Support API DocBlocksModify.
