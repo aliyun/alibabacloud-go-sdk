@@ -2380,6 +2380,94 @@ func (client *Client) CopyDentryWithContext(ctx context.Context, tmpReq *CopyDen
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过NodeId创建知识库节点副本
+//
+// @param tmpReq - CopyDentryByNodeIdRequest
+//
+// @param tmpHeader - CopyDentryByNodeIdHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CopyDentryByNodeIdResponse
+func (client *Client) CopyDentryByNodeIdWithContext(ctx context.Context, tmpReq *CopyDentryByNodeIdRequest, tmpHeader *CopyDentryByNodeIdHeaders, runtime *dara.RuntimeOptions) (_result *CopyDentryByNodeIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CopyDentryByNodeIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &CopyDentryByNodeIdShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DentryUuid) {
+		body["DentryUuid"] = request.DentryUuid
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !dara.IsNil(request.ToNextNodeId) {
+		body["ToNextNodeId"] = request.ToNextNodeId
+	}
+
+	if !dara.IsNil(request.ToParentNodeId) {
+		body["ToParentNodeId"] = request.ToParentNodeId
+	}
+
+	if !dara.IsNil(request.ToPrevNodeId) {
+		body["ToPrevNodeId"] = request.ToPrevNodeId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CopyDentryByNodeId"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v2/documents/copyDentryByNodeId"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CopyDentryByNodeIdResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param tmpReq - CreateAlidingAssistantRequest
 //
 // @param tmpHeader - CreateAlidingAssistantHeaders
