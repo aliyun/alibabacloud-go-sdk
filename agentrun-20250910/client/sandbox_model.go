@@ -9,8 +9,12 @@ type iSandbox interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetSandboxIdleTTLInSeconds(v int32) *Sandbox
+	GetSandboxIdleTTLInSeconds() *int32
 	SetCreatedAt(v string) *Sandbox
 	GetCreatedAt() *string
+	SetEndedAt(v string) *Sandbox
+	GetEndedAt() *string
 	SetLastUpdatedAt(v string) *Sandbox
 	GetLastUpdatedAt() *string
 	SetMetadata(v map[string]interface{}) *Sandbox
@@ -30,10 +34,12 @@ type iSandbox interface {
 }
 
 type Sandbox struct {
+	SandboxIdleTTLInSeconds *int32 `json:"SandboxIdleTTLInSeconds,omitempty" xml:"SandboxIdleTTLInSeconds,omitempty"`
 	// 沙箱创建时间
 	//
 	// This parameter is required.
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	EndedAt   *string `json:"endedAt,omitempty" xml:"endedAt,omitempty"`
 	// 最后更新时间
 	LastUpdatedAt *string                `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
 	Metadata      map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
@@ -57,8 +63,16 @@ func (s Sandbox) GoString() string {
 	return s.String()
 }
 
+func (s *Sandbox) GetSandboxIdleTTLInSeconds() *int32 {
+	return s.SandboxIdleTTLInSeconds
+}
+
 func (s *Sandbox) GetCreatedAt() *string {
 	return s.CreatedAt
+}
+
+func (s *Sandbox) GetEndedAt() *string {
+	return s.EndedAt
 }
 
 func (s *Sandbox) GetLastUpdatedAt() *string {
@@ -93,8 +107,18 @@ func (s *Sandbox) GetTemplateName() *string {
 	return s.TemplateName
 }
 
+func (s *Sandbox) SetSandboxIdleTTLInSeconds(v int32) *Sandbox {
+	s.SandboxIdleTTLInSeconds = &v
+	return s
+}
+
 func (s *Sandbox) SetCreatedAt(v string) *Sandbox {
 	s.CreatedAt = &v
+	return s
+}
+
+func (s *Sandbox) SetEndedAt(v string) *Sandbox {
+	s.EndedAt = &v
 	return s
 }
 
