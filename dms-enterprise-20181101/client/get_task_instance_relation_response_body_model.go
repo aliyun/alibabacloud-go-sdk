@@ -108,7 +108,12 @@ func (s *GetTaskInstanceRelationResponseBody) SetSuccess(v bool) *GetTaskInstanc
 }
 
 func (s *GetTaskInstanceRelationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NodeList != nil {
+		if err := s.NodeList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTaskInstanceRelationResponseBodyNodeList struct {
@@ -133,7 +138,16 @@ func (s *GetTaskInstanceRelationResponseBodyNodeList) SetNode(v []*GetTaskInstan
 }
 
 func (s *GetTaskInstanceRelationResponseBodyNodeList) Validate() error {
-	return dara.Validate(s)
+	if s.Node != nil {
+		for _, item := range s.Node {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTaskInstanceRelationResponseBodyNodeListNode struct {

@@ -59,5 +59,10 @@ func (s *AddTaskFlowEdgesResponse) SetBody(v *AddTaskFlowEdgesResponseBody) *Add
 }
 
 func (s *AddTaskFlowEdgesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

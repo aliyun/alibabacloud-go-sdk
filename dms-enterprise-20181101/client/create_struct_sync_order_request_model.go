@@ -106,7 +106,12 @@ func (s *CreateStructSyncOrderRequest) SetTid(v int64) *CreateStructSyncOrderReq
 }
 
 func (s *CreateStructSyncOrderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Param != nil {
+		if err := s.Param.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateStructSyncOrderRequestParam struct {
@@ -177,7 +182,26 @@ func (s *CreateStructSyncOrderRequestParam) SetTarget(v *CreateStructSyncOrderRe
 }
 
 func (s *CreateStructSyncOrderRequestParam) Validate() error {
-	return dara.Validate(s)
+	if s.Source != nil {
+		if err := s.Source.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TableInfoList != nil {
+		for _, item := range s.TableInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateStructSyncOrderRequestParamSource struct {

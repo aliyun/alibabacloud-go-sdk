@@ -104,7 +104,12 @@ func (s *GetOrderBaseInfoResponseBody) SetSuccess(v bool) *GetOrderBaseInfoRespo
 }
 
 func (s *GetOrderBaseInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OrderBaseInfo != nil {
+		if err := s.OrderBaseInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOrderBaseInfoResponseBodyOrderBaseInfo struct {
@@ -350,7 +355,17 @@ func (s *GetOrderBaseInfoResponseBodyOrderBaseInfo) SetWorkflowStatusDesc(v stri
 }
 
 func (s *GetOrderBaseInfoResponseBodyOrderBaseInfo) Validate() error {
-	return dara.Validate(s)
+	if s.RelatedUserList != nil {
+		if err := s.RelatedUserList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RelatedUserNickList != nil {
+		if err := s.RelatedUserNickList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOrderBaseInfoResponseBodyOrderBaseInfoRelatedUserList struct {

@@ -22,19 +22,32 @@ type iCreateMetaCategoryResponseBody interface {
 }
 
 type CreateMetaCategoryResponseBody struct {
+	// The information about the category.
 	Category *MetaCategory `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 207176D7-A9B3-55CE-A9DA-14E223A31913
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -95,5 +108,10 @@ func (s *CreateMetaCategoryResponseBody) SetSuccess(v bool) *CreateMetaCategoryR
 }
 
 func (s *CreateMetaCategoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Category != nil {
+		if err := s.Category.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

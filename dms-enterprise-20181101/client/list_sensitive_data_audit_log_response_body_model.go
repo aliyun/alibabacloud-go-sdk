@@ -125,7 +125,16 @@ func (s *ListSensitiveDataAuditLogResponseBody) SetTotalCount(v int64) *ListSens
 }
 
 func (s *ListSensitiveDataAuditLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SensitiveDataAuditLogList != nil {
+		for _, item := range s.SensitiveDataAuditLogList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList struct {
@@ -260,7 +269,16 @@ func (s *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList) SetUser
 }
 
 func (s *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList) Validate() error {
-	return dara.Validate(s)
+	if s.SensitiveDataLog != nil {
+		for _, item := range s.SensitiveDataLog {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogListSensitiveDataLog struct {

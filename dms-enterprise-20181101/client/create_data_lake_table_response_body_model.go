@@ -22,23 +22,36 @@ type iCreateDataLakeTableResponseBody interface {
 }
 
 type CreateDataLakeTableResponseBody struct {
+	// The error code returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request. You can use the request ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 7FAD400F-7A5C-4193-8F9A-39D86C4F0231
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
-	Success *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
-	Table   *DLTable `json:"Table,omitempty" xml:"Table,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The information about the table.
+	Table *DLTable `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s CreateDataLakeTableResponseBody) String() string {
@@ -95,5 +108,10 @@ func (s *CreateDataLakeTableResponseBody) SetTable(v *DLTable) *CreateDataLakeTa
 }
 
 func (s *CreateDataLakeTableResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Table != nil {
+		if err := s.Table.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

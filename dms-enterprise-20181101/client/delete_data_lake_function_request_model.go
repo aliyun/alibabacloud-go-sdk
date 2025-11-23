@@ -24,34 +24,48 @@ type iDeleteDataLakeFunctionRequest interface {
 }
 
 type DeleteDataLakeFunctionRequest struct {
+	// The name of the data directory.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hive
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The region where the data lake resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// The database name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// default
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The function name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my_funciton
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	// The ID of the tenant.
+	//
+	// >  To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
+	//
 	// example:
 	//
 	// 3***
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 12****

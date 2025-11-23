@@ -116,7 +116,12 @@ func (s *CreateDataImportOrderRequest) SetTid(v int64) *CreateDataImportOrderReq
 }
 
 func (s *CreateDataImportOrderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Param != nil {
+		if err := s.Param.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataImportOrderRequestParam struct {
@@ -382,7 +387,16 @@ func (s *CreateDataImportOrderRequestParam) SetTableName(v string) *CreateDataIm
 }
 
 func (s *CreateDataImportOrderRequestParam) Validate() error {
-	return dara.Validate(s)
+	if s.DbItemList != nil {
+		for _, item := range s.DbItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDataImportOrderRequestParamDbItemList struct {

@@ -22,11 +22,16 @@ type iAnswerSqlSyntaxByMetaAgentResponseBody interface {
 }
 
 type AnswerSqlSyntaxByMetaAgentResponseBody struct {
+	// The data returned.
 	Data *AnswerSqlSyntaxByMetaAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
@@ -37,6 +42,12 @@ type AnswerSqlSyntaxByMetaAgentResponseBody struct {
 	//
 	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -97,14 +108,23 @@ func (s *AnswerSqlSyntaxByMetaAgentResponseBody) SetSuccess(v bool) *AnswerSqlSy
 }
 
 func (s *AnswerSqlSyntaxByMetaAgentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AnswerSqlSyntaxByMetaAgentResponseBodyData struct {
+	// The answer to the question.
+	//
 	// example:
 	//
 	// mysql数据库类型下...
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// f63a6eed-0e3c-4564-8533-b1295db8d6ff

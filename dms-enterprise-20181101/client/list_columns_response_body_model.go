@@ -108,7 +108,12 @@ func (s *ListColumnsResponseBody) SetSuccess(v bool) *ListColumnsResponseBody {
 }
 
 func (s *ListColumnsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnList != nil {
+		if err := s.ColumnList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListColumnsResponseBodyColumnList struct {
@@ -133,7 +138,16 @@ func (s *ListColumnsResponseBodyColumnList) SetColumn(v []*ListColumnsResponseBo
 }
 
 func (s *ListColumnsResponseBodyColumnList) Validate() error {
-	return dara.Validate(s)
+	if s.Column != nil {
+		for _, item := range s.Column {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListColumnsResponseBodyColumnListColumn struct {

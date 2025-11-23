@@ -125,7 +125,16 @@ func (s *ListSQLReviewOriginSQLResponseBody) SetTotalCount(v int32) *ListSQLRevi
 }
 
 func (s *ListSQLReviewOriginSQLResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OriginSQLList != nil {
+		for _, item := range s.OriginSQLList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSQLReviewOriginSQLResponseBodyOriginSQLList struct {

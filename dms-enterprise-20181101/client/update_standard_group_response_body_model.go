@@ -108,7 +108,12 @@ func (s *UpdateStandardGroupResponseBody) SetSuccess(v bool) *UpdateStandardGrou
 }
 
 func (s *UpdateStandardGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StandardGroup != nil {
+		if err := s.StandardGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateStandardGroupResponseBodyStandardGroup struct {

@@ -125,7 +125,12 @@ func (s *SearchDatabaseResponseBody) SetTotalCount(v int64) *SearchDatabaseRespo
 }
 
 func (s *SearchDatabaseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SearchDatabaseList != nil {
+		if err := s.SearchDatabaseList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchDatabaseResponseBodySearchDatabaseList struct {
@@ -150,7 +155,16 @@ func (s *SearchDatabaseResponseBodySearchDatabaseList) SetSearchDatabase(v []*Se
 }
 
 func (s *SearchDatabaseResponseBodySearchDatabaseList) Validate() error {
-	return dara.Validate(s)
+	if s.SearchDatabase != nil {
+		for _, item := range s.SearchDatabase {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchDatabaseResponseBodySearchDatabaseListSearchDatabase struct {
@@ -403,7 +417,17 @@ func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetSid(v st
 }
 
 func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) Validate() error {
-	return dara.Validate(s)
+	if s.OwnerIdList != nil {
+		if err := s.OwnerIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OwnerNameList != nil {
+		if err := s.OwnerNameList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList struct {

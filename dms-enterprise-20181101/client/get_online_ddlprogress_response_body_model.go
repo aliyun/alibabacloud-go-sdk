@@ -108,7 +108,12 @@ func (s *GetOnlineDDLProgressResponseBody) SetSuccess(v bool) *GetOnlineDDLProgr
 }
 
 func (s *GetOnlineDDLProgressResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OnlineDDLTaskDetail != nil {
+		if err := s.OnlineDDLTaskDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail struct {

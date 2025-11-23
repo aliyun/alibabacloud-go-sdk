@@ -108,7 +108,12 @@ func (s *GetTableDesignProjectInfoResponseBody) SetSuccess(v bool) *GetTableDesi
 }
 
 func (s *GetTableDesignProjectInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProjectInfo != nil {
+		if err := s.ProjectInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTableDesignProjectInfoResponseBodyProjectInfo struct {
@@ -260,7 +265,12 @@ func (s *GetTableDesignProjectInfoResponseBodyProjectInfo) SetTitle(v string) *G
 }
 
 func (s *GetTableDesignProjectInfoResponseBodyProjectInfo) Validate() error {
-	return dara.Validate(s)
+	if s.BaseDatabase != nil {
+		if err := s.BaseDatabase.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase struct {

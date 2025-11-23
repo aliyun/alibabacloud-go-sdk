@@ -108,7 +108,12 @@ func (s *CreateOrderResponseBody) SetSuccess(v bool) *CreateOrderResponseBody {
 }
 
 func (s *CreateOrderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CreateOrderResult != nil {
+		if err := s.CreateOrderResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOrderResponseBodyCreateOrderResult struct {

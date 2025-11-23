@@ -16,12 +16,16 @@ type iGetDbExportDownloadURLRequest interface {
 }
 
 type GetDbExportDownloadURLRequest struct {
+	// The ticket ID. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ticket ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 73****
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
+	//
 	// example:
 	//
 	// 3***

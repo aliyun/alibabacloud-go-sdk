@@ -87,7 +87,12 @@ func (s *CreateSQLReviewOrderRequest) SetTid(v int64) *CreateSQLReviewOrderReque
 }
 
 func (s *CreateSQLReviewOrderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Param != nil {
+		if err := s.Param.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSQLReviewOrderRequestParam struct {

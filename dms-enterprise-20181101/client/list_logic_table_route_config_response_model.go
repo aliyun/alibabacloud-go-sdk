@@ -59,5 +59,10 @@ func (s *ListLogicTableRouteConfigResponse) SetBody(v *ListLogicTableRouteConfig
 }
 
 func (s *ListLogicTableRouteConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -101,7 +101,16 @@ func (s *AddLhMembersRequest) SetTid(v int64) *AddLhMembersRequest {
 }
 
 func (s *AddLhMembersRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Members != nil {
+		for _, item := range s.Members {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddLhMembersRequestMembers struct {

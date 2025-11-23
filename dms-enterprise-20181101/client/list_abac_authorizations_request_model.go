@@ -22,22 +22,40 @@ type iListAbacAuthorizationsRequest interface {
 }
 
 type ListAbacAuthorizationsRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on each page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the policy.
+	//
 	// example:
 	//
 	// 12****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The type of the policy. The value can be custom or system.
+	//
+	// Valid values:
+	//
+	// 	- USER_DEFINE
+	//
+	// 	- SYSTEM
+	//
 	// example:
 	//
 	// USER_DEFINE
 	PolicySource *string `json:"PolicySource,omitempty" xml:"PolicySource,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
+	//
 	// example:
 	//
 	// 3***

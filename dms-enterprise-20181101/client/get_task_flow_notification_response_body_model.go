@@ -108,7 +108,12 @@ func (s *GetTaskFlowNotificationResponseBody) SetSuccess(v bool) *GetTaskFlowNot
 }
 
 func (s *GetTaskFlowNotificationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTaskFlowNotificationResponseBodyNotification struct {

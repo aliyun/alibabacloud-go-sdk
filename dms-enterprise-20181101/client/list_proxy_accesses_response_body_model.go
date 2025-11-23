@@ -108,7 +108,16 @@ func (s *ListProxyAccessesResponseBody) SetSuccess(v bool) *ListProxyAccessesRes
 }
 
 func (s *ListProxyAccessesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProxyAccessList != nil {
+		for _, item := range s.ProxyAccessList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProxyAccessesResponseBodyProxyAccessList struct {

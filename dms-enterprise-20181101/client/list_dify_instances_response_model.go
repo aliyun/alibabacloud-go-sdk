@@ -59,5 +59,10 @@ func (s *ListDifyInstancesResponse) SetBody(v *ListDifyInstancesResponseBody) *L
 }
 
 func (s *ListDifyInstancesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

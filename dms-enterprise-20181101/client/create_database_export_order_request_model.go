@@ -123,7 +123,12 @@ func (s *CreateDatabaseExportOrderRequest) SetTid(v int64) *CreateDatabaseExport
 }
 
 func (s *CreateDatabaseExportOrderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PluginParam != nil {
+		if err := s.PluginParam.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDatabaseExportOrderRequestPluginParam struct {
@@ -240,7 +245,12 @@ func (s *CreateDatabaseExportOrderRequestPluginParam) SetSearchName(v string) *C
 }
 
 func (s *CreateDatabaseExportOrderRequestPluginParam) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDatabaseExportOrderRequestPluginParamConfig struct {

@@ -18,16 +18,22 @@ type iCreateMetaCategoryRequest interface {
 }
 
 type CreateMetaCategoryRequest struct {
+	// The name of the category.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// default
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the parent category. The new category is created under this parent category. If this value is left empty, the new category is of the first level.
+	//
 	// example:
 	//
 	// 30000322682
 	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
+	//
 	// example:
 	//
 	// 3***

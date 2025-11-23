@@ -59,5 +59,10 @@ func (s *AddAuthorityTemplateItemsResponse) SetBody(v *AddAuthorityTemplateItems
 }
 
 func (s *AddAuthorityTemplateItemsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

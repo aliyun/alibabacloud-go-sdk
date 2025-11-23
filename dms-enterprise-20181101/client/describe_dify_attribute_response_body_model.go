@@ -125,14 +125,22 @@ func (s *DescribeDifyAttributeResponseBody) SetSuccess(v bool) *DescribeDifyAttr
 }
 
 func (s *DescribeDifyAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Root != nil {
+		if err := s.Root.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDifyAttributeResponseBodyRoot struct {
 	// example:
 	//
 	// 92748163-af62-4ca4-ad85-1****
-	AppUuid *string `json:"AppUuid,omitempty" xml:"AppUuid,omitempty"`
+	AppUuid           *string `json:"AppUuid,omitempty" xml:"AppUuid,omitempty"`
+	BillingInstanceId *string `json:"BillingInstanceId,omitempty" xml:"BillingInstanceId,omitempty"`
+	ChargeType        *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ExpireTime        *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// example:
 	//
 	// 1
@@ -148,7 +156,8 @@ type DescribeDifyAttributeResponseBodyRoot struct {
 	// example:
 	//
 	// DEPLOYED
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// example:
 	//
 	// vsw-bp1tzpv5jfsuoqy****
@@ -179,6 +188,18 @@ func (s *DescribeDifyAttributeResponseBodyRoot) GetAppUuid() *string {
 	return s.AppUuid
 }
 
+func (s *DescribeDifyAttributeResponseBodyRoot) GetBillingInstanceId() *string {
+	return s.BillingInstanceId
+}
+
+func (s *DescribeDifyAttributeResponseBodyRoot) GetChargeType() *string {
+	return s.ChargeType
+}
+
+func (s *DescribeDifyAttributeResponseBodyRoot) GetExpireTime() *int64 {
+	return s.ExpireTime
+}
+
 func (s *DescribeDifyAttributeResponseBodyRoot) GetReplicas() *string {
 	return s.Replicas
 }
@@ -193,6 +214,10 @@ func (s *DescribeDifyAttributeResponseBodyRoot) GetSecurityGroupId() *string {
 
 func (s *DescribeDifyAttributeResponseBodyRoot) GetStatus() *string {
 	return s.Status
+}
+
+func (s *DescribeDifyAttributeResponseBodyRoot) GetStorageType() *string {
+	return s.StorageType
 }
 
 func (s *DescribeDifyAttributeResponseBodyRoot) GetVSwitchId() *string {
@@ -216,6 +241,21 @@ func (s *DescribeDifyAttributeResponseBodyRoot) SetAppUuid(v string) *DescribeDi
 	return s
 }
 
+func (s *DescribeDifyAttributeResponseBodyRoot) SetBillingInstanceId(v string) *DescribeDifyAttributeResponseBodyRoot {
+	s.BillingInstanceId = &v
+	return s
+}
+
+func (s *DescribeDifyAttributeResponseBodyRoot) SetChargeType(v string) *DescribeDifyAttributeResponseBodyRoot {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeDifyAttributeResponseBodyRoot) SetExpireTime(v int64) *DescribeDifyAttributeResponseBodyRoot {
+	s.ExpireTime = &v
+	return s
+}
+
 func (s *DescribeDifyAttributeResponseBodyRoot) SetReplicas(v string) *DescribeDifyAttributeResponseBodyRoot {
 	s.Replicas = &v
 	return s
@@ -233,6 +273,11 @@ func (s *DescribeDifyAttributeResponseBodyRoot) SetSecurityGroupId(v string) *De
 
 func (s *DescribeDifyAttributeResponseBodyRoot) SetStatus(v string) *DescribeDifyAttributeResponseBodyRoot {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeDifyAttributeResponseBodyRoot) SetStorageType(v string) *DescribeDifyAttributeResponseBodyRoot {
+	s.StorageType = &v
 	return s
 }
 

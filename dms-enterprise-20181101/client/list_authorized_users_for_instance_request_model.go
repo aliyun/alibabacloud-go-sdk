@@ -22,24 +22,36 @@ type iListAuthorizedUsersForInstanceRequest interface {
 }
 
 type ListAuthorizedUsersForInstanceRequest struct {
+	// The ID of the instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 174****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keyword that is used for the search.
+	//
 	// example:
 	//
 	// poc_test
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
+	//
 	// example:
 	//
 	// 3****

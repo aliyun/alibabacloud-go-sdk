@@ -108,7 +108,12 @@ func (s *GetDataImportSQLResponseBody) SetSuccess(v bool) *GetDataImportSQLRespo
 }
 
 func (s *GetDataImportSQLResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SQLDetail != nil {
+		if err := s.SQLDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataImportSQLResponseBodySQLDetail struct {

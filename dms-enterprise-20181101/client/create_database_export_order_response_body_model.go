@@ -108,7 +108,12 @@ func (s *CreateDatabaseExportOrderResponseBody) SetSuccess(v bool) *CreateDataba
 }
 
 func (s *CreateDatabaseExportOrderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CreateOrderResult != nil {
+		if err := s.CreateOrderResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDatabaseExportOrderResponseBodyCreateOrderResult struct {

@@ -22,22 +22,40 @@ type iTryRunTaskFlowResponseBody interface {
 }
 
 type TryRunTaskFlowResponseBody struct {
+	// The error code that is returned if the request failed. Value values:
+	//
+	// 	- If the request was successful, the **ErrorCode*	- parameter is not returned.
+	//
+	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see the **Error codes*	- section in this topic.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The instance ID of the order.
+	//
 	// example:
 	//
 	// 169****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9997630E-1993-5E6D-9DF1-4EFEE755FE31
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true

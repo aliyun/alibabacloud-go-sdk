@@ -26,27 +26,44 @@ type iListAuthorityTemplateResponseBody interface {
 }
 
 type ListAuthorityTemplateResponseBody struct {
+	// The permission templates.
 	AuthorityTemplateViewList *ListAuthorityTemplateResponseBodyAuthorityTemplateViewList `json:"AuthorityTemplateViewList,omitempty" xml:"AuthorityTemplateViewList,omitempty" type:"Struct"`
+	// The error code that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID. You can use the request ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 31853A2B-DC9D-5B39-8492-D2AC8BCF550E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the tenant.
+	//
 	// example:
 	//
 	// 3***
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The total number of permission templates.
+	//
 	// example:
 	//
 	// 10
@@ -125,7 +142,12 @@ func (s *ListAuthorityTemplateResponseBody) SetTotalCount(v int64) *ListAuthorit
 }
 
 func (s *ListAuthorityTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorityTemplateViewList != nil {
+		if err := s.AuthorityTemplateViewList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAuthorityTemplateResponseBodyAuthorityTemplateViewList struct {
@@ -150,20 +172,37 @@ func (s *ListAuthorityTemplateResponseBodyAuthorityTemplateViewList) SetAuthorit
 }
 
 func (s *ListAuthorityTemplateResponseBodyAuthorityTemplateViewList) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorityTemplateView != nil {
+		for _, item := range s.AuthorityTemplateView {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAuthorityTemplateResponseBodyAuthorityTemplateViewListAuthorityTemplateView struct {
+	// The time when the permission template was created. The time is in the yyyy-MM-DD HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2023-10-26 11:37:47
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the user who created the permission template.
+	//
 	// example:
 	//
 	// 522****
-	CreatorId   *int64  `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The description of the permission template.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the permission template.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the permission template.
+	//
 	// example:
 	//
 	// 2592

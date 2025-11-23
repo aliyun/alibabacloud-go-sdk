@@ -30,36 +30,55 @@ type iGetPagedInstanceResponseBody interface {
 }
 
 type GetPagedInstanceResponseBody struct {
+	// The data returned.
 	Data *GetPagedInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID. You can use the request ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 7FAD400F-7A5C-4193-8F9A-39D86C4F0231
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of instances.
+	//
 	// example:
 	//
 	// 2
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// Id of the request
+	// The trace ID, which is used to track the request.
 	//
 	// example:
 	//
@@ -157,10 +176,16 @@ func (s *GetPagedInstanceResponseBody) SetTraceId(v string) *GetPagedInstanceRes
 }
 
 func (s *GetPagedInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPagedInstanceResponseBodyData struct {
+	// The information about the task.
 	Instance []*GetPagedInstanceResponseBodyDataInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Repeated"`
 }
 
@@ -182,67 +207,141 @@ func (s *GetPagedInstanceResponseBodyData) SetInstance(v []*GetPagedInstanceResp
 }
 
 func (s *GetPagedInstanceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		for _, item := range s.Instance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPagedInstanceResponseBodyDataInstance struct {
+	// The data timestamp of the task node.
+	//
 	// example:
 	//
 	// 2023-05-14 16:00:57
 	BusinessTime *string `json:"BusinessTime,omitempty" xml:"BusinessTime,omitempty"`
+	// The state of archived data verification. Valid values:
+	//
+	// 	- **0**: The verification was successful.
+	//
+	// 	- **1**: Inconsistent data was detected.
+	//
+	// 	- **2**: The verification was not performed.
+	//
+	// 	- **3**: The verification is in progress.
+	//
+	// 	- **4**: The verification was interrupted.
+	//
 	// example:
 	//
 	// 3
 	CheckStatus *int64 `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
+	// The unique ID of the task flow.
+	//
 	// example:
 	//
 	// 33753
 	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	// Indicates whether the source data is deleted. Valid values:
+	//
+	// 	- **true**: deletes the jobs in the application group.
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// false
 	Delete *string `json:"Delete,omitempty" xml:"Delete,omitempty"`
+	// The time when the task ended.
+	//
 	// example:
 	//
 	// 2023-04-23 10:23:20
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time when the task flow was created.
+	//
 	// example:
 	//
 	// 2023-03-28 10:50:45
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the task flow was last modified.
+	//
 	// example:
 	//
 	// 2023-04-18 15:28:16
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the historical task flow.
+	//
 	// example:
 	//
 	// 6851
 	HistoryDagId *int64 `json:"HistoryDagId,omitempty" xml:"HistoryDagId,omitempty"`
+	// The task flow ID.
+	//
 	// example:
 	//
 	// 24271
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The context of the last execution of the task flow.
+	//
 	// example:
 	//
 	// {”nodes":[11694,11695]"}
 	LastRunningContext *string `json:"LastRunningContext,omitempty" xml:"LastRunningContext,omitempty"`
-	Msg                *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The details of the current task execution.
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The state of the archiving task.
+	//
+	// 	- **0**: Pending.
+	//
+	// 	- **1**: Running.
+	//
+	// 	- **2**: Paused.
+	//
+	// 	- **3**: Failed.
+	//
+	// 	- **4**: Succeeded.
+	//
 	// example:
 	//
 	// 1
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task type. Valid values:
+	//
+	// 	- **1**: data archiving
+	//
+	// 	- **2**: archived data restoration
+	//
+	// 	- **3**: archived data verification
+	//
 	// example:
 	//
 	// 1
 	TaskType *int64 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The ID of the tenant.
+	//
 	// example:
 	//
 	// 3406
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The mode in which the task flow is triggered. Valid values:
+	//
+	// 	- **0**: The task flow was triggered based on a schedule.
+	//
+	// 	- **1**: The task flow was manually triggered.
+	//
 	// example:
 	//
 	// 1
 	TriggerType *int64 `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1

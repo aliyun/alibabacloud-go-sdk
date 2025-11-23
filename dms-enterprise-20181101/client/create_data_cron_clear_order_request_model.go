@@ -108,7 +108,12 @@ func (s *CreateDataCronClearOrderRequest) SetTid(v int64) *CreateDataCronClearOr
 }
 
 func (s *CreateDataCronClearOrderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Param != nil {
+		if err := s.Param.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataCronClearOrderRequestParam struct {
@@ -219,7 +224,25 @@ func (s *CreateDataCronClearOrderRequestParam) SetSpecifyDuration(v bool) *Creat
 }
 
 func (s *CreateDataCronClearOrderRequestParam) Validate() error {
-	return dara.Validate(s)
+	if s.CronClearItemList != nil {
+		for _, item := range s.CronClearItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DbItemList != nil {
+		for _, item := range s.DbItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDataCronClearOrderRequestParamCronClearItemList struct {

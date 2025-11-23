@@ -108,7 +108,12 @@ func (s *GetDBTopologyResponseBody) SetSuccess(v bool) *GetDBTopologyResponseBod
 }
 
 func (s *GetDBTopologyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBTopology != nil {
+		if err := s.DBTopology.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDBTopologyResponseBodyDBTopology struct {
@@ -240,7 +245,16 @@ func (s *GetDBTopologyResponseBodyDBTopology) SetSearchName(v string) *GetDBTopo
 }
 
 func (s *GetDBTopologyResponseBodyDBTopology) Validate() error {
-	return dara.Validate(s)
+	if s.DBTopologyInfoList != nil {
+		for _, item := range s.DBTopologyInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList struct {

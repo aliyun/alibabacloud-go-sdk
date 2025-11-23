@@ -108,7 +108,12 @@ func (s *GetDataExportPreCheckDetailResponseBody) SetSuccess(v bool) *GetDataExp
 }
 
 func (s *GetDataExportPreCheckDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PreCheckResult != nil {
+		if err := s.PreCheckResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataExportPreCheckDetailResponseBodyPreCheckResult struct {
@@ -153,7 +158,12 @@ func (s *GetDataExportPreCheckDetailResponseBodyPreCheckResult) SetPreCheckDetai
 }
 
 func (s *GetDataExportPreCheckDetailResponseBodyPreCheckResult) Validate() error {
-	return dara.Validate(s)
+	if s.PreCheckDetailList != nil {
+		if err := s.PreCheckDetailList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataExportPreCheckDetailResponseBodyPreCheckResultPreCheckDetailList struct {
@@ -178,7 +188,16 @@ func (s *GetDataExportPreCheckDetailResponseBodyPreCheckResultPreCheckDetailList
 }
 
 func (s *GetDataExportPreCheckDetailResponseBodyPreCheckResultPreCheckDetailList) Validate() error {
-	return dara.Validate(s)
+	if s.PreCheckDetailList != nil {
+		for _, item := range s.PreCheckDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataExportPreCheckDetailResponseBodyPreCheckResultPreCheckDetailListPreCheckDetailList struct {

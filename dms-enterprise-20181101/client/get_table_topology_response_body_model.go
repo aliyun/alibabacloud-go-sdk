@@ -104,7 +104,12 @@ func (s *GetTableTopologyResponseBody) SetTableTopology(v *GetTableTopologyRespo
 }
 
 func (s *GetTableTopologyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TableTopology != nil {
+		if err := s.TableTopology.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTableTopologyResponseBodyTableTopology struct {
@@ -179,7 +184,16 @@ func (s *GetTableTopologyResponseBodyTableTopology) SetTableTopologyInfoList(v [
 }
 
 func (s *GetTableTopologyResponseBodyTableTopology) Validate() error {
-	return dara.Validate(s)
+	if s.TableTopologyInfoList != nil {
+		for _, item := range s.TableTopologyInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList struct {

@@ -140,7 +140,12 @@ func (s *CreateDataExportOrderRequest) SetTid(v int64) *CreateDataExportOrderReq
 }
 
 func (s *CreateDataExportOrderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PluginParam != nil {
+		if err := s.PluginParam.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataExportOrderRequestPluginParam struct {
@@ -312,7 +317,12 @@ func (s *CreateDataExportOrderRequestPluginParam) SetWatermark(v *CreateDataExpo
 }
 
 func (s *CreateDataExportOrderRequestPluginParam) Validate() error {
-	return dara.Validate(s)
+	if s.Watermark != nil {
+		if err := s.Watermark.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataExportOrderRequestPluginParamWatermark struct {

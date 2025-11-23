@@ -24,23 +24,38 @@ type iListDataLakeTablebaseInfoResponseBody interface {
 }
 
 type ListDataLakeTablebaseInfoResponseBody struct {
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// 400
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	//
 	// example:
 	//
 	// Specified parameter Rows is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B43AD641-49C2-5299-9E06-1B37EC1B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
-	Success           *bool              `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The list of tables in the data lake.
 	TablebaseInfoList []*DLTablebaseInfo `json:"TablebaseInfoList,omitempty" xml:"TablebaseInfoList,omitempty" type:"Repeated"`
+	// The number of tables that meet the conditions.
+	//
 	// example:
 	//
 	// 100
@@ -110,5 +125,14 @@ func (s *ListDataLakeTablebaseInfoResponseBody) SetTotalCount(v string) *ListDat
 }
 
 func (s *ListDataLakeTablebaseInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TablebaseInfoList != nil {
+		for _, item := range s.TablebaseInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

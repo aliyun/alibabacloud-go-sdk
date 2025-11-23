@@ -121,7 +121,12 @@ func (s *CreateDataArchiveOrderRequest) SetTid(v int64) *CreateDataArchiveOrderR
 }
 
 func (s *CreateDataArchiveOrderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Param != nil {
+		if err := s.Param.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataArchiveOrderRequestParam struct {
@@ -357,7 +362,25 @@ func (s *CreateDataArchiveOrderRequestParam) SetVariables(v []*CreateDataArchive
 }
 
 func (s *CreateDataArchiveOrderRequestParam) Validate() error {
-	return dara.Validate(s)
+	if s.TableIncludes != nil {
+		for _, item := range s.TableIncludes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Variables != nil {
+		for _, item := range s.Variables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDataArchiveOrderRequestParamTableIncludes struct {

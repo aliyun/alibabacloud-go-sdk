@@ -108,7 +108,12 @@ func (s *ListLogicTableRouteConfigResponseBody) SetSuccess(v bool) *ListLogicTab
 }
 
 func (s *ListLogicTableRouteConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LogicTableRouteConfigList != nil {
+		if err := s.LogicTableRouteConfigList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLogicTableRouteConfigResponseBodyLogicTableRouteConfigList struct {
@@ -133,7 +138,16 @@ func (s *ListLogicTableRouteConfigResponseBodyLogicTableRouteConfigList) SetLogi
 }
 
 func (s *ListLogicTableRouteConfigResponseBodyLogicTableRouteConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.LogicTableRouteConfig != nil {
+		for _, item := range s.LogicTableRouteConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLogicTableRouteConfigResponseBodyLogicTableRouteConfigListLogicTableRouteConfig struct {

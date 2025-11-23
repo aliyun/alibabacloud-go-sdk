@@ -18,18 +18,24 @@ type iGetTableKnowledgeInfoRequest interface {
 }
 
 type GetTableKnowledgeInfoRequest struct {
+	// The ID of the physical database. You can call the [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 325
 	DbId *int32 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The name of the table.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// table_name
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The schema name of the table, which is required only for SQL Server instances.
+	//
 	// example:
 	//
 	// dbo

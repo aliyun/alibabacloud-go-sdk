@@ -59,5 +59,10 @@ func (s *AnalyzeSQLLineageResponse) SetBody(v *AnalyzeSQLLineageResponseBody) *A
 }
 
 func (s *AnalyzeSQLLineageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -18,14 +18,24 @@ type iCreateWorkspaceResponseBody interface {
 }
 
 type CreateWorkspaceResponseBody struct {
+	// The request ID. You can use the request ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 4AC23904-55DE-550B-9676-E8946F07****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 12****

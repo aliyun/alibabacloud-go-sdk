@@ -59,5 +59,10 @@ func (s *GetStructSyncExecSqlDetailResponse) SetBody(v *GetStructSyncExecSqlDeta
 }
 
 func (s *GetStructSyncExecSqlDetailResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

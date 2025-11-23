@@ -26,27 +26,44 @@ type iListDataLakePartitionByFilterResponseBody interface {
 }
 
 type ListDataLakePartitionByFilterResponseBody struct {
+	// The error code returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The information about the token.
+	//
 	// example:
 	//
 	// NesLoKLEdIZrKhDT7I2gS****
-	NextToken     *string        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The queried partitions.
 	PartitionList []*DLPartition `json:"PartitionList,omitempty" xml:"PartitionList,omitempty" type:"Repeated"`
+	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 427688B8-ADFB-4C4E-9D45-EF5C1FD6E23D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request succeeded.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -125,5 +142,14 @@ func (s *ListDataLakePartitionByFilterResponseBody) SetSuccess(v bool) *ListData
 }
 
 func (s *ListDataLakePartitionByFilterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PartitionList != nil {
+		for _, item := range s.PartitionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

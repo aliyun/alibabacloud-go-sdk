@@ -22,19 +22,32 @@ type iUpdateDataLakeFunctionResponseBody interface {
 }
 
 type UpdateDataLakeFunctionResponseBody struct {
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Function     *DLFunction `json:"Function,omitempty" xml:"Function,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The details about the function.
+	Function *DLFunction `json:"Function,omitempty" xml:"Function,omitempty"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// C1D39814-9808-47F8-AFE0-AF167239AC9B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request succeeded.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -95,5 +108,10 @@ func (s *UpdateDataLakeFunctionResponseBody) SetSuccess(v bool) *UpdateDataLakeF
 }
 
 func (s *UpdateDataLakeFunctionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Function != nil {
+		if err := s.Function.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

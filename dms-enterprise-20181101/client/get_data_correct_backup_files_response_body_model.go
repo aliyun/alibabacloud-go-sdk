@@ -104,7 +104,12 @@ func (s *GetDataCorrectBackupFilesResponseBody) SetSuccess(v bool) *GetDataCorre
 }
 
 func (s *GetDataCorrectBackupFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataCorrectBackupFiles != nil {
+		if err := s.DataCorrectBackupFiles.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataCorrectBackupFilesResponseBodyDataCorrectBackupFiles struct {

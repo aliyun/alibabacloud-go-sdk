@@ -108,7 +108,16 @@ func (s *ListSensitivityLevelResponseBody) SetSuccess(v bool) *ListSensitivityLe
 }
 
 func (s *ListSensitivityLevelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SensitivityLevelList != nil {
+		for _, item := range s.SensitivityLevelList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSensitivityLevelResponseBodySensitivityLevelList struct {

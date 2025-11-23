@@ -108,7 +108,12 @@ func (s *GetInstanceResponseBody) SetSuccess(v bool) *GetInstanceResponseBody {
 }
 
 func (s *GetInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		if err := s.Instance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceResponseBodyInstance struct {
@@ -539,7 +544,22 @@ func (s *GetInstanceResponseBodyInstance) SetVpcId(v string) *GetInstanceRespons
 }
 
 func (s *GetInstanceResponseBodyInstance) Validate() error {
-	return dara.Validate(s)
+	if s.OwnerIdList != nil {
+		if err := s.OwnerIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OwnerNameList != nil {
+		if err := s.OwnerNameList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StandardGroup != nil {
+		if err := s.StandardGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceResponseBodyInstanceOwnerIdList struct {

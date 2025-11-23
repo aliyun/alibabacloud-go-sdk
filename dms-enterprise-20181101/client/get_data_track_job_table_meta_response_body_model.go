@@ -108,7 +108,16 @@ func (s *GetDataTrackJobTableMetaResponseBody) SetTableMetaList(v []*GetDataTrac
 }
 
 func (s *GetDataTrackJobTableMetaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TableMetaList != nil {
+		for _, item := range s.TableMetaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataTrackJobTableMetaResponseBodyTableMetaList struct {
@@ -164,7 +173,16 @@ func (s *GetDataTrackJobTableMetaResponseBodyTableMetaList) SetTableName(v strin
 }
 
 func (s *GetDataTrackJobTableMetaResponseBodyTableMetaList) Validate() error {
-	return dara.Validate(s)
+	if s.Columns != nil {
+		for _, item := range s.Columns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataTrackJobTableMetaResponseBodyTableMetaListColumns struct {

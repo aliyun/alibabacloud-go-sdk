@@ -125,7 +125,12 @@ func (s *ListTaskFlowsByPageResponseBody) SetTotalCount(v int32) *ListTaskFlowsB
 }
 
 func (s *ListTaskFlowsByPageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskFlowList != nil {
+		if err := s.TaskFlowList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTaskFlowsByPageResponseBodyTaskFlowList struct {
@@ -150,7 +155,16 @@ func (s *ListTaskFlowsByPageResponseBodyTaskFlowList) SetTaskFlow(v []*ListTaskF
 }
 
 func (s *ListTaskFlowsByPageResponseBodyTaskFlowList) Validate() error {
-	return dara.Validate(s)
+	if s.TaskFlow != nil {
+		for _, item := range s.TaskFlow {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow struct {

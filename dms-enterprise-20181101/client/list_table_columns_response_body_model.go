@@ -22,19 +22,32 @@ type iListTableColumnsResponseBody interface {
 }
 
 type ListTableColumnsResponseBody struct {
+	// The details about fields in the table.
 	ColumnList *ListTableColumnsResponseBodyColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Struct"`
+	// The error code returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -95,7 +108,12 @@ func (s *ListTableColumnsResponseBody) SetSuccess(v bool) *ListTableColumnsRespo
 }
 
 func (s *ListTableColumnsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnList != nil {
+		if err := s.ColumnList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTableColumnsResponseBodyColumnList struct {
@@ -120,58 +138,119 @@ func (s *ListTableColumnsResponseBodyColumnList) SetColumn(v []*ListTableColumns
 }
 
 func (s *ListTableColumnsResponseBodyColumnList) Validate() error {
-	return dara.Validate(s)
+	if s.Column != nil {
+		for _, item := range s.Column {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTableColumnsResponseBodyColumnListColumn struct {
+	// Indicates whether the field is an auto-increment field. Valid values:
+	//
+	// 	- true: The field is an auto-increment field.
+	//
+	// 	- false: The field is not an auto-increment field.
+	//
 	// example:
 	//
 	// false
 	AutoIncrement *bool `json:"AutoIncrement,omitempty" xml:"AutoIncrement,omitempty"`
+	// The ID of the field.
+	//
 	// example:
 	//
 	// 12345
 	ColumnId *string `json:"ColumnId,omitempty" xml:"ColumnId,omitempty"`
+	// The field name.
+	//
 	// example:
 	//
 	// c1
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The data type of the field.
+	//
 	// example:
 	//
 	// varchar
 	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	// The length of the field.
+	//
 	// example:
 	//
 	// 32
 	DataLength *int64 `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
+	// The number of valid digits for the column.
+	//
 	// example:
 	//
 	// 0
 	DataPrecision *int32 `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
+	// The number of decimal places of the field data.
+	//
 	// example:
 	//
 	// 0
 	DataScale *int32 `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
+	// The default value of the column.
+	//
 	// example:
 	//
 	// aaa
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The description of the field.
+	//
 	// example:
 	//
 	// column desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The type of the masking algorithm that is used for the field. Valid values:
+	//
+	// 	- null: No masking algorithm is used.
+	//
+	// 	- DEFAULT: A full masking algorithm is used.
+	//
+	// 	- FIX_POS: The fixed position is masked.
+	//
+	// 	- FIX_CHAR: The fixed characters are replaced.
+	//
 	// example:
 	//
 	// NULL
 	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
+	// Indicates whether the field can be empty. Valid values:
+	//
+	// 	- true: The field can be empty.
+	//
+	// 	- false: The field cannot be empty.
+	//
 	// example:
 	//
 	// true
 	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	// The security level of the field. Valid values:
+	//
+	// 	- INNER: The field is an internal field but not sensitive.
+	//
+	// 	- SENSITIVE: The field is sensitive.
+	//
+	// 	- CONFIDENTIAL: The field is a confidential column.
+	//
 	// example:
 	//
 	// INNER
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	// Indicates whether the field is a sensitive column. Valid values:
+	//
+	// 	- true: The field is a sensitive field.
+	//
+	// 	- false: The field is not a sensitive field.
+	//
 	// example:
 	//
 	// false

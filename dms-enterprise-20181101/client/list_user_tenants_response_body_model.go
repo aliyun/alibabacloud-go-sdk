@@ -108,7 +108,16 @@ func (s *ListUserTenantsResponseBody) SetTenantList(v []*ListUserTenantsResponse
 }
 
 func (s *ListUserTenantsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TenantList != nil {
+		for _, item := range s.TenantList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserTenantsResponseBodyTenantList struct {

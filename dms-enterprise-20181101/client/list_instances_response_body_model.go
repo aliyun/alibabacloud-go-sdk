@@ -125,7 +125,12 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int64) *ListInstancesRespons
 }
 
 func (s *ListInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceList != nil {
+		if err := s.InstanceList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyInstanceList struct {
@@ -150,7 +155,16 @@ func (s *ListInstancesResponseBodyInstanceList) SetInstance(v []*ListInstancesRe
 }
 
 func (s *ListInstancesResponseBodyInstanceList) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		for _, item := range s.Instance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyInstanceListInstance struct {
@@ -577,7 +591,22 @@ func (s *ListInstancesResponseBodyInstanceListInstance) SetVpcId(v string) *List
 }
 
 func (s *ListInstancesResponseBodyInstanceListInstance) Validate() error {
-	return dara.Validate(s)
+	if s.OwnerIdList != nil {
+		if err := s.OwnerIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OwnerNameList != nil {
+		if err := s.OwnerNameList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StandardGroup != nil {
+		if err := s.StandardGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyInstanceListInstanceOwnerIdList struct {

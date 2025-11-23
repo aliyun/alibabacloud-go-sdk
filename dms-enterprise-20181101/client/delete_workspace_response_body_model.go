@@ -18,6 +18,8 @@ type iDeleteWorkspaceResponseBody interface {
 }
 
 type DeleteWorkspaceResponseBody struct {
+	// Indicates whether the workspace is deleted successfully.
+	//
 	// example:
 	//
 	// true
@@ -28,6 +30,8 @@ type DeleteWorkspaceResponseBody struct {
 	//
 	// 7FAD400F-7A5C-4193-8F9A-39D86C4F0231
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is called successfully.
+	//
 	// example:
 	//
 	// true

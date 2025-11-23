@@ -20,20 +20,28 @@ type iOptimizeSqlByMetaAgentRequest interface {
 }
 
 type OptimizeSqlByMetaAgentRequest struct {
+	// The ID of the database. You can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1***
 	DbId *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The name of the selected model. You can use only Qwen series models.
+	//
 	// example:
 	//
 	// qwen-plus
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// 是否为慢SQL
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The SQL statement that you want to analyze.
+	//
 	// This parameter is required.
 	//
 	// example:

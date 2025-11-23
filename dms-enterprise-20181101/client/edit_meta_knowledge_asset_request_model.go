@@ -22,28 +22,38 @@ type iEditMetaKnowledgeAssetRequest interface {
 }
 
 type EditMetaKnowledgeAssetRequest struct {
+  // Business knowledge content edited by users.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // test
   AssetDescription *string `json:"AssetDescription,omitempty" xml:"AssetDescription,omitempty"`
+  // The name of the field. This parameter is used when the edited content is a field.
+  // 
   // example:
   // 
   // test_column
   ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+  // The ID of the physical database. You can call the [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to obtain the ID.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 1930****
   DbId *int32 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+  // The name of the table.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // table_name
   TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+  // The schema name of the table, which is required only for SQL Server instances.
+  // 
   // example:
   // 
   // dbo

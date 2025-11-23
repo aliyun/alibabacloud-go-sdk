@@ -59,5 +59,10 @@ func (s *ListDataLakeFunctionNameResponse) SetBody(v *ListDataLakeFunctionNameRe
 }
 
 func (s *ListDataLakeFunctionNameResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

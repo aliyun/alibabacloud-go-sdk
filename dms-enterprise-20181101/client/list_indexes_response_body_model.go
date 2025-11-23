@@ -104,7 +104,12 @@ func (s *ListIndexesResponseBody) SetSuccess(v bool) *ListIndexesResponseBody {
 }
 
 func (s *ListIndexesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IndexList != nil {
+		if err := s.IndexList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIndexesResponseBodyIndexList struct {
@@ -129,7 +134,16 @@ func (s *ListIndexesResponseBodyIndexList) SetIndex(v []*ListIndexesResponseBody
 }
 
 func (s *ListIndexesResponseBodyIndexList) Validate() error {
-	return dara.Validate(s)
+	if s.Index != nil {
+		for _, item := range s.Index {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIndexesResponseBodyIndexListIndex struct {

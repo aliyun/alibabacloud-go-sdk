@@ -16,12 +16,18 @@ type iPreviewWorkflowRequest interface {
 }
 
 type PreviewWorkflowRequest struct {
+	// The ticket ID. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ticket ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1069****
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
+	//
 	// example:
 	//
 	// 23****

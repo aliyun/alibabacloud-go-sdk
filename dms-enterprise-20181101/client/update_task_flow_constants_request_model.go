@@ -72,7 +72,16 @@ func (s *UpdateTaskFlowConstantsRequest) SetTid(v int64) *UpdateTaskFlowConstant
 }
 
 func (s *UpdateTaskFlowConstantsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DagConstants != nil {
+		for _, item := range s.DagConstants {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateTaskFlowConstantsRequestDagConstants struct {

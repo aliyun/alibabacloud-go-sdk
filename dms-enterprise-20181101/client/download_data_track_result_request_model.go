@@ -168,7 +168,12 @@ func (s *DownloadDataTrackResultRequest) SetTid(v int64) *DownloadDataTrackResul
 }
 
 func (s *DownloadDataTrackResultRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnFilter != nil {
+		if err := s.ColumnFilter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DownloadDataTrackResultRequestColumnFilter struct {

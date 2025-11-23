@@ -22,22 +22,36 @@ type iUpdateAbacPolicyResponseBody interface {
 }
 
 type UpdateAbacPolicyResponseBody struct {
+	// The error code that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// CE43759B-5A72-560A-BF3D-862F38B36B9E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the policy is updated.
+	//
 	// example:
 	//
 	// true

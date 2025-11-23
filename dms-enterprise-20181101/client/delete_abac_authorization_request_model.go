@@ -18,18 +18,32 @@ type iDeleteAbacAuthorizationRequest interface {
 }
 
 type DeleteAbacAuthorizationRequest struct {
+	// The authorization ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123***
 	AuthorizationId *int64 `json:"AuthorizationId,omitempty" xml:"AuthorizationId,omitempty"`
+	// The type of object to which you want to attach the policy.********
+	//
+	// Valid values:
+	//
+	// 	- USER
+	//
+	// 	- ROLE
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// USER
 	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
+	//
 	// example:
 	//
 	// 3***

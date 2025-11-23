@@ -108,7 +108,12 @@ func (s *GetDataCorrectOrderDetailResponseBody) SetSuccess(v bool) *GetDataCorre
 }
 
 func (s *GetDataCorrectOrderDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataCorrectOrderDetail != nil {
+		if err := s.DataCorrectOrderDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail struct {
@@ -225,7 +230,27 @@ func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail) SetStatus(
 }
 
 func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigDetail != nil {
+		if err := s.ConfigDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DatabaseList != nil {
+		if err := s.DatabaseList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OrderDetail != nil {
+		if err := s.OrderDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PreCheckDetail != nil {
+		if err := s.PreCheckDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail struct {
@@ -474,7 +499,17 @@ func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail
 }
 
 func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) Validate() error {
-	return dara.Validate(s)
+	if s.CronExtConfig != nil {
+		if err := s.CronExtConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImportExtConfig != nil {
+		if err := s.ImportExtConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailCronExtConfig struct {
@@ -645,7 +680,16 @@ func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseList
 }
 
 func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseList) Validate() error {
-	return dara.Validate(s)
+	if s.Database != nil {
+		for _, item := range s.Database {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseListDatabase struct {
@@ -972,7 +1016,16 @@ func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDeta
 }
 
 func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDetail) Validate() error {
-	return dara.Validate(s)
+	if s.TaskCheckDO != nil {
+		for _, item := range s.TaskCheckDO {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDetailTaskCheckDO struct {

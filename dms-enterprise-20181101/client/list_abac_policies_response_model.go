@@ -59,5 +59,10 @@ func (s *ListAbacPoliciesResponse) SetBody(v *ListAbacPoliciesResponseBody) *Lis
 }
 
 func (s *ListAbacPoliciesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

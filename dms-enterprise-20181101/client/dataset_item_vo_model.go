@@ -203,5 +203,23 @@ func (s *DatasetItemVO) SetUrl(v string) *DatasetItemVO {
 }
 
 func (s *DatasetItemVO) Validate() error {
-	return dara.Validate(s)
+	if s.AsyncTaskList != nil {
+		for _, item := range s.AsyncTaskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ProjectsLinked != nil {
+		for _, item := range s.ProjectsLinked {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

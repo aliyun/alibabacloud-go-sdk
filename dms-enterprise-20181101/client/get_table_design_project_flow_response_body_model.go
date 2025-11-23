@@ -108,7 +108,12 @@ func (s *GetTableDesignProjectFlowResponseBody) SetSuccess(v bool) *GetTableDesi
 }
 
 func (s *GetTableDesignProjectFlowResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProjectFlow != nil {
+		if err := s.ProjectFlow.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTableDesignProjectFlowResponseBodyProjectFlow struct {
@@ -179,7 +184,16 @@ func (s *GetTableDesignProjectFlowResponseBodyProjectFlow) SetRuleName(v string)
 }
 
 func (s *GetTableDesignProjectFlowResponseBodyProjectFlow) Validate() error {
-	return dara.Validate(s)
+	if s.FlowNodeArray != nil {
+		for _, item := range s.FlowNodeArray {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray struct {

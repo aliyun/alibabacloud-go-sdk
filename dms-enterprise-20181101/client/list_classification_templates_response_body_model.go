@@ -108,7 +108,16 @@ func (s *ListClassificationTemplatesResponseBody) SetTemplateList(v []*ListClass
 }
 
 func (s *ListClassificationTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TemplateList != nil {
+		for _, item := range s.TemplateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListClassificationTemplatesResponseBodyTemplateList struct {

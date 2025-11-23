@@ -59,5 +59,10 @@ func (s *GetUserActiveTenantResponse) SetBody(v *GetUserActiveTenantResponseBody
 }
 
 func (s *GetUserActiveTenantResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

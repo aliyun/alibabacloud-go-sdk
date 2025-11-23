@@ -125,7 +125,12 @@ func (s *GetOpLogResponseBody) SetTotalCount(v int64) *GetOpLogResponseBody {
 }
 
 func (s *GetOpLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OpLogDetails != nil {
+		if err := s.OpLogDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOpLogResponseBodyOpLogDetails struct {
@@ -150,7 +155,16 @@ func (s *GetOpLogResponseBodyOpLogDetails) SetOpLogDetail(v []*GetOpLogResponseB
 }
 
 func (s *GetOpLogResponseBodyOpLogDetails) Validate() error {
-	return dara.Validate(s)
+	if s.OpLogDetail != nil {
+		for _, item := range s.OpLogDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOpLogResponseBodyOpLogDetailsOpLogDetail struct {

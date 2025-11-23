@@ -22,19 +22,32 @@ type iUpdateDataLakeDatabaseResponseBody interface {
 }
 
 type UpdateDataLakeDatabaseResponseBody struct {
+	// The database details.
 	Database *DLDatabase `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The error code returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID. You can use the request ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 4E1D2B4D-3E53-4ABC-999D-1D2520B3471A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request succeeded.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -95,5 +108,10 @@ func (s *UpdateDataLakeDatabaseResponseBody) SetSuccess(v bool) *UpdateDataLakeD
 }
 
 func (s *UpdateDataLakeDatabaseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Database != nil {
+		if err := s.Database.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *GetDataCorrectRollbackFileResponse) SetBody(v *GetDataCorrectRollbackFi
 }
 
 func (s *GetDataCorrectRollbackFileResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

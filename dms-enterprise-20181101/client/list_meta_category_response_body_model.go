@@ -24,23 +24,38 @@ type iListMetaCategoryResponseBody interface {
 }
 
 type ListMetaCategoryResponseBody struct {
+	// The list of categories.
 	CategoryList *ListMetaCategoryResponseBodyCategoryList `json:"CategoryList,omitempty" xml:"CategoryList,omitempty" type:"Struct"`
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -110,7 +125,12 @@ func (s *ListMetaCategoryResponseBody) SetTotalCount(v int64) *ListMetaCategoryR
 }
 
 func (s *ListMetaCategoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CategoryList != nil {
+		if err := s.CategoryList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMetaCategoryResponseBodyCategoryList struct {
@@ -135,5 +155,14 @@ func (s *ListMetaCategoryResponseBodyCategoryList) SetMetaCategory(v []*MetaCate
 }
 
 func (s *ListMetaCategoryResponseBodyCategoryList) Validate() error {
-	return dara.Validate(s)
+	if s.MetaCategory != nil {
+		for _, item := range s.MetaCategory {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

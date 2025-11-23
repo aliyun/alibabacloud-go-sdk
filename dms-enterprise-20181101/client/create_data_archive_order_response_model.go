@@ -59,5 +59,10 @@ func (s *CreateDataArchiveOrderResponse) SetBody(v *CreateDataArchiveOrderRespon
 }
 
 func (s *CreateDataArchiveOrderResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -125,7 +125,12 @@ func (s *ListDAGVersionsResponseBody) SetTotalCount(v int32) *ListDAGVersionsRes
 }
 
 func (s *ListDAGVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DagVersionList != nil {
+		if err := s.DagVersionList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDAGVersionsResponseBodyDagVersionList struct {
@@ -150,7 +155,16 @@ func (s *ListDAGVersionsResponseBodyDagVersionList) SetDagVersion(v []*ListDAGVe
 }
 
 func (s *ListDAGVersionsResponseBodyDagVersionList) Validate() error {
-	return dara.Validate(s)
+	if s.DagVersion != nil {
+		for _, item := range s.DagVersion {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDAGVersionsResponseBodyDagVersionListDagVersion struct {

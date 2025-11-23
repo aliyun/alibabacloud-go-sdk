@@ -22,19 +22,32 @@ type iBatchDeleteDataLakePartitionsResponseBody interface {
 }
 
 type BatchDeleteDataLakePartitionsResponseBody struct {
+	// The error code that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
-	ErrorMessage    *string           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error messages.
 	PartitionErrors []*PartitionError `json:"PartitionErrors,omitempty" xml:"PartitionErrors,omitempty" type:"Repeated"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 5B96E35F-A58E-5399-9041-09CF9A1E46EA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -95,5 +108,14 @@ func (s *BatchDeleteDataLakePartitionsResponseBody) SetSuccess(v string) *BatchD
 }
 
 func (s *BatchDeleteDataLakePartitionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PartitionErrors != nil {
+		for _, item := range s.PartitionErrors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

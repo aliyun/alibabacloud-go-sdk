@@ -108,7 +108,12 @@ func (s *SearchDataTrackResultResponseBody) SetTrackResult(v *SearchDataTrackRes
 }
 
 func (s *SearchDataTrackResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrackResult != nil {
+		if err := s.TrackResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchDataTrackResultResponseBodyTrackResult struct {
@@ -160,7 +165,25 @@ func (s *SearchDataTrackResultResponseBodyTrackResult) SetTotalCount(v int64) *S
 }
 
 func (s *SearchDataTrackResultResponseBodyTrackResult) Validate() error {
-	return dara.Validate(s)
+	if s.EventList != nil {
+		for _, item := range s.EventList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TableInfoList != nil {
+		for _, item := range s.TableInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchDataTrackResultResponseBodyTrackResultEventList struct {
@@ -355,7 +378,16 @@ func (s *SearchDataTrackResultResponseBodyTrackResultTableInfoList) SetTableName
 }
 
 func (s *SearchDataTrackResultResponseBodyTrackResultTableInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.Columns != nil {
+		for _, item := range s.Columns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns struct {

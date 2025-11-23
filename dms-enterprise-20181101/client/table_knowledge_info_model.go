@@ -95,5 +95,14 @@ func (s *TableKnowledgeInfo) SetTableName(v string) *TableKnowledgeInfo {
 }
 
 func (s *TableKnowledgeInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnList != nil {
+		for _, item := range s.ColumnList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

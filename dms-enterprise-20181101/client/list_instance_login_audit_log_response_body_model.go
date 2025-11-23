@@ -125,7 +125,12 @@ func (s *ListInstanceLoginAuditLogResponseBody) SetTotalCount(v int64) *ListInst
 }
 
 func (s *ListInstanceLoginAuditLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceLoginAuditLogList != nil {
+		if err := s.InstanceLoginAuditLogList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogList struct {
@@ -150,7 +155,16 @@ func (s *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogList) SetInst
 }
 
 func (s *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogList) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceLoginAuditLog != nil {
+		for _, item := range s.InstanceLoginAuditLog {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog struct {

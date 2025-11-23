@@ -24,23 +24,38 @@ type iListAbacAuthorizationsResponseBody interface {
 }
 
 type ListAbacAuthorizationsResponseBody struct {
+	// The list of users to which the specified policy is attached.
 	AuthorizationList []*ListAbacAuthorizationsResponseBodyAuthorizationList `json:"AuthorizationList,omitempty" xml:"AuthorizationList,omitempty" type:"Repeated"`
+	// The error code that is returned when the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned when the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 7FAD400F-7A5C-4193-8F9A-39D86C4F0231
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The number of objects to which the policy is attached.
+	//
 	// example:
 	//
 	// 3
@@ -110,34 +125,57 @@ func (s *ListAbacAuthorizationsResponseBody) SetTotalCount(v int64) *ListAbacAut
 }
 
 func (s *ListAbacAuthorizationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizationList != nil {
+		for _, item := range s.AuthorizationList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAbacAuthorizationsResponseBodyAuthorizationList struct {
+	// The authorization ID.
+	//
 	// example:
 	//
 	// 32****
 	AuthorizationId *int64 `json:"AuthorizationId,omitempty" xml:"AuthorizationId,omitempty"`
+	// The ID of the object to which the policy is attached.
+	//
 	// example:
 	//
 	// 51****
 	IdentityId *int64 `json:"IdentityId,omitempty" xml:"IdentityId,omitempty"`
+	// The name of the object to which the policy is attached.
+	//
 	// example:
 	//
 	// test_user
 	IdentityName *string `json:"IdentityName,omitempty" xml:"IdentityName,omitempty"`
+	// The type of the object to which the policy is attached.
+	//
 	// example:
 	//
 	// USER
 	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	// The ID of the policy.
+	//
 	// example:
 	//
 	// 12****
 	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The name of the policy.
+	//
 	// example:
 	//
 	// policy_test
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The source of the policy.
+	//
 	// example:
 	//
 	// USER_DEFINE

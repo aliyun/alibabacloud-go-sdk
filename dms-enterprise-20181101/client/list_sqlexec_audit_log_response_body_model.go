@@ -125,7 +125,12 @@ func (s *ListSQLExecAuditLogResponseBody) SetTotalCount(v int64) *ListSQLExecAud
 }
 
 func (s *ListSQLExecAuditLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SQLExecAuditLogList != nil {
+		if err := s.SQLExecAuditLogList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSQLExecAuditLogResponseBodySQLExecAuditLogList struct {
@@ -150,7 +155,16 @@ func (s *ListSQLExecAuditLogResponseBodySQLExecAuditLogList) SetSQLExecAuditLog(
 }
 
 func (s *ListSQLExecAuditLogResponseBodySQLExecAuditLogList) Validate() error {
-	return dara.Validate(s)
+	if s.SQLExecAuditLog != nil {
+		for _, item := range s.SQLExecAuditLog {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSQLExecAuditLogResponseBodySQLExecAuditLogListSQLExecAuditLog struct {

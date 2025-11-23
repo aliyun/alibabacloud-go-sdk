@@ -24,23 +24,38 @@ type iListTablesInCategoryResponseBody interface {
 }
 
 type ListTablesInCategoryResponseBody struct {
+	// List of table information associated with the asset category.
 	EntityList *ListTablesInCategoryResponseBodyEntityList `json:"EntityList,omitempty" xml:"EntityList,omitempty" type:"Struct"`
+	// The error code returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request succeeded.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -110,7 +125,12 @@ func (s *ListTablesInCategoryResponseBody) SetTotalCount(v int64) *ListTablesInC
 }
 
 func (s *ListTablesInCategoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EntityList != nil {
+		if err := s.EntityList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTablesInCategoryResponseBodyEntityList struct {
@@ -135,5 +155,14 @@ func (s *ListTablesInCategoryResponseBodyEntityList) SetMetaCategoryTableEntity(
 }
 
 func (s *ListTablesInCategoryResponseBodyEntityList) Validate() error {
-	return dara.Validate(s)
+	if s.MetaCategoryTableEntity != nil {
+		for _, item := range s.MetaCategoryTableEntity {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

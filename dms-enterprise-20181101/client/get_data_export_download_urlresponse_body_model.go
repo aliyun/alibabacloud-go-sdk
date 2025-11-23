@@ -108,7 +108,12 @@ func (s *GetDataExportDownloadURLResponseBody) SetSuccess(v bool) *GetDataExport
 }
 
 func (s *GetDataExportDownloadURLResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DownloadURLResult != nil {
+		if err := s.DownloadURLResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataExportDownloadURLResponseBodyDownloadURLResult struct {

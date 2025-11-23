@@ -121,7 +121,12 @@ func (s *CreateDataCorrectOrderRequest) SetTid(v int64) *CreateDataCorrectOrderR
 }
 
 func (s *CreateDataCorrectOrderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Param != nil {
+		if err := s.Param.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataCorrectOrderRequestParam struct {
@@ -314,7 +319,16 @@ func (s *CreateDataCorrectOrderRequestParam) SetSqlType(v string) *CreateDataCor
 }
 
 func (s *CreateDataCorrectOrderRequestParam) Validate() error {
-	return dara.Validate(s)
+	if s.DbItemList != nil {
+		for _, item := range s.DbItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDataCorrectOrderRequestParamDbItemList struct {

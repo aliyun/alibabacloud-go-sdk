@@ -20,24 +20,32 @@ type iListTablesInCategoryRequest interface {
 }
 
 type ListTablesInCategoryRequest struct {
+	// The category ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30000235593
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
+	//
 	// example:
 	//
 	// 3***

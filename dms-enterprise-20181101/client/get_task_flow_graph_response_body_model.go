@@ -108,7 +108,12 @@ func (s *GetTaskFlowGraphResponseBody) SetTaskFlowGraph(v *GetTaskFlowGraphRespo
 }
 
 func (s *GetTaskFlowGraphResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskFlowGraph != nil {
+		if err := s.TaskFlowGraph.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTaskFlowGraphResponseBodyTaskFlowGraph struct {
@@ -200,7 +205,17 @@ func (s *GetTaskFlowGraphResponseBodyTaskFlowGraph) SetStatus(v int64) *GetTaskF
 }
 
 func (s *GetTaskFlowGraphResponseBodyTaskFlowGraph) Validate() error {
-	return dara.Validate(s)
+	if s.Edges != nil {
+		if err := s.Edges.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Nodes != nil {
+		if err := s.Nodes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTaskFlowGraphResponseBodyTaskFlowGraphEdges struct {
@@ -225,7 +240,16 @@ func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphEdges) SetEdge(v []*GetTaskFlo
 }
 
 func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphEdges) Validate() error {
-	return dara.Validate(s)
+	if s.Edge != nil {
+		for _, item := range s.Edge {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTaskFlowGraphResponseBodyTaskFlowGraphEdgesEdge struct {
@@ -325,7 +349,16 @@ func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphNodes) SetNode(v []*GetTaskFlo
 }
 
 func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphNodes) Validate() error {
-	return dara.Validate(s)
+	if s.Node != nil {
+		for _, item := range s.Node {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode struct {

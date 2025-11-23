@@ -108,7 +108,12 @@ func (s *GetUserActiveTenantResponseBody) SetTenant(v *GetUserActiveTenantRespon
 }
 
 func (s *GetUserActiveTenantResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tenant != nil {
+		if err := s.Tenant.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserActiveTenantResponseBodyTenant struct {

@@ -22,28 +22,38 @@ type iCreateWorkspaceRequest interface {
 }
 
 type CreateWorkspaceRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
 	// example:
 	//
 	// token-xxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The region to which the workspace belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The VPC ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vpc-xxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -108,7 +108,12 @@ func (s *GetPermApplyOrderDetailResponseBody) SetSuccess(v bool) *GetPermApplyOr
 }
 
 func (s *GetPermApplyOrderDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PermApplyOrderDetail != nil {
+		if err := s.PermApplyOrderDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail struct {
@@ -203,7 +208,16 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) SetSeconds(v i
 }
 
 func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources struct {
@@ -282,7 +296,37 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) SetTa
 }
 
 func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnInfo != nil {
+		if err := s.ColumnInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DatabaseInfo != nil {
+		if err := s.DatabaseInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceInfo != nil {
+		if err := s.InstanceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RowInfo != nil {
+		if err := s.RowInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RowValueInfo != nil {
+		if err := s.RowValueInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TableInfo != nil {
+		if err := s.TableInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo struct {

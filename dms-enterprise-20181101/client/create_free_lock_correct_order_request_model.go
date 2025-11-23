@@ -116,7 +116,12 @@ func (s *CreateFreeLockCorrectOrderRequest) SetTid(v int64) *CreateFreeLockCorre
 }
 
 func (s *CreateFreeLockCorrectOrderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Param != nil {
+		if err := s.Param.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateFreeLockCorrectOrderRequestParam struct {
@@ -282,7 +287,16 @@ func (s *CreateFreeLockCorrectOrderRequestParam) SetSqlType(v string) *CreateFre
 }
 
 func (s *CreateFreeLockCorrectOrderRequestParam) Validate() error {
-	return dara.Validate(s)
+	if s.DbItemList != nil {
+		for _, item := range s.DbItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateFreeLockCorrectOrderRequestParamDbItemList struct {

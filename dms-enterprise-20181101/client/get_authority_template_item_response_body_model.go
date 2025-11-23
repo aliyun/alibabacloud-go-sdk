@@ -125,7 +125,12 @@ func (s *GetAuthorityTemplateItemResponseBody) SetTid(v int64) *GetAuthorityTemp
 }
 
 func (s *GetAuthorityTemplateItemResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorityTemplateItemList != nil {
+		if err := s.AuthorityTemplateItemList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemList struct {
@@ -150,7 +155,16 @@ func (s *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemList) SetAutho
 }
 
 func (s *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemList) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorityTemplateItem != nil {
+		for _, item := range s.AuthorityTemplateItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem struct {

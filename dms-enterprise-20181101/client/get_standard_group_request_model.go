@@ -16,12 +16,18 @@ type iGetStandardGroupRequest interface {
 }
 
 type GetStandardGroupRequest struct {
+	// The security rule set ID. You can call the [ListStandardGroups](https://help.aliyun.com/document_detail/465940.html) operation to obtain the ID of the security rule set.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 242***
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
+	//
 	// example:
 	//
 	// 23****

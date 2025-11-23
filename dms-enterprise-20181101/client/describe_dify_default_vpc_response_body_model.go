@@ -107,7 +107,12 @@ func (s *DescribeDifyDefaultVpcResponseBody) SetSuccess(v bool) *DescribeDifyDef
 }
 
 func (s *DescribeDifyDefaultVpcResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDifyDefaultVpcResponseBodyData struct {

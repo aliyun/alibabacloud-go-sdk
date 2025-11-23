@@ -108,7 +108,12 @@ func (s *GetLhSpaceByNameResponseBody) SetSuccess(v bool) *GetLhSpaceByNameRespo
 }
 
 func (s *GetLhSpaceByNameResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LakehouseSpace != nil {
+		if err := s.LakehouseSpace.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLhSpaceByNameResponseBodyLakehouseSpace struct {

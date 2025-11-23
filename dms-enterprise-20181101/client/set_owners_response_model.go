@@ -59,5 +59,10 @@ func (s *SetOwnersResponse) SetBody(v *SetOwnersResponseBody) *SetOwnersResponse
 }
 
 func (s *SetOwnersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

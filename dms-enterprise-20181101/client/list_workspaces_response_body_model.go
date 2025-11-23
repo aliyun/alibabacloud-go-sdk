@@ -28,31 +28,50 @@ type iListWorkspacesResponseBody interface {
 }
 
 type ListWorkspacesResponseBody struct {
+	// The dataset.
 	Data *ListWorkspacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// UserNotExist
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The total number of workspaces that meet the condition, which is the same as the TotalCount parameter.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// NextToken does not take effect.
+	//
 	// example:
 	//
 	// token-xxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EE214ECD-4330-503A-82F0-FFB03975****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// 	- **true**: The request succeeded.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of workspaces that meet the conditions.
+	//
 	// example:
 	//
 	// 10
@@ -140,7 +159,12 @@ func (s *ListWorkspacesResponseBody) SetTotalCount(v int64) *ListWorkspacesRespo
 }
 
 func (s *ListWorkspacesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWorkspacesResponseBodyData struct {
@@ -165,82 +189,129 @@ func (s *ListWorkspacesResponseBodyData) SetBaseWorkspaces(v []*ListWorkspacesRe
 }
 
 func (s *ListWorkspacesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.BaseWorkspaces != nil {
+		for _, item := range s.BaseWorkspaces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkspacesResponseBodyDataBaseWorkspaces struct {
+	// Whether the current user has joined the workspace.
+	//
 	// example:
 	//
 	// true
 	AlreadyJoined *bool `json:"AlreadyJoined,omitempty" xml:"AlreadyJoined,omitempty"`
+	// The ID of the creator.
+	//
 	// example:
 	//
 	// 123
 	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The nickname of the creator.
+	//
 	// example:
 	//
 	// work*****
 	CreatorNickName *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
+	// The Alibaba Cloud account UID of the creator.
+	//
 	// example:
 	//
 	// 1344****
 	CreatorUid *string `json:"CreatorUid,omitempty" xml:"CreatorUid,omitempty"`
+	// The description of the workspace.
+	//
 	// example:
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-01-01 00:00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2025-01-01 00:00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// workspace-xxxx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner ID.
+	//
 	// example:
 	//
 	// 123****
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The nickname of the owner.
+	//
 	// example:
 	//
 	// hel****
 	OwnerNickName *string `json:"OwnerNickName,omitempty" xml:"OwnerNickName,omitempty"`
+	// The Alibaba Cloud UID of the owner.
+	//
 	// example:
 	//
 	// 15608564799****
 	OwnerUid *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the service account.
+	//
 	// example:
 	//
 	// 12345
 	ServiceAccountId *int64 `json:"ServiceAccountId,omitempty" xml:"ServiceAccountId,omitempty"`
+	// The nickname of the service account.
+	//
 	// example:
 	//
 	// testname
 	ServiceAccountNickName *string `json:"ServiceAccountNickName,omitempty" xml:"ServiceAccountNickName,omitempty"`
+	// The Alibaba Cloud account UID of the service account.
+	//
 	// example:
 	//
 	// 1422****
 	ServiceAccountUid *string `json:"ServiceAccountUid,omitempty" xml:"ServiceAccountUid,omitempty"`
+	// The ID of the tenant to which the workspace belongs.
+	//
 	// example:
 	//
 	// 23456
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-25fl3qjqb****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 8652340494****
 	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// test-workspace

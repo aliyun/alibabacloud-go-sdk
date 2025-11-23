@@ -22,22 +22,35 @@ type iPreviewWorkflowResponseBody interface {
 }
 
 type PreviewWorkflowResponseBody struct {
+	// The error code returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID. You can use the request ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
-	Success        *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The details of the workflow.
 	WorkflowDetail *PreviewWorkflowResponseBodyWorkflowDetail `json:"WorkflowDetail,omitempty" xml:"WorkflowDetail,omitempty" type:"Struct"`
 }
 
@@ -95,12 +108,20 @@ func (s *PreviewWorkflowResponseBody) SetWorkflowDetail(v *PreviewWorkflowRespon
 }
 
 func (s *PreviewWorkflowResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WorkflowDetail != nil {
+		if err := s.WorkflowDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PreviewWorkflowResponseBodyWorkflowDetail struct {
-	Comment          *string                                                    `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	WfCateName       *string                                                    `json:"WfCateName,omitempty" xml:"WfCateName,omitempty"`
+	// The remarks of the approval template.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The name of the approval template.
+	WfCateName *string `json:"WfCateName,omitempty" xml:"WfCateName,omitempty"`
+	// The approval nodes.
 	WorkflowNodeList *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeList `json:"WorkflowNodeList,omitempty" xml:"WorkflowNodeList,omitempty" type:"Struct"`
 }
 
@@ -140,7 +161,12 @@ func (s *PreviewWorkflowResponseBodyWorkflowDetail) SetWorkflowNodeList(v *Previ
 }
 
 func (s *PreviewWorkflowResponseBodyWorkflowDetail) Validate() error {
-	return dara.Validate(s)
+	if s.WorkflowNodeList != nil {
+		if err := s.WorkflowNodeList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeList struct {
@@ -165,16 +191,39 @@ func (s *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeList) SetWorkflowN
 }
 
 func (s *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeList) Validate() error {
-	return dara.Validate(s)
+	if s.WorkflowNode != nil {
+		for _, item := range s.WorkflowNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode struct {
+	// The approvers.
 	AuditUserList *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserList `json:"AuditUserList,omitempty" xml:"AuditUserList,omitempty" type:"Struct"`
-	Comment       *string                                                                             `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The remarks of the approval node.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The name of the approval node.
+	//
 	// example:
 	//
 	// Owner
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The type of the approval node.
+	//
+	// Valid values:
+	//
+	// 	- USER_LIST: The approval node is created by a user.
+	//
+	// 	- UNKNOWN: The source of the approval node is unknown.
+	//
+	// 	- SYS: The approval node is predefined by the system.
+	//
 	// example:
 	//
 	// SYS
@@ -226,7 +275,12 @@ func (s *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode) 
 }
 
 func (s *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode) Validate() error {
-	return dara.Validate(s)
+	if s.AuditUserList != nil {
+		if err := s.AuditUserList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserList struct {
@@ -251,18 +305,33 @@ func (s *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAu
 }
 
 func (s *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserList) Validate() error {
-	return dara.Validate(s)
+	if s.AuditUser != nil {
+		for _, item := range s.AuditUser {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserListAuditUser struct {
+	// The nickname of the approver.
+	//
 	// example:
 	//
 	// Owner
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// The name of the approver.
+	//
 	// example:
 	//
 	// db_test
 	RealName *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
+	// The ID of the approver.
+	//
 	// example:
 	//
 	// 16***

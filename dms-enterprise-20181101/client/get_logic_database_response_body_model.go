@@ -108,7 +108,12 @@ func (s *GetLogicDatabaseResponseBody) SetSuccess(v bool) *GetLogicDatabaseRespo
 }
 
 func (s *GetLogicDatabaseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LogicDatabase != nil {
+		if err := s.LogicDatabase.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLogicDatabaseResponseBodyLogicDatabase struct {
@@ -277,7 +282,22 @@ func (s *GetLogicDatabaseResponseBodyLogicDatabase) SetSearchName(v string) *Get
 }
 
 func (s *GetLogicDatabaseResponseBodyLogicDatabase) Validate() error {
-	return dara.Validate(s)
+	if s.DatabaseIds != nil {
+		if err := s.DatabaseIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OwnerIdList != nil {
+		if err := s.OwnerIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OwnerNameList != nil {
+		if err := s.OwnerNameList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLogicDatabaseResponseBodyLogicDatabaseDatabaseIds struct {

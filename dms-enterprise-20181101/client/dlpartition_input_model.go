@@ -83,5 +83,10 @@ func (s *DLPartitionInput) SetValues(v []*string) *DLPartitionInput {
 }
 
 func (s *DLPartitionInput) Validate() error {
-	return dara.Validate(s)
+	if s.StorageDescriptor != nil {
+		if err := s.StorageDescriptor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

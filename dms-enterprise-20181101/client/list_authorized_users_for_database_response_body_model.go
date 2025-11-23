@@ -16,11 +16,14 @@ type iListAuthorizedUsersForDatabaseResponseBody interface {
 }
 
 type ListAuthorizedUsersForDatabaseResponseBody struct {
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// FE8EE2F1-4880-46BC-A704-5CF63EAF9A04
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Users     []*ListAuthorizedUsersForDatabaseResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of users that have permissions on the specified instance.
+	Users []*ListAuthorizedUsersForDatabaseResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s ListAuthorizedUsersForDatabaseResponseBody) String() string {
@@ -50,18 +53,33 @@ func (s *ListAuthorizedUsersForDatabaseResponseBody) SetUsers(v []*ListAuthorize
 }
 
 func (s *ListAuthorizedUsersForDatabaseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Users != nil {
+		for _, item := range s.Users {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAuthorizedUsersForDatabaseResponseBodyUsers struct {
+	// The UID of the user\\"s Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 164882191****
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The user IDs.
+	//
 	// example:
 	//
 	// 51****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The nickname of the user.
+	//
 	// example:
 	//
 	// user_test

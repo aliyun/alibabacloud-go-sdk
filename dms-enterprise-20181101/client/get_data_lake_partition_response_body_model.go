@@ -22,19 +22,32 @@ type iGetDataLakePartitionResponseBody interface {
 }
 
 type GetDataLakePartitionResponseBody struct {
+	// The error code that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Partition    *DLPartition `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The queried partition.
+	Partition *DLPartition `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	// The request ID. You can use the request ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// FE8EE2F1-4880-46BC-A704-5CF63EAF9A04
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -95,5 +108,10 @@ func (s *GetDataLakePartitionResponseBody) SetSuccess(v bool) *GetDataLakePartit
 }
 
 func (s *GetDataLakePartitionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Partition != nil {
+		if err := s.Partition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

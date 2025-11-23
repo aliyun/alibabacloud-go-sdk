@@ -104,7 +104,12 @@ func (s *GetStructSyncJobAnalyzeResultResponseBody) SetSuccess(v bool) *GetStruc
 }
 
 func (s *GetStructSyncJobAnalyzeResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StructSyncJobAnalyzeResult != nil {
+		if err := s.StructSyncJobAnalyzeResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResult struct {
@@ -141,7 +146,25 @@ func (s *GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResult) Se
 }
 
 func (s *GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResult) Validate() error {
-	return dara.Validate(s)
+	if s.ResultList != nil {
+		for _, item := range s.ResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SummaryList != nil {
+		for _, item := range s.SummaryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResultResultList struct {

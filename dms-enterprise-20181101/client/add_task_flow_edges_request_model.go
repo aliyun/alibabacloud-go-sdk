@@ -76,7 +76,16 @@ func (s *AddTaskFlowEdgesRequest) SetTid(v int64) *AddTaskFlowEdgesRequest {
 }
 
 func (s *AddTaskFlowEdgesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Edges != nil {
+		for _, item := range s.Edges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddTaskFlowEdgesRequestEdges struct {

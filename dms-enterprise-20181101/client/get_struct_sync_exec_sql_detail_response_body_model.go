@@ -104,7 +104,12 @@ func (s *GetStructSyncExecSqlDetailResponseBody) SetSuccess(v bool) *GetStructSy
 }
 
 func (s *GetStructSyncExecSqlDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StructSyncExecSqlDetail != nil {
+		if err := s.StructSyncExecSqlDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail struct {

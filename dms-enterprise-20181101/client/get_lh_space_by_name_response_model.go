@@ -59,5 +59,10 @@ func (s *GetLhSpaceByNameResponse) SetBody(v *GetLhSpaceByNameResponseBody) *Get
 }
 
 func (s *GetLhSpaceByNameResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

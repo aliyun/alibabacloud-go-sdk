@@ -59,5 +59,10 @@ func (s *SyncDatabaseMetaResponse) SetBody(v *SyncDatabaseMetaResponseBody) *Syn
 }
 
 func (s *SyncDatabaseMetaResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

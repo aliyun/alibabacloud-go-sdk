@@ -59,5 +59,10 @@ func (s *DeleteTaskResponse) SetBody(v *DeleteTaskResponseBody) *DeleteTaskRespo
 }
 
 func (s *DeleteTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -108,7 +108,12 @@ func (s *GetDatabaseExportOrderDetailResponseBody) SetSuccess(v bool) *GetDataba
 }
 
 func (s *GetDatabaseExportOrderDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DatabaseExportOrderDetail != nil {
+		if err := s.DatabaseExportOrderDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail struct {
@@ -256,7 +261,12 @@ func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail) SetW
 }
 
 func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail) Validate() error {
-	return dara.Validate(s)
+	if s.KeyInfo != nil {
+		if err := s.KeyInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo struct {
@@ -327,7 +337,12 @@ func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInf
 }
 
 func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig struct {
@@ -432,7 +447,22 @@ func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInf
 }
 
 func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ExportTypes != nil {
+		if err := s.ExportTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SQLExtOption != nil {
+		if err := s.SQLExtOption.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SelectedTables != nil {
+		if err := s.SelectedTables.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigExportTypes struct {

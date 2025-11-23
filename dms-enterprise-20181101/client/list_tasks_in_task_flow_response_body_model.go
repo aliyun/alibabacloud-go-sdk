@@ -108,7 +108,12 @@ func (s *ListTasksInTaskFlowResponseBody) SetTasks(v *ListTasksInTaskFlowRespons
 }
 
 func (s *ListTasksInTaskFlowResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tasks != nil {
+		if err := s.Tasks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTasksInTaskFlowResponseBodyTasks struct {
@@ -133,7 +138,16 @@ func (s *ListTasksInTaskFlowResponseBodyTasks) SetTask(v []*ListTasksInTaskFlowR
 }
 
 func (s *ListTasksInTaskFlowResponseBodyTasks) Validate() error {
-	return dara.Validate(s)
+	if s.Task != nil {
+		for _, item := range s.Task {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTasksInTaskFlowResponseBodyTasksTask struct {

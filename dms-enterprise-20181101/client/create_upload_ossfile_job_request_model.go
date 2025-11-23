@@ -105,7 +105,12 @@ func (s *CreateUploadOSSFileJobRequest) SetUploadTarget(v *CreateUploadOSSFileJo
 }
 
 func (s *CreateUploadOSSFileJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UploadTarget != nil {
+		if err := s.UploadTarget.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateUploadOSSFileJobRequestUploadTarget struct {

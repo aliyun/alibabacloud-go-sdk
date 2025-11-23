@@ -104,7 +104,12 @@ func (s *GetMetaTableDetailInfoResponseBody) SetSuccess(v bool) *GetMetaTableDet
 }
 
 func (s *GetMetaTableDetailInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DetailInfo != nil {
+		if err := s.DetailInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMetaTableDetailInfoResponseBodyDetailInfo struct {
@@ -141,7 +146,25 @@ func (s *GetMetaTableDetailInfoResponseBodyDetailInfo) SetIndexList(v []*GetMeta
 }
 
 func (s *GetMetaTableDetailInfoResponseBodyDetailInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnList != nil {
+		for _, item := range s.ColumnList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IndexList != nil {
+		for _, item := range s.IndexList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMetaTableDetailInfoResponseBodyDetailInfoColumnList struct {

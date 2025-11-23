@@ -108,7 +108,12 @@ func (s *GetUserResponseBody) SetUser(v *GetUserResponseBodyUser) *GetUserRespon
 }
 
 func (s *GetUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.User != nil {
+		if err := s.User.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserResponseBodyUser struct {
@@ -431,7 +436,17 @@ func (s *GetUserResponseBodyUser) SetWebhook(v string) *GetUserResponseBodyUser 
 }
 
 func (s *GetUserResponseBodyUser) Validate() error {
-	return dara.Validate(s)
+	if s.RoleIdList != nil {
+		if err := s.RoleIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RoleNameList != nil {
+		if err := s.RoleNameList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserResponseBodyUserRoleIdList struct {

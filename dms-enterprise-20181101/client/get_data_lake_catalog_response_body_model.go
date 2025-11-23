@@ -22,19 +22,32 @@ type iGetDataLakeCatalogResponseBody interface {
 }
 
 type GetDataLakeCatalogResponseBody struct {
+	// The information about the catalog.
 	Catalog *DLCatalog `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
+	// The error code that is returned if the request failed.
+	//
 	// example:
 	//
 	// 400
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// code: 404, can not find catalog, name : hiv request id: 6090E571-E5B1-1E6D-BF44-F9E10E8B7EB1
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID. You can use the request ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// FE8EE2F1-4880-46BC-A704-5CF63EAF9A04
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -95,5 +108,10 @@ func (s *GetDataLakeCatalogResponseBody) SetSuccess(v bool) *GetDataLakeCatalogR
 }
 
 func (s *GetDataLakeCatalogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Catalog != nil {
+		if err := s.Catalog.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

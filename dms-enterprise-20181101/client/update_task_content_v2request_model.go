@@ -16,10 +16,16 @@ type iUpdateTaskContentV2Request interface {
 }
 
 type UpdateTaskContentV2Request struct {
+	// The node configurations after modification.
+	//
+	// >  We recommend that you change the SQL type from SELECT to INSERT/CREATE.
+	//
 	// example:
 	//
 	// { "dbId":12****, "sql":"select 	- from test_table",   "dbType":"lindorm_sql"  }
 	NodeContent *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
+	// The ID of the task node. You can call the [GetTaskInstanceRelation](https://help.aliyun.com/document_detail/424711.html) operation to query the node ID.
+	//
 	// example:
 	//
 	// 449***

@@ -131,7 +131,12 @@ func (s *ListDifyInstancesResponseBody) SetSuccess(v bool) *ListDifyInstancesRes
 }
 
 func (s *ListDifyInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Root != nil {
+		if err := s.Root.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDifyInstancesResponseBodyRoot struct {
@@ -156,7 +161,16 @@ func (s *ListDifyInstancesResponseBodyRoot) SetData(v []*ListDifyInstancesRespon
 }
 
 func (s *ListDifyInstancesResponseBodyRoot) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDifyInstancesResponseBodyRootData struct {

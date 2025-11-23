@@ -22,19 +22,32 @@ type iGetDbExportDownloadURLResponseBody interface {
 }
 
 type GetDbExportDownloadURLResponseBody struct {
+	// The download URL of the exported file.
 	DownloadURLResult *GetDbExportDownloadURLResponseBodyDownloadURLResult `json:"DownloadURLResult,omitempty" xml:"DownloadURLResult,omitempty" type:"Struct"`
+	// The error code returned.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID. You can use the request ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true: The request succeeded.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -95,18 +108,33 @@ func (s *GetDbExportDownloadURLResponseBody) SetSuccess(v bool) *GetDbExportDown
 }
 
 func (s *GetDbExportDownloadURLResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DownloadURLResult != nil {
+		if err := s.DownloadURLResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDbExportDownloadURLResponseBodyDownloadURLResult struct {
+	// Indicates whether export results are available for download. Valid values:
+	//
+	// 	- **true**: Export results are available for download.
+	//
+	// 	- **false**: No export results are available for download.
+	//
 	// example:
 	//
 	// true
 	HasResult *bool `json:"HasResult,omitempty" xml:"HasResult,omitempty"`
+	// The message that indicates an exception.
+	//
 	// example:
 	//
 	// tip message
 	TipMessage *string `json:"TipMessage,omitempty" xml:"TipMessage,omitempty"`
+	// The download URL of the exported file.
+	//
 	// example:
 	//
 	// https://dms-idb-hangzhou.oss-cn-hangzhou.aliyuncs.com/xxx.zip

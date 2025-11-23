@@ -119,5 +119,10 @@ func (s *DLPartition) SetValues(v []*string) *DLPartition {
 }
 
 func (s *DLPartition) Validate() error {
-	return dara.Validate(s)
+	if s.Sd != nil {
+		if err := s.Sd.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

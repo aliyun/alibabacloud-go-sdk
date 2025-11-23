@@ -108,7 +108,16 @@ func (s *ListDataCorrectPreCheckSQLResponseBody) SetSuccess(v bool) *ListDataCor
 }
 
 func (s *ListDataCorrectPreCheckSQLResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PreCheckSQLList != nil {
+		for _, item := range s.PreCheckSQLList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList struct {

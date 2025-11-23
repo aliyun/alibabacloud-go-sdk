@@ -22,19 +22,32 @@ type iGetClassificationTemplateResponseBody interface {
 }
 
 type GetClassificationTemplateResponseBody struct {
+	// The information about the classification template that is associated to the instance.
 	ClassificationResourceTemplateMap *GetClassificationTemplateResponseBodyClassificationResourceTemplateMap `json:"ClassificationResourceTemplateMap,omitempty" xml:"ClassificationResourceTemplateMap,omitempty" type:"Struct"`
+	// The error code returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 427688B8-ADFB-4C4E-9D45-EF5C1FD6E23D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -95,22 +108,39 @@ func (s *GetClassificationTemplateResponseBody) SetSuccess(v bool) *GetClassific
 }
 
 func (s *GetClassificationTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClassificationResourceTemplateMap != nil {
+		if err := s.ClassificationResourceTemplateMap.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetClassificationTemplateResponseBodyClassificationResourceTemplateMap struct {
+	// The ID of the resource. The supported resource type is INSTANCE. The resource ID corresponds to the value of InstanceId. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) operation to obtain the value of InstanceId.
+	//
 	// example:
 	//
 	// 24****
 	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type. The value is fixed as **INSTANCE**.
+	//
 	// example:
 	//
 	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ID of the classification and grading template.
+	//
 	// example:
 	//
 	// 3***
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The type of the classification and grading template. Valid values:
+	//
+	// 	- **INNER**: a built-in template.
+	//
+	// 	- **USER_DEFINE**: a custom template.
+	//
 	// example:
 	//
 	// INNER

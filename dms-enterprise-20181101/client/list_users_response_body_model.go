@@ -125,7 +125,12 @@ func (s *ListUsersResponseBody) SetUserList(v *ListUsersResponseBodyUserList) *L
 }
 
 func (s *ListUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserList != nil {
+		if err := s.UserList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUsersResponseBodyUserList struct {
@@ -150,7 +155,16 @@ func (s *ListUsersResponseBodyUserList) SetUser(v []*ListUsersResponseBodyUserLi
 }
 
 func (s *ListUsersResponseBodyUserList) Validate() error {
-	return dara.Validate(s)
+	if s.User != nil {
+		for _, item := range s.User {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUsersResponseBodyUserListUser struct {
@@ -471,7 +485,17 @@ func (s *ListUsersResponseBodyUserListUser) SetWebhook(v string) *ListUsersRespo
 }
 
 func (s *ListUsersResponseBodyUserListUser) Validate() error {
-	return dara.Validate(s)
+	if s.RoleIdList != nil {
+		if err := s.RoleIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RoleNameList != nil {
+		if err := s.RoleNameList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUsersResponseBodyUserListUserRoleIdList struct {

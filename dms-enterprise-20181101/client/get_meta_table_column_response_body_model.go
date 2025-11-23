@@ -108,7 +108,16 @@ func (s *GetMetaTableColumnResponseBody) SetSuccess(v bool) *GetMetaTableColumnR
 }
 
 func (s *GetMetaTableColumnResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnList != nil {
+		for _, item := range s.ColumnList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMetaTableColumnResponseBodyColumnList struct {

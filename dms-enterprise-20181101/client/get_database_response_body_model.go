@@ -108,7 +108,12 @@ func (s *GetDatabaseResponseBody) SetSuccess(v bool) *GetDatabaseResponseBody {
 }
 
 func (s *GetDatabaseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Database != nil {
+		if err := s.Database.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDatabaseResponseBodyDatabase struct {
@@ -396,7 +401,17 @@ func (s *GetDatabaseResponseBodyDatabase) SetState(v string) *GetDatabaseRespons
 }
 
 func (s *GetDatabaseResponseBodyDatabase) Validate() error {
-	return dara.Validate(s)
+	if s.OwnerIdList != nil {
+		if err := s.OwnerIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OwnerNameList != nil {
+		if err := s.OwnerNameList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDatabaseResponseBodyDatabaseOwnerIdList struct {

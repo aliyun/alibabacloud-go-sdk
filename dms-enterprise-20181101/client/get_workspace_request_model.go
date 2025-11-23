@@ -14,6 +14,8 @@ type iGetWorkspaceRequest interface {
 }
 
 type GetWorkspaceRequest struct {
+	// The ID of the DMS workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

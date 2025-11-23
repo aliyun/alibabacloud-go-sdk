@@ -125,7 +125,12 @@ func (s *GetDataArchiveOrderDetailResponseBody) SetTraceId(v string) *GetDataArc
 }
 
 func (s *GetDataArchiveOrderDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataArchiveOrderDetail != nil {
+		if err := s.DataArchiveOrderDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetail struct {
@@ -363,7 +368,17 @@ func (s *GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetail) SetWorkflo
 }
 
 func (s *GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetail) Validate() error {
-	return dara.Validate(s)
+	if s.PluginExtraData != nil {
+		if err := s.PluginExtraData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PluginParam != nil {
+		if err := s.PluginParam.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData struct {
@@ -490,7 +505,31 @@ func (s *GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraD
 }
 
 func (s *GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData) Validate() error {
-	return dara.Validate(s)
+	if s.DagInfo != nil {
+		if err := s.DagInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DbBaseInfo != nil {
+		if err := s.DbBaseInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NextFireTimeResult != nil {
+		if err := s.NextFireTimeResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraDataDagInfo struct {
@@ -1315,7 +1354,12 @@ func (s *GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraD
 }
 
 func (s *GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraDataDbBaseInfo) Validate() error {
-	return dara.Validate(s)
+	if s.StandardGroup != nil {
+		if err := s.StandardGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraDataDbBaseInfoStandardGroup struct {
@@ -1894,7 +1938,16 @@ func (s *GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginParam)
 }
 
 func (s *GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginParam) Validate() error {
-	return dara.Validate(s)
+	if s.TableIncludes != nil {
+		for _, item := range s.TableIncludes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginParamTableIncludes struct {

@@ -155,5 +155,14 @@ func (s *DLFunction) SetResourceUris(v []*DLResourceUri) *DLFunction {
 }
 
 func (s *DLFunction) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceUris != nil {
+		for _, item := range s.ResourceUris {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

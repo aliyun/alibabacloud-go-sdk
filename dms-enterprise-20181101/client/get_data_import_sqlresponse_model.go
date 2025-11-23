@@ -59,5 +59,10 @@ func (s *GetDataImportSQLResponse) SetBody(v *GetDataImportSQLResponseBody) *Get
 }
 
 func (s *GetDataImportSQLResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

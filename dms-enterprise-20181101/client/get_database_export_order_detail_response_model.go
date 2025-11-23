@@ -59,5 +59,10 @@ func (s *GetDatabaseExportOrderDetailResponse) SetBody(v *GetDatabaseExportOrder
 }
 
 func (s *GetDatabaseExportOrderDetailResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

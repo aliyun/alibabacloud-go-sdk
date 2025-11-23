@@ -22,19 +22,32 @@ type iCreateProcCorrectOrderShrinkRequest interface {
 }
 
 type CreateProcCorrectOrderShrinkRequest struct {
+	// The key of the attachment for the ticket. The attachment provides more instructions for this operation.
+	//
+	// You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to query the key of the attachment.
+	//
 	// example:
 	//
 	// order_attachment.txt
 	AttachmentKey *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	// The remarks of the ticket.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The parameters of the ticket.
+	//
 	// This parameter is required.
-	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	ParamShrink *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// The operators that are related to the ticket.
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
+	// The ID of the tenant.
+	//
+	// >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
+	//
 	// example:
 	//
 	// 4***

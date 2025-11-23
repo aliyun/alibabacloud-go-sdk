@@ -72,7 +72,12 @@ func (s *ListSQLReviewOriginSQLRequest) SetTid(v int64) *ListSQLReviewOriginSQLR
 }
 
 func (s *ListSQLReviewOriginSQLRequest) Validate() error {
-	return dara.Validate(s)
+	if s.OrderActionDetail != nil {
+		if err := s.OrderActionDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSQLReviewOriginSQLRequestOrderActionDetail struct {
@@ -167,7 +172,12 @@ func (s *ListSQLReviewOriginSQLRequestOrderActionDetail) SetSQLReviewResult(v st
 }
 
 func (s *ListSQLReviewOriginSQLRequestOrderActionDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Page != nil {
+		if err := s.Page.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSQLReviewOriginSQLRequestOrderActionDetailPage struct {

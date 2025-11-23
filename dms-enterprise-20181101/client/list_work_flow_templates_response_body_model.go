@@ -104,7 +104,12 @@ func (s *ListWorkFlowTemplatesResponseBody) SetWorkFlowTemplates(v *ListWorkFlow
 }
 
 func (s *ListWorkFlowTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WorkFlowTemplates != nil {
+		if err := s.WorkFlowTemplates.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWorkFlowTemplatesResponseBodyWorkFlowTemplates struct {
@@ -129,7 +134,16 @@ func (s *ListWorkFlowTemplatesResponseBodyWorkFlowTemplates) SetWorkFlowTemplate
 }
 
 func (s *ListWorkFlowTemplatesResponseBodyWorkFlowTemplates) Validate() error {
-	return dara.Validate(s)
+	if s.WorkFlowTemplate != nil {
+		for _, item := range s.WorkFlowTemplate {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplate struct {
@@ -253,7 +267,12 @@ func (s *ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplate) Set
 }
 
 func (s *ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplate) Validate() error {
-	return dara.Validate(s)
+	if s.WorkflowNodes != nil {
+		if err := s.WorkflowNodes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplateWorkflowNodes struct {
@@ -278,7 +297,16 @@ func (s *ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplateWorkf
 }
 
 func (s *ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplateWorkflowNodes) Validate() error {
-	return dara.Validate(s)
+	if s.WorkflowNode != nil {
+		for _, item := range s.WorkflowNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplateWorkflowNodesWorkflowNode struct {

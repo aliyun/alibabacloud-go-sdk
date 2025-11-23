@@ -104,7 +104,12 @@ func (s *GetPhysicalDatabaseResponseBody) SetSuccess(v bool) *GetPhysicalDatabas
 }
 
 func (s *GetPhysicalDatabaseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Database != nil {
+		if err := s.Database.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPhysicalDatabaseResponseBodyDatabase struct {
@@ -380,7 +385,17 @@ func (s *GetPhysicalDatabaseResponseBodyDatabase) SetState(v string) *GetPhysica
 }
 
 func (s *GetPhysicalDatabaseResponseBodyDatabase) Validate() error {
-	return dara.Validate(s)
+	if s.OwnerIdList != nil {
+		if err := s.OwnerIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OwnerNameList != nil {
+		if err := s.OwnerNameList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList struct {

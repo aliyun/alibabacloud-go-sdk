@@ -18,13 +18,18 @@ type iUpdateMetaCategoryRequest interface {
 }
 
 type UpdateMetaCategoryRequest struct {
+	// The category ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30000181325
-	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The updated name of the category.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
+	//
 	// example:
 	//
 	// 23****

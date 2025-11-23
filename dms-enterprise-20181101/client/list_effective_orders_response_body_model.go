@@ -108,7 +108,16 @@ func (s *ListEffectiveOrdersResponseBody) SetSuccess(v bool) *ListEffectiveOrder
 }
 
 func (s *ListEffectiveOrdersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OrderSummary != nil {
+		for _, item := range s.OrderSummary {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEffectiveOrdersResponseBodyOrderSummary struct {
@@ -206,7 +215,16 @@ func (s *ListEffectiveOrdersResponseBodyOrderSummary) SetVersionType(v string) *
 }
 
 func (s *ListEffectiveOrdersResponseBodyOrderSummary) Validate() error {
-	return dara.Validate(s)
+	if s.OrderList != nil {
+		for _, item := range s.OrderList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEffectiveOrdersResponseBodyOrderSummaryOrderList struct {

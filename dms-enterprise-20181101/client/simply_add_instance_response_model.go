@@ -59,5 +59,10 @@ func (s *SimplyAddInstanceResponse) SetBody(v *SimplyAddInstanceResponseBody) *S
 }
 
 func (s *SimplyAddInstanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

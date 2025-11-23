@@ -59,5 +59,10 @@ func (s *GetOrderBaseInfoResponse) SetBody(v *GetOrderBaseInfoResponseBody) *Get
 }
 
 func (s *GetOrderBaseInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

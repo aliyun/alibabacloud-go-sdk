@@ -108,7 +108,16 @@ func (s *ListScenariosResponseBody) SetSuccess(v bool) *ListScenariosResponseBod
 }
 
 func (s *ListScenariosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ScenarioList != nil {
+		for _, item := range s.ScenarioList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListScenariosResponseBodyScenarioList struct {

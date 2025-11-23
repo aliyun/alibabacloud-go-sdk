@@ -59,5 +59,10 @@ func (s *GetDataCronClearConfigResponse) SetBody(v *GetDataCronClearConfigRespon
 }
 
 func (s *GetDataCronClearConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

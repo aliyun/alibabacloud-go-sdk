@@ -104,7 +104,12 @@ func (s *GetDataCorrectTaskDetailResponseBody) SetSuccess(v bool) *GetDataCorrec
 }
 
 func (s *GetDataCorrectTaskDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataCorrectTaskDetail != nil {
+		if err := s.DataCorrectTaskDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail struct {

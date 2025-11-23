@@ -108,7 +108,12 @@ func (s *GetDataCronClearConfigResponseBody) SetSuccess(v bool) *GetDataCronClea
 }
 
 func (s *GetDataCronClearConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataCronClearConfig != nil {
+		if err := s.DataCronClearConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataCronClearConfigResponseBodyDataCronClearConfig struct {

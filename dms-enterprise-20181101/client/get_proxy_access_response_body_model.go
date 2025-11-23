@@ -108,7 +108,12 @@ func (s *GetProxyAccessResponseBody) SetSuccess(v bool) *GetProxyAccessResponseB
 }
 
 func (s *GetProxyAccessResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProxyAccess != nil {
+		if err := s.ProxyAccess.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetProxyAccessResponseBodyProxyAccess struct {

@@ -108,7 +108,12 @@ func (s *ListTaskFlowConstantsResponseBody) SetSuccess(v bool) *ListTaskFlowCons
 }
 
 func (s *ListTaskFlowConstantsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DagConstants != nil {
+		if err := s.DagConstants.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTaskFlowConstantsResponseBodyDagConstants struct {
@@ -133,7 +138,16 @@ func (s *ListTaskFlowConstantsResponseBodyDagConstants) SetDagConstant(v []*List
 }
 
 func (s *ListTaskFlowConstantsResponseBodyDagConstants) Validate() error {
-	return dara.Validate(s)
+	if s.DagConstant != nil {
+		for _, item := range s.DagConstant {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTaskFlowConstantsResponseBodyDagConstantsDagConstant struct {

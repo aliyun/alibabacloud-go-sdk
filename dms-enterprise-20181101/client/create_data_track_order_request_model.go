@@ -87,7 +87,12 @@ func (s *CreateDataTrackOrderRequest) SetTid(v int64) *CreateDataTrackOrderReque
 }
 
 func (s *CreateDataTrackOrderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Param != nil {
+		if err := s.Param.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataTrackOrderRequestParam struct {

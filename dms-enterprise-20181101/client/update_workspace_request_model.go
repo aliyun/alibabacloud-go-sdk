@@ -20,20 +20,28 @@ type iUpdateWorkspaceRequest interface {
 }
 
 type UpdateWorkspaceRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
 	// example:
 	//
 	// token-xxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The new description of the workspace.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12****
 	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The new name of the workspace.
+	//
 	// example:
 	//
 	// workspace_xxx

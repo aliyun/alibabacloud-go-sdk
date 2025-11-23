@@ -59,6 +59,11 @@ func (s *ExecuteStructSyncResponse) SetBody(v *ExecuteStructSyncResponseBody) *E
 }
 
 func (s *ExecuteStructSyncResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

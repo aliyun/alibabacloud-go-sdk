@@ -121,7 +121,12 @@ func (s *ListDatabaseUserPermssionsResponseBody) SetUserPermissions(v *ListDatab
 }
 
 func (s *ListDatabaseUserPermssionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserPermissions != nil {
+		if err := s.UserPermissions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDatabaseUserPermssionsResponseBodyUserPermissions struct {
@@ -146,7 +151,16 @@ func (s *ListDatabaseUserPermssionsResponseBodyUserPermissions) SetUserPermissio
 }
 
 func (s *ListDatabaseUserPermssionsResponseBodyUserPermissions) Validate() error {
-	return dara.Validate(s)
+	if s.UserPermission != nil {
+		for _, item := range s.UserPermission {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermission struct {
@@ -382,7 +396,12 @@ func (s *ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermission) Se
 }
 
 func (s *ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermission) Validate() error {
-	return dara.Validate(s)
+	if s.PermDetails != nil {
+		if err := s.PermDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermissionPermDetails struct {
@@ -407,7 +426,16 @@ func (s *ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermissionPerm
 }
 
 func (s *ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermissionPermDetails) Validate() error {
-	return dara.Validate(s)
+	if s.PermDetail != nil {
+		for _, item := range s.PermDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail struct {

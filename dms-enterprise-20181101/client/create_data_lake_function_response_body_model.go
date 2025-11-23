@@ -22,19 +22,32 @@ type iCreateDataLakeFunctionResponseBody interface {
 }
 
 type CreateDataLakeFunctionResponseBody struct {
+	// The error code that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Function     *DLFunction `json:"Function,omitempty" xml:"Function,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The details about the function.
+	Function *DLFunction `json:"Function,omitempty" xml:"Function,omitempty"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// EE214ECD-4330-503A-82F0-FFB039757DC8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -95,5 +108,10 @@ func (s *CreateDataLakeFunctionResponseBody) SetSuccess(v bool) *CreateDataLakeF
 }
 
 func (s *CreateDataLakeFunctionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Function != nil {
+		if err := s.Function.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

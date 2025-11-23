@@ -104,7 +104,12 @@ func (s *GetOwnerApplyOrderDetailResponseBody) SetSuccess(v bool) *GetOwnerApply
 }
 
 func (s *GetOwnerApplyOrderDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OwnerApplyOrderDetail != nil {
+		if err := s.OwnerApplyOrderDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetail struct {
@@ -151,7 +156,16 @@ func (s *GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetail) SetResources
 }
 
 func (s *GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetailResources struct {
@@ -211,7 +225,12 @@ func (s *GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetailResources) Set
 }
 
 func (s *GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetailResources) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceDetail != nil {
+		if err := s.ResourceDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetailResourcesResourceDetail struct {

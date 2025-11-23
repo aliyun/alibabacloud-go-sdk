@@ -22,19 +22,32 @@ type iGetAbacPolicyResponseBody interface {
 }
 
 type GetAbacPolicyResponseBody struct {
+	// The error code returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Policy       *GetAbacPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The details of the policy.
+	Policy *GetAbacPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 2B7844DE-A0C3-50ED-A796-8F07D377144C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -95,18 +108,29 @@ func (s *GetAbacPolicyResponseBody) SetSuccess(v bool) *GetAbacPolicyResponseBod
 }
 
 func (s *GetAbacPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Policy != nil {
+		if err := s.Policy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAbacPolicyResponseBodyPolicy struct {
+	// The number of users or custom roles to which the policy is attached.
+	//
 	// example:
 	//
 	// 3
 	AuthorizedQuantity *string `json:"AuthorizedQuantity,omitempty" xml:"AuthorizedQuantity,omitempty"`
+	// The ID of the user who create the policy.
+	//
 	// example:
 	//
 	// 51****
 	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The content of the policy.
+	//
 	// example:
 	//
 	// {
@@ -143,18 +167,25 @@ type GetAbacPolicyResponseBodyPolicy struct {
 	//
 	// }
 	PolicyContent *string `json:"PolicyContent,omitempty" xml:"PolicyContent,omitempty"`
+	// The description of the policy.
+	//
 	// example:
 	//
 	// test
 	PolicyDesc *string `json:"PolicyDesc,omitempty" xml:"PolicyDesc,omitempty"`
+	// The ID of the policy.
+	//
 	// example:
 	//
 	// 12****
 	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The name of the policy.
+	//
 	// example:
 	//
 	// policy_test
-	PolicyName   *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The source of the policy. Valid values:
 	PolicySource *string `json:"PolicySource,omitempty" xml:"PolicySource,omitempty"`
 }
 

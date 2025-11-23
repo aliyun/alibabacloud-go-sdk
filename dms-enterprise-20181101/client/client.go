@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -57,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 添加权限模板资源
+// Adds instances, databases, and tables to the specified permission template.
 //
 // @param tmpReq - AddAuthorityTemplateItemsRequest
 //
@@ -65,9 +66,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AddAuthorityTemplateItemsResponse
 func (client *Client) AddAuthorityTemplateItemsWithOptions(tmpReq *AddAuthorityTemplateItemsRequest, runtime *dara.RuntimeOptions) (_result *AddAuthorityTemplateItemsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddAuthorityTemplateItemsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -113,7 +116,7 @@ func (client *Client) AddAuthorityTemplateItemsWithOptions(tmpReq *AddAuthorityT
 
 // Summary:
 //
-// 添加权限模板资源
+// Adds instances, databases, and tables to the specified permission template.
 //
 // @param request - AddAuthorityTemplateItemsRequest
 //
@@ -139,9 +142,11 @@ func (client *Client) AddAuthorityTemplateItems(request *AddAuthorityTemplateIte
 //
 // @return AddDesensitizationRuleResponse
 func (client *Client) AddDesensitizationRuleWithOptions(request *AddDesensitizationRuleRequest, runtime *dara.RuntimeOptions) (_result *AddDesensitizationRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FunctionType) {
@@ -216,7 +221,11 @@ func (client *Client) AddDesensitizationRule(request *AddDesensitizationRuleRequ
 
 // Summary:
 //
-// 添加实例
+// Adds a database instance to Data Management (DMS) and enable security hosting for the instance.
+//
+// Description:
+//
+// You must be a database administrator (DBA) or a DMS administrator. For more information, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
 //
 // @param request - AddInstanceRequest
 //
@@ -224,9 +233,11 @@ func (client *Client) AddDesensitizationRule(request *AddDesensitizationRuleRequ
 //
 // @return AddInstanceResponse
 func (client *Client) AddInstanceWithOptions(request *AddInstanceRequest, runtime *dara.RuntimeOptions) (_result *AddInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DataLinkName) {
@@ -370,7 +381,11 @@ func (client *Client) AddInstanceWithOptions(request *AddInstanceRequest, runtim
 
 // Summary:
 //
-// 添加实例
+// Adds a database instance to Data Management (DMS) and enable security hosting for the instance.
+//
+// Description:
+//
+// You must be a database administrator (DBA) or a DMS administrator. For more information, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
 //
 // @param request - AddInstanceRequest
 //
@@ -408,9 +423,11 @@ func (client *Client) AddInstance(request *AddInstanceRequest) (_result *AddInst
 //
 // @return AddLhMembersResponse
 func (client *Client) AddLhMembersWithOptions(tmpReq *AddLhMembersRequest, runtime *dara.RuntimeOptions) (_result *AddLhMembersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddLhMembersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -498,9 +515,11 @@ func (client *Client) AddLhMembers(request *AddLhMembersRequest) (_result *AddLh
 //
 // @return AddLogicTableRouteConfigResponse
 func (client *Client) AddLogicTableRouteConfigWithOptions(request *AddLogicTableRouteConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLogicTableRouteConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RouteExpr) {
@@ -562,7 +581,7 @@ func (client *Client) AddLogicTableRouteConfig(request *AddLogicTableRouteConfig
 
 // Summary:
 //
-// 添加表到资产类目
+// Add a table to an asset category.
 //
 // @param request - AddTableToCategoryRequest
 //
@@ -570,9 +589,11 @@ func (client *Client) AddLogicTableRouteConfig(request *AddLogicTableRouteConfig
 //
 // @return AddTableToCategoryResponse
 func (client *Client) AddTableToCategoryWithOptions(request *AddTableToCategoryRequest, runtime *dara.RuntimeOptions) (_result *AddTableToCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryId) {
@@ -620,7 +641,7 @@ func (client *Client) AddTableToCategoryWithOptions(request *AddTableToCategoryR
 
 // Summary:
 //
-// 添加表到资产类目
+// Add a table to an asset category.
 //
 // @param request - AddTableToCategoryRequest
 //
@@ -654,9 +675,11 @@ func (client *Client) AddTableToCategory(request *AddTableToCategoryRequest) (_r
 //
 // @return AddTaskFlowEdgesResponse
 func (client *Client) AddTaskFlowEdgesWithOptions(tmpReq *AddTaskFlowEdgesRequest, runtime *dara.RuntimeOptions) (_result *AddTaskFlowEdgesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddTaskFlowEdgesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -744,9 +767,11 @@ func (client *Client) AddTaskFlowEdges(request *AddTaskFlowEdgesRequest) (_resul
 //
 // @return AnalyzeSQLLineageResponse
 func (client *Client) AnalyzeSQLLineageWithOptions(request *AnalyzeSQLLineageRequest, runtime *dara.RuntimeOptions) (_result *AnalyzeSQLLineageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbId) {
@@ -812,11 +837,11 @@ func (client *Client) AnalyzeSQLLineage(request *AnalyzeSQLLineageRequest) (_res
 
 // Summary:
 //
-// 根据用户提供的数据库ID，回答对应引擎的语法问题
+// Answers the syntax questions of the corresponding engine according to the specified database ID.
 //
 // Description:
 //
-// 根据用户提供的数据库ID，回答对应引擎的语法问题
+// You can call this operation to answer the syntax questions of the corresponding engine according to the specified database ID.
 //
 // @param request - AnswerSqlSyntaxByMetaAgentRequest
 //
@@ -824,9 +849,11 @@ func (client *Client) AnalyzeSQLLineage(request *AnalyzeSQLLineageRequest) (_res
 //
 // @return AnswerSqlSyntaxByMetaAgentResponse
 func (client *Client) AnswerSqlSyntaxByMetaAgentWithOptions(request *AnswerSqlSyntaxByMetaAgentRequest, runtime *dara.RuntimeOptions) (_result *AnswerSqlSyntaxByMetaAgentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbId) {
@@ -866,11 +893,11 @@ func (client *Client) AnswerSqlSyntaxByMetaAgentWithOptions(request *AnswerSqlSy
 
 // Summary:
 //
-// 根据用户提供的数据库ID，回答对应引擎的语法问题
+// Answers the syntax questions of the corresponding engine according to the specified database ID.
 //
 // Description:
 //
-// 根据用户提供的数据库ID，回答对应引擎的语法问题
+// You can call this operation to answer the syntax questions of the corresponding engine according to the specified database ID.
 //
 // @param request - AnswerSqlSyntaxByMetaAgentRequest
 //
@@ -896,9 +923,11 @@ func (client *Client) AnswerSqlSyntaxByMetaAgent(request *AnswerSqlSyntaxByMetaA
 //
 // @return ApproveOrderResponse
 func (client *Client) ApproveOrderWithOptions(request *ApproveOrderRequest, runtime *dara.RuntimeOptions) (_result *ApproveOrderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApprovalNodeId) {
@@ -996,9 +1025,11 @@ func (client *Client) ApproveOrder(request *ApproveOrderRequest) (_result *Appro
 //
 // @return BackFillResponse
 func (client *Client) BackFillWithOptions(tmpReq *BackFillRequest, runtime *dara.RuntimeOptions) (_result *BackFillResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BackFillShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1102,7 +1133,7 @@ func (client *Client) BackFill(request *BackFillRequest) (_result *BackFillRespo
 
 // Summary:
 //
-// 批量新建湖仓表分区
+// Creates multiple partitions for a table in a data lakehouse at a time.
 //
 // @param tmpReq - BatchCreateDataLakePartitionsRequest
 //
@@ -1110,9 +1141,11 @@ func (client *Client) BackFill(request *BackFillRequest) (_result *BackFillRespo
 //
 // @return BatchCreateDataLakePartitionsResponse
 func (client *Client) BatchCreateDataLakePartitionsWithOptions(tmpReq *BatchCreateDataLakePartitionsRequest, runtime *dara.RuntimeOptions) (_result *BatchCreateDataLakePartitionsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BatchCreateDataLakePartitionsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1184,7 +1217,7 @@ func (client *Client) BatchCreateDataLakePartitionsWithOptions(tmpReq *BatchCrea
 
 // Summary:
 //
-// 批量新建湖仓表分区
+// Creates multiple partitions for a table in a data lakehouse at a time.
 //
 // @param request - BatchCreateDataLakePartitionsRequest
 //
@@ -1202,7 +1235,7 @@ func (client *Client) BatchCreateDataLakePartitions(request *BatchCreateDataLake
 
 // Summary:
 //
-// 批量删除湖仓表分区
+// Deletes multiple partitions of a table in a data lakehouse at a time.
 //
 // @param request - BatchDeleteDataLakePartitionsRequest
 //
@@ -1210,9 +1243,11 @@ func (client *Client) BatchCreateDataLakePartitions(request *BatchCreateDataLake
 //
 // @return BatchDeleteDataLakePartitionsResponse
 func (client *Client) BatchDeleteDataLakePartitionsWithOptions(request *BatchDeleteDataLakePartitionsRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteDataLakePartitionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -1272,7 +1307,7 @@ func (client *Client) BatchDeleteDataLakePartitionsWithOptions(request *BatchDel
 
 // Summary:
 //
-// 批量删除湖仓表分区
+// Deletes multiple partitions of a table in a data lakehouse at a time.
 //
 // @param request - BatchDeleteDataLakePartitionsRequest
 //
@@ -1290,7 +1325,7 @@ func (client *Client) BatchDeleteDataLakePartitions(request *BatchDeleteDataLake
 
 // Summary:
 //
-// 批量更新湖仓表分区
+// Updates multiple partitions of a table in a data lakehouse at a time.
 //
 // @param tmpReq - BatchUpdateDataLakePartitionsRequest
 //
@@ -1298,9 +1333,11 @@ func (client *Client) BatchDeleteDataLakePartitions(request *BatchDeleteDataLake
 //
 // @return BatchUpdateDataLakePartitionsResponse
 func (client *Client) BatchUpdateDataLakePartitionsWithOptions(tmpReq *BatchUpdateDataLakePartitionsRequest, runtime *dara.RuntimeOptions) (_result *BatchUpdateDataLakePartitionsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BatchUpdateDataLakePartitionsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1364,7 +1401,7 @@ func (client *Client) BatchUpdateDataLakePartitionsWithOptions(tmpReq *BatchUpda
 
 // Summary:
 //
-// 批量更新湖仓表分区
+// Updates multiple partitions of a table in a data lakehouse at a time.
 //
 // @param request - BatchUpdateDataLakePartitionsRequest
 //
@@ -1390,9 +1427,11 @@ func (client *Client) BatchUpdateDataLakePartitions(request *BatchUpdateDataLake
 //
 // @return BuyPayAsYouGoOrderResponse
 func (client *Client) BuyPayAsYouGoOrderWithOptions(request *BuyPayAsYouGoOrderRequest, runtime *dara.RuntimeOptions) (_result *BuyPayAsYouGoOrderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CommodityType) {
@@ -1462,9 +1501,11 @@ func (client *Client) BuyPayAsYouGoOrder(request *BuyPayAsYouGoOrderRequest) (_r
 //
 // @return ChangeColumnSecLevelResponse
 func (client *Client) ChangeColumnSecLevelWithOptions(request *ChangeColumnSecLevelRequest, runtime *dara.RuntimeOptions) (_result *ChangeColumnSecLevelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ColumnName) {
@@ -1538,7 +1579,7 @@ func (client *Client) ChangeColumnSecLevel(request *ChangeColumnSecLevelRequest)
 
 // Summary:
 //
-// 修改字段敏感序列
+// Changes the security level of a column.
 //
 // @param request - ChangeColumnSecurityLevelRequest
 //
@@ -1546,9 +1587,11 @@ func (client *Client) ChangeColumnSecLevel(request *ChangeColumnSecLevelRequest)
 //
 // @return ChangeColumnSecurityLevelResponse
 func (client *Client) ChangeColumnSecurityLevelWithOptions(request *ChangeColumnSecurityLevelRequest, runtime *dara.RuntimeOptions) (_result *ChangeColumnSecurityLevelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ColumnName) {
@@ -1604,7 +1647,7 @@ func (client *Client) ChangeColumnSecurityLevelWithOptions(request *ChangeColumn
 
 // Summary:
 //
-// 修改字段敏感序列
+// Changes the security level of a column.
 //
 // @param request - ChangeColumnSecurityLevelRequest
 //
@@ -1638,9 +1681,11 @@ func (client *Client) ChangeColumnSecurityLevel(request *ChangeColumnSecurityLev
 //
 // @return ChangeLhDagOwnerResponse
 func (client *Client) ChangeLhDagOwnerWithOptions(request *ChangeLhDagOwnerRequest, runtime *dara.RuntimeOptions) (_result *ChangeLhDagOwnerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -1706,6 +1751,148 @@ func (client *Client) ChangeLhDagOwner(request *ChangeLhDagOwnerRequest) (_resul
 
 // Summary:
 //
+// 带有DMS脱敏能力的聊天API接口
+//
+// Description:
+//
+// 带有DMS脱敏能力的聊天API接口
+//
+// @param tmpReq - ChatWithDesensitizeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChatWithDesensitizeResponse
+func (client *Client) ChatWithDesensitizeWithOptions(tmpReq *ChatWithDesensitizeRequest, runtime *dara.RuntimeOptions) (_result *ChatWithDesensitizeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ChatWithDesensitizeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Messages) {
+		request.MessagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Messages, dara.String("Messages"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Stop) {
+		request.StopShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Stop, dara.String("Stop"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DesensitizationRule) {
+		query["DesensitizationRule"] = request.DesensitizationRule
+	}
+
+	if !dara.IsNil(request.EnableThinking) {
+		query["EnableThinking"] = request.EnableThinking
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxTokens) {
+		query["MaxTokens"] = request.MaxTokens
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.NeedDesensitization) {
+		query["NeedDesensitization"] = request.NeedDesensitization
+	}
+
+	if !dara.IsNil(request.PresencePenalty) {
+		query["PresencePenalty"] = request.PresencePenalty
+	}
+
+	if !dara.IsNil(request.ResponseFormat) {
+		query["ResponseFormat"] = request.ResponseFormat
+	}
+
+	if !dara.IsNil(request.Seed) {
+		query["Seed"] = request.Seed
+	}
+
+	if !dara.IsNil(request.StopShrink) {
+		query["Stop"] = request.StopShrink
+	}
+
+	if !dara.IsNil(request.Temperature) {
+		query["Temperature"] = request.Temperature
+	}
+
+	if !dara.IsNil(request.ThinkingBudget) {
+		query["ThinkingBudget"] = request.ThinkingBudget
+	}
+
+	if !dara.IsNil(request.TopK) {
+		query["TopK"] = request.TopK
+	}
+
+	if !dara.IsNil(request.TopLogprobs) {
+		query["TopLogprobs"] = request.TopLogprobs
+	}
+
+	if !dara.IsNil(request.TopP) {
+		query["TopP"] = request.TopP
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MessagesShrink) {
+		body["Messages"] = request.MessagesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ChatWithDesensitize"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ChatWithDesensitizeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 带有DMS脱敏能力的聊天API接口
+//
+// Description:
+//
+// 带有DMS脱敏能力的聊天API接口
+//
+// @param request - ChatWithDesensitizeRequest
+//
+// @return ChatWithDesensitizeResponse
+func (client *Client) ChatWithDesensitize(request *ChatWithDesensitizeRequest) (_result *ChatWithDesensitizeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ChatWithDesensitizeResponse{}
+	_body, _err := client.ChatWithDesensitizeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Closes a ticket.
 //
 // @param request - CloseOrderRequest
@@ -1714,9 +1901,11 @@ func (client *Client) ChangeLhDagOwner(request *ChangeLhDagOwnerRequest) (_resul
 //
 // @return CloseOrderResponse
 func (client *Client) CloseOrderWithOptions(request *CloseOrderRequest, runtime *dara.RuntimeOptions) (_result *CloseOrderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CloseReason) {
@@ -1774,7 +1963,7 @@ func (client *Client) CloseOrder(request *CloseOrderRequest) (_result *CloseOrde
 
 // Summary:
 //
-// 创建权限策略授权
+// Attaches a system policy or custom policy to a DMS user or custom role.
 //
 // @param request - CreateAbacAuthorizationRequest
 //
@@ -1782,9 +1971,11 @@ func (client *Client) CloseOrder(request *CloseOrderRequest) (_result *CloseOrde
 //
 // @return CreateAbacAuthorizationResponse
 func (client *Client) CreateAbacAuthorizationWithOptions(request *CreateAbacAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *CreateAbacAuthorizationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IdentityType) {
@@ -1832,7 +2023,7 @@ func (client *Client) CreateAbacAuthorizationWithOptions(request *CreateAbacAuth
 
 // Summary:
 //
-// 创建权限策略授权
+// Attaches a system policy or custom policy to a DMS user or custom role.
 //
 // @param request - CreateAbacAuthorizationRequest
 //
@@ -1850,7 +2041,11 @@ func (client *Client) CreateAbacAuthorization(request *CreateAbacAuthorizationRe
 
 // Summary:
 //
-// 创建权限策略
+// Creates a policy to manage the permissions on DMS features and data resources managed in DMS in a fine-grained manner.
+//
+// Description:
+//
+// Currently, this feature is in the phased release phase. Only users who have phased out can use this feature and related APIs. For more information about the policy feature, see [Manage policies](https://help.aliyun.com/document_detail/2848565.html).
 //
 // @param request - CreateAbacPolicyRequest
 //
@@ -1858,9 +2053,11 @@ func (client *Client) CreateAbacAuthorization(request *CreateAbacAuthorizationRe
 //
 // @return CreateAbacPolicyResponse
 func (client *Client) CreateAbacPolicyWithOptions(request *CreateAbacPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateAbacPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AbacPolicyContent) {
@@ -1904,7 +2101,11 @@ func (client *Client) CreateAbacPolicyWithOptions(request *CreateAbacPolicyReque
 
 // Summary:
 //
-// 创建权限策略
+// Creates a policy to manage the permissions on DMS features and data resources managed in DMS in a fine-grained manner.
+//
+// Description:
+//
+// Currently, this feature is in the phased release phase. Only users who have phased out can use this feature and related APIs. For more information about the policy feature, see [Manage policies](https://help.aliyun.com/document_detail/2848565.html).
 //
 // @param request - CreateAbacPolicyRequest
 //
@@ -1934,9 +2135,11 @@ func (client *Client) CreateAbacPolicy(request *CreateAbacPolicyRequest) (_resul
 //
 // @return CreateAuthorityTemplateResponse
 func (client *Client) CreateAuthorityTemplateWithOptions(request *CreateAuthorityTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateAuthorityTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -2010,9 +2213,11 @@ func (client *Client) CreateAuthorityTemplate(request *CreateAuthorityTemplateRe
 //
 // @return CreateDataArchiveOrderResponse
 func (client *Client) CreateDataArchiveOrderWithOptions(tmpReq *CreateDataArchiveOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateDataArchiveOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDataArchiveOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2108,9 +2313,11 @@ func (client *Client) CreateDataArchiveOrder(request *CreateDataArchiveOrderRequ
 //
 // @return CreateDataCorrectOrderResponse
 func (client *Client) CreateDataCorrectOrderWithOptions(tmpReq *CreateDataCorrectOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateDataCorrectOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDataCorrectOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2208,9 +2415,11 @@ func (client *Client) CreateDataCorrectOrder(request *CreateDataCorrectOrderRequ
 //
 // @return CreateDataCronClearOrderResponse
 func (client *Client) CreateDataCronClearOrderWithOptions(tmpReq *CreateDataCronClearOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateDataCronClearOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDataCronClearOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2300,9 +2509,11 @@ func (client *Client) CreateDataCronClearOrder(request *CreateDataCronClearOrder
 //
 // @return CreateDataExportOrderResponse
 func (client *Client) CreateDataExportOrderWithOptions(tmpReq *CreateDataExportOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateDataExportOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDataExportOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2398,9 +2609,11 @@ func (client *Client) CreateDataExportOrder(request *CreateDataExportOrderReques
 //
 // @return CreateDataImportOrderResponse
 func (client *Client) CreateDataImportOrderWithOptions(tmpReq *CreateDataImportOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateDataImportOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDataImportOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2484,7 +2697,7 @@ func (client *Client) CreateDataImportOrder(request *CreateDataImportOrderReques
 
 // Summary:
 //
-// 新建湖仓数据库
+// Creates a database in a data lakehouse.
 //
 // @param tmpReq - CreateDataLakeDatabaseRequest
 //
@@ -2492,9 +2705,11 @@ func (client *Client) CreateDataImportOrder(request *CreateDataImportOrderReques
 //
 // @return CreateDataLakeDatabaseResponse
 func (client *Client) CreateDataLakeDatabaseWithOptions(tmpReq *CreateDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *CreateDataLakeDatabaseResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDataLakeDatabaseShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2560,7 +2775,7 @@ func (client *Client) CreateDataLakeDatabaseWithOptions(tmpReq *CreateDataLakeDa
 
 // Summary:
 //
-// 新建湖仓数据库
+// Creates a database in a data lakehouse.
 //
 // @param request - CreateDataLakeDatabaseRequest
 //
@@ -2578,7 +2793,7 @@ func (client *Client) CreateDataLakeDatabase(request *CreateDataLakeDatabaseRequ
 
 // Summary:
 //
-// 新建湖仓自定义函数
+// Creates a custom function in a data lakehouse.
 //
 // @param tmpReq - CreateDataLakeFunctionRequest
 //
@@ -2586,9 +2801,11 @@ func (client *Client) CreateDataLakeDatabase(request *CreateDataLakeDatabaseRequ
 //
 // @return CreateDataLakeFunctionResponse
 func (client *Client) CreateDataLakeFunctionWithOptions(tmpReq *CreateDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *CreateDataLakeFunctionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDataLakeFunctionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2648,7 +2865,7 @@ func (client *Client) CreateDataLakeFunctionWithOptions(tmpReq *CreateDataLakeFu
 
 // Summary:
 //
-// 新建湖仓自定义函数
+// Creates a custom function in a data lakehouse.
 //
 // @param request - CreateDataLakeFunctionRequest
 //
@@ -2666,7 +2883,7 @@ func (client *Client) CreateDataLakeFunction(request *CreateDataLakeFunctionRequ
 
 // Summary:
 //
-// 新建湖仓表分区
+// Creates a partition for a table in a data lakehouse.
 //
 // @param tmpReq - CreateDataLakePartitionRequest
 //
@@ -2674,9 +2891,11 @@ func (client *Client) CreateDataLakeFunction(request *CreateDataLakeFunctionRequ
 //
 // @return CreateDataLakePartitionResponse
 func (client *Client) CreateDataLakePartitionWithOptions(tmpReq *CreateDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *CreateDataLakePartitionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDataLakePartitionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2748,7 +2967,7 @@ func (client *Client) CreateDataLakePartitionWithOptions(tmpReq *CreateDataLakeP
 
 // Summary:
 //
-// 新建湖仓表分区
+// Creates a partition for a table in a data lakehouse.
 //
 // @param request - CreateDataLakePartitionRequest
 //
@@ -2766,7 +2985,7 @@ func (client *Client) CreateDataLakePartition(request *CreateDataLakePartitionRe
 
 // Summary:
 //
-// 新建湖仓表
+// Creates a table in a data lakehouse.
 //
 // @param tmpReq - CreateDataLakeTableRequest
 //
@@ -2774,9 +2993,11 @@ func (client *Client) CreateDataLakePartition(request *CreateDataLakePartitionRe
 //
 // @return CreateDataLakeTableResponse
 func (client *Client) CreateDataLakeTableWithOptions(tmpReq *CreateDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *CreateDataLakeTableResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDataLakeTableShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2836,7 +3057,7 @@ func (client *Client) CreateDataLakeTableWithOptions(tmpReq *CreateDataLakeTable
 
 // Summary:
 //
-// 新建湖仓表
+// Creates a table in a data lakehouse.
 //
 // @param request - CreateDataLakeTableRequest
 //
@@ -2866,9 +3087,11 @@ func (client *Client) CreateDataLakeTable(request *CreateDataLakeTableRequest) (
 //
 // @return CreateDataTrackOrderResponse
 func (client *Client) CreateDataTrackOrderWithOptions(tmpReq *CreateDataTrackOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateDataTrackOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDataTrackOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2952,9 +3175,11 @@ func (client *Client) CreateDataTrackOrder(request *CreateDataTrackOrderRequest)
 //
 // @return CreateDatabaseExportOrderResponse
 func (client *Client) CreateDatabaseExportOrderWithOptions(tmpReq *CreateDatabaseExportOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateDatabaseExportOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDatabaseExportOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3060,9 +3285,11 @@ func (client *Client) CreateDatabaseExportOrder(request *CreateDatabaseExportOrd
 //
 // @return CreateDifyInstanceResponse
 func (client *Client) CreateDifyInstanceWithOptions(request *CreateDifyInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateDifyInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdbpgInstanceMode) {
@@ -3372,9 +3599,11 @@ func (client *Client) CreateDifyInstance(request *CreateDifyInstanceRequest) (_r
 //
 // @return CreateFreeLockCorrectOrderResponse
 func (client *Client) CreateFreeLockCorrectOrderWithOptions(tmpReq *CreateFreeLockCorrectOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateFreeLockCorrectOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateFreeLockCorrectOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3474,9 +3703,11 @@ func (client *Client) CreateFreeLockCorrectOrder(request *CreateFreeLockCorrectO
 //
 // @return CreateLakeHouseSpaceResponse
 func (client *Client) CreateLakeHouseSpaceWithOptions(request *CreateLakeHouseSpaceRequest, runtime *dara.RuntimeOptions) (_result *CreateLakeHouseSpaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -3568,9 +3799,11 @@ func (client *Client) CreateLakeHouseSpace(request *CreateLakeHouseSpaceRequest)
 //
 // @return CreateLogicDatabaseResponse
 func (client *Client) CreateLogicDatabaseWithOptions(tmpReq *CreateLogicDatabaseRequest, runtime *dara.RuntimeOptions) (_result *CreateLogicDatabaseResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateLogicDatabaseShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3634,7 +3867,7 @@ func (client *Client) CreateLogicDatabase(request *CreateLogicDatabaseRequest) (
 
 // Summary:
 //
-// 创建资产类目
+// # Create Asset Category
 //
 // @param request - CreateMetaCategoryRequest
 //
@@ -3642,9 +3875,11 @@ func (client *Client) CreateLogicDatabase(request *CreateLogicDatabaseRequest) (
 //
 // @return CreateMetaCategoryResponse
 func (client *Client) CreateMetaCategoryWithOptions(request *CreateMetaCategoryRequest, runtime *dara.RuntimeOptions) (_result *CreateMetaCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -3684,7 +3919,7 @@ func (client *Client) CreateMetaCategoryWithOptions(request *CreateMetaCategoryR
 
 // Summary:
 //
-// 创建资产类目
+// # Create Asset Category
 //
 // @param request - CreateMetaCategoryRequest
 //
@@ -3722,9 +3957,11 @@ func (client *Client) CreateMetaCategory(request *CreateMetaCategoryRequest) (_r
 //
 // @return CreateOrderResponse
 func (client *Client) CreateOrderWithOptions(tmpReq *CreateOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3814,7 +4051,11 @@ func (client *Client) CreateOrder(request *CreateOrderRequest) (_result *CreateO
 
 // Summary:
 //
-// 创建可编程对象变更工单
+// Creates a programmable object ticket.
+//
+// Description:
+//
+// You can call this API operation only for database instances that are managed in Security Collaboration mode.
 //
 // @param tmpReq - CreateProcCorrectOrderRequest
 //
@@ -3822,9 +4063,11 @@ func (client *Client) CreateOrder(request *CreateOrderRequest) (_result *CreateO
 //
 // @return CreateProcCorrectOrderResponse
 func (client *Client) CreateProcCorrectOrderWithOptions(tmpReq *CreateProcCorrectOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateProcCorrectOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateProcCorrectOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3882,7 +4125,11 @@ func (client *Client) CreateProcCorrectOrderWithOptions(tmpReq *CreateProcCorrec
 
 // Summary:
 //
-// 创建可编程对象变更工单
+// Creates a programmable object ticket.
+//
+// Description:
+//
+// You can call this API operation only for database instances that are managed in Security Collaboration mode.
 //
 // @param request - CreateProcCorrectOrderRequest
 //
@@ -3916,9 +4163,11 @@ func (client *Client) CreateProcCorrectOrder(request *CreateProcCorrectOrderRequ
 //
 // @return CreateProxyResponse
 func (client *Client) CreateProxyWithOptions(request *CreateProxyRequest, runtime *dara.RuntimeOptions) (_result *CreateProxyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4002,9 +4251,11 @@ func (client *Client) CreateProxy(request *CreateProxyRequest) (_result *CreateP
 //
 // @return CreateProxyAccessResponse
 func (client *Client) CreateProxyAccessWithOptions(request *CreateProxyAccessRequest, runtime *dara.RuntimeOptions) (_result *CreateProxyAccessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IndepAccount) {
@@ -4084,9 +4335,11 @@ func (client *Client) CreateProxyAccess(request *CreateProxyAccessRequest) (_res
 //
 // @return CreatePublishGroupTaskResponse
 func (client *Client) CreatePublishGroupTaskWithOptions(request *CreatePublishGroupTaskRequest, runtime *dara.RuntimeOptions) (_result *CreatePublishGroupTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbId) {
@@ -4170,9 +4423,11 @@ func (client *Client) CreatePublishGroupTask(request *CreatePublishGroupTaskRequ
 //
 // @return CreateSQLReviewOrderResponse
 func (client *Client) CreateSQLReviewOrderWithOptions(tmpReq *CreateSQLReviewOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateSQLReviewOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateSQLReviewOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4258,9 +4513,11 @@ func (client *Client) CreateSQLReviewOrder(request *CreateSQLReviewOrderRequest)
 //
 // @return CreateScenarioResponse
 func (client *Client) CreateScenarioWithOptions(request *CreateScenarioRequest, runtime *dara.RuntimeOptions) (_result *CreateScenarioResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -4326,9 +4583,11 @@ func (client *Client) CreateScenario(request *CreateScenarioRequest) (_result *C
 //
 // @return CreateStandardGroupResponse
 func (client *Client) CreateStandardGroupWithOptions(request *CreateStandardGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateStandardGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbType) {
@@ -4398,9 +4657,11 @@ func (client *Client) CreateStandardGroup(request *CreateStandardGroupRequest) (
 //
 // @return CreateStructSyncOrderResponse
 func (client *Client) CreateStructSyncOrderWithOptions(tmpReq *CreateStructSyncOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateStructSyncOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateStructSyncOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4484,9 +4745,11 @@ func (client *Client) CreateStructSyncOrder(request *CreateStructSyncOrderReques
 //
 // @return CreateTaskResponse
 func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -4572,9 +4835,11 @@ func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTas
 //
 // @return CreateTaskFlowResponse
 func (client *Client) CreateTaskFlowWithOptions(request *CreateTaskFlowRequest, runtime *dara.RuntimeOptions) (_result *CreateTaskFlowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagName) {
@@ -4644,9 +4909,11 @@ func (client *Client) CreateTaskFlow(request *CreateTaskFlowRequest) (_result *C
 //
 // @return CreateUploadFileJobResponse
 func (client *Client) CreateUploadFileJobWithOptions(request *CreateUploadFileJobRequest, runtime *dara.RuntimeOptions) (_result *CreateUploadFileJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileName) {
@@ -4716,9 +4983,11 @@ func (client *Client) CreateUploadFileJob(request *CreateUploadFileJobRequest) (
 //
 // @return CreateUploadOSSFileJobResponse
 func (client *Client) CreateUploadOSSFileJobWithOptions(tmpReq *CreateUploadOSSFileJobRequest, runtime *dara.RuntimeOptions) (_result *CreateUploadOSSFileJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateUploadOSSFileJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4786,7 +5055,15 @@ func (client *Client) CreateUploadOSSFileJob(request *CreateUploadOSSFileJobRequ
 
 // Summary:
 //
-// 创建工作空间
+// Creates a workspace.
+//
+// Description:
+//
+// ## [](#)Prerequisites
+//
+//   - A virtual private cloud (VPC) is created.
+//
+//   - Log on to the DMS console by using an Alibaba Cloud account or a RAM user that has high permissions, and grant DMS the permissions to access cloud resources (AliyunDMSProcessingDataRolePolicy).
 //
 // @param request - CreateWorkspaceRequest
 //
@@ -4794,9 +5071,11 @@ func (client *Client) CreateUploadOSSFileJob(request *CreateUploadOSSFileJobRequ
 //
 // @return CreateWorkspaceResponse
 func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *CreateWorkspaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -4846,7 +5125,15 @@ func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest
 
 // Summary:
 //
-// 创建工作空间
+// Creates a workspace.
+//
+// Description:
+//
+// ## [](#)Prerequisites
+//
+//   - A virtual private cloud (VPC) is created.
+//
+//   - Log on to the DMS console by using an Alibaba Cloud account or a RAM user that has high permissions, and grant DMS the permissions to access cloud resources (AliyunDMSProcessingDataRolePolicy).
 //
 // @param request - CreateWorkspaceRequest
 //
@@ -4864,7 +5151,7 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 
 // Summary:
 //
-// 删除权限策略授权
+// Detaches a policy from a user or role.
 //
 // @param request - DeleteAbacAuthorizationRequest
 //
@@ -4872,9 +5159,11 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 //
 // @return DeleteAbacAuthorizationResponse
 func (client *Client) DeleteAbacAuthorizationWithOptions(request *DeleteAbacAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *DeleteAbacAuthorizationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthorizationId) {
@@ -4914,7 +5203,7 @@ func (client *Client) DeleteAbacAuthorizationWithOptions(request *DeleteAbacAuth
 
 // Summary:
 //
-// 删除权限策略授权
+// Detaches a policy from a user or role.
 //
 // @param request - DeleteAbacAuthorizationRequest
 //
@@ -4932,7 +5221,7 @@ func (client *Client) DeleteAbacAuthorization(request *DeleteAbacAuthorizationRe
 
 // Summary:
 //
-// 删除权限策略
+// Deletes a created permission policy.
 //
 // @param request - DeleteAbacPolicyRequest
 //
@@ -4940,9 +5229,11 @@ func (client *Client) DeleteAbacAuthorization(request *DeleteAbacAuthorizationRe
 //
 // @return DeleteAbacPolicyResponse
 func (client *Client) DeleteAbacPolicyWithOptions(request *DeleteAbacPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteAbacPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AbacPolicyId) {
@@ -4978,7 +5269,7 @@ func (client *Client) DeleteAbacPolicyWithOptions(request *DeleteAbacPolicyReque
 
 // Summary:
 //
-// 删除权限策略
+// Deletes a created permission policy.
 //
 // @param request - DeleteAbacPolicyRequest
 //
@@ -4996,7 +5287,7 @@ func (client *Client) DeleteAbacPolicy(request *DeleteAbacPolicyRequest) (_resul
 
 // Summary:
 //
-// 删除权限模版
+// Deletes a permission template.
 //
 // @param request - DeleteAuthorityTemplateRequest
 //
@@ -5004,9 +5295,11 @@ func (client *Client) DeleteAbacPolicy(request *DeleteAbacPolicyRequest) (_resul
 //
 // @return DeleteAuthorityTemplateResponse
 func (client *Client) DeleteAuthorityTemplateWithOptions(request *DeleteAuthorityTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteAuthorityTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -5042,7 +5335,7 @@ func (client *Client) DeleteAuthorityTemplateWithOptions(request *DeleteAuthorit
 
 // Summary:
 //
-// 删除权限模版
+// Deletes a permission template.
 //
 // @param request - DeleteAuthorityTemplateRequest
 //
@@ -5060,7 +5353,7 @@ func (client *Client) DeleteAuthorityTemplate(request *DeleteAuthorityTemplateRe
 
 // Summary:
 //
-// 删除湖仓数据库
+// Deletes a database from a data lakehouse.
 //
 // @param request - DeleteDataLakeDatabaseRequest
 //
@@ -5068,9 +5361,11 @@ func (client *Client) DeleteAuthorityTemplate(request *DeleteAuthorityTemplateRe
 //
 // @return DeleteDataLakeDatabaseResponse
 func (client *Client) DeleteDataLakeDatabaseWithOptions(request *DeleteDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataLakeDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -5118,7 +5413,7 @@ func (client *Client) DeleteDataLakeDatabaseWithOptions(request *DeleteDataLakeD
 
 // Summary:
 //
-// 删除湖仓数据库
+// Deletes a database from a data lakehouse.
 //
 // @param request - DeleteDataLakeDatabaseRequest
 //
@@ -5136,7 +5431,7 @@ func (client *Client) DeleteDataLakeDatabase(request *DeleteDataLakeDatabaseRequ
 
 // Summary:
 //
-// 删除湖仓自定义函数
+// Deletes a user-defined function in a data lakehouse.
 //
 // @param request - DeleteDataLakeFunctionRequest
 //
@@ -5144,9 +5439,11 @@ func (client *Client) DeleteDataLakeDatabase(request *DeleteDataLakeDatabaseRequ
 //
 // @return DeleteDataLakeFunctionResponse
 func (client *Client) DeleteDataLakeFunctionWithOptions(request *DeleteDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataLakeFunctionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -5198,7 +5495,7 @@ func (client *Client) DeleteDataLakeFunctionWithOptions(request *DeleteDataLakeF
 
 // Summary:
 //
-// 删除湖仓自定义函数
+// Deletes a user-defined function in a data lakehouse.
 //
 // @param request - DeleteDataLakeFunctionRequest
 //
@@ -5216,7 +5513,7 @@ func (client *Client) DeleteDataLakeFunction(request *DeleteDataLakeFunctionRequ
 
 // Summary:
 //
-// 删除湖仓表分区
+// Deletes a partition from a table in a data lakehouse.
 //
 // @param tmpReq - DeleteDataLakePartitionRequest
 //
@@ -5224,9 +5521,11 @@ func (client *Client) DeleteDataLakeFunction(request *DeleteDataLakeFunctionRequ
 //
 // @return DeleteDataLakePartitionResponse
 func (client *Client) DeleteDataLakePartitionWithOptions(tmpReq *DeleteDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataLakePartitionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteDataLakePartitionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5292,7 +5591,7 @@ func (client *Client) DeleteDataLakePartitionWithOptions(tmpReq *DeleteDataLakeP
 
 // Summary:
 //
-// 删除湖仓表分区
+// Deletes a partition from a table in a data lakehouse.
 //
 // @param request - DeleteDataLakePartitionRequest
 //
@@ -5310,7 +5609,7 @@ func (client *Client) DeleteDataLakePartition(request *DeleteDataLakePartitionRe
 
 // Summary:
 //
-// 删除湖仓表
+// Deletes a table from a data lakehouse.
 //
 // @param request - DeleteDataLakeTableRequest
 //
@@ -5318,9 +5617,11 @@ func (client *Client) DeleteDataLakePartition(request *DeleteDataLakePartitionRe
 //
 // @return DeleteDataLakeTableResponse
 func (client *Client) DeleteDataLakeTableWithOptions(request *DeleteDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataLakeTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -5372,7 +5673,7 @@ func (client *Client) DeleteDataLakeTableWithOptions(request *DeleteDataLakeTabl
 
 // Summary:
 //
-// 删除湖仓表
+// Deletes a table from a data lakehouse.
 //
 // @param request - DeleteDataLakeTableRequest
 //
@@ -5402,9 +5703,11 @@ func (client *Client) DeleteDataLakeTable(request *DeleteDataLakeTableRequest) (
 //
 // @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Host) {
@@ -5478,9 +5781,11 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 //
 // @return DeleteLakeHouseSpaceResponse
 func (client *Client) DeleteLakeHouseSpaceWithOptions(request *DeleteLakeHouseSpaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteLakeHouseSpaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SpaceId) {
@@ -5548,9 +5853,11 @@ func (client *Client) DeleteLakeHouseSpace(request *DeleteLakeHouseSpaceRequest)
 //
 // @return DeleteLhMembersResponse
 func (client *Client) DeleteLhMembersWithOptions(tmpReq *DeleteLhMembersRequest, runtime *dara.RuntimeOptions) (_result *DeleteLhMembersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteLhMembersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5632,9 +5939,11 @@ func (client *Client) DeleteLhMembers(request *DeleteLhMembersRequest) (_result 
 //
 // @return DeleteLogicDatabaseResponse
 func (client *Client) DeleteLogicDatabaseWithOptions(request *DeleteLogicDatabaseRequest, runtime *dara.RuntimeOptions) (_result *DeleteLogicDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LogicDbId) {
@@ -5696,9 +6005,11 @@ func (client *Client) DeleteLogicDatabase(request *DeleteLogicDatabaseRequest) (
 //
 // @return DeleteLogicTableRouteConfigResponse
 func (client *Client) DeleteLogicTableRouteConfigWithOptions(request *DeleteLogicTableRouteConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLogicTableRouteConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RouteKey) {
@@ -5756,7 +6067,7 @@ func (client *Client) DeleteLogicTableRouteConfig(request *DeleteLogicTableRoute
 
 // Summary:
 //
-// 删除资产类目
+// Deletes an asset category.
 //
 // @param request - DeleteMetaCategoryRequest
 //
@@ -5764,9 +6075,11 @@ func (client *Client) DeleteLogicTableRouteConfig(request *DeleteLogicTableRoute
 //
 // @return DeleteMetaCategoryResponse
 func (client *Client) DeleteMetaCategoryWithOptions(request *DeleteMetaCategoryRequest, runtime *dara.RuntimeOptions) (_result *DeleteMetaCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryId) {
@@ -5802,7 +6115,7 @@ func (client *Client) DeleteMetaCategoryWithOptions(request *DeleteMetaCategoryR
 
 // Summary:
 //
-// 删除资产类目
+// Deletes an asset category.
 //
 // @param request - DeleteMetaCategoryRequest
 //
@@ -5832,9 +6145,11 @@ func (client *Client) DeleteMetaCategory(request *DeleteMetaCategoryRequest) (_r
 //
 // @return DeleteProxyResponse
 func (client *Client) DeleteProxyWithOptions(request *DeleteProxyRequest, runtime *dara.RuntimeOptions) (_result *DeleteProxyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProxyId) {
@@ -5900,9 +6215,11 @@ func (client *Client) DeleteProxy(request *DeleteProxyRequest) (_result *DeleteP
 //
 // @return DeleteProxyAccessResponse
 func (client *Client) DeleteProxyAccessWithOptions(request *DeleteProxyAccessRequest, runtime *dara.RuntimeOptions) (_result *DeleteProxyAccessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProxyAccessId) {
@@ -5968,9 +6285,11 @@ func (client *Client) DeleteProxyAccess(request *DeleteProxyAccessRequest) (_res
 //
 // @return DeleteScenarioResponse
 func (client *Client) DeleteScenarioWithOptions(request *DeleteScenarioRequest, runtime *dara.RuntimeOptions) (_result *DeleteScenarioResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ScenarioId) {
@@ -6028,7 +6347,11 @@ func (client *Client) DeleteScenario(request *DeleteScenarioRequest) (_result *D
 
 // Summary:
 //
-// 删除安全规则
+// Deletes a security rule set.
+//
+// Description:
+//
+// Before you call this API operation, make sure that the security rule set is not associated with an instance.
 //
 // @param request - DeleteStandardGroupRequest
 //
@@ -6036,9 +6359,11 @@ func (client *Client) DeleteScenario(request *DeleteScenarioRequest) (_result *D
 //
 // @return DeleteStandardGroupResponse
 func (client *Client) DeleteStandardGroupWithOptions(request *DeleteStandardGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteStandardGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -6074,7 +6399,11 @@ func (client *Client) DeleteStandardGroupWithOptions(request *DeleteStandardGrou
 
 // Summary:
 //
-// 删除安全规则
+// Deletes a security rule set.
+//
+// Description:
+//
+// Before you call this API operation, make sure that the security rule set is not associated with an instance.
 //
 // @param request - DeleteStandardGroupRequest
 //
@@ -6100,9 +6429,11 @@ func (client *Client) DeleteStandardGroup(request *DeleteStandardGroupRequest) (
 //
 // @return DeleteTaskResponse
 func (client *Client) DeleteTaskWithOptions(request *DeleteTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NodeId) {
@@ -6164,9 +6495,11 @@ func (client *Client) DeleteTask(request *DeleteTaskRequest) (_result *DeleteTas
 //
 // @return DeleteTaskFlowResponse
 func (client *Client) DeleteTaskFlowWithOptions(request *DeleteTaskFlowRequest, runtime *dara.RuntimeOptions) (_result *DeleteTaskFlowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -6232,9 +6565,11 @@ func (client *Client) DeleteTaskFlow(request *DeleteTaskFlowRequest) (_result *D
 //
 // @return DeleteTaskFlowEdgesByConditionResponse
 func (client *Client) DeleteTaskFlowEdgesByConditionWithOptions(request *DeleteTaskFlowEdgesByConditionRequest, runtime *dara.RuntimeOptions) (_result *DeleteTaskFlowEdgesByConditionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -6318,9 +6653,11 @@ func (client *Client) DeleteTaskFlowEdgesByCondition(request *DeleteTaskFlowEdge
 //
 // @return DeleteUserResponse
 func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tid) {
@@ -6380,7 +6717,7 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 
 // Summary:
 //
-// 删除工作空间
+// Deletes a workspace.
 //
 // @param request - DeleteWorkspaceRequest
 //
@@ -6388,9 +6725,11 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 //
 // @return DeleteWorkspaceResponse
 func (client *Client) DeleteWorkspaceWithOptions(request *DeleteWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteWorkspaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.WorkspaceId) {
@@ -6422,7 +6761,7 @@ func (client *Client) DeleteWorkspaceWithOptions(request *DeleteWorkspaceRequest
 
 // Summary:
 //
-// 删除工作空间
+// Deletes a workspace.
 //
 // @param request - DeleteWorkspaceRequest
 //
@@ -6466,9 +6805,11 @@ func (client *Client) DeleteWorkspace(request *DeleteWorkspaceRequest) (_result 
 //
 // @return DescribeDifyAttributeResponse
 func (client *Client) DescribeDifyAttributeWithOptions(request *DescribeDifyAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeDifyAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppUuid) {
@@ -6574,9 +6915,11 @@ func (client *Client) DescribeDifyAttribute(request *DescribeDifyAttributeReques
 //
 // @return DescribeDifyDefaultVpcResponse
 func (client *Client) DescribeDifyDefaultVpcWithOptions(request *DescribeDifyDefaultVpcRequest, runtime *dara.RuntimeOptions) (_result *DescribeDifyDefaultVpcResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -6678,9 +7021,11 @@ func (client *Client) DescribeDifyDefaultVpc(request *DescribeDifyDefaultVpcRequ
 //
 // @return DescribeDifyEditionsResponse
 func (client *Client) DescribeDifyEditionsWithOptions(request *DescribeDifyEditionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDifyEditionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -6778,9 +7123,11 @@ func (client *Client) DescribeDifyEditions(request *DescribeDifyEditionsRequest)
 //
 // @return DescribeDifyRegionsResponse
 func (client *Client) DescribeDifyRegionsWithOptions(request *DescribeDifyRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDifyRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -6866,9 +7213,11 @@ func (client *Client) DescribeDifyRegions(request *DescribeDifyRegionsRequest) (
 //
 // @return DisableUserResponse
 func (client *Client) DisableUserWithOptions(request *DisableUserRequest, runtime *dara.RuntimeOptions) (_result *DisableUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tid) {
@@ -6936,9 +7285,11 @@ func (client *Client) DisableUser(request *DisableUserRequest) (_result *Disable
 //
 // @return DownloadDataTrackResultResponse
 func (client *Client) DownloadDataTrackResultWithOptions(tmpReq *DownloadDataTrackResultRequest, runtime *dara.RuntimeOptions) (_result *DownloadDataTrackResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DownloadDataTrackResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7046,9 +7397,11 @@ func (client *Client) DownloadDataTrackResult(request *DownloadDataTrackResultRe
 //
 // @return EditLogicDatabaseResponse
 func (client *Client) EditLogicDatabaseWithOptions(tmpReq *EditLogicDatabaseRequest, runtime *dara.RuntimeOptions) (_result *EditLogicDatabaseResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &EditLogicDatabaseShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7116,7 +7469,11 @@ func (client *Client) EditLogicDatabase(request *EditLogicDatabaseRequest) (_res
 
 // Summary:
 //
-// 编辑指定guid的元数据业务知识
+// Edits the metadata business knowledge for specified GUIDs.
+//
+// Description:
+//
+// Edits the business knowledge of the metadata represented by the specified GUID.
 //
 // @param request - EditMetaKnowledgeAssetRequest
 //
@@ -7124,9 +7481,11 @@ func (client *Client) EditLogicDatabase(request *EditLogicDatabaseRequest) (_res
 //
 // @return EditMetaKnowledgeAssetResponse
 func (client *Client) EditMetaKnowledgeAssetWithOptions(request *EditMetaKnowledgeAssetRequest, runtime *dara.RuntimeOptions) (_result *EditMetaKnowledgeAssetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AssetDescription) {
@@ -7174,7 +7533,11 @@ func (client *Client) EditMetaKnowledgeAssetWithOptions(request *EditMetaKnowled
 
 // Summary:
 //
-// 编辑指定guid的元数据业务知识
+// Edits the metadata business knowledge for specified GUIDs.
+//
+// Description:
+//
+// Edits the business knowledge of the metadata represented by the specified GUID.
 //
 // @param request - EditMetaKnowledgeAssetRequest
 //
@@ -7206,9 +7569,11 @@ func (client *Client) EditMetaKnowledgeAsset(request *EditMetaKnowledgeAssetRequ
 //
 // @return EnableUserResponse
 func (client *Client) EnableUserWithOptions(request *EnableUserRequest, runtime *dara.RuntimeOptions) (_result *EnableUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tid) {
@@ -7276,9 +7641,11 @@ func (client *Client) EnableUser(request *EnableUserRequest) (_result *EnableUse
 //
 // @return ExecuteDataCorrectResponse
 func (client *Client) ExecuteDataCorrectWithOptions(tmpReq *ExecuteDataCorrectRequest, runtime *dara.RuntimeOptions) (_result *ExecuteDataCorrectResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExecuteDataCorrectShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7354,9 +7721,11 @@ func (client *Client) ExecuteDataCorrect(request *ExecuteDataCorrectRequest) (_r
 //
 // @return ExecuteDataExportResponse
 func (client *Client) ExecuteDataExportWithOptions(tmpReq *ExecuteDataExportRequest, runtime *dara.RuntimeOptions) (_result *ExecuteDataExportResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExecuteDataExportShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7436,9 +7805,11 @@ func (client *Client) ExecuteDataExport(request *ExecuteDataExportRequest) (_res
 //
 // @return ExecuteScriptResponse
 func (client *Client) ExecuteScriptWithOptions(request *ExecuteScriptRequest, runtime *dara.RuntimeOptions) (_result *ExecuteScriptResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbId) {
@@ -7522,9 +7893,11 @@ func (client *Client) ExecuteScript(request *ExecuteScriptRequest) (_result *Exe
 //
 // @return ExecuteStructSyncResponse
 func (client *Client) ExecuteStructSyncWithOptions(request *ExecuteStructSyncRequest, runtime *dara.RuntimeOptions) (_result *ExecuteStructSyncResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -7584,11 +7957,11 @@ func (client *Client) ExecuteStructSync(request *ExecuteStructSyncRequest) (_res
 
 // Summary:
 //
-// 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+// Uses the specified SQL statement, error message, and database ID to analyze and fix the SQL error.
 //
 // Description:
 //
-// 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+// You can call this operation to analyze and fix SQL errors based on the specified SQL statement, error message, and database ID.
 //
 // @param request - FixSqlByMetaAgentRequest
 //
@@ -7596,9 +7969,11 @@ func (client *Client) ExecuteStructSync(request *ExecuteStructSyncRequest) (_res
 //
 // @return FixSqlByMetaAgentResponse
 func (client *Client) FixSqlByMetaAgentWithOptions(request *FixSqlByMetaAgentRequest, runtime *dara.RuntimeOptions) (_result *FixSqlByMetaAgentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbId) {
@@ -7646,11 +8021,11 @@ func (client *Client) FixSqlByMetaAgentWithOptions(request *FixSqlByMetaAgentReq
 
 // Summary:
 //
-// 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+// Uses the specified SQL statement, error message, and database ID to analyze and fix the SQL error.
 //
 // Description:
 //
-// 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+// You can call this operation to analyze and fix SQL errors based on the specified SQL statement, error message, and database ID.
 //
 // @param request - FixSqlByMetaAgentRequest
 //
@@ -7676,9 +8051,11 @@ func (client *Client) FixSqlByMetaAgent(request *FixSqlByMetaAgentRequest) (_res
 //
 // @return GenMetaKnowledgeAssetResponse
 func (client *Client) GenMetaKnowledgeAssetWithOptions(request *GenMetaKnowledgeAssetRequest, runtime *dara.RuntimeOptions) (_result *GenMetaKnowledgeAssetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbId) {
@@ -7752,9 +8129,11 @@ func (client *Client) GenMetaKnowledgeAsset(request *GenMetaKnowledgeAssetReques
 //
 // @return GenerateSqlFromNLResponse
 func (client *Client) GenerateSqlFromNLWithOptions(request *GenerateSqlFromNLRequest, runtime *dara.RuntimeOptions) (_result *GenerateSqlFromNLResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbId) {
@@ -7848,7 +8227,7 @@ func (client *Client) GenerateSqlFromNL(request *GenerateSqlFromNLRequest) (_res
 
 // Summary:
 //
-// 获取策略详情
+// Queries the details of a policy, including the name, content, and the user who created the policy.
 //
 // @param request - GetAbacPolicyRequest
 //
@@ -7856,9 +8235,11 @@ func (client *Client) GenerateSqlFromNL(request *GenerateSqlFromNLRequest) (_res
 //
 // @return GetAbacPolicyResponse
 func (client *Client) GetAbacPolicyWithOptions(request *GetAbacPolicyRequest, runtime *dara.RuntimeOptions) (_result *GetAbacPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AbacPolicyId) {
@@ -7898,7 +8279,7 @@ func (client *Client) GetAbacPolicyWithOptions(request *GetAbacPolicyRequest, ru
 
 // Summary:
 //
-// 获取策略详情
+// Queries the details of a policy, including the name, content, and the user who created the policy.
 //
 // @param request - GetAbacPolicyRequest
 //
@@ -7924,9 +8305,11 @@ func (client *Client) GetAbacPolicy(request *GetAbacPolicyRequest) (_result *Get
 //
 // @return GetApprovalDetailResponse
 func (client *Client) GetApprovalDetailWithOptions(request *GetApprovalDetailRequest, runtime *dara.RuntimeOptions) (_result *GetApprovalDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tid) {
@@ -7992,9 +8375,11 @@ func (client *Client) GetApprovalDetail(request *GetApprovalDetailRequest) (_res
 //
 // @return GetAuthorityTemplateResponse
 func (client *Client) GetAuthorityTemplateWithOptions(request *GetAuthorityTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetAuthorityTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -8064,9 +8449,11 @@ func (client *Client) GetAuthorityTemplate(request *GetAuthorityTemplateRequest)
 //
 // @return GetAuthorityTemplateItemResponse
 func (client *Client) GetAuthorityTemplateItemWithOptions(request *GetAuthorityTemplateItemRequest, runtime *dara.RuntimeOptions) (_result *GetAuthorityTemplateItemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -8124,7 +8511,7 @@ func (client *Client) GetAuthorityTemplateItem(request *GetAuthorityTemplateItem
 
 // Summary:
 //
-// 获取实例绑定的分类分级模板
+// Queries the information about the classification and grading template associated with an instance.
 //
 // @param request - GetClassificationTemplateRequest
 //
@@ -8132,9 +8519,11 @@ func (client *Client) GetAuthorityTemplateItem(request *GetAuthorityTemplateItem
 //
 // @return GetClassificationTemplateResponse
 func (client *Client) GetClassificationTemplateWithOptions(request *GetClassificationTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetClassificationTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8170,7 +8559,7 @@ func (client *Client) GetClassificationTemplateWithOptions(request *GetClassific
 
 // Summary:
 //
-// 获取实例绑定的分类分级模板
+// Queries the information about the classification and grading template associated with an instance.
 //
 // @param request - GetClassificationTemplateRequest
 //
@@ -8196,9 +8585,11 @@ func (client *Client) GetClassificationTemplate(request *GetClassificationTempla
 //
 // @return GetDBTaskSQLJobLogResponse
 func (client *Client) GetDBTaskSQLJobLogWithOptions(request *GetDBTaskSQLJobLogRequest, runtime *dara.RuntimeOptions) (_result *GetDBTaskSQLJobLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -8260,9 +8651,11 @@ func (client *Client) GetDBTaskSQLJobLog(request *GetDBTaskSQLJobLogRequest) (_r
 //
 // @return GetDBTopologyResponse
 func (client *Client) GetDBTopologyWithOptions(request *GetDBTopologyRequest, runtime *dara.RuntimeOptions) (_result *GetDBTopologyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LogicDbId) {
@@ -8324,9 +8717,11 @@ func (client *Client) GetDBTopology(request *GetDBTopologyRequest) (_result *Get
 //
 // @return GetDataArchiveCountResponse
 func (client *Client) GetDataArchiveCountWithOptions(request *GetDataArchiveCountRequest, runtime *dara.RuntimeOptions) (_result *GetDataArchiveCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderResultType) {
@@ -8396,9 +8791,11 @@ func (client *Client) GetDataArchiveCount(request *GetDataArchiveCountRequest) (
 //
 // @return GetDataArchiveOrderDetailResponse
 func (client *Client) GetDataArchiveOrderDetailWithOptions(request *GetDataArchiveOrderDetailRequest, runtime *dara.RuntimeOptions) (_result *GetDataArchiveOrderDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -8460,9 +8857,11 @@ func (client *Client) GetDataArchiveOrderDetail(request *GetDataArchiveOrderDeta
 //
 // @return GetDataCorrectBackupFilesResponse
 func (client *Client) GetDataCorrectBackupFilesWithOptions(tmpReq *GetDataCorrectBackupFilesRequest, runtime *dara.RuntimeOptions) (_result *GetDataCorrectBackupFilesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetDataCorrectBackupFilesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8534,9 +8933,11 @@ func (client *Client) GetDataCorrectBackupFiles(request *GetDataCorrectBackupFil
 //
 // @return GetDataCorrectOrderDetailResponse
 func (client *Client) GetDataCorrectOrderDetailWithOptions(request *GetDataCorrectOrderDetailRequest, runtime *dara.RuntimeOptions) (_result *GetDataCorrectOrderDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -8598,9 +8999,11 @@ func (client *Client) GetDataCorrectOrderDetail(request *GetDataCorrectOrderDeta
 //
 // @return GetDataCorrectRollbackFileResponse
 func (client *Client) GetDataCorrectRollbackFileWithOptions(request *GetDataCorrectRollbackFileRequest, runtime *dara.RuntimeOptions) (_result *GetDataCorrectRollbackFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -8666,9 +9069,11 @@ func (client *Client) GetDataCorrectRollbackFile(request *GetDataCorrectRollback
 //
 // @return GetDataCorrectSQLFileResponse
 func (client *Client) GetDataCorrectSQLFileWithOptions(request *GetDataCorrectSQLFileRequest, runtime *dara.RuntimeOptions) (_result *GetDataCorrectSQLFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -8734,9 +9139,11 @@ func (client *Client) GetDataCorrectSQLFile(request *GetDataCorrectSQLFileReques
 //
 // @return GetDataCorrectTaskDetailResponse
 func (client *Client) GetDataCorrectTaskDetailWithOptions(request *GetDataCorrectTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *GetDataCorrectTaskDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -8798,9 +9205,11 @@ func (client *Client) GetDataCorrectTaskDetail(request *GetDataCorrectTaskDetail
 //
 // @return GetDataCronClearConfigResponse
 func (client *Client) GetDataCronClearConfigWithOptions(request *GetDataCronClearConfigRequest, runtime *dara.RuntimeOptions) (_result *GetDataCronClearConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -8862,9 +9271,11 @@ func (client *Client) GetDataCronClearConfig(request *GetDataCronClearConfigRequ
 //
 // @return GetDataCronClearTaskDetailListResponse
 func (client *Client) GetDataCronClearTaskDetailListWithOptions(request *GetDataCronClearTaskDetailListRequest, runtime *dara.RuntimeOptions) (_result *GetDataCronClearTaskDetailListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -8934,9 +9345,11 @@ func (client *Client) GetDataCronClearTaskDetailList(request *GetDataCronClearTa
 //
 // @return GetDataExportDownloadURLResponse
 func (client *Client) GetDataExportDownloadURLWithOptions(request *GetDataExportDownloadURLRequest, runtime *dara.RuntimeOptions) (_result *GetDataExportDownloadURLResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -9002,9 +9415,11 @@ func (client *Client) GetDataExportDownloadURL(request *GetDataExportDownloadURL
 //
 // @return GetDataExportOrderDetailResponse
 func (client *Client) GetDataExportOrderDetailWithOptions(request *GetDataExportOrderDetailRequest, runtime *dara.RuntimeOptions) (_result *GetDataExportOrderDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tid) {
@@ -9068,9 +9483,11 @@ func (client *Client) GetDataExportOrderDetail(request *GetDataExportOrderDetail
 //
 // @return GetDataExportPreCheckDetailResponse
 func (client *Client) GetDataExportPreCheckDetailWithOptions(request *GetDataExportPreCheckDetailRequest, runtime *dara.RuntimeOptions) (_result *GetDataExportPreCheckDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -9136,9 +9553,11 @@ func (client *Client) GetDataExportPreCheckDetail(request *GetDataExportPreCheck
 //
 // @return GetDataImportSQLResponse
 func (client *Client) GetDataImportSQLWithOptions(request *GetDataImportSQLRequest, runtime *dara.RuntimeOptions) (_result *GetDataImportSQLResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -9200,7 +9619,7 @@ func (client *Client) GetDataImportSQL(request *GetDataImportSQLRequest) (_resul
 
 // Summary:
 //
-// 获取uc的数据库目录
+// Queries the data catalog of the data lake.
 //
 // @param request - GetDataLakeCatalogRequest
 //
@@ -9208,9 +9627,11 @@ func (client *Client) GetDataImportSQL(request *GetDataImportSQLRequest) (_resul
 //
 // @return GetDataLakeCatalogResponse
 func (client *Client) GetDataLakeCatalogWithOptions(request *GetDataLakeCatalogRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakeCatalogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -9254,7 +9675,7 @@ func (client *Client) GetDataLakeCatalogWithOptions(request *GetDataLakeCatalogR
 
 // Summary:
 //
-// 获取uc的数据库目录
+// Queries the data catalog of the data lake.
 //
 // @param request - GetDataLakeCatalogRequest
 //
@@ -9272,7 +9693,7 @@ func (client *Client) GetDataLakeCatalog(request *GetDataLakeCatalogRequest) (_r
 
 // Summary:
 //
-// 获取UC的数据库
+// Queries the information about the database in the data lake.
 //
 // @param request - GetDataLakeDatabaseRequest
 //
@@ -9280,9 +9701,11 @@ func (client *Client) GetDataLakeCatalog(request *GetDataLakeCatalogRequest) (_r
 //
 // @return GetDataLakeDatabaseResponse
 func (client *Client) GetDataLakeDatabaseWithOptions(request *GetDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakeDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -9330,7 +9753,7 @@ func (client *Client) GetDataLakeDatabaseWithOptions(request *GetDataLakeDatabas
 
 // Summary:
 //
-// 获取UC的数据库
+// Queries the information about the database in the data lake.
 //
 // @param request - GetDataLakeDatabaseRequest
 //
@@ -9348,7 +9771,7 @@ func (client *Client) GetDataLakeDatabase(request *GetDataLakeDatabaseRequest) (
 
 // Summary:
 //
-// 获取湖仓自定义函数详细信息
+// Obtains the details about a user-defined function in a data lakehouse.
 //
 // @param request - GetDataLakeFunctionRequest
 //
@@ -9356,9 +9779,11 @@ func (client *Client) GetDataLakeDatabase(request *GetDataLakeDatabaseRequest) (
 //
 // @return GetDataLakeFunctionResponse
 func (client *Client) GetDataLakeFunctionWithOptions(request *GetDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakeFunctionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -9410,7 +9835,7 @@ func (client *Client) GetDataLakeFunctionWithOptions(request *GetDataLakeFunctio
 
 // Summary:
 //
-// 获取湖仓自定义函数详细信息
+// Obtains the details about a user-defined function in a data lakehouse.
 //
 // @param request - GetDataLakeFunctionRequest
 //
@@ -9428,7 +9853,7 @@ func (client *Client) GetDataLakeFunction(request *GetDataLakeFunctionRequest) (
 
 // Summary:
 //
-// 获取湖仓表分区详情
+// Queries the information about a partition of a table in a data lakehouse.
 //
 // @param tmpReq - GetDataLakePartitionRequest
 //
@@ -9436,9 +9861,11 @@ func (client *Client) GetDataLakeFunction(request *GetDataLakeFunctionRequest) (
 //
 // @return GetDataLakePartitionResponse
 func (client *Client) GetDataLakePartitionWithOptions(tmpReq *GetDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakePartitionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetDataLakePartitionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9500,7 +9927,7 @@ func (client *Client) GetDataLakePartitionWithOptions(tmpReq *GetDataLakePartiti
 
 // Summary:
 //
-// 获取湖仓表分区详情
+// Queries the information about a partition of a table in a data lakehouse.
 //
 // @param request - GetDataLakePartitionRequest
 //
@@ -9518,7 +9945,7 @@ func (client *Client) GetDataLakePartition(request *GetDataLakePartitionRequest)
 
 // Summary:
 //
-// 获取表信息
+// Queries basic information about tables in the data lake.
 //
 // @param request - GetDataLakeTableRequest
 //
@@ -9526,9 +9953,11 @@ func (client *Client) GetDataLakePartition(request *GetDataLakePartitionRequest)
 //
 // @return GetDataLakeTableResponse
 func (client *Client) GetDataLakeTableWithOptions(request *GetDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakeTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -9580,7 +10009,7 @@ func (client *Client) GetDataLakeTableWithOptions(request *GetDataLakeTableReque
 
 // Summary:
 //
-// 获取表信息
+// Queries basic information about tables in the data lake.
 //
 // @param request - GetDataLakeTableRequest
 //
@@ -9606,9 +10035,11 @@ func (client *Client) GetDataLakeTable(request *GetDataLakeTableRequest) (_resul
 //
 // @return GetDataTrackJobDegreeResponse
 func (client *Client) GetDataTrackJobDegreeWithOptions(request *GetDataTrackJobDegreeRequest, runtime *dara.RuntimeOptions) (_result *GetDataTrackJobDegreeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -9670,9 +10101,11 @@ func (client *Client) GetDataTrackJobDegree(request *GetDataTrackJobDegreeReques
 //
 // @return GetDataTrackJobTableMetaResponse
 func (client *Client) GetDataTrackJobTableMetaWithOptions(request *GetDataTrackJobTableMetaRequest, runtime *dara.RuntimeOptions) (_result *GetDataTrackJobTableMetaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -9734,9 +10167,11 @@ func (client *Client) GetDataTrackJobTableMeta(request *GetDataTrackJobTableMeta
 //
 // @return GetDataTrackOrderDetailResponse
 func (client *Client) GetDataTrackOrderDetailWithOptions(request *GetDataTrackOrderDetailRequest, runtime *dara.RuntimeOptions) (_result *GetDataTrackOrderDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -9798,9 +10233,11 @@ func (client *Client) GetDataTrackOrderDetail(request *GetDataTrackOrderDetailRe
 //
 // @return GetDatabaseResponse
 func (client *Client) GetDatabaseWithOptions(request *GetDatabaseRequest, runtime *dara.RuntimeOptions) (_result *GetDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Host) {
@@ -9878,9 +10315,11 @@ func (client *Client) GetDatabase(request *GetDatabaseRequest) (_result *GetData
 //
 // @return GetDatabaseExportOrderDetailResponse
 func (client *Client) GetDatabaseExportOrderDetailWithOptions(request *GetDatabaseExportOrderDetailRequest, runtime *dara.RuntimeOptions) (_result *GetDatabaseExportOrderDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tid) {
@@ -9936,7 +10375,7 @@ func (client *Client) GetDatabaseExportOrderDetail(request *GetDatabaseExportOrd
 
 // Summary:
 //
-// 获取数据库导出下载地址
+// Queries the download URL of the results of a database export ticket.
 //
 // @param request - GetDbExportDownloadURLRequest
 //
@@ -9944,9 +10383,11 @@ func (client *Client) GetDatabaseExportOrderDetail(request *GetDatabaseExportOrd
 //
 // @return GetDbExportDownloadURLResponse
 func (client *Client) GetDbExportDownloadURLWithOptions(request *GetDbExportDownloadURLRequest, runtime *dara.RuntimeOptions) (_result *GetDbExportDownloadURLResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -9982,7 +10423,7 @@ func (client *Client) GetDbExportDownloadURLWithOptions(request *GetDbExportDown
 
 // Summary:
 //
-// 获取数据库导出下载地址
+// Queries the download URL of the results of a database export ticket.
 //
 // @param request - GetDbExportDownloadURLRequest
 //
@@ -10008,9 +10449,11 @@ func (client *Client) GetDbExportDownloadURL(request *GetDbExportDownloadURLRequ
 //
 // @return GetInstanceResponse
 func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Host) {
@@ -10088,9 +10531,11 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 //
 // @return GetIntervalLimitOfSLAResponse
 func (client *Client) GetIntervalLimitOfSLAWithOptions(request *GetIntervalLimitOfSLARequest, runtime *dara.RuntimeOptions) (_result *GetIntervalLimitOfSLAResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -10160,9 +10605,11 @@ func (client *Client) GetIntervalLimitOfSLA(request *GetIntervalLimitOfSLAReques
 //
 // @return GetLhSpaceByNameResponse
 func (client *Client) GetLhSpaceByNameWithOptions(request *GetLhSpaceByNameRequest, runtime *dara.RuntimeOptions) (_result *GetLhSpaceByNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SpaceName) {
@@ -10228,9 +10675,11 @@ func (client *Client) GetLhSpaceByName(request *GetLhSpaceByNameRequest) (_resul
 //
 // @return GetLogicDatabaseResponse
 func (client *Client) GetLogicDatabaseWithOptions(request *GetLogicDatabaseRequest, runtime *dara.RuntimeOptions) (_result *GetLogicDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbId) {
@@ -10296,9 +10745,11 @@ func (client *Client) GetLogicDatabase(request *GetLogicDatabaseRequest) (_resul
 //
 // @return GetMetaTableColumnResponse
 func (client *Client) GetMetaTableColumnWithOptions(request *GetMetaTableColumnRequest, runtime *dara.RuntimeOptions) (_result *GetMetaTableColumnResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TableGuid) {
@@ -10368,9 +10819,11 @@ func (client *Client) GetMetaTableColumn(request *GetMetaTableColumnRequest) (_r
 //
 // @return GetMetaTableDetailInfoResponse
 func (client *Client) GetMetaTableDetailInfoWithOptions(request *GetMetaTableDetailInfoRequest, runtime *dara.RuntimeOptions) (_result *GetMetaTableDetailInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RealLoginUserUid) {
@@ -10440,9 +10893,11 @@ func (client *Client) GetMetaTableDetailInfo(request *GetMetaTableDetailInfoRequ
 //
 // @return GetOnlineDDLProgressResponse
 func (client *Client) GetOnlineDDLProgressWithOptions(request *GetOnlineDDLProgressRequest, runtime *dara.RuntimeOptions) (_result *GetOnlineDDLProgressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobDetailId) {
@@ -10508,9 +10963,11 @@ func (client *Client) GetOnlineDDLProgress(request *GetOnlineDDLProgressRequest)
 //
 // @return GetOpLogResponse
 func (client *Client) GetOpLogWithOptions(request *GetOpLogRequest, runtime *dara.RuntimeOptions) (_result *GetOpLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatabaseName) {
@@ -10600,9 +11057,11 @@ func (client *Client) GetOpLog(request *GetOpLogRequest) (_result *GetOpLogRespo
 //
 // @return GetOrderAttachmentFileResponse
 func (client *Client) GetOrderAttachmentFileWithOptions(request *GetOrderAttachmentFileRequest, runtime *dara.RuntimeOptions) (_result *GetOrderAttachmentFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -10664,9 +11123,11 @@ func (client *Client) GetOrderAttachmentFile(request *GetOrderAttachmentFileRequ
 //
 // @return GetOrderBaseInfoResponse
 func (client *Client) GetOrderBaseInfoWithOptions(request *GetOrderBaseInfoRequest, runtime *dara.RuntimeOptions) (_result *GetOrderBaseInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -10728,9 +11189,11 @@ func (client *Client) GetOrderBaseInfo(request *GetOrderBaseInfoRequest) (_resul
 //
 // @return GetOwnerApplyOrderDetailResponse
 func (client *Client) GetOwnerApplyOrderDetailWithOptions(request *GetOwnerApplyOrderDetailRequest, runtime *dara.RuntimeOptions) (_result *GetOwnerApplyOrderDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -10784,7 +11247,7 @@ func (client *Client) GetOwnerApplyOrderDetail(request *GetOwnerApplyOrderDetail
 
 // Summary:
 //
-// 获取数据归档工单任务实例
+// Queries the task information about a ticket.
 //
 // @param request - GetPagedInstanceRequest
 //
@@ -10792,9 +11255,11 @@ func (client *Client) GetOwnerApplyOrderDetail(request *GetOwnerApplyOrderDetail
 //
 // @return GetPagedInstanceResponse
 func (client *Client) GetPagedInstanceWithOptions(request *GetPagedInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetPagedInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -10822,7 +11287,7 @@ func (client *Client) GetPagedInstanceWithOptions(request *GetPagedInstanceReque
 
 // Summary:
 //
-// 获取数据归档工单任务实例
+// Queries the task information about a ticket.
 //
 // @param request - GetPagedInstanceRequest
 //
@@ -10852,9 +11317,11 @@ func (client *Client) GetPagedInstance(request *GetPagedInstanceRequest) (_resul
 //
 // @return GetPermApplyOrderDetailResponse
 func (client *Client) GetPermApplyOrderDetailWithOptions(request *GetPermApplyOrderDetailRequest, runtime *dara.RuntimeOptions) (_result *GetPermApplyOrderDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -10920,9 +11387,11 @@ func (client *Client) GetPermApplyOrderDetail(request *GetPermApplyOrderDetailRe
 //
 // @return GetPhysicalDatabaseResponse
 func (client *Client) GetPhysicalDatabaseWithOptions(request *GetPhysicalDatabaseRequest, runtime *dara.RuntimeOptions) (_result *GetPhysicalDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbId) {
@@ -10984,9 +11453,11 @@ func (client *Client) GetPhysicalDatabase(request *GetPhysicalDatabaseRequest) (
 //
 // @return GetProxyResponse
 func (client *Client) GetProxyWithOptions(request *GetProxyRequest, runtime *dara.RuntimeOptions) (_result *GetProxyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProxyId) {
@@ -11048,9 +11519,11 @@ func (client *Client) GetProxy(request *GetProxyRequest) (_result *GetProxyRespo
 //
 // @return GetProxyAccessResponse
 func (client *Client) GetProxyAccessWithOptions(request *GetProxyAccessRequest, runtime *dara.RuntimeOptions) (_result *GetProxyAccessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProxyAccessId) {
@@ -11112,9 +11585,11 @@ func (client *Client) GetProxyAccess(request *GetProxyAccessRequest) (_result *G
 //
 // @return GetRuleNumLimitOfSLAResponse
 func (client *Client) GetRuleNumLimitOfSLAWithOptions(request *GetRuleNumLimitOfSLARequest, runtime *dara.RuntimeOptions) (_result *GetRuleNumLimitOfSLAResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -11180,9 +11655,11 @@ func (client *Client) GetRuleNumLimitOfSLA(request *GetRuleNumLimitOfSLARequest)
 //
 // @return GetSQLReviewCheckResultStatusResponse
 func (client *Client) GetSQLReviewCheckResultStatusWithOptions(request *GetSQLReviewCheckResultStatusRequest, runtime *dara.RuntimeOptions) (_result *GetSQLReviewCheckResultStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -11252,9 +11729,11 @@ func (client *Client) GetSQLReviewCheckResultStatus(request *GetSQLReviewCheckRe
 //
 // @return GetSQLReviewOptimizeDetailResponse
 func (client *Client) GetSQLReviewOptimizeDetailWithOptions(request *GetSQLReviewOptimizeDetailRequest, runtime *dara.RuntimeOptions) (_result *GetSQLReviewOptimizeDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SQLReviewQueryKey) {
@@ -11312,7 +11791,7 @@ func (client *Client) GetSQLReviewOptimizeDetail(request *GetSQLReviewOptimizeDe
 
 // Summary:
 //
-// 获取安全规则
+// Queries the information about security rule sets of a tenant. The information includes the name and description of security rules, and instances associated with security rules.
 //
 // @param request - GetStandardGroupRequest
 //
@@ -11320,9 +11799,11 @@ func (client *Client) GetSQLReviewOptimizeDetail(request *GetSQLReviewOptimizeDe
 //
 // @return GetStandardGroupResponse
 func (client *Client) GetStandardGroupWithOptions(request *GetStandardGroupRequest, runtime *dara.RuntimeOptions) (_result *GetStandardGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -11358,7 +11839,7 @@ func (client *Client) GetStandardGroupWithOptions(request *GetStandardGroupReque
 
 // Summary:
 //
-// 获取安全规则
+// Queries the information about security rule sets of a tenant. The information includes the name and description of security rules, and instances associated with security rules.
 //
 // @param request - GetStandardGroupRequest
 //
@@ -11384,9 +11865,11 @@ func (client *Client) GetStandardGroup(request *GetStandardGroupRequest) (_resul
 //
 // @return GetStructSyncExecSqlDetailResponse
 func (client *Client) GetStructSyncExecSqlDetailWithOptions(request *GetStructSyncExecSqlDetailRequest, runtime *dara.RuntimeOptions) (_result *GetStructSyncExecSqlDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -11456,9 +11939,11 @@ func (client *Client) GetStructSyncExecSqlDetail(request *GetStructSyncExecSqlDe
 //
 // @return GetStructSyncJobAnalyzeResultResponse
 func (client *Client) GetStructSyncJobAnalyzeResultWithOptions(request *GetStructSyncJobAnalyzeResultRequest, runtime *dara.RuntimeOptions) (_result *GetStructSyncJobAnalyzeResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CompareType) {
@@ -11532,9 +12017,11 @@ func (client *Client) GetStructSyncJobAnalyzeResult(request *GetStructSyncJobAna
 //
 // @return GetStructSyncJobDetailResponse
 func (client *Client) GetStructSyncJobDetailWithOptions(request *GetStructSyncJobDetailRequest, runtime *dara.RuntimeOptions) (_result *GetStructSyncJobDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -11596,9 +12083,11 @@ func (client *Client) GetStructSyncJobDetail(request *GetStructSyncJobDetailRequ
 //
 // @return GetStructSyncOrderDetailResponse
 func (client *Client) GetStructSyncOrderDetailWithOptions(request *GetStructSyncOrderDetailRequest, runtime *dara.RuntimeOptions) (_result *GetStructSyncOrderDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -11660,9 +12149,11 @@ func (client *Client) GetStructSyncOrderDetail(request *GetStructSyncOrderDetail
 //
 // @return GetTableDBTopologyResponse
 func (client *Client) GetTableDBTopologyWithOptions(request *GetTableDBTopologyRequest, runtime *dara.RuntimeOptions) (_result *GetTableDBTopologyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TableGuid) {
@@ -11724,9 +12215,11 @@ func (client *Client) GetTableDBTopology(request *GetTableDBTopologyRequest) (_r
 //
 // @return GetTableDesignProjectFlowResponse
 func (client *Client) GetTableDesignProjectFlowWithOptions(request *GetTableDesignProjectFlowRequest, runtime *dara.RuntimeOptions) (_result *GetTableDesignProjectFlowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -11788,9 +12281,11 @@ func (client *Client) GetTableDesignProjectFlow(request *GetTableDesignProjectFl
 //
 // @return GetTableDesignProjectInfoResponse
 func (client *Client) GetTableDesignProjectInfoWithOptions(request *GetTableDesignProjectInfoRequest, runtime *dara.RuntimeOptions) (_result *GetTableDesignProjectInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -11844,7 +12339,11 @@ func (client *Client) GetTableDesignProjectInfo(request *GetTableDesignProjectIn
 
 // Summary:
 //
-// 获取指定guid的元数据知识
+// Gets metadata knowledge for a specified GUID.
+//
+// Description:
+//
+// This API can be called only for database instances that are enabled for security hosting.
 //
 // @param request - GetTableKnowledgeInfoRequest
 //
@@ -11852,9 +12351,11 @@ func (client *Client) GetTableDesignProjectInfo(request *GetTableDesignProjectIn
 //
 // @return GetTableKnowledgeInfoResponse
 func (client *Client) GetTableKnowledgeInfoWithOptions(request *GetTableKnowledgeInfoRequest, runtime *dara.RuntimeOptions) (_result *GetTableKnowledgeInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbId) {
@@ -11894,7 +12395,11 @@ func (client *Client) GetTableKnowledgeInfoWithOptions(request *GetTableKnowledg
 
 // Summary:
 //
-// 获取指定guid的元数据知识
+// Gets metadata knowledge for a specified GUID.
+//
+// Description:
+//
+// This API can be called only for database instances that are enabled for security hosting.
 //
 // @param request - GetTableKnowledgeInfoRequest
 //
@@ -11920,9 +12425,11 @@ func (client *Client) GetTableKnowledgeInfo(request *GetTableKnowledgeInfoReques
 //
 // @return GetTableTopologyResponse
 func (client *Client) GetTableTopologyWithOptions(request *GetTableTopologyRequest, runtime *dara.RuntimeOptions) (_result *GetTableTopologyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TableGuid) {
@@ -11984,9 +12491,11 @@ func (client *Client) GetTableTopology(request *GetTableTopologyRequest) (_resul
 //
 // @return GetTaskResponse
 func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *dara.RuntimeOptions) (_result *GetTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NodeId) {
@@ -12048,9 +12557,11 @@ func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse
 //
 // @return GetTaskFlowGraphResponse
 func (client *Client) GetTaskFlowGraphWithOptions(request *GetTaskFlowGraphRequest, runtime *dara.RuntimeOptions) (_result *GetTaskFlowGraphResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -12112,9 +12623,11 @@ func (client *Client) GetTaskFlowGraph(request *GetTaskFlowGraphRequest) (_resul
 //
 // @return GetTaskFlowNotificationResponse
 func (client *Client) GetTaskFlowNotificationWithOptions(request *GetTaskFlowNotificationRequest, runtime *dara.RuntimeOptions) (_result *GetTaskFlowNotificationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -12176,9 +12689,11 @@ func (client *Client) GetTaskFlowNotification(request *GetTaskFlowNotificationRe
 //
 // @return GetTaskInstanceRelationResponse
 func (client *Client) GetTaskInstanceRelationWithOptions(request *GetTaskInstanceRelationRequest, runtime *dara.RuntimeOptions) (_result *GetTaskInstanceRelationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -12244,9 +12759,11 @@ func (client *Client) GetTaskInstanceRelation(request *GetTaskInstanceRelationRe
 //
 // @return GetUserResponse
 func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *dara.RuntimeOptions) (_result *GetUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tid) {
@@ -12312,9 +12829,11 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 //
 // @return GetUserActiveTenantResponse
 func (client *Client) GetUserActiveTenantWithOptions(request *GetUserActiveTenantRequest, runtime *dara.RuntimeOptions) (_result *GetUserActiveTenantResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tid) {
@@ -12372,9 +12891,11 @@ func (client *Client) GetUserActiveTenant(request *GetUserActiveTenantRequest) (
 //
 // @return GetUserUploadFileJobResponse
 func (client *Client) GetUserUploadFileJobWithOptions(request *GetUserUploadFileJobRequest, runtime *dara.RuntimeOptions) (_result *GetUserUploadFileJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobKey) {
@@ -12428,7 +12949,7 @@ func (client *Client) GetUserUploadFileJob(request *GetUserUploadFileJobRequest)
 
 // Summary:
 //
-// 获取空间描述
+// Queries the details of a workspace.
 //
 // @param request - GetWorkspaceRequest
 //
@@ -12436,9 +12957,11 @@ func (client *Client) GetUserUploadFileJob(request *GetUserUploadFileJobRequest)
 //
 // @return GetWorkspaceResponse
 func (client *Client) GetWorkspaceWithOptions(request *GetWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *GetWorkspaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.WorkspaceId) {
@@ -12470,7 +12993,7 @@ func (client *Client) GetWorkspaceWithOptions(request *GetWorkspaceRequest, runt
 
 // Summary:
 //
-// 获取空间描述
+// Queries the details of a workspace.
 //
 // @param request - GetWorkspaceRequest
 //
@@ -12500,9 +13023,11 @@ func (client *Client) GetWorkspace(request *GetWorkspaceRequest) (_result *GetWo
 //
 // @return GrantTemplateAuthorityResponse
 func (client *Client) GrantTemplateAuthorityWithOptions(request *GrantTemplateAuthorityRequest, runtime *dara.RuntimeOptions) (_result *GrantTemplateAuthorityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Comment) {
@@ -12580,9 +13105,11 @@ func (client *Client) GrantTemplateAuthority(request *GrantTemplateAuthorityRequ
 //
 // @return GrantUserPermissionResponse
 func (client *Client) GrantUserPermissionWithOptions(request *GrantUserPermissionRequest, runtime *dara.RuntimeOptions) (_result *GrantUserPermissionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbId) {
@@ -12676,9 +13203,11 @@ func (client *Client) GrantUserPermission(request *GrantUserPermissionRequest) (
 //
 // @return InspectProxyAccessSecretResponse
 func (client *Client) InspectProxyAccessSecretWithOptions(request *InspectProxyAccessSecretRequest, runtime *dara.RuntimeOptions) (_result *InspectProxyAccessSecretResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProxyAccessId) {
@@ -12732,7 +13261,7 @@ func (client *Client) InspectProxyAccessSecret(request *InspectProxyAccessSecret
 
 // Summary:
 //
-// 获取权限策略授权列表
+// Queries a list of users to which the specified policy is attached and the number of the users.
 //
 // @param request - ListAbacAuthorizationsRequest
 //
@@ -12740,9 +13269,11 @@ func (client *Client) InspectProxyAccessSecret(request *InspectProxyAccessSecret
 //
 // @return ListAbacAuthorizationsResponse
 func (client *Client) ListAbacAuthorizationsWithOptions(request *ListAbacAuthorizationsRequest, runtime *dara.RuntimeOptions) (_result *ListAbacAuthorizationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -12790,7 +13321,7 @@ func (client *Client) ListAbacAuthorizationsWithOptions(request *ListAbacAuthori
 
 // Summary:
 //
-// 获取权限策略授权列表
+// Queries a list of users to which the specified policy is attached and the number of the users.
 //
 // @param request - ListAbacAuthorizationsRequest
 //
@@ -12808,7 +13339,7 @@ func (client *Client) ListAbacAuthorizations(request *ListAbacAuthorizationsRequ
 
 // Summary:
 //
-// 获取权限策略列表
+// Queries a list of policies that are created by a user.
 //
 // @param request - ListAbacPoliciesRequest
 //
@@ -12816,9 +13347,11 @@ func (client *Client) ListAbacAuthorizations(request *ListAbacAuthorizationsRequ
 //
 // @return ListAbacPoliciesResponse
 func (client *Client) ListAbacPoliciesWithOptions(request *ListAbacPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListAbacPoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -12862,7 +13395,7 @@ func (client *Client) ListAbacPoliciesWithOptions(request *ListAbacPoliciesReque
 
 // Summary:
 //
-// 获取权限策略列表
+// Queries a list of policies that are created by a user.
 //
 // @param request - ListAbacPoliciesRequest
 //
@@ -12880,7 +13413,7 @@ func (client *Client) ListAbacPolicies(request *ListAbacPoliciesRequest) (_resul
 
 // Summary:
 //
-// 获取权限模版列表
+// Queries the information about permission templates, including the template creator, template name, and total number of templates.
 //
 // @param request - ListAuthorityTemplateRequest
 //
@@ -12888,9 +13421,11 @@ func (client *Client) ListAbacPolicies(request *ListAbacPoliciesRequest) (_resul
 //
 // @return ListAuthorityTemplateResponse
 func (client *Client) ListAuthorityTemplateWithOptions(request *ListAuthorityTemplateRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorityTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -12934,7 +13469,7 @@ func (client *Client) ListAuthorityTemplateWithOptions(request *ListAuthorityTem
 
 // Summary:
 //
-// 获取权限模版列表
+// Queries the information about permission templates, including the template creator, template name, and total number of templates.
 //
 // @param request - ListAuthorityTemplateRequest
 //
@@ -12952,7 +13487,7 @@ func (client *Client) ListAuthorityTemplate(request *ListAuthorityTemplateReques
 
 // Summary:
 //
-// 获取用户有权限的数据库
+// Queries the databases on which the specified user has permissions.
 //
 // @param request - ListAuthorizedDatabasesForUserRequest
 //
@@ -12960,9 +13495,11 @@ func (client *Client) ListAuthorityTemplate(request *ListAuthorityTemplateReques
 //
 // @return ListAuthorizedDatabasesForUserResponse
 func (client *Client) ListAuthorizedDatabasesForUserWithOptions(request *ListAuthorizedDatabasesForUserRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorizedDatabasesForUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbType) {
@@ -13022,7 +13559,7 @@ func (client *Client) ListAuthorizedDatabasesForUserWithOptions(request *ListAut
 
 // Summary:
 //
-// 获取用户有权限的数据库
+// Queries the databases on which the specified user has permissions.
 //
 // @param request - ListAuthorizedDatabasesForUserRequest
 //
@@ -13040,7 +13577,7 @@ func (client *Client) ListAuthorizedDatabasesForUser(request *ListAuthorizedData
 
 // Summary:
 //
-// 获取用户有权限的实例
+// Queries the instances on which the specified user has permissions.
 //
 // @param request - ListAuthorizedInstancesForUserRequest
 //
@@ -13048,9 +13585,11 @@ func (client *Client) ListAuthorizedDatabasesForUser(request *ListAuthorizedData
 //
 // @return ListAuthorizedInstancesForUserResponse
 func (client *Client) ListAuthorizedInstancesForUserWithOptions(request *ListAuthorizedInstancesForUserRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorizedInstancesForUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbType) {
@@ -13106,7 +13645,7 @@ func (client *Client) ListAuthorizedInstancesForUserWithOptions(request *ListAut
 
 // Summary:
 //
-// 获取用户有权限的实例
+// Queries the instances on which the specified user has permissions.
 //
 // @param request - ListAuthorizedInstancesForUserRequest
 //
@@ -13124,7 +13663,7 @@ func (client *Client) ListAuthorizedInstancesForUser(request *ListAuthorizedInst
 
 // Summary:
 //
-// 查询有数据库权限的用户
+// Queries a list of users that have permissions on the specified database.
 //
 // @param request - ListAuthorizedUsersForDatabaseRequest
 //
@@ -13132,9 +13671,11 @@ func (client *Client) ListAuthorizedInstancesForUser(request *ListAuthorizedInst
 //
 // @return ListAuthorizedUsersForDatabaseResponse
 func (client *Client) ListAuthorizedUsersForDatabaseWithOptions(request *ListAuthorizedUsersForDatabaseRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorizedUsersForDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbId) {
@@ -13186,7 +13727,7 @@ func (client *Client) ListAuthorizedUsersForDatabaseWithOptions(request *ListAut
 
 // Summary:
 //
-// 查询有数据库权限的用户
+// Queries a list of users that have permissions on the specified database.
 //
 // @param request - ListAuthorizedUsersForDatabaseRequest
 //
@@ -13204,7 +13745,7 @@ func (client *Client) ListAuthorizedUsersForDatabase(request *ListAuthorizedUser
 
 // Summary:
 //
-// 查询有实例权限的用户
+// Queries a list of users that have permissions on the specified instance.
 //
 // @param request - ListAuthorizedUsersForInstanceRequest
 //
@@ -13212,9 +13753,11 @@ func (client *Client) ListAuthorizedUsersForDatabase(request *ListAuthorizedUser
 //
 // @return ListAuthorizedUsersForInstanceResponse
 func (client *Client) ListAuthorizedUsersForInstanceWithOptions(request *ListAuthorizedUsersForInstanceRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorizedUsersForInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -13262,7 +13805,7 @@ func (client *Client) ListAuthorizedUsersForInstanceWithOptions(request *ListAut
 
 // Summary:
 //
-// 查询有实例权限的用户
+// Queries a list of users that have permissions on the specified instance.
 //
 // @param request - ListAuthorizedUsersForInstanceRequest
 //
@@ -13288,9 +13831,11 @@ func (client *Client) ListAuthorizedUsersForInstance(request *ListAuthorizedUser
 //
 // @return ListClassificationTemplatesResponse
 func (client *Client) ListClassificationTemplatesWithOptions(request *ListClassificationTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListClassificationTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tid) {
@@ -13352,9 +13897,11 @@ func (client *Client) ListClassificationTemplates(request *ListClassificationTem
 //
 // @return ListColumnsResponse
 func (client *Client) ListColumnsWithOptions(request *ListColumnsRequest, runtime *dara.RuntimeOptions) (_result *ListColumnsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Logic) {
@@ -13424,9 +13971,11 @@ func (client *Client) ListColumns(request *ListColumnsRequest) (_result *ListCol
 //
 // @return ListDAGVersionsResponse
 func (client *Client) ListDAGVersionsWithOptions(request *ListDAGVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListDAGVersionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -13496,9 +14045,11 @@ func (client *Client) ListDAGVersions(request *ListDAGVersionsRequest) (_result 
 //
 // @return ListDBTaskSQLJobResponse
 func (client *Client) ListDBTaskSQLJobWithOptions(request *ListDBTaskSQLJobRequest, runtime *dara.RuntimeOptions) (_result *ListDBTaskSQLJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBTaskGroupId) {
@@ -13568,9 +14119,11 @@ func (client *Client) ListDBTaskSQLJob(request *ListDBTaskSQLJobRequest) (_resul
 //
 // @return ListDBTaskSQLJobDetailResponse
 func (client *Client) ListDBTaskSQLJobDetailWithOptions(request *ListDBTaskSQLJobDetailRequest, runtime *dara.RuntimeOptions) (_result *ListDBTaskSQLJobDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -13640,9 +14193,11 @@ func (client *Client) ListDBTaskSQLJobDetail(request *ListDBTaskSQLJobDetailRequ
 //
 // @return ListDDLPublishRecordsResponse
 func (client *Client) ListDDLPublishRecordsWithOptions(request *ListDDLPublishRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListDDLPublishRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -13708,9 +14263,11 @@ func (client *Client) ListDDLPublishRecords(request *ListDDLPublishRecordsReques
 //
 // @return ListDataCorrectPreCheckDBResponse
 func (client *Client) ListDataCorrectPreCheckDBWithOptions(request *ListDataCorrectPreCheckDBRequest, runtime *dara.RuntimeOptions) (_result *ListDataCorrectPreCheckDBResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -13788,9 +14345,11 @@ func (client *Client) ListDataCorrectPreCheckDB(request *ListDataCorrectPreCheck
 //
 // @return ListDataCorrectPreCheckSQLResponse
 func (client *Client) ListDataCorrectPreCheckSQLWithOptions(request *ListDataCorrectPreCheckSQLRequest, runtime *dara.RuntimeOptions) (_result *ListDataCorrectPreCheckSQLResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbId) {
@@ -13872,9 +14431,11 @@ func (client *Client) ListDataCorrectPreCheckSQL(request *ListDataCorrectPreChec
 //
 // @return ListDataImportSQLPreCheckDetailResponse
 func (client *Client) ListDataImportSQLPreCheckDetailWithOptions(request *ListDataImportSQLPreCheckDetailRequest, runtime *dara.RuntimeOptions) (_result *ListDataImportSQLPreCheckDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -13960,9 +14521,11 @@ func (client *Client) ListDataImportSQLPreCheckDetail(request *ListDataImportSQL
 //
 // @return ListDataImportSQLTypeResponse
 func (client *Client) ListDataImportSQLTypeWithOptions(request *ListDataImportSQLTypeRequest, runtime *dara.RuntimeOptions) (_result *ListDataImportSQLTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -14020,7 +14583,7 @@ func (client *Client) ListDataImportSQLType(request *ListDataImportSQLTypeReques
 
 // Summary:
 //
-// 获取uc的数据库目录列表
+// Queries a list of data catalogs in a data lake.
 //
 // @param request - ListDataLakeCatalogRequest
 //
@@ -14028,9 +14591,11 @@ func (client *Client) ListDataImportSQLType(request *ListDataImportSQLTypeReques
 //
 // @return ListDataLakeCatalogResponse
 func (client *Client) ListDataLakeCatalogWithOptions(request *ListDataLakeCatalogRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeCatalogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DataRegion) {
@@ -14074,7 +14639,7 @@ func (client *Client) ListDataLakeCatalogWithOptions(request *ListDataLakeCatalo
 
 // Summary:
 //
-// 获取uc的数据库目录列表
+// Queries a list of data catalogs in a data lake.
 //
 // @param request - ListDataLakeCatalogRequest
 //
@@ -14092,7 +14657,7 @@ func (client *Client) ListDataLakeCatalog(request *ListDataLakeCatalogRequest) (
 
 // Summary:
 //
-// 获取数据库列表
+// Queries the list of databases in the data lake.
 //
 // @param request - ListDataLakeDatabaseRequest
 //
@@ -14100,9 +14665,11 @@ func (client *Client) ListDataLakeCatalog(request *ListDataLakeCatalogRequest) (
 //
 // @return ListDataLakeDatabaseResponse
 func (client *Client) ListDataLakeDatabaseWithOptions(request *ListDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -14158,7 +14725,7 @@ func (client *Client) ListDataLakeDatabaseWithOptions(request *ListDataLakeDatab
 
 // Summary:
 //
-// 获取数据库列表
+// Queries the list of databases in the data lake.
 //
 // @param request - ListDataLakeDatabaseRequest
 //
@@ -14176,7 +14743,7 @@ func (client *Client) ListDataLakeDatabase(request *ListDataLakeDatabaseRequest)
 
 // Summary:
 //
-// 获取数据湖函数列表
+// Queries a list of functions in a data lake.
 //
 // @param request - ListDataLakeFunctionRequest
 //
@@ -14184,9 +14751,11 @@ func (client *Client) ListDataLakeDatabase(request *ListDataLakeDatabaseRequest)
 //
 // @return ListDataLakeFunctionResponse
 func (client *Client) ListDataLakeFunctionWithOptions(request *ListDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeFunctionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -14246,7 +14815,7 @@ func (client *Client) ListDataLakeFunctionWithOptions(request *ListDataLakeFunct
 
 // Summary:
 //
-// 获取数据湖函数列表
+// Queries a list of functions in a data lake.
 //
 // @param request - ListDataLakeFunctionRequest
 //
@@ -14264,7 +14833,7 @@ func (client *Client) ListDataLakeFunction(request *ListDataLakeFunctionRequest)
 
 // Summary:
 //
-// 获取数据湖函数名列表
+// Gets a list of data lake function names.
 //
 // @param request - ListDataLakeFunctionNameRequest
 //
@@ -14272,9 +14841,11 @@ func (client *Client) ListDataLakeFunction(request *ListDataLakeFunctionRequest)
 //
 // @return ListDataLakeFunctionNameResponse
 func (client *Client) ListDataLakeFunctionNameWithOptions(request *ListDataLakeFunctionNameRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeFunctionNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -14334,7 +14905,7 @@ func (client *Client) ListDataLakeFunctionNameWithOptions(request *ListDataLakeF
 
 // Summary:
 //
-// 获取数据湖函数名列表
+// Gets a list of data lake function names.
 //
 // @param request - ListDataLakeFunctionNameRequest
 //
@@ -14352,7 +14923,7 @@ func (client *Client) ListDataLakeFunctionName(request *ListDataLakeFunctionName
 
 // Summary:
 //
-// 获取数据湖表分区列表
+// Queries a list of partitions of a table in a data lake.
 //
 // @param tmpReq - ListDataLakePartitionRequest
 //
@@ -14360,9 +14931,11 @@ func (client *Client) ListDataLakeFunctionName(request *ListDataLakeFunctionName
 //
 // @return ListDataLakePartitionResponse
 func (client *Client) ListDataLakePartitionWithOptions(tmpReq *ListDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakePartitionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDataLakePartitionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14434,7 +15007,7 @@ func (client *Client) ListDataLakePartitionWithOptions(tmpReq *ListDataLakeParti
 
 // Summary:
 //
-// 获取数据湖表分区列表
+// Queries a list of partitions of a table in a data lake.
 //
 // @param request - ListDataLakePartitionRequest
 //
@@ -14452,7 +15025,7 @@ func (client *Client) ListDataLakePartition(request *ListDataLakePartitionReques
 
 // Summary:
 //
-// 根据筛选条件获取数据湖表分区列表
+// Queries a list of partitions of a table in a data lake based on filter conditions.
 //
 // @param request - ListDataLakePartitionByFilterRequest
 //
@@ -14460,9 +15033,11 @@ func (client *Client) ListDataLakePartition(request *ListDataLakePartitionReques
 //
 // @return ListDataLakePartitionByFilterResponse
 func (client *Client) ListDataLakePartitionByFilterWithOptions(request *ListDataLakePartitionByFilterRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakePartitionByFilterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -14528,7 +15103,7 @@ func (client *Client) ListDataLakePartitionByFilterWithOptions(request *ListData
 
 // Summary:
 //
-// 根据筛选条件获取数据湖表分区列表
+// Queries a list of partitions of a table in a data lake based on filter conditions.
 //
 // @param request - ListDataLakePartitionByFilterRequest
 //
@@ -14546,7 +15121,7 @@ func (client *Client) ListDataLakePartitionByFilter(request *ListDataLakePartiti
 
 // Summary:
 //
-// 获取数据湖表分区名列表
+// Queries a list of partition names of a table in a data lake.
 //
 // @param request - ListDataLakePartitionNameRequest
 //
@@ -14554,9 +15129,11 @@ func (client *Client) ListDataLakePartitionByFilter(request *ListDataLakePartiti
 //
 // @return ListDataLakePartitionNameResponse
 func (client *Client) ListDataLakePartitionNameWithOptions(request *ListDataLakePartitionNameRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakePartitionNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -14616,7 +15193,7 @@ func (client *Client) ListDataLakePartitionNameWithOptions(request *ListDataLake
 
 // Summary:
 //
-// 获取数据湖表分区名列表
+// Queries a list of partition names of a table in a data lake.
 //
 // @param request - ListDataLakePartitionNameRequest
 //
@@ -14634,7 +15211,7 @@ func (client *Client) ListDataLakePartitionName(request *ListDataLakePartitionNa
 
 // Summary:
 //
-// 获取数据湖表列表
+// Queries a list of tables in a data lake.
 //
 // @param request - ListDataLakeTableRequest
 //
@@ -14642,9 +15219,11 @@ func (client *Client) ListDataLakePartitionName(request *ListDataLakePartitionNa
 //
 // @return ListDataLakeTableResponse
 func (client *Client) ListDataLakeTableWithOptions(request *ListDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -14708,7 +15287,7 @@ func (client *Client) ListDataLakeTableWithOptions(request *ListDataLakeTableReq
 
 // Summary:
 //
-// 获取数据湖表列表
+// Queries a list of tables in a data lake.
 //
 // @param request - ListDataLakeTableRequest
 //
@@ -14726,7 +15305,7 @@ func (client *Client) ListDataLakeTable(request *ListDataLakeTableRequest) (_res
 
 // Summary:
 //
-// 获取数据湖表名列表
+// Queries a list of names of tables in a data lake.
 //
 // @param request - ListDataLakeTableNameRequest
 //
@@ -14734,9 +15313,11 @@ func (client *Client) ListDataLakeTable(request *ListDataLakeTableRequest) (_res
 //
 // @return ListDataLakeTableNameResponse
 func (client *Client) ListDataLakeTableNameWithOptions(request *ListDataLakeTableNameRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeTableNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -14800,7 +15381,7 @@ func (client *Client) ListDataLakeTableNameWithOptions(request *ListDataLakeTabl
 
 // Summary:
 //
-// 获取数据湖表名列表
+// Queries a list of names of tables in a data lake.
 //
 // @param request - ListDataLakeTableNameRequest
 //
@@ -14818,7 +15399,7 @@ func (client *Client) ListDataLakeTableName(request *ListDataLakeTableNameReques
 
 // Summary:
 //
-// 获取表信息
+// Queries basic information about tables in the data lake.
 //
 // @param request - ListDataLakeTablebaseInfoRequest
 //
@@ -14826,9 +15407,11 @@ func (client *Client) ListDataLakeTableName(request *ListDataLakeTableNameReques
 //
 // @return ListDataLakeTablebaseInfoResponse
 func (client *Client) ListDataLakeTablebaseInfoWithOptions(request *ListDataLakeTablebaseInfoRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeTablebaseInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -14888,7 +15471,7 @@ func (client *Client) ListDataLakeTablebaseInfoWithOptions(request *ListDataLake
 
 // Summary:
 //
-// 获取表信息
+// Queries basic information about tables in the data lake.
 //
 // @param request - ListDataLakeTablebaseInfoRequest
 //
@@ -14914,9 +15497,11 @@ func (client *Client) ListDataLakeTablebaseInfo(request *ListDataLakeTablebaseIn
 //
 // @return ListDatabaseUserPermssionsResponse
 func (client *Client) ListDatabaseUserPermssionsWithOptions(request *ListDatabaseUserPermssionsRequest, runtime *dara.RuntimeOptions) (_result *ListDatabaseUserPermssionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbId) {
@@ -14998,9 +15583,11 @@ func (client *Client) ListDatabaseUserPermssions(request *ListDatabaseUserPermss
 //
 // @return ListDatabasesResponse
 func (client *Client) ListDatabasesWithOptions(request *ListDatabasesRequest, runtime *dara.RuntimeOptions) (_result *ListDatabasesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -15070,9 +15657,11 @@ func (client *Client) ListDatabases(request *ListDatabasesRequest) (_result *Lis
 //
 // @return ListDefaultSLARulesResponse
 func (client *Client) ListDefaultSLARulesWithOptions(request *ListDefaultSLARulesRequest, runtime *dara.RuntimeOptions) (_result *ListDefaultSLARulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -15134,9 +15723,11 @@ func (client *Client) ListDefaultSLARules(request *ListDefaultSLARulesRequest) (
 //
 // @return ListDesensitizationRuleResponse
 func (client *Client) ListDesensitizationRuleWithOptions(request *ListDesensitizationRuleRequest, runtime *dara.RuntimeOptions) (_result *ListDesensitizationRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FuncType) {
@@ -15236,9 +15827,11 @@ func (client *Client) ListDesensitizationRule(request *ListDesensitizationRuleRe
 //
 // @return ListDifyInstancesResponse
 func (client *Client) ListDifyInstancesWithOptions(request *ListDifyInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListDifyInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -15326,9 +15919,11 @@ func (client *Client) ListDifyInstances(request *ListDifyInstancesRequest) (_res
 //
 // @return ListEffectiveOrdersResponse
 func (client *Client) ListEffectiveOrdersWithOptions(request *ListEffectiveOrdersRequest, runtime *dara.RuntimeOptions) (_result *ListEffectiveOrdersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tid) {
@@ -15386,9 +15981,11 @@ func (client *Client) ListEffectiveOrders(request *ListEffectiveOrdersRequest) (
 //
 // @return ListIndexesResponse
 func (client *Client) ListIndexesWithOptions(request *ListIndexesRequest, runtime *dara.RuntimeOptions) (_result *ListIndexesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Logic) {
@@ -15454,9 +16051,11 @@ func (client *Client) ListIndexes(request *ListIndexesRequest) (_result *ListInd
 //
 // @return ListInstanceLoginAuditLogResponse
 func (client *Client) ListInstanceLoginAuditLogWithOptions(request *ListInstanceLoginAuditLogRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceLoginAuditLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -15538,9 +16137,11 @@ func (client *Client) ListInstanceLoginAuditLog(request *ListInstanceLoginAuditL
 //
 // @return ListInstanceUserPermissionsResponse
 func (client *Client) ListInstanceUserPermissionsWithOptions(request *ListInstanceUserPermissionsRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceUserPermissionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -15614,9 +16215,11 @@ func (client *Client) ListInstanceUserPermissions(request *ListInstanceUserPermi
 //
 // @return ListInstancesResponse
 func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbType) {
@@ -15720,9 +16323,11 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 //
 // @return ListLhTaskFlowAndScenarioResponse
 func (client *Client) ListLhTaskFlowAndScenarioWithOptions(request *ListLhTaskFlowAndScenarioRequest, runtime *dara.RuntimeOptions) (_result *ListLhTaskFlowAndScenarioResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SpaceId) {
@@ -15794,9 +16399,11 @@ func (client *Client) ListLhTaskFlowAndScenario(request *ListLhTaskFlowAndScenar
 //
 // @return ListLogicDatabasesResponse
 func (client *Client) ListLogicDatabasesWithOptions(request *ListLogicDatabasesRequest, runtime *dara.RuntimeOptions) (_result *ListLogicDatabasesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -15862,9 +16469,11 @@ func (client *Client) ListLogicDatabases(request *ListLogicDatabasesRequest) (_r
 //
 // @return ListLogicTableRouteConfigResponse
 func (client *Client) ListLogicTableRouteConfigWithOptions(request *ListLogicTableRouteConfigRequest, runtime *dara.RuntimeOptions) (_result *ListLogicTableRouteConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TableId) {
@@ -15926,9 +16535,11 @@ func (client *Client) ListLogicTableRouteConfig(request *ListLogicTableRouteConf
 //
 // @return ListLogicTablesResponse
 func (client *Client) ListLogicTablesWithOptions(request *ListLogicTablesRequest, runtime *dara.RuntimeOptions) (_result *ListLogicTablesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatabaseId) {
@@ -15998,7 +16609,7 @@ func (client *Client) ListLogicTables(request *ListLogicTablesRequest) (_result 
 
 // Summary:
 //
-// 获取资产类目列表
+// # Queries a list of categories
 //
 // @param request - ListMetaCategoryRequest
 //
@@ -16006,9 +16617,11 @@ func (client *Client) ListLogicTables(request *ListLogicTablesRequest) (_result 
 //
 // @return ListMetaCategoryResponse
 func (client *Client) ListMetaCategoryWithOptions(request *ListMetaCategoryRequest, runtime *dara.RuntimeOptions) (_result *ListMetaCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -16052,7 +16665,7 @@ func (client *Client) ListMetaCategoryWithOptions(request *ListMetaCategoryReque
 
 // Summary:
 //
-// 获取资产类目列表
+// # Queries a list of categories
 //
 // @param request - ListMetaCategoryRequest
 //
@@ -16078,9 +16691,11 @@ func (client *Client) ListMetaCategory(request *ListMetaCategoryRequest) (_resul
 //
 // @return ListOrdersResponse
 func (client *Client) ListOrdersWithOptions(request *ListOrdersRequest, runtime *dara.RuntimeOptions) (_result *ListOrdersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -16174,9 +16789,11 @@ func (client *Client) ListOrders(request *ListOrdersRequest) (_result *ListOrder
 //
 // @return ListProxiesResponse
 func (client *Client) ListProxiesWithOptions(request *ListProxiesRequest, runtime *dara.RuntimeOptions) (_result *ListProxiesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tid) {
@@ -16234,9 +16851,11 @@ func (client *Client) ListProxies(request *ListProxiesRequest) (_result *ListPro
 //
 // @return ListProxyAccessesResponse
 func (client *Client) ListProxyAccessesWithOptions(request *ListProxyAccessesRequest, runtime *dara.RuntimeOptions) (_result *ListProxyAccessesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProxyId) {
@@ -16298,9 +16917,11 @@ func (client *Client) ListProxyAccesses(request *ListProxyAccessesRequest) (_res
 //
 // @return ListProxySQLExecAuditLogResponse
 func (client *Client) ListProxySQLExecAuditLogWithOptions(request *ListProxySQLExecAuditLogRequest, runtime *dara.RuntimeOptions) (_result *ListProxySQLExecAuditLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -16390,9 +17011,11 @@ func (client *Client) ListProxySQLExecAuditLog(request *ListProxySQLExecAuditLog
 //
 // @return ListSLARulesResponse
 func (client *Client) ListSLARulesWithOptions(request *ListSLARulesRequest, runtime *dara.RuntimeOptions) (_result *ListSLARulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -16454,9 +17077,11 @@ func (client *Client) ListSLARules(request *ListSLARulesRequest) (_result *ListS
 //
 // @return ListSQLExecAuditLogResponse
 func (client *Client) ListSQLExecAuditLogWithOptions(request *ListSQLExecAuditLogRequest, runtime *dara.RuntimeOptions) (_result *ListSQLExecAuditLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -16550,9 +17175,11 @@ func (client *Client) ListSQLExecAuditLog(request *ListSQLExecAuditLogRequest) (
 //
 // @return ListSQLReviewOriginSQLResponse
 func (client *Client) ListSQLReviewOriginSQLWithOptions(tmpReq *ListSQLReviewOriginSQLRequest, runtime *dara.RuntimeOptions) (_result *ListSQLReviewOriginSQLResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListSQLReviewOriginSQLShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16628,9 +17255,11 @@ func (client *Client) ListSQLReviewOriginSQL(request *ListSQLReviewOriginSQLRequ
 //
 // @return ListScenariosResponse
 func (client *Client) ListScenariosWithOptions(request *ListScenariosRequest, runtime *dara.RuntimeOptions) (_result *ListScenariosResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tid) {
@@ -16680,7 +17309,7 @@ func (client *Client) ListScenarios(request *ListScenariosRequest) (_result *Lis
 
 // Summary:
 //
-// 获取敏感字段信息
+// Queries the information about a sensitive field. The information includes the masking algorithm ID, masking algorithm name, and field security level.
 //
 // @param request - ListSensitiveColumnInfoRequest
 //
@@ -16688,9 +17317,11 @@ func (client *Client) ListScenarios(request *ListScenariosRequest) (_result *Lis
 //
 // @return ListSensitiveColumnInfoResponse
 func (client *Client) ListSensitiveColumnInfoWithOptions(request *ListSensitiveColumnInfoRequest, runtime *dara.RuntimeOptions) (_result *ListSensitiveColumnInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ColumnName) {
@@ -16746,7 +17377,7 @@ func (client *Client) ListSensitiveColumnInfoWithOptions(request *ListSensitiveC
 
 // Summary:
 //
-// 获取敏感字段信息
+// Queries the information about a sensitive field. The information includes the masking algorithm ID, masking algorithm name, and field security level.
 //
 // @param request - ListSensitiveColumnInfoRequest
 //
@@ -16772,9 +17403,11 @@ func (client *Client) ListSensitiveColumnInfo(request *ListSensitiveColumnInfoRe
 //
 // @return ListSensitiveColumnsResponse
 func (client *Client) ListSensitiveColumnsWithOptions(request *ListSensitiveColumnsRequest, runtime *dara.RuntimeOptions) (_result *ListSensitiveColumnsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ColumnName) {
@@ -16864,9 +17497,11 @@ func (client *Client) ListSensitiveColumns(request *ListSensitiveColumnsRequest)
 //
 // @return ListSensitiveColumnsDetailResponse
 func (client *Client) ListSensitiveColumnsDetailWithOptions(request *ListSensitiveColumnsDetailRequest, runtime *dara.RuntimeOptions) (_result *ListSensitiveColumnsDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ColumnName) {
@@ -16944,9 +17579,11 @@ func (client *Client) ListSensitiveColumnsDetail(request *ListSensitiveColumnsDe
 //
 // @return ListSensitiveDataAuditLogResponse
 func (client *Client) ListSensitiveDataAuditLogWithOptions(request *ListSensitiveDataAuditLogRequest, runtime *dara.RuntimeOptions) (_result *ListSensitiveDataAuditLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ColumnName) {
@@ -17040,9 +17677,11 @@ func (client *Client) ListSensitiveDataAuditLog(request *ListSensitiveDataAuditL
 //
 // @return ListSensitivityLevelResponse
 func (client *Client) ListSensitivityLevelWithOptions(request *ListSensitivityLevelRequest, runtime *dara.RuntimeOptions) (_result *ListSensitivityLevelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -17096,9 +17735,11 @@ func (client *Client) ListSensitivityLevel(request *ListSensitivityLevelRequest)
 //
 // @return ListStandardGroupsResponse
 func (client *Client) ListStandardGroupsWithOptions(request *ListStandardGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListStandardGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tid) {
@@ -17148,7 +17789,7 @@ func (client *Client) ListStandardGroups(request *ListStandardGroupsRequest) (_r
 
 // Summary:
 //
-// 获取表字段信息
+// Queries the details about fields in a table.
 //
 // @param request - ListTableColumnsRequest
 //
@@ -17156,9 +17797,11 @@ func (client *Client) ListStandardGroups(request *ListStandardGroupsRequest) (_r
 //
 // @return ListTableColumnsResponse
 func (client *Client) ListTableColumnsWithOptions(request *ListTableColumnsRequest, runtime *dara.RuntimeOptions) (_result *ListTableColumnsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbId) {
@@ -17202,7 +17845,7 @@ func (client *Client) ListTableColumnsWithOptions(request *ListTableColumnsReque
 
 // Summary:
 //
-// 获取表字段信息
+// Queries the details about fields in a table.
 //
 // @param request - ListTableColumnsRequest
 //
@@ -17232,9 +17875,11 @@ func (client *Client) ListTableColumns(request *ListTableColumnsRequest) (_resul
 //
 // @return ListTablesResponse
 func (client *Client) ListTablesWithOptions(request *ListTablesRequest, runtime *dara.RuntimeOptions) (_result *ListTablesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatabaseId) {
@@ -17312,7 +17957,7 @@ func (client *Client) ListTables(request *ListTablesRequest) (_result *ListTable
 
 // Summary:
 //
-// 获取类目下的表列表
+// Obtains the list of tables in a category.
 //
 // @param request - ListTablesInCategoryRequest
 //
@@ -17320,9 +17965,11 @@ func (client *Client) ListTables(request *ListTablesRequest) (_result *ListTable
 //
 // @return ListTablesInCategoryResponse
 func (client *Client) ListTablesInCategoryWithOptions(request *ListTablesInCategoryRequest, runtime *dara.RuntimeOptions) (_result *ListTablesInCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryId) {
@@ -17366,7 +18013,7 @@ func (client *Client) ListTablesInCategoryWithOptions(request *ListTablesInCateg
 
 // Summary:
 //
-// 获取类目下的表列表
+// Obtains the list of tables in a category.
 //
 // @param request - ListTablesInCategoryRequest
 //
@@ -17392,9 +18039,11 @@ func (client *Client) ListTablesInCategory(request *ListTablesInCategoryRequest)
 //
 // @return ListTaskFlowResponse
 func (client *Client) ListTaskFlowWithOptions(request *ListTaskFlowRequest, runtime *dara.RuntimeOptions) (_result *ListTaskFlowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tid) {
@@ -17452,9 +18101,11 @@ func (client *Client) ListTaskFlow(request *ListTaskFlowRequest) (_result *ListT
 //
 // @return ListTaskFlowConstantsResponse
 func (client *Client) ListTaskFlowConstantsWithOptions(request *ListTaskFlowConstantsRequest, runtime *dara.RuntimeOptions) (_result *ListTaskFlowConstantsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -17516,9 +18167,11 @@ func (client *Client) ListTaskFlowConstants(request *ListTaskFlowConstantsReques
 //
 // @return ListTaskFlowCooperatorsResponse
 func (client *Client) ListTaskFlowCooperatorsWithOptions(request *ListTaskFlowCooperatorsRequest, runtime *dara.RuntimeOptions) (_result *ListTaskFlowCooperatorsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -17584,9 +18237,11 @@ func (client *Client) ListTaskFlowCooperators(request *ListTaskFlowCooperatorsRe
 //
 // @return ListTaskFlowEdgesByConditionResponse
 func (client *Client) ListTaskFlowEdgesByConditionWithOptions(request *ListTaskFlowEdgesByConditionRequest, runtime *dara.RuntimeOptions) (_result *ListTaskFlowEdgesByConditionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -17664,9 +18319,11 @@ func (client *Client) ListTaskFlowEdgesByCondition(request *ListTaskFlowEdgesByC
 //
 // @return ListTaskFlowInstanceResponse
 func (client *Client) ListTaskFlowInstanceWithOptions(request *ListTaskFlowInstanceRequest, runtime *dara.RuntimeOptions) (_result *ListTaskFlowInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -17756,9 +18413,11 @@ func (client *Client) ListTaskFlowInstance(request *ListTaskFlowInstanceRequest)
 //
 // @return ListTaskFlowTimeVariablesResponse
 func (client *Client) ListTaskFlowTimeVariablesWithOptions(request *ListTaskFlowTimeVariablesRequest, runtime *dara.RuntimeOptions) (_result *ListTaskFlowTimeVariablesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -17820,9 +18479,11 @@ func (client *Client) ListTaskFlowTimeVariables(request *ListTaskFlowTimeVariabl
 //
 // @return ListTaskFlowsByPageResponse
 func (client *Client) ListTaskFlowsByPageWithOptions(tmpReq *ListTaskFlowsByPageRequest, runtime *dara.RuntimeOptions) (_result *ListTaskFlowsByPageResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListTaskFlowsByPageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17906,9 +18567,11 @@ func (client *Client) ListTaskFlowsByPage(request *ListTaskFlowsByPageRequest) (
 //
 // @return ListTasksInTaskFlowResponse
 func (client *Client) ListTasksInTaskFlowWithOptions(request *ListTasksInTaskFlowRequest, runtime *dara.RuntimeOptions) (_result *ListTasksInTaskFlowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -17962,6 +18625,100 @@ func (client *Client) ListTasksInTaskFlow(request *ListTasksInTaskFlowRequest) (
 
 // Summary:
 //
+// # Obtains
+//
+// @param request - ListUserOwnedResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserOwnedResourcesResponse
+func (client *Client) ListUserOwnedResourcesWithOptions(request *ListUserOwnedResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListUserOwnedResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DatabaseName) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !dara.IsNil(request.DbType) {
+		query["DbType"] = request.DbType
+	}
+
+	if !dara.IsNil(request.EnvType) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !dara.IsNil(request.Logic) {
+		query["Logic"] = request.Logic
+	}
+
+	if !dara.IsNil(request.OwnerType) {
+		query["OwnerType"] = request.OwnerType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Tid) {
+		query["Tid"] = request.Tid
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUserOwnedResources"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUserOwnedResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Obtains
+//
+// @param request - ListUserOwnedResourcesRequest
+//
+// @return ListUserOwnedResourcesResponse
+func (client *Client) ListUserOwnedResources(request *ListUserOwnedResourcesRequest) (_result *ListUserOwnedResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListUserOwnedResourcesResponse{}
+	_body, _err := client.ListUserOwnedResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the permissions of a specific user on a database or a table.
 //
 // @param request - ListUserPermissionsRequest
@@ -17970,9 +18727,11 @@ func (client *Client) ListTasksInTaskFlow(request *ListTasksInTaskFlowRequest) (
 //
 // @return ListUserPermissionsResponse
 func (client *Client) ListUserPermissionsWithOptions(request *ListUserPermissionsRequest, runtime *dara.RuntimeOptions) (_result *ListUserPermissionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatabaseName) {
@@ -18066,9 +18825,11 @@ func (client *Client) ListUserPermissions(request *ListUserPermissionsRequest) (
 //
 // @return ListUserTenantsResponse
 func (client *Client) ListUserTenantsWithOptions(request *ListUserTenantsRequest, runtime *dara.RuntimeOptions) (_result *ListUserTenantsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tid) {
@@ -18126,9 +18887,11 @@ func (client *Client) ListUserTenants(request *ListUserTenantsRequest) (_result 
 //
 // @return ListUsersResponse
 func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *dara.RuntimeOptions) (_result *ListUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -18206,9 +18969,11 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 //
 // @return ListWorkFlowNodesResponse
 func (client *Client) ListWorkFlowNodesWithOptions(request *ListWorkFlowNodesRequest, runtime *dara.RuntimeOptions) (_result *ListWorkFlowNodesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SearchName) {
@@ -18270,9 +19035,11 @@ func (client *Client) ListWorkFlowNodes(request *ListWorkFlowNodesRequest) (_res
 //
 // @return ListWorkFlowTemplatesResponse
 func (client *Client) ListWorkFlowTemplatesWithOptions(request *ListWorkFlowTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListWorkFlowTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SearchName) {
@@ -18326,7 +19093,7 @@ func (client *Client) ListWorkFlowTemplates(request *ListWorkFlowTemplatesReques
 
 // Summary:
 //
-// 搜索工作空间列表
+// Queries a list of workspaces of the tenant.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -18334,9 +19101,11 @@ func (client *Client) ListWorkFlowTemplates(request *ListWorkFlowTemplatesReques
 //
 // @return ListWorkspacesResponse
 func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, runtime *dara.RuntimeOptions) (_result *ListWorkspacesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlreadyJoined) {
@@ -18400,7 +19169,7 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 
 // Summary:
 //
-// 搜索工作空间列表
+// Queries a list of workspaces of the tenant.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -18426,9 +19195,11 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 //
 // @return MakeTaskFlowInstanceSuccessResponse
 func (client *Client) MakeTaskFlowInstanceSuccessWithOptions(request *MakeTaskFlowInstanceSuccessRequest, runtime *dara.RuntimeOptions) (_result *MakeTaskFlowInstanceSuccessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -18494,9 +19265,11 @@ func (client *Client) MakeTaskFlowInstanceSuccess(request *MakeTaskFlowInstanceS
 //
 // @return ModifyDataCorrectExecSQLResponse
 func (client *Client) ModifyDataCorrectExecSQLWithOptions(request *ModifyDataCorrectExecSQLRequest, runtime *dara.RuntimeOptions) (_result *ModifyDataCorrectExecSQLResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExecSQL) {
@@ -18566,9 +19339,11 @@ func (client *Client) ModifyDataCorrectExecSQL(request *ModifyDataCorrectExecSQL
 //
 // @return ModifyDesensitizationStrategyResponse
 func (client *Client) ModifyDesensitizationStrategyWithOptions(request *ModifyDesensitizationStrategyRequest, runtime *dara.RuntimeOptions) (_result *ModifyDesensitizationStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ColumnName) {
@@ -18650,7 +19425,7 @@ func (client *Client) ModifyDesensitizationStrategy(request *ModifyDesensitizati
 
 // Summary:
 //
-// 修改实例信息，同时检查该实例连通性
+// Modifies the basic and advanced information about a database instance in Data Management (DMS). The basic information includes the hosting mode of the instance, the instance account username and password, and features that are enabled for the instance. The advanced information includes the environment type, the instance name in DMS, and the timeout period for querying and exporting data.
 //
 // @param request - ModifyInstanceRequest
 //
@@ -18658,9 +19433,11 @@ func (client *Client) ModifyDesensitizationStrategy(request *ModifyDesensitizati
 //
 // @return ModifyInstanceResponse
 func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DataLinkName) {
@@ -18808,7 +19585,7 @@ func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, 
 
 // Summary:
 //
-// 修改实例信息，同时检查该实例连通性
+// Modifies the basic and advanced information about a database instance in Data Management (DMS). The basic information includes the hosting mode of the instance, the instance account username and password, and features that are enabled for the instance. The advanced information includes the environment type, the instance name in DMS, and the timeout period for querying and exporting data.
 //
 // @param request - ModifyInstanceRequest
 //
@@ -18834,9 +19611,11 @@ func (client *Client) ModifyInstance(request *ModifyInstanceRequest) (_result *M
 //
 // @return MoveTaskFlowToScenarioResponse
 func (client *Client) MoveTaskFlowToScenarioWithOptions(request *MoveTaskFlowToScenarioRequest, runtime *dara.RuntimeOptions) (_result *MoveTaskFlowToScenarioResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -18902,9 +19681,11 @@ func (client *Client) MoveTaskFlowToScenario(request *MoveTaskFlowToScenarioRequ
 //
 // @return OfflineTaskFlowResponse
 func (client *Client) OfflineTaskFlowWithOptions(request *OfflineTaskFlowRequest, runtime *dara.RuntimeOptions) (_result *OfflineTaskFlowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -18958,11 +19739,11 @@ func (client *Client) OfflineTaskFlow(request *OfflineTaskFlowRequest) (_result 
 
 // Summary:
 //
-// 根据用户提供的SQL数据库ID，分析SQL性能并优化
+// Analyzes and optimizes the SQL statements in the specified database.
 //
 // Description:
 //
-// 根据用户提供的SQL数据库ID，分析SQL性能并优化
+// You can call this operation to analyze and optimize the SQL statements in the specified database.
 //
 // @param request - OptimizeSqlByMetaAgentRequest
 //
@@ -18970,9 +19751,11 @@ func (client *Client) OfflineTaskFlow(request *OfflineTaskFlowRequest) (_result 
 //
 // @return OptimizeSqlByMetaAgentResponse
 func (client *Client) OptimizeSqlByMetaAgentWithOptions(request *OptimizeSqlByMetaAgentRequest, runtime *dara.RuntimeOptions) (_result *OptimizeSqlByMetaAgentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbId) {
@@ -19016,11 +19799,11 @@ func (client *Client) OptimizeSqlByMetaAgentWithOptions(request *OptimizeSqlByMe
 
 // Summary:
 //
-// 根据用户提供的SQL数据库ID，分析SQL性能并优化
+// Analyzes and optimizes the SQL statements in the specified database.
 //
 // Description:
 //
-// 根据用户提供的SQL数据库ID，分析SQL性能并优化
+// You can call this operation to analyze and optimize the SQL statements in the specified database.
 //
 // @param request - OptimizeSqlByMetaAgentRequest
 //
@@ -19050,9 +19833,11 @@ func (client *Client) OptimizeSqlByMetaAgent(request *OptimizeSqlByMetaAgentRequ
 //
 // @return PauseDataCorrectSQLJobResponse
 func (client *Client) PauseDataCorrectSQLJobWithOptions(request *PauseDataCorrectSQLJobRequest, runtime *dara.RuntimeOptions) (_result *PauseDataCorrectSQLJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -19118,7 +19903,7 @@ func (client *Client) PauseDataCorrectSQLJob(request *PauseDataCorrectSQLJobRequ
 
 // Summary:
 //
-// 终止数据导出任务
+// Terminates a SQL result set export task.
 //
 // @param request - PauseDataExportJobRequest
 //
@@ -19126,9 +19911,11 @@ func (client *Client) PauseDataCorrectSQLJob(request *PauseDataCorrectSQLJobRequ
 //
 // @return PauseDataExportJobResponse
 func (client *Client) PauseDataExportJobWithOptions(request *PauseDataExportJobRequest, runtime *dara.RuntimeOptions) (_result *PauseDataExportJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -19168,7 +19955,7 @@ func (client *Client) PauseDataExportJobWithOptions(request *PauseDataExportJobR
 
 // Summary:
 //
-// 终止数据导出任务
+// Terminates a SQL result set export task.
 //
 // @param request - PauseDataExportJobRequest
 //
@@ -19186,7 +19973,7 @@ func (client *Client) PauseDataExportJob(request *PauseDataExportJobRequest) (_r
 
 // Summary:
 //
-// 创建工单审批流
+// Previews the approval process of a ticket before the ticket is submitted.
 //
 // @param request - PreviewWorkflowRequest
 //
@@ -19194,9 +19981,11 @@ func (client *Client) PauseDataExportJob(request *PauseDataExportJobRequest) (_r
 //
 // @return PreviewWorkflowResponse
 func (client *Client) PreviewWorkflowWithOptions(request *PreviewWorkflowRequest, runtime *dara.RuntimeOptions) (_result *PreviewWorkflowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -19232,7 +20021,7 @@ func (client *Client) PreviewWorkflowWithOptions(request *PreviewWorkflowRequest
 
 // Summary:
 //
-// 创建工单审批流
+// Previews the approval process of a ticket before the ticket is submitted.
 //
 // @param request - PreviewWorkflowRequest
 //
@@ -19258,9 +20047,11 @@ func (client *Client) PreviewWorkflow(request *PreviewWorkflowRequest) (_result 
 //
 // @return PublishAndDeployTaskFlowResponse
 func (client *Client) PublishAndDeployTaskFlowWithOptions(request *PublishAndDeployTaskFlowRequest, runtime *dara.RuntimeOptions) (_result *PublishAndDeployTaskFlowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -19326,9 +20117,11 @@ func (client *Client) PublishAndDeployTaskFlow(request *PublishAndDeployTaskFlow
 //
 // @return QueryDataTrackResultDownloadStatusResponse
 func (client *Client) QueryDataTrackResultDownloadStatusWithOptions(request *QueryDataTrackResultDownloadStatusRequest, runtime *dara.RuntimeOptions) (_result *QueryDataTrackResultDownloadStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DownloadKeyId) {
@@ -19394,9 +20187,11 @@ func (client *Client) QueryDataTrackResultDownloadStatus(request *QueryDataTrack
 //
 // @return ReDeployLhDagVersionResponse
 func (client *Client) ReDeployLhDagVersionWithOptions(request *ReDeployLhDagVersionRequest, runtime *dara.RuntimeOptions) (_result *ReDeployLhDagVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -19462,9 +20257,11 @@ func (client *Client) ReDeployLhDagVersion(request *ReDeployLhDagVersionRequest)
 //
 // @return ReRunTaskFlowInstanceResponse
 func (client *Client) ReRunTaskFlowInstanceWithOptions(request *ReRunTaskFlowInstanceRequest, runtime *dara.RuntimeOptions) (_result *ReRunTaskFlowInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -19552,9 +20349,11 @@ func (client *Client) ReRunTaskFlowInstance(request *ReRunTaskFlowInstanceReques
 //
 // @return RedeployDifyInstanceResponse
 func (client *Client) RedeployDifyInstanceWithOptions(request *RedeployDifyInstanceRequest, runtime *dara.RuntimeOptions) (_result *RedeployDifyInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -19642,9 +20441,11 @@ func (client *Client) RedeployDifyInstance(request *RedeployDifyInstanceRequest)
 //
 // @return RefundPayAsYouGoOrderResponse
 func (client *Client) RefundPayAsYouGoOrderWithOptions(request *RefundPayAsYouGoOrderRequest, runtime *dara.RuntimeOptions) (_result *RefundPayAsYouGoOrderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -19714,9 +20515,11 @@ func (client *Client) RefundPayAsYouGoOrder(request *RefundPayAsYouGoOrderReques
 //
 // @return RegisterInstanceResponse
 func (client *Client) RegisterInstanceWithOptions(request *RegisterInstanceRequest, runtime *dara.RuntimeOptions) (_result *RegisterInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DataLinkName) {
@@ -19886,9 +20689,11 @@ func (client *Client) RegisterInstance(request *RegisterInstanceRequest) (_resul
 //
 // @return RegisterUserResponse
 func (client *Client) RegisterUserWithOptions(request *RegisterUserRequest, runtime *dara.RuntimeOptions) (_result *RegisterUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Mobile) {
@@ -19958,7 +20763,7 @@ func (client *Client) RegisterUser(request *RegisterUserRequest) (_result *Regis
 
 // Summary:
 //
-// 删除数据导出任务
+// Deletes a data export task.
 //
 // @param request - RemoveDataExportJobRequest
 //
@@ -19966,9 +20771,11 @@ func (client *Client) RegisterUser(request *RegisterUserRequest) (_result *Regis
 //
 // @return RemoveDataExportJobResponse
 func (client *Client) RemoveDataExportJobWithOptions(request *RemoveDataExportJobRequest, runtime *dara.RuntimeOptions) (_result *RemoveDataExportJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -20008,7 +20815,7 @@ func (client *Client) RemoveDataExportJobWithOptions(request *RemoveDataExportJo
 
 // Summary:
 //
-// 删除数据导出任务
+// Deletes a data export task.
 //
 // @param request - RemoveDataExportJobRequest
 //
@@ -20026,7 +20833,7 @@ func (client *Client) RemoveDataExportJob(request *RemoveDataExportJobRequest) (
 
 // Summary:
 //
-// 从资产类目移除表
+// Removes table from the asset category.
 //
 // @param request - RemoveTableFromCategoryRequest
 //
@@ -20034,9 +20841,11 @@ func (client *Client) RemoveDataExportJob(request *RemoveDataExportJobRequest) (
 //
 // @return RemoveTableFromCategoryResponse
 func (client *Client) RemoveTableFromCategoryWithOptions(request *RemoveTableFromCategoryRequest, runtime *dara.RuntimeOptions) (_result *RemoveTableFromCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryId) {
@@ -20084,7 +20893,7 @@ func (client *Client) RemoveTableFromCategoryWithOptions(request *RemoveTableFro
 
 // Summary:
 //
-// 从资产类目移除表
+// Removes table from the asset category.
 //
 // @param request - RemoveTableFromCategoryRequest
 //
@@ -20110,9 +20919,11 @@ func (client *Client) RemoveTableFromCategory(request *RemoveTableFromCategoryRe
 //
 // @return RestartDataCorrectSQLJobResponse
 func (client *Client) RestartDataCorrectSQLJobWithOptions(request *RestartDataCorrectSQLJobRequest, runtime *dara.RuntimeOptions) (_result *RestartDataCorrectSQLJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -20178,7 +20989,7 @@ func (client *Client) RestartDataCorrectSQLJob(request *RestartDataCorrectSQLJob
 
 // Summary:
 //
-// 重启数据导出任务
+// Restarts a SQL result set export task.
 //
 // @param request - RestartDataExportJobRequest
 //
@@ -20186,9 +20997,11 @@ func (client *Client) RestartDataCorrectSQLJob(request *RestartDataCorrectSQLJob
 //
 // @return RestartDataExportJobResponse
 func (client *Client) RestartDataExportJobWithOptions(request *RestartDataExportJobRequest, runtime *dara.RuntimeOptions) (_result *RestartDataExportJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -20228,7 +21041,7 @@ func (client *Client) RestartDataExportJobWithOptions(request *RestartDataExport
 
 // Summary:
 //
-// 重启数据导出任务
+// Restarts a SQL result set export task.
 //
 // @param request - RestartDataExportJobRequest
 //
@@ -20258,9 +21071,11 @@ func (client *Client) RestartDataExportJob(request *RestartDataExportJobRequest)
 //
 // @return ResumeTaskFlowInstanceResponse
 func (client *Client) ResumeTaskFlowInstanceWithOptions(request *ResumeTaskFlowInstanceRequest, runtime *dara.RuntimeOptions) (_result *ResumeTaskFlowInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -20334,9 +21149,11 @@ func (client *Client) ResumeTaskFlowInstance(request *ResumeTaskFlowInstanceRequ
 //
 // @return RetryDataCorrectPreCheckResponse
 func (client *Client) RetryDataCorrectPreCheckWithOptions(request *RetryDataCorrectPreCheckRequest, runtime *dara.RuntimeOptions) (_result *RetryDataCorrectPreCheckResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -20406,9 +21223,11 @@ func (client *Client) RetryDataCorrectPreCheck(request *RetryDataCorrectPreCheck
 //
 // @return RevokeTemplateAuthorityResponse
 func (client *Client) RevokeTemplateAuthorityWithOptions(request *RevokeTemplateAuthorityRequest, runtime *dara.RuntimeOptions) (_result *RevokeTemplateAuthorityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -20478,9 +21297,11 @@ func (client *Client) RevokeTemplateAuthority(request *RevokeTemplateAuthorityRe
 //
 // @return RevokeUserPermissionResponse
 func (client *Client) RevokeUserPermissionWithOptions(request *RevokeUserPermissionRequest, runtime *dara.RuntimeOptions) (_result *RevokeUserPermissionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbId) {
@@ -20574,9 +21395,11 @@ func (client *Client) RevokeUserPermission(request *RevokeUserPermissionRequest)
 //
 // @return SearchDataTrackResultResponse
 func (client *Client) SearchDataTrackResultWithOptions(tmpReq *SearchDataTrackResultRequest, runtime *dara.RuntimeOptions) (_result *SearchDataTrackResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SearchDataTrackResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -20672,9 +21495,11 @@ func (client *Client) SearchDataTrackResult(request *SearchDataTrackResultReques
 //
 // @return SearchDatabaseResponse
 func (client *Client) SearchDatabaseWithOptions(request *SearchDatabaseRequest, runtime *dara.RuntimeOptions) (_result *SearchDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbType) {
@@ -20768,9 +21593,11 @@ func (client *Client) SearchDatabase(request *SearchDatabaseRequest) (_result *S
 //
 // @return SearchTableResponse
 func (client *Client) SearchTableWithOptions(request *SearchTableRequest, runtime *dara.RuntimeOptions) (_result *SearchTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbType) {
@@ -20864,9 +21691,11 @@ func (client *Client) SearchTable(request *SearchTableRequest) (_result *SearchT
 //
 // @return SetOwnersResponse
 func (client *Client) SetOwnersWithOptions(request *SetOwnersRequest, runtime *dara.RuntimeOptions) (_result *SetOwnersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerIds) {
@@ -20928,7 +21757,7 @@ func (client *Client) SetOwners(request *SetOwnersRequest) (_result *SetOwnersRe
 
 // Summary:
 //
-// 修改审批流额外信息
+// Configures whether the operation buttons, such as Agree, Revoke, and Sign, are displayed in the ticket approval section of the DMS console.
 //
 // @param request - SetWorkflowExtraInfoRequest
 //
@@ -20936,9 +21765,11 @@ func (client *Client) SetOwners(request *SetOwnersRequest) (_result *SetOwnersRe
 //
 // @return SetWorkflowExtraInfoResponse
 func (client *Client) SetWorkflowExtraInfoWithOptions(request *SetWorkflowExtraInfoRequest, runtime *dara.RuntimeOptions) (_result *SetWorkflowExtraInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RenderAddApprovalNode) {
@@ -21002,7 +21833,7 @@ func (client *Client) SetWorkflowExtraInfoWithOptions(request *SetWorkflowExtraI
 
 // Summary:
 //
-// 修改审批流额外信息
+// Configures whether the operation buttons, such as Agree, Revoke, and Sign, are displayed in the ticket approval section of the DMS console.
 //
 // @param request - SetWorkflowExtraInfoRequest
 //
@@ -21028,9 +21859,11 @@ func (client *Client) SetWorkflowExtraInfo(request *SetWorkflowExtraInfoRequest)
 //
 // @return SimplyAddInstanceResponse
 func (client *Client) SimplyAddInstanceWithOptions(request *SimplyAddInstanceRequest, runtime *dara.RuntimeOptions) (_result *SimplyAddInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatabasePassword) {
@@ -21112,9 +21945,11 @@ func (client *Client) SimplyAddInstance(request *SimplyAddInstanceRequest) (_res
 //
 // @return SkipDataCorrectRowCheckResponse
 func (client *Client) SkipDataCorrectRowCheckWithOptions(request *SkipDataCorrectRowCheckRequest, runtime *dara.RuntimeOptions) (_result *SkipDataCorrectRowCheckResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -21184,9 +22019,11 @@ func (client *Client) SkipDataCorrectRowCheck(request *SkipDataCorrectRowCheckRe
 //
 // @return StopTaskFlowInstanceResponse
 func (client *Client) StopTaskFlowInstanceWithOptions(request *StopTaskFlowInstanceRequest, runtime *dara.RuntimeOptions) (_result *StopTaskFlowInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -21252,9 +22089,11 @@ func (client *Client) StopTaskFlowInstance(request *StopTaskFlowInstanceRequest)
 //
 // @return SubmitOrderApprovalResponse
 func (client *Client) SubmitOrderApprovalWithOptions(request *SubmitOrderApprovalRequest, runtime *dara.RuntimeOptions) (_result *SubmitOrderApprovalResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -21320,9 +22159,11 @@ func (client *Client) SubmitOrderApproval(request *SubmitOrderApprovalRequest) (
 //
 // @return SubmitStructSyncOrderApprovalResponse
 func (client *Client) SubmitStructSyncOrderApprovalWithOptions(request *SubmitStructSyncOrderApprovalRequest, runtime *dara.RuntimeOptions) (_result *SubmitStructSyncOrderApprovalResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -21376,7 +22217,7 @@ func (client *Client) SubmitStructSyncOrderApproval(request *SubmitStructSyncOrd
 
 // Summary:
 //
-// 中断数据导出任务
+// Suspends an ongoing or scheduled SQL result set export task.
 //
 // @param request - SuspendDataExportJobRequest
 //
@@ -21384,9 +22225,11 @@ func (client *Client) SubmitStructSyncOrderApproval(request *SubmitStructSyncOrd
 //
 // @return SuspendDataExportJobResponse
 func (client *Client) SuspendDataExportJobWithOptions(request *SuspendDataExportJobRequest, runtime *dara.RuntimeOptions) (_result *SuspendDataExportJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -21426,7 +22269,7 @@ func (client *Client) SuspendDataExportJobWithOptions(request *SuspendDataExport
 
 // Summary:
 //
-// 中断数据导出任务
+// Suspends an ongoing or scheduled SQL result set export task.
 //
 // @param request - SuspendDataExportJobRequest
 //
@@ -21452,9 +22295,11 @@ func (client *Client) SuspendDataExportJob(request *SuspendDataExportJobRequest)
 //
 // @return SuspendTaskFlowInstanceResponse
 func (client *Client) SuspendTaskFlowInstanceWithOptions(request *SuspendTaskFlowInstanceRequest, runtime *dara.RuntimeOptions) (_result *SuspendTaskFlowInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -21520,9 +22365,11 @@ func (client *Client) SuspendTaskFlowInstance(request *SuspendTaskFlowInstanceRe
 //
 // @return SyncDatabaseMetaResponse
 func (client *Client) SyncDatabaseMetaWithOptions(request *SyncDatabaseMetaRequest, runtime *dara.RuntimeOptions) (_result *SyncDatabaseMetaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbId) {
@@ -21592,9 +22439,11 @@ func (client *Client) SyncDatabaseMeta(request *SyncDatabaseMetaRequest) (_resul
 //
 // @return SyncInstanceMetaResponse
 func (client *Client) SyncInstanceMetaWithOptions(request *SyncInstanceMetaRequest, runtime *dara.RuntimeOptions) (_result *SyncInstanceMetaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IgnoreTable) {
@@ -21656,7 +22505,17 @@ func (client *Client) SyncInstanceMeta(request *SyncInstanceMetaRequest) (_resul
 
 // Summary:
 //
-// 任务编排试运行
+// Tests the task flow of task orchestration.
+//
+// Description:
+//
+// ### [](#)Usage notes
+//
+// An edge can be created only when the following conditions are met:
+//
+// 1.  The start and end nodes of the edge exist in the directed acyclic graph (DAG) of the task flow specified by DagId.
+//
+// 2.  After the edge is created, the DAG does not contain loops.
 //
 // @param request - TryRunTaskFlowRequest
 //
@@ -21664,9 +22523,11 @@ func (client *Client) SyncInstanceMeta(request *SyncInstanceMetaRequest) (_resul
 //
 // @return TryRunTaskFlowResponse
 func (client *Client) TryRunTaskFlowWithOptions(request *TryRunTaskFlowRequest, runtime *dara.RuntimeOptions) (_result *TryRunTaskFlowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -21698,7 +22559,17 @@ func (client *Client) TryRunTaskFlowWithOptions(request *TryRunTaskFlowRequest, 
 
 // Summary:
 //
-// 任务编排试运行
+// Tests the task flow of task orchestration.
+//
+// Description:
+//
+// ### [](#)Usage notes
+//
+// An edge can be created only when the following conditions are met:
+//
+// 1.  The start and end nodes of the edge exist in the directed acyclic graph (DAG) of the task flow specified by DagId.
+//
+// 2.  After the edge is created, the DAG does not contain loops.
 //
 // @param request - TryRunTaskFlowRequest
 //
@@ -21716,7 +22587,7 @@ func (client *Client) TryRunTaskFlow(request *TryRunTaskFlowRequest) (_result *T
 
 // Summary:
 //
-// 更新权限策略
+// Updates the name, description, or content of a policy.
 //
 // @param request - UpdateAbacPolicyRequest
 //
@@ -21724,9 +22595,11 @@ func (client *Client) TryRunTaskFlow(request *TryRunTaskFlowRequest) (_result *T
 //
 // @return UpdateAbacPolicyResponse
 func (client *Client) UpdateAbacPolicyWithOptions(request *UpdateAbacPolicyRequest, runtime *dara.RuntimeOptions) (_result *UpdateAbacPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AbacPolicyContent) {
@@ -21774,7 +22647,7 @@ func (client *Client) UpdateAbacPolicyWithOptions(request *UpdateAbacPolicyReque
 
 // Summary:
 //
-// 更新权限策略
+// Updates the name, description, or content of a policy.
 //
 // @param request - UpdateAbacPolicyRequest
 //
@@ -21804,9 +22677,11 @@ func (client *Client) UpdateAbacPolicy(request *UpdateAbacPolicyRequest) (_resul
 //
 // @return UpdateAuthorityTemplateResponse
 func (client *Client) UpdateAuthorityTemplateWithOptions(request *UpdateAuthorityTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateAuthorityTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -21872,7 +22747,7 @@ func (client *Client) UpdateAuthorityTemplate(request *UpdateAuthorityTemplateRe
 
 // Summary:
 //
-// 更新湖仓数据库
+// Updates the information about a database in a data lakehouse.
 //
 // @param tmpReq - UpdateDataLakeDatabaseRequest
 //
@@ -21880,9 +22755,11 @@ func (client *Client) UpdateAuthorityTemplate(request *UpdateAuthorityTemplateRe
 //
 // @return UpdateDataLakeDatabaseResponse
 func (client *Client) UpdateDataLakeDatabaseWithOptions(tmpReq *UpdateDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataLakeDatabaseResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateDataLakeDatabaseShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -21948,7 +22825,7 @@ func (client *Client) UpdateDataLakeDatabaseWithOptions(tmpReq *UpdateDataLakeDa
 
 // Summary:
 //
-// 更新湖仓数据库
+// Updates the information about a database in a data lakehouse.
 //
 // @param request - UpdateDataLakeDatabaseRequest
 //
@@ -21966,7 +22843,7 @@ func (client *Client) UpdateDataLakeDatabase(request *UpdateDataLakeDatabaseRequ
 
 // Summary:
 //
-// 更新湖仓自定义函数
+// Updates a user-defined function in a data lakehouse.
 //
 // @param tmpReq - UpdateDataLakeFunctionRequest
 //
@@ -21974,9 +22851,11 @@ func (client *Client) UpdateDataLakeDatabase(request *UpdateDataLakeDatabaseRequ
 //
 // @return UpdateDataLakeFunctionResponse
 func (client *Client) UpdateDataLakeFunctionWithOptions(tmpReq *UpdateDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataLakeFunctionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateDataLakeFunctionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -22040,7 +22919,7 @@ func (client *Client) UpdateDataLakeFunctionWithOptions(tmpReq *UpdateDataLakeFu
 
 // Summary:
 //
-// 更新湖仓自定义函数
+// Updates a user-defined function in a data lakehouse.
 //
 // @param request - UpdateDataLakeFunctionRequest
 //
@@ -22058,7 +22937,7 @@ func (client *Client) UpdateDataLakeFunction(request *UpdateDataLakeFunctionRequ
 
 // Summary:
 //
-// 更新湖仓表分区
+// Updates the partition information of a table in a data lakehouse.
 //
 // @param tmpReq - UpdateDataLakePartitionRequest
 //
@@ -22066,9 +22945,11 @@ func (client *Client) UpdateDataLakeFunction(request *UpdateDataLakeFunctionRequ
 //
 // @return UpdateDataLakePartitionResponse
 func (client *Client) UpdateDataLakePartitionWithOptions(tmpReq *UpdateDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataLakePartitionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateDataLakePartitionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -22132,7 +23013,7 @@ func (client *Client) UpdateDataLakePartitionWithOptions(tmpReq *UpdateDataLakeP
 
 // Summary:
 //
-// 更新湖仓表分区
+// Updates the partition information of a table in a data lakehouse.
 //
 // @param request - UpdateDataLakePartitionRequest
 //
@@ -22150,7 +23031,7 @@ func (client *Client) UpdateDataLakePartition(request *UpdateDataLakePartitionRe
 
 // Summary:
 //
-// 更新湖仓表信息
+// Updates the information about a table in a data lakehouse.
 //
 // @param tmpReq - UpdateDataLakeTableRequest
 //
@@ -22158,9 +23039,11 @@ func (client *Client) UpdateDataLakePartition(request *UpdateDataLakePartitionRe
 //
 // @return UpdateDataLakeTableResponse
 func (client *Client) UpdateDataLakeTableWithOptions(tmpReq *UpdateDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataLakeTableResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateDataLakeTableShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -22224,7 +23107,7 @@ func (client *Client) UpdateDataLakeTableWithOptions(tmpReq *UpdateDataLakeTable
 
 // Summary:
 //
-// 更新湖仓表信息
+// Updates the information about a table in a data lakehouse.
 //
 // @param request - UpdateDataLakeTableRequest
 //
@@ -22254,9 +23137,11 @@ func (client *Client) UpdateDataLakeTable(request *UpdateDataLakeTableRequest) (
 //
 // @return UpdateInstanceResponse
 func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DataLinkName) {
@@ -22406,7 +23291,7 @@ func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *U
 
 // Summary:
 //
-// 更新资产类目信息
+// Updates asset category information.
 //
 // @param request - UpdateMetaCategoryRequest
 //
@@ -22414,9 +23299,11 @@ func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *U
 //
 // @return UpdateMetaCategoryResponse
 func (client *Client) UpdateMetaCategoryWithOptions(request *UpdateMetaCategoryRequest, runtime *dara.RuntimeOptions) (_result *UpdateMetaCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryId) {
@@ -22456,7 +23343,7 @@ func (client *Client) UpdateMetaCategoryWithOptions(request *UpdateMetaCategoryR
 
 // Summary:
 //
-// 更新资产类目信息
+// Updates asset category information.
 //
 // @param request - UpdateMetaCategoryRequest
 //
@@ -22486,9 +23373,11 @@ func (client *Client) UpdateMetaCategory(request *UpdateMetaCategoryRequest) (_r
 //
 // @return UpdateSLARulesResponse
 func (client *Client) UpdateSLARulesWithOptions(tmpReq *UpdateSLARulesRequest, runtime *dara.RuntimeOptions) (_result *UpdateSLARulesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateSLARulesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -22564,9 +23453,11 @@ func (client *Client) UpdateSLARules(request *UpdateSLARulesRequest) (_result *U
 //
 // @return UpdateScenarioResponse
 func (client *Client) UpdateScenarioWithOptions(request *UpdateScenarioRequest, runtime *dara.RuntimeOptions) (_result *UpdateScenarioResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -22636,9 +23527,11 @@ func (client *Client) UpdateScenario(request *UpdateScenarioRequest) (_result *U
 //
 // @return UpdateStandardGroupResponse
 func (client *Client) UpdateStandardGroupWithOptions(request *UpdateStandardGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateStandardGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -22712,9 +23605,11 @@ func (client *Client) UpdateStandardGroup(request *UpdateStandardGroupRequest) (
 //
 // @return UpdateTaskConfigResponse
 func (client *Client) UpdateTaskConfigWithOptions(request *UpdateTaskConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateTaskConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NodeConfig) {
@@ -22788,9 +23683,11 @@ func (client *Client) UpdateTaskConfig(request *UpdateTaskConfigRequest) (_resul
 //
 // @return UpdateTaskContentResponse
 func (client *Client) UpdateTaskContentWithOptions(request *UpdateTaskContentRequest, runtime *dara.RuntimeOptions) (_result *UpdateTaskContentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NodeContent) {
@@ -22852,7 +23749,11 @@ func (client *Client) UpdateTaskContent(request *UpdateTaskContentRequest) (_res
 
 // Summary:
 //
-// 大sql更新节点专用
+// Updates the node content in large SQL files.
+//
+// Description:
+//
+// You can call this operation to modify node configurations.
 //
 // @param request - UpdateTaskContentV2Request
 //
@@ -22860,9 +23761,11 @@ func (client *Client) UpdateTaskContent(request *UpdateTaskContentRequest) (_res
 //
 // @return UpdateTaskContentV2Response
 func (client *Client) UpdateTaskContentV2WithOptions(request *UpdateTaskContentV2Request, runtime *dara.RuntimeOptions) (_result *UpdateTaskContentV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NodeId) {
@@ -22900,7 +23803,11 @@ func (client *Client) UpdateTaskContentV2WithOptions(request *UpdateTaskContentV
 
 // Summary:
 //
-// 大sql更新节点专用
+// Updates the node content in large SQL files.
+//
+// Description:
+//
+// You can call this operation to modify node configurations.
 //
 // @param request - UpdateTaskContentV2Request
 //
@@ -22926,9 +23833,11 @@ func (client *Client) UpdateTaskContentV2(request *UpdateTaskContentV2Request) (
 //
 // @return UpdateTaskFlowConstantsResponse
 func (client *Client) UpdateTaskFlowConstantsWithOptions(tmpReq *UpdateTaskFlowConstantsRequest, runtime *dara.RuntimeOptions) (_result *UpdateTaskFlowConstantsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateTaskFlowConstantsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -23000,9 +23909,11 @@ func (client *Client) UpdateTaskFlowConstants(request *UpdateTaskFlowConstantsRe
 //
 // @return UpdateTaskFlowCooperatorsResponse
 func (client *Client) UpdateTaskFlowCooperatorsWithOptions(tmpReq *UpdateTaskFlowCooperatorsRequest, runtime *dara.RuntimeOptions) (_result *UpdateTaskFlowCooperatorsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateTaskFlowCooperatorsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -23086,9 +23997,11 @@ func (client *Client) UpdateTaskFlowCooperators(request *UpdateTaskFlowCooperato
 //
 // @return UpdateTaskFlowEdgesResponse
 func (client *Client) UpdateTaskFlowEdgesWithOptions(tmpReq *UpdateTaskFlowEdgesRequest, runtime *dara.RuntimeOptions) (_result *UpdateTaskFlowEdgesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateTaskFlowEdgesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -23172,9 +24085,11 @@ func (client *Client) UpdateTaskFlowEdges(request *UpdateTaskFlowEdgesRequest) (
 //
 // @return UpdateTaskFlowNameAndDescResponse
 func (client *Client) UpdateTaskFlowNameAndDescWithOptions(request *UpdateTaskFlowNameAndDescRequest, runtime *dara.RuntimeOptions) (_result *UpdateTaskFlowNameAndDescResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -23244,9 +24159,11 @@ func (client *Client) UpdateTaskFlowNameAndDesc(request *UpdateTaskFlowNameAndDe
 //
 // @return UpdateTaskFlowNotificationResponse
 func (client *Client) UpdateTaskFlowNotificationWithOptions(request *UpdateTaskFlowNotificationRequest, runtime *dara.RuntimeOptions) (_result *UpdateTaskFlowNotificationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -23324,9 +24241,11 @@ func (client *Client) UpdateTaskFlowNotification(request *UpdateTaskFlowNotifica
 //
 // @return UpdateTaskFlowOwnerResponse
 func (client *Client) UpdateTaskFlowOwnerWithOptions(request *UpdateTaskFlowOwnerRequest, runtime *dara.RuntimeOptions) (_result *UpdateTaskFlowOwnerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -23400,9 +24319,11 @@ func (client *Client) UpdateTaskFlowOwner(request *UpdateTaskFlowOwnerRequest) (
 //
 // @return UpdateTaskFlowRelationsResponse
 func (client *Client) UpdateTaskFlowRelationsWithOptions(tmpReq *UpdateTaskFlowRelationsRequest, runtime *dara.RuntimeOptions) (_result *UpdateTaskFlowRelationsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateTaskFlowRelationsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -23484,9 +24405,11 @@ func (client *Client) UpdateTaskFlowRelations(request *UpdateTaskFlowRelationsRe
 //
 // @return UpdateTaskFlowScheduleResponse
 func (client *Client) UpdateTaskFlowScheduleWithOptions(request *UpdateTaskFlowScheduleRequest, runtime *dara.RuntimeOptions) (_result *UpdateTaskFlowScheduleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CronBeginDate) {
@@ -23586,9 +24509,11 @@ func (client *Client) UpdateTaskFlowSchedule(request *UpdateTaskFlowScheduleRequ
 //
 // @return UpdateTaskFlowTimeVariablesResponse
 func (client *Client) UpdateTaskFlowTimeVariablesWithOptions(request *UpdateTaskFlowTimeVariablesRequest, runtime *dara.RuntimeOptions) (_result *UpdateTaskFlowTimeVariablesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagId) {
@@ -23654,9 +24579,11 @@ func (client *Client) UpdateTaskFlowTimeVariables(request *UpdateTaskFlowTimeVar
 //
 // @return UpdateTaskNameResponse
 func (client *Client) UpdateTaskNameWithOptions(request *UpdateTaskNameRequest, runtime *dara.RuntimeOptions) (_result *UpdateTaskNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NodeId) {
@@ -23726,9 +24653,11 @@ func (client *Client) UpdateTaskName(request *UpdateTaskNameRequest) (_result *U
 //
 // @return UpdateTaskOutputResponse
 func (client *Client) UpdateTaskOutputWithOptions(request *UpdateTaskOutputRequest, runtime *dara.RuntimeOptions) (_result *UpdateTaskOutputResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NodeId) {
@@ -23798,9 +24727,11 @@ func (client *Client) UpdateTaskOutput(request *UpdateTaskOutputRequest) (_resul
 //
 // @return UpdateTaskTimeVariablesResponse
 func (client *Client) UpdateTaskTimeVariablesWithOptions(request *UpdateTaskTimeVariablesRequest, runtime *dara.RuntimeOptions) (_result *UpdateTaskTimeVariablesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NodeId) {
@@ -23866,9 +24797,11 @@ func (client *Client) UpdateTaskTimeVariables(request *UpdateTaskTimeVariablesRe
 //
 // @return UpdateUserResponse
 func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime *dara.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxExecuteCount) {
@@ -23946,7 +24879,7 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 
 // Summary:
 //
-// 修改工作空间
+// Updates the information about a workspace.
 //
 // @param request - UpdateWorkspaceRequest
 //
@@ -23954,9 +24887,11 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 //
 // @return UpdateWorkspaceResponse
 func (client *Client) UpdateWorkspaceWithOptions(request *UpdateWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *UpdateWorkspaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -24002,7 +24937,7 @@ func (client *Client) UpdateWorkspaceWithOptions(request *UpdateWorkspaceRequest
 
 // Summary:
 //
-// 修改工作空间
+// Updates the information about a workspace.
 //
 // @param request - UpdateWorkspaceRequest
 //

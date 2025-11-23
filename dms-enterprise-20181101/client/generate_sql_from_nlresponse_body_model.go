@@ -95,7 +95,12 @@ func (s *GenerateSqlFromNLResponseBody) SetSuccess(v bool) *GenerateSqlFromNLRes
 }
 
 func (s *GenerateSqlFromNLResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GenerateSqlFromNLResponseBodyData struct {
@@ -176,7 +181,34 @@ func (s *GenerateSqlFromNLResponseBodyData) SetThought(v string) *GenerateSqlFro
 }
 
 func (s *GenerateSqlFromNLResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.KnowledgeReferences != nil {
+		for _, item := range s.KnowledgeReferences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SimilarSql != nil {
+		for _, item := range s.SimilarSql {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tables != nil {
+		for _, item := range s.Tables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GenerateSqlFromNLResponseBodyDataKnowledgeReferences struct {

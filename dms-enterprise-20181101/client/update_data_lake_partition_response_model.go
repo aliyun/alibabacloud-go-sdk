@@ -59,5 +59,10 @@ func (s *UpdateDataLakePartitionResponse) SetBody(v *UpdateDataLakePartitionResp
 }
 
 func (s *UpdateDataLakePartitionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

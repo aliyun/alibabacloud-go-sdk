@@ -108,7 +108,12 @@ func (s *ListSensitiveColumnsDetailResponseBody) SetSuccess(v bool) *ListSensiti
 }
 
 func (s *ListSensitiveColumnsDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SensitiveColumnsDetailList != nil {
+		if err := s.SensitiveColumnsDetailList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSensitiveColumnsDetailResponseBodySensitiveColumnsDetailList struct {
@@ -133,7 +138,16 @@ func (s *ListSensitiveColumnsDetailResponseBodySensitiveColumnsDetailList) SetSe
 }
 
 func (s *ListSensitiveColumnsDetailResponseBodySensitiveColumnsDetailList) Validate() error {
-	return dara.Validate(s)
+	if s.SensitiveColumnsDetail != nil {
+		for _, item := range s.SensitiveColumnsDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSensitiveColumnsDetailResponseBodySensitiveColumnsDetailListSensitiveColumnsDetail struct {

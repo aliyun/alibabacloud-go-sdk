@@ -108,7 +108,12 @@ func (s *QueryDataTrackResultDownloadStatusResponseBody) SetSuccess(v bool) *Que
 }
 
 func (s *QueryDataTrackResultDownloadStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StatusResult != nil {
+		if err := s.StatusResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryDataTrackResultDownloadStatusResponseBodyStatusResult struct {

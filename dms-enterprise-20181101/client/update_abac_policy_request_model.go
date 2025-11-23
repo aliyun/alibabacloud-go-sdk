@@ -22,6 +22,8 @@ type iUpdateAbacPolicyRequest interface {
 }
 
 type UpdateAbacPolicyRequest struct {
+	// The content of the policy.
+	//
 	// example:
 	//
 	// {
@@ -58,20 +60,30 @@ type UpdateAbacPolicyRequest struct {
 	//
 	// }
 	AbacPolicyContent *string `json:"AbacPolicyContent,omitempty" xml:"AbacPolicyContent,omitempty"`
+	// The description of the policy.
+	//
 	// example:
 	//
 	// test
 	AbacPolicyDesc *string `json:"AbacPolicyDesc,omitempty" xml:"AbacPolicyDesc,omitempty"`
+	// The ID of the policy.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12****
 	AbacPolicyId *int64 `json:"AbacPolicyId,omitempty" xml:"AbacPolicyId,omitempty"`
+	// The name of the permission policy.
+	//
 	// example:
 	//
 	// policy_test
 	AbacPolicyName *string `json:"AbacPolicyName,omitempty" xml:"AbacPolicyName,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
+	//
 	// example:
 	//
 	// 3***

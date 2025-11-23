@@ -24,6 +24,8 @@ type iGetDataLakeTableRequest interface {
 }
 
 type GetDataLakeTableRequest struct {
+	// The name of the data catalog.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -33,6 +35,8 @@ type GetDataLakeTableRequest struct {
 	//
 	// hive
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The region where the data lake resides.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -42,6 +46,8 @@ type GetDataLakeTableRequest struct {
 	//
 	// cn-hangzhou
 	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// The name of the database to which the table belongs.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -51,6 +57,8 @@ type GetDataLakeTableRequest struct {
 	//
 	// default
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The table name.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -60,10 +68,17 @@ type GetDataLakeTableRequest struct {
 	//
 	// 100g_customer
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
+	//
 	// example:
 	//
 	// 3
-	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 12****
 	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

@@ -74,7 +74,16 @@ func (s *UpdateTaskFlowRelationsRequest) SetTid(v int64) *UpdateTaskFlowRelation
 }
 
 func (s *UpdateTaskFlowRelationsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Edges != nil {
+		for _, item := range s.Edges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateTaskFlowRelationsRequestEdges struct {

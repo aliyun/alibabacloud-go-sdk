@@ -22,19 +22,32 @@ type iCreateProcCorrectOrderRequest interface {
 }
 
 type CreateProcCorrectOrderRequest struct {
+	// The key of the attachment for the ticket. The attachment provides more instructions for this operation.
+	//
+	// You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to query the key of the attachment.
+	//
 	// example:
 	//
 	// order_attachment.txt
 	AttachmentKey *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	// The remarks of the ticket.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The parameters of the ticket.
+	//
 	// This parameter is required.
-	Param           *CreateProcCorrectOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
-	RelatedUserList []*int64                            `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	Param *CreateProcCorrectOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	// The operators that are related to the ticket.
+	RelatedUserList []*int64 `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	// The ID of the tenant.
+	//
+	// >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
+	//
 	// example:
 	//
 	// 4***
@@ -95,17 +108,39 @@ func (s *CreateProcCorrectOrderRequest) SetTid(v int64) *CreateProcCorrectOrderR
 }
 
 func (s *CreateProcCorrectOrderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Param != nil {
+		if err := s.Param.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateProcCorrectOrderRequestParam struct {
+	// The reason for the programmable object change.
+	//
 	// example:
 	//
 	// test
 	Classify *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	// The information about the database.
+	//
 	// This parameter is required.
 	DbItemList []*CreateProcCorrectOrderRequestParamDbItemList `json:"DbItemList,omitempty" xml:"DbItemList,omitempty" type:"Repeated"`
-	ExecMode   *string                                         `json:"ExecMode,omitempty" xml:"ExecMode,omitempty"`
+	// The mode in which the data change ticket is executed after the ticket is approved. Valid values:
+	//
+	// 	- **COMMITOR**: The ticket is executed by the user who submits the ticket.
+	//
+	// 	- **AUTO**: The ticket is automatically executed after the ticket is approved.
+	//
+	// 	- **LAST_AUDITOR**: The ticket is executed by the last approver of the ticket.
+	//
+	// example:
+	//
+	// COMMITOR
+	ExecMode *string `json:"ExecMode,omitempty" xml:"ExecMode,omitempty"`
+	// The SQL statements for data change.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -120,14 +155,28 @@ type CreateProcCorrectOrderRequestParam struct {
 	//
 	// END ///
 	ExecSQL *string `json:"ExecSQL,omitempty" xml:"ExecSQL,omitempty"`
+	// The key of the attachment that contains the SQL statements used to roll back the data change. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key from the value of AttachmentKey.
+	//
+	// >  This parameter is required if you set **RollbackSqlType*	- to **ATTACHMENT**.
+	//
 	// example:
 	//
 	// test_rollback.sql
 	RollbackAttachmentName *string `json:"RollbackAttachmentName,omitempty" xml:"RollbackAttachmentName,omitempty"`
+	// The SQL statements for rolling back the data change.
+	//
+	// >  This parameter is required if you set the **RollbackSqlType*	- parameter to **TEXT**.
+	//
 	// example:
 	//
 	// empty
 	RollbackSQL *string `json:"RollbackSQL,omitempty" xml:"RollbackSQL,omitempty"`
+	// The format of the SQL statements used to roll back the data change. Valid values:
+	//
+	// 	- **TEXT**
+	//
+	// 	- **ATTACHMENT**
+	//
 	// example:
 	//
 	// TEXT
@@ -206,16 +255,37 @@ func (s *CreateProcCorrectOrderRequestParam) SetRollbackSqlType(v string) *Creat
 }
 
 func (s *CreateProcCorrectOrderRequestParam) Validate() error {
-	return dara.Validate(s)
+	if s.DbItemList != nil {
+		for _, item := range s.DbItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateProcCorrectOrderRequestParamDbItemList struct {
+	// The database ID. Databases are divided into physical databases and logical databases.
+	//
+	// 	- To query the ID of a physical database, call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+	//
+	// 	- To query the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 19721978
 	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// Specifies whether the database is a logical database. Valid values:
+	//
+	// 	- **true**: The database is a logical database.
+	//
+	// 	- **false**: The database is a physical database.
+	//
 	// This parameter is required.
 	//
 	// example:

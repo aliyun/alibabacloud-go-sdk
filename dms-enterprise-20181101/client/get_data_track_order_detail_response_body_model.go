@@ -108,7 +108,12 @@ func (s *GetDataTrackOrderDetailResponseBody) SetSuccess(v bool) *GetDataTrackOr
 }
 
 func (s *GetDataTrackOrderDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataTrackOrderDetail != nil {
+		if err := s.DataTrackOrderDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail struct {

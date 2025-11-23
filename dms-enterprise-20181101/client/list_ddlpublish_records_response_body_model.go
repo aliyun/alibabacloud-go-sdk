@@ -104,7 +104,16 @@ func (s *ListDDLPublishRecordsResponseBody) SetSuccess(v bool) *ListDDLPublishRe
 }
 
 func (s *ListDDLPublishRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DDLPublishRecordList != nil {
+		for _, item := range s.DDLPublishRecordList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDDLPublishRecordsResponseBodyDDLPublishRecordList struct {
@@ -314,7 +323,16 @@ func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetWorkflowInsta
 }
 
 func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) Validate() error {
-	return dara.Validate(s)
+	if s.PublishTaskInfoList != nil {
+		for _, item := range s.PublishTaskInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList struct {
@@ -438,7 +456,16 @@ func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoLis
 }
 
 func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.PublishJobList != nil {
+		for _, item := range s.PublishJobList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList struct {

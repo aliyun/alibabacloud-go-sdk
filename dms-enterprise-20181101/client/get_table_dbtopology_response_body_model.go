@@ -104,7 +104,12 @@ func (s *GetTableDBTopologyResponseBody) SetSuccess(v bool) *GetTableDBTopologyR
 }
 
 func (s *GetTableDBTopologyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBTopology != nil {
+		if err := s.DBTopology.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTableDBTopologyResponseBodyDBTopology struct {
@@ -166,7 +171,16 @@ func (s *GetTableDBTopologyResponseBodyDBTopology) SetTableName(v string) *GetTa
 }
 
 func (s *GetTableDBTopologyResponseBodyDBTopology) Validate() error {
-	return dara.Validate(s)
+	if s.DataSourceList != nil {
+		for _, item := range s.DataSourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTableDBTopologyResponseBodyDBTopologyDataSourceList struct {
@@ -252,7 +266,16 @@ func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceList) SetSid(v string
 }
 
 func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceList) Validate() error {
-	return dara.Validate(s)
+	if s.DatabaseList != nil {
+		for _, item := range s.DatabaseList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList struct {
@@ -356,7 +379,16 @@ func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) Set
 }
 
 func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) Validate() error {
-	return dara.Validate(s)
+	if s.TableList != nil {
+		for _, item := range s.TableList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList struct {

@@ -104,7 +104,12 @@ func (s *GetStructSyncJobDetailResponseBody) SetSuccess(v bool) *GetStructSyncJo
 }
 
 func (s *GetStructSyncJobDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StructSyncJobDetail != nil {
+		if err := s.StructSyncJobDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStructSyncJobDetailResponseBodyStructSyncJobDetail struct {

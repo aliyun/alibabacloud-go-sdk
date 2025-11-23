@@ -108,7 +108,12 @@ func (s *GetApprovalDetailResponseBody) SetSuccess(v bool) *GetApprovalDetailRes
 }
 
 func (s *GetApprovalDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApprovalDetail != nil {
+		if err := s.ApprovalDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApprovalDetailResponseBodyApprovalDetail struct {
@@ -332,7 +337,22 @@ func (s *GetApprovalDetailResponseBodyApprovalDetail) SetWorkflowNodes(v *GetApp
 }
 
 func (s *GetApprovalDetailResponseBodyApprovalDetail) Validate() error {
-	return dara.Validate(s)
+	if s.CurrentHandlers != nil {
+		if err := s.CurrentHandlers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReasonList != nil {
+		if err := s.ReasonList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WorkflowNodes != nil {
+		if err := s.WorkflowNodes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApprovalDetailResponseBodyApprovalDetailCurrentHandlers struct {
@@ -357,7 +377,16 @@ func (s *GetApprovalDetailResponseBodyApprovalDetailCurrentHandlers) SetCurrentH
 }
 
 func (s *GetApprovalDetailResponseBodyApprovalDetailCurrentHandlers) Validate() error {
-	return dara.Validate(s)
+	if s.CurrentHandler != nil {
+		for _, item := range s.CurrentHandler {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetApprovalDetailResponseBodyApprovalDetailCurrentHandlersCurrentHandler struct {
@@ -452,7 +481,16 @@ func (s *GetApprovalDetailResponseBodyApprovalDetailWorkflowNodes) SetWorkflowNo
 }
 
 func (s *GetApprovalDetailResponseBodyApprovalDetailWorkflowNodes) Validate() error {
-	return dara.Validate(s)
+	if s.WorkflowNode != nil {
+		for _, item := range s.WorkflowNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetApprovalDetailResponseBodyApprovalDetailWorkflowNodesWorkflowNode struct {
@@ -565,7 +603,12 @@ func (s *GetApprovalDetailResponseBodyApprovalDetailWorkflowNodesWorkflowNode) S
 }
 
 func (s *GetApprovalDetailResponseBodyApprovalDetailWorkflowNodesWorkflowNode) Validate() error {
-	return dara.Validate(s)
+	if s.AuditUserIdList != nil {
+		if err := s.AuditUserIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApprovalDetailResponseBodyApprovalDetailWorkflowNodesWorkflowNodeAuditUserIdList struct {

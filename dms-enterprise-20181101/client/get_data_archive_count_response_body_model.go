@@ -74,7 +74,12 @@ func (s *GetDataArchiveCountResponseBody) SetSuccess(v bool) *GetDataArchiveCoun
 }
 
 func (s *GetDataArchiveCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataArchiveCountResponseBodyData struct {

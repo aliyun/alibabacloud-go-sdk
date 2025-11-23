@@ -22,19 +22,32 @@ type iGetStandardGroupResponseBody interface {
 }
 
 type GetStandardGroupResponseBody struct {
+	// The error code that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// BF7E9543-F431-566A-991A-B5C493EA36C2
-	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the security rule set.
 	StandardGroup *GetStandardGroupResponseBodyStandardGroup `json:"StandardGroup,omitempty" xml:"StandardGroup,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -95,27 +108,49 @@ func (s *GetStandardGroupResponseBody) SetSuccess(v bool) *GetStandardGroupRespo
 }
 
 func (s *GetStandardGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StandardGroup != nil {
+		if err := s.StandardGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStandardGroupResponseBodyStandardGroup struct {
+	// The engine type.
+	//
 	// example:
 	//
 	// mysql
-	DbType      *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The description of the security rule set.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the security rule set.
+	//
 	// example:
 	//
 	// 41****
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The control mode. Valid values:
+	//
+	// 	- **NONE_CONTROL**: Flexible Management
+	//
+	// 	- **STABLE**: Stable Change
+	//
+	// 	- **COMMON**: Security Collaboration
+	//
 	// example:
 	//
 	// COMMON
 	GroupMode *string `json:"GroupMode,omitempty" xml:"GroupMode,omitempty"`
+	// The name of the security rule set.
+	//
 	// example:
 	//
 	// poc_test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the user who last modified the security rules.
+	//
 	// example:
 	//
 	// 51****

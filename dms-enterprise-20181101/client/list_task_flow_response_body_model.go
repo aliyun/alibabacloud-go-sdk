@@ -108,7 +108,12 @@ func (s *ListTaskFlowResponseBody) SetTaskFlowList(v *ListTaskFlowResponseBodyTa
 }
 
 func (s *ListTaskFlowResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskFlowList != nil {
+		if err := s.TaskFlowList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTaskFlowResponseBodyTaskFlowList struct {
@@ -133,7 +138,16 @@ func (s *ListTaskFlowResponseBodyTaskFlowList) SetTaskFlow(v []*ListTaskFlowResp
 }
 
 func (s *ListTaskFlowResponseBodyTaskFlowList) Validate() error {
-	return dara.Validate(s)
+	if s.TaskFlow != nil {
+		for _, item := range s.TaskFlow {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTaskFlowResponseBodyTaskFlowListTaskFlow struct {

@@ -132,7 +132,12 @@ func (s *SearchDataTrackResultRequest) SetTid(v int64) *SearchDataTrackResultReq
 }
 
 func (s *SearchDataTrackResultRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnFilter != nil {
+		if err := s.ColumnFilter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchDataTrackResultRequestColumnFilter struct {

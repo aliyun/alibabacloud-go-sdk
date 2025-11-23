@@ -125,7 +125,12 @@ func (s *ListOrdersResponseBody) SetTotalCount(v int64) *ListOrdersResponseBody 
 }
 
 func (s *ListOrdersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Orders != nil {
+		if err := s.Orders.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListOrdersResponseBodyOrders struct {
@@ -150,7 +155,16 @@ func (s *ListOrdersResponseBodyOrders) SetOrder(v []*ListOrdersResponseBodyOrder
 }
 
 func (s *ListOrdersResponseBodyOrders) Validate() error {
-	return dara.Validate(s)
+	if s.Order != nil {
+		for _, item := range s.Order {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOrdersResponseBodyOrdersOrder struct {

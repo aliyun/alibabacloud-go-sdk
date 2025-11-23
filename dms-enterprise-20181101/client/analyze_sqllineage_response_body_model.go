@@ -108,7 +108,12 @@ func (s *AnalyzeSQLLineageResponseBody) SetSuccess(v bool) *AnalyzeSQLLineageRes
 }
 
 func (s *AnalyzeSQLLineageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LineageResult != nil {
+		if err := s.LineageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AnalyzeSQLLineageResponseBodyLineageResult struct {
@@ -145,7 +150,25 @@ func (s *AnalyzeSQLLineageResponseBodyLineageResult) SetObjectMetadata(v []*Anal
 }
 
 func (s *AnalyzeSQLLineageResponseBodyLineageResult) Validate() error {
-	return dara.Validate(s)
+	if s.Lineages != nil {
+		for _, item := range s.Lineages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ObjectMetadata != nil {
+		for _, item := range s.ObjectMetadata {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AnalyzeSQLLineageResponseBodyLineageResultLineages struct {
@@ -245,7 +268,12 @@ func (s *AnalyzeSQLLineageResponseBodyLineageResultLineages) SetSrc(v string) *A
 }
 
 func (s *AnalyzeSQLLineageResponseBodyLineageResultLineages) Validate() error {
-	return dara.Validate(s)
+	if s.ProcessDetail != nil {
+		if err := s.ProcessDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AnalyzeSQLLineageResponseBodyLineageResultLineagesProcessDetail struct {
@@ -375,7 +403,16 @@ func (s *AnalyzeSQLLineageResponseBodyLineageResultObjectMetadata) SetType(v str
 }
 
 func (s *AnalyzeSQLLineageResponseBodyLineageResultObjectMetadata) Validate() error {
-	return dara.Validate(s)
+	if s.Fields != nil {
+		for _, item := range s.Fields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AnalyzeSQLLineageResponseBodyLineageResultObjectMetadataFields struct {

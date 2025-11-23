@@ -26,21 +26,44 @@ type iListDataLakeDatabaseResponseBody interface {
 }
 
 type ListDataLakeDatabaseResponseBody struct {
+	// The list of databases.
 	DatabaseList []*DLDatabase `json:"DatabaseList,omitempty" xml:"DatabaseList,omitempty" type:"Repeated"`
+	// The error code returned if the call failed.
+	//
 	// example:
 	//
 	// 400
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries to be returned in a request. You can use this parameter and NextToken to implement paging.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists. Set this parameter to the value of NextToken obtained from the previous query.
+	//
+	// example:
+	//
+	// NesLoKLEdIZrKhDT7I2gSw==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 4E1D2B4D-3E53-4ABC-999D-1D2520B3471A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -119,5 +142,14 @@ func (s *ListDataLakeDatabaseResponseBody) SetSuccess(v bool) *ListDataLakeDatab
 }
 
 func (s *ListDataLakeDatabaseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DatabaseList != nil {
+		for _, item := range s.DatabaseList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

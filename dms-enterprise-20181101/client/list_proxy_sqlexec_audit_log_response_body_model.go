@@ -125,7 +125,12 @@ func (s *ListProxySQLExecAuditLogResponseBody) SetTotalCount(v int64) *ListProxy
 }
 
 func (s *ListProxySQLExecAuditLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProxySQLExecAuditLogList != nil {
+		if err := s.ProxySQLExecAuditLogList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogList struct {
@@ -150,7 +155,16 @@ func (s *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogList) SetProxyS
 }
 
 func (s *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogList) Validate() error {
-	return dara.Validate(s)
+	if s.ProxySQLExecAuditLog != nil {
+		for _, item := range s.ProxySQLExecAuditLog {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog struct {

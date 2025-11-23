@@ -121,7 +121,16 @@ func (s *ListDBTaskSQLJobResponseBody) SetTotalCount(v int64) *ListDBTaskSQLJobR
 }
 
 func (s *ListDBTaskSQLJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBTaskSQLJobList != nil {
+		for _, item := range s.DBTaskSQLJobList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDBTaskSQLJobResponseBodyDBTaskSQLJobList struct {

@@ -108,7 +108,12 @@ func (s *GetDataTrackJobDegreeResponseBody) SetSuccess(v bool) *GetDataTrackJobD
 }
 
 func (s *GetDataTrackJobDegreeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.JobDegree != nil {
+		if err := s.JobDegree.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataTrackJobDegreeResponseBodyJobDegree struct {

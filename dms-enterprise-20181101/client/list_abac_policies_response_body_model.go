@@ -26,27 +26,44 @@ type iListAbacPoliciesResponseBody interface {
 }
 
 type ListAbacPoliciesResponseBody struct {
+	// The error code that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	PolicyList   []*ListAbacPoliciesResponseBodyPolicyList `json:"PolicyList,omitempty" xml:"PolicyList,omitempty" type:"Repeated"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The details of the permission policies.
+	PolicyList []*ListAbacPoliciesResponseBodyPolicyList `json:"PolicyList,omitempty" xml:"PolicyList,omitempty" type:"Repeated"`
+	// The request ID. You can use the request ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the tenant.
+	//
 	// example:
 	//
 	// 3***
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The total number of policies.
+	//
 	// example:
 	//
 	// 5
@@ -125,10 +142,21 @@ func (s *ListAbacPoliciesResponseBody) SetTotalCount(v int64) *ListAbacPoliciesR
 }
 
 func (s *ListAbacPoliciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PolicyList != nil {
+		for _, item := range s.PolicyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAbacPoliciesResponseBodyPolicyList struct {
+	// The content of the policy.
+	//
 	// example:
 	//
 	// {
@@ -165,22 +193,32 @@ type ListAbacPoliciesResponseBodyPolicyList struct {
 	//
 	// }
 	AbacPolicyContent *string `json:"AbacPolicyContent,omitempty" xml:"AbacPolicyContent,omitempty"`
+	// The description of the policy.
+	//
 	// example:
 	//
 	// test
 	AbacPolicyDesc *string `json:"AbacPolicyDesc,omitempty" xml:"AbacPolicyDesc,omitempty"`
+	// The ID of the policy.
+	//
 	// example:
 	//
 	// 12****
 	AbacPolicyId *int64 `json:"AbacPolicyId,omitempty" xml:"AbacPolicyId,omitempty"`
+	// The name of the policy.
+	//
 	// example:
 	//
 	// policy_test
 	AbacPolicyName *string `json:"AbacPolicyName,omitempty" xml:"AbacPolicyName,omitempty"`
+	// The source of the policy.
+	//
 	// example:
 	//
 	// USER_DEFINE
 	AbacPolicySource *string `json:"AbacPolicySource,omitempty" xml:"AbacPolicySource,omitempty"`
+	// The ID of the user who created the policy.
+	//
 	// example:
 	//
 	// 51****

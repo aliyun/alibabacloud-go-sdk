@@ -167,5 +167,42 @@ func (s *DLStorageDescriptor) SetSortCols(v []*DLOrder) *DLStorageDescriptor {
 }
 
 func (s *DLStorageDescriptor) Validate() error {
-	return dara.Validate(s)
+	if s.Columns != nil {
+		for _, item := range s.Columns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OriginalColumns != nil {
+		for _, item := range s.OriginalColumns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SerdeInfo != nil {
+		if err := s.SerdeInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SkewedInfo != nil {
+		if err := s.SkewedInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SortCols != nil {
+		for _, item := range s.SortCols {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

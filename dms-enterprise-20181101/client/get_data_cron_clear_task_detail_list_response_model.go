@@ -59,5 +59,10 @@ func (s *GetDataCronClearTaskDetailListResponse) SetBody(v *GetDataCronClearTask
 }
 
 func (s *GetDataCronClearTaskDetailListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

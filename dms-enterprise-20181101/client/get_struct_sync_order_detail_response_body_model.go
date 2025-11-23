@@ -104,7 +104,12 @@ func (s *GetStructSyncOrderDetailResponseBody) SetSuccess(v bool) *GetStructSync
 }
 
 func (s *GetStructSyncOrderDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StructSyncOrderDetail != nil {
+		if err := s.StructSyncOrderDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail struct {
@@ -235,7 +240,36 @@ func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) SetTargetVer
 }
 
 func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) Validate() error {
-	return dara.Validate(s)
+	if s.SourceDatabaseInfo != nil {
+		if err := s.SourceDatabaseInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceVersionInfo != nil {
+		if err := s.SourceVersionInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TableInfoList != nil {
+		for _, item := range s.TableInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TargetDatabaseInfo != nil {
+		if err := s.TargetDatabaseInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TargetVersionInfo != nil {
+		if err := s.TargetVersionInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo struct {

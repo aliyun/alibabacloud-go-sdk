@@ -59,5 +59,10 @@ func (s *ListProxySQLExecAuditLogResponse) SetBody(v *ListProxySQLExecAuditLogRe
 }
 
 func (s *ListProxySQLExecAuditLogResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

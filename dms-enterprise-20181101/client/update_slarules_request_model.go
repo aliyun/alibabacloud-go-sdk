@@ -74,7 +74,16 @@ func (s *UpdateSLARulesRequest) SetTid(v int64) *UpdateSLARulesRequest {
 }
 
 func (s *UpdateSLARulesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SlaRuleList != nil {
+		for _, item := range s.SlaRuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateSLARulesRequestSlaRuleList struct {

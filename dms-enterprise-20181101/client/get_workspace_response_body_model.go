@@ -20,15 +20,26 @@ type iGetWorkspaceResponseBody interface {
 }
 
 type GetWorkspaceResponseBody struct {
+	// The data returned.
 	Data *GetWorkspaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. You can use the request ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// FE8EE2F1-4880-46BC-A704-5CF63EAF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -80,38 +91,61 @@ func (s *GetWorkspaceResponseBody) SetSuccess(v bool) *GetWorkspaceResponseBody 
 }
 
 func (s *GetWorkspaceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWorkspaceResponseBodyData struct {
+	// The description of the workspace.
+	//
 	// example:
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The owner ID.
+	//
 	// example:
 	//
 	// 12345****
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region to which the workspace belongs.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the service account.
+	//
 	// example:
 	//
 	// 12345****
 	ServiceAccountId *string `json:"ServiceAccountId,omitempty" xml:"ServiceAccountId,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
+	//
 	// example:
 	//
 	// 3322****
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-xxxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 863020290155****
 	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// workspace_xxx

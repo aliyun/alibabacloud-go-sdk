@@ -30,35 +30,53 @@ type iListWorkspacesRequest interface {
 }
 
 type ListWorkspacesRequest struct {
+	// Specifies whether the current user has joined the workspace.
+	//
 	// example:
 	//
 	// true
 	AlreadyJoined *bool  `json:"AlreadyJoined,omitempty" xml:"AlreadyJoined,omitempty"`
 	OwnerId       *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the bucket is located.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The search keyword. Fuzzy match is supported.
+	//
 	// example:
 	//
 	// poc_test
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// The service account ID.
+	//
 	// example:
 	//
 	// 12345
 	ServiceAccountId *int64 `json:"ServiceAccountId,omitempty" xml:"ServiceAccountId,omitempty"`
+	// The virtual private cloud (VPC) ID.
+	//
+	// > This parameter cannot be used as a filter.
+	//
 	// example:
 	//
 	// vpc-bp10wnlcmor****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 12****

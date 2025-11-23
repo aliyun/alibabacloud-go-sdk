@@ -125,7 +125,12 @@ func (s *ListSensitiveColumnsResponseBody) SetTotalCount(v int64) *ListSensitive
 }
 
 func (s *ListSensitiveColumnsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SensitiveColumnList != nil {
+		if err := s.SensitiveColumnList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSensitiveColumnsResponseBodySensitiveColumnList struct {
@@ -150,7 +155,16 @@ func (s *ListSensitiveColumnsResponseBodySensitiveColumnList) SetSensitiveColumn
 }
 
 func (s *ListSensitiveColumnsResponseBodySensitiveColumnList) Validate() error {
-	return dara.Validate(s)
+	if s.SensitiveColumn != nil {
+		for _, item := range s.SensitiveColumn {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSensitiveColumnsResponseBodySensitiveColumnListSensitiveColumn struct {

@@ -108,7 +108,12 @@ func (s *ListTaskFlowEdgesByConditionResponseBody) SetSuccess(v bool) *ListTaskF
 }
 
 func (s *ListTaskFlowEdgesByConditionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Edges != nil {
+		if err := s.Edges.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTaskFlowEdgesByConditionResponseBodyEdges struct {
@@ -133,7 +138,16 @@ func (s *ListTaskFlowEdgesByConditionResponseBodyEdges) SetEdge(v []*ListTaskFlo
 }
 
 func (s *ListTaskFlowEdgesByConditionResponseBodyEdges) Validate() error {
-	return dara.Validate(s)
+	if s.Edge != nil {
+		for _, item := range s.Edge {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTaskFlowEdgesByConditionResponseBodyEdgesEdge struct {

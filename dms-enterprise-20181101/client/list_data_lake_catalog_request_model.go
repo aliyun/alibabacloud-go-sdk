@@ -20,6 +20,8 @@ type iListDataLakeCatalogRequest interface {
 }
 
 type ListDataLakeCatalogRequest struct {
+	// The region where the data lake resides.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -29,6 +31,8 @@ type ListDataLakeCatalogRequest struct {
 	//
 	// cn-hangzhou
 	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// The keyword that is used to search for catalogs.
+	//
 	// if can be null:
 	// false
 	//
@@ -36,10 +40,17 @@ type ListDataLakeCatalogRequest struct {
 	//
 	// hive
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the ID of the tenant.
+	//
 	// example:
 	//
 	// 3
-	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 12****
 	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

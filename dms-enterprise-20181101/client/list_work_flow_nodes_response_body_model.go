@@ -104,7 +104,12 @@ func (s *ListWorkFlowNodesResponseBody) SetWorkflowNodes(v *ListWorkFlowNodesRes
 }
 
 func (s *ListWorkFlowNodesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WorkflowNodes != nil {
+		if err := s.WorkflowNodes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWorkFlowNodesResponseBodyWorkflowNodes struct {
@@ -129,7 +134,16 @@ func (s *ListWorkFlowNodesResponseBodyWorkflowNodes) SetWorkflowNode(v []*ListWo
 }
 
 func (s *ListWorkFlowNodesResponseBodyWorkflowNodes) Validate() error {
-	return dara.Validate(s)
+	if s.WorkflowNode != nil {
+		for _, item := range s.WorkflowNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode struct {
@@ -249,7 +263,12 @@ func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) SetNodeType(v s
 }
 
 func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) Validate() error {
-	return dara.Validate(s)
+	if s.AuditUsers != nil {
+		if err := s.AuditUsers.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers struct {
@@ -274,7 +293,16 @@ func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers) SetAu
 }
 
 func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers) Validate() error {
-	return dara.Validate(s)
+	if s.AuditUser != nil {
+		for _, item := range s.AuditUser {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser struct {

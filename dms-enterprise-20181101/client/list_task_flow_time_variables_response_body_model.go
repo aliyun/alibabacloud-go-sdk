@@ -108,7 +108,12 @@ func (s *ListTaskFlowTimeVariablesResponseBody) SetTimeVariables(v *ListTaskFlow
 }
 
 func (s *ListTaskFlowTimeVariablesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TimeVariables != nil {
+		if err := s.TimeVariables.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTaskFlowTimeVariablesResponseBodyTimeVariables struct {
@@ -133,7 +138,16 @@ func (s *ListTaskFlowTimeVariablesResponseBodyTimeVariables) SetTimeVariable(v [
 }
 
 func (s *ListTaskFlowTimeVariablesResponseBodyTimeVariables) Validate() error {
-	return dara.Validate(s)
+	if s.TimeVariable != nil {
+		for _, item := range s.TimeVariable {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTaskFlowTimeVariablesResponseBodyTimeVariablesTimeVariable struct {

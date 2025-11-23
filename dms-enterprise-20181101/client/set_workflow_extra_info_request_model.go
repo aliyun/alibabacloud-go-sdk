@@ -30,38 +30,78 @@ type iSetWorkflowExtraInfoRequest interface {
 }
 
 type SetWorkflowExtraInfoRequest struct {
+	// Specifies whether the Sign button is displayed in the ticket approval section of the DMS console for a third-party approval workflow. Valid values:
+	//
+	// 	- **true*	- (default): The Sign button is displayed.
+	//
+	// 	- **false**: The Sign button is not displayed.
+	//
 	// example:
 	//
 	// false
 	RenderAddApprovalNode *bool `json:"RenderAddApprovalNode,omitempty" xml:"RenderAddApprovalNode,omitempty"`
+	// Specifies whether the Agree button is displayed in the ticket approval section of the DMS console for a third-party approval workflow. Valid values:
+	//
+	// 	- **true*	- (default): The Agree button is displayed.
+	//
+	// 	- **false**: The Agree button is not displayed.
+	//
 	// example:
 	//
 	// true
 	RenderAgree *bool `json:"RenderAgree,omitempty" xml:"RenderAgree,omitempty"`
+	// Specifies whether the Revoke button is displayed in the ticket approval section of the DMS console for a third-party approval workflow. Valid values:
+	//
+	// 	- **true*	- (default): The Revoke button is displayed.
+	//
+	// 	- **false**: The Revoke button is not displayed.
+	//
 	// example:
 	//
 	// true
 	RenderCancel *bool `json:"RenderCancel,omitempty" xml:"RenderCancel,omitempty"`
+	// Specifies whether the Reject button is displayed in the ticket approval section of the DMS console for a third-party approval workflow. Valid values:
+	//
+	// 	- **true*	- (default): The Reject button is displayed.
+	//
+	// 	- **false**: The Reject button is not displayed.
+	//
 	// example:
 	//
 	// false
 	RenderReject *bool `json:"RenderReject,omitempty" xml:"RenderReject,omitempty"`
+	// Specifies whether the Forward button is displayed in the ticket approval section of the DMS console for a third-party approval workflow. Valid values:
+	//
+	// 	- **true*	- (default): The Forward button is displayed.
+	//
+	// 	- **false**: The Forward button is not displayed.
+	//
 	// example:
 	//
 	// true
 	RenderTransfer *bool `json:"RenderTransfer,omitempty" xml:"RenderTransfer,omitempty"`
+	// The remarks of approval workflow for third parties.
+	//
 	// example:
 	//
 	// test
 	ThirdpartyWorkflowComment *string `json:"ThirdpartyWorkflowComment,omitempty" xml:"ThirdpartyWorkflowComment,omitempty"`
+	// The link of approval workflow for third parties.
+	//
 	// example:
 	//
 	// https://xxx
 	ThirdpartyWorkflowUrl *string `json:"ThirdpartyWorkflowUrl,omitempty" xml:"ThirdpartyWorkflowUrl,omitempty"`
+	// The ID of the tenant.
+	//
+	// >  To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
+	//
 	// example:
 	//
 	// 3***
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the approval workflow. You can call the [GetOrderBaseInfo](https://help.aliyun.com/document_detail/144642.html) operation to query the ID of the approval workflow.
+	//
 	// This parameter is required.
 	//
 	// example:

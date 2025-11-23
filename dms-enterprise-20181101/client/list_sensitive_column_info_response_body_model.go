@@ -24,23 +24,38 @@ type iListSensitiveColumnInfoResponseBody interface {
 }
 
 type ListSensitiveColumnInfoResponseBody struct {
+	// The error code returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID. You can use the request ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
-	RequestId           *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the sensitive field.
 	SensitiveColumnList *ListSensitiveColumnInfoResponseBodySensitiveColumnList `json:"SensitiveColumnList,omitempty" xml:"SensitiveColumnList,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries that are returned.
+	//
 	// example:
 	//
 	// 1
@@ -110,7 +125,12 @@ func (s *ListSensitiveColumnInfoResponseBody) SetTotalCount(v int64) *ListSensit
 }
 
 func (s *ListSensitiveColumnInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SensitiveColumnList != nil {
+		if err := s.SensitiveColumnList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSensitiveColumnInfoResponseBodySensitiveColumnList struct {
@@ -135,35 +155,67 @@ func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnList) SetSensitiveCol
 }
 
 func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnList) Validate() error {
-	return dara.Validate(s)
+	if s.SensitiveColumn != nil {
+		for _, item := range s.SensitiveColumn {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn struct {
+	// The name of the category.
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The name of the sensitive field.
+	//
 	// example:
 	//
 	// test_column
-	ColumnName                 *string                                                                                          `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The information about the default masking algorithm.
 	DefaultDesensitizationRule *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnDefaultDesensitizationRule `json:"DefaultDesensitizationRule,omitempty" xml:"DefaultDesensitizationRule,omitempty" type:"Struct"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// 183****
 	InstanceId *int32 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the sensitive field is displayed in plaintext.
+	//
 	// example:
 	//
 	// False
-	IsPlain    *bool   `json:"IsPlain,omitempty" xml:"IsPlain,omitempty"`
+	IsPlain *bool `json:"IsPlain,omitempty" xml:"IsPlain,omitempty"`
+	// The sample data.
 	SampleData *string `json:"SampleData,omitempty" xml:"SampleData,omitempty"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// test_schema
-	SchemaName                  *string                                                                                           `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	SecurityLevel               *string                                                                                           `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The sensitivity level of the field. Valid values:
+	//
+	// 	- Low
+	//
+	// 	- Medium
+	//
+	// 	- High
+	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	// The list of partial masking algorithms.
 	SemiDesensitizationRuleList *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleList `json:"SemiDesensitizationRuleList,omitempty" xml:"SemiDesensitizationRuleList,omitempty" type:"Struct"`
+	// The name of the table.
+	//
 	// example:
 	//
 	// test_table
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The user-defined sensitivity level.
+	//
 	// example:
 	//
 	// S1
@@ -278,14 +330,28 @@ func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn) 
 }
 
 func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn) Validate() error {
-	return dara.Validate(s)
+	if s.DefaultDesensitizationRule != nil {
+		if err := s.DefaultDesensitizationRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SemiDesensitizationRuleList != nil {
+		if err := s.SemiDesensitizationRuleList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnDefaultDesensitizationRule struct {
+	// The masking algorithm ID.
+	//
 	// example:
 	//
 	// 101**
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The masking algorithm name.
+	//
 	// example:
 	//
 	// test
@@ -344,14 +410,27 @@ func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSe
 }
 
 func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.SemiDesensitizationRule != nil {
+		for _, item := range s.SemiDesensitizationRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleListSemiDesensitizationRule struct {
+	// The ID of the partial masking algorithm.
+	//
 	// example:
 	//
 	// 10***
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The partial masking algorithm name.
+	//
 	// example:
 	//
 	// test01

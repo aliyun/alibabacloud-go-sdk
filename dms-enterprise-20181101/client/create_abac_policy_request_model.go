@@ -20,6 +20,8 @@ type iCreateAbacPolicyRequest interface {
 }
 
 type CreateAbacPolicyRequest struct {
+	// The content of the policy. Specifies whether the authorized user can access and use the resources and features defined in the policy.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -58,16 +60,24 @@ type CreateAbacPolicyRequest struct {
 	//
 	// }
 	AbacPolicyContent *string `json:"AbacPolicyContent,omitempty" xml:"AbacPolicyContent,omitempty"`
+	// The description of the policy.
+	//
 	// example:
 	//
 	// test
 	AbacPolicyDesc *string `json:"AbacPolicyDesc,omitempty" xml:"AbacPolicyDesc,omitempty"`
+	// The name of the policy. The name must be unique for the tenant.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// policy_test
 	AbacPolicyName *string `json:"AbacPolicyName,omitempty" xml:"AbacPolicyName,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
+	//
 	// example:
 	//
 	// 3***

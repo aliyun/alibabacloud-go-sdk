@@ -26,27 +26,44 @@ type iListDataLakeFunctionResponseBody interface {
 }
 
 type ListDataLakeFunctionResponseBody struct {
+	// The error code that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The information about functions.
 	FunctionList []*DLFunction `json:"FunctionList,omitempty" xml:"FunctionList,omitempty" type:"Repeated"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that determines the start point of the next query.
+	//
 	// example:
 	//
 	// f056501ada12c1cc
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 7FAD400F-7A5C-4193-8F9A-39D86C4F0231
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -125,5 +142,14 @@ func (s *ListDataLakeFunctionResponseBody) SetSuccess(v bool) *ListDataLakeFunct
 }
 
 func (s *ListDataLakeFunctionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FunctionList != nil {
+		for _, item := range s.FunctionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

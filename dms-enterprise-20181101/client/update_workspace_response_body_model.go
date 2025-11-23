@@ -18,14 +18,24 @@ type iUpdateWorkspaceResponseBody interface {
 }
 
 type UpdateWorkspaceResponseBody struct {
+	// Indicates whether the call is successful.
+	//
 	// example:
 	//
 	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID. You can use the request ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// C51420E3-144A-4A94-B473-8662FCF4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true

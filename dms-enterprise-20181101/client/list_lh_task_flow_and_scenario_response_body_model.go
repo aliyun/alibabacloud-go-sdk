@@ -121,7 +121,17 @@ func (s *ListLhTaskFlowAndScenarioResponseBody) SetSuccess(v bool) *ListLhTaskFl
 }
 
 func (s *ListLhTaskFlowAndScenarioResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RawDAGList != nil {
+		if err := s.RawDAGList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScenarioDAGList != nil {
+		if err := s.ScenarioDAGList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLhTaskFlowAndScenarioResponseBodyRawDAGList struct {
@@ -146,7 +156,16 @@ func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGList) SetDag(v []*ListLhTask
 }
 
 func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGList) Validate() error {
-	return dara.Validate(s)
+	if s.Dag != nil {
+		for _, item := range s.Dag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag struct {
@@ -446,7 +465,16 @@ func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList) SetScenarioDAG(v 
 }
 
 func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList) Validate() error {
-	return dara.Validate(s)
+	if s.ScenarioDAG != nil {
+		for _, item := range s.ScenarioDAG {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAG struct {
@@ -483,7 +511,17 @@ func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAG) SetSce
 }
 
 func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAG) Validate() error {
-	return dara.Validate(s)
+	if s.DagList != nil {
+		if err := s.DagList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Scenario != nil {
+		if err := s.Scenario.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagList struct {
@@ -508,7 +546,16 @@ func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagList)
 }
 
 func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagList) Validate() error {
-	return dara.Validate(s)
+	if s.Dag != nil {
+		for _, item := range s.Dag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag struct {

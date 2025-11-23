@@ -108,7 +108,12 @@ func (s *ListTaskFlowCooperatorsResponseBody) SetSuccess(v bool) *ListTaskFlowCo
 }
 
 func (s *ListTaskFlowCooperatorsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CooperatorList != nil {
+		if err := s.CooperatorList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTaskFlowCooperatorsResponseBodyCooperatorList struct {
@@ -133,7 +138,16 @@ func (s *ListTaskFlowCooperatorsResponseBodyCooperatorList) SetCooperator(v []*L
 }
 
 func (s *ListTaskFlowCooperatorsResponseBodyCooperatorList) Validate() error {
-	return dara.Validate(s)
+	if s.Cooperator != nil {
+		for _, item := range s.Cooperator {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTaskFlowCooperatorsResponseBodyCooperatorListCooperator struct {

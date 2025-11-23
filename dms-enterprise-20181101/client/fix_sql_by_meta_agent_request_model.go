@@ -22,24 +22,34 @@ type iFixSqlByMetaAgentRequest interface {
 }
 
 type FixSqlByMetaAgentRequest struct {
+	// The ID of the database. You can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1***
 	DbId *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// unknown column col
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The name of the selected model. You can use only Qwen series models.
+	//
 	// example:
 	//
 	// qwen-plus
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// 正确字段是啥？
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The SQL statement that reports the error.
+	//
 	// This parameter is required.
 	//
 	// example:

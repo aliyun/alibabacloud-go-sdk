@@ -16,12 +16,16 @@ type iDeleteAuthorityTemplateRequest interface {
 }
 
 type DeleteAuthorityTemplateRequest struct {
+	// The ID of the permission template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2592
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
+	//
 	// example:
 	//
 	// 3***

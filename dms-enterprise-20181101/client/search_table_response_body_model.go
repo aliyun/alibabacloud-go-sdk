@@ -121,7 +121,12 @@ func (s *SearchTableResponseBody) SetTotalCount(v int64) *SearchTableResponseBod
 }
 
 func (s *SearchTableResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SearchTableList != nil {
+		if err := s.SearchTableList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchTableResponseBodySearchTableList struct {
@@ -146,7 +151,16 @@ func (s *SearchTableResponseBodySearchTableList) SetSearchTable(v []*SearchTable
 }
 
 func (s *SearchTableResponseBodySearchTableList) Validate() error {
-	return dara.Validate(s)
+	if s.SearchTable != nil {
+		for _, item := range s.SearchTable {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchTableResponseBodySearchTableListSearchTable struct {
@@ -398,7 +412,17 @@ func (s *SearchTableResponseBodySearchTableListSearchTable) SetTableSchemaName(v
 }
 
 func (s *SearchTableResponseBodySearchTableListSearchTable) Validate() error {
-	return dara.Validate(s)
+	if s.OwnerIdList != nil {
+		if err := s.OwnerIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OwnerNameList != nil {
+		if err := s.OwnerNameList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchTableResponseBodySearchTableListSearchTableOwnerIdList struct {

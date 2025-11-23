@@ -26,30 +26,47 @@ type iListDataLakeTableResponseBody interface {
 }
 
 type ListDataLakeTableResponseBody struct {
+	// The error code that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The information about the token.
+	//
 	// example:
 	//
 	// NesLoKLEdIZrKhDT7I2gS****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID. You can use the request ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 3D3FB827-E667-50DB-AD59-C83F8237FECB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
-	Success   *bool      `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The details of the tables.
 	TableList []*DLTable `json:"TableList,omitempty" xml:"TableList,omitempty" type:"Repeated"`
 }
 
@@ -125,5 +142,14 @@ func (s *ListDataLakeTableResponseBody) SetTableList(v []*DLTable) *ListDataLake
 }
 
 func (s *ListDataLakeTableResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TableList != nil {
+		for _, item := range s.TableList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -125,7 +125,12 @@ func (s *ListLogicDatabasesResponseBody) SetTotalCount(v int64) *ListLogicDataba
 }
 
 func (s *ListLogicDatabasesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LogicDatabaseList != nil {
+		if err := s.LogicDatabaseList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLogicDatabasesResponseBodyLogicDatabaseList struct {
@@ -150,7 +155,16 @@ func (s *ListLogicDatabasesResponseBodyLogicDatabaseList) SetLogicDatabase(v []*
 }
 
 func (s *ListLogicDatabasesResponseBodyLogicDatabaseList) Validate() error {
-	return dara.Validate(s)
+	if s.LogicDatabase != nil {
+		for _, item := range s.LogicDatabase {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase struct {
@@ -321,7 +335,22 @@ func (s *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase) SetSearch
 }
 
 func (s *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase) Validate() error {
-	return dara.Validate(s)
+	if s.DatabaseIds != nil {
+		if err := s.DatabaseIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OwnerIdList != nil {
+		if err := s.OwnerIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OwnerNameList != nil {
+		if err := s.OwnerNameList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseDatabaseIds struct {

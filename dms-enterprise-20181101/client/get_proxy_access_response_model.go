@@ -59,5 +59,10 @@ func (s *GetProxyAccessResponse) SetBody(v *GetProxyAccessResponseBody) *GetProx
 }
 
 func (s *GetProxyAccessResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

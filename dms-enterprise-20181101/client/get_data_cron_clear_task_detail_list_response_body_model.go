@@ -121,7 +121,16 @@ func (s *GetDataCronClearTaskDetailListResponseBody) SetTotalCount(v int64) *Get
 }
 
 func (s *GetDataCronClearTaskDetailListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataCronClearTaskDetailList != nil {
+		for _, item := range s.DataCronClearTaskDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList struct {

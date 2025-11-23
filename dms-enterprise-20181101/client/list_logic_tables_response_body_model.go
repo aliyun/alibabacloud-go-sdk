@@ -121,7 +121,12 @@ func (s *ListLogicTablesResponseBody) SetTotalCount(v int64) *ListLogicTablesRes
 }
 
 func (s *ListLogicTablesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LogicTableList != nil {
+		if err := s.LogicTableList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLogicTablesResponseBodyLogicTableList struct {
@@ -146,7 +151,16 @@ func (s *ListLogicTablesResponseBodyLogicTableList) SetLogicTable(v []*ListLogic
 }
 
 func (s *ListLogicTablesResponseBodyLogicTableList) Validate() error {
-	return dara.Validate(s)
+	if s.LogicTable != nil {
+		for _, item := range s.LogicTable {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLogicTablesResponseBodyLogicTableListLogicTable struct {
@@ -303,7 +317,17 @@ func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetTableName(v str
 }
 
 func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) Validate() error {
-	return dara.Validate(s)
+	if s.OwnerIdList != nil {
+		if err := s.OwnerIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OwnerNameList != nil {
+		if err := s.OwnerNameList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList struct {

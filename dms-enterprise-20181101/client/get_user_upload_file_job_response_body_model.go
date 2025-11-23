@@ -104,7 +104,12 @@ func (s *GetUserUploadFileJobResponseBody) SetUploadFileJobDetail(v *GetUserUplo
 }
 
 func (s *GetUserUploadFileJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UploadFileJobDetail != nil {
+		if err := s.UploadFileJobDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserUploadFileJobResponseBodyUploadFileJobDetail struct {
@@ -308,7 +313,12 @@ func (s *GetUserUploadFileJobResponseBodyUploadFileJobDetail) SetUploadedSize(v 
 }
 
 func (s *GetUserUploadFileJobResponseBodyUploadFileJobDetail) Validate() error {
-	return dara.Validate(s)
+	if s.UploadOSSParam != nil {
+		if err := s.UploadOSSParam.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserUploadFileJobResponseBodyUploadFileJobDetailUploadOSSParam struct {

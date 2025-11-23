@@ -125,7 +125,12 @@ func (s *ListTaskFlowInstanceResponseBody) SetTotalCount(v int32) *ListTaskFlowI
 }
 
 func (s *ListTaskFlowInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DAGInstanceList != nil {
+		if err := s.DAGInstanceList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTaskFlowInstanceResponseBodyDAGInstanceList struct {
@@ -150,7 +155,16 @@ func (s *ListTaskFlowInstanceResponseBodyDAGInstanceList) SetDAGInstance(v []*Li
 }
 
 func (s *ListTaskFlowInstanceResponseBodyDAGInstanceList) Validate() error {
-	return dara.Validate(s)
+	if s.DAGInstance != nil {
+		for _, item := range s.DAGInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance struct {

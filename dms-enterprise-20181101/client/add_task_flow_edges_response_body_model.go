@@ -108,7 +108,12 @@ func (s *AddTaskFlowEdgesResponseBody) SetSuccess(v bool) *AddTaskFlowEdgesRespo
 }
 
 func (s *AddTaskFlowEdgesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EdgeIds != nil {
+		if err := s.EdgeIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddTaskFlowEdgesResponseBodyEdgeIds struct {

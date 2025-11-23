@@ -121,7 +121,12 @@ func (s *ListDatabasesResponseBody) SetTotalCount(v int64) *ListDatabasesRespons
 }
 
 func (s *ListDatabasesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DatabaseList != nil {
+		if err := s.DatabaseList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDatabasesResponseBodyDatabaseList struct {
@@ -146,7 +151,16 @@ func (s *ListDatabasesResponseBodyDatabaseList) SetDatabase(v []*ListDatabasesRe
 }
 
 func (s *ListDatabasesResponseBodyDatabaseList) Validate() error {
-	return dara.Validate(s)
+	if s.Database != nil {
+		for _, item := range s.Database {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDatabasesResponseBodyDatabaseListDatabase struct {
@@ -401,7 +415,17 @@ func (s *ListDatabasesResponseBodyDatabaseListDatabase) SetState(v string) *List
 }
 
 func (s *ListDatabasesResponseBodyDatabaseListDatabase) Validate() error {
-	return dara.Validate(s)
+	if s.OwnerIdList != nil {
+		if err := s.OwnerIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OwnerNameList != nil {
+		if err := s.OwnerNameList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDatabasesResponseBodyDatabaseListDatabaseOwnerIdList struct {

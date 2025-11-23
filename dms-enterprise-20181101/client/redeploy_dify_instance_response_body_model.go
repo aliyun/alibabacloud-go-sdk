@@ -107,7 +107,12 @@ func (s *RedeployDifyInstanceResponseBody) SetSuccess(v bool) *RedeployDifyInsta
 }
 
 func (s *RedeployDifyInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RedeployDifyInstanceResponseBodyData struct {

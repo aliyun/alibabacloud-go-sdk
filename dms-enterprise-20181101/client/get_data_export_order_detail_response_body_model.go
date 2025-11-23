@@ -108,7 +108,12 @@ func (s *GetDataExportOrderDetailResponseBody) SetSuccess(v bool) *GetDataExport
 }
 
 func (s *GetDataExportOrderDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataExportOrderDetail != nil {
+		if err := s.DataExportOrderDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataExportOrderDetailResponseBodyDataExportOrderDetail struct {
@@ -145,7 +150,17 @@ func (s *GetDataExportOrderDetailResponseBodyDataExportOrderDetail) SetOrderDeta
 }
 
 func (s *GetDataExportOrderDetailResponseBodyDataExportOrderDetail) Validate() error {
-	return dara.Validate(s)
+	if s.KeyInfo != nil {
+		if err := s.KeyInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OrderDetail != nil {
+		if err := s.OrderDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo struct {

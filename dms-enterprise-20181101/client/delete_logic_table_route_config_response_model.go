@@ -59,5 +59,10 @@ func (s *DeleteLogicTableRouteConfigResponse) SetBody(v *DeleteLogicTableRouteCo
 }
 
 func (s *DeleteLogicTableRouteConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

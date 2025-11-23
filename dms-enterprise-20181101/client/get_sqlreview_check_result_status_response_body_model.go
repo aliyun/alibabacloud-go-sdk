@@ -104,7 +104,12 @@ func (s *GetSQLReviewCheckResultStatusResponseBody) SetSuccess(v bool) *GetSQLRe
 }
 
 func (s *GetSQLReviewCheckResultStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CheckResultStatus != nil {
+		if err := s.CheckResultStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus struct {
@@ -171,7 +176,17 @@ func (s *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus) SetTotalSQL
 }
 
 func (s *GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus) Validate() error {
-	return dara.Validate(s)
+	if s.CheckStatusResult != nil {
+		if err := s.CheckStatusResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SQLReviewResult != nil {
+		if err := s.SQLReviewResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult struct {

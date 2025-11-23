@@ -125,7 +125,12 @@ func (s *ListTablesResponseBody) SetTotalCount(v int64) *ListTablesResponseBody 
 }
 
 func (s *ListTablesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TableList != nil {
+		if err := s.TableList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTablesResponseBodyTableList struct {
@@ -150,7 +155,16 @@ func (s *ListTablesResponseBodyTableList) SetTable(v []*ListTablesResponseBodyTa
 }
 
 func (s *ListTablesResponseBodyTableList) Validate() error {
-	return dara.Validate(s)
+	if s.Table != nil {
+		for _, item := range s.Table {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTablesResponseBodyTableListTable struct {
@@ -352,7 +366,17 @@ func (s *ListTablesResponseBodyTableListTable) SetTableType(v string) *ListTable
 }
 
 func (s *ListTablesResponseBodyTableListTable) Validate() error {
-	return dara.Validate(s)
+	if s.OwnerIdList != nil {
+		if err := s.OwnerIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OwnerNameList != nil {
+		if err := s.OwnerNameList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTablesResponseBodyTableListTableOwnerIdList struct {

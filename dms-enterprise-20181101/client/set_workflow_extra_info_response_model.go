@@ -59,5 +59,10 @@ func (s *SetWorkflowExtraInfoResponse) SetBody(v *SetWorkflowExtraInfoResponseBo
 }
 
 func (s *SetWorkflowExtraInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

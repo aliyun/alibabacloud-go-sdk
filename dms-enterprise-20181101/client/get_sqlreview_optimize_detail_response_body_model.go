@@ -104,7 +104,12 @@ func (s *GetSQLReviewOptimizeDetailResponseBody) SetSuccess(v bool) *GetSQLRevie
 }
 
 func (s *GetSQLReviewOptimizeDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OptimizeDetail != nil {
+		if err := s.OptimizeDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail struct {
@@ -190,7 +195,12 @@ func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) SetSqlType(v stri
 }
 
 func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) Validate() error {
-	return dara.Validate(s)
+	if s.QualityResult != nil {
+		if err := s.QualityResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult struct {
@@ -250,7 +260,16 @@ func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) SetR
 }
 
 func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults struct {
@@ -363,7 +382,16 @@ func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResult
 }
 
 func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) Validate() error {
-	return dara.Validate(s)
+	if s.Scripts != nil {
+		for _, item := range s.Scripts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts struct {

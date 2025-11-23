@@ -108,7 +108,12 @@ func (s *ListDefaultSLARulesResponseBody) SetSuccess(v bool) *ListDefaultSLARule
 }
 
 func (s *ListDefaultSLARulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SLARuleList != nil {
+		if err := s.SLARuleList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDefaultSLARulesResponseBodySLARuleList struct {
@@ -133,7 +138,16 @@ func (s *ListDefaultSLARulesResponseBodySLARuleList) SetSLARule(v []*ListDefault
 }
 
 func (s *ListDefaultSLARulesResponseBodySLARuleList) Validate() error {
-	return dara.Validate(s)
+	if s.SLARule != nil {
+		for _, item := range s.SLARule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDefaultSLARulesResponseBodySLARuleListSLARule struct {

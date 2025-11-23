@@ -14,6 +14,8 @@ type iDeleteWorkspaceRequest interface {
 }
 
 type DeleteWorkspaceRequest struct {
+	// The ID of the DMS workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -127,7 +127,16 @@ func (s *ListDesensitizationRuleResponseBody) SetTotalCount(v int32) *ListDesens
 }
 
 func (s *ListDesensitizationRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DesensitizationRuleList != nil {
+		for _, item := range s.DesensitizationRuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDesensitizationRuleResponseBodyDesensitizationRuleList struct {

@@ -59,5 +59,10 @@ func (s *ReDeployLhDagVersionResponse) SetBody(v *ReDeployLhDagVersionResponseBo
 }
 
 func (s *ReDeployLhDagVersionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

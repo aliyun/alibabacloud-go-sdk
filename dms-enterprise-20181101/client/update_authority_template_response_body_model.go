@@ -125,7 +125,12 @@ func (s *UpdateAuthorityTemplateResponseBody) SetTid(v int64) *UpdateAuthorityTe
 }
 
 func (s *UpdateAuthorityTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorityTemplateView != nil {
+		if err := s.AuthorityTemplateView.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateAuthorityTemplateResponseBodyAuthorityTemplateView struct {

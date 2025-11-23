@@ -16,7 +16,10 @@ type iListAuthorizedInstancesForUserResponseBody interface {
 }
 
 type ListAuthorizedInstancesForUserResponseBody struct {
+	// The list of instances on which the user has permissions.
 	Instances []*ListAuthorizedInstancesForUserResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// B7DB89CC-017D-5503-8953-38FFE241A618
@@ -50,39 +53,65 @@ func (s *ListAuthorizedInstancesForUserResponseBody) SetRequestId(v string) *Lis
 }
 
 func (s *ListAuthorizedInstancesForUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAuthorizedInstancesForUserResponseBodyInstances struct {
+	// The database engine that the instance runs.
+	//
 	// example:
 	//
 	// MySQL
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The type of the environment to which the database instance belongs.
+	//
 	// example:
 	//
 	// product
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The endpoint that is used to connect to the instance.
+	//
 	// example:
 	//
 	// rm-2zex9lrc0gz0****.mysql.rds.aliyuncs.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The alias of the instance.
+	//
 	// example:
 	//
 	// DMS_TEST
 	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// 21****
-	InstanceId       *string                                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The details of permissions. The format of the permission details varies with the permission source. For example, if the permission source is a normal permission, the following parameters are returned.
 	PermissionDetail *ListAuthorizedInstancesForUserResponseBodyInstancesPermissionDetail `json:"PermissionDetail,omitempty" xml:"PermissionDetail,omitempty" type:"Struct"`
+	// The port number that is used to connect to the instance.
+	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The user IDs.
+	//
 	// example:
 	//
 	// 51****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The user name.
+	//
 	// example:
 	//
 	// user_test
@@ -179,19 +208,37 @@ func (s *ListAuthorizedInstancesForUserResponseBodyInstances) SetUserName(v stri
 }
 
 func (s *ListAuthorizedInstancesForUserResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.PermissionDetail != nil {
+		if err := s.PermissionDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAuthorizedInstancesForUserResponseBodyInstancesPermissionDetail struct {
+	// The type of object on which the operation is performed.
+	//
 	// example:
 	//
 	// DATABASE
 	DsType *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
+	// The time when the permission expires.
+	//
 	// example:
 	//
 	// 2024-12-06 10:00:00
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// If the permission source is a permission policy, the value of this parameter includes the policy name and the operations that are allowed for the user.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The type of the permission. Valid values:
+	//
+	// 	- **QUERY**: the query permission
+	//
+	// 	- **EXPORT**: the data export permission
+	//
+	// 	- **CORRECT**: the data change permission
+	//
 	// example:
 	//
 	// CORRECT

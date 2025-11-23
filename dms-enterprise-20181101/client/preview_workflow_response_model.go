@@ -59,5 +59,10 @@ func (s *PreviewWorkflowResponse) SetBody(v *PreviewWorkflowResponseBody) *Previ
 }
 
 func (s *PreviewWorkflowResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
