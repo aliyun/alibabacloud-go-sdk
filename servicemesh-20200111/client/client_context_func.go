@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("central")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("servicemesh"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -65,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddClusterIntoServiceMeshResponse
-func (client *Client) AddClusterIntoServiceMeshWithOptions(request *AddClusterIntoServiceMeshRequest, runtime *dara.RuntimeOptions) (_result *AddClusterIntoServiceMeshResponse, _err error) {
+func (client *Client) AddClusterIntoServiceMeshWithContext(ctx context.Context, request *AddClusterIntoServiceMeshRequest, runtime *dara.RuntimeOptions) (_result *AddClusterIntoServiceMeshResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -108,29 +59,11 @@ func (client *Client) AddClusterIntoServiceMeshWithOptions(request *AddClusterIn
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddClusterIntoServiceMeshResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a cluster to an ASM instance.
-//
-// @param request - AddClusterIntoServiceMeshRequest
-//
-// @return AddClusterIntoServiceMeshResponse
-func (client *Client) AddClusterIntoServiceMesh(request *AddClusterIntoServiceMeshRequest) (_result *AddClusterIntoServiceMeshResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddClusterIntoServiceMeshResponse{}
-	_body, _err := client.AddClusterIntoServiceMeshWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -145,7 +78,7 @@ func (client *Client) AddClusterIntoServiceMesh(request *AddClusterIntoServiceMe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddVMIntoServiceMeshResponse
-func (client *Client) AddVMIntoServiceMeshWithOptions(request *AddVMIntoServiceMeshRequest, runtime *dara.RuntimeOptions) (_result *AddVMIntoServiceMeshResponse, _err error) {
+func (client *Client) AddVMIntoServiceMeshWithContext(ctx context.Context, request *AddVMIntoServiceMeshRequest, runtime *dara.RuntimeOptions) (_result *AddVMIntoServiceMeshResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -176,32 +109,11 @@ func (client *Client) AddVMIntoServiceMeshWithOptions(request *AddVMIntoServiceM
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddVMIntoServiceMeshResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AddVMIntoServiceMesh is deprecated
-//
-// Summary:
-//
-// Adds a virtual machine (VM) to a Service Mesh (ASM) instance.
-//
-// @param request - AddVMIntoServiceMeshRequest
-//
-// @return AddVMIntoServiceMeshResponse
-// Deprecated
-func (client *Client) AddVMIntoServiceMesh(request *AddVMIntoServiceMeshRequest) (_result *AddVMIntoServiceMeshResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddVMIntoServiceMeshResponse{}
-	_body, _err := client.AddVMIntoServiceMeshWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -214,7 +126,7 @@ func (client *Client) AddVMIntoServiceMesh(request *AddVMIntoServiceMeshRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateASMGatewayResponse
-func (client *Client) CreateASMGatewayWithOptions(request *CreateASMGatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateASMGatewayResponse, _err error) {
+func (client *Client) CreateASMGatewayWithContext(ctx context.Context, request *CreateASMGatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateASMGatewayResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -249,29 +161,11 @@ func (client *Client) CreateASMGatewayWithOptions(request *CreateASMGatewayReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateASMGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a Service Mesh (ASM) gateway.
-//
-// @param request - CreateASMGatewayRequest
-//
-// @return CreateASMGatewayResponse
-func (client *Client) CreateASMGateway(request *CreateASMGatewayRequest) (_result *CreateASMGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateASMGatewayResponse{}
-	_body, _err := client.CreateASMGatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -284,7 +178,7 @@ func (client *Client) CreateASMGateway(request *CreateASMGatewayRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateGatewaySecretResponse
-func (client *Client) CreateGatewaySecretWithOptions(request *CreateGatewaySecretRequest, runtime *dara.RuntimeOptions) (_result *CreateGatewaySecretResponse, _err error) {
+func (client *Client) CreateGatewaySecretWithContext(ctx context.Context, request *CreateGatewaySecretRequest, runtime *dara.RuntimeOptions) (_result *CreateGatewaySecretResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -327,29 +221,11 @@ func (client *Client) CreateGatewaySecretWithOptions(request *CreateGatewaySecre
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateGatewaySecretResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a secret for a Service Mesh (ASM) gateway.
-//
-// @param request - CreateGatewaySecretRequest
-//
-// @return CreateGatewaySecretResponse
-func (client *Client) CreateGatewaySecret(request *CreateGatewaySecretRequest) (_result *CreateGatewaySecretResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateGatewaySecretResponse{}
-	_body, _err := client.CreateGatewaySecretWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -362,7 +238,7 @@ func (client *Client) CreateGatewaySecret(request *CreateGatewaySecretRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateIstioGatewayDomainsResponse
-func (client *Client) CreateIstioGatewayDomainsWithOptions(request *CreateIstioGatewayDomainsRequest, runtime *dara.RuntimeOptions) (_result *CreateIstioGatewayDomainsResponse, _err error) {
+func (client *Client) CreateIstioGatewayDomainsWithContext(ctx context.Context, request *CreateIstioGatewayDomainsRequest, runtime *dara.RuntimeOptions) (_result *CreateIstioGatewayDomainsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -425,29 +301,11 @@ func (client *Client) CreateIstioGatewayDomainsWithOptions(request *CreateIstioG
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateIstioGatewayDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds domain names for a Service Mesh (ASM) gateway.
-//
-// @param request - CreateIstioGatewayDomainsRequest
-//
-// @return CreateIstioGatewayDomainsResponse
-func (client *Client) CreateIstioGatewayDomains(request *CreateIstioGatewayDomainsRequest) (_result *CreateIstioGatewayDomainsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateIstioGatewayDomainsResponse{}
-	_body, _err := client.CreateIstioGatewayDomainsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -460,7 +318,7 @@ func (client *Client) CreateIstioGatewayDomains(request *CreateIstioGatewayDomai
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateIstioGatewayRoutesResponse
-func (client *Client) CreateIstioGatewayRoutesWithOptions(tmpReq *CreateIstioGatewayRoutesRequest, runtime *dara.RuntimeOptions) (_result *CreateIstioGatewayRoutesResponse, _err error) {
+func (client *Client) CreateIstioGatewayRoutesWithContext(ctx context.Context, tmpReq *CreateIstioGatewayRoutesRequest, runtime *dara.RuntimeOptions) (_result *CreateIstioGatewayRoutesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -513,29 +371,11 @@ func (client *Client) CreateIstioGatewayRoutesWithOptions(tmpReq *CreateIstioGat
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateIstioGatewayRoutesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a routing rule for a Service Mesh (ASM) gateway.
-//
-// @param request - CreateIstioGatewayRoutesRequest
-//
-// @return CreateIstioGatewayRoutesResponse
-func (client *Client) CreateIstioGatewayRoutes(request *CreateIstioGatewayRoutesRequest) (_result *CreateIstioGatewayRoutesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateIstioGatewayRoutesResponse{}
-	_body, _err := client.CreateIstioGatewayRoutesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -548,7 +388,7 @@ func (client *Client) CreateIstioGatewayRoutes(request *CreateIstioGatewayRoutes
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateServiceMeshResponse
-func (client *Client) CreateServiceMeshWithOptions(request *CreateServiceMeshRequest, runtime *dara.RuntimeOptions) (_result *CreateServiceMeshResponse, _err error) {
+func (client *Client) CreateServiceMeshWithContext(ctx context.Context, request *CreateServiceMeshRequest, runtime *dara.RuntimeOptions) (_result *CreateServiceMeshResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -885,29 +725,11 @@ func (client *Client) CreateServiceMeshWithOptions(request *CreateServiceMeshReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateServiceMeshResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a Service Mesh (ASM) instance.
-//
-// @param request - CreateServiceMeshRequest
-//
-// @return CreateServiceMeshResponse
-func (client *Client) CreateServiceMesh(request *CreateServiceMeshRequest) (_result *CreateServiceMeshResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateServiceMeshResponse{}
-	_body, _err := client.CreateServiceMeshWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -920,7 +742,7 @@ func (client *Client) CreateServiceMesh(request *CreateServiceMeshRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSwimLaneResponse
-func (client *Client) CreateSwimLaneWithOptions(request *CreateSwimLaneRequest, runtime *dara.RuntimeOptions) (_result *CreateSwimLaneResponse, _err error) {
+func (client *Client) CreateSwimLaneWithContext(ctx context.Context, request *CreateSwimLaneRequest, runtime *dara.RuntimeOptions) (_result *CreateSwimLaneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -967,29 +789,11 @@ func (client *Client) CreateSwimLaneWithOptions(request *CreateSwimLaneRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSwimLaneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a lane.
-//
-// @param request - CreateSwimLaneRequest
-//
-// @return CreateSwimLaneResponse
-func (client *Client) CreateSwimLane(request *CreateSwimLaneRequest) (_result *CreateSwimLaneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateSwimLaneResponse{}
-	_body, _err := client.CreateSwimLaneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1002,7 +806,7 @@ func (client *Client) CreateSwimLane(request *CreateSwimLaneRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSwimLaneGroupResponse
-func (client *Client) CreateSwimLaneGroupWithOptions(request *CreateSwimLaneGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateSwimLaneGroupResponse, _err error) {
+func (client *Client) CreateSwimLaneGroupWithContext(ctx context.Context, request *CreateSwimLaneGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateSwimLaneGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1061,29 +865,11 @@ func (client *Client) CreateSwimLaneGroupWithOptions(request *CreateSwimLaneGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSwimLaneGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a lane group.
-//
-// @param request - CreateSwimLaneGroupRequest
-//
-// @return CreateSwimLaneGroupResponse
-func (client *Client) CreateSwimLaneGroup(request *CreateSwimLaneGroupRequest) (_result *CreateSwimLaneGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateSwimLaneGroupResponse{}
-	_body, _err := client.CreateSwimLaneGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1096,7 +882,7 @@ func (client *Client) CreateSwimLaneGroup(request *CreateSwimLaneGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateWaypointResponse
-func (client *Client) CreateWaypointWithOptions(request *CreateWaypointRequest, runtime *dara.RuntimeOptions) (_result *CreateWaypointResponse, _err error) {
+func (client *Client) CreateWaypointWithContext(ctx context.Context, request *CreateWaypointRequest, runtime *dara.RuntimeOptions) (_result *CreateWaypointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1179,29 +965,11 @@ func (client *Client) CreateWaypointWithOptions(request *CreateWaypointRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateWaypointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建Waypoint
-//
-// @param request - CreateWaypointRequest
-//
-// @return CreateWaypointResponse
-func (client *Client) CreateWaypoint(request *CreateWaypointRequest) (_result *CreateWaypointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateWaypointResponse{}
-	_body, _err := client.CreateWaypointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1214,7 +982,7 @@ func (client *Client) CreateWaypoint(request *CreateWaypointRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteGatewayRouteResponse
-func (client *Client) DeleteGatewayRouteWithOptions(request *DeleteGatewayRouteRequest, runtime *dara.RuntimeOptions) (_result *DeleteGatewayRouteResponse, _err error) {
+func (client *Client) DeleteGatewayRouteWithContext(ctx context.Context, request *DeleteGatewayRouteRequest, runtime *dara.RuntimeOptions) (_result *DeleteGatewayRouteResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1249,29 +1017,11 @@ func (client *Client) DeleteGatewayRouteWithOptions(request *DeleteGatewayRouteR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteGatewayRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a routing rule for a Service Mesh (ASM) gateway.
-//
-// @param request - DeleteGatewayRouteRequest
-//
-// @return DeleteGatewayRouteResponse
-func (client *Client) DeleteGatewayRoute(request *DeleteGatewayRouteRequest) (_result *DeleteGatewayRouteResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteGatewayRouteResponse{}
-	_body, _err := client.DeleteGatewayRouteWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1284,7 +1034,7 @@ func (client *Client) DeleteGatewayRoute(request *DeleteGatewayRouteRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteGatewaySecretResponse
-func (client *Client) DeleteGatewaySecretWithOptions(request *DeleteGatewaySecretRequest, runtime *dara.RuntimeOptions) (_result *DeleteGatewaySecretResponse, _err error) {
+func (client *Client) DeleteGatewaySecretWithContext(ctx context.Context, request *DeleteGatewaySecretRequest, runtime *dara.RuntimeOptions) (_result *DeleteGatewaySecretResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1319,29 +1069,11 @@ func (client *Client) DeleteGatewaySecretWithOptions(request *DeleteGatewaySecre
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteGatewaySecretResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a secret for a Service Mesh (ASM) gateway.
-//
-// @param request - DeleteGatewaySecretRequest
-//
-// @return DeleteGatewaySecretResponse
-func (client *Client) DeleteGatewaySecret(request *DeleteGatewaySecretRequest) (_result *DeleteGatewaySecretResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteGatewaySecretResponse{}
-	_body, _err := client.DeleteGatewaySecretWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1354,7 +1086,7 @@ func (client *Client) DeleteGatewaySecret(request *DeleteGatewaySecretRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIstioGatewayDomainsResponse
-func (client *Client) DeleteIstioGatewayDomainsWithOptions(request *DeleteIstioGatewayDomainsRequest, runtime *dara.RuntimeOptions) (_result *DeleteIstioGatewayDomainsResponse, _err error) {
+func (client *Client) DeleteIstioGatewayDomainsWithContext(ctx context.Context, request *DeleteIstioGatewayDomainsRequest, runtime *dara.RuntimeOptions) (_result *DeleteIstioGatewayDomainsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1401,29 +1133,11 @@ func (client *Client) DeleteIstioGatewayDomainsWithOptions(request *DeleteIstioG
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIstioGatewayDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes one or more domain names for a Service Mesh (ASM) gateway.
-//
-// @param request - DeleteIstioGatewayDomainsRequest
-//
-// @return DeleteIstioGatewayDomainsResponse
-func (client *Client) DeleteIstioGatewayDomains(request *DeleteIstioGatewayDomainsRequest) (_result *DeleteIstioGatewayDomainsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIstioGatewayDomainsResponse{}
-	_body, _err := client.DeleteIstioGatewayDomainsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1436,7 +1150,7 @@ func (client *Client) DeleteIstioGatewayDomains(request *DeleteIstioGatewayDomai
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteServiceMeshResponse
-func (client *Client) DeleteServiceMeshWithOptions(request *DeleteServiceMeshRequest, runtime *dara.RuntimeOptions) (_result *DeleteServiceMeshResponse, _err error) {
+func (client *Client) DeleteServiceMeshWithContext(ctx context.Context, request *DeleteServiceMeshRequest, runtime *dara.RuntimeOptions) (_result *DeleteServiceMeshResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1471,29 +1185,11 @@ func (client *Client) DeleteServiceMeshWithOptions(request *DeleteServiceMeshReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteServiceMeshResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a Service Mesh (ASM) instance.
-//
-// @param request - DeleteServiceMeshRequest
-//
-// @return DeleteServiceMeshResponse
-func (client *Client) DeleteServiceMesh(request *DeleteServiceMeshRequest) (_result *DeleteServiceMeshResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteServiceMeshResponse{}
-	_body, _err := client.DeleteServiceMeshWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1506,7 +1202,7 @@ func (client *Client) DeleteServiceMesh(request *DeleteServiceMeshRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSwimLaneResponse
-func (client *Client) DeleteSwimLaneWithOptions(request *DeleteSwimLaneRequest, runtime *dara.RuntimeOptions) (_result *DeleteSwimLaneResponse, _err error) {
+func (client *Client) DeleteSwimLaneWithContext(ctx context.Context, request *DeleteSwimLaneRequest, runtime *dara.RuntimeOptions) (_result *DeleteSwimLaneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1541,29 +1237,11 @@ func (client *Client) DeleteSwimLaneWithOptions(request *DeleteSwimLaneRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSwimLaneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a lane.
-//
-// @param request - DeleteSwimLaneRequest
-//
-// @return DeleteSwimLaneResponse
-func (client *Client) DeleteSwimLane(request *DeleteSwimLaneRequest) (_result *DeleteSwimLaneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSwimLaneResponse{}
-	_body, _err := client.DeleteSwimLaneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1576,7 +1254,7 @@ func (client *Client) DeleteSwimLane(request *DeleteSwimLaneRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSwimLaneGroupResponse
-func (client *Client) DeleteSwimLaneGroupWithOptions(request *DeleteSwimLaneGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteSwimLaneGroupResponse, _err error) {
+func (client *Client) DeleteSwimLaneGroupWithContext(ctx context.Context, request *DeleteSwimLaneGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteSwimLaneGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1607,29 +1285,11 @@ func (client *Client) DeleteSwimLaneGroupWithOptions(request *DeleteSwimLaneGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSwimLaneGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a lane group. If a lane group is deleted, the lanes in the group and the traffic routing rules attached to the lanes are deleted.
-//
-// @param request - DeleteSwimLaneGroupRequest
-//
-// @return DeleteSwimLaneGroupResponse
-func (client *Client) DeleteSwimLaneGroup(request *DeleteSwimLaneGroupRequest) (_result *DeleteSwimLaneGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSwimLaneGroupResponse{}
-	_body, _err := client.DeleteSwimLaneGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1642,7 +1302,7 @@ func (client *Client) DeleteSwimLaneGroup(request *DeleteSwimLaneGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteWaypointResponse
-func (client *Client) DeleteWaypointWithOptions(request *DeleteWaypointRequest, runtime *dara.RuntimeOptions) (_result *DeleteWaypointResponse, _err error) {
+func (client *Client) DeleteWaypointWithContext(ctx context.Context, request *DeleteWaypointRequest, runtime *dara.RuntimeOptions) (_result *DeleteWaypointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1681,29 +1341,11 @@ func (client *Client) DeleteWaypointWithOptions(request *DeleteWaypointRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteWaypointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除Waypoint资源
-//
-// @param request - DeleteWaypointRequest
-//
-// @return DeleteWaypointResponse
-func (client *Client) DeleteWaypoint(request *DeleteWaypointRequest) (_result *DeleteWaypointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteWaypointResponse{}
-	_body, _err := client.DeleteWaypointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1716,7 +1358,7 @@ func (client *Client) DeleteWaypoint(request *DeleteWaypointRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeASMGatewayImportedServicesResponse
-func (client *Client) DescribeASMGatewayImportedServicesWithOptions(request *DescribeASMGatewayImportedServicesRequest, runtime *dara.RuntimeOptions) (_result *DescribeASMGatewayImportedServicesResponse, _err error) {
+func (client *Client) DescribeASMGatewayImportedServicesWithContext(ctx context.Context, request *DescribeASMGatewayImportedServicesRequest, runtime *dara.RuntimeOptions) (_result *DescribeASMGatewayImportedServicesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1751,29 +1393,11 @@ func (client *Client) DescribeASMGatewayImportedServicesWithOptions(request *Des
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeASMGatewayImportedServicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about imported services on a Service Mesh (ASM) gateway.
-//
-// @param request - DescribeASMGatewayImportedServicesRequest
-//
-// @return DescribeASMGatewayImportedServicesResponse
-func (client *Client) DescribeASMGatewayImportedServices(request *DescribeASMGatewayImportedServicesRequest) (_result *DescribeASMGatewayImportedServicesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeASMGatewayImportedServicesResponse{}
-	_body, _err := client.DescribeASMGatewayImportedServicesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1786,7 +1410,7 @@ func (client *Client) DescribeASMGatewayImportedServices(request *DescribeASMGat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCCMVersionResponse
-func (client *Client) DescribeCCMVersionWithOptions(request *DescribeCCMVersionRequest, runtime *dara.RuntimeOptions) (_result *DescribeCCMVersionResponse, _err error) {
+func (client *Client) DescribeCCMVersionWithContext(ctx context.Context, request *DescribeCCMVersionRequest, runtime *dara.RuntimeOptions) (_result *DescribeCCMVersionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1813,29 +1437,11 @@ func (client *Client) DescribeCCMVersionWithOptions(request *DescribeCCMVersionR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCCMVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the versions of the Cloud Controller Manager (CCM) component.
-//
-// @param request - DescribeCCMVersionRequest
-//
-// @return DescribeCCMVersionResponse
-func (client *Client) DescribeCCMVersion(request *DescribeCCMVersionRequest) (_result *DescribeCCMVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCCMVersionResponse{}
-	_body, _err := client.DescribeCCMVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1848,7 +1454,7 @@ func (client *Client) DescribeCCMVersion(request *DescribeCCMVersionRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCensResponse
-func (client *Client) DescribeCensWithOptions(request *DescribeCensRequest, runtime *dara.RuntimeOptions) (_result *DescribeCensResponse, _err error) {
+func (client *Client) DescribeCensWithContext(ctx context.Context, request *DescribeCensRequest, runtime *dara.RuntimeOptions) (_result *DescribeCensResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1875,29 +1481,11 @@ func (client *Client) DescribeCensWithOptions(request *DescribeCensRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCensResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the network connectivity between clusters that are deployed across virtual private clouds (VPCs) in a Service Mesh (ASM) instance.
-//
-// @param request - DescribeCensRequest
-//
-// @return DescribeCensResponse
-func (client *Client) DescribeCens(request *DescribeCensRequest) (_result *DescribeCensResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCensResponse{}
-	_body, _err := client.DescribeCensWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1910,7 +1498,7 @@ func (client *Client) DescribeCens(request *DescribeCensRequest) (_result *Descr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeClusterGrafanaResponse
-func (client *Client) DescribeClusterGrafanaWithOptions(request *DescribeClusterGrafanaRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterGrafanaResponse, _err error) {
+func (client *Client) DescribeClusterGrafanaWithContext(ctx context.Context, request *DescribeClusterGrafanaRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterGrafanaResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1945,29 +1533,11 @@ func (client *Client) DescribeClusterGrafanaWithOptions(request *DescribeCluster
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeClusterGrafanaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about Grafana dashboards of a cluster in a Service Mesh (ASM) instance.
-//
-// @param request - DescribeClusterGrafanaRequest
-//
-// @return DescribeClusterGrafanaResponse
-func (client *Client) DescribeClusterGrafana(request *DescribeClusterGrafanaRequest) (_result *DescribeClusterGrafanaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeClusterGrafanaResponse{}
-	_body, _err := client.DescribeClusterGrafanaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1980,7 +1550,7 @@ func (client *Client) DescribeClusterGrafana(request *DescribeClusterGrafanaRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeClusterPrometheusResponse
-func (client *Client) DescribeClusterPrometheusWithOptions(request *DescribeClusterPrometheusRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterPrometheusResponse, _err error) {
+func (client *Client) DescribeClusterPrometheusWithContext(ctx context.Context, request *DescribeClusterPrometheusRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterPrometheusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2015,29 +1585,11 @@ func (client *Client) DescribeClusterPrometheusWithOptions(request *DescribeClus
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeClusterPrometheusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the public endpoint of the Prometheus service that is used to monitor a cluster in an Alibaba Cloud Service Mesh (ASM) instance.
-//
-// @param request - DescribeClusterPrometheusRequest
-//
-// @return DescribeClusterPrometheusResponse
-func (client *Client) DescribeClusterPrometheus(request *DescribeClusterPrometheusRequest) (_result *DescribeClusterPrometheusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeClusterPrometheusResponse{}
-	_body, _err := client.DescribeClusterPrometheusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2050,7 +1602,7 @@ func (client *Client) DescribeClusterPrometheus(request *DescribeClusterPromethe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeClustersInServiceMeshResponse
-func (client *Client) DescribeClustersInServiceMeshWithOptions(request *DescribeClustersInServiceMeshRequest, runtime *dara.RuntimeOptions) (_result *DescribeClustersInServiceMeshResponse, _err error) {
+func (client *Client) DescribeClustersInServiceMeshWithContext(ctx context.Context, request *DescribeClustersInServiceMeshRequest, runtime *dara.RuntimeOptions) (_result *DescribeClustersInServiceMeshResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2077,29 +1629,11 @@ func (client *Client) DescribeClustersInServiceMeshWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeClustersInServiceMeshResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about clusters in a Service Mesh (ASM) instance.
-//
-// @param request - DescribeClustersInServiceMeshRequest
-//
-// @return DescribeClustersInServiceMeshResponse
-func (client *Client) DescribeClustersInServiceMesh(request *DescribeClustersInServiceMeshRequest) (_result *DescribeClustersInServiceMeshResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeClustersInServiceMeshResponse{}
-	_body, _err := client.DescribeClustersInServiceMeshWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2112,7 +1646,7 @@ func (client *Client) DescribeClustersInServiceMesh(request *DescribeClustersInS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCrTemplatesResponse
-func (client *Client) DescribeCrTemplatesWithOptions(request *DescribeCrTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCrTemplatesResponse, _err error) {
+func (client *Client) DescribeCrTemplatesWithContext(ctx context.Context, request *DescribeCrTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCrTemplatesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2143,29 +1677,11 @@ func (client *Client) DescribeCrTemplatesWithOptions(request *DescribeCrTemplate
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCrTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the common YAML templates of Istio resources used by Service Mesh (ASM) instances.
-//
-// @param request - DescribeCrTemplatesRequest
-//
-// @return DescribeCrTemplatesResponse
-func (client *Client) DescribeCrTemplates(request *DescribeCrTemplatesRequest) (_result *DescribeCrTemplatesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCrTemplatesResponse{}
-	_body, _err := client.DescribeCrTemplatesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2178,7 +1694,7 @@ func (client *Client) DescribeCrTemplates(request *DescribeCrTemplatesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEipResourcesResponse
-func (client *Client) DescribeEipResourcesWithOptions(request *DescribeEipResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeEipResourcesResponse, _err error) {
+func (client *Client) DescribeEipResourcesWithContext(ctx context.Context, request *DescribeEipResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeEipResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2213,29 +1729,11 @@ func (client *Client) DescribeEipResourcesWithOptions(request *DescribeEipResour
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEipResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # DescribeEipResources
-//
-// @param request - DescribeEipResourcesRequest
-//
-// @return DescribeEipResourcesResponse
-func (client *Client) DescribeEipResources(request *DescribeEipResourcesRequest) (_result *DescribeEipResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEipResourcesResponse{}
-	_body, _err := client.DescribeEipResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2248,7 +1746,7 @@ func (client *Client) DescribeEipResources(request *DescribeEipResourcesRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeGatewaySecretDetailsResponse
-func (client *Client) DescribeGatewaySecretDetailsWithOptions(request *DescribeGatewaySecretDetailsRequest, runtime *dara.RuntimeOptions) (_result *DescribeGatewaySecretDetailsResponse, _err error) {
+func (client *Client) DescribeGatewaySecretDetailsWithContext(ctx context.Context, request *DescribeGatewaySecretDetailsRequest, runtime *dara.RuntimeOptions) (_result *DescribeGatewaySecretDetailsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2279,29 +1777,11 @@ func (client *Client) DescribeGatewaySecretDetailsWithOptions(request *DescribeG
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeGatewaySecretDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the detailed information about a secret of a Service Mesh (ASM) gateway.
-//
-// @param request - DescribeGatewaySecretDetailsRequest
-//
-// @return DescribeGatewaySecretDetailsResponse
-func (client *Client) DescribeGatewaySecretDetails(request *DescribeGatewaySecretDetailsRequest) (_result *DescribeGatewaySecretDetailsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeGatewaySecretDetailsResponse{}
-	_body, _err := client.DescribeGatewaySecretDetailsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2314,7 +1794,7 @@ func (client *Client) DescribeGatewaySecretDetails(request *DescribeGatewaySecre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeGuestClusterAccessLogDashboardsResponse
-func (client *Client) DescribeGuestClusterAccessLogDashboardsWithOptions(request *DescribeGuestClusterAccessLogDashboardsRequest, runtime *dara.RuntimeOptions) (_result *DescribeGuestClusterAccessLogDashboardsResponse, _err error) {
+func (client *Client) DescribeGuestClusterAccessLogDashboardsWithContext(ctx context.Context, request *DescribeGuestClusterAccessLogDashboardsRequest, runtime *dara.RuntimeOptions) (_result *DescribeGuestClusterAccessLogDashboardsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2341,29 +1821,11 @@ func (client *Client) DescribeGuestClusterAccessLogDashboardsWithOptions(request
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeGuestClusterAccessLogDashboardsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the access log dashboards of a cluster on the data plane.
-//
-// @param request - DescribeGuestClusterAccessLogDashboardsRequest
-//
-// @return DescribeGuestClusterAccessLogDashboardsResponse
-func (client *Client) DescribeGuestClusterAccessLogDashboards(request *DescribeGuestClusterAccessLogDashboardsRequest) (_result *DescribeGuestClusterAccessLogDashboardsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeGuestClusterAccessLogDashboardsResponse{}
-	_body, _err := client.DescribeGuestClusterAccessLogDashboardsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2376,7 +1838,7 @@ func (client *Client) DescribeGuestClusterAccessLogDashboards(request *DescribeG
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeGuestClusterNamespacesResponse
-func (client *Client) DescribeGuestClusterNamespacesWithOptions(request *DescribeGuestClusterNamespacesRequest, runtime *dara.RuntimeOptions) (_result *DescribeGuestClusterNamespacesResponse, _err error) {
+func (client *Client) DescribeGuestClusterNamespacesWithContext(ctx context.Context, request *DescribeGuestClusterNamespacesRequest, runtime *dara.RuntimeOptions) (_result *DescribeGuestClusterNamespacesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2411,29 +1873,11 @@ func (client *Client) DescribeGuestClusterNamespacesWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeGuestClusterNamespacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of the namespaces of a Kubernetes cluster that is added to a Service Mesh (ASM) instance.
-//
-// @param request - DescribeGuestClusterNamespacesRequest
-//
-// @return DescribeGuestClusterNamespacesResponse
-func (client *Client) DescribeGuestClusterNamespaces(request *DescribeGuestClusterNamespacesRequest) (_result *DescribeGuestClusterNamespacesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeGuestClusterNamespacesResponse{}
-	_body, _err := client.DescribeGuestClusterNamespacesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2446,7 +1890,7 @@ func (client *Client) DescribeGuestClusterNamespaces(request *DescribeGuestClust
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeGuestClusterPodsResponse
-func (client *Client) DescribeGuestClusterPodsWithOptions(request *DescribeGuestClusterPodsRequest, runtime *dara.RuntimeOptions) (_result *DescribeGuestClusterPodsResponse, _err error) {
+func (client *Client) DescribeGuestClusterPodsWithContext(ctx context.Context, request *DescribeGuestClusterPodsRequest, runtime *dara.RuntimeOptions) (_result *DescribeGuestClusterPodsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2481,29 +1925,11 @@ func (client *Client) DescribeGuestClusterPodsWithOptions(request *DescribeGuest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeGuestClusterPodsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of the pods in a specified namespace of a Kubernetes cluster that is added to a Service Mesh (ASM) instance.
-//
-// @param request - DescribeGuestClusterPodsRequest
-//
-// @return DescribeGuestClusterPodsResponse
-func (client *Client) DescribeGuestClusterPods(request *DescribeGuestClusterPodsRequest) (_result *DescribeGuestClusterPodsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeGuestClusterPodsResponse{}
-	_body, _err := client.DescribeGuestClusterPodsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2516,7 +1942,7 @@ func (client *Client) DescribeGuestClusterPods(request *DescribeGuestClusterPods
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeImportedServicesDetailResponse
-func (client *Client) DescribeImportedServicesDetailWithOptions(request *DescribeImportedServicesDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeImportedServicesDetailResponse, _err error) {
+func (client *Client) DescribeImportedServicesDetailWithContext(ctx context.Context, request *DescribeImportedServicesDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeImportedServicesDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2551,29 +1977,11 @@ func (client *Client) DescribeImportedServicesDetailWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeImportedServicesDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of the imported services on a Service Mesh (ASM) gateway.
-//
-// @param request - DescribeImportedServicesDetailRequest
-//
-// @return DescribeImportedServicesDetailResponse
-func (client *Client) DescribeImportedServicesDetail(request *DescribeImportedServicesDetailRequest) (_result *DescribeImportedServicesDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeImportedServicesDetailResponse{}
-	_body, _err := client.DescribeImportedServicesDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2586,7 +1994,7 @@ func (client *Client) DescribeImportedServicesDetail(request *DescribeImportedSe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeIstioGatewayDomainsResponse
-func (client *Client) DescribeIstioGatewayDomainsWithOptions(request *DescribeIstioGatewayDomainsRequest, runtime *dara.RuntimeOptions) (_result *DescribeIstioGatewayDomainsResponse, _err error) {
+func (client *Client) DescribeIstioGatewayDomainsWithContext(ctx context.Context, request *DescribeIstioGatewayDomainsRequest, runtime *dara.RuntimeOptions) (_result *DescribeIstioGatewayDomainsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2625,29 +2033,11 @@ func (client *Client) DescribeIstioGatewayDomainsWithOptions(request *DescribeIs
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeIstioGatewayDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of the domain names that are exposed by a Service Mesh (ASM) gateway.
-//
-// @param request - DescribeIstioGatewayDomainsRequest
-//
-// @return DescribeIstioGatewayDomainsResponse
-func (client *Client) DescribeIstioGatewayDomains(request *DescribeIstioGatewayDomainsRequest) (_result *DescribeIstioGatewayDomainsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeIstioGatewayDomainsResponse{}
-	_body, _err := client.DescribeIstioGatewayDomainsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2660,7 +2050,7 @@ func (client *Client) DescribeIstioGatewayDomains(request *DescribeIstioGatewayD
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeIstioGatewayRouteDetailResponse
-func (client *Client) DescribeIstioGatewayRouteDetailWithOptions(request *DescribeIstioGatewayRouteDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeIstioGatewayRouteDetailResponse, _err error) {
+func (client *Client) DescribeIstioGatewayRouteDetailWithContext(ctx context.Context, request *DescribeIstioGatewayRouteDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeIstioGatewayRouteDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2695,29 +2085,11 @@ func (client *Client) DescribeIstioGatewayRouteDetailWithOptions(request *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeIstioGatewayRouteDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the detailed information about a routing rule of an Alibaba Cloud Service Mesh (ASM) gateway.
-//
-// @param request - DescribeIstioGatewayRouteDetailRequest
-//
-// @return DescribeIstioGatewayRouteDetailResponse
-func (client *Client) DescribeIstioGatewayRouteDetail(request *DescribeIstioGatewayRouteDetailRequest) (_result *DescribeIstioGatewayRouteDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeIstioGatewayRouteDetailResponse{}
-	_body, _err := client.DescribeIstioGatewayRouteDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2730,7 +2102,7 @@ func (client *Client) DescribeIstioGatewayRouteDetail(request *DescribeIstioGate
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeIstioGatewayRoutesResponse
-func (client *Client) DescribeIstioGatewayRoutesWithOptions(request *DescribeIstioGatewayRoutesRequest, runtime *dara.RuntimeOptions) (_result *DescribeIstioGatewayRoutesResponse, _err error) {
+func (client *Client) DescribeIstioGatewayRoutesWithContext(ctx context.Context, request *DescribeIstioGatewayRoutesRequest, runtime *dara.RuntimeOptions) (_result *DescribeIstioGatewayRoutesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2761,29 +2133,11 @@ func (client *Client) DescribeIstioGatewayRoutesWithOptions(request *DescribeIst
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeIstioGatewayRoutesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the routing rules for a Service Mesh (ASM) gateway.
-//
-// @param request - DescribeIstioGatewayRoutesRequest
-//
-// @return DescribeIstioGatewayRoutesResponse
-func (client *Client) DescribeIstioGatewayRoutes(request *DescribeIstioGatewayRoutesRequest) (_result *DescribeIstioGatewayRoutesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeIstioGatewayRoutesResponse{}
-	_body, _err := client.DescribeIstioGatewayRoutesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2796,7 +2150,7 @@ func (client *Client) DescribeIstioGatewayRoutes(request *DescribeIstioGatewayRo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeMeshMultiClusterNetworkResponse
-func (client *Client) DescribeMeshMultiClusterNetworkWithOptions(request *DescribeMeshMultiClusterNetworkRequest, runtime *dara.RuntimeOptions) (_result *DescribeMeshMultiClusterNetworkResponse, _err error) {
+func (client *Client) DescribeMeshMultiClusterNetworkWithContext(ctx context.Context, request *DescribeMeshMultiClusterNetworkRequest, runtime *dara.RuntimeOptions) (_result *DescribeMeshMultiClusterNetworkResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2823,76 +2177,11 @@ func (client *Client) DescribeMeshMultiClusterNetworkWithOptions(request *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeMeshMultiClusterNetworkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取ASM网格网络分区设置
-//
-// @param request - DescribeMeshMultiClusterNetworkRequest
-//
-// @return DescribeMeshMultiClusterNetworkResponse
-func (client *Client) DescribeMeshMultiClusterNetwork(request *DescribeMeshMultiClusterNetworkRequest) (_result *DescribeMeshMultiClusterNetworkResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeMeshMultiClusterNetworkResponse{}
-	_body, _err := client.DescribeMeshMultiClusterNetworkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries basic information about a Service Mesh (ASM) instance.
-//
-// @param request - DescribeMetadataRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeMetadataResponse
-func (client *Client) DescribeMetadataWithOptions(runtime *dara.RuntimeOptions) (_result *DescribeMetadataResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("DescribeMetadata"),
-		Version:     dara.String("2020-01-11"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DescribeMetadataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries basic information about a Service Mesh (ASM) instance.
-//
-// @return DescribeMetadataResponse
-func (client *Client) DescribeMetadata() (_result *DescribeMetadataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeMetadataResponse{}
-	_body, _err := client.DescribeMetadataWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2905,7 +2194,7 @@ func (client *Client) DescribeMetadata() (_result *DescribeMetadataResponse, _er
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNamespaceScopeSidecarConfigResponse
-func (client *Client) DescribeNamespaceScopeSidecarConfigWithOptions(request *DescribeNamespaceScopeSidecarConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeNamespaceScopeSidecarConfigResponse, _err error) {
+func (client *Client) DescribeNamespaceScopeSidecarConfigWithContext(ctx context.Context, request *DescribeNamespaceScopeSidecarConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeNamespaceScopeSidecarConfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2936,29 +2225,11 @@ func (client *Client) DescribeNamespaceScopeSidecarConfigWithOptions(request *De
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNamespaceScopeSidecarConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the configurations of sidecar proxies at the namespace level.
-//
-// @param request - DescribeNamespaceScopeSidecarConfigRequest
-//
-// @return DescribeNamespaceScopeSidecarConfigResponse
-func (client *Client) DescribeNamespaceScopeSidecarConfig(request *DescribeNamespaceScopeSidecarConfigRequest) (_result *DescribeNamespaceScopeSidecarConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNamespaceScopeSidecarConfigResponse{}
-	_body, _err := client.DescribeNamespaceScopeSidecarConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2971,7 +2242,7 @@ func (client *Client) DescribeNamespaceScopeSidecarConfig(request *DescribeNames
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNodesInstanceTypeResponse
-func (client *Client) DescribeNodesInstanceTypeWithOptions(request *DescribeNodesInstanceTypeRequest, runtime *dara.RuntimeOptions) (_result *DescribeNodesInstanceTypeResponse, _err error) {
+func (client *Client) DescribeNodesInstanceTypeWithContext(ctx context.Context, request *DescribeNodesInstanceTypeRequest, runtime *dara.RuntimeOptions) (_result *DescribeNodesInstanceTypeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2998,29 +2269,11 @@ func (client *Client) DescribeNodesInstanceTypeWithOptions(request *DescribeNode
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNodesInstanceTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the instance types of nodes on the data plane and whether the instance types support Multi-Buffer acceleration.
-//
-// @param request - DescribeNodesInstanceTypeRequest
-//
-// @return DescribeNodesInstanceTypeResponse
-func (client *Client) DescribeNodesInstanceType(request *DescribeNodesInstanceTypeRequest) (_result *DescribeNodesInstanceTypeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNodesInstanceTypeResponse{}
-	_body, _err := client.DescribeNodesInstanceTypeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3033,7 +2286,7 @@ func (client *Client) DescribeNodesInstanceType(request *DescribeNodesInstanceTy
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeReusableSlbResponse
-func (client *Client) DescribeReusableSlbWithOptions(request *DescribeReusableSlbRequest, runtime *dara.RuntimeOptions) (_result *DescribeReusableSlbResponse, _err error) {
+func (client *Client) DescribeReusableSlbWithContext(ctx context.Context, request *DescribeReusableSlbRequest, runtime *dara.RuntimeOptions) (_result *DescribeReusableSlbResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3072,29 +2325,11 @@ func (client *Client) DescribeReusableSlbWithOptions(request *DescribeReusableSl
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeReusableSlbResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Server Load Balancer (SLB) instances that can be reused.
-//
-// @param request - DescribeReusableSlbRequest
-//
-// @return DescribeReusableSlbResponse
-func (client *Client) DescribeReusableSlb(request *DescribeReusableSlbRequest) (_result *DescribeReusableSlbResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeReusableSlbResponse{}
-	_body, _err := client.DescribeReusableSlbWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3107,7 +2342,7 @@ func (client *Client) DescribeReusableSlb(request *DescribeReusableSlbRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeServiceMeshAdditionalStatusResponse
-func (client *Client) DescribeServiceMeshAdditionalStatusWithOptions(request *DescribeServiceMeshAdditionalStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceMeshAdditionalStatusResponse, _err error) {
+func (client *Client) DescribeServiceMeshAdditionalStatusWithContext(ctx context.Context, request *DescribeServiceMeshAdditionalStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceMeshAdditionalStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3138,29 +2373,11 @@ func (client *Client) DescribeServiceMeshAdditionalStatusWithOptions(request *De
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeServiceMeshAdditionalStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the check results of a Service Mesh (ASM) instance.
-//
-// @param request - DescribeServiceMeshAdditionalStatusRequest
-//
-// @return DescribeServiceMeshAdditionalStatusResponse
-func (client *Client) DescribeServiceMeshAdditionalStatus(request *DescribeServiceMeshAdditionalStatusRequest) (_result *DescribeServiceMeshAdditionalStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeServiceMeshAdditionalStatusResponse{}
-	_body, _err := client.DescribeServiceMeshAdditionalStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3173,7 +2390,7 @@ func (client *Client) DescribeServiceMeshAdditionalStatus(request *DescribeServi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeServiceMeshClustersResponse
-func (client *Client) DescribeServiceMeshClustersWithOptions(request *DescribeServiceMeshClustersRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceMeshClustersResponse, _err error) {
+func (client *Client) DescribeServiceMeshClustersWithContext(ctx context.Context, request *DescribeServiceMeshClustersRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceMeshClustersResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3210,29 +2427,11 @@ func (client *Client) DescribeServiceMeshClustersWithOptions(request *DescribeSe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeServiceMeshClustersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the clusters that can be added to a Service Mesh (ASM) instance.
-//
-// @param request - DescribeServiceMeshClustersRequest
-//
-// @return DescribeServiceMeshClustersResponse
-func (client *Client) DescribeServiceMeshClusters(request *DescribeServiceMeshClustersRequest) (_result *DescribeServiceMeshClustersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeServiceMeshClustersResponse{}
-	_body, _err := client.DescribeServiceMeshClustersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3245,7 +2444,7 @@ func (client *Client) DescribeServiceMeshClusters(request *DescribeServiceMeshCl
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeServiceMeshDetailResponse
-func (client *Client) DescribeServiceMeshDetailWithOptions(request *DescribeServiceMeshDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceMeshDetailResponse, _err error) {
+func (client *Client) DescribeServiceMeshDetailWithContext(ctx context.Context, request *DescribeServiceMeshDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceMeshDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3272,29 +2471,11 @@ func (client *Client) DescribeServiceMeshDetailWithOptions(request *DescribeServ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeServiceMeshDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a Service Mesh (ASM) instance.
-//
-// @param request - DescribeServiceMeshDetailRequest
-//
-// @return DescribeServiceMeshDetailResponse
-func (client *Client) DescribeServiceMeshDetail(request *DescribeServiceMeshDetailRequest) (_result *DescribeServiceMeshDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeServiceMeshDetailResponse{}
-	_body, _err := client.DescribeServiceMeshDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3307,7 +2488,7 @@ func (client *Client) DescribeServiceMeshDetail(request *DescribeServiceMeshDeta
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeServiceMeshKubeconfigResponse
-func (client *Client) DescribeServiceMeshKubeconfigWithOptions(request *DescribeServiceMeshKubeconfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceMeshKubeconfigResponse, _err error) {
+func (client *Client) DescribeServiceMeshKubeconfigWithContext(ctx context.Context, request *DescribeServiceMeshKubeconfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceMeshKubeconfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3338,29 +2519,11 @@ func (client *Client) DescribeServiceMeshKubeconfigWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeServiceMeshKubeconfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the content of the kubeconfig file of a Service Mesh (ASM) instance.
-//
-// @param request - DescribeServiceMeshKubeconfigRequest
-//
-// @return DescribeServiceMeshKubeconfigResponse
-func (client *Client) DescribeServiceMeshKubeconfig(request *DescribeServiceMeshKubeconfigRequest) (_result *DescribeServiceMeshKubeconfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeServiceMeshKubeconfigResponse{}
-	_body, _err := client.DescribeServiceMeshKubeconfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3373,7 +2536,7 @@ func (client *Client) DescribeServiceMeshKubeconfig(request *DescribeServiceMesh
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeServiceMeshLogsResponse
-func (client *Client) DescribeServiceMeshLogsWithOptions(request *DescribeServiceMeshLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceMeshLogsResponse, _err error) {
+func (client *Client) DescribeServiceMeshLogsWithContext(ctx context.Context, request *DescribeServiceMeshLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceMeshLogsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3400,29 +2563,11 @@ func (client *Client) DescribeServiceMeshLogsWithOptions(request *DescribeServic
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeServiceMeshLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the logs of a Service Mesh (ASM) instance.
-//
-// @param request - DescribeServiceMeshLogsRequest
-//
-// @return DescribeServiceMeshLogsResponse
-func (client *Client) DescribeServiceMeshLogs(request *DescribeServiceMeshLogsRequest) (_result *DescribeServiceMeshLogsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeServiceMeshLogsResponse{}
-	_body, _err := client.DescribeServiceMeshLogsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3435,7 +2580,7 @@ func (client *Client) DescribeServiceMeshLogs(request *DescribeServiceMeshLogsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeServiceMeshProxyStatusResponse
-func (client *Client) DescribeServiceMeshProxyStatusWithOptions(request *DescribeServiceMeshProxyStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceMeshProxyStatusResponse, _err error) {
+func (client *Client) DescribeServiceMeshProxyStatusWithContext(ctx context.Context, request *DescribeServiceMeshProxyStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceMeshProxyStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3462,29 +2607,11 @@ func (client *Client) DescribeServiceMeshProxyStatusWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeServiceMeshProxyStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the status of proxies on the data plane of a Service Mesh (ASM) instance.
-//
-// @param request - DescribeServiceMeshProxyStatusRequest
-//
-// @return DescribeServiceMeshProxyStatusResponse
-func (client *Client) DescribeServiceMeshProxyStatus(request *DescribeServiceMeshProxyStatusRequest) (_result *DescribeServiceMeshProxyStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeServiceMeshProxyStatusResponse{}
-	_body, _err := client.DescribeServiceMeshProxyStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3497,7 +2624,7 @@ func (client *Client) DescribeServiceMeshProxyStatus(request *DescribeServiceMes
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeServiceMeshUpgradeStatusResponse
-func (client *Client) DescribeServiceMeshUpgradeStatusWithOptions(request *DescribeServiceMeshUpgradeStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceMeshUpgradeStatusResponse, _err error) {
+func (client *Client) DescribeServiceMeshUpgradeStatusWithContext(ctx context.Context, request *DescribeServiceMeshUpgradeStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceMeshUpgradeStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3534,29 +2661,11 @@ func (client *Client) DescribeServiceMeshUpgradeStatusWithOptions(request *Descr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeServiceMeshUpgradeStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the upgrade details of a Service Mesh (ASM) instance and its ingress gateways.
-//
-// @param request - DescribeServiceMeshUpgradeStatusRequest
-//
-// @return DescribeServiceMeshUpgradeStatusResponse
-func (client *Client) DescribeServiceMeshUpgradeStatus(request *DescribeServiceMeshUpgradeStatusRequest) (_result *DescribeServiceMeshUpgradeStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeServiceMeshUpgradeStatusResponse{}
-	_body, _err := client.DescribeServiceMeshUpgradeStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3571,7 +2680,7 @@ func (client *Client) DescribeServiceMeshUpgradeStatus(request *DescribeServiceM
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeServiceMeshVMsResponse
-func (client *Client) DescribeServiceMeshVMsWithOptions(request *DescribeServiceMeshVMsRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceMeshVMsResponse, _err error) {
+func (client *Client) DescribeServiceMeshVMsWithContext(ctx context.Context, request *DescribeServiceMeshVMsRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceMeshVMsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3598,32 +2707,11 @@ func (client *Client) DescribeServiceMeshVMsWithOptions(request *DescribeService
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeServiceMeshVMsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeServiceMeshVMs is deprecated
-//
-// Summary:
-//
-// Queries the Elastic Compute Service (ECS) instances that reside in the same virtual private cloud (VPC) as a Service Mesh (ASM) instance.
-//
-// @param request - DescribeServiceMeshVMsRequest
-//
-// @return DescribeServiceMeshVMsResponse
-// Deprecated
-func (client *Client) DescribeServiceMeshVMs(request *DescribeServiceMeshVMsRequest) (_result *DescribeServiceMeshVMsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeServiceMeshVMsResponse{}
-	_body, _err := client.DescribeServiceMeshVMsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3636,7 +2724,7 @@ func (client *Client) DescribeServiceMeshVMs(request *DescribeServiceMeshVMsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeServiceMeshesResponse
-func (client *Client) DescribeServiceMeshesWithOptions(request *DescribeServiceMeshesRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceMeshesResponse, _err error) {
+func (client *Client) DescribeServiceMeshesWithContext(ctx context.Context, request *DescribeServiceMeshesRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceMeshesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3659,29 +2747,11 @@ func (client *Client) DescribeServiceMeshesWithOptions(request *DescribeServiceM
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeServiceMeshesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries ASM instances.
-//
-// @param request - DescribeServiceMeshesRequest
-//
-// @return DescribeServiceMeshesResponse
-func (client *Client) DescribeServiceMeshes(request *DescribeServiceMeshesRequest) (_result *DescribeServiceMeshesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeServiceMeshesResponse{}
-	_body, _err := client.DescribeServiceMeshesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3694,7 +2764,7 @@ func (client *Client) DescribeServiceMeshes(request *DescribeServiceMeshesReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeUpgradeVersionResponse
-func (client *Client) DescribeUpgradeVersionWithOptions(request *DescribeUpgradeVersionRequest, runtime *dara.RuntimeOptions) (_result *DescribeUpgradeVersionResponse, _err error) {
+func (client *Client) DescribeUpgradeVersionWithContext(ctx context.Context, request *DescribeUpgradeVersionRequest, runtime *dara.RuntimeOptions) (_result *DescribeUpgradeVersionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3721,29 +2791,11 @@ func (client *Client) DescribeUpgradeVersionWithOptions(request *DescribeUpgrade
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUpgradeVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the update status of a Service Mesh (ASM) instance.
-//
-// @param request - DescribeUpgradeVersionRequest
-//
-// @return DescribeUpgradeVersionResponse
-func (client *Client) DescribeUpgradeVersion(request *DescribeUpgradeVersionRequest) (_result *DescribeUpgradeVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeUpgradeVersionResponse{}
-	_body, _err := client.DescribeUpgradeVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3756,7 +2808,7 @@ func (client *Client) DescribeUpgradeVersion(request *DescribeUpgradeVersionRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeUserPermissionsResponse
-func (client *Client) DescribeUserPermissionsWithOptions(request *DescribeUserPermissionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserPermissionsResponse, _err error) {
+func (client *Client) DescribeUserPermissionsWithContext(ctx context.Context, request *DescribeUserPermissionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserPermissionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3783,29 +2835,11 @@ func (client *Client) DescribeUserPermissionsWithOptions(request *DescribeUserPe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUserPermissionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains role-based access control (RBAC) permissions.
-//
-// @param request - DescribeUserPermissionsRequest
-//
-// @return DescribeUserPermissionsResponse
-func (client *Client) DescribeUserPermissions(request *DescribeUserPermissionsRequest) (_result *DescribeUserPermissionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeUserPermissionsResponse{}
-	_body, _err := client.DescribeUserPermissionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3818,7 +2852,7 @@ func (client *Client) DescribeUserPermissions(request *DescribeUserPermissionsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeUsersWithPermissionsResponse
-func (client *Client) DescribeUsersWithPermissionsWithOptions(request *DescribeUsersWithPermissionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeUsersWithPermissionsResponse, _err error) {
+func (client *Client) DescribeUsersWithPermissionsWithContext(ctx context.Context, request *DescribeUsersWithPermissionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeUsersWithPermissionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3845,29 +2879,11 @@ func (client *Client) DescribeUsersWithPermissionsWithOptions(request *DescribeU
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUsersWithPermissionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the IDs of all RAM users or RAM roles to which a Role-based Access Control (RBAC) role is assigned.
-//
-// @param request - DescribeUsersWithPermissionsRequest
-//
-// @return DescribeUsersWithPermissionsResponse
-func (client *Client) DescribeUsersWithPermissions(request *DescribeUsersWithPermissionsRequest) (_result *DescribeUsersWithPermissionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeUsersWithPermissionsResponse{}
-	_body, _err := client.DescribeUsersWithPermissionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3882,7 +2898,7 @@ func (client *Client) DescribeUsersWithPermissions(request *DescribeUsersWithPer
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVMsInServiceMeshResponse
-func (client *Client) DescribeVMsInServiceMeshWithOptions(request *DescribeVMsInServiceMeshRequest, runtime *dara.RuntimeOptions) (_result *DescribeVMsInServiceMeshResponse, _err error) {
+func (client *Client) DescribeVMsInServiceMeshWithContext(ctx context.Context, request *DescribeVMsInServiceMeshRequest, runtime *dara.RuntimeOptions) (_result *DescribeVMsInServiceMeshResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3909,32 +2925,11 @@ func (client *Client) DescribeVMsInServiceMeshWithOptions(request *DescribeVMsIn
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVMsInServiceMeshResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeVMsInServiceMesh is deprecated
-//
-// Summary:
-//
-// Queries the virtual machines (VMs) that are added to a Service Mesh (ASM) instance.
-//
-// @param request - DescribeVMsInServiceMeshRequest
-//
-// @return DescribeVMsInServiceMeshResponse
-// Deprecated
-func (client *Client) DescribeVMsInServiceMesh(request *DescribeVMsInServiceMeshRequest) (_result *DescribeVMsInServiceMeshResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVMsInServiceMeshResponse{}
-	_body, _err := client.DescribeVMsInServiceMeshWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3947,7 +2942,7 @@ func (client *Client) DescribeVMsInServiceMesh(request *DescribeVMsInServiceMesh
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVSwitchesResponse
-func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVSwitchesResponse, _err error) {
+func (client *Client) DescribeVSwitchesWithContext(ctx context.Context, request *DescribeVSwitchesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVSwitchesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3978,76 +2973,11 @@ func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVSwitchesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of vSwitches that are deployed in a specified virtual private cloud (VPC) in a region.
-//
-// @param request - DescribeVSwitchesRequest
-//
-// @return DescribeVSwitchesResponse
-func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_result *DescribeVSwitchesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVSwitchesResponse{}
-	_body, _err := client.DescribeVSwitchesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries available Service Mesh (ASM) versions when you create an ASM instance.
-//
-// @param request - DescribeVersionsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeVersionsResponse
-func (client *Client) DescribeVersionsWithOptions(runtime *dara.RuntimeOptions) (_result *DescribeVersionsResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("DescribeVersions"),
-		Version:     dara.String("2020-01-11"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DescribeVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries available Service Mesh (ASM) versions when you create an ASM instance.
-//
-// @return DescribeVersionsResponse
-func (client *Client) DescribeVersions() (_result *DescribeVersionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVersionsResponse{}
-	_body, _err := client.DescribeVersionsWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4060,7 +2990,7 @@ func (client *Client) DescribeVersions() (_result *DescribeVersionsResponse, _er
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVpcsResponse
-func (client *Client) DescribeVpcsWithOptions(request *DescribeVpcsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcsResponse, _err error) {
+func (client *Client) DescribeVpcsWithContext(ctx context.Context, request *DescribeVpcsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4087,29 +3017,11 @@ func (client *Client) DescribeVpcsWithOptions(request *DescribeVpcsRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVpcsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the virtual private clouds (VPCs) that are available in a specified region.
-//
-// @param request - DescribeVpcsRequest
-//
-// @return DescribeVpcsResponse
-func (client *Client) DescribeVpcs(request *DescribeVpcsRequest) (_result *DescribeVpcsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVpcsResponse{}
-	_body, _err := client.DescribeVpcsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4122,7 +3034,7 @@ func (client *Client) DescribeVpcs(request *DescribeVpcsRequest) (_result *Descr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCaCertResponse
-func (client *Client) GetCaCertWithOptions(request *GetCaCertRequest, runtime *dara.RuntimeOptions) (_result *GetCaCertResponse, _err error) {
+func (client *Client) GetCaCertWithContext(ctx context.Context, request *GetCaCertRequest, runtime *dara.RuntimeOptions) (_result *GetCaCertResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4149,29 +3061,11 @@ func (client *Client) GetCaCertWithOptions(request *GetCaCertRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCaCertResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains a certificate issued by a certificate authority (CA).
-//
-// @param request - GetCaCertRequest
-//
-// @return GetCaCertResponse
-func (client *Client) GetCaCert(request *GetCaCertRequest) (_result *GetCaCertResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetCaCertResponse{}
-	_body, _err := client.GetCaCertWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4184,7 +3078,7 @@ func (client *Client) GetCaCert(request *GetCaCertRequest) (_result *GetCaCertRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDeploymentBySelectorResponse
-func (client *Client) GetDeploymentBySelectorWithOptions(tmpReq *GetDeploymentBySelectorRequest, runtime *dara.RuntimeOptions) (_result *GetDeploymentBySelectorResponse, _err error) {
+func (client *Client) GetDeploymentBySelectorWithContext(ctx context.Context, tmpReq *GetDeploymentBySelectorRequest, runtime *dara.RuntimeOptions) (_result *GetDeploymentBySelectorResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -4237,29 +3131,11 @@ func (client *Client) GetDeploymentBySelectorWithOptions(tmpReq *GetDeploymentBy
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDeploymentBySelectorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of workloads specified by a label selector.
-//
-// @param request - GetDeploymentBySelectorRequest
-//
-// @return GetDeploymentBySelectorResponse
-func (client *Client) GetDeploymentBySelector(request *GetDeploymentBySelectorRequest) (_result *GetDeploymentBySelectorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetDeploymentBySelectorResponse{}
-	_body, _err := client.GetDeploymentBySelectorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4272,7 +3148,7 @@ func (client *Client) GetDeploymentBySelector(request *GetDeploymentBySelectorRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetGrafanaDashboardUrlResponse
-func (client *Client) GetGrafanaDashboardUrlWithOptions(request *GetGrafanaDashboardUrlRequest, runtime *dara.RuntimeOptions) (_result *GetGrafanaDashboardUrlResponse, _err error) {
+func (client *Client) GetGrafanaDashboardUrlWithContext(ctx context.Context, request *GetGrafanaDashboardUrlRequest, runtime *dara.RuntimeOptions) (_result *GetGrafanaDashboardUrlResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4307,29 +3183,11 @@ func (client *Client) GetGrafanaDashboardUrlWithOptions(request *GetGrafanaDashb
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetGrafanaDashboardUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Grafana dashboard URL from Application Real-Time Monitoring Service (ARMS).
-//
-// @param request - GetGrafanaDashboardUrlRequest
-//
-// @return GetGrafanaDashboardUrlResponse
-func (client *Client) GetGrafanaDashboardUrl(request *GetGrafanaDashboardUrlRequest) (_result *GetGrafanaDashboardUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetGrafanaDashboardUrlResponse{}
-	_body, _err := client.GetGrafanaDashboardUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4342,7 +3200,7 @@ func (client *Client) GetGrafanaDashboardUrl(request *GetGrafanaDashboardUrlRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRegisteredServiceEndpointsResponse
-func (client *Client) GetRegisteredServiceEndpointsWithOptions(request *GetRegisteredServiceEndpointsRequest, runtime *dara.RuntimeOptions) (_result *GetRegisteredServiceEndpointsResponse, _err error) {
+func (client *Client) GetRegisteredServiceEndpointsWithContext(ctx context.Context, request *GetRegisteredServiceEndpointsRequest, runtime *dara.RuntimeOptions) (_result *GetRegisteredServiceEndpointsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4385,29 +3243,11 @@ func (client *Client) GetRegisteredServiceEndpointsWithOptions(request *GetRegis
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRegisteredServiceEndpointsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 描述ServiceEndpoints信息
-//
-// @param request - GetRegisteredServiceEndpointsRequest
-//
-// @return GetRegisteredServiceEndpointsResponse
-func (client *Client) GetRegisteredServiceEndpoints(request *GetRegisteredServiceEndpointsRequest) (_result *GetRegisteredServiceEndpointsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRegisteredServiceEndpointsResponse{}
-	_body, _err := client.GetRegisteredServiceEndpointsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4416,7 +3256,7 @@ func (client *Client) GetRegisteredServiceEndpoints(request *GetRegisteredServic
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRegisteredServiceNamespacesResponse
-func (client *Client) GetRegisteredServiceNamespacesWithOptions(request *GetRegisteredServiceNamespacesRequest, runtime *dara.RuntimeOptions) (_result *GetRegisteredServiceNamespacesResponse, _err error) {
+func (client *Client) GetRegisteredServiceNamespacesWithContext(ctx context.Context, request *GetRegisteredServiceNamespacesRequest, runtime *dara.RuntimeOptions) (_result *GetRegisteredServiceNamespacesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4443,25 +3283,11 @@ func (client *Client) GetRegisteredServiceNamespacesWithOptions(request *GetRegi
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRegisteredServiceNamespacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetRegisteredServiceNamespacesRequest
-//
-// @return GetRegisteredServiceNamespacesResponse
-func (client *Client) GetRegisteredServiceNamespaces(request *GetRegisteredServiceNamespacesRequest) (_result *GetRegisteredServiceNamespacesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRegisteredServiceNamespacesResponse{}
-	_body, _err := client.GetRegisteredServiceNamespacesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4474,7 +3300,7 @@ func (client *Client) GetRegisteredServiceNamespaces(request *GetRegisteredServi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSwimLaneDetailResponse
-func (client *Client) GetSwimLaneDetailWithOptions(request *GetSwimLaneDetailRequest, runtime *dara.RuntimeOptions) (_result *GetSwimLaneDetailResponse, _err error) {
+func (client *Client) GetSwimLaneDetailWithContext(ctx context.Context, request *GetSwimLaneDetailRequest, runtime *dara.RuntimeOptions) (_result *GetSwimLaneDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4509,29 +3335,11 @@ func (client *Client) GetSwimLaneDetailWithOptions(request *GetSwimLaneDetailReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSwimLaneDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries detailed information about a lane.
-//
-// @param request - GetSwimLaneDetailRequest
-//
-// @return GetSwimLaneDetailResponse
-func (client *Client) GetSwimLaneDetail(request *GetSwimLaneDetailRequest) (_result *GetSwimLaneDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSwimLaneDetailResponse{}
-	_body, _err := client.GetSwimLaneDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4544,7 +3352,7 @@ func (client *Client) GetSwimLaneDetail(request *GetSwimLaneDetailRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSwimLaneGroupListResponse
-func (client *Client) GetSwimLaneGroupListWithOptions(request *GetSwimLaneGroupListRequest, runtime *dara.RuntimeOptions) (_result *GetSwimLaneGroupListResponse, _err error) {
+func (client *Client) GetSwimLaneGroupListWithContext(ctx context.Context, request *GetSwimLaneGroupListRequest, runtime *dara.RuntimeOptions) (_result *GetSwimLaneGroupListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4571,29 +3379,11 @@ func (client *Client) GetSwimLaneGroupListWithOptions(request *GetSwimLaneGroupL
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSwimLaneGroupListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of all lane groups in an Alibaba Cloud Service Mesh (ASM) instance.
-//
-// @param request - GetSwimLaneGroupListRequest
-//
-// @return GetSwimLaneGroupListResponse
-func (client *Client) GetSwimLaneGroupList(request *GetSwimLaneGroupListRequest) (_result *GetSwimLaneGroupListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSwimLaneGroupListResponse{}
-	_body, _err := client.GetSwimLaneGroupListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4606,7 +3396,7 @@ func (client *Client) GetSwimLaneGroupList(request *GetSwimLaneGroupListRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSwimLaneListResponse
-func (client *Client) GetSwimLaneListWithOptions(request *GetSwimLaneListRequest, runtime *dara.RuntimeOptions) (_result *GetSwimLaneListResponse, _err error) {
+func (client *Client) GetSwimLaneListWithContext(ctx context.Context, request *GetSwimLaneListRequest, runtime *dara.RuntimeOptions) (_result *GetSwimLaneListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4637,29 +3427,11 @@ func (client *Client) GetSwimLaneListWithOptions(request *GetSwimLaneListRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSwimLaneListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of all the lanes in a lane group.
-//
-// @param request - GetSwimLaneListRequest
-//
-// @return GetSwimLaneListResponse
-func (client *Client) GetSwimLaneList(request *GetSwimLaneListRequest) (_result *GetSwimLaneListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSwimLaneListResponse{}
-	_body, _err := client.GetSwimLaneListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4674,7 +3446,7 @@ func (client *Client) GetSwimLaneList(request *GetSwimLaneListRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVmAppMeshInfoResponse
-func (client *Client) GetVmAppMeshInfoWithOptions(request *GetVmAppMeshInfoRequest, runtime *dara.RuntimeOptions) (_result *GetVmAppMeshInfoResponse, _err error) {
+func (client *Client) GetVmAppMeshInfoWithContext(ctx context.Context, request *GetVmAppMeshInfoRequest, runtime *dara.RuntimeOptions) (_result *GetVmAppMeshInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4697,32 +3469,11 @@ func (client *Client) GetVmAppMeshInfoWithOptions(request *GetVmAppMeshInfoReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVmAppMeshInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI GetVmAppMeshInfo is deprecated
-//
-// Summary:
-//
-// Queries the information about VMs that are added to a Service Mesh (ASM) instance.
-//
-// @param request - GetVmAppMeshInfoRequest
-//
-// @return GetVmAppMeshInfoResponse
-// Deprecated
-func (client *Client) GetVmAppMeshInfo(request *GetVmAppMeshInfoRequest) (_result *GetVmAppMeshInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVmAppMeshInfoResponse{}
-	_body, _err := client.GetVmAppMeshInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4737,7 +3488,7 @@ func (client *Client) GetVmAppMeshInfo(request *GetVmAppMeshInfoRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVmMetaResponse
-func (client *Client) GetVmMetaWithOptions(request *GetVmMetaRequest, runtime *dara.RuntimeOptions) (_result *GetVmMetaResponse, _err error) {
+func (client *Client) GetVmMetaWithContext(ctx context.Context, request *GetVmMetaRequest, runtime *dara.RuntimeOptions) (_result *GetVmMetaResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4760,32 +3511,11 @@ func (client *Client) GetVmMetaWithOptions(request *GetVmMetaRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVmMetaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI GetVmMeta is deprecated
-//
-// Summary:
-//
-// Queries the metadata that is required to add a non-containerized application to a Service Mesh (ASM) instance.
-//
-// @param request - GetVmMetaRequest
-//
-// @return GetVmMetaResponse
-// Deprecated
-func (client *Client) GetVmMeta(request *GetVmMetaRequest) (_result *GetVmMetaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVmMetaResponse{}
-	_body, _err := client.GetVmMetaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4798,7 +3528,7 @@ func (client *Client) GetVmMeta(request *GetVmMetaRequest) (_result *GetVmMetaRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GrantUserPermissionsResponse
-func (client *Client) GrantUserPermissionsWithOptions(tmpReq *GrantUserPermissionsRequest, runtime *dara.RuntimeOptions) (_result *GrantUserPermissionsResponse, _err error) {
+func (client *Client) GrantUserPermissionsWithContext(ctx context.Context, tmpReq *GrantUserPermissionsRequest, runtime *dara.RuntimeOptions) (_result *GrantUserPermissionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -4839,29 +3569,11 @@ func (client *Client) GrantUserPermissionsWithOptions(tmpReq *GrantUserPermissio
 		BodyType:    dara.String("json"),
 	}
 	_result = &GrantUserPermissionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Grants permissions to a Resource Access Management (RAM) user.
-//
-// @param request - GrantUserPermissionsRequest
-//
-// @return GrantUserPermissionsResponse
-func (client *Client) GrantUserPermissions(request *GrantUserPermissionsRequest) (_result *GrantUserPermissionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GrantUserPermissionsResponse{}
-	_body, _err := client.GrantUserPermissionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4874,7 +3586,7 @@ func (client *Client) GrantUserPermissions(request *GrantUserPermissionsRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListServiceAccountsResponse
-func (client *Client) ListServiceAccountsWithOptions(request *ListServiceAccountsRequest, runtime *dara.RuntimeOptions) (_result *ListServiceAccountsResponse, _err error) {
+func (client *Client) ListServiceAccountsWithContext(ctx context.Context, request *ListServiceAccountsRequest, runtime *dara.RuntimeOptions) (_result *ListServiceAccountsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4909,29 +3621,11 @@ func (client *Client) ListServiceAccountsWithOptions(request *ListServiceAccount
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListServiceAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 列举所有服务账号
-//
-// @param request - ListServiceAccountsRequest
-//
-// @return ListServiceAccountsResponse
-func (client *Client) ListServiceAccounts(request *ListServiceAccountsRequest) (_result *ListServiceAccountsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListServiceAccountsResponse{}
-	_body, _err := client.ListServiceAccountsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4944,7 +3638,7 @@ func (client *Client) ListServiceAccounts(request *ListServiceAccountsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagResourcesResponse
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4987,29 +3681,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries user tags on a Service Mesh (ASM) instance.
-//
-// @param request - ListTagResourcesRequest
-//
-// @return ListTagResourcesResponse
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5022,7 +3698,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListWaypointsResponse
-func (client *Client) ListWaypointsWithOptions(request *ListWaypointsRequest, runtime *dara.RuntimeOptions) (_result *ListWaypointsResponse, _err error) {
+func (client *Client) ListWaypointsWithContext(ctx context.Context, request *ListWaypointsRequest, runtime *dara.RuntimeOptions) (_result *ListWaypointsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5069,29 +3745,11 @@ func (client *Client) ListWaypointsWithOptions(request *ListWaypointsRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListWaypointsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the configurations of all waypoint proxies in a namespace of a cluster on the data plane.
-//
-// @param request - ListWaypointsRequest
-//
-// @return ListWaypointsResponse
-func (client *Client) ListWaypoints(request *ListWaypointsRequest) (_result *ListWaypointsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListWaypointsResponse{}
-	_body, _err := client.ListWaypointsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5104,7 +3762,7 @@ func (client *Client) ListWaypoints(request *ListWaypointsRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyApiServerEipResourceResponse
-func (client *Client) ModifyApiServerEipResourceWithOptions(request *ModifyApiServerEipResourceRequest, runtime *dara.RuntimeOptions) (_result *ModifyApiServerEipResourceResponse, _err error) {
+func (client *Client) ModifyApiServerEipResourceWithContext(ctx context.Context, request *ModifyApiServerEipResourceRequest, runtime *dara.RuntimeOptions) (_result *ModifyApiServerEipResourceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5139,29 +3797,11 @@ func (client *Client) ModifyApiServerEipResourceWithOptions(request *ModifyApiSe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyApiServerEipResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # ModifyApiServerEipResource
-//
-// @param request - ModifyApiServerEipResourceRequest
-//
-// @return ModifyApiServerEipResourceResponse
-func (client *Client) ModifyApiServerEipResource(request *ModifyApiServerEipResourceRequest) (_result *ModifyApiServerEipResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyApiServerEipResourceResponse{}
-	_body, _err := client.ModifyApiServerEipResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5174,7 +3814,7 @@ func (client *Client) ModifyApiServerEipResource(request *ModifyApiServerEipReso
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyPilotEipResourceResponse
-func (client *Client) ModifyPilotEipResourceWithOptions(request *ModifyPilotEipResourceRequest, runtime *dara.RuntimeOptions) (_result *ModifyPilotEipResourceResponse, _err error) {
+func (client *Client) ModifyPilotEipResourceWithContext(ctx context.Context, request *ModifyPilotEipResourceRequest, runtime *dara.RuntimeOptions) (_result *ModifyPilotEipResourceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5213,29 +3853,11 @@ func (client *Client) ModifyPilotEipResourceWithOptions(request *ModifyPilotEipR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyPilotEipResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # ModifyPilotEipResource
-//
-// @param request - ModifyPilotEipResourceRequest
-//
-// @return ModifyPilotEipResourceResponse
-func (client *Client) ModifyPilotEipResource(request *ModifyPilotEipResourceRequest) (_result *ModifyPilotEipResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyPilotEipResourceResponse{}
-	_body, _err := client.ModifyPilotEipResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5248,7 +3870,7 @@ func (client *Client) ModifyPilotEipResource(request *ModifyPilotEipResourceRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyServiceMeshNameResponse
-func (client *Client) ModifyServiceMeshNameWithOptions(request *ModifyServiceMeshNameRequest, runtime *dara.RuntimeOptions) (_result *ModifyServiceMeshNameResponse, _err error) {
+func (client *Client) ModifyServiceMeshNameWithContext(ctx context.Context, request *ModifyServiceMeshNameRequest, runtime *dara.RuntimeOptions) (_result *ModifyServiceMeshNameResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5279,29 +3901,11 @@ func (client *Client) ModifyServiceMeshNameWithOptions(request *ModifyServiceMes
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyServiceMeshNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name of a Service Mesh (ASM) instance.
-//
-// @param request - ModifyServiceMeshNameRequest
-//
-// @return ModifyServiceMeshNameResponse
-func (client *Client) ModifyServiceMeshName(request *ModifyServiceMeshNameRequest) (_result *ModifyServiceMeshNameResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyServiceMeshNameResponse{}
-	_body, _err := client.ModifyServiceMeshNameWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5318,7 +3922,7 @@ func (client *Client) ModifyServiceMeshName(request *ModifyServiceMeshNameReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReActivateAuditResponse
-func (client *Client) ReActivateAuditWithOptions(request *ReActivateAuditRequest, runtime *dara.RuntimeOptions) (_result *ReActivateAuditResponse, _err error) {
+func (client *Client) ReActivateAuditWithContext(ctx context.Context, request *ReActivateAuditRequest, runtime *dara.RuntimeOptions) (_result *ReActivateAuditResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5349,33 +3953,11 @@ func (client *Client) ReActivateAuditWithOptions(request *ReActivateAuditRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReActivateAuditResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Recreates a project that is used to store audit logs. After mesh audit is enabled, if you delete the log project that stores audit logs by mistake, you can recreate a project for storing audit logs.
-//
-// Description:
-//
-// Before you call this operation, make sure that you understand the billing methods of Simple Log Service. For more information, visit the [pricing page](https://www.alibabacloud.com/zh/pricing-calculator?_p_lc=1\\&spm=a2796.7960336.3034855210.1.44e6b91aaSp2M7#/commodity/vm_intl).
-//
-// @param request - ReActivateAuditRequest
-//
-// @return ReActivateAuditResponse
-func (client *Client) ReActivateAudit(request *ReActivateAuditRequest) (_result *ReActivateAuditResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReActivateAuditResponse{}
-	_body, _err := client.ReActivateAuditWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5388,7 +3970,7 @@ func (client *Client) ReActivateAudit(request *ReActivateAuditRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveClusterFromServiceMeshResponse
-func (client *Client) RemoveClusterFromServiceMeshWithOptions(request *RemoveClusterFromServiceMeshRequest, runtime *dara.RuntimeOptions) (_result *RemoveClusterFromServiceMeshResponse, _err error) {
+func (client *Client) RemoveClusterFromServiceMeshWithContext(ctx context.Context, request *RemoveClusterFromServiceMeshRequest, runtime *dara.RuntimeOptions) (_result *RemoveClusterFromServiceMeshResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5423,29 +4005,11 @@ func (client *Client) RemoveClusterFromServiceMeshWithOptions(request *RemoveClu
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveClusterFromServiceMeshResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes a cluster from a Service Mesh (ASM) instance.
-//
-// @param request - RemoveClusterFromServiceMeshRequest
-//
-// @return RemoveClusterFromServiceMeshResponse
-func (client *Client) RemoveClusterFromServiceMesh(request *RemoveClusterFromServiceMeshRequest) (_result *RemoveClusterFromServiceMeshResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveClusterFromServiceMeshResponse{}
-	_body, _err := client.RemoveClusterFromServiceMeshWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5460,7 +4024,7 @@ func (client *Client) RemoveClusterFromServiceMesh(request *RemoveClusterFromSer
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveVMFromServiceMeshResponse
-func (client *Client) RemoveVMFromServiceMeshWithOptions(request *RemoveVMFromServiceMeshRequest, runtime *dara.RuntimeOptions) (_result *RemoveVMFromServiceMeshResponse, _err error) {
+func (client *Client) RemoveVMFromServiceMeshWithContext(ctx context.Context, request *RemoveVMFromServiceMeshRequest, runtime *dara.RuntimeOptions) (_result *RemoveVMFromServiceMeshResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5491,32 +4055,11 @@ func (client *Client) RemoveVMFromServiceMeshWithOptions(request *RemoveVMFromSe
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveVMFromServiceMeshResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI RemoveVMFromServiceMesh is deprecated
-//
-// Summary:
-//
-// Removes a virtual machine (VM) from a Service Mesh (ASM) instance.
-//
-// @param request - RemoveVMFromServiceMeshRequest
-//
-// @return RemoveVMFromServiceMeshResponse
-// Deprecated
-func (client *Client) RemoveVMFromServiceMesh(request *RemoveVMFromServiceMeshRequest) (_result *RemoveVMFromServiceMeshResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveVMFromServiceMeshResponse{}
-	_body, _err := client.RemoveVMFromServiceMeshWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5529,7 +4072,7 @@ func (client *Client) RemoveVMFromServiceMesh(request *RemoveVMFromServiceMeshRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RevokeKubeconfigResponse
-func (client *Client) RevokeKubeconfigWithOptions(request *RevokeKubeconfigRequest, runtime *dara.RuntimeOptions) (_result *RevokeKubeconfigResponse, _err error) {
+func (client *Client) RevokeKubeconfigWithContext(ctx context.Context, request *RevokeKubeconfigRequest, runtime *dara.RuntimeOptions) (_result *RevokeKubeconfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5560,29 +4103,11 @@ func (client *Client) RevokeKubeconfigWithOptions(request *RevokeKubeconfigReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &RevokeKubeconfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Revokes the kubeconfig file of a Service Mesh (ASM) instance and generates a new kubeconfig file.
-//
-// @param request - RevokeKubeconfigRequest
-//
-// @return RevokeKubeconfigResponse
-func (client *Client) RevokeKubeconfig(request *RevokeKubeconfigRequest) (_result *RevokeKubeconfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RevokeKubeconfigResponse{}
-	_body, _err := client.RevokeKubeconfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5595,7 +4120,7 @@ func (client *Client) RevokeKubeconfig(request *RevokeKubeconfigRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5634,29 +4159,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds or modifies user tags on a resource.
-//
-// @param request - TagResourcesRequest
-//
-// @return TagResourcesResponse
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5669,7 +4176,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagResourcesResponse
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5712,29 +4219,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes user tags on a Service Mesh (ASM) instance.
-//
-// @param request - UntagResourcesRequest
-//
-// @return UntagResourcesResponse
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5747,7 +4236,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateASMGatewayResponse
-func (client *Client) UpdateASMGatewayWithOptions(request *UpdateASMGatewayRequest, runtime *dara.RuntimeOptions) (_result *UpdateASMGatewayResponse, _err error) {
+func (client *Client) UpdateASMGatewayWithContext(ctx context.Context, request *UpdateASMGatewayRequest, runtime *dara.RuntimeOptions) (_result *UpdateASMGatewayResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5782,29 +4271,11 @@ func (client *Client) UpdateASMGatewayWithOptions(request *UpdateASMGatewayReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateASMGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a Service Mesh (ASM) gateway.
-//
-// @param request - UpdateASMGatewayRequest
-//
-// @return UpdateASMGatewayResponse
-func (client *Client) UpdateASMGateway(request *UpdateASMGatewayRequest) (_result *UpdateASMGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateASMGatewayResponse{}
-	_body, _err := client.UpdateASMGatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5817,7 +4288,7 @@ func (client *Client) UpdateASMGateway(request *UpdateASMGatewayRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateASMGatewayImportedServicesResponse
-func (client *Client) UpdateASMGatewayImportedServicesWithOptions(request *UpdateASMGatewayImportedServicesRequest, runtime *dara.RuntimeOptions) (_result *UpdateASMGatewayImportedServicesResponse, _err error) {
+func (client *Client) UpdateASMGatewayImportedServicesWithContext(ctx context.Context, request *UpdateASMGatewayImportedServicesRequest, runtime *dara.RuntimeOptions) (_result *UpdateASMGatewayImportedServicesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5856,29 +4327,11 @@ func (client *Client) UpdateASMGatewayImportedServicesWithOptions(request *Updat
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateASMGatewayImportedServicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates imported services on a Service Mesh (ASM) gateway to import or delete upstream services associated with the gateway.
-//
-// @param request - UpdateASMGatewayImportedServicesRequest
-//
-// @return UpdateASMGatewayImportedServicesResponse
-func (client *Client) UpdateASMGatewayImportedServices(request *UpdateASMGatewayImportedServicesRequest) (_result *UpdateASMGatewayImportedServicesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateASMGatewayImportedServicesResponse{}
-	_body, _err := client.UpdateASMGatewayImportedServicesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5891,7 +4344,7 @@ func (client *Client) UpdateASMGatewayImportedServices(request *UpdateASMGateway
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateASMNamespaceFromGuestClusterResponse
-func (client *Client) UpdateASMNamespaceFromGuestClusterWithOptions(request *UpdateASMNamespaceFromGuestClusterRequest, runtime *dara.RuntimeOptions) (_result *UpdateASMNamespaceFromGuestClusterResponse, _err error) {
+func (client *Client) UpdateASMNamespaceFromGuestClusterWithContext(ctx context.Context, request *UpdateASMNamespaceFromGuestClusterRequest, runtime *dara.RuntimeOptions) (_result *UpdateASMNamespaceFromGuestClusterResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5922,29 +4375,11 @@ func (client *Client) UpdateASMNamespaceFromGuestClusterWithOptions(request *Upd
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateASMNamespaceFromGuestClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Synchronizes namespaces of a Kubernetes cluster that is added to a Service Mesh (ASM) instance.
-//
-// @param request - UpdateASMNamespaceFromGuestClusterRequest
-//
-// @return UpdateASMNamespaceFromGuestClusterResponse
-func (client *Client) UpdateASMNamespaceFromGuestCluster(request *UpdateASMNamespaceFromGuestClusterRequest) (_result *UpdateASMNamespaceFromGuestClusterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateASMNamespaceFromGuestClusterResponse{}
-	_body, _err := client.UpdateASMNamespaceFromGuestClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5957,7 +4392,7 @@ func (client *Client) UpdateASMNamespaceFromGuestCluster(request *UpdateASMNames
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateControlPlaneLogConfigResponse
-func (client *Client) UpdateControlPlaneLogConfigWithOptions(request *UpdateControlPlaneLogConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateControlPlaneLogConfigResponse, _err error) {
+func (client *Client) UpdateControlPlaneLogConfigWithContext(ctx context.Context, request *UpdateControlPlaneLogConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateControlPlaneLogConfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5996,29 +4431,11 @@ func (client *Client) UpdateControlPlaneLogConfigWithOptions(request *UpdateCont
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateControlPlaneLogConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration for collecting control plane logs.
-//
-// @param request - UpdateControlPlaneLogConfigRequest
-//
-// @return UpdateControlPlaneLogConfigResponse
-func (client *Client) UpdateControlPlaneLogConfig(request *UpdateControlPlaneLogConfigRequest) (_result *UpdateControlPlaneLogConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateControlPlaneLogConfigResponse{}
-	_body, _err := client.UpdateControlPlaneLogConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6031,7 +4448,7 @@ func (client *Client) UpdateControlPlaneLogConfig(request *UpdateControlPlaneLog
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateGuestClusterConfigResponse
-func (client *Client) UpdateGuestClusterConfigWithOptions(request *UpdateGuestClusterConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateGuestClusterConfigResponse, _err error) {
+func (client *Client) UpdateGuestClusterConfigWithContext(ctx context.Context, request *UpdateGuestClusterConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateGuestClusterConfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6066,29 +4483,11 @@ func (client *Client) UpdateGuestClusterConfigWithOptions(request *UpdateGuestCl
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateGuestClusterConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新Guest Cluster配置
-//
-// @param request - UpdateGuestClusterConfigRequest
-//
-// @return UpdateGuestClusterConfigResponse
-func (client *Client) UpdateGuestClusterConfig(request *UpdateGuestClusterConfigRequest) (_result *UpdateGuestClusterConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateGuestClusterConfigResponse{}
-	_body, _err := client.UpdateGuestClusterConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6101,7 +4500,7 @@ func (client *Client) UpdateGuestClusterConfig(request *UpdateGuestClusterConfig
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateIstioGatewayRoutesResponse
-func (client *Client) UpdateIstioGatewayRoutesWithOptions(tmpReq *UpdateIstioGatewayRoutesRequest, runtime *dara.RuntimeOptions) (_result *UpdateIstioGatewayRoutesResponse, _err error) {
+func (client *Client) UpdateIstioGatewayRoutesWithContext(ctx context.Context, tmpReq *UpdateIstioGatewayRoutesRequest, runtime *dara.RuntimeOptions) (_result *UpdateIstioGatewayRoutesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -6154,29 +4553,11 @@ func (client *Client) UpdateIstioGatewayRoutesWithOptions(tmpReq *UpdateIstioGat
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateIstioGatewayRoutesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a routing rule for a Service Mesh (ASM) gateway.
-//
-// @param request - UpdateIstioGatewayRoutesRequest
-//
-// @return UpdateIstioGatewayRoutesResponse
-func (client *Client) UpdateIstioGatewayRoutes(request *UpdateIstioGatewayRoutesRequest) (_result *UpdateIstioGatewayRoutesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateIstioGatewayRoutesResponse{}
-	_body, _err := client.UpdateIstioGatewayRoutesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6185,7 +4566,7 @@ func (client *Client) UpdateIstioGatewayRoutes(request *UpdateIstioGatewayRoutes
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateIstioInjectionConfigResponse
-func (client *Client) UpdateIstioInjectionConfigWithOptions(request *UpdateIstioInjectionConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateIstioInjectionConfigResponse, _err error) {
+func (client *Client) UpdateIstioInjectionConfigWithContext(ctx context.Context, request *UpdateIstioInjectionConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateIstioInjectionConfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6232,25 +4613,11 @@ func (client *Client) UpdateIstioInjectionConfigWithOptions(request *UpdateIstio
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateIstioInjectionConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - UpdateIstioInjectionConfigRequest
-//
-// @return UpdateIstioInjectionConfigResponse
-func (client *Client) UpdateIstioInjectionConfig(request *UpdateIstioInjectionConfigRequest) (_result *UpdateIstioInjectionConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateIstioInjectionConfigResponse{}
-	_body, _err := client.UpdateIstioInjectionConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6263,7 +4630,7 @@ func (client *Client) UpdateIstioInjectionConfig(request *UpdateIstioInjectionCo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateIstioRouteAdditionalStatusResponse
-func (client *Client) UpdateIstioRouteAdditionalStatusWithOptions(request *UpdateIstioRouteAdditionalStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateIstioRouteAdditionalStatusResponse, _err error) {
+func (client *Client) UpdateIstioRouteAdditionalStatusWithContext(ctx context.Context, request *UpdateIstioRouteAdditionalStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateIstioRouteAdditionalStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6312,29 +4679,11 @@ func (client *Client) UpdateIstioRouteAdditionalStatusWithOptions(request *Updat
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateIstioRouteAdditionalStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the information about a routing rule for a Service Mesh (ASM) gateway.
-//
-// @param request - UpdateIstioRouteAdditionalStatusRequest
-//
-// @return UpdateIstioRouteAdditionalStatusResponse
-func (client *Client) UpdateIstioRouteAdditionalStatus(request *UpdateIstioRouteAdditionalStatusRequest) (_result *UpdateIstioRouteAdditionalStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateIstioRouteAdditionalStatusResponse{}
-	_body, _err := client.UpdateIstioRouteAdditionalStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6347,7 +4696,7 @@ func (client *Client) UpdateIstioRouteAdditionalStatus(request *UpdateIstioRoute
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMeshCRAggregationResponse
-func (client *Client) UpdateMeshCRAggregationWithOptions(request *UpdateMeshCRAggregationRequest, runtime *dara.RuntimeOptions) (_result *UpdateMeshCRAggregationResponse, _err error) {
+func (client *Client) UpdateMeshCRAggregationWithContext(ctx context.Context, request *UpdateMeshCRAggregationRequest, runtime *dara.RuntimeOptions) (_result *UpdateMeshCRAggregationResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6398,29 +4747,11 @@ func (client *Client) UpdateMeshCRAggregationWithOptions(request *UpdateMeshCRAg
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMeshCRAggregationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the settings of whether to enable the Kubernetes API on the data plane to access Istio resources.
-//
-// @param request - UpdateMeshCRAggregationRequest
-//
-// @return UpdateMeshCRAggregationResponse
-func (client *Client) UpdateMeshCRAggregation(request *UpdateMeshCRAggregationRequest) (_result *UpdateMeshCRAggregationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateMeshCRAggregationResponse{}
-	_body, _err := client.UpdateMeshCRAggregationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6433,7 +4764,7 @@ func (client *Client) UpdateMeshCRAggregation(request *UpdateMeshCRAggregationRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMeshFeatureResponse
-func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureRequest, runtime *dara.RuntimeOptions) (_result *UpdateMeshFeatureResponse, _err error) {
+func (client *Client) UpdateMeshFeatureWithContext(ctx context.Context, request *UpdateMeshFeatureRequest, runtime *dara.RuntimeOptions) (_result *UpdateMeshFeatureResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6886,29 +5217,11 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMeshFeatureResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the configuration of a Service Mesh (ASM) instance.
-//
-// @param request - UpdateMeshFeatureRequest
-//
-// @return UpdateMeshFeatureResponse
-func (client *Client) UpdateMeshFeature(request *UpdateMeshFeatureRequest) (_result *UpdateMeshFeatureResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateMeshFeatureResponse{}
-	_body, _err := client.UpdateMeshFeatureWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6921,7 +5234,7 @@ func (client *Client) UpdateMeshFeature(request *UpdateMeshFeatureRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMeshMultiClusterNetworkResponse
-func (client *Client) UpdateMeshMultiClusterNetworkWithOptions(tmpReq *UpdateMeshMultiClusterNetworkRequest, runtime *dara.RuntimeOptions) (_result *UpdateMeshMultiClusterNetworkResponse, _err error) {
+func (client *Client) UpdateMeshMultiClusterNetworkWithContext(ctx context.Context, tmpReq *UpdateMeshMultiClusterNetworkRequest, runtime *dara.RuntimeOptions) (_result *UpdateMeshMultiClusterNetworkResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -6958,29 +5271,11 @@ func (client *Client) UpdateMeshMultiClusterNetworkWithOptions(tmpReq *UpdateMes
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMeshMultiClusterNetworkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the network configurations of multiple Kubernetes clusters in a Service Mesh (ASM) instance.
-//
-// @param request - UpdateMeshMultiClusterNetworkRequest
-//
-// @return UpdateMeshMultiClusterNetworkResponse
-func (client *Client) UpdateMeshMultiClusterNetwork(request *UpdateMeshMultiClusterNetworkRequest) (_result *UpdateMeshMultiClusterNetworkResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateMeshMultiClusterNetworkResponse{}
-	_body, _err := client.UpdateMeshMultiClusterNetworkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6993,7 +5288,7 @@ func (client *Client) UpdateMeshMultiClusterNetwork(request *UpdateMeshMultiClus
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateNamespaceScopeSidecarConfigResponse
-func (client *Client) UpdateNamespaceScopeSidecarConfigWithOptions(tmpReq *UpdateNamespaceScopeSidecarConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateNamespaceScopeSidecarConfigResponse, _err error) {
+func (client *Client) UpdateNamespaceScopeSidecarConfigWithContext(ctx context.Context, tmpReq *UpdateNamespaceScopeSidecarConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateNamespaceScopeSidecarConfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -7198,29 +5493,11 @@ func (client *Client) UpdateNamespaceScopeSidecarConfigWithOptions(tmpReq *Updat
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateNamespaceScopeSidecarConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the configurations of sidecar proxies at the namespace level.
-//
-// @param request - UpdateNamespaceScopeSidecarConfigRequest
-//
-// @return UpdateNamespaceScopeSidecarConfigResponse
-func (client *Client) UpdateNamespaceScopeSidecarConfig(request *UpdateNamespaceScopeSidecarConfigRequest) (_result *UpdateNamespaceScopeSidecarConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateNamespaceScopeSidecarConfigResponse{}
-	_body, _err := client.UpdateNamespaceScopeSidecarConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7233,7 +5510,7 @@ func (client *Client) UpdateNamespaceScopeSidecarConfig(request *UpdateNamespace
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateSwimLaneResponse
-func (client *Client) UpdateSwimLaneWithOptions(request *UpdateSwimLaneRequest, runtime *dara.RuntimeOptions) (_result *UpdateSwimLaneResponse, _err error) {
+func (client *Client) UpdateSwimLaneWithContext(ctx context.Context, request *UpdateSwimLaneRequest, runtime *dara.RuntimeOptions) (_result *UpdateSwimLaneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -7280,29 +5557,11 @@ func (client *Client) UpdateSwimLaneWithOptions(request *UpdateSwimLaneRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateSwimLaneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the information about a lane.
-//
-// @param request - UpdateSwimLaneRequest
-//
-// @return UpdateSwimLaneResponse
-func (client *Client) UpdateSwimLane(request *UpdateSwimLaneRequest) (_result *UpdateSwimLaneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateSwimLaneResponse{}
-	_body, _err := client.UpdateSwimLaneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7315,7 +5574,7 @@ func (client *Client) UpdateSwimLane(request *UpdateSwimLaneRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateSwimLaneGroupResponse
-func (client *Client) UpdateSwimLaneGroupWithOptions(request *UpdateSwimLaneGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateSwimLaneGroupResponse, _err error) {
+func (client *Client) UpdateSwimLaneGroupWithContext(ctx context.Context, request *UpdateSwimLaneGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateSwimLaneGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -7366,29 +5625,11 @@ func (client *Client) UpdateSwimLaneGroupWithOptions(request *UpdateSwimLaneGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateSwimLaneGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the information of a lane group.
-//
-// @param request - UpdateSwimLaneGroupRequest
-//
-// @return UpdateSwimLaneGroupResponse
-func (client *Client) UpdateSwimLaneGroup(request *UpdateSwimLaneGroupRequest) (_result *UpdateSwimLaneGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateSwimLaneGroupResponse{}
-	_body, _err := client.UpdateSwimLaneGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7401,7 +5642,7 @@ func (client *Client) UpdateSwimLaneGroup(request *UpdateSwimLaneGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateWaypointResponse
-func (client *Client) UpdateWaypointWithOptions(request *UpdateWaypointRequest, runtime *dara.RuntimeOptions) (_result *UpdateWaypointResponse, _err error) {
+func (client *Client) UpdateWaypointWithContext(ctx context.Context, request *UpdateWaypointRequest, runtime *dara.RuntimeOptions) (_result *UpdateWaypointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -7484,29 +5725,11 @@ func (client *Client) UpdateWaypointWithOptions(request *UpdateWaypointRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateWaypointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新Waypoint
-//
-// @param request - UpdateWaypointRequest
-//
-// @return UpdateWaypointResponse
-func (client *Client) UpdateWaypoint(request *UpdateWaypointRequest) (_result *UpdateWaypointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateWaypointResponse{}
-	_body, _err := client.UpdateWaypointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7519,7 +5742,7 @@ func (client *Client) UpdateWaypoint(request *UpdateWaypointRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpgradeMeshEditionPartiallyResponse
-func (client *Client) UpgradeMeshEditionPartiallyWithOptions(request *UpgradeMeshEditionPartiallyRequest, runtime *dara.RuntimeOptions) (_result *UpgradeMeshEditionPartiallyResponse, _err error) {
+func (client *Client) UpgradeMeshEditionPartiallyWithContext(ctx context.Context, request *UpgradeMeshEditionPartiallyRequest, runtime *dara.RuntimeOptions) (_result *UpgradeMeshEditionPartiallyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -7566,29 +5789,11 @@ func (client *Client) UpgradeMeshEditionPartiallyWithOptions(request *UpgradeMes
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpgradeMeshEditionPartiallyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Upgrades a Service Mesh (ASM) instance to Professional Edition that is commercially released.
-//
-// @param request - UpgradeMeshEditionPartiallyRequest
-//
-// @return UpgradeMeshEditionPartiallyResponse
-func (client *Client) UpgradeMeshEditionPartially(request *UpgradeMeshEditionPartiallyRequest) (_result *UpgradeMeshEditionPartiallyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpgradeMeshEditionPartiallyResponse{}
-	_body, _err := client.UpgradeMeshEditionPartiallyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7601,7 +5806,7 @@ func (client *Client) UpgradeMeshEditionPartially(request *UpgradeMeshEditionPar
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpgradeMeshVersionResponse
-func (client *Client) UpgradeMeshVersionWithOptions(request *UpgradeMeshVersionRequest, runtime *dara.RuntimeOptions) (_result *UpgradeMeshVersionResponse, _err error) {
+func (client *Client) UpgradeMeshVersionWithContext(ctx context.Context, request *UpgradeMeshVersionRequest, runtime *dara.RuntimeOptions) (_result *UpgradeMeshVersionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -7632,28 +5837,10 @@ func (client *Client) UpgradeMeshVersionWithOptions(request *UpgradeMeshVersionR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpgradeMeshVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the version of a Service Mesh (ASM) instance.
-//
-// @param request - UpgradeMeshVersionRequest
-//
-// @return UpgradeMeshVersionResponse
-func (client *Client) UpgradeMeshVersion(request *UpgradeMeshVersionRequest) (_result *UpgradeMeshVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpgradeMeshVersionResponse{}
-	_body, _err := client.UpgradeMeshVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
