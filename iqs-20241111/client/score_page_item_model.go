@@ -49,6 +49,8 @@ type iScorePageItem interface {
 	GetSummary() *string
 	SetTitle(v string) *ScorePageItem
 	GetTitle() *string
+	SetWebsiteAuthorityScore(v int32) *ScorePageItem
+	GetWebsiteAuthorityScore() *int32
 }
 
 type ScorePageItem struct {
@@ -135,7 +137,8 @@ type ScorePageItem struct {
 	// example:
 	//
 	// 小米SU7售价22.99万元起 高管亲自辟谣：发布前不会有价格
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	Title                 *string `json:"title,omitempty" xml:"title,omitempty"`
+	WebsiteAuthorityScore *int32  `json:"websiteAuthorityScore,omitempty" xml:"websiteAuthorityScore,omitempty"`
 }
 
 func (s ScorePageItem) String() string {
@@ -224,6 +227,10 @@ func (s *ScorePageItem) GetSummary() *string {
 
 func (s *ScorePageItem) GetTitle() *string {
 	return s.Title
+}
+
+func (s *ScorePageItem) GetWebsiteAuthorityScore() *int32 {
+	return s.WebsiteAuthorityScore
 }
 
 func (s *ScorePageItem) SetCardType(v string) *ScorePageItem {
@@ -323,6 +330,11 @@ func (s *ScorePageItem) SetSummary(v string) *ScorePageItem {
 
 func (s *ScorePageItem) SetTitle(v string) *ScorePageItem {
 	s.Title = &v
+	return s
+}
+
+func (s *ScorePageItem) SetWebsiteAuthorityScore(v int32) *ScorePageItem {
+	s.WebsiteAuthorityScore = &v
 	return s
 }
 

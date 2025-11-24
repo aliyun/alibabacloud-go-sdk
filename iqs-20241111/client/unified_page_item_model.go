@@ -35,6 +35,8 @@ type iUnifiedPageItem interface {
 	GetSummary() *string
 	SetTitle(v string) *UnifiedPageItem
 	GetTitle() *string
+	SetWebsiteAuthorityScore(v int32) *UnifiedPageItem
+	GetWebsiteAuthorityScore() *int32
 }
 
 type UnifiedPageItem struct {
@@ -48,12 +50,13 @@ type UnifiedPageItem struct {
 	// example:
 	//
 	// 2025-04-07T10:15:30.123+08:00
-	PublishedTime *string  `json:"publishedTime,omitempty" xml:"publishedTime,omitempty"`
-	RerankScore   *float64 `json:"rerankScore,omitempty" xml:"rerankScore,omitempty"`
-	RichMainBody  *string  `json:"richMainBody,omitempty" xml:"richMainBody,omitempty"`
-	Snippet       *string  `json:"snippet,omitempty" xml:"snippet,omitempty"`
-	Summary       *string  `json:"summary,omitempty" xml:"summary,omitempty"`
-	Title         *string  `json:"title,omitempty" xml:"title,omitempty"`
+	PublishedTime         *string  `json:"publishedTime,omitempty" xml:"publishedTime,omitempty"`
+	RerankScore           *float64 `json:"rerankScore,omitempty" xml:"rerankScore,omitempty"`
+	RichMainBody          *string  `json:"richMainBody,omitempty" xml:"richMainBody,omitempty"`
+	Snippet               *string  `json:"snippet,omitempty" xml:"snippet,omitempty"`
+	Summary               *string  `json:"summary,omitempty" xml:"summary,omitempty"`
+	Title                 *string  `json:"title,omitempty" xml:"title,omitempty"`
+	WebsiteAuthorityScore *int32   `json:"websiteAuthorityScore,omitempty" xml:"websiteAuthorityScore,omitempty"`
 }
 
 func (s UnifiedPageItem) String() string {
@@ -114,6 +117,10 @@ func (s *UnifiedPageItem) GetSummary() *string {
 
 func (s *UnifiedPageItem) GetTitle() *string {
 	return s.Title
+}
+
+func (s *UnifiedPageItem) GetWebsiteAuthorityScore() *int32 {
+	return s.WebsiteAuthorityScore
 }
 
 func (s *UnifiedPageItem) SetHostAuthorityScore(v float64) *UnifiedPageItem {
@@ -178,6 +185,11 @@ func (s *UnifiedPageItem) SetSummary(v string) *UnifiedPageItem {
 
 func (s *UnifiedPageItem) SetTitle(v string) *UnifiedPageItem {
 	s.Title = &v
+	return s
+}
+
+func (s *UnifiedPageItem) SetWebsiteAuthorityScore(v int32) *UnifiedPageItem {
+	s.WebsiteAuthorityScore = &v
 	return s
 }
 
