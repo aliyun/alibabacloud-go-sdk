@@ -13,6 +13,10 @@ type iListTemplatesRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListTemplatesRequest
 	GetPageSize() *int32
+	SetStatus(v string) *ListTemplatesRequest
+	GetStatus() *string
+	SetTemplateName(v string) *ListTemplatesRequest
+	GetTemplateName() *string
 	SetTemplateType(v string) *ListTemplatesRequest
 	GetTemplateType() *string
 }
@@ -30,6 +34,14 @@ type ListTemplatesRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// READY
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// temp-abc
+	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
 	// 按模板类型过滤
 	//
 	// example:
@@ -54,6 +66,14 @@ func (s *ListTemplatesRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListTemplatesRequest) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListTemplatesRequest) GetTemplateName() *string {
+	return s.TemplateName
+}
+
 func (s *ListTemplatesRequest) GetTemplateType() *string {
 	return s.TemplateType
 }
@@ -65,6 +85,16 @@ func (s *ListTemplatesRequest) SetPageNumber(v int32) *ListTemplatesRequest {
 
 func (s *ListTemplatesRequest) SetPageSize(v int32) *ListTemplatesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListTemplatesRequest) SetStatus(v string) *ListTemplatesRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTemplatesRequest) SetTemplateName(v string) *ListTemplatesRequest {
+	s.TemplateName = &v
 	return s
 }
 

@@ -9,8 +9,6 @@ type iSandbox interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetSandboxIdleTTLInSeconds(v int32) *Sandbox
-	GetSandboxIdleTTLInSeconds() *int32
 	SetCreatedAt(v string) *Sandbox
 	GetCreatedAt() *string
 	SetEndedAt(v string) *Sandbox
@@ -23,6 +21,8 @@ type iSandbox interface {
 	GetSandboxArn() *string
 	SetSandboxId(v string) *Sandbox
 	GetSandboxId() *string
+	SetSandboxIdleTTLInSeconds(v int32) *Sandbox
+	GetSandboxIdleTTLInSeconds() *int32
 	SetSandboxIdleTimeoutSeconds(v int32) *Sandbox
 	GetSandboxIdleTimeoutSeconds() *int32
 	SetStatus(v string) *Sandbox
@@ -34,7 +34,6 @@ type iSandbox interface {
 }
 
 type Sandbox struct {
-	SandboxIdleTTLInSeconds *int32 `json:"SandboxIdleTTLInSeconds,omitempty" xml:"SandboxIdleTTLInSeconds,omitempty"`
 	// 沙箱创建时间
 	//
 	// This parameter is required.
@@ -45,7 +44,8 @@ type Sandbox struct {
 	Metadata      map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
 	SandboxArn    *string                `json:"sandboxArn,omitempty" xml:"sandboxArn,omitempty"`
 	// This parameter is required.
-	SandboxId *string `json:"sandboxId,omitempty" xml:"sandboxId,omitempty"`
+	SandboxId               *string `json:"sandboxId,omitempty" xml:"sandboxId,omitempty"`
+	SandboxIdleTTLInSeconds *int32  `json:"sandboxIdleTTLInSeconds,omitempty" xml:"sandboxIdleTTLInSeconds,omitempty"`
 	// 沙箱空闲超时时间（秒）
 	SandboxIdleTimeoutSeconds *int32 `json:"sandboxIdleTimeoutSeconds,omitempty" xml:"sandboxIdleTimeoutSeconds,omitempty"`
 	// This parameter is required.
@@ -61,10 +61,6 @@ func (s Sandbox) String() string {
 
 func (s Sandbox) GoString() string {
 	return s.String()
-}
-
-func (s *Sandbox) GetSandboxIdleTTLInSeconds() *int32 {
-	return s.SandboxIdleTTLInSeconds
 }
 
 func (s *Sandbox) GetCreatedAt() *string {
@@ -91,6 +87,10 @@ func (s *Sandbox) GetSandboxId() *string {
 	return s.SandboxId
 }
 
+func (s *Sandbox) GetSandboxIdleTTLInSeconds() *int32 {
+	return s.SandboxIdleTTLInSeconds
+}
+
 func (s *Sandbox) GetSandboxIdleTimeoutSeconds() *int32 {
 	return s.SandboxIdleTimeoutSeconds
 }
@@ -105,11 +105,6 @@ func (s *Sandbox) GetTemplateId() *string {
 
 func (s *Sandbox) GetTemplateName() *string {
 	return s.TemplateName
-}
-
-func (s *Sandbox) SetSandboxIdleTTLInSeconds(v int32) *Sandbox {
-	s.SandboxIdleTTLInSeconds = &v
-	return s
 }
 
 func (s *Sandbox) SetCreatedAt(v string) *Sandbox {
@@ -139,6 +134,11 @@ func (s *Sandbox) SetSandboxArn(v string) *Sandbox {
 
 func (s *Sandbox) SetSandboxId(v string) *Sandbox {
 	s.SandboxId = &v
+	return s
+}
+
+func (s *Sandbox) SetSandboxIdleTTLInSeconds(v int32) *Sandbox {
+	s.SandboxIdleTTLInSeconds = &v
 	return s
 }
 

@@ -13,14 +13,14 @@ type iStopSandboxResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *StopSandboxResponse
 	GetStatusCode() *int32
-	SetBody(v *DeleteSandboxResult) *StopSandboxResponse
-	GetBody() *DeleteSandboxResult
+	SetBody(v *StopSandboxResult) *StopSandboxResponse
+	GetBody() *StopSandboxResult
 }
 
 type StopSandboxResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteSandboxResult `json:"body,omitempty" xml:"body,omitempty"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopSandboxResult `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopSandboxResponse) String() string {
@@ -39,7 +39,7 @@ func (s *StopSandboxResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
-func (s *StopSandboxResponse) GetBody() *DeleteSandboxResult {
+func (s *StopSandboxResponse) GetBody() *StopSandboxResult {
 	return s.Body
 }
 
@@ -53,7 +53,7 @@ func (s *StopSandboxResponse) SetStatusCode(v int32) *StopSandboxResponse {
 	return s
 }
 
-func (s *StopSandboxResponse) SetBody(v *DeleteSandboxResult) *StopSandboxResponse {
+func (s *StopSandboxResponse) SetBody(v *StopSandboxResult) *StopSandboxResponse {
 	s.Body = v
 	return s
 }

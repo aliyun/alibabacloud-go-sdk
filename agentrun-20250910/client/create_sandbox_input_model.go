@@ -9,6 +9,8 @@ type iCreateSandboxInput interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetSandboxId(v string) *CreateSandboxInput
+	GetSandboxId() *string
 	SetSandboxIdleTimeoutSeconds(v int32) *CreateSandboxInput
 	GetSandboxIdleTimeoutSeconds() *int32
 	SetTemplateName(v string) *CreateSandboxInput
@@ -16,6 +18,7 @@ type iCreateSandboxInput interface {
 }
 
 type CreateSandboxInput struct {
+	SandboxId *string `json:"sandboxId,omitempty" xml:"sandboxId,omitempty"`
 	// 沙箱空闲超时时间（秒）
 	SandboxIdleTimeoutSeconds *int32 `json:"sandboxIdleTimeoutSeconds,omitempty" xml:"sandboxIdleTimeoutSeconds,omitempty"`
 	// 模板名称（系统内部通过 templateName 查询 template_id）
@@ -32,12 +35,21 @@ func (s CreateSandboxInput) GoString() string {
 	return s.String()
 }
 
+func (s *CreateSandboxInput) GetSandboxId() *string {
+	return s.SandboxId
+}
+
 func (s *CreateSandboxInput) GetSandboxIdleTimeoutSeconds() *int32 {
 	return s.SandboxIdleTimeoutSeconds
 }
 
 func (s *CreateSandboxInput) GetTemplateName() *string {
 	return s.TemplateName
+}
+
+func (s *CreateSandboxInput) SetSandboxId(v string) *CreateSandboxInput {
+	s.SandboxId = &v
+	return s
 }
 
 func (s *CreateSandboxInput) SetSandboxIdleTimeoutSeconds(v int32) *CreateSandboxInput {
