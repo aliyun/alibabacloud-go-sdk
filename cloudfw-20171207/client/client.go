@@ -62,6 +62,80 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 备份ACL
+//
+// @param request - AddAclBackupDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddAclBackupDataResponse
+func (client *Client) AddAclBackupDataWithOptions(request *AddAclBackupDataRequest, runtime *dara.RuntimeOptions) (_result *AddAclBackupDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackUpTime) {
+		query["BackUpTime"] = request.BackUpTime
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddAclBackupData"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddAclBackupDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 备份ACL
+//
+// @param request - AddAclBackupDataRequest
+//
+// @return AddAclBackupDataResponse
+func (client *Client) AddAclBackupData(request *AddAclBackupDataRequest) (_result *AddAclBackupDataResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddAclBackupDataResponse{}
+	_body, _err := client.AddAclBackupDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an address book for access control. Supported address book types are IP address books, Elastic Compute Service (ECS) tag-based address books, port address books, and domain address books. An ECS tag-based address book includes the public IP addresses of the ECS instances that have specific tags.
 //
 // Description:
@@ -464,6 +538,76 @@ func (client *Client) AddDnsFirewallPolicy(request *AddDnsFirewallPolicyRequest)
 
 // Summary:
 //
+// 新增域名解析实时任务
+//
+// @param request - AddDomainResolveRealtimeTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddDomainResolveRealtimeTaskResponse
+func (client *Client) AddDomainResolveRealtimeTaskWithOptions(request *AddDomainResolveRealtimeTaskRequest, runtime *dara.RuntimeOptions) (_result *AddDomainResolveRealtimeTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.FirewallType) {
+		query["FirewallType"] = request.FirewallType
+	}
+
+	if !dara.IsNil(request.RegionNo) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddDomainResolveRealtimeTask"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddDomainResolveRealtimeTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增域名解析实时任务
+//
+// @param request - AddDomainResolveRealtimeTaskRequest
+//
+// @return AddDomainResolveRealtimeTaskResponse
+func (client *Client) AddDomainResolveRealtimeTask(request *AddDomainResolveRealtimeTaskRequest) (_result *AddDomainResolveRealtimeTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddDomainResolveRealtimeTaskResponse{}
+	_body, _err := client.AddDomainResolveRealtimeTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds members to Cloud Firewall.
 //
 // Description:
@@ -610,6 +754,8 @@ func (client *Client) AddPrivateDnsDomainName(request *AddPrivateDnsDomainNameRe
 	return _result, _err
 }
 
+// Deprecated: OpenAPI BatchCopyVpcFirewallControlPolicy is deprecated
+//
 // Summary:
 //
 // Copies all access control policies from a policy group of a source virtual private cloud (VPC) firewall to a policy group of a destination VPC firewall.
@@ -680,6 +826,8 @@ func (client *Client) BatchCopyVpcFirewallControlPolicyWithOptions(request *Batc
 	return _result, _err
 }
 
+// Deprecated: OpenAPI BatchCopyVpcFirewallControlPolicy is deprecated
+//
 // Summary:
 //
 // Copies all access control policies from a policy group of a source virtual private cloud (VPC) firewall to a policy group of a destination VPC firewall.
@@ -701,6 +849,7 @@ func (client *Client) BatchCopyVpcFirewallControlPolicyWithOptions(request *Batc
 // @param request - BatchCopyVpcFirewallControlPolicyRequest
 //
 // @return BatchCopyVpcFirewallControlPolicyResponse
+// Deprecated
 func (client *Client) BatchCopyVpcFirewallControlPolicy(request *BatchCopyVpcFirewallControlPolicyRequest) (_result *BatchCopyVpcFirewallControlPolicyResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &BatchCopyVpcFirewallControlPolicyResponse{}
@@ -771,6 +920,53 @@ func (client *Client) BatchDeleteVpcFirewallControlPolicy(request *BatchDeleteVp
 	runtime := &dara.RuntimeOptions{}
 	_result = &BatchDeleteVpcFirewallControlPolicyResponse{}
 	_body, _err := client.BatchDeleteVpcFirewallControlPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 清空防火墙日志
+//
+// @param request - ClearLogStoreStorageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClearLogStoreStorageResponse
+func (client *Client) ClearLogStoreStorageWithOptions(runtime *dara.RuntimeOptions) (_result *ClearLogStoreStorageResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClearLogStoreStorage"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClearLogStoreStorageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 清空防火墙日志
+//
+// @return ClearLogStoreStorageResponse
+func (client *Client) ClearLogStoreStorage() (_result *ClearLogStoreStorageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ClearLogStoreStorageResponse{}
+	_body, _err := client.ClearLogStoreStorageWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1018,6 +1214,138 @@ func (client *Client) CreateDownloadTask(request *CreateDownloadTaskRequest) (_r
 
 // Summary:
 //
+// 创建实例资产同步任务
+//
+// @param request - CreateInstanceSyncTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceSyncTaskResponse
+func (client *Client) CreateInstanceSyncTaskWithOptions(request *CreateInstanceSyncTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceSyncTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInstanceSyncTask"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateInstanceSyncTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建实例资产同步任务
+//
+// @param request - CreateInstanceSyncTaskRequest
+//
+// @return CreateInstanceSyncTaskResponse
+func (client *Client) CreateInstanceSyncTask(request *CreateInstanceSyncTaskRequest) (_result *CreateInstanceSyncTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateInstanceSyncTaskResponse{}
+	_body, _err := client.CreateInstanceSyncTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建IPS私网关联信息
+//
+// @param request - CreateIpsPrivateAssocRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIpsPrivateAssocResponse
+func (client *Client) CreateIpsPrivateAssocWithOptions(request *CreateIpsPrivateAssocRequest, runtime *dara.RuntimeOptions) (_result *CreateIpsPrivateAssocResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateIpsPrivateAssoc"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateIpsPrivateAssocResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建IPS私网关联信息
+//
+// @param request - CreateIpsPrivateAssocRequest
+//
+// @return CreateIpsPrivateAssocResponse
+func (client *Client) CreateIpsPrivateAssoc(request *CreateIpsPrivateAssocRequest) (_result *CreateIpsPrivateAssocResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateIpsPrivateAssocResponse{}
+	_body, _err := client.CreateIpsPrivateAssocWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an access control policy for a NAT firewall.
 //
 // Description:
@@ -1247,6 +1575,68 @@ func (client *Client) CreateNatFirewallPreCheck(request *CreateNatFirewallPreChe
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateNatFirewallPreCheckResponse{}
 	_body, _err := client.CreateNatFirewallPreCheckWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建NAT防火墙资产同步任务
+//
+// @param request - CreateNatFirewallSyncTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNatFirewallSyncTaskResponse
+func (client *Client) CreateNatFirewallSyncTaskWithOptions(request *CreateNatFirewallSyncTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateNatFirewallSyncTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateNatFirewallSyncTask"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateNatFirewallSyncTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建NAT防火墙资产同步任务
+//
+// @param request - CreateNatFirewallSyncTaskRequest
+//
+// @return CreateNatFirewallSyncTaskResponse
+func (client *Client) CreateNatFirewallSyncTask(request *CreateNatFirewallSyncTaskRequest) (_result *CreateNatFirewallSyncTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateNatFirewallSyncTaskResponse{}
+	_body, _err := client.CreateNatFirewallSyncTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1872,6 +2262,8 @@ func (client *Client) CreateVpcFirewallCenConfigure(request *CreateVpcFirewallCe
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateVpcFirewallCenManualConfigure is deprecated
+//
 // Summary:
 //
 // 创建VPC防火墙手动配置
@@ -1936,6 +2328,8 @@ func (client *Client) CreateVpcFirewallCenManualConfigureWithOptions(request *Cr
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateVpcFirewallCenManualConfigure is deprecated
+//
 // Summary:
 //
 // 创建VPC防火墙手动配置
@@ -1943,6 +2337,7 @@ func (client *Client) CreateVpcFirewallCenManualConfigureWithOptions(request *Cr
 // @param request - CreateVpcFirewallCenManualConfigureRequest
 //
 // @return CreateVpcFirewallCenManualConfigureResponse
+// Deprecated
 func (client *Client) CreateVpcFirewallCenManualConfigure(request *CreateVpcFirewallCenManualConfigureRequest) (_result *CreateVpcFirewallCenManualConfigureResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateVpcFirewallCenManualConfigureResponse{}
@@ -4739,6 +5134,80 @@ func (client *Client) DescribeAclApps(request *DescribeAclAppsRequest) (_result 
 
 // Summary:
 //
+// 获取ACL备份列表
+//
+// @param request - DescribeAclBackupListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAclBackupListResponse
+func (client *Client) DescribeAclBackupListWithOptions(request *DescribeAclBackupListRequest, runtime *dara.RuntimeOptions) (_result *DescribeAclBackupListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAclBackupList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAclBackupListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取ACL备份列表
+//
+// @param request - DescribeAclBackupListRequest
+//
+// @return DescribeAclBackupListResponse
+func (client *Client) DescribeAclBackupList(request *DescribeAclBackupListRequest) (_result *DescribeAclBackupListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAclBackupListResponse{}
+	_body, _err := client.DescribeAclBackupListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询ACL检查详情
 //
 // @param request - DescribeAclCheckRequest
@@ -5421,6 +5890,136 @@ func (client *Client) DescribeAssetStatistic(request *DescribeAssetStatisticRequ
 
 // Summary:
 //
+// 获取敏感数据类别开关
+//
+// @param request - DescribeAttackAppCategoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAttackAppCategoryResponse
+func (client *Client) DescribeAttackAppCategoryWithOptions(request *DescribeAttackAppCategoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeAttackAppCategoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAttackAppCategory"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAttackAppCategoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取敏感数据类别开关
+//
+// @param request - DescribeAttackAppCategoryRequest
+//
+// @return DescribeAttackAppCategoryResponse
+func (client *Client) DescribeAttackAppCategory(request *DescribeAttackAppCategoryRequest) (_result *DescribeAttackAppCategoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAttackAppCategoryResponse{}
+	_body, _err := client.DescribeAttackAppCategoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取日志分发状态
+//
+// @param request - DescribeBatchSlsDispatchStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBatchSlsDispatchStatusResponse
+func (client *Client) DescribeBatchSlsDispatchStatusWithOptions(request *DescribeBatchSlsDispatchStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeBatchSlsDispatchStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeBatchSlsDispatchStatus"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeBatchSlsDispatchStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取日志分发状态
+//
+// @param request - DescribeBatchSlsDispatchStatusRequest
+//
+// @return DescribeBatchSlsDispatchStatusResponse
+func (client *Client) DescribeBatchSlsDispatchStatus(request *DescribeBatchSlsDispatchStatusRequest) (_result *DescribeBatchSlsDispatchStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeBatchSlsDispatchStatusResponse{}
+	_body, _err := client.DescribeBatchSlsDispatchStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Deprecated: OpenAPI DescribeCfwRiskLevelSummary is deprecated
+//
+// Summary:
+//
 // Queries the firewall risk level.
 //
 // @param request - DescribeCfwRiskLevelSummaryRequest
@@ -5471,6 +6070,8 @@ func (client *Client) DescribeCfwRiskLevelSummaryWithOptions(request *DescribeCf
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeCfwRiskLevelSummary is deprecated
+//
 // Summary:
 //
 // Queries the firewall risk level.
@@ -5478,6 +6079,7 @@ func (client *Client) DescribeCfwRiskLevelSummaryWithOptions(request *DescribeCf
 // @param request - DescribeCfwRiskLevelSummaryRequest
 //
 // @return DescribeCfwRiskLevelSummaryResponse
+// Deprecated
 func (client *Client) DescribeCfwRiskLevelSummary(request *DescribeCfwRiskLevelSummaryRequest) (_result *DescribeCfwRiskLevelSummaryResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeCfwRiskLevelSummaryResponse{}
@@ -5529,6 +6131,202 @@ func (client *Client) DescribeClearAuthInfo() (_result *DescribeClearAuthInfoRes
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeClearAuthInfoResponse{}
 	_body, _err := client.DescribeClearAuthInfoWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取已配置的目的IP
+//
+// @param request - DescribeConfiguredDestinationIPRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeConfiguredDestinationIPResponse
+func (client *Client) DescribeConfiguredDestinationIPWithOptions(request *DescribeConfiguredDestinationIPRequest, runtime *dara.RuntimeOptions) (_result *DescribeConfiguredDestinationIPResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.DestinationIP) {
+		query["DestinationIP"] = request.DestinationIP
+	}
+
+	if !dara.IsNil(request.DestinationISP) {
+		query["DestinationISP"] = request.DestinationISP
+	}
+
+	if !dara.IsNil(request.DestinationRegion) {
+		query["DestinationRegion"] = request.DestinationRegion
+	}
+
+	if !dara.IsNil(request.Direction) {
+		query["Direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SourceCode) {
+		query["SourceCode"] = request.SourceCode
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeConfiguredDestinationIP"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeConfiguredDestinationIPResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取已配置的目的IP
+//
+// @param request - DescribeConfiguredDestinationIPRequest
+//
+// @return DescribeConfiguredDestinationIPResponse
+func (client *Client) DescribeConfiguredDestinationIP(request *DescribeConfiguredDestinationIPRequest) (_result *DescribeConfiguredDestinationIPResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeConfiguredDestinationIPResponse{}
+	_body, _err := client.DescribeConfiguredDestinationIPWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取已配置的域名
+//
+// @param request - DescribeConfiguredDomainNamesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeConfiguredDomainNamesResponse
+func (client *Client) DescribeConfiguredDomainNamesWithOptions(request *DescribeConfiguredDomainNamesRequest, runtime *dara.RuntimeOptions) (_result *DescribeConfiguredDomainNamesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Direction) {
+		query["Direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SourceCode) {
+		query["SourceCode"] = request.SourceCode
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeConfiguredDomainNames"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeConfiguredDomainNamesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取已配置的域名
+//
+// @param request - DescribeConfiguredDomainNamesRequest
+//
+// @return DescribeConfiguredDomainNamesResponse
+func (client *Client) DescribeConfiguredDomainNames(request *DescribeConfiguredDomainNamesRequest) (_result *DescribeConfiguredDomainNamesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeConfiguredDomainNamesResponse{}
+	_body, _err := client.DescribeConfiguredDomainNamesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5659,6 +6457,122 @@ func (client *Client) DescribeControlPolicy(request *DescribeControlPolicyReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeControlPolicyResponse{}
 	_body, _err := client.DescribeControlPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询访问控制策略的域名解析结果
+//
+// @param request - DescribeControlPolicyDomainResolveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeControlPolicyDomainResolveResponse
+func (client *Client) DescribeControlPolicyDomainResolveWithOptions(request *DescribeControlPolicyDomainResolveRequest, runtime *dara.RuntimeOptions) (_result *DescribeControlPolicyDomainResolveResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeControlPolicyDomainResolve"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeControlPolicyDomainResolveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询访问控制策略的域名解析结果
+//
+// @param request - DescribeControlPolicyDomainResolveRequest
+//
+// @return DescribeControlPolicyDomainResolveResponse
+func (client *Client) DescribeControlPolicyDomainResolve(request *DescribeControlPolicyDomainResolveRequest) (_result *DescribeControlPolicyDomainResolveResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeControlPolicyDomainResolveResponse{}
+	_body, _err := client.DescribeControlPolicyDomainResolveWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取已经创建的 NAT 防火墙
+//
+// @param request - DescribeCreatedNatFirewallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCreatedNatFirewallResponse
+func (client *Client) DescribeCreatedNatFirewallWithOptions(request *DescribeCreatedNatFirewallRequest, runtime *dara.RuntimeOptions) (_result *DescribeCreatedNatFirewallResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCreatedNatFirewall"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCreatedNatFirewallResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取已经创建的 NAT 防火墙
+//
+// @param request - DescribeCreatedNatFirewallRequest
+//
+// @return DescribeCreatedNatFirewallResponse
+func (client *Client) DescribeCreatedNatFirewall(request *DescribeCreatedNatFirewallRequest) (_result *DescribeCreatedNatFirewallResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeCreatedNatFirewallResponse{}
+	_body, _err := client.DescribeCreatedNatFirewallWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6128,6 +7042,8 @@ func (client *Client) DescribeDownloadTaskType(request *DescribeDownloadTaskType
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeFirewallDropStatistics is deprecated
+//
 // Summary:
 //
 // 获取防火墙DROP数据统计
@@ -6137,6 +7053,7 @@ func (client *Client) DescribeDownloadTaskType(request *DescribeDownloadTaskType
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeFirewallDropStatisticsResponse
+// Deprecated
 func (client *Client) DescribeFirewallDropStatisticsWithOptions(runtime *dara.RuntimeOptions) (_result *DescribeFirewallDropStatisticsResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{}
 	params := &openapiutil.Params{
@@ -6159,11 +7076,14 @@ func (client *Client) DescribeFirewallDropStatisticsWithOptions(runtime *dara.Ru
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeFirewallDropStatistics is deprecated
+//
 // Summary:
 //
 // 获取防火墙DROP数据统计
 //
 // @return DescribeFirewallDropStatisticsResponse
+// Deprecated
 func (client *Client) DescribeFirewallDropStatistics() (_result *DescribeFirewallDropStatisticsResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeFirewallDropStatisticsResponse{}
@@ -6349,6 +7269,84 @@ func (client *Client) DescribeFirewallVSwitch(request *DescribeFirewallVSwitchRe
 
 // Summary:
 //
+// 获取防火墙交换机资源
+//
+// @param request - DescribeFirewallVswitchResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFirewallVswitchResourcesResponse
+func (client *Client) DescribeFirewallVswitchResourcesWithOptions(request *DescribeFirewallVswitchResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeFirewallVswitchResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FirewallType) {
+		query["FirewallType"] = request.FirewallType
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegionNo) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeFirewallVswitchResources"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeFirewallVswitchResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取防火墙交换机资源
+//
+// @param request - DescribeFirewallVswitchResourcesRequest
+//
+// @return DescribeFirewallVswitchResourcesResponse
+func (client *Client) DescribeFirewallVswitchResources(request *DescribeFirewallVswitchResourcesRequest) (_result *DescribeFirewallVswitchResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeFirewallVswitchResourcesResponse{}
+	_body, _err := client.DescribeFirewallVswitchResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about members in Cloud Firewall.
 //
 // Description:
@@ -6434,6 +7432,92 @@ func (client *Client) DescribeInstanceMembers(request *DescribeInstanceMembersRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeInstanceMembersResponse{}
 	_body, _err := client.DescribeInstanceMembersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例RD账号
+//
+// @param request - DescribeInstanceRdAccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceRdAccountsResponse
+func (client *Client) DescribeInstanceRdAccountsWithOptions(request *DescribeInstanceRdAccountsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceRdAccountsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MemberDesc) {
+		query["MemberDesc"] = request.MemberDesc
+	}
+
+	if !dara.IsNil(request.MemberDisplayName) {
+		query["MemberDisplayName"] = request.MemberDisplayName
+	}
+
+	if !dara.IsNil(request.MemberUid) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInstanceRdAccounts"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInstanceRdAccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例RD账号
+//
+// @param request - DescribeInstanceRdAccountsRequest
+//
+// @return DescribeInstanceRdAccountsResponse
+func (client *Client) DescribeInstanceRdAccounts(request *DescribeInstanceRdAccountsRequest) (_result *DescribeInstanceRdAccountsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInstanceRdAccountsResponse{}
+	_body, _err := client.DescribeInstanceRdAccountsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6586,6 +7670,136 @@ func (client *Client) DescribeInternetDropTrafficTrend(request *DescribeInternet
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeInternetDropTrafficTrendResponse{}
 	_body, _err := client.DescribeInternetDropTrafficTrendWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取互联网开放详情
+//
+// @param request - DescribeInternetOpenDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInternetOpenDetailResponse
+func (client *Client) DescribeInternetOpenDetailWithOptions(request *DescribeInternetOpenDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeInternetOpenDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssetsInstanceId) {
+		query["AssetsInstanceId"] = request.AssetsInstanceId
+	}
+
+	if !dara.IsNil(request.AssetsInstanceName) {
+		query["AssetsInstanceName"] = request.AssetsInstanceName
+	}
+
+	if !dara.IsNil(request.AssetsType) {
+		query["AssetsType"] = request.AssetsType
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.PublicIp) {
+		query["PublicIp"] = request.PublicIp
+	}
+
+	if !dara.IsNil(request.RegionNo) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !dara.IsNil(request.RiskLevel) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	if !dara.IsNil(request.ServiceName) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !dara.IsNil(request.ServiceNameFuzzy) {
+		query["ServiceNameFuzzy"] = request.ServiceNameFuzzy
+	}
+
+	if !dara.IsNil(request.SortList) {
+		query["SortList"] = request.SortList
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.SuggestLevel) {
+		query["SuggestLevel"] = request.SuggestLevel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInternetOpenDetail"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInternetOpenDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取互联网开放详情
+//
+// @param request - DescribeInternetOpenDetailRequest
+//
+// @return DescribeInternetOpenDetailResponse
+func (client *Client) DescribeInternetOpenDetail(request *DescribeInternetOpenDetailRequest) (_result *DescribeInternetOpenDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInternetOpenDetailResponse{}
+	_body, _err := client.DescribeInternetOpenDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6917,6 +8131,492 @@ func (client *Client) DescribeInternetOpenService(request *DescribeInternetOpenS
 
 // Summary:
 //
+// 获取互联网开放统计
+//
+// @param request - DescribeInternetOpenStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInternetOpenStatisticResponse
+func (client *Client) DescribeInternetOpenStatisticWithOptions(request *DescribeInternetOpenStatisticRequest, runtime *dara.RuntimeOptions) (_result *DescribeInternetOpenStatisticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInternetOpenStatistic"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInternetOpenStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取互联网开放统计
+//
+// @param request - DescribeInternetOpenStatisticRequest
+//
+// @return DescribeInternetOpenStatisticResponse
+func (client *Client) DescribeInternetOpenStatistic(request *DescribeInternetOpenStatisticRequest) (_result *DescribeInternetOpenStatisticResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInternetOpenStatisticResponse{}
+	_body, _err := client.DescribeInternetOpenStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取互联网服务名称列表
+//
+// @param request - DescribeInternetServiceNameListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInternetServiceNameListResponse
+func (client *Client) DescribeInternetServiceNameListWithOptions(request *DescribeInternetServiceNameListRequest, runtime *dara.RuntimeOptions) (_result *DescribeInternetServiceNameListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInternetServiceNameList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInternetServiceNameListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取互联网服务名称列表
+//
+// @param request - DescribeInternetServiceNameListRequest
+//
+// @return DescribeInternetServiceNameListResponse
+func (client *Client) DescribeInternetServiceNameList(request *DescribeInternetServiceNameListRequest) (_result *DescribeInternetServiceNameListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInternetServiceNameListResponse{}
+	_body, _err := client.DescribeInternetServiceNameListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取互联网SLB
+//
+// @param request - DescribeInternetSlbRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInternetSlbResponse
+func (client *Client) DescribeInternetSlbWithOptions(request *DescribeInternetSlbRequest, runtime *dara.RuntimeOptions) (_result *DescribeInternetSlbResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.IpProtocol) {
+		query["IpProtocol"] = request.IpProtocol
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.PublicIp) {
+		query["PublicIp"] = request.PublicIp
+	}
+
+	if !dara.IsNil(request.RegionNo) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInternetSlb"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInternetSlbResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取互联网SLB
+//
+// @param request - DescribeInternetSlbRequest
+//
+// @return DescribeInternetSlbResponse
+func (client *Client) DescribeInternetSlb(request *DescribeInternetSlbRequest) (_result *DescribeInternetSlbResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInternetSlbResponse{}
+	_body, _err := client.DescribeInternetSlbWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取互联网流量时间TOP
+//
+// @param request - DescribeInternetTimeTopRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInternetTimeTopResponse
+func (client *Client) DescribeInternetTimeTopWithOptions(request *DescribeInternetTimeTopRequest, runtime *dara.RuntimeOptions) (_result *DescribeInternetTimeTopResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Direction) {
+		query["Direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.IPType) {
+		query["IPType"] = request.IPType
+	}
+
+	if !dara.IsNil(request.Interval) {
+		query["Interval"] = request.Interval
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.NatIP) {
+		query["NatIP"] = request.NatIP
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.SourceCode) {
+		query["SourceCode"] = request.SourceCode
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.SrcIP) {
+		query["SrcIP"] = request.SrcIP
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TrafficTime) {
+		query["TrafficTime"] = request.TrafficTime
+	}
+
+	if !dara.IsNil(request.TrafficType) {
+		query["TrafficType"] = request.TrafficType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInternetTimeTop"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInternetTimeTopResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取互联网流量时间TOP
+//
+// @param request - DescribeInternetTimeTopRequest
+//
+// @return DescribeInternetTimeTopResponse
+func (client *Client) DescribeInternetTimeTop(request *DescribeInternetTimeTopRequest) (_result *DescribeInternetTimeTopResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInternetTimeTopResponse{}
+	_body, _err := client.DescribeInternetTimeTopWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取互联网流量TOP趋势图
+//
+// @param request - DescribeInternetTrafficTopRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInternetTrafficTopResponse
+func (client *Client) DescribeInternetTrafficTopWithOptions(request *DescribeInternetTrafficTopRequest, runtime *dara.RuntimeOptions) (_result *DescribeInternetTrafficTopResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DataType) {
+		query["DataType"] = request.DataType
+	}
+
+	if !dara.IsNil(request.Direction) {
+		query["Direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.RuleResult) {
+		query["RuleResult"] = request.RuleResult
+	}
+
+	if !dara.IsNil(request.RuleSource) {
+		query["RuleSource"] = request.RuleSource
+	}
+
+	if !dara.IsNil(request.ShowCountryName) {
+		query["ShowCountryName"] = request.ShowCountryName
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.SourceCode) {
+		query["SourceCode"] = request.SourceCode
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInternetTrafficTop"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInternetTrafficTopResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取互联网流量TOP趋势图
+//
+// @param request - DescribeInternetTrafficTopRequest
+//
+// @return DescribeInternetTrafficTopResponse
+func (client *Client) DescribeInternetTrafficTop(request *DescribeInternetTrafficTopRequest) (_result *DescribeInternetTrafficTopResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInternetTrafficTopResponse{}
+	_body, _err := client.DescribeInternetTrafficTopWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the trends of Internet traffic.
 //
 // @param request - DescribeInternetTrafficTrendRequest
@@ -7006,6 +8706,166 @@ func (client *Client) DescribeInternetTrafficTrend(request *DescribeInternetTraf
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeInternetTrafficTrendResponse{}
 	_body, _err := client.DescribeInternetTrafficTrendWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取ECS漏洞趋势
+//
+// @param request - DescribeInvadeEcsTrendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInvadeEcsTrendResponse
+func (client *Client) DescribeInvadeEcsTrendWithOptions(request *DescribeInvadeEcsTrendRequest, runtime *dara.RuntimeOptions) (_result *DescribeInvadeEcsTrendResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInvadeEcsTrend"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInvadeEcsTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取ECS漏洞趋势
+//
+// @param request - DescribeInvadeEcsTrendRequest
+//
+// @return DescribeInvadeEcsTrendResponse
+func (client *Client) DescribeInvadeEcsTrend(request *DescribeInvadeEcsTrendRequest) (_result *DescribeInvadeEcsTrendResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInvadeEcsTrendResponse{}
+	_body, _err := client.DescribeInvadeEcsTrendWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取漏洞事件详情
+//
+// @param request - DescribeInvadeEventDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInvadeEventDetailResponse
+func (client *Client) DescribeInvadeEventDetailWithOptions(request *DescribeInvadeEventDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeInvadeEventDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssetsInstanceId) {
+		query["AssetsInstanceId"] = request.AssetsInstanceId
+	}
+
+	if !dara.IsNil(request.EventUuid) {
+		query["EventUuid"] = request.EventUuid
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PublicIP) {
+		query["PublicIP"] = request.PublicIP
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInvadeEventDetail"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInvadeEventDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取漏洞事件详情
+//
+// @param request - DescribeInvadeEventDetailRequest
+//
+// @return DescribeInvadeEventDetailResponse
+func (client *Client) DescribeInvadeEventDetail(request *DescribeInvadeEventDetailRequest) (_result *DescribeInvadeEventDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInvadeEventDetailResponse{}
+	_body, _err := client.DescribeInvadeEventDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7297,6 +9157,240 @@ func (client *Client) DescribeInvadeEventStatistic(request *DescribeInvadeEventS
 
 // Summary:
 //
+// 查询IPS私网关联信息
+//
+// @param request - DescribeIpsPrivateAssocRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeIpsPrivateAssocResponse
+func (client *Client) DescribeIpsPrivateAssocWithOptions(request *DescribeIpsPrivateAssocRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpsPrivateAssocResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MemberUid) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PublicIp) {
+		query["PublicIp"] = request.PublicIp
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeIpsPrivateAssoc"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeIpsPrivateAssocResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询IPS私网关联信息
+//
+// @param request - DescribeIpsPrivateAssocRequest
+//
+// @return DescribeIpsPrivateAssocResponse
+func (client *Client) DescribeIpsPrivateAssoc(request *DescribeIpsPrivateAssocRequest) (_result *DescribeIpsPrivateAssocResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeIpsPrivateAssocResponse{}
+	_body, _err := client.DescribeIpsPrivateAssocWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取ISP信息
+//
+// @param request - DescribeIspInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeIspInfoResponse
+func (client *Client) DescribeIspInfoWithOptions(request *DescribeIspInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeIspInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceCode) {
+		query["SourceCode"] = request.SourceCode
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeIspInfo"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeIspInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取ISP信息
+//
+// @param request - DescribeIspInfoRequest
+//
+// @return DescribeIspInfoResponse
+func (client *Client) DescribeIspInfo(request *DescribeIspInfoRequest) (_result *DescribeIspInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeIspInfoResponse{}
+	_body, _err := client.DescribeIspInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取位置信息
+//
+// @param request - DescribeLocationInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLocationInfoResponse
+func (client *Client) DescribeLocationInfoWithOptions(request *DescribeLocationInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLocationInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceCode) {
+		query["SourceCode"] = request.SourceCode
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLocationInfo"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLocationInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取位置信息
+//
+// @param request - DescribeLocationInfoRequest
+//
+// @return DescribeLocationInfoResponse
+func (client *Client) DescribeLocationInfo(request *DescribeLocationInfoRequest) (_result *DescribeLocationInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeLocationInfoResponse{}
+	_body, _err := client.DescribeLocationInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get Log Service Information
 //
 // @param request - DescribeLogStoreInfoRequest
@@ -7335,6 +9429,64 @@ func (client *Client) DescribeLogStoreInfo() (_result *DescribeLogStoreInfoRespo
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeLogStoreInfoResponse{}
 	_body, _err := client.DescribeLogStoreInfoWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 免费版获取成员信息
+//
+// @param request - DescribeMemberInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMemberInfoResponse
+func (client *Client) DescribeMemberInfoWithOptions(request *DescribeMemberInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeMemberInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeMemberInfo"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeMemberInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 免费版获取成员信息
+//
+// @param request - DescribeMemberInfoRequest
+//
+// @return DescribeMemberInfoResponse
+func (client *Client) DescribeMemberInfo(request *DescribeMemberInfoRequest) (_result *DescribeMemberInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeMemberInfoResponse{}
+	_body, _err := client.DescribeMemberInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7397,6 +9549,68 @@ func (client *Client) DescribeNatAclPageStatus(request *DescribeNatAclPageStatus
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeNatAclPageStatusResponse{}
 	_body, _err := client.DescribeNatAclPageStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Nat防火墙分组列表
+//
+// @param request - DescribeNatFirewallAclGroupListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNatFirewallAclGroupListResponse
+func (client *Client) DescribeNatFirewallAclGroupListWithOptions(request *DescribeNatFirewallAclGroupListRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatFirewallAclGroupListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeNatFirewallAclGroupList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeNatFirewallAclGroupListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Nat防火墙分组列表
+//
+// @param request - DescribeNatFirewallAclGroupListRequest
+//
+// @return DescribeNatFirewallAclGroupListResponse
+func (client *Client) DescribeNatFirewallAclGroupList(request *DescribeNatFirewallAclGroupListRequest) (_result *DescribeNatFirewallAclGroupListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeNatFirewallAclGroupListResponse{}
+	_body, _err := client.DescribeNatFirewallAclGroupListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7766,6 +9980,64 @@ func (client *Client) DescribeNatFirewallPolicyPriorUsed(request *DescribeNatFir
 
 // Summary:
 //
+// 查询NAT防火墙预检查结果
+//
+// @param request - DescribeNatFirewallPrecheckDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNatFirewallPrecheckDetailResponse
+func (client *Client) DescribeNatFirewallPrecheckDetailWithOptions(request *DescribeNatFirewallPrecheckDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatFirewallPrecheckDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeNatFirewallPrecheckDetail"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeNatFirewallPrecheckDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询NAT防火墙预检查结果
+//
+// @param request - DescribeNatFirewallPrecheckDetailRequest
+//
+// @return DescribeNatFirewallPrecheckDetailResponse
+func (client *Client) DescribeNatFirewallPrecheckDetail(request *DescribeNatFirewallPrecheckDetailRequest) (_result *DescribeNatFirewallPrecheckDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeNatFirewallPrecheckDetailResponse{}
+	_body, _err := client.DescribeNatFirewallPrecheckDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取NAT防火墙配额
 //
 // @param request - DescribeNatFirewallQuotaRequest
@@ -7815,6 +10087,64 @@ func (client *Client) DescribeNatFirewallQuota(request *DescribeNatFirewallQuota
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeNatFirewallQuotaResponse{}
 	_body, _err := client.DescribeNatFirewallQuotaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询NAT防火墙时间点流量详情列表
+//
+// @param request - DescribeNatFirewallTimeTopRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNatFirewallTimeTopResponse
+func (client *Client) DescribeNatFirewallTimeTopWithOptions(request *DescribeNatFirewallTimeTopRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatFirewallTimeTopResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeNatFirewallTimeTop"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeNatFirewallTimeTopResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询NAT防火墙时间点流量详情列表
+//
+// @param request - DescribeNatFirewallTimeTopRequest
+//
+// @return DescribeNatFirewallTimeTopResponse
+func (client *Client) DescribeNatFirewallTimeTop(request *DescribeNatFirewallTimeTopRequest) (_result *DescribeNatFirewallTimeTopResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeNatFirewallTimeTopResponse{}
+	_body, _err := client.DescribeNatFirewallTimeTopWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8376,6 +10706,230 @@ func (client *Client) DescribeOutgoingAssetList(request *DescribeOutgoingAssetLi
 
 // Summary:
 //
+// 获取外联目的
+//
+// @param request - DescribeOutgoingDestinationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOutgoingDestinationResponse
+func (client *Client) DescribeOutgoingDestinationWithOptions(request *DescribeOutgoingDestinationRequest, runtime *dara.RuntimeOptions) (_result *DescribeOutgoingDestinationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AclCoverage) {
+		query["AclCoverage"] = request.AclCoverage
+	}
+
+	if !dara.IsNil(request.ApplicationName) {
+		query["ApplicationName"] = request.ApplicationName
+	}
+
+	if !dara.IsNil(request.CategoryId) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.DstIP) {
+		query["DstIP"] = request.DstIP
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.IsAITraffic) {
+		query["IsAITraffic"] = request.IsAITraffic
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.PrivateIP) {
+		query["PrivateIP"] = request.PrivateIP
+	}
+
+	if !dara.IsNil(request.PublicIP) {
+		query["PublicIP"] = request.PublicIP
+	}
+
+	if !dara.IsNil(request.SecuritySuggest) {
+		query["SecuritySuggest"] = request.SecuritySuggest
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TagId) {
+		query["TagId"] = request.TagId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOutgoingDestination"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOutgoingDestinationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取外联目的
+//
+// @param request - DescribeOutgoingDestinationRequest
+//
+// @return DescribeOutgoingDestinationResponse
+func (client *Client) DescribeOutgoingDestination(request *DescribeOutgoingDestinationRequest) (_result *DescribeOutgoingDestinationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeOutgoingDestinationResponse{}
+	_body, _err := client.DescribeOutgoingDestinationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取外联目的分类
+//
+// @param request - DescribeOutgoingDestinationCategoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOutgoingDestinationCategoryResponse
+func (client *Client) DescribeOutgoingDestinationCategoryWithOptions(request *DescribeOutgoingDestinationCategoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeOutgoingDestinationCategoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CategoryId) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !dara.IsNil(request.DstType) {
+		query["DstType"] = request.DstType
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TypeId) {
+		query["TypeId"] = request.TypeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOutgoingDestinationCategory"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOutgoingDestinationCategoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取外联目的分类
+//
+// @param request - DescribeOutgoingDestinationCategoryRequest
+//
+// @return DescribeOutgoingDestinationCategoryResponse
+func (client *Client) DescribeOutgoingDestinationCategory(request *DescribeOutgoingDestinationCategoryRequest) (_result *DescribeOutgoingDestinationCategoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeOutgoingDestinationCategoryResponse{}
+	_body, _err := client.DescribeOutgoingDestinationCategoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get details of outgoing destination IPs
 //
 // @param request - DescribeOutgoingDestinationIPRequest
@@ -8481,6 +11035,128 @@ func (client *Client) DescribeOutgoingDestinationIP(request *DescribeOutgoingDes
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeOutgoingDestinationIPResponse{}
 	_body, _err := client.DescribeOutgoingDestinationIPWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取外联目的IP详情
+//
+// @param request - DescribeOutgoingDestinationIPDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOutgoingDestinationIPDetailResponse
+func (client *Client) DescribeOutgoingDestinationIPDetailWithOptions(request *DescribeOutgoingDestinationIPDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeOutgoingDestinationIPDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AclCoverage) {
+		query["AclCoverage"] = request.AclCoverage
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.DstIP) {
+		query["DstIP"] = request.DstIP
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.IPType) {
+		query["IPType"] = request.IPType
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.NatGatewayId) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PrivateIP) {
+		query["PrivateIP"] = request.PrivateIP
+	}
+
+	if !dara.IsNil(request.PublicIP) {
+		query["PublicIP"] = request.PublicIP
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TagId) {
+		query["TagId"] = request.TagId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOutgoingDestinationIPDetail"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOutgoingDestinationIPDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取外联目的IP详情
+//
+// @param request - DescribeOutgoingDestinationIPDetailRequest
+//
+// @return DescribeOutgoingDestinationIPDetailResponse
+func (client *Client) DescribeOutgoingDestinationIPDetail(request *DescribeOutgoingDestinationIPDetailRequest) (_result *DescribeOutgoingDestinationIPDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeOutgoingDestinationIPDetailResponse{}
+	_body, _err := client.DescribeOutgoingDestinationIPDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8726,6 +11402,142 @@ func (client *Client) DescribeOutgoingDomainDetail(request *DescribeOutgoingDoma
 
 // Summary:
 //
+// 获取外联风险域名与IP数
+//
+// @param request - DescribeOutgoingRiskDomainAndIpCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOutgoingRiskDomainAndIpCountResponse
+func (client *Client) DescribeOutgoingRiskDomainAndIpCountWithOptions(request *DescribeOutgoingRiskDomainAndIpCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeOutgoingRiskDomainAndIpCountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOutgoingRiskDomainAndIpCount"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOutgoingRiskDomainAndIpCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取外联风险域名与IP数
+//
+// @param request - DescribeOutgoingRiskDomainAndIpCountRequest
+//
+// @return DescribeOutgoingRiskDomainAndIpCountResponse
+func (client *Client) DescribeOutgoingRiskDomainAndIpCount(request *DescribeOutgoingRiskDomainAndIpCountRequest) (_result *DescribeOutgoingRiskDomainAndIpCountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeOutgoingRiskDomainAndIpCountResponse{}
+	_body, _err := client.DescribeOutgoingRiskDomainAndIpCountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取外联风险趋势图
+//
+// @param request - DescribeOutgoingRiskTrendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOutgoingRiskTrendResponse
+func (client *Client) DescribeOutgoingRiskTrendWithOptions(request *DescribeOutgoingRiskTrendRequest, runtime *dara.RuntimeOptions) (_result *DescribeOutgoingRiskTrendResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOutgoingRiskTrend"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOutgoingRiskTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取外联风险趋势图
+//
+// @param request - DescribeOutgoingRiskTrendRequest
+//
+// @return DescribeOutgoingRiskTrendResponse
+func (client *Client) DescribeOutgoingRiskTrend(request *DescribeOutgoingRiskTrendRequest) (_result *DescribeOutgoingRiskTrendResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeOutgoingRiskTrendResponse{}
+	_body, _err := client.DescribeOutgoingRiskTrendWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取外联统计
 //
 // @param request - DescribeOutgoingStatisticRequest
@@ -8888,6 +11700,8 @@ func (client *Client) DescribeOutgoingTag(request *DescribeOutgoingTagRequest) (
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribePageDocuments is deprecated
+//
 // Summary:
 //
 // 获取文档
@@ -8952,6 +11766,8 @@ func (client *Client) DescribePageDocumentsWithOptions(request *DescribePageDocu
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribePageDocuments is deprecated
+//
 // Summary:
 //
 // 获取文档
@@ -8959,6 +11775,7 @@ func (client *Client) DescribePageDocumentsWithOptions(request *DescribePageDocu
 // @param request - DescribePageDocumentsRequest
 //
 // @return DescribePageDocumentsResponse
+// Deprecated
 func (client *Client) DescribePageDocuments(request *DescribePageDocumentsRequest) (_result *DescribePageDocumentsResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribePageDocumentsResponse{}
@@ -9139,6 +11956,64 @@ func (client *Client) DescribePolicyPriorUsed(request *DescribePolicyPriorUsedRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribePolicyPriorUsedResponse{}
 	_body, _err := client.DescribePolicyPriorUsedWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 按量付费是否开启过防护
+//
+// @param request - DescribePostpayEnabledProtectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePostpayEnabledProtectionResponse
+func (client *Client) DescribePostpayEnabledProtectionWithOptions(request *DescribePostpayEnabledProtectionRequest, runtime *dara.RuntimeOptions) (_result *DescribePostpayEnabledProtectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePostpayEnabledProtection"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePostpayEnabledProtectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 按量付费是否开启过防护
+//
+// @param request - DescribePostpayEnabledProtectionRequest
+//
+// @return DescribePostpayEnabledProtectionResponse
+func (client *Client) DescribePostpayEnabledProtection(request *DescribePostpayEnabledProtectionRequest) (_result *DescribePostpayEnabledProtectionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePostpayEnabledProtectionResponse{}
+	_body, _err := client.DescribePostpayEnabledProtectionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9726,6 +12601,72 @@ func (client *Client) DescribePrivateDnsEndpointList(request *DescribePrivateDns
 
 // Summary:
 //
+// 查询私有DNS的统计信息
+//
+// @param request - DescribePrivateDnsStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePrivateDnsStatisticsResponse
+func (client *Client) DescribePrivateDnsStatisticsWithOptions(request *DescribePrivateDnsStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribePrivateDnsStatisticsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DomainNameCreatedEndTime) {
+		query["DomainNameCreatedEndTime"] = request.DomainNameCreatedEndTime
+	}
+
+	if !dara.IsNil(request.DomainNameCreatedStartTime) {
+		query["DomainNameCreatedStartTime"] = request.DomainNameCreatedStartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePrivateDnsStatistics"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePrivateDnsStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询私有DNS的统计信息
+//
+// @param request - DescribePrivateDnsStatisticsRequest
+//
+// @return DescribePrivateDnsStatisticsResponse
+func (client *Client) DescribePrivateDnsStatistics(request *DescribePrivateDnsStatisticsRequest) (_result *DescribePrivateDnsStatisticsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePrivateDnsStatisticsResponse{}
+	_body, _err := client.DescribePrivateDnsStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取地域信息
 //
 // @param request - DescribeRegionInfoRequest
@@ -10130,6 +13071,186 @@ func (client *Client) DescribeRiskEventPayload(request *DescribeRiskEventPayload
 
 // Summary:
 //
+// 获取风险事件统计
+//
+// @param request - DescribeRiskEventStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRiskEventStatisticResponse
+func (client *Client) DescribeRiskEventStatisticWithOptions(request *DescribeRiskEventStatisticRequest, runtime *dara.RuntimeOptions) (_result *DescribeRiskEventStatisticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AttackApp) {
+		query["AttackApp"] = request.AttackApp
+	}
+
+	if !dara.IsNil(request.AttackType) {
+		query["AttackType"] = request.AttackType
+	}
+
+	if !dara.IsNil(request.BuyVersion) {
+		query["BuyVersion"] = request.BuyVersion
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRiskEventStatistic"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRiskEventStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取风险事件统计
+//
+// @param request - DescribeRiskEventStatisticRequest
+//
+// @return DescribeRiskEventStatisticResponse
+func (client *Client) DescribeRiskEventStatistic(request *DescribeRiskEventStatisticRequest) (_result *DescribeRiskEventStatisticResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeRiskEventStatisticResponse{}
+	_body, _err := client.DescribeRiskEventStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Top风险事件攻击APP
+//
+// @param request - DescribeRiskEventTopAttackAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRiskEventTopAttackAppResponse
+func (client *Client) DescribeRiskEventTopAttackAppWithOptions(request *DescribeRiskEventTopAttackAppRequest, runtime *dara.RuntimeOptions) (_result *DescribeRiskEventTopAttackAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AttackApp) {
+		query["AttackApp"] = request.AttackApp
+	}
+
+	if !dara.IsNil(request.AttackType) {
+		query["AttackType"] = request.AttackType
+	}
+
+	if !dara.IsNil(request.BuyVersion) {
+		query["BuyVersion"] = request.BuyVersion
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRiskEventTopAttackApp"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRiskEventTopAttackAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Top风险事件攻击APP
+//
+// @param request - DescribeRiskEventTopAttackAppRequest
+//
+// @return DescribeRiskEventTopAttackAppResponse
+func (client *Client) DescribeRiskEventTopAttackApp(request *DescribeRiskEventTopAttackAppRequest) (_result *DescribeRiskEventTopAttackAppResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeRiskEventTopAttackAppResponse{}
+	_body, _err := client.DescribeRiskEventTopAttackAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取Top风险事件资产
 //
 // @param request - DescribeRiskEventTopAttackAssetRequest
@@ -10220,6 +13341,90 @@ func (client *Client) DescribeRiskEventTopAttackAsset(request *DescribeRiskEvent
 
 // Summary:
 //
+// 获取Top风险事件类型
+//
+// @param request - DescribeRiskEventTopAttackTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRiskEventTopAttackTypeResponse
+func (client *Client) DescribeRiskEventTopAttackTypeWithOptions(request *DescribeRiskEventTopAttackTypeRequest, runtime *dara.RuntimeOptions) (_result *DescribeRiskEventTopAttackTypeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BuyVersion) {
+		query["BuyVersion"] = request.BuyVersion
+	}
+
+	if !dara.IsNil(request.Direction) {
+		query["Direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRiskEventTopAttackType"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRiskEventTopAttackTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Top风险事件类型
+//
+// @param request - DescribeRiskEventTopAttackTypeRequest
+//
+// @return DescribeRiskEventTopAttackTypeResponse
+func (client *Client) DescribeRiskEventTopAttackType(request *DescribeRiskEventTopAttackTypeRequest) (_result *DescribeRiskEventTopAttackTypeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeRiskEventTopAttackTypeResponse{}
+	_body, _err := client.DescribeRiskEventTopAttackTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Deprecated: OpenAPI DescribeRiskSecurityGroupDetail is deprecated
+//
+// Summary:
+//
 // 获取风险安全组详情
 //
 // @param request - DescribeRiskSecurityGroupDetailRequest
@@ -10294,6 +13499,8 @@ func (client *Client) DescribeRiskSecurityGroupDetailWithOptions(request *Descri
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeRiskSecurityGroupDetail is deprecated
+//
 // Summary:
 //
 // 获取风险安全组详情
@@ -10301,10 +13508,441 @@ func (client *Client) DescribeRiskSecurityGroupDetailWithOptions(request *Descri
 // @param request - DescribeRiskSecurityGroupDetailRequest
 //
 // @return DescribeRiskSecurityGroupDetailResponse
+// Deprecated
 func (client *Client) DescribeRiskSecurityGroupDetail(request *DescribeRiskSecurityGroupDetailRequest) (_result *DescribeRiskSecurityGroupDetailResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeRiskSecurityGroupDetailResponse{}
 	_body, _err := client.DescribeRiskSecurityGroupDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据泄露的敏感数据事件列表
+//
+// @param request - DescribeSdlEventDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSdlEventDetailResponse
+func (client *Client) DescribeSdlEventDetailWithOptions(request *DescribeSdlEventDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeSdlEventDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.DstIp) {
+		query["DstIp"] = request.DstIp
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SrcIp) {
+		query["SrcIp"] = request.SrcIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSdlEventDetail"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSdlEventDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据泄露的敏感数据事件列表
+//
+// @param request - DescribeSdlEventDetailRequest
+//
+// @return DescribeSdlEventDetailResponse
+func (client *Client) DescribeSdlEventDetail(request *DescribeSdlEventDetailRequest) (_result *DescribeSdlEventDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSdlEventDetailResponse{}
+	_body, _err := client.DescribeSdlEventDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据泄露事件列表
+//
+// @param request - DescribeSdlEventListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSdlEventListResponse
+func (client *Client) DescribeSdlEventListWithOptions(request *DescribeSdlEventListRequest, runtime *dara.RuntimeOptions) (_result *DescribeSdlEventListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.DstIp) {
+		query["DstIp"] = request.DstIp
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Location) {
+		query["Location"] = request.Location
+	}
+
+	if !dara.IsNil(request.OnlyAiEvt) {
+		query["OnlyAiEvt"] = request.OnlyAiEvt
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SensitiveLevel) {
+		query["SensitiveLevel"] = request.SensitiveLevel
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.SrcIp) {
+		query["SrcIp"] = request.SrcIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSdlEventList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSdlEventListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据泄露事件列表
+//
+// @param request - DescribeSdlEventListRequest
+//
+// @return DescribeSdlEventListResponse
+func (client *Client) DescribeSdlEventList(request *DescribeSdlEventListRequest) (_result *DescribeSdlEventListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSdlEventListResponse{}
+	_body, _err := client.DescribeSdlEventListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据泄露的敏感数据列表
+//
+// @param request - DescribeSdlEventSdListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSdlEventSdListResponse
+func (client *Client) DescribeSdlEventSdListWithOptions(request *DescribeSdlEventSdListRequest, runtime *dara.RuntimeOptions) (_result *DescribeSdlEventSdListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.DstIp) {
+		query["DstIp"] = request.DstIp
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SrcIp) {
+		query["SrcIp"] = request.SrcIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSdlEventSdList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSdlEventSdListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据泄露的敏感数据列表
+//
+// @param request - DescribeSdlEventSdListRequest
+//
+// @return DescribeSdlEventSdListResponse
+func (client *Client) DescribeSdlEventSdList(request *DescribeSdlEventSdListRequest) (_result *DescribeSdlEventSdListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSdlEventSdListResponse{}
+	_body, _err := client.DescribeSdlEventSdListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据泄露事件统计数据
+//
+// @param request - DescribeSdlEventStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSdlEventStatisticResponse
+func (client *Client) DescribeSdlEventStatisticWithOptions(request *DescribeSdlEventStatisticRequest, runtime *dara.RuntimeOptions) (_result *DescribeSdlEventStatisticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSdlEventStatistic"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSdlEventStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据泄露事件统计数据
+//
+// @param request - DescribeSdlEventStatisticRequest
+//
+// @return DescribeSdlEventStatisticResponse
+func (client *Client) DescribeSdlEventStatistic(request *DescribeSdlEventStatisticRequest) (_result *DescribeSdlEventStatisticResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSdlEventStatisticResponse{}
+	_body, _err := client.DescribeSdlEventStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据泄露事件类型分布/资产TOP/目的TOP
+//
+// @param request - DescribeSdlStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSdlStatisticResponse
+func (client *Client) DescribeSdlStatisticWithOptions(request *DescribeSdlStatisticRequest, runtime *dara.RuntimeOptions) (_result *DescribeSdlStatisticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSdlStatistic"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSdlStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据泄露事件类型分布/资产TOP/目的TOP
+//
+// @param request - DescribeSdlStatisticRequest
+//
+// @return DescribeSdlStatisticResponse
+func (client *Client) DescribeSdlStatistic(request *DescribeSdlStatisticRequest) (_result *DescribeSdlStatisticResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSdlStatisticResponse{}
+	_body, _err := client.DescribeSdlStatisticWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10378,6 +14016,8 @@ func (client *Client) DescribeSecurityMode(request *DescribeSecurityModeRequest)
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeSecurityProxy is deprecated, please use Cloudfw::2017-12-07::DescribeNatFirewallList instead.
+//
 // Summary:
 //
 // 获取正向代理
@@ -10462,6 +14102,8 @@ func (client *Client) DescribeSecurityProxyWithOptions(request *DescribeSecurity
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeSecurityProxy is deprecated, please use Cloudfw::2017-12-07::DescribeNatFirewallList instead.
+//
 // Summary:
 //
 // 获取正向代理
@@ -10469,10 +14111,171 @@ func (client *Client) DescribeSecurityProxyWithOptions(request *DescribeSecurity
 // @param request - DescribeSecurityProxyRequest
 //
 // @return DescribeSecurityProxyResponse
+// Deprecated
 func (client *Client) DescribeSecurityProxy(request *DescribeSecurityProxyRequest) (_result *DescribeSecurityProxyResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeSecurityProxyResponse{}
 	_body, _err := client.DescribeSecurityProxyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取正向代理资源
+//
+// @param request - DescribeSecurityProxyResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSecurityProxyResourcesResponse
+func (client *Client) DescribeSecurityProxyResourcesWithOptions(request *DescribeSecurityProxyResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityProxyResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MemberUid) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !dara.IsNil(request.NatGatewayId) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSecurityProxyResources"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSecurityProxyResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取正向代理资源
+//
+// @param request - DescribeSecurityProxyResourcesRequest
+//
+// @return DescribeSecurityProxyResourcesResponse
+func (client *Client) DescribeSecurityProxyResources(request *DescribeSecurityProxyResourcesRequest) (_result *DescribeSecurityProxyResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSecurityProxyResourcesResponse{}
+	_body, _err := client.DescribeSecurityProxyResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取敏感数据类别开关
+//
+// @param request - DescribeSensitiveSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSensitiveSwitchResponse
+func (client *Client) DescribeSensitiveSwitchWithOptions(request *DescribeSensitiveSwitchRequest, runtime *dara.RuntimeOptions) (_result *DescribeSensitiveSwitchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CategoryName) {
+		query["CategoryName"] = request.CategoryName
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ParentCategory) {
+		query["ParentCategory"] = request.ParentCategory
+	}
+
+	if !dara.IsNil(request.SensitiveCategory) {
+		query["SensitiveCategory"] = request.SensitiveCategory
+	}
+
+	if !dara.IsNil(request.SensitiveLevel) {
+		query["SensitiveLevel"] = request.SensitiveLevel
+	}
+
+	if !dara.IsNil(request.SwitchStatus) {
+		query["SwitchStatus"] = request.SwitchStatus
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSensitiveSwitch"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSensitiveSwitchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取敏感数据类别开关
+//
+// @param request - DescribeSensitiveSwitchRequest
+//
+// @return DescribeSensitiveSwitchResponse
+func (client *Client) DescribeSensitiveSwitch(request *DescribeSensitiveSwitchRequest) (_result *DescribeSensitiveSwitchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSensitiveSwitchResponse{}
+	_body, _err := client.DescribeSensitiveSwitchWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10520,6 +14323,72 @@ func (client *Client) DescribeSignatureLibVersion() (_result *DescribeSignatureL
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeSignatureLibVersionResponse{}
 	_body, _err := client.DescribeSignatureLibVersionWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户SLR授权信息
+//
+// @param request - DescribeSlrGrantRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlrGrantResponse
+func (client *Client) DescribeSlrGrantWithOptions(request *DescribeSlrGrantRequest, runtime *dara.RuntimeOptions) (_result *DescribeSlrGrantResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSlrGrant"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSlrGrantResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户SLR授权信息
+//
+// @param request - DescribeSlrGrantRequest
+//
+// @return DescribeSlrGrantResponse
+func (client *Client) DescribeSlrGrant(request *DescribeSlrGrantRequest) (_result *DescribeSlrGrantResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSlrGrantResponse{}
+	_body, _err := client.DescribeSlrGrantWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11042,6 +14911,392 @@ func (client *Client) DescribeTrFirewallsV2RouteList(request *DescribeTrFirewall
 
 // Summary:
 //
+// 查询日志
+//
+// @param request - DescribeTrafficLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTrafficLogResponse
+func (client *Client) DescribeTrafficLogWithOptions(request *DescribeTrafficLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeTrafficLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AclPreRuleId) {
+		query["AclPreRuleId"] = request.AclPreRuleId
+	}
+
+	if !dara.IsNil(request.AclPreState) {
+		query["AclPreState"] = request.AclPreState
+	}
+
+	if !dara.IsNil(request.AppDpiState) {
+		query["AppDpiState"] = request.AppDpiState
+	}
+
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AssetRegion) {
+		query["AssetRegion"] = request.AssetRegion
+	}
+
+	if !dara.IsNil(request.AttackType) {
+		query["AttackType"] = request.AttackType
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Direction) {
+		query["Direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.DomainUrl) {
+		query["DomainUrl"] = request.DomainUrl
+	}
+
+	if !dara.IsNil(request.DstIP) {
+		query["DstIP"] = request.DstIP
+	}
+
+	if !dara.IsNil(request.DstPort) {
+		query["DstPort"] = request.DstPort
+	}
+
+	if !dara.IsNil(request.DstVpcId) {
+		query["DstVpcId"] = request.DstVpcId
+	}
+
+	if !dara.IsNil(request.DstVpcRegionNo) {
+		query["DstVpcRegionNo"] = request.DstVpcRegionNo
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.FirewallType) {
+		query["FirewallType"] = request.FirewallType
+	}
+
+	if !dara.IsNil(request.FlowType) {
+		query["FlowType"] = request.FlowType
+	}
+
+	if !dara.IsNil(request.IpProtocol) {
+		query["IpProtocol"] = request.IpProtocol
+	}
+
+	if !dara.IsNil(request.IpVersion) {
+		query["IpVersion"] = request.IpVersion
+	}
+
+	if !dara.IsNil(request.Isp) {
+		query["Isp"] = request.Isp
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Location) {
+		query["Location"] = request.Location
+	}
+
+	if !dara.IsNil(request.MemberUid) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !dara.IsNil(request.NatFirewallId) {
+		query["NatFirewallId"] = request.NatFirewallId
+	}
+
+	if !dara.IsNil(request.NatGatewayId) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RuleId) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !dara.IsNil(request.RuleResult) {
+		query["RuleResult"] = request.RuleResult
+	}
+
+	if !dara.IsNil(request.RuleSource) {
+		query["RuleSource"] = request.RuleSource
+	}
+
+	if !dara.IsNil(request.SourceCode) {
+		query["SourceCode"] = request.SourceCode
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.SrcIP) {
+		query["SrcIP"] = request.SrcIP
+	}
+
+	if !dara.IsNil(request.SrcPort) {
+		query["SrcPort"] = request.SrcPort
+	}
+
+	if !dara.IsNil(request.SrcPrivateIP) {
+		query["SrcPrivateIP"] = request.SrcPrivateIP
+	}
+
+	if !dara.IsNil(request.SrcVpcId) {
+		query["SrcVpcId"] = request.SrcVpcId
+	}
+
+	if !dara.IsNil(request.SrcVpcRegionNo) {
+		query["SrcVpcRegionNo"] = request.SrcVpcRegionNo
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TlsScopeId) {
+		query["TlsScopeId"] = request.TlsScopeId
+	}
+
+	if !dara.IsNil(request.VpcFirewallId) {
+		query["VpcFirewallId"] = request.VpcFirewallId
+	}
+
+	if !dara.IsNil(request.VulLevel) {
+		query["VulLevel"] = request.VulLevel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTrafficLog"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTrafficLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询日志
+//
+// @param request - DescribeTrafficLogRequest
+//
+// @return DescribeTrafficLogResponse
+func (client *Client) DescribeTrafficLog(request *DescribeTrafficLogRequest) (_result *DescribeTrafficLogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeTrafficLogResponse{}
+	_body, _err := client.DescribeTrafficLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取TR交换机资源列表
+//
+// @param request - DescribeTransitRouterResourcesListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTransitRouterResourcesListResponse
+func (client *Client) DescribeTransitRouterResourcesListWithOptions(request *DescribeTransitRouterResourcesListRequest, runtime *dara.RuntimeOptions) (_result *DescribeTransitRouterResourcesListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CenId) {
+		query["CenId"] = request.CenId
+	}
+
+	if !dara.IsNil(request.FirewallId) {
+		query["FirewallId"] = request.FirewallId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegionNo) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TransitRouterId) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTransitRouterResourcesList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTransitRouterResourcesListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取TR交换机资源列表
+//
+// @param request - DescribeTransitRouterResourcesListRequest
+//
+// @return DescribeTransitRouterResourcesListResponse
+func (client *Client) DescribeTransitRouterResourcesList(request *DescribeTransitRouterResourcesListRequest) (_result *DescribeTransitRouterResourcesListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeTransitRouterResourcesListResponse{}
+	_body, _err := client.DescribeTransitRouterResourcesListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取未保护的端口趋势
+//
+// @param request - DescribeUnprotectedPortTrendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUnprotectedPortTrendResponse
+func (client *Client) DescribeUnprotectedPortTrendWithOptions(request *DescribeUnprotectedPortTrendRequest, runtime *dara.RuntimeOptions) (_result *DescribeUnprotectedPortTrendResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeUnprotectedPortTrend"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeUnprotectedPortTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取未保护的端口趋势
+//
+// @param request - DescribeUnprotectedPortTrendRequest
+//
+// @return DescribeUnprotectedPortTrendResponse
+func (client *Client) DescribeUnprotectedPortTrend(request *DescribeUnprotectedPortTrendRequest) (_result *DescribeUnprotectedPortTrendResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeUnprotectedPortTrendResponse{}
+	_body, _err := client.DescribeUnprotectedPortTrendWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取未保护漏洞趋势
 //
 // @param request - DescribeUnprotectedVulnTrendRequest
@@ -11188,6 +15443,8 @@ func (client *Client) DescribeUserAlarmConfig(request *DescribeUserAlarmConfigRe
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeUserAssetIPTrafficInfo is deprecated
+//
 // Summary:
 //
 // Queries the information about the traffic of a specified asset that belongs to your Alibaba Cloud account.
@@ -11228,6 +15485,8 @@ func (client *Client) DescribeUserAssetIPTrafficInfoWithOptions(request *Describ
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeUserAssetIPTrafficInfo is deprecated
+//
 // Summary:
 //
 // Queries the information about the traffic of a specified asset that belongs to your Alibaba Cloud account.
@@ -11235,6 +15494,7 @@ func (client *Client) DescribeUserAssetIPTrafficInfoWithOptions(request *Describ
 // @param request - DescribeUserAssetIPTrafficInfoRequest
 //
 // @return DescribeUserAssetIPTrafficInfoResponse
+// Deprecated
 func (client *Client) DescribeUserAssetIPTrafficInfo(request *DescribeUserAssetIPTrafficInfoRequest) (_result *DescribeUserAssetIPTrafficInfoResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeUserAssetIPTrafficInfoResponse{}
@@ -11387,6 +15647,64 @@ func (client *Client) DescribeUserIPSWhitelist(request *DescribeUserIPSWhitelist
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeUserIPSWhitelistResponse{}
 	_body, _err := client.DescribeUserIPSWhitelistWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # VPC防火墙IP配置列表
+//
+// @param request - DescribeVfwIPSConfigListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVfwIPSConfigListResponse
+func (client *Client) DescribeVfwIPSConfigListWithOptions(request *DescribeVfwIPSConfigListRequest, runtime *dara.RuntimeOptions) (_result *DescribeVfwIPSConfigListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVfwIPSConfigList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVfwIPSConfigListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # VPC防火墙IP配置列表
+//
+// @param request - DescribeVfwIPSConfigListRequest
+//
+// @return DescribeVfwIPSConfigListResponse
+func (client *Client) DescribeVfwIPSConfigList(request *DescribeVfwIPSConfigListRequest) (_result *DescribeVfwIPSConfigListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeVfwIPSConfigListResponse{}
+	_body, _err := client.DescribeVfwIPSConfigListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11611,6 +15929,198 @@ func (client *Client) DescribeVpcFirewallAclGroupList(request *DescribeVpcFirewa
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeVpcFirewallAclGroupListResponse{}
 	_body, _err := client.DescribeVpcFirewallAclGroupListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取VPC防火墙资产列表
+//
+// @param request - DescribeVpcFirewallAssetListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVpcFirewallAssetListResponse
+func (client *Client) DescribeVpcFirewallAssetListWithOptions(request *DescribeVpcFirewallAssetListRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallAssetListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.AssetIP) {
+		query["AssetIP"] = request.AssetIP
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Direction) {
+		query["Direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.EcsInstanceId) {
+		query["EcsInstanceId"] = request.EcsInstanceId
+	}
+
+	if !dara.IsNil(request.EcsInstanceName) {
+		query["EcsInstanceName"] = request.EcsInstanceName
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.IPProtocol) {
+		query["IPProtocol"] = request.IPProtocol
+	}
+
+	if !dara.IsNil(request.IsAITraffic) {
+		query["IsAITraffic"] = request.IsAITraffic
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PeerVpcId) {
+		query["PeerVpcId"] = request.PeerVpcId
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.RiskLevel) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVpcFirewallAssetList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVpcFirewallAssetListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取VPC防火墙资产列表
+//
+// @param request - DescribeVpcFirewallAssetListRequest
+//
+// @return DescribeVpcFirewallAssetListResponse
+func (client *Client) DescribeVpcFirewallAssetList(request *DescribeVpcFirewallAssetListRequest) (_result *DescribeVpcFirewallAssetListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeVpcFirewallAssetListResponse{}
+	_body, _err := client.DescribeVpcFirewallAssetListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询VPC防火墙资产地域
+//
+// @param request - DescribeVpcFirewallAssetRegionListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVpcFirewallAssetRegionListResponse
+func (client *Client) DescribeVpcFirewallAssetRegionListWithOptions(request *DescribeVpcFirewallAssetRegionListRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallAssetRegionListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVpcFirewallAssetRegionList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVpcFirewallAssetRegionListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询VPC防火墙资产地域
+//
+// @param request - DescribeVpcFirewallAssetRegionListRequest
+//
+// @return DescribeVpcFirewallAssetRegionListResponse
+func (client *Client) DescribeVpcFirewallAssetRegionList(request *DescribeVpcFirewallAssetRegionListRequest) (_result *DescribeVpcFirewallAssetRegionListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeVpcFirewallAssetRegionListResponse{}
+	_body, _err := client.DescribeVpcFirewallAssetRegionListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12228,6 +16738,64 @@ func (client *Client) DescribeVpcFirewallDetail(request *DescribeVpcFirewallDeta
 
 // Summary:
 //
+// 概览页-vpc防火墙拦截趋势
+//
+// @param request - DescribeVpcFirewallDropTrafficTrendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVpcFirewallDropTrafficTrendResponse
+func (client *Client) DescribeVpcFirewallDropTrafficTrendWithOptions(request *DescribeVpcFirewallDropTrafficTrendRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallDropTrafficTrendResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVpcFirewallDropTrafficTrend"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVpcFirewallDropTrafficTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 概览页-vpc防火墙拦截趋势
+//
+// @param request - DescribeVpcFirewallDropTrafficTrendRequest
+//
+// @return DescribeVpcFirewallDropTrafficTrendResponse
+func (client *Client) DescribeVpcFirewallDropTrafficTrend(request *DescribeVpcFirewallDropTrafficTrendRequest) (_result *DescribeVpcFirewallDropTrafficTrendResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeVpcFirewallDropTrafficTrendResponse{}
+	_body, _err := client.DescribeVpcFirewallDropTrafficTrendWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the IPS whitelist of a virtual private cloud (VPC) firewall.
 //
 // @param request - DescribeVpcFirewallIPSWhitelistRequest
@@ -12420,6 +16988,88 @@ func (client *Client) DescribeVpcFirewallList(request *DescribeVpcFirewallListRe
 
 // Summary:
 //
+// 获取防火墙手动交换机列表
+//
+// @param request - DescribeVpcFirewallManualVSwitchListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVpcFirewallManualVSwitchListResponse
+func (client *Client) DescribeVpcFirewallManualVSwitchListWithOptions(request *DescribeVpcFirewallManualVSwitchListRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallManualVSwitchListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MemberUid) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionNo) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVpcFirewallManualVSwitchList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVpcFirewallManualVSwitchListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取防火墙手动交换机列表
+//
+// @param request - DescribeVpcFirewallManualVSwitchListRequest
+//
+// @return DescribeVpcFirewallManualVSwitchListResponse
+func (client *Client) DescribeVpcFirewallManualVSwitchList(request *DescribeVpcFirewallManualVSwitchListRequest) (_result *DescribeVpcFirewallManualVSwitchListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeVpcFirewallManualVSwitchListResponse{}
+	_body, _err := client.DescribeVpcFirewallManualVSwitchListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the priority range of access control policies that are created for a virtual private cloud (VPC) firewall in a specific policy group.
 //
 // Description:
@@ -12502,6 +17152,96 @@ func (client *Client) DescribeVpcFirewallPolicyPriorUsed(request *DescribeVpcFir
 
 // Summary:
 //
+// 获取VPC防火墙预检查详情
+//
+// @param request - DescribeVpcFirewallPrecheckDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVpcFirewallPrecheckDetailResponse
+func (client *Client) DescribeVpcFirewallPrecheckDetailWithOptions(request *DescribeVpcFirewallPrecheckDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallPrecheckDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CenId) {
+		query["CenId"] = request.CenId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MemberUid) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !dara.IsNil(request.NetworkInstanceType) {
+		query["NetworkInstanceType"] = request.NetworkInstanceType
+	}
+
+	if !dara.IsNil(request.Region) {
+		query["Region"] = request.Region
+	}
+
+	if !dara.IsNil(request.TransitRouterId) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVpcFirewallPrecheckDetail"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVpcFirewallPrecheckDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取VPC防火墙预检查详情
+//
+// @param request - DescribeVpcFirewallPrecheckDetailRequest
+//
+// @return DescribeVpcFirewallPrecheckDetailResponse
+func (client *Client) DescribeVpcFirewallPrecheckDetail(request *DescribeVpcFirewallPrecheckDetailRequest) (_result *DescribeVpcFirewallPrecheckDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeVpcFirewallPrecheckDetailResponse{}
+	_body, _err := client.DescribeVpcFirewallPrecheckDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取VPC防火墙总结信息
 //
 // @param request - DescribeVpcFirewallSummaryInfoRequest
@@ -12563,6 +17303,92 @@ func (client *Client) DescribeVpcFirewallSummaryInfo(request *DescribeVpcFirewal
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeVpcFirewallSummaryInfoResponse{}
 	_body, _err := client.DescribeVpcFirewallSummaryInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询VPC防火墙资源可用区
+//
+// @param request - DescribeVpcFirewallZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVpcFirewallZoneResponse
+func (client *Client) DescribeVpcFirewallZoneWithOptions(request *DescribeVpcFirewallZoneRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallZoneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CenId) {
+		query["CenId"] = request.CenId
+	}
+
+	if !dara.IsNil(request.Environment) {
+		query["Environment"] = request.Environment
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MemberUid) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !dara.IsNil(request.RegionNo) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.TransitRouterId) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVpcFirewallZone"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVpcFirewallZoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询VPC防火墙资源可用区
+//
+// @param request - DescribeVpcFirewallZoneRequest
+//
+// @return DescribeVpcFirewallZoneResponse
+func (client *Client) DescribeVpcFirewallZone(request *DescribeVpcFirewallZoneRequest) (_result *DescribeVpcFirewallZoneResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeVpcFirewallZoneResponse{}
+	_body, _err := client.DescribeVpcFirewallZoneWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12849,6 +17675,72 @@ func (client *Client) DescribeVulnerabilityProtectedList(request *DescribeVulner
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeVulnerabilityProtectedListResponse{}
 	_body, _err := client.DescribeVulnerabilityProtectedListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭资产数据泄漏保护
+//
+// @param request - DisableSdlProtectedAssetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableSdlProtectedAssetResponse
+func (client *Client) DisableSdlProtectedAssetWithOptions(request *DisableSdlProtectedAssetRequest, runtime *dara.RuntimeOptions) (_result *DisableSdlProtectedAssetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IpList) {
+		query["IpList"] = request.IpList
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableSdlProtectedAsset"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableSdlProtectedAssetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭资产数据泄漏保护
+//
+// @param request - DisableSdlProtectedAssetRequest
+//
+// @return DisableSdlProtectedAssetResponse
+func (client *Client) DisableSdlProtectedAsset(request *DisableSdlProtectedAssetRequest) (_result *DisableSdlProtectedAssetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisableSdlProtectedAssetResponse{}
+	_body, _err := client.DisableSdlProtectedAssetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13342,6 +18234,8 @@ func (client *Client) ModifyControlPolicy(request *ModifyControlPolicyRequest) (
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ModifyControlPolicyPosition is deprecated, please use Cloudfw::2017-12-07::ModifyControlPolicyPriority instead.
+//
 // Summary:
 //
 // Modifies the priority of an IPv4 access control policy for the Internet firewall. An IPv4 access control policy refers to a policy whose source IP address and destination IP address are IPv4 addresses.
@@ -13410,6 +18304,8 @@ func (client *Client) ModifyControlPolicyPositionWithOptions(request *ModifyCont
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ModifyControlPolicyPosition is deprecated, please use Cloudfw::2017-12-07::ModifyControlPolicyPriority instead.
+//
 // Summary:
 //
 // Modifies the priority of an IPv4 access control policy for the Internet firewall. An IPv4 access control policy refers to a policy whose source IP address and destination IP address are IPv4 addresses.
@@ -13425,6 +18321,7 @@ func (client *Client) ModifyControlPolicyPositionWithOptions(request *ModifyCont
 // @param request - ModifyControlPolicyPositionRequest
 //
 // @return ModifyControlPolicyPositionResponse
+// Deprecated
 func (client *Client) ModifyControlPolicyPosition(request *ModifyControlPolicyPositionRequest) (_result *ModifyControlPolicyPositionResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyControlPolicyPositionResponse{}
@@ -13839,6 +18736,92 @@ func (client *Client) ModifyInstanceMemberAttributes(request *ModifyInstanceMemb
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyInstanceMemberAttributesResponse{}
 	_body, _err := client.ModifyInstanceMemberAttributesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改IPS规则
+//
+// @param request - ModifyIpsRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyIpsRulesResponse
+func (client *Client) ModifyIpsRulesWithOptions(request *ModifyIpsRulesRequest, runtime *dara.RuntimeOptions) (_result *ModifyIpsRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FirewallType) {
+		query["FirewallType"] = request.FirewallType
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RuleAction) {
+		query["RuleAction"] = request.RuleAction
+	}
+
+	if !dara.IsNil(request.RuleType) {
+		query["RuleType"] = request.RuleType
+	}
+
+	if !dara.IsNil(request.Rules) {
+		query["Rules"] = request.Rules
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyIpsRules"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyIpsRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改IPS规则
+//
+// @param request - ModifyIpsRulesRequest
+//
+// @return ModifyIpsRulesResponse
+func (client *Client) ModifyIpsRules(request *ModifyIpsRulesRequest) (_result *ModifyIpsRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyIpsRulesResponse{}
+	_body, _err := client.ModifyIpsRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14428,6 +19411,72 @@ func (client *Client) ModifyPrivateDnsEndpoint(request *ModifyPrivateDnsEndpoint
 
 // Summary:
 //
+// 开启资产类型默认引流
+//
+// @param request - ModifyResourceTypeAutoEnableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyResourceTypeAutoEnableResponse
+func (client *Client) ModifyResourceTypeAutoEnableWithOptions(request *ModifyResourceTypeAutoEnableRequest, runtime *dara.RuntimeOptions) (_result *ModifyResourceTypeAutoEnableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.ResourceTypeAutoEnable) {
+		query["ResourceTypeAutoEnable"] = request.ResourceTypeAutoEnable
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyResourceTypeAutoEnable"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyResourceTypeAutoEnableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启资产类型默认引流
+//
+// @param request - ModifyResourceTypeAutoEnableRequest
+//
+// @return ModifyResourceTypeAutoEnableResponse
+func (client *Client) ModifyResourceTypeAutoEnable(request *ModifyResourceTypeAutoEnableRequest) (_result *ModifyResourceTypeAutoEnableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyResourceTypeAutoEnableResponse{}
+	_body, _err := client.ModifyResourceTypeAutoEnableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改敏感数据开关
 //
 // @param request - ModifySensitiveSwitchRequest
@@ -14787,6 +19836,96 @@ func (client *Client) ModifyTrFirewallV2RoutePolicyScope(request *ModifyTrFirewa
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyTrFirewallV2RoutePolicyScopeResponse{}
 	_body, _err := client.ModifyTrFirewallV2RoutePolicyScopeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改用户告警配置
+//
+// @param request - ModifyUserAlarmConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyUserAlarmConfigResponse
+func (client *Client) ModifyUserAlarmConfigWithOptions(request *ModifyUserAlarmConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyUserAlarmConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlarmConfig) {
+		query["AlarmConfig"] = request.AlarmConfig
+	}
+
+	if !dara.IsNil(request.AlarmLang) {
+		query["AlarmLang"] = request.AlarmLang
+	}
+
+	if !dara.IsNil(request.ContactConfig) {
+		query["ContactConfig"] = request.ContactConfig
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.NotifyConfig) {
+		query["NotifyConfig"] = request.NotifyConfig
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.UseDefaultContact) {
+		query["UseDefaultContact"] = request.UseDefaultContact
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyUserAlarmConfig"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyUserAlarmConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改用户告警配置
+//
+// @param request - ModifyUserAlarmConfigRequest
+//
+// @return ModifyUserAlarmConfigResponse
+func (client *Client) ModifyUserAlarmConfig(request *ModifyUserAlarmConfigRequest) (_result *ModifyUserAlarmConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyUserAlarmConfigResponse{}
+	_body, _err := client.ModifyUserAlarmConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17103,6 +22242,76 @@ func (client *Client) UpdateSecurityProxy(request *UpdateSecurityProxyRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateSecurityProxyResponse{}
 	_body, _err := client.UpdateSecurityProxyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 使用ACL备份
+//
+// @param request - UseAclBackupDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UseAclBackupDataResponse
+func (client *Client) UseAclBackupDataWithOptions(request *UseAclBackupDataRequest, runtime *dara.RuntimeOptions) (_result *UseAclBackupDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackUpTime) {
+		query["BackUpTime"] = request.BackUpTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UseAclBackupData"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UseAclBackupDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 使用ACL备份
+//
+// @param request - UseAclBackupDataRequest
+//
+// @return UseAclBackupDataResponse
+func (client *Client) UseAclBackupData(request *UseAclBackupDataRequest) (_result *UseAclBackupDataResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UseAclBackupDataResponse{}
+	_body, _err := client.UseAclBackupDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
