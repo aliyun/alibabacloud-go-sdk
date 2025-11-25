@@ -1,0 +1,42 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iModifyInstanceNetworkAttributeResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *ModifyInstanceNetworkAttributeResponseBody
+	GetRequestId() *string
+}
+
+type ModifyInstanceNetworkAttributeResponseBody struct {
+	// example:
+	//
+	// 125B04C7-3D0D-4245-AF96-14E3758E3F06
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyInstanceNetworkAttributeResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyInstanceNetworkAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceNetworkAttributeResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *ModifyInstanceNetworkAttributeResponseBody) SetRequestId(v string) *ModifyInstanceNetworkAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyInstanceNetworkAttributeResponseBody) Validate() error {
+	return dara.Validate(s)
+}

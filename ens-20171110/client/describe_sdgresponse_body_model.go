@@ -120,7 +120,11 @@ type DescribeSDGResponseBodySDGs struct {
 	// SDGs that have snapshots.
 	AvaliableRegionIds []*DescribeSDGResponseBodySDGsAvaliableRegionIds `json:"AvaliableRegionIds,omitempty" xml:"AvaliableRegionIds,omitempty" type:"Repeated"`
 	BillingCycle       *string                                          `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	CreationDiskType   *string                                          `json:"CreationDiskType,omitempty" xml:"CreationDiskType,omitempty"`
+	// example:
+	//
+	// Open
+	BillingType      *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	CreationDiskType *string `json:"CreationDiskType,omitempty" xml:"CreationDiskType,omitempty"`
 	// The ID of the instance on which the SDG is created.
 	//
 	// example:
@@ -204,6 +208,10 @@ func (s *DescribeSDGResponseBodySDGs) GetBillingCycle() *string {
 	return s.BillingCycle
 }
 
+func (s *DescribeSDGResponseBodySDGs) GetBillingType() *string {
+	return s.BillingType
+}
+
 func (s *DescribeSDGResponseBodySDGs) GetCreationDiskType() *string {
 	return s.CreationDiskType
 }
@@ -259,6 +267,11 @@ func (s *DescribeSDGResponseBodySDGs) SetAvaliableRegionIds(v []*DescribeSDGResp
 
 func (s *DescribeSDGResponseBodySDGs) SetBillingCycle(v string) *DescribeSDGResponseBodySDGs {
 	s.BillingCycle = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGs) SetBillingType(v string) *DescribeSDGResponseBodySDGs {
+	s.BillingType = &v
 	return s
 }
 
