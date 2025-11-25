@@ -574,6 +574,10 @@ func (client *Client) CreateTrainingJobWithOptions(request *CreateTrainingJobReq
 		body["AlgorithmVersion"] = request.AlgorithmVersion
 	}
 
+	if !dara.IsNil(request.AssignNodeSpec) {
+		body["AssignNodeSpec"] = request.AssignNodeSpec
+	}
+
 	if !dara.IsNil(request.CodeDir) {
 		body["CodeDir"] = request.CodeDir
 	}

@@ -19,6 +19,8 @@ type iGetTrainingJobResponseBody interface {
 	GetAlgorithmSpec() *AlgorithmSpec
 	SetAlgorithmVersion(v string) *GetTrainingJobResponseBody
 	GetAlgorithmVersion() *string
+	SetAssignNodeSpec(v *AssignNodeSpec) *GetTrainingJobResponseBody
+	GetAssignNodeSpec() *AssignNodeSpec
 	SetComputeResource(v *GetTrainingJobResponseBodyComputeResource) *GetTrainingJobResponseBody
 	GetComputeResource() *GetTrainingJobResponseBodyComputeResource
 	SetDuration(v int64) *GetTrainingJobResponseBody
@@ -103,6 +105,7 @@ type GetTrainingJobResponseBody struct {
 	//
 	// v0.0.1
 	AlgorithmVersion *string                                    `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
+	AssignNodeSpec   *AssignNodeSpec                            `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
 	ComputeResource  *GetTrainingJobResponseBodyComputeResource `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
 	// example:
 	//
@@ -205,6 +208,10 @@ func (s *GetTrainingJobResponseBody) GetAlgorithmSpec() *AlgorithmSpec {
 
 func (s *GetTrainingJobResponseBody) GetAlgorithmVersion() *string {
 	return s.AlgorithmVersion
+}
+
+func (s *GetTrainingJobResponseBody) GetAssignNodeSpec() *AssignNodeSpec {
+	return s.AssignNodeSpec
 }
 
 func (s *GetTrainingJobResponseBody) GetComputeResource() *GetTrainingJobResponseBodyComputeResource {
@@ -357,6 +364,11 @@ func (s *GetTrainingJobResponseBody) SetAlgorithmSpec(v *AlgorithmSpec) *GetTrai
 
 func (s *GetTrainingJobResponseBody) SetAlgorithmVersion(v string) *GetTrainingJobResponseBody {
 	s.AlgorithmVersion = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBody) SetAssignNodeSpec(v *AssignNodeSpec) *GetTrainingJobResponseBody {
+	s.AssignNodeSpec = v
 	return s
 }
 
@@ -523,6 +535,11 @@ func (s *GetTrainingJobResponseBody) SetWorkspaceId(v string) *GetTrainingJobRes
 func (s *GetTrainingJobResponseBody) Validate() error {
 	if s.AlgorithmSpec != nil {
 		if err := s.AlgorithmSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AssignNodeSpec != nil {
+		if err := s.AssignNodeSpec.Validate(); err != nil {
 			return err
 		}
 	}

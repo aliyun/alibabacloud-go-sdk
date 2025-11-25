@@ -392,6 +392,10 @@ func (client *Client) CreateTrainingJobWithContext(ctx context.Context, request 
 		body["AlgorithmVersion"] = request.AlgorithmVersion
 	}
 
+	if !dara.IsNil(request.AssignNodeSpec) {
+		body["AssignNodeSpec"] = request.AssignNodeSpec
+	}
+
 	if !dara.IsNil(request.CodeDir) {
 		body["CodeDir"] = request.CodeDir
 	}

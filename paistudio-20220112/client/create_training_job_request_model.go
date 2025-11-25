@@ -17,6 +17,8 @@ type iCreateTrainingJobRequest interface {
 	GetAlgorithmSpec() *AlgorithmSpec
 	SetAlgorithmVersion(v string) *CreateTrainingJobRequest
 	GetAlgorithmVersion() *string
+	SetAssignNodeSpec(v *AssignNodeSpec) *CreateTrainingJobRequest
+	GetAssignNodeSpec() *AssignNodeSpec
 	SetCodeDir(v *Location) *CreateTrainingJobRequest
 	GetCodeDir() *Location
 	SetComputeResource(v *CreateTrainingJobRequestComputeResource) *CreateTrainingJobRequest
@@ -67,6 +69,7 @@ type CreateTrainingJobRequest struct {
 	//
 	// v1.0.0
 	AlgorithmVersion   *string                                    `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
+	AssignNodeSpec     *AssignNodeSpec                            `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
 	CodeDir            *Location                                  `json:"CodeDir,omitempty" xml:"CodeDir,omitempty"`
 	ComputeResource    *CreateTrainingJobRequestComputeResource   `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
 	Environments       map[string]*string                         `json:"Environments,omitempty" xml:"Environments,omitempty"`
@@ -124,6 +127,10 @@ func (s *CreateTrainingJobRequest) GetAlgorithmSpec() *AlgorithmSpec {
 
 func (s *CreateTrainingJobRequest) GetAlgorithmVersion() *string {
 	return s.AlgorithmVersion
+}
+
+func (s *CreateTrainingJobRequest) GetAssignNodeSpec() *AssignNodeSpec {
+	return s.AssignNodeSpec
 }
 
 func (s *CreateTrainingJobRequest) GetCodeDir() *Location {
@@ -211,6 +218,11 @@ func (s *CreateTrainingJobRequest) SetAlgorithmSpec(v *AlgorithmSpec) *CreateTra
 
 func (s *CreateTrainingJobRequest) SetAlgorithmVersion(v string) *CreateTrainingJobRequest {
 	s.AlgorithmVersion = &v
+	return s
+}
+
+func (s *CreateTrainingJobRequest) SetAssignNodeSpec(v *AssignNodeSpec) *CreateTrainingJobRequest {
+	s.AssignNodeSpec = v
 	return s
 }
 
@@ -302,6 +314,11 @@ func (s *CreateTrainingJobRequest) SetWorkspaceId(v string) *CreateTrainingJobRe
 func (s *CreateTrainingJobRequest) Validate() error {
 	if s.AlgorithmSpec != nil {
 		if err := s.AlgorithmSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AssignNodeSpec != nil {
+		if err := s.AssignNodeSpec.Validate(); err != nil {
 			return err
 		}
 	}

@@ -90,6 +90,7 @@ type ListTrainingJobsResponseBodyTrainingJobs struct {
 	//
 	// v0.0.1
 	AlgorithmVersion *string                                                   `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
+	AssignNodeSpec   *AssignNodeSpec                                           `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
 	ComputeResource  *ListTrainingJobsResponseBodyTrainingJobsComputeResource  `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
 	DlcJobId         *string                                                   `json:"DlcJobId,omitempty" xml:"DlcJobId,omitempty"`
 	Environments     map[string]*string                                        `json:"Environments,omitempty" xml:"Environments,omitempty"`
@@ -167,6 +168,10 @@ func (s *ListTrainingJobsResponseBodyTrainingJobs) GetAlgorithmProvider() *strin
 
 func (s *ListTrainingJobsResponseBodyTrainingJobs) GetAlgorithmVersion() *string {
 	return s.AlgorithmVersion
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) GetAssignNodeSpec() *AssignNodeSpec {
+	return s.AssignNodeSpec
 }
 
 func (s *ListTrainingJobsResponseBodyTrainingJobs) GetComputeResource() *ListTrainingJobsResponseBodyTrainingJobsComputeResource {
@@ -277,6 +282,11 @@ func (s *ListTrainingJobsResponseBodyTrainingJobs) SetAlgorithmProvider(v string
 
 func (s *ListTrainingJobsResponseBodyTrainingJobs) SetAlgorithmVersion(v string) *ListTrainingJobsResponseBodyTrainingJobs {
 	s.AlgorithmVersion = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetAssignNodeSpec(v *AssignNodeSpec) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.AssignNodeSpec = v
 	return s
 }
 
@@ -401,6 +411,11 @@ func (s *ListTrainingJobsResponseBodyTrainingJobs) SetWorkspaceId(v string) *Lis
 }
 
 func (s *ListTrainingJobsResponseBodyTrainingJobs) Validate() error {
+	if s.AssignNodeSpec != nil {
+		if err := s.AssignNodeSpec.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.ComputeResource != nil {
 		if err := s.ComputeResource.Validate(); err != nil {
 			return err
