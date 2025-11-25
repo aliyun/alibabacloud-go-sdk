@@ -17,6 +17,8 @@ type iDescribePolarFsAttributeResponseBody interface {
 	GetBandwidth() *float64
 	SetBandwidthBaseLine(v float64) *DescribePolarFsAttributeResponseBody
 	GetBandwidthBaseLine() *float64
+	SetBucketId(v string) *DescribePolarFsAttributeResponseBody
+	GetBucketId() *string
 	SetCategory(v string) *DescribePolarFsAttributeResponseBody
 	GetCategory() *string
 	SetClientDownloadPath(v string) *DescribePolarFsAttributeResponseBody
@@ -29,6 +31,8 @@ type iDescribePolarFsAttributeResponseBody interface {
 	GetExpireTime() *string
 	SetExpired(v string) *DescribePolarFsAttributeResponseBody
 	GetExpired() *string
+	SetFileSystemId(v string) *DescribePolarFsAttributeResponseBody
+	GetFileSystemId() *string
 	SetLockMode(v string) *DescribePolarFsAttributeResponseBody
 	GetLockMode() *string
 	SetMetaUrl(v string) *DescribePolarFsAttributeResponseBody
@@ -53,6 +57,8 @@ type iDescribePolarFsAttributeResponseBody interface {
 	GetRegionId() *string
 	SetRelativeDbClusterId(v string) *DescribePolarFsAttributeResponseBody
 	GetRelativeDbClusterId() *string
+	SetRelativePfsClusterId(v string) *DescribePolarFsAttributeResponseBody
+	GetRelativePfsClusterId() *string
 	SetRequestId(v string) *DescribePolarFsAttributeResponseBody
 	GetRequestId() *string
 	SetSecurityGroupId(v string) *DescribePolarFsAttributeResponseBody
@@ -88,6 +94,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// 100
 	BandwidthBaseLine *float64 `json:"BandwidthBaseLine,omitempty" xml:"BandwidthBaseLine,omitempty"`
+	BucketId          *string  `json:"BucketId,omitempty" xml:"BucketId,omitempty"`
 	// example:
 	//
 	// high_performance
@@ -108,7 +115,8 @@ type DescribePolarFsAttributeResponseBody struct {
 	// example:
 	//
 	// false
-	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	Expired      *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// example:
 	//
 	// Unlock
@@ -147,7 +155,8 @@ type DescribePolarFsAttributeResponseBody struct {
 	// example:
 	//
 	// pc-2zejpr41d9xk3uk34
-	RelativeDbClusterId *string `json:"RelativeDbClusterId,omitempty" xml:"RelativeDbClusterId,omitempty"`
+	RelativeDbClusterId  *string `json:"RelativeDbClusterId,omitempty" xml:"RelativeDbClusterId,omitempty"`
+	RelativePfsClusterId *string `json:"RelativePfsClusterId,omitempty" xml:"RelativePfsClusterId,omitempty"`
 	// Id of the request
 	//
 	// example:
@@ -208,6 +217,10 @@ func (s *DescribePolarFsAttributeResponseBody) GetBandwidthBaseLine() *float64 {
 	return s.BandwidthBaseLine
 }
 
+func (s *DescribePolarFsAttributeResponseBody) GetBucketId() *string {
+	return s.BucketId
+}
+
 func (s *DescribePolarFsAttributeResponseBody) GetCategory() *string {
 	return s.Category
 }
@@ -230,6 +243,10 @@ func (s *DescribePolarFsAttributeResponseBody) GetExpireTime() *string {
 
 func (s *DescribePolarFsAttributeResponseBody) GetExpired() *string {
 	return s.Expired
+}
+
+func (s *DescribePolarFsAttributeResponseBody) GetFileSystemId() *string {
+	return s.FileSystemId
 }
 
 func (s *DescribePolarFsAttributeResponseBody) GetLockMode() *string {
@@ -278,6 +295,10 @@ func (s *DescribePolarFsAttributeResponseBody) GetRegionId() *string {
 
 func (s *DescribePolarFsAttributeResponseBody) GetRelativeDbClusterId() *string {
 	return s.RelativeDbClusterId
+}
+
+func (s *DescribePolarFsAttributeResponseBody) GetRelativePfsClusterId() *string {
+	return s.RelativePfsClusterId
 }
 
 func (s *DescribePolarFsAttributeResponseBody) GetRequestId() *string {
@@ -332,6 +353,11 @@ func (s *DescribePolarFsAttributeResponseBody) SetBandwidthBaseLine(v float64) *
 	return s
 }
 
+func (s *DescribePolarFsAttributeResponseBody) SetBucketId(v string) *DescribePolarFsAttributeResponseBody {
+	s.BucketId = &v
+	return s
+}
+
 func (s *DescribePolarFsAttributeResponseBody) SetCategory(v string) *DescribePolarFsAttributeResponseBody {
 	s.Category = &v
 	return s
@@ -359,6 +385,11 @@ func (s *DescribePolarFsAttributeResponseBody) SetExpireTime(v string) *Describe
 
 func (s *DescribePolarFsAttributeResponseBody) SetExpired(v string) *DescribePolarFsAttributeResponseBody {
 	s.Expired = &v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBody) SetFileSystemId(v string) *DescribePolarFsAttributeResponseBody {
+	s.FileSystemId = &v
 	return s
 }
 
@@ -419,6 +450,11 @@ func (s *DescribePolarFsAttributeResponseBody) SetRegionId(v string) *DescribePo
 
 func (s *DescribePolarFsAttributeResponseBody) SetRelativeDbClusterId(v string) *DescribePolarFsAttributeResponseBody {
 	s.RelativeDbClusterId = &v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBody) SetRelativePfsClusterId(v string) *DescribePolarFsAttributeResponseBody {
+	s.RelativePfsClusterId = &v
 	return s
 }
 

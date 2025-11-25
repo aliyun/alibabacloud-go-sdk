@@ -31,6 +31,8 @@ type iDescribeAIDBClusterAttributeResponseBody interface {
 	GetExpired() *bool
 	SetInternalIp(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetInternalIp() *string
+	SetKVCacheInstanceId(v string) *DescribeAIDBClusterAttributeResponseBody
+	GetKVCacheInstanceId() *string
 	SetKubeClusterId(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetKubeClusterId() *string
 	SetLockMode(v string) *DescribeAIDBClusterAttributeResponseBody
@@ -102,6 +104,10 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// 10.*.*.72
 	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	// example:
+	//
+	// pkv-xxxxx
+	KVCacheInstanceId *string `json:"KVCacheInstanceId,omitempty" xml:"KVCacheInstanceId,omitempty"`
 	// example:
 	//
 	// xxxxxxxxxxxxxxxxxxxxxxx
@@ -210,6 +216,10 @@ func (s *DescribeAIDBClusterAttributeResponseBody) GetExpired() *bool {
 
 func (s *DescribeAIDBClusterAttributeResponseBody) GetInternalIp() *string {
 	return s.InternalIp
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) GetKVCacheInstanceId() *string {
+	return s.KVCacheInstanceId
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBody) GetKubeClusterId() *string {
@@ -324,6 +334,11 @@ func (s *DescribeAIDBClusterAttributeResponseBody) SetExpired(v bool) *DescribeA
 
 func (s *DescribeAIDBClusterAttributeResponseBody) SetInternalIp(v string) *DescribeAIDBClusterAttributeResponseBody {
 	s.InternalIp = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) SetKVCacheInstanceId(v string) *DescribeAIDBClusterAttributeResponseBody {
+	s.KVCacheInstanceId = &v
 	return s
 }
 
