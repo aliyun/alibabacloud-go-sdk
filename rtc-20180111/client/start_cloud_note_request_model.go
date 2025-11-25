@@ -436,6 +436,7 @@ func (s *StartCloudNoteRequestMeetingAssistance) Validate() error {
 }
 
 type StartCloudNoteRequestRealtimeSubtitle struct {
+	AsrCallback *bool                                             `json:"AsrCallback,omitempty" xml:"AsrCallback,omitempty"`
 	Enabled     *bool                                             `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	Translation *StartCloudNoteRequestRealtimeSubtitleTranslation `json:"Translation,omitempty" xml:"Translation,omitempty" type:"Struct"`
 }
@@ -448,12 +449,21 @@ func (s StartCloudNoteRequestRealtimeSubtitle) GoString() string {
 	return s.String()
 }
 
+func (s *StartCloudNoteRequestRealtimeSubtitle) GetAsrCallback() *bool {
+	return s.AsrCallback
+}
+
 func (s *StartCloudNoteRequestRealtimeSubtitle) GetEnabled() *bool {
 	return s.Enabled
 }
 
 func (s *StartCloudNoteRequestRealtimeSubtitle) GetTranslation() *StartCloudNoteRequestRealtimeSubtitleTranslation {
 	return s.Translation
+}
+
+func (s *StartCloudNoteRequestRealtimeSubtitle) SetAsrCallback(v bool) *StartCloudNoteRequestRealtimeSubtitle {
+	s.AsrCallback = &v
+	return s
 }
 
 func (s *StartCloudNoteRequestRealtimeSubtitle) SetEnabled(v bool) *StartCloudNoteRequestRealtimeSubtitle {
