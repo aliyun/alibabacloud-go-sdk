@@ -1131,12 +1131,20 @@ func (client *Client) ModifyNodeNumberWithOptions(request *ModifyNodeNumberReque
 		query["NodeGroupId"] = request.NodeGroupId
 	}
 
+	if !dara.IsNil(request.Parallelism) {
+		query["Parallelism"] = request.Parallelism
+	}
+
 	if !dara.IsNil(request.PromotionOptionNo) {
 		query["PromotionOptionNo"] = request.PromotionOptionNo
 	}
 
 	if !dara.IsNil(request.Target) {
 		query["Target"] = request.Target
+	}
+
+	if !dara.IsNil(request.TerminationGracePeriodSeconds) {
+		query["TerminationGracePeriodSeconds"] = request.TerminationGracePeriodSeconds
 	}
 
 	req := &openapiutil.OpenApiRequest{
