@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("sasrasp"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -65,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAttackProtectionCountResponse
-func (client *Client) DescribeAttackProtectionCountWithOptions(request *DescribeAttackProtectionCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeAttackProtectionCountResponse, _err error) {
+func (client *Client) DescribeAttackProtectionCountWithContext(ctx context.Context, request *DescribeAttackProtectionCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeAttackProtectionCountResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -100,29 +51,11 @@ func (client *Client) DescribeAttackProtectionCountWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAttackProtectionCountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # DescribeAttackProtectionCount
-//
-// @param request - DescribeAttackProtectionCountRequest
-//
-// @return DescribeAttackProtectionCountResponse
-func (client *Client) DescribeAttackProtectionCount(request *DescribeAttackProtectionCountRequest) (_result *DescribeAttackProtectionCountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAttackProtectionCountResponse{}
-	_body, _err := client.DescribeAttackProtectionCountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -135,7 +68,7 @@ func (client *Client) DescribeAttackProtectionCount(request *DescribeAttackProte
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAttacksResponse
-func (client *Client) DescribeAttacksWithOptions(request *DescribeAttacksRequest, runtime *dara.RuntimeOptions) (_result *DescribeAttacksResponse, _err error) {
+func (client *Client) DescribeAttacksWithContext(ctx context.Context, request *DescribeAttacksRequest, runtime *dara.RuntimeOptions) (_result *DescribeAttacksResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -236,28 +169,10 @@ func (client *Client) DescribeAttacksWithOptions(request *DescribeAttacksRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAttacksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询攻击项
-//
-// @param request - DescribeAttacksRequest
-//
-// @return DescribeAttacksResponse
-func (client *Client) DescribeAttacks(request *DescribeAttacksRequest) (_result *DescribeAttacksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAttacksResponse{}
-	_body, _err := client.DescribeAttacksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }

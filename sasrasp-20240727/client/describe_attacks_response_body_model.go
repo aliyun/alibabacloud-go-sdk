@@ -65,7 +65,16 @@ func (s *DescribeAttacksResponseBody) SetTotalCount(v int64) *DescribeAttacksRes
 }
 
 func (s *DescribeAttacksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Attacks != nil {
+		for _, item := range s.Attacks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAttacksResponseBodyAttacks struct {
@@ -109,6 +118,14 @@ type DescribeAttacksResponseBodyAttacks struct {
 	//
 	// {\\"All\\": 12, \\"Online\\": 9}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 0
+	HandleStatus *int32 `json:"HandleStatus,omitempty" xml:"HandleStatus,omitempty"`
+	// example:
+	//
+	// 1758607200
+	HandleTimestamp *int64 `json:"HandleTimestamp,omitempty" xml:"HandleTimestamp,omitempty"`
 	// example:
 	//
 	// {\\"X-Total-Count\\": 1}
@@ -279,6 +296,14 @@ func (s *DescribeAttacksResponseBodyAttacks) GetCount() *int64 {
 
 func (s *DescribeAttacksResponseBodyAttacks) GetData() *string {
 	return s.Data
+}
+
+func (s *DescribeAttacksResponseBodyAttacks) GetHandleStatus() *int32 {
+	return s.HandleStatus
+}
+
+func (s *DescribeAttacksResponseBodyAttacks) GetHandleTimestamp() *int64 {
+	return s.HandleTimestamp
 }
 
 func (s *DescribeAttacksResponseBodyAttacks) GetHeaders() *string {
@@ -463,6 +488,16 @@ func (s *DescribeAttacksResponseBodyAttacks) SetData(v string) *DescribeAttacksR
 	return s
 }
 
+func (s *DescribeAttacksResponseBodyAttacks) SetHandleStatus(v int32) *DescribeAttacksResponseBodyAttacks {
+	s.HandleStatus = &v
+	return s
+}
+
+func (s *DescribeAttacksResponseBodyAttacks) SetHandleTimestamp(v int64) *DescribeAttacksResponseBodyAttacks {
+	s.HandleTimestamp = &v
+	return s
+}
+
 func (s *DescribeAttacksResponseBodyAttacks) SetHeaders(v string) *DescribeAttacksResponseBodyAttacks {
 	s.Headers = &v
 	return s
@@ -629,7 +664,16 @@ func (s *DescribeAttacksResponseBodyAttacks) SetUrl(v string) *DescribeAttacksRe
 }
 
 func (s *DescribeAttacksResponseBodyAttacks) Validate() error {
-	return dara.Validate(s)
+	if s.InputParamItemList != nil {
+		for _, item := range s.InputParamItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAttacksResponseBodyAttacksInputParamItemList struct {
