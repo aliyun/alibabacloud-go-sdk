@@ -1368,7 +1368,8 @@ type ModifyClusterNodePoolRequestScalingGroup struct {
 	// example:
 	//
 	// 120
-	SystemDiskSize *int64 `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
+	SystemDiskSize             *int64  `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
+	SystemDiskSnapshotPolicyId *string `json:"system_disk_snapshot_policy_id,omitempty" xml:"system_disk_snapshot_policy_id,omitempty"`
 	// The tags that you want to add only to ECS instances.
 	//
 	// The tag key must be unique and cannot exceed 128 characters in length. The tag key and value cannot start with aliyun or acs: or contain https:// or http://.
@@ -1541,6 +1542,10 @@ func (s *ModifyClusterNodePoolRequestScalingGroup) GetSystemDiskProvisionedIops(
 
 func (s *ModifyClusterNodePoolRequestScalingGroup) GetSystemDiskSize() *int64 {
 	return s.SystemDiskSize
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) GetSystemDiskSnapshotPolicyId() *string {
+	return s.SystemDiskSnapshotPolicyId
 }
 
 func (s *ModifyClusterNodePoolRequestScalingGroup) GetTags() []*Tag {
@@ -1743,6 +1748,11 @@ func (s *ModifyClusterNodePoolRequestScalingGroup) SetSystemDiskProvisionedIops(
 
 func (s *ModifyClusterNodePoolRequestScalingGroup) SetSystemDiskSize(v int64) *ModifyClusterNodePoolRequestScalingGroup {
 	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetSystemDiskSnapshotPolicyId(v string) *ModifyClusterNodePoolRequestScalingGroup {
+	s.SystemDiskSnapshotPolicyId = &v
 	return s
 }
 

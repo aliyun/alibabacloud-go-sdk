@@ -1756,7 +1756,8 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	// example:
 	//
 	// 120
-	SystemDiskSize *int64 `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
+	SystemDiskSize             *int64  `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
+	SystemDiskSnapshotPolicyId *string `json:"system_disk_snapshot_policy_id,omitempty" xml:"system_disk_snapshot_policy_id,omitempty"`
 	// The labels that you want to add only to ECS instances.
 	//
 	// The label key must be unique and cannot exceed 128 characters in length. The label key and value cannot start with aliyun or acs: or contain https:// or http://.
@@ -1965,6 +1966,10 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) GetSystemDiskPro
 
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) GetSystemDiskSize() *int64 {
 	return s.SystemDiskSize
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) GetSystemDiskSnapshotPolicyId() *string {
+	return s.SystemDiskSnapshotPolicyId
 }
 
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) GetTags() []*Tag {
@@ -2215,6 +2220,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSystemDiskSiz
 	return s
 }
 
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSystemDiskSnapshotPolicyId(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.SystemDiskSnapshotPolicyId = &v
+	return s
+}
+
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetTags(v []*Tag) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.Tags = v
 	return s
@@ -2417,6 +2427,7 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroupSpotPriceLimit) Va
 }
 
 type DescribeClusterNodePoolDetailResponseBodyStatus struct {
+	Conditions []*DescribeClusterNodePoolDetailResponseBodyStatusConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
 	// The number of failed nodes.
 	//
 	// example:
@@ -2485,6 +2496,10 @@ func (s DescribeClusterNodePoolDetailResponseBodyStatus) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeClusterNodePoolDetailResponseBodyStatus) GetConditions() []*DescribeClusterNodePoolDetailResponseBodyStatusConditions {
+	return s.Conditions
+}
+
 func (s *DescribeClusterNodePoolDetailResponseBodyStatus) GetFailedNodes() *int64 {
 	return s.FailedNodes
 }
@@ -2515,6 +2530,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyStatus) GetState() *string {
 
 func (s *DescribeClusterNodePoolDetailResponseBodyStatus) GetTotalNodes() *int64 {
 	return s.TotalNodes
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyStatus) SetConditions(v []*DescribeClusterNodePoolDetailResponseBodyStatusConditions) *DescribeClusterNodePoolDetailResponseBodyStatus {
+	s.Conditions = v
+	return s
 }
 
 func (s *DescribeClusterNodePoolDetailResponseBodyStatus) SetFailedNodes(v int64) *DescribeClusterNodePoolDetailResponseBodyStatus {
@@ -2558,6 +2578,80 @@ func (s *DescribeClusterNodePoolDetailResponseBodyStatus) SetTotalNodes(v int64)
 }
 
 func (s *DescribeClusterNodePoolDetailResponseBodyStatus) Validate() error {
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeClusterNodePoolDetailResponseBodyStatusConditions struct {
+	LastTransitionTime *string `json:"last_transition_time,omitempty" xml:"last_transition_time,omitempty"`
+	Message            *string `json:"message,omitempty" xml:"message,omitempty"`
+	Reason             *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	Status             *string `json:"status,omitempty" xml:"status,omitempty"`
+	Type               *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s DescribeClusterNodePoolDetailResponseBodyStatusConditions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClusterNodePoolDetailResponseBodyStatusConditions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyStatusConditions) GetLastTransitionTime() *string {
+	return s.LastTransitionTime
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyStatusConditions) GetMessage() *string {
+	return s.Message
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyStatusConditions) GetReason() *string {
+	return s.Reason
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyStatusConditions) GetStatus() *string {
+	return s.Status
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyStatusConditions) GetType() *string {
+	return s.Type
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyStatusConditions) SetLastTransitionTime(v string) *DescribeClusterNodePoolDetailResponseBodyStatusConditions {
+	s.LastTransitionTime = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyStatusConditions) SetMessage(v string) *DescribeClusterNodePoolDetailResponseBodyStatusConditions {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyStatusConditions) SetReason(v string) *DescribeClusterNodePoolDetailResponseBodyStatusConditions {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyStatusConditions) SetStatus(v string) *DescribeClusterNodePoolDetailResponseBodyStatusConditions {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyStatusConditions) SetType(v string) *DescribeClusterNodePoolDetailResponseBodyStatusConditions {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyStatusConditions) Validate() error {
 	return dara.Validate(s)
 }
 

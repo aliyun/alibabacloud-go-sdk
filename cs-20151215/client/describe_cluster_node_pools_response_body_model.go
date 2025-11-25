@@ -1813,7 +1813,8 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup struct {
 	// example:
 	//
 	// 120
-	SystemDiskSize *int64 `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
+	SystemDiskSize             *int64  `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
+	SystemDiskSnapshotPolicyId *string `json:"system_disk_snapshot_policy_id,omitempty" xml:"system_disk_snapshot_policy_id,omitempty"`
 	// The label to be added to the ECS instances.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The vSwitch IDs.
@@ -2014,6 +2015,10 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) GetSystemDis
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) GetSystemDiskSize() *int64 {
 	return s.SystemDiskSize
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) GetSystemDiskSnapshotPolicyId() *string {
+	return s.SystemDiskSnapshotPolicyId
 }
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) GetTags() []*Tag {
@@ -2256,6 +2261,11 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSystemDis
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSystemDiskSize(v int64) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSystemDiskSnapshotPolicyId(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.SystemDiskSnapshotPolicyId = &v
 	return s
 }
 

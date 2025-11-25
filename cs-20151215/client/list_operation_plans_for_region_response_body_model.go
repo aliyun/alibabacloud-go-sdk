@@ -71,7 +71,8 @@ type ListOperationPlansForRegionResponseBodyPlans struct {
 	// example:
 	//
 	// Scheduled
-	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	State       *string                                                  `json:"state,omitempty" xml:"state,omitempty"`
+	StateReason *ListOperationPlansForRegionResponseBodyPlansStateReason `json:"state_reason,omitempty" xml:"state_reason,omitempty" type:"Struct"`
 	// example:
 	//
 	// c29ced64b3dfe4f33b57ca0aa9f68****
@@ -122,6 +123,10 @@ func (s *ListOperationPlansForRegionResponseBodyPlans) GetState() *string {
 	return s.State
 }
 
+func (s *ListOperationPlansForRegionResponseBodyPlans) GetStateReason() *ListOperationPlansForRegionResponseBodyPlansStateReason {
+	return s.StateReason
+}
+
 func (s *ListOperationPlansForRegionResponseBodyPlans) GetTargetId() *string {
 	return s.TargetId
 }
@@ -168,6 +173,11 @@ func (s *ListOperationPlansForRegionResponseBodyPlans) SetState(v string) *ListO
 	return s
 }
 
+func (s *ListOperationPlansForRegionResponseBodyPlans) SetStateReason(v *ListOperationPlansForRegionResponseBodyPlansStateReason) *ListOperationPlansForRegionResponseBodyPlans {
+	s.StateReason = v
+	return s
+}
+
 func (s *ListOperationPlansForRegionResponseBodyPlans) SetTargetId(v string) *ListOperationPlansForRegionResponseBodyPlans {
 	s.TargetId = &v
 	return s
@@ -189,5 +199,45 @@ func (s *ListOperationPlansForRegionResponseBodyPlans) SetType(v string) *ListOp
 }
 
 func (s *ListOperationPlansForRegionResponseBodyPlans) Validate() error {
+	if s.StateReason != nil {
+		if err := s.StateReason.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListOperationPlansForRegionResponseBodyPlansStateReason struct {
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s ListOperationPlansForRegionResponseBodyPlansStateReason) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListOperationPlansForRegionResponseBodyPlansStateReason) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationPlansForRegionResponseBodyPlansStateReason) GetCode() *string {
+	return s.Code
+}
+
+func (s *ListOperationPlansForRegionResponseBodyPlansStateReason) GetMessage() *string {
+	return s.Message
+}
+
+func (s *ListOperationPlansForRegionResponseBodyPlansStateReason) SetCode(v string) *ListOperationPlansForRegionResponseBodyPlansStateReason {
+	s.Code = &v
+	return s
+}
+
+func (s *ListOperationPlansForRegionResponseBodyPlansStateReason) SetMessage(v string) *ListOperationPlansForRegionResponseBodyPlansStateReason {
+	s.Message = &v
+	return s
+}
+
+func (s *ListOperationPlansForRegionResponseBodyPlansStateReason) Validate() error {
 	return dara.Validate(s)
 }
