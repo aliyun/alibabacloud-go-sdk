@@ -536,6 +536,10 @@ type ModifyDomainRequestRedirect struct {
 	//
 	// iphash
 	Loadbalance *string `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
+	// example:
+	//
+	// 2
+	MaxBodySize *int32 `json:"MaxBodySize,omitempty" xml:"MaxBodySize,omitempty"`
 	// The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
 	//
 	// example:
@@ -680,6 +684,10 @@ func (s *ModifyDomainRequestRedirect) GetLoadbalance() *string {
 	return s.Loadbalance
 }
 
+func (s *ModifyDomainRequestRedirect) GetMaxBodySize() *int32 {
+	return s.MaxBodySize
+}
+
 func (s *ModifyDomainRequestRedirect) GetReadTimeout() *int32 {
 	return s.ReadTimeout
 }
@@ -775,6 +783,11 @@ func (s *ModifyDomainRequestRedirect) SetKeepaliveTimeout(v int32) *ModifyDomain
 
 func (s *ModifyDomainRequestRedirect) SetLoadbalance(v string) *ModifyDomainRequestRedirect {
 	s.Loadbalance = &v
+	return s
+}
+
+func (s *ModifyDomainRequestRedirect) SetMaxBodySize(v int32) *ModifyDomainRequestRedirect {
+	s.MaxBodySize = &v
 	return s
 }
 

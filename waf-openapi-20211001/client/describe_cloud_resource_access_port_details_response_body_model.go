@@ -150,6 +150,10 @@ type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails struct 
 	//
 	// >  This parameter is returned only when the traffic marking feature is enabled for the domain name.
 	LogHeaders []*DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	MaxBodySize *int32 `json:"MaxBodySize,omitempty" xml:"MaxBodySize,omitempty"`
 	// The ID of the Alibaba Cloud account to which the resource belongs.
 	//
 	// example:
@@ -288,6 +292,10 @@ func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) Ge
 	return s.LogHeaders
 }
 
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) GetMaxBodySize() *int32 {
+	return s.MaxBodySize
+}
+
 func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) GetOwnerUserId() *string {
 	return s.OwnerUserId
 }
@@ -383,6 +391,11 @@ func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) Se
 
 func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetLogHeaders(v []*DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
 	s.LogHeaders = v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetMaxBodySize(v int32) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.MaxBodySize = &v
 	return s
 }
 

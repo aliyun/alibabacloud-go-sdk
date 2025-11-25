@@ -451,6 +451,10 @@ type CreateCloudResourceRequestRedirect struct {
 	//
 	// 15
 	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+	// example:
+	//
+	// 5
+	MaxBodySize *int32 `json:"MaxBodySize,omitempty" xml:"MaxBodySize,omitempty"`
 	// The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
 	//
 	// example:
@@ -515,6 +519,10 @@ func (s *CreateCloudResourceRequestRedirect) GetKeepaliveTimeout() *int32 {
 	return s.KeepaliveTimeout
 }
 
+func (s *CreateCloudResourceRequestRedirect) GetMaxBodySize() *int32 {
+	return s.MaxBodySize
+}
+
 func (s *CreateCloudResourceRequestRedirect) GetReadTimeout() *int32 {
 	return s.ReadTimeout
 }
@@ -551,6 +559,11 @@ func (s *CreateCloudResourceRequestRedirect) SetKeepaliveRequests(v int32) *Crea
 
 func (s *CreateCloudResourceRequestRedirect) SetKeepaliveTimeout(v int32) *CreateCloudResourceRequestRedirect {
 	s.KeepaliveTimeout = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequestRedirect) SetMaxBodySize(v int32) *CreateCloudResourceRequestRedirect {
+	s.MaxBodySize = &v
 	return s
 }
 

@@ -576,6 +576,10 @@ type CreateDomainRequestRedirect struct {
 	//
 	// roundRobin
 	Loadbalance *string `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
+	// example:
+	//
+	// 2
+	MaxBodySize *int32 `json:"MaxBodySize,omitempty" xml:"MaxBodySize,omitempty"`
 	// The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
 	//
 	// example:
@@ -712,6 +716,10 @@ func (s *CreateDomainRequestRedirect) GetLoadbalance() *string {
 	return s.Loadbalance
 }
 
+func (s *CreateDomainRequestRedirect) GetMaxBodySize() *int32 {
+	return s.MaxBodySize
+}
+
 func (s *CreateDomainRequestRedirect) GetReadTimeout() *int32 {
 	return s.ReadTimeout
 }
@@ -807,6 +815,11 @@ func (s *CreateDomainRequestRedirect) SetKeepaliveTimeout(v int32) *CreateDomain
 
 func (s *CreateDomainRequestRedirect) SetLoadbalance(v string) *CreateDomainRequestRedirect {
 	s.Loadbalance = &v
+	return s
+}
+
+func (s *CreateDomainRequestRedirect) SetMaxBodySize(v int32) *CreateDomainRequestRedirect {
+	s.MaxBodySize = &v
 	return s
 }
 
