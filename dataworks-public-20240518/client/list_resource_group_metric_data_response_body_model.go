@@ -18,6 +18,7 @@ type iListResourceGroupMetricDataResponseBody interface {
 }
 
 type ListResourceGroupMetricDataResponseBody struct {
+	// Monitoring metric data.
 	MetricData *ListResourceGroupMetricDataResponseBodyMetricData `json:"MetricData,omitempty" xml:"MetricData,omitempty" type:"Struct"`
 	// example:
 	//
@@ -78,6 +79,42 @@ type ListResourceGroupMetricDataResponseBodyMetricData struct {
 	//
 	// Serverless_res_group_524257424564736_6831777003XXXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The metric name. Available metrics include:
+	//
+	// 	- CUSpec: Maximum CU capacity of the resource group, in CUs.
+	//
+	// 	- CUUsage: CU usage of the resource group, in CUs.
+	//
+	// 	- CUUtilization: CU utilization of the resource group, in %.
+	//
+	// 	- SlotSpec: Maximum concurrency for resource group scheduling, in slots.
+	//
+	// 	- SlotUsage: Used concurrency for resource group scheduling, in slots.
+	//
+	// 	- SchedulerCUMaxSpec: Maximum CU quota for data computing, in CUs.
+	//
+	// 	- SchedulerCUUsage: CU usage for data computing, in CUs.
+	//
+	// 	- SchedulerCUMinSpec: Minimum guaranteed CUs for data computing, in CUs.
+	//
+	// 	- DataIntegrationCUMaxSpec: Maximum CU quota for Data Integration, in CUs.
+	//
+	// 	- DataIntegrationCUUsage: CU usage for Data Integration, in CUs.
+	//
+	// 	- DataIntegrationCUMinSpec: Minimum guaranteed CUs for Data Integration, in CUs.
+	//
+	// 	- DataServiceCUMaxSpec: Maximum CU quota for DataService Studio, in CUs.
+	//
+	// 	- DataServiceCUUsage: CU usage for DataService Studio, in CUs.
+	//
+	// 	- DataServiceCUMinSpec: Minimum guaranteed CUs for DataService Studio, in CUs.
+	//
+	// 	- ServerIdeCUMaxSpec: Maximum CU quota for personal development environment, in CUs.
+	//
+	// 	- ServerIdeCUUsage: CU usage for personal development environment, in CUs.
+	//
+	// 	- ServerIdeCUMinSpec: Minimum guaranteed CUs for personal development environment, in CUs.
+	//
 	// example:
 	//
 	// CUSpec

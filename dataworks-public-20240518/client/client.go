@@ -851,6 +851,88 @@ func (client *Client) CreateComponent(request *CreateComponentRequest) (_result 
 
 // Summary:
 //
+// 验证用
+//
+// @param request - CreateComputeResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateComputeResourceResponse
+func (client *Client) CreateComputeResourceWithOptions(request *CreateComputeResourceRequest, runtime *dara.RuntimeOptions) (_result *CreateComputeResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectionProperties) {
+		query["ConnectionProperties"] = request.ConnectionProperties
+	}
+
+	if !dara.IsNil(request.ConnectionPropertiesMode) {
+		query["ConnectionPropertiesMode"] = request.ConnectionPropertiesMode
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateComputeResource"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateComputeResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - CreateComputeResourceRequest
+//
+// @return CreateComputeResourceResponse
+func (client *Client) CreateComputeResource(request *CreateComputeResourceRequest) (_result *CreateComputeResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateComputeResourceResponse{}
+	_body, _err := client.CreateComputeResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an alert rule for a synchronization task.
 //
 // @param tmpReq - CreateDIAlarmRuleRequest
@@ -4255,6 +4337,72 @@ func (client *Client) DeleteComponent(request *DeleteComponentRequest) (_result 
 
 // Summary:
 //
+// 验证用
+//
+// @param request - DeleteComputeResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteComputeResourceResponse
+func (client *Client) DeleteComputeResourceWithOptions(request *DeleteComputeResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteComputeResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteComputeResource"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteComputeResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - DeleteComputeResourceRequest
+//
+// @return DeleteComputeResourceResponse
+func (client *Client) DeleteComputeResource(request *DeleteComputeResourceRequest) (_result *DeleteComputeResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteComputeResourceResponse{}
+	_body, _err := client.DeleteComputeResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an alert rule configured for a synchronization task.
 //
 // @param request - DeleteDIAlarmRuleRequest
@@ -6940,6 +7088,72 @@ func (client *Client) GetComponent(request *GetComponentRequest) (_result *GetCo
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetComponentResponse{}
 	_body, _err := client.GetComponentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - GetComputeResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetComputeResourceResponse
+func (client *Client) GetComputeResourceWithOptions(request *GetComputeResourceRequest, runtime *dara.RuntimeOptions) (_result *GetComputeResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetComputeResource"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetComputeResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - GetComputeResourceRequest
+//
+// @return GetComputeResourceResponse
+func (client *Client) GetComputeResource(request *GetComputeResourceRequest) (_result *GetComputeResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetComputeResourceResponse{}
+	_body, _err := client.GetComputeResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10459,6 +10673,102 @@ func (client *Client) ListComponents(request *ListComponentsRequest) (_result *L
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListComponentsResponse{}
 	_body, _err := client.ListComponentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param tmpReq - ListComputeResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListComputeResourcesResponse
+func (client *Client) ListComputeResourcesWithOptions(tmpReq *ListComputeResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListComputeResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListComputeResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Types) {
+		request.TypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Types, dara.String("Types"), dara.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnvType) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.TypesShrink) {
+		query["Types"] = request.TypesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListComputeResources"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListComputeResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - ListComputeResourcesRequest
+//
+// @return ListComputeResourcesResponse
+func (client *Client) ListComputeResources(request *ListComputeResourcesRequest) (_result *ListComputeResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListComputeResourcesResponse{}
+	_body, _err := client.ListComputeResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17056,6 +17366,84 @@ func (client *Client) UpdateComponent(request *UpdateComponentRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateComponentResponse{}
 	_body, _err := client.UpdateComponentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - UpdateComputeResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateComputeResourceResponse
+func (client *Client) UpdateComputeResourceWithOptions(request *UpdateComputeResourceRequest, runtime *dara.RuntimeOptions) (_result *UpdateComputeResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectionProperties) {
+		query["ConnectionProperties"] = request.ConnectionProperties
+	}
+
+	if !dara.IsNil(request.ConnectionPropertiesMode) {
+		query["ConnectionPropertiesMode"] = request.ConnectionPropertiesMode
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateComputeResource"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateComputeResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - UpdateComputeResourceRequest
+//
+// @return UpdateComputeResourceResponse
+func (client *Client) UpdateComputeResource(request *UpdateComputeResourceRequest) (_result *UpdateComputeResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateComputeResourceResponse{}
+	_body, _err := client.UpdateComputeResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
