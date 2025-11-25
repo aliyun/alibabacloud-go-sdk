@@ -13,6 +13,10 @@ type iDescribeExposedStatisticsDetailRequest interface {
 	GetCriteria() *string
 	SetCurrentPage(v int32) *DescribeExposedStatisticsDetailRequest
 	GetCurrentPage() *int32
+	SetExposureIp(v string) *DescribeExposedStatisticsDetailRequest
+	GetExposureIp() *string
+	SetInstanceId(v string) *DescribeExposedStatisticsDetailRequest
+	GetInstanceId() *string
 	SetPageSize(v int32) *DescribeExposedStatisticsDetailRequest
 	GetPageSize() *int32
 	SetResourceDirectoryAccountId(v int64) *DescribeExposedStatisticsDetailRequest
@@ -39,7 +43,9 @@ type DescribeExposedStatisticsDetailRequest struct {
 	// example:
 	//
 	// 1
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	ExposureIp  *string `json:"ExposureIp,omitempty" xml:"ExposureIp,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
 	//
 	// >  We recommend that you do not leave this parameter empty.
@@ -112,6 +118,14 @@ func (s *DescribeExposedStatisticsDetailRequest) GetCurrentPage() *int32 {
 	return s.CurrentPage
 }
 
+func (s *DescribeExposedStatisticsDetailRequest) GetExposureIp() *string {
+	return s.ExposureIp
+}
+
+func (s *DescribeExposedStatisticsDetailRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
 func (s *DescribeExposedStatisticsDetailRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
@@ -143,6 +157,16 @@ func (s *DescribeExposedStatisticsDetailRequest) SetCriteria(v string) *Describe
 
 func (s *DescribeExposedStatisticsDetailRequest) SetCurrentPage(v int32) *DescribeExposedStatisticsDetailRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailRequest) SetExposureIp(v string) *DescribeExposedStatisticsDetailRequest {
+	s.ExposureIp = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailRequest) SetInstanceId(v string) *DescribeExposedStatisticsDetailRequest {
+	s.InstanceId = &v
 	return s
 }
 

@@ -84,6 +84,11 @@ func (s *ListCheckItemWarningMachineResponseBody) Validate() error {
 }
 
 type ListCheckItemWarningMachineResponseBodyList struct {
+	// 云产品资产的类型。
+	//
+	// example:
+	//
+	// 0
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
 	// The edition of Security Center that is authorized to protect the asset. Valid values:
 	//

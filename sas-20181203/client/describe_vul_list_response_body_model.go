@@ -181,7 +181,7 @@ type DescribeVulListResponseBodyVulRecords struct {
 	// example:
 	//
 	// 281801
-	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the image.
 	//
 	// example:
@@ -490,7 +490,7 @@ func (s *DescribeVulListResponseBodyVulRecords) GetFirstTs() *int64 {
 	return s.FirstTs
 }
 
-func (s *DescribeVulListResponseBodyVulRecords) GetGroupId() *int32 {
+func (s *DescribeVulListResponseBodyVulRecords) GetGroupId() *int64 {
 	return s.GroupId
 }
 
@@ -651,7 +651,7 @@ func (s *DescribeVulListResponseBodyVulRecords) SetFirstTs(v int64) *DescribeVul
 	return s
 }
 
-func (s *DescribeVulListResponseBodyVulRecords) SetGroupId(v int32) *DescribeVulListResponseBodyVulRecords {
+func (s *DescribeVulListResponseBodyVulRecords) SetGroupId(v int64) *DescribeVulListResponseBodyVulRecords {
 	s.GroupId = &v
 	return s
 }

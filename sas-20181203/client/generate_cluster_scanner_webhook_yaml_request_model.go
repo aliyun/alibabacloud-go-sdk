@@ -16,12 +16,22 @@ type iGenerateClusterScannerWebhookYamlRequest interface {
 }
 
 type GenerateClusterScannerWebhookYamlRequest struct {
+	// The ID of the container cluster.
+	//
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) API to obtain this parameter from the ClusterId field.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c3aaf6c8085f84791882eef200cd2****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Indicates whether the incremental scan switch is enabled. Values:
+	//
+	// - **0**: Not enabled
+	//
+	// - **1**: Enabled
+	//
 	// example:
 	//
 	// 1

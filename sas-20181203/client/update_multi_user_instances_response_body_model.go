@@ -1,0 +1,130 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iUpdateMultiUserInstancesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *UpdateMultiUserInstancesResponseBody
+	GetRequestId() *string
+	SetResult(v []*UpdateMultiUserInstancesResponseBodyResult) *UpdateMultiUserInstancesResponseBody
+	GetResult() []*UpdateMultiUserInstancesResponseBodyResult
+}
+
+type UpdateMultiUserInstancesResponseBody struct {
+	// example:
+	//
+	// F8B6F758-BCD4-597A-8A2C-DA5A552C****
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*UpdateMultiUserInstancesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s UpdateMultiUserInstancesResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateMultiUserInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiUserInstancesResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *UpdateMultiUserInstancesResponseBody) GetResult() []*UpdateMultiUserInstancesResponseBodyResult {
+	return s.Result
+}
+
+func (s *UpdateMultiUserInstancesResponseBody) SetRequestId(v string) *UpdateMultiUserInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMultiUserInstancesResponseBody) SetResult(v []*UpdateMultiUserInstancesResponseBodyResult) *UpdateMultiUserInstancesResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *UpdateMultiUserInstancesResponseBody) Validate() error {
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type UpdateMultiUserInstancesResponseBodyResult struct {
+	// example:
+	//
+	// ****185894****
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// Failed to update multi-user instance configuration
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// sas-p0anpb26****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	UpdateStatus *string `json:"UpdateStatus,omitempty" xml:"UpdateStatus,omitempty"`
+}
+
+func (s UpdateMultiUserInstancesResponseBodyResult) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateMultiUserInstancesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiUserInstancesResponseBodyResult) GetAliUid() *int64 {
+	return s.AliUid
+}
+
+func (s *UpdateMultiUserInstancesResponseBodyResult) GetErrorMessage() *string {
+	return s.ErrorMessage
+}
+
+func (s *UpdateMultiUserInstancesResponseBodyResult) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *UpdateMultiUserInstancesResponseBodyResult) GetUpdateStatus() *string {
+	return s.UpdateStatus
+}
+
+func (s *UpdateMultiUserInstancesResponseBodyResult) SetAliUid(v int64) *UpdateMultiUserInstancesResponseBodyResult {
+	s.AliUid = &v
+	return s
+}
+
+func (s *UpdateMultiUserInstancesResponseBodyResult) SetErrorMessage(v string) *UpdateMultiUserInstancesResponseBodyResult {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateMultiUserInstancesResponseBodyResult) SetInstanceId(v string) *UpdateMultiUserInstancesResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateMultiUserInstancesResponseBodyResult) SetUpdateStatus(v string) *UpdateMultiUserInstancesResponseBodyResult {
+	s.UpdateStatus = &v
+	return s
+}
+
+func (s *UpdateMultiUserInstancesResponseBodyResult) Validate() error {
+	return dara.Validate(s)
+}

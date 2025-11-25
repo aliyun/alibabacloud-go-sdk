@@ -22,26 +22,60 @@ type iHandleSimilarMaliciousFilesRequest interface {
 }
 
 type HandleSimilarMaliciousFilesRequest struct {
+	// Target alert ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// Language type for request and response messages. Values include:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Handling action:
+	//
+	// - addWhitelist: Add to whitelist;
+	//
+	// - offWhitelist: Remove from whitelist;
+	//
+	// - offline_handled: Handled offline;
+	//
+	// - mark_mis_info: Report as false positive;
+	//
+	// - ignore: Ignore.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ignore
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// File source. Values include:
+	//
+	// - agentless: Host detection;
+	//
+	// - ecs_snapshot: User snapshot detection;
+	//
+	// - ecs_image: User-defined image detection.
+	//
 	// example:
 	//
 	// agentless
 	ScanRange *string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
+	// Batch processing scenario:
+	//
+	// - same_file_md5: Same file MD5;
+	//
+	// - default (default value): Same alert type.
+	//
 	// example:
 	//
 	// same_file_md5

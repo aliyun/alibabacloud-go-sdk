@@ -498,6 +498,12 @@ func (s *GetAttackPathEventDetailResponseBodyAttackPathEventPathEventEdgeList) V
 }
 
 type GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList struct {
+	// AI资产标识。取值：
+	//
+	// - **0**：非AI资产。
+	//
+	// - **1**：AI资产。
+	//
 	// example:
 	//
 	// 1

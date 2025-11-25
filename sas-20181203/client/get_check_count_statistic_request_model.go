@@ -31,8 +31,9 @@ type GetCheckCountStatisticRequest struct {
 	// example:
 	//
 	// instance
-	StatisticType *string   `json:"StatisticType,omitempty" xml:"StatisticType,omitempty"`
-	TaskSources   []*string `json:"TaskSources,omitempty" xml:"TaskSources,omitempty" type:"Repeated"`
+	StatisticType *string `json:"StatisticType,omitempty" xml:"StatisticType,omitempty"`
+	// Task source.
+	TaskSources []*string `json:"TaskSources,omitempty" xml:"TaskSources,omitempty" type:"Repeated"`
 	// The cloud service providers.
 	Vendors []*string `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
 }

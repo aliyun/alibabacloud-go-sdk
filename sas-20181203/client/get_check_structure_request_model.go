@@ -53,7 +53,8 @@ type GetCheckStructureRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// List of task sources.
 	TaskSources []*string `json:"TaskSources,omitempty" xml:"TaskSources,omitempty" type:"Repeated"`
 }
 

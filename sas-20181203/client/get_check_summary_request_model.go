@@ -49,8 +49,9 @@ type GetCheckSummaryRequest struct {
 	// example:
 	//
 	// 000
-	ResourceDirectoryAccountId *string   `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	TaskSources                []*string `json:"TaskSources,omitempty" xml:"TaskSources,omitempty" type:"Repeated"`
+	ResourceDirectoryAccountId *string `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	// List of task sources.
+	TaskSources []*string `json:"TaskSources,omitempty" xml:"TaskSources,omitempty" type:"Repeated"`
 	// The cloud service providers.
 	Vendors []*string `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
 }

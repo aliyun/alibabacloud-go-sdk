@@ -28,58 +28,63 @@ type iCreateMaliciousFileWhitelistConfigRequest interface {
 }
 
 type CreateMaliciousFileWhitelistConfigRequest struct {
-	// The name of the alert.
+	// Alert name:
 	//
-	// 	- Set the value to ALL, which indicates all alert types.
+	// - ALL: All alerts
 	//
 	// example:
 	//
 	// ALL
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The field that you want to use in the whitelist rule.
+	// Field used for whitelist in sensitive file alerts.
 	//
 	// example:
 	//
 	// fileMd5
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// The value of the field that you want to use in the whitelist rule.
+	// Expected value of the field to be whitelisted.
 	//
 	// example:
 	//
 	// b2cf9747ee49d8d9b105cf16e078cc16
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
-	// The logical operator that you want to use in the whitelist rule.
+	// Rule judgment operator:
 	//
-	// 	- Set the value to strEqual, which indicates the equality operator (=).
+	// - strEqual: String equals
 	//
 	// example:
 	//
 	// strEqual
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The feature to which this operation belongs.
+	// Remarks.
 	//
-	// 	- Set the value to agentless, which indicates the agentless detection feature.
+	// example:
+	//
+	// whitelist
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Business source:
+	//
+	// - agentless: Agentless detection
 	//
 	// example:
 	//
 	// agentless
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The type of the assets on which you want the whitelist rule to take effect. Valid values:
+	// Effective target type:
 	//
-	// 	- ALL: all assets
+	// - ALL: All assets
 	//
-	// 	- SELECTION_KEY: selected assets
+	// - SELECTION_KEY: Assets selected via the asset selection component
 	//
 	// example:
 	//
 	// ALL
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The assets on which you want the whitelist rule to take effect. Valid values:
+	// Target effective scope:
 	//
-	// 	- ALL: all assets
+	// - ALL: All assets
 	//
-	// 	- Others: selected assets
+	// - Other: Key of the asset range selected by the asset selection component
 	//
 	// example:
 	//

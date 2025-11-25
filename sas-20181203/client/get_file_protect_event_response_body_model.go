@@ -187,8 +187,18 @@ type GetFileProtectEventResponseBodyData struct {
 	// example:
 	//
 	// 1
-	Status   *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// User ID of the user who started the current process.
+	//
+	// example:
+	//
+	// 1001
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username that started the current process.
+	//
+	// example:
+	//
+	// test
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// The UUID of the asset.
 	//

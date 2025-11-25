@@ -186,7 +186,12 @@ type ListCheckInstanceResultResponseBodyBasicData struct {
 	// example:
 	//
 	// Task is failed.
-	StatusMessage  *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	// The multi-cloud provider account name.
+	//
+	// example:
+	//
+	// test
 	VendorUserName *string `json:"VendorUserName,omitempty" xml:"VendorUserName,omitempty"`
 }
 

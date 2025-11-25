@@ -14,6 +14,8 @@ type iDescribeCustomizedDictRequest interface {
 }
 
 type DescribeCustomizedDictRequest struct {
+	// The IP address of the access source.
+	//
 	// example:
 	//
 	// 58.240.XX.XX

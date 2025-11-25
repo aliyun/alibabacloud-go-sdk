@@ -4034,6 +4034,80 @@ func (client *Client) CreateCheckItem(request *CreateCheckItemRequest) (_result 
 
 // Summary:
 //
+// # Create Policy
+//
+// @param request - CreateCheckPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCheckPolicyResponse
+func (client *Client) CreateCheckPolicyWithOptions(request *CreateCheckPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateCheckPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DependentPolicyId) {
+		query["DependentPolicyId"] = request.DependentPolicyId
+	}
+
+	if !dara.IsNil(request.PolicyShowName) {
+		query["PolicyShowName"] = request.PolicyShowName
+	}
+
+	if !dara.IsNil(request.PolicyType) {
+		query["PolicyType"] = request.PolicyType
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCheckPolicy"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCheckPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Create Policy
+//
+// @param request - CreateCheckPolicyRequest
+//
+// @return CreateCheckPolicyResponse
+func (client *Client) CreateCheckPolicy(request *CreateCheckPolicyRequest) (_result *CreateCheckPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateCheckPolicyResponse{}
+	_body, _err := client.CreateCheckPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a container scan task.
 //
 // @param request - CreateContainerScanTaskRequest
@@ -5741,7 +5815,7 @@ func (client *Client) CreateJenkinsImageScanTask(request *CreateJenkinsImageScan
 
 // Summary:
 //
-// Creates an alert whitelist rule of sensitive files that are detected by using the agentless detection feature.
+// # Get alert whitelist configuration details
 //
 // @param request - CreateMaliciousFileWhitelistConfigRequest
 //
@@ -5813,7 +5887,7 @@ func (client *Client) CreateMaliciousFileWhitelistConfigWithOptions(request *Cre
 
 // Summary:
 //
-// Creates an alert whitelist rule of sensitive files that are detected by using the agentless detection feature.
+// # Get alert whitelist configuration details
 //
 // @param request - CreateMaliciousFileWhitelistConfigRequest
 //
@@ -15630,7 +15704,7 @@ func (client *Client) DescribeClusterNetwork(request *DescribeClusterNetworkRequ
 
 // Summary:
 //
-// 查询集群扫描组件状态
+// Query the status of cluster scanning components.
 //
 // @param request - DescribeClusterScannerListRequest
 //
@@ -15682,7 +15756,7 @@ func (client *Client) DescribeClusterScannerListWithOptions(request *DescribeClu
 
 // Summary:
 //
-// 查询集群扫描组件状态
+// Query the status of cluster scanning components.
 //
 // @param request - DescribeClusterScannerListRequest
 //
@@ -17315,7 +17389,7 @@ func (client *Client) DescribeCustomizeReportList(request *DescribeCustomizeRepo
 
 // Summary:
 //
-// 查看自定义弱口令上传结果
+// # View the result of custom weak password uploads
 //
 // @param request - DescribeCustomizedDictRequest
 //
@@ -17359,7 +17433,7 @@ func (client *Client) DescribeCustomizedDictWithOptions(request *DescribeCustomi
 
 // Summary:
 //
-// 查看自定义弱口令上传结果
+// # View the result of custom weak password uploads
 //
 // @param request - DescribeCustomizedDictRequest
 //
@@ -19381,6 +19455,14 @@ func (client *Client) DescribeExposedStatisticsDetailWithOptions(request *Descri
 
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.ExposureIp) {
+		query["ExposureIp"] = request.ExposureIp
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
 	}
 
 	if !dara.IsNil(request.PageSize) {
@@ -35900,7 +35982,7 @@ func (client *Client) FixCheckWarnings(request *FixCheckWarningsRequest) (_resul
 
 // Summary:
 //
-// 生成K8s集群扫描接入配置
+// Generate K8s cluster scan access configuration.
 //
 // @param request - GenerateClusterScannerWebhookYamlRequest
 //
@@ -35948,7 +36030,7 @@ func (client *Client) GenerateClusterScannerWebhookYamlWithOptions(request *Gene
 
 // Summary:
 //
-// 生成K8s集群扫描接入配置
+// Generate K8s cluster scan access configuration.
 //
 // @param request - GenerateClusterScannerWebhookYamlRequest
 //
@@ -38485,7 +38567,7 @@ func (client *Client) GetCloudAssetDetail(request *GetCloudAssetDetailRequest) (
 
 // Summary:
 //
-// The total number of instances that are at risk.
+// 获取云资产概要
 //
 // @param request - GetCloudAssetSummaryRequest
 //
@@ -38533,7 +38615,7 @@ func (client *Client) GetCloudAssetSummaryWithOptions(request *GetCloudAssetSumm
 
 // Summary:
 //
-// The total number of instances that are at risk.
+// 获取云资产概要
 //
 // @param request - GetCloudAssetSummaryRequest
 //
@@ -38679,7 +38761,7 @@ func (client *Client) GetClusterRuleSummary(request *GetClusterRuleSummaryReques
 
 // Summary:
 //
-// 查询K8s集群扫描接入配置
+// Query K8s cluster scan access configuration.
 //
 // @param request - GetClusterScannerYamlRequest
 //
@@ -38723,7 +38805,7 @@ func (client *Client) GetClusterScannerYamlWithOptions(request *GetClusterScanne
 
 // Summary:
 //
-// 查询K8s集群扫描接入配置
+// Query K8s cluster scan access configuration.
 //
 // @param request - GetClusterScannerYamlRequest
 //
@@ -40403,7 +40485,7 @@ func (client *Client) GetHoneypotProbe(request *GetHoneypotProbeRequest) (_resul
 
 // Summary:
 //
-// 获取蜜罐使用量的统计数据
+// Get statistics on honey pot usage.
 //
 // @param request - GetHoneypotStatisticsRequest
 //
@@ -40447,7 +40529,7 @@ func (client *Client) GetHoneypotStatisticsWithOptions(request *GetHoneypotStati
 
 // Summary:
 //
-// 获取蜜罐使用量的统计数据
+// Get statistics on honey pot usage.
 //
 // @param request - GetHoneypotStatisticsRequest
 //
@@ -40712,6 +40794,53 @@ func (client *Client) GetInstanceAlarmStatistics(request *GetInstanceAlarmStatis
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetInstanceAlarmStatisticsResponse{}
 	_body, _err := client.GetInstanceAlarmStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例授权取值范围
+//
+// @param request - GetInstanceAuthRangeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceAuthRangeResponse
+func (client *Client) GetInstanceAuthRangeWithOptions(runtime *dara.RuntimeOptions) (_result *GetInstanceAuthRangeResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceAuthRange"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstanceAuthRangeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例授权取值范围
+//
+// @return GetInstanceAuthRangeResponse
+func (client *Client) GetInstanceAuthRange() (_result *GetInstanceAuthRangeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetInstanceAuthRangeResponse{}
+	_body, _err := client.GetInstanceAuthRangeWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43694,7 +43823,7 @@ func (client *Client) HandleSecurityEvents(request *HandleSecurityEventsRequest)
 
 // Summary:
 //
-// 批量处理恶意样本告警。
+// Batch process malicious alerts.
 //
 // Description:
 //
@@ -43758,7 +43887,7 @@ func (client *Client) HandleSimilarMaliciousFilesWithOptions(request *HandleSimi
 
 // Summary:
 //
-// 批量处理恶意样本告警。
+// Batch process malicious alerts.
 //
 // Description:
 //
@@ -46386,7 +46515,7 @@ func (client *Client) ListCheckItem(request *ListCheckItemRequest) (_result *Lis
 
 // Summary:
 //
-// Queries the servers that are affected by baseline risks.
+// Query the list of warning machines for a specific baseline check item.
 //
 // @param request - ListCheckItemWarningMachineRequest
 //
@@ -46474,7 +46603,7 @@ func (client *Client) ListCheckItemWarningMachineWithOptions(request *ListCheckI
 
 // Summary:
 //
-// Queries the servers that are affected by baseline risks.
+// Query the list of warning machines for a specific baseline check item.
 //
 // @param request - ListCheckItemWarningMachineRequest
 //
@@ -47400,6 +47529,158 @@ func (client *Client) ListCloudAssetInstances(request *ListCloudAssetInstancesRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListCloudAssetInstancesResponse{}
 	_body, _err := client.ListCloudAssetInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Get the list of cloud product configuration rule operators
+//
+// Description:
+//
+// Get the list of cloud asset data operators.
+//
+// @param request - ListCloudAssetMatchOperatorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudAssetMatchOperatorsResponse
+func (client *Client) ListCloudAssetMatchOperatorsWithOptions(request *ListCloudAssetMatchOperatorsRequest, runtime *dara.RuntimeOptions) (_result *ListCloudAssetMatchOperatorsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCloudAssetMatchOperators"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCloudAssetMatchOperatorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Get the list of cloud product configuration rule operators
+//
+// Description:
+//
+// Get the list of cloud asset data operators.
+//
+// @param request - ListCloudAssetMatchOperatorsRequest
+//
+// @return ListCloudAssetMatchOperatorsResponse
+func (client *Client) ListCloudAssetMatchOperators(request *ListCloudAssetMatchOperatorsRequest) (_result *ListCloudAssetMatchOperatorsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCloudAssetMatchOperatorsResponse{}
+	_body, _err := client.ListCloudAssetMatchOperatorsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取云产品资产结构列表
+//
+// @param request - ListCloudAssetSchemasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudAssetSchemasResponse
+func (client *Client) ListCloudAssetSchemasWithOptions(request *ListCloudAssetSchemasRequest, runtime *dara.RuntimeOptions) (_result *ListCloudAssetSchemasResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssociatedDataOnly) {
+		query["AssociatedDataOnly"] = request.AssociatedDataOnly
+	}
+
+	if !dara.IsNil(request.CloudAssetTypes) {
+		query["CloudAssetTypes"] = request.CloudAssetTypes
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.DataNames) {
+		query["DataNames"] = request.DataNames
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCloudAssetSchemas"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCloudAssetSchemasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取云产品资产结构列表
+//
+// @param request - ListCloudAssetSchemasRequest
+//
+// @return ListCloudAssetSchemasResponse
+func (client *Client) ListCloudAssetSchemas(request *ListCloudAssetSchemasRequest) (_result *ListCloudAssetSchemasResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCloudAssetSchemasResponse{}
+	_body, _err := client.ListCloudAssetSchemasWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -50180,6 +50461,72 @@ func (client *Client) ListMaliciousFileWhitelistConfigs(request *ListMaliciousFi
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListMaliciousFileWhitelistConfigsResponse{}
 	_body, _err := client.ListMaliciousFileWhitelistConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询多账号授权分配列表
+//
+// @param request - ListMultiUserInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMultiUserInstancesResponse
+func (client *Client) ListMultiUserInstancesWithOptions(request *ListMultiUserInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListMultiUserInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMultiUserInstances"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMultiUserInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询多账号授权分配列表
+//
+// @param request - ListMultiUserInstancesRequest
+//
+// @return ListMultiUserInstancesResponse
+func (client *Client) ListMultiUserInstances(request *ListMultiUserInstancesRequest) (_result *ListMultiUserInstancesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListMultiUserInstancesResponse{}
+	_body, _err := client.ListMultiUserInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -64532,6 +64879,84 @@ func (client *Client) UpdateCheckItem(request *UpdateCheckItemRequest) (_result 
 
 // Summary:
 //
+// # Update Custom Policy
+//
+// @param request - UpdateCheckPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCheckPolicyResponse
+func (client *Client) UpdateCheckPolicyWithOptions(request *UpdateCheckPolicyRequest, runtime *dara.RuntimeOptions) (_result *UpdateCheckPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DependentPolicyId) {
+		query["DependentPolicyId"] = request.DependentPolicyId
+	}
+
+	if !dara.IsNil(request.PolicyId) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.PolicyShowName) {
+		query["PolicyShowName"] = request.PolicyShowName
+	}
+
+	if !dara.IsNil(request.PolicyType) {
+		query["PolicyType"] = request.PolicyType
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCheckPolicy"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCheckPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Update Custom Policy
+//
+// @param request - UpdateCheckPolicyRequest
+//
+// @return UpdateCheckPolicyResponse
+func (client *Client) UpdateCheckPolicy(request *UpdateCheckPolicyRequest) (_result *UpdateCheckPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateCheckPolicyResponse{}
+	_body, _err := client.UpdateCheckPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies alerting settings for servers.
 //
 // @param request - UpdateClientAlertModeRequest
@@ -65879,6 +66304,68 @@ func (client *Client) UpdateMaliciousFileWhitelistConfig(request *UpdateMaliciou
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateMaliciousFileWhitelistConfigResponse{}
 	_body, _err := client.UpdateMaliciousFileWhitelistConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改多账号实例配置
+//
+// @param request - UpdateMultiUserInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMultiUserInstancesResponse
+func (client *Client) UpdateMultiUserInstancesWithOptions(request *UpdateMultiUserInstancesRequest, runtime *dara.RuntimeOptions) (_result *UpdateMultiUserInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MemberInstances) {
+		query["MemberInstances"] = request.MemberInstances
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMultiUserInstances"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMultiUserInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改多账号实例配置
+//
+// @param request - UpdateMultiUserInstancesRequest
+//
+// @return UpdateMultiUserInstancesResponse
+func (client *Client) UpdateMultiUserInstances(request *UpdateMultiUserInstancesRequest) (_result *UpdateMultiUserInstancesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateMultiUserInstancesResponse{}
+	_body, _err := client.UpdateMultiUserInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

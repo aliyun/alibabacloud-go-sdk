@@ -178,9 +178,19 @@ type GetAssetsPropertyDetailResponseBodyPropertys struct {
 	// example:
 	//
 	// localhost
-	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// LLM service endpoint
+	//
+	// example:
+	//
+	// dashscope.aliyuncs.com
 	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
-	File     *string `json:"File,omitempty" xml:"File,omitempty"`
+	// File path for requesting the LLM service.
+	//
+	// example:
+	//
+	// /root/llm.py
+	File *string `json:"File,omitempty" xml:"File,omitempty"`
 	// The path to the kernel module file.
 	//
 	// > This parameter is returned only when **Biz*	- is set to **lkm**.
@@ -194,7 +204,12 @@ type GetAssetsPropertyDetailResponseBodyPropertys struct {
 	// example:
 	//
 	// registry-vpc.cn-beijing.aliyuncs.com/acs/aliyun-ingress-controller****
-	ImageName        *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// AI tool installation path
+	//
+	// example:
+	//
+	// /etc/pip3/env/vllm
 	InstallationPath *string `json:"InstallationPath,omitempty" xml:"InstallationPath,omitempty"`
 	// The ID of the server.
 	//
@@ -233,10 +248,25 @@ type GetAssetsPropertyDetailResponseBodyPropertys struct {
 	// example:
 	//
 	// tcp
-	ListenProtocol    *string `json:"ListenProtocol,omitempty" xml:"ListenProtocol,omitempty"`
-	MiddlewareName    *string `json:"MiddlewareName,omitempty" xml:"MiddlewareName,omitempty"`
+	ListenProtocol *string `json:"ListenProtocol,omitempty" xml:"ListenProtocol,omitempty"`
+	// AI tool name.
+	//
+	// example:
+	//
+	// vllm
+	MiddlewareName *string `json:"MiddlewareName,omitempty" xml:"MiddlewareName,omitempty"`
+	// AI tool version.
+	//
+	// example:
+	//
+	// 1.0.1
 	MiddlewareVersion *string `json:"MiddlewareVersion,omitempty" xml:"MiddlewareVersion,omitempty"`
-	ModelName         *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Name of the LLM vendor.
+	//
+	// example:
+	//
+	// OpenAI
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// The name of the module.
 	//
 	// > This parameter is returned only when **Biz*	- is set to **lkm**.

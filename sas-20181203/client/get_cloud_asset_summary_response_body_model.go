@@ -16,9 +16,9 @@ type iGetCloudAssetSummaryResponseBody interface {
 }
 
 type GetCloudAssetSummaryResponseBody struct {
-	// The summary of cloud services.
+	// Summary information of cloud assets.
 	GroupedFields *GetCloudAssetSummaryResponseBodyGroupedFields `json:"GroupedFields,omitempty" xml:"GroupedFields,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
 	//
 	// example:
 	//
@@ -62,15 +62,15 @@ func (s *GetCloudAssetSummaryResponseBody) Validate() error {
 }
 
 type GetCloudAssetSummaryResponseBodyGroupedFields struct {
-	// The statistics of cloud services.
+	// List of cloud product statistics
 	CloudAssetSummaryMetas []*GetCloudAssetSummaryResponseBodyGroupedFieldsCloudAssetSummaryMetas `json:"CloudAssetSummaryMetas,omitempty" xml:"CloudAssetSummaryMetas,omitempty" type:"Repeated"`
-	// The total number of cloud service instances.
+	// Total number of cloud product instances.
 	//
 	// example:
 	//
 	// 919
 	InstanceCountTotal *int32 `json:"InstanceCountTotal,omitempty" xml:"InstanceCountTotal,omitempty"`
-	// The total number of cloud service instances that are at risk.
+	// Total number of cloud product instances at risk
 	//
 	// example:
 	//
@@ -127,91 +127,91 @@ func (s *GetCloudAssetSummaryResponseBodyGroupedFields) Validate() error {
 }
 
 type GetCloudAssetSummaryResponseBodyGroupedFieldsCloudAssetSummaryMetas struct {
-	// The subtype of the cloud service.
+	// Subtype of the cloud product
 	//
 	// example:
 	//
 	// 0
 	AssetSubType *int32 `json:"AssetSubType,omitempty" xml:"AssetSubType,omitempty"`
-	// The type of the cloud service. Valid values:
+	// 云产品的类型。取值：
 	//
-	// 	- **0**: Elastic Compute Service (ECS)
+	// - **0**：云服务器 ECS
 	//
-	// 	- **1**: Server Load Balancer (SLB)
+	// - **1**：负载均衡
 	//
-	// 	- **3**: ApsaraDB RDS
+	// - **3**：云数据库 RDS
 	//
-	// 	- **4**: ApsaraDB for MongoDB (MongoDB)
+	// - **4**：云数据库 MongoDB 版
 	//
-	// 	- **5**: ApsaraDB for Redis (Redis)
+	// - **5**：云数据库 Tair（兼容 Redis）
 	//
-	// 	- **6**: Container Registry
+	// - **6**：容器镜像服务
 	//
-	// 	- **8**: Container Service for Kubernetes (ACK)
+	// - **8**：容器服务Kubernetes版
 	//
-	// 	- **9**: Virtual Private Cloud (VPC)
+	// - **9**：专有网络VPC
 	//
-	// 	- **11**: ActionTrail
+	// - **11**：操作审计
 	//
-	// 	- **12**: Alibaba Cloud CDN (CDN)
+	// - **12**：CDN
 	//
-	// 	- **13**: Certificate Management Service (formerly SSL Certificates Service)
+	// - **13**：数字证书管理服务（原SSL证书）
 	//
-	// 	- **14**: Apsara Devops
+	// - **14**：云效
 	//
-	// 	- **15**: Resource Access Management (RAM)
+	// - **15**：访问控制
 	//
-	// 	- **16**: Anti-DDoS
+	// - **16**：DDoS防护
 	//
-	// 	- **17**: Web Application Firewall (WAF)
+	// - **17**：Web应用防火墙
 	//
-	// 	- **18**: Object Storage Service (OSS)
+	// - **18**：对象存储
 	//
-	// 	- **19**: PolarDB
+	// - **19**：云原生关系型数据库 PolarDB
 	//
-	// 	- **20**: ApsaraDB RDS for PostgreSQL
+	// - **20**：云数据库 PostgreSQL 版
 	//
-	// 	- **21**: Microservices Engine (MSE)
+	// - **21**：微服务引擎
 	//
-	// 	- **22**: File Storage NAS (NAS)
+	// - **22**：文件存储NAS
 	//
-	// 	- **23**: Data Security Center (DSC)
+	// - **23**：数据安全中心
 	//
-	// 	- **24**: Elastic IP Address (EIP)
+	// - **24**：弹性公网IP
 	//
-	// 	- **25**: Identity as a Service (IDaaS) - Enterprise Identity Access Management (EIAM)
+	// - **25**：云身份服务-EIAM
 	//
-	// 	- **26**: PolarDB for Xscale (PolarDB-X)
+	// - **26**：PolarDB-X
 	//
-	// 	- **27**: Elasticsearch
+	// - **27**：Elasticsearch
 	//
 	// example:
 	//
 	// 16
 	AssetType *int32 `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// The total number of cloud service instances of this type.
+	// Total number of this type of cloud product instances.
 	//
 	// example:
 	//
 	// 16
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The total number of cloud service instances that are at risk of this type.
+	// Total number of risky instances for this type of cloud product.
 	//
 	// example:
 	//
 	// 5
 	InstanceRiskCount *int32 `json:"InstanceRiskCount,omitempty" xml:"InstanceRiskCount,omitempty"`
-	// The server type. Valid values:
+	// 服务器厂商。取值：
 	//
-	// 	- **0**: an asset provided by Alibaba Cloud
+	// - **0**：阿里云资产
 	//
-	// 	- **1**: an asset outside Alibaba Cloud
+	// - **1**：云外资产
 	//
-	// 	- **2**: an asset in a data center
+	// - **2**：IDC资产
 	//
-	// 	- **3**, **4**, **5**, and **7**: an asset provided by a third-party service provider
+	// - **3**、**4**、**5**、**7**：其它云资产
 	//
-	// 	- **8**: a lightweight asset
+	// - **8**：轻量级资产
 	//
 	// example:
 	//

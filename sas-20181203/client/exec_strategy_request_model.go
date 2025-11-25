@@ -18,6 +18,13 @@ type iExecStrategyRequest interface {
 }
 
 type ExecStrategyRequest struct {
+  // Set the action for this execution, default is **exec**. Values:
+  // 
+  // - **exec**: Execute. - **terminate**: Terminate.
+  // 
+  // example:
+  // 
+  // terminate
   ExecAction *string `json:"ExecAction,omitempty" xml:"ExecAction,omitempty"`
   // The language of the content within the request and response. Default value: **zh**. Valid values:
   // 

@@ -16,6 +16,15 @@ type iGetContainerDefenseRuleDetailRequest interface {
 }
 
 type GetContainerDefenseRuleDetailRequest struct {
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// 	- **zh**: Chinese
+	//
+	// 	- **en**: English
+	//
+	// example:
+	//
+	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The rule ID.
 	//

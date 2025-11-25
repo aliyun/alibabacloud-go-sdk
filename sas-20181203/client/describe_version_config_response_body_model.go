@@ -161,7 +161,16 @@ type DescribeVersionConfigResponseBody struct {
 	// example:
 	//
 	// 30
-	AssetLevel            *int32 `json:"AssetLevel,omitempty" xml:"AssetLevel,omitempty"`
+	AssetLevel *int32 `json:"AssetLevel,omitempty" xml:"AssetLevel,omitempty"`
+	// Whether it supports the activation of a postpaid trial package. Values:
+	//
+	//  - **0**: Not supported
+	//
+	// - **1**: Supported
+	//
+	// example:
+	//
+	// 1
 	CanTryPostPaidPackage *int32 `json:"CanTryPostPaidPackage,omitempty" xml:"CanTryPostPaidPackage,omitempty"`
 	// The purchased quota for configuration assessment. Unit: times/month.
 	//

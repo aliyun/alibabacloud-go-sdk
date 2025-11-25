@@ -26,6 +26,12 @@ type GetAttackPathEventDetailRequest struct {
 	//
 	// 123
 	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// 数据来源。默认值为**default**。取值：
+	//
+	// - **caasm**：攻击面
+	//
+	// - **default**：攻击路径
+	//
 	// example:
 	//
 	// default

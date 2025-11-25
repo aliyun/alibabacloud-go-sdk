@@ -36,6 +36,14 @@ type ModifyPostPayModuleSwitchRequest struct {
 	//
 	//     	- **SERVERLESS**: serverless asset module
 	//
+	//     	- **CTDR**: Threat Analysis and Response Module
+	//
+	//     	- **POST_HOST**: Host and Container Security Module
+	//
+	//     	- **SDK**: Malicious File Detection SDK Module
+	//
+	//     	- **RASP**: Application Protection Module
+	//
 	// 	- Value: A value of 0 specifies disabled. A value of 1 specifies enabled.
 	//
 	// >  If you do not specify a value for a module, the original value of the module is retained.

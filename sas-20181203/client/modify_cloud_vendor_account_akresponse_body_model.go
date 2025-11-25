@@ -79,8 +79,15 @@ type ModifyCloudVendorAccountAKResponseBodyData struct {
 	// 2158
 	AuthId *int64 `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
 	// The modules that are associated with the AccessKey pair.
-	AuthModules     []*ModifyCloudVendorAccountAKResponseBodyDataAuthModules `json:"AuthModules,omitempty" xml:"AuthModules,omitempty" type:"Repeated"`
-	CtdrCloudUserId *string                                                  `json:"CtdrCloudUserId,omitempty" xml:"CtdrCloudUserId,omitempty"`
+	AuthModules []*ModifyCloudVendorAccountAKResponseBodyDataAuthModules `json:"AuthModules,omitempty" xml:"AuthModules,omitempty" type:"Repeated"`
+	// Account ID.
+	//
+	// >The account ID of the cloud provider being connected.
+	//
+	// example:
+	//
+	// azure_demo_1
+	CtdrCloudUserId *string `json:"CtdrCloudUserId,omitempty" xml:"CtdrCloudUserId,omitempty"`
 	// The error message of the AccessKey pair.
 	//
 	// example:
@@ -128,6 +135,16 @@ type ModifyCloudVendorAccountAKResponseBodyData struct {
 	// 	- **Azure**: Microsoft Azure.
 	//
 	// 	- **AWS**: Amazon Web Services (AWS).
+	//
+	// 	- **VOLCENGINE**: Volcengine
+	//
+	// 	- **google**: Google Cloud
+	//
+	// 	- **CHAITIN**: Chaitin Tech
+	//
+	// 	- **FORTINET**: Fortinet
+	//
+	// 	- **THREATBOOK**: ThreatBook
 	//
 	// example:
 	//

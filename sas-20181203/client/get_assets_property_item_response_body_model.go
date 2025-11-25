@@ -172,9 +172,19 @@ type GetAssetsPropertyItemResponseBodyPropertyItems struct {
 	// example:
 	//
 	// localhost
-	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// AI tool name.
+	//
+	// example:
+	//
+	// vllm
 	MiddlewareName *string `json:"MiddlewareName,omitempty" xml:"MiddlewareName,omitempty"`
-	ModelName      *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Name of the LLM service.
+	//
+	// example:
+	//
+	// Deepseek
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// The name of the module.
 	//
 	// > This parameter is returned only when **Biz*	- is set to **lkm**.

@@ -18,11 +18,25 @@ type iDescribeClusterScannerListRequest interface {
 }
 
 type DescribeClusterScannerListRequest struct {
+	// List of cluster IDs.
 	ClusterIdList []*string `json:"ClusterIdList,omitempty" xml:"ClusterIdList,omitempty" type:"Repeated"`
+	// The language type for requests and responses.
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
-	Lang       *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// List of scanner statuses. Values:
+	//
+	// - **online**: Running
+	//
+	// - **offline**: Offline
+	//
+	// - **not_installed**: Not Installed
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
 

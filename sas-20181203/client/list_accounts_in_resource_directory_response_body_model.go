@@ -73,8 +73,32 @@ type ListAccountsInResourceDirectoryResponseBodyAccounts struct {
 	// 180803538814****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// Deprecated
-	BuySas     *int32 `json:"BuySas,omitempty" xml:"BuySas,omitempty"`
-	BuySasNew  *bool  `json:"BuySasNew,omitempty" xml:"BuySasNew,omitempty"`
+	//
+	// This parameter is deprecated and should be ignored.
+	//
+	// example:
+	//
+	// true
+	BuySas *int32 `json:"BuySas,omitempty" xml:"BuySas,omitempty"`
+	// Whether a yearly or monthly subscription of Cloud Security Center is purchased. Values:
+	//
+	// - **true**: Yes
+	//
+	// - **false**: No
+	//
+	// example:
+	//
+	// true
+	BuySasNew *bool `json:"BuySasNew,omitempty" xml:"BuySasNew,omitempty"`
+	// Subscription type. Values:
+	//
+	// 	- **0**: Prepaid
+	//
+	// 	- **1**: Pay-As-You-Go
+	//
+	// example:
+	//
+	// 1
 	ChargeType *int32 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The name of the member.
 	//
@@ -87,8 +111,17 @@ type ListAccountsInResourceDirectoryResponseBodyAccounts struct {
 	// example:
 	//
 	// fd-cE2SQP****
-	FolderId        *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	InstanceBuyType *int32  `json:"InstanceBuyType,omitempty" xml:"InstanceBuyType,omitempty"`
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// Instance purchase type. Values:
+	//
+	// - **0**: Self-purchased
+	//
+	// - **1**: Multi-account allocation
+	//
+	// example:
+	//
+	// 0
+	InstanceBuyType *int32 `json:"InstanceBuyType,omitempty" xml:"InstanceBuyType,omitempty"`
 	// Indicates whether the member is an administrator account of the resource directory. Valid values:
 	//
 	// 	- **yes**
@@ -134,10 +167,43 @@ type ListAccountsInResourceDirectoryResponseBodyAccounts struct {
 	// example:
 	//
 	// no
-	IsSiemDaAccount     *string `json:"IsSiemDaAccount,omitempty" xml:"IsSiemDaAccount,omitempty"`
-	PostBasicService    *int32  `json:"PostBasicService,omitempty" xml:"PostBasicService,omitempty"`
+	IsSiemDaAccount *string `json:"IsSiemDaAccount,omitempty" xml:"IsSiemDaAccount,omitempty"`
+	// Post-paid module switch. Values:
+	//
+	// - **0**: Off
+	//
+	// - **1**: On
+	//
+	// example:
+	//
+	// 1
+	PostBasicService *int32 `json:"PostBasicService,omitempty" xml:"PostBasicService,omitempty"`
+	// The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
+	//
+	// 	- Key:
+	//
+	//     	- **VUL**: vulnerability fixing module
+	//
+	//     	- **CSPM**: cloud service configuration check module
+	//
+	//     	- **AGENTLESS**: agentless detection module
+	//
+	//     	- **SERVERLESS**: serverless asset module
+	//
+	// 	- Value: A value of 0 specifies disabled. A value of 1 specifies enabled.
+	//
+	// >  If you do not specify a value for a module, the original value of the module is retained.
+	//
+	// example:
+	//
+	// {\\"VUL\\":0}
 	PostPayModuleSwitch *string `json:"PostPayModuleSwitch,omitempty" xml:"PostPayModuleSwitch,omitempty"`
-	SaleInstance        *string `json:"SaleInstance,omitempty" xml:"SaleInstance,omitempty"`
+	// Cloud Security Center Instance ID.
+	//
+	// example:
+	//
+	// postpay-sas-x5x3hy1ly***
+	SaleInstance *string `json:"SaleInstance,omitempty" xml:"SaleInstance,omitempty"`
 	// The edition of Security Center that you use. Valid value:
 	//
 	// 	- **0*	- or **1**: Basic

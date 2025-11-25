@@ -59,20 +59,38 @@ type ModifyCloudVendorAccountAKRequest struct {
 	// 	- **TRIAL**: log audit.
 	//
 	// >  You can call the [GetSupportedModules](~~GetSupportedModules~~) operation to query the supported modules.
-	AuthModules     []*string `json:"AuthModules,omitempty" xml:"AuthModules,omitempty" type:"Repeated"`
-	CtdrCloudUserId *string   `json:"CtdrCloudUserId,omitempty" xml:"CtdrCloudUserId,omitempty"`
-	// The Active Directory (AD) domain. Valid values:
+	AuthModules []*string `json:"AuthModules,omitempty" xml:"AuthModules,omitempty" type:"Repeated"`
+	// Account ID.
 	//
-	// 	- **china**
+	// > The account ID of the connected cloud vendor, required when the permission description includes threat analysis and response.
 	//
-	// 	- **global**
+	// example:
 	//
-	// >  This parameter takes effect only when Vendor is set to Azure.
+	// azure_demo_1
+	CtdrCloudUserId *string `json:"CtdrCloudUserId,omitempty" xml:"CtdrCloudUserId,omitempty"`
+	// Access account domain. Values:
+	//
+	// -  **china**: China
+	//
+	// -  **global**: Global
+	//
+	// -  **europe**: Huawei Europe
+	//
+	// > This parameter is only valid and required for **Vendor*	- being **HUAWEICLOUD**, **Azure**, **AWS**, or **VOLCENGINE**.
 	//
 	// example:
 	//
 	// global
-	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// Extended information.
+	//
+	// > Used to record extended information from different vendors.
+	//
+	// > For Google Cloud, which is accessed through a service account, ExtendInfo stores a JSON-formatted service key file, excluding the private_key_id and zprivate_key fields. The file includes the following fields: type, project_id, client_email, client_id, auth_uri, token_uri, auth_provider_x509_cert_url, client_x509_cert_url, universe_domain.
+	//
+	// example:
+	//
+	// {\\"product\\":\\"webFirewall\\",\\"remark\\":\\"remark\\"}
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
@@ -85,12 +103,36 @@ type ModifyCloudVendorAccountAKRequest struct {
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The regions that are examined during AccessKey pair authentication.
-	//
-	// >  This parameter takes effect only when Vendor is set to AWS. You can call the [ListCloudVendorRegions](~~ListCloudVendorRegions~~) operation to query regions.
 	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The AccessKey ID.
+	// ID of the AK parameter. Values:
 	//
-	// >  If AkType is set to **primary**, you must set SecretId to the AccessKey ID of the third-party master account. If AkType is set to **sub**, you must set SecretId to the AccessKey ID of the third-party sub-account. This parameter value does not change for a **Microsoft Azure account**. For an Azure account, set this parameter to the **app ID*	- that is used for authentication.
+	// 1. When AkType is primary:
+	//
+	// - **Tencent**: AccessKeyId of the main account
+	//
+	// - **HUAWEICLOUD**: AccessKeyId of the main account
+	//
+	// - **Azure**: ClientId
+	//
+	// - **AWS**: AccessKeyId of the main account
+	//
+	// - **VOLCENGINE**: AccessKeyId of the main account
+	//
+	// 2. When AkType is sub:
+	//
+	// - **Tencent**: AccessKeyId of the sub-account
+	//
+	// - **HUAWEICLOUD**: AccessKeyId of the sub-account
+	//
+	// - **Azure**: ClientId
+	//
+	// - **AWS**: AccessKeyId of the sub-account
+	//
+	// - **VOLCENGINE**: AccessKeyId of the sub-account
+	//
+	// - **google**: private_key_id
+	//
+	// > If AkType is **primary**, this value is the SecretID of the main account from another cloud. If AkType is **sub**, this value is the Access Key ID of the sub-account from another cloud. For **Azure**, there is no distinction, and this value is the **appId*	- of the authentication information. Google Cloud is accessed through a service account, with AkType defaulting to sub, and this value is taken from the private_key_id attribute in the JSON format service key file.
 	//
 	// example:
 	//

@@ -81,7 +81,8 @@ type ListCheckRuleRequest struct {
 	// example:
 	//
 	// INSTANCE
-	ScopeType   *string   `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	// List of task sources.
 	TaskSources []*string `json:"TaskSources,omitempty" xml:"TaskSources,omitempty" type:"Repeated"`
 }
 
