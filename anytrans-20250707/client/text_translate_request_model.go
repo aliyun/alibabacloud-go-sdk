@@ -138,6 +138,7 @@ func (s *TextTranslateRequest) Validate() error {
 }
 
 type TextTranslateRequestExt struct {
+	Agent  *string                        `json:"agent,omitempty" xml:"agent,omitempty"`
 	Config *TextTranslateRequestExtConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
 	// example:
 	//
@@ -155,6 +156,10 @@ func (s TextTranslateRequestExt) String() string {
 
 func (s TextTranslateRequestExt) GoString() string {
 	return s.String()
+}
+
+func (s *TextTranslateRequestExt) GetAgent() *string {
+	return s.Agent
 }
 
 func (s *TextTranslateRequestExt) GetConfig() *TextTranslateRequestExtConfig {
@@ -179,6 +184,11 @@ func (s *TextTranslateRequestExt) GetTerminologies() []*TextTranslateRequestExtT
 
 func (s *TextTranslateRequestExt) GetTextTransform() *TextTranslateRequestExtTextTransform {
 	return s.TextTransform
+}
+
+func (s *TextTranslateRequestExt) SetAgent(v string) *TextTranslateRequestExt {
+	s.Agent = &v
+	return s
 }
 
 func (s *TextTranslateRequestExt) SetConfig(v *TextTranslateRequestExtConfig) *TextTranslateRequestExt {

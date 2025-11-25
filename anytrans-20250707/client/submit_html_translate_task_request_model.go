@@ -239,7 +239,8 @@ func (s *SubmitHtmlTranslateTaskRequestExt) Validate() error {
 }
 
 type SubmitHtmlTranslateTaskRequestExtConfig struct {
-	SkipCsiCheck *bool `json:"skipCsiCheck,omitempty" xml:"skipCsiCheck,omitempty"`
+	CallbackUrl  *string `json:"callbackUrl,omitempty" xml:"callbackUrl,omitempty"`
+	SkipCsiCheck *bool   `json:"skipCsiCheck,omitempty" xml:"skipCsiCheck,omitempty"`
 }
 
 func (s SubmitHtmlTranslateTaskRequestExtConfig) String() string {
@@ -250,8 +251,17 @@ func (s SubmitHtmlTranslateTaskRequestExtConfig) GoString() string {
 	return s.String()
 }
 
+func (s *SubmitHtmlTranslateTaskRequestExtConfig) GetCallbackUrl() *string {
+	return s.CallbackUrl
+}
+
 func (s *SubmitHtmlTranslateTaskRequestExtConfig) GetSkipCsiCheck() *bool {
 	return s.SkipCsiCheck
+}
+
+func (s *SubmitHtmlTranslateTaskRequestExtConfig) SetCallbackUrl(v string) *SubmitHtmlTranslateTaskRequestExtConfig {
+	s.CallbackUrl = &v
+	return s
 }
 
 func (s *SubmitHtmlTranslateTaskRequestExtConfig) SetSkipCsiCheck(v bool) *SubmitHtmlTranslateTaskRequestExtConfig {
