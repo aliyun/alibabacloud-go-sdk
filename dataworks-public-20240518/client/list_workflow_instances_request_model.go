@@ -11,6 +11,8 @@ type iListWorkflowInstancesRequest interface {
 	GoString() string
 	SetBizDate(v int64) *ListWorkflowInstancesRequest
 	GetBizDate() *int64
+	SetFilter(v string) *ListWorkflowInstancesRequest
+	GetFilter() *string
 	SetIds(v []*int64) *ListWorkflowInstancesRequest
 	GetIds() []*int64
 	SetName(v string) *ListWorkflowInstancesRequest
@@ -25,8 +27,12 @@ type iListWorkflowInstancesRequest interface {
 	GetProjectId() *int64
 	SetSortBy(v string) *ListWorkflowInstancesRequest
 	GetSortBy() *string
+	SetTags(v []*string) *ListWorkflowInstancesRequest
+	GetTags() []*string
 	SetType(v string) *ListWorkflowInstancesRequest
 	GetType() *string
+	SetUnifiedWorkflowInstanceId(v int64) *ListWorkflowInstancesRequest
+	GetUnifiedWorkflowInstanceId() *int64
 	SetWorkflowId(v int64) *ListWorkflowInstancesRequest
 	GetWorkflowId() *int64
 }
@@ -39,7 +45,8 @@ type ListWorkflowInstancesRequest struct {
 	// example:
 	//
 	// 1710239005403
-	BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	BizDate *int64  `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	Filter  *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The IDs of the workflow instances. You can query multiple instances at a time by instance ID.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
 	// The instance name. Fuzzy match is supported.
@@ -91,7 +98,8 @@ type ListWorkflowInstancesRequest struct {
 	// example:
 	//
 	// Id Desc
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SortBy *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Tags   []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The type of the workflow instance. Valid values:
 	//
 	// 	- Normal: Scheduled execution
@@ -109,7 +117,8 @@ type ListWorkflowInstancesRequest struct {
 	// example:
 	//
 	// Normal
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type                      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UnifiedWorkflowInstanceId *int64  `json:"UnifiedWorkflowInstanceId,omitempty" xml:"UnifiedWorkflowInstanceId,omitempty"`
 	// The ID of the workflow to which the instance belongs.
 	//
 	// example:
@@ -128,6 +137,10 @@ func (s ListWorkflowInstancesRequest) GoString() string {
 
 func (s *ListWorkflowInstancesRequest) GetBizDate() *int64 {
 	return s.BizDate
+}
+
+func (s *ListWorkflowInstancesRequest) GetFilter() *string {
+	return s.Filter
 }
 
 func (s *ListWorkflowInstancesRequest) GetIds() []*int64 {
@@ -158,8 +171,16 @@ func (s *ListWorkflowInstancesRequest) GetSortBy() *string {
 	return s.SortBy
 }
 
+func (s *ListWorkflowInstancesRequest) GetTags() []*string {
+	return s.Tags
+}
+
 func (s *ListWorkflowInstancesRequest) GetType() *string {
 	return s.Type
+}
+
+func (s *ListWorkflowInstancesRequest) GetUnifiedWorkflowInstanceId() *int64 {
+	return s.UnifiedWorkflowInstanceId
 }
 
 func (s *ListWorkflowInstancesRequest) GetWorkflowId() *int64 {
@@ -168,6 +189,11 @@ func (s *ListWorkflowInstancesRequest) GetWorkflowId() *int64 {
 
 func (s *ListWorkflowInstancesRequest) SetBizDate(v int64) *ListWorkflowInstancesRequest {
 	s.BizDate = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesRequest) SetFilter(v string) *ListWorkflowInstancesRequest {
+	s.Filter = &v
 	return s
 }
 
@@ -206,8 +232,18 @@ func (s *ListWorkflowInstancesRequest) SetSortBy(v string) *ListWorkflowInstance
 	return s
 }
 
+func (s *ListWorkflowInstancesRequest) SetTags(v []*string) *ListWorkflowInstancesRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *ListWorkflowInstancesRequest) SetType(v string) *ListWorkflowInstancesRequest {
 	s.Type = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesRequest) SetUnifiedWorkflowInstanceId(v int64) *ListWorkflowInstancesRequest {
+	s.UnifiedWorkflowInstanceId = &v
 	return s
 }
 

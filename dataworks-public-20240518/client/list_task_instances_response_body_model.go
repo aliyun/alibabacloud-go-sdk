@@ -351,7 +351,8 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	// example:
 	//
 	// Scheduler
-	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	TriggerType               *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	UnifiedWorkflowInstanceId *int64  `json:"UnifiedWorkflowInstanceId,omitempty" xml:"UnifiedWorkflowInstanceId,omitempty"`
 	// The timestamp for when it started waiting for resources.
 	//
 	// example:
@@ -528,6 +529,10 @@ func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) GetTriggerType() 
 	return s.TriggerType
 }
 
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) GetUnifiedWorkflowInstanceId() *int64 {
+	return s.UnifiedWorkflowInstanceId
+}
+
 func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) GetWaitingResourceTime() *int64 {
 	return s.WaitingResourceTime
 }
@@ -694,6 +699,11 @@ func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetTriggerTime(v 
 
 func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetTriggerType(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
 	s.TriggerType = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetUnifiedWorkflowInstanceId(v int64) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.UnifiedWorkflowInstanceId = &v
 	return s
 }
 

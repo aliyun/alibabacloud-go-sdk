@@ -263,7 +263,8 @@ type GetTaskInstanceResponseBodyTaskInstance struct {
 	// example:
 	//
 	// Scheduler
-	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	TriggerType               *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	UnifiedWorkflowInstanceId *int64  `json:"UnifiedWorkflowInstanceId,omitempty" xml:"UnifiedWorkflowInstanceId,omitempty"`
 	// example:
 	//
 	// 1710239005403
@@ -444,6 +445,10 @@ func (s *GetTaskInstanceResponseBodyTaskInstance) GetTriggerTime() *int64 {
 
 func (s *GetTaskInstanceResponseBodyTaskInstance) GetTriggerType() *string {
 	return s.TriggerType
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) GetUnifiedWorkflowInstanceId() *int64 {
+	return s.UnifiedWorkflowInstanceId
 }
 
 func (s *GetTaskInstanceResponseBodyTaskInstance) GetWaitingResourceTime() *int64 {
@@ -627,6 +632,11 @@ func (s *GetTaskInstanceResponseBodyTaskInstance) SetTriggerTime(v int64) *GetTa
 
 func (s *GetTaskInstanceResponseBodyTaskInstance) SetTriggerType(v string) *GetTaskInstanceResponseBodyTaskInstance {
 	s.TriggerType = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetUnifiedWorkflowInstanceId(v int64) *GetTaskInstanceResponseBodyTaskInstance {
+	s.UnifiedWorkflowInstanceId = &v
 	return s
 }
 

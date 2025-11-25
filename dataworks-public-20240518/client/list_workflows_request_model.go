@@ -25,6 +25,8 @@ type iListWorkflowsRequest interface {
 	GetProjectId() *int64
 	SetSortBy(v string) *ListWorkflowsRequest
 	GetSortBy() *string
+	SetTags(v []*string) *ListWorkflowsRequest
+	GetTags() []*string
 	SetTriggerType(v string) *ListWorkflowsRequest
 	GetTriggerType() *string
 }
@@ -87,7 +89,8 @@ type ListWorkflowsRequest struct {
 	// example:
 	//
 	// Id Desc
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SortBy *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Tags   []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The trigger type.
 	//
 	// 	- Scheduler
@@ -140,6 +143,10 @@ func (s *ListWorkflowsRequest) GetSortBy() *string {
 	return s.SortBy
 }
 
+func (s *ListWorkflowsRequest) GetTags() []*string {
+	return s.Tags
+}
+
 func (s *ListWorkflowsRequest) GetTriggerType() *string {
 	return s.TriggerType
 }
@@ -181,6 +188,11 @@ func (s *ListWorkflowsRequest) SetProjectId(v int64) *ListWorkflowsRequest {
 
 func (s *ListWorkflowsRequest) SetSortBy(v string) *ListWorkflowsRequest {
 	s.SortBy = &v
+	return s
+}
+
+func (s *ListWorkflowsRequest) SetTags(v []*string) *ListWorkflowsRequest {
+	s.Tags = v
 	return s
 }
 

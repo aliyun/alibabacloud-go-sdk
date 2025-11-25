@@ -10088,6 +10088,10 @@ func (client *Client) ListTaskInstancesWithContext(ctx context.Context, tmpReq *
 		body["Bizdate"] = request.Bizdate
 	}
 
+	if !dara.IsNil(request.Filter) {
+		body["Filter"] = request.Filter
+	}
+
 	if !dara.IsNil(request.Id) {
 		body["Id"] = request.Id
 	}
@@ -10150,6 +10154,10 @@ func (client *Client) ListTaskInstancesWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.TriggerType) {
 		body["TriggerType"] = request.TriggerType
+	}
+
+	if !dara.IsNil(request.UnifiedWorkflowInstanceId) {
+		body["UnifiedWorkflowInstanceId"] = request.UnifiedWorkflowInstanceId
 	}
 
 	if !dara.IsNil(request.WorkflowId) {
@@ -10481,9 +10489,17 @@ func (client *Client) ListWorkflowInstancesWithContext(ctx context.Context, tmpR
 		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, dara.String("Ids"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BizDate) {
 		body["BizDate"] = request.BizDate
+	}
+
+	if !dara.IsNil(request.Filter) {
+		body["Filter"] = request.Filter
 	}
 
 	if !dara.IsNil(request.IdsShrink) {
@@ -10514,8 +10530,16 @@ func (client *Client) ListWorkflowInstancesWithContext(ctx context.Context, tmpR
 		body["SortBy"] = request.SortBy
 	}
 
+	if !dara.IsNil(request.TagsShrink) {
+		body["Tags"] = request.TagsShrink
+	}
+
 	if !dara.IsNil(request.Type) {
 		body["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.UnifiedWorkflowInstanceId) {
+		body["UnifiedWorkflowInstanceId"] = request.UnifiedWorkflowInstanceId
 	}
 
 	if !dara.IsNil(request.WorkflowId) {
@@ -10571,6 +10595,10 @@ func (client *Client) ListWorkflowsWithContext(ctx context.Context, tmpReq *List
 		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, dara.String("Ids"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EnvType) {
 		body["EnvType"] = request.EnvType
@@ -10602,6 +10630,10 @@ func (client *Client) ListWorkflowsWithContext(ctx context.Context, tmpReq *List
 
 	if !dara.IsNil(request.SortBy) {
 		body["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.TagsShrink) {
+		body["Tags"] = request.TagsShrink
 	}
 
 	if !dara.IsNil(request.TriggerType) {

@@ -11,6 +11,8 @@ type iListTaskInstancesRequest interface {
 	GoString() string
 	SetBizdate(v int64) *ListTaskInstancesRequest
 	GetBizdate() *int64
+	SetFilter(v string) *ListTaskInstancesRequest
+	GetFilter() *string
 	SetId(v int64) *ListTaskInstancesRequest
 	GetId() *int64
 	SetIds(v []*int64) *ListTaskInstancesRequest
@@ -43,6 +45,8 @@ type iListTaskInstancesRequest interface {
 	GetTriggerRecurrence() *string
 	SetTriggerType(v string) *ListTaskInstancesRequest
 	GetTriggerType() *string
+	SetUnifiedWorkflowInstanceId(v int64) *ListTaskInstancesRequest
+	GetUnifiedWorkflowInstanceId() *int64
 	SetWorkflowId(v int64) *ListTaskInstancesRequest
 	GetWorkflowId() *int64
 	SetWorkflowInstanceId(v int64) *ListTaskInstancesRequest
@@ -59,7 +63,8 @@ type ListTaskInstancesRequest struct {
 	// example:
 	//
 	// 1710239005403
-	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	Bizdate *int64  `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	Filter  *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The ID of the instance. The instance may be rerun. If the instance is rerun and you configure this parameter, the system returns the historical information of the instance, including the rerun information. You can use the RunNumber parameter to distinguish each entry in the historical information.
 	//
 	// example:
@@ -187,7 +192,8 @@ type ListTaskInstancesRequest struct {
 	// example:
 	//
 	// Normal
-	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	TriggerType               *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	UnifiedWorkflowInstanceId *int64  `json:"UnifiedWorkflowInstanceId,omitempty" xml:"UnifiedWorkflowInstanceId,omitempty"`
 	// The ID of the workflow to which the instance belongs.
 	//
 	// example:
@@ -228,6 +234,10 @@ func (s ListTaskInstancesRequest) GoString() string {
 
 func (s *ListTaskInstancesRequest) GetBizdate() *int64 {
 	return s.Bizdate
+}
+
+func (s *ListTaskInstancesRequest) GetFilter() *string {
+	return s.Filter
 }
 
 func (s *ListTaskInstancesRequest) GetId() *int64 {
@@ -294,6 +304,10 @@ func (s *ListTaskInstancesRequest) GetTriggerType() *string {
 	return s.TriggerType
 }
 
+func (s *ListTaskInstancesRequest) GetUnifiedWorkflowInstanceId() *int64 {
+	return s.UnifiedWorkflowInstanceId
+}
+
 func (s *ListTaskInstancesRequest) GetWorkflowId() *int64 {
 	return s.WorkflowId
 }
@@ -308,6 +322,11 @@ func (s *ListTaskInstancesRequest) GetWorkflowInstanceType() *string {
 
 func (s *ListTaskInstancesRequest) SetBizdate(v int64) *ListTaskInstancesRequest {
 	s.Bizdate = &v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetFilter(v string) *ListTaskInstancesRequest {
+	s.Filter = &v
 	return s
 }
 
@@ -388,6 +407,11 @@ func (s *ListTaskInstancesRequest) SetTriggerRecurrence(v string) *ListTaskInsta
 
 func (s *ListTaskInstancesRequest) SetTriggerType(v string) *ListTaskInstancesRequest {
 	s.TriggerType = &v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetUnifiedWorkflowInstanceId(v int64) *ListTaskInstancesRequest {
+	s.UnifiedWorkflowInstanceId = &v
 	return s
 }
 

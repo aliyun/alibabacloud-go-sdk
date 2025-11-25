@@ -11,6 +11,8 @@ type iListWorkflowInstancesShrinkRequest interface {
 	GoString() string
 	SetBizDate(v int64) *ListWorkflowInstancesShrinkRequest
 	GetBizDate() *int64
+	SetFilter(v string) *ListWorkflowInstancesShrinkRequest
+	GetFilter() *string
 	SetIdsShrink(v string) *ListWorkflowInstancesShrinkRequest
 	GetIdsShrink() *string
 	SetName(v string) *ListWorkflowInstancesShrinkRequest
@@ -25,8 +27,12 @@ type iListWorkflowInstancesShrinkRequest interface {
 	GetProjectId() *int64
 	SetSortBy(v string) *ListWorkflowInstancesShrinkRequest
 	GetSortBy() *string
+	SetTagsShrink(v string) *ListWorkflowInstancesShrinkRequest
+	GetTagsShrink() *string
 	SetType(v string) *ListWorkflowInstancesShrinkRequest
 	GetType() *string
+	SetUnifiedWorkflowInstanceId(v int64) *ListWorkflowInstancesShrinkRequest
+	GetUnifiedWorkflowInstanceId() *int64
 	SetWorkflowId(v int64) *ListWorkflowInstancesShrinkRequest
 	GetWorkflowId() *int64
 }
@@ -39,7 +45,8 @@ type ListWorkflowInstancesShrinkRequest struct {
 	// example:
 	//
 	// 1710239005403
-	BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	BizDate *int64  `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	Filter  *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The IDs of the workflow instances. You can query multiple instances at a time by instance ID.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	// The instance name. Fuzzy match is supported.
@@ -91,7 +98,8 @@ type ListWorkflowInstancesShrinkRequest struct {
 	// example:
 	//
 	// Id Desc
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The type of the workflow instance. Valid values:
 	//
 	// 	- Normal: Scheduled execution
@@ -109,7 +117,8 @@ type ListWorkflowInstancesShrinkRequest struct {
 	// example:
 	//
 	// Normal
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type                      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UnifiedWorkflowInstanceId *int64  `json:"UnifiedWorkflowInstanceId,omitempty" xml:"UnifiedWorkflowInstanceId,omitempty"`
 	// The ID of the workflow to which the instance belongs.
 	//
 	// example:
@@ -128,6 +137,10 @@ func (s ListWorkflowInstancesShrinkRequest) GoString() string {
 
 func (s *ListWorkflowInstancesShrinkRequest) GetBizDate() *int64 {
 	return s.BizDate
+}
+
+func (s *ListWorkflowInstancesShrinkRequest) GetFilter() *string {
+	return s.Filter
 }
 
 func (s *ListWorkflowInstancesShrinkRequest) GetIdsShrink() *string {
@@ -158,8 +171,16 @@ func (s *ListWorkflowInstancesShrinkRequest) GetSortBy() *string {
 	return s.SortBy
 }
 
+func (s *ListWorkflowInstancesShrinkRequest) GetTagsShrink() *string {
+	return s.TagsShrink
+}
+
 func (s *ListWorkflowInstancesShrinkRequest) GetType() *string {
 	return s.Type
+}
+
+func (s *ListWorkflowInstancesShrinkRequest) GetUnifiedWorkflowInstanceId() *int64 {
+	return s.UnifiedWorkflowInstanceId
 }
 
 func (s *ListWorkflowInstancesShrinkRequest) GetWorkflowId() *int64 {
@@ -168,6 +189,11 @@ func (s *ListWorkflowInstancesShrinkRequest) GetWorkflowId() *int64 {
 
 func (s *ListWorkflowInstancesShrinkRequest) SetBizDate(v int64) *ListWorkflowInstancesShrinkRequest {
 	s.BizDate = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesShrinkRequest) SetFilter(v string) *ListWorkflowInstancesShrinkRequest {
+	s.Filter = &v
 	return s
 }
 
@@ -206,8 +232,18 @@ func (s *ListWorkflowInstancesShrinkRequest) SetSortBy(v string) *ListWorkflowIn
 	return s
 }
 
+func (s *ListWorkflowInstancesShrinkRequest) SetTagsShrink(v string) *ListWorkflowInstancesShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
 func (s *ListWorkflowInstancesShrinkRequest) SetType(v string) *ListWorkflowInstancesShrinkRequest {
 	s.Type = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesShrinkRequest) SetUnifiedWorkflowInstanceId(v int64) *ListWorkflowInstancesShrinkRequest {
+	s.UnifiedWorkflowInstanceId = &v
 	return s
 }
 

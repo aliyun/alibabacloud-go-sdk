@@ -255,7 +255,8 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	// example:
 	//
 	// Normal
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type                      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UnifiedWorkflowInstanceId *int64  `json:"UnifiedWorkflowInstanceId,omitempty" xml:"UnifiedWorkflowInstanceId,omitempty"`
 	// The ID of the workflow to which the instance belongs.
 	//
 	// example:
@@ -336,6 +337,10 @@ func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) GetTags()
 
 func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) GetType() *string {
 	return s.Type
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) GetUnifiedWorkflowInstanceId() *int64 {
+	return s.UnifiedWorkflowInstanceId
 }
 
 func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) GetWorkflowId() *int64 {
@@ -422,6 +427,11 @@ func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetTags(v
 
 func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetType(v string) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
 	s.Type = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetUnifiedWorkflowInstanceId(v int64) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.UnifiedWorkflowInstanceId = &v
 	return s
 }
 

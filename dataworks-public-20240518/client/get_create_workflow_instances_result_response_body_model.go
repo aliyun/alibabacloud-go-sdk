@@ -79,7 +79,8 @@ type GetCreateWorkflowInstancesResultResponseBodyResult struct {
 	// example:
 	//
 	// Created
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status                     *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	UnifiedWorkflowInstanceIds []*int64 `json:"UnifiedWorkflowInstanceIds,omitempty" xml:"UnifiedWorkflowInstanceIds,omitempty" type:"Repeated"`
 	// The workflow instance IDs. This parameter is returned only if the creation is successful.
 	WorkflowInstanceIds     []*int64 `json:"WorkflowInstanceIds,omitempty" xml:"WorkflowInstanceIds,omitempty" type:"Repeated"`
 	WorkflowTaskInstanceIds []*int64 `json:"WorkflowTaskInstanceIds,omitempty" xml:"WorkflowTaskInstanceIds,omitempty" type:"Repeated"`
@@ -101,6 +102,10 @@ func (s *GetCreateWorkflowInstancesResultResponseBodyResult) GetStatus() *string
 	return s.Status
 }
 
+func (s *GetCreateWorkflowInstancesResultResponseBodyResult) GetUnifiedWorkflowInstanceIds() []*int64 {
+	return s.UnifiedWorkflowInstanceIds
+}
+
 func (s *GetCreateWorkflowInstancesResultResponseBodyResult) GetWorkflowInstanceIds() []*int64 {
 	return s.WorkflowInstanceIds
 }
@@ -116,6 +121,11 @@ func (s *GetCreateWorkflowInstancesResultResponseBodyResult) SetFailureMessage(v
 
 func (s *GetCreateWorkflowInstancesResultResponseBodyResult) SetStatus(v string) *GetCreateWorkflowInstancesResultResponseBodyResult {
 	s.Status = &v
+	return s
+}
+
+func (s *GetCreateWorkflowInstancesResultResponseBodyResult) SetUnifiedWorkflowInstanceIds(v []*int64) *GetCreateWorkflowInstancesResultResponseBodyResult {
+	s.UnifiedWorkflowInstanceIds = v
 	return s
 }
 

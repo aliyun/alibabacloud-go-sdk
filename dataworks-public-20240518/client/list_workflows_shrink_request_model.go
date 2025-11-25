@@ -25,6 +25,8 @@ type iListWorkflowsShrinkRequest interface {
 	GetProjectId() *int64
 	SetSortBy(v string) *ListWorkflowsShrinkRequest
 	GetSortBy() *string
+	SetTagsShrink(v string) *ListWorkflowsShrinkRequest
+	GetTagsShrink() *string
 	SetTriggerType(v string) *ListWorkflowsShrinkRequest
 	GetTriggerType() *string
 }
@@ -87,7 +89,8 @@ type ListWorkflowsShrinkRequest struct {
 	// example:
 	//
 	// Id Desc
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The trigger type.
 	//
 	// 	- Scheduler
@@ -140,6 +143,10 @@ func (s *ListWorkflowsShrinkRequest) GetSortBy() *string {
 	return s.SortBy
 }
 
+func (s *ListWorkflowsShrinkRequest) GetTagsShrink() *string {
+	return s.TagsShrink
+}
+
 func (s *ListWorkflowsShrinkRequest) GetTriggerType() *string {
 	return s.TriggerType
 }
@@ -181,6 +188,11 @@ func (s *ListWorkflowsShrinkRequest) SetProjectId(v int64) *ListWorkflowsShrinkR
 
 func (s *ListWorkflowsShrinkRequest) SetSortBy(v string) *ListWorkflowsShrinkRequest {
 	s.SortBy = &v
+	return s
+}
+
+func (s *ListWorkflowsShrinkRequest) SetTagsShrink(v string) *ListWorkflowsShrinkRequest {
+	s.TagsShrink = &v
 	return s
 }
 

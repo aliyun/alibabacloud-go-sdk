@@ -22,6 +22,8 @@ type DeleteComputeResourceRequest struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234
