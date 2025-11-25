@@ -74,7 +74,16 @@ func (s *DescribeSceneDefensePoliciesResponseBody) SetSuccess(v bool) *DescribeS
 }
 
 func (s *DescribeSceneDefensePoliciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Policies != nil {
+		for _, item := range s.Policies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSceneDefensePoliciesResponseBodyPolicies struct {
@@ -238,7 +247,16 @@ func (s *DescribeSceneDefensePoliciesResponseBodyPolicies) SetTemplate(v string)
 }
 
 func (s *DescribeSceneDefensePoliciesResponseBodyPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.RuntimePolicies != nil {
+		for _, item := range s.RuntimePolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSceneDefensePoliciesResponseBodyPoliciesRuntimePolicies struct {

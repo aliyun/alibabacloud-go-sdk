@@ -59,5 +59,10 @@ func (s *DescribeDomainViewTopCostTimeResponse) SetBody(v *DescribeDomainViewTop
 }
 
 func (s *DescribeDomainViewTopCostTimeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

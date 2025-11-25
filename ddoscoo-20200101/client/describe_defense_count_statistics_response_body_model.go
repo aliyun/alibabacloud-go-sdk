@@ -53,7 +53,12 @@ func (s *DescribeDefenseCountStatisticsResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeDefenseCountStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DefenseCountStatistics != nil {
+		if err := s.DefenseCountStatistics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDefenseCountStatisticsResponseBodyDefenseCountStatistics struct {

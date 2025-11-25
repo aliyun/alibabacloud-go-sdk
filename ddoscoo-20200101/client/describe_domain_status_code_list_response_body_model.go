@@ -53,7 +53,16 @@ func (s *DescribeDomainStatusCodeListResponseBody) SetStatusCodeList(v []*Descri
 }
 
 func (s *DescribeDomainStatusCodeListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StatusCodeList != nil {
+		for _, item := range s.StatusCodeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainStatusCodeListResponseBodyStatusCodeList struct {

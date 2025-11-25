@@ -53,7 +53,16 @@ func (s *DescribeInstanceSpecsResponseBody) SetRequestId(v string) *DescribeInst
 }
 
 func (s *DescribeInstanceSpecsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceSpecs != nil {
+		for _, item := range s.InstanceSpecs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceSpecsResponseBodyInstanceSpecs struct {

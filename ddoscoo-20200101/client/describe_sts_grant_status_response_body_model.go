@@ -53,7 +53,12 @@ func (s *DescribeStsGrantStatusResponseBody) SetStsGrant(v *DescribeStsGrantStat
 }
 
 func (s *DescribeStsGrantStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StsGrant != nil {
+		if err := s.StsGrant.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeStsGrantStatusResponseBodyStsGrant struct {

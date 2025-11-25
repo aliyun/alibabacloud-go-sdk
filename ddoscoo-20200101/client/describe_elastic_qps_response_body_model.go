@@ -53,7 +53,16 @@ func (s *DescribeElasticQpsResponseBody) SetRequestId(v string) *DescribeElastic
 }
 
 func (s *DescribeElasticQpsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ElasticQps != nil {
+		for _, item := range s.ElasticQps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeElasticQpsResponseBodyElasticQps struct {

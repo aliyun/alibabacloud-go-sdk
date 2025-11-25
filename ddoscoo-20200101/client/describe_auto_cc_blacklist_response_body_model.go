@@ -70,7 +70,16 @@ func (s *DescribeAutoCcBlacklistResponseBody) SetTotalCount(v int64) *DescribeAu
 }
 
 func (s *DescribeAutoCcBlacklistResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AutoCcBlacklist != nil {
+		for _, item := range s.AutoCcBlacklist {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAutoCcBlacklistResponseBodyAutoCcBlacklist struct {

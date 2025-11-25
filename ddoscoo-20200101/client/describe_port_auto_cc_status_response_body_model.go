@@ -53,7 +53,16 @@ func (s *DescribePortAutoCcStatusResponseBody) SetRequestId(v string) *DescribeP
 }
 
 func (s *DescribePortAutoCcStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PortAutoCcStatus != nil {
+		for _, item := range s.PortAutoCcStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePortAutoCcStatusResponseBodyPortAutoCcStatus struct {

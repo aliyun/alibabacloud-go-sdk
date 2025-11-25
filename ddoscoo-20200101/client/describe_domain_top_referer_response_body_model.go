@@ -53,7 +53,16 @@ func (s *DescribeDomainTopRefererResponseBody) SetRequestId(v string) *DescribeD
 }
 
 func (s *DescribeDomainTopRefererResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainTopReferer != nil {
+		for _, item := range s.DomainTopReferer {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainTopRefererResponseBodyDomainTopReferer struct {

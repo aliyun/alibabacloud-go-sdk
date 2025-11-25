@@ -50,7 +50,16 @@ func (s *DescribeL7GlobalRuleResponseBody) SetRequestId(v string) *DescribeL7Glo
 }
 
 func (s *DescribeL7GlobalRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GlobalRules != nil {
+		for _, item := range s.GlobalRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeL7GlobalRuleResponseBodyGlobalRules struct {

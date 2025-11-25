@@ -53,7 +53,16 @@ func (s *DescribeNetworkRuleAttributesResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribeNetworkRuleAttributesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkRuleAttributes != nil {
+		for _, item := range s.NetworkRuleAttributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributes struct {
@@ -128,7 +137,12 @@ func (s *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributes) SetProt
 }
 
 func (s *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributes) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfig struct {
@@ -240,7 +254,27 @@ func (s *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfig) S
 }
 
 func (s *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Cc != nil {
+		if err := s.Cc.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PayloadLen != nil {
+		if err := s.PayloadLen.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Sla != nil {
+		if err := s.Sla.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Slimit != nil {
+		if err := s.Slimit.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCc struct {
@@ -266,7 +300,16 @@ func (s *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCc)
 }
 
 func (s *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCc) Validate() error {
-	return dara.Validate(s)
+	if s.Sblack != nil {
+		for _, item := range s.Sblack {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCcSblack struct {

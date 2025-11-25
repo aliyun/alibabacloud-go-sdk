@@ -53,7 +53,16 @@ func (s *DescribeDomainQPSListResponseBody) SetRequestId(v string) *DescribeDoma
 }
 
 func (s *DescribeDomainQPSListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainQPSList != nil {
+		for _, item := range s.DomainQPSList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainQPSListResponseBodyDomainQPSList struct {

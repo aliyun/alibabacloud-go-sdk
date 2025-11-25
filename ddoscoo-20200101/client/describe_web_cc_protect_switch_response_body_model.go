@@ -53,7 +53,16 @@ func (s *DescribeWebCcProtectSwitchResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeWebCcProtectSwitchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProtectSwitchList != nil {
+		for _, item := range s.ProtectSwitchList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebCcProtectSwitchResponseBodyProtectSwitchList struct {

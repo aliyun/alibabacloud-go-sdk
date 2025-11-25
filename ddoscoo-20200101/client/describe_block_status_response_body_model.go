@@ -53,7 +53,16 @@ func (s *DescribeBlockStatusResponseBody) SetStatusList(v []*DescribeBlockStatus
 }
 
 func (s *DescribeBlockStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StatusList != nil {
+		for _, item := range s.StatusList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBlockStatusResponseBodyStatusList struct {
@@ -94,7 +103,16 @@ func (s *DescribeBlockStatusResponseBodyStatusList) SetIp(v string) *DescribeBlo
 }
 
 func (s *DescribeBlockStatusResponseBodyStatusList) Validate() error {
-	return dara.Validate(s)
+	if s.BlockStatusList != nil {
+		for _, item := range s.BlockStatusList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBlockStatusResponseBodyStatusListBlockStatusList struct {

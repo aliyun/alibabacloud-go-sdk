@@ -53,7 +53,12 @@ func (s *DescribeHeadersResponseBody) SetRequestId(v string) *DescribeHeadersRes
 }
 
 func (s *DescribeHeadersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CustomHeader != nil {
+		if err := s.CustomHeader.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHeadersResponseBodyCustomHeader struct {

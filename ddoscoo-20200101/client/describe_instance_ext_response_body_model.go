@@ -70,7 +70,16 @@ func (s *DescribeInstanceExtResponseBody) SetTotalCount(v int64) *DescribeInstan
 }
 
 func (s *DescribeInstanceExtResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceExtSpecs != nil {
+		for _, item := range s.InstanceExtSpecs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceExtResponseBodyInstanceExtSpecs struct {

@@ -70,7 +70,16 @@ func (s *DescribeWebRulesResponseBody) SetWebRules(v []*DescribeWebRulesResponse
 }
 
 func (s *DescribeWebRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WebRules != nil {
+		for _, item := range s.WebRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebRulesResponseBodyWebRules struct {
@@ -528,7 +537,30 @@ func (s *DescribeWebRulesResponseBodyWebRules) SetWhiteList(v []*string) *Descri
 }
 
 func (s *DescribeWebRulesResponseBodyWebRules) Validate() error {
-	return dara.Validate(s)
+	if s.GmCert != nil {
+		if err := s.GmCert.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProxyTypes != nil {
+		for _, item := range s.ProxyTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RealServers != nil {
+		for _, item := range s.RealServers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebRulesResponseBodyWebRulesGmCert struct {

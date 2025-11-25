@@ -53,7 +53,16 @@ func (s *DescribeDomainH2FingerprintResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeDomainH2FingerprintResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainH2Fp != nil {
+		for _, item := range s.DomainH2Fp {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainH2FingerprintResponseBodyDomainH2Fp struct {

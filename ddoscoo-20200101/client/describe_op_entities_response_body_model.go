@@ -70,7 +70,16 @@ func (s *DescribeOpEntitiesResponseBody) SetTotalCount(v int64) *DescribeOpEntit
 }
 
 func (s *DescribeOpEntitiesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OpEntities != nil {
+		for _, item := range s.OpEntities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOpEntitiesResponseBodyOpEntities struct {

@@ -114,7 +114,16 @@ func (s *DescribeL7RsPolicyResponseBody) SetUpstreamRetry(v int32) *DescribeL7Rs
 }
 
 func (s *DescribeL7RsPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Attributes != nil {
+		for _, item := range s.Attributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeL7RsPolicyResponseBodyAttributes struct {
@@ -174,7 +183,12 @@ func (s *DescribeL7RsPolicyResponseBodyAttributes) SetRsType(v int32) *DescribeL
 }
 
 func (s *DescribeL7RsPolicyResponseBodyAttributes) Validate() error {
-	return dara.Validate(s)
+	if s.Attribute != nil {
+		if err := s.Attribute.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeL7RsPolicyResponseBodyAttributesAttribute struct {

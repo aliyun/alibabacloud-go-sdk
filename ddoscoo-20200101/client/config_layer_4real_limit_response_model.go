@@ -59,5 +59,10 @@ func (s *ConfigLayer4RealLimitResponse) SetBody(v *ConfigLayer4RealLimitResponse
 }
 
 func (s *ConfigLayer4RealLimitResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

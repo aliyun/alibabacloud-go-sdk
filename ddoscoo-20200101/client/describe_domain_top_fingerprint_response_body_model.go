@@ -53,7 +53,16 @@ func (s *DescribeDomainTopFingerprintResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeDomainTopFingerprintResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainTopFp != nil {
+		for _, item := range s.DomainTopFp {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainTopFingerprintResponseBodyDomainTopFp struct {

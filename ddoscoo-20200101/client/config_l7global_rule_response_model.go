@@ -59,5 +59,10 @@ func (s *ConfigL7GlobalRuleResponse) SetBody(v *ConfigL7GlobalRuleResponseBody) 
 }
 
 func (s *ConfigL7GlobalRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

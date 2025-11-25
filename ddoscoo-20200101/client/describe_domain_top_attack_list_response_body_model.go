@@ -53,7 +53,16 @@ func (s *DescribeDomainTopAttackListResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeDomainTopAttackListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AttackList != nil {
+		for _, item := range s.AttackList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainTopAttackListResponseBodyAttackList struct {

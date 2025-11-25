@@ -59,5 +59,10 @@ func (s *DescribeSystemLogResponse) SetBody(v *DescribeSystemLogResponseBody) *D
 }
 
 func (s *DescribeSystemLogResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

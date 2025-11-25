@@ -70,7 +70,16 @@ func (s *DescribeSlaEventListResponseBody) SetTotal(v int64) *DescribeSlaEventLi
 }
 
 func (s *DescribeSlaEventListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SlaEvent != nil {
+		for _, item := range s.SlaEvent {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSlaEventListResponseBodySlaEvent struct {

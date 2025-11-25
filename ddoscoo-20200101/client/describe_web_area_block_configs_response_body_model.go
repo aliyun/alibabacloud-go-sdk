@@ -53,7 +53,16 @@ func (s *DescribeWebAreaBlockConfigsResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeWebAreaBlockConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AreaBlockConfigs != nil {
+		for _, item := range s.AreaBlockConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigs struct {
@@ -94,7 +103,16 @@ func (s *DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigs) SetRegionList(
 }
 
 func (s *DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.RegionList != nil {
+		for _, item := range s.RegionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigsRegionList struct {

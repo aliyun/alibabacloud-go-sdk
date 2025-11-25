@@ -53,7 +53,16 @@ func (s *DescribeDDosEventAreaResponseBody) SetRequestId(v string) *DescribeDDos
 }
 
 func (s *DescribeDDosEventAreaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Areas != nil {
+		for _, item := range s.Areas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDDosEventAreaResponseBodyAreas struct {

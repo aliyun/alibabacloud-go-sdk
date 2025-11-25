@@ -59,5 +59,10 @@ func (s *ModifyElasticBizBandWidthResponse) SetBody(v *ModifyElasticBizBandWidth
 }
 
 func (s *ModifyElasticBizBandWidthResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

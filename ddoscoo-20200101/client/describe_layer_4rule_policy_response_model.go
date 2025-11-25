@@ -59,5 +59,10 @@ func (s *DescribeLayer4RulePolicyResponse) SetBody(v *DescribeLayer4RulePolicyRe
 }
 
 func (s *DescribeLayer4RulePolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

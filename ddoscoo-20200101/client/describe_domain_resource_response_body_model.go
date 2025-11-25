@@ -70,7 +70,16 @@ func (s *DescribeDomainResourceResponseBody) SetWebRules(v []*DescribeDomainReso
 }
 
 func (s *DescribeDomainResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WebRules != nil {
+		for _, item := range s.WebRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainResourceResponseBodyWebRules struct {
@@ -514,7 +523,16 @@ func (s *DescribeDomainResourceResponseBodyWebRules) SetWhiteList(v []*string) *
 }
 
 func (s *DescribeDomainResourceResponseBodyWebRules) Validate() error {
-	return dara.Validate(s)
+	if s.ProxyTypes != nil {
+		for _, item := range s.ProxyTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainResourceResponseBodyWebRulesProxyTypes struct {

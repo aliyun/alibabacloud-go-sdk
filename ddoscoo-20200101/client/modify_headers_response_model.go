@@ -59,5 +59,10 @@ func (s *ModifyHeadersResponse) SetBody(v *ModifyHeadersResponseBody) *ModifyHea
 }
 
 func (s *ModifyHeadersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

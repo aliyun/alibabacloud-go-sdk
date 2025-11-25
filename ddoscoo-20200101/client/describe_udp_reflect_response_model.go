@@ -59,5 +59,10 @@ func (s *DescribeUdpReflectResponse) SetBody(v *DescribeUdpReflectResponseBody) 
 }
 
 func (s *DescribeUdpReflectResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

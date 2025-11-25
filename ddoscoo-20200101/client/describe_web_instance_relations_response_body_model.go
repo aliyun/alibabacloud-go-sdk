@@ -53,7 +53,16 @@ func (s *DescribeWebInstanceRelationsResponseBody) SetWebInstanceRelations(v []*
 }
 
 func (s *DescribeWebInstanceRelationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WebInstanceRelations != nil {
+		for _, item := range s.WebInstanceRelations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebInstanceRelationsResponseBodyWebInstanceRelations struct {
@@ -94,7 +103,16 @@ func (s *DescribeWebInstanceRelationsResponseBodyWebInstanceRelations) SetInstan
 }
 
 func (s *DescribeWebInstanceRelationsResponseBodyWebInstanceRelations) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceDetails != nil {
+		for _, item := range s.InstanceDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebInstanceRelationsResponseBodyWebInstanceRelationsInstanceDetails struct {

@@ -53,7 +53,12 @@ func (s *DescribeNetworkRegionBlockResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeNetworkRegionBlockResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkRegionBlockResponseBodyConfig struct {

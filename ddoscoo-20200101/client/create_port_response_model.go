@@ -59,5 +59,10 @@ func (s *CreatePortResponse) SetBody(v *CreatePortResponseBody) *CreatePortRespo
 }
 
 func (s *CreatePortResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

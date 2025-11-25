@@ -53,7 +53,16 @@ func (s *DescribeDomainBpsResponseBody) SetRequestId(v string) *DescribeDomainBp
 }
 
 func (s *DescribeDomainBpsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainBps != nil {
+		for _, item := range s.DomainBps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainBpsResponseBodyDomainBps struct {

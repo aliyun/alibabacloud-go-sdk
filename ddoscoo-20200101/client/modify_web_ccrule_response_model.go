@@ -59,5 +59,10 @@ func (s *ModifyWebCCRuleResponse) SetBody(v *ModifyWebCCRuleResponseBody) *Modif
 }
 
 func (s *ModifyWebCCRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -70,7 +70,16 @@ func (s *DescribeSystemLogResponseBody) SetTotal(v int64) *DescribeSystemLogResp
 }
 
 func (s *DescribeSystemLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SystemLog != nil {
+		for _, item := range s.SystemLog {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSystemLogResponseBodySystemLog struct {

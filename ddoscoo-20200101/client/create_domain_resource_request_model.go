@@ -141,7 +141,16 @@ func (s *CreateDomainResourceRequest) SetRsType(v int32) *CreateDomainResourceRe
 }
 
 func (s *CreateDomainResourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ProxyTypes != nil {
+		for _, item := range s.ProxyTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDomainResourceRequestProxyTypes struct {

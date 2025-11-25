@@ -59,5 +59,10 @@ func (s *DescribeHealthCheckListResponse) SetBody(v *DescribeHealthCheckListResp
 }
 
 func (s *DescribeHealthCheckListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

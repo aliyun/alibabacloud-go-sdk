@@ -53,7 +53,16 @@ func (s *DescribeDomainTopUserAgentResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeDomainTopUserAgentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainTopUa != nil {
+		for _, item := range s.DomainTopUa {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainTopUserAgentResponseBodyDomainTopUa struct {

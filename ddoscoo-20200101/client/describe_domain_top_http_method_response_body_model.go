@@ -53,7 +53,16 @@ func (s *DescribeDomainTopHttpMethodResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeDomainTopHttpMethodResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainTopMethod != nil {
+		for _, item := range s.DomainTopMethod {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainTopHttpMethodResponseBodyDomainTopMethod struct {

@@ -53,7 +53,16 @@ func (s *DescribeWebCacheConfigsResponseBody) SetRequestId(v string) *DescribeWe
 }
 
 func (s *DescribeWebCacheConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainCacheConfigs != nil {
+		for _, item := range s.DomainCacheConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebCacheConfigsResponseBodyDomainCacheConfigs struct {
@@ -134,7 +143,16 @@ func (s *DescribeWebCacheConfigsResponseBodyDomainCacheConfigs) SetMode(v string
 }
 
 func (s *DescribeWebCacheConfigsResponseBodyDomainCacheConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.CustomRules != nil {
+		for _, item := range s.CustomRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebCacheConfigsResponseBodyDomainCacheConfigsCustomRules struct {

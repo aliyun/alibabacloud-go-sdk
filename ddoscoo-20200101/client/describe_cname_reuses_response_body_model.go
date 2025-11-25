@@ -50,7 +50,16 @@ func (s *DescribeCnameReusesResponseBody) SetRequestId(v string) *DescribeCnameR
 }
 
 func (s *DescribeCnameReusesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CnameReuses != nil {
+		for _, item := range s.CnameReuses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCnameReusesResponseBodyCnameReuses struct {

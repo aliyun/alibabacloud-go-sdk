@@ -53,7 +53,16 @@ func (s *DescribeWebPreciseAccessRuleResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeWebPreciseAccessRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PreciseAccessConfigList != nil {
+		for _, item := range s.PreciseAccessConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigList struct {
@@ -94,7 +103,16 @@ func (s *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigList) SetRul
 }
 
 func (s *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.RuleList != nil {
+		for _, item := range s.RuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList struct {
@@ -190,7 +208,16 @@ func (s *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList
 }
 
 func (s *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.ConditionList != nil {
+		for _, item := range s.ConditionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListConditionList struct {

@@ -70,7 +70,16 @@ func (s *DescribePortResponseBody) SetTotalCount(v int64) *DescribePortResponseB
 }
 
 func (s *DescribePortResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkRules != nil {
+		for _, item := range s.NetworkRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePortResponseBodyNetworkRules struct {

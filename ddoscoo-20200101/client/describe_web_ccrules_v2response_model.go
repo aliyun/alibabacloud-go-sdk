@@ -59,5 +59,10 @@ func (s *DescribeWebCCRulesV2Response) SetBody(v *DescribeWebCCRulesV2ResponseBo
 }
 
 func (s *DescribeWebCCRulesV2Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,16 @@ func (s *DescribePortViewSourceProvincesResponseBody) SetSourceProvinces(v []*De
 }
 
 func (s *DescribePortViewSourceProvincesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SourceProvinces != nil {
+		for _, item := range s.SourceProvinces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePortViewSourceProvincesResponseBodySourceProvinces struct {

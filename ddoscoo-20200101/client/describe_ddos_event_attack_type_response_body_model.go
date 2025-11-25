@@ -53,7 +53,16 @@ func (s *DescribeDDosEventAttackTypeResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeDDosEventAttackTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AttackTypes != nil {
+		for _, item := range s.AttackTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDDosEventAttackTypeResponseBodyAttackTypes struct {

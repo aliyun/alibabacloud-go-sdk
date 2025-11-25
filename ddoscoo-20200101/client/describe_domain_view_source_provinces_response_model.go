@@ -59,5 +59,10 @@ func (s *DescribeDomainViewSourceProvincesResponse) SetBody(v *DescribeDomainVie
 }
 
 func (s *DescribeDomainViewSourceProvincesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

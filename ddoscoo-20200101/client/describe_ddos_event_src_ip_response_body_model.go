@@ -53,7 +53,16 @@ func (s *DescribeDDosEventSrcIpResponseBody) SetRequestId(v string) *DescribeDDo
 }
 
 func (s *DescribeDDosEventSrcIpResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Ips != nil {
+		for _, item := range s.Ips {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDDosEventSrcIpResponseBodyIps struct {

@@ -104,7 +104,16 @@ func (s *DescribeTagKeysResponseBody) SetTotalCount(v int32) *DescribeTagKeysRes
 }
 
 func (s *DescribeTagKeysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TagKeys != nil {
+		for _, item := range s.TagKeys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTagKeysResponseBodyTagKeys struct {

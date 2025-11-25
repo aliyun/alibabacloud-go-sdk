@@ -53,7 +53,16 @@ func (s *DescribeWebAccessModeResponseBody) SetRequestId(v string) *DescribeWebA
 }
 
 func (s *DescribeWebAccessModeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainModes != nil {
+		for _, item := range s.DomainModes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebAccessModeResponseBodyDomainModes struct {

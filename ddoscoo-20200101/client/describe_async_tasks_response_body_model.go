@@ -70,7 +70,16 @@ func (s *DescribeAsyncTasksResponseBody) SetTotalCount(v int32) *DescribeAsyncTa
 }
 
 func (s *DescribeAsyncTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AsyncTasks != nil {
+		for _, item := range s.AsyncTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAsyncTasksResponseBodyAsyncTasks struct {

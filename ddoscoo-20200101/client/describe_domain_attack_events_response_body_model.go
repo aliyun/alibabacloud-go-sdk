@@ -70,7 +70,16 @@ func (s *DescribeDomainAttackEventsResponseBody) SetTotalCount(v int64) *Describ
 }
 
 func (s *DescribeDomainAttackEventsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainAttackEvents != nil {
+		for _, item := range s.DomainAttackEvents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainAttackEventsResponseBodyDomainAttackEvents struct {

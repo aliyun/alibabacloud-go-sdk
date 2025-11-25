@@ -59,5 +59,10 @@ func (s *ConfigLayer4RemarkResponse) SetBody(v *ConfigLayer4RemarkResponseBody) 
 }
 
 func (s *ConfigLayer4RemarkResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

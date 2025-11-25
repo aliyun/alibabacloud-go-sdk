@@ -59,6 +59,11 @@ func (s *EnableSceneDefensePolicyResponse) SetBody(v *EnableSceneDefensePolicyRe
 }
 
 func (s *EnableSceneDefensePolicyResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

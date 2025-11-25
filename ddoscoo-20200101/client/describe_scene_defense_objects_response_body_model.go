@@ -74,7 +74,16 @@ func (s *DescribeSceneDefenseObjectsResponseBody) SetSuccess(v bool) *DescribeSc
 }
 
 func (s *DescribeSceneDefenseObjectsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Objects != nil {
+		for _, item := range s.Objects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSceneDefenseObjectsResponseBodyObjects struct {

@@ -53,7 +53,16 @@ func (s *DescribePortMaxConnsResponseBody) SetRequestId(v string) *DescribePortM
 }
 
 func (s *DescribePortMaxConnsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PortMaxConns != nil {
+		for _, item := range s.PortMaxConns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePortMaxConnsResponseBodyPortMaxConns struct {

@@ -59,5 +59,10 @@ func (s *ModifyCnameReuseResponse) SetBody(v *ModifyCnameReuseResponseBody) *Mod
 }
 
 func (s *ModifyCnameReuseResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

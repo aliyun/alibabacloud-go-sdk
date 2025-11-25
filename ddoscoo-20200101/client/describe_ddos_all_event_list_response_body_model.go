@@ -70,7 +70,16 @@ func (s *DescribeDDosAllEventListResponseBody) SetTotal(v int64) *DescribeDDosAl
 }
 
 func (s *DescribeDDosAllEventListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AttackEvents != nil {
+		for _, item := range s.AttackEvents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDDosAllEventListResponseBodyAttackEvents struct {

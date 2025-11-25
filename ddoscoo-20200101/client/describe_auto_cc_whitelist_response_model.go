@@ -59,5 +59,10 @@ func (s *DescribeAutoCcWhitelistResponse) SetBody(v *DescribeAutoCcWhitelistResp
 }
 
 func (s *DescribeAutoCcWhitelistResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

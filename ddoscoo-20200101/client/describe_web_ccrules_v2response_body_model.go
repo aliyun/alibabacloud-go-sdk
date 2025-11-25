@@ -87,7 +87,16 @@ func (s *DescribeWebCCRulesV2ResponseBody) SetWebCCRules(v []*DescribeWebCCRules
 }
 
 func (s *DescribeWebCCRulesV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WebCCRules != nil {
+		for _, item := range s.WebCCRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebCCRulesV2ResponseBodyWebCCRules struct {
@@ -162,7 +171,12 @@ func (s *DescribeWebCCRulesV2ResponseBodyWebCCRules) SetRuleDetail(v *DescribeWe
 }
 
 func (s *DescribeWebCCRulesV2ResponseBodyWebCCRules) Validate() error {
-	return dara.Validate(s)
+	if s.RuleDetail != nil {
+		if err := s.RuleDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail struct {
@@ -326,7 +340,31 @@ func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail) SetUri(v string) 
 }
 
 func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Condition != nil {
+		for _, item := range s.Condition {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RateLimit != nil {
+		if err := s.RateLimit.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Statistics != nil {
+		if err := s.Statistics.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StatusCode != nil {
+		if err := s.StatusCode.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition struct {

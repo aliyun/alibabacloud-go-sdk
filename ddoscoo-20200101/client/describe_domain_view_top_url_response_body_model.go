@@ -53,7 +53,16 @@ func (s *DescribeDomainViewTopUrlResponseBody) SetUrlList(v []*DescribeDomainVie
 }
 
 func (s *DescribeDomainViewTopUrlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UrlList != nil {
+		for _, item := range s.UrlList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainViewTopUrlResponseBodyUrlList struct {

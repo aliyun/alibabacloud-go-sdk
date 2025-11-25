@@ -53,7 +53,16 @@ func (s *DescribeBlackholeStatusResponseBody) SetRequestId(v string) *DescribeBl
 }
 
 func (s *DescribeBlackholeStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BlackholeStatus != nil {
+		for _, item := range s.BlackholeStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBlackholeStatusResponseBodyBlackholeStatus struct {

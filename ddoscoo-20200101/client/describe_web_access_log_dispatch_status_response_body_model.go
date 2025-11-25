@@ -70,7 +70,16 @@ func (s *DescribeWebAccessLogDispatchStatusResponseBody) SetTotalCount(v int32) 
 }
 
 func (s *DescribeWebAccessLogDispatchStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SlsConfigStatus != nil {
+		for _, item := range s.SlsConfigStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebAccessLogDispatchStatusResponseBodySlsConfigStatus struct {

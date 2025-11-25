@@ -59,5 +59,10 @@ func (s *DescribeWebCcProtectSwitchResponse) SetBody(v *DescribeWebCcProtectSwit
 }
 
 func (s *DescribeWebCcProtectSwitchResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

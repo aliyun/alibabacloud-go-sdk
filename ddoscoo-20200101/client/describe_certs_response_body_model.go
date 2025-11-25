@@ -53,7 +53,16 @@ func (s *DescribeCertsResponseBody) SetRequestId(v string) *DescribeCertsRespons
 }
 
 func (s *DescribeCertsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Certs != nil {
+		for _, item := range s.Certs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCertsResponseBodyCerts struct {

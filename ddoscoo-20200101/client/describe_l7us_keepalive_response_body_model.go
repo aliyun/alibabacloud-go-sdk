@@ -53,7 +53,12 @@ func (s *DescribeL7UsKeepaliveResponseBody) SetRsKeepalive(v *DescribeL7UsKeepal
 }
 
 func (s *DescribeL7UsKeepaliveResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RsKeepalive != nil {
+		if err := s.RsKeepalive.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeL7UsKeepaliveResponseBodyRsKeepalive struct {

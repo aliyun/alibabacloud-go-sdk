@@ -70,7 +70,16 @@ func (s *DescribeWebCCRulesResponseBody) SetWebCCRules(v []*DescribeWebCCRulesRe
 }
 
 func (s *DescribeWebCCRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WebCCRules != nil {
+		for _, item := range s.WebCCRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebCCRulesResponseBodyWebCCRules struct {

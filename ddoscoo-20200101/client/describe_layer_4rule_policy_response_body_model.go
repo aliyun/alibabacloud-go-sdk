@@ -176,7 +176,25 @@ func (s *DescribeLayer4RulePolicyResponseBody) SetSecRealServers(v []*DescribeLa
 }
 
 func (s *DescribeLayer4RulePolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PriRealServers != nil {
+		for _, item := range s.PriRealServers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SecRealServers != nil {
+		for _, item := range s.SecRealServers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLayer4RulePolicyResponseBodyPriRealServers struct {

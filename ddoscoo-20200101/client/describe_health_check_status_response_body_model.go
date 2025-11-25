@@ -53,7 +53,16 @@ func (s *DescribeHealthCheckStatusResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeHealthCheckStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HealthCheckStatus != nil {
+		for _, item := range s.HealthCheckStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHealthCheckStatusResponseBodyHealthCheckStatus struct {
@@ -147,7 +156,16 @@ func (s *DescribeHealthCheckStatusResponseBodyHealthCheckStatus) SetStatus(v str
 }
 
 func (s *DescribeHealthCheckStatusResponseBodyHealthCheckStatus) Validate() error {
-	return dara.Validate(s)
+	if s.RealServerStatusList != nil {
+		for _, item := range s.RealServerStatusList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHealthCheckStatusResponseBodyHealthCheckStatusRealServerStatusList struct {

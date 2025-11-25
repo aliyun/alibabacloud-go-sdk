@@ -53,7 +53,16 @@ func (s *DescribeDestinationPortEventResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeDestinationPortEventResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PortList != nil {
+		for _, item := range s.PortList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDestinationPortEventResponseBodyPortList struct {
