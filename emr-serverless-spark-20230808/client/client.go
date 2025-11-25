@@ -200,6 +200,170 @@ func (client *Client) CancelJobRun(workspaceId *string, jobRunId *string, reques
 
 // Summary:
 //
+// # CancelKyuubiSparkApplication
+//
+// @param request - CancelKyuubiSparkApplicationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelKyuubiSparkApplicationResponse
+func (client *Client) CancelKyuubiSparkApplicationWithOptions(workspaceId *string, kyuubiServiceId *string, applicationId *string, request *CancelKyuubiSparkApplicationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelKyuubiSparkApplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelKyuubiSparkApplication"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/kyuubi/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/" + dara.PercentEncode(dara.StringValue(kyuubiServiceId)) + "/application/" + dara.PercentEncode(dara.StringValue(applicationId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelKyuubiSparkApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # CancelKyuubiSparkApplication
+//
+// @param request - CancelKyuubiSparkApplicationRequest
+//
+// @return CancelKyuubiSparkApplicationResponse
+func (client *Client) CancelKyuubiSparkApplication(workspaceId *string, kyuubiServiceId *string, applicationId *string, request *CancelKyuubiSparkApplicationRequest) (_result *CancelKyuubiSparkApplicationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CancelKyuubiSparkApplicationResponse{}
+	_body, _err := client.CancelKyuubiSparkApplicationWithOptions(workspaceId, kyuubiServiceId, applicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # CreateKyuubiService
+//
+// @param request - CreateKyuubiServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKyuubiServiceResponse
+func (client *Client) CreateKyuubiServiceWithOptions(workspaceId *string, request *CreateKyuubiServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateKyuubiServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ComputeInstance) {
+		body["computeInstance"] = request.ComputeInstance
+	}
+
+	if !dara.IsNil(request.KyuubiConfigs) {
+		body["kyuubiConfigs"] = request.KyuubiConfigs
+	}
+
+	if !dara.IsNil(request.KyuubiReleaseVersion) {
+		body["kyuubiReleaseVersion"] = request.KyuubiReleaseVersion
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PublicEndpointEnabled) {
+		body["publicEndpointEnabled"] = request.PublicEndpointEnabled
+	}
+
+	if !dara.IsNil(request.Queue) {
+		body["queue"] = request.Queue
+	}
+
+	if !dara.IsNil(request.ReleaseVersion) {
+		body["releaseVersion"] = request.ReleaseVersion
+	}
+
+	if !dara.IsNil(request.Replica) {
+		body["replica"] = request.Replica
+	}
+
+	if !dara.IsNil(request.SparkConfigs) {
+		body["sparkConfigs"] = request.SparkConfigs
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKyuubiService"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/kyuubi/" + dara.PercentEncode(dara.StringValue(workspaceId))),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateKyuubiServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # CreateKyuubiService
+//
+// @param request - CreateKyuubiServiceRequest
+//
+// @return CreateKyuubiServiceResponse
+func (client *Client) CreateKyuubiService(workspaceId *string, request *CreateKyuubiServiceRequest) (_result *CreateKyuubiServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateKyuubiServiceResponse{}
+	_body, _err := client.CreateKyuubiServiceWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建kyuubi的token
 //
 // @param request - CreateKyuubiTokenRequest
@@ -984,6 +1148,56 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 
 // Summary:
 //
+// # DeleteKyuubiService
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKyuubiServiceResponse
+func (client *Client) DeleteKyuubiServiceWithOptions(workspaceId *string, kyuubiServiceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteKyuubiServiceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteKyuubiService"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/kyuubi/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/" + dara.PercentEncode(dara.StringValue(kyuubiServiceId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteKyuubiServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteKyuubiService
+//
+// @return DeleteKyuubiServiceResponse
+func (client *Client) DeleteKyuubiService(workspaceId *string, kyuubiServiceId *string) (_result *DeleteKyuubiServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteKyuubiServiceResponse{}
+	_body, _err := client.DeleteKyuubiServiceWithOptions(workspaceId, kyuubiServiceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除compute的token
 //
 // @param request - DeleteKyuubiTokenRequest
@@ -1266,6 +1480,80 @@ func (client *Client) EditWorkspaceQueue(request *EditWorkspaceQueueRequest) (_r
 
 // Summary:
 //
+// 上线工作流及其调度
+//
+// @param request - GenerateTaskCodesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateTaskCodesResponse
+func (client *Client) GenerateTaskCodesWithOptions(bizId *string, request *GenerateTaskCodesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenerateTaskCodesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GenNum) {
+		query["genNum"] = request.GenNum
+	}
+
+	if !dara.IsNil(request.ProductNamespace) {
+		query["productNamespace"] = request.ProductNamespace
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateTaskCodes"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dolphinscheduler/projects/" + dara.PercentEncode(dara.StringValue(bizId)) + "/task-definition/gen-task-codes"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateTaskCodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上线工作流及其调度
+//
+// @param request - GenerateTaskCodesRequest
+//
+// @return GenerateTaskCodesResponse
+func (client *Client) GenerateTaskCodes(bizId *string, request *GenerateTaskCodesRequest) (_result *GenerateTaskCodesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GenerateTaskCodesResponse{}
+	_body, _err := client.GenerateTaskCodesWithOptions(bizId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the number of CU-hours consumed by a queue during a specified cycle.
 //
 // @param request - GetCuHoursRequest
@@ -1467,6 +1755,56 @@ func (client *Client) GetJobRun(workspaceId *string, jobRunId *string, request *
 	headers := make(map[string]*string)
 	_result = &GetJobRunResponse{}
 	_body, _err := client.GetJobRunWithOptions(workspaceId, jobRunId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetKyuubiService
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKyuubiServiceResponse
+func (client *Client) GetKyuubiServiceWithOptions(workspaceId *string, kyuubiServiceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetKyuubiServiceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKyuubiService"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/kyuubi/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/" + dara.PercentEncode(dara.StringValue(kyuubiServiceId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKyuubiServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetKyuubiService
+//
+// @return GetKyuubiServiceResponse
+func (client *Client) GetKyuubiService(workspaceId *string, kyuubiServiceId *string) (_result *GetKyuubiServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetKyuubiServiceResponse{}
+	_body, _err := client.GetKyuubiServiceWithOptions(workspaceId, kyuubiServiceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3434,6 +3772,56 @@ func (client *Client) StartJobRun(workspaceId *string, request *StartJobRunReque
 
 // Summary:
 //
+// # StartKyuubiService
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartKyuubiServiceResponse
+func (client *Client) StartKyuubiServiceWithOptions(workspaceId *string, kyuubiServiceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartKyuubiServiceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartKyuubiService"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/kyuubi/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/" + dara.PercentEncode(dara.StringValue(kyuubiServiceId)) + "/start"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartKyuubiServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # StartKyuubiService
+//
+// @return StartKyuubiServiceResponse
+func (client *Client) StartKyuubiService(workspaceId *string, kyuubiServiceId *string) (_result *StartKyuubiServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartKyuubiServiceResponse{}
+	_body, _err := client.StartKyuubiServiceWithOptions(workspaceId, kyuubiServiceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 启动livy compute
 //
 // @param request - StartLivyComputeRequest
@@ -3682,6 +4070,56 @@ func (client *Client) StartSessionCluster(workspaceId *string, request *StartSes
 
 // Summary:
 //
+// # StopKyuubiService
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopKyuubiServiceResponse
+func (client *Client) StopKyuubiServiceWithOptions(workspaceId *string, kyuubiServiceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopKyuubiServiceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopKyuubiService"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/kyuubi/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/" + dara.PercentEncode(dara.StringValue(kyuubiServiceId)) + "/stop"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopKyuubiServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # StopKyuubiService
+//
+// @return StopKyuubiServiceResponse
+func (client *Client) StopKyuubiService(workspaceId *string, kyuubiServiceId *string) (_result *StopKyuubiServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopKyuubiServiceResponse{}
+	_body, _err := client.StopKyuubiServiceWithOptions(workspaceId, kyuubiServiceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 停止livy compute
 //
 // @param request - StopLivyComputeRequest
@@ -3881,6 +4319,108 @@ func (client *Client) TerminateSqlStatement(workspaceId *string, statementId *st
 	headers := make(map[string]*string)
 	_result = &TerminateSqlStatementResponse{}
 	_body, _err := client.TerminateSqlStatementWithOptions(workspaceId, statementId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # UpdateKyuubiService
+//
+// @param request - UpdateKyuubiServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateKyuubiServiceResponse
+func (client *Client) UpdateKyuubiServiceWithOptions(workspaceId *string, kyuubiServiceId *string, request *UpdateKyuubiServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateKyuubiServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ComputeInstance) {
+		body["computeInstance"] = request.ComputeInstance
+	}
+
+	if !dara.IsNil(request.KyuubiConfigs) {
+		body["kyuubiConfigs"] = request.KyuubiConfigs
+	}
+
+	if !dara.IsNil(request.KyuubiReleaseVersion) {
+		body["kyuubiReleaseVersion"] = request.KyuubiReleaseVersion
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PublicEndpointEnabled) {
+		body["publicEndpointEnabled"] = request.PublicEndpointEnabled
+	}
+
+	if !dara.IsNil(request.Queue) {
+		body["queue"] = request.Queue
+	}
+
+	if !dara.IsNil(request.ReleaseVersion) {
+		body["releaseVersion"] = request.ReleaseVersion
+	}
+
+	if !dara.IsNil(request.Replica) {
+		body["replica"] = request.Replica
+	}
+
+	if !dara.IsNil(request.Restart) {
+		body["restart"] = request.Restart
+	}
+
+	if !dara.IsNil(request.SparkConfigs) {
+		body["sparkConfigs"] = request.SparkConfigs
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateKyuubiService"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/kyuubi/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/" + dara.PercentEncode(dara.StringValue(kyuubiServiceId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateKyuubiServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # UpdateKyuubiService
+//
+// @param request - UpdateKyuubiServiceRequest
+//
+// @return UpdateKyuubiServiceResponse
+func (client *Client) UpdateKyuubiService(workspaceId *string, kyuubiServiceId *string, request *UpdateKyuubiServiceRequest) (_result *UpdateKyuubiServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateKyuubiServiceResponse{}
+	_body, _err := client.UpdateKyuubiServiceWithOptions(workspaceId, kyuubiServiceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
