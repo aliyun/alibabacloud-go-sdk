@@ -604,7 +604,9 @@ type ListGatewaysResponseBodyDataItemsLoadBalancers struct {
 	// example:
 	//
 	// true
-	GatewayDefault *bool `json:"gatewayDefault,omitempty" xml:"gatewayDefault,omitempty"`
+	GatewayDefault *bool     `json:"gatewayDefault,omitempty" xml:"gatewayDefault,omitempty"`
+	Ipv4Addresses  []*string `json:"ipv4Addresses,omitempty" xml:"ipv4Addresses,omitempty" type:"Repeated"`
+	Ipv6Addresses  []*string `json:"ipv6Addresses,omitempty" xml:"ipv6Addresses,omitempty" type:"Repeated"`
 	// The load balancer ID.
 	//
 	// example:
@@ -667,6 +669,14 @@ func (s *ListGatewaysResponseBodyDataItemsLoadBalancers) GetGatewayDefault() *bo
 	return s.GatewayDefault
 }
 
+func (s *ListGatewaysResponseBodyDataItemsLoadBalancers) GetIpv4Addresses() []*string {
+	return s.Ipv4Addresses
+}
+
+func (s *ListGatewaysResponseBodyDataItemsLoadBalancers) GetIpv6Addresses() []*string {
+	return s.Ipv6Addresses
+}
+
 func (s *ListGatewaysResponseBodyDataItemsLoadBalancers) GetLoadBalancerId() *string {
 	return s.LoadBalancerId
 }
@@ -704,6 +714,16 @@ func (s *ListGatewaysResponseBodyDataItemsLoadBalancers) SetAddressType(v string
 
 func (s *ListGatewaysResponseBodyDataItemsLoadBalancers) SetGatewayDefault(v bool) *ListGatewaysResponseBodyDataItemsLoadBalancers {
 	s.GatewayDefault = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsLoadBalancers) SetIpv4Addresses(v []*string) *ListGatewaysResponseBodyDataItemsLoadBalancers {
+	s.Ipv4Addresses = v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsLoadBalancers) SetIpv6Addresses(v []*string) *ListGatewaysResponseBodyDataItemsLoadBalancers {
+	s.Ipv6Addresses = v
 	return s
 }
 
