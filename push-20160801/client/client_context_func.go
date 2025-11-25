@@ -776,6 +776,18 @@ func (client *Client) PushWithContext(ctx context.Context, tmpReq *PushRequest, 
 		query["AndroidOpenUrl"] = request.AndroidOpenUrl
 	}
 
+	if !dara.IsNil(request.AndroidOppoDeleteIntentData) {
+		query["AndroidOppoDeleteIntentData"] = request.AndroidOppoDeleteIntentData
+	}
+
+	if !dara.IsNil(request.AndroidOppoIntelligentIntent) {
+		query["AndroidOppoIntelligentIntent"] = request.AndroidOppoIntelligentIntent
+	}
+
+	if !dara.IsNil(request.AndroidOppoIntentEnv) {
+		query["AndroidOppoIntentEnv"] = request.AndroidOppoIntentEnv
+	}
+
 	if !dara.IsNil(request.AndroidOppoPrivateContentParametersShrink) {
 		query["AndroidOppoPrivateContentParameters"] = request.AndroidOppoPrivateContentParametersShrink
 	}

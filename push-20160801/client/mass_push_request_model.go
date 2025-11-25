@@ -187,6 +187,9 @@ type MassPushRequestPushTask struct {
 	//
 	// https://xxxx.xxx
 	AndroidOpenUrl                      *string            `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
+	AndroidOppoDeleteIntentData         *string            `json:"AndroidOppoDeleteIntentData,omitempty" xml:"AndroidOppoDeleteIntentData,omitempty"`
+	AndroidOppoIntelligentIntent        *string            `json:"AndroidOppoIntelligentIntent,omitempty" xml:"AndroidOppoIntelligentIntent,omitempty"`
+	AndroidOppoIntentEnv                *int32             `json:"AndroidOppoIntentEnv,omitempty" xml:"AndroidOppoIntentEnv,omitempty"`
 	AndroidOppoPrivateContentParameters map[string]*string `json:"AndroidOppoPrivateContentParameters,omitempty" xml:"AndroidOppoPrivateContentParameters,omitempty"`
 	AndroidOppoPrivateMsgTemplateId     *string            `json:"AndroidOppoPrivateMsgTemplateId,omitempty" xml:"AndroidOppoPrivateMsgTemplateId,omitempty"`
 	AndroidOppoPrivateTitleParameters   map[string]*string `json:"AndroidOppoPrivateTitleParameters,omitempty" xml:"AndroidOppoPrivateTitleParameters,omitempty"`
@@ -524,6 +527,18 @@ func (s *MassPushRequestPushTask) GetAndroidOpenType() *string {
 
 func (s *MassPushRequestPushTask) GetAndroidOpenUrl() *string {
 	return s.AndroidOpenUrl
+}
+
+func (s *MassPushRequestPushTask) GetAndroidOppoDeleteIntentData() *string {
+	return s.AndroidOppoDeleteIntentData
+}
+
+func (s *MassPushRequestPushTask) GetAndroidOppoIntelligentIntent() *string {
+	return s.AndroidOppoIntelligentIntent
+}
+
+func (s *MassPushRequestPushTask) GetAndroidOppoIntentEnv() *int32 {
+	return s.AndroidOppoIntentEnv
 }
 
 func (s *MassPushRequestPushTask) GetAndroidOppoPrivateContentParameters() map[string]*string {
@@ -977,6 +992,21 @@ func (s *MassPushRequestPushTask) SetAndroidOpenType(v string) *MassPushRequestP
 
 func (s *MassPushRequestPushTask) SetAndroidOpenUrl(v string) *MassPushRequestPushTask {
 	s.AndroidOpenUrl = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidOppoDeleteIntentData(v string) *MassPushRequestPushTask {
+	s.AndroidOppoDeleteIntentData = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidOppoIntelligentIntent(v string) *MassPushRequestPushTask {
+	s.AndroidOppoIntelligentIntent = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidOppoIntentEnv(v int32) *MassPushRequestPushTask {
+	s.AndroidOppoIntentEnv = &v
 	return s
 }
 

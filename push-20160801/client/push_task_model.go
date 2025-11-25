@@ -713,6 +713,8 @@ func (s *PushTaskNotificationAndroidOptionsMeizu) Validate() error {
 
 type PushTaskNotificationAndroidOptionsOppo struct {
 	Category                 *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeleteIntentData         *string `json:"DeleteIntentData,omitempty" xml:"DeleteIntentData,omitempty"`
+	IntelligentIntent        *string `json:"IntelligentIntent,omitempty" xml:"IntelligentIntent,omitempty"`
 	NotifyLevel              *int64  `json:"NotifyLevel,omitempty" xml:"NotifyLevel,omitempty"`
 	PrivateContentParameters *string `json:"PrivateContentParameters,omitempty" xml:"PrivateContentParameters,omitempty"`
 	PrivateMsgTemplateId     *string `json:"PrivateMsgTemplateId,omitempty" xml:"PrivateMsgTemplateId,omitempty"`
@@ -729,6 +731,14 @@ func (s PushTaskNotificationAndroidOptionsOppo) GoString() string {
 
 func (s *PushTaskNotificationAndroidOptionsOppo) GetCategory() *string {
 	return s.Category
+}
+
+func (s *PushTaskNotificationAndroidOptionsOppo) GetDeleteIntentData() *string {
+	return s.DeleteIntentData
+}
+
+func (s *PushTaskNotificationAndroidOptionsOppo) GetIntelligentIntent() *string {
+	return s.IntelligentIntent
 }
 
 func (s *PushTaskNotificationAndroidOptionsOppo) GetNotifyLevel() *int64 {
@@ -749,6 +759,16 @@ func (s *PushTaskNotificationAndroidOptionsOppo) GetPrivateTitleParameters() *st
 
 func (s *PushTaskNotificationAndroidOptionsOppo) SetCategory(v string) *PushTaskNotificationAndroidOptionsOppo {
 	s.Category = &v
+	return s
+}
+
+func (s *PushTaskNotificationAndroidOptionsOppo) SetDeleteIntentData(v string) *PushTaskNotificationAndroidOptionsOppo {
+	s.DeleteIntentData = &v
+	return s
+}
+
+func (s *PushTaskNotificationAndroidOptionsOppo) SetIntelligentIntent(v string) *PushTaskNotificationAndroidOptionsOppo {
+	s.IntelligentIntent = &v
 	return s
 }
 

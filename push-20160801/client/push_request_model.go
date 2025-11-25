@@ -77,6 +77,12 @@ type iPushRequest interface {
 	GetAndroidOpenType() *string
 	SetAndroidOpenUrl(v string) *PushRequest
 	GetAndroidOpenUrl() *string
+	SetAndroidOppoDeleteIntentData(v string) *PushRequest
+	GetAndroidOppoDeleteIntentData() *string
+	SetAndroidOppoIntelligentIntent(v string) *PushRequest
+	GetAndroidOppoIntelligentIntent() *string
+	SetAndroidOppoIntentEnv(v int32) *PushRequest
+	GetAndroidOppoIntentEnv() *int32
 	SetAndroidOppoPrivateContentParameters(v map[string]*string) *PushRequest
 	GetAndroidOppoPrivateContentParameters() map[string]*string
 	SetAndroidOppoPrivateMsgTemplateId(v string) *PushRequest
@@ -339,6 +345,9 @@ type PushRequest struct {
 	//
 	// https://xxxx.xxx
 	AndroidOpenUrl                      *string            `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
+	AndroidOppoDeleteIntentData         *string            `json:"AndroidOppoDeleteIntentData,omitempty" xml:"AndroidOppoDeleteIntentData,omitempty"`
+	AndroidOppoIntelligentIntent        *string            `json:"AndroidOppoIntelligentIntent,omitempty" xml:"AndroidOppoIntelligentIntent,omitempty"`
+	AndroidOppoIntentEnv                *int32             `json:"AndroidOppoIntentEnv,omitempty" xml:"AndroidOppoIntentEnv,omitempty"`
 	AndroidOppoPrivateContentParameters map[string]*string `json:"AndroidOppoPrivateContentParameters,omitempty" xml:"AndroidOppoPrivateContentParameters,omitempty"`
 	AndroidOppoPrivateMsgTemplateId     *string            `json:"AndroidOppoPrivateMsgTemplateId,omitempty" xml:"AndroidOppoPrivateMsgTemplateId,omitempty"`
 	AndroidOppoPrivateTitleParameters   map[string]*string `json:"AndroidOppoPrivateTitleParameters,omitempty" xml:"AndroidOppoPrivateTitleParameters,omitempty"`
@@ -697,6 +706,18 @@ func (s *PushRequest) GetAndroidOpenType() *string {
 
 func (s *PushRequest) GetAndroidOpenUrl() *string {
 	return s.AndroidOpenUrl
+}
+
+func (s *PushRequest) GetAndroidOppoDeleteIntentData() *string {
+	return s.AndroidOppoDeleteIntentData
+}
+
+func (s *PushRequest) GetAndroidOppoIntelligentIntent() *string {
+	return s.AndroidOppoIntelligentIntent
+}
+
+func (s *PushRequest) GetAndroidOppoIntentEnv() *int32 {
+	return s.AndroidOppoIntentEnv
 }
 
 func (s *PushRequest) GetAndroidOppoPrivateContentParameters() map[string]*string {
@@ -1178,6 +1199,21 @@ func (s *PushRequest) SetAndroidOpenType(v string) *PushRequest {
 
 func (s *PushRequest) SetAndroidOpenUrl(v string) *PushRequest {
 	s.AndroidOpenUrl = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidOppoDeleteIntentData(v string) *PushRequest {
+	s.AndroidOppoDeleteIntentData = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidOppoIntelligentIntent(v string) *PushRequest {
+	s.AndroidOppoIntelligentIntent = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidOppoIntentEnv(v int32) *PushRequest {
+	s.AndroidOppoIntentEnv = &v
 	return s
 }
 

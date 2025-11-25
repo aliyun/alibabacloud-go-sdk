@@ -77,6 +77,12 @@ type iPushShrinkRequest interface {
 	GetAndroidOpenType() *string
 	SetAndroidOpenUrl(v string) *PushShrinkRequest
 	GetAndroidOpenUrl() *string
+	SetAndroidOppoDeleteIntentData(v string) *PushShrinkRequest
+	GetAndroidOppoDeleteIntentData() *string
+	SetAndroidOppoIntelligentIntent(v string) *PushShrinkRequest
+	GetAndroidOppoIntelligentIntent() *string
+	SetAndroidOppoIntentEnv(v int32) *PushShrinkRequest
+	GetAndroidOppoIntentEnv() *int32
 	SetAndroidOppoPrivateContentParametersShrink(v string) *PushShrinkRequest
 	GetAndroidOppoPrivateContentParametersShrink() *string
 	SetAndroidOppoPrivateMsgTemplateId(v string) *PushShrinkRequest
@@ -339,6 +345,9 @@ type PushShrinkRequest struct {
 	//
 	// https://xxxx.xxx
 	AndroidOpenUrl                            *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
+	AndroidOppoDeleteIntentData               *string `json:"AndroidOppoDeleteIntentData,omitempty" xml:"AndroidOppoDeleteIntentData,omitempty"`
+	AndroidOppoIntelligentIntent              *string `json:"AndroidOppoIntelligentIntent,omitempty" xml:"AndroidOppoIntelligentIntent,omitempty"`
+	AndroidOppoIntentEnv                      *int32  `json:"AndroidOppoIntentEnv,omitempty" xml:"AndroidOppoIntentEnv,omitempty"`
 	AndroidOppoPrivateContentParametersShrink *string `json:"AndroidOppoPrivateContentParameters,omitempty" xml:"AndroidOppoPrivateContentParameters,omitempty"`
 	AndroidOppoPrivateMsgTemplateId           *string `json:"AndroidOppoPrivateMsgTemplateId,omitempty" xml:"AndroidOppoPrivateMsgTemplateId,omitempty"`
 	AndroidOppoPrivateTitleParametersShrink   *string `json:"AndroidOppoPrivateTitleParameters,omitempty" xml:"AndroidOppoPrivateTitleParameters,omitempty"`
@@ -697,6 +706,18 @@ func (s *PushShrinkRequest) GetAndroidOpenType() *string {
 
 func (s *PushShrinkRequest) GetAndroidOpenUrl() *string {
 	return s.AndroidOpenUrl
+}
+
+func (s *PushShrinkRequest) GetAndroidOppoDeleteIntentData() *string {
+	return s.AndroidOppoDeleteIntentData
+}
+
+func (s *PushShrinkRequest) GetAndroidOppoIntelligentIntent() *string {
+	return s.AndroidOppoIntelligentIntent
+}
+
+func (s *PushShrinkRequest) GetAndroidOppoIntentEnv() *int32 {
+	return s.AndroidOppoIntentEnv
 }
 
 func (s *PushShrinkRequest) GetAndroidOppoPrivateContentParametersShrink() *string {
@@ -1178,6 +1199,21 @@ func (s *PushShrinkRequest) SetAndroidOpenType(v string) *PushShrinkRequest {
 
 func (s *PushShrinkRequest) SetAndroidOpenUrl(v string) *PushShrinkRequest {
 	s.AndroidOpenUrl = &v
+	return s
+}
+
+func (s *PushShrinkRequest) SetAndroidOppoDeleteIntentData(v string) *PushShrinkRequest {
+	s.AndroidOppoDeleteIntentData = &v
+	return s
+}
+
+func (s *PushShrinkRequest) SetAndroidOppoIntelligentIntent(v string) *PushShrinkRequest {
+	s.AndroidOppoIntelligentIntent = &v
+	return s
+}
+
+func (s *PushShrinkRequest) SetAndroidOppoIntentEnv(v int32) *PushShrinkRequest {
+	s.AndroidOppoIntentEnv = &v
 	return s
 }
 
