@@ -66,6 +66,10 @@ func (client *Client) CreateAppInstanceWithContext(ctx context.Context, tmpReq *
 		query["InstanceClass"] = request.InstanceClass
 	}
 
+	if !dara.IsNil(request.PublicEndpointEnabled) {
+		query["PublicEndpointEnabled"] = request.PublicEndpointEnabled
+	}
+
 	if !dara.IsNil(request.PublicNetworkAccessEnabled) {
 		query["PublicNetworkAccessEnabled"] = request.PublicNetworkAccessEnabled
 	}
@@ -946,6 +950,10 @@ func (client *Client) ResetInstancePasswordWithContext(ctx context.Context, requ
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DashboardPassword) {
 		query["DashboardPassword"] = request.DashboardPassword
+	}
+
+	if !dara.IsNil(request.DatabasePassword) {
+		query["DatabasePassword"] = request.DatabasePassword
 	}
 
 	if !dara.IsNil(request.InstanceName) {

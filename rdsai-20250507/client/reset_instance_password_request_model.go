@@ -11,6 +11,8 @@ type iResetInstancePasswordRequest interface {
 	GoString() string
 	SetDashboardPassword(v string) *ResetInstancePasswordRequest
 	GetDashboardPassword() *string
+	SetDatabasePassword(v string) *ResetInstancePasswordRequest
+	GetDatabasePassword() *string
 	SetInstanceName(v string) *ResetInstancePasswordRequest
 	GetInstanceName() *string
 	SetRegionId(v string) *ResetInstancePasswordRequest
@@ -18,12 +20,11 @@ type iResetInstancePasswordRequest interface {
 }
 
 type ResetInstancePasswordRequest struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// test_Password
 	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
+	DatabasePassword  *string `json:"DatabasePassword,omitempty" xml:"DatabasePassword,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -48,6 +49,10 @@ func (s *ResetInstancePasswordRequest) GetDashboardPassword() *string {
 	return s.DashboardPassword
 }
 
+func (s *ResetInstancePasswordRequest) GetDatabasePassword() *string {
+	return s.DatabasePassword
+}
+
 func (s *ResetInstancePasswordRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
@@ -58,6 +63,11 @@ func (s *ResetInstancePasswordRequest) GetRegionId() *string {
 
 func (s *ResetInstancePasswordRequest) SetDashboardPassword(v string) *ResetInstancePasswordRequest {
 	s.DashboardPassword = &v
+	return s
+}
+
+func (s *ResetInstancePasswordRequest) SetDatabasePassword(v string) *ResetInstancePasswordRequest {
+	s.DatabasePassword = &v
 	return s
 }
 

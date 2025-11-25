@@ -27,6 +27,8 @@ type iCreateAppInstanceRequest interface {
 	GetDatabasePassword() *string
 	SetInstanceClass(v string) *CreateAppInstanceRequest
 	GetInstanceClass() *string
+	SetPublicEndpointEnabled(v bool) *CreateAppInstanceRequest
+	GetPublicEndpointEnabled() *bool
 	SetPublicNetworkAccessEnabled(v bool) *CreateAppInstanceRequest
 	GetPublicNetworkAccessEnabled() *bool
 	SetRAGEnabled(v bool) *CreateAppInstanceRequest
@@ -70,7 +72,8 @@ type CreateAppInstanceRequest struct {
 	// example:
 	//
 	// rdsai.supabase.basic
-	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	InstanceClass         *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	PublicEndpointEnabled *bool   `json:"PublicEndpointEnabled,omitempty" xml:"PublicEndpointEnabled,omitempty"`
 	// example:
 	//
 	// false
@@ -128,6 +131,10 @@ func (s *CreateAppInstanceRequest) GetDatabasePassword() *string {
 
 func (s *CreateAppInstanceRequest) GetInstanceClass() *string {
 	return s.InstanceClass
+}
+
+func (s *CreateAppInstanceRequest) GetPublicEndpointEnabled() *bool {
+	return s.PublicEndpointEnabled
 }
 
 func (s *CreateAppInstanceRequest) GetPublicNetworkAccessEnabled() *bool {
@@ -188,6 +195,11 @@ func (s *CreateAppInstanceRequest) SetDatabasePassword(v string) *CreateAppInsta
 
 func (s *CreateAppInstanceRequest) SetInstanceClass(v string) *CreateAppInstanceRequest {
 	s.InstanceClass = &v
+	return s
+}
+
+func (s *CreateAppInstanceRequest) SetPublicEndpointEnabled(v bool) *CreateAppInstanceRequest {
+	s.PublicEndpointEnabled = &v
 	return s
 }
 

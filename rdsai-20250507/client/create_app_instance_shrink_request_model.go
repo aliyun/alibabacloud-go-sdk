@@ -27,6 +27,8 @@ type iCreateAppInstanceShrinkRequest interface {
 	GetDatabasePassword() *string
 	SetInstanceClass(v string) *CreateAppInstanceShrinkRequest
 	GetInstanceClass() *string
+	SetPublicEndpointEnabled(v bool) *CreateAppInstanceShrinkRequest
+	GetPublicEndpointEnabled() *bool
 	SetPublicNetworkAccessEnabled(v bool) *CreateAppInstanceShrinkRequest
 	GetPublicNetworkAccessEnabled() *bool
 	SetRAGEnabled(v bool) *CreateAppInstanceShrinkRequest
@@ -70,7 +72,8 @@ type CreateAppInstanceShrinkRequest struct {
 	// example:
 	//
 	// rdsai.supabase.basic
-	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	InstanceClass         *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	PublicEndpointEnabled *bool   `json:"PublicEndpointEnabled,omitempty" xml:"PublicEndpointEnabled,omitempty"`
 	// example:
 	//
 	// false
@@ -128,6 +131,10 @@ func (s *CreateAppInstanceShrinkRequest) GetDatabasePassword() *string {
 
 func (s *CreateAppInstanceShrinkRequest) GetInstanceClass() *string {
 	return s.InstanceClass
+}
+
+func (s *CreateAppInstanceShrinkRequest) GetPublicEndpointEnabled() *bool {
+	return s.PublicEndpointEnabled
 }
 
 func (s *CreateAppInstanceShrinkRequest) GetPublicNetworkAccessEnabled() *bool {
@@ -188,6 +195,11 @@ func (s *CreateAppInstanceShrinkRequest) SetDatabasePassword(v string) *CreateAp
 
 func (s *CreateAppInstanceShrinkRequest) SetInstanceClass(v string) *CreateAppInstanceShrinkRequest {
 	s.InstanceClass = &v
+	return s
+}
+
+func (s *CreateAppInstanceShrinkRequest) SetPublicEndpointEnabled(v bool) *CreateAppInstanceShrinkRequest {
+	s.PublicEndpointEnabled = &v
 	return s
 }
 
