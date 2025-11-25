@@ -238,7 +238,8 @@ type ListJobSnapshotInfosResponseBodyDataJobInfoList struct {
 	// example:
 	//
 	// Dataworks
-	ExtPlantFrom *string `json:"extPlantFrom,omitempty" xml:"extPlantFrom,omitempty"`
+	ExtPlantFrom  *string `json:"extPlantFrom,omitempty" xml:"extPlantFrom,omitempty"`
+	ExtPlatformId *string `json:"extPlatformId,omitempty" xml:"extPlatformId,omitempty"`
 	// The instance ID.
 	//
 	// example:
@@ -421,6 +422,10 @@ func (s *ListJobSnapshotInfosResponseBodyDataJobInfoList) GetExtPlantFrom() *str
 	return s.ExtPlantFrom
 }
 
+func (s *ListJobSnapshotInfosResponseBodyDataJobInfoList) GetExtPlatformId() *string {
+	return s.ExtPlatformId
+}
+
 func (s *ListJobSnapshotInfosResponseBodyDataJobInfoList) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -544,6 +549,11 @@ func (s *ListJobSnapshotInfosResponseBodyDataJobInfoList) SetExtNodeOnDuty(v str
 
 func (s *ListJobSnapshotInfosResponseBodyDataJobInfoList) SetExtPlantFrom(v string) *ListJobSnapshotInfosResponseBodyDataJobInfoList {
 	s.ExtPlantFrom = &v
+	return s
+}
+
+func (s *ListJobSnapshotInfosResponseBodyDataJobInfoList) SetExtPlatformId(v string) *ListJobSnapshotInfosResponseBodyDataJobInfoList {
+	s.ExtPlatformId = &v
 	return s
 }
 

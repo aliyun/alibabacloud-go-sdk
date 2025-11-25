@@ -3229,6 +3229,10 @@ func (client *Client) ListJobInfosWithOptions(request *ListJobInfosRequest, head
 		body["extNodeIdList"] = request.ExtNodeIdList
 	}
 
+	if !dara.IsNil(request.ExtNodeNameList) {
+		body["extNodeNameList"] = request.ExtNodeNameList
+	}
+
 	if !dara.IsNil(request.From) {
 		body["from"] = request.From
 	}
@@ -3271,6 +3275,10 @@ func (client *Client) ListJobInfosWithOptions(request *ListJobInfosRequest, head
 
 	if !dara.IsNil(request.StatusList) {
 		body["statusList"] = request.StatusList
+	}
+
+	if !dara.IsNil(request.TaskNameList) {
+		body["taskNameList"] = request.TaskNameList
 	}
 
 	if !dara.IsNil(request.To) {

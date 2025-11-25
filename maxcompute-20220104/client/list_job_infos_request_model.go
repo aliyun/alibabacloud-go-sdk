@@ -13,6 +13,8 @@ type iListJobInfosRequest interface {
 	GetAscOrder() *bool
 	SetExtNodeIdList(v []*string) *ListJobInfosRequest
 	GetExtNodeIdList() []*string
+	SetExtNodeNameList(v []*string) *ListJobInfosRequest
+	GetExtNodeNameList() []*string
 	SetFrom(v int64) *ListJobInfosRequest
 	GetFrom() *int64
 	SetInstanceIdList(v []*string) *ListJobInfosRequest
@@ -35,6 +37,8 @@ type iListJobInfosRequest interface {
 	GetSortOrderList() []*string
 	SetStatusList(v []*string) *ListJobInfosRequest
 	GetStatusList() []*string
+	SetTaskNameList(v []*string) *ListJobInfosRequest
+	GetTaskNameList() []*string
 	SetTo(v int64) *ListJobInfosRequest
 	GetTo() *int64
 	SetTypeList(v []*string) *ListJobInfosRequest
@@ -59,7 +63,8 @@ type ListJobInfosRequest struct {
 	// true
 	AscOrder *bool `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
 	// The ancestor node IDs.
-	ExtNodeIdList []*string `json:"extNodeIdList,omitempty" xml:"extNodeIdList,omitempty" type:"Repeated"`
+	ExtNodeIdList   []*string `json:"extNodeIdList,omitempty" xml:"extNodeIdList,omitempty" type:"Repeated"`
+	ExtNodeNameList []*string `json:"extNodeNameList,omitempty" xml:"extNodeNameList,omitempty" type:"Repeated"`
 	// The start timestamp.
 	//
 	// This parameter is required.
@@ -91,7 +96,8 @@ type ListJobInfosRequest struct {
 	// The orders for the sorting columns.
 	SortOrderList []*string `json:"sortOrderList,omitempty" xml:"sortOrderList,omitempty" type:"Repeated"`
 	// The job states.
-	StatusList []*string `json:"statusList,omitempty" xml:"statusList,omitempty" type:"Repeated"`
+	StatusList   []*string `json:"statusList,omitempty" xml:"statusList,omitempty" type:"Repeated"`
+	TaskNameList []*string `json:"taskNameList,omitempty" xml:"taskNameList,omitempty" type:"Repeated"`
 	// The end timestamp.
 	//
 	// This parameter is required.
@@ -150,6 +156,10 @@ func (s *ListJobInfosRequest) GetExtNodeIdList() []*string {
 	return s.ExtNodeIdList
 }
 
+func (s *ListJobInfosRequest) GetExtNodeNameList() []*string {
+	return s.ExtNodeNameList
+}
+
 func (s *ListJobInfosRequest) GetFrom() *int64 {
 	return s.From
 }
@@ -194,6 +204,10 @@ func (s *ListJobInfosRequest) GetStatusList() []*string {
 	return s.StatusList
 }
 
+func (s *ListJobInfosRequest) GetTaskNameList() []*string {
+	return s.TaskNameList
+}
+
 func (s *ListJobInfosRequest) GetTo() *int64 {
 	return s.To
 }
@@ -229,6 +243,11 @@ func (s *ListJobInfosRequest) SetAscOrder(v bool) *ListJobInfosRequest {
 
 func (s *ListJobInfosRequest) SetExtNodeIdList(v []*string) *ListJobInfosRequest {
 	s.ExtNodeIdList = v
+	return s
+}
+
+func (s *ListJobInfosRequest) SetExtNodeNameList(v []*string) *ListJobInfosRequest {
+	s.ExtNodeNameList = v
 	return s
 }
 
@@ -284,6 +303,11 @@ func (s *ListJobInfosRequest) SetSortOrderList(v []*string) *ListJobInfosRequest
 
 func (s *ListJobInfosRequest) SetStatusList(v []*string) *ListJobInfosRequest {
 	s.StatusList = v
+	return s
+}
+
+func (s *ListJobInfosRequest) SetTaskNameList(v []*string) *ListJobInfosRequest {
+	s.TaskNameList = v
 	return s
 }
 

@@ -188,7 +188,8 @@ type ListJobInfosResponseBodyDataJobInfoList struct {
 	// example:
 	//
 	// node_4
-	ExtNodeId *string `json:"extNodeId,omitempty" xml:"extNodeId,omitempty"`
+	ExtNodeId   *string `json:"extNodeId,omitempty" xml:"extNodeId,omitempty"`
+	ExtNodeName *string `json:"extNodeName,omitempty" xml:"extNodeName,omitempty"`
 	// The account of the node owner.
 	//
 	// example:
@@ -200,7 +201,8 @@ type ListJobInfosResponseBodyDataJobInfoList struct {
 	// example:
 	//
 	// platform_3
-	ExtPlantFrom *string `json:"extPlantFrom,omitempty" xml:"extPlantFrom,omitempty"`
+	ExtPlantFrom  *string `json:"extPlantFrom,omitempty" xml:"extPlantFrom,omitempty"`
+	ExtPlatformId *string `json:"extPlatformId,omitempty" xml:"extPlatformId,omitempty"`
 	// The amount of scanned data for the job. Unit: byte.
 	//
 	// example:
@@ -310,7 +312,8 @@ type ListJobInfosResponseBodyDataJobInfoList struct {
 	// example:
 	//
 	// []
-	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	Tags     *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
 	// The tenant ID.
 	//
 	// example:
@@ -359,12 +362,20 @@ func (s *ListJobInfosResponseBodyDataJobInfoList) GetExtNodeId() *string {
 	return s.ExtNodeId
 }
 
+func (s *ListJobInfosResponseBodyDataJobInfoList) GetExtNodeName() *string {
+	return s.ExtNodeName
+}
+
 func (s *ListJobInfosResponseBodyDataJobInfoList) GetExtNodeOnDuty() *string {
 	return s.ExtNodeOnDuty
 }
 
 func (s *ListJobInfosResponseBodyDataJobInfoList) GetExtPlantFrom() *string {
 	return s.ExtPlantFrom
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) GetExtPlatformId() *string {
+	return s.ExtPlatformId
 }
 
 func (s *ListJobInfosResponseBodyDataJobInfoList) GetInputBytes() *float64 {
@@ -443,6 +454,10 @@ func (s *ListJobInfosResponseBodyDataJobInfoList) GetTags() *string {
 	return s.Tags
 }
 
+func (s *ListJobInfosResponseBodyDataJobInfoList) GetTaskName() *string {
+	return s.TaskName
+}
+
 func (s *ListJobInfosResponseBodyDataJobInfoList) GetTenantId() *string {
 	return s.TenantId
 }
@@ -480,6 +495,11 @@ func (s *ListJobInfosResponseBodyDataJobInfoList) SetExtNodeId(v string) *ListJo
 	return s
 }
 
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetExtNodeName(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.ExtNodeName = &v
+	return s
+}
+
 func (s *ListJobInfosResponseBodyDataJobInfoList) SetExtNodeOnDuty(v string) *ListJobInfosResponseBodyDataJobInfoList {
 	s.ExtNodeOnDuty = &v
 	return s
@@ -487,6 +507,11 @@ func (s *ListJobInfosResponseBodyDataJobInfoList) SetExtNodeOnDuty(v string) *Li
 
 func (s *ListJobInfosResponseBodyDataJobInfoList) SetExtPlantFrom(v string) *ListJobInfosResponseBodyDataJobInfoList {
 	s.ExtPlantFrom = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetExtPlatformId(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.ExtPlatformId = &v
 	return s
 }
 
@@ -582,6 +607,11 @@ func (s *ListJobInfosResponseBodyDataJobInfoList) SetSubmittedAtTime(v int64) *L
 
 func (s *ListJobInfosResponseBodyDataJobInfoList) SetTags(v string) *ListJobInfosResponseBodyDataJobInfoList {
 	s.Tags = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetTaskName(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.TaskName = &v
 	return s
 }
 
