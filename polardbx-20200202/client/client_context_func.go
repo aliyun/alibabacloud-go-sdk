@@ -2680,6 +2680,10 @@ func (client *Client) DescribeComponentPropetiesWithContext(ctx context.Context,
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.StorageType) {
+		query["StorageType"] = request.StorageType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}

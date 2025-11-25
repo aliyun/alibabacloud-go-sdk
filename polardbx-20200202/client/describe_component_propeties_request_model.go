@@ -15,6 +15,8 @@ type iDescribeComponentPropetiesRequest interface {
 	GetComponentName() *string
 	SetRegionId(v string) *DescribeComponentPropetiesRequest
 	GetRegionId() *string
+	SetStorageType(v string) *DescribeComponentPropetiesRequest
+	GetStorageType() *string
 }
 
 type DescribeComponentPropetiesRequest struct {
@@ -35,7 +37,8 @@ type DescribeComponentPropetiesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
 func (s DescribeComponentPropetiesRequest) String() string {
@@ -58,6 +61,10 @@ func (s *DescribeComponentPropetiesRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DescribeComponentPropetiesRequest) GetStorageType() *string {
+	return s.StorageType
+}
+
 func (s *DescribeComponentPropetiesRequest) SetCommodityCode(v string) *DescribeComponentPropetiesRequest {
 	s.CommodityCode = &v
 	return s
@@ -70,6 +77,11 @@ func (s *DescribeComponentPropetiesRequest) SetComponentName(v string) *Describe
 
 func (s *DescribeComponentPropetiesRequest) SetRegionId(v string) *DescribeComponentPropetiesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeComponentPropetiesRequest) SetStorageType(v string) *DescribeComponentPropetiesRequest {
+	s.StorageType = &v
 	return s
 }
 

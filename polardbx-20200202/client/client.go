@@ -3554,6 +3554,10 @@ func (client *Client) DescribeComponentPropetiesWithOptions(request *DescribeCom
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.StorageType) {
+		query["StorageType"] = request.StorageType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
