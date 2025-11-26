@@ -29,6 +29,8 @@ type iChangeCheckConfigRequest interface {
 	GetRegionId() *string
 	SetRemovedCheck(v []*ChangeCheckConfigRequestRemovedCheck) *ChangeCheckConfigRequest
 	GetRemovedCheck() []*ChangeCheckConfigRequestRemovedCheck
+	SetResourceDirectoryAccountId(v int64) *ChangeCheckConfigRequest
+	GetResourceDirectoryAccountId() *int64
 	SetStandardIds(v []*int64) *ChangeCheckConfigRequest
 	GetStandardIds() []*int64
 	SetStartTime(v int32) *ChangeCheckConfigRequest
@@ -108,6 +110,14 @@ type ChangeCheckConfigRequest struct {
 	//
 	// >  If the ConfigStandardIds or ConfigRequirementIds parameter is configured, this parameter does not take effect.
 	RemovedCheck []*ChangeCheckConfigRequestRemovedCheck `json:"RemovedCheck,omitempty" xml:"RemovedCheck,omitempty" type:"Repeated"`
+	// The Alibaba Cloud account ID of the member in the resource directory.
+	//
+	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	//
+	// example:
+	//
+	// 1232428423234****
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// An array that consists of the information about the check item.
 	StandardIds []*int64 `json:"StandardIds,omitempty" xml:"StandardIds,omitempty" type:"Repeated"`
 	// The start time of the check. The value specifies a point in time in a day.
@@ -178,6 +188,10 @@ func (s *ChangeCheckConfigRequest) GetRemovedCheck() []*ChangeCheckConfigRequest
 	return s.RemovedCheck
 }
 
+func (s *ChangeCheckConfigRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *ChangeCheckConfigRequest) GetStandardIds() []*int64 {
 	return s.StandardIds
 }
@@ -241,6 +255,11 @@ func (s *ChangeCheckConfigRequest) SetRegionId(v string) *ChangeCheckConfigReque
 
 func (s *ChangeCheckConfigRequest) SetRemovedCheck(v []*ChangeCheckConfigRequestRemovedCheck) *ChangeCheckConfigRequest {
 	s.RemovedCheck = v
+	return s
+}
+
+func (s *ChangeCheckConfigRequest) SetResourceDirectoryAccountId(v int64) *ChangeCheckConfigRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

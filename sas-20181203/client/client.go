@@ -2526,6 +2526,10 @@ func (client *Client) ChangeCheckConfigWithOptions(tmpReq *ChangeCheckConfigRequ
 		query["RemovedCheck"] = request.RemovedCheck
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.StandardIds) {
 		query["StandardIds"] = request.StandardIds
 	}
@@ -40803,7 +40807,7 @@ func (client *Client) GetInstanceAlarmStatistics(request *GetInstanceAlarmStatis
 
 // Summary:
 //
-// 获取实例授权取值范围
+// # Get Instance Authorization Value Range
 //
 // @param request - GetInstanceAuthRangeRequest
 //
@@ -40834,7 +40838,7 @@ func (client *Client) GetInstanceAuthRangeWithOptions(runtime *dara.RuntimeOptio
 
 // Summary:
 //
-// 获取实例授权取值范围
+// # Get Instance Authorization Value Range
 //
 // @return GetInstanceAuthRangeResponse
 func (client *Client) GetInstanceAuthRange() (_result *GetInstanceAuthRangeResponse, _err error) {
@@ -50470,7 +50474,11 @@ func (client *Client) ListMaliciousFileWhitelistConfigs(request *ListMaliciousFi
 
 // Summary:
 //
-// 查询多账号授权分配列表
+// # Query Multi-Account Authorization Allocation List
+//
+// Description:
+//
+// You can search for assets by conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset. You can also search for assets that meet multiple search conditions by setting the logical relationship between different search conditions.
 //
 // @param request - ListMultiUserInstancesRequest
 //
@@ -50518,7 +50526,11 @@ func (client *Client) ListMultiUserInstancesWithOptions(request *ListMultiUserIn
 
 // Summary:
 //
-// 查询多账号授权分配列表
+// # Query Multi-Account Authorization Allocation List
+//
+// Description:
+//
+// You can search for assets by conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset. You can also search for assets that meet multiple search conditions by setting the logical relationship between different search conditions.
 //
 // @param request - ListMultiUserInstancesRequest
 //
@@ -66313,7 +66325,7 @@ func (client *Client) UpdateMaliciousFileWhitelistConfig(request *UpdateMaliciou
 
 // Summary:
 //
-// 修改多账号实例配置
+// # Modify Multi-Account Instance Configuration
 //
 // @param request - UpdateMultiUserInstancesRequest
 //
@@ -66357,7 +66369,7 @@ func (client *Client) UpdateMultiUserInstancesWithOptions(request *UpdateMultiUs
 
 // Summary:
 //
-// 修改多账号实例配置
+// # Modify Multi-Account Instance Configuration
 //
 // @param request - UpdateMultiUserInstancesRequest
 //

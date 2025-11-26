@@ -14,6 +14,7 @@ type iUpdateMultiUserInstancesRequest interface {
 }
 
 type UpdateMultiUserInstancesRequest struct {
+	// Member instances.
 	MemberInstances []*UpdateMultiUserInstancesRequestMemberInstances `json:"MemberInstances,omitempty" xml:"MemberInstances,omitempty" type:"Repeated"`
 }
 
@@ -48,67 +49,124 @@ func (s *UpdateMultiUserInstancesRequest) Validate() error {
 }
 
 type UpdateMultiUserInstancesRequestMemberInstances struct {
+	// The Alibaba Cloud account UID of the member.
+	//
 	// example:
 	//
 	// 1766185894104675
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// Anti-ransomware capacity allocated to the member, in GB.
+	//
 	// example:
 	//
 	// 10
 	AntiRansomwareCapacity *int64 `json:"AntiRansomwareCapacity,omitempty" xml:"AntiRansomwareCapacity,omitempty"`
+	// Charge type, values:
+	//
+	// 	- **PREPAID**: Prepaid.
+	//
+	// 	- **POSTPAID*	- (default): Postpaid.
+	//
 	// example:
 	//
 	// PREPAID
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// Cloud platform configuration check scan count allocated to the member. Unit: times per month.
+	//
 	// example:
 	//
 	// 0
 	CspmCapacity *int64 `json:"CspmCapacity,omitempty" xml:"CspmCapacity,omitempty"`
+	// Honeypot authorization count allocated to the member.
+	//
 	// example:
 	//
 	// 0
 	HoneypotCapacity *int64 `json:"HoneypotCapacity,omitempty" xml:"HoneypotCapacity,omitempty"`
+	// Image scan authorization count allocated to the member.
+	//
 	// example:
 	//
 	// 1
 	ImageScanCapacity *int64 `json:"ImageScanCapacity,omitempty" xml:"ImageScanCapacity,omitempty"`
+	// The Cloud Security Center instance ID purchased by the member account.
+	//
 	// example:
 	//
 	// sas-p0anpb26my69
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Operation type. Values:
+	//
+	// - **ADD**: Add
+	//
+	// - **CHANGE**: Change
+	//
+	// - **DEL**: Delete
+	//
 	// example:
 	//
 	// CHANGE
 	OptType *string `json:"OptType,omitempty" xml:"OptType,omitempty"`
+	// Application protection count allocated to the member. Unit: per month.
+	//
 	// example:
 	//
 	// 0
 	RaspCapacity *int64 `json:"RaspCapacity,omitempty" xml:"RaspCapacity,omitempty"`
+	// Malicious file detection SDK authorization count allocated to the member.
+	//
 	// example:
 	//
 	// 10
 	SdkCapacity *int64 `json:"SdkCapacity,omitempty" xml:"SdkCapacity,omitempty"`
+	// Log storage capacity allocated to the member, in GB.
+	//
 	// example:
 	//
 	// 10
 	SlsCapacity *int64 `json:"SlsCapacity,omitempty" xml:"SlsCapacity,omitempty"`
+	// Status of the member account instance. Values:
+	//
+	// - **1**: Valid.
+	//
+	// - **2**: Invalid.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Threat analysis capacity allocated to the member. Unit: GB.
+	//
 	// example:
 	//
 	// 10
 	ThreatAnalysisCapacity *int64 `json:"ThreatAnalysisCapacity,omitempty" xml:"ThreatAnalysisCapacity,omitempty"`
+	// Threat analysis and response log access traffic allocated to the member. Unit: GB/day.
+	//
 	// example:
 	//
 	// 0
 	ThreatAnalysisFlow *int64 `json:"ThreatAnalysisFlow,omitempty" xml:"ThreatAnalysisFlow,omitempty"`
+	// The version of Cloud Security Center protection to be bound. Values:
+	//
+	// - **1**: Free Edition
+	//
+	// - **3**: Enterprise Edition
+	//
+	// - **5**: Advanced Edition
+	//
+	// - **6**: Antivirus Edition
+	//
+	// - **7**: Flagship Edition
+	//
 	// example:
 	//
 	// 7
-	Version        *string                                                         `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// Member account authorization usage information.
 	VersionSummary []*UpdateMultiUserInstancesRequestMemberInstancesVersionSummary `json:"VersionSummary,omitempty" xml:"VersionSummary,omitempty" type:"Repeated"`
+	// Web tamper-proof authorization count allocated to the member.
+	//
 	// example:
 	//
 	// 0
@@ -290,14 +348,34 @@ func (s *UpdateMultiUserInstancesRequestMemberInstances) Validate() error {
 }
 
 type UpdateMultiUserInstancesRequestMemberInstancesVersionSummary struct {
+	// Number of cores authorized for the member.
+	//
 	// example:
 	//
 	// 6
 	CoreCount *int64 `json:"CoreCount,omitempty" xml:"CoreCount,omitempty"`
+	// Number of authorizations allocated to the member.
+	//
 	// example:
 	//
 	// 3
 	EcsCount *int64 `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
+	// Version of the Cloud Security Center for the member account. Values:
+	//
+	// - **1**: Free Edition
+	//
+	// - **3**: Enterprise Edition
+	//
+	// - **5**: Advanced Edition
+	//
+	// - **6**: Antivirus Edition
+	//
+	// - **7**: Flagship Edition
+	//
+	// - **8**: Multiple Versions
+	//
+	// - **10**: Only Purchase Value-Added Services
+	//
 	// example:
 	//
 	// 5

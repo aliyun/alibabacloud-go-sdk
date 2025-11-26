@@ -29,6 +29,8 @@ type iChangeCheckConfigShrinkRequest interface {
 	GetRegionId() *string
 	SetRemovedCheck(v []*ChangeCheckConfigShrinkRequestRemovedCheck) *ChangeCheckConfigShrinkRequest
 	GetRemovedCheck() []*ChangeCheckConfigShrinkRequestRemovedCheck
+	SetResourceDirectoryAccountId(v int64) *ChangeCheckConfigShrinkRequest
+	GetResourceDirectoryAccountId() *int64
 	SetStandardIds(v []*int64) *ChangeCheckConfigShrinkRequest
 	GetStandardIds() []*int64
 	SetStartTime(v int32) *ChangeCheckConfigShrinkRequest
@@ -108,6 +110,14 @@ type ChangeCheckConfigShrinkRequest struct {
 	//
 	// >  If the ConfigStandardIds or ConfigRequirementIds parameter is configured, this parameter does not take effect.
 	RemovedCheck []*ChangeCheckConfigShrinkRequestRemovedCheck `json:"RemovedCheck,omitempty" xml:"RemovedCheck,omitempty" type:"Repeated"`
+	// The Alibaba Cloud account ID of the member in the resource directory.
+	//
+	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	//
+	// example:
+	//
+	// 1232428423234****
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// An array that consists of the information about the check item.
 	StandardIds []*int64 `json:"StandardIds,omitempty" xml:"StandardIds,omitempty" type:"Repeated"`
 	// The start time of the check. The value specifies a point in time in a day.
@@ -178,6 +188,10 @@ func (s *ChangeCheckConfigShrinkRequest) GetRemovedCheck() []*ChangeCheckConfigS
 	return s.RemovedCheck
 }
 
+func (s *ChangeCheckConfigShrinkRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *ChangeCheckConfigShrinkRequest) GetStandardIds() []*int64 {
 	return s.StandardIds
 }
@@ -241,6 +255,11 @@ func (s *ChangeCheckConfigShrinkRequest) SetRegionId(v string) *ChangeCheckConfi
 
 func (s *ChangeCheckConfigShrinkRequest) SetRemovedCheck(v []*ChangeCheckConfigShrinkRequestRemovedCheck) *ChangeCheckConfigShrinkRequest {
 	s.RemovedCheck = v
+	return s
+}
+
+func (s *ChangeCheckConfigShrinkRequest) SetResourceDirectoryAccountId(v int64) *ChangeCheckConfigShrinkRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 
