@@ -1891,6 +1891,56 @@ func (client *Client) CreateFunctionWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
+// 创建身份凭证
+//
+// @param tmpReq - CreateIdentifyCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIdentifyCredentialResponse
+func (client *Client) CreateIdentifyCredentialWithContext(ctx context.Context, tmpReq *CreateIdentifyCredentialRequest, runtime *dara.RuntimeOptions) (_result *CreateIdentifyCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateIdentifyCredentialShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.IdentifyCredential) {
+		request.IdentifyCredentialShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IdentifyCredential, dara.String("IdentifyCredential"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.IdentifyCredentialShrink) {
+		body["IdentifyCredential"] = request.IdentifyCredentialShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateIdentifyCredential"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateIdentifyCredentialResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a lineage between a source entity and a destination entity. Either the source or destination entity must be a custom entity.
 //
 // @param tmpReq - CreateLineageRelationshipRequest
