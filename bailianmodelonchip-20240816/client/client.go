@@ -124,6 +124,72 @@ func (client *Client) ActiveInteractionCreate(request *ActiveInteractionCreateRe
 
 // Summary:
 //
+// 主动交互消息生成eu
+//
+// @param request - ActiveInteractionEuCreateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ActiveInteractionEuCreateResponse
+func (client *Client) ActiveInteractionEuCreateWithOptions(request *ActiveInteractionEuCreateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ActiveInteractionEuCreateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Image) {
+		body["image"] = request.Image
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ActiveInteractionEuCreate"),
+		Version:     dara.String("2024-08-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/open/api/eu/active/interaction/create"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ActiveInteractionEuCreateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 主动交互消息生成eu
+//
+// @param request - ActiveInteractionEuCreateRequest
+//
+// @return ActiveInteractionEuCreateResponse
+func (client *Client) ActiveInteractionEuCreate(request *ActiveInteractionEuCreateRequest) (_result *ActiveInteractionEuCreateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ActiveInteractionEuCreateResponse{}
+	_body, _err := client.ActiveInteractionEuCreateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 设备注册
 //
 // @param request - DeviceRegisterRequest
@@ -359,6 +425,80 @@ func (client *Client) ModelTypeDetermine(request *ModelTypeDetermineRequest) (_r
 	headers := make(map[string]*string)
 	_result = &ModelTypeDetermineResponse{}
 	_body, _err := client.ModelTypeDetermineWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 音频-供机械臂调用
+//
+// @param request - OmniRealtimeConversationEURequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OmniRealtimeConversationEUResponse
+func (client *Client) OmniRealtimeConversationEUWithOptions(request *OmniRealtimeConversationEURequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OmniRealtimeConversationEUResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InputAudio) {
+		body["inputAudio"] = request.InputAudio
+	}
+
+	if !dara.IsNil(request.UserPrompt) {
+		body["userPrompt"] = request.UserPrompt
+	}
+
+	if !dara.IsNil(request.Voice) {
+		body["voice"] = request.Voice
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OmniRealtimeConversationEU"),
+		Version:     dara.String("2024-08-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/open/api/eu/active/interaction/audio"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OmniRealtimeConversationEUResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 音频-供机械臂调用
+//
+// @param request - OmniRealtimeConversationEURequest
+//
+// @return OmniRealtimeConversationEUResponse
+func (client *Client) OmniRealtimeConversationEU(request *OmniRealtimeConversationEURequest) (_result *OmniRealtimeConversationEUResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &OmniRealtimeConversationEUResponse{}
+	_body, _err := client.OmniRealtimeConversationEUWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
