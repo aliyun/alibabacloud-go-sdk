@@ -658,6 +658,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSink struct {
 	SinkKafkaParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters `json:"SinkKafkaParameters,omitempty" xml:"SinkKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if MNS is specified as the event target.
 	SinkMNSParameters                *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParameters                `json:"SinkMNSParameters,omitempty" xml:"SinkMNSParameters,omitempty" type:"Struct"`
+	SinkOSSParameters                *SinkOSSParameters                                                                      `json:"SinkOSSParameters,omitempty" xml:"SinkOSSParameters,omitempty"`
 	SinkOpenSourceRabbitMQParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters `json:"SinkOpenSourceRabbitMQParameters,omitempty" xml:"SinkOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if ApsaraMQ for RabbitMQ is specified as the event target.
 	SinkRabbitMQParameters           *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParameters           `json:"SinkRabbitMQParameters,omitempty" xml:"SinkRabbitMQParameters,omitempty" type:"Struct"`
@@ -726,6 +727,10 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkKafkaPar
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkMNSParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParameters {
 	return s.SinkMNSParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkOSSParameters() *SinkOSSParameters {
+	return s.SinkOSSParameters
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkOpenSourceRabbitMQParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters {
@@ -810,6 +815,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkKafkaPar
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkMNSParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
 	s.SinkMNSParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkOSSParameters(v *SinkOSSParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
+	s.SinkOSSParameters = v
 	return s
 }
 
@@ -901,6 +911,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) Validate() erro
 	}
 	if s.SinkMNSParameters != nil {
 		if err := s.SinkMNSParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkOSSParameters != nil {
+		if err := s.SinkOSSParameters.Validate(); err != nil {
 			return err
 		}
 	}
@@ -7569,6 +7584,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSource struct {
 	SourceMySQLParameters              *SourceMySQLParameters                                                                      `json:"SourceMySQLParameters,omitempty" xml:"SourceMySQLParameters,omitempty"`
 	SourceOSSParameters                *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOSSParameters                `json:"SourceOSSParameters,omitempty" xml:"SourceOSSParameters,omitempty" type:"Struct"`
 	SourceOpenSourceRabbitMQParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOpenSourceRabbitMQParameters `json:"SourceOpenSourceRabbitMQParameters,omitempty" xml:"SourceOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
+	SourcePostgreSQLParameters         *SourcePostgreSQLParameters                                                                 `json:"SourcePostgreSQLParameters,omitempty" xml:"SourcePostgreSQLParameters,omitempty"`
 	SourcePrometheusParameters         *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters         `json:"SourcePrometheusParameters,omitempty" xml:"SourcePrometheusParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if ApsaraMQ for RabbitMQ is specified as the event source.
 	SourceRabbitMQParameters           *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRabbitMQParameters           `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
@@ -7629,6 +7645,10 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) GetSourceOSSP
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) GetSourceOpenSourceRabbitMQParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOpenSourceRabbitMQParameters {
 	return s.SourceOpenSourceRabbitMQParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) GetSourcePostgreSQLParameters() *SourcePostgreSQLParameters {
+	return s.SourcePostgreSQLParameters
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) GetSourcePrometheusParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters {
@@ -7703,6 +7723,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceOSSP
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceOpenSourceRabbitMQParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOpenSourceRabbitMQParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
 	s.SourceOpenSourceRabbitMQParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourcePostgreSQLParameters(v *SourcePostgreSQLParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
+	s.SourcePostgreSQLParameters = v
 	return s
 }
 
@@ -7784,6 +7809,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) Validate() er
 	}
 	if s.SourceOpenSourceRabbitMQParameters != nil {
 		if err := s.SourceOpenSourceRabbitMQParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourcePostgreSQLParameters != nil {
+		if err := s.SourcePostgreSQLParameters.Validate(); err != nil {
 			return err
 		}
 	}

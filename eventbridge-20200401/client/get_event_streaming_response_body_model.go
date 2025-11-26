@@ -710,6 +710,7 @@ type GetEventStreamingResponseBodyDataSink struct {
 	SinkKafkaParameters *GetEventStreamingResponseBodyDataSinkSinkKafkaParameters `json:"SinkKafkaParameters,omitempty" xml:"SinkKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if the event target is Message Service (MNS).
 	SinkMNSParameters *GetEventStreamingResponseBodyDataSinkSinkMNSParameters `json:"SinkMNSParameters,omitempty" xml:"SinkMNSParameters,omitempty" type:"Struct"`
+	SinkOSSParameters *SinkOSSParameters                                      `json:"SinkOSSParameters,omitempty" xml:"SinkOSSParameters,omitempty"`
 	// Sink Open Source RabbitMQ Parameters
 	SinkOpenSourceRabbitMQParameters *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters `json:"SinkOpenSourceRabbitMQParameters,omitempty" xml:"SinkOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if the event target is Message Queue for RabbitMQ.
@@ -788,6 +789,10 @@ func (s *GetEventStreamingResponseBodyDataSink) GetSinkKafkaParameters() *GetEve
 
 func (s *GetEventStreamingResponseBodyDataSink) GetSinkMNSParameters() *GetEventStreamingResponseBodyDataSinkSinkMNSParameters {
 	return s.SinkMNSParameters
+}
+
+func (s *GetEventStreamingResponseBodyDataSink) GetSinkOSSParameters() *SinkOSSParameters {
+	return s.SinkOSSParameters
 }
 
 func (s *GetEventStreamingResponseBodyDataSink) GetSinkOpenSourceRabbitMQParameters() *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters {
@@ -882,6 +887,11 @@ func (s *GetEventStreamingResponseBodyDataSink) SetSinkKafkaParameters(v *GetEve
 
 func (s *GetEventStreamingResponseBodyDataSink) SetSinkMNSParameters(v *GetEventStreamingResponseBodyDataSinkSinkMNSParameters) *GetEventStreamingResponseBodyDataSink {
 	s.SinkMNSParameters = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSink) SetSinkOSSParameters(v *SinkOSSParameters) *GetEventStreamingResponseBodyDataSink {
+	s.SinkOSSParameters = v
 	return s
 }
 
@@ -983,6 +993,11 @@ func (s *GetEventStreamingResponseBodyDataSink) Validate() error {
 	}
 	if s.SinkMNSParameters != nil {
 		if err := s.SinkMNSParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkOSSParameters != nil {
+		if err := s.SinkOSSParameters.Validate(); err != nil {
 			return err
 		}
 	}
@@ -8263,6 +8278,7 @@ type GetEventStreamingResponseBodyDataSource struct {
 	SourceMySQLParameters              *SourceMySQLParameters                                                     `json:"SourceMySQLParameters,omitempty" xml:"SourceMySQLParameters,omitempty"`
 	SourceOSSParameters                *GetEventStreamingResponseBodyDataSourceSourceOSSParameters                `json:"SourceOSSParameters,omitempty" xml:"SourceOSSParameters,omitempty" type:"Struct"`
 	SourceOpenSourceRabbitMQParameters *GetEventStreamingResponseBodyDataSourceSourceOpenSourceRabbitMQParameters `json:"SourceOpenSourceRabbitMQParameters,omitempty" xml:"SourceOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
+	SourcePostgreSQLParameters         *SourcePostgreSQLParameters                                                `json:"SourcePostgreSQLParameters,omitempty" xml:"SourcePostgreSQLParameters,omitempty"`
 	SourcePrometheusParameters         *GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters         `json:"SourcePrometheusParameters,omitempty" xml:"SourcePrometheusParameters,omitempty" type:"Struct"`
 	// Source RabbitMQ Parameters
 	SourceRabbitMQParameters           *GetEventStreamingResponseBodyDataSourceSourceRabbitMQParameters           `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
@@ -8327,6 +8343,10 @@ func (s *GetEventStreamingResponseBodyDataSource) GetSourceOSSParameters() *GetE
 
 func (s *GetEventStreamingResponseBodyDataSource) GetSourceOpenSourceRabbitMQParameters() *GetEventStreamingResponseBodyDataSourceSourceOpenSourceRabbitMQParameters {
 	return s.SourceOpenSourceRabbitMQParameters
+}
+
+func (s *GetEventStreamingResponseBodyDataSource) GetSourcePostgreSQLParameters() *SourcePostgreSQLParameters {
+	return s.SourcePostgreSQLParameters
 }
 
 func (s *GetEventStreamingResponseBodyDataSource) GetSourcePrometheusParameters() *GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters {
@@ -8406,6 +8426,11 @@ func (s *GetEventStreamingResponseBodyDataSource) SetSourceOSSParameters(v *GetE
 
 func (s *GetEventStreamingResponseBodyDataSource) SetSourceOpenSourceRabbitMQParameters(v *GetEventStreamingResponseBodyDataSourceSourceOpenSourceRabbitMQParameters) *GetEventStreamingResponseBodyDataSource {
 	s.SourceOpenSourceRabbitMQParameters = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSource) SetSourcePostgreSQLParameters(v *SourcePostgreSQLParameters) *GetEventStreamingResponseBodyDataSource {
+	s.SourcePostgreSQLParameters = v
 	return s
 }
 
@@ -8492,6 +8517,11 @@ func (s *GetEventStreamingResponseBodyDataSource) Validate() error {
 	}
 	if s.SourceOpenSourceRabbitMQParameters != nil {
 		if err := s.SourceOpenSourceRabbitMQParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourcePostgreSQLParameters != nil {
+		if err := s.SourcePostgreSQLParameters.Validate(); err != nil {
 			return err
 		}
 	}

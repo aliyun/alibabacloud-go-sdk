@@ -581,6 +581,7 @@ type UpdateEventStreamingRequestSink struct {
 	SinkKafkaParameters *UpdateEventStreamingRequestSinkSinkKafkaParameters `json:"SinkKafkaParameters,omitempty" xml:"SinkKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Simple Message Queue (SMQ, formerly MNS) as the event target.
 	SinkMNSParameters *UpdateEventStreamingRequestSinkSinkMNSParameters `json:"SinkMNSParameters,omitempty" xml:"SinkMNSParameters,omitempty" type:"Struct"`
+	SinkOSSParameters *SinkOSSParameters                                `json:"SinkOSSParameters,omitempty" xml:"SinkOSSParameters,omitempty"`
 	// The parameters that are configured if you specify open source RabbitMQ as the event target.
 	SinkOpenSourceRabbitMQParameters *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters `json:"SinkOpenSourceRabbitMQParameters,omitempty" xml:"SinkOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Managed Service for Prometheus as the event target.
@@ -661,6 +662,10 @@ func (s *UpdateEventStreamingRequestSink) GetSinkKafkaParameters() *UpdateEventS
 
 func (s *UpdateEventStreamingRequestSink) GetSinkMNSParameters() *UpdateEventStreamingRequestSinkSinkMNSParameters {
 	return s.SinkMNSParameters
+}
+
+func (s *UpdateEventStreamingRequestSink) GetSinkOSSParameters() *SinkOSSParameters {
+	return s.SinkOSSParameters
 }
 
 func (s *UpdateEventStreamingRequestSink) GetSinkOpenSourceRabbitMQParameters() *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
@@ -759,6 +764,11 @@ func (s *UpdateEventStreamingRequestSink) SetSinkKafkaParameters(v *UpdateEventS
 
 func (s *UpdateEventStreamingRequestSink) SetSinkMNSParameters(v *UpdateEventStreamingRequestSinkSinkMNSParameters) *UpdateEventStreamingRequestSink {
 	s.SinkMNSParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSink) SetSinkOSSParameters(v *SinkOSSParameters) *UpdateEventStreamingRequestSink {
+	s.SinkOSSParameters = v
 	return s
 }
 
@@ -865,6 +875,11 @@ func (s *UpdateEventStreamingRequestSink) Validate() error {
 	}
 	if s.SinkMNSParameters != nil {
 		if err := s.SinkMNSParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkOSSParameters != nil {
+		if err := s.SinkOSSParameters.Validate(); err != nil {
 			return err
 		}
 	}
@@ -9390,6 +9405,7 @@ type UpdateEventStreamingRequestSource struct {
 	SourceMySQLParameters              *SourceMySQLParameters                                               `json:"SourceMySQLParameters,omitempty" xml:"SourceMySQLParameters,omitempty"`
 	SourceOSSParameters                *UpdateEventStreamingRequestSourceSourceOSSParameters                `json:"SourceOSSParameters,omitempty" xml:"SourceOSSParameters,omitempty" type:"Struct"`
 	SourceOpenSourceRabbitMQParameters *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters `json:"SourceOpenSourceRabbitMQParameters,omitempty" xml:"SourceOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
+	SourcePostgreSQLParameters         *SourcePostgreSQLParameters                                          `json:"SourcePostgreSQLParameters,omitempty" xml:"SourcePostgreSQLParameters,omitempty"`
 	// The parameters that are configured if you specify Managed Service for Prometheus as the event source.
 	SourcePrometheusParameters *UpdateEventStreamingRequestSourceSourcePrometheusParameters `json:"SourcePrometheusParameters,omitempty" xml:"SourcePrometheusParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify ApsaraMQ for RabbitMQ as the event source.
@@ -9455,6 +9471,10 @@ func (s *UpdateEventStreamingRequestSource) GetSourceOSSParameters() *UpdateEven
 
 func (s *UpdateEventStreamingRequestSource) GetSourceOpenSourceRabbitMQParameters() *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters {
 	return s.SourceOpenSourceRabbitMQParameters
+}
+
+func (s *UpdateEventStreamingRequestSource) GetSourcePostgreSQLParameters() *SourcePostgreSQLParameters {
+	return s.SourcePostgreSQLParameters
 }
 
 func (s *UpdateEventStreamingRequestSource) GetSourcePrometheusParameters() *UpdateEventStreamingRequestSourceSourcePrometheusParameters {
@@ -9534,6 +9554,11 @@ func (s *UpdateEventStreamingRequestSource) SetSourceOSSParameters(v *UpdateEven
 
 func (s *UpdateEventStreamingRequestSource) SetSourceOpenSourceRabbitMQParameters(v *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) *UpdateEventStreamingRequestSource {
 	s.SourceOpenSourceRabbitMQParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSource) SetSourcePostgreSQLParameters(v *SourcePostgreSQLParameters) *UpdateEventStreamingRequestSource {
+	s.SourcePostgreSQLParameters = v
 	return s
 }
 
@@ -9620,6 +9645,11 @@ func (s *UpdateEventStreamingRequestSource) Validate() error {
 	}
 	if s.SourceOpenSourceRabbitMQParameters != nil {
 		if err := s.SourceOpenSourceRabbitMQParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourcePostgreSQLParameters != nil {
+		if err := s.SourcePostgreSQLParameters.Validate(); err != nil {
 			return err
 		}
 	}
