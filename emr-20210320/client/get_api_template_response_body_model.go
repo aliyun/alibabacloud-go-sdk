@@ -55,5 +55,10 @@ func (s *GetApiTemplateResponseBody) SetRequestId(v string) *GetApiTemplateRespo
 }
 
 func (s *GetApiTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

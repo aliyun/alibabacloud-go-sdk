@@ -47,5 +47,15 @@ func (s *AdviseSummary) SetVcoreUtilizationRate(v *DoubleMetric) *AdviseSummary 
 }
 
 func (s *AdviseSummary) Validate() error {
-	return dara.Validate(s)
+	if s.MemoryUtilizationRate != nil {
+		if err := s.MemoryUtilizationRate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VcoreUtilizationRate != nil {
+		if err := s.VcoreUtilizationRate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

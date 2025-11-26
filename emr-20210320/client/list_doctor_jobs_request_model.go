@@ -231,7 +231,17 @@ func (s *ListDoctorJobsRequest) SetUsers(v []*string) *ListDoctorJobsRequest {
 }
 
 func (s *ListDoctorJobsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EndRange != nil {
+		if err := s.EndRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StartRange != nil {
+		if err := s.StartRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDoctorJobsRequestEndRange struct {

@@ -104,7 +104,16 @@ func (s *ListDoctorApplicationsResponseBody) SetTotalCount(v int32) *ListDoctorA
 }
 
 func (s *ListDoctorApplicationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDoctorApplicationsResponseBodyData struct {
@@ -276,7 +285,17 @@ func (s *ListDoctorApplicationsResponseBodyData) SetUser(v string) *ListDoctorAp
 }
 
 func (s *ListDoctorApplicationsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Analysis != nil {
+		if err := s.Analysis.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Metrics != nil {
+		if err := s.Metrics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDoctorApplicationsResponseBodyDataAnalysis struct {
@@ -376,7 +395,27 @@ func (s *ListDoctorApplicationsResponseBodyDataMetrics) SetVcoreUtilization(v *L
 }
 
 func (s *ListDoctorApplicationsResponseBodyDataMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.MemSeconds != nil {
+		if err := s.MemSeconds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MemUtilization != nil {
+		if err := s.MemUtilization.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VcoreSeconds != nil {
+		if err := s.VcoreSeconds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VcoreUtilization != nil {
+		if err := s.VcoreUtilization.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDoctorApplicationsResponseBodyDataMetricsMemSeconds struct {

@@ -35,5 +35,14 @@ func (s *ReplacementStrategy) SetInstanceCategories(v []*InstanceCategory) *Repl
 }
 
 func (s *ReplacementStrategy) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceCategories != nil {
+		for _, item := range s.InstanceCategories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *GetDoctorHBaseRegionResponseBody) SetRequestId(v string) *GetDoctorHBas
 }
 
 func (s *GetDoctorHBaseRegionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorHBaseRegionResponseBodyData struct {
@@ -109,7 +114,12 @@ func (s *GetDoctorHBaseRegionResponseBodyData) SetTableName(v string) *GetDoctor
 }
 
 func (s *GetDoctorHBaseRegionResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Metrics != nil {
+		if err := s.Metrics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorHBaseRegionResponseBodyDataMetrics struct {
@@ -179,7 +189,32 @@ func (s *GetDoctorHBaseRegionResponseBodyDataMetrics) SetTotalWriteRequest(v *Ge
 }
 
 func (s *GetDoctorHBaseRegionResponseBodyDataMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.DailyReadRequest != nil {
+		if err := s.DailyReadRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DailyWriteRequest != nil {
+		if err := s.DailyWriteRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StoreFileCount != nil {
+		if err := s.StoreFileCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalReadRequest != nil {
+		if err := s.TotalReadRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalWriteRequest != nil {
+		if err := s.TotalWriteRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorHBaseRegionResponseBodyDataMetricsDailyReadRequest struct {

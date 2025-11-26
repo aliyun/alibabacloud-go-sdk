@@ -104,7 +104,16 @@ func (s *ListScriptsResponseBody) SetTotalCount(v int32) *ListScriptsResponseBod
 }
 
 func (s *ListScriptsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Scripts != nil {
+		for _, item := range s.Scripts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListScriptsResponseBodyScripts struct {
@@ -324,5 +333,10 @@ func (s *ListScriptsResponseBodyScripts) SetStartTime(v int64) *ListScriptsRespo
 }
 
 func (s *ListScriptsResponseBodyScripts) Validate() error {
-	return dara.Validate(s)
+	if s.NodeSelector != nil {
+		if err := s.NodeSelector.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

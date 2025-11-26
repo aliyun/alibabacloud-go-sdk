@@ -53,5 +53,10 @@ func (s *GetClusterResponseBody) SetRequestId(v string) *GetClusterResponseBody 
 }
 
 func (s *GetClusterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Cluster != nil {
+		if err := s.Cluster.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

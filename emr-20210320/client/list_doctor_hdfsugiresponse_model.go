@@ -59,5 +59,10 @@ func (s *ListDoctorHDFSUGIResponse) SetBody(v *ListDoctorHDFSUGIResponseBody) *L
 }
 
 func (s *ListDoctorHDFSUGIResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

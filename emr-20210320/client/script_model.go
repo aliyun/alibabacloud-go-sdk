@@ -146,5 +146,10 @@ func (s *Script) SetScriptPath(v string) *Script {
 }
 
 func (s *Script) Validate() error {
-	return dara.Validate(s)
+	if s.NodeSelector != nil {
+		if err := s.NodeSelector.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

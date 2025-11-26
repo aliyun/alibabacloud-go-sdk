@@ -435,5 +435,43 @@ func (s *NodeGroup) SetZoneId(v string) *NodeGroup {
 }
 
 func (s *NodeGroup) Validate() error {
-	return dara.Validate(s)
+	if s.CostOptimizedConfig != nil {
+		if err := s.CostOptimizedConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataDisks != nil {
+		for _, item := range s.DataDisks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PrivatePoolOptions != nil {
+		if err := s.PrivatePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SpotBidPrices != nil {
+		for _, item := range s.SpotBidPrices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.StateChangeReason != nil {
+		if err := s.StateChangeReason.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SystemDisk != nil {
+		if err := s.SystemDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

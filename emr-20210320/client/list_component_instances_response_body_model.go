@@ -104,7 +104,16 @@ func (s *ListComponentInstancesResponseBody) SetTotalCount(v int32) *ListCompone
 }
 
 func (s *ListComponentInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ComponentInstances != nil {
+		for _, item := range s.ComponentInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListComponentInstancesResponseBodyComponentInstances struct {

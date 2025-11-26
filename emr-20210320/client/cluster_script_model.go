@@ -113,5 +113,10 @@ func (s *ClusterScript) SetScriptPath(v string) *ClusterScript {
 }
 
 func (s *ClusterScript) Validate() error {
-	return dara.Validate(s)
+	if s.NodeSelect != nil {
+		if err := s.NodeSelect.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

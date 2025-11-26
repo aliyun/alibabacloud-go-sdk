@@ -53,7 +53,12 @@ func (s *GetAutoScalingPolicyResponseBody) SetScalingPolicy(v *GetAutoScalingPol
 }
 
 func (s *GetAutoScalingPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ScalingPolicy != nil {
+		if err := s.ScalingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAutoScalingPolicyResponseBodyScalingPolicy struct {
@@ -135,7 +140,21 @@ func (s *GetAutoScalingPolicyResponseBodyScalingPolicy) SetScalingRules(v []*Get
 }
 
 func (s *GetAutoScalingPolicyResponseBodyScalingPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.Constraints != nil {
+		if err := s.Constraints.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScalingRules != nil {
+		for _, item := range s.ScalingRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAutoScalingPolicyResponseBodyScalingPolicyConstraints struct {
@@ -205,7 +224,8 @@ type GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules struct {
 	// example:
 	//
 	// 100
-	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
+	AdjustmentValue   *int32             `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
+	CollationTimeZone *CollationTimeZone `json:"CollationTimeZone,omitempty" xml:"CollationTimeZone,omitempty"`
 	// The description of load-based scaling.
 	MetricsTrigger *MetricsTrigger `json:"MetricsTrigger,omitempty" xml:"MetricsTrigger,omitempty"`
 	// The name of the auto scaling rule.
@@ -248,6 +268,10 @@ func (s *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules) GetAdjustmen
 	return s.AdjustmentValue
 }
 
+func (s *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules) GetCollationTimeZone() *CollationTimeZone {
+	return s.CollationTimeZone
+}
+
 func (s *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules) GetMetricsTrigger() *MetricsTrigger {
 	return s.MetricsTrigger
 }
@@ -279,6 +303,11 @@ func (s *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules) SetAdjustmen
 	return s
 }
 
+func (s *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules) SetCollationTimeZone(v *CollationTimeZone) *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules {
+	s.CollationTimeZone = v
+	return s
+}
+
 func (s *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules) SetMetricsTrigger(v *MetricsTrigger) *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules {
 	s.MetricsTrigger = v
 	return s
@@ -300,5 +329,20 @@ func (s *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules) SetTriggerTy
 }
 
 func (s *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules) Validate() error {
-	return dara.Validate(s)
+	if s.CollationTimeZone != nil {
+		if err := s.CollationTimeZone.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MetricsTrigger != nil {
+		if err := s.MetricsTrigger.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TimeTrigger != nil {
+		if err := s.TimeTrigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

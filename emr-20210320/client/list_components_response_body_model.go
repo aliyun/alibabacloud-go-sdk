@@ -104,7 +104,16 @@ func (s *ListComponentsResponseBody) SetTotalCount(v int32) *ListComponentsRespo
 }
 
 func (s *ListComponentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Components != nil {
+		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListComponentsResponseBodyComponents struct {
@@ -190,5 +199,14 @@ func (s *ListComponentsResponseBodyComponents) SetReplica(v int32) *ListComponen
 }
 
 func (s *ListComponentsResponseBodyComponents) Validate() error {
-	return dara.Validate(s)
+	if s.Attributes != nil {
+		for _, item := range s.Attributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -356,5 +356,29 @@ func (s *Cluster) SetTags(v []*Tag) *Cluster {
 }
 
 func (s *Cluster) Validate() error {
-	return dara.Validate(s)
+	if s.NodeAttributes != nil {
+		if err := s.NodeAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StateChangeReason != nil {
+		if err := s.StateChangeReason.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscriptionConfig != nil {
+		if err := s.SubscriptionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

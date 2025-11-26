@@ -53,7 +53,12 @@ func (s *GetDoctorHBaseRegionServerResponseBody) SetRequestId(v string) *GetDoct
 }
 
 func (s *GetDoctorHBaseRegionServerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorHBaseRegionServerResponseBodyData struct {
@@ -79,7 +84,12 @@ func (s *GetDoctorHBaseRegionServerResponseBodyData) SetMetrics(v *GetDoctorHBas
 }
 
 func (s *GetDoctorHBaseRegionServerResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Metrics != nil {
+		if err := s.Metrics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorHBaseRegionServerResponseBodyDataMetrics struct {
@@ -204,7 +214,57 @@ func (s *GetDoctorHBaseRegionServerResponseBodyDataMetrics) SetTotalWriteRequest
 }
 
 func (s *GetDoctorHBaseRegionServerResponseBodyDataMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.AvgGc != nil {
+		if err := s.AvgGc.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CacheRatio != nil {
+		if err := s.CacheRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DailyReadRequest != nil {
+		if err := s.DailyReadRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DailyReadRequestDayGrowthRatio != nil {
+		if err := s.DailyReadRequestDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DailyWriteRequest != nil {
+		if err := s.DailyWriteRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DailyWriteRequestDayGrowthRatio != nil {
+		if err := s.DailyWriteRequestDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RegionCount != nil {
+		if err := s.RegionCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalReadRequest != nil {
+		if err := s.TotalReadRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalRequest != nil {
+		if err := s.TotalRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalWriteRequest != nil {
+		if err := s.TotalWriteRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorHBaseRegionServerResponseBodyDataMetricsAvgGc struct {

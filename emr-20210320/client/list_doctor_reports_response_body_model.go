@@ -104,7 +104,16 @@ func (s *ListDoctorReportsResponseBody) SetTotalCount(v int32) *ListDoctorReport
 }
 
 func (s *ListDoctorReportsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDoctorReportsResponseBodyData struct {
@@ -210,7 +219,12 @@ func (s *ListDoctorReportsResponseBodyData) SetSummaryReport(v *ListDoctorReport
 }
 
 func (s *ListDoctorReportsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.SummaryReport != nil {
+		if err := s.SummaryReport.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDoctorReportsResponseBodyDataSummaryReport struct {

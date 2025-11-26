@@ -53,7 +53,12 @@ func (s *GetApplicationResponseBody) SetRequestId(v string) *GetApplicationRespo
 }
 
 func (s *GetApplicationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Application != nil {
+		if err := s.Application.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApplicationResponseBodyApplication struct {
@@ -139,7 +144,16 @@ func (s *GetApplicationResponseBodyApplication) SetCommunityVersion(v string) *G
 }
 
 func (s *GetApplicationResponseBodyApplication) Validate() error {
-	return dara.Validate(s)
+	if s.Actions != nil {
+		for _, item := range s.Actions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetApplicationResponseBodyApplicationActions struct {
@@ -246,7 +260,16 @@ func (s *GetApplicationResponseBodyApplicationActions) SetRunActionScope(v strin
 }
 
 func (s *GetApplicationResponseBodyApplicationActions) Validate() error {
-	return dara.Validate(s)
+	if s.ActionParams != nil {
+		for _, item := range s.ActionParams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetApplicationResponseBodyApplicationActionsActionParams struct {
@@ -302,7 +325,12 @@ func (s *GetApplicationResponseBodyApplicationActionsActionParams) SetValueAttri
 }
 
 func (s *GetApplicationResponseBodyApplicationActionsActionParams) Validate() error {
-	return dara.Validate(s)
+	if s.ValueAttribute != nil {
+		if err := s.ValueAttribute.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute struct {

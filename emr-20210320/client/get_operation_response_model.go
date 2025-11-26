@@ -59,5 +59,10 @@ func (s *GetOperationResponse) SetBody(v *GetOperationResponseBody) *GetOperatio
 }
 
 func (s *GetOperationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

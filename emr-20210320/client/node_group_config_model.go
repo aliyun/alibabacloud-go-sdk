@@ -414,5 +414,48 @@ func (s *NodeGroupConfig) SetWithPublicIp(v bool) *NodeGroupConfig {
 }
 
 func (s *NodeGroupConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AutoScalingPolicy != nil {
+		if err := s.AutoScalingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CostOptimizedConfig != nil {
+		if err := s.CostOptimizedConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataDisks != nil {
+		for _, item := range s.DataDisks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PrivatePoolOptions != nil {
+		if err := s.PrivatePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SpotBidPrices != nil {
+		for _, item := range s.SpotBidPrices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubscriptionConfig != nil {
+		if err := s.SubscriptionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SystemDisk != nil {
+		if err := s.SystemDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -74,5 +74,10 @@ func (s *CreateNodeGroupRequest) SetRegionId(v string) *CreateNodeGroupRequest {
 }
 
 func (s *CreateNodeGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NodeGroup != nil {
+		if err := s.NodeGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

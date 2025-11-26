@@ -85,5 +85,10 @@ func (s *DeploymentSetConstraints) SetValues(v []*string) *DeploymentSetConstrai
 }
 
 func (s *DeploymentSetConstraints) Validate() error {
-	return dara.Validate(s)
+	if s.ReplacementStrategy != nil {
+		if err := s.ReplacementStrategy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

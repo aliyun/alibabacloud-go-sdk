@@ -59,5 +59,10 @@ func (s *GetDoctorHBaseTableResponse) SetBody(v *GetDoctorHBaseTableResponseBody
 }
 
 func (s *GetDoctorHBaseTableResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

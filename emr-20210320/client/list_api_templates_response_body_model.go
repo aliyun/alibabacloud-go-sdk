@@ -106,5 +106,14 @@ func (s *ListApiTemplatesResponseBody) SetTotalCount(v int32) *ListApiTemplatesR
 }
 
 func (s *ListApiTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApiTemplates != nil {
+		for _, item := range s.ApiTemplates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

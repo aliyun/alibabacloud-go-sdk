@@ -311,5 +311,19 @@ func (s *CreateNodeGroupParam) SetZoneId(v string) *CreateNodeGroupParam {
 }
 
 func (s *CreateNodeGroupParam) Validate() error {
-	return dara.Validate(s)
+	if s.DataDisks != nil {
+		for _, item := range s.DataDisks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SystemDisk != nil {
+		if err := s.SystemDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

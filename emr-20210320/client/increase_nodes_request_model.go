@@ -225,5 +225,23 @@ func (s *IncreaseNodesRequest) SetRegionId(v string) *IncreaseNodesRequest {
 }
 
 func (s *IncreaseNodesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationConfigs != nil {
+		for _, item := range s.ApplicationConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Promotions != nil {
+		for _, item := range s.Promotions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

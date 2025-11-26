@@ -112,5 +112,14 @@ func (s *CreateScriptRequest) SetTimeoutSecs(v string) *CreateScriptRequest {
 }
 
 func (s *CreateScriptRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Scripts != nil {
+		for _, item := range s.Scripts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

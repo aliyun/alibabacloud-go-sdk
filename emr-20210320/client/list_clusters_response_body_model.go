@@ -104,5 +104,14 @@ func (s *ListClustersResponseBody) SetTotalCount(v int32) *ListClustersResponseB
 }
 
 func (s *ListClustersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Clusters != nil {
+		for _, item := range s.Clusters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

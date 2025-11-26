@@ -53,5 +53,10 @@ func (s *GetOperationResponseBody) SetRequestId(v string) *GetOperationResponseB
 }
 
 func (s *GetOperationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Operation != nil {
+		if err := s.Operation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

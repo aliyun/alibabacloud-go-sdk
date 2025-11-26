@@ -53,5 +53,10 @@ func (s *AckNode) SetNodeSelector(v *AckNodeSelector) *AckNode {
 }
 
 func (s *AckNode) Validate() error {
-	return dara.Validate(s)
+	if s.NodeSelector != nil {
+		if err := s.NodeSelector.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

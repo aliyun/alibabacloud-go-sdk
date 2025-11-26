@@ -104,7 +104,16 @@ func (s *ListDoctorJobsStatsResponseBody) SetTotalCount(v int32) *ListDoctorJobs
 }
 
 func (s *ListDoctorJobsStatsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDoctorJobsStatsResponseBodyData struct {
@@ -197,7 +206,22 @@ func (s *ListDoctorJobsStatsResponseBodyData) SetVcoreSeconds(v *ListDoctorJobsS
 }
 
 func (s *ListDoctorJobsStatsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AppsCount != nil {
+		if err := s.AppsCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MemSeconds != nil {
+		if err := s.MemSeconds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VcoreSeconds != nil {
+		if err := s.VcoreSeconds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDoctorJobsStatsResponseBodyDataAppsCount struct {

@@ -13,10 +13,16 @@ type iExportApplicationConfigsRequest interface {
   GetApplicationConfigFiles() []*ApplicationConfigFile 
   SetClusterId(v string) *ExportApplicationConfigsRequest
   GetClusterId() *string 
+  SetConfigScope(v string) *ExportApplicationConfigsRequest
+  GetConfigScope() *string 
   SetExportMode(v string) *ExportApplicationConfigsRequest
   GetExportMode() *string 
   SetFileFormat(v string) *ExportApplicationConfigsRequest
   GetFileFormat() *string 
+  SetNodeGroupIds(v []*string) *ExportApplicationConfigsRequest
+  GetNodeGroupIds() []*string 
+  SetNodeIds(v []*string) *ExportApplicationConfigsRequest
+  GetNodeIds() []*string 
   SetRegionId(v string) *ExportApplicationConfigsRequest
   GetRegionId() *string 
 }
@@ -32,6 +38,7 @@ type ExportApplicationConfigsRequest struct {
   // 
   // c-b933c5aac8fe****
   ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+  ConfigScope *string `json:"ConfigScope,omitempty" xml:"ConfigScope,omitempty"`
   // example:
   // 
   // MODIFICATION
@@ -42,6 +49,8 @@ type ExportApplicationConfigsRequest struct {
   // 
   // XML
   FileFormat *string `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
+  NodeGroupIds []*string `json:"NodeGroupIds,omitempty" xml:"NodeGroupIds,omitempty" type:"Repeated"`
+  NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
   // 区域ID。
   // 
   // This parameter is required.
@@ -68,12 +77,24 @@ func (s *ExportApplicationConfigsRequest) GetClusterId() *string  {
   return s.ClusterId
 }
 
+func (s *ExportApplicationConfigsRequest) GetConfigScope() *string  {
+  return s.ConfigScope
+}
+
 func (s *ExportApplicationConfigsRequest) GetExportMode() *string  {
   return s.ExportMode
 }
 
 func (s *ExportApplicationConfigsRequest) GetFileFormat() *string  {
   return s.FileFormat
+}
+
+func (s *ExportApplicationConfigsRequest) GetNodeGroupIds() []*string  {
+  return s.NodeGroupIds
+}
+
+func (s *ExportApplicationConfigsRequest) GetNodeIds() []*string  {
+  return s.NodeIds
 }
 
 func (s *ExportApplicationConfigsRequest) GetRegionId() *string  {
@@ -90,6 +111,11 @@ func (s *ExportApplicationConfigsRequest) SetClusterId(v string) *ExportApplicat
   return s
 }
 
+func (s *ExportApplicationConfigsRequest) SetConfigScope(v string) *ExportApplicationConfigsRequest {
+  s.ConfigScope = &v
+  return s
+}
+
 func (s *ExportApplicationConfigsRequest) SetExportMode(v string) *ExportApplicationConfigsRequest {
   s.ExportMode = &v
   return s
@@ -100,12 +126,31 @@ func (s *ExportApplicationConfigsRequest) SetFileFormat(v string) *ExportApplica
   return s
 }
 
+func (s *ExportApplicationConfigsRequest) SetNodeGroupIds(v []*string) *ExportApplicationConfigsRequest {
+  s.NodeGroupIds = v
+  return s
+}
+
+func (s *ExportApplicationConfigsRequest) SetNodeIds(v []*string) *ExportApplicationConfigsRequest {
+  s.NodeIds = v
+  return s
+}
+
 func (s *ExportApplicationConfigsRequest) SetRegionId(v string) *ExportApplicationConfigsRequest {
   s.RegionId = &v
   return s
 }
 
 func (s *ExportApplicationConfigsRequest) Validate() error {
-  return dara.Validate(s)
+  if s.ApplicationConfigFiles != nil {
+    for _, item := range s.ApplicationConfigFiles {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 

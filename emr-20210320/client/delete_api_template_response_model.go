@@ -59,5 +59,10 @@ func (s *DeleteApiTemplateResponse) SetBody(v *DeleteApiTemplateResponseBody) *D
 }
 
 func (s *DeleteApiTemplateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

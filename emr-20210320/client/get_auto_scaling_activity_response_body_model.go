@@ -53,7 +53,12 @@ func (s *GetAutoScalingActivityResponseBody) SetScalingActivity(v *GetAutoScalin
 }
 
 func (s *GetAutoScalingActivityResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ScalingActivity != nil {
+		if err := s.ScalingActivity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAutoScalingActivityResponseBodyScalingActivity struct {
@@ -297,5 +302,19 @@ func (s *GetAutoScalingActivityResponseBodyScalingActivity) SetStartTime(v int64
 }
 
 func (s *GetAutoScalingActivityResponseBodyScalingActivity) Validate() error {
-	return dara.Validate(s)
+	if s.ActivityResults != nil {
+		for _, item := range s.ActivityResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RuleDetail != nil {
+		if err := s.RuleDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

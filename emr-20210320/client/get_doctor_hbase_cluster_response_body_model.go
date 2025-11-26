@@ -53,7 +53,12 @@ func (s *GetDoctorHBaseClusterResponseBody) SetRequestId(v string) *GetDoctorHBa
 }
 
 func (s *GetDoctorHBaseClusterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorHBaseClusterResponseBodyData struct {
@@ -90,7 +95,17 @@ func (s *GetDoctorHBaseClusterResponseBodyData) SetMetrics(v *GetDoctorHBaseClus
 }
 
 func (s *GetDoctorHBaseClusterResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Analysis != nil {
+		if err := s.Analysis.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Metrics != nil {
+		if err := s.Metrics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorHBaseClusterResponseBodyDataAnalysis struct {
@@ -289,7 +304,77 @@ func (s *GetDoctorHBaseClusterResponseBodyDataMetrics) SetTotalWriteRequest(v *G
 }
 
 func (s *GetDoctorHBaseClusterResponseBodyDataMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.AvgLoad != nil {
+		if err := s.AvgLoad.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DailyReadRequest != nil {
+		if err := s.DailyReadRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DailyWriteRequest != nil {
+		if err := s.DailyWriteRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MemHeap != nil {
+		if err := s.MemHeap.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NormalAvgLoad != nil {
+		if err := s.NormalAvgLoad.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RegionBalance != nil {
+		if err := s.RegionBalance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RegionCount != nil {
+		if err := s.RegionCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RegionServerCount != nil {
+		if err := s.RegionServerCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StoreFileCount != nil {
+		if err := s.StoreFileCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TableCount != nil {
+		if err := s.TableCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalDataSize != nil {
+		if err := s.TotalDataSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalReadRequest != nil {
+		if err := s.TotalReadRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalRequest != nil {
+		if err := s.TotalRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalWriteRequest != nil {
+		if err := s.TotalWriteRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorHBaseClusterResponseBodyDataMetricsAvgLoad struct {

@@ -172,5 +172,10 @@ func (s *Operation) SetStateChangeReason(v *OperationStateChangeReason) *Operati
 }
 
 func (s *Operation) Validate() error {
-	return dara.Validate(s)
+	if s.StateChangeReason != nil {
+		if err := s.StateChangeReason.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

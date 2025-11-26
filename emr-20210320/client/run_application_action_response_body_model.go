@@ -70,7 +70,16 @@ func (s *RunApplicationActionResponseBody) SetRequestId(v string) *RunApplicatio
 }
 
 func (s *RunApplicationActionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AbnInstances != nil {
+		for _, item := range s.AbnInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunApplicationActionResponseBodyAbnInstances struct {

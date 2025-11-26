@@ -93,7 +93,12 @@ func (s *GetDoctorComputeSummaryRequest) SetRegionId(v string) *GetDoctorCompute
 }
 
 func (s *GetDoctorComputeSummaryRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ComponentInfo != nil {
+		if err := s.ComponentInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorComputeSummaryRequestComponentInfo struct {

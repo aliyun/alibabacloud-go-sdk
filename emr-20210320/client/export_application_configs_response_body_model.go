@@ -52,7 +52,16 @@ func (s *ExportApplicationConfigsResponseBody) SetRequestId(v string) *ExportApp
 }
 
 func (s *ExportApplicationConfigsResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.ApplicationConfigs != nil {
+    for _, item := range s.ApplicationConfigs {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExportApplicationConfigsResponseBodyApplicationConfigs struct {

@@ -118,5 +118,10 @@ func (s *UpdateScriptRequest) SetScriptType(v string) *UpdateScriptRequest {
 }
 
 func (s *UpdateScriptRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Script != nil {
+		if err := s.Script.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

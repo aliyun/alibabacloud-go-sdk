@@ -53,7 +53,12 @@ func (s *GetClusterCloneMetaResponseBody) SetRequestId(v string) *GetClusterClon
 }
 
 func (s *GetClusterCloneMetaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterCloneMeta != nil {
+		if err := s.ClusterCloneMeta.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetClusterCloneMetaResponseBodyClusterCloneMeta struct {
@@ -114,7 +119,8 @@ type GetClusterCloneMetaResponseBodyClusterCloneMeta struct {
 	// example:
 	//
 	// DATALAKE
-	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	ClusterType       *string            `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	CollationTimeZone *CollationTimeZone `json:"CollationTimeZone,omitempty" xml:"CollationTimeZone,omitempty"`
 	// Indicates whether release protection is enabled for the cluster. Valid values:
 	//
 	// 	- true: Release protection is enabled for the cluster.
@@ -239,6 +245,10 @@ func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) GetClusterType() *stri
 	return s.ClusterType
 }
 
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) GetCollationTimeZone() *CollationTimeZone {
+	return s.CollationTimeZone
+}
+
 func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) GetDeletionProtection() *bool {
 	return s.DeletionProtection
 }
@@ -330,6 +340,11 @@ func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetClusterType(v strin
 	return s
 }
 
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetCollationTimeZone(v *CollationTimeZone) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.CollationTimeZone = v
+	return s
+}
+
 func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetDeletionProtection(v bool) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
 	s.DeletionProtection = &v
 	return s
@@ -401,7 +416,76 @@ func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetTags(v []*Tag) *Get
 }
 
 func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationConfigs != nil {
+		for _, item := range s.ApplicationConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Applications != nil {
+		for _, item := range s.Applications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BootstrapScripts != nil {
+		for _, item := range s.BootstrapScripts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CollationTimeZone != nil {
+		if err := s.CollationTimeZone.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeAttributes != nil {
+		if err := s.NodeAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeGroups != nil {
+		for _, item := range s.NodeGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ScalingPolicies != nil {
+		for _, item := range s.ScalingPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubscriptionConfig != nil {
+		if err := s.SubscriptionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies struct {
@@ -509,7 +593,21 @@ func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies) SetScal
 }
 
 func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.Constraints != nil {
+		if err := s.Constraints.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScalingRules != nil {
+		for _, item := range s.ScalingRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints struct {
@@ -674,5 +772,15 @@ func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRu
 }
 
 func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules) Validate() error {
-	return dara.Validate(s)
+	if s.MetricsTrigger != nil {
+		if err := s.MetricsTrigger.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TimeTrigger != nil {
+		if err := s.TimeTrigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

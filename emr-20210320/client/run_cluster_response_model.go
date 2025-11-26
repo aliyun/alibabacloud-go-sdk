@@ -59,5 +59,10 @@ func (s *RunClusterResponse) SetBody(v *RunClusterResponseBody) *RunClusterRespo
 }
 
 func (s *RunClusterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -260,7 +260,67 @@ func (s *DRPlanConfiguration) SetTags(v []*DRPlanConfigurationTags) *DRPlanConfi
 }
 
 func (s *DRPlanConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationConfigs != nil {
+		for _, item := range s.ApplicationConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Applications != nil {
+		for _, item := range s.Applications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BootstrapScripts != nil {
+		for _, item := range s.BootstrapScripts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ManagedScalingPolicy != nil {
+		if err := s.ManagedScalingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeAttributes != nil {
+		if err := s.NodeAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeGroups != nil {
+		for _, item := range s.NodeGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubscriptionConfig != nil {
+		if err := s.SubscriptionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DRPlanConfigurationManagedScalingPolicy struct {
@@ -285,7 +345,12 @@ func (s *DRPlanConfigurationManagedScalingPolicy) SetConstraints(v *ManagedScali
 }
 
 func (s *DRPlanConfigurationManagedScalingPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.Constraints != nil {
+		if err := s.Constraints.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DRPlanConfigurationTags struct {

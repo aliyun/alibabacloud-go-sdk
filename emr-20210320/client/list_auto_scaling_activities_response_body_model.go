@@ -104,7 +104,16 @@ func (s *ListAutoScalingActivitiesResponseBody) SetTotalCount(v int32) *ListAuto
 }
 
 func (s *ListAutoScalingActivitiesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ScalingActivities != nil {
+		for _, item := range s.ScalingActivities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAutoScalingActivitiesResponseBodyScalingActivities struct {
@@ -344,7 +353,16 @@ func (s *ListAutoScalingActivitiesResponseBodyScalingActivities) SetStartTime(v 
 }
 
 func (s *ListAutoScalingActivitiesResponseBodyScalingActivities) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceTypeDetails != nil {
+		for _, item := range s.InstanceTypeDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails struct {

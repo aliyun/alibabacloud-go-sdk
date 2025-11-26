@@ -357,5 +357,60 @@ func (s *CreateClusterRequest) SetTags(v []*Tag) *CreateClusterRequest {
 }
 
 func (s *CreateClusterRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationConfigs != nil {
+		for _, item := range s.ApplicationConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Applications != nil {
+		for _, item := range s.Applications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BootstrapScripts != nil {
+		for _, item := range s.BootstrapScripts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NodeAttributes != nil {
+		if err := s.NodeAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeGroups != nil {
+		for _, item := range s.NodeGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubscriptionConfig != nil {
+		if err := s.SubscriptionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

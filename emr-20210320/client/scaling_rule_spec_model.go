@@ -144,7 +144,17 @@ func (s *ScalingRuleSpec) SetScalingRuleType(v string) *ScalingRuleSpec {
 }
 
 func (s *ScalingRuleSpec) Validate() error {
-	return dara.Validate(s)
+	if s.ByLoadScalingRuleSpec != nil {
+		if err := s.ByLoadScalingRuleSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ByTimeScalingRuleSpec != nil {
+		if err := s.ByTimeScalingRuleSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ScalingRuleSpecByLoadScalingRuleSpec struct {

@@ -53,5 +53,10 @@ func (s *GetNodeGroupResponseBody) SetRequestId(v string) *GetNodeGroupResponseB
 }
 
 func (s *GetNodeGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NodeGroup != nil {
+		if err := s.NodeGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

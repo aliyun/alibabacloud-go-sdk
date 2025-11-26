@@ -74,5 +74,10 @@ func (s *PutManagedScalingPolicyRequest) SetRegionId(v string) *PutManagedScalin
 }
 
 func (s *PutManagedScalingPolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Constraints != nil {
+		if err := s.Constraints.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

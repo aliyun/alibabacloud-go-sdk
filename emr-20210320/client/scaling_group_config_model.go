@@ -245,7 +245,31 @@ func (s *ScalingGroupConfig) SetTriggerMode(v string) *ScalingGroupConfig {
 }
 
 func (s *ScalingGroupConfig) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceTypeList != nil {
+		for _, item := range s.InstanceTypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MultiAvailablePolicy != nil {
+		if err := s.MultiAvailablePolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeOfflinePolicy != nil {
+		if err := s.NodeOfflinePolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivatePoolOptions != nil {
+		if err := s.PrivatePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ScalingGroupConfigInstanceTypeList struct {
@@ -331,7 +355,12 @@ func (s *ScalingGroupConfigMultiAvailablePolicy) SetPolicyType(v string) *Scalin
 }
 
 func (s *ScalingGroupConfigMultiAvailablePolicy) Validate() error {
-	return dara.Validate(s)
+	if s.PolicyParam != nil {
+		if err := s.PolicyParam.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ScalingGroupConfigMultiAvailablePolicyPolicyParam struct {

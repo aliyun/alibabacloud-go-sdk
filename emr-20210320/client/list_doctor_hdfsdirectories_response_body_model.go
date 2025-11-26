@@ -103,7 +103,16 @@ func (s *ListDoctorHDFSDirectoriesResponseBody) SetTotalCount(v int32) *ListDoct
 }
 
 func (s *ListDoctorHDFSDirectoriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyData struct {
@@ -180,7 +189,12 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyData) SetUser(v string) *ListDocto
 }
 
 func (s *ListDoctorHDFSDirectoriesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Metrics != nil {
+		if err := s.Metrics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetrics struct {
@@ -525,7 +539,172 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetrics) SetWarmDataSizeDayGro
 }
 
 func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.ColdDataDayGrowthSize != nil {
+		if err := s.ColdDataDayGrowthSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ColdDataSize != nil {
+		if err := s.ColdDataSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ColdDataSizeDayGrowthRatio != nil {
+		if err := s.ColdDataSizeDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EmptyFileCount != nil {
+		if err := s.EmptyFileCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EmptyFileCountDayGrowthRatio != nil {
+		if err := s.EmptyFileCountDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EmptyFileDayGrowthCount != nil {
+		if err := s.EmptyFileDayGrowthCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FreezeDataDayGrowthSize != nil {
+		if err := s.FreezeDataDayGrowthSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FreezeDataSize != nil {
+		if err := s.FreezeDataSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FreezeDataSizeDayGrowthRatio != nil {
+		if err := s.FreezeDataSizeDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HotDataDayGrowthSize != nil {
+		if err := s.HotDataDayGrowthSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HotDataSize != nil {
+		if err := s.HotDataSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HotDataSizeDayGrowthRatio != nil {
+		if err := s.HotDataSizeDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LargeFileCount != nil {
+		if err := s.LargeFileCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LargeFileCountDayGrowthRatio != nil {
+		if err := s.LargeFileCountDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LargeFileDayGrowthCount != nil {
+		if err := s.LargeFileDayGrowthCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MediumFileCount != nil {
+		if err := s.MediumFileCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MediumFileCountDayGrowthRatio != nil {
+		if err := s.MediumFileCountDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MediumFileDayGrowthCount != nil {
+		if err := s.MediumFileDayGrowthCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SmallFileCount != nil {
+		if err := s.SmallFileCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SmallFileCountDayGrowthRatio != nil {
+		if err := s.SmallFileCountDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SmallFileDayGrowthCount != nil {
+		if err := s.SmallFileDayGrowthCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TinyFileCount != nil {
+		if err := s.TinyFileCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TinyFileCountDayGrowthRatio != nil {
+		if err := s.TinyFileCountDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TinyFileDayGrowthCount != nil {
+		if err := s.TinyFileDayGrowthCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalDataDayGrowthSize != nil {
+		if err := s.TotalDataDayGrowthSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalDataSize != nil {
+		if err := s.TotalDataSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalDataSizeDayGrowthRatio != nil {
+		if err := s.TotalDataSizeDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalFileCount != nil {
+		if err := s.TotalFileCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalFileCountDayGrowthRatio != nil {
+		if err := s.TotalFileCountDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalFileDayGrowthCount != nil {
+		if err := s.TotalFileDayGrowthCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WarmDataDayGrowthSize != nil {
+		if err := s.WarmDataDayGrowthSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WarmDataSize != nil {
+		if err := s.WarmDataSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WarmDataSizeDayGrowthRatio != nil {
+		if err := s.WarmDataSizeDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsColdDataDayGrowthSize struct {

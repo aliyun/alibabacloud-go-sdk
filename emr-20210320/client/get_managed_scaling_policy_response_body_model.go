@@ -52,7 +52,12 @@ func (s *GetManagedScalingPolicyResponseBody) SetScalingPolicy(v *GetManagedScal
 }
 
 func (s *GetManagedScalingPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ScalingPolicy != nil {
+		if err := s.ScalingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetManagedScalingPolicyResponseBodyScalingPolicy struct {
@@ -108,7 +113,12 @@ func (s *GetManagedScalingPolicyResponseBodyScalingPolicy) SetScalingPolicyId(v 
 }
 
 func (s *GetManagedScalingPolicyResponseBodyScalingPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.Constraints != nil {
+		if err := s.Constraints.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetManagedScalingPolicyResponseBodyScalingPolicyConstraints struct {

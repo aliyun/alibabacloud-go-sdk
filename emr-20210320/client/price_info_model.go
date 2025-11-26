@@ -167,5 +167,14 @@ func (s *PriceInfo) SetTradePrice(v string) *PriceInfo {
 }
 
 func (s *PriceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.PromotionResults != nil {
+		for _, item := range s.PromotionResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

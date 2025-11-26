@@ -167,5 +167,15 @@ func (s *RecommendScalingRule) SetTriggerType(v string) *RecommendScalingRule {
 }
 
 func (s *RecommendScalingRule) Validate() error {
-	return dara.Validate(s)
+	if s.MetricsTrigger != nil {
+		if err := s.MetricsTrigger.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TimeTrigger != nil {
+		if err := s.TimeTrigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

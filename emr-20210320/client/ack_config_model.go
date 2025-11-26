@@ -271,7 +271,70 @@ func (s *AckConfig) SetVolumes(v []*AckConfigVolumes) *AckConfig {
 }
 
 func (s *AckConfig) Validate() error {
-	return dara.Validate(s)
+	if s.CustomAnnotations != nil {
+		for _, item := range s.CustomAnnotations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CustomLabels != nil {
+		for _, item := range s.CustomLabels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NodeSelectors != nil {
+		for _, item := range s.NodeSelectors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Pvcs != nil {
+		for _, item := range s.Pvcs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tolerations != nil {
+		for _, item := range s.Tolerations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VolumeMounts != nil {
+		for _, item := range s.VolumeMounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Volumes != nil {
+		for _, item := range s.Volumes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AckConfigPvcs struct {

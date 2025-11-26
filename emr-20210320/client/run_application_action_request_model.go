@@ -196,5 +196,10 @@ func (s *RunApplicationActionRequest) SetRollingExecute(v bool) *RunApplicationA
 }
 
 func (s *RunApplicationActionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ComponentInstanceSelector != nil {
+		if err := s.ComponentInstanceSelector.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

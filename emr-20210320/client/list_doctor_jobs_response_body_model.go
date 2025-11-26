@@ -104,7 +104,16 @@ func (s *ListDoctorJobsResponseBody) SetTotalCount(v int32) *ListDoctorJobsRespo
 }
 
 func (s *ListDoctorJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDoctorJobsResponseBodyData struct {
@@ -311,7 +320,12 @@ func (s *ListDoctorJobsResponseBodyData) SetUser(v string) *ListDoctorJobsRespon
 }
 
 func (s *ListDoctorJobsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Metrics != nil {
+		if err := s.Metrics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDoctorJobsResponseBodyDataMetrics struct {
@@ -348,7 +362,17 @@ func (s *ListDoctorJobsResponseBodyDataMetrics) SetVcoreSeconds(v *ListDoctorJob
 }
 
 func (s *ListDoctorJobsResponseBodyDataMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.MemSeconds != nil {
+		if err := s.MemSeconds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VcoreSeconds != nil {
+		if err := s.VcoreSeconds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDoctorJobsResponseBodyDataMetricsMemSeconds struct {

@@ -66,5 +66,15 @@ func (s *DiskConstraints) SetSizeConstraint(v *ValueConstraints) *DiskConstraint
 }
 
 func (s *DiskConstraints) Validate() error {
-	return dara.Validate(s)
+	if s.CountConstraint != nil {
+		if err := s.CountConstraint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SizeConstraint != nil {
+		if err := s.SizeConstraint.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

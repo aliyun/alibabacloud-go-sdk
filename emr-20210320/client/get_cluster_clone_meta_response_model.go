@@ -59,5 +59,10 @@ func (s *GetClusterCloneMetaResponse) SetBody(v *GetClusterCloneMetaResponseBody
 }
 
 func (s *GetClusterCloneMetaResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -138,7 +138,12 @@ func (s *ScalingRuleV1) SetScalingConfigBizId(v string) *ScalingRuleV1 {
 }
 
 func (s *ScalingRuleV1) Validate() error {
-	return dara.Validate(s)
+	if s.RuleParam != nil {
+		if err := s.RuleParam.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ScalingRuleV1RuleParam struct {

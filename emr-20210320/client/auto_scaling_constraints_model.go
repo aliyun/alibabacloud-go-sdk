@@ -147,7 +147,34 @@ func (s *AutoScalingConstraints) SetSupportRuleTypes(v []*string) *AutoScalingCo
 }
 
 func (s *AutoScalingConstraints) Validate() error {
-	return dara.Validate(s)
+	if s.AutoScalingMetricUnits != nil {
+		for _, item := range s.AutoScalingMetricUnits {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DefaultMetricTriggeredRules != nil {
+		for _, item := range s.DefaultMetricTriggeredRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SupportMetricTags != nil {
+		for _, item := range s.SupportMetricTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AutoScalingConstraintsSupportMetricTags struct {
@@ -184,5 +211,14 @@ func (s *AutoScalingConstraintsSupportMetricTags) SetTags(v []*Tag) *AutoScaling
 }
 
 func (s *AutoScalingConstraintsSupportMetricTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

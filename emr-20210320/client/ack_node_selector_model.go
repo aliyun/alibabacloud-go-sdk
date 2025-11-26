@@ -49,7 +49,25 @@ func (s *AckNodeSelector) SetTaints(v []*AckNodeSelectorTaints) *AckNodeSelector
 }
 
 func (s *AckNodeSelector) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Taints != nil {
+		for _, item := range s.Taints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AckNodeSelectorLabels struct {

@@ -70,7 +70,12 @@ func (s *ComponentLayout) SetNodeSelector(v *ComponentLayoutNodeSelector) *Compo
 }
 
 func (s *ComponentLayout) Validate() error {
-	return dara.Validate(s)
+	if s.NodeSelector != nil {
+		if err := s.NodeSelector.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ComponentLayoutNodeSelector struct {

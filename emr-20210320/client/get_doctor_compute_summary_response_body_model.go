@@ -53,7 +53,12 @@ func (s *GetDoctorComputeSummaryResponseBody) SetRequestId(v string) *GetDoctorC
 }
 
 func (s *GetDoctorComputeSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorComputeSummaryResponseBodyData struct {
@@ -90,7 +95,17 @@ func (s *GetDoctorComputeSummaryResponseBodyData) SetMetrics(v *GetDoctorCompute
 }
 
 func (s *GetDoctorComputeSummaryResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Analysis != nil {
+		if err := s.Analysis.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Metrics != nil {
+		if err := s.Metrics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorComputeSummaryResponseBodyDataAnalysis struct {
@@ -298,7 +313,47 @@ func (s *GetDoctorComputeSummaryResponseBodyDataMetrics) SetWriteSize(v *GetDoct
 }
 
 func (s *GetDoctorComputeSummaryResponseBodyDataMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.MemSeconds != nil {
+		if err := s.MemSeconds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MemSecondsDayGrowthRatio != nil {
+		if err := s.MemSecondsDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MemUtilization != nil {
+		if err := s.MemUtilization.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReadSize != nil {
+		if err := s.ReadSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VcoreSeconds != nil {
+		if err := s.VcoreSeconds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VcoreSecondsDayGrowthRatio != nil {
+		if err := s.VcoreSecondsDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VcoreUtilization != nil {
+		if err := s.VcoreUtilization.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WriteSize != nil {
+		if err := s.WriteSize.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorComputeSummaryResponseBodyDataMetricsMemSeconds struct {

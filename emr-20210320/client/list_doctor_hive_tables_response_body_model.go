@@ -104,7 +104,16 @@ func (s *ListDoctorHiveTablesResponseBody) SetTotalCount(v int32) *ListDoctorHiv
 }
 
 func (s *ListDoctorHiveTablesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDoctorHiveTablesResponseBodyData struct {
@@ -182,7 +191,26 @@ func (s *ListDoctorHiveTablesResponseBodyData) SetTableName(v string) *ListDocto
 }
 
 func (s *ListDoctorHiveTablesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Analysis != nil {
+		if err := s.Analysis.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Formats != nil {
+		for _, item := range s.Formats {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Metrics != nil {
+		if err := s.Metrics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDoctorHiveTablesResponseBodyDataAnalysis struct {
@@ -850,7 +878,222 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetrics) SetWarmDataSizeDayGrowthRa
 }
 
 func (s *ListDoctorHiveTablesResponseBodyDataMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.ColdDataDayGrowthSize != nil {
+		if err := s.ColdDataDayGrowthSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ColdDataRatio != nil {
+		if err := s.ColdDataRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ColdDataSize != nil {
+		if err := s.ColdDataSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ColdDataSizeDayGrowthRatio != nil {
+		if err := s.ColdDataSizeDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EmptyFileCount != nil {
+		if err := s.EmptyFileCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EmptyFileCountDayGrowthRatio != nil {
+		if err := s.EmptyFileCountDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EmptyFileDayGrowthCount != nil {
+		if err := s.EmptyFileDayGrowthCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EmptyFileRatio != nil {
+		if err := s.EmptyFileRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FreezeDataDayGrowthSize != nil {
+		if err := s.FreezeDataDayGrowthSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FreezeDataRatio != nil {
+		if err := s.FreezeDataRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FreezeDataSize != nil {
+		if err := s.FreezeDataSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FreezeDataSizeDayGrowthRatio != nil {
+		if err := s.FreezeDataSizeDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HotDataDayGrowthSize != nil {
+		if err := s.HotDataDayGrowthSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HotDataRatio != nil {
+		if err := s.HotDataRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HotDataSize != nil {
+		if err := s.HotDataSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HotDataSizeDayGrowthRatio != nil {
+		if err := s.HotDataSizeDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LargeFileCount != nil {
+		if err := s.LargeFileCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LargeFileCountDayGrowthRatio != nil {
+		if err := s.LargeFileCountDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LargeFileDayGrowthCount != nil {
+		if err := s.LargeFileDayGrowthCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LargeFileRatio != nil {
+		if err := s.LargeFileRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MediumFileCount != nil {
+		if err := s.MediumFileCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MediumFileCountDayGrowthRatio != nil {
+		if err := s.MediumFileCountDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MediumFileDayGrowthCount != nil {
+		if err := s.MediumFileDayGrowthCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MediumFileRatio != nil {
+		if err := s.MediumFileRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PartitionNum != nil {
+		if err := s.PartitionNum.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SmallFileCount != nil {
+		if err := s.SmallFileCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SmallFileCountDayGrowthRatio != nil {
+		if err := s.SmallFileCountDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SmallFileDayGrowthCount != nil {
+		if err := s.SmallFileDayGrowthCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SmallFileRatio != nil {
+		if err := s.SmallFileRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TinyFileCount != nil {
+		if err := s.TinyFileCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TinyFileCountDayGrowthRatio != nil {
+		if err := s.TinyFileCountDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TinyFileDayGrowthCount != nil {
+		if err := s.TinyFileDayGrowthCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TinyFileRatio != nil {
+		if err := s.TinyFileRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalDataDayGrowthSize != nil {
+		if err := s.TotalDataDayGrowthSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalDataSize != nil {
+		if err := s.TotalDataSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalDataSizeDayGrowthRatio != nil {
+		if err := s.TotalDataSizeDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalFileCount != nil {
+		if err := s.TotalFileCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalFileCountDayGrowthRatio != nil {
+		if err := s.TotalFileCountDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalFileDayGrowthCount != nil {
+		if err := s.TotalFileDayGrowthCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WarmDataDayGrowthSize != nil {
+		if err := s.WarmDataDayGrowthSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WarmDataRatio != nil {
+		if err := s.WarmDataRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WarmDataSize != nil {
+		if err := s.WarmDataSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WarmDataSizeDayGrowthRatio != nil {
+		if err := s.WarmDataSizeDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsColdDataDayGrowthSize struct {

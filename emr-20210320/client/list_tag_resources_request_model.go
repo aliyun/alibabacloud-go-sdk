@@ -46,8 +46,6 @@ type ListTagResourcesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The list of resource IDs. Number of array elements N Valid values: 1 to 1
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
@@ -131,5 +129,14 @@ func (s *ListTagResourcesRequest) SetTags(v []*Tag) *ListTagResourcesRequest {
 }
 
 func (s *ListTagResourcesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

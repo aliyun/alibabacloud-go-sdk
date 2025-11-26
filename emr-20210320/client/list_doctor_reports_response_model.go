@@ -59,5 +59,10 @@ func (s *ListDoctorReportsResponse) SetBody(v *ListDoctorReportsResponseBody) *L
 }
 
 func (s *ListDoctorReportsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

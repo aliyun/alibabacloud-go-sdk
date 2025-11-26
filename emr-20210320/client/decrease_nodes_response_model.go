@@ -59,5 +59,10 @@ func (s *DecreaseNodesResponse) SetBody(v *DecreaseNodesResponseBody) *DecreaseN
 }
 
 func (s *DecreaseNodesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

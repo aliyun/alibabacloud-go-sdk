@@ -45,6 +45,8 @@ type iDRPlanConfigurationDetail interface {
 	GetResourceGroupId() *string
 	SetScalingPolicies(v []*ScalingPolicy) *DRPlanConfigurationDetail
 	GetScalingPolicies() []*ScalingPolicy
+	SetScalingTimeZone(v string) *DRPlanConfigurationDetail
+	GetScalingTimeZone() *string
 	SetSecurityMode(v string) *DRPlanConfigurationDetail
 	GetSecurityMode() *string
 	SetSubscriptionConfig(v *SubscriptionConfig) *DRPlanConfigurationDetail
@@ -80,6 +82,7 @@ type DRPlanConfigurationDetail struct {
 	ReleaseVersion  *string          `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
 	ResourceGroupId *string          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ScalingPolicies []*ScalingPolicy `json:"ScalingPolicies,omitempty" xml:"ScalingPolicies,omitempty" type:"Repeated"`
+	ScalingTimeZone *string          `json:"ScalingTimeZone,omitempty" xml:"ScalingTimeZone,omitempty"`
 	// This parameter is required.
 	SecurityMode       *string             `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
 	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
@@ -164,6 +167,10 @@ func (s *DRPlanConfigurationDetail) GetResourceGroupId() *string {
 
 func (s *DRPlanConfigurationDetail) GetScalingPolicies() []*ScalingPolicy {
 	return s.ScalingPolicies
+}
+
+func (s *DRPlanConfigurationDetail) GetScalingTimeZone() *string {
+	return s.ScalingTimeZone
 }
 
 func (s *DRPlanConfigurationDetail) GetSecurityMode() *string {
@@ -268,6 +275,11 @@ func (s *DRPlanConfigurationDetail) SetScalingPolicies(v []*ScalingPolicy) *DRPl
 	return s
 }
 
+func (s *DRPlanConfigurationDetail) SetScalingTimeZone(v string) *DRPlanConfigurationDetail {
+	s.ScalingTimeZone = &v
+	return s
+}
+
 func (s *DRPlanConfigurationDetail) SetSecurityMode(v string) *DRPlanConfigurationDetail {
 	s.SecurityMode = &v
 	return s
@@ -284,7 +296,76 @@ func (s *DRPlanConfigurationDetail) SetTags(v []*Tag) *DRPlanConfigurationDetail
 }
 
 func (s *DRPlanConfigurationDetail) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationConfigs != nil {
+		for _, item := range s.ApplicationConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Applications != nil {
+		for _, item := range s.Applications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BootstrapScripts != nil {
+		for _, item := range s.BootstrapScripts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ManagedScalingPolicy != nil {
+		if err := s.ManagedScalingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeAttributes != nil {
+		if err := s.NodeAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeGroups != nil {
+		for _, item := range s.NodeGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ScalingPolicies != nil {
+		for _, item := range s.ScalingPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubscriptionConfig != nil {
+		if err := s.SubscriptionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DRPlanConfigurationDetailManagedScalingPolicy struct {
@@ -309,5 +390,10 @@ func (s *DRPlanConfigurationDetailManagedScalingPolicy) SetConstraints(v *Manage
 }
 
 func (s *DRPlanConfigurationDetailManagedScalingPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.Constraints != nil {
+		if err := s.Constraints.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

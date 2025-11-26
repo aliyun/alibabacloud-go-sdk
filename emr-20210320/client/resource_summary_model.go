@@ -71,5 +71,25 @@ func (s *ResourceSummary) SetVcoreUtilizationRate(v *DoubleMetric) *ResourceSumm
 }
 
 func (s *ResourceSummary) Validate() error {
-	return dara.Validate(s)
+	if s.InefficientTaskRate != nil {
+		if err := s.InefficientTaskRate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MemoryUtilizationRate != nil {
+		if err := s.MemoryUtilizationRate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OriginalTotalVcore != nil {
+		if err := s.OriginalTotalVcore.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VcoreUtilizationRate != nil {
+		if err := s.VcoreUtilizationRate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

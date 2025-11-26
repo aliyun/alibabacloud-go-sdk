@@ -125,5 +125,23 @@ func (s *MetricsTrigger) SetTimeWindow(v int32) *MetricsTrigger {
 }
 
 func (s *MetricsTrigger) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TimeConstraints != nil {
+		for _, item := range s.TimeConstraints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -135,5 +135,14 @@ func (s *CostNodeGroupConfig) SetPaymentType(v string) *CostNodeGroupConfig {
 }
 
 func (s *CostNodeGroupConfig) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceTypes != nil {
+		for _, item := range s.InstanceTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

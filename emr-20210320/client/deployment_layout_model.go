@@ -59,5 +59,10 @@ func (s *DeploymentLayout) SetNodeSelector(v *NodeSelector) *DeploymentLayout {
 }
 
 func (s *DeploymentLayout) Validate() error {
-	return dara.Validate(s)
+	if s.NodeSelector != nil {
+		if err := s.NodeSelector.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

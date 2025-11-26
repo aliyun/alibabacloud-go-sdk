@@ -59,5 +59,10 @@ func (s *GetDoctorHDFSDirectoryResponse) SetBody(v *GetDoctorHDFSDirectoryRespon
 }
 
 func (s *GetDoctorHDFSDirectoryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -106,7 +106,25 @@ func (s *ComponentInstanceSelector) SetRunActionScope(v string) *ComponentInstan
 }
 
 func (s *ComponentInstanceSelector) Validate() error {
-	return dara.Validate(s)
+	if s.ComponentInstances != nil {
+		for _, item := range s.ComponentInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Components != nil {
+		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ComponentInstanceSelectorComponentInstances struct {

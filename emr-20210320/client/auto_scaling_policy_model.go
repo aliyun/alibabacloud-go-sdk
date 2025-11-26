@@ -47,7 +47,21 @@ func (s *AutoScalingPolicy) SetScalingRules(v []*ScalingRule) *AutoScalingPolicy
 }
 
 func (s *AutoScalingPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.Constraints != nil {
+		if err := s.Constraints.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScalingRules != nil {
+		for _, item := range s.ScalingRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AutoScalingPolicyConstraints struct {

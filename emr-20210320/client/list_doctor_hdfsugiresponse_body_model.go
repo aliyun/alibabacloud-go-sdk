@@ -104,7 +104,16 @@ func (s *ListDoctorHDFSUGIResponseBody) SetTotalCount(v int32) *ListDoctorHDFSUG
 }
 
 func (s *ListDoctorHDFSUGIResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDoctorHDFSUGIResponseBodyData struct {
@@ -145,7 +154,12 @@ func (s *ListDoctorHDFSUGIResponseBodyData) SetName(v string) *ListDoctorHDFSUGI
 }
 
 func (s *ListDoctorHDFSUGIResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Metrics != nil {
+		if err := s.Metrics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDoctorHDFSUGIResponseBodyDataMetrics struct {
@@ -193,7 +207,22 @@ func (s *ListDoctorHDFSUGIResponseBodyDataMetrics) SetTotalFileCount(v *ListDoct
 }
 
 func (s *ListDoctorHDFSUGIResponseBodyDataMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.TotalDataSize != nil {
+		if err := s.TotalDataSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalDirCount != nil {
+		if err := s.TotalDirCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalFileCount != nil {
+		if err := s.TotalFileCount.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize struct {

@@ -53,7 +53,12 @@ func (s *GetDoctorJobResponseBody) SetRequestId(v string) *GetDoctorJobResponseB
 }
 
 func (s *GetDoctorJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorJobResponseBodyData struct {
@@ -260,7 +265,12 @@ func (s *GetDoctorJobResponseBodyData) SetUser(v string) *GetDoctorJobResponseBo
 }
 
 func (s *GetDoctorJobResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Metrics != nil {
+		if err := s.Metrics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorJobResponseBodyDataMetrics struct {
@@ -297,7 +307,17 @@ func (s *GetDoctorJobResponseBodyDataMetrics) SetVcoreSeconds(v *GetDoctorJobRes
 }
 
 func (s *GetDoctorJobResponseBodyDataMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.MemSeconds != nil {
+		if err := s.MemSeconds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VcoreSeconds != nil {
+		if err := s.VcoreSeconds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorJobResponseBodyDataMetricsMemSeconds struct {

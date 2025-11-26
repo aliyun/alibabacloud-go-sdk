@@ -53,7 +53,12 @@ func (s *GetDoctorHBaseTableResponseBody) SetRequestId(v string) *GetDoctorHBase
 }
 
 func (s *GetDoctorHBaseTableResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorHBaseTableResponseBodyData struct {
@@ -90,7 +95,17 @@ func (s *GetDoctorHBaseTableResponseBodyData) SetMetrics(v *GetDoctorHBaseTableR
 }
 
 func (s *GetDoctorHBaseTableResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Analysis != nil {
+		if err := s.Analysis.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Metrics != nil {
+		if err := s.Metrics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorHBaseTableResponseBodyDataAnalysis struct {
@@ -477,7 +492,127 @@ func (s *GetDoctorHBaseTableResponseBodyDataMetrics) SetWriteRequestBalance(v *G
 }
 
 func (s *GetDoctorHBaseTableResponseBodyDataMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.ColdAccessDay != nil {
+		if err := s.ColdAccessDay.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ColdConfigDay != nil {
+		if err := s.ColdConfigDay.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ColdDataSize != nil {
+		if err := s.ColdDataSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DailyReadRequest != nil {
+		if err := s.DailyReadRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DailyReadRequestDayGrowthRatio != nil {
+		if err := s.DailyReadRequestDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DailyWriteRequest != nil {
+		if err := s.DailyWriteRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DailyWriteRequestDayGrowthRatio != nil {
+		if err := s.DailyWriteRequestDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FreezeConfigDay != nil {
+		if err := s.FreezeConfigDay.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FreezeDataSize != nil {
+		if err := s.FreezeDataSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HotDataSize != nil {
+		if err := s.HotDataSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Locality != nil {
+		if err := s.Locality.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReadRequestBalance != nil {
+		if err := s.ReadRequestBalance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RegionBalance != nil {
+		if err := s.RegionBalance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RegionCount != nil {
+		if err := s.RegionCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RegionCountDayGrowthRatio != nil {
+		if err := s.RegionCountDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RegionServerCount != nil {
+		if err := s.RegionServerCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RequestBalance != nil {
+		if err := s.RequestBalance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StoreFileCount != nil {
+		if err := s.StoreFileCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StoreFileCountDayGrowthRatio != nil {
+		if err := s.StoreFileCountDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TableSize != nil {
+		if err := s.TableSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TableSizeDayGrowthRatio != nil {
+		if err := s.TableSizeDayGrowthRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WarmConfigDay != nil {
+		if err := s.WarmConfigDay.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WarmDataSize != nil {
+		if err := s.WarmDataSize.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WriteRequestBalance != nil {
+		if err := s.WriteRequestBalance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDoctorHBaseTableResponseBodyDataMetricsColdAccessDay struct {
