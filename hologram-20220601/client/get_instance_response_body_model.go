@@ -306,6 +306,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	// true
 	EnableHiveAccess *string `json:"EnableHiveAccess,omitempty" xml:"EnableHiveAccess,omitempty"`
+	EnableSSL        *bool   `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
 	// EnableServerless
 	//
 	// example:
@@ -620,6 +621,10 @@ func (s *GetInstanceResponseBodyInstance) GetEnableHiveAccess() *string {
 	return s.EnableHiveAccess
 }
 
+func (s *GetInstanceResponseBodyInstance) GetEnableSSL() *bool {
+	return s.EnableSSL
+}
+
 func (s *GetInstanceResponseBodyInstance) GetEnableServerless() *bool {
 	return s.EnableServerless
 }
@@ -745,6 +750,11 @@ func (s *GetInstanceResponseBodyInstance) SetDisk(v string) *GetInstanceResponse
 
 func (s *GetInstanceResponseBodyInstance) SetEnableHiveAccess(v string) *GetInstanceResponseBodyInstance {
 	s.EnableHiveAccess = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstance) SetEnableSSL(v bool) *GetInstanceResponseBodyInstance {
+	s.EnableSSL = &v
 	return s
 }
 

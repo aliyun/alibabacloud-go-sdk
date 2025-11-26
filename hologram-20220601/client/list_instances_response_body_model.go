@@ -170,6 +170,7 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// true
 	EnableHiveAccess *string `json:"EnableHiveAccess,omitempty" xml:"EnableHiveAccess,omitempty"`
+	EnableSSL        *string `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
 	// The list of endpoints.
 	Endpoints []*ListInstancesResponseBodyInstanceListEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	// The time when the cluster expires.
@@ -359,6 +360,10 @@ func (s *ListInstancesResponseBodyInstanceList) GetEnableHiveAccess() *string {
 	return s.EnableHiveAccess
 }
 
+func (s *ListInstancesResponseBodyInstanceList) GetEnableSSL() *string {
+	return s.EnableSSL
+}
+
 func (s *ListInstancesResponseBodyInstanceList) GetEndpoints() []*ListInstancesResponseBodyInstanceListEndpoints {
 	return s.Endpoints
 }
@@ -431,6 +436,11 @@ func (s *ListInstancesResponseBodyInstanceList) SetCreationTime(v string) *ListI
 
 func (s *ListInstancesResponseBodyInstanceList) SetEnableHiveAccess(v string) *ListInstancesResponseBodyInstanceList {
 	s.EnableHiveAccess = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstanceList) SetEnableSSL(v string) *ListInstancesResponseBodyInstanceList {
+	s.EnableSSL = &v
 	return s
 }
 
