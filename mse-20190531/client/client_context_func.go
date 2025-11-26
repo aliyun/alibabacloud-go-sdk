@@ -12277,6 +12277,78 @@ func (client *Client) QueryMonitorWithContext(ctx context.Context, request *Quer
 
 // Summary:
 //
+// 查询nacos灰度配置
+//
+// @param request - QueryNacosGrayConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryNacosGrayConfigResponse
+func (client *Client) QueryNacosGrayConfigWithContext(ctx context.Context, request *QueryNacosGrayConfigRequest, runtime *dara.RuntimeOptions) (_result *QueryNacosGrayConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !dara.IsNil(request.DataId) {
+		query["DataId"] = request.DataId
+	}
+
+	if !dara.IsNil(request.GrayName) {
+		query["GrayName"] = request.GrayName
+	}
+
+	if !dara.IsNil(request.Group) {
+		query["Group"] = request.Group
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NamespaceId) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RequestPars) {
+		query["RequestPars"] = request.RequestPars
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryNacosGrayConfig"),
+		Version:     dara.String("2019-05-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryNacosGrayConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询MSE命名空间
 //
 // @param request - QueryNamespaceRequest
