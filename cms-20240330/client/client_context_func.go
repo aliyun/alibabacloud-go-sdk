@@ -209,6 +209,39 @@ func (client *Client) CreateAggTaskGroupWithContext(ctx context.Context, instanc
 
 // Summary:
 //
+// 创建云资源中心
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCloudResourceResponse
+func (client *Client) CreateCloudResourceWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateCloudResourceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCloudResource"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/cloudresource"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCloudResourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create storage related to EntityStore
 //
 // @param headers - map
@@ -803,6 +836,39 @@ func (client *Client) DeleteAggTaskGroupWithContext(ctx context.Context, instanc
 
 // Summary:
 //
+// 删除云资源中心
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudResourceResponse
+func (client *Client) DeleteCloudResourceWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteCloudResourceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCloudResource"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/cloudresource"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCloudResourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete EntityStore related storage
 //
 // @param headers - map
@@ -1166,6 +1232,53 @@ func (client *Client) DeleteWorkspaceWithContext(ctx context.Context, workspaceN
 
 // Summary:
 //
+// 查询地域信息列表
+//
+// @param request - DescribeRegionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Language) {
+		query["language"] = request.Language
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRegions"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/regions"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Check addon release (view connection status)
 //
 // @param headers - map
@@ -1222,6 +1335,145 @@ func (client *Client) GetAggTaskGroupWithContext(ctx context.Context, instanceId
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAggTaskGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云资源中心
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCloudResourceResponse
+func (client *Client) GetCloudResourceWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCloudResourceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCloudResource"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/cloudresource"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCloudResourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云资源中心数据
+//
+// @param request - GetCloudResourceDataRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCloudResourceDataResponse
+func (client *Client) GetCloudResourceDataWithContext(ctx context.Context, request *GetCloudResourceDataRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCloudResourceDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.From) {
+		query["from"] = request.From
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["query"] = request.Query
+	}
+
+	if !dara.IsNil(request.To) {
+		query["to"] = request.To
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCloudResourceData"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/cloudresource/data"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCloudResourceDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取云监控开通状态
+//
+// @param request - GetCmsServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCmsServiceResponse
+func (client *Client) GetCmsServiceWithContext(ctx context.Context, request *GetCmsServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCmsServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Product) {
+		query["product"] = request.Product
+	}
+
+	if !dara.IsNil(request.Service) {
+		query["service"] = request.Service
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCmsService"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/cmsservice"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCmsServiceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1407,6 +1659,53 @@ func (client *Client) GetPrometheusInstanceWithContext(ctx context.Context, prom
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPrometheusInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定环境实例
+//
+// @param request - GetPrometheusUserSettingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPrometheusUserSettingResponse
+func (client *Client) GetPrometheusUserSettingWithContext(ctx context.Context, request *GetPrometheusUserSettingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPrometheusUserSettingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AliyunLang) {
+		query["aliyunLang"] = request.AliyunLang
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPrometheusUserSetting"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-user-setting"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPrometheusUserSettingResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2175,6 +2474,61 @@ func (client *Client) ListIntegrationPolicyPodMonitorsWithContext(ctx context.Co
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIntegrationPolicyPodMonitorsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取接入中心策略的存储要求信息
+//
+// @param request - ListIntegrationPolicyServiceMonitorsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIntegrationPolicyServiceMonitorsResponse
+func (client *Client) ListIntegrationPolicyServiceMonitorsWithContext(ctx context.Context, policyId *string, request *ListIntegrationPolicyServiceMonitorsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIntegrationPolicyServiceMonitorsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddonReleaseName) {
+		query["addonReleaseName"] = request.AddonReleaseName
+	}
+
+	if !dara.IsNil(request.EncryptYaml) {
+		query["encryptYaml"] = request.EncryptYaml
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["namespace"] = request.Namespace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIntegrationPolicyServiceMonitors"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-policies/" + dara.PercentEncode(dara.StringValue(policyId)) + "/service-monitors"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIntegrationPolicyServiceMonitorsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2985,7 +3339,7 @@ func (client *Client) UpdateIntegrationPolicyWithContext(ctx context.Context, in
 
 // Summary:
 //
-// 更新订阅
+// 更新通知策略
 //
 // @param request - UpdateNotifyStrategyRequest
 //
@@ -3114,6 +3468,53 @@ func (client *Client) UpdatePrometheusInstanceWithContext(ctx context.Context, p
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePrometheusInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Prom实例信息
+//
+// @param request - UpdatePrometheusUserSettingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePrometheusUserSettingResponse
+func (client *Client) UpdatePrometheusUserSettingWithContext(ctx context.Context, settingKey *string, request *UpdatePrometheusUserSettingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusUserSettingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SettingValue) {
+		query["settingValue"] = request.SettingValue
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePrometheusUserSetting"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-user-setting/" + dara.PercentEncode(dara.StringValue(settingKey))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePrometheusUserSettingResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

@@ -25,6 +25,8 @@ type iSubscriptionForView interface {
 	GetSubscriptionId() *string
 	SetSubscriptionName(v string) *SubscriptionForView
 	GetSubscriptionName() *string
+	SetSyncFromType(v string) *SubscriptionForView
+	GetSyncFromType() *string
 	SetUpdateTime(v string) *SubscriptionForView
 	GetUpdateTime() *string
 	SetUserId(v string) *SubscriptionForView
@@ -43,6 +45,7 @@ type SubscriptionForView struct {
 	SubscriptionId   *string                            `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
 	// This parameter is required.
 	SubscriptionName *string `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
+	SyncFromType     *string `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
 	UpdateTime       *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 	UserId           *string `json:"userId,omitempty" xml:"userId,omitempty"`
 	Workspace        *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
@@ -86,6 +89,10 @@ func (s *SubscriptionForView) GetSubscriptionId() *string {
 
 func (s *SubscriptionForView) GetSubscriptionName() *string {
 	return s.SubscriptionName
+}
+
+func (s *SubscriptionForView) GetSyncFromType() *string {
+	return s.SyncFromType
 }
 
 func (s *SubscriptionForView) GetUpdateTime() *string {
@@ -137,6 +144,11 @@ func (s *SubscriptionForView) SetSubscriptionId(v string) *SubscriptionForView {
 
 func (s *SubscriptionForView) SetSubscriptionName(v string) *SubscriptionForView {
 	s.SubscriptionName = &v
+	return s
+}
+
+func (s *SubscriptionForView) SetSyncFromType(v string) *SubscriptionForView {
+	s.SyncFromType = &v
 	return s
 }
 

@@ -300,6 +300,56 @@ func (client *Client) CreateAggTaskGroup(instanceId *string, request *CreateAggT
 
 // Summary:
 //
+// 创建云资源中心
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCloudResourceResponse
+func (client *Client) CreateCloudResourceWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateCloudResourceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCloudResource"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/cloudresource"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCloudResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建云资源中心
+//
+// @return CreateCloudResourceResponse
+func (client *Client) CreateCloudResource() (_result *CreateCloudResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateCloudResourceResponse{}
+	_body, _err := client.CreateCloudResourceWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create storage related to EntityStore
 //
 // @param headers - map
@@ -1096,6 +1146,56 @@ func (client *Client) DeleteAggTaskGroup(instanceId *string, groupId *string) (_
 
 // Summary:
 //
+// 删除云资源中心
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudResourceResponse
+func (client *Client) DeleteCloudResourceWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteCloudResourceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCloudResource"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/cloudresource"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCloudResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除云资源中心
+//
+// @return DeleteCloudResourceResponse
+func (client *Client) DeleteCloudResource() (_result *DeleteCloudResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteCloudResourceResponse{}
+	_body, _err := client.DeleteCloudResourceWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete EntityStore related storage
 //
 // @param headers - map
@@ -1634,6 +1734,72 @@ func (client *Client) DeleteWorkspace(workspaceName *string) (_result *DeleteWor
 
 // Summary:
 //
+// 查询地域信息列表
+//
+// @param request - DescribeRegionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Language) {
+		query["language"] = request.Language
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRegions"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/regions"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询地域信息列表
+//
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.DescribeRegionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Check addon release (view connection status)
 //
 // @param headers - map
@@ -1725,6 +1891,200 @@ func (client *Client) GetAggTaskGroup(instanceId *string, groupId *string) (_res
 	headers := make(map[string]*string)
 	_result = &GetAggTaskGroupResponse{}
 	_body, _err := client.GetAggTaskGroupWithOptions(instanceId, groupId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云资源中心
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCloudResourceResponse
+func (client *Client) GetCloudResourceWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCloudResourceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCloudResource"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/cloudresource"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCloudResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云资源中心
+//
+// @return GetCloudResourceResponse
+func (client *Client) GetCloudResource() (_result *GetCloudResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCloudResourceResponse{}
+	_body, _err := client.GetCloudResourceWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云资源中心数据
+//
+// @param request - GetCloudResourceDataRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCloudResourceDataResponse
+func (client *Client) GetCloudResourceDataWithOptions(request *GetCloudResourceDataRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCloudResourceDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.From) {
+		query["from"] = request.From
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["query"] = request.Query
+	}
+
+	if !dara.IsNil(request.To) {
+		query["to"] = request.To
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCloudResourceData"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/cloudresource/data"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCloudResourceDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云资源中心数据
+//
+// @param request - GetCloudResourceDataRequest
+//
+// @return GetCloudResourceDataResponse
+func (client *Client) GetCloudResourceData(request *GetCloudResourceDataRequest) (_result *GetCloudResourceDataResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCloudResourceDataResponse{}
+	_body, _err := client.GetCloudResourceDataWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取云监控开通状态
+//
+// @param request - GetCmsServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCmsServiceResponse
+func (client *Client) GetCmsServiceWithOptions(request *GetCmsServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCmsServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Product) {
+		query["product"] = request.Product
+	}
+
+	if !dara.IsNil(request.Service) {
+		query["service"] = request.Service
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCmsService"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/cmsservice"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCmsServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取云监控开通状态
+//
+// @param request - GetCmsServiceRequest
+//
+// @return GetCmsServiceResponse
+func (client *Client) GetCmsService(request *GetCmsServiceRequest) (_result *GetCmsServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCmsServiceResponse{}
+	_body, _err := client.GetCmsServiceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1986,6 +2346,72 @@ func (client *Client) GetPrometheusInstance(prometheusInstanceId *string, reques
 	headers := make(map[string]*string)
 	_result = &GetPrometheusInstanceResponse{}
 	_body, _err := client.GetPrometheusInstanceWithOptions(prometheusInstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定环境实例
+//
+// @param request - GetPrometheusUserSettingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPrometheusUserSettingResponse
+func (client *Client) GetPrometheusUserSettingWithOptions(request *GetPrometheusUserSettingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPrometheusUserSettingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AliyunLang) {
+		query["aliyunLang"] = request.AliyunLang
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPrometheusUserSetting"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-user-setting"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPrometheusUserSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定环境实例
+//
+// @param request - GetPrometheusUserSettingRequest
+//
+// @return GetPrometheusUserSettingResponse
+func (client *Client) GetPrometheusUserSetting(request *GetPrometheusUserSettingRequest) (_result *GetPrometheusUserSettingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPrometheusUserSettingResponse{}
+	_body, _err := client.GetPrometheusUserSettingWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3047,6 +3473,80 @@ func (client *Client) ListIntegrationPolicyPodMonitors(policyId *string, request
 
 // Summary:
 //
+// 获取接入中心策略的存储要求信息
+//
+// @param request - ListIntegrationPolicyServiceMonitorsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIntegrationPolicyServiceMonitorsResponse
+func (client *Client) ListIntegrationPolicyServiceMonitorsWithOptions(policyId *string, request *ListIntegrationPolicyServiceMonitorsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIntegrationPolicyServiceMonitorsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddonReleaseName) {
+		query["addonReleaseName"] = request.AddonReleaseName
+	}
+
+	if !dara.IsNil(request.EncryptYaml) {
+		query["encryptYaml"] = request.EncryptYaml
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["namespace"] = request.Namespace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIntegrationPolicyServiceMonitors"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-policies/" + dara.PercentEncode(dara.StringValue(policyId)) + "/service-monitors"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIntegrationPolicyServiceMonitorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取接入中心策略的存储要求信息
+//
+// @param request - ListIntegrationPolicyServiceMonitorsRequest
+//
+// @return ListIntegrationPolicyServiceMonitorsResponse
+func (client *Client) ListIntegrationPolicyServiceMonitors(policyId *string, request *ListIntegrationPolicyServiceMonitorsRequest) (_result *ListIntegrationPolicyServiceMonitorsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListIntegrationPolicyServiceMonitorsResponse{}
+	_body, _err := client.ListIntegrationPolicyServiceMonitorsWithOptions(policyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get Storage Requirements Information for Access Center Policy
 //
 // Description:
@@ -4097,7 +4597,7 @@ func (client *Client) UpdateIntegrationPolicy(integrationPolicyId *string, reque
 
 // Summary:
 //
-// 更新订阅
+// 更新通知策略
 //
 // @param request - UpdateNotifyStrategyRequest
 //
@@ -4145,7 +4645,7 @@ func (client *Client) UpdateNotifyStrategyWithOptions(notifyStrategyId *string, 
 
 // Summary:
 //
-// 更新订阅
+// 更新通知策略
 //
 // @param request - UpdateNotifyStrategyRequest
 //
@@ -4269,6 +4769,72 @@ func (client *Client) UpdatePrometheusInstance(prometheusInstanceId *string, req
 	headers := make(map[string]*string)
 	_result = &UpdatePrometheusInstanceResponse{}
 	_body, _err := client.UpdatePrometheusInstanceWithOptions(prometheusInstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Prom实例信息
+//
+// @param request - UpdatePrometheusUserSettingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePrometheusUserSettingResponse
+func (client *Client) UpdatePrometheusUserSettingWithOptions(settingKey *string, request *UpdatePrometheusUserSettingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusUserSettingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SettingValue) {
+		query["settingValue"] = request.SettingValue
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePrometheusUserSetting"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-user-setting/" + dara.PercentEncode(dara.StringValue(settingKey))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePrometheusUserSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Prom实例信息
+//
+// @param request - UpdatePrometheusUserSettingRequest
+//
+// @return UpdatePrometheusUserSettingResponse
+func (client *Client) UpdatePrometheusUserSetting(settingKey *string, request *UpdatePrometheusUserSettingRequest) (_result *UpdatePrometheusUserSettingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdatePrometheusUserSettingResponse{}
+	_body, _err := client.UpdatePrometheusUserSettingWithOptions(settingKey, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

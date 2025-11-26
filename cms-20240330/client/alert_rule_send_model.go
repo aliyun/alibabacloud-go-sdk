@@ -13,14 +13,17 @@ type iAlertRuleSend interface {
 	GetAction() *AlertRuleAction
 	SetNotification(v *AlertRuleNotification) *AlertRuleSend
 	GetNotification() *AlertRuleNotification
+	SetNotifyStrategies(v []*string) *AlertRuleSend
+	GetNotifyStrategies() []*string
 	SetSendToArms(v bool) *AlertRuleSend
 	GetSendToArms() *bool
 }
 
 type AlertRuleSend struct {
-	Action       *AlertRuleAction       `json:"action,omitempty" xml:"action,omitempty"`
-	Notification *AlertRuleNotification `json:"notification,omitempty" xml:"notification,omitempty"`
-	SendToArms   *bool                  `json:"sendToArms,omitempty" xml:"sendToArms,omitempty"`
+	Action           *AlertRuleAction       `json:"action,omitempty" xml:"action,omitempty"`
+	Notification     *AlertRuleNotification `json:"notification,omitempty" xml:"notification,omitempty"`
+	NotifyStrategies []*string              `json:"notifyStrategies,omitempty" xml:"notifyStrategies,omitempty" type:"Repeated"`
+	SendToArms       *bool                  `json:"sendToArms,omitempty" xml:"sendToArms,omitempty"`
 }
 
 func (s AlertRuleSend) String() string {
@@ -39,6 +42,10 @@ func (s *AlertRuleSend) GetNotification() *AlertRuleNotification {
 	return s.Notification
 }
 
+func (s *AlertRuleSend) GetNotifyStrategies() []*string {
+	return s.NotifyStrategies
+}
+
 func (s *AlertRuleSend) GetSendToArms() *bool {
 	return s.SendToArms
 }
@@ -50,6 +57,11 @@ func (s *AlertRuleSend) SetAction(v *AlertRuleAction) *AlertRuleSend {
 
 func (s *AlertRuleSend) SetNotification(v *AlertRuleNotification) *AlertRuleSend {
 	s.Notification = v
+	return s
+}
+
+func (s *AlertRuleSend) SetNotifyStrategies(v []*string) *AlertRuleSend {
+	s.NotifyStrategies = v
 	return s
 }
 

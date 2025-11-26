@@ -9,6 +9,8 @@ type iNotifyStrategyForView interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoRecoverSeconds(v int32) *NotifyStrategyForView
+	GetAutoRecoverSeconds() *int32
 	SetCreateTime(v string) *NotifyStrategyForView
 	GetCreateTime() *string
 	SetCustomTemplateEntries(v []*NotifyStrategyForViewCustomTemplateEntries) *NotifyStrategyForView
@@ -17,40 +19,62 @@ type iNotifyStrategyForView interface {
 	GetDescription() *string
 	SetEnable(v bool) *NotifyStrategyForView
 	GetEnable() *bool
+	SetFilterSetting(v *FilterSetting) *NotifyStrategyForView
+	GetFilterSetting() *FilterSetting
 	SetGroupingSetting(v *NotifyStrategyForViewGroupingSetting) *NotifyStrategyForView
 	GetGroupingSetting() *NotifyStrategyForViewGroupingSetting
 	SetIgnoreRestoredNotification(v bool) *NotifyStrategyForView
 	GetIgnoreRestoredNotification() *bool
+	SetIncidentEscalationPolicies(v []interface{}) *NotifyStrategyForView
+	GetIncidentEscalationPolicies() []interface{}
 	SetNotifyStrategyId(v string) *NotifyStrategyForView
 	GetNotifyStrategyId() *string
 	SetNotifyStrategyName(v string) *NotifyStrategyForView
 	GetNotifyStrategyName() *string
+	SetPushingSetting(v *NotifyStrategyForViewPushingSetting) *NotifyStrategyForView
+	GetPushingSetting() *NotifyStrategyForViewPushingSetting
+	SetReceiverNames(v []*string) *NotifyStrategyForView
+	GetReceiverNames() []*string
+	SetRepeatNotifySetting(v *NotifyStrategyForViewRepeatNotifySetting) *NotifyStrategyForView
+	GetRepeatNotifySetting() *NotifyStrategyForViewRepeatNotifySetting
 	SetRoutes(v []*NotifyStrategyForViewRoutes) *NotifyStrategyForView
 	GetRoutes() []*NotifyStrategyForViewRoutes
+	SetSyncFromType(v string) *NotifyStrategyForView
+	GetSyncFromType() *string
 	SetUpdateTime(v string) *NotifyStrategyForView
 	GetUpdateTime() *string
 	SetUserId(v string) *NotifyStrategyForView
 	GetUserId() *string
 	SetWorkspace(v string) *NotifyStrategyForView
 	GetWorkspace() *string
+	SetWorkspaceFilterSetting(v *WorkspaceFilterSetting) *NotifyStrategyForView
+	GetWorkspaceFilterSetting() *WorkspaceFilterSetting
 }
 
 type NotifyStrategyForView struct {
+	AutoRecoverSeconds    *int32                                        `json:"autoRecoverSeconds,omitempty" xml:"autoRecoverSeconds,omitempty"`
 	CreateTime            *string                                       `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	CustomTemplateEntries []*NotifyStrategyForViewCustomTemplateEntries `json:"customTemplateEntries,omitempty" xml:"customTemplateEntries,omitempty" type:"Repeated"`
 	Description           *string                                       `json:"description,omitempty" xml:"description,omitempty"`
 	Enable                *bool                                         `json:"enable,omitempty" xml:"enable,omitempty"`
+	FilterSetting         *FilterSetting                                `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
 	// This parameter is required.
 	GroupingSetting            *NotifyStrategyForViewGroupingSetting `json:"groupingSetting,omitempty" xml:"groupingSetting,omitempty" type:"Struct"`
 	IgnoreRestoredNotification *bool                                 `json:"ignoreRestoredNotification,omitempty" xml:"ignoreRestoredNotification,omitempty"`
+	IncidentEscalationPolicies []interface{}                         `json:"incidentEscalationPolicies,omitempty" xml:"incidentEscalationPolicies,omitempty" type:"Repeated"`
 	NotifyStrategyId           *string                               `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
 	// This parameter is required.
-	NotifyStrategyName *string `json:"notifyStrategyName,omitempty" xml:"notifyStrategyName,omitempty"`
+	NotifyStrategyName  *string                                   `json:"notifyStrategyName,omitempty" xml:"notifyStrategyName,omitempty"`
+	PushingSetting      *NotifyStrategyForViewPushingSetting      `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
+	ReceiverNames       []*string                                 `json:"receiverNames,omitempty" xml:"receiverNames,omitempty" type:"Repeated"`
+	RepeatNotifySetting *NotifyStrategyForViewRepeatNotifySetting `json:"repeatNotifySetting,omitempty" xml:"repeatNotifySetting,omitempty" type:"Struct"`
 	// This parameter is required.
-	Routes     []*NotifyStrategyForViewRoutes `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
-	UpdateTime *string                        `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserId     *string                        `json:"userId,omitempty" xml:"userId,omitempty"`
-	Workspace  *string                        `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	Routes                 []*NotifyStrategyForViewRoutes `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
+	SyncFromType           *string                        `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
+	UpdateTime             *string                        `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	UserId                 *string                        `json:"userId,omitempty" xml:"userId,omitempty"`
+	Workspace              *string                        `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	WorkspaceFilterSetting *WorkspaceFilterSetting        `json:"workspaceFilterSetting,omitempty" xml:"workspaceFilterSetting,omitempty"`
 }
 
 func (s NotifyStrategyForView) String() string {
@@ -59,6 +83,10 @@ func (s NotifyStrategyForView) String() string {
 
 func (s NotifyStrategyForView) GoString() string {
 	return s.String()
+}
+
+func (s *NotifyStrategyForView) GetAutoRecoverSeconds() *int32 {
+	return s.AutoRecoverSeconds
 }
 
 func (s *NotifyStrategyForView) GetCreateTime() *string {
@@ -77,12 +105,20 @@ func (s *NotifyStrategyForView) GetEnable() *bool {
 	return s.Enable
 }
 
+func (s *NotifyStrategyForView) GetFilterSetting() *FilterSetting {
+	return s.FilterSetting
+}
+
 func (s *NotifyStrategyForView) GetGroupingSetting() *NotifyStrategyForViewGroupingSetting {
 	return s.GroupingSetting
 }
 
 func (s *NotifyStrategyForView) GetIgnoreRestoredNotification() *bool {
 	return s.IgnoreRestoredNotification
+}
+
+func (s *NotifyStrategyForView) GetIncidentEscalationPolicies() []interface{} {
+	return s.IncidentEscalationPolicies
 }
 
 func (s *NotifyStrategyForView) GetNotifyStrategyId() *string {
@@ -93,8 +129,24 @@ func (s *NotifyStrategyForView) GetNotifyStrategyName() *string {
 	return s.NotifyStrategyName
 }
 
+func (s *NotifyStrategyForView) GetPushingSetting() *NotifyStrategyForViewPushingSetting {
+	return s.PushingSetting
+}
+
+func (s *NotifyStrategyForView) GetReceiverNames() []*string {
+	return s.ReceiverNames
+}
+
+func (s *NotifyStrategyForView) GetRepeatNotifySetting() *NotifyStrategyForViewRepeatNotifySetting {
+	return s.RepeatNotifySetting
+}
+
 func (s *NotifyStrategyForView) GetRoutes() []*NotifyStrategyForViewRoutes {
 	return s.Routes
+}
+
+func (s *NotifyStrategyForView) GetSyncFromType() *string {
+	return s.SyncFromType
 }
 
 func (s *NotifyStrategyForView) GetUpdateTime() *string {
@@ -107,6 +159,15 @@ func (s *NotifyStrategyForView) GetUserId() *string {
 
 func (s *NotifyStrategyForView) GetWorkspace() *string {
 	return s.Workspace
+}
+
+func (s *NotifyStrategyForView) GetWorkspaceFilterSetting() *WorkspaceFilterSetting {
+	return s.WorkspaceFilterSetting
+}
+
+func (s *NotifyStrategyForView) SetAutoRecoverSeconds(v int32) *NotifyStrategyForView {
+	s.AutoRecoverSeconds = &v
+	return s
 }
 
 func (s *NotifyStrategyForView) SetCreateTime(v string) *NotifyStrategyForView {
@@ -129,6 +190,11 @@ func (s *NotifyStrategyForView) SetEnable(v bool) *NotifyStrategyForView {
 	return s
 }
 
+func (s *NotifyStrategyForView) SetFilterSetting(v *FilterSetting) *NotifyStrategyForView {
+	s.FilterSetting = v
+	return s
+}
+
 func (s *NotifyStrategyForView) SetGroupingSetting(v *NotifyStrategyForViewGroupingSetting) *NotifyStrategyForView {
 	s.GroupingSetting = v
 	return s
@@ -136,6 +202,11 @@ func (s *NotifyStrategyForView) SetGroupingSetting(v *NotifyStrategyForViewGroup
 
 func (s *NotifyStrategyForView) SetIgnoreRestoredNotification(v bool) *NotifyStrategyForView {
 	s.IgnoreRestoredNotification = &v
+	return s
+}
+
+func (s *NotifyStrategyForView) SetIncidentEscalationPolicies(v []interface{}) *NotifyStrategyForView {
+	s.IncidentEscalationPolicies = v
 	return s
 }
 
@@ -149,8 +220,28 @@ func (s *NotifyStrategyForView) SetNotifyStrategyName(v string) *NotifyStrategyF
 	return s
 }
 
+func (s *NotifyStrategyForView) SetPushingSetting(v *NotifyStrategyForViewPushingSetting) *NotifyStrategyForView {
+	s.PushingSetting = v
+	return s
+}
+
+func (s *NotifyStrategyForView) SetReceiverNames(v []*string) *NotifyStrategyForView {
+	s.ReceiverNames = v
+	return s
+}
+
+func (s *NotifyStrategyForView) SetRepeatNotifySetting(v *NotifyStrategyForViewRepeatNotifySetting) *NotifyStrategyForView {
+	s.RepeatNotifySetting = v
+	return s
+}
+
 func (s *NotifyStrategyForView) SetRoutes(v []*NotifyStrategyForViewRoutes) *NotifyStrategyForView {
 	s.Routes = v
+	return s
+}
+
+func (s *NotifyStrategyForView) SetSyncFromType(v string) *NotifyStrategyForView {
+	s.SyncFromType = &v
 	return s
 }
 
@@ -169,6 +260,11 @@ func (s *NotifyStrategyForView) SetWorkspace(v string) *NotifyStrategyForView {
 	return s
 }
 
+func (s *NotifyStrategyForView) SetWorkspaceFilterSetting(v *WorkspaceFilterSetting) *NotifyStrategyForView {
+	s.WorkspaceFilterSetting = v
+	return s
+}
+
 func (s *NotifyStrategyForView) Validate() error {
 	if s.CustomTemplateEntries != nil {
 		for _, item := range s.CustomTemplateEntries {
@@ -179,8 +275,23 @@ func (s *NotifyStrategyForView) Validate() error {
 			}
 		}
 	}
+	if s.FilterSetting != nil {
+		if err := s.FilterSetting.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.GroupingSetting != nil {
 		if err := s.GroupingSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PushingSetting != nil {
+		if err := s.PushingSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RepeatNotifySetting != nil {
+		if err := s.RepeatNotifySetting.Validate(); err != nil {
 			return err
 		}
 	}
@@ -191,6 +302,11 @@ func (s *NotifyStrategyForView) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.WorkspaceFilterSetting != nil {
+		if err := s.WorkspaceFilterSetting.Validate(); err != nil {
+			return err
 		}
 	}
 	return nil
@@ -285,6 +401,86 @@ func (s *NotifyStrategyForViewGroupingSetting) SetTimes(v int32) *NotifyStrategy
 }
 
 func (s *NotifyStrategyForViewGroupingSetting) Validate() error {
+	return dara.Validate(s)
+}
+
+type NotifyStrategyForViewPushingSetting struct {
+	AlertActionIds   []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
+	RestoreActionIds []*string `json:"restoreActionIds,omitempty" xml:"restoreActionIds,omitempty" type:"Repeated"`
+	TemplateUuid     *string   `json:"templateUuid,omitempty" xml:"templateUuid,omitempty"`
+}
+
+func (s NotifyStrategyForViewPushingSetting) String() string {
+	return dara.Prettify(s)
+}
+
+func (s NotifyStrategyForViewPushingSetting) GoString() string {
+	return s.String()
+}
+
+func (s *NotifyStrategyForViewPushingSetting) GetAlertActionIds() []*string {
+	return s.AlertActionIds
+}
+
+func (s *NotifyStrategyForViewPushingSetting) GetRestoreActionIds() []*string {
+	return s.RestoreActionIds
+}
+
+func (s *NotifyStrategyForViewPushingSetting) GetTemplateUuid() *string {
+	return s.TemplateUuid
+}
+
+func (s *NotifyStrategyForViewPushingSetting) SetAlertActionIds(v []*string) *NotifyStrategyForViewPushingSetting {
+	s.AlertActionIds = v
+	return s
+}
+
+func (s *NotifyStrategyForViewPushingSetting) SetRestoreActionIds(v []*string) *NotifyStrategyForViewPushingSetting {
+	s.RestoreActionIds = v
+	return s
+}
+
+func (s *NotifyStrategyForViewPushingSetting) SetTemplateUuid(v string) *NotifyStrategyForViewPushingSetting {
+	s.TemplateUuid = &v
+	return s
+}
+
+func (s *NotifyStrategyForViewPushingSetting) Validate() error {
+	return dara.Validate(s)
+}
+
+type NotifyStrategyForViewRepeatNotifySetting struct {
+	EndIncidentState *string `json:"endIncidentState,omitempty" xml:"endIncidentState,omitempty"`
+	RepeatInterval   *int32  `json:"repeatInterval,omitempty" xml:"repeatInterval,omitempty"`
+}
+
+func (s NotifyStrategyForViewRepeatNotifySetting) String() string {
+	return dara.Prettify(s)
+}
+
+func (s NotifyStrategyForViewRepeatNotifySetting) GoString() string {
+	return s.String()
+}
+
+func (s *NotifyStrategyForViewRepeatNotifySetting) GetEndIncidentState() *string {
+	return s.EndIncidentState
+}
+
+func (s *NotifyStrategyForViewRepeatNotifySetting) GetRepeatInterval() *int32 {
+	return s.RepeatInterval
+}
+
+func (s *NotifyStrategyForViewRepeatNotifySetting) SetEndIncidentState(v string) *NotifyStrategyForViewRepeatNotifySetting {
+	s.EndIncidentState = &v
+	return s
+}
+
+func (s *NotifyStrategyForViewRepeatNotifySetting) SetRepeatInterval(v int32) *NotifyStrategyForViewRepeatNotifySetting {
+	s.RepeatInterval = &v
+	return s
+}
+
+func (s *NotifyStrategyForViewRepeatNotifySetting) Validate() error {
 	return dara.Validate(s)
 }
 
