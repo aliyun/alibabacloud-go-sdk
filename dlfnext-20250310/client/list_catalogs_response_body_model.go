@@ -13,6 +13,8 @@ type iListCatalogsResponseBody interface {
 	GetCatalogs() []*Catalog
 	SetNextPageToken(v string) *ListCatalogsResponseBody
 	GetNextPageToken() *string
+	SetPrepayResource(v []*PrepayResource) *ListCatalogsResponseBody
+	GetPrepayResource() []*PrepayResource
 }
 
 type ListCatalogsResponseBody struct {
@@ -20,7 +22,8 @@ type ListCatalogsResponseBody struct {
 	// example:
 	//
 	// E8ABEB1C3DB893D16576269017992F57
-	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+	NextPageToken  *string           `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+	PrepayResource []*PrepayResource `json:"prepayResource,omitempty" xml:"prepayResource,omitempty" type:"Repeated"`
 }
 
 func (s ListCatalogsResponseBody) String() string {
@@ -39,6 +42,10 @@ func (s *ListCatalogsResponseBody) GetNextPageToken() *string {
 	return s.NextPageToken
 }
 
+func (s *ListCatalogsResponseBody) GetPrepayResource() []*PrepayResource {
+	return s.PrepayResource
+}
+
 func (s *ListCatalogsResponseBody) SetCatalogs(v []*Catalog) *ListCatalogsResponseBody {
 	s.Catalogs = v
 	return s
@@ -49,9 +56,23 @@ func (s *ListCatalogsResponseBody) SetNextPageToken(v string) *ListCatalogsRespo
 	return s
 }
 
+func (s *ListCatalogsResponseBody) SetPrepayResource(v []*PrepayResource) *ListCatalogsResponseBody {
+	s.PrepayResource = v
+	return s
+}
+
 func (s *ListCatalogsResponseBody) Validate() error {
 	if s.Catalogs != nil {
 		for _, item := range s.Catalogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PrepayResource != nil {
+		for _, item := range s.PrepayResource {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err

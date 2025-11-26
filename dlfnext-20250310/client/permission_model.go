@@ -15,6 +15,8 @@ type iPermission interface {
 	GetColumns() *PermissionColumns
 	SetDatabase(v string) *Permission
 	GetDatabase() *string
+	SetExpireTime(v string) *Permission
+	GetExpireTime() *string
 	SetFunction(v string) *Permission
 	GetFunction() *string
 	SetPrincipal(v string) *Permission
@@ -31,6 +33,7 @@ type Permission struct {
 	Access       *string            `json:"access,omitempty" xml:"access,omitempty"`
 	Columns      *PermissionColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Struct"`
 	Database     *string            `json:"database,omitempty" xml:"database,omitempty"`
+	ExpireTime   *string            `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
 	Function     *string            `json:"function,omitempty" xml:"function,omitempty"`
 	Principal    *string            `json:"principal,omitempty" xml:"principal,omitempty"`
 	ResourceType *string            `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
@@ -56,6 +59,10 @@ func (s *Permission) GetColumns() *PermissionColumns {
 
 func (s *Permission) GetDatabase() *string {
 	return s.Database
+}
+
+func (s *Permission) GetExpireTime() *string {
+	return s.ExpireTime
 }
 
 func (s *Permission) GetFunction() *string {
@@ -90,6 +97,11 @@ func (s *Permission) SetColumns(v *PermissionColumns) *Permission {
 
 func (s *Permission) SetDatabase(v string) *Permission {
 	s.Database = &v
+	return s
+}
+
+func (s *Permission) SetExpireTime(v string) *Permission {
+	s.ExpireTime = &v
 	return s
 }
 
