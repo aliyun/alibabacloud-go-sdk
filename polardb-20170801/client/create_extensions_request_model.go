@@ -41,25 +41,67 @@ type iCreateExtensionsRequest interface {
 
 type CreateExtensionsRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// testuser
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// This parameter is required.
-	DBNames              *string `json:"DBNames,omitempty" xml:"DBNames,omitempty"`
-	Extensions           *string `json:"Extensions,omitempty" xml:"Extensions,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	//
+	// example:
+	//
+	// testdb1,testdb2
+	DBNames *string `json:"DBNames,omitempty" xml:"DBNames,omitempty"`
+	// example:
+	//
+	// pg_stat_statements,pg_trgm
+	Extensions *string `json:"Extensions,omitempty" xml:"Extensions,omitempty"`
+	// example:
+	//
+	// test@example.com
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	// example:
+	//
+	// 1234567890123456
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfmyiu4ekp****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// test@example.com
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceDBName         *string `json:"SourceDBName,omitempty" xml:"SourceDBName,omitempty"`
+	// example:
+	//
+	// 1234567890123456
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// sourcedb
+	SourceDBName *string `json:"SourceDBName,omitempty" xml:"SourceDBName,omitempty"`
 	// example:
 	//
 	// 7.7
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// vpc-****************
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateExtensionsRequest) String() string {

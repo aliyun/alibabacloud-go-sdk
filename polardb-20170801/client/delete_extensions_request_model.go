@@ -55,9 +55,15 @@ type DeleteExtensionsRequest struct {
 	// example:
 	//
 	// pase,hstore
-	Extensions   *string `json:"Extensions,omitempty" xml:"Extensions,omitempty"`
+	Extensions *string `json:"Extensions,omitempty" xml:"Extensions,omitempty"`
+	// example:
+	//
+	// test@example.com
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1234567890123456
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// example:
 	//
 	// cn-beijing
@@ -65,9 +71,15 @@ type DeleteExtensionsRequest struct {
 	// example:
 	//
 	// rg-************
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// test@example.com
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 1234567890123456
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// example:
 	//
 	// vpc-25cdvfeq58pl****

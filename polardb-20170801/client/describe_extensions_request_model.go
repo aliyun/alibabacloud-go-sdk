@@ -13,6 +13,8 @@ type iDescribeExtensionsRequest interface {
 	GetDBClusterId() *string
 	SetDBName(v string) *DescribeExtensionsRequest
 	GetDBName() *string
+	SetExtensionName(v string) *DescribeExtensionsRequest
+	GetExtensionName() *string
 	SetOwnerAccount(v string) *DescribeExtensionsRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeExtensionsRequest
@@ -35,11 +37,24 @@ type DescribeExtensionsRequest struct {
 	// example:
 	//
 	// song
-	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DBName        *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	ExtensionName *string `json:"ExtensionName,omitempty" xml:"ExtensionName,omitempty"`
+	// example:
+	//
+	// test@example.com
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	// example:
+	//
+	// 1234567890123456
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// test@example.com
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 1234567890123456
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DescribeExtensionsRequest) String() string {
@@ -56,6 +71,10 @@ func (s *DescribeExtensionsRequest) GetDBClusterId() *string {
 
 func (s *DescribeExtensionsRequest) GetDBName() *string {
 	return s.DBName
+}
+
+func (s *DescribeExtensionsRequest) GetExtensionName() *string {
+	return s.ExtensionName
 }
 
 func (s *DescribeExtensionsRequest) GetOwnerAccount() *string {
@@ -81,6 +100,11 @@ func (s *DescribeExtensionsRequest) SetDBClusterId(v string) *DescribeExtensions
 
 func (s *DescribeExtensionsRequest) SetDBName(v string) *DescribeExtensionsRequest {
 	s.DBName = &v
+	return s
+}
+
+func (s *DescribeExtensionsRequest) SetExtensionName(v string) *DescribeExtensionsRequest {
+	s.ExtensionName = &v
 	return s
 }
 

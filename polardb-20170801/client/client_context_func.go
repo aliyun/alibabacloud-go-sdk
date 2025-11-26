@@ -9906,6 +9906,10 @@ func (client *Client) DescribeExtensionsWithContext(ctx context.Context, request
 		query["DBName"] = request.DBName
 	}
 
+	if !dara.IsNil(request.ExtensionName) {
+		query["ExtensionName"] = request.ExtensionName
+	}
+
 	if !dara.IsNil(request.OwnerAccount) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}

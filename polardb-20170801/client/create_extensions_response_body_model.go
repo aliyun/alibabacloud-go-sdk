@@ -15,6 +15,10 @@ type iCreateExtensionsResponseBody interface {
 
 type CreateExtensionsResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
