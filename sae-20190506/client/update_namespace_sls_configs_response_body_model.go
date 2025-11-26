@@ -24,24 +24,41 @@ type iUpdateNamespaceSlsConfigsResponseBody interface {
 }
 
 type UpdateNamespaceSlsConfigsResponseBody struct {
+	// The status code or error code. Valid values: 2xx: The request was successful. 3xx: The request was redirected. 4xx: The request was invalid. 5xx: A server error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code. Value description:
+	//
+	// 	- If the request was successful, this field is not returned.
+	//
+	// 	- For more information, see the **Error codes*	- section of this topic.
+	//
+	// example:
+	//
+	// InvalidNamespaceId.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The additional information.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the Simple Log Service configuration for the namespace was updated. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the trace, which is used to query the exact call information.
+	//
 	// example:
 	//
 	// 0a98a02315955564772843261e****
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

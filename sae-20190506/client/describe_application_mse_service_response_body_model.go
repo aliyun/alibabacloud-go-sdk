@@ -26,24 +26,52 @@ type iDescribeApplicationMseServiceResponseBody interface {
 }
 
 type DescribeApplicationMseServiceResponseBody struct {
+	// The API status or POP error code. Valid values: 2xx: The request was successful. 3xx: The request was redirected. 4xx: The request was invalid. 5xx: A server error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeApplicationMseServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The application information.
+	Data *DescribeApplicationMseServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code. Value description:
+	//
+	// 	- If the request succeeds, this field is not returned.
+	//
+	// 	- For more information, see the **Error codes*	- section of this topic.
+	//
+	// example:
+	//
+	// System.Upgrading
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The additional information. Value description:
+	//
+	// 	- If the request was successful, **success*	- is returned.
+	//
+	// 	- If the request failed, an error code is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B4D805CA-926D-41B1-8E63-7AD0C1ED****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the application instance groups were obtained successfully. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the trace, which is used to query the exact call information.
+	//
 	// example:
 	//
 	// 0a98a02315955564772843261e****
@@ -131,10 +159,40 @@ func (s *DescribeApplicationMseServiceResponseBody) Validate() error {
 }
 
 type DescribeApplicationMseServiceResponseBodyData struct {
-	MseAppId        *string `json:"MseAppId,omitempty" xml:"MseAppId,omitempty"`
-	MseAppName      *string `json:"MseAppName,omitempty" xml:"MseAppName,omitempty"`
+	// The application ID.
+	//
+	// example:
+	//
+	// mse-cn-hvm47******
+	MseAppId *string `json:"MseAppId,omitempty" xml:"MseAppId,omitempty"`
+	// The application name.
+	//
+	// example:
+	//
+	// test
+	MseAppName *string `json:"MseAppName,omitempty" xml:"MseAppName,omitempty"`
+	// The namespace.
+	//
+	// example:
+	//
+	// sae-ent
 	MseAppNameSpace *string `json:"MseAppNameSpace,omitempty" xml:"MseAppNameSpace,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The application status. Valid values:
+	//
+	// 	- EXPIRED
+	//
+	// 	- REBOOTING
+	//
+	// 	- WAITING
+	//
+	// 	- FAIL
+	//
+	// 	- NULL/SUCCESS
+	//
+	// example:
+	//
+	// SUCCESS
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeApplicationMseServiceResponseBodyData) String() string {

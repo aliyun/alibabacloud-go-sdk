@@ -107,7 +107,7 @@ func (client *Client) AbortChangeOrderWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 批量重启应用
+// Restarts applications in batches.
 //
 // @param request - BatchRestartApplicationsRequest
 //
@@ -3243,6 +3243,10 @@ func (client *Client) DescribeApplicationInstancesWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of the associated MSE microservice governance application.
+//
 // @param request - DescribeApplicationMseServiceRequest
 //
 // @param headers - map
@@ -7151,6 +7155,10 @@ func (client *Client) PublishWebApplicationRevisionWithContext(ctx context.Conte
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether ARMS monitoring is enabled for a specified application.
+//
 // @param request - QueryArmsEnableRequest
 //
 // @param headers - map
@@ -7380,6 +7388,10 @@ func (client *Client) RescaleApplicationVerticallyWithContext(ctx context.Contex
 
 	if !dara.IsNil(request.Cpu) {
 		query["Cpu"] = request.Cpu
+	}
+
+	if !dara.IsNil(request.Deploy) {
+		query["Deploy"] = request.Deploy
 	}
 
 	if !dara.IsNil(request.DiskSize) {
@@ -8357,6 +8369,10 @@ func (client *Client) UpdateApplicationVswitchesWithContext(ctx context.Context,
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
 		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Deploy) {
+		query["Deploy"] = request.Deploy
 	}
 
 	if !dara.IsNil(request.VSwitchId) {

@@ -14,6 +14,8 @@ type iQueryArmsEnableRequest interface {
 }
 
 type QueryArmsEnableRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:

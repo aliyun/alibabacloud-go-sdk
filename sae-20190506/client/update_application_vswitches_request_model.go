@@ -11,6 +11,8 @@ type iUpdateApplicationVswitchesRequest interface {
 	GoString() string
 	SetAppId(v string) *UpdateApplicationVswitchesRequest
 	GetAppId() *string
+	SetDeploy(v bool) *UpdateApplicationVswitchesRequest
+	GetDeploy() *bool
 	SetVSwitchId(v string) *UpdateApplicationVswitchesRequest
 	GetVSwitchId() *string
 }
@@ -23,7 +25,8 @@ type UpdateApplicationVswitchesRequest struct {
 	// example:
 	//
 	// 0099b7be-5f5b-4512-a7fc-56049ef1****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Deploy *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
 	// The ID of the vSwitch.
 	//
 	// This parameter is required.
@@ -46,12 +49,21 @@ func (s *UpdateApplicationVswitchesRequest) GetAppId() *string {
 	return s.AppId
 }
 
+func (s *UpdateApplicationVswitchesRequest) GetDeploy() *bool {
+	return s.Deploy
+}
+
 func (s *UpdateApplicationVswitchesRequest) GetVSwitchId() *string {
 	return s.VSwitchId
 }
 
 func (s *UpdateApplicationVswitchesRequest) SetAppId(v string) *UpdateApplicationVswitchesRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *UpdateApplicationVswitchesRequest) SetDeploy(v bool) *UpdateApplicationVswitchesRequest {
+	s.Deploy = &v
 	return s
 }
 

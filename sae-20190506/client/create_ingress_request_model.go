@@ -58,6 +58,11 @@ type iCreateIngressRequest interface {
 }
 
 type CreateIngressRequest struct {
+	// -
+	//
+	// example:
+	//
+	// -
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	// The ID of the **CLB*	- certificate. Valid values:
 	//
@@ -78,7 +83,12 @@ type CreateIngressRequest struct {
 	// example:
 	//
 	// 87***35-cn-hangzhou,812***3-cn-hangzhou
-	CertIds    *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	CertIds *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
 	CorsConfig *string `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty"`
 	// The default forwarding rule. Forwards traffic to a specified application through a specified port based on the IP address. The following table describes the parameters.
 	//
@@ -99,13 +109,43 @@ type CreateIngressRequest struct {
 	// example:
 	//
 	// ingress-for-sae-test
-	Description                      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableGzip                       *bool   `json:"EnableGzip,omitempty" xml:"EnableGzip,omitempty"`
-	EnableXForwardedFor              *bool   `json:"EnableXForwardedFor,omitempty" xml:"EnableXForwardedFor,omitempty"`
-	EnableXForwardedForClientSrcPort *bool   `json:"EnableXForwardedForClientSrcPort,omitempty" xml:"EnableXForwardedForClientSrcPort,omitempty"`
-	EnableXForwardedForProto         *bool   `json:"EnableXForwardedForProto,omitempty" xml:"EnableXForwardedForProto,omitempty"`
-	EnableXForwardedForSlbId         *bool   `json:"EnableXForwardedForSlbId,omitempty" xml:"EnableXForwardedForSlbId,omitempty"`
-	EnableXForwardedForSlbPort       *bool   `json:"EnableXForwardedForSlbPort,omitempty" xml:"EnableXForwardedForSlbPort,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	EnableGzip *bool `json:"EnableGzip,omitempty" xml:"EnableGzip,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	EnableXForwardedFor *bool `json:"EnableXForwardedFor,omitempty" xml:"EnableXForwardedFor,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	EnableXForwardedForClientSrcPort *bool `json:"EnableXForwardedForClientSrcPort,omitempty" xml:"EnableXForwardedForClientSrcPort,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	EnableXForwardedForProto *bool `json:"EnableXForwardedForProto,omitempty" xml:"EnableXForwardedForProto,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	EnableXForwardedForSlbId *bool `json:"EnableXForwardedForSlbId,omitempty" xml:"EnableXForwardedForSlbId,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	EnableXForwardedForSlbPort *bool `json:"EnableXForwardedForSlbPort,omitempty" xml:"EnableXForwardedForSlbPort,omitempty"`
 	// Specifies the connection idle timeout period. Unit: seconds. Valid values: 1 to 60. If there is no access request within the timeout period, the SLB will temporarily interrupt the current connection until the next request comes to re-establish a new connection.
 	//
 	// example:
@@ -139,7 +179,12 @@ type CreateIngressRequest struct {
 	// example:
 	//
 	// clb
-	LoadBalanceType     *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
+	LoadBalanceType *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
 	LoadBalancerEdition *string `json:"LoadBalancerEdition,omitempty" xml:"LoadBalancerEdition,omitempty"`
 	// The ID of the namespace where the application resides. Currently, cross-namespace applications are not supported.
 	//
@@ -190,7 +235,12 @@ type CreateIngressRequest struct {
 	// example:
 	//
 	// lb-uf6hucc7inlqrtcq5****
-	SlbId        *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
 	ZoneMappings *string `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty"`
 }
 

@@ -16,12 +16,16 @@ type iBatchRestartApplicationsRequest interface {
 }
 
 type BatchRestartApplicationsRequest struct {
+	// The application IDs. Separate multiple IDs with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 00893b3a-0e24-45ed-be0c-1f20e07b****
 	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

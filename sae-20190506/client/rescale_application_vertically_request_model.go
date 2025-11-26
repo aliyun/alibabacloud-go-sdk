@@ -13,6 +13,8 @@ type iRescaleApplicationVerticallyRequest interface {
 	GetAppId() *string
 	SetCpu(v string) *RescaleApplicationVerticallyRequest
 	GetCpu() *string
+	SetDeploy(v bool) *RescaleApplicationVerticallyRequest
+	GetDeploy() *bool
 	SetDiskSize(v string) *RescaleApplicationVerticallyRequest
 	GetDiskSize() *string
 	SetMemory(v string) *RescaleApplicationVerticallyRequest
@@ -45,7 +47,8 @@ type RescaleApplicationVerticallyRequest struct {
 	// example:
 	//
 	// 1000
-	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cpu    *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Deploy *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
 	// The disk size. Unit: GB.
 	//
 	// example:
@@ -98,6 +101,10 @@ func (s *RescaleApplicationVerticallyRequest) GetCpu() *string {
 	return s.Cpu
 }
 
+func (s *RescaleApplicationVerticallyRequest) GetDeploy() *bool {
+	return s.Deploy
+}
+
 func (s *RescaleApplicationVerticallyRequest) GetDiskSize() *string {
 	return s.DiskSize
 }
@@ -133,6 +140,11 @@ func (s *RescaleApplicationVerticallyRequest) SetAppId(v string) *RescaleApplica
 
 func (s *RescaleApplicationVerticallyRequest) SetCpu(v string) *RescaleApplicationVerticallyRequest {
 	s.Cpu = &v
+	return s
+}
+
+func (s *RescaleApplicationVerticallyRequest) SetDeploy(v bool) *RescaleApplicationVerticallyRequest {
+	s.Deploy = &v
 	return s
 }
 

@@ -194,7 +194,7 @@ func (client *Client) AbortChangeOrder(request *AbortChangeOrderRequest) (_resul
 
 // Summary:
 //
-// 批量重启应用
+// Restarts applications in batches.
 //
 // @param request - BatchRestartApplicationsRequest
 //
@@ -245,7 +245,7 @@ func (client *Client) BatchRestartApplicationsWithOptions(request *BatchRestartA
 
 // Summary:
 //
-// 批量重启应用
+// Restarts applications in batches.
 //
 // @param request - BatchRestartApplicationsRequest
 //
@@ -4086,6 +4086,10 @@ func (client *Client) DescribeApplicationInstances(request *DescribeApplicationI
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of the associated MSE microservice governance application.
+//
 // @param request - DescribeApplicationMseServiceRequest
 //
 // @param headers - map
@@ -4133,6 +4137,10 @@ func (client *Client) DescribeApplicationMseServiceWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of the associated MSE microservice governance application.
+//
 // @param request - DescribeApplicationMseServiceRequest
 //
 // @return DescribeApplicationMseServiceResponse
@@ -9379,6 +9387,10 @@ func (client *Client) PublishWebApplicationRevision(ApplicationId *string, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether ARMS monitoring is enabled for a specified application.
+//
 // @param request - QueryArmsEnableRequest
 //
 // @param headers - map
@@ -9422,6 +9434,10 @@ func (client *Client) QueryArmsEnableWithOptions(request *QueryArmsEnableRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether ARMS monitoring is enabled for a specified application.
+//
 // @param request - QueryArmsEnableRequest
 //
 // @return QueryArmsEnableResponse
@@ -9680,6 +9696,10 @@ func (client *Client) RescaleApplicationVerticallyWithOptions(request *RescaleAp
 
 	if !dara.IsNil(request.Cpu) {
 		query["Cpu"] = request.Cpu
+	}
+
+	if !dara.IsNil(request.Deploy) {
+		query["Deploy"] = request.Deploy
 	}
 
 	if !dara.IsNil(request.DiskSize) {
@@ -10994,6 +11014,10 @@ func (client *Client) UpdateApplicationVswitchesWithOptions(request *UpdateAppli
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
 		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Deploy) {
+		query["Deploy"] = request.Deploy
 	}
 
 	if !dara.IsNil(request.VSwitchId) {

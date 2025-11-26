@@ -26,24 +26,52 @@ type iQueryArmsEnableResponseBody interface {
 }
 
 type QueryArmsEnableResponseBody struct {
+	// The status code or error code. Valid values: 2xx: The request was successful. 3xx: The request was redirected. 4xx: The request was invalid. 5xx: A server error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *QueryArmsEnableResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	Data *QueryArmsEnableResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code. Value description:
+	//
+	// 	- If the request was successful, this field is not returned.
+	//
+	// 	- For more information, see the **Error codes*	- section of this topic.
+	//
+	// example:
+	//
+	// InvalidApplication.NotFound
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The additional information. Value description:
+	//
+	// 	- If the request was successful, **success*	- is returned.
+	//
+	// 	- If the request failed, an error code is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 01CF26C7-00A3-4AA6-BA76-7E95F2A3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the trace, which is used to query the details of a request.
+	//
 	// example:
 	//
 	// 0a98a02315955564772843261e****
@@ -131,6 +159,8 @@ func (s *QueryArmsEnableResponseBody) Validate() error {
 }
 
 type QueryArmsEnableResponseBodyData struct {
+	// Indicates if enabled. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
