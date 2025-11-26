@@ -165,7 +165,8 @@ func (s *ListEvaluationResultsResponseBodyResults) Validate() error {
 }
 
 type ListEvaluationResultsResponseBodyResultsMetricResults struct {
-	AccountSummary *ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary `json:"AccountSummary,omitempty" xml:"AccountSummary,omitempty" type:"Struct"`
+	AccountSummary       *ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary         `json:"AccountSummary,omitempty" xml:"AccountSummary,omitempty" type:"Struct"`
+	AvailableRemediation []*ListEvaluationResultsResponseBodyResultsMetricResultsAvailableRemediation `json:"AvailableRemediation,omitempty" xml:"AvailableRemediation,omitempty" type:"Repeated"`
 	// The error information.
 	//
 	// >  This parameter is returned only if the value of `Status` is `Failed`.
@@ -232,6 +233,10 @@ func (s *ListEvaluationResultsResponseBodyResultsMetricResults) GetAccountSummar
 	return s.AccountSummary
 }
 
+func (s *ListEvaluationResultsResponseBodyResultsMetricResults) GetAvailableRemediation() []*ListEvaluationResultsResponseBodyResultsMetricResultsAvailableRemediation {
+	return s.AvailableRemediation
+}
+
 func (s *ListEvaluationResultsResponseBodyResultsMetricResults) GetErrorInfo() *ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo {
 	return s.ErrorInfo
 }
@@ -266,6 +271,11 @@ func (s *ListEvaluationResultsResponseBodyResultsMetricResults) GetStatus() *str
 
 func (s *ListEvaluationResultsResponseBodyResultsMetricResults) SetAccountSummary(v *ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary) *ListEvaluationResultsResponseBodyResultsMetricResults {
 	s.AccountSummary = v
+	return s
+}
+
+func (s *ListEvaluationResultsResponseBodyResultsMetricResults) SetAvailableRemediation(v []*ListEvaluationResultsResponseBodyResultsMetricResultsAvailableRemediation) *ListEvaluationResultsResponseBodyResultsMetricResults {
+	s.AvailableRemediation = v
 	return s
 }
 
@@ -315,6 +325,15 @@ func (s *ListEvaluationResultsResponseBodyResultsMetricResults) Validate() error
 			return err
 		}
 	}
+	if s.AvailableRemediation != nil {
+		for _, item := range s.AvailableRemediation {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.ErrorInfo != nil {
 		if err := s.ErrorInfo.Validate(); err != nil {
 			return err
@@ -353,6 +372,31 @@ func (s *ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary) Se
 }
 
 func (s *ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListEvaluationResultsResponseBodyResultsMetricResultsAvailableRemediation struct {
+	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
+}
+
+func (s ListEvaluationResultsResponseBodyResultsMetricResultsAvailableRemediation) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEvaluationResultsResponseBodyResultsMetricResultsAvailableRemediation) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationResultsResponseBodyResultsMetricResultsAvailableRemediation) GetRemediationTemplateId() *string {
+	return s.RemediationTemplateId
+}
+
+func (s *ListEvaluationResultsResponseBodyResultsMetricResultsAvailableRemediation) SetRemediationTemplateId(v string) *ListEvaluationResultsResponseBodyResultsMetricResultsAvailableRemediation {
+	s.RemediationTemplateId = &v
+	return s
+}
+
+func (s *ListEvaluationResultsResponseBodyResultsMetricResultsAvailableRemediation) Validate() error {
 	return dara.Validate(s)
 }
 
