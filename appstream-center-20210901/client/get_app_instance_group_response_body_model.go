@@ -18,6 +18,8 @@ type iGetAppInstanceGroupResponseBody interface {
 type GetAppInstanceGroupResponseBody struct {
 	// AppInstanceGroupModels
 	AppInstanceGroupModels *GetAppInstanceGroupResponseBodyAppInstanceGroupModels `json:"AppInstanceGroupModels,omitempty" xml:"AppInstanceGroupModels,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -66,125 +68,202 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	//
 	// INTERNET
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// The number of subscription resources. Minimum value: 1.
+	//
 	// example:
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The image ID of the application.
+	//
 	// example:
 	//
 	// img-8z4nztpaqvay4****
 	AppCenterImageId *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
+	// The image name of the application.
+	//
 	// example:
 	//
 	// OfficeApps
 	AppCenterImageName *string `json:"AppCenterImageName,omitempty" xml:"AppCenterImageName,omitempty"`
+	// The ID of the delivery group.
+	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
-	AppInstanceGroupId   *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The name of the delivery group.
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
+	// The resource type of the delivery group.
+	//
 	// example:
 	//
 	// __dynamic__
 	AppInstanceType *string `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
+	// The name of the resource type of the delivery group.
+	//
 	// example:
 	//
 	// test001
 	AppInstanceTypeName *string `json:"AppInstanceTypeName,omitempty" xml:"AppInstanceTypeName,omitempty"`
+	// The policy ID of the application.
+	//
 	// example:
 	//
 	// pg-g3k5wa2ms2****
-	AppPolicyId *string                                                      `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
-	Apps        []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	AppPolicyId *string `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
+	// The applications.
+	Apps []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
 	// 授权模式。
 	//
 	// example:
 	//
 	// App
 	AuthMode *string `json:"AuthMode,omitempty" xml:"AuthMode,omitempty"`
+	// The sales mode.
+	//
+	// Valid values:
+	//
+	// 	- AppInstance: by session
+	//
+	// 	- Node: by resource
+	//
 	// example:
 	//
 	// Node
 	ChargeResourceMode *string `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
+	// The billing method.
+	//
+	// Valid values:
+	//
+	// 	- PostPaid: pay-as-you-go
+	//
+	// 	- PrePaid: subscription
+	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The time when the delivery group expires.
+	//
 	// example:
 	//
 	// 2022-04-27T16:00:00.000+00:00
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The time when the delivery group was created.
+	//
 	// example:
 	//
 	// 2022-04-26T15:06:16.000+00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The maximum number of instances. Minimum value: 1.
+	//
 	// example:
 	//
 	// 10
 	MaxAmount *int32 `json:"MaxAmount,omitempty" xml:"MaxAmount,omitempty"`
+	// The minimum number of instances. Minimum value: 1.
+	//
 	// example:
 	//
 	// 1
 	MinAmount *int32 `json:"MinAmount,omitempty" xml:"MinAmount,omitempty"`
-	// The resource groups.
+	// The information about the resource group.
 	NodePool []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
+	// 办公网络ID。
+	//
 	// example:
 	//
 	// cn-beijing+dir-172301****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The type of the operating system.
+	//
 	// example:
 	//
 	// Windows
-	OsType  *string                                                       `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// The information about the over-the-air (OTA) update task.
 	OtaInfo *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo `json:"OtaInfo,omitempty" xml:"OtaInfo,omitempty" type:"Struct"`
+	// The product type.
+	//
 	// example:
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The percentage of reserved instances. The value indicates the percentage of unused sessions in the delivery group. Valid values: 0 to 99.
+	//
 	// example:
 	//
 	// 20
 	ReserveAmountRatio *string `json:"ReserveAmountRatio,omitempty" xml:"ReserveAmountRatio,omitempty"`
+	// The maximum number of reserved instances. The value indicates the maximum number of unused sessions in the delivery group. Minimum value: 1.
+	//
 	// example:
 	//
 	// 5
 	ReserveMaxAmount *int32 `json:"ReserveMaxAmount,omitempty" xml:"ReserveMaxAmount,omitempty"`
+	// The minimum number of reserved instances. The value indicates the minimum number of unused sessions in the delivery group. Minimum value: 1.
+	//
 	// example:
 	//
 	// 1
 	ReserveMinAmount *int32 `json:"ReserveMinAmount,omitempty" xml:"ReserveMinAmount,omitempty"`
+	// The resource status.
+	//
 	// example:
 	//
 	// AVAILABLE
 	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	// The duration for which no session is connected. Unit: minutes. If no session is connected in the resources after the specified duration elapses, automatic scale-in is triggered. Minimum value: 0.
+	//
 	// example:
 	//
 	// 5
 	ScalingDownAfterIdleMinutes *int32 `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
+	// The number of sessions that are created each time the delivery group is scaled out. Minimum value: 1.
+	//
 	// example:
 	//
 	// 10
 	ScalingStep *int32 `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
+	// The upper limit of session usage. If the session usage exceeds the specified upper limit, auto scaling is automatically triggered. The session usage rate is calculated by using the following formula: Session usage rate = Number of sessions in use/Total number of sessions × 100%. Valid values: 0 to 99.
+	//
 	// example:
 	//
 	// 85
 	ScalingUsageThreshold *string `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
+	// The duration for which sessions are retained after disconnection. Unit: minutes. After an end user disconnects from a session, the session is closed only after the specified duration elapses. If you want to permanently retain sessions, set this parameter to `-1`. Valid values:-1 and 3 to 300. Default value: `15`.
+	//
 	// example:
 	//
 	// 15
 	SessionTimeout *string `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	// 会话类型。
+	//
 	// example:
 	//
 	// NORMAL
 	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+	// Indicates whether user permission verification is skipped.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false: This is the default value.
+	//
 	// example:
 	//
 	// false
 	SkipUserAuthCheck *bool `json:"SkipUserAuthCheck,omitempty" xml:"SkipUserAuthCheck,omitempty"`
+	// The specification ID that uniquely corresponds to the ID of the delivery group.
+	//
 	// example:
 	//
 	// spec-8o18t8uc31qib0****
@@ -212,9 +291,14 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	// example:
 	//
 	// PUBLISHED
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportUserGroupMixedAuth *bool   `json:"SupportUserGroupMixedAuth,omitempty" xml:"SupportUserGroupMixedAuth,omitempty"`
 	// 资源标签列表。
 	Tags []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Mixed
+	UserGroupAuthMode *string `json:"UserGroupAuthMode,omitempty" xml:"UserGroupAuthMode,omitempty"`
 }
 
 func (s GetAppInstanceGroupResponseBodyAppInstanceGroupModels) String() string {
@@ -365,8 +449,16 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) GetStatus() *str
 	return s.Status
 }
 
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) GetSupportUserGroupMixedAuth() *bool {
+	return s.SupportUserGroupMixedAuth
+}
+
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) GetTags() []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags {
 	return s.Tags
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) GetUserGroupAuthMode() *string {
+	return s.UserGroupAuthMode
 }
 
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetAccessType(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
@@ -544,8 +636,18 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetStatus(v stri
 	return s
 }
 
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetSupportUserGroupMixedAuth(v bool) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.SupportUserGroupMixedAuth = &v
+	return s
+}
+
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetTags(v []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.Tags = v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetUserGroupAuthMode(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.UserGroupAuthMode = &v
 	return s
 }
 
@@ -586,19 +688,27 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) Validate() error
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps struct {
+	// The application icon.
+	//
 	// example:
 	//
 	// https://app-center-icon-****.png
 	AppIcon *string `json:"AppIcon,omitempty" xml:"AppIcon,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// ca-i87mycyn419nu****
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The application version.
+	//
 	// example:
 	//
 	// 1.0.0
-	AppVersion     *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// The name of the application version.
 	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
 }
 
@@ -660,74 +770,128 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps) Validate() e
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool struct {
+	// The number of resources purchased when the delivery group was created.
+	//
 	// example:
 	//
 	// 2
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The maximum number of idle sessions. After you specify a value for this parameter, auto scaling is triggered only if the number of idle sessions in the delivery group is smaller than the specified value and the session usage exceeds the value specified for `ScalingUsageThreshold`. Otherwise, the system determines that the idle sessions in the delivery group are sufficient and does not perform auto scaling.`` You can use this parameter to flexibly manage auto scaling and reduce costs.
+	// 空闲会话数上限。指定该值时，当会话使用率超过`ScalingUsageThreshold`且当前交付组空闲会话数小于`MaxIdleAppInstanceAmount`时，才会触发自动扩容，否则认为交付组空闲会话已足够使用，不自动扩容。该参数可用于灵活控制弹性扩容行为和降低使用成本。
 	//
 	// example:
 	//
 	// 3
 	MaxIdleAppInstanceAmount *int32 `json:"MaxIdleAppInstanceAmount,omitempty" xml:"MaxIdleAppInstanceAmount,omitempty"`
+	// The maximum number of resources that can be created for scale-out.
+	//
 	// example:
 	//
 	// 8
 	MaxScalingAmount *int32 `json:"MaxScalingAmount,omitempty" xml:"MaxScalingAmount,omitempty"`
+	// The total number of subscription resources.
+	//
 	// example:
 	//
 	// 1
 	NodeAmount *int32 `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
+	// The maximum number of sessions to which a resource can connect at the same time. If a resource connects to a large number of sessions at the same time, user experience can be compromised. The value range varies based on the resource type. The following items describe the value ranges of different resource types:
+	//
+	// 	- appstreaming.general.4c8g: 1 to 2
+	//
+	// 	- appstreaming.general.8c16g: 1 to 4
+	//
+	// 	- appstreaming.vgpu.8c16g.4g: 1 to 4
+	//
+	// 	- appstreaming.vgpu.8c31g.16g: 1 to 4
+	//
+	// 	- appstreaming.vgpu.14c93g.12g: 1 to 6
+	//
 	// example:
 	//
 	// 2
 	NodeCapacity *int32 `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
+	// The ID of the resource type that you purchase.
+	//
 	// example:
 	//
 	// appstreaming.vgpu.4c8g.2g
 	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-g6922kced36hx****
-	NodePoolId   *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
+	NodePoolId *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
+	// The name of the resource type.
 	NodeTypeName *string `json:"NodeTypeName,omitempty" xml:"NodeTypeName,omitempty"`
+	// The number of subscription resources that are in use.
+	//
 	// example:
 	//
 	// 1
-	NodeUsed            *int32                                                                              `json:"NodeUsed,omitempty" xml:"NodeUsed,omitempty"`
+	NodeUsed *int32 `json:"NodeUsed,omitempty" xml:"NodeUsed,omitempty"`
+	// The schedules of the scaling policy.
 	RecurrenceSchedules []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules `json:"RecurrenceSchedules,omitempty" xml:"RecurrenceSchedules,omitempty" type:"Repeated"`
+	// The duration for which no session is connected. Unit: minutes. If no session is connected in the resources after the specified duration elapses, automatic scale-in is triggered. Default value: 5.
+	//
 	// example:
 	//
 	// 5
 	ScalingDownAfterIdleMinutes *int32 `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
+	// The total number of scalable resources.
+	//
 	// example:
 	//
 	// 8
 	ScalingNodeAmount *int32 `json:"ScalingNodeAmount,omitempty" xml:"ScalingNodeAmount,omitempty"`
+	// The number of scalable resources that are in use.
+	//
 	// example:
 	//
 	// 4
 	ScalingNodeUsed *int32 `json:"ScalingNodeUsed,omitempty" xml:"ScalingNodeUsed,omitempty"`
+	// The number of resources that are created each time resources are scaled out. Valid values: 1 to 10.
+	//
 	// example:
 	//
 	// 2
 	ScalingStep *int32 `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
+	// The upper limit of session usage. If the session usage exceeds the specified upper limit, auto scaling is automatically triggered. The session usage is calculated by using the following formula: `Session usage = Number of current sessions/(Total number of resources × Number of concurrent sessions) × 100%`.
+	//
 	// example:
 	//
 	// 85
 	ScalingUsageThreshold *string `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
+	// The expiration date of the scaling policy. Format: yyyy-MM-dd.
+	//
 	// example:
 	//
 	// 2022-09-08
 	StrategyDisableDate *string `json:"StrategyDisableDate,omitempty" xml:"StrategyDisableDate,omitempty"`
+	// The effective date of the scaling policy. Format: yyyy-MM-dd.
+	//
 	// example:
 	//
 	// 2022-08-01
 	StrategyEnableDate *string `json:"StrategyEnableDate,omitempty" xml:"StrategyEnableDate,omitempty"`
+	// The type of the scaling policy.
+	//
+	// >  `NODE_SCALING_BY_USAGE` is returned for this parameter only if ChargeType is set to `PrePaid`. `NODE_SCALING_BY_SCHEDULE` is returned for this parameter only if ChargeType is set to `PostPaid`.
+	//
+	// Valid values:
+	//
+	// 	- NODE_FIXED: No scalable resources are used.
+	//
+	// 	- NODE_SCALING_BY_SCHEDULE: Scheduled scaling is used.
+	//
+	// 	- NODE_SCALING_BY_USAGE: Resources are scaled based on usage.
+	//
 	// example:
 	//
 	// NODE_FIXED
 	StrategyType *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	// Indicates whether the warmup policy is enabled for resources.
+	//
 	// example:
 	//
 	// false
@@ -927,12 +1091,16 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) Validate
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules struct {
+	// The schedule type of the scaling policy. This parameter must be configured together with `RecurrenceValues`.``
+	//
 	// example:
 	//
 	// Weekly
-	RecurrenceType   *string                                                                                         `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
-	RecurrenceValues []*int32                                                                                        `json:"RecurrenceValues,omitempty" xml:"RecurrenceValues,omitempty" type:"Repeated"`
-	TimerPeriods     []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods `json:"TimerPeriods,omitempty" xml:"TimerPeriods,omitempty" type:"Repeated"`
+	RecurrenceType *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
+	// The days of each week on which the scaling policy is executed.
+	RecurrenceValues []*int32 `json:"RecurrenceValues,omitempty" xml:"RecurrenceValues,omitempty" type:"Repeated"`
+	// The time periods during which the scaling policy can be executed.
+	TimerPeriods []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods `json:"TimerPeriods,omitempty" xml:"TimerPeriods,omitempty" type:"Repeated"`
 }
 
 func (s GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules) String() string {
@@ -984,14 +1152,20 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrence
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods struct {
+	// The number of destination resources.
+	//
 	// example:
 	//
 	// 5
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The end time of the scaling policy. Format: HH:mm.
+	//
 	// example:
 	//
 	// 11:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time of the scaling policy. Format: HH:mm.
+	//
 	// example:
 	//
 	// 09:30
@@ -1038,14 +1212,20 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrence
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo struct {
+	// The new OTA version. A null value indicates that no new version is available.
+	//
 	// example:
 	//
 	// 0.0.1-D-20220630.11****
 	NewOtaVersion *string `json:"NewOtaVersion,omitempty" xml:"NewOtaVersion,omitempty"`
+	// The current OTA version.
+	//
 	// example:
 	//
 	// 0.0.1-D-20220615.11****
 	OtaVersion *string `json:"OtaVersion,omitempty" xml:"OtaVersion,omitempty"`
+	// The ID of the OTA update task.
+	//
 	// example:
 	//
 	// ota-e49929gv8acz5****
@@ -1098,11 +1278,7 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags struct {
 	//
 	// department
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签类型。取值范围：
-	//
-	// Custom：自定义标签。
-	//
-	// System：系统标签。
+	// 标签类型。
 	//
 	// example:
 	//

@@ -17,6 +17,8 @@ type iListAppInstanceGroupRequest interface {
 	GetAppInstanceGroupName() *string
 	SetBizRegionId(v string) *ListAppInstanceGroupRequest
 	GetBizRegionId() *string
+	SetExcludedUserGroupIds(v []*string) *ListAppInstanceGroupRequest
+	GetExcludedUserGroupIds() []*string
 	SetNodeInstanceType(v string) *ListAppInstanceGroupRequest
 	GetNodeInstanceType() *string
 	SetOfficeSiteId(v string) *ListAppInstanceGroupRequest
@@ -33,6 +35,8 @@ type iListAppInstanceGroupRequest interface {
 	GetStatus() []*string
 	SetTag(v []*ListAppInstanceGroupRequestTag) *ListAppInstanceGroupRequest
 	GetTag() []*ListAppInstanceGroupRequestTag
+	SetUserGroupIds(v []*string) *ListAppInstanceGroupRequest
+	GetUserGroupIds() []*string
 }
 
 type ListAppInstanceGroupRequest struct {
@@ -62,6 +66,9 @@ type ListAppInstanceGroupRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// if can be null:
+	// true
+	ExcludedUserGroupIds []*string `json:"ExcludedUserGroupIds,omitempty" xml:"ExcludedUserGroupIds,omitempty" type:"Repeated"`
 	// The ID of the resource specification that you purchase. You can call the [ListNodeInstanceType](~~ListNodeInstanceType~~) operation to obtain the ID.
 	//
 	// example:
@@ -109,6 +116,9 @@ type ListAppInstanceGroupRequest struct {
 	// if can be null:
 	// true
 	Tag []*ListAppInstanceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// if can be null:
+	// true
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s ListAppInstanceGroupRequest) String() string {
@@ -133,6 +143,10 @@ func (s *ListAppInstanceGroupRequest) GetAppInstanceGroupName() *string {
 
 func (s *ListAppInstanceGroupRequest) GetBizRegionId() *string {
 	return s.BizRegionId
+}
+
+func (s *ListAppInstanceGroupRequest) GetExcludedUserGroupIds() []*string {
+	return s.ExcludedUserGroupIds
 }
 
 func (s *ListAppInstanceGroupRequest) GetNodeInstanceType() *string {
@@ -167,6 +181,10 @@ func (s *ListAppInstanceGroupRequest) GetTag() []*ListAppInstanceGroupRequestTag
 	return s.Tag
 }
 
+func (s *ListAppInstanceGroupRequest) GetUserGroupIds() []*string {
+	return s.UserGroupIds
+}
+
 func (s *ListAppInstanceGroupRequest) SetAppCenterImageId(v string) *ListAppInstanceGroupRequest {
 	s.AppCenterImageId = &v
 	return s
@@ -184,6 +202,11 @@ func (s *ListAppInstanceGroupRequest) SetAppInstanceGroupName(v string) *ListApp
 
 func (s *ListAppInstanceGroupRequest) SetBizRegionId(v string) *ListAppInstanceGroupRequest {
 	s.BizRegionId = &v
+	return s
+}
+
+func (s *ListAppInstanceGroupRequest) SetExcludedUserGroupIds(v []*string) *ListAppInstanceGroupRequest {
+	s.ExcludedUserGroupIds = v
 	return s
 }
 
@@ -224,6 +247,11 @@ func (s *ListAppInstanceGroupRequest) SetStatus(v []*string) *ListAppInstanceGro
 
 func (s *ListAppInstanceGroupRequest) SetTag(v []*ListAppInstanceGroupRequestTag) *ListAppInstanceGroupRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *ListAppInstanceGroupRequest) SetUserGroupIds(v []*string) *ListAppInstanceGroupRequest {
+	s.UserGroupIds = v
 	return s
 }
 

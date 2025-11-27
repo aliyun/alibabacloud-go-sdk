@@ -54,71 +54,187 @@ type iListImageRequest interface {
 }
 
 type ListImageRequest struct {
+	// The regions that are supported. The EDS images are centralized. Use this parameter to query the regions where the image is deployed.
 	BizRegionIdList []*string `json:"BizRegionIdList,omitempty" xml:"BizRegionIdList,omitempty" type:"Repeated"`
+	// The service type. This parameter is not available publicly.
+	//
+	// Valid value:
+	//
+	// 	- 1 (default)
+	//
 	// example:
 	//
 	// 1
-	BizType     *int32    `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	BizTypeList []*int32  `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
+	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The list of all service types. It is not available publicly.
+	BizTypeList []*int32 `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
+	// The features supported by the image.
 	FeatureList []*string `json:"FeatureList,omitempty" xml:"FeatureList,omitempty" type:"Repeated"`
+	// The image version.
+	//
 	// example:
 	//
 	// 2.0.3-xxxx
 	FotaVersion *string `json:"FotaVersion,omitempty" xml:"FotaVersion,omitempty"`
+	// The image ID.
+	//
 	// example:
 	//
 	// img-bp13mu****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image name. Fuzzy match is supported.
+	//
 	// example:
 	//
 	// DemoImage
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The type of the images.
+	//
+	// Valid values:
+	//
+	// 	- User: a custom image.
+	//
+	// 	- Shared: a shared image.
+	//
+	// 	- System: a system image.
+	//
+	// 	- Community: a community image.
+	//
 	// example:
 	//
 	// User
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// The language.
+	//
+	// Valid values:
+	//
+	// 	- en-US: English.
+	//
+	// 	- zh-HK: Chinese, Traditional (Hong Kong, China).
+	//
+	// 	- zh-CN: Simplified Chinese.
+	//
+	// 	- ja-JP: Japanese.
+	//
 	// example:
 	//
 	// zh-CN
 	LanguageType *string `json:"LanguageType,omitempty" xml:"LanguageType,omitempty"`
+	// The OS type of the image.
+	//
+	// Valid values:
+	//
+	// 	- Linux
+	//
+	// 	- Unknown
+	//
+	// 	- Windows
+	//
+	// 	- Android
+	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// The image encapsulation type.
+	//
+	// Valid values:
+	//
+	// 	- Ecs_Container: ECS and Docker image
+	//
+	// 	- Ecs: ECS image
+	//
 	// example:
 	//
 	// Ecs
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the operating system platform.
+	//
+	// Valid values:
+	//
+	// 	- Ubuntu
+	//
+	// 	- Debian
+	//
+	// 	- Windows Server 2022
+	//
+	// 	- Windows Server 2019
+	//
+	// 	- Windows Server 2016
+	//
+	// 	- Windows 11
+	//
+	// 	- Windows 10
+	//
 	// example:
 	//
 	// Windows Server 2019
-	PlatformName     *string   `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
+	PlatformName *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
+	// The list of supported platform types. For valid values, refer to PlatformName above.
 	PlatformNameList []*string `json:"PlatformNameList,omitempty" xml:"PlatformNameList,omitempty" type:"Repeated"`
+	// The product type.
+	//
+	// Valid values:
+	//
+	// 	- CloudDesktop: Elastic Desktop Service
+	//
+	// 	- CloudApp: App Streaming
+	//
+	// 	- WuyingServer: Workstation
+	//
 	// example:
 	//
 	// CloudApp
-	ProductType     *string   `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The list of products that are supported when the image supports multiple products.
 	ProductTypeList []*string `json:"ProductTypeList,omitempty" xml:"ProductTypeList,omitempty" type:"Repeated"`
+	// The protocol type of the image.
+	//
+	// Valid values:
+	//
+	// 	- HDX: the High-definition Experience (HDX) protocol
+	//
+	// 	- ASP: the Alibaba Cloud-developed ASP protocol
+	//
 	// example:
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// Find images with certain fixed specifications.
+	//
 	// example:
 	//
 	// eds.enterprise_office.2c4g
 	ResourceInstanceType *string `json:"ResourceInstanceType,omitempty" xml:"ResourceInstanceType,omitempty"`
+	// The status of the image. You can query images in the specified status. By default, all images in the Not Deleted state are queried.
+	//
+	// Valid values:
+	//
+	// 	- AVAILABLE: The image is available.
+	//
+	// 	- INIT: The image is being initialized.
+	//
+	// 	- CREATE_FAILED: The image failed to be created.
+	//
+	// 	- CREATING: The image is being created.
+	//
 	// example:
 	//
 	// INIT
-	Status  *string                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags to query.
 	TagList []*ListImageRequestTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 }
 
@@ -333,7 +449,17 @@ func (s *ListImageRequest) Validate() error {
 }
 
 type ListImageRequestTagList struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the custom tag.
+	//
+	// example:
+	//
+	// env
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the custom tag.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

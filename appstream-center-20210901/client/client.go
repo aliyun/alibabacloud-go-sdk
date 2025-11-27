@@ -385,6 +385,10 @@ func (client *Client) CreateAppInstanceGroupWithOptions(tmpReq *CreateAppInstanc
 		body["SubPayType"] = request.SubPayType
 	}
 
+	if !dara.IsNil(request.UserGroupIds) {
+		body["UserGroupIds"] = request.UserGroupIds
+	}
+
 	if !dara.IsNil(request.UserInfoShrink) {
 		body["UserInfo"] = request.UserInfoShrink
 	}
@@ -1706,8 +1710,16 @@ func (client *Client) ListAppInstanceGroupWithOptions(request *ListAppInstanceGr
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExcludedUserGroupIds) {
+		body["ExcludedUserGroupIds"] = request.ExcludedUserGroupIds
+	}
+
 	if !dara.IsNil(request.Status) {
 		body["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.UserGroupIds) {
+		body["UserGroupIds"] = request.UserGroupIds
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2014,7 +2026,7 @@ func (client *Client) ListBindInfo(request *ListBindInfoRequest) (_result *ListB
 
 // Summary:
 //
-// 列表显示镜像
+// Queries the image information about an ECS instance.
 //
 // @param request - ListImageRequest
 //
@@ -2140,7 +2152,7 @@ func (client *Client) ListImageWithOptions(request *ListImageRequest, runtime *d
 
 // Summary:
 //
-// 列表显示镜像
+// Queries the image information about an ECS instance.
 //
 // @param request - ListImageRequest
 //
@@ -3078,7 +3090,11 @@ func (client *Client) ModifyAppPolicy(request *ModifyAppPolicyRequest) (_result 
 
 // Summary:
 //
-// 修改浏览器交付组
+// Modifies the properties of the cloud browser.
+//
+// Description:
+//
+// Modifies the properties of the cloud browser.
 //
 // @param tmpReq - ModifyBrowserInstanceGroupRequest
 //
@@ -3162,7 +3178,11 @@ func (client *Client) ModifyBrowserInstanceGroupWithOptions(tmpReq *ModifyBrowse
 
 // Summary:
 //
-// 修改浏览器交付组
+// Modifies the properties of the cloud browser.
+//
+// Description:
+//
+// Modifies the properties of the cloud browser.
 //
 // @param request - ModifyBrowserInstanceGroupRequest
 //

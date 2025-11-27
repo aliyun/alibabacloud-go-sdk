@@ -354,8 +354,13 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	// example:
 	//
 	// PUBLISHED
-	Status *string                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status                    *string                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportUserGroupMixedAuth *bool                                                         `json:"SupportUserGroupMixedAuth,omitempty" xml:"SupportUserGroupMixedAuth,omitempty"`
+	Tags                      []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Mixed
+	UserGroupAuthMode *string `json:"UserGroupAuthMode,omitempty" xml:"UserGroupAuthMode,omitempty"`
 }
 
 func (s ListAppInstanceGroupResponseBodyAppInstanceGroupModels) String() string {
@@ -506,8 +511,16 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) GetStatus() *st
 	return s.Status
 }
 
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) GetSupportUserGroupMixedAuth() *bool {
+	return s.SupportUserGroupMixedAuth
+}
+
 func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) GetTags() []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsTags {
 	return s.Tags
+}
+
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) GetUserGroupAuthMode() *string {
+	return s.UserGroupAuthMode
 }
 
 func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetAccessType(v string) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
@@ -685,8 +698,18 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetStatus(v str
 	return s
 }
 
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetSupportUserGroupMixedAuth(v bool) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.SupportUserGroupMixedAuth = &v
+	return s
+}
+
 func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetTags(v []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsTags) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.Tags = v
+	return s
+}
+
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetUserGroupAuthMode(v string) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.UserGroupAuthMode = &v
 	return s
 }
 

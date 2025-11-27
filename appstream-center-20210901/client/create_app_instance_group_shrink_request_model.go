@@ -57,6 +57,8 @@ type iCreateAppInstanceGroupShrinkRequest interface {
 	GetSubPayType() *string
 	SetUserDefinePolicyShrink(v string) *CreateAppInstanceGroupShrinkRequest
 	GetUserDefinePolicyShrink() *string
+	SetUserGroupIds(v []*string) *CreateAppInstanceGroupShrinkRequest
+	GetUserGroupIds() []*string
 	SetUserInfoShrink(v string) *CreateAppInstanceGroupShrinkRequest
 	GetUserInfoShrink() *string
 	SetUsers(v []*string) *CreateAppInstanceGroupShrinkRequest
@@ -161,11 +163,14 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	// example:
 	//
 	// postPaid
-	SubPayType             *string   `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
-	UserDefinePolicyShrink *string   `json:"UserDefinePolicy,omitempty" xml:"UserDefinePolicy,omitempty"`
-	UserInfoShrink         *string   `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
-	Users                  []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
-	VideoPolicyShrink      *string   `json:"VideoPolicy,omitempty" xml:"VideoPolicy,omitempty"`
+	SubPayType             *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
+	UserDefinePolicyShrink *string `json:"UserDefinePolicy,omitempty" xml:"UserDefinePolicy,omitempty"`
+	// if can be null:
+	// true
+	UserGroupIds      []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	UserInfoShrink    *string   `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
+	Users             []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	VideoPolicyShrink *string   `json:"VideoPolicy,omitempty" xml:"VideoPolicy,omitempty"`
 }
 
 func (s CreateAppInstanceGroupShrinkRequest) String() string {
@@ -270,6 +275,10 @@ func (s *CreateAppInstanceGroupShrinkRequest) GetSubPayType() *string {
 
 func (s *CreateAppInstanceGroupShrinkRequest) GetUserDefinePolicyShrink() *string {
 	return s.UserDefinePolicyShrink
+}
+
+func (s *CreateAppInstanceGroupShrinkRequest) GetUserGroupIds() []*string {
+	return s.UserGroupIds
 }
 
 func (s *CreateAppInstanceGroupShrinkRequest) GetUserInfoShrink() *string {
@@ -401,6 +410,11 @@ func (s *CreateAppInstanceGroupShrinkRequest) SetSubPayType(v string) *CreateApp
 
 func (s *CreateAppInstanceGroupShrinkRequest) SetUserDefinePolicyShrink(v string) *CreateAppInstanceGroupShrinkRequest {
 	s.UserDefinePolicyShrink = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupShrinkRequest) SetUserGroupIds(v []*string) *CreateAppInstanceGroupShrinkRequest {
+	s.UserGroupIds = v
 	return s
 }
 

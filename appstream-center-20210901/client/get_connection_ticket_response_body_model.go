@@ -52,7 +52,8 @@ type GetConnectionTicketResponseBody struct {
 	//
 	// p-0bxls9m3cl7s****
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
-	AvatarId                *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	// The avatar ID.
+	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
 	// The region ID.
 	//
 	// example:

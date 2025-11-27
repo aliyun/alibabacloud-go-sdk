@@ -24,20 +24,28 @@ type iModifyBrowserInstanceGroupShrinkRequest interface {
 }
 
 type ModifyBrowserInstanceGroupShrinkRequest struct {
+	// The browser settings.
 	BrowserConfigShrink *string `json:"BrowserConfig,omitempty" xml:"BrowserConfig,omitempty"`
+	// The ID of the cloud browser to be modified.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// big-0bz55ixxxxx9xi9w9
 	BrowserInstanceGroupId *string `json:"BrowserInstanceGroupId,omitempty" xml:"BrowserInstanceGroupId,omitempty"`
+	// The name of the cloud browser.
+	//
 	// example:
 	//
 	// BrowserTest
 	CloudBrowserName *string `json:"CloudBrowserName,omitempty" xml:"CloudBrowserName,omitempty"`
-	NetworkShrink    *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	PolicyShrink     *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	TimersShrink     *string `json:"Timers,omitempty" xml:"Timers,omitempty"`
+	// The network configurations.
+	NetworkShrink *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The access policy.
+	PolicyShrink *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The timer.
+	TimersShrink *string `json:"Timers,omitempty" xml:"Timers,omitempty"`
 }
 
 func (s ModifyBrowserInstanceGroupShrinkRequest) String() string {

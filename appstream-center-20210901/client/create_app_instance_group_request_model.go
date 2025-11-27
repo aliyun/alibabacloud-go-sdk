@@ -57,6 +57,8 @@ type iCreateAppInstanceGroupRequest interface {
 	GetSubPayType() *string
 	SetUserDefinePolicy(v *CreateAppInstanceGroupRequestUserDefinePolicy) *CreateAppInstanceGroupRequest
 	GetUserDefinePolicy() *CreateAppInstanceGroupRequestUserDefinePolicy
+	SetUserGroupIds(v []*string) *CreateAppInstanceGroupRequest
+	GetUserGroupIds() []*string
 	SetUserInfo(v *CreateAppInstanceGroupRequestUserInfo) *CreateAppInstanceGroupRequest
 	GetUserInfo() *CreateAppInstanceGroupRequestUserInfo
 	SetUsers(v []*string) *CreateAppInstanceGroupRequest
@@ -163,9 +165,12 @@ type CreateAppInstanceGroupRequest struct {
 	// postPaid
 	SubPayType       *string                                        `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
 	UserDefinePolicy *CreateAppInstanceGroupRequestUserDefinePolicy `json:"UserDefinePolicy,omitempty" xml:"UserDefinePolicy,omitempty" type:"Struct"`
-	UserInfo         *CreateAppInstanceGroupRequestUserInfo         `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
-	Users            []*string                                      `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
-	VideoPolicy      *CreateAppInstanceGroupRequestVideoPolicy      `json:"VideoPolicy,omitempty" xml:"VideoPolicy,omitempty" type:"Struct"`
+	// if can be null:
+	// true
+	UserGroupIds []*string                                 `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	UserInfo     *CreateAppInstanceGroupRequestUserInfo    `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+	Users        []*string                                 `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	VideoPolicy  *CreateAppInstanceGroupRequestVideoPolicy `json:"VideoPolicy,omitempty" xml:"VideoPolicy,omitempty" type:"Struct"`
 }
 
 func (s CreateAppInstanceGroupRequest) String() string {
@@ -270,6 +275,10 @@ func (s *CreateAppInstanceGroupRequest) GetSubPayType() *string {
 
 func (s *CreateAppInstanceGroupRequest) GetUserDefinePolicy() *CreateAppInstanceGroupRequestUserDefinePolicy {
 	return s.UserDefinePolicy
+}
+
+func (s *CreateAppInstanceGroupRequest) GetUserGroupIds() []*string {
+	return s.UserGroupIds
 }
 
 func (s *CreateAppInstanceGroupRequest) GetUserInfo() *CreateAppInstanceGroupRequestUserInfo {
@@ -401,6 +410,11 @@ func (s *CreateAppInstanceGroupRequest) SetSubPayType(v string) *CreateAppInstan
 
 func (s *CreateAppInstanceGroupRequest) SetUserDefinePolicy(v *CreateAppInstanceGroupRequestUserDefinePolicy) *CreateAppInstanceGroupRequest {
 	s.UserDefinePolicy = v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequest) SetUserGroupIds(v []*string) *CreateAppInstanceGroupRequest {
+	s.UserGroupIds = v
 	return s
 }
 

@@ -300,6 +300,10 @@ func (client *Client) CreateAppInstanceGroupWithContext(ctx context.Context, tmp
 		body["SubPayType"] = request.SubPayType
 	}
 
+	if !dara.IsNil(request.UserGroupIds) {
+		body["UserGroupIds"] = request.UserGroupIds
+	}
+
 	if !dara.IsNil(request.UserInfoShrink) {
 		body["UserInfo"] = request.UserInfoShrink
 	}
@@ -1307,8 +1311,16 @@ func (client *Client) ListAppInstanceGroupWithContext(ctx context.Context, reque
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExcludedUserGroupIds) {
+		body["ExcludedUserGroupIds"] = request.ExcludedUserGroupIds
+	}
+
 	if !dara.IsNil(request.Status) {
 		body["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.UserGroupIds) {
+		body["UserGroupIds"] = request.UserGroupIds
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1543,7 +1555,7 @@ func (client *Client) ListBindInfoWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 列表显示镜像
+// Queries the image information about an ECS instance.
 //
 // @param request - ListImageRequest
 //
@@ -2354,7 +2366,11 @@ func (client *Client) ModifyAppPolicyWithContext(ctx context.Context, tmpReq *Mo
 
 // Summary:
 //
-// 修改浏览器交付组
+// Modifies the properties of the cloud browser.
+//
+// Description:
+//
+// Modifies the properties of the cloud browser.
 //
 // @param tmpReq - ModifyBrowserInstanceGroupRequest
 //

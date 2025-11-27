@@ -103,7 +103,8 @@ type GetConnectionTicketRequest struct {
 	// example:
 	//
 	// alice
-	EndUserId         *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The environment configuration.
 	EnvironmentConfig *string `json:"EnvironmentConfig,omitempty" xml:"EnvironmentConfig,omitempty"`
 	// The product type.
 	//

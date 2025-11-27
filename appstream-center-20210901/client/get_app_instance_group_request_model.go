@@ -16,7 +16,7 @@ type iGetAppInstanceGroupRequest interface {
 }
 
 type GetAppInstanceGroupRequest struct {
-	// The ID of the delivery group. You can call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the ID.
+	// The ID of the delivery group. You can call the [listAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -24,6 +24,12 @@ type GetAppInstanceGroupRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The product type.
+	//
+	// Valid value:
+	//
+	// 	- CloudApp: App Streaming
+	//
 	// This parameter is required.
 	//
 	// example:
