@@ -2376,6 +2376,10 @@ func (client *Client) ListAgentRuntimesWithOptions(request *ListAgentRuntimesReq
 		query["searchMode"] = request.SearchMode
 	}
 
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),

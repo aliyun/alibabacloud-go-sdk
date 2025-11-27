@@ -17,6 +17,8 @@ type iOssConfiguration interface {
 	GetPermission() *string
 	SetPrefix(v string) *OssConfiguration
 	GetPrefix() *string
+	SetRegion(v string) *OssConfiguration
+	GetRegion() *string
 }
 
 type OssConfiguration struct {
@@ -27,6 +29,10 @@ type OssConfiguration struct {
 	Permission *string `json:"permission,omitempty" xml:"permission,omitempty"`
 	// This parameter is required.
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// example:
+	//
+	// ch-hangzhou
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 }
 
 func (s OssConfiguration) String() string {
@@ -53,6 +59,10 @@ func (s *OssConfiguration) GetPrefix() *string {
 	return s.Prefix
 }
 
+func (s *OssConfiguration) GetRegion() *string {
+	return s.Region
+}
+
 func (s *OssConfiguration) SetBucketName(v string) *OssConfiguration {
 	s.BucketName = &v
 	return s
@@ -70,6 +80,11 @@ func (s *OssConfiguration) SetPermission(v string) *OssConfiguration {
 
 func (s *OssConfiguration) SetPrefix(v string) *OssConfiguration {
 	s.Prefix = &v
+	return s
+}
+
+func (s *OssConfiguration) SetRegion(v string) *OssConfiguration {
+	s.Region = &v
 	return s
 }
 

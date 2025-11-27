@@ -17,6 +17,8 @@ type iListAgentRuntimesRequest interface {
 	GetPageSize() *int32
 	SetSearchMode(v string) *ListAgentRuntimesRequest
 	GetSearchMode() *string
+	SetStatus(v string) *ListAgentRuntimesRequest
+	GetStatus() *string
 }
 
 type ListAgentRuntimesRequest struct {
@@ -44,6 +46,12 @@ type ListAgentRuntimesRequest struct {
 	//
 	// fuzzy
 	SearchMode *string `json:"searchMode,omitempty" xml:"searchMode,omitempty"`
+	// 根据状态进行过滤，多个状态用逗号分隔，支持精确匹配
+	//
+	// example:
+	//
+	// READY,CREATING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListAgentRuntimesRequest) String() string {
@@ -70,6 +78,10 @@ func (s *ListAgentRuntimesRequest) GetSearchMode() *string {
 	return s.SearchMode
 }
 
+func (s *ListAgentRuntimesRequest) GetStatus() *string {
+	return s.Status
+}
+
 func (s *ListAgentRuntimesRequest) SetAgentRuntimeName(v string) *ListAgentRuntimesRequest {
 	s.AgentRuntimeName = &v
 	return s
@@ -87,6 +99,11 @@ func (s *ListAgentRuntimesRequest) SetPageSize(v int32) *ListAgentRuntimesReques
 
 func (s *ListAgentRuntimesRequest) SetSearchMode(v string) *ListAgentRuntimesRequest {
 	s.SearchMode = &v
+	return s
+}
+
+func (s *ListAgentRuntimesRequest) SetStatus(v string) *ListAgentRuntimesRequest {
+	s.Status = &v
 	return s
 }
 

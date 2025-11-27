@@ -17,6 +17,8 @@ type iTemplate interface {
 	GetCreatedAt() *string
 	SetCredentialConfiguration(v *CredentialConfiguration) *Template
 	GetCredentialConfiguration() *CredentialConfiguration
+	SetDescription(v string) *Template
+	GetDescription() *string
 	SetDiskSize(v int32) *Template
 	GetDiskSize() *int32
 	SetEnvironmentVariables(v string) *Template
@@ -67,6 +69,7 @@ type Template struct {
 	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
 	CreatedAt               *string                  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
 	CredentialConfiguration *CredentialConfiguration `json:"credentialConfiguration,omitempty" xml:"credentialConfiguration,omitempty"`
+	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
 	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	EnvironmentVariables    *string                  `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
 	ExecutionRoleArn        *string                  `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
@@ -115,6 +118,10 @@ func (s *Template) GetCreatedAt() *string {
 
 func (s *Template) GetCredentialConfiguration() *CredentialConfiguration {
 	return s.CredentialConfiguration
+}
+
+func (s *Template) GetDescription() *string {
+	return s.Description
 }
 
 func (s *Template) GetDiskSize() *int32 {
@@ -218,6 +225,11 @@ func (s *Template) SetCreatedAt(v string) *Template {
 
 func (s *Template) SetCredentialConfiguration(v *CredentialConfiguration) *Template {
 	s.CredentialConfiguration = v
+	return s
+}
+
+func (s *Template) SetDescription(v string) *Template {
+	s.Description = &v
 	return s
 }
 
