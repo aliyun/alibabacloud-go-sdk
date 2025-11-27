@@ -95,7 +95,12 @@ func (s *GetMediaResourceIdResponseBody) SetSuccess(v bool) *GetMediaResourceIdR
 }
 
 func (s *GetMediaResourceIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaResourceIdResponseBodyData struct {

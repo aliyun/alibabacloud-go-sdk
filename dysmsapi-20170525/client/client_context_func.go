@@ -17,9 +17,11 @@ import (
 //
 // @return AddExtCodeSignResponse
 func (client *Client) AddExtCodeSignWithContext(ctx context.Context, request *AddExtCodeSignRequest, runtime *dara.RuntimeOptions) (_result *AddExtCodeSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExtCode) {
@@ -83,9 +85,11 @@ func (client *Client) AddExtCodeSignWithContext(ctx context.Context, request *Ad
 //
 // @return AddShortUrlResponse
 func (client *Client) AddShortUrlWithContext(ctx context.Context, request *AddShortUrlRequest, runtime *dara.RuntimeOptions) (_result *AddShortUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -169,9 +173,11 @@ func (client *Client) AddShortUrlWithContext(ctx context.Context, request *AddSh
 //
 // @return AddSmsSignResponse
 func (client *Client) AddSmsSignWithContext(ctx context.Context, request *AddSmsSignRequest, runtime *dara.RuntimeOptions) (_result *AddSmsSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -265,9 +271,11 @@ func (client *Client) AddSmsSignWithContext(ctx context.Context, request *AddSms
 //
 // @return AddSmsTemplateResponse
 func (client *Client) AddSmsTemplateWithContext(ctx context.Context, request *AddSmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *AddSmsTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -331,9 +339,11 @@ func (client *Client) AddSmsTemplateWithContext(ctx context.Context, request *Ad
 //
 // @return ChangeSignatureQualificationResponse
 func (client *Client) ChangeSignatureQualificationWithContext(ctx context.Context, request *ChangeSignatureQualificationRequest, runtime *dara.RuntimeOptions) (_result *ChangeSignatureQualificationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthorizationLetterId) {
@@ -399,9 +409,11 @@ func (client *Client) ChangeSignatureQualificationWithContext(ctx context.Contex
 //
 // @return CheckMobilesCardSupportResponse
 func (client *Client) CheckMobilesCardSupportWithContext(ctx context.Context, request *CheckMobilesCardSupportRequest, runtime *dara.RuntimeOptions) (_result *CheckMobilesCardSupportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Mobiles) {
@@ -445,9 +457,11 @@ func (client *Client) CheckMobilesCardSupportWithContext(ctx context.Context, re
 //
 // @return ConversionDataIntlResponse
 func (client *Client) ConversionDataIntlWithContext(ctx context.Context, request *ConversionDataIntlRequest, runtime *dara.RuntimeOptions) (_result *ConversionDataIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConversionRate) {
@@ -515,9 +529,11 @@ func (client *Client) ConversionDataIntlWithContext(ctx context.Context, request
 //
 // @return CreateCardSmsTemplateResponse
 func (client *Client) CreateCardSmsTemplateWithContext(ctx context.Context, tmpReq *CreateCardSmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateCardSmsTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateCardSmsTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -575,9 +591,11 @@ func (client *Client) CreateCardSmsTemplateWithContext(ctx context.Context, tmpR
 //
 // @return CreateSmartShortUrlResponse
 func (client *Client) CreateSmartShortUrlWithContext(ctx context.Context, request *CreateSmartShortUrlRequest, runtime *dara.RuntimeOptions) (_result *CreateSmartShortUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OutId) {
@@ -637,9 +655,11 @@ func (client *Client) CreateSmartShortUrlWithContext(ctx context.Context, reques
 //
 // @return CreateSmsAuthorizationLetterResponse
 func (client *Client) CreateSmsAuthorizationLetterWithContext(ctx context.Context, tmpReq *CreateSmsAuthorizationLetterRequest, runtime *dara.RuntimeOptions) (_result *CreateSmsAuthorizationLetterResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateSmsAuthorizationLetterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -731,9 +751,11 @@ func (client *Client) CreateSmsAuthorizationLetterWithContext(ctx context.Contex
 //
 // @return CreateSmsSignResponse
 func (client *Client) CreateSmsSignWithContext(ctx context.Context, tmpReq *CreateSmsSignRequest, runtime *dara.RuntimeOptions) (_result *CreateSmsSignResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateSmsSignShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -837,9 +859,11 @@ func (client *Client) CreateSmsSignWithContext(ctx context.Context, tmpReq *Crea
 //
 // @return CreateSmsTemplateResponse
 func (client *Client) CreateSmsTemplateWithContext(ctx context.Context, tmpReq *CreateSmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateSmsTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateSmsTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -933,9 +957,11 @@ func (client *Client) CreateSmsTemplateWithContext(ctx context.Context, tmpReq *
 //
 // @return DeleteExtCodeSignResponse
 func (client *Client) DeleteExtCodeSignWithContext(ctx context.Context, request *DeleteExtCodeSignRequest, runtime *dara.RuntimeOptions) (_result *DeleteExtCodeSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExtCode) {
@@ -997,9 +1023,11 @@ func (client *Client) DeleteExtCodeSignWithContext(ctx context.Context, request 
 //
 // @return DeleteShortUrlResponse
 func (client *Client) DeleteShortUrlWithContext(ctx context.Context, request *DeleteShortUrlRequest, runtime *dara.RuntimeOptions) (_result *DeleteShortUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1053,9 +1081,11 @@ func (client *Client) DeleteShortUrlWithContext(ctx context.Context, request *De
 //
 // @return DeleteSmsQualificationResponse
 func (client *Client) DeleteSmsQualificationWithContext(ctx context.Context, request *DeleteSmsQualificationRequest, runtime *dara.RuntimeOptions) (_result *DeleteSmsQualificationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -1121,9 +1151,11 @@ func (client *Client) DeleteSmsQualificationWithContext(ctx context.Context, req
 //
 // @return DeleteSmsSignResponse
 func (client *Client) DeleteSmsSignWithContext(ctx context.Context, request *DeleteSmsSignRequest, runtime *dara.RuntimeOptions) (_result *DeleteSmsSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1187,9 +1219,11 @@ func (client *Client) DeleteSmsSignWithContext(ctx context.Context, request *Del
 //
 // @return DeleteSmsTemplateResponse
 func (client *Client) DeleteSmsTemplateWithContext(ctx context.Context, request *DeleteSmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteSmsTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1241,9 +1275,11 @@ func (client *Client) DeleteSmsTemplateWithContext(ctx context.Context, request 
 //
 // @return GetCardSmsDetailsResponse
 func (client *Client) GetCardSmsDetailsWithContext(ctx context.Context, request *GetCardSmsDetailsRequest, runtime *dara.RuntimeOptions) (_result *GetCardSmsDetailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizCardId) {
@@ -1325,9 +1361,11 @@ func (client *Client) GetCardSmsDetailsWithContext(ctx context.Context, request 
 //
 // @return GetCardSmsLinkResponse
 func (client *Client) GetCardSmsLinkWithContext(ctx context.Context, request *GetCardSmsLinkRequest, runtime *dara.RuntimeOptions) (_result *GetCardSmsLinkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CardCodeType) {
@@ -1405,9 +1443,11 @@ func (client *Client) GetCardSmsLinkWithContext(ctx context.Context, request *Ge
 //
 // @return GetMediaResourceIdResponse
 func (client *Client) GetMediaResourceIdWithContext(ctx context.Context, request *GetMediaResourceIdRequest, runtime *dara.RuntimeOptions) (_result *GetMediaResourceIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExtendInfo) {
@@ -1469,9 +1509,11 @@ func (client *Client) GetMediaResourceIdWithContext(ctx context.Context, request
 //
 // @return GetOSSInfoForUploadFileResponse
 func (client *Client) GetOSSInfoForUploadFileWithContext(ctx context.Context, request *GetOSSInfoForUploadFileRequest, runtime *dara.RuntimeOptions) (_result *GetOSSInfoForUploadFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -1523,9 +1565,11 @@ func (client *Client) GetOSSInfoForUploadFileWithContext(ctx context.Context, re
 //
 // @return GetQualificationOssInfoResponse
 func (client *Client) GetQualificationOssInfoWithContext(ctx context.Context, request *GetQualificationOssInfoRequest, runtime *dara.RuntimeOptions) (_result *GetQualificationOssInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -1569,6 +1613,62 @@ func (client *Client) GetQualificationOssInfoWithContext(ctx context.Context, re
 
 // Summary:
 //
+// 获取OCR的OSS信息
+//
+// @param request - GetSmsOcrOssInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSmsOcrOssInfoResponse
+func (client *Client) GetSmsOcrOssInfoWithContext(ctx context.Context, request *GetSmsOcrOssInfoRequest, runtime *dara.RuntimeOptions) (_result *GetSmsOcrOssInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSmsOcrOssInfo"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSmsOcrOssInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query SMS Signature Details
 //
 // Description:
@@ -1585,9 +1685,11 @@ func (client *Client) GetQualificationOssInfoWithContext(ctx context.Context, re
 //
 // @return GetSmsSignResponse
 func (client *Client) GetSmsSignWithContext(ctx context.Context, request *GetSmsSignRequest, runtime *dara.RuntimeOptions) (_result *GetSmsSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1649,9 +1751,11 @@ func (client *Client) GetSmsSignWithContext(ctx context.Context, request *GetSms
 //
 // @return GetSmsTemplateResponse
 func (client *Client) GetSmsTemplateWithContext(ctx context.Context, request *GetSmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetSmsTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1709,9 +1813,11 @@ func (client *Client) GetSmsTemplateWithContext(ctx context.Context, request *Ge
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextToken) {
@@ -1805,9 +1911,11 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 //
 // @return ModifySmsSignResponse
 func (client *Client) ModifySmsSignWithContext(ctx context.Context, request *ModifySmsSignRequest, runtime *dara.RuntimeOptions) (_result *ModifySmsSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1891,9 +1999,11 @@ func (client *Client) ModifySmsSignWithContext(ctx context.Context, request *Mod
 //
 // @return ModifySmsTemplateResponse
 func (client *Client) ModifySmsTemplateWithContext(ctx context.Context, request *ModifySmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *ModifySmsTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1967,9 +2077,11 @@ func (client *Client) ModifySmsTemplateWithContext(ctx context.Context, request 
 //
 // @return QueryCardSmsTemplateResponse
 func (client *Client) QueryCardSmsTemplateWithContext(ctx context.Context, request *QueryCardSmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *QueryCardSmsTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateCode) {
@@ -2015,9 +2127,11 @@ func (client *Client) QueryCardSmsTemplateWithContext(ctx context.Context, reque
 //
 // @return QueryCardSmsTemplateReportResponse
 func (client *Client) QueryCardSmsTemplateReportWithContext(ctx context.Context, request *QueryCardSmsTemplateReportRequest, runtime *dara.RuntimeOptions) (_result *QueryCardSmsTemplateReportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -2065,9 +2179,11 @@ func (client *Client) QueryCardSmsTemplateReportWithContext(ctx context.Context,
 //
 // @return QueryExtCodeSignResponse
 func (client *Client) QueryExtCodeSignWithContext(ctx context.Context, request *QueryExtCodeSignRequest, runtime *dara.RuntimeOptions) (_result *QueryExtCodeSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExtCode) {
@@ -2131,9 +2247,11 @@ func (client *Client) QueryExtCodeSignWithContext(ctx context.Context, request *
 //
 // @return QueryMobilesCardSupportResponse
 func (client *Client) QueryMobilesCardSupportWithContext(ctx context.Context, tmpReq *QueryMobilesCardSupportRequest, runtime *dara.RuntimeOptions) (_result *QueryMobilesCardSupportResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryMobilesCardSupportShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2187,9 +2305,11 @@ func (client *Client) QueryMobilesCardSupportWithContext(ctx context.Context, tm
 //
 // @return QueryPageSmartShortUrlLogResponse
 func (client *Client) QueryPageSmartShortUrlLogWithContext(ctx context.Context, request *QueryPageSmartShortUrlLogRequest, runtime *dara.RuntimeOptions) (_result *QueryPageSmartShortUrlLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateDateEnd) {
@@ -2261,9 +2381,11 @@ func (client *Client) QueryPageSmartShortUrlLogWithContext(ctx context.Context, 
 //
 // @return QuerySendDetailsResponse
 func (client *Client) QuerySendDetailsWithContext(ctx context.Context, request *QuerySendDetailsRequest, runtime *dara.RuntimeOptions) (_result *QuerySendDetailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -2339,9 +2461,11 @@ func (client *Client) QuerySendDetailsWithContext(ctx context.Context, request *
 //
 // @return QuerySendStatisticsResponse
 func (client *Client) QuerySendStatisticsWithContext(ctx context.Context, request *QuerySendStatisticsRequest, runtime *dara.RuntimeOptions) (_result *QuerySendStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -2423,9 +2547,11 @@ func (client *Client) QuerySendStatisticsWithContext(ctx context.Context, reques
 //
 // @return QueryShortUrlResponse
 func (client *Client) QueryShortUrlWithContext(ctx context.Context, request *QueryShortUrlRequest, runtime *dara.RuntimeOptions) (_result *QueryShortUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2479,9 +2605,11 @@ func (client *Client) QueryShortUrlWithContext(ctx context.Context, request *Que
 //
 // @return QuerySingleSmsQualificationResponse
 func (client *Client) QuerySingleSmsQualificationWithContext(ctx context.Context, request *QuerySingleSmsQualificationRequest, runtime *dara.RuntimeOptions) (_result *QuerySingleSmsQualificationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -2537,9 +2665,11 @@ func (client *Client) QuerySingleSmsQualificationWithContext(ctx context.Context
 //
 // @return QuerySmsAuthorizationLetterResponse
 func (client *Client) QuerySmsAuthorizationLetterWithContext(ctx context.Context, tmpReq *QuerySmsAuthorizationLetterRequest, runtime *dara.RuntimeOptions) (_result *QuerySmsAuthorizationLetterResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QuerySmsAuthorizationLetterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2613,9 +2743,11 @@ func (client *Client) QuerySmsAuthorizationLetterWithContext(ctx context.Context
 //
 // @return QuerySmsQualificationRecordResponse
 func (client *Client) QuerySmsQualificationRecordWithContext(ctx context.Context, request *QuerySmsQualificationRecordRequest, runtime *dara.RuntimeOptions) (_result *QuerySmsQualificationRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CompanyName) {
@@ -2703,9 +2835,11 @@ func (client *Client) QuerySmsQualificationRecordWithContext(ctx context.Context
 //
 // @return QuerySmsSignResponse
 func (client *Client) QuerySmsSignWithContext(ctx context.Context, request *QuerySmsSignRequest, runtime *dara.RuntimeOptions) (_result *QuerySmsSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2765,9 +2899,11 @@ func (client *Client) QuerySmsSignWithContext(ctx context.Context, request *Quer
 //
 // @return QuerySmsSignListResponse
 func (client *Client) QuerySmsSignListWithContext(ctx context.Context, request *QuerySmsSignListRequest, runtime *dara.RuntimeOptions) (_result *QuerySmsSignListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2833,9 +2969,11 @@ func (client *Client) QuerySmsSignListWithContext(ctx context.Context, request *
 //
 // @return QuerySmsTemplateResponse
 func (client *Client) QuerySmsTemplateWithContext(ctx context.Context, request *QuerySmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *QuerySmsTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2895,9 +3033,11 @@ func (client *Client) QuerySmsTemplateWithContext(ctx context.Context, request *
 //
 // @return QuerySmsTemplateListResponse
 func (client *Client) QuerySmsTemplateListWithContext(ctx context.Context, request *QuerySmsTemplateListRequest, runtime *dara.RuntimeOptions) (_result *QuerySmsTemplateListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2953,9 +3093,11 @@ func (client *Client) QuerySmsTemplateListWithContext(ctx context.Context, reque
 //
 // @return RequiredPhoneCodeResponse
 func (client *Client) RequiredPhoneCodeWithContext(ctx context.Context, request *RequiredPhoneCodeRequest, runtime *dara.RuntimeOptions) (_result *RequiredPhoneCodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -3015,9 +3157,11 @@ func (client *Client) RequiredPhoneCodeWithContext(ctx context.Context, request 
 //
 // @return SendBatchCardSmsResponse
 func (client *Client) SendBatchCardSmsWithContext(ctx context.Context, request *SendBatchCardSmsRequest, runtime *dara.RuntimeOptions) (_result *SendBatchCardSmsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CardTemplateCode) {
@@ -3109,9 +3253,11 @@ func (client *Client) SendBatchCardSmsWithContext(ctx context.Context, request *
 //
 // @return SendBatchSmsResponse
 func (client *Client) SendBatchSmsWithContext(ctx context.Context, request *SendBatchSmsRequest, runtime *dara.RuntimeOptions) (_result *SendBatchSmsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OutId) {
@@ -3195,9 +3341,11 @@ func (client *Client) SendBatchSmsWithContext(ctx context.Context, request *Send
 //
 // @return SendCardSmsResponse
 func (client *Client) SendCardSmsWithContext(ctx context.Context, request *SendCardSmsRequest, runtime *dara.RuntimeOptions) (_result *SendCardSmsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CardObjects) {
@@ -3281,9 +3429,11 @@ func (client *Client) SendCardSmsWithContext(ctx context.Context, request *SendC
 //
 // @return SendLogisticsSmsResponse
 func (client *Client) SendLogisticsSmsWithContext(ctx context.Context, request *SendLogisticsSmsRequest, runtime *dara.RuntimeOptions) (_result *SendLogisticsSmsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExpressCompanyCode) {
@@ -3369,9 +3519,11 @@ func (client *Client) SendLogisticsSmsWithContext(ctx context.Context, request *
 //
 // @return SendSmsResponse
 func (client *Client) SendSmsWithContext(ctx context.Context, request *SendSmsRequest, runtime *dara.RuntimeOptions) (_result *SendSmsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OutId) {
@@ -3455,9 +3607,11 @@ func (client *Client) SendSmsWithContext(ctx context.Context, request *SendSmsRe
 //
 // @return SmsConversionIntlResponse
 func (client *Client) SmsConversionIntlWithContext(ctx context.Context, request *SmsConversionIntlRequest, runtime *dara.RuntimeOptions) (_result *SmsConversionIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConversionTime) {
@@ -3517,9 +3671,11 @@ func (client *Client) SmsConversionIntlWithContext(ctx context.Context, request 
 //
 // @return SubmitSmsQualificationResponse
 func (client *Client) SubmitSmsQualificationWithContext(ctx context.Context, tmpReq *SubmitSmsQualificationRequest, runtime *dara.RuntimeOptions) (_result *SubmitSmsQualificationResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitSmsQualificationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3679,9 +3835,11 @@ func (client *Client) SubmitSmsQualificationWithContext(ctx context.Context, tmp
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -3755,9 +3913,11 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -3829,9 +3989,11 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 //
 // @return UpdateExtCodeSignResponse
 func (client *Client) UpdateExtCodeSignWithContext(ctx context.Context, request *UpdateExtCodeSignRequest, runtime *dara.RuntimeOptions) (_result *UpdateExtCodeSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExistExtCode) {
@@ -3891,9 +4053,11 @@ func (client *Client) UpdateExtCodeSignWithContext(ctx context.Context, request 
 //
 // @return UpdateSmsQualificationResponse
 func (client *Client) UpdateSmsQualificationWithContext(ctx context.Context, tmpReq *UpdateSmsQualificationRequest, runtime *dara.RuntimeOptions) (_result *UpdateSmsQualificationResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateSmsQualificationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4039,9 +4203,11 @@ func (client *Client) UpdateSmsQualificationWithContext(ctx context.Context, tmp
 //
 // @return UpdateSmsSignResponse
 func (client *Client) UpdateSmsSignWithContext(ctx context.Context, tmpReq *UpdateSmsSignRequest, runtime *dara.RuntimeOptions) (_result *UpdateSmsSignResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateSmsSignShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4143,9 +4309,11 @@ func (client *Client) UpdateSmsSignWithContext(ctx context.Context, tmpReq *Upda
 //
 // @return UpdateSmsTemplateResponse
 func (client *Client) UpdateSmsTemplateWithContext(ctx context.Context, tmpReq *UpdateSmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateSmsTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateSmsTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4243,9 +4411,11 @@ func (client *Client) UpdateSmsTemplateWithContext(ctx context.Context, tmpReq *
 //
 // @return ValidPhoneCodeResponse
 func (client *Client) ValidPhoneCodeWithContext(ctx context.Context, request *ValidPhoneCodeRequest, runtime *dara.RuntimeOptions) (_result *ValidPhoneCodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertifyCode) {
@@ -4301,9 +4471,11 @@ func (client *Client) ValidPhoneCodeWithContext(ctx context.Context, request *Va
 //
 // @return VerifyLogisticsSmsMailNoResponse
 func (client *Client) VerifyLogisticsSmsMailNoWithContext(ctx context.Context, request *VerifyLogisticsSmsMailNoRequest, runtime *dara.RuntimeOptions) (_result *VerifyLogisticsSmsMailNoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExpressCompanyCode) {

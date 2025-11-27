@@ -108,7 +108,12 @@ func (s *QuerySendDetailsResponseBody) SetTotalCount(v string) *QuerySendDetails
 }
 
 func (s *QuerySendDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SmsSendDetailDTOs != nil {
+		if err := s.SmsSendDetailDTOs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuerySendDetailsResponseBodySmsSendDetailDTOs struct {
@@ -133,7 +138,16 @@ func (s *QuerySendDetailsResponseBodySmsSendDetailDTOs) SetSmsSendDetailDTO(v []
 }
 
 func (s *QuerySendDetailsResponseBodySmsSendDetailDTOs) Validate() error {
-	return dara.Validate(s)
+	if s.SmsSendDetailDTO != nil {
+		for _, item := range s.SmsSendDetailDTO {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO struct {

@@ -59,5 +59,10 @@ func (s *QueryMobilesCardSupportResponse) SetBody(v *QueryMobilesCardSupportResp
 }
 
 func (s *QueryMobilesCardSupportResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

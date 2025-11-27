@@ -59,5 +59,10 @@ func (s *SmsConversionIntlResponse) SetBody(v *SmsConversionIntlResponseBody) *S
 }
 
 func (s *SmsConversionIntlResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

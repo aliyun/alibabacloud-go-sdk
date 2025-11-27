@@ -497,7 +497,25 @@ func (s *SubmitSmsQualificationRequest) SetWhetherShare(v bool) *SubmitSmsQualif
 }
 
 func (s *SubmitSmsQualificationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.BusinessLicensePics != nil {
+		for _, item := range s.BusinessLicensePics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OtherFiles != nil {
+		for _, item := range s.OtherFiles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitSmsQualificationRequestBusinessLicensePics struct {

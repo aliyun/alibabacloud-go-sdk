@@ -107,7 +107,12 @@ func (s *QueryExtCodeSignResponseBody) SetSuccess(v bool) *QueryExtCodeSignRespo
 }
 
 func (s *QueryExtCodeSignResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryExtCodeSignResponseBodyData struct {
@@ -171,7 +176,16 @@ func (s *QueryExtCodeSignResponseBodyData) SetTotal(v int64) *QueryExtCodeSignRe
 }
 
 func (s *QueryExtCodeSignResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryExtCodeSignResponseBodyDataList struct {

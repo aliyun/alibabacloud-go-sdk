@@ -95,7 +95,12 @@ func (s *QueryMobilesCardSupportResponseBody) SetSuccess(v bool) *QueryMobilesCa
 }
 
 func (s *QueryMobilesCardSupportResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMobilesCardSupportResponseBodyData struct {
@@ -121,7 +126,16 @@ func (s *QueryMobilesCardSupportResponseBodyData) SetQueryResult(v []*QueryMobil
 }
 
 func (s *QueryMobilesCardSupportResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.QueryResult != nil {
+		for _, item := range s.QueryResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMobilesCardSupportResponseBodyDataQueryResult struct {

@@ -80,7 +80,16 @@ func (s *CreateSmartShortUrlResponseBody) SetRequestId(v string) *CreateSmartSho
 }
 
 func (s *CreateSmartShortUrlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Model != nil {
+		for _, item := range s.Model {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateSmartShortUrlResponseBodyModel struct {

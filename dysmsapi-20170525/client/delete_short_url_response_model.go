@@ -59,5 +59,10 @@ func (s *DeleteShortUrlResponse) SetBody(v *DeleteShortUrlResponseBody) *DeleteS
 }
 
 func (s *DeleteShortUrlResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

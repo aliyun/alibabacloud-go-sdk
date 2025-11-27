@@ -110,7 +110,12 @@ func (s *GetCardSmsDetailsResponseBody) SetSuccess(v bool) *GetCardSmsDetailsRes
 }
 
 func (s *GetCardSmsDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CardSendDetailDTO != nil {
+		if err := s.CardSendDetailDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCardSmsDetailsResponseBodyCardSendDetailDTO struct {
@@ -181,7 +186,16 @@ func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTO) SetTotalCount(v int64) 
 }
 
 func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTO) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCardSmsDetailsResponseBodyCardSendDetailDTORecords struct {

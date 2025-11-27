@@ -59,5 +59,10 @@ func (s *QuerySmsTemplateResponse) SetBody(v *QuerySmsTemplateResponseBody) *Que
 }
 
 func (s *QuerySmsTemplateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

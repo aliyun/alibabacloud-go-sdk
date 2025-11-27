@@ -107,7 +107,12 @@ func (s *QuerySingleSmsQualificationResponseBody) SetSuccess(v bool) *QuerySingl
 }
 
 func (s *QuerySingleSmsQualificationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuerySingleSmsQualificationResponseBodyData struct {
@@ -483,7 +488,25 @@ func (s *QuerySingleSmsQualificationResponseBodyData) SetWorkOrderId(v int64) *Q
 }
 
 func (s *QuerySingleSmsQualificationResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.BusinessLicensePics != nil {
+		for _, item := range s.BusinessLicensePics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OtherFiles != nil {
+		for _, item := range s.OtherFiles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySingleSmsQualificationResponseBodyDataBusinessLicensePics struct {

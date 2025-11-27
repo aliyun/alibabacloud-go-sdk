@@ -95,7 +95,12 @@ func (s *CheckMobilesCardSupportResponseBody) SetSuccess(v bool) *CheckMobilesCa
 }
 
 func (s *CheckMobilesCardSupportResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CheckMobilesCardSupportResponseBodyData struct {
@@ -121,7 +126,16 @@ func (s *CheckMobilesCardSupportResponseBodyData) SetQueryResult(v []*CheckMobil
 }
 
 func (s *CheckMobilesCardSupportResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.QueryResult != nil {
+		for _, item := range s.QueryResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CheckMobilesCardSupportResponseBodyDataQueryResult struct {

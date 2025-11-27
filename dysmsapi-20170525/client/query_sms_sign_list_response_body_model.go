@@ -142,7 +142,16 @@ func (s *QuerySmsSignListResponseBody) SetTotalCount(v int64) *QuerySmsSignListR
 }
 
 func (s *QuerySmsSignListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SmsSignList != nil {
+		for _, item := range s.SmsSignList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySmsSignListResponseBodySmsSignList struct {
@@ -279,7 +288,12 @@ func (s *QuerySmsSignListResponseBodySmsSignList) SetAuthorizationLetterAuditPas
 }
 
 func (s *QuerySmsSignListResponseBodySmsSignList) Validate() error {
-	return dara.Validate(s)
+	if s.Reason != nil {
+		if err := s.Reason.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuerySmsSignListResponseBodySmsSignListReason struct {

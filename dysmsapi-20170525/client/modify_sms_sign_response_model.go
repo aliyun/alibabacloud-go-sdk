@@ -59,5 +59,10 @@ func (s *ModifySmsSignResponse) SetBody(v *ModifySmsSignResponseBody) *ModifySms
 }
 
 func (s *ModifySmsSignResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

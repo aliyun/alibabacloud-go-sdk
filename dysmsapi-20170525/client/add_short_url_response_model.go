@@ -59,5 +59,10 @@ func (s *AddShortUrlResponse) SetBody(v *AddShortUrlResponseBody) *AddShortUrlRe
 }
 
 func (s *AddShortUrlResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -107,7 +107,12 @@ func (s *QuerySmsQualificationRecordResponseBody) SetSuccess(v bool) *QuerySmsQu
 }
 
 func (s *QuerySmsQualificationRecordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuerySmsQualificationRecordResponseBodyData struct {
@@ -171,7 +176,16 @@ func (s *QuerySmsQualificationRecordResponseBodyData) SetTotal(v int64) *QuerySm
 }
 
 func (s *QuerySmsQualificationRecordResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySmsQualificationRecordResponseBodyDataList struct {

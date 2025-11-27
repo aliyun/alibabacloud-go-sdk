@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -73,9 +74,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AddExtCodeSignResponse
 func (client *Client) AddExtCodeSignWithOptions(request *AddExtCodeSignRequest, runtime *dara.RuntimeOptions) (_result *AddExtCodeSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExtCode) {
@@ -157,9 +160,11 @@ func (client *Client) AddExtCodeSign(request *AddExtCodeSignRequest) (_result *A
 //
 // @return AddShortUrlResponse
 func (client *Client) AddShortUrlWithOptions(request *AddShortUrlRequest, runtime *dara.RuntimeOptions) (_result *AddShortUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -269,9 +274,11 @@ func (client *Client) AddShortUrl(request *AddShortUrlRequest) (_result *AddShor
 //
 // @return AddSmsSignResponse
 func (client *Client) AddSmsSignWithOptions(request *AddSmsSignRequest, runtime *dara.RuntimeOptions) (_result *AddSmsSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -405,9 +412,11 @@ func (client *Client) AddSmsSign(request *AddSmsSignRequest) (_result *AddSmsSig
 //
 // @return AddSmsTemplateResponse
 func (client *Client) AddSmsTemplateWithOptions(request *AddSmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *AddSmsTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -514,9 +523,11 @@ func (client *Client) AddSmsTemplate(request *AddSmsTemplateRequest) (_result *A
 //
 // @return ChangeSignatureQualificationResponse
 func (client *Client) ChangeSignatureQualificationWithOptions(request *ChangeSignatureQualificationRequest, runtime *dara.RuntimeOptions) (_result *ChangeSignatureQualificationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthorizationLetterId) {
@@ -600,9 +611,11 @@ func (client *Client) ChangeSignatureQualification(request *ChangeSignatureQuali
 //
 // @return CheckMobilesCardSupportResponse
 func (client *Client) CheckMobilesCardSupportWithOptions(request *CheckMobilesCardSupportRequest, runtime *dara.RuntimeOptions) (_result *CheckMobilesCardSupportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Mobiles) {
@@ -670,9 +683,11 @@ func (client *Client) CheckMobilesCardSupport(request *CheckMobilesCardSupportRe
 //
 // @return ConversionDataIntlResponse
 func (client *Client) ConversionDataIntlWithOptions(request *ConversionDataIntlRequest, runtime *dara.RuntimeOptions) (_result *ConversionDataIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConversionRate) {
@@ -758,9 +773,11 @@ func (client *Client) ConversionDataIntl(request *ConversionDataIntlRequest) (_r
 //
 // @return CreateCardSmsTemplateResponse
 func (client *Client) CreateCardSmsTemplateWithOptions(tmpReq *CreateCardSmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateCardSmsTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateCardSmsTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -848,9 +865,11 @@ func (client *Client) CreateCardSmsTemplate(request *CreateCardSmsTemplateReques
 //
 // @return CreateSmartShortUrlResponse
 func (client *Client) CreateSmartShortUrlWithOptions(request *CreateSmartShortUrlRequest, runtime *dara.RuntimeOptions) (_result *CreateSmartShortUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OutId) {
@@ -928,9 +947,11 @@ func (client *Client) CreateSmartShortUrl(request *CreateSmartShortUrlRequest) (
 //
 // @return CreateSmsAuthorizationLetterResponse
 func (client *Client) CreateSmsAuthorizationLetterWithOptions(tmpReq *CreateSmsAuthorizationLetterRequest, runtime *dara.RuntimeOptions) (_result *CreateSmsAuthorizationLetterResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateSmsAuthorizationLetterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1040,9 +1061,11 @@ func (client *Client) CreateSmsAuthorizationLetter(request *CreateSmsAuthorizati
 //
 // @return CreateSmsSignResponse
 func (client *Client) CreateSmsSignWithOptions(tmpReq *CreateSmsSignRequest, runtime *dara.RuntimeOptions) (_result *CreateSmsSignResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateSmsSignShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1174,9 +1197,11 @@ func (client *Client) CreateSmsSign(request *CreateSmsSignRequest) (_result *Cre
 //
 // @return CreateSmsTemplateResponse
 func (client *Client) CreateSmsTemplateWithOptions(tmpReq *CreateSmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateSmsTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateSmsTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1302,9 +1327,11 @@ func (client *Client) CreateSmsTemplate(request *CreateSmsTemplateRequest) (_res
 //
 // @return DeleteExtCodeSignResponse
 func (client *Client) DeleteExtCodeSignWithOptions(request *DeleteExtCodeSignRequest, runtime *dara.RuntimeOptions) (_result *DeleteExtCodeSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExtCode) {
@@ -1384,9 +1411,11 @@ func (client *Client) DeleteExtCodeSign(request *DeleteExtCodeSignRequest) (_res
 //
 // @return DeleteShortUrlResponse
 func (client *Client) DeleteShortUrlWithOptions(request *DeleteShortUrlRequest, runtime *dara.RuntimeOptions) (_result *DeleteShortUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1464,9 +1493,11 @@ func (client *Client) DeleteShortUrl(request *DeleteShortUrlRequest) (_result *D
 //
 // @return DeleteSmsQualificationResponse
 func (client *Client) DeleteSmsQualificationWithOptions(request *DeleteSmsQualificationRequest, runtime *dara.RuntimeOptions) (_result *DeleteSmsQualificationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -1550,9 +1581,11 @@ func (client *Client) DeleteSmsQualification(request *DeleteSmsQualificationRequ
 //
 // @return DeleteSmsSignResponse
 func (client *Client) DeleteSmsSignWithOptions(request *DeleteSmsSignRequest, runtime *dara.RuntimeOptions) (_result *DeleteSmsSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1644,9 +1677,11 @@ func (client *Client) DeleteSmsSign(request *DeleteSmsSignRequest) (_result *Del
 //
 // @return DeleteSmsTemplateResponse
 func (client *Client) DeleteSmsTemplateWithOptions(request *DeleteSmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteSmsTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1728,9 +1763,11 @@ func (client *Client) DeleteSmsTemplate(request *DeleteSmsTemplateRequest) (_res
 //
 // @return GetCardSmsDetailsResponse
 func (client *Client) GetCardSmsDetailsWithOptions(request *GetCardSmsDetailsRequest, runtime *dara.RuntimeOptions) (_result *GetCardSmsDetailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizCardId) {
@@ -1830,9 +1867,11 @@ func (client *Client) GetCardSmsDetails(request *GetCardSmsDetailsRequest) (_res
 //
 // @return GetCardSmsLinkResponse
 func (client *Client) GetCardSmsLinkWithOptions(request *GetCardSmsLinkRequest, runtime *dara.RuntimeOptions) (_result *GetCardSmsLinkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CardCodeType) {
@@ -1934,9 +1973,11 @@ func (client *Client) GetCardSmsLink(request *GetCardSmsLinkRequest) (_result *G
 //
 // @return GetMediaResourceIdResponse
 func (client *Client) GetMediaResourceIdWithOptions(request *GetMediaResourceIdRequest, runtime *dara.RuntimeOptions) (_result *GetMediaResourceIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExtendInfo) {
@@ -2085,9 +2126,11 @@ func (client *Client) GetOSSInfoForCardTemplate() (_result *GetOSSInfoForCardTem
 //
 // @return GetOSSInfoForUploadFileResponse
 func (client *Client) GetOSSInfoForUploadFileWithOptions(request *GetOSSInfoForUploadFileRequest, runtime *dara.RuntimeOptions) (_result *GetOSSInfoForUploadFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -2163,9 +2206,11 @@ func (client *Client) GetOSSInfoForUploadFile(request *GetOSSInfoForUploadFileRe
 //
 // @return GetQualificationOssInfoResponse
 func (client *Client) GetQualificationOssInfoWithOptions(request *GetQualificationOssInfoRequest, runtime *dara.RuntimeOptions) (_result *GetQualificationOssInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -2227,6 +2272,80 @@ func (client *Client) GetQualificationOssInfo(request *GetQualificationOssInfoRe
 
 // Summary:
 //
+// 获取OCR的OSS信息
+//
+// @param request - GetSmsOcrOssInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSmsOcrOssInfoResponse
+func (client *Client) GetSmsOcrOssInfoWithOptions(request *GetSmsOcrOssInfoRequest, runtime *dara.RuntimeOptions) (_result *GetSmsOcrOssInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSmsOcrOssInfo"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSmsOcrOssInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取OCR的OSS信息
+//
+// @param request - GetSmsOcrOssInfoRequest
+//
+// @return GetSmsOcrOssInfoResponse
+func (client *Client) GetSmsOcrOssInfo(request *GetSmsOcrOssInfoRequest) (_result *GetSmsOcrOssInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetSmsOcrOssInfoResponse{}
+	_body, _err := client.GetSmsOcrOssInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query SMS Signature Details
 //
 // Description:
@@ -2243,9 +2362,11 @@ func (client *Client) GetQualificationOssInfo(request *GetQualificationOssInfoRe
 //
 // @return GetSmsSignResponse
 func (client *Client) GetSmsSignWithOptions(request *GetSmsSignRequest, runtime *dara.RuntimeOptions) (_result *GetSmsSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2333,9 +2454,11 @@ func (client *Client) GetSmsSign(request *GetSmsSignRequest) (_result *GetSmsSig
 //
 // @return GetSmsTemplateResponse
 func (client *Client) GetSmsTemplateWithOptions(request *GetSmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetSmsTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2421,9 +2544,11 @@ func (client *Client) GetSmsTemplate(request *GetSmsTemplateRequest) (_result *G
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextToken) {
@@ -2541,9 +2666,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // @return ModifySmsSignResponse
 func (client *Client) ModifySmsSignWithOptions(request *ModifySmsSignRequest, runtime *dara.RuntimeOptions) (_result *ModifySmsSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2663,9 +2790,11 @@ func (client *Client) ModifySmsSign(request *ModifySmsSignRequest) (_result *Mod
 //
 // @return ModifySmsTemplateResponse
 func (client *Client) ModifySmsTemplateWithOptions(request *ModifySmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *ModifySmsTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2772,9 +2901,11 @@ func (client *Client) ModifySmsTemplate(request *ModifySmsTemplateRequest) (_res
 //
 // @return QueryCardSmsTemplateResponse
 func (client *Client) QueryCardSmsTemplateWithOptions(request *QueryCardSmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *QueryCardSmsTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateCode) {
@@ -2844,9 +2975,11 @@ func (client *Client) QueryCardSmsTemplate(request *QueryCardSmsTemplateRequest)
 //
 // @return QueryCardSmsTemplateReportResponse
 func (client *Client) QueryCardSmsTemplateReportWithOptions(request *QueryCardSmsTemplateReportRequest, runtime *dara.RuntimeOptions) (_result *QueryCardSmsTemplateReportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -2918,9 +3051,11 @@ func (client *Client) QueryCardSmsTemplateReport(request *QueryCardSmsTemplateRe
 //
 // @return QueryExtCodeSignResponse
 func (client *Client) QueryExtCodeSignWithOptions(request *QueryExtCodeSignRequest, runtime *dara.RuntimeOptions) (_result *QueryExtCodeSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExtCode) {
@@ -3002,9 +3137,11 @@ func (client *Client) QueryExtCodeSign(request *QueryExtCodeSignRequest) (_resul
 //
 // @return QueryMobilesCardSupportResponse
 func (client *Client) QueryMobilesCardSupportWithOptions(tmpReq *QueryMobilesCardSupportRequest, runtime *dara.RuntimeOptions) (_result *QueryMobilesCardSupportResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryMobilesCardSupportShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3076,9 +3213,11 @@ func (client *Client) QueryMobilesCardSupport(request *QueryMobilesCardSupportRe
 //
 // @return QueryPageSmartShortUrlLogResponse
 func (client *Client) QueryPageSmartShortUrlLogWithOptions(request *QueryPageSmartShortUrlLogRequest, runtime *dara.RuntimeOptions) (_result *QueryPageSmartShortUrlLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateDateEnd) {
@@ -3168,9 +3307,11 @@ func (client *Client) QueryPageSmartShortUrlLog(request *QueryPageSmartShortUrlL
 //
 // @return QuerySendDetailsResponse
 func (client *Client) QuerySendDetailsWithOptions(request *QuerySendDetailsRequest, runtime *dara.RuntimeOptions) (_result *QuerySendDetailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -3264,9 +3405,11 @@ func (client *Client) QuerySendDetails(request *QuerySendDetailsRequest) (_resul
 //
 // @return QuerySendStatisticsResponse
 func (client *Client) QuerySendStatisticsWithOptions(request *QuerySendStatisticsRequest, runtime *dara.RuntimeOptions) (_result *QuerySendStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -3374,9 +3517,11 @@ func (client *Client) QuerySendStatistics(request *QuerySendStatisticsRequest) (
 //
 // @return QueryShortUrlResponse
 func (client *Client) QueryShortUrlWithOptions(request *QueryShortUrlRequest, runtime *dara.RuntimeOptions) (_result *QueryShortUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -3454,9 +3599,11 @@ func (client *Client) QueryShortUrl(request *QueryShortUrlRequest) (_result *Que
 //
 // @return QuerySingleSmsQualificationResponse
 func (client *Client) QuerySingleSmsQualificationWithOptions(request *QuerySingleSmsQualificationRequest, runtime *dara.RuntimeOptions) (_result *QuerySingleSmsQualificationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -3530,9 +3677,11 @@ func (client *Client) QuerySingleSmsQualification(request *QuerySingleSmsQualifi
 //
 // @return QuerySmsAuthorizationLetterResponse
 func (client *Client) QuerySmsAuthorizationLetterWithOptions(tmpReq *QuerySmsAuthorizationLetterRequest, runtime *dara.RuntimeOptions) (_result *QuerySmsAuthorizationLetterResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QuerySmsAuthorizationLetterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3624,9 +3773,11 @@ func (client *Client) QuerySmsAuthorizationLetter(request *QuerySmsAuthorization
 //
 // @return QuerySmsQualificationRecordResponse
 func (client *Client) QuerySmsQualificationRecordWithOptions(request *QuerySmsQualificationRecordRequest, runtime *dara.RuntimeOptions) (_result *QuerySmsQualificationRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CompanyName) {
@@ -3732,9 +3883,11 @@ func (client *Client) QuerySmsQualificationRecord(request *QuerySmsQualification
 //
 // @return QuerySmsSignResponse
 func (client *Client) QuerySmsSignWithOptions(request *QuerySmsSignRequest, runtime *dara.RuntimeOptions) (_result *QuerySmsSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -3820,9 +3973,11 @@ func (client *Client) QuerySmsSign(request *QuerySmsSignRequest) (_result *Query
 //
 // @return QuerySmsSignListResponse
 func (client *Client) QuerySmsSignListWithOptions(request *QuerySmsSignListRequest, runtime *dara.RuntimeOptions) (_result *QuerySmsSignListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -3914,9 +4069,11 @@ func (client *Client) QuerySmsSignList(request *QuerySmsSignListRequest) (_resul
 //
 // @return QuerySmsTemplateResponse
 func (client *Client) QuerySmsTemplateWithOptions(request *QuerySmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *QuerySmsTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -4005,9 +4162,11 @@ func (client *Client) QuerySmsTemplate(request *QuerySmsTemplateRequest) (_resul
 //
 // @return QuerySmsTemplateListResponse
 func (client *Client) QuerySmsTemplateListWithOptions(request *QuerySmsTemplateListRequest, runtime *dara.RuntimeOptions) (_result *QuerySmsTemplateListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -4089,9 +4248,11 @@ func (client *Client) QuerySmsTemplateList(request *QuerySmsTemplateListRequest)
 //
 // @return RequiredPhoneCodeResponse
 func (client *Client) RequiredPhoneCodeWithOptions(request *RequiredPhoneCodeRequest, runtime *dara.RuntimeOptions) (_result *RequiredPhoneCodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -4169,9 +4330,11 @@ func (client *Client) RequiredPhoneCode(request *RequiredPhoneCodeRequest) (_res
 //
 // @return SendBatchCardSmsResponse
 func (client *Client) SendBatchCardSmsWithOptions(request *SendBatchCardSmsRequest, runtime *dara.RuntimeOptions) (_result *SendBatchCardSmsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CardTemplateCode) {
@@ -4289,9 +4452,11 @@ func (client *Client) SendBatchCardSms(request *SendBatchCardSmsRequest) (_resul
 //
 // @return SendBatchSmsResponse
 func (client *Client) SendBatchSmsWithOptions(request *SendBatchSmsRequest, runtime *dara.RuntimeOptions) (_result *SendBatchSmsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OutId) {
@@ -4397,9 +4562,11 @@ func (client *Client) SendBatchSms(request *SendBatchSmsRequest) (_result *SendB
 //
 // @return SendCardSmsResponse
 func (client *Client) SendCardSmsWithOptions(request *SendCardSmsRequest, runtime *dara.RuntimeOptions) (_result *SendCardSmsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CardObjects) {
@@ -4511,9 +4678,11 @@ func (client *Client) SendCardSms(request *SendCardSmsRequest) (_result *SendCar
 //
 // @return SendLogisticsSmsResponse
 func (client *Client) SendLogisticsSmsWithOptions(request *SendLogisticsSmsRequest, runtime *dara.RuntimeOptions) (_result *SendLogisticsSmsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExpressCompanyCode) {
@@ -4617,9 +4786,11 @@ func (client *Client) SendLogisticsSms(request *SendLogisticsSmsRequest) (_resul
 //
 // @return SendSmsResponse
 func (client *Client) SendSmsWithOptions(request *SendSmsRequest, runtime *dara.RuntimeOptions) (_result *SendSmsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OutId) {
@@ -4731,9 +4902,11 @@ func (client *Client) SendSms(request *SendSmsRequest) (_result *SendSmsResponse
 //
 // @return SmsConversionIntlResponse
 func (client *Client) SmsConversionIntlWithOptions(request *SmsConversionIntlRequest, runtime *dara.RuntimeOptions) (_result *SmsConversionIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConversionTime) {
@@ -4823,9 +4996,11 @@ func (client *Client) SmsConversionIntl(request *SmsConversionIntlRequest) (_res
 //
 // @return SubmitSmsQualificationResponse
 func (client *Client) SubmitSmsQualificationWithOptions(tmpReq *SubmitSmsQualificationRequest, runtime *dara.RuntimeOptions) (_result *SubmitSmsQualificationResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitSmsQualificationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5003,9 +5178,11 @@ func (client *Client) SubmitSmsQualification(request *SubmitSmsQualificationRequ
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -5103,9 +5280,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -5201,9 +5380,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // @return UpdateExtCodeSignResponse
 func (client *Client) UpdateExtCodeSignWithOptions(request *UpdateExtCodeSignRequest, runtime *dara.RuntimeOptions) (_result *UpdateExtCodeSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExistExtCode) {
@@ -5281,9 +5462,11 @@ func (client *Client) UpdateExtCodeSign(request *UpdateExtCodeSignRequest) (_res
 //
 // @return UpdateSmsQualificationResponse
 func (client *Client) UpdateSmsQualificationWithOptions(tmpReq *UpdateSmsQualificationRequest, runtime *dara.RuntimeOptions) (_result *UpdateSmsQualificationResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateSmsQualificationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5447,9 +5630,11 @@ func (client *Client) UpdateSmsQualification(request *UpdateSmsQualificationRequ
 //
 // @return UpdateSmsSignResponse
 func (client *Client) UpdateSmsSignWithOptions(tmpReq *UpdateSmsSignRequest, runtime *dara.RuntimeOptions) (_result *UpdateSmsSignResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateSmsSignShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5577,9 +5762,11 @@ func (client *Client) UpdateSmsSign(request *UpdateSmsSignRequest) (_result *Upd
 //
 // @return UpdateSmsTemplateResponse
 func (client *Client) UpdateSmsTemplateWithOptions(tmpReq *UpdateSmsTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateSmsTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateSmsTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5707,9 +5894,11 @@ func (client *Client) UpdateSmsTemplate(request *UpdateSmsTemplateRequest) (_res
 //
 // @return ValidPhoneCodeResponse
 func (client *Client) ValidPhoneCodeWithOptions(request *ValidPhoneCodeRequest, runtime *dara.RuntimeOptions) (_result *ValidPhoneCodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertifyCode) {
@@ -5783,9 +5972,11 @@ func (client *Client) ValidPhoneCode(request *ValidPhoneCodeRequest) (_result *V
 //
 // @return VerifyLogisticsSmsMailNoResponse
 func (client *Client) VerifyLogisticsSmsMailNoWithOptions(request *VerifyLogisticsSmsMailNoRequest, runtime *dara.RuntimeOptions) (_result *VerifyLogisticsSmsMailNoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExpressCompanyCode) {

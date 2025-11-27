@@ -91,7 +91,12 @@ func (s *QuerySendStatisticsResponseBody) SetRequestId(v string) *QuerySendStati
 }
 
 func (s *QuerySendStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuerySendStatisticsResponseBodyData struct {
@@ -132,7 +137,16 @@ func (s *QuerySendStatisticsResponseBodyData) SetTotalSize(v int64) *QuerySendSt
 }
 
 func (s *QuerySendStatisticsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.TargetList != nil {
+		for _, item := range s.TargetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySendStatisticsResponseBodyDataTargetList struct {

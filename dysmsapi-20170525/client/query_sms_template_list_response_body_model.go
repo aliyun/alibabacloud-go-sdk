@@ -142,7 +142,16 @@ func (s *QuerySmsTemplateListResponseBody) SetTotalCount(v int64) *QuerySmsTempl
 }
 
 func (s *QuerySmsTemplateListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SmsTemplateList != nil {
+		for _, item := range s.SmsTemplateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySmsTemplateListResponseBodySmsTemplateList struct {
@@ -232,7 +241,8 @@ type QuerySmsTemplateListResponseBodySmsTemplateList struct {
 	// example:
 	//
 	// 7
-	TemplateType *int32 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	TemplateType   *int32  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	TrafficDriving *string `json:"TrafficDriving,omitempty" xml:"TrafficDriving,omitempty"`
 }
 
 func (s QuerySmsTemplateListResponseBodySmsTemplateList) String() string {
@@ -281,6 +291,10 @@ func (s *QuerySmsTemplateListResponseBodySmsTemplateList) GetTemplateName() *str
 
 func (s *QuerySmsTemplateListResponseBodySmsTemplateList) GetTemplateType() *int32 {
 	return s.TemplateType
+}
+
+func (s *QuerySmsTemplateListResponseBodySmsTemplateList) GetTrafficDriving() *string {
+	return s.TrafficDriving
 }
 
 func (s *QuerySmsTemplateListResponseBodySmsTemplateList) SetAuditStatus(v string) *QuerySmsTemplateListResponseBodySmsTemplateList {
@@ -333,8 +347,18 @@ func (s *QuerySmsTemplateListResponseBodySmsTemplateList) SetTemplateType(v int3
 	return s
 }
 
+func (s *QuerySmsTemplateListResponseBodySmsTemplateList) SetTrafficDriving(v string) *QuerySmsTemplateListResponseBodySmsTemplateList {
+	s.TrafficDriving = &v
+	return s
+}
+
 func (s *QuerySmsTemplateListResponseBodySmsTemplateList) Validate() error {
-	return dara.Validate(s)
+	if s.Reason != nil {
+		if err := s.Reason.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuerySmsTemplateListResponseBodySmsTemplateListReason struct {

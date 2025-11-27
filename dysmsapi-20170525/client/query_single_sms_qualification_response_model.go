@@ -59,5 +59,10 @@ func (s *QuerySingleSmsQualificationResponse) SetBody(v *QuerySingleSmsQualifica
 }
 
 func (s *QuerySingleSmsQualificationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

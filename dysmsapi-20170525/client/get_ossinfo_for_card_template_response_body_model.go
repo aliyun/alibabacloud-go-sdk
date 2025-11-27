@@ -95,7 +95,12 @@ func (s *GetOSSInfoForCardTemplateResponseBody) SetSuccess(v bool) *GetOSSInfoFo
 }
 
 func (s *GetOSSInfoForCardTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOSSInfoForCardTemplateResponseBodyData struct {

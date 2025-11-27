@@ -261,7 +261,16 @@ func (s *SendCardSmsRequest) SetTemplateParam(v string) *SendCardSmsRequest {
 }
 
 func (s *SendCardSmsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CardObjects != nil {
+		for _, item := range s.CardObjects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SendCardSmsRequestCardObjects struct {

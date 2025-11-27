@@ -59,5 +59,10 @@ func (s *QuerySmsAuthorizationLetterResponse) SetBody(v *QuerySmsAuthorizationLe
 }
 
 func (s *QuerySmsAuthorizationLetterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

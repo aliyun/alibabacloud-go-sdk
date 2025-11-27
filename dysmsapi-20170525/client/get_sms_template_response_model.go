@@ -59,5 +59,10 @@ func (s *GetSmsTemplateResponse) SetBody(v *GetSmsTemplateResponseBody) *GetSmsT
 }
 
 func (s *GetSmsTemplateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

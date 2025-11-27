@@ -95,7 +95,12 @@ func (s *QueryPageSmartShortUrlLogResponseBody) SetSuccess(v bool) *QueryPageSma
 }
 
 func (s *QueryPageSmartShortUrlLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Model != nil {
+		if err := s.Model.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryPageSmartShortUrlLogResponseBodyModel struct {
@@ -172,7 +177,16 @@ func (s *QueryPageSmartShortUrlLogResponseBodyModel) SetTotalPage(v int64) *Quer
 }
 
 func (s *QueryPageSmartShortUrlLogResponseBodyModel) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryPageSmartShortUrlLogResponseBodyModelList struct {

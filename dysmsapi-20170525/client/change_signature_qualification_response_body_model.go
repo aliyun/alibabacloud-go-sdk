@@ -107,7 +107,12 @@ func (s *ChangeSignatureQualificationResponseBody) SetSuccess(v bool) *ChangeSig
 }
 
 func (s *ChangeSignatureQualificationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChangeSignatureQualificationResponseBodyData struct {

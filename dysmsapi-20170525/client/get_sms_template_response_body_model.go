@@ -382,7 +382,22 @@ func (s *GetSmsTemplateResponseBody) SetVendorAuditStatus(v map[string]interface
 }
 
 func (s *GetSmsTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AuditInfo != nil {
+		if err := s.AuditInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FileUrlList != nil {
+		if err := s.FileUrlList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MoreDataFileUrlList != nil {
+		if err := s.MoreDataFileUrlList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSmsTemplateResponseBodyAuditInfo struct {

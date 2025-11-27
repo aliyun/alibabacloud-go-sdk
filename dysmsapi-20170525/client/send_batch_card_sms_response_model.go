@@ -59,5 +59,10 @@ func (s *SendBatchCardSmsResponse) SetBody(v *SendBatchCardSmsResponseBody) *Sen
 }
 
 func (s *SendBatchCardSmsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *QuerySendDetailsResponse) SetBody(v *QuerySendDetailsResponseBody) *Que
 }
 
 func (s *QuerySendDetailsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

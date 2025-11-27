@@ -95,7 +95,12 @@ func (s *GetCardSmsLinkResponseBody) SetSuccess(v bool) *GetCardSmsLinkResponseB
 }
 
 func (s *GetCardSmsLinkResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCardSmsLinkResponseBodyData struct {

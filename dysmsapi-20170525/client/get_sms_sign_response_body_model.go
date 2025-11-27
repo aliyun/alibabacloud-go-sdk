@@ -361,7 +361,21 @@ func (s *GetSmsSignResponseBody) SetThirdParty(v bool) *GetSmsSignResponseBody {
 }
 
 func (s *GetSmsSignResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AuditInfo != nil {
+		if err := s.AuditInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SignIspRegisterDetailList != nil {
+		for _, item := range s.SignIspRegisterDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSmsSignResponseBodyAuditInfo struct {
@@ -461,7 +475,16 @@ func (s *GetSmsSignResponseBodySignIspRegisterDetailList) SetRegisterStatusReaso
 }
 
 func (s *GetSmsSignResponseBodySignIspRegisterDetailList) Validate() error {
-	return dara.Validate(s)
+	if s.RegisterStatusReasons != nil {
+		for _, item := range s.RegisterStatusReasons {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSmsSignResponseBodySignIspRegisterDetailListRegisterStatusReasons struct {

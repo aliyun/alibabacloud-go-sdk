@@ -170,7 +170,16 @@ func (s *AddSmsSignRequest) SetSignType(v int32) *AddSmsSignRequest {
 }
 
 func (s *AddSmsSignRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SignFileList != nil {
+		for _, item := range s.SignFileList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddSmsSignRequestSignFileList struct {

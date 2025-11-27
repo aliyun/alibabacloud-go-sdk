@@ -59,5 +59,10 @@ func (s *AddExtCodeSignResponse) SetBody(v *AddExtCodeSignResponseBody) *AddExtC
 }
 
 func (s *AddExtCodeSignResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
