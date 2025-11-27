@@ -9,45 +9,73 @@ type iChatWithDesensitizeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAudioJson(v string) *ChatWithDesensitizeRequest
+	GetAudioJson() *string
 	SetDesensitizationRule(v string) *ChatWithDesensitizeRequest
 	GetDesensitizationRule() *string
+	SetEnableCodeInterpreter(v bool) *ChatWithDesensitizeRequest
+	GetEnableCodeInterpreter() *bool
+	SetEnableSearch(v bool) *ChatWithDesensitizeRequest
+	GetEnableSearch() *bool
 	SetEnableThinking(v bool) *ChatWithDesensitizeRequest
 	GetEnableThinking() *bool
 	SetInstanceId(v int64) *ChatWithDesensitizeRequest
 	GetInstanceId() *int64
+	SetLogprobs(v bool) *ChatWithDesensitizeRequest
+	GetLogprobs() *bool
 	SetMaxTokens(v int32) *ChatWithDesensitizeRequest
 	GetMaxTokens() *int32
-	SetMessages(v []map[string]interface{}) *ChatWithDesensitizeRequest
-	GetMessages() []map[string]interface{}
+	SetMessages(v []interface{}) *ChatWithDesensitizeRequest
+	GetMessages() []interface{}
+	SetModalitiesList(v []*string) *ChatWithDesensitizeRequest
+	GetModalitiesList() []*string
 	SetModel(v string) *ChatWithDesensitizeRequest
 	GetModel() *string
 	SetNeedDesensitization(v bool) *ChatWithDesensitizeRequest
 	GetNeedDesensitization() *bool
-	SetPresencePenalty(v float32) *ChatWithDesensitizeRequest
-	GetPresencePenalty() *float32
+	SetPresencePenalty(v string) *ChatWithDesensitizeRequest
+	GetPresencePenalty() *string
 	SetResponseFormat(v string) *ChatWithDesensitizeRequest
 	GetResponseFormat() *string
+	SetSearchOptions(v map[string]*string) *ChatWithDesensitizeRequest
+	GetSearchOptions() map[string]*string
 	SetSeed(v int32) *ChatWithDesensitizeRequest
 	GetSeed() *int32
 	SetStop(v []*string) *ChatWithDesensitizeRequest
 	GetStop() []*string
-	SetTemperature(v float32) *ChatWithDesensitizeRequest
-	GetTemperature() *float32
+	SetTemperature(v string) *ChatWithDesensitizeRequest
+	GetTemperature() *string
 	SetThinkingBudget(v int32) *ChatWithDesensitizeRequest
 	GetThinkingBudget() *int32
 	SetTopK(v int32) *ChatWithDesensitizeRequest
 	GetTopK() *int32
 	SetTopLogprobs(v int32) *ChatWithDesensitizeRequest
 	GetTopLogprobs() *int32
-	SetTopP(v float32) *ChatWithDesensitizeRequest
-	GetTopP() *float32
+	SetTopP(v string) *ChatWithDesensitizeRequest
+	GetTopP() *string
+	SetVlHighResolutionImages(v bool) *ChatWithDesensitizeRequest
+	GetVlHighResolutionImages() *bool
+	SetXDashScopeDataInspection(v string) *ChatWithDesensitizeRequest
+	GetXDashScopeDataInspection() *string
 }
 
 type ChatWithDesensitizeRequest struct {
 	// example:
 	//
+	// {}
+	AudioJson *string `json:"AudioJson,omitempty" xml:"AudioJson,omitempty"`
+	// example:
+	//
 	// UserInfo
 	DesensitizationRule *string `json:"DesensitizationRule,omitempty" xml:"DesensitizationRule,omitempty"`
+	// example:
+	//
+	// false
+	EnableCodeInterpreter *bool `json:"EnableCodeInterpreter,omitempty" xml:"EnableCodeInterpreter,omitempty"`
+	// example:
+	//
+	// false
+	EnableSearch *bool `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
 	// example:
 	//
 	// true
@@ -60,10 +88,12 @@ type ChatWithDesensitizeRequest struct {
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// example:
 	//
+	// false
+	Logprobs *bool `json:"Logprobs,omitempty" xml:"Logprobs,omitempty"`
+	// example:
+	//
 	// 256
 	MaxTokens *int32 `json:"MaxTokens,omitempty" xml:"MaxTokens,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// [
@@ -77,7 +107,11 @@ type ChatWithDesensitizeRequest struct {
 	//     }
 	//
 	// ]
-	Messages []map[string]interface{} `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	Messages []interface{} `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ["text","audio"]
+	ModalitiesList []*string `json:"ModalitiesList,omitempty" xml:"ModalitiesList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// qwen-plus
@@ -89,11 +123,15 @@ type ChatWithDesensitizeRequest struct {
 	// example:
 	//
 	// 0.0
-	PresencePenalty *float32 `json:"PresencePenalty,omitempty" xml:"PresencePenalty,omitempty"`
+	PresencePenalty *string `json:"PresencePenalty,omitempty" xml:"PresencePenalty,omitempty"`
 	// example:
 	//
 	// text
 	ResponseFormat *string `json:"ResponseFormat,omitempty" xml:"ResponseFormat,omitempty"`
+	// example:
+	//
+	// {}
+	SearchOptions map[string]*string `json:"SearchOptions,omitempty" xml:"SearchOptions,omitempty"`
 	// example:
 	//
 	// 1
@@ -102,7 +140,7 @@ type ChatWithDesensitizeRequest struct {
 	// example:
 	//
 	// 1
-	Temperature *float32 `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
+	Temperature *string `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
 	// example:
 	//
 	// 256
@@ -118,7 +156,15 @@ type ChatWithDesensitizeRequest struct {
 	// example:
 	//
 	// 0.5
-	TopP *float32 `json:"TopP,omitempty" xml:"TopP,omitempty"`
+	TopP *string `json:"TopP,omitempty" xml:"TopP,omitempty"`
+	// example:
+	//
+	// false
+	VlHighResolutionImages *bool `json:"VlHighResolutionImages,omitempty" xml:"VlHighResolutionImages,omitempty"`
+	// example:
+	//
+	// {}
+	XDashScopeDataInspection *string `json:"XDashScopeDataInspection,omitempty" xml:"XDashScopeDataInspection,omitempty"`
 }
 
 func (s ChatWithDesensitizeRequest) String() string {
@@ -129,8 +175,20 @@ func (s ChatWithDesensitizeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ChatWithDesensitizeRequest) GetAudioJson() *string {
+	return s.AudioJson
+}
+
 func (s *ChatWithDesensitizeRequest) GetDesensitizationRule() *string {
 	return s.DesensitizationRule
+}
+
+func (s *ChatWithDesensitizeRequest) GetEnableCodeInterpreter() *bool {
+	return s.EnableCodeInterpreter
+}
+
+func (s *ChatWithDesensitizeRequest) GetEnableSearch() *bool {
+	return s.EnableSearch
 }
 
 func (s *ChatWithDesensitizeRequest) GetEnableThinking() *bool {
@@ -141,12 +199,20 @@ func (s *ChatWithDesensitizeRequest) GetInstanceId() *int64 {
 	return s.InstanceId
 }
 
+func (s *ChatWithDesensitizeRequest) GetLogprobs() *bool {
+	return s.Logprobs
+}
+
 func (s *ChatWithDesensitizeRequest) GetMaxTokens() *int32 {
 	return s.MaxTokens
 }
 
-func (s *ChatWithDesensitizeRequest) GetMessages() []map[string]interface{} {
+func (s *ChatWithDesensitizeRequest) GetMessages() []interface{} {
 	return s.Messages
+}
+
+func (s *ChatWithDesensitizeRequest) GetModalitiesList() []*string {
+	return s.ModalitiesList
 }
 
 func (s *ChatWithDesensitizeRequest) GetModel() *string {
@@ -157,12 +223,16 @@ func (s *ChatWithDesensitizeRequest) GetNeedDesensitization() *bool {
 	return s.NeedDesensitization
 }
 
-func (s *ChatWithDesensitizeRequest) GetPresencePenalty() *float32 {
+func (s *ChatWithDesensitizeRequest) GetPresencePenalty() *string {
 	return s.PresencePenalty
 }
 
 func (s *ChatWithDesensitizeRequest) GetResponseFormat() *string {
 	return s.ResponseFormat
+}
+
+func (s *ChatWithDesensitizeRequest) GetSearchOptions() map[string]*string {
+	return s.SearchOptions
 }
 
 func (s *ChatWithDesensitizeRequest) GetSeed() *int32 {
@@ -173,7 +243,7 @@ func (s *ChatWithDesensitizeRequest) GetStop() []*string {
 	return s.Stop
 }
 
-func (s *ChatWithDesensitizeRequest) GetTemperature() *float32 {
+func (s *ChatWithDesensitizeRequest) GetTemperature() *string {
 	return s.Temperature
 }
 
@@ -189,12 +259,35 @@ func (s *ChatWithDesensitizeRequest) GetTopLogprobs() *int32 {
 	return s.TopLogprobs
 }
 
-func (s *ChatWithDesensitizeRequest) GetTopP() *float32 {
+func (s *ChatWithDesensitizeRequest) GetTopP() *string {
 	return s.TopP
+}
+
+func (s *ChatWithDesensitizeRequest) GetVlHighResolutionImages() *bool {
+	return s.VlHighResolutionImages
+}
+
+func (s *ChatWithDesensitizeRequest) GetXDashScopeDataInspection() *string {
+	return s.XDashScopeDataInspection
+}
+
+func (s *ChatWithDesensitizeRequest) SetAudioJson(v string) *ChatWithDesensitizeRequest {
+	s.AudioJson = &v
+	return s
 }
 
 func (s *ChatWithDesensitizeRequest) SetDesensitizationRule(v string) *ChatWithDesensitizeRequest {
 	s.DesensitizationRule = &v
+	return s
+}
+
+func (s *ChatWithDesensitizeRequest) SetEnableCodeInterpreter(v bool) *ChatWithDesensitizeRequest {
+	s.EnableCodeInterpreter = &v
+	return s
+}
+
+func (s *ChatWithDesensitizeRequest) SetEnableSearch(v bool) *ChatWithDesensitizeRequest {
+	s.EnableSearch = &v
 	return s
 }
 
@@ -208,13 +301,23 @@ func (s *ChatWithDesensitizeRequest) SetInstanceId(v int64) *ChatWithDesensitize
 	return s
 }
 
+func (s *ChatWithDesensitizeRequest) SetLogprobs(v bool) *ChatWithDesensitizeRequest {
+	s.Logprobs = &v
+	return s
+}
+
 func (s *ChatWithDesensitizeRequest) SetMaxTokens(v int32) *ChatWithDesensitizeRequest {
 	s.MaxTokens = &v
 	return s
 }
 
-func (s *ChatWithDesensitizeRequest) SetMessages(v []map[string]interface{}) *ChatWithDesensitizeRequest {
+func (s *ChatWithDesensitizeRequest) SetMessages(v []interface{}) *ChatWithDesensitizeRequest {
 	s.Messages = v
+	return s
+}
+
+func (s *ChatWithDesensitizeRequest) SetModalitiesList(v []*string) *ChatWithDesensitizeRequest {
+	s.ModalitiesList = v
 	return s
 }
 
@@ -228,13 +331,18 @@ func (s *ChatWithDesensitizeRequest) SetNeedDesensitization(v bool) *ChatWithDes
 	return s
 }
 
-func (s *ChatWithDesensitizeRequest) SetPresencePenalty(v float32) *ChatWithDesensitizeRequest {
+func (s *ChatWithDesensitizeRequest) SetPresencePenalty(v string) *ChatWithDesensitizeRequest {
 	s.PresencePenalty = &v
 	return s
 }
 
 func (s *ChatWithDesensitizeRequest) SetResponseFormat(v string) *ChatWithDesensitizeRequest {
 	s.ResponseFormat = &v
+	return s
+}
+
+func (s *ChatWithDesensitizeRequest) SetSearchOptions(v map[string]*string) *ChatWithDesensitizeRequest {
+	s.SearchOptions = v
 	return s
 }
 
@@ -248,7 +356,7 @@ func (s *ChatWithDesensitizeRequest) SetStop(v []*string) *ChatWithDesensitizeRe
 	return s
 }
 
-func (s *ChatWithDesensitizeRequest) SetTemperature(v float32) *ChatWithDesensitizeRequest {
+func (s *ChatWithDesensitizeRequest) SetTemperature(v string) *ChatWithDesensitizeRequest {
 	s.Temperature = &v
 	return s
 }
@@ -268,8 +376,18 @@ func (s *ChatWithDesensitizeRequest) SetTopLogprobs(v int32) *ChatWithDesensitiz
 	return s
 }
 
-func (s *ChatWithDesensitizeRequest) SetTopP(v float32) *ChatWithDesensitizeRequest {
+func (s *ChatWithDesensitizeRequest) SetTopP(v string) *ChatWithDesensitizeRequest {
 	s.TopP = &v
+	return s
+}
+
+func (s *ChatWithDesensitizeRequest) SetVlHighResolutionImages(v bool) *ChatWithDesensitizeRequest {
+	s.VlHighResolutionImages = &v
+	return s
+}
+
+func (s *ChatWithDesensitizeRequest) SetXDashScopeDataInspection(v string) *ChatWithDesensitizeRequest {
+	s.XDashScopeDataInspection = &v
 	return s
 }
 

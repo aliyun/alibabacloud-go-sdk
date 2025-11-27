@@ -31,6 +31,8 @@ type ChatWithDesensitizeResponseBody struct {
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
@@ -109,11 +111,17 @@ type ChatWithDesensitizeResponseBodyData struct {
 	//
 	// 1763710100
 	Created *string `json:"Created,omitempty" xml:"Created,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
 	// qwen-plus
-	Model *string                                   `json:"Model,omitempty" xml:"Model,omitempty"`
-	Usage *ChatWithDesensitizeResponseBodyDataUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *string                                   `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Type       *string                                   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Usage      *ChatWithDesensitizeResponseBodyDataUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s ChatWithDesensitizeResponseBodyData) String() string {
@@ -132,8 +140,20 @@ func (s *ChatWithDesensitizeResponseBodyData) GetCreated() *string {
 	return s.Created
 }
 
+func (s *ChatWithDesensitizeResponseBodyData) GetMessage() *string {
+	return s.Message
+}
+
 func (s *ChatWithDesensitizeResponseBodyData) GetModel() *string {
 	return s.Model
+}
+
+func (s *ChatWithDesensitizeResponseBodyData) GetStatusCode() *string {
+	return s.StatusCode
+}
+
+func (s *ChatWithDesensitizeResponseBodyData) GetType() *string {
+	return s.Type
 }
 
 func (s *ChatWithDesensitizeResponseBodyData) GetUsage() *ChatWithDesensitizeResponseBodyDataUsage {
@@ -150,8 +170,23 @@ func (s *ChatWithDesensitizeResponseBodyData) SetCreated(v string) *ChatWithDese
 	return s
 }
 
+func (s *ChatWithDesensitizeResponseBodyData) SetMessage(v string) *ChatWithDesensitizeResponseBodyData {
+	s.Message = &v
+	return s
+}
+
 func (s *ChatWithDesensitizeResponseBodyData) SetModel(v string) *ChatWithDesensitizeResponseBodyData {
 	s.Model = &v
+	return s
+}
+
+func (s *ChatWithDesensitizeResponseBodyData) SetStatusCode(v string) *ChatWithDesensitizeResponseBodyData {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChatWithDesensitizeResponseBodyData) SetType(v string) *ChatWithDesensitizeResponseBodyData {
+	s.Type = &v
 	return s
 }
 
@@ -182,8 +217,12 @@ type ChatWithDesensitizeResponseBodyDataChoices struct {
 	// example:
 	//
 	// stop
-	FinishReason *string                                            `json:"FinishReason,omitempty" xml:"FinishReason,omitempty"`
-	Message      *ChatWithDesensitizeResponseBodyDataChoicesMessage `json:"Message,omitempty" xml:"Message,omitempty" type:"Struct"`
+	FinishReason *string `json:"FinishReason,omitempty" xml:"FinishReason,omitempty"`
+	// example:
+	//
+	// {}
+	Logprobs map[string]interface{}                             `json:"Logprobs,omitempty" xml:"Logprobs,omitempty"`
+	Message  *ChatWithDesensitizeResponseBodyDataChoicesMessage `json:"Message,omitempty" xml:"Message,omitempty" type:"Struct"`
 }
 
 func (s ChatWithDesensitizeResponseBodyDataChoices) String() string {
@@ -198,12 +237,21 @@ func (s *ChatWithDesensitizeResponseBodyDataChoices) GetFinishReason() *string {
 	return s.FinishReason
 }
 
+func (s *ChatWithDesensitizeResponseBodyDataChoices) GetLogprobs() map[string]interface{} {
+	return s.Logprobs
+}
+
 func (s *ChatWithDesensitizeResponseBodyDataChoices) GetMessage() *ChatWithDesensitizeResponseBodyDataChoicesMessage {
 	return s.Message
 }
 
 func (s *ChatWithDesensitizeResponseBodyDataChoices) SetFinishReason(v string) *ChatWithDesensitizeResponseBodyDataChoices {
 	s.FinishReason = &v
+	return s
+}
+
+func (s *ChatWithDesensitizeResponseBodyDataChoices) SetLogprobs(v map[string]interface{}) *ChatWithDesensitizeResponseBodyDataChoices {
+	s.Logprobs = v
 	return s
 }
 
@@ -282,8 +330,16 @@ type ChatWithDesensitizeResponseBodyDataUsage struct {
 	CompletionTokens *string `json:"CompletionTokens,omitempty" xml:"CompletionTokens,omitempty"`
 	// example:
 	//
+	// {}
+	CompletionTokensDetails map[string]*string `json:"CompletionTokensDetails,omitempty" xml:"CompletionTokensDetails,omitempty"`
+	// example:
+	//
 	// 9
 	PromptTokens *string `json:"PromptTokens,omitempty" xml:"PromptTokens,omitempty"`
+	// example:
+	//
+	// {}
+	PromptTokensDetails map[string]*string `json:"PromptTokensDetails,omitempty" xml:"PromptTokensDetails,omitempty"`
 	// example:
 	//
 	// 19
@@ -302,8 +358,16 @@ func (s *ChatWithDesensitizeResponseBodyDataUsage) GetCompletionTokens() *string
 	return s.CompletionTokens
 }
 
+func (s *ChatWithDesensitizeResponseBodyDataUsage) GetCompletionTokensDetails() map[string]*string {
+	return s.CompletionTokensDetails
+}
+
 func (s *ChatWithDesensitizeResponseBodyDataUsage) GetPromptTokens() *string {
 	return s.PromptTokens
+}
+
+func (s *ChatWithDesensitizeResponseBodyDataUsage) GetPromptTokensDetails() map[string]*string {
+	return s.PromptTokensDetails
 }
 
 func (s *ChatWithDesensitizeResponseBodyDataUsage) GetTotalTokens() *string {
@@ -315,8 +379,18 @@ func (s *ChatWithDesensitizeResponseBodyDataUsage) SetCompletionTokens(v string)
 	return s
 }
 
+func (s *ChatWithDesensitizeResponseBodyDataUsage) SetCompletionTokensDetails(v map[string]*string) *ChatWithDesensitizeResponseBodyDataUsage {
+	s.CompletionTokensDetails = v
+	return s
+}
+
 func (s *ChatWithDesensitizeResponseBodyDataUsage) SetPromptTokens(v string) *ChatWithDesensitizeResponseBodyDataUsage {
 	s.PromptTokens = &v
+	return s
+}
+
+func (s *ChatWithDesensitizeResponseBodyDataUsage) SetPromptTokensDetails(v map[string]*string) *ChatWithDesensitizeResponseBodyDataUsage {
+	s.PromptTokensDetails = v
 	return s
 }
 

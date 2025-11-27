@@ -1775,13 +1775,33 @@ func (client *Client) ChatWithDesensitizeWithOptions(tmpReq *ChatWithDesensitize
 		request.MessagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Messages, dara.String("Messages"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.ModalitiesList) {
+		request.ModalitiesListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ModalitiesList, dara.String("ModalitiesList"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SearchOptions) {
+		request.SearchOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SearchOptions, dara.String("SearchOptions"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.Stop) {
 		request.StopShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Stop, dara.String("Stop"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AudioJson) {
+		query["AudioJson"] = request.AudioJson
+	}
+
 	if !dara.IsNil(request.DesensitizationRule) {
 		query["DesensitizationRule"] = request.DesensitizationRule
+	}
+
+	if !dara.IsNil(request.EnableCodeInterpreter) {
+		query["EnableCodeInterpreter"] = request.EnableCodeInterpreter
+	}
+
+	if !dara.IsNil(request.EnableSearch) {
+		query["EnableSearch"] = request.EnableSearch
 	}
 
 	if !dara.IsNil(request.EnableThinking) {
@@ -1792,8 +1812,16 @@ func (client *Client) ChatWithDesensitizeWithOptions(tmpReq *ChatWithDesensitize
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.Logprobs) {
+		query["Logprobs"] = request.Logprobs
+	}
+
 	if !dara.IsNil(request.MaxTokens) {
 		query["MaxTokens"] = request.MaxTokens
+	}
+
+	if !dara.IsNil(request.ModalitiesListShrink) {
+		query["ModalitiesList"] = request.ModalitiesListShrink
 	}
 
 	if !dara.IsNil(request.Model) {
@@ -1810,6 +1838,10 @@ func (client *Client) ChatWithDesensitizeWithOptions(tmpReq *ChatWithDesensitize
 
 	if !dara.IsNil(request.ResponseFormat) {
 		query["ResponseFormat"] = request.ResponseFormat
+	}
+
+	if !dara.IsNil(request.SearchOptionsShrink) {
+		query["SearchOptions"] = request.SearchOptionsShrink
 	}
 
 	if !dara.IsNil(request.Seed) {
@@ -1838,6 +1870,14 @@ func (client *Client) ChatWithDesensitizeWithOptions(tmpReq *ChatWithDesensitize
 
 	if !dara.IsNil(request.TopP) {
 		query["TopP"] = request.TopP
+	}
+
+	if !dara.IsNil(request.VlHighResolutionImages) {
+		query["VlHighResolutionImages"] = request.VlHighResolutionImages
+	}
+
+	if !dara.IsNil(request.XDashScopeDataInspection) {
+		query["XDashScopeDataInspection"] = request.XDashScopeDataInspection
 	}
 
 	body := map[string]interface{}{}
@@ -1884,6 +1924,90 @@ func (client *Client) ChatWithDesensitize(request *ChatWithDesensitizeRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &ChatWithDesensitizeResponse{}
 	_body, _err := client.ChatWithDesensitizeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量校验是否有表访问权限
+//
+// @param tmpReq - CheckBatchTableAccessPermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckBatchTableAccessPermissionResponse
+func (client *Client) CheckBatchTableAccessPermissionWithOptions(tmpReq *CheckBatchTableAccessPermissionRequest, runtime *dara.RuntimeOptions) (_result *CheckBatchTableAccessPermissionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CheckBatchTableAccessPermissionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TableNameList) {
+		request.TableNameListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TableNameList, dara.String("TableNameList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DbId) {
+		query["DbId"] = request.DbId
+	}
+
+	if !dara.IsNil(request.Logic) {
+		query["Logic"] = request.Logic
+	}
+
+	if !dara.IsNil(request.PermissionType) {
+		query["PermissionType"] = request.PermissionType
+	}
+
+	if !dara.IsNil(request.TableNameListShrink) {
+		query["TableNameList"] = request.TableNameListShrink
+	}
+
+	if !dara.IsNil(request.Tid) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckBatchTableAccessPermission"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckBatchTableAccessPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量校验是否有表访问权限
+//
+// @param request - CheckBatchTableAccessPermissionRequest
+//
+// @return CheckBatchTableAccessPermissionResponse
+func (client *Client) CheckBatchTableAccessPermission(request *CheckBatchTableAccessPermissionRequest) (_result *CheckBatchTableAccessPermissionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CheckBatchTableAccessPermissionResponse{}
+	_body, _err := client.CheckBatchTableAccessPermissionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
