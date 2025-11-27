@@ -153,6 +153,7 @@ type DescribeCACertificateResponseBodyCertificate struct {
 	//
 	// SUB_ROOT
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The common name or abbreviation of the organization that is associated with the CA certificate.
 	//
 	// example:
@@ -193,6 +194,7 @@ type DescribeCACertificateResponseBodyCertificate struct {
 	// 160ae6bb538d538c70c01f81dcf2****
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	IssuerType *string `json:"IssuerType,omitempty" xml:"IssuerType,omitempty"`
+	KeyIndex   *int32  `json:"KeyIndex,omitempty" xml:"KeyIndex,omitempty"`
 	// The key length of the CA certificate.
 	//
 	// example:
@@ -340,6 +342,10 @@ func (s *DescribeCACertificateResponseBodyCertificate) GetCertificateType() *str
 	return s.CertificateType
 }
 
+func (s *DescribeCACertificateResponseBodyCertificate) GetClusterId() *string {
+	return s.ClusterId
+}
+
 func (s *DescribeCACertificateResponseBodyCertificate) GetCommonName() *string {
 	return s.CommonName
 }
@@ -370,6 +376,10 @@ func (s *DescribeCACertificateResponseBodyCertificate) GetIdentifier() *string {
 
 func (s *DescribeCACertificateResponseBodyCertificate) GetIssuerType() *string {
 	return s.IssuerType
+}
+
+func (s *DescribeCACertificateResponseBodyCertificate) GetKeyIndex() *int32 {
+	return s.KeyIndex
 }
 
 func (s *DescribeCACertificateResponseBodyCertificate) GetKeySize() *int32 {
@@ -480,6 +490,11 @@ func (s *DescribeCACertificateResponseBodyCertificate) SetCertificateType(v stri
 	return s
 }
 
+func (s *DescribeCACertificateResponseBodyCertificate) SetClusterId(v string) *DescribeCACertificateResponseBodyCertificate {
+	s.ClusterId = &v
+	return s
+}
+
 func (s *DescribeCACertificateResponseBodyCertificate) SetCommonName(v string) *DescribeCACertificateResponseBodyCertificate {
 	s.CommonName = &v
 	return s
@@ -517,6 +532,11 @@ func (s *DescribeCACertificateResponseBodyCertificate) SetIdentifier(v string) *
 
 func (s *DescribeCACertificateResponseBodyCertificate) SetIssuerType(v string) *DescribeCACertificateResponseBodyCertificate {
 	s.IssuerType = &v
+	return s
+}
+
+func (s *DescribeCACertificateResponseBodyCertificate) SetKeyIndex(v int32) *DescribeCACertificateResponseBodyCertificate {
+	s.KeyIndex = &v
 	return s
 }
 
