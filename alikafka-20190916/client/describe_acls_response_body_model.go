@@ -104,7 +104,12 @@ func (s *DescribeAclsResponseBody) SetSuccess(v bool) *DescribeAclsResponseBody 
 }
 
 func (s *DescribeAclsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.KafkaAclList != nil {
+		if err := s.KafkaAclList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAclsResponseBodyKafkaAclList struct {
@@ -129,7 +134,16 @@ func (s *DescribeAclsResponseBodyKafkaAclList) SetKafkaAclVO(v []*DescribeAclsRe
 }
 
 func (s *DescribeAclsResponseBodyKafkaAclList) Validate() error {
-	return dara.Validate(s)
+	if s.KafkaAclVO != nil {
+		for _, item := range s.KafkaAclVO {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAclsResponseBodyKafkaAclListKafkaAclVO struct {

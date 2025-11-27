@@ -271,7 +271,12 @@ func (s *UpgradePrePayOrderRequest) SetTopicQuota(v int32) *UpgradePrePayOrderRe
 }
 
 func (s *UpgradePrePayOrderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConfluentConfig != nil {
+		if err := s.ConfluentConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpgradePrePayOrderRequestConfluentConfig struct {

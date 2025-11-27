@@ -95,7 +95,12 @@ func (s *GetRiskListResponseBody) SetSuccess(v bool) *GetRiskListResponseBody {
 }
 
 func (s *GetRiskListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRiskListResponseBodyData struct {
@@ -133,7 +138,16 @@ func (s *GetRiskListResponseBodyData) SetTotal(v int64) *GetRiskListResponseBody
 }
 
 func (s *GetRiskListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RiskList != nil {
+		for _, item := range s.RiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRiskListResponseBodyDataRiskList struct {

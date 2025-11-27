@@ -104,7 +104,12 @@ func (s *GetQuotaTipResponseBody) SetSuccess(v bool) *GetQuotaTipResponseBody {
 }
 
 func (s *GetQuotaTipResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QuotaData != nil {
+		if err := s.QuotaData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetQuotaTipResponseBodyQuotaData struct {

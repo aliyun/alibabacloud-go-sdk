@@ -95,7 +95,12 @@ func (s *DescribeAclResourceNameResponseBody) SetSuccess(v bool) *DescribeAclRes
 }
 
 func (s *DescribeAclResourceNameResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAclResourceNameResponseBodyData struct {

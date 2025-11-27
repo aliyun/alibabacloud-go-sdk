@@ -59,5 +59,10 @@ func (s *ModifyTopicRemarkResponse) SetBody(v *ModifyTopicRemarkResponseBody) *M
 }
 
 func (s *ModifyTopicRemarkResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

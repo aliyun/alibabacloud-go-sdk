@@ -59,6 +59,11 @@ func (s *EnableAutoTopicCreationResponse) SetBody(v *EnableAutoTopicCreationResp
 }
 
 func (s *EnableAutoTopicCreationResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

@@ -95,7 +95,12 @@ func (s *ListRebalanceInfoResponseBody) SetSuccess(v bool) *ListRebalanceInfoRes
 }
 
 func (s *ListRebalanceInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRebalanceInfoResponseBodyData struct {
@@ -120,7 +125,16 @@ func (s *ListRebalanceInfoResponseBodyData) SetRebalanceInfoList(v []*ListRebala
 }
 
 func (s *ListRebalanceInfoResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RebalanceInfoList != nil {
+		for _, item := range s.RebalanceInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRebalanceInfoResponseBodyDataRebalanceInfoList struct {

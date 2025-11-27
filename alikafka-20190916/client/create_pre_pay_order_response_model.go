@@ -59,5 +59,10 @@ func (s *CreatePrePayOrderResponse) SetBody(v *CreatePrePayOrderResponseBody) *C
 }
 
 func (s *CreatePrePayOrderResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -214,7 +214,16 @@ func (s *CreatePrePayInstanceShrinkRequest) SetTag(v []*CreatePrePayInstanceShri
 }
 
 func (s *CreatePrePayInstanceShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreatePrePayInstanceShrinkRequestTag struct {

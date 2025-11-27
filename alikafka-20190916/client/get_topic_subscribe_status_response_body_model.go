@@ -104,7 +104,12 @@ func (s *GetTopicSubscribeStatusResponseBody) SetTopicSubscribeStatus(v *GetTopi
 }
 
 func (s *GetTopicSubscribeStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TopicSubscribeStatus != nil {
+		if err := s.TopicSubscribeStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus struct {

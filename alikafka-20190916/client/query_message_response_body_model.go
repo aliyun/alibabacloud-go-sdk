@@ -108,7 +108,16 @@ func (s *QueryMessageResponseBody) SetSuccess(v bool) *QueryMessageResponseBody 
 }
 
 func (s *QueryMessageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MessageList != nil {
+		for _, item := range s.MessageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMessageResponseBodyMessageList struct {

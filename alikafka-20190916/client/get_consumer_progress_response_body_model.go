@@ -104,7 +104,12 @@ func (s *GetConsumerProgressResponseBody) SetSuccess(v bool) *GetConsumerProgres
 }
 
 func (s *GetConsumerProgressResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ConsumerProgress != nil {
+		if err := s.ConsumerProgress.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConsumerProgressResponseBodyConsumerProgress struct {
@@ -181,7 +186,17 @@ func (s *GetConsumerProgressResponseBodyConsumerProgress) SetState(v string) *Ge
 }
 
 func (s *GetConsumerProgressResponseBodyConsumerProgress) Validate() error {
-	return dara.Validate(s)
+	if s.RebalanceInfoList != nil {
+		if err := s.RebalanceInfoList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TopicList != nil {
+		if err := s.TopicList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoList struct {
@@ -206,7 +221,16 @@ func (s *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoList) SetRe
 }
 
 func (s *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.RebalanceInfoList != nil {
+		for _, item := range s.RebalanceInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList struct {
@@ -336,7 +360,16 @@ func (s *GetConsumerProgressResponseBodyConsumerProgressTopicList) SetTopicList(
 }
 
 func (s *GetConsumerProgressResponseBodyConsumerProgressTopicList) Validate() error {
-	return dara.Validate(s)
+	if s.TopicList != nil {
+		for _, item := range s.TopicList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList struct {
@@ -407,7 +440,12 @@ func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList) SetT
 }
 
 func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList) Validate() error {
-	return dara.Validate(s)
+	if s.OffsetList != nil {
+		if err := s.OffsetList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList struct {
@@ -432,7 +470,16 @@ func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffset
 }
 
 func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList) Validate() error {
-	return dara.Validate(s)
+	if s.OffsetList != nil {
+		for _, item := range s.OffsetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList struct {

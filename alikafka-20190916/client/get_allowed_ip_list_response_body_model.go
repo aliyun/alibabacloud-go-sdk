@@ -104,7 +104,12 @@ func (s *GetAllowedIpListResponseBody) SetSuccess(v bool) *GetAllowedIpListRespo
 }
 
 func (s *GetAllowedIpListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AllowedList != nil {
+		if err := s.AllowedList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAllowedIpListResponseBodyAllowedList struct {
@@ -162,7 +167,25 @@ func (s *GetAllowedIpListResponseBodyAllowedList) SetVpcList(v []*GetAllowedIpLi
 }
 
 func (s *GetAllowedIpListResponseBodyAllowedList) Validate() error {
-	return dara.Validate(s)
+	if s.InternetList != nil {
+		for _, item := range s.InternetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VpcList != nil {
+		for _, item := range s.VpcList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAllowedIpListResponseBodyAllowedListInternetList struct {

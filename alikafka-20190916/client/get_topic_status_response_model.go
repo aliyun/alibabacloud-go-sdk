@@ -59,5 +59,10 @@ func (s *GetTopicStatusResponse) SetBody(v *GetTopicStatusResponseBody) *GetTopi
 }
 
 func (s *GetTopicStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -104,7 +104,12 @@ func (s *GetInstanceListResponseBody) SetSuccess(v bool) *GetInstanceListRespons
 }
 
 func (s *GetInstanceListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceList != nil {
+		if err := s.InstanceList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceListResponseBodyInstanceList struct {
@@ -129,7 +134,16 @@ func (s *GetInstanceListResponseBodyInstanceList) SetInstanceVO(v []*GetInstance
 }
 
 func (s *GetInstanceListResponseBodyInstanceList) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceVO != nil {
+		for _, item := range s.InstanceVO {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceListResponseBodyInstanceListInstanceVO struct {
@@ -340,7 +354,8 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	// example:
 	//
 	// 172.16.3.XX:9094,172.16.3.XX:9094,172.16.3.XX:9094
-	SaslEndPoint *string `json:"SaslEndPoint,omitempty" xml:"SaslEndPoint,omitempty"`
+	SaslEndPoint        *string `json:"SaslEndPoint,omitempty" xml:"SaslEndPoint,omitempty"`
+	ScheduledRetirement *bool   `json:"ScheduledRetirement,omitempty" xml:"ScheduledRetirement,omitempty"`
 	// The security group to which the instance belongs.
 	//
 	// 	- If the instance is deployed in the ApsaraMQ for Kafka console or by calling the [StartInstance](https://help.aliyun.com/document_detail/157786.html) operation without a security group configured, no value is returned.
@@ -671,6 +686,10 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) GetSaslEndPoint() *s
 	return s.SaslEndPoint
 }
 
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) GetScheduledRetirement() *bool {
+	return s.ScheduledRetirement
+}
+
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) GetSecurityGroup() *string {
 	return s.SecurityGroup
 }
@@ -906,6 +925,11 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetSaslEndPoint(v st
 	return s
 }
 
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetScheduledRetirement(v bool) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.ScheduledRetirement = &v
+	return s
+}
+
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetSecurityGroup(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.SecurityGroup = &v
 	return s
@@ -1007,7 +1031,32 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetZoneId(v string) 
 }
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) Validate() error {
-	return dara.Validate(s)
+	if s.ConfluentConfig != nil {
+		if err := s.ConfluentConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ConfluentInstanceComponents != nil {
+		if err := s.ConfluentInstanceComponents.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UpgradeServiceDetailInfo != nil {
+		if err := s.UpgradeServiceDetailInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VSwitchIds != nil {
+		if err := s.VSwitchIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig struct {
@@ -1317,7 +1366,16 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceCompo
 }
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponents) Validate() error {
-	return dara.Validate(s)
+	if s.ConfluentInstanceComponentVO != nil {
+		for _, item := range s.ConfluentInstanceComponentVO {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO struct {
@@ -1397,7 +1455,16 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVOTags) SetTagVO(v []*Ge
 }
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVOTags) Validate() error {
-	return dara.Validate(s)
+	if s.TagVO != nil {
+		for _, item := range s.TagVO {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceListResponseBodyInstanceListInstanceVOTagsTagVO struct {

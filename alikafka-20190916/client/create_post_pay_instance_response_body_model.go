@@ -95,7 +95,12 @@ func (s *CreatePostPayInstanceResponseBody) SetSuccess(v bool) *CreatePostPayIns
 }
 
 func (s *CreatePostPayInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePostPayInstanceResponseBodyData struct {

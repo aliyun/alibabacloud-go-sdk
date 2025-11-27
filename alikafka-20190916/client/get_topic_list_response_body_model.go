@@ -155,7 +155,12 @@ func (s *GetTopicListResponseBody) SetTotal(v int32) *GetTopicListResponseBody {
 }
 
 func (s *GetTopicListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TopicList != nil {
+		if err := s.TopicList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTopicListResponseBodyTopicList struct {
@@ -180,7 +185,16 @@ func (s *GetTopicListResponseBodyTopicList) SetTopicVO(v []*GetTopicListResponse
 }
 
 func (s *GetTopicListResponseBodyTopicList) Validate() error {
-	return dara.Validate(s)
+	if s.TopicVO != nil {
+		for _, item := range s.TopicVO {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicListResponseBodyTopicListTopicVO struct {
@@ -410,7 +424,12 @@ func (s *GetTopicListResponseBodyTopicListTopicVO) SetTopicConfig(v string) *Get
 }
 
 func (s *GetTopicListResponseBodyTopicListTopicVO) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTopicListResponseBodyTopicListTopicVOTags struct {
@@ -435,7 +454,16 @@ func (s *GetTopicListResponseBodyTopicListTopicVOTags) SetTagVO(v []*GetTopicLis
 }
 
 func (s *GetTopicListResponseBodyTopicListTopicVOTags) Validate() error {
-	return dara.Validate(s)
+	if s.TagVO != nil {
+		for _, item := range s.TagVO {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicListResponseBodyTopicListTopicVOTagsTagVO struct {

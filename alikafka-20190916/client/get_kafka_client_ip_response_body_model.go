@@ -104,7 +104,12 @@ func (s *GetKafkaClientIpResponseBody) SetSuccess(v bool) *GetKafkaClientIpRespo
 }
 
 func (s *GetKafkaClientIpResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetKafkaClientIpResponseBodyData struct {
@@ -211,7 +216,12 @@ func (s *GetKafkaClientIpResponseBodyData) SetTimeLimitDay(v int32) *GetKafkaCli
 }
 
 func (s *GetKafkaClientIpResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetKafkaClientIpResponseBodyDataData struct {
@@ -236,7 +246,16 @@ func (s *GetKafkaClientIpResponseBodyDataData) SetData(v []*GetKafkaClientIpResp
 }
 
 func (s *GetKafkaClientIpResponseBodyDataData) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetKafkaClientIpResponseBodyDataDataData struct {
@@ -279,7 +298,12 @@ func (s *GetKafkaClientIpResponseBodyDataDataData) SetName(v string) *GetKafkaCl
 }
 
 func (s *GetKafkaClientIpResponseBodyDataDataData) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetKafkaClientIpResponseBodyDataDataDataData struct {
@@ -304,7 +328,16 @@ func (s *GetKafkaClientIpResponseBodyDataDataDataData) SetData(v []*GetKafkaClie
 }
 
 func (s *GetKafkaClientIpResponseBodyDataDataDataData) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetKafkaClientIpResponseBodyDataDataDataDataData struct {

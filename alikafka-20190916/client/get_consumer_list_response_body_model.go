@@ -155,7 +155,12 @@ func (s *GetConsumerListResponseBody) SetTotal(v int64) *GetConsumerListResponse
 }
 
 func (s *GetConsumerListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ConsumerList != nil {
+		if err := s.ConsumerList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConsumerListResponseBodyConsumerList struct {
@@ -180,7 +185,16 @@ func (s *GetConsumerListResponseBodyConsumerList) SetConsumerVO(v []*GetConsumer
 }
 
 func (s *GetConsumerListResponseBodyConsumerList) Validate() error {
-	return dara.Validate(s)
+	if s.ConsumerVO != nil {
+		for _, item := range s.ConsumerVO {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetConsumerListResponseBodyConsumerListConsumerVO struct {
@@ -296,7 +310,12 @@ func (s *GetConsumerListResponseBodyConsumerListConsumerVO) SetTags(v *GetConsum
 }
 
 func (s *GetConsumerListResponseBodyConsumerListConsumerVO) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConsumerListResponseBodyConsumerListConsumerVOTags struct {
@@ -321,7 +340,16 @@ func (s *GetConsumerListResponseBodyConsumerListConsumerVOTags) SetTagVO(v []*Ge
 }
 
 func (s *GetConsumerListResponseBodyConsumerListConsumerVOTags) Validate() error {
-	return dara.Validate(s)
+	if s.TagVO != nil {
+		for _, item := range s.TagVO {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetConsumerListResponseBodyConsumerListConsumerVOTagsTagVO struct {

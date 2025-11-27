@@ -59,5 +59,10 @@ func (s *GetKafkaClientIpResponse) SetBody(v *GetKafkaClientIpResponseBody) *Get
 }
 
 func (s *GetKafkaClientIpResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

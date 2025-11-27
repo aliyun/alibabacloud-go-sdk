@@ -59,5 +59,10 @@ func (s *CreateSaslUserResponse) SetBody(v *CreateSaslUserResponseBody) *CreateS
 }
 
 func (s *CreateSaslUserResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

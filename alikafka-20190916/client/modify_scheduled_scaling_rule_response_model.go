@@ -59,5 +59,10 @@ func (s *ModifyScheduledScalingRuleResponse) SetBody(v *ModifyScheduledScalingRu
 }
 
 func (s *ModifyScheduledScalingRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

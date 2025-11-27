@@ -59,5 +59,10 @@ func (s *UpgradePostPayOrderResponse) SetBody(v *UpgradePostPayOrderResponseBody
 }
 
 func (s *UpgradePostPayOrderResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

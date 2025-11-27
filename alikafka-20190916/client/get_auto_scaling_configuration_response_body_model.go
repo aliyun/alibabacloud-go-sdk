@@ -104,7 +104,12 @@ func (s *GetAutoScalingConfigurationResponseBody) SetSuccess(v bool) *GetAutoSca
 }
 
 func (s *GetAutoScalingConfigurationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAutoScalingConfigurationResponseBodyData struct {
@@ -130,7 +135,12 @@ func (s *GetAutoScalingConfigurationResponseBodyData) SetScheduledScalingRules(v
 }
 
 func (s *GetAutoScalingConfigurationResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ScheduledScalingRules != nil {
+		if err := s.ScheduledScalingRules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAutoScalingConfigurationResponseBodyDataScheduledScalingRules struct {
@@ -155,7 +165,16 @@ func (s *GetAutoScalingConfigurationResponseBodyDataScheduledScalingRules) SetSc
 }
 
 func (s *GetAutoScalingConfigurationResponseBodyDataScheduledScalingRules) Validate() error {
-	return dara.Validate(s)
+	if s.ScheduledScalingRules != nil {
+		for _, item := range s.ScheduledScalingRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledScalingRules struct {
@@ -373,7 +392,12 @@ func (s *GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesSchedul
 }
 
 func (s *GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledScalingRules) Validate() error {
-	return dara.Validate(s)
+	if s.WeeklyTypes != nil {
+		if err := s.WeeklyTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledScalingRulesWeeklyTypes struct {

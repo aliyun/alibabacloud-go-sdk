@@ -104,7 +104,12 @@ func (s *GetTopicStatusResponseBody) SetTopicStatus(v *GetTopicStatusResponseBod
 }
 
 func (s *GetTopicStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TopicStatus != nil {
+		if err := s.TopicStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTopicStatusResponseBodyTopicStatus struct {
@@ -160,7 +165,12 @@ func (s *GetTopicStatusResponseBodyTopicStatus) SetTotalCount(v int64) *GetTopic
 }
 
 func (s *GetTopicStatusResponseBodyTopicStatus) Validate() error {
-	return dara.Validate(s)
+	if s.OffsetTable != nil {
+		if err := s.OffsetTable.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTopicStatusResponseBodyTopicStatusOffsetTable struct {
@@ -185,7 +195,16 @@ func (s *GetTopicStatusResponseBodyTopicStatusOffsetTable) SetOffsetTable(v []*G
 }
 
 func (s *GetTopicStatusResponseBodyTopicStatusOffsetTable) Validate() error {
-	return dara.Validate(s)
+	if s.OffsetTable != nil {
+		for _, item := range s.OffsetTable {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable struct {

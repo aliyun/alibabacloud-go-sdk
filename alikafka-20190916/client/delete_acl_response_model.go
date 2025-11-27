@@ -59,5 +59,10 @@ func (s *DeleteAclResponse) SetBody(v *DeleteAclResponseBody) *DeleteAclResponse
 }
 
 func (s *DeleteAclResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

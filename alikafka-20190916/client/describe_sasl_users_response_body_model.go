@@ -104,7 +104,12 @@ func (s *DescribeSaslUsersResponseBody) SetSuccess(v bool) *DescribeSaslUsersRes
 }
 
 func (s *DescribeSaslUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SaslUserList != nil {
+		if err := s.SaslUserList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSaslUsersResponseBodySaslUserList struct {
@@ -129,7 +134,16 @@ func (s *DescribeSaslUsersResponseBodySaslUserList) SetSaslUserVO(v []*DescribeS
 }
 
 func (s *DescribeSaslUsersResponseBodySaslUserList) Validate() error {
-	return dara.Validate(s)
+	if s.SaslUserVO != nil {
+		for _, item := range s.SaslUserVO {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSaslUsersResponseBodySaslUserListSaslUserVO struct {

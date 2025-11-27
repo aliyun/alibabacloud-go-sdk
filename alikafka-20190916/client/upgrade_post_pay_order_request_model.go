@@ -280,7 +280,12 @@ func (s *UpgradePostPayOrderRequest) SetTopicQuota(v int32) *UpgradePostPayOrder
 }
 
 func (s *UpgradePostPayOrderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ServerlessConfig != nil {
+		if err := s.ServerlessConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpgradePostPayOrderRequestServerlessConfig struct {
