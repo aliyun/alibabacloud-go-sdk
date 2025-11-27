@@ -1171,6 +1171,118 @@ func (client *Client) GetMonthlyBillWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
+// 下单控制记录查询
+//
+// @param request - GetPurchaseControlRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPurchaseControlRecordResponse
+func (client *Client) GetPurchaseControlRecordWithContext(ctx context.Context, request *GetPurchaseControlRecordRequest, runtime *dara.RuntimeOptions) (_result *GetPurchaseControlRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomerUID) {
+		query["CustomerUID"] = request.CustomerUID
+	}
+
+	if !dara.IsNil(request.OperationTime) {
+		query["OperationTime"] = request.OperationTime
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPurchaseControlRecord"),
+		Version:     dara.String("2022-12-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPurchaseControlRecordResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询延停策略修改记录
+//
+// @param request - GetShutdownPolicyRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetShutdownPolicyRecordResponse
+func (client *Client) GetShutdownPolicyRecordWithContext(ctx context.Context, request *GetShutdownPolicyRecordRequest, runtime *dara.RuntimeOptions) (_result *GetShutdownPolicyRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomerUID) {
+		query["CustomerUID"] = request.CustomerUID
+	}
+
+	if !dara.IsNil(request.OperationTime) {
+		query["OperationTime"] = request.OperationTime
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetShutdownPolicyRecord"),
+		Version:     dara.String("2022-12-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetShutdownPolicyRecordResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Query all the Unassociated Customer.
 //
 // @param request - GetUnassociatedCustomerRequest
@@ -1394,6 +1506,10 @@ func (client *Client) ListExportTasksWithContext(ctx context.Context, request *L
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
 	if !dara.IsNil(request.Language) {
 		query["Language"] = request.Language
 	}

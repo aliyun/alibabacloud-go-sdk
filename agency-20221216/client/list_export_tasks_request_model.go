@@ -9,6 +9,8 @@ type iListExportTasksRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetId(v int64) *ListExportTasksRequest
+	GetId() *int64
 	SetLanguage(v string) *ListExportTasksRequest
 	GetLanguage() *string
 	SetPageNo(v int32) *ListExportTasksRequest
@@ -20,6 +22,10 @@ type iListExportTasksRequest interface {
 }
 
 type ListExportTasksRequest struct {
+	// example:
+	//
+	// 12343
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// example:
 	//
 	// en
@@ -52,6 +58,10 @@ func (s ListExportTasksRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListExportTasksRequest) GetId() *int64 {
+	return s.Id
+}
+
 func (s *ListExportTasksRequest) GetLanguage() *string {
 	return s.Language
 }
@@ -66,6 +76,11 @@ func (s *ListExportTasksRequest) GetPageSize() *int32 {
 
 func (s *ListExportTasksRequest) GetSceneCode() *string {
 	return s.SceneCode
+}
+
+func (s *ListExportTasksRequest) SetId(v int64) *ListExportTasksRequest {
+	s.Id = &v
+	return s
 }
 
 func (s *ListExportTasksRequest) SetLanguage(v string) *ListExportTasksRequest {
