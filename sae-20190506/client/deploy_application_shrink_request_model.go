@@ -155,6 +155,8 @@ type iDeployApplicationShrinkRequest interface {
 	GetSidecarContainersConfigShrink() *string
 	SetSlsConfigs(v string) *DeployApplicationShrinkRequest
 	GetSlsConfigs() *string
+	SetSlsLogEnvTags(v string) *DeployApplicationShrinkRequest
+	GetSlsLogEnvTags() *string
 	SetStartupProbe(v string) *DeployApplicationShrinkRequest
 	GetStartupProbe() *string
 	SetSwimlanePvtzDiscoverySvc(v string) *DeployApplicationShrinkRequest
@@ -898,7 +900,8 @@ type DeployApplicationShrinkRequest struct {
 	// example:
 	//
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
-	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	SlsConfigs    *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	SlsLogEnvTags *string `json:"SlsLogEnvTags,omitempty" xml:"SlsLogEnvTags,omitempty"`
 	// Check Failure: Indicates that the application failed to start. The system will report the exception and automatically restart it.
 	//
 	// Note:
@@ -1317,6 +1320,10 @@ func (s *DeployApplicationShrinkRequest) GetSlsConfigs() *string {
 	return s.SlsConfigs
 }
 
+func (s *DeployApplicationShrinkRequest) GetSlsLogEnvTags() *string {
+	return s.SlsLogEnvTags
+}
+
 func (s *DeployApplicationShrinkRequest) GetStartupProbe() *string {
 	return s.StartupProbe
 }
@@ -1715,6 +1722,11 @@ func (s *DeployApplicationShrinkRequest) SetSidecarContainersConfigShrink(v stri
 
 func (s *DeployApplicationShrinkRequest) SetSlsConfigs(v string) *DeployApplicationShrinkRequest {
 	s.SlsConfigs = &v
+	return s
+}
+
+func (s *DeployApplicationShrinkRequest) SetSlsLogEnvTags(v string) *DeployApplicationShrinkRequest {
+	s.SlsLogEnvTags = &v
 	return s
 }
 

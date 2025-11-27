@@ -161,6 +161,8 @@ type iCreateApplicationShrinkRequest interface {
 	GetSidecarContainersConfigShrink() *string
 	SetSlsConfigs(v string) *CreateApplicationShrinkRequest
 	GetSlsConfigs() *string
+	SetSlsLogEnvTags(v string) *CreateApplicationShrinkRequest
+	GetSlsLogEnvTags() *string
 	SetStartupProbe(v string) *CreateApplicationShrinkRequest
 	GetStartupProbe() *string
 	SetTerminationGracePeriodSeconds(v int32) *CreateApplicationShrinkRequest
@@ -882,7 +884,8 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
-	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	SlsConfigs    *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	SlsLogEnvTags *string `json:"SlsLogEnvTags,omitempty" xml:"SlsLogEnvTags,omitempty"`
 	// Enable application startup probe.
 	//
 	// Check succeeded: Indicates that the application has started successfully. If you have configured Liveness and Readiness checks, they will be performed after the application startup is successful.
@@ -1267,6 +1270,10 @@ func (s *CreateApplicationShrinkRequest) GetSidecarContainersConfigShrink() *str
 
 func (s *CreateApplicationShrinkRequest) GetSlsConfigs() *string {
 	return s.SlsConfigs
+}
+
+func (s *CreateApplicationShrinkRequest) GetSlsLogEnvTags() *string {
+	return s.SlsLogEnvTags
 }
 
 func (s *CreateApplicationShrinkRequest) GetStartupProbe() *string {
@@ -1678,6 +1685,11 @@ func (s *CreateApplicationShrinkRequest) SetSidecarContainersConfigShrink(v stri
 
 func (s *CreateApplicationShrinkRequest) SetSlsConfigs(v string) *CreateApplicationShrinkRequest {
 	s.SlsConfigs = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetSlsLogEnvTags(v string) *CreateApplicationShrinkRequest {
+	s.SlsLogEnvTags = &v
 	return s
 }
 

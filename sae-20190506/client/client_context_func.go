@@ -720,6 +720,10 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, tmpReq *
 		query["SlsConfigs"] = request.SlsConfigs
 	}
 
+	if !dara.IsNil(request.SlsLogEnvTags) {
+		query["SlsLogEnvTags"] = request.SlsLogEnvTags
+	}
+
 	if !dara.IsNil(request.StartupProbe) {
 		query["StartupProbe"] = request.StartupProbe
 	}
@@ -2824,6 +2828,10 @@ func (client *Client) DeployApplicationWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.SlsConfigs) {
 		query["SlsConfigs"] = request.SlsConfigs
+	}
+
+	if !dara.IsNil(request.SlsLogEnvTags) {
+		query["SlsLogEnvTags"] = request.SlsLogEnvTags
 	}
 
 	if !dara.IsNil(request.StartupProbe) {

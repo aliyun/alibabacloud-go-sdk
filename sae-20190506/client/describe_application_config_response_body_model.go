@@ -850,7 +850,8 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
-	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	SlsConfigs    *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	SlsLogEnvTags *string `json:"SlsLogEnvTags,omitempty" xml:"SlsLogEnvTags,omitempty"`
 	// Enable startup probe.
 	//
 	// example:
@@ -1305,6 +1306,10 @@ func (s *DescribeApplicationConfigResponseBodyData) GetSidecarContainersConfig()
 
 func (s *DescribeApplicationConfigResponseBodyData) GetSlsConfigs() *string {
 	return s.SlsConfigs
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) GetSlsLogEnvTags() *string {
+	return s.SlsLogEnvTags
 }
 
 func (s *DescribeApplicationConfigResponseBodyData) GetStartupProbe() *string {
@@ -1783,6 +1788,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetSidecarContainersConfig(v
 
 func (s *DescribeApplicationConfigResponseBodyData) SetSlsConfigs(v string) *DescribeApplicationConfigResponseBodyData {
 	s.SlsConfigs = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetSlsLogEnvTags(v string) *DescribeApplicationConfigResponseBodyData {
+	s.SlsLogEnvTags = &v
 	return s
 }
 

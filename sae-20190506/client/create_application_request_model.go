@@ -161,6 +161,8 @@ type iCreateApplicationRequest interface {
 	GetSidecarContainersConfig() []*SidecarContainerConfig
 	SetSlsConfigs(v string) *CreateApplicationRequest
 	GetSlsConfigs() *string
+	SetSlsLogEnvTags(v string) *CreateApplicationRequest
+	GetSlsLogEnvTags() *string
 	SetStartupProbe(v string) *CreateApplicationRequest
 	GetStartupProbe() *string
 	SetTerminationGracePeriodSeconds(v int32) *CreateApplicationRequest
@@ -882,7 +884,8 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
-	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	SlsConfigs    *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	SlsLogEnvTags *string `json:"SlsLogEnvTags,omitempty" xml:"SlsLogEnvTags,omitempty"`
 	// Enable application startup probe.
 	//
 	// Check succeeded: Indicates that the application has started successfully. If you have configured Liveness and Readiness checks, they will be performed after the application startup is successful.
@@ -1267,6 +1270,10 @@ func (s *CreateApplicationRequest) GetSidecarContainersConfig() []*SidecarContai
 
 func (s *CreateApplicationRequest) GetSlsConfigs() *string {
 	return s.SlsConfigs
+}
+
+func (s *CreateApplicationRequest) GetSlsLogEnvTags() *string {
+	return s.SlsLogEnvTags
 }
 
 func (s *CreateApplicationRequest) GetStartupProbe() *string {
@@ -1678,6 +1685,11 @@ func (s *CreateApplicationRequest) SetSidecarContainersConfig(v []*SidecarContai
 
 func (s *CreateApplicationRequest) SetSlsConfigs(v string) *CreateApplicationRequest {
 	s.SlsConfigs = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetSlsLogEnvTags(v string) *CreateApplicationRequest {
+	s.SlsLogEnvTags = &v
 	return s
 }
 
