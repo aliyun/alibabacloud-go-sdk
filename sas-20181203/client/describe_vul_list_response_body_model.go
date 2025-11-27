@@ -167,7 +167,8 @@ type DescribeVulListResponseBodyVulRecords struct {
 	// example:
 	//
 	// true
-	Bind *bool `json:"Bind,omitempty" xml:"Bind,omitempty"`
+	Bind        *bool   `json:"Bind,omitempty" xml:"Bind,omitempty"`
+	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
 	// The extended information about the vulnerability.
 	ExtendContentJson *DescribeVulListResponseBodyVulRecordsExtendContentJson `json:"ExtendContentJson,omitempty" xml:"ExtendContentJson,omitempty" type:"Struct"`
 	// The timestamp when the vulnerability was first detected. Unit: milliseconds.
@@ -482,6 +483,10 @@ func (s *DescribeVulListResponseBodyVulRecords) GetBind() *bool {
 	return s.Bind
 }
 
+func (s *DescribeVulListResponseBodyVulRecords) GetContainerId() *string {
+	return s.ContainerId
+}
+
 func (s *DescribeVulListResponseBodyVulRecords) GetExtendContentJson() *DescribeVulListResponseBodyVulRecordsExtendContentJson {
 	return s.ExtendContentJson
 }
@@ -638,6 +643,11 @@ func (s *DescribeVulListResponseBodyVulRecords) SetAuthVersion(v string) *Descri
 
 func (s *DescribeVulListResponseBodyVulRecords) SetBind(v bool) *DescribeVulListResponseBodyVulRecords {
 	s.Bind = &v
+	return s
+}
+
+func (s *DescribeVulListResponseBodyVulRecords) SetContainerId(v string) *DescribeVulListResponseBodyVulRecords {
+	s.ContainerId = &v
 	return s
 }
 
