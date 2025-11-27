@@ -165,7 +165,21 @@ func (s *CreateCustomizedStoryRequest) SetStoryType(v string) *CreateCustomizedS
 }
 
 func (s *CreateCustomizedStoryRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Cover != nil {
+		if err := s.Cover.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Files != nil {
+		for _, item := range s.Files {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCustomizedStoryRequestCover struct {

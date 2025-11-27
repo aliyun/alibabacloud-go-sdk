@@ -47,5 +47,10 @@ func (s *ToolCall) SetType(v string) *ToolCall {
 }
 
 func (s *ToolCall) Validate() error {
-	return dara.Validate(s)
+	if s.Function != nil {
+		if err := s.Function.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

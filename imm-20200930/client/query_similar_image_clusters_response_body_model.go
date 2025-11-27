@@ -72,5 +72,14 @@ func (s *QuerySimilarImageClustersResponseBody) SetSimilarImageClusters(v []*Sim
 }
 
 func (s *QuerySimilarImageClustersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SimilarImageClusters != nil {
+		for _, item := range s.SimilarImageClusters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -70,5 +70,14 @@ func (s *QueryStoriesResponseBody) SetStories(v []*Story) *QueryStoriesResponseB
 }
 
 func (s *QueryStoriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Stories != nil {
+		for _, item := range s.Stories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

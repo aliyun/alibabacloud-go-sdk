@@ -185,7 +185,31 @@ func (s *DataIngestion) SetUpdateTime(v string) *DataIngestion {
 }
 
 func (s *DataIngestion) Validate() error {
-	return dara.Validate(s)
+	if s.Actions != nil {
+		for _, item := range s.Actions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Statistic != nil {
+		if err := s.Statistic.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DataIngestionActions struct {
@@ -230,7 +254,12 @@ func (s *DataIngestionActions) SetParameters(v []*string) *DataIngestionActions 
 }
 
 func (s *DataIngestionActions) Validate() error {
-	return dara.Validate(s)
+	if s.FastFailPolicy != nil {
+		if err := s.FastFailPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DataIngestionNotification struct {
@@ -285,7 +314,17 @@ func (s *DataIngestionNotification) SetTopic(v string) *DataIngestionNotificatio
 }
 
 func (s *DataIngestionNotification) Validate() error {
-	return dara.Validate(s)
+	if s.MNS != nil {
+		if err := s.MNS.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RocketMQ != nil {
+		if err := s.RocketMQ.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DataIngestionStatistic struct {

@@ -59,5 +59,10 @@ func (s *DetectImageCroppingResponse) SetBody(v *DetectImageCroppingResponseBody
 }
 
 func (s *DetectImageCroppingResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

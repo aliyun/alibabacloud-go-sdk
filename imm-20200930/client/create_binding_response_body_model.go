@@ -16,7 +16,7 @@ type iCreateBindingResponseBody interface {
 }
 
 type CreateBindingResponseBody struct {
-	// The binding relationship.
+	// The information about the binding.
 	Binding *Binding `json:"Binding,omitempty" xml:"Binding,omitempty"`
 	// The request ID.
 	//
@@ -53,5 +53,10 @@ func (s *CreateBindingResponseBody) SetRequestId(v string) *CreateBindingRespons
 }
 
 func (s *CreateBindingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Binding != nil {
+		if err := s.Binding.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

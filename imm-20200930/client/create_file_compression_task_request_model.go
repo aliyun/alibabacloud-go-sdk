@@ -28,9 +28,9 @@ type iCreateFileCompressionTaskRequest interface {
 }
 
 type CreateFileCompressionTaskRequest struct {
-	// The format of the package. Default value: zip.
+	// The format of the output file.
 	//
-	// >  Only the ZIP format is supported.
+	// > Only the ZIP format is supported.
 	//
 	// example:
 	//
@@ -163,7 +163,26 @@ func (s *CreateFileCompressionTaskRequest) SetUserData(v string) *CreateFileComp
 }
 
 func (s *CreateFileCompressionTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Sources != nil {
+		for _, item := range s.Sources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateFileCompressionTaskRequestSources struct {

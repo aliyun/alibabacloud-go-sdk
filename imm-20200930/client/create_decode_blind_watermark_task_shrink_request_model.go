@@ -78,7 +78,13 @@ type CreateDecodeBlindWatermarkTaskShrinkRequest struct {
 	//
 	// oss://target/sampleobject.jpg
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	// The watermark strength level. The higher the strength level, the more resistant the watermarked image is to attacks, but the more the image is distorted. Valid values: low, medium, and high. Default value: low.
+	// The level of watermark extraction. A higher level indicates a longer time and a higher quality. Valid values:
+	//
+	// 	- low
+	//
+	// 	- medium
+	//
+	// 	- high
 	//
 	// example:
 	//

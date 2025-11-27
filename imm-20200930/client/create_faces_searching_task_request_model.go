@@ -121,7 +121,21 @@ func (s *CreateFacesSearchingTaskRequest) SetUserData(v string) *CreateFacesSear
 }
 
 func (s *CreateFacesSearchingTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Sources != nil {
+		for _, item := range s.Sources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateFacesSearchingTaskRequestSources struct {

@@ -71,7 +71,17 @@ func (s *TargetAudio) SetTranscodeAudio(v *TargetAudioTranscodeAudio) *TargetAud
 }
 
 func (s *TargetAudio) Validate() error {
-	return dara.Validate(s)
+	if s.FilterAudio != nil {
+		if err := s.FilterAudio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TranscodeAudio != nil {
+		if err := s.TranscodeAudio.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TargetAudioFilterAudio struct {

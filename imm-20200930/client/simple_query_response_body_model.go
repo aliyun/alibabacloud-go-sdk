@@ -106,7 +106,25 @@ func (s *SimpleQueryResponseBody) SetTotalHits(v int64) *SimpleQueryResponseBody
 }
 
 func (s *SimpleQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Aggregations != nil {
+		for _, item := range s.Aggregations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Files != nil {
+		for _, item := range s.Files {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SimpleQueryResponseBodyAggregations struct {
@@ -177,7 +195,16 @@ func (s *SimpleQueryResponseBodyAggregations) SetValue(v float64) *SimpleQueryRe
 }
 
 func (s *SimpleQueryResponseBodyAggregations) Validate() error {
-	return dara.Validate(s)
+	if s.Groups != nil {
+		for _, item := range s.Groups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SimpleQueryResponseBodyAggregationsGroups struct {

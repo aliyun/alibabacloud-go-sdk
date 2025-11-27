@@ -239,7 +239,34 @@ func (s *InputFile) SetURI(v string) *InputFile {
 }
 
 func (s *InputFile) Validate() error {
-	return dara.Validate(s)
+	if s.Addresses != nil {
+		for _, item := range s.Addresses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Figures != nil {
+		for _, item := range s.Figures {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InputFileFigures struct {

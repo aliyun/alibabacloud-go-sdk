@@ -53,5 +53,10 @@ func (s *GetBatchResponseBody) SetRequestId(v string) *GetBatchResponseBody {
 }
 
 func (s *GetBatchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Batch != nil {
+		if err := s.Batch.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

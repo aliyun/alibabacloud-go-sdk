@@ -95,5 +95,10 @@ func (s *DetectImageLabelsRequest) SetThreshold(v float32) *DetectImageLabelsReq
 }
 
 func (s *DetectImageLabelsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

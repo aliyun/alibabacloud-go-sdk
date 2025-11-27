@@ -83,5 +83,14 @@ func (s *Boundary) SetWidth(v int64) *Boundary {
 }
 
 func (s *Boundary) Validate() error {
-	return dara.Validate(s)
+	if s.Polygon != nil {
+		for _, item := range s.Polygon {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

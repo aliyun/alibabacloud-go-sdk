@@ -28,9 +28,9 @@ type iCreateFileCompressionTaskShrinkRequest interface {
 }
 
 type CreateFileCompressionTaskShrinkRequest struct {
-	// The format of the package. Default value: zip.
+	// The format of the output file.
 	//
-	// >  Only the ZIP format is supported.
+	// > Only the ZIP format is supported.
 	//
 	// example:
 	//

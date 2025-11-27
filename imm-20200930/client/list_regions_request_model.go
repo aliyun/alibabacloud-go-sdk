@@ -14,13 +14,13 @@ type iListRegionsRequest interface {
 }
 
 type ListRegionsRequest struct {
-	// The language. Valid values:
+	// Language type. The range of values is as follows:
 	//
-	// 	- zh-CN: Chinese.
+	// - zh-CN: Chinese
 	//
-	// 	- en-US: English.
+	// - en-US: English
 	//
-	// 	- ja: Japanese.
+	// - ja: Japanese
 	//
 	// This parameter is required.
 	//

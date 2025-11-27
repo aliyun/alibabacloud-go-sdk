@@ -59,5 +59,10 @@ func (s *CreateCustomizedStoryResponse) SetBody(v *CreateCustomizedStoryResponse
 }
 
 func (s *CreateCustomizedStoryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

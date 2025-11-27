@@ -59,5 +59,10 @@ func (s *CreateImageSplicingTaskResponse) SetBody(v *CreateImageSplicingTaskResp
 }
 
 func (s *CreateImageSplicingTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -109,5 +109,10 @@ func (s *DetectImageCroppingRequest) SetSourceURI(v string) *DetectImageCropping
 }
 
 func (s *DetectImageCroppingRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

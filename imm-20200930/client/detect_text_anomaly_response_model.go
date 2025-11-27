@@ -59,5 +59,10 @@ func (s *DetectTextAnomalyResponse) SetBody(v *DetectTextAnomalyResponseBody) *D
 }
 
 func (s *DetectTextAnomalyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

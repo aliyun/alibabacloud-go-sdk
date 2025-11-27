@@ -44,7 +44,18 @@ type BatchIndexFileMetaRequest struct {
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The user-defined data that you want to return in asynchronous messages. This parameter takes effect only when you specify the MNS settings in the Notification parameter. The maximum information length is 2,048 bytes.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "id": "test-id",
+	//
+	//       "name": "test-name"
+	//
+	// }
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s BatchIndexFileMetaRequest) String() string {
@@ -101,5 +112,19 @@ func (s *BatchIndexFileMetaRequest) SetUserData(v string) *BatchIndexFileMetaReq
 }
 
 func (s *BatchIndexFileMetaRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Files != nil {
+		for _, item := range s.Files {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

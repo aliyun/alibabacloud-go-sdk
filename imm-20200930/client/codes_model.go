@@ -71,5 +71,10 @@ func (s *Codes) SetType(v string) *Codes {
 }
 
 func (s *Codes) Validate() error {
-	return dara.Validate(s)
+	if s.Boundary != nil {
+		if err := s.Boundary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

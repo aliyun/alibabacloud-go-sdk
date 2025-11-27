@@ -53,5 +53,10 @@ func (s *GetStoryResponseBody) SetStory(v *Story) *GetStoryResponseBody {
 }
 
 func (s *GetStoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Story != nil {
+		if err := s.Story.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -220,5 +220,15 @@ func (s *ListTasksRequest) SetTaskTypes(v []*string) *ListTasksRequest {
 }
 
 func (s *ListTasksRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EndTimeRange != nil {
+		if err := s.EndTimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StartTimeRange != nil {
+		if err := s.StartTimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,5 +53,14 @@ func (s *DetectImageFacesResponseBody) SetRequestId(v string) *DetectImageFacesR
 }
 
 func (s *DetectImageFacesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Faces != nil {
+		for _, item := range s.Faces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

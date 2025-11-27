@@ -78,5 +78,10 @@ func (s *DetectImageCarsRequest) SetSourceURI(v string) *DetectImageCarsRequest 
 }
 
 func (s *DetectImageCarsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -36,7 +36,7 @@ type iGenerateVideoPlaylistShrinkRequest interface {
 }
 
 type GenerateVideoPlaylistShrinkRequest struct {
-	// **If you do not have special requirements, leave this parameter empty.**
+	// **If you have no special requirements, leave this parameter empty.**
 	//
 	// The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
@@ -50,7 +50,7 @@ type GenerateVideoPlaylistShrinkRequest struct {
 	//
 	// oss://bucket/object/master.m3u8
 	MasterURI *string `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
-	// The notification settings. To view details, click Notification. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	// The overwrite policy when the media playlist exists. Valid values:
 	//
@@ -114,9 +114,9 @@ type GenerateVideoPlaylistShrinkRequest struct {
 	//
 	// {"key1": "value1", "key2": "value2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The live transcoding playlists. Up to 6 playlists are supported. Each output corresponds to at most one video media playlist and one or more subtitle media playlists.
+	// The array of live transcoding playlists. The maximum length of the array is 6. Each element corresponds to at most one video media playlist and one or more subtitle media playlists.
 	//
-	// >  If more than one output is configured, the **MasterURI*	- parameter is required.
+	// >  If the array contains more than one element, the **MasterURI*	- parameter cannot be left empty.
 	//
 	// This parameter is required.
 	TargetsShrink *string `json:"Targets,omitempty" xml:"Targets,omitempty"`

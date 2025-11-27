@@ -104,7 +104,21 @@ func (s *UpdateBatchRequest) SetTags(v map[string]interface{}) *UpdateBatchReque
 }
 
 func (s *UpdateBatchRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Actions != nil {
+		for _, item := range s.Actions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateBatchRequestActions struct {

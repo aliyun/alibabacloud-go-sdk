@@ -47,7 +47,10 @@ type GetFileMetaRequest struct {
 	// example:
 	//
 	// oss://test-bucket/test-object
-	URI        *string   `json:"URI,omitempty" xml:"URI,omitempty"`
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// The metadata fields that you want to include in the response. You can use this parameter to reduce the size of the response.
+	//
+	// If you do not specify this parameter or leave this parameter empty, the operation returns all metadata fields of the file.
 	WithFields []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
 }
 

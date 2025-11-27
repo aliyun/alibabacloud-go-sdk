@@ -59,5 +59,10 @@ func (s *SuspendBatchResponse) SetBody(v *SuspendBatchResponseBody) *SuspendBatc
 }
 
 func (s *SuspendBatchResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -83,7 +83,12 @@ func (s *ClusterForReq) SetObjectId(v string) *ClusterForReq {
 }
 
 func (s *ClusterForReq) Validate() error {
-	return dara.Validate(s)
+	if s.Cover != nil {
+		if err := s.Cover.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ClusterForReqCover struct {
@@ -108,7 +113,16 @@ func (s *ClusterForReqCover) SetFigures(v []*ClusterForReqCoverFigures) *Cluster
 }
 
 func (s *ClusterForReqCover) Validate() error {
-	return dara.Validate(s)
+	if s.Figures != nil {
+		for _, item := range s.Figures {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ClusterForReqCoverFigures struct {

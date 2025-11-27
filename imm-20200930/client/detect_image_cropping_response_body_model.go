@@ -53,5 +53,14 @@ func (s *DetectImageCroppingResponseBody) SetRequestId(v string) *DetectImageCro
 }
 
 func (s *DetectImageCroppingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Croppings != nil {
+		for _, item := range s.Croppings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

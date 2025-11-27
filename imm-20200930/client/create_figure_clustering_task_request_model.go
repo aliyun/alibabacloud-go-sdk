@@ -108,5 +108,10 @@ func (s *CreateFigureClusteringTaskRequest) SetUserData(v string) *CreateFigureC
 }
 
 func (s *CreateFigureClusteringTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

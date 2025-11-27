@@ -95,5 +95,28 @@ func (s *Image) SetOCRContents(v []*OCRContents) *Image {
 }
 
 func (s *Image) Validate() error {
-	return dara.Validate(s)
+	if s.CroppingSuggestions != nil {
+		for _, item := range s.CroppingSuggestions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ImageScore != nil {
+		if err := s.ImageScore.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OCRContents != nil {
+		for _, item := range s.OCRContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

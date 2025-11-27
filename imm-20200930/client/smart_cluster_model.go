@@ -155,5 +155,10 @@ func (s *SmartCluster) SetUpdateTime(v string) *SmartCluster {
 }
 
 func (s *SmartCluster) Validate() error {
-	return dara.Validate(s)
+	if s.Rule != nil {
+		if err := s.Rule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

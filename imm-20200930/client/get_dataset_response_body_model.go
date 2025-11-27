@@ -53,5 +53,10 @@ func (s *GetDatasetResponseBody) SetRequestId(v string) *GetDatasetResponseBody 
 }
 
 func (s *GetDatasetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Dataset != nil {
+		if err := s.Dataset.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

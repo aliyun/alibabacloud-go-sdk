@@ -59,5 +59,10 @@ func (s *ListBatchesResponse) SetBody(v *ListBatchesResponseBody) *ListBatchesRe
 }
 
 func (s *ListBatchesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

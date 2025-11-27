@@ -95,7 +95,16 @@ func (s *RemoveStoryFilesRequest) SetProjectName(v string) *RemoveStoryFilesRequ
 }
 
 func (s *RemoveStoryFilesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Files != nil {
+		for _, item := range s.Files {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RemoveStoryFilesRequestFiles struct {

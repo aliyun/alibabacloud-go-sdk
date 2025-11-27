@@ -299,5 +299,20 @@ func (s *QueryStoriesRequest) SetWithEmptyStories(v bool) *QueryStoriesRequest {
 }
 
 func (s *QueryStoriesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CreateTimeRange != nil {
+		if err := s.CreateTimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StoryEndTimeRange != nil {
+		if err := s.StoryEndTimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StoryStartTimeRange != nil {
+		if err := s.StoryStartTimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

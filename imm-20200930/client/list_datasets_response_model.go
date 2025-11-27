@@ -59,5 +59,10 @@ func (s *ListDatasetsResponse) SetBody(v *ListDatasetsResponseBody) *ListDataset
 }
 
 func (s *ListDatasetsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

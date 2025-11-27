@@ -133,5 +133,20 @@ func (s *Hyperparameters) SetSchedule(v *Schedule) *Hyperparameters {
 }
 
 func (s *Hyperparameters) Validate() error {
-	return dara.Validate(s)
+	if s.Evaluator != nil {
+		if err := s.Evaluator.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Optimization != nil {
+		if err := s.Optimization.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Schedule != nil {
+		if err := s.Schedule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

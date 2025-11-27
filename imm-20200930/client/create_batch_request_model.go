@@ -125,7 +125,26 @@ func (s *CreateBatchRequest) SetTags(v map[string]interface{}) *CreateBatchReque
 }
 
 func (s *CreateBatchRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Actions != nil {
+		for _, item := range s.Actions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateBatchRequestActions struct {
@@ -179,7 +198,12 @@ func (s *CreateBatchRequestActions) SetParameters(v []*string) *CreateBatchReque
 }
 
 func (s *CreateBatchRequestActions) Validate() error {
-	return dara.Validate(s)
+	if s.FastFailPolicy != nil {
+		if err := s.FastFailPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateBatchRequestNotification struct {
@@ -205,5 +229,10 @@ func (s *CreateBatchRequestNotification) SetMNS(v *MNS) *CreateBatchRequestNotif
 }
 
 func (s *CreateBatchRequestNotification) Validate() error {
-	return dara.Validate(s)
+	if s.MNS != nil {
+		if err := s.MNS.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

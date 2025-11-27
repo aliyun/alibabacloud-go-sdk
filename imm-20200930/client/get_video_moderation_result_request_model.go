@@ -18,18 +18,24 @@ type iGetVideoModerationResultRequest interface {
 }
 
 type GetVideoModerationResultRequest struct {
+	// The project name.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// VideoModeration-d0f0df1d-531d-4ab4-b353-e7f475******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task type.
+	//
 	// This parameter is required.
 	//
 	// example:

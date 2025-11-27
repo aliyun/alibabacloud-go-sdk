@@ -104,7 +104,21 @@ func (s *UpdateTriggerRequest) SetTags(v map[string]interface{}) *UpdateTriggerR
 }
 
 func (s *UpdateTriggerRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Actions != nil {
+		for _, item := range s.Actions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateTriggerRequestActions struct {

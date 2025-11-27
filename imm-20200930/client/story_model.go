@@ -239,5 +239,28 @@ func (s *Story) SetUpdateTime(v string) *Story {
 }
 
 func (s *Story) Validate() error {
-	return dara.Validate(s)
+	if s.Addresses != nil {
+		for _, item := range s.Addresses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Cover != nil {
+		if err := s.Cover.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Files != nil {
+		for _, item := range s.Files {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -53,5 +53,10 @@ func (s *UpdateProjectResponseBody) SetRequestId(v string) *UpdateProjectRespons
 }
 
 func (s *UpdateProjectResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Project != nil {
+		if err := s.Project.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

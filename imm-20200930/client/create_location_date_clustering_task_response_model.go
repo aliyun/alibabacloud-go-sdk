@@ -59,5 +59,10 @@ func (s *CreateLocationDateClusteringTaskResponse) SetBody(v *CreateLocationDate
 }
 
 func (s *CreateLocationDateClusteringTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

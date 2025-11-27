@@ -29,6 +29,8 @@ type CreateArchiveFileInspectionTaskRequest struct {
 	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	//
+	// >  The IMM operation does not support a callback URL. We recommend that you use Simple Message Queue (SMQ) to receive notifications.
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	// The password that protects the package. If the package is password-protected, you must provide the password to view the contents of the package.
 	//
@@ -123,5 +125,15 @@ func (s *CreateArchiveFileInspectionTaskRequest) SetUserData(v string) *CreateAr
 }
 
 func (s *CreateArchiveFileInspectionTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

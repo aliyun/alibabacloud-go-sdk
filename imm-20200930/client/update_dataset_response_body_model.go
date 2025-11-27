@@ -16,8 +16,10 @@ type iUpdateDatasetResponseBody interface {
 }
 
 type UpdateDatasetResponseBody struct {
-	// The dataset.
+	// 数据集。
 	Dataset *Dataset `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+	// 请求ID。
+	//
 	// example:
 	//
 	// 45234D4A-A3E3-4B23-AACA-8D897514****
@@ -51,5 +53,10 @@ func (s *UpdateDatasetResponseBody) SetRequestId(v string) *UpdateDatasetRespons
 }
 
 func (s *UpdateDatasetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Dataset != nil {
+		if err := s.Dataset.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

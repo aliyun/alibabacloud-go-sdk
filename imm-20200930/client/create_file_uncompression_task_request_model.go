@@ -28,11 +28,13 @@ type iCreateFileUncompressionTaskRequest interface {
 }
 
 type CreateFileUncompressionTaskRequest struct {
-	// **If you have no special requirements, leave this parameter empty.**
+	// **If you do not have special requirements, leave this parameter empty.**
 	//
-	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+	// The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	//
+	// >  The IMM operation does not support a callback URL. We recommend that you use Simple Message Queue (SMQ) to receive notifications.
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	// The password that protects the package.
 	//
@@ -157,5 +159,15 @@ func (s *CreateFileUncompressionTaskRequest) SetUserData(v string) *CreateFileUn
 }
 
 func (s *CreateFileUncompressionTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

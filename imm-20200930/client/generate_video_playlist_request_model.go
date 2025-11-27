@@ -36,7 +36,7 @@ type iGenerateVideoPlaylistRequest interface {
 }
 
 type GenerateVideoPlaylistRequest struct {
-	// **If you do not have special requirements, leave this parameter empty.**
+	// **If you have no special requirements, leave this parameter empty.**
 	//
 	// The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
@@ -50,7 +50,7 @@ type GenerateVideoPlaylistRequest struct {
 	//
 	// oss://bucket/object/master.m3u8
 	MasterURI *string `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
-	// The notification settings. To view details, click Notification. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	// The overwrite policy when the media playlist exists. Valid values:
 	//
@@ -114,9 +114,9 @@ type GenerateVideoPlaylistRequest struct {
 	//
 	// {"key1": "value1", "key2": "value2"}
 	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The live transcoding playlists. Up to 6 playlists are supported. Each output corresponds to at most one video media playlist and one or more subtitle media playlists.
+	// The array of live transcoding playlists. The maximum length of the array is 6. Each element corresponds to at most one video media playlist and one or more subtitle media playlists.
 	//
-	// >  If more than one output is configured, the **MasterURI*	- parameter is required.
+	// >  If the array contains more than one element, the **MasterURI*	- parameter cannot be left empty.
 	//
 	// This parameter is required.
 	Targets []*GenerateVideoPlaylistRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
@@ -245,7 +245,35 @@ func (s *GenerateVideoPlaylistRequest) SetUserData(v string) *GenerateVideoPlayl
 }
 
 func (s *GenerateVideoPlaylistRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceSubtitles != nil {
+		for _, item := range s.SourceSubtitles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Targets != nil {
+		for _, item := range s.Targets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GenerateVideoPlaylistRequestSourceSubtitles struct {
@@ -302,7 +330,7 @@ func (s *GenerateVideoPlaylistRequestSourceSubtitles) Validate() error {
 type GenerateVideoPlaylistRequestTargets struct {
 	// The audio processing configuration. If you set this parameter to null (default), audio processing is disabled. The generated TS files do not contain audio streams.
 	//
-	// >  The Audio and Subtitle parameters in the same output are mutually exclusive. If the Audio parameter is configured, the Subtitle parameter is ignored. The Audio and Video parameters can be configured at the same time. You can also configure only the Audio parameter to generate only audio information.
+	// >  The Audio and Subtitle parameters in the same element are mutually exclusive. If the Audio parameter is configured, the Subtitle parameter is ignored. The Audio and Video parameters can be configured at the same time. You can also configure only the Audio parameter to generate only audio.
 	Audio *TargetAudio `json:"Audio,omitempty" xml:"Audio,omitempty"`
 	// The playback duration of a single TS file. Unit: seconds. Default value: 10. Valid values: 5 to 15.
 	//
@@ -310,7 +338,7 @@ type GenerateVideoPlaylistRequestTargets struct {
 	//
 	// 5
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The array of the durations of the pre-transcoded TS files. The array can contain the durations of up to six pre-transcoded TS files. By default, this parameter is left empty. This parameter is independent of the **Duration*	- parameter.
+	// The array of the durations of the pre-transcoded TS files. The maximum length of the array is 6. By default, this parameter is left empty. This parameter is independent of the **Duration*	- parameter.
 	InitialSegments []*float32 `json:"InitialSegments,omitempty" xml:"InitialSegments,omitempty" type:"Repeated"`
 	// The pre-transcoding duration. Unit: seconds. Default value: 30.
 	//
@@ -320,7 +348,7 @@ type GenerateVideoPlaylistRequestTargets struct {
 	//
 	// 	- If you set this parameter to a value that is within the middle of the playback duration of a TS file, the transcoding continues until the end of the playback duration.
 	//
-	// >  This parameter is used to reduce the time spent in waiting for the initial playback of a video and improve the playback experience. If you want to replace the traditional video on demand (VOD) business scenario, you can try to pre-transcode the entire video.
+	// >  This parameter reduces the time required to start the first playback, which enhances the viewing experience. If you want to use live transcoding in traditional video-on-demand scenarios, you can pre-transcode entire videos.
 	//
 	// example:
 	//
@@ -328,15 +356,15 @@ type GenerateVideoPlaylistRequestTargets struct {
 	InitialTranscode *float32 `json:"InitialTranscode,omitempty" xml:"InitialTranscode,omitempty"`
 	// The subtitle processing configuration.
 	//
-	// >  The Subtitle and Video or Audio parameters in the same output are mutually exclusive. You must configure the Subtitle parameter independently to generate subtitles.
+	// >  The Subtitle and Video or Audio parameters in the same element are mutually exclusive. You must configure the Subtitle parameter independently to generate subtitles.
 	Subtitle *TargetSubtitle `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
 	// The [tags](https://help.aliyun.com/document_detail/106678.html) that you want to add to a TS file in OSS. You can use tags to manage the lifecycles of TS files in OSS.
 	//
-	// >  The combination of the value of the Tags parameter and the value of the Tags parameter in the upper level is used as the tag value of the current output. If the value of the Tags parameter in the current level is the same as the value of the Tags parameter in the upper level, use the value of the Tags parameter in the current level.
+	// >  The combination of the value of the Tags parameter and the value of the Tags parameter in the upper level is used as the tag value of the current output. If the value of the Tags parameter in the current level is the same as the value of the Tags parameter in the upper level, the value of the Tags parameter in the current level is used.
 	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The number of TS files that are pre-transcoded when the live transcoding is triggered. By default, a 2-minute video is pre-transcoded.
 	//
-	// 	- Example: If you set the **Duration*	- parameter to 10, the value of the **TranscodeAhead*	- parameter is 12 by default. You can configure this parameter to manage the number of pre-transcoded files in an asynchronous manner. Valid values: 10 to 30.
+	// 	- Example: If you set the **Duration*	- parameter to 10, the value of the **TranscodeAhead*	- parameter is 12 by default. You can configure this parameter to manage the number of pre-transcoded files. Valid values: 10 to 30.
 	//
 	// example:
 	//
@@ -344,11 +372,11 @@ type GenerateVideoPlaylistRequestTargets struct {
 	TranscodeAhead *int32 `json:"TranscodeAhead,omitempty" xml:"TranscodeAhead,omitempty"`
 	// The prefix of the OSS path that is used to store the live transcoding files. The live transcoding files include a M3U8 file and multiple TS files.
 	//
-	// The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the prefix of the full path of the file that does not contain the file name extension.
+	// The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the prefix of the full path that does not contain the file name extension.
 	//
 	// 	- Example: If the URI is oss://test-bucket/test-object/output-video, the output-video.m3u8 file and multiple output-video-${token}-${index}.ts files are generated in the oss://test-bucket/test-object/ directory. ${token} is a unique string generated based on the transcoding parameters. The ${token} parameter is included in the response of the operation. ${index} is the serial number of the generated TS files that are numbered starting from 0.
 	//
-	// >  If the **MasterURI*	- parameter is not left empty, the URI specified by this parameter must be in the directory specified by the **MasterURI*	- parameter or its subdirectory.
+	// >  If the **MasterURI*	- parameter is not left empty, the path specified by this parameter must be in the directory specified by the **MasterURI*	- parameter or its subdirectory.
 	//
 	// example:
 	//
@@ -356,7 +384,7 @@ type GenerateVideoPlaylistRequestTargets struct {
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 	// The video processing configuration. If you set this parameter to null (default), video processing is disabled. The generated TS files do not contain video streams.
 	//
-	// >  The Video and Subtitle parameters in the same output are mutually exclusive. If the Video parameter is configured, the Subtitle parameter is ignored.
+	// >  The Video and Subtitle parameters in the same element are mutually exclusive. If the Video parameter is configured, the Subtitle parameter is ignored.
 	Video *TargetVideo `json:"Video,omitempty" xml:"Video,omitempty"`
 }
 
@@ -450,5 +478,20 @@ func (s *GenerateVideoPlaylistRequestTargets) SetVideo(v *TargetVideo) *Generate
 }
 
 func (s *GenerateVideoPlaylistRequestTargets) Validate() error {
-	return dara.Validate(s)
+	if s.Audio != nil {
+		if err := s.Audio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Subtitle != nil {
+		if err := s.Subtitle.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Video != nil {
+		if err := s.Video.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

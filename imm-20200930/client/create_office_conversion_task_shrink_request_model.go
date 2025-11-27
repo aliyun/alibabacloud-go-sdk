@@ -236,9 +236,9 @@ type CreateOfficeConversionTaskShrinkRequest struct {
 	//
 	// 60
 	Quality *int64 `json:"Quality,omitempty" xml:"Quality,omitempty"`
-	// The percentage scale relative to the source document. Valid values: 20 to 200. The default value is 100, which indicates that the document is not scaled.
+	// The percentage scale relative to the source document. Valid values: 20 to 199. The default value is 100, which indicates that the document is not scaled.
 	//
-	// >  A value that is less than 100 indicates a size reduction. A value that is greater than 100 indicates an enlargement.
+	// > A value that is less than 100 indicates a size reduction. A value that is greater than 100 indicates an enlargement.
 	//
 	// example:
 	//
@@ -287,7 +287,12 @@ type CreateOfficeConversionTaskShrinkRequest struct {
 	// example:
 	//
 	// oss://test-bucket/test-object
-	SourceURI     *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The list of images. The sequence of image URIs in the list determines the order in which they are converted. (**This parameter is not officially available and is not recommended.**)
+	//
+	// example:
+	//
+	// oss://imm-test/test.pptx
 	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
 	// The starting page for document conversion. Default value: 1.
 	//

@@ -157,5 +157,10 @@ func (s *CreateFigureClustersMergingTaskRequest) SetUserData(v string) *CreateFi
 }
 
 func (s *CreateFigureClustersMergingTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

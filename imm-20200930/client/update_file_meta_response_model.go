@@ -59,5 +59,10 @@ func (s *UpdateFileMetaResponse) SetBody(v *UpdateFileMetaResponseBody) *UpdateF
 }
 
 func (s *UpdateFileMetaResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

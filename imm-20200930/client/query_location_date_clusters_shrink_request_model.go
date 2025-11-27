@@ -46,13 +46,13 @@ type QueryLocationDateClustersShrinkRequest struct {
 	AddressShrink *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// The time range during which the spatiotemporal clusters were generated.
 	CreateTimeRangeShrink *string `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
-	// The custom labels, which can be used as query conditions.
+	// The custom labels.
 	//
 	// example:
 	//
 	// key=value
 	CustomLabels *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	// The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+	// The name of the dataset. For information about how to create a dataset, see [CreateDataset](https://help.aliyun.com/document_detail/478160.html).
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type QueryLocationDateClustersShrinkRequest struct {
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	// The time range during which the latest photo in a cluster was taken.
 	LocationDateClusterEndTimeRangeShrink *string `json:"LocationDateClusterEndTimeRange,omitempty" xml:"LocationDateClusterEndTimeRange,omitempty"`
-	// The administrative level of the spatiotemporal clustering groups to be queried.
+	// The container for the administrative division level of the spatiotemporal clusters to be queried.
 	LocationDateClusterLevelsShrink *string `json:"LocationDateClusterLevels,omitempty" xml:"LocationDateClusterLevels,omitempty"`
 	// The time range during which the earliest photo in a cluster was taken.
 	LocationDateClusterStartTimeRangeShrink *string `json:"LocationDateClusterStartTimeRange,omitempty" xml:"LocationDateClusterStartTimeRange,omitempty"`
@@ -78,17 +78,17 @@ type QueryLocationDateClustersShrinkRequest struct {
 	//
 	// MzQNjmY2MzYxNhNjk2ZNjEu****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the group that you want to query. Specify this parameter if you want to obtain the information about a specific spatiotemporal clustering group. Otherwise, leave this parameter empty and use other parameters to query the groups that meet the matching conditions.
+	// The ID of the cluster that you want to query. Specify this parameter if you want to query a specific spatiotemporal cluster. Otherwise, leave this parameter empty to query spatiotemporal clusters that meet the specified conditions.
 	//
 	// example:
 	//
 	// location-date-cluster-71dd4f32-9597-4085-a2ab-3a7b0fd0aff9
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	// The sorting order.
+	// The order that you use to sort the query results.
 	//
-	// Default value: asc. Valid values:
+	// Valid values:
 	//
-	// 	- asc: ascending order.
+	// 	- asc: ascending order. This is the default value.
 	//
 	// 	- desc: descending order.
 	//
@@ -96,7 +96,7 @@ type QueryLocationDateClustersShrinkRequest struct {
 	//
 	// asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -104,23 +104,23 @@ type QueryLocationDateClustersShrinkRequest struct {
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The condition by which the results are sorted.
+	// The field that you use to sort the query results.
 	//
 	// Valid values:
 	//
-	// 	- LocationDateClusterEndTime: by the end time of the spatiotemporal clustering groups.
+	// 	- LocationDateClusterEndTime: by the time at which the latest photo in a cluster was taken.
 	//
-	// 	- CreateTime: by the creation time of the spatiotemporal clustering groups.
+	// 	- CreateTime: by the creation time of a spatiotemporal cluster.
 	//
-	// 	- UpdateTime: by the update time of the spatiotemporal clustering groups.
+	// 	- UpdateTime: by the update time of a spatiotemporal cluster.
 	//
-	// 	- LocationDateClusterStartTime: by the start time of the spatiotemporal clustering groups. This is the default value.
+	// 	- LocationDateClusterStartTime: by the time at which the earliest photo in a cluster was taken. This is the default value.
 	//
 	// example:
 	//
 	// LocationDateClusterStartTime
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The title of spatiotemporal clustering. Fuzzy matching is performed.
+	// The characters that are included in the titles of spatiotemporal clusters to be queried. Matches are found by using fuzzy matching.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The time range during which the spatiotemporal clusters were updated.
 	UpdateTimeRangeShrink *string `json:"UpdateTimeRange,omitempty" xml:"UpdateTimeRange,omitempty"`

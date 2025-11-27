@@ -20,9 +20,22 @@ type iContextualAnswerResponseBody interface {
 }
 
 type ContextualAnswerResponseBody struct {
-	Answer  *Answer `json:"Answer,omitempty" xml:"Answer,omitempty"`
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Content of the response from the large model.
+	Answer *Answer `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// Error code.
+	//
+	// example:
+	//
+	// ResourceNotFound
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// The specified resource project is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID of the current request.
+	//
 	// example:
 	//
 	// 22F081FB-90D7-525A-BFE4-D28DC906A28F
@@ -74,5 +87,10 @@ func (s *ContextualAnswerResponseBody) SetRequestId(v string) *ContextualAnswerR
 }
 
 func (s *ContextualAnswerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Answer != nil {
+		if err := s.Answer.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

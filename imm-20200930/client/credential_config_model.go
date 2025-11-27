@@ -59,7 +59,16 @@ func (s *CredentialConfig) SetServiceRole(v string) *CredentialConfig {
 }
 
 func (s *CredentialConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Chain != nil {
+		for _, item := range s.Chain {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CredentialConfigChain struct {

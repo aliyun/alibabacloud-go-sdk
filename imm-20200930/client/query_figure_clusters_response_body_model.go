@@ -87,5 +87,14 @@ func (s *QueryFigureClustersResponseBody) SetTotalCount(v int64) *QueryFigureClu
 }
 
 func (s *QueryFigureClustersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FigureClusters != nil {
+		for _, item := range s.FigureClusters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

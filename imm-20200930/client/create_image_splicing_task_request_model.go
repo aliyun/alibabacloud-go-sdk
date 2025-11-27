@@ -302,7 +302,26 @@ func (s *CreateImageSplicingTaskRequest) SetUserData(v string) *CreateImageSplic
 }
 
 func (s *CreateImageSplicingTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Sources != nil {
+		for _, item := range s.Sources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateImageSplicingTaskRequestSources struct {

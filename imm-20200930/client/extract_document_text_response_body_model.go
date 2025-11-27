@@ -16,7 +16,14 @@ type iExtractDocumentTextResponseBody interface {
 }
 
 type ExtractDocumentTextResponseBody struct {
+  // The text content of the document.
+  // 
+  // example:
+  // 
+  // 测试内容。
   DocumentText *string `json:"DocumentText,omitempty" xml:"DocumentText,omitempty"`
+  // Request ID.
+  // 
   // example:
   // 
   // 94D6F994-E298-037E-8E8B-0090F27*****

@@ -146,7 +146,22 @@ func (s *CreateLocationDateClusteringTaskRequest) SetUserData(v string) *CreateL
 }
 
 func (s *CreateLocationDateClusteringTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DateOptions != nil {
+		if err := s.DateOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LocationOptions != nil {
+		if err := s.LocationOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateLocationDateClusteringTaskRequestDateOptions struct {

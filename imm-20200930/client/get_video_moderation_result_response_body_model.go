@@ -36,47 +36,85 @@ type iGetVideoModerationResultResponseBody interface {
 }
 
 type GetVideoModerationResultResponseBody struct {
+	// The error code of the task.
+	//
 	// example:
 	//
 	// ResourceNotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The end time of the task.
+	//
 	// example:
 	//
 	// 2023-04-03T10:20:56.87Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The event ID.
+	//
 	// example:
 	//
 	// 05C-1XBQvsG2Tn5kBx2dUWo43******
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The error message of the task.
+	//
 	// example:
 	//
 	// The specified resource TaskId is not found.
-	Message          *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The result of the image compliance detection task.
 	ModerationResult *GetVideoModerationResultResponseBodyModerationResult `json:"ModerationResult,omitempty" xml:"ModerationResult,omitempty" type:"Struct"`
+	// The project name.
+	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// VideoModeration-d0f0df1d-531d-4ab4-b353-e7f475******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time of the task.
+	//
 	// example:
 	//
 	// 2023-04-03T10:20:41.432Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task status. Valid values:
+	//
+	// 	- Running: The task is running.
+	//
+	// 	- Succeeded: The task is successful.
+	//
+	// 	- Failed: The task failed.
+	//
 	// example:
 	//
 	// Succeeded
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// VideoModeration-d0f0df1d-531d-4ab4-b353-e7f4750******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task.
+	//
 	// example:
 	//
 	// VideoModeration
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The user-defined data.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "id": "test-id",
+	//
+	//       "name": "test-name"
+	//
+	// }
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -197,16 +235,33 @@ func (s *GetVideoModerationResultResponseBody) SetUserData(v string) *GetVideoMo
 }
 
 func (s *GetVideoModerationResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ModerationResult != nil {
+		if err := s.ModerationResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVideoModerationResultResponseBodyModerationResult struct {
-	Categories []*string                                                   `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	Frames     *GetVideoModerationResultResponseBodyModerationResultFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Struct"`
+	// The category list.
+	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// The information about video and motion detection frames.
+	Frames *GetVideoModerationResultResponseBodyModerationResultFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Struct"`
+	// The recommended operation. Valid values:
+	//
+	// 	- pass: The image has passed the check. No action is required.
+	//
+	// 	- review: The image contains suspected violations and requires human review.
+	//
+	// 	- block: The image contains violations. Further actions, such as deleting or blocking the image, are recommended.
+	//
 	// example:
 	//
 	// block
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// The OSS URI of the file. The URI follows the oss://${bucketname}/${objectname} format. bucketname indicates the name of an OSS bucket that is in the same region as the current project, and objectname is the file path.
+	//
 	// example:
 	//
 	// oss://test-bucket/test-object
@@ -258,11 +313,19 @@ func (s *GetVideoModerationResultResponseBodyModerationResult) SetURI(v string) 
 }
 
 func (s *GetVideoModerationResultResponseBodyModerationResult) Validate() error {
-	return dara.Validate(s)
+	if s.Frames != nil {
+		if err := s.Frames.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVideoModerationResultResponseBodyModerationResultFrames struct {
+	// The information about violated frames.
 	BlockFrames []*GetVideoModerationResultResponseBodyModerationResultFramesBlockFrames `json:"BlockFrames,omitempty" xml:"BlockFrames,omitempty" type:"Repeated"`
+	// The total number of detected frames.
+	//
 	// example:
 	//
 	// 12
@@ -296,18 +359,33 @@ func (s *GetVideoModerationResultResponseBodyModerationResultFrames) SetTotalCou
 }
 
 func (s *GetVideoModerationResultResponseBodyModerationResultFrames) Validate() error {
-	return dara.Validate(s)
+	if s.BlockFrames != nil {
+		for _, item := range s.BlockFrames {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetVideoModerationResultResponseBodyModerationResultFramesBlockFrames struct {
+	// The label of the violation.
+	//
 	// example:
 	//
 	// {"teat":"val"}
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The offset of the frame.
+	//
 	// example:
 	//
 	// 1
 	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// The confidence level of the violation.
+	//
 	// example:
 	//
 	// 10

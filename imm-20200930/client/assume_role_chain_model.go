@@ -47,5 +47,14 @@ func (s *AssumeRoleChain) SetPolicy(v string) *AssumeRoleChain {
 }
 
 func (s *AssumeRoleChain) Validate() error {
-	return dara.Validate(s)
+	if s.Chain != nil {
+		for _, item := range s.Chain {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -59,5 +59,15 @@ func (s *Notification) SetRocketMQ(v *RocketMQ) *Notification {
 }
 
 func (s *Notification) Validate() error {
-	return dara.Validate(s)
+	if s.MNS != nil {
+		if err := s.MNS.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RocketMQ != nil {
+		if err := s.RocketMQ.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

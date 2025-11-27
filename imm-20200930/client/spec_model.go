@@ -148,5 +148,25 @@ func (s *Spec) SetPretrainedPath(v string) *Spec {
 }
 
 func (s *Spec) Validate() error {
-	return dara.Validate(s)
+	if s.Backbone != nil {
+		if err := s.Backbone.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Head != nil {
+		if err := s.Head.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Loss != nil {
+		if err := s.Loss.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Neck != nil {
+		if err := s.Neck.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

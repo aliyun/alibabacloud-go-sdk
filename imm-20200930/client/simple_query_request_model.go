@@ -218,7 +218,21 @@ func (s *SimpleQueryRequest) SetWithoutTotalHits(v bool) *SimpleQueryRequest {
 }
 
 func (s *SimpleQueryRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Aggregations != nil {
+		for _, item := range s.Aggregations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Query != nil {
+		if err := s.Query.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SimpleQueryRequestAggregations struct {

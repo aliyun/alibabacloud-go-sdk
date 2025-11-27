@@ -59,5 +59,10 @@ func (s *CroppingSuggestion) SetConfidence(v float32) *CroppingSuggestion {
 }
 
 func (s *CroppingSuggestion) Validate() error {
-	return dara.Validate(s)
+	if s.Boundary != nil {
+		if err := s.Boundary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

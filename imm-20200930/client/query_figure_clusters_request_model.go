@@ -215,5 +215,15 @@ func (s *QueryFigureClustersRequest) SetWithTotalCount(v bool) *QueryFigureClust
 }
 
 func (s *QueryFigureClustersRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CreateTimeRange != nil {
+		if err := s.CreateTimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UpdateTimeRange != nil {
+		if err := s.UpdateTimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -70,7 +70,17 @@ func (s *CompareImageFacesRequest) SetSource(v *CompareImageFacesRequestSource) 
 }
 
 func (s *CompareImageFacesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Source != nil {
+		if err := s.Source.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CompareImageFacesRequestSource struct {

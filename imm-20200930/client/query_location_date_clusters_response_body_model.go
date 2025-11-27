@@ -20,7 +20,7 @@ type iQueryLocationDateClustersResponseBody interface {
 type QueryLocationDateClustersResponseBody struct {
 	// The list of spatiotemporal clusters.
 	LocationDateClusters []*LocationDateCluster `json:"LocationDateClusters,omitempty" xml:"LocationDateClusters,omitempty" type:"Repeated"`
-	// The pagination token.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
@@ -70,5 +70,14 @@ func (s *QueryLocationDateClustersResponseBody) SetRequestId(v string) *QueryLoc
 }
 
 func (s *QueryLocationDateClustersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LocationDateClusters != nil {
+		for _, item := range s.LocationDateClusters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

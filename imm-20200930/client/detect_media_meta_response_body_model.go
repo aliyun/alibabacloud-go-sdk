@@ -417,5 +417,41 @@ func (s *DetectMediaMetaResponseBody) SetVideoWidth(v int64) *DetectMediaMetaRes
 }
 
 func (s *DetectMediaMetaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Addresses != nil {
+		for _, item := range s.Addresses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AudioStreams != nil {
+		for _, item := range s.AudioStreams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Subtitles != nil {
+		for _, item := range s.Subtitles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoStreams != nil {
+		for _, item := range s.VideoStreams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

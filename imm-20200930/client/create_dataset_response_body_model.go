@@ -16,9 +16,9 @@ type iCreateDatasetResponseBody interface {
 }
 
 type CreateDatasetResponseBody struct {
-	// The information about the dataset.
+	// Dataset information.
 	Dataset *Dataset `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -53,5 +53,10 @@ func (s *CreateDatasetResponseBody) SetRequestId(v string) *CreateDatasetRespons
 }
 
 func (s *CreateDatasetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Dataset != nil {
+		if err := s.Dataset.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

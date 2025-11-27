@@ -59,7 +59,12 @@ func (s *TargetSubtitle) SetStream(v []*int32) *TargetSubtitle {
 }
 
 func (s *TargetSubtitle) Validate() error {
-	return dara.Validate(s)
+	if s.ExtractSubtitle != nil {
+		if err := s.ExtractSubtitle.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TargetSubtitleExtractSubtitle struct {

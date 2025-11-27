@@ -251,5 +251,10 @@ func (s *FigureCluster) SetVideoCount(v int64) *FigureCluster {
 }
 
 func (s *FigureCluster) Validate() error {
-	return dara.Validate(s)
+	if s.Cover != nil {
+		if err := s.Cover.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

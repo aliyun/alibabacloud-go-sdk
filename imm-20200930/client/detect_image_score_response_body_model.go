@@ -53,7 +53,12 @@ func (s *DetectImageScoreResponseBody) SetRequestId(v string) *DetectImageScoreR
 }
 
 func (s *DetectImageScoreResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImageScore != nil {
+		if err := s.ImageScore.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DetectImageScoreResponseBodyImageScore struct {

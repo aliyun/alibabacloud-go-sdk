@@ -83,5 +83,14 @@ func (s *SimilarImageCluster) SetUpdateTime(v string) *SimilarImageCluster {
 }
 
 func (s *SimilarImageCluster) Validate() error {
-	return dara.Validate(s)
+	if s.Files != nil {
+		for _, item := range s.Files {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

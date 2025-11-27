@@ -236,9 +236,9 @@ type CreateOfficeConversionTaskRequest struct {
 	//
 	// 60
 	Quality *int64 `json:"Quality,omitempty" xml:"Quality,omitempty"`
-	// The percentage scale relative to the source document. Valid values: 20 to 200. The default value is 100, which indicates that the document is not scaled.
+	// The percentage scale relative to the source document. Valid values: 20 to 199. The default value is 100, which indicates that the document is not scaled.
 	//
-	// >  A value that is less than 100 indicates a size reduction. A value that is greater than 100 indicates an enlargement.
+	// > A value that is less than 100 indicates a size reduction. A value that is greater than 100 indicates an enlargement.
 	//
 	// example:
 	//
@@ -287,8 +287,13 @@ type CreateOfficeConversionTaskRequest struct {
 	// example:
 	//
 	// oss://test-bucket/test-object
-	SourceURI *string                                     `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	Sources   []*CreateOfficeConversionTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The list of images. The sequence of image URIs in the list determines the order in which they are converted. (**This parameter is not officially available and is not recommended.**)
+	//
+	// example:
+	//
+	// oss://imm-test/test.pptx
+	Sources []*CreateOfficeConversionTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
 	// The starting page for document conversion. Default value: 1.
 	//
 	// >
@@ -650,12 +655,58 @@ func (s *CreateOfficeConversionTaskRequest) SetUserData(v string) *CreateOfficeC
 }
 
 func (s *CreateOfficeConversionTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Sources != nil {
+		for _, item := range s.Sources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TrimPolicy != nil {
+		if err := s.TrimPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOfficeConversionTaskRequestSources struct {
-	Rotate *int64  `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	URI    *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// The rotation angle. Valid values:
+	//
+	// 	- 0 (default)
+	//
+	// 	- 90
+	//
+	// 	- 180
+	//
+	// 	- 270
+	//
+	// example:
+	//
+	// 90
+	Rotate *int64 `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// The OSS URI of the input image.
+	//
+	// The URI must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file that contains the file name extension.
+	//
+	// The operation supports the following image formats: JPG, JP2, PNG, TIFF, WebP, BMP, and SVG.
+	//
+	// example:
+	//
+	// oss://examplebucket/sampleobject.jpg
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s CreateOfficeConversionTaskRequestSources) String() string {

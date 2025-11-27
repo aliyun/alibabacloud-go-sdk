@@ -16,11 +16,14 @@ type iContextualRetrievalResponseBody interface {
 }
 
 type ContextualRetrievalResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*File `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// The list of files retrieved. The document structure and content are contained in File.Elements.
+	Results []*File `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s ContextualRetrievalResponseBody) String() string {
@@ -50,5 +53,14 @@ func (s *ContextualRetrievalResponseBody) SetResults(v []*File) *ContextualRetri
 }
 
 func (s *ContextualRetrievalResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

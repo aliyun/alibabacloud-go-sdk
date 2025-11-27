@@ -125,5 +125,15 @@ func (s *CreateVideoLabelClassificationTaskRequest) SetUserData(v string) *Creat
 }
 
 func (s *CreateVideoLabelClassificationTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *ListBindingsResponse) SetBody(v *ListBindingsResponseBody) *ListBinding
 }
 
 func (s *ListBindingsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

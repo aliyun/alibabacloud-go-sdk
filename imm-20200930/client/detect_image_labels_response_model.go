@@ -59,5 +59,10 @@ func (s *DetectImageLabelsResponse) SetBody(v *DetectImageLabelsResponseBody) *D
 }
 
 func (s *DetectImageLabelsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

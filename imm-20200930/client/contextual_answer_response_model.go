@@ -59,5 +59,10 @@ func (s *ContextualAnswerResponse) SetBody(v *ContextualAnswerResponseBody) *Con
 }
 
 func (s *ContextualAnswerResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

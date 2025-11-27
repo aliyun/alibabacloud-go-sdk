@@ -28,7 +28,7 @@ type iCreateImageToPDFTaskShrinkRequest interface {
 type CreateImageToPDFTaskShrinkRequest struct {
 	// **If you have no special requirements, leave this parameter empty.**
 	//
-	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+	// The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`

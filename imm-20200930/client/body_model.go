@@ -47,5 +47,10 @@ func (s *Body) SetConfidence(v float32) *Body {
 }
 
 func (s *Body) Validate() error {
-	return dara.Validate(s)
+	if s.Boundary != nil {
+		if err := s.Boundary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -41,6 +41,10 @@ type FuzzyQueryResponseBody struct {
 	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The number of hits.
+	//
+	// example:
+	//
+	// 10
 	TotalHits *int64 `json:"TotalHits,omitempty" xml:"TotalHits,omitempty"`
 }
 
@@ -89,5 +93,14 @@ func (s *FuzzyQueryResponseBody) SetTotalHits(v int64) *FuzzyQueryResponseBody {
 }
 
 func (s *FuzzyQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Files != nil {
+		for _, item := range s.Files {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

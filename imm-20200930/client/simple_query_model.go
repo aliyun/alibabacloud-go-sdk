@@ -74,5 +74,14 @@ func (s *SimpleQuery) SetValue(v string) *SimpleQuery {
 }
 
 func (s *SimpleQuery) Validate() error {
-	return dara.Validate(s)
+	if s.SubQueries != nil {
+		for _, item := range s.SubQueries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

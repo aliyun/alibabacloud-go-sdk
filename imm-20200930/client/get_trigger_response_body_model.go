@@ -53,5 +53,10 @@ func (s *GetTriggerResponseBody) SetTrigger(v *DataIngestion) *GetTriggerRespons
 }
 
 func (s *GetTriggerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

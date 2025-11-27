@@ -59,7 +59,34 @@ func (s *TargetImage) SetSprites(v []*TargetImageSprites) *TargetImage {
 }
 
 func (s *TargetImage) Validate() error {
-	return dara.Validate(s)
+	if s.Animations != nil {
+		for _, item := range s.Animations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Snapshots != nil {
+		for _, item := range s.Snapshots {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Sprites != nil {
+		for _, item := range s.Sprites {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TargetImageAnimations struct {

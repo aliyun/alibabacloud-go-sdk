@@ -50,5 +50,14 @@ func (s *Answer) SetReferences(v []*ReferenceFile) *Answer {
 }
 
 func (s *Answer) Validate() error {
-	return dara.Validate(s)
+	if s.References != nil {
+		for _, item := range s.References {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

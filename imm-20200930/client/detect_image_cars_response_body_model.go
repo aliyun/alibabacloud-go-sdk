@@ -55,5 +55,14 @@ func (s *DetectImageCarsResponseBody) SetRequestId(v string) *DetectImageCarsRes
 }
 
 func (s *DetectImageCarsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Cars != nil {
+		for _, item := range s.Cars {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

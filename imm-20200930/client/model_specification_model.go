@@ -49,5 +49,15 @@ func (s *ModelSpecification) SetSpec(v *Spec) *ModelSpecification {
 }
 
 func (s *ModelSpecification) Validate() error {
-	return dara.Validate(s)
+	if s.MetaData != nil {
+		if err := s.MetaData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Spec != nil {
+		if err := s.Spec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -55,6 +55,8 @@ type CreateCompressPointCloudTaskRequest struct {
 	// The k-d tree compression options.
 	KdtreeOption *KdtreeOption `json:"KdtreeOption,omitempty" xml:"KdtreeOption,omitempty"`
 	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	//
+	// >  The IMM operation does not support a callback URL. We recommend that you use Simple Message Queue (SMQ) to receive notifications.
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	// The octree compression options.
 	OctreeOption *OctreeOption `json:"OctreeOption,omitempty" xml:"OctreeOption,omitempty"`
@@ -231,5 +233,25 @@ func (s *CreateCompressPointCloudTaskRequest) SetUserData(v string) *CreateCompr
 }
 
 func (s *CreateCompressPointCloudTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.KdtreeOption != nil {
+		if err := s.KdtreeOption.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OctreeOption != nil {
+		if err := s.OctreeOption.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *CreateTriggerResponse) SetBody(v *CreateTriggerResponseBody) *CreateTri
 }
 
 func (s *CreateTriggerResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

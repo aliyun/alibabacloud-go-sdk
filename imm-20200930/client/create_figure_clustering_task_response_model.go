@@ -59,5 +59,10 @@ func (s *CreateFigureClusteringTaskResponse) SetBody(v *CreateFigureClusteringTa
 }
 
 func (s *CreateFigureClusteringTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

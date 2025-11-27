@@ -62,5 +62,10 @@ func (s *LicensePlate) SetContent(v string) *LicensePlate {
 }
 
 func (s *LicensePlate) Validate() error {
-	return dara.Validate(s)
+	if s.Boundary != nil {
+		if err := s.Boundary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

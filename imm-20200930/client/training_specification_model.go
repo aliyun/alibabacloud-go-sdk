@@ -150,5 +150,24 @@ func (s *TrainingSpecification) SetValidationSplit(v float32) *TrainingSpecifica
 }
 
 func (s *TrainingSpecification) Validate() error {
-	return dara.Validate(s)
+	if s.ModelSpecification != nil {
+		if err := s.ModelSpecification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Runtime != nil {
+		if err := s.Runtime.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Transforms != nil {
+		for _, item := range s.Transforms {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

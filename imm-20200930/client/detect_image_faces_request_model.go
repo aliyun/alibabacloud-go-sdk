@@ -76,5 +76,10 @@ func (s *DetectImageFacesRequest) SetSourceURI(v string) *DetectImageFacesReques
 }
 
 func (s *DetectImageFacesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

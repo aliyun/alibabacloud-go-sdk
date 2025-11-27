@@ -233,7 +233,12 @@ func (s *GetImageModerationResultResponseBody) SetUserData(v string) *GetImageMo
 }
 
 func (s *GetImageModerationResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ModerationResult != nil {
+		if err := s.ModerationResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetImageModerationResultResponseBodyModerationResult struct {
@@ -306,7 +311,12 @@ func (s *GetImageModerationResultResponseBodyModerationResult) SetURI(v string) 
 }
 
 func (s *GetImageModerationResultResponseBodyModerationResult) Validate() error {
-	return dara.Validate(s)
+	if s.Frames != nil {
+		if err := s.Frames.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetImageModerationResultResponseBodyModerationResultFrames struct {
@@ -347,7 +357,16 @@ func (s *GetImageModerationResultResponseBodyModerationResultFrames) SetTotalCou
 }
 
 func (s *GetImageModerationResultResponseBodyModerationResultFrames) Validate() error {
-	return dara.Validate(s)
+	if s.BlockFrames != nil {
+		for _, item := range s.BlockFrames {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetImageModerationResultResponseBodyModerationResultFramesBlockFrames struct {

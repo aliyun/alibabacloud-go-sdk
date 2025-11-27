@@ -152,5 +152,10 @@ func (s *AlgorithmDefinition) SetUpdateTime(v string) *AlgorithmDefinition {
 }
 
 func (s *AlgorithmDefinition) Validate() error {
-	return dara.Validate(s)
+	if s.TrainingSpecification != nil {
+		if err := s.TrainingSpecification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

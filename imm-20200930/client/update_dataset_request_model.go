@@ -32,46 +32,69 @@ type iUpdateDatasetRequest interface {
 }
 
 type UpdateDatasetRequest struct {
+	// The maximum number of bindings per dataset. The value range is from 1 to 10.
+	//
 	// example:
 	//
 	// 10
 	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// The maximum number of metadata entities (including data files, file relationships, clustering groups, etc.) per dataset, with a maximum value of 2^63-1.
+	//
+	// >Reserved parameter, no actual restriction in use.
+	//
 	// example:
 	//
 	// 10000000000
 	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// The maximum number of files per dataset. The value range is from 1 to 100000000.
+	//
 	// example:
 	//
 	// 100000000
 	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// The maximum number of metadata relationships per dataset, with a maximum value of 2^63-1.
+	//
+	// >Reserved parameter, no actual restriction in use.
+	//
 	// example:
 	//
 	// 100000000000
 	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// The maximum total size of files in each dataset. Once the limit is exceeded, no more indexes can be added. The maximum value is 2^63-1, measured in bytes.
+	//
 	// example:
 	//
 	// 90000000000000000
 	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	// Dataset name, for how to obtain it, please refer to [Create Dataset](https://help.aliyun.com/document_detail/478160.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// Description of the dataset.
+	//
 	// example:
 	//
 	// immtest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Project name, for how to obtain it, please refer to [Create Project](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// Workflow template ID. For more information, please refer to [Workflow Templates and Operators](https://help.aliyun.com/document_detail/466304.html).
+	//
 	// example:
 	//
-	// Official:AllFunction
-	TemplateId         *string              `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Official:ImageManagement
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Invalid parameter.
 	WorkflowParameters []*WorkflowParameter `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty" type:"Repeated"`
 }
 
@@ -174,5 +197,14 @@ func (s *UpdateDatasetRequest) SetWorkflowParameters(v []*WorkflowParameter) *Up
 }
 
 func (s *UpdateDatasetRequest) Validate() error {
-	return dara.Validate(s)
+	if s.WorkflowParameters != nil {
+		for _, item := range s.WorkflowParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

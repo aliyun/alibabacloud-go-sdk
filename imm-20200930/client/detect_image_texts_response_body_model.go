@@ -66,5 +66,14 @@ func (s *DetectImageTextsResponseBody) SetRequestId(v string) *DetectImageTextsR
 }
 
 func (s *DetectImageTextsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OCRContents != nil {
+		for _, item := range s.OCRContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

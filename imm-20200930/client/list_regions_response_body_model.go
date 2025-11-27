@@ -16,9 +16,9 @@ type iListRegionsResponseBody interface {
 }
 
 type ListRegionsResponseBody struct {
-	// The regions.
+	// List of Regions.
 	Regions []*RegionType `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The request ID.
+	// Request ID for the interface.
 	//
 	// example:
 	//
@@ -53,5 +53,14 @@ func (s *ListRegionsResponseBody) SetRequestId(v string) *ListRegionsResponseBod
 }
 
 func (s *ListRegionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Regions != nil {
+		for _, item := range s.Regions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

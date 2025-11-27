@@ -34,7 +34,7 @@ type IndexFileMetaRequest struct {
 	//
 	// This parameter is required.
 	File *InputFile `json:"File,omitempty" xml:"File,omitempty"`
-	// The notification settings. For more information, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
 	//
@@ -44,7 +44,12 @@ type IndexFileMetaRequest struct {
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The custom user information, which is returned in an asynchronous notification. The maximum length of a notification is 2048 bytes.
+	//
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s IndexFileMetaRequest) String() string {
@@ -101,5 +106,15 @@ func (s *IndexFileMetaRequest) SetUserData(v string) *IndexFileMetaRequest {
 }
 
 func (s *IndexFileMetaRequest) Validate() error {
-	return dara.Validate(s)
+	if s.File != nil {
+		if err := s.File.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

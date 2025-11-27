@@ -3,6 +3,7 @@ package client
 
 import (
 	"context"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
@@ -25,9 +26,11 @@ import (
 //
 // @return AddImageMosaicResponse
 func (client *Client) AddImageMosaicWithContext(ctx context.Context, tmpReq *AddImageMosaicRequest, runtime *dara.RuntimeOptions) (_result *AddImageMosaicResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddImageMosaicShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -101,9 +104,11 @@ func (client *Client) AddImageMosaicWithContext(ctx context.Context, tmpReq *Add
 //
 // @return AddStoryFilesResponse
 func (client *Client) AddStoryFilesWithContext(ctx context.Context, tmpReq *AddStoryFilesRequest, runtime *dara.RuntimeOptions) (_result *AddStoryFilesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddStoryFilesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -169,9 +174,11 @@ func (client *Client) AddStoryFilesWithContext(ctx context.Context, tmpReq *AddS
 //
 // @return AttachOSSBucketResponse
 func (client *Client) AttachOSSBucketWithContext(ctx context.Context, request *AttachOSSBucketRequest, runtime *dara.RuntimeOptions) (_result *AttachOSSBucketResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -231,9 +238,11 @@ func (client *Client) AttachOSSBucketWithContext(ctx context.Context, request *A
 //
 // @return BatchDeleteFileMetaResponse
 func (client *Client) BatchDeleteFileMetaWithContext(ctx context.Context, tmpReq *BatchDeleteFileMetaRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteFileMetaResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BatchDeleteFileMetaShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -287,9 +296,11 @@ func (client *Client) BatchDeleteFileMetaWithContext(ctx context.Context, tmpReq
 //
 // @return BatchGetFigureClusterResponse
 func (client *Client) BatchGetFigureClusterWithContext(ctx context.Context, tmpReq *BatchGetFigureClusterRequest, runtime *dara.RuntimeOptions) (_result *BatchGetFigureClusterResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BatchGetFigureClusterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -351,9 +362,11 @@ func (client *Client) BatchGetFigureClusterWithContext(ctx context.Context, tmpR
 //
 // @return BatchGetFileMetaResponse
 func (client *Client) BatchGetFileMetaWithContext(ctx context.Context, tmpReq *BatchGetFileMetaRequest, runtime *dara.RuntimeOptions) (_result *BatchGetFileMetaResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BatchGetFileMetaShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -425,9 +438,11 @@ func (client *Client) BatchGetFileMetaWithContext(ctx context.Context, tmpReq *B
 //
 // @return BatchIndexFileMetaResponse
 func (client *Client) BatchIndexFileMetaWithContext(ctx context.Context, tmpReq *BatchIndexFileMetaRequest, runtime *dara.RuntimeOptions) (_result *BatchIndexFileMetaResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BatchIndexFileMetaShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -499,9 +514,11 @@ func (client *Client) BatchIndexFileMetaWithContext(ctx context.Context, tmpReq 
 //
 // @return BatchUpdateFileMetaResponse
 func (client *Client) BatchUpdateFileMetaWithContext(ctx context.Context, tmpReq *BatchUpdateFileMetaRequest, runtime *dara.RuntimeOptions) (_result *BatchUpdateFileMetaResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BatchUpdateFileMetaShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -561,9 +578,11 @@ func (client *Client) BatchUpdateFileMetaWithContext(ctx context.Context, tmpReq
 //
 // @return CompareImageFacesResponse
 func (client *Client) CompareImageFacesWithContext(ctx context.Context, tmpReq *CompareImageFacesRequest, runtime *dara.RuntimeOptions) (_result *CompareImageFacesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CompareImageFacesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -613,7 +632,54 @@ func (client *Client) CompareImageFacesWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// # AI 助手二期，问答API
+// Phase II of AI Assistant, Q\\&A API
+//
+// Description:
+//
+// ### Precautions
+//
+// - Before using this interface, please make sure you fully understand the billing method and [pricing](https://help.aliyun.com/zh/imm/product-overview/billable-items?spm=openapi-amp.newDocPublishment.0.0.1ecd281fi27Zgk) of the Intelligent Media Management product.
+//
+// - Before calling this interface, ensure that you have indexed the files into the dataset (Dataset) through binding ([CreateBinding](https://help.aliyun.com/zh/imm/developer-reference/api-imm-2020-09-30-createbinding?spm=a2c4g.11186623.0.0.a3d76f44xJrOnF)) or active indexing ([IndexFileMeta](https://help.aliyun.com/zh/imm/developer-reference/api-imm-2020-09-30-indexfilemeta?spm=a2c4g.11186623.help-menu-search-62354.d_0) or [BatchIndexFileMeta](https://help.aliyun.com/zh/imm/developer-reference/api-imm-2020-09-30-batchindexfilemeta?spm=a2c4g.11186623.help-menu-62354.d_5_2_4_2_1_1.f1d86f44iBs3QZ)).
+//
+// - The returned result is only an example. Depending on the [workflow template configuration](https://help.aliyun.com/zh/imm/user-guide/workflow-templates-and-operators?spm=a2c4g.11186623.0.0.a3d775abr3hDFp), the categories and content of the file metadata information obtained may differ from the example. If you have any questions, please join the DingTalk group by searching for the group number 21714099 in DingTalk.
+//
+// ### Usage Restrictions
+//
+// - The maximum length of the historical conversation is 100, including both user and assistant messages.
+//
+// - Each message should not exceed 1000 Chinese characters.
+//
+// @param tmpReq - ContextualAnswerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ContextualAnswerResponse
+func (client *Client) ContextualAnswerWithSSECtx(ctx context.Context, tmpReq *ContextualAnswerRequest, runtime *dara.RuntimeOptions, _yield chan *ContextualAnswerResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.contextualAnswerWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, tmpReq, runtime)
+	return
+}
+
+// Summary:
+//
+// Phase II of AI Assistant, Q\\&A API
+//
+// Description:
+//
+// ### Precautions
+//
+// - Before using this interface, please make sure you fully understand the billing method and [pricing](https://help.aliyun.com/zh/imm/product-overview/billable-items?spm=openapi-amp.newDocPublishment.0.0.1ecd281fi27Zgk) of the Intelligent Media Management product.
+//
+// - Before calling this interface, ensure that you have indexed the files into the dataset (Dataset) through binding ([CreateBinding](https://help.aliyun.com/zh/imm/developer-reference/api-imm-2020-09-30-createbinding?spm=a2c4g.11186623.0.0.a3d76f44xJrOnF)) or active indexing ([IndexFileMeta](https://help.aliyun.com/zh/imm/developer-reference/api-imm-2020-09-30-indexfilemeta?spm=a2c4g.11186623.help-menu-search-62354.d_0) or [BatchIndexFileMeta](https://help.aliyun.com/zh/imm/developer-reference/api-imm-2020-09-30-batchindexfilemeta?spm=a2c4g.11186623.help-menu-62354.d_5_2_4_2_1_1.f1d86f44iBs3QZ)).
+//
+// - The returned result is only an example. Depending on the [workflow template configuration](https://help.aliyun.com/zh/imm/user-guide/workflow-templates-and-operators?spm=a2c4g.11186623.0.0.a3d775abr3hDFp), the categories and content of the file metadata information obtained may differ from the example. If you have any questions, please join the DingTalk group by searching for the group number 21714099 in DingTalk.
+//
+// ### Usage Restrictions
+//
+// - The maximum length of the historical conversation is 100, including both user and assistant messages.
+//
+// - Each message should not exceed 1000 Chinese characters.
 //
 // @param tmpReq - ContextualAnswerRequest
 //
@@ -621,9 +687,11 @@ func (client *Client) CompareImageFacesWithContext(ctx context.Context, tmpReq *
 //
 // @return ContextualAnswerResponse
 func (client *Client) ContextualAnswerWithContext(ctx context.Context, tmpReq *ContextualAnswerRequest, runtime *dara.RuntimeOptions) (_result *ContextualAnswerResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ContextualAnswerShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -675,7 +743,23 @@ func (client *Client) ContextualAnswerWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// # AI助手二期，检索API
+// Retrieves semantically similar documents. The operation is designed for multi-turn conversations and can process message input in historical conversations. The operation returns results that are highly related to the current conversation based on an in-depth understanding of contextual content. It provides consistent and efficient information retrieval in multi-turn conversations.
+//
+// Description:
+//
+// ### [](#)Usage notes
+//
+//   - Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/zh/imm/product-overview/billable-items?spm=openapi-amp.newDocPublishment.0.0.1ecd281fi27Zgk) of Intelligent Media Management (IMM).
+//
+//   - Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/zh/imm/developer-reference/api-imm-2020-09-30-createbinding?spm=a2c4g.11186623.0.0.a3d76f44xJrOnF) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/zh/imm/developer-reference/api-imm-2020-09-30-indexfilemeta?spm=a2c4g.11186623.help-menu-search-62354.d_0) or [BatchIndexFileMeta](https://help.aliyun.com/zh/imm/developer-reference/api-imm-2020-09-30-batchindexfilemeta?spm=a2c4g.11186623.help-menu-62354.d_5_2_4_2_1_1.f1d86f44iBs3QZ) operation.
+//
+//   - The response provided in this example is for reference only. The categories and content of metadata vary based on configurations of [workflow templates](https://help.aliyun.com/zh/imm/user-guide/workflow-templates-and-operators?spm=a2c4g.11186623.0.0.a3d775abr3hDFp). For any inquiries, join the DingTalk chat group (ID: 21714099) for feedback.
+//
+// ### [](#)Limitations
+//
+//   - The conversation history can hold up to 100 messages, including user-sent messages and assistant-generated messages.
+//
+//   - Each message cannot exceed 1,000 characters in length.
 //
 // @param tmpReq - ContextualRetrievalRequest
 //
@@ -683,9 +767,11 @@ func (client *Client) ContextualAnswerWithContext(ctx context.Context, tmpReq *C
 //
 // @return ContextualRetrievalResponse
 func (client *Client) ContextualRetrievalWithContext(ctx context.Context, tmpReq *ContextualRetrievalRequest, runtime *dara.RuntimeOptions) (_result *ContextualRetrievalResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ContextualRetrievalShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -769,9 +855,11 @@ func (client *Client) ContextualRetrievalWithContext(ctx context.Context, tmpReq
 //
 // @return CreateArchiveFileInspectionTaskResponse
 func (client *Client) CreateArchiveFileInspectionTaskWithContext(ctx context.Context, tmpReq *CreateArchiveFileInspectionTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateArchiveFileInspectionTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateArchiveFileInspectionTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -845,9 +933,11 @@ func (client *Client) CreateArchiveFileInspectionTaskWithContext(ctx context.Con
 //
 // @return CreateBatchResponse
 func (client *Client) CreateBatchWithContext(ctx context.Context, tmpReq *CreateBatchRequest, runtime *dara.RuntimeOptions) (_result *CreateBatchResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateBatchShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -921,9 +1011,11 @@ func (client *Client) CreateBatchWithContext(ctx context.Context, tmpReq *Create
 //
 // Description:
 //
-// Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+// Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/2743997.html) of Intelligent Media Management (IMM).****
 //
-// Before you create a binding relationship, make sure that the project and the dataset that you want to use exist.
+// >  Asynchronous processing does not guarantee timely task completion.
+//
+// Before you create a binding, make sure that the project and the dataset that you want to use exist.
 //
 //   - For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
 //
@@ -931,7 +1023,7 @@ func (client *Client) CreateBatchWithContext(ctx context.Context, tmpReq *Create
 //
 // >  The CreateBinding operation works by using the [workflow template](https://help.aliyun.com/document_detail/466304.html) that is specified when you created the project or dataset.
 //
-// After you create a binding relationship between a dataset and an OSS bucket, IMM scans the existing objects in the bucket and extracts metadata based on the scanning result. Then, IMM creates an index from the extracted metadata. If new objects are added to the OSS bucket, IMM constantly tracks and scans the objects and updates the index. For objects whose index is created in this way, you can call the [SimpleQuery](https://help.aliyun.com/document_detail/478175.html) operation to query, manage, and collect statistics from the objects.
+// After you create a binding between a dataset and an OSS bucket, IMM scans the existing objects in the bucket and extracts metadata based on the scanning result. Then, IMM creates an index from the extracted metadata. If new objects are uploaded to the OSS bucket, IMM tracks and scans the objects and updates the index. For objects whose metadata index is created by calling this operation, you can call query operations, such as [SimpleQuery](https://help.aliyun.com/document_detail/478175.html), to query objects, manage objects, and collect statistics on objects.
 //
 // @param request - CreateBindingRequest
 //
@@ -939,9 +1031,11 @@ func (client *Client) CreateBatchWithContext(ctx context.Context, tmpReq *Create
 //
 // @return CreateBindingResponse
 func (client *Client) CreateBindingWithContext(ctx context.Context, request *CreateBindingRequest, runtime *dara.RuntimeOptions) (_result *CreateBindingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetName) {
@@ -1001,9 +1095,11 @@ func (client *Client) CreateBindingWithContext(ctx context.Context, request *Cre
 //
 // @return CreateCompressPointCloudTaskResponse
 func (client *Client) CreateCompressPointCloudTaskWithContext(ctx context.Context, tmpReq *CreateCompressPointCloudTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateCompressPointCloudTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateCompressPointCloudTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1119,9 +1215,11 @@ func (client *Client) CreateCompressPointCloudTaskWithContext(ctx context.Contex
 //
 // @return CreateCustomizedStoryResponse
 func (client *Client) CreateCustomizedStoryWithContext(ctx context.Context, tmpReq *CreateCustomizedStoryRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomizedStoryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateCustomizedStoryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1195,17 +1293,17 @@ func (client *Client) CreateCustomizedStoryWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Creates a dataset.
+// # Create Dataset
 //
 // Description:
 //
-//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of IMM.****
+// - **Please ensure that you fully understand the billing method and [pricing](https://help.aliyun.com/document_detail/477042.html) of the Intelligent Media Management product before using this interface.**
 //
-//		- A dataset name must be unique within the same project.
+// - The dataset name must be unique within the same project.
 //
-//		- A project has an upper limit on the number of datasets that can be created in the project. You can call the [GetProjcet](https://help.aliyun.com/document_detail/478155.html) operation to query the dataset limit of the project.
+// - There is a limit to the number of datasets that can be created, which can be queried through [GetProject](https://help.aliyun.com/document_detail/478155.html).
 //
-//		- After creating a dataset, you can call the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) operation to index metadata. Metadata indexing enhances [data retrieval efficiency and statistics collection](https://help.aliyun.com/document_detail/478175.html), and enables intelligent data management.
+// - After creating a dataset, you can use [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) to build file metadata indexes, enabling diversified [data retrieval and statistics](https://help.aliyun.com/document_detail/478175.html) and intelligent management.
 //
 // @param tmpReq - CreateDatasetRequest
 //
@@ -1213,9 +1311,11 @@ func (client *Client) CreateCustomizedStoryWithContext(ctx context.Context, tmpR
 //
 // @return CreateDatasetResponse
 func (client *Client) CreateDatasetWithContext(ctx context.Context, tmpReq *CreateDatasetRequest, runtime *dara.RuntimeOptions) (_result *CreateDatasetResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDatasetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1297,17 +1397,17 @@ func (client *Client) CreateDatasetWithContext(ctx context.Context, tmpReq *Crea
 //
 //	    **
 //
-//	    **Note*	- Asynchronous processing does not guarantee timely task completion.
+//	    **Note that*	- Asynchronous processing does not guarantee timely task completion.
 //
 //		- Make sure that an IMM project is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
 //
 //		- The region and project specified in the request to decode a blind watermark must match those in the [EncodeBlindWatermark](https://help.aliyun.com/document_detail/2743655.html) request to encode the blind watermark.
 //
-//		- A blind watermark can still be extracted even if attacks, such as compression, scaling, cropping, rotation, and color transformation, are performed on the image.
+//		- A blind watermark can still be extracted even if attacks, such as compression, scaling, cropping, and color transformation, are performed on the image.
 //
 //		- This operation is compatible with its earlier version DecodeBlindWatermark.
 //
-//		- This operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task. If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
+//		- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task. If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param tmpReq - CreateDecodeBlindWatermarkTaskRequest
 //
@@ -1315,9 +1415,11 @@ func (client *Client) CreateDatasetWithContext(ctx context.Context, tmpReq *Crea
 //
 // @return CreateDecodeBlindWatermarkTaskResponse
 func (client *Client) CreateDecodeBlindWatermarkTaskWithContext(ctx context.Context, tmpReq *CreateDecodeBlindWatermarkTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateDecodeBlindWatermarkTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDecodeBlindWatermarkTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1407,9 +1509,11 @@ func (client *Client) CreateDecodeBlindWatermarkTaskWithContext(ctx context.Cont
 //
 // @return CreateFacesSearchingTaskResponse
 func (client *Client) CreateFacesSearchingTaskWithContext(ctx context.Context, tmpReq *CreateFacesSearchingTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateFacesSearchingTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateFacesSearchingTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1481,15 +1585,15 @@ func (client *Client) CreateFacesSearchingTaskWithContext(ctx context.Context, t
 //
 //	    **Note*	- Asynchronous processing does not guarantee timely task completion.
 //
-//		- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the CreateBinding operation or manually by calling the IndexFileMeta or BatchIndexFileMeta operation.
+//		- Before you call this operation, make sure that you have indexed file metadata into the [dataset](~~CreateDataset~~) automatically by calling the [CreateBinding](~~CreateBinding~~) operation or manually by calling the [IndexFileMeta](~~IndexFileMeta~~) or [BatchIndexFileMeta](~~BatchIndexFileMeta~~) operation.
 //
-//		- Each call to the operation incrementally processes metadata in the dataset. You can regularly call this operation to process incremental files.
+//		- Each call to the operation incrementally processes metadata in the [dataset](~~CreateDataset~~). You can regularly call this operation to process incremental files.
 //
-//	    After the clustering task is completed, you can call the GetFigureCluster or BatchGetFigureCluster  operation to query information about a specific cluster. You can also call the QueryFigureClusters operation to query all face clusters of the specified dataset.
+//		- After the clustering task is complete, you can call the [GetFigureCluster](~~GetFigureCluster~~) or [BatchGetFigureCluster](~~BatchGetFigureCluster~~) operation to query information about a specific cluster. You can also call the [QueryFigureClusters](~~QueryFigureClusters~~) operation to query all face clusters of the specified dataset.
 //
 //		- Removing image information from the dataset causes changes to face clusters. When images that contain all faces in a cluster are removed, the cluster is deleted.
 //
-//		- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task. If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
+//		- This operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can call the [GetTask](~~GetTask~~) or [ListTasks](~~ListTasks~~) operation to query information about the task. If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param tmpReq - CreateFigureClusteringTaskRequest
 //
@@ -1497,9 +1601,11 @@ func (client *Client) CreateFacesSearchingTaskWithContext(ctx context.Context, t
 //
 // @return CreateFigureClusteringTaskResponse
 func (client *Client) CreateFigureClusteringTaskWithContext(ctx context.Context, tmpReq *CreateFigureClusteringTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateFigureClusteringTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateFigureClusteringTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1575,9 +1681,11 @@ func (client *Client) CreateFigureClusteringTaskWithContext(ctx context.Context,
 //
 // @return CreateFigureClustersMergingTaskResponse
 func (client *Client) CreateFigureClustersMergingTaskWithContext(ctx context.Context, tmpReq *CreateFigureClustersMergingTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateFigureClustersMergingTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateFigureClustersMergingTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1679,9 +1787,11 @@ func (client *Client) CreateFigureClustersMergingTaskWithContext(ctx context.Con
 //
 // @return CreateFileCompressionTaskResponse
 func (client *Client) CreateFileCompressionTaskWithContext(ctx context.Context, tmpReq *CreateFileCompressionTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateFileCompressionTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateFileCompressionTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1781,9 +1891,11 @@ func (client *Client) CreateFileCompressionTaskWithContext(ctx context.Context, 
 //
 // @return CreateFileUncompressionTaskResponse
 func (client *Client) CreateFileUncompressionTaskWithContext(ctx context.Context, tmpReq *CreateFileUncompressionTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateFileUncompressionTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateFileUncompressionTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1869,11 +1981,11 @@ func (client *Client) CreateFileUncompressionTaskWithContext(ctx context.Context
 //
 //		- The image for which you want to create a content moderation task must meet the following requirements:
 //
-//	    	- The image URL supports the HTTP and HTTPS protocols.
+//	    	- The image URL uses the HTTP or HTTPS protocol.
 //
 //	    	- The image is in one of the following formats: PNG, JPG, JPEG, BMP, GIF, and WebP
 //
-//	    	- The image size is limited to 20 MB for synchronous and asynchronous calls, with a maximum height or width of 30,000 pixels. The total number of pixels cannot exceed 250 million. GIF images are limited to 4,194,304 pixels, with a maximum height or width of 30,000 pixels.
+//	    	- The image size is limited to 20 MB for synchronous and asynchronous calls, with a maximum height or width of 30,000 pixels. The total number of pixels in the image cannot exceed 250 million. GIF images are limited to 4,194,304 pixels, with a maximum height or width of 30,000 pixels.
 //
 //	    	- The image download time is limited to 3 seconds. If the download takes longer, a timeout error occurs.
 //
@@ -1881,7 +1993,7 @@ func (client *Client) CreateFileUncompressionTaskWithContext(ctx context.Context
 //
 //	    	- The response time of the CreateImageModerationTask operation varies based on the duration of the image download. Make sure that the image is stored in a stable and reliable service. We recommend that you store images on Alibaba Cloud Object Storage Service (OSS) or cache them on Alibaba Cloud CDN.
 //
-//		- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478241.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can also obtain information about the task based on notifications.
+//		- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can also obtain information about the task based on notifications.
 //
 // >  The detection result is sent as an asynchronous notification. The Suggestion field of the notification can have one of the following values:
 //
@@ -1889,7 +2001,7 @@ func (client *Client) CreateFileUncompressionTaskWithContext(ctx context.Context
 //
 //   - block: Non-compliant content is detected. The Categories field value indicates the non-compliance categories. For more information, see Content moderation results.
 //
-//   - review: A manual review is needed. After the manual review is finished, another asynchronous notification is sent to inform you about the review result. >
+//   - review: A manual review is needed. After the manual review is completed, an asynchronous notification is sent to inform you of the result. >
 //
 // @param tmpReq - CreateImageModerationTaskRequest
 //
@@ -1897,9 +2009,11 @@ func (client *Client) CreateFileUncompressionTaskWithContext(ctx context.Context
 //
 // @return CreateImageModerationTaskResponse
 func (client *Client) CreateImageModerationTaskWithContext(ctx context.Context, tmpReq *CreateImageModerationTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateImageModerationTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateImageModerationTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1999,9 +2113,11 @@ func (client *Client) CreateImageModerationTaskWithContext(ctx context.Context, 
 //
 // @return CreateImageSplicingTaskResponse
 func (client *Client) CreateImageSplicingTaskWithContext(ctx context.Context, tmpReq *CreateImageSplicingTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateImageSplicingTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateImageSplicingTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2125,9 +2241,11 @@ func (client *Client) CreateImageSplicingTaskWithContext(ctx context.Context, tm
 //
 // @return CreateImageToPDFTaskResponse
 func (client *Client) CreateImageToPDFTaskWithContext(ctx context.Context, tmpReq *CreateImageToPDFTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateImageToPDFTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateImageToPDFTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2227,9 +2345,11 @@ func (client *Client) CreateImageToPDFTaskWithContext(ctx context.Context, tmpRe
 //
 // @return CreateLocationDateClusteringTaskResponse
 func (client *Client) CreateLocationDateClusteringTaskWithContext(ctx context.Context, tmpReq *CreateLocationDateClusteringTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateLocationDateClusteringTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateLocationDateClusteringTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2303,27 +2423,21 @@ func (client *Client) CreateLocationDateClusteringTaskWithContext(ctx context.Co
 
 // Summary:
 //
-// Creates an asynchronous media transcoding task to provide audio and video file processing abilities, such as media transcoding, media splicing, video frame capturing, and video to GIF conversion.
+// # Create Transcoding Service
 //
 // Description:
 //
-//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+// - **Please ensure that you fully understand the billing method and [pricing](https://help.aliyun.com/document_detail/88317.html) of the Intelligent Media Management product before using this interface.**
 //
-//		- Make sure that the specified project exists in the current region. For more information, see [Project management](https://help.aliyun.com/document_detail/478152.html).
+// - Before calling this interface, make sure that there is an available project (Project) in the current Region. For more details, see [Project Management](https://help.aliyun.com/document_detail/478152.html).
 //
-//	    **
+//	Notice: Asynchronous tasks do not guarantee timeliness.
 //
-//	    **Note*	- Asynchronous processing does not guarantee timely task completion.
+// - When using this interface for media transcoding, by default, only one video/audio/subtitle stream is processed, but you can also configure the number of video/audio/subtitle streams to be processed.
 //
-//		- By default, only one type of video, audio, and subtitle streams is processed when you call this operation to process media transcoding. However, you can specify the number of video, audio, or subtitle streams that you want to process.
+// - When using this interface for media concatenation, a maximum of 11 media files are supported. In this case, the configured transcoding, frame extraction, and other parameters will apply to the concatenated media data.
 //
-//		- When you use this operation to execute a media merging task, up to 11 media files are supported. In this case, the parameters that involve media transcoding and frame capturing apply to the merged media data.
-//
-//		- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
-//
-//	    **
-//
-//	    ****
+// - This is an asynchronous interface. After the task starts, the task information is retained for 7 days. If it exceeds 7 days, the information cannot be retrieved. Call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) interface to get the returned `TaskId` and view the task information. You can also set the [Notification](https://help.aliyun.com/document_detail/2743997.html) message notification parameter to obtain task information through message notifications.
 //
 // @param tmpReq - CreateMediaConvertTaskRequest
 //
@@ -2331,9 +2445,11 @@ func (client *Client) CreateLocationDateClusteringTaskWithContext(ctx context.Co
 //
 // @return CreateMediaConvertTaskResponse
 func (client *Client) CreateMediaConvertTaskWithContext(ctx context.Context, tmpReq *CreateMediaConvertTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateMediaConvertTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateMediaConvertTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2425,7 +2541,7 @@ func (client *Client) CreateMediaConvertTaskWithContext(ctx context.Context, tmp
 //
 //	    **Note*	- Asynchronous processing does not guarantee timely task completion.
 //
-//		- The operation supports the following input formats:
+//		- Supported input formats:
 //
 //	    	- Text documents: doc, docx, wps, wpss, docm, dotm, dot, dotx, and html
 //
@@ -2435,7 +2551,7 @@ func (client *Client) CreateMediaConvertTaskWithContext(ctx context.Context, tmp
 //
 //	    	- PDF documents: pdf
 //
-//		- The operation supports the following output formats:
+//		- Supported output formats:
 //
 //	    	- Image files: png and jpg
 //
@@ -2443,11 +2559,13 @@ func (client *Client) CreateMediaConvertTaskWithContext(ctx context.Context, tmp
 //
 //	    	- PDF files: pdf
 //
-//		- Each input document can be up to 200 MB in size.
+//		- Each input document can be up to 200 MB in size. The upper limit cannot be adjusted.
 //
-//		- The maximum conversion time is 120 seconds. If the document contains too much or complex content, the conversion may time out.
+//		- If the document size is large or the content is complex, the conversion task may time out.
 //
-//		- The operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can use one of the following methods to query task information:
+//		- The limit on the number of requests per second for a single user is 50.
+//
+//		- The operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can use one of the following methods to query the task information in a timely manner:
 //
 //	    	- Call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.``
 //
@@ -2455,7 +2573,7 @@ func (client *Client) CreateMediaConvertTaskWithContext(ctx context.Context, tmp
 //
 //	    	- In the region in which the IMM project is located, create an ApsaraMQ for RocketMQ 4.0 instance, a topic, and a group to receive task notifications. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html). For more information about how to use ApsaraMQ for RocketMQ, see [Call HTTP SDKs to send and subscribe to messages](https://help.aliyun.com/document_detail/169009.html).
 //
-//	    	- In the region in which the IMM project is located, use [EventBridge](https://www.alibabacloud.com/en/product/eventbridge) to receive task information notifications. For more information, see [IMM events](https://help.aliyun.com/document_detail/205730.html).
+//	    	- In the region in which the IMM project is located, use [EventBridge](https://www.aliyun.com/product/aliware/eventbridge) to receive task information notifications. For more information, see [IMM events](https://help.aliyun.com/document_detail/205730.html).
 //
 // @param tmpReq - CreateOfficeConversionTaskRequest
 //
@@ -2463,9 +2581,11 @@ func (client *Client) CreateMediaConvertTaskWithContext(ctx context.Context, tmp
 //
 // @return CreateOfficeConversionTaskResponse
 func (client *Client) CreateOfficeConversionTaskWithContext(ctx context.Context, tmpReq *CreateOfficeConversionTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateOfficeConversionTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateOfficeConversionTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2669,9 +2789,11 @@ func (client *Client) CreateOfficeConversionTaskWithContext(ctx context.Context,
 //
 // @return CreateProjectResponse
 func (client *Client) CreateProjectWithContext(ctx context.Context, tmpReq *CreateProjectRequest, runtime *dara.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateProjectShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2775,9 +2897,11 @@ func (client *Client) CreateProjectWithContext(ctx context.Context, tmpReq *Crea
 //
 // @return CreateSimilarImageClusteringTaskResponse
 func (client *Client) CreateSimilarImageClusteringTaskWithContext(ctx context.Context, tmpReq *CreateSimilarImageClusteringTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateSimilarImageClusteringTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateSimilarImageClusteringTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2851,9 +2975,11 @@ func (client *Client) CreateSimilarImageClusteringTaskWithContext(ctx context.Co
 //
 // @return CreateStoryResponse
 func (client *Client) CreateStoryWithContext(ctx context.Context, tmpReq *CreateStoryRequest, runtime *dara.RuntimeOptions) (_result *CreateStoryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateStoryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2981,9 +3107,11 @@ func (client *Client) CreateStoryWithContext(ctx context.Context, tmpReq *Create
 //
 // @return CreateTriggerResponse
 func (client *Client) CreateTriggerWithContext(ctx context.Context, tmpReq *CreateTriggerRequest, runtime *dara.RuntimeOptions) (_result *CreateTriggerResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateTriggerShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3077,9 +3205,11 @@ func (client *Client) CreateTriggerWithContext(ctx context.Context, tmpReq *Crea
 //
 // @return CreateVideoLabelClassificationTaskResponse
 func (client *Client) CreateVideoLabelClassificationTaskWithContext(ctx context.Context, tmpReq *CreateVideoLabelClassificationTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateVideoLabelClassificationTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateVideoLabelClassificationTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3183,9 +3313,11 @@ func (client *Client) CreateVideoLabelClassificationTaskWithContext(ctx context.
 //
 // @return CreateVideoModerationTaskResponse
 func (client *Client) CreateVideoModerationTaskWithContext(ctx context.Context, tmpReq *CreateVideoModerationTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateVideoModerationTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateVideoModerationTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3281,9 +3413,11 @@ func (client *Client) CreateVideoModerationTaskWithContext(ctx context.Context, 
 //
 // @return DeleteBatchResponse
 func (client *Client) DeleteBatchWithContext(ctx context.Context, request *DeleteBatchRequest, runtime *dara.RuntimeOptions) (_result *DeleteBatchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -3333,9 +3467,11 @@ func (client *Client) DeleteBatchWithContext(ctx context.Context, request *Delet
 //
 // @return DeleteBindingResponse
 func (client *Client) DeleteBindingWithContext(ctx context.Context, request *DeleteBindingRequest, runtime *dara.RuntimeOptions) (_result *DeleteBindingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetName) {
@@ -3389,9 +3525,11 @@ func (client *Client) DeleteBindingWithContext(ctx context.Context, request *Del
 //
 // @return DeleteDatasetResponse
 func (client *Client) DeleteDatasetWithContext(ctx context.Context, request *DeleteDatasetRequest, runtime *dara.RuntimeOptions) (_result *DeleteDatasetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetName) {
@@ -3447,9 +3585,11 @@ func (client *Client) DeleteDatasetWithContext(ctx context.Context, request *Del
 //
 // @return DeleteFileMetaResponse
 func (client *Client) DeleteFileMetaWithContext(ctx context.Context, request *DeleteFileMetaRequest, runtime *dara.RuntimeOptions) (_result *DeleteFileMetaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetName) {
@@ -3505,9 +3645,11 @@ func (client *Client) DeleteFileMetaWithContext(ctx context.Context, request *De
 //
 // @return DeleteLocationDateClusterResponse
 func (client *Client) DeleteLocationDateClusterWithContext(ctx context.Context, request *DeleteLocationDateClusterRequest, runtime *dara.RuntimeOptions) (_result *DeleteLocationDateClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetName) {
@@ -3563,9 +3705,11 @@ func (client *Client) DeleteLocationDateClusterWithContext(ctx context.Context, 
 //
 // @return DeleteProjectResponse
 func (client *Client) DeleteProjectWithContext(ctx context.Context, request *DeleteProjectRequest, runtime *dara.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProjectName) {
@@ -3613,9 +3757,11 @@ func (client *Client) DeleteProjectWithContext(ctx context.Context, request *Del
 //
 // @return DeleteStoryResponse
 func (client *Client) DeleteStoryWithContext(ctx context.Context, request *DeleteStoryRequest, runtime *dara.RuntimeOptions) (_result *DeleteStoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetName) {
@@ -3667,9 +3813,11 @@ func (client *Client) DeleteStoryWithContext(ctx context.Context, request *Delet
 //
 // @return DeleteTriggerResponse
 func (client *Client) DeleteTriggerWithContext(ctx context.Context, request *DeleteTriggerRequest, runtime *dara.RuntimeOptions) (_result *DeleteTriggerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -3719,9 +3867,11 @@ func (client *Client) DeleteTriggerWithContext(ctx context.Context, request *Del
 //
 // @return DetachOSSBucketResponse
 func (client *Client) DetachOSSBucketWithContext(ctx context.Context, request *DetachOSSBucketRequest, runtime *dara.RuntimeOptions) (_result *DetachOSSBucketResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OSSBucket) {
@@ -3767,9 +3917,11 @@ func (client *Client) DetachOSSBucketWithContext(ctx context.Context, request *D
 //
 // @return DetectImageBodiesResponse
 func (client *Client) DetectImageBodiesWithContext(ctx context.Context, tmpReq *DetectImageBodiesRequest, runtime *dara.RuntimeOptions) (_result *DetectImageBodiesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DetectImageBodiesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3823,7 +3975,7 @@ func (client *Client) DetectImageBodiesWithContext(ctx context.Context, tmpReq *
 //
 // Description:
 //
-//	For information about the image encoding formats supported by this operation, see [Limits on images](https://help.aliyun.com/document_detail/475569.html).
+//	For information about the image encoding formats supported by this operation, see [Limits](https://help.aliyun.com/document_detail/475569.html).
 //
 // @param tmpReq - DetectImageCarsRequest
 //
@@ -3831,9 +3983,11 @@ func (client *Client) DetectImageBodiesWithContext(ctx context.Context, tmpReq *
 //
 // @return DetectImageCarsResponse
 func (client *Client) DetectImageCarsWithContext(ctx context.Context, tmpReq *DetectImageCarsRequest, runtime *dara.RuntimeOptions) (_result *DetectImageCarsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DetectImageCarsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3891,9 +4045,11 @@ func (client *Client) DetectImageCarsWithContext(ctx context.Context, tmpReq *De
 //
 // @return DetectImageCodesResponse
 func (client *Client) DetectImageCodesWithContext(ctx context.Context, tmpReq *DetectImageCodesRequest, runtime *dara.RuntimeOptions) (_result *DetectImageCodesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DetectImageCodesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3947,9 +4103,11 @@ func (client *Client) DetectImageCodesWithContext(ctx context.Context, tmpReq *D
 //
 // @return DetectImageCroppingResponse
 func (client *Client) DetectImageCroppingWithContext(ctx context.Context, tmpReq *DetectImageCroppingRequest, runtime *dara.RuntimeOptions) (_result *DetectImageCroppingResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DetectImageCroppingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4013,9 +4171,11 @@ func (client *Client) DetectImageCroppingWithContext(ctx context.Context, tmpReq
 //
 // @return DetectImageFacesResponse
 func (client *Client) DetectImageFacesWithContext(ctx context.Context, tmpReq *DetectImageFacesRequest, runtime *dara.RuntimeOptions) (_result *DetectImageFacesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DetectImageFacesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4079,9 +4239,11 @@ func (client *Client) DetectImageFacesWithContext(ctx context.Context, tmpReq *D
 //
 // @return DetectImageLabelsResponse
 func (client *Client) DetectImageLabelsWithContext(ctx context.Context, tmpReq *DetectImageLabelsRequest, runtime *dara.RuntimeOptions) (_result *DetectImageLabelsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DetectImageLabelsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4147,9 +4309,11 @@ func (client *Client) DetectImageLabelsWithContext(ctx context.Context, tmpReq *
 //
 // @return DetectImageScoreResponse
 func (client *Client) DetectImageScoreWithContext(ctx context.Context, tmpReq *DetectImageScoreRequest, runtime *dara.RuntimeOptions) (_result *DetectImageScoreResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DetectImageScoreShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4215,9 +4379,11 @@ func (client *Client) DetectImageScoreWithContext(ctx context.Context, tmpReq *D
 //
 // @return DetectImageTextsResponse
 func (client *Client) DetectImageTextsWithContext(ctx context.Context, tmpReq *DetectImageTextsRequest, runtime *dara.RuntimeOptions) (_result *DetectImageTextsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DetectImageTextsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4277,9 +4443,11 @@ func (client *Client) DetectImageTextsWithContext(ctx context.Context, tmpReq *D
 //
 // @return DetectMediaMetaResponse
 func (client *Client) DetectMediaMetaWithContext(ctx context.Context, tmpReq *DetectMediaMetaRequest, runtime *dara.RuntimeOptions) (_result *DetectMediaMetaResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DetectMediaMetaShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4339,9 +4507,11 @@ func (client *Client) DetectMediaMetaWithContext(ctx context.Context, tmpReq *De
 //
 // @return DetectTextAnomalyResponse
 func (client *Client) DetectTextAnomalyWithContext(ctx context.Context, request *DetectTextAnomalyRequest, runtime *dara.RuntimeOptions) (_result *DetectTextAnomalyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Content) {
@@ -4389,7 +4559,7 @@ func (client *Client) DetectTextAnomalyWithContext(ctx context.Context, request 
 //
 //		- The format of the output image is the same as that of the input image.
 //
-//		- The watermarks can still be extracted even if attacks, such as compression, scaling, cropping, rotation, and color transformation, are performed on the image.
+//		- A blind watermark can still be extracted even if attacks, such as compression, scaling, cropping, and color transformation, are performed on the image.
 //
 //		- Pure black and white images and images with low resolution (roughly less than 200 px × 200 px,) are not supported.
 //
@@ -4399,9 +4569,11 @@ func (client *Client) DetectTextAnomalyWithContext(ctx context.Context, request 
 //
 // @return EncodeBlindWatermarkResponse
 func (client *Client) EncodeBlindWatermarkWithContext(ctx context.Context, request *EncodeBlindWatermarkRequest, runtime *dara.RuntimeOptions) (_result *EncodeBlindWatermarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Content) {
@@ -4453,19 +4625,19 @@ func (client *Client) EncodeBlindWatermarkWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Extracts the text from the document body.
+// # Extract text from the document
 //
 // Description:
 //
-//	  **Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).**
+// - **Before using this interface, please make sure you fully understand the billing method and [pricing](https://help.aliyun.com/document_detail/88317.html) of the Intelligent Media Management product.**
 //
-//		- Make sure that the specified project exists in the current region. For more information, see [Project management](https://help.aliyun.com/document_detail/478273.html).[](~~478152~~)
+// - Before calling this interface, ensure that there is an available project ([Project](https://help.aliyun.com/document_detail/478273.html)) in the current Region. For more details, see [Project Management](https://help.aliyun.com/document_detail/478152.html).
 //
-//		- The following document formats are supported: Word, Excel, PPT, PDF, and TXT.
+// - Supports common Word, Excel, PPT, PDF, and TXT documents.
 //
-//		- The document cannot exceed 200 MB in size. The size of the extracted text cannot exceed 2 MB in size (approximately 1.2 million letters).
+// - The file size must not exceed 200 MB. The extracted plain text file size should not exceed 2 MB (approximately 600,000 Chinese characters).
 //
-// >  If the format of the document is complex or the document body is too large, a timeout error may occur. In this case, we recommend that you call the CreateOfficeConversionTask operation to convert the document to the TXT format before you call the ExtractDocumentText operation.
+//	Notice: If the document format is complex or the text volume is too large, a timeout error may occur. In such scenarios, it is recommended to use the [CreateOfficeConversionTask](478228) interface and specify the output format as txt to achieve similar functionality.
 //
 // @param tmpReq - ExtractDocumentTextRequest
 //
@@ -4473,9 +4645,11 @@ func (client *Client) EncodeBlindWatermarkWithContext(ctx context.Context, reque
 //
 // @return ExtractDocumentTextResponse
 func (client *Client) ExtractDocumentTextWithContext(ctx context.Context, tmpReq *ExtractDocumentTextRequest, runtime *dara.RuntimeOptions) (_result *ExtractDocumentTextResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExtractDocumentTextShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4543,9 +4717,11 @@ func (client *Client) ExtractDocumentTextWithContext(ctx context.Context, tmpReq
 //
 // @return FuzzyQueryResponse
 func (client *Client) FuzzyQueryWithContext(ctx context.Context, tmpReq *FuzzyQueryRequest, runtime *dara.RuntimeOptions) (_result *FuzzyQueryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FuzzyQueryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4635,9 +4811,11 @@ func (client *Client) FuzzyQueryWithContext(ctx context.Context, tmpReq *FuzzyQu
 //
 // @return GenerateVideoPlaylistResponse
 func (client *Client) GenerateVideoPlaylistWithContext(ctx context.Context, tmpReq *GenerateVideoPlaylistRequest, runtime *dara.RuntimeOptions) (_result *GenerateVideoPlaylistResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GenerateVideoPlaylistShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4739,31 +4917,35 @@ func (client *Client) GenerateVideoPlaylistWithContext(ctx context.Context, tmpR
 //
 // Description:
 //
-//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+// - **Please ensure that you fully understand the billing method and [pricing](https://help.aliyun.com/document_detail/477042.html) of the Intelligent Media Management product before using this interface.**
 //
-//		- The operation generates an access token that is valid for 30 minutes and a refresh token that is valid for 1 day.
+// - The access token expires in 30 minutes, and the refresh token expires in 1 day.
 //
-//		- The returned expiration time is in UTC.
+// - The returned expiration time is in UTC, which has an 8-hour difference from Beijing Time.
 //
-//		- The operation supports the following document types:
+// - Supported input file formats:
 //
-//	    	- Word files: .doc, .docx, .txt, .dot, .wps, .wpt, .dotx, .docm, .dotm, and .rtf
+//   - Word documents: doc, docx, txt, dot, wps, wpt, dotx, docm, dotm, rtf.
 //
-//	    	- Presentation files: .ppt, .pptx, .pptm, .ppsx, .ppsm, .pps, .potx, .potm, .dpt, and .dps
+//   - Presentation documents (PPT): ppt, pptx, pptm, ppsx, ppsm, pps, potx, potm, dpt, dps.
 //
-//	    	- Spreadsheet documents: .et, .xls, .xlt, .xlsx, .xlsm, .xltx, .xltm, and .csv
+//   - Spreadsheet documents (Excel): et, xls, xlt, xlsx, xlsm, xltx, xltm, csv
 //
-//	    	- PDF files: .pdf
+//   - PDF documents: pdf.
 //
-//		- The operation supports an input document that is up to 200 MB in size.
+// - Supports files up to 200MB.
 //
-//		- The operation supports an input document that contains up to 5,000 pages.
+// - Supports documents with a maximum of 5000 pages.
 //
-//		- For a project created before December 1, 2023, you are charged for previewing or editing a document in the project based on the number of times the document is opened. For a project created on or after December 1, 2023, you are charged based on the number of API operation calls made for previewing or editing a document. If you want to switch to API call-based billing for document previewing and editing, use a project created on or after December 1, 2023. In API call-based billing, one API call allows only one user to use the feature. If multiple users use the information returned by the API call, only the last user has access to the document and the access permissions of other users are revoked.
+// - Projects created before 2023-12-01 are billed based on the number of document openings. Currently, billing is based on the number of API calls. To switch to the new billing model, simply create a new project. Note that one API call can only be used by one user; if reused, only the last user will have normal access, and the access rights of other users will be revoked.
 //
-//		- You can use the NotifyTopicName parameter to specify a Simple Message Queue (SMQ) topic in the same region as the IMM project for getting notified of file save operations. For more information about how to send and receive messages by using the SMQ SDK, see [Use queues](https://help.aliyun.com/document_detail/32449.html). For more information about the JSON example of the Message field, see [WebOffice message example](https://help.aliyun.com/document_detail/2743999.html).
+// - In the same region as the Intelligent Media Management, activate MNS service, create topics and queues, and configure subscription relationships. You can pass the MNS topic name through the NotifyTopicName parameter to receive message notifications for file saves. For more information about the MNS SDK, see [Receiving and Deleting Messages](https://help.aliyun.com/document_detail/32449.html).
 //
-// >  To manage multiple versions of the document, you must enable versioning for the bucket that stores the document and set the History parameter to true.
+// For an example of the JSON format of the Message field in file save message notifications, refer to [WebOffice Message Notification Format](https://help.aliyun.com/document_detail/2743999.html).
+//
+// > To use the multi-version feature, you must first enable the multi-version feature in OSS, then set the \\"History\\" parameter to true.
+//
+// >
 //
 // @param tmpReq - GenerateWebofficeTokenRequest
 //
@@ -4771,9 +4953,11 @@ func (client *Client) GenerateVideoPlaylistWithContext(ctx context.Context, tmpR
 //
 // @return GenerateWebofficeTokenResponse
 func (client *Client) GenerateWebofficeTokenWithContext(ctx context.Context, tmpReq *GenerateWebofficeTokenRequest, runtime *dara.RuntimeOptions) (_result *GenerateWebofficeTokenResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GenerateWebofficeTokenShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4895,9 +5079,11 @@ func (client *Client) GenerateWebofficeTokenWithContext(ctx context.Context, tmp
 //
 // @return GetBatchResponse
 func (client *Client) GetBatchWithContext(ctx context.Context, request *GetBatchRequest, runtime *dara.RuntimeOptions) (_result *GetBatchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -4947,9 +5133,11 @@ func (client *Client) GetBatchWithContext(ctx context.Context, request *GetBatch
 //
 // @return GetBindingResponse
 func (client *Client) GetBindingWithContext(ctx context.Context, request *GetBindingRequest, runtime *dara.RuntimeOptions) (_result *GetBindingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetName) {
@@ -4999,9 +5187,11 @@ func (client *Client) GetBindingWithContext(ctx context.Context, request *GetBin
 //
 // @return GetDRMLicenseResponse
 func (client *Client) GetDRMLicenseWithContext(ctx context.Context, request *GetDRMLicenseRequest, runtime *dara.RuntimeOptions) (_result *GetDRMLicenseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyId) {
@@ -5063,9 +5253,11 @@ func (client *Client) GetDRMLicenseWithContext(ctx context.Context, request *Get
 //
 // @return GetDatasetResponse
 func (client *Client) GetDatasetWithContext(ctx context.Context, request *GetDatasetRequest, runtime *dara.RuntimeOptions) (_result *GetDatasetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetName) {
@@ -5119,9 +5311,11 @@ func (client *Client) GetDatasetWithContext(ctx context.Context, request *GetDat
 //
 // @return GetDecodeBlindWatermarkResultResponse
 func (client *Client) GetDecodeBlindWatermarkResultWithContext(ctx context.Context, request *GetDecodeBlindWatermarkResultRequest, runtime *dara.RuntimeOptions) (_result *GetDecodeBlindWatermarkResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProjectName) {
@@ -5175,9 +5369,11 @@ func (client *Client) GetDecodeBlindWatermarkResultWithContext(ctx context.Conte
 //
 // @return GetFigureClusterResponse
 func (client *Client) GetFigureClusterWithContext(ctx context.Context, request *GetFigureClusterRequest, runtime *dara.RuntimeOptions) (_result *GetFigureClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetName) {
@@ -5233,9 +5429,11 @@ func (client *Client) GetFigureClusterWithContext(ctx context.Context, request *
 //
 // @return GetFileMetaResponse
 func (client *Client) GetFileMetaWithContext(ctx context.Context, tmpReq *GetFileMetaRequest, runtime *dara.RuntimeOptions) (_result *GetFileMetaResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetFileMetaShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5293,9 +5491,11 @@ func (client *Client) GetFileMetaWithContext(ctx context.Context, tmpReq *GetFil
 //
 // @return GetImageModerationResultResponse
 func (client *Client) GetImageModerationResultWithContext(ctx context.Context, request *GetImageModerationResultRequest, runtime *dara.RuntimeOptions) (_result *GetImageModerationResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProjectName) {
@@ -5349,9 +5549,11 @@ func (client *Client) GetImageModerationResultWithContext(ctx context.Context, r
 //
 // @return GetOSSBucketAttachmentResponse
 func (client *Client) GetOSSBucketAttachmentWithContext(ctx context.Context, request *GetOSSBucketAttachmentRequest, runtime *dara.RuntimeOptions) (_result *GetOSSBucketAttachmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OSSBucket) {
@@ -5395,9 +5597,11 @@ func (client *Client) GetOSSBucketAttachmentWithContext(ctx context.Context, req
 //
 // @return GetProjectResponse
 func (client *Client) GetProjectWithContext(ctx context.Context, request *GetProjectRequest, runtime *dara.RuntimeOptions) (_result *GetProjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProjectName) {
@@ -5449,9 +5653,11 @@ func (client *Client) GetProjectWithContext(ctx context.Context, request *GetPro
 //
 // @return GetStoryResponse
 func (client *Client) GetStoryWithContext(ctx context.Context, request *GetStoryRequest, runtime *dara.RuntimeOptions) (_result *GetStoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetName) {
@@ -5503,9 +5709,11 @@ func (client *Client) GetStoryWithContext(ctx context.Context, request *GetStory
 //
 // @return GetTaskResponse
 func (client *Client) GetTaskWithContext(ctx context.Context, request *GetTaskRequest, runtime *dara.RuntimeOptions) (_result *GetTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProjectName) {
@@ -5557,9 +5765,11 @@ func (client *Client) GetTaskWithContext(ctx context.Context, request *GetTaskRe
 //
 // @return GetTriggerResponse
 func (client *Client) GetTriggerWithContext(ctx context.Context, request *GetTriggerRequest, runtime *dara.RuntimeOptions) (_result *GetTriggerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -5609,9 +5819,11 @@ func (client *Client) GetTriggerWithContext(ctx context.Context, request *GetTri
 //
 // @return GetVideoLabelClassificationResultResponse
 func (client *Client) GetVideoLabelClassificationResultWithContext(ctx context.Context, request *GetVideoLabelClassificationResultRequest, runtime *dara.RuntimeOptions) (_result *GetVideoLabelClassificationResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProjectName) {
@@ -5651,7 +5863,7 @@ func (client *Client) GetVideoLabelClassificationResultWithContext(ctx context.C
 
 // Summary:
 //
-// 获取视频审核任务结果
+// Queries the result of a video moderation task.
 //
 // @param request - GetVideoModerationResultRequest
 //
@@ -5659,9 +5871,11 @@ func (client *Client) GetVideoLabelClassificationResultWithContext(ctx context.C
 //
 // @return GetVideoModerationResultResponse
 func (client *Client) GetVideoModerationResultWithContext(ctx context.Context, request *GetVideoModerationResultRequest, runtime *dara.RuntimeOptions) (_result *GetVideoModerationResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProjectName) {
@@ -5727,9 +5941,11 @@ func (client *Client) GetVideoModerationResultWithContext(ctx context.Context, r
 //
 // @return IndexFileMetaResponse
 func (client *Client) IndexFileMetaWithContext(ctx context.Context, tmpReq *IndexFileMetaRequest, runtime *dara.RuntimeOptions) (_result *IndexFileMetaResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &IndexFileMetaShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5787,6 +6003,64 @@ func (client *Client) IndexFileMetaWithContext(ctx context.Context, tmpReq *Inde
 
 // Summary:
 //
+// # List bound attachments
+//
+// Description:
+//
+// - **Please ensure that you fully understand the billing method and [pricing](https://help.aliyun.com/document_detail/88317.html) of the Intelligent Media Management product before using this interface.**
+//
+// - Ensure that you have called [Bind Object Storage Bucket](～～478206～～) to bind the OSS Bucket to the project.
+//
+// @param request - ListAttachedOSSBucketsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAttachedOSSBucketsResponse
+func (client *Client) ListAttachedOSSBucketsWithContext(ctx context.Context, request *ListAttachedOSSBucketsRequest, runtime *dara.RuntimeOptions) (_result *ListAttachedOSSBucketsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ProjectName) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAttachedOSSBuckets"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAttachedOSSBucketsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries batch processing tasks. You can query batch processing tasks based on conditions such task tags and status. The results can be sorted.
 //
 // @param request - ListBatchesRequest
@@ -5795,9 +6069,11 @@ func (client *Client) IndexFileMetaWithContext(ctx context.Context, tmpReq *Inde
 //
 // @return ListBatchesResponse
 func (client *Client) ListBatchesWithContext(ctx context.Context, request *ListBatchesRequest, runtime *dara.RuntimeOptions) (_result *ListBatchesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -5865,9 +6141,11 @@ func (client *Client) ListBatchesWithContext(ctx context.Context, request *ListB
 //
 // @return ListBindingsResponse
 func (client *Client) ListBindingsWithContext(ctx context.Context, request *ListBindingsRequest, runtime *dara.RuntimeOptions) (_result *ListBindingsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetName) {
@@ -5919,9 +6197,11 @@ func (client *Client) ListBindingsWithContext(ctx context.Context, request *List
 //
 // @return ListDatasetsResponse
 func (client *Client) ListDatasetsWithContext(ctx context.Context, request *ListDatasetsRequest, runtime *dara.RuntimeOptions) (_result *ListDatasetsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -5977,9 +6257,11 @@ func (client *Client) ListDatasetsWithContext(ctx context.Context, request *List
 //
 // @return ListProjectsResponse
 func (client *Client) ListProjectsWithContext(ctx context.Context, tmpReq *ListProjectsRequest, runtime *dara.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListProjectsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6029,7 +6311,7 @@ func (client *Client) ListProjectsWithContext(ctx context.Context, tmpReq *ListP
 
 // Summary:
 //
-// Queries the regions where Intelligent Media Management (IMM) is available and the supported languages.
+// # Get the list of regions
 //
 // @param request - ListRegionsRequest
 //
@@ -6037,9 +6319,11 @@ func (client *Client) ListProjectsWithContext(ctx context.Context, tmpReq *ListP
 //
 // @return ListRegionsResponse
 func (client *Client) ListRegionsWithContext(ctx context.Context, request *ListRegionsRequest, runtime *dara.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -6083,9 +6367,11 @@ func (client *Client) ListRegionsWithContext(ctx context.Context, request *ListR
 //
 // @return ListTasksResponse
 func (client *Client) ListTasksWithContext(ctx context.Context, tmpReq *ListTasksRequest, runtime *dara.RuntimeOptions) (_result *ListTasksResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListTasksShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6179,9 +6465,11 @@ func (client *Client) ListTasksWithContext(ctx context.Context, tmpReq *ListTask
 //
 // @return ListTriggersResponse
 func (client *Client) ListTriggersWithContext(ctx context.Context, request *ListTriggersRequest, runtime *dara.RuntimeOptions) (_result *ListTriggersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -6251,9 +6539,11 @@ func (client *Client) ListTriggersWithContext(ctx context.Context, request *List
 //
 // @return QueryFigureClustersResponse
 func (client *Client) QueryFigureClustersWithContext(ctx context.Context, tmpReq *QueryFigureClustersRequest, runtime *dara.RuntimeOptions) (_result *QueryFigureClustersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryFigureClustersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6331,13 +6621,13 @@ func (client *Client) QueryFigureClustersWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Queries a list of spatiotemporal clustering groups. Multiple conditions are supported. For more information, see the request parameters.
+// Queries a list of spatiotemporal clusters based on the specified conditions.
 //
 // Description:
 //
-//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of IMM.****
 //
-//		- Before you call this operation, you must call the [CreateLocationDateClusteringTask](https://help.aliyun.com/document_detail/478188.html) operation to perform spatiotemporal clustering.
+//		- Before you call this operation, make sure that you have called the [CreateLocationDateClusteringTask](https://help.aliyun.com/document_detail/478188.html) operation to create spatiotemporal clusters in the project.
 //
 // @param tmpReq - QueryLocationDateClustersRequest
 //
@@ -6345,9 +6635,11 @@ func (client *Client) QueryFigureClustersWithContext(ctx context.Context, tmpReq
 //
 // @return QueryLocationDateClustersResponse
 func (client *Client) QueryLocationDateClustersWithContext(ctx context.Context, tmpReq *QueryLocationDateClustersRequest, runtime *dara.RuntimeOptions) (_result *QueryLocationDateClustersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryLocationDateClustersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6475,9 +6767,11 @@ func (client *Client) QueryLocationDateClustersWithContext(ctx context.Context, 
 //
 // @return QuerySimilarImageClustersResponse
 func (client *Client) QuerySimilarImageClustersWithContext(ctx context.Context, request *QuerySimilarImageClustersRequest, runtime *dara.RuntimeOptions) (_result *QuerySimilarImageClustersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustomLabels) {
@@ -6549,9 +6843,11 @@ func (client *Client) QuerySimilarImageClustersWithContext(ctx context.Context, 
 //
 // @return QueryStoriesResponse
 func (client *Client) QueryStoriesWithContext(ctx context.Context, tmpReq *QueryStoriesRequest, runtime *dara.RuntimeOptions) (_result *QueryStoriesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryStoriesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6661,21 +6957,23 @@ func (client *Client) QueryStoriesWithContext(ctx context.Context, tmpReq *Query
 
 // Summary:
 //
-// Refreshes the access credential of WebOffice. The access credential of WebOffice is valid for 30 minutes. After the credential expires, you cannot access Weboffice. To access Weboffice again, call this operation to obtain a new credential. The new credential is also valid for 30 minutes.
+// # Refresh Document Preview and Editing Token
 //
 // Description:
 //
-// Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of IMM.****
+// *Please ensure that you fully understand the billing method and [pricing](https://help.aliyun.com/document_detail/477042.html) of the Intelligent Media Management product before using this interface.**
 //
-//   - For more information, see [WebOffice billing](https://help.aliyun.com/document_detail/2639703.html).
+// - For detailed billing information, refer to the [WebOffice Billing Instructions](https://help.aliyun.com/document_detail/2639703.html).
 //
-//   - The access token returned by this operation is valid for 30 minutes. After the access token expires, you cannot use it to access the document.
+// - The access token expires after 30 minutes. You must open the preview before the access token expires; otherwise, you will not be able to preview.
 //
-//   - The refresh token returned by this operation is valid for one day. You need to use the refresh token for the next call to the operation before the refresh token expires. After the validity period elapses, the refresh token is invalid.
+// - The refresh token expires after 1 day. You need to call the refresh interface before the refresh token expires; otherwise, the token will become invalid.
 //
-//   - The returned expiration time is displayed in UTC.
+// - The expiration time returned is in UTC, which has an 8-hour difference from Beijing Time.
 //
-// >  An access token is used to actually access a document, whereas a refresh token is used to avoid repeated access configurations.
+// > The access token is used for actual preview session access, while the refresh token is used to reduce the parameters required for users to refresh tokens. You can use the refresh token to directly obtain a new token based on previous configurations.
+//
+// >
 //
 // @param tmpReq - RefreshWebofficeTokenRequest
 //
@@ -6683,9 +6981,11 @@ func (client *Client) QueryStoriesWithContext(ctx context.Context, tmpReq *Query
 //
 // @return RefreshWebofficeTokenResponse
 func (client *Client) RefreshWebofficeTokenWithContext(ctx context.Context, tmpReq *RefreshWebofficeTokenRequest, runtime *dara.RuntimeOptions) (_result *RefreshWebofficeTokenResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RefreshWebofficeTokenShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6743,9 +7043,11 @@ func (client *Client) RefreshWebofficeTokenWithContext(ctx context.Context, tmpR
 //
 // @return RemoveStoryFilesResponse
 func (client *Client) RemoveStoryFilesWithContext(ctx context.Context, tmpReq *RemoveStoryFilesRequest, runtime *dara.RuntimeOptions) (_result *RemoveStoryFilesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RemoveStoryFilesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6807,9 +7109,11 @@ func (client *Client) RemoveStoryFilesWithContext(ctx context.Context, tmpReq *R
 //
 // @return ResumeBatchResponse
 func (client *Client) ResumeBatchWithContext(ctx context.Context, request *ResumeBatchRequest, runtime *dara.RuntimeOptions) (_result *ResumeBatchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -6857,9 +7161,11 @@ func (client *Client) ResumeBatchWithContext(ctx context.Context, request *Resum
 //
 // @return ResumeTriggerResponse
 func (client *Client) ResumeTriggerWithContext(ctx context.Context, request *ResumeTriggerRequest, runtime *dara.RuntimeOptions) (_result *ResumeTriggerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -6909,9 +7215,11 @@ func (client *Client) ResumeTriggerWithContext(ctx context.Context, request *Res
 //
 // @return SearchImageFigureClusterResponse
 func (client *Client) SearchImageFigureClusterWithContext(ctx context.Context, tmpReq *SearchImageFigureClusterRequest, runtime *dara.RuntimeOptions) (_result *SearchImageFigureClusterResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SearchImageFigureClusterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6999,9 +7307,11 @@ func (client *Client) SearchImageFigureClusterWithContext(ctx context.Context, t
 //
 // @return SemanticQueryResponse
 func (client *Client) SemanticQueryWithContext(ctx context.Context, tmpReq *SemanticQueryRequest, runtime *dara.RuntimeOptions) (_result *SemanticQueryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SemanticQueryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7279,9 +7589,11 @@ func (client *Client) SemanticQueryWithContext(ctx context.Context, tmpReq *Sema
 //
 // @return SimpleQueryResponse
 func (client *Client) SimpleQueryWithContext(ctx context.Context, tmpReq *SimpleQueryRequest, runtime *dara.RuntimeOptions) (_result *SimpleQueryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SimpleQueryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7375,9 +7687,11 @@ func (client *Client) SimpleQueryWithContext(ctx context.Context, tmpReq *Simple
 //
 // @return SuspendBatchResponse
 func (client *Client) SuspendBatchWithContext(ctx context.Context, request *SuspendBatchRequest, runtime *dara.RuntimeOptions) (_result *SuspendBatchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -7425,9 +7739,11 @@ func (client *Client) SuspendBatchWithContext(ctx context.Context, request *Susp
 //
 // @return SuspendTriggerResponse
 func (client *Client) SuspendTriggerWithContext(ctx context.Context, request *SuspendTriggerRequest, runtime *dara.RuntimeOptions) (_result *SuspendTriggerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -7477,9 +7793,11 @@ func (client *Client) SuspendTriggerWithContext(ctx context.Context, request *Su
 //
 // @return UpdateBatchResponse
 func (client *Client) UpdateBatchWithContext(ctx context.Context, tmpReq *UpdateBatchRequest, runtime *dara.RuntimeOptions) (_result *UpdateBatchResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateBatchShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7541,7 +7859,17 @@ func (client *Client) UpdateBatchWithContext(ctx context.Context, tmpReq *Update
 
 // Summary:
 //
-// Updates a dataset.
+// # Update Media Set
+//
+// Description:
+//
+// - **Please ensure that you fully understand the billing method and [pricing](https://help.aliyun.com/document_detail/477042.html) of the Intelligent Media Management product before using this interface.**
+//
+// - When updating dataset information, make sure the dataset has been successfully created. For creating a dataset, please refer to the request parameter description.
+//
+// - When updating dataset information, only fill in the fields that need to be updated; unfilled fields will not change.
+//
+// - The update of the dataset will not take effect immediately and may require up to 5 minutes to become effective.
 //
 // @param tmpReq - UpdateDatasetRequest
 //
@@ -7549,9 +7877,11 @@ func (client *Client) UpdateBatchWithContext(ctx context.Context, tmpReq *Update
 //
 // @return UpdateDatasetResponse
 func (client *Client) UpdateDatasetWithContext(ctx context.Context, tmpReq *UpdateDatasetRequest, runtime *dara.RuntimeOptions) (_result *UpdateDatasetResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateDatasetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7643,9 +7973,11 @@ func (client *Client) UpdateDatasetWithContext(ctx context.Context, tmpReq *Upda
 //
 // @return UpdateFigureClusterResponse
 func (client *Client) UpdateFigureClusterWithContext(ctx context.Context, tmpReq *UpdateFigureClusterRequest, runtime *dara.RuntimeOptions) (_result *UpdateFigureClusterResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateFigureClusterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7705,9 +8037,11 @@ func (client *Client) UpdateFigureClusterWithContext(ctx context.Context, tmpReq
 //
 // @return UpdateFileMetaResponse
 func (client *Client) UpdateFileMetaWithContext(ctx context.Context, tmpReq *UpdateFileMetaRequest, runtime *dara.RuntimeOptions) (_result *UpdateFileMetaResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateFileMetaShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7767,9 +8101,11 @@ func (client *Client) UpdateFileMetaWithContext(ctx context.Context, tmpReq *Upd
 //
 // @return UpdateLocationDateClusterResponse
 func (client *Client) UpdateLocationDateClusterWithContext(ctx context.Context, tmpReq *UpdateLocationDateClusterRequest, runtime *dara.RuntimeOptions) (_result *UpdateLocationDateClusterResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateLocationDateClusterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7843,9 +8179,11 @@ func (client *Client) UpdateLocationDateClusterWithContext(ctx context.Context, 
 //
 // @return UpdateProjectResponse
 func (client *Client) UpdateProjectWithContext(ctx context.Context, tmpReq *UpdateProjectRequest, runtime *dara.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateProjectShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7931,9 +8269,11 @@ func (client *Client) UpdateProjectWithContext(ctx context.Context, tmpReq *Upda
 //
 // @return UpdateStoryResponse
 func (client *Client) UpdateStoryWithContext(ctx context.Context, tmpReq *UpdateStoryRequest, runtime *dara.RuntimeOptions) (_result *UpdateStoryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateStoryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8013,9 +8353,11 @@ func (client *Client) UpdateStoryWithContext(ctx context.Context, tmpReq *Update
 //
 // @return UpdateTriggerResponse
 func (client *Client) UpdateTriggerWithContext(ctx context.Context, tmpReq *UpdateTriggerRequest, runtime *dara.RuntimeOptions) (_result *UpdateTriggerResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateTriggerShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8073,4 +8415,70 @@ func (client *Client) UpdateTriggerWithContext(ctx context.Context, tmpReq *Upda
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+func (client *Client) contextualAnswerWithSSECtx_opYieldFunc(_yield chan *ContextualAnswerResponse, _yieldErr chan error, ctx context.Context, tmpReq *ContextualAnswerRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	request := &ContextualAnswerShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Files) {
+		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, dara.String("Files"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Messages) {
+		request.MessagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Messages, dara.String("Messages"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectName) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FilesShrink) {
+		body["Files"] = request.FilesShrink
+	}
+
+	if !dara.IsNil(request.MessagesShrink) {
+		body["Messages"] = request.MessagesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ContextualAnswer"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
 }

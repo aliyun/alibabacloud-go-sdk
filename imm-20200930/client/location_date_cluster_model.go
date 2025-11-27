@@ -143,5 +143,14 @@ func (s *LocationDateCluster) SetUpdateTime(v string) *LocationDateCluster {
 }
 
 func (s *LocationDateCluster) Validate() error {
-	return dara.Validate(s)
+	if s.Addresses != nil {
+		for _, item := range s.Addresses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -76,5 +76,10 @@ func (s *UpdateFileMetaRequest) SetProjectName(v string) *UpdateFileMetaRequest 
 }
 
 func (s *UpdateFileMetaRequest) Validate() error {
-	return dara.Validate(s)
+	if s.File != nil {
+		if err := s.File.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

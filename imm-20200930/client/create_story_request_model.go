@@ -48,7 +48,7 @@ type iCreateStoryRequest interface {
 type CreateStoryRequest struct {
 	// The address of the story. IMM filters candidate photos to generate a story based on the value of this parameter. This parameter takes effect only if you set StoryType to TravelMemory.
 	//
-	// >  If you are located in Hong Kong (China), Macao (China), Taiwan (China), or overseas, you cannot specify an address in the Chinese mainland by using this parameter.
+	// >  If the caller of the operation is located in Hong Kong (China), Macao (China), Taiwan (China), or another region outside the Chinese mainland, the system cannot convert the GPS information in the Chinese mainland into the textual address version.
 	Address *AddressForStory `json:"Address,omitempty" xml:"Address,omitempty"`
 	// The custom ID. A custom ID of a generated story may differ from the value of ObjectID and can be utilized for subsequent retrieval and sorting of stories.
 	//
@@ -318,5 +318,15 @@ func (s *CreateStoryRequest) SetUserData(v string) *CreateStoryRequest {
 }
 
 func (s *CreateStoryRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Address != nil {
+		if err := s.Address.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

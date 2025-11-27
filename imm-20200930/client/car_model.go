@@ -107,5 +107,19 @@ func (s *Car) SetLicensePlates(v []*LicensePlate) *Car {
 }
 
 func (s *Car) Validate() error {
-	return dara.Validate(s)
+	if s.Boundary != nil {
+		if err := s.Boundary.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LicensePlates != nil {
+		for _, item := range s.LicensePlates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

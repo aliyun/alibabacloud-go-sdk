@@ -74,5 +74,10 @@ func (s *DetectMediaMetaRequest) SetSourceURI(v string) *DetectMediaMetaRequest 
 }
 
 func (s *DetectMediaMetaRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

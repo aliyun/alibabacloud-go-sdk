@@ -20,22 +20,28 @@ type iRefreshWebofficeTokenShrinkRequest interface {
 }
 
 type RefreshWebofficeTokenShrinkRequest struct {
+	// Weboffice access token. Obtain it through the [GenerateWebofficeToken](https://help.aliyun.com/document_detail/478226.html) or [RefreshWebofficeToken](https://help.aliyun.com/document_detail/478227.html) interfaces.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 99d1b8b478b641c1b3372f5bd6********
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// **If you have no special requirements, leave this parameter empty.**
+	// **If there are no special requirements, leave it blank.**
 	//
-	// The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+	// Chained authorization configuration, optional. For more information, see [Access Other Entity Resources Using Chained Authorization](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// Project name. For more information on how to obtain it, see [Create Project](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// immtest
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// Weboffice refresh token. Obtain it through the [GenerateWebofficeToken](https://help.aliyun.com/document_detail/478226.html) or [RefreshWebofficeToken](https://help.aliyun.com/document_detail/478227.html) interfaces.
+	//
 	// This parameter is required.
 	//
 	// example:

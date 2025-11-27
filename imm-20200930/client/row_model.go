@@ -47,5 +47,14 @@ func (s *Row) SetURI(v string) *Row {
 }
 
 func (s *Row) Validate() error {
-	return dara.Validate(s)
+	if s.CustomLabels != nil {
+		for _, item := range s.CustomLabels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

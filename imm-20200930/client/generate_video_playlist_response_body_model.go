@@ -130,7 +130,34 @@ func (s *GenerateVideoPlaylistResponseBody) SetVideoPlaylist(v []*GenerateVideoP
 }
 
 func (s *GenerateVideoPlaylistResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AudioPlaylist != nil {
+		for _, item := range s.AudioPlaylist {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubtitlePlaylist != nil {
+		for _, item := range s.SubtitlePlaylist {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoPlaylist != nil {
+		for _, item := range s.VideoPlaylist {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GenerateVideoPlaylistResponseBodyAudioPlaylist struct {

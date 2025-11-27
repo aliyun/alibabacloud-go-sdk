@@ -51,5 +51,15 @@ func (s *Insights) SetVideo(v *VideoInsight) *Insights {
 }
 
 func (s *Insights) Validate() error {
-	return dara.Validate(s)
+	if s.Image != nil {
+		if err := s.Image.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Video != nil {
+		if err := s.Video.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

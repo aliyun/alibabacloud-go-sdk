@@ -59,5 +59,10 @@ func (s *AddImageMosaicResponse) SetBody(v *AddImageMosaicResponseBody) *AddImag
 }
 
 func (s *AddImageMosaicResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

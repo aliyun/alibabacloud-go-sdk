@@ -30,7 +30,7 @@ type iCreateImageModerationTaskShrinkRequest interface {
 }
 
 type CreateImageModerationTaskShrinkRequest struct {
-	// The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+	// The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// The time interval between two consecutive frames in a GIF or long image. Default value: 1.
 	//
@@ -44,7 +44,7 @@ type CreateImageModerationTaskShrinkRequest struct {
 	//
 	// 10
 	MaxFrames *int64 `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
-	// The notification settings. For more information, click Notification. For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
 	//

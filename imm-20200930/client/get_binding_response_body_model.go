@@ -53,5 +53,10 @@ func (s *GetBindingResponseBody) SetRequestId(v string) *GetBindingResponseBody 
 }
 
 func (s *GetBindingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Binding != nil {
+		if err := s.Binding.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

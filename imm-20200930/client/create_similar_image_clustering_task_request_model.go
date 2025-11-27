@@ -112,5 +112,10 @@ func (s *CreateSimilarImageClusteringTaskRequest) SetUserData(v string) *CreateS
 }
 
 func (s *CreateSimilarImageClusteringTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -131,5 +131,14 @@ func (s *ContextualFile) SetURI(v string) *ContextualFile {
 }
 
 func (s *ContextualFile) Validate() error {
-	return dara.Validate(s)
+	if s.Elements != nil {
+		for _, item := range s.Elements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

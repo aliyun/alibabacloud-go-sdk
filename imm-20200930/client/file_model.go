@@ -1033,5 +1033,114 @@ func (s *File) SetVideoWidth(v int64) *File {
 }
 
 func (s *File) Validate() error {
-	return dara.Validate(s)
+	if s.Addresses != nil {
+		for _, item := range s.Addresses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AudioCovers != nil {
+		for _, item := range s.AudioCovers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AudioStreams != nil {
+		for _, item := range s.AudioStreams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CroppingSuggestions != nil {
+		for _, item := range s.CroppingSuggestions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Elements != nil {
+		for _, item := range s.Elements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Figures != nil {
+		for _, item := range s.Figures {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ImageScore != nil {
+		if err := s.ImageScore.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Insights != nil {
+		if err := s.Insights.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OCRContents != nil {
+		for _, item := range s.OCRContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SceneElements != nil {
+		for _, item := range s.SceneElements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Subtitles != nil {
+		for _, item := range s.Subtitles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoStreams != nil {
+		for _, item := range s.VideoStreams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

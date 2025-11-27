@@ -59,6 +59,11 @@ func (s *ExtractDocumentTextResponse) SetBody(v *ExtractDocumentTextResponseBody
 }
 
 func (s *ExtractDocumentTextResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

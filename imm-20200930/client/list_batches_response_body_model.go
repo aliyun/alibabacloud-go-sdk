@@ -72,5 +72,14 @@ func (s *ListBatchesResponseBody) SetRequestId(v string) *ListBatchesResponseBod
 }
 
 func (s *ListBatchesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Batches != nil {
+		for _, item := range s.Batches {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

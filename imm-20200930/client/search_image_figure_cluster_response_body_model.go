@@ -53,7 +53,16 @@ func (s *SearchImageFigureClusterResponseBody) SetRequestId(v string) *SearchIma
 }
 
 func (s *SearchImageFigureClusterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Clusters != nil {
+		for _, item := range s.Clusters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchImageFigureClusterResponseBodyClusters struct {
@@ -109,5 +118,10 @@ func (s *SearchImageFigureClusterResponseBodyClusters) SetSimilarity(v float32) 
 }
 
 func (s *SearchImageFigureClusterResponseBodyClusters) Validate() error {
-	return dara.Validate(s)
+	if s.Boundary != nil {
+		if err := s.Boundary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

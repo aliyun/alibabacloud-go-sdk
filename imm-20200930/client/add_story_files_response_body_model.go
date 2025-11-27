@@ -53,7 +53,16 @@ func (s *AddStoryFilesResponseBody) SetRequestId(v string) *AddStoryFilesRespons
 }
 
 func (s *AddStoryFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Files != nil {
+		for _, item := range s.Files {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddStoryFilesResponseBodyFiles struct {

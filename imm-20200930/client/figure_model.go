@@ -335,5 +335,15 @@ func (s *Figure) SetSharpness(v float32) *Figure {
 }
 
 func (s *Figure) Validate() error {
-	return dara.Validate(s)
+	if s.Boundary != nil {
+		if err := s.Boundary.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HeadPose != nil {
+		if err := s.HeadPose.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

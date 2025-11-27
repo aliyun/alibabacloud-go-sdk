@@ -18,7 +18,7 @@ type iListDatasetsResponseBody interface {
 }
 
 type ListDatasetsResponseBody struct {
-	// The list of datasets.
+	// The datasets.
 	Datasets []*Dataset `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
 	// The pagination token. If the total number of datasets is greater than the value of MaxResults, you must specify this parameter. This parameter has a value only if not all the datasets that meet the conditions are returned.
 	//
@@ -72,5 +72,14 @@ func (s *ListDatasetsResponseBody) SetRequestId(v string) *ListDatasetsResponseB
 }
 
 func (s *ListDatasetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Datasets != nil {
+		for _, item := range s.Datasets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

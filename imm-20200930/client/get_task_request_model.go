@@ -28,7 +28,37 @@ type GetTaskRequest struct {
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// Specifies whether to return the initial request parameters that are used to create the task. Default value: False.
+	// Specifies whether to return original request parameters specified to create the task.
+	//
+	// 	- true
+	//
+	// 	- false (default)
+	//
+	// This parameter applies only to the following tasks:
+	//
+	// 	- MediaConvert
+	//
+	// 	- VideoLabelClassification
+	//
+	// 	- FaceClustering
+	//
+	// 	- FileCompression
+	//
+	// 	- ArchiveFileInspection
+	//
+	// 	- FileUncompression
+	//
+	// 	- PointCloudCompress
+	//
+	// 	- ImageToPDF
+	//
+	// 	- StoryCreation
+	//
+	// 	- LocationDateClustering
+	//
+	// 	- ImageSplicing
+	//
+	// 	- FacesSearching
 	//
 	// example:
 	//

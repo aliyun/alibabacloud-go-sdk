@@ -35,5 +35,10 @@ func (s *Input) SetOSS(v *InputOSS) *Input {
 }
 
 func (s *Input) Validate() error {
-	return dara.Validate(s)
+	if s.OSS != nil {
+		if err := s.OSS.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

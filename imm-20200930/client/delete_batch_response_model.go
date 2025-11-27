@@ -59,5 +59,10 @@ func (s *DeleteBatchResponse) SetBody(v *DeleteBatchResponseBody) *DeleteBatchRe
 }
 
 func (s *DeleteBatchResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

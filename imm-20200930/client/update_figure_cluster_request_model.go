@@ -76,5 +76,10 @@ func (s *UpdateFigureClusterRequest) SetProjectName(v string) *UpdateFigureClust
 }
 
 func (s *UpdateFigureClusterRequest) Validate() error {
-	return dara.Validate(s)
+	if s.FigureCluster != nil {
+		if err := s.FigureCluster.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

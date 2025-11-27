@@ -96,5 +96,10 @@ func (s *DetectImageBodiesRequest) SetSourceURI(v string) *DetectImageBodiesRequ
 }
 
 func (s *DetectImageBodiesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

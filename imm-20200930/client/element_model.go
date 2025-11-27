@@ -83,6 +83,24 @@ func (s *Element) SetSemanticSimilarity(v float32) *Element {
 }
 
 func (s *Element) Validate() error {
-  return dara.Validate(s)
+  if s.ElementContents != nil {
+    for _, item := range s.ElementContents {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.ElementRelations != nil {
+    for _, item := range s.ElementRelations {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 

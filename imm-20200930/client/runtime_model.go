@@ -49,5 +49,15 @@ func (s *Runtime) SetResource(v *Resource) *Runtime {
 }
 
 func (s *Runtime) Validate() error {
-	return dara.Validate(s)
+	if s.Hyperparameters != nil {
+		if err := s.Hyperparameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Resource != nil {
+		if err := s.Resource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

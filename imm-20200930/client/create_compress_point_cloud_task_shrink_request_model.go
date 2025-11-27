@@ -55,6 +55,8 @@ type CreateCompressPointCloudTaskShrinkRequest struct {
 	// The k-d tree compression options.
 	KdtreeOptionShrink *string `json:"KdtreeOption,omitempty" xml:"KdtreeOption,omitempty"`
 	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	//
+	// >  The IMM operation does not support a callback URL. We recommend that you use Simple Message Queue (SMQ) to receive notifications.
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	// The octree compression options.
 	OctreeOptionShrink *string `json:"OctreeOption,omitempty" xml:"OctreeOption,omitempty"`

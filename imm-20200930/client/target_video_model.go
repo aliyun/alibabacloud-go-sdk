@@ -71,7 +71,17 @@ func (s *TargetVideo) SetTranscodeVideo(v *TargetVideoTranscodeVideo) *TargetVid
 }
 
 func (s *TargetVideo) Validate() error {
-	return dara.Validate(s)
+	if s.FilterVideo != nil {
+		if err := s.FilterVideo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TranscodeVideo != nil {
+		if err := s.TranscodeVideo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TargetVideoFilterVideo struct {
@@ -126,7 +136,30 @@ func (s *TargetVideoFilterVideo) SetWatermarks(v []*TargetVideoFilterVideoWaterm
 }
 
 func (s *TargetVideoFilterVideo) Validate() error {
-	return dara.Validate(s)
+	if s.Delogos != nil {
+		for _, item := range s.Delogos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Desensitization != nil {
+		if err := s.Desensitization.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Watermarks != nil {
+		for _, item := range s.Watermarks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TargetVideoFilterVideoDelogos struct {
@@ -246,7 +279,17 @@ func (s *TargetVideoFilterVideoDesensitization) SetLicensePlate(v *TargetVideoFi
 }
 
 func (s *TargetVideoFilterVideoDesensitization) Validate() error {
-	return dara.Validate(s)
+	if s.Face != nil {
+		if err := s.Face.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LicensePlate != nil {
+		if err := s.LicensePlate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TargetVideoFilterVideoDesensitizationFace struct {
@@ -512,6 +555,7 @@ type TargetVideoTranscodeVideo struct {
 	ResolutionOption            *string  `json:"ResolutionOption,omitempty" xml:"ResolutionOption,omitempty"`
 	Rotation                    *int32   `json:"Rotation,omitempty" xml:"Rotation,omitempty"`
 	ScaleType                   *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	VideoSlim                   *int32   `json:"VideoSlim,omitempty" xml:"VideoSlim,omitempty"`
 }
 
 func (s TargetVideoTranscodeVideo) String() string {
@@ -588,6 +632,10 @@ func (s *TargetVideoTranscodeVideo) GetRotation() *int32 {
 
 func (s *TargetVideoTranscodeVideo) GetScaleType() *string {
 	return s.ScaleType
+}
+
+func (s *TargetVideoTranscodeVideo) GetVideoSlim() *int32 {
+	return s.VideoSlim
 }
 
 func (s *TargetVideoTranscodeVideo) SetAdaptiveResolutionDirection(v bool) *TargetVideoTranscodeVideo {
@@ -672,6 +720,11 @@ func (s *TargetVideoTranscodeVideo) SetRotation(v int32) *TargetVideoTranscodeVi
 
 func (s *TargetVideoTranscodeVideo) SetScaleType(v string) *TargetVideoTranscodeVideo {
 	s.ScaleType = &v
+	return s
+}
+
+func (s *TargetVideoTranscodeVideo) SetVideoSlim(v int32) *TargetVideoTranscodeVideo {
+	s.VideoSlim = &v
 	return s
 }
 

@@ -59,5 +59,10 @@ func (s *DetectImageFacesResponse) SetBody(v *DetectImageFacesResponseBody) *Det
 }
 
 func (s *DetectImageFacesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
