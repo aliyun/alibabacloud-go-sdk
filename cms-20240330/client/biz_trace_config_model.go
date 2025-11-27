@@ -28,14 +28,38 @@ type iBizTraceConfig interface {
 }
 
 type BizTraceConfig struct {
+	// example:
+	//
+	// {"sample":{"strategy":"BY_APP"}}
 	AdvancedConfig *string `json:"advancedConfig,omitempty" xml:"advancedConfig,omitempty"`
-	BizTraceCode   *string `json:"bizTraceCode,omitempty" xml:"bizTraceCode,omitempty"`
-	BizTraceId     *string `json:"bizTraceId,omitempty" xml:"bizTraceId,omitempty"`
-	BizTraceName   *string `json:"bizTraceName,omitempty" xml:"bizTraceName,omitempty"`
-	CreateTime     *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	RegionId       *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	RuleConfig     *string `json:"ruleConfig,omitempty" xml:"ruleConfig,omitempty"`
-	Workspace      *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// example:
+	//
+	// label_env
+	BizTraceCode *string `json:"bizTraceCode,omitempty" xml:"bizTraceCode,omitempty"`
+	// example:
+	//
+	// e339260ed64c95d
+	BizTraceId *string `json:"bizTraceId,omitempty" xml:"bizTraceId,omitempty"`
+	// example:
+	//
+	// just test
+	BizTraceName *string `json:"bizTraceName,omitempty" xml:"bizTraceName,omitempty"`
+	// example:
+	//
+	// 2025-12-12 00:00:00
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// [{"entrancePid":"xxxxx@b57c44xx6e86","rpcMatcher":{"matchType":"EQUALS","pattern":"/createApp"},"characteristics":{"operation":"AND","rules":[{"target":"CUSTOM_EXTRACT","matcher":{"matchType":"CONTAINS","pattern":[]}}]}}]
+	RuleConfig *string `json:"ruleConfig,omitempty" xml:"ruleConfig,omitempty"`
+	// example:
+	//
+	// default-cms-xxxxxxx-cn-hangzhou
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s BizTraceConfig) String() string {

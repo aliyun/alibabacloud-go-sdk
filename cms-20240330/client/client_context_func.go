@@ -209,6 +209,69 @@ func (client *Client) CreateAggTaskGroupWithContext(ctx context.Context, instanc
 
 // Summary:
 //
+// 创建业务链路
+//
+// @param request - CreateBizTraceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBizTraceResponse
+func (client *Client) CreateBizTraceWithContext(ctx context.Context, request *CreateBizTraceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateBizTraceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AdvancedConfig) {
+		body["advancedConfig"] = request.AdvancedConfig
+	}
+
+	if !dara.IsNil(request.BizTraceCode) {
+		body["bizTraceCode"] = request.BizTraceCode
+	}
+
+	if !dara.IsNil(request.BizTraceName) {
+		body["bizTraceName"] = request.BizTraceName
+	}
+
+	if !dara.IsNil(request.RuleConfig) {
+		body["ruleConfig"] = request.RuleConfig
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		body["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateBizTrace"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/bizTrace"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateBizTraceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建云资源中心
 //
 // @param headers - map
@@ -836,6 +899,39 @@ func (client *Client) DeleteAggTaskGroupWithContext(ctx context.Context, instanc
 
 // Summary:
 //
+// 删除业务链路
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBizTraceResponse
+func (client *Client) DeleteBizTraceWithContext(ctx context.Context, bizTraceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteBizTraceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteBizTrace"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/bizTrace/" + dara.PercentEncode(dara.StringValue(bizTraceId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteBizTraceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除云资源中心
 //
 // @param headers - map
@@ -1279,6 +1375,112 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
+// 插件详情(Addon)
+//
+// @param request - GetAddonRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAddonResponse
+func (client *Client) GetAddonWithContext(ctx context.Context, addonName *string, request *GetAddonRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAddonResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AliyunLang) {
+		query["aliyunLang"] = request.AliyunLang
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAddon"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/addons/" + dara.PercentEncode(dara.StringValue(addonName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAddonResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 插件schema详情(Addon)
+//
+// @param request - GetAddonCodeTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAddonCodeTemplateResponse
+func (client *Client) GetAddonCodeTemplateWithContext(ctx context.Context, addonName *string, request *GetAddonCodeTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAddonCodeTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AliyunLang) {
+		query["aliyunLang"] = request.AliyunLang
+	}
+
+	if !dara.IsNil(request.EnvironmentType) {
+		query["environmentType"] = request.EnvironmentType
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAddonCodeTemplate"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/addons/" + dara.PercentEncode(dara.StringValue(addonName)) + "/alert-code-template"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAddonCodeTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Check addon release (view connection status)
 //
 // @param headers - map
@@ -1312,6 +1514,61 @@ func (client *Client) GetAddonReleaseWithContext(ctx context.Context, releaseNam
 
 // Summary:
 //
+// 插件schema详情(Addon)
+//
+// @param request - GetAddonSchemaRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAddonSchemaResponse
+func (client *Client) GetAddonSchemaWithContext(ctx context.Context, addonName *string, request *GetAddonSchemaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAddonSchemaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AliyunLang) {
+		query["aliyunLang"] = request.AliyunLang
+	}
+
+	if !dara.IsNil(request.EnvironmentType) {
+		query["environmentType"] = request.EnvironmentType
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAddonSchema"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/addons/" + dara.PercentEncode(dara.StringValue(addonName)) + "/schema"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAddonSchemaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Describes the aggregation task group
 //
 // @param headers - map
@@ -1335,6 +1592,39 @@ func (client *Client) GetAggTaskGroupWithContext(ctx context.Context, instanceId
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAggTaskGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询业务链路
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBizTraceResponse
+func (client *Client) GetBizTraceWithContext(ctx context.Context, bizTraceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetBizTraceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetBizTrace"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/bizTrace/" + dara.PercentEncode(dara.StringValue(bizTraceId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetBizTraceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1604,6 +1894,57 @@ func (client *Client) GetIntegrationPolicyWithContext(ctx context.Context, polic
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetIntegrationPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询接入中心在CS的版本
+//
+// @param request - GetIntegrationVersionForCSRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIntegrationVersionForCSResponse
+func (client *Client) GetIntegrationVersionForCSWithContext(ctx context.Context, request *GetIntegrationVersionForCSRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetIntegrationVersionForCSResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["clusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.ClusterType) {
+		query["clusterType"] = request.ClusterType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetIntegrationVersionForCS"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-version/cs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetIntegrationVersionForCSResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2052,6 +2393,65 @@ func (client *Client) ListAddonReleasesWithContext(ctx context.Context, policyId
 
 // Summary:
 //
+// 新版接入中心产品列表(分组)
+//
+// @param request - ListAddonsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAddonsResponse
+func (client *Client) ListAddonsWithContext(ctx context.Context, request *ListAddonsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAddonsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AliyunLang) {
+		query["aliyunLang"] = request.AliyunLang
+	}
+
+	if !dara.IsNil(request.Category) {
+		query["category"] = request.Category
+	}
+
+	if !dara.IsNil(request.Regexp) {
+		query["regexp"] = request.Regexp
+	}
+
+	if !dara.IsNil(request.Search) {
+		query["search"] = request.Search
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAddons"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/addons"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAddonsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # List Aggregation Task Groups
 //
 // @param tmpReq - ListAggTaskGroupsRequest
@@ -2202,6 +2602,61 @@ func (client *Client) ListAlertActionsWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
+// 业务链路列表
+//
+// @param request - ListBizTracesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBizTracesResponse
+func (client *Client) ListBizTracesWithContext(ctx context.Context, request *ListBizTracesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListBizTracesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListBizTraces"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/bizTraces"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListBizTracesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query Access Center Policy List Information
 //
 // Description:
@@ -2301,6 +2756,94 @@ func (client *Client) ListIntegrationPoliciesWithContext(ctx context.Context, tm
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIntegrationPoliciesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 策略addon列表
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIntegrationPolicyAddonsResponse
+func (client *Client) ListIntegrationPolicyAddonsWithContext(ctx context.Context, policyId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIntegrationPolicyAddonsResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIntegrationPolicyAddons"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-policies/" + dara.PercentEncode(dara.StringValue(policyId)) + "/addons"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIntegrationPolicyAddonsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取接入中心策略的存储要求信息
+//
+// @param request - ListIntegrationPolicyCollectorsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIntegrationPolicyCollectorsResponse
+func (client *Client) ListIntegrationPolicyCollectorsWithContext(ctx context.Context, policyId *string, request *ListIntegrationPolicyCollectorsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIntegrationPolicyCollectorsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddonReleaseName) {
+		query["addonReleaseName"] = request.AddonReleaseName
+	}
+
+	if !dara.IsNil(request.CollectorType) {
+		query["collectorType"] = request.CollectorType
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["language"] = request.Language
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIntegrationPolicyCollectors"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-policies/" + dara.PercentEncode(dara.StringValue(policyId)) + "/collectors"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIntegrationPolicyCollectorsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3270,6 +3813,65 @@ func (client *Client) UpdateAggTaskGroupStatusWithContext(ctx context.Context, i
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAggTaskGroupStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改业务链路
+//
+// @param request - UpdateBizTraceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateBizTraceResponse
+func (client *Client) UpdateBizTraceWithContext(ctx context.Context, bizTraceId *string, request *UpdateBizTraceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateBizTraceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AdvancedConfig) {
+		body["advancedConfig"] = request.AdvancedConfig
+	}
+
+	if !dara.IsNil(request.BizTraceName) {
+		body["bizTraceName"] = request.BizTraceName
+	}
+
+	if !dara.IsNil(request.RuleConfig) {
+		body["ruleConfig"] = request.RuleConfig
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		body["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateBizTrace"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/bizTrace/" + dara.PercentEncode(dara.StringValue(bizTraceId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateBizTraceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
