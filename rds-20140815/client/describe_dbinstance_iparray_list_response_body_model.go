@@ -1,0 +1,173 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iDescribeDBInstanceIPArrayListResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetItems(v *DescribeDBInstanceIPArrayListResponseBodyItems) *DescribeDBInstanceIPArrayListResponseBody
+	GetItems() *DescribeDBInstanceIPArrayListResponseBodyItems
+	SetRequestId(v string) *DescribeDBInstanceIPArrayListResponseBody
+	GetRequestId() *string
+}
+
+type DescribeDBInstanceIPArrayListResponseBody struct {
+	// An array that consists of the details about the IP address whitelists.
+	Items *DescribeDBInstanceIPArrayListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// E2B6AF71-DC32-4055-B477-43B348798D10
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDBInstanceIPArrayListResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBInstanceIPArrayListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceIPArrayListResponseBody) GetItems() *DescribeDBInstanceIPArrayListResponseBodyItems {
+	return s.Items
+}
+
+func (s *DescribeDBInstanceIPArrayListResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *DescribeDBInstanceIPArrayListResponseBody) SetItems(v *DescribeDBInstanceIPArrayListResponseBodyItems) *DescribeDBInstanceIPArrayListResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeDBInstanceIPArrayListResponseBody) SetRequestId(v string) *DescribeDBInstanceIPArrayListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIPArrayListResponseBody) Validate() error {
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeDBInstanceIPArrayListResponseBodyItems struct {
+	DBInstanceIPArray []*DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray `json:"DBInstanceIPArray,omitempty" xml:"DBInstanceIPArray,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBInstanceIPArrayListResponseBodyItems) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBInstanceIPArrayListResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceIPArrayListResponseBodyItems) GetDBInstanceIPArray() []*DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray {
+	return s.DBInstanceIPArray
+}
+
+func (s *DescribeDBInstanceIPArrayListResponseBodyItems) SetDBInstanceIPArray(v []*DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) *DescribeDBInstanceIPArrayListResponseBodyItems {
+	s.DBInstanceIPArray = v
+	return s
+}
+
+func (s *DescribeDBInstanceIPArrayListResponseBodyItems) Validate() error {
+	if s.DBInstanceIPArray != nil {
+		for _, item := range s.DBInstanceIPArray {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray struct {
+	// The attribute of the IP address whitelist. By default, this parameter is empty.
+	//
+	// >  A whitelist with the hidden attribute does not appear in the console. Such IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
+	//
+	// example:
+	//
+	// hidden
+	DBInstanceIPArrayAttribute *string `json:"DBInstanceIPArrayAttribute,omitempty" xml:"DBInstanceIPArrayAttribute,omitempty"`
+	// The name of the IP address whitelist.
+	//
+	// example:
+	//
+	// rds_default
+	DBInstanceIPArrayName *string `json:"DBInstanceIPArrayName,omitempty" xml:"DBInstanceIPArrayName,omitempty"`
+	// The IP addresses in the IP address whitelist.
+	//
+	// example:
+	//
+	// 192.168.1.0/24
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The type of the IP address.
+	//
+	// example:
+	//
+	// IPv4
+	SecurityIPType *string `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
+}
+
+func (s DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) GetDBInstanceIPArrayAttribute() *string {
+	return s.DBInstanceIPArrayAttribute
+}
+
+func (s *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) GetDBInstanceIPArrayName() *string {
+	return s.DBInstanceIPArrayName
+}
+
+func (s *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) GetSecurityIPList() *string {
+	return s.SecurityIPList
+}
+
+func (s *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) GetSecurityIPType() *string {
+	return s.SecurityIPType
+}
+
+func (s *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) SetDBInstanceIPArrayAttribute(v string) *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray {
+	s.DBInstanceIPArrayAttribute = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) SetDBInstanceIPArrayName(v string) *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray {
+	s.DBInstanceIPArrayName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) SetSecurityIPList(v string) *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray {
+	s.SecurityIPList = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) SetSecurityIPType(v string) *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray {
+	s.SecurityIPType = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray) Validate() error {
+	return dara.Validate(s)
+}

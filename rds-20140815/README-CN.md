@@ -10,7 +10,7 @@
 ## 安装
 你可以使用 `go mod` 来管理你的依赖，
 ```sh
-  go get github.com/alibabacloud-go/rds-20140815/v13
+  go get github.com/alibabacloud-go/rds-20140815/v14
 ```
 
 ## 问题
