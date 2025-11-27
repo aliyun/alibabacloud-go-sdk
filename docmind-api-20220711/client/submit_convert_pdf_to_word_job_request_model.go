@@ -9,6 +9,8 @@ type iSubmitConvertPdfToWordJobRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEnableEventCallback(v bool) *SubmitConvertPdfToWordJobRequest
+	GetEnableEventCallback() *bool
 	SetFileName(v string) *SubmitConvertPdfToWordJobRequest
 	GetFileName() *string
 	SetFileUrl(v string) *SubmitConvertPdfToWordJobRequest
@@ -26,6 +28,7 @@ type iSubmitConvertPdfToWordJobRequest interface {
 }
 
 type SubmitConvertPdfToWordJobRequest struct {
+	EnableEventCallback *bool `json:"EnableEventCallback,omitempty" xml:"EnableEventCallback,omitempty"`
 	// example:
 	//
 	// covertPdfToWord.pdf
@@ -47,6 +50,10 @@ func (s SubmitConvertPdfToWordJobRequest) String() string {
 
 func (s SubmitConvertPdfToWordJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitConvertPdfToWordJobRequest) GetEnableEventCallback() *bool {
+	return s.EnableEventCallback
 }
 
 func (s *SubmitConvertPdfToWordJobRequest) GetFileName() *string {
@@ -75,6 +82,11 @@ func (s *SubmitConvertPdfToWordJobRequest) GetOssBucket() *string {
 
 func (s *SubmitConvertPdfToWordJobRequest) GetOssEndpoint() *string {
 	return s.OssEndpoint
+}
+
+func (s *SubmitConvertPdfToWordJobRequest) SetEnableEventCallback(v bool) *SubmitConvertPdfToWordJobRequest {
+	s.EnableEventCallback = &v
+	return s
 }
 
 func (s *SubmitConvertPdfToWordJobRequest) SetFileName(v string) *SubmitConvertPdfToWordJobRequest {

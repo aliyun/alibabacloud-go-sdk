@@ -9,6 +9,8 @@ type iSubmitConvertImageToExcelJobShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEnableEventCallback(v bool) *SubmitConvertImageToExcelJobShrinkRequest
+	GetEnableEventCallback() *bool
 	SetForceMergeExcel(v bool) *SubmitConvertImageToExcelJobShrinkRequest
 	GetForceMergeExcel() *bool
 	SetImageNameExtension(v string) *SubmitConvertImageToExcelJobShrinkRequest
@@ -24,7 +26,8 @@ type iSubmitConvertImageToExcelJobShrinkRequest interface {
 }
 
 type SubmitConvertImageToExcelJobShrinkRequest struct {
-	ForceMergeExcel *bool `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
+	EnableEventCallback *bool `json:"EnableEventCallback,omitempty" xml:"EnableEventCallback,omitempty"`
+	ForceMergeExcel     *bool `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
 	// example:
 	//
 	// jpg
@@ -41,6 +44,10 @@ func (s SubmitConvertImageToExcelJobShrinkRequest) String() string {
 
 func (s SubmitConvertImageToExcelJobShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitConvertImageToExcelJobShrinkRequest) GetEnableEventCallback() *bool {
+	return s.EnableEventCallback
 }
 
 func (s *SubmitConvertImageToExcelJobShrinkRequest) GetForceMergeExcel() *bool {
@@ -65,6 +72,11 @@ func (s *SubmitConvertImageToExcelJobShrinkRequest) GetOssBucket() *string {
 
 func (s *SubmitConvertImageToExcelJobShrinkRequest) GetOssEndpoint() *string {
 	return s.OssEndpoint
+}
+
+func (s *SubmitConvertImageToExcelJobShrinkRequest) SetEnableEventCallback(v bool) *SubmitConvertImageToExcelJobShrinkRequest {
+	s.EnableEventCallback = &v
+	return s
 }
 
 func (s *SubmitConvertImageToExcelJobShrinkRequest) SetForceMergeExcel(v bool) *SubmitConvertImageToExcelJobShrinkRequest {

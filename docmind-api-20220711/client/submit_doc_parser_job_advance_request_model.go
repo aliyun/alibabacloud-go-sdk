@@ -12,6 +12,8 @@ type iSubmitDocParserJobAdvanceRequest interface {
 	GoString() string
 	SetCustomOssConfig(v *SubmitDocParserJobAdvanceRequestCustomOssConfig) *SubmitDocParserJobAdvanceRequest
 	GetCustomOssConfig() *SubmitDocParserJobAdvanceRequestCustomOssConfig
+	SetEnableEventCallback(v bool) *SubmitDocParserJobAdvanceRequest
+	GetEnableEventCallback() *bool
 	SetEnhancementMode(v string) *SubmitDocParserJobAdvanceRequest
 	GetEnhancementMode() *string
 	SetFileName(v string) *SubmitDocParserJobAdvanceRequest
@@ -43,8 +45,9 @@ type iSubmitDocParserJobAdvanceRequest interface {
 }
 
 type SubmitDocParserJobAdvanceRequest struct {
-	CustomOssConfig *SubmitDocParserJobAdvanceRequestCustomOssConfig `json:"CustomOssConfig,omitempty" xml:"CustomOssConfig,omitempty" type:"Struct"`
-	EnhancementMode *string                                          `json:"EnhancementMode,omitempty" xml:"EnhancementMode,omitempty"`
+	CustomOssConfig     *SubmitDocParserJobAdvanceRequestCustomOssConfig `json:"CustomOssConfig,omitempty" xml:"CustomOssConfig,omitempty" type:"Struct"`
+	EnableEventCallback *bool                                            `json:"EnableEventCallback,omitempty" xml:"EnableEventCallback,omitempty"`
+	EnhancementMode     *string                                          `json:"EnhancementMode,omitempty" xml:"EnhancementMode,omitempty"`
 	// example:
 	//
 	// docStructure.pdf
@@ -79,6 +82,10 @@ func (s SubmitDocParserJobAdvanceRequest) GoString() string {
 
 func (s *SubmitDocParserJobAdvanceRequest) GetCustomOssConfig() *SubmitDocParserJobAdvanceRequestCustomOssConfig {
 	return s.CustomOssConfig
+}
+
+func (s *SubmitDocParserJobAdvanceRequest) GetEnableEventCallback() *bool {
+	return s.EnableEventCallback
 }
 
 func (s *SubmitDocParserJobAdvanceRequest) GetEnhancementMode() *string {
@@ -139,6 +146,11 @@ func (s *SubmitDocParserJobAdvanceRequest) GetPageIndex() *string {
 
 func (s *SubmitDocParserJobAdvanceRequest) SetCustomOssConfig(v *SubmitDocParserJobAdvanceRequestCustomOssConfig) *SubmitDocParserJobAdvanceRequest {
 	s.CustomOssConfig = v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequest) SetEnableEventCallback(v bool) *SubmitDocParserJobAdvanceRequest {
+	s.EnableEventCallback = &v
 	return s
 }
 

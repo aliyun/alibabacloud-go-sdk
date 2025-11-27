@@ -10,6 +10,8 @@ type iSubmitConvertPdfToExcelJobAdvanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEnableEventCallback(v bool) *SubmitConvertPdfToExcelJobAdvanceRequest
+	GetEnableEventCallback() *bool
 	SetFileName(v string) *SubmitConvertPdfToExcelJobAdvanceRequest
 	GetFileName() *string
 	SetFileUrlObject(v io.Reader) *SubmitConvertPdfToExcelJobAdvanceRequest
@@ -25,6 +27,7 @@ type iSubmitConvertPdfToExcelJobAdvanceRequest interface {
 }
 
 type SubmitConvertPdfToExcelJobAdvanceRequest struct {
+	EnableEventCallback *bool `json:"EnableEventCallback,omitempty" xml:"EnableEventCallback,omitempty"`
 	// example:
 	//
 	// convertPdfToExcel.pdf
@@ -45,6 +48,10 @@ func (s SubmitConvertPdfToExcelJobAdvanceRequest) String() string {
 
 func (s SubmitConvertPdfToExcelJobAdvanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitConvertPdfToExcelJobAdvanceRequest) GetEnableEventCallback() *bool {
+	return s.EnableEventCallback
 }
 
 func (s *SubmitConvertPdfToExcelJobAdvanceRequest) GetFileName() *string {
@@ -69,6 +76,11 @@ func (s *SubmitConvertPdfToExcelJobAdvanceRequest) GetOssBucket() *string {
 
 func (s *SubmitConvertPdfToExcelJobAdvanceRequest) GetOssEndpoint() *string {
 	return s.OssEndpoint
+}
+
+func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetEnableEventCallback(v bool) *SubmitConvertPdfToExcelJobAdvanceRequest {
+	s.EnableEventCallback = &v
+	return s
 }
 
 func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetFileName(v string) *SubmitConvertPdfToExcelJobAdvanceRequest {

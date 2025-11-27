@@ -11,6 +11,8 @@ type iSubmitDocParserJobShrinkRequest interface {
 	GoString() string
 	SetCustomOssConfigShrink(v string) *SubmitDocParserJobShrinkRequest
 	GetCustomOssConfigShrink() *string
+	SetEnableEventCallback(v bool) *SubmitDocParserJobShrinkRequest
+	GetEnableEventCallback() *bool
 	SetEnhancementMode(v string) *SubmitDocParserJobShrinkRequest
 	GetEnhancementMode() *string
 	SetFileName(v string) *SubmitDocParserJobShrinkRequest
@@ -43,6 +45,7 @@ type iSubmitDocParserJobShrinkRequest interface {
 
 type SubmitDocParserJobShrinkRequest struct {
 	CustomOssConfigShrink *string `json:"CustomOssConfig,omitempty" xml:"CustomOssConfig,omitempty"`
+	EnableEventCallback   *bool   `json:"EnableEventCallback,omitempty" xml:"EnableEventCallback,omitempty"`
 	EnhancementMode       *string `json:"EnhancementMode,omitempty" xml:"EnhancementMode,omitempty"`
 	// example:
 	//
@@ -78,6 +81,10 @@ func (s SubmitDocParserJobShrinkRequest) GoString() string {
 
 func (s *SubmitDocParserJobShrinkRequest) GetCustomOssConfigShrink() *string {
 	return s.CustomOssConfigShrink
+}
+
+func (s *SubmitDocParserJobShrinkRequest) GetEnableEventCallback() *bool {
+	return s.EnableEventCallback
 }
 
 func (s *SubmitDocParserJobShrinkRequest) GetEnhancementMode() *string {
@@ -138,6 +145,11 @@ func (s *SubmitDocParserJobShrinkRequest) GetPageIndex() *string {
 
 func (s *SubmitDocParserJobShrinkRequest) SetCustomOssConfigShrink(v string) *SubmitDocParserJobShrinkRequest {
 	s.CustomOssConfigShrink = &v
+	return s
+}
+
+func (s *SubmitDocParserJobShrinkRequest) SetEnableEventCallback(v bool) *SubmitDocParserJobShrinkRequest {
+	s.EnableEventCallback = &v
 	return s
 }
 

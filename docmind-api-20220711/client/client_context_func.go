@@ -482,6 +482,10 @@ func (client *Client) SubmitConvertImageToExcelJobWithContext(ctx context.Contex
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableEventCallback) {
+		query["EnableEventCallback"] = request.EnableEventCallback
+	}
+
 	if !dara.IsNil(request.ForceMergeExcel) {
 		query["ForceMergeExcel"] = request.ForceMergeExcel
 	}
@@ -626,6 +630,10 @@ func (client *Client) SubmitConvertImageToPdfJobWithContext(ctx context.Context,
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableEventCallback) {
+		query["EnableEventCallback"] = request.EnableEventCallback
+	}
+
 	if !dara.IsNil(request.ImageNameExtension) {
 		query["ImageNameExtension"] = request.ImageNameExtension
 	}
@@ -696,6 +704,10 @@ func (client *Client) SubmitConvertImageToWordJobWithContext(ctx context.Context
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableEventCallback) {
+		query["EnableEventCallback"] = request.EnableEventCallback
+	}
+
 	if !dara.IsNil(request.ImageNameExtension) {
 		query["ImageNameExtension"] = request.ImageNameExtension
 	}
@@ -756,6 +768,10 @@ func (client *Client) SubmitConvertPdfToExcelJobWithContext(ctx context.Context,
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableEventCallback) {
+		query["EnableEventCallback"] = request.EnableEventCallback
+	}
+
 	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}
@@ -820,6 +836,10 @@ func (client *Client) SubmitConvertPdfToImageJobWithContext(ctx context.Context,
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableEventCallback) {
+		query["EnableEventCallback"] = request.EnableEventCallback
+	}
+
 	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}
@@ -932,6 +952,10 @@ func (client *Client) SubmitConvertPdfToWordJobWithContext(ctx context.Context, 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableEventCallback) {
+		query["EnableEventCallback"] = request.EnableEventCallback
+	}
+
 	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}
@@ -1090,6 +1114,10 @@ func (client *Client) SubmitDocParserJobWithContext(ctx context.Context, tmpReq 
 		query["CustomOssConfig"] = request.CustomOssConfigShrink
 	}
 
+	if !dara.IsNil(request.EnableEventCallback) {
+		query["EnableEventCallback"] = request.EnableEventCallback
+	}
+
 	if !dara.IsNil(request.EnhancementMode) {
 		query["EnhancementMode"] = request.EnhancementMode
 	}
@@ -1188,6 +1216,10 @@ func (client *Client) SubmitDocStructureJobWithContext(ctx context.Context, requ
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllowPptFormat) {
 		query["AllowPptFormat"] = request.AllowPptFormat
+	}
+
+	if !dara.IsNil(request.EnableEventCallback) {
+		query["EnableEventCallback"] = request.EnableEventCallback
 	}
 
 	if !dara.IsNil(request.FileName) {

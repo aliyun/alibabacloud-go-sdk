@@ -9,6 +9,8 @@ type iSubmitConvertImageToWordJobShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEnableEventCallback(v bool) *SubmitConvertImageToWordJobShrinkRequest
+	GetEnableEventCallback() *bool
 	SetImageNameExtension(v string) *SubmitConvertImageToWordJobShrinkRequest
 	GetImageNameExtension() *string
 	SetImageNamesShrink(v string) *SubmitConvertImageToWordJobShrinkRequest
@@ -22,6 +24,7 @@ type iSubmitConvertImageToWordJobShrinkRequest interface {
 }
 
 type SubmitConvertImageToWordJobShrinkRequest struct {
+	EnableEventCallback *bool `json:"EnableEventCallback,omitempty" xml:"EnableEventCallback,omitempty"`
 	// example:
 	//
 	// jpg
@@ -38,6 +41,10 @@ func (s SubmitConvertImageToWordJobShrinkRequest) String() string {
 
 func (s SubmitConvertImageToWordJobShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitConvertImageToWordJobShrinkRequest) GetEnableEventCallback() *bool {
+	return s.EnableEventCallback
 }
 
 func (s *SubmitConvertImageToWordJobShrinkRequest) GetImageNameExtension() *string {
@@ -58,6 +65,11 @@ func (s *SubmitConvertImageToWordJobShrinkRequest) GetOssBucket() *string {
 
 func (s *SubmitConvertImageToWordJobShrinkRequest) GetOssEndpoint() *string {
 	return s.OssEndpoint
+}
+
+func (s *SubmitConvertImageToWordJobShrinkRequest) SetEnableEventCallback(v bool) *SubmitConvertImageToWordJobShrinkRequest {
+	s.EnableEventCallback = &v
+	return s
 }
 
 func (s *SubmitConvertImageToWordJobShrinkRequest) SetImageNameExtension(v string) *SubmitConvertImageToWordJobShrinkRequest {

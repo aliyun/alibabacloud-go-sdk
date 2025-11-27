@@ -11,6 +11,8 @@ type iSubmitDocStructureJobRequest interface {
 	GoString() string
 	SetAllowPptFormat(v bool) *SubmitDocStructureJobRequest
 	GetAllowPptFormat() *bool
+	SetEnableEventCallback(v bool) *SubmitDocStructureJobRequest
+	GetEnableEventCallback() *bool
 	SetFileName(v string) *SubmitDocStructureJobRequest
 	GetFileName() *string
 	SetFileNameExtension(v string) *SubmitDocStructureJobRequest
@@ -30,7 +32,8 @@ type iSubmitDocStructureJobRequest interface {
 }
 
 type SubmitDocStructureJobRequest struct {
-	AllowPptFormat *bool `json:"AllowPptFormat,omitempty" xml:"AllowPptFormat,omitempty"`
+	AllowPptFormat      *bool `json:"AllowPptFormat,omitempty" xml:"AllowPptFormat,omitempty"`
+	EnableEventCallback *bool `json:"EnableEventCallback,omitempty" xml:"EnableEventCallback,omitempty"`
 	// example:
 	//
 	// docStructure.pdf
@@ -60,6 +63,10 @@ func (s SubmitDocStructureJobRequest) GoString() string {
 
 func (s *SubmitDocStructureJobRequest) GetAllowPptFormat() *bool {
 	return s.AllowPptFormat
+}
+
+func (s *SubmitDocStructureJobRequest) GetEnableEventCallback() *bool {
+	return s.EnableEventCallback
 }
 
 func (s *SubmitDocStructureJobRequest) GetFileName() *string {
@@ -96,6 +103,11 @@ func (s *SubmitDocStructureJobRequest) GetStructureType() *string {
 
 func (s *SubmitDocStructureJobRequest) SetAllowPptFormat(v bool) *SubmitDocStructureJobRequest {
 	s.AllowPptFormat = &v
+	return s
+}
+
+func (s *SubmitDocStructureJobRequest) SetEnableEventCallback(v bool) *SubmitDocStructureJobRequest {
+	s.EnableEventCallback = &v
 	return s
 }
 

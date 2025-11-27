@@ -10,6 +10,8 @@ type iSubmitConvertPdfToImageJobAdvanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEnableEventCallback(v bool) *SubmitConvertPdfToImageJobAdvanceRequest
+	GetEnableEventCallback() *bool
 	SetFileName(v string) *SubmitConvertPdfToImageJobAdvanceRequest
 	GetFileName() *string
 	SetFileUrlObject(v io.Reader) *SubmitConvertPdfToImageJobAdvanceRequest
@@ -21,6 +23,7 @@ type iSubmitConvertPdfToImageJobAdvanceRequest interface {
 }
 
 type SubmitConvertPdfToImageJobAdvanceRequest struct {
+	EnableEventCallback *bool `json:"EnableEventCallback,omitempty" xml:"EnableEventCallback,omitempty"`
 	// example:
 	//
 	// convertPdfToImage.pdf
@@ -41,6 +44,10 @@ func (s SubmitConvertPdfToImageJobAdvanceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SubmitConvertPdfToImageJobAdvanceRequest) GetEnableEventCallback() *bool {
+	return s.EnableEventCallback
+}
+
 func (s *SubmitConvertPdfToImageJobAdvanceRequest) GetFileName() *string {
 	return s.FileName
 }
@@ -55,6 +62,11 @@ func (s *SubmitConvertPdfToImageJobAdvanceRequest) GetOssBucket() *string {
 
 func (s *SubmitConvertPdfToImageJobAdvanceRequest) GetOssEndpoint() *string {
 	return s.OssEndpoint
+}
+
+func (s *SubmitConvertPdfToImageJobAdvanceRequest) SetEnableEventCallback(v bool) *SubmitConvertPdfToImageJobAdvanceRequest {
+	s.EnableEventCallback = &v
+	return s
 }
 
 func (s *SubmitConvertPdfToImageJobAdvanceRequest) SetFileName(v string) *SubmitConvertPdfToImageJobAdvanceRequest {

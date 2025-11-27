@@ -11,6 +11,8 @@ type iSubmitDocParserJobRequest interface {
 	GoString() string
 	SetCustomOssConfig(v *SubmitDocParserJobRequestCustomOssConfig) *SubmitDocParserJobRequest
 	GetCustomOssConfig() *SubmitDocParserJobRequestCustomOssConfig
+	SetEnableEventCallback(v bool) *SubmitDocParserJobRequest
+	GetEnableEventCallback() *bool
 	SetEnhancementMode(v string) *SubmitDocParserJobRequest
 	GetEnhancementMode() *string
 	SetFileName(v string) *SubmitDocParserJobRequest
@@ -42,8 +44,9 @@ type iSubmitDocParserJobRequest interface {
 }
 
 type SubmitDocParserJobRequest struct {
-	CustomOssConfig *SubmitDocParserJobRequestCustomOssConfig `json:"CustomOssConfig,omitempty" xml:"CustomOssConfig,omitempty" type:"Struct"`
-	EnhancementMode *string                                   `json:"EnhancementMode,omitempty" xml:"EnhancementMode,omitempty"`
+	CustomOssConfig     *SubmitDocParserJobRequestCustomOssConfig `json:"CustomOssConfig,omitempty" xml:"CustomOssConfig,omitempty" type:"Struct"`
+	EnableEventCallback *bool                                     `json:"EnableEventCallback,omitempty" xml:"EnableEventCallback,omitempty"`
+	EnhancementMode     *string                                   `json:"EnhancementMode,omitempty" xml:"EnhancementMode,omitempty"`
 	// example:
 	//
 	// docStructure.pdf
@@ -78,6 +81,10 @@ func (s SubmitDocParserJobRequest) GoString() string {
 
 func (s *SubmitDocParserJobRequest) GetCustomOssConfig() *SubmitDocParserJobRequestCustomOssConfig {
 	return s.CustomOssConfig
+}
+
+func (s *SubmitDocParserJobRequest) GetEnableEventCallback() *bool {
+	return s.EnableEventCallback
 }
 
 func (s *SubmitDocParserJobRequest) GetEnhancementMode() *string {
@@ -138,6 +145,11 @@ func (s *SubmitDocParserJobRequest) GetPageIndex() *string {
 
 func (s *SubmitDocParserJobRequest) SetCustomOssConfig(v *SubmitDocParserJobRequestCustomOssConfig) *SubmitDocParserJobRequest {
 	s.CustomOssConfig = v
+	return s
+}
+
+func (s *SubmitDocParserJobRequest) SetEnableEventCallback(v bool) *SubmitDocParserJobRequest {
+	s.EnableEventCallback = &v
 	return s
 }
 

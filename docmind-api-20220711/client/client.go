@@ -95,30 +95,83 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	return nil
 }
 
-func (client *Client) _postOSSObject(bucketName *string, form map[string]interface{}) (_result map[string]interface{}, _err error) {
-	request_ := dara.NewRequest()
-	boundary := dara.GetBoundary()
-	request_.Protocol = dara.String("HTTPS")
-	request_.Method = dara.String("POST")
-	request_.Pathname = dara.String("/")
-	request_.Headers = map[string]*string{
-		"host":       dara.String(dara.ToString(form["host"])),
-		"date":       openapiutil.GetDateUTCString(),
-		"user-agent": openapiutil.GetUserAgent(dara.String("")),
-	}
-	request_.Headers["content-type"] = dara.String("multipart/form-data; boundary=" + boundary)
-	request_.Body = dara.ToFileForm(form, boundary)
-	response_, _err := dara.DoRequest(request_, nil)
-	if _err != nil {
-		return nil, _err
+func (client *Client) _postOSSObject(bucketName *string, form map[string]interface{}, runtime *dara.RuntimeOptions) (_result map[string]interface{}, _err error) {
+	_runtime := dara.NewRuntimeObject(map[string]interface{}{
+		"key":            dara.ToString(dara.Default(dara.StringValue(runtime.Key), dara.StringValue(client.Key))),
+		"cert":           dara.ToString(dara.Default(dara.StringValue(runtime.Cert), dara.StringValue(client.Cert))),
+		"ca":             dara.ToString(dara.Default(dara.StringValue(runtime.Ca), dara.StringValue(client.Ca))),
+		"readTimeout":    dara.ForceInt(dara.Default(dara.IntValue(runtime.ReadTimeout), dara.IntValue(client.ReadTimeout))),
+		"connectTimeout": dara.ForceInt(dara.Default(dara.IntValue(runtime.ConnectTimeout), dara.IntValue(client.ConnectTimeout))),
+		"httpProxy":      dara.ToString(dara.Default(dara.StringValue(runtime.HttpProxy), dara.StringValue(client.HttpProxy))),
+		"httpsProxy":     dara.ToString(dara.Default(dara.StringValue(runtime.HttpsProxy), dara.StringValue(client.HttpsProxy))),
+		"noProxy":        dara.ToString(dara.Default(dara.StringValue(runtime.NoProxy), dara.StringValue(client.NoProxy))),
+		"socks5Proxy":    dara.ToString(dara.Default(dara.StringValue(runtime.Socks5Proxy), dara.StringValue(client.Socks5Proxy))),
+		"socks5NetWork":  dara.ToString(dara.Default(dara.StringValue(runtime.Socks5NetWork), dara.StringValue(client.Socks5NetWork))),
+		"maxIdleConns":   dara.ForceInt(dara.Default(dara.IntValue(runtime.MaxIdleConns), dara.IntValue(client.MaxIdleConns))),
+		"retryOptions":   client.RetryOptions,
+		"ignoreSSL":      dara.ForceBoolean(dara.Default(dara.BoolValue(runtime.IgnoreSSL), false)),
+		"tlsMinVersion":  dara.StringValue(client.TlsMinVersion),
+	})
+
+	var retryPolicyContext *dara.RetryPolicyContext
+	var request_ *dara.Request
+	var response_ *dara.Response
+	var _resultErr error
+	retriesAttempted := int(0)
+	retryPolicyContext = &dara.RetryPolicyContext{
+		RetriesAttempted: retriesAttempted,
 	}
 
-	_result, _err = _postOSSObject_opResponse(response_)
-	if _err != nil {
-		return nil, _err
-	}
+	_result = make(map[string]interface{})
+	for dara.ShouldRetry(_runtime.RetryOptions, retryPolicyContext) {
+		_resultErr = nil
+		_backoffDelayTime := dara.GetBackoffDelay(_runtime.RetryOptions, retryPolicyContext)
+		dara.Sleep(_backoffDelayTime)
 
-	return _result, nil
+		request_ = dara.NewRequest()
+		boundary := dara.GetBoundary()
+		request_.Protocol = dara.String("HTTPS")
+		request_.Method = dara.String("POST")
+		request_.Pathname = dara.String("/")
+		request_.Headers = map[string]*string{
+			"host":       dara.String(dara.ToString(form["host"])),
+			"date":       openapiutil.GetDateUTCString(),
+			"user-agent": openapiutil.GetUserAgent(dara.String("")),
+		}
+		request_.Headers["content-type"] = dara.String("multipart/form-data; boundary=" + boundary)
+		request_.Body = dara.ToFileForm(form, boundary)
+		response_, _err = dara.DoRequest(request_, _runtime)
+		if _err != nil {
+			retriesAttempted++
+			retryPolicyContext = &dara.RetryPolicyContext{
+				RetriesAttempted: retriesAttempted,
+				HttpRequest:      request_,
+				HttpResponse:     response_,
+				Exception:        _err,
+			}
+			_resultErr = _err
+			continue
+		}
+
+		_result, _err = _postOSSObject_opResponse(response_)
+		if _err != nil {
+			retriesAttempted++
+			retryPolicyContext = &dara.RetryPolicyContext{
+				RetriesAttempted: retriesAttempted,
+				HttpRequest:      request_,
+				HttpResponse:     response_,
+				Exception:        _err,
+			}
+			_resultErr = _err
+			continue
+		}
+
+		return _result, _err
+	}
+	if dara.BoolValue(client.DisableSDKError) != true {
+		_resultErr = dara.TeaSDKError(_resultErr)
+	}
+	return _result, _resultErr
 }
 
 func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
@@ -777,6 +830,10 @@ func (client *Client) SubmitConvertImageToExcelJobWithOptions(tmpReq *SubmitConv
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableEventCallback) {
+		query["EnableEventCallback"] = request.EnableEventCallback
+	}
+
 	if !dara.IsNil(request.ForceMergeExcel) {
 		query["ForceMergeExcel"] = request.ForceMergeExcel
 	}
@@ -957,6 +1014,10 @@ func (client *Client) SubmitConvertImageToPdfJobWithOptions(tmpReq *SubmitConver
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableEventCallback) {
+		query["EnableEventCallback"] = request.EnableEventCallback
+	}
+
 	if !dara.IsNil(request.ImageNameExtension) {
 		query["ImageNameExtension"] = request.ImageNameExtension
 	}
@@ -1045,6 +1106,10 @@ func (client *Client) SubmitConvertImageToWordJobWithOptions(tmpReq *SubmitConve
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableEventCallback) {
+		query["EnableEventCallback"] = request.EnableEventCallback
+	}
+
 	if !dara.IsNil(request.ImageNameExtension) {
 		query["ImageNameExtension"] = request.ImageNameExtension
 	}
@@ -1123,6 +1188,10 @@ func (client *Client) SubmitConvertPdfToExcelJobWithOptions(request *SubmitConve
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableEventCallback) {
+		query["EnableEventCallback"] = request.EnableEventCallback
+	}
+
 	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}
@@ -1279,7 +1348,7 @@ func (client *Client) SubmitConvertPdfToExcelJobAdvance(request *SubmitConvertPd
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1312,6 +1381,10 @@ func (client *Client) SubmitConvertPdfToImageJobWithOptions(request *SubmitConve
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableEventCallback) {
+		query["EnableEventCallback"] = request.EnableEventCallback
+	}
+
 	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}
@@ -1460,7 +1533,7 @@ func (client *Client) SubmitConvertPdfToImageJobAdvance(request *SubmitConvertPd
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1641,7 +1714,7 @@ func (client *Client) SubmitConvertPdfToMarkdownJobAdvance(request *SubmitConver
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1674,6 +1747,10 @@ func (client *Client) SubmitConvertPdfToWordJobWithOptions(request *SubmitConver
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableEventCallback) {
+		query["EnableEventCallback"] = request.EnableEventCallback
+	}
+
 	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}
@@ -1834,7 +1911,7 @@ func (client *Client) SubmitConvertPdfToWordJobAdvance(request *SubmitConvertPdf
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2031,7 +2108,7 @@ func (client *Client) SubmitDigitalDocStructureJobAdvance(request *SubmitDigital
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2080,6 +2157,10 @@ func (client *Client) SubmitDocParserJobWithOptions(tmpReq *SubmitDocParserJobRe
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustomOssConfigShrink) {
 		query["CustomOssConfig"] = request.CustomOssConfigShrink
+	}
+
+	if !dara.IsNil(request.EnableEventCallback) {
+		query["EnableEventCallback"] = request.EnableEventCallback
 	}
 
 	if !dara.IsNil(request.EnhancementMode) {
@@ -2270,7 +2351,7 @@ func (client *Client) SubmitDocParserJobAdvance(request *SubmitDocParserJobAdvan
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2305,6 +2386,10 @@ func (client *Client) SubmitDocStructureJobWithOptions(request *SubmitDocStructu
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllowPptFormat) {
 		query["AllowPptFormat"] = request.AllowPptFormat
+	}
+
+	if !dara.IsNil(request.EnableEventCallback) {
+		query["EnableEventCallback"] = request.EnableEventCallback
 	}
 
 	if !dara.IsNil(request.FileName) {
@@ -2471,7 +2556,7 @@ func (client *Client) SubmitDocStructureJobAdvance(request *SubmitDocStructureJo
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2656,7 +2741,7 @@ func (client *Client) SubmitDocumentExtractJobAdvance(request *SubmitDocumentExt
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2841,7 +2926,7 @@ func (client *Client) SubmitTableUnderstandingJobAdvance(request *SubmitTableUnd
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}

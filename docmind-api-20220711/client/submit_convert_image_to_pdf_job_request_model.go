@@ -9,6 +9,8 @@ type iSubmitConvertImageToPdfJobRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEnableEventCallback(v bool) *SubmitConvertImageToPdfJobRequest
+	GetEnableEventCallback() *bool
 	SetImageNameExtension(v string) *SubmitConvertImageToPdfJobRequest
 	GetImageNameExtension() *string
 	SetImageNames(v []*string) *SubmitConvertImageToPdfJobRequest
@@ -22,6 +24,7 @@ type iSubmitConvertImageToPdfJobRequest interface {
 }
 
 type SubmitConvertImageToPdfJobRequest struct {
+	EnableEventCallback *bool `json:"EnableEventCallback,omitempty" xml:"EnableEventCallback,omitempty"`
 	// example:
 	//
 	// JPG
@@ -38,6 +41,10 @@ func (s SubmitConvertImageToPdfJobRequest) String() string {
 
 func (s SubmitConvertImageToPdfJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitConvertImageToPdfJobRequest) GetEnableEventCallback() *bool {
+	return s.EnableEventCallback
 }
 
 func (s *SubmitConvertImageToPdfJobRequest) GetImageNameExtension() *string {
@@ -58,6 +65,11 @@ func (s *SubmitConvertImageToPdfJobRequest) GetOssBucket() *string {
 
 func (s *SubmitConvertImageToPdfJobRequest) GetOssEndpoint() *string {
 	return s.OssEndpoint
+}
+
+func (s *SubmitConvertImageToPdfJobRequest) SetEnableEventCallback(v bool) *SubmitConvertImageToPdfJobRequest {
+	s.EnableEventCallback = &v
+	return s
 }
 
 func (s *SubmitConvertImageToPdfJobRequest) SetImageNameExtension(v string) *SubmitConvertImageToPdfJobRequest {

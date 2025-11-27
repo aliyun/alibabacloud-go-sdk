@@ -9,6 +9,8 @@ type iSubmitConvertImageToWordJobRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEnableEventCallback(v bool) *SubmitConvertImageToWordJobRequest
+	GetEnableEventCallback() *bool
 	SetImageNameExtension(v string) *SubmitConvertImageToWordJobRequest
 	GetImageNameExtension() *string
 	SetImageNames(v []*string) *SubmitConvertImageToWordJobRequest
@@ -22,6 +24,7 @@ type iSubmitConvertImageToWordJobRequest interface {
 }
 
 type SubmitConvertImageToWordJobRequest struct {
+	EnableEventCallback *bool `json:"EnableEventCallback,omitempty" xml:"EnableEventCallback,omitempty"`
 	// example:
 	//
 	// jpg
@@ -38,6 +41,10 @@ func (s SubmitConvertImageToWordJobRequest) String() string {
 
 func (s SubmitConvertImageToWordJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitConvertImageToWordJobRequest) GetEnableEventCallback() *bool {
+	return s.EnableEventCallback
 }
 
 func (s *SubmitConvertImageToWordJobRequest) GetImageNameExtension() *string {
@@ -58,6 +65,11 @@ func (s *SubmitConvertImageToWordJobRequest) GetOssBucket() *string {
 
 func (s *SubmitConvertImageToWordJobRequest) GetOssEndpoint() *string {
 	return s.OssEndpoint
+}
+
+func (s *SubmitConvertImageToWordJobRequest) SetEnableEventCallback(v bool) *SubmitConvertImageToWordJobRequest {
+	s.EnableEventCallback = &v
+	return s
 }
 
 func (s *SubmitConvertImageToWordJobRequest) SetImageNameExtension(v string) *SubmitConvertImageToWordJobRequest {
