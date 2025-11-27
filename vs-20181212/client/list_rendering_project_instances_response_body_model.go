@@ -65,7 +65,16 @@ func (s *ListRenderingProjectInstancesResponseBody) SetTotalCount(v int64) *List
 }
 
 func (s *ListRenderingProjectInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RenderingInstances != nil {
+		for _, item := range s.RenderingInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRenderingProjectInstancesResponseBodyRenderingInstances struct {
@@ -116,7 +125,12 @@ func (s *ListRenderingProjectInstancesResponseBodyRenderingInstances) SetStateIn
 }
 
 func (s *ListRenderingProjectInstancesResponseBodyRenderingInstances) Validate() error {
-	return dara.Validate(s)
+	if s.StateInfo != nil {
+		if err := s.StateInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRenderingProjectInstancesResponseBodyRenderingInstancesStateInfo struct {

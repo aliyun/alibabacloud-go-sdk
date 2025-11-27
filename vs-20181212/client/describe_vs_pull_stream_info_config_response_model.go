@@ -59,5 +59,10 @@ func (s *DescribeVsPullStreamInfoConfigResponse) SetBody(v *DescribeVsPullStream
 }
 
 func (s *DescribeVsPullStreamInfoConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

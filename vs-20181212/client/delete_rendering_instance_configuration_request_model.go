@@ -52,7 +52,16 @@ func (s *DeleteRenderingInstanceConfigurationRequest) SetRenderingInstanceId(v s
 }
 
 func (s *DeleteRenderingInstanceConfigurationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Configuration != nil {
+		for _, item := range s.Configuration {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteRenderingInstanceConfigurationRequestConfiguration struct {

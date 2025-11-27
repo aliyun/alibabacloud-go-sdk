@@ -59,5 +59,10 @@ func (s *StopPublishStreamResponse) SetBody(v *StopPublishStreamResponseBody) *S
 }
 
 func (s *StopPublishStreamResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -50,7 +50,12 @@ func (s *DescribeVsPullStreamInfoConfigResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeVsPullStreamInfoConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveAppRecordList != nil {
+		if err := s.LiveAppRecordList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVsPullStreamInfoConfigResponseBodyLiveAppRecordList struct {
@@ -75,7 +80,16 @@ func (s *DescribeVsPullStreamInfoConfigResponseBodyLiveAppRecordList) SetLiveApp
 }
 
 func (s *DescribeVsPullStreamInfoConfigResponseBodyLiveAppRecordList) Validate() error {
-	return dara.Validate(s)
+	if s.LiveAppRecord != nil {
+		for _, item := range s.LiveAppRecord {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVsPullStreamInfoConfigResponseBodyLiveAppRecordListLiveAppRecord struct {

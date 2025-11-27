@@ -86,7 +86,25 @@ func (s *InstallCloudAppResponseBody) SetSuccessInstances(v []*InstallCloudAppRe
 }
 
 func (s *InstallCloudAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailedInstances != nil {
+		for _, item := range s.FailedInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SuccessInstances != nil {
+		for _, item := range s.SuccessInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InstallCloudAppResponseBodyFailedInstances struct {

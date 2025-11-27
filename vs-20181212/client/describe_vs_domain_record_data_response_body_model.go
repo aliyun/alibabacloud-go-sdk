@@ -50,7 +50,12 @@ func (s *DescribeVsDomainRecordDataResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeVsDomainRecordDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecordDataPerInterval != nil {
+		if err := s.RecordDataPerInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVsDomainRecordDataResponseBodyRecordDataPerInterval struct {
@@ -75,7 +80,16 @@ func (s *DescribeVsDomainRecordDataResponseBodyRecordDataPerInterval) SetDataMod
 }
 
 func (s *DescribeVsDomainRecordDataResponseBodyRecordDataPerInterval) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVsDomainRecordDataResponseBodyRecordDataPerIntervalDataModule struct {

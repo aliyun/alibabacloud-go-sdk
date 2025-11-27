@@ -65,7 +65,16 @@ func (s *ListRenderingProjectsResponseBody) SetTotalCount(v int64) *ListRenderin
 }
 
 func (s *ListRenderingProjectsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Projects != nil {
+		for _, item := range s.Projects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRenderingProjectsResponseBodyProjects struct {
@@ -155,7 +164,12 @@ func (s *ListRenderingProjectsResponseBodyProjects) SetUpdateTime(v string) *Lis
 }
 
 func (s *ListRenderingProjectsResponseBodyProjects) Validate() error {
-	return dara.Validate(s)
+	if s.SessionAttribs != nil {
+		if err := s.SessionAttribs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRenderingProjectsResponseBodyProjectsSessionAttribs struct {

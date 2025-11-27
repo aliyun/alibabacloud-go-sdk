@@ -59,5 +59,10 @@ func (s *SendRenderingInstanceCommandsResponse) SetBody(v *SendRenderingInstance
 }
 
 func (s *SendRenderingInstanceCommandsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

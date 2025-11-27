@@ -131,7 +131,26 @@ func (s *StartRenderingSessionResponseBody) SetStateInfo(v *StartRenderingSessio
 }
 
 func (s *StartRenderingSessionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Location != nil {
+		if err := s.Location.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PortMappings != nil {
+		for _, item := range s.PortMappings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.StateInfo != nil {
+		if err := s.StateInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartRenderingSessionResponseBodyLocation struct {

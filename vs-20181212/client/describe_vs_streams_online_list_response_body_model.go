@@ -110,7 +110,12 @@ func (s *DescribeVsStreamsOnlineListResponseBody) SetTotalPage(v int32) *Describ
 }
 
 func (s *DescribeVsStreamsOnlineListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OnlineInfo != nil {
+		if err := s.OnlineInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVsStreamsOnlineListResponseBodyOnlineInfo struct {
@@ -135,7 +140,16 @@ func (s *DescribeVsStreamsOnlineListResponseBodyOnlineInfo) SetLiveStreamOnlineI
 }
 
 func (s *DescribeVsStreamsOnlineListResponseBodyOnlineInfo) Validate() error {
-	return dara.Validate(s)
+	if s.LiveStreamOnlineInfo != nil {
+		for _, item := range s.LiveStreamOnlineInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVsStreamsOnlineListResponseBodyOnlineInfoLiveStreamOnlineInfo struct {

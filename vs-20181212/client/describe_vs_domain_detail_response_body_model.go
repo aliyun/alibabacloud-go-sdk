@@ -50,7 +50,12 @@ func (s *DescribeVsDomainDetailResponseBody) SetRequestId(v string) *DescribeVsD
 }
 
 func (s *DescribeVsDomainDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainConfig != nil {
+		if err := s.DomainConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVsDomainDetailResponseBodyDomainConfig struct {

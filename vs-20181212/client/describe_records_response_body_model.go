@@ -125,7 +125,16 @@ func (s *DescribeRecordsResponseBody) SetTotalCount(v int64) *DescribeRecordsRes
 }
 
 func (s *DescribeRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRecordsResponseBodyRecords struct {

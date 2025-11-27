@@ -79,7 +79,12 @@ func (s *UpdateCloudAppInfoRequest) SetStablePatchId(v string) *UpdateCloudAppIn
 }
 
 func (s *UpdateCloudAppInfoRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Patch != nil {
+		if err := s.Patch.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateCloudAppInfoRequestPatch struct {

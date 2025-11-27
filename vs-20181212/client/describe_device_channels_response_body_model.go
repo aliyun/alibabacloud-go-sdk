@@ -110,7 +110,16 @@ func (s *DescribeDeviceChannelsResponseBody) SetTotalCount(v int64) *DescribeDev
 }
 
 func (s *DescribeDeviceChannelsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Channels != nil {
+		for _, item := range s.Channels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeviceChannelsResponseBodyChannels struct {

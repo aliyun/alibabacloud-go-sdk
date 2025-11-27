@@ -110,7 +110,16 @@ func (s *DescribeDevicesResponseBody) SetTotalCount(v int64) *DescribeDevicesRes
 }
 
 func (s *DescribeDevicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Devices != nil {
+		for _, item := range s.Devices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDevicesResponseBodyDevices struct {
@@ -513,7 +522,17 @@ func (s *DescribeDevicesResponseBodyDevices) SetVendor(v string) *DescribeDevice
 }
 
 func (s *DescribeDevicesResponseBodyDevices) Validate() error {
-	return dara.Validate(s)
+	if s.Directory != nil {
+		if err := s.Directory.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Stats != nil {
+		if err := s.Stats.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDevicesResponseBodyDevicesDirectory struct {

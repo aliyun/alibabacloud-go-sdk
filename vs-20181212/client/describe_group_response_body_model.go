@@ -338,7 +338,12 @@ func (s *DescribeGroupResponseBody) SetStatus(v string) *DescribeGroupResponseBo
 }
 
 func (s *DescribeGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Stats != nil {
+		if err := s.Stats.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGroupResponseBodyStats struct {

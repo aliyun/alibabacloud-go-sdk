@@ -59,5 +59,10 @@ func (s *SetPresetResponse) SetBody(v *SetPresetResponseBody) *SetPresetResponse
 }
 
 func (s *SetPresetResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

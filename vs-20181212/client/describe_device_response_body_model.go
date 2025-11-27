@@ -485,7 +485,17 @@ func (s *DescribeDeviceResponseBody) SetVendor(v string) *DescribeDeviceResponse
 }
 
 func (s *DescribeDeviceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Directory != nil {
+		if err := s.Directory.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Stats != nil {
+		if err := s.Stats.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDeviceResponseBodyDirectory struct {

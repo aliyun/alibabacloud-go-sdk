@@ -64,7 +64,12 @@ func (s *CreateRenderingProjectRequest) SetSessionAttribs(v *CreateRenderingProj
 }
 
 func (s *CreateRenderingProjectRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SessionAttribs != nil {
+		if err := s.SessionAttribs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateRenderingProjectRequestSessionAttribs struct {

@@ -50,7 +50,12 @@ func (s *DescribeVsDomainSnapshotDataResponseBody) SetSnapshotDataPerInterval(v 
 }
 
 func (s *DescribeVsDomainSnapshotDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SnapshotDataPerInterval != nil {
+		if err := s.SnapshotDataPerInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerInterval struct {
@@ -75,7 +80,16 @@ func (s *DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerInterval) SetDat
 }
 
 func (s *DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerInterval) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerIntervalDataModule struct {

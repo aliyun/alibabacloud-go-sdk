@@ -50,7 +50,16 @@ func (s *UpdateRenderingInstanceSettingsRequest) SetSettings(v []*UpdateRenderin
 }
 
 func (s *UpdateRenderingInstanceSettingsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Settings != nil {
+		for _, item := range s.Settings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateRenderingInstanceSettingsRequestSettings struct {

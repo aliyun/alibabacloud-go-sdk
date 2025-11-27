@@ -59,5 +59,10 @@ func (s *ModifyDirectoryResponse) SetBody(v *ModifyDirectoryResponseBody) *Modif
 }
 
 func (s *ModifyDirectoryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

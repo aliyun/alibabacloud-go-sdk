@@ -53,7 +53,16 @@ func (s *UpdateRenderingInstanceConfigurationRequest) SetRenderingInstanceId(v s
 }
 
 func (s *UpdateRenderingInstanceConfigurationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Configuration != nil {
+		for _, item := range s.Configuration {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateRenderingInstanceConfigurationRequestConfiguration struct {
@@ -94,7 +103,16 @@ func (s *UpdateRenderingInstanceConfigurationRequestConfiguration) SetModuleName
 }
 
 func (s *UpdateRenderingInstanceConfigurationRequestConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.Attributes != nil {
+		for _, item := range s.Attributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateRenderingInstanceConfigurationRequestConfigurationAttributes struct {

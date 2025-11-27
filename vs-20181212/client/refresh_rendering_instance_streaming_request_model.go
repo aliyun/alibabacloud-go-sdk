@@ -52,7 +52,12 @@ func (s *RefreshRenderingInstanceStreamingRequest) SetRenderingInstanceId(v stri
 }
 
 func (s *RefreshRenderingInstanceStreamingRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ClientInfo != nil {
+		if err := s.ClientInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RefreshRenderingInstanceStreamingRequestClientInfo struct {

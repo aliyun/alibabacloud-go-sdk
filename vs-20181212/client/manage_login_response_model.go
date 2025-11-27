@@ -59,5 +59,10 @@ func (s *ManageLoginResponse) SetBody(v *ManageLoginResponseBody) *ManageLoginRe
 }
 
 func (s *ManageLoginResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

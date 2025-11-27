@@ -59,5 +59,10 @@ func (s *InstallCloudAppResponse) SetBody(v *InstallCloudAppResponseBody) *Insta
 }
 
 func (s *InstallCloudAppResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

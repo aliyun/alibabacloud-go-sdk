@@ -59,5 +59,10 @@ func (s *DeletePresetResponse) SetBody(v *DeletePresetResponseBody) *DeletePrese
 }
 
 func (s *DeletePresetResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

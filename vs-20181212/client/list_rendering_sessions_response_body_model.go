@@ -65,7 +65,16 @@ func (s *ListRenderingSessionsResponseBody) SetTotalCount(v int64) *ListRenderin
 }
 
 func (s *ListRenderingSessionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Sessions != nil {
+		for _, item := range s.Sessions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRenderingSessionsResponseBodySessions struct {

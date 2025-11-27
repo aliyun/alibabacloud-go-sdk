@@ -50,7 +50,12 @@ func (s *BatchResumeVsStreamResponseBody) SetResumeResult(v *BatchResumeVsStream
 }
 
 func (s *BatchResumeVsStreamResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResumeResult != nil {
+		if err := s.ResumeResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchResumeVsStreamResponseBodyResumeResult struct {
@@ -75,7 +80,16 @@ func (s *BatchResumeVsStreamResponseBodyResumeResult) SetResumeResultInfo(v []*B
 }
 
 func (s *BatchResumeVsStreamResponseBodyResumeResult) Validate() error {
-	return dara.Validate(s)
+	if s.ResumeResultInfo != nil {
+		for _, item := range s.ResumeResultInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchResumeVsStreamResponseBodyResumeResultResumeResultInfo struct {
@@ -139,7 +153,12 @@ func (s *BatchResumeVsStreamResponseBodyResumeResultResumeResultInfo) SetResult(
 }
 
 func (s *BatchResumeVsStreamResponseBodyResumeResultResumeResultInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Channels != nil {
+		if err := s.Channels.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchResumeVsStreamResponseBodyResumeResultResumeResultInfoChannels struct {

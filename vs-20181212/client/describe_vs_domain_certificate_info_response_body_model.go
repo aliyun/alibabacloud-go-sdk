@@ -50,7 +50,12 @@ func (s *DescribeVsDomainCertificateInfoResponseBody) SetRequestId(v string) *De
 }
 
 func (s *DescribeVsDomainCertificateInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CertInfos != nil {
+		if err := s.CertInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVsDomainCertificateInfoResponseBodyCertInfos struct {
@@ -75,7 +80,16 @@ func (s *DescribeVsDomainCertificateInfoResponseBodyCertInfos) SetCertInfo(v []*
 }
 
 func (s *DescribeVsDomainCertificateInfoResponseBodyCertInfos) Validate() error {
-	return dara.Validate(s)
+	if s.CertInfo != nil {
+		for _, item := range s.CertInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVsDomainCertificateInfoResponseBodyCertInfosCertInfo struct {

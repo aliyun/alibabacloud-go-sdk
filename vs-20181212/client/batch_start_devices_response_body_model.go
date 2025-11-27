@@ -50,7 +50,16 @@ func (s *BatchStartDevicesResponseBody) SetResults(v []*BatchStartDevicesRespons
 }
 
 func (s *BatchStartDevicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchStartDevicesResponseBodyResults struct {
@@ -88,7 +97,16 @@ func (s *BatchStartDevicesResponseBodyResults) SetStreams(v []*BatchStartDevices
 }
 
 func (s *BatchStartDevicesResponseBodyResults) Validate() error {
-	return dara.Validate(s)
+	if s.Streams != nil {
+		for _, item := range s.Streams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchStartDevicesResponseBodyResultsStreams struct {

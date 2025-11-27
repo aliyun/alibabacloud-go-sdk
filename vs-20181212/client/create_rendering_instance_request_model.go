@@ -163,7 +163,17 @@ func (s *CreateRenderingInstanceRequest) SetStorageSize(v string) *CreateRenderi
 }
 
 func (s *CreateRenderingInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Attributes != nil {
+		if err := s.Attributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClientInfo != nil {
+		if err := s.ClientInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateRenderingInstanceRequestAttributes struct {

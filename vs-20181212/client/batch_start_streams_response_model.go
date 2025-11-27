@@ -59,5 +59,10 @@ func (s *BatchStartStreamsResponse) SetBody(v *BatchStartStreamsResponseBody) *B
 }
 
 func (s *BatchStartStreamsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

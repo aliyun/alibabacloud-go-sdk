@@ -59,5 +59,10 @@ func (s *DescribeVsDomainTrafficDataResponse) SetBody(v *DescribeVsDomainTraffic
 }
 
 func (s *DescribeVsDomainTrafficDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

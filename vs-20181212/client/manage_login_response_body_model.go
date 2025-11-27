@@ -50,7 +50,12 @@ func (s *ManageLoginResponseBody) SetRequestId(v string) *ManageLoginResponseBod
 }
 
 func (s *ManageLoginResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LoginInfo != nil {
+		if err := s.LoginInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ManageLoginResponseBodyLoginInfo struct {

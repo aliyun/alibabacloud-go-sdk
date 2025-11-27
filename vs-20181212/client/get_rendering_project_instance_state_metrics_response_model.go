@@ -59,5 +59,10 @@ func (s *GetRenderingProjectInstanceStateMetricsResponse) SetBody(v *GetRenderin
 }
 
 func (s *GetRenderingProjectInstanceStateMetricsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

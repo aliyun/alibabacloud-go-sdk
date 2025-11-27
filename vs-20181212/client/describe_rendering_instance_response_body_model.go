@@ -33,6 +33,8 @@ type iDescribeRenderingInstanceResponseBody interface {
 	GetRenderingStatus() *DescribeRenderingInstanceResponseBodyRenderingStatus
 	SetRequestId(v string) *DescribeRenderingInstanceResponseBody
 	GetRequestId() *string
+	SetResourceAttributes(v *DescribeRenderingInstanceResponseBodyResourceAttributes) *DescribeRenderingInstanceResponseBody
+	GetResourceAttributes() *DescribeRenderingInstanceResponseBodyResourceAttributes
 	SetStorageSize(v int32) *DescribeRenderingInstanceResponseBody
 	GetStorageSize() *int32
 	SetSystemInfo(v *DescribeRenderingInstanceResponseBodySystemInfo) *DescribeRenderingInstanceResponseBody
@@ -63,9 +65,10 @@ type DescribeRenderingInstanceResponseBody struct {
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StorageSize *int32                                           `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	SystemInfo  *DescribeRenderingInstanceResponseBodySystemInfo `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty" type:"Struct"`
+	RequestId          *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceAttributes *DescribeRenderingInstanceResponseBodyResourceAttributes `json:"ResourceAttributes,omitempty" xml:"ResourceAttributes,omitempty" type:"Struct"`
+	StorageSize        *int32                                                   `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	SystemInfo         *DescribeRenderingInstanceResponseBodySystemInfo         `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty" type:"Struct"`
 }
 
 func (s DescribeRenderingInstanceResponseBody) String() string {
@@ -122,6 +125,10 @@ func (s *DescribeRenderingInstanceResponseBody) GetRenderingStatus() *DescribeRe
 
 func (s *DescribeRenderingInstanceResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *DescribeRenderingInstanceResponseBody) GetResourceAttributes() *DescribeRenderingInstanceResponseBodyResourceAttributes {
+	return s.ResourceAttributes
 }
 
 func (s *DescribeRenderingInstanceResponseBody) GetStorageSize() *int32 {
@@ -192,6 +199,11 @@ func (s *DescribeRenderingInstanceResponseBody) SetRequestId(v string) *Describe
 	return s
 }
 
+func (s *DescribeRenderingInstanceResponseBody) SetResourceAttributes(v *DescribeRenderingInstanceResponseBodyResourceAttributes) *DescribeRenderingInstanceResponseBody {
+	s.ResourceAttributes = v
+	return s
+}
+
 func (s *DescribeRenderingInstanceResponseBody) SetStorageSize(v int32) *DescribeRenderingInstanceResponseBody {
 	s.StorageSize = &v
 	return s
@@ -203,7 +215,45 @@ func (s *DescribeRenderingInstanceResponseBody) SetSystemInfo(v *DescribeRenderi
 }
 
 func (s *DescribeRenderingInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AdditionalIngresses != nil {
+		for _, item := range s.AdditionalIngresses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ConfigInfo != nil {
+		if err := s.ConfigInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PortMappings != nil {
+		for _, item := range s.PortMappings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RenderingStatus != nil {
+		if err := s.RenderingStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceAttributes != nil {
+		if err := s.ResourceAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SystemInfo != nil {
+		if err := s.SystemInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRenderingInstanceResponseBodyAdditionalIngresses struct {
@@ -248,7 +298,16 @@ func (s *DescribeRenderingInstanceResponseBodyAdditionalIngresses) SetPortMappin
 }
 
 func (s *DescribeRenderingInstanceResponseBodyAdditionalIngresses) Validate() error {
-	return dara.Validate(s)
+	if s.PortMappings != nil {
+		for _, item := range s.PortMappings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRenderingInstanceResponseBodyAdditionalIngressesPortMappings struct {
@@ -318,7 +377,21 @@ func (s *DescribeRenderingInstanceResponseBodyConfigInfo) SetNetworkConfig(v *De
 }
 
 func (s *DescribeRenderingInstanceResponseBodyConfigInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Configuration != nil {
+		for _, item := range s.Configuration {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NetworkConfig != nil {
+		if err := s.NetworkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRenderingInstanceResponseBodyConfigInfoConfiguration struct {
@@ -356,7 +429,16 @@ func (s *DescribeRenderingInstanceResponseBodyConfigInfoConfiguration) SetModule
 }
 
 func (s *DescribeRenderingInstanceResponseBodyConfigInfoConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.Attributes != nil {
+		for _, item := range s.Attributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRenderingInstanceResponseBodyConfigInfoConfigurationAttributes struct {
@@ -556,6 +638,73 @@ func (s *DescribeRenderingInstanceResponseBodyRenderingStatus) SetStatus(v strin
 }
 
 func (s *DescribeRenderingInstanceResponseBodyRenderingStatus) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeRenderingInstanceResponseBodyResourceAttributes struct {
+	// example:
+	//
+	// ON
+	EdgeMediaService *string `json:"EdgeMediaService,omitempty" xml:"EdgeMediaService,omitempty"`
+	// example:
+	//
+	// ON
+	InAccess *string `json:"InAccess,omitempty" xml:"InAccess,omitempty"`
+	// example:
+	//
+	// ON
+	OutAccess *string `json:"OutAccess,omitempty" xml:"OutAccess,omitempty"`
+	// example:
+	//
+	// Public
+	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
+}
+
+func (s DescribeRenderingInstanceResponseBodyResourceAttributes) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeRenderingInstanceResponseBodyResourceAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRenderingInstanceResponseBodyResourceAttributes) GetEdgeMediaService() *string {
+	return s.EdgeMediaService
+}
+
+func (s *DescribeRenderingInstanceResponseBodyResourceAttributes) GetInAccess() *string {
+	return s.InAccess
+}
+
+func (s *DescribeRenderingInstanceResponseBodyResourceAttributes) GetOutAccess() *string {
+	return s.OutAccess
+}
+
+func (s *DescribeRenderingInstanceResponseBodyResourceAttributes) GetZone() *string {
+	return s.Zone
+}
+
+func (s *DescribeRenderingInstanceResponseBodyResourceAttributes) SetEdgeMediaService(v string) *DescribeRenderingInstanceResponseBodyResourceAttributes {
+	s.EdgeMediaService = &v
+	return s
+}
+
+func (s *DescribeRenderingInstanceResponseBodyResourceAttributes) SetInAccess(v string) *DescribeRenderingInstanceResponseBodyResourceAttributes {
+	s.InAccess = &v
+	return s
+}
+
+func (s *DescribeRenderingInstanceResponseBodyResourceAttributes) SetOutAccess(v string) *DescribeRenderingInstanceResponseBodyResourceAttributes {
+	s.OutAccess = &v
+	return s
+}
+
+func (s *DescribeRenderingInstanceResponseBodyResourceAttributes) SetZone(v string) *DescribeRenderingInstanceResponseBodyResourceAttributes {
+	s.Zone = &v
+	return s
+}
+
+func (s *DescribeRenderingInstanceResponseBodyResourceAttributes) Validate() error {
 	return dara.Validate(s)
 }
 

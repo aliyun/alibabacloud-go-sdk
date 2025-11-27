@@ -110,7 +110,16 @@ func (s *DescribeDirectoriesResponseBody) SetTotalCount(v int64) *DescribeDirect
 }
 
 func (s *DescribeDirectoriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Directories != nil {
+		for _, item := range s.Directories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDirectoriesResponseBodyDirectories struct {

@@ -110,7 +110,12 @@ func (s *DescribeVsDomainUvDataResponseBody) SetUvDataInterval(v *DescribeVsDoma
 }
 
 func (s *DescribeVsDomainUvDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UvDataInterval != nil {
+		if err := s.UvDataInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVsDomainUvDataResponseBodyUvDataInterval struct {
@@ -135,7 +140,16 @@ func (s *DescribeVsDomainUvDataResponseBodyUvDataInterval) SetUsageData(v []*Des
 }
 
 func (s *DescribeVsDomainUvDataResponseBodyUvDataInterval) Validate() error {
-	return dara.Validate(s)
+	if s.UsageData != nil {
+		for _, item := range s.UsageData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVsDomainUvDataResponseBodyUvDataIntervalUsageData struct {

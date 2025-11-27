@@ -97,7 +97,16 @@ func (s *ListCloudAppPatchesResponseBody) SetTotalCount(v int64) *ListCloudAppPa
 }
 
 func (s *ListCloudAppPatchesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Patches != nil {
+		for _, item := range s.Patches {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCloudAppPatchesResponseBodyPatches struct {

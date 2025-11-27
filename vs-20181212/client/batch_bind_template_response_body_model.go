@@ -50,7 +50,16 @@ func (s *BatchBindTemplateResponseBody) SetRequestId(v string) *BatchBindTemplat
 }
 
 func (s *BatchBindTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Bindings != nil {
+		for _, item := range s.Bindings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchBindTemplateResponseBodyBindings struct {

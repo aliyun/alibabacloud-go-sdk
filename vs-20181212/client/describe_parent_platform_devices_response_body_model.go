@@ -110,7 +110,16 @@ func (s *DescribeParentPlatformDevicesResponseBody) SetTotalCount(v int64) *Desc
 }
 
 func (s *DescribeParentPlatformDevicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Devices != nil {
+		for _, item := range s.Devices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeParentPlatformDevicesResponseBodyDevices struct {

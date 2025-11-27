@@ -59,5 +59,10 @@ func (s *CreateRenderingProjectResponse) SetBody(v *CreateRenderingProjectRespon
 }
 
 func (s *CreateRenderingProjectResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

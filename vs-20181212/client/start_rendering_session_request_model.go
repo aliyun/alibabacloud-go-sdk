@@ -99,7 +99,12 @@ func (s *StartRenderingSessionRequest) SetProjectId(v string) *StartRenderingSes
 }
 
 func (s *StartRenderingSessionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ClientParams != nil {
+		if err := s.ClientParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartRenderingSessionRequestClientParams struct {

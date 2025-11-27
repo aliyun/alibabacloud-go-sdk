@@ -52,7 +52,16 @@ func (s *GetRenderingProjectInstanceStateMetricsResponseBody) SetStateMetrics(v 
 }
 
 func (s *GetRenderingProjectInstanceStateMetricsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StateMetrics != nil {
+		for _, item := range s.StateMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRenderingProjectInstanceStateMetricsResponseBodyStateMetrics struct {

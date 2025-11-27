@@ -67,7 +67,16 @@ func (s *ListRenderingDataPackagesResponseBody) SetTotalCount(v int64) *ListRend
 }
 
 func (s *ListRenderingDataPackagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataPackages != nil {
+		for _, item := range s.DataPackages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRenderingDataPackagesResponseBodyDataPackages struct {

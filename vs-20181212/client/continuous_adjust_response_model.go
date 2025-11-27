@@ -59,5 +59,10 @@ func (s *ContinuousAdjustResponse) SetBody(v *ContinuousAdjustResponseBody) *Con
 }
 
 func (s *ContinuousAdjustResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

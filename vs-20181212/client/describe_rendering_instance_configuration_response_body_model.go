@@ -50,7 +50,16 @@ func (s *DescribeRenderingInstanceConfigurationResponseBody) SetRequestId(v stri
 }
 
 func (s *DescribeRenderingInstanceConfigurationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Configuration != nil {
+		for _, item := range s.Configuration {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRenderingInstanceConfigurationResponseBodyConfiguration struct {
@@ -88,7 +97,16 @@ func (s *DescribeRenderingInstanceConfigurationResponseBodyConfiguration) SetMod
 }
 
 func (s *DescribeRenderingInstanceConfigurationResponseBodyConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.Attributes != nil {
+		for _, item := range s.Attributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRenderingInstanceConfigurationResponseBodyConfigurationAttributes struct {

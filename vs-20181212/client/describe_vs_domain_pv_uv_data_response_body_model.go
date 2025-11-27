@@ -110,7 +110,12 @@ func (s *DescribeVsDomainPvUvDataResponseBody) SetStartTime(v string) *DescribeV
 }
 
 func (s *DescribeVsDomainPvUvDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PvUvDataInfos != nil {
+		if err := s.PvUvDataInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVsDomainPvUvDataResponseBodyPvUvDataInfos struct {
@@ -135,7 +140,16 @@ func (s *DescribeVsDomainPvUvDataResponseBodyPvUvDataInfos) SetPvUvDataInfo(v []
 }
 
 func (s *DescribeVsDomainPvUvDataResponseBodyPvUvDataInfos) Validate() error {
-	return dara.Validate(s)
+	if s.PvUvDataInfo != nil {
+		for _, item := range s.PvUvDataInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVsDomainPvUvDataResponseBodyPvUvDataInfosPvUvDataInfo struct {

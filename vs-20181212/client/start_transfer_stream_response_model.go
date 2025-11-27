@@ -59,5 +59,10 @@ func (s *StartTransferStreamResponse) SetBody(v *StartTransferStreamResponseBody
 }
 
 func (s *StartTransferStreamResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

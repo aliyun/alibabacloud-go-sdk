@@ -110,7 +110,16 @@ func (s *DescribeGroupsResponseBody) SetTotalCount(v int64) *DescribeGroupsRespo
 }
 
 func (s *DescribeGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Groups != nil {
+		for _, item := range s.Groups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGroupsResponseBodyGroups struct {
@@ -383,7 +392,12 @@ func (s *DescribeGroupsResponseBodyGroups) SetStatus(v string) *DescribeGroupsRe
 }
 
 func (s *DescribeGroupsResponseBodyGroups) Validate() error {
-	return dara.Validate(s)
+	if s.Stats != nil {
+		if err := s.Stats.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGroupsResponseBodyGroupsStats struct {

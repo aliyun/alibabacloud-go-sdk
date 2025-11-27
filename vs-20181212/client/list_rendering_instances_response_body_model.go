@@ -65,7 +65,16 @@ func (s *ListRenderingInstancesResponseBody) SetTotalCount(v int64) *ListRenderi
 }
 
 func (s *ListRenderingInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RenderingInstances != nil {
+		for _, item := range s.RenderingInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRenderingInstancesResponseBodyRenderingInstances struct {

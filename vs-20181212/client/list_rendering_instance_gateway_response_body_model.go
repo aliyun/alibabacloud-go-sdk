@@ -95,7 +95,16 @@ func (s *ListRenderingInstanceGatewayResponseBody) SetTotalCount(v string) *List
 }
 
 func (s *ListRenderingInstanceGatewayResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GatewayConfigurationInfos != nil {
+		for _, item := range s.GatewayConfigurationInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos struct {

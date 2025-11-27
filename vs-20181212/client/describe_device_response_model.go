@@ -59,5 +59,10 @@ func (s *DescribeDeviceResponse) SetBody(v *DescribeDeviceResponseBody) *Describ
 }
 
 func (s *DescribeDeviceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

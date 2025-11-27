@@ -95,7 +95,16 @@ func (s *ListFilePushStatusesResponseBody) SetTotalCount(v int64) *ListFilePushS
 }
 
 func (s *ListFilePushStatusesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PushStatuses != nil {
+		for _, item := range s.PushStatuses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFilePushStatusesResponseBodyPushStatuses struct {

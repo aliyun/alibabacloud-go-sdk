@@ -200,7 +200,35 @@ func (s *DescribeRenderingSessionResponseBody) SetStateInfo(v *DescribeRendering
 }
 
 func (s *DescribeRenderingSessionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AdditionalIngresses != nil {
+		for _, item := range s.AdditionalIngresses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Location != nil {
+		if err := s.Location.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PortMappings != nil {
+		for _, item := range s.PortMappings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.StateInfo != nil {
+		if err := s.StateInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRenderingSessionResponseBodyAdditionalIngresses struct {
@@ -245,7 +273,16 @@ func (s *DescribeRenderingSessionResponseBodyAdditionalIngresses) SetPortMapping
 }
 
 func (s *DescribeRenderingSessionResponseBodyAdditionalIngresses) Validate() error {
-	return dara.Validate(s)
+	if s.PortMappings != nil {
+		for _, item := range s.PortMappings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings struct {

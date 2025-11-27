@@ -59,5 +59,10 @@ func (s *DescribeStreamsResponse) SetBody(v *DescribeStreamsResponseBody) *Descr
 }
 
 func (s *DescribeStreamsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -359,7 +359,16 @@ func (s *DescribeTemplateResponseBody) SetType(v string) *DescribeTemplateRespon
 }
 
 func (s *DescribeTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TransConfigs != nil {
+		for _, item := range s.TransConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTemplateResponseBodyTransConfigs struct {

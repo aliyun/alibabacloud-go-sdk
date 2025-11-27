@@ -50,7 +50,16 @@ func (s *BatchBindDirectoriesResponseBody) SetResults(v []*BatchBindDirectoriesR
 }
 
 func (s *BatchBindDirectoriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchBindDirectoriesResponseBodyResults struct {

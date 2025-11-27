@@ -50,7 +50,12 @@ func (s *BatchForbidVsStreamResponseBody) SetRequestId(v string) *BatchForbidVsS
 }
 
 func (s *BatchForbidVsStreamResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ForbidResult != nil {
+		if err := s.ForbidResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchForbidVsStreamResponseBodyForbidResult struct {
@@ -75,7 +80,16 @@ func (s *BatchForbidVsStreamResponseBodyForbidResult) SetForbidResultInfo(v []*B
 }
 
 func (s *BatchForbidVsStreamResponseBodyForbidResult) Validate() error {
-	return dara.Validate(s)
+	if s.ForbidResultInfo != nil {
+		for _, item := range s.ForbidResultInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchForbidVsStreamResponseBodyForbidResultForbidResultInfo struct {
@@ -139,7 +153,12 @@ func (s *BatchForbidVsStreamResponseBodyForbidResultForbidResultInfo) SetResult(
 }
 
 func (s *BatchForbidVsStreamResponseBodyForbidResultForbidResultInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Channels != nil {
+		if err := s.Channels.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchForbidVsStreamResponseBodyForbidResultForbidResultInfoChannels struct {

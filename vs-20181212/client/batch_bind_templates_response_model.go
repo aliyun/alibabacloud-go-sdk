@@ -59,5 +59,10 @@ func (s *BatchBindTemplatesResponse) SetBody(v *BatchBindTemplatesResponseBody) 
 }
 
 func (s *BatchBindTemplatesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

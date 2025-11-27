@@ -59,5 +59,10 @@ func (s *StopRecordStreamResponse) SetBody(v *StopRecordStreamResponseBody) *Sto
 }
 
 func (s *StopRecordStreamResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

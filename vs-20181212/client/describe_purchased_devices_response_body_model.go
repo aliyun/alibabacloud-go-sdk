@@ -110,7 +110,16 @@ func (s *DescribePurchasedDevicesResponseBody) SetTotalCount(v int64) *DescribeP
 }
 
 func (s *DescribePurchasedDevicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Devices != nil {
+		for _, item := range s.Devices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePurchasedDevicesResponseBodyDevices struct {
