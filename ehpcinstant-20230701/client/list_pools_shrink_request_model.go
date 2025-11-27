@@ -18,11 +18,16 @@ type iListPoolsShrinkRequest interface {
 }
 
 type ListPoolsShrinkRequest struct {
+	// Queries the filter conditions of a resource pool.
 	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on each page. Maximum value: 50. Default value: 10.
+	//
 	// example:
 	//
 	// 10

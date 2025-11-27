@@ -24,23 +24,38 @@ type iGetAppVersionsResponseBody interface {
 }
 
 type GetAppVersionsResponseBody struct {
+	// The list of application versions.
 	AppVersions []*GetAppVersionsResponseBodyAppVersions `json:"AppVersions,omitempty" xml:"AppVersions,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// true
+	//
+	// false
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -110,20 +125,35 @@ func (s *GetAppVersionsResponseBody) SetTotalCount(v int32) *GetAppVersionsRespo
 }
 
 func (s *GetAppVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppVersions != nil {
+		for _, item := range s.AppVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAppVersionsResponseBodyAppVersions struct {
+	// The image ID of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// m-f8z0dfa96luomqly****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// V-Ray
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The application version.
+	//
 	// example:
 	//
 	// v1.0

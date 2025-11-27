@@ -22,21 +22,30 @@ type iListActionPlanActivitiesResponseBody interface {
 }
 
 type ListActionPlanActivitiesResponseBody struct {
+	// The list of execution details of the execution plan.
 	ActionPlanActivities []*ListActionPlanActivitiesResponseBodyActionPlanActivities `json:"ActionPlanActivities,omitempty" xml:"ActionPlanActivities,omitempty" type:"Repeated"`
+	// The maximum number of records returned in this request.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Indicates the read position returned by the current call. An empty value means all data has been read.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1d2db86scXXXXXXXXXX
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 896D338C-E4F4-41EC-A154-D605E5DE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total data count under the current request conditions (optional; not returned by default).
+	//
 	// example:
 	//
 	// 40
@@ -97,31 +106,59 @@ func (s *ListActionPlanActivitiesResponseBody) SetTotalCount(v int32) *ListActio
 }
 
 func (s *ListActionPlanActivitiesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ActionPlanActivities != nil {
+		for _, item := range s.ActionPlanActivities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListActionPlanActivitiesResponseBodyActionPlanActivities struct {
+	// The activity ID of the execution plan.
+	//
 	// example:
 	//
 	// et-4119e3f60eb34fc4
 	ActionPlanActivityId *string `json:"ActionPlanActivityId,omitempty" xml:"ActionPlanActivityId,omitempty"`
+	// The increased capacity of this execution plan activity.
+	//
 	// example:
 	//
 	// 100
 	CreatedCapacity *float32 `json:"CreatedCapacity,omitempty" xml:"CreatedCapacity,omitempty"`
+	// The capacity released by this execution plan activity.
+	//
 	// example:
 	//
 	// 0
 	DestroyCapacity *float32 `json:"DestroyCapacity,omitempty" xml:"DestroyCapacity,omitempty"`
+	// The end time of the execution plan activity.
+	//
 	// example:
 	//
 	// 2025-08-10 18:28:05
-	EndTime *string                                                         `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Jobs    []*ListActionPlanActivitiesResponseBodyActionPlanActivitiesJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The list of Instant jobs involved in the execution plan.
+	Jobs []*ListActionPlanActivitiesResponseBodyActionPlanActivitiesJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	// The start time of the implementation of the planned activity.
+	//
 	// example:
 	//
 	// 2025-08-10 18:28:05
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The implementation status of the execution plan activity. Valid values:
+	//
+	// 	- InProcess
+	//
+	// 	- Completed
+	//
+	// 	- Failed
+	//
 	// example:
 	//
 	// InProcess
@@ -200,18 +237,37 @@ func (s *ListActionPlanActivitiesResponseBodyActionPlanActivities) SetStatus(v s
 }
 
 func (s *ListActionPlanActivitiesResponseBodyActionPlanActivities) Validate() error {
-	return dara.Validate(s)
+	if s.Jobs != nil {
+		for _, item := range s.Jobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListActionPlanActivitiesResponseBodyActionPlanActivitiesJobs struct {
+	// The ID of the job.
+	//
 	// example:
 	//
 	// job-hz12dqq8y3ormo1hz49h
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The operation type of the execution plan activity on the job. Possible values are as follows:
+	//
+	// 	- Create
+	//
+	// 	- Delete
+	//
 	// example:
 	//
 	// Create
 	JobOperationType *string `json:"JobOperationType,omitempty" xml:"JobOperationType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

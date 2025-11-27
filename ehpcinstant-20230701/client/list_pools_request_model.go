@@ -18,11 +18,16 @@ type iListPoolsRequest interface {
 }
 
 type ListPoolsRequest struct {
+	// Queries the filter conditions of a resource pool.
 	Filter *ListPoolsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on each page. Maximum value: 50. Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -65,16 +70,27 @@ func (s *ListPoolsRequest) SetPageSize(v int32) *ListPoolsRequest {
 }
 
 func (s *ListPoolsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPoolsRequestFilter struct {
+	// Queries the list of resource pool names.
 	PoolName []*string `json:"PoolName,omitempty" xml:"PoolName,omitempty" type:"Repeated"`
-	Status   []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	// Queries resource pool status list.
+	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	// For node pools created after this time, the time in the region is converted into a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1703819914
 	TimeCreatedAfter *int32 `json:"TimeCreatedAfter,omitempty" xml:"TimeCreatedAfter,omitempty"`
+	// For node pools created before this time, the time in the region is converted into a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1703820113

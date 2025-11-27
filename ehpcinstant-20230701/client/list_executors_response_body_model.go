@@ -22,19 +22,28 @@ type iListExecutorsResponseBody interface {
 }
 
 type ListExecutorsResponseBody struct {
+	// Executor list.
 	Executors []*ListExecutorsResponseBodyExecutors `json:"Executors,omitempty" xml:"Executors,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 896D338C-E4F4-41EC-A154-D605E5DE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 40
@@ -95,61 +104,139 @@ func (s *ListExecutorsResponseBody) SetTotalCount(v string) *ListExecutorsRespon
 }
 
 func (s *ListExecutorsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Executors != nil {
+		for _, item := range s.Executors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListExecutorsResponseBodyExecutors struct {
 	AllocationSpec *string `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
 	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The executor number.
+	//
 	// example:
 	//
 	// 0
 	ArrayIndex    *int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
 	BlockDuration *int32 `json:"BlockDuration,omitempty" xml:"BlockDuration,omitempty"`
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 2024-02-20 10:04:10
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The end time.
+	//
 	// example:
 	//
 	// 2024-02-20 10:04:18
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The executor ID. The format is JobId-TaskName-ArrayIndex.
+	//
 	// example:
 	//
 	// job-xxxx-task0-1
-	ExecutorId        *string   `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
-	ExpirationTime    *string   `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	ExecutorId     *string `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
+	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	// The list of public IP addresses of the nodes.
 	ExternalIpAddress []*string `json:"ExternalIpAddress,omitempty" xml:"ExternalIpAddress,omitempty" type:"Repeated"`
-	HostName          []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
-	Image             *string   `json:"Image,omitempty" xml:"Image,omitempty"`
-	IpAddress         []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
+	// The list of hostnames.
+	HostName []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
+	// Executor image.
+	//
+	// example:
+	//
+	// m-f8z0dfa96luxxxxx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The list of internal IP addresses.
+	IpAddress []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
+	// The job ID.
+	//
 	// example:
 	//
 	// job-hy1nggvyukuvkr******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// testJob
-	JobName      *string                                     `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	Preemptible  *bool                                       `json:"Preemptible,omitempty" xml:"Preemptible,omitempty"`
-	Resource     *ListExecutorsResponseBodyExecutorsResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
-	ResourceType *string                                     `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	StartTime    *string                                     `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	JobName     *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	Preemptible *bool   `json:"Preemptible,omitempty" xml:"Preemptible,omitempty"`
+	// The resource information.
+	Resource *ListExecutorsResponseBodyExecutorsResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	// The type of the resource.
+	//
+	// example:
+	//
+	// ECI
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The start time.
+	//
+	// example:
+	//
+	// 2024-02-20 10:04:13
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the executor. Valid values:
+	//
+	// 	- Pending
+	//
+	// 	- Initing
+	//
+	// 	- Succeed
+	//
+	// 	- Failed
+	//
+	// 	- Running
+	//
+	// 	- Unknown
+	//
+	// 	- Exception
+	//
+	// 	- Retrying
+	//
+	// 	- Expired
+	//
+	// 	- Deleted
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of the status reason.
+	//
 	// example:
 	//
 	// Succeeded to release executor resource
-	StatusReason *string                                   `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	Tags         []*ListExecutorsResponseBodyExecutorsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	// The list of executor tags.
+	Tags []*ListExecutorsResponseBodyExecutorsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The name of the task.
+	//
 	// example:
 	//
 	// task0
-	TaskName        *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// Indicate whether the job is a long-running job.
+	//
+	// example:
+	//
+	// true
 	TaskSustainable *bool   `json:"TaskSustainable,omitempty" xml:"TaskSustainable,omitempty"`
-	VswitchId       *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-xxx
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s ListExecutorsResponseBodyExecutors) String() string {
@@ -250,6 +337,10 @@ func (s *ListExecutorsResponseBodyExecutors) GetTaskName() *string {
 
 func (s *ListExecutorsResponseBodyExecutors) GetTaskSustainable() *bool {
 	return s.TaskSustainable
+}
+
+func (s *ListExecutorsResponseBodyExecutors) GetVpcId() *string {
+	return s.VpcId
 }
 
 func (s *ListExecutorsResponseBodyExecutors) GetVswitchId() *string {
@@ -371,20 +462,50 @@ func (s *ListExecutorsResponseBodyExecutors) SetTaskSustainable(v bool) *ListExe
 	return s
 }
 
+func (s *ListExecutorsResponseBodyExecutors) SetVpcId(v string) *ListExecutorsResponseBodyExecutors {
+	s.VpcId = &v
+	return s
+}
+
 func (s *ListExecutorsResponseBodyExecutors) SetVswitchId(v string) *ListExecutorsResponseBodyExecutors {
 	s.VswitchId = &v
 	return s
 }
 
 func (s *ListExecutorsResponseBodyExecutors) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		if err := s.Resource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListExecutorsResponseBodyExecutorsResource struct {
-	Cores        *float32                                           `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// The number of running CPUs.
+	//
+	// example:
+	//
+	// 1
+	Cores *float32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// The array of the disks.
 	Disks        []*ListExecutorsResponseBodyExecutorsResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
 	InstanceType *string                                            `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Memory       *float32                                           `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The total amount of memory resources. Unit: GiB.
+	//
+	// example:
+	//
+	// 4
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
 func (s ListExecutorsResponseBodyExecutorsResource) String() string {
@@ -432,11 +553,34 @@ func (s *ListExecutorsResponseBodyExecutorsResource) SetMemory(v float32) *ListE
 }
 
 func (s *ListExecutorsResponseBodyExecutorsResource) Validate() error {
-	return dara.Validate(s)
+	if s.Disks != nil {
+		for _, item := range s.Disks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListExecutorsResponseBodyExecutorsResourceDisks struct {
-	Size *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The size of the disk.
+	//
+	// example:
+	//
+	// 10
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The category of the disk. The following disk categories are supported:
+	//
+	// 	- System: system disk.
+	//
+	// 	- Data: data disk.
+	//
+	// example:
+	//
+	// System
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -471,7 +615,17 @@ func (s *ListExecutorsResponseBodyExecutorsResourceDisks) Validate() error {
 }
 
 type ListExecutorsResponseBodyExecutorsTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The key of the executor tag.
+	//
+	// example:
+	//
+	// TestKey
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the executor tag.
+	//
+	// example:
+	//
+	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

@@ -24,19 +24,39 @@ type iAddImageRequest interface {
 }
 
 type AddImageRequest struct {
+	// The configurations of the container image.
 	ContainerImageSpec *AddImageRequestContainerImageSpec `json:"ContainerImageSpec,omitempty" xml:"ContainerImageSpec,omitempty" type:"Struct"`
-	Description        *string                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageType          *string                            `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// The description of the image.
+	//
+	// example:
+	//
+	// Test image
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The type of the images. Valid values:
+	//
+	// 	- VM: virtual machine image.
+	//
+	// 	- Container: the container image.
+	//
+	// example:
+	//
+	// VM
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// The version of the image.
+	//
 	// example:
 	//
 	// V1.0
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
+	// The name of the custom image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-image
-	Name        *string                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The image configuration of the virtual machine.
 	VMImageSpec *AddImageRequestVMImageSpec `json:"VMImageSpec,omitempty" xml:"VMImageSpec,omitempty" type:"Struct"`
 }
 
@@ -103,23 +123,50 @@ func (s *AddImageRequest) SetVMImageSpec(v *AddImageRequestVMImageSpec) *AddImag
 }
 
 func (s *AddImageRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ContainerImageSpec != nil {
+		if err := s.ContainerImageSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VMImageSpec != nil {
+		if err := s.VMImageSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddImageRequestContainerImageSpec struct {
+	// Whether the instance is an Alibaba Cloud image repository Enterprise Edition.
+	//
+	// 	- True
+	//
+	// 	- False
+	//
 	// example:
 	//
 	// True
 	IsACREnterprise *bool `json:"IsACREnterprise,omitempty" xml:"IsACREnterprise,omitempty"`
+	// Whether it is an Alibaba Cloud image repository.
+	//
+	// 	- True
+	//
+	// 	- False
+	//
 	// example:
 	//
 	// True
-	IsACRRegistry      *bool                                                `json:"IsACRRegistry,omitempty" xml:"IsACRRegistry,omitempty"`
+	IsACRRegistry *bool `json:"IsACRRegistry,omitempty" xml:"IsACRRegistry,omitempty"`
+	// The authentication of the private image repository.
 	RegistryCredential *AddImageRequestContainerImageSpecRegistryCredential `json:"RegistryCredential,omitempty" xml:"RegistryCredential,omitempty" type:"Struct"`
+	// The ID of the Container Registry Enterprise Edition image repository.
+	//
 	// example:
 	//
 	// cri-xyz795ygf8k9****
 	RegistryCriId *string `json:"RegistryCriId,omitempty" xml:"RegistryCriId,omitempty"`
+	// The endpoint of the container image.
+	//
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com/ehpc_open/nginx:latest
@@ -180,18 +227,29 @@ func (s *AddImageRequestContainerImageSpec) SetRegistryUrl(v string) *AddImageRe
 }
 
 func (s *AddImageRequestContainerImageSpec) Validate() error {
-	return dara.Validate(s)
+	if s.RegistryCredential != nil {
+		if err := s.RegistryCredential.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddImageRequestContainerImageSpecRegistryCredential struct {
+	// The password of the logon user.
+	//
 	// example:
 	//
 	// userpassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The registered address of the image repository.
+	//
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com
 	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The username of the logon user.
+	//
 	// example:
 	//
 	// username
@@ -238,6 +296,8 @@ func (s *AddImageRequestContainerImageSpecRegistryCredential) Validate() error {
 }
 
 type AddImageRequestVMImageSpec struct {
+	// The image ID.
+	//
 	// example:
 	//
 	// m-bp1akkkr1rkxtb******

@@ -59,5 +59,10 @@ func (s *GetPoolResponse) SetBody(v *GetPoolResponseBody) *GetPoolResponse {
 }
 
 func (s *GetPoolResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -18,14 +18,28 @@ type iUpdateActionPlanRequest interface {
 }
 
 type UpdateActionPlanRequest struct {
+	// The ID of the execution plan.
+	//
 	// example:
 	//
 	// ap-hz036ubmx2qmw93k****
 	ActionPlanId *string `json:"ActionPlanId,omitempty" xml:"ActionPlanId,omitempty"`
+	// The expected scale of resources for the execution plan. If the ResourceType parameter is set to VcpuCapacity, the execution plan is expected to have 10000 vCPUs.
+	//
 	// example:
 	//
 	// 1000
 	DesiredCapacity *float32 `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
+	// Whether to enable the execution plan. Valid values:
+	//
+	// 	- true: enables the execution plan.
+	//
+	// 	- false: The execution plan is disabled.
+	//
+	//     **
+	//
+	//     **Note:*	- After an execution plan is disabled, the created Instant jobs are not automatically managed by the execution plan.
+	//
 	// example:
 	//
 	// true

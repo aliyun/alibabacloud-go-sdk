@@ -22,19 +22,28 @@ type iListJobsResponseBody interface {
 }
 
 type ListJobsResponseBody struct {
+	// The list of jobs.
 	JobList []*ListJobsResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 896D338C-E4F4-41EC-A154-D605E5DE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned. This parameter is optional and is not returned by default.
+	//
 	// example:
 	//
 	// 1
@@ -95,53 +104,110 @@ func (s *ListJobsResponseBody) SetTotalCount(v int32) *ListJobsResponseBody {
 }
 
 func (s *ListJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.JobList != nil {
+		for _, item := range s.JobList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListJobsResponseBodyJobList struct {
+	// The additional information about the application.
+	//
+	// example:
+	//
+	// {\\"xxx\\": \\"xxxxx\\"}
 	AppExtraInfo *string `json:"AppExtraInfo,omitempty" xml:"AppExtraInfo,omitempty"`
 	AppName      *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The time when the job was submitted.
+	//
 	// example:
 	//
 	// 2024-01-25 12:29:21
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The end time of the job.
+	//
 	// example:
 	//
 	// 2024-01-25 12:35:23
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The number of running nodes.
+	//
 	// example:
 	//
 	// 1
 	ExecutorCount *int32 `json:"ExecutorCount,omitempty" xml:"ExecutorCount,omitempty"`
+	// The description of the job.
+	//
 	// example:
 	//
 	// Demo
 	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
+	// The ID of the job.
+	//
 	// example:
 	//
 	// job-xxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// testJob
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The UID of the creator.
+	//
 	// example:
 	//
 	// 129**********
 	OwnerUid *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	// The start time of the job.
+	//
 	// example:
 	//
 	// 2024-01-25 12:29:23
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the job. Valid values:
+	//
+	// 	- Pending
+	//
+	// 	- Initing
+	//
+	// 	- Succeed
+	//
+	// 	- Failed
+	//
+	// 	- Running
+	//
+	// 	- Exception
+	//
+	// 	- Retrying
+	//
+	// 	- Expired
+	//
+	// 	- Deleting
+	//
+	// 	- Deleted
+	//
 	// example:
 	//
 	// Running
-	Status *string                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*ListJobsResponseBodyJobListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of job tags.
+	Tags []*ListJobsResponseBodyJobListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The number of tasks.
+	//
 	// example:
 	//
 	// 1
 	TaskCount *int32 `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
+	// Indicate whether the job is a long-running job.
+	//
 	// example:
 	//
 	// true
@@ -283,11 +349,30 @@ func (s *ListJobsResponseBodyJobList) SetTaskSustainable(v bool) *ListJobsRespon
 }
 
 func (s *ListJobsResponseBodyJobList) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListJobsResponseBodyJobListTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The key of the job tag.
+	//
+	// example:
+	//
+	// TestKey
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the job tag.
+	//
+	// example:
+	//
+	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

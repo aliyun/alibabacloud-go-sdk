@@ -18,9 +18,22 @@ type iDeleteJobsShrinkRequest interface {
 }
 
 type DeleteJobsShrinkRequest struct {
+	// The list of executor IDs. A maximum of 100 IDs are supported.
 	ExecutorIdsShrink *string `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty"`
-	JobScheduler      *string `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
-	JobSpecShrink     *string `json:"JobSpec,omitempty" xml:"JobSpec,omitempty"`
+	// The type of the job scheduler.
+	//
+	// 	- HPC
+	//
+	// 	- K8S
+	//
+	// Default value: HPC
+	//
+	// example:
+	//
+	// HPC
+	JobScheduler *string `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
+	// The information about the job to be deleted.
+	JobSpecShrink *string `json:"JobSpec,omitempty" xml:"JobSpec,omitempty"`
 }
 
 func (s DeleteJobsShrinkRequest) String() string {

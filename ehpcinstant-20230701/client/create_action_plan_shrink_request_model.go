@@ -32,36 +32,74 @@ type iCreateActionPlanShrinkRequest interface {
 }
 
 type CreateActionPlanShrinkRequest struct {
+	// The name of the execution plan.
+	//
 	// example:
 	//
 	// TestActionPlan
 	ActionPlanName *string `json:"ActionPlanName,omitempty" xml:"ActionPlanName,omitempty"`
+	// The type of the resource.
+	//
+	// 	- Standard
+	//
+	// 	- Dedicated: You must enable a whitelist for use.
+	//
+	// 	- Economic: You must enable a whitelist for use.
+	//
 	// example:
 	//
 	// Standard
 	AllocationSpec *string `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
+	// The ID of the application.
+	//
 	// example:
 	//
 	// ci-vm-rYfypJKwlN9Y
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The expected scale of resources for the execution plan. If the ResourceType parameter is set to VcpuCapacity, the execution plan is expected to have 10000 vCPUs.
+	//
 	// example:
 	//
 	// 1000
 	DesiredCapacity *float64 `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
+	// The computing power level. This value is valid only when the resource type is Economic. The following disk categories are supported:
+	//
+	// 	- General
+	//
+	// 	- Performance
+	//
+	// Default value: General
+	//
 	// example:
 	//
 	// General
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The pre-processing script. Base64 encoding is required.
+	//
 	// example:
 	//
 	// bHMgLWFsCmxzIC1hbGggfCB3YyAtbA==
-	PrologScript  *string `json:"PrologScript,omitempty" xml:"PrologScript,omitempty"`
+	PrologScript *string `json:"PrologScript,omitempty" xml:"PrologScript,omitempty"`
+	// The list of resource configurations in the region where the execution plan runs.
 	RegionsShrink *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
+	// Target resource type: the capacity of vCPUs or the number of execution nodes. Valid values:
+	//
+	// 	- VCpuCapacity
+	//
+	// 	- ExecutorCapacity
+	//
 	// example:
 	//
 	// VCpuCapacity
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The list of resource configurations of the execution plan runtime environment. You can configure 1 to 10 resources.
+	//
+	// example:
+	//
+	// 1000
 	ResourcesShrink *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The running-job script. Base64 encoding is required.
+	//
 	// example:
 	//
 	// bHMgLWFsCmxzIC1hbGggfCB3YyAtbA==

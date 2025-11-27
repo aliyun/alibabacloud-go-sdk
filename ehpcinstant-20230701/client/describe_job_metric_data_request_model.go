@@ -20,15 +20,22 @@ type iDescribeJobMetricDataRequest interface {
 }
 
 type DescribeJobMetricDataRequest struct {
+	// The list of array job indexes.
 	ArrayIndex []*int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty" type:"Repeated"`
+	// The job ID.
+	//
 	// example:
 	//
 	// job-xxxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The metrics of the job.
+	//
 	// example:
 	//
 	// cpu_utilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The name of the task.
+	//
 	// example:
 	//
 	// Task0

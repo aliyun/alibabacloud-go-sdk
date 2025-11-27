@@ -18,14 +18,20 @@ type iDescribeJobMetricDataResponseBody interface {
 }
 
 type DescribeJobMetricDataResponseBody struct {
+	// Monitoring statistics points.
+	//
 	// example:
 	//
 	// [{"timestamp":1709540685000,"Minimum":28.45,"Maximum":28.45,"Average":28.45}]
 	DataPoints *string `json:"DataPoints,omitempty" xml:"DataPoints,omitempty"`
+	// The statistical period of the monitoring data. Valid values: 15, 60, 900, and 3600. Unit: seconds.
+	//
 	// example:
 	//
 	// 15
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE7****

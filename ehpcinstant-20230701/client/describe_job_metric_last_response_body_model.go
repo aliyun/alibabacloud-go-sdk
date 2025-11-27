@@ -16,7 +16,10 @@ type iDescribeJobMetricLastResponseBody interface {
 }
 
 type DescribeJobMetricLastResponseBody struct {
+	// The list of the JobMetric details.
 	Metrics []*DescribeJobMetricLastResponseBodyMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE7****
@@ -50,14 +53,27 @@ func (s *DescribeJobMetricLastResponseBody) SetRequestId(v string) *DescribeJobM
 }
 
 func (s *DescribeJobMetricLastResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Metrics != nil {
+		for _, item := range s.Metrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeJobMetricLastResponseBodyMetrics struct {
+	// The index of the array job.
+	//
 	// example:
 	//
 	// 1
 	ArrayIndex *int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
+	// The monitoring item information corresponding to the array job index.
+	//
 	// example:
 	//
 	// {"memory_utilization": 37.42,"cpu_utilization": 1.008, "disk_utilization": 3.562}

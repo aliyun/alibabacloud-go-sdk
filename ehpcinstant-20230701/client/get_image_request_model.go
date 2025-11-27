@@ -21,11 +21,33 @@ type iGetImageRequest interface {
 
 type GetImageRequest struct {
 	AdditionalRegionIds []*string `json:"AdditionalRegionIds,omitempty" xml:"AdditionalRegionIds,omitempty" type:"Repeated"`
-	ImageCategory       *string   `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
+	// The source of the image. Valid values:
+	//
+	// 	- Public: public images provided by Alibaba Cloud.
+	//
+	// 	- Custom: the custom image that you added.
+	//
+	// example:
+	//
+	// Custom
+	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
+	// The image ID.
+	//
 	// example:
 	//
 	// m-2ze74g5mvy4pjg*****
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The type of the images. Valid values:
+	//
+	// 	- VM: virtual machine image.
+	//
+	// 	- Container: the container image.
+	//
+	// Default value: VM
+	//
+	// example:
+	//
+	// VM
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 }
 

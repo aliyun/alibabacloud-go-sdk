@@ -16,10 +16,14 @@ type iCreateActionPlanResponseBody interface {
 }
 
 type CreateActionPlanResponseBody struct {
+	// The ID of the execution plan.
+	//
 	// example:
 	//
 	// ap-hz036ubmx2qmw93k****
 	ActionPlanId *string `json:"ActionPlanId,omitempty" xml:"ActionPlanId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 896D338C-E4F4-41EC-A154-D605E5DE****

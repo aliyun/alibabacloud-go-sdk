@@ -16,12 +16,23 @@ type iRemoveImageRequest interface {
 }
 
 type RemoveImageRequest struct {
+	// The image ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// m-bp14wakr1rkxtb******
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The type of the images. Valid values:
+	//
+	// 	- VM: Virtual Machine Image
+	//
+	// 	- Container: container image
+	//
+	// example:
+	//
+	// VM
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 }
 

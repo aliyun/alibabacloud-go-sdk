@@ -26,20 +26,40 @@ type iCreateJobShrinkRequest interface {
 }
 
 type CreateJobShrinkRequest struct {
+	// Dependency policy.
 	DependencyPolicyShrink *string `json:"DependencyPolicy,omitempty" xml:"DependencyPolicy,omitempty"`
+	// The resource deployment policy.
 	DeploymentPolicyShrink *string `json:"DeploymentPolicy,omitempty" xml:"DeploymentPolicy,omitempty"`
+	// The description of the job.
+	//
 	// example:
 	//
 	// Demo
 	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
+	// The job name. The name must be 2 to 64 characters in length and can contain letters, digits, and Chinese characters. It can contain hyphens (-) and underscores (_).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testjob
-	JobName              *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	JobScheduler         *string `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The type of the job scheduler.
+	//
+	// 	- HPC
+	//
+	// 	- K8S
+	//
+	// Default value: HPC
+	//
+	// example:
+	//
+	// HPC
+	JobScheduler *string `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
+	// The security policy.
 	SecurityPolicyShrink *string `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty"`
+	// The list of tasks. Only one task is supported.
+	//
 	// This parameter is required.
 	TasksShrink *string `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
 }

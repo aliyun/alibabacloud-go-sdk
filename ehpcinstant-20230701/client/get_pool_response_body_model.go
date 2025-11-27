@@ -16,6 +16,7 @@ type iGetPoolResponseBody interface {
 }
 
 type GetPoolResponseBody struct {
+	// The information about the resource pool.
 	PoolInfo *GetPoolResponseBodyPoolInfo `json:"PoolInfo,omitempty" xml:"PoolInfo,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -52,42 +53,87 @@ func (s *GetPoolResponseBody) SetRequestId(v string) *GetPoolResponseBody {
 }
 
 func (s *GetPoolResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PoolInfo != nil {
+		if err := s.PoolInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPoolResponseBodyPoolInfo struct {
+	// The time when the resource pool is created.
+	//
 	// example:
 	//
 	// 2024-12-01 20:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The usage of execution nodes that are running in a resource pool.
+	//
 	// example:
 	//
 	// 1
 	ExectorUsage *int32 `json:"ExectorUsage,omitempty" xml:"ExectorUsage,omitempty"`
+	// Indices whether the resource pool is the default resource pool. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The maximum number of execution nodes that can run concurrently in a resource pool.
+	//
 	// example:
 	//
 	// 2000
 	MaxExectorNum *int32 `json:"MaxExectorNum,omitempty" xml:"MaxExectorNum,omitempty"`
+	// The name of the resource group.
+	//
+	// 	- The value can be up to 15 characters in length.
+	//
+	// 	- It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
+	//
 	// example:
 	//
 	// PoolTest
 	PoolName *string `json:"PoolName,omitempty" xml:"PoolName,omitempty"`
+	// The priority of the resource pool.
+	//
+	// 	- You can set a priority in the range of 1 to 99. The default value is 1, which is the lowest priority.
+	//
+	// 	- Jobs submitted to a resource pool with a higher priority level value will be scheduled before pending jobs in a resource pool with a lower priority level value, and the priority level of the resource pool takes precedence over the priority of the job.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The cause of the error.
+	//
 	// example:
 	//
 	// Fails to **	- pool: ***.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The status of the resource pool. Valid values:
+	//
+	// 	- Creating: The resource pool is being created.
+	//
+	// 	- Updating: The resource pool is being updated.
+	//
+	// 	- Deleting: The resource pool is being deleted.
+	//
+	// 	- Working: The resource pool is working.
+	//
+	// 	- Deleted: The resource pool is deleted.
+	//
 	// example:
 	//
 	// Working
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the resource pool was updated.
+	//
 	// example:
 	//
 	// 2024-12-01 20:00:00

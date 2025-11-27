@@ -18,11 +18,20 @@ type iListActionPlansRequest interface {
 }
 
 type ListActionPlansRequest struct {
+	// The IDs of the execution plans to be queried.
 	ActionPlanIds []*string `json:"ActionPlanIds,omitempty" xml:"ActionPlanIds,omitempty" type:"Repeated"`
+	// The maximum number of entries per page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token.
+	//
 	// example:
 	//
 	// 1d2db86scXXXXXXXXXX

@@ -18,11 +18,16 @@ type iDescribeJobMetricLastRequest interface {
 }
 
 type DescribeJobMetricLastRequest struct {
+	// The list of array job indexes.
 	ArrayIndex []*int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty" type:"Repeated"`
+	// The job ID.
+	//
 	// example:
 	//
 	// job-xxxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The name of the task.
+	//
 	// example:
 	//
 	// Task0

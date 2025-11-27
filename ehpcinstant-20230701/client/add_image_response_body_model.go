@@ -18,14 +18,24 @@ type iAddImageResponseBody interface {
 }
 
 type AddImageResponseBody struct {
+	// The image ID.
+	//
 	// example:
 	//
 	// m-bp1akkkr1rkxtb******
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// True

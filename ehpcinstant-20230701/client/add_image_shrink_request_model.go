@@ -24,19 +24,39 @@ type iAddImageShrinkRequest interface {
 }
 
 type AddImageShrinkRequest struct {
+	// The configurations of the container image.
 	ContainerImageSpecShrink *string `json:"ContainerImageSpec,omitempty" xml:"ContainerImageSpec,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageType                *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// The description of the image.
+	//
+	// example:
+	//
+	// Test image
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The type of the images. Valid values:
+	//
+	// 	- VM: virtual machine image.
+	//
+	// 	- Container: the container image.
+	//
+	// example:
+	//
+	// VM
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// The version of the image.
+	//
 	// example:
 	//
 	// V1.0
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
+	// The name of the custom image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-image
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The image configuration of the virtual machine.
 	VMImageSpecShrink *string `json:"VMImageSpec,omitempty" xml:"VMImageSpec,omitempty"`
 }
 

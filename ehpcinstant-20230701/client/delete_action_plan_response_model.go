@@ -59,5 +59,10 @@ func (s *DeleteActionPlanResponse) SetBody(v *DeleteActionPlanResponseBody) *Del
 }
 
 func (s *DeleteActionPlanResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

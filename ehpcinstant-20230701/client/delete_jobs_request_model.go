@@ -18,9 +18,22 @@ type iDeleteJobsRequest interface {
 }
 
 type DeleteJobsRequest struct {
-	ExecutorIds  []*string                   `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
-	JobScheduler *string                     `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
-	JobSpec      []*DeleteJobsRequestJobSpec `json:"JobSpec,omitempty" xml:"JobSpec,omitempty" type:"Repeated"`
+	// The list of executor IDs. A maximum of 100 IDs are supported.
+	ExecutorIds []*string `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
+	// The type of the job scheduler.
+	//
+	// 	- HPC
+	//
+	// 	- K8S
+	//
+	// Default value: HPC
+	//
+	// example:
+	//
+	// HPC
+	JobScheduler *string `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
+	// The information about the job to be deleted.
+	JobSpec []*DeleteJobsRequestJobSpec `json:"JobSpec,omitempty" xml:"JobSpec,omitempty" type:"Repeated"`
 }
 
 func (s DeleteJobsRequest) String() string {
@@ -59,14 +72,28 @@ func (s *DeleteJobsRequest) SetJobSpec(v []*DeleteJobsRequestJobSpec) *DeleteJob
 }
 
 func (s *DeleteJobsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.JobSpec != nil {
+		for _, item := range s.JobSpec {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteJobsRequestJobSpec struct {
+	// The ID of the job to be deleted.\\
+	//
+	// You can call the ListJobs operation to query job IDs.
+	//
 	// example:
 	//
 	// job-xxxx
-	JobId    *string                             `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The task details of the job to be deleted.
 	TaskSpec []*DeleteJobsRequestJobSpecTaskSpec `json:"TaskSpec,omitempty" xml:"TaskSpec,omitempty" type:"Repeated"`
 }
 
@@ -97,11 +124,23 @@ func (s *DeleteJobsRequestJobSpec) SetTaskSpec(v []*DeleteJobsRequestJobSpecTask
 }
 
 func (s *DeleteJobsRequestJobSpec) Validate() error {
-	return dara.Validate(s)
+	if s.TaskSpec != nil {
+		for _, item := range s.TaskSpec {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteJobsRequestJobSpecTaskSpec struct {
+	// The list of array job indexes to be deleted.
 	ArrayIndex []*int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty" type:"Repeated"`
+	// The name of the task to be deleted.
+	//
 	// example:
 	//
 	// task0

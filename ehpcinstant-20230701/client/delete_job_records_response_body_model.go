@@ -5,15 +5,15 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iTagResourcesResponseBody interface {
+type iDeleteJobRecordsResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetRequestId(v string) *TagResourcesResponseBody
+	SetRequestId(v string) *DeleteJobRecordsResponseBody
 	GetRequestId() *string
 }
 
-type TagResourcesResponseBody struct {
+type DeleteJobRecordsResponseBody struct {
 	// The request ID.
 	//
 	// example:
@@ -22,23 +22,23 @@ type TagResourcesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-func (s TagResourcesResponseBody) String() string {
+func (s DeleteJobRecordsResponseBody) String() string {
 	return dara.Prettify(s)
 }
 
-func (s TagResourcesResponseBody) GoString() string {
+func (s DeleteJobRecordsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *TagResourcesResponseBody) GetRequestId() *string {
+func (s *DeleteJobRecordsResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+func (s *DeleteJobRecordsResponseBody) SetRequestId(v string) *DeleteJobRecordsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *TagResourcesResponseBody) Validate() error {
+func (s *DeleteJobRecordsResponseBody) Validate() error {
 	return dara.Validate(s)
 }

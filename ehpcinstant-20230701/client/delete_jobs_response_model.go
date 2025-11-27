@@ -59,5 +59,10 @@ func (s *DeleteJobsResponse) SetBody(v *DeleteJobsResponseBody) *DeleteJobsRespo
 }
 
 func (s *DeleteJobsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -42,56 +42,94 @@ type iGetActionPlanResponseBody interface {
 }
 
 type GetActionPlanResponseBody struct {
+	// The ID of the execution plan.
+	//
 	// example:
 	//
 	// ap-hz036ubmx2qmw93k****
 	ActionPlanId *string `json:"ActionPlanId,omitempty" xml:"ActionPlanId,omitempty"`
+	// The name of the execution plan.
+	//
 	// example:
 	//
 	// TestActionPlan
 	ActionPlanName *string `json:"ActionPlanName,omitempty" xml:"ActionPlanName,omitempty"`
+	// The type of the resource.
+	//
 	// example:
 	//
 	// Standard
 	AllocationSpec *string `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
+	// The ID of the application.
+	//
 	// example:
 	//
 	// ci-vm-rYfypJKwlN9Y
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The time when the execution plan was created.
+	//
 	// example:
 	//
 	// 2025-08-10 18:28:05
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The expected scale of resources for the execution plan. If the ResourceType parameter is set to VcpuCapacity, the execution plan is expected to have 10000 vCPUs.
+	//
 	// example:
 	//
 	// 1000
 	DesiredCapacity *float32 `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
+	// The computing power level.
+	//
 	// example:
 	//
 	// General
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The pre-processing script. Base64 encoding is required.
+	//
 	// example:
 	//
 	// bHMgLWFsCmxzIC1hbGggfCB3YyAtbA==
-	PrologScript *string                             `json:"PrologScript,omitempty" xml:"PrologScript,omitempty"`
-	Regions      []*GetActionPlanResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	PrologScript *string `json:"PrologScript,omitempty" xml:"PrologScript,omitempty"`
+	// The list of resource configurations in the region where the execution plan runs.
+	Regions []*GetActionPlanResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 896D338C-E4F4-41EC-A154-D605E5DE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Target resource type: the capacity of vCPUs or the number of execution nodes. Valid values:
+	//
+	// 	- VCpuCapacity
+	//
+	// 	- ExecutorCapacity
+	//
 	// example:
 	//
 	// VCpuCapacity
-	ResourceType *string                               `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Resources    []*GetActionPlanResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The list of resource configurations of the execution plan runtime environment.
+	Resources []*GetActionPlanResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The status of the execution plan. The possible values are as follows:
+	//
+	// 	- Active Instant tasks are dynamically managed only when the execution plan is in the Active state.
+	//
+	// 	- Inactive Instant tasks are no longer managed by execution plans in the Inactive state.
+	//
+	// 	- Deleting You cannot modify the parameters of an execution plan in this state.
+	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The size of the resources currently managed by the execution plan.
+	//
 	// example:
 	//
 	// 1000
 	TotalCapacity *float32 `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
+	// The time when the execution plan was last modified.
+	//
 	// example:
 	//
 	// 2025-08-10 18:28:05
@@ -242,16 +280,38 @@ func (s *GetActionPlanResponseBody) SetUpdateTime(v string) *GetActionPlanRespon
 }
 
 func (s *GetActionPlanResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Regions != nil {
+		for _, item := range s.Regions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetActionPlanResponseBodyRegions struct {
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The list of security groups available for the execution plan in the region.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	VSwitchIds       []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// The list of VSwitches available for the execution plan in the region.
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 
 func (s GetActionPlanResponseBodyRegions) String() string {
@@ -294,10 +354,14 @@ func (s *GetActionPlanResponseBodyRegions) Validate() error {
 }
 
 type GetActionPlanResponseBodyResources struct {
+	// The number of CPUs in the running environment.
+	//
 	// example:
 	//
 	// 64
 	Cores *float32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// The memory size of the running environment. Unit: GiB.
+	//
 	// example:
 	//
 	// 128

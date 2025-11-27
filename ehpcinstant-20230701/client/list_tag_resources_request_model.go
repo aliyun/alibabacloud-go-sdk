@@ -22,22 +22,34 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResult *int32 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
+	// A pagination token.
+	//
 	// example:
 	//
 	// 1d2db86scXXXXXXXXXX
-	NextToken  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The list of resource IDs. Valid values of N: 1 to 50.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource. Valid values:
+	//
+	// 	- Job
+	//
+	// 	- Executor
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Job
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags to add to the replication pair-consistent group. You can specify up to 20 tags.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -94,14 +106,27 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 func (s *ListTagResourcesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTagResourcesRequestTag struct {
+	// The key of the tag.
+	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
 	// example:
 	//
 	// TestValue

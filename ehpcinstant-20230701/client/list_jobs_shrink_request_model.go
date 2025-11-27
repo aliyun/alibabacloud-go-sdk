@@ -20,15 +20,25 @@ type iListJobsShrinkRequest interface {
 }
 
 type ListJobsShrinkRequest struct {
+	// Queries job filter conditions.
 	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The page number.
+	//
+	// Pages start from page 1.
+	//
+	// Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on the current page. Default value: 50. Maximum value: 100.
+	//
 	// example:
 	//
 	// 50
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting method.
 	SortByShrink *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 

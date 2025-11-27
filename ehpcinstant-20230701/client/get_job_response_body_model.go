@@ -16,7 +16,10 @@ type iGetJobResponseBody interface {
 }
 
 type GetJobResponseBody struct {
+	// The job details.
 	JobInfo *GetJobResponseBodyJobInfo `json:"JobInfo,omitempty" xml:"JobInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 896D338C-E4F4-41EC-A154-D605E5DE****
@@ -50,43 +53,96 @@ func (s *GetJobResponseBody) SetRequestId(v string) *GetJobResponseBody {
 }
 
 func (s *GetJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.JobInfo != nil {
+		if err := s.JobInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobResponseBodyJobInfo struct {
+	// The additional information about the application.
+	//
+	// example:
+	//
+	// {\\"xxx\\": \\"xxxxx\\"}
 	AppExtraInfo *string `json:"AppExtraInfo,omitempty" xml:"AppExtraInfo,omitempty"`
+	// The time when the job was submitted.
+	//
 	// example:
 	//
 	// 2024-03-05 20:00:46
 	CreateTime       *string                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DependencyPolicy *GetJobResponseBodyJobInfoDependencyPolicy `json:"DependencyPolicy,omitempty" xml:"DependencyPolicy,omitempty" type:"Struct"`
+	// The resource deployment policy.
 	DeploymentPolicy *GetJobResponseBodyJobInfoDeploymentPolicy `json:"DeploymentPolicy,omitempty" xml:"DeploymentPolicy,omitempty" type:"Struct"`
+	// The time when the job is complete.
+	//
 	// example:
 	//
 	// 2024-03-05 20:01:48
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The description of the job.
+	//
 	// example:
 	//
 	// Demo
 	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
+	// The ID of the job.
+	//
 	// example:
 	//
 	// job-xxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// testJob
-	JobName      *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The type of the job scheduler.
+	//
+	// example:
+	//
+	// HPC
 	JobScheduler *string `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
+	// The time when the job started.
+	//
 	// example:
 	//
 	// 2024-03-05 20:00:48
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The job status. Valid values:
+	//
+	// 	- Pending: The job is being queued.
+	//
+	// 	- Initing: The job is being initialized.
+	//
+	// 	- Succeed: The job is successfully run.
+	//
+	// 	- Failed: The job failed to run.
+	//
+	// 	- Running: The job is running.
+	//
+	// 	- Exception: scheduling exception
+	//
+	// 	- Retrying: The job is being retried.
+	//
+	// 	- Expired: The job timed out.
+	//
+	// 	- Deleted: The job is deleted.
+	//
+	// 	- Suspended: job hibernation
+	//
+	// 	- Restarting: The job is being restarted.
+	//
 	// example:
 	//
 	// Succeed
-	Status *string                           `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tasks  []*GetJobResponseBodyJobInfoTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of tasks. Only one task is supported.
+	Tasks []*GetJobResponseBodyJobInfoTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s GetJobResponseBodyJobInfo) String() string {
@@ -206,7 +262,26 @@ func (s *GetJobResponseBodyJobInfo) SetTasks(v []*GetJobResponseBodyJobInfoTasks
 }
 
 func (s *GetJobResponseBodyJobInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DependencyPolicy != nil {
+		if err := s.DependencyPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeploymentPolicy != nil {
+		if err := s.DeploymentPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tasks != nil {
+		for _, item := range s.Tasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetJobResponseBodyJobInfoDependencyPolicy struct {
@@ -231,7 +306,16 @@ func (s *GetJobResponseBodyJobInfoDependencyPolicy) SetJobDependency(v []*GetJob
 }
 
 func (s *GetJobResponseBodyJobInfoDependencyPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.JobDependency != nil {
+		for _, item := range s.JobDependency {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetJobResponseBodyJobInfoDependencyPolicyJobDependency struct {
@@ -270,13 +354,28 @@ func (s *GetJobResponseBodyJobInfoDependencyPolicyJobDependency) Validate() erro
 }
 
 type GetJobResponseBodyJobInfoDeploymentPolicy struct {
+	// The type of the resource. Only Dedicated is supported. You must enable a whitelist.
+	//
 	// example:
 	//
 	// Dedicated
-	AllocationSpec *string                                           `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
-	Level          *string                                           `json:"Level,omitempty" xml:"Level,omitempty"`
-	Network        *GetJobResponseBodyJobInfoDeploymentPolicyNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	Tags           []*GetJobResponseBodyJobInfoDeploymentPolicyTags  `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	AllocationSpec *string `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
+	// The computing power level. The following disk categories are supported:
+	//
+	// 	- General
+	//
+	// 	- Performance
+	//
+	// Default value: General
+	//
+	// example:
+	//
+	// General
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The network configuration information.
+	Network *GetJobResponseBodyJobInfoDeploymentPolicyNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	// The list of job tags.
+	Tags []*GetJobResponseBodyJobInfoDeploymentPolicyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetJobResponseBodyJobInfoDeploymentPolicy) String() string {
@@ -324,13 +423,48 @@ func (s *GetJobResponseBodyJobInfoDeploymentPolicy) SetTags(v []*GetJobResponseB
 }
 
 func (s *GetJobResponseBodyJobInfoDeploymentPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.Network != nil {
+		if err := s.Network.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetJobResponseBodyJobInfoDeploymentPolicyNetwork struct {
-	EnableENIMapping        *bool     `json:"EnableENIMapping,omitempty" xml:"EnableENIMapping,omitempty"`
-	EnableExternalIpAddress *bool     `json:"EnableExternalIpAddress,omitempty" xml:"EnableExternalIpAddress,omitempty"`
-	Vswitch                 []*string `json:"Vswitch,omitempty" xml:"Vswitch,omitempty" type:"Repeated"`
+	// Whether the resource is created in the zone corresponding to the passed-in VSwitch parameter.
+	//
+	// 	- true: The resource is created in the zone corresponding to the passed-in VSwitch parameter.
+	//
+	// 	- false: The resource is created in any zone that has resources.
+	//
+	// example:
+	//
+	// false
+	EnableENIMapping *bool `json:"EnableENIMapping,omitempty" xml:"EnableENIMapping,omitempty"`
+	// Whether to create a public IP address.
+	//
+	// Valid values:
+	//
+	// 	- false: false.
+	//
+	// 	- true: true.
+	//
+	// example:
+	//
+	// false
+	EnableExternalIpAddress *bool `json:"EnableExternalIpAddress,omitempty" xml:"EnableExternalIpAddress,omitempty"`
+	// The VSwitch array.
+	Vswitch []*string `json:"Vswitch,omitempty" xml:"Vswitch,omitempty" type:"Repeated"`
 }
 
 func (s GetJobResponseBodyJobInfoDeploymentPolicyNetwork) String() string {
@@ -373,7 +507,17 @@ func (s *GetJobResponseBodyJobInfoDeploymentPolicyNetwork) Validate() error {
 }
 
 type GetJobResponseBodyJobInfoDeploymentPolicyTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The key of the job tag.
+	//
+	// example:
+	//
+	// TestKey
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the job tag.
+	//
+	// example:
+	//
+	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -408,13 +552,20 @@ func (s *GetJobResponseBodyJobInfoDeploymentPolicyTags) Validate() error {
 }
 
 type GetJobResponseBodyJobInfoTasks struct {
-	ExecutorPolicy *GetJobResponseBodyJobInfoTasksExecutorPolicy   `json:"ExecutorPolicy,omitempty" xml:"ExecutorPolicy,omitempty" type:"Struct"`
+	// The task execution policy.
+	ExecutorPolicy *GetJobResponseBodyJobInfoTasksExecutorPolicy `json:"ExecutorPolicy,omitempty" xml:"ExecutorPolicy,omitempty" type:"Struct"`
+	// The execution status of the task.
 	ExecutorStatus []*GetJobResponseBodyJobInfoTasksExecutorStatus `json:"ExecutorStatus,omitempty" xml:"ExecutorStatus,omitempty" type:"Repeated"`
+	// The name of the task.
+	//
 	// example:
 	//
 	// task0
-	TaskName *string                                 `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The details of the task specification.
 	TaskSpec *GetJobResponseBodyJobInfoTasksTaskSpec `json:"TaskSpec,omitempty" xml:"TaskSpec,omitempty" type:"Struct"`
+	// Indicate whether the job is a long-running job.
+	//
 	// example:
 	//
 	// true
@@ -475,11 +626,33 @@ func (s *GetJobResponseBodyJobInfoTasks) SetTaskSustainable(v bool) *GetJobRespo
 }
 
 func (s *GetJobResponseBodyJobInfoTasks) Validate() error {
-	return dara.Validate(s)
+	if s.ExecutorPolicy != nil {
+		if err := s.ExecutorPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExecutorStatus != nil {
+		for _, item := range s.ExecutorStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TaskSpec != nil {
+		if err := s.TaskSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobResponseBodyJobInfoTasksExecutorPolicy struct {
+	// The details of the array job.
 	ArraySpec *GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec `json:"ArraySpec,omitempty" xml:"ArraySpec,omitempty" type:"Struct"`
+	// The maximum number of nodes to run the job.
+	//
 	// example:
 	//
 	// 10
@@ -513,18 +686,31 @@ func (s *GetJobResponseBodyJobInfoTasksExecutorPolicy) SetMaxCount(v int32) *Get
 }
 
 func (s *GetJobResponseBodyJobInfoTasksExecutorPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.ArraySpec != nil {
+		if err := s.ArraySpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec struct {
+	// The end value of the array job index. Valid values: 0 to 4999. The value must be greater than or equal to the value of IndexStart.
+	//
 	// example:
 	//
 	// 9
 	IndexEnd *int32 `json:"IndexEnd,omitempty" xml:"IndexEnd,omitempty"`
+	// The starting value of the array job index. Valid values: 0 to 4999.
+	//
 	// example:
 	//
 	// 0
 	IndexStart *int32 `json:"IndexStart,omitempty" xml:"IndexStart,omitempty"`
+	// The interval of the array job index.
+	//
+	// > If the array job property is IndexStart=1,IndexEnd=5, and IndexStep=2, the array job contains three subtasks. The values of the subtask indexes are 1,3, and 5.
+	//
 	// example:
 	//
 	// 1
@@ -571,26 +757,38 @@ func (s *GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec) Validate() error
 }
 
 type GetJobResponseBodyJobInfoTasksExecutorStatus struct {
+	// Sub-job ID
+	//
 	// example:
 	//
 	// 0
 	ArrayId *int32 `json:"ArrayId,omitempty" xml:"ArrayId,omitempty"`
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2024-02-04 13:54:10
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The end time of the scaling plan job.
+	//
 	// example:
 	//
 	// 2024-02-04 13:54:10
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time of the scaling plan job.
+	//
 	// example:
 	//
 	// 2024-02-04 13:54:10
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the job.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The reason why the stack instance is in the OUTDATED state.
+	//
 	// example:
 	//
 	// Creating executor
@@ -664,8 +862,10 @@ func (s *GetJobResponseBodyJobInfoTasksExecutorStatus) Validate() error {
 }
 
 type GetJobResponseBodyJobInfoTasksTaskSpec struct {
-	Resource     *GetJobResponseBodyJobInfoTasksTaskSpecResource       `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
-	RetryPolicy  *GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicy    `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty" type:"Struct"`
+	// The resource information.
+	Resource    *GetJobResponseBodyJobInfoTasksTaskSpecResource    `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	RetryPolicy *GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicy `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty" type:"Struct"`
+	// The task execution configurations.
 	TaskExecutor []*GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor `json:"TaskExecutor,omitempty" xml:"TaskExecutor,omitempty" type:"Repeated"`
 }
 
@@ -705,18 +905,42 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpec) SetTaskExecutor(v []*GetJobResp
 }
 
 func (s *GetJobResponseBodyJobInfoTasksTaskSpec) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		if err := s.Resource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RetryPolicy != nil {
+		if err := s.RetryPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TaskExecutor != nil {
+		for _, item := range s.TaskExecutor {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetJobResponseBodyJobInfoTasksTaskSpecResource struct {
+	// The number of CPUs on which the job is run.
+	//
 	// example:
 	//
 	// 1
-	Cores          *float32                                               `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	Cores *float32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// The array of the disks.
 	Disks          []*GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
 	EnableHT       *bool                                                  `json:"EnableHT,omitempty" xml:"EnableHT,omitempty"`
 	HostNamePrefix *string                                                `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
 	InstanceTypes  []*string                                              `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	// The memory capacity. Unit: GiB.
+	//
 	// example:
 	//
 	// 4
@@ -786,14 +1010,31 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecResource) SetMemory(v int32) *Get
 }
 
 func (s *GetJobResponseBodyJobInfoTasksTaskSpecResource) Validate() error {
-	return dara.Validate(s)
+	if s.Disks != nil {
+		for _, item := range s.Disks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks struct {
+	// The size of the disk.
+	//
 	// example:
 	//
 	// 100
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The type of the disk. The following disk categories are supported:
+	//
+	// 	- System: system disk.
+	//
+	// 	- Data: data disk.
+	//
 	// example:
 	//
 	// System
@@ -862,7 +1103,16 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicy) SetRetryCount(v int3
 }
 
 func (s *GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.ExitCodeActions != nil {
+		for _, item := range s.ExitCodeActions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicyExitCodeActions struct {
@@ -901,6 +1151,7 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicyExitCodeActions) Valid
 }
 
 type GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor struct {
+	// Use ECS instances.
 	VM *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM `json:"VM,omitempty" xml:"VM,omitempty" type:"Struct"`
 }
 
@@ -922,18 +1173,29 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor) SetVM(v *GetJobResp
 }
 
 func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor) Validate() error {
-	return dara.Validate(s)
+	if s.VM != nil {
+		if err := s.VM.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM struct {
+	// The image ID.
+	//
 	// example:
 	//
 	// m-xxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The pre-processing script. Base64 encoding is required.
+	//
 	// example:
 	//
 	// ZWNobyAiMTIzNCIgPiBgZGF0ZSArJXNg
 	PrologScript *string `json:"PrologScript,omitempty" xml:"PrologScript,omitempty"`
+	// The running-job script. Base64 encoding is required.
+	//
 	// example:
 	//
 	// ZWNobyAiMTIzNCIgPiBgZGF0ZSArJXNg

@@ -20,19 +20,30 @@ type iUnTagResourcesRequest interface {
 }
 
 type UnTagResourcesRequest struct {
+	// Whether to delete all tags of the target resource. This field takes effect only when TagKey.N is left empty. Default False
+	//
 	// example:
 	//
 	// False
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The list of resource IDs. Valid values of N: 1 to 50.
+	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource. Valid values:
+	//
+	// 	- Job
+	//
+	// 	- Executor
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Job
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The list of tag keys, which can contain a maximum of 20 child items.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UnTagResourcesRequest) String() string {

@@ -22,14 +22,19 @@ type iListPoolsResponseBody interface {
 }
 
 type ListPoolsResponseBody struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on each page. Maximum value: 50. Default value: 10.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Queries the resource pool list.
 	PoolList []*ListPoolsResponseBodyPoolList `json:"PoolList,omitempty" xml:"PoolList,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -37,6 +42,8 @@ type ListPoolsResponseBody struct {
 	//
 	// 896D338C-E4F4-41EC-A154-D605E5DE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of list entries.
+	//
 	// example:
 	//
 	// 2
@@ -97,26 +104,67 @@ func (s *ListPoolsResponseBody) SetTotalCount(v int32) *ListPoolsResponseBody {
 }
 
 func (s *ListPoolsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PoolList != nil {
+		for _, item := range s.PoolList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPoolsResponseBodyPoolList struct {
+	// Indices whether the resource pool is the default resource pool. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The maximum number of execution nodes that can run concurrently in a resource pool.
+	//
 	// example:
 	//
 	// 2000
 	MaxExectorNum *int32 `json:"MaxExectorNum,omitempty" xml:"MaxExectorNum,omitempty"`
+	// The name of the resource pool.
+	//
+	// 	- The value can be up to 15 characters in length.
+	//
+	// 	- It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
+	//
 	// example:
 	//
 	// PoolTest
 	PoolName *string `json:"PoolName,omitempty" xml:"PoolName,omitempty"`
+	// The priority of the resource pool.
+	//
+	// 	- You can set a priority in the range of 1 to 99. The default value is 1, which is the lowest priority.
+	//
+	// 	- Jobs submitted to a resource pool with a higher priority level value will be scheduled before pending jobs in a resource pool with a lower priority level value, and the priority level of the resource pool takes precedence over the priority of the job.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The status of the resource pool. Valid values:
+	//
+	// 	- Creating: The resource pool is being created.
+	//
+	// 	- Updating: The resource pool is being updated.
+	//
+	// 	- Deleting: The resource pool is being deleted.
+	//
+	// 	- Working: The resource pool is working.
+	//
+	// 	- Deleted: The resource pool is deleted.
+	//
 	// example:
 	//
 	// Working

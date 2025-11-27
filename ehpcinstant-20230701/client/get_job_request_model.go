@@ -14,6 +14,8 @@ type iGetJobRequest interface {
 }
 
 type GetJobRequest struct {
+	// The ID of the job.
+	//
 	// example:
 	//
 	// job-xxxx

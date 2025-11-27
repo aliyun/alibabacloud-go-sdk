@@ -20,18 +20,26 @@ type iListJobExecutorsRequest interface {
 }
 
 type ListJobExecutorsRequest struct {
+	// The ID of the job.
+	//
 	// example:
 	//
 	// job-xxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The page number of the page to return.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// task0

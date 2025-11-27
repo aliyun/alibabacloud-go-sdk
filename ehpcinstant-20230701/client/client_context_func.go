@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 添加托管侧用户自定义镜像
+// Add a custom image.
 //
 // @param tmpReq - AddImageRequest
 //
@@ -17,9 +17,11 @@ import (
 //
 // @return AddImageResponse
 func (client *Client) AddImageWithContext(ctx context.Context, tmpReq *AddImageRequest, runtime *dara.RuntimeOptions) (_result *AddImageResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddImageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -81,7 +83,11 @@ func (client *Client) AddImageWithContext(ctx context.Context, tmpReq *AddImageR
 
 // Summary:
 //
-// 创建执行计划创建执行计划
+// Create a E-HPC execution plan.
+//
+// Description:
+//
+// *Make sure that you fully understand E-HPC Instnat billing methods and [prices](https://help.aliyun.com/zh/e-hpc/e-hpc-instant/product-overview/billing-overview?spm=a2c4g.11186623.help-menu-57664.d_0_2_0.5fdd28422y6UvO).
 //
 // @param tmpReq - CreateActionPlanRequest
 //
@@ -89,9 +95,11 @@ func (client *Client) AddImageWithContext(ctx context.Context, tmpReq *AddImageR
 //
 // @return CreateActionPlanResponse
 func (client *Client) CreateActionPlanWithContext(ctx context.Context, tmpReq *CreateActionPlanRequest, runtime *dara.RuntimeOptions) (_result *CreateActionPlanResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateActionPlanShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -169,7 +177,7 @@ func (client *Client) CreateActionPlanWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// 提交任务
+// Create a E-HPC Instant job.
 //
 // @param tmpReq - CreateJobRequest
 //
@@ -177,9 +185,11 @@ func (client *Client) CreateActionPlanWithContext(ctx context.Context, tmpReq *C
 //
 // @return CreateJobResponse
 func (client *Client) CreateJobWithContext(ctx context.Context, tmpReq *CreateJobRequest, runtime *dara.RuntimeOptions) (_result *CreateJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -253,7 +263,7 @@ func (client *Client) CreateJobWithContext(ctx context.Context, tmpReq *CreateJo
 
 // Summary:
 //
-// 创建资源池
+// Creates a resource pool.
 //
 // @param tmpReq - CreatePoolRequest
 //
@@ -261,9 +271,11 @@ func (client *Client) CreateJobWithContext(ctx context.Context, tmpReq *CreateJo
 //
 // @return CreatePoolResponse
 func (client *Client) CreatePoolWithContext(ctx context.Context, tmpReq *CreatePoolRequest, runtime *dara.RuntimeOptions) (_result *CreatePoolResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreatePoolShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -309,7 +321,13 @@ func (client *Client) CreatePoolWithContext(ctx context.Context, tmpReq *CreateP
 
 // Summary:
 //
-// 删除执行计划
+// # Delete an execution plan
+//
+// Description:
+//
+// *Make sure that you fully understand E-HPC Instnat billing methods and [prices](https://help.aliyun.com/zh/e-hpc/e-hpc-instant/product-overview/billing-overview?spm=a2c4g.11186623.help-menu-57664.d_0_2_0.5fdd28422y6UvO).**
+//
+// This operation stops all Instant jobs that are managed by ActionPlanId.
 //
 // @param request - DeleteActionPlanRequest
 //
@@ -317,9 +335,11 @@ func (client *Client) CreatePoolWithContext(ctx context.Context, tmpReq *CreateP
 //
 // @return DeleteActionPlanResponse
 func (client *Client) DeleteActionPlanWithContext(ctx context.Context, request *DeleteActionPlanRequest, runtime *dara.RuntimeOptions) (_result *DeleteActionPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActionPlanId) {
@@ -351,7 +371,57 @@ func (client *Client) DeleteActionPlanWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除作业
+// Deletes one or more job records that are in the final state from a specified cluster.
+//
+// @param tmpReq - DeleteJobRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteJobRecordsResponse
+func (client *Client) DeleteJobRecordsWithContext(ctx context.Context, tmpReq *DeleteJobRecordsRequest, runtime *dara.RuntimeOptions) (_result *DeleteJobRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteJobRecordsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.JobIds) {
+		request.JobIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.JobIds, dara.String("JobIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobIdsShrink) {
+		query["JobIds"] = request.JobIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteJobRecords"),
+		Version:     dara.String("2023-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteJobRecordsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes one or more jobs from a specified cluster.
 //
 // @param tmpReq - DeleteJobsRequest
 //
@@ -359,9 +429,11 @@ func (client *Client) DeleteActionPlanWithContext(ctx context.Context, request *
 //
 // @return DeleteJobsResponse
 func (client *Client) DeleteJobsWithContext(ctx context.Context, tmpReq *DeleteJobsRequest, runtime *dara.RuntimeOptions) (_result *DeleteJobsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteJobsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -411,7 +483,7 @@ func (client *Client) DeleteJobsWithContext(ctx context.Context, tmpReq *DeleteJ
 
 // Summary:
 //
-// 删除资源池
+// You can execute this statement to delete a resource pool.
 //
 // @param request - DeletePoolRequest
 //
@@ -419,9 +491,11 @@ func (client *Client) DeleteJobsWithContext(ctx context.Context, tmpReq *DeleteJ
 //
 // @return DeletePoolResponse
 func (client *Client) DeletePoolWithContext(ctx context.Context, request *DeletePoolRequest, runtime *dara.RuntimeOptions) (_result *DeletePoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PoolName) {
@@ -453,7 +527,7 @@ func (client *Client) DeletePoolWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// 查询作业性能数据
+// You can query the monitoring time series dataset of a job by specifying the job array index and query metric parameters.
 //
 // @param tmpReq - DescribeJobMetricDataRequest
 //
@@ -461,9 +535,11 @@ func (client *Client) DeletePoolWithContext(ctx context.Context, request *Delete
 //
 // @return DescribeJobMetricDataResponse
 func (client *Client) DescribeJobMetricDataWithContext(ctx context.Context, tmpReq *DescribeJobMetricDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeJobMetricDataResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeJobMetricDataShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -513,7 +589,7 @@ func (client *Client) DescribeJobMetricDataWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 查询作业即时监控项
+// Queries all instant monitoring metrics in the job array list by specifying a specific job array index list.
 //
 // @param tmpReq - DescribeJobMetricLastRequest
 //
@@ -521,9 +597,11 @@ func (client *Client) DescribeJobMetricDataWithContext(ctx context.Context, tmpR
 //
 // @return DescribeJobMetricLastResponse
 func (client *Client) DescribeJobMetricLastWithContext(ctx context.Context, tmpReq *DescribeJobMetricLastRequest, runtime *dara.RuntimeOptions) (_result *DescribeJobMetricLastResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeJobMetricLastShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -569,7 +647,7 @@ func (client *Client) DescribeJobMetricLastWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 查询执行计划详情
+// # Querying Execution Plan Details
 //
 // @param request - GetActionPlanRequest
 //
@@ -577,9 +655,11 @@ func (client *Client) DescribeJobMetricLastWithContext(ctx context.Context, tmpR
 //
 // @return GetActionPlanResponse
 func (client *Client) GetActionPlanWithContext(ctx context.Context, request *GetActionPlanRequest, runtime *dara.RuntimeOptions) (_result *GetActionPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActionPlanId) {
@@ -611,7 +691,7 @@ func (client *Client) GetActionPlanWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 查看应用版本列表
+// Obtains the application version list.
 //
 // @param request - GetAppVersionsRequest
 //
@@ -619,9 +699,11 @@ func (client *Client) GetActionPlanWithContext(ctx context.Context, request *Get
 //
 // @return GetAppVersionsResponse
 func (client *Client) GetAppVersionsWithContext(ctx context.Context, request *GetAppVersionsRequest, runtime *dara.RuntimeOptions) (_result *GetAppVersionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -669,7 +751,7 @@ func (client *Client) GetAppVersionsWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 查询托管侧镜像详情。
+// Obtains the information about an image.
 //
 // @param tmpReq - GetImageRequest
 //
@@ -677,9 +759,11 @@ func (client *Client) GetAppVersionsWithContext(ctx context.Context, request *Ge
 //
 // @return GetImageResponse
 func (client *Client) GetImageWithContext(ctx context.Context, tmpReq *GetImageRequest, runtime *dara.RuntimeOptions) (_result *GetImageResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetImageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -729,7 +813,7 @@ func (client *Client) GetImageWithContext(ctx context.Context, tmpReq *GetImageR
 
 // Summary:
 //
-// 查询作业详情
+// Obtains the details of an execution job.
 //
 // @param request - GetJobRequest
 //
@@ -737,9 +821,11 @@ func (client *Client) GetImageWithContext(ctx context.Context, tmpReq *GetImageR
 //
 // @return GetJobResponse
 func (client *Client) GetJobWithContext(ctx context.Context, request *GetJobRequest, runtime *dara.RuntimeOptions) (_result *GetJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -771,7 +857,7 @@ func (client *Client) GetJobWithContext(ctx context.Context, request *GetJobRequ
 
 // Summary:
 //
-// 查询队列详细信息
+// Obtains the details of a resource pool.
 //
 // @param request - GetPoolRequest
 //
@@ -779,9 +865,11 @@ func (client *Client) GetJobWithContext(ctx context.Context, request *GetJobRequ
 //
 // @return GetPoolResponse
 func (client *Client) GetPoolWithContext(ctx context.Context, request *GetPoolRequest, runtime *dara.RuntimeOptions) (_result *GetPoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PoolName) {
@@ -813,7 +901,7 @@ func (client *Client) GetPoolWithContext(ctx context.Context, request *GetPoolRe
 
 // Summary:
 //
-// 查询执行计划的执行情况。
+// Queries the execution status of an execution plan.
 //
 // @param request - ListActionPlanActivitiesRequest
 //
@@ -821,9 +909,11 @@ func (client *Client) GetPoolWithContext(ctx context.Context, request *GetPoolRe
 //
 // @return ListActionPlanActivitiesResponse
 func (client *Client) ListActionPlanActivitiesWithContext(ctx context.Context, request *ListActionPlanActivitiesRequest, runtime *dara.RuntimeOptions) (_result *ListActionPlanActivitiesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActionPlanId) {
@@ -863,7 +953,7 @@ func (client *Client) ListActionPlanActivitiesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询执行计划列表
+// Queries the list of execution plans.
 //
 // @param tmpReq - ListActionPlansRequest
 //
@@ -871,9 +961,11 @@ func (client *Client) ListActionPlanActivitiesWithContext(ctx context.Context, r
 //
 // @return ListActionPlansResponse
 func (client *Client) ListActionPlansWithContext(ctx context.Context, tmpReq *ListActionPlansRequest, runtime *dara.RuntimeOptions) (_result *ListActionPlansResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListActionPlansShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -919,7 +1011,7 @@ func (client *Client) ListActionPlansWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// 查询全局Executor信息
+// # Querying Global Executor Information
 //
 // @param tmpReq - ListExecutorsRequest
 //
@@ -927,9 +1019,11 @@ func (client *Client) ListActionPlansWithContext(ctx context.Context, tmpReq *Li
 //
 // @return ListExecutorsResponse
 func (client *Client) ListExecutorsWithContext(ctx context.Context, tmpReq *ListExecutorsRequest, runtime *dara.RuntimeOptions) (_result *ListExecutorsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListExecutorsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -975,7 +1069,7 @@ func (client *Client) ListExecutorsWithContext(ctx context.Context, tmpReq *List
 
 // Summary:
 //
-// 查看托管侧镜像列表
+// Queries the image list.
 //
 // @param tmpReq - ListImagesRequest
 //
@@ -983,9 +1077,11 @@ func (client *Client) ListExecutorsWithContext(ctx context.Context, tmpReq *List
 //
 // @return ListImagesResponse
 func (client *Client) ListImagesWithContext(ctx context.Context, tmpReq *ListImagesRequest, runtime *dara.RuntimeOptions) (_result *ListImagesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListImagesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1051,7 +1147,11 @@ func (client *Client) ListImagesWithContext(ctx context.Context, tmpReq *ListIma
 
 // Summary:
 //
-// 查询作业Executor信息
+// Queries job executor information.
+//
+// Description:
+//
+// Queries job executor information.
 //
 // @param request - ListJobExecutorsRequest
 //
@@ -1059,9 +1159,11 @@ func (client *Client) ListImagesWithContext(ctx context.Context, tmpReq *ListIma
 //
 // @return ListJobExecutorsResponse
 func (client *Client) ListJobExecutorsWithContext(ctx context.Context, request *ListJobExecutorsRequest, runtime *dara.RuntimeOptions) (_result *ListJobExecutorsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -1105,7 +1207,7 @@ func (client *Client) ListJobExecutorsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询作业列表
+// Queries the jobs in a cluster.
 //
 // @param tmpReq - ListJobsRequest
 //
@@ -1113,9 +1215,11 @@ func (client *Client) ListJobExecutorsWithContext(ctx context.Context, request *
 //
 // @return ListJobsResponse
 func (client *Client) ListJobsWithContext(ctx context.Context, tmpReq *ListJobsRequest, runtime *dara.RuntimeOptions) (_result *ListJobsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListJobsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1169,7 +1273,7 @@ func (client *Client) ListJobsWithContext(ctx context.Context, tmpReq *ListJobsR
 
 // Summary:
 //
-// 查询资源池列表
+// Queries the resource pool list.
 //
 // @param tmpReq - ListPoolsRequest
 //
@@ -1177,9 +1281,11 @@ func (client *Client) ListJobsWithContext(ctx context.Context, tmpReq *ListJobsR
 //
 // @return ListPoolsResponse
 func (client *Client) ListPoolsWithContext(ctx context.Context, tmpReq *ListPoolsRequest, runtime *dara.RuntimeOptions) (_result *ListPoolsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListPoolsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1225,7 +1331,7 @@ func (client *Client) ListPoolsWithContext(ctx context.Context, tmpReq *ListPool
 
 // Summary:
 //
-// 查询一个或多个资源已经绑定的标签列表
+// Queries the tags that are bound to one or more Instant resources.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -1233,9 +1339,11 @@ func (client *Client) ListPoolsWithContext(ctx context.Context, tmpReq *ListPool
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResult) {
@@ -1283,7 +1391,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 移除托管侧镜像信息。
+// # Remove a custom image
 //
 // @param request - RemoveImageRequest
 //
@@ -1291,9 +1399,11 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 //
 // @return RemoveImageResponse
 func (client *Client) RemoveImageWithContext(ctx context.Context, request *RemoveImageRequest, runtime *dara.RuntimeOptions) (_result *RemoveImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageId) {
@@ -1329,7 +1439,7 @@ func (client *Client) RemoveImageWithContext(ctx context.Context, request *Remov
 
 // Summary:
 //
-// 应用跨地域同步
+// # Application cross-region synchronization
 //
 // @param tmpReq - SynchronizeAppRequest
 //
@@ -1337,9 +1447,11 @@ func (client *Client) RemoveImageWithContext(ctx context.Context, request *Remov
 //
 // @return SynchronizeAppResponse
 func (client *Client) SynchronizeAppWithContext(ctx context.Context, tmpReq *SynchronizeAppRequest, runtime *dara.RuntimeOptions) (_result *SynchronizeAppResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SynchronizeAppShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1381,7 +1493,7 @@ func (client *Client) SynchronizeAppWithContext(ctx context.Context, tmpReq *Syn
 
 // Summary:
 //
-// 为指定的资源列表统一创建并绑定标签
+// # Create and bind tags to Instant resource list
 //
 // @param request - TagResourcesRequest
 //
@@ -1389,9 +1501,11 @@ func (client *Client) SynchronizeAppWithContext(ctx context.Context, tmpReq *Syn
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceId) {
@@ -1431,7 +1545,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// 为指定的ECS资源列表统一解绑标签
+// Unbind tags from Instant resource list. If the tag is not bound to other resources, the tag is automatically deleted.
 //
 // @param request - UnTagResourcesRequest
 //
@@ -1439,9 +1553,11 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 //
 // @return UnTagResourcesResponse
 func (client *Client) UnTagResourcesWithContext(ctx context.Context, request *UnTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UnTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -1485,7 +1601,7 @@ func (client *Client) UnTagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// 更新执行计划
+// # Adjust the resource scale of the execution plan or modify the execution status
 //
 // @param request - UpdateActionPlanRequest
 //
@@ -1493,9 +1609,11 @@ func (client *Client) UnTagResourcesWithContext(ctx context.Context, request *Un
 //
 // @return UpdateActionPlanResponse
 func (client *Client) UpdateActionPlanWithContext(ctx context.Context, request *UpdateActionPlanRequest, runtime *dara.RuntimeOptions) (_result *UpdateActionPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActionPlanId) {
@@ -1535,7 +1653,7 @@ func (client *Client) UpdateActionPlanWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 更新资源池
+// Update the resource pool configuration.
 //
 // @param tmpReq - UpdatePoolRequest
 //
@@ -1543,9 +1661,11 @@ func (client *Client) UpdateActionPlanWithContext(ctx context.Context, request *
 //
 // @return UpdatePoolResponse
 func (client *Client) UpdatePoolWithContext(ctx context.Context, tmpReq *UpdatePoolRequest, runtime *dara.RuntimeOptions) (_result *UpdatePoolResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdatePoolShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)

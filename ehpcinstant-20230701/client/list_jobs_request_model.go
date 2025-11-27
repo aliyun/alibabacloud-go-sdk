@@ -20,16 +20,26 @@ type iListJobsRequest interface {
 }
 
 type ListJobsRequest struct {
+	// Queries job filter conditions.
 	Filter *ListJobsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// The page number.
+	//
+	// Pages start from page 1.
+	//
+	// Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on the current page. Default value: 50. Maximum value: 100.
+	//
 	// example:
 	//
 	// 50
-	PageSize *int32                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy   *ListJobsRequestSortBy `json:"SortBy,omitempty" xml:"SortBy,omitempty" type:"Struct"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting method.
+	SortBy *ListJobsRequestSortBy `json:"SortBy,omitempty" xml:"SortBy,omitempty" type:"Struct"`
 }
 
 func (s ListJobsRequest) String() string {
@@ -77,26 +87,68 @@ func (s *ListJobsRequest) SetSortBy(v *ListJobsRequestSortBy) *ListJobsRequest {
 }
 
 func (s *ListJobsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SortBy != nil {
+		if err := s.SortBy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListJobsRequestFilter struct {
+	// The ID of the job.
+	//
 	// example:
 	//
 	// job-xxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The job name. Fuzzy search is supported.
+	//
 	// example:
 	//
 	// testJob
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The job status. Valid values:
+	//
+	// 	- Pending
+	//
+	// 	- initing
+	//
+	// 	- Succeed
+	//
+	// 	- Failed
+	//
+	// 	- Running
+	//
+	// 	- Exception
+	//
+	// 	- Retrying
+	//
+	// 	- Expired
+	//
+	// 	- Suspended
+	//
+	// 	- Restarting
+	//
+	// 	- Deleted
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// For jobs submitted after this time, the time in the region is converted into a UNIX timestamp (UI8).
+	//
 	// example:
 	//
 	// 1703819914
 	TimeCreatedAfter *int32 `json:"TimeCreatedAfter,omitempty" xml:"TimeCreatedAfter,omitempty"`
+	// For jobs submitted before this time, the time in the region is converted into a Unix timestamp (for domestic sites, the UI8 region).
+	//
 	// example:
 	//
 	// 1703820113
@@ -161,10 +213,22 @@ func (s *ListJobsRequestFilter) Validate() error {
 }
 
 type ListJobsRequestSortBy struct {
+	// The sorting label. Valid values:
+	//
+	// 	- time_start
+	//
+	// 	- job_name
+	//
 	// example:
 	//
 	// time_start
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The sorting order. Valid values:
+	//
+	// 	- ASC (default): ascending order
+	//
+	// 	- DESC: descending order
+	//
 	// example:
 	//
 	// ASC

@@ -18,14 +18,19 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// 1d2db86scXXXXXXXXXX
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE7****
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource list.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -65,7 +70,12 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v *ListTagResourcesRespon
 }
 
 func (s *ListTagResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TagResources != nil {
+		if err := s.TagResources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
@@ -90,22 +100,39 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 func (s *ListTagResourcesResponseBodyTagResources) Validate() error {
-	return dara.Validate(s)
+	if s.TagResource != nil {
+		for _, item := range s.TagResource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
+	// The ID of the resource.
+	//
 	// example:
 	//
 	// job-xxxxxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
 	// example:
 	//
 	// Job
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The key of the tag that is added to the resource.
+	//
 	// example:
 	//
 	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag.
+	//
 	// example:
 	//
 	// TestValue
