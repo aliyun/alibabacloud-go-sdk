@@ -53,7 +53,12 @@ func (s *RemoveUsersResponseBody) SetRequestId(v string) *RemoveUsersResponseBod
 }
 
 func (s *RemoveUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RemoveUsersResult != nil {
+		if err := s.RemoveUsersResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RemoveUsersResponseBodyRemoveUsersResult struct {
@@ -90,7 +95,16 @@ func (s *RemoveUsersResponseBodyRemoveUsersResult) SetRemovedUsers(v []*string) 
 }
 
 func (s *RemoveUsersResponseBodyRemoveUsersResult) Validate() error {
-	return dara.Validate(s)
+	if s.FailedUsers != nil {
+		for _, item := range s.FailedUsers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RemoveUsersResponseBodyRemoveUsersResultFailedUsers struct {

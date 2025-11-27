@@ -16,7 +16,10 @@ type iDescribeOrgByLayerResponseBody interface {
 }
 
 type DescribeOrgByLayerResponseBody struct {
+	// The organizations.
 	Orgs []*DescribeOrgByLayerResponseBodyOrgs `json:"Orgs,omitempty" xml:"Orgs,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -50,15 +53,29 @@ func (s *DescribeOrgByLayerResponseBody) SetRequestId(v string) *DescribeOrgByLa
 }
 
 func (s *DescribeOrgByLayerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Orgs != nil {
+		for _, item := range s.Orgs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOrgByLayerResponseBodyOrgs struct {
+	// The ID of the organization.
+	//
 	// example:
 	//
 	// org-1mox****
-	OrgId   *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// The name of the organization.
 	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	// The ID of the parent organization.
+	//
 	// example:
 	//
 	// org-ezqr****

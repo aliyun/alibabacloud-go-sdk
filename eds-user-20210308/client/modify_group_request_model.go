@@ -18,13 +18,22 @@ type iModifyGroupRequest interface {
 }
 
 type ModifyGroupRequest struct {
+	// The new description of the user group.
+	//
+	// example:
+	//
+	// TestGroup
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the user group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ug-12341234****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the new user group.
+	//
 	// This parameter is required.
 	NewGroupName *string `json:"NewGroupName,omitempty" xml:"NewGroupName,omitempty"`
 }

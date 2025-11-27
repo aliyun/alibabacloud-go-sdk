@@ -53,7 +53,12 @@ func (s *CreatePropertyResponseBody) SetRequestId(v string) *CreatePropertyRespo
 }
 
 func (s *CreatePropertyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CreateResult != nil {
+		if err := s.CreateResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePropertyResponseBodyCreateResult struct {
@@ -109,7 +114,12 @@ func (s *CreatePropertyResponseBodyCreateResult) SetSavePropertyValueModel(v *Cr
 }
 
 func (s *CreatePropertyResponseBodyCreateResult) Validate() error {
-	return dara.Validate(s)
+	if s.SavePropertyValueModel != nil {
+		if err := s.SavePropertyValueModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePropertyResponseBodyCreateResultSavePropertyValueModel struct {
@@ -146,7 +156,25 @@ func (s *CreatePropertyResponseBodyCreateResultSavePropertyValueModel) SetSavePr
 }
 
 func (s *CreatePropertyResponseBodyCreateResultSavePropertyValueModel) Validate() error {
-	return dara.Validate(s)
+	if s.FailedPropertyValues != nil {
+		for _, item := range s.FailedPropertyValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SavePropertyValues != nil {
+		for _, item := range s.SavePropertyValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreatePropertyResponseBodyCreateResultSavePropertyValueModelFailedPropertyValues struct {

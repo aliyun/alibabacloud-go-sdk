@@ -70,7 +70,16 @@ func (s *ListPropertyResponseBody) SetRequestId(v string) *ListPropertyResponseB
 }
 
 func (s *ListPropertyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Properties != nil {
+		for _, item := range s.Properties {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPropertyResponseBodyProperties struct {
@@ -126,7 +135,16 @@ func (s *ListPropertyResponseBodyProperties) SetPropertyValues(v []*ListProperty
 }
 
 func (s *ListPropertyResponseBodyProperties) Validate() error {
-	return dara.Validate(s)
+	if s.PropertyValues != nil {
+		for _, item := range s.PropertyValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPropertyResponseBodyPropertiesPropertyValues struct {

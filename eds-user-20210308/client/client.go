@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -57,7 +58,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 批量设置桌面管理员
+// Grants or revokes the local administrator permissions on cloud computers for convenience accounts.
+//
+// Description:
+//
+// Convenience accounts with the local administrator permissions on cloud computers can install software and modify system settings on cloud computers.
 //
 // @param request - BatchSetDesktopManagerRequest
 //
@@ -65,9 +70,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return BatchSetDesktopManagerResponse
 func (client *Client) BatchSetDesktopManagerWithOptions(request *BatchSetDesktopManagerRequest, runtime *dara.RuntimeOptions) (_result *BatchSetDesktopManagerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IsDesktopManager) {
@@ -103,7 +110,11 @@ func (client *Client) BatchSetDesktopManagerWithOptions(request *BatchSetDesktop
 
 // Summary:
 //
-// 批量设置桌面管理员
+// Grants or revokes the local administrator permissions on cloud computers for convenience accounts.
+//
+// Description:
+//
+// Convenience accounts with the local administrator permissions on cloud computers can install software and modify system settings on cloud computers.
 //
 // @param request - BatchSetDesktopManagerRequest
 //
@@ -129,9 +140,11 @@ func (client *Client) BatchSetDesktopManager(request *BatchSetDesktopManagerRequ
 //
 // @return ChangeUserPasswordResponse
 func (client *Client) ChangeUserPasswordWithOptions(request *ChangeUserPasswordRequest, runtime *dara.RuntimeOptions) (_result *ChangeUserPasswordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EndUserId) {
@@ -193,9 +206,11 @@ func (client *Client) ChangeUserPassword(request *ChangeUserPasswordRequest) (_r
 //
 // @return CheckUsedPropertyResponse
 func (client *Client) CheckUsedPropertyWithOptions(request *CheckUsedPropertyRequest, runtime *dara.RuntimeOptions) (_result *CheckUsedPropertyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PropertyId) {
@@ -257,9 +272,11 @@ func (client *Client) CheckUsedProperty(request *CheckUsedPropertyRequest) (_res
 //
 // @return CheckUsedPropertyValueResponse
 func (client *Client) CheckUsedPropertyValueWithOptions(request *CheckUsedPropertyValueRequest, runtime *dara.RuntimeOptions) (_result *CheckUsedPropertyValueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PropertyId) {
@@ -317,7 +334,7 @@ func (client *Client) CheckUsedPropertyValue(request *CheckUsedPropertyValueRequ
 
 // Summary:
 //
-// 创建角色.
+// Creates a user group.
 //
 // @param request - CreateGroupRequest
 //
@@ -325,9 +342,11 @@ func (client *Client) CheckUsedPropertyValue(request *CheckUsedPropertyValueRequ
 //
 // @return CreateGroupResponse
 func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -375,7 +394,7 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 
 // Summary:
 //
-// 创建角色.
+// Creates a user group.
 //
 // @param request - CreateGroupRequest
 //
@@ -393,7 +412,7 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 
 // Summary:
 //
-// 创建组织
+// Creates an organization.
 //
 // @param request - CreateOrgRequest
 //
@@ -401,9 +420,11 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 //
 // @return CreateOrgResponse
 func (client *Client) CreateOrgWithOptions(request *CreateOrgRequest, runtime *dara.RuntimeOptions) (_result *CreateOrgResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrgName) {
@@ -439,7 +460,7 @@ func (client *Client) CreateOrgWithOptions(request *CreateOrgRequest, runtime *d
 
 // Summary:
 //
-// 创建组织
+// Creates an organization.
 //
 // @param request - CreateOrgRequest
 //
@@ -465,9 +486,11 @@ func (client *Client) CreateOrg(request *CreateOrgRequest) (_result *CreateOrgRe
 //
 // @return CreatePropertyResponse
 func (client *Client) CreatePropertyWithOptions(request *CreatePropertyRequest, runtime *dara.RuntimeOptions) (_result *CreatePropertyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PropertyKey) {
@@ -521,7 +544,7 @@ func (client *Client) CreateProperty(request *CreatePropertyRequest) (_result *C
 
 // Summary:
 //
-// 创建资源组
+// Creates a resource group.
 //
 // @param request - CreateResourceGroupRequest
 //
@@ -529,9 +552,11 @@ func (client *Client) CreateProperty(request *CreatePropertyRequest) (_result *C
 //
 // @return CreateResourceGroupResponse
 func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsResourceGroupWithOfficeSite) {
@@ -571,7 +596,7 @@ func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGrou
 
 // Summary:
 //
-// 创建资源组
+// Creates a resource group.
 //
 // @param request - CreateResourceGroupRequest
 //
@@ -601,9 +626,11 @@ func (client *Client) CreateResourceGroup(request *CreateResourceGroupRequest) (
 //
 // @return CreateUsersResponse
 func (client *Client) CreateUsersWithOptions(request *CreateUsersRequest, runtime *dara.RuntimeOptions) (_result *CreateUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoLockTime) {
@@ -683,9 +710,11 @@ func (client *Client) CreateUsers(request *CreateUsersRequest) (_result *CreateU
 //
 // @return DeleteResourceGroupResponse
 func (client *Client) DeleteResourceGroupWithOptions(request *DeleteResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceGroupId) {
@@ -751,9 +780,11 @@ func (client *Client) DeleteResourceGroup(request *DeleteResourceGroupRequest) (
 //
 // @return DeleteUserPropertyValueResponse
 func (client *Client) DeleteUserPropertyValueWithOptions(request *DeleteUserPropertyValueRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserPropertyValueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PropertyId) {
@@ -815,7 +846,7 @@ func (client *Client) DeleteUserPropertyValue(request *DeleteUserPropertyValueRe
 
 // Summary:
 //
-// 全量同步初始化
+// Queries the members of a user group.
 //
 // @param request - DescribeGroupUserRequest
 //
@@ -823,9 +854,11 @@ func (client *Client) DeleteUserPropertyValue(request *DeleteUserPropertyValueRe
 //
 // @return DescribeGroupUserResponse
 func (client *Client) DescribeGroupUserWithOptions(request *DescribeGroupUserRequest, runtime *dara.RuntimeOptions) (_result *DescribeGroupUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -877,7 +910,7 @@ func (client *Client) DescribeGroupUserWithOptions(request *DescribeGroupUserReq
 
 // Summary:
 //
-// 全量同步初始化
+// Queries the members of a user group.
 //
 // @param request - DescribeGroupUserRequest
 //
@@ -895,7 +928,7 @@ func (client *Client) DescribeGroupUser(request *DescribeGroupUserRequest) (_res
 
 // Summary:
 //
-// 全量同步初始化.
+// Queries user groups.
 //
 // @param request - DescribeGroupsRequest
 //
@@ -903,9 +936,11 @@ func (client *Client) DescribeGroupUser(request *DescribeGroupUserRequest) (_res
 //
 // @return DescribeGroupsResponse
 func (client *Client) DescribeGroupsWithOptions(request *DescribeGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -922,6 +957,10 @@ func (client *Client) DescribeGroupsWithOptions(request *DescribeGroupsRequest, 
 
 	if !dara.IsNil(request.GroupName) {
 		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.IdpId) {
+		query["IdpId"] = request.IdpId
 	}
 
 	if !dara.IsNil(request.LoginPolicyId) {
@@ -969,7 +1008,7 @@ func (client *Client) DescribeGroupsWithOptions(request *DescribeGroupsRequest, 
 
 // Summary:
 //
-// 全量同步初始化.
+// Queries user groups.
 //
 // @param request - DescribeGroupsRequest
 //
@@ -987,7 +1026,7 @@ func (client *Client) DescribeGroups(request *DescribeGroupsRequest) (_result *D
 
 // Summary:
 //
-// Queries the information about virtual multi-factor authentication (MFA) devices that are bound to convenience users.
+// Queries the information about virtual multi-factor authentication (MFA) devices that are bound to convenience accounts.
 //
 // @param request - DescribeMfaDevicesRequest
 //
@@ -995,9 +1034,11 @@ func (client *Client) DescribeGroups(request *DescribeGroupsRequest) (_result *D
 //
 // @return DescribeMfaDevicesResponse
 func (client *Client) DescribeMfaDevicesWithOptions(request *DescribeMfaDevicesRequest, runtime *dara.RuntimeOptions) (_result *DescribeMfaDevicesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdDomain) {
@@ -1049,7 +1090,7 @@ func (client *Client) DescribeMfaDevicesWithOptions(request *DescribeMfaDevicesR
 
 // Summary:
 //
-// Queries the information about virtual multi-factor authentication (MFA) devices that are bound to convenience users.
+// Queries the information about virtual multi-factor authentication (MFA) devices that are bound to convenience accounts.
 //
 // @param request - DescribeMfaDevicesRequest
 //
@@ -1067,7 +1108,7 @@ func (client *Client) DescribeMfaDevices(request *DescribeMfaDevicesRequest) (_r
 
 // Summary:
 //
-// 查找下级组织
+// Queries subordinate organizations.
 //
 // @param request - DescribeOrgByLayerRequest
 //
@@ -1075,9 +1116,11 @@ func (client *Client) DescribeMfaDevices(request *DescribeMfaDevicesRequest) (_r
 //
 // @return DescribeOrgByLayerResponse
 func (client *Client) DescribeOrgByLayerWithOptions(request *DescribeOrgByLayerRequest, runtime *dara.RuntimeOptions) (_result *DescribeOrgByLayerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OrgName) {
@@ -1113,7 +1156,7 @@ func (client *Client) DescribeOrgByLayerWithOptions(request *DescribeOrgByLayerR
 
 // Summary:
 //
-// 查找下级组织
+// Queries subordinate organizations.
 //
 // @param request - DescribeOrgByLayerRequest
 //
@@ -1143,9 +1186,11 @@ func (client *Client) DescribeOrgByLayer(request *DescribeOrgByLayerRequest) (_r
 //
 // @return DescribeOrgsResponse
 func (client *Client) DescribeOrgsWithOptions(tmpReq *DescribeOrgsRequest, runtime *dara.RuntimeOptions) (_result *DescribeOrgsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeOrgsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1221,7 +1266,7 @@ func (client *Client) DescribeOrgs(request *DescribeOrgsRequest) (_result *Descr
 
 // Summary:
 //
-// 查看资源组
+// Queries resource groups.
 //
 // @param request - DescribeResourceGroupsRequest
 //
@@ -1229,9 +1274,11 @@ func (client *Client) DescribeOrgs(request *DescribeOrgsRequest) (_result *Descr
 //
 // @return DescribeResourceGroupsResponse
 func (client *Client) DescribeResourceGroupsWithOptions(request *DescribeResourceGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NeedContainResourceGroupWithOfficeSite) {
@@ -1283,7 +1330,7 @@ func (client *Client) DescribeResourceGroupsWithOptions(request *DescribeResourc
 
 // Summary:
 //
-// 查看资源组
+// Queries resource groups.
 //
 // @param request - DescribeResourceGroupsRequest
 //
@@ -1309,9 +1356,11 @@ func (client *Client) DescribeResourceGroups(request *DescribeResourceGroupsRequ
 //
 // @return DescribeUsersResponse
 func (client *Client) DescribeUsersWithOptions(tmpReq *DescribeUsersRequest, runtime *dara.RuntimeOptions) (_result *DescribeUsersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeUsersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1441,9 +1490,11 @@ func (client *Client) DescribeUsers(request *DescribeUsersRequest) (_result *Des
 //
 // @return FilterUsersResponse
 func (client *Client) FilterUsersWithOptions(tmpReq *FilterUsersRequest, runtime *dara.RuntimeOptions) (_result *FilterUsersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FilterUsersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1563,9 +1614,11 @@ func (client *Client) FilterUsers(request *FilterUsersRequest) (_result *FilterU
 //
 // @return GetManagerInfoByAuthCodeResponse
 func (client *Client) GetManagerInfoByAuthCodeWithOptions(request *GetManagerInfoByAuthCodeRequest, runtime *dara.RuntimeOptions) (_result *GetManagerInfoByAuthCodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthCode) {
@@ -1615,7 +1668,7 @@ func (client *Client) GetManagerInfoByAuthCode(request *GetManagerInfoByAuthCode
 
 // Summary:
 //
-// 初始化TenantAlias
+// Initializes an organization ID.
 //
 // @param request - InitTenantAliasRequest
 //
@@ -1646,7 +1699,7 @@ func (client *Client) InitTenantAliasWithOptions(runtime *dara.RuntimeOptions) (
 
 // Summary:
 //
-// 初始化TenantAlias
+// Initializes an organization ID.
 //
 // @return InitTenantAliasResponse
 func (client *Client) InitTenantAlias() (_result *InitTenantAliasResponse, _err error) {
@@ -1717,9 +1770,11 @@ func (client *Client) ListProperty() (_result *ListPropertyResponse, _err error)
 //
 // @return ListPropertyValueResponse
 func (client *Client) ListPropertyValueWithOptions(request *ListPropertyValueRequest, runtime *dara.RuntimeOptions) (_result *ListPropertyValueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PropertyId) {
@@ -1781,9 +1836,11 @@ func (client *Client) ListPropertyValue(request *ListPropertyValueRequest) (_res
 //
 // @return LockMfaDeviceResponse
 func (client *Client) LockMfaDeviceWithOptions(request *LockMfaDeviceRequest, runtime *dara.RuntimeOptions) (_result *LockMfaDeviceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdDomain) {
@@ -1849,9 +1906,11 @@ func (client *Client) LockMfaDevice(request *LockMfaDeviceRequest) (_result *Loc
 //
 // @return LockUsersResponse
 func (client *Client) LockUsersWithOptions(request *LockUsersRequest, runtime *dara.RuntimeOptions) (_result *LockUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LogoutSession) {
@@ -1907,7 +1966,7 @@ func (client *Client) LockUsers(request *LockUsersRequest) (_result *LockUsersRe
 
 // Summary:
 //
-// 修改角色.
+// Modifies the name and description of a user group.
 //
 // @param request - ModifyGroupRequest
 //
@@ -1915,9 +1974,11 @@ func (client *Client) LockUsers(request *LockUsersRequest) (_result *LockUsersRe
 //
 // @return ModifyGroupResponse
 func (client *Client) ModifyGroupWithOptions(request *ModifyGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -1957,7 +2018,7 @@ func (client *Client) ModifyGroupWithOptions(request *ModifyGroupRequest, runtim
 
 // Summary:
 //
-// 修改角色.
+// Modifies the name and description of a user group.
 //
 // @param request - ModifyGroupRequest
 //
@@ -1975,7 +2036,7 @@ func (client *Client) ModifyGroup(request *ModifyGroupRequest) (_result *ModifyG
 
 // Summary:
 //
-// 修改组织
+// Modifies an organization.
 //
 // @param request - ModifyOrgRequest
 //
@@ -1983,9 +2044,11 @@ func (client *Client) ModifyGroup(request *ModifyGroupRequest) (_result *ModifyG
 //
 // @return ModifyOrgResponse
 func (client *Client) ModifyOrgWithOptions(request *ModifyOrgRequest, runtime *dara.RuntimeOptions) (_result *ModifyOrgResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrgId) {
@@ -2021,7 +2084,7 @@ func (client *Client) ModifyOrgWithOptions(request *ModifyOrgRequest, runtime *d
 
 // Summary:
 //
-// 修改组织
+// Modifies an organization.
 //
 // @param request - ModifyOrgRequest
 //
@@ -2047,9 +2110,11 @@ func (client *Client) ModifyOrg(request *ModifyOrgRequest) (_result *ModifyOrgRe
 //
 // @return ModifyUserResponse
 func (client *Client) ModifyUserWithOptions(request *ModifyUserRequest, runtime *dara.RuntimeOptions) (_result *ModifyUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Email) {
@@ -2107,7 +2172,7 @@ func (client *Client) ModifyUser(request *ModifyUserRequest) (_result *ModifyUse
 
 // Summary:
 //
-// 移动组织
+// Moves an organization.
 //
 // @param request - MoveOrgRequest
 //
@@ -2115,9 +2180,11 @@ func (client *Client) ModifyUser(request *ModifyUserRequest) (_result *ModifyUse
 //
 // @return MoveOrgResponse
 func (client *Client) MoveOrgWithOptions(request *MoveOrgRequest, runtime *dara.RuntimeOptions) (_result *MoveOrgResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.NewParentOrgId) {
@@ -2153,7 +2220,7 @@ func (client *Client) MoveOrgWithOptions(request *MoveOrgRequest, runtime *dara.
 
 // Summary:
 //
-// 移动组织
+// Moves an organization.
 //
 // @param request - MoveOrgRequest
 //
@@ -2171,7 +2238,7 @@ func (client *Client) MoveOrg(request *MoveOrgRequest) (_result *MoveOrgResponse
 
 // Summary:
 //
-// 移动用户组织
+// Moves users to a specific organization.
 //
 // @param request - MoveUserOrgRequest
 //
@@ -2179,9 +2246,11 @@ func (client *Client) MoveOrg(request *MoveOrgRequest) (_result *MoveOrgResponse
 //
 // @return MoveUserOrgResponse
 func (client *Client) MoveUserOrgWithOptions(request *MoveUserOrgRequest, runtime *dara.RuntimeOptions) (_result *MoveUserOrgResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EndUserIds) {
@@ -2217,7 +2286,7 @@ func (client *Client) MoveUserOrgWithOptions(request *MoveUserOrgRequest, runtim
 
 // Summary:
 //
-// 移动用户组织
+// Moves users to a specific organization.
 //
 // @param request - MoveUserOrgRequest
 //
@@ -2282,7 +2351,7 @@ func (client *Client) QuerySyncStatusByAliUid() (_result *QuerySyncStatusByAliUi
 
 // Summary:
 //
-// 删除角色.
+// Deletes a single user group or multiple user groups at a time.
 //
 // @param request - RemoveGroupRequest
 //
@@ -2290,9 +2359,11 @@ func (client *Client) QuerySyncStatusByAliUid() (_result *QuerySyncStatusByAliUi
 //
 // @return RemoveGroupResponse
 func (client *Client) RemoveGroupWithOptions(request *RemoveGroupRequest, runtime *dara.RuntimeOptions) (_result *RemoveGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -2328,7 +2399,7 @@ func (client *Client) RemoveGroupWithOptions(request *RemoveGroupRequest, runtim
 
 // Summary:
 //
-// 删除角色.
+// Deletes a single user group or multiple user groups at a time.
 //
 // @param request - RemoveGroupRequest
 //
@@ -2346,11 +2417,11 @@ func (client *Client) RemoveGroup(request *RemoveGroupRequest) (_result *RemoveG
 
 // Summary:
 //
-// Removes a virtual multi-factor authentication (MFA) device that is bound to a convenience user.
+// Removes a virtual multi-factor authentication (MFA) device that is bound to a convenience account.
 //
 // Description:
 //
-// If you remove a virtual MFA device that is bound to a convenience user, the convenience user can no longer use the virtual MFA device to log on to cloud desktops. Before the convenience user can log on to cloud desktops again, a new virtual MFA device must be bound to the convenience user.
+// If you remove a virtual MFA device that is bound to a convenience account, the convenience account can no longer use the virtual MFA device to log on to cloud computers. Before the convenience account can log on to Alibaba Cloud Workspace terminals again, a new virtual MFA device must be bound to the convenience account.
 //
 // @param request - RemoveMfaDeviceRequest
 //
@@ -2358,9 +2429,11 @@ func (client *Client) RemoveGroup(request *RemoveGroupRequest) (_result *RemoveG
 //
 // @return RemoveMfaDeviceResponse
 func (client *Client) RemoveMfaDeviceWithOptions(request *RemoveMfaDeviceRequest, runtime *dara.RuntimeOptions) (_result *RemoveMfaDeviceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdDomain) {
@@ -2396,11 +2469,11 @@ func (client *Client) RemoveMfaDeviceWithOptions(request *RemoveMfaDeviceRequest
 
 // Summary:
 //
-// Removes a virtual multi-factor authentication (MFA) device that is bound to a convenience user.
+// Removes a virtual multi-factor authentication (MFA) device that is bound to a convenience account.
 //
 // Description:
 //
-// If you remove a virtual MFA device that is bound to a convenience user, the convenience user can no longer use the virtual MFA device to log on to cloud desktops. Before the convenience user can log on to cloud desktops again, a new virtual MFA device must be bound to the convenience user.
+// If you remove a virtual MFA device that is bound to a convenience account, the convenience account can no longer use the virtual MFA device to log on to cloud computers. Before the convenience account can log on to Alibaba Cloud Workspace terminals again, a new virtual MFA device must be bound to the convenience account.
 //
 // @param request - RemoveMfaDeviceRequest
 //
@@ -2418,7 +2491,7 @@ func (client *Client) RemoveMfaDevice(request *RemoveMfaDeviceRequest) (_result 
 
 // Summary:
 //
-// 移除组织
+// Removes an organization.
 //
 // @param request - RemoveOrgRequest
 //
@@ -2426,9 +2499,11 @@ func (client *Client) RemoveMfaDevice(request *RemoveMfaDeviceRequest) (_result 
 //
 // @return RemoveOrgResponse
 func (client *Client) RemoveOrgWithOptions(request *RemoveOrgRequest, runtime *dara.RuntimeOptions) (_result *RemoveOrgResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OrgId) {
@@ -2460,7 +2535,7 @@ func (client *Client) RemoveOrgWithOptions(request *RemoveOrgRequest, runtime *d
 
 // Summary:
 //
-// 移除组织
+// Removes an organization.
 //
 // @param request - RemoveOrgRequest
 //
@@ -2486,9 +2561,11 @@ func (client *Client) RemoveOrg(request *RemoveOrgRequest) (_result *RemoveOrgRe
 //
 // @return RemovePropertyResponse
 func (client *Client) RemovePropertyWithOptions(request *RemovePropertyRequest, runtime *dara.RuntimeOptions) (_result *RemovePropertyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PropertyId) {
@@ -2546,9 +2623,11 @@ func (client *Client) RemoveProperty(request *RemovePropertyRequest) (_result *R
 //
 // @return RemoveUsersResponse
 func (client *Client) RemoveUsersWithOptions(request *RemoveUsersRequest, runtime *dara.RuntimeOptions) (_result *RemoveUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Users) {
@@ -2606,9 +2685,11 @@ func (client *Client) RemoveUsers(request *RemoveUsersRequest) (_result *RemoveU
 //
 // @return ResetUserPasswordResponse
 func (client *Client) ResetUserPasswordWithOptions(request *ResetUserPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetUserPasswordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.NotifyType) {
@@ -2670,9 +2751,11 @@ func (client *Client) ResetUserPassword(request *ResetUserPasswordRequest) (_res
 //
 // @return SetUserPropertyValueResponse
 func (client *Client) SetUserPropertyValueWithOptions(request *SetUserPropertyValueRequest, runtime *dara.RuntimeOptions) (_result *SetUserPropertyValueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PropertyId) {
@@ -2789,9 +2872,11 @@ func (client *Client) SyncAllEduInfo() (_result *SyncAllEduInfoResponse, _err er
 //
 // @return UnlockMfaDeviceResponse
 func (client *Client) UnlockMfaDeviceWithOptions(request *UnlockMfaDeviceRequest, runtime *dara.RuntimeOptions) (_result *UnlockMfaDeviceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdDomain) {
@@ -2853,9 +2938,11 @@ func (client *Client) UnlockMfaDevice(request *UnlockMfaDeviceRequest) (_result 
 //
 // @return UnlockUsersResponse
 func (client *Client) UnlockUsersWithOptions(request *UnlockUsersRequest, runtime *dara.RuntimeOptions) (_result *UnlockUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoLockTime) {
@@ -2919,9 +3006,11 @@ func (client *Client) UnlockUsers(request *UnlockUsersRequest) (_result *UnlockU
 //
 // @return UpdatePropertyResponse
 func (client *Client) UpdatePropertyWithOptions(request *UpdatePropertyRequest, runtime *dara.RuntimeOptions) (_result *UpdatePropertyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PropertyId) {
@@ -2979,7 +3068,7 @@ func (client *Client) UpdateProperty(request *UpdatePropertyRequest) (_result *U
 
 // Summary:
 //
-// 用户批量分配角色
+// Add multiple users to a user group at a time.
 //
 // @param request - UserBatchJoinGroupRequest
 //
@@ -2987,9 +3076,11 @@ func (client *Client) UpdateProperty(request *UpdatePropertyRequest) (_result *U
 //
 // @return UserBatchJoinGroupResponse
 func (client *Client) UserBatchJoinGroupWithOptions(request *UserBatchJoinGroupRequest, runtime *dara.RuntimeOptions) (_result *UserBatchJoinGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EndUserIds) {
@@ -3025,7 +3116,7 @@ func (client *Client) UserBatchJoinGroupWithOptions(request *UserBatchJoinGroupR
 
 // Summary:
 //
-// 用户批量分配角色
+// Add multiple users to a user group at a time.
 //
 // @param request - UserBatchJoinGroupRequest
 //
@@ -3043,7 +3134,7 @@ func (client *Client) UserBatchJoinGroup(request *UserBatchJoinGroupRequest) (_r
 
 // Summary:
 //
-// 用户批量移出角色
+// Removes multiple users from a user group at a time.
 //
 // @param request - UserBatchQuitGroupRequest
 //
@@ -3051,9 +3142,11 @@ func (client *Client) UserBatchJoinGroup(request *UserBatchJoinGroupRequest) (_r
 //
 // @return UserBatchQuitGroupResponse
 func (client *Client) UserBatchQuitGroupWithOptions(request *UserBatchQuitGroupRequest, runtime *dara.RuntimeOptions) (_result *UserBatchQuitGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EndUserIds) {
@@ -3089,7 +3182,7 @@ func (client *Client) UserBatchQuitGroupWithOptions(request *UserBatchQuitGroupR
 
 // Summary:
 //
-// 用户批量移出角色
+// Removes multiple users from a user group at a time.
 //
 // @param request - UserBatchQuitGroupRequest
 //

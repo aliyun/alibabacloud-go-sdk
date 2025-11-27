@@ -24,17 +24,38 @@ type iDescribeGroupUserRequest interface {
 }
 
 type DescribeGroupUserRequest struct {
+	// >  This parameter is not available for public use.
+	//
 	// example:
 	//
 	// ENTERPRISE
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	Filter  *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The fuzzy search string that matches the username (EndUserId) and email address (Email) of the regular user.
+	//
+	// example:
+	//
+	// user
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The ID of the user group.
+	//
 	// example:
 	//
 	// ug-12341234****
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next query. You can obtain this parameter from the response parameters of the last call to this operation.
+	//
+	// example:
+	//
+	// AAAAAV3MpHK****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// >  This parameter is not available for public use.
+	//
 	// example:
 	//
 	// co-0esnf80jab***

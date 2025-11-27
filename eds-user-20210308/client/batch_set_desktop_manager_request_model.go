@@ -16,10 +16,20 @@ type iBatchSetDesktopManagerRequest interface {
 }
 
 type BatchSetDesktopManagerRequest struct {
+	// Whether the convenience account has the local administrator permissions on cloud computers.
+	//
+	// Valid values:
+	//
+	// 	- 0: no
+	//
+	// 	- 1 (default): yes
+	//
 	// example:
 	//
 	// 1
 	IsDesktopManager *string `json:"IsDesktopManager,omitempty" xml:"IsDesktopManager,omitempty"`
+	// The convenience accounts.
+	//
 	// This parameter is required.
 	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }

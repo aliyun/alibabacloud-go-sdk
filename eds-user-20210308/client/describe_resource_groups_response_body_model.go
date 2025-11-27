@@ -18,11 +18,16 @@ type iDescribeResourceGroupsResponseBody interface {
 }
 
 type DescribeResourceGroupsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 68BA1DF7-8814-5AED-B844-F8F7F7****
-	RequestId     *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource groups.
 	ResourceGroup []*DescribeResourceGroupsResponseBodyResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Repeated"`
+	// The total number of resource groups.
+	//
 	// example:
 	//
 	// 7
@@ -65,30 +70,56 @@ func (s *DescribeResourceGroupsResponseBody) SetTotalCount(v string) *DescribeRe
 }
 
 func (s *DescribeResourceGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceGroup != nil {
+		for _, item := range s.ResourceGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResourceGroupsResponseBodyResourceGroup struct {
 	AppRules []*DescribeResourceGroupsResponseBodyResourceGroupAppRules `json:"AppRules,omitempty" xml:"AppRules,omitempty" type:"Repeated"`
+	// The number of administrators that are authorized to access the resource group.
+	//
 	// example:
 	//
 	// 3
 	AuthCount *string `json:"AuthCount,omitempty" xml:"AuthCount,omitempty"`
+	// The time when the resource group was created.
+	//
 	// example:
 	//
 	// 2022-11-29T17:25:40.000000000Z
-	CreateTime *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Policies   []*DescribeResourceGroupsResponseBodyResourceGroupPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// >  The policy that is associated with the resource group.
+	//
+	// 	- The policy applies to cloud computers in the resource group. If multiple policies exist, they are enforced in order of priority.
+	//
+	// 	- If any of these cloud computers are already associated with other policies, the resource group\\"s policy takes precedence.
+	Policies []*DescribeResourceGroupsResponseBodyResourceGroupPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// The number of resources in the resource group.
+	//
 	// example:
 	//
 	// 119
 	ResourceCount *string `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-cyo0il2pzge1***
-	ResourceGroupId   *string                                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceGroupName *string                                                  `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	Timers            []*DescribeResourceGroupsResponseBodyResourceGroupTimers `json:"Timers,omitempty" xml:"Timers,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The name of the resource group.
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// >  The associated scheduled task.
+	//
+	// 	- The scheduled task applies to all cloud computers in the resource group. If any of these cloud computers are already associated with other scheduled tasks, the resource group\\"s scheduled task takes precedence.
+	Timers []*DescribeResourceGroupsResponseBodyResourceGroupTimers `json:"Timers,omitempty" xml:"Timers,omitempty" type:"Repeated"`
 }
 
 func (s DescribeResourceGroupsResponseBodyResourceGroup) String() string {
@@ -172,7 +203,34 @@ func (s *DescribeResourceGroupsResponseBodyResourceGroup) SetTimers(v []*Describ
 }
 
 func (s *DescribeResourceGroupsResponseBodyResourceGroup) Validate() error {
-	return dara.Validate(s)
+	if s.AppRules != nil {
+		for _, item := range s.AppRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Policies != nil {
+		for _, item := range s.Policies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Timers != nil {
+		for _, item := range s.Timers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResourceGroupsResponseBodyResourceGroupAppRules struct {
@@ -221,15 +279,20 @@ func (s *DescribeResourceGroupsResponseBodyResourceGroupAppRules) Validate() err
 }
 
 type DescribeResourceGroupsResponseBodyResourceGroupPolicies struct {
+	// The policy ID.
+	//
 	// example:
 	//
 	// pl-a8jnatl8kjasb***
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Specifies whether to use the default policy.
+	//
 	// example:
 	//
 	// False
-	IsDefault *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The policy name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeResourceGroupsResponseBodyResourceGroupPolicies) String() string {
@@ -273,10 +336,13 @@ func (s *DescribeResourceGroupsResponseBodyResourceGroupPolicies) Validate() err
 
 type DescribeResourceGroupsResponseBodyResourceGroupTimers struct {
 	BindStatus *string `json:"BindStatus,omitempty" xml:"BindStatus,omitempty"`
+	// The ID of the scheduled task.
+	//
 	// example:
 	//
 	// t-asdzx0mbjhg***
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the scheduled task.
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	TimerStatus *string `json:"TimerStatus,omitempty" xml:"TimerStatus,omitempty"`
 }

@@ -53,7 +53,16 @@ func (s *ListPropertyValueResponseBody) SetRequestId(v string) *ListPropertyValu
 }
 
 func (s *ListPropertyValueResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PropertyValueInfos != nil {
+		for _, item := range s.PropertyValueInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPropertyValueResponseBodyPropertyValueInfos struct {

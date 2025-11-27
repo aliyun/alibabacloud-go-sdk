@@ -71,7 +71,21 @@ func (s *ThirdApp) SetSecrets(v []*ThirdAppSecrets) *ThirdApp {
 }
 
 func (s *ThirdApp) Validate() error {
-	return dara.Validate(s)
+	if s.OidcSsoConfig != nil {
+		if err := s.OidcSsoConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Secrets != nil {
+		for _, item := range s.Secrets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ThirdAppOidcSsoConfig struct {
@@ -186,7 +200,12 @@ func (s *ThirdAppOidcSsoConfig) SetRefreshTokenEffective(v int32) *ThirdAppOidcS
 }
 
 func (s *ThirdAppOidcSsoConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Endpoints != nil {
+		if err := s.Endpoints.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ThirdAppOidcSsoConfigEndpoints struct {

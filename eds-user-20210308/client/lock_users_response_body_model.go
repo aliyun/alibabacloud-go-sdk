@@ -53,7 +53,12 @@ func (s *LockUsersResponseBody) SetRequestId(v string) *LockUsersResponseBody {
 }
 
 func (s *LockUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LockUsersResult != nil {
+		if err := s.LockUsersResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type LockUsersResponseBodyLockUsersResult struct {
@@ -90,7 +95,16 @@ func (s *LockUsersResponseBodyLockUsersResult) SetLockedUsers(v []*string) *Lock
 }
 
 func (s *LockUsersResponseBodyLockUsersResult) Validate() error {
-	return dara.Validate(s)
+	if s.FailedUsers != nil {
+		for _, item := range s.FailedUsers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type LockUsersResponseBodyLockUsersResultFailedUsers struct {

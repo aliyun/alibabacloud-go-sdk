@@ -24,13 +24,13 @@ type iDescribeMfaDevicesRequest interface {
 }
 
 type DescribeMfaDevicesRequest struct {
-	// The domain of the Active Directory (AD) workspace.
+	// The address of the AD office network.
 	//
 	// example:
 	//
 	// cn.misumi.pri
 	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
-	// The usernames of the convenience users.
+	// The usernames of the convenience accounts.
 	//
 	// example:
 	//

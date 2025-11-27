@@ -53,7 +53,12 @@ func (s *ResetUserPasswordResponseBody) SetResetUsersResult(v *ResetUserPassword
 }
 
 func (s *ResetUserPasswordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResetUsersResult != nil {
+		if err := s.ResetUsersResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ResetUserPasswordResponseBodyResetUsersResult struct {
@@ -90,7 +95,16 @@ func (s *ResetUserPasswordResponseBodyResetUsersResult) SetResetUsers(v []*strin
 }
 
 func (s *ResetUserPasswordResponseBodyResetUsersResult) Validate() error {
-	return dara.Validate(s)
+	if s.FailedUsers != nil {
+		for _, item := range s.FailedUsers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ResetUserPasswordResponseBodyResetUsersResultFailedUsers struct {

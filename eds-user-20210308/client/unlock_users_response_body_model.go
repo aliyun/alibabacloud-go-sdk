@@ -53,7 +53,12 @@ func (s *UnlockUsersResponseBody) SetUnlockUsersResult(v *UnlockUsersResponseBod
 }
 
 func (s *UnlockUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UnlockUsersResult != nil {
+		if err := s.UnlockUsersResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UnlockUsersResponseBodyUnlockUsersResult struct {
@@ -90,7 +95,16 @@ func (s *UnlockUsersResponseBodyUnlockUsersResult) SetUnlockedUsers(v []*string)
 }
 
 func (s *UnlockUsersResponseBodyUnlockUsersResult) Validate() error {
-	return dara.Validate(s)
+	if s.FailedUsers != nil {
+		for _, item := range s.FailedUsers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UnlockUsersResponseBodyUnlockUsersResultFailedUsers struct {

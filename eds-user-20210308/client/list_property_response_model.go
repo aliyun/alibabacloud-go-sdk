@@ -59,5 +59,10 @@ func (s *ListPropertyResponse) SetBody(v *ListPropertyResponseBody) *ListPropert
 }
 
 func (s *ListPropertyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

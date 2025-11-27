@@ -16,7 +16,10 @@ type iDescribeOrgByLayerRequest interface {
 }
 
 type DescribeOrgByLayerRequest struct {
+	// The name of the organization.
 	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	// The ID of the parent organization.
+	//
 	// example:
 	//
 	// org-11fs****

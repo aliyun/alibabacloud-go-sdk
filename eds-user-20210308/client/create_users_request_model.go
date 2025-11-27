@@ -100,7 +100,16 @@ func (s *CreateUsersRequest) SetUsers(v []*CreateUsersRequestUsers) *CreateUsers
 }
 
 func (s *CreateUsersRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Users != nil {
+		for _, item := range s.Users {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateUsersRequestUsers struct {
@@ -117,7 +126,8 @@ type CreateUsersRequestUsers struct {
 	// example:
 	//
 	// test1
-	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EndUserId   *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	GroupIdList []*string `json:"GroupIdList,omitempty" xml:"GroupIdList,omitempty" type:"Repeated"`
 	// The organization to which the convenience user belongs.
 	//
 	// example:
@@ -180,6 +190,10 @@ func (s *CreateUsersRequestUsers) GetEndUserId() *string {
 	return s.EndUserId
 }
 
+func (s *CreateUsersRequestUsers) GetGroupIdList() []*string {
+	return s.GroupIdList
+}
+
 func (s *CreateUsersRequestUsers) GetOrgId() *string {
 	return s.OrgId
 }
@@ -211,6 +225,11 @@ func (s *CreateUsersRequestUsers) SetEmail(v string) *CreateUsersRequestUsers {
 
 func (s *CreateUsersRequestUsers) SetEndUserId(v string) *CreateUsersRequestUsers {
 	s.EndUserId = &v
+	return s
+}
+
+func (s *CreateUsersRequestUsers) SetGroupIdList(v []*string) *CreateUsersRequestUsers {
+	s.GroupIdList = v
 	return s
 }
 

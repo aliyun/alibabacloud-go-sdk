@@ -53,7 +53,12 @@ func (s *UpdatePropertyResponseBody) SetUpdateResult(v *UpdatePropertyResponseBo
 }
 
 func (s *UpdatePropertyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UpdateResult != nil {
+		if err := s.UpdateResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdatePropertyResponseBodyUpdateResult struct {
@@ -109,7 +114,12 @@ func (s *UpdatePropertyResponseBodyUpdateResult) SetSavePropertyValueModel(v *Up
 }
 
 func (s *UpdatePropertyResponseBodyUpdateResult) Validate() error {
-	return dara.Validate(s)
+	if s.SavePropertyValueModel != nil {
+		if err := s.SavePropertyValueModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdatePropertyResponseBodyUpdateResultSavePropertyValueModel struct {
@@ -146,7 +156,25 @@ func (s *UpdatePropertyResponseBodyUpdateResultSavePropertyValueModel) SetSavePr
 }
 
 func (s *UpdatePropertyResponseBodyUpdateResultSavePropertyValueModel) Validate() error {
-	return dara.Validate(s)
+	if s.FailedPropertyValues != nil {
+		for _, item := range s.FailedPropertyValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SavePropertyValues != nil {
+		for _, item := range s.SavePropertyValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelFailedPropertyValues struct {

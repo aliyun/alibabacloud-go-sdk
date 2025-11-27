@@ -59,5 +59,10 @@ func (s *DescribeGroupUserResponse) SetBody(v *DescribeGroupUserResponseBody) *D
 }
 
 func (s *DescribeGroupUserResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

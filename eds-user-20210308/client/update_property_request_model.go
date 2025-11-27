@@ -74,7 +74,16 @@ func (s *UpdatePropertyRequest) SetPropertyValues(v []*UpdatePropertyRequestProp
 }
 
 func (s *UpdatePropertyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PropertyValues != nil {
+		for _, item := range s.PropertyValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdatePropertyRequestPropertyValues struct {

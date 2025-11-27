@@ -59,5 +59,10 @@ func (s *RemovePropertyResponse) SetBody(v *RemovePropertyResponseBody) *RemoveP
 }
 
 func (s *RemovePropertyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

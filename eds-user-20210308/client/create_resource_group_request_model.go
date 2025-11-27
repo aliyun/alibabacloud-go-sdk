@@ -18,14 +18,21 @@ type iCreateResourceGroupRequest interface {
 }
 
 type CreateResourceGroupRequest struct {
+	// >  This parameter is not publicly available.
+	//
 	// example:
 	//
 	// 0
 	IsResourceGroupWithOfficeSite *int64 `json:"IsResourceGroupWithOfficeSite,omitempty" xml:"IsResourceGroupWithOfficeSite,omitempty"`
+	// >  Set the value to AliyunConsole.
+	//
+	// 	- This parameter is not publicly available in other platforms.
+	//
 	// example:
 	//
 	// AliyunConsole
-	Platform          *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The name of the resource group.
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 

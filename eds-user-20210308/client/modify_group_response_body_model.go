@@ -14,6 +14,8 @@ type iModifyGroupResponseBody interface {
 }
 
 type ModifyGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 868B8926-2E7A-5BE7-9897-E811E994****

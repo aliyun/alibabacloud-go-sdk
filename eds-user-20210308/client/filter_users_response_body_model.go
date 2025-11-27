@@ -30,7 +30,7 @@ type FilterUsersResponseBody struct {
 	//
 	// DBD276B5-00FF-5E04-8EF7-5CBA09BF112A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The convenience accounts.
+	// The information about the convenience accounts.
 	Users []*FilterUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -70,7 +70,16 @@ func (s *FilterUsersResponseBody) SetUsers(v []*FilterUsersResponseBodyUsers) *F
 }
 
 func (s *FilterUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Users != nil {
+		for _, item := range s.Users {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FilterUsersResponseBodyUsers struct {
@@ -130,6 +139,7 @@ type FilterUsersResponseBodyUsers struct {
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The additional information about the convenience user.
 	ExternalInfo *FilterUsersResponseBodyUsersExternalInfo `json:"ExternalInfo,omitempty" xml:"ExternalInfo,omitempty" type:"Struct"`
+	Groups       []*FilterUsersResponseBodyUsersGroups     `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	// The ID of the convenience user.
 	//
 	// example:
@@ -159,8 +169,9 @@ type FilterUsersResponseBodyUsers struct {
 	// example:
 	//
 	// true
-	IsTenantManager *bool                                  `json:"IsTenantManager,omitempty" xml:"IsTenantManager,omitempty"`
-	OrgList         []*FilterUsersResponseBodyUsersOrgList `json:"OrgList,omitempty" xml:"OrgList,omitempty" type:"Repeated"`
+	IsTenantManager *bool `json:"IsTenantManager,omitempty" xml:"IsTenantManager,omitempty"`
+	// The organizations to which the user belongs.
+	OrgList []*FilterUsersResponseBodyUsersOrgList `json:"OrgList,omitempty" xml:"OrgList,omitempty" type:"Repeated"`
 	// The type of the account ownership.
 	//
 	// Valid values:
@@ -216,7 +227,8 @@ type FilterUsersResponseBodyUsers struct {
 	// example:
 	//
 	// 0
-	Status           *int64                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The supported identity provider logon methods.
 	SupportLoginIdps []*FilterUsersResponseBodyUsersSupportLoginIdps `json:"SupportLoginIdps,omitempty" xml:"SupportLoginIdps,omitempty" type:"Repeated"`
 	// The information about the properties.
 	UserSetPropertiesModels []*FilterUsersResponseBodyUsersUserSetPropertiesModels `json:"UserSetPropertiesModels,omitempty" xml:"UserSetPropertiesModels,omitempty" type:"Repeated"`
@@ -256,6 +268,10 @@ func (s *FilterUsersResponseBodyUsers) GetEndUserId() *string {
 
 func (s *FilterUsersResponseBodyUsers) GetExternalInfo() *FilterUsersResponseBodyUsersExternalInfo {
 	return s.ExternalInfo
+}
+
+func (s *FilterUsersResponseBodyUsers) GetGroups() []*FilterUsersResponseBodyUsersGroups {
+	return s.Groups
 }
 
 func (s *FilterUsersResponseBodyUsers) GetId() *int64 {
@@ -341,6 +357,11 @@ func (s *FilterUsersResponseBodyUsers) SetExternalInfo(v *FilterUsersResponseBod
 	return s
 }
 
+func (s *FilterUsersResponseBodyUsers) SetGroups(v []*FilterUsersResponseBodyUsersGroups) *FilterUsersResponseBodyUsers {
+	s.Groups = v
+	return s
+}
+
 func (s *FilterUsersResponseBodyUsers) SetId(v int64) *FilterUsersResponseBodyUsers {
 	s.Id = &v
 	return s
@@ -402,7 +423,48 @@ func (s *FilterUsersResponseBodyUsers) SetUserSetPropertiesModels(v []*FilterUse
 }
 
 func (s *FilterUsersResponseBodyUsers) Validate() error {
-	return dara.Validate(s)
+	if s.ExternalInfo != nil {
+		if err := s.ExternalInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Groups != nil {
+		for _, item := range s.Groups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OrgList != nil {
+		for _, item := range s.OrgList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SupportLoginIdps != nil {
+		for _, item := range s.SupportLoginIdps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserSetPropertiesModels != nil {
+		for _, item := range s.UserSetPropertiesModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FilterUsersResponseBodyUsersExternalInfo struct {
@@ -450,9 +512,47 @@ func (s *FilterUsersResponseBodyUsersExternalInfo) Validate() error {
 	return dara.Validate(s)
 }
 
+type FilterUsersResponseBodyUsersGroups struct {
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+}
+
+func (s FilterUsersResponseBodyUsersGroups) String() string {
+	return dara.Prettify(s)
+}
+
+func (s FilterUsersResponseBodyUsersGroups) GoString() string {
+	return s.String()
+}
+
+func (s *FilterUsersResponseBodyUsersGroups) GetGroupId() *string {
+	return s.GroupId
+}
+
+func (s *FilterUsersResponseBodyUsersGroups) GetGroupName() *string {
+	return s.GroupName
+}
+
+func (s *FilterUsersResponseBodyUsersGroups) SetGroupId(v string) *FilterUsersResponseBodyUsersGroups {
+	s.GroupId = &v
+	return s
+}
+
+func (s *FilterUsersResponseBodyUsersGroups) SetGroupName(v string) *FilterUsersResponseBodyUsersGroups {
+	s.GroupName = &v
+	return s
+}
+
+func (s *FilterUsersResponseBodyUsersGroups) Validate() error {
+	return dara.Validate(s)
+}
+
 type FilterUsersResponseBodyUsersOrgList struct {
-	OrgId       *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	OrgName     *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	// The organization ID.
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// The organization name.
+	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	// The organization name path.
 	OrgNamePath *string `json:"OrgNamePath,omitempty" xml:"OrgNamePath,omitempty"`
 }
 
@@ -496,7 +596,9 @@ func (s *FilterUsersResponseBodyUsersOrgList) Validate() error {
 }
 
 type FilterUsersResponseBodyUsersSupportLoginIdps struct {
-	IdpId   *string `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// The enterprise identity provider ID.
+	IdpId *string `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// The enterprise identity provider name.
 	IdpName *string `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
 }
 
@@ -628,7 +730,16 @@ func (s *FilterUsersResponseBodyUsersUserSetPropertiesModels) SetUserName(v stri
 }
 
 func (s *FilterUsersResponseBodyUsersUserSetPropertiesModels) Validate() error {
-	return dara.Validate(s)
+	if s.PropertyValues != nil {
+		for _, item := range s.PropertyValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FilterUsersResponseBodyUsersUserSetPropertiesModelsPropertyValues struct {

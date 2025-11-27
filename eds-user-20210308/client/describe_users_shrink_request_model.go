@@ -42,6 +42,9 @@ type iDescribeUsersShrinkRequest interface {
 }
 
 type DescribeUsersShrinkRequest struct {
+	// example:
+	//
+	// null
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The usernames that must be exactly matched.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
@@ -61,8 +64,11 @@ type DescribeUsersShrinkRequest struct {
 	// example:
 	//
 	// ug-12341234****
-	GroupId           *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	IsQueryAllSubOrgs *bool   `json:"IsQueryAllSubOrgs,omitempty" xml:"IsQueryAllSubOrgs,omitempty"`
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// true
+	IsQueryAllSubOrgs *bool `json:"IsQueryAllSubOrgs,omitempty" xml:"IsQueryAllSubOrgs,omitempty"`
 	// The maximum number of entries per page.
 	//
 	// 	- Valid values: 1 to 500.
@@ -88,8 +94,12 @@ type DescribeUsersShrinkRequest struct {
 	// org-4mdgc1cocc59z****
 	OrgId            *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	ShowExtrasShrink *string `json:"ShowExtras,omitempty" xml:"ShowExtras,omitempty"`
-	SolutionId       *string `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
-	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// null
+	SolutionId *string `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	// The status.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeUsersShrinkRequest) String() string {

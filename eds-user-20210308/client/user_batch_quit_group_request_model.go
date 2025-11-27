@@ -16,7 +16,10 @@ type iUserBatchQuitGroupRequest interface {
 }
 
 type UserBatchQuitGroupRequest struct {
+	// The user IDs.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	// The ID of the user group.
+	//
 	// example:
 	//
 	// ug-lkuvalovhnlxvv****

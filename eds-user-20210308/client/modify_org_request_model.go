@@ -16,12 +16,16 @@ type iModifyOrgRequest interface {
 }
 
 type ModifyOrgRequest struct {
+	// The ID of the organization.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// org-76joc57khvnhdh***
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// The name of the organization.
+	//
 	// This parameter is required.
 	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 }

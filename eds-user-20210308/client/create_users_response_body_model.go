@@ -65,7 +65,12 @@ func (s *CreateUsersResponseBody) SetRequestId(v string) *CreateUsersResponseBod
 }
 
 func (s *CreateUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CreateResult != nil {
+		if err := s.CreateResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateUsersResponseBodyCreateResult struct {
@@ -102,7 +107,25 @@ func (s *CreateUsersResponseBodyCreateResult) SetFailedUsers(v []*CreateUsersRes
 }
 
 func (s *CreateUsersResponseBodyCreateResult) Validate() error {
-	return dara.Validate(s)
+	if s.CreatedUsers != nil {
+		for _, item := range s.CreatedUsers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FailedUsers != nil {
+		for _, item := range s.FailedUsers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateUsersResponseBodyCreateResultCreatedUsers struct {

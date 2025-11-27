@@ -25,13 +25,22 @@ type CreateGroupRequest struct {
 	// example:
 	//
 	// ENTERPRISE
-	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The description of the user group.
+	//
+	// example:
+	//
+	// TestGroup
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// root
 	ParentGroupId *string `json:"ParentGroupId,omitempty" xml:"ParentGroupId,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// co-0esnf80jab***

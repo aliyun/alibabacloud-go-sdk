@@ -98,9 +98,12 @@ type FilterUsersShrinkRequest struct {
 	//
 	// false
 	IncludeDesktopGroupCount *bool `json:"IncludeDesktopGroupCount,omitempty" xml:"IncludeDesktopGroupCount,omitempty"`
-	IncludeOrgInfo           *bool `json:"IncludeOrgInfo,omitempty" xml:"IncludeOrgInfo,omitempty"`
-	IncludeSupportIdps       *bool `json:"IncludeSupportIdps,omitempty" xml:"IncludeSupportIdps,omitempty"`
-	IsQueryAllSubOrgs        *bool `json:"IsQueryAllSubOrgs,omitempty" xml:"IsQueryAllSubOrgs,omitempty"`
+	// Specifies whether to return the organization information.
+	IncludeOrgInfo *bool `json:"IncludeOrgInfo,omitempty" xml:"IncludeOrgInfo,omitempty"`
+	// Specifies whether to return the supported logon types.
+	IncludeSupportIdps *bool `json:"IncludeSupportIdps,omitempty" xml:"IncludeSupportIdps,omitempty"`
+	// Specifies whether to query all sub-organizations.
+	IsQueryAllSubOrgs *bool `json:"IsQueryAllSubOrgs,omitempty" xml:"IsQueryAllSubOrgs,omitempty"`
 	// The number of entries per page. If you set this parameter to a value greater than 100, the system resets the value to 100.
 	//
 	// example:
@@ -137,7 +140,12 @@ type FilterUsersShrinkRequest struct {
 	PropertyFilterParam []*FilterUsersShrinkRequestPropertyFilterParam `json:"PropertyFilterParam,omitempty" xml:"PropertyFilterParam,omitempty" type:"Repeated"`
 	// The list of property names and property values.
 	PropertyKeyValueFilterParam []*FilterUsersShrinkRequestPropertyKeyValueFilterParam `json:"PropertyKeyValueFilterParam,omitempty" xml:"PropertyKeyValueFilterParam,omitempty" type:"Repeated"`
-	Status                      *int32                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status.
+	//
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s FilterUsersShrinkRequest) String() string {
@@ -284,7 +292,25 @@ func (s *FilterUsersShrinkRequest) SetStatus(v int32) *FilterUsersShrinkRequest 
 }
 
 func (s *FilterUsersShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PropertyFilterParam != nil {
+		for _, item := range s.PropertyFilterParam {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PropertyKeyValueFilterParam != nil {
+		for _, item := range s.PropertyKeyValueFilterParam {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FilterUsersShrinkRequestPropertyFilterParam struct {

@@ -70,7 +70,16 @@ func (s *DescribeMfaDevicesResponseBody) SetRequestId(v string) *DescribeMfaDevi
 }
 
 func (s *DescribeMfaDevicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MfaDevices != nil {
+		for _, item := range s.MfaDevices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMfaDevicesResponseBodyMfaDevices struct {
@@ -81,7 +90,7 @@ type DescribeMfaDevicesResponseBodyMfaDevices struct {
 	//
 	// 0
 	ConsecutiveFails *int32 `json:"ConsecutiveFails,omitempty" xml:"ConsecutiveFails,omitempty"`
-	// The type of the virtual MFA device. The value can only be TOTP_VIRTUAL. This value indicates that the virtual MFA device follows the Time-based One-time Password (TOTP) algorithm.
+	// The type of the virtual MFA device. The value can only be `TOTP_VIRTUAL`. This value indicates that the virtual MFA device follows the Time-based One-time Password (TOTP) algorithm.
 	//
 	// example:
 	//
@@ -93,31 +102,31 @@ type DescribeMfaDevicesResponseBodyMfaDevices struct {
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The username of the convenience user that uses the virtual MFA device.
+	// The username of the convenience account that uses the virtual MFA device.
 	//
 	// example:
 	//
 	// test
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The time when the virtual MFA device was enabled. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the virtual MFA device was enabled. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-06-22T06:20:49Z
 	GmtEnabled *string `json:"GmtEnabled,omitempty" xml:"GmtEnabled,omitempty"`
-	// The time when the locked virtual MFA device was automatically unlocked. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the locked virtual MFA device was automatically unlocked. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-06-23T06:20:49Z
 	GmtUnlock *string `json:"GmtUnlock,omitempty" xml:"GmtUnlock,omitempty"`
-	// >  This parameter is not publicly available.
+	// The ID of the virtual MFA device.
 	//
 	// example:
 	//
 	// 36
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The serial number of the virtual MFA device. The serial number is unique for each device.
+	// The serial number of the virtual MFA device.
 	//
 	// example:
 	//
@@ -256,7 +265,12 @@ func (s *DescribeMfaDevicesResponseBodyMfaDevices) SetStatus(v string) *Describe
 }
 
 func (s *DescribeMfaDevicesResponseBodyMfaDevices) Validate() error {
-	return dara.Validate(s)
+	if s.AdUser != nil {
+		if err := s.AdUser.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMfaDevicesResponseBodyMfaDevicesAdUser struct {

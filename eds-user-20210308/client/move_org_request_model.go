@@ -16,12 +16,16 @@ type iMoveOrgRequest interface {
 }
 
 type MoveOrgRequest struct {
+	// The ID of the parent organization.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// org-5yy5icj981xe5****
 	NewParentOrgId *string `json:"NewParentOrgId,omitempty" xml:"NewParentOrgId,omitempty"`
+	// The ID of the organization that you want to move.
+	//
 	// This parameter is required.
 	//
 	// example:

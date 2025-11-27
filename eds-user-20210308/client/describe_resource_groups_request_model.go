@@ -24,24 +24,36 @@ type iDescribeResourceGroupsRequest interface {
 }
 
 type DescribeResourceGroupsRequest struct {
+	// >  This parameter is not publicly available.
+	//
 	// example:
 	//
 	// 0
 	NeedContainResourceGroupWithOfficeSite *int64 `json:"NeedContainResourceGroupWithOfficeSite,omitempty" xml:"NeedContainResourceGroupWithOfficeSite,omitempty"`
+	// The page number. Pages start from page 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// >  Set the value to AliyunConsole.
+	//
+	// 	- This parameter is not publicly available on other platforms.
+	//
 	// example:
 	//
 	// AliyunConsole
-	Platform          *string   `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	ResourceGroupIds  []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
-	ResourceGroupName *string   `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The IDs of the resource groups that you want to query.
+	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
+	// The name of the resource group.
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 
 func (s DescribeResourceGroupsRequest) String() string {

@@ -16,10 +16,13 @@ type iRemoveGroupRequest interface {
 }
 
 type RemoveGroupRequest struct {
+	// The ID of the user group to be deleted.
+	//
 	// example:
 	//
 	// ug-12341234****
-	GroupId  *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The IDs of the user groups to be deleted.
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
 }
 

@@ -83,5 +83,14 @@ func (s *WaIdPermissions) SetType(v string) *WaIdPermissions {
 }
 
 func (s *WaIdPermissions) Validate() error {
-	return dara.Validate(s)
+	if s.SubPermissions != nil {
+		for _, item := range s.SubPermissions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

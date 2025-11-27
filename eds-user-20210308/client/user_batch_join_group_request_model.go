@@ -16,7 +16,10 @@ type iUserBatchJoinGroupRequest interface {
 }
 
 type UserBatchJoinGroupRequest struct {
+	// The list of user IDs.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	// The ID of the user group.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,6 +14,8 @@ type iUserBatchQuitGroupResponseBody interface {
 }
 
 type UserBatchQuitGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 890JNJNF-SADASSDFS-SDFSDF****

@@ -59,5 +59,10 @@ func (s *RemoveMfaDeviceResponse) SetBody(v *RemoveMfaDeviceResponseBody) *Remov
 }
 
 func (s *RemoveMfaDeviceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

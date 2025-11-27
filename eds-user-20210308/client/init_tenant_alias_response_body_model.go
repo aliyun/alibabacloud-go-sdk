@@ -18,11 +18,16 @@ type iInitTenantAliasResponseBody interface {
 }
 
 type InitTenantAliasResponseBody struct {
+	// The data returned.
 	AliasInfo *InitTenantAliasResponseBodyAliasInfo `json:"AliasInfo,omitempty" xml:"AliasInfo,omitempty" type:"Struct"`
+	// The generated ID of the organization.
+	//
 	// example:
 	//
 	// WY23***
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -65,22 +70,41 @@ func (s *InitTenantAliasResponseBody) SetRequestId(v string) *InitTenantAliasRes
 }
 
 func (s *InitTenantAliasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AliasInfo != nil {
+		if err := s.AliasInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InitTenantAliasResponseBodyAliasInfo struct {
+	// The reason why modification is not allowed.
+	//
 	// example:
 	//
 	// FrequencyExceedsLimit
 	AliasEditDisabledReason *string `json:"AliasEditDisabledReason,omitempty" xml:"AliasEditDisabledReason,omitempty"`
+	// Indicates whether modification is allowed.
+	//
 	// example:
 	//
 	// False
 	AliasEditable *bool `json:"AliasEditable,omitempty" xml:"AliasEditable,omitempty"`
+	// The source of the organization ID.
+	//
+	// Valid values:
+	//
+	// 	- Generated: auto-generated.
+	//
+	// 	- Customized: user-defined.
+	//
 	// example:
 	//
 	// Customized
 	AliasSourceType *string `json:"AliasSourceType,omitempty" xml:"AliasSourceType,omitempty"`
+	// The time window during which modification is allowed.
+	//
 	// example:
 	//
 	// 2025-04-17 20:31:48

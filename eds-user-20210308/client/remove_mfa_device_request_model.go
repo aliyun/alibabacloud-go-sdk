@@ -16,13 +16,13 @@ type iRemoveMfaDeviceRequest interface {
 }
 
 type RemoveMfaDeviceRequest struct {
-	// The domain of the Active Directory (AD) workspace.
+	// The address of the AD office network.
 	//
 	// example:
 	//
 	// alpha.lftltd.net
 	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
-	// The serial number of the virtual MFA device. The serial number is unique for each device.
+	// The serial number of the virtual MFA device. You can call the [DescribeMfaDevices](~~DescribeMfaDevices~~) operation to get this information.
 	//
 	// This parameter is required.
 	//

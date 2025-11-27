@@ -70,7 +70,16 @@ func (s *DescribeOrgsResponseBody) SetRequestId(v string) *DescribeOrgsResponseB
 }
 
 func (s *DescribeOrgsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Orgs != nil {
+		for _, item := range s.Orgs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOrgsResponseBodyOrgs struct {

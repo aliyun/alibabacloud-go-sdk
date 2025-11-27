@@ -14,6 +14,8 @@ type iRemoveOrgRequest interface {
 }
 
 type RemoveOrgRequest struct {
+	// The organization ID.
+	//
 	// This parameter is required.
 	//
 	// example:

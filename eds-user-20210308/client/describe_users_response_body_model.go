@@ -30,7 +30,7 @@ type DescribeUsersResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The convenience accounts.
+	// The information about the convenience accounts.
 	Users []*DescribeUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -70,7 +70,16 @@ func (s *DescribeUsersResponseBody) SetUsers(v []*DescribeUsersResponseBodyUsers
 }
 
 func (s *DescribeUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Users != nil {
+		for _, item := range s.Users {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUsersResponseBodyUsers struct {
@@ -91,8 +100,9 @@ type DescribeUsersResponseBodyUsers struct {
 	// example:
 	//
 	// username@example.com
-	Email             *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	EnableAdminAccess *bool   `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Enables the administrator permissions.
+	EnableAdminAccess *bool `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
 	// The username of the convenience user.
 	//
 	// example:
@@ -172,7 +182,9 @@ type DescribeUsersResponseBodyUsers struct {
 	// example:
 	//
 	// Normal
-	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
+	OwnerType              *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
+	PasswordExpireDays     *int32  `json:"PasswordExpireDays,omitempty" xml:"PasswordExpireDays,omitempty"`
+	PasswordExpireRestDays *int32  `json:"PasswordExpireRestDays,omitempty" xml:"PasswordExpireRestDays,omitempty"`
 	// The mobile number of the convenience user. If you leave this parameter empty, the value of this parameter is not returned.
 	//
 	// example:
@@ -287,6 +299,14 @@ func (s *DescribeUsersResponseBodyUsers) GetOwnerType() *string {
 	return s.OwnerType
 }
 
+func (s *DescribeUsersResponseBodyUsers) GetPasswordExpireDays() *int32 {
+	return s.PasswordExpireDays
+}
+
+func (s *DescribeUsersResponseBodyUsers) GetPasswordExpireRestDays() *int32 {
+	return s.PasswordExpireRestDays
+}
+
 func (s *DescribeUsersResponseBodyUsers) GetPhone() *string {
 	return s.Phone
 }
@@ -386,6 +406,16 @@ func (s *DescribeUsersResponseBodyUsers) SetOwnerType(v string) *DescribeUsersRe
 	return s
 }
 
+func (s *DescribeUsersResponseBodyUsers) SetPasswordExpireDays(v int32) *DescribeUsersResponseBodyUsers {
+	s.PasswordExpireDays = &v
+	return s
+}
+
+func (s *DescribeUsersResponseBodyUsers) SetPasswordExpireRestDays(v int32) *DescribeUsersResponseBodyUsers {
+	s.PasswordExpireRestDays = &v
+	return s
+}
+
 func (s *DescribeUsersResponseBodyUsers) SetPhone(v string) *DescribeUsersResponseBodyUsers {
 	s.Phone = &v
 	return s
@@ -417,7 +447,39 @@ func (s *DescribeUsersResponseBodyUsers) SetWyId(v string) *DescribeUsersRespons
 }
 
 func (s *DescribeUsersResponseBodyUsers) Validate() error {
-	return dara.Validate(s)
+	if s.Extras != nil {
+		if err := s.Extras.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Groups != nil {
+		for _, item := range s.Groups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Orgs != nil {
+		for _, item := range s.Orgs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Properties != nil {
+		for _, item := range s.Properties {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUsersResponseBodyUsersExtras struct {
@@ -546,7 +608,13 @@ func (s *DescribeUsersResponseBodyUsersOrgs) Validate() error {
 }
 
 type DescribeUsersResponseBodyUsersProperties struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// Role
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// Student
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -18,7 +18,13 @@ type iDescribeGroupsResponseBody interface {
 }
 
 type DescribeGroupsResponseBody struct {
-	Count  *int32                              `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of the entries returned.
+	//
+	// example:
+	//
+	// 1
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The user groups.
 	Groups []*DescribeGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -62,21 +68,56 @@ func (s *DescribeGroupsResponseBody) SetRequestId(v string) *DescribeGroupsRespo
 }
 
 func (s *DescribeGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Groups != nil {
+		for _, item := range s.Groups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGroupsResponseBodyGroups struct {
 	AttachedLoginPolicy *DescribeGroupsResponseBodyGroupsAttachedLoginPolicy `json:"AttachedLoginPolicy,omitempty" xml:"AttachedLoginPolicy,omitempty" type:"Struct"`
-	AuthedResources     map[string]*string                                   `json:"AuthedResources,omitempty" xml:"AuthedResources,omitempty"`
-	CreateTime          *string                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description         *string                                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The type of the resource assigned to the user group.
+	AuthedResources map[string]*string `json:"AuthedResources,omitempty" xml:"AuthedResources,omitempty"`
+	// The time when the user group is created.
+	//
+	// example:
+	//
+	// 2025-08-07T13:40:40+08:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the user group.
+	//
+	// example:
+	//
+	// A test group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
 	// ug-2412ojkwtybd****
-	GroupId                  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName                *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	TransferFileNeedApproval *bool   `json:"TransferFileNeedApproval,omitempty" xml:"TransferFileNeedApproval,omitempty"`
-	UserCount                *int32  `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the user group.
+	//
+	// example:
+	//
+	// TestGroup
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Indicates whether the file approval feature is enabled.
+	//
+	// example:
+	//
+	// false
+	TransferFileNeedApproval *bool `json:"TransferFileNeedApproval,omitempty" xml:"TransferFileNeedApproval,omitempty"`
+	// The number of users in the user group.
+	//
+	// example:
+	//
+	// 20
+	UserCount *int32 `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
 }
 
 func (s DescribeGroupsResponseBodyGroups) String() string {
@@ -160,7 +201,12 @@ func (s *DescribeGroupsResponseBodyGroups) SetUserCount(v int32) *DescribeGroups
 }
 
 func (s *DescribeGroupsResponseBodyGroups) Validate() error {
-	return dara.Validate(s)
+	if s.AttachedLoginPolicy != nil {
+		if err := s.AttachedLoginPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGroupsResponseBodyGroupsAttachedLoginPolicy struct {

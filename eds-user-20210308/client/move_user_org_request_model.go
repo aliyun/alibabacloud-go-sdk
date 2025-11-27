@@ -16,8 +16,12 @@ type iMoveUserOrgRequest interface {
 }
 
 type MoveUserOrgRequest struct {
+	// The user IDs.
+	//
 	// This parameter is required.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	// The organization ID.
+	//
 	// This parameter is required.
 	//
 	// example:

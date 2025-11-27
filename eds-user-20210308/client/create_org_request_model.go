@@ -16,8 +16,12 @@ type iCreateOrgRequest interface {
 }
 
 type CreateOrgRequest struct {
+	// The name of the organization.
+	//
 	// This parameter is required.
 	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	// The ID of the parent organization.
+	//
 	// This parameter is required.
 	//
 	// example:
