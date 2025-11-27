@@ -152,6 +152,10 @@ type DescribeApplicationsResponseBodyItemsApplications struct {
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// example:
 	//
+	// pc-xxxxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
 	// myapp
 	Description *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
 	Endpoints   *DescribeApplicationsResponseBodyItemsApplicationsEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
@@ -209,6 +213,10 @@ func (s *DescribeApplicationsResponseBodyItemsApplications) GetCreationTime() *s
 	return s.CreationTime
 }
 
+func (s *DescribeApplicationsResponseBodyItemsApplications) GetDBClusterId() *string {
+	return s.DBClusterId
+}
+
 func (s *DescribeApplicationsResponseBodyItemsApplications) GetDescription() *string {
 	return s.Description
 }
@@ -261,6 +269,11 @@ func (s *DescribeApplicationsResponseBodyItemsApplications) SetApplicationType(v
 
 func (s *DescribeApplicationsResponseBodyItemsApplications) SetCreationTime(v string) *DescribeApplicationsResponseBodyItemsApplications {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeApplicationsResponseBodyItemsApplications) SetDBClusterId(v string) *DescribeApplicationsResponseBodyItemsApplications {
+	s.DBClusterId = &v
 	return s
 }
 
