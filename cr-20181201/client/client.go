@@ -2100,6 +2100,178 @@ func (client *Client) CreateRepository(request *CreateRepositoryRequest) (_resul
 
 // Summary:
 //
+// 创建扫描规则
+//
+// @param tmpReq - CreateScanRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateScanRuleResponse
+func (client *Client) CreateScanRuleWithOptions(tmpReq *CreateScanRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateScanRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateScanRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Namespaces) {
+		request.NamespacesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Namespaces, dara.String("Namespaces"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RepoNames) {
+		request.RepoNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RepoNames, dara.String("RepoNames"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NamespacesShrink) {
+		query["Namespaces"] = request.NamespacesShrink
+	}
+
+	if !dara.IsNil(request.RepoNamesShrink) {
+		query["RepoNames"] = request.RepoNamesShrink
+	}
+
+	if !dara.IsNil(request.RepoTagFilterPattern) {
+		query["RepoTagFilterPattern"] = request.RepoTagFilterPattern
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.ScanScope) {
+		query["ScanScope"] = request.ScanScope
+	}
+
+	if !dara.IsNil(request.ScanType) {
+		query["ScanType"] = request.ScanType
+	}
+
+	if !dara.IsNil(request.TriggerType) {
+		query["TriggerType"] = request.TriggerType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateScanRule"),
+		Version:     dara.String("2018-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateScanRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建扫描规则
+//
+// @param request - CreateScanRuleRequest
+//
+// @return CreateScanRuleResponse
+func (client *Client) CreateScanRule(request *CreateScanRuleRequest) (_result *CreateScanRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateScanRuleResponse{}
+	_body, _err := client.CreateScanRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建实例域名路由规则
+//
+// @param tmpReq - CreateStorageDomainRoutingRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStorageDomainRoutingRuleResponse
+func (client *Client) CreateStorageDomainRoutingRuleWithOptions(tmpReq *CreateStorageDomainRoutingRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateStorageDomainRoutingRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateStorageDomainRoutingRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Routes) {
+		request.RoutesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Routes, dara.String("Routes"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RoutesShrink) {
+		query["Routes"] = request.RoutesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateStorageDomainRoutingRule"),
+		Version:     dara.String("2018-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateStorageDomainRoutingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建实例域名路由规则
+//
+// @param request - CreateStorageDomainRoutingRuleRequest
+//
+// @return CreateStorageDomainRoutingRuleResponse
+func (client *Client) CreateStorageDomainRoutingRule(request *CreateStorageDomainRoutingRuleRequest) (_result *CreateStorageDomainRoutingRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateStorageDomainRoutingRuleResponse{}
+	_body, _err := client.CreateStorageDomainRoutingRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an artifact lifecycle management rule.
 //
 // @param request - DeleteArtifactLifecycleRuleRequest
@@ -3157,6 +3329,138 @@ func (client *Client) DeleteRepository(request *DeleteRepositoryRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteRepositoryResponse{}
 	_body, _err := client.DeleteRepositoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除扫描规则
+//
+// @param request - DeleteScanRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteScanRuleResponse
+func (client *Client) DeleteScanRuleWithOptions(request *DeleteScanRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteScanRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScanRuleId) {
+		query["ScanRuleId"] = request.ScanRuleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteScanRule"),
+		Version:     dara.String("2018-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteScanRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除扫描规则
+//
+// @param request - DeleteScanRuleRequest
+//
+// @return DeleteScanRuleResponse
+func (client *Client) DeleteScanRule(request *DeleteScanRuleRequest) (_result *DeleteScanRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteScanRuleResponse{}
+	_body, _err := client.DeleteScanRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除实例存储域名映射规则
+//
+// @param request - DeleteStorageDomainRoutingRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStorageDomainRoutingRuleResponse
+func (client *Client) DeleteStorageDomainRoutingRuleWithOptions(request *DeleteStorageDomainRoutingRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteStorageDomainRoutingRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RuleId) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteStorageDomainRoutingRule"),
+		Version:     dara.String("2018-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteStorageDomainRoutingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除实例存储域名映射规则
+//
+// @param request - DeleteStorageDomainRoutingRuleRequest
+//
+// @return DeleteStorageDomainRoutingRuleResponse
+func (client *Client) DeleteStorageDomainRoutingRule(request *DeleteStorageDomainRoutingRuleRequest) (_result *DeleteStorageDomainRoutingRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteStorageDomainRoutingRuleResponse{}
+	_body, _err := client.DeleteStorageDomainRoutingRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4706,6 +5010,138 @@ func (client *Client) GetRepository(request *GetRepositoryRequest) (_result *Get
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetRepositoryResponse{}
 	_body, _err := client.GetRepositoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询扫描规则
+//
+// @param request - GetScanRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetScanRuleResponse
+func (client *Client) GetScanRuleWithOptions(request *GetScanRuleRequest, runtime *dara.RuntimeOptions) (_result *GetScanRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScanRuleId) {
+		query["ScanRuleId"] = request.ScanRuleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetScanRule"),
+		Version:     dara.String("2018-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetScanRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询扫描规则
+//
+// @param request - GetScanRuleRequest
+//
+// @return GetScanRuleResponse
+func (client *Client) GetScanRule(request *GetScanRuleRequest) (_result *GetScanRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetScanRuleResponse{}
+	_body, _err := client.GetScanRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例存储域名路由规则
+//
+// @param request - GetStorageDomainRoutingRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStorageDomainRoutingRuleResponse
+func (client *Client) GetStorageDomainRoutingRuleWithOptions(request *GetStorageDomainRoutingRuleRequest, runtime *dara.RuntimeOptions) (_result *GetStorageDomainRoutingRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RuleId) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetStorageDomainRoutingRule"),
+		Version:     dara.String("2018-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetStorageDomainRoutingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例存储域名路由规则
+//
+// @param request - GetStorageDomainRoutingRuleRequest
+//
+// @return GetStorageDomainRoutingRuleResponse
+func (client *Client) GetStorageDomainRoutingRule(request *GetStorageDomainRoutingRuleRequest) (_result *GetStorageDomainRoutingRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetStorageDomainRoutingRuleResponse{}
+	_body, _err := client.GetStorageDomainRoutingRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6599,6 +7035,64 @@ func (client *Client) ListScanMaliciousFileByTask(request *ListScanMaliciousFile
 
 // Summary:
 //
+// 查询扫描规则
+//
+// @param request - ListScanRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListScanRuleResponse
+func (client *Client) ListScanRuleWithOptions(request *ListScanRuleRequest, runtime *dara.RuntimeOptions) (_result *ListScanRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListScanRule"),
+		Version:     dara.String("2018-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListScanRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询扫描规则
+//
+// @param request - ListScanRuleRequest
+//
+// @return ListScanRuleResponse
+func (client *Client) ListScanRule(request *ListScanRuleRequest) (_result *ListScanRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListScanRuleResponse{}
+	_body, _err := client.ListScanRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the tags that are added to cloud resources. Instance resources are supported.
 //
 // @param request - ListTagResourcesRequest
@@ -7958,6 +8452,182 @@ func (client *Client) UpdateRepository(request *UpdateRepositoryRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateRepositoryResponse{}
 	_body, _err := client.UpdateRepositoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新扫描规则
+//
+// @param tmpReq - UpdateScanRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateScanRuleResponse
+func (client *Client) UpdateScanRuleWithOptions(tmpReq *UpdateScanRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateScanRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateScanRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Namespaces) {
+		request.NamespacesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Namespaces, dara.String("Namespaces"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RepoNames) {
+		request.RepoNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RepoNames, dara.String("RepoNames"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NamespacesShrink) {
+		query["Namespaces"] = request.NamespacesShrink
+	}
+
+	if !dara.IsNil(request.RepoNamesShrink) {
+		query["RepoNames"] = request.RepoNamesShrink
+	}
+
+	if !dara.IsNil(request.RepoTagFilterPattern) {
+		query["RepoTagFilterPattern"] = request.RepoTagFilterPattern
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.ScanRuleId) {
+		query["ScanRuleId"] = request.ScanRuleId
+	}
+
+	if !dara.IsNil(request.ScanScope) {
+		query["ScanScope"] = request.ScanScope
+	}
+
+	if !dara.IsNil(request.TriggerType) {
+		query["TriggerType"] = request.TriggerType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateScanRule"),
+		Version:     dara.String("2018-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateScanRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新扫描规则
+//
+// @param request - UpdateScanRuleRequest
+//
+// @return UpdateScanRuleResponse
+func (client *Client) UpdateScanRule(request *UpdateScanRuleRequest) (_result *UpdateScanRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateScanRuleResponse{}
+	_body, _err := client.UpdateScanRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新实例域名路由规则
+//
+// @param tmpReq - UpdateStorageDomainRoutingRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateStorageDomainRoutingRuleResponse
+func (client *Client) UpdateStorageDomainRoutingRuleWithOptions(tmpReq *UpdateStorageDomainRoutingRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateStorageDomainRoutingRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateStorageDomainRoutingRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Routes) {
+		request.RoutesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Routes, dara.String("Routes"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RoutesShrink) {
+		query["Routes"] = request.RoutesShrink
+	}
+
+	if !dara.IsNil(request.RuleId) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateStorageDomainRoutingRule"),
+		Version:     dara.String("2018-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateStorageDomainRoutingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新实例域名路由规则
+//
+// @param request - UpdateStorageDomainRoutingRuleRequest
+//
+// @return UpdateStorageDomainRoutingRuleResponse
+func (client *Client) UpdateStorageDomainRoutingRule(request *UpdateStorageDomainRoutingRuleRequest) (_result *UpdateStorageDomainRoutingRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateStorageDomainRoutingRuleResponse{}
+	_body, _err := client.UpdateStorageDomainRoutingRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
