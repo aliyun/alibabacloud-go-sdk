@@ -1,3 +1,11 @@
+2025-11-28 Version: v1.4.0
+- Support API CreateBroadcastSticker.
+- Support API CreateBroadcastVideoFromTemplate.
+- Support API GetBroadcastTemplate.
+- Support API ListBroadcastTemplates.
+- Support API ListBroadcastVideosById.
+
+
 2025-11-28 Version: v1.3.0
 - Support API ConfirmTrainPicAvatar.
 - Support API CreateTTSVoiceCustom.

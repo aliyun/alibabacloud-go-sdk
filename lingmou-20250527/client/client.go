@@ -270,6 +270,154 @@ func (client *Client) CreateBackgroundPic(request *CreateBackgroundPicRequest) (
 
 // Summary:
 //
+// 创建播报贴图
+//
+// @param request - CreateBroadcastStickerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBroadcastStickerResponse
+func (client *Client) CreateBroadcastStickerWithOptions(request *CreateBroadcastStickerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateBroadcastStickerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FileName) {
+		body["fileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.OssKey) {
+		body["ossKey"] = request.OssKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateBroadcastSticker"),
+		Version:     dara.String("2025-05-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/customer/broadcast/material/sticker/create"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateBroadcastStickerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建播报贴图
+//
+// @param request - CreateBroadcastStickerRequest
+//
+// @return CreateBroadcastStickerResponse
+func (client *Client) CreateBroadcastSticker(request *CreateBroadcastStickerRequest) (_result *CreateBroadcastStickerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateBroadcastStickerResponse{}
+	_body, _err := client.CreateBroadcastStickerWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 基于模板创建播报视频
+//
+// @param request - CreateBroadcastVideoFromTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBroadcastVideoFromTemplateResponse
+func (client *Client) CreateBroadcastVideoFromTemplateWithOptions(request *CreateBroadcastVideoFromTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateBroadcastVideoFromTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["templateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.Variables) {
+		body["variables"] = request.Variables
+	}
+
+	if !dara.IsNil(request.VideoOptions) {
+		body["videoOptions"] = request.VideoOptions
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateBroadcastVideoFromTemplate"),
+		Version:     dara.String("2025-05-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/amp/customer/broadcast/video/createFromTemplate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateBroadcastVideoFromTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 基于模板创建播报视频
+//
+// @param request - CreateBroadcastVideoFromTemplateRequest
+//
+// @return CreateBroadcastVideoFromTemplateResponse
+func (client *Client) CreateBroadcastVideoFromTemplate(request *CreateBroadcastVideoFromTemplateRequest) (_result *CreateBroadcastVideoFromTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateBroadcastVideoFromTemplateResponse{}
+	_body, _err := client.CreateBroadcastVideoFromTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 背景配置
 //
 // @param request - CreateChatConfigRequest
@@ -668,6 +816,72 @@ func (client *Client) CreateTrainPicAvatar(request *CreateTrainPicAvatarRequest)
 
 // Summary:
 //
+// 查询播报模板详情
+//
+// @param request - GetBroadcastTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBroadcastTemplateResponse
+func (client *Client) GetBroadcastTemplateWithOptions(request *GetBroadcastTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetBroadcastTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TemplateId) {
+		query["templateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetBroadcastTemplate"),
+		Version:     dara.String("2025-05-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/customer/broadcast/template/detail"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetBroadcastTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询播报模板详情
+//
+// @param request - GetBroadcastTemplateRequest
+//
+// @return GetBroadcastTemplateResponse
+func (client *Client) GetBroadcastTemplate(request *GetBroadcastTemplateRequest) (_result *GetBroadcastTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetBroadcastTemplateResponse{}
+	_body, _err := client.GetBroadcastTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询图片训练数字人的状态
 //
 // @param request - GetTrainPicAvatarStatusRequest
@@ -795,6 +1009,156 @@ func (client *Client) GetUploadPolicy(request *GetUploadPolicyRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &GetUploadPolicyResponse{}
 	_body, _err := client.GetUploadPolicyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举播报模板
+//
+// @param request - ListBroadcastTemplatesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBroadcastTemplatesResponse
+func (client *Client) ListBroadcastTemplatesWithOptions(request *ListBroadcastTemplatesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListBroadcastTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.Size) {
+		query["size"] = request.Size
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListBroadcastTemplates"),
+		Version:     dara.String("2025-05-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/customer/broadcast/template/list"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListBroadcastTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举播报模板
+//
+// @param request - ListBroadcastTemplatesRequest
+//
+// @return ListBroadcastTemplatesResponse
+func (client *Client) ListBroadcastTemplates(request *ListBroadcastTemplatesRequest) (_result *ListBroadcastTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListBroadcastTemplatesResponse{}
+	_body, _err := client.ListBroadcastTemplatesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据视频id批量查询播报视频（最多查询100个）
+//
+// @param tmpReq - ListBroadcastVideosByIdRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBroadcastVideosByIdResponse
+func (client *Client) ListBroadcastVideosByIdWithOptions(tmpReq *ListBroadcastVideosByIdRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListBroadcastVideosByIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListBroadcastVideosByIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.VideoIds) {
+		request.VideoIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VideoIds, dara.String("videoIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.VideoIdsShrink) {
+		query["videoIds"] = request.VideoIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListBroadcastVideosById"),
+		Version:     dara.String("2025-05-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/amp/customer/broadcast/video/batchQuery"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListBroadcastVideosByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据视频id批量查询播报视频（最多查询100个）
+//
+// @param request - ListBroadcastVideosByIdRequest
+//
+// @return ListBroadcastVideosByIdResponse
+func (client *Client) ListBroadcastVideosById(request *ListBroadcastVideosByIdRequest) (_result *ListBroadcastVideosByIdResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListBroadcastVideosByIdResponse{}
+	_body, _err := client.ListBroadcastVideosByIdWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
