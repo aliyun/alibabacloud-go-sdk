@@ -699,6 +699,10 @@ func (client *Client) CreateAndroidInstanceGroupWithOptions(tmpReq *CreateAndroi
 		query["PromotionId"] = request.PromotionId
 	}
 
+	if !dara.IsNil(request.StreamMode) {
+		query["StreamMode"] = request.StreamMode
+	}
+
 	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
@@ -5003,6 +5007,10 @@ func (client *Client) ModifyAndroidInstanceGroupWithOptions(request *ModifyAndro
 
 	if !dara.IsNil(request.PolicyGroupId) {
 		query["PolicyGroupId"] = request.PolicyGroupId
+	}
+
+	if !dara.IsNil(request.StreamMode) {
+		query["StreamMode"] = request.StreamMode
 	}
 
 	req := &openapiutil.OpenApiRequest{

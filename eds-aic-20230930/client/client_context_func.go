@@ -526,6 +526,10 @@ func (client *Client) CreateAndroidInstanceGroupWithContext(ctx context.Context,
 		query["PromotionId"] = request.PromotionId
 	}
 
+	if !dara.IsNil(request.StreamMode) {
+		query["StreamMode"] = request.StreamMode
+	}
+
 	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
@@ -3806,6 +3810,10 @@ func (client *Client) ModifyAndroidInstanceGroupWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.PolicyGroupId) {
 		query["PolicyGroupId"] = request.PolicyGroupId
+	}
+
+	if !dara.IsNil(request.StreamMode) {
+		query["StreamMode"] = request.StreamMode
 	}
 
 	req := &openapiutil.OpenApiRequest{

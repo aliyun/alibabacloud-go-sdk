@@ -15,6 +15,8 @@ type iModifyAndroidInstanceGroupRequest interface {
 	GetNewInstanceGroupName() *string
 	SetPolicyGroupId(v string) *ModifyAndroidInstanceGroupRequest
 	GetPolicyGroupId() *string
+	SetStreamMode(v int32) *ModifyAndroidInstanceGroupRequest
+	GetStreamMode() *int32
 }
 
 type ModifyAndroidInstanceGroupRequest struct {
@@ -40,6 +42,7 @@ type ModifyAndroidInstanceGroupRequest struct {
 	//
 	// pg-2w97kp89gnsif****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	StreamMode    *int32  `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
 }
 
 func (s ModifyAndroidInstanceGroupRequest) String() string {
@@ -62,6 +65,10 @@ func (s *ModifyAndroidInstanceGroupRequest) GetPolicyGroupId() *string {
 	return s.PolicyGroupId
 }
 
+func (s *ModifyAndroidInstanceGroupRequest) GetStreamMode() *int32 {
+	return s.StreamMode
+}
+
 func (s *ModifyAndroidInstanceGroupRequest) SetInstanceGroupId(v string) *ModifyAndroidInstanceGroupRequest {
 	s.InstanceGroupId = &v
 	return s
@@ -74,6 +81,11 @@ func (s *ModifyAndroidInstanceGroupRequest) SetNewInstanceGroupName(v string) *M
 
 func (s *ModifyAndroidInstanceGroupRequest) SetPolicyGroupId(v string) *ModifyAndroidInstanceGroupRequest {
 	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *ModifyAndroidInstanceGroupRequest) SetStreamMode(v int32) *ModifyAndroidInstanceGroupRequest {
+	s.StreamMode = &v
 	return s
 }
 
