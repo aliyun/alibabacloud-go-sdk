@@ -660,6 +660,8 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSink struct {
 	SinkMNSParameters                *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParameters                `json:"SinkMNSParameters,omitempty" xml:"SinkMNSParameters,omitempty" type:"Struct"`
 	SinkOSSParameters                *SinkOSSParameters                                                                      `json:"SinkOSSParameters,omitempty" xml:"SinkOSSParameters,omitempty"`
 	SinkOpenSourceRabbitMQParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters `json:"SinkOpenSourceRabbitMQParameters,omitempty" xml:"SinkOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
+	SinkRabbitMQMetaParameters       *SinkRabbitMQMetaParameters                                                             `json:"SinkRabbitMQMetaParameters,omitempty" xml:"SinkRabbitMQMetaParameters,omitempty"`
+	SinkRabbitMQMsgSyncParameters    *SinkRabbitMQMsgSyncParameters                                                          `json:"SinkRabbitMQMsgSyncParameters,omitempty" xml:"SinkRabbitMQMsgSyncParameters,omitempty"`
 	// The parameters that are returned if ApsaraMQ for RabbitMQ is specified as the event target.
 	SinkRabbitMQParameters           *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParameters           `json:"SinkRabbitMQParameters,omitempty" xml:"SinkRabbitMQParameters,omitempty" type:"Struct"`
 	SinkRocketMQCheckpointParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQCheckpointParameters `json:"SinkRocketMQCheckpointParameters,omitempty" xml:"SinkRocketMQCheckpointParameters,omitempty" type:"Struct"`
@@ -735,6 +737,14 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkOSSParam
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkOpenSourceRabbitMQParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters {
 	return s.SinkOpenSourceRabbitMQParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkRabbitMQMetaParameters() *SinkRabbitMQMetaParameters {
+	return s.SinkRabbitMQMetaParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkRabbitMQMsgSyncParameters() *SinkRabbitMQMsgSyncParameters {
+	return s.SinkRabbitMQMsgSyncParameters
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkRabbitMQParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParameters {
@@ -825,6 +835,16 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkOSSParam
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkOpenSourceRabbitMQParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
 	s.SinkOpenSourceRabbitMQParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkRabbitMQMetaParameters(v *SinkRabbitMQMetaParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
+	s.SinkRabbitMQMetaParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkRabbitMQMsgSyncParameters(v *SinkRabbitMQMsgSyncParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
+	s.SinkRabbitMQMsgSyncParameters = v
 	return s
 }
 
@@ -921,6 +941,16 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) Validate() erro
 	}
 	if s.SinkOpenSourceRabbitMQParameters != nil {
 		if err := s.SinkOpenSourceRabbitMQParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkRabbitMQMetaParameters != nil {
+		if err := s.SinkRabbitMQMetaParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkRabbitMQMsgSyncParameters != nil {
+		if err := s.SinkRabbitMQMsgSyncParameters.Validate(); err != nil {
 			return err
 		}
 	}
@@ -3901,7 +3931,8 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters s
 	// 	- If you set this parameter to 1, a response is returned when data is written to the leader. In this mode, the performance and the risk of data loss are moderate. Data loss may occur if a failure occurs on the leader.
 	//
 	// 	- If you set this parameter to all, a response is returned when data is written to the leader and synchronized to the followers. In this mode, the performance is low, but the risk of data loss is also low. Data loss occurs if the leader and the followers fail at the same time.
-	Acks *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersAcks `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
+	Acks            *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersAcks `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
+	CompressionType *string                                                                        `json:"CompressionType,omitempty" xml:"CompressionType,omitempty"`
 	// The ID of the ApsaraMQ for Kafka instance.
 	InstanceId *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
 	// The message key.
@@ -3924,6 +3955,10 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParamete
 	return s.Acks
 }
 
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters) GetCompressionType() *string {
+	return s.CompressionType
+}
+
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters) GetInstanceId() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersInstanceId {
 	return s.InstanceId
 }
@@ -3942,6 +3977,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParamete
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters) SetAcks(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersAcks) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters {
 	s.Acks = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters) SetCompressionType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters {
+	s.CompressionType = &v
 	return s
 }
 
@@ -7586,6 +7626,8 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSource struct {
 	SourceOpenSourceRabbitMQParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOpenSourceRabbitMQParameters `json:"SourceOpenSourceRabbitMQParameters,omitempty" xml:"SourceOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
 	SourcePostgreSQLParameters         *SourcePostgreSQLParameters                                                                 `json:"SourcePostgreSQLParameters,omitempty" xml:"SourcePostgreSQLParameters,omitempty"`
 	SourcePrometheusParameters         *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters         `json:"SourcePrometheusParameters,omitempty" xml:"SourcePrometheusParameters,omitempty" type:"Struct"`
+	SourceRabbitMQMetaParameters       *SourceRabbitMQMetaParameters                                                               `json:"SourceRabbitMQMetaParameters,omitempty" xml:"SourceRabbitMQMetaParameters,omitempty"`
+	SourceRabbitMQMsgSyncParameters    *SourceRabbitMQMsgSyncParameters                                                            `json:"SourceRabbitMQMsgSyncParameters,omitempty" xml:"SourceRabbitMQMsgSyncParameters,omitempty"`
 	// The parameters that are returned if ApsaraMQ for RabbitMQ is specified as the event source.
 	SourceRabbitMQParameters           *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRabbitMQParameters           `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
 	SourceRocketMQCheckpointParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQCheckpointParameters `json:"SourceRocketMQCheckpointParameters,omitempty" xml:"SourceRocketMQCheckpointParameters,omitempty" type:"Struct"`
@@ -7653,6 +7695,14 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) GetSourcePost
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) GetSourcePrometheusParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters {
 	return s.SourcePrometheusParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) GetSourceRabbitMQMetaParameters() *SourceRabbitMQMetaParameters {
+	return s.SourceRabbitMQMetaParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) GetSourceRabbitMQMsgSyncParameters() *SourceRabbitMQMsgSyncParameters {
+	return s.SourceRabbitMQMsgSyncParameters
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) GetSourceRabbitMQParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRabbitMQParameters {
@@ -7733,6 +7783,16 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourcePost
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourcePrometheusParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
 	s.SourcePrometheusParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceRabbitMQMetaParameters(v *SourceRabbitMQMetaParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
+	s.SourceRabbitMQMetaParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceRabbitMQMsgSyncParameters(v *SourceRabbitMQMsgSyncParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
+	s.SourceRabbitMQMsgSyncParameters = v
 	return s
 }
 
@@ -7819,6 +7879,16 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) Validate() er
 	}
 	if s.SourcePrometheusParameters != nil {
 		if err := s.SourcePrometheusParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceRabbitMQMetaParameters != nil {
+		if err := s.SourceRabbitMQMetaParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceRabbitMQMsgSyncParameters != nil {
+		if err := s.SourceRabbitMQMsgSyncParameters.Validate(); err != nil {
 			return err
 		}
 	}

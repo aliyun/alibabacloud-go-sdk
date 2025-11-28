@@ -585,7 +585,9 @@ type UpdateEventStreamingRequestSink struct {
 	// The parameters that are configured if you specify open source RabbitMQ as the event target.
 	SinkOpenSourceRabbitMQParameters *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters `json:"SinkOpenSourceRabbitMQParameters,omitempty" xml:"SinkOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Managed Service for Prometheus as the event target.
-	SinkPrometheusParameters *UpdateEventStreamingRequestSinkSinkPrometheusParameters `json:"SinkPrometheusParameters,omitempty" xml:"SinkPrometheusParameters,omitempty" type:"Struct"`
+	SinkPrometheusParameters      *UpdateEventStreamingRequestSinkSinkPrometheusParameters `json:"SinkPrometheusParameters,omitempty" xml:"SinkPrometheusParameters,omitempty" type:"Struct"`
+	SinkRabbitMQMetaParameters    *SinkRabbitMQMetaParameters                              `json:"SinkRabbitMQMetaParameters,omitempty" xml:"SinkRabbitMQMetaParameters,omitempty"`
+	SinkRabbitMQMsgSyncParameters *SinkRabbitMQMsgSyncParameters                           `json:"SinkRabbitMQMsgSyncParameters,omitempty" xml:"SinkRabbitMQMsgSyncParameters,omitempty"`
 	// The parameters that are configured if you specify ApsaraMQ for RabbitMQ as the event target.
 	SinkRabbitMQParameters *UpdateEventStreamingRequestSinkSinkRabbitMQParameters `json:"SinkRabbitMQParameters,omitempty" xml:"SinkRabbitMQParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify ApsaraMQ for RocketMQ (Offset Data) as the event target.
@@ -674,6 +676,14 @@ func (s *UpdateEventStreamingRequestSink) GetSinkOpenSourceRabbitMQParameters() 
 
 func (s *UpdateEventStreamingRequestSink) GetSinkPrometheusParameters() *UpdateEventStreamingRequestSinkSinkPrometheusParameters {
 	return s.SinkPrometheusParameters
+}
+
+func (s *UpdateEventStreamingRequestSink) GetSinkRabbitMQMetaParameters() *SinkRabbitMQMetaParameters {
+	return s.SinkRabbitMQMetaParameters
+}
+
+func (s *UpdateEventStreamingRequestSink) GetSinkRabbitMQMsgSyncParameters() *SinkRabbitMQMsgSyncParameters {
+	return s.SinkRabbitMQMsgSyncParameters
 }
 
 func (s *UpdateEventStreamingRequestSink) GetSinkRabbitMQParameters() *UpdateEventStreamingRequestSinkSinkRabbitMQParameters {
@@ -779,6 +789,16 @@ func (s *UpdateEventStreamingRequestSink) SetSinkOpenSourceRabbitMQParameters(v 
 
 func (s *UpdateEventStreamingRequestSink) SetSinkPrometheusParameters(v *UpdateEventStreamingRequestSinkSinkPrometheusParameters) *UpdateEventStreamingRequestSink {
 	s.SinkPrometheusParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSink) SetSinkRabbitMQMetaParameters(v *SinkRabbitMQMetaParameters) *UpdateEventStreamingRequestSink {
+	s.SinkRabbitMQMetaParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSink) SetSinkRabbitMQMsgSyncParameters(v *SinkRabbitMQMsgSyncParameters) *UpdateEventStreamingRequestSink {
+	s.SinkRabbitMQMsgSyncParameters = v
 	return s
 }
 
@@ -893,6 +913,16 @@ func (s *UpdateEventStreamingRequestSink) Validate() error {
 			return err
 		}
 	}
+	if s.SinkRabbitMQMetaParameters != nil {
+		if err := s.SinkRabbitMQMetaParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkRabbitMQMsgSyncParameters != nil {
+		if err := s.SinkRabbitMQMsgSyncParameters.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.SinkRabbitMQParameters != nil {
 		if err := s.SinkRabbitMQParameters.Validate(); err != nil {
 			return err
@@ -917,20 +947,22 @@ func (s *UpdateEventStreamingRequestSink) Validate() error {
 }
 
 type UpdateEventStreamingRequestSinkSinkApacheKafkaParameters struct {
-	Acks             *string                                                                  `json:"Acks,omitempty" xml:"Acks,omitempty"`
-	Bootstraps       *string                                                                  `json:"Bootstraps,omitempty" xml:"Bootstraps,omitempty"`
-	Headers          *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersHeaders         `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	Key              *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersKey             `json:"Key,omitempty" xml:"Key,omitempty" type:"Struct"`
-	NetworkType      *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersNetworkType     `json:"NetworkType,omitempty" xml:"NetworkType,omitempty" type:"Struct"`
-	SaslMechanism    *string                                                                  `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
-	SaslPassword     *string                                                                  `json:"SaslPassword,omitempty" xml:"SaslPassword,omitempty"`
-	SaslUser         *string                                                                  `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
-	SecurityGroupId  *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersSecurityGroupId `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Struct"`
-	SecurityProtocol *string                                                                  `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
-	Topic            *string                                                                  `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	VSwitchIds       *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersVSwitchIds      `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
-	Value            *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersValue           `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
-	VpcId            *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersVpcId           `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
+	Acks                      *string                                                                  `json:"Acks,omitempty" xml:"Acks,omitempty"`
+	Bootstraps                *string                                                                  `json:"Bootstraps,omitempty" xml:"Bootstraps,omitempty"`
+	CompressionType           *string                                                                  `json:"CompressionType,omitempty" xml:"CompressionType,omitempty"`
+	Headers                   *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersHeaders         `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	Key                       *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersKey             `json:"Key,omitempty" xml:"Key,omitempty" type:"Struct"`
+	NetworkType               *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersNetworkType     `json:"NetworkType,omitempty" xml:"NetworkType,omitempty" type:"Struct"`
+	SaslMechanism             *string                                                                  `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
+	SaslPassword              *string                                                                  `json:"SaslPassword,omitempty" xml:"SaslPassword,omitempty"`
+	SaslUser                  *string                                                                  `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
+	SecurityGroupId           *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersSecurityGroupId `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Struct"`
+	SecurityProtocol          *string                                                                  `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
+	SslTruststoreCertificates *string                                                                  `json:"SslTruststoreCertificates,omitempty" xml:"SslTruststoreCertificates,omitempty"`
+	Topic                     *string                                                                  `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds                *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersVSwitchIds      `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
+	Value                     *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersValue           `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
+	VpcId                     *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersVpcId           `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
 }
 
 func (s UpdateEventStreamingRequestSinkSinkApacheKafkaParameters) String() string {
@@ -947,6 +979,10 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters) GetAcks() *st
 
 func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters) GetBootstraps() *string {
 	return s.Bootstraps
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters) GetCompressionType() *string {
+	return s.CompressionType
 }
 
 func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters) GetHeaders() *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersHeaders {
@@ -981,6 +1017,10 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters) GetSecurityPr
 	return s.SecurityProtocol
 }
 
+func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters) GetSslTruststoreCertificates() *string {
+	return s.SslTruststoreCertificates
+}
+
 func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters) GetTopic() *string {
 	return s.Topic
 }
@@ -1004,6 +1044,11 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters) SetAcks(v str
 
 func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters) SetBootstraps(v string) *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters {
 	s.Bootstraps = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters) SetCompressionType(v string) *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters {
+	s.CompressionType = &v
 	return s
 }
 
@@ -1044,6 +1089,11 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters) SetSecurityGr
 
 func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters) SetSecurityProtocol(v string) *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters {
 	s.SecurityProtocol = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters) SetSslTruststoreCertificates(v string) *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters {
+	s.SslTruststoreCertificates = &v
 	return s
 }
 
@@ -4676,7 +4726,8 @@ type UpdateEventStreamingRequestSinkSinkKafkaParameters struct {
 	// 	- If you set this parameter to 1, a response is returned when data is written to the leader. In this mode, the performance and the risk of data loss are moderate. Data loss may occur if a failure occurs on the leader.
 	//
 	// 	- If you set this parameter to all, a response is returned when data is written to the leader and synchronized to the followers. In this mode, the performance is low, but the risk of data loss is also low. Data loss occurs if the leader and the followers fail at the same time.
-	Acks *UpdateEventStreamingRequestSinkSinkKafkaParametersAcks `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
+	Acks            *UpdateEventStreamingRequestSinkSinkKafkaParametersAcks `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
+	CompressionType *string                                                 `json:"CompressionType,omitempty" xml:"CompressionType,omitempty"`
 	// The metadata added to messages in the ApsaraMQ for Kafka instance.
 	Headers *UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
 	// The ID of the ApsaraMQ for Kafka instance.
@@ -4701,6 +4752,10 @@ func (s *UpdateEventStreamingRequestSinkSinkKafkaParameters) GetAcks() *UpdateEv
 	return s.Acks
 }
 
+func (s *UpdateEventStreamingRequestSinkSinkKafkaParameters) GetCompressionType() *string {
+	return s.CompressionType
+}
+
 func (s *UpdateEventStreamingRequestSinkSinkKafkaParameters) GetHeaders() *UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders {
 	return s.Headers
 }
@@ -4723,6 +4778,11 @@ func (s *UpdateEventStreamingRequestSinkSinkKafkaParameters) GetValue() *UpdateE
 
 func (s *UpdateEventStreamingRequestSinkSinkKafkaParameters) SetAcks(v *UpdateEventStreamingRequestSinkSinkKafkaParametersAcks) *UpdateEventStreamingRequestSinkSinkKafkaParameters {
 	s.Acks = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkKafkaParameters) SetCompressionType(v string) *UpdateEventStreamingRequestSinkSinkKafkaParameters {
+	s.CompressionType = &v
 	return s
 }
 
@@ -9407,7 +9467,9 @@ type UpdateEventStreamingRequestSource struct {
 	SourceOpenSourceRabbitMQParameters *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters `json:"SourceOpenSourceRabbitMQParameters,omitempty" xml:"SourceOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
 	SourcePostgreSQLParameters         *SourcePostgreSQLParameters                                          `json:"SourcePostgreSQLParameters,omitempty" xml:"SourcePostgreSQLParameters,omitempty"`
 	// The parameters that are configured if you specify Managed Service for Prometheus as the event source.
-	SourcePrometheusParameters *UpdateEventStreamingRequestSourceSourcePrometheusParameters `json:"SourcePrometheusParameters,omitempty" xml:"SourcePrometheusParameters,omitempty" type:"Struct"`
+	SourcePrometheusParameters      *UpdateEventStreamingRequestSourceSourcePrometheusParameters `json:"SourcePrometheusParameters,omitempty" xml:"SourcePrometheusParameters,omitempty" type:"Struct"`
+	SourceRabbitMQMetaParameters    *SourceRabbitMQMetaParameters                                `json:"SourceRabbitMQMetaParameters,omitempty" xml:"SourceRabbitMQMetaParameters,omitempty"`
+	SourceRabbitMQMsgSyncParameters *SourceRabbitMQMsgSyncParameters                             `json:"SourceRabbitMQMsgSyncParameters,omitempty" xml:"SourceRabbitMQMsgSyncParameters,omitempty"`
 	// The parameters that are configured if you specify ApsaraMQ for RabbitMQ as the event source.
 	SourceRabbitMQParameters           *UpdateEventStreamingRequestSourceSourceRabbitMQParameters           `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
 	SourceRocketMQCheckpointParameters *UpdateEventStreamingRequestSourceSourceRocketMQCheckpointParameters `json:"SourceRocketMQCheckpointParameters,omitempty" xml:"SourceRocketMQCheckpointParameters,omitempty" type:"Struct"`
@@ -9479,6 +9541,14 @@ func (s *UpdateEventStreamingRequestSource) GetSourcePostgreSQLParameters() *Sou
 
 func (s *UpdateEventStreamingRequestSource) GetSourcePrometheusParameters() *UpdateEventStreamingRequestSourceSourcePrometheusParameters {
 	return s.SourcePrometheusParameters
+}
+
+func (s *UpdateEventStreamingRequestSource) GetSourceRabbitMQMetaParameters() *SourceRabbitMQMetaParameters {
+	return s.SourceRabbitMQMetaParameters
+}
+
+func (s *UpdateEventStreamingRequestSource) GetSourceRabbitMQMsgSyncParameters() *SourceRabbitMQMsgSyncParameters {
+	return s.SourceRabbitMQMsgSyncParameters
 }
 
 func (s *UpdateEventStreamingRequestSource) GetSourceRabbitMQParameters() *UpdateEventStreamingRequestSourceSourceRabbitMQParameters {
@@ -9564,6 +9634,16 @@ func (s *UpdateEventStreamingRequestSource) SetSourcePostgreSQLParameters(v *Sou
 
 func (s *UpdateEventStreamingRequestSource) SetSourcePrometheusParameters(v *UpdateEventStreamingRequestSourceSourcePrometheusParameters) *UpdateEventStreamingRequestSource {
 	s.SourcePrometheusParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSource) SetSourceRabbitMQMetaParameters(v *SourceRabbitMQMetaParameters) *UpdateEventStreamingRequestSource {
+	s.SourceRabbitMQMetaParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSource) SetSourceRabbitMQMsgSyncParameters(v *SourceRabbitMQMsgSyncParameters) *UpdateEventStreamingRequestSource {
+	s.SourceRabbitMQMsgSyncParameters = v
 	return s
 }
 
@@ -9658,6 +9738,16 @@ func (s *UpdateEventStreamingRequestSource) Validate() error {
 			return err
 		}
 	}
+	if s.SourceRabbitMQMetaParameters != nil {
+		if err := s.SourceRabbitMQMetaParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceRabbitMQMsgSyncParameters != nil {
+		if err := s.SourceRabbitMQMsgSyncParameters.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.SourceRabbitMQParameters != nil {
 		if err := s.SourceRabbitMQParameters.Validate(); err != nil {
 			return err
@@ -9682,19 +9772,20 @@ func (s *UpdateEventStreamingRequestSource) Validate() error {
 }
 
 type UpdateEventStreamingRequestSourceSourceApacheKafkaParameters struct {
-	Bootstraps       *string `json:"Bootstraps,omitempty" xml:"Bootstraps,omitempty"`
-	ConsumerGroup    *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
-	NetworkType      *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	OffsetReset      *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
-	SaslMechanism    *string `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
-	SaslPassword     *string `json:"SaslPassword,omitempty" xml:"SaslPassword,omitempty"`
-	SaslUser         *string `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
-	SecurityGroupId  *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SecurityProtocol *string `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
-	Topic            *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	VSwitchIds       *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	ValueDataType    *string `json:"ValueDataType,omitempty" xml:"ValueDataType,omitempty"`
-	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Bootstraps                *string `json:"Bootstraps,omitempty" xml:"Bootstraps,omitempty"`
+	ConsumerGroup             *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
+	NetworkType               *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OffsetReset               *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
+	SaslMechanism             *string `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
+	SaslPassword              *string `json:"SaslPassword,omitempty" xml:"SaslPassword,omitempty"`
+	SaslUser                  *string `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
+	SecurityGroupId           *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityProtocol          *string `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
+	SslTruststoreCertificates *string `json:"SslTruststoreCertificates,omitempty" xml:"SslTruststoreCertificates,omitempty"`
+	Topic                     *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds                *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	ValueDataType             *string `json:"ValueDataType,omitempty" xml:"ValueDataType,omitempty"`
+	VpcId                     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) String() string {
@@ -9739,6 +9830,10 @@ func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) GetSecuri
 
 func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) GetSecurityProtocol() *string {
 	return s.SecurityProtocol
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) GetSslTruststoreCertificates() *string {
+	return s.SslTruststoreCertificates
 }
 
 func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) GetTopic() *string {
@@ -9799,6 +9894,11 @@ func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) SetSecuri
 
 func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) SetSecurityProtocol(v string) *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters {
 	s.SecurityProtocol = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) SetSslTruststoreCertificates(v string) *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.SslTruststoreCertificates = &v
 	return s
 }
 
