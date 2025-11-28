@@ -130,6 +130,76 @@ func (client *Client) CloseChatInstanceSessions(instanceId *string, request *Clo
 
 // Summary:
 //
+// 用户确认
+//
+// @param request - ConfirmTrainPicAvatarRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfirmTrainPicAvatarResponse
+func (client *Client) ConfirmTrainPicAvatarWithOptions(request *ConfirmTrainPicAvatarRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ConfirmTrainPicAvatarResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AvatarId) {
+		query["avatarId"] = request.AvatarId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfirmTrainPicAvatar"),
+		Version:     dara.String("2025-05-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/train/confirmTrainPicAvatar"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfirmTrainPicAvatarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户确认
+//
+// @param request - ConfirmTrainPicAvatarRequest
+//
+// @return ConfirmTrainPicAvatarResponse
+func (client *Client) ConfirmTrainPicAvatar(request *ConfirmTrainPicAvatarRequest) (_result *ConfirmTrainPicAvatarResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ConfirmTrainPicAvatarResponse{}
+	_body, _err := client.ConfirmTrainPicAvatarWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建背景素材
 //
 // @param request - CreateBackgroundPicRequest
@@ -434,6 +504,236 @@ func (client *Client) CreateNoTrainPicAvatar(request *CreateNoTrainPicAvatarRequ
 
 // Summary:
 //
+// 创建TTS音色
+//
+// @param request - CreateTTSVoiceCustomRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTTSVoiceCustomResponse
+func (client *Client) CreateTTSVoiceCustomWithOptions(request *CreateTTSVoiceCustomRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTTSVoiceCustomResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileName) {
+		query["fileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.Gender) {
+		query["gender"] = request.Gender
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OssKey) {
+		query["ossKey"] = request.OssKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTTSVoiceCustom"),
+		Version:     dara.String("2025-05-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/voice/createTTSVoiceCustom"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTTSVoiceCustomResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建TTS音色
+//
+// @param request - CreateTTSVoiceCustomRequest
+//
+// @return CreateTTSVoiceCustomResponse
+func (client *Client) CreateTTSVoiceCustom(request *CreateTTSVoiceCustomRequest) (_result *CreateTTSVoiceCustomResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTTSVoiceCustomResponse{}
+	_body, _err := client.CreateTTSVoiceCustomWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建图片训练数字人
+//
+// @param request - CreateTrainPicAvatarRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTrainPicAvatarResponse
+func (client *Client) CreateTrainPicAvatarWithOptions(request *CreateTrainPicAvatarRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTrainPicAvatarResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Gender) {
+		query["gender"] = request.Gender
+	}
+
+	if !dara.IsNil(request.GenerateAssets) {
+		query["generateAssets"] = request.GenerateAssets
+	}
+
+	if !dara.IsNil(request.ImageOssPath) {
+		query["imageOssPath"] = request.ImageOssPath
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["templateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.Transparent) {
+		query["transparent"] = request.Transparent
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTrainPicAvatar"),
+		Version:     dara.String("2025-05-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/train/createTrainPicAvatar"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTrainPicAvatarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建图片训练数字人
+//
+// @param request - CreateTrainPicAvatarRequest
+//
+// @return CreateTrainPicAvatarResponse
+func (client *Client) CreateTrainPicAvatar(request *CreateTrainPicAvatarRequest) (_result *CreateTrainPicAvatarResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTrainPicAvatarResponse{}
+	_body, _err := client.CreateTrainPicAvatarWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询图片训练数字人的状态
+//
+// @param request - GetTrainPicAvatarStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTrainPicAvatarStatusResponse
+func (client *Client) GetTrainPicAvatarStatusWithOptions(request *GetTrainPicAvatarStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTrainPicAvatarStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AvatarId) {
+		query["avatarId"] = request.AvatarId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTrainPicAvatarStatus"),
+		Version:     dara.String("2025-05-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/train/getTrainPicAvatarStatus"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTrainPicAvatarStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询图片训练数字人的状态
+//
+// @param request - GetTrainPicAvatarStatusRequest
+//
+// @return GetTrainPicAvatarStatusResponse
+func (client *Client) GetTrainPicAvatarStatus(request *GetTrainPicAvatarStatusRequest) (_result *GetTrainPicAvatarStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTrainPicAvatarStatusResponse{}
+	_body, _err := client.GetTrainPicAvatarStatusWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取对话免训图片素材上传凭证
 //
 // @param request - GetUploadPolicyRequest
@@ -495,6 +795,170 @@ func (client *Client) GetUploadPolicy(request *GetUploadPolicyRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &GetUploadPolicyResponse{}
 	_body, _err := client.GetUploadPolicyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举私有TTS音色
+//
+// @param request - ListPrivateTTSVoicesCustomRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrivateTTSVoicesCustomResponse
+func (client *Client) ListPrivateTTSVoicesCustomWithOptions(request *ListPrivateTTSVoicesCustomRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPrivateTTSVoicesCustomResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		query["pageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPrivateTTSVoicesCustom"),
+		Version:     dara.String("2025-05-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/voice/listPrivateTTSVoicesCustom"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPrivateTTSVoicesCustomResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举私有TTS音色
+//
+// @param request - ListPrivateTTSVoicesCustomRequest
+//
+// @return ListPrivateTTSVoicesCustomResponse
+func (client *Client) ListPrivateTTSVoicesCustom(request *ListPrivateTTSVoicesCustomRequest) (_result *ListPrivateTTSVoicesCustomResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPrivateTTSVoicesCustomResponse{}
+	_body, _err := client.ListPrivateTTSVoicesCustomWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询底板素材
+//
+// @param request - ListTemplateMaterialRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTemplateMaterialResponse
+func (client *Client) ListTemplateMaterialWithOptions(request *ListTemplateMaterialRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTemplateMaterialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.Size) {
+		query["size"] = request.Size
+	}
+
+	if !dara.IsNil(request.TemplateIds) {
+		query["templateIds"] = request.TemplateIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTemplateMaterial"),
+		Version:     dara.String("2025-05-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/train/listTemplateMaterial"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTemplateMaterialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询底板素材
+//
+// @param request - ListTemplateMaterialRequest
+//
+// @return ListTemplateMaterialResponse
+func (client *Client) ListTemplateMaterial(request *ListTemplateMaterialRequest) (_result *ListTemplateMaterialResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTemplateMaterialResponse{}
+	_body, _err := client.ListTemplateMaterialWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
