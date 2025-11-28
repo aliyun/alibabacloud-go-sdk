@@ -16,6 +16,8 @@ type iListAINodePoolsRequest interface {
 }
 
 type ListAINodePoolsRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,22 +22,32 @@ type iGetSupabaseProjectDashboardAccountResponseBody interface {
 }
 
 type GetSupabaseProjectDashboardAccountResponseBody struct {
+	// The username for accessing the project\\"s dashboard.
+	//
 	// example:
 	//
 	// xxpassword
 	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
+	// The password associated with the dashboard username.
+	//
 	// example:
 	//
 	// xxuser
 	DashboardUsername *string `json:"DashboardUsername,omitempty" xml:"DashboardUsername,omitempty"`
+	// The ID of the Supabase project.
+	//
 	// example:
 	//
 	// sbp-twmoe9bakow
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the Supabase project.
+	//
 	// example:
 	//
 	// supabase_prod
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D****

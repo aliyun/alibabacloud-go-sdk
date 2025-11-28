@@ -16,12 +16,16 @@ type iDeleteModelServiceRequest interface {
 }
 
 type DeleteModelServiceRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The ID of the model service to be deleted.
+	//
 	// This parameter is required.
 	//
 	// example:

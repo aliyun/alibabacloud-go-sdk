@@ -16,12 +16,18 @@ type iDescribeBackupJobRequest interface {
 }
 
 type DescribeBackupJobRequest struct {
+	// The backup job ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	BackupJobId *int64 `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -10,7 +10,17 @@ import (
 
 // Summary:
 //
-// 添加AI节点
+// Adds AI nodes to the cluster.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This operation is used to add an AINode node.
+//
+// ## [](#qps-)QPS limit
+//
+// You can call this operation up to 1,000 times per second per account. Exceeding the limit will trigger API rate limiting, which may impact your business. Please call the API responsibly.
 //
 // @param request - AddAINodeRequest
 //
@@ -200,7 +210,7 @@ func (client *Client) BindDBResourceGroupWithRoleWithContext(ctx context.Context
 
 // Summary:
 //
-// 取消创建索引任务
+// Cancels an index creation job.
 //
 // @param request - CancelCreateIndexJobRequest
 //
@@ -428,11 +438,19 @@ func (client *Client) CancelUpsertCollectionDataJobWithContext(ctx context.Conte
 
 // Summary:
 //
-// 通过结合知识库和大模型，提供智能问答服务。
+// Provides intelligent question-and-answer services by combining a knowledge base with a large language model.
 //
 // Description:
 //
-// 通过结合知识库和大模型，提供智能问答服务。
+// This API enables users to query a large language model with answers grounded in a specified knowledge base collection. You can configure multiple parameters to customize requests, including but not limited to database instance IDs, knowledge retrieval parameters, and model inference parameters. In addition, a default system prompt template is provided and users are allowed to customize the system prompt.
+//
+//   - **DBInstanceId**: Required. This parameter specifies the ID of the database instance.
+//
+//   - **KnowledgeParams**: optional. It contains parameters related to knowledge retrieval, such as retrieval content and merge policy.
+//
+//   - **ModelParams**: required. It contains parameters related to model inference, such as the message list and the name of the model.
+//
+//   - **PromptTemplate**: optional. It is used to customize the system prompt template.
 //
 // @param tmpReq - ChatWithKnowledgeBaseRequest
 //
@@ -510,11 +528,19 @@ func (client *Client) ChatWithKnowledgeBaseWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 通过结合知识库和大模型，提供智能问答服务。
+// Provides intelligent question-and-answer services by combining a knowledge base with a large language model. A streaming API, which is called by using the SSE or the Java asynchronous SDK.
 //
 // Description:
 //
-// 通过结合知识库和大模型，提供智能问答服务。
+// This API enables users to query a large language model with answers grounded in a specified knowledge base collection. You can configure multiple parameters to customize requests, including but not limited to database instance IDs, knowledge retrieval parameters, and model inference parameters. In addition, a default system prompt template is provided and users are allowed to customize the system prompt.
+//
+//   - DBInstanceId: required. This parameter specifies the ID of the database instance.
+//
+//   - KnowledgeParams: optional. It contains parameters related to knowledge retrieval, such as retrieval content and merge policy.
+//
+//   - ModelParams: required. It contains parameters related to model inference, such as the message list and the name of the model.
+//
+//   - PromptTemplate: optional. It is used to customize a system prompt template.
 //
 // @param tmpReq - ChatWithKnowledgeBaseStreamRequest
 //
@@ -529,11 +555,19 @@ func (client *Client) ChatWithKnowledgeBaseStreamWithSSECtx(ctx context.Context,
 
 // Summary:
 //
-// 通过结合知识库和大模型，提供智能问答服务。
+// Provides intelligent question-and-answer services by combining a knowledge base with a large language model. A streaming API, which is called by using the SSE or the Java asynchronous SDK.
 //
 // Description:
 //
-// 通过结合知识库和大模型，提供智能问答服务。
+// This API enables users to query a large language model with answers grounded in a specified knowledge base collection. You can configure multiple parameters to customize requests, including but not limited to database instance IDs, knowledge retrieval parameters, and model inference parameters. In addition, a default system prompt template is provided and users are allowed to customize the system prompt.
+//
+//   - DBInstanceId: required. This parameter specifies the ID of the database instance.
+//
+//   - KnowledgeParams: optional. It contains parameters related to knowledge retrieval, such as retrieval content and merge policy.
+//
+//   - ModelParams: required. It contains parameters related to model inference, such as the message list and the name of the model.
+//
+//   - PromptTemplate: optional. It is used to customize a system prompt template.
 //
 // @param tmpReq - ChatWithKnowledgeBaseStreamRequest
 //
@@ -823,7 +857,7 @@ func (client *Client) CheckServiceLinkedRoleWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 恢复数据至指定实例
+// Restores data to a new AnalyticDB for PostgreSQL instance.
 //
 // @param request - CloneDBInstanceRequest
 //
@@ -953,7 +987,7 @@ func (client *Client) CreateAccountWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// 创建备份
+// Creates a backup set.
 //
 // @param request - CreateBackupRequest
 //
@@ -1351,6 +1385,68 @@ func (client *Client) CreateDBInstanceWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// Adds an IP whitelist group.
+//
+// @param tmpReq - CreateDBInstanceIPArrayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDBInstanceIPArrayResponse
+func (client *Client) CreateDBInstanceIPArrayWithContext(ctx context.Context, tmpReq *CreateDBInstanceIPArrayRequest, runtime *dara.RuntimeOptions) (_result *CreateDBInstanceIPArrayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateDBInstanceIPArrayShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SecurityIPList) {
+		request.SecurityIPListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SecurityIPList, dara.String("SecurityIPList"), dara.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.IPArrayAttribute) {
+		query["IPArrayAttribute"] = request.IPArrayAttribute
+	}
+
+	if !dara.IsNil(request.IPArrayName) {
+		query["IPArrayName"] = request.IPArrayName
+	}
+
+	if !dara.IsNil(request.SecurityIPListShrink) {
+		query["SecurityIPList"] = request.SecurityIPListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDBInstanceIPArray"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDBInstanceIPArrayResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a plan for an AnalyticDB for PostgreSQL instance.
 //
 // Description:
@@ -1481,6 +1577,74 @@ func (client *Client) CreateDBResourceGroupWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDBResourceGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a database.
+//
+// @param request - CreateDatabaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatabaseResponse
+func (client *Client) CreateDatabaseWithContext(ctx context.Context, request *CreateDatabaseRequest, runtime *dara.RuntimeOptions) (_result *CreateDatabaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CharacterSetName) {
+		query["CharacterSetName"] = request.CharacterSetName
+	}
+
+	if !dara.IsNil(request.Collate) {
+		query["Collate"] = request.Collate
+	}
+
+	if !dara.IsNil(request.Ctype) {
+		query["Ctype"] = request.Ctype
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DatabaseName) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Owner) {
+		query["Owner"] = request.Owner
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDatabase"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDatabaseResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1841,7 +2005,7 @@ func (client *Client) CreateHadoopDataSourceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创建索引
+// Creates an index. Note: 1. Only scalar indexes are supported. 2. The table is write-locked during index creation. 3. When creating an index on a table with a large volume of data, the process consumes significant CPU and I/O resources of the instance. If this impacts instance availability, call CancelCreateIndexJob to cancel the index creation.
 //
 // @param request - CreateIndexRequest
 //
@@ -1993,7 +2157,11 @@ func (client *Client) CreateJDBCDataSourceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建模型服务
+// Creates a model service.
+//
+// Description:
+//
+// Before you call this operation, make sure that you fully understand the [billing methods](https://help.aliyun.com/document_detail/35406.html) and [pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of AnalyticDB for PostgreSQL.
 //
 // @param tmpReq - CreateModelServiceRequest
 //
@@ -2695,7 +2863,11 @@ func (client *Client) CreateStreamingJobWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 创建supabase project
+// Creates a Supabase project.
+//
+// Description:
+//
+//	You can call this operation to create a Supabase project.
 //
 // @param request - CreateSupabaseProjectRequest
 //
@@ -2875,7 +3047,13 @@ func (client *Client) CreateVectorIndexWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除AI节点
+// # Delete AI Node
+//
+// Description:
+//
+//	  Subscription instances cannot be manually released. They are automatically released when they expire.
+//
+//		- You can call this operation to release pay-as-you-go instances only when they are in the **Running*	- state.
 //
 // @param request - DeleteAINodeRequest
 //
@@ -2979,7 +3157,7 @@ func (client *Client) DeleteAccountWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// 删除备份
+// Deletes a backup set. You can call this operation to delete only physical backup sets that are manually backed up.
 //
 // @param request - DeleteBackupRequest
 //
@@ -3237,6 +3415,54 @@ func (client *Client) DeleteDBInstanceWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 删除IP分组
+//
+// @param request - DeleteDBInstanceIPArrayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDBInstanceIPArrayResponse
+func (client *Client) DeleteDBInstanceIPArrayWithContext(ctx context.Context, request *DeleteDBInstanceIPArrayRequest, runtime *dara.RuntimeOptions) (_result *DeleteDBInstanceIPArrayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.IPArrayName) {
+		query["IPArrayName"] = request.IPArrayName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDBInstanceIPArray"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDBInstanceIPArrayResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a plan from an AnalyticDB for PostgreSQL instance.
 //
 // Description:
@@ -3339,6 +3565,54 @@ func (client *Client) DeleteDBResourceGroupWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDBResourceGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据库
+//
+// @param request - DeleteDatabaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatabaseResponse
+func (client *Client) DeleteDatabaseWithContext(ctx context.Context, request *DeleteDatabaseRequest, runtime *dara.RuntimeOptions) (_result *DeleteDatabaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DatabaseName) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDatabase"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDatabaseResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3641,7 +3915,7 @@ func (client *Client) DeleteHadoopDataSourceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除索引
+// Deletes an index.
 //
 // @param request - DeleteIndexRequest
 //
@@ -3765,7 +4039,11 @@ func (client *Client) DeleteJDBCDataSourceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除模型服务
+// # Delete Model Service
+//
+// Description:
+//
+// Deletes a model service.
 //
 // @param request - DeleteModelServiceRequest
 //
@@ -3871,6 +4149,50 @@ func (client *Client) DeleteNamespaceWithContext(ctx context.Context, request *D
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteNamespaceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭私有RAG服务
+//
+// @param request - DeletePrivateRAGServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePrivateRAGServiceResponse
+func (client *Client) DeletePrivateRAGServiceWithContext(ctx context.Context, request *DeletePrivateRAGServiceRequest, runtime *dara.RuntimeOptions) (_result *DeletePrivateRAGServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePrivateRAGService"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePrivateRAGServiceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4153,7 +4475,11 @@ func (client *Client) DeleteStreamingJobWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 删除Supabase实例
+// Deletes a Supabase project.
+//
+// Description:
+//
+//	You can call this operation to delete a Supabase project.
 //
 // @param request - DeleteSupabaseProjectRequest
 //
@@ -4263,6 +4589,58 @@ func (client *Client) DeleteVectorIndexWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVectorIndexResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 部署私有RAG服务
+//
+// @param request - DeployPrivateRAGServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeployPrivateRAGServiceResponse
+func (client *Client) DeployPrivateRAGServiceWithContext(ctx context.Context, request *DeployPrivateRAGServiceRequest, runtime *dara.RuntimeOptions) (_result *DeployPrivateRAGServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeployPrivateRAGService"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeployPrivateRAGServiceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4465,7 +4843,7 @@ func (client *Client) DescribeAvailableResourcesWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取备份任务详情
+// Queries the information about a backup job.
 //
 // @param request - DescribeBackupJobRequest
 //
@@ -4633,7 +5011,7 @@ func (client *Client) DescribeCollectionWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取创建索引任务
+// Queries the information about an index creation job.
 //
 // @param request - DescribeCreateIndexJobRequest
 //
@@ -6141,6 +6519,54 @@ func (client *Client) DescribeDataSharePerformanceWithContext(ctx context.Contex
 
 // Summary:
 //
+// 描述数据库
+//
+// @param request - DescribeDatabaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDatabaseResponse
+func (client *Client) DescribeDatabaseWithContext(ctx context.Context, request *DescribeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *DescribeDatabaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DatabaseName) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDatabase"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDatabaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries all databases and database accounts for an AnalyticDB for PostgreSQL instance.
 //
 // Description:
@@ -6411,7 +6837,7 @@ func (client *Client) DescribeDiagnosisSQLInfoWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Get Document Details
+// Queries the information about a document.
 //
 // @param request - DescribeDocumentRequest
 //
@@ -6567,6 +6993,58 @@ func (client *Client) DescribeDownloadSQLLogsWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDownloadSQLLogsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取安装在某个数据库上的插件信息
+//
+// @param request - DescribeExtensionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeExtensionResponse
+func (client *Client) DescribeExtensionWithContext(ctx context.Context, request *DescribeExtensionRequest, runtime *dara.RuntimeOptions) (_result *DescribeExtensionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DatabaseName) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !dara.IsNil(request.ExtensionName) {
+		query["ExtensionName"] = request.ExtensionName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeExtension"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeExtensionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6893,7 +7371,7 @@ func (client *Client) DescribeIMVInfosWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取索引详情
+// Retrieves the information about an index.
 //
 // @param request - DescribeIndexRequest
 //
@@ -7073,7 +7551,17 @@ func (client *Client) DescribeLogBackupsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询模型服务
+// Queries the information about a model service.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This interface is used to view the details of a model service.
+//
+// ## [](#qps-)QPS limit
+//
+// You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions.We recommend that you take note of this limit when you call this operation.
 //
 // @param request - DescribeModelServiceRequest
 //
@@ -7293,6 +7781,50 @@ func (client *Client) DescribeParametersWithContext(ctx context.Context, request
 
 // Summary:
 //
+// 获取私有RAG服务详情
+//
+// @param request - DescribePrivateRAGServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePrivateRAGServiceResponse
+func (client *Client) DescribePrivateRAGServiceWithContext(ctx context.Context, request *DescribePrivateRAGServiceRequest, runtime *dara.RuntimeOptions) (_result *DescribePrivateRAGServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePrivateRAGService"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePrivateRAGServiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of vSwitches.
 //
 // Description:
@@ -7447,6 +7979,50 @@ func (client *Client) DescribeRdsVpcsWithContext(ctx context.Context, request *D
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRdsVpcsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 描述一个实例是否处于平衡状态
+//
+// @param request - DescribeRebalanceStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRebalanceStatusResponse
+func (client *Client) DescribeRebalanceStatusWithContext(ctx context.Context, request *DescribeRebalanceStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeRebalanceStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRebalanceStatus"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRebalanceStatusResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8469,6 +9045,54 @@ func (client *Client) DescribeWaitingSQLRecordsWithContext(ctx context.Context, 
 
 // Summary:
 //
+// 获取私有RAG服务可部署可用区
+//
+// @param request - DescribeZonesPrivateRAGServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeZonesPrivateRAGServiceResponse
+func (client *Client) DescribeZonesPrivateRAGServiceWithContext(ctx context.Context, request *DescribeZonesPrivateRAGServiceRequest, runtime *dara.RuntimeOptions) (_result *DescribeZonesPrivateRAGServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeZonesPrivateRAGService"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeZonesPrivateRAGServiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables resource group management for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode. After you disable resource group management, the resource management method of the instance switches from resource group management to resource queue management.
 //
 // Description:
@@ -8711,7 +9335,87 @@ func (client *Client) DownloadSQLLogsRecordsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 知识库开启构建知识图谱
+// Downloads slow SQL records.
+//
+// @param request - DownloadSlowSQLRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DownloadSlowSQLRecordsResponse
+func (client *Client) DownloadSlowSQLRecordsWithContext(ctx context.Context, request *DownloadSlowSQLRecordsRequest, runtime *dara.RuntimeOptions) (_result *DownloadSlowSQLRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DBName) {
+		query["DBName"] = request.DBName
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxDuration) {
+		query["MaxDuration"] = request.MaxDuration
+	}
+
+	if !dara.IsNil(request.MinDuration) {
+		query["MinDuration"] = request.MinDuration
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.UserName) {
+		query["UserName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DownloadSlowSQLRecords"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DownloadSlowSQLRecordsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables knowledge graph construction for the knowledge base.
 //
 // @param tmpReq - EnableCollectionGraphRAGRequest
 //
@@ -9017,7 +9721,7 @@ func (client *Client) GetAccountWithContext(ctx context.Context, request *GetAcc
 
 // Summary:
 //
-// 获取构建知识图谱任务
+// Retrieves a task to build a knowledge graph.
 //
 // @param request - GetGraphRAGJobRequest
 //
@@ -9213,7 +9917,11 @@ func (client *Client) GetStatementResultWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询Supabase实例详情
+// Retrieves the detailed configuration and status information for a specific Supabase instance.
+//
+// Description:
+//
+// This interface is used to query the details of a Supabase instance.
 //
 // @param request - GetSupabaseProjectRequest
 //
@@ -9261,7 +9969,11 @@ func (client *Client) GetSupabaseProjectWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询Supabase实例 API Keys
+// Queries a list of API keys for a Supabase project.
+//
+// Description:
+//
+// You can call this operation to query a list of API keys for a Supabase project.
 //
 // @param request - GetSupabaseProjectApiKeysRequest
 //
@@ -9309,7 +10021,11 @@ func (client *Client) GetSupabaseProjectApiKeysWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询Supabase项目dashboard账号信息
+// Retrieves the username and password for the dashboard of a specific Supabase project.
+//
+// Description:
+//
+// # Query Supabase Project Dashboard Account Information
 //
 // @param request - GetSupabaseProjectDashboardAccountRequest
 //
@@ -9361,11 +10077,11 @@ func (client *Client) GetSupabaseProjectDashboardAccountWithContext(ctx context.
 //
 // Description:
 //
-// This operation is related to the UploadDocumentAsync operation. You can call the UploadDocumentAsync operation to create an upload job and obtain the job ID, and then call the GetUploadDocumentJob operation to query the execution information of the job.
+// This operation is related to the UploadDocumentAsync operation. You can call the UploadDocumentAsync operation to create an upload job and get the job ID, and then call the GetUploadDocumentJob operation to query the execution information of the job.
 //
-// >  Suggestions:
+// > Suggestions
 //
-//   - Determine whether the document upload job times out based on the document complexity and the number of tokens after chunking. In most cases, a job that lasts more than 2 hours is considered timeout.
+//   - Based on document complexity and the number of resulting vector chunks, the timeout is estimated and typically does not exceed 2 hours.
 //
 // @param request - GetUploadDocumentJobRequest
 //
@@ -9707,7 +10423,11 @@ func (client *Client) InitVectorDatabaseWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 列举AI节点池
+// Queries a list of AI nodes.
+//
+// Description:
+//
+//	This operation queries a list of AI nodes.
 //
 // @param request - ListAINodePoolsRequest
 //
@@ -9755,7 +10475,7 @@ func (client *Client) ListAINodePoolsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 获取备份任务列表
+// Queries a list of backup jobs.
 //
 // @param request - ListBackupJobsRequest
 //
@@ -9857,6 +10577,54 @@ func (client *Client) ListCollectionsWithContext(ctx context.Context, request *L
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCollectionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取安装在某个数据库上的所有插件信息
+//
+// @param request - ListDatabaseExtensionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatabaseExtensionsResponse
+func (client *Client) ListDatabaseExtensionsWithContext(ctx context.Context, request *ListDatabaseExtensionsRequest, runtime *dara.RuntimeOptions) (_result *ListDatabaseExtensionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DatabaseName) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDatabaseExtensions"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDatabaseExtensionsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10179,7 +10947,7 @@ func (client *Client) ListExternalDataSourcesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取索引列表
+// Queries a list of indexes.
 //
 // @param request - ListIndicesRequest
 //
@@ -10237,6 +11005,58 @@ func (client *Client) ListIndicesWithContext(ctx context.Context, request *ListI
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIndicesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举数据库
+//
+// @param request - ListInstanceDatabasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceDatabasesResponse
+func (client *Client) ListInstanceDatabasesWithContext(ctx context.Context, request *ListInstanceDatabasesRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceDatabasesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstanceDatabases"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstanceDatabasesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10311,7 +11131,17 @@ func (client *Client) ListInstanceExtensionsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询模型服务
+// Queries all model services.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This interface is used to view all model service information.
+//
+// ## [](#qps-)QPS limit
+//
+// You can call this operation up to 1,000 times per second per account. Exceeding the limit will trigger API rate limiting, which may impact your business. Please call the API responsibly.
 //
 // @param request - ListModelServicesRequest
 //
@@ -10611,6 +11441,94 @@ func (client *Client) ListSecretsWithContext(ctx context.Context, request *ListS
 
 // Summary:
 //
+// Queries slow SQL queries.
+//
+// @param request - ListSlowSQLRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSlowSQLRecordsResponse
+func (client *Client) ListSlowSQLRecordsWithContext(ctx context.Context, request *ListSlowSQLRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListSlowSQLRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DBName) {
+		query["DBName"] = request.DBName
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxDuration) {
+		query["MaxDuration"] = request.MaxDuration
+	}
+
+	if !dara.IsNil(request.MinDuration) {
+		query["MinDuration"] = request.MinDuration
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.UserName) {
+		query["UserName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSlowSQLRecords"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSlowSQLRecordsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create External Data Source Configuration
 //
 // @param request - ListStreamingDataServicesRequest
@@ -10779,7 +11697,11 @@ func (client *Client) ListStreamingJobsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询Supabase实例列表
+// Retrieves a paginated list of Supabase instances in your account. You can filter the list by region.
+//
+// Description:
+//
+//	You can call this operation to query Supabase instances.
 //
 // @param request - ListSupabaseProjectsRequest
 //
@@ -10831,7 +11753,11 @@ func (client *Client) ListSupabaseProjectsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取支持的模型列表
+// # Get the list of supported models
+//
+// Description:
+//
+//	This API is used to query the list of supported models.
 //
 // @param request - ListSupportModelsRequest
 //
@@ -11147,7 +12073,7 @@ func (client *Client) ModifyBackupPolicyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 更新Collection
+// Updates a collection.
 //
 // @param request - ModifyCollectionRequest
 //
@@ -11339,7 +12265,7 @@ func (client *Client) ModifyDBInstanceConnectionStringWithContext(ctx context.Co
 
 // Summary:
 //
-// 修改实例部署模式
+// Changes the development mode of an instance.
 //
 // @param request - ModifyDBInstanceDeploymentModeRequest
 //
@@ -12625,7 +13551,11 @@ func (client *Client) ModifyStreamingJobWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 修改supabase项目白名单
+// Sets or replaces the IP address whitelist for a specified Supabase project.
+//
+// Description:
+//
+// Before you can connect to a Supabase project, you must add your client\\"s IP address or CIDR block to the project\\"s whitelist.
 //
 // @param request - ModifySupabaseProjectSecurityIpsRequest
 //
@@ -13137,7 +14067,7 @@ func (client *Client) QueryContentWithContext(ctx context.Context, tmpReq *Query
 
 // Summary:
 //
-// 多知识库查询
+// Retrieves vectors and metadata from multiple specified document collections using natural language queries, then merge and return the results from all retrieval paths.
 //
 // @param tmpReq - QueryKnowledgeBasesContentRequest
 //
@@ -13507,7 +14437,11 @@ func (client *Client) ResetIMVMonitorDataWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 重置supabase数据库密码
+// # Reset the password of a Supabase database
+//
+// Description:
+//
+// Call this API to reset the password of the Supabase database.
 //
 // @param request - ResetSupabaseProjectPasswordRequest
 //
@@ -13985,7 +14919,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// 通过模型对文本文档进行向量化
+// Generates text embeddings using an embedding model.
 //
 // @param tmpReq - TextEmbeddingRequest
 //
@@ -14797,11 +15731,11 @@ func (client *Client) UploadDocumentAsyncWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// # Upload split text
+// Splits a document into chunks and uploads the vectorized chunks to a document collection.
 //
 // Description:
 //
-// The vectorization algorithm for the document is specified by the CreateDocumentCollection API.
+// The vector algorithm that is used for the document is specified when you call the CreateDocumentCollection operation.
 //
 // @param tmpReq - UpsertChunksRequest
 //

@@ -34,42 +34,65 @@ type iCreateModelServiceRequest interface {
 }
 
 type CreateModelServiceRequest struct {
+	// A list of AI nodes for model deployment.
+	//
 	// This parameter is required.
 	AiNodes []*string `json:"AiNodes,omitempty" xml:"AiNodes,omitempty" type:"Repeated"`
+	// The client token that is used to ensure the idempotence of the request. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/327176.html)
+	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88**********
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The cluster ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in the specified region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EnablePublicConnection *bool   `json:"EnablePublicConnection,omitempty" xml:"EnablePublicConnection,omitempty"`
+	// The inference engine. Only vllm is supported.
+	//
 	// example:
 	//
 	// vllm
 	InferenceEngine *string `json:"InferenceEngine,omitempty" xml:"InferenceEngine,omitempty"`
+	// The name of the model.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Qwen3-Embedding-8B
-	ModelName   *string                `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Model parameters (to be supported).
 	ModelParams map[string]interface{} `json:"ModelParams,omitempty" xml:"ModelParams,omitempty"`
+	// The number of model service replicas.
+	//
 	// example:
 	//
 	// 1
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The ID of the resource group to which the instance belongs. For more information about how to get the ID of a resource group, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	//
 	// example:
 	//
 	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The IP address whitelist.
+	//
+	// 127.0.0.1 indicates that access from any external IP address is prohibited. You can call the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) operation to modify the IP address whitelist after the instance is created.
+	//
 	// example:
 	//
 	// 127.0.0.1

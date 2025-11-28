@@ -16,12 +16,18 @@ type iGetSupabaseProjectApiKeysRequest interface {
 }
 
 type GetSupabaseProjectApiKeysRequest struct {
+	// The Supabase project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sbp-481****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-hangzhou

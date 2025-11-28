@@ -16,12 +16,16 @@ type iGetSupabaseProjectDashboardAccountRequest interface {
 }
 
 type GetSupabaseProjectDashboardAccountRequest struct {
+	// The Supabase project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sbp-4ptxp5mp****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-beijing

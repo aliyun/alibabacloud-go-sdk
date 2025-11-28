@@ -20,20 +20,38 @@ type iListModelServicesRequest interface {
 }
 
 type ListModelServicesRequest struct {
+	// The ID of the instance.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- **20**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
+	//
+	// Default value: **20**.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the cluster.
+	//
 	// example:
 	//
 	// cn-hangzhou

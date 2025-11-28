@@ -30,32 +30,59 @@ type iQueryKnowledgeBasesContentRequest interface {
 }
 
 type QueryKnowledgeBasesContentRequest struct {
+	// The text content for retrieval.
+	//
 	// This parameter is required.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The method used to merge multiple knowledge bases. Default value: RRF. Valid values:
+	//
+	// 	- RRF
+	//
+	// 	- Weight
+	//
 	// example:
 	//
 	// RRF
-	MergeMethod     *string                                           `json:"MergeMethod,omitempty" xml:"MergeMethod,omitempty"`
+	MergeMethod *string `json:"MergeMethod,omitempty" xml:"MergeMethod,omitempty"`
+	// The parameters of the merge method for each SourceCollection.
 	MergeMethodArgs *QueryKnowledgeBasesContentRequestMergeMethodArgs `json:"MergeMethodArgs,omitempty" xml:"MergeMethodArgs,omitempty" type:"Struct"`
 	OwnerId         *int64                                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The rerank factor. If you specify this parameter, the vector retrieval results are reranked once more. Valid values: 1\\<RerankFactor<=5.
+	//
+	// >
+	//
+	// 	- If the document is segmented into sparse parts, reranking is inefficient.
+	//
+	// 	- We recommend that the number of reranked results (the ceiling of TopK × RerankFactor) not exceed 50.
+	//
 	// example:
 	//
 	// 2
 	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	// The information about collections to retrieve from.
+	//
 	// This parameter is required.
 	SourceCollection []*QueryKnowledgeBasesContentRequestSourceCollection `json:"SourceCollection,omitempty" xml:"SourceCollection,omitempty" type:"Repeated"`
+	// Set the number of top results to be returned after merging results from multiple path retrieval.
+	//
 	// example:
 	//
 	// 10
@@ -170,7 +197,9 @@ func (s *QueryKnowledgeBasesContentRequest) Validate() error {
 }
 
 type QueryKnowledgeBasesContentRequestMergeMethodArgs struct {
-	Rrf    *QueryKnowledgeBasesContentRequestMergeMethodArgsRrf    `json:"Rrf,omitempty" xml:"Rrf,omitempty" type:"Struct"`
+	// The parameter that can be configured when the MergeMethod parameter is set to RRF.
+	Rrf *QueryKnowledgeBasesContentRequestMergeMethodArgsRrf `json:"Rrf,omitempty" xml:"Rrf,omitempty" type:"Struct"`
+	// The parameter that you can configure when you set the MergeMethod parameter to Weight.
 	Weight *QueryKnowledgeBasesContentRequestMergeMethodArgsWeight `json:"Weight,omitempty" xml:"Weight,omitempty" type:"Struct"`
 }
 
@@ -215,6 +244,8 @@ func (s *QueryKnowledgeBasesContentRequestMergeMethodArgs) Validate() error {
 }
 
 type QueryKnowledgeBasesContentRequestMergeMethodArgsRrf struct {
+	// The smoothing constant k in the formula to calculate the score: 1/(k + rank_i). The k constant must be a positive integer greater than 1.
+	//
 	// example:
 	//
 	// 60
@@ -243,6 +274,7 @@ func (s *QueryKnowledgeBasesContentRequestMergeMethodArgsRrf) Validate() error {
 }
 
 type QueryKnowledgeBasesContentRequestMergeMethodArgsWeight struct {
+	// An array of weights for each SourceCollection.
 	Weights []*float64 `json:"Weights,omitempty" xml:"Weights,omitempty" type:"Repeated"`
 }
 
@@ -268,23 +300,36 @@ func (s *QueryKnowledgeBasesContentRequestMergeMethodArgsWeight) Validate() erro
 }
 
 type QueryKnowledgeBasesContentRequestSourceCollection struct {
+	// The name of the document collection.
+	//
+	// >  You can call the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation to create a document collection and call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to query a list of document collections.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// knowledge22
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// The namespace.
+	//
+	// >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+	//
 	// example:
 	//
 	// ns_cloud_index
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The password of the namespace.
+	//
+	// >  The value of this parameter is specified when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ns_password
-	NamespacePassword *string                                                       `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	QueryParams       *QueryKnowledgeBasesContentRequestSourceCollectionQueryParams `json:"QueryParams,omitempty" xml:"QueryParams,omitempty" type:"Struct"`
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	// The condition that is used to filter the data to be updated. Specify this parameter in a format that is the same as the WHERE clause.
+	QueryParams *QueryKnowledgeBasesContentRequestSourceCollectionQueryParams `json:"QueryParams,omitempty" xml:"QueryParams,omitempty" type:"Struct"`
 }
 
 func (s QueryKnowledgeBasesContentRequestSourceCollection) String() string {
@@ -341,41 +386,124 @@ func (s *QueryKnowledgeBasesContentRequestSourceCollection) Validate() error {
 }
 
 type QueryKnowledgeBasesContentRequestSourceCollectionQueryParams struct {
+	// The filter condition that is used to query data. Specify this parameter in a format that is the same as the WHERE clause. The parameter is an expression that returns a Boolean value of TRUE or FALSE. The condition can be a simple comparison using operators such as equal (=), not equal (<> or !=), greater than (>), less than (<), greater than or equal (>=), or less than or equal (<=). It can also be a more complex expression combining multiple conditions with logical operators (AND, OR, NOT), or use keywords such as IN, BETWEEN, and LIKE.
+	//
+	// >
+	//
+	// 	- For the syntax, see https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/.
+	//
 	// example:
 	//
 	// id = \\"llm-52tvykqt6u67iw73_j6ovptwjk7_file_6ce3da1f7e69495d9f491f2180c86973_11967297\\"
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// Whether to enable knowledge graph enhancement. Default value: false.
+	//
 	// example:
 	//
 	// true
-	GraphEnhance    *bool                                                                        `json:"GraphEnhance,omitempty" xml:"GraphEnhance,omitempty"`
+	GraphEnhance *bool `json:"GraphEnhance,omitempty" xml:"GraphEnhance,omitempty"`
+	// Returns the top number of entities and relationship edges. Default value: 60.
 	GraphSearchArgs *QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsGraphSearchArgs `json:"GraphSearchArgs,omitempty" xml:"GraphSearchArgs,omitempty" type:"Struct"`
+	// The dual-path retrieval algorithm. This parameter is empty by default, which specifies that scores of vector retrieval and full-text retrieval are directly compared and sorted together.
+	//
+	// Valid values:
+	//
+	// 	- RRF: The reciprocal rank fusion (RRF) algorithm uses a constant k to control the fusion effect. For more information, see the description of the HybridSearchArgs parameter.
+	//
+	// 	- Weight: This algorithm uses the alpha parameter to specify the proportion of the vector search score and the full-text search score and then sorts by weight. For more information, see the description of the HybridSearchArgs parameter.
+	//
+	// 	- Cascaded: This algorithm performs first full-text retrieval and then vector retrieval.
+	//
 	// example:
 	//
 	// Cascaded
-	HybridSearch     *string                `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
+	HybridSearch *string `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
+	// The parameters of the dual-path retrieval algorithm. RRF and Weight are supported at this time:
+	//
+	// 	- RRF: Specifies the smoothing constant k in the formula to calculate the score: `1/(k + rank_i)`. The k constant must be a positive integer greater than 1. The format:
+	//
+	// <!---->
+	//
+	//     {
+	//
+	//        "RRF": {
+	//
+	//         "k": 60
+	//
+	//        }
+	//
+	//     }
+	//
+	// 	- Weight: The score is computed as `alpha 	- vector_score + (1 - alpha) 	- text_score`. The parameter alpha controls the weighting between vector search and full-text search scores, with a valid range of [0, 1]. 0 specifies only full-text search score. 1 specifies only vector search score.
+	//
+	// <!---->
+	//
+	//     {
+	//
+	//        "Weight": {
+	//
+	//         "alpha": 0.5
+	//
+	//        }
+	//
+	//     }
 	HybridSearchArgs map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
+	// The method that is used to create vector indexes. Valid values:
+	//
+	// 	- l2: Euclidean distance.
+	//
+	// 	- ip: Inner product distance.
+	//
+	// 	- cosine: Cosine similarity.
+	//
 	// example:
 	//
 	// cosine
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// Offset for pagination.
+	//
 	// example:
 	//
 	// 20
 	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// The fields by which to sort the results. This parameter is empty by default.
+	//
+	// The field must be either a metadata field or a default field in the table (e.g., id). Supported formats include:
+	//
+	// Single field, such as chunk_id. Multiple fields that are separated by commas (,), such as block_id,chunk_id. Descending order is supported, such as block_id DESC,chunk_id DESC.
+	//
 	// example:
 	//
 	// file_id,sort_num
-	OrderBy      *string  `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The retrieval window. If you specify this parameter, the context of the retrieved result is added in the output. Format: List\\<A, B>. Valid values: -10<=A<=0 and 0<=B<=10.
+	//
+	// >
+	//
+	// 	- We recommend that you specify this parameter if the source document is segmented into large numbers of pieces, which may result in loss of contextual information during retrieval.
+	//
+	// 	- Perform re-ranking before windowing.
 	RecallWindow []*int64 `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty" type:"Repeated"`
+	// The rerank factor. If you specify this parameter, the vector retrieval results are reranked once more. Valid values: 1\\<RerankFactor<=5.
+	//
+	// >
+	//
+	// 	- If the document is segmented into sparse parts, reranking is inefficient.
+	//
+	// 	- We recommend that the number of reranked results (the ceiling of TopK × RerankFactor) not exceed 50.
+	//
 	// example:
 	//
 	// 2.0
 	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	// The number of top results.
+	//
 	// example:
 	//
 	// 776
 	TopK *int64 `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	// Specifies whether to use full-text retrieval (dual-path retrieval). The default value is false, which means only vector retrieval is used.
+	//
 	// example:
 	//
 	// false
@@ -508,6 +636,8 @@ func (s *QueryKnowledgeBasesContentRequestSourceCollectionQueryParams) Validate(
 }
 
 type QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsGraphSearchArgs struct {
+	// Returns the top number of entities and relationship edges. Default value: 60.
+	//
 	// example:
 	//
 	// 60

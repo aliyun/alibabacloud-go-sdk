@@ -14,6 +14,8 @@ type iListSupportModelsRequest interface {
 }
 
 type ListSupportModelsRequest struct {
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou

@@ -16,12 +16,16 @@ type iDeleteSupabaseProjectRequest interface {
 }
 
 type DeleteSupabaseProjectRequest struct {
+	// The Supabase project ID. You can go to the Supabase page in the AnalyticDB for PostgreSQL console to obtain the workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sbp-1****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing

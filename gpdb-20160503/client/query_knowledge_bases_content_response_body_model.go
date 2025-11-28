@@ -28,26 +28,44 @@ type iQueryKnowledgeBasesContentResponseBody interface {
 }
 
 type QueryKnowledgeBasesContentResponseBody struct {
+	// The number of tokens that are used during vectorization.
+	//
+	// >  A token is the minimum unit for segmenting text. A token can be a word, phrase, punctuation, or character.
+	//
 	// example:
 	//
 	// 100
-	EmbeddingTokens *string                                         `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
-	Entities        *QueryKnowledgeBasesContentResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Struct"`
-	Matches         *QueryKnowledgeBasesContentResponseBodyMatches  `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
+	EmbeddingTokens *string `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
+	// The details of the entity.
+	Entities *QueryKnowledgeBasesContentResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Struct"`
+	// A single data record.
+	Matches *QueryKnowledgeBasesContentResponseBodyMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
+	// The returned information.
+	//
 	// example:
 	//
 	// success
-	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The details of the relationship edge.
 	Relations *QueryKnowledgeBasesContentResponseBodyRelations `json:"Relations,omitempty" xml:"Relations,omitempty" type:"Struct"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the operation. Valid values:
+	//
+	// 	- **success**.
+	//
+	// 	- **fail**.
+	//
 	// example:
 	//
 	// success
-	Status *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	Usage  *QueryKnowledgeBasesContentResponseBodyUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of tokens that are consumed by this query.
+	Usage *QueryKnowledgeBasesContentResponseBodyUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s QueryKnowledgeBasesContentResponseBody) String() string {
@@ -189,22 +207,31 @@ func (s *QueryKnowledgeBasesContentResponseBodyEntities) Validate() error {
 }
 
 type QueryKnowledgeBasesContentResponseBodyEntitiesEntities struct {
+	// The entity description.
+	//
 	// example:
 	//
 	// A former advisor at DeepMind.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the entity.
+	//
 	// example:
 	//
 	// Dr. Wang
 	Entity *string `json:"Entity,omitempty" xml:"Entity,omitempty"`
+	// The name of the file.
+	//
 	// example:
 	//
 	// my_doc.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The entity ID.
+	//
 	// example:
 	//
 	// 1
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The entity type.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -300,32 +327,50 @@ func (s *QueryKnowledgeBasesContentResponseBodyMatches) Validate() error {
 }
 
 type QueryKnowledgeBasesContentResponseBodyMatchesMatchList struct {
+	// The content of the text.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The name of the file.
+	//
 	// example:
 	//
 	// my_doc.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The public network URL of the image result. By default, the URL is valid for 2 hours.
+	//
+	// You can use the UrlExpiration parameter to specify a validity period.
+	//
 	// example:
 	//
 	// https://xxx-cn-beijing.aliyuncs.com/image/test.png
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	// The unique ID of the vector data.
+	//
 	// example:
 	//
 	// doca-1234
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Document loader metadata.
+	//
 	// example:
 	//
 	// {"page_pos": 1}
-	LoaderMetadata *string            `json:"LoaderMetadata,omitempty" xml:"LoaderMetadata,omitempty"`
-	Metadata       map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	LoaderMetadata *string `json:"LoaderMetadata,omitempty" xml:"LoaderMetadata,omitempty"`
+	// The metadata map.
+	Metadata map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The rerank score.
+	//
 	// example:
 	//
 	// 6.2345
 	RerankScore *float64 `json:"RerankScore,omitempty" xml:"RerankScore,omitempty"`
+	// The source of the retrieval results. 1 indicates vector retrieval, 2 indicates full-text retrieval, and 3 indicates dual-path retrieval.
+	//
 	// example:
 	//
 	// 1
 	RetrievalSource *int32 `json:"RetrievalSource,omitempty" xml:"RetrievalSource,omitempty"`
+	// The similarity score of the data. It is related to the algorithm (l2, ip, or cosine) that is specified when you create an index.
+	//
 	// example:
 	//
 	// 0.12345
@@ -460,19 +505,28 @@ func (s *QueryKnowledgeBasesContentResponseBodyRelations) Validate() error {
 }
 
 type QueryKnowledgeBasesContentResponseBodyRelationsRelations struct {
+	// The description of the relationship edge.
+	//
 	// example:
 	//
 	// Dr. Wang previously served as an advisor at DeepMind.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the file.
+	//
 	// example:
 	//
 	// my_doc.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The ID of the link.
+	//
 	// example:
 	//
 	// 1
-	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The source entity.
 	SourceEntity *string `json:"SourceEntity,omitempty" xml:"SourceEntity,omitempty"`
+	// The destination entity.
+	//
 	// example:
 	//
 	// Dr. Wang
@@ -537,10 +591,18 @@ func (s *QueryKnowledgeBasesContentResponseBodyRelationsRelations) Validate() er
 }
 
 type QueryKnowledgeBasesContentResponseBodyUsage struct {
+	// The number of entries that are used during vectorization.
+	//
+	// >  An entry refers to a single unit of vectorization processing. Processing one text input counts as 1 entry, while processing one image counts as 2 entries.
+	//
 	// example:
 	//
 	// 10
 	EmbeddingEntries *string `json:"EmbeddingEntries,omitempty" xml:"EmbeddingEntries,omitempty"`
+	// The number of tokens that are used for vectorization.
+	//
+	// >  A token is the minimum unit for splitting text. A token can be a word, phrase, punctuation, or character.
+	//
 	// example:
 	//
 	// 475

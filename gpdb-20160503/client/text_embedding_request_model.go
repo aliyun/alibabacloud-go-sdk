@@ -24,19 +24,47 @@ type iTextEmbeddingRequest interface {
 }
 
 type TextEmbeddingRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
-	DBInstanceId *string   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Dimension    *int32    `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	Input        []*string `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The number of embedding dimensions. The default value is the number of dimensions supported by the embedding algorithm.
+	//
+	// >
+	//
+	// 	- The text-embedding-v3 supports 1024, 768, and 512 dimensions. Default value: 1024.
+	//
+	// example:
+	//
+	// 1024
+	Dimension *int32 `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	// A list of text content to be embedded. The list length must not exceed 100.
+	Input []*string `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
+	// The text embedding model. Valid values:
+	//
+	// 	- text-embedding-v1:1536 dimensions
+	//
+	// 	- text-embedding-v2:1536 dimensions
+	//
+	// 	- text-embedding-v3 (default):1024, 768, and 512 dimensions
+	//
+	// 	- text2vec: 1024 dimensions
+	//
+	// 	- m3e-base: 768 dimensions
+	//
+	// 	- m3e-small: 512 dimensions
+	//
 	// example:
 	//
 	// text-embedding-v2
 	Model   *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:

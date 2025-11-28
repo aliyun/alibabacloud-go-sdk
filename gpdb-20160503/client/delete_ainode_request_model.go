@@ -20,23 +20,32 @@ type iDeleteAINodeRequest interface {
 }
 
 type DeleteAINodeRequest struct {
+	// The number of AINodes to be deleted.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	AINodeNum *int32 `json:"AINodeNum,omitempty" xml:"AINodeNum,omitempty"`
+	// The ID of the AINode resource pool.
+	//
 	// example:
 	//
 	// aipool-xxxx
 	AINodePoolId *string `json:"AINodePoolId,omitempty" xml:"AINodePoolId,omitempty"`
+	// The ID of the instance.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
-	DBInstanceId *string   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	NodeNames    []*string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The list of AINodes to be deleted.
+	NodeNames []*string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
 }
 
 func (s DeleteAINodeRequest) String() string {

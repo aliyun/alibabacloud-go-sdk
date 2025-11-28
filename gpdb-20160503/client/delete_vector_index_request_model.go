@@ -83,7 +83,16 @@ type DeleteVectorIndexRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The vector type. Valid values:
+	//
+	// 	- Dense (default)
+	//
+	// 	- Sparse
+	//
+	// example:
+	//
+	// Dense
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DeleteVectorIndexRequest) String() string {

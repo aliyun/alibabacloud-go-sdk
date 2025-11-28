@@ -18,14 +18,22 @@ type iListSupabaseProjectsRequest interface {
 }
 
 type ListSupabaseProjectsRequest struct {
+	// The maximum number of instances to return per page. Default value: 10.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token returned from a previous call. Use it to retrieve the next page of results.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID of the cluster.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation get a list of available region IDs.
+	//
 	// example:
 	//
 	// cn-hangzhou

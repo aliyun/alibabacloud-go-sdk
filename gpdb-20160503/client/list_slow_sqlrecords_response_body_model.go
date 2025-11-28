@@ -1,0 +1,361 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iListSlowSQLRecordsResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetItems(v []*ListSlowSQLRecordsResponseBodyItems) *ListSlowSQLRecordsResponseBody
+	GetItems() []*ListSlowSQLRecordsResponseBodyItems
+	SetPageNumber(v int32) *ListSlowSQLRecordsResponseBody
+	GetPageNumber() *int32
+	SetPageRecordCount(v int32) *ListSlowSQLRecordsResponseBody
+	GetPageRecordCount() *int32
+	SetRequestId(v string) *ListSlowSQLRecordsResponseBody
+	GetRequestId() *string
+	SetTotalRecordCount(v int32) *ListSlowSQLRecordsResponseBody
+	GetTotalRecordCount() *int32
+}
+
+type ListSlowSQLRecordsResponseBody struct {
+	// List of slow queries.
+	Items []*ListSlowSQLRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 2
+	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The unique ID of the request.
+	//
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of log entries returned.
+	//
+	// example:
+	//
+	// 2
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+}
+
+func (s ListSlowSQLRecordsResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListSlowSQLRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSlowSQLRecordsResponseBody) GetItems() []*ListSlowSQLRecordsResponseBodyItems {
+	return s.Items
+}
+
+func (s *ListSlowSQLRecordsResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListSlowSQLRecordsResponseBody) GetPageRecordCount() *int32 {
+	return s.PageRecordCount
+}
+
+func (s *ListSlowSQLRecordsResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *ListSlowSQLRecordsResponseBody) GetTotalRecordCount() *int32 {
+	return s.TotalRecordCount
+}
+
+func (s *ListSlowSQLRecordsResponseBody) SetItems(v []*ListSlowSQLRecordsResponseBodyItems) *ListSlowSQLRecordsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBody) SetPageNumber(v int32) *ListSlowSQLRecordsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBody) SetPageRecordCount(v int32) *ListSlowSQLRecordsResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBody) SetRequestId(v string) *ListSlowSQLRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBody) SetTotalRecordCount(v int32) *ListSlowSQLRecordsResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBody) Validate() error {
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListSlowSQLRecordsResponseBodyItems struct {
+	// The total CPU time (in milliseconds) consumed by the query execution.
+	//
+	// example:
+	//
+	// 1000
+	CpuTimeMs *int64 `json:"CpuTimeMs,omitempty" xml:"CpuTimeMs,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// adbpgadmin
+	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// Total execution time in milliseconds.
+	//
+	// example:
+	//
+	// 2000
+	DurationTime *int32 `json:"DurationTime,omitempty" xml:"DurationTime,omitempty"`
+	// The total lock wait time (in milliseconds).
+	//
+	// example:
+	//
+	// 1000
+	LockWaitTime *int32 `json:"LockWaitTime,omitempty" xml:"LockWaitTime,omitempty"`
+	// The total memory (in bytes) occupied by the query execution.
+	//
+	// example:
+	//
+	// 1000
+	MemBytes *int64 `json:"MemBytes,omitempty" xml:"MemBytes,omitempty"`
+	// Execution optimizer.
+	//
+	// example:
+	//
+	// planner
+	Optimizer *string `json:"Optimizer,omitempty" xml:"Optimizer,omitempty"`
+	// The end time of the query.
+	//
+	// example:
+	//
+	// 2024-12-04T18:00:00Z
+	QueryEndTime *string `json:"QueryEndTime,omitempty" xml:"QueryEndTime,omitempty"`
+	// The query ID. It is a unique identifier of the query.
+	//
+	// example:
+	//
+	// 7775338456746339025
+	QueryID *string `json:"QueryID,omitempty" xml:"QueryID,omitempty"`
+	// The start time of the query.
+	//
+	// example:
+	//
+	// 2024-12-04T17:00:00Z
+	QueryStartTime *string `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
+	// The query queueing time (in milliseconds) in resource groups/queues.
+	//
+	// example:
+	//
+	// 1000
+	QueueWaitTime *int32 `json:"QueueWaitTime,omitempty" xml:"QueueWaitTime,omitempty"`
+	// The total size (in bytes) of the files generated by the query.
+	//
+	// example:
+	//
+	// 1000
+	SpillBytes *int64 `json:"SpillBytes,omitempty" xml:"SpillBytes,omitempty"`
+	// SQL statements in audit logs.
+	//
+	// example:
+	//
+	// SHOW COLUMNS FROM `t_project`
+	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	// Indicates whether the SQL statement is truncated. Valid values:
+	//
+	// 	- true: Truncated.
+	//
+	// 	- false: Not truncated.
+	//
+	// example:
+	//
+	// false
+	SqlTruncated *string `json:"SqlTruncated,omitempty" xml:"SqlTruncated,omitempty"`
+	// The threshold that is used to truncate the SQL statement.
+	//
+	// example:
+	//
+	// 100
+	SqlTruncatedThreshold *int32 `json:"SqlTruncatedThreshold,omitempty" xml:"SqlTruncatedThreshold,omitempty"`
+	// The account that initiates the query.
+	//
+	// example:
+	//
+	// test_user
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s ListSlowSQLRecordsResponseBodyItems) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListSlowSQLRecordsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) GetCpuTimeMs() *int64 {
+	return s.CpuTimeMs
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) GetDBName() *string {
+	return s.DBName
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) GetDurationTime() *int32 {
+	return s.DurationTime
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) GetLockWaitTime() *int32 {
+	return s.LockWaitTime
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) GetMemBytes() *int64 {
+	return s.MemBytes
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) GetOptimizer() *string {
+	return s.Optimizer
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) GetQueryEndTime() *string {
+	return s.QueryEndTime
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) GetQueryID() *string {
+	return s.QueryID
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) GetQueryStartTime() *string {
+	return s.QueryStartTime
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) GetQueueWaitTime() *int32 {
+	return s.QueueWaitTime
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) GetSpillBytes() *int64 {
+	return s.SpillBytes
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) GetSqlText() *string {
+	return s.SqlText
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) GetSqlTruncated() *string {
+	return s.SqlTruncated
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) GetSqlTruncatedThreshold() *int32 {
+	return s.SqlTruncatedThreshold
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) GetUserName() *string {
+	return s.UserName
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) SetCpuTimeMs(v int64) *ListSlowSQLRecordsResponseBodyItems {
+	s.CpuTimeMs = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) SetDBName(v string) *ListSlowSQLRecordsResponseBodyItems {
+	s.DBName = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) SetDurationTime(v int32) *ListSlowSQLRecordsResponseBodyItems {
+	s.DurationTime = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) SetLockWaitTime(v int32) *ListSlowSQLRecordsResponseBodyItems {
+	s.LockWaitTime = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) SetMemBytes(v int64) *ListSlowSQLRecordsResponseBodyItems {
+	s.MemBytes = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) SetOptimizer(v string) *ListSlowSQLRecordsResponseBodyItems {
+	s.Optimizer = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) SetQueryEndTime(v string) *ListSlowSQLRecordsResponseBodyItems {
+	s.QueryEndTime = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) SetQueryID(v string) *ListSlowSQLRecordsResponseBodyItems {
+	s.QueryID = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) SetQueryStartTime(v string) *ListSlowSQLRecordsResponseBodyItems {
+	s.QueryStartTime = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) SetQueueWaitTime(v int32) *ListSlowSQLRecordsResponseBodyItems {
+	s.QueueWaitTime = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) SetSpillBytes(v int64) *ListSlowSQLRecordsResponseBodyItems {
+	s.SpillBytes = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) SetSqlText(v string) *ListSlowSQLRecordsResponseBodyItems {
+	s.SqlText = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) SetSqlTruncated(v string) *ListSlowSQLRecordsResponseBodyItems {
+	s.SqlTruncated = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) SetSqlTruncatedThreshold(v int32) *ListSlowSQLRecordsResponseBodyItems {
+	s.SqlTruncatedThreshold = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) SetUserName(v string) *ListSlowSQLRecordsResponseBodyItems {
+	s.UserName = &v
+	return s
+}
+
+func (s *ListSlowSQLRecordsResponseBodyItems) Validate() error {
+	return dara.Validate(s)
+}

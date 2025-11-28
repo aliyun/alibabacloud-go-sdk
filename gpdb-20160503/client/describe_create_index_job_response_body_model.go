@@ -20,15 +20,26 @@ type iDescribeCreateIndexJobResponseBody interface {
 }
 
 type DescribeCreateIndexJobResponseBody struct {
+	// The details of the index creation job.
 	Job *DescribeCreateIndexJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the operation. Valid values:
+	//
+	// 	- **success**.
+	//
+	// 	- **fail**.
+	//
 	// example:
 	//
 	// success
@@ -89,32 +100,56 @@ func (s *DescribeCreateIndexJobResponseBody) Validate() error {
 }
 
 type DescribeCreateIndexJobResponseBodyJob struct {
+	// Indicates whether the operation is complete.
+	//
 	// example:
 	//
 	// false
 	Completed *bool `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	// The job creation time.
+	//
 	// example:
 	//
 	// 2024-01-08 16:52:04.864664
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error message that is returned when the current operation is abnormal or fails.
+	//
 	// example:
 	//
 	// Failed to connect database.
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// Job ID。
+	// The job ID.
 	//
 	// example:
 	//
 	// 231460f8-75dc-405e-a669-0c5204887e91
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The progress of the index creation job. Unit: %. A value of 100 indicates that the job is complete.
+	//
+	// >
+	//
+	// 	- Only AnalyticDB for PostgreSQL V7.0 supports the Progress parameter.
+	//
 	// example:
 	//
 	// 20
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The status of the job. Valid values:
+	//
+	// 	- **Success.**
+	//
+	// 	- **Failed*	- (See the Error parameter for failure reasons).
+	//
+	// 	- **Cancelled.**
+	//
+	// 	- **Running.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The job last updated time.
+	//
 	// example:
 	//
 	// 2024-01-08 16:53:04.864664

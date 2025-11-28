@@ -18,14 +18,24 @@ type iDeleteIndexResponseBody interface {
 }
 
 type DeleteIndexResponseBody struct {
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the operation. Valid values:
+	//
+	// 	- **fail**
+	//
+	// 	- **success**
+	//
 	// example:
 	//
 	// success

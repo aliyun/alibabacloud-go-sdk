@@ -26,27 +26,40 @@ type iListSupabaseProjectsResponseBody interface {
 }
 
 type ListSupabaseProjectsResponseBody struct {
+	// A list of objects, where each object represents a Supabase instance.
 	Items []*ListSupabaseProjectsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The maximum amount of data to read this time. Default value: 10.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token to use in the next request to get the next page. If this field is empty, there are no more results.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of log entries returned.
+	//
 	// example:
 	//
 	// 2
@@ -138,82 +151,128 @@ func (s *ListSupabaseProjectsResponseBody) Validate() error {
 }
 
 type ListSupabaseProjectsResponseBodyItems struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-10-09T04:54:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Supabase Dashboard password (not used).
+	//
 	// example:
 	//
 	// xxpassword
 	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
+	// Supabase Dashboard user name (not used).
+	//
 	// example:
 	//
 	// null
 	DashboardUserName *string `json:"DashboardUserName,omitempty" xml:"DashboardUserName,omitempty"`
+	// The ESSD performance level.
+	//
 	// example:
 	//
 	// PL0
 	DiskPerformanceLevel *string `json:"DiskPerformanceLevel,omitempty" xml:"DiskPerformanceLevel,omitempty"`
+	// The database engine type.
+	//
 	// example:
 	//
 	// gpdb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine version.
+	//
 	// example:
 	//
 	// 6.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// 	- **Postpaid**: pay-as-you-go
+	//
+	// 	- **Prepaid**: subscription.
+	//
+	// 	- **Free**: Free.
+	//
 	// example:
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The private (VPC) connection URL for the Supabase Dashboard.
+	//
 	// example:
 	//
 	// 192.168.0.1
 	PrivateConnectUrl *string `json:"PrivateConnectUrl,omitempty" xml:"PrivateConnectUrl,omitempty"`
+	// The Supabase project ID.
+	//
 	// example:
 	//
 	// sbp-12***
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the Supabase project.
+	//
 	// example:
 	//
 	// supabase_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The type of the Supabase instance.
+	//
 	// example:
 	//
 	// 1C1G
 	ProjectSpec *string `json:"ProjectSpec,omitempty" xml:"ProjectSpec,omitempty"`
+	// The public connection URL for the Supabase Dashboard.
+	//
 	// example:
 	//
 	// 10.154.11.10
 	PublicConnectUrl *string `json:"PublicConnectUrl,omitempty" xml:"PublicConnectUrl,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// A comma-separated list of IP addresses and CIDR blocks allowed to connect. Valid values:
+	//
+	// 	- 0.0.0.0/0
+	//
+	// 	- 10.23.12.24(IP)
+	//
+	// 	- 10.23.12.24/24. This is a CIDR block. The value`/24`indicates that the prefix of the CIDR block is 24-bit long. You can replace 24 with a value in the range of`[1,32]`.
+	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The status of the Supabase instance.
+	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The storage capacity of the instance. Unit: GB.
+	//
 	// example:
 	//
 	// 2
 	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	// vSwitch ID。
+	// The vSwitch ID of the instance.
 	//
 	// example:
 	//
 	// vsw-bp1cpq8mr64paltkb****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-bp19ame5m1r3oejns****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-h

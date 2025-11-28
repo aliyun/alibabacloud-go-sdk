@@ -16,10 +16,14 @@ type iCreateSupabaseProjectResponseBody interface {
 }
 
 type CreateSupabaseProjectResponseBody struct {
+	// The Supabase project ID.
+	//
 	// example:
 	//
 	// sbp-180****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D****

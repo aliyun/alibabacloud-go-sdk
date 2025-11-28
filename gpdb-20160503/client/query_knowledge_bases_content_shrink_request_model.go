@@ -30,32 +30,59 @@ type iQueryKnowledgeBasesContentShrinkRequest interface {
 }
 
 type QueryKnowledgeBasesContentShrinkRequest struct {
+	// The text content for retrieval.
+	//
 	// This parameter is required.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The method used to merge multiple knowledge bases. Default value: RRF. Valid values:
+	//
+	// 	- RRF
+	//
+	// 	- Weight
+	//
 	// example:
 	//
 	// RRF
-	MergeMethod           *string `json:"MergeMethod,omitempty" xml:"MergeMethod,omitempty"`
+	MergeMethod *string `json:"MergeMethod,omitempty" xml:"MergeMethod,omitempty"`
+	// The parameters of the merge method for each SourceCollection.
 	MergeMethodArgsShrink *string `json:"MergeMethodArgs,omitempty" xml:"MergeMethodArgs,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The rerank factor. If you specify this parameter, the vector retrieval results are reranked once more. Valid values: 1\\<RerankFactor<=5.
+	//
+	// >
+	//
+	// 	- If the document is segmented into sparse parts, reranking is inefficient.
+	//
+	// 	- We recommend that the number of reranked results (the ceiling of TopK × RerankFactor) not exceed 50.
+	//
 	// example:
 	//
 	// 2
 	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	// The information about collections to retrieve from.
+	//
 	// This parameter is required.
 	SourceCollectionShrink *string `json:"SourceCollection,omitempty" xml:"SourceCollection,omitempty"`
+	// Set the number of top results to be returned after merging results from multiple path retrieval.
+	//
 	// example:
 	//
 	// 10

@@ -26,21 +26,33 @@ type iChatWithKnowledgeBaseStreamShrinkRequest interface {
 }
 
 type ChatWithKnowledgeBaseStreamShrinkRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Whether to return the retrieved result. Default value: false.
+	//
 	// example:
 	//
 	// false
-	IncludeKnowledgeBaseResults *bool   `json:"IncludeKnowledgeBaseResults,omitempty" xml:"IncludeKnowledgeBaseResults,omitempty"`
-	KnowledgeParamsShrink       *string `json:"KnowledgeParams,omitempty" xml:"KnowledgeParams,omitempty"`
+	IncludeKnowledgeBaseResults *bool `json:"IncludeKnowledgeBaseResults,omitempty" xml:"IncludeKnowledgeBaseResults,omitempty"`
+	// The knowledge retrieval parameter object. If you do not specify this parameter, only chat mode is enabled.
+	KnowledgeParamsShrink *string `json:"KnowledgeParams,omitempty" xml:"KnowledgeParams,omitempty"`
+	// The Large Language Model (LLM) invocation parameter object.
+	//
 	// This parameter is required.
 	ModelParamsShrink *string `json:"ModelParams,omitempty" xml:"ModelParams,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PromptParams      *string `json:"PromptParams,omitempty" xml:"PromptParams,omitempty"`
+	// The system prompt template, which should include {{ text_chunks }},{{ user_system_prompt }},{{ graph_entities },{{ graph_relations }}. If any of these placeholders are not specified, the corresponding section should have no effect.
+	PromptParams *string `json:"PromptParams,omitempty" xml:"PromptParams,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou

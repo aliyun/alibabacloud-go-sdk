@@ -37,8 +37,9 @@ type QueryContentResponseBody struct {
 	// example:
 	//
 	// 100
-	EmbeddingTokens *string                           `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
-	Entities        *QueryContentResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Struct"`
+	EmbeddingTokens *string `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
+	// The entities.
+	Entities *QueryContentResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Struct"`
 	// The retrieved data.
 	Matches *QueryContentResponseBodyMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
 	// Return message.
@@ -46,7 +47,8 @@ type QueryContentResponseBody struct {
 	// example:
 	//
 	// success
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of relationship edges.
 	Relations *QueryContentResponseBodyRelations `json:"Relations,omitempty" xml:"Relations,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -223,11 +225,36 @@ func (s *QueryContentResponseBodyEntities) Validate() error {
 }
 
 type QueryContentResponseBodyEntitiesEntities struct {
+	// Entity description.
+	//
+	// example:
+	//
+	// A former advisor at DeepMind.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Entity      *string `json:"Entity,omitempty" xml:"Entity,omitempty"`
-	FileName    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The entity name.
+	//
+	// example:
+	//
+	// Dr. Wang
+	Entity *string `json:"Entity,omitempty" xml:"Entity,omitempty"`
+	// The file name.
+	//
+	// example:
+	//
+	// my_doc.txt
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The entity ID.
+	//
+	// example:
+	//
+	// 1
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The entity type.
+	//
+	// example:
+	//
+	// Figure
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s QueryContentResponseBodyEntitiesEntities) String() string {
@@ -555,10 +582,35 @@ func (s *QueryContentResponseBodyRelations) Validate() error {
 }
 
 type QueryContentResponseBodyRelationsRelations struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The description of the relationship edge.
+	//
+	// example:
+	//
+	// Dr. Wang previously served as an advisor at DeepMind.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The file name.
+	//
+	// example:
+	//
+	// my_doc.txt
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The ID of the relationship edge.
+	//
+	// example:
+	//
+	// 1
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The source entity.
+	//
+	// example:
+	//
+	// Former DeepMind consultant
 	SourceEntity *string `json:"SourceEntity,omitempty" xml:"SourceEntity,omitempty"`
+	// The destination entity.
+	//
+	// example:
+	//
+	// Dr. Wang
 	TargetEntity *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
 }
 

@@ -97,7 +97,12 @@ type DescribeCollectionResponseBody struct {
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The method that is used to create sparse vector indexes.
+	//
+	// example:
+	//
+	// ip
 	SparseVectorMetrics *string `json:"SparseVectorMetrics,omitempty" xml:"SparseVectorMetrics,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
@@ -108,8 +113,13 @@ type DescribeCollectionResponseBody struct {
 	// example:
 	//
 	// success
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupportSparse *bool   `json:"SupportSparse,omitempty" xml:"SupportSparse,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether sparse vectors are supported.
+	//
+	// example:
+	//
+	// true
+	SupportSparse *bool `json:"SupportSparse,omitempty" xml:"SupportSparse,omitempty"`
 }
 
 func (s DescribeCollectionResponseBody) String() string {

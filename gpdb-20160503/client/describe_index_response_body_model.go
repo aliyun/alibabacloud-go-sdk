@@ -26,30 +26,48 @@ type iDescribeIndexResponseBody interface {
 }
 
 type DescribeIndexResponseBody struct {
+	// The name of the collection.
+	//
 	// example:
 	//
 	// testcollection
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// The definition of the index.
+	//
 	// example:
 	//
 	// CREATE INDEX testindex ON mynamespace. testcollection
 	IndexDef *string `json:"IndexDef,omitempty" xml:"IndexDef,omitempty"`
+	// The name of the index.
+	//
 	// example:
 	//
 	// testindex
 	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **false**: The operation fails.
+	//
+	// 	- **true**: The operation is successful.
+	//
 	// example:
 	//
 	// success

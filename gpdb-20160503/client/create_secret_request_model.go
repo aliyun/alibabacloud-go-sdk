@@ -80,7 +80,12 @@ type CreateSecretRequest struct {
 	// example:
 	//
 	// testacc
-	Username    *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes precedence.
+	//
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

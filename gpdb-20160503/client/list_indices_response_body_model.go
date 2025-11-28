@@ -20,7 +20,10 @@ type iListIndicesResponseBody interface {
 }
 
 type ListIndicesResponseBody struct {
+	// The queried indexes.
 	Indices *ListIndicesResponseBodyIndices `json:"Indices,omitempty" xml:"Indices,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
@@ -31,6 +34,12 @@ type ListIndicesResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the operation. Valid values:
+	//
+	// 	- **success**.
+	//
+	// 	- **fail**.
+	//
 	// example:
 	//
 	// success
@@ -125,18 +134,26 @@ func (s *ListIndicesResponseBodyIndices) Validate() error {
 }
 
 type ListIndicesResponseBodyIndicesIndices struct {
+	// The name of the collection.
+	//
 	// example:
 	//
 	// testcollection
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// The definition of the index.
+	//
 	// example:
 	//
 	// CREATE INDEX testindex ON mynamespace. testcollection
 	IndexDef *string `json:"IndexDef,omitempty" xml:"IndexDef,omitempty"`
+	// The name of the index.
+	//
 	// example:
 	//
 	// testindex
 	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+	// The namespace to which the pod belongs.
+	//
 	// example:
 	//
 	// mynamespace

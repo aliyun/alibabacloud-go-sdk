@@ -50,78 +50,130 @@ type iGetSupabaseProjectResponseBody interface {
 }
 
 type GetSupabaseProjectResponseBody struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The Supabase Dashboard password (Not Used)
+	//
 	// example:
 	//
 	// xxpassword
 	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
+	// The Supabase Dashboard user name (Not Used)
+	//
 	// example:
 	//
 	// username
 	DashboardUserName *string `json:"DashboardUserName,omitempty" xml:"DashboardUserName,omitempty"`
+	// The Enterprise SSD (ESSD) performance level of the cluster. Valid values:
+	//
+	// 	- PL0
+	//
+	// 	- PL1
+	//
 	// example:
 	//
 	// PL0
 	DiskPerformanceLevel *string `json:"DiskPerformanceLevel,omitempty" xml:"DiskPerformanceLevel,omitempty"`
+	// The type of the database engine.
+	//
 	// example:
 	//
 	// postgres
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The version of the database engine.
+	//
 	// example:
 	//
 	// 15
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The private (VPC) connection URL for the Supabase Dashboard.
+	//
 	// example:
 	//
 	// 192.168.0.11
 	PrivateConnectUrl *string `json:"PrivateConnectUrl,omitempty" xml:"PrivateConnectUrl,omitempty"`
+	// The Supabase instance ID.
+	//
 	// example:
 	//
 	// sbp-545434
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the Supabase project.
+	//
 	// example:
 	//
 	// supabase_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The performance level of the Supabase instance.
+	//
 	// example:
 	//
 	// 1C1G
 	ProjectSpec *string `json:"ProjectSpec,omitempty" xml:"ProjectSpec,omitempty"`
+	// The public connection URL for the Supabase Dashboard.
+	//
 	// example:
 	//
 	// 10.154.11.10
 	PublicConnectUrl *string `json:"PublicConnectUrl,omitempty" xml:"PublicConnectUrl,omitempty"`
+	// The region ID of the cluster.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A comma-separated list of IP addresses and CIDR blocks allowed to connect.
+	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIpList *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
+	// The status of the Supabase instance.
+	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The storage capacity of the instance. Unit: GB.
+	//
 	// example:
 	//
 	// 2
 	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// The vSwitch ID of the instance. This parameter must be specified when VPCId is specified.
+	//
 	// example:
 	//
 	// vsw-bp1cpq8mr64paltkb****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The VPC ID.
+	//
+	// >
+	//
+	// 	- You can call the [DescribeRdsVpcs](https://help.aliyun.com/document_detail/208327.html) operation to query the available VPC IDs.
+	//
+	// 	- This parameter is required.
+	//
 	// example:
 	//
 	// vpc-bp*******************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list and zone list.
+	//
 	// example:
 	//
 	// cn-hangzhou-i

@@ -16,10 +16,14 @@ type iCreateBackupResponseBody interface {
 }
 
 type CreateBackupResponseBody struct {
+	// The backup job ID.
+	//
 	// example:
 	//
 	// 123
 	BackupJobId *int64 `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521

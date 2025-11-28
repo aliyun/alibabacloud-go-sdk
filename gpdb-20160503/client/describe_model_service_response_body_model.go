@@ -36,44 +36,66 @@ type iDescribeModelServiceResponseBody interface {
 }
 
 type DescribeModelServiceResponseBody struct {
+	// The list of AI nodes.
 	AiNodes []*string `json:"AiNodes,omitempty" xml:"AiNodes,omitempty" type:"Repeated"`
+	// The API key.
+	//
 	// example:
 	//
 	// cx/Y57lTNf*********
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// Qwen3-Embedding-8B
-	ModelName   *string                `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Model parameters.
 	ModelParams map[string]interface{} `json:"ModelParams,omitempty" xml:"ModelParams,omitempty"`
+	// The model service ID.
+	//
 	// example:
 	//
 	// ms-xxxxxxxxx
 	ModelServiceId *string `json:"ModelServiceId,omitempty" xml:"ModelServiceId,omitempty"`
+	// The internal endpoint.
+	//
 	// example:
 	//
 	// http://ms-xxxxxxx.xxxx.rds.aliyuncs.com
 	PrivateConnectUrl *string `json:"PrivateConnectUrl,omitempty" xml:"PrivateConnectUrl,omitempty"`
+	// The public endpoint.
+	//
 	// example:
 	//
 	// http://ms-xxxxxxx-o.xxxx.rds.aliyuncs.com
 	PublicConnectUrl *string `json:"PublicConnectUrl,omitempty" xml:"PublicConnectUrl,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A comma-separated list of IP addresses and CIDR blocks allowed to connect.
+	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIpList *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
+	// The status of the model service.
+	//
 	// example:
 	//
 	// - deployming

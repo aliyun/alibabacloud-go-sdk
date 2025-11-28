@@ -22,19 +22,28 @@ type iListModelServicesResponseBody interface {
 }
 
 type ListModelServicesResponseBody struct {
+	// Model services.
 	ModelServices []*ListModelServicesResponseBodyModelServices `json:"ModelServices,omitempty" xml:"ModelServices,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 2
@@ -108,40 +117,70 @@ func (s *ListModelServicesResponseBody) Validate() error {
 }
 
 type ListModelServicesResponseBodyModelServices struct {
+	// A list of AI nodes for model deployment.
 	AiNodes []*string `json:"AiNodes,omitempty" xml:"AiNodes,omitempty" type:"Repeated"`
+	// The API key.
+	//
 	// example:
 	//
 	// mI3F7B18vgfqJjUtWmgITw==
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-09-28T02:18:39Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// sambert-zhiying-v1
-	ModelName   *string            `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Model service parameters (not available).
 	ModelParams map[string]*string `json:"ModelParams,omitempty" xml:"ModelParams,omitempty"`
+	// Model service ID.
+	//
 	// example:
 	//
 	// mx-xxxxxxxxx
 	ModelServiceId *string `json:"ModelServiceId,omitempty" xml:"ModelServiceId,omitempty"`
+	// Private Endpoint.
+	//
 	// example:
 	//
 	// http://ms-xxxxxxx.xxxx.rds.aliyuncs.com
 	PrivateConnUrl *string `json:"PrivateConnUrl,omitempty" xml:"PrivateConnUrl,omitempty"`
+	// Public endpoint.
+	//
 	// example:
 	//
 	// http://ms-xxxxxxx-o.xxxx.rds.aliyuncs.com
 	PublicConnUrl *string `json:"PublicConnUrl,omitempty" xml:"PublicConnUrl,omitempty"`
+	// The IP addresses listed in the whitelist. Up to 1,000 IP addresses are contained in a whitelist and separated by commas (,). The IP addresses must use one of the following formats:
+	//
+	// 	- 0.0.0.0/0
+	//
+	// 	- 10.23.12.24(IP)
+	//
+	// 	- 10.23.12.24/24 (This is a CIDR block. The value`/24`indicates the network prefix length, which must be an integer and in the range of `[1,32]`.)
+	//
 	// example:
 	//
 	// 0.0.0.0/0
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The status of the operation. Valid values:
+	//
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
 	// example:
 	//
 	// success

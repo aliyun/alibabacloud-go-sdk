@@ -56,7 +56,12 @@ type DeleteSecretRequest struct {
 	// example:
 	//
 	// testsecret
-	SecretName  *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	//
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

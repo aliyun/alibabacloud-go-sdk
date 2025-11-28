@@ -14,6 +14,10 @@ type iCreateBackupRequest interface {
 }
 
 type CreateBackupRequest struct {
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:

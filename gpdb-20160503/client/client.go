@@ -52,30 +52,83 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	return nil
 }
 
-func (client *Client) _postOSSObject(bucketName *string, form map[string]interface{}) (_result map[string]interface{}, _err error) {
-	request_ := dara.NewRequest()
-	boundary := dara.GetBoundary()
-	request_.Protocol = dara.String("HTTPS")
-	request_.Method = dara.String("POST")
-	request_.Pathname = dara.String("/")
-	request_.Headers = map[string]*string{
-		"host":       dara.String(dara.ToString(form["host"])),
-		"date":       openapiutil.GetDateUTCString(),
-		"user-agent": openapiutil.GetUserAgent(dara.String("")),
-	}
-	request_.Headers["content-type"] = dara.String("multipart/form-data; boundary=" + boundary)
-	request_.Body = dara.ToFileForm(form, boundary)
-	response_, _err := dara.DoRequest(request_, nil)
-	if _err != nil {
-		return nil, _err
+func (client *Client) _postOSSObject(bucketName *string, form map[string]interface{}, runtime *dara.RuntimeOptions) (_result map[string]interface{}, _err error) {
+	_runtime := dara.NewRuntimeObject(map[string]interface{}{
+		"key":            dara.ToString(dara.Default(dara.StringValue(runtime.Key), dara.StringValue(client.Key))),
+		"cert":           dara.ToString(dara.Default(dara.StringValue(runtime.Cert), dara.StringValue(client.Cert))),
+		"ca":             dara.ToString(dara.Default(dara.StringValue(runtime.Ca), dara.StringValue(client.Ca))),
+		"readTimeout":    dara.ForceInt(dara.Default(dara.IntValue(runtime.ReadTimeout), dara.IntValue(client.ReadTimeout))),
+		"connectTimeout": dara.ForceInt(dara.Default(dara.IntValue(runtime.ConnectTimeout), dara.IntValue(client.ConnectTimeout))),
+		"httpProxy":      dara.ToString(dara.Default(dara.StringValue(runtime.HttpProxy), dara.StringValue(client.HttpProxy))),
+		"httpsProxy":     dara.ToString(dara.Default(dara.StringValue(runtime.HttpsProxy), dara.StringValue(client.HttpsProxy))),
+		"noProxy":        dara.ToString(dara.Default(dara.StringValue(runtime.NoProxy), dara.StringValue(client.NoProxy))),
+		"socks5Proxy":    dara.ToString(dara.Default(dara.StringValue(runtime.Socks5Proxy), dara.StringValue(client.Socks5Proxy))),
+		"socks5NetWork":  dara.ToString(dara.Default(dara.StringValue(runtime.Socks5NetWork), dara.StringValue(client.Socks5NetWork))),
+		"maxIdleConns":   dara.ForceInt(dara.Default(dara.IntValue(runtime.MaxIdleConns), dara.IntValue(client.MaxIdleConns))),
+		"retryOptions":   client.RetryOptions,
+		"ignoreSSL":      dara.ForceBoolean(dara.Default(dara.BoolValue(runtime.IgnoreSSL), false)),
+		"tlsMinVersion":  dara.StringValue(client.TlsMinVersion),
+	})
+
+	var retryPolicyContext *dara.RetryPolicyContext
+	var request_ *dara.Request
+	var response_ *dara.Response
+	var _resultErr error
+	retriesAttempted := int(0)
+	retryPolicyContext = &dara.RetryPolicyContext{
+		RetriesAttempted: retriesAttempted,
 	}
 
-	_result, _err = _postOSSObject_opResponse(response_)
-	if _err != nil {
-		return nil, _err
-	}
+	_result = make(map[string]interface{})
+	for dara.ShouldRetry(_runtime.RetryOptions, retryPolicyContext) {
+		_resultErr = nil
+		_backoffDelayTime := dara.GetBackoffDelay(_runtime.RetryOptions, retryPolicyContext)
+		dara.Sleep(_backoffDelayTime)
 
-	return _result, nil
+		request_ = dara.NewRequest()
+		boundary := dara.GetBoundary()
+		request_.Protocol = dara.String("HTTPS")
+		request_.Method = dara.String("POST")
+		request_.Pathname = dara.String("/")
+		request_.Headers = map[string]*string{
+			"host":       dara.String(dara.ToString(form["host"])),
+			"date":       openapiutil.GetDateUTCString(),
+			"user-agent": openapiutil.GetUserAgent(dara.String("")),
+		}
+		request_.Headers["content-type"] = dara.String("multipart/form-data; boundary=" + boundary)
+		request_.Body = dara.ToFileForm(form, boundary)
+		response_, _err = dara.DoRequest(request_, _runtime)
+		if _err != nil {
+			retriesAttempted++
+			retryPolicyContext = &dara.RetryPolicyContext{
+				RetriesAttempted: retriesAttempted,
+				HttpRequest:      request_,
+				HttpResponse:     response_,
+				Exception:        _err,
+			}
+			_resultErr = _err
+			continue
+		}
+
+		_result, _err = _postOSSObject_opResponse(response_)
+		if _err != nil {
+			retriesAttempted++
+			retryPolicyContext = &dara.RetryPolicyContext{
+				RetriesAttempted: retriesAttempted,
+				HttpRequest:      request_,
+				HttpResponse:     response_,
+				Exception:        _err,
+			}
+			_resultErr = _err
+			continue
+		}
+
+		return _result, _err
+	}
+	if dara.BoolValue(client.DisableSDKError) != true {
+		_resultErr = dara.TeaSDKError(_resultErr)
+	}
+	return _result, _resultErr
 }
 
 func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
@@ -99,7 +152,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 添加AI节点
+// Adds AI nodes to the cluster.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This operation is used to add an AINode node.
+//
+// ## [](#qps-)QPS limit
+//
+// You can call this operation up to 1,000 times per second per account. Exceeding the limit will trigger API rate limiting, which may impact your business. Please call the API responsibly.
 //
 // @param request - AddAINodeRequest
 //
@@ -151,7 +214,17 @@ func (client *Client) AddAINodeWithOptions(request *AddAINodeRequest, runtime *d
 
 // Summary:
 //
-// 添加AI节点
+// Adds AI nodes to the cluster.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This operation is used to add an AINode node.
+//
+// ## [](#qps-)QPS limit
+//
+// You can call this operation up to 1,000 times per second per account. Exceeding the limit will trigger API rate limiting, which may impact your business. Please call the API responsibly.
 //
 // @param request - AddAINodeRequest
 //
@@ -351,7 +424,7 @@ func (client *Client) BindDBResourceGroupWithRole(request *BindDBResourceGroupWi
 
 // Summary:
 //
-// 取消创建索引任务
+// Cancels an index creation job.
 //
 // @param request - CancelCreateIndexJobRequest
 //
@@ -423,7 +496,7 @@ func (client *Client) CancelCreateIndexJobWithOptions(request *CancelCreateIndex
 
 // Summary:
 //
-// 取消创建索引任务
+// Cancels an index creation job.
 //
 // @param request - CancelCreateIndexJobRequest
 //
@@ -645,11 +718,19 @@ func (client *Client) CancelUpsertCollectionDataJob(request *CancelUpsertCollect
 
 // Summary:
 //
-// 通过结合知识库和大模型，提供智能问答服务。
+// Provides intelligent question-and-answer services by combining a knowledge base with a large language model.
 //
 // Description:
 //
-// 通过结合知识库和大模型，提供智能问答服务。
+// This API enables users to query a large language model with answers grounded in a specified knowledge base collection. You can configure multiple parameters to customize requests, including but not limited to database instance IDs, knowledge retrieval parameters, and model inference parameters. In addition, a default system prompt template is provided and users are allowed to customize the system prompt.
+//
+//   - **DBInstanceId**: Required. This parameter specifies the ID of the database instance.
+//
+//   - **KnowledgeParams**: optional. It contains parameters related to knowledge retrieval, such as retrieval content and merge policy.
+//
+//   - **ModelParams**: required. It contains parameters related to model inference, such as the message list and the name of the model.
+//
+//   - **PromptTemplate**: optional. It is used to customize the system prompt template.
 //
 // @param tmpReq - ChatWithKnowledgeBaseRequest
 //
@@ -727,11 +808,19 @@ func (client *Client) ChatWithKnowledgeBaseWithOptions(tmpReq *ChatWithKnowledge
 
 // Summary:
 //
-// 通过结合知识库和大模型，提供智能问答服务。
+// Provides intelligent question-and-answer services by combining a knowledge base with a large language model.
 //
 // Description:
 //
-// 通过结合知识库和大模型，提供智能问答服务。
+// This API enables users to query a large language model with answers grounded in a specified knowledge base collection. You can configure multiple parameters to customize requests, including but not limited to database instance IDs, knowledge retrieval parameters, and model inference parameters. In addition, a default system prompt template is provided and users are allowed to customize the system prompt.
+//
+//   - **DBInstanceId**: Required. This parameter specifies the ID of the database instance.
+//
+//   - **KnowledgeParams**: optional. It contains parameters related to knowledge retrieval, such as retrieval content and merge policy.
+//
+//   - **ModelParams**: required. It contains parameters related to model inference, such as the message list and the name of the model.
+//
+//   - **PromptTemplate**: optional. It is used to customize the system prompt template.
 //
 // @param request - ChatWithKnowledgeBaseRequest
 //
@@ -749,11 +838,19 @@ func (client *Client) ChatWithKnowledgeBase(request *ChatWithKnowledgeBaseReques
 
 // Summary:
 //
-// 通过结合知识库和大模型，提供智能问答服务。
+// Provides intelligent question-and-answer services by combining a knowledge base with a large language model. A streaming API, which is called by using the SSE or the Java asynchronous SDK.
 //
 // Description:
 //
-// 通过结合知识库和大模型，提供智能问答服务。
+// This API enables users to query a large language model with answers grounded in a specified knowledge base collection. You can configure multiple parameters to customize requests, including but not limited to database instance IDs, knowledge retrieval parameters, and model inference parameters. In addition, a default system prompt template is provided and users are allowed to customize the system prompt.
+//
+//   - DBInstanceId: required. This parameter specifies the ID of the database instance.
+//
+//   - KnowledgeParams: optional. It contains parameters related to knowledge retrieval, such as retrieval content and merge policy.
+//
+//   - ModelParams: required. It contains parameters related to model inference, such as the message list and the name of the model.
+//
+//   - PromptTemplate: optional. It is used to customize a system prompt template.
 //
 // @param tmpReq - ChatWithKnowledgeBaseStreamRequest
 //
@@ -768,11 +865,19 @@ func (client *Client) ChatWithKnowledgeBaseStreamWithSSE(tmpReq *ChatWithKnowled
 
 // Summary:
 //
-// 通过结合知识库和大模型，提供智能问答服务。
+// Provides intelligent question-and-answer services by combining a knowledge base with a large language model. A streaming API, which is called by using the SSE or the Java asynchronous SDK.
 //
 // Description:
 //
-// 通过结合知识库和大模型，提供智能问答服务。
+// This API enables users to query a large language model with answers grounded in a specified knowledge base collection. You can configure multiple parameters to customize requests, including but not limited to database instance IDs, knowledge retrieval parameters, and model inference parameters. In addition, a default system prompt template is provided and users are allowed to customize the system prompt.
+//
+//   - DBInstanceId: required. This parameter specifies the ID of the database instance.
+//
+//   - KnowledgeParams: optional. It contains parameters related to knowledge retrieval, such as retrieval content and merge policy.
+//
+//   - ModelParams: required. It contains parameters related to model inference, such as the message list and the name of the model.
+//
+//   - PromptTemplate: optional. It is used to customize a system prompt template.
 //
 // @param tmpReq - ChatWithKnowledgeBaseStreamRequest
 //
@@ -850,11 +955,19 @@ func (client *Client) ChatWithKnowledgeBaseStreamWithOptions(tmpReq *ChatWithKno
 
 // Summary:
 //
-// 通过结合知识库和大模型，提供智能问答服务。
+// Provides intelligent question-and-answer services by combining a knowledge base with a large language model. A streaming API, which is called by using the SSE or the Java asynchronous SDK.
 //
 // Description:
 //
-// 通过结合知识库和大模型，提供智能问答服务。
+// This API enables users to query a large language model with answers grounded in a specified knowledge base collection. You can configure multiple parameters to customize requests, including but not limited to database instance IDs, knowledge retrieval parameters, and model inference parameters. In addition, a default system prompt template is provided and users are allowed to customize the system prompt.
+//
+//   - DBInstanceId: required. This parameter specifies the ID of the database instance.
+//
+//   - KnowledgeParams: optional. It contains parameters related to knowledge retrieval, such as retrieval content and merge policy.
+//
+//   - ModelParams: required. It contains parameters related to model inference, such as the message list and the name of the model.
+//
+//   - PromptTemplate: optional. It is used to customize a system prompt template.
 //
 // @param request - ChatWithKnowledgeBaseStreamRequest
 //
@@ -1156,7 +1269,7 @@ func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequ
 
 // Summary:
 //
-// 恢复数据至指定实例
+// Restores data to a new AnalyticDB for PostgreSQL instance.
 //
 // @param request - CloneDBInstanceRequest
 //
@@ -1208,7 +1321,7 @@ func (client *Client) CloneDBInstanceWithOptions(request *CloneDBInstanceRequest
 
 // Summary:
 //
-// 恢复数据至指定实例
+// Restores data to a new AnalyticDB for PostgreSQL instance.
 //
 // @param request - CloneDBInstanceRequest
 //
@@ -1332,7 +1445,7 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 
 // Summary:
 //
-// 创建备份
+// Creates a backup set.
 //
 // @param request - CreateBackupRequest
 //
@@ -1376,7 +1489,7 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 
 // Summary:
 //
-// 创建备份
+// Creates a backup set.
 //
 // @param request - CreateBackupRequest
 //
@@ -1788,6 +1901,86 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 
 // Summary:
 //
+// Adds an IP whitelist group.
+//
+// @param tmpReq - CreateDBInstanceIPArrayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDBInstanceIPArrayResponse
+func (client *Client) CreateDBInstanceIPArrayWithOptions(tmpReq *CreateDBInstanceIPArrayRequest, runtime *dara.RuntimeOptions) (_result *CreateDBInstanceIPArrayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateDBInstanceIPArrayShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SecurityIPList) {
+		request.SecurityIPListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SecurityIPList, dara.String("SecurityIPList"), dara.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.IPArrayAttribute) {
+		query["IPArrayAttribute"] = request.IPArrayAttribute
+	}
+
+	if !dara.IsNil(request.IPArrayName) {
+		query["IPArrayName"] = request.IPArrayName
+	}
+
+	if !dara.IsNil(request.SecurityIPListShrink) {
+		query["SecurityIPList"] = request.SecurityIPListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDBInstanceIPArray"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDBInstanceIPArrayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds an IP whitelist group.
+//
+// @param request - CreateDBInstanceIPArrayRequest
+//
+// @return CreateDBInstanceIPArrayResponse
+func (client *Client) CreateDBInstanceIPArray(request *CreateDBInstanceIPArrayRequest) (_result *CreateDBInstanceIPArrayResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDBInstanceIPArrayResponse{}
+	_body, _err := client.CreateDBInstanceIPArrayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a plan for an AnalyticDB for PostgreSQL instance.
 //
 // Description:
@@ -1963,6 +2156,92 @@ func (client *Client) CreateDBResourceGroup(request *CreateDBResourceGroupReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateDBResourceGroupResponse{}
 	_body, _err := client.CreateDBResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a database.
+//
+// @param request - CreateDatabaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatabaseResponse
+func (client *Client) CreateDatabaseWithOptions(request *CreateDatabaseRequest, runtime *dara.RuntimeOptions) (_result *CreateDatabaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CharacterSetName) {
+		query["CharacterSetName"] = request.CharacterSetName
+	}
+
+	if !dara.IsNil(request.Collate) {
+		query["Collate"] = request.Collate
+	}
+
+	if !dara.IsNil(request.Ctype) {
+		query["Ctype"] = request.Ctype
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DatabaseName) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Owner) {
+		query["Owner"] = request.Owner
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDatabase"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a database.
+//
+// @param request - CreateDatabaseRequest
+//
+// @return CreateDatabaseResponse
+func (client *Client) CreateDatabase(request *CreateDatabaseRequest) (_result *CreateDatabaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDatabaseResponse{}
+	_body, _err := client.CreateDatabaseWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2394,7 +2673,7 @@ func (client *Client) CreateHadoopDataSource(request *CreateHadoopDataSourceRequ
 
 // Summary:
 //
-// 创建索引
+// Creates an index. Note: 1. Only scalar indexes are supported. 2. The table is write-locked during index creation. 3. When creating an index on a table with a large volume of data, the process consumes significant CPU and I/O resources of the instance. If this impacts instance availability, call CancelCreateIndexJob to cancel the index creation.
 //
 // @param request - CreateIndexRequest
 //
@@ -2474,7 +2753,7 @@ func (client *Client) CreateIndexWithOptions(request *CreateIndexRequest, runtim
 
 // Summary:
 //
-// 创建索引
+// Creates an index. Note: 1. Only scalar indexes are supported. 2. The table is write-locked during index creation. 3. When creating an index on a table with a large volume of data, the process consumes significant CPU and I/O resources of the instance. If this impacts instance availability, call CancelCreateIndexJob to cancel the index creation.
 //
 // @param request - CreateIndexRequest
 //
@@ -2582,7 +2861,11 @@ func (client *Client) CreateJDBCDataSource(request *CreateJDBCDataSourceRequest)
 
 // Summary:
 //
-// 创建模型服务
+// Creates a model service.
+//
+// Description:
+//
+// Before you call this operation, make sure that you fully understand the [billing methods](https://help.aliyun.com/document_detail/35406.html) and [pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of AnalyticDB for PostgreSQL.
 //
 // @param tmpReq - CreateModelServiceRequest
 //
@@ -2678,7 +2961,11 @@ func (client *Client) CreateModelServiceWithOptions(tmpReq *CreateModelServiceRe
 
 // Summary:
 //
-// 创建模型服务
+// Creates a model service.
+//
+// Description:
+//
+// Before you call this operation, make sure that you fully understand the [billing methods](https://help.aliyun.com/document_detail/35406.html) and [pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of AnalyticDB for PostgreSQL.
 //
 // @param request - CreateModelServiceRequest
 //
@@ -3454,7 +3741,11 @@ func (client *Client) CreateStreamingJob(request *CreateStreamingJobRequest) (_r
 
 // Summary:
 //
-// 创建supabase project
+// Creates a Supabase project.
+//
+// Description:
+//
+//	You can call this operation to create a Supabase project.
 //
 // @param request - CreateSupabaseProjectRequest
 //
@@ -3538,7 +3829,11 @@ func (client *Client) CreateSupabaseProjectWithOptions(request *CreateSupabasePr
 
 // Summary:
 //
-// 创建supabase project
+// Creates a Supabase project.
+//
+// Description:
+//
+//	You can call this operation to create a Supabase project.
 //
 // @param request - CreateSupabaseProjectRequest
 //
@@ -3670,7 +3965,13 @@ func (client *Client) CreateVectorIndex(request *CreateVectorIndexRequest) (_res
 
 // Summary:
 //
-// 删除AI节点
+// # Delete AI Node
+//
+// Description:
+//
+//	  Subscription instances cannot be manually released. They are automatically released when they expire.
+//
+//		- You can call this operation to release pay-as-you-go instances only when they are in the **Running*	- state.
 //
 // @param request - DeleteAINodeRequest
 //
@@ -3726,7 +4027,13 @@ func (client *Client) DeleteAINodeWithOptions(request *DeleteAINodeRequest, runt
 
 // Summary:
 //
-// 删除AI节点
+// # Delete AI Node
+//
+// Description:
+//
+//	  Subscription instances cannot be manually released. They are automatically released when they expire.
+//
+//		- You can call this operation to release pay-as-you-go instances only when they are in the **Running*	- state.
 //
 // @param request - DeleteAINodeRequest
 //
@@ -3810,7 +4117,7 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 
 // Summary:
 //
-// 删除备份
+// Deletes a backup set. You can call this operation to delete only physical backup sets that are manually backed up.
 //
 // @param request - DeleteBackupRequest
 //
@@ -3858,7 +4165,7 @@ func (client *Client) DeleteBackupWithOptions(request *DeleteBackupRequest, runt
 
 // Summary:
 //
-// 删除备份
+// Deletes a backup set. You can call this operation to delete only physical backup sets that are manually backed up.
 //
 // @param request - DeleteBackupRequest
 //
@@ -4150,6 +4457,72 @@ func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_resul
 
 // Summary:
 //
+// 删除IP分组
+//
+// @param request - DeleteDBInstanceIPArrayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDBInstanceIPArrayResponse
+func (client *Client) DeleteDBInstanceIPArrayWithOptions(request *DeleteDBInstanceIPArrayRequest, runtime *dara.RuntimeOptions) (_result *DeleteDBInstanceIPArrayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.IPArrayName) {
+		query["IPArrayName"] = request.IPArrayName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDBInstanceIPArray"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDBInstanceIPArrayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除IP分组
+//
+// @param request - DeleteDBInstanceIPArrayRequest
+//
+// @return DeleteDBInstanceIPArrayResponse
+func (client *Client) DeleteDBInstanceIPArray(request *DeleteDBInstanceIPArrayRequest) (_result *DeleteDBInstanceIPArrayResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDBInstanceIPArrayResponse{}
+	_body, _err := client.DeleteDBInstanceIPArrayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a plan from an AnalyticDB for PostgreSQL instance.
 //
 // Description:
@@ -4297,6 +4670,72 @@ func (client *Client) DeleteDBResourceGroup(request *DeleteDBResourceGroupReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteDBResourceGroupResponse{}
 	_body, _err := client.DeleteDBResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据库
+//
+// @param request - DeleteDatabaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatabaseResponse
+func (client *Client) DeleteDatabaseWithOptions(request *DeleteDatabaseRequest, runtime *dara.RuntimeOptions) (_result *DeleteDatabaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DatabaseName) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDatabase"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据库
+//
+// @param request - DeleteDatabaseRequest
+//
+// @return DeleteDatabaseResponse
+func (client *Client) DeleteDatabase(request *DeleteDatabaseRequest) (_result *DeleteDatabaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDatabaseResponse{}
+	_body, _err := client.DeleteDatabaseWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4688,7 +5127,7 @@ func (client *Client) DeleteHadoopDataSource(request *DeleteHadoopDataSourceRequ
 
 // Summary:
 //
-// 删除索引
+// Deletes an index.
 //
 // @param request - DeleteIndexRequest
 //
@@ -4760,7 +5199,7 @@ func (client *Client) DeleteIndexWithOptions(request *DeleteIndexRequest, runtim
 
 // Summary:
 //
-// 删除索引
+// Deletes an index.
 //
 // @param request - DeleteIndexRequest
 //
@@ -4848,7 +5287,11 @@ func (client *Client) DeleteJDBCDataSource(request *DeleteJDBCDataSourceRequest)
 
 // Summary:
 //
-// 删除模型服务
+// # Delete Model Service
+//
+// Description:
+//
+// Deletes a model service.
 //
 // @param request - DeleteModelServiceRequest
 //
@@ -4896,7 +5339,11 @@ func (client *Client) DeleteModelServiceWithOptions(request *DeleteModelServiceR
 
 // Summary:
 //
-// 删除模型服务
+// # Delete Model Service
+//
+// Description:
+//
+// Deletes a model service.
 //
 // @param request - DeleteModelServiceRequest
 //
@@ -4991,6 +5438,68 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteNamespaceResponse{}
 	_body, _err := client.DeleteNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭私有RAG服务
+//
+// @param request - DeletePrivateRAGServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePrivateRAGServiceResponse
+func (client *Client) DeletePrivateRAGServiceWithOptions(request *DeletePrivateRAGServiceRequest, runtime *dara.RuntimeOptions) (_result *DeletePrivateRAGServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePrivateRAGService"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePrivateRAGServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭私有RAG服务
+//
+// @param request - DeletePrivateRAGServiceRequest
+//
+// @return DeletePrivateRAGServiceResponse
+func (client *Client) DeletePrivateRAGService(request *DeletePrivateRAGServiceRequest) (_result *DeletePrivateRAGServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeletePrivateRAGServiceResponse{}
+	_body, _err := client.DeletePrivateRAGServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5362,7 +5871,11 @@ func (client *Client) DeleteStreamingJob(request *DeleteStreamingJobRequest) (_r
 
 // Summary:
 //
-// 删除Supabase实例
+// Deletes a Supabase project.
+//
+// Description:
+//
+//	You can call this operation to delete a Supabase project.
 //
 // @param request - DeleteSupabaseProjectRequest
 //
@@ -5410,7 +5923,11 @@ func (client *Client) DeleteSupabaseProjectWithOptions(request *DeleteSupabasePr
 
 // Summary:
 //
-// 删除Supabase实例
+// Deletes a Supabase project.
+//
+// Description:
+//
+//	You can call this operation to delete a Supabase project.
 //
 // @param request - DeleteSupabaseProjectRequest
 //
@@ -5509,6 +6026,76 @@ func (client *Client) DeleteVectorIndex(request *DeleteVectorIndexRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteVectorIndexResponse{}
 	_body, _err := client.DeleteVectorIndexWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 部署私有RAG服务
+//
+// @param request - DeployPrivateRAGServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeployPrivateRAGServiceResponse
+func (client *Client) DeployPrivateRAGServiceWithOptions(request *DeployPrivateRAGServiceRequest, runtime *dara.RuntimeOptions) (_result *DeployPrivateRAGServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeployPrivateRAGService"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeployPrivateRAGServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 部署私有RAG服务
+//
+// @param request - DeployPrivateRAGServiceRequest
+//
+// @return DeployPrivateRAGServiceResponse
+func (client *Client) DeployPrivateRAGService(request *DeployPrivateRAGServiceRequest) (_result *DeployPrivateRAGServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeployPrivateRAGServiceResponse{}
+	_body, _err := client.DeployPrivateRAGServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5776,7 +6363,7 @@ func (client *Client) DescribeAvailableResources(request *DescribeAvailableResou
 
 // Summary:
 //
-// 获取备份任务详情
+// Queries the information about a backup job.
 //
 // @param request - DescribeBackupJobRequest
 //
@@ -5824,7 +6411,7 @@ func (client *Client) DescribeBackupJobWithOptions(request *DescribeBackupJobReq
 
 // Summary:
 //
-// 获取备份任务详情
+// Queries the information about a backup job.
 //
 // @param request - DescribeBackupJobRequest
 //
@@ -6006,7 +6593,7 @@ func (client *Client) DescribeCollection(request *DescribeCollectionRequest) (_r
 
 // Summary:
 //
-// 获取创建索引任务
+// Queries the information about an index creation job.
 //
 // @param request - DescribeCreateIndexJobRequest
 //
@@ -6078,7 +6665,7 @@ func (client *Client) DescribeCreateIndexJobWithOptions(request *DescribeCreateI
 
 // Summary:
 //
-// 获取创建索引任务
+// Queries the information about an index creation job.
 //
 // @param request - DescribeCreateIndexJobRequest
 //
@@ -8030,6 +8617,72 @@ func (client *Client) DescribeDataSharePerformance(request *DescribeDataSharePer
 
 // Summary:
 //
+// 描述数据库
+//
+// @param request - DescribeDatabaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDatabaseResponse
+func (client *Client) DescribeDatabaseWithOptions(request *DescribeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *DescribeDatabaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DatabaseName) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDatabase"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 描述数据库
+//
+// @param request - DescribeDatabaseRequest
+//
+// @return DescribeDatabaseResponse
+func (client *Client) DescribeDatabase(request *DescribeDatabaseRequest) (_result *DescribeDatabaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDatabaseResponse{}
+	_body, _err := client.DescribeDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries all databases and database accounts for an AnalyticDB for PostgreSQL instance.
 //
 // Description:
@@ -8402,7 +9055,7 @@ func (client *Client) DescribeDiagnosisSQLInfo(request *DescribeDiagnosisSQLInfo
 
 // Summary:
 //
-// # Get Document Details
+// Queries the information about a document.
 //
 // @param request - DescribeDocumentRequest
 //
@@ -8470,7 +9123,7 @@ func (client *Client) DescribeDocumentWithOptions(request *DescribeDocumentReque
 
 // Summary:
 //
-// # Get Document Details
+// Queries the information about a document.
 //
 // @param request - DescribeDocumentRequest
 //
@@ -8619,6 +9272,76 @@ func (client *Client) DescribeDownloadSQLLogs(request *DescribeDownloadSQLLogsRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeDownloadSQLLogsResponse{}
 	_body, _err := client.DescribeDownloadSQLLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取安装在某个数据库上的插件信息
+//
+// @param request - DescribeExtensionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeExtensionResponse
+func (client *Client) DescribeExtensionWithOptions(request *DescribeExtensionRequest, runtime *dara.RuntimeOptions) (_result *DescribeExtensionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DatabaseName) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !dara.IsNil(request.ExtensionName) {
+		query["ExtensionName"] = request.ExtensionName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeExtension"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeExtensionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取安装在某个数据库上的插件信息
+//
+// @param request - DescribeExtensionRequest
+//
+// @return DescribeExtensionResponse
+func (client *Client) DescribeExtension(request *DescribeExtensionRequest) (_result *DescribeExtensionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeExtensionResponse{}
+	_body, _err := client.DescribeExtensionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9060,7 +9783,7 @@ func (client *Client) DescribeIMVInfos(request *DescribeIMVInfosRequest) (_resul
 
 // Summary:
 //
-// 获取索引详情
+// Retrieves the information about an index.
 //
 // @param request - DescribeIndexRequest
 //
@@ -9132,7 +9855,7 @@ func (client *Client) DescribeIndexWithOptions(request *DescribeIndexRequest, ru
 
 // Summary:
 //
-// 获取索引详情
+// Retrieves the information about an index.
 //
 // @param request - DescribeIndexRequest
 //
@@ -9294,7 +10017,17 @@ func (client *Client) DescribeLogBackups(request *DescribeLogBackupsRequest) (_r
 
 // Summary:
 //
-// 查询模型服务
+// Queries the information about a model service.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This interface is used to view the details of a model service.
+//
+// ## [](#qps-)QPS limit
+//
+// You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions.We recommend that you take note of this limit when you call this operation.
 //
 // @param request - DescribeModelServiceRequest
 //
@@ -9342,7 +10075,17 @@ func (client *Client) DescribeModelServiceWithOptions(request *DescribeModelServ
 
 // Summary:
 //
-// 查询模型服务
+// Queries the information about a model service.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This interface is used to view the details of a model service.
+//
+// ## [](#qps-)QPS limit
+//
+// You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions.We recommend that you take note of this limit when you call this operation.
 //
 // @param request - DescribeModelServiceRequest
 //
@@ -9594,6 +10337,68 @@ func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_r
 
 // Summary:
 //
+// 获取私有RAG服务详情
+//
+// @param request - DescribePrivateRAGServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePrivateRAGServiceResponse
+func (client *Client) DescribePrivateRAGServiceWithOptions(request *DescribePrivateRAGServiceRequest, runtime *dara.RuntimeOptions) (_result *DescribePrivateRAGServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePrivateRAGService"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePrivateRAGServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取私有RAG服务详情
+//
+// @param request - DescribePrivateRAGServiceRequest
+//
+// @return DescribePrivateRAGServiceResponse
+func (client *Client) DescribePrivateRAGService(request *DescribePrivateRAGServiceRequest) (_result *DescribePrivateRAGServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePrivateRAGServiceResponse{}
+	_body, _err := client.DescribePrivateRAGServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of vSwitches.
 //
 // Description:
@@ -9801,6 +10606,68 @@ func (client *Client) DescribeRdsVpcs(request *DescribeRdsVpcsRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeRdsVpcsResponse{}
 	_body, _err := client.DescribeRdsVpcsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 描述一个实例是否处于平衡状态
+//
+// @param request - DescribeRebalanceStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRebalanceStatusResponse
+func (client *Client) DescribeRebalanceStatusWithOptions(request *DescribeRebalanceStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeRebalanceStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRebalanceStatus"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRebalanceStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 描述一个实例是否处于平衡状态
+//
+// @param request - DescribeRebalanceStatusRequest
+//
+// @return DescribeRebalanceStatusResponse
+func (client *Client) DescribeRebalanceStatus(request *DescribeRebalanceStatusRequest) (_result *DescribeRebalanceStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeRebalanceStatusResponse{}
+	_body, _err := client.DescribeRebalanceStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11136,6 +12003,72 @@ func (client *Client) DescribeWaitingSQLRecords(request *DescribeWaitingSQLRecor
 
 // Summary:
 //
+// 获取私有RAG服务可部署可用区
+//
+// @param request - DescribeZonesPrivateRAGServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeZonesPrivateRAGServiceResponse
+func (client *Client) DescribeZonesPrivateRAGServiceWithOptions(request *DescribeZonesPrivateRAGServiceRequest, runtime *dara.RuntimeOptions) (_result *DescribeZonesPrivateRAGServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeZonesPrivateRAGService"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeZonesPrivateRAGServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取私有RAG服务可部署可用区
+//
+// @param request - DescribeZonesPrivateRAGServiceRequest
+//
+// @return DescribeZonesPrivateRAGServiceResponse
+func (client *Client) DescribeZonesPrivateRAGService(request *DescribeZonesPrivateRAGServiceRequest) (_result *DescribeZonesPrivateRAGServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeZonesPrivateRAGServiceResponse{}
+	_body, _err := client.DescribeZonesPrivateRAGServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables resource group management for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode. After you disable resource group management, the resource management method of the instance switches from resource group management to resource queue management.
 //
 // Description:
@@ -11450,7 +12383,105 @@ func (client *Client) DownloadSQLLogsRecords(request *DownloadSQLLogsRecordsRequ
 
 // Summary:
 //
-// 知识库开启构建知识图谱
+// Downloads slow SQL records.
+//
+// @param request - DownloadSlowSQLRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DownloadSlowSQLRecordsResponse
+func (client *Client) DownloadSlowSQLRecordsWithOptions(request *DownloadSlowSQLRecordsRequest, runtime *dara.RuntimeOptions) (_result *DownloadSlowSQLRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DBName) {
+		query["DBName"] = request.DBName
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxDuration) {
+		query["MaxDuration"] = request.MaxDuration
+	}
+
+	if !dara.IsNil(request.MinDuration) {
+		query["MinDuration"] = request.MinDuration
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.UserName) {
+		query["UserName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DownloadSlowSQLRecords"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DownloadSlowSQLRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Downloads slow SQL records.
+//
+// @param request - DownloadSlowSQLRecordsRequest
+//
+// @return DownloadSlowSQLRecordsResponse
+func (client *Client) DownloadSlowSQLRecords(request *DownloadSlowSQLRecordsRequest) (_result *DownloadSlowSQLRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DownloadSlowSQLRecordsResponse{}
+	_body, _err := client.DownloadSlowSQLRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables knowledge graph construction for the knowledge base.
 //
 // @param tmpReq - EnableCollectionGraphRAGRequest
 //
@@ -11548,7 +12579,7 @@ func (client *Client) EnableCollectionGraphRAGWithOptions(tmpReq *EnableCollecti
 
 // Summary:
 //
-// 知识库开启构建知识图谱
+// Enables knowledge graph construction for the knowledge base.
 //
 // @param request - EnableCollectionGraphRAGRequest
 //
@@ -11836,7 +12867,7 @@ func (client *Client) GetAccount(request *GetAccountRequest) (_result *GetAccoun
 
 // Summary:
 //
-// 获取构建知识图谱任务
+// Retrieves a task to build a knowledge graph.
 //
 // @param request - GetGraphRAGJobRequest
 //
@@ -11904,7 +12935,7 @@ func (client *Client) GetGraphRAGJobWithOptions(request *GetGraphRAGJobRequest, 
 
 // Summary:
 //
-// 获取构建知识图谱任务
+// Retrieves a task to build a knowledge graph.
 //
 // @param request - GetGraphRAGJobRequest
 //
@@ -12086,7 +13117,11 @@ func (client *Client) GetStatementResult(request *GetStatementResultRequest) (_r
 
 // Summary:
 //
-// 查询Supabase实例详情
+// Retrieves the detailed configuration and status information for a specific Supabase instance.
+//
+// Description:
+//
+// This interface is used to query the details of a Supabase instance.
 //
 // @param request - GetSupabaseProjectRequest
 //
@@ -12134,7 +13169,11 @@ func (client *Client) GetSupabaseProjectWithOptions(request *GetSupabaseProjectR
 
 // Summary:
 //
-// 查询Supabase实例详情
+// Retrieves the detailed configuration and status information for a specific Supabase instance.
+//
+// Description:
+//
+// This interface is used to query the details of a Supabase instance.
 //
 // @param request - GetSupabaseProjectRequest
 //
@@ -12152,7 +13191,11 @@ func (client *Client) GetSupabaseProject(request *GetSupabaseProjectRequest) (_r
 
 // Summary:
 //
-// 查询Supabase实例 API Keys
+// Queries a list of API keys for a Supabase project.
+//
+// Description:
+//
+// You can call this operation to query a list of API keys for a Supabase project.
 //
 // @param request - GetSupabaseProjectApiKeysRequest
 //
@@ -12200,7 +13243,11 @@ func (client *Client) GetSupabaseProjectApiKeysWithOptions(request *GetSupabaseP
 
 // Summary:
 //
-// 查询Supabase实例 API Keys
+// Queries a list of API keys for a Supabase project.
+//
+// Description:
+//
+// You can call this operation to query a list of API keys for a Supabase project.
 //
 // @param request - GetSupabaseProjectApiKeysRequest
 //
@@ -12218,7 +13265,11 @@ func (client *Client) GetSupabaseProjectApiKeys(request *GetSupabaseProjectApiKe
 
 // Summary:
 //
-// 查询Supabase项目dashboard账号信息
+// Retrieves the username and password for the dashboard of a specific Supabase project.
+//
+// Description:
+//
+// # Query Supabase Project Dashboard Account Information
 //
 // @param request - GetSupabaseProjectDashboardAccountRequest
 //
@@ -12266,7 +13317,11 @@ func (client *Client) GetSupabaseProjectDashboardAccountWithOptions(request *Get
 
 // Summary:
 //
-// 查询Supabase项目dashboard账号信息
+// Retrieves the username and password for the dashboard of a specific Supabase project.
+//
+// Description:
+//
+// # Query Supabase Project Dashboard Account Information
 //
 // @param request - GetSupabaseProjectDashboardAccountRequest
 //
@@ -12288,11 +13343,11 @@ func (client *Client) GetSupabaseProjectDashboardAccount(request *GetSupabasePro
 //
 // Description:
 //
-// This operation is related to the UploadDocumentAsync operation. You can call the UploadDocumentAsync operation to create an upload job and obtain the job ID, and then call the GetUploadDocumentJob operation to query the execution information of the job.
+// This operation is related to the UploadDocumentAsync operation. You can call the UploadDocumentAsync operation to create an upload job and get the job ID, and then call the GetUploadDocumentJob operation to query the execution information of the job.
 //
-// >  Suggestions:
+// > Suggestions
 //
-//   - Determine whether the document upload job times out based on the document complexity and the number of tokens after chunking. In most cases, a job that lasts more than 2 hours is considered timeout.
+//   - Based on document complexity and the number of resulting vector chunks, the timeout is estimated and typically does not exceed 2 hours.
 //
 // @param request - GetUploadDocumentJobRequest
 //
@@ -12366,11 +13421,11 @@ func (client *Client) GetUploadDocumentJobWithOptions(request *GetUploadDocument
 //
 // Description:
 //
-// This operation is related to the UploadDocumentAsync operation. You can call the UploadDocumentAsync operation to create an upload job and obtain the job ID, and then call the GetUploadDocumentJob operation to query the execution information of the job.
+// This operation is related to the UploadDocumentAsync operation. You can call the UploadDocumentAsync operation to create an upload job and get the job ID, and then call the GetUploadDocumentJob operation to query the execution information of the job.
 //
-// >  Suggestions:
+// > Suggestions
 //
-//   - Determine whether the document upload job times out based on the document complexity and the number of tokens after chunking. In most cases, a job that lasts more than 2 hours is considered timeout.
+//   - Based on document complexity and the number of resulting vector chunks, the timeout is estimated and typically does not exceed 2 hours.
 //
 // @param request - GetUploadDocumentJobRequest
 //
@@ -12738,7 +13793,11 @@ func (client *Client) InitVectorDatabase(request *InitVectorDatabaseRequest) (_r
 
 // Summary:
 //
-// 列举AI节点池
+// Queries a list of AI nodes.
+//
+// Description:
+//
+//	This operation queries a list of AI nodes.
 //
 // @param request - ListAINodePoolsRequest
 //
@@ -12786,7 +13845,11 @@ func (client *Client) ListAINodePoolsWithOptions(request *ListAINodePoolsRequest
 
 // Summary:
 //
-// 列举AI节点池
+// Queries a list of AI nodes.
+//
+// Description:
+//
+//	This operation queries a list of AI nodes.
 //
 // @param request - ListAINodePoolsRequest
 //
@@ -12804,7 +13867,7 @@ func (client *Client) ListAINodePools(request *ListAINodePoolsRequest) (_result 
 
 // Summary:
 //
-// 获取备份任务列表
+// Queries a list of backup jobs.
 //
 // @param request - ListBackupJobsRequest
 //
@@ -12852,7 +13915,7 @@ func (client *Client) ListBackupJobsWithOptions(request *ListBackupJobsRequest, 
 
 // Summary:
 //
-// 获取备份任务列表
+// Queries a list of backup jobs.
 //
 // @param request - ListBackupJobsRequest
 //
@@ -12943,6 +14006,72 @@ func (client *Client) ListCollections(request *ListCollectionsRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListCollectionsResponse{}
 	_body, _err := client.ListCollectionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取安装在某个数据库上的所有插件信息
+//
+// @param request - ListDatabaseExtensionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatabaseExtensionsResponse
+func (client *Client) ListDatabaseExtensionsWithOptions(request *ListDatabaseExtensionsRequest, runtime *dara.RuntimeOptions) (_result *ListDatabaseExtensionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DatabaseName) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDatabaseExtensions"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDatabaseExtensionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取安装在某个数据库上的所有插件信息
+//
+// @param request - ListDatabaseExtensionsRequest
+//
+// @return ListDatabaseExtensionsResponse
+func (client *Client) ListDatabaseExtensions(request *ListDatabaseExtensionsRequest) (_result *ListDatabaseExtensionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDatabaseExtensionsResponse{}
+	_body, _err := client.ListDatabaseExtensionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13354,7 +14483,7 @@ func (client *Client) ListExternalDataSources(request *ListExternalDataSourcesRe
 
 // Summary:
 //
-// 获取索引列表
+// Queries a list of indexes.
 //
 // @param request - ListIndicesRequest
 //
@@ -13422,7 +14551,7 @@ func (client *Client) ListIndicesWithOptions(request *ListIndicesRequest, runtim
 
 // Summary:
 //
-// 获取索引列表
+// Queries a list of indexes.
 //
 // @param request - ListIndicesRequest
 //
@@ -13431,6 +14560,76 @@ func (client *Client) ListIndices(request *ListIndicesRequest) (_result *ListInd
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListIndicesResponse{}
 	_body, _err := client.ListIndicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举数据库
+//
+// @param request - ListInstanceDatabasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceDatabasesResponse
+func (client *Client) ListInstanceDatabasesWithOptions(request *ListInstanceDatabasesRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceDatabasesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstanceDatabases"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstanceDatabasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举数据库
+//
+// @param request - ListInstanceDatabasesRequest
+//
+// @return ListInstanceDatabasesResponse
+func (client *Client) ListInstanceDatabases(request *ListInstanceDatabasesRequest) (_result *ListInstanceDatabasesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListInstanceDatabasesResponse{}
+	_body, _err := client.ListInstanceDatabasesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13522,7 +14721,17 @@ func (client *Client) ListInstanceExtensions(request *ListInstanceExtensionsRequ
 
 // Summary:
 //
-// 查询模型服务
+// Queries all model services.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This interface is used to view all model service information.
+//
+// ## [](#qps-)QPS limit
+//
+// You can call this operation up to 1,000 times per second per account. Exceeding the limit will trigger API rate limiting, which may impact your business. Please call the API responsibly.
 //
 // @param request - ListModelServicesRequest
 //
@@ -13578,7 +14787,17 @@ func (client *Client) ListModelServicesWithOptions(request *ListModelServicesReq
 
 // Summary:
 //
-// 查询模型服务
+// Queries all model services.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This interface is used to view all model service information.
+//
+// ## [](#qps-)QPS limit
+//
+// You can call this operation up to 1,000 times per second per account. Exceeding the limit will trigger API rate limiting, which may impact your business. Please call the API responsibly.
 //
 // @param request - ListModelServicesRequest
 //
@@ -13912,6 +15131,112 @@ func (client *Client) ListSecrets(request *ListSecretsRequest) (_result *ListSec
 
 // Summary:
 //
+// Queries slow SQL queries.
+//
+// @param request - ListSlowSQLRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSlowSQLRecordsResponse
+func (client *Client) ListSlowSQLRecordsWithOptions(request *ListSlowSQLRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListSlowSQLRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DBName) {
+		query["DBName"] = request.DBName
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxDuration) {
+		query["MaxDuration"] = request.MaxDuration
+	}
+
+	if !dara.IsNil(request.MinDuration) {
+		query["MinDuration"] = request.MinDuration
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.UserName) {
+		query["UserName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSlowSQLRecords"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSlowSQLRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries slow SQL queries.
+//
+// @param request - ListSlowSQLRecordsRequest
+//
+// @return ListSlowSQLRecordsResponse
+func (client *Client) ListSlowSQLRecords(request *ListSlowSQLRecordsRequest) (_result *ListSlowSQLRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListSlowSQLRecordsResponse{}
+	_body, _err := client.ListSlowSQLRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create External Data Source Configuration
 //
 // @param request - ListStreamingDataServicesRequest
@@ -14134,7 +15459,11 @@ func (client *Client) ListStreamingJobs(request *ListStreamingJobsRequest) (_res
 
 // Summary:
 //
-// 查询Supabase实例列表
+// Retrieves a paginated list of Supabase instances in your account. You can filter the list by region.
+//
+// Description:
+//
+//	You can call this operation to query Supabase instances.
 //
 // @param request - ListSupabaseProjectsRequest
 //
@@ -14186,7 +15515,11 @@ func (client *Client) ListSupabaseProjectsWithOptions(request *ListSupabaseProje
 
 // Summary:
 //
-// 查询Supabase实例列表
+// Retrieves a paginated list of Supabase instances in your account. You can filter the list by region.
+//
+// Description:
+//
+//	You can call this operation to query Supabase instances.
 //
 // @param request - ListSupabaseProjectsRequest
 //
@@ -14204,7 +15537,11 @@ func (client *Client) ListSupabaseProjects(request *ListSupabaseProjectsRequest)
 
 // Summary:
 //
-// 获取支持的模型列表
+// # Get the list of supported models
+//
+// Description:
+//
+//	This API is used to query the list of supported models.
 //
 // @param request - ListSupportModelsRequest
 //
@@ -14248,7 +15585,11 @@ func (client *Client) ListSupportModelsWithOptions(request *ListSupportModelsReq
 
 // Summary:
 //
-// 获取支持的模型列表
+// # Get the list of supported models
+//
+// Description:
+//
+//	This API is used to query the list of supported models.
 //
 // @param request - ListSupportModelsRequest
 //
@@ -14610,7 +15951,7 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 
 // Summary:
 //
-// 更新Collection
+// Updates a collection.
 //
 // @param request - ModifyCollectionRequest
 //
@@ -14682,7 +16023,7 @@ func (client *Client) ModifyCollectionWithOptions(request *ModifyCollectionReque
 
 // Summary:
 //
-// 更新Collection
+// Updates a collection.
 //
 // @param request - ModifyCollectionRequest
 //
@@ -14856,7 +16197,7 @@ func (client *Client) ModifyDBInstanceConnectionString(request *ModifyDBInstance
 
 // Summary:
 //
-// 修改实例部署模式
+// Changes the development mode of an instance.
 //
 // @param request - ModifyDBInstanceDeploymentModeRequest
 //
@@ -14912,7 +16253,7 @@ func (client *Client) ModifyDBInstanceDeploymentModeWithOptions(request *ModifyD
 
 // Summary:
 //
-// 修改实例部署模式
+// Changes the development mode of an instance.
 //
 // @param request - ModifyDBInstanceDeploymentModeRequest
 //
@@ -16542,7 +17883,11 @@ func (client *Client) ModifyStreamingJob(request *ModifyStreamingJobRequest) (_r
 
 // Summary:
 //
-// 修改supabase项目白名单
+// Sets or replaces the IP address whitelist for a specified Supabase project.
+//
+// Description:
+//
+// Before you can connect to a Supabase project, you must add your client\\"s IP address or CIDR block to the project\\"s whitelist.
 //
 // @param request - ModifySupabaseProjectSecurityIpsRequest
 //
@@ -16594,7 +17939,11 @@ func (client *Client) ModifySupabaseProjectSecurityIpsWithOptions(request *Modif
 
 // Summary:
 //
-// 修改supabase项目白名单
+// Sets or replaces the IP address whitelist for a specified Supabase project.
+//
+// Description:
+//
+// Before you can connect to a Supabase project, you must add your client\\"s IP address or CIDR block to the project\\"s whitelist.
 //
 // @param request - ModifySupabaseProjectSecurityIpsRequest
 //
@@ -17263,7 +18612,7 @@ func (client *Client) QueryContentAdvance(request *QueryContentAdvanceRequest, r
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -17281,7 +18630,7 @@ func (client *Client) QueryContentAdvance(request *QueryContentAdvanceRequest, r
 
 // Summary:
 //
-// 多知识库查询
+// Retrieves vectors and metadata from multiple specified document collections using natural language queries, then merge and return the results from all retrieval paths.
 //
 // @param tmpReq - QueryKnowledgeBasesContentRequest
 //
@@ -17367,7 +18716,7 @@ func (client *Client) QueryKnowledgeBasesContentWithOptions(tmpReq *QueryKnowled
 
 // Summary:
 //
-// 多知识库查询
+// Retrieves vectors and metadata from multiple specified document collections using natural language queries, then merge and return the results from all retrieval paths.
 //
 // @param request - QueryKnowledgeBasesContentRequest
 //
@@ -17759,7 +19108,11 @@ func (client *Client) ResetIMVMonitorData(request *ResetIMVMonitorDataRequest) (
 
 // Summary:
 //
-// 重置supabase数据库密码
+// # Reset the password of a Supabase database
+//
+// Description:
+//
+// Call this API to reset the password of the Supabase database.
 //
 // @param request - ResetSupabaseProjectPasswordRequest
 //
@@ -17811,7 +19164,11 @@ func (client *Client) ResetSupabaseProjectPasswordWithOptions(request *ResetSupa
 
 // Summary:
 //
-// 重置supabase数据库密码
+// # Reset the password of a Supabase database
+//
+// Description:
+//
+// Call this API to reset the password of the Supabase database.
 //
 // @param request - ResetSupabaseProjectPasswordRequest
 //
@@ -18421,7 +19778,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// 通过模型对文本文档进行向量化
+// Generates text embeddings using an embedding model.
 //
 // @param tmpReq - TextEmbeddingRequest
 //
@@ -18493,7 +19850,7 @@ func (client *Client) TextEmbeddingWithOptions(tmpReq *TextEmbeddingRequest, run
 
 // Summary:
 //
-// 通过模型对文本文档进行向量化
+// Generates text embeddings using an embedding model.
 //
 // @param request - TextEmbeddingRequest
 //
@@ -19542,7 +20899,7 @@ func (client *Client) UploadDocumentAsyncAdvance(request *UploadDocumentAsyncAdv
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -19560,11 +20917,11 @@ func (client *Client) UploadDocumentAsyncAdvance(request *UploadDocumentAsyncAdv
 
 // Summary:
 //
-// # Upload split text
+// Splits a document into chunks and uploads the vectorized chunks to a document collection.
 //
 // Description:
 //
-// The vectorization algorithm for the document is specified by the CreateDocumentCollection API.
+// The vector algorithm that is used for the document is specified when you call the CreateDocumentCollection operation.
 //
 // @param tmpReq - UpsertChunksRequest
 //
@@ -19652,11 +21009,11 @@ func (client *Client) UpsertChunksWithOptions(tmpReq *UpsertChunksRequest, runti
 
 // Summary:
 //
-// # Upload split text
+// Splits a document into chunks and uploads the vectorized chunks to a document collection.
 //
 // Description:
 //
-// The vectorization algorithm for the document is specified by the CreateDocumentCollection API.
+// The vector algorithm that is used for the document is specified when you call the CreateDocumentCollection operation.
 //
 // @param request - UpsertChunksRequest
 //
@@ -19977,7 +21334,7 @@ func (client *Client) UpsertCollectionDataAsyncAdvance(request *UpsertCollection
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}

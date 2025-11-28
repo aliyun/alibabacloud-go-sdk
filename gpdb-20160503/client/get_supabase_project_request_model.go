@@ -16,12 +16,18 @@ type iGetSupabaseProjectRequest interface {
 }
 
 type GetSupabaseProjectRequest struct {
+	// The ID of the Supabase instance. You can obtain the ID on the Supabase page in the console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sbp-263****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the cluster.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-hangzhou
