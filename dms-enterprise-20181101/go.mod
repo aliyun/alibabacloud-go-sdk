@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/dms-enterprise-20181101/v2
+module github.com/alibabacloud-go/dms-enterprise-20181101/v3
 
 go 1.14
 
