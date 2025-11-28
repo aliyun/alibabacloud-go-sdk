@@ -9,6 +9,8 @@ type iDocOcrMaxRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthorize(v string) *DocOcrMaxRequest
+	GetAuthorize() *string
 	SetDocPage(v string) *DocOcrMaxRequest
 	GetDocPage() *string
 	SetDocType(v string) *DocOcrMaxRequest
@@ -40,6 +42,7 @@ type iDocOcrMaxRequest interface {
 }
 
 type DocOcrMaxRequest struct {
+	Authorize *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
 	// Page expected to be recognized
 	//
 	// - 01 (default): ID portrait.
@@ -162,6 +165,10 @@ func (s DocOcrMaxRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DocOcrMaxRequest) GetAuthorize() *string {
+	return s.Authorize
+}
+
 func (s *DocOcrMaxRequest) GetDocPage() *string {
 	return s.DocPage
 }
@@ -216,6 +223,11 @@ func (s *DocOcrMaxRequest) GetSceneCode() *string {
 
 func (s *DocOcrMaxRequest) GetSpoof() *string {
 	return s.Spoof
+}
+
+func (s *DocOcrMaxRequest) SetAuthorize(v string) *DocOcrMaxRequest {
+	s.Authorize = &v
+	return s
 }
 
 func (s *DocOcrMaxRequest) SetDocPage(v string) *DocOcrMaxRequest {

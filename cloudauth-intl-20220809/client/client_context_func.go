@@ -1139,6 +1139,10 @@ func (client *Client) DocOcrMaxWithContext(ctx context.Context, request *DocOcrM
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Authorize) {
+		body["Authorize"] = request.Authorize
+	}
+
 	if !dara.IsNil(request.DocPage) {
 		body["DocPage"] = request.DocPage
 	}
