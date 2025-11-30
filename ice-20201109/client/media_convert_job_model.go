@@ -42,7 +42,7 @@ type iMediaConvertJob interface {
 type MediaConvertJob struct {
 	ClientToken        *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Code               *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Config             *MediaConvertJobConfig           `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	Config             *MediaConvertJobConfig           `json:"Config,omitempty" xml:"Config,omitempty"`
 	CreateTime         *string                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	FinishTime         *string                          `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	JobId              *string                          `json:"JobId,omitempty" xml:"JobId,omitempty"`
@@ -207,88 +207,6 @@ func (s *MediaConvertJob) Validate() error {
 	}
 	if s.OutputGroupDetails != nil {
 		for _, item := range s.OutputGroupDetails {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
-		}
-	}
-	return nil
-}
-
-type MediaConvertJobConfig struct {
-	Inputs       []*MediaConvertInput       `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
-	JobName      *string                    `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	OutputGroups []*MediaConvertOutputGroup `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty" type:"Repeated"`
-	Outputs      []*MediaConvertOutput      `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
-}
-
-func (s MediaConvertJobConfig) String() string {
-	return dara.Prettify(s)
-}
-
-func (s MediaConvertJobConfig) GoString() string {
-	return s.String()
-}
-
-func (s *MediaConvertJobConfig) GetInputs() []*MediaConvertInput {
-	return s.Inputs
-}
-
-func (s *MediaConvertJobConfig) GetJobName() *string {
-	return s.JobName
-}
-
-func (s *MediaConvertJobConfig) GetOutputGroups() []*MediaConvertOutputGroup {
-	return s.OutputGroups
-}
-
-func (s *MediaConvertJobConfig) GetOutputs() []*MediaConvertOutput {
-	return s.Outputs
-}
-
-func (s *MediaConvertJobConfig) SetInputs(v []*MediaConvertInput) *MediaConvertJobConfig {
-	s.Inputs = v
-	return s
-}
-
-func (s *MediaConvertJobConfig) SetJobName(v string) *MediaConvertJobConfig {
-	s.JobName = &v
-	return s
-}
-
-func (s *MediaConvertJobConfig) SetOutputGroups(v []*MediaConvertOutputGroup) *MediaConvertJobConfig {
-	s.OutputGroups = v
-	return s
-}
-
-func (s *MediaConvertJobConfig) SetOutputs(v []*MediaConvertOutput) *MediaConvertJobConfig {
-	s.Outputs = v
-	return s
-}
-
-func (s *MediaConvertJobConfig) Validate() error {
-	if s.Inputs != nil {
-		for _, item := range s.Inputs {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
-		}
-	}
-	if s.OutputGroups != nil {
-		for _, item := range s.OutputGroups {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
-		}
-	}
-	if s.Outputs != nil {
-		for _, item := range s.Outputs {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err

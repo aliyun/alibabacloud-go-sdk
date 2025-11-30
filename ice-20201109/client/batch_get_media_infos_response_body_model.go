@@ -9,6 +9,8 @@ type iBatchGetMediaInfosResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetIgnoredList(v []*string) *BatchGetMediaInfosResponseBody
+	GetIgnoredList() []*string
 	SetMediaInfos(v []*BatchGetMediaInfosResponseBodyMediaInfos) *BatchGetMediaInfosResponseBody
 	GetMediaInfos() []*BatchGetMediaInfosResponseBodyMediaInfos
 	SetRequestId(v string) *BatchGetMediaInfosResponseBody
@@ -16,6 +18,7 @@ type iBatchGetMediaInfosResponseBody interface {
 }
 
 type BatchGetMediaInfosResponseBody struct {
+	IgnoredList []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
 	// The queried media assets.
 	MediaInfos []*BatchGetMediaInfosResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
 	// The request ID.
@@ -34,12 +37,21 @@ func (s BatchGetMediaInfosResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *BatchGetMediaInfosResponseBody) GetIgnoredList() []*string {
+	return s.IgnoredList
+}
+
 func (s *BatchGetMediaInfosResponseBody) GetMediaInfos() []*BatchGetMediaInfosResponseBodyMediaInfos {
 	return s.MediaInfos
 }
 
 func (s *BatchGetMediaInfosResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *BatchGetMediaInfosResponseBody) SetIgnoredList(v []*string) *BatchGetMediaInfosResponseBody {
+	s.IgnoredList = v
+	return s
 }
 
 func (s *BatchGetMediaInfosResponseBody) SetMediaInfos(v []*BatchGetMediaInfosResponseBodyMediaInfos) *BatchGetMediaInfosResponseBody {
@@ -69,7 +81,8 @@ type BatchGetMediaInfosResponseBodyMediaInfos struct {
 	// FileInfos
 	FileInfoList []*BatchGetMediaInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
 	// The basic information of the media asset.
-	MediaBasicInfo *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
+	MediaBasicInfo   *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo   `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
+	MediaDynamicInfo *BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfo `json:"MediaDynamicInfo,omitempty" xml:"MediaDynamicInfo,omitempty" type:"Struct"`
 	// The ID of the media asset.
 	//
 	// example:
@@ -94,6 +107,10 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfos) GetMediaBasicInfo() *BatchGet
 	return s.MediaBasicInfo
 }
 
+func (s *BatchGetMediaInfosResponseBodyMediaInfos) GetMediaDynamicInfo() *BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfo {
+	return s.MediaDynamicInfo
+}
+
 func (s *BatchGetMediaInfosResponseBodyMediaInfos) GetMediaId() *string {
 	return s.MediaId
 }
@@ -105,6 +122,11 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfos) SetFileInfoList(v []*BatchGet
 
 func (s *BatchGetMediaInfosResponseBodyMediaInfos) SetMediaBasicInfo(v *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) *BatchGetMediaInfosResponseBodyMediaInfos {
 	s.MediaBasicInfo = v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfos) SetMediaDynamicInfo(v *BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfo) *BatchGetMediaInfosResponseBodyMediaInfos {
+	s.MediaDynamicInfo = v
 	return s
 }
 
@@ -125,6 +147,11 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfos) Validate() error {
 	}
 	if s.MediaBasicInfo != nil {
 		if err := s.MediaBasicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MediaDynamicInfo != nil {
+		if err := s.MediaDynamicInfo.Validate(); err != nil {
 			return err
 		}
 	}
@@ -630,5 +657,60 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetUserData(v s
 }
 
 func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) Validate() error {
+	return dara.Validate(s)
+}
+
+type BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfo struct {
+	DynamicMetaData *BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData `json:"DynamicMetaData,omitempty" xml:"DynamicMetaData,omitempty" type:"Struct"`
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfo) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfo) GetDynamicMetaData() *BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData {
+	return s.DynamicMetaData
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfo) SetDynamicMetaData(v *BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData) *BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfo {
+	s.DynamicMetaData = v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfo) Validate() error {
+	if s.DynamicMetaData != nil {
+		if err := s.DynamicMetaData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData struct {
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData) GetData() *string {
+	return s.Data
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData) SetData(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData {
+	s.Data = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData) Validate() error {
 	return dara.Validate(s)
 }

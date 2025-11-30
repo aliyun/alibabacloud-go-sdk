@@ -13,14 +13,11 @@ type iMediaObject interface {
 	GetMedia() *string
 	SetType(v string) *MediaObject
 	GetType() *string
-	SetUrl(v string) *MediaObject
-	GetUrl() *string
 }
 
 type MediaObject struct {
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
 	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s MediaObject) String() string {
@@ -39,10 +36,6 @@ func (s *MediaObject) GetType() *string {
 	return s.Type
 }
 
-func (s *MediaObject) GetUrl() *string {
-	return s.Url
-}
-
 func (s *MediaObject) SetMedia(v string) *MediaObject {
 	s.Media = &v
 	return s
@@ -50,11 +43,6 @@ func (s *MediaObject) SetMedia(v string) *MediaObject {
 
 func (s *MediaObject) SetType(v string) *MediaObject {
 	s.Type = &v
-	return s
-}
-
-func (s *MediaObject) SetUrl(v string) *MediaObject {
-	s.Url = &v
 	return s
 }
 
