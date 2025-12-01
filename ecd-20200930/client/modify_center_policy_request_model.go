@@ -25,6 +25,8 @@ type iModifyCenterPolicyRequest interface {
 	GetCameraRedirect() *string
 	SetClientControlMenu(v string) *ModifyCenterPolicyRequest
 	GetClientControlMenu() *string
+	SetClientCreateSnapshot(v string) *ModifyCenterPolicyRequest
+	GetClientCreateSnapshot() *string
 	SetClientType(v []*ModifyCenterPolicyRequestClientType) *ModifyCenterPolicyRequest
 	GetClientType() []*ModifyCenterPolicyRequestClientType
 	SetClipboard(v string) *ModifyCenterPolicyRequest
@@ -241,6 +243,8 @@ type iModifyCenterPolicyRequest interface {
 	GetWatermarkRowAmount() *int32
 	SetWatermarkSecurity(v string) *ModifyCenterPolicyRequest
 	GetWatermarkSecurity() *string
+	SetWatermarkShadow(v string) *ModifyCenterPolicyRequest
+	GetWatermarkShadow() *string
 	SetWatermarkTransparencyValue(v int32) *ModifyCenterPolicyRequest
 	GetWatermarkTransparencyValue() *int32
 	SetWatermarkType(v string) *ModifyCenterPolicyRequest
@@ -313,8 +317,9 @@ type ModifyCenterPolicyRequest struct {
 	// example:
 	//
 	// on
-	CameraRedirect    *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
-	ClientControlMenu *string `json:"ClientControlMenu,omitempty" xml:"ClientControlMenu,omitempty"`
+	CameraRedirect       *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	ClientControlMenu    *string `json:"ClientControlMenu,omitempty" xml:"ClientControlMenu,omitempty"`
+	ClientCreateSnapshot *string `json:"ClientCreateSnapshot,omitempty" xml:"ClientCreateSnapshot,omitempty"`
 	// The types of Alibaba Cloud Workspace clients that end users can use to connect to cloud computers.
 	ClientType []*ModifyCenterPolicyRequestClientType `json:"ClientType,omitempty" xml:"ClientType,omitempty" type:"Repeated"`
 	// The read/write permissions on the clipboard.
@@ -1150,6 +1155,7 @@ type ModifyCenterPolicyRequest struct {
 	//
 	// off
 	WatermarkSecurity *string `json:"WatermarkSecurity,omitempty" xml:"WatermarkSecurity,omitempty"`
+	WatermarkShadow   *string `json:"WatermarkShadow,omitempty" xml:"WatermarkShadow,omitempty"`
 	// The watermark opacity. A higher value makes the watermark more opaque. Valid values: 10 to 100.
 	//
 	// example:
@@ -1244,6 +1250,10 @@ func (s *ModifyCenterPolicyRequest) GetCameraRedirect() *string {
 
 func (s *ModifyCenterPolicyRequest) GetClientControlMenu() *string {
 	return s.ClientControlMenu
+}
+
+func (s *ModifyCenterPolicyRequest) GetClientCreateSnapshot() *string {
+	return s.ClientCreateSnapshot
 }
 
 func (s *ModifyCenterPolicyRequest) GetClientType() []*ModifyCenterPolicyRequestClientType {
@@ -1678,6 +1688,10 @@ func (s *ModifyCenterPolicyRequest) GetWatermarkSecurity() *string {
 	return s.WatermarkSecurity
 }
 
+func (s *ModifyCenterPolicyRequest) GetWatermarkShadow() *string {
+	return s.WatermarkShadow
+}
+
 func (s *ModifyCenterPolicyRequest) GetWatermarkTransparencyValue() *int32 {
 	return s.WatermarkTransparencyValue
 }
@@ -1731,6 +1745,11 @@ func (s *ModifyCenterPolicyRequest) SetCameraRedirect(v string) *ModifyCenterPol
 
 func (s *ModifyCenterPolicyRequest) SetClientControlMenu(v string) *ModifyCenterPolicyRequest {
 	s.ClientControlMenu = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetClientCreateSnapshot(v string) *ModifyCenterPolicyRequest {
+	s.ClientCreateSnapshot = &v
 	return s
 }
 
@@ -2271,6 +2290,11 @@ func (s *ModifyCenterPolicyRequest) SetWatermarkRowAmount(v int32) *ModifyCenter
 
 func (s *ModifyCenterPolicyRequest) SetWatermarkSecurity(v string) *ModifyCenterPolicyRequest {
 	s.WatermarkSecurity = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetWatermarkShadow(v string) *ModifyCenterPolicyRequest {
+	s.WatermarkShadow = &v
 	return s
 }
 

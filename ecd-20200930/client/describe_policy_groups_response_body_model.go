@@ -160,8 +160,9 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// on
-	CameraRedirect    *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
-	ClientControlMenu *string `json:"ClientControlMenu,omitempty" xml:"ClientControlMenu,omitempty"`
+	CameraRedirect       *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	ClientControlMenu    *string `json:"ClientControlMenu,omitempty" xml:"ClientControlMenu,omitempty"`
+	ClientCreateSnapshot *string `json:"ClientCreateSnapshot,omitempty" xml:"ClientCreateSnapshot,omitempty"`
 	// The logon method control rules to limit the type of the Alibaba Cloud Workspace client used by end users to connect to cloud computers.
 	ClientTypes []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes `json:"ClientTypes,omitempty" xml:"ClientTypes,omitempty" type:"Repeated"`
 	// The permissions on the clipboard.
@@ -980,6 +981,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// on
 	WatermarkSecurity *string `json:"WatermarkSecurity,omitempty" xml:"WatermarkSecurity,omitempty"`
+	WatermarkShadow   *string `json:"WatermarkShadow,omitempty" xml:"WatermarkShadow,omitempty"`
 	// The watermark transparency.
 	//
 	// Valid values:
@@ -1071,6 +1073,10 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetCameraRedirect
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetClientControlMenu() *string {
 	return s.ClientControlMenu
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetClientCreateSnapshot() *string {
+	return s.ClientCreateSnapshot
 }
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetClientTypes() []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes {
@@ -1501,6 +1507,10 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetWatermarkSecur
 	return s.WatermarkSecurity
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetWatermarkShadow() *string {
+	return s.WatermarkShadow
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetWatermarkTransparency() *string {
 	return s.WatermarkTransparency
 }
@@ -1553,6 +1563,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetCameraRedirect
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetClientControlMenu(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.ClientControlMenu = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetClientCreateSnapshot(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.ClientCreateSnapshot = &v
 	return s
 }
 
@@ -2088,6 +2103,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetWatermarkRowAm
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetWatermarkSecurity(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.WatermarkSecurity = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetWatermarkShadow(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.WatermarkShadow = &v
 	return s
 }
 

@@ -163,6 +163,10 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	//
 	// TestOfficeSite
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
+	// example:
+	//
+	// Simple
+	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
 	// The OS type. Valid values:
 	//
 	// 	- Windows
@@ -301,6 +305,10 @@ func (s *DescribeGlobalDesktopRecordsResponseBodySessions) GetOfficeSiteName() *
 	return s.OfficeSiteName
 }
 
+func (s *DescribeGlobalDesktopRecordsResponseBodySessions) GetOfficeSiteType() *string {
+	return s.OfficeSiteType
+}
+
 func (s *DescribeGlobalDesktopRecordsResponseBodySessions) GetOsType() *string {
 	return s.OsType
 }
@@ -412,6 +420,11 @@ func (s *DescribeGlobalDesktopRecordsResponseBodySessions) SetOfficeSiteId(v str
 
 func (s *DescribeGlobalDesktopRecordsResponseBodySessions) SetOfficeSiteName(v string) *DescribeGlobalDesktopRecordsResponseBodySessions {
 	s.OfficeSiteName = &v
+	return s
+}
+
+func (s *DescribeGlobalDesktopRecordsResponseBodySessions) SetOfficeSiteType(v string) *DescribeGlobalDesktopRecordsResponseBodySessions {
+	s.OfficeSiteType = &v
 	return s
 }
 

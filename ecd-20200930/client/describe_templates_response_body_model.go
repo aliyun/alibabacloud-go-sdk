@@ -30,36 +30,52 @@ type iDescribeTemplatesResponseBody interface {
 }
 
 type DescribeTemplatesResponseBody struct {
+	// The modification result. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The templates.
 	Data []*DescribeTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned. This parameter is not returned if the value of Code is `success`.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1871984F-51F6-5588-BAF6-*******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of templates.
+	//
 	// example:
 	//
 	// 94
@@ -169,70 +185,142 @@ func (s *DescribeTemplatesResponseBody) Validate() error {
 }
 
 type DescribeTemplatesResponseBodyData struct {
-	AutoPay      *bool                                            `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew    *bool                                            `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ChargeType   *string                                          `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	AutoPay    *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew  *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The sizes of the data disks.
 	DataDiskList []*DescribeTemplatesResponseBodyDataDataDiskList `json:"DataDiskList,omitempty" xml:"DataDiskList,omitempty" type:"Repeated"`
+	// The default language of the template.
+	//
+	// Valid values:
+	//
+	// 	- en-US: English.
+	//
+	// 	- zh-HK: Chinese, Traditional (Hong Kong, China).
+	//
+	// 	- zh-CN: Simplified Chinese.
+	//
+	// 	- ja-JP: Japanese.
+	//
 	// example:
 	//
 	// zh-CN
 	DefaultLanguage *string `json:"DefaultLanguage,omitempty" xml:"DefaultLanguage,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The template description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the template was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in Coordinated Universal Time (UTC).
+	//
 	// example:
 	//
 	// 2025-04-25T05:18:46.000+00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the template was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2025-04-25T05:18:46.000+00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The image ID.
+	//
 	// example:
 	//
 	// m-5q8ehbihx*****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image type.
+	//
+	// Valid values:
+	//
+	// 	- User: a custom image.
+	//
+	// 	- Shared: a shared image.
+	//
+	// 	- System: a system image.
+	//
+	// 	- Community: a community image.
+	//
 	// example:
 	//
 	// User
 	ImageType  *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 	Period     *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The policy ID.
+	//
 	// example:
 	//
 	// pg-0caoeogkhz*****
 	PolicyGroupId       *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
 	PostPaidAfterUsedUp *bool   `json:"PostPaidAfterUsedUp,omitempty" xml:"PostPaidAfterUsedUp,omitempty"`
+	// The service type.
+	//
+	// Valid value:
+	//
+	// 	- CloudDesktop: cloud computers.
+	//
 	// example:
 	//
 	// CLOUD_DESKTOP
-	ProductType      *string                                              `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The region-related settings.
 	RegionConfigList []*DescribeTemplatesResponseBodyDataRegionConfigList `json:"RegionConfigList,omitempty" xml:"RegionConfigList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1871984F-51F6-5588-BAF6-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-a5fqjjqaejt***
-	ResourceGroupId *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags added to cloud computers. A tag is a key-value pair.
 	ResourceTagList []*DescribeTemplatesResponseBodyDataResourceTagList `json:"ResourceTagList,omitempty" xml:"ResourceTagList,omitempty" type:"Repeated"`
-	SiteConfigList  []*DescribeTemplatesResponseBodyDataSiteConfigList  `json:"SiteConfigList,omitempty" xml:"SiteConfigList,omitempty" type:"Repeated"`
+	// 区域配置管理
+	SiteConfigList []*DescribeTemplatesResponseBodyDataSiteConfigList `json:"SiteConfigList,omitempty" xml:"SiteConfigList,omitempty" type:"Repeated"`
+	// The performance level (PL) of the system disk.
+	//
+	// Valid value:
+	//
+	// 	- PL1: a PL1 Enterprise SSD (ESSD).
+	//
+	// 	- PL0: a PL0 ESSD.
+	//
+	// 	- AutoPL: an AutoPL SSD.
+	//
 	// example:
 	//
 	// AutoPL
 	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
+	// The size of the system disk. Unit: GiB.
+	//
 	// example:
 	//
 	// 80
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// b-0caoeogs88y*****
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template name.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The template type.
+	//
+	// Valid values:
+	//
+	// 	- USER_TEMPLATE: custom templates.
+	//
+	// 	- SYSTEM_TEMPLATE: system templates.
+	//
 	// example:
 	//
 	// USER_TEMPLATE
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// The ID of the scheduled task group.
+	//
 	// example:
 	//
 	// bcc-dweha*****
@@ -532,10 +620,22 @@ func (s *DescribeTemplatesResponseBodyData) Validate() error {
 }
 
 type DescribeTemplatesResponseBodyDataDataDiskList struct {
+	// The PL of the data disk.
+	//
+	// Valid values:
+	//
+	// 	- PL1: a PL1 ESSD.
+	//
+	// 	- PL0: a PL0 ESSD.
+	//
+	// 	- AutoPL: an AutoPL SSD.
+	//
 	// example:
 	//
 	// AutoPL
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// The size of the data disk. Unit: GiB.
+	//
 	// example:
 	//
 	// 100
@@ -573,42 +673,62 @@ func (s *DescribeTemplatesResponseBodyDataDataDiskList) Validate() error {
 }
 
 type DescribeTemplatesResponseBodyDataRegionConfigList struct {
+	// The number of vCPUs.
+	//
 	// example:
 	//
 	// 4
 	CpuCount *int32 `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
+	// The GPU memory information. This parameter is supported only by Graphics cloud computer types.
+	//
 	// example:
 	//
 	// 4GiB
 	GpuSpec *string `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
+	// The memory size. Unit: MiB.
+	//
 	// example:
 	//
 	// 8192
 	MemorySize *int64 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	// The office network ID.
+	//
 	// example:
 	//
 	// cn-beijing+dir-3040*****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the cloud computer type.
+	//
 	// example:
 	//
 	// eds.enterprise_office.4c8g
 	ResourceInstanceType *string `json:"ResourceInstanceType,omitempty" xml:"ResourceInstanceType,omitempty"`
+	// The snapshot policy ID.
+	//
 	// example:
 	//
 	// sp-b9fasjuu0*****
 	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
+	// The subnet ID.
+	//
 	// example:
 	//
 	// vsw-dgea1*****
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// Indicates whether disk encryption is enabled.
+	//
 	// example:
 	//
 	// false
 	VolumeEncryptionEnable *bool `json:"VolumeEncryptionEnable,omitempty" xml:"VolumeEncryptionEnable,omitempty"`
+	// The ID of the Key Management Service (KMS) key that is used to encrypt the disk.
+	//
 	// example:
 	//
 	// 3bc77be0-cbce-4a29-b07b-13f16394****
@@ -718,10 +838,14 @@ func (s *DescribeTemplatesResponseBodyDataRegionConfigList) Validate() error {
 }
 
 type DescribeTemplatesResponseBodyDataResourceTagList struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The property value.
+	//
 	// example:
 	//
 	// test
@@ -759,10 +883,14 @@ func (s *DescribeTemplatesResponseBodyDataResourceTagList) Validate() error {
 }
 
 type DescribeTemplatesResponseBodyDataSiteConfigList struct {
+	// 应用管控策略ID
+	//
 	// example:
 	//
 	// bwr-5a5371e0*******
 	AppRuleId *string `json:"AppRuleId,omitempty" xml:"AppRuleId,omitempty"`
+	// 站点名称。
+	//
 	// example:
 	//
 	// mainland

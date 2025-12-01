@@ -58,49 +58,104 @@ type iCreateTemplateRequest interface {
 type CreateTemplateRequest struct {
 	AutoPay   *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// >  This parameter is not publicly available.
+	//
+	// Valid values:
+	//
+	// 	- 1: the Enterprise edition.
+	//
 	// example:
 	//
 	// 1
-	BizType      *string                              `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	ChargeType   *string                              `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	BizType    *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The data disks.
 	DataDiskList []*CreateTemplateRequestDataDiskList `json:"DataDiskList,omitempty" xml:"DataDiskList,omitempty" type:"Repeated"`
+	// The default language of cloud computers during startup. This parameter takes effect only when cloud computers are created from system images.
+	//
 	// example:
 	//
 	// zh-CN
 	DefaultLanguage *string `json:"DefaultLanguage,omitempty" xml:"DefaultLanguage,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The template description. It must meet the following criteria:
+	//
+	// 	- It can be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	//
+	// 	- It can contain letters, digits, and special characters, including spaces. Note: You can use carriage returns to break lines.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the cloud computer image. You can query image IDs on the Images page. System images and custom images are supported.
+	//
 	// example:
 	//
 	// desktopimage-windows-server-2022-64-asp
 	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	Period     *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The ID of the policy group.
+	//
 	// example:
 	//
 	// pg-8hlryfn331******
 	PolicyGroupId       *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
 	PostPaidAfterUsedUp *bool   `json:"PostPaidAfterUsedUp,omitempty" xml:"PostPaidAfterUsedUp,omitempty"`
+	// The service type. Set the value to `CloudDesktop`.
+	//
+	// *
+	//
 	// example:
 	//
 	// CloudDesktop
-	ProductType      *string                                  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The regions of the template. You can create cloud computers by using a template only within the same region as the template itself.
+	//
+	// >  You can specify up to 20 regions.
 	RegionConfigList []*CreateTemplateRequestRegionConfigList `json:"RegionConfigList,omitempty" xml:"RegionConfigList,omitempty" type:"Repeated"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-4knxmfneq1e******
-	ResourceGroupId *string                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags added to cloud computers. Specify tags in key-value pairs. You can specify up to 20 tags.
 	ResourceTagList []*CreateTemplateRequestResourceTagList `json:"ResourceTagList,omitempty" xml:"ResourceTagList,omitempty" type:"Repeated"`
-	SiteConfigList  []*CreateTemplateRequestSiteConfigList  `json:"SiteConfigList,omitempty" xml:"SiteConfigList,omitempty" type:"Repeated"`
+	// 区域配置管理
+	SiteConfigList []*CreateTemplateRequestSiteConfigList `json:"SiteConfigList,omitempty" xml:"SiteConfigList,omitempty" type:"Repeated"`
+	// The performance level (PL) of the system disk.
+	//
+	// >  Only cloud computers of the Graphics or High Frequency type support Enterprise SSDs (ESSDs).
+	//
+	// Valid values:
+	//
+	// 	- PL1: a PL1 ESSD.
+	//
+	// 	- PL0: a PL0 ESSD.
+	//
+	// 	- AutoPL: an AutoPL ESSD.
+	//
 	// example:
 	//
 	// AutoPL
 	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
+	// The size of the system disk. Unit: GiB. Valid values: 40 to 500. Increments: 10 GiB.
+	//
+	// >  The system disk size must be at least as large as the configured image size.
+	//
 	// example:
 	//
 	// 80
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// The template name. It must meet the following criteria:
+	//
+	// 	- It can be 2 to 126 characters in length.
+	//
+	// 	- It must begin with a letter and cannot start with `http://` or `https://`.
+	//
+	// 	- It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Note: Periods (.) are not supported in the name.
+	//
 	// This parameter is required.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The ID of the scheduled task group.
+	//
 	// example:
 	//
 	// ccg-0caoeogrk9m5****
@@ -355,10 +410,18 @@ func (s *CreateTemplateRequest) Validate() error {
 }
 
 type CreateTemplateRequestDataDiskList struct {
+	// The PL of the data disk. Default value: `AutoPL`.
+	//
 	// example:
 	//
 	// AutoPL
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// The size of the data disk. Unit: GiB. Valid values: 40 to 2040. Increments: 10 GiB.
+	//
+	// **
+	//
+	// **Keep in mind*	- that the larger the ESSD disk capacity, the higher the available PL (for example, PL2 is available for disks larger than 460 GiB). A higher PL comes with a higher cost. Select an ESSD based on your specific needs.
+	//
 	// example:
 	//
 	// 40
@@ -396,30 +459,50 @@ func (s *CreateTemplateRequestDataDiskList) Validate() error {
 }
 
 type CreateTemplateRequestRegionConfigList struct {
+	// The office network ID.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-709******
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the cloud computer type.
+	//
 	// example:
 	//
 	// eds.enterprise_office.8c16g
 	ResourceInstanceType *string `json:"ResourceInstanceType,omitempty" xml:"ResourceInstanceType,omitempty"`
+	// The ID of the automatic snapshot policy.
+	//
 	// example:
 	//
 	// sp-35fvn8m21pnx2****
 	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
+	// The subnet ID.
+	//
 	// example:
 	//
 	// vsw-bp1yiu**********
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// Specifies whether to enable disk encryption.
+	//
+	// Valid values:
+	//
+	// 	- false (default): disables disk encryption.
+	//
+	// 	- true: enables disk encryption.
+	//
 	// example:
 	//
 	// false
 	VolumeEncryptionEnable *bool `json:"VolumeEncryptionEnable,omitempty" xml:"VolumeEncryptionEnable,omitempty"`
+	// The ID of the Key Management Service (KMS) key that you want to use to encrypt disks. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to query KMS keys.
+	//
 	// example:
 	//
 	// a7b3c0c8-b3a2-4876-b1cc-*********
@@ -502,10 +585,14 @@ func (s *CreateTemplateRequestRegionConfigList) Validate() error {
 }
 
 type CreateTemplateRequestResourceTagList struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// department
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// design
@@ -543,10 +630,14 @@ func (s *CreateTemplateRequestResourceTagList) Validate() error {
 }
 
 type CreateTemplateRequestSiteConfigList struct {
+	// 应用管控策略ID
+	//
 	// example:
 	//
 	// bwr-5a5371e0db954d********
 	AppRuleId *string `json:"AppRuleId,omitempty" xml:"AppRuleId,omitempty"`
+	// 站点ID。
+	//
 	// example:
 	//
 	// mainland

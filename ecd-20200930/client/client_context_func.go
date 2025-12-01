@@ -969,6 +969,70 @@ func (client *Client) AttachEndUserWithContext(ctx context.Context, request *Att
 	return _result, _err
 }
 
+// @param request - BatchModifyEntitlementRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchModifyEntitlementResponse
+func (client *Client) BatchModifyEntitlementWithContext(ctx context.Context, request *BatchModifyEntitlementRequest, runtime *dara.RuntimeOptions) (_result *BatchModifyEntitlementResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DesktopId) {
+		query["DesktopId"] = request.DesktopId
+	}
+
+	if !dara.IsNil(request.EndUserId) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !dara.IsNil(request.MaxDesktopPerUser) {
+		query["MaxDesktopPerUser"] = request.MaxDesktopPerUser
+	}
+
+	if !dara.IsNil(request.MaxUserPerDesktop) {
+		query["MaxUserPerDesktop"] = request.MaxUserPerDesktop
+	}
+
+	if !dara.IsNil(request.Preview) {
+		query["Preview"] = request.Preview
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Strategy) {
+		query["Strategy"] = request.Strategy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchModifyEntitlement"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchModifyEntitlementResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Summary:
 //
 // Binds a configuration group to resources.
@@ -2410,6 +2474,10 @@ func (client *Client) CreateCenterPolicyWithContext(ctx context.Context, request
 		query["ClientControlMenu"] = request.ClientControlMenu
 	}
 
+	if !dara.IsNil(request.ClientCreateSnapshot) {
+		query["ClientCreateSnapshot"] = request.ClientCreateSnapshot
+	}
+
 	if !dara.IsNil(request.ClientType) {
 		query["ClientType"] = request.ClientType
 	}
@@ -2828,6 +2896,10 @@ func (client *Client) CreateCenterPolicyWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.WatermarkSecurity) {
 		query["WatermarkSecurity"] = request.WatermarkSecurity
+	}
+
+	if !dara.IsNil(request.WatermarkShadow) {
+		query["WatermarkShadow"] = request.WatermarkShadow
 	}
 
 	if !dara.IsNil(request.WatermarkTransparencyValue) {
@@ -5126,6 +5198,14 @@ func (client *Client) CreateSubnetWithContext(ctx context.Context, request *Crea
 // Summary:
 //
 // Creates a custom cloud computer template. A cloud computer template (or simply "template") simplifies the process of creating cloud computers by providing a predefined set of configurations. This eliminates the need to manually configure each setting, saving significant time and effort.
+//
+// Description:
+//
+// When you call this operation, take note of the following item:
+//
+//   - Most parameters in templates are optional. When you create a template, Elastic Desktop Service (EDS) does not validate the existence or correctness of the parameter values you specify. The parameter values in the template are only verified when you use the template to create cloud computers.
+//
+//   - For parameters that include the region attribute in the template, it\\"s important to note that if the specified region doesn’t match the region where the template is used to create a cloud computer, those parameters will not take effect.
 //
 // @param request - CreateTemplateRequest
 //
@@ -13140,7 +13220,7 @@ func (client *Client) ListFilePermissionWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询桌面内安装的应用
+// Queries applications installed on a cloud computer.
 //
 // @param request - ListInstalledAppsRequest
 //
@@ -14279,6 +14359,10 @@ func (client *Client) ModifyCenterPolicyWithContext(ctx context.Context, request
 		query["ClientControlMenu"] = request.ClientControlMenu
 	}
 
+	if !dara.IsNil(request.ClientCreateSnapshot) {
+		query["ClientCreateSnapshot"] = request.ClientCreateSnapshot
+	}
+
 	if !dara.IsNil(request.ClientType) {
 		query["ClientType"] = request.ClientType
 	}
@@ -14709,6 +14793,10 @@ func (client *Client) ModifyCenterPolicyWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.WatermarkSecurity) {
 		query["WatermarkSecurity"] = request.WatermarkSecurity
+	}
+
+	if !dara.IsNil(request.WatermarkShadow) {
+		query["WatermarkShadow"] = request.WatermarkShadow
 	}
 
 	if !dara.IsNil(request.WatermarkTransparencyValue) {

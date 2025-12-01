@@ -18,16 +18,26 @@ type iListInstalledAppsRequest interface {
 }
 
 type ListInstalledAppsRequest struct {
+	// The cloud computer ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecd-39clsqyxr****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The page number.\\
+	//
+	// Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.\\
+	//
+	// Default value: 20.
+	//
 	// example:
 	//
 	// 20

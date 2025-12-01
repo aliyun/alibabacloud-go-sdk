@@ -18,11 +18,16 @@ type iListInstalledAppsResponseBody interface {
 }
 
 type ListInstalledAppsResponseBody struct {
+	// The information about the application.
 	Apps []*ListInstalledAppsResponseBodyApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 94
@@ -78,10 +83,14 @@ func (s *ListInstalledAppsResponseBody) Validate() error {
 }
 
 type ListInstalledAppsResponseBodyApps struct {
+	// The name of the application.
+	//
 	// example:
 	//
 	// test_app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The application version.
+	//
 	// example:
 	//
 	// 2.0.1
