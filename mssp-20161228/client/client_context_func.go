@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("mssp"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -65,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfirmDjbhReportResponse
-func (client *Client) ConfirmDjbhReportWithOptions(request *ConfirmDjbhReportRequest, runtime *dara.RuntimeOptions) (_result *ConfirmDjbhReportResponse, _err error) {
+func (client *Client) ConfirmDjbhReportWithContext(ctx context.Context, request *ConfirmDjbhReportRequest, runtime *dara.RuntimeOptions) (_result *ConfirmDjbhReportResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -92,29 +43,11 @@ func (client *Client) ConfirmDjbhReportWithOptions(request *ConfirmDjbhReportReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ConfirmDjbhReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Confirm Receipt of Security Assessment Report
-//
-// @param request - ConfirmDjbhReportRequest
-//
-// @return ConfirmDjbhReportResponse
-func (client *Client) ConfirmDjbhReport(request *ConfirmDjbhReportRequest) (_result *ConfirmDjbhReportResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ConfirmDjbhReportResponse{}
-	_body, _err := client.ConfirmDjbhReportWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -127,7 +60,7 @@ func (client *Client) ConfirmDjbhReport(request *ConfirmDjbhReportRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateServiceLinkedRoleResponse
-func (client *Client) CreateServiceLinkedRoleWithOptions(request *CreateServiceLinkedRoleRequest, runtime *dara.RuntimeOptions) (_result *CreateServiceLinkedRoleResponse, _err error) {
+func (client *Client) CreateServiceLinkedRoleWithContext(ctx context.Context, request *CreateServiceLinkedRoleRequest, runtime *dara.RuntimeOptions) (_result *CreateServiceLinkedRoleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -158,29 +91,11 @@ func (client *Client) CreateServiceLinkedRoleWithOptions(request *CreateServiceL
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateServiceLinkedRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Create Service-Linked Role
-//
-// @param request - CreateServiceLinkedRoleRequest
-//
-// @return CreateServiceLinkedRoleResponse
-func (client *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRequest) (_result *CreateServiceLinkedRoleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateServiceLinkedRoleResponse{}
-	_body, _err := client.CreateServiceLinkedRoleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -193,7 +108,7 @@ func (client *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateServiceWorkOrderResponse
-func (client *Client) CreateServiceWorkOrderWithOptions(request *CreateServiceWorkOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateServiceWorkOrderResponse, _err error) {
+func (client *Client) CreateServiceWorkOrderWithContext(ctx context.Context, request *CreateServiceWorkOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateServiceWorkOrderResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -292,29 +207,11 @@ func (client *Client) CreateServiceWorkOrderWithOptions(request *CreateServiceWo
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateServiceWorkOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Create Service Work Order
-//
-// @param request - CreateServiceWorkOrderRequest
-//
-// @return CreateServiceWorkOrderResponse
-func (client *Client) CreateServiceWorkOrder(request *CreateServiceWorkOrderRequest) (_result *CreateServiceWorkOrderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateServiceWorkOrderResponse{}
-	_body, _err := client.CreateServiceWorkOrderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -327,7 +224,7 @@ func (client *Client) CreateServiceWorkOrder(request *CreateServiceWorkOrderRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDjbhReportResponse
-func (client *Client) DeleteDjbhReportWithOptions(request *DeleteDjbhReportRequest, runtime *dara.RuntimeOptions) (_result *DeleteDjbhReportResponse, _err error) {
+func (client *Client) DeleteDjbhReportWithContext(ctx context.Context, request *DeleteDjbhReportRequest, runtime *dara.RuntimeOptions) (_result *DeleteDjbhReportResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -354,29 +251,11 @@ func (client *Client) DeleteDjbhReportWithOptions(request *DeleteDjbhReportReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDjbhReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Delete Security Assessment Report
-//
-// @param request - DeleteDjbhReportRequest
-//
-// @return DeleteDjbhReportResponse
-func (client *Client) DeleteDjbhReport(request *DeleteDjbhReportRequest) (_result *DeleteDjbhReportResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteDjbhReportResponse{}
-	_body, _err := client.DeleteDjbhReportWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -389,7 +268,7 @@ func (client *Client) DeleteDjbhReport(request *DeleteDjbhReportRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeServiceLinkedRoleResponse
-func (client *Client) DescribeServiceLinkedRoleWithOptions(request *DescribeServiceLinkedRoleRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceLinkedRoleResponse, _err error) {
+func (client *Client) DescribeServiceLinkedRoleWithContext(ctx context.Context, request *DescribeServiceLinkedRoleRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceLinkedRoleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -420,29 +299,11 @@ func (client *Client) DescribeServiceLinkedRoleWithOptions(request *DescribeServ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeServiceLinkedRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Query Service-Linked Role
-//
-// @param request - DescribeServiceLinkedRoleRequest
-//
-// @return DescribeServiceLinkedRoleResponse
-func (client *Client) DescribeServiceLinkedRole(request *DescribeServiceLinkedRoleRequest) (_result *DescribeServiceLinkedRoleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeServiceLinkedRoleResponse{}
-	_body, _err := client.DescribeServiceLinkedRoleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -455,7 +316,7 @@ func (client *Client) DescribeServiceLinkedRole(request *DescribeServiceLinkedRo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisposeServiceWorkOrderResponse
-func (client *Client) DisposeServiceWorkOrderWithOptions(request *DisposeServiceWorkOrderRequest, runtime *dara.RuntimeOptions) (_result *DisposeServiceWorkOrderResponse, _err error) {
+func (client *Client) DisposeServiceWorkOrderWithContext(ctx context.Context, request *DisposeServiceWorkOrderRequest, runtime *dara.RuntimeOptions) (_result *DisposeServiceWorkOrderResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -538,29 +399,11 @@ func (client *Client) DisposeServiceWorkOrderWithOptions(request *DisposeService
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisposeServiceWorkOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Process Service Work Order
-//
-// @param request - DisposeServiceWorkOrderRequest
-//
-// @return DisposeServiceWorkOrderResponse
-func (client *Client) DisposeServiceWorkOrder(request *DisposeServiceWorkOrderRequest) (_result *DisposeServiceWorkOrderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisposeServiceWorkOrderResponse{}
-	_body, _err := client.DisposeServiceWorkOrderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -573,7 +416,7 @@ func (client *Client) DisposeServiceWorkOrder(request *DisposeServiceWorkOrderRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisposeWorkTaskResponse
-func (client *Client) DisposeWorkTaskWithOptions(tmpReq *DisposeWorkTaskRequest, runtime *dara.RuntimeOptions) (_result *DisposeWorkTaskResponse, _err error) {
+func (client *Client) DisposeWorkTaskWithContext(ctx context.Context, tmpReq *DisposeWorkTaskRequest, runtime *dara.RuntimeOptions) (_result *DisposeWorkTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -622,29 +465,11 @@ func (client *Client) DisposeWorkTaskWithOptions(tmpReq *DisposeWorkTaskRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisposeWorkTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Handle Alert Work Order
-//
-// @param request - DisposeWorkTaskRequest
-//
-// @return DisposeWorkTaskResponse
-func (client *Client) DisposeWorkTask(request *DisposeWorkTaskRequest) (_result *DisposeWorkTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisposeWorkTaskResponse{}
-	_body, _err := client.DisposeWorkTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -657,7 +482,7 @@ func (client *Client) DisposeWorkTask(request *DisposeWorkTaskRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAlarmDetailByIdResponse
-func (client *Client) GetAlarmDetailByIdWithOptions(request *GetAlarmDetailByIdRequest, runtime *dara.RuntimeOptions) (_result *GetAlarmDetailByIdResponse, _err error) {
+func (client *Client) GetAlarmDetailByIdWithContext(ctx context.Context, request *GetAlarmDetailByIdRequest, runtime *dara.RuntimeOptions) (_result *GetAlarmDetailByIdResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -684,29 +509,11 @@ func (client *Client) GetAlarmDetailByIdWithOptions(request *GetAlarmDetailByIdR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAlarmDetailByIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Query Alarm Details
-//
-// @param request - GetAlarmDetailByIdRequest
-//
-// @return GetAlarmDetailByIdResponse
-func (client *Client) GetAlarmDetailById(request *GetAlarmDetailByIdRequest) (_result *GetAlarmDetailByIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAlarmDetailByIdResponse{}
-	_body, _err := client.GetAlarmDetailByIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -719,7 +526,7 @@ func (client *Client) GetAlarmDetailById(request *GetAlarmDetailByIdRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAttackedAssetDealResponse
-func (client *Client) GetAttackedAssetDealWithOptions(request *GetAttackedAssetDealRequest, runtime *dara.RuntimeOptions) (_result *GetAttackedAssetDealResponse, _err error) {
+func (client *Client) GetAttackedAssetDealWithContext(ctx context.Context, request *GetAttackedAssetDealRequest, runtime *dara.RuntimeOptions) (_result *GetAttackedAssetDealResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -758,29 +565,11 @@ func (client *Client) GetAttackedAssetDealWithOptions(request *GetAttackedAssetD
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAttackedAssetDealResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Trend of Attacked Asset Convergence
-//
-// @param request - GetAttackedAssetDealRequest
-//
-// @return GetAttackedAssetDealResponse
-func (client *Client) GetAttackedAssetDeal(request *GetAttackedAssetDealRequest) (_result *GetAttackedAssetDealResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAttackedAssetDealResponse{}
-	_body, _err := client.GetAttackedAssetDealWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -793,7 +582,7 @@ func (client *Client) GetAttackedAssetDeal(request *GetAttackedAssetDealRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetBaselineSummaryResponse
-func (client *Client) GetBaselineSummaryWithOptions(request *GetBaselineSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetBaselineSummaryResponse, _err error) {
+func (client *Client) GetBaselineSummaryWithContext(ctx context.Context, request *GetBaselineSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetBaselineSummaryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -832,29 +621,11 @@ func (client *Client) GetBaselineSummaryWithOptions(request *GetBaselineSummaryR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetBaselineSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Compliance Risk Convergence Trend
-//
-// @param request - GetBaselineSummaryRequest
-//
-// @return GetBaselineSummaryResponse
-func (client *Client) GetBaselineSummary(request *GetBaselineSummaryRequest) (_result *GetBaselineSummaryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetBaselineSummaryResponse{}
-	_body, _err := client.GetBaselineSummaryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -867,7 +638,7 @@ func (client *Client) GetBaselineSummary(request *GetBaselineSummaryRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetConsoleScoreResponse
-func (client *Client) GetConsoleScoreWithOptions(request *GetConsoleScoreRequest, runtime *dara.RuntimeOptions) (_result *GetConsoleScoreResponse, _err error) {
+func (client *Client) GetConsoleScoreWithContext(ctx context.Context, request *GetConsoleScoreRequest, runtime *dara.RuntimeOptions) (_result *GetConsoleScoreResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -906,29 +677,11 @@ func (client *Client) GetConsoleScoreWithOptions(request *GetConsoleScoreRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetConsoleScoreResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Get Console Score
-//
-// @param request - GetConsoleScoreRequest
-//
-// @return GetConsoleScoreResponse
-func (client *Client) GetConsoleScore(request *GetConsoleScoreRequest) (_result *GetConsoleScoreResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetConsoleScoreResponse{}
-	_body, _err := client.GetConsoleScoreWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -941,7 +694,7 @@ func (client *Client) GetConsoleScore(request *GetConsoleScoreRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDetailByIdResponse
-func (client *Client) GetDetailByIdWithOptions(request *GetDetailByIdRequest, runtime *dara.RuntimeOptions) (_result *GetDetailByIdResponse, _err error) {
+func (client *Client) GetDetailByIdWithContext(ctx context.Context, request *GetDetailByIdRequest, runtime *dara.RuntimeOptions) (_result *GetDetailByIdResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -968,29 +721,11 @@ func (client *Client) GetDetailByIdWithOptions(request *GetDetailByIdRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDetailByIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Query Risk Details
-//
-// @param request - GetDetailByIdRequest
-//
-// @return GetDetailByIdResponse
-func (client *Client) GetDetailById(request *GetDetailByIdRequest) (_result *GetDetailByIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetDetailByIdResponse{}
-	_body, _err := client.GetDetailByIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1003,7 +738,7 @@ func (client *Client) GetDetailById(request *GetDetailByIdRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDocumentDownloadUrlResponse
-func (client *Client) GetDocumentDownloadUrlWithOptions(request *GetDocumentDownloadUrlRequest, runtime *dara.RuntimeOptions) (_result *GetDocumentDownloadUrlResponse, _err error) {
+func (client *Client) GetDocumentDownloadUrlWithContext(ctx context.Context, request *GetDocumentDownloadUrlRequest, runtime *dara.RuntimeOptions) (_result *GetDocumentDownloadUrlResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1038,29 +773,11 @@ func (client *Client) GetDocumentDownloadUrlWithOptions(request *GetDocumentDown
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDocumentDownloadUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Single Service Report Download
-//
-// @param request - GetDocumentDownloadUrlRequest
-//
-// @return GetDocumentDownloadUrlResponse
-func (client *Client) GetDocumentDownloadUrl(request *GetDocumentDownloadUrlRequest) (_result *GetDocumentDownloadUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetDocumentDownloadUrlResponse{}
-	_body, _err := client.GetDocumentDownloadUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1073,7 +790,7 @@ func (client *Client) GetDocumentDownloadUrl(request *GetDocumentDownloadUrlRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDocumentPageResponse
-func (client *Client) GetDocumentPageWithOptions(request *GetDocumentPageRequest, runtime *dara.RuntimeOptions) (_result *GetDocumentPageResponse, _err error) {
+func (client *Client) GetDocumentPageWithContext(ctx context.Context, request *GetDocumentPageRequest, runtime *dara.RuntimeOptions) (_result *GetDocumentPageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1120,29 +837,11 @@ func (client *Client) GetDocumentPageWithOptions(request *GetDocumentPageRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDocumentPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Service Report Query
-//
-// @param request - GetDocumentPageRequest
-//
-// @return GetDocumentPageResponse
-func (client *Client) GetDocumentPage(request *GetDocumentPageRequest) (_result *GetDocumentPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetDocumentPageResponse{}
-	_body, _err := client.GetDocumentPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1155,7 +854,7 @@ func (client *Client) GetDocumentPage(request *GetDocumentPageRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDocumentSummaryResponse
-func (client *Client) GetDocumentSummaryWithOptions(request *GetDocumentSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetDocumentSummaryResponse, _err error) {
+func (client *Client) GetDocumentSummaryWithContext(ctx context.Context, request *GetDocumentSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetDocumentSummaryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1182,29 +881,11 @@ func (client *Client) GetDocumentSummaryWithOptions(request *GetDocumentSummaryR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDocumentSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Service Report Home Page Statistics Acquisition
-//
-// @param request - GetDocumentSummaryRequest
-//
-// @return GetDocumentSummaryResponse
-func (client *Client) GetDocumentSummary(request *GetDocumentSummaryRequest) (_result *GetDocumentSummaryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetDocumentSummaryResponse{}
-	_body, _err := client.GetDocumentSummaryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1217,7 +898,7 @@ func (client *Client) GetDocumentSummary(request *GetDocumentSummaryRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRecentDocumentResponse
-func (client *Client) GetRecentDocumentWithOptions(request *GetRecentDocumentRequest, runtime *dara.RuntimeOptions) (_result *GetRecentDocumentResponse, _err error) {
+func (client *Client) GetRecentDocumentWithContext(ctx context.Context, request *GetRecentDocumentRequest, runtime *dara.RuntimeOptions) (_result *GetRecentDocumentResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1256,29 +937,11 @@ func (client *Client) GetRecentDocumentWithOptions(request *GetRecentDocumentReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRecentDocumentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Get Recently Uploaded Service Reports
-//
-// @param request - GetRecentDocumentRequest
-//
-// @return GetRecentDocumentResponse
-func (client *Client) GetRecentDocument(request *GetRecentDocumentRequest) (_result *GetRecentDocumentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRecentDocumentResponse{}
-	_body, _err := client.GetRecentDocumentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1291,7 +954,7 @@ func (client *Client) GetRecentDocument(request *GetRecentDocumentRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSafetyCoverResponse
-func (client *Client) GetSafetyCoverWithOptions(request *GetSafetyCoverRequest, runtime *dara.RuntimeOptions) (_result *GetSafetyCoverResponse, _err error) {
+func (client *Client) GetSafetyCoverWithContext(ctx context.Context, request *GetSafetyCoverRequest, runtime *dara.RuntimeOptions) (_result *GetSafetyCoverResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1330,29 +993,11 @@ func (client *Client) GetSafetyCoverWithOptions(request *GetSafetyCoverRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSafetyCoverResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Get Safety Coverage
-//
-// @param request - GetSafetyCoverRequest
-//
-// @return GetSafetyCoverResponse
-func (client *Client) GetSafetyCover(request *GetSafetyCoverRequest) (_result *GetSafetyCoverResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSafetyCoverResponse{}
-	_body, _err := client.GetSafetyCoverWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1365,7 +1010,7 @@ func (client *Client) GetSafetyCover(request *GetSafetyCoverRequest) (_result *G
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSowListResponse
-func (client *Client) GetSowListWithOptions(request *GetSowListRequest, runtime *dara.RuntimeOptions) (_result *GetSowListResponse, _err error) {
+func (client *Client) GetSowListWithContext(ctx context.Context, request *GetSowListRequest, runtime *dara.RuntimeOptions) (_result *GetSowListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1404,29 +1049,11 @@ func (client *Client) GetSowListWithOptions(request *GetSowListRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSowListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Get SOW List
-//
-// @param request - GetSowListRequest
-//
-// @return GetSowListResponse
-func (client *Client) GetSowList(request *GetSowListRequest) (_result *GetSowListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSowListResponse{}
-	_body, _err := client.GetSowListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1439,7 +1066,7 @@ func (client *Client) GetSowList(request *GetSowListRequest) (_result *GetSowLis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSuspEventPageResponse
-func (client *Client) GetSuspEventPageWithOptions(request *GetSuspEventPageRequest, runtime *dara.RuntimeOptions) (_result *GetSuspEventPageResponse, _err error) {
+func (client *Client) GetSuspEventPageWithContext(ctx context.Context, request *GetSuspEventPageRequest, runtime *dara.RuntimeOptions) (_result *GetSuspEventPageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1486,29 +1113,11 @@ func (client *Client) GetSuspEventPageWithOptions(request *GetSuspEventPageReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSuspEventPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Alarm Disposal Query
-//
-// @param request - GetSuspEventPageRequest
-//
-// @return GetSuspEventPageResponse
-func (client *Client) GetSuspEventPage(request *GetSuspEventPageRequest) (_result *GetSuspEventPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSuspEventPageResponse{}
-	_body, _err := client.GetSuspEventPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1521,7 +1130,7 @@ func (client *Client) GetSuspEventPage(request *GetSuspEventPageRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSuspEventSummaryResponse
-func (client *Client) GetSuspEventSummaryWithOptions(request *GetSuspEventSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetSuspEventSummaryResponse, _err error) {
+func (client *Client) GetSuspEventSummaryWithContext(ctx context.Context, request *GetSuspEventSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetSuspEventSummaryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1560,123 +1169,11 @@ func (client *Client) GetSuspEventSummaryWithOptions(request *GetSuspEventSummar
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSuspEventSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Get Alert Statistics
-//
-// @param request - GetSuspEventSummaryRequest
-//
-// @return GetSuspEventSummaryResponse
-func (client *Client) GetSuspEventSummary(request *GetSuspEventSummaryRequest) (_result *GetSuspEventSummaryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSuspEventSummaryResponse{}
-	_body, _err := client.GetSuspEventSummaryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// # Alarm Page Statistics
-//
-// @param request - GetSuspPageSummaryRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetSuspPageSummaryResponse
-func (client *Client) GetSuspPageSummaryWithOptions(runtime *dara.RuntimeOptions) (_result *GetSuspPageSummaryResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetSuspPageSummary"),
-		Version:     dara.String("2016-12-28"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetSuspPageSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Alarm Page Statistics
-//
-// @return GetSuspPageSummaryResponse
-func (client *Client) GetSuspPageSummary() (_result *GetSuspPageSummaryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSuspPageSummaryResponse{}
-	_body, _err := client.GetSuspPageSummaryWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// # Query User Activation Status
-//
-// @param request - GetUserStatusRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetUserStatusResponse
-func (client *Client) GetUserStatusWithOptions(runtime *dara.RuntimeOptions) (_result *GetUserStatusResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetUserStatus"),
-		Version:     dara.String("2016-12-28"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetUserStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Query User Activation Status
-//
-// @return GetUserStatusResponse
-func (client *Client) GetUserStatus() (_result *GetUserStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetUserStatusResponse{}
-	_body, _err := client.GetUserStatusWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1689,7 +1186,7 @@ func (client *Client) GetUserStatus() (_result *GetUserStatusResponse, _err erro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVulItemPageResponse
-func (client *Client) GetVulItemPageWithOptions(request *GetVulItemPageRequest, runtime *dara.RuntimeOptions) (_result *GetVulItemPageResponse, _err error) {
+func (client *Client) GetVulItemPageWithContext(ctx context.Context, request *GetVulItemPageRequest, runtime *dara.RuntimeOptions) (_result *GetVulItemPageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1740,29 +1237,11 @@ func (client *Client) GetVulItemPageWithOptions(request *GetVulItemPageRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVulItemPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Risk Query
-//
-// @param request - GetVulItemPageRequest
-//
-// @return GetVulItemPageResponse
-func (client *Client) GetVulItemPage(request *GetVulItemPageRequest) (_result *GetVulItemPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVulItemPageResponse{}
-	_body, _err := client.GetVulItemPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1775,7 +1254,7 @@ func (client *Client) GetVulItemPage(request *GetVulItemPageRequest) (_result *G
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVulListByIdResponse
-func (client *Client) GetVulListByIdWithOptions(request *GetVulListByIdRequest, runtime *dara.RuntimeOptions) (_result *GetVulListByIdResponse, _err error) {
+func (client *Client) GetVulListByIdWithContext(ctx context.Context, request *GetVulListByIdRequest, runtime *dara.RuntimeOptions) (_result *GetVulListByIdResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1826,76 +1305,11 @@ func (client *Client) GetVulListByIdWithOptions(request *GetVulListByIdRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVulListByIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Query processed details
-//
-// @param request - GetVulListByIdRequest
-//
-// @return GetVulListByIdResponse
-func (client *Client) GetVulListById(request *GetVulListByIdRequest) (_result *GetVulListByIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVulListByIdResponse{}
-	_body, _err := client.GetVulListByIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// # Risk Page Statistics
-//
-// @param request - GetVulPageSummaryRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetVulPageSummaryResponse
-func (client *Client) GetVulPageSummaryWithOptions(runtime *dara.RuntimeOptions) (_result *GetVulPageSummaryResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetVulPageSummary"),
-		Version:     dara.String("2016-12-28"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetVulPageSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Risk Page Statistics
-//
-// @return GetVulPageSummaryResponse
-func (client *Client) GetVulPageSummary() (_result *GetVulPageSummaryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVulPageSummaryResponse{}
-	_body, _err := client.GetVulPageSummaryWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1908,7 +1322,7 @@ func (client *Client) GetVulPageSummary() (_result *GetVulPageSummaryResponse, _
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVulSummaryResponse
-func (client *Client) GetVulSummaryWithOptions(request *GetVulSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetVulSummaryResponse, _err error) {
+func (client *Client) GetVulSummaryWithContext(ctx context.Context, request *GetVulSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetVulSummaryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1947,29 +1361,11 @@ func (client *Client) GetVulSummaryWithOptions(request *GetVulSummaryRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVulSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Get Risk Statistics
-//
-// @param request - GetVulSummaryRequest
-//
-// @return GetVulSummaryResponse
-func (client *Client) GetVulSummary(request *GetVulSummaryRequest) (_result *GetVulSummaryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVulSummaryResponse{}
-	_body, _err := client.GetVulSummaryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1982,7 +1378,7 @@ func (client *Client) GetVulSummary(request *GetVulSummaryRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetWorkTaskSummaryResponse
-func (client *Client) GetWorkTaskSummaryWithOptions(request *GetWorkTaskSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetWorkTaskSummaryResponse, _err error) {
+func (client *Client) GetWorkTaskSummaryWithContext(ctx context.Context, request *GetWorkTaskSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetWorkTaskSummaryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2021,29 +1417,11 @@ func (client *Client) GetWorkTaskSummaryWithOptions(request *GetWorkTaskSummaryR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetWorkTaskSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Get the First Line Work Order Statistics
-//
-// @param request - GetWorkTaskSummaryRequest
-//
-// @return GetWorkTaskSummaryResponse
-func (client *Client) GetWorkTaskSummary(request *GetWorkTaskSummaryRequest) (_result *GetWorkTaskSummaryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetWorkTaskSummaryResponse{}
-	_body, _err := client.GetWorkTaskSummaryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2056,7 +1434,7 @@ func (client *Client) GetWorkTaskSummary(request *GetWorkTaskSummaryRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PageServiceCustomerResponse
-func (client *Client) PageServiceCustomerWithOptions(request *PageServiceCustomerRequest, runtime *dara.RuntimeOptions) (_result *PageServiceCustomerResponse, _err error) {
+func (client *Client) PageServiceCustomerWithContext(ctx context.Context, request *PageServiceCustomerRequest, runtime *dara.RuntimeOptions) (_result *PageServiceCustomerResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2107,29 +1485,11 @@ func (client *Client) PageServiceCustomerWithOptions(request *PageServiceCustome
 		BodyType:    dara.String("json"),
 	}
 	_result = &PageServiceCustomerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Service Customer Information Query
-//
-// @param request - PageServiceCustomerRequest
-//
-// @return PageServiceCustomerResponse
-func (client *Client) PageServiceCustomer(request *PageServiceCustomerRequest) (_result *PageServiceCustomerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PageServiceCustomerResponse{}
-	_body, _err := client.PageServiceCustomerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2142,7 +1502,7 @@ func (client *Client) PageServiceCustomer(request *PageServiceCustomerRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendCustomEventResponse
-func (client *Client) SendCustomEventWithOptions(request *SendCustomEventRequest, runtime *dara.RuntimeOptions) (_result *SendCustomEventResponse, _err error) {
+func (client *Client) SendCustomEventWithContext(ctx context.Context, request *SendCustomEventRequest, runtime *dara.RuntimeOptions) (_result *SendCustomEventResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2233,28 +1593,10 @@ func (client *Client) SendCustomEventWithOptions(request *SendCustomEventRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendCustomEventResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Send Custom Alert Event
-//
-// @param request - SendCustomEventRequest
-//
-// @return SendCustomEventResponse
-func (client *Client) SendCustomEvent(request *SendCustomEventRequest) (_result *SendCustomEventResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendCustomEventResponse{}
-	_body, _err := client.SendCustomEventWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
