@@ -11,6 +11,8 @@ type iAddCheckResultWhiteListRequest interface {
 	GoString() string
 	SetCheckIds(v []*int64) *AddCheckResultWhiteListRequest
 	GetCheckIds() []*int64
+	SetInstanceIds(v []*string) *AddCheckResultWhiteListRequest
+	GetInstanceIds() []*string
 	SetRemark(v string) *AddCheckResultWhiteListRequest
 	GetRemark() *string
 	SetRuleType(v string) *AddCheckResultWhiteListRequest
@@ -21,7 +23,8 @@ type AddCheckResultWhiteListRequest struct {
 	// The IDs of the check items.
 	//
 	// >  You can call the [ListCheckResult](~~ListCheckResult~~) operation to query the IDs of the check items.
-	CheckIds []*int64 `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
+	CheckIds    []*int64  `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The description. The value of this parameter can be up to 65,535 bytes in length.
 	//
 	// example:
@@ -50,6 +53,10 @@ func (s *AddCheckResultWhiteListRequest) GetCheckIds() []*int64 {
 	return s.CheckIds
 }
 
+func (s *AddCheckResultWhiteListRequest) GetInstanceIds() []*string {
+	return s.InstanceIds
+}
+
 func (s *AddCheckResultWhiteListRequest) GetRemark() *string {
 	return s.Remark
 }
@@ -60,6 +67,11 @@ func (s *AddCheckResultWhiteListRequest) GetRuleType() *string {
 
 func (s *AddCheckResultWhiteListRequest) SetCheckIds(v []*int64) *AddCheckResultWhiteListRequest {
 	s.CheckIds = v
+	return s
+}
+
+func (s *AddCheckResultWhiteListRequest) SetInstanceIds(v []*string) *AddCheckResultWhiteListRequest {
+	s.InstanceIds = v
 	return s
 }
 

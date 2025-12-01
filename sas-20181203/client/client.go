@@ -352,6 +352,10 @@ func (client *Client) AddCheckResultWhiteListWithOptions(request *AddCheckResult
 		query["CheckIds"] = request.CheckIds
 	}
 
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
 	if !dara.IsNil(request.Remark) {
 		query["Remark"] = request.Remark
 	}
@@ -61991,6 +61995,10 @@ func (client *Client) RemoveCheckResultWhiteListWithOptions(request *RemoveCheck
 		query["CheckIds"] = request.CheckIds
 	}
 
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
 	if !dara.IsNil(request.RuleId) {
 		query["RuleId"] = request.RuleId
 	}
@@ -67786,6 +67794,10 @@ func (client *Client) VerifyCheckInstanceResultWithOptions(request *VerifyCheckI
 		query["CheckId"] = request.CheckId
 	}
 
+	if !dara.IsNil(request.CheckIds) {
+		query["CheckIds"] = request.CheckIds
+	}
+
 	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
 	}
@@ -67854,6 +67866,10 @@ func (client *Client) VerifyCheckResultWithOptions(request *VerifyCheckResultReq
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckIds) {
 		query["CheckIds"] = request.CheckIds
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
 	}
 
 	if !dara.IsNil(request.TaskSource) {

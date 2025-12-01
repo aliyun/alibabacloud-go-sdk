@@ -167,7 +167,12 @@ type DescribeVulListResponseBodyVulRecords struct {
 	// example:
 	//
 	// true
-	Bind        *bool   `json:"Bind,omitempty" xml:"Bind,omitempty"`
+	Bind *bool `json:"Bind,omitempty" xml:"Bind,omitempty"`
+	// The container ID.
+	//
+	// example:
+	//
+	// 04d20e98c8e2c93b7b864372084320a15a58c8671e53c972ce3a71d9c163****
 	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
 	// The extended information about the vulnerability.
 	ExtendContentJson *DescribeVulListResponseBodyVulRecordsExtendContentJson `json:"ExtendContentJson,omitempty" xml:"ExtendContentJson,omitempty" type:"Struct"`

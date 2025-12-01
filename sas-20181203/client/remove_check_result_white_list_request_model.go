@@ -13,6 +13,8 @@ type iRemoveCheckResultWhiteListRequest interface {
 	GetCheckGroupId() *string
 	SetCheckIds(v []*int64) *RemoveCheckResultWhiteListRequest
 	GetCheckIds() []*int64
+	SetInstanceIds(v []*string) *RemoveCheckResultWhiteListRequest
+	GetInstanceIds() []*string
 	SetRuleId(v int64) *RemoveCheckResultWhiteListRequest
 	GetRuleId() *int64
 	SetType(v string) *RemoveCheckResultWhiteListRequest
@@ -27,7 +29,8 @@ type RemoveCheckResultWhiteListRequest struct {
 	// Deprecated
 	CheckGroupId *string `json:"CheckGroupId,omitempty" xml:"CheckGroupId,omitempty"`
 	// The IDs of the check items.
-	CheckIds []*int64 `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
+	CheckIds    []*int64  `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The ID of the whitelist rule.
 	//
 	// >  You can call the [ListCheckResult](~~ListCheckResult~~) operation to query the IDs of whitelist rules.
@@ -60,6 +63,10 @@ func (s *RemoveCheckResultWhiteListRequest) GetCheckIds() []*int64 {
 	return s.CheckIds
 }
 
+func (s *RemoveCheckResultWhiteListRequest) GetInstanceIds() []*string {
+	return s.InstanceIds
+}
+
 func (s *RemoveCheckResultWhiteListRequest) GetRuleId() *int64 {
 	return s.RuleId
 }
@@ -75,6 +82,11 @@ func (s *RemoveCheckResultWhiteListRequest) SetCheckGroupId(v string) *RemoveChe
 
 func (s *RemoveCheckResultWhiteListRequest) SetCheckIds(v []*int64) *RemoveCheckResultWhiteListRequest {
 	s.CheckIds = v
+	return s
+}
+
+func (s *RemoveCheckResultWhiteListRequest) SetInstanceIds(v []*string) *RemoveCheckResultWhiteListRequest {
+	s.InstanceIds = v
 	return s
 }
 

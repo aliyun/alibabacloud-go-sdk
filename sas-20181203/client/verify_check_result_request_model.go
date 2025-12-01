@@ -11,13 +11,16 @@ type iVerifyCheckResultRequest interface {
 	GoString() string
 	SetCheckIds(v []*int64) *VerifyCheckResultRequest
 	GetCheckIds() []*int64
+	SetInstanceIds(v []*string) *VerifyCheckResultRequest
+	GetInstanceIds() []*string
 	SetTaskSource(v string) *VerifyCheckResultRequest
 	GetTaskSource() *string
 }
 
 type VerifyCheckResultRequest struct {
 	// The IDs of the check items.
-	CheckIds []*int64 `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
+	CheckIds    []*int64  `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The source of task.
 	//
 	// example:
@@ -38,12 +41,21 @@ func (s *VerifyCheckResultRequest) GetCheckIds() []*int64 {
 	return s.CheckIds
 }
 
+func (s *VerifyCheckResultRequest) GetInstanceIds() []*string {
+	return s.InstanceIds
+}
+
 func (s *VerifyCheckResultRequest) GetTaskSource() *string {
 	return s.TaskSource
 }
 
 func (s *VerifyCheckResultRequest) SetCheckIds(v []*int64) *VerifyCheckResultRequest {
 	s.CheckIds = v
+	return s
+}
+
+func (s *VerifyCheckResultRequest) SetInstanceIds(v []*string) *VerifyCheckResultRequest {
+	s.InstanceIds = v
 	return s
 }
 

@@ -208,6 +208,10 @@ func (client *Client) AddCheckResultWhiteListWithContext(ctx context.Context, re
 		query["CheckIds"] = request.CheckIds
 	}
 
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
 	if !dara.IsNil(request.Remark) {
 		query["Remark"] = request.Remark
 	}
@@ -44080,6 +44084,10 @@ func (client *Client) RemoveCheckResultWhiteListWithContext(ctx context.Context,
 		query["CheckIds"] = request.CheckIds
 	}
 
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
 	if !dara.IsNil(request.RuleId) {
 		query["RuleId"] = request.RuleId
 	}
@@ -48314,6 +48322,10 @@ func (client *Client) VerifyCheckInstanceResultWithContext(ctx context.Context, 
 		query["CheckId"] = request.CheckId
 	}
 
+	if !dara.IsNil(request.CheckIds) {
+		query["CheckIds"] = request.CheckIds
+	}
+
 	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
 	}
@@ -48364,6 +48376,10 @@ func (client *Client) VerifyCheckResultWithContext(ctx context.Context, request 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckIds) {
 		query["CheckIds"] = request.CheckIds
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
 	}
 
 	if !dara.IsNil(request.TaskSource) {
