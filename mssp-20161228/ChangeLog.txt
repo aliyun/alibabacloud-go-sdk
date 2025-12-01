@@ -10,6 +10,12 @@
 - Update API GetDocumentDownloadUrl: add request parameters FileKey.
 
 
+2025-12-01 Version: v1.4.2
+- Update API CreateServiceWorkOrder: add request parameters Priority.
+- Update API DisposeWorkTask: add request parameters WorkTaskAnalysisResults.
+- Update API GetDocumentDownloadUrl: add request parameters FileKey.
+
+
 2025-02-20 Version: v1.4.1
 - Update API SendCustomEvent: add param EventMarkdown.
 
