@@ -50,13 +50,15 @@ type ModifyCloudAssistantSettingsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Cloud Assistant Session Manager configuration.
 	SessionManagerConfig *ModifyCloudAssistantSettingsRequestSessionManagerConfig `json:"SessionManagerConfig,omitempty" xml:"SessionManagerConfig,omitempty" type:"Struct"`
-	// The Cloud Assistant feature. Valid values:
+	// The Cloud Assistant feature. Set SettingType to one of the following valid values:
 	//
 	// 	- SessionManagerDelivery: the Session Record Delivery configurations.
 	//
 	// 	- InvocationDelivery: the Operation Content and Result Delivery configurations.
 	//
 	// 	- AgentUpgradeConfig: the Cloud Assistant Agent Upgrade configurations.
+	//
+	// 	- SessionManagerConfig: Cloud Assistant the SessionManager configuration.
 	//
 	// This parameter is required.
 	//

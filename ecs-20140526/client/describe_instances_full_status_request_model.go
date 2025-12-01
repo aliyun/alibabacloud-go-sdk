@@ -72,9 +72,11 @@ type DescribeInstancesFullStatusRequest struct {
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The health status of the instance. Valid values:
 	//
-	// 	- OK
-	//
 	// 	- Impaired
+	//
+	// 	- Warning: The instance performance may be degraded due to maintenance or technical issues.
+	//
+	// 	- Maintaining
 	//
 	// 	- Initializing
 	//

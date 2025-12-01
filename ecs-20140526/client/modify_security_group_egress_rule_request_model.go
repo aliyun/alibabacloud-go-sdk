@@ -112,7 +112,9 @@ type ModifySecurityGroupEgressRuleRequest struct {
 	//
 	// pl-x1j1k5ykzqlixdcy****
 	DestPrefixListId *string `json:"DestPrefixListId,omitempty" xml:"DestPrefixListId,omitempty"`
-	// The transport layer protocol of the security group rule. The value of this parameter is case-insensitive. Valid values:
+	// Network Layer /transport layer protocol. Two types of assignments are supported:
+	//
+	// 1.  The case-insensitive protocol name. Valid values:
 	//
 	// 	- ICMP
 	//
@@ -122,7 +124,23 @@ type ModifySecurityGroupEgressRuleRequest struct {
 	//
 	// 	- UDP
 	//
-	// 	- ALL: All protocols are supported.
+	// 	- ALL: supports all protocols.
+	//
+	// 2.  The value of the IANA-compliant protocol number, which is an integer from 0 to 255. List of regions currently available:
+	//
+	// 	- Philippines (Manila)
+	//
+	// 	- UK (London)
+	//
+	// 	- Malaysia (Kuala Lumpur)
+	//
+	// 	- China (Hohhot)
+	//
+	// 	- China (Qingdao)
+	//
+	// 	- US (Silicon Valley)
+	//
+	// 	- Singapore
 	//
 	// example:
 	//

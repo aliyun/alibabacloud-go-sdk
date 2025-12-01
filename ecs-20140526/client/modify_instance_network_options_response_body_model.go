@@ -24,7 +24,7 @@ type ModifyInstanceNetworkOptionsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the task for which the bandwidth weight is modified.
 	//
-	// You can use the [DescribeTasks](https://help.aliyun.com/document_detail/25622.html) interface to modify the bandwidth weight result.
+	// You can use the [DescribeTaskAttribute](https://help.aliyun.com/document_detail/2679968.html) interface to modify the bandwidth weight result.
 	//
 	// example:
 	//

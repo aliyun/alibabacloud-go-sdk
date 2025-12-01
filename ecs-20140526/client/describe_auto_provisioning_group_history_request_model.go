@@ -64,7 +64,7 @@ type DescribeAutoProvisioningGroupHistoryRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values: 1 to 100.
 	//
-	// Default value: 10.
+	// and the default value is 10.
 	//
 	// example:
 	//

@@ -115,7 +115,7 @@ func (s *DescribeSnapshotGroupsResponseBodySnapshotGroups) Validate() error {
 }
 
 type DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroup struct {
-	// The time when the snapshot-consistent group was created.
+	// The creation time. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//

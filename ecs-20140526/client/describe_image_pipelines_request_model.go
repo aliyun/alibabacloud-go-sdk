@@ -40,7 +40,7 @@ type DescribeImagePipelinesRequest struct {
 	//
 	// ip-2ze5tsl5bp6nf2b3****
 	ImagePipelineId []*string `json:"ImagePipelineId,omitempty" xml:"ImagePipelineId,omitempty" type:"Repeated"`
-	// The maximum number of entries per page. Valid values: 1 to 500.
+	// The maximum number of entries per page. Valid values: 1 to 500
 	//
 	// Default value: 50.
 	//

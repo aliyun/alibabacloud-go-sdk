@@ -30,13 +30,49 @@ type iDescribeAutoSnapshotPolicyAssociationsRequest interface {
 }
 
 type DescribeAutoSnapshotPolicyAssociationsRequest struct {
+	// The ID of the automatic snapshot policy.
+	//
+	// 	- You can specify only one of AutoSnapshotPolicyId and DiskId.
+	//
+	// example:
+	//
+	// sp-bp12quk7gqhhuu1f****
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
-	DiskId               *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	MaxResults           *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the disk.
+	//
+	// 	- You can specify only one of AutoSnapshotPolicyId and DiskId.
+	//
+	// example:
+	//
+	// d-bp67acfmxazb4p****
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The number of entries to return on each page. Maximum value: 100.
+	//
+	// Default value:
+	//
+	// 	- If you do not specify this parameter or if you set this parameter to a value that is smaller than 10, the default value is 10.
+	//
+	// 	- If you set a value greater than 100, the default value is 100.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the automatic snapshot policy. You can call the [DescribeRegions](https://help.aliyun.com/zh/ecs/developer-reference/api-ecs-2014-05-26-describeregions?spm=a2c4g.11186623.0.i11) operation to view the latest list of Alibaba Cloud regions.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

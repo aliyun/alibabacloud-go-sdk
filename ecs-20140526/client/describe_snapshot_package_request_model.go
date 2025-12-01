@@ -30,15 +30,15 @@ type DescribeSnapshotPackageRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. Pages start from page 1.
 	//
-	// Default value: 1.
+	// Default value: 1
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100.
+	// The number of entries per page. Maximum value: 1 to 100.
 	//
-	// Default value: 10.
+	// Default value: 10
 	//
 	// example:
 	//

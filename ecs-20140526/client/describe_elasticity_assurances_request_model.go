@@ -61,7 +61,7 @@ type DescribeElasticityAssurancesRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The maximum number of entries per page.
 	//
-	// Valid values: 1 to 100.
+	// Maximum value: 100
 	//
 	// Default value: 10.
 	//

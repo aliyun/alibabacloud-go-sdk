@@ -238,7 +238,7 @@ type DescribeInstanceAttributeResponseBody struct {
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// Details about network options.
 	//
-	// >  This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not publicly available.
 	NetworkOptions *DescribeInstanceAttributeResponseBodyNetworkOptions `json:"NetworkOptions,omitempty" xml:"NetworkOptions,omitempty" type:"Struct"`
 	// The reason why the instance was locked. Valid values:
 	//
@@ -839,6 +839,25 @@ func (s *DescribeInstanceAttributeResponseBodyInnerIpAddress) Validate() error {
 }
 
 type DescribeInstanceAttributeResponseBodyNetworkOptions struct {
+	// The bandwidth weight.
+	//
+	// The supported values vary with instance types. You can query the bandwidth weights supported by the current instance type by using the DescribeInstanceTypes.
+	//
+	// Valid values:
+	//
+	// 	- Vpc-L1.
+	//
+	// 	- Vpc-L2.
+	//
+	// 	- Ebs-L1.
+	//
+	// 	- Ebs-L2.
+	//
+	// 	- Default.
+	//
+	// example:
+	//
+	// Vpc-L1
 	BandwidthWeighting *string `json:"BandwidthWeighting,omitempty" xml:"BandwidthWeighting,omitempty"`
 	// example:
 	//

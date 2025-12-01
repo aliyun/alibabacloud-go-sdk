@@ -16,10 +16,8 @@ type iDescribeAvailableResourceResponseBody interface {
 }
 
 type DescribeAvailableResourceResponseBody struct {
-	// Details about the zones in which resources are available.
+	// The information about the availability of resources in the zones.
 	AvailableZones *DescribeAvailableResourceResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Struct"`
-	// The ID of the request.
-	//
 	// example:
 	//
 	// 0041D94C-FB92-4C49-B115-259DA1C*****
@@ -96,40 +94,29 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZones) Validate() error {
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone struct {
-	// The resources that are available in the zone.
 	AvailableResources *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailableResources `json:"AvailableResources,omitempty" xml:"AvailableResources,omitempty" type:"Struct"`
-	// The region ID.
-	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of resources in the zone. Valid values:
-	//
-	// 	- Available
-	//
-	// 	- SoldOut
-	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The resource category based on the stock level in the zone. Valid values:
+	// The resource status based on the stock level in the zone. Valid value:
 	//
-	// 	- WithStock: Resources are in sufficient stock.
+	// 	- WithStock: The resources are available and can be continuously replenished.
 	//
-	// 	- ClosedWithStock: Resources are in insufficient stock. We recommend that you use other resources that are in sufficient stock.
+	// 	- ClosedWithStock: Inventory is available, but resources will not be replenished. The ability to guarantee the supply of inventory is low. We recommend selecting a product specification in the WithStock state.
 	//
-	// 	- WithoutStock: Resources are out of stock and will be replenished. We recommend that you use other resources that are in sufficient stock.
+	// 	- WithoutStock: The resource is out of stock and will be replenished. We recommend using other resources that are in stock.
 	//
-	// 	- ClosedWithoutStock: Resources are out of stock and will not be replenished. We recommend that you use other resources that are in sufficient stock.
+	// 	- ClosedWithoutStock: The resource is out of stock and will no longer be replenished. We recommend using other resources that are in stock.
 	//
 	// example:
 	//
 	// WithStock
 	StatusCategory *string `json:"StatusCategory,omitempty" xml:"StatusCategory,omitempty"`
-	// The zone ID.
-	//
 	// example:
 	//
 	// cn-hangzhou-e
@@ -233,24 +220,7 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailab
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailableResourcesAvailableResource struct {
-	// The information about the resources.
 	SupportedResources *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailableResourcesAvailableResourceSupportedResources `json:"SupportedResources,omitempty" xml:"SupportedResources,omitempty" type:"Struct"`
-	// The resource type. Valid values:
-	//
-	// 	- Zone: zone
-	//
-	// 	- IoOptimized: I/O optimized resource
-	//
-	// 	- InstanceType: instance type
-	//
-	// 	- SystemDisk: system disk
-	//
-	// 	- DataDisk: data disk
-	//
-	// 	- Network: network type
-	//
-	// 	- ddh: dedicated host
-	//
 	// example:
 	//
 	// InstanceType
@@ -327,56 +297,26 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailab
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailableResourcesAvailableResourceSupportedResourcesSupportedResource struct {
-	// The maximum disk capacity.
-	//
-	// This parameter takes effect only if DestinationResource is set to SystemDisk or DataDisk.
-	//
 	// example:
 	//
-	// 2
+	// 2048
 	Max *int32 `json:"Max,omitempty" xml:"Max,omitempty"`
-	// The minimum disk capacity.
-	//
-	// This parameter takes effect only if DestinationResource is set to SystemDisk or DataDisk.
-	//
 	// example:
 	//
-	// 1
+	// 20
 	Min *int32 `json:"Min,omitempty" xml:"Min,omitempty"`
-	// The status of the resource. Valid values:
-	//
-	// 	- Available
-	//
-	// 	- SoldOut
-	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The resource category based on the stock level. Valid values:
-	//
-	// 	- WithStock: Resources are in sufficient stock.
-	//
-	// 	- ClosedWithStock: Resources are in insufficient stock. We recommend that you use other resources that are in sufficient stock.
-	//
-	// 	- WithoutStock: Resources are out of stock and will be replenished. We recommend that you use other resources that are in sufficient stock.
-	//
-	// 	- ClosedWithoutStock: Resources are out of stock and will not be replenished. We recommend that you use other resources that are in sufficient stock.
-	//
 	// example:
 	//
 	// WithStock
 	StatusCategory *string `json:"StatusCategory,omitempty" xml:"StatusCategory,omitempty"`
-	// The unit of the disk capacity.
-	//
-	// This parameter takes effect only if DestinationResource is set to SystemDisk or DataDisk.
-	//
 	// example:
 	//
-	// null
+	// GiB
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	// The resource.
-	//
 	// example:
 	//
 	// ecs.d1ne.xlarge

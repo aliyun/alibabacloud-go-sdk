@@ -72,7 +72,15 @@ type ModifyInstanceMetadataOptionsRequest struct {
 	//
 	// i-bp67acfmxaz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// Specifies whether to enable the access channel for instance metadata. Valid values:
+	//
+	// 	- enabled
+	//
+	// 	- disabled
+	//
+	// Default value: disabled.
+	//
+	// >  The tag key must be a combination of letters, digits, @, colons (:), underscores (_), hyphens (-), periods (.), equal signs (=), and commas (,). The tag key cannot be "." or "..". Otherwise, the tag key cannot be accessed in the metadata.
 	//
 	// example:
 	//

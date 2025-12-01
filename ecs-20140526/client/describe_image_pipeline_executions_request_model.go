@@ -34,44 +34,18 @@ type iDescribeImagePipelineExecutionsRequest interface {
 }
 
 type DescribeImagePipelineExecutionsRequest struct {
-	// The ID of the image creation task.
+	// null
 	//
 	// example:
 	//
 	// exec-5fb8facb8ed7427c****
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
-	// The ID of the image template.
+	// The value of tag N of the image creation task. Valid values of N: 1 to 20.
 	//
 	// example:
 	//
 	// ip-2ze5tsl5bp6nf2b3****
 	ImagePipelineId *string `json:"ImagePipelineId,omitempty" xml:"ImagePipelineId,omitempty"`
-	// The maximum number of entries per page. Valid values: 1 to 500.
-	//
-	// Default value: 50.
-	//
-	// example:
-	//
-	// 50
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
-	//
-	// example:
-	//
-	// AAAAAdDWBF2****
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The status of the image creation task. You can specify multiple values. Separate the values with commas (,). Example: `BUILDING,DISTRIBUTING`. Valid values:
 	//
 	// 	- PREPARING: Resources, such as the intermediate instance, are being created.
@@ -99,6 +73,30 @@ type DescribeImagePipelineExecutionsRequest struct {
 	// 	- CANCELLED: The image creation task is canceled.
 	//
 	// >  If you leave this parameter empty, all image creation tasks are queried regardless of task status.
+	//
+	// example:
+	//
+	// 50
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The ID of the image creation task.
+	//
+	// example:
+	//
+	// AAAAAdDWBF2****
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the image template.
 	//
 	// example:
 	//
@@ -233,13 +231,13 @@ type DescribeImagePipelineExecutionsRequestTag struct {
 	//
 	// example:
 	//
-	// null
+	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N of the image creation task. Valid values of N: 1 to 20.
+	// null
 	//
 	// example:
 	//
-	// null
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

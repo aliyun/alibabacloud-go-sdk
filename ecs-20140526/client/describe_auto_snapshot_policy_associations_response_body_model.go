@@ -18,9 +18,20 @@ type iDescribeAutoSnapshotPolicyAssociationsResponseBody interface {
 }
 
 type DescribeAutoSnapshotPolicyAssociationsResponseBody struct {
+	// The association of automatic snapshot policies.
 	AutoSnapshotPolicyAssociations *DescribeAutoSnapshotPolicyAssociationsResponseBodyAutoSnapshotPolicyAssociations `json:"AutoSnapshotPolicyAssociations,omitempty" xml:"AutoSnapshotPolicyAssociations,omitempty" type:"Struct"`
-	NextToken                      *string                                                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId                      *string                                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned pagination token which can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAutoSnapshotPolicyAssociationsResponseBody) String() string {
@@ -102,8 +113,18 @@ func (s *DescribeAutoSnapshotPolicyAssociationsResponseBodyAutoSnapshotPolicyAss
 }
 
 type DescribeAutoSnapshotPolicyAssociationsResponseBodyAutoSnapshotPolicyAssociationsAutoSnapshotPolicyAssociation struct {
+	// The ID of the automatic snapshot policy.
+	//
+	// example:
+	//
+	// sp-bp12quk7gqhhuu1f****
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
-	DiskId               *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The ID of the cloud disk.
+	//
+	// example:
+	//
+	// d-bp67acfmxazb4p****
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 }
 
 func (s DescribeAutoSnapshotPolicyAssociationsResponseBodyAutoSnapshotPolicyAssociationsAutoSnapshotPolicyAssociation) String() string {

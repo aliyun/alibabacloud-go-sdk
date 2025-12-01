@@ -815,7 +815,7 @@ type CreateImagePipelineRequestImportImageOptions struct {
 	//
 	// x86_64
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// The boot mode of the image. Valid values:
+	// The new boot mode of the image. Valid values:
 	//
 	// 	- BIOS: BIOS mode
 	//
@@ -854,7 +854,7 @@ type CreateImagePipelineRequestImportImageOptions struct {
 	//
 	// Auto
 	LicenseType *string `json:"LicenseType,omitempty" xml:"LicenseType,omitempty"`
-	// The operating system type. Valid values:
+	// The operating system type. Valid value:
 	//
 	// 	- windows
 	//
@@ -1097,7 +1097,7 @@ type CreateImagePipelineRequestImportImageOptionsDiskDeviceMappings struct {
 	//
 	// 	- When the N value is 1, this parameter specifies the size of the system disk in the custom image. Valid values: 1 to 2048.
 	//
-	// 	- When the N value is an integer in the range of 2 to 17, this parameter specifies the size of a data disk in the custom image. Valid values: 1 to 2048.
+	// 	- When the N value is an integer in the range of 2 to 17, this parameter creates a custom image from a data disk. Valid values: 1 to 2048.
 	//
 	// After the image file is uploaded to an OSS bucket, you can view the size of the image file in the OSS bucket.
 	//
@@ -1105,7 +1105,7 @@ type CreateImagePipelineRequestImportImageOptionsDiskDeviceMappings struct {
 	//
 	// 40
 	DiskImageSize *int32 `json:"DiskImageSize,omitempty" xml:"DiskImageSize,omitempty"`
-	// The format of the image. Valid values:
+	// The format of the source image. Valid values:
 	//
 	// 	- RAW
 	//
@@ -1119,13 +1119,13 @@ type CreateImagePipelineRequestImportImageOptionsDiskDeviceMappings struct {
 	//
 	// RAW
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The OSS bucket where the image file is stored.
+	// The Object Storage Service (OSS) bucket where the image file is stored.
 	//
 	// example:
 	//
 	// ecsimageos
 	OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
-	// The name (key) of the object that the uploaded image is stored as in the OSS bucket.
+	// The name (key) of the object that the image file is stored as in the OSS bucket.
 	//
 	// example:
 	//
@@ -1183,11 +1183,11 @@ func (s *CreateImagePipelineRequestImportImageOptionsDiskDeviceMappings) Validat
 
 type CreateImagePipelineRequestImportImageOptionsFeatures struct {
 	ImdsSupport *string `json:"ImdsSupport,omitempty" xml:"ImdsSupport,omitempty"`
-	// Specifies whether the imported source image supports the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+	// Specifies whether the imported source image supports the Non-Volatile Memory Express (NVMe) protocol. Valid value:
 	//
-	// 	- supported: The image supports the NVMe protocol. Instances created from the image also support the NVMe protocol.
+	// 	- supported Instances created from the image also support the NVMe protocol.
 	//
-	// 	- unsupported: The image does not support the NVMe protocol. Instances created from the image do not support the NVMe protocol.
+	// 	- unsupported Instances created from the image do not support the NVMe protocol.
 	//
 	// Default value: unsupported.
 	//

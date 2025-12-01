@@ -16,9 +16,43 @@ type iDescribeInvocationResultsResponseBody interface {
 }
 
 type DescribeInvocationResultsResponseBody struct {
-	// Details about the execution results.
+	// The execution status of the command task. Valid values:
+	//
+	// 	- Running:
+	//
+	//     	- Scheduled task: Before you stop the scheduled execution of the command, the execution state is always Running.
+	//
+	//     	- One-time task: If the command is being run on instances, the execution state is Running.
+	//
+	// 	- Finished:
+	//
+	//     	- Scheduled task: The execution state can never be Finished.
+	//
+	//     	- One-time task: The execution is complete on all instances, or the execution is stopped on some instances and is complete on the other instances.
+	//
+	// 	- Success:
+	//
+	//     	- One-time task: The execution is complete, and the exit code is 0.
+	//
+	//     	- Scheduled task: The last execution is complete, the exit code is 0, and the specified period ends.
+	//
+	// 	- Failed:
+	//
+	//     	- Scheduled task: The execution state can never be Failed.
+	//
+	//     	- One-time task: The execution fails on all instances.
+	//
+	// 	- PartialFailed:
+	//
+	//     	- Scheduled task: The execution state can never be PartialFailed.
+	//
+	//     	- One-time task: The execution fails on some instances.
+	//
+	// 	- Stopped: The task is stopped.
+	//
+	// 	- Stopping: The task is being stopped.
 	Invocation *DescribeInvocationResultsResponseBodyInvocation `json:"Invocation,omitempty" xml:"Invocation,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The ID of the command.
 	//
 	// example:
 	//
@@ -62,27 +96,43 @@ func (s *DescribeInvocationResultsResponseBody) Validate() error {
 }
 
 type DescribeInvocationResultsResponseBodyInvocation struct {
-	// The execution results.
+	// The maximum number of entries per page.
+	//
+	// Valid values: 1 to 50.
+	//
+	// Default value: 10.
 	InvocationResults *DescribeInvocationResultsResponseBodyInvocationInvocationResults `json:"InvocationResults,omitempty" xml:"InvocationResults,omitempty" type:"Struct"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
+	// The encoding mode of the `CommandContent` and `Output` values in the response. Valid values:
+	//
+	// 	- PlainText: returns the original command content and command output.
+	//
+	// 	- Base64: returns the Base64-encoded command content and command output.
+	//
+	// Default value: Base64.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// Specifies whether to return the results of historical scheduled executions. Valid values:
+	//
+	// 	- true: returns the results of historical scheduled executions. If you set this parameter to true, you must set InvokeId to the ID of a task that is run on a schedule (RepeatMode set to Period) or on each system startup (RepeatMode set to EveryReboot).
+	//
+	// 	- false: does not return the results of historical scheduled executions.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of the commands.
+	// >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
 	//
 	// example:
 	//
@@ -187,72 +237,6 @@ func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResults) Valid
 }
 
 type DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult struct {
-	// The command ID.
-	//
-	// example:
-	//
-	// c-hz0jdfwcsr****
-	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
-	// The container ID.
-	//
-	// example:
-	//
-	// ab141ddfbacfe02d9dbc25966ed971536124527097398d419a6746873fea****
-	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	// The container name.
-	//
-	// example:
-	//
-	// test-container
-	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	// The size of the Output text that was truncated and discarded because the `Output` value exceeded 24 KB in size.
-	//
-	// example:
-	//
-	// 0
-	Dropped *int32 `json:"Dropped,omitempty" xml:"Dropped,omitempty"`
-	// The error code returned when the command failed to be sent or run. Valid values:
-	//
-	// 	- If this parameter is empty, the command was run as expected.
-	//
-	// 	- InstanceNotExists: The specified instance did not exist or was released.
-	//
-	// 	- InstanceReleased: The instance was released while the command was being run.
-	//
-	// 	- InstanceNotRunning: The instance was not running while the command was being run.
-	//
-	// 	- CommandNotApplicable: The command was inapplicable to the specified instance.
-	//
-	// 	- AccountNotExists: The username specified to run the command did not exist.
-	//
-	// 	- DirectoryNotExists: The specified directory did not exist.
-	//
-	// 	- BadCronExpression: The specified cron expression for the execution schedule was invalid.
-	//
-	// 	- ClientNotRunning: Cloud Assistant Agent was not running.
-	//
-	// 	- ClientNotResponse: Cloud Assistant Agent did not respond.
-	//
-	// 	- ClientIsUpgrading: Cloud Assistant Agent was being upgraded.
-	//
-	// 	- ClientNeedUpgrade: Cloud Assistant Agent needed to be upgraded.
-	//
-	// 	- DeliveryTimeout: The request to send the command timed out.
-	//
-	// 	- ExecutionTimeout: The execution timed out.
-	//
-	// 	- ExecutionException: An exception occurred while the command was being run.
-	//
-	// 	- ExecutionInterrupted: The execution was interrupted.
-	//
-	// 	- ExitCodeNonzero: The execution was complete, but the exit code was not 0.
-	//
-	// 	- SecurityGroupRuleDenied: Access to Cloud Assistant was denied by security group rules.
-	//
-	// example:
-	//
-	// InstanceNotExists
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned when the command failed to be sent or run. Valid values:
 	//
 	// 	- If this parameter is empty, the command was run as expected.
@@ -293,30 +277,14 @@ type DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationR
 	//
 	// example:
 	//
-	// the specified instance does not exists
-	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	// The exit code of the command task.
-	//
-	// 	- For Linux instances, the value is the exit code of the shell command.
-	//
-	// 	- For Windows instances, the value is the exit code of the batch or PowerShell command.
+	// c-hz0jdfwcsr****
+	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
+	// Command to execute the Output OSS delivery configuration.
 	//
 	// example:
 	//
-	// 0
-	ExitCode *int64 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	// The time when the command task was completed. If the command task times out, the end time is equal to the start time of the command task specified by `StartTime` plus the timeout period specified by `Timeout`.
-	//
-	// example:
-	//
-	// 2019-12-20T06:15:56Z
-	FinishedTime *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// i-bp1i7gg30r52z2em****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// ab141ddfbacfe02d9dbc25966ed971536124527097398d419a6746873fea****
+	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
 	// The execution status on a single instance. Valid values:
 	//
 	// 	- Pending: The command is being verified or sent.
@@ -357,14 +325,126 @@ type DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationR
 	//
 	// example:
 	//
+	// test-container
+	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// 0
+	Dropped *int32 `json:"Dropped,omitempty" xml:"Dropped,omitempty"`
+	// The time when the command started to be run on the instance.
+	//
+	// example:
+	//
+	// InstanceNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// the specified instance does not exists
+	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// The key of tag N of the command task. Valid values of N: 1 to 20. The tag key cannot be an empty string.
+	//
+	// If a single tag is specified to query resources, up to 1,000 resources that have this tag added can be displayed in the response. If multiple tags are specified to query resources, up to 1,000 resources that have all these tags added can be displayed in the response. To query more than 1,000 resources that have specified tags added, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+	//
+	// The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// 0
+	ExitCode *int64 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	// The total number of the commands.
+	//
+	// example:
+	//
+	// 2019-12-20T06:15:56Z
+	FinishedTime *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// The value of tag N of the command task. Valid values of N: 1 to 20. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// i-bp1i7gg30r52z2em****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The tag of the command task.
+	//
+	// example:
+	//
 	// Success
 	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
-	// The command task ID.
+	// The number of times that the command was run on the instance.
+	//
+	// 	- If the command is set to run only once, the value is 0 or 1.
+	//
+	// 	- If the command is set to run on a schedule, the value is the number of times that the command has been run on the instance.
 	//
 	// example:
 	//
 	// t-hz0jdfwd9f****
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// Running
+	InvokeRecordStatus *string `json:"InvokeRecordStatus,omitempty" xml:"InvokeRecordStatus,omitempty"`
+	// The exit code of the command task.
+	//
+	// 	- For Linux instances, the value is the exit code of the shell command.
+	//
+	// 	- For Windows instances, the value is the exit code of the batch or PowerShell command.
+	//
+	// example:
+	//
+	// python3 -u {{ACS::ScriptFileName|Ext(".py")}}
+	Launcher *string `json:"Launcher,omitempty" xml:"Launcher,omitempty"`
+	// The tags of the command task.
+	//
+	// example:
+	//
+	// oss://testBucket/testPrefix
+	OssOutputDelivery *string `json:"OssOutputDelivery,omitempty" xml:"OssOutputDelivery,omitempty"`
+	// The execution results.
+	//
+	// example:
+	//
+	// Finished
+	OssOutputStatus *string `json:"OssOutputStatus,omitempty" xml:"OssOutputStatus,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// oss://testBucket/testPrefix/output.txt
+	OssOutputUri *string `json:"OssOutputUri,omitempty" xml:"OssOutputUri,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// MTU6MzA6MDEK
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 0
+	Repeats *int32 `json:"Repeats,omitempty" xml:"Repeats,omitempty"`
+	// Details about the execution results.
+	//
+	// example:
+	//
+	// 2019-12-20T06:15:55Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// root
+	//
+	// example:
+	//
+	// 2020-01-19T09:15:47Z
+	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	// The time when the command task was completed. If the command task times out, the end time is equal to the start time of the command task specified by `StartTime` plus the timeout period specified by `Timeout`.
+	Tags *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The execution status of the command. Valid values:
 	//
 	// 	- Running:
@@ -397,87 +477,13 @@ type DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationR
 	//
 	// example:
 	//
-	// Running
-	InvokeRecordStatus *string `json:"InvokeRecordStatus,omitempty" xml:"InvokeRecordStatus,omitempty"`
-	// The launcher for script execution. The value cannot exceed 1 KB in length.
-	//
-	// example:
-	//
-	// python3 -u {{ACS::ScriptFileName|Ext(".py")}}
-	Launcher *string `json:"Launcher,omitempty" xml:"Launcher,omitempty"`
-	// Command to execute the Output OSS delivery configuration.
-	//
-	// example:
-	//
-	// oss://testBucket/testPrefix
-	OssOutputDelivery *string `json:"OssOutputDelivery,omitempty" xml:"OssOutputDelivery,omitempty"`
-	// The output delivery status of the command execution. Valid values:
-	//
-	// 	- InProgress: The delivery is in progress.
-	//
-	// 	- Finished: The delivery is complete.
-	//
-	// 	- Failed: The delivery failed.
-	//
-	// example:
-	//
-	// Finished
-	OssOutputStatus *string `json:"OssOutputStatus,omitempty" xml:"OssOutputStatus,omitempty"`
-	// The command execution Output delivers the object URI to OSS. This field is an empty string when the delivery fails or is in progress.
-	//
-	// example:
-	//
-	// oss://testBucket/testPrefix/output.txt
-	OssOutputUri *string `json:"OssOutputUri,omitempty" xml:"OssOutputUri,omitempty"`
-	// The command output.
-	//
-	// 	- If ContentEncoding is set to PlainText in the request, the original command output is returned.
-	//
-	// 	- If ContentEncoding is set to Base64 in the request, the Base64-encoded command output is returned.
-	//
-	// example:
-	//
-	// MTU6MzA6MDEK
-	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The number of times that the command was run on the instance.
-	//
-	// 	- If the command is set to run only once, the value is 0 or 1.
-	//
-	// 	- If the command is set to run on a schedule, the value is the number of times that the command has been run on the instance.
-	//
-	// example:
-	//
-	// 0
-	Repeats *int32 `json:"Repeats,omitempty" xml:"Repeats,omitempty"`
-	// The time when the command started to be run on the instance.
-	//
-	// example:
-	//
-	// 2019-12-20T06:15:55Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time when the command task was stopped. If you call the `StopInvocation` operation to stop the command task, the value of this parameter is the time when the operation is called.
-	//
-	// example:
-	//
-	// 2020-01-19T09:15:47Z
-	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
-	// The tags of the command task.
-	Tags *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// Indicates how the command task is stopped when a command execution is manually stopped or times out. Valid values:
-	//
-	// 	- Process: The process of the command is stopped.
-	//
-	// 	- ProcessTree: The process tree of the command is stopped. In this case, the process of the command and all subprocesses are stopped.
-	//
-	// example:
-	//
 	// ProcessTree
 	TerminationMode *string `json:"TerminationMode,omitempty" xml:"TerminationMode,omitempty"`
-	// The username used to run the command on the instance.
+	// The size of the Output text that was truncated and discarded because the `Output` value exceeded 24 KB in size.
 	//
 	// example:
 	//
-	// root
+	// test
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
@@ -740,13 +746,19 @@ func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocat
 }
 
 type DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTagsTag struct {
-	// The tag key of the command task.
+	// The output delivery status of the command execution. Valid values:
+	//
+	// 	- InProgress: The delivery is in progress.
+	//
+	// 	- Finished: The delivery is complete.
+	//
+	// 	- Failed: The delivery failed.
 	//
 	// example:
 	//
 	// owner
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the command task.
+	// The username used to run the command on the instance.
 	//
 	// example:
 	//

@@ -22,27 +22,29 @@ type iDescribeImagePipelineExecutionsResponseBody interface {
 }
 
 type DescribeImagePipelineExecutionsResponseBody struct {
-	// Details of the image creation tasks.
+	// The total number of returned image components.
 	ImagePipelineExecution *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecution `json:"ImagePipelineExecution,omitempty" xml:"ImagePipelineExecution,omitempty" type:"Struct"`
-	// The maximum number of entries per page.
+	// The request ID.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists. For information about how to use the returned value, see the "Usage notes" section in this topic.
+	// The pagination token that is used in the request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The maximum number of entries per page. Valid values: 1 to 500
+	//
+	// Default value: 50.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned image components.
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists. For information about how to use the returned value, see the "Usage notes" section in this topic.
 	//
 	// example:
 	//
@@ -147,48 +149,42 @@ func (s *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecution) Vali
 }
 
 type DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSet struct {
-	// The time when the image creation task was created.
+	// Details of the image creation tasks.
 	//
 	// example:
 	//
 	// 2020-11-24T06:00:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the image creation task.
+	// The data returned.
 	//
 	// example:
 	//
 	// exec-5fb8facb8ed7427c****
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
-	// The ID of the image.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// m-bp67acfmxazb4p****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The ID of the image template.
+	// Details of the image creation task.
 	//
 	// example:
 	//
 	// ip-2ze5tsl5bp6nf2b3****
 	ImagePipelineId *string `json:"ImagePipelineId,omitempty" xml:"ImagePipelineId,omitempty"`
-	// The data returned.
+	// The last modification time of the image creation task.
 	//
 	// example:
 	//
 	// Create transition vpc "vpc-2ze70rc7093j9idu6****" success!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The last modification time of the image creation task.
+	// The ID of the image template.
 	//
 	// example:
 	//
 	// 2020-11-25T06:00:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-bp67acfmxazb4p****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the image creation task. Valid values:
 	//
 	// 	- PREPARING: Resources, such as intermediate instances, are being created.
@@ -217,9 +213,15 @@ type DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipel
 	//
 	// example:
 	//
+	// rg-bp67acfmxazb4p****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The time when the image creation task was created.
+	//
+	// example:
+	//
 	// BUILDING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the image creation task.
+	// The ID of the image.
 	Tags *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSetTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
@@ -356,17 +358,17 @@ func (s *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImageP
 }
 
 type DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSetTagsTag struct {
-	// The tag key of the image creation task.
+	// The tag of the image creation task.
 	//
 	// example:
 	//
-	// null
+	// TestValue
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the image creation task.
+	// The tags of the image creation task.
 	//
 	// example:
 	//
-	// null
+	// TestKey
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

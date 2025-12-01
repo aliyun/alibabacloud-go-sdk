@@ -262,9 +262,9 @@ type CreatePrefixListRequestEntry struct {
 	//
 	// 	- If you use an IPv6 CIDR block, the system automatically converts the CIDR block to zero and the letters to lowercase. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it to 2001:db8::/32.
 	//
-	// For more information about CIDR blocks, see [What is CIDR?](https://help.aliyun.com/document_detail/185311.html#598efe6ef1v00)
+	// For more information about CIDR blocks, see [What is CIDR?](~~185311#598efe6ef1v00~~)
 	//
-	// By default, this parameter is left empty.
+	// This parameter is left empty by default.
 	//
 	// This parameter is required.
 	//

@@ -1040,6 +1040,7 @@ type CreateAutoProvisioningGroupRequestLaunchConfiguration struct {
 	// Month
 	PeriodUnit       *string                                                                `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	SchedulerOptions *CreateAutoProvisioningGroupRequestLaunchConfigurationSchedulerOptions `json:"SchedulerOptions,omitempty" xml:"SchedulerOptions,omitempty" type:"Struct"`
+	SecurityOptions  *CreateAutoProvisioningGroupRequestLaunchConfigurationSecurityOptions  `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
 	// The protection period of the spot instance. Unit: hours. Default value: 1. Valid values: Valid values:
 	//
 	// 	- 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
@@ -1234,6 +1235,10 @@ func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) GetPeriodUnit() 
 
 func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) GetSchedulerOptions() *CreateAutoProvisioningGroupRequestLaunchConfigurationSchedulerOptions {
 	return s.SchedulerOptions
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) GetSecurityOptions() *CreateAutoProvisioningGroupRequestLaunchConfigurationSecurityOptions {
+	return s.SecurityOptions
 }
 
 func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) GetSpotDuration() *int32 {
@@ -1434,6 +1439,11 @@ func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetSchedulerOpti
 	return s
 }
 
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetSecurityOptions(v *CreateAutoProvisioningGroupRequestLaunchConfigurationSecurityOptions) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.SecurityOptions = v
+	return s
+}
+
 func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetSpotDuration(v int32) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
 	s.SpotDuration = &v
 	return s
@@ -1489,6 +1499,11 @@ func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) Validate() error
 	}
 	if s.SchedulerOptions != nil {
 		if err := s.SchedulerOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityOptions != nil {
+		if err := s.SecurityOptions.Validate(); err != nil {
 			return err
 		}
 	}
@@ -2147,6 +2162,31 @@ func (s *CreateAutoProvisioningGroupRequestLaunchConfigurationSchedulerOptions) 
 }
 
 func (s *CreateAutoProvisioningGroupRequestLaunchConfigurationSchedulerOptions) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateAutoProvisioningGroupRequestLaunchConfigurationSecurityOptions struct {
+	TrustedSystemMode *string `json:"TrustedSystemMode,omitempty" xml:"TrustedSystemMode,omitempty"`
+}
+
+func (s CreateAutoProvisioningGroupRequestLaunchConfigurationSecurityOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateAutoProvisioningGroupRequestLaunchConfigurationSecurityOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfigurationSecurityOptions) GetTrustedSystemMode() *string {
+	return s.TrustedSystemMode
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfigurationSecurityOptions) SetTrustedSystemMode(v string) *CreateAutoProvisioningGroupRequestLaunchConfigurationSecurityOptions {
+	s.TrustedSystemMode = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfigurationSecurityOptions) Validate() error {
 	return dara.Validate(s)
 }
 

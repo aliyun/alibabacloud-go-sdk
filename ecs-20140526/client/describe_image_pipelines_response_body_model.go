@@ -22,7 +22,7 @@ type iDescribeImagePipelinesResponseBody interface {
 }
 
 type DescribeImagePipelinesResponseBody struct {
-	// Details about the image templates.
+	// Details of the image templates.
 	ImagePipeline *DescribeImagePipelinesResponseBodyImagePipeline `json:"ImagePipeline,omitempty" xml:"ImagePipeline,omitempty" type:"Struct"`
 	// The number of entries per page.
 	//
@@ -864,7 +864,7 @@ type DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageO
 	//
 	// 	- When the value of N is an integer in the range of 2 to 17, a custom image is created from a data disk.
 	DiskDeviceMappings *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsDiskDeviceMappings `json:"DiskDeviceMappings,omitempty" xml:"DiskDeviceMappings,omitempty" type:"Struct"`
-	// The feature attributes of the image.
+	// The attributes of the custom image.
 	Features        *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsFeatures        `json:"Features,omitempty" xml:"Features,omitempty" type:"Struct"`
 	ImageName       *string                                                                                           `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	ImportImageTags *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTags `json:"ImportImageTags,omitempty" xml:"ImportImageTags,omitempty" type:"Struct"`
