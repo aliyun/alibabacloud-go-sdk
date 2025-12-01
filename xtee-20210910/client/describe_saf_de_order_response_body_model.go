@@ -79,8 +79,9 @@ type DescribeSafDeOrderResponseBodyResultObject struct {
 	// example:
 	//
 	// 2
-	OpenUserType *int32                                               `json:"openUserType,omitempty" xml:"openUserType,omitempty"`
-	Regions      []*DescribeSafDeOrderResponseBodyResultObjectRegions `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
+	OpenUserType *int32 `json:"openUserType,omitempty" xml:"openUserType,omitempty"`
+	// Activated region permission addresses.
+	Regions []*DescribeSafDeOrderResponseBodyResultObjectRegions `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSafDeOrderResponseBodyResultObject) String() string {
@@ -132,9 +133,32 @@ func (s *DescribeSafDeOrderResponseBodyResultObject) Validate() error {
 }
 
 type DescribeSafDeOrderResponseBodyResultObjectRegions struct {
-	ExpirationDate *int64  `json:"expirationDate,omitempty" xml:"expirationDate,omitempty"`
-	Region         *string `json:"region,omitempty" xml:"region,omitempty"`
-	Specification  *int32  `json:"specification,omitempty" xml:"specification,omitempty"`
+	// Expiration date (timestamp).
+	//
+	// example:
+	//
+	// 2117750400000
+	ExpirationDate *int64 `json:"expirationDate,omitempty" xml:"expirationDate,omitempty"`
+	// Region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// Specification model:
+	//
+	// 1: Basic Edition
+	//
+	// 2: Advanced Edition
+	//
+	// 3: Premium Edition
+	//
+	// 4: Flagship Edition
+	//
+	// example:
+	//
+	// 1
+	Specification *int32 `json:"specification,omitempty" xml:"specification,omitempty"`
 }
 
 func (s DescribeSafDeOrderResponseBodyResultObjectRegions) String() string {

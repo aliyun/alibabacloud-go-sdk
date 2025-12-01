@@ -842,6 +842,80 @@ func (client *Client) CompareCopyRuleVariable(request *CompareCopyRuleVariableRe
 
 // Summary:
 //
+// Policy Comparison.
+//
+// @param request - CompareRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CompareRuleResponse
+func (client *Client) CompareRuleWithOptions(request *CompareRuleRequest, runtime *dara.RuntimeOptions) (_result *CompareRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PreviousRuleVersionId) {
+		query["previousRuleVersionId"] = request.PreviousRuleVersionId
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["regId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.RuleVersionId) {
+		query["ruleVersionId"] = request.RuleVersionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CompareRule"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CompareRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Policy Comparison.
+//
+// @param request - CompareRuleRequest
+//
+// @return CompareRuleResponse
+func (client *Client) CompareRule(request *CompareRuleRequest) (_result *CompareRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CompareRuleResponse{}
+	_body, _err := client.CompareRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Add Query Conditions
 //
 // @param request - CreateAnalysisConditionFavoriteRequest
@@ -8337,6 +8411,88 @@ func (client *Client) DescribeExpressionVariablePage(request *DescribeExpression
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeExpressionVariablePageResponse{}
 	_body, _err := client.DescribeExpressionVariablePageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Custom Variable Version Details.
+//
+// @param request - DescribeExpressionVariableVersionDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeExpressionVariableVersionDetailResponse
+func (client *Client) DescribeExpressionVariableVersionDetailWithOptions(request *DescribeExpressionVariableVersionDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressionVariableVersionDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.ObjectCode) {
+		query["objectCode"] = request.ObjectCode
+	}
+
+	if !dara.IsNil(request.ObjectId) {
+		query["objectId"] = request.ObjectId
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["regId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeExpressionVariableVersionDetail"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeExpressionVariableVersionDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Custom Variable Version Details.
+//
+// @param request - DescribeExpressionVariableVersionDetailRequest
+//
+// @return DescribeExpressionVariableVersionDetailResponse
+func (client *Client) DescribeExpressionVariableVersionDetail(request *DescribeExpressionVariableVersionDetailRequest) (_result *DescribeExpressionVariableVersionDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeExpressionVariableVersionDetailResponse{}
+	_body, _err := client.DescribeExpressionVariableVersionDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17353,6 +17509,88 @@ func (client *Client) DescribeVariableSceneList(request *DescribeVariableSceneLi
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeVariableSceneListResponse{}
 	_body, _err := client.DescribeVariableSceneListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Cumulative Variable Version Details.
+//
+// @param request - DescribeVariableVersionDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVariableVersionDetailResponse
+func (client *Client) DescribeVariableVersionDetailWithOptions(request *DescribeVariableVersionDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeVariableVersionDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.ObjectCode) {
+		query["objectCode"] = request.ObjectCode
+	}
+
+	if !dara.IsNil(request.ObjectId) {
+		query["objectId"] = request.ObjectId
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["regId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVariableVersionDetail"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVariableVersionDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Cumulative Variable Version Details.
+//
+// @param request - DescribeVariableVersionDetailRequest
+//
+// @return DescribeVariableVersionDetailResponse
+func (client *Client) DescribeVariableVersionDetail(request *DescribeVariableVersionDetailRequest) (_result *DescribeVariableVersionDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeVariableVersionDetailResponse{}
+	_body, _err := client.DescribeVariableVersionDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
