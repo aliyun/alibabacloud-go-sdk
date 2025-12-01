@@ -8645,6 +8645,10 @@ func (client *Client) ForwardAIAgentCallWithOptions(request *ForwardAIAgentCallR
 		query["CalledNumber"] = request.CalledNumber
 	}
 
+	if !dara.IsNil(request.CallerNumber) {
+		query["CallerNumber"] = request.CallerNumber
+	}
+
 	if !dara.IsNil(request.ErrorPrompt) {
 		query["ErrorPrompt"] = request.ErrorPrompt
 	}

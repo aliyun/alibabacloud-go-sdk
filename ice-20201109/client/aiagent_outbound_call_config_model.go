@@ -13,6 +13,8 @@ type iAIAgentOutboundCallConfig interface {
 	GetAmbientSoundConfig() *AIAgentOutboundCallConfigAmbientSoundConfig
 	SetAsrConfig(v *AIAgentOutboundCallConfigAsrConfig) *AIAgentOutboundCallConfig
 	GetAsrConfig() *AIAgentOutboundCallConfigAsrConfig
+	SetAutoSpeechConfig(v *AIAgentOutboundCallConfigAutoSpeechConfig) *AIAgentOutboundCallConfig
+	GetAutoSpeechConfig() *AIAgentOutboundCallConfigAutoSpeechConfig
 	SetEnableIntelligentSegment(v bool) *AIAgentOutboundCallConfig
 	GetEnableIntelligentSegment() *bool
 	SetExperimentalConfig(v string) *AIAgentOutboundCallConfig
@@ -25,6 +27,8 @@ type iAIAgentOutboundCallConfig interface {
 	GetInterruptConfig() *AIAgentOutboundCallConfigInterruptConfig
 	SetLlmConfig(v *AIAgentOutboundCallConfigLlmConfig) *AIAgentOutboundCallConfig
 	GetLlmConfig() *AIAgentOutboundCallConfigLlmConfig
+	SetMaxIdleTime(v int32) *AIAgentOutboundCallConfig
+	GetMaxIdleTime() *int32
 	SetTtsConfig(v *AIAgentOutboundCallConfigTtsConfig) *AIAgentOutboundCallConfig
 	GetTtsConfig() *AIAgentOutboundCallConfigTtsConfig
 	SetTurnDetectionConfig(v *AIAgentOutboundCallConfigTurnDetectionConfig) *AIAgentOutboundCallConfig
@@ -34,12 +38,14 @@ type iAIAgentOutboundCallConfig interface {
 type AIAgentOutboundCallConfig struct {
 	AmbientSoundConfig       *AIAgentOutboundCallConfigAmbientSoundConfig  `json:"AmbientSoundConfig,omitempty" xml:"AmbientSoundConfig,omitempty" type:"Struct"`
 	AsrConfig                *AIAgentOutboundCallConfigAsrConfig           `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
+	AutoSpeechConfig         *AIAgentOutboundCallConfigAutoSpeechConfig    `json:"AutoSpeechConfig,omitempty" xml:"AutoSpeechConfig,omitempty" type:"Struct"`
 	EnableIntelligentSegment *bool                                         `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
 	ExperimentalConfig       *string                                       `json:"ExperimentalConfig,omitempty" xml:"ExperimentalConfig,omitempty"`
 	Greeting                 *string                                       `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
 	GreetingDelay            *int32                                        `json:"GreetingDelay,omitempty" xml:"GreetingDelay,omitempty"`
 	InterruptConfig          *AIAgentOutboundCallConfigInterruptConfig     `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
 	LlmConfig                *AIAgentOutboundCallConfigLlmConfig           `json:"LlmConfig,omitempty" xml:"LlmConfig,omitempty" type:"Struct"`
+	MaxIdleTime              *int32                                        `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
 	TtsConfig                *AIAgentOutboundCallConfigTtsConfig           `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
 	TurnDetectionConfig      *AIAgentOutboundCallConfigTurnDetectionConfig `json:"TurnDetectionConfig,omitempty" xml:"TurnDetectionConfig,omitempty" type:"Struct"`
 }
@@ -58,6 +64,10 @@ func (s *AIAgentOutboundCallConfig) GetAmbientSoundConfig() *AIAgentOutboundCall
 
 func (s *AIAgentOutboundCallConfig) GetAsrConfig() *AIAgentOutboundCallConfigAsrConfig {
 	return s.AsrConfig
+}
+
+func (s *AIAgentOutboundCallConfig) GetAutoSpeechConfig() *AIAgentOutboundCallConfigAutoSpeechConfig {
+	return s.AutoSpeechConfig
 }
 
 func (s *AIAgentOutboundCallConfig) GetEnableIntelligentSegment() *bool {
@@ -84,6 +94,10 @@ func (s *AIAgentOutboundCallConfig) GetLlmConfig() *AIAgentOutboundCallConfigLlm
 	return s.LlmConfig
 }
 
+func (s *AIAgentOutboundCallConfig) GetMaxIdleTime() *int32 {
+	return s.MaxIdleTime
+}
+
 func (s *AIAgentOutboundCallConfig) GetTtsConfig() *AIAgentOutboundCallConfigTtsConfig {
 	return s.TtsConfig
 }
@@ -99,6 +113,11 @@ func (s *AIAgentOutboundCallConfig) SetAmbientSoundConfig(v *AIAgentOutboundCall
 
 func (s *AIAgentOutboundCallConfig) SetAsrConfig(v *AIAgentOutboundCallConfigAsrConfig) *AIAgentOutboundCallConfig {
 	s.AsrConfig = v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfig) SetAutoSpeechConfig(v *AIAgentOutboundCallConfigAutoSpeechConfig) *AIAgentOutboundCallConfig {
+	s.AutoSpeechConfig = v
 	return s
 }
 
@@ -132,6 +151,11 @@ func (s *AIAgentOutboundCallConfig) SetLlmConfig(v *AIAgentOutboundCallConfigLlm
 	return s
 }
 
+func (s *AIAgentOutboundCallConfig) SetMaxIdleTime(v int32) *AIAgentOutboundCallConfig {
+	s.MaxIdleTime = &v
+	return s
+}
+
 func (s *AIAgentOutboundCallConfig) SetTtsConfig(v *AIAgentOutboundCallConfigTtsConfig) *AIAgentOutboundCallConfig {
 	s.TtsConfig = v
 	return s
@@ -150,6 +174,11 @@ func (s *AIAgentOutboundCallConfig) Validate() error {
 	}
 	if s.AsrConfig != nil {
 		if err := s.AsrConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AutoSpeechConfig != nil {
+		if err := s.AutoSpeechConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -286,6 +315,219 @@ func (s *AIAgentOutboundCallConfigAsrConfig) Validate() error {
 	return dara.Validate(s)
 }
 
+type AIAgentOutboundCallConfigAutoSpeechConfig struct {
+	LlmPending *AIAgentOutboundCallConfigAutoSpeechConfigLlmPending `json:"LlmPending,omitempty" xml:"LlmPending,omitempty" type:"Struct"`
+	UserIdle   *AIAgentOutboundCallConfigAutoSpeechConfigUserIdle   `json:"UserIdle,omitempty" xml:"UserIdle,omitempty" type:"Struct"`
+}
+
+func (s AIAgentOutboundCallConfigAutoSpeechConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AIAgentOutboundCallConfigAutoSpeechConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfig) GetLlmPending() *AIAgentOutboundCallConfigAutoSpeechConfigLlmPending {
+	return s.LlmPending
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfig) GetUserIdle() *AIAgentOutboundCallConfigAutoSpeechConfigUserIdle {
+	return s.UserIdle
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfig) SetLlmPending(v *AIAgentOutboundCallConfigAutoSpeechConfigLlmPending) *AIAgentOutboundCallConfigAutoSpeechConfig {
+	s.LlmPending = v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfig) SetUserIdle(v *AIAgentOutboundCallConfigAutoSpeechConfigUserIdle) *AIAgentOutboundCallConfigAutoSpeechConfig {
+	s.UserIdle = v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfig) Validate() error {
+	if s.LlmPending != nil {
+		if err := s.LlmPending.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserIdle != nil {
+		if err := s.UserIdle.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type AIAgentOutboundCallConfigAutoSpeechConfigLlmPending struct {
+	Messages []*AIAgentOutboundCallConfigAutoSpeechConfigLlmPendingMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	WaitTime *int32                                                         `json:"WaitTime,omitempty" xml:"WaitTime,omitempty"`
+}
+
+func (s AIAgentOutboundCallConfigAutoSpeechConfigLlmPending) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AIAgentOutboundCallConfigAutoSpeechConfigLlmPending) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigLlmPending) GetMessages() []*AIAgentOutboundCallConfigAutoSpeechConfigLlmPendingMessages {
+	return s.Messages
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigLlmPending) GetWaitTime() *int32 {
+	return s.WaitTime
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigLlmPending) SetMessages(v []*AIAgentOutboundCallConfigAutoSpeechConfigLlmPendingMessages) *AIAgentOutboundCallConfigAutoSpeechConfigLlmPending {
+	s.Messages = v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigLlmPending) SetWaitTime(v int32) *AIAgentOutboundCallConfigAutoSpeechConfigLlmPending {
+	s.WaitTime = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigLlmPending) Validate() error {
+	if s.Messages != nil {
+		for _, item := range s.Messages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type AIAgentOutboundCallConfigAutoSpeechConfigLlmPendingMessages struct {
+	Probability *float64 `json:"Probability,omitempty" xml:"Probability,omitempty"`
+	Text        *string  `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s AIAgentOutboundCallConfigAutoSpeechConfigLlmPendingMessages) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AIAgentOutboundCallConfigAutoSpeechConfigLlmPendingMessages) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigLlmPendingMessages) GetProbability() *float64 {
+	return s.Probability
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigLlmPendingMessages) GetText() *string {
+	return s.Text
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigLlmPendingMessages) SetProbability(v float64) *AIAgentOutboundCallConfigAutoSpeechConfigLlmPendingMessages {
+	s.Probability = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigLlmPendingMessages) SetText(v string) *AIAgentOutboundCallConfigAutoSpeechConfigLlmPendingMessages {
+	s.Text = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigLlmPendingMessages) Validate() error {
+	return dara.Validate(s)
+}
+
+type AIAgentOutboundCallConfigAutoSpeechConfigUserIdle struct {
+	MaxRepeats *int32                                                       `json:"MaxRepeats,omitempty" xml:"MaxRepeats,omitempty"`
+	Messages   []*AIAgentOutboundCallConfigAutoSpeechConfigUserIdleMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	WaitTime   *int32                                                       `json:"WaitTime,omitempty" xml:"WaitTime,omitempty"`
+}
+
+func (s AIAgentOutboundCallConfigAutoSpeechConfigUserIdle) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AIAgentOutboundCallConfigAutoSpeechConfigUserIdle) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigUserIdle) GetMaxRepeats() *int32 {
+	return s.MaxRepeats
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigUserIdle) GetMessages() []*AIAgentOutboundCallConfigAutoSpeechConfigUserIdleMessages {
+	return s.Messages
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigUserIdle) GetWaitTime() *int32 {
+	return s.WaitTime
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigUserIdle) SetMaxRepeats(v int32) *AIAgentOutboundCallConfigAutoSpeechConfigUserIdle {
+	s.MaxRepeats = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigUserIdle) SetMessages(v []*AIAgentOutboundCallConfigAutoSpeechConfigUserIdleMessages) *AIAgentOutboundCallConfigAutoSpeechConfigUserIdle {
+	s.Messages = v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigUserIdle) SetWaitTime(v int32) *AIAgentOutboundCallConfigAutoSpeechConfigUserIdle {
+	s.WaitTime = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigUserIdle) Validate() error {
+	if s.Messages != nil {
+		for _, item := range s.Messages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type AIAgentOutboundCallConfigAutoSpeechConfigUserIdleMessages struct {
+	Probability *float64 `json:"Probability,omitempty" xml:"Probability,omitempty"`
+	Text        *string  `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s AIAgentOutboundCallConfigAutoSpeechConfigUserIdleMessages) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AIAgentOutboundCallConfigAutoSpeechConfigUserIdleMessages) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigUserIdleMessages) GetProbability() *float64 {
+	return s.Probability
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigUserIdleMessages) GetText() *string {
+	return s.Text
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigUserIdleMessages) SetProbability(v float64) *AIAgentOutboundCallConfigAutoSpeechConfigUserIdleMessages {
+	s.Probability = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigUserIdleMessages) SetText(v string) *AIAgentOutboundCallConfigAutoSpeechConfigUserIdleMessages {
+	s.Text = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigAutoSpeechConfigUserIdleMessages) Validate() error {
+	return dara.Validate(s)
+}
+
 type AIAgentOutboundCallConfigInterruptConfig struct {
 	EnableVoiceInterrupt *bool     `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
 	InterruptWords       []*string `json:"InterruptWords,omitempty" xml:"InterruptWords,omitempty" type:"Repeated"`
@@ -322,15 +564,16 @@ func (s *AIAgentOutboundCallConfigInterruptConfig) Validate() error {
 }
 
 type AIAgentOutboundCallConfigLlmConfig struct {
-	BailianAppParams *string                                          `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
-	FunctionMap      []*AIAgentOutboundCallConfigLlmConfigFunctionMap `json:"FunctionMap,omitempty" xml:"FunctionMap,omitempty" type:"Repeated"`
-	LlmCompleteReply *bool                                            `json:"LlmCompleteReply,omitempty" xml:"LlmCompleteReply,omitempty"`
-	LlmHistory       []*AIAgentOutboundCallConfigLlmConfigLlmHistory  `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
-	LlmHistoryLimit  *int32                                           `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
-	LlmSystemPrompt  *string                                          `json:"LlmSystemPrompt,omitempty" xml:"LlmSystemPrompt,omitempty"`
-	OpenAIExtraQuery *string                                          `json:"OpenAIExtraQuery,omitempty" xml:"OpenAIExtraQuery,omitempty"`
-	OutputMaxDelay   *string                                          `json:"OutputMaxDelay,omitempty" xml:"OutputMaxDelay,omitempty"`
-	OutputMinLength  *int32                                           `json:"OutputMinLength,omitempty" xml:"OutputMinLength,omitempty"`
+	BailianAppParams   *string                                          `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	FunctionMap        []*AIAgentOutboundCallConfigLlmConfigFunctionMap `json:"FunctionMap,omitempty" xml:"FunctionMap,omitempty" type:"Repeated"`
+	HistorySyncWithTTS *bool                                            `json:"HistorySyncWithTTS,omitempty" xml:"HistorySyncWithTTS,omitempty"`
+	LlmCompleteReply   *bool                                            `json:"LlmCompleteReply,omitempty" xml:"LlmCompleteReply,omitempty"`
+	LlmHistory         []*AIAgentOutboundCallConfigLlmConfigLlmHistory  `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
+	LlmHistoryLimit    *int32                                           `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
+	LlmSystemPrompt    *string                                          `json:"LlmSystemPrompt,omitempty" xml:"LlmSystemPrompt,omitempty"`
+	OpenAIExtraQuery   *string                                          `json:"OpenAIExtraQuery,omitempty" xml:"OpenAIExtraQuery,omitempty"`
+	OutputMaxDelay     *string                                          `json:"OutputMaxDelay,omitempty" xml:"OutputMaxDelay,omitempty"`
+	OutputMinLength    *int32                                           `json:"OutputMinLength,omitempty" xml:"OutputMinLength,omitempty"`
 }
 
 func (s AIAgentOutboundCallConfigLlmConfig) String() string {
@@ -347,6 +590,10 @@ func (s *AIAgentOutboundCallConfigLlmConfig) GetBailianAppParams() *string {
 
 func (s *AIAgentOutboundCallConfigLlmConfig) GetFunctionMap() []*AIAgentOutboundCallConfigLlmConfigFunctionMap {
 	return s.FunctionMap
+}
+
+func (s *AIAgentOutboundCallConfigLlmConfig) GetHistorySyncWithTTS() *bool {
+	return s.HistorySyncWithTTS
 }
 
 func (s *AIAgentOutboundCallConfigLlmConfig) GetLlmCompleteReply() *bool {
@@ -384,6 +631,11 @@ func (s *AIAgentOutboundCallConfigLlmConfig) SetBailianAppParams(v string) *AIAg
 
 func (s *AIAgentOutboundCallConfigLlmConfig) SetFunctionMap(v []*AIAgentOutboundCallConfigLlmConfigFunctionMap) *AIAgentOutboundCallConfigLlmConfig {
 	s.FunctionMap = v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigLlmConfig) SetHistorySyncWithTTS(v bool) *AIAgentOutboundCallConfigLlmConfig {
+	s.HistorySyncWithTTS = &v
 	return s
 }
 

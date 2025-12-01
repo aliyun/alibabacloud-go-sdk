@@ -6280,6 +6280,10 @@ func (client *Client) ForwardAIAgentCallWithContext(ctx context.Context, request
 		query["CalledNumber"] = request.CalledNumber
 	}
 
+	if !dara.IsNil(request.CallerNumber) {
+		query["CallerNumber"] = request.CallerNumber
+	}
+
 	if !dara.IsNil(request.ErrorPrompt) {
 		query["ErrorPrompt"] = request.ErrorPrompt
 	}

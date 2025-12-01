@@ -13,6 +13,8 @@ type iAIAgentConfig interface {
 	GetAmbientSoundConfig() *AIAgentConfigAmbientSoundConfig
 	SetAsrConfig(v *AIAgentConfigAsrConfig) *AIAgentConfig
 	GetAsrConfig() *AIAgentConfigAsrConfig
+	SetAutoSpeechConfig(v *AIAgentConfigAutoSpeechConfig) *AIAgentConfig
+	GetAutoSpeechConfig() *AIAgentConfigAutoSpeechConfig
 	SetAvatarConfig(v *AIAgentConfigAvatarConfig) *AIAgentConfig
 	GetAvatarConfig() *AIAgentConfigAvatarConfig
 	SetAvatarUrl(v string) *AIAgentConfig
@@ -58,6 +60,7 @@ type iAIAgentConfig interface {
 type AIAgentConfig struct {
 	AmbientSoundConfig       *AIAgentConfigAmbientSoundConfig  `json:"AmbientSoundConfig,omitempty" xml:"AmbientSoundConfig,omitempty" type:"Struct"`
 	AsrConfig                *AIAgentConfigAsrConfig           `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
+	AutoSpeechConfig         *AIAgentConfigAutoSpeechConfig    `json:"AutoSpeechConfig,omitempty" xml:"AutoSpeechConfig,omitempty" type:"Struct"`
 	AvatarConfig             *AIAgentConfigAvatarConfig        `json:"AvatarConfig,omitempty" xml:"AvatarConfig,omitempty" type:"Struct"`
 	AvatarUrl                *string                           `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
 	AvatarUrlType            *string                           `json:"AvatarUrlType,omitempty" xml:"AvatarUrlType,omitempty"`
@@ -94,6 +97,10 @@ func (s *AIAgentConfig) GetAmbientSoundConfig() *AIAgentConfigAmbientSoundConfig
 
 func (s *AIAgentConfig) GetAsrConfig() *AIAgentConfigAsrConfig {
 	return s.AsrConfig
+}
+
+func (s *AIAgentConfig) GetAutoSpeechConfig() *AIAgentConfigAutoSpeechConfig {
+	return s.AutoSpeechConfig
 }
 
 func (s *AIAgentConfig) GetAvatarConfig() *AIAgentConfigAvatarConfig {
@@ -183,6 +190,11 @@ func (s *AIAgentConfig) SetAmbientSoundConfig(v *AIAgentConfigAmbientSoundConfig
 
 func (s *AIAgentConfig) SetAsrConfig(v *AIAgentConfigAsrConfig) *AIAgentConfig {
 	s.AsrConfig = v
+	return s
+}
+
+func (s *AIAgentConfig) SetAutoSpeechConfig(v *AIAgentConfigAutoSpeechConfig) *AIAgentConfig {
+	s.AutoSpeechConfig = v
 	return s
 }
 
@@ -294,6 +306,11 @@ func (s *AIAgentConfig) Validate() error {
 	}
 	if s.AsrConfig != nil {
 		if err := s.AsrConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AutoSpeechConfig != nil {
+		if err := s.AutoSpeechConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -445,6 +462,219 @@ func (s *AIAgentConfigAsrConfig) Validate() error {
 	return dara.Validate(s)
 }
 
+type AIAgentConfigAutoSpeechConfig struct {
+	LlmPending *AIAgentConfigAutoSpeechConfigLlmPending `json:"LlmPending,omitempty" xml:"LlmPending,omitempty" type:"Struct"`
+	UserIdle   *AIAgentConfigAutoSpeechConfigUserIdle   `json:"UserIdle,omitempty" xml:"UserIdle,omitempty" type:"Struct"`
+}
+
+func (s AIAgentConfigAutoSpeechConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AIAgentConfigAutoSpeechConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigAutoSpeechConfig) GetLlmPending() *AIAgentConfigAutoSpeechConfigLlmPending {
+	return s.LlmPending
+}
+
+func (s *AIAgentConfigAutoSpeechConfig) GetUserIdle() *AIAgentConfigAutoSpeechConfigUserIdle {
+	return s.UserIdle
+}
+
+func (s *AIAgentConfigAutoSpeechConfig) SetLlmPending(v *AIAgentConfigAutoSpeechConfigLlmPending) *AIAgentConfigAutoSpeechConfig {
+	s.LlmPending = v
+	return s
+}
+
+func (s *AIAgentConfigAutoSpeechConfig) SetUserIdle(v *AIAgentConfigAutoSpeechConfigUserIdle) *AIAgentConfigAutoSpeechConfig {
+	s.UserIdle = v
+	return s
+}
+
+func (s *AIAgentConfigAutoSpeechConfig) Validate() error {
+	if s.LlmPending != nil {
+		if err := s.LlmPending.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserIdle != nil {
+		if err := s.UserIdle.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type AIAgentConfigAutoSpeechConfigLlmPending struct {
+	Messages []*AIAgentConfigAutoSpeechConfigLlmPendingMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	WaitTime *int32                                             `json:"WaitTime,omitempty" xml:"WaitTime,omitempty"`
+}
+
+func (s AIAgentConfigAutoSpeechConfigLlmPending) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AIAgentConfigAutoSpeechConfigLlmPending) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigAutoSpeechConfigLlmPending) GetMessages() []*AIAgentConfigAutoSpeechConfigLlmPendingMessages {
+	return s.Messages
+}
+
+func (s *AIAgentConfigAutoSpeechConfigLlmPending) GetWaitTime() *int32 {
+	return s.WaitTime
+}
+
+func (s *AIAgentConfigAutoSpeechConfigLlmPending) SetMessages(v []*AIAgentConfigAutoSpeechConfigLlmPendingMessages) *AIAgentConfigAutoSpeechConfigLlmPending {
+	s.Messages = v
+	return s
+}
+
+func (s *AIAgentConfigAutoSpeechConfigLlmPending) SetWaitTime(v int32) *AIAgentConfigAutoSpeechConfigLlmPending {
+	s.WaitTime = &v
+	return s
+}
+
+func (s *AIAgentConfigAutoSpeechConfigLlmPending) Validate() error {
+	if s.Messages != nil {
+		for _, item := range s.Messages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type AIAgentConfigAutoSpeechConfigLlmPendingMessages struct {
+	Probability *float64 `json:"Probability,omitempty" xml:"Probability,omitempty"`
+	Text        *string  `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s AIAgentConfigAutoSpeechConfigLlmPendingMessages) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AIAgentConfigAutoSpeechConfigLlmPendingMessages) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigAutoSpeechConfigLlmPendingMessages) GetProbability() *float64 {
+	return s.Probability
+}
+
+func (s *AIAgentConfigAutoSpeechConfigLlmPendingMessages) GetText() *string {
+	return s.Text
+}
+
+func (s *AIAgentConfigAutoSpeechConfigLlmPendingMessages) SetProbability(v float64) *AIAgentConfigAutoSpeechConfigLlmPendingMessages {
+	s.Probability = &v
+	return s
+}
+
+func (s *AIAgentConfigAutoSpeechConfigLlmPendingMessages) SetText(v string) *AIAgentConfigAutoSpeechConfigLlmPendingMessages {
+	s.Text = &v
+	return s
+}
+
+func (s *AIAgentConfigAutoSpeechConfigLlmPendingMessages) Validate() error {
+	return dara.Validate(s)
+}
+
+type AIAgentConfigAutoSpeechConfigUserIdle struct {
+	MaxRepeats *int32                                           `json:"MaxRepeats,omitempty" xml:"MaxRepeats,omitempty"`
+	Messages   []*AIAgentConfigAutoSpeechConfigUserIdleMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	WaitTime   *int32                                           `json:"WaitTime,omitempty" xml:"WaitTime,omitempty"`
+}
+
+func (s AIAgentConfigAutoSpeechConfigUserIdle) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AIAgentConfigAutoSpeechConfigUserIdle) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigAutoSpeechConfigUserIdle) GetMaxRepeats() *int32 {
+	return s.MaxRepeats
+}
+
+func (s *AIAgentConfigAutoSpeechConfigUserIdle) GetMessages() []*AIAgentConfigAutoSpeechConfigUserIdleMessages {
+	return s.Messages
+}
+
+func (s *AIAgentConfigAutoSpeechConfigUserIdle) GetWaitTime() *int32 {
+	return s.WaitTime
+}
+
+func (s *AIAgentConfigAutoSpeechConfigUserIdle) SetMaxRepeats(v int32) *AIAgentConfigAutoSpeechConfigUserIdle {
+	s.MaxRepeats = &v
+	return s
+}
+
+func (s *AIAgentConfigAutoSpeechConfigUserIdle) SetMessages(v []*AIAgentConfigAutoSpeechConfigUserIdleMessages) *AIAgentConfigAutoSpeechConfigUserIdle {
+	s.Messages = v
+	return s
+}
+
+func (s *AIAgentConfigAutoSpeechConfigUserIdle) SetWaitTime(v int32) *AIAgentConfigAutoSpeechConfigUserIdle {
+	s.WaitTime = &v
+	return s
+}
+
+func (s *AIAgentConfigAutoSpeechConfigUserIdle) Validate() error {
+	if s.Messages != nil {
+		for _, item := range s.Messages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type AIAgentConfigAutoSpeechConfigUserIdleMessages struct {
+	Probability *float64 `json:"Probability,omitempty" xml:"Probability,omitempty"`
+	Text        *string  `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s AIAgentConfigAutoSpeechConfigUserIdleMessages) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AIAgentConfigAutoSpeechConfigUserIdleMessages) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigAutoSpeechConfigUserIdleMessages) GetProbability() *float64 {
+	return s.Probability
+}
+
+func (s *AIAgentConfigAutoSpeechConfigUserIdleMessages) GetText() *string {
+	return s.Text
+}
+
+func (s *AIAgentConfigAutoSpeechConfigUserIdleMessages) SetProbability(v float64) *AIAgentConfigAutoSpeechConfigUserIdleMessages {
+	s.Probability = &v
+	return s
+}
+
+func (s *AIAgentConfigAutoSpeechConfigUserIdleMessages) SetText(v string) *AIAgentConfigAutoSpeechConfigUserIdleMessages {
+	s.Text = &v
+	return s
+}
+
+func (s *AIAgentConfigAutoSpeechConfigUserIdleMessages) Validate() error {
+	return dara.Validate(s)
+}
+
 type AIAgentConfigAvatarConfig struct {
 	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
 }
@@ -506,15 +736,16 @@ func (s *AIAgentConfigInterruptConfig) Validate() error {
 }
 
 type AIAgentConfigLlmConfig struct {
-	BailianAppParams *string                              `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
-	FunctionMap      []*AIAgentConfigLlmConfigFunctionMap `json:"FunctionMap,omitempty" xml:"FunctionMap,omitempty" type:"Repeated"`
-	LlmCompleteReply *bool                                `json:"LlmCompleteReply,omitempty" xml:"LlmCompleteReply,omitempty"`
-	LlmHistory       []*AIAgentConfigLlmConfigLlmHistory  `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
-	LlmHistoryLimit  *int32                               `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
-	LlmSystemPrompt  *string                              `json:"LlmSystemPrompt,omitempty" xml:"LlmSystemPrompt,omitempty"`
-	OpenAIExtraQuery *string                              `json:"OpenAIExtraQuery,omitempty" xml:"OpenAIExtraQuery,omitempty"`
-	OutputMaxDelay   *int32                               `json:"OutputMaxDelay,omitempty" xml:"OutputMaxDelay,omitempty"`
-	OutputMinLength  *int32                               `json:"OutputMinLength,omitempty" xml:"OutputMinLength,omitempty"`
+	BailianAppParams   *string                              `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	FunctionMap        []*AIAgentConfigLlmConfigFunctionMap `json:"FunctionMap,omitempty" xml:"FunctionMap,omitempty" type:"Repeated"`
+	HistorySyncWithTTS *bool                                `json:"HistorySyncWithTTS,omitempty" xml:"HistorySyncWithTTS,omitempty"`
+	LlmCompleteReply   *bool                                `json:"LlmCompleteReply,omitempty" xml:"LlmCompleteReply,omitempty"`
+	LlmHistory         []*AIAgentConfigLlmConfigLlmHistory  `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
+	LlmHistoryLimit    *int32                               `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
+	LlmSystemPrompt    *string                              `json:"LlmSystemPrompt,omitempty" xml:"LlmSystemPrompt,omitempty"`
+	OpenAIExtraQuery   *string                              `json:"OpenAIExtraQuery,omitempty" xml:"OpenAIExtraQuery,omitempty"`
+	OutputMaxDelay     *int32                               `json:"OutputMaxDelay,omitempty" xml:"OutputMaxDelay,omitempty"`
+	OutputMinLength    *int32                               `json:"OutputMinLength,omitempty" xml:"OutputMinLength,omitempty"`
 }
 
 func (s AIAgentConfigLlmConfig) String() string {
@@ -531,6 +762,10 @@ func (s *AIAgentConfigLlmConfig) GetBailianAppParams() *string {
 
 func (s *AIAgentConfigLlmConfig) GetFunctionMap() []*AIAgentConfigLlmConfigFunctionMap {
 	return s.FunctionMap
+}
+
+func (s *AIAgentConfigLlmConfig) GetHistorySyncWithTTS() *bool {
+	return s.HistorySyncWithTTS
 }
 
 func (s *AIAgentConfigLlmConfig) GetLlmCompleteReply() *bool {
@@ -568,6 +803,11 @@ func (s *AIAgentConfigLlmConfig) SetBailianAppParams(v string) *AIAgentConfigLlm
 
 func (s *AIAgentConfigLlmConfig) SetFunctionMap(v []*AIAgentConfigLlmConfigFunctionMap) *AIAgentConfigLlmConfig {
 	s.FunctionMap = v
+	return s
+}
+
+func (s *AIAgentConfigLlmConfig) SetHistorySyncWithTTS(v bool) *AIAgentConfigLlmConfig {
+	s.HistorySyncWithTTS = &v
 	return s
 }
 

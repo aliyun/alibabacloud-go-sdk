@@ -11,6 +11,8 @@ type iForwardAIAgentCallRequest interface {
 	GoString() string
 	SetCalledNumber(v string) *ForwardAIAgentCallRequest
 	GetCalledNumber() *string
+	SetCallerNumber(v string) *ForwardAIAgentCallRequest
+	GetCallerNumber() *string
 	SetErrorPrompt(v string) *ForwardAIAgentCallRequest
 	GetErrorPrompt() *string
 	SetInstanceId(v string) *ForwardAIAgentCallRequest
@@ -24,6 +26,7 @@ type ForwardAIAgentCallRequest struct {
 	//
 	// 13**********
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CallerNumber *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
 	ErrorPrompt  *string `json:"ErrorPrompt,omitempty" xml:"ErrorPrompt,omitempty"`
 	// example:
 	//
@@ -44,6 +47,10 @@ func (s *ForwardAIAgentCallRequest) GetCalledNumber() *string {
 	return s.CalledNumber
 }
 
+func (s *ForwardAIAgentCallRequest) GetCallerNumber() *string {
+	return s.CallerNumber
+}
+
 func (s *ForwardAIAgentCallRequest) GetErrorPrompt() *string {
 	return s.ErrorPrompt
 }
@@ -58,6 +65,11 @@ func (s *ForwardAIAgentCallRequest) GetTransferPrompt() *string {
 
 func (s *ForwardAIAgentCallRequest) SetCalledNumber(v string) *ForwardAIAgentCallRequest {
 	s.CalledNumber = &v
+	return s
+}
+
+func (s *ForwardAIAgentCallRequest) SetCallerNumber(v string) *ForwardAIAgentCallRequest {
+	s.CallerNumber = &v
 	return s
 }
 
