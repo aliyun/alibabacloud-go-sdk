@@ -360,7 +360,8 @@ type DescribeApplicationInstancesResponseBodyDataInstances struct {
 	// example:
 	//
 	// 1750061980000
-	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Timestamp     *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	TrafficStatus *string `json:"TrafficStatus,omitempty" xml:"TrafficStatus,omitempty"`
 	// If the health check of an application instance fails, the detailed failure cause or error message is returned. If the health check of an application instance passes, no response is returned.
 	//
 	// example:
@@ -443,6 +444,10 @@ func (s *DescribeApplicationInstancesResponseBodyDataInstances) GetTimestamp() *
 	return s.Timestamp
 }
 
+func (s *DescribeApplicationInstancesResponseBodyDataInstances) GetTrafficStatus() *string {
+	return s.TrafficStatus
+}
+
 func (s *DescribeApplicationInstancesResponseBodyDataInstances) GetUnhealthyMessage() *string {
 	return s.UnhealthyMessage
 }
@@ -523,6 +528,11 @@ func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetSidecarContai
 
 func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetTimestamp(v int64) *DescribeApplicationInstancesResponseBodyDataInstances {
 	s.Timestamp = &v
+	return s
+}
+
+func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetTrafficStatus(v string) *DescribeApplicationInstancesResponseBodyDataInstances {
+	s.TrafficStatus = &v
 	return s
 }
 

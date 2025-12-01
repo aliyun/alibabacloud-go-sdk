@@ -23,6 +23,8 @@ type iListApplicationsRequest interface {
 	GetIsStateful() *string
 	SetNamespaceId(v string) *ListApplicationsRequest
 	GetNamespaceId() *string
+	SetNewSaeVersion(v string) *ListApplicationsRequest
+	GetNewSaeVersion() *string
 	SetOrderBy(v string) *ListApplicationsRequest
 	GetOrderBy() *string
 	SetPageSize(v int32) *ListApplicationsRequest
@@ -84,7 +86,8 @@ type ListApplicationsRequest struct {
 	// example:
 	//
 	// cn-beijing:demo
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NamespaceId   *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NewSaeVersion *string `json:"NewSaeVersion,omitempty" xml:"NewSaeVersion,omitempty"`
 	// Specifies how applications are sorted. Valid values:
 	//
 	// 	- **running**: The applications are sorted based on the number of running instances.
@@ -163,6 +166,10 @@ func (s *ListApplicationsRequest) GetNamespaceId() *string {
 	return s.NamespaceId
 }
 
+func (s *ListApplicationsRequest) GetNewSaeVersion() *string {
+	return s.NewSaeVersion
+}
+
 func (s *ListApplicationsRequest) GetOrderBy() *string {
 	return s.OrderBy
 }
@@ -211,6 +218,11 @@ func (s *ListApplicationsRequest) SetIsStateful(v string) *ListApplicationsReque
 
 func (s *ListApplicationsRequest) SetNamespaceId(v string) *ListApplicationsRequest {
 	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListApplicationsRequest) SetNewSaeVersion(v string) *ListApplicationsRequest {
+	s.NewSaeVersion = &v
 	return s
 }
 

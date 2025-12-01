@@ -5958,6 +5958,10 @@ func (client *Client) ListApplicationsWithContext(ctx context.Context, request *
 		query["NamespaceId"] = request.NamespaceId
 	}
 
+	if !dara.IsNil(request.NewSaeVersion) {
+		query["NewSaeVersion"] = request.NewSaeVersion
+	}
+
 	if !dara.IsNil(request.OrderBy) {
 		query["OrderBy"] = request.OrderBy
 	}
