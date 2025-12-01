@@ -161,7 +161,16 @@ func (s *DescribeOssObjectsResponseBody) SetTruncated(v bool) *DescribeOssObject
 }
 
 func (s *DescribeOssObjectsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOssObjectsResponseBodyItems struct {
@@ -437,7 +446,16 @@ func (s *DescribeOssObjectsResponseBodyItems) SetSize(v int64) *DescribeOssObjec
 }
 
 func (s *DescribeOssObjectsResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.RuleList != nil {
+		for _, item := range s.RuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOssObjectsResponseBodyItemsRuleList struct {

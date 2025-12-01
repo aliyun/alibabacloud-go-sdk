@@ -104,7 +104,16 @@ func (s *DescribeCategoryTemplateListResponseBody) SetTotalCount(v int32) *Descr
 }
 
 func (s *DescribeCategoryTemplateListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCategoryTemplateListResponseBodyItems struct {

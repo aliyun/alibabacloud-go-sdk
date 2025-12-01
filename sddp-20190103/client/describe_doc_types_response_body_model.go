@@ -53,7 +53,16 @@ func (s *DescribeDocTypesResponseBody) SetRequestId(v string) *DescribeDocTypesR
 }
 
 func (s *DescribeDocTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DocTypeList != nil {
+		for _, item := range s.DocTypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDocTypesResponseBodyDocTypeList struct {

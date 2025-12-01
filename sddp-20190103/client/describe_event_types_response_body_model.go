@@ -55,7 +55,16 @@ func (s *DescribeEventTypesResponseBody) SetRequestId(v string) *DescribeEventTy
 }
 
 func (s *DescribeEventTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EventTypeList != nil {
+		for _, item := range s.EventTypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventTypesResponseBodyEventTypeList struct {
@@ -141,7 +150,16 @@ func (s *DescribeEventTypesResponseBodyEventTypeList) SetSubTypeList(v []*Descri
 }
 
 func (s *DescribeEventTypesResponseBodyEventTypeList) Validate() error {
-	return dara.Validate(s)
+	if s.SubTypeList != nil {
+		for _, item := range s.SubTypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventTypesResponseBodyEventTypeListSubTypeList struct {

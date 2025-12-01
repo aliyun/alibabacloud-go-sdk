@@ -104,7 +104,16 @@ func (s *DescribeInstancesResponseBody) SetTotalCount(v int32) *DescribeInstance
 }
 
 func (s *DescribeInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyItems struct {
@@ -464,7 +473,16 @@ func (s *DescribeInstancesResponseBodyItems) SetTotalCount(v int32) *DescribeIns
 }
 
 func (s *DescribeInstancesResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.ModelTags != nil {
+		for _, item := range s.ModelTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyItemsModelTags struct {

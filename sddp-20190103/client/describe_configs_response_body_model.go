@@ -53,7 +53,16 @@ func (s *DescribeConfigsResponseBody) SetRequestId(v string) *DescribeConfigsRes
 }
 
 func (s *DescribeConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigList != nil {
+		for _, item := range s.ConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeConfigsResponseBodyConfigList struct {

@@ -53,7 +53,12 @@ func (s *DescribeUserStatusResponseBody) SetUserStatus(v *DescribeUserStatusResp
 }
 
 func (s *DescribeUserStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserStatus != nil {
+		if err := s.UserStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUserStatusResponseBodyUserStatus struct {

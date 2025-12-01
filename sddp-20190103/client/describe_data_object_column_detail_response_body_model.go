@@ -104,7 +104,16 @@ func (s *DescribeDataObjectColumnDetailResponseBody) SetTotalCount(v int32) *Des
 }
 
 func (s *DescribeDataObjectColumnDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataObjectColumnDetailResponseBodyItems struct {
@@ -430,7 +439,16 @@ func (s *DescribeDataObjectColumnDetailResponseBodyItems) SetTableName(v string)
 }
 
 func (s *DescribeDataObjectColumnDetailResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.ModelTags != nil {
+		for _, item := range s.ModelTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataObjectColumnDetailResponseBodyItemsModelTags struct {

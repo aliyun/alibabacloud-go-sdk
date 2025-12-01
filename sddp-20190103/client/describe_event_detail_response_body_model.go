@@ -53,7 +53,12 @@ func (s *DescribeEventDetailResponseBody) SetRequestId(v string) *DescribeEventD
 }
 
 func (s *DescribeEventDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Event != nil {
+		if err := s.Event.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventDetailResponseBodyEvent struct {
@@ -442,7 +447,21 @@ func (s *DescribeEventDetailResponseBodyEvent) SetUserId(v int64) *DescribeEvent
 }
 
 func (s *DescribeEventDetailResponseBodyEvent) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		if err := s.Detail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HandleInfoList != nil {
+		for _, item := range s.HandleInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventDetailResponseBodyEventDetail struct {
@@ -490,7 +509,34 @@ func (s *DescribeEventDetailResponseBodyEventDetail) SetResourceInfo(v []*Descri
 }
 
 func (s *DescribeEventDetailResponseBodyEventDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Chart != nil {
+		for _, item := range s.Chart {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Content != nil {
+		for _, item := range s.Content {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourceInfo != nil {
+		for _, item := range s.ResourceInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventDetailResponseBodyEventDetailChart struct {
@@ -635,7 +681,12 @@ func (s *DescribeEventDetailResponseBodyEventDetailChart) SetZLabel(v string) *D
 }
 
 func (s *DescribeEventDetailResponseBodyEventDetailChart) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventDetailResponseBodyEventDetailChartData struct {

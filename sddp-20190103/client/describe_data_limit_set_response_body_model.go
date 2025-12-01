@@ -53,7 +53,12 @@ func (s *DescribeDataLimitSetResponseBody) SetRequestId(v string) *DescribeDataL
 }
 
 func (s *DescribeDataLimitSetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataLimitSet != nil {
+		if err := s.DataLimitSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDataLimitSetResponseBodyDataLimitSet struct {
@@ -166,7 +171,34 @@ func (s *DescribeDataLimitSetResponseBodyDataLimitSet) SetTotalCount(v int32) *D
 }
 
 func (s *DescribeDataLimitSetResponseBodyDataLimitSet) Validate() error {
-	return dara.Validate(s)
+	if s.DataLimitList != nil {
+		for _, item := range s.DataLimitList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OssBucketList != nil {
+		for _, item := range s.OssBucketList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RegionList != nil {
+		for _, item := range s.RegionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList struct {

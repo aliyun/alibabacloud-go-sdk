@@ -53,7 +53,16 @@ func (s *DescribeTemplateAllRulesResponseBody) SetRuleList(v []*DescribeTemplate
 }
 
 func (s *DescribeTemplateAllRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RuleList != nil {
+		for _, item := range s.RuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTemplateAllRulesResponseBodyRuleList struct {

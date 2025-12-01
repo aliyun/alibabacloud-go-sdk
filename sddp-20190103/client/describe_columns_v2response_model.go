@@ -59,5 +59,10 @@ func (s *DescribeColumnsV2Response) SetBody(v *DescribeColumnsV2ResponseBody) *D
 }
 
 func (s *DescribeColumnsV2Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

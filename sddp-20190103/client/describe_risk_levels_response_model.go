@@ -59,5 +59,10 @@ func (s *DescribeRiskLevelsResponse) SetBody(v *DescribeRiskLevelsResponseBody) 
 }
 
 func (s *DescribeRiskLevelsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

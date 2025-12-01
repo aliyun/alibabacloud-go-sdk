@@ -53,7 +53,12 @@ func (s *DescribeOssObjectDetailResponseBody) SetRequestId(v string) *DescribeOs
 }
 
 func (s *DescribeOssObjectDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OssObjectDetail != nil {
+		if err := s.OssObjectDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeOssObjectDetailResponseBodyOssObjectDetail struct {
@@ -154,7 +159,16 @@ func (s *DescribeOssObjectDetailResponseBodyOssObjectDetail) SetRuleList(v []*De
 }
 
 func (s *DescribeOssObjectDetailResponseBodyOssObjectDetail) Validate() error {
-	return dara.Validate(s)
+	if s.RuleList != nil {
+		for _, item := range s.RuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList struct {
@@ -265,7 +279,16 @@ func (s *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList) SetRuleName
 }
 
 func (s *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.ModelTags != nil {
+		for _, item := range s.ModelTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags struct {

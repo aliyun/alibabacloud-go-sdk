@@ -104,7 +104,16 @@ func (s *DescribeDataObjectsResponseBody) SetTotalCount(v int32) *DescribeDataOb
 }
 
 func (s *DescribeDataObjectsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataObjectsResponseBodyItems struct {
@@ -440,7 +449,25 @@ func (s *DescribeDataObjectsResponseBodyItems) SetTemplateId(v int64) *DescribeD
 }
 
 func (s *DescribeDataObjectsResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.ModelTags != nil {
+		for _, item := range s.ModelTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RuleList != nil {
+		for _, item := range s.RuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataObjectsResponseBodyItemsModelTags struct {

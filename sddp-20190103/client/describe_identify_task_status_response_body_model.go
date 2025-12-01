@@ -53,7 +53,12 @@ func (s *DescribeIdentifyTaskStatusResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeIdentifyTaskStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeIdentifyTaskStatusResponseBodyContent struct {

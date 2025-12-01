@@ -53,7 +53,12 @@ func (s *DescribeDataLimitDetailResponseBody) SetRequestId(v string) *DescribeDa
 }
 
 func (s *DescribeDataLimitDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataLimit != nil {
+		if err := s.DataLimit.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDataLimitDetailResponseBodyDataLimit struct {

@@ -59,5 +59,10 @@ func (s *CreateDataLimitResponse) SetBody(v *CreateDataLimitResponseBody) *Creat
 }
 
 func (s *CreateDataLimitResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
