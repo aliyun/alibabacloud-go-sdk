@@ -19,6 +19,8 @@ type iDescribeClusterAttachScriptsRequest interface {
 	GetKeepInstanceName() *bool
 	SetNodepoolId(v string) *DescribeClusterAttachScriptsRequest
 	GetNodepoolId() *string
+	SetOneTimeToken(v bool) *DescribeClusterAttachScriptsRequest
+	GetOneTimeToken() *bool
 	SetOptions(v string) *DescribeClusterAttachScriptsRequest
 	GetOptions() *string
 	SetRdsInstances(v []*string) *DescribeClusterAttachScriptsRequest
@@ -79,7 +81,8 @@ type DescribeClusterAttachScriptsRequest struct {
 	// example:
 	//
 	// np1c9229d9be2d432c93f77a88fca0****
-	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
+	NodepoolId   *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
+	OneTimeToken *bool   `json:"one_time_token,omitempty" xml:"one_time_token,omitempty"`
 	// The node configurations for the node that you want to add.
 	//
 	// >  This parameter is required if you want to add a node to an ACK Edge cluster.
@@ -120,6 +123,10 @@ func (s *DescribeClusterAttachScriptsRequest) GetNodepoolId() *string {
 	return s.NodepoolId
 }
 
+func (s *DescribeClusterAttachScriptsRequest) GetOneTimeToken() *bool {
+	return s.OneTimeToken
+}
+
 func (s *DescribeClusterAttachScriptsRequest) GetOptions() *string {
 	return s.Options
 }
@@ -150,6 +157,11 @@ func (s *DescribeClusterAttachScriptsRequest) SetKeepInstanceName(v bool) *Descr
 
 func (s *DescribeClusterAttachScriptsRequest) SetNodepoolId(v string) *DescribeClusterAttachScriptsRequest {
 	s.NodepoolId = &v
+	return s
+}
+
+func (s *DescribeClusterAttachScriptsRequest) SetOneTimeToken(v bool) *DescribeClusterAttachScriptsRequest {
+	s.OneTimeToken = &v
 	return s
 }
 

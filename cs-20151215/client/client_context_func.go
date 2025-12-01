@@ -2394,6 +2394,10 @@ func (client *Client) DescribeClusterAttachScriptsWithContext(ctx context.Contex
 		body["nodepool_id"] = request.NodepoolId
 	}
 
+	if !dara.IsNil(request.OneTimeToken) {
+		body["one_time_token"] = request.OneTimeToken
+	}
+
 	if !dara.IsNil(request.Options) {
 		body["options"] = request.Options
 	}
