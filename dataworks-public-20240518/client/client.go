@@ -11769,18 +11769,24 @@ func (client *Client) ListDataQualityRules(request *ListDataQualityRulesRequest)
 //
 // This API operation is available for all DataWorks editions.
 //
-// @param request - ListDataQualityScanRunsRequest
+// @param tmpReq - ListDataQualityScanRunsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDataQualityScanRunsResponse
-func (client *Client) ListDataQualityScanRunsWithOptions(request *ListDataQualityScanRunsRequest, runtime *dara.RuntimeOptions) (_result *ListDataQualityScanRunsResponse, _err error) {
+func (client *Client) ListDataQualityScanRunsWithOptions(tmpReq *ListDataQualityScanRunsRequest, runtime *dara.RuntimeOptions) (_result *ListDataQualityScanRunsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListDataQualityScanRunsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Filter) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, dara.String("Filter"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateTimeFrom) {
 		query["CreateTimeFrom"] = request.CreateTimeFrom
@@ -11792,6 +11798,10 @@ func (client *Client) ListDataQualityScanRunsWithOptions(request *ListDataQualit
 
 	if !dara.IsNil(request.DataQualityScanId) {
 		query["DataQualityScanId"] = request.DataQualityScanId
+	}
+
+	if !dara.IsNil(request.FilterShrink) {
+		query["Filter"] = request.FilterShrink
 	}
 
 	if !dara.IsNil(request.PageNumber) {

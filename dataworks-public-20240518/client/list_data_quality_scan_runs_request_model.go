@@ -15,6 +15,8 @@ type iListDataQualityScanRunsRequest interface {
 	GetCreateTimeTo() *int64
 	SetDataQualityScanId(v int64) *ListDataQualityScanRunsRequest
 	GetDataQualityScanId() *int64
+	SetFilter(v map[string]interface{}) *ListDataQualityScanRunsRequest
+	GetFilter() map[string]interface{}
 	SetPageNumber(v int32) *ListDataQualityScanRunsRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListDataQualityScanRunsRequest
@@ -45,7 +47,8 @@ type ListDataQualityScanRunsRequest struct {
 	// example:
 	//
 	// 10001
-	DataQualityScanId *int64 `json:"DataQualityScanId,omitempty" xml:"DataQualityScanId,omitempty"`
+	DataQualityScanId *int64                 `json:"DataQualityScanId,omitempty" xml:"DataQualityScanId,omitempty"`
+	Filter            map[string]interface{} `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The page number of the results. Default value: 1.
 	//
 	// example:
@@ -114,6 +117,10 @@ func (s *ListDataQualityScanRunsRequest) GetDataQualityScanId() *int64 {
 	return s.DataQualityScanId
 }
 
+func (s *ListDataQualityScanRunsRequest) GetFilter() map[string]interface{} {
+	return s.Filter
+}
+
 func (s *ListDataQualityScanRunsRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -146,6 +153,11 @@ func (s *ListDataQualityScanRunsRequest) SetCreateTimeTo(v int64) *ListDataQuali
 
 func (s *ListDataQualityScanRunsRequest) SetDataQualityScanId(v int64) *ListDataQualityScanRunsRequest {
 	s.DataQualityScanId = &v
+	return s
+}
+
+func (s *ListDataQualityScanRunsRequest) SetFilter(v map[string]interface{}) *ListDataQualityScanRunsRequest {
+	s.Filter = v
 	return s
 }
 
