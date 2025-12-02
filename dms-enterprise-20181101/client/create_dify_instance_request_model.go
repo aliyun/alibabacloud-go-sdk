@@ -69,6 +69,8 @@ type iCreateDifyInstanceRequest interface {
 	GetModelOption() *string
 	SetNatGatewayOption(v string) *CreateDifyInstanceRequest
 	GetNatGatewayOption() *string
+	SetOnlyIntranet(v bool) *CreateDifyInstanceRequest
+	GetOnlyIntranet() *bool
 	SetOssPath(v string) *CreateDifyInstanceRequest
 	GetOssPath() *string
 	SetOssResourceId(v int32) *CreateDifyInstanceRequest
@@ -165,6 +167,7 @@ type CreateDifyInstanceRequest struct {
 	// Disable
 	ModelOption      *string `json:"ModelOption,omitempty" xml:"ModelOption,omitempty"`
 	NatGatewayOption *string `json:"NatGatewayOption,omitempty" xml:"NatGatewayOption,omitempty"`
+	OnlyIntranet     *bool   `json:"OnlyIntranet,omitempty" xml:"OnlyIntranet,omitempty"`
 	OssPath          *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
 	OssResourceId    *int32  `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
 	PayPeriod        *int32  `json:"PayPeriod,omitempty" xml:"PayPeriod,omitempty"`
@@ -326,6 +329,10 @@ func (s *CreateDifyInstanceRequest) GetModelOption() *string {
 
 func (s *CreateDifyInstanceRequest) GetNatGatewayOption() *string {
 	return s.NatGatewayOption
+}
+
+func (s *CreateDifyInstanceRequest) GetOnlyIntranet() *bool {
+	return s.OnlyIntranet
 }
 
 func (s *CreateDifyInstanceRequest) GetOssPath() *string {
@@ -587,6 +594,11 @@ func (s *CreateDifyInstanceRequest) SetModelOption(v string) *CreateDifyInstance
 
 func (s *CreateDifyInstanceRequest) SetNatGatewayOption(v string) *CreateDifyInstanceRequest {
 	s.NatGatewayOption = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetOnlyIntranet(v bool) *CreateDifyInstanceRequest {
+	s.OnlyIntranet = &v
 	return s
 }
 

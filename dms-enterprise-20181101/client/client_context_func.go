@@ -3,6 +3,7 @@ package client
 
 import (
 	"context"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
@@ -1490,6 +1491,201 @@ func (client *Client) ChatWithDesensitizeWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
+// 带有DMS脱敏能力的聊天SSE API接口
+//
+// Description:
+//
+// 带有DMS脱敏能力的聊天SSE API接口
+//
+// @param tmpReq - ChatWithDesensitizeSSERequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChatWithDesensitizeSSEResponse
+func (client *Client) ChatWithDesensitizeSSEWithSSECtx(ctx context.Context, tmpReq *ChatWithDesensitizeSSERequest, runtime *dara.RuntimeOptions, _yield chan *ChatWithDesensitizeSSEResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.chatWithDesensitizeSSEWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, tmpReq, runtime)
+	return
+}
+
+// Summary:
+//
+// 带有DMS脱敏能力的聊天SSE API接口
+//
+// Description:
+//
+// 带有DMS脱敏能力的聊天SSE API接口
+//
+// @param tmpReq - ChatWithDesensitizeSSERequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChatWithDesensitizeSSEResponse
+func (client *Client) ChatWithDesensitizeSSEWithContext(ctx context.Context, tmpReq *ChatWithDesensitizeSSERequest, runtime *dara.RuntimeOptions) (_result *ChatWithDesensitizeSSEResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ChatWithDesensitizeSSEShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Messages) {
+		request.MessagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Messages, dara.String("Messages"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ModalitiesList) {
+		request.ModalitiesListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ModalitiesList, dara.String("ModalitiesList"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SearchOptions) {
+		request.SearchOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SearchOptions, dara.String("SearchOptions"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Stop) {
+		request.StopShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Stop, dara.String("Stop"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AudioJson) {
+		query["AudioJson"] = request.AudioJson
+	}
+
+	if !dara.IsNil(request.DesensitizationRule) {
+		query["DesensitizationRule"] = request.DesensitizationRule
+	}
+
+	if !dara.IsNil(request.Dimensions) {
+		query["Dimensions"] = request.Dimensions
+	}
+
+	if !dara.IsNil(request.EnableCodeInterpreter) {
+		query["EnableCodeInterpreter"] = request.EnableCodeInterpreter
+	}
+
+	if !dara.IsNil(request.EnableSearch) {
+		query["EnableSearch"] = request.EnableSearch
+	}
+
+	if !dara.IsNil(request.EnableThinking) {
+		query["EnableThinking"] = request.EnableThinking
+	}
+
+	if !dara.IsNil(request.IncludeUsage) {
+		query["IncludeUsage"] = request.IncludeUsage
+	}
+
+	if !dara.IsNil(request.Input) {
+		query["Input"] = request.Input
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Logprobs) {
+		query["Logprobs"] = request.Logprobs
+	}
+
+	if !dara.IsNil(request.MaxTokens) {
+		query["MaxTokens"] = request.MaxTokens
+	}
+
+	if !dara.IsNil(request.ModalitiesListShrink) {
+		query["ModalitiesList"] = request.ModalitiesListShrink
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.NeedDesensitization) {
+		query["NeedDesensitization"] = request.NeedDesensitization
+	}
+
+	if !dara.IsNil(request.PresencePenalty) {
+		query["PresencePenalty"] = request.PresencePenalty
+	}
+
+	if !dara.IsNil(request.ResponseFormat) {
+		query["ResponseFormat"] = request.ResponseFormat
+	}
+
+	if !dara.IsNil(request.SearchOptionsShrink) {
+		query["SearchOptions"] = request.SearchOptionsShrink
+	}
+
+	if !dara.IsNil(request.Seed) {
+		query["Seed"] = request.Seed
+	}
+
+	if !dara.IsNil(request.StopShrink) {
+		query["Stop"] = request.StopShrink
+	}
+
+	if !dara.IsNil(request.Stream) {
+		query["Stream"] = request.Stream
+	}
+
+	if !dara.IsNil(request.Temperature) {
+		query["Temperature"] = request.Temperature
+	}
+
+	if !dara.IsNil(request.ThinkingBudget) {
+		query["ThinkingBudget"] = request.ThinkingBudget
+	}
+
+	if !dara.IsNil(request.TopK) {
+		query["TopK"] = request.TopK
+	}
+
+	if !dara.IsNil(request.TopLogprobs) {
+		query["TopLogprobs"] = request.TopLogprobs
+	}
+
+	if !dara.IsNil(request.TopP) {
+		query["TopP"] = request.TopP
+	}
+
+	if !dara.IsNil(request.VlHighResolutionImages) {
+		query["VlHighResolutionImages"] = request.VlHighResolutionImages
+	}
+
+	if !dara.IsNil(request.XDashScopeDataInspection) {
+		query["XDashScopeDataInspection"] = request.XDashScopeDataInspection
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MessagesShrink) {
+		body["Messages"] = request.MessagesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ChatWithDesensitizeSSE"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ChatWithDesensitizeSSEResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 批量校验是否有表访问权限
 //
 // @param tmpReq - CheckBatchTableAccessPermissionRequest
@@ -2773,6 +2969,10 @@ func (client *Client) CreateDifyInstanceWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.NatGatewayOption) {
 		query["NatGatewayOption"] = request.NatGatewayOption
+	}
+
+	if !dara.IsNil(request.OnlyIntranet) {
+		query["OnlyIntranet"] = request.OnlyIntranet
 	}
 
 	if !dara.IsNil(request.OssPath) {
@@ -18986,4 +19186,178 @@ func (client *Client) UpdateWorkspaceWithContext(ctx context.Context, request *U
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+func (client *Client) chatWithDesensitizeSSEWithSSECtx_opYieldFunc(_yield chan *ChatWithDesensitizeSSEResponse, _yieldErr chan error, ctx context.Context, tmpReq *ChatWithDesensitizeSSERequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	request := &ChatWithDesensitizeSSEShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Messages) {
+		request.MessagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Messages, dara.String("Messages"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ModalitiesList) {
+		request.ModalitiesListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ModalitiesList, dara.String("ModalitiesList"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SearchOptions) {
+		request.SearchOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SearchOptions, dara.String("SearchOptions"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Stop) {
+		request.StopShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Stop, dara.String("Stop"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AudioJson) {
+		query["AudioJson"] = request.AudioJson
+	}
+
+	if !dara.IsNil(request.DesensitizationRule) {
+		query["DesensitizationRule"] = request.DesensitizationRule
+	}
+
+	if !dara.IsNil(request.Dimensions) {
+		query["Dimensions"] = request.Dimensions
+	}
+
+	if !dara.IsNil(request.EnableCodeInterpreter) {
+		query["EnableCodeInterpreter"] = request.EnableCodeInterpreter
+	}
+
+	if !dara.IsNil(request.EnableSearch) {
+		query["EnableSearch"] = request.EnableSearch
+	}
+
+	if !dara.IsNil(request.EnableThinking) {
+		query["EnableThinking"] = request.EnableThinking
+	}
+
+	if !dara.IsNil(request.IncludeUsage) {
+		query["IncludeUsage"] = request.IncludeUsage
+	}
+
+	if !dara.IsNil(request.Input) {
+		query["Input"] = request.Input
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Logprobs) {
+		query["Logprobs"] = request.Logprobs
+	}
+
+	if !dara.IsNil(request.MaxTokens) {
+		query["MaxTokens"] = request.MaxTokens
+	}
+
+	if !dara.IsNil(request.ModalitiesListShrink) {
+		query["ModalitiesList"] = request.ModalitiesListShrink
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.NeedDesensitization) {
+		query["NeedDesensitization"] = request.NeedDesensitization
+	}
+
+	if !dara.IsNil(request.PresencePenalty) {
+		query["PresencePenalty"] = request.PresencePenalty
+	}
+
+	if !dara.IsNil(request.ResponseFormat) {
+		query["ResponseFormat"] = request.ResponseFormat
+	}
+
+	if !dara.IsNil(request.SearchOptionsShrink) {
+		query["SearchOptions"] = request.SearchOptionsShrink
+	}
+
+	if !dara.IsNil(request.Seed) {
+		query["Seed"] = request.Seed
+	}
+
+	if !dara.IsNil(request.StopShrink) {
+		query["Stop"] = request.StopShrink
+	}
+
+	if !dara.IsNil(request.Stream) {
+		query["Stream"] = request.Stream
+	}
+
+	if !dara.IsNil(request.Temperature) {
+		query["Temperature"] = request.Temperature
+	}
+
+	if !dara.IsNil(request.ThinkingBudget) {
+		query["ThinkingBudget"] = request.ThinkingBudget
+	}
+
+	if !dara.IsNil(request.TopK) {
+		query["TopK"] = request.TopK
+	}
+
+	if !dara.IsNil(request.TopLogprobs) {
+		query["TopLogprobs"] = request.TopLogprobs
+	}
+
+	if !dara.IsNil(request.TopP) {
+		query["TopP"] = request.TopP
+	}
+
+	if !dara.IsNil(request.VlHighResolutionImages) {
+		query["VlHighResolutionImages"] = request.VlHighResolutionImages
+	}
+
+	if !dara.IsNil(request.XDashScopeDataInspection) {
+		query["XDashScopeDataInspection"] = request.XDashScopeDataInspection
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MessagesShrink) {
+		body["Messages"] = request.MessagesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ChatWithDesensitizeSSE"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
 }
