@@ -284,6 +284,10 @@ func (client *Client) CreateDBInstanceWithContext(ctx context.Context, tmpReq *C
 		query["BackupSetId"] = request.BackupSetId
 	}
 
+	if !dara.IsNil(request.Category) {
+		query["Category"] = request.Category
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}

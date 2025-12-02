@@ -11,6 +11,8 @@ type iCreateDBInstanceRequest interface {
 	GoString() string
 	SetBackupSetId(v string) *CreateDBInstanceRequest
 	GetBackupSetId() *string
+	SetCategory(v string) *CreateDBInstanceRequest
+	GetCategory() *string
 	SetClientToken(v string) *CreateDBInstanceRequest
 	GetClientToken() *string
 	SetDBInstanceDescription(v string) *CreateDBInstanceRequest
@@ -60,6 +62,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// 1
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token. Make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
@@ -175,6 +178,10 @@ func (s *CreateDBInstanceRequest) GetBackupSetId() *string {
 	return s.BackupSetId
 }
 
+func (s *CreateDBInstanceRequest) GetCategory() *string {
+	return s.Category
+}
+
 func (s *CreateDBInstanceRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -257,6 +264,11 @@ func (s *CreateDBInstanceRequest) GetZoneId() *string {
 
 func (s *CreateDBInstanceRequest) SetBackupSetId(v string) *CreateDBInstanceRequest {
 	s.BackupSetId = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetCategory(v string) *CreateDBInstanceRequest {
+	s.Category = &v
 	return s
 }
 

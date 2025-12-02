@@ -451,6 +451,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 		query["BackupSetId"] = request.BackupSetId
 	}
 
+	if !dara.IsNil(request.Category) {
+		query["Category"] = request.Category
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}

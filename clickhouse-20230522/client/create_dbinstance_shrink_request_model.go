@@ -11,6 +11,8 @@ type iCreateDBInstanceShrinkRequest interface {
 	GoString() string
 	SetBackupSetId(v string) *CreateDBInstanceShrinkRequest
 	GetBackupSetId() *string
+	SetCategory(v string) *CreateDBInstanceShrinkRequest
+	GetCategory() *string
 	SetClientToken(v string) *CreateDBInstanceShrinkRequest
 	GetClientToken() *string
 	SetDBInstanceDescription(v string) *CreateDBInstanceShrinkRequest
@@ -60,6 +62,7 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 1
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token. Make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
@@ -175,6 +178,10 @@ func (s *CreateDBInstanceShrinkRequest) GetBackupSetId() *string {
 	return s.BackupSetId
 }
 
+func (s *CreateDBInstanceShrinkRequest) GetCategory() *string {
+	return s.Category
+}
+
 func (s *CreateDBInstanceShrinkRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -257,6 +264,11 @@ func (s *CreateDBInstanceShrinkRequest) GetZoneId() *string {
 
 func (s *CreateDBInstanceShrinkRequest) SetBackupSetId(v string) *CreateDBInstanceShrinkRequest {
 	s.BackupSetId = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetCategory(v string) *CreateDBInstanceShrinkRequest {
+	s.Category = &v
 	return s
 }
 
