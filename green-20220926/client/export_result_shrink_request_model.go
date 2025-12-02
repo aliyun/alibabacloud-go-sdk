@@ -28,28 +28,46 @@ type iExportResultShrinkRequest interface {
 }
 
 type ExportResultShrinkRequest struct {
+  // Page number of the query result. Default is 1.
+  // 
   // example:
   // 
   // 1
   CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+  // End date.
+  // 
   // example:
   // 
   // 2023-08-24 10:01:55
   EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+  // Number of items per page in the query result.
+  // 
   // example:
   // 
   // 20
   PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+  // Query condition.
+  // 
   // example:
   // 
   // {"TaskId":"P_11TL5T"}
   Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+  // Region ID.
+  // 
   // example:
   // 
   // cn-shanghai
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+  // Sort field.
   SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+  // Operation source.
+  // 
+  // example:
+  // 
+  // disposal
   Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+  // Start date.
+  // 
   // example:
   // 
   // 2023-08-11 09:00:19

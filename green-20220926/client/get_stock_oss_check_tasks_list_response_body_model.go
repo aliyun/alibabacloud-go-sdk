@@ -22,19 +22,28 @@ type iGetStockOssCheckTasksListResponseBody interface {
 }
 
 type GetStockOssCheckTasksListResponseBody struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*GetStockOssCheckTasksListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Data of the current page.
+	Items []*GetStockOssCheckTasksListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Backend-assigned ID used to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 10
@@ -95,60 +104,101 @@ func (s *GetStockOssCheckTasksListResponseBody) SetTotalCount(v int64) *GetStock
 }
 
 func (s *GetStockOssCheckTasksListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetStockOssCheckTasksListResponseBodyItems struct {
+	// Storage space.
+	//
 	// example:
 	//
 	// tmp
-	Buckets *string                                           `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
-	Config  *GetStockOssCheckTasksListResponseBodyItemsConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
+	// Configuration items.
+	Config *GetStockOssCheckTasksListResponseBodyItemsConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// End time.
+	//
 	// example:
 	//
 	// 2024-01-10 11:42:31
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Number of completed tasks.
+	//
 	// example:
 	//
 	// 2
 	FinishNum *int64 `json:"FinishNum,omitempty" xml:"FinishNum,omitempty"`
+	// Whether it is a scheduled scan task
+	//
 	// example:
 	//
 	// false
 	IsInc *bool `json:"IsInc,omitempty" xml:"IsInc,omitempty"`
+	// Next execution time of the scheduled task
+	//
 	// example:
 	//
 	// 02:00:00
 	LastExecuteDate *string `json:"LastExecuteDate,omitempty" xml:"LastExecuteDate,omitempty"`
+	// Media type.
+	//
 	// example:
 	//
 	// video
 	MediaType *int32 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Last execution time of the scheduled task
+	//
 	// example:
 	//
 	// 02:00:00
 	NextExecuteDate *string `json:"NextExecuteDate,omitempty" xml:"NextExecuteDate,omitempty"`
+	// Total number of files in the bucket
+	//
 	// example:
 	//
 	// 10
 	ObjectNum *int64 `json:"ObjectNum,omitempty" xml:"ObjectNum,omitempty"`
+	// Number of scan tasks.
+	//
 	// example:
 	//
 	// 10
 	SearchNum *int64 `json:"SearchNum,omitempty" xml:"SearchNum,omitempty"`
+	// Start time.
+	//
 	// example:
 	//
 	// 2023-12-21 15:30:19
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Task status.
+	//
 	// example:
 	//
 	// 4
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// P_XHDUS
-	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task name.
+	//
+	// example:
+	//
+	// 图片定时任务20231205135716797
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// Task type
+	//
 	// example:
 	//
 	// batch
@@ -299,66 +349,142 @@ func (s *GetStockOssCheckTasksListResponseBodyItems) SetTaskType(v string) *GetS
 }
 
 func (s *GetStockOssCheckTasksListResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStockOssCheckTasksListResponseBodyItemsConfig struct {
+	// Callback notification ID
+	//
+	// example:
+	//
+	// 3942
 	CallbackId *int64 `json:"CallbackId,omitempty" xml:"CallbackId,omitempty"`
+	// Whether to deduplicate historical detected tasks.
+	//
 	// example:
 	//
 	// false
 	DistinctHistoryTasks *bool `json:"DistinctHistoryTasks,omitempty" xml:"DistinctHistoryTasks,omitempty"`
+	// End time.
+	//
 	// example:
 	//
 	// 2024-01-10 11:42:31
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Scheduled task execution date.
+	//
 	// example:
 	//
 	// 1
 	ExecuteDate *int32 `json:"ExecuteDate,omitempty" xml:"ExecuteDate,omitempty"`
+	// Scheduled task expected execution time.
+	//
 	// example:
 	//
 	// 02:00:00
-	ExecuteTime       *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	Freeze            *bool   `json:"Freeze,omitempty" xml:"Freeze,omitempty"`
-	FreezeHighRisk1   *bool   `json:"FreezeHighRisk1,omitempty" xml:"FreezeHighRisk1,omitempty"`
-	FreezeHighRisk2   *bool   `json:"FreezeHighRisk2,omitempty" xml:"FreezeHighRisk2,omitempty"`
-	FreezeMediumRisk1 *bool   `json:"FreezeMediumRisk1,omitempty" xml:"FreezeMediumRisk1,omitempty"`
-	FreezeMediumRisk2 *bool   `json:"FreezeMediumRisk2,omitempty" xml:"FreezeMediumRisk2,omitempty"`
+	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// Whether to freeze
+	//
+	// example:
+	//
+	// false
+	Freeze *bool `json:"Freeze,omitempty" xml:"Freeze,omitempty"`
+	// Freeze high-risk images
+	//
+	// example:
+	//
+	// true
+	FreezeHighRisk1 *bool `json:"FreezeHighRisk1,omitempty" xml:"FreezeHighRisk1,omitempty"`
+	// Freeze high-risk audio and text
+	//
+	// example:
+	//
+	// true
+	FreezeHighRisk2 *bool `json:"FreezeHighRisk2,omitempty" xml:"FreezeHighRisk2,omitempty"`
+	// Freeze medium-risk images
+	//
+	// example:
+	//
+	// true
+	FreezeMediumRisk1 *bool `json:"FreezeMediumRisk1,omitempty" xml:"FreezeMediumRisk1,omitempty"`
+	// Freeze medium-risk audio and text
+	//
+	// example:
+	//
+	// true
+	FreezeMediumRisk2 *bool `json:"FreezeMediumRisk2,omitempty" xml:"FreezeMediumRisk2,omitempty"`
+	// Storage path for transfer
+	//
+	// example:
+	//
+	// /backup
 	FreezeRestorePath *string `json:"FreezeRestorePath,omitempty" xml:"FreezeRestorePath,omitempty"`
-	FreezeType        *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
+	// Freeze type
+	//
+	// example:
+	//
+	// ACL
+	FreezeType *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
+	// Prefix filter type.
+	//
 	// example:
 	//
 	// all
-	PrefixFilterType *string   `json:"PrefixFilterType,omitempty" xml:"PrefixFilterType,omitempty"`
-	PrefixFilters    []*string `json:"PrefixFilters,omitempty" xml:"PrefixFilters,omitempty" type:"Repeated"`
+	PrefixFilterType *string `json:"PrefixFilterType,omitempty" xml:"PrefixFilterType,omitempty"`
+	// Prefixes.
+	PrefixFilters []*string `json:"PrefixFilters,omitempty" xml:"PrefixFilters,omitempty" type:"Repeated"`
+	// Priority.
+	//
 	// example:
 	//
 	// 1
-	Priority *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Referer  *string `json:"Referer,omitempty" xml:"Referer,omitempty"`
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Referer
+	//
+	// example:
+	//
+	// *
+	Referer *string `json:"Referer,omitempty" xml:"Referer,omitempty"`
+	// Scan limit quantity.
+	//
 	// example:
 	//
 	// 10
 	ScanLimit *int64 `json:"ScanLimit,omitempty" xml:"ScanLimit,omitempty"`
+	// Whether to scan images without file extensions.
+	//
 	// example:
 	//
 	// true
 	ScanNoFileType *bool `json:"ScanNoFileType,omitempty" xml:"ScanNoFileType,omitempty"`
+	// Scanned file type.
+	//
 	// example:
 	//
 	// 0
-	ScanResourceType *int32                                                              `json:"ScanResourceType,omitempty" xml:"ScanResourceType,omitempty"`
-	ScanService      []*string                                                           `json:"ScanService,omitempty" xml:"ScanService,omitempty" type:"Repeated"`
+	ScanResourceType *int32 `json:"ScanResourceType,omitempty" xml:"ScanResourceType,omitempty"`
+	// Scan service code
+	ScanService []*string `json:"ScanService,omitempty" xml:"ScanService,omitempty" type:"Repeated"`
+	// Scan service information
 	ScanServiceInfos []*GetStockOssCheckTasksListResponseBodyItemsConfigScanServiceInfos `json:"ScanServiceInfos,omitempty" xml:"ScanServiceInfos,omitempty" type:"Repeated"`
+	// Start time.
+	//
 	// example:
 	//
 	// 2023-12-21 15:30:19
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Scheduling date.
+	//
 	// example:
 	//
 	// 0
-	TaskCycle        *int32                                                            `json:"TaskCycle,omitempty" xml:"TaskCycle,omitempty"`
+	TaskCycle *int32 `json:"TaskCycle,omitempty" xml:"TaskCycle,omitempty"`
+	// Manual freeze configuration
 	UserFreezeConfig *GetStockOssCheckTasksListResponseBodyItemsConfigUserFreezeConfig `json:"UserFreezeConfig,omitempty" xml:"UserFreezeConfig,omitempty" type:"Struct"`
 }
 
@@ -587,22 +713,47 @@ func (s *GetStockOssCheckTasksListResponseBodyItemsConfig) SetUserFreezeConfig(v
 }
 
 func (s *GetStockOssCheckTasksListResponseBodyItemsConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ScanServiceInfos != nil {
+		for _, item := range s.ScanServiceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserFreezeConfig != nil {
+		if err := s.UserFreezeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStockOssCheckTasksListResponseBodyItemsConfigScanServiceInfos struct {
+	// Primary service.
+	//
 	// example:
 	//
 	// baselineCheck
 	CopyFrom *string `json:"CopyFrom,omitempty" xml:"CopyFrom,omitempty"`
+	// Whether to copy.
+	//
 	// example:
 	//
 	// false
 	IsCopy *bool `json:"IsCopy,omitempty" xml:"IsCopy,omitempty"`
+	// Service code.
+	//
 	// example:
 	//
 	// baselineCheck_01
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Service name.
+	//
+	// example:
+	//
+	// 通用基线检测
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
@@ -655,8 +806,18 @@ func (s *GetStockOssCheckTasksListResponseBodyItemsConfigScanServiceInfos) Valid
 }
 
 type GetStockOssCheckTasksListResponseBodyItemsConfigUserFreezeConfig struct {
+	// Storage path for transfer
+	//
+	// example:
+	//
+	// /backup
 	FreezeRestorePath *string `json:"FreezeRestorePath,omitempty" xml:"FreezeRestorePath,omitempty"`
-	FreezeType        *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
+	// Freeze type
+	//
+	// example:
+	//
+	// ACL
+	FreezeType *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
 }
 
 func (s GetStockOssCheckTasksListResponseBodyItemsConfigUserFreezeConfig) String() string {

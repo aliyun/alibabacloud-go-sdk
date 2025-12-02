@@ -26,27 +26,44 @@ type iGetOssCheckResultDetailRequest interface {
 }
 
 type GetOssCheckResultDetailRequest struct {
+	// Bucket name.
+	//
 	// example:
 	//
 	// oss-tmp
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// Media type.
+	//
 	// example:
 	//
 	// 1
 	MediaType *int32 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Object name.
+	//
 	// example:
 	//
 	// 1748396909030.jpg
-	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// Parent task ID.
+	//
+	// example:
+	//
+	// P_RZQ66T
 	ParentTaskId *string `json:"ParentTaskId,omitempty" xml:"ParentTaskId,omitempty"`
+	// Query request ID.
+	//
 	// example:
 	//
 	// 62E97001-1255-50A9-8E1E-4FD05473D952
 	QueryRequestId *string `json:"QueryRequestId,omitempty" xml:"QueryRequestId,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Service code.
+	//
 	// example:
 	//
 	// audio_media_detection_01

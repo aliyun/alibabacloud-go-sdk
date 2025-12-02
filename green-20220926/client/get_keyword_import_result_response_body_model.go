@@ -22,19 +22,28 @@ type iGetKeywordImportResultResponseBody interface {
 }
 
 type GetKeywordImportResultResponseBody struct {
+	// Error code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data *GetKeywordImportResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Further description of the error code.
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// ID assigned by the backend to uniquely identify a request, which can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success indicator.
+	//
 	// example:
 	//
 	// True
@@ -95,41 +104,65 @@ func (s *GetKeywordImportResultResponseBody) SetSuccess(v bool) *GetKeywordImpor
 }
 
 func (s *GetKeywordImportResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetKeywordImportResultResponseBodyData struct {
+	// Internationalization key.
+	//
 	// example:
 	//
 	// xxx
-	I18nKey               *string   `json:"I18nKey,omitempty" xml:"I18nKey,omitempty"`
+	I18nKey *string `json:"I18nKey,omitempty" xml:"I18nKey,omitempty"`
+	// List of keywords with illegal length (too long or too short).
 	IllegalLengthKeywords []*string `json:"IllegalLengthKeywords,omitempty" xml:"IllegalLengthKeywords,omitempty" type:"Repeated"`
+	// Invalid count.
+	//
 	// example:
 	//
 	// 1
-	InvalidCount    *int32    `json:"InvalidCount,omitempty" xml:"InvalidCount,omitempty"`
+	InvalidCount *int32 `json:"InvalidCount,omitempty" xml:"InvalidCount,omitempty"`
+	// List of invalid keywords.
 	InvalidKeywords []*string `json:"InvalidKeywords,omitempty" xml:"InvalidKeywords,omitempty" type:"Repeated"`
+	// Keyword library ID.
+	//
 	// example:
 	//
 	// customxx_xxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// Task progress percentage.
+	//
 	// example:
 	//
 	// 100
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// Repeat count.
+	//
 	// example:
 	//
 	// 1
-	RepeatCount    *int32    `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
+	RepeatCount *int32 `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
+	// List of repeated keywords.
 	RepeatKeywords []*string `json:"RepeatKeywords,omitempty" xml:"RepeatKeywords,omitempty" type:"Repeated"`
+	// Success count.
+	//
 	// example:
 	//
 	// 8
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// Tips message.
+	//
 	// example:
 	//
 	// xxx
 	Tips *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 10

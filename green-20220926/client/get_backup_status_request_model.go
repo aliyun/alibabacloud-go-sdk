@@ -14,6 +14,8 @@ type iGetBackupStatusRequest interface {
 }
 
 type GetBackupStatusRequest struct {
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

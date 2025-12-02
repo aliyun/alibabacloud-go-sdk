@@ -3,6 +3,7 @@ package client
 
 import (
 	"context"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
@@ -17,9 +18,11 @@ import (
 //
 // @return AddAnswerSampleResponse
 func (client *Client) AddAnswerSampleWithContext(ctx context.Context, request *AddAnswerSampleRequest, runtime *dara.RuntimeOptions) (_result *AddAnswerSampleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LibId) {
@@ -63,7 +66,7 @@ func (client *Client) AddAnswerSampleWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// 创建图库
+// # Create Image Library
 //
 // @param request - AddImageLibRequest
 //
@@ -71,9 +74,11 @@ func (client *Client) AddAnswerSampleWithContext(ctx context.Context, request *A
 //
 // @return AddImageLibResponse
 func (client *Client) AddImageLibWithContext(ctx context.Context, request *AddImageLibRequest, runtime *dara.RuntimeOptions) (_result *AddImageLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -115,7 +120,7 @@ func (client *Client) AddImageLibWithContext(ctx context.Context, request *AddIm
 
 // Summary:
 //
-// 批量添加图片
+// # Add image to image lib
 //
 // @param request - AddImages2LibRequest
 //
@@ -123,9 +128,11 @@ func (client *Client) AddImageLibWithContext(ctx context.Context, request *AddIm
 //
 // @return AddImages2LibResponse
 func (client *Client) AddImages2LibWithContext(ctx context.Context, request *AddImages2LibRequest, runtime *dara.RuntimeOptions) (_result *AddImages2LibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -167,7 +174,7 @@ func (client *Client) AddImages2LibWithContext(ctx context.Context, request *Add
 
 // Summary:
 //
-// 创建关键词库
+// # Create keyword library
 //
 // @param request - AddKeywordLibRequest
 //
@@ -175,9 +182,11 @@ func (client *Client) AddImages2LibWithContext(ctx context.Context, request *Add
 //
 // @return AddKeywordLibResponse
 func (client *Client) AddKeywordLibWithContext(ctx context.Context, request *AddKeywordLibRequest, runtime *dara.RuntimeOptions) (_result *AddKeywordLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -223,7 +232,7 @@ func (client *Client) AddKeywordLibWithContext(ctx context.Context, request *Add
 
 // Summary:
 //
-// 添加关键词
+// # Add keywords
 //
 // @param request - AddKeywordsRequest
 //
@@ -231,9 +240,11 @@ func (client *Client) AddKeywordLibWithContext(ctx context.Context, request *Add
 //
 // @return AddKeywordsResponse
 func (client *Client) AddKeywordsWithContext(ctx context.Context, request *AddKeywordsRequest, runtime *dara.RuntimeOptions) (_result *AddKeywordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -279,7 +290,7 @@ func (client *Client) AddKeywordsWithContext(ctx context.Context, request *AddKe
 
 // Summary:
 //
-// 添加关键词
+// Add keywords to keyword library.
 //
 // @param request - AddKeywordsToLibRequest
 //
@@ -287,9 +298,11 @@ func (client *Client) AddKeywordsWithContext(ctx context.Context, request *AddKe
 //
 // @return AddKeywordsToLibResponse
 func (client *Client) AddKeywordsToLibWithContext(ctx context.Context, request *AddKeywordsToLibRequest, runtime *dara.RuntimeOptions) (_result *AddKeywordsToLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -335,7 +348,7 @@ func (client *Client) AddKeywordsToLibWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 取消oss扫描任务
+// # Cancel OSS detection task
 //
 // @param request - CancelStockOssCheckTaskRequest
 //
@@ -343,9 +356,11 @@ func (client *Client) AddKeywordsToLibWithContext(ctx context.Context, request *
 //
 // @return CancelStockOssCheckTaskResponse
 func (client *Client) CancelStockOssCheckTaskWithContext(ctx context.Context, request *CancelStockOssCheckTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelStockOssCheckTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -381,7 +396,7 @@ func (client *Client) CancelStockOssCheckTaskWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 复制服务
+// copy service config
 //
 // @param request - CopyServiceConfigRequest
 //
@@ -389,9 +404,11 @@ func (client *Client) CancelStockOssCheckTaskWithContext(ctx context.Context, re
 //
 // @return CopyServiceConfigResponse
 func (client *Client) CopyServiceConfigWithContext(ctx context.Context, request *CopyServiceConfigRequest, runtime *dara.RuntimeOptions) (_result *CopyServiceConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -441,7 +458,7 @@ func (client *Client) CopyServiceConfigWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 创建oss扫描任务
+// # Create stock oss check task
 //
 // @param request - CreatStockOssCheckTaskRequest
 //
@@ -449,9 +466,11 @@ func (client *Client) CopyServiceConfigWithContext(ctx context.Context, request 
 //
 // @return CreatStockOssCheckTaskResponse
 func (client *Client) CreatStockOssCheckTaskWithContext(ctx context.Context, request *CreatStockOssCheckTaskRequest, runtime *dara.RuntimeOptions) (_result *CreatStockOssCheckTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Buckets) {
@@ -599,9 +618,11 @@ func (client *Client) CreatStockOssCheckTaskWithContext(ctx context.Context, req
 //
 // @return CreateAnswerLibResponse
 func (client *Client) CreateAnswerLibWithContext(ctx context.Context, request *CreateAnswerLibRequest, runtime *dara.RuntimeOptions) (_result *CreateAnswerLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -651,7 +672,7 @@ func (client *Client) CreateAnswerLibWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 新建消息通知
+// # Create a new message notification
 //
 // @param request - CreateCallbackRequest
 //
@@ -659,9 +680,11 @@ func (client *Client) CreateAnswerLibWithContext(ctx context.Context, request *C
 //
 // @return CreateCallbackResponse
 func (client *Client) CreateCallbackWithContext(ctx context.Context, request *CreateCallbackRequest, runtime *dara.RuntimeOptions) (_result *CreateCallbackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -719,9 +742,11 @@ func (client *Client) CreateCallbackWithContext(ctx context.Context, request *Cr
 //
 // @return CreateOnlineTestResponse
 func (client *Client) CreateOnlineTestWithContext(ctx context.Context, request *CreateOnlineTestRequest, runtime *dara.RuntimeOptions) (_result *CreateOnlineTestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DataId) {
@@ -765,7 +790,7 @@ func (client *Client) CreateOnlineTestWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 创建oss扫描任务前检查
+// # Check before creating an OSS scan task
 //
 // @param request - CreatePreCheckRequest
 //
@@ -773,9 +798,11 @@ func (client *Client) CreateOnlineTestWithContext(ctx context.Context, request *
 //
 // @return CreatePreCheckResponse
 func (client *Client) CreatePreCheckWithContext(ctx context.Context, request *CreatePreCheckRequest, runtime *dara.RuntimeOptions) (_result *CreatePreCheckResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -869,9 +896,11 @@ func (client *Client) CreatePreCheckWithContext(ctx context.Context, request *Cr
 //
 // @return DeleteAnswerLibResponse
 func (client *Client) DeleteAnswerLibWithContext(ctx context.Context, request *DeleteAnswerLibRequest, runtime *dara.RuntimeOptions) (_result *DeleteAnswerLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LibId) {
@@ -915,9 +944,11 @@ func (client *Client) DeleteAnswerLibWithContext(ctx context.Context, request *D
 //
 // @return DeleteAnswerSampleResponse
 func (client *Client) DeleteAnswerSampleWithContext(ctx context.Context, request *DeleteAnswerSampleRequest, runtime *dara.RuntimeOptions) (_result *DeleteAnswerSampleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -959,7 +990,7 @@ func (client *Client) DeleteAnswerSampleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 删除消息通知
+// delete callback
 //
 // @param request - DeleteCallbackRequest
 //
@@ -967,9 +998,11 @@ func (client *Client) DeleteAnswerSampleWithContext(ctx context.Context, request
 //
 // @return DeleteCallbackResponse
 func (client *Client) DeleteCallbackWithContext(ctx context.Context, request *DeleteCallbackRequest, runtime *dara.RuntimeOptions) (_result *DeleteCallbackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1015,9 +1048,11 @@ func (client *Client) DeleteCallbackWithContext(ctx context.Context, request *De
 //
 // @return DeleteFeatureConfigResponse
 func (client *Client) DeleteFeatureConfigWithContext(ctx context.Context, request *DeleteFeatureConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteFeatureConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1067,7 +1102,7 @@ func (client *Client) DeleteFeatureConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 批量删除
+// Delete images from library.
 //
 // @param request - DeleteImagesFromLibRequest
 //
@@ -1075,9 +1110,11 @@ func (client *Client) DeleteFeatureConfigWithContext(ctx context.Context, reques
 //
 // @return DeleteImagesFromLibResponse
 func (client *Client) DeleteImagesFromLibWithContext(ctx context.Context, request *DeleteImagesFromLibRequest, runtime *dara.RuntimeOptions) (_result *DeleteImagesFromLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1119,7 +1156,7 @@ func (client *Client) DeleteImagesFromLibWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除关键词
+// # Delete keyword
 //
 // @param request - DeleteKeywordRequest
 //
@@ -1127,9 +1164,11 @@ func (client *Client) DeleteImagesFromLibWithContext(ctx context.Context, reques
 //
 // @return DeleteKeywordResponse
 func (client *Client) DeleteKeywordWithContext(ctx context.Context, request *DeleteKeywordRequest, runtime *dara.RuntimeOptions) (_result *DeleteKeywordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1175,7 +1214,7 @@ func (client *Client) DeleteKeywordWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// 删除关键词库
+// # Delete Keyword Library
 //
 // @param request - DeleteKeywordLibRequest
 //
@@ -1183,9 +1222,11 @@ func (client *Client) DeleteKeywordWithContext(ctx context.Context, request *Del
 //
 // @return DeleteKeywordLibResponse
 func (client *Client) DeleteKeywordLibWithContext(ctx context.Context, request *DeleteKeywordLibRequest, runtime *dara.RuntimeOptions) (_result *DeleteKeywordLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1231,9 +1272,11 @@ func (client *Client) DeleteKeywordLibWithContext(ctx context.Context, request *
 //
 // @return DeleteOnlineTestResponse
 func (client *Client) DeleteOnlineTestWithContext(ctx context.Context, request *DeleteOnlineTestRequest, runtime *dara.RuntimeOptions) (_result *DeleteOnlineTestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1277,9 +1320,11 @@ func (client *Client) DeleteOnlineTestWithContext(ctx context.Context, request *
 //
 // @return DescribeOnlineTestResultResponse
 func (client *Client) DescribeOnlineTestResultWithContext(ctx context.Context, request *DescribeOnlineTestResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeOnlineTestResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceType) {
@@ -1327,9 +1372,11 @@ func (client *Client) DescribeOnlineTestResultWithContext(ctx context.Context, r
 //
 // @return ExportAnswerSampleResponse
 func (client *Client) ExportAnswerSampleWithContext(ctx context.Context, request *ExportAnswerSampleRequest, runtime *dara.RuntimeOptions) (_result *ExportAnswerSampleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1367,7 +1414,7 @@ func (client *Client) ExportAnswerSampleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 导出调用量
+// # Export Call Volume
 //
 // @param request - ExportCipStatsRequest
 //
@@ -1375,9 +1422,11 @@ func (client *Client) ExportAnswerSampleWithContext(ctx context.Context, request
 //
 // @return ExportCipStatsResponse
 func (client *Client) ExportCipStatsWithContext(ctx context.Context, request *ExportCipStatsRequest, runtime *dara.RuntimeOptions) (_result *ExportCipStatsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1447,7 +1496,7 @@ func (client *Client) ExportCipStatsWithContext(ctx context.Context, request *Ex
 
 // Summary:
 //
-// 导出关键词
+// # Export Keywords
 //
 // @param request - ExportKeywordRequest
 //
@@ -1455,9 +1504,11 @@ func (client *Client) ExportCipStatsWithContext(ctx context.Context, request *Ex
 //
 // @return ExportKeywordResponse
 func (client *Client) ExportKeywordWithContext(ctx context.Context, request *ExportKeywordRequest, runtime *dara.RuntimeOptions) (_result *ExportKeywordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1495,7 +1546,7 @@ func (client *Client) ExportKeywordWithContext(ctx context.Context, request *Exp
 
 // Summary:
 //
-// oss用量统计导出
+// # OSS Usage Statistics Export
 //
 // @param request - ExportOssCheckStatRequest
 //
@@ -1503,9 +1554,11 @@ func (client *Client) ExportKeywordWithContext(ctx context.Context, request *Exp
 //
 // @return ExportOssCheckStatResponse
 func (client *Client) ExportOssCheckStatWithContext(ctx context.Context, request *ExportOssCheckStatRequest, runtime *dara.RuntimeOptions) (_result *ExportOssCheckStatResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1555,7 +1608,7 @@ func (client *Client) ExportOssCheckStatWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 导出oss扫描结果
+// # Export OSS scan results
 //
 // @param tmpReq - ExportResultRequest
 //
@@ -1563,9 +1616,11 @@ func (client *Client) ExportOssCheckStatWithContext(ctx context.Context, request
 //
 // @return ExportResultResponse
 func (client *Client) ExportResultWithContext(ctx context.Context, tmpReq *ExportResultRequest, runtime *dara.RuntimeOptions) (_result *ExportResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExportResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1633,7 +1688,7 @@ func (client *Client) ExportResultWithContext(ctx context.Context, tmpReq *Expor
 
 // Summary:
 //
-// 导出调用结果，excel文件
+// # Export scan results, Excel file
 //
 // @param tmpReq - ExportScanResultRequest
 //
@@ -1641,9 +1696,11 @@ func (client *Client) ExportResultWithContext(ctx context.Context, tmpReq *Expor
 //
 // @return ExportScanResultResponse
 func (client *Client) ExportScanResultWithContext(ctx context.Context, tmpReq *ExportScanResultRequest, runtime *dara.RuntimeOptions) (_result *ExportScanResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExportScanResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1715,7 +1772,7 @@ func (client *Client) ExportScanResultWithContext(ctx context.Context, tmpReq *E
 
 // Summary:
 //
-// 导出调用结果，excel文件
+// # Export text scan results, Excel file
 //
 // @param tmpReq - ExportTextScanResultRequest
 //
@@ -1723,9 +1780,11 @@ func (client *Client) ExportScanResultWithContext(ctx context.Context, tmpReq *E
 //
 // @return ExportTextScanResultResponse
 func (client *Client) ExportTextScanResultWithContext(ctx context.Context, tmpReq *ExportTextScanResultRequest, runtime *dara.RuntimeOptions) (_result *ExportTextScanResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExportTextScanResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1785,9 +1844,11 @@ func (client *Client) ExportTextScanResultWithContext(ctx context.Context, tmpRe
 //
 // @return GetAnswerImportProgressResponse
 func (client *Client) GetAnswerImportProgressWithContext(ctx context.Context, request *GetAnswerImportProgressRequest, runtime *dara.RuntimeOptions) (_result *GetAnswerImportProgressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1823,7 +1884,7 @@ func (client *Client) GetAnswerImportProgressWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 证据转存获取用户bucket列表
+// Evidence Transfer to Get User\\"s Bucket List
 //
 // @param request - GetBackupBucketsListRequest
 //
@@ -1831,9 +1892,11 @@ func (client *Client) GetAnswerImportProgressWithContext(ctx context.Context, re
 //
 // @return GetBackupBucketsListResponse
 func (client *Client) GetBackupBucketsListWithContext(ctx context.Context, request *GetBackupBucketsListRequest, runtime *dara.RuntimeOptions) (_result *GetBackupBucketsListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1865,7 +1928,7 @@ func (client *Client) GetBackupBucketsListWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取证据转存配置
+// # Get Evidence Backup Configuration
 //
 // @param request - GetBackupConfigRequest
 //
@@ -1873,9 +1936,11 @@ func (client *Client) GetBackupBucketsListWithContext(ctx context.Context, reque
 //
 // @return GetBackupConfigResponse
 func (client *Client) GetBackupConfigWithContext(ctx context.Context, request *GetBackupConfigRequest, runtime *dara.RuntimeOptions) (_result *GetBackupConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1915,7 +1980,7 @@ func (client *Client) GetBackupConfigWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 用户授权校验
+// # User Backup Authorization Verification
 //
 // @param request - GetBackupStatusRequest
 //
@@ -1923,9 +1988,11 @@ func (client *Client) GetBackupConfigWithContext(ctx context.Context, request *G
 //
 // @return GetBackupStatusResponse
 func (client *Client) GetBackupStatusWithContext(ctx context.Context, request *GetBackupStatusRequest, runtime *dara.RuntimeOptions) (_result *GetBackupStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1957,7 +2024,7 @@ func (client *Client) GetBackupStatusWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// bucket列表
+// # Get User OSS Scan Bucket List
 //
 // @param request - GetBucketsListRequest
 //
@@ -1965,9 +2032,11 @@ func (client *Client) GetBackupStatusWithContext(ctx context.Context, request *G
 //
 // @return GetBucketsListResponse
 func (client *Client) GetBucketsListWithContext(ctx context.Context, request *GetBucketsListRequest, runtime *dara.RuntimeOptions) (_result *GetBucketsListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2007,9 +2076,11 @@ func (client *Client) GetBucketsListWithContext(ctx context.Context, request *Ge
 //
 // @return GetCipStatsResponse
 func (client *Client) GetCipStatsWithContext(ctx context.Context, request *GetCipStatsRequest, runtime *dara.RuntimeOptions) (_result *GetCipStatsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2075,7 +2146,7 @@ func (client *Client) GetCipStatsWithContext(ctx context.Context, request *GetCi
 
 // Summary:
 //
-// 获取定时任务预计执行时间
+// # Get Scheduled  OSS Scan  Task Estimated Execution Time
 //
 // @param request - GetExecuteTimeRequest
 //
@@ -2083,9 +2154,11 @@ func (client *Client) GetCipStatsWithContext(ctx context.Context, request *GetCi
 //
 // @return GetExecuteTimeResponse
 func (client *Client) GetExecuteTimeWithContext(ctx context.Context, request *GetExecuteTimeRequest, runtime *dara.RuntimeOptions) (_result *GetExecuteTimeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2125,9 +2198,11 @@ func (client *Client) GetExecuteTimeWithContext(ctx context.Context, request *Ge
 //
 // @return GetFeatureConfigResponse
 func (client *Client) GetFeatureConfigWithContext(ctx context.Context, request *GetFeatureConfigRequest, runtime *dara.RuntimeOptions) (_result *GetFeatureConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2177,7 +2252,7 @@ func (client *Client) GetFeatureConfigWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取图片规则标签信息
+// # Get Image Rule Label Information
 //
 // @param request - GetImageSceneLabelConfRequest
 //
@@ -2185,9 +2260,11 @@ func (client *Client) GetFeatureConfigWithContext(ctx context.Context, request *
 //
 // @return GetImageSceneLabelConfResponse
 func (client *Client) GetImageSceneLabelConfWithContext(ctx context.Context, request *GetImageSceneLabelConfRequest, runtime *dara.RuntimeOptions) (_result *GetImageSceneLabelConfResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2219,7 +2296,7 @@ func (client *Client) GetImageSceneLabelConfWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取图片规则标签信息
+// # Get Image Rule Label Information
 //
 // @param request - GetImageSceneLabelListConfRequest
 //
@@ -2227,9 +2304,11 @@ func (client *Client) GetImageSceneLabelConfWithContext(ctx context.Context, req
 //
 // @return GetImageSceneLabelListConfResponse
 func (client *Client) GetImageSceneLabelListConfWithContext(ctx context.Context, request *GetImageSceneLabelListConfRequest, runtime *dara.RuntimeOptions) (_result *GetImageSceneLabelListConfResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageServiceCode) {
@@ -2265,7 +2344,7 @@ func (client *Client) GetImageSceneLabelListConfWithContext(ctx context.Context,
 
 // Summary:
 //
-// oss定时扫描检测周期查询
+// # OSS scheduled scan detection cycle query
 //
 // @param tmpReq - GetJobNameListRequest
 //
@@ -2273,9 +2352,11 @@ func (client *Client) GetImageSceneLabelListConfWithContext(ctx context.Context,
 //
 // @return GetJobNameListResponse
 func (client *Client) GetJobNameListWithContext(ctx context.Context, tmpReq *GetJobNameListRequest, runtime *dara.RuntimeOptions) (_result *GetJobNameListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetJobNameListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2329,7 +2410,7 @@ func (client *Client) GetJobNameListWithContext(ctx context.Context, tmpReq *Get
 
 // Summary:
 //
-// 查询导入关键词结果
+// # Query the result of keyword import
 //
 // @param request - GetKeywordImportResultRequest
 //
@@ -2337,9 +2418,11 @@ func (client *Client) GetJobNameListWithContext(ctx context.Context, tmpReq *Get
 //
 // @return GetKeywordImportResultResponse
 func (client *Client) GetKeywordImportResultWithContext(ctx context.Context, request *GetKeywordImportResultRequest, runtime *dara.RuntimeOptions) (_result *GetKeywordImportResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2377,7 +2460,7 @@ func (client *Client) GetKeywordImportResultWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 关键词库信息
+// # Keyword Library Information
 //
 // @param request - GetKeywordLibRequest
 //
@@ -2385,9 +2468,11 @@ func (client *Client) GetKeywordImportResultWithContext(ctx context.Context, req
 //
 // @return GetKeywordLibResponse
 func (client *Client) GetKeywordLibWithContext(ctx context.Context, request *GetKeywordLibRequest, runtime *dara.RuntimeOptions) (_result *GetKeywordLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2425,7 +2510,7 @@ func (client *Client) GetKeywordLibWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// oss冻结结果查询
+// # Query OSS freeze result
 //
 // @param tmpReq - GetOssCheckFreezeResultRequest
 //
@@ -2433,9 +2518,11 @@ func (client *Client) GetKeywordLibWithContext(ctx context.Context, request *Get
 //
 // @return GetOssCheckFreezeResultResponse
 func (client *Client) GetOssCheckFreezeResultWithContext(ctx context.Context, tmpReq *GetOssCheckFreezeResultRequest, runtime *dara.RuntimeOptions) (_result *GetOssCheckFreezeResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetOssCheckFreezeResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2505,7 +2592,7 @@ func (client *Client) GetOssCheckFreezeResultWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// oss结果详情
+// # OSS result details
 //
 // @param request - GetOssCheckResultDetailRequest
 //
@@ -2513,9 +2600,11 @@ func (client *Client) GetOssCheckFreezeResultWithContext(ctx context.Context, tm
 //
 // @return GetOssCheckResultDetailResponse
 func (client *Client) GetOssCheckResultDetailWithContext(ctx context.Context, request *GetOssCheckResultDetailRequest, runtime *dara.RuntimeOptions) (_result *GetOssCheckResultDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bucket) {
@@ -2571,7 +2660,7 @@ func (client *Client) GetOssCheckResultDetailWithContext(ctx context.Context, re
 
 // Summary:
 //
-// oss用量统计
+// # OSS Check Usage Statistics
 //
 // @param request - GetOssCheckStatRequest
 //
@@ -2579,9 +2668,11 @@ func (client *Client) GetOssCheckResultDetailWithContext(ctx context.Context, re
 //
 // @return GetOssCheckStatResponse
 func (client *Client) GetOssCheckStatWithContext(ctx context.Context, request *GetOssCheckStatRequest, runtime *dara.RuntimeOptions) (_result *GetOssCheckStatResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2631,7 +2722,7 @@ func (client *Client) GetOssCheckStatWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 获取OSS检测用户状态
+// # Get User OSS check user status
 //
 // @param request - GetOssCheckStatusRequest
 //
@@ -2639,9 +2730,11 @@ func (client *Client) GetOssCheckStatWithContext(ctx context.Context, request *G
 //
 // @return GetOssCheckStatusResponse
 func (client *Client) GetOssCheckStatusWithContext(ctx context.Context, request *GetOssCheckStatusRequest, runtime *dara.RuntimeOptions) (_result *GetOssCheckStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2681,9 +2774,11 @@ func (client *Client) GetOssCheckStatusWithContext(ctx context.Context, request 
 //
 // @return GetOssCheckTaskInfoResponse
 func (client *Client) GetOssCheckTaskInfoWithContext(ctx context.Context, request *GetOssCheckTaskInfoRequest, runtime *dara.RuntimeOptions) (_result *GetOssCheckTaskInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ParentTaskId) {
@@ -2715,7 +2810,7 @@ func (client *Client) GetOssCheckTaskInfoWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 用户待检测信息
+// # User OSS Check Task Pending Inspection Information
 //
 // @param request - GetScanNumRequest
 //
@@ -2723,9 +2818,11 @@ func (client *Client) GetOssCheckTaskInfoWithContext(ctx context.Context, reques
 //
 // @return GetScanNumResponse
 func (client *Client) GetScanNumWithContext(ctx context.Context, request *GetScanNumRequest, runtime *dara.RuntimeOptions) (_result *GetScanNumResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Buckets) {
@@ -2765,7 +2862,7 @@ func (client *Client) GetScanNumWithContext(ctx context.Context, request *GetSca
 
 // Summary:
 //
-// 查询调用结果
+// # Query the Scan results
 //
 // @param tmpReq - GetScanResultRequest
 //
@@ -2773,9 +2870,11 @@ func (client *Client) GetScanNumWithContext(ctx context.Context, request *GetSca
 //
 // @return GetScanResultResponse
 func (client *Client) GetScanResultWithContext(ctx context.Context, tmpReq *GetScanResultRequest, runtime *dara.RuntimeOptions) (_result *GetScanResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetScanResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2847,7 +2946,7 @@ func (client *Client) GetScanResultWithContext(ctx context.Context, tmpReq *GetS
 
 // Summary:
 //
-// 获取单个服务
+// # Get a Single Service Configuration
 //
 // @param request - GetServiceConfRequest
 //
@@ -2855,9 +2954,11 @@ func (client *Client) GetScanResultWithContext(ctx context.Context, tmpReq *GetS
 //
 // @return GetServiceConfResponse
 func (client *Client) GetServiceConfWithContext(ctx context.Context, request *GetServiceConfRequest, runtime *dara.RuntimeOptions) (_result *GetServiceConfResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2907,7 +3008,7 @@ func (client *Client) GetServiceConfWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 获取单个服务
+// # Get a Single Service Configuration
 //
 // @param request - GetServiceConfigRequest
 //
@@ -2915,9 +3016,11 @@ func (client *Client) GetServiceConfWithContext(ctx context.Context, request *Ge
 //
 // @return GetServiceConfigResponse
 func (client *Client) GetServiceConfigWithContext(ctx context.Context, request *GetServiceConfigRequest, runtime *dara.RuntimeOptions) (_result *GetServiceConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2959,7 +3062,7 @@ func (client *Client) GetServiceConfigWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取单个服务的标签配置
+// # Get the label configuration of a single service
 //
 // @param request - GetServiceLabelConfigRequest
 //
@@ -2967,9 +3070,11 @@ func (client *Client) GetServiceConfigWithContext(ctx context.Context, request *
 //
 // @return GetServiceLabelConfigResponse
 func (client *Client) GetServiceLabelConfigWithContext(ctx context.Context, request *GetServiceLabelConfigRequest, runtime *dara.RuntimeOptions) (_result *GetServiceLabelConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3011,7 +3116,7 @@ func (client *Client) GetServiceLabelConfigWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询oss扫描任务列表
+// # Query OSS Scan Task List
 //
 // @param tmpReq - GetStockOssCheckTasksListRequest
 //
@@ -3019,9 +3124,11 @@ func (client *Client) GetServiceLabelConfigWithContext(ctx context.Context, requ
 //
 // @return GetStockOssCheckTasksListResponse
 func (client *Client) GetStockOssCheckTasksListWithContext(ctx context.Context, tmpReq *GetStockOssCheckTasksListRequest, runtime *dara.RuntimeOptions) (_result *GetStockOssCheckTasksListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetStockOssCheckTasksListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3093,7 +3200,7 @@ func (client *Client) GetStockOssCheckTasksListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询调用结果
+// # Query the invocation result
 //
 // @param tmpReq - GetTextScanResultRequest
 //
@@ -3101,9 +3208,11 @@ func (client *Client) GetStockOssCheckTasksListWithContext(ctx context.Context, 
 //
 // @return GetTextScanResultResponse
 func (client *Client) GetTextScanResultWithContext(ctx context.Context, tmpReq *GetTextScanResultRequest, runtime *dara.RuntimeOptions) (_result *GetTextScanResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetTextScanResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3171,7 +3280,7 @@ func (client *Client) GetTextScanResultWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 文件上传获取相应信息
+// # Get the corresponding information for file upload
 //
 // @param request - GetUploadInfoRequest
 //
@@ -3179,9 +3288,11 @@ func (client *Client) GetTextScanResultWithContext(ctx context.Context, tmpReq *
 //
 // @return GetUploadInfoResponse
 func (client *Client) GetUploadInfoWithContext(ctx context.Context, request *GetUploadInfoRequest, runtime *dara.RuntimeOptions) (_result *GetUploadInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3231,9 +3342,11 @@ func (client *Client) GetUploadInfoWithContext(ctx context.Context, request *Get
 //
 // @return GetUploadLinkResponse
 func (client *Client) GetUploadLinkWithContext(ctx context.Context, request *GetUploadLinkRequest, runtime *dara.RuntimeOptions) (_result *GetUploadLinkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.UploadUrl) {
@@ -3265,7 +3378,7 @@ func (client *Client) GetUploadLinkWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 获取用户购买状态
+// # Get User Purchase Status
 //
 // @param request - GetUserBuyStatusRequest
 //
@@ -3273,9 +3386,11 @@ func (client *Client) GetUploadLinkWithContext(ctx context.Context, request *Get
 //
 // @return GetUserBuyStatusResponse
 func (client *Client) GetUserBuyStatusWithContext(ctx context.Context, request *GetUserBuyStatusRequest, runtime *dara.RuntimeOptions) (_result *GetUserBuyStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3321,9 +3436,11 @@ func (client *Client) GetUserBuyStatusWithContext(ctx context.Context, request *
 //
 // @return ListAnswerLibResponse
 func (client *Client) ListAnswerLibWithContext(ctx context.Context, request *ListAnswerLibRequest, runtime *dara.RuntimeOptions) (_result *ListAnswerLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3355,7 +3472,7 @@ func (client *Client) ListAnswerLibWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 消息通知列表
+// # Get Callback List
 //
 // @param request - ListCallbackRequest
 //
@@ -3363,9 +3480,11 @@ func (client *Client) ListAnswerLibWithContext(ctx context.Context, request *Lis
 //
 // @return ListCallbackResponse
 func (client *Client) ListCallbackWithContext(ctx context.Context, request *ListCallbackRequest, runtime *dara.RuntimeOptions) (_result *ListCallbackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3397,7 +3516,7 @@ func (client *Client) ListCallbackWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 图库列表
+// # Image Library List
 //
 // @param request - ListImageLibRequest
 //
@@ -3405,9 +3524,11 @@ func (client *Client) ListCallbackWithContext(ctx context.Context, request *List
 //
 // @return ListImageLibResponse
 func (client *Client) ListImageLibWithContext(ctx context.Context, request *ListImageLibRequest, runtime *dara.RuntimeOptions) (_result *ListImageLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3439,7 +3560,7 @@ func (client *Client) ListImageLibWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 图片列表 分页
+// # Paged Image List
 //
 // @param tmpReq - ListImagesFromLibRequest
 //
@@ -3447,9 +3568,11 @@ func (client *Client) ListImageLibWithContext(ctx context.Context, request *List
 //
 // @return ListImagesFromLibResponse
 func (client *Client) ListImagesFromLibWithContext(ctx context.Context, tmpReq *ListImagesFromLibRequest, runtime *dara.RuntimeOptions) (_result *ListImagesFromLibResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListImagesFromLibShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3517,7 +3640,7 @@ func (client *Client) ListImagesFromLibWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 关键词库列表
+// # Keyword Library List
 //
 // @param request - ListKeywordLibsRequest
 //
@@ -3525,9 +3648,11 @@ func (client *Client) ListImagesFromLibWithContext(ctx context.Context, tmpReq *
 //
 // @return ListKeywordLibsResponse
 func (client *Client) ListKeywordLibsWithContext(ctx context.Context, request *ListKeywordLibsRequest, runtime *dara.RuntimeOptions) (_result *ListKeywordLibsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3559,7 +3684,7 @@ func (client *Client) ListKeywordLibsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 查询关键词列表
+// # Query Keyword List
 //
 // @param tmpReq - ListKeywordsRequest
 //
@@ -3567,9 +3692,11 @@ func (client *Client) ListKeywordLibsWithContext(ctx context.Context, request *L
 //
 // @return ListKeywordsResponse
 func (client *Client) ListKeywordsWithContext(ctx context.Context, tmpReq *ListKeywordsRequest, runtime *dara.RuntimeOptions) (_result *ListKeywordsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListKeywordsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3629,7 +3756,7 @@ func (client *Client) ListKeywordsWithContext(ctx context.Context, tmpReq *ListK
 
 // Summary:
 //
-// oss扫描结果查询
+// query OSS scan result list
 //
 // @param tmpReq - ListOssCheckResultRequest
 //
@@ -3637,9 +3764,11 @@ func (client *Client) ListKeywordsWithContext(ctx context.Context, tmpReq *ListK
 //
 // @return ListOssCheckResultResponse
 func (client *Client) ListOssCheckResultWithContext(ctx context.Context, tmpReq *ListOssCheckResultRequest, runtime *dara.RuntimeOptions) (_result *ListOssCheckResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListOssCheckResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3709,7 +3838,7 @@ func (client *Client) ListOssCheckResultWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 获取服务列表
+// # Get Service List
 //
 // @param request - ListServiceConfigsRequest
 //
@@ -3717,9 +3846,11 @@ func (client *Client) ListOssCheckResultWithContext(ctx context.Context, tmpReq 
 //
 // @return ListServiceConfigsResponse
 func (client *Client) ListServiceConfigsWithContext(ctx context.Context, request *ListServiceConfigsRequest, runtime *dara.RuntimeOptions) (_result *ListServiceConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Classify) {
@@ -3765,7 +3896,22 @@ func (client *Client) ListServiceConfigsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 使用SSE接口流式调用大模型
+// # Use SSE interface to stream large model calls
+//
+// @param request - LlmStreamChatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LlmStreamChatResponse
+func (client *Client) LlmStreamChatWithSSECtx(ctx context.Context, request *LlmStreamChatRequest, runtime *dara.RuntimeOptions, _yield chan *LlmStreamChatResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.llmStreamChatWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, runtime)
+	return
+}
+
+// Summary:
+//
+// # Use SSE interface to stream large model calls
 //
 // @param request - LlmStreamChatRequest
 //
@@ -3773,9 +3919,11 @@ func (client *Client) ListServiceConfigsWithContext(ctx context.Context, request
 //
 // @return LlmStreamChatResponse
 func (client *Client) LlmStreamChatWithContext(ctx context.Context, request *LlmStreamChatRequest, runtime *dara.RuntimeOptions) (_result *LlmStreamChatResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Messages) {
@@ -3788,6 +3936,10 @@ func (client *Client) LlmStreamChatWithContext(ctx context.Context, request *Llm
 
 	if !dara.IsNil(request.TopP) {
 		body["TopP"] = request.TopP
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3823,9 +3975,11 @@ func (client *Client) LlmStreamChatWithContext(ctx context.Context, request *Llm
 //
 // @return ModifyAnswerLibResponse
 func (client *Client) ModifyAnswerLibWithContext(ctx context.Context, request *ModifyAnswerLibRequest, runtime *dara.RuntimeOptions) (_result *ModifyAnswerLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LibId) {
@@ -3865,7 +4019,7 @@ func (client *Client) ModifyAnswerLibWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// 修改消息通知
+// # Modify Message Notification
 //
 // @param request - ModifyCallbackRequest
 //
@@ -3873,9 +4027,11 @@ func (client *Client) ModifyAnswerLibWithContext(ctx context.Context, request *M
 //
 // @return ModifyCallbackResponse
 func (client *Client) ModifyCallbackWithContext(ctx context.Context, request *ModifyCallbackRequest, runtime *dara.RuntimeOptions) (_result *ModifyCallbackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3929,7 +4085,7 @@ func (client *Client) ModifyCallbackWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// # Save Feature Configuration
+// 保存特性配置
 //
 // @param request - ModifyFeatureConfigRequest
 //
@@ -3937,9 +4093,11 @@ func (client *Client) ModifyCallbackWithContext(ctx context.Context, request *Mo
 //
 // @return ModifyFeatureConfigResponse
 func (client *Client) ModifyFeatureConfigWithContext(ctx context.Context, request *ModifyFeatureConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyFeatureConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3997,7 +4155,7 @@ func (client *Client) ModifyFeatureConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 编辑服务
+// # Edit Service
 //
 // @param request - ModifyServiceInfoRequest
 //
@@ -4005,9 +4163,11 @@ func (client *Client) ModifyFeatureConfigWithContext(ctx context.Context, reques
 //
 // @return ModifyServiceInfoResponse
 func (client *Client) ModifyServiceInfoWithContext(ctx context.Context, request *ModifyServiceInfoRequest, runtime *dara.RuntimeOptions) (_result *ModifyServiceInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -4065,9 +4225,11 @@ func (client *Client) ModifyServiceInfoWithContext(ctx context.Context, request 
 //
 // @return OssCheckResultListResponse
 func (client *Client) OssCheckResultListWithContext(ctx context.Context, tmpReq *OssCheckResultListRequest, runtime *dara.RuntimeOptions) (_result *OssCheckResultListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &OssCheckResultListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4145,9 +4307,11 @@ func (client *Client) OssCheckResultListWithContext(ctx context.Context, tmpReq 
 //
 // @return QueryAnswerSampleByPageResponse
 func (client *Client) QueryAnswerSampleByPageWithContext(ctx context.Context, tmpReq *QueryAnswerSampleByPageRequest, runtime *dara.RuntimeOptions) (_result *QueryAnswerSampleByPageResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryAnswerSampleByPageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4205,7 +4369,7 @@ func (client *Client) QueryAnswerSampleByPageWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 查询单个回调配置
+// # Query a Single Callback Configuration
 //
 // @param request - QueryCallbackRequest
 //
@@ -4213,9 +4377,11 @@ func (client *Client) QueryAnswerSampleByPageWithContext(ctx context.Context, tm
 //
 // @return QueryCallbackResponse
 func (client *Client) QueryCallbackWithContext(ctx context.Context, request *QueryCallbackRequest, runtime *dara.RuntimeOptions) (_result *QueryCallbackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -4257,7 +4423,7 @@ func (client *Client) QueryCallbackWithContext(ctx context.Context, request *Que
 
 // Summary:
 //
-// 消息通知
+// # Paginated Query of Message Notification List
 //
 // @param request - QueryCallbackByPageRequest
 //
@@ -4265,9 +4431,11 @@ func (client *Client) QueryCallbackWithContext(ctx context.Context, request *Que
 //
 // @return QueryCallbackByPageResponse
 func (client *Client) QueryCallbackByPageWithContext(ctx context.Context, request *QueryCallbackByPageRequest, runtime *dara.RuntimeOptions) (_result *QueryCallbackByPageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -4317,9 +4485,11 @@ func (client *Client) QueryCallbackByPageWithContext(ctx context.Context, reques
 //
 // @return StopOnlineTestResponse
 func (client *Client) StopOnlineTestWithContext(ctx context.Context, request *StopOnlineTestRequest, runtime *dara.RuntimeOptions) (_result *StopOnlineTestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceType) {
@@ -4359,7 +4529,7 @@ func (client *Client) StopOnlineTestWithContext(ctx context.Context, request *St
 
 // Summary:
 //
-// 更新证据转存配置
+// # Update Evidence Backup Configuration
 //
 // @param request - UpdateBackupConfigRequest
 //
@@ -4367,9 +4537,11 @@ func (client *Client) StopOnlineTestWithContext(ctx context.Context, request *St
 //
 // @return UpdateBackupConfigResponse
 func (client *Client) UpdateBackupConfigWithContext(ctx context.Context, request *UpdateBackupConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateBackupConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupConfig) {
@@ -4413,7 +4585,7 @@ func (client *Client) UpdateBackupConfigWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 编辑图库
+// # Edit Image Library
 //
 // @param request - UpdateImageLibRequest
 //
@@ -4421,9 +4593,11 @@ func (client *Client) UpdateBackupConfigWithContext(ctx context.Context, request
 //
 // @return UpdateImageLibResponse
 func (client *Client) UpdateImageLibWithContext(ctx context.Context, request *UpdateImageLibRequest, runtime *dara.RuntimeOptions) (_result *UpdateImageLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -4473,7 +4647,7 @@ func (client *Client) UpdateImageLibWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// 编辑图库免检配置
+// # Edit Image Library Free Inspection Configuration
 //
 // @param tmpReq - UpdateImageLibFreeInspectionRequest
 //
@@ -4481,9 +4655,11 @@ func (client *Client) UpdateImageLibWithContext(ctx context.Context, request *Up
 //
 // @return UpdateImageLibFreeInspectionResponse
 func (client *Client) UpdateImageLibFreeInspectionWithContext(ctx context.Context, tmpReq *UpdateImageLibFreeInspectionRequest, runtime *dara.RuntimeOptions) (_result *UpdateImageLibFreeInspectionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateImageLibFreeInspectionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4527,7 +4703,7 @@ func (client *Client) UpdateImageLibFreeInspectionWithContext(ctx context.Contex
 
 // Summary:
 //
-// 编辑关键词库
+// # Edit Keyword Library
 //
 // @param request - UpdateKeywordLibRequest
 //
@@ -4535,9 +4711,11 @@ func (client *Client) UpdateImageLibFreeInspectionWithContext(ctx context.Contex
 //
 // @return UpdateKeywordLibResponse
 func (client *Client) UpdateKeywordLibWithContext(ctx context.Context, request *UpdateKeywordLibRequest, runtime *dara.RuntimeOptions) (_result *UpdateKeywordLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -4587,9 +4765,11 @@ func (client *Client) UpdateKeywordLibWithContext(ctx context.Context, request *
 //
 // @return UpdateOssCheckResultsBatchFeedbackResponse
 func (client *Client) UpdateOssCheckResultsBatchFeedbackWithContext(ctx context.Context, request *UpdateOssCheckResultsBatchFeedbackRequest, runtime *dara.RuntimeOptions) (_result *UpdateOssCheckResultsBatchFeedbackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Feedback) {
@@ -4637,9 +4817,11 @@ func (client *Client) UpdateOssCheckResultsBatchFeedbackWithContext(ctx context.
 //
 // @return UpdateOssCheckResultsFeedBackResponse
 func (client *Client) UpdateOssCheckResultsFeedBackWithContext(ctx context.Context, request *UpdateOssCheckResultsFeedBackRequest, runtime *dara.RuntimeOptions) (_result *UpdateOssCheckResultsFeedBackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Feedback) {
@@ -4695,9 +4877,11 @@ func (client *Client) UpdateOssCheckResultsFeedBackWithContext(ctx context.Conte
 //
 // @return UpdateOssCheckResultsFreezeResponse
 func (client *Client) UpdateOssCheckResultsFreezeWithContext(ctx context.Context, request *UpdateOssCheckResultsFreezeRequest, runtime *dara.RuntimeOptions) (_result *UpdateOssCheckResultsFreezeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -4761,9 +4945,11 @@ func (client *Client) UpdateOssCheckResultsFreezeWithContext(ctx context.Context
 //
 // @return UpdateOssCheckResultsUnfreezeResponse
 func (client *Client) UpdateOssCheckResultsUnfreezeWithContext(ctx context.Context, request *UpdateOssCheckResultsUnfreezeRequest, runtime *dara.RuntimeOptions) (_result *UpdateOssCheckResultsUnfreezeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -4811,7 +4997,7 @@ func (client *Client) UpdateOssCheckResultsUnfreezeWithContext(ctx context.Conte
 
 // Summary:
 //
-// 检测结果反馈
+// # Feedback on Scan Results
 //
 // @param request - UpdateScanResultFeedbackRequest
 //
@@ -4819,9 +5005,11 @@ func (client *Client) UpdateOssCheckResultsUnfreezeWithContext(ctx context.Conte
 //
 // @return UpdateScanResultFeedbackResponse
 func (client *Client) UpdateScanResultFeedbackWithContext(ctx context.Context, request *UpdateScanResultFeedbackRequest, runtime *dara.RuntimeOptions) (_result *UpdateScanResultFeedbackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -4883,9 +5071,11 @@ func (client *Client) UpdateScanResultFeedbackWithContext(ctx context.Context, r
 //
 // @return UpdateServiceConfigResponse
 func (client *Client) UpdateServiceConfigWithContext(ctx context.Context, request *UpdateServiceConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateServiceConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -4955,4 +5145,62 @@ func (client *Client) UpdateServiceConfigWithContext(ctx context.Context, reques
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+func (client *Client) llmStreamChatWithSSECtx_opYieldFunc(_yield chan *LlmStreamChatResponse, _yieldErr chan error, ctx context.Context, request *LlmStreamChatRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Messages) {
+		body["Messages"] = request.Messages
+	}
+
+	if !dara.IsNil(request.Temperature) {
+		body["Temperature"] = request.Temperature
+	}
+
+	if !dara.IsNil(request.TopP) {
+		body["TopP"] = request.TopP
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("LlmStreamChat"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
 }

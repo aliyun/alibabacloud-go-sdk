@@ -16,10 +16,14 @@ type iExportKeywordRequest interface {
 }
 
 type ExportKeywordRequest struct {
+  // Keyword library ID.
+  // 
   // example:
   // 
   // customxx_xxxx
   LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+  // Region ID.
+  // 
   // example:
   // 
   // cn-shanghai

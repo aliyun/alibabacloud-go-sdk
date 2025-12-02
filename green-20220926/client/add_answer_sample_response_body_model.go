@@ -80,7 +80,12 @@ func (s *AddAnswerSampleResponseBody) SetTaskId(v string) *AddAnswerSampleRespon
 }
 
 func (s *AddAnswerSampleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddAnswerSampleResponseBodyResult struct {

@@ -16,10 +16,14 @@ type iGetExecuteTimeResponseBody interface {
 }
 
 type GetExecuteTimeResponseBody struct {
+	// Returned data.
+	//
 	// example:
 	//
 	// 02:24:30
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****

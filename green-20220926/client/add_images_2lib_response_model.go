@@ -59,5 +59,10 @@ func (s *AddImages2LibResponse) SetBody(v *AddImages2LibResponseBody) *AddImages
 }
 
 func (s *AddImages2LibResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

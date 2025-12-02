@@ -16,10 +16,14 @@ type iModifyCallbackResponseBody interface {
 }
 
 type ModifyCallbackResponseBody struct {
+	// Return result.
+	//
 	// example:
 	//
 	// True
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****

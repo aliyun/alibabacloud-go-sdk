@@ -59,5 +59,10 @@ func (s *GetImageSceneLabelConfResponse) SetBody(v *GetImageSceneLabelConfRespon
 }
 
 func (s *GetImageSceneLabelConfResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

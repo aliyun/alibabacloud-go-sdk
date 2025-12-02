@@ -16,7 +16,10 @@ type iListCallbackResponseBody interface {
 }
 
 type ListCallbackResponseBody struct {
+	// Returned data.
 	Data []*ListCallbackResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
@@ -50,43 +53,69 @@ func (s *ListCallbackResponseBody) SetRequestId(v string) *ListCallbackResponseB
 }
 
 func (s *ListCallbackResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCallbackResponseBodyData struct {
+	// Encryption algorithm.
+	//
 	// example:
 	//
 	// SHA256
 	CryptType *string `json:"CryptType,omitempty" xml:"CryptType,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2024-06-03 15:20:14
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Modification time.
+	//
 	// example:
 	//
 	// 2024-06-03 15:20:14
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Primary key ID.
+	//
 	// example:
 	//
 	// 11234
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Name.
+	//
+	// example:
+	//
+	// 回调通知
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Result scope.
+	//
 	// example:
 	//
 	// all
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// Seed。
+	// Seed.
 	//
 	// example:
 	//
 	// cbupVnpBjkgjFxfINMHKkrHS-1zZPUm
 	Seed *string `json:"Seed,omitempty" xml:"Seed,omitempty"`
-	// UID。
+	// UID.
 	//
 	// example:
 	//
 	// 16537*****831937
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// Callback URL.
+	//
 	// example:
 	//
 	// https://console.aliyun.com/

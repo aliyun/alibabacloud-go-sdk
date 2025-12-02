@@ -16,7 +16,10 @@ type iGetJobNameListResponseBody interface {
 }
 
 type GetJobNameListResponseBody struct {
+	// Returned data.
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****

@@ -257,7 +257,12 @@ func (s *GetOssCheckTaskInfoResponseBody) SetTaskType(v string) *GetOssCheckTask
 }
 
 func (s *GetOssCheckTaskInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOssCheckTaskInfoResponseBodyConfig struct {
@@ -574,7 +579,21 @@ func (s *GetOssCheckTaskInfoResponseBodyConfig) SetUserFreezeConfig(v *GetOssChe
 }
 
 func (s *GetOssCheckTaskInfoResponseBodyConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ScanServiceInfos != nil {
+		for _, item := range s.ScanServiceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserFreezeConfig != nil {
+		if err := s.UserFreezeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOssCheckTaskInfoResponseBodyConfigScanServiceInfos struct {

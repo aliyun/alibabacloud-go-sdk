@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -85,9 +86,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AddAnswerSampleResponse
 func (client *Client) AddAnswerSampleWithOptions(request *AddAnswerSampleRequest, runtime *dara.RuntimeOptions) (_result *AddAnswerSampleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LibId) {
@@ -149,7 +152,7 @@ func (client *Client) AddAnswerSample(request *AddAnswerSampleRequest) (_result 
 
 // Summary:
 //
-// 创建图库
+// # Create Image Library
 //
 // @param request - AddImageLibRequest
 //
@@ -157,9 +160,11 @@ func (client *Client) AddAnswerSample(request *AddAnswerSampleRequest) (_result 
 //
 // @return AddImageLibResponse
 func (client *Client) AddImageLibWithOptions(request *AddImageLibRequest, runtime *dara.RuntimeOptions) (_result *AddImageLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -201,7 +206,7 @@ func (client *Client) AddImageLibWithOptions(request *AddImageLibRequest, runtim
 
 // Summary:
 //
-// 创建图库
+// # Create Image Library
 //
 // @param request - AddImageLibRequest
 //
@@ -219,7 +224,7 @@ func (client *Client) AddImageLib(request *AddImageLibRequest) (_result *AddImag
 
 // Summary:
 //
-// 批量添加图片
+// # Add image to image lib
 //
 // @param request - AddImages2LibRequest
 //
@@ -227,9 +232,11 @@ func (client *Client) AddImageLib(request *AddImageLibRequest) (_result *AddImag
 //
 // @return AddImages2LibResponse
 func (client *Client) AddImages2LibWithOptions(request *AddImages2LibRequest, runtime *dara.RuntimeOptions) (_result *AddImages2LibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -271,7 +278,7 @@ func (client *Client) AddImages2LibWithOptions(request *AddImages2LibRequest, ru
 
 // Summary:
 //
-// 批量添加图片
+// # Add image to image lib
 //
 // @param request - AddImages2LibRequest
 //
@@ -289,7 +296,7 @@ func (client *Client) AddImages2Lib(request *AddImages2LibRequest) (_result *Add
 
 // Summary:
 //
-// 创建关键词库
+// # Create keyword library
 //
 // @param request - AddKeywordLibRequest
 //
@@ -297,9 +304,11 @@ func (client *Client) AddImages2Lib(request *AddImages2LibRequest) (_result *Add
 //
 // @return AddKeywordLibResponse
 func (client *Client) AddKeywordLibWithOptions(request *AddKeywordLibRequest, runtime *dara.RuntimeOptions) (_result *AddKeywordLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -345,7 +354,7 @@ func (client *Client) AddKeywordLibWithOptions(request *AddKeywordLibRequest, ru
 
 // Summary:
 //
-// 创建关键词库
+// # Create keyword library
 //
 // @param request - AddKeywordLibRequest
 //
@@ -363,7 +372,7 @@ func (client *Client) AddKeywordLib(request *AddKeywordLibRequest) (_result *Add
 
 // Summary:
 //
-// 添加关键词
+// # Add keywords
 //
 // @param request - AddKeywordsRequest
 //
@@ -371,9 +380,11 @@ func (client *Client) AddKeywordLib(request *AddKeywordLibRequest) (_result *Add
 //
 // @return AddKeywordsResponse
 func (client *Client) AddKeywordsWithOptions(request *AddKeywordsRequest, runtime *dara.RuntimeOptions) (_result *AddKeywordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -419,7 +430,7 @@ func (client *Client) AddKeywordsWithOptions(request *AddKeywordsRequest, runtim
 
 // Summary:
 //
-// 添加关键词
+// # Add keywords
 //
 // @param request - AddKeywordsRequest
 //
@@ -437,7 +448,7 @@ func (client *Client) AddKeywords(request *AddKeywordsRequest) (_result *AddKeyw
 
 // Summary:
 //
-// 添加关键词
+// Add keywords to keyword library.
 //
 // @param request - AddKeywordsToLibRequest
 //
@@ -445,9 +456,11 @@ func (client *Client) AddKeywords(request *AddKeywordsRequest) (_result *AddKeyw
 //
 // @return AddKeywordsToLibResponse
 func (client *Client) AddKeywordsToLibWithOptions(request *AddKeywordsToLibRequest, runtime *dara.RuntimeOptions) (_result *AddKeywordsToLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -493,7 +506,7 @@ func (client *Client) AddKeywordsToLibWithOptions(request *AddKeywordsToLibReque
 
 // Summary:
 //
-// 添加关键词
+// Add keywords to keyword library.
 //
 // @param request - AddKeywordsToLibRequest
 //
@@ -511,7 +524,7 @@ func (client *Client) AddKeywordsToLib(request *AddKeywordsToLibRequest) (_resul
 
 // Summary:
 //
-// 取消oss扫描任务
+// # Cancel OSS detection task
 //
 // @param request - CancelStockOssCheckTaskRequest
 //
@@ -519,9 +532,11 @@ func (client *Client) AddKeywordsToLib(request *AddKeywordsToLibRequest) (_resul
 //
 // @return CancelStockOssCheckTaskResponse
 func (client *Client) CancelStockOssCheckTaskWithOptions(request *CancelStockOssCheckTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelStockOssCheckTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -557,7 +572,7 @@ func (client *Client) CancelStockOssCheckTaskWithOptions(request *CancelStockOss
 
 // Summary:
 //
-// 取消oss扫描任务
+// # Cancel OSS detection task
 //
 // @param request - CancelStockOssCheckTaskRequest
 //
@@ -575,7 +590,7 @@ func (client *Client) CancelStockOssCheckTask(request *CancelStockOssCheckTaskRe
 
 // Summary:
 //
-// 复制服务
+// copy service config
 //
 // @param request - CopyServiceConfigRequest
 //
@@ -583,9 +598,11 @@ func (client *Client) CancelStockOssCheckTask(request *CancelStockOssCheckTaskRe
 //
 // @return CopyServiceConfigResponse
 func (client *Client) CopyServiceConfigWithOptions(request *CopyServiceConfigRequest, runtime *dara.RuntimeOptions) (_result *CopyServiceConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -635,7 +652,7 @@ func (client *Client) CopyServiceConfigWithOptions(request *CopyServiceConfigReq
 
 // Summary:
 //
-// 复制服务
+// copy service config
 //
 // @param request - CopyServiceConfigRequest
 //
@@ -653,7 +670,7 @@ func (client *Client) CopyServiceConfig(request *CopyServiceConfigRequest) (_res
 
 // Summary:
 //
-// 创建oss扫描任务
+// # Create stock oss check task
 //
 // @param request - CreatStockOssCheckTaskRequest
 //
@@ -661,9 +678,11 @@ func (client *Client) CopyServiceConfig(request *CopyServiceConfigRequest) (_res
 //
 // @return CreatStockOssCheckTaskResponse
 func (client *Client) CreatStockOssCheckTaskWithOptions(request *CreatStockOssCheckTaskRequest, runtime *dara.RuntimeOptions) (_result *CreatStockOssCheckTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Buckets) {
@@ -803,7 +822,7 @@ func (client *Client) CreatStockOssCheckTaskWithOptions(request *CreatStockOssCh
 
 // Summary:
 //
-// 创建oss扫描任务
+// # Create stock oss check task
 //
 // @param request - CreatStockOssCheckTaskRequest
 //
@@ -829,9 +848,11 @@ func (client *Client) CreatStockOssCheckTask(request *CreatStockOssCheckTaskRequ
 //
 // @return CreateAnswerLibResponse
 func (client *Client) CreateAnswerLibWithOptions(request *CreateAnswerLibRequest, runtime *dara.RuntimeOptions) (_result *CreateAnswerLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -899,7 +920,7 @@ func (client *Client) CreateAnswerLib(request *CreateAnswerLibRequest) (_result 
 
 // Summary:
 //
-// 新建消息通知
+// # Create a new message notification
 //
 // @param request - CreateCallbackRequest
 //
@@ -907,9 +928,11 @@ func (client *Client) CreateAnswerLib(request *CreateAnswerLibRequest) (_result 
 //
 // @return CreateCallbackResponse
 func (client *Client) CreateCallbackWithOptions(request *CreateCallbackRequest, runtime *dara.RuntimeOptions) (_result *CreateCallbackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -959,7 +982,7 @@ func (client *Client) CreateCallbackWithOptions(request *CreateCallbackRequest, 
 
 // Summary:
 //
-// 新建消息通知
+// # Create a new message notification
 //
 // @param request - CreateCallbackRequest
 //
@@ -985,9 +1008,11 @@ func (client *Client) CreateCallback(request *CreateCallbackRequest) (_result *C
 //
 // @return CreateOnlineTestResponse
 func (client *Client) CreateOnlineTestWithOptions(request *CreateOnlineTestRequest, runtime *dara.RuntimeOptions) (_result *CreateOnlineTestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DataId) {
@@ -1049,7 +1074,7 @@ func (client *Client) CreateOnlineTest(request *CreateOnlineTestRequest) (_resul
 
 // Summary:
 //
-// 创建oss扫描任务前检查
+// # Check before creating an OSS scan task
 //
 // @param request - CreatePreCheckRequest
 //
@@ -1057,9 +1082,11 @@ func (client *Client) CreateOnlineTest(request *CreateOnlineTestRequest) (_resul
 //
 // @return CreatePreCheckResponse
 func (client *Client) CreatePreCheckWithOptions(request *CreatePreCheckRequest, runtime *dara.RuntimeOptions) (_result *CreatePreCheckResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1145,7 +1172,7 @@ func (client *Client) CreatePreCheckWithOptions(request *CreatePreCheckRequest, 
 
 // Summary:
 //
-// 创建oss扫描任务前检查
+// # Check before creating an OSS scan task
 //
 // @param request - CreatePreCheckRequest
 //
@@ -1171,9 +1198,11 @@ func (client *Client) CreatePreCheck(request *CreatePreCheckRequest) (_result *C
 //
 // @return DeleteAnswerLibResponse
 func (client *Client) DeleteAnswerLibWithOptions(request *DeleteAnswerLibRequest, runtime *dara.RuntimeOptions) (_result *DeleteAnswerLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LibId) {
@@ -1235,9 +1264,11 @@ func (client *Client) DeleteAnswerLib(request *DeleteAnswerLibRequest) (_result 
 //
 // @return DeleteAnswerSampleResponse
 func (client *Client) DeleteAnswerSampleWithOptions(request *DeleteAnswerSampleRequest, runtime *dara.RuntimeOptions) (_result *DeleteAnswerSampleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1297,7 +1328,7 @@ func (client *Client) DeleteAnswerSample(request *DeleteAnswerSampleRequest) (_r
 
 // Summary:
 //
-// 删除消息通知
+// delete callback
 //
 // @param request - DeleteCallbackRequest
 //
@@ -1305,9 +1336,11 @@ func (client *Client) DeleteAnswerSample(request *DeleteAnswerSampleRequest) (_r
 //
 // @return DeleteCallbackResponse
 func (client *Client) DeleteCallbackWithOptions(request *DeleteCallbackRequest, runtime *dara.RuntimeOptions) (_result *DeleteCallbackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1345,7 +1378,7 @@ func (client *Client) DeleteCallbackWithOptions(request *DeleteCallbackRequest, 
 
 // Summary:
 //
-// 删除消息通知
+// delete callback
 //
 // @param request - DeleteCallbackRequest
 //
@@ -1371,9 +1404,11 @@ func (client *Client) DeleteCallback(request *DeleteCallbackRequest) (_result *D
 //
 // @return DeleteFeatureConfigResponse
 func (client *Client) DeleteFeatureConfigWithOptions(request *DeleteFeatureConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteFeatureConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1441,7 +1476,7 @@ func (client *Client) DeleteFeatureConfig(request *DeleteFeatureConfigRequest) (
 
 // Summary:
 //
-// 批量删除
+// Delete images from library.
 //
 // @param request - DeleteImagesFromLibRequest
 //
@@ -1449,9 +1484,11 @@ func (client *Client) DeleteFeatureConfig(request *DeleteFeatureConfigRequest) (
 //
 // @return DeleteImagesFromLibResponse
 func (client *Client) DeleteImagesFromLibWithOptions(request *DeleteImagesFromLibRequest, runtime *dara.RuntimeOptions) (_result *DeleteImagesFromLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1493,7 +1530,7 @@ func (client *Client) DeleteImagesFromLibWithOptions(request *DeleteImagesFromLi
 
 // Summary:
 //
-// 批量删除
+// Delete images from library.
 //
 // @param request - DeleteImagesFromLibRequest
 //
@@ -1511,7 +1548,7 @@ func (client *Client) DeleteImagesFromLib(request *DeleteImagesFromLibRequest) (
 
 // Summary:
 //
-// 删除关键词
+// # Delete keyword
 //
 // @param request - DeleteKeywordRequest
 //
@@ -1519,9 +1556,11 @@ func (client *Client) DeleteImagesFromLib(request *DeleteImagesFromLibRequest) (
 //
 // @return DeleteKeywordResponse
 func (client *Client) DeleteKeywordWithOptions(request *DeleteKeywordRequest, runtime *dara.RuntimeOptions) (_result *DeleteKeywordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1567,7 +1606,7 @@ func (client *Client) DeleteKeywordWithOptions(request *DeleteKeywordRequest, ru
 
 // Summary:
 //
-// 删除关键词
+// # Delete keyword
 //
 // @param request - DeleteKeywordRequest
 //
@@ -1585,7 +1624,7 @@ func (client *Client) DeleteKeyword(request *DeleteKeywordRequest) (_result *Del
 
 // Summary:
 //
-// 删除关键词库
+// # Delete Keyword Library
 //
 // @param request - DeleteKeywordLibRequest
 //
@@ -1593,9 +1632,11 @@ func (client *Client) DeleteKeyword(request *DeleteKeywordRequest) (_result *Del
 //
 // @return DeleteKeywordLibResponse
 func (client *Client) DeleteKeywordLibWithOptions(request *DeleteKeywordLibRequest, runtime *dara.RuntimeOptions) (_result *DeleteKeywordLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1633,7 +1674,7 @@ func (client *Client) DeleteKeywordLibWithOptions(request *DeleteKeywordLibReque
 
 // Summary:
 //
-// 删除关键词库
+// # Delete Keyword Library
 //
 // @param request - DeleteKeywordLibRequest
 //
@@ -1659,9 +1700,11 @@ func (client *Client) DeleteKeywordLib(request *DeleteKeywordLibRequest) (_resul
 //
 // @return DeleteOnlineTestResponse
 func (client *Client) DeleteOnlineTestWithOptions(request *DeleteOnlineTestRequest, runtime *dara.RuntimeOptions) (_result *DeleteOnlineTestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1723,9 +1766,11 @@ func (client *Client) DeleteOnlineTest(request *DeleteOnlineTestRequest) (_resul
 //
 // @return DescribeOnlineTestResultResponse
 func (client *Client) DescribeOnlineTestResultWithOptions(request *DescribeOnlineTestResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeOnlineTestResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceType) {
@@ -1791,9 +1836,11 @@ func (client *Client) DescribeOnlineTestResult(request *DescribeOnlineTestResult
 //
 // @return ExportAnswerSampleResponse
 func (client *Client) ExportAnswerSampleWithOptions(request *ExportAnswerSampleRequest, runtime *dara.RuntimeOptions) (_result *ExportAnswerSampleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1849,7 +1896,7 @@ func (client *Client) ExportAnswerSample(request *ExportAnswerSampleRequest) (_r
 
 // Summary:
 //
-// 导出调用量
+// # Export Call Volume
 //
 // @param request - ExportCipStatsRequest
 //
@@ -1857,9 +1904,11 @@ func (client *Client) ExportAnswerSample(request *ExportAnswerSampleRequest) (_r
 //
 // @return ExportCipStatsResponse
 func (client *Client) ExportCipStatsWithOptions(request *ExportCipStatsRequest, runtime *dara.RuntimeOptions) (_result *ExportCipStatsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1929,7 +1978,7 @@ func (client *Client) ExportCipStatsWithOptions(request *ExportCipStatsRequest, 
 
 // Summary:
 //
-// 导出调用量
+// # Export Call Volume
 //
 // @param request - ExportCipStatsRequest
 //
@@ -1947,7 +1996,7 @@ func (client *Client) ExportCipStats(request *ExportCipStatsRequest) (_result *E
 
 // Summary:
 //
-// 导出关键词
+// # Export Keywords
 //
 // @param request - ExportKeywordRequest
 //
@@ -1955,9 +2004,11 @@ func (client *Client) ExportCipStats(request *ExportCipStatsRequest) (_result *E
 //
 // @return ExportKeywordResponse
 func (client *Client) ExportKeywordWithOptions(request *ExportKeywordRequest, runtime *dara.RuntimeOptions) (_result *ExportKeywordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1995,7 +2046,7 @@ func (client *Client) ExportKeywordWithOptions(request *ExportKeywordRequest, ru
 
 // Summary:
 //
-// 导出关键词
+// # Export Keywords
 //
 // @param request - ExportKeywordRequest
 //
@@ -2013,7 +2064,7 @@ func (client *Client) ExportKeyword(request *ExportKeywordRequest) (_result *Exp
 
 // Summary:
 //
-// oss用量统计导出
+// # OSS Usage Statistics Export
 //
 // @param request - ExportOssCheckStatRequest
 //
@@ -2021,9 +2072,11 @@ func (client *Client) ExportKeyword(request *ExportKeywordRequest) (_result *Exp
 //
 // @return ExportOssCheckStatResponse
 func (client *Client) ExportOssCheckStatWithOptions(request *ExportOssCheckStatRequest, runtime *dara.RuntimeOptions) (_result *ExportOssCheckStatResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2073,7 +2126,7 @@ func (client *Client) ExportOssCheckStatWithOptions(request *ExportOssCheckStatR
 
 // Summary:
 //
-// oss用量统计导出
+// # OSS Usage Statistics Export
 //
 // @param request - ExportOssCheckStatRequest
 //
@@ -2091,7 +2144,7 @@ func (client *Client) ExportOssCheckStat(request *ExportOssCheckStatRequest) (_r
 
 // Summary:
 //
-// 导出oss扫描结果
+// # Export OSS scan results
 //
 // @param tmpReq - ExportResultRequest
 //
@@ -2099,9 +2152,11 @@ func (client *Client) ExportOssCheckStat(request *ExportOssCheckStatRequest) (_r
 //
 // @return ExportResultResponse
 func (client *Client) ExportResultWithOptions(tmpReq *ExportResultRequest, runtime *dara.RuntimeOptions) (_result *ExportResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExportResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2169,7 +2224,7 @@ func (client *Client) ExportResultWithOptions(tmpReq *ExportResultRequest, runti
 
 // Summary:
 //
-// 导出oss扫描结果
+// # Export OSS scan results
 //
 // @param request - ExportResultRequest
 //
@@ -2187,7 +2242,7 @@ func (client *Client) ExportResult(request *ExportResultRequest) (_result *Expor
 
 // Summary:
 //
-// 导出调用结果，excel文件
+// # Export scan results, Excel file
 //
 // @param tmpReq - ExportScanResultRequest
 //
@@ -2195,9 +2250,11 @@ func (client *Client) ExportResult(request *ExportResultRequest) (_result *Expor
 //
 // @return ExportScanResultResponse
 func (client *Client) ExportScanResultWithOptions(tmpReq *ExportScanResultRequest, runtime *dara.RuntimeOptions) (_result *ExportScanResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExportScanResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2269,7 +2326,7 @@ func (client *Client) ExportScanResultWithOptions(tmpReq *ExportScanResultReques
 
 // Summary:
 //
-// 导出调用结果，excel文件
+// # Export scan results, Excel file
 //
 // @param request - ExportScanResultRequest
 //
@@ -2287,7 +2344,7 @@ func (client *Client) ExportScanResult(request *ExportScanResultRequest) (_resul
 
 // Summary:
 //
-// 导出调用结果，excel文件
+// # Export text scan results, Excel file
 //
 // @param tmpReq - ExportTextScanResultRequest
 //
@@ -2295,9 +2352,11 @@ func (client *Client) ExportScanResult(request *ExportScanResultRequest) (_resul
 //
 // @return ExportTextScanResultResponse
 func (client *Client) ExportTextScanResultWithOptions(tmpReq *ExportTextScanResultRequest, runtime *dara.RuntimeOptions) (_result *ExportTextScanResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExportTextScanResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2349,7 +2408,7 @@ func (client *Client) ExportTextScanResultWithOptions(tmpReq *ExportTextScanResu
 
 // Summary:
 //
-// 导出调用结果，excel文件
+// # Export text scan results, Excel file
 //
 // @param request - ExportTextScanResultRequest
 //
@@ -2375,9 +2434,11 @@ func (client *Client) ExportTextScanResult(request *ExportTextScanResultRequest)
 //
 // @return GetAnswerImportProgressResponse
 func (client *Client) GetAnswerImportProgressWithOptions(request *GetAnswerImportProgressRequest, runtime *dara.RuntimeOptions) (_result *GetAnswerImportProgressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2431,7 +2492,7 @@ func (client *Client) GetAnswerImportProgress(request *GetAnswerImportProgressRe
 
 // Summary:
 //
-// 证据转存获取用户bucket列表
+// Evidence Transfer to Get User\\"s Bucket List
 //
 // @param request - GetBackupBucketsListRequest
 //
@@ -2439,9 +2500,11 @@ func (client *Client) GetAnswerImportProgress(request *GetAnswerImportProgressRe
 //
 // @return GetBackupBucketsListResponse
 func (client *Client) GetBackupBucketsListWithOptions(request *GetBackupBucketsListRequest, runtime *dara.RuntimeOptions) (_result *GetBackupBucketsListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2473,7 +2536,7 @@ func (client *Client) GetBackupBucketsListWithOptions(request *GetBackupBucketsL
 
 // Summary:
 //
-// 证据转存获取用户bucket列表
+// Evidence Transfer to Get User\\"s Bucket List
 //
 // @param request - GetBackupBucketsListRequest
 //
@@ -2491,7 +2554,7 @@ func (client *Client) GetBackupBucketsList(request *GetBackupBucketsListRequest)
 
 // Summary:
 //
-// 获取证据转存配置
+// # Get Evidence Backup Configuration
 //
 // @param request - GetBackupConfigRequest
 //
@@ -2499,9 +2562,11 @@ func (client *Client) GetBackupBucketsList(request *GetBackupBucketsListRequest)
 //
 // @return GetBackupConfigResponse
 func (client *Client) GetBackupConfigWithOptions(request *GetBackupConfigRequest, runtime *dara.RuntimeOptions) (_result *GetBackupConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2541,7 +2606,7 @@ func (client *Client) GetBackupConfigWithOptions(request *GetBackupConfigRequest
 
 // Summary:
 //
-// 获取证据转存配置
+// # Get Evidence Backup Configuration
 //
 // @param request - GetBackupConfigRequest
 //
@@ -2559,7 +2624,7 @@ func (client *Client) GetBackupConfig(request *GetBackupConfigRequest) (_result 
 
 // Summary:
 //
-// 用户授权校验
+// # User Backup Authorization Verification
 //
 // @param request - GetBackupStatusRequest
 //
@@ -2567,9 +2632,11 @@ func (client *Client) GetBackupConfig(request *GetBackupConfigRequest) (_result 
 //
 // @return GetBackupStatusResponse
 func (client *Client) GetBackupStatusWithOptions(request *GetBackupStatusRequest, runtime *dara.RuntimeOptions) (_result *GetBackupStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2601,7 +2668,7 @@ func (client *Client) GetBackupStatusWithOptions(request *GetBackupStatusRequest
 
 // Summary:
 //
-// 用户授权校验
+// # User Backup Authorization Verification
 //
 // @param request - GetBackupStatusRequest
 //
@@ -2619,7 +2686,7 @@ func (client *Client) GetBackupStatus(request *GetBackupStatusRequest) (_result 
 
 // Summary:
 //
-// bucket列表
+// # Get User OSS Scan Bucket List
 //
 // @param request - GetBucketsListRequest
 //
@@ -2627,9 +2694,11 @@ func (client *Client) GetBackupStatus(request *GetBackupStatusRequest) (_result 
 //
 // @return GetBucketsListResponse
 func (client *Client) GetBucketsListWithOptions(request *GetBucketsListRequest, runtime *dara.RuntimeOptions) (_result *GetBucketsListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2661,7 +2730,7 @@ func (client *Client) GetBucketsListWithOptions(request *GetBucketsListRequest, 
 
 // Summary:
 //
-// bucket列表
+// # Get User OSS Scan Bucket List
 //
 // @param request - GetBucketsListRequest
 //
@@ -2687,9 +2756,11 @@ func (client *Client) GetBucketsList(request *GetBucketsListRequest) (_result *G
 //
 // @return GetCipStatsResponse
 func (client *Client) GetCipStatsWithOptions(request *GetCipStatsRequest, runtime *dara.RuntimeOptions) (_result *GetCipStatsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2773,7 +2844,7 @@ func (client *Client) GetCipStats(request *GetCipStatsRequest) (_result *GetCipS
 
 // Summary:
 //
-// 获取定时任务预计执行时间
+// # Get Scheduled  OSS Scan  Task Estimated Execution Time
 //
 // @param request - GetExecuteTimeRequest
 //
@@ -2781,9 +2852,11 @@ func (client *Client) GetCipStats(request *GetCipStatsRequest) (_result *GetCipS
 //
 // @return GetExecuteTimeResponse
 func (client *Client) GetExecuteTimeWithOptions(request *GetExecuteTimeRequest, runtime *dara.RuntimeOptions) (_result *GetExecuteTimeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2815,7 +2888,7 @@ func (client *Client) GetExecuteTimeWithOptions(request *GetExecuteTimeRequest, 
 
 // Summary:
 //
-// 获取定时任务预计执行时间
+// # Get Scheduled  OSS Scan  Task Estimated Execution Time
 //
 // @param request - GetExecuteTimeRequest
 //
@@ -2841,9 +2914,11 @@ func (client *Client) GetExecuteTime(request *GetExecuteTimeRequest) (_result *G
 //
 // @return GetFeatureConfigResponse
 func (client *Client) GetFeatureConfigWithOptions(request *GetFeatureConfigRequest, runtime *dara.RuntimeOptions) (_result *GetFeatureConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2911,7 +2986,7 @@ func (client *Client) GetFeatureConfig(request *GetFeatureConfigRequest) (_resul
 
 // Summary:
 //
-// 获取图片规则标签信息
+// # Get Image Rule Label Information
 //
 // @param request - GetImageSceneLabelConfRequest
 //
@@ -2919,9 +2994,11 @@ func (client *Client) GetFeatureConfig(request *GetFeatureConfigRequest) (_resul
 //
 // @return GetImageSceneLabelConfResponse
 func (client *Client) GetImageSceneLabelConfWithOptions(request *GetImageSceneLabelConfRequest, runtime *dara.RuntimeOptions) (_result *GetImageSceneLabelConfResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2953,7 +3030,7 @@ func (client *Client) GetImageSceneLabelConfWithOptions(request *GetImageSceneLa
 
 // Summary:
 //
-// 获取图片规则标签信息
+// # Get Image Rule Label Information
 //
 // @param request - GetImageSceneLabelConfRequest
 //
@@ -2971,7 +3048,7 @@ func (client *Client) GetImageSceneLabelConf(request *GetImageSceneLabelConfRequ
 
 // Summary:
 //
-// 获取图片规则标签信息
+// # Get Image Rule Label Information
 //
 // @param request - GetImageSceneLabelListConfRequest
 //
@@ -2979,9 +3056,11 @@ func (client *Client) GetImageSceneLabelConf(request *GetImageSceneLabelConfRequ
 //
 // @return GetImageSceneLabelListConfResponse
 func (client *Client) GetImageSceneLabelListConfWithOptions(request *GetImageSceneLabelListConfRequest, runtime *dara.RuntimeOptions) (_result *GetImageSceneLabelListConfResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageServiceCode) {
@@ -3017,7 +3096,7 @@ func (client *Client) GetImageSceneLabelListConfWithOptions(request *GetImageSce
 
 // Summary:
 //
-// 获取图片规则标签信息
+// # Get Image Rule Label Information
 //
 // @param request - GetImageSceneLabelListConfRequest
 //
@@ -3035,7 +3114,7 @@ func (client *Client) GetImageSceneLabelListConf(request *GetImageSceneLabelList
 
 // Summary:
 //
-// oss定时扫描检测周期查询
+// # OSS scheduled scan detection cycle query
 //
 // @param tmpReq - GetJobNameListRequest
 //
@@ -3043,9 +3122,11 @@ func (client *Client) GetImageSceneLabelListConf(request *GetImageSceneLabelList
 //
 // @return GetJobNameListResponse
 func (client *Client) GetJobNameListWithOptions(tmpReq *GetJobNameListRequest, runtime *dara.RuntimeOptions) (_result *GetJobNameListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetJobNameListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3099,7 +3180,7 @@ func (client *Client) GetJobNameListWithOptions(tmpReq *GetJobNameListRequest, r
 
 // Summary:
 //
-// oss定时扫描检测周期查询
+// # OSS scheduled scan detection cycle query
 //
 // @param request - GetJobNameListRequest
 //
@@ -3117,7 +3198,7 @@ func (client *Client) GetJobNameList(request *GetJobNameListRequest) (_result *G
 
 // Summary:
 //
-// 查询导入关键词结果
+// # Query the result of keyword import
 //
 // @param request - GetKeywordImportResultRequest
 //
@@ -3125,9 +3206,11 @@ func (client *Client) GetJobNameList(request *GetJobNameListRequest) (_result *G
 //
 // @return GetKeywordImportResultResponse
 func (client *Client) GetKeywordImportResultWithOptions(request *GetKeywordImportResultRequest, runtime *dara.RuntimeOptions) (_result *GetKeywordImportResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3165,7 +3248,7 @@ func (client *Client) GetKeywordImportResultWithOptions(request *GetKeywordImpor
 
 // Summary:
 //
-// 查询导入关键词结果
+// # Query the result of keyword import
 //
 // @param request - GetKeywordImportResultRequest
 //
@@ -3183,7 +3266,7 @@ func (client *Client) GetKeywordImportResult(request *GetKeywordImportResultRequ
 
 // Summary:
 //
-// 关键词库信息
+// # Keyword Library Information
 //
 // @param request - GetKeywordLibRequest
 //
@@ -3191,9 +3274,11 @@ func (client *Client) GetKeywordImportResult(request *GetKeywordImportResultRequ
 //
 // @return GetKeywordLibResponse
 func (client *Client) GetKeywordLibWithOptions(request *GetKeywordLibRequest, runtime *dara.RuntimeOptions) (_result *GetKeywordLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3231,7 +3316,7 @@ func (client *Client) GetKeywordLibWithOptions(request *GetKeywordLibRequest, ru
 
 // Summary:
 //
-// 关键词库信息
+// # Keyword Library Information
 //
 // @param request - GetKeywordLibRequest
 //
@@ -3249,7 +3334,7 @@ func (client *Client) GetKeywordLib(request *GetKeywordLibRequest) (_result *Get
 
 // Summary:
 //
-// oss冻结结果查询
+// # Query OSS freeze result
 //
 // @param tmpReq - GetOssCheckFreezeResultRequest
 //
@@ -3257,9 +3342,11 @@ func (client *Client) GetKeywordLib(request *GetKeywordLibRequest) (_result *Get
 //
 // @return GetOssCheckFreezeResultResponse
 func (client *Client) GetOssCheckFreezeResultWithOptions(tmpReq *GetOssCheckFreezeResultRequest, runtime *dara.RuntimeOptions) (_result *GetOssCheckFreezeResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetOssCheckFreezeResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3329,7 +3416,7 @@ func (client *Client) GetOssCheckFreezeResultWithOptions(tmpReq *GetOssCheckFree
 
 // Summary:
 //
-// oss冻结结果查询
+// # Query OSS freeze result
 //
 // @param request - GetOssCheckFreezeResultRequest
 //
@@ -3347,7 +3434,7 @@ func (client *Client) GetOssCheckFreezeResult(request *GetOssCheckFreezeResultRe
 
 // Summary:
 //
-// oss结果详情
+// # OSS result details
 //
 // @param request - GetOssCheckResultDetailRequest
 //
@@ -3355,9 +3442,11 @@ func (client *Client) GetOssCheckFreezeResult(request *GetOssCheckFreezeResultRe
 //
 // @return GetOssCheckResultDetailResponse
 func (client *Client) GetOssCheckResultDetailWithOptions(request *GetOssCheckResultDetailRequest, runtime *dara.RuntimeOptions) (_result *GetOssCheckResultDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bucket) {
@@ -3413,7 +3502,7 @@ func (client *Client) GetOssCheckResultDetailWithOptions(request *GetOssCheckRes
 
 // Summary:
 //
-// oss结果详情
+// # OSS result details
 //
 // @param request - GetOssCheckResultDetailRequest
 //
@@ -3431,7 +3520,7 @@ func (client *Client) GetOssCheckResultDetail(request *GetOssCheckResultDetailRe
 
 // Summary:
 //
-// oss用量统计
+// # OSS Check Usage Statistics
 //
 // @param request - GetOssCheckStatRequest
 //
@@ -3439,9 +3528,11 @@ func (client *Client) GetOssCheckResultDetail(request *GetOssCheckResultDetailRe
 //
 // @return GetOssCheckStatResponse
 func (client *Client) GetOssCheckStatWithOptions(request *GetOssCheckStatRequest, runtime *dara.RuntimeOptions) (_result *GetOssCheckStatResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3491,7 +3582,7 @@ func (client *Client) GetOssCheckStatWithOptions(request *GetOssCheckStatRequest
 
 // Summary:
 //
-// oss用量统计
+// # OSS Check Usage Statistics
 //
 // @param request - GetOssCheckStatRequest
 //
@@ -3509,7 +3600,7 @@ func (client *Client) GetOssCheckStat(request *GetOssCheckStatRequest) (_result 
 
 // Summary:
 //
-// 获取OSS检测用户状态
+// # Get User OSS check user status
 //
 // @param request - GetOssCheckStatusRequest
 //
@@ -3517,9 +3608,11 @@ func (client *Client) GetOssCheckStat(request *GetOssCheckStatRequest) (_result 
 //
 // @return GetOssCheckStatusResponse
 func (client *Client) GetOssCheckStatusWithOptions(request *GetOssCheckStatusRequest, runtime *dara.RuntimeOptions) (_result *GetOssCheckStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3551,7 +3644,7 @@ func (client *Client) GetOssCheckStatusWithOptions(request *GetOssCheckStatusReq
 
 // Summary:
 //
-// 获取OSS检测用户状态
+// # Get User OSS check user status
 //
 // @param request - GetOssCheckStatusRequest
 //
@@ -3577,9 +3670,11 @@ func (client *Client) GetOssCheckStatus(request *GetOssCheckStatusRequest) (_res
 //
 // @return GetOssCheckTaskInfoResponse
 func (client *Client) GetOssCheckTaskInfoWithOptions(request *GetOssCheckTaskInfoRequest, runtime *dara.RuntimeOptions) (_result *GetOssCheckTaskInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ParentTaskId) {
@@ -3629,7 +3724,7 @@ func (client *Client) GetOssCheckTaskInfo(request *GetOssCheckTaskInfoRequest) (
 
 // Summary:
 //
-// 用户待检测信息
+// # User OSS Check Task Pending Inspection Information
 //
 // @param request - GetScanNumRequest
 //
@@ -3637,9 +3732,11 @@ func (client *Client) GetOssCheckTaskInfo(request *GetOssCheckTaskInfoRequest) (
 //
 // @return GetScanNumResponse
 func (client *Client) GetScanNumWithOptions(request *GetScanNumRequest, runtime *dara.RuntimeOptions) (_result *GetScanNumResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Buckets) {
@@ -3679,7 +3776,7 @@ func (client *Client) GetScanNumWithOptions(request *GetScanNumRequest, runtime 
 
 // Summary:
 //
-// 用户待检测信息
+// # User OSS Check Task Pending Inspection Information
 //
 // @param request - GetScanNumRequest
 //
@@ -3697,7 +3794,7 @@ func (client *Client) GetScanNum(request *GetScanNumRequest) (_result *GetScanNu
 
 // Summary:
 //
-// 查询调用结果
+// # Query the Scan results
 //
 // @param tmpReq - GetScanResultRequest
 //
@@ -3705,9 +3802,11 @@ func (client *Client) GetScanNum(request *GetScanNumRequest) (_result *GetScanNu
 //
 // @return GetScanResultResponse
 func (client *Client) GetScanResultWithOptions(tmpReq *GetScanResultRequest, runtime *dara.RuntimeOptions) (_result *GetScanResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetScanResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3779,7 +3878,7 @@ func (client *Client) GetScanResultWithOptions(tmpReq *GetScanResultRequest, run
 
 // Summary:
 //
-// 查询调用结果
+// # Query the Scan results
 //
 // @param request - GetScanResultRequest
 //
@@ -3797,7 +3896,7 @@ func (client *Client) GetScanResult(request *GetScanResultRequest) (_result *Get
 
 // Summary:
 //
-// 获取单个服务
+// # Get a Single Service Configuration
 //
 // @param request - GetServiceConfRequest
 //
@@ -3805,9 +3904,11 @@ func (client *Client) GetScanResult(request *GetScanResultRequest) (_result *Get
 //
 // @return GetServiceConfResponse
 func (client *Client) GetServiceConfWithOptions(request *GetServiceConfRequest, runtime *dara.RuntimeOptions) (_result *GetServiceConfResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3857,7 +3958,7 @@ func (client *Client) GetServiceConfWithOptions(request *GetServiceConfRequest, 
 
 // Summary:
 //
-// 获取单个服务
+// # Get a Single Service Configuration
 //
 // @param request - GetServiceConfRequest
 //
@@ -3875,7 +3976,7 @@ func (client *Client) GetServiceConf(request *GetServiceConfRequest) (_result *G
 
 // Summary:
 //
-// 获取单个服务
+// # Get a Single Service Configuration
 //
 // @param request - GetServiceConfigRequest
 //
@@ -3883,9 +3984,11 @@ func (client *Client) GetServiceConf(request *GetServiceConfRequest) (_result *G
 //
 // @return GetServiceConfigResponse
 func (client *Client) GetServiceConfigWithOptions(request *GetServiceConfigRequest, runtime *dara.RuntimeOptions) (_result *GetServiceConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3927,7 +4030,7 @@ func (client *Client) GetServiceConfigWithOptions(request *GetServiceConfigReque
 
 // Summary:
 //
-// 获取单个服务
+// # Get a Single Service Configuration
 //
 // @param request - GetServiceConfigRequest
 //
@@ -3945,7 +4048,7 @@ func (client *Client) GetServiceConfig(request *GetServiceConfigRequest) (_resul
 
 // Summary:
 //
-// 获取单个服务的标签配置
+// # Get the label configuration of a single service
 //
 // @param request - GetServiceLabelConfigRequest
 //
@@ -3953,9 +4056,11 @@ func (client *Client) GetServiceConfig(request *GetServiceConfigRequest) (_resul
 //
 // @return GetServiceLabelConfigResponse
 func (client *Client) GetServiceLabelConfigWithOptions(request *GetServiceLabelConfigRequest, runtime *dara.RuntimeOptions) (_result *GetServiceLabelConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3997,7 +4102,7 @@ func (client *Client) GetServiceLabelConfigWithOptions(request *GetServiceLabelC
 
 // Summary:
 //
-// 获取单个服务的标签配置
+// # Get the label configuration of a single service
 //
 // @param request - GetServiceLabelConfigRequest
 //
@@ -4015,7 +4120,7 @@ func (client *Client) GetServiceLabelConfig(request *GetServiceLabelConfigReques
 
 // Summary:
 //
-// 查询oss扫描任务列表
+// # Query OSS Scan Task List
 //
 // @param tmpReq - GetStockOssCheckTasksListRequest
 //
@@ -4023,9 +4128,11 @@ func (client *Client) GetServiceLabelConfig(request *GetServiceLabelConfigReques
 //
 // @return GetStockOssCheckTasksListResponse
 func (client *Client) GetStockOssCheckTasksListWithOptions(tmpReq *GetStockOssCheckTasksListRequest, runtime *dara.RuntimeOptions) (_result *GetStockOssCheckTasksListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetStockOssCheckTasksListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4097,7 +4204,7 @@ func (client *Client) GetStockOssCheckTasksListWithOptions(tmpReq *GetStockOssCh
 
 // Summary:
 //
-// 查询oss扫描任务列表
+// # Query OSS Scan Task List
 //
 // @param request - GetStockOssCheckTasksListRequest
 //
@@ -4115,7 +4222,7 @@ func (client *Client) GetStockOssCheckTasksList(request *GetStockOssCheckTasksLi
 
 // Summary:
 //
-// 查询调用结果
+// # Query the invocation result
 //
 // @param tmpReq - GetTextScanResultRequest
 //
@@ -4123,9 +4230,11 @@ func (client *Client) GetStockOssCheckTasksList(request *GetStockOssCheckTasksLi
 //
 // @return GetTextScanResultResponse
 func (client *Client) GetTextScanResultWithOptions(tmpReq *GetTextScanResultRequest, runtime *dara.RuntimeOptions) (_result *GetTextScanResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetTextScanResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4193,7 +4302,7 @@ func (client *Client) GetTextScanResultWithOptions(tmpReq *GetTextScanResultRequ
 
 // Summary:
 //
-// 查询调用结果
+// # Query the invocation result
 //
 // @param request - GetTextScanResultRequest
 //
@@ -4211,7 +4320,7 @@ func (client *Client) GetTextScanResult(request *GetTextScanResultRequest) (_res
 
 // Summary:
 //
-// 文件上传获取相应信息
+// # Get the corresponding information for file upload
 //
 // @param request - GetUploadInfoRequest
 //
@@ -4219,9 +4328,11 @@ func (client *Client) GetTextScanResult(request *GetTextScanResultRequest) (_res
 //
 // @return GetUploadInfoResponse
 func (client *Client) GetUploadInfoWithOptions(request *GetUploadInfoRequest, runtime *dara.RuntimeOptions) (_result *GetUploadInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -4263,7 +4374,7 @@ func (client *Client) GetUploadInfoWithOptions(request *GetUploadInfoRequest, ru
 
 // Summary:
 //
-// 文件上传获取相应信息
+// # Get the corresponding information for file upload
 //
 // @param request - GetUploadInfoRequest
 //
@@ -4289,9 +4400,11 @@ func (client *Client) GetUploadInfo(request *GetUploadInfoRequest) (_result *Get
 //
 // @return GetUploadLinkResponse
 func (client *Client) GetUploadLinkWithOptions(request *GetUploadLinkRequest, runtime *dara.RuntimeOptions) (_result *GetUploadLinkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.UploadUrl) {
@@ -4341,7 +4454,7 @@ func (client *Client) GetUploadLink(request *GetUploadLinkRequest) (_result *Get
 
 // Summary:
 //
-// 获取用户购买状态
+// # Get User Purchase Status
 //
 // @param request - GetUserBuyStatusRequest
 //
@@ -4349,9 +4462,11 @@ func (client *Client) GetUploadLink(request *GetUploadLinkRequest) (_result *Get
 //
 // @return GetUserBuyStatusResponse
 func (client *Client) GetUserBuyStatusWithOptions(request *GetUserBuyStatusRequest, runtime *dara.RuntimeOptions) (_result *GetUserBuyStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -4389,7 +4504,7 @@ func (client *Client) GetUserBuyStatusWithOptions(request *GetUserBuyStatusReque
 
 // Summary:
 //
-// 获取用户购买状态
+// # Get User Purchase Status
 //
 // @param request - GetUserBuyStatusRequest
 //
@@ -4415,9 +4530,11 @@ func (client *Client) GetUserBuyStatus(request *GetUserBuyStatusRequest) (_resul
 //
 // @return ListAnswerLibResponse
 func (client *Client) ListAnswerLibWithOptions(request *ListAnswerLibRequest, runtime *dara.RuntimeOptions) (_result *ListAnswerLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -4467,7 +4584,7 @@ func (client *Client) ListAnswerLib(request *ListAnswerLibRequest) (_result *Lis
 
 // Summary:
 //
-// 消息通知列表
+// # Get Callback List
 //
 // @param request - ListCallbackRequest
 //
@@ -4475,9 +4592,11 @@ func (client *Client) ListAnswerLib(request *ListAnswerLibRequest) (_result *Lis
 //
 // @return ListCallbackResponse
 func (client *Client) ListCallbackWithOptions(request *ListCallbackRequest, runtime *dara.RuntimeOptions) (_result *ListCallbackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -4509,7 +4628,7 @@ func (client *Client) ListCallbackWithOptions(request *ListCallbackRequest, runt
 
 // Summary:
 //
-// 消息通知列表
+// # Get Callback List
 //
 // @param request - ListCallbackRequest
 //
@@ -4527,7 +4646,7 @@ func (client *Client) ListCallback(request *ListCallbackRequest) (_result *ListC
 
 // Summary:
 //
-// 图库列表
+// # Image Library List
 //
 // @param request - ListImageLibRequest
 //
@@ -4535,9 +4654,11 @@ func (client *Client) ListCallback(request *ListCallbackRequest) (_result *ListC
 //
 // @return ListImageLibResponse
 func (client *Client) ListImageLibWithOptions(request *ListImageLibRequest, runtime *dara.RuntimeOptions) (_result *ListImageLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -4569,7 +4690,7 @@ func (client *Client) ListImageLibWithOptions(request *ListImageLibRequest, runt
 
 // Summary:
 //
-// 图库列表
+// # Image Library List
 //
 // @param request - ListImageLibRequest
 //
@@ -4587,7 +4708,7 @@ func (client *Client) ListImageLib(request *ListImageLibRequest) (_result *ListI
 
 // Summary:
 //
-// 图片列表 分页
+// # Paged Image List
 //
 // @param tmpReq - ListImagesFromLibRequest
 //
@@ -4595,9 +4716,11 @@ func (client *Client) ListImageLib(request *ListImageLibRequest) (_result *ListI
 //
 // @return ListImagesFromLibResponse
 func (client *Client) ListImagesFromLibWithOptions(tmpReq *ListImagesFromLibRequest, runtime *dara.RuntimeOptions) (_result *ListImagesFromLibResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListImagesFromLibShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4665,7 +4788,7 @@ func (client *Client) ListImagesFromLibWithOptions(tmpReq *ListImagesFromLibRequ
 
 // Summary:
 //
-// 图片列表 分页
+// # Paged Image List
 //
 // @param request - ListImagesFromLibRequest
 //
@@ -4683,7 +4806,7 @@ func (client *Client) ListImagesFromLib(request *ListImagesFromLibRequest) (_res
 
 // Summary:
 //
-// 关键词库列表
+// # Keyword Library List
 //
 // @param request - ListKeywordLibsRequest
 //
@@ -4691,9 +4814,11 @@ func (client *Client) ListImagesFromLib(request *ListImagesFromLibRequest) (_res
 //
 // @return ListKeywordLibsResponse
 func (client *Client) ListKeywordLibsWithOptions(request *ListKeywordLibsRequest, runtime *dara.RuntimeOptions) (_result *ListKeywordLibsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -4725,7 +4850,7 @@ func (client *Client) ListKeywordLibsWithOptions(request *ListKeywordLibsRequest
 
 // Summary:
 //
-// 关键词库列表
+// # Keyword Library List
 //
 // @param request - ListKeywordLibsRequest
 //
@@ -4743,7 +4868,7 @@ func (client *Client) ListKeywordLibs(request *ListKeywordLibsRequest) (_result 
 
 // Summary:
 //
-// 查询关键词列表
+// # Query Keyword List
 //
 // @param tmpReq - ListKeywordsRequest
 //
@@ -4751,9 +4876,11 @@ func (client *Client) ListKeywordLibs(request *ListKeywordLibsRequest) (_result 
 //
 // @return ListKeywordsResponse
 func (client *Client) ListKeywordsWithOptions(tmpReq *ListKeywordsRequest, runtime *dara.RuntimeOptions) (_result *ListKeywordsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListKeywordsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4813,7 +4940,7 @@ func (client *Client) ListKeywordsWithOptions(tmpReq *ListKeywordsRequest, runti
 
 // Summary:
 //
-// 查询关键词列表
+// # Query Keyword List
 //
 // @param request - ListKeywordsRequest
 //
@@ -4831,7 +4958,7 @@ func (client *Client) ListKeywords(request *ListKeywordsRequest) (_result *ListK
 
 // Summary:
 //
-// oss扫描结果查询
+// query OSS scan result list
 //
 // @param tmpReq - ListOssCheckResultRequest
 //
@@ -4839,9 +4966,11 @@ func (client *Client) ListKeywords(request *ListKeywordsRequest) (_result *ListK
 //
 // @return ListOssCheckResultResponse
 func (client *Client) ListOssCheckResultWithOptions(tmpReq *ListOssCheckResultRequest, runtime *dara.RuntimeOptions) (_result *ListOssCheckResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListOssCheckResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4911,7 +5040,7 @@ func (client *Client) ListOssCheckResultWithOptions(tmpReq *ListOssCheckResultRe
 
 // Summary:
 //
-// oss扫描结果查询
+// query OSS scan result list
 //
 // @param request - ListOssCheckResultRequest
 //
@@ -4929,7 +5058,7 @@ func (client *Client) ListOssCheckResult(request *ListOssCheckResultRequest) (_r
 
 // Summary:
 //
-// 获取服务列表
+// # Get Service List
 //
 // @param request - ListServiceConfigsRequest
 //
@@ -4937,9 +5066,11 @@ func (client *Client) ListOssCheckResult(request *ListOssCheckResultRequest) (_r
 //
 // @return ListServiceConfigsResponse
 func (client *Client) ListServiceConfigsWithOptions(request *ListServiceConfigsRequest, runtime *dara.RuntimeOptions) (_result *ListServiceConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Classify) {
@@ -4985,7 +5116,7 @@ func (client *Client) ListServiceConfigsWithOptions(request *ListServiceConfigsR
 
 // Summary:
 //
-// 获取服务列表
+// # Get Service List
 //
 // @param request - ListServiceConfigsRequest
 //
@@ -5003,7 +5134,22 @@ func (client *Client) ListServiceConfigs(request *ListServiceConfigsRequest) (_r
 
 // Summary:
 //
-// 使用SSE接口流式调用大模型
+// # Use SSE interface to stream large model calls
+//
+// @param request - LlmStreamChatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LlmStreamChatResponse
+func (client *Client) LlmStreamChatWithSSE(request *LlmStreamChatRequest, runtime *dara.RuntimeOptions, _yield chan *LlmStreamChatResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.llmStreamChatWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// # Use SSE interface to stream large model calls
 //
 // @param request - LlmStreamChatRequest
 //
@@ -5011,9 +5157,11 @@ func (client *Client) ListServiceConfigs(request *ListServiceConfigsRequest) (_r
 //
 // @return LlmStreamChatResponse
 func (client *Client) LlmStreamChatWithOptions(request *LlmStreamChatRequest, runtime *dara.RuntimeOptions) (_result *LlmStreamChatResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Messages) {
@@ -5026,6 +5174,10 @@ func (client *Client) LlmStreamChatWithOptions(request *LlmStreamChatRequest, ru
 
 	if !dara.IsNil(request.TopP) {
 		body["TopP"] = request.TopP
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5053,7 +5205,7 @@ func (client *Client) LlmStreamChatWithOptions(request *LlmStreamChatRequest, ru
 
 // Summary:
 //
-// 使用SSE接口流式调用大模型
+// # Use SSE interface to stream large model calls
 //
 // @param request - LlmStreamChatRequest
 //
@@ -5079,9 +5231,11 @@ func (client *Client) LlmStreamChat(request *LlmStreamChatRequest) (_result *Llm
 //
 // @return ModifyAnswerLibResponse
 func (client *Client) ModifyAnswerLibWithOptions(request *ModifyAnswerLibRequest, runtime *dara.RuntimeOptions) (_result *ModifyAnswerLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LibId) {
@@ -5139,7 +5293,7 @@ func (client *Client) ModifyAnswerLib(request *ModifyAnswerLibRequest) (_result 
 
 // Summary:
 //
-// 修改消息通知
+// # Modify Message Notification
 //
 // @param request - ModifyCallbackRequest
 //
@@ -5147,9 +5301,11 @@ func (client *Client) ModifyAnswerLib(request *ModifyAnswerLibRequest) (_result 
 //
 // @return ModifyCallbackResponse
 func (client *Client) ModifyCallbackWithOptions(request *ModifyCallbackRequest, runtime *dara.RuntimeOptions) (_result *ModifyCallbackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -5203,7 +5359,7 @@ func (client *Client) ModifyCallbackWithOptions(request *ModifyCallbackRequest, 
 
 // Summary:
 //
-// 修改消息通知
+// # Modify Message Notification
 //
 // @param request - ModifyCallbackRequest
 //
@@ -5221,7 +5377,7 @@ func (client *Client) ModifyCallback(request *ModifyCallbackRequest) (_result *M
 
 // Summary:
 //
-// # Save Feature Configuration
+// 保存特性配置
 //
 // @param request - ModifyFeatureConfigRequest
 //
@@ -5229,9 +5385,11 @@ func (client *Client) ModifyCallback(request *ModifyCallbackRequest) (_result *M
 //
 // @return ModifyFeatureConfigResponse
 func (client *Client) ModifyFeatureConfigWithOptions(request *ModifyFeatureConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyFeatureConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -5289,7 +5447,7 @@ func (client *Client) ModifyFeatureConfigWithOptions(request *ModifyFeatureConfi
 
 // Summary:
 //
-// # Save Feature Configuration
+// 保存特性配置
 //
 // @param request - ModifyFeatureConfigRequest
 //
@@ -5307,7 +5465,7 @@ func (client *Client) ModifyFeatureConfig(request *ModifyFeatureConfigRequest) (
 
 // Summary:
 //
-// 编辑服务
+// # Edit Service
 //
 // @param request - ModifyServiceInfoRequest
 //
@@ -5315,9 +5473,11 @@ func (client *Client) ModifyFeatureConfig(request *ModifyFeatureConfigRequest) (
 //
 // @return ModifyServiceInfoResponse
 func (client *Client) ModifyServiceInfoWithOptions(request *ModifyServiceInfoRequest, runtime *dara.RuntimeOptions) (_result *ModifyServiceInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -5367,7 +5527,7 @@ func (client *Client) ModifyServiceInfoWithOptions(request *ModifyServiceInfoReq
 
 // Summary:
 //
-// 编辑服务
+// # Edit Service
 //
 // @param request - ModifyServiceInfoRequest
 //
@@ -5393,9 +5553,11 @@ func (client *Client) ModifyServiceInfo(request *ModifyServiceInfoRequest) (_res
 //
 // @return OssCheckResultListResponse
 func (client *Client) OssCheckResultListWithOptions(tmpReq *OssCheckResultListRequest, runtime *dara.RuntimeOptions) (_result *OssCheckResultListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &OssCheckResultListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5491,9 +5653,11 @@ func (client *Client) OssCheckResultList(request *OssCheckResultListRequest) (_r
 //
 // @return QueryAnswerSampleByPageResponse
 func (client *Client) QueryAnswerSampleByPageWithOptions(tmpReq *QueryAnswerSampleByPageRequest, runtime *dara.RuntimeOptions) (_result *QueryAnswerSampleByPageResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryAnswerSampleByPageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5569,7 +5733,7 @@ func (client *Client) QueryAnswerSampleByPage(request *QueryAnswerSampleByPageRe
 
 // Summary:
 //
-// 查询单个回调配置
+// # Query a Single Callback Configuration
 //
 // @param request - QueryCallbackRequest
 //
@@ -5577,9 +5741,11 @@ func (client *Client) QueryAnswerSampleByPage(request *QueryAnswerSampleByPageRe
 //
 // @return QueryCallbackResponse
 func (client *Client) QueryCallbackWithOptions(request *QueryCallbackRequest, runtime *dara.RuntimeOptions) (_result *QueryCallbackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -5621,7 +5787,7 @@ func (client *Client) QueryCallbackWithOptions(request *QueryCallbackRequest, ru
 
 // Summary:
 //
-// 查询单个回调配置
+// # Query a Single Callback Configuration
 //
 // @param request - QueryCallbackRequest
 //
@@ -5639,7 +5805,7 @@ func (client *Client) QueryCallback(request *QueryCallbackRequest) (_result *Que
 
 // Summary:
 //
-// 消息通知
+// # Paginated Query of Message Notification List
 //
 // @param request - QueryCallbackByPageRequest
 //
@@ -5647,9 +5813,11 @@ func (client *Client) QueryCallback(request *QueryCallbackRequest) (_result *Que
 //
 // @return QueryCallbackByPageResponse
 func (client *Client) QueryCallbackByPageWithOptions(request *QueryCallbackByPageRequest, runtime *dara.RuntimeOptions) (_result *QueryCallbackByPageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -5691,7 +5859,7 @@ func (client *Client) QueryCallbackByPageWithOptions(request *QueryCallbackByPag
 
 // Summary:
 //
-// 消息通知
+// # Paginated Query of Message Notification List
 //
 // @param request - QueryCallbackByPageRequest
 //
@@ -5717,9 +5885,11 @@ func (client *Client) QueryCallbackByPage(request *QueryCallbackByPageRequest) (
 //
 // @return StopOnlineTestResponse
 func (client *Client) StopOnlineTestWithOptions(request *StopOnlineTestRequest, runtime *dara.RuntimeOptions) (_result *StopOnlineTestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceType) {
@@ -5777,7 +5947,7 @@ func (client *Client) StopOnlineTest(request *StopOnlineTestRequest) (_result *S
 
 // Summary:
 //
-// 更新证据转存配置
+// # Update Evidence Backup Configuration
 //
 // @param request - UpdateBackupConfigRequest
 //
@@ -5785,9 +5955,11 @@ func (client *Client) StopOnlineTest(request *StopOnlineTestRequest) (_result *S
 //
 // @return UpdateBackupConfigResponse
 func (client *Client) UpdateBackupConfigWithOptions(request *UpdateBackupConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateBackupConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupConfig) {
@@ -5831,7 +6003,7 @@ func (client *Client) UpdateBackupConfigWithOptions(request *UpdateBackupConfigR
 
 // Summary:
 //
-// 更新证据转存配置
+// # Update Evidence Backup Configuration
 //
 // @param request - UpdateBackupConfigRequest
 //
@@ -5849,7 +6021,7 @@ func (client *Client) UpdateBackupConfig(request *UpdateBackupConfigRequest) (_r
 
 // Summary:
 //
-// 编辑图库
+// # Edit Image Library
 //
 // @param request - UpdateImageLibRequest
 //
@@ -5857,9 +6029,11 @@ func (client *Client) UpdateBackupConfig(request *UpdateBackupConfigRequest) (_r
 //
 // @return UpdateImageLibResponse
 func (client *Client) UpdateImageLibWithOptions(request *UpdateImageLibRequest, runtime *dara.RuntimeOptions) (_result *UpdateImageLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -5909,7 +6083,7 @@ func (client *Client) UpdateImageLibWithOptions(request *UpdateImageLibRequest, 
 
 // Summary:
 //
-// 编辑图库
+// # Edit Image Library
 //
 // @param request - UpdateImageLibRequest
 //
@@ -5927,7 +6101,7 @@ func (client *Client) UpdateImageLib(request *UpdateImageLibRequest) (_result *U
 
 // Summary:
 //
-// 编辑图库免检配置
+// # Edit Image Library Free Inspection Configuration
 //
 // @param tmpReq - UpdateImageLibFreeInspectionRequest
 //
@@ -5935,9 +6109,11 @@ func (client *Client) UpdateImageLib(request *UpdateImageLibRequest) (_result *U
 //
 // @return UpdateImageLibFreeInspectionResponse
 func (client *Client) UpdateImageLibFreeInspectionWithOptions(tmpReq *UpdateImageLibFreeInspectionRequest, runtime *dara.RuntimeOptions) (_result *UpdateImageLibFreeInspectionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateImageLibFreeInspectionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5981,7 +6157,7 @@ func (client *Client) UpdateImageLibFreeInspectionWithOptions(tmpReq *UpdateImag
 
 // Summary:
 //
-// 编辑图库免检配置
+// # Edit Image Library Free Inspection Configuration
 //
 // @param request - UpdateImageLibFreeInspectionRequest
 //
@@ -5999,7 +6175,7 @@ func (client *Client) UpdateImageLibFreeInspection(request *UpdateImageLibFreeIn
 
 // Summary:
 //
-// 编辑关键词库
+// # Edit Keyword Library
 //
 // @param request - UpdateKeywordLibRequest
 //
@@ -6007,9 +6183,11 @@ func (client *Client) UpdateImageLibFreeInspection(request *UpdateImageLibFreeIn
 //
 // @return UpdateKeywordLibResponse
 func (client *Client) UpdateKeywordLibWithOptions(request *UpdateKeywordLibRequest, runtime *dara.RuntimeOptions) (_result *UpdateKeywordLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -6051,7 +6229,7 @@ func (client *Client) UpdateKeywordLibWithOptions(request *UpdateKeywordLibReque
 
 // Summary:
 //
-// 编辑关键词库
+// # Edit Keyword Library
 //
 // @param request - UpdateKeywordLibRequest
 //
@@ -6077,9 +6255,11 @@ func (client *Client) UpdateKeywordLib(request *UpdateKeywordLibRequest) (_resul
 //
 // @return UpdateOssCheckResultsBatchFeedbackResponse
 func (client *Client) UpdateOssCheckResultsBatchFeedbackWithOptions(request *UpdateOssCheckResultsBatchFeedbackRequest, runtime *dara.RuntimeOptions) (_result *UpdateOssCheckResultsBatchFeedbackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Feedback) {
@@ -6145,9 +6325,11 @@ func (client *Client) UpdateOssCheckResultsBatchFeedback(request *UpdateOssCheck
 //
 // @return UpdateOssCheckResultsFeedBackResponse
 func (client *Client) UpdateOssCheckResultsFeedBackWithOptions(request *UpdateOssCheckResultsFeedBackRequest, runtime *dara.RuntimeOptions) (_result *UpdateOssCheckResultsFeedBackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Feedback) {
@@ -6221,9 +6403,11 @@ func (client *Client) UpdateOssCheckResultsFeedBack(request *UpdateOssCheckResul
 //
 // @return UpdateOssCheckResultsFreezeResponse
 func (client *Client) UpdateOssCheckResultsFreezeWithOptions(request *UpdateOssCheckResultsFreezeRequest, runtime *dara.RuntimeOptions) (_result *UpdateOssCheckResultsFreezeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -6305,9 +6489,11 @@ func (client *Client) UpdateOssCheckResultsFreeze(request *UpdateOssCheckResults
 //
 // @return UpdateOssCheckResultsUnfreezeResponse
 func (client *Client) UpdateOssCheckResultsUnfreezeWithOptions(request *UpdateOssCheckResultsUnfreezeRequest, runtime *dara.RuntimeOptions) (_result *UpdateOssCheckResultsUnfreezeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -6373,7 +6559,7 @@ func (client *Client) UpdateOssCheckResultsUnfreeze(request *UpdateOssCheckResul
 
 // Summary:
 //
-// 检测结果反馈
+// # Feedback on Scan Results
 //
 // @param request - UpdateScanResultFeedbackRequest
 //
@@ -6381,9 +6567,11 @@ func (client *Client) UpdateOssCheckResultsUnfreeze(request *UpdateOssCheckResul
 //
 // @return UpdateScanResultFeedbackResponse
 func (client *Client) UpdateScanResultFeedbackWithOptions(request *UpdateScanResultFeedbackRequest, runtime *dara.RuntimeOptions) (_result *UpdateScanResultFeedbackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -6437,7 +6625,7 @@ func (client *Client) UpdateScanResultFeedbackWithOptions(request *UpdateScanRes
 
 // Summary:
 //
-// 检测结果反馈
+// # Feedback on Scan Results
 //
 // @param request - UpdateScanResultFeedbackRequest
 //
@@ -6463,9 +6651,11 @@ func (client *Client) UpdateScanResultFeedback(request *UpdateScanResultFeedback
 //
 // @return UpdateServiceConfigResponse
 func (client *Client) UpdateServiceConfigWithOptions(request *UpdateServiceConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateServiceConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -6553,4 +6743,62 @@ func (client *Client) UpdateServiceConfig(request *UpdateServiceConfigRequest) (
 	}
 	_result = _body
 	return _result, _err
+}
+
+func (client *Client) llmStreamChatWithSSE_opYieldFunc(_yield chan *LlmStreamChatResponse, _yieldErr chan error, request *LlmStreamChatRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Messages) {
+		body["Messages"] = request.Messages
+	}
+
+	if !dara.IsNil(request.Temperature) {
+		body["Temperature"] = request.Temperature
+	}
+
+	if !dara.IsNil(request.TopP) {
+		body["TopP"] = request.TopP
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("LlmStreamChat"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
 }

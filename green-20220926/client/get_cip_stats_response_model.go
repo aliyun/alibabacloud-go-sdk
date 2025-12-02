@@ -59,5 +59,10 @@ func (s *GetCipStatsResponse) SetBody(v *GetCipStatsResponseBody) *GetCipStatsRe
 }
 
 func (s *GetCipStatsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -24,25 +24,40 @@ type iModifyCallbackRequest interface {
 }
 
 type ModifyCallbackRequest struct {
+	// Encryption algorithm.
+	//
 	// example:
 	//
 	// SHA256
 	CryptType *string `json:"CryptType,omitempty" xml:"CryptType,omitempty"`
+	// Primary key ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 112
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Name.
+	//
+	// example:
+	//
+	// 回调通知
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Result scope.
+	//
 	// example:
 	//
 	// all
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// Callback URL.
+	//
 	// example:
 	//
 	// https://www.aliyuncs.com

@@ -24,23 +24,34 @@ type iGetScanResultResponseBody interface {
 }
 
 type GetScanResultResponseBody struct {
+	// Error code, consistent with HTTP status.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data *GetScanResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Further description of the error code.
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success indicator
+	//
 	// example:
 	//
 	// True
@@ -110,19 +121,31 @@ func (s *GetScanResultResponseBody) SetSuccess(v bool) *GetScanResultResponseBod
 }
 
 func (s *GetScanResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetScanResultResponseBodyData struct {
+	// Current page.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*GetScanResultResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Data for the current page.
+	Items []*GetScanResultResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// Number of items per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -174,137 +197,325 @@ func (s *GetScanResultResponseBodyData) SetTotalCount(v int64) *GetScanResultRes
 }
 
 func (s *GetScanResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetScanResultResponseBodyDataItems struct {
-	ApiLabels      *string `json:"ApiLabels,omitempty" xml:"ApiLabels,omitempty"`
+	// Automated review labels.
+	//
+	// example:
+	//
+	// porn
+	ApiLabels *string `json:"ApiLabels,omitempty" xml:"ApiLabels,omitempty"`
+	// Machine review time.
+	//
+	// example:
+	//
+	// 1755501226
 	ApiRequestTime *string `json:"ApiRequestTime,omitempty" xml:"ApiRequestTime,omitempty"`
-	ApiRiskLevel   *string `json:"ApiRiskLevel,omitempty" xml:"ApiRiskLevel,omitempty"`
-	ApiService     *string `json:"ApiService,omitempty" xml:"ApiService,omitempty"`
-	ApiTaskId      *string `json:"ApiTaskId,omitempty" xml:"ApiTaskId,omitempty"`
-	AttackLevel    *string `json:"AttackLevel,omitempty" xml:"AttackLevel,omitempty"`
+	// Automated review risk level.
+	//
+	// example:
+	//
+	// high
+	ApiRiskLevel *string `json:"ApiRiskLevel,omitempty" xml:"ApiRiskLevel,omitempty"`
+	// Automated review service
+	//
+	// example:
+	//
+	// basecheckLine
+	ApiService *string `json:"ApiService,omitempty" xml:"ApiService,omitempty"`
+	// Automated review task ID.
+	//
+	// example:
+	//
+	// xxx
+	ApiTaskId *string `json:"ApiTaskId,omitempty" xml:"ApiTaskId,omitempty"`
+	// Attack level, returned based on the set high and low risk scores. The return values include:
+	//
+	// - high: High risk
+	//
+	// - medium: Medium risk
+	//
+	// - low: Low risk
+	//
+	// - none: No risk detected
+	//
+	// example:
+	//
+	// none
+	AttackLevel *string `json:"AttackLevel,omitempty" xml:"AttackLevel,omitempty"`
+	// Content.
+	//
 	// example:
 	//
 	// xxx
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// dataId
+	// Data Id
 	//
 	// example:
 	//
 	// 4f27b8cc7c4544cb90b41882a5b36326
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// Segment end time (in seconds).
+	//
 	// example:
 	//
 	// 22
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Feedback information.
+	//
 	// example:
 	//
 	// xxx
 	ExtFeedback *string `json:"ExtFeedback,omitempty" xml:"ExtFeedback,omitempty"`
+	// Additional parameters.
+	//
 	// example:
 	//
 	// {}
 	Extra map[string]interface{} `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// Frame count.
+	//
 	// example:
 	//
 	// 20
 	FrameCount *int64 `json:"FrameCount,omitempty" xml:"FrameCount,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2023-08-11 09:00:19
-	GmtCreate      *string                  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GuardFileUrls  []*string                `json:"GuardFileUrls,omitempty" xml:"GuardFileUrls,omitempty" type:"Repeated"`
-	GuardImageUrls []*string                `json:"GuardImageUrls,omitempty" xml:"GuardImageUrls,omitempty" type:"Repeated"`
-	ImageLabels    []map[string]interface{} `json:"ImageLabels,omitempty" xml:"ImageLabels,omitempty" type:"Repeated"`
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Multimodal file URLs.
+	GuardFileUrls []*string `json:"GuardFileUrls,omitempty" xml:"GuardFileUrls,omitempty" type:"Repeated"`
+	// Multimodal image URLs.
+	GuardImageUrls []*string `json:"GuardImageUrls,omitempty" xml:"GuardImageUrls,omitempty" type:"Repeated"`
+	// Image labels.
+	ImageLabels []map[string]interface{} `json:"ImageLabels,omitempty" xml:"ImageLabels,omitempty" type:"Repeated"`
+	// Image service.
+	//
 	// example:
 	//
 	// baselineCheck
 	ImageService *string `json:"ImageService,omitempty" xml:"ImageService,omitempty"`
-	// url
+	// URL
 	//
 	// example:
 	//
 	// https://www.aliyuncs.com/xxx.png
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// Labels.
+	//
 	// example:
 	//
 	// nonLabel
-	Labels             *string   `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	MaliciousFileLevel *string   `json:"MaliciousFileLevel,omitempty" xml:"MaliciousFileLevel,omitempty"`
-	MaliciousUrlLevel  *string   `json:"MaliciousUrlLevel,omitempty" xml:"MaliciousUrlLevel,omitempty"`
-	ManualOnly         *bool     `json:"ManualOnly,omitempty" xml:"ManualOnly,omitempty"`
-	NoLabels           []*string `json:"NoLabels,omitempty" xml:"NoLabels,omitempty" type:"Repeated"`
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// Malicious file risk level.
+	//
+	// example:
+	//
+	// high
+	MaliciousFileLevel *string `json:"MaliciousFileLevel,omitempty" xml:"MaliciousFileLevel,omitempty"`
+	// Malicious URL risk level.
+	//
+	// example:
+	//
+	// high
+	MaliciousUrlLevel *string `json:"MaliciousUrlLevel,omitempty" xml:"MaliciousUrlLevel,omitempty"`
+	// Whether it is a pure manual review.
+	//
+	// example:
+	//
+	// false
+	ManualOnly *bool `json:"ManualOnly,omitempty" xml:"ManualOnly,omitempty"`
+	// No labels
+	NoLabels []*string `json:"NoLabels,omitempty" xml:"NoLabels,omitempty" type:"Repeated"`
+	// Frame offset value.
+	//
 	// example:
 	//
 	// 1
 	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
-	PageNum     *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Request source.
+	//
+	// example:
+	//
+	// online_test
 	RequestFrom *string `json:"RequestFrom,omitempty" xml:"RequestFrom,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Request time.
+	//
 	// example:
 	//
 	// 2023-08-11 09:00:19
-	RequestTime     *string                                     `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
-	ResourceType    *string                                     `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Result          []*GetScanResultResponseBodyDataItemsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	ReviewLabels    *string                                     `json:"ReviewLabels,omitempty" xml:"ReviewLabels,omitempty"`
-	ReviewRiskLevel *string                                     `json:"ReviewRiskLevel,omitempty" xml:"ReviewRiskLevel,omitempty"`
-	ReviewTime      *string                                     `json:"ReviewTime,omitempty" xml:"ReviewTime,omitempty"`
-	ReviewUid       *string                                     `json:"ReviewUid,omitempty" xml:"ReviewUid,omitempty"`
-	Reviewed        *bool                                       `json:"Reviewed,omitempty" xml:"Reviewed,omitempty"`
-	RiskLevel       *string                                     `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	RiskTips        *string                                     `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
-	RiskWords       *string                                     `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
+	RequestTime *string `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
+	// Resource type.
+	//
+	// example:
+	//
+	// text
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Return collection.
+	Result []*GetScanResultResponseBodyDataItemsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Review labels.
+	//
+	// example:
+	//
+	// porn
+	ReviewLabels *string `json:"ReviewLabels,omitempty" xml:"ReviewLabels,omitempty"`
+	// Review status.
+	//
+	// example:
+	//
+	// high
+	ReviewRiskLevel *string `json:"ReviewRiskLevel,omitempty" xml:"ReviewRiskLevel,omitempty"`
+	// Review time.
+	//
+	// example:
+	//
+	// 1755501226
+	ReviewTime *string `json:"ReviewTime,omitempty" xml:"ReviewTime,omitempty"`
+	// Reviewer.
+	//
+	// example:
+	//
+	// xx
+	ReviewUid *string `json:"ReviewUid,omitempty" xml:"ReviewUid,omitempty"`
+	// Whether it has been reviewed.
+	//
+	// example:
+	//
+	// false
+	Reviewed *bool `json:"Reviewed,omitempty" xml:"Reviewed,omitempty"`
+	// Risk level, returned based on the set high and low risk scores. The return values include:
+	//
+	// - high: High risk
+	//
+	// - medium: Medium risk
+	//
+	// - low: Low risk
+	//
+	// - none: No risk detected
+	//
+	// example:
+	//
+	// none
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// Details of the detected risk.
+	//
+	// example:
+	//
+	// 色情服务
+	RiskTips *string `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
+	// Keywords of the detected risk.
+	//
+	// example:
+	//
+	// 色情_低俗词
+	RiskWords *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
+	// Details of the result.
+	//
 	// example:
 	//
 	// {}
 	ScanResult *string `json:"ScanResult,omitempty" xml:"ScanResult,omitempty"`
+	// Score.
+	//
 	// example:
 	//
 	// 25
-	Score          *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	SensitiveLevel *string  `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Sensitive level, returned based on the set high and low risk scores. The return values include:
+	//
+	// - **S1**: Indicates low sensitivity.
+	//
+	// - **S2**: Indicates medium sensitivity.
+	//
+	// - **S3**: Indicates high sensitivity.
+	//
+	// - **S4**: Indicates very high sensitivity.
+	//
+	// - **S0**: Indicates no sensitivity.
+	//
+	// example:
+	//
+	// S0
+	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
+	// Service code.
+	//
 	// example:
 	//
 	// baselineCheck
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Segment start time (in seconds).
+	//
 	// example:
 	//
 	// 11
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Suggestion.
+	//
 	// example:
 	//
 	// review
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// vi_s_EbrXb716LyBpkfwxyX5xyh-1A6RY9
-	TaskId     *string                  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Text labels.
 	TextLabels []map[string]interface{} `json:"TextLabels,omitempty" xml:"TextLabels,omitempty" type:"Repeated"`
+	// Thumbnail URL.
+	//
 	// example:
 	//
 	// https://www.aliyuncs.com/xxx.png
 	Thumbnail *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	// Timestamp.
+	//
 	// example:
 	//
 	// 00:00:40-00:00:42
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// Task URL
+	//
 	// example:
 	//
 	// https://www.aliyuncs.com/xxx.png
-	Url         *string                  `json:"Url,omitempty" xml:"Url,omitempty"`
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Voice labels.
 	VoiceLabels []map[string]interface{} `json:"VoiceLabels,omitempty" xml:"VoiceLabels,omitempty" type:"Repeated"`
+	// Whether audio detection is enabled.
+	//
 	// example:
 	//
 	// True
 	VoiceScanOpened *bool `json:"VoiceScanOpened,omitempty" xml:"VoiceScanOpened,omitempty"`
+	// Voice service.
+	//
 	// example:
 	//
 	// live_stream_detection
@@ -788,15 +999,33 @@ func (s *GetScanResultResponseBodyDataItems) SetVoiceService(v string) *GetScanR
 }
 
 func (s *GetScanResultResponseBodyDataItems) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetScanResultResponseBodyDataItemsResult struct {
+	// Confidence score, ranging from 0 to 100, with two decimal places.
+	//
 	// example:
 	//
 	// 50.0
-	Confidence  *string `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Confidence *string `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// Description of the Label field.
+	//
+	// example:
+	//
+	// 疑似色情内容
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Label.
+	//
 	// example:
 	//
 	// politics

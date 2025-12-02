@@ -16,10 +16,14 @@ type iCancelStockOssCheckTaskResponseBody interface {
 }
 
 type CancelStockOssCheckTaskResponseBody struct {
+	// The data returned.
+	//
 	// example:
 	//
 	// True
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****

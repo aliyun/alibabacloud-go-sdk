@@ -40,50 +40,89 @@ type iGetBackupConfigResponseBody interface {
 }
 
 type GetBackupConfigResponseBody struct {
+	// Backup scope.
+	//
 	// example:
 	//
 	// 0
 	BackupMode *int32 `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// File server OSS Bucket.
+	//
 	// example:
 	//
 	// buckect_test
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// Whether it is enabled. Values:
+	//
+	// - **true**: Enabled
+	//
+	// - **false**: Disabled
+	//
 	// example:
 	//
 	// true
-	Enable            *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	EnableBackup      *bool `json:"EnableBackup,omitempty" xml:"EnableBackup,omitempty"`
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Whether to enable backup.
+	//
+	// example:
+	//
+	// True
+	EnableBackup *bool `json:"EnableBackup,omitempty" xml:"EnableBackup,omitempty"`
+	// Whether to enable audio backup.
+	//
+	// example:
+	//
+	// True
 	EnableBackupVoice *bool `json:"EnableBackupVoice,omitempty" xml:"EnableBackupVoice,omitempty"`
+	// Expiration time in seconds.
+	//
 	// example:
 	//
 	// 300
 	ExpireSeconds *int32 `json:"ExpireSeconds,omitempty" xml:"ExpireSeconds,omitempty"`
+	// Modification time.
+	//
 	// example:
 	//
 	// 2023-01-17 12:29:56
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Path.
+	//
 	// example:
 	//
 	// aliyun/template/
-	Path      *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// Audio backup path.
+	//
+	// example:
+	//
+	// /back
 	PathVoice *string `json:"PathVoice,omitempty" xml:"PathVoice,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Resource type.
+	//
 	// example:
 	//
 	// image
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Service code.
+	//
 	// example:
 	//
 	// baselineCheck
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// UID。
+	// UID.
 	//
 	// example:
 	//

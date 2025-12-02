@@ -24,23 +24,34 @@ type iAddImages2LibResponseBody interface {
 }
 
 type AddImages2LibResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// 200
-	Code *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *AddImages2LibResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message that is returned in response to the request.
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The request ID, which is used to locate and troubleshoot issues.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success indicator.
+	//
 	// example:
 	//
 	// True
@@ -110,10 +121,17 @@ func (s *AddImages2LibResponseBody) SetSuccess(v bool) *AddImages2LibResponseBod
 }
 
 func (s *AddImages2LibResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddImages2LibResponseBodyData struct {
+	// The id of the uploaded image.
+	//
 	// example:
 	//
 	// 100001

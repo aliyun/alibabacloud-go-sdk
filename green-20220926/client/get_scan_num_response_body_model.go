@@ -22,22 +22,32 @@ type iGetScanNumResponseBody interface {
 }
 
 type GetScanNumResponseBody struct {
+	// Upper limit of the quantity.
+	//
 	// example:
 	//
 	// 10
 	LimitNumber *int64 `json:"LimitNumber,omitempty" xml:"LimitNumber,omitempty"`
+	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of files pending inspection.
+	//
 	// example:
 	//
 	// 10
 	ScanNumber *int64 `json:"ScanNumber,omitempty" xml:"ScanNumber,omitempty"`
+	// Total number of files.
+	//
 	// example:
 	//
 	// 10
 	SumNumber *int64 `json:"SumNumber,omitempty" xml:"SumNumber,omitempty"`
+	// Whether it is a whitelist user.
+	//
 	// example:
 	//
 	// True

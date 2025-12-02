@@ -30,35 +30,52 @@ type iOssCheckResultListShrinkRequest interface {
 }
 
 type OssCheckResultListShrinkRequest struct {
+	// Page size.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Start date.
+	//
 	// example:
 	//
 	// 2023-10-21 16:08:38
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// 55
 	FinishNum *int64 `json:"FinishNum,omitempty" xml:"FinishNum,omitempty"`
+	// Query condition.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// End date.
+	//
 	// example:
 	//
 	// {}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Sort field.
+	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Current page number.
 	SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// System-defined parameter. Value: **OssCheckResultList**.
+	//
 	// example:
 	//
 	// 2023-08-21 16:08:38
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Number of completed items.
+	//
 	// example:
 	//
 	// 1

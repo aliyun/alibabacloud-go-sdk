@@ -16,10 +16,14 @@ type iCancelStockOssCheckTaskRequest interface {
 }
 
 type CancelStockOssCheckTaskRequest struct {
+	// Region ID
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// P_UNYVB

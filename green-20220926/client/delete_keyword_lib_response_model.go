@@ -59,5 +59,10 @@ func (s *DeleteKeywordLibResponse) SetBody(v *DeleteKeywordLibResponseBody) *Del
 }
 
 func (s *DeleteKeywordLibResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

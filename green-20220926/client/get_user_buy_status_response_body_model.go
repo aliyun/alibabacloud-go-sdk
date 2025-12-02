@@ -22,19 +22,28 @@ type iGetUserBuyStatusResponseBody interface {
 }
 
 type GetUserBuyStatusResponseBody struct {
+	// Error code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data *GetUserBuyStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Further description of the error code.
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success indicator.
+	//
 	// example:
 	//
 	// True
@@ -95,25 +104,40 @@ func (s *GetUserBuyStatusResponseBody) SetSuccess(v bool) *GetUserBuyStatusRespo
 }
 
 func (s *GetUserBuyStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserBuyStatusResponseBodyData struct {
-	// Bid。
+	// Bid.
 	//
 	// example:
 	//
 	// 26842
 	Bid *int64 `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// Indicates whether the product has been activated on Alibaba Cloud.
+	//
 	// example:
 	//
 	// True
 	Buy *bool `json:"Buy,omitempty" xml:"Buy,omitempty"`
+	// Indicates whether there is an outstanding payment.
+	//
 	// example:
 	//
 	// False
-	Indebt *bool   `json:"Indebt,omitempty" xml:"Indebt,omitempty"`
-	Tag    *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Indebt     *bool   `json:"Indebt,omitempty" xml:"Indebt,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Tag.
+	//
+	// example:
+	//
+	// bailian
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s GetUserBuyStatusResponseBodyData) String() string {
@@ -136,6 +160,10 @@ func (s *GetUserBuyStatusResponseBodyData) GetIndebt() *bool {
 	return s.Indebt
 }
 
+func (s *GetUserBuyStatusResponseBodyData) GetInstanceId() *string {
+	return s.InstanceId
+}
+
 func (s *GetUserBuyStatusResponseBodyData) GetTag() *string {
 	return s.Tag
 }
@@ -152,6 +180,11 @@ func (s *GetUserBuyStatusResponseBodyData) SetBuy(v bool) *GetUserBuyStatusRespo
 
 func (s *GetUserBuyStatusResponseBodyData) SetIndebt(v bool) *GetUserBuyStatusResponseBodyData {
 	s.Indebt = &v
+	return s
+}
+
+func (s *GetUserBuyStatusResponseBodyData) SetInstanceId(v string) *GetUserBuyStatusResponseBodyData {
+	s.InstanceId = &v
 	return s
 }
 

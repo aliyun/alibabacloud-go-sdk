@@ -16,10 +16,14 @@ type iModifyServiceInfoResponseBody interface {
 }
 
 type ModifyServiceInfoResponseBody struct {
+	// Returned data.
+	//
 	// example:
 	//
 	// True
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****

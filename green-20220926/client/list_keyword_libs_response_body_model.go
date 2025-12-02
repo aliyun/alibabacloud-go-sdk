@@ -22,19 +22,28 @@ type iListKeywordLibsResponseBody interface {
 }
 
 type ListKeywordLibsResponseBody struct {
+	// Error code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data []*ListKeywordLibsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Further description of the error code.
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success indicator.
+	//
 	// example:
 	//
 	// True
@@ -95,25 +104,50 @@ func (s *ListKeywordLibsResponseBody) SetSuccess(v bool) *ListKeywordLibsRespons
 }
 
 func (s *ListKeywordLibsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListKeywordLibsResponseBodyData struct {
+	// Modification time.
+	//
 	// example:
 	//
 	// 2022-11-30 16:30:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Number of keywords.
+	//
 	// example:
 	//
 	// 10
 	KeywordCount *string `json:"KeywordCount,omitempty" xml:"KeywordCount,omitempty"`
+	// Library ID.
+	//
 	// example:
 	//
 	// custom_xxxxx
-	LibId        *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	LibName      *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// Library name.
+	//
+	// example:
+	//
+	// 测试
+	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// Service codes.
+	//
+	// example:
+	//
+	// service1,service2
 	ServiceCodes *string `json:"ServiceCodes,omitempty" xml:"ServiceCodes,omitempty"`
-	// UID。
+	// UID.
 	//
 	// example:
 	//

@@ -18,14 +18,20 @@ type iQueryCallbackByPageRequest interface {
 }
 
 type QueryCallbackByPageRequest struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

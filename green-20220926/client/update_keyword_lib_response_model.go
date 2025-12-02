@@ -59,5 +59,10 @@ func (s *UpdateKeywordLibResponse) SetBody(v *UpdateKeywordLibResponseBody) *Upd
 }
 
 func (s *UpdateKeywordLibResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

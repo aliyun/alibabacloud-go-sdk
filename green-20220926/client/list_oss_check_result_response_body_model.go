@@ -22,19 +22,28 @@ type iListOssCheckResultResponseBody interface {
 }
 
 type ListOssCheckResultResponseBody struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*ListOssCheckResultResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Data of the current page.
+	Items []*ListOssCheckResultResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 13
@@ -95,70 +104,139 @@ func (s *ListOssCheckResultResponseBody) SetTotalCount(v int64) *ListOssCheckRes
 }
 
 func (s *ListOssCheckResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOssCheckResultResponseBodyItems struct {
+	// Storage space.
+	//
 	// example:
 	//
 	// tmp
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// Error code, consistent with HTTP status.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Audio and video detection type.
+	//
 	// example:
 	//
 	// audio
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// Primary service.
+	//
 	// example:
 	//
 	// audio_media_detection
-	CopyFrom     *string `json:"CopyFrom,omitempty" xml:"CopyFrom,omitempty"`
+	CopyFrom *string `json:"CopyFrom,omitempty" xml:"CopyFrom,omitempty"`
+	// Freeze status.
+	//
+	// example:
+	//
+	// FREEZED
 	FreezeStatus *string `json:"FreezeStatus,omitempty" xml:"FreezeStatus,omitempty"`
-	FreezeType   *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
+	// Freeze type.
+	//
+	// example:
+	//
+	// ACL
+	FreezeType *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
+	// Image URL address.
+	//
 	// example:
 	//
 	// http://www.aliyuncs.com/test.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// Whether to copy.
+	//
 	// example:
 	//
 	// true
 	IsCopy *bool `json:"IsCopy,omitempty" xml:"IsCopy,omitempty"`
+	// Job name.
+	//
 	// example:
 	//
 	// dhT20X2310
-	JobName *string   `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	Labels  []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// Image labels.
+	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// Text labels.
 	Labels2 []*string `json:"Labels2,omitempty" xml:"Labels2,omitempty" type:"Repeated"`
+	// File MD5.
+	//
 	// example:
 	//
 	// 54416c9b159df4a60ae03c04ccb94cb5
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// Further description of the error code.
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Object name.
+	//
 	// example:
 	//
 	// 1713014531569_958.png.jpeg
-	Object     *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	RiskLevel  *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// Image risk level
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// Overall risk level
+	//
+	// example:
+	//
+	// low
 	RiskLevel0 *string `json:"RiskLevel0,omitempty" xml:"RiskLevel0,omitempty"`
+	// Text risk level
+	//
+	// example:
+	//
+	// none
 	RiskLevel2 *string `json:"RiskLevel2,omitempty" xml:"RiskLevel2,omitempty"`
+	// Details of the result.
+	//
 	// example:
 	//
 	// {}
 	ScanResult *string `json:"ScanResult,omitempty" xml:"ScanResult,omitempty"`
+	// Service code.
+	//
 	// example:
 	//
 	// audio_media_detection_01
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Service name.
+	//
+	// example:
+	//
+	// 服务名称
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// EP6TI7_au_Zo25ITvCbkocNuF801QOQX
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task URL.
+	//
 	// example:
 	//
 	// http://www.aliyuncs.com/test.mp3

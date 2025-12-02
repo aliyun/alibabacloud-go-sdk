@@ -59,5 +59,10 @@ func (s *ListKeywordsResponse) SetBody(v *ListKeywordsResponseBody) *ListKeyword
 }
 
 func (s *ListKeywordsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

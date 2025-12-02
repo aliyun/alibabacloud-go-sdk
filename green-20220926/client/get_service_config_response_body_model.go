@@ -22,19 +22,28 @@ type iGetServiceConfigResponseBody interface {
 }
 
 type GetServiceConfigResponseBody struct {
+	// Error code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data *GetServiceConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Further description of the error code.
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success indicator.
+	//
 	// example:
 	//
 	// True
@@ -95,24 +104,36 @@ func (s *GetServiceConfigResponseBody) SetSuccess(v bool) *GetServiceConfigRespo
 }
 
 func (s *GetServiceConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetServiceConfigResponseBodyData struct {
+	// Custom service details
 	CustomServiceConf *GetServiceConfigResponseBodyDataCustomServiceConf `json:"CustomServiceConf,omitempty" xml:"CustomServiceConf,omitempty" type:"Struct"`
+	// Modification time.
+	//
 	// example:
 	//
 	// 2024-05-06 03:07:44
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Resource type.
+	//
 	// example:
 	//
 	// text
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Service code.
+	//
 	// example:
 	//
 	// nickname_detection
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// UID。
+	// UID.
 	//
 	// example:
 	//
@@ -174,14 +195,23 @@ func (s *GetServiceConfigResponseBodyData) SetUid(v string) *GetServiceConfigRes
 }
 
 func (s *GetServiceConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CustomServiceConf != nil {
+		if err := s.CustomServiceConf.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetServiceConfigResponseBodyDataCustomServiceConf struct {
-	KeywordFilterLibs   []*string                                                             `json:"KeywordFilterLibs,omitempty" xml:"KeywordFilterLibs,omitempty" type:"Repeated"`
-	KeywordHitLibs      []*string                                                             `json:"KeywordHitLibs,omitempty" xml:"KeywordHitLibs,omitempty" type:"Repeated"`
+	// Ignore word libraries.
+	KeywordFilterLibs []*string `json:"KeywordFilterLibs,omitempty" xml:"KeywordFilterLibs,omitempty" type:"Repeated"`
+	// Hit word libraries.
+	KeywordHitLibs []*string `json:"KeywordHitLibs,omitempty" xml:"KeywordHitLibs,omitempty" type:"Repeated"`
+	// Human-machine review configuration.
 	ManualMachineConfig *GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig `json:"ManualMachineConfig,omitempty" xml:"ManualMachineConfig,omitempty" type:"Struct"`
-	SimilarTextHitLibs  []*string                                                             `json:"SimilarTextHitLibs,omitempty" xml:"SimilarTextHitLibs,omitempty" type:"Repeated"`
+	// Hit similar text libraries.
+	SimilarTextHitLibs []*string `json:"SimilarTextHitLibs,omitempty" xml:"SimilarTextHitLibs,omitempty" type:"Repeated"`
 }
 
 func (s GetServiceConfigResponseBodyDataCustomServiceConf) String() string {
@@ -229,14 +259,39 @@ func (s *GetServiceConfigResponseBodyDataCustomServiceConf) SetSimilarTextHitLib
 }
 
 func (s *GetServiceConfigResponseBodyDataCustomServiceConf) Validate() error {
-	return dara.Validate(s)
+	if s.ManualMachineConfig != nil {
+		if err := s.ManualMachineConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig struct {
+	// Risk levels.
 	AuditRiskLevels []*string `json:"AuditRiskLevels,omitempty" xml:"AuditRiskLevels,omitempty" type:"Repeated"`
-	CallbackId      *int64    `json:"CallbackId,omitempty" xml:"CallbackId,omitempty"`
-	Enable          *bool     `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	ManualService   *string   `json:"ManualService,omitempty" xml:"ManualService,omitempty"`
+	// Callback notification ID
+	//
+	// example:
+	//
+	// 123
+	CallbackId *int64 `json:"CallbackId,omitempty" xml:"CallbackId,omitempty"`
+	// Whether to enable. Values:
+	//
+	// - **true**: Enabled
+	//
+	// - **false**: Disabled
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Manual review service
+	//
+	// example:
+	//
+	// imageManualCheck
+	ManualService *string `json:"ManualService,omitempty" xml:"ManualService,omitempty"`
 }
 
 func (s GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig) String() string {

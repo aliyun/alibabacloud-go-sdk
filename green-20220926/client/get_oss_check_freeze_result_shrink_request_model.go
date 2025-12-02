@@ -30,35 +30,52 @@ type iGetOssCheckFreezeResultShrinkRequest interface {
 }
 
 type GetOssCheckFreezeResultShrinkRequest struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// End time.
+	//
 	// example:
 	//
 	// 2025-05-19 10:05:11
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Number of completed tasks.
+	//
 	// example:
 	//
 	// 0
 	FinishNum *int64 `json:"FinishNum,omitempty" xml:"FinishNum,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Query condition.
+	//
 	// example:
 	//
 	// {\\"TaskId\\":\\"P_O3SI0I\\"}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Sort field.
 	SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// Start time.
+	//
 	// example:
 	//
 	// 2025-01-09 10:28:54
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Task status.
+	//
 	// example:
 	//
 	// 1

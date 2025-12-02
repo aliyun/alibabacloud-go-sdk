@@ -22,19 +22,28 @@ type iGetTextScanResultResponseBody interface {
 }
 
 type GetTextScanResultResponseBody struct {
+	// Error code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data *GetTextScanResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Further description of the error code.
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success indicator.
+	//
 	// example:
 	//
 	// True
@@ -95,19 +104,31 @@ func (s *GetTextScanResultResponseBody) SetSuccess(v bool) *GetTextScanResultRes
 }
 
 func (s *GetTextScanResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTextScanResultResponseBodyData struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*GetTextScanResultResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Data for the current page.
+	Items []*GetTextScanResultResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// Page size.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 5
@@ -159,54 +180,111 @@ func (s *GetTextScanResultResponseBodyData) SetTotalCount(v int64) *GetTextScanR
 }
 
 func (s *GetTextScanResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTextScanResultResponseBodyDataItems struct {
+	// Bailian Request ID
+	//
+	// example:
+	//
+	// xxx
 	BailianRequestId *string `json:"BailianRequestId,omitempty" xml:"BailianRequestId,omitempty"`
-	Content          *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Content.
+	//
+	// example:
+	//
+	// 测试内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Feedback information.
+	//
 	// example:
 	//
 	// miss
 	ExtFeedback *string `json:"ExtFeedback,omitempty" xml:"ExtFeedback,omitempty"`
+	// Spare parameters.
+	//
 	// example:
 	//
 	// {}
 	Extra map[string]interface{} `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2023-07-11 14:21:36
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Labels.
+	//
 	// example:
 	//
 	// nonLabel
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Request time.
+	//
 	// example:
 	//
 	// 2023-07-11 14:21:36
-	RequestTime *string                                         `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
-	Result      []*GetTextScanResultResponseBodyDataItemsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	RiskLevel   *string                                         `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RequestTime *string `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
+	// Detection results.
+	Result []*GetTextScanResultResponseBodyDataItemsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Risk level, returned based on the set high and low risk scores. The return values include:
+	//
+	// - high: High risk
+	//
+	// - medium: Medium risk
+	//
+	//
+	//
+	// - low: Low risk
+	//
+	// - none: No risk detected
+	//
+	// example:
+	//
+	// none
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// Details of the result.
+	//
 	// example:
 	//
 	// {}
 	ScanResult *string `json:"ScanResult,omitempty" xml:"ScanResult,omitempty"`
+	// Score.
+	//
 	// example:
 	//
 	// 20
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Service code.
+	//
 	// example:
 	//
 	// nickname_detection
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Suggestion for handling.
+	//
 	// example:
 	//
 	// review
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// txtwkgb******AsYNXoJswy-1Aa1Qk
@@ -357,15 +435,33 @@ func (s *GetTextScanResultResponseBodyDataItems) SetTaskId(v string) *GetTextSca
 }
 
 func (s *GetTextScanResultResponseBodyDataItems) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTextScanResultResponseBodyDataItemsResult struct {
+	// Confidence score, ranging from 0 to 100, with two decimal places retained.
+	//
 	// example:
 	//
 	// 25.0
-	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// Description.
+	//
+	// example:
+	//
+	// 疑似色情内容
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Label.
+	//
 	// example:
 	//
 	// political_n

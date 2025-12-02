@@ -28,28 +28,42 @@ type iExportScanResultShrinkRequest interface {
 }
 
 type ExportScanResultShrinkRequest struct {
+  // Current page number.
+  // 
   // example:
   // 
   // 1
   CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+  // End time of the query, in the format yyyy-MM-dd HH:mm:ss.
+  // 
   // example:
   // 
   // 2024-03-11 10:00:00
   EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+  // Page size.
+  // 
   // example:
   // 
   // 20
   PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+  // Query content.
   QueryShrink *string `json:"Query,omitempty" xml:"Query,omitempty"`
+  // Region ID.
+  // 
   // example:
   // 
   // cn-shanghai
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+  // Resource type.
+  // 
   // example:
   // 
   // text
   ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+  // Sort fields.
   SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+  // Start time of the query, in the format yyyy-MM-dd HH:mm:ss.
+  // 
   // example:
   // 
   // 2024-03-10 10:00:00

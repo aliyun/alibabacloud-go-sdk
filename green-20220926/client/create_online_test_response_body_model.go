@@ -22,22 +22,32 @@ type iCreateOnlineTestResponseBody interface {
 }
 
 type CreateOnlineTestResponseBody struct {
+	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Service Code
+	//
 	// example:
 	//
 	// VideoModeration
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Detection Task ID
+	//
 	// example:
 	//
 	// xxxxx-xxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Detection Status
+	//
 	// example:
 	//
 	// SUCCESS
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// Detection URL
+	//
 	// example:
 	//
 	// https://xxxxxxxxxx.com/data/data.png

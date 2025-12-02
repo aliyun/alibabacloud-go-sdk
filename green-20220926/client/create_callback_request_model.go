@@ -22,19 +22,32 @@ type iCreateCallbackRequest interface {
 }
 
 type CreateCallbackRequest struct {
+	// Encryption algorithm.
+	//
 	// example:
 	//
 	// SHA256
 	CryptType *string `json:"CryptType,omitempty" xml:"CryptType,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Plan name.
+	//
+	// example:
+	//
+	// 消息通知1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Review result.
+	//
 	// example:
 	//
 	// all
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// Callback URL.
+	//
 	// example:
 	//
 	// https://console.aliyun.com

@@ -16,7 +16,10 @@ type iUpdateImageLibFreeInspectionShrinkRequest interface {
 }
 
 type UpdateImageLibFreeInspectionShrinkRequest struct {
+	// Configuration.
 	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

@@ -22,22 +22,32 @@ type iGetServiceConfRequest interface {
 }
 
 type GetServiceConfRequest struct {
+	// Query default configuration
+	//
 	// example:
 	//
 	// False
 	ByDefault *bool `json:"ByDefault,omitempty" xml:"ByDefault,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource type.
+	//
 	// example:
 	//
 	// image
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Audit scenario.
+	//
 	// example:
 	//
 	// pornographic
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// Service code.
+	//
 	// example:
 	//
 	// baselineCheck

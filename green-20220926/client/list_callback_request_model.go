@@ -14,6 +14,8 @@ type iListCallbackRequest interface {
 }
 
 type ListCallbackRequest struct {
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

@@ -18,14 +18,20 @@ type iDeleteImagesFromLibRequest interface {
 }
 
 type DeleteImagesFromLibRequest struct {
+	// The IDs of the images.
+	//
 	// example:
 	//
 	// [158794]
 	ImageIds *string `json:"ImageIds,omitempty" xml:"ImageIds,omitempty"`
+	// Library ID.
+	//
 	// example:
 	//
 	// customxx_xxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// Region ID
+	//
 	// example:
 	//
 	// cn-shanghai

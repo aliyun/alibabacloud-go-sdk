@@ -22,19 +22,28 @@ type iGetJobNameListRequest interface {
 }
 
 type GetJobNameListRequest struct {
+	// End date.
+	//
 	// example:
 	//
 	// 2023-08-24 10:01:55
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Query condition.
+	//
 	// example:
 	//
 	// {"TaskId":"P_11TL5T"}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId *string            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Sort     map[string]*string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Sort field.
+	Sort map[string]*string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// Start date.
+	//
 	// example:
 	//
 	// 2023-08-11 09:00:19

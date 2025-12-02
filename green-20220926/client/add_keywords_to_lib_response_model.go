@@ -59,5 +59,10 @@ func (s *AddKeywordsToLibResponse) SetBody(v *AddKeywordsToLibResponseBody) *Add
 }
 
 func (s *AddKeywordsToLibResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

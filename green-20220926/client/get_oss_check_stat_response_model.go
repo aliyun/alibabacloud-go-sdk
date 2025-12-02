@@ -59,5 +59,10 @@ func (s *GetOssCheckStatResponse) SetBody(v *GetOssCheckStatResponseBody) *GetOs
 }
 
 func (s *GetOssCheckStatResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

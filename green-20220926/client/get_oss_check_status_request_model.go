@@ -14,6 +14,8 @@ type iGetOssCheckStatusRequest interface {
 }
 
 type GetOssCheckStatusRequest struct {
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

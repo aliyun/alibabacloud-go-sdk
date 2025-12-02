@@ -14,6 +14,8 @@ type iListKeywordLibsRequest interface {
 }
 
 type ListKeywordLibsRequest struct {
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

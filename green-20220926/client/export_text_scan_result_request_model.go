@@ -20,15 +20,22 @@ type iExportTextScanResultRequest interface {
 }
 
 type ExportTextScanResultRequest struct {
+  // End time of the query, in the format yyyy-MM-dd HH:mm:ss.
+  // 
   // example:
   // 
   // 2024-03-11 10:00:00
   EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+  // Query conditions.
   Query map[string]*string `json:"Query,omitempty" xml:"Query,omitempty"`
+  // Region ID.
+  // 
   // example:
   // 
   // cn-shanghai
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+  // Start time of the query, in the format yyyy-MM-dd HH:mm:ss.
+  // 
   // example:
   // 
   // 2024-03-10 10:00:00

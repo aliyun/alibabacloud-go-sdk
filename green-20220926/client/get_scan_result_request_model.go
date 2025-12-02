@@ -28,28 +28,42 @@ type iGetScanResultRequest interface {
 }
 
 type GetScanResultRequest struct {
+	// Current page.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// End time.
+	//
 	// example:
 	//
 	// 2023-08-24 10:01:55
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Query    map[string]*string `json:"Query,omitempty" xml:"Query,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Search criteria.
+	Query map[string]*string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource type.
+	//
 	// example:
 	//
 	// image
-	ResourceType *string            `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Sort         map[string]*string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Sort fields.
+	Sort map[string]*string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// Start time.
+	//
 	// example:
 	//
 	// 2023-08-11 09:00:19

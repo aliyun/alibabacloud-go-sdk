@@ -59,5 +59,10 @@ func (s *GetExecuteTimeResponse) SetBody(v *GetExecuteTimeResponseBody) *GetExec
 }
 
 func (s *GetExecuteTimeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

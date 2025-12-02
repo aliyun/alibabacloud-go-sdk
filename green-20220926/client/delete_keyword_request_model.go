@@ -20,15 +20,26 @@ type iDeleteKeywordRequest interface {
 }
 
 type DeleteKeywordRequest struct {
+	// The ids\\" list of keywords.
+	//
+	// example:
+	//
+	// [6715465]
 	KeywordIdList *string `json:"KeywordIdList,omitempty" xml:"KeywordIdList,omitempty"`
+	// The ids of keywords.
+	//
 	// example:
 	//
 	// [16754493]
 	KeywordIds *string `json:"KeywordIds,omitempty" xml:"KeywordIds,omitempty"`
+	// Library id
+	//
 	// example:
 	//
 	// customxx_xxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// Region ID
+	//
 	// example:
 	//
 	// cn-shanghai

@@ -16,7 +16,10 @@ type iCreatePreCheckResponseBody interface {
 }
 
 type CreatePreCheckResponseBody struct {
+	// Returned data.
 	Data map[string]*bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// ID assigned by the backend, used to uniquely identify a request. It can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****

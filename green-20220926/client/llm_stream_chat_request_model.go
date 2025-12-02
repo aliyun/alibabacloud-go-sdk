@@ -15,18 +15,35 @@ type iLlmStreamChatRequest interface {
 	GetTemperature() *float32
 	SetTopP(v float32) *LlmStreamChatRequest
 	GetTopP() *float32
+	SetType(v string) *LlmStreamChatRequest
+	GetType() *string
 }
 
 type LlmStreamChatRequest struct {
+	// Conversation information
+	//
+	// example:
+	//
+	// [{\\"content\\":\\"你好\\",\\"role\\":\\"user\\"}]
 	Messages interface{} `json:"Messages,omitempty" xml:"Messages,omitempty"`
+	// Temperature value for the large model
+	//
 	// example:
 	//
 	// 0.5
 	Temperature *float32 `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
+	// Top p parameter controlling the randomness of the large model\\"s output.
+	//
 	// example:
 	//
 	// 0.5
 	TopP *float32 `json:"TopP,omitempty" xml:"TopP,omitempty"`
+	// Type of conversation
+	//
+	// example:
+	//
+	// image
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s LlmStreamChatRequest) String() string {
@@ -49,6 +66,10 @@ func (s *LlmStreamChatRequest) GetTopP() *float32 {
 	return s.TopP
 }
 
+func (s *LlmStreamChatRequest) GetType() *string {
+	return s.Type
+}
+
 func (s *LlmStreamChatRequest) SetMessages(v interface{}) *LlmStreamChatRequest {
 	s.Messages = v
 	return s
@@ -61,6 +82,11 @@ func (s *LlmStreamChatRequest) SetTemperature(v float32) *LlmStreamChatRequest {
 
 func (s *LlmStreamChatRequest) SetTopP(v float32) *LlmStreamChatRequest {
 	s.TopP = &v
+	return s
+}
+
+func (s *LlmStreamChatRequest) SetType(v string) *LlmStreamChatRequest {
+	s.Type = &v
 	return s
 }
 

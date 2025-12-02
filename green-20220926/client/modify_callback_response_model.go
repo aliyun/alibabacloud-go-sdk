@@ -59,5 +59,10 @@ func (s *ModifyCallbackResponse) SetBody(v *ModifyCallbackResponseBody) *ModifyC
 }
 
 func (s *ModifyCallbackResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

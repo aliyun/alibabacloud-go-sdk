@@ -59,5 +59,10 @@ func (s *CreatePreCheckResponse) SetBody(v *CreatePreCheckResponseBody) *CreateP
 }
 
 func (s *CreatePreCheckResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

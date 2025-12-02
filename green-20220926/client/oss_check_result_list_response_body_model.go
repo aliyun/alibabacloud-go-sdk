@@ -24,23 +24,34 @@ type iOssCheckResultListResponseBody interface {
 }
 
 type OssCheckResultListResponseBody struct {
+	// Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// OK
 	AuthStatus *string `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*OssCheckResultListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Current page number.
+	Items []*OssCheckResultListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Task status.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Authorization status.
+	//
 	// example:
 	//
 	// 10
@@ -110,65 +121,109 @@ func (s *OssCheckResultListResponseBody) SetTotalCount(v int32) *OssCheckResultL
 }
 
 func (s *OssCheckResultListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type OssCheckResultListResponseBodyItems struct {
+	// Data of the current page.
+	//
 	// example:
 	//
 	// tmp
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// Service code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Primary service.
+	//
 	// example:
 	//
 	// audio
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// Whether to copy.
+	//
 	// example:
 	//
 	// audio_media_detection
 	CopyFrom *string `json:"CopyFrom,omitempty" xml:"CopyFrom,omitempty"`
+	// Details of the result.
+	//
 	// example:
 	//
 	// http://www.aliyuncs.com/test.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// Service name.
+	//
 	// example:
 	//
 	// true
 	IsCopy *bool `json:"IsCopy,omitempty" xml:"IsCopy,omitempty"`
+	// Image URL.
+	//
 	// example:
 	//
 	// dhT20X2310
-	JobName *string   `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	Labels  []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// Further description of the error code.
+	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// Job name.
 	Labels2 []*string `json:"Labels2,omitempty" xml:"Labels2,omitempty" type:"Repeated"`
+	// Object name.
+	//
 	// example:
 	//
 	// 54416c9b159df4a60ae03c04ccb94cb5
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// Status code. 200 indicates success.
+	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// OSS Bucket name.
+	//
 	// example:
 	//
 	// 1713014531569_958.png.jpeg
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// Image labels.
+	//
 	// example:
 	//
 	// {}
 	ScanResult *string `json:"ScanResult,omitempty" xml:"ScanResult,omitempty"`
+	// File MD5.
+	//
 	// example:
 	//
 	// audio_media_detection_01
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Task ID.
+	//
+	// example:
+	//
+	// 服务名称
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// Task URL.
+	//
 	// example:
 	//
 	// P_XHDUS
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Text labels.
+	//
 	// example:
 	//
 	// http://www.aliyuncs.com/test.mp3

@@ -59,5 +59,10 @@ func (s *ModifyServiceInfoResponse) SetBody(v *ModifyServiceInfoResponseBody) *M
 }
 
 func (s *ModifyServiceInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

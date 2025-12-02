@@ -18,14 +18,20 @@ type iGetBackupConfigRequest interface {
 }
 
 type GetBackupConfigRequest struct {
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource type.
+	//
 	// example:
 	//
 	// image
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Service code.
+	//
 	// example:
 	//
 	// baselineCheck

@@ -22,22 +22,32 @@ type iExportKeywordResponseBody interface {
 }
 
 type ExportKeywordResponseBody struct {
+  // Error code.
+  // 
   // example:
   // 
   // 200
   Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+  // Export result.
+  // 
   // example:
   // 
   // https://oss-cip-shanghai.oss-cn-shanghai.aliyuncs.com/console_data/export/production/keyword/export_keywordO4ee1Bok1R8IIDVpcT9viU-1xxWr
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+  // Further description of the error code.
+  // 
   // example:
   // 
   // OK
   Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+  // Request ID.
+  // 
   // example:
   // 
   // AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Success indicator.
+  // 
   // example:
   // 
   // True

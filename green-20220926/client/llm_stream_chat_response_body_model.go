@@ -30,32 +30,48 @@ type iLlmStreamChatResponseBody interface {
 }
 
 type LlmStreamChatResponseBody struct {
+	// List of model generation results
 	Choices []*LlmStreamChatResponseBodyChoices `json:"Choices,omitempty" xml:"Choices,omitempty" type:"Repeated"`
+	// Timestamp of session creation
+	//
 	// example:
 	//
 	// 1750990728
-	Created *int64                          `json:"Created,omitempty" xml:"Created,omitempty"`
-	Error   *LlmStreamChatResponseBodyError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
+	Created *int64 `json:"Created,omitempty" xml:"Created,omitempty"`
+	// Streaming response error information content
+	Error *LlmStreamChatResponseBodyError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
+	// Unique ID for this session
+	//
 	// example:
 	//
 	// chatcmpl-777bce52-93d3-9f8c-89c3-e99884f4f57f
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Model identifier
+	//
 	// example:
 	//
 	// deepseek-v3
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// Response type
+	//
 	// example:
 	//
 	// chat.completion.chunk
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// Unique request ID
+	//
 	// example:
 	//
 	// 21d296d6-594e-97de-812f-925ec6e05673
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// System fingerprint
+	//
 	// example:
 	//
 	// null
 	SystemFingerprint *string `json:"SystemFingerprint,omitempty" xml:"SystemFingerprint,omitempty"`
+	// Token usage
+	//
 	// example:
 	//
 	// null
@@ -152,19 +168,40 @@ func (s *LlmStreamChatResponseBody) SetUsage(v string) *LlmStreamChatResponseBod
 }
 
 func (s *LlmStreamChatResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Choices != nil {
+		for _, item := range s.Choices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Error != nil {
+		if err := s.Error.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type LlmStreamChatResponseBodyChoices struct {
+	// Incremental content object
 	Delta *LlmStreamChatResponseBodyChoicesDelta `json:"Delta,omitempty" xml:"Delta,omitempty" type:"Struct"`
+	// For streaming output, it is null while generating and becomes \\"stop\\" if the generation ends due to a stop token.
+	//
 	// example:
 	//
 	// stop
 	FinishReason *string `json:"FinishReason,omitempty" xml:"FinishReason,omitempty"`
+	// Stream sequence number
+	//
 	// example:
 	//
 	// 0
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// Token probability information
+	//
 	// example:
 	//
 	// null
@@ -216,11 +253,23 @@ func (s *LlmStreamChatResponseBodyChoices) SetLogprobs(v string) *LlmStreamChatR
 }
 
 func (s *LlmStreamChatResponseBodyChoices) Validate() error {
-	return dara.Validate(s)
+	if s.Delta != nil {
+		if err := s.Delta.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type LlmStreamChatResponseBodyChoicesDelta struct {
+	// Real-time generated text content
+	//
+	// example:
+	//
+	// 我是Deepseek-V3，有什么可以帮你
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Role identifier
+	//
 	// example:
 	//
 	// assistant
@@ -258,18 +307,26 @@ func (s *LlmStreamChatResponseBodyChoicesDelta) Validate() error {
 }
 
 type LlmStreamChatResponseBodyError struct {
+	// Error code
+	//
 	// example:
 	//
 	// data_inspection_failed
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// Input data may contain inappropriate content.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Parameter that caused the error
+	//
 	// example:
 	//
 	// null
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// Error type
+	//
 	// example:
 	//
 	// data_inspection_failed

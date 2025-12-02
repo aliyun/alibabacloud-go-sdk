@@ -14,6 +14,8 @@ type iGetImageSceneLabelConfRequest interface {
 }
 
 type GetImageSceneLabelConfRequest struct {
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

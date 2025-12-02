@@ -59,5 +59,10 @@ func (s *DeleteOnlineTestResponse) SetBody(v *DeleteOnlineTestResponseBody) *Del
 }
 
 func (s *DeleteOnlineTestResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

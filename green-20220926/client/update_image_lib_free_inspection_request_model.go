@@ -16,7 +16,10 @@ type iUpdateImageLibFreeInspectionRequest interface {
 }
 
 type UpdateImageLibFreeInspectionRequest struct {
+	// Configuration.
 	Config map[string]*int32 `json:"Config,omitempty" xml:"Config,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

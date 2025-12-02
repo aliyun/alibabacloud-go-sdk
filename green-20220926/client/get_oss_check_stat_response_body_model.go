@@ -16,7 +16,10 @@ type iGetOssCheckStatResponseBody interface {
 }
 
 type GetOssCheckStatResponseBody struct {
+	// Bar chart
 	BarChart *GetOssCheckStatResponseBodyBarChart `json:"BarChart,omitempty" xml:"BarChart,omitempty" type:"Struct"`
+	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
@@ -50,11 +53,18 @@ func (s *GetOssCheckStatResponseBody) SetRequestId(v string) *GetOssCheckStatRes
 }
 
 func (s *GetOssCheckStatResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BarChart != nil {
+		if err := s.BarChart.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOssCheckStatResponseBodyBarChart struct {
-	X []*string                               `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`
+	// X values of the coordinates.
+	X []*string `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`
+	// Y values of the coordinates.
 	Y []*GetOssCheckStatResponseBodyBarChartY `json:"Y,omitempty" xml:"Y,omitempty" type:"Repeated"`
 }
 
@@ -85,11 +95,23 @@ func (s *GetOssCheckStatResponseBodyBarChart) SetY(v []*GetOssCheckStatResponseB
 }
 
 func (s *GetOssCheckStatResponseBodyBarChart) Validate() error {
-	return dara.Validate(s)
+	if s.Y != nil {
+		for _, item := range s.Y {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOssCheckStatResponseBodyBarChartY struct {
+	// Data.
 	Data []*int64 `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Name.
+	//
 	// example:
 	//
 	// document_detection

@@ -14,6 +14,8 @@ type iGetExecuteTimeRequest interface {
 }
 
 type GetExecuteTimeRequest struct {
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

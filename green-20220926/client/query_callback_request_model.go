@@ -18,16 +18,22 @@ type iQueryCallbackRequest interface {
 }
 
 type QueryCallbackRequest struct {
+	// Query data under the OSS detection task.
+	//
 	// example:
 	//
 	// true
 	CheckForOss *bool `json:"CheckForOss,omitempty" xml:"CheckForOss,omitempty"`
+	// Primary key ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 11234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

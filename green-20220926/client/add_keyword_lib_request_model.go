@@ -20,12 +20,26 @@ type iAddKeywordLibRequest interface {
 }
 
 type AddKeywordLibRequest struct {
+	// Keywords, with multiple keywords separated by \\n.
+	//
+	// example:
+	//
+	// keywords1\\nkeywords2
 	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// The name of the keywords file.
+	//
 	// example:
 	//
 	// upload/1e5353c0-0d91-40ba-9d41-ae7abd3fe561.txt
 	KeywordsObject *string `json:"KeywordsObject,omitempty" xml:"KeywordsObject,omitempty"`
-	LibName        *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// The name of the keyword library.
+	//
+	// example:
+	//
+	// test_keyword_lib
+	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// Region ID
+	//
 	// example:
 	//
 	// cn-shanghai

@@ -20,16 +20,30 @@ type iListServiceConfigsRequest interface {
 }
 
 type ListServiceConfigsRequest struct {
+	// Category.
+	//
+	// example:
+	//
+	// guard-scene
 	Classify *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource type.
+	//
 	// example:
 	//
 	// text
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	UseStatus    *string `json:"UseStatus,omitempty" xml:"UseStatus,omitempty"`
+	// Usage status.
+	//
+	// example:
+	//
+	// in
+	UseStatus *string `json:"UseStatus,omitempty" xml:"UseStatus,omitempty"`
 }
 
 func (s ListServiceConfigsRequest) String() string {

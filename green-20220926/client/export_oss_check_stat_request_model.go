@@ -22,22 +22,32 @@ type iExportOssCheckStatRequest interface {
 }
 
 type ExportOssCheckStatRequest struct {
+  // Whether to support monthly indexing. Values: -true: supported. -false: not supported.
+  // 
   // example:
   // 
   // true
   ByMonth *bool `json:"ByMonth,omitempty" xml:"ByMonth,omitempty"`
+  // End time of the query, in the format yyyy-MM-dd HH:mm:ss.
+  // 
   // example:
   // 
   // 2024-03-11 10:00:00
   EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+  // OSS detection task ID.
+  // 
   // example:
   // 
   // P_UX0K5X
   ParentTaskId *string `json:"ParentTaskId,omitempty" xml:"ParentTaskId,omitempty"`
+  // Region ID.
+  // 
   // example:
   // 
   // cn-shanghai
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+  // Start time of the query, in the format yyyy-MM-dd HH:mm:ss.
+  // 
   // example:
   // 
   // 2024-03-10 10:00:00

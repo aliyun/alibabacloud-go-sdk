@@ -16,10 +16,14 @@ type iDeleteOnlineTestRequest interface {
 }
 
 type DeleteOnlineTestRequest struct {
+	// Region ID
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource type.
+	//
 	// example:
 	//
 	// image

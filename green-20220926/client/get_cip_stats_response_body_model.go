@@ -110,7 +110,12 @@ func (s *GetCipStatsResponseBody) SetSuccess(v bool) *GetCipStatsResponseBody {
 }
 
 func (s *GetCipStatsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCipStatsResponseBodyData struct {
@@ -185,7 +190,34 @@ func (s *GetCipStatsResponseBodyData) SetZ(v []*GetCipStatsResponseBodyDataZ) *G
 }
 
 func (s *GetCipStatsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.LabelStatChart != nil {
+		for _, item := range s.LabelStatChart {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Y != nil {
+		for _, item := range s.Y {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Z != nil {
+		for _, item := range s.Z {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCipStatsResponseBodyDataLabelStatChart struct {
@@ -286,7 +318,52 @@ func (s *GetCipStatsResponseBodyDataLabelStatChart) SetY(v []*GetCipStatsRespons
 }
 
 func (s *GetCipStatsResponseBodyDataLabelStatChart) Validate() error {
-	return dara.Validate(s)
+	if s.ImageTreeChar != nil {
+		for _, item := range s.ImageTreeChar {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TextTreeChart != nil {
+		for _, item := range s.TextTreeChart {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TreeChart != nil {
+		for _, item := range s.TreeChart {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VoiceTreeChart != nil {
+		for _, item := range s.VoiceTreeChart {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Y != nil {
+		for _, item := range s.Y {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCipStatsResponseBodyDataLabelStatChartImageTreeChar struct {

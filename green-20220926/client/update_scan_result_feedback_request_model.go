@@ -24,24 +24,42 @@ type iUpdateScanResultFeedbackRequest interface {
 }
 
 type UpdateScanResultFeedbackRequest struct {
+	// Feedback
+	//
 	// example:
 	//
 	// missOut
 	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
-	Labels   *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// Labels.
+	//
+	// example:
+	//
+	// abuse
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 46232656-984E-****-A648-B1D0667B6C3E
 	QueryRequestId *string `json:"QueryRequestId,omitempty" xml:"QueryRequestId,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource Type
+	//
 	// example:
 	//
 	// text
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	RiskLevel    *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// Risk Level
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s UpdateScanResultFeedbackRequest) String() string {

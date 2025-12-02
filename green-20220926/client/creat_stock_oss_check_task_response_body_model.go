@@ -16,10 +16,14 @@ type iCreatStockOssCheckTaskResponseBody interface {
 }
 
 type CreatStockOssCheckTaskResponseBody struct {
+	// Returned data
+	//
 	// example:
 	//
 	// True
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****

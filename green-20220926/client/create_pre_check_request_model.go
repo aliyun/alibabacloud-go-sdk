@@ -40,59 +40,90 @@ type iCreatePreCheckRequest interface {
 }
 
 type CreatePreCheckRequest struct {
+	// Buckets.
+	//
 	// example:
 	//
 	// [{\\"Bucket\\":\\"bucket01-test\\",\\"Region\\":\\"cn-beijing\\"}]
 	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
+	// Whether to deduplicate historical detected tasks.
+	//
 	// example:
 	//
 	// true
 	DistinctHistoryTasks *bool `json:"DistinctHistoryTasks,omitempty" xml:"DistinctHistoryTasks,omitempty"`
+	// Task end time.
+	//
 	// example:
 	//
 	// 2023-12-18 10:08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Whether it is a scheduled scan task.
+	//
 	// example:
 	//
 	// false
 	IsInc *bool `json:"IsInc,omitempty" xml:"IsInc,omitempty"`
+	// Media type.
+	//
 	// example:
 	//
 	// 1
 	MediaType *int32 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Prefix filter type.
+	//
 	// example:
 	//
 	// all
 	PrefixFilterType *string `json:"PrefixFilterType,omitempty" xml:"PrefixFilterType,omitempty"`
+	// Prefixes.
+	//
 	// example:
 	//
 	// dir1,dir2
 	PrefixFilters *string `json:"PrefixFilters,omitempty" xml:"PrefixFilters,omitempty"`
+	// Priority.
+	//
 	// example:
 	//
 	// 0
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Scan limit count.
+	//
 	// example:
 	//
 	// 10
 	ScanLimit *int64 `json:"ScanLimit,omitempty" xml:"ScanLimit,omitempty"`
+	// Whether to scan images without file extensions.
+	//
 	// example:
 	//
 	// true
 	ScanNoFileType *bool `json:"ScanNoFileType,omitempty" xml:"ScanNoFileType,omitempty"`
+	// Scan service code.
+	//
 	// example:
 	//
 	// baselineCheck
 	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
+	// Task start time.
+	//
 	// example:
 	//
 	// 2023-12-17 10:08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TaskName  *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// Task name.
+	//
+	// example:
+	//
+	// 图片任务 20240709101602004
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s CreatePreCheckRequest) String() string {

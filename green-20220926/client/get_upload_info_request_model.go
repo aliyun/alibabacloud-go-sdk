@@ -18,11 +18,20 @@ type iGetUploadInfoRequest interface {
 }
 
 type GetUploadInfoRequest struct {
+	// Upload name.
+	//
+	// example:
+	//
+	// 测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource type.
+	//
 	// example:
 	//
 	// image

@@ -16,12 +16,16 @@ type iDeleteCallbackRequest interface {
 }
 
 type DeleteCallbackRequest struct {
+	// callback id.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1480
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Region ID
+	//
 	// example:
 	//
 	// cn-shanghai

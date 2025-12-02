@@ -16,10 +16,14 @@ type iGetKeywordLibRequest interface {
 }
 
 type GetKeywordLibRequest struct {
+	// Keyword library ID.
+	//
 	// example:
 	//
 	// customxx_xxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

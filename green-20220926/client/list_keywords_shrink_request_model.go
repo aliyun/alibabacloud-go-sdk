@@ -24,24 +24,38 @@ type iListKeywordsShrinkRequest interface {
 }
 
 type ListKeywordsShrinkRequest struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Library ID.
+	//
 	// example:
 	//
 	// custom_xxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Sort field.
 	SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	Word       *string `json:"Word,omitempty" xml:"Word,omitempty"`
+	// Keyword.
+	//
+	// example:
+	//
+	// 测试词
+	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
 }
 
 func (s ListKeywordsShrinkRequest) String() string {

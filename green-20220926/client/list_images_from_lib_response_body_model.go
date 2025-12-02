@@ -30,35 +30,52 @@ type iListImagesFromLibResponseBody interface {
 }
 
 type ListImagesFromLibResponseBody struct {
+	// Error code, consistent with HTTP status.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Current page.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Items          []*ListImagesFromLibResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Data of the current page.
+	Items []*ListImagesFromLibResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// Further description of the error code.
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success indicator.
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of images.
+	//
 	// example:
 	//
 	// 10
@@ -155,22 +172,39 @@ func (s *ListImagesFromLibResponseBody) SetTotalCount(v int32) *ListImagesFromLi
 }
 
 func (s *ListImagesFromLibResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListImagesFromLibResponseBodyItems struct {
+	// Creation time.
+	//
 	// example:
 	//
 	// 2022-11-30 16:30:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Image ID.
+	//
 	// example:
 	//
 	// 112
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// Image URL.
+	//
 	// example:
 	//
 	// https://oss-cip-shanghai.oss-cn-shanghai.aliyuncs.com/image/upload/IMG_2123.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// Thumbnail URL.
+	//
 	// example:
 	//
 	// https://oss-cip-shanghai.oss-cn-shanghai.aliyuncs.com/image/upload/IMG_2123.jpg

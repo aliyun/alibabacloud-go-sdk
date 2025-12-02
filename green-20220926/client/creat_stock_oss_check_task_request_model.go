@@ -68,87 +68,170 @@ type iCreatStockOssCheckTaskRequest interface {
 }
 
 type CreatStockOssCheckTaskRequest struct {
+	// OSS buckets
+	//
 	// example:
 	//
 	// [{\\"Bucket\\":\\"bucket01-test\\",\\"Region\\":\\"cn-beijing\\"}]
 	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
+	// Callback ID
+	//
 	// example:
 	//
 	// 1751
 	CallbackId *string `json:"CallbackId,omitempty" xml:"CallbackId,omitempty"`
+	// Flag for deduplicating against previously detected tasks.
+	//
 	// example:
 	//
 	// true
 	DistinctHistoryTasks *bool `json:"DistinctHistoryTasks,omitempty" xml:"DistinctHistoryTasks,omitempty"`
+	// The end time of the task.
+	//
 	// example:
 	//
 	// 2023-12-18 10:08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Execute date of scheduled task.
+	//
 	// example:
 	//
 	// 1
 	ExecuteDate *int32 `json:"ExecuteDate,omitempty" xml:"ExecuteDate,omitempty"`
+	// Execute time of scheduled task.
+	//
 	// example:
 	//
 	// 01:09:30-01:19:30
-	ExecuteTime       *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	Freeze            *bool   `json:"Freeze,omitempty" xml:"Freeze,omitempty"`
-	FreezeHighRisk1   *bool   `json:"FreezeHighRisk1,omitempty" xml:"FreezeHighRisk1,omitempty"`
-	FreezeHighRisk2   *bool   `json:"FreezeHighRisk2,omitempty" xml:"FreezeHighRisk2,omitempty"`
-	FreezeMediumRisk1 *bool   `json:"FreezeMediumRisk1,omitempty" xml:"FreezeMediumRisk1,omitempty"`
-	FreezeMediumRisk2 *bool   `json:"FreezeMediumRisk2,omitempty" xml:"FreezeMediumRisk2,omitempty"`
+	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// Freeze indicator
+	//
+	// example:
+	//
+	// true
+	Freeze *bool `json:"Freeze,omitempty" xml:"Freeze,omitempty"`
+	// Freeze High-Risk Images
+	//
+	// example:
+	//
+	// true
+	FreezeHighRisk1 *bool `json:"FreezeHighRisk1,omitempty" xml:"FreezeHighRisk1,omitempty"`
+	// Freeze High-Risk Audio and Text
+	//
+	// example:
+	//
+	// true
+	FreezeHighRisk2 *bool `json:"FreezeHighRisk2,omitempty" xml:"FreezeHighRisk2,omitempty"`
+	// Freeze Medium-Risk Images
+	//
+	// example:
+	//
+	// true
+	FreezeMediumRisk1 *bool `json:"FreezeMediumRisk1,omitempty" xml:"FreezeMediumRisk1,omitempty"`
+	// Freeze Medium-Risk Audio and Text
+	//
+	// example:
+	//
+	// true
+	FreezeMediumRisk2 *bool `json:"FreezeMediumRisk2,omitempty" xml:"FreezeMediumRisk2,omitempty"`
+	// Freeze Restore Path
+	//
+	// example:
+	//
+	// test
 	FreezeRestorePath *string `json:"FreezeRestorePath,omitempty" xml:"FreezeRestorePath,omitempty"`
-	FreezeType        *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
+	// Freeze type
+	//
+	// example:
+	//
+	// ACL
+	FreezeType *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
+	// Indicator for scheduled task.
+	//
 	// example:
 	//
 	// false
 	IsInc *bool `json:"IsInc,omitempty" xml:"IsInc,omitempty"`
+	// Media type.
+	//
 	// example:
 	//
 	// 1
 	MediaType *int32 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Prefix filter type.
+	//
 	// example:
 	//
 	// all
 	PrefixFilterType *string `json:"PrefixFilterType,omitempty" xml:"PrefixFilterType,omitempty"`
+	// Prefix filters
+	//
 	// example:
 	//
 	// dir1,dir2
 	PrefixFilters *string `json:"PrefixFilters,omitempty" xml:"PrefixFilters,omitempty"`
+	// The priority of the task.
+	//
 	// example:
 	//
 	// 0
-	Priority *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Referer  *string `json:"Referer,omitempty" xml:"Referer,omitempty"`
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Referer.
+	//
+	// example:
+	//
+	// https://www.aliyun.com
+	Referer *string `json:"Referer,omitempty" xml:"Referer,omitempty"`
+	// Region ID
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The scan limit of the task.
+	//
 	// example:
 	//
 	// 10
 	ScanLimit *int64 `json:"ScanLimit,omitempty" xml:"ScanLimit,omitempty"`
+	// Indicator for scanning files without file type.
+	//
 	// example:
 	//
 	// true
 	ScanNoFileType *bool `json:"ScanNoFileType,omitempty" xml:"ScanNoFileType,omitempty"`
+	// Scan resource type.
+	//
 	// example:
 	//
 	// 0
 	ScanResourceType *string `json:"ScanResourceType,omitempty" xml:"ScanResourceType,omitempty"`
+	// The code of scan service.
+	//
 	// example:
 	//
 	// baselineCheck
 	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
+	// The start time of the task.
+	//
 	// example:
 	//
 	// 2023-12-17 10:08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Task Cycle
+	//
 	// example:
 	//
 	// 0
-	TaskCycle *int32  `json:"TaskCycle,omitempty" xml:"TaskCycle,omitempty"`
-	TaskName  *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskCycle *int32 `json:"TaskCycle,omitempty" xml:"TaskCycle,omitempty"`
+	// The name of the task.
+	//
+	// example:
+	//
+	// image task 20240709101602004
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// Task type.
+	//
 	// example:
 	//
 	// batch

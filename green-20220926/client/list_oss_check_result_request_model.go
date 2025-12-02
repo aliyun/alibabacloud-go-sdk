@@ -30,35 +30,52 @@ type iListOssCheckResultRequest interface {
 }
 
 type ListOssCheckResultRequest struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// End date.
+	//
 	// example:
 	//
 	// 2023-08-24 10:01:55
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Number of completed tasks.
+	//
 	// example:
 	//
 	// 2
 	FinishNum *int64 `json:"FinishNum,omitempty" xml:"FinishNum,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Search condition.
+	//
 	// example:
 	//
 	// {"TaskId":"P_11TL5T"}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId *string            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Sort     map[string]*string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Sort field.
+	Sort map[string]*string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// Start date.
+	//
 	// example:
 	//
 	// 2023-08-11 09:00:19
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Task status.
+	//
 	// example:
 	//
 	// 4

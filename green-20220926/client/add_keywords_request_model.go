@@ -20,15 +20,26 @@ type iAddKeywordsRequest interface {
 }
 
 type AddKeywordsRequest struct {
+	// The keywords to be added.
+	//
+	// example:
+	//
+	// keywords
 	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// The name of the keyword file.
+	//
 	// example:
 	//
 	// upload/1e5353c0-0d91-40ba-9d41-ae7abd3fe561.txt
 	KeywordsObject *string `json:"KeywordsObject,omitempty" xml:"KeywordsObject,omitempty"`
+	// The id of keyword library.
+	//
 	// example:
 	//
 	// customxx_xxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// Region ID
+	//
 	// example:
 	//
 	// cn-shanghai

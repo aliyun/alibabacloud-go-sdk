@@ -26,24 +26,36 @@ type iGetTextScanResultShrinkRequest interface {
 }
 
 type GetTextScanResultShrinkRequest struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// End date and time.
+	//
 	// example:
 	//
 	// 2023-08-24 10:01:55
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Search criteria.
 	QueryShrink *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Sort fields.
 	SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// Start date and time.
+	//
 	// example:
 	//
 	// 2023-08-11 09:00:19

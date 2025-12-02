@@ -164,7 +164,26 @@ func (s *DescribeOnlineTestResultResponseBody) SetUrl(v string) *DescribeOnlineT
 }
 
 func (s *DescribeOnlineTestResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AudioData != nil {
+		if err := s.AudioData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FrameData != nil {
+		if err := s.FrameData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SummaryList != nil {
+		for _, item := range s.SummaryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOnlineTestResultResponseBodyAudioData struct {

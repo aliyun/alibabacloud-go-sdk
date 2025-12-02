@@ -14,6 +14,8 @@ type iListImageLibRequest interface {
 }
 
 type ListImageLibRequest struct {
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

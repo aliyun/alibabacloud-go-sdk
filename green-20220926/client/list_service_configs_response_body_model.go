@@ -22,19 +22,28 @@ type iListServiceConfigsResponseBody interface {
 }
 
 type ListServiceConfigsResponseBody struct {
+	// Error code.
+	//
 	// example:
 	//
 	// 400
-	Code *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data []*ListServiceConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Further description of the error code.
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success indicator.
+	//
 	// example:
 	//
 	// True
@@ -95,44 +104,86 @@ func (s *ListServiceConfigsResponseBody) SetSuccess(v bool) *ListServiceConfigsR
 }
 
 func (s *ListServiceConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServiceConfigsResponseBodyData struct {
+	// Category.
+	//
+	// example:
+	//
+	// guard-scene
 	Classify *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	// Main service.
+	//
 	// example:
 	//
 	// nickname_detection
-	CopyFrom          *string                                              `json:"CopyFrom,omitempty" xml:"CopyFrom,omitempty"`
+	CopyFrom *string `json:"CopyFrom,omitempty" xml:"CopyFrom,omitempty"`
+	// Service configuration.
 	CustomServiceConf *ListServiceConfigsResponseBodyDataCustomServiceConf `json:"CustomServiceConf,omitempty" xml:"CustomServiceConf,omitempty" type:"Struct"`
+	// Modification time.
+	//
 	// example:
 	//
 	// 2023-07-11 15:40:04
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Options.
+	//
 	// example:
 	//
 	// {}
 	Option map[string]interface{} `json:"Option,omitempty" xml:"Option,omitempty"`
+	// Resource type.
+	//
 	// example:
 	//
 	// text
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Service code.
+	//
 	// example:
 	//
 	// nickname_detection
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Service description.
+	//
+	// example:
+	//
+	// 服务描述
 	ServiceDesc *string `json:"ServiceDesc,omitempty" xml:"ServiceDesc,omitempty"`
+	// Service name.
+	//
+	// example:
+	//
+	// 服务名称
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// Service type.
+	//
 	// example:
 	//
 	// plus
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// UID。
+	// UID.
 	//
 	// example:
 	//
 	// 1674*****0071291
-	Uid       *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// Usage status
+	//
+	// example:
+	//
+	// in
 	UseStatus *string `json:"UseStatus,omitempty" xml:"UseStatus,omitempty"`
 }
 
@@ -253,19 +304,31 @@ func (s *ListServiceConfigsResponseBodyData) SetUseStatus(v string) *ListService
 }
 
 func (s *ListServiceConfigsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CustomServiceConf != nil {
+		if err := s.CustomServiceConf.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListServiceConfigsResponseBodyDataCustomServiceConf struct {
+	// Audio service.
+	//
 	// example:
 	//
 	// audio_media_detection
-	AudioService       *string                                                     `json:"AudioService,omitempty" xml:"AudioService,omitempty"`
-	ImageService       []*string                                                   `json:"ImageService,omitempty" xml:"ImageService,omitempty" type:"Repeated"`
-	KeywordFilterLibs  []*string                                                   `json:"KeywordFilterLibs,omitempty" xml:"KeywordFilterLibs,omitempty" type:"Repeated"`
-	KeywordHitLibs     []*string                                                   `json:"KeywordHitLibs,omitempty" xml:"KeywordHitLibs,omitempty" type:"Repeated"`
-	Rules              []*ListServiceConfigsResponseBodyDataCustomServiceConfRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	SimilarTextHitLibs []*string                                                   `json:"SimilarTextHitLibs,omitempty" xml:"SimilarTextHitLibs,omitempty" type:"Repeated"`
+	AudioService *string `json:"AudioService,omitempty" xml:"AudioService,omitempty"`
+	// Image services.
+	ImageService []*string `json:"ImageService,omitempty" xml:"ImageService,omitempty" type:"Repeated"`
+	// Ignored word libraries.
+	KeywordFilterLibs []*string `json:"KeywordFilterLibs,omitempty" xml:"KeywordFilterLibs,omitempty" type:"Repeated"`
+	// Hit word libraries.
+	KeywordHitLibs []*string `json:"KeywordHitLibs,omitempty" xml:"KeywordHitLibs,omitempty" type:"Repeated"`
+	// Service rules
+	Rules []*ListServiceConfigsResponseBodyDataCustomServiceConfRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Hit similar text libraries.
+	SimilarTextHitLibs []*string `json:"SimilarTextHitLibs,omitempty" xml:"SimilarTextHitLibs,omitempty" type:"Repeated"`
 }
 
 func (s ListServiceConfigsResponseBodyDataCustomServiceConf) String() string {
@@ -331,15 +394,28 @@ func (s *ListServiceConfigsResponseBodyDataCustomServiceConf) SetSimilarTextHitL
 }
 
 func (s *ListServiceConfigsResponseBodyDataCustomServiceConf) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServiceConfigsResponseBodyDataCustomServiceConfRules struct {
+	// Image review rule.
 	ImageScanRule *ListServiceConfigsResponseBodyDataCustomServiceConfRulesImageScanRule `json:"ImageScanRule,omitempty" xml:"ImageScanRule,omitempty" type:"Struct"`
+	// Index.
+	//
 	// example:
 	//
 	// 1
-	Index        *int32                                                                `json:"Index,omitempty" xml:"Index,omitempty"`
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// Text review rule.
 	TextScanRule *ListServiceConfigsResponseBodyDataCustomServiceConfRulesTextScanRule `json:"TextScanRule,omitempty" xml:"TextScanRule,omitempty" type:"Struct"`
 }
 
@@ -379,10 +455,21 @@ func (s *ListServiceConfigsResponseBodyDataCustomServiceConfRules) SetTextScanRu
 }
 
 func (s *ListServiceConfigsResponseBodyDataCustomServiceConfRules) Validate() error {
-	return dara.Validate(s)
+	if s.ImageScanRule != nil {
+		if err := s.ImageScanRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextScanRule != nil {
+		if err := s.TextScanRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListServiceConfigsResponseBodyDataCustomServiceConfRulesImageScanRule struct {
+	// Image services.
 	Services []*string `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 }
 
@@ -408,6 +495,7 @@ func (s *ListServiceConfigsResponseBodyDataCustomServiceConfRulesImageScanRule) 
 }
 
 type ListServiceConfigsResponseBodyDataCustomServiceConfRulesTextScanRule struct {
+	// Text services.
 	Services []*string `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 }
 

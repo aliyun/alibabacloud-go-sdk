@@ -30,35 +30,52 @@ type iGetStockOssCheckTasksListRequest interface {
 }
 
 type GetStockOssCheckTasksListRequest struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// End time.
+	//
 	// example:
 	//
 	// 2023-06-18 02:08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Whether it is a scheduled scan task.
+	//
 	// example:
 	//
 	// false
 	IsInc *bool `json:"IsInc,omitempty" xml:"IsInc,omitempty"`
+	// Media type.
+	//
 	// example:
 	//
 	// image
 	MediaType *int32 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId *string            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Sort     map[string]*string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Sort field.
+	Sort map[string]*string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// Start time.
+	//
 	// example:
 	//
 	// 2023-06-17 02:08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Task type.
+	//
 	// example:
 	//
 	// batch

@@ -26,43 +26,43 @@ type iModifyFeatureConfigRequest interface {
 }
 
 type ModifyFeatureConfigRequest struct {
-	// Configuration, in JSON format
+	// query
 	//
 	// example:
 	//
 	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// Label meaning
+	// query
 	//
 	// example:
 	//
 	// 标签2
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Label value, customer-defined
+	// query
 	//
 	// example:
 	//
 	// __config__
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// Region
+	// query
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource type.
+	// query
 	//
 	// example:
 	//
 	// text
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Service code.
+	// System-defined parameter. Value: **ModifyFeatureConfig**.
 	//
 	// example:
 	//
 	// llm_query_moderation
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Type
+	// query
 	//
 	// example:
 	//

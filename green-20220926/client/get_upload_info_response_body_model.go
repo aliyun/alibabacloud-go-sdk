@@ -38,51 +38,80 @@ type iGetUploadInfoResponseBody interface {
 }
 
 type GetUploadInfoResponseBody struct {
+	// Upload authorization ID.
+	//
 	// example:
 	//
 	// LTAI5t9HM*****EXQmw3DVH
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// Error code, consistent with HTTP status.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// In seconds.
+	//
 	// example:
 	//
 	// 900
 	Expire *int64 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// Folder name.
+	//
 	// example:
 	//
 	// image/upload/xxx
 	Folder *string `json:"Folder,omitempty" xml:"Folder,omitempty"`
+	// Upload host.
+	//
 	// example:
 	//
 	// https://oss-cip-shanghai.oss-cn-shanghai.aliyuncs.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Key used for uploading files.
+	//
 	// example:
 	//
 	// image/upload/xxx
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Further description of the error code.
+	//
 	// example:
 	//
 	// OK
-	Msg  *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Used for front-end image upload.
+	//
+	// example:
+	//
+	// 测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// OSS upload file Policy.
+	//
 	// example:
 	//
 	// xxxx
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Upload signature information.
+	//
 	// example:
 	//
 	// iyu7VHblYj+mEF9p46cdGOlNPAw=
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	// Success indicator.
+	//
 	// example:
 	//
 	// True

@@ -36,45 +36,73 @@ type iGetServiceConfResponseBody interface {
 }
 
 type GetServiceConfResponseBody struct {
+	// Classification.
+	//
+	// example:
+	//
+	// guard-scene
 	Classify *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	// Error code, consistent with HTTP status.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Service details
+	//
 	// example:
 	//
 	// {}
 	CustomServiceConf map[string]interface{} `json:"CustomServiceConf,omitempty" xml:"CustomServiceConf,omitempty"`
+	// Modification time.
+	//
 	// example:
 	//
 	// 2023-01-17 12:29:56
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Further description of the error code.
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Options.
+	//
 	// example:
 	//
 	// {}
 	Option map[string]interface{} `json:"Option,omitempty" xml:"Option,omitempty"`
+	// ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// 6CF2815C-****-****-B52E-FF6E2****492
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Resource type.
+	//
 	// example:
 	//
 	// image
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Service code.
+	//
 	// example:
 	//
 	// baselineCheck
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Service type.
+	//
+	// example:
+	//
+	// plus
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// Success indicator
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// UID。
+	// UID.
 	//
 	// example:
 	//

@@ -22,19 +22,28 @@ type iListKeywordsResponseBody interface {
 }
 
 type ListKeywordsResponseBody struct {
+	// Error code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data *ListKeywordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Further description of the error code.
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success flag.
+	//
 	// example:
 	//
 	// True
@@ -95,19 +104,31 @@ func (s *ListKeywordsResponseBody) SetSuccess(v bool) *ListKeywordsResponseBody 
 }
 
 func (s *ListKeywordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListKeywordsResponseBodyData struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                               `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*ListKeywordsResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Data of the current page.
+	Items []*ListKeywordsResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// Page size.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 23
@@ -159,31 +180,55 @@ func (s *ListKeywordsResponseBodyData) SetTotalCount(v int32) *ListKeywordsRespo
 }
 
 func (s *ListKeywordsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListKeywordsResponseBodyDataItems struct {
+	// Creation time.
+	//
 	// example:
 	//
 	// 2023-06-03 14:43:03
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Modification time.
+	//
 	// example:
 	//
 	// 2023-06-03 14:43:03
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Primary key ID.
+	//
 	// example:
 	//
 	// 112
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Keyword library ID.
+	//
 	// example:
 	//
 	// custom_xxxx
 	KeywordLibId *string `json:"KeywordLibId,omitempty" xml:"KeywordLibId,omitempty"`
+	// Keyword data ID.
+	//
 	// example:
 	//
 	// 4205334
-	KeywordMd5Id *int64  `json:"KeywordMd5Id,omitempty" xml:"KeywordMd5Id,omitempty"`
-	Word         *string `json:"Word,omitempty" xml:"Word,omitempty"`
+	KeywordMd5Id *int64 `json:"KeywordMd5Id,omitempty" xml:"KeywordMd5Id,omitempty"`
+	// Keyword.
+	//
+	// example:
+	//
+	// 测试词
+	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
 }
 
 func (s ListKeywordsResponseBodyDataItems) String() string {

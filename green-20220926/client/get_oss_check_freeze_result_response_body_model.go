@@ -22,19 +22,28 @@ type iGetOssCheckFreezeResultResponseBody interface {
 }
 
 type GetOssCheckFreezeResultResponseBody struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                      `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*GetOssCheckFreezeResultResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Data of the current page.
+	Items []*GetOssCheckFreezeResultResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// F0A594BB-FA7A-580F-AE9E-A4188E092823
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 29
@@ -95,96 +104,183 @@ func (s *GetOssCheckFreezeResultResponseBody) SetTotalCount(v int64) *GetOssChec
 }
 
 func (s *GetOssCheckFreezeResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOssCheckFreezeResultResponseBodyItems struct {
+	// Storage space.
+	//
 	// example:
 	//
 	// tmp
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// Error code, consistent with HTTP status.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Audio and video detection type.
+	//
 	// example:
 	//
 	// audio
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// Primary service.
+	//
 	// example:
 	//
 	// audio_media_detection
 	CopyFrom *string `json:"CopyFrom,omitempty" xml:"CopyFrom,omitempty"`
+	// Feedback.
+	//
+	// example:
+	//
+	// misreport
 	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
-	Freeze   *bool   `json:"Freeze,omitempty" xml:"Freeze,omitempty"`
+	// Whether frozen.
+	//
+	// example:
+	//
+	// true
+	Freeze *bool `json:"Freeze,omitempty" xml:"Freeze,omitempty"`
+	// Freeze status.
+	//
 	// example:
 	//
 	// FREEZED
 	FreezeStatus *string `json:"FreezeStatus,omitempty" xml:"FreezeStatus,omitempty"`
+	// Freeze type.
+	//
 	// example:
 	//
 	// ACL
 	FreezeType *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
+	// Image URL address.
+	//
 	// example:
 	//
 	// http://www.aliyuncs.com/test.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// Whether to copy.
+	//
 	// example:
 	//
 	// true
 	IsCopy *bool `json:"IsCopy,omitempty" xml:"IsCopy,omitempty"`
+	// Job name.
+	//
 	// example:
 	//
 	// dhT20X2310
-	JobName            *string                                                 `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	LabelDetails       []*GetOssCheckFreezeResultResponseBodyItemsLabelDetails `json:"LabelDetails,omitempty" xml:"LabelDetails,omitempty" type:"Repeated"`
-	Labels             []*string                                               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Labels2            []*string                                               `json:"Labels2,omitempty" xml:"Labels2,omitempty" type:"Repeated"`
-	ManualFreezeAction *string                                                 `json:"ManualFreezeAction,omitempty" xml:"ManualFreezeAction,omitempty"`
-	ManualOperateTime  *string                                                 `json:"ManualOperateTime,omitempty" xml:"ManualOperateTime,omitempty"`
-	ManualOperator     *string                                                 `json:"ManualOperator,omitempty" xml:"ManualOperator,omitempty"`
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// Labels.
+	LabelDetails []*GetOssCheckFreezeResultResponseBodyItemsLabelDetails `json:"LabelDetails,omitempty" xml:"LabelDetails,omitempty" type:"Repeated"`
+	// Image labels.
+	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// Text labels.
+	Labels2 []*string `json:"Labels2,omitempty" xml:"Labels2,omitempty" type:"Repeated"`
+	// Manual disposal status.
+	//
+	// example:
+	//
+	// FREEZE
+	ManualFreezeAction *string `json:"ManualFreezeAction,omitempty" xml:"ManualFreezeAction,omitempty"`
+	// Disposal time.
+	//
+	// example:
+	//
+	// 2025-08-09 12:00:00
+	ManualOperateTime *string `json:"ManualOperateTime,omitempty" xml:"ManualOperateTime,omitempty"`
+	// Operator.
+	//
+	// example:
+	//
+	// xx
+	ManualOperator *string `json:"ManualOperator,omitempty" xml:"ManualOperator,omitempty"`
+	// File\\"s MD5.
+	//
 	// example:
 	//
 	// 54416c9b159df4a60ae03c04ccb94cb5
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// Further description of the error code.
+	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Object name.
+	//
 	// example:
 	//
 	// 1713014531569_958.png.jpeg
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// F0A594BB-FA7A-580F-AE9E-A4188E092823
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Image risk level.
+	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// Overall risk level.
+	//
 	// example:
 	//
 	// low
 	RiskLevel0 *string `json:"RiskLevel0,omitempty" xml:"RiskLevel0,omitempty"`
+	// Text risk level.
+	//
 	// example:
 	//
 	// none
 	RiskLevel2 *string `json:"RiskLevel2,omitempty" xml:"RiskLevel2,omitempty"`
+	// Details of the result.
+	//
 	// example:
 	//
 	// {}
 	ScanResult *string `json:"ScanResult,omitempty" xml:"ScanResult,omitempty"`
+	// Service code.
+	//
 	// example:
 	//
 	// audio_media_detection_01
-	ServiceCode       *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	ServiceName       *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Service name.
+	//
+	// example:
+	//
+	// 服务名称
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// System disposal status.
+	//
+	// example:
+	//
+	// FREEZED
 	SysDisposalStatus *string `json:"SysDisposalStatus,omitempty" xml:"SysDisposalStatus,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// P_BT3FHS
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task URL.
+	//
 	// example:
 	//
 	// http://www.aliyuncs.com/test.mp3
@@ -470,13 +566,37 @@ func (s *GetOssCheckFreezeResultResponseBodyItems) SetUrl(v string) *GetOssCheck
 }
 
 func (s *GetOssCheckFreezeResultResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.LabelDetails != nil {
+		for _, item := range s.LabelDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOssCheckFreezeResultResponseBodyItemsLabelDetails struct {
-	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Label       *string  `json:"Label,omitempty" xml:"Label,omitempty"`
+	// Confidence.
+	//
+	// example:
+	//
+	// 50
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// Label description.
+	//
+	// example:
+	//
+	// 涉政
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Label.
+	//
+	// example:
+	//
+	// politics
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 }
 
 func (s GetOssCheckFreezeResultResponseBodyItemsLabelDetails) String() string {

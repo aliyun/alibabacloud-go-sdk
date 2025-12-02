@@ -22,6 +22,11 @@ type iGetFeatureConfigRequest interface {
 }
 
 type GetFeatureConfigRequest struct {
+	// Query conditions.
+	//
+	// example:
+	//
+	// {\\"Lang\\":\\"zh\\",\\"CategoryType\\":1,\\"Default\\":false,\\"ParentCategoryId\\":1720}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// Region ID
 	//

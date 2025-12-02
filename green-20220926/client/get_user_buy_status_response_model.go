@@ -59,5 +59,10 @@ func (s *GetUserBuyStatusResponse) SetBody(v *GetUserBuyStatusResponseBody) *Get
 }
 
 func (s *GetUserBuyStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

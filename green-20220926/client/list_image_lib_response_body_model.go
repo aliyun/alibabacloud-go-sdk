@@ -24,23 +24,34 @@ type iListImageLibResponseBody interface {
 }
 
 type ListImageLibResponseBody struct {
+	// Error code, consistent with HTTP status.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	LibList        []*ListImageLibResponseBodyLibList `json:"LibList,omitempty" xml:"LibList,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// List of image library information.
+	LibList []*ListImageLibResponseBodyLibList `json:"LibList,omitempty" xml:"LibList,omitempty" type:"Repeated"`
+	// Further description of the error code.
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success indicator.
+	//
 	// example:
 	//
 	// True
@@ -110,31 +121,60 @@ func (s *ListImageLibResponseBody) SetSuccess(v bool) *ListImageLibResponseBody 
 }
 
 func (s *ListImageLibResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LibList != nil {
+		for _, item := range s.LibList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListImageLibResponseBodyLibList struct {
+	// Comment.
+	//
+	// example:
+	//
+	// 备注
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Exempt from inspection configuration.
+	//
 	// example:
 	//
 	// 1
 	FreeInspection *int32 `json:"FreeInspection,omitempty" xml:"FreeInspection,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2024-06-03 15:20:14
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Modification time.
+	//
 	// example:
 	//
 	// 2024-06-03 15:20:14
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Number of images in the library.
+	//
 	// example:
 	//
 	// 1
 	ImageNum *int64 `json:"ImageNum,omitempty" xml:"ImageNum,omitempty"`
+	// Library ID.
+	//
 	// example:
 	//
 	// custom_xxxx
-	LibId   *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// Library name.
+	//
+	// example:
+	//
+	// 测试
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 }
 

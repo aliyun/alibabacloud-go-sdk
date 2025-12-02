@@ -22,19 +22,28 @@ type iQueryCallbackByPageResponseBody interface {
 }
 
 type QueryCallbackByPageResponseBody struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*QueryCallbackByPageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Data of the current page.
+	Items []*QueryCallbackByPageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 10
@@ -95,43 +104,69 @@ func (s *QueryCallbackByPageResponseBody) SetTotalCount(v int64) *QueryCallbackB
 }
 
 func (s *QueryCallbackByPageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryCallbackByPageResponseBodyItems struct {
+	// Encryption algorithm.
+	//
 	// example:
 	//
 	// SHA256
 	CryptType *string `json:"CryptType,omitempty" xml:"CryptType,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2024-06-03 15:20:14
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Modification time.
+	//
 	// example:
 	//
 	// 2024-06-03 15:20:14
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Primary key ID.
+	//
 	// example:
 	//
 	// 1697
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Name.
+	//
+	// example:
+	//
+	// 消息通知
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Result scope.
+	//
 	// example:
 	//
 	// all
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// Seed。
+	// Seed.
 	//
 	// example:
 	//
 	// cb6gYS8GXj4Vn4Y4FN0Y8R5M-1x46Mq
 	Seed *string `json:"Seed,omitempty" xml:"Seed,omitempty"`
-	// UID。
+	// UID.
 	//
 	// example:
 	//
 	// 12161*****398900
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// Callback URL.
+	//
 	// example:
 	//
 	// https://console.aliyun.com/

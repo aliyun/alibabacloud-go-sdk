@@ -59,5 +59,10 @@ func (s *CreateOnlineTestResponse) SetBody(v *CreateOnlineTestResponseBody) *Cre
 }
 
 func (s *CreateOnlineTestResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -18,8 +18,20 @@ type iAddImageLibRequest interface {
 }
 
 type AddImageLibRequest struct {
+	// The remarks of the image library.
+	//
+	// example:
+	//
+	// Explicit_Content_Blacklist_Image_lib
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The name of image library
+	//
+	// example:
+	//
+	// test_image_lib
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

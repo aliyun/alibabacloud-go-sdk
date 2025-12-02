@@ -22,19 +22,28 @@ type iGetKeywordLibResponseBody interface {
 }
 
 type GetKeywordLibResponseBody struct {
+	// Error code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data content.
 	Data *GetKeywordLibResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Further description of the error code.
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success indicator.
+	//
 	// example:
 	//
 	// True
@@ -95,23 +104,41 @@ func (s *GetKeywordLibResponseBody) SetSuccess(v bool) *GetKeywordLibResponseBod
 }
 
 func (s *GetKeywordLibResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetKeywordLibResponseBodyData struct {
+	// Last modified time.
+	//
 	// example:
 	//
 	// 2024-01-29 10:26:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Number of keywords.
+	//
 	// example:
 	//
 	// 100
 	KeywordCount *string `json:"KeywordCount,omitempty" xml:"KeywordCount,omitempty"`
+	// Keyword library ID.
+	//
 	// example:
 	//
 	// customxx_xxx
-	LibId   *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// Library name
+	//
+	// example:
+	//
+	// 测试词库
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// Primary account ID
+	//
 	// example:
 	//
 	// 1825457112123838

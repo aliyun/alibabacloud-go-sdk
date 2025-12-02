@@ -59,5 +59,10 @@ func (s *GetBackupConfigResponse) SetBody(v *GetBackupConfigResponseBody) *GetBa
 }
 
 func (s *GetBackupConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

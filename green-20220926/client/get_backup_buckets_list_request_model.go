@@ -14,6 +14,8 @@ type iGetBackupBucketsListRequest interface {
 }
 
 type GetBackupBucketsListRequest struct {
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

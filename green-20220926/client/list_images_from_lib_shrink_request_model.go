@@ -28,31 +28,46 @@ type iListImagesFromLibShrinkRequest interface {
 }
 
 type ListImagesFromLibShrinkRequest struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// End date.
+	//
 	// example:
 	//
 	// 2023-08-24 10:01:55
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Image ID.
+	//
 	// example:
 	//
 	// 112
 	ImgId *string `json:"ImgId,omitempty" xml:"ImgId,omitempty"`
+	// Gallery ID.
+	//
 	// example:
 	//
 	// custom_xxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Sort field.
 	SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// Start date.
+	//
 	// example:
 	//
 	// 2023-08-11 09:00:19

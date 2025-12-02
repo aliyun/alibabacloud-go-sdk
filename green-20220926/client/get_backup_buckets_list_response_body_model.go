@@ -16,7 +16,10 @@ type iGetBackupBucketsListResponseBody interface {
 }
 
 type GetBackupBucketsListResponseBody struct {
+	// Returned data.
 	Data []*GetBackupBucketsListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
@@ -50,14 +53,27 @@ func (s *GetBackupBucketsListResponseBody) SetRequestId(v string) *GetBackupBuck
 }
 
 func (s *GetBackupBucketsListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetBackupBucketsListResponseBodyData struct {
+	// OSS file storage bucket name.
+	//
 	// example:
 	//
 	// gj-bucket1
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// Region.
+	//
 	// example:
 	//
 	// cn-shanghai

@@ -32,36 +32,65 @@ type iExportCipStatsRequest interface {
 }
 
 type ExportCipStatsRequest struct {
+  // Whether to support monthly indexing. Values: -**true**: Supported. -**false**: Not supported.
+  // 
   // example:
   // 
   // true
   ByMonth *bool `json:"ByMonth,omitempty" xml:"ByMonth,omitempty"`
+  // The end time of the query, in the format yyyy-MM-dd HH:mm:ss.
+  // 
   // example:
   // 
   // 2024-04-16 09:00:00
   EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+  // Export type. Values: -**level**: Export by risk level. -**label**: Export by label.
+  // 
+  // example:
+  // 
+  // label
   ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+  // The label of the task to be exported.
+  // 
   // example:
   // 
   // xx
   Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+  // Region ID.
+  // 
   // example:
   // 
   // cn-shanghai
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+  // Resource type.
+  // 
   // example:
   // 
   // text
   ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+  // Service code.
+  // 
+  // example:
+  // 
+  // baselineCheck
   ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+  // The start time of the query, in the format yyyy-MM-dd HH:mm:ss.
+  // 
   // example:
   // 
   // 2024-04-15 09:00:00
   StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+  // Sub-account UID.
+  // 
   // example:
   // 
   // 268220485413130979
   SubUid *string `json:"SubUid,omitempty" xml:"SubUid,omitempty"`
+  // Type, values: -**cip**: Content Security Invocation Count Statistics. -**risk_level**: Content Security Risk Level Statistics. -**content_moderation**: AI Safety Guardrail Content Compliance Risk Level and Label Statistics. -**sensitive_data**: AI Safety Guardrail Sensitive Data Risk Level and Label Statistics. -**prompt_attack**: AI Safety Guardrail Prompt Word Risk Level and Label Statistics.
+  // 
+  // example:
+  // 
+  // risk_level
   Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

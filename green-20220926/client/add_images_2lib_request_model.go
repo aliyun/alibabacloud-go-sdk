@@ -18,14 +18,20 @@ type iAddImages2LibRequest interface {
 }
 
 type AddImages2LibRequest struct {
+	// URL of the image to be uploaded.
+	//
 	// example:
 	//
 	// upload/ea7a98f9-f8bd-4905-a79b-963c9da419c5.jpg
 	ImgUrl *string `json:"ImgUrl,omitempty" xml:"ImgUrl,omitempty"`
+	// The ID of image library.
+	//
 	// example:
 	//
 	// xxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// Region ID
+	//
 	// example:
 	//
 	// cn-shanghai

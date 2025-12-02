@@ -18,11 +18,20 @@ type iUpdateKeywordLibRequest interface {
 }
 
 type UpdateKeywordLibRequest struct {
+	// Library ID.
+	//
 	// example:
 	//
 	// custom_xxxx
-	LibId   *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// Keyword library name.
+	//
+	// example:
+	//
+	// 测试库
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
