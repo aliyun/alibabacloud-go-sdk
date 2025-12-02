@@ -21,6 +21,8 @@ type iStartRtcCloudRecordingRequest interface {
 	GetMixTranscodeParams() *StartRtcCloudRecordingRequestMixTranscodeParams
 	SetNotifyAuthKey(v string) *StartRtcCloudRecordingRequest
 	GetNotifyAuthKey() *string
+	SetNotifyFileUploadedFormat(v []*string) *StartRtcCloudRecordingRequest
+	GetNotifyFileUploadedFormat() []*string
 	SetNotifyUrl(v string) *StartRtcCloudRecordingRequest
 	GetNotifyUrl() *string
 	SetRecordParams(v *StartRtcCloudRecordingRequestRecordParams) *StartRtcCloudRecordingRequest
@@ -43,11 +45,12 @@ type StartRtcCloudRecordingRequest struct {
 	// example:
 	//
 	// room1024
-	ChannelId          *string                                          `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	MaxIdleTime        *int64                                           `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
-	MixLayoutParams    *StartRtcCloudRecordingRequestMixLayoutParams    `json:"MixLayoutParams,omitempty" xml:"MixLayoutParams,omitempty" type:"Struct"`
-	MixTranscodeParams *StartRtcCloudRecordingRequestMixTranscodeParams `json:"MixTranscodeParams,omitempty" xml:"MixTranscodeParams,omitempty" type:"Struct"`
-	NotifyAuthKey      *string                                          `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
+	ChannelId                *string                                          `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	MaxIdleTime              *int64                                           `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
+	MixLayoutParams          *StartRtcCloudRecordingRequestMixLayoutParams    `json:"MixLayoutParams,omitempty" xml:"MixLayoutParams,omitempty" type:"Struct"`
+	MixTranscodeParams       *StartRtcCloudRecordingRequestMixTranscodeParams `json:"MixTranscodeParams,omitempty" xml:"MixTranscodeParams,omitempty" type:"Struct"`
+	NotifyAuthKey            *string                                          `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
+	NotifyFileUploadedFormat []*string                                        `json:"NotifyFileUploadedFormat,omitempty" xml:"NotifyFileUploadedFormat,omitempty" type:"Repeated"`
 	// example:
 	//
 	// http://xxxx/test/mycallback
@@ -90,6 +93,10 @@ func (s *StartRtcCloudRecordingRequest) GetMixTranscodeParams() *StartRtcCloudRe
 
 func (s *StartRtcCloudRecordingRequest) GetNotifyAuthKey() *string {
 	return s.NotifyAuthKey
+}
+
+func (s *StartRtcCloudRecordingRequest) GetNotifyFileUploadedFormat() []*string {
+	return s.NotifyFileUploadedFormat
 }
 
 func (s *StartRtcCloudRecordingRequest) GetNotifyUrl() *string {
@@ -135,6 +142,11 @@ func (s *StartRtcCloudRecordingRequest) SetMixTranscodeParams(v *StartRtcCloudRe
 
 func (s *StartRtcCloudRecordingRequest) SetNotifyAuthKey(v string) *StartRtcCloudRecordingRequest {
 	s.NotifyAuthKey = &v
+	return s
+}
+
+func (s *StartRtcCloudRecordingRequest) SetNotifyFileUploadedFormat(v []*string) *StartRtcCloudRecordingRequest {
+	s.NotifyFileUploadedFormat = v
 	return s
 }
 

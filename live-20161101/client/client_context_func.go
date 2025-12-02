@@ -27394,6 +27394,10 @@ func (client *Client) StartRtcCloudRecordingWithContext(ctx context.Context, tmp
 		query["NotifyAuthKey"] = request.NotifyAuthKey
 	}
 
+	if !dara.IsNil(request.NotifyFileUploadedFormat) {
+		query["NotifyFileUploadedFormat"] = request.NotifyFileUploadedFormat
+	}
+
 	if !dara.IsNil(request.NotifyUrl) {
 		query["NotifyUrl"] = request.NotifyUrl
 	}

@@ -21,6 +21,8 @@ type iStartRtcCloudRecordingShrinkRequest interface {
 	GetMixTranscodeParamsShrink() *string
 	SetNotifyAuthKey(v string) *StartRtcCloudRecordingShrinkRequest
 	GetNotifyAuthKey() *string
+	SetNotifyFileUploadedFormat(v []*string) *StartRtcCloudRecordingShrinkRequest
+	GetNotifyFileUploadedFormat() []*string
 	SetNotifyUrl(v string) *StartRtcCloudRecordingShrinkRequest
 	GetNotifyUrl() *string
 	SetRecordParamsShrink(v string) *StartRtcCloudRecordingShrinkRequest
@@ -43,11 +45,12 @@ type StartRtcCloudRecordingShrinkRequest struct {
 	// example:
 	//
 	// room1024
-	ChannelId                *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	MaxIdleTime              *int64  `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
-	MixLayoutParamsShrink    *string `json:"MixLayoutParams,omitempty" xml:"MixLayoutParams,omitempty"`
-	MixTranscodeParamsShrink *string `json:"MixTranscodeParams,omitempty" xml:"MixTranscodeParams,omitempty"`
-	NotifyAuthKey            *string `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
+	ChannelId                *string   `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	MaxIdleTime              *int64    `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
+	MixLayoutParamsShrink    *string   `json:"MixLayoutParams,omitempty" xml:"MixLayoutParams,omitempty"`
+	MixTranscodeParamsShrink *string   `json:"MixTranscodeParams,omitempty" xml:"MixTranscodeParams,omitempty"`
+	NotifyAuthKey            *string   `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
+	NotifyFileUploadedFormat []*string `json:"NotifyFileUploadedFormat,omitempty" xml:"NotifyFileUploadedFormat,omitempty" type:"Repeated"`
 	// example:
 	//
 	// http://xxxx/test/mycallback
@@ -90,6 +93,10 @@ func (s *StartRtcCloudRecordingShrinkRequest) GetMixTranscodeParamsShrink() *str
 
 func (s *StartRtcCloudRecordingShrinkRequest) GetNotifyAuthKey() *string {
 	return s.NotifyAuthKey
+}
+
+func (s *StartRtcCloudRecordingShrinkRequest) GetNotifyFileUploadedFormat() []*string {
+	return s.NotifyFileUploadedFormat
 }
 
 func (s *StartRtcCloudRecordingShrinkRequest) GetNotifyUrl() *string {
@@ -135,6 +142,11 @@ func (s *StartRtcCloudRecordingShrinkRequest) SetMixTranscodeParamsShrink(v stri
 
 func (s *StartRtcCloudRecordingShrinkRequest) SetNotifyAuthKey(v string) *StartRtcCloudRecordingShrinkRequest {
 	s.NotifyAuthKey = &v
+	return s
+}
+
+func (s *StartRtcCloudRecordingShrinkRequest) SetNotifyFileUploadedFormat(v []*string) *StartRtcCloudRecordingShrinkRequest {
+	s.NotifyFileUploadedFormat = v
 	return s
 }
 
