@@ -1000,7 +1000,8 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	// example:
 	//
 	// false
-	EmptyMessage *bool `json:"empty_message,omitempty" xml:"empty_message,omitempty"`
+	EmptyMessage        *bool `json:"empty_message,omitempty" xml:"empty_message,omitempty"`
+	EnablePacketCapture *bool `json:"enable_packet_capture,omitempty" xml:"enable_packet_capture,omitempty"`
 	// The string that is expected to exist on the page.
 	ExpectExistString *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString `json:"expect_exist_string,omitempty" xml:"expect_exist_string,omitempty" type:"Struct"`
 	// The string that is not expected to exist on the page.
@@ -1311,6 +1312,10 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetEmpt
 	return s.EmptyMessage
 }
 
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetEnablePacketCapture() *bool {
+	return s.EnablePacketCapture
+}
+
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetExpectExistString() *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString {
 	return s.ExpectExistString
 }
@@ -1558,6 +1563,11 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetDnsT
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetEmptyMessage(v bool) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.EmptyMessage = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetEnablePacketCapture(v bool) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.EnablePacketCapture = &v
 	return s
 }
 
