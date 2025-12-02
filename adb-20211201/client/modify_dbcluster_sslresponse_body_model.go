@@ -14,6 +14,8 @@ type iModifyDBClusterSSLResponseBody interface {
 }
 
 type ModifyDBClusterSSLResponseBody struct {
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF

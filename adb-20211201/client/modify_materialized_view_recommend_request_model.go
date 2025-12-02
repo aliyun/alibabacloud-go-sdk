@@ -42,43 +42,100 @@ type iModifyMaterializedViewRecommendRequest interface {
 }
 
 type ModifyMaterializedViewRecommendRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-uf6o*****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The description of the recommendation task.
+	//
 	// example:
 	//
 	// task desc
-	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	MinRewriteQueryCount   *int32  `json:"MinRewriteQueryCount,omitempty" xml:"MinRewriteQueryCount,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Pattern匹配的最少慢查询个数
+	//
+	// example:
+	//
+	// 3
+	MinRewriteQueryCount *int32 `json:"MinRewriteQueryCount,omitempty" xml:"MinRewriteQueryCount,omitempty"`
+	// 最小可加速的Pattern数量
+	//
+	// example:
+	//
+	// 5
 	MinRewriteQueryPattern *int32  `json:"MinRewriteQueryPattern,omitempty" xml:"MinRewriteQueryPattern,omitempty"`
 	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The time range for scanning data. Unit: days. Default value: 3.
+	//
 	// example:
 	//
 	// 3
 	ScanQueriesRange *int32 `json:"ScanQueriesRange,omitempty" xml:"ScanQueriesRange,omitempty"`
+	// This parameter is valid only when SchedulingPolicy is set to weekly. Valid values:
+	//
+	// 	- Monday
+	//
+	// 	- Tuesday
+	//
+	// 	- Wednesday
+	//
+	// 	- Thursday
+	//
+	// 	- Friday
+	//
+	// 	- Saturday
+	//
+	// 	- Sunday
+	//
+	// Separate multiple days with commas (,).
+	//
 	// example:
 	//
 	// Monday;Wednesday
 	SchedulingDay *string `json:"SchedulingDay,omitempty" xml:"SchedulingDay,omitempty"`
+	// The scheduling policy of the recommendation task. Valid values:
+	//
+	// 	- daily
+	//
+	// 	- weekly
+	//
+	// <!---->
+	//
+	// *
+	//
+	// *
+	//
 	// example:
 	//
 	// weekly
-	SchedulingPolicy   *string `json:"SchedulingPolicy,omitempty" xml:"SchedulingPolicy,omitempty"`
-	SlowQueryThreshold *int32  `json:"SlowQueryThreshold,omitempty" xml:"SlowQueryThreshold,omitempty"`
+	SchedulingPolicy *string `json:"SchedulingPolicy,omitempty" xml:"SchedulingPolicy,omitempty"`
+	// 慢查询阈值
+	//
+	// example:
+	//
+	// 2
+	SlowQueryThreshold *int32 `json:"SlowQueryThreshold,omitempty" xml:"SlowQueryThreshold,omitempty"`
+	// The execution time of the recommendation task. Specify the time in the HH:MM:SS format.
+	//
 	// example:
 	//
 	// 10:00:00
 	SpecifiedTime *string `json:"SpecifiedTime,omitempty" xml:"SpecifiedTime,omitempty"`
+	// The name of the recommendation task.
+	//
 	// This parameter is required.
 	//
 	// example:

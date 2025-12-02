@@ -24,26 +24,37 @@ type iListApsWebhookResponseBody interface {
 }
 
 type ListApsWebhookResponseBody struct {
+	// API status or POP error code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// exampleRequestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
-	Success *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The array of webhooks.
 	Webhook []*ListApsWebhookResponseBodyWebhook `json:"Webhook,omitempty" xml:"Webhook,omitempty" type:"Repeated"`
 }
 
@@ -123,22 +134,32 @@ func (s *ListApsWebhookResponseBody) Validate() error {
 }
 
 type ListApsWebhookResponseBodyWebhook struct {
+	// Signing key
+	//
 	// example:
 	//
 	// your_secret_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the webhook.
+	//
 	// example:
 	//
 	// webhook_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request URL.
+	//
 	// example:
 	//
 	// https://example.com/webhook
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The ID of the webhook that you want to delete.
+	//
 	// example:
 	//
 	// **35***
 	WebhookId *string `json:"WebhookId,omitempty" xml:"WebhookId,omitempty"`
+	// Webhook type.
+	//
 	// example:
 	//
 	// dingtalk

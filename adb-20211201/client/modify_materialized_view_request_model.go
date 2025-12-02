@@ -38,46 +38,76 @@ type iModifyMaterializedViewRequest interface {
 }
 
 type ModifyMaterializedViewRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the database where the materialized view resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// myDB
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// Enable the refresh delay alert. Valid values:
+	//
+	// 	- true: Enables alert.
+	//
+	// 	- false: Disables alert.
+	//
 	// example:
 	//
 	// false
 	EnableDelayAlert *bool `json:"EnableDelayAlert,omitempty" xml:"EnableDelayAlert,omitempty"`
+	// Specifies whether to send alerts when the refresh task fails. Valid values:
+	//
+	// 	- true: Send alerts.
+	//
+	// 	- false: Alerts disabled.
+	//
 	// example:
 	//
 	// false
 	EnableFailureAlert *bool `json:"EnableFailureAlert,omitempty" xml:"EnableFailureAlert,omitempty"`
+	// The name of the resource group to which the materialized view is bound.
+	//
 	// example:
 	//
 	// res_1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Refresh delay tolerance (in minutes).
+	//
 	// example:
 	//
 	// 2
 	LatencyTolerance *int32  `json:"LatencyTolerance,omitempty" xml:"LatencyTolerance,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies whether to enable query rewrite. Valid values:
+	//
+	// 	- true: Enables query rewrite.
+	//
+	// 	- false: Disables query rewrite.
+	//
 	// example:
 	//
 	// true
 	QueryWrite *bool `json:"QueryWrite,omitempty" xml:"QueryWrite,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The name of the materialized view.
+	//
 	// This parameter is required.
 	//
 	// example:

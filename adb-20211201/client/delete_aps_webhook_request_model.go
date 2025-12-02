@@ -18,18 +18,24 @@ type iDeleteApsWebhookRequest interface {
 }
 
 type DeleteApsWebhookRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-uf63i4ij56b***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the webhook to be deleted.
+	//
 	// This parameter is required.
 	//
 	// example:

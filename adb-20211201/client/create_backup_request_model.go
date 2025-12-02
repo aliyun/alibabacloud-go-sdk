@@ -24,6 +24,8 @@ type iCreateBackupRequest interface {
 }
 
 type CreateBackupRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -32,6 +34,8 @@ type CreateBackupRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou

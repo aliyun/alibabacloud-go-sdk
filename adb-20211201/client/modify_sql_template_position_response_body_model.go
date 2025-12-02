@@ -18,14 +18,28 @@ type iModifySqlTemplatePositionResponseBody interface {
 }
 
 type ModifySqlTemplatePositionResponseBody struct {
+	// The returned message. Valid values:
+	//
+	// 	- If the request is successful, a **SUCCESS*	- message is returned.
+	//
+	// 	- If the request is abnormal, the detailed error message is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5DC10091-348D-12B1-906D-AB49D658012E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: Succeeded.
+	//
+	// 	- **false**: Failed.
+	//
 	// example:
 	//
 	// true

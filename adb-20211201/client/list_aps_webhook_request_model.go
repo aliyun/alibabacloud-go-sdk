@@ -18,16 +18,24 @@ type iListApsWebhookRequest interface {
 }
 
 type ListApsWebhookRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-8vbuyjhrih**
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// **JobType**\\
+	//
+	// Job type. SLS or OSS Export Task: ResultExport.
+	//
 	// example:
 	//
 	// ResultExport
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

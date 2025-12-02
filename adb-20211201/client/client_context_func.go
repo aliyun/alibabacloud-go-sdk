@@ -558,7 +558,7 @@ func (client *Client) CheckSampleDataSetWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 配置导出的SLS 或者OSS 信息，实例级别唯一，遵循一次配置多次使用的原则
+// Configures the export destination (SLS or OSS) at the instance level. The configuration is unique per instance and follows the "configure once, use multiple times" principle.
 //
 // @param tmpReq - ConfigureResultExportRequest
 //
@@ -1078,7 +1078,7 @@ func (client *Client) CreateApsHiveJobWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 创建Kafka到Huid的APS链路
+// Creates a data ingestion task to load data from an Apache Kafka topic into an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 //
 // @param tmpReq - CreateApsKafkaHudiJobRequest
 //
@@ -1422,7 +1422,7 @@ func (client *Client) CreateApsSlsADBJobWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// # CreateApsWebhook
+// Creates a new webhook for the specified cluster or task type.
 //
 // @param tmpReq - CreateApsWebhookRequest
 //
@@ -1484,7 +1484,11 @@ func (client *Client) CreateApsWebhookWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// 手动创建备份集
+// Creates a data backup for an AnalyticDB for MySQL instance.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/ads/detail/ads_pre) of AnalyticDB for MySQL.*	- Temporary backups are the same as regular backups in terms of price and retention period of backup sets.
 //
 // @param request - CreateBackupRequest
 //
@@ -1732,6 +1736,10 @@ func (client *Client) CreateDBResourceGroupWithContext(ctx context.Context, tmpR
 		request.EngineParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EngineParams, dara.String("EngineParams"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.GpuElasticPlan) {
+		request.GpuElasticPlanShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GpuElasticPlan, dara.String("GpuElasticPlan"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.RayConfig) {
 		request.RayConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RayConfig, dara.String("RayConfig"), dara.String("json"))
 	}
@@ -1767,6 +1775,10 @@ func (client *Client) CreateDBResourceGroupWithContext(ctx context.Context, tmpR
 
 	if !dara.IsNil(request.EngineParamsShrink) {
 		query["EngineParams"] = request.EngineParamsShrink
+	}
+
+	if !dara.IsNil(request.GpuElasticPlanShrink) {
+		query["GpuElasticPlan"] = request.GpuElasticPlanShrink
 	}
 
 	if !dara.IsNil(request.GroupName) {
@@ -1998,7 +2010,7 @@ func (client *Client) CreateLakeStorageWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 创建物化视图自动推荐任务
+// Creates a materialized view recommendation task.
 //
 // @param request - CreateMaterializedViewRecommendRequest
 //
@@ -2476,7 +2488,11 @@ func (client *Client) DeleteApsJobWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// # DeleteApsWebhook
+// Deletes a specific webhook in a specified cluster.
+//
+// Description:
+//
+// This API allows users to delete an existing webhook configuration by providing `RegionId`, `DBClusterId`, and `WebhookId`. Make sure that the provided parameter values are accurate to avoid deleting important settings by mistake.
 //
 // @param request - DeleteApsWebhookRequest
 //
@@ -2808,6 +2824,74 @@ func (client *Client) DeleteLakeStorageWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLakeStorageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a materialized view recommendation task.
+//
+// @param request - DeleteMaterializedViewRecommendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMaterializedViewRecommendResponse
+func (client *Client) DeleteMaterializedViewRecommendWithContext(ctx context.Context, request *DeleteMaterializedViewRecommendRequest, runtime *dara.RuntimeOptions) (_result *DeleteMaterializedViewRecommendResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		query["TaskName"] = request.TaskName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMaterializedViewRecommend"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMaterializedViewRecommendResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5488,7 +5572,7 @@ func (client *Client) DescribeDBClusterPerformanceWithContext(ctx context.Contex
 
 // Summary:
 //
-// 获取SSL配置信息
+// Queries the SSL configurations of a cluster.
 //
 // @param request - DescribeDBClusterSSLRequest
 //
@@ -6616,7 +6700,11 @@ func (client *Client) DescribeExecutorDetectionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 任务中心任务列表
+// Retrieve historical task records.
+//
+// Description:
+//
+// Only supports viewing tasks within the last 30 days.
 //
 // @param request - DescribeHistoryTasksRequest
 //
@@ -6716,7 +6804,7 @@ func (client *Client) DescribeHistoryTasksWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 任务中心任务统计
+// Queries task statistics.
 //
 // @param request - DescribeHistoryTasksStatRequest
 //
@@ -7275,6 +7363,234 @@ func (client *Client) DescribeLakeCacheSizeWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// Retrieves the result of a recommendation task for a materialized view.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+//
+// @param request - DescribeMVRecommendResultsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMVRecommendResultsResponse
+func (client *Client) DescribeMVRecommendResultsWithContext(ctx context.Context, request *DescribeMVRecommendResultsRequest, runtime *dara.RuntimeOptions) (_result *DescribeMVRecommendResultsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActionInner) {
+		query["ActionInner"] = request.ActionInner
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.From) {
+		query["From"] = request.From
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SubQueryId) {
+		query["SubQueryId"] = request.SubQueryId
+	}
+
+	if !dara.IsNil(request.SubtaskId) {
+		query["SubtaskId"] = request.SubtaskId
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		query["TaskName"] = request.TaskName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeMVRecommendResults"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeMVRecommendResultsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看物化视图子任务
+//
+// @param request - DescribeMvRecommendSubTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMvRecommendSubTasksResponse
+func (client *Client) DescribeMvRecommendSubTasksWithContext(ctx context.Context, request *DescribeMvRecommendSubTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeMvRecommendSubTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActionInner) {
+		query["ActionInner"] = request.ActionInner
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.From) {
+		query["From"] = request.From
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SubtaskId) {
+		query["SubtaskId"] = request.SubtaskId
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		query["TaskName"] = request.TaskName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeMvRecommendSubTasks"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeMvRecommendSubTasksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看物化视图推荐任务
+//
+// @param request - DescribeMvRecommendTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMvRecommendTasksResponse
+func (client *Client) DescribeMvRecommendTasksWithContext(ctx context.Context, request *DescribeMvRecommendTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeMvRecommendTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActionInner) {
+		query["ActionInner"] = request.ActionInner
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.From) {
+		query["From"] = request.From
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		query["TaskName"] = request.TaskName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeMvRecommendTasks"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeMvRecommendTasksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the service account permissions of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeOperatorPermissionRequest
@@ -7749,7 +8065,7 @@ func (client *Client) DescribeResourceGroupSpecWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取用户配置的导出信息
+// Queries the user-configured result set export settings.
 //
 // @param request - DescribeResultExportConfigRequest
 //
@@ -8103,7 +8419,13 @@ func (client *Client) DescribeSparkAppTypeWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询Spark审计日志
+// Queries the SQL audit logs for a Spark Interactive resource group.
+//
+// Description:
+//
+// SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL auditing is turned off midway, when it is re-enabled, you can only query the SQL audit logs generated after it was turned back on.
+//
+// >  You can query only SQL audit logs that are executed by using Spark Interactive Resource Group.
 //
 // @param request - DescribeSparkAuditLogRecordsRequest
 //
@@ -9027,6 +9349,82 @@ func (client *Client) DescribeUserQuotaWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// Retrieves materialized view refresh tasks.
+//
+// @param request - DescribeViewJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeViewJobsResponse
+func (client *Client) DescribeViewJobsWithContext(ctx context.Context, request *DescribeViewJobsRequest, runtime *dara.RuntimeOptions) (_result *DescribeViewJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FilterOwner) {
+		query["FilterOwner"] = request.FilterOwner
+	}
+
+	if !dara.IsNil(request.FilterViewName) {
+		query["FilterViewName"] = request.FilterViewName
+	}
+
+	if !dara.IsNil(request.FilterViewType) {
+		query["FilterViewType"] = request.FilterViewType
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SchemaName) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeViewJobs"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeViewJobsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the diagnostic results of the storage layer.
 //
 // @param request - DescribeWorkerDetectionRequest
@@ -9697,7 +10095,11 @@ func (client *Client) ExistRunningSQLEngineWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取Spark权限说明,失败时给出配置权限的帮助信息
+// View the Spark basic permission diagnosis report of the current user.
+//
+// Description:
+//
+// The API diagnosis report contains whether the current user has all permissions required by the AnalyticDB for Spark related features. The scope of the permissions may exceed the minimum requirements of the business. The diagnostic report of the current API is used to quickly initialize the environment of AnalyticDB for Spark. If fine-grained permission configuration is needed, see [Configure fine-grained permissions in AnalyDB for Spark.](https://www.alibabacloud.com/help/zh/analyticdb/analyticdb-for-mysql/user-guide/create-the-aliyunadbsparkprocessingdatarole-role-for-a-ram-user-and-grant-permissions-to-the-role?spm=a2c63.p38356.help-menu-92664.d_2_5_0.48362a487dMzm9#section-y2z-ucd-1ko)
 //
 // @param request - GetADBSparkNecessaryRAMPermissionsRequest
 //
@@ -11713,7 +12115,13 @@ func (client *Client) ListApsOptimizationTasksWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # ListApsWebhook
+// Queries the Webhook configurations of a specified database cluster.
+//
+// Description:
+//
+// This API allows you to obtain a list of configured webhooks based on `RegionId`, `DBClusterId`, and optional `JobType`. The `JobType` parameter specifies the task type, such as SLS/OSS export task. If the parameter is provided, webhooks related to the task type are returned. If the parameter is not provided, all types of webhooks are returned.
+//
+// Note: Make sure that the `RegionId` and `DBClusterId` you provided are correct. Otherwise, the webhook information may not be obtained correctly.
 //
 // @param request - ListApsWebhookRequest
 //
@@ -13409,7 +13817,7 @@ func (client *Client) ModifyDBClusterResourceGroupWithContext(ctx context.Contex
 
 // Summary:
 //
-// 配置SSL
+// Modifies the SSL link configuration of a cluster.
 //
 // @param request - ModifyDBClusterSSLRequest
 //
@@ -13545,6 +13953,10 @@ func (client *Client) ModifyDBResourceGroupWithContext(ctx context.Context, tmpR
 		request.EngineParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EngineParams, dara.String("EngineParams"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.GpuElasticPlan) {
+		request.GpuElasticPlanShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GpuElasticPlan, dara.String("GpuElasticPlan"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.RayConfig) {
 		request.RayConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RayConfig, dara.String("RayConfig"), dara.String("json"))
 	}
@@ -13576,6 +13988,10 @@ func (client *Client) ModifyDBResourceGroupWithContext(ctx context.Context, tmpR
 
 	if !dara.IsNil(request.EngineParamsShrink) {
 		query["EngineParams"] = request.EngineParamsShrink
+	}
+
+	if !dara.IsNil(request.GpuElasticPlanShrink) {
+		query["GpuElasticPlan"] = request.GpuElasticPlanShrink
 	}
 
 	if !dara.IsNil(request.GroupName) {
@@ -13831,7 +14247,7 @@ func (client *Client) ModifyLakeCacheSizeWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 修改物化视图
+// Modifies materialized views.
 //
 // @param request - ModifyMaterializedViewRequest
 //
@@ -13923,7 +14339,7 @@ func (client *Client) ModifyMaterializedViewWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 修改物化视图自动推荐任务
+// Modifies a materialized view recommendation task.
 //
 // @param request - ModifyMaterializedViewRecommendRequest
 //
@@ -14101,7 +14517,11 @@ func (client *Client) ModifyPerformanceViewWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 修改SQL脚本模板位置
+// Modifies the directory location of SQL templates.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifySqlTemplatePositionRequest
 //
@@ -15055,7 +15475,7 @@ func (client *Client) UnbindDBResourceGroupWithUserWithContext(ctx context.Conte
 
 // Summary:
 //
-// # UpdateApsWebhook
+// Updates the webhook configuration of a specified cluster.
 //
 // @param tmpReq - UpdateApsWebhookRequest
 //

@@ -18,18 +18,23 @@ type iUpdateApsWebhookShrinkRequest interface {
 }
 
 type UpdateApsWebhookShrinkRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// exampleDBClusterId
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// exampleRegionId
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The array of webhooks.
 	WebhookShrink *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 

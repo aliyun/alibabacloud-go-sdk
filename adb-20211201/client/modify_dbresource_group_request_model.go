@@ -21,6 +21,8 @@ type iModifyDBResourceGroupRequest interface {
 	GetEnableSpot() *bool
 	SetEngineParams(v map[string]interface{}) *ModifyDBResourceGroupRequest
 	GetEngineParams() map[string]interface{}
+	SetGpuElasticPlan(v *ModifyDBResourceGroupRequestGpuElasticPlan) *ModifyDBResourceGroupRequest
+	GetGpuElasticPlan() *ModifyDBResourceGroupRequestGpuElasticPlan
 	SetGroupName(v string) *ModifyDBResourceGroupRequest
 	GetGroupName() *string
 	SetGroupType(v string) *ModifyDBResourceGroupRequest
@@ -89,7 +91,8 @@ type ModifyDBResourceGroupRequest struct {
 	// example:
 	//
 	// {\\"spark.adb.version\\":\\"3.5\\"}
-	EngineParams map[string]interface{} `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
+	EngineParams   map[string]interface{}                      `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
+	GpuElasticPlan *ModifyDBResourceGroupRequestGpuElasticPlan `json:"GpuElasticPlan,omitempty" xml:"GpuElasticPlan,omitempty" type:"Struct"`
 	// The name of the resource group.
 	//
 	// > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the name of a resource group in a cluster.
@@ -199,6 +202,10 @@ func (s *ModifyDBResourceGroupRequest) GetEngineParams() map[string]interface{} 
 	return s.EngineParams
 }
 
+func (s *ModifyDBResourceGroupRequest) GetGpuElasticPlan() *ModifyDBResourceGroupRequestGpuElasticPlan {
+	return s.GpuElasticPlan
+}
+
 func (s *ModifyDBResourceGroupRequest) GetGroupName() *string {
 	return s.GroupName
 }
@@ -285,6 +292,11 @@ func (s *ModifyDBResourceGroupRequest) SetEngineParams(v map[string]interface{})
 	return s
 }
 
+func (s *ModifyDBResourceGroupRequest) SetGpuElasticPlan(v *ModifyDBResourceGroupRequestGpuElasticPlan) *ModifyDBResourceGroupRequest {
+	s.GpuElasticPlan = v
+	return s
+}
+
 func (s *ModifyDBResourceGroupRequest) SetGroupName(v string) *ModifyDBResourceGroupRequest {
 	s.GroupName = &v
 	return s
@@ -356,6 +368,11 @@ func (s *ModifyDBResourceGroupRequest) SetTargetResourceGroupName(v string) *Mod
 }
 
 func (s *ModifyDBResourceGroupRequest) Validate() error {
+	if s.GpuElasticPlan != nil {
+		if err := s.GpuElasticPlan.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.RayConfig != nil {
 		if err := s.RayConfig.Validate(); err != nil {
 			return err
@@ -371,6 +388,85 @@ func (s *ModifyDBResourceGroupRequest) Validate() error {
 		}
 	}
 	return nil
+}
+
+type ModifyDBResourceGroupRequestGpuElasticPlan struct {
+	Enabled *bool                                              `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Rules   []*ModifyDBResourceGroupRequestGpuElasticPlanRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s ModifyDBResourceGroupRequestGpuElasticPlan) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyDBResourceGroupRequestGpuElasticPlan) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBResourceGroupRequestGpuElasticPlan) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *ModifyDBResourceGroupRequestGpuElasticPlan) GetRules() []*ModifyDBResourceGroupRequestGpuElasticPlanRules {
+	return s.Rules
+}
+
+func (s *ModifyDBResourceGroupRequestGpuElasticPlan) SetEnabled(v bool) *ModifyDBResourceGroupRequestGpuElasticPlan {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequestGpuElasticPlan) SetRules(v []*ModifyDBResourceGroupRequestGpuElasticPlanRules) *ModifyDBResourceGroupRequestGpuElasticPlan {
+	s.Rules = v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequestGpuElasticPlan) Validate() error {
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ModifyDBResourceGroupRequestGpuElasticPlanRules struct {
+	EndCronExpression   *string `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
+	StartCronExpression *string `json:"StartCronExpression,omitempty" xml:"StartCronExpression,omitempty"`
+}
+
+func (s ModifyDBResourceGroupRequestGpuElasticPlanRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyDBResourceGroupRequestGpuElasticPlanRules) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBResourceGroupRequestGpuElasticPlanRules) GetEndCronExpression() *string {
+	return s.EndCronExpression
+}
+
+func (s *ModifyDBResourceGroupRequestGpuElasticPlanRules) GetStartCronExpression() *string {
+	return s.StartCronExpression
+}
+
+func (s *ModifyDBResourceGroupRequestGpuElasticPlanRules) SetEndCronExpression(v string) *ModifyDBResourceGroupRequestGpuElasticPlanRules {
+	s.EndCronExpression = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequestGpuElasticPlanRules) SetStartCronExpression(v string) *ModifyDBResourceGroupRequestGpuElasticPlanRules {
+	s.StartCronExpression = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequestGpuElasticPlanRules) Validate() error {
+	return dara.Validate(s)
 }
 
 type ModifyDBResourceGroupRequestRayConfig struct {

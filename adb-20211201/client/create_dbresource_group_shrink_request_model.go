@@ -23,6 +23,8 @@ type iCreateDBResourceGroupShrinkRequest interface {
 	GetEngine() *string
 	SetEngineParamsShrink(v string) *CreateDBResourceGroupShrinkRequest
 	GetEngineParamsShrink() *string
+	SetGpuElasticPlanShrink(v string) *CreateDBResourceGroupShrinkRequest
+	GetGpuElasticPlanShrink() *string
 	SetGroupName(v string) *CreateDBResourceGroupShrinkRequest
 	GetGroupName() *string
 	SetGroupType(v string) *CreateDBResourceGroupShrinkRequest
@@ -93,7 +95,8 @@ type CreateDBResourceGroupShrinkRequest struct {
 	// example:
 	//
 	// {\\"spark.adb.version\\":\\"3.5\\"}
-	EngineParamsShrink *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
+	EngineParamsShrink   *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
+	GpuElasticPlanShrink *string `json:"GpuElasticPlan,omitempty" xml:"GpuElasticPlan,omitempty"`
 	// The name of the resource group.
 	//
 	// 	- The name can be up to 255 characters in length.
@@ -211,6 +214,10 @@ func (s *CreateDBResourceGroupShrinkRequest) GetEngineParamsShrink() *string {
 	return s.EngineParamsShrink
 }
 
+func (s *CreateDBResourceGroupShrinkRequest) GetGpuElasticPlanShrink() *string {
+	return s.GpuElasticPlanShrink
+}
+
 func (s *CreateDBResourceGroupShrinkRequest) GetGroupName() *string {
 	return s.GroupName
 }
@@ -295,6 +302,11 @@ func (s *CreateDBResourceGroupShrinkRequest) SetEngine(v string) *CreateDBResour
 
 func (s *CreateDBResourceGroupShrinkRequest) SetEngineParamsShrink(v string) *CreateDBResourceGroupShrinkRequest {
 	s.EngineParamsShrink = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetGpuElasticPlanShrink(v string) *CreateDBResourceGroupShrinkRequest {
+	s.GpuElasticPlanShrink = &v
 	return s
 }
 

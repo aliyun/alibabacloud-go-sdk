@@ -102,9 +102,10 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	// example:
 	//
 	// True
-	EnableSpot   *string                `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
-	Engine       *string                `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineParams map[string]interface{} `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
+	EnableSpot     *string                                                      `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	Engine         *string                                                      `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineParams   map[string]interface{}                                       `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
+	GpuElasticPlan *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan `json:"GpuElasticPlan,omitempty" xml:"GpuElasticPlan,omitempty" type:"Struct"`
 	// The name of the resource group.
 	//
 	// example:
@@ -228,6 +229,10 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) GetEngineParams() map[st
 	return s.EngineParams
 }
 
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) GetGpuElasticPlan() *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan {
+	return s.GpuElasticPlan
+}
+
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) GetGroupName() *string {
 	return s.GroupName
 }
@@ -336,6 +341,11 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetEngineParams(v map[st
 	return s
 }
 
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetGpuElasticPlan(v *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.GpuElasticPlan = v
+	return s
+}
+
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetGroupName(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
 	s.GroupName = &v
 	return s
@@ -422,6 +432,11 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetUpdateTime(v string) 
 }
 
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) Validate() error {
+	if s.GpuElasticPlan != nil {
+		if err := s.GpuElasticPlan.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.RayConfig != nil {
 		if err := s.RayConfig.Validate(); err != nil {
 			return err
@@ -437,6 +452,85 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) Validate() error {
 		}
 	}
 	return nil
+}
+
+type DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan struct {
+	Enabled *bool                                                               `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Rules   []*DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan) GetRules() []*DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules {
+	return s.Rules
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan) SetEnabled(v bool) *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan) SetRules(v []*DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules) *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan {
+	s.Rules = v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan) Validate() error {
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules struct {
+	EndCronExpression   *string `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
+	StartCronExpression *string `json:"StartCronExpression,omitempty" xml:"StartCronExpression,omitempty"`
+}
+
+func (s DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules) GetEndCronExpression() *string {
+	return s.EndCronExpression
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules) GetStartCronExpression() *string {
+	return s.StartCronExpression
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules) SetEndCronExpression(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules {
+	s.EndCronExpression = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules) SetStartCronExpression(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules {
+	s.StartCronExpression = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig struct {

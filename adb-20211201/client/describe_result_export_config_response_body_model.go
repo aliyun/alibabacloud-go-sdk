@@ -24,23 +24,42 @@ type iDescribeResultExportConfigResponseBody interface {
 }
 
 type DescribeResultExportConfigResponseBody struct {
+	// API status or POP error code.
+	//
 	// example:
 	//
 	// InvalidInput
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *DescribeResultExportConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP response status code. A value of 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- The request succeeded, and the server returns **OK**.
+	//
+	// 	- The request failed, and the server returns an error message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values: Valid values:
+	//
+	// 	- **True: Succeeded.**
+	//
+	// 	- **False: Failed.
+	//
 	// example:
 	//
 	// true
@@ -119,12 +138,20 @@ func (s *DescribeResultExportConfigResponseBody) Validate() error {
 }
 
 type DescribeResultExportConfigResponseBodyData struct {
+	// The export type. Valid values:
+	//
+	// 	- SLS: Indicates that the export destination is SLS.
+	//
+	// 	- OSS: Indicates that the export destination is OSS.
+	//
 	// example:
 	//
 	// OSS
-	ExportType *string                                            `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
-	OssInfo    *DescribeResultExportConfigResponseBodyDataOssInfo `json:"OssInfo,omitempty" xml:"OssInfo,omitempty" type:"Struct"`
-	SlsInfo    *DescribeResultExportConfigResponseBodyDataSlsInfo `json:"SlsInfo,omitempty" xml:"SlsInfo,omitempty" type:"Struct"`
+	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+	// The configured OSS export settings, returned when the export destination is OSS.
+	OssInfo *DescribeResultExportConfigResponseBodyDataOssInfo `json:"OssInfo,omitempty" xml:"OssInfo,omitempty" type:"Struct"`
+	// The configured SLS export settings, returned when the export destination is SLS.
+	SlsInfo *DescribeResultExportConfigResponseBodyDataSlsInfo `json:"SlsInfo,omitempty" xml:"SlsInfo,omitempty" type:"Struct"`
 }
 
 func (s DescribeResultExportConfigResponseBodyData) String() string {
@@ -177,14 +204,20 @@ func (s *DescribeResultExportConfigResponseBodyData) Validate() error {
 }
 
 type DescribeResultExportConfigResponseBodyDataOssInfo struct {
+	// The path of the OSS bucket to which the result sets are exported.
+	//
 	// example:
 	//
 	// oss://testBucketName/data_result
 	ExportBasePath *string `json:"ExportBasePath,omitempty" xml:"ExportBasePath,omitempty"`
+	// The name of the resource group that runs the export SQL.
+	//
 	// example:
 	//
 	// aps
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The expiration period (in days) for the OSS file. The returned value is between 1 and 30 days (inclusive).
+	//
 	// example:
 	//
 	// 10
@@ -231,14 +264,20 @@ func (s *DescribeResultExportConfigResponseBodyDataOssInfo) Validate() error {
 }
 
 type DescribeResultExportConfigResponseBodyDataSlsInfo struct {
+	// The expiration period (in days) for the temporary Logstore automatically created during result set export. The Logstore is automatically deleted after expiration. The returned value is between 1 and 30 days (inclusive).
+	//
 	// example:
 	//
 	// 10
 	LogstoreTtl *int32 `json:"LogstoreTtl,omitempty" xml:"LogstoreTtl,omitempty"`
+	// The name of the resource group that runs the export SQL.
+	//
 	// example:
 	//
 	// aps
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The name of the SLS project.
+	//
 	// example:
 	//
 	// test-project

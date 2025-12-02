@@ -21,6 +21,8 @@ type iModifyDBResourceGroupShrinkRequest interface {
 	GetEnableSpot() *bool
 	SetEngineParamsShrink(v string) *ModifyDBResourceGroupShrinkRequest
 	GetEngineParamsShrink() *string
+	SetGpuElasticPlanShrink(v string) *ModifyDBResourceGroupShrinkRequest
+	GetGpuElasticPlanShrink() *string
 	SetGroupName(v string) *ModifyDBResourceGroupShrinkRequest
 	GetGroupName() *string
 	SetGroupType(v string) *ModifyDBResourceGroupShrinkRequest
@@ -89,7 +91,8 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	// example:
 	//
 	// {\\"spark.adb.version\\":\\"3.5\\"}
-	EngineParamsShrink *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
+	EngineParamsShrink   *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
+	GpuElasticPlanShrink *string `json:"GpuElasticPlan,omitempty" xml:"GpuElasticPlan,omitempty"`
 	// The name of the resource group.
 	//
 	// > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the name of a resource group in a cluster.
@@ -199,6 +202,10 @@ func (s *ModifyDBResourceGroupShrinkRequest) GetEngineParamsShrink() *string {
 	return s.EngineParamsShrink
 }
 
+func (s *ModifyDBResourceGroupShrinkRequest) GetGpuElasticPlanShrink() *string {
+	return s.GpuElasticPlanShrink
+}
+
 func (s *ModifyDBResourceGroupShrinkRequest) GetGroupName() *string {
 	return s.GroupName
 }
@@ -282,6 +289,11 @@ func (s *ModifyDBResourceGroupShrinkRequest) SetEnableSpot(v bool) *ModifyDBReso
 
 func (s *ModifyDBResourceGroupShrinkRequest) SetEngineParamsShrink(v string) *ModifyDBResourceGroupShrinkRequest {
 	s.EngineParamsShrink = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetGpuElasticPlanShrink(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.GpuElasticPlanShrink = &v
 	return s
 }
 

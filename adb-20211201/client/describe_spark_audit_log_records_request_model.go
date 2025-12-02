@@ -54,80 +54,162 @@ type iDescribeSparkAuditLogRecordsRequest interface {
 }
 
 type DescribeSparkAuditLogRecordsRequest struct {
+	// The source IP address.
+	//
 	// example:
 	//
 	// 192.168.XX.XX
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The cluster ID.
+	//
+	// >
+	//
+	// 	- You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query cluster IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp1j7******78j8i
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Query end time. The end time must be later than the start time, and the interval between them must be less than 1 day. Format: yyyy-MM-ddTHH:mmZ (UTC time).
+	//
 	// example:
 	//
 	// 2025-09-25T01:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Sort the SQL statements based on specified fields. The format is a JSON array that preserves order, and composite sorting is performed according to the sequence of objects in the array. Each object contains two fields: `Field` and `Type`. For example:`[{"Field":"CreateTime", "Type": "desc" }]`. Where:
+	//
+	// 	- `Field` specifies the field that is used to sort the SQL statements. Valid values:
+	//
+	//     	- `ResourceGroupName`: The name of the resource group.
+	//
+	//     	- `Status` :SQL execution status.
+	//
+	//     	- `User`: The username that is used to execute the SQL statement.
+	//
+	//     	- `ExecuteTime`: The start time of SQL execution.
+	//
+	//     	- `TotalTime`: The amount of time consumed to execute the SQL statement.
+	//
+	//     	- `ProcessId`: Query ID.
+	//
+	//     	- `ClientIp`: The source IP address.
+	//
+	//     	- `StatementSource`: The source from which the query was initiated.
+	//
+	// 	- `Type` specifies the sorting order. Valid values (case-insensitive):
+	//
+	//     	- `Desc`: Descending order.
+	//
+	//     	- `Asc`: Ascending order.
+	//
 	// example:
 	//
 	// [{\\"Field\\":\\"ExecuteTime\\",\\"Type\\":\\"Desc\\"}]
 	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The query ID.
+	//
 	// example:
 	//
 	// 999f2439-6b10-xxxx-a5d3-daf3b35c****
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// This parameter is deprecated.
+	//
 	// example:
 	//
 	// user
 	ProxyUser *string `json:"ProxyUser,omitempty" xml:"ProxyUser,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612293.html) operation to query the available regions and zones, including region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group name.
+	//
+	// >  You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/612410.html) operation to query the resource group ID within a cluster.
+	//
 	// example:
 	//
 	// test_job
 	ResourceGroupName    *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The keyword in the SQL statement.
+	//
 	// example:
 	//
 	// test_table_name
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+	// Query start time. Format: *yyyy-MM-ddTHH:mmZ	- (UTC time).
+	//
+	// >  We recommend that you set the query start time to any point in time within 30 days.
+	//
 	// example:
 	//
 	// 2025-09-25T00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Statement ID。
+	// The ID of the statement.
 	//
 	// example:
 	//
 	// fbd22066-1c03-xxxx-aa16-6ae28288****
 	StatementId *string `json:"StatementId,omitempty" xml:"StatementId,omitempty"`
+	// The source from which the query was initiated.
+	//
+	// Valid values:
+	//
+	// 	- SQL_EDITOR: SQL_EDITOR.
+	//
+	// 	- JDBC: JDBC.
+	//
 	// example:
 	//
 	// SQL_EDITOR
 	StatementSource *string `json:"StatementSource,omitempty" xml:"StatementSource,omitempty"`
+	// The execution status of the SQL statement.
+	//
+	// Valid values:
+	//
+	// 	- cancel: The task is canceled .
+	//
+	// 	- finished: The execution succeeds .
+	//
+	// 	- error:The execution fails .
+	//
+	// 	- timeout: The execution timed out .
+	//
 	// example:
 	//
 	// finish
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The duration of the SQL statement. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 3000
 	TotalTime *string `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	// The username that is used to execute SQL statements.
+	//
 	// example:
 	//
 	// test_user

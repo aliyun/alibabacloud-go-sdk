@@ -68,125 +68,183 @@ type iCreateApsKafkaHudiJobRequest interface {
 }
 
 type CreateApsKafkaHudiJobRequest struct {
+	// The Resource Access Management (RAM) role that is created for the trusted Alibaba Cloud account. For more information, see Create a RAM role for a trusted Alibaba Cloud account. The ARN of the RAM role that grants AnalyticDB for MySQL permission to access resources in the source account. Required for cross-account data ingestion.
+	//
 	// example:
 	//
 	// aps
 	AcrossRole *string `json:"AcrossRole,omitempty" xml:"AcrossRole,omitempty"`
+	// The ID of the Alibaba Cloud account to which the source Kafka belongs.
+	//
 	// example:
 	//
 	// 123************
 	AcrossUid *string `json:"AcrossUid,omitempty" xml:"AcrossUid,omitempty"`
+	// The advanced configurations.
+	//
 	// example:
 	//
 	// -
 	AdvancedConfig *string `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty"`
+	// The column information.
+	//
 	// This parameter is required.
 	Columns []*CreateApsKafkaHudiJobRequestColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all clusters in a region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Enumeration value and description. Single: The source is a single-row JSON record. Multi: source is a JSON array. Output a single JSON record.
+	//
 	// example:
 	//
 	// Single
 	DataOutputFormat *string `json:"DataOutputFormat,omitempty" xml:"DataOutputFormat,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 1
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The name of the user-defined database.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testDB
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The full synchronization configuration.
+	//
 	// example:
 	//
 	// 2ACU
 	FullComputeUnit *string `json:"FullComputeUnit,omitempty" xml:"FullComputeUnit,omitempty"`
+	// The HUDI configuration of the destination.
+	//
 	// example:
 	//
 	// hoodie.keep.min.commits=20
 	HudiAdvancedConfig *string `json:"HudiAdvancedConfig,omitempty" xml:"HudiAdvancedConfig,omitempty"`
+	// The incremental synchronization configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2ACU
 	IncrementalComputeUnit *string `json:"IncrementalComputeUnit,omitempty" xml:"IncrementalComputeUnit,omitempty"`
+	// The number of layers that are parsed for nested JSON fields. Valid values: 0: Nested JSON fields are not parsed. 1: parses one layer. 2: Two layers are parsed. 3: Three layers are parsed. 4: Four layers are parsed. By default, one layer is parsed. For more information about how nested JSON fields are parsed, see the Examples of schema fields parsed with different numbers of layers section of this topic.
+	//
 	// example:
 	//
 	// 0
 	JsonParseLevel *int32 `json:"JsonParseLevel,omitempty" xml:"JsonParseLevel,omitempty"`
+	// The ID of the Apache Kafka instance. You can get it in the Kafka console.
+	//
 	// example:
 	//
 	// xxx
 	KafkaClusterId *string `json:"KafkaClusterId,omitempty" xml:"KafkaClusterId,omitempty"`
+	// Kafka Topic ID. You can get it in the Kafka console.
+	//
 	// example:
 	//
 	// test
 	KafkaTopic *string `json:"KafkaTopic,omitempty" xml:"KafkaTopic,omitempty"`
+	// The ID of the lakehouse.
+	//
 	// example:
 	//
 	// 123
 	LakehouseId *int64 `json:"LakehouseId,omitempty" xml:"LakehouseId,omitempty"`
+	// The maximum number of records to fetch in a single batch.
+	//
 	// example:
 	//
 	// 50000
 	MaxOffsetsPerTrigger *int64 `json:"MaxOffsetsPerTrigger,omitempty" xml:"MaxOffsetsPerTrigger,omitempty"`
+	// The path of the destination data lakehouse in an Object Storage Service (OSS) bucket.
+	//
 	// example:
 	//
 	// oss://test-xx-zzz/yyy/
 	OssLocation *string `json:"OssLocation,omitempty" xml:"OssLocation,omitempty"`
+	// The format of the output data.
+	//
 	// example:
 	//
 	// HUDI
 	OutputFormat *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
+	// The partition information.
+	//
 	// if can be null:
 	// true
 	PartitionSpecs []map[string]interface{} `json:"PartitionSpecs,omitempty" xml:"PartitionSpecs,omitempty" type:"Repeated"`
+	// The primary key settings. Contains the uuid policy and mapping policy. The explanation is as follows. Uuid policy: "Strategy": "uuid". Mapping policy: "Strategy": "mapping", "Values":[ "f1", "f2" ], "RecordVersionField","xxx" The meaning of the RecordVersionField is the HUDI record version.
+	//
 	// example:
 	//
 	// "Strategy": "mapping"
 	PrimaryKeyDefinition *string `json:"PrimaryKeyDefinition,omitempty" xml:"PrimaryKeyDefinition,omitempty"`
+	// The region ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aps
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// 地域ID。
+	//
 	// example:
 	//
 	// cn-hangzhou
 	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
+	// Specifies the position from which to start consuming messages. Valid values: begin_cursor/end_cursor/timestamp Each corresponds to the earliest /latest /specified time respectively.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// begincursor
 	StartingOffsets *string `json:"StartingOffsets,omitempty" xml:"StartingOffsets,omitempty"`
+	// The name of the user-defined table.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testTB
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The rules for generating the destination database.
+	//
 	// example:
 	//
 	// xxx
 	TargetGenerateRule *string `json:"TargetGenerateRule,omitempty" xml:"TargetGenerateRule,omitempty"`
+	// The destination type.
+	//
 	// example:
 	//
 	// OSS
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The name of the workload.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -469,18 +527,26 @@ func (s *CreateApsKafkaHudiJobRequest) Validate() error {
 }
 
 type CreateApsKafkaHudiJobRequestColumns struct {
+	// The name of the partition column in the destination table.
+	//
 	// example:
 	//
 	// b
 	MapName *string `json:"MapName,omitempty" xml:"MapName,omitempty"`
+	// The desired format for the destination partition column.
+	//
 	// example:
 	//
 	// string
 	MapType *string `json:"MapType,omitempty" xml:"MapType,omitempty"`
+	// The name of the source column to use for partitioning.
+	//
 	// example:
 	//
 	// a
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The format of the source field. See the table below for valid values.
+	//
 	// example:
 	//
 	// string

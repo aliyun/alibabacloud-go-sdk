@@ -15,10 +15,18 @@ type iTableDetailModel interface {
 	GetColumns() []*ColDetailModel
 	SetCreateTime(v string) *TableDetailModel
 	GetCreateTime() *string
+	SetCreatedBySource(v string) *TableDetailModel
+	GetCreatedBySource() *string
+	SetCreatedByUser(v string) *TableDetailModel
+	GetCreatedByUser() *string
 	SetDescription(v string) *TableDetailModel
 	GetDescription() *string
+	SetLocation(v string) *TableDetailModel
+	GetLocation() *string
 	SetOwner(v string) *TableDetailModel
 	GetOwner() *string
+	SetParameters(v map[string]*string) *TableDetailModel
+	GetParameters() map[string]*string
 	SetSchemaName(v string) *TableDetailModel
 	GetSchemaName() *string
 	SetTableName(v string) *TableDetailModel
@@ -30,15 +38,19 @@ type iTableDetailModel interface {
 }
 
 type TableDetailModel struct {
-	Catalog     *string           `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	Columns     []*ColDetailModel `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	CreateTime  *string           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string           `json:"Description,omitempty" xml:"Description,omitempty"`
-	Owner       *string           `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	SchemaName  *string           `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName   *string           `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TableType   *string           `json:"TableType,omitempty" xml:"TableType,omitempty"`
-	UpdateTime  *string           `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Catalog         *string            `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
+	Columns         []*ColDetailModel  `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	CreateTime      *string            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatedBySource *string            `json:"CreatedBySource,omitempty" xml:"CreatedBySource,omitempty"`
+	CreatedByUser   *string            `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
+	Description     *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	Location        *string            `json:"Location,omitempty" xml:"Location,omitempty"`
+	Owner           *string            `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Parameters      map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	SchemaName      *string            `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName       *string            `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TableType       *string            `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	UpdateTime      *string            `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s TableDetailModel) String() string {
@@ -61,12 +73,28 @@ func (s *TableDetailModel) GetCreateTime() *string {
 	return s.CreateTime
 }
 
+func (s *TableDetailModel) GetCreatedBySource() *string {
+	return s.CreatedBySource
+}
+
+func (s *TableDetailModel) GetCreatedByUser() *string {
+	return s.CreatedByUser
+}
+
 func (s *TableDetailModel) GetDescription() *string {
 	return s.Description
 }
 
+func (s *TableDetailModel) GetLocation() *string {
+	return s.Location
+}
+
 func (s *TableDetailModel) GetOwner() *string {
 	return s.Owner
+}
+
+func (s *TableDetailModel) GetParameters() map[string]*string {
+	return s.Parameters
 }
 
 func (s *TableDetailModel) GetSchemaName() *string {
@@ -100,13 +128,33 @@ func (s *TableDetailModel) SetCreateTime(v string) *TableDetailModel {
 	return s
 }
 
+func (s *TableDetailModel) SetCreatedBySource(v string) *TableDetailModel {
+	s.CreatedBySource = &v
+	return s
+}
+
+func (s *TableDetailModel) SetCreatedByUser(v string) *TableDetailModel {
+	s.CreatedByUser = &v
+	return s
+}
+
 func (s *TableDetailModel) SetDescription(v string) *TableDetailModel {
 	s.Description = &v
 	return s
 }
 
+func (s *TableDetailModel) SetLocation(v string) *TableDetailModel {
+	s.Location = &v
+	return s
+}
+
 func (s *TableDetailModel) SetOwner(v string) *TableDetailModel {
 	s.Owner = &v
+	return s
+}
+
+func (s *TableDetailModel) SetParameters(v map[string]*string) *TableDetailModel {
+	s.Parameters = v
 	return s
 }
 

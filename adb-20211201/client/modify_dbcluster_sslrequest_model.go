@@ -20,22 +20,34 @@ type iModifyDBClusterSSLRequest interface {
 }
 
 type ModifyDBClusterSSLRequest struct {
+	// The private or public endpoint for which the server certificate needs to be created or updated.
+	//
 	// example:
 	//
 	// amv-***********.ads.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Specifies whether to enable SSL encryption. Valid values:
+	//
+	// 	- **true**: enabled
+	//
+	// 	- **false**: disabled
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	EnableSSL *bool `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

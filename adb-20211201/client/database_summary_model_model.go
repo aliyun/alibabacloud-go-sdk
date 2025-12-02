@@ -11,8 +11,16 @@ type iDatabaseSummaryModel interface {
 	GoString() string
 	SetCreateTime(v string) *DatabaseSummaryModel
 	GetCreateTime() *string
+	SetCreatedBySource(v string) *DatabaseSummaryModel
+	GetCreatedBySource() *string
+	SetCreatedByUser(v string) *DatabaseSummaryModel
+	GetCreatedByUser() *string
+	SetDbType(v string) *DatabaseSummaryModel
+	GetDbType() *string
 	SetDescription(v string) *DatabaseSummaryModel
 	GetDescription() *string
+	SetLocation(v string) *DatabaseSummaryModel
+	GetLocation() *string
 	SetOwner(v string) *DatabaseSummaryModel
 	GetOwner() *string
 	SetSchemaName(v string) *DatabaseSummaryModel
@@ -22,11 +30,15 @@ type iDatabaseSummaryModel interface {
 }
 
 type DatabaseSummaryModel struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Owner       *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatedBySource *string `json:"CreatedBySource,omitempty" xml:"CreatedBySource,omitempty"`
+	CreatedByUser   *string `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
+	DbType          *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Location        *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Owner           *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	SchemaName      *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DatabaseSummaryModel) String() string {
@@ -41,8 +53,24 @@ func (s *DatabaseSummaryModel) GetCreateTime() *string {
 	return s.CreateTime
 }
 
+func (s *DatabaseSummaryModel) GetCreatedBySource() *string {
+	return s.CreatedBySource
+}
+
+func (s *DatabaseSummaryModel) GetCreatedByUser() *string {
+	return s.CreatedByUser
+}
+
+func (s *DatabaseSummaryModel) GetDbType() *string {
+	return s.DbType
+}
+
 func (s *DatabaseSummaryModel) GetDescription() *string {
 	return s.Description
+}
+
+func (s *DatabaseSummaryModel) GetLocation() *string {
+	return s.Location
 }
 
 func (s *DatabaseSummaryModel) GetOwner() *string {
@@ -62,8 +90,28 @@ func (s *DatabaseSummaryModel) SetCreateTime(v string) *DatabaseSummaryModel {
 	return s
 }
 
+func (s *DatabaseSummaryModel) SetCreatedBySource(v string) *DatabaseSummaryModel {
+	s.CreatedBySource = &v
+	return s
+}
+
+func (s *DatabaseSummaryModel) SetCreatedByUser(v string) *DatabaseSummaryModel {
+	s.CreatedByUser = &v
+	return s
+}
+
+func (s *DatabaseSummaryModel) SetDbType(v string) *DatabaseSummaryModel {
+	s.DbType = &v
+	return s
+}
+
 func (s *DatabaseSummaryModel) SetDescription(v string) *DatabaseSummaryModel {
 	s.Description = &v
+	return s
+}
+
+func (s *DatabaseSummaryModel) SetLocation(v string) *DatabaseSummaryModel {
+	s.Location = &v
 	return s
 }
 

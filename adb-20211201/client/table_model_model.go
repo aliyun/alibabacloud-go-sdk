@@ -25,6 +25,10 @@ type iTableModel interface {
 	GetCompression() *string
 	SetCreateTime(v string) *TableModel
 	GetCreateTime() *string
+	SetCreatedBySource(v string) *TableModel
+	GetCreatedBySource() *string
+	SetCreatedByUser(v string) *TableModel
+	GetCreatedByUser() *string
 	SetCurrentVersion(v int64) *TableModel
 	GetCurrentVersion() *int64
 	SetDbName(v string) *TableModel
@@ -116,6 +120,8 @@ type TableModel struct {
 	Comment              *string                 `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	Compression          *string                 `json:"Compression,omitempty" xml:"Compression,omitempty"`
 	CreateTime           *string                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatedBySource      *string                 `json:"CreatedBySource,omitempty" xml:"CreatedBySource,omitempty"`
+	CreatedByUser        *string                 `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
 	CurrentVersion       *int64                  `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
 	DbName               *string                 `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	DictEncode           *bool                   `json:"DictEncode,omitempty" xml:"DictEncode,omitempty"`
@@ -196,6 +202,14 @@ func (s *TableModel) GetCompression() *string {
 
 func (s *TableModel) GetCreateTime() *string {
 	return s.CreateTime
+}
+
+func (s *TableModel) GetCreatedBySource() *string {
+	return s.CreatedBySource
+}
+
+func (s *TableModel) GetCreatedByUser() *string {
+	return s.CreatedByUser
 }
 
 func (s *TableModel) GetCurrentVersion() *int64 {
@@ -395,6 +409,16 @@ func (s *TableModel) SetCompression(v string) *TableModel {
 
 func (s *TableModel) SetCreateTime(v string) *TableModel {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *TableModel) SetCreatedBySource(v string) *TableModel {
+	s.CreatedBySource = &v
+	return s
+}
+
+func (s *TableModel) SetCreatedByUser(v string) *TableModel {
+	s.CreatedByUser = &v
 	return s
 }
 

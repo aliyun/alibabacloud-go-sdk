@@ -20,25 +20,32 @@ type iCreateApsWebhookRequest interface {
 }
 
 type CreateApsWebhookRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The type of the task. Valid value: Task type. SLS or OSS Export Task: ResultExport.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ResultExport
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The ID of the region in which to create the dedicated block storage cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Webhook  []*CreateApsWebhookRequestWebhook `json:"Webhook,omitempty" xml:"Webhook,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The array of webhooks.
+	Webhook []*CreateApsWebhookRequestWebhook `json:"Webhook,omitempty" xml:"Webhook,omitempty" type:"Repeated"`
 }
 
 func (s CreateApsWebhookRequest) String() string {
@@ -99,20 +106,28 @@ func (s *CreateApsWebhookRequest) Validate() error {
 }
 
 type CreateApsWebhookRequestWebhook struct {
+	// Signed key.
+	//
 	// example:
 	//
 	// ***
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the webhook.
+	//
 	// example:
 	//
 	// MyWebhookName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request path.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://example.com/webhook
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The notification method. Valid values: dingtalk. lark.
+	//
 	// This parameter is required.
 	//
 	// example:

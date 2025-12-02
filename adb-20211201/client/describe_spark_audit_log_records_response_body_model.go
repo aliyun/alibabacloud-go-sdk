@@ -26,6 +26,8 @@ type iDescribeSparkAuditLogRecordsResponseBody interface {
 }
 
 type DescribeSparkAuditLogRecordsResponseBody struct {
+	// The details about the access denial. This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+	//
 	// example:
 	//
 	// {
@@ -46,23 +48,34 @@ type DescribeSparkAuditLogRecordsResponseBody struct {
 	//
 	// }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// amv-bp1j7******78j8i
-	DBClusterId *string                                          `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Items       []*DescribeSparkAuditLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The list of SQL audit logs.
+	Items []*DescribeSparkAuditLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2D5867CF-423F-559F-BBB1-199A289E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -154,64 +167,108 @@ func (s *DescribeSparkAuditLogRecordsResponseBody) Validate() error {
 }
 
 type DescribeSparkAuditLogRecordsResponseBodyItems struct {
+	// The Spark application ID.
+	//
 	// example:
 	//
 	// s202411061011hzc5d6476000****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 192.168.XX.XX
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The SQL execution error message.
+	//
 	// example:
 	//
 	// notFoundIp
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The SQL execution error stack trace.
+	//
 	// example:
 	//
 	// notFoundIpException
 	ErrorTrace *string `json:"ErrorTrace,omitempty" xml:"ErrorTrace,omitempty"`
+	// The start time of the SQL statement. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
+	//
 	// example:
 	//
 	// 2022-01-23T16:05:08Z
 	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// The ID of the query executed within the Spark application.
+	//
 	// example:
 	//
 	// 1
 	InnerQueryId *string `json:"InnerQueryId,omitempty" xml:"InnerQueryId,omitempty"`
+	// Whether it can be diagnosed.
+	//
 	// example:
 	//
 	// true
 	IsDiagnosable *bool `json:"IsDiagnosable,omitempty" xml:"IsDiagnosable,omitempty"`
+	// The query ID.
+	//
 	// example:
 	//
 	// 999f2439-6b10-xxxx-a5d3-daf3b35c****
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// The resource group name.
+	//
 	// example:
 	//
 	// test_job
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// The SQL statement.
+	//
 	// example:
 	//
 	// SELECT 	- FROM adb_hdfs_import_source
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	// Statement ID。
+	// The ID of the statement.
 	//
 	// example:
 	//
 	// fbd22066-1c03-xxxx-aa16-6ae28288****
 	StatementId *string `json:"StatementId,omitempty" xml:"StatementId,omitempty"`
+	// The source from which the query was initiated.
+	//
+	// Valid values:
+	//
+	// 	- SQL_EDITOR: SQL_EDITOR.
+	//
+	// 	- JDBC: JDBC.
+	//
 	// example:
 	//
 	// SQL_EDITOR
 	StatementSource *string `json:"StatementSource,omitempty" xml:"StatementSource,omitempty"`
+	// The execution status of the SQL statement.
+	//
+	// Valid values:
+	//
+	// 	- cancel: The task is canceled .
+	//
+	// 	- finished: The execution succeeds .
+	//
+	// 	- error: The execution fails .
+	//
+	// 	- timeout: The execution of the command timed out.
+	//
 	// example:
 	//
 	// finish
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The duration of the SQL statement. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 40000
 	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	// The username that is used to execute SQL statements.
+	//
 	// example:
 	//
 	// test_user

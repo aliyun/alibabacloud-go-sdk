@@ -26,24 +26,44 @@ type iDescribeHistoryTasksStatResponseBody interface {
 }
 
 type DescribeHistoryTasksStatResponseBody struct {
+	// The queried information about the request denial.
 	AccessDeniedDetail *DescribeHistoryTasksStatResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
+	// API status or POP error code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Items          []*DescribeHistoryTasksStatResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The tasks.
+	Items []*DescribeHistoryTasksStatResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, an success message is returned.
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -140,30 +160,58 @@ func (s *DescribeHistoryTasksStatResponseBody) Validate() error {
 }
 
 type DescribeHistoryTasksStatResponseBodyAccessDeniedDetail struct {
+	// Authorized action
+	//
 	// example:
 	//
 	// test
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The display name of the requester.
+	//
 	// example:
 	//
 	// test
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	// The ID of the Alibaba Cloud account to which the authentication principal belongs.
+	//
 	// example:
 	//
 	// 141345906006****
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// The requester type.
+	//
 	// example:
 	//
 	// test
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The encoded diagnostic message.
+	//
 	// example:
 	//
 	// test
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	// The type of the policy denial. Valid values:
+	//
+	// 	- **ImplicitDeny**: The resource holder has not configured a policy for the current user. By default, unauthorized operations are denied.
+	//
+	// 	- **ExplicitDeny**: The RAM policy configured by the resource holder explicitly denies the current user access to the corresponding resources.
+	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// The type of the policy that causes the access denied error.
+	//
+	// 	- **ControlPolicy**: control policy
+	//
+	// 	- **SessionPolicy**: an additional policy that is added to the temporary token.
+	//
+	// 	- **AssumeRolePolicy**: the authorization policy of the RAM role.
+	//
+	// 	- **AccountLevelIdentityBasedPolicy**: the principal policies of the account authorization scope, including custom policies and system policies.
+	//
+	// 	- **ResourceGroupLevelIdentityBasedPolicy**: the principal policy of the resource group authorization scope, including custom policies and system policies.
+	//
 	// example:
 	//
 	// ControlPolicy
@@ -246,10 +294,28 @@ func (s *DescribeHistoryTasksStatResponseBodyAccessDeniedDetail) Validate() erro
 }
 
 type DescribeHistoryTasksStatResponseBodyItems struct {
+	// The status of the APS job.
+	//
+	// 	- **Scheduled**
+	//
+	// 	- **Running**
+	//
+	// 	- **Succeed**
+	//
+	// 	- **Failed**: The task failed.
+	//
+	// 	- **Cancelling**
+	//
+	// 	- **Canceled**
+	//
+	// 	- **Waiting**
+	//
 	// example:
 	//
 	// Scheduled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of tasks.
+	//
 	// example:
 	//
 	// 20

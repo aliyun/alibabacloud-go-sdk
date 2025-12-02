@@ -20,24 +20,32 @@ type iModifySqlTemplatePositionRequest interface {
 }
 
 type ModifySqlTemplatePositionRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-uf6wjk5xxxxxxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the template group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	TargetTemplateGroupId *int64 `json:"TargetTemplateGroupId,omitempty" xml:"TargetTemplateGroupId,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:

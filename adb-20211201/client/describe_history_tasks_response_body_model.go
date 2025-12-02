@@ -32,36 +32,62 @@ type iDescribeHistoryTasksResponseBody interface {
 }
 
 type DescribeHistoryTasksResponseBody struct {
+	// null
 	AccessDeniedDetail *DescribeHistoryTasksResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
+	// The HTTP status code that is returned.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Items          []*DescribeHistoryTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The task list.
+	Items []*DescribeHistoryTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The returned message. null
+	//
+	// 	- null****
+	//
+	// 	- null
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// E51713A3-BB45-5616-AB15-170B704F8F01
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total record count.
+	//
 	// example:
 	//
 	// 100
@@ -185,30 +211,58 @@ func (s *DescribeHistoryTasksResponseBody) Validate() error {
 }
 
 type DescribeHistoryTasksResponseBodyAccessDeniedDetail struct {
+	// null
+	//
 	// example:
 	//
 	// test
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// null
+	//
 	// example:
 	//
 	// test
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	// null
+	//
 	// example:
 	//
 	// 141345906006****
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// null
+	//
 	// example:
 	//
 	// test
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// null
+	//
 	// example:
 	//
 	// AQFmy+hZZsvoWTQ2NTJFQUFBLUIyNjktMzk5NS05MEZCLUMxMzgwNDUwMDA2Ng==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	// null
+	//
+	// 	- **null**
+	//
+	// 	- **null**
+	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// null
+	//
+	// 	- **null**
+	//
+	// 	- **null**
+	//
+	// 	- **null**
+	//
+	// 	- **null**
+	//
+	// 	- **null**
+	//
 	// example:
 	//
 	// ControlPolicy
@@ -291,82 +345,140 @@ func (s *DescribeHistoryTasksResponseBodyAccessDeniedDetail) Validate() error {
 }
 
 type DescribeHistoryTasksResponseBodyItems struct {
+	// Allowed operation information. When used specifically, matches operation Action based on currentStepName+status in this information. If no Action is matched, represents task current status does not support operations.
+	//
 	// example:
 	//
 	// {\\"steps\\":[{\\"action_info\\":{\\"Waiting\\":[\\"modifySwitchTime\\"]},\\"step_name\\":\\"exec_task\\"}]}
 	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
+	// null
+	//
 	// example:
 	//
 	// 141345906006****
 	CallerSource *string `json:"CallerSource,omitempty" xml:"CallerSource,omitempty"`
+	// null
+	//
+	// 	- **null**
+	//
+	// 	- **null**
+	//
 	// example:
 	//
 	// User
 	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	// Current executing step name. If empty, represents task has not started.
+	//
 	// example:
 	//
 	// exec_task
 	CurrentStepName *string `json:"CurrentStepName,omitempty" xml:"CurrentStepName,omitempty"`
+	// The database engine type.
+	//
 	// example:
 	//
 	// analyticdb
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// Task end time.
+	//
 	// example:
 	//
 	// 2022-02-03T12:06:17Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Cluster ID.
+	//
 	// example:
 	//
 	// amv-********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Instance type.
+	//
 	// example:
 	//
 	// Instance
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The service name.
+	//
 	// example:
 	//
 	// ads
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// Indicates the task progress.
+	//
 	// example:
 	//
 	// 79.0
 	Progress *float32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The reason why the current task was initiated.
+	//
 	// example:
 	//
 	// test
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Estimated remaining execution time, in seconds.
+	//
 	// example:
 	//
 	// 1000
 	RemainTime *int32 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
+	// Task start time.
+	//
 	// example:
 	//
 	// 2022-02-03T11:31:03Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Task status. Valid values:
+	//
+	// 	- **Scheduled**
+	//
+	// 	- **Running**
+	//
+	// 	- **Succeed**
+	//
+	// 	- **Failed**: The task failed.
+	//
+	// 	- **Cancelling**
+	//
+	// 	- **Canceled**
+	//
+	// 	- **Waiting**
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task details.
+	//
 	// example:
 	//
 	// {\\"callerUid\\":\\"test\\"}
 	TaskDetail *string `json:"TaskDetail,omitempty" xml:"TaskDetail,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// t-83br18hloy3faf****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task type.
+	//
 	// example:
 	//
 	// autotest_dispatch_cases
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// null
+	//
 	// example:
 	//
 	// 141345906006****

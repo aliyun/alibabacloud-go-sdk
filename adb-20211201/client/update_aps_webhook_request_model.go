@@ -18,19 +18,24 @@ type iUpdateApsWebhookRequest interface {
 }
 
 type UpdateApsWebhookRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// exampleDBClusterId
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// exampleRegionId
-	RegionId *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Webhook  []*UpdateApsWebhookRequestWebhook `json:"Webhook,omitempty" xml:"Webhook,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The array of webhooks.
+	Webhook []*UpdateApsWebhookRequestWebhook `json:"Webhook,omitempty" xml:"Webhook,omitempty" type:"Repeated"`
 }
 
 func (s UpdateApsWebhookRequest) String() string {
@@ -82,19 +87,25 @@ func (s *UpdateApsWebhookRequest) Validate() error {
 }
 
 type UpdateApsWebhookRequestWebhook struct {
+	// Signed key.
+	//
 	// example:
 	//
 	// ABC**
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the webhook.
+	//
 	// example:
 	//
 	// exampleWebhookName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The URL of the request.
+	//
 	// example:
 	//
 	// https://example.com/webhook
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// Webhook ID。
+	// The ID of the webhook.
 	//
 	// This parameter is required.
 	//
@@ -102,6 +113,8 @@ type UpdateApsWebhookRequestWebhook struct {
 	//
 	// **355****
 	WebhookId *int64 `json:"WebhookId,omitempty" xml:"WebhookId,omitempty"`
+	// The notification method. Valid values: dingtalk. lark.
+	//
 	// example:
 	//
 	// dingtalk

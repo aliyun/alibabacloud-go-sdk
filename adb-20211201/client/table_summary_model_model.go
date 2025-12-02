@@ -11,6 +11,10 @@ type iTableSummaryModel interface {
 	GoString() string
 	SetCreateTime(v string) *TableSummaryModel
 	GetCreateTime() *string
+	SetCreatedBySource(v string) *TableSummaryModel
+	GetCreatedBySource() *string
+	SetCreatedByUser(v string) *TableSummaryModel
+	GetCreatedByUser() *string
 	SetDescription(v string) *TableSummaryModel
 	GetDescription() *string
 	SetMvDetailModel(v *OpenStructMvDetailModel) *TableSummaryModel
@@ -32,16 +36,18 @@ type iTableSummaryModel interface {
 }
 
 type TableSummaryModel struct {
-	CreateTime    *string                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	MvDetailModel *OpenStructMvDetailModel `json:"MvDetailModel,omitempty" xml:"MvDetailModel,omitempty"`
-	Owner         *string                  `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	SQL           *string                  `json:"SQL,omitempty" xml:"SQL,omitempty"`
-	SchemaName    *string                  `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName     *string                  `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TableSize     *int64                   `json:"TableSize,omitempty" xml:"TableSize,omitempty"`
-	TableType     *string                  `json:"TableType,omitempty" xml:"TableType,omitempty"`
-	UpdateTime    *string                  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CreateTime      *string                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatedBySource *string                  `json:"CreatedBySource,omitempty" xml:"CreatedBySource,omitempty"`
+	CreatedByUser   *string                  `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
+	Description     *string                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	MvDetailModel   *OpenStructMvDetailModel `json:"MvDetailModel,omitempty" xml:"MvDetailModel,omitempty"`
+	Owner           *string                  `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	SQL             *string                  `json:"SQL,omitempty" xml:"SQL,omitempty"`
+	SchemaName      *string                  `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName       *string                  `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TableSize       *int64                   `json:"TableSize,omitempty" xml:"TableSize,omitempty"`
+	TableType       *string                  `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	UpdateTime      *string                  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s TableSummaryModel) String() string {
@@ -54,6 +60,14 @@ func (s TableSummaryModel) GoString() string {
 
 func (s *TableSummaryModel) GetCreateTime() *string {
 	return s.CreateTime
+}
+
+func (s *TableSummaryModel) GetCreatedBySource() *string {
+	return s.CreatedBySource
+}
+
+func (s *TableSummaryModel) GetCreatedByUser() *string {
+	return s.CreatedByUser
 }
 
 func (s *TableSummaryModel) GetDescription() *string {
@@ -94,6 +108,16 @@ func (s *TableSummaryModel) GetUpdateTime() *string {
 
 func (s *TableSummaryModel) SetCreateTime(v string) *TableSummaryModel {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *TableSummaryModel) SetCreatedBySource(v string) *TableSummaryModel {
+	s.CreatedBySource = &v
+	return s
+}
+
+func (s *TableSummaryModel) SetCreatedByUser(v string) *TableSummaryModel {
+	s.CreatedByUser = &v
 	return s
 }
 

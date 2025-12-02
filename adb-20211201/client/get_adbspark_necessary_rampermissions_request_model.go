@@ -14,6 +14,10 @@ type iGetADBSparkNecessaryRAMPermissionsRequest interface {
 }
 
 type GetADBSparkNecessaryRAMPermissionsRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+	//
 	// This parameter is required.
 	//
 	// example:
