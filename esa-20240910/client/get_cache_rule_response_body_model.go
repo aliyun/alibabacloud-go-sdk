@@ -39,6 +39,12 @@ type iGetCacheRuleResponseBody interface {
 	GetIncludeCookie() *string
 	SetIncludeHeader(v string) *GetCacheRuleResponseBody
 	GetIncludeHeader() *string
+	SetPostBodyCacheKey(v string) *GetCacheRuleResponseBody
+	GetPostBodyCacheKey() *string
+	SetPostBodySizeLimit(v string) *GetCacheRuleResponseBody
+	GetPostBodySizeLimit() *string
+	SetPostCache(v string) *GetCacheRuleResponseBody
+	GetPostCache() *string
 	SetQueryString(v string) *GetCacheRuleResponseBody
 	GetQueryString() *string
 	SetQueryStringMode(v string) *GetCacheRuleResponseBody
@@ -188,6 +194,15 @@ type GetCacheRuleResponseBody struct {
 	//
 	// example
 	IncludeHeader *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
+	// example:
+	//
+	// ignore
+	PostBodyCacheKey  *string `json:"PostBodyCacheKey,omitempty" xml:"PostBodyCacheKey,omitempty"`
+	PostBodySizeLimit *string `json:"PostBodySizeLimit,omitempty" xml:"PostBodySizeLimit,omitempty"`
+	// example:
+	//
+	// on
+	PostCache *string `json:"PostCache,omitempty" xml:"PostCache,omitempty"`
 	// The query strings to be retained or deleted, supporting multiple values separated by spaces.
 	//
 	// example:
@@ -372,6 +387,18 @@ func (s *GetCacheRuleResponseBody) GetIncludeHeader() *string {
 	return s.IncludeHeader
 }
 
+func (s *GetCacheRuleResponseBody) GetPostBodyCacheKey() *string {
+	return s.PostBodyCacheKey
+}
+
+func (s *GetCacheRuleResponseBody) GetPostBodySizeLimit() *string {
+	return s.PostBodySizeLimit
+}
+
+func (s *GetCacheRuleResponseBody) GetPostCache() *string {
+	return s.PostCache
+}
+
 func (s *GetCacheRuleResponseBody) GetQueryString() *string {
 	return s.QueryString
 }
@@ -496,6 +523,21 @@ func (s *GetCacheRuleResponseBody) SetIncludeCookie(v string) *GetCacheRuleRespo
 
 func (s *GetCacheRuleResponseBody) SetIncludeHeader(v string) *GetCacheRuleResponseBody {
 	s.IncludeHeader = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetPostBodyCacheKey(v string) *GetCacheRuleResponseBody {
+	s.PostBodyCacheKey = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetPostBodySizeLimit(v string) *GetCacheRuleResponseBody {
+	s.PostBodySizeLimit = &v
+	return s
+}
+
+func (s *GetCacheRuleResponseBody) SetPostCache(v string) *GetCacheRuleResponseBody {
+	s.PostCache = &v
 	return s
 }
 

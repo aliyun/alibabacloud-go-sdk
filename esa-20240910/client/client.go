@@ -1933,6 +1933,18 @@ func (client *Client) CreateCacheRuleWithOptions(request *CreateCacheRuleRequest
 		query["IncludeHeader"] = request.IncludeHeader
 	}
 
+	if !dara.IsNil(request.PostBodyCacheKey) {
+		query["PostBodyCacheKey"] = request.PostBodyCacheKey
+	}
+
+	if !dara.IsNil(request.PostBodySizeLimit) {
+		query["PostBodySizeLimit"] = request.PostBodySizeLimit
+	}
+
+	if !dara.IsNil(request.PostCache) {
+		query["PostCache"] = request.PostCache
+	}
+
 	if !dara.IsNil(request.QueryString) {
 		query["QueryString"] = request.QueryString
 	}
@@ -21867,6 +21879,18 @@ func (client *Client) UpdateCacheRuleWithOptions(request *UpdateCacheRuleRequest
 
 	if !dara.IsNil(request.IncludeHeader) {
 		query["IncludeHeader"] = request.IncludeHeader
+	}
+
+	if !dara.IsNil(request.PostBodyCacheKey) {
+		query["PostBodyCacheKey"] = request.PostBodyCacheKey
+	}
+
+	if !dara.IsNil(request.PostBodySizeLimit) {
+		query["PostBodySizeLimit"] = request.PostBodySizeLimit
+	}
+
+	if !dara.IsNil(request.PostCache) {
+		query["PostCache"] = request.PostCache
 	}
 
 	if !dara.IsNil(request.QueryString) {

@@ -254,6 +254,15 @@ type ListCacheRulesResponseBodyConfigs struct {
 	//
 	// example
 	IncludeHeader *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
+	// example:
+	//
+	// ignore
+	PostBodyCacheKey  *string `json:"PostBodyCacheKey,omitempty" xml:"PostBodyCacheKey,omitempty"`
+	PostBodySizeLimit *string `json:"PostBodySizeLimit,omitempty" xml:"PostBodySizeLimit,omitempty"`
+	// example:
+	//
+	// on
+	PostCache *string `json:"PostCache,omitempty" xml:"PostCache,omitempty"`
 	// The query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
 	//
 	// example:
@@ -432,6 +441,18 @@ func (s *ListCacheRulesResponseBodyConfigs) GetIncludeHeader() *string {
 	return s.IncludeHeader
 }
 
+func (s *ListCacheRulesResponseBodyConfigs) GetPostBodyCacheKey() *string {
+	return s.PostBodyCacheKey
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) GetPostBodySizeLimit() *string {
+	return s.PostBodySizeLimit
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) GetPostCache() *string {
+	return s.PostCache
+}
+
 func (s *ListCacheRulesResponseBodyConfigs) GetQueryString() *string {
 	return s.QueryString
 }
@@ -552,6 +573,21 @@ func (s *ListCacheRulesResponseBodyConfigs) SetIncludeCookie(v string) *ListCach
 
 func (s *ListCacheRulesResponseBodyConfigs) SetIncludeHeader(v string) *ListCacheRulesResponseBodyConfigs {
 	s.IncludeHeader = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetPostBodyCacheKey(v string) *ListCacheRulesResponseBodyConfigs {
+	s.PostBodyCacheKey = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetPostBodySizeLimit(v string) *ListCacheRulesResponseBodyConfigs {
+	s.PostBodySizeLimit = &v
+	return s
+}
+
+func (s *ListCacheRulesResponseBodyConfigs) SetPostCache(v string) *ListCacheRulesResponseBodyConfigs {
+	s.PostCache = &v
 	return s
 }
 

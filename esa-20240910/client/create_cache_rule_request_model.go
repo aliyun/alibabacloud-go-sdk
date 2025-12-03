@@ -35,6 +35,12 @@ type iCreateCacheRuleRequest interface {
 	GetIncludeCookie() *string
 	SetIncludeHeader(v string) *CreateCacheRuleRequest
 	GetIncludeHeader() *string
+	SetPostBodyCacheKey(v string) *CreateCacheRuleRequest
+	GetPostBodyCacheKey() *string
+	SetPostBodySizeLimit(v string) *CreateCacheRuleRequest
+	GetPostBodySizeLimit() *string
+	SetPostCache(v string) *CreateCacheRuleRequest
+	GetPostCache() *string
 	SetQueryString(v string) *CreateCacheRuleRequest
 	GetQueryString() *string
 	SetQueryStringMode(v string) *CreateCacheRuleRequest
@@ -168,6 +174,15 @@ type CreateCacheRuleRequest struct {
 	//
 	// example
 	IncludeHeader *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
+	// example:
+	//
+	// ignore
+	PostBodyCacheKey  *string `json:"PostBodyCacheKey,omitempty" xml:"PostBodyCacheKey,omitempty"`
+	PostBodySizeLimit *string `json:"PostBodySizeLimit,omitempty" xml:"PostBodySizeLimit,omitempty"`
+	// example:
+	//
+	// on
+	PostCache *string `json:"PostCache,omitempty" xml:"PostCache,omitempty"`
 	// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
 	//
 	// example:
@@ -341,6 +356,18 @@ func (s *CreateCacheRuleRequest) GetIncludeHeader() *string {
 	return s.IncludeHeader
 }
 
+func (s *CreateCacheRuleRequest) GetPostBodyCacheKey() *string {
+	return s.PostBodyCacheKey
+}
+
+func (s *CreateCacheRuleRequest) GetPostBodySizeLimit() *string {
+	return s.PostBodySizeLimit
+}
+
+func (s *CreateCacheRuleRequest) GetPostCache() *string {
+	return s.PostCache
+}
+
 func (s *CreateCacheRuleRequest) GetQueryString() *string {
 	return s.QueryString
 }
@@ -455,6 +482,21 @@ func (s *CreateCacheRuleRequest) SetIncludeCookie(v string) *CreateCacheRuleRequ
 
 func (s *CreateCacheRuleRequest) SetIncludeHeader(v string) *CreateCacheRuleRequest {
 	s.IncludeHeader = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetPostBodyCacheKey(v string) *CreateCacheRuleRequest {
+	s.PostBodyCacheKey = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetPostBodySizeLimit(v string) *CreateCacheRuleRequest {
+	s.PostBodySizeLimit = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetPostCache(v string) *CreateCacheRuleRequest {
+	s.PostCache = &v
 	return s
 }
 
