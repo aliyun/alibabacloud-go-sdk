@@ -15,6 +15,8 @@ type iUpdateVideoInfoRequest interface {
 	GetCoverURL() *string
 	SetDescription(v string) *UpdateVideoInfoRequest
 	GetDescription() *string
+	SetReferenceId(v string) *UpdateVideoInfoRequest
+	GetReferenceId() *string
 	SetTags(v string) *UpdateVideoInfoRequest
 	GetTags() *string
 	SetTitle(v string) *UpdateVideoInfoRequest
@@ -54,6 +56,10 @@ type UpdateVideoInfoRequest struct {
 	//
 	// video description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 123-123
+	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
 	// The tags of the media file.
 	//
 	// 	- Each tag can be up to 32 bytes in length. You can specify up to 16 tags.
@@ -90,8 +96,6 @@ type UpdateVideoInfoRequest struct {
 	//
 	// 	- View the value of the VideoId parameter returned by the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation that you called to query media information after the audio or video file is uploaded.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 2deda93265312baf9b0ed810d****
@@ -116,6 +120,10 @@ func (s *UpdateVideoInfoRequest) GetCoverURL() *string {
 
 func (s *UpdateVideoInfoRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *UpdateVideoInfoRequest) GetReferenceId() *string {
+	return s.ReferenceId
 }
 
 func (s *UpdateVideoInfoRequest) GetTags() *string {
@@ -146,6 +154,11 @@ func (s *UpdateVideoInfoRequest) SetCoverURL(v string) *UpdateVideoInfoRequest {
 
 func (s *UpdateVideoInfoRequest) SetDescription(v string) *UpdateVideoInfoRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateVideoInfoRequest) SetReferenceId(v string) *UpdateVideoInfoRequest {
+	s.ReferenceId = &v
 	return s
 }
 

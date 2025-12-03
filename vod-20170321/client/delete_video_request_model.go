@@ -9,11 +9,17 @@ type iDeleteVideoRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetReferenceIds(v string) *DeleteVideoRequest
+	GetReferenceIds() *string
 	SetVideoIds(v string) *DeleteVideoRequest
 	GetVideoIds() *string
 }
 
 type DeleteVideoRequest struct {
+	// example:
+	//
+	// 123-123,1234-1234
+	ReferenceIds *string `json:"ReferenceIds,omitempty" xml:"ReferenceIds,omitempty"`
 	// The list of video IDs. Separate multiple IDs with commas (,). A maximum of 20 IDs can be specified. You can obtain a video ID in one of the following ways:
 	//
 	// 	- If the video is uploaded by using the [ApsaraVideo VOD console](https://vod.console.aliyun.com), log on to the console and choose **Media Files*	- > **Audio/Video*	- to view the ID of the video.
@@ -21,8 +27,6 @@ type DeleteVideoRequest struct {
 	// 	- If the video is uploaded by calling the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation, the video ID is the VideoId value in the response.
 	//
 	// 	- You can also call the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation to obtain the video ID, which is the VideoId value in the response.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -38,8 +42,17 @@ func (s DeleteVideoRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteVideoRequest) GetReferenceIds() *string {
+	return s.ReferenceIds
+}
+
 func (s *DeleteVideoRequest) GetVideoIds() *string {
 	return s.VideoIds
+}
+
+func (s *DeleteVideoRequest) SetReferenceIds(v string) *DeleteVideoRequest {
+	s.ReferenceIds = &v
+	return s
 }
 
 func (s *DeleteVideoRequest) SetVideoIds(v string) *DeleteVideoRequest {

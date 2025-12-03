@@ -13,6 +13,8 @@ type iGetVideoPlayAuthRequest interface {
 	GetApiVersion() *string
 	SetAuthInfoTimeout(v int64) *GetVideoPlayAuthRequest
 	GetAuthInfoTimeout() *int64
+	SetReferenceId(v string) *GetVideoPlayAuthRequest
+	GetReferenceId() *string
 	SetVideoId(v string) *GetVideoPlayAuthRequest
 	GetVideoId() *string
 }
@@ -34,6 +36,10 @@ type GetVideoPlayAuthRequest struct {
 	//
 	// 100
 	AuthInfoTimeout *int64 `json:"AuthInfoTimeout,omitempty" xml:"AuthInfoTimeout,omitempty"`
+	// example:
+	//
+	// 123-123
+	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
 	// The ID of the media file. You can specify only one ID. You can use one of the following methods to obtain the ID of the file:
 	//
 	// 	- Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files*	- > **Audio/Video**. On the Video and Audio page, view the ID of the media file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
@@ -41,8 +47,6 @@ type GetVideoPlayAuthRequest struct {
 	// 	- Obtain the value of the VideoId parameter from the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation.
 	//
 	// 	- Obtain the value of the VideoId parameter from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation. This method is applicable to files that have been uploaded.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -66,6 +70,10 @@ func (s *GetVideoPlayAuthRequest) GetAuthInfoTimeout() *int64 {
 	return s.AuthInfoTimeout
 }
 
+func (s *GetVideoPlayAuthRequest) GetReferenceId() *string {
+	return s.ReferenceId
+}
+
 func (s *GetVideoPlayAuthRequest) GetVideoId() *string {
 	return s.VideoId
 }
@@ -77,6 +85,11 @@ func (s *GetVideoPlayAuthRequest) SetApiVersion(v string) *GetVideoPlayAuthReque
 
 func (s *GetVideoPlayAuthRequest) SetAuthInfoTimeout(v int64) *GetVideoPlayAuthRequest {
 	s.AuthInfoTimeout = &v
+	return s
+}
+
+func (s *GetVideoPlayAuthRequest) SetReferenceId(v string) *GetVideoPlayAuthRequest {
+	s.ReferenceId = &v
 	return s
 }
 

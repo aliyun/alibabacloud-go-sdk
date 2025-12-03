@@ -11,6 +11,8 @@ type iRefreshUploadVideoRequest interface {
 	GoString() string
 	SetOwnerId(v int64) *RefreshUploadVideoRequest
 	GetOwnerId() *int64
+	SetReferenceId(v string) *RefreshUploadVideoRequest
+	GetReferenceId() *string
 	SetResourceOwnerAccount(v string) *RefreshUploadVideoRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *RefreshUploadVideoRequest
@@ -20,7 +22,11 @@ type iRefreshUploadVideoRequest interface {
 }
 
 type RefreshUploadVideoRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 123-123
+	ReferenceId          *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the audio or video file. You can use one of the following methods to obtain the ID:
@@ -30,8 +36,6 @@ type RefreshUploadVideoRequest struct {
 	// 	- View the value of the VideoId parameter returned by the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you called to upload the audio or video file.
 	//
 	// 	- After an audio or video file is uploaded, obtain the value of VideoId from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation that you call to query the audio or video ID.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -51,6 +55,10 @@ func (s *RefreshUploadVideoRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
 
+func (s *RefreshUploadVideoRequest) GetReferenceId() *string {
+	return s.ReferenceId
+}
+
 func (s *RefreshUploadVideoRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
@@ -65,6 +73,11 @@ func (s *RefreshUploadVideoRequest) GetVideoId() *string {
 
 func (s *RefreshUploadVideoRequest) SetOwnerId(v int64) *RefreshUploadVideoRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *RefreshUploadVideoRequest) SetReferenceId(v string) *RefreshUploadVideoRequest {
+	s.ReferenceId = &v
 	return s
 }
 

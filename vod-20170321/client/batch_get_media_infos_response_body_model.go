@@ -15,6 +15,8 @@ type iBatchGetMediaInfosResponseBody interface {
 	GetMediaInfos() []*BatchGetMediaInfosResponseBodyMediaInfos
 	SetNonExistMediaIds(v []*string) *BatchGetMediaInfosResponseBody
 	GetNonExistMediaIds() []*string
+	SetNonExistReferenceIds(v []*string) *BatchGetMediaInfosResponseBody
+	GetNonExistReferenceIds() []*string
 	SetRequestId(v string) *BatchGetMediaInfosResponseBody
 	GetRequestId() *string
 }
@@ -25,7 +27,8 @@ type BatchGetMediaInfosResponseBody struct {
 	// Details about media assets.
 	MediaInfos []*BatchGetMediaInfosResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
 	// The IDs of the media assets that do not exist.
-	NonExistMediaIds []*string `json:"NonExistMediaIds,omitempty" xml:"NonExistMediaIds,omitempty" type:"Repeated"`
+	NonExistMediaIds     []*string `json:"NonExistMediaIds,omitempty" xml:"NonExistMediaIds,omitempty" type:"Repeated"`
+	NonExistReferenceIds []*string `json:"NonExistReferenceIds,omitempty" xml:"NonExistReferenceIds,omitempty" type:"Repeated"`
 	// The request ID.
 	//
 	// example:
@@ -54,6 +57,10 @@ func (s *BatchGetMediaInfosResponseBody) GetNonExistMediaIds() []*string {
 	return s.NonExistMediaIds
 }
 
+func (s *BatchGetMediaInfosResponseBody) GetNonExistReferenceIds() []*string {
+	return s.NonExistReferenceIds
+}
+
 func (s *BatchGetMediaInfosResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -70,6 +77,11 @@ func (s *BatchGetMediaInfosResponseBody) SetMediaInfos(v []*BatchGetMediaInfosRe
 
 func (s *BatchGetMediaInfosResponseBody) SetNonExistMediaIds(v []*string) *BatchGetMediaInfosResponseBody {
 	s.NonExistMediaIds = v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBody) SetNonExistReferenceIds(v []*string) *BatchGetMediaInfosResponseBody {
+	s.NonExistReferenceIds = v
 	return s
 }
 
@@ -232,6 +244,10 @@ type BatchGetMediaInfosResponseBodyMediaInfosMediaInfo struct {
 	//
 	// 2017-06-26T06:38:48Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	// example:
+	//
+	// 123-123
+	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
 	// The period of time in which the audio file remains in the restored state.
 	//
 	// example:
@@ -372,6 +388,10 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaInfo) GetModificationTime(
 	return s.ModificationTime
 }
 
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaInfo) GetReferenceId() *string {
+	return s.ReferenceId
+}
+
 func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaInfo) GetRestoreExpiration() *string {
 	return s.RestoreExpiration
 }
@@ -454,6 +474,11 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaInfo) SetMediaId(v string)
 
 func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaInfo) SetModificationTime(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaInfo {
 	s.ModificationTime = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaInfo) SetReferenceId(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaInfo {
+	s.ReferenceId = &v
 	return s
 }
 

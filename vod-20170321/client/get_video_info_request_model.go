@@ -9,11 +9,17 @@ type iGetVideoInfoRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetReferenceId(v string) *GetVideoInfoRequest
+	GetReferenceId() *string
 	SetVideoId(v string) *GetVideoInfoRequest
 	GetVideoId() *string
 }
 
 type GetVideoInfoRequest struct {
+	// example:
+	//
+	// 123-123
+	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
 	// The ID of the audio or video file. You can specify only one ID in each call. You can use one of the following methods to obtain the ID:
 	//
 	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files*	- > **Audio/Video**. On the Video and Audio page, view the ID of the audio or video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
@@ -21,8 +27,6 @@ type GetVideoInfoRequest struct {
 	// 	- Obtain the value of VideoId from the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you called to obtain the upload URL and credential.
 	//
 	// 	- Obtain the value of VideoId from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation that you called to query the media ID after the media file is uploaded.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -38,8 +42,17 @@ func (s GetVideoInfoRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetVideoInfoRequest) GetReferenceId() *string {
+	return s.ReferenceId
+}
+
 func (s *GetVideoInfoRequest) GetVideoId() *string {
 	return s.VideoId
+}
+
+func (s *GetVideoInfoRequest) SetReferenceId(v string) *GetVideoInfoRequest {
+	s.ReferenceId = &v
+	return s
 }
 
 func (s *GetVideoInfoRequest) SetVideoId(v string) *GetVideoInfoRequest {

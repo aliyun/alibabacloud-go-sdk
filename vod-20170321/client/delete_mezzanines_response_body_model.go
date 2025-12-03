@@ -9,6 +9,8 @@ type iDeleteMezzaninesResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetNonExistReferenceIds(v []*string) *DeleteMezzaninesResponseBody
+	GetNonExistReferenceIds() []*string
 	SetNonExistVideoIds(v []*string) *DeleteMezzaninesResponseBody
 	GetNonExistVideoIds() []*string
 	SetRequestId(v string) *DeleteMezzaninesResponseBody
@@ -18,6 +20,7 @@ type iDeleteMezzaninesResponseBody interface {
 }
 
 type DeleteMezzaninesResponseBody struct {
+	NonExistReferenceIds []*string `json:"NonExistReferenceIds,omitempty" xml:"NonExistReferenceIds,omitempty" type:"Repeated"`
 	// The IDs of the audio or video files that do not exist.
 	NonExistVideoIds []*string `json:"NonExistVideoIds,omitempty" xml:"NonExistVideoIds,omitempty" type:"Repeated"`
 	// The ID of the request.
@@ -40,6 +43,10 @@ func (s DeleteMezzaninesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteMezzaninesResponseBody) GetNonExistReferenceIds() []*string {
+	return s.NonExistReferenceIds
+}
+
 func (s *DeleteMezzaninesResponseBody) GetNonExistVideoIds() []*string {
 	return s.NonExistVideoIds
 }
@@ -50,6 +57,11 @@ func (s *DeleteMezzaninesResponseBody) GetRequestId() *string {
 
 func (s *DeleteMezzaninesResponseBody) GetUnRemoveableVideoIds() []*string {
 	return s.UnRemoveableVideoIds
+}
+
+func (s *DeleteMezzaninesResponseBody) SetNonExistReferenceIds(v []*string) *DeleteMezzaninesResponseBody {
+	s.NonExistReferenceIds = v
+	return s
 }
 
 func (s *DeleteMezzaninesResponseBody) SetNonExistVideoIds(v []*string) *DeleteMezzaninesResponseBody {

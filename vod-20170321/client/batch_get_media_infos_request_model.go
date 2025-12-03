@@ -11,6 +11,8 @@ type iBatchGetMediaInfosRequest interface {
 	GoString() string
 	SetMediaIds(v string) *BatchGetMediaInfosRequest
 	GetMediaIds() *string
+	SetReferenceIds(v string) *BatchGetMediaInfosRequest
+	GetReferenceIds() *string
 }
 
 type BatchGetMediaInfosRequest struct {
@@ -28,6 +30,10 @@ type BatchGetMediaInfosRequest struct {
 	//
 	// 61ccbdb06fa83012be4d8083f6****,7d2fbc380b0e08e55f****
 	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
+	// example:
+	//
+	// 123-123,1234-1234
+	ReferenceIds *string `json:"ReferenceIds,omitempty" xml:"ReferenceIds,omitempty"`
 }
 
 func (s BatchGetMediaInfosRequest) String() string {
@@ -42,8 +48,17 @@ func (s *BatchGetMediaInfosRequest) GetMediaIds() *string {
 	return s.MediaIds
 }
 
+func (s *BatchGetMediaInfosRequest) GetReferenceIds() *string {
+	return s.ReferenceIds
+}
+
 func (s *BatchGetMediaInfosRequest) SetMediaIds(v string) *BatchGetMediaInfosRequest {
 	s.MediaIds = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosRequest) SetReferenceIds(v string) *BatchGetMediaInfosRequest {
+	s.ReferenceIds = &v
 	return s
 }
 

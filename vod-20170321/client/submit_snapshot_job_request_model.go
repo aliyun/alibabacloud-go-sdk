@@ -15,6 +15,8 @@ type iSubmitSnapshotJobRequest interface {
 	GetHeight() *string
 	SetInterval(v int64) *SubmitSnapshotJobRequest
 	GetInterval() *int64
+	SetReferenceId(v string) *SubmitSnapshotJobRequest
+	GetReferenceId() *string
 	SetSnapshotTemplateId(v string) *SubmitSnapshotJobRequest
 	GetSnapshotTemplateId() *string
 	SetSpecifiedOffsetTime(v int64) *SubmitSnapshotJobRequest
@@ -56,6 +58,10 @@ type SubmitSnapshotJobRequest struct {
 	//
 	// 1
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 123-123
+	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
 	// The ID of the snapshot template.
 	//
 	// 	- We recommend that you create a snapshot template before you specify the template ID. For more information about how to create a snapshot template, see [AddVodTemplate](https://help.aliyun.com/document_detail/99406.html).
@@ -132,6 +138,10 @@ func (s *SubmitSnapshotJobRequest) GetInterval() *int64 {
 	return s.Interval
 }
 
+func (s *SubmitSnapshotJobRequest) GetReferenceId() *string {
+	return s.ReferenceId
+}
+
 func (s *SubmitSnapshotJobRequest) GetSnapshotTemplateId() *string {
 	return s.SnapshotTemplateId
 }
@@ -172,6 +182,11 @@ func (s *SubmitSnapshotJobRequest) SetHeight(v string) *SubmitSnapshotJobRequest
 
 func (s *SubmitSnapshotJobRequest) SetInterval(v int64) *SubmitSnapshotJobRequest {
 	s.Interval = &v
+	return s
+}
+
+func (s *SubmitSnapshotJobRequest) SetReferenceId(v string) *SubmitSnapshotJobRequest {
+	s.ReferenceId = &v
 	return s
 }
 

@@ -21,6 +21,8 @@ type iCreateUploadVideoRequest interface {
 	GetFileName() *string
 	SetFileSize(v int64) *CreateUploadVideoRequest
 	GetFileSize() *int64
+	SetReferenceId(v string) *CreateUploadVideoRequest
+	GetReferenceId() *string
 	SetStorageLocation(v string) *CreateUploadVideoRequest
 	GetStorageLocation() *string
 	SetTags(v string) *CreateUploadVideoRequest
@@ -88,6 +90,10 @@ type CreateUploadVideoRequest struct {
 	//
 	// 123
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// example:
+	//
+	// 123-123
+	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
 	// The storage address. Perform the following operations to obtain the storage address: Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management*	- > **Media Management*	- > **Storage**. On the Storage page, view the storage address.
 	//
 	// >  If you leave this parameter empty, audio and video files are uploaded to the default storage address. If you specify a storage address, audio and video files are uploaded to the specified address.
@@ -194,6 +200,10 @@ func (s *CreateUploadVideoRequest) GetFileSize() *int64 {
 	return s.FileSize
 }
 
+func (s *CreateUploadVideoRequest) GetReferenceId() *string {
+	return s.ReferenceId
+}
+
 func (s *CreateUploadVideoRequest) GetStorageLocation() *string {
 	return s.StorageLocation
 }
@@ -245,6 +255,11 @@ func (s *CreateUploadVideoRequest) SetFileName(v string) *CreateUploadVideoReque
 
 func (s *CreateUploadVideoRequest) SetFileSize(v int64) *CreateUploadVideoRequest {
 	s.FileSize = &v
+	return s
+}
+
+func (s *CreateUploadVideoRequest) SetReferenceId(v string) *CreateUploadVideoRequest {
+	s.ReferenceId = &v
 	return s
 }
 

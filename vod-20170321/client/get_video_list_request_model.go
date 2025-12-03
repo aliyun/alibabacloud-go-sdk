@@ -17,6 +17,8 @@ type iGetVideoListRequest interface {
 	GetPageNo() *int32
 	SetPageSize(v int32) *GetVideoListRequest
 	GetPageSize() *int32
+	SetReferenceIds(v string) *GetVideoListRequest
+	GetReferenceIds() *string
 	SetSortBy(v string) *GetVideoListRequest
 	GetSortBy() *string
 	SetStartTime(v string) *GetVideoListRequest
@@ -58,6 +60,10 @@ type GetVideoListRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 123-123,1234-1234
+	ReferenceIds *string `json:"ReferenceIds,omitempty" xml:"ReferenceIds,omitempty"`
 	// The sorting method of the results. Valid values:
 	//
 	// 	- **CreationTime:Desc*	- (default): The results are sorted in reverse chronological order based on the creation time.
@@ -132,6 +138,10 @@ func (s *GetVideoListRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *GetVideoListRequest) GetReferenceIds() *string {
+	return s.ReferenceIds
+}
+
 func (s *GetVideoListRequest) GetSortBy() *string {
 	return s.SortBy
 }
@@ -165,6 +175,11 @@ func (s *GetVideoListRequest) SetPageNo(v int32) *GetVideoListRequest {
 
 func (s *GetVideoListRequest) SetPageSize(v int32) *GetVideoListRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *GetVideoListRequest) SetReferenceIds(v string) *GetVideoListRequest {
+	s.ReferenceIds = &v
 	return s
 }
 

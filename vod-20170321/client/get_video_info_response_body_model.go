@@ -136,6 +136,10 @@ type GetVideoInfoResponseBodyVideo struct {
 	//
 	// 2017-11-14T10:15:50Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	// example:
+	//
+	// 123-123
+	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
 	// The region where the media file is stored.
 	//
 	// example:
@@ -302,6 +306,10 @@ func (s *GetVideoInfoResponseBodyVideo) GetModificationTime() *string {
 	return s.ModificationTime
 }
 
+func (s *GetVideoInfoResponseBodyVideo) GetReferenceId() *string {
+	return s.ReferenceId
+}
+
 func (s *GetVideoInfoResponseBodyVideo) GetRegionId() *string {
 	return s.RegionId
 }
@@ -406,6 +414,11 @@ func (s *GetVideoInfoResponseBodyVideo) SetDuration(v float32) *GetVideoInfoResp
 
 func (s *GetVideoInfoResponseBodyVideo) SetModificationTime(v string) *GetVideoInfoResponseBodyVideo {
 	s.ModificationTime = &v
+	return s
+}
+
+func (s *GetVideoInfoResponseBodyVideo) SetReferenceId(v string) *GetVideoInfoResponseBodyVideo {
+	s.ReferenceId = &v
 	return s
 }
 

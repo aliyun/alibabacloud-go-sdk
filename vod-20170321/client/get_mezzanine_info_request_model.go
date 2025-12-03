@@ -15,6 +15,8 @@ type iGetMezzanineInfoRequest interface {
 	GetAuthTimeout() *int64
 	SetOutputType(v string) *GetMezzanineInfoRequest
 	GetOutputType() *string
+	SetReferenceId(v string) *GetMezzanineInfoRequest
+	GetReferenceId() *string
 	SetVideoId(v string) *GetMezzanineInfoRequest
 	GetVideoId() *string
 }
@@ -70,9 +72,11 @@ type GetMezzanineInfoRequest struct {
 	//
 	// oss
 	OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
-	// The ID of the video.
+	// example:
 	//
-	// This parameter is required.
+	// 123-123
+	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
+	// The ID of the video.
 	//
 	// example:
 	//
@@ -100,6 +104,10 @@ func (s *GetMezzanineInfoRequest) GetOutputType() *string {
 	return s.OutputType
 }
 
+func (s *GetMezzanineInfoRequest) GetReferenceId() *string {
+	return s.ReferenceId
+}
+
 func (s *GetMezzanineInfoRequest) GetVideoId() *string {
 	return s.VideoId
 }
@@ -116,6 +124,11 @@ func (s *GetMezzanineInfoRequest) SetAuthTimeout(v int64) *GetMezzanineInfoReque
 
 func (s *GetMezzanineInfoRequest) SetOutputType(v string) *GetMezzanineInfoRequest {
 	s.OutputType = &v
+	return s
+}
+
+func (s *GetMezzanineInfoRequest) SetReferenceId(v string) *GetMezzanineInfoRequest {
+	s.ReferenceId = &v
 	return s
 }
 

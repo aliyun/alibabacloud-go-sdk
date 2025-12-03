@@ -17,6 +17,8 @@ type iSubmitTranscodeJobsRequest interface {
 	GetPipelineId() *string
 	SetPriority(v string) *SubmitTranscodeJobsRequest
 	GetPriority() *string
+	SetReferenceId(v string) *SubmitTranscodeJobsRequest
+	GetReferenceId() *string
 	SetSessionId(v string) *SubmitTranscodeJobsRequest
 	GetSessionId() *string
 	SetTemplateGroupId(v string) *SubmitTranscodeJobsRequest
@@ -66,6 +68,10 @@ type SubmitTranscodeJobsRequest struct {
 	//
 	// 6
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// 123-123
+	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
 	// The custom identifier for deduplication. If you send a request, an error is returned if a request with the same identifier was sent in the last 7 days. A custom identifier can be up to 50 characters in length and can contain letters, digits, hyphens (-), and underscores (_). If you do not specify this parameter or leave this parameter empty, duplicate requests are not filtered.
 	//
 	// example:
@@ -126,6 +132,10 @@ func (s *SubmitTranscodeJobsRequest) GetPriority() *string {
 	return s.Priority
 }
 
+func (s *SubmitTranscodeJobsRequest) GetReferenceId() *string {
+	return s.ReferenceId
+}
+
 func (s *SubmitTranscodeJobsRequest) GetSessionId() *string {
 	return s.SessionId
 }
@@ -159,6 +169,11 @@ func (s *SubmitTranscodeJobsRequest) SetPipelineId(v string) *SubmitTranscodeJob
 
 func (s *SubmitTranscodeJobsRequest) SetPriority(v string) *SubmitTranscodeJobsRequest {
 	s.Priority = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobsRequest) SetReferenceId(v string) *SubmitTranscodeJobsRequest {
+	s.ReferenceId = &v
 	return s
 }
 

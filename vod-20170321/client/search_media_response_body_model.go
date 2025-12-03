@@ -973,6 +973,10 @@ type SearchMediaResponseBodyMediaListAudio struct {
 	//
 	// UnPreprocess
 	PreprocessStatus *string `json:"PreprocessStatus,omitempty" xml:"PreprocessStatus,omitempty"`
+	// example:
+	//
+	// 123-123
+	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
 	// The period of time in which the audio file remains in the restored state.
 	//
 	// example:
@@ -1125,6 +1129,10 @@ func (s *SearchMediaResponseBodyMediaListAudio) GetPreprocessStatus() *string {
 	return s.PreprocessStatus
 }
 
+func (s *SearchMediaResponseBodyMediaListAudio) GetReferenceId() *string {
+	return s.ReferenceId
+}
+
 func (s *SearchMediaResponseBodyMediaListAudio) GetRestoreExpiration() *string {
 	return s.RestoreExpiration
 }
@@ -1226,6 +1234,11 @@ func (s *SearchMediaResponseBodyMediaListAudio) SetModificationTime(v string) *S
 
 func (s *SearchMediaResponseBodyMediaListAudio) SetPreprocessStatus(v string) *SearchMediaResponseBodyMediaListAudio {
 	s.PreprocessStatus = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaListAudio) SetReferenceId(v string) *SearchMediaResponseBodyMediaListAudio {
+	s.ReferenceId = &v
 	return s
 }
 
@@ -1576,6 +1589,10 @@ type SearchMediaResponseBodyMediaListVideo struct {
 	//
 	// Preprocessing
 	PreprocessStatus *string `json:"PreprocessStatus,omitempty" xml:"PreprocessStatus,omitempty"`
+	// example:
+	//
+	// 123-123
+	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
 	// The period of time in which the video file remains in the restored state.
 	//
 	// example:
@@ -1738,6 +1755,10 @@ func (s *SearchMediaResponseBodyMediaListVideo) GetPreprocessStatus() *string {
 	return s.PreprocessStatus
 }
 
+func (s *SearchMediaResponseBodyMediaListVideo) GetReferenceId() *string {
+	return s.ReferenceId
+}
+
 func (s *SearchMediaResponseBodyMediaListVideo) GetRestoreExpiration() *string {
 	return s.RestoreExpiration
 }
@@ -1838,6 +1859,11 @@ func (s *SearchMediaResponseBodyMediaListVideo) SetModificationTime(v string) *S
 
 func (s *SearchMediaResponseBodyMediaListVideo) SetPreprocessStatus(v string) *SearchMediaResponseBodyMediaListVideo {
 	s.PreprocessStatus = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaListVideo) SetReferenceId(v string) *SearchMediaResponseBodyMediaListVideo {
+	s.ReferenceId = &v
 	return s
 }
 

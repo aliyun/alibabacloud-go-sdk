@@ -1045,6 +1045,10 @@ func (client *Client) BatchGetMediaInfosWithOptions(request *BatchGetMediaInfosR
 		query["MediaIds"] = request.MediaIds
 	}
 
+	if !dara.IsNil(request.ReferenceIds) {
+		query["ReferenceIds"] = request.ReferenceIds
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1949,6 +1953,10 @@ func (client *Client) CreateUploadVideoWithOptions(request *CreateUploadVideoReq
 
 	if !dara.IsNil(request.FileSize) {
 		query["FileSize"] = request.FileSize
+	}
+
+	if !dara.IsNil(request.ReferenceId) {
+		query["ReferenceId"] = request.ReferenceId
 	}
 
 	if !dara.IsNil(request.StorageLocation) {
@@ -2915,6 +2923,10 @@ func (client *Client) DeleteMezzaninesWithOptions(request *DeleteMezzaninesReque
 		query["Force"] = request.Force
 	}
 
+	if !dara.IsNil(request.ReferenceIds) {
+		query["ReferenceIds"] = request.ReferenceIds
+	}
+
 	if !dara.IsNil(request.VideoIds) {
 		query["VideoIds"] = request.VideoIds
 	}
@@ -3071,6 +3083,10 @@ func (client *Client) DeleteStreamWithOptions(request *DeleteStreamRequest, runt
 		query["JobIds"] = request.JobIds
 	}
 
+	if !dara.IsNil(request.ReferenceId) {
+		query["ReferenceId"] = request.ReferenceId
+	}
+
 	if !dara.IsNil(request.VideoId) {
 		query["VideoId"] = request.VideoId
 	}
@@ -3223,6 +3239,10 @@ func (client *Client) DeleteVideoWithOptions(request *DeleteVideoRequest, runtim
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ReferenceIds) {
+		query["ReferenceIds"] = request.ReferenceIds
+	}
+
 	if !dara.IsNil(request.VideoIds) {
 		query["VideoIds"] = request.VideoIds
 	}
@@ -10045,6 +10065,10 @@ func (client *Client) GetMezzanineInfoWithOptions(request *GetMezzanineInfoReque
 		query["OutputType"] = request.OutputType
 	}
 
+	if !dara.IsNil(request.ReferenceId) {
+		query["ReferenceId"] = request.ReferenceId
+	}
+
 	if !dara.IsNil(request.VideoId) {
 		query["VideoId"] = request.VideoId
 	}
@@ -10149,6 +10173,10 @@ func (client *Client) GetPlayInfoWithOptions(request *GetPlayInfoRequest, runtim
 
 	if !dara.IsNil(request.ReAuthInfo) {
 		query["ReAuthInfo"] = request.ReAuthInfo
+	}
+
+	if !dara.IsNil(request.ReferenceId) {
+		query["ReferenceId"] = request.ReferenceId
 	}
 
 	if !dara.IsNil(request.ResultType) {
@@ -10647,6 +10675,10 @@ func (client *Client) GetVideoInfoWithOptions(request *GetVideoInfoRequest, runt
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ReferenceId) {
+		query["ReferenceId"] = request.ReferenceId
+	}
+
 	if !dara.IsNil(request.VideoId) {
 		query["VideoId"] = request.VideoId
 	}
@@ -10719,6 +10751,10 @@ func (client *Client) GetVideoInfosWithOptions(request *GetVideoInfosRequest, ru
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ReferenceIds) {
+		query["ReferenceIds"] = request.ReferenceIds
+	}
+
 	if !dara.IsNil(request.VideoIds) {
 		query["VideoIds"] = request.VideoIds
 	}
@@ -10805,6 +10841,10 @@ func (client *Client) GetVideoListWithOptions(request *GetVideoListRequest, runt
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ReferenceIds) {
+		query["ReferenceIds"] = request.ReferenceIds
 	}
 
 	if !dara.IsNil(request.SortBy) {
@@ -10897,6 +10937,10 @@ func (client *Client) GetVideoPlayAuthWithOptions(request *GetVideoPlayAuthReque
 
 	if !dara.IsNil(request.AuthInfoTimeout) {
 		query["AuthInfoTimeout"] = request.AuthInfoTimeout
+	}
+
+	if !dara.IsNil(request.ReferenceId) {
+		query["ReferenceId"] = request.ReferenceId
 	}
 
 	if !dara.IsNil(request.VideoId) {
@@ -12649,6 +12693,10 @@ func (client *Client) RefreshUploadVideoWithOptions(request *RefreshUploadVideoR
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ReferenceId) {
+		query["ReferenceId"] = request.ReferenceId
 	}
 
 	if !dara.IsNil(request.ResourceOwnerAccount) {
@@ -14765,6 +14813,10 @@ func (client *Client) SubmitSnapshotJobWithOptions(tmpReq *SubmitSnapshotJobRequ
 		query["Interval"] = request.Interval
 	}
 
+	if !dara.IsNil(request.ReferenceId) {
+		query["ReferenceId"] = request.ReferenceId
+	}
+
 	if !dara.IsNil(request.SnapshotTemplateId) {
 		query["SnapshotTemplateId"] = request.SnapshotTemplateId
 	}
@@ -14887,6 +14939,10 @@ func (client *Client) SubmitTranscodeJobsWithOptions(request *SubmitTranscodeJob
 
 	if !dara.IsNil(request.Priority) {
 		query["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.ReferenceId) {
+		query["ReferenceId"] = request.ReferenceId
 	}
 
 	if !dara.IsNil(request.SessionId) {
@@ -15733,6 +15789,10 @@ func (client *Client) UpdateVideoInfoWithOptions(request *UpdateVideoInfoRequest
 
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ReferenceId) {
+		query["ReferenceId"] = request.ReferenceId
 	}
 
 	if !dara.IsNil(request.Tags) {

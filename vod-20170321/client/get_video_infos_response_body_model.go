@@ -9,6 +9,8 @@ type iGetVideoInfosResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetNonExistReferenceIds(v []*string) *GetVideoInfosResponseBody
+	GetNonExistReferenceIds() []*string
 	SetNonExistVideoIds(v []*string) *GetVideoInfosResponseBody
 	GetNonExistVideoIds() []*string
 	SetRequestId(v string) *GetVideoInfosResponseBody
@@ -18,6 +20,7 @@ type iGetVideoInfosResponseBody interface {
 }
 
 type GetVideoInfosResponseBody struct {
+	NonExistReferenceIds []*string `json:"NonExistReferenceIds,omitempty" xml:"NonExistReferenceIds,omitempty" type:"Repeated"`
 	// The IDs of the videos that do not exist.
 	NonExistVideoIds []*string `json:"NonExistVideoIds,omitempty" xml:"NonExistVideoIds,omitempty" type:"Repeated"`
 	// The ID of the request.
@@ -38,6 +41,10 @@ func (s GetVideoInfosResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetVideoInfosResponseBody) GetNonExistReferenceIds() []*string {
+	return s.NonExistReferenceIds
+}
+
 func (s *GetVideoInfosResponseBody) GetNonExistVideoIds() []*string {
 	return s.NonExistVideoIds
 }
@@ -48,6 +55,11 @@ func (s *GetVideoInfosResponseBody) GetRequestId() *string {
 
 func (s *GetVideoInfosResponseBody) GetVideoList() []*GetVideoInfosResponseBodyVideoList {
 	return s.VideoList
+}
+
+func (s *GetVideoInfosResponseBody) SetNonExistReferenceIds(v []*string) *GetVideoInfosResponseBody {
+	s.NonExistReferenceIds = v
+	return s
 }
 
 func (s *GetVideoInfosResponseBody) SetNonExistVideoIds(v []*string) *GetVideoInfosResponseBody {
@@ -137,6 +149,10 @@ type GetVideoInfosResponseBodyVideoList struct {
 	//
 	// 2017-06-26T06:38:48Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	// example:
+	//
+	// 123-123
+	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
 	// The period of time in which the audio file remains in the restored state.
 	//
 	// example:
@@ -289,6 +305,10 @@ func (s *GetVideoInfosResponseBodyVideoList) GetModificationTime() *string {
 	return s.ModificationTime
 }
 
+func (s *GetVideoInfosResponseBodyVideoList) GetReferenceId() *string {
+	return s.ReferenceId
+}
+
 func (s *GetVideoInfosResponseBodyVideoList) GetRestoreExpiration() *string {
 	return s.RestoreExpiration
 }
@@ -379,6 +399,11 @@ func (s *GetVideoInfosResponseBodyVideoList) SetDuration(v float32) *GetVideoInf
 
 func (s *GetVideoInfosResponseBodyVideoList) SetModificationTime(v string) *GetVideoInfosResponseBodyVideoList {
 	s.ModificationTime = &v
+	return s
+}
+
+func (s *GetVideoInfosResponseBodyVideoList) SetReferenceId(v string) *GetVideoInfosResponseBodyVideoList {
+	s.ReferenceId = &v
 	return s
 }
 

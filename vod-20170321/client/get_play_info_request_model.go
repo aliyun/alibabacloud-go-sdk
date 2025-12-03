@@ -25,6 +25,8 @@ type iGetPlayInfoRequest interface {
 	GetPlayConfig() *string
 	SetReAuthInfo(v string) *GetPlayInfoRequest
 	GetReAuthInfo() *string
+	SetReferenceId(v string) *GetPlayInfoRequest
+	GetReferenceId() *string
 	SetResultType(v string) *GetPlayInfoRequest
 	GetResultType() *string
 	SetStreamType(v string) *GetPlayInfoRequest
@@ -156,6 +158,10 @@ type GetPlayInfoRequest struct {
 	//
 	// {"uid":"12345","rand":"abckljd"}
 	ReAuthInfo *string `json:"ReAuthInfo,omitempty" xml:"ReAuthInfo,omitempty"`
+	// example:
+	//
+	// 123-123
+	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
 	// The type of the data to return. Default value: Single. Valid values:
 	//
 	// 	- **Single**: Only one latest transcoded stream is returned for each quality and format.
@@ -195,8 +201,6 @@ type GetPlayInfoRequest struct {
 	// 	- Obtain the value of the VideoId parameter in the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you called to upload the audio or video file.
 	//
 	// 	- Obtain the value of VideoId by calling the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation. This method is applicable to files that have been uploaded.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -242,6 +246,10 @@ func (s *GetPlayInfoRequest) GetPlayConfig() *string {
 
 func (s *GetPlayInfoRequest) GetReAuthInfo() *string {
 	return s.ReAuthInfo
+}
+
+func (s *GetPlayInfoRequest) GetReferenceId() *string {
+	return s.ReferenceId
 }
 
 func (s *GetPlayInfoRequest) GetResultType() *string {
@@ -297,6 +305,11 @@ func (s *GetPlayInfoRequest) SetPlayConfig(v string) *GetPlayInfoRequest {
 
 func (s *GetPlayInfoRequest) SetReAuthInfo(v string) *GetPlayInfoRequest {
 	s.ReAuthInfo = &v
+	return s
+}
+
+func (s *GetPlayInfoRequest) SetReferenceId(v string) *GetPlayInfoRequest {
+	s.ReferenceId = &v
 	return s
 }
 

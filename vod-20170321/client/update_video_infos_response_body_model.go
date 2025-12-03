@@ -11,6 +11,8 @@ type iUpdateVideoInfosResponseBody interface {
 	GoString() string
 	SetForbiddenVideoIds(v []*string) *UpdateVideoInfosResponseBody
 	GetForbiddenVideoIds() []*string
+	SetNonExistReferenceIds(v []*string) *UpdateVideoInfosResponseBody
+	GetNonExistReferenceIds() []*string
 	SetNonExistVideoIds(v []*string) *UpdateVideoInfosResponseBody
 	GetNonExistVideoIds() []*string
 	SetRequestId(v string) *UpdateVideoInfosResponseBody
@@ -19,7 +21,8 @@ type iUpdateVideoInfosResponseBody interface {
 
 type UpdateVideoInfosResponseBody struct {
 	// The IDs of the videos that cannot be modified. Generally, videos cannot be modified if you do not have required [permissions](https://help.aliyun.com/document_detail/113600.html).
-	ForbiddenVideoIds []*string `json:"ForbiddenVideoIds,omitempty" xml:"ForbiddenVideoIds,omitempty" type:"Repeated"`
+	ForbiddenVideoIds    []*string `json:"ForbiddenVideoIds,omitempty" xml:"ForbiddenVideoIds,omitempty" type:"Repeated"`
+	NonExistReferenceIds []*string `json:"NonExistReferenceIds,omitempty" xml:"NonExistReferenceIds,omitempty" type:"Repeated"`
 	// The IDs of the videos that do not exist.
 	NonExistVideoIds []*string `json:"NonExistVideoIds,omitempty" xml:"NonExistVideoIds,omitempty" type:"Repeated"`
 	// The ID of the request.
@@ -42,6 +45,10 @@ func (s *UpdateVideoInfosResponseBody) GetForbiddenVideoIds() []*string {
 	return s.ForbiddenVideoIds
 }
 
+func (s *UpdateVideoInfosResponseBody) GetNonExistReferenceIds() []*string {
+	return s.NonExistReferenceIds
+}
+
 func (s *UpdateVideoInfosResponseBody) GetNonExistVideoIds() []*string {
 	return s.NonExistVideoIds
 }
@@ -52,6 +59,11 @@ func (s *UpdateVideoInfosResponseBody) GetRequestId() *string {
 
 func (s *UpdateVideoInfosResponseBody) SetForbiddenVideoIds(v []*string) *UpdateVideoInfosResponseBody {
 	s.ForbiddenVideoIds = v
+	return s
+}
+
+func (s *UpdateVideoInfosResponseBody) SetNonExistReferenceIds(v []*string) *UpdateVideoInfosResponseBody {
+	s.NonExistReferenceIds = v
 	return s
 }
 

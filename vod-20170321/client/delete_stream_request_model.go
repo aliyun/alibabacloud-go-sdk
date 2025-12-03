@@ -11,6 +11,8 @@ type iDeleteStreamRequest interface {
 	GoString() string
 	SetJobIds(v string) *DeleteStreamRequest
 	GetJobIds() *string
+	SetReferenceId(v string) *DeleteStreamRequest
+	GetReferenceId() *string
 	SetVideoId(v string) *DeleteStreamRequest
 	GetVideoId() *string
 }
@@ -28,9 +30,11 @@ type DeleteStreamRequest struct {
 	//
 	// 35eb4dbda18c49cc0025df374b46****
 	JobIds *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
-	// The ID of the video.
+	// example:
 	//
-	// This parameter is required.
+	// 123-123
+	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
+	// The ID of the video.
 	//
 	// example:
 	//
@@ -50,12 +54,21 @@ func (s *DeleteStreamRequest) GetJobIds() *string {
 	return s.JobIds
 }
 
+func (s *DeleteStreamRequest) GetReferenceId() *string {
+	return s.ReferenceId
+}
+
 func (s *DeleteStreamRequest) GetVideoId() *string {
 	return s.VideoId
 }
 
 func (s *DeleteStreamRequest) SetJobIds(v string) *DeleteStreamRequest {
 	s.JobIds = &v
+	return s
+}
+
+func (s *DeleteStreamRequest) SetReferenceId(v string) *DeleteStreamRequest {
+	s.ReferenceId = &v
 	return s
 }
 
