@@ -3330,25 +3330,43 @@ func (client *Client) CreateLogicDatabaseWithContext(ctx context.Context, tmpReq
 //
 // # Create Asset Category
 //
-// @param request - CreateMetaCategoryRequest
+// @param tmpReq - CreateMetaCategoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateMetaCategoryResponse
-func (client *Client) CreateMetaCategoryWithContext(ctx context.Context, request *CreateMetaCategoryRequest, runtime *dara.RuntimeOptions) (_result *CreateMetaCategoryResponse, _err error) {
+func (client *Client) CreateMetaCategoryWithContext(ctx context.Context, tmpReq *CreateMetaCategoryRequest, runtime *dara.RuntimeOptions) (_result *CreateMetaCategoryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &CreateMetaCategoryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.OwnerIds) {
+		request.OwnerIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OwnerIds, dara.String("OwnerIds"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
 	}
 
+	if !dara.IsNil(request.OwnerIdsShrink) {
+		query["OwnerIds"] = request.OwnerIdsShrink
+	}
+
 	if !dara.IsNil(request.ParentCategoryId) {
 		query["ParentCategoryId"] = request.ParentCategoryId
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
 	}
 
 	if !dara.IsNil(request.Tid) {
@@ -17952,25 +17970,43 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, request *Up
 //
 // Updates asset category information.
 //
-// @param request - UpdateMetaCategoryRequest
+// @param tmpReq - UpdateMetaCategoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMetaCategoryResponse
-func (client *Client) UpdateMetaCategoryWithContext(ctx context.Context, request *UpdateMetaCategoryRequest, runtime *dara.RuntimeOptions) (_result *UpdateMetaCategoryResponse, _err error) {
+func (client *Client) UpdateMetaCategoryWithContext(ctx context.Context, tmpReq *UpdateMetaCategoryRequest, runtime *dara.RuntimeOptions) (_result *UpdateMetaCategoryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &UpdateMetaCategoryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.OwnerIds) {
+		request.OwnerIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OwnerIds, dara.String("OwnerIds"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryId) {
 		query["CategoryId"] = request.CategoryId
 	}
 
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OwnerIdsShrink) {
+		query["OwnerIds"] = request.OwnerIdsShrink
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
 	}
 
 	if !dara.IsNil(request.Tid) {

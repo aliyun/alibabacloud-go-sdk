@@ -11,8 +11,14 @@ type iUpdateMetaCategoryRequest interface {
 	GoString() string
 	SetCategoryId(v int64) *UpdateMetaCategoryRequest
 	GetCategoryId() *int64
+	SetDescription(v string) *UpdateMetaCategoryRequest
+	GetDescription() *string
 	SetName(v string) *UpdateMetaCategoryRequest
 	GetName() *string
+	SetOwnerIds(v []*int64) *UpdateMetaCategoryRequest
+	GetOwnerIds() []*int64
+	SetRemark(v string) *UpdateMetaCategoryRequest
+	GetRemark() *string
 	SetTid(v int64) *UpdateMetaCategoryRequest
 	GetTid() *int64
 }
@@ -25,9 +31,12 @@ type UpdateMetaCategoryRequest struct {
 	// example:
 	//
 	// 30000181325
-	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryId  *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The updated name of the category.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name     *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerIds []*int64 `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+	Remark   *string  `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
 	//
 	// example:
@@ -48,8 +57,20 @@ func (s *UpdateMetaCategoryRequest) GetCategoryId() *int64 {
 	return s.CategoryId
 }
 
+func (s *UpdateMetaCategoryRequest) GetDescription() *string {
+	return s.Description
+}
+
 func (s *UpdateMetaCategoryRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *UpdateMetaCategoryRequest) GetOwnerIds() []*int64 {
+	return s.OwnerIds
+}
+
+func (s *UpdateMetaCategoryRequest) GetRemark() *string {
+	return s.Remark
 }
 
 func (s *UpdateMetaCategoryRequest) GetTid() *int64 {
@@ -61,8 +82,23 @@ func (s *UpdateMetaCategoryRequest) SetCategoryId(v int64) *UpdateMetaCategoryRe
 	return s
 }
 
+func (s *UpdateMetaCategoryRequest) SetDescription(v string) *UpdateMetaCategoryRequest {
+	s.Description = &v
+	return s
+}
+
 func (s *UpdateMetaCategoryRequest) SetName(v string) *UpdateMetaCategoryRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateMetaCategoryRequest) SetOwnerIds(v []*int64) *UpdateMetaCategoryRequest {
+	s.OwnerIds = v
+	return s
+}
+
+func (s *UpdateMetaCategoryRequest) SetRemark(v string) *UpdateMetaCategoryRequest {
+	s.Remark = &v
 	return s
 }
 
