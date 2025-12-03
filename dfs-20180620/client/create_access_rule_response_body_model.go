@@ -1,0 +1,57 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iCreateAccessRuleResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetAccessRuleId(v string) *CreateAccessRuleResponseBody
+	GetAccessRuleId() *string
+	SetRequestId(v string) *CreateAccessRuleResponseBody
+	GetRequestId() *string
+}
+
+type CreateAccessRuleResponseBody struct {
+	// example:
+	//
+	// acr-c38028f0-f313-4385-9456-3501b1f5****
+	AccessRuleId *string `json:"AccessRuleId,omitempty" xml:"AccessRuleId,omitempty"`
+	// example:
+	//
+	// 55C5FFD6-BF99-41BD-9C66-FFF39189****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAccessRuleResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateAccessRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessRuleResponseBody) GetAccessRuleId() *string {
+	return s.AccessRuleId
+}
+
+func (s *CreateAccessRuleResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *CreateAccessRuleResponseBody) SetAccessRuleId(v string) *CreateAccessRuleResponseBody {
+	s.AccessRuleId = &v
+	return s
+}
+
+func (s *CreateAccessRuleResponseBody) SetRequestId(v string) *CreateAccessRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAccessRuleResponseBody) Validate() error {
+	return dara.Validate(s)
+}

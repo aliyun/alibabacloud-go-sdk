@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("dfs"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -69,7 +20,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachVscMountPointResponse
-func (client *Client) AttachVscMountPointWithOptions(tmpReq *AttachVscMountPointRequest, runtime *dara.RuntimeOptions) (_result *AttachVscMountPointResponse, _err error) {
+func (client *Client) AttachVscMountPointWithContext(ctx context.Context, tmpReq *AttachVscMountPointRequest, runtime *dara.RuntimeOptions) (_result *AttachVscMountPointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -138,33 +89,11 @@ func (client *Client) AttachVscMountPointWithOptions(tmpReq *AttachVscMountPoint
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachVscMountPointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 挂载VSC挂载点
-//
-// Description:
-//
-// ***
-//
-// @param request - AttachVscMountPointRequest
-//
-// @return AttachVscMountPointResponse
-func (client *Client) AttachVscMountPoint(request *AttachVscMountPointRequest) (_result *AttachVscMountPointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachVscMountPointResponse{}
-	_body, _err := client.AttachVscMountPointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -177,7 +106,7 @@ func (client *Client) AttachVscMountPoint(request *AttachVscMountPointRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachVscToMountPointsResponse
-func (client *Client) AttachVscToMountPointsWithOptions(tmpReq *AttachVscToMountPointsRequest, runtime *dara.RuntimeOptions) (_result *AttachVscToMountPointsResponse, _err error) {
+func (client *Client) AttachVscToMountPointsWithContext(ctx context.Context, tmpReq *AttachVscToMountPointsRequest, runtime *dara.RuntimeOptions) (_result *AttachVscToMountPointsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -218,29 +147,11 @@ func (client *Client) AttachVscToMountPointsWithOptions(tmpReq *AttachVscToMount
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachVscToMountPointsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 批量挂载VSC挂载点
-//
-// @param request - AttachVscToMountPointsRequest
-//
-// @return AttachVscToMountPointsResponse
-func (client *Client) AttachVscToMountPoints(request *AttachVscToMountPointsRequest) (_result *AttachVscToMountPointsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachVscToMountPointsResponse{}
-	_body, _err := client.AttachVscToMountPointsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -249,7 +160,7 @@ func (client *Client) AttachVscToMountPoints(request *AttachVscToMountPointsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindVscMountPointAliasResponse
-func (client *Client) BindVscMountPointAliasWithOptions(request *BindVscMountPointAliasRequest, runtime *dara.RuntimeOptions) (_result *BindVscMountPointAliasResponse, _err error) {
+func (client *Client) BindVscMountPointAliasWithContext(ctx context.Context, request *BindVscMountPointAliasRequest, runtime *dara.RuntimeOptions) (_result *BindVscMountPointAliasResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -288,25 +199,11 @@ func (client *Client) BindVscMountPointAliasWithOptions(request *BindVscMountPoi
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindVscMountPointAliasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - BindVscMountPointAliasRequest
-//
-// @return BindVscMountPointAliasResponse
-func (client *Client) BindVscMountPointAlias(request *BindVscMountPointAliasRequest) (_result *BindVscMountPointAliasResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindVscMountPointAliasResponse{}
-	_body, _err := client.BindVscMountPointAliasWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -315,7 +212,7 @@ func (client *Client) BindVscMountPointAlias(request *BindVscMountPointAliasRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAccessGroupResponse
-func (client *Client) CreateAccessGroupWithOptions(request *CreateAccessGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAccessGroupResponse, _err error) {
+func (client *Client) CreateAccessGroupWithContext(ctx context.Context, request *CreateAccessGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAccessGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -354,25 +251,11 @@ func (client *Client) CreateAccessGroupWithOptions(request *CreateAccessGroupReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAccessGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateAccessGroupRequest
-//
-// @return CreateAccessGroupResponse
-func (client *Client) CreateAccessGroup(request *CreateAccessGroupRequest) (_result *CreateAccessGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAccessGroupResponse{}
-	_body, _err := client.CreateAccessGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -381,7 +264,7 @@ func (client *Client) CreateAccessGroup(request *CreateAccessGroupRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAccessRuleResponse
-func (client *Client) CreateAccessRuleWithOptions(request *CreateAccessRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateAccessRuleResponse, _err error) {
+func (client *Client) CreateAccessRuleWithContext(ctx context.Context, request *CreateAccessRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateAccessRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -428,25 +311,11 @@ func (client *Client) CreateAccessRuleWithOptions(request *CreateAccessRuleReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAccessRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateAccessRuleRequest
-//
-// @return CreateAccessRuleResponse
-func (client *Client) CreateAccessRule(request *CreateAccessRuleRequest) (_result *CreateAccessRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAccessRuleResponse{}
-	_body, _err := client.CreateAccessRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -455,7 +324,7 @@ func (client *Client) CreateAccessRule(request *CreateAccessRuleRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateFileSystemResponse
-func (client *Client) CreateFileSystemWithOptions(request *CreateFileSystemRequest, runtime *dara.RuntimeOptions) (_result *CreateFileSystemResponse, _err error) {
+func (client *Client) CreateFileSystemWithContext(ctx context.Context, request *CreateFileSystemRequest, runtime *dara.RuntimeOptions) (_result *CreateFileSystemResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -530,25 +399,11 @@ func (client *Client) CreateFileSystemWithOptions(request *CreateFileSystemReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateFileSystemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateFileSystemRequest
-//
-// @return CreateFileSystemResponse
-func (client *Client) CreateFileSystem(request *CreateFileSystemRequest) (_result *CreateFileSystemResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateFileSystemResponse{}
-	_body, _err := client.CreateFileSystemWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -557,7 +412,7 @@ func (client *Client) CreateFileSystem(request *CreateFileSystemRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateMountPointResponse
-func (client *Client) CreateMountPointWithOptions(request *CreateMountPointRequest, runtime *dara.RuntimeOptions) (_result *CreateMountPointResponse, _err error) {
+func (client *Client) CreateMountPointWithContext(ctx context.Context, request *CreateMountPointRequest, runtime *dara.RuntimeOptions) (_result *CreateMountPointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -612,25 +467,11 @@ func (client *Client) CreateMountPointWithOptions(request *CreateMountPointReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateMountPointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateMountPointRequest
-//
-// @return CreateMountPointResponse
-func (client *Client) CreateMountPoint(request *CreateMountPointRequest) (_result *CreateMountPointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateMountPointResponse{}
-	_body, _err := client.CreateMountPointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -643,7 +484,7 @@ func (client *Client) CreateMountPoint(request *CreateMountPointRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateQosPolicyResponse
-func (client *Client) CreateQosPolicyWithOptions(tmpReq *CreateQosPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateQosPolicyResponse, _err error) {
+func (client *Client) CreateQosPolicyWithContext(ctx context.Context, tmpReq *CreateQosPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateQosPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -720,29 +561,11 @@ func (client *Client) CreateQosPolicyWithOptions(tmpReq *CreateQosPolicyRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateQosPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # CreateQosPolicy
-//
-// @param request - CreateQosPolicyRequest
-//
-// @return CreateQosPolicyResponse
-func (client *Client) CreateQosPolicy(request *CreateQosPolicyRequest) (_result *CreateQosPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateQosPolicyResponse{}
-	_body, _err := client.CreateQosPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -755,7 +578,7 @@ func (client *Client) CreateQosPolicy(request *CreateQosPolicyRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateUserGroupsMappingResponse
-func (client *Client) CreateUserGroupsMappingWithOptions(tmpReq *CreateUserGroupsMappingRequest, runtime *dara.RuntimeOptions) (_result *CreateUserGroupsMappingResponse, _err error) {
+func (client *Client) CreateUserGroupsMappingWithContext(ctx context.Context, tmpReq *CreateUserGroupsMappingRequest, runtime *dara.RuntimeOptions) (_result *CreateUserGroupsMappingResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -784,29 +607,11 @@ func (client *Client) CreateUserGroupsMappingWithOptions(tmpReq *CreateUserGroup
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateUserGroupsMappingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建 ugo
-//
-// @param request - CreateUserGroupsMappingRequest
-//
-// @return CreateUserGroupsMappingResponse
-func (client *Client) CreateUserGroupsMapping(request *CreateUserGroupsMappingRequest) (_result *CreateUserGroupsMappingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateUserGroupsMappingResponse{}
-	_body, _err := client.CreateUserGroupsMappingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -815,7 +620,7 @@ func (client *Client) CreateUserGroupsMapping(request *CreateUserGroupsMappingRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVscMountPointResponse
-func (client *Client) CreateVscMountPointWithOptions(tmpReq *CreateVscMountPointRequest, runtime *dara.RuntimeOptions) (_result *CreateVscMountPointResponse, _err error) {
+func (client *Client) CreateVscMountPointWithContext(ctx context.Context, tmpReq *CreateVscMountPointRequest, runtime *dara.RuntimeOptions) (_result *CreateVscMountPointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -860,25 +665,11 @@ func (client *Client) CreateVscMountPointWithOptions(tmpReq *CreateVscMountPoint
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVscMountPointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateVscMountPointRequest
-//
-// @return CreateVscMountPointResponse
-func (client *Client) CreateVscMountPoint(request *CreateVscMountPointRequest) (_result *CreateVscMountPointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVscMountPointResponse{}
-	_body, _err := client.CreateVscMountPointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -887,7 +678,7 @@ func (client *Client) CreateVscMountPoint(request *CreateVscMountPointRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAccessGroupResponse
-func (client *Client) DeleteAccessGroupWithOptions(request *DeleteAccessGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAccessGroupResponse, _err error) {
+func (client *Client) DeleteAccessGroupWithContext(ctx context.Context, request *DeleteAccessGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAccessGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -918,25 +709,11 @@ func (client *Client) DeleteAccessGroupWithOptions(request *DeleteAccessGroupReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAccessGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteAccessGroupRequest
-//
-// @return DeleteAccessGroupResponse
-func (client *Client) DeleteAccessGroup(request *DeleteAccessGroupRequest) (_result *DeleteAccessGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAccessGroupResponse{}
-	_body, _err := client.DeleteAccessGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -945,7 +722,7 @@ func (client *Client) DeleteAccessGroup(request *DeleteAccessGroupRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAccessRuleResponse
-func (client *Client) DeleteAccessRuleWithOptions(request *DeleteAccessRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteAccessRuleResponse, _err error) {
+func (client *Client) DeleteAccessRuleWithContext(ctx context.Context, request *DeleteAccessRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteAccessRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -980,25 +757,11 @@ func (client *Client) DeleteAccessRuleWithOptions(request *DeleteAccessRuleReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAccessRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteAccessRuleRequest
-//
-// @return DeleteAccessRuleResponse
-func (client *Client) DeleteAccessRule(request *DeleteAccessRuleRequest) (_result *DeleteAccessRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAccessRuleResponse{}
-	_body, _err := client.DeleteAccessRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1007,7 +770,7 @@ func (client *Client) DeleteAccessRule(request *DeleteAccessRuleRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFileSystemResponse
-func (client *Client) DeleteFileSystemWithOptions(request *DeleteFileSystemRequest, runtime *dara.RuntimeOptions) (_result *DeleteFileSystemResponse, _err error) {
+func (client *Client) DeleteFileSystemWithContext(ctx context.Context, request *DeleteFileSystemRequest, runtime *dara.RuntimeOptions) (_result *DeleteFileSystemResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1038,25 +801,11 @@ func (client *Client) DeleteFileSystemWithOptions(request *DeleteFileSystemReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteFileSystemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteFileSystemRequest
-//
-// @return DeleteFileSystemResponse
-func (client *Client) DeleteFileSystem(request *DeleteFileSystemRequest) (_result *DeleteFileSystemResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteFileSystemResponse{}
-	_body, _err := client.DeleteFileSystemWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1065,7 +814,7 @@ func (client *Client) DeleteFileSystem(request *DeleteFileSystemRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteMountPointResponse
-func (client *Client) DeleteMountPointWithOptions(request *DeleteMountPointRequest, runtime *dara.RuntimeOptions) (_result *DeleteMountPointResponse, _err error) {
+func (client *Client) DeleteMountPointWithContext(ctx context.Context, request *DeleteMountPointRequest, runtime *dara.RuntimeOptions) (_result *DeleteMountPointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1100,25 +849,11 @@ func (client *Client) DeleteMountPointWithOptions(request *DeleteMountPointReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteMountPointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteMountPointRequest
-//
-// @return DeleteMountPointResponse
-func (client *Client) DeleteMountPoint(request *DeleteMountPointRequest) (_result *DeleteMountPointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteMountPointResponse{}
-	_body, _err := client.DeleteMountPointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1131,7 +866,7 @@ func (client *Client) DeleteMountPoint(request *DeleteMountPointRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteQosPolicyResponse
-func (client *Client) DeleteQosPolicyWithOptions(request *DeleteQosPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteQosPolicyResponse, _err error) {
+func (client *Client) DeleteQosPolicyWithContext(ctx context.Context, request *DeleteQosPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteQosPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1170,29 +905,11 @@ func (client *Client) DeleteQosPolicyWithOptions(request *DeleteQosPolicyRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteQosPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # DeleteQosPolicy
-//
-// @param request - DeleteQosPolicyRequest
-//
-// @return DeleteQosPolicyResponse
-func (client *Client) DeleteQosPolicy(request *DeleteQosPolicyRequest) (_result *DeleteQosPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteQosPolicyResponse{}
-	_body, _err := client.DeleteQosPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1205,7 +922,7 @@ func (client *Client) DeleteQosPolicy(request *DeleteQosPolicyRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteUserGroupsMappingResponse
-func (client *Client) DeleteUserGroupsMappingWithOptions(tmpReq *DeleteUserGroupsMappingRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserGroupsMappingResponse, _err error) {
+func (client *Client) DeleteUserGroupsMappingWithContext(ctx context.Context, tmpReq *DeleteUserGroupsMappingRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserGroupsMappingResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1234,29 +951,11 @@ func (client *Client) DeleteUserGroupsMappingWithOptions(tmpReq *DeleteUserGroup
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteUserGroupsMappingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除 ugo
-//
-// @param request - DeleteUserGroupsMappingRequest
-//
-// @return DeleteUserGroupsMappingResponse
-func (client *Client) DeleteUserGroupsMapping(request *DeleteUserGroupsMappingRequest) (_result *DeleteUserGroupsMappingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteUserGroupsMappingResponse{}
-	_body, _err := client.DeleteUserGroupsMappingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1265,7 +964,7 @@ func (client *Client) DeleteUserGroupsMapping(request *DeleteUserGroupsMappingRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVscMountPointResponse
-func (client *Client) DeleteVscMountPointWithOptions(request *DeleteVscMountPointRequest, runtime *dara.RuntimeOptions) (_result *DeleteVscMountPointResponse, _err error) {
+func (client *Client) DeleteVscMountPointWithContext(ctx context.Context, request *DeleteVscMountPointRequest, runtime *dara.RuntimeOptions) (_result *DeleteVscMountPointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1300,25 +999,11 @@ func (client *Client) DeleteVscMountPointWithOptions(request *DeleteVscMountPoin
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVscMountPointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteVscMountPointRequest
-//
-// @return DeleteVscMountPointResponse
-func (client *Client) DeleteVscMountPoint(request *DeleteVscMountPointRequest) (_result *DeleteVscMountPointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVscMountPointResponse{}
-	_body, _err := client.DeleteVscMountPointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1331,7 +1016,7 @@ func (client *Client) DeleteVscMountPoint(request *DeleteVscMountPointRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeMountPointsVscAttachInfoResponse
-func (client *Client) DescribeMountPointsVscAttachInfoWithOptions(tmpReq *DescribeMountPointsVscAttachInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeMountPointsVscAttachInfoResponse, _err error) {
+func (client *Client) DescribeMountPointsVscAttachInfoWithContext(ctx context.Context, tmpReq *DescribeMountPointsVscAttachInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeMountPointsVscAttachInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1380,29 +1065,11 @@ func (client *Client) DescribeMountPointsVscAttachInfoWithOptions(tmpReq *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeMountPointsVscAttachInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 批量挂载VSC挂载点
-//
-// @param request - DescribeMountPointsVscAttachInfoRequest
-//
-// @return DescribeMountPointsVscAttachInfoResponse
-func (client *Client) DescribeMountPointsVscAttachInfo(request *DescribeMountPointsVscAttachInfoRequest) (_result *DescribeMountPointsVscAttachInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeMountPointsVscAttachInfoResponse{}
-	_body, _err := client.DescribeMountPointsVscAttachInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1411,7 +1078,7 @@ func (client *Client) DescribeMountPointsVscAttachInfo(request *DescribeMountPoi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRegionsResponse
-func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1442,25 +1109,11 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DescribeRegionsRequest
-//
-// @return DescribeRegionsResponse
-func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1473,7 +1126,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVscMountPointsResponse
-func (client *Client) DescribeVscMountPointsWithOptions(request *DescribeVscMountPointsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVscMountPointsResponse, _err error) {
+func (client *Client) DescribeVscMountPointsWithContext(ctx context.Context, request *DescribeVscMountPointsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVscMountPointsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1520,29 +1173,11 @@ func (client *Client) DescribeVscMountPointsWithOptions(request *DescribeVscMoun
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVscMountPointsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询VSC挂载信息
-//
-// @param request - DescribeVscMountPointsRequest
-//
-// @return DescribeVscMountPointsResponse
-func (client *Client) DescribeVscMountPoints(request *DescribeVscMountPointsRequest) (_result *DescribeVscMountPointsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVscMountPointsResponse{}
-	_body, _err := client.DescribeVscMountPointsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1551,7 +1186,7 @@ func (client *Client) DescribeVscMountPoints(request *DescribeVscMountPointsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetachVscMountPointResponse
-func (client *Client) DetachVscMountPointWithOptions(tmpReq *DetachVscMountPointRequest, runtime *dara.RuntimeOptions) (_result *DetachVscMountPointResponse, _err error) {
+func (client *Client) DetachVscMountPointWithContext(ctx context.Context, tmpReq *DetachVscMountPointRequest, runtime *dara.RuntimeOptions) (_result *DetachVscMountPointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1612,25 +1247,11 @@ func (client *Client) DetachVscMountPointWithOptions(tmpReq *DetachVscMountPoint
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetachVscMountPointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DetachVscMountPointRequest
-//
-// @return DetachVscMountPointResponse
-func (client *Client) DetachVscMountPoint(request *DetachVscMountPointRequest) (_result *DetachVscMountPointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetachVscMountPointResponse{}
-	_body, _err := client.DetachVscMountPointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1639,7 +1260,7 @@ func (client *Client) DetachVscMountPoint(request *DetachVscMountPointRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAccessGroupResponse
-func (client *Client) GetAccessGroupWithOptions(request *GetAccessGroupRequest, runtime *dara.RuntimeOptions) (_result *GetAccessGroupResponse, _err error) {
+func (client *Client) GetAccessGroupWithContext(ctx context.Context, request *GetAccessGroupRequest, runtime *dara.RuntimeOptions) (_result *GetAccessGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1670,25 +1291,11 @@ func (client *Client) GetAccessGroupWithOptions(request *GetAccessGroupRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAccessGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetAccessGroupRequest
-//
-// @return GetAccessGroupResponse
-func (client *Client) GetAccessGroup(request *GetAccessGroupRequest) (_result *GetAccessGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAccessGroupResponse{}
-	_body, _err := client.GetAccessGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1697,7 +1304,7 @@ func (client *Client) GetAccessGroup(request *GetAccessGroupRequest) (_result *G
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAccessRuleResponse
-func (client *Client) GetAccessRuleWithOptions(request *GetAccessRuleRequest, runtime *dara.RuntimeOptions) (_result *GetAccessRuleResponse, _err error) {
+func (client *Client) GetAccessRuleWithContext(ctx context.Context, request *GetAccessRuleRequest, runtime *dara.RuntimeOptions) (_result *GetAccessRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1732,25 +1339,11 @@ func (client *Client) GetAccessRuleWithOptions(request *GetAccessRuleRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAccessRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetAccessRuleRequest
-//
-// @return GetAccessRuleResponse
-func (client *Client) GetAccessRule(request *GetAccessRuleRequest) (_result *GetAccessRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAccessRuleResponse{}
-	_body, _err := client.GetAccessRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1759,7 +1352,7 @@ func (client *Client) GetAccessRule(request *GetAccessRuleRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetFileSystemResponse
-func (client *Client) GetFileSystemWithOptions(request *GetFileSystemRequest, runtime *dara.RuntimeOptions) (_result *GetFileSystemResponse, _err error) {
+func (client *Client) GetFileSystemWithContext(ctx context.Context, request *GetFileSystemRequest, runtime *dara.RuntimeOptions) (_result *GetFileSystemResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1790,25 +1383,11 @@ func (client *Client) GetFileSystemWithOptions(request *GetFileSystemRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetFileSystemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetFileSystemRequest
-//
-// @return GetFileSystemResponse
-func (client *Client) GetFileSystem(request *GetFileSystemRequest) (_result *GetFileSystemResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetFileSystemResponse{}
-	_body, _err := client.GetFileSystemWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1817,7 +1396,7 @@ func (client *Client) GetFileSystem(request *GetFileSystemRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMountPointResponse
-func (client *Client) GetMountPointWithOptions(request *GetMountPointRequest, runtime *dara.RuntimeOptions) (_result *GetMountPointResponse, _err error) {
+func (client *Client) GetMountPointWithContext(ctx context.Context, request *GetMountPointRequest, runtime *dara.RuntimeOptions) (_result *GetMountPointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1852,25 +1431,11 @@ func (client *Client) GetMountPointWithOptions(request *GetMountPointRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMountPointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetMountPointRequest
-//
-// @return GetMountPointResponse
-func (client *Client) GetMountPoint(request *GetMountPointRequest) (_result *GetMountPointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetMountPointResponse{}
-	_body, _err := client.GetMountPointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1879,7 +1444,7 @@ func (client *Client) GetMountPoint(request *GetMountPointRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRegionResponse
-func (client *Client) GetRegionWithOptions(request *GetRegionRequest, runtime *dara.RuntimeOptions) (_result *GetRegionResponse, _err error) {
+func (client *Client) GetRegionWithContext(ctx context.Context, request *GetRegionRequest, runtime *dara.RuntimeOptions) (_result *GetRegionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1906,25 +1471,11 @@ func (client *Client) GetRegionWithOptions(request *GetRegionRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRegionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetRegionRequest
-//
-// @return GetRegionResponse
-func (client *Client) GetRegion(request *GetRegionRequest) (_result *GetRegionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRegionResponse{}
-	_body, _err := client.GetRegionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1933,7 +1484,7 @@ func (client *Client) GetRegion(request *GetRegionRequest) (_result *GetRegionRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAccessGroupsResponse
-func (client *Client) ListAccessGroupsWithOptions(request *ListAccessGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListAccessGroupsResponse, _err error) {
+func (client *Client) ListAccessGroupsWithContext(ctx context.Context, request *ListAccessGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListAccessGroupsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1980,25 +1531,11 @@ func (client *Client) ListAccessGroupsWithOptions(request *ListAccessGroupsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAccessGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListAccessGroupsRequest
-//
-// @return ListAccessGroupsResponse
-func (client *Client) ListAccessGroups(request *ListAccessGroupsRequest) (_result *ListAccessGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAccessGroupsResponse{}
-	_body, _err := client.ListAccessGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2007,7 +1544,7 @@ func (client *Client) ListAccessGroups(request *ListAccessGroupsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAccessRulesResponse
-func (client *Client) ListAccessRulesWithOptions(request *ListAccessRulesRequest, runtime *dara.RuntimeOptions) (_result *ListAccessRulesResponse, _err error) {
+func (client *Client) ListAccessRulesWithContext(ctx context.Context, request *ListAccessRulesRequest, runtime *dara.RuntimeOptions) (_result *ListAccessRulesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2058,25 +1595,11 @@ func (client *Client) ListAccessRulesWithOptions(request *ListAccessRulesRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAccessRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListAccessRulesRequest
-//
-// @return ListAccessRulesResponse
-func (client *Client) ListAccessRules(request *ListAccessRulesRequest) (_result *ListAccessRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAccessRulesResponse{}
-	_body, _err := client.ListAccessRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2089,7 +1612,7 @@ func (client *Client) ListAccessRules(request *ListAccessRulesRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListFederationsResponse
-func (client *Client) ListFederationsWithOptions(request *ListFederationsRequest, runtime *dara.RuntimeOptions) (_result *ListFederationsResponse, _err error) {
+func (client *Client) ListFederationsWithContext(ctx context.Context, request *ListFederationsRequest, runtime *dara.RuntimeOptions) (_result *ListFederationsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2132,29 +1655,11 @@ func (client *Client) ListFederationsWithOptions(request *ListFederationsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListFederationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询Federation
-//
-// @param request - ListFederationsRequest
-//
-// @return ListFederationsResponse
-func (client *Client) ListFederations(request *ListFederationsRequest) (_result *ListFederationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListFederationsResponse{}
-	_body, _err := client.ListFederationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2163,7 +1668,7 @@ func (client *Client) ListFederations(request *ListFederationsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListFileSystemsResponse
-func (client *Client) ListFileSystemsWithOptions(request *ListFileSystemsRequest, runtime *dara.RuntimeOptions) (_result *ListFileSystemsResponse, _err error) {
+func (client *Client) ListFileSystemsWithContext(ctx context.Context, request *ListFileSystemsRequest, runtime *dara.RuntimeOptions) (_result *ListFileSystemsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2210,25 +1715,11 @@ func (client *Client) ListFileSystemsWithOptions(request *ListFileSystemsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListFileSystemsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListFileSystemsRequest
-//
-// @return ListFileSystemsResponse
-func (client *Client) ListFileSystems(request *ListFileSystemsRequest) (_result *ListFileSystemsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListFileSystemsResponse{}
-	_body, _err := client.ListFileSystemsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2237,7 +1728,7 @@ func (client *Client) ListFileSystems(request *ListFileSystemsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMountPointsResponse
-func (client *Client) ListMountPointsWithOptions(request *ListMountPointsRequest, runtime *dara.RuntimeOptions) (_result *ListMountPointsResponse, _err error) {
+func (client *Client) ListMountPointsWithContext(ctx context.Context, request *ListMountPointsRequest, runtime *dara.RuntimeOptions) (_result *ListMountPointsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2288,25 +1779,11 @@ func (client *Client) ListMountPointsWithOptions(request *ListMountPointsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListMountPointsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListMountPointsRequest
-//
-// @return ListMountPointsResponse
-func (client *Client) ListMountPoints(request *ListMountPointsRequest) (_result *ListMountPointsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListMountPointsResponse{}
-	_body, _err := client.ListMountPointsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2319,7 +1796,7 @@ func (client *Client) ListMountPoints(request *ListMountPointsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListQosPoliciesResponse
-func (client *Client) ListQosPoliciesWithOptions(request *ListQosPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListQosPoliciesResponse, _err error) {
+func (client *Client) ListQosPoliciesWithContext(ctx context.Context, request *ListQosPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListQosPoliciesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2362,29 +1839,11 @@ func (client *Client) ListQosPoliciesWithOptions(request *ListQosPoliciesRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListQosPoliciesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询QosPolicies
-//
-// @param request - ListQosPoliciesRequest
-//
-// @return ListQosPoliciesResponse
-func (client *Client) ListQosPolicies(request *ListQosPoliciesRequest) (_result *ListQosPoliciesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListQosPoliciesResponse{}
-	_body, _err := client.ListQosPoliciesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2397,7 +1856,7 @@ func (client *Client) ListQosPolicies(request *ListQosPoliciesRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListUserGroupsMappingsResponse
-func (client *Client) ListUserGroupsMappingsWithOptions(request *ListUserGroupsMappingsRequest, runtime *dara.RuntimeOptions) (_result *ListUserGroupsMappingsResponse, _err error) {
+func (client *Client) ListUserGroupsMappingsWithContext(ctx context.Context, request *ListUserGroupsMappingsRequest, runtime *dara.RuntimeOptions) (_result *ListUserGroupsMappingsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2436,29 +1895,11 @@ func (client *Client) ListUserGroupsMappingsWithOptions(request *ListUserGroupsM
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListUserGroupsMappingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// list ugm
-//
-// @param request - ListUserGroupsMappingsRequest
-//
-// @return ListUserGroupsMappingsResponse
-func (client *Client) ListUserGroupsMappings(request *ListUserGroupsMappingsRequest) (_result *ListUserGroupsMappingsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListUserGroupsMappingsResponse{}
-	_body, _err := client.ListUserGroupsMappingsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2467,7 +1908,7 @@ func (client *Client) ListUserGroupsMappings(request *ListUserGroupsMappingsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAccessGroupResponse
-func (client *Client) ModifyAccessGroupWithOptions(request *ModifyAccessGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccessGroupResponse, _err error) {
+func (client *Client) ModifyAccessGroupWithContext(ctx context.Context, request *ModifyAccessGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccessGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2506,25 +1947,11 @@ func (client *Client) ModifyAccessGroupWithOptions(request *ModifyAccessGroupReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAccessGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ModifyAccessGroupRequest
-//
-// @return ModifyAccessGroupResponse
-func (client *Client) ModifyAccessGroup(request *ModifyAccessGroupRequest) (_result *ModifyAccessGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyAccessGroupResponse{}
-	_body, _err := client.ModifyAccessGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2533,7 +1960,7 @@ func (client *Client) ModifyAccessGroup(request *ModifyAccessGroupRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAccessRuleResponse
-func (client *Client) ModifyAccessRuleWithOptions(request *ModifyAccessRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccessRuleResponse, _err error) {
+func (client *Client) ModifyAccessRuleWithContext(ctx context.Context, request *ModifyAccessRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccessRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2580,25 +2007,11 @@ func (client *Client) ModifyAccessRuleWithOptions(request *ModifyAccessRuleReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAccessRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ModifyAccessRuleRequest
-//
-// @return ModifyAccessRuleResponse
-func (client *Client) ModifyAccessRule(request *ModifyAccessRuleRequest) (_result *ModifyAccessRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyAccessRuleResponse{}
-	_body, _err := client.ModifyAccessRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2607,7 +2020,7 @@ func (client *Client) ModifyAccessRule(request *ModifyAccessRuleRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyFileSystemResponse
-func (client *Client) ModifyFileSystemWithOptions(request *ModifyFileSystemRequest, runtime *dara.RuntimeOptions) (_result *ModifyFileSystemResponse, _err error) {
+func (client *Client) ModifyFileSystemWithContext(ctx context.Context, request *ModifyFileSystemRequest, runtime *dara.RuntimeOptions) (_result *ModifyFileSystemResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2658,25 +2071,11 @@ func (client *Client) ModifyFileSystemWithOptions(request *ModifyFileSystemReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyFileSystemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ModifyFileSystemRequest
-//
-// @return ModifyFileSystemResponse
-func (client *Client) ModifyFileSystem(request *ModifyFileSystemRequest) (_result *ModifyFileSystemResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyFileSystemResponse{}
-	_body, _err := client.ModifyFileSystemWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2685,7 +2084,7 @@ func (client *Client) ModifyFileSystem(request *ModifyFileSystemRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyMountPointResponse
-func (client *Client) ModifyMountPointWithOptions(request *ModifyMountPointRequest, runtime *dara.RuntimeOptions) (_result *ModifyMountPointResponse, _err error) {
+func (client *Client) ModifyMountPointWithContext(ctx context.Context, request *ModifyMountPointRequest, runtime *dara.RuntimeOptions) (_result *ModifyMountPointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2732,25 +2131,11 @@ func (client *Client) ModifyMountPointWithOptions(request *ModifyMountPointReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyMountPointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ModifyMountPointRequest
-//
-// @return ModifyMountPointResponse
-func (client *Client) ModifyMountPoint(request *ModifyMountPointRequest) (_result *ModifyMountPointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyMountPointResponse{}
-	_body, _err := client.ModifyMountPointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2763,7 +2148,7 @@ func (client *Client) ModifyMountPoint(request *ModifyMountPointRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyQosPolicyResponse
-func (client *Client) ModifyQosPolicyWithOptions(request *ModifyQosPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyQosPolicyResponse, _err error) {
+func (client *Client) ModifyQosPolicyWithContext(ctx context.Context, request *ModifyQosPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyQosPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2818,28 +2203,10 @@ func (client *Client) ModifyQosPolicyWithOptions(request *ModifyQosPolicyRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyQosPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # ModifyQosPolicy
-//
-// @param request - ModifyQosPolicyRequest
-//
-// @return ModifyQosPolicyResponse
-func (client *Client) ModifyQosPolicy(request *ModifyQosPolicyRequest) (_result *ModifyQosPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyQosPolicyResponse{}
-	_body, _err := client.ModifyQosPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
