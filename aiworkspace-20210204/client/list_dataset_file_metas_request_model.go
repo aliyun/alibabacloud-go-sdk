@@ -53,6 +53,8 @@ type iListDatasetFileMetasRequest interface {
 	GetStartFileUpdateTime() *string
 	SetStartTagUpdateTime(v string) *ListDatasetFileMetasRequest
 	GetStartTagUpdateTime() *string
+	SetStatus(v string) *ListDatasetFileMetasRequest
+	GetStatus() *string
 	SetThumbnailMode(v string) *ListDatasetFileMetasRequest
 	GetThumbnailMode() *string
 	SetTopK(v int32) *ListDatasetFileMetasRequest
@@ -174,6 +176,7 @@ type ListDatasetFileMetasRequest struct {
 	//
 	// 2025-01-12T14:36:01.000Z
 	StartTagUpdateTime *string `json:"StartTagUpdateTime,omitempty" xml:"StartTagUpdateTime,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// example:
 	//
 	// w_100
@@ -288,6 +291,10 @@ func (s *ListDatasetFileMetasRequest) GetStartFileUpdateTime() *string {
 
 func (s *ListDatasetFileMetasRequest) GetStartTagUpdateTime() *string {
 	return s.StartTagUpdateTime
+}
+
+func (s *ListDatasetFileMetasRequest) GetStatus() *string {
+	return s.Status
 }
 
 func (s *ListDatasetFileMetasRequest) GetThumbnailMode() *string {
@@ -409,6 +416,11 @@ func (s *ListDatasetFileMetasRequest) SetStartFileUpdateTime(v string) *ListData
 
 func (s *ListDatasetFileMetasRequest) SetStartTagUpdateTime(v string) *ListDatasetFileMetasRequest {
 	s.StartTagUpdateTime = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasRequest) SetStatus(v string) *ListDatasetFileMetasRequest {
+	s.Status = &v
 	return s
 }
 

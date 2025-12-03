@@ -53,6 +53,8 @@ type iListDatasetFileMetasShrinkRequest interface {
 	GetStartFileUpdateTime() *string
 	SetStartTagUpdateTime(v string) *ListDatasetFileMetasShrinkRequest
 	GetStartTagUpdateTime() *string
+	SetStatus(v string) *ListDatasetFileMetasShrinkRequest
+	GetStatus() *string
 	SetThumbnailMode(v string) *ListDatasetFileMetasShrinkRequest
 	GetThumbnailMode() *string
 	SetTopK(v int32) *ListDatasetFileMetasShrinkRequest
@@ -174,6 +176,7 @@ type ListDatasetFileMetasShrinkRequest struct {
 	//
 	// 2025-01-12T14:36:01.000Z
 	StartTagUpdateTime *string `json:"StartTagUpdateTime,omitempty" xml:"StartTagUpdateTime,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// example:
 	//
 	// w_100
@@ -288,6 +291,10 @@ func (s *ListDatasetFileMetasShrinkRequest) GetStartFileUpdateTime() *string {
 
 func (s *ListDatasetFileMetasShrinkRequest) GetStartTagUpdateTime() *string {
 	return s.StartTagUpdateTime
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) GetStatus() *string {
+	return s.Status
 }
 
 func (s *ListDatasetFileMetasShrinkRequest) GetThumbnailMode() *string {
@@ -409,6 +416,11 @@ func (s *ListDatasetFileMetasShrinkRequest) SetStartFileUpdateTime(v string) *Li
 
 func (s *ListDatasetFileMetasShrinkRequest) SetStartTagUpdateTime(v string) *ListDatasetFileMetasShrinkRequest {
 	s.StartTagUpdateTime = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetStatus(v string) *ListDatasetFileMetasShrinkRequest {
+	s.Status = &v
 	return s
 }
 

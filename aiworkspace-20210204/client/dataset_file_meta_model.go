@@ -35,6 +35,8 @@ type iDatasetFileMeta interface {
 	GetSemanticIndexJobId() *string
 	SetSemanticIndexUpdateTime(v string) *DatasetFileMeta
 	GetSemanticIndexUpdateTime() *string
+	SetStatus(v string) *DatasetFileMeta
+	GetStatus() *string
 	SetTags(v string) *DatasetFileMeta
 	GetTags() *string
 	SetThumbnailUrl(v string) *DatasetFileMeta
@@ -90,6 +92,7 @@ type DatasetFileMeta struct {
 	//
 	// 2021-01-12T14:36:01.000Z
 	SemanticIndexUpdateTime *string `json:"SemanticIndexUpdateTime,omitempty" xml:"SemanticIndexUpdateTime,omitempty"`
+	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags                    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	ThumbnailUrl            *string `json:"ThumbnailUrl,omitempty" xml:"ThumbnailUrl,omitempty"`
 	// example:
@@ -156,6 +159,10 @@ func (s *DatasetFileMeta) GetSemanticIndexJobId() *string {
 
 func (s *DatasetFileMeta) GetSemanticIndexUpdateTime() *string {
 	return s.SemanticIndexUpdateTime
+}
+
+func (s *DatasetFileMeta) GetStatus() *string {
+	return s.Status
 }
 
 func (s *DatasetFileMeta) GetTags() *string {
@@ -232,6 +239,11 @@ func (s *DatasetFileMeta) SetSemanticIndexJobId(v string) *DatasetFileMeta {
 
 func (s *DatasetFileMeta) SetSemanticIndexUpdateTime(v string) *DatasetFileMeta {
 	s.SemanticIndexUpdateTime = &v
+	return s
+}
+
+func (s *DatasetFileMeta) SetStatus(v string) *DatasetFileMeta {
+	s.Status = &v
 	return s
 }
 

@@ -35,6 +35,8 @@ type iDatasetFileMetaContentGet interface {
 	GetSemanticIndexJobId() *string
 	SetSemanticIndexUpdateTime(v string) *DatasetFileMetaContentGet
 	GetSemanticIndexUpdateTime() *string
+	SetStatus(v string) *DatasetFileMetaContentGet
+	GetStatus() *string
 	SetTagUpdateTime(v string) *DatasetFileMetaContentGet
 	GetTagUpdateTime() *string
 	SetTags(v string) *DatasetFileMetaContentGet
@@ -72,6 +74,7 @@ type DatasetFileMetaContentGet struct {
 	//
 	// 2021-01-12T14:36:01.000Z
 	SemanticIndexUpdateTime *string `json:"SemanticIndexUpdateTime,omitempty" xml:"SemanticIndexUpdateTime,omitempty"`
+	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
@@ -140,6 +143,10 @@ func (s *DatasetFileMetaContentGet) GetSemanticIndexJobId() *string {
 
 func (s *DatasetFileMetaContentGet) GetSemanticIndexUpdateTime() *string {
 	return s.SemanticIndexUpdateTime
+}
+
+func (s *DatasetFileMetaContentGet) GetStatus() *string {
+	return s.Status
 }
 
 func (s *DatasetFileMetaContentGet) GetTagUpdateTime() *string {
@@ -216,6 +223,11 @@ func (s *DatasetFileMetaContentGet) SetSemanticIndexJobId(v string) *DatasetFile
 
 func (s *DatasetFileMetaContentGet) SetSemanticIndexUpdateTime(v string) *DatasetFileMetaContentGet {
 	s.SemanticIndexUpdateTime = &v
+	return s
+}
+
+func (s *DatasetFileMetaContentGet) SetStatus(v string) *DatasetFileMetaContentGet {
+	s.Status = &v
 	return s
 }
 

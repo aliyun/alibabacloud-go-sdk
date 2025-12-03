@@ -13,6 +13,8 @@ type iDatasetShareRelationship interface {
 	GetAllowedMountAccessLevels() []*string
 	SetExpiresAt(v string) *DatasetShareRelationship
 	GetExpiresAt() *string
+	SetExtra(v string) *DatasetShareRelationship
+	GetExtra() *string
 	SetIsSecureMode(v bool) *DatasetShareRelationship
 	GetIsSecureMode() *bool
 	SetSharedAt(v string) *DatasetShareRelationship
@@ -32,6 +34,7 @@ type iDatasetShareRelationship interface {
 type DatasetShareRelationship struct {
 	AllowedMountAccessLevels []*string `json:"AllowedMountAccessLevels,omitempty" xml:"AllowedMountAccessLevels,omitempty" type:"Repeated"`
 	ExpiresAt                *string   `json:"ExpiresAt,omitempty" xml:"ExpiresAt,omitempty"`
+	Extra                    *string   `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	IsSecureMode             *bool     `json:"IsSecureMode,omitempty" xml:"IsSecureMode,omitempty"`
 	SharedAt                 *string   `json:"SharedAt,omitempty" xml:"SharedAt,omitempty"`
 	SourceTenantId           *string   `json:"SourceTenantId,omitempty" xml:"SourceTenantId,omitempty"`
@@ -55,6 +58,10 @@ func (s *DatasetShareRelationship) GetAllowedMountAccessLevels() []*string {
 
 func (s *DatasetShareRelationship) GetExpiresAt() *string {
 	return s.ExpiresAt
+}
+
+func (s *DatasetShareRelationship) GetExtra() *string {
+	return s.Extra
 }
 
 func (s *DatasetShareRelationship) GetIsSecureMode() *bool {
@@ -92,6 +99,11 @@ func (s *DatasetShareRelationship) SetAllowedMountAccessLevels(v []*string) *Dat
 
 func (s *DatasetShareRelationship) SetExpiresAt(v string) *DatasetShareRelationship {
 	s.ExpiresAt = &v
+	return s
+}
+
+func (s *DatasetShareRelationship) SetExtra(v string) *DatasetShareRelationship {
+	s.Extra = &v
 	return s
 }
 

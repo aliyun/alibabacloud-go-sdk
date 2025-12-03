@@ -3782,6 +3782,10 @@ func (client *Client) ListDatasetFileMetasWithContext(ctx context.Context, Datas
 		query["StartTagUpdateTime"] = request.StartTagUpdateTime
 	}
 
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
 	if !dara.IsNil(request.ThumbnailMode) {
 		query["ThumbnailMode"] = request.ThumbnailMode
 	}

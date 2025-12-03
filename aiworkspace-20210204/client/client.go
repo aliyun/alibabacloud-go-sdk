@@ -5141,6 +5141,10 @@ func (client *Client) ListDatasetFileMetasWithOptions(DatasetId *string, tmpReq 
 		query["StartTagUpdateTime"] = request.StartTagUpdateTime
 	}
 
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
 	if !dara.IsNil(request.ThumbnailMode) {
 		query["ThumbnailMode"] = request.ThumbnailMode
 	}
