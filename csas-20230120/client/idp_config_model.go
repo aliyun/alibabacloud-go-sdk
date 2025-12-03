@@ -31,6 +31,8 @@ type iIdpConfig interface {
 	GetLdapConfig() *IdpLdapSubConfig
 	SetLoginConfig(v *IdpLoginConfig) *IdpConfig
 	GetLoginConfig() *IdpLoginConfig
+	SetLogoDirectory(v string) *IdpConfig
+	GetLogoDirectory() *string
 	SetName(v string) *IdpConfig
 	GetName() *string
 	SetSyncConfig(v *IdpSyncConfig) *IdpConfig
@@ -57,6 +59,7 @@ type IdpConfig struct {
 	LastSyncTimeUnix *int64                        `json:"LastSyncTimeUnix,omitempty" xml:"LastSyncTimeUnix,omitempty"`
 	LdapConfig       *IdpLdapSubConfig             `json:"LdapConfig,omitempty" xml:"LdapConfig,omitempty"`
 	LoginConfig      *IdpLoginConfig               `json:"LoginConfig,omitempty" xml:"LoginConfig,omitempty"`
+	LogoDirectory    *string                       `json:"LogoDirectory,omitempty" xml:"LogoDirectory,omitempty"`
 	Name             *string                       `json:"Name,omitempty" xml:"Name,omitempty"`
 	SyncConfig       *IdpSyncConfig                `json:"SyncConfig,omitempty" xml:"SyncConfig,omitempty"`
 	SyncStatus       *string                       `json:"SyncStatus,omitempty" xml:"SyncStatus,omitempty"`
@@ -115,6 +118,10 @@ func (s *IdpConfig) GetLdapConfig() *IdpLdapSubConfig {
 
 func (s *IdpConfig) GetLoginConfig() *IdpLoginConfig {
 	return s.LoginConfig
+}
+
+func (s *IdpConfig) GetLogoDirectory() *string {
+	return s.LogoDirectory
 }
 
 func (s *IdpConfig) GetName() *string {
@@ -193,6 +200,11 @@ func (s *IdpConfig) SetLdapConfig(v *IdpLdapSubConfig) *IdpConfig {
 
 func (s *IdpConfig) SetLoginConfig(v *IdpLoginConfig) *IdpConfig {
 	s.LoginConfig = v
+	return s
+}
+
+func (s *IdpConfig) SetLogoDirectory(v string) *IdpConfig {
+	s.LogoDirectory = &v
 	return s
 }
 

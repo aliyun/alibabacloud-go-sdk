@@ -45,6 +45,12 @@ type iUpdatePrivateAccessPolicyRequest interface {
 	GetUserGroupIds() []*string
 	SetUserGroupMode(v string) *UpdatePrivateAccessPolicyRequest
 	GetUserGroupMode() *string
+	SetValidFrom(v int64) *UpdatePrivateAccessPolicyRequest
+	GetValidFrom() *int64
+	SetValidTimeStatus(v string) *UpdatePrivateAccessPolicyRequest
+	GetValidTimeStatus() *string
+	SetValidUntil(v int64) *UpdatePrivateAccessPolicyRequest
+	GetValidUntil() *int64
 }
 
 type UpdatePrivateAccessPolicyRequest struct {
@@ -175,6 +181,24 @@ type UpdatePrivateAccessPolicyRequest struct {
 	//
 	// Normal
 	UserGroupMode *string `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
+	// The start time when the zero trust policy takes effect, represented as a timestamp in seconds.
+	//
+	// example:
+	//
+	// 0
+	ValidFrom *int64 `json:"ValidFrom,omitempty" xml:"ValidFrom,omitempty"`
+	// Switch status for effective time. Values: - **Enabled**: On. - **Disabled**: Off.
+	//
+	// example:
+	//
+	// Enabled
+	ValidTimeStatus *string `json:"ValidTimeStatus,omitempty" xml:"ValidTimeStatus,omitempty"`
+	// The expiration time of the zero trust policy, in seconds timestamp.
+	//
+	// example:
+	//
+	// 1764727544
+	ValidUntil *int64 `json:"ValidUntil,omitempty" xml:"ValidUntil,omitempty"`
 }
 
 func (s UpdatePrivateAccessPolicyRequest) String() string {
@@ -255,6 +279,18 @@ func (s *UpdatePrivateAccessPolicyRequest) GetUserGroupIds() []*string {
 
 func (s *UpdatePrivateAccessPolicyRequest) GetUserGroupMode() *string {
 	return s.UserGroupMode
+}
+
+func (s *UpdatePrivateAccessPolicyRequest) GetValidFrom() *int64 {
+	return s.ValidFrom
+}
+
+func (s *UpdatePrivateAccessPolicyRequest) GetValidTimeStatus() *string {
+	return s.ValidTimeStatus
+}
+
+func (s *UpdatePrivateAccessPolicyRequest) GetValidUntil() *int64 {
+	return s.ValidUntil
 }
 
 func (s *UpdatePrivateAccessPolicyRequest) SetApplicationIds(v []*string) *UpdatePrivateAccessPolicyRequest {
@@ -344,6 +380,21 @@ func (s *UpdatePrivateAccessPolicyRequest) SetUserGroupIds(v []*string) *UpdateP
 
 func (s *UpdatePrivateAccessPolicyRequest) SetUserGroupMode(v string) *UpdatePrivateAccessPolicyRequest {
 	s.UserGroupMode = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessPolicyRequest) SetValidFrom(v int64) *UpdatePrivateAccessPolicyRequest {
+	s.ValidFrom = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessPolicyRequest) SetValidTimeStatus(v string) *UpdatePrivateAccessPolicyRequest {
+	s.ValidTimeStatus = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessPolicyRequest) SetValidUntil(v int64) *UpdatePrivateAccessPolicyRequest {
+	s.ValidUntil = &v
 	return s
 }
 

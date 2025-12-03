@@ -197,6 +197,24 @@ type ListPrivateAccessPolicesResponseBodyPolices struct {
 	//
 	// Normal
 	UserGroupMode *string `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
+	// The start time when the zero trust policy takes effect, represented as a timestamp in seconds.
+	//
+	// example:
+	//
+	// 0
+	ValidFrom *int64 `json:"ValidFrom,omitempty" xml:"ValidFrom,omitempty"`
+	// Switch status for effective time. Values: - **Enabled**: On. - **Disabled**: Off.
+	//
+	// example:
+	//
+	// Enabled
+	ValidTimeStatus *string `json:"ValidTimeStatus,omitempty" xml:"ValidTimeStatus,omitempty"`
+	// The expiration time of the zero trust policy, in seconds timestamp.
+	//
+	// example:
+	//
+	// 1764727544
+	ValidUntil *int64 `json:"ValidUntil,omitempty" xml:"ValidUntil,omitempty"`
 }
 
 func (s ListPrivateAccessPolicesResponseBodyPolices) String() string {
@@ -281,6 +299,18 @@ func (s *ListPrivateAccessPolicesResponseBodyPolices) GetUserGroupIds() []*strin
 
 func (s *ListPrivateAccessPolicesResponseBodyPolices) GetUserGroupMode() *string {
 	return s.UserGroupMode
+}
+
+func (s *ListPrivateAccessPolicesResponseBodyPolices) GetValidFrom() *int64 {
+	return s.ValidFrom
+}
+
+func (s *ListPrivateAccessPolicesResponseBodyPolices) GetValidTimeStatus() *string {
+	return s.ValidTimeStatus
+}
+
+func (s *ListPrivateAccessPolicesResponseBodyPolices) GetValidUntil() *int64 {
+	return s.ValidUntil
 }
 
 func (s *ListPrivateAccessPolicesResponseBodyPolices) SetApplicationIds(v []*string) *ListPrivateAccessPolicesResponseBodyPolices {
@@ -375,6 +405,21 @@ func (s *ListPrivateAccessPolicesResponseBodyPolices) SetUserGroupIds(v []*strin
 
 func (s *ListPrivateAccessPolicesResponseBodyPolices) SetUserGroupMode(v string) *ListPrivateAccessPolicesResponseBodyPolices {
 	s.UserGroupMode = &v
+	return s
+}
+
+func (s *ListPrivateAccessPolicesResponseBodyPolices) SetValidFrom(v int64) *ListPrivateAccessPolicesResponseBodyPolices {
+	s.ValidFrom = &v
+	return s
+}
+
+func (s *ListPrivateAccessPolicesResponseBodyPolices) SetValidTimeStatus(v string) *ListPrivateAccessPolicesResponseBodyPolices {
+	s.ValidTimeStatus = &v
+	return s
+}
+
+func (s *ListPrivateAccessPolicesResponseBodyPolices) SetValidUntil(v int64) *ListPrivateAccessPolicesResponseBodyPolices {
+	s.ValidUntil = &v
 	return s
 }
 

@@ -176,6 +176,24 @@ type GetPrivateAccessPolicyResponseBodyPolicy struct {
 	//
 	// Normal
 	UserGroupMode *string `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
+	// The start time when the zero trust policy takes effect, represented as a timestamp in seconds.
+	//
+	// example:
+	//
+	// 0
+	ValidFrom *int64 `json:"ValidFrom,omitempty" xml:"ValidFrom,omitempty"`
+	// Switch status for effective time. Values: - **Enabled**: On. - **Disabled**: Off.
+	//
+	// example:
+	//
+	// Enabled
+	ValidTimeStatus *string `json:"ValidTimeStatus,omitempty" xml:"ValidTimeStatus,omitempty"`
+	// The expiration time of the zero trust policy, in seconds timestamp.
+	//
+	// example:
+	//
+	// 1764727544
+	ValidUntil *int64 `json:"ValidUntil,omitempty" xml:"ValidUntil,omitempty"`
 }
 
 func (s GetPrivateAccessPolicyResponseBodyPolicy) String() string {
@@ -260,6 +278,18 @@ func (s *GetPrivateAccessPolicyResponseBodyPolicy) GetUserGroupIds() []*string {
 
 func (s *GetPrivateAccessPolicyResponseBodyPolicy) GetUserGroupMode() *string {
 	return s.UserGroupMode
+}
+
+func (s *GetPrivateAccessPolicyResponseBodyPolicy) GetValidFrom() *int64 {
+	return s.ValidFrom
+}
+
+func (s *GetPrivateAccessPolicyResponseBodyPolicy) GetValidTimeStatus() *string {
+	return s.ValidTimeStatus
+}
+
+func (s *GetPrivateAccessPolicyResponseBodyPolicy) GetValidUntil() *int64 {
+	return s.ValidUntil
 }
 
 func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetApplicationIds(v []*string) *GetPrivateAccessPolicyResponseBodyPolicy {
@@ -354,6 +384,21 @@ func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetUserGroupIds(v []*string) 
 
 func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetUserGroupMode(v string) *GetPrivateAccessPolicyResponseBodyPolicy {
 	s.UserGroupMode = &v
+	return s
+}
+
+func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetValidFrom(v int64) *GetPrivateAccessPolicyResponseBodyPolicy {
+	s.ValidFrom = &v
+	return s
+}
+
+func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetValidTimeStatus(v string) *GetPrivateAccessPolicyResponseBodyPolicy {
+	s.ValidTimeStatus = &v
+	return s
+}
+
+func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetValidUntil(v int64) *GetPrivateAccessPolicyResponseBodyPolicy {
+	s.ValidUntil = &v
 	return s
 }
 

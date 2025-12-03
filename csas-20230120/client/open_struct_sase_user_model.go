@@ -37,6 +37,8 @@ type iOpenStructSaseUser interface {
 	GetTitle() *string
 	SetUpdateTimeUnix(v int64) *OpenStructSaseUser
 	GetUpdateTimeUnix() *int64
+	SetUserTags(v []*OpenStructSaseUserUserTags) *OpenStructSaseUser
+	GetUserTags() []*OpenStructSaseUserUserTags
 	SetUsername(v string) *OpenStructSaseUser
 	GetUsername() *string
 	SetWorkStatus(v string) *OpenStructSaseUser
@@ -44,22 +46,23 @@ type iOpenStructSaseUser interface {
 }
 
 type OpenStructSaseUser struct {
-	CreateTimeUnix *int64                      `json:"CreateTimeUnix,omitempty" xml:"CreateTimeUnix,omitempty"`
-	CustomFields   []*IdpCustomField           `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
-	Departments    []*OpenStructSaseDepartment `json:"Departments,omitempty" xml:"Departments,omitempty" type:"Repeated"`
-	Description    *string                     `json:"Description,omitempty" xml:"Description,omitempty"`
-	Email          *string                     `json:"Email,omitempty" xml:"Email,omitempty"`
-	IdpConfigId    *string                     `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
-	LeaveTimeUnix  *int64                      `json:"LeaveTimeUnix,omitempty" xml:"LeaveTimeUnix,omitempty"`
-	LoginTimeUnix  *int64                      `json:"LoginTimeUnix,omitempty" xml:"LoginTimeUnix,omitempty"`
-	SaseUserId     *string                     `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	SaseUserStatus *string                     `json:"SaseUserStatus,omitempty" xml:"SaseUserStatus,omitempty"`
-	SyncTimeUnix   *int64                      `json:"SyncTimeUnix,omitempty" xml:"SyncTimeUnix,omitempty"`
-	Telephone      *string                     `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
-	Title          *string                     `json:"Title,omitempty" xml:"Title,omitempty"`
-	UpdateTimeUnix *int64                      `json:"UpdateTimeUnix,omitempty" xml:"UpdateTimeUnix,omitempty"`
-	Username       *string                     `json:"Username,omitempty" xml:"Username,omitempty"`
-	WorkStatus     *string                     `json:"WorkStatus,omitempty" xml:"WorkStatus,omitempty"`
+	CreateTimeUnix *int64                        `json:"CreateTimeUnix,omitempty" xml:"CreateTimeUnix,omitempty"`
+	CustomFields   []*IdpCustomField             `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
+	Departments    []*OpenStructSaseDepartment   `json:"Departments,omitempty" xml:"Departments,omitempty" type:"Repeated"`
+	Description    *string                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	Email          *string                       `json:"Email,omitempty" xml:"Email,omitempty"`
+	IdpConfigId    *string                       `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	LeaveTimeUnix  *int64                        `json:"LeaveTimeUnix,omitempty" xml:"LeaveTimeUnix,omitempty"`
+	LoginTimeUnix  *int64                        `json:"LoginTimeUnix,omitempty" xml:"LoginTimeUnix,omitempty"`
+	SaseUserId     *string                       `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	SaseUserStatus *string                       `json:"SaseUserStatus,omitempty" xml:"SaseUserStatus,omitempty"`
+	SyncTimeUnix   *int64                        `json:"SyncTimeUnix,omitempty" xml:"SyncTimeUnix,omitempty"`
+	Telephone      *string                       `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	Title          *string                       `json:"Title,omitempty" xml:"Title,omitempty"`
+	UpdateTimeUnix *int64                        `json:"UpdateTimeUnix,omitempty" xml:"UpdateTimeUnix,omitempty"`
+	UserTags       []*OpenStructSaseUserUserTags `json:"UserTags,omitempty" xml:"UserTags,omitempty" type:"Repeated"`
+	Username       *string                       `json:"Username,omitempty" xml:"Username,omitempty"`
+	WorkStatus     *string                       `json:"WorkStatus,omitempty" xml:"WorkStatus,omitempty"`
 }
 
 func (s OpenStructSaseUser) String() string {
@@ -124,6 +127,10 @@ func (s *OpenStructSaseUser) GetTitle() *string {
 
 func (s *OpenStructSaseUser) GetUpdateTimeUnix() *int64 {
 	return s.UpdateTimeUnix
+}
+
+func (s *OpenStructSaseUser) GetUserTags() []*OpenStructSaseUserUserTags {
+	return s.UserTags
 }
 
 func (s *OpenStructSaseUser) GetUsername() *string {
@@ -204,6 +211,11 @@ func (s *OpenStructSaseUser) SetUpdateTimeUnix(v int64) *OpenStructSaseUser {
 	return s
 }
 
+func (s *OpenStructSaseUser) SetUserTags(v []*OpenStructSaseUserUserTags) *OpenStructSaseUser {
+	s.UserTags = v
+	return s
+}
+
 func (s *OpenStructSaseUser) SetUsername(v string) *OpenStructSaseUser {
 	s.Username = &v
 	return s
@@ -233,5 +245,79 @@ func (s *OpenStructSaseUser) Validate() error {
 			}
 		}
 	}
+	if s.UserTags != nil {
+		for _, item := range s.UserTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
+}
+
+type OpenStructSaseUserUserTags struct {
+	Aliuid      *string `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SaseUserId  *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	TagId       *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+}
+
+func (s OpenStructSaseUserUserTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s OpenStructSaseUserUserTags) GoString() string {
+	return s.String()
+}
+
+func (s *OpenStructSaseUserUserTags) GetAliuid() *string {
+	return s.Aliuid
+}
+
+func (s *OpenStructSaseUserUserTags) GetDescription() *string {
+	return s.Description
+}
+
+func (s *OpenStructSaseUserUserTags) GetName() *string {
+	return s.Name
+}
+
+func (s *OpenStructSaseUserUserTags) GetSaseUserId() *string {
+	return s.SaseUserId
+}
+
+func (s *OpenStructSaseUserUserTags) GetTagId() *string {
+	return s.TagId
+}
+
+func (s *OpenStructSaseUserUserTags) SetAliuid(v string) *OpenStructSaseUserUserTags {
+	s.Aliuid = &v
+	return s
+}
+
+func (s *OpenStructSaseUserUserTags) SetDescription(v string) *OpenStructSaseUserUserTags {
+	s.Description = &v
+	return s
+}
+
+func (s *OpenStructSaseUserUserTags) SetName(v string) *OpenStructSaseUserUserTags {
+	s.Name = &v
+	return s
+}
+
+func (s *OpenStructSaseUserUserTags) SetSaseUserId(v string) *OpenStructSaseUserUserTags {
+	s.SaseUserId = &v
+	return s
+}
+
+func (s *OpenStructSaseUserUserTags) SetTagId(v string) *OpenStructSaseUserUserTags {
+	s.TagId = &v
+	return s
+}
+
+func (s *OpenStructSaseUserUserTags) Validate() error {
+	return dara.Validate(s)
 }

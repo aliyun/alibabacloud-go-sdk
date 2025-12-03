@@ -691,6 +691,18 @@ func (client *Client) CreatePrivateAccessPolicyWithContext(ctx context.Context, 
 		body["UserGroupMode"] = request.UserGroupMode
 	}
 
+	if !dara.IsNil(request.ValidFrom) {
+		body["ValidFrom"] = request.ValidFrom
+	}
+
+	if !dara.IsNil(request.ValidTimeStatus) {
+		body["ValidTimeStatus"] = request.ValidTimeStatus
+	}
+
+	if !dara.IsNil(request.ValidUntil) {
+		body["ValidUntil"] = request.ValidUntil
+	}
+
 	body = dara.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapiutil.OpenApiRequest{
@@ -5381,6 +5393,18 @@ func (client *Client) UpdatePrivateAccessPolicyWithContext(ctx context.Context, 
 
 	if !dara.IsNil(request.UserGroupMode) {
 		body["UserGroupMode"] = request.UserGroupMode
+	}
+
+	if !dara.IsNil(request.ValidFrom) {
+		body["ValidFrom"] = request.ValidFrom
+	}
+
+	if !dara.IsNil(request.ValidTimeStatus) {
+		body["ValidTimeStatus"] = request.ValidTimeStatus
+	}
+
+	if !dara.IsNil(request.ValidUntil) {
+		body["ValidUntil"] = request.ValidUntil
 	}
 
 	body = dara.ToMap(body,

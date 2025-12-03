@@ -20,7 +20,7 @@ type iListConnectorsResponseBody interface {
 type ListConnectorsResponseBody struct {
 	// List of Connectors.
 	Connectors []*ListConnectorsResponseBodyConnectors `json:"Connectors,omitempty" xml:"Connectors,omitempty" type:"Repeated"`
-	// ID of the current request.
+	// The ID of the current request.
 	//
 	// example:
 	//
@@ -83,6 +83,15 @@ func (s *ListConnectorsResponseBody) Validate() error {
 }
 
 type ListConnectorsResponseBodyConnectors struct {
+	// Whether to enable global acceleration. Values:
+	//
+	// - **Enabled**: Turn on.
+	//
+	// - **Disabled**: Turn off.
+	//
+	// example:
+	//
+	// Enabled
 	AccelerateStatus *string `json:"AccelerateStatus,omitempty" xml:"AccelerateStatus,omitempty"`
 	// Collection of associated internal network access applications.
 	Applications []*ListConnectorsResponseBodyConnectorsApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
@@ -100,13 +109,13 @@ type ListConnectorsResponseBodyConnectors struct {
 	ClusterPort *string `json:"ClusterPort,omitempty" xml:"ClusterPort,omitempty"`
 	// Collection of deployed ConnectorClients.
 	ConnectorClients []*ListConnectorsResponseBodyConnectorsConnectorClients `json:"ConnectorClients,omitempty" xml:"ConnectorClients,omitempty" type:"Repeated"`
-	// Connector ID.
+	// ConnectorID.
 	//
 	// example:
 	//
 	// connector-94db94e06b98****
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
-	// Creation time of the Connector.
+	// Connector creation time.
 	//
 	// example:
 	//
@@ -144,7 +153,7 @@ type ListConnectorsResponseBodyConnectors struct {
 	//
 	// Enabled
 	SwitchStatus *string `json:"SwitchStatus,omitempty" xml:"SwitchStatus,omitempty"`
-	// Connector upgrade time.
+	// Connector升级时间。
 	UpgradeTime *ListConnectorsResponseBodyConnectorsUpgradeTime `json:"UpgradeTime,omitempty" xml:"UpgradeTime,omitempty" type:"Struct"`
 }
 
@@ -337,7 +346,7 @@ func (s *ListConnectorsResponseBodyConnectorsApplications) Validate() error {
 }
 
 type ListConnectorsResponseBodyConnectorsConnectorClients struct {
-	// Connection status between ConnectorClient and ConnectorServer.
+	// Connection status between the ConnectorClient and ConnectorServer.
 	//
 	// example:
 	//
