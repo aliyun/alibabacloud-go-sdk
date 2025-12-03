@@ -17,9 +17,11 @@ import (
 //
 // @return QueryOrgLabRecordListResponse
 func (client *Client) QueryOrgLabRecordListWithContext(ctx context.Context, request *QueryOrgLabRecordListRequest, runtime *dara.RuntimeOptions) (_result *QueryOrgLabRecordListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunUid) {
