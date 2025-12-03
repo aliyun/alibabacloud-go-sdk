@@ -9,6 +9,8 @@ type iUnifiedPageItem interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCorrelationTag(v int32) *UnifiedPageItem
+	GetCorrelationTag() *int32
 	SetHostAuthorityScore(v float64) *UnifiedPageItem
 	GetHostAuthorityScore() *float64
 	SetHostLogo(v string) *UnifiedPageItem
@@ -40,6 +42,7 @@ type iUnifiedPageItem interface {
 }
 
 type UnifiedPageItem struct {
+	CorrelationTag     *int32    `json:"correlationTag,omitempty" xml:"correlationTag,omitempty"`
 	HostAuthorityScore *float64  `json:"hostAuthorityScore,omitempty" xml:"hostAuthorityScore,omitempty"`
 	HostLogo           *string   `json:"hostLogo,omitempty" xml:"hostLogo,omitempty"`
 	Hostname           *string   `json:"hostname,omitempty" xml:"hostname,omitempty"`
@@ -65,6 +68,10 @@ func (s UnifiedPageItem) String() string {
 
 func (s UnifiedPageItem) GoString() string {
 	return s.String()
+}
+
+func (s *UnifiedPageItem) GetCorrelationTag() *int32 {
+	return s.CorrelationTag
 }
 
 func (s *UnifiedPageItem) GetHostAuthorityScore() *float64 {
@@ -121,6 +128,11 @@ func (s *UnifiedPageItem) GetTitle() *string {
 
 func (s *UnifiedPageItem) GetWebsiteAuthorityScore() *int32 {
 	return s.WebsiteAuthorityScore
+}
+
+func (s *UnifiedPageItem) SetCorrelationTag(v int32) *UnifiedPageItem {
+	s.CorrelationTag = &v
+	return s
 }
 
 func (s *UnifiedPageItem) SetHostAuthorityScore(v float64) *UnifiedPageItem {

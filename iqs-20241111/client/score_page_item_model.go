@@ -11,6 +11,8 @@ type iScorePageItem interface {
 	GoString() string
 	SetCardType(v string) *ScorePageItem
 	GetCardType() *string
+	SetCorrelationTag(v int32) *ScorePageItem
+	GetCorrelationTag() *int32
 	SetDisplayLink(v string) *ScorePageItem
 	GetDisplayLink() *string
 	SetHostAuthorityScore(v float64) *ScorePageItem
@@ -59,7 +61,8 @@ type ScorePageItem struct {
 	// example:
 	//
 	// structure_web_info
-	CardType *string `json:"cardType,omitempty" xml:"cardType,omitempty"`
+	CardType       *string `json:"cardType,omitempty" xml:"cardType,omitempty"`
+	CorrelationTag *int32  `json:"correlationTag,omitempty" xml:"correlationTag,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -153,6 +156,10 @@ func (s *ScorePageItem) GetCardType() *string {
 	return s.CardType
 }
 
+func (s *ScorePageItem) GetCorrelationTag() *int32 {
+	return s.CorrelationTag
+}
+
 func (s *ScorePageItem) GetDisplayLink() *string {
 	return s.DisplayLink
 }
@@ -235,6 +242,11 @@ func (s *ScorePageItem) GetWebsiteAuthorityScore() *int32 {
 
 func (s *ScorePageItem) SetCardType(v string) *ScorePageItem {
 	s.CardType = &v
+	return s
+}
+
+func (s *ScorePageItem) SetCorrelationTag(v int32) *ScorePageItem {
+	s.CorrelationTag = &v
 	return s
 }
 
