@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -23,7 +24,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.SignatureAlgorithm = dara.String("v2")
 	client.EndpointRule = dara.String("")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -66,9 +66,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return GetEveryOneSellsFormListResponse
 func (client *Client) GetEveryOneSellsFormListWithOptions(request *GetEveryOneSellsFormListRequest, runtime *dara.RuntimeOptions) (_result *GetEveryOneSellsFormListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -86,7 +88,7 @@ func (client *Client) GetEveryOneSellsFormListWithOptions(request *GetEveryOneSe
 		BodyType:    dara.String("array"),
 	}
 	_result = &GetEveryOneSellsFormListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -122,9 +124,11 @@ func (client *Client) GetEveryOneSellsFormList(request *GetEveryOneSellsFormList
 //
 // @return PushEveryOneSellMsgResponse
 func (client *Client) PushEveryOneSellMsgWithOptions(tmpReq *PushEveryOneSellMsgRequest, runtime *dara.RuntimeOptions) (_result *PushEveryOneSellMsgResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PushEveryOneSellMsgShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -160,7 +164,7 @@ func (client *Client) PushEveryOneSellMsgWithOptions(tmpReq *PushEveryOneSellMsg
 		BodyType:    dara.String("string"),
 	}
 	_result = &PushEveryOneSellMsgResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}

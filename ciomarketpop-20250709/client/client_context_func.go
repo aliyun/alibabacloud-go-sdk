@@ -17,9 +17,11 @@ import (
 //
 // @return GetEveryOneSellsFormListResponse
 func (client *Client) GetEveryOneSellsFormListWithContext(ctx context.Context, request *GetEveryOneSellsFormListRequest, runtime *dara.RuntimeOptions) (_result *GetEveryOneSellsFormListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -37,7 +39,7 @@ func (client *Client) GetEveryOneSellsFormListWithContext(ctx context.Context, r
 		BodyType:    dara.String("array"),
 	}
 	_result = &GetEveryOneSellsFormListResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -55,9 +57,11 @@ func (client *Client) GetEveryOneSellsFormListWithContext(ctx context.Context, r
 //
 // @return PushEveryOneSellMsgResponse
 func (client *Client) PushEveryOneSellMsgWithContext(ctx context.Context, tmpReq *PushEveryOneSellMsgRequest, runtime *dara.RuntimeOptions) (_result *PushEveryOneSellMsgResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PushEveryOneSellMsgShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -93,7 +97,7 @@ func (client *Client) PushEveryOneSellMsgWithContext(ctx context.Context, tmpReq
 		BodyType:    dara.String("string"),
 	}
 	_result = &PushEveryOneSellMsgResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
