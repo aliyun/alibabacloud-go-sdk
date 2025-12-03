@@ -50,7 +50,12 @@ func (s *TranslateCertificateResponseBody) SetRequestId(v string) *TranslateCert
 }
 
 func (s *TranslateCertificateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TranslateCertificateResponseBodyData struct {
@@ -75,7 +80,16 @@ func (s *TranslateCertificateResponseBodyData) SetTranslatedValues(v []*Translat
 }
 
 func (s *TranslateCertificateResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.TranslatedValues != nil {
+		for _, item := range s.TranslatedValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TranslateCertificateResponseBodyDataTranslatedValues struct {

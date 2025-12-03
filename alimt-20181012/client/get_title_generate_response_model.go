@@ -59,5 +59,10 @@ func (s *GetTitleGenerateResponse) SetBody(v *GetTitleGenerateResponseBody) *Get
 }
 
 func (s *GetTitleGenerateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

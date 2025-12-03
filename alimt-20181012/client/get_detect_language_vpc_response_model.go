@@ -59,5 +59,10 @@ func (s *GetDetectLanguageVpcResponse) SetBody(v *GetDetectLanguageVpcResponseBo
 }
 
 func (s *GetDetectLanguageVpcResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -23,7 +24,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.SignatureAlgorithm = dara.String("v2")
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-hangzhou":                 dara.String("mt.cn-hangzhou.aliyuncs.com"),
@@ -93,30 +93,83 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	return nil
 }
 
-func (client *Client) _postOSSObject(bucketName *string, form map[string]interface{}) (_result map[string]interface{}, _err error) {
-	request_ := dara.NewRequest()
-	boundary := dara.GetBoundary()
-	request_.Protocol = dara.String("HTTPS")
-	request_.Method = dara.String("POST")
-	request_.Pathname = dara.String("/")
-	request_.Headers = map[string]*string{
-		"host":       dara.String(dara.ToString(form["host"])),
-		"date":       openapiutil.GetDateUTCString(),
-		"user-agent": openapiutil.GetUserAgent(dara.String("")),
-	}
-	request_.Headers["content-type"] = dara.String("multipart/form-data; boundary=" + boundary)
-	request_.Body = dara.ToFileForm(form, boundary)
-	response_, _err := dara.DoRequest(request_, nil)
-	if _err != nil {
-		return nil, _err
+func (client *Client) _postOSSObject(bucketName *string, form map[string]interface{}, runtime *dara.RuntimeOptions) (_result map[string]interface{}, _err error) {
+	_runtime := dara.NewRuntimeObject(map[string]interface{}{
+		"key":            dara.ToString(dara.Default(dara.StringValue(runtime.Key), dara.StringValue(client.Key))),
+		"cert":           dara.ToString(dara.Default(dara.StringValue(runtime.Cert), dara.StringValue(client.Cert))),
+		"ca":             dara.ToString(dara.Default(dara.StringValue(runtime.Ca), dara.StringValue(client.Ca))),
+		"readTimeout":    dara.ForceInt(dara.Default(dara.IntValue(runtime.ReadTimeout), dara.IntValue(client.ReadTimeout))),
+		"connectTimeout": dara.ForceInt(dara.Default(dara.IntValue(runtime.ConnectTimeout), dara.IntValue(client.ConnectTimeout))),
+		"httpProxy":      dara.ToString(dara.Default(dara.StringValue(runtime.HttpProxy), dara.StringValue(client.HttpProxy))),
+		"httpsProxy":     dara.ToString(dara.Default(dara.StringValue(runtime.HttpsProxy), dara.StringValue(client.HttpsProxy))),
+		"noProxy":        dara.ToString(dara.Default(dara.StringValue(runtime.NoProxy), dara.StringValue(client.NoProxy))),
+		"socks5Proxy":    dara.ToString(dara.Default(dara.StringValue(runtime.Socks5Proxy), dara.StringValue(client.Socks5Proxy))),
+		"socks5NetWork":  dara.ToString(dara.Default(dara.StringValue(runtime.Socks5NetWork), dara.StringValue(client.Socks5NetWork))),
+		"maxIdleConns":   dara.ForceInt(dara.Default(dara.IntValue(runtime.MaxIdleConns), dara.IntValue(client.MaxIdleConns))),
+		"retryOptions":   client.RetryOptions,
+		"ignoreSSL":      dara.ForceBoolean(dara.Default(dara.BoolValue(runtime.IgnoreSSL), false)),
+		"tlsMinVersion":  dara.StringValue(client.TlsMinVersion),
+	})
+
+	var retryPolicyContext *dara.RetryPolicyContext
+	var request_ *dara.Request
+	var response_ *dara.Response
+	var _resultErr error
+	retriesAttempted := int(0)
+	retryPolicyContext = &dara.RetryPolicyContext{
+		RetriesAttempted: retriesAttempted,
 	}
 
-	_result, _err = _postOSSObject_opResponse(response_)
-	if _err != nil {
-		return nil, _err
-	}
+	_result = make(map[string]interface{})
+	for dara.ShouldRetry(_runtime.RetryOptions, retryPolicyContext) {
+		_resultErr = nil
+		_backoffDelayTime := dara.GetBackoffDelay(_runtime.RetryOptions, retryPolicyContext)
+		dara.Sleep(_backoffDelayTime)
 
-	return _result, nil
+		request_ = dara.NewRequest()
+		boundary := dara.GetBoundary()
+		request_.Protocol = dara.String("HTTPS")
+		request_.Method = dara.String("POST")
+		request_.Pathname = dara.String("/")
+		request_.Headers = map[string]*string{
+			"host":       dara.String(dara.ToString(form["host"])),
+			"date":       openapiutil.GetDateUTCString(),
+			"user-agent": openapiutil.GetUserAgent(dara.String("")),
+		}
+		request_.Headers["content-type"] = dara.String("multipart/form-data; boundary=" + boundary)
+		request_.Body = dara.ToFileForm(form, boundary)
+		response_, _err = dara.DoRequest(request_, _runtime)
+		if _err != nil {
+			retriesAttempted++
+			retryPolicyContext = &dara.RetryPolicyContext{
+				RetriesAttempted: retriesAttempted,
+				HttpRequest:      request_,
+				HttpResponse:     response_,
+				Exception:        _err,
+			}
+			_resultErr = _err
+			continue
+		}
+
+		_result, _err = _postOSSObject_opResponse(response_)
+		if _err != nil {
+			retriesAttempted++
+			retryPolicyContext = &dara.RetryPolicyContext{
+				RetriesAttempted: retriesAttempted,
+				HttpRequest:      request_,
+				HttpResponse:     response_,
+				Exception:        _err,
+			}
+			_resultErr = _err
+			continue
+		}
+
+		return _result, _err
+	}
+	if dara.BoolValue(client.DisableSDKError) != true {
+		_resultErr = dara.TeaSDKError(_resultErr)
+	}
+	return _result, _resultErr
 }
 
 func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
@@ -148,9 +201,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return CreateAsyncTranslateResponse
 func (client *Client) CreateAsyncTranslateWithOptions(request *CreateAsyncTranslateRequest, runtime *dara.RuntimeOptions) (_result *CreateAsyncTranslateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApiType) {
@@ -224,9 +279,11 @@ func (client *Client) CreateAsyncTranslate(request *CreateAsyncTranslateRequest)
 //
 // @return CreateDocTranslateTaskResponse
 func (client *Client) CreateDocTranslateTaskWithOptions(request *CreateDocTranslateTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateDocTranslateTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CallbackUrl) {
@@ -381,7 +438,7 @@ func (client *Client) CreateDocTranslateTaskAdvance(request *CreateDocTranslateT
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -397,15 +454,21 @@ func (client *Client) CreateDocTranslateTaskAdvance(request *CreateDocTranslateT
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建图片翻译任务
+//
 // @param request - CreateImageTranslateTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateImageTranslateTaskResponse
 func (client *Client) CreateImageTranslateTaskWithOptions(request *CreateImageTranslateTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateImageTranslateTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -451,6 +514,10 @@ func (client *Client) CreateImageTranslateTaskWithOptions(request *CreateImageTr
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建图片翻译任务
+//
 // @param request - CreateImageTranslateTaskRequest
 //
 // @return CreateImageTranslateTaskResponse
@@ -475,9 +542,11 @@ func (client *Client) CreateImageTranslateTask(request *CreateImageTranslateTask
 //
 // @return GetAsyncTranslateResponse
 func (client *Client) GetAsyncTranslateWithOptions(request *GetAsyncTranslateRequest, runtime *dara.RuntimeOptions) (_result *GetAsyncTranslateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -525,15 +594,21 @@ func (client *Client) GetAsyncTranslate(request *GetAsyncTranslateRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量文本翻译
+//
 // @param request - GetBatchTranslateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetBatchTranslateResponse
 func (client *Client) GetBatchTranslateWithOptions(request *GetBatchTranslateRequest, runtime *dara.RuntimeOptions) (_result *GetBatchTranslateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApiType) {
@@ -583,6 +658,10 @@ func (client *Client) GetBatchTranslateWithOptions(request *GetBatchTranslateReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量文本翻译
+//
 // @param request - GetBatchTranslateRequest
 //
 // @return GetBatchTranslateResponse
@@ -607,9 +686,11 @@ func (client *Client) GetBatchTranslate(request *GetBatchTranslateRequest) (_res
 //
 // @return GetBatchTranslateByVPCResponse
 func (client *Client) GetBatchTranslateByVPCWithOptions(request *GetBatchTranslateByVPCRequest, runtime *dara.RuntimeOptions) (_result *GetBatchTranslateByVPCResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApiType) {
@@ -687,9 +768,11 @@ func (client *Client) GetBatchTranslateByVPC(request *GetBatchTranslateByVPCRequ
 //
 // @return GetDetectLanguageResponse
 func (client *Client) GetDetectLanguageWithOptions(request *GetDetectLanguageRequest, runtime *dara.RuntimeOptions) (_result *GetDetectLanguageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.SourceText) {
@@ -747,9 +830,11 @@ func (client *Client) GetDetectLanguage(request *GetDetectLanguageRequest) (_res
 //
 // @return GetDetectLanguageVpcResponse
 func (client *Client) GetDetectLanguageVpcWithOptions(request *GetDetectLanguageVpcRequest, runtime *dara.RuntimeOptions) (_result *GetDetectLanguageVpcResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.SourceText) {
@@ -807,9 +892,11 @@ func (client *Client) GetDetectLanguageVpc(request *GetDetectLanguageVpcRequest)
 //
 // @return GetDocTranslateTaskResponse
 func (client *Client) GetDocTranslateTaskWithOptions(request *GetDocTranslateTaskRequest, runtime *dara.RuntimeOptions) (_result *GetDocTranslateTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -859,9 +946,11 @@ func (client *Client) GetDocTranslateTask(request *GetDocTranslateTaskRequest) (
 //
 // @return GetImageDiagnoseResponse
 func (client *Client) GetImageDiagnoseWithOptions(request *GetImageDiagnoseRequest, runtime *dara.RuntimeOptions) (_result *GetImageDiagnoseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Extra) {
@@ -909,15 +998,21 @@ func (client *Client) GetImageDiagnose(request *GetImageDiagnoseRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片翻译结果
+//
 // @param request - GetImageTranslateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetImageTranslateResponse
 func (client *Client) GetImageTranslateWithOptions(request *GetImageTranslateRequest, runtime *dara.RuntimeOptions) (_result *GetImageTranslateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Extra) {
@@ -959,6 +1054,10 @@ func (client *Client) GetImageTranslateWithOptions(request *GetImageTranslateReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片翻译结果
+//
 // @param request - GetImageTranslateRequest
 //
 // @return GetImageTranslateResponse
@@ -973,15 +1072,21 @@ func (client *Client) GetImageTranslate(request *GetImageTranslateRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片翻译任务
+//
 // @param request - GetImageTranslateTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetImageTranslateTaskResponse
 func (client *Client) GetImageTranslateTaskWithOptions(request *GetImageTranslateTaskRequest, runtime *dara.RuntimeOptions) (_result *GetImageTranslateTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -1011,6 +1116,10 @@ func (client *Client) GetImageTranslateTaskWithOptions(request *GetImageTranslat
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片翻译任务
+//
 // @param request - GetImageTranslateTaskRequest
 //
 // @return GetImageTranslateTaskResponse
@@ -1035,9 +1144,11 @@ func (client *Client) GetImageTranslateTask(request *GetImageTranslateTaskReques
 //
 // @return GetTitleDiagnoseResponse
 func (client *Client) GetTitleDiagnoseWithOptions(request *GetTitleDiagnoseRequest, runtime *dara.RuntimeOptions) (_result *GetTitleDiagnoseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryId) {
@@ -1111,9 +1222,11 @@ func (client *Client) GetTitleDiagnose(request *GetTitleDiagnoseRequest) (_resul
 //
 // @return GetTitleGenerateResponse
 func (client *Client) GetTitleGenerateWithOptions(request *GetTitleGenerateRequest, runtime *dara.RuntimeOptions) (_result *GetTitleGenerateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Attributes) {
@@ -1195,9 +1308,11 @@ func (client *Client) GetTitleGenerate(request *GetTitleGenerateRequest) (_resul
 //
 // @return GetTitleIntelligenceResponse
 func (client *Client) GetTitleIntelligenceWithOptions(request *GetTitleIntelligenceRequest, runtime *dara.RuntimeOptions) (_result *GetTitleIntelligenceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CatLevelThreeId) {
@@ -1271,9 +1386,11 @@ func (client *Client) GetTitleIntelligence(request *GetTitleIntelligenceRequest)
 //
 // @return GetTranslateImageBatchResultResponse
 func (client *Client) GetTranslateImageBatchResultWithOptions(request *GetTranslateImageBatchResultRequest, runtime *dara.RuntimeOptions) (_result *GetTranslateImageBatchResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -1331,9 +1448,11 @@ func (client *Client) GetTranslateImageBatchResult(request *GetTranslateImageBat
 //
 // @return GetTranslateReportResponse
 func (client *Client) GetTranslateReportWithOptions(request *GetTranslateReportRequest, runtime *dara.RuntimeOptions) (_result *GetTranslateReportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApiName) {
@@ -1403,9 +1522,11 @@ func (client *Client) GetTranslateReport(request *GetTranslateReportRequest) (_r
 //
 // @return OpenAlimtServiceResponse
 func (client *Client) OpenAlimtServiceWithOptions(request *OpenAlimtServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenAlimtServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1467,9 +1588,11 @@ func (client *Client) OpenAlimtService(request *OpenAlimtServiceRequest) (_resul
 //
 // @return TranslateResponse
 func (client *Client) TranslateWithOptions(request *TranslateRequest, runtime *dara.RuntimeOptions) (_result *TranslateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Context) {
@@ -1549,9 +1672,11 @@ func (client *Client) Translate(request *TranslateRequest) (_result *TranslateRe
 //
 // @return TranslateCertificateResponse
 func (client *Client) TranslateCertificateWithOptions(request *TranslateCertificateRequest, runtime *dara.RuntimeOptions) (_result *TranslateCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CertificateType) {
@@ -1706,7 +1831,7 @@ func (client *Client) TranslateCertificateAdvance(request *TranslateCertificateA
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1733,11 +1858,12 @@ func (client *Client) TranslateCertificateAdvance(request *TranslateCertificateA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TranslateECommerceResponse
-// Deprecated
 func (client *Client) TranslateECommerceWithOptions(request *TranslateECommerceRequest, runtime *dara.RuntimeOptions) (_result *TranslateECommerceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Context) {
@@ -1820,9 +1946,11 @@ func (client *Client) TranslateECommerce(request *TranslateECommerceRequest) (_r
 //
 // @return TranslateGeneralResponse
 func (client *Client) TranslateGeneralWithOptions(request *TranslateGeneralRequest, runtime *dara.RuntimeOptions) (_result *TranslateGeneralResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Context) {
@@ -1902,9 +2030,11 @@ func (client *Client) TranslateGeneral(request *TranslateGeneralRequest) (_resul
 //
 // @return TranslateGeneralVpcResponse
 func (client *Client) TranslateGeneralVpcWithOptions(request *TranslateGeneralVpcRequest, runtime *dara.RuntimeOptions) (_result *TranslateGeneralVpcResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Context) {
@@ -1984,9 +2114,11 @@ func (client *Client) TranslateGeneralVpc(request *TranslateGeneralVpcRequest) (
 //
 // @return TranslateImageResponse
 func (client *Client) TranslateImageWithOptions(request *TranslateImageRequest, runtime *dara.RuntimeOptions) (_result *TranslateImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Ext) {
@@ -2064,9 +2196,11 @@ func (client *Client) TranslateImage(request *TranslateImageRequest) (_result *T
 //
 // @return TranslateImageBatchResponse
 func (client *Client) TranslateImageBatchWithOptions(request *TranslateImageBatchRequest, runtime *dara.RuntimeOptions) (_result *TranslateImageBatchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CustomTaskId) {
@@ -2144,9 +2278,11 @@ func (client *Client) TranslateImageBatch(request *TranslateImageBatchRequest) (
 //
 // @return TranslateSearchResponse
 func (client *Client) TranslateSearchWithOptions(request *TranslateSearchRequest, runtime *dara.RuntimeOptions) (_result *TranslateSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FormatType) {

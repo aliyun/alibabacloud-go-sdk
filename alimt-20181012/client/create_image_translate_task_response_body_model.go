@@ -80,7 +80,12 @@ func (s *CreateImageTranslateTaskResponseBody) SetRequestId(v string) *CreateIma
 }
 
 func (s *CreateImageTranslateTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateImageTranslateTaskResponseBodyData struct {

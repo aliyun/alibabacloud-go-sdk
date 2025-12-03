@@ -59,5 +59,10 @@ func (s *GetImageTranslateResponse) SetBody(v *GetImageTranslateResponseBody) *G
 }
 
 func (s *GetImageTranslateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

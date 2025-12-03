@@ -59,5 +59,10 @@ func (s *GetTitleDiagnoseResponse) SetBody(v *GetTitleDiagnoseResponseBody) *Get
 }
 
 func (s *GetTitleDiagnoseResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -80,7 +80,12 @@ func (s *GetTitleGenerateResponseBody) SetRequestId(v string) *GetTitleGenerateR
 }
 
 func (s *GetTitleGenerateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTitleGenerateResponseBodyData struct {
