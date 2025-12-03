@@ -1123,6 +1123,10 @@ func (client *Client) CreateApsKafkaHudiJobWithContext(ctx context.Context, tmpR
 		body["DBClusterId"] = request.DBClusterId
 	}
 
+	if !dara.IsNil(request.DataFormatType) {
+		body["DataFormatType"] = request.DataFormatType
+	}
+
 	if !dara.IsNil(request.DataOutputFormat) {
 		body["DataOutputFormat"] = request.DataOutputFormat
 	}

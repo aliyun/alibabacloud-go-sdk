@@ -19,6 +19,8 @@ type iCreateApsKafkaHudiJobShrinkRequest interface {
 	GetColumnsShrink() *string
 	SetDBClusterId(v string) *CreateApsKafkaHudiJobShrinkRequest
 	GetDBClusterId() *string
+	SetDataFormatType(v string) *CreateApsKafkaHudiJobShrinkRequest
+	GetDataFormatType() *string
 	SetDataOutputFormat(v string) *CreateApsKafkaHudiJobShrinkRequest
 	GetDataOutputFormat() *string
 	SetDatasourceId(v int64) *CreateApsKafkaHudiJobShrinkRequest
@@ -99,7 +101,8 @@ type CreateApsKafkaHudiJobShrinkRequest struct {
 	// example:
 	//
 	// amv-bp11q28kvl688****
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId    *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DataFormatType *string `json:"DataFormatType,omitempty" xml:"DataFormatType,omitempty"`
 	// Enumeration value and description. Single: The source is a single-row JSON record. Multi: source is a JSON array. Output a single JSON record.
 	//
 	// example:
@@ -281,6 +284,10 @@ func (s *CreateApsKafkaHudiJobShrinkRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *CreateApsKafkaHudiJobShrinkRequest) GetDataFormatType() *string {
+	return s.DataFormatType
+}
+
 func (s *CreateApsKafkaHudiJobShrinkRequest) GetDataOutputFormat() *string {
 	return s.DataOutputFormat
 }
@@ -395,6 +402,11 @@ func (s *CreateApsKafkaHudiJobShrinkRequest) SetColumnsShrink(v string) *CreateA
 
 func (s *CreateApsKafkaHudiJobShrinkRequest) SetDBClusterId(v string) *CreateApsKafkaHudiJobShrinkRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateApsKafkaHudiJobShrinkRequest) SetDataFormatType(v string) *CreateApsKafkaHudiJobShrinkRequest {
+	s.DataFormatType = &v
 	return s
 }
 
