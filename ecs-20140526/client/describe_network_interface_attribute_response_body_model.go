@@ -49,6 +49,8 @@ type iDescribeNetworkInterfaceAttributeResponseBody interface {
 	GetPrivateIpAddress() *string
 	SetPrivateIpSets(v *DescribeNetworkInterfaceAttributeResponseBodyPrivateIpSets) *DescribeNetworkInterfaceAttributeResponseBody
 	GetPrivateIpSets() *DescribeNetworkInterfaceAttributeResponseBodyPrivateIpSets
+	SetQoSConfig(v *DescribeNetworkInterfaceAttributeResponseBodyQoSConfig) *DescribeNetworkInterfaceAttributeResponseBody
+	GetQoSConfig() *DescribeNetworkInterfaceAttributeResponseBodyQoSConfig
 	SetQueueNumber(v int32) *DescribeNetworkInterfaceAttributeResponseBody
 	GetQueueNumber() *int32
 	SetQueuePairNumber(v int32) *DescribeNetworkInterfaceAttributeResponseBody
@@ -180,6 +182,7 @@ type DescribeNetworkInterfaceAttributeResponseBody struct {
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	// The private IP addresses of the ENI.
 	PrivateIpSets *DescribeNetworkInterfaceAttributeResponseBodyPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Struct"`
+	QoSConfig     *DescribeNetworkInterfaceAttributeResponseBodyQoSConfig     `json:"QoSConfig,omitempty" xml:"QoSConfig,omitempty" type:"Struct"`
 	// The number of queues supported by the ENI.
 	//
 	// 	- For a primary ENI: The default number of queues that the instance type supports for the ENI is returned.
@@ -388,6 +391,10 @@ func (s *DescribeNetworkInterfaceAttributeResponseBody) GetPrivateIpSets() *Desc
 	return s.PrivateIpSets
 }
 
+func (s *DescribeNetworkInterfaceAttributeResponseBody) GetQoSConfig() *DescribeNetworkInterfaceAttributeResponseBodyQoSConfig {
+	return s.QoSConfig
+}
+
 func (s *DescribeNetworkInterfaceAttributeResponseBody) GetQueueNumber() *int32 {
 	return s.QueueNumber
 }
@@ -552,6 +559,11 @@ func (s *DescribeNetworkInterfaceAttributeResponseBody) SetPrivateIpSets(v *Desc
 	return s
 }
 
+func (s *DescribeNetworkInterfaceAttributeResponseBody) SetQoSConfig(v *DescribeNetworkInterfaceAttributeResponseBodyQoSConfig) *DescribeNetworkInterfaceAttributeResponseBody {
+	s.QoSConfig = v
+	return s
+}
+
 func (s *DescribeNetworkInterfaceAttributeResponseBody) SetQueueNumber(v int32) *DescribeNetworkInterfaceAttributeResponseBody {
 	s.QueueNumber = &v
 	return s
@@ -680,6 +692,11 @@ func (s *DescribeNetworkInterfaceAttributeResponseBody) Validate() error {
 	}
 	if s.PrivateIpSets != nil {
 		if err := s.PrivateIpSets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QoSConfig != nil {
+		if err := s.QoSConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1528,6 +1545,126 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyPrivateIpSetsPrivateIpSetA
 }
 
 func (s *DescribeNetworkInterfaceAttributeResponseBodyPrivateIpSetsPrivateIpSetAssociatedPublicIp) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeNetworkInterfaceAttributeResponseBodyQoSConfig struct {
+	EnableQoS *bool                                                      `json:"EnableQoS,omitempty" xml:"EnableQoS,omitempty"`
+	QoS       *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS `json:"QoS,omitempty" xml:"QoS,omitempty" type:"Struct"`
+}
+
+func (s DescribeNetworkInterfaceAttributeResponseBodyQoSConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeNetworkInterfaceAttributeResponseBodyQoSConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkInterfaceAttributeResponseBodyQoSConfig) GetEnableQoS() *bool {
+	return s.EnableQoS
+}
+
+func (s *DescribeNetworkInterfaceAttributeResponseBodyQoSConfig) GetQoS() *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS {
+	return s.QoS
+}
+
+func (s *DescribeNetworkInterfaceAttributeResponseBodyQoSConfig) SetEnableQoS(v bool) *DescribeNetworkInterfaceAttributeResponseBodyQoSConfig {
+	s.EnableQoS = &v
+	return s
+}
+
+func (s *DescribeNetworkInterfaceAttributeResponseBodyQoSConfig) SetQoS(v *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS) *DescribeNetworkInterfaceAttributeResponseBodyQoSConfig {
+	s.QoS = v
+	return s
+}
+
+func (s *DescribeNetworkInterfaceAttributeResponseBodyQoSConfig) Validate() error {
+	if s.QoS != nil {
+		if err := s.QoS.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS struct {
+	// example:
+	//
+	// 50000
+	BandwidthRx *int64 `json:"BandwidthRx,omitempty" xml:"BandwidthRx,omitempty"`
+	// example:
+	//
+	// 50000
+	BandwidthTx *int64 `json:"BandwidthTx,omitempty" xml:"BandwidthTx,omitempty"`
+	// example:
+	//
+	// 50000
+	ConcurrentConnections *int64 `json:"ConcurrentConnections,omitempty" xml:"ConcurrentConnections,omitempty"`
+	// example:
+	//
+	// 50000
+	PpsRx *int64 `json:"PpsRx,omitempty" xml:"PpsRx,omitempty"`
+	// example:
+	//
+	// 50000
+	PpsTx *int64 `json:"PpsTx,omitempty" xml:"PpsTx,omitempty"`
+}
+
+func (s DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS) GetBandwidthRx() *int64 {
+	return s.BandwidthRx
+}
+
+func (s *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS) GetBandwidthTx() *int64 {
+	return s.BandwidthTx
+}
+
+func (s *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS) GetConcurrentConnections() *int64 {
+	return s.ConcurrentConnections
+}
+
+func (s *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS) GetPpsRx() *int64 {
+	return s.PpsRx
+}
+
+func (s *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS) GetPpsTx() *int64 {
+	return s.PpsTx
+}
+
+func (s *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS) SetBandwidthRx(v int64) *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS {
+	s.BandwidthRx = &v
+	return s
+}
+
+func (s *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS) SetBandwidthTx(v int64) *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS {
+	s.BandwidthTx = &v
+	return s
+}
+
+func (s *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS) SetConcurrentConnections(v int64) *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS {
+	s.ConcurrentConnections = &v
+	return s
+}
+
+func (s *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS) SetPpsRx(v int64) *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS {
+	s.PpsRx = &v
+	return s
+}
+
+func (s *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS) SetPpsTx(v int64) *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS {
+	s.PpsTx = &v
+	return s
+}
+
+func (s *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS) Validate() error {
 	return dara.Validate(s)
 }
 
