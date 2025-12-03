@@ -1,3 +1,6 @@
+2025-12-03 Version: v5.0.3
+- Generated golang 2021-06-25 for devops.
+
 2025-03-13 Version: v5.0.2
 - Update API CreateServiceConnection: update param body.
 
