@@ -2,112 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"ap-northeast-1":              dara.String("eais.aliyuncs.com"),
-		"ap-northeast-2-pop":          dara.String("eais.aliyuncs.com"),
-		"ap-south-1":                  dara.String("eais.aliyuncs.com"),
-		"ap-southeast-1":              dara.String("eais.aliyuncs.com"),
-		"ap-southeast-2":              dara.String("eais.aliyuncs.com"),
-		"ap-southeast-3":              dara.String("eais.aliyuncs.com"),
-		"ap-southeast-5":              dara.String("eais.aliyuncs.com"),
-		"cn-beijing-finance-1":        dara.String("eais.aliyuncs.com"),
-		"cn-beijing-finance-pop":      dara.String("eais.aliyuncs.com"),
-		"cn-beijing-gov-1":            dara.String("eais.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         dara.String("eais.aliyuncs.com"),
-		"cn-edge-1":                   dara.String("eais.aliyuncs.com"),
-		"cn-fujian":                   dara.String("eais.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         dara.String("eais.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          dara.String("eais.aliyuncs.com"),
-		"cn-hangzhou-finance":         dara.String("eais.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": dara.String("eais.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": dara.String("eais.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": dara.String("eais.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": dara.String("eais.aliyuncs.com"),
-		"cn-hangzhou-test-306":        dara.String("eais.aliyuncs.com"),
-		"cn-hongkong":                 dara.String("eais.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     dara.String("eais.aliyuncs.com"),
-		"cn-huhehaote":                dara.String("eais.aliyuncs.com"),
-		"cn-huhehaote-nebula-1":       dara.String("eais.aliyuncs.com"),
-		"cn-north-2-gov-1":            dara.String("eais.aliyuncs.com"),
-		"cn-qingdao":                  dara.String("eais.aliyuncs.com"),
-		"cn-qingdao-nebula":           dara.String("eais.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        dara.String("eais.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         dara.String("eais.aliyuncs.com"),
-		"cn-shanghai-finance-1":       dara.String("eais.aliyuncs.com"),
-		"cn-shanghai-inner":           dara.String("eais.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": dara.String("eais.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       dara.String("eais.aliyuncs.com"),
-		"cn-shenzhen-inner":           dara.String("eais.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         dara.String("eais.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        dara.String("eais.aliyuncs.com"),
-		"cn-wuhan":                    dara.String("eais.aliyuncs.com"),
-		"cn-wulanchabu":               dara.String("eais.aliyuncs.com"),
-		"cn-yushanfang":               dara.String("eais.aliyuncs.com"),
-		"cn-zhangbei":                 dara.String("eais.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        dara.String("eais.aliyuncs.com"),
-		"cn-zhangjiakou":              dara.String("eais.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     dara.String("eais.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       dara.String("eais.aliyuncs.com"),
-		"eu-central-1":                dara.String("eais.aliyuncs.com"),
-		"eu-west-1":                   dara.String("eais.aliyuncs.com"),
-		"eu-west-1-oxs":               dara.String("eais.aliyuncs.com"),
-		"me-east-1":                   dara.String("eais.aliyuncs.com"),
-		"rus-west-1-pop":              dara.String("eais.aliyuncs.com"),
-		"us-east-1":                   dara.String("eais.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("eais"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -118,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachEaiResponse
-func (client *Client) AttachEaiWithOptions(request *AttachEaiRequest, runtime *dara.RuntimeOptions) (_result *AttachEaiResponse, _err error) {
+func (client *Client) AttachEaiWithContext(ctx context.Context, request *AttachEaiRequest, runtime *dara.RuntimeOptions) (_result *AttachEaiResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -153,29 +51,11 @@ func (client *Client) AttachEaiWithOptions(request *AttachEaiRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachEaiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 将弹性加速计算实例挂载到ECS实例上
-//
-// @param request - AttachEaiRequest
-//
-// @return AttachEaiResponse
-func (client *Client) AttachEai(request *AttachEaiRequest) (_result *AttachEaiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachEaiResponse{}
-	_body, _err := client.AttachEaiWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -188,7 +68,7 @@ func (client *Client) AttachEai(request *AttachEaiRequest) (_result *AttachEaiRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachEaisEiResponse
-func (client *Client) AttachEaisEiWithOptions(request *AttachEaisEiRequest, runtime *dara.RuntimeOptions) (_result *AttachEaisEiResponse, _err error) {
+func (client *Client) AttachEaisEiWithContext(ctx context.Context, request *AttachEaisEiRequest, runtime *dara.RuntimeOptions) (_result *AttachEaisEiResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -227,29 +107,11 @@ func (client *Client) AttachEaisEiWithOptions(request *AttachEaisEiRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachEaisEiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 将EI绑定到ECS或ECI实例上
-//
-// @param request - AttachEaisEiRequest
-//
-// @return AttachEaisEiResponse
-func (client *Client) AttachEaisEi(request *AttachEaisEiRequest) (_result *AttachEaisEiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachEaisEiResponse{}
-	_body, _err := client.AttachEaisEiWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -262,7 +124,7 @@ func (client *Client) AttachEaisEi(request *AttachEaisEiRequest) (_result *Attac
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -297,29 +159,11 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 资源转组
-//
-// @param request - ChangeResourceGroupRequest
-//
-// @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -332,7 +176,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEaiResponse
-func (client *Client) CreateEaiWithOptions(request *CreateEaiRequest, runtime *dara.RuntimeOptions) (_result *CreateEaiResponse, _err error) {
+func (client *Client) CreateEaiWithContext(ctx context.Context, request *CreateEaiRequest, runtime *dara.RuntimeOptions) (_result *CreateEaiResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -391,29 +235,11 @@ func (client *Client) CreateEaiWithOptions(request *CreateEaiRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEaiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建一个弹性加速计算实例
-//
-// @param request - CreateEaiRequest
-//
-// @return CreateEaiResponse
-func (client *Client) CreateEai(request *CreateEaiRequest) (_result *CreateEaiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateEaiResponse{}
-	_body, _err := client.CreateEaiWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -426,7 +252,7 @@ func (client *Client) CreateEai(request *CreateEaiRequest) (_result *CreateEaiRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEaiEciResponse
-func (client *Client) CreateEaiEciWithOptions(tmpReq *CreateEaiEciRequest, runtime *dara.RuntimeOptions) (_result *CreateEaiEciResponse, _err error) {
+func (client *Client) CreateEaiEciWithContext(ctx context.Context, tmpReq *CreateEaiEciRequest, runtime *dara.RuntimeOptions) (_result *CreateEaiEciResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -491,29 +317,11 @@ func (client *Client) CreateEaiEciWithOptions(tmpReq *CreateEaiEciRequest, runti
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEaiEciResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建一个EAIS实例和ECI实例并绑定
-//
-// @param request - CreateEaiEciRequest
-//
-// @return CreateEaiEciResponse
-func (client *Client) CreateEaiEci(request *CreateEaiEciRequest) (_result *CreateEaiEciResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateEaiEciResponse{}
-	_body, _err := client.CreateEaiEciWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -526,7 +334,7 @@ func (client *Client) CreateEaiEci(request *CreateEaiEciRequest) (_result *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEaiEcsResponse
-func (client *Client) CreateEaiEcsWithOptions(tmpReq *CreateEaiEcsRequest, runtime *dara.RuntimeOptions) (_result *CreateEaiEcsResponse, _err error) {
+func (client *Client) CreateEaiEcsWithContext(ctx context.Context, tmpReq *CreateEaiEcsRequest, runtime *dara.RuntimeOptions) (_result *CreateEaiEcsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -591,29 +399,11 @@ func (client *Client) CreateEaiEcsWithOptions(tmpReq *CreateEaiEcsRequest, runti
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEaiEcsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建一个EAIS实例和ECS实例并绑定
-//
-// @param request - CreateEaiEcsRequest
-//
-// @return CreateEaiEcsResponse
-func (client *Client) CreateEaiEcs(request *CreateEaiEcsRequest) (_result *CreateEaiEcsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateEaiEcsResponse{}
-	_body, _err := client.CreateEaiEcsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -626,7 +416,7 @@ func (client *Client) CreateEaiEcs(request *CreateEaiEcsRequest) (_result *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEaiJupyterResponse
-func (client *Client) CreateEaiJupyterWithOptions(tmpReq *CreateEaiJupyterRequest, runtime *dara.RuntimeOptions) (_result *CreateEaiJupyterResponse, _err error) {
+func (client *Client) CreateEaiJupyterWithContext(ctx context.Context, tmpReq *CreateEaiJupyterRequest, runtime *dara.RuntimeOptions) (_result *CreateEaiJupyterResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -691,29 +481,11 @@ func (client *Client) CreateEaiJupyterWithOptions(tmpReq *CreateEaiJupyterReques
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEaiJupyterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建一个EAIS Jupyter环境
-//
-// @param request - CreateEaiJupyterRequest
-//
-// @return CreateEaiJupyterResponse
-func (client *Client) CreateEaiJupyter(request *CreateEaiJupyterRequest) (_result *CreateEaiJupyterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateEaiJupyterResponse{}
-	_body, _err := client.CreateEaiJupyterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -726,7 +498,7 @@ func (client *Client) CreateEaiJupyter(request *CreateEaiJupyterRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEaisEiResponse
-func (client *Client) CreateEaisEiWithOptions(request *CreateEaisEiRequest, runtime *dara.RuntimeOptions) (_result *CreateEaisEiResponse, _err error) {
+func (client *Client) CreateEaisEiWithContext(ctx context.Context, request *CreateEaisEiRequest, runtime *dara.RuntimeOptions) (_result *CreateEaisEiResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -781,29 +553,11 @@ func (client *Client) CreateEaisEiWithOptions(request *CreateEaisEiRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEaisEiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建一个弹性加速计算实例
-//
-// @param request - CreateEaisEiRequest
-//
-// @return CreateEaisEiResponse
-func (client *Client) CreateEaisEi(request *CreateEaisEiRequest) (_result *CreateEaisEiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateEaisEiResponse{}
-	_body, _err := client.CreateEaisEiWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -816,7 +570,7 @@ func (client *Client) CreateEaisEi(request *CreateEaisEiRequest) (_result *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEaiResponse
-func (client *Client) DeleteEaiWithOptions(request *DeleteEaiRequest, runtime *dara.RuntimeOptions) (_result *DeleteEaiResponse, _err error) {
+func (client *Client) DeleteEaiWithContext(ctx context.Context, request *DeleteEaiRequest, runtime *dara.RuntimeOptions) (_result *DeleteEaiResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -851,29 +605,11 @@ func (client *Client) DeleteEaiWithOptions(request *DeleteEaiRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEaiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 释放一个弹性加速计算实例
-//
-// @param request - DeleteEaiRequest
-//
-// @return DeleteEaiResponse
-func (client *Client) DeleteEai(request *DeleteEaiRequest) (_result *DeleteEaiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteEaiResponse{}
-	_body, _err := client.DeleteEaiWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -886,7 +622,7 @@ func (client *Client) DeleteEai(request *DeleteEaiRequest) (_result *DeleteEaiRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEaiAllResponse
-func (client *Client) DeleteEaiAllWithOptions(request *DeleteEaiAllRequest, runtime *dara.RuntimeOptions) (_result *DeleteEaiAllResponse, _err error) {
+func (client *Client) DeleteEaiAllWithContext(ctx context.Context, request *DeleteEaiAllRequest, runtime *dara.RuntimeOptions) (_result *DeleteEaiAllResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -921,29 +657,11 @@ func (client *Client) DeleteEaiAllWithOptions(request *DeleteEaiAllRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEaiAllResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 释放一个弹性加速计算实例以及与其绑定的ECS或ECI实例
-//
-// @param request - DeleteEaiAllRequest
-//
-// @return DeleteEaiAllResponse
-func (client *Client) DeleteEaiAll(request *DeleteEaiAllRequest) (_result *DeleteEaiAllResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteEaiAllResponse{}
-	_body, _err := client.DeleteEaiAllWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -956,7 +674,7 @@ func (client *Client) DeleteEaiAll(request *DeleteEaiAllRequest) (_result *Delet
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEaisEiResponse
-func (client *Client) DeleteEaisEiWithOptions(request *DeleteEaisEiRequest, runtime *dara.RuntimeOptions) (_result *DeleteEaisEiResponse, _err error) {
+func (client *Client) DeleteEaisEiWithContext(ctx context.Context, request *DeleteEaisEiRequest, runtime *dara.RuntimeOptions) (_result *DeleteEaisEiResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -991,29 +709,11 @@ func (client *Client) DeleteEaisEiWithOptions(request *DeleteEaisEiRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEaisEiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 释放弹性加速计算实例
-//
-// @param request - DeleteEaisEiRequest
-//
-// @return DeleteEaisEiResponse
-func (client *Client) DeleteEaisEi(request *DeleteEaisEiRequest) (_result *DeleteEaisEiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteEaisEiResponse{}
-	_body, _err := client.DeleteEaisEiWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1026,7 +726,7 @@ func (client *Client) DeleteEaisEi(request *DeleteEaisEiRequest) (_result *Delet
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEaisResponse
-func (client *Client) DescribeEaisWithOptions(request *DescribeEaisRequest, runtime *dara.RuntimeOptions) (_result *DescribeEaisResponse, _err error) {
+func (client *Client) DescribeEaisWithContext(ctx context.Context, request *DescribeEaisRequest, runtime *dara.RuntimeOptions) (_result *DescribeEaisResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1089,76 +789,11 @@ func (client *Client) DescribeEaisWithOptions(request *DescribeEaisRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEaisResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询一个或多个弹性加速计算实例的详细信息
-//
-// @param request - DescribeEaisRequest
-//
-// @return DescribeEaisResponse
-func (client *Client) DescribeEais(request *DescribeEaisRequest) (_result *DescribeEaisResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEaisResponse{}
-	_body, _err := client.DescribeEaisWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询您可以使用的阿里云地域
-//
-// @param request - DescribeRegionsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeRegionsResponse
-func (client *Client) DescribeRegionsWithOptions(runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("DescribeRegions"),
-		Version:     dara.String("2019-06-24"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询您可以使用的阿里云地域
-//
-// @return DescribeRegionsResponse
-func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1171,7 +806,7 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetachEaiResponse
-func (client *Client) DetachEaiWithOptions(request *DetachEaiRequest, runtime *dara.RuntimeOptions) (_result *DetachEaiResponse, _err error) {
+func (client *Client) DetachEaiWithContext(ctx context.Context, request *DetachEaiRequest, runtime *dara.RuntimeOptions) (_result *DetachEaiResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1202,29 +837,11 @@ func (client *Client) DetachEaiWithOptions(request *DetachEaiRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetachEaiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 从ECS实例上卸载弹性加速计算实例
-//
-// @param request - DetachEaiRequest
-//
-// @return DetachEaiResponse
-func (client *Client) DetachEai(request *DetachEaiRequest) (_result *DetachEaiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetachEaiResponse{}
-	_body, _err := client.DetachEaiWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1237,7 +854,7 @@ func (client *Client) DetachEai(request *DetachEaiRequest) (_result *DetachEaiRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetachEaisEiResponse
-func (client *Client) DetachEaisEiWithOptions(request *DetachEaisEiRequest, runtime *dara.RuntimeOptions) (_result *DetachEaisEiResponse, _err error) {
+func (client *Client) DetachEaisEiWithContext(ctx context.Context, request *DetachEaisEiRequest, runtime *dara.RuntimeOptions) (_result *DetachEaisEiResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1268,29 +885,11 @@ func (client *Client) DetachEaisEiWithOptions(request *DetachEaisEiRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetachEaisEiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 将EI实例与ECS或ECI实例解绑
-//
-// @param request - DetachEaisEiRequest
-//
-// @return DetachEaisEiResponse
-func (client *Client) DetachEaisEi(request *DetachEaisEiRequest) (_result *DetachEaisEiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetachEaisEiResponse{}
-	_body, _err := client.DetachEaisEiWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1303,7 +902,7 @@ func (client *Client) DetachEaisEi(request *DetachEaisEiRequest) (_result *Detac
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceMetricsResponse
-func (client *Client) GetInstanceMetricsWithOptions(request *GetInstanceMetricsRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceMetricsResponse, _err error) {
+func (client *Client) GetInstanceMetricsWithContext(ctx context.Context, request *GetInstanceMetricsRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceMetricsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1350,29 +949,11 @@ func (client *Client) GetInstanceMetricsWithOptions(request *GetInstanceMetricsR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetInstanceMetricsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取EAIS实例级别的监控数据
-//
-// @param request - GetInstanceMetricsRequest
-//
-// @return GetInstanceMetricsResponse
-func (client *Client) GetInstanceMetrics(request *GetInstanceMetricsRequest) (_result *GetInstanceMetricsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetInstanceMetricsResponse{}
-	_body, _err := client.GetInstanceMetricsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1385,7 +966,7 @@ func (client *Client) GetInstanceMetrics(request *GetInstanceMetricsRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagResourcesResponse
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1428,29 +1009,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询标签列表
-//
-// @param request - ListTagResourcesRequest
-//
-// @return ListTagResourcesResponse
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1463,7 +1026,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartEaiJupyterResponse
-func (client *Client) StartEaiJupyterWithOptions(request *StartEaiJupyterRequest, runtime *dara.RuntimeOptions) (_result *StartEaiJupyterResponse, _err error) {
+func (client *Client) StartEaiJupyterWithContext(ctx context.Context, request *StartEaiJupyterRequest, runtime *dara.RuntimeOptions) (_result *StartEaiJupyterResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1494,29 +1057,11 @@ func (client *Client) StartEaiJupyterWithOptions(request *StartEaiJupyterRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartEaiJupyterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 启动一个部署了notebook的弹性加速计算实例
-//
-// @param request - StartEaiJupyterRequest
-//
-// @return StartEaiJupyterResponse
-func (client *Client) StartEaiJupyter(request *StartEaiJupyterRequest) (_result *StartEaiJupyterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartEaiJupyterResponse{}
-	_body, _err := client.StartEaiJupyterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1529,7 +1074,7 @@ func (client *Client) StartEaiJupyter(request *StartEaiJupyterRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartEaisEiResponse
-func (client *Client) StartEaisEiWithOptions(request *StartEaisEiRequest, runtime *dara.RuntimeOptions) (_result *StartEaisEiResponse, _err error) {
+func (client *Client) StartEaisEiWithContext(ctx context.Context, request *StartEaisEiRequest, runtime *dara.RuntimeOptions) (_result *StartEaisEiResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1560,29 +1105,11 @@ func (client *Client) StartEaisEiWithOptions(request *StartEaisEiRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartEaisEiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 启动一个弹性加速计算实例
-//
-// @param request - StartEaisEiRequest
-//
-// @return StartEaisEiResponse
-func (client *Client) StartEaisEi(request *StartEaisEiRequest) (_result *StartEaisEiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartEaisEiResponse{}
-	_body, _err := client.StartEaisEiWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1595,7 +1122,7 @@ func (client *Client) StartEaisEi(request *StartEaisEiRequest) (_result *StartEa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopEaiJupyterResponse
-func (client *Client) StopEaiJupyterWithOptions(request *StopEaiJupyterRequest, runtime *dara.RuntimeOptions) (_result *StopEaiJupyterResponse, _err error) {
+func (client *Client) StopEaiJupyterWithContext(ctx context.Context, request *StopEaiJupyterRequest, runtime *dara.RuntimeOptions) (_result *StopEaiJupyterResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1626,29 +1153,11 @@ func (client *Client) StopEaiJupyterWithOptions(request *StopEaiJupyterRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopEaiJupyterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 停止一个部署了notebook的弹性加速计算实例
-//
-// @param request - StopEaiJupyterRequest
-//
-// @return StopEaiJupyterResponse
-func (client *Client) StopEaiJupyter(request *StopEaiJupyterRequest) (_result *StopEaiJupyterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopEaiJupyterResponse{}
-	_body, _err := client.StopEaiJupyterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1661,7 +1170,7 @@ func (client *Client) StopEaiJupyter(request *StopEaiJupyterRequest) (_result *S
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopEaisEiResponse
-func (client *Client) StopEaisEiWithOptions(request *StopEaisEiRequest, runtime *dara.RuntimeOptions) (_result *StopEaisEiResponse, _err error) {
+func (client *Client) StopEaisEiWithContext(ctx context.Context, request *StopEaisEiRequest, runtime *dara.RuntimeOptions) (_result *StopEaisEiResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1692,29 +1201,11 @@ func (client *Client) StopEaisEiWithOptions(request *StopEaisEiRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopEaisEiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 停止一个弹性加速计算实例
-//
-// @param request - StopEaisEiRequest
-//
-// @return StopEaisEiResponse
-func (client *Client) StopEaisEi(request *StopEaisEiRequest) (_result *StopEaisEiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopEaisEiResponse{}
-	_body, _err := client.StopEaisEiWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1727,7 +1218,7 @@ func (client *Client) StopEaisEi(request *StopEaisEiRequest) (_result *StopEaisE
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1766,29 +1257,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 为弹性加速计算实例创建并绑定标签
-//
-// @param request - TagResourcesRequest
-//
-// @return TagResourcesResponse
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1801,7 +1274,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagResourcesResponse
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1844,28 +1317,10 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 解绑并删除标签
-//
-// @param request - UntagResourcesRequest
-//
-// @return UntagResourcesResponse
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
