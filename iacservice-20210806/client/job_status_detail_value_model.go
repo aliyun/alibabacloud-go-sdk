@@ -15,6 +15,8 @@ type iJobStatusDetailValue interface {
 	GetJobResult() *string
 	SetTimeStamps(v string) *JobStatusDetailValue
 	GetTimeStamps() *string
+	SetErrorMessage(v string) *JobStatusDetailValue
+	GetErrorMessage() *string
 }
 
 type JobStatusDetailValue struct {
@@ -26,7 +28,8 @@ type JobStatusDetailValue struct {
 	// example:
 	//
 	// 2022-06-13 17:11:34
-	TimeStamps *string `json:"timeStamps,omitempty" xml:"timeStamps,omitempty"`
+	TimeStamps   *string `json:"timeStamps,omitempty" xml:"timeStamps,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 }
 
 func (s JobStatusDetailValue) String() string {
@@ -49,6 +52,10 @@ func (s *JobStatusDetailValue) GetTimeStamps() *string {
 	return s.TimeStamps
 }
 
+func (s *JobStatusDetailValue) GetErrorMessage() *string {
+	return s.ErrorMessage
+}
+
 func (s *JobStatusDetailValue) SetComment(v string) *JobStatusDetailValue {
 	s.Comment = &v
 	return s
@@ -61,6 +68,11 @@ func (s *JobStatusDetailValue) SetJobResult(v string) *JobStatusDetailValue {
 
 func (s *JobStatusDetailValue) SetTimeStamps(v string) *JobStatusDetailValue {
 	s.TimeStamps = &v
+	return s
+}
+
+func (s *JobStatusDetailValue) SetErrorMessage(v string) *JobStatusDetailValue {
+	s.ErrorMessage = &v
 	return s
 }
 
