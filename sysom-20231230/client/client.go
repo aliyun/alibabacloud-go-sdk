@@ -280,6 +280,88 @@ func (client *Client) CreateAlertStrategy(request *CreateAlertStrategyRequest) (
 
 // Summary:
 //
+// 创建宕机诊断任务
+//
+// @param request - CreateVmcoreDiagnosisTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVmcoreDiagnosisTaskResponse
+func (client *Client) CreateVmcoreDiagnosisTaskWithOptions(request *CreateVmcoreDiagnosisTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateVmcoreDiagnosisTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DebuginfoCommonUrl) {
+		body["debuginfoCommonUrl"] = request.DebuginfoCommonUrl
+	}
+
+	if !dara.IsNil(request.DebuginfoUrl) {
+		body["debuginfoUrl"] = request.DebuginfoUrl
+	}
+
+	if !dara.IsNil(request.DmesgUrl) {
+		body["dmesgUrl"] = request.DmesgUrl
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		body["taskType"] = request.TaskType
+	}
+
+	if !dara.IsNil(request.VmcoreUrl) {
+		body["vmcoreUrl"] = request.VmcoreUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateVmcoreDiagnosisTask"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/crashAgent/diagnosis/createDiagnosisTask"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateVmcoreDiagnosisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建宕机诊断任务
+//
+// @param request - CreateVmcoreDiagnosisTaskRequest
+//
+// @return CreateVmcoreDiagnosisTaskResponse
+func (client *Client) CreateVmcoreDiagnosisTask(request *CreateVmcoreDiagnosisTaskRequest) (_result *CreateVmcoreDiagnosisTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateVmcoreDiagnosisTaskResponse{}
+	_body, _err := client.CreateVmcoreDiagnosisTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 用户删除推送告警的策略
 //
 // @param request - DeleteAlertStrategyRequest
@@ -2185,6 +2267,72 @@ func (client *Client) GetServiceFuncStatus(request *GetServiceFuncStatusRequest)
 
 // Summary:
 //
+// 查询宕机诊断任务结果
+//
+// @param request - GetVmcoreDiagnosisTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVmcoreDiagnosisTaskResponse
+func (client *Client) GetVmcoreDiagnosisTaskWithOptions(request *GetVmcoreDiagnosisTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetVmcoreDiagnosisTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVmcoreDiagnosisTask"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/crashAgent/diagnosis/queryTask"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVmcoreDiagnosisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询宕机诊断任务结果
+//
+// @param request - GetVmcoreDiagnosisTaskRequest
+//
+// @return GetVmcoreDiagnosisTaskResponse
+func (client *Client) GetVmcoreDiagnosisTask(request *GetVmcoreDiagnosisTaskRequest) (_result *GetVmcoreDiagnosisTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetVmcoreDiagnosisTaskResponse{}
+	_body, _err := client.GetVmcoreDiagnosisTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 初始化SysOM，确保角色存在
 //
 // @param request - InitialSysomRequest
@@ -3990,6 +4138,72 @@ func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 	headers := make(map[string]*string)
 	_result = &ListRegionsResponse{}
 	_body, _err := client.ListRegionsWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询历史宕机诊断任务
+//
+// @param request - ListVmcoreDiagnosisTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVmcoreDiagnosisTaskResponse
+func (client *Client) ListVmcoreDiagnosisTaskWithOptions(request *ListVmcoreDiagnosisTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListVmcoreDiagnosisTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Days) {
+		query["days"] = request.Days
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVmcoreDiagnosisTask"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/crashAgent/diagnosis/queryTaskList"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVmcoreDiagnosisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询历史宕机诊断任务
+//
+// @param request - ListVmcoreDiagnosisTaskRequest
+//
+// @return ListVmcoreDiagnosisTaskResponse
+func (client *Client) ListVmcoreDiagnosisTask(request *ListVmcoreDiagnosisTaskRequest) (_result *ListVmcoreDiagnosisTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListVmcoreDiagnosisTaskResponse{}
+	_body, _err := client.ListVmcoreDiagnosisTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
