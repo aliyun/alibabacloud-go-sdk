@@ -1950,6 +1950,96 @@ func (client *Client) ExecuteTerraformPlan(request *ExecuteTerraformPlanRequest)
 
 // Summary:
 //
+// 生成模板
+//
+// @param request - GenerateModuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateModuleResponse
+func (client *Client) GenerateModuleWithOptions(request *GenerateModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenerateModuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GenerateSource) {
+		body["generateSource"] = request.GenerateSource
+	}
+
+	if !dara.IsNil(request.Parameters) {
+		body["parameters"] = request.Parameters
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["regionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Syntax) {
+		body["syntax"] = request.Syntax
+	}
+
+	if !dara.IsNil(request.Template) {
+		body["template"] = request.Template
+	}
+
+	if !dara.IsNil(request.TerraformProviderVersion) {
+		body["terraformProviderVersion"] = request.TerraformProviderVersion
+	}
+
+	if !dara.IsNil(request.TerraformResourceType) {
+		body["terraformResourceType"] = request.TerraformResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateModule"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/explorer/generate/module"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("Anonymous"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateModuleResponse{}
+	_body, _err := client.DoROARequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成模板
+//
+// @param request - GenerateModuleRequest
+//
+// @return GenerateModuleResponse
+func (client *Client) GenerateModule(request *GenerateModuleRequest) (_result *GenerateModuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GenerateModuleResponse{}
+	_body, _err := client.GenerateModuleWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取Terraform运行结果
 //
 // @param headers - map

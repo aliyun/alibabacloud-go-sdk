@@ -356,7 +356,8 @@ type GetJobResponseBodyJobConfig struct {
 	// example:
 	//
 	// true
-	AutoApply *bool `json:"autoApply,omitempty" xml:"autoApply,omitempty"`
+	AutoApply          *bool   `json:"autoApply,omitempty" xml:"autoApply,omitempty"`
+	HasConfigProactive *string `json:"hasConfigProactive,omitempty" xml:"hasConfigProactive,omitempty"`
 	// example:
 	//
 	// fales
@@ -384,6 +385,10 @@ func (s *GetJobResponseBodyJobConfig) GetAutoApply() *bool {
 	return s.AutoApply
 }
 
+func (s *GetJobResponseBodyJobConfig) GetHasConfigProactive() *string {
+	return s.HasConfigProactive
+}
+
 func (s *GetJobResponseBodyJobConfig) GetIsDestroy() *bool {
 	return s.IsDestroy
 }
@@ -402,6 +407,11 @@ func (s *GetJobResponseBodyJobConfig) GetSubCommand() *string {
 
 func (s *GetJobResponseBodyJobConfig) SetAutoApply(v bool) *GetJobResponseBodyJobConfig {
 	s.AutoApply = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobConfig) SetHasConfigProactive(v string) *GetJobResponseBodyJobConfig {
+	s.HasConfigProactive = &v
 	return s
 }
 
