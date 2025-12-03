@@ -53,7 +53,12 @@ func (s *DescribeDeployApiTaskResponseBody) SetRequestId(v string) *DescribeDepl
 }
 
 func (s *DescribeDeployApiTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeployedResults != nil {
+		if err := s.DeployedResults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDeployApiTaskResponseBodyDeployedResults struct {
@@ -78,7 +83,16 @@ func (s *DescribeDeployApiTaskResponseBodyDeployedResults) SetDeployedResult(v [
 }
 
 func (s *DescribeDeployApiTaskResponseBodyDeployedResults) Validate() error {
-	return dara.Validate(s)
+	if s.DeployedResult != nil {
+		for _, item := range s.DeployedResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeployApiTaskResponseBodyDeployedResultsDeployedResult struct {

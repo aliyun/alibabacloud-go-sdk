@@ -104,7 +104,12 @@ func (s *DescribeVpcAccessesResponseBody) SetVpcAccessAttributes(v *DescribeVpcA
 }
 
 func (s *DescribeVpcAccessesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VpcAccessAttributes != nil {
+		if err := s.VpcAccessAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpcAccessesResponseBodyVpcAccessAttributes struct {
@@ -129,7 +134,16 @@ func (s *DescribeVpcAccessesResponseBodyVpcAccessAttributes) SetVpcAccessAttribu
 }
 
 func (s *DescribeVpcAccessesResponseBodyVpcAccessAttributes) Validate() error {
-	return dara.Validate(s)
+	if s.VpcAccessAttribute != nil {
+		for _, item := range s.VpcAccessAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute struct {
@@ -290,7 +304,12 @@ func (s *DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute) S
 }
 
 func (s *DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttributeTags struct {
@@ -315,7 +334,16 @@ func (s *DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttributeTag
 }
 
 func (s *DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttributeTags) Validate() error {
-	return dara.Validate(s)
+	if s.TagInfo != nil {
+		for _, item := range s.TagInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttributeTagsTagInfo struct {

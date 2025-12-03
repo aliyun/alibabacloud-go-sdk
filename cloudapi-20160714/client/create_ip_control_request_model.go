@@ -107,7 +107,16 @@ func (s *CreateIpControlRequest) SetSecurityToken(v string) *CreateIpControlRequ
 }
 
 func (s *CreateIpControlRequest) Validate() error {
-	return dara.Validate(s)
+	if s.IpControlPolicys != nil {
+		for _, item := range s.IpControlPolicys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateIpControlRequestIpControlPolicys struct {

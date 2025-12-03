@@ -104,7 +104,12 @@ func (s *DescribeAccessControlListAttributeResponseBody) SetRequestId(v string) 
 }
 
 func (s *DescribeAccessControlListAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AclEntrys != nil {
+		if err := s.AclEntrys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAccessControlListAttributeResponseBodyAclEntrys struct {
@@ -129,7 +134,16 @@ func (s *DescribeAccessControlListAttributeResponseBodyAclEntrys) SetAclEntry(v 
 }
 
 func (s *DescribeAccessControlListAttributeResponseBodyAclEntrys) Validate() error {
-	return dara.Validate(s)
+	if s.AclEntry != nil {
+		for _, item := range s.AclEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry struct {

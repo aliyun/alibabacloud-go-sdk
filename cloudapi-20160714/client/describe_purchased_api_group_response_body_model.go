@@ -159,7 +159,12 @@ func (s *DescribePurchasedApiGroupResponseBody) SetStatus(v string) *DescribePur
 }
 
 func (s *DescribePurchasedApiGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Domains != nil {
+		if err := s.Domains.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePurchasedApiGroupResponseBodyDomains struct {
@@ -184,7 +189,16 @@ func (s *DescribePurchasedApiGroupResponseBodyDomains) SetDomainItem(v []*Descri
 }
 
 func (s *DescribePurchasedApiGroupResponseBodyDomains) Validate() error {
-	return dara.Validate(s)
+	if s.DomainItem != nil {
+		for _, item := range s.DomainItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePurchasedApiGroupResponseBodyDomainsDomainItem struct {

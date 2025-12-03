@@ -53,7 +53,12 @@ func (s *DescribeTrafficControlsByApiResponseBody) SetTrafficControlItems(v *Des
 }
 
 func (s *DescribeTrafficControlsByApiResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficControlItems != nil {
+		if err := s.TrafficControlItems.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTrafficControlsByApiResponseBodyTrafficControlItems struct {
@@ -78,7 +83,16 @@ func (s *DescribeTrafficControlsByApiResponseBodyTrafficControlItems) SetTraffic
 }
 
 func (s *DescribeTrafficControlsByApiResponseBodyTrafficControlItems) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficControlItem != nil {
+		for _, item := range s.TrafficControlItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTrafficControlsByApiResponseBodyTrafficControlItemsTrafficControlItem struct {

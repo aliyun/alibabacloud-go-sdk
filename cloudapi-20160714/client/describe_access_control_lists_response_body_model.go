@@ -104,7 +104,12 @@ func (s *DescribeAccessControlListsResponseBody) SetTotalCount(v int32) *Describ
 }
 
 func (s *DescribeAccessControlListsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Acls != nil {
+		if err := s.Acls.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAccessControlListsResponseBodyAcls struct {
@@ -129,7 +134,16 @@ func (s *DescribeAccessControlListsResponseBodyAcls) SetAcl(v []*DescribeAccessC
 }
 
 func (s *DescribeAccessControlListsResponseBodyAcls) Validate() error {
-	return dara.Validate(s)
+	if s.Acl != nil {
+		for _, item := range s.Acl {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAccessControlListsResponseBodyAclsAcl struct {

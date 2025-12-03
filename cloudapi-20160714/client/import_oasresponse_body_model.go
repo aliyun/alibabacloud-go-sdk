@@ -135,7 +135,37 @@ func (s *ImportOASResponseBody) SetWarningMessages(v *ImportOASResponseBodyWarni
 }
 
 func (s *ImportOASResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorMessages != nil {
+		if err := s.ErrorMessages.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FailedApis != nil {
+		if err := s.FailedApis.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FailedModels != nil {
+		if err := s.FailedModels.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SuccessApis != nil {
+		if err := s.SuccessApis.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SuccessModels != nil {
+		if err := s.SuccessModels.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WarningMessages != nil {
+		if err := s.WarningMessages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ImportOASResponseBodyErrorMessages struct {
@@ -185,7 +215,16 @@ func (s *ImportOASResponseBodyFailedApis) SetFailedApi(v []*ImportOASResponseBod
 }
 
 func (s *ImportOASResponseBodyFailedApis) Validate() error {
-	return dara.Validate(s)
+	if s.FailedApi != nil {
+		for _, item := range s.FailedApi {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImportOASResponseBodyFailedApisFailedApi struct {
@@ -270,7 +309,16 @@ func (s *ImportOASResponseBodyFailedModels) SetFailedModel(v []*ImportOASRespons
 }
 
 func (s *ImportOASResponseBodyFailedModels) Validate() error {
-	return dara.Validate(s)
+	if s.FailedModel != nil {
+		for _, item := range s.FailedModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImportOASResponseBodyFailedModelsFailedModel struct {
@@ -355,7 +403,16 @@ func (s *ImportOASResponseBodySuccessApis) SetSuccessApi(v []*ImportOASResponseB
 }
 
 func (s *ImportOASResponseBodySuccessApis) Validate() error {
-	return dara.Validate(s)
+	if s.SuccessApi != nil {
+		for _, item := range s.SuccessApi {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImportOASResponseBodySuccessApisSuccessApi struct {
@@ -455,7 +512,16 @@ func (s *ImportOASResponseBodySuccessModels) SetSuccessModel(v []*ImportOASRespo
 }
 
 func (s *ImportOASResponseBodySuccessModels) Validate() error {
-	return dara.Validate(s)
+	if s.SuccessModel != nil {
+		for _, item := range s.SuccessModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImportOASResponseBodySuccessModelsSuccessModel struct {

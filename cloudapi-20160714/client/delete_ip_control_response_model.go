@@ -59,5 +59,10 @@ func (s *DeleteIpControlResponse) SetBody(v *DeleteIpControlResponseBody) *Delet
 }
 
 func (s *DeleteIpControlResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

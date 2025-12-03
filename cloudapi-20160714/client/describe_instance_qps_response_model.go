@@ -59,5 +59,10 @@ func (s *DescribeInstanceQpsResponse) SetBody(v *DescribeInstanceQpsResponseBody
 }
 
 func (s *DescribeInstanceQpsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

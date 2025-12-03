@@ -59,5 +59,10 @@ func (s *SetIpControlApisResponse) SetBody(v *SetIpControlApisResponseBody) *Set
 }
 
 func (s *SetIpControlApisResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

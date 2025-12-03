@@ -156,7 +156,16 @@ func (s *CreateAppRequest) SetTag(v []*CreateAppRequestTag) *CreateAppRequest {
 }
 
 func (s *CreateAppRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAppRequestTag struct {

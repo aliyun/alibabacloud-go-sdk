@@ -510,7 +510,62 @@ func (s *DescribeDeployedApiResponseBody) SetVisibility(v string) *DescribeDeplo
 }
 
 func (s *DescribeDeployedApiResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ConstantParameters != nil {
+		if err := s.ConstantParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomSystemParameters != nil {
+		if err := s.CustomSystemParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ErrorCodeSamples != nil {
+		if err := s.ErrorCodeSamples.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OpenIdConnectConfig != nil {
+		if err := s.OpenIdConnectConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RequestConfig != nil {
+		if err := s.RequestConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RequestParameters != nil {
+		if err := s.RequestParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResultDescriptions != nil {
+		if err := s.ResultDescriptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceConfig != nil {
+		if err := s.ServiceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceParameters != nil {
+		if err := s.ServiceParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceParametersMap != nil {
+		if err := s.ServiceParametersMap.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SystemParameters != nil {
+		if err := s.SystemParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDeployedApiResponseBodyConstantParameters struct {
@@ -535,7 +590,16 @@ func (s *DescribeDeployedApiResponseBodyConstantParameters) SetConstantParameter
 }
 
 func (s *DescribeDeployedApiResponseBodyConstantParameters) Validate() error {
-	return dara.Validate(s)
+	if s.ConstantParameter != nil {
+		for _, item := range s.ConstantParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeployedApiResponseBodyConstantParametersConstantParameter struct {
@@ -635,7 +699,16 @@ func (s *DescribeDeployedApiResponseBodyCustomSystemParameters) SetCustomSystemP
 }
 
 func (s *DescribeDeployedApiResponseBodyCustomSystemParameters) Validate() error {
-	return dara.Validate(s)
+	if s.CustomSystemParameter != nil {
+		for _, item := range s.CustomSystemParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeployedApiResponseBodyCustomSystemParametersCustomSystemParameter struct {
@@ -750,7 +823,16 @@ func (s *DescribeDeployedApiResponseBodyErrorCodeSamples) SetErrorCodeSample(v [
 }
 
 func (s *DescribeDeployedApiResponseBodyErrorCodeSamples) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorCodeSample != nil {
+		for _, item := range s.ErrorCodeSample {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeployedApiResponseBodyErrorCodeSamplesErrorCodeSample struct {
@@ -1042,7 +1124,16 @@ func (s *DescribeDeployedApiResponseBodyRequestParameters) SetRequestParameter(v
 }
 
 func (s *DescribeDeployedApiResponseBodyRequestParameters) Validate() error {
-	return dara.Validate(s)
+	if s.RequestParameter != nil {
+		for _, item := range s.RequestParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeployedApiResponseBodyRequestParametersRequestParameter struct {
@@ -1337,7 +1428,16 @@ func (s *DescribeDeployedApiResponseBodyResultDescriptions) SetResultDescription
 }
 
 func (s *DescribeDeployedApiResponseBodyResultDescriptions) Validate() error {
-	return dara.Validate(s)
+	if s.ResultDescription != nil {
+		for _, item := range s.ResultDescription {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeployedApiResponseBodyResultDescriptionsResultDescription struct {
@@ -1676,7 +1776,22 @@ func (s *DescribeDeployedApiResponseBodyServiceConfig) SetVpcId(v string) *Descr
 }
 
 func (s *DescribeDeployedApiResponseBodyServiceConfig) Validate() error {
-	return dara.Validate(s)
+	if s.FunctionComputeConfig != nil {
+		if err := s.FunctionComputeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MockHeaders != nil {
+		if err := s.MockHeaders.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VpcConfig != nil {
+		if err := s.VpcConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDeployedApiResponseBodyServiceConfigFunctionComputeConfig struct {
@@ -1902,7 +2017,16 @@ func (s *DescribeDeployedApiResponseBodyServiceConfigMockHeaders) SetMockHeader(
 }
 
 func (s *DescribeDeployedApiResponseBodyServiceConfigMockHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.MockHeader != nil {
+		for _, item := range s.MockHeader {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeployedApiResponseBodyServiceConfigMockHeadersMockHeader struct {
@@ -2047,7 +2171,16 @@ func (s *DescribeDeployedApiResponseBodyServiceParameters) SetServiceParameter(v
 }
 
 func (s *DescribeDeployedApiResponseBodyServiceParameters) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceParameter != nil {
+		for _, item := range s.ServiceParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeployedApiResponseBodyServiceParametersServiceParameter struct {
@@ -2132,7 +2265,16 @@ func (s *DescribeDeployedApiResponseBodyServiceParametersMap) SetServiceParamete
 }
 
 func (s *DescribeDeployedApiResponseBodyServiceParametersMap) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceParameterMap != nil {
+		for _, item := range s.ServiceParameterMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeployedApiResponseBodyServiceParametersMapServiceParameterMap struct {
@@ -2202,7 +2344,16 @@ func (s *DescribeDeployedApiResponseBodySystemParameters) SetSystemParameter(v [
 }
 
 func (s *DescribeDeployedApiResponseBodySystemParameters) Validate() error {
-	return dara.Validate(s)
+	if s.SystemParameter != nil {
+		for _, item := range s.SystemParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeployedApiResponseBodySystemParametersSystemParameter struct {

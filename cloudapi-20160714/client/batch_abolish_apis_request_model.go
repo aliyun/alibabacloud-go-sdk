@@ -50,7 +50,16 @@ func (s *BatchAbolishApisRequest) SetSecurityToken(v string) *BatchAbolishApisRe
 }
 
 func (s *BatchAbolishApisRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Api != nil {
+		for _, item := range s.Api {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchAbolishApisRequestApi struct {

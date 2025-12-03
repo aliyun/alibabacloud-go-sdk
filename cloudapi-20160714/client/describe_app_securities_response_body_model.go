@@ -53,7 +53,12 @@ func (s *DescribeAppSecuritiesResponseBody) SetRequestId(v string) *DescribeAppS
 }
 
 func (s *DescribeAppSecuritiesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppSecuritys != nil {
+		if err := s.AppSecuritys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAppSecuritiesResponseBodyAppSecuritys struct {
@@ -78,7 +83,16 @@ func (s *DescribeAppSecuritiesResponseBodyAppSecuritys) SetAppSecurity(v []*Desc
 }
 
 func (s *DescribeAppSecuritiesResponseBodyAppSecuritys) Validate() error {
-	return dara.Validate(s)
+	if s.AppSecurity != nil {
+		for _, item := range s.AppSecurity {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity struct {

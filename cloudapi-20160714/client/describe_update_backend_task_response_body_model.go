@@ -50,7 +50,12 @@ func (s *DescribeUpdateBackendTaskResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeUpdateBackendTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApiUpdateBackendResults != nil {
+		if err := s.ApiUpdateBackendResults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResults struct {
@@ -75,7 +80,16 @@ func (s *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResults) SetApiUpd
 }
 
 func (s *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResults) Validate() error {
-	return dara.Validate(s)
+	if s.ApiUpdateBackendResult != nil {
+		for _, item := range s.ApiUpdateBackendResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult struct {

@@ -104,7 +104,16 @@ func (s *DescribeDatasetItemListResponseBody) SetTotalCount(v int32) *DescribeDa
 }
 
 func (s *DescribeDatasetItemListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DatasetItemInfoList != nil {
+		for _, item := range s.DatasetItemInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDatasetItemListResponseBodyDatasetItemInfoList struct {

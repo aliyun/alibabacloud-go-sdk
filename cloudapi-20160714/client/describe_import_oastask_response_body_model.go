@@ -107,7 +107,17 @@ func (s *DescribeImportOASTaskResponseBody) SetTaskStatus(v string) *DescribeImp
 }
 
 func (s *DescribeImportOASTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApiResults != nil {
+		if err := s.ApiResults.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModelResults != nil {
+		if err := s.ModelResults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImportOASTaskResponseBodyApiResults struct {
@@ -132,7 +142,16 @@ func (s *DescribeImportOASTaskResponseBodyApiResults) SetApiResult(v []*Describe
 }
 
 func (s *DescribeImportOASTaskResponseBodyApiResults) Validate() error {
-	return dara.Validate(s)
+	if s.ApiResult != nil {
+		for _, item := range s.ApiResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImportOASTaskResponseBodyApiResultsApiResult struct {
@@ -302,7 +321,16 @@ func (s *DescribeImportOASTaskResponseBodyModelResults) SetModelResult(v []*Desc
 }
 
 func (s *DescribeImportOASTaskResponseBodyModelResults) Validate() error {
-	return dara.Validate(s)
+	if s.ModelResult != nil {
+		for _, item := range s.ModelResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImportOASTaskResponseBodyModelResultsModelResult struct {

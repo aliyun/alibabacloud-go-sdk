@@ -53,7 +53,12 @@ func (s *DescribeLogConfigResponseBody) SetRequestId(v string) *DescribeLogConfi
 }
 
 func (s *DescribeLogConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LogInfos != nil {
+		if err := s.LogInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLogConfigResponseBodyLogInfos struct {
@@ -78,7 +83,16 @@ func (s *DescribeLogConfigResponseBodyLogInfos) SetLogInfo(v []*DescribeLogConfi
 }
 
 func (s *DescribeLogConfigResponseBodyLogInfos) Validate() error {
-	return dara.Validate(s)
+	if s.LogInfo != nil {
+		for _, item := range s.LogInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLogConfigResponseBodyLogInfosLogInfo struct {

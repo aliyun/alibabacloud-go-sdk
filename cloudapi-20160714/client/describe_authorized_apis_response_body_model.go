@@ -104,7 +104,12 @@ func (s *DescribeAuthorizedApisResponseBody) SetTotalCount(v int32) *DescribeAut
 }
 
 func (s *DescribeAuthorizedApisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizedApis != nil {
+		if err := s.AuthorizedApis.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAuthorizedApisResponseBodyAuthorizedApis struct {
@@ -129,7 +134,16 @@ func (s *DescribeAuthorizedApisResponseBodyAuthorizedApis) SetAuthorizedApi(v []
 }
 
 func (s *DescribeAuthorizedApisResponseBodyAuthorizedApis) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizedApi != nil {
+		for _, item := range s.AuthorizedApi {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAuthorizedApisResponseBodyAuthorizedApisAuthorizedApi struct {

@@ -53,7 +53,12 @@ func (s *DescribeInstanceLatencyResponseBody) SetRequestId(v string) *DescribeIn
 }
 
 func (s *DescribeInstanceLatencyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceLatency != nil {
+		if err := s.InstanceLatency.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceLatencyResponseBodyInstanceLatency struct {
@@ -78,7 +83,16 @@ func (s *DescribeInstanceLatencyResponseBodyInstanceLatency) SetMonitorItem(v []
 }
 
 func (s *DescribeInstanceLatencyResponseBodyInstanceLatency) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorItem != nil {
+		for _, item := range s.MonitorItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceLatencyResponseBodyInstanceLatencyMonitorItem struct {

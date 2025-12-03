@@ -104,7 +104,12 @@ func (s *DescribePluginGroupsResponseBody) SetTotalCount(v int32) *DescribePlugi
 }
 
 func (s *DescribePluginGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GroupSummarys != nil {
+		if err := s.GroupSummarys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePluginGroupsResponseBodyGroupSummarys struct {
@@ -129,7 +134,16 @@ func (s *DescribePluginGroupsResponseBodyGroupSummarys) SetGroupPluginSummary(v 
 }
 
 func (s *DescribePluginGroupsResponseBodyGroupSummarys) Validate() error {
-	return dara.Validate(s)
+	if s.GroupPluginSummary != nil {
+		for _, item := range s.GroupPluginSummary {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary struct {

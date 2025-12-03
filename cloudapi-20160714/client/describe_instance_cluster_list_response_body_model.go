@@ -104,7 +104,12 @@ func (s *DescribeInstanceClusterListResponseBody) SetTotalCount(v int32) *Descri
 }
 
 func (s *DescribeInstanceClusterListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceClusters != nil {
+		if err := s.InstanceClusters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceClusterListResponseBodyInstanceClusters struct {
@@ -129,7 +134,16 @@ func (s *DescribeInstanceClusterListResponseBodyInstanceClusters) SetInstanceClu
 }
 
 func (s *DescribeInstanceClusterListResponseBodyInstanceClusters) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceCluster != nil {
+		for _, item := range s.InstanceCluster {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster struct {

@@ -104,7 +104,12 @@ func (s *DescribeSignaturesResponseBody) SetTotalCount(v int32) *DescribeSignatu
 }
 
 func (s *DescribeSignaturesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SignatureInfos != nil {
+		if err := s.SignatureInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSignaturesResponseBodySignatureInfos struct {
@@ -129,7 +134,16 @@ func (s *DescribeSignaturesResponseBodySignatureInfos) SetSignatureInfo(v []*Des
 }
 
 func (s *DescribeSignaturesResponseBodySignatureInfos) Validate() error {
-	return dara.Validate(s)
+	if s.SignatureInfo != nil {
+		for _, item := range s.SignatureInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSignaturesResponseBodySignatureInfosSignatureInfo struct {

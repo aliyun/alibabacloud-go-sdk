@@ -53,7 +53,12 @@ func (s *DescribeInstanceHttpCodeResponseBody) SetRequestId(v string) *DescribeI
 }
 
 func (s *DescribeInstanceHttpCodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceHttpCode != nil {
+		if err := s.InstanceHttpCode.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceHttpCodeResponseBodyInstanceHttpCode struct {
@@ -78,7 +83,16 @@ func (s *DescribeInstanceHttpCodeResponseBodyInstanceHttpCode) SetMonitorItem(v 
 }
 
 func (s *DescribeInstanceHttpCodeResponseBodyInstanceHttpCode) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorItem != nil {
+		for _, item := range s.MonitorItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceHttpCodeResponseBodyInstanceHttpCodeMonitorItem struct {

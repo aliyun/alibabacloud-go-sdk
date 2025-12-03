@@ -53,7 +53,12 @@ func (s *DescribeInstanceQpsResponseBody) SetRequestId(v string) *DescribeInstan
 }
 
 func (s *DescribeInstanceQpsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceQps != nil {
+		if err := s.InstanceQps.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceQpsResponseBodyInstanceQps struct {
@@ -78,7 +83,16 @@ func (s *DescribeInstanceQpsResponseBodyInstanceQps) SetMonitorItem(v []*Describ
 }
 
 func (s *DescribeInstanceQpsResponseBodyInstanceQps) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorItem != nil {
+		for _, item := range s.MonitorItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceQpsResponseBodyInstanceQpsMonitorItem struct {

@@ -104,7 +104,12 @@ func (s *DescribeDeployedApisResponseBody) SetTotalCount(v int32) *DescribeDeplo
 }
 
 func (s *DescribeDeployedApisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeployedApis != nil {
+		if err := s.DeployedApis.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDeployedApisResponseBodyDeployedApis struct {
@@ -129,7 +134,16 @@ func (s *DescribeDeployedApisResponseBodyDeployedApis) SetDeployedApiItem(v []*D
 }
 
 func (s *DescribeDeployedApisResponseBodyDeployedApis) Validate() error {
-	return dara.Validate(s)
+	if s.DeployedApiItem != nil {
+		for _, item := range s.DeployedApiItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeployedApisResponseBodyDeployedApisDeployedApiItem struct {

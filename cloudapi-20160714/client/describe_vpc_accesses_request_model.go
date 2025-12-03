@@ -184,7 +184,16 @@ func (s *DescribeVpcAccessesRequest) SetVpcId(v string) *DescribeVpcAccessesRequ
 }
 
 func (s *DescribeVpcAccessesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcAccessesRequestTag struct {

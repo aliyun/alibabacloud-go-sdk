@@ -104,7 +104,12 @@ func (s *DescribeAppsByApiProductResponseBody) SetTotalCount(v int32) *DescribeA
 }
 
 func (s *DescribeAppsByApiProductResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizedApps != nil {
+		if err := s.AuthorizedApps.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAppsByApiProductResponseBodyAuthorizedApps struct {
@@ -129,7 +134,16 @@ func (s *DescribeAppsByApiProductResponseBodyAuthorizedApps) SetAuthorizedApp(v 
 }
 
 func (s *DescribeAppsByApiProductResponseBodyAuthorizedApps) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizedApp != nil {
+		for _, item := range s.AuthorizedApp {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAppsByApiProductResponseBodyAuthorizedAppsAuthorizedApp struct {

@@ -225,7 +225,12 @@ func (s *ModifyInstanceAttributeRequest) SetVpcSlbIntranetEnable(v string) *Modi
 }
 
 func (s *ModifyInstanceAttributeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ToConnectVpcIpBlock != nil {
+		if err := s.ToConnectVpcIpBlock.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyInstanceAttributeRequestToConnectVpcIpBlock struct {

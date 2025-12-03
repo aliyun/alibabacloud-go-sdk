@@ -104,7 +104,12 @@ func (s *DescribeAppsResponseBody) SetTotalCount(v int32) *DescribeAppsResponseB
 }
 
 func (s *DescribeAppsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Apps != nil {
+		if err := s.Apps.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAppsResponseBodyApps struct {
@@ -129,7 +134,16 @@ func (s *DescribeAppsResponseBodyApps) SetAppItem(v []*DescribeAppsResponseBodyA
 }
 
 func (s *DescribeAppsResponseBodyApps) Validate() error {
-	return dara.Validate(s)
+	if s.AppItem != nil {
+		for _, item := range s.AppItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAppsResponseBodyAppsAppItem struct {

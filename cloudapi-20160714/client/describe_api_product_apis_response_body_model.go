@@ -104,7 +104,12 @@ func (s *DescribeApiProductApisResponseBody) SetTotalCount(v int32) *DescribeApi
 }
 
 func (s *DescribeApiProductApisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApiInfoList != nil {
+		if err := s.ApiInfoList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApiProductApisResponseBodyApiInfoList struct {
@@ -129,7 +134,16 @@ func (s *DescribeApiProductApisResponseBodyApiInfoList) SetApiInfo(v []*Describe
 }
 
 func (s *DescribeApiProductApisResponseBodyApiInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.ApiInfo != nil {
+		for _, item := range s.ApiInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiProductApisResponseBodyApiInfoListApiInfo struct {

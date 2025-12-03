@@ -53,7 +53,12 @@ func (s *DescribeInstanceTrafficResponseBody) SetRequestId(v string) *DescribeIn
 }
 
 func (s *DescribeInstanceTrafficResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceTraffic != nil {
+		if err := s.InstanceTraffic.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceTrafficResponseBodyInstanceTraffic struct {
@@ -78,7 +83,16 @@ func (s *DescribeInstanceTrafficResponseBodyInstanceTraffic) SetMonitorItem(v []
 }
 
 func (s *DescribeInstanceTrafficResponseBodyInstanceTraffic) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorItem != nil {
+		for _, item := range s.MonitorItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceTrafficResponseBodyInstanceTrafficMonitorItem struct {

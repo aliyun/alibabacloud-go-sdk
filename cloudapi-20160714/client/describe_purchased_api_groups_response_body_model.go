@@ -104,7 +104,12 @@ func (s *DescribePurchasedApiGroupsResponseBody) SetTotalCount(v int32) *Describ
 }
 
 func (s *DescribePurchasedApiGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PurchasedApiGroupAttributes != nil {
+		if err := s.PurchasedApiGroupAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePurchasedApiGroupsResponseBodyPurchasedApiGroupAttributes struct {
@@ -129,7 +134,16 @@ func (s *DescribePurchasedApiGroupsResponseBodyPurchasedApiGroupAttributes) SetP
 }
 
 func (s *DescribePurchasedApiGroupsResponseBodyPurchasedApiGroupAttributes) Validate() error {
-	return dara.Validate(s)
+	if s.PurchasedApiGroupAttribute != nil {
+		for _, item := range s.PurchasedApiGroupAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePurchasedApiGroupsResponseBodyPurchasedApiGroupAttributesPurchasedApiGroupAttribute struct {

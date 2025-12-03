@@ -104,7 +104,12 @@ func (s *DescribeApisByAppResponseBody) SetTotalCount(v int32) *DescribeApisByAp
 }
 
 func (s *DescribeApisByAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppApiRelationInfos != nil {
+		if err := s.AppApiRelationInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApisByAppResponseBodyAppApiRelationInfos struct {
@@ -129,7 +134,16 @@ func (s *DescribeApisByAppResponseBodyAppApiRelationInfos) SetAppApiRelationInfo
 }
 
 func (s *DescribeApisByAppResponseBodyAppApiRelationInfos) Validate() error {
-	return dara.Validate(s)
+	if s.AppApiRelationInfo != nil {
+		for _, item := range s.AppApiRelationInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApisByAppResponseBodyAppApiRelationInfosAppApiRelationInfo struct {

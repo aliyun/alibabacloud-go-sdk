@@ -59,5 +59,10 @@ func (s *DryRunSwaggerResponse) SetBody(v *DryRunSwaggerResponseBody) *DryRunSwa
 }
 
 func (s *DryRunSwaggerResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

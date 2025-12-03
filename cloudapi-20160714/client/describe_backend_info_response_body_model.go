@@ -53,7 +53,12 @@ func (s *DescribeBackendInfoResponseBody) SetRequestId(v string) *DescribeBacken
 }
 
 func (s *DescribeBackendInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BackendInfo != nil {
+		if err := s.BackendInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackendInfoResponseBodyBackendInfo struct {
@@ -169,7 +174,16 @@ func (s *DescribeBackendInfoResponseBodyBackendInfo) SetModifiedTime(v string) *
 }
 
 func (s *DescribeBackendInfoResponseBodyBackendInfo) Validate() error {
-	return dara.Validate(s)
+	if s.BackendModels != nil {
+		for _, item := range s.BackendModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModels struct {
@@ -285,7 +299,12 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModels) SetStageName(v
 }
 
 func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModels) Validate() error {
-	return dara.Validate(s)
+	if s.BackendConfig != nil {
+		if err := s.BackendConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig struct {
@@ -437,7 +456,42 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) S
 }
 
 func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) Validate() error {
-	return dara.Validate(s)
+	if s.DiscoveryConfig != nil {
+		if err := s.DiscoveryConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EdasConfig != nil {
+		if err := s.EdasConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EventBridgeConfig != nil {
+		if err := s.EventBridgeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FunctionComputeConfig != nil {
+		if err := s.FunctionComputeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MockConfig != nil {
+		if err := s.MockConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OssConfig != nil {
+		if err := s.OssConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VpcConfig != nil {
+		if err := s.VpcConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfig struct {
@@ -489,7 +543,17 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDis
 }
 
 func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfig) Validate() error {
-	return dara.Validate(s)
+	if s.NacosConfig != nil {
+		if err := s.NacosConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ZookeeperConfig != nil {
+		if err := s.ZookeeperConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigNacosConfig struct {
@@ -1117,7 +1181,16 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMoc
 }
 
 func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfig) Validate() error {
-	return dara.Validate(s)
+	if s.MockHeaders != nil {
+		for _, item := range s.MockHeaders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfigMockHeaders struct {

@@ -59,5 +59,10 @@ func (s *DescribeInstanceHttpCodeResponse) SetBody(v *DescribeInstanceHttpCodeRe
 }
 
 func (s *DescribeInstanceHttpCodeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

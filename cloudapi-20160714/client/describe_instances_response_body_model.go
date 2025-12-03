@@ -104,7 +104,12 @@ func (s *DescribeInstancesResponseBody) SetTotalCount(v int32) *DescribeInstance
 }
 
 func (s *DescribeInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		if err := s.Instances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstances struct {
@@ -129,7 +134,16 @@ func (s *DescribeInstancesResponseBodyInstances) SetInstanceAttribute(v []*Descr
 }
 
 func (s *DescribeInstancesResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceAttribute != nil {
+		for _, item := range s.InstanceAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAttribute struct {
@@ -820,7 +834,27 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetZoneLocalNa
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceSpecAttributes != nil {
+		if err := s.InstanceSpecAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkInterfaceAttributes != nil {
+		if err := s.NetworkInterfaceAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivateDnsList != nil {
+		if err := s.PrivateDnsList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributes struct {
@@ -845,7 +879,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttr
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributes) Validate() error {
-	return dara.Validate(s)
+	if s.SpecAttribute != nil {
+		for _, item := range s.SpecAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributesSpecAttribute struct {
@@ -915,7 +958,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterface
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributes) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkInterfaceAttribute != nil {
+		for _, item := range s.NetworkInterfaceAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute struct {
@@ -1040,7 +1092,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeTags) SetTagInfo
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeTags) Validate() error {
-	return dara.Validate(s)
+	if s.TagInfo != nil {
+		for _, item := range s.TagInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAttributeTagsTagInfo struct {

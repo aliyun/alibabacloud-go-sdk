@@ -53,7 +53,12 @@ func (s *QueryRequestLogsResponseBody) SetRequestLogs(v *QueryRequestLogsRespons
 }
 
 func (s *QueryRequestLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RequestLogs != nil {
+		if err := s.RequestLogs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryRequestLogsResponseBodyRequestLogs struct {
@@ -78,7 +83,16 @@ func (s *QueryRequestLogsResponseBodyRequestLogs) SetRequestLog(v []*QueryReques
 }
 
 func (s *QueryRequestLogsResponseBodyRequestLogs) Validate() error {
-	return dara.Validate(s)
+	if s.RequestLog != nil {
+		for _, item := range s.RequestLog {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryRequestLogsResponseBodyRequestLogsRequestLog struct {

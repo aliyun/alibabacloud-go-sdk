@@ -92,7 +92,16 @@ func (s *BatchDeployApisRequest) SetStageName(v string) *BatchDeployApisRequest 
 }
 
 func (s *BatchDeployApisRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Api != nil {
+		for _, item := range s.Api {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchDeployApisRequestApi struct {

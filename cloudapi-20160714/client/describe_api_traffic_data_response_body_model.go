@@ -66,7 +66,17 @@ func (s *DescribeApiTrafficDataResponseBody) SetRequestId(v string) *DescribeApi
 }
 
 func (s *DescribeApiTrafficDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CallDownloads != nil {
+		if err := s.CallDownloads.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CallUploads != nil {
+		if err := s.CallUploads.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApiTrafficDataResponseBodyCallDownloads struct {
@@ -91,7 +101,16 @@ func (s *DescribeApiTrafficDataResponseBodyCallDownloads) SetMonitorItem(v []*De
 }
 
 func (s *DescribeApiTrafficDataResponseBodyCallDownloads) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorItem != nil {
+		for _, item := range s.MonitorItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiTrafficDataResponseBodyCallDownloadsMonitorItem struct {
@@ -161,7 +180,16 @@ func (s *DescribeApiTrafficDataResponseBodyCallUploads) SetMonitorItem(v []*Desc
 }
 
 func (s *DescribeApiTrafficDataResponseBodyCallUploads) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorItem != nil {
+		for _, item := range s.MonitorItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiTrafficDataResponseBodyCallUploadsMonitorItem struct {

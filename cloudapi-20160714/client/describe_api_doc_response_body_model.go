@@ -342,7 +342,22 @@ func (s *DescribeApiDocResponseBody) SetVisibility(v string) *DescribeApiDocResp
 }
 
 func (s *DescribeApiDocResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorCodeSamples != nil {
+		if err := s.ErrorCodeSamples.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RequestConfig != nil {
+		if err := s.RequestConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RequestParameters != nil {
+		if err := s.RequestParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApiDocResponseBodyErrorCodeSamples struct {
@@ -367,7 +382,16 @@ func (s *DescribeApiDocResponseBodyErrorCodeSamples) SetErrorCodeSample(v []*Des
 }
 
 func (s *DescribeApiDocResponseBodyErrorCodeSamples) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorCodeSample != nil {
+		for _, item := range s.ErrorCodeSample {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiDocResponseBodyErrorCodeSamplesErrorCodeSample struct {
@@ -580,7 +604,16 @@ func (s *DescribeApiDocResponseBodyRequestParameters) SetRequestParameter(v []*D
 }
 
 func (s *DescribeApiDocResponseBodyRequestParameters) Validate() error {
-	return dara.Validate(s)
+	if s.RequestParameter != nil {
+		for _, item := range s.RequestParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiDocResponseBodyRequestParametersRequestParameter struct {

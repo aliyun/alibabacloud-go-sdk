@@ -104,7 +104,12 @@ func (s *DescribeApisByVpcAccessResponseBody) SetTotalCount(v int32) *DescribeAp
 }
 
 func (s *DescribeApisByVpcAccessResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApiVpcAccessInfos != nil {
+		if err := s.ApiVpcAccessInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApisByVpcAccessResponseBodyApiVpcAccessInfos struct {
@@ -129,7 +134,16 @@ func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfos) SetApiVpcAccessIn
 }
 
 func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfos) Validate() error {
-	return dara.Validate(s)
+	if s.ApiVpcAccessInfo != nil {
+		for _, item := range s.ApiVpcAccessInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo struct {

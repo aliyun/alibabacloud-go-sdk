@@ -59,5 +59,10 @@ func (s *DescribeApisByVpcAccessResponse) SetBody(v *DescribeApisByVpcAccessResp
 }
 
 func (s *DescribeApisByVpcAccessResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

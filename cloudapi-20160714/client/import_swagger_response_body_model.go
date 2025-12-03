@@ -92,7 +92,27 @@ func (s *ImportSwaggerResponseBody) SetSuccess(v *ImportSwaggerResponseBodySucce
 }
 
 func (s *ImportSwaggerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Failed != nil {
+		if err := s.Failed.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModelFailed != nil {
+		if err := s.ModelFailed.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModelSuccess != nil {
+		if err := s.ModelSuccess.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Success != nil {
+		if err := s.Success.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ImportSwaggerResponseBodyFailed struct {
@@ -117,7 +137,16 @@ func (s *ImportSwaggerResponseBodyFailed) SetApiImportSwaggerFailed(v []*ImportS
 }
 
 func (s *ImportSwaggerResponseBodyFailed) Validate() error {
-	return dara.Validate(s)
+	if s.ApiImportSwaggerFailed != nil {
+		for _, item := range s.ApiImportSwaggerFailed {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImportSwaggerResponseBodyFailedApiImportSwaggerFailed struct {
@@ -202,7 +231,16 @@ func (s *ImportSwaggerResponseBodyModelFailed) SetApiImportModelFailed(v []*Impo
 }
 
 func (s *ImportSwaggerResponseBodyModelFailed) Validate() error {
-	return dara.Validate(s)
+	if s.ApiImportModelFailed != nil {
+		for _, item := range s.ApiImportModelFailed {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImportSwaggerResponseBodyModelFailedApiImportModelFailed struct {
@@ -287,7 +325,16 @@ func (s *ImportSwaggerResponseBodyModelSuccess) SetApiImportModelSuccess(v []*Im
 }
 
 func (s *ImportSwaggerResponseBodyModelSuccess) Validate() error {
-	return dara.Validate(s)
+	if s.ApiImportModelSuccess != nil {
+		for _, item := range s.ApiImportModelSuccess {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImportSwaggerResponseBodyModelSuccessApiImportModelSuccess struct {
@@ -387,7 +434,16 @@ func (s *ImportSwaggerResponseBodySuccess) SetApiImportSwaggerSuccess(v []*Impor
 }
 
 func (s *ImportSwaggerResponseBodySuccess) Validate() error {
-	return dara.Validate(s)
+	if s.ApiImportSwaggerSuccess != nil {
+		for _, item := range s.ApiImportSwaggerSuccess {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImportSwaggerResponseBodySuccessApiImportSwaggerSuccess struct {

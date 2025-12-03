@@ -59,5 +59,10 @@ func (s *ModifyDatasetItemResponse) SetBody(v *ModifyDatasetItemResponseBody) *M
 }
 
 func (s *ModifyDatasetItemResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

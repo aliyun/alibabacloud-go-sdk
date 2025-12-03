@@ -53,7 +53,12 @@ func (s *DescribeDatasetItemInfoResponseBody) SetRequestId(v string) *DescribeDa
 }
 
 func (s *DescribeDatasetItemInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DatasetItemInfo != nil {
+		if err := s.DatasetItemInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDatasetItemInfoResponseBodyDatasetItemInfo struct {

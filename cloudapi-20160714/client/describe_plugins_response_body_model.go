@@ -104,7 +104,12 @@ func (s *DescribePluginsResponseBody) SetTotalCount(v int32) *DescribePluginsRes
 }
 
 func (s *DescribePluginsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Plugins != nil {
+		if err := s.Plugins.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePluginsResponseBodyPlugins struct {
@@ -129,7 +134,16 @@ func (s *DescribePluginsResponseBodyPlugins) SetPluginAttribute(v []*DescribePlu
 }
 
 func (s *DescribePluginsResponseBodyPlugins) Validate() error {
-	return dara.Validate(s)
+	if s.PluginAttribute != nil {
+		for _, item := range s.PluginAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePluginsResponseBodyPluginsPluginAttribute struct {
@@ -275,7 +289,12 @@ func (s *DescribePluginsResponseBodyPluginsPluginAttribute) SetTags(v *DescribeP
 }
 
 func (s *DescribePluginsResponseBodyPluginsPluginAttribute) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePluginsResponseBodyPluginsPluginAttributeTags struct {
@@ -300,7 +319,16 @@ func (s *DescribePluginsResponseBodyPluginsPluginAttributeTags) SetTagInfo(v []*
 }
 
 func (s *DescribePluginsResponseBodyPluginsPluginAttributeTags) Validate() error {
-	return dara.Validate(s)
+	if s.TagInfo != nil {
+		for _, item := range s.TagInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePluginsResponseBodyPluginsPluginAttributeTagsTagInfo struct {

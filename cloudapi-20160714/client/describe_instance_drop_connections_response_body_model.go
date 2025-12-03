@@ -53,7 +53,12 @@ func (s *DescribeInstanceDropConnectionsResponseBody) SetRequestId(v string) *De
 }
 
 func (s *DescribeInstanceDropConnectionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceDropConnections != nil {
+		if err := s.InstanceDropConnections.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceDropConnectionsResponseBodyInstanceDropConnections struct {
@@ -78,7 +83,16 @@ func (s *DescribeInstanceDropConnectionsResponseBodyInstanceDropConnections) Set
 }
 
 func (s *DescribeInstanceDropConnectionsResponseBodyInstanceDropConnections) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorItem != nil {
+		for _, item := range s.MonitorItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceDropConnectionsResponseBodyInstanceDropConnectionsMonitorItem struct {

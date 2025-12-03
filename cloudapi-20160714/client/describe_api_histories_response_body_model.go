@@ -104,7 +104,12 @@ func (s *DescribeApiHistoriesResponseBody) SetTotalCount(v int32) *DescribeApiHi
 }
 
 func (s *DescribeApiHistoriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApiHisItems != nil {
+		if err := s.ApiHisItems.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApiHistoriesResponseBodyApiHisItems struct {
@@ -129,7 +134,16 @@ func (s *DescribeApiHistoriesResponseBodyApiHisItems) SetApiHisItem(v []*Describ
 }
 
 func (s *DescribeApiHistoriesResponseBodyApiHisItems) Validate() error {
-	return dara.Validate(s)
+	if s.ApiHisItem != nil {
+		for _, item := range s.ApiHisItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiHistoriesResponseBodyApiHisItemsApiHisItem struct {

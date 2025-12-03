@@ -104,7 +104,12 @@ func (s *DescribeAppAttributesResponseBody) SetTotalCount(v int32) *DescribeAppA
 }
 
 func (s *DescribeAppAttributesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Apps != nil {
+		if err := s.Apps.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAppAttributesResponseBodyApps struct {
@@ -129,7 +134,16 @@ func (s *DescribeAppAttributesResponseBodyApps) SetAppAttribute(v []*DescribeApp
 }
 
 func (s *DescribeAppAttributesResponseBodyApps) Validate() error {
-	return dara.Validate(s)
+	if s.AppAttribute != nil {
+		for _, item := range s.AppAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAppAttributesResponseBodyAppsAppAttribute struct {
@@ -255,7 +269,12 @@ func (s *DescribeAppAttributesResponseBodyAppsAppAttribute) SetTags(v *DescribeA
 }
 
 func (s *DescribeAppAttributesResponseBodyAppsAppAttribute) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAppAttributesResponseBodyAppsAppAttributeTags struct {
@@ -280,7 +299,16 @@ func (s *DescribeAppAttributesResponseBodyAppsAppAttributeTags) SetTagInfo(v []*
 }
 
 func (s *DescribeAppAttributesResponseBodyAppsAppAttributeTags) Validate() error {
-	return dara.Validate(s)
+	if s.TagInfo != nil {
+		for _, item := range s.TagInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAppAttributesResponseBodyAppsAppAttributeTagsTagInfo struct {

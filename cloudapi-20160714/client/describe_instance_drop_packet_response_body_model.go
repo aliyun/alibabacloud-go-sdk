@@ -53,7 +53,12 @@ func (s *DescribeInstanceDropPacketResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeInstanceDropPacketResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceDropPacket != nil {
+		if err := s.InstanceDropPacket.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceDropPacketResponseBodyInstanceDropPacket struct {
@@ -78,7 +83,16 @@ func (s *DescribeInstanceDropPacketResponseBodyInstanceDropPacket) SetMonitorIte
 }
 
 func (s *DescribeInstanceDropPacketResponseBodyInstanceDropPacket) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorItem != nil {
+		for _, item := range s.MonitorItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceDropPacketResponseBodyInstanceDropPacketMonitorItem struct {

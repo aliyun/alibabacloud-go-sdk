@@ -53,7 +53,12 @@ func (s *DescribeGroupLatencyResponseBody) SetRequestId(v string) *DescribeGroup
 }
 
 func (s *DescribeGroupLatencyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LatencyPacket != nil {
+		if err := s.LatencyPacket.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGroupLatencyResponseBodyLatencyPacket struct {
@@ -78,7 +83,16 @@ func (s *DescribeGroupLatencyResponseBodyLatencyPacket) SetMonitorItem(v []*Desc
 }
 
 func (s *DescribeGroupLatencyResponseBodyLatencyPacket) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorItem != nil {
+		for _, item := range s.MonitorItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGroupLatencyResponseBodyLatencyPacketMonitorItem struct {

@@ -104,7 +104,12 @@ func (s *DescribeIpControlPolicyItemsResponseBody) SetTotalCount(v int32) *Descr
 }
 
 func (s *DescribeIpControlPolicyItemsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IpControlPolicyItems != nil {
+		if err := s.IpControlPolicyItems.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeIpControlPolicyItemsResponseBodyIpControlPolicyItems struct {
@@ -129,7 +134,16 @@ func (s *DescribeIpControlPolicyItemsResponseBodyIpControlPolicyItems) SetIpCont
 }
 
 func (s *DescribeIpControlPolicyItemsResponseBodyIpControlPolicyItems) Validate() error {
-	return dara.Validate(s)
+	if s.IpControlPolicyItem != nil {
+		for _, item := range s.IpControlPolicyItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIpControlPolicyItemsResponseBodyIpControlPolicyItemsIpControlPolicyItem struct {

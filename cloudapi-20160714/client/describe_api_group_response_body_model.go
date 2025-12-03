@@ -625,7 +625,17 @@ func (s *DescribeApiGroupResponseBody) SetVpcSlbIntranetDomain(v string) *Descri
 }
 
 func (s *DescribeApiGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CustomDomains != nil {
+		if err := s.CustomDomains.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StageItems != nil {
+		if err := s.StageItems.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApiGroupResponseBodyCustomDomains struct {
@@ -650,7 +660,16 @@ func (s *DescribeApiGroupResponseBodyCustomDomains) SetDomainItem(v []*DescribeA
 }
 
 func (s *DescribeApiGroupResponseBodyCustomDomains) Validate() error {
-	return dara.Validate(s)
+	if s.DomainItem != nil {
+		for _, item := range s.DomainItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiGroupResponseBodyCustomDomainsDomainItem struct {
@@ -927,7 +946,16 @@ func (s *DescribeApiGroupResponseBodyStageItems) SetStageInfo(v []*DescribeApiGr
 }
 
 func (s *DescribeApiGroupResponseBodyStageItems) Validate() error {
-	return dara.Validate(s)
+	if s.StageInfo != nil {
+		for _, item := range s.StageInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiGroupResponseBodyStageItemsStageInfo struct {

@@ -59,5 +59,10 @@ func (s *DescribePluginApisResponse) SetBody(v *DescribePluginApisResponseBody) 
 }
 
 func (s *DescribePluginApisResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

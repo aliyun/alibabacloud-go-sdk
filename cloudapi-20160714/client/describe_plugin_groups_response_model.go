@@ -59,5 +59,10 @@ func (s *DescribePluginGroupsResponse) SetBody(v *DescribePluginGroupsResponseBo
 }
 
 func (s *DescribePluginGroupsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

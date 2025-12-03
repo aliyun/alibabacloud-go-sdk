@@ -104,7 +104,16 @@ func (s *DescribeDatasetListResponseBody) SetTotalCount(v int32) *DescribeDatase
 }
 
 func (s *DescribeDatasetListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DatasetInfoList != nil {
+		for _, item := range s.DatasetInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDatasetListResponseBodyDatasetInfoList struct {
@@ -221,7 +230,16 @@ func (s *DescribeDatasetListResponseBodyDatasetInfoList) SetTags(v []*DescribeDa
 }
 
 func (s *DescribeDatasetListResponseBodyDatasetInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDatasetListResponseBodyDatasetInfoListTags struct {

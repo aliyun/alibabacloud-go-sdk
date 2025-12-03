@@ -59,5 +59,10 @@ func (s *DescribeInstanceClusterListResponse) SetBody(v *DescribeInstanceCluster
 }
 
 func (s *DescribeInstanceClusterListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

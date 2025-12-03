@@ -620,7 +620,67 @@ func (s *DescribeApiHistoryResponseBody) SetWebSocketApiType(v string) *Describe
 }
 
 func (s *DescribeApiHistoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BackendConfig != nil {
+		if err := s.BackendConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ConstantParameters != nil {
+		if err := s.ConstantParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomSystemParameters != nil {
+		if err := s.CustomSystemParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ErrorCodeSamples != nil {
+		if err := s.ErrorCodeSamples.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OpenIdConnectConfig != nil {
+		if err := s.OpenIdConnectConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RequestConfig != nil {
+		if err := s.RequestConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RequestParameters != nil {
+		if err := s.RequestParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResultDescriptions != nil {
+		if err := s.ResultDescriptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceConfig != nil {
+		if err := s.ServiceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceParameters != nil {
+		if err := s.ServiceParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceParametersMap != nil {
+		if err := s.ServiceParametersMap.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SystemParameters != nil {
+		if err := s.SystemParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApiHistoryResponseBodyBackendConfig struct {
@@ -705,7 +765,16 @@ func (s *DescribeApiHistoryResponseBodyConstantParameters) SetConstantParameter(
 }
 
 func (s *DescribeApiHistoryResponseBodyConstantParameters) Validate() error {
-	return dara.Validate(s)
+	if s.ConstantParameter != nil {
+		for _, item := range s.ConstantParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiHistoryResponseBodyConstantParametersConstantParameter struct {
@@ -805,7 +874,16 @@ func (s *DescribeApiHistoryResponseBodyCustomSystemParameters) SetCustomSystemPa
 }
 
 func (s *DescribeApiHistoryResponseBodyCustomSystemParameters) Validate() error {
-	return dara.Validate(s)
+	if s.CustomSystemParameter != nil {
+		for _, item := range s.CustomSystemParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiHistoryResponseBodyCustomSystemParametersCustomSystemParameter struct {
@@ -920,7 +998,16 @@ func (s *DescribeApiHistoryResponseBodyErrorCodeSamples) SetErrorCodeSample(v []
 }
 
 func (s *DescribeApiHistoryResponseBodyErrorCodeSamples) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorCodeSample != nil {
+		for _, item := range s.ErrorCodeSample {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiHistoryResponseBodyErrorCodeSamplesErrorCodeSample struct {
@@ -1225,7 +1312,16 @@ func (s *DescribeApiHistoryResponseBodyRequestParameters) SetRequestParameter(v 
 }
 
 func (s *DescribeApiHistoryResponseBodyRequestParameters) Validate() error {
-	return dara.Validate(s)
+	if s.RequestParameter != nil {
+		for _, item := range s.RequestParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiHistoryResponseBodyRequestParametersRequestParameter struct {
@@ -1520,7 +1616,16 @@ func (s *DescribeApiHistoryResponseBodyResultDescriptions) SetResultDescription(
 }
 
 func (s *DescribeApiHistoryResponseBodyResultDescriptions) Validate() error {
-	return dara.Validate(s)
+	if s.ResultDescription != nil {
+		for _, item := range s.ResultDescription {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiHistoryResponseBodyResultDescriptionsResultDescription struct {
@@ -1921,7 +2026,32 @@ func (s *DescribeApiHistoryResponseBodyServiceConfig) SetVpcId(v string) *Descri
 }
 
 func (s *DescribeApiHistoryResponseBodyServiceConfig) Validate() error {
-	return dara.Validate(s)
+	if s.EventBridgeConfig != nil {
+		if err := s.EventBridgeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FunctionComputeConfig != nil {
+		if err := s.FunctionComputeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MockHeaders != nil {
+		if err := s.MockHeaders.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OssConfig != nil {
+		if err := s.OssConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VpcConfig != nil {
+		if err := s.VpcConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApiHistoryResponseBodyServiceConfigEventBridgeConfig struct {
@@ -2222,7 +2352,16 @@ func (s *DescribeApiHistoryResponseBodyServiceConfigMockHeaders) SetMockHeader(v
 }
 
 func (s *DescribeApiHistoryResponseBodyServiceConfigMockHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.MockHeader != nil {
+		for _, item := range s.MockHeader {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiHistoryResponseBodyServiceConfigMockHeadersMockHeader struct {
@@ -2471,7 +2610,16 @@ func (s *DescribeApiHistoryResponseBodyServiceParameters) SetServiceParameter(v 
 }
 
 func (s *DescribeApiHistoryResponseBodyServiceParameters) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceParameter != nil {
+		for _, item := range s.ServiceParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiHistoryResponseBodyServiceParametersServiceParameter struct {
@@ -2556,7 +2704,16 @@ func (s *DescribeApiHistoryResponseBodyServiceParametersMap) SetServiceParameter
 }
 
 func (s *DescribeApiHistoryResponseBodyServiceParametersMap) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceParameterMap != nil {
+		for _, item := range s.ServiceParameterMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiHistoryResponseBodyServiceParametersMapServiceParameterMap struct {
@@ -2626,7 +2783,16 @@ func (s *DescribeApiHistoryResponseBodySystemParameters) SetSystemParameter(v []
 }
 
 func (s *DescribeApiHistoryResponseBodySystemParameters) Validate() error {
-	return dara.Validate(s)
+	if s.SystemParameter != nil {
+		for _, item := range s.SystemParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiHistoryResponseBodySystemParametersSystemParameter struct {

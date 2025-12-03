@@ -53,7 +53,12 @@ func (s *DescribeSystemParametersResponseBody) SetSystemParams(v *DescribeSystem
 }
 
 func (s *DescribeSystemParametersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SystemParams != nil {
+		if err := s.SystemParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSystemParametersResponseBodySystemParams struct {
@@ -78,7 +83,16 @@ func (s *DescribeSystemParametersResponseBodySystemParams) SetSystemParamItem(v 
 }
 
 func (s *DescribeSystemParametersResponseBodySystemParams) Validate() error {
-	return dara.Validate(s)
+	if s.SystemParamItem != nil {
+		for _, item := range s.SystemParamItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSystemParametersResponseBodySystemParamsSystemParamItem struct {

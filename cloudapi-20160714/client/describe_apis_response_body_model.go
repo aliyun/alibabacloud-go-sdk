@@ -104,7 +104,12 @@ func (s *DescribeApisResponseBody) SetTotalCount(v int32) *DescribeApisResponseB
 }
 
 func (s *DescribeApisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApiSummarys != nil {
+		if err := s.ApiSummarys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApisResponseBodyApiSummarys struct {
@@ -129,7 +134,16 @@ func (s *DescribeApisResponseBodyApiSummarys) SetApiSummary(v []*DescribeApisRes
 }
 
 func (s *DescribeApisResponseBodyApiSummarys) Validate() error {
-	return dara.Validate(s)
+	if s.ApiSummary != nil {
+		for _, item := range s.ApiSummary {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApisResponseBodyApiSummarysApiSummary struct {
@@ -335,7 +349,17 @@ func (s *DescribeApisResponseBodyApiSummarysApiSummary) SetVisibility(v string) 
 }
 
 func (s *DescribeApisResponseBodyApiSummarysApiSummary) Validate() error {
-	return dara.Validate(s)
+	if s.DeployedInfos != nil {
+		if err := s.DeployedInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TagList != nil {
+		if err := s.TagList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApisResponseBodyApiSummarysApiSummaryDeployedInfos struct {
@@ -360,7 +384,16 @@ func (s *DescribeApisResponseBodyApiSummarysApiSummaryDeployedInfos) SetDeployed
 }
 
 func (s *DescribeApisResponseBodyApiSummarysApiSummaryDeployedInfos) Validate() error {
-	return dara.Validate(s)
+	if s.DeployedInfo != nil {
+		for _, item := range s.DeployedInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApisResponseBodyApiSummarysApiSummaryDeployedInfosDeployedInfo struct {
@@ -451,7 +484,16 @@ func (s *DescribeApisResponseBodyApiSummarysApiSummaryTagList) SetTag(v []*Descr
 }
 
 func (s *DescribeApisResponseBodyApiSummarysApiSummaryTagList) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApisResponseBodyApiSummarysApiSummaryTagListTag struct {

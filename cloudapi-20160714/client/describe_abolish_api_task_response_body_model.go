@@ -53,7 +53,12 @@ func (s *DescribeAbolishApiTaskResponseBody) SetRequestId(v string) *DescribeAbo
 }
 
 func (s *DescribeAbolishApiTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApiAbolishResults != nil {
+		if err := s.ApiAbolishResults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAbolishApiTaskResponseBodyApiAbolishResults struct {
@@ -78,7 +83,16 @@ func (s *DescribeAbolishApiTaskResponseBodyApiAbolishResults) SetApiAbolishResul
 }
 
 func (s *DescribeAbolishApiTaskResponseBodyApiAbolishResults) Validate() error {
-	return dara.Validate(s)
+	if s.ApiAbolishResult != nil {
+		for _, item := range s.ApiAbolishResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAbolishApiTaskResponseBodyApiAbolishResultsApiAbolishResult struct {

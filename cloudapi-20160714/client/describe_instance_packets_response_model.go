@@ -59,5 +59,10 @@ func (s *DescribeInstancePacketsResponse) SetBody(v *DescribeInstancePacketsResp
 }
 
 func (s *DescribeInstancePacketsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

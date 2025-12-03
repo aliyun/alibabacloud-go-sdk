@@ -59,5 +59,10 @@ func (s *AddTrafficSpecialControlResponse) SetBody(v *AddTrafficSpecialControlRe
 }
 
 func (s *AddTrafficSpecialControlResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

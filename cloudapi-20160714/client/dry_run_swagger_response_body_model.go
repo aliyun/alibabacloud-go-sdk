@@ -109,7 +109,27 @@ func (s *DryRunSwaggerResponseBody) SetSuccess(v *DryRunSwaggerResponseBodySucce
 }
 
 func (s *DryRunSwaggerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Failed != nil {
+		if err := s.Failed.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModelFailed != nil {
+		if err := s.ModelFailed.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModelSuccess != nil {
+		if err := s.ModelSuccess.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Success != nil {
+		if err := s.Success.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DryRunSwaggerResponseBodyFailed struct {
@@ -134,7 +154,16 @@ func (s *DryRunSwaggerResponseBodyFailed) SetApiImportSwaggerFailed(v []*DryRunS
 }
 
 func (s *DryRunSwaggerResponseBodyFailed) Validate() error {
-	return dara.Validate(s)
+	if s.ApiImportSwaggerFailed != nil {
+		for _, item := range s.ApiImportSwaggerFailed {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DryRunSwaggerResponseBodyFailedApiImportSwaggerFailed struct {
@@ -219,7 +248,16 @@ func (s *DryRunSwaggerResponseBodyModelFailed) SetApiImportModelFailed(v []*DryR
 }
 
 func (s *DryRunSwaggerResponseBodyModelFailed) Validate() error {
-	return dara.Validate(s)
+	if s.ApiImportModelFailed != nil {
+		for _, item := range s.ApiImportModelFailed {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DryRunSwaggerResponseBodyModelFailedApiImportModelFailed struct {
@@ -304,7 +342,16 @@ func (s *DryRunSwaggerResponseBodyModelSuccess) SetApiImportModelSuccess(v []*Dr
 }
 
 func (s *DryRunSwaggerResponseBodyModelSuccess) Validate() error {
-	return dara.Validate(s)
+	if s.ApiImportModelSuccess != nil {
+		for _, item := range s.ApiImportModelSuccess {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DryRunSwaggerResponseBodyModelSuccessApiImportModelSuccess struct {
@@ -404,7 +451,16 @@ func (s *DryRunSwaggerResponseBodySuccess) SetApiDryRunSwaggerSuccess(v []*DryRu
 }
 
 func (s *DryRunSwaggerResponseBodySuccess) Validate() error {
-	return dara.Validate(s)
+	if s.ApiDryRunSwaggerSuccess != nil {
+		for _, item := range s.ApiDryRunSwaggerSuccess {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DryRunSwaggerResponseBodySuccessApiDryRunSwaggerSuccess struct {

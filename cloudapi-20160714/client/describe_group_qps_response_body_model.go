@@ -53,7 +53,12 @@ func (s *DescribeGroupQpsResponseBody) SetRequestId(v string) *DescribeGroupQpsR
 }
 
 func (s *DescribeGroupQpsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GroupQps != nil {
+		if err := s.GroupQps.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGroupQpsResponseBodyGroupQps struct {
@@ -78,7 +83,16 @@ func (s *DescribeGroupQpsResponseBodyGroupQps) SetMonitorItem(v []*DescribeGroup
 }
 
 func (s *DescribeGroupQpsResponseBodyGroupQps) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorItem != nil {
+		for _, item := range s.MonitorItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGroupQpsResponseBodyGroupQpsMonitorItem struct {

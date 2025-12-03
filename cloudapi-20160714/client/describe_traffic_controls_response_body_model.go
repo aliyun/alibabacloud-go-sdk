@@ -104,7 +104,12 @@ func (s *DescribeTrafficControlsResponseBody) SetTrafficControls(v *DescribeTraf
 }
 
 func (s *DescribeTrafficControlsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficControls != nil {
+		if err := s.TrafficControls.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTrafficControlsResponseBodyTrafficControls struct {
@@ -129,7 +134,16 @@ func (s *DescribeTrafficControlsResponseBodyTrafficControls) SetTrafficControl(v
 }
 
 func (s *DescribeTrafficControlsResponseBodyTrafficControls) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficControl != nil {
+		for _, item := range s.TrafficControl {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTrafficControlsResponseBodyTrafficControlsTrafficControl struct {
@@ -296,7 +310,12 @@ func (s *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControl) SetUs
 }
 
 func (s *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControl) Validate() error {
-	return dara.Validate(s)
+	if s.SpecialPolicies != nil {
+		if err := s.SpecialPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPolicies struct {
@@ -321,7 +340,16 @@ func (s *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecial
 }
 
 func (s *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.SpecialPolicy != nil {
+		for _, item := range s.SpecialPolicy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPoliciesSpecialPolicy struct {
@@ -366,7 +394,12 @@ func (s *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecial
 }
 
 func (s *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPoliciesSpecialPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.Specials != nil {
+		if err := s.Specials.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPoliciesSpecialPolicySpecials struct {
@@ -391,7 +424,16 @@ func (s *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecial
 }
 
 func (s *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPoliciesSpecialPolicySpecials) Validate() error {
-	return dara.Validate(s)
+	if s.Special != nil {
+		for _, item := range s.Special {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPoliciesSpecialPolicySpecialsSpecial struct {

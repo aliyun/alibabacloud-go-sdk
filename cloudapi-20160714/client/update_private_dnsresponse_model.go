@@ -59,5 +59,10 @@ func (s *UpdatePrivateDNSResponse) SetBody(v *UpdatePrivateDNSResponseBody) *Upd
 }
 
 func (s *UpdatePrivateDNSResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -104,7 +104,12 @@ func (s *DescribePurchasedApisResponseBody) SetTotalCount(v int32) *DescribePurc
 }
 
 func (s *DescribePurchasedApisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PurchasedApis != nil {
+		if err := s.PurchasedApis.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePurchasedApisResponseBodyPurchasedApis struct {
@@ -129,7 +134,16 @@ func (s *DescribePurchasedApisResponseBodyPurchasedApis) SetPurchasedApi(v []*De
 }
 
 func (s *DescribePurchasedApisResponseBodyPurchasedApis) Validate() error {
-	return dara.Validate(s)
+	if s.PurchasedApi != nil {
+		for _, item := range s.PurchasedApi {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePurchasedApisResponseBodyPurchasedApisPurchasedApi struct {

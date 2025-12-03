@@ -53,7 +53,12 @@ func (s *RemoveVpcAccessResponseBody) SetRequestId(v string) *RemoveVpcAccessRes
 }
 
 func (s *RemoveVpcAccessResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Apis != nil {
+		if err := s.Apis.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RemoveVpcAccessResponseBodyApis struct {
@@ -78,7 +83,16 @@ func (s *RemoveVpcAccessResponseBodyApis) SetApi(v []*RemoveVpcAccessResponseBod
 }
 
 func (s *RemoveVpcAccessResponseBodyApis) Validate() error {
-	return dara.Validate(s)
+	if s.Api != nil {
+		for _, item := range s.Api {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RemoveVpcAccessResponseBodyApisApi struct {

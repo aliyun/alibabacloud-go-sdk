@@ -104,7 +104,12 @@ func (s *DescribeApiGroupsResponseBody) SetTotalCount(v int32) *DescribeApiGroup
 }
 
 func (s *DescribeApiGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApiGroupAttributes != nil {
+		if err := s.ApiGroupAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApiGroupsResponseBodyApiGroupAttributes struct {
@@ -129,7 +134,16 @@ func (s *DescribeApiGroupsResponseBodyApiGroupAttributes) SetApiGroupAttribute(v
 }
 
 func (s *DescribeApiGroupsResponseBodyApiGroupAttributes) Validate() error {
-	return dara.Validate(s)
+	if s.ApiGroupAttribute != nil {
+		for _, item := range s.ApiGroupAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttribute struct {
@@ -373,7 +387,12 @@ func (s *DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttribute) SetTr
 }
 
 func (s *DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttribute) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttributeTags struct {
@@ -398,7 +417,16 @@ func (s *DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttributeTags) S
 }
 
 func (s *DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttributeTags) Validate() error {
-	return dara.Validate(s)
+	if s.TagInfo != nil {
+		for _, item := range s.TagInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttributeTagsTagInfo struct {

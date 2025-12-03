@@ -53,7 +53,12 @@ func (s *DescribeApiLatencyDataResponseBody) SetRequestId(v string) *DescribeApi
 }
 
 func (s *DescribeApiLatencyDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CallLatencys != nil {
+		if err := s.CallLatencys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApiLatencyDataResponseBodyCallLatencys struct {
@@ -78,7 +83,16 @@ func (s *DescribeApiLatencyDataResponseBodyCallLatencys) SetMonitorItem(v []*Des
 }
 
 func (s *DescribeApiLatencyDataResponseBodyCallLatencys) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorItem != nil {
+		for _, item := range s.MonitorItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiLatencyDataResponseBodyCallLatencysMonitorItem struct {

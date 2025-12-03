@@ -59,5 +59,10 @@ func (s *DetachGroupPluginResponse) SetBody(v *DetachGroupPluginResponseBody) *D
 }
 
 func (s *DetachGroupPluginResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *DescribeInstanceNewConnectionsResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeInstanceNewConnectionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceNewConnections != nil {
+		if err := s.InstanceNewConnections.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceNewConnectionsResponseBodyInstanceNewConnections struct {
@@ -78,7 +83,16 @@ func (s *DescribeInstanceNewConnectionsResponseBodyInstanceNewConnections) SetMo
 }
 
 func (s *DescribeInstanceNewConnectionsResponseBodyInstanceNewConnections) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorItem != nil {
+		for _, item := range s.MonitorItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceNewConnectionsResponseBodyInstanceNewConnectionsMonitorItem struct {

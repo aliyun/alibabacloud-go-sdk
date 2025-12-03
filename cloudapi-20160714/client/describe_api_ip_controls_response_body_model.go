@@ -104,7 +104,12 @@ func (s *DescribeApiIpControlsResponseBody) SetTotalCount(v int32) *DescribeApiI
 }
 
 func (s *DescribeApiIpControlsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApiIpControls != nil {
+		if err := s.ApiIpControls.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApiIpControlsResponseBodyApiIpControls struct {
@@ -129,7 +134,16 @@ func (s *DescribeApiIpControlsResponseBodyApiIpControls) SetApiIpControlItem(v [
 }
 
 func (s *DescribeApiIpControlsResponseBodyApiIpControls) Validate() error {
-	return dara.Validate(s)
+	if s.ApiIpControlItem != nil {
+		for _, item := range s.ApiIpControlItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiIpControlsResponseBodyApiIpControlsApiIpControlItem struct {

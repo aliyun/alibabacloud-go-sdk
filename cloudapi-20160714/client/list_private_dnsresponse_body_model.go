@@ -104,7 +104,16 @@ func (s *ListPrivateDNSResponseBody) SetTotalCount(v int32) *ListPrivateDNSRespo
 }
 
 func (s *ListPrivateDNSResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrivateDNSList != nil {
+		for _, item := range s.PrivateDNSList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrivateDNSResponseBodyPrivateDNSList struct {
@@ -190,7 +199,16 @@ func (s *ListPrivateDNSResponseBodyPrivateDNSList) SetType(v string) *ListPrivat
 }
 
 func (s *ListPrivateDNSResponseBodyPrivateDNSList) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrivateDNSResponseBodyPrivateDNSListRecords struct {

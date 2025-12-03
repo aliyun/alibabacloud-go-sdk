@@ -66,7 +66,17 @@ func (s *DescribeApiQpsDataResponseBody) SetRequestId(v string) *DescribeApiQpsD
 }
 
 func (s *DescribeApiQpsDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CallFails != nil {
+		if err := s.CallFails.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CallSuccesses != nil {
+		if err := s.CallSuccesses.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApiQpsDataResponseBodyCallFails struct {
@@ -91,7 +101,16 @@ func (s *DescribeApiQpsDataResponseBodyCallFails) SetMonitorItem(v []*DescribeAp
 }
 
 func (s *DescribeApiQpsDataResponseBodyCallFails) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorItem != nil {
+		for _, item := range s.MonitorItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiQpsDataResponseBodyCallFailsMonitorItem struct {
@@ -161,7 +180,16 @@ func (s *DescribeApiQpsDataResponseBodyCallSuccesses) SetMonitorItem(v []*Descri
 }
 
 func (s *DescribeApiQpsDataResponseBodyCallSuccesses) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorItem != nil {
+		for _, item := range s.MonitorItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiQpsDataResponseBodyCallSuccessesMonitorItem struct {

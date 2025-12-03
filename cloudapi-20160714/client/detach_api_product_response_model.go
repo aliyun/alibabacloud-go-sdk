@@ -59,5 +59,10 @@ func (s *DetachApiProductResponse) SetBody(v *DetachApiProductResponseBody) *Det
 }
 
 func (s *DetachApiProductResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

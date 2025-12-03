@@ -50,7 +50,12 @@ func (s *DescribePluginSchemasResponseBody) SetRequestId(v string) *DescribePlug
 }
 
 func (s *DescribePluginSchemasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PluginSchemas != nil {
+		if err := s.PluginSchemas.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePluginSchemasResponseBodyPluginSchemas struct {
@@ -75,7 +80,16 @@ func (s *DescribePluginSchemasResponseBodyPluginSchemas) SetPluginSchema(v []*De
 }
 
 func (s *DescribePluginSchemasResponseBodyPluginSchemas) Validate() error {
-	return dara.Validate(s)
+	if s.PluginSchema != nil {
+		for _, item := range s.PluginSchema {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePluginSchemasResponseBodyPluginSchemasPluginSchema struct {

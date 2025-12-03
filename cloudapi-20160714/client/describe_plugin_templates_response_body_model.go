@@ -53,7 +53,12 @@ func (s *DescribePluginTemplatesResponseBody) SetTemplates(v *DescribePluginTemp
 }
 
 func (s *DescribePluginTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Templates != nil {
+		if err := s.Templates.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePluginTemplatesResponseBodyTemplates struct {
@@ -78,7 +83,16 @@ func (s *DescribePluginTemplatesResponseBodyTemplates) SetTemplate(v []*Describe
 }
 
 func (s *DescribePluginTemplatesResponseBodyTemplates) Validate() error {
-	return dara.Validate(s)
+	if s.Template != nil {
+		for _, item := range s.Template {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePluginTemplatesResponseBodyTemplatesTemplate struct {

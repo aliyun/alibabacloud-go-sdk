@@ -59,5 +59,10 @@ func (s *DescribeApisByAppResponse) SetBody(v *DescribeApisByAppResponseBody) *D
 }
 
 func (s *DescribeApisByAppResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

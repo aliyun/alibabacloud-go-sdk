@@ -53,7 +53,12 @@ func (s *DescribeInstancePacketsResponseBody) SetRequestId(v string) *DescribeIn
 }
 
 func (s *DescribeInstancePacketsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstancePackets != nil {
+		if err := s.InstancePackets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancePacketsResponseBodyInstancePackets struct {
@@ -78,7 +83,16 @@ func (s *DescribeInstancePacketsResponseBodyInstancePackets) SetMonitorItem(v []
 }
 
 func (s *DescribeInstancePacketsResponseBodyInstancePackets) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorItem != nil {
+		for _, item := range s.MonitorItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancePacketsResponseBodyInstancePacketsMonitorItem struct {

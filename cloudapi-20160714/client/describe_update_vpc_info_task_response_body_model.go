@@ -50,7 +50,12 @@ func (s *DescribeUpdateVpcInfoTaskResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeUpdateVpcInfoTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApiUpdateVpcInfoResults != nil {
+		if err := s.ApiUpdateVpcInfoResults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUpdateVpcInfoTaskResponseBodyApiUpdateVpcInfoResults struct {
@@ -75,7 +80,16 @@ func (s *DescribeUpdateVpcInfoTaskResponseBodyApiUpdateVpcInfoResults) SetApiUpd
 }
 
 func (s *DescribeUpdateVpcInfoTaskResponseBodyApiUpdateVpcInfoResults) Validate() error {
-	return dara.Validate(s)
+	if s.ApiUpdateVpcInfoResult != nil {
+		for _, item := range s.ApiUpdateVpcInfoResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUpdateVpcInfoTaskResponseBodyApiUpdateVpcInfoResultsApiUpdateVpcInfoResult struct {

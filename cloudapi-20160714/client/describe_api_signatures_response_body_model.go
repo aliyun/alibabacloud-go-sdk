@@ -104,7 +104,12 @@ func (s *DescribeApiSignaturesResponseBody) SetTotalCount(v int32) *DescribeApiS
 }
 
 func (s *DescribeApiSignaturesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApiSignatures != nil {
+		if err := s.ApiSignatures.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApiSignaturesResponseBodyApiSignatures struct {
@@ -129,7 +134,16 @@ func (s *DescribeApiSignaturesResponseBodyApiSignatures) SetApiSignatureItem(v [
 }
 
 func (s *DescribeApiSignaturesResponseBodyApiSignatures) Validate() error {
-	return dara.Validate(s)
+	if s.ApiSignatureItem != nil {
+		for _, item := range s.ApiSignatureItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiSignaturesResponseBodyApiSignaturesApiSignatureItem struct {

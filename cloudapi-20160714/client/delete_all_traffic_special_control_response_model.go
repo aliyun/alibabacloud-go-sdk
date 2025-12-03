@@ -59,5 +59,10 @@ func (s *DeleteAllTrafficSpecialControlResponse) SetBody(v *DeleteAllTrafficSpec
 }
 
 func (s *DeleteAllTrafficSpecialControlResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

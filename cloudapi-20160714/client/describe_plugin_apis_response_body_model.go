@@ -104,7 +104,12 @@ func (s *DescribePluginApisResponseBody) SetTotalCount(v int32) *DescribePluginA
 }
 
 func (s *DescribePluginApisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApiSummarys != nil {
+		if err := s.ApiSummarys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePluginApisResponseBodyApiSummarys struct {
@@ -129,7 +134,16 @@ func (s *DescribePluginApisResponseBodyApiSummarys) SetApiPluginSummary(v []*Des
 }
 
 func (s *DescribePluginApisResponseBodyApiSummarys) Validate() error {
-	return dara.Validate(s)
+	if s.ApiPluginSummary != nil {
+		for _, item := range s.ApiPluginSummary {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePluginApisResponseBodyApiSummarysApiPluginSummary struct {

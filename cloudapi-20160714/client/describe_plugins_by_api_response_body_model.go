@@ -104,7 +104,12 @@ func (s *DescribePluginsByApiResponseBody) SetTotalCount(v int32) *DescribePlugi
 }
 
 func (s *DescribePluginsByApiResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Plugins != nil {
+		if err := s.Plugins.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePluginsByApiResponseBodyPlugins struct {
@@ -129,7 +134,16 @@ func (s *DescribePluginsByApiResponseBodyPlugins) SetPluginAttribute(v []*Descri
 }
 
 func (s *DescribePluginsByApiResponseBodyPlugins) Validate() error {
-	return dara.Validate(s)
+	if s.PluginAttribute != nil {
+		for _, item := range s.PluginAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePluginsByApiResponseBodyPluginsPluginAttribute struct {

@@ -59,5 +59,10 @@ func (s *DeleteAppResponse) SetBody(v *DeleteAppResponseBody) *DeleteAppResponse
 }
 
 func (s *DeleteAppResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

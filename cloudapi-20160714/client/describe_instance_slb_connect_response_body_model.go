@@ -53,7 +53,12 @@ func (s *DescribeInstanceSlbConnectResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeInstanceSlbConnectResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceSlbConnect != nil {
+		if err := s.InstanceSlbConnect.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceSlbConnectResponseBodyInstanceSlbConnect struct {
@@ -78,7 +83,16 @@ func (s *DescribeInstanceSlbConnectResponseBodyInstanceSlbConnect) SetMonitorIte
 }
 
 func (s *DescribeInstanceSlbConnectResponseBodyInstanceSlbConnect) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorItem != nil {
+		for _, item := range s.MonitorItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceSlbConnectResponseBodyInstanceSlbConnectMonitorItem struct {

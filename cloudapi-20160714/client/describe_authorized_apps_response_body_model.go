@@ -104,7 +104,12 @@ func (s *DescribeAuthorizedAppsResponseBody) SetTotalCount(v int32) *DescribeAut
 }
 
 func (s *DescribeAuthorizedAppsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizedApps != nil {
+		if err := s.AuthorizedApps.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAuthorizedAppsResponseBodyAuthorizedApps struct {
@@ -129,7 +134,16 @@ func (s *DescribeAuthorizedAppsResponseBodyAuthorizedApps) SetAuthorizedApp(v []
 }
 
 func (s *DescribeAuthorizedAppsResponseBodyAuthorizedApps) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizedApp != nil {
+		for _, item := range s.AuthorizedApp {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedApp struct {
@@ -319,7 +333,12 @@ func (s *DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedApp) SetTag(v
 }
 
 func (s *DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedApp) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		if err := s.Tag.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedAppTag struct {
@@ -344,7 +363,16 @@ func (s *DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedAppTag) SetTa
 }
 
 func (s *DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedAppTag) Validate() error {
-	return dara.Validate(s)
+	if s.TagInfo != nil {
+		for _, item := range s.TagInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedAppTagTagInfo struct {

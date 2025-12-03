@@ -53,7 +53,12 @@ func (s *DescribeSignaturesByApiResponseBody) SetSignatures(v *DescribeSignature
 }
 
 func (s *DescribeSignaturesByApiResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Signatures != nil {
+		if err := s.Signatures.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSignaturesByApiResponseBodySignatures struct {
@@ -78,7 +83,16 @@ func (s *DescribeSignaturesByApiResponseBodySignatures) SetSignatureItem(v []*De
 }
 
 func (s *DescribeSignaturesByApiResponseBodySignatures) Validate() error {
-	return dara.Validate(s)
+	if s.SignatureItem != nil {
+		for _, item := range s.SignatureItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSignaturesByApiResponseBodySignaturesSignatureItem struct {

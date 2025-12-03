@@ -59,5 +59,10 @@ func (s *CreateLogConfigResponse) SetBody(v *CreateLogConfigResponseBody) *Creat
 }
 
 func (s *CreateLogConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -104,7 +104,12 @@ func (s *DescribeApiTrafficControlsResponseBody) SetTotalCount(v int32) *Describ
 }
 
 func (s *DescribeApiTrafficControlsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApiTrafficControls != nil {
+		if err := s.ApiTrafficControls.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApiTrafficControlsResponseBodyApiTrafficControls struct {
@@ -129,7 +134,16 @@ func (s *DescribeApiTrafficControlsResponseBodyApiTrafficControls) SetApiTraffic
 }
 
 func (s *DescribeApiTrafficControlsResponseBodyApiTrafficControls) Validate() error {
-	return dara.Validate(s)
+	if s.ApiTrafficControlItem != nil {
+		for _, item := range s.ApiTrafficControlItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiTrafficControlsResponseBodyApiTrafficControlsApiTrafficControlItem struct {

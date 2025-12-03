@@ -104,7 +104,12 @@ func (s *DescribeModelsResponseBody) SetTotalCount(v int32) *DescribeModelsRespo
 }
 
 func (s *DescribeModelsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ModelDetails != nil {
+		if err := s.ModelDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeModelsResponseBodyModelDetails struct {
@@ -129,7 +134,16 @@ func (s *DescribeModelsResponseBodyModelDetails) SetModelDetail(v []*DescribeMod
 }
 
 func (s *DescribeModelsResponseBodyModelDetails) Validate() error {
-	return dara.Validate(s)
+	if s.ModelDetail != nil {
+		for _, item := range s.ModelDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeModelsResponseBodyModelDetailsModelDetail struct {
@@ -275,7 +289,12 @@ func (s *DescribeModelsResponseBodyModelDetailsModelDetail) SetTags(v *DescribeM
 }
 
 func (s *DescribeModelsResponseBodyModelDetailsModelDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeModelsResponseBodyModelDetailsModelDetailTags struct {
@@ -300,7 +319,16 @@ func (s *DescribeModelsResponseBodyModelDetailsModelDetailTags) SetTagInfo(v []*
 }
 
 func (s *DescribeModelsResponseBodyModelDetailsModelDetailTags) Validate() error {
-	return dara.Validate(s)
+	if s.TagInfo != nil {
+		for _, item := range s.TagInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeModelsResponseBodyModelDetailsModelDetailTagsTagInfo struct {

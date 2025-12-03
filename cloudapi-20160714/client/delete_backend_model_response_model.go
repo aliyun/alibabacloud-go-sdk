@@ -59,5 +59,10 @@ func (s *DeleteBackendModelResponse) SetBody(v *DeleteBackendModelResponseBody) 
 }
 
 func (s *DeleteBackendModelResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

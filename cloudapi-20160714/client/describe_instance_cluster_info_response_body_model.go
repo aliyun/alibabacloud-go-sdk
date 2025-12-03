@@ -219,7 +219,17 @@ func (s *DescribeInstanceClusterInfoResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeInstanceClusterInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceClusterAttribute != nil {
+		if err := s.InstanceClusterAttribute.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceList != nil {
+		if err := s.InstanceList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute struct {
@@ -601,7 +611,16 @@ func (s *DescribeInstanceClusterInfoResponseBodyInstanceList) SetInstance(v []*D
 }
 
 func (s *DescribeInstanceClusterInfoResponseBodyInstanceList) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		for _, item := range s.Instance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceClusterInfoResponseBodyInstanceListInstance struct {

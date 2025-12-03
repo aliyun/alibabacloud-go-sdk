@@ -53,7 +53,12 @@ func (s *DescribeGroupTrafficResponseBody) SetTrafficPerSecond(v *DescribeGroupT
 }
 
 func (s *DescribeGroupTrafficResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficPerSecond != nil {
+		if err := s.TrafficPerSecond.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGroupTrafficResponseBodyTrafficPerSecond struct {
@@ -78,7 +83,16 @@ func (s *DescribeGroupTrafficResponseBodyTrafficPerSecond) SetMonitorItem(v []*D
 }
 
 func (s *DescribeGroupTrafficResponseBodyTrafficPerSecond) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorItem != nil {
+		for _, item := range s.MonitorItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGroupTrafficResponseBodyTrafficPerSecondMonitorItem struct {

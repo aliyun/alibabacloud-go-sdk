@@ -69,7 +69,16 @@ func (s *DetachApiProductRequest) SetSecurityToken(v string) *DetachApiProductRe
 }
 
 func (s *DetachApiProductRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Apis != nil {
+		for _, item := range s.Apis {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DetachApiProductRequestApis struct {

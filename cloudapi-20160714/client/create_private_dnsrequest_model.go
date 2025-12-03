@@ -90,7 +90,16 @@ func (s *CreatePrivateDNSRequest) SetType(v string) *CreatePrivateDNSRequest {
 }
 
 func (s *CreatePrivateDNSRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreatePrivateDNSRequestRecords struct {

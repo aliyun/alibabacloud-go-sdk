@@ -104,7 +104,16 @@ func (s *DescribeBackendListResponseBody) SetTotalCount(v int32) *DescribeBacken
 }
 
 func (s *DescribeBackendListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BackendInfoList != nil {
+		for _, item := range s.BackendInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackendListResponseBodyBackendInfoList struct {
@@ -220,7 +229,16 @@ func (s *DescribeBackendListResponseBodyBackendInfoList) SetTags(v []*DescribeBa
 }
 
 func (s *DescribeBackendListResponseBodyBackendInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackendListResponseBodyBackendInfoListTags struct {
