@@ -9,6 +9,8 @@ type iListEvaluationMetricDetailsResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDate(v string) *ListEvaluationMetricDetailsResponseBody
+	GetDate() *string
 	SetNextToken(v string) *ListEvaluationMetricDetailsResponseBody
 	GetNextToken() *string
 	SetRequestId(v string) *ListEvaluationMetricDetailsResponseBody
@@ -18,6 +20,7 @@ type iListEvaluationMetricDetailsResponseBody interface {
 }
 
 type ListEvaluationMetricDetailsResponseBody struct {
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
 	// example:
@@ -42,6 +45,10 @@ func (s ListEvaluationMetricDetailsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListEvaluationMetricDetailsResponseBody) GetDate() *string {
+	return s.Date
+}
+
 func (s *ListEvaluationMetricDetailsResponseBody) GetNextToken() *string {
 	return s.NextToken
 }
@@ -52,6 +59,11 @@ func (s *ListEvaluationMetricDetailsResponseBody) GetRequestId() *string {
 
 func (s *ListEvaluationMetricDetailsResponseBody) GetResources() []*ListEvaluationMetricDetailsResponseBodyResources {
 	return s.Resources
+}
+
+func (s *ListEvaluationMetricDetailsResponseBody) SetDate(v string) *ListEvaluationMetricDetailsResponseBody {
+	s.Date = &v
+	return s
 }
 
 func (s *ListEvaluationMetricDetailsResponseBody) SetNextToken(v string) *ListEvaluationMetricDetailsResponseBody {

@@ -11,6 +11,8 @@ type iListEvaluationMetricDetailsRequest interface {
 	GoString() string
 	SetAccountId(v int64) *ListEvaluationMetricDetailsRequest
 	GetAccountId() *int64
+	SetDate(v string) *ListEvaluationMetricDetailsRequest
+	GetDate() *string
 	SetId(v string) *ListEvaluationMetricDetailsRequest
 	GetId() *string
 	SetMaxResults(v int32) *ListEvaluationMetricDetailsRequest
@@ -31,7 +33,8 @@ type ListEvaluationMetricDetailsRequest struct {
 	// example:
 	//
 	// 103144549568****
-	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountId *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	Date      *string `json:"Date,omitempty" xml:"Date,omitempty"`
 	// The ID of the check item.
 	//
 	// You can call the [ListEvaluationMetadata](https://help.aliyun.com/document_detail/2841889.html) operation to query the ID of the check item.
@@ -74,6 +77,10 @@ func (s *ListEvaluationMetricDetailsRequest) GetAccountId() *int64 {
 	return s.AccountId
 }
 
+func (s *ListEvaluationMetricDetailsRequest) GetDate() *string {
+	return s.Date
+}
+
 func (s *ListEvaluationMetricDetailsRequest) GetId() *string {
 	return s.Id
 }
@@ -100,6 +107,11 @@ func (s *ListEvaluationMetricDetailsRequest) GetSnapshotId() *string {
 
 func (s *ListEvaluationMetricDetailsRequest) SetAccountId(v int64) *ListEvaluationMetricDetailsRequest {
 	s.AccountId = &v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsRequest) SetDate(v string) *ListEvaluationMetricDetailsRequest {
+	s.Date = &v
 	return s
 }
 

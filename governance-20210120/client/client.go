@@ -847,6 +847,10 @@ func (client *Client) ListEvaluationMetricDetailsWithOptions(request *ListEvalua
 		query["AccountId"] = request.AccountId
 	}
 
+	if !dara.IsNil(request.Date) {
+		query["Date"] = request.Date
+	}
+
 	if !dara.IsNil(request.Id) {
 		query["Id"] = request.Id
 	}

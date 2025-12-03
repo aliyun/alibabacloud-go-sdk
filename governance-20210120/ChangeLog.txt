@@ -1,3 +1,8 @@
+2025-12-03 Version: v0.3.7
+- Update API ListEvaluationMetricDetails: add request parameters Date.
+- Update API ListEvaluationMetricDetails: add response parameters Body.Date.
+
+
 2025-11-28 Version: v0.3.6
 - Update API EnrollAccount: add request parameters Tag.
 - Update API GetEnrolledAccount: add response parameters Body.Inputs.Tag.
