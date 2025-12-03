@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("yuqing"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -67,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CloseProductResponse
-func (client *Client) CloseProductWithOptions(request *CloseProductRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CloseProductResponse, _err error) {
+func (client *Client) CloseProductWithContext(ctx context.Context, request *CloseProductRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CloseProductResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -101,30 +52,11 @@ func (client *Client) CloseProductWithOptions(request *CloseProductRequest, head
 		BodyType:    dara.String("json"),
 	}
 	_result = &CloseProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 关闭舆情产品
-//
-// @param request - CloseProductRequest
-//
-// @return CloseProductResponse
-func (client *Client) CloseProduct(request *CloseProductRequest) (_result *CloseProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CloseProductResponse{}
-	_body, _err := client.CloseProductWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -139,7 +71,7 @@ func (client *Client) CloseProduct(request *CloseProductRequest) (_result *Close
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConsoleApiProxyResponse
-func (client *Client) ConsoleApiProxyWithOptions(request *ConsoleApiProxyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ConsoleApiProxyResponse, _err error) {
+func (client *Client) ConsoleApiProxyWithContext(ctx context.Context, request *ConsoleApiProxyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ConsoleApiProxyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -162,30 +94,11 @@ func (client *Client) ConsoleApiProxyWithOptions(request *ConsoleApiProxyRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ConsoleApiProxyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 控制台统一代理API
-//
-// @param request - ConsoleApiProxyRequest
-//
-// @return ConsoleApiProxyResponse
-func (client *Client) ConsoleApiProxy(request *ConsoleApiProxyRequest) (_result *ConsoleApiProxyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ConsoleApiProxyResponse{}
-	_body, _err := client.ConsoleApiProxyWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -202,7 +115,7 @@ func (client *Client) ConsoleApiProxy(request *ConsoleApiProxyRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConsoleProxyResponse
-func (client *Client) ConsoleProxyWithOptions(request *ConsoleProxyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ConsoleProxyResponse, _err error) {
+func (client *Client) ConsoleProxyWithContext(ctx context.Context, request *ConsoleProxyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ConsoleProxyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -248,33 +161,11 @@ func (client *Client) ConsoleProxyWithOptions(request *ConsoleProxyRequest, head
 		BodyType:    dara.String("json"),
 	}
 	_result = &ConsoleProxyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ConsoleProxy is deprecated
-//
-// Summary:
-//
-// 控制台统一代理API
-//
-// @param request - ConsoleProxyRequest
-//
-// @return ConsoleProxyResponse
-// Deprecated
-func (client *Client) ConsoleProxy(request *ConsoleProxyRequest) (_result *ConsoleProxyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ConsoleProxyResponse{}
-	_body, _err := client.ConsoleProxyWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -289,7 +180,7 @@ func (client *Client) ConsoleProxy(request *ConsoleProxyRequest) (_result *Conso
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAnalysisTaskResultResponse
-func (client *Client) GetAnalysisTaskResultWithOptions(request *GetAnalysisTaskResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAnalysisTaskResultResponse, _err error) {
+func (client *Client) GetAnalysisTaskResultWithContext(ctx context.Context, request *GetAnalysisTaskResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAnalysisTaskResultResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -325,30 +216,11 @@ func (client *Client) GetAnalysisTaskResultWithOptions(request *GetAnalysisTaskR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAnalysisTaskResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 读取分析组件计算任务结果
-//
-// @param request - GetAnalysisTaskResultRequest
-//
-// @return GetAnalysisTaskResultResponse
-func (client *Client) GetAnalysisTaskResult(request *GetAnalysisTaskResultRequest) (_result *GetAnalysisTaskResultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetAnalysisTaskResultResponse{}
-	_body, _err := client.GetAnalysisTaskResultWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -363,7 +235,7 @@ func (client *Client) GetAnalysisTaskResult(request *GetAnalysisTaskResultReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenProductResponse
-func (client *Client) OpenProductWithOptions(request *OpenProductRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OpenProductResponse, _err error) {
+func (client *Client) OpenProductWithContext(ctx context.Context, request *OpenProductRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OpenProductResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -401,30 +273,11 @@ func (client *Client) OpenProductWithOptions(request *OpenProductRequest, header
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 开通舆情产品
-//
-// @param request - OpenProductRequest
-//
-// @return OpenProductResponse
-func (client *Client) OpenProduct(request *OpenProductRequest) (_result *OpenProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &OpenProductResponse{}
-	_body, _err := client.OpenProductWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -439,7 +292,7 @@ func (client *Client) OpenProduct(request *OpenProductRequest) (_result *OpenPro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryProductInstanceListResponse
-func (client *Client) QueryProductInstanceListWithOptions(request *QueryProductInstanceListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryProductInstanceListResponse, _err error) {
+func (client *Client) QueryProductInstanceListWithContext(ctx context.Context, request *QueryProductInstanceListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryProductInstanceListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -483,30 +336,11 @@ func (client *Client) QueryProductInstanceListWithOptions(request *QueryProductI
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryProductInstanceListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询产品开通实例列表
-//
-// @param request - QueryProductInstanceListRequest
-//
-// @return QueryProductInstanceListResponse
-func (client *Client) QueryProductInstanceList(request *QueryProductInstanceListRequest) (_result *QueryProductInstanceListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &QueryProductInstanceListResponse{}
-	_body, _err := client.QueryProductInstanceListWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -521,7 +355,7 @@ func (client *Client) QueryProductInstanceList(request *QueryProductInstanceList
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryYuqingMessageResponse
-func (client *Client) QueryYuqingMessageWithOptions(request *QueryYuqingMessageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryYuqingMessageResponse, _err error) {
+func (client *Client) QueryYuqingMessageWithContext(ctx context.Context, request *QueryYuqingMessageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryYuqingMessageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -559,30 +393,11 @@ func (client *Client) QueryYuqingMessageWithOptions(request *QueryYuqingMessageR
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryYuqingMessageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询舆情文章列表
-//
-// @param request - QueryYuqingMessageRequest
-//
-// @return QueryYuqingMessageResponse
-func (client *Client) QueryYuqingMessage(request *QueryYuqingMessageRequest) (_result *QueryYuqingMessageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &QueryYuqingMessageResponse{}
-	_body, _err := client.QueryYuqingMessageWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -597,7 +412,7 @@ func (client *Client) QueryYuqingMessage(request *QueryYuqingMessageRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitAnalysisTaskResponse
-func (client *Client) SubmitAnalysisTaskWithOptions(request *SubmitAnalysisTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitAnalysisTaskResponse, _err error) {
+func (client *Client) SubmitAnalysisTaskWithContext(ctx context.Context, request *SubmitAnalysisTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitAnalysisTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -639,29 +454,10 @@ func (client *Client) SubmitAnalysisTaskWithOptions(request *SubmitAnalysisTaskR
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitAnalysisTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 提交分析组件计算任务
-//
-// @param request - SubmitAnalysisTaskRequest
-//
-// @return SubmitAnalysisTaskResponse
-func (client *Client) SubmitAnalysisTask(request *SubmitAnalysisTaskRequest) (_result *SubmitAnalysisTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &SubmitAnalysisTaskResponse{}
-	_body, _err := client.SubmitAnalysisTaskWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
