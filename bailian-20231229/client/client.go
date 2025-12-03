@@ -849,6 +849,18 @@ func (client *Client) CreateIndexWithOptions(WorkspaceId *string, tmpReq *Create
 		query["metaExtractColumns"] = request.MetaExtractColumnsShrink
 	}
 
+	if !dara.IsNil(request.PipelineCommercialCu) {
+		query["pipelineCommercialCu"] = request.PipelineCommercialCu
+	}
+
+	if !dara.IsNil(request.PipelineCommercialType) {
+		query["pipelineCommercialType"] = request.PipelineCommercialType
+	}
+
+	if !dara.IsNil(request.PipelineRetrieveRateLimitStrategy) {
+		query["pipelineRetrieveRateLimitStrategy"] = request.PipelineRetrieveRateLimitStrategy
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),

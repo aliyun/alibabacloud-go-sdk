@@ -55,6 +55,12 @@ type iCreateIndexShrinkRequest interface {
 	GetEnableHeaders() *bool
 	SetMetaExtractColumnsShrink(v string) *CreateIndexShrinkRequest
 	GetMetaExtractColumnsShrink() *string
+	SetPipelineCommercialCu(v int32) *CreateIndexShrinkRequest
+	GetPipelineCommercialCu() *int32
+	SetPipelineCommercialType(v string) *CreateIndexShrinkRequest
+	GetPipelineCommercialType() *string
+	SetPipelineRetrieveRateLimitStrategy(v string) *CreateIndexShrinkRequest
+	GetPipelineRetrieveRateLimitStrategy() *string
 }
 
 type CreateIndexShrinkRequest struct {
@@ -226,6 +232,18 @@ type CreateIndexShrinkRequest struct {
 	EnableHeaders *bool `json:"enableHeaders,omitempty" xml:"enableHeaders,omitempty"`
 	// The metadata extraction configurations. Metadata refers to a set of additional attributes associated with unstructured data, which are integrated into text chunks in key-value pairs. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html).
 	MetaExtractColumnsShrink *string `json:"metaExtractColumns,omitempty" xml:"metaExtractColumns,omitempty"`
+	// example:
+	//
+	// 1
+	PipelineCommercialCu *int32 `json:"pipelineCommercialCu,omitempty" xml:"pipelineCommercialCu,omitempty"`
+	// example:
+	//
+	// standard
+	PipelineCommercialType *string `json:"pipelineCommercialType,omitempty" xml:"pipelineCommercialType,omitempty"`
+	// example:
+	//
+	// downgrade
+	PipelineRetrieveRateLimitStrategy *string `json:"pipelineRetrieveRateLimitStrategy,omitempty" xml:"pipelineRetrieveRateLimitStrategy,omitempty"`
 }
 
 func (s CreateIndexShrinkRequest) String() string {
@@ -326,6 +344,18 @@ func (s *CreateIndexShrinkRequest) GetEnableHeaders() *bool {
 
 func (s *CreateIndexShrinkRequest) GetMetaExtractColumnsShrink() *string {
 	return s.MetaExtractColumnsShrink
+}
+
+func (s *CreateIndexShrinkRequest) GetPipelineCommercialCu() *int32 {
+	return s.PipelineCommercialCu
+}
+
+func (s *CreateIndexShrinkRequest) GetPipelineCommercialType() *string {
+	return s.PipelineCommercialType
+}
+
+func (s *CreateIndexShrinkRequest) GetPipelineRetrieveRateLimitStrategy() *string {
+	return s.PipelineRetrieveRateLimitStrategy
 }
 
 func (s *CreateIndexShrinkRequest) SetCategoryIdsShrink(v string) *CreateIndexShrinkRequest {
@@ -440,6 +470,21 @@ func (s *CreateIndexShrinkRequest) SetEnableHeaders(v bool) *CreateIndexShrinkRe
 
 func (s *CreateIndexShrinkRequest) SetMetaExtractColumnsShrink(v string) *CreateIndexShrinkRequest {
 	s.MetaExtractColumnsShrink = &v
+	return s
+}
+
+func (s *CreateIndexShrinkRequest) SetPipelineCommercialCu(v int32) *CreateIndexShrinkRequest {
+	s.PipelineCommercialCu = &v
+	return s
+}
+
+func (s *CreateIndexShrinkRequest) SetPipelineCommercialType(v string) *CreateIndexShrinkRequest {
+	s.PipelineCommercialType = &v
+	return s
+}
+
+func (s *CreateIndexShrinkRequest) SetPipelineRetrieveRateLimitStrategy(v string) *CreateIndexShrinkRequest {
+	s.PipelineRetrieveRateLimitStrategy = &v
 	return s
 }
 

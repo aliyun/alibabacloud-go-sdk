@@ -645,6 +645,18 @@ func (client *Client) CreateIndexWithContext(ctx context.Context, WorkspaceId *s
 		query["metaExtractColumns"] = request.MetaExtractColumnsShrink
 	}
 
+	if !dara.IsNil(request.PipelineCommercialCu) {
+		query["pipelineCommercialCu"] = request.PipelineCommercialCu
+	}
+
+	if !dara.IsNil(request.PipelineCommercialType) {
+		query["pipelineCommercialType"] = request.PipelineCommercialType
+	}
+
+	if !dara.IsNil(request.PipelineRetrieveRateLimitStrategy) {
+		query["pipelineRetrieveRateLimitStrategy"] = request.PipelineRetrieveRateLimitStrategy
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
