@@ -34,8 +34,20 @@ type iStartInstanceRefreshRequest interface {
 }
 
 type StartInstanceRefreshRequest struct {
-	CheckpointPauseTime *int32                                    `json:"CheckpointPauseTime,omitempty" xml:"CheckpointPauseTime,omitempty"`
-	Checkpoints         []*StartInstanceRefreshRequestCheckpoints `json:"Checkpoints,omitempty" xml:"Checkpoints,omitempty" type:"Repeated"`
+	// The duration of the pause when the refresh task checkpoint is entered.
+	//
+	// 	- Unit: minutes
+	//
+	// 	- Valid values: 1 to 2880.
+	//
+	// 	- Default: 60.
+	//
+	// example:
+	//
+	// 10
+	CheckpointPauseTime *int32 `json:"CheckpointPauseTime,omitempty" xml:"CheckpointPauseTime,omitempty"`
+	// Refresh Task Checkpoint: specifies that the task is automatically suspended for CheckpointPauseTime minutes when the proportion of new instances reaches the specified value during instance refresh.
+	Checkpoints []*StartInstanceRefreshRequestCheckpoints `json:"Checkpoints,omitempty" xml:"Checkpoints,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
 	//
 	// example:
@@ -46,9 +58,9 @@ type StartInstanceRefreshRequest struct {
 	//
 	// >
 	//
-	// 	- When you call this operation, you must specify one of the following parameters: ScalingConfigurationId and ImageId.
+	// 	- ScalingConfigurationId, ImageId, LaunchTemplateId, and Containers cannot be set at the same time. If you do not specify this parameter, the scaling group is refreshed based on the configurations that are in effect.
 	//
-	// 	- Instances whose configurations match the desired configurations of the task are ignored during instance refresh.
+	// 	- After the instance refresh task is complete, the scaling group uses the scaling configuration specified by this parameter.
 	DesiredConfiguration *StartInstanceRefreshRequestDesiredConfiguration `json:"DesiredConfiguration,omitempty" xml:"DesiredConfiguration,omitempty" type:"Struct"`
 	// The ratio of instances that can exceed the upper limit of the scaling group capacity to all instances in the scaling group during instance refresh. Valid values: 100 to 200. Default value: 120.
 	//
@@ -226,6 +238,13 @@ func (s *StartInstanceRefreshRequest) Validate() error {
 }
 
 type StartInstanceRefreshRequestCheckpoints struct {
+	// The percentage of new instances in the scaling group to the total number of instances. When this percentage is reached, the task is automatically suspended. Valid values: 1 to 100 (%).
+	//
+	// >  Requires a small to large setting, and the last progress percentage needs to be 100.
+	//
+	// example:
+	//
+	// 20
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
 }
 
@@ -251,6 +270,13 @@ func (s *StartInstanceRefreshRequestCheckpoints) Validate() error {
 }
 
 type StartInstanceRefreshRequestDesiredConfiguration struct {
+	// The containers in the elastic container instance.
+	//
+	// >
+	//
+	// 	- This parameter supports only scaling groups of the ECI type.
+	//
+	// 	- Only the containers in the scaling configuration list that are the same as those in the `Container.Name` are refreshed.
 	Containers []*StartInstanceRefreshRequestDesiredConfigurationContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
 	// The image ID.
 	//
@@ -263,13 +289,30 @@ type StartInstanceRefreshRequestDesiredConfiguration struct {
 	// example:
 	//
 	// m-2ze8cqacj7opnf***
-	ImageId                 *string                                                                   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	LaunchTemplateId        *string                                                                   `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
-	LaunchTemplateOverrides []*StartInstanceRefreshRequestDesiredConfigurationLaunchTemplateOverrides `json:"LaunchTemplateOverrides,omitempty" xml:"LaunchTemplateOverrides,omitempty" type:"Repeated"`
-	LaunchTemplateVersion   *string                                                                   `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
-	// The ID of the scaling configuration.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the launch template that you want to enable in the scaling group.
 	//
-	// >  After the instance refresh task is complete, the scaling group uses the scaling configuration specified by this parameter.
+	// example:
+	//
+	// lt-2ze2qli30u***
+	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
+	// The information about the instance types that are extended in the launch template.
+	LaunchTemplateOverrides []*StartInstanceRefreshRequestDesiredConfigurationLaunchTemplateOverrides `json:"LaunchTemplateOverrides,omitempty" xml:"LaunchTemplateOverrides,omitempty" type:"Repeated"`
+	// The version number of the launch template. Valid value:
+	//
+	// 	- A fixed template version number.
+	//
+	// 	- Default: the default version of the template.
+	//
+	// 	- Latest: the latest version of the template.
+	//
+	// >  If you set the version to Default or Latest, the instance refresh task cannot be rolled back.
+	//
+	// example:
+	//
+	// 8
+	LaunchTemplateVersion *string `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
+	// The ID of the scaling configuration.
 	//
 	// example:
 	//
@@ -362,11 +405,24 @@ func (s *StartInstanceRefreshRequestDesiredConfiguration) Validate() error {
 }
 
 type StartInstanceRefreshRequestDesiredConfigurationContainers struct {
-	Args            []*string                                                                   `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
-	Commands        []*string                                                                   `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+	// The argument that corresponds to the startup command of the container. You can specify up to 10 arguments.
+	Args []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
+	// The container startup commands. You can specify up to 20 commands. Each command can contain up to 256 characters.
+	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+	// The environment variables.
 	EnvironmentVars []*StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
-	Image           *string                                                                     `json:"Image,omitempty" xml:"Image,omitempty"`
-	Name            *string                                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The image in the container.
+	//
+	// example:
+	//
+	// registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/nginx:latest
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The custom name of the container.
+	//
+	// example:
+	//
+	// nginx
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s StartInstanceRefreshRequestDesiredConfigurationContainers) String() string {
@@ -436,9 +492,24 @@ func (s *StartInstanceRefreshRequestDesiredConfigurationContainers) Validate() e
 }
 
 type StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars struct {
+	// >  This parameter is unavailable for use.
+	//
+	// example:
+	//
+	// fieldPath
 	FieldRefFieldPath *string `json:"FieldRefFieldPath,omitempty" xml:"FieldRefFieldPath,omitempty"`
-	Key               *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value             *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the environment variable. It can be 1 to 128 characters in length. Format requirement:[0-9a-zA-Z], and underscores, cannot start with a number.
+	//
+	// example:
+	//
+	// PATH
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the environment variable. The value must be 0 to 256 bits in length.
+	//
+	// example:
+	//
+	// /usr/local/bin
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars) String() string {
@@ -481,6 +552,13 @@ func (s *StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVar
 }
 
 type StartInstanceRefreshRequestDesiredConfigurationLaunchTemplateOverrides struct {
+	// The instance type specified by using this parameter overwrites the instance type of the launch template.
+	//
+	// >  This parameter takes effect only if you specify LaunchTemplateId.
+	//
+	// example:
+	//
+	// ecs.c5.2xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 }
 

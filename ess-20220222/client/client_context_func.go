@@ -6148,6 +6148,10 @@ func (client *Client) ModifyEciScalingConfigurationWithContext(ctx context.Conte
 		query["NtpServers"] = request.NtpServers
 	}
 
+	if !dara.IsNil(request.Override) {
+		query["Override"] = request.Override
+	}
+
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
 	}

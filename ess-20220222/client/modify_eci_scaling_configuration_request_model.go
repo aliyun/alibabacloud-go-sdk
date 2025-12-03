@@ -83,6 +83,8 @@ type iModifyEciScalingConfigurationRequest interface {
 	GetMemory() *float32
 	SetNtpServers(v []*string) *ModifyEciScalingConfigurationRequest
 	GetNtpServers() []*string
+	SetOverride(v bool) *ModifyEciScalingConfigurationRequest
+	GetOverride() *bool
 	SetOwnerId(v int64) *ModifyEciScalingConfigurationRequest
 	GetOwnerId() *int64
 	SetRamRoleName(v string) *ModifyEciScalingConfigurationRequest
@@ -354,6 +356,7 @@ type ModifyEciScalingConfigurationRequest struct {
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The endpoints of Network Time Protocol (NTP) servers.
 	NtpServers []*string `json:"NtpServers,omitempty" xml:"NtpServers,omitempty" type:"Repeated"`
+	Override   *bool     `json:"Override,omitempty" xml:"Override,omitempty"`
 	OwnerId    *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The name of the instance Resource Access Management (RAM) role. You can use the same RAM role to access elastic container instances and Elastic Compute Service (ECS) instances. For more information, see [Use an instance RAM role by calling API operations](https://help.aliyun.com/document_detail/61178.html).
 	//
@@ -598,6 +601,10 @@ func (s *ModifyEciScalingConfigurationRequest) GetNtpServers() []*string {
 	return s.NtpServers
 }
 
+func (s *ModifyEciScalingConfigurationRequest) GetOverride() *bool {
+	return s.Override
+}
+
 func (s *ModifyEciScalingConfigurationRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
@@ -836,6 +843,11 @@ func (s *ModifyEciScalingConfigurationRequest) SetMemory(v float32) *ModifyEciSc
 
 func (s *ModifyEciScalingConfigurationRequest) SetNtpServers(v []*string) *ModifyEciScalingConfigurationRequest {
 	s.NtpServers = v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequest) SetOverride(v bool) *ModifyEciScalingConfigurationRequest {
+	s.Override = &v
 	return s
 }
 

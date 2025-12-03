@@ -52,7 +52,7 @@ type iCreateAlarmRequest interface {
 type CreateAlarmRequest struct {
 	// The list of unique identifiers of the scaling rules that are associated with the event-triggered task.
 	AlarmActions []*string `json:"AlarmActions,omitempty" xml:"AlarmActions,omitempty" type:"Repeated"`
-	// The operator that you want to use to compare the metric value and the threshold. Valid values:
+	// The operator that you want to use to compare the metric value and the threshold. Valid Values:
 	//
 	// 	- If the metric value is greater than or equal to the threshold, set the value to >=.
 	//
@@ -100,7 +100,7 @@ type CreateAlarmRequest struct {
 	Effective *string `json:"Effective,omitempty" xml:"Effective,omitempty"`
 	// The number of consecutive times that the threshold must be reached before a scaling rule is executed. For example, if you set this parameter to 3, the average CPU utilization must reach or exceed 80% three times in a row before the scaling rule is executed.
 	//
-	// Default value: 3.
+	// Default value: 3
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ type CreateAlarmRequest struct {
 	//
 	// CpuUtilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The metric type. Valid values:
+	// The metric type. Valid Values:
 	//
 	// 	- system: a system metric of CloudMonitor.
 	//
@@ -205,7 +205,7 @@ type CreateAlarmRequest struct {
 	// TestAlarmTask
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The statistical period of the metric data. Unit: seconds. Valid values:
+	// The statistical period of the metric data. Unit: seconds. Valid Values:
 	//
 	// 	- 15
 	//
@@ -217,7 +217,7 @@ type CreateAlarmRequest struct {
 	//
 	// 	- 900
 	//
-	// >  You can set this parameter to 15 seconds only for scaling groups of the ECS type.
+	// > You can set this parameter to 15 seconds only for scaling groups of the ECS type.
 	//
 	// Default value: 300.
 	//
@@ -242,7 +242,7 @@ type CreateAlarmRequest struct {
 	//
 	// asg-bp18p2yfxow2dloq****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The statistical method of the metric data. Valid values:
+	// The statistical method of the metric data. Valid Values:
 	//
 	// 	- Average: calculates the average value of the metric data.
 	//
@@ -474,11 +474,13 @@ type CreateAlarmRequestDimensions struct {
 	//
 	//     	- user_id: the ID of your Alibaba Cloud account.
 	//
-	//     	- scaling_group: the scaling group that you want to monitor by using the event-triggered task.
+	//     	- scaling_group: the scaling group that is monitored by the event-triggered task.
 	//
 	//     	- device: the NIC type.
 	//
 	//     	- state: the status of the TCP connection.
+	//
+	//     	- rulePool: the specified server group for the ALB qps metric.
 	//
 	// example:
 	//
@@ -494,17 +496,19 @@ type CreateAlarmRequestDimensions struct {
 	//
 	//     	- scaling_group: The system specifies the value.
 	//
-	//     	- device: You can set this parameter to eth0 or eth1.
+	//     	- device:
 	//
-	//         	- For instances of the classic network type, eth0 specifies the internal NIC. Only one eth0 NIC exists on each instance that resides in VPCs.
+	//         	- eth0: For classic network instances, eth0 indicates the internal network network interface controller. Only one eth0 NIC exists on each instance that resides in VPCs.
 	//
-	//         	- For instances of the classic network type, eth1 specifies the public NIC.
+	//         	- eth1: For classic network instances, eth1 represents the Internet network interface controller.
 	//
-	//     	- state: You can set this parameter to TCP_TOTAL or ESTABLISHED.
+	//     	- state:
 	//
 	//         	- TCP_TOTAL specifies the total number of TCP connections.
 	//
-	//         	- ESTABLISHED specifies the number of TCP connections that are established.
+	//         	- ESTABLISHED indicates the number of TCP connections that are established.
+	//
+	//     	- rulePool: the ID of the ALB server group. Example: sgp-xxxxx.
 	//
 	// example:
 	//

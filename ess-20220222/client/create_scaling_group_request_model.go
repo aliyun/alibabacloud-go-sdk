@@ -124,7 +124,18 @@ type CreateScalingGroupRequest struct {
 	//
 	// priority
 	AllocationStrategy *string `json:"AllocationStrategy,omitempty" xml:"AllocationStrategy,omitempty"`
-	AutoRebalance      *bool   `json:"AutoRebalance,omitempty" xml:"AutoRebalance,omitempty"`
+	// Whether to enable automatic rebalancing for the scaling group. This takes effect only when BalancedOnly is enabled for the scaling group. Valid values:
+	//
+	// 	- false: Auto rebalancing is disabled for the scaling group.
+	//
+	// 	- true: If Auto rebalancing is enabled, the scaling group automatically detects the capacity of the zone. If the capacity of the zone is unbalanced, the scaling group actively scales out the zone and re-balances the capacity of the zone.
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// false
+	AutoRebalance *bool `json:"AutoRebalance,omitempty" xml:"AutoRebalance,omitempty"`
 	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set `MultiAZPolicy` to `COMPOSABLE`. Valid values:
 	//
 	// 	- true
@@ -138,7 +149,18 @@ type CreateScalingGroupRequest struct {
 	// example:
 	//
 	// false
-	AzBalance   *bool   `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	AzBalance *bool `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	// The zone balancing mode. This mode takes effect only when the zone balancing mode is enabled. Valid values:
+	//
+	// 	- BalancedBestEffort: If a resource fails to be created in a zone, it is downgraded to another zone to ensure best-effort delivery of the resource.
+	//
+	// 	- BalancedOnly: If a resource fails to be created in a zone, it is not downgraded to another zone. The scale-out activity is partially successful to avoid excessive imbalance of resources in different zones.
+	//
+	// Default value: BalancedBestEffort.
+	//
+	// example:
+	//
+	// BalancedBestEffort
 	BalanceMode *string `json:"BalanceMode,omitempty" xml:"BalanceMode,omitempty"`
 	// The capacity options.
 	CapacityOptions *CreateScalingGroupRequestCapacityOptions `json:"CapacityOptions,omitempty" xml:"CapacityOptions,omitempty" type:"Struct"`
@@ -465,7 +487,7 @@ type CreateScalingGroupRequest struct {
 	//
 	// false
 	SyncAlarmRuleToCms *bool `json:"SyncAlarmRuleToCms,omitempty" xml:"SyncAlarmRuleToCms,omitempty"`
-	// The tags that you want to add to the scaling group.
+	// The information about the tags of the scaling group.
 	Tags []*CreateScalingGroupRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The backend vServer group that you want to associate with the scaling group.
 	VServerGroups []*CreateScalingGroupRequestVServerGroups `json:"VServerGroups,omitempty" xml:"VServerGroups,omitempty" type:"Repeated"`
@@ -1615,13 +1637,13 @@ func (s *CreateScalingGroupRequestServerGroups) Validate() error {
 }
 
 type CreateScalingGroupRequestTags struct {
-	// The tag key that you want to add to the scaling group.
+	// The tag key of the scaling group.
 	//
 	// example:
 	//
 	// Department
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Specifies whether to propagate the tag that you want to add to the scaling group. Valid values:
+	// Identifies whether the tag is a propagatable tag. Valid values:
 	//
 	// 	- true: propagates the tag to only instances that are newly created.
 	//
@@ -1633,7 +1655,7 @@ type CreateScalingGroupRequestTags struct {
 	//
 	// false
 	Propagate *bool `json:"Propagate,omitempty" xml:"Propagate,omitempty"`
-	// The tag value that you want to add to the scaling group.
+	// The tag value of the scaling group.
 	//
 	// example:
 	//

@@ -102,7 +102,18 @@ type ModifyScalingGroupRequest struct {
 	//
 	// priority
 	AllocationStrategy *string `json:"AllocationStrategy,omitempty" xml:"AllocationStrategy,omitempty"`
-	AutoRebalance      *bool   `json:"AutoRebalance,omitempty" xml:"AutoRebalance,omitempty"`
+	// Whether to enable automatic rebalancing for the scaling group. This takes effect only when BalancedOnly is enabled for the scaling group. Valid values:
+	//
+	// 	- false: Auto rebalancing is disabled for the scaling group.
+	//
+	// 	- true: If Auto rebalancing is enabled, the scaling group automatically detects the capacity of the zone. If the capacity of the zone is unbalanced, the scaling group actively scales out the zone and re-balances the capacity of the zone.
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// false
+	AutoRebalance *bool `json:"AutoRebalance,omitempty" xml:"AutoRebalance,omitempty"`
 	// Specifies whether to evenly distribute instances in the scaling group across zones. This parameter takes effect only when you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
 	//
 	// 	- true
@@ -114,7 +125,18 @@ type ModifyScalingGroupRequest struct {
 	// example:
 	//
 	// false
-	AzBalance   *bool   `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	AzBalance *bool `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	// The zone balancing mode. This mode takes effect only when the zone balancing mode is enabled. Valid values:
+	//
+	// 	- BalancedBestEffort: If a resource fails to be created in a zone, the resource is downgraded to another zone. This ensures best-effort delivery of the resource.
+	//
+	// 	- BalancedOnly: If a resource fails to be created in a zone, the resource is not downgraded to another zone. The scale-out activity is partially successful to avoid excessive imbalance of resources in different zones.
+	//
+	// Default value: BalancedBestEffort.
+	//
+	// example:
+	//
+	// BalancedBestEffort
 	BalanceMode *string `json:"BalanceMode,omitempty" xml:"BalanceMode,omitempty"`
 	// The capacity options.
 	CapacityOptions *ModifyScalingGroupRequestCapacityOptions `json:"CapacityOptions,omitempty" xml:"CapacityOptions,omitempty" type:"Struct"`

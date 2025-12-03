@@ -117,6 +117,9 @@ func (s *DescribeInstanceRefreshesResponseBody) Validate() error {
 }
 
 type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks struct {
+	// example:
+	//
+	// 30
 	CheckpointPauseTime *int32                                                                  `json:"CheckpointPauseTime,omitempty" xml:"CheckpointPauseTime,omitempty"`
 	Checkpoints         []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints `json:"Checkpoints,omitempty" xml:"Checkpoints,omitempty" type:"Repeated"`
 	// The desired configurations of the instance refresh task.
@@ -385,6 +388,9 @@ func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) Validate() e
 }
 
 type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints struct {
+	// example:
+	//
+	// 60
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
 }
 
@@ -416,10 +422,16 @@ type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurati
 	// example:
 	//
 	// m-uf6g5noisr****
-	ImageId                 *string                                                                                                 `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// lt-2ze5x4mp*****
 	LaunchTemplateId        *string                                                                                                 `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
 	LaunchTemplateOverrides []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationLaunchTemplateOverrides `json:"LaunchTemplateOverrides,omitempty" xml:"LaunchTemplateOverrides,omitempty" type:"Repeated"`
-	LaunchTemplateVersion   *string                                                                                                 `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
+	// example:
+	//
+	// Latest
+	LaunchTemplateVersion *string `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
 	// The ID of the scaling configuration.
 	//
 	// example:
@@ -516,8 +528,14 @@ type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurati
 	Args            []*string                                                                                                 `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
 	Commands        []*string                                                                                                 `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
 	EnvironmentVars []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
-	Image           *string                                                                                                   `json:"Image,omitempty" xml:"Image,omitempty"`
-	Name            *string                                                                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/nginx:latest
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers) String() string {
@@ -587,9 +605,18 @@ func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigu
 }
 
 type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars struct {
+	// example:
+	//
+	// fieldPath
 	FieldRefFieldPath *string `json:"FieldRefFieldPath,omitempty" xml:"FieldRefFieldPath,omitempty"`
-	Key               *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value             *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// PATH
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// /usr/local/bin
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars) String() string {
@@ -632,6 +659,9 @@ func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigu
 }
 
 type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationLaunchTemplateOverrides struct {
+	// example:
+	//
+	// ecs.sn1ne.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 }
 
