@@ -9,11 +9,14 @@ type iDescribeNoticeConfigRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizType(v string) *DescribeNoticeConfigRequest
+	GetBizType() *string
 	SetSourceIp(v string) *DescribeNoticeConfigRequest
 	GetSourceIp() *string
 }
 
 type DescribeNoticeConfigRequest struct {
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The source IP address of the request.
 	//
 	// example:
@@ -30,8 +33,17 @@ func (s DescribeNoticeConfigRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeNoticeConfigRequest) GetBizType() *string {
+	return s.BizType
+}
+
 func (s *DescribeNoticeConfigRequest) GetSourceIp() *string {
 	return s.SourceIp
+}
+
+func (s *DescribeNoticeConfigRequest) SetBizType(v string) *DescribeNoticeConfigRequest {
+	s.BizType = &v
+	return s
 }
 
 func (s *DescribeNoticeConfigRequest) SetSourceIp(v string) *DescribeNoticeConfigRequest {

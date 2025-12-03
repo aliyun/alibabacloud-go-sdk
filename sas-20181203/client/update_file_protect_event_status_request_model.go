@@ -9,15 +9,47 @@ type iUpdateFileProtectEventStatusRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAlertLevels(v []*int32) *UpdateFileProtectEventStatusRequest
+	GetAlertLevels() []*int32
+	SetEndTime(v int64) *UpdateFileProtectEventStatusRequest
+	GetEndTime() *int64
 	SetId(v []*int64) *UpdateFileProtectEventStatusRequest
 	GetId() []*int64
+	SetInstanceId(v string) *UpdateFileProtectEventStatusRequest
+	GetInstanceId() *string
+	SetInstanceName(v string) *UpdateFileProtectEventStatusRequest
+	GetInstanceName() *string
+	SetInternetIp(v string) *UpdateFileProtectEventStatusRequest
+	GetInternetIp() *string
+	SetIntranetIp(v string) *UpdateFileProtectEventStatusRequest
+	GetIntranetIp() *string
+	SetOperation(v string) *UpdateFileProtectEventStatusRequest
+	GetOperation() *string
+	SetRuleName(v string) *UpdateFileProtectEventStatusRequest
+	GetRuleName() *string
+	SetSelectAllAcrossPages(v bool) *UpdateFileProtectEventStatusRequest
+	GetSelectAllAcrossPages() *bool
+	SetStartTime(v int64) *UpdateFileProtectEventStatusRequest
+	GetStartTime() *int64
 	SetStatus(v int32) *UpdateFileProtectEventStatusRequest
 	GetStatus() *int32
+	SetUuid(v string) *UpdateFileProtectEventStatusRequest
+	GetUuid() *string
 }
 
 type UpdateFileProtectEventStatusRequest struct {
+	AlertLevels []*int32 `json:"AlertLevels,omitempty" xml:"AlertLevels,omitempty" type:"Repeated"`
+	EndTime     *int64   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IDs of the events.
-	Id []*int64 `json:"Id,omitempty" xml:"Id,omitempty" type:"Repeated"`
+	Id                   []*int64 `json:"Id,omitempty" xml:"Id,omitempty" type:"Repeated"`
+	InstanceId           *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName         *string  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InternetIp           *string  `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp           *string  `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	Operation            *string  `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	RuleName             *string  `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	SelectAllAcrossPages *bool    `json:"SelectAllAcrossPages,omitempty" xml:"SelectAllAcrossPages,omitempty"`
+	StartTime            *int64   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The handling status of the event. Valid values:
 	//
 	// 	- **0**: unhandled
@@ -29,7 +61,8 @@ type UpdateFileProtectEventStatusRequest struct {
 	// example:
 	//
 	// 0
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Uuid   *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s UpdateFileProtectEventStatusRequest) String() string {
@@ -40,12 +73,66 @@ func (s UpdateFileProtectEventStatusRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateFileProtectEventStatusRequest) GetAlertLevels() []*int32 {
+	return s.AlertLevels
+}
+
+func (s *UpdateFileProtectEventStatusRequest) GetEndTime() *int64 {
+	return s.EndTime
+}
+
 func (s *UpdateFileProtectEventStatusRequest) GetId() []*int64 {
 	return s.Id
 }
 
+func (s *UpdateFileProtectEventStatusRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *UpdateFileProtectEventStatusRequest) GetInstanceName() *string {
+	return s.InstanceName
+}
+
+func (s *UpdateFileProtectEventStatusRequest) GetInternetIp() *string {
+	return s.InternetIp
+}
+
+func (s *UpdateFileProtectEventStatusRequest) GetIntranetIp() *string {
+	return s.IntranetIp
+}
+
+func (s *UpdateFileProtectEventStatusRequest) GetOperation() *string {
+	return s.Operation
+}
+
+func (s *UpdateFileProtectEventStatusRequest) GetRuleName() *string {
+	return s.RuleName
+}
+
+func (s *UpdateFileProtectEventStatusRequest) GetSelectAllAcrossPages() *bool {
+	return s.SelectAllAcrossPages
+}
+
+func (s *UpdateFileProtectEventStatusRequest) GetStartTime() *int64 {
+	return s.StartTime
+}
+
 func (s *UpdateFileProtectEventStatusRequest) GetStatus() *int32 {
 	return s.Status
+}
+
+func (s *UpdateFileProtectEventStatusRequest) GetUuid() *string {
+	return s.Uuid
+}
+
+func (s *UpdateFileProtectEventStatusRequest) SetAlertLevels(v []*int32) *UpdateFileProtectEventStatusRequest {
+	s.AlertLevels = v
+	return s
+}
+
+func (s *UpdateFileProtectEventStatusRequest) SetEndTime(v int64) *UpdateFileProtectEventStatusRequest {
+	s.EndTime = &v
+	return s
 }
 
 func (s *UpdateFileProtectEventStatusRequest) SetId(v []*int64) *UpdateFileProtectEventStatusRequest {
@@ -53,8 +140,53 @@ func (s *UpdateFileProtectEventStatusRequest) SetId(v []*int64) *UpdateFileProte
 	return s
 }
 
+func (s *UpdateFileProtectEventStatusRequest) SetInstanceId(v string) *UpdateFileProtectEventStatusRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateFileProtectEventStatusRequest) SetInstanceName(v string) *UpdateFileProtectEventStatusRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *UpdateFileProtectEventStatusRequest) SetInternetIp(v string) *UpdateFileProtectEventStatusRequest {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *UpdateFileProtectEventStatusRequest) SetIntranetIp(v string) *UpdateFileProtectEventStatusRequest {
+	s.IntranetIp = &v
+	return s
+}
+
+func (s *UpdateFileProtectEventStatusRequest) SetOperation(v string) *UpdateFileProtectEventStatusRequest {
+	s.Operation = &v
+	return s
+}
+
+func (s *UpdateFileProtectEventStatusRequest) SetRuleName(v string) *UpdateFileProtectEventStatusRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateFileProtectEventStatusRequest) SetSelectAllAcrossPages(v bool) *UpdateFileProtectEventStatusRequest {
+	s.SelectAllAcrossPages = &v
+	return s
+}
+
+func (s *UpdateFileProtectEventStatusRequest) SetStartTime(v int64) *UpdateFileProtectEventStatusRequest {
+	s.StartTime = &v
+	return s
+}
+
 func (s *UpdateFileProtectEventStatusRequest) SetStatus(v int32) *UpdateFileProtectEventStatusRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *UpdateFileProtectEventStatusRequest) SetUuid(v string) *UpdateFileProtectEventStatusRequest {
+	s.Uuid = &v
 	return s
 }
 

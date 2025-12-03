@@ -13738,6 +13738,10 @@ func (client *Client) DescribeExportInfoWithContext(ctx context.Context, request
 		query["ExportId"] = request.ExportId
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17760,6 +17764,10 @@ func (client *Client) DescribeNoticeConfigWithContext(ctx context.Context, reque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
 	if !dara.IsNil(request.SourceIp) {
 		query["SourceIp"] = request.SourceIp
 	}
@@ -20242,6 +20250,10 @@ func (client *Client) DescribeSecureSuggestionWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.Source) {
@@ -25188,6 +25200,10 @@ func (client *Client) ExportRecordWithContext(ctx context.Context, request *Expo
 
 	if !dara.IsNil(request.Params) {
 		query["Params"] = request.Params
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -40048,6 +40064,10 @@ func (client *Client) ModifyNoticeConfigWithContext(ctx context.Context, request
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
 	if !dara.IsNil(request.Project) {
 		query["Project"] = request.Project
 	}
@@ -46338,12 +46358,56 @@ func (client *Client) UpdateFileProtectEventStatusWithContext(ctx context.Contex
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlertLevels) {
+		query["AlertLevels"] = request.AlertLevels
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !dara.IsNil(request.Id) {
 		query["Id"] = request.Id
 	}
 
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.InternetIp) {
+		query["InternetIp"] = request.InternetIp
+	}
+
+	if !dara.IsNil(request.IntranetIp) {
+		query["IntranetIp"] = request.IntranetIp
+	}
+
+	if !dara.IsNil(request.Operation) {
+		query["Operation"] = request.Operation
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.SelectAllAcrossPages) {
+		query["SelectAllAcrossPages"] = request.SelectAllAcrossPages
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
 	if !dara.IsNil(request.Status) {
 		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -46386,12 +46450,60 @@ func (client *Client) UpdateFileProtectRemarkWithContext(ctx context.Context, re
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlertLevels) {
+		query["AlertLevels"] = request.AlertLevels
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !dara.IsNil(request.Id) {
 		query["Id"] = request.Id
 	}
 
+	if !dara.IsNil(request.IdList) {
+		query["IdList"] = request.IdList
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.InternetIp) {
+		query["InternetIp"] = request.InternetIp
+	}
+
+	if !dara.IsNil(request.IntranetIp) {
+		query["IntranetIp"] = request.IntranetIp
+	}
+
+	if !dara.IsNil(request.Operation) {
+		query["Operation"] = request.Operation
+	}
+
 	if !dara.IsNil(request.Remark) {
 		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.SelectAllAcrossPages) {
+		query["SelectAllAcrossPages"] = request.SelectAllAcrossPages
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
 	}
 
 	req := &openapiutil.OpenApiRequest{

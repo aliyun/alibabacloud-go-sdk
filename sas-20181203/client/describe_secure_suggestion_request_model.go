@@ -13,6 +13,8 @@ type iDescribeSecureSuggestionRequest interface {
 	GetCalType() *string
 	SetLang(v string) *DescribeSecureSuggestionRequest
 	GetLang() *string
+	SetResourceDirectoryAccountId(v int64) *DescribeSecureSuggestionRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSource(v int32) *DescribeSecureSuggestionRequest
 	GetSource() *int32
 	SetSourceIp(v string) *DescribeSecureSuggestionRequest
@@ -20,34 +22,26 @@ type iDescribeSecureSuggestionRequest interface {
 }
 
 type DescribeSecureSuggestionRequest struct {
-	// The old or new version of the security score rule. If you set this parameter to **home_security_score**, the new version of the security score rule is returned. Otherwise, the old version of the security score rule is returned.
-	//
 	// example:
 	//
 	// home_security_score
 	CalType *string `json:"CalType,omitempty" xml:"CalType,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
-	//
-	// 	- **zh**: Chinese
-	//
-	// 	- **en**: English
-	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Source of security score, default is Cloud Security Center if left empty. Enum values:
+	// The Alibaba Cloud account ID of the member in the resource directory.
 	//
-	// - 0:Cloud Security Center.
+	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
 	//
-	// - 1:Yaochi Console.
+	// example:
 	//
+	// 1232428423234****
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// example:
 	//
 	// 0
 	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The source IP address of the request.
-	//
 	// example:
 	//
 	// 192.168.XX.XX
@@ -70,6 +64,10 @@ func (s *DescribeSecureSuggestionRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *DescribeSecureSuggestionRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeSecureSuggestionRequest) GetSource() *int32 {
 	return s.Source
 }
@@ -85,6 +83,11 @@ func (s *DescribeSecureSuggestionRequest) SetCalType(v string) *DescribeSecureSu
 
 func (s *DescribeSecureSuggestionRequest) SetLang(v string) *DescribeSecureSuggestionRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeSecureSuggestionRequest) SetResourceDirectoryAccountId(v int64) *DescribeSecureSuggestionRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

@@ -43,9 +43,19 @@ type DescribeExposedStatisticsDetailRequest struct {
 	// example:
 	//
 	// 1
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	ExposureIp  *string `json:"ExposureIp,omitempty" xml:"ExposureIp,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The public IP address of the server or the cloud asset.
+	//
+	// example:
+	//
+	// 116.12.XX.XX
+	ExposureIp *string `json:"ExposureIp,omitempty" xml:"ExposureIp,omitempty"`
+	// The instance ID of the asset.
+	//
+	// example:
+	//
+	// s-bp1g6wxdwps7s9dz****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
 	//
 	// >  We recommend that you do not leave this parameter empty.

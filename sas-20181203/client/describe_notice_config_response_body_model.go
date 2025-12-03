@@ -71,7 +71,8 @@ type DescribeNoticeConfigResponseBodyNoticeConfigList struct {
 	// example:
 	//
 	// 12123414****
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AliUid   *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The page number of the returned page.
 	//
 	// example:
@@ -186,6 +187,10 @@ func (s *DescribeNoticeConfigResponseBodyNoticeConfigList) GetAliUid() *int64 {
 	return s.AliUid
 }
 
+func (s *DescribeNoticeConfigResponseBodyNoticeConfigList) GetCategory() *string {
+	return s.Category
+}
+
 func (s *DescribeNoticeConfigResponseBodyNoticeConfigList) GetCurrentPage() *int32 {
 	return s.CurrentPage
 }
@@ -204,6 +209,11 @@ func (s *DescribeNoticeConfigResponseBodyNoticeConfigList) GetTimeLimit() *int32
 
 func (s *DescribeNoticeConfigResponseBodyNoticeConfigList) SetAliUid(v int64) *DescribeNoticeConfigResponseBodyNoticeConfigList {
 	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeNoticeConfigResponseBodyNoticeConfigList) SetCategory(v string) *DescribeNoticeConfigResponseBodyNoticeConfigList {
+	s.Category = &v
 	return s
 }
 

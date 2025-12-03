@@ -23,7 +23,8 @@ type AddCheckResultWhiteListRequest struct {
 	// The IDs of the check items.
 	//
 	// >  You can call the [ListCheckResult](~~ListCheckResult~~) operation to query the IDs of the check items.
-	CheckIds    []*int64  `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
+	CheckIds []*int64 `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
+	// IDs of the cloud product instances that need to be whitelisted. Separate multiple IDs with a comma (,).
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The description. The value of this parameter can be up to 65,535 bytes in length.
 	//

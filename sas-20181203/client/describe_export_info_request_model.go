@@ -11,6 +11,8 @@ type iDescribeExportInfoRequest interface {
 	GoString() string
 	SetExportId(v int64) *DescribeExportInfoRequest
 	GetExportId() *int64
+	SetResourceDirectoryAccountId(v int64) *DescribeExportInfoRequest
+	GetResourceDirectoryAccountId() *int64
 }
 
 type DescribeExportInfoRequest struct {
@@ -23,7 +25,8 @@ type DescribeExportInfoRequest struct {
 	// example:
 	//
 	// 111
-	ExportId *int64 `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
+	ExportId                   *int64 `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s DescribeExportInfoRequest) String() string {
@@ -38,8 +41,17 @@ func (s *DescribeExportInfoRequest) GetExportId() *int64 {
 	return s.ExportId
 }
 
+func (s *DescribeExportInfoRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeExportInfoRequest) SetExportId(v int64) *DescribeExportInfoRequest {
 	s.ExportId = &v
+	return s
+}
+
+func (s *DescribeExportInfoRequest) SetResourceDirectoryAccountId(v int64) *DescribeExportInfoRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

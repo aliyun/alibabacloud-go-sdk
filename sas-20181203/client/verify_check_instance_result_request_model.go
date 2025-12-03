@@ -27,7 +27,8 @@ type VerifyCheckInstanceResultRequest struct {
 	// example:
 	//
 	// 16
-	CheckId  *int64   `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	// List of item IDs to be checked.
 	CheckIds []*int64 `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
 	// The instance IDs of the assets on which risks are detected based on the check item.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`

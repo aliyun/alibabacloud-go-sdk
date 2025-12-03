@@ -9,6 +9,8 @@ type iModifyNoticeConfigRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizType(v string) *ModifyNoticeConfigRequest
+	GetBizType() *string
 	SetProject(v string) *ModifyNoticeConfigRequest
 	GetProject() *string
 	SetRoute(v int32) *ModifyNoticeConfigRequest
@@ -20,6 +22,7 @@ type iModifyNoticeConfigRequest interface {
 }
 
 type ModifyNoticeConfigRequest struct {
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The identifier of the notification item. Valid values:
 	//
 	// 	- **yundun_security_Weekreport**: notification for vulnerabilities
@@ -130,6 +133,10 @@ func (s ModifyNoticeConfigRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyNoticeConfigRequest) GetBizType() *string {
+	return s.BizType
+}
+
 func (s *ModifyNoticeConfigRequest) GetProject() *string {
 	return s.Project
 }
@@ -144,6 +151,11 @@ func (s *ModifyNoticeConfigRequest) GetSourceIp() *string {
 
 func (s *ModifyNoticeConfigRequest) GetTimeLimit() *int32 {
 	return s.TimeLimit
+}
+
+func (s *ModifyNoticeConfigRequest) SetBizType(v string) *ModifyNoticeConfigRequest {
+	s.BizType = &v
+	return s
 }
 
 func (s *ModifyNoticeConfigRequest) SetProject(v string) *ModifyNoticeConfigRequest {

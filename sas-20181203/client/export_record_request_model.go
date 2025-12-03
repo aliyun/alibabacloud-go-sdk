@@ -17,6 +17,8 @@ type iExportRecordRequest interface {
   GetLang() *string 
   SetParams(v string) *ExportRecordRequest
   GetParams() *string 
+  SetResourceDirectoryAccountId(v int64) *ExportRecordRequest
+  GetResourceDirectoryAccountId() *int64 
 }
 
 type ExportRecordRequest struct {
@@ -110,6 +112,7 @@ type ExportRecordRequest struct {
   // 
   // {"extend":"1","currentPage":1,"pageSize":10}
   Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+  ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s ExportRecordRequest) String() string {
@@ -136,6 +139,10 @@ func (s *ExportRecordRequest) GetParams() *string  {
   return s.Params
 }
 
+func (s *ExportRecordRequest) GetResourceDirectoryAccountId() *int64  {
+  return s.ResourceDirectoryAccountId
+}
+
 func (s *ExportRecordRequest) SetExportFileType(v string) *ExportRecordRequest {
   s.ExportFileType = &v
   return s
@@ -153,6 +160,11 @@ func (s *ExportRecordRequest) SetLang(v string) *ExportRecordRequest {
 
 func (s *ExportRecordRequest) SetParams(v string) *ExportRecordRequest {
   s.Params = &v
+  return s
+}
+
+func (s *ExportRecordRequest) SetResourceDirectoryAccountId(v int64) *ExportRecordRequest {
+  s.ResourceDirectoryAccountId = &v
   return s
 }
 
