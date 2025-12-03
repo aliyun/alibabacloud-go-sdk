@@ -1,6 +1,9 @@
 2025-12-03 Version: v1.0.1
 - Update SDK.
 
+2025-12-03 Version: v1.0.1
+- Update SDK.
+
 2025-07-25 Version: v1.0.0
 - Generated golang 2025-04-27 for Msc.
 
