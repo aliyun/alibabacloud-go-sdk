@@ -138,7 +138,12 @@ func (s *SendMessageWithTemplateResponseBody) SetTo(v string) *SendMessageWithTe
 }
 
 func (s *SendMessageWithTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NumberDetail != nil {
+		if err := s.NumberDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SendMessageWithTemplateResponseBodyNumberDetail struct {

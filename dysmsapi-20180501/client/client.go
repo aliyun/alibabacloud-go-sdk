@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -85,9 +86,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return BatchSendMessageToGlobeResponse
 func (client *Client) BatchSendMessageToGlobeWithOptions(request *BatchSendMessageToGlobeRequest, runtime *dara.RuntimeOptions) (_result *BatchSendMessageToGlobeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelId) {
@@ -191,9 +194,11 @@ func (client *Client) BatchSendMessageToGlobe(request *BatchSendMessageToGlobeRe
 //
 // @return ConversionDataResponse
 func (client *Client) ConversionDataWithOptions(request *ConversionDataRequest, runtime *dara.RuntimeOptions) (_result *ConversionDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ConversionRate) {
@@ -271,9 +276,11 @@ func (client *Client) ConversionData(request *ConversionDataRequest) (_result *C
 //
 // @return QueryMessageResponse
 func (client *Client) QueryMessageWithOptions(request *QueryMessageRequest, runtime *dara.RuntimeOptions) (_result *QueryMessageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MessageId) {
@@ -347,9 +354,11 @@ func (client *Client) QueryMessage(request *QueryMessageRequest) (_result *Query
 //
 // @return SendMessageToGlobeResponse
 func (client *Client) SendMessageToGlobeWithOptions(request *SendMessageToGlobeRequest, runtime *dara.RuntimeOptions) (_result *SendMessageToGlobeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelId) {
@@ -447,9 +456,11 @@ func (client *Client) SendMessageToGlobe(request *SendMessageToGlobeRequest) (_r
 //
 // @return SendMessageWithTemplateResponse
 func (client *Client) SendMessageWithTemplateWithOptions(request *SendMessageWithTemplateRequest, runtime *dara.RuntimeOptions) (_result *SendMessageWithTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelId) {
@@ -553,9 +564,11 @@ func (client *Client) SendMessageWithTemplate(request *SendMessageWithTemplateRe
 //
 // @return SmsConversionResponse
 func (client *Client) SmsConversionWithOptions(request *SmsConversionRequest, runtime *dara.RuntimeOptions) (_result *SmsConversionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConversionTime) {

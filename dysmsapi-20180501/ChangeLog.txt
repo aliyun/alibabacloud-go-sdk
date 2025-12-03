@@ -1,3 +1,6 @@
+2025-12-03 Version: v2.0.8
+- Generated golang 2018-05-01 for Dysmsapi.
+
 2025-08-01 Version: v2.0.7
 - Update API SendMessageToGlobe: add request parameters Type.
 

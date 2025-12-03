@@ -29,9 +29,11 @@ import (
 //
 // @return BatchSendMessageToGlobeResponse
 func (client *Client) BatchSendMessageToGlobeWithContext(ctx context.Context, request *BatchSendMessageToGlobeRequest, runtime *dara.RuntimeOptions) (_result *BatchSendMessageToGlobeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelId) {
@@ -105,9 +107,11 @@ func (client *Client) BatchSendMessageToGlobeWithContext(ctx context.Context, re
 //
 // @return ConversionDataResponse
 func (client *Client) ConversionDataWithContext(ctx context.Context, request *ConversionDataRequest, runtime *dara.RuntimeOptions) (_result *ConversionDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ConversionRate) {
@@ -157,9 +161,11 @@ func (client *Client) ConversionDataWithContext(ctx context.Context, request *Co
 //
 // @return QueryMessageResponse
 func (client *Client) QueryMessageWithContext(ctx context.Context, request *QueryMessageRequest, runtime *dara.RuntimeOptions) (_result *QueryMessageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MessageId) {
@@ -209,9 +215,11 @@ func (client *Client) QueryMessageWithContext(ctx context.Context, request *Quer
 //
 // @return SendMessageToGlobeResponse
 func (client *Client) SendMessageToGlobeWithContext(ctx context.Context, request *SendMessageToGlobeRequest, runtime *dara.RuntimeOptions) (_result *SendMessageToGlobeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelId) {
@@ -281,9 +289,11 @@ func (client *Client) SendMessageToGlobeWithContext(ctx context.Context, request
 //
 // @return SendMessageWithTemplateResponse
 func (client *Client) SendMessageWithTemplateWithContext(ctx context.Context, request *SendMessageWithTemplateRequest, runtime *dara.RuntimeOptions) (_result *SendMessageWithTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelId) {
@@ -363,9 +373,11 @@ func (client *Client) SendMessageWithTemplateWithContext(ctx context.Context, re
 //
 // @return SmsConversionResponse
 func (client *Client) SmsConversionWithContext(ctx context.Context, request *SmsConversionRequest, runtime *dara.RuntimeOptions) (_result *SmsConversionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConversionTime) {

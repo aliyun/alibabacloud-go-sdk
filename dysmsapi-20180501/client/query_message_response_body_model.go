@@ -229,7 +229,12 @@ func (s *QueryMessageResponseBody) SetTo(v string) *QueryMessageResponseBody {
 }
 
 func (s *QueryMessageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NumberDetail != nil {
+		if err := s.NumberDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMessageResponseBodyNumberDetail struct {

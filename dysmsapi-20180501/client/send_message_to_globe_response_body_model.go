@@ -155,7 +155,12 @@ func (s *SendMessageToGlobeResponseBody) SetTo(v string) *SendMessageToGlobeResp
 }
 
 func (s *SendMessageToGlobeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NumberDetail != nil {
+		if err := s.NumberDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SendMessageToGlobeResponseBodyNumberDetail struct {
