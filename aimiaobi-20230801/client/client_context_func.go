@@ -856,6 +856,58 @@ func (client *Client) CreateDatasetWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
+// 通用配置-创建
+//
+// @param request - CreateGeneralConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGeneralConfigResponse
+func (client *Client) CreateGeneralConfigWithContext(ctx context.Context, request *CreateGeneralConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateGeneralConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigKey) {
+		body["ConfigKey"] = request.ConfigKey
+	}
+
+	if !dara.IsNil(request.ConfigValue) {
+		body["ConfigValue"] = request.ConfigValue
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGeneralConfig"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGeneralConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 文档管理-创建
 //
 // @param tmpReq - CreateGeneratedContentRequest
@@ -1440,6 +1492,54 @@ func (client *Client) DeleteFactAuditUrlWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteFactAuditUrlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通用配置-删除
+//
+// @param request - DeleteGeneralConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGeneralConfigResponse
+func (client *Client) DeleteGeneralConfigWithContext(ctx context.Context, request *DeleteGeneralConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteGeneralConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigKey) {
+		body["ConfigKey"] = request.ConfigKey
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteGeneralConfig"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteGeneralConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3880,6 +3980,54 @@ func (client *Client) GetFileContentLengthWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 通用配置-查询
+//
+// @param request - GetGeneralConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGeneralConfigResponse
+func (client *Client) GetGeneralConfigWithContext(ctx context.Context, request *GetGeneralConfigRequest, runtime *dara.RuntimeOptions) (_result *GetGeneralConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigKey) {
+		body["ConfigKey"] = request.ConfigKey
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGeneralConfig"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGeneralConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 文档管理-查询详情。
 //
 // @param request - GetGeneratedContentRequest
@@ -5664,6 +5812,100 @@ func (client *Client) ListDocsWithContext(ctx context.Context, tmpReq *ListDocsR
 
 // Summary:
 //
+// 公文检索
+//
+// @param request - ListDocumentRetrieveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDocumentRetrieveResponse
+func (client *Client) ListDocumentRetrieveWithContext(ctx context.Context, request *ListDocumentRetrieveRequest, runtime *dara.RuntimeOptions) (_result *ListDocumentRetrieveResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContentType) {
+		query["ContentType"] = request.ContentType
+	}
+
+	if !dara.IsNil(request.ElementScope) {
+		query["ElementScope"] = request.ElementScope
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.Office) {
+		query["Office"] = request.Office
+	}
+
+	if !dara.IsNil(request.Region) {
+		query["Region"] = request.Region
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.SubContentType) {
+		query["SubContentType"] = request.SubContentType
+	}
+
+	if !dara.IsNil(request.WordSize) {
+		query["WordSize"] = request.WordSize
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Query) {
+		body["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDocumentRetrieve"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDocumentRetrieveResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 新颖视角列表
 //
 // @param request - ListFreshViewPointsRequest
@@ -5716,6 +5958,58 @@ func (client *Client) ListFreshViewPointsWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListFreshViewPointsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通用配置-列表
+//
+// @param request - ListGeneralConfigsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGeneralConfigsResponse
+func (client *Client) ListGeneralConfigsWithContext(ctx context.Context, request *ListGeneralConfigsRequest, runtime *dara.RuntimeOptions) (_result *ListGeneralConfigsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGeneralConfigs"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGeneralConfigsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8931,6 +9225,91 @@ func (client *Client) RunMultiDocIntroductionWithContext(ctx context.Context, tm
 
 // Summary:
 //
+// 快速写作
+//
+// @param tmpReq - RunQuickWritingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunQuickWritingResponse
+func (client *Client) RunQuickWritingWithSSECtx(ctx context.Context, tmpReq *RunQuickWritingRequest, runtime *dara.RuntimeOptions, _yield chan *RunQuickWritingResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runQuickWritingWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, tmpReq, runtime)
+	return
+}
+
+// Summary:
+//
+// 快速写作
+//
+// @param tmpReq - RunQuickWritingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunQuickWritingResponse
+func (client *Client) RunQuickWritingWithContext(ctx context.Context, tmpReq *RunQuickWritingRequest, runtime *dara.RuntimeOptions) (_result *RunQuickWritingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &RunQuickWritingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Articles) {
+		request.ArticlesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Articles, dara.String("Articles"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SearchSources) {
+		request.SearchSourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SearchSources, dara.String("SearchSources"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ArticlesShrink) {
+		body["Articles"] = request.ArticlesShrink
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.SearchSourcesShrink) {
+		body["SearchSources"] = request.SearchSourcesShrink
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunQuickWriting"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunQuickWritingResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # AI妙搜-智能搜索生成
 //
 // @param tmpReq - RunSearchGenerationRequest
@@ -9488,6 +9867,79 @@ func (client *Client) RunTitleGenerationWithContext(ctx context.Context, tmpReq 
 		BodyType:    dara.String("json"),
 	}
 	_result = &RunTitleGenerationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙策选题策划聚合
+//
+// @param tmpReq - RunTopicSelectionMergeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunTopicSelectionMergeResponse
+func (client *Client) RunTopicSelectionMergeWithSSECtx(ctx context.Context, tmpReq *RunTopicSelectionMergeRequest, runtime *dara.RuntimeOptions, _yield chan *RunTopicSelectionMergeResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runTopicSelectionMergeWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, tmpReq, runtime)
+	return
+}
+
+// Summary:
+//
+// 妙策选题策划聚合
+//
+// @param tmpReq - RunTopicSelectionMergeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunTopicSelectionMergeResponse
+func (client *Client) RunTopicSelectionMergeWithContext(ctx context.Context, tmpReq *RunTopicSelectionMergeRequest, runtime *dara.RuntimeOptions) (_result *RunTopicSelectionMergeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &RunTopicSelectionMergeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Topics) {
+		request.TopicsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Topics, dara.String("Topics"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.TopicsShrink) {
+		body["Topics"] = request.TopicsShrink
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunTopicSelectionMerge"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunTopicSelectionMergeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11627,6 +12079,58 @@ func (client *Client) UpdateDatasetDocumentWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
+// 通用配置-更新
+//
+// @param request - UpdateGeneralConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGeneralConfigResponse
+func (client *Client) UpdateGeneralConfigWithContext(ctx context.Context, request *UpdateGeneralConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateGeneralConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigKey) {
+		body["ConfigKey"] = request.ConfigKey
+	}
+
+	if !dara.IsNil(request.ConfigValue) {
+		body["ConfigValue"] = request.ConfigValue
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateGeneralConfig"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateGeneralConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 文档管理-更新。
 //
 // @param tmpReq - UpdateGeneratedContentRequest
@@ -13427,6 +13931,78 @@ func (client *Client) runMultiDocIntroductionWithSSECtx_opYieldFunc(_yield chan 
 	}
 }
 
+func (client *Client) runQuickWritingWithSSECtx_opYieldFunc(_yield chan *RunQuickWritingResponse, _yieldErr chan error, ctx context.Context, tmpReq *RunQuickWritingRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	request := &RunQuickWritingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Articles) {
+		request.ArticlesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Articles, dara.String("Articles"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SearchSources) {
+		request.SearchSourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SearchSources, dara.String("SearchSources"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ArticlesShrink) {
+		body["Articles"] = request.ArticlesShrink
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.SearchSourcesShrink) {
+		body["SearchSources"] = request.SearchSourcesShrink
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunQuickWriting"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
 func (client *Client) runSearchGenerationWithSSECtx_opYieldFunc(_yield chan *RunSearchGenerationResponse, _yieldErr chan error, ctx context.Context, tmpReq *RunSearchGenerationRequest, runtime *dara.RuntimeOptions) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err := tmpReq.Validate()
@@ -13875,6 +14451,66 @@ func (client *Client) runTitleGenerationWithSSECtx_opYieldFunc(_yield chan *RunT
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("RunTitleGeneration"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runTopicSelectionMergeWithSSECtx_opYieldFunc(_yield chan *RunTopicSelectionMergeResponse, _yieldErr chan error, ctx context.Context, tmpReq *RunTopicSelectionMergeRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	request := &RunTopicSelectionMergeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Topics) {
+		request.TopicsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Topics, dara.String("Topics"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.TopicsShrink) {
+		body["Topics"] = request.TopicsShrink
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunTopicSelectionMerge"),
 		Version:     dara.String("2023-08-01"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
