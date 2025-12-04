@@ -17,6 +17,8 @@ type iListJobsRequest interface {
 	GetPageSize() *int32
 	SetSortName(v string) *ListJobsRequest
 	GetSortName() *string
+	SetSortOrder(v string) *ListJobsRequest
+	GetSortOrder() *string
 }
 
 type ListJobsRequest struct {
@@ -53,7 +55,8 @@ type ListJobsRequest struct {
 	// example:
 	//
 	// gmt_create
-	SortName *string `json:"sortName,omitempty" xml:"sortName,omitempty"`
+	SortName  *string `json:"sortName,omitempty" xml:"sortName,omitempty"`
+	SortOrder *string `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
 }
 
 func (s ListJobsRequest) String() string {
@@ -80,6 +83,10 @@ func (s *ListJobsRequest) GetSortName() *string {
 	return s.SortName
 }
 
+func (s *ListJobsRequest) GetSortOrder() *string {
+	return s.SortOrder
+}
+
 func (s *ListJobsRequest) SetDeploymentId(v string) *ListJobsRequest {
 	s.DeploymentId = &v
 	return s
@@ -97,6 +104,11 @@ func (s *ListJobsRequest) SetPageSize(v int32) *ListJobsRequest {
 
 func (s *ListJobsRequest) SetSortName(v string) *ListJobsRequest {
 	s.SortName = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetSortOrder(v string) *ListJobsRequest {
+	s.SortOrder = &v
 	return s
 }
 

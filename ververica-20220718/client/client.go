@@ -4125,6 +4125,10 @@ func (client *Client) ListJobsWithOptions(namespace *string, request *ListJobsRe
 		query["sortName"] = request.SortName
 	}
 
+	if !dara.IsNil(request.SortOrder) {
+		query["sortOrder"] = request.SortOrder
+	}
+
 	realHeaders := make(map[string]*string)
 	if !dara.IsNil(headers.CommonHeaders) {
 		realHeaders = headers.CommonHeaders
