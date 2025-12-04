@@ -59,5 +59,10 @@ func (s *QueryRobotTaskListResponse) SetBody(v *QueryRobotTaskListResponseBody) 
 }
 
 func (s *QueryRobotTaskListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

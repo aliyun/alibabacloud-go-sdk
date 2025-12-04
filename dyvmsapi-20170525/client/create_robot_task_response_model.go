@@ -59,5 +59,10 @@ func (s *CreateRobotTaskResponse) SetBody(v *CreateRobotTaskResponseBody) *Creat
 }
 
 func (s *CreateRobotTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

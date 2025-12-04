@@ -59,5 +59,10 @@ func (s *QueryRobotv2AllListResponse) SetBody(v *QueryRobotv2AllListResponseBody
 }
 
 func (s *QueryRobotv2AllListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

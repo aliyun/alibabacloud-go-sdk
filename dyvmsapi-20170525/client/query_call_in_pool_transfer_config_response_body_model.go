@@ -91,7 +91,12 @@ func (s *QueryCallInPoolTransferConfigResponseBody) SetRequestId(v string) *Quer
 }
 
 func (s *QueryCallInPoolTransferConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCallInPoolTransferConfigResponseBodyData struct {
@@ -166,7 +171,16 @@ func (s *QueryCallInPoolTransferConfigResponseBodyData) SetTransferTimeout(v str
 }
 
 func (s *QueryCallInPoolTransferConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Details != nil {
+		for _, item := range s.Details {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryCallInPoolTransferConfigResponseBodyDataDetails struct {

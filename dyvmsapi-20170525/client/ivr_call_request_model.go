@@ -251,7 +251,16 @@ func (s *IvrCallRequest) SetTimeout(v int32) *IvrCallRequest {
 }
 
 func (s *IvrCallRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MenuKeyMap != nil {
+		for _, item := range s.MenuKeyMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IvrCallRequestMenuKeyMap struct {

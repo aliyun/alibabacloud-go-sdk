@@ -59,6 +59,11 @@ func (s *ExecuteCallTaskResponse) SetBody(v *ExecuteCallTaskResponseBody) *Execu
 }
 
 func (s *ExecuteCallTaskResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

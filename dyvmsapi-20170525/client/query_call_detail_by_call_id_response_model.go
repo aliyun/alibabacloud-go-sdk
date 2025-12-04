@@ -59,5 +59,10 @@ func (s *QueryCallDetailByCallIdResponse) SetBody(v *QueryCallDetailByCallIdResp
 }
 
 func (s *QueryCallDetailByCallIdResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -91,7 +91,12 @@ func (s *QueryCallInTransferRecordResponseBody) SetRequestId(v string) *QueryCal
 }
 
 func (s *QueryCallInTransferRecordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCallInTransferRecordResponseBodyData struct {
@@ -162,7 +167,16 @@ func (s *QueryCallInTransferRecordResponseBodyData) SetValues(v []*QueryCallInTr
 }
 
 func (s *QueryCallInTransferRecordResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Values != nil {
+		for _, item := range s.Values {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryCallInTransferRecordResponseBodyDataValues struct {

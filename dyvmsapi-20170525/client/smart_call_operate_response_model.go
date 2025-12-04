@@ -59,5 +59,10 @@ func (s *SmartCallOperateResponse) SetBody(v *SmartCallOperateResponseBody) *Sma
 }
 
 func (s *SmartCallOperateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
