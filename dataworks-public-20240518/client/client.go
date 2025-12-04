@@ -2247,6 +2247,182 @@ func (client *Client) CreateDataSourceSharedRule(request *CreateDataSourceShared
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建数据集
+//
+// @param tmpReq - CreateDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatasetResponse
+func (client *Client) CreateDatasetWithOptions(tmpReq *CreateDatasetRequest, runtime *dara.RuntimeOptions) (_result *CreateDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateDatasetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InitVersion) {
+		request.InitVersionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InitVersion, dara.String("InitVersion"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Comment) {
+		body["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.DataType) {
+		body["DataType"] = request.DataType
+	}
+
+	if !dara.IsNil(request.InitVersionShrink) {
+		body["InitVersion"] = request.InitVersionShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Origin) {
+		body["Origin"] = request.Origin
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.StorageType) {
+		body["StorageType"] = request.StorageType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataset"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据集
+//
+// @param request - CreateDatasetRequest
+//
+// @return CreateDatasetResponse
+func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *CreateDatasetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDatasetResponse{}
+	_body, _err := client.CreateDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据集版本
+//
+// @param tmpReq - CreateDatasetVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatasetVersionResponse
+func (client *Client) CreateDatasetVersionWithOptions(tmpReq *CreateDatasetVersionRequest, runtime *dara.RuntimeOptions) (_result *CreateDatasetVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateDatasetVersionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ImportInfo) {
+		request.ImportInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImportInfo, dara.String("ImportInfo"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Comment) {
+		body["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.DatasetId) {
+		body["DatasetId"] = request.DatasetId
+	}
+
+	if !dara.IsNil(request.ImportInfoShrink) {
+		body["ImportInfo"] = request.ImportInfoShrink
+	}
+
+	if !dara.IsNil(request.MountPath) {
+		body["MountPath"] = request.MountPath
+	}
+
+	if !dara.IsNil(request.Url) {
+		body["Url"] = request.Url
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDatasetVersion"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDatasetVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据集版本
+//
+// @param request - CreateDatasetVersionRequest
+//
+// @return CreateDatasetVersionResponse
+func (client *Client) CreateDatasetVersion(request *CreateDatasetVersionRequest) (_result *CreateDatasetVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDatasetVersionResponse{}
+	_body, _err := client.CreateDatasetVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - CreateFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5249,6 +5425,130 @@ func (client *Client) DeleteDataSourceSharedRule(request *DeleteDataSourceShared
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除数据集
+//
+// @param request - DeleteDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatasetResponse
+func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, runtime *dara.RuntimeOptions) (_result *DeleteDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataset"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据集
+//
+// @param request - DeleteDatasetRequest
+//
+// @return DeleteDatasetResponse
+func (client *Client) DeleteDataset(request *DeleteDatasetRequest) (_result *DeleteDatasetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDatasetResponse{}
+	_body, _err := client.DeleteDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据集版本
+//
+// @param request - DeleteDatasetVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatasetVersionResponse
+func (client *Client) DeleteDatasetVersionWithOptions(request *DeleteDatasetVersionRequest, runtime *dara.RuntimeOptions) (_result *DeleteDatasetVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDatasetVersion"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDatasetVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据集版本
+//
+// @param request - DeleteDatasetVersionRequest
+//
+// @return DeleteDatasetVersionResponse
+func (client *Client) DeleteDatasetVersion(request *DeleteDatasetVersionRequest) (_result *DeleteDatasetVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDatasetVersionResponse{}
+	_body, _err := client.DeleteDatasetVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - DeleteFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8154,6 +8454,130 @@ func (client *Client) GetDatabase(request *GetDatabaseRequest) (_result *GetData
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetDatabaseResponse{}
 	_body, _err := client.GetDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集详情
+//
+// @param request - GetDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatasetResponse
+func (client *Client) GetDatasetWithOptions(request *GetDatasetRequest, runtime *dara.RuntimeOptions) (_result *GetDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataset"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集详情
+//
+// @param request - GetDatasetRequest
+//
+// @return GetDatasetResponse
+func (client *Client) GetDataset(request *GetDatasetRequest) (_result *GetDatasetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDatasetResponse{}
+	_body, _err := client.GetDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集版本
+//
+// @param request - GetDatasetVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatasetVersionResponse
+func (client *Client) GetDatasetVersionWithOptions(request *GetDatasetVersionRequest, runtime *dara.RuntimeOptions) (_result *GetDatasetVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDatasetVersion"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDatasetVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集版本
+//
+// @param request - GetDatasetVersionRequest
+//
+// @return GetDatasetVersionResponse
+func (client *Client) GetDatasetVersion(request *GetDatasetVersionRequest) (_result *GetDatasetVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDatasetVersionResponse{}
+	_body, _err := client.GetDatasetVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12259,6 +12683,196 @@ func (client *Client) ListDatabases(request *ListDatabasesRequest) (_result *Lis
 
 // Summary:
 //
+// 获取数据集版本列表
+//
+// @param request - ListDatasetVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatasetVersionsResponse
+func (client *Client) ListDatasetVersionsWithOptions(request *ListDatasetVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListDatasetVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreatorId) {
+		body["CreatorId"] = request.CreatorId
+	}
+
+	if !dara.IsNil(request.DatasetId) {
+		body["DatasetId"] = request.DatasetId
+	}
+
+	if !dara.IsNil(request.Order) {
+		body["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		body["SortBy"] = request.SortBy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDatasetVersions"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDatasetVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集版本列表
+//
+// @param request - ListDatasetVersionsRequest
+//
+// @return ListDatasetVersionsResponse
+func (client *Client) ListDatasetVersions(request *ListDatasetVersionsRequest) (_result *ListDatasetVersionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDatasetVersionsResponse{}
+	_body, _err := client.ListDatasetVersionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集列表
+//
+// @param tmpReq - ListDatasetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatasetsResponse
+func (client *Client) ListDatasetsWithOptions(tmpReq *ListDatasetsRequest, runtime *dara.RuntimeOptions) (_result *ListDatasetsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListDatasetsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DataTypeList) {
+		request.DataTypeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataTypeList, dara.String("DataTypeList"), dara.String("simple"))
+	}
+
+	if !dara.IsNil(tmpReq.StorageTypeList) {
+		request.StorageTypeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StorageTypeList, dara.String("StorageTypeList"), dara.String("simple"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreatorId) {
+		body["CreatorId"] = request.CreatorId
+	}
+
+	if !dara.IsNil(request.DataTypeListShrink) {
+		body["DataTypeList"] = request.DataTypeListShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Order) {
+		body["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.Origin) {
+		body["Origin"] = request.Origin
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		body["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.StorageTypeListShrink) {
+		body["StorageTypeList"] = request.StorageTypeListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDatasets"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDatasetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集列表
+//
+// @param request - ListDatasetsRequest
+//
+// @return ListDatasetsResponse
+func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListDatasetsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDatasetsResponse{}
+	_body, _err := client.ListDatasetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of versions of files to be deployed.
 //
 // @param tmpReq - ListDeploymentPackageFilesRequest
@@ -15402,6 +16016,68 @@ func (client *Client) MoveWorkflowDefinition(request *MoveWorkflowDefinitionRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &MoveWorkflowDefinitionResponse{}
 	_body, _err := client.MoveWorkflowDefinitionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 预览数据集版本内容
+//
+// @param request - PreviewDatasetVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PreviewDatasetVersionResponse
+func (client *Client) PreviewDatasetVersionWithOptions(request *PreviewDatasetVersionRequest, runtime *dara.RuntimeOptions) (_result *PreviewDatasetVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PreviewDatasetVersion"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PreviewDatasetVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 预览数据集版本内容
+//
+// @param request - PreviewDatasetVersionRequest
+//
+// @return PreviewDatasetVersionResponse
+func (client *Client) PreviewDatasetVersion(request *PreviewDatasetVersionRequest) (_result *PreviewDatasetVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &PreviewDatasetVersionResponse{}
+	_body, _err := client.PreviewDatasetVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18578,6 +19254,146 @@ func (client *Client) UpdateDataSource(request *UpdateDataSourceRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateDataSourceResponse{}
 	_body, _err := client.UpdateDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据集
+//
+// @param request - UpdateDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDatasetResponse
+func (client *Client) UpdateDatasetWithOptions(request *UpdateDatasetRequest, runtime *dara.RuntimeOptions) (_result *UpdateDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Comment) {
+		body["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Readme) {
+		body["Readme"] = request.Readme
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataset"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据集
+//
+// @param request - UpdateDatasetRequest
+//
+// @return UpdateDatasetResponse
+func (client *Client) UpdateDataset(request *UpdateDatasetRequest) (_result *UpdateDatasetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateDatasetResponse{}
+	_body, _err := client.UpdateDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据集版本信息
+//
+// @param request - UpdateDatasetVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDatasetVersionResponse
+func (client *Client) UpdateDatasetVersionWithOptions(request *UpdateDatasetVersionRequest, runtime *dara.RuntimeOptions) (_result *UpdateDatasetVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Comment) {
+		body["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDatasetVersion"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDatasetVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据集版本信息
+//
+// @param request - UpdateDatasetVersionRequest
+//
+// @return UpdateDatasetVersionResponse
+func (client *Client) UpdateDatasetVersion(request *UpdateDatasetVersionRequest) (_result *UpdateDatasetVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateDatasetVersionResponse{}
+	_body, _err := client.UpdateDatasetVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
