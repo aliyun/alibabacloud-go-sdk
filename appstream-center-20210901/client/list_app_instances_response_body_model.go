@@ -161,6 +161,7 @@ type ListAppInstancesResponseBodyAppInstanceModels struct {
 	//
 	// 10.13.13.211
 	MainEthPublicIp    *string `json:"MainEthPublicIp,omitempty" xml:"MainEthPublicIp,omitempty"`
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	NetworkInterfaceIp *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
 	// The ID of the node on which the app instance runs.
 	//
@@ -226,6 +227,10 @@ func (s *ListAppInstancesResponseBodyAppInstanceModels) GetMainEthPublicIp() *st
 	return s.MainEthPublicIp
 }
 
+func (s *ListAppInstancesResponseBodyAppInstanceModels) GetNetworkInterfaceId() *string {
+	return s.NetworkInterfaceId
+}
+
 func (s *ListAppInstancesResponseBodyAppInstanceModels) GetNetworkInterfaceIp() *string {
 	return s.NetworkInterfaceIp
 }
@@ -274,6 +279,11 @@ func (s *ListAppInstancesResponseBodyAppInstanceModels) SetGmtModified(v string)
 
 func (s *ListAppInstancesResponseBodyAppInstanceModels) SetMainEthPublicIp(v string) *ListAppInstancesResponseBodyAppInstanceModels {
 	s.MainEthPublicIp = &v
+	return s
+}
+
+func (s *ListAppInstancesResponseBodyAppInstanceModels) SetNetworkInterfaceId(v string) *ListAppInstancesResponseBodyAppInstanceModels {
+	s.NetworkInterfaceId = &v
 	return s
 }
 
