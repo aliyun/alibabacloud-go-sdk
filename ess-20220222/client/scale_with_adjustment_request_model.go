@@ -284,6 +284,7 @@ type ScaleWithAdjustmentRequestLifecycleHookContext struct {
 	DisableLifecycleHook *bool `json:"DisableLifecycleHook,omitempty" xml:"DisableLifecycleHook,omitempty"`
 	// The IDs of the lifecycle hooks that you want to disable.
 	IgnoredLifecycleHookIds []*string `json:"IgnoredLifecycleHookIds,omitempty" xml:"IgnoredLifecycleHookIds,omitempty" type:"Repeated"`
+	LifecycleHookResult     *string   `json:"LifecycleHookResult,omitempty" xml:"LifecycleHookResult,omitempty"`
 }
 
 func (s ScaleWithAdjustmentRequestLifecycleHookContext) String() string {
@@ -302,6 +303,10 @@ func (s *ScaleWithAdjustmentRequestLifecycleHookContext) GetIgnoredLifecycleHook
 	return s.IgnoredLifecycleHookIds
 }
 
+func (s *ScaleWithAdjustmentRequestLifecycleHookContext) GetLifecycleHookResult() *string {
+	return s.LifecycleHookResult
+}
+
 func (s *ScaleWithAdjustmentRequestLifecycleHookContext) SetDisableLifecycleHook(v bool) *ScaleWithAdjustmentRequestLifecycleHookContext {
 	s.DisableLifecycleHook = &v
 	return s
@@ -309,6 +314,11 @@ func (s *ScaleWithAdjustmentRequestLifecycleHookContext) SetDisableLifecycleHook
 
 func (s *ScaleWithAdjustmentRequestLifecycleHookContext) SetIgnoredLifecycleHookIds(v []*string) *ScaleWithAdjustmentRequestLifecycleHookContext {
 	s.IgnoredLifecycleHookIds = v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequestLifecycleHookContext) SetLifecycleHookResult(v string) *ScaleWithAdjustmentRequestLifecycleHookContext {
+	s.LifecycleHookResult = &v
 	return s
 }
 

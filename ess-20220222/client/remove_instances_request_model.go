@@ -283,6 +283,7 @@ type RemoveInstancesRequestLifecycleHookContext struct {
 	DisableLifecycleHook *bool `json:"DisableLifecycleHook,omitempty" xml:"DisableLifecycleHook,omitempty"`
 	// The IDs of the lifecycle hooks that you want to disable.
 	IgnoredLifecycleHookIds []*string `json:"IgnoredLifecycleHookIds,omitempty" xml:"IgnoredLifecycleHookIds,omitempty" type:"Repeated"`
+	LifecycleHookResult     *string   `json:"LifecycleHookResult,omitempty" xml:"LifecycleHookResult,omitempty"`
 }
 
 func (s RemoveInstancesRequestLifecycleHookContext) String() string {
@@ -301,6 +302,10 @@ func (s *RemoveInstancesRequestLifecycleHookContext) GetIgnoredLifecycleHookIds(
 	return s.IgnoredLifecycleHookIds
 }
 
+func (s *RemoveInstancesRequestLifecycleHookContext) GetLifecycleHookResult() *string {
+	return s.LifecycleHookResult
+}
+
 func (s *RemoveInstancesRequestLifecycleHookContext) SetDisableLifecycleHook(v bool) *RemoveInstancesRequestLifecycleHookContext {
 	s.DisableLifecycleHook = &v
 	return s
@@ -308,6 +313,11 @@ func (s *RemoveInstancesRequestLifecycleHookContext) SetDisableLifecycleHook(v b
 
 func (s *RemoveInstancesRequestLifecycleHookContext) SetIgnoredLifecycleHookIds(v []*string) *RemoveInstancesRequestLifecycleHookContext {
 	s.IgnoredLifecycleHookIds = v
+	return s
+}
+
+func (s *RemoveInstancesRequestLifecycleHookContext) SetLifecycleHookResult(v string) *RemoveInstancesRequestLifecycleHookContext {
+	s.LifecycleHookResult = &v
 	return s
 }
 
