@@ -15,6 +15,8 @@ type iReleaseReadWriteSplittingConnectionRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *ReleaseReadWriteSplittingConnectionRequest
 	GetOwnerId() *int64
+	SetRWAddressType(v string) *ReleaseReadWriteSplittingConnectionRequest
+	GetRWAddressType() *string
 	SetResourceOwnerAccount(v string) *ReleaseReadWriteSplittingConnectionRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *ReleaseReadWriteSplittingConnectionRequest
@@ -32,6 +34,7 @@ type ReleaseReadWriteSplittingConnectionRequest struct {
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RWAddressType        *string `json:"RWAddressType,omitempty" xml:"RWAddressType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -56,6 +59,10 @@ func (s *ReleaseReadWriteSplittingConnectionRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
 
+func (s *ReleaseReadWriteSplittingConnectionRequest) GetRWAddressType() *string {
+	return s.RWAddressType
+}
+
 func (s *ReleaseReadWriteSplittingConnectionRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
@@ -76,6 +83,11 @@ func (s *ReleaseReadWriteSplittingConnectionRequest) SetOwnerAccount(v string) *
 
 func (s *ReleaseReadWriteSplittingConnectionRequest) SetOwnerId(v int64) *ReleaseReadWriteSplittingConnectionRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ReleaseReadWriteSplittingConnectionRequest) SetRWAddressType(v string) *ReleaseReadWriteSplittingConnectionRequest {
+	s.RWAddressType = &v
 	return s
 }
 

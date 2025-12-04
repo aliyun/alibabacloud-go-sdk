@@ -38458,6 +38458,10 @@ func (client *Client) ReleaseReadWriteSplittingConnectionWithOptions(request *Re
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !dara.IsNil(request.RWAddressType) {
+		query["RWAddressType"] = request.RWAddressType
+	}
+
 	if !dara.IsNil(request.ResourceOwnerAccount) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}

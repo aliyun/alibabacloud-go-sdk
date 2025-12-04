@@ -30,7 +30,7 @@ type DescribeSecurityGroupConfigurationResponseBody struct {
 	//
 	// example:
 	//
-	// 87BDAE8C-ACB0-4A26-BBCC-7D1DD31D630D
+	// 87BDAE8C-xxxx-4A26-BBCC-7D1DD31D630D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

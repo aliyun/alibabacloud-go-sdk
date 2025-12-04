@@ -28614,6 +28614,10 @@ func (client *Client) ReleaseReadWriteSplittingConnectionWithContext(ctx context
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !dara.IsNil(request.RWAddressType) {
+		query["RWAddressType"] = request.RWAddressType
+	}
+
 	if !dara.IsNil(request.ResourceOwnerAccount) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
