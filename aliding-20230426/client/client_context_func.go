@@ -3259,6 +3259,10 @@ func (client *Client) CreateMessageWithContext(ctx context.Context, request *Cre
 		body["assistantId"] = request.AssistantId
 	}
 
+	if !dara.IsNil(request.ExtLoginUser) {
+		body["extLoginUser"] = request.ExtLoginUser
+	}
+
 	if !dara.IsNil(request.Messages) {
 		body["messages"] = request.Messages
 	}
@@ -3840,6 +3844,10 @@ func (client *Client) CreateRunWithContext(ctx context.Context, request *CreateR
 
 	if !dara.IsNil(request.AssistantId) {
 		body["assistantId"] = request.AssistantId
+	}
+
+	if !dara.IsNil(request.ExtLoginUser) {
+		body["extLoginUser"] = request.ExtLoginUser
 	}
 
 	if !dara.IsNil(request.OriginalAssistantId) {
@@ -4486,6 +4494,10 @@ func (client *Client) CreateThreadWithContext(ctx context.Context, request *Crea
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssistantId) {
 		body["assistantId"] = request.AssistantId
+	}
+
+	if !dara.IsNil(request.ExtLoginUser) {
+		body["extLoginUser"] = request.ExtLoginUser
 	}
 
 	if !dara.IsNil(request.OriginalAssistantId) {
@@ -7554,6 +7566,10 @@ func (client *Client) GetAssistantCapabilityWithContext(ctx context.Context, req
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssistantId) {
 		body["assistantId"] = request.AssistantId
+	}
+
+	if !dara.IsNil(request.ExtLoginUser) {
+		body["extLoginUser"] = request.ExtLoginUser
 	}
 
 	if !dara.IsNil(request.Messages) {
@@ -13087,6 +13103,10 @@ func (client *Client) InvokeAssistantWithContext(ctx context.Context, request *I
 		body["assistantId"] = request.AssistantId
 	}
 
+	if !dara.IsNil(request.ExtLoginUser) {
+		body["extLoginUser"] = request.ExtLoginUser
+	}
+
 	if !dara.IsNil(request.Messages) {
 		body["messages"] = request.Messages
 	}
@@ -13844,6 +13864,10 @@ func (client *Client) ListMessageWithContext(ctx context.Context, request *ListM
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssistantId) {
 		body["assistantId"] = request.AssistantId
+	}
+
+	if !dara.IsNil(request.ExtLoginUser) {
+		body["extLoginUser"] = request.ExtLoginUser
 	}
 
 	if !dara.IsNil(request.Limit) {
@@ -17458,6 +17482,10 @@ func (client *Client) RetrieveRunWithContext(ctx context.Context, request *Retri
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssistantId) {
 		body["assistantId"] = request.AssistantId
+	}
+
+	if !dara.IsNil(request.ExtLoginUser) {
+		body["extLoginUser"] = request.ExtLoginUser
 	}
 
 	if !dara.IsNil(request.OriginalAssistantId) {
@@ -22248,6 +22276,10 @@ func (client *Client) createRunWithSSECtx_opYieldFunc(_yield chan *CreateRunResp
 		body["assistantId"] = request.AssistantId
 	}
 
+	if !dara.IsNil(request.ExtLoginUser) {
+		body["extLoginUser"] = request.ExtLoginUser
+	}
+
 	if !dara.IsNil(request.OriginalAssistantId) {
 		body["originalAssistantId"] = request.OriginalAssistantId
 	}
@@ -22322,6 +22354,10 @@ func (client *Client) invokeAssistantWithSSECtx_opYieldFunc(_yield chan *InvokeA
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssistantId) {
 		body["assistantId"] = request.AssistantId
+	}
+
+	if !dara.IsNil(request.ExtLoginUser) {
+		body["extLoginUser"] = request.ExtLoginUser
 	}
 
 	if !dara.IsNil(request.Messages) {

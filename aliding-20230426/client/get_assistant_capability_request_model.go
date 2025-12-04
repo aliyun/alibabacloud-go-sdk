@@ -11,6 +11,8 @@ type iGetAssistantCapabilityRequest interface {
 	GoString() string
 	SetAssistantId(v string) *GetAssistantCapabilityRequest
 	GetAssistantId() *string
+	SetExtLoginUser(v *GetAssistantCapabilityRequestExtLoginUser) *GetAssistantCapabilityRequest
+	GetExtLoginUser() *GetAssistantCapabilityRequestExtLoginUser
 	SetMessages(v []*GetAssistantCapabilityRequestMessages) *GetAssistantCapabilityRequest
 	GetMessages() []*GetAssistantCapabilityRequestMessages
 	SetOriginalAssistantId(v string) *GetAssistantCapabilityRequest
@@ -33,7 +35,8 @@ type GetAssistantCapabilityRequest struct {
 	// example:
 	//
 	// assistantId1
-	AssistantId *string `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
+	AssistantId  *string                                    `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
+	ExtLoginUser *GetAssistantCapabilityRequestExtLoginUser `json:"extLoginUser,omitempty" xml:"extLoginUser,omitempty" type:"Struct"`
 	// This parameter is required.
 	Messages []*GetAssistantCapabilityRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
 	// example:
@@ -74,6 +77,10 @@ func (s *GetAssistantCapabilityRequest) GetAssistantId() *string {
 	return s.AssistantId
 }
 
+func (s *GetAssistantCapabilityRequest) GetExtLoginUser() *GetAssistantCapabilityRequestExtLoginUser {
+	return s.ExtLoginUser
+}
+
 func (s *GetAssistantCapabilityRequest) GetMessages() []*GetAssistantCapabilityRequestMessages {
 	return s.Messages
 }
@@ -104,6 +111,11 @@ func (s *GetAssistantCapabilityRequest) GetTimeout() *int32 {
 
 func (s *GetAssistantCapabilityRequest) SetAssistantId(v string) *GetAssistantCapabilityRequest {
 	s.AssistantId = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequest) SetExtLoginUser(v *GetAssistantCapabilityRequestExtLoginUser) *GetAssistantCapabilityRequest {
+	s.ExtLoginUser = v
 	return s
 }
 
@@ -143,6 +155,11 @@ func (s *GetAssistantCapabilityRequest) SetTimeout(v int32) *GetAssistantCapabil
 }
 
 func (s *GetAssistantCapabilityRequest) Validate() error {
+	if s.ExtLoginUser != nil {
+		if err := s.ExtLoginUser.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Messages != nil {
 		for _, item := range s.Messages {
 			if item != nil {
@@ -153,6 +170,60 @@ func (s *GetAssistantCapabilityRequest) Validate() error {
 		}
 	}
 	return nil
+}
+
+type GetAssistantCapabilityRequestExtLoginUser struct {
+	// example:
+	//
+	// mozi
+	ExtLoginUserDomain *string `json:"extLoginUserDomain,omitempty" xml:"extLoginUserDomain,omitempty"`
+	// example:
+	//
+	// outeruserId123
+	ExtLoginUserId *string `json:"extLoginUserId,omitempty" xml:"extLoginUserId,omitempty"`
+	// example:
+	//
+	// 外部游客1
+	ExtLoginUserName *string `json:"extLoginUserName,omitempty" xml:"extLoginUserName,omitempty"`
+}
+
+func (s GetAssistantCapabilityRequestExtLoginUser) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestExtLoginUser) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestExtLoginUser) GetExtLoginUserDomain() *string {
+	return s.ExtLoginUserDomain
+}
+
+func (s *GetAssistantCapabilityRequestExtLoginUser) GetExtLoginUserId() *string {
+	return s.ExtLoginUserId
+}
+
+func (s *GetAssistantCapabilityRequestExtLoginUser) GetExtLoginUserName() *string {
+	return s.ExtLoginUserName
+}
+
+func (s *GetAssistantCapabilityRequestExtLoginUser) SetExtLoginUserDomain(v string) *GetAssistantCapabilityRequestExtLoginUser {
+	s.ExtLoginUserDomain = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestExtLoginUser) SetExtLoginUserId(v string) *GetAssistantCapabilityRequestExtLoginUser {
+	s.ExtLoginUserId = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestExtLoginUser) SetExtLoginUserName(v string) *GetAssistantCapabilityRequestExtLoginUser {
+	s.ExtLoginUserName = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestExtLoginUser) Validate() error {
+	return dara.Validate(s)
 }
 
 type GetAssistantCapabilityRequestMessages struct {

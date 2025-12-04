@@ -11,6 +11,8 @@ type iInvokeAssistantRequest interface {
 	GoString() string
 	SetAssistantId(v string) *InvokeAssistantRequest
 	GetAssistantId() *string
+	SetExtLoginUser(v *InvokeAssistantRequestExtLoginUser) *InvokeAssistantRequest
+	GetExtLoginUser() *InvokeAssistantRequestExtLoginUser
 	SetMessages(v []*InvokeAssistantRequestMessages) *InvokeAssistantRequest
 	GetMessages() []*InvokeAssistantRequestMessages
 	SetOriginalAssistantId(v string) *InvokeAssistantRequest
@@ -31,7 +33,8 @@ type InvokeAssistantRequest struct {
 	// example:
 	//
 	// assistantId1
-	AssistantId *string `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
+	AssistantId  *string                             `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
+	ExtLoginUser *InvokeAssistantRequestExtLoginUser `json:"extLoginUser,omitempty" xml:"extLoginUser,omitempty" type:"Struct"`
 	// This parameter is required.
 	Messages []*InvokeAssistantRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
 	// example:
@@ -68,6 +71,10 @@ func (s *InvokeAssistantRequest) GetAssistantId() *string {
 	return s.AssistantId
 }
 
+func (s *InvokeAssistantRequest) GetExtLoginUser() *InvokeAssistantRequestExtLoginUser {
+	return s.ExtLoginUser
+}
+
 func (s *InvokeAssistantRequest) GetMessages() []*InvokeAssistantRequestMessages {
 	return s.Messages
 }
@@ -94,6 +101,11 @@ func (s *InvokeAssistantRequest) GetStream() *bool {
 
 func (s *InvokeAssistantRequest) SetAssistantId(v string) *InvokeAssistantRequest {
 	s.AssistantId = &v
+	return s
+}
+
+func (s *InvokeAssistantRequest) SetExtLoginUser(v *InvokeAssistantRequestExtLoginUser) *InvokeAssistantRequest {
+	s.ExtLoginUser = v
 	return s
 }
 
@@ -128,6 +140,11 @@ func (s *InvokeAssistantRequest) SetStream(v bool) *InvokeAssistantRequest {
 }
 
 func (s *InvokeAssistantRequest) Validate() error {
+	if s.ExtLoginUser != nil {
+		if err := s.ExtLoginUser.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Messages != nil {
 		for _, item := range s.Messages {
 			if item != nil {
@@ -138,6 +155,60 @@ func (s *InvokeAssistantRequest) Validate() error {
 		}
 	}
 	return nil
+}
+
+type InvokeAssistantRequestExtLoginUser struct {
+	// example:
+	//
+	// mozi
+	ExtLoginUserDomain *string `json:"extLoginUserDomain,omitempty" xml:"extLoginUserDomain,omitempty"`
+	// example:
+	//
+	// outeruserId123
+	ExtLoginUserId *string `json:"extLoginUserId,omitempty" xml:"extLoginUserId,omitempty"`
+	// example:
+	//
+	// 外部游客1
+	ExtLoginUserName *string `json:"extLoginUserName,omitempty" xml:"extLoginUserName,omitempty"`
+}
+
+func (s InvokeAssistantRequestExtLoginUser) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantRequestExtLoginUser) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantRequestExtLoginUser) GetExtLoginUserDomain() *string {
+	return s.ExtLoginUserDomain
+}
+
+func (s *InvokeAssistantRequestExtLoginUser) GetExtLoginUserId() *string {
+	return s.ExtLoginUserId
+}
+
+func (s *InvokeAssistantRequestExtLoginUser) GetExtLoginUserName() *string {
+	return s.ExtLoginUserName
+}
+
+func (s *InvokeAssistantRequestExtLoginUser) SetExtLoginUserDomain(v string) *InvokeAssistantRequestExtLoginUser {
+	s.ExtLoginUserDomain = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestExtLoginUser) SetExtLoginUserId(v string) *InvokeAssistantRequestExtLoginUser {
+	s.ExtLoginUserId = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestExtLoginUser) SetExtLoginUserName(v string) *InvokeAssistantRequestExtLoginUser {
+	s.ExtLoginUserName = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestExtLoginUser) Validate() error {
+	return dara.Validate(s)
 }
 
 type InvokeAssistantRequestMessages struct {

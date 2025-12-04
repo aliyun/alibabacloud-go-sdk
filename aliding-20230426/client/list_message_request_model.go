@@ -11,6 +11,8 @@ type iListMessageRequest interface {
 	GoString() string
 	SetAssistantId(v string) *ListMessageRequest
 	GetAssistantId() *string
+	SetExtLoginUser(v *ListMessageRequestExtLoginUser) *ListMessageRequest
+	GetExtLoginUser() *ListMessageRequestExtLoginUser
 	SetLimit(v int32) *ListMessageRequest
 	GetLimit() *int32
 	SetOrder(v string) *ListMessageRequest
@@ -33,7 +35,8 @@ type ListMessageRequest struct {
 	// example:
 	//
 	// assistantId1
-	AssistantId *string `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
+	AssistantId  *string                         `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
+	ExtLoginUser *ListMessageRequestExtLoginUser `json:"extLoginUser,omitempty" xml:"extLoginUser,omitempty" type:"Struct"`
 	// example:
 	//
 	// 20
@@ -78,6 +81,10 @@ func (s *ListMessageRequest) GetAssistantId() *string {
 	return s.AssistantId
 }
 
+func (s *ListMessageRequest) GetExtLoginUser() *ListMessageRequestExtLoginUser {
+	return s.ExtLoginUser
+}
+
 func (s *ListMessageRequest) GetLimit() *int32 {
 	return s.Limit
 }
@@ -108,6 +115,11 @@ func (s *ListMessageRequest) GetThreadId() *string {
 
 func (s *ListMessageRequest) SetAssistantId(v string) *ListMessageRequest {
 	s.AssistantId = &v
+	return s
+}
+
+func (s *ListMessageRequest) SetExtLoginUser(v *ListMessageRequestExtLoginUser) *ListMessageRequest {
+	s.ExtLoginUser = v
 	return s
 }
 
@@ -147,5 +159,64 @@ func (s *ListMessageRequest) SetThreadId(v string) *ListMessageRequest {
 }
 
 func (s *ListMessageRequest) Validate() error {
+	if s.ExtLoginUser != nil {
+		if err := s.ExtLoginUser.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListMessageRequestExtLoginUser struct {
+	// example:
+	//
+	// mozi
+	ExtLoginUserDomain *string `json:"extLoginUserDomain,omitempty" xml:"extLoginUserDomain,omitempty"`
+	// example:
+	//
+	// outeruserId123
+	ExtLoginUserId *string `json:"extLoginUserId,omitempty" xml:"extLoginUserId,omitempty"`
+	// example:
+	//
+	// 外部游客1
+	ExtLoginUserName *string `json:"extLoginUserName,omitempty" xml:"extLoginUserName,omitempty"`
+}
+
+func (s ListMessageRequestExtLoginUser) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListMessageRequestExtLoginUser) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageRequestExtLoginUser) GetExtLoginUserDomain() *string {
+	return s.ExtLoginUserDomain
+}
+
+func (s *ListMessageRequestExtLoginUser) GetExtLoginUserId() *string {
+	return s.ExtLoginUserId
+}
+
+func (s *ListMessageRequestExtLoginUser) GetExtLoginUserName() *string {
+	return s.ExtLoginUserName
+}
+
+func (s *ListMessageRequestExtLoginUser) SetExtLoginUserDomain(v string) *ListMessageRequestExtLoginUser {
+	s.ExtLoginUserDomain = &v
+	return s
+}
+
+func (s *ListMessageRequestExtLoginUser) SetExtLoginUserId(v string) *ListMessageRequestExtLoginUser {
+	s.ExtLoginUserId = &v
+	return s
+}
+
+func (s *ListMessageRequestExtLoginUser) SetExtLoginUserName(v string) *ListMessageRequestExtLoginUser {
+	s.ExtLoginUserName = &v
+	return s
+}
+
+func (s *ListMessageRequestExtLoginUser) Validate() error {
 	return dara.Validate(s)
 }

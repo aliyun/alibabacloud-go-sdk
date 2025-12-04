@@ -11,6 +11,8 @@ type iCreateMessageRequest interface {
 	GoString() string
 	SetAssistantId(v string) *CreateMessageRequest
 	GetAssistantId() *string
+	SetExtLoginUser(v *CreateMessageRequestExtLoginUser) *CreateMessageRequest
+	GetExtLoginUser() *CreateMessageRequestExtLoginUser
 	SetMessages(v []*CreateMessageRequestMessages) *CreateMessageRequest
 	GetMessages() []*CreateMessageRequestMessages
 	SetOriginalAssistantId(v string) *CreateMessageRequest
@@ -29,7 +31,8 @@ type CreateMessageRequest struct {
 	// example:
 	//
 	// assistantId1
-	AssistantId *string `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
+	AssistantId  *string                           `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
+	ExtLoginUser *CreateMessageRequestExtLoginUser `json:"extLoginUser,omitempty" xml:"extLoginUser,omitempty" type:"Struct"`
 	// This parameter is required.
 	Messages []*CreateMessageRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
 	// example:
@@ -64,6 +67,10 @@ func (s *CreateMessageRequest) GetAssistantId() *string {
 	return s.AssistantId
 }
 
+func (s *CreateMessageRequest) GetExtLoginUser() *CreateMessageRequestExtLoginUser {
+	return s.ExtLoginUser
+}
+
 func (s *CreateMessageRequest) GetMessages() []*CreateMessageRequestMessages {
 	return s.Messages
 }
@@ -86,6 +93,11 @@ func (s *CreateMessageRequest) GetThreadId() *string {
 
 func (s *CreateMessageRequest) SetAssistantId(v string) *CreateMessageRequest {
 	s.AssistantId = &v
+	return s
+}
+
+func (s *CreateMessageRequest) SetExtLoginUser(v *CreateMessageRequestExtLoginUser) *CreateMessageRequest {
+	s.ExtLoginUser = v
 	return s
 }
 
@@ -115,6 +127,11 @@ func (s *CreateMessageRequest) SetThreadId(v string) *CreateMessageRequest {
 }
 
 func (s *CreateMessageRequest) Validate() error {
+	if s.ExtLoginUser != nil {
+		if err := s.ExtLoginUser.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Messages != nil {
 		for _, item := range s.Messages {
 			if item != nil {
@@ -125,6 +142,60 @@ func (s *CreateMessageRequest) Validate() error {
 		}
 	}
 	return nil
+}
+
+type CreateMessageRequestExtLoginUser struct {
+	// example:
+	//
+	// mozi
+	ExtLoginUserDomain *string `json:"extLoginUserDomain,omitempty" xml:"extLoginUserDomain,omitempty"`
+	// example:
+	//
+	// outeruserId123
+	ExtLoginUserId *string `json:"extLoginUserId,omitempty" xml:"extLoginUserId,omitempty"`
+	// example:
+	//
+	// 外部游客1
+	ExtLoginUserName *string `json:"extLoginUserName,omitempty" xml:"extLoginUserName,omitempty"`
+}
+
+func (s CreateMessageRequestExtLoginUser) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateMessageRequestExtLoginUser) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestExtLoginUser) GetExtLoginUserDomain() *string {
+	return s.ExtLoginUserDomain
+}
+
+func (s *CreateMessageRequestExtLoginUser) GetExtLoginUserId() *string {
+	return s.ExtLoginUserId
+}
+
+func (s *CreateMessageRequestExtLoginUser) GetExtLoginUserName() *string {
+	return s.ExtLoginUserName
+}
+
+func (s *CreateMessageRequestExtLoginUser) SetExtLoginUserDomain(v string) *CreateMessageRequestExtLoginUser {
+	s.ExtLoginUserDomain = &v
+	return s
+}
+
+func (s *CreateMessageRequestExtLoginUser) SetExtLoginUserId(v string) *CreateMessageRequestExtLoginUser {
+	s.ExtLoginUserId = &v
+	return s
+}
+
+func (s *CreateMessageRequestExtLoginUser) SetExtLoginUserName(v string) *CreateMessageRequestExtLoginUser {
+	s.ExtLoginUserName = &v
+	return s
+}
+
+func (s *CreateMessageRequestExtLoginUser) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateMessageRequestMessages struct {

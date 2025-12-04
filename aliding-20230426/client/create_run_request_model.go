@@ -13,6 +13,8 @@ type iCreateRunRequest interface {
 	GetAllowStructViewContent() *bool
 	SetAssistantId(v string) *CreateRunRequest
 	GetAssistantId() *string
+	SetExtLoginUser(v *CreateRunRequestExtLoginUser) *CreateRunRequest
+	GetExtLoginUser() *CreateRunRequestExtLoginUser
 	SetOriginalAssistantId(v string) *CreateRunRequest
 	GetOriginalAssistantId() *string
 	SetSourceIdOfOriginalAssistantId(v string) *CreateRunRequest
@@ -32,7 +34,8 @@ type CreateRunRequest struct {
 	// example:
 	//
 	// assistantId1
-	AssistantId *string `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
+	AssistantId  *string                       `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
+	ExtLoginUser *CreateRunRequestExtLoginUser `json:"extLoginUser,omitempty" xml:"extLoginUser,omitempty" type:"Struct"`
 	// example:
 	//
 	// assistantId
@@ -73,6 +76,10 @@ func (s *CreateRunRequest) GetAssistantId() *string {
 	return s.AssistantId
 }
 
+func (s *CreateRunRequest) GetExtLoginUser() *CreateRunRequestExtLoginUser {
+	return s.ExtLoginUser
+}
+
 func (s *CreateRunRequest) GetOriginalAssistantId() *string {
 	return s.OriginalAssistantId
 }
@@ -103,6 +110,11 @@ func (s *CreateRunRequest) SetAssistantId(v string) *CreateRunRequest {
 	return s
 }
 
+func (s *CreateRunRequest) SetExtLoginUser(v *CreateRunRequestExtLoginUser) *CreateRunRequest {
+	s.ExtLoginUser = v
+	return s
+}
+
 func (s *CreateRunRequest) SetOriginalAssistantId(v string) *CreateRunRequest {
 	s.OriginalAssistantId = &v
 	return s
@@ -129,5 +141,64 @@ func (s *CreateRunRequest) SetThreadId(v string) *CreateRunRequest {
 }
 
 func (s *CreateRunRequest) Validate() error {
+	if s.ExtLoginUser != nil {
+		if err := s.ExtLoginUser.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateRunRequestExtLoginUser struct {
+	// example:
+	//
+	// mozi
+	ExtLoginUserDomain *string `json:"extLoginUserDomain,omitempty" xml:"extLoginUserDomain,omitempty"`
+	// example:
+	//
+	// outeruserId123
+	ExtLoginUserId *string `json:"extLoginUserId,omitempty" xml:"extLoginUserId,omitempty"`
+	// example:
+	//
+	// 外部游客1
+	ExtLoginUserName *string `json:"extLoginUserName,omitempty" xml:"extLoginUserName,omitempty"`
+}
+
+func (s CreateRunRequestExtLoginUser) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateRunRequestExtLoginUser) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunRequestExtLoginUser) GetExtLoginUserDomain() *string {
+	return s.ExtLoginUserDomain
+}
+
+func (s *CreateRunRequestExtLoginUser) GetExtLoginUserId() *string {
+	return s.ExtLoginUserId
+}
+
+func (s *CreateRunRequestExtLoginUser) GetExtLoginUserName() *string {
+	return s.ExtLoginUserName
+}
+
+func (s *CreateRunRequestExtLoginUser) SetExtLoginUserDomain(v string) *CreateRunRequestExtLoginUser {
+	s.ExtLoginUserDomain = &v
+	return s
+}
+
+func (s *CreateRunRequestExtLoginUser) SetExtLoginUserId(v string) *CreateRunRequestExtLoginUser {
+	s.ExtLoginUserId = &v
+	return s
+}
+
+func (s *CreateRunRequestExtLoginUser) SetExtLoginUserName(v string) *CreateRunRequestExtLoginUser {
+	s.ExtLoginUserName = &v
+	return s
+}
+
+func (s *CreateRunRequestExtLoginUser) Validate() error {
 	return dara.Validate(s)
 }
