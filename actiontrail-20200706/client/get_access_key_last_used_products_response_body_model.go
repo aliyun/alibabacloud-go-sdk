@@ -57,7 +57,16 @@ func (s *GetAccessKeyLastUsedProductsResponseBody) SetRequestId(v string) *GetAc
 }
 
 func (s *GetAccessKeyLastUsedProductsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Products != nil {
+		for _, item := range s.Products {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAccessKeyLastUsedProductsResponseBodyProducts struct {

@@ -74,7 +74,16 @@ func (s *GetAccessKeyLastUsedEventsResponseBody) SetRequestId(v string) *GetAcce
 }
 
 func (s *GetAccessKeyLastUsedEventsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Events != nil {
+		for _, item := range s.Events {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAccessKeyLastUsedEventsResponseBodyEvents struct {

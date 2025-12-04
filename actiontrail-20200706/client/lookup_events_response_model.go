@@ -59,5 +59,10 @@ func (s *LookupEventsResponse) SetBody(v *LookupEventsResponseBody) *LookupEvent
 }
 
 func (s *LookupEventsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

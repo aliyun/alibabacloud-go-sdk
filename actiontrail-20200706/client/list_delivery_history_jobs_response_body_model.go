@@ -104,7 +104,16 @@ func (s *ListDeliveryHistoryJobsResponseBody) SetTotalCount(v int32) *ListDelive
 }
 
 func (s *ListDeliveryHistoryJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeliveryHistoryJobs != nil {
+		for _, item := range s.DeliveryHistoryJobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDeliveryHistoryJobsResponseBodyDeliveryHistoryJobs struct {

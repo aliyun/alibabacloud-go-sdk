@@ -50,7 +50,12 @@ func (s *ListDataEventServicesResponseBody) SetRequestId(v string) *ListDataEven
 }
 
 func (s *ListDataEventServicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataEventServicesResponseBodyData struct {
@@ -101,7 +106,16 @@ func (s *ListDataEventServicesResponseBodyData) SetServiceInfos(v []*ListDataEve
 }
 
 func (s *ListDataEventServicesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceInfos != nil {
+		for _, item := range s.ServiceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataEventServicesResponseBodyDataServiceInfos struct {

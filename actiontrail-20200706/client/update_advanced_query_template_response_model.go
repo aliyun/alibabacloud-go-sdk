@@ -59,5 +59,10 @@ func (s *UpdateAdvancedQueryTemplateResponse) SetBody(v *UpdateAdvancedQueryTemp
 }
 
 func (s *UpdateAdvancedQueryTemplateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

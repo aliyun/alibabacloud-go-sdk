@@ -74,7 +74,16 @@ func (s *GetAccessKeyLastUsedIpsResponseBody) SetRequestId(v string) *GetAccessK
 }
 
 func (s *GetAccessKeyLastUsedIpsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Ips != nil {
+		for _, item := range s.Ips {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAccessKeyLastUsedIpsResponseBodyIps struct {

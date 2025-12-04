@@ -50,7 +50,12 @@ func (s *GetGovernanceMetricsResponseBody) SetRequestId(v string) *GetGovernance
 }
 
 func (s *GetGovernanceMetricsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGovernanceMetricsResponseBodyData struct {
@@ -88,7 +93,16 @@ func (s *GetGovernanceMetricsResponseBodyData) SetGovernanceMetrics(v []*GetGove
 }
 
 func (s *GetGovernanceMetricsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.GovernanceMetrics != nil {
+		for _, item := range s.GovernanceMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGovernanceMetricsResponseBodyDataGovernanceMetrics struct {

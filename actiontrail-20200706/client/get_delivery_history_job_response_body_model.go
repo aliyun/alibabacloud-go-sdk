@@ -197,7 +197,16 @@ func (s *GetDeliveryHistoryJobResponseBody) SetUpdatedTime(v string) *GetDeliver
 }
 
 func (s *GetDeliveryHistoryJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Status != nil {
+		for _, item := range s.Status {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDeliveryHistoryJobResponseBodyStatus struct {

@@ -50,7 +50,12 @@ func (s *DescribeUserAlertCountResponseBody) SetRequestId(v string) *DescribeUse
 }
 
 func (s *DescribeUserAlertCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUserAlertCountResponseBodyData struct {

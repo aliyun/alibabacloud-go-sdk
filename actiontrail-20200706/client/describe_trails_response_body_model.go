@@ -53,7 +53,16 @@ func (s *DescribeTrailsResponseBody) SetTrailList(v []*DescribeTrailsResponseBod
 }
 
 func (s *DescribeTrailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrailList != nil {
+		for _, item := range s.TrailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTrailsResponseBodyTrailList struct {

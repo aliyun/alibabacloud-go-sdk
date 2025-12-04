@@ -17,9 +17,11 @@ import (
 //
 // @return CreateAdvancedQueryHistoryResponse
 func (client *Client) CreateAdvancedQueryHistoryWithContext(ctx context.Context, request *CreateAdvancedQueryHistoryRequest, runtime *dara.RuntimeOptions) (_result *CreateAdvancedQueryHistoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.QuerySql) {
@@ -63,9 +65,11 @@ func (client *Client) CreateAdvancedQueryHistoryWithContext(ctx context.Context,
 //
 // @return CreateAdvancedQueryTemplateResponse
 func (client *Client) CreateAdvancedQueryTemplateWithContext(ctx context.Context, request *CreateAdvancedQueryTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateAdvancedQueryTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SimpleQuery) {
@@ -123,9 +127,11 @@ func (client *Client) CreateAdvancedQueryTemplateWithContext(ctx context.Context
 //
 // @return CreateDeliveryHistoryJobResponse
 func (client *Client) CreateDeliveryHistoryJobWithContext(ctx context.Context, request *CreateDeliveryHistoryJobRequest, runtime *dara.RuntimeOptions) (_result *CreateDeliveryHistoryJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -199,9 +205,11 @@ func (client *Client) CreateDeliveryHistoryJobWithContext(ctx context.Context, r
 //
 // @return CreateTrailResponse
 func (client *Client) CreateTrailWithContext(ctx context.Context, request *CreateTrailRequest, runtime *dara.RuntimeOptions) (_result *CreateTrailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventRW) {
@@ -281,9 +289,11 @@ func (client *Client) CreateTrailWithContext(ctx context.Context, request *Creat
 //
 // @return DeleteAdvancedQueryHistoryResponse
 func (client *Client) DeleteAdvancedQueryHistoryWithContext(ctx context.Context, request *DeleteAdvancedQueryHistoryRequest, runtime *dara.RuntimeOptions) (_result *DeleteAdvancedQueryHistoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.QueryId) {
@@ -323,9 +333,11 @@ func (client *Client) DeleteAdvancedQueryHistoryWithContext(ctx context.Context,
 //
 // @return DeleteAdvancedQueryTemplateResponse
 func (client *Client) DeleteAdvancedQueryTemplateWithContext(ctx context.Context, request *DeleteAdvancedQueryTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteAdvancedQueryTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -357,6 +369,50 @@ func (client *Client) DeleteAdvancedQueryTemplateWithContext(ctx context.Context
 
 // Summary:
 //
+// 删除数据事件选择器
+//
+// @param request - DeleteDataEventSelectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataEventSelectorResponse
+func (client *Client) DeleteDataEventSelectorWithContext(ctx context.Context, request *DeleteDataEventSelectorRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataEventSelectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TrailName) {
+		query["TrailName"] = request.TrailName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataEventSelector"),
+		Version:     dara.String("2020-07-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataEventSelectorResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a data backfill task.
 //
 // Description:
@@ -369,9 +425,11 @@ func (client *Client) DeleteAdvancedQueryTemplateWithContext(ctx context.Context
 //
 // @return DeleteDeliveryHistoryJobResponse
 func (client *Client) DeleteDeliveryHistoryJobWithContext(ctx context.Context, request *DeleteDeliveryHistoryJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteDeliveryHistoryJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -415,9 +473,11 @@ func (client *Client) DeleteDeliveryHistoryJobWithContext(ctx context.Context, r
 //
 // @return DeleteTrailResponse
 func (client *Client) DeleteTrailWithContext(ctx context.Context, request *DeleteTrailRequest, runtime *dara.RuntimeOptions) (_result *DeleteTrailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -457,9 +517,11 @@ func (client *Client) DeleteTrailWithContext(ctx context.Context, request *Delet
 //
 // @return DescribeAdvancedQueryTemplateResponse
 func (client *Client) DescribeAdvancedQueryTemplateWithContext(ctx context.Context, request *DescribeAdvancedQueryTemplateRequest, runtime *dara.RuntimeOptions) (_result *DescribeAdvancedQueryTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -511,9 +573,11 @@ func (client *Client) DescribeAdvancedQueryTemplateWithContext(ctx context.Conte
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -553,9 +617,11 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 //
 // @return DescribeResourceLifeCycleEventsResponse
 func (client *Client) DescribeResourceLifeCycleEventsWithContext(ctx context.Context, request *DescribeResourceLifeCycleEventsRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceLifeCycleEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceType) {
@@ -599,9 +665,11 @@ func (client *Client) DescribeResourceLifeCycleEventsWithContext(ctx context.Con
 //
 // @return DescribeScenesResponse
 func (client *Client) DescribeScenesWithContext(ctx context.Context, request *DescribeScenesRequest, runtime *dara.RuntimeOptions) (_result *DescribeScenesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SearchCode) {
@@ -641,9 +709,11 @@ func (client *Client) DescribeScenesWithContext(ctx context.Context, request *De
 //
 // @return DescribeSearchTemplatesResponse
 func (client *Client) DescribeSearchTemplatesWithContext(ctx context.Context, request *DescribeSearchTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSearchTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -695,9 +765,11 @@ func (client *Client) DescribeSearchTemplatesWithContext(ctx context.Context, re
 //
 // @return DescribeTrailsResponse
 func (client *Client) DescribeTrailsWithContext(ctx context.Context, request *DescribeTrailsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTrailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IncludeOrganizationTrail) {
@@ -745,9 +817,11 @@ func (client *Client) DescribeTrailsWithContext(ctx context.Context, request *De
 //
 // @return DescribeUserAlertCountResponse
 func (client *Client) DescribeUserAlertCountWithContext(ctx context.Context, request *DescribeUserAlertCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserAlertCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -791,9 +865,11 @@ func (client *Client) DescribeUserAlertCountWithContext(ctx context.Context, req
 //
 // @return DescribeUserLogCountResponse
 func (client *Client) DescribeUserLogCountWithContext(ctx context.Context, request *DescribeUserLogCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserLogCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -837,9 +913,11 @@ func (client *Client) DescribeUserLogCountWithContext(ctx context.Context, reque
 //
 // @return EnableInsightResponse
 func (client *Client) EnableInsightWithContext(ctx context.Context, request *EnableInsightRequest, runtime *dara.RuntimeOptions) (_result *EnableInsightResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InsightType) {
@@ -883,9 +961,11 @@ func (client *Client) EnableInsightWithContext(ctx context.Context, request *Ena
 //
 // @return GetAccessKeyLastUsedEventsResponse
 func (client *Client) GetAccessKeyLastUsedEventsWithContext(ctx context.Context, request *GetAccessKeyLastUsedEventsRequest, runtime *dara.RuntimeOptions) (_result *GetAccessKeyLastUsedEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessKey) {
@@ -941,9 +1021,11 @@ func (client *Client) GetAccessKeyLastUsedEventsWithContext(ctx context.Context,
 //
 // @return GetAccessKeyLastUsedInfoResponse
 func (client *Client) GetAccessKeyLastUsedInfoWithContext(ctx context.Context, request *GetAccessKeyLastUsedInfoRequest, runtime *dara.RuntimeOptions) (_result *GetAccessKeyLastUsedInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessKey) {
@@ -987,9 +1069,11 @@ func (client *Client) GetAccessKeyLastUsedInfoWithContext(ctx context.Context, r
 //
 // @return GetAccessKeyLastUsedIpsResponse
 func (client *Client) GetAccessKeyLastUsedIpsWithContext(ctx context.Context, request *GetAccessKeyLastUsedIpsRequest, runtime *dara.RuntimeOptions) (_result *GetAccessKeyLastUsedIpsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessKey) {
@@ -1045,9 +1129,11 @@ func (client *Client) GetAccessKeyLastUsedIpsWithContext(ctx context.Context, re
 //
 // @return GetAccessKeyLastUsedProductsResponse
 func (client *Client) GetAccessKeyLastUsedProductsWithContext(ctx context.Context, request *GetAccessKeyLastUsedProductsRequest, runtime *dara.RuntimeOptions) (_result *GetAccessKeyLastUsedProductsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessKey) {
@@ -1091,9 +1177,11 @@ func (client *Client) GetAccessKeyLastUsedProductsWithContext(ctx context.Contex
 //
 // @return GetAccessKeyLastUsedResourcesResponse
 func (client *Client) GetAccessKeyLastUsedResourcesWithContext(ctx context.Context, request *GetAccessKeyLastUsedResourcesRequest, runtime *dara.RuntimeOptions) (_result *GetAccessKeyLastUsedResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessKey) {
@@ -1145,9 +1233,11 @@ func (client *Client) GetAccessKeyLastUsedResourcesWithContext(ctx context.Conte
 //
 // @return GetAdvancedQueryTemplateResponse
 func (client *Client) GetAdvancedQueryTemplateWithContext(ctx context.Context, request *GetAdvancedQueryTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetAdvancedQueryTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -1179,6 +1269,50 @@ func (client *Client) GetAdvancedQueryTemplateWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 查询事件选择器
+//
+// @param request - GetDataEventSelectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataEventSelectorResponse
+func (client *Client) GetDataEventSelectorWithContext(ctx context.Context, request *GetDataEventSelectorRequest, runtime *dara.RuntimeOptions) (_result *GetDataEventSelectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TrailName) {
+		query["TrailName"] = request.TrailName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataEventSelector"),
+		Version:     dara.String("2020-07-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataEventSelectorResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a data backfill task.
 //
 // Description:
@@ -1191,9 +1325,11 @@ func (client *Client) GetAdvancedQueryTemplateWithContext(ctx context.Context, r
 //
 // @return GetDeliveryHistoryJobResponse
 func (client *Client) GetDeliveryHistoryJobWithContext(ctx context.Context, request *GetDeliveryHistoryJobRequest, runtime *dara.RuntimeOptions) (_result *GetDeliveryHistoryJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -1237,9 +1373,11 @@ func (client *Client) GetDeliveryHistoryJobWithContext(ctx context.Context, requ
 //
 // @return GetTrailStatusResponse
 func (client *Client) GetTrailStatusWithContext(ctx context.Context, request *GetTrailStatusRequest, runtime *dara.RuntimeOptions) (_result *GetTrailStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsOrganizationTrail) {
@@ -1275,6 +1413,54 @@ func (client *Client) GetTrailStatusWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
+// 批量查询事件选择器
+//
+// @param request - ListDataEventSelectorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataEventSelectorsResponse
+func (client *Client) ListDataEventSelectorsWithContext(ctx context.Context, request *ListDataEventSelectorsRequest, runtime *dara.RuntimeOptions) (_result *ListDataEventSelectorsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataEventSelectors"),
+		Version:     dara.String("2020-07-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataEventSelectorsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询数据事件支持的服务与事件名称
 //
 // @param request - ListDataEventServicesRequest
@@ -1283,9 +1469,11 @@ func (client *Client) GetTrailStatusWithContext(ctx context.Context, request *Ge
 //
 // @return ListDataEventServicesResponse
 func (client *Client) ListDataEventServicesWithContext(ctx context.Context, request *ListDataEventServicesRequest, runtime *dara.RuntimeOptions) (_result *ListDataEventServicesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -1333,9 +1521,11 @@ func (client *Client) ListDataEventServicesWithContext(ctx context.Context, requ
 //
 // @return ListDeliveryHistoryJobsResponse
 func (client *Client) ListDeliveryHistoryJobsWithContext(ctx context.Context, request *ListDeliveryHistoryJobsRequest, runtime *dara.RuntimeOptions) (_result *ListDeliveryHistoryJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -1385,9 +1575,11 @@ func (client *Client) ListDeliveryHistoryJobsWithContext(ctx context.Context, re
 //
 // @return LookupEventsResponse
 func (client *Client) LookupEventsWithContext(ctx context.Context, request *LookupEventsRequest, runtime *dara.RuntimeOptions) (_result *LookupEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Direction) {
@@ -1439,6 +1631,62 @@ func (client *Client) LookupEventsWithContext(ctx context.Context, request *Look
 
 // Summary:
 //
+// 创建事件选择器
+//
+// @param request - PutDataEventSelectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutDataEventSelectorResponse
+func (client *Client) PutDataEventSelectorWithContext(ctx context.Context, request *PutDataEventSelectorRequest, runtime *dara.RuntimeOptions) (_result *PutDataEventSelectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventSelectors) {
+		query["EventSelectors"] = request.EventSelectors
+	}
+
+	if !dara.IsNil(request.IsTrailAllRegion) {
+		query["IsTrailAllRegion"] = request.IsTrailAllRegion
+	}
+
+	if !dara.IsNil(request.TrailName) {
+		query["TrailName"] = request.TrailName
+	}
+
+	if !dara.IsNil(request.TrailRegionIds) {
+		query["TrailRegionIds"] = request.TrailRegionIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PutDataEventSelector"),
+		Version:     dara.String("2020-07-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PutDataEventSelectorResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables a trail to deliver events to an Object Storage Service (OSS) bucket or a Simple Log Service Logstore.
 //
 // Description:
@@ -1451,9 +1699,11 @@ func (client *Client) LookupEventsWithContext(ctx context.Context, request *Look
 //
 // @return StartLoggingResponse
 func (client *Client) StartLoggingWithContext(ctx context.Context, request *StartLoggingRequest, runtime *dara.RuntimeOptions) (_result *StartLoggingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -1497,9 +1747,11 @@ func (client *Client) StartLoggingWithContext(ctx context.Context, request *Star
 //
 // @return StopLoggingResponse
 func (client *Client) StopLoggingWithContext(ctx context.Context, request *StopLoggingRequest, runtime *dara.RuntimeOptions) (_result *StopLoggingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1535,9 +1787,11 @@ func (client *Client) StopLoggingWithContext(ctx context.Context, request *StopL
 //
 // @return UpdateAdvancedQueryTemplateResponse
 func (client *Client) UpdateAdvancedQueryTemplateWithContext(ctx context.Context, request *UpdateAdvancedQueryTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateAdvancedQueryTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SimpleQuery) {
@@ -1597,9 +1851,11 @@ func (client *Client) UpdateAdvancedQueryTemplateWithContext(ctx context.Context
 //
 // @return UpdateGlobalEventsStorageRegionResponse
 func (client *Client) UpdateGlobalEventsStorageRegionWithContext(ctx context.Context, request *UpdateGlobalEventsStorageRegionRequest, runtime *dara.RuntimeOptions) (_result *UpdateGlobalEventsStorageRegionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.StorageRegion) {
@@ -1643,9 +1899,11 @@ func (client *Client) UpdateGlobalEventsStorageRegionWithContext(ctx context.Con
 //
 // @return UpdateTrailResponse
 func (client *Client) UpdateTrailWithContext(ctx context.Context, request *UpdateTrailRequest, runtime *dara.RuntimeOptions) (_result *UpdateTrailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventRW) {

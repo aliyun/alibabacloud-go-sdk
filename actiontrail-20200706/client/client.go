@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -99,9 +100,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return CreateAdvancedQueryHistoryResponse
 func (client *Client) CreateAdvancedQueryHistoryWithOptions(request *CreateAdvancedQueryHistoryRequest, runtime *dara.RuntimeOptions) (_result *CreateAdvancedQueryHistoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.QuerySql) {
@@ -163,9 +166,11 @@ func (client *Client) CreateAdvancedQueryHistory(request *CreateAdvancedQueryHis
 //
 // @return CreateAdvancedQueryTemplateResponse
 func (client *Client) CreateAdvancedQueryTemplateWithOptions(request *CreateAdvancedQueryTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateAdvancedQueryTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SimpleQuery) {
@@ -241,9 +246,11 @@ func (client *Client) CreateAdvancedQueryTemplate(request *CreateAdvancedQueryTe
 //
 // @return CreateDeliveryHistoryJobResponse
 func (client *Client) CreateDeliveryHistoryJobWithOptions(request *CreateDeliveryHistoryJobRequest, runtime *dara.RuntimeOptions) (_result *CreateDeliveryHistoryJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -345,9 +352,11 @@ func (client *Client) CreateDeliveryHistoryJob(request *CreateDeliveryHistoryJob
 //
 // @return CreateTrailResponse
 func (client *Client) CreateTrailWithOptions(request *CreateTrailRequest, runtime *dara.RuntimeOptions) (_result *CreateTrailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventRW) {
@@ -475,9 +484,11 @@ func (client *Client) CreateTrail(request *CreateTrailRequest) (_result *CreateT
 //
 // @return DeleteAdvancedQueryHistoryResponse
 func (client *Client) DeleteAdvancedQueryHistoryWithOptions(request *DeleteAdvancedQueryHistoryRequest, runtime *dara.RuntimeOptions) (_result *DeleteAdvancedQueryHistoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.QueryId) {
@@ -535,9 +546,11 @@ func (client *Client) DeleteAdvancedQueryHistory(request *DeleteAdvancedQueryHis
 //
 // @return DeleteAdvancedQueryTemplateResponse
 func (client *Client) DeleteAdvancedQueryTemplateWithOptions(request *DeleteAdvancedQueryTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteAdvancedQueryTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -587,6 +600,68 @@ func (client *Client) DeleteAdvancedQueryTemplate(request *DeleteAdvancedQueryTe
 
 // Summary:
 //
+// 删除数据事件选择器
+//
+// @param request - DeleteDataEventSelectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataEventSelectorResponse
+func (client *Client) DeleteDataEventSelectorWithOptions(request *DeleteDataEventSelectorRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataEventSelectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TrailName) {
+		query["TrailName"] = request.TrailName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataEventSelector"),
+		Version:     dara.String("2020-07-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataEventSelectorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据事件选择器
+//
+// @param request - DeleteDataEventSelectorRequest
+//
+// @return DeleteDataEventSelectorResponse
+func (client *Client) DeleteDataEventSelector(request *DeleteDataEventSelectorRequest) (_result *DeleteDataEventSelectorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDataEventSelectorResponse{}
+	_body, _err := client.DeleteDataEventSelectorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a data backfill task.
 //
 // Description:
@@ -599,9 +674,11 @@ func (client *Client) DeleteAdvancedQueryTemplate(request *DeleteAdvancedQueryTe
 //
 // @return DeleteDeliveryHistoryJobResponse
 func (client *Client) DeleteDeliveryHistoryJobWithOptions(request *DeleteDeliveryHistoryJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteDeliveryHistoryJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -667,9 +744,11 @@ func (client *Client) DeleteDeliveryHistoryJob(request *DeleteDeliveryHistoryJob
 //
 // @return DeleteTrailResponse
 func (client *Client) DeleteTrailWithOptions(request *DeleteTrailRequest, runtime *dara.RuntimeOptions) (_result *DeleteTrailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -778,9 +857,11 @@ func (client *Client) DescribeAdvancedQueryHistory() (_result *DescribeAdvancedQ
 //
 // @return DescribeAdvancedQueryTemplateResponse
 func (client *Client) DescribeAdvancedQueryTemplateWithOptions(request *DescribeAdvancedQueryTemplateRequest, runtime *dara.RuntimeOptions) (_result *DescribeAdvancedQueryTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -850,9 +931,11 @@ func (client *Client) DescribeAdvancedQueryTemplate(request *DescribeAdvancedQue
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -914,9 +997,11 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 //
 // @return DescribeResourceLifeCycleEventsResponse
 func (client *Client) DescribeResourceLifeCycleEventsWithOptions(request *DescribeResourceLifeCycleEventsRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceLifeCycleEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceType) {
@@ -978,9 +1063,11 @@ func (client *Client) DescribeResourceLifeCycleEvents(request *DescribeResourceL
 //
 // @return DescribeScenesResponse
 func (client *Client) DescribeScenesWithOptions(request *DescribeScenesRequest, runtime *dara.RuntimeOptions) (_result *DescribeScenesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SearchCode) {
@@ -1038,9 +1125,11 @@ func (client *Client) DescribeScenes(request *DescribeScenesRequest) (_result *D
 //
 // @return DescribeSearchTemplatesResponse
 func (client *Client) DescribeSearchTemplatesWithOptions(request *DescribeSearchTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSearchTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -1110,9 +1199,11 @@ func (client *Client) DescribeSearchTemplates(request *DescribeSearchTemplatesRe
 //
 // @return DescribeTrailsResponse
 func (client *Client) DescribeTrailsWithOptions(request *DescribeTrailsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTrailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IncludeOrganizationTrail) {
@@ -1182,9 +1273,11 @@ func (client *Client) DescribeTrails(request *DescribeTrailsRequest) (_result *D
 //
 // @return DescribeUserAlertCountResponse
 func (client *Client) DescribeUserAlertCountWithOptions(request *DescribeUserAlertCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserAlertCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -1246,9 +1339,11 @@ func (client *Client) DescribeUserAlertCount(request *DescribeUserAlertCountRequ
 //
 // @return DescribeUserLogCountResponse
 func (client *Client) DescribeUserLogCountWithOptions(request *DescribeUserLogCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserLogCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -1310,9 +1405,11 @@ func (client *Client) DescribeUserLogCount(request *DescribeUserLogCountRequest)
 //
 // @return EnableInsightResponse
 func (client *Client) EnableInsightWithOptions(request *EnableInsightRequest, runtime *dara.RuntimeOptions) (_result *EnableInsightResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InsightType) {
@@ -1374,9 +1471,11 @@ func (client *Client) EnableInsight(request *EnableInsightRequest) (_result *Ena
 //
 // @return GetAccessKeyLastUsedEventsResponse
 func (client *Client) GetAccessKeyLastUsedEventsWithOptions(request *GetAccessKeyLastUsedEventsRequest, runtime *dara.RuntimeOptions) (_result *GetAccessKeyLastUsedEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessKey) {
@@ -1454,9 +1553,11 @@ func (client *Client) GetAccessKeyLastUsedEvents(request *GetAccessKeyLastUsedEv
 //
 // @return GetAccessKeyLastUsedInfoResponse
 func (client *Client) GetAccessKeyLastUsedInfoWithOptions(request *GetAccessKeyLastUsedInfoRequest, runtime *dara.RuntimeOptions) (_result *GetAccessKeyLastUsedInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessKey) {
@@ -1522,9 +1623,11 @@ func (client *Client) GetAccessKeyLastUsedInfo(request *GetAccessKeyLastUsedInfo
 //
 // @return GetAccessKeyLastUsedIpsResponse
 func (client *Client) GetAccessKeyLastUsedIpsWithOptions(request *GetAccessKeyLastUsedIpsRequest, runtime *dara.RuntimeOptions) (_result *GetAccessKeyLastUsedIpsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessKey) {
@@ -1602,9 +1705,11 @@ func (client *Client) GetAccessKeyLastUsedIps(request *GetAccessKeyLastUsedIpsRe
 //
 // @return GetAccessKeyLastUsedProductsResponse
 func (client *Client) GetAccessKeyLastUsedProductsWithOptions(request *GetAccessKeyLastUsedProductsRequest, runtime *dara.RuntimeOptions) (_result *GetAccessKeyLastUsedProductsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessKey) {
@@ -1670,9 +1775,11 @@ func (client *Client) GetAccessKeyLastUsedProducts(request *GetAccessKeyLastUsed
 //
 // @return GetAccessKeyLastUsedResourcesResponse
 func (client *Client) GetAccessKeyLastUsedResourcesWithOptions(request *GetAccessKeyLastUsedResourcesRequest, runtime *dara.RuntimeOptions) (_result *GetAccessKeyLastUsedResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessKey) {
@@ -1746,9 +1853,11 @@ func (client *Client) GetAccessKeyLastUsedResources(request *GetAccessKeyLastUse
 //
 // @return GetAdvancedQueryTemplateResponse
 func (client *Client) GetAdvancedQueryTemplateWithOptions(request *GetAdvancedQueryTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetAdvancedQueryTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -1798,6 +1907,68 @@ func (client *Client) GetAdvancedQueryTemplate(request *GetAdvancedQueryTemplate
 
 // Summary:
 //
+// 查询事件选择器
+//
+// @param request - GetDataEventSelectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataEventSelectorResponse
+func (client *Client) GetDataEventSelectorWithOptions(request *GetDataEventSelectorRequest, runtime *dara.RuntimeOptions) (_result *GetDataEventSelectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TrailName) {
+		query["TrailName"] = request.TrailName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataEventSelector"),
+		Version:     dara.String("2020-07-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataEventSelectorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询事件选择器
+//
+// @param request - GetDataEventSelectorRequest
+//
+// @return GetDataEventSelectorResponse
+func (client *Client) GetDataEventSelector(request *GetDataEventSelectorRequest) (_result *GetDataEventSelectorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDataEventSelectorResponse{}
+	_body, _err := client.GetDataEventSelectorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a data backfill task.
 //
 // Description:
@@ -1810,9 +1981,11 @@ func (client *Client) GetAdvancedQueryTemplate(request *GetAdvancedQueryTemplate
 //
 // @return GetDeliveryHistoryJobResponse
 func (client *Client) GetDeliveryHistoryJobWithOptions(request *GetDeliveryHistoryJobRequest, runtime *dara.RuntimeOptions) (_result *GetDeliveryHistoryJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -1984,9 +2157,11 @@ func (client *Client) GetGovernanceMetrics() (_result *GetGovernanceMetricsRespo
 //
 // @return GetTrailStatusResponse
 func (client *Client) GetTrailStatusWithOptions(request *GetTrailStatusRequest, runtime *dara.RuntimeOptions) (_result *GetTrailStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsOrganizationTrail) {
@@ -2044,6 +2219,72 @@ func (client *Client) GetTrailStatus(request *GetTrailStatusRequest) (_result *G
 
 // Summary:
 //
+// 批量查询事件选择器
+//
+// @param request - ListDataEventSelectorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataEventSelectorsResponse
+func (client *Client) ListDataEventSelectorsWithOptions(request *ListDataEventSelectorsRequest, runtime *dara.RuntimeOptions) (_result *ListDataEventSelectorsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataEventSelectors"),
+		Version:     dara.String("2020-07-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataEventSelectorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询事件选择器
+//
+// @param request - ListDataEventSelectorsRequest
+//
+// @return ListDataEventSelectorsResponse
+func (client *Client) ListDataEventSelectors(request *ListDataEventSelectorsRequest) (_result *ListDataEventSelectorsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDataEventSelectorsResponse{}
+	_body, _err := client.ListDataEventSelectorsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询数据事件支持的服务与事件名称
 //
 // @param request - ListDataEventServicesRequest
@@ -2052,9 +2293,11 @@ func (client *Client) GetTrailStatus(request *GetTrailStatusRequest) (_result *G
 //
 // @return ListDataEventServicesResponse
 func (client *Client) ListDataEventServicesWithOptions(request *ListDataEventServicesRequest, runtime *dara.RuntimeOptions) (_result *ListDataEventServicesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -2120,9 +2363,11 @@ func (client *Client) ListDataEventServices(request *ListDataEventServicesReques
 //
 // @return ListDeliveryHistoryJobsResponse
 func (client *Client) ListDeliveryHistoryJobsWithOptions(request *ListDeliveryHistoryJobsRequest, runtime *dara.RuntimeOptions) (_result *ListDeliveryHistoryJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -2194,9 +2439,11 @@ func (client *Client) ListDeliveryHistoryJobs(request *ListDeliveryHistoryJobsRe
 //
 // @return LookupEventsResponse
 func (client *Client) LookupEventsWithOptions(request *LookupEventsRequest, runtime *dara.RuntimeOptions) (_result *LookupEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Direction) {
@@ -2272,6 +2519,80 @@ func (client *Client) LookupEvents(request *LookupEventsRequest) (_result *Looku
 
 // Summary:
 //
+// 创建事件选择器
+//
+// @param request - PutDataEventSelectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutDataEventSelectorResponse
+func (client *Client) PutDataEventSelectorWithOptions(request *PutDataEventSelectorRequest, runtime *dara.RuntimeOptions) (_result *PutDataEventSelectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventSelectors) {
+		query["EventSelectors"] = request.EventSelectors
+	}
+
+	if !dara.IsNil(request.IsTrailAllRegion) {
+		query["IsTrailAllRegion"] = request.IsTrailAllRegion
+	}
+
+	if !dara.IsNil(request.TrailName) {
+		query["TrailName"] = request.TrailName
+	}
+
+	if !dara.IsNil(request.TrailRegionIds) {
+		query["TrailRegionIds"] = request.TrailRegionIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PutDataEventSelector"),
+		Version:     dara.String("2020-07-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PutDataEventSelectorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建事件选择器
+//
+// @param request - PutDataEventSelectorRequest
+//
+// @return PutDataEventSelectorResponse
+func (client *Client) PutDataEventSelector(request *PutDataEventSelectorRequest) (_result *PutDataEventSelectorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &PutDataEventSelectorResponse{}
+	_body, _err := client.PutDataEventSelectorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables a trail to deliver events to an Object Storage Service (OSS) bucket or a Simple Log Service Logstore.
 //
 // Description:
@@ -2284,9 +2605,11 @@ func (client *Client) LookupEvents(request *LookupEventsRequest) (_result *Looku
 //
 // @return StartLoggingResponse
 func (client *Client) StartLoggingWithOptions(request *StartLoggingRequest, runtime *dara.RuntimeOptions) (_result *StartLoggingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -2352,9 +2675,11 @@ func (client *Client) StartLogging(request *StartLoggingRequest) (_result *Start
 //
 // @return StopLoggingResponse
 func (client *Client) StopLoggingWithOptions(request *StopLoggingRequest, runtime *dara.RuntimeOptions) (_result *StopLoggingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2412,9 +2737,11 @@ func (client *Client) StopLogging(request *StopLoggingRequest) (_result *StopLog
 //
 // @return UpdateAdvancedQueryTemplateResponse
 func (client *Client) UpdateAdvancedQueryTemplateWithOptions(request *UpdateAdvancedQueryTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateAdvancedQueryTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SimpleQuery) {
@@ -2492,9 +2819,11 @@ func (client *Client) UpdateAdvancedQueryTemplate(request *UpdateAdvancedQueryTe
 //
 // @return UpdateGlobalEventsStorageRegionResponse
 func (client *Client) UpdateGlobalEventsStorageRegionWithOptions(request *UpdateGlobalEventsStorageRegionRequest, runtime *dara.RuntimeOptions) (_result *UpdateGlobalEventsStorageRegionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.StorageRegion) {
@@ -2564,9 +2893,11 @@ func (client *Client) UpdateGlobalEventsStorageRegion(request *UpdateGlobalEvent
 //
 // @return UpdateTrailResponse
 func (client *Client) UpdateTrailWithOptions(request *UpdateTrailRequest, runtime *dara.RuntimeOptions) (_result *UpdateTrailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventRW) {

@@ -50,7 +50,12 @@ func (s *DescribeAdvancedQueryTemplateResponseBody) SetTemplatePage(v *DescribeA
 }
 
 func (s *DescribeAdvancedQueryTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TemplatePage != nil {
+		if err := s.TemplatePage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAdvancedQueryTemplateResponseBodyTemplatePage struct {
@@ -114,7 +119,16 @@ func (s *DescribeAdvancedQueryTemplateResponseBodyTemplatePage) SetTotal(v int64
 }
 
 func (s *DescribeAdvancedQueryTemplateResponseBodyTemplatePage) Validate() error {
-	return dara.Validate(s)
+	if s.TemplateList != nil {
+		for _, item := range s.TemplateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAdvancedQueryTemplateResponseBodyTemplatePageTemplateList struct {

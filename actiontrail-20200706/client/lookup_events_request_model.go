@@ -129,7 +129,16 @@ func (s *LookupEventsRequest) SetStartTime(v string) *LookupEventsRequest {
 }
 
 func (s *LookupEventsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.LookupAttribute != nil {
+		for _, item := range s.LookupAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type LookupEventsRequestLookupAttribute struct {

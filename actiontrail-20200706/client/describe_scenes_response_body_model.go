@@ -50,7 +50,16 @@ func (s *DescribeScenesResponseBody) SetSceneList(v []*DescribeScenesResponseBod
 }
 
 func (s *DescribeScenesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SceneList != nil {
+		for _, item := range s.SceneList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScenesResponseBodySceneList struct {

@@ -74,7 +74,16 @@ func (s *GetAccessKeyLastUsedResourcesResponseBody) SetResources(v []*GetAccessK
 }
 
 func (s *GetAccessKeyLastUsedResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAccessKeyLastUsedResourcesResponseBodyResources struct {

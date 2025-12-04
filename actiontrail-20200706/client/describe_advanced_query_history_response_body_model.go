@@ -50,7 +50,16 @@ func (s *DescribeAdvancedQueryHistoryResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeAdvancedQueryHistoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QueryHistoryList != nil {
+		for _, item := range s.QueryHistoryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAdvancedQueryHistoryResponseBodyQueryHistoryList struct {

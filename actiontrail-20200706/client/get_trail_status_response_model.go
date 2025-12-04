@@ -59,5 +59,10 @@ func (s *GetTrailStatusResponse) SetBody(v *GetTrailStatusResponseBody) *GetTrai
 }
 
 func (s *GetTrailStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
