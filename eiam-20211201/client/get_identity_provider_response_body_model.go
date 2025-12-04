@@ -523,6 +523,8 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig stru
 	//
 	// 3756043633237690761
 	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	// IDaaS EIAM 钉钉扫码登录版本
+	DingtalkLoginVersion *string `json:"DingtalkLoginVersion,omitempty" xml:"DingtalkLoginVersion,omitempty"`
 	// DingTalk Version.
 	//
 	// example:
@@ -563,6 +565,10 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig)
 	return s.CorpId
 }
 
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig) GetDingtalkLoginVersion() *string {
+	return s.DingtalkLoginVersion
+}
+
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig) GetDingtalkVersion() *string {
 	return s.DingtalkVersion
 }
@@ -587,6 +593,11 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig)
 
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig) SetCorpId(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig {
 	s.CorpId = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig) SetDingtalkLoginVersion(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig {
+	s.DingtalkLoginVersion = &v
 	return s
 }
 

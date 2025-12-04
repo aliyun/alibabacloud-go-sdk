@@ -224,9 +224,13 @@ type UpdateIdentityProviderRequestDingtalkAppConfig struct {
 	// example:
 	//
 	// 86nozWFL2CxgwnhKiXaG8dN4keLPkUNc5xxxx
-	AppSecret         *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
-	EncryptKey        *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
-	VerificationToken *string `json:"VerificationToken,omitempty" xml:"VerificationToken,omitempty"`
+	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	// example:
+	//
+	// dingtalk
+	DingtalkLoginVersion *string `json:"DingtalkLoginVersion,omitempty" xml:"DingtalkLoginVersion,omitempty"`
+	EncryptKey           *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
+	VerificationToken    *string `json:"VerificationToken,omitempty" xml:"VerificationToken,omitempty"`
 }
 
 func (s UpdateIdentityProviderRequestDingtalkAppConfig) String() string {
@@ -245,6 +249,10 @@ func (s *UpdateIdentityProviderRequestDingtalkAppConfig) GetAppSecret() *string 
 	return s.AppSecret
 }
 
+func (s *UpdateIdentityProviderRequestDingtalkAppConfig) GetDingtalkLoginVersion() *string {
+	return s.DingtalkLoginVersion
+}
+
 func (s *UpdateIdentityProviderRequestDingtalkAppConfig) GetEncryptKey() *string {
 	return s.EncryptKey
 }
@@ -260,6 +268,11 @@ func (s *UpdateIdentityProviderRequestDingtalkAppConfig) SetAppKey(v string) *Up
 
 func (s *UpdateIdentityProviderRequestDingtalkAppConfig) SetAppSecret(v string) *UpdateIdentityProviderRequestDingtalkAppConfig {
 	s.AppSecret = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestDingtalkAppConfig) SetDingtalkLoginVersion(v string) *UpdateIdentityProviderRequestDingtalkAppConfig {
+	s.DingtalkLoginVersion = &v
 	return s
 }
 
