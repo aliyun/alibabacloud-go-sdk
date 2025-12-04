@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("eflo"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -73,7 +24,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssignLeniPrivateIpAddressResponse
-func (client *Client) AssignLeniPrivateIpAddressWithOptions(request *AssignLeniPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *AssignLeniPrivateIpAddressResponse, _err error) {
+func (client *Client) AssignLeniPrivateIpAddressWithContext(ctx context.Context, request *AssignLeniPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *AssignLeniPrivateIpAddressResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -116,37 +67,11 @@ func (client *Client) AssignLeniPrivateIpAddressWithOptions(request *AssignLeniP
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssignLeniPrivateIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Apply for a secondary private IP address for the current Lingjun Elastic Network Interface. You can automatically assign a secondary private IP address.
-//
-// Description:
-//
-// Apply for a secondary private IP address for the specified Lingjun Elastic Network Interface.
-//
-//   - If the PrivateIp field is empty, a secondary private IP address is automatically assigned and the unique identifier of the IP address is returned.
-//
-//   - You can use the GetLeniPrivateIpAddress or ListLeniPrivateIpAddresses interface to check whether the secondary private IP address is assigned.
-//
-// @param request - AssignLeniPrivateIpAddressRequest
-//
-// @return AssignLeniPrivateIpAddressResponse
-func (client *Client) AssignLeniPrivateIpAddress(request *AssignLeniPrivateIpAddressRequest) (_result *AssignLeniPrivateIpAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssignLeniPrivateIpAddressResponse{}
-	_body, _err := client.AssignLeniPrivateIpAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -167,7 +92,7 @@ func (client *Client) AssignLeniPrivateIpAddress(request *AssignLeniPrivateIpAdd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssignPrivateIpAddressResponse
-func (client *Client) AssignPrivateIpAddressWithOptions(request *AssignPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *AssignPrivateIpAddressResponse, _err error) {
+func (client *Client) AssignPrivateIpAddressWithContext(ctx context.Context, request *AssignPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *AssignPrivateIpAddressResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -222,37 +147,11 @@ func (client *Client) AssignPrivateIpAddressWithOptions(request *AssignPrivateIp
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssignPrivateIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Applies for a private secondary IP address for the current LNI. You can also call this operation to assign a secondary MAC address to the current LNI.
-//
-// Description:
-//
-// >  Apply for secondary private IP addresses
-//
-//   - By default, each network interface controller can apply for three secondary private IP addresses. If the quota is exceeded, contact the administrator.
-//
-//   - The secondary private IP address is allocated from the Lingjun subnet to which the current network interface controller belongs. The first address and the last two addresses belong to reserved addresses and do not participate in the allocation.
-//
-// @param request - AssignPrivateIpAddressRequest
-//
-// @return AssignPrivateIpAddressResponse
-func (client *Client) AssignPrivateIpAddress(request *AssignPrivateIpAddressRequest) (_result *AssignPrivateIpAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssignPrivateIpAddressResponse{}
-	_body, _err := client.AssignPrivateIpAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -277,7 +176,7 @@ func (client *Client) AssignPrivateIpAddress(request *AssignPrivateIpAddressRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociateVpdCidrBlockResponse
-func (client *Client) AssociateVpdCidrBlockWithOptions(request *AssociateVpdCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *AssociateVpdCidrBlockResponse, _err error) {
+func (client *Client) AssociateVpdCidrBlockWithContext(ctx context.Context, request *AssociateVpdCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *AssociateVpdCidrBlockResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -312,41 +211,11 @@ func (client *Client) AssociateVpdCidrBlockWithOptions(request *AssociateVpdCidr
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociateVpdCidrBlockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// When the VPD primary network segment address is not enough to allocate, you can choose to create an additional network segment as the additional network segment of the VPD primary network segment.
-//
-// Description:
-//
-// >  **Add a CIDR block**
-//
-//   - The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-//
-//   - The secondary IPv4 CIDR block must not overlap with the primary IPv4 CIDR block of the Lingjun CIDR block and the added secondary IPv4 CIDR block.
-//
-//   - You cannot use 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, or 169.254.0.0/16 as the CIDR block of Lingjun. Example: In the Lingjun CIDR block whose primary IPv4 CIDR block is 192.168.0.0/16, you cannot add the following CIDR blocks as additional IPv4 CIDR blocks. The CIDR block that is in the same range as 192.168.0.0/16. A CIDR block that is larger than 192.168.0.0/16. Example: 192.168.0.0/8. A CIDR block that is smaller than 192.168.0.0/16. Example: 192.168.0.0/24.
-//
-//   - By default, each tenant can create three additional CIDR blocks in each region.
-//
-// @param request - AssociateVpdCidrBlockRequest
-//
-// @return AssociateVpdCidrBlockResponse
-func (client *Client) AssociateVpdCidrBlock(request *AssociateVpdCidrBlockRequest) (_result *AssociateVpdCidrBlockResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociateVpdCidrBlockResponse{}
-	_body, _err := client.AssociateVpdCidrBlockWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -363,7 +232,7 @@ func (client *Client) AssociateVpdCidrBlock(request *AssociateVpdCidrBlockReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachElasticNetworkInterfaceResponse
-func (client *Client) AttachElasticNetworkInterfaceWithOptions(request *AttachElasticNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *AttachElasticNetworkInterfaceResponse, _err error) {
+func (client *Client) AttachElasticNetworkInterfaceWithContext(ctx context.Context, request *AttachElasticNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *AttachElasticNetworkInterfaceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -398,33 +267,11 @@ func (client *Client) AttachElasticNetworkInterfaceWithOptions(request *AttachEl
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachElasticNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Lingjun ENI is bound to NC.
-//
-// Description:
-//
-// This interface is an asynchronous interface. You need to use the query interface to wait for the Lingjun Elastic Network Interface to reach the available state.
-//
-// @param request - AttachElasticNetworkInterfaceRequest
-//
-// @return AttachElasticNetworkInterfaceResponse
-func (client *Client) AttachElasticNetworkInterface(request *AttachElasticNetworkInterfaceRequest) (_result *AttachElasticNetworkInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachElasticNetworkInterfaceResponse{}
-	_body, _err := client.AttachElasticNetworkInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -437,7 +284,7 @@ func (client *Client) AttachElasticNetworkInterface(request *AttachElasticNetwor
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateElasticNetworkInterfaceResponse
-func (client *Client) CreateElasticNetworkInterfaceWithOptions(request *CreateElasticNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *CreateElasticNetworkInterfaceResponse, _err error) {
+func (client *Client) CreateElasticNetworkInterfaceWithContext(ctx context.Context, request *CreateElasticNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *CreateElasticNetworkInterfaceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -504,29 +351,11 @@ func (client *Client) CreateElasticNetworkInterfaceWithOptions(request *CreateEl
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateElasticNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an LENI.
-//
-// @param request - CreateElasticNetworkInterfaceRequest
-//
-// @return CreateElasticNetworkInterfaceResponse
-func (client *Client) CreateElasticNetworkInterface(request *CreateElasticNetworkInterfaceRequest) (_result *CreateElasticNetworkInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateElasticNetworkInterfaceResponse{}
-	_body, _err := client.CreateElasticNetworkInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -551,7 +380,7 @@ func (client *Client) CreateElasticNetworkInterface(request *CreateElasticNetwor
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateErResponse
-func (client *Client) CreateErWithOptions(request *CreateErRequest, runtime *dara.RuntimeOptions) (_result *CreateErResponse, _err error) {
+func (client *Client) CreateErWithContext(ctx context.Context, request *CreateErRequest, runtime *dara.RuntimeOptions) (_result *CreateErResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -598,41 +427,11 @@ func (client *Client) CreateErWithOptions(request *CreateErRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateErResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Create a Lingjun HUB.
-//
-// Description:
-//
-// When you call this operation to create a Lingjun HUB, note that:
-//
-//   - Make sure that you have sufficient Lingjun HUB quota.
-//
-//   - This interface is an asynchronous interface. After this interface is called, the system will return the ID of a Lingjun HUB. At this time, the Lingjun HUB instance may not be created yet, and the system background creation task is still in progress. You can call the ListErs or GetEr operation to query the status of the Lingjun HUB.
-//
-//   - If the status of the Lingjun HUB is Executing, it indicates that it is being created.
-//
-//   - If the status of the Lingjun HUB is Available, the creation is successful.
-//
-// @param request - CreateErRequest
-//
-// @return CreateErResponse
-func (client *Client) CreateEr(request *CreateErRequest) (_result *CreateErResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateErResponse{}
-	_body, _err := client.CreateErWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -659,7 +458,7 @@ func (client *Client) CreateEr(request *CreateErRequest) (_result *CreateErRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateErAttachmentResponse
-func (client *Client) CreateErAttachmentWithOptions(request *CreateErAttachmentRequest, runtime *dara.RuntimeOptions) (_result *CreateErAttachmentResponse, _err error) {
+func (client *Client) CreateErAttachmentWithContext(ctx context.Context, request *CreateErAttachmentRequest, runtime *dara.RuntimeOptions) (_result *CreateErAttachmentResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -710,43 +509,11 @@ func (client *Client) CreateErAttachmentWithOptions(request *CreateErAttachmentR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateErAttachmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Create a network instance connection.
-//
-// Description:
-//
-// When you call this operation to create a network instance connection, note that:
-//
-//   - Make sure that you have created a Lingjun HUB instance.
-//
-//   - Make sure that you have sufficient quota for network instance connections.
-//
-//   - This operation is an asynchronous operation. After you call this operation, the system returns the ID of the network instance connection. In this case, the network instance connection may not be created yet, and the system is still creating the network instance in the background. You can query the connection status of a network instance by ListErAttachments or GetErAttachment:
-//
-//   - If the connection status of the network instance is Executing, the network instance is being created.
-//
-//   - If the connection status of the network instance is Available, the network instance is created.
-//
-// @param request - CreateErAttachmentRequest
-//
-// @return CreateErAttachmentResponse
-func (client *Client) CreateErAttachment(request *CreateErAttachmentRequest) (_result *CreateErAttachmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateErAttachmentResponse{}
-	_body, _err := client.CreateErAttachmentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -773,7 +540,7 @@ func (client *Client) CreateErAttachment(request *CreateErAttachmentRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateErRouteMapResponse
-func (client *Client) CreateErRouteMapWithOptions(request *CreateErRouteMapRequest, runtime *dara.RuntimeOptions) (_result *CreateErRouteMapResponse, _err error) {
+func (client *Client) CreateErRouteMapWithContext(ctx context.Context, request *CreateErRouteMapRequest, runtime *dara.RuntimeOptions) (_result *CreateErRouteMapResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -844,43 +611,11 @@ func (client *Client) CreateErRouteMapWithOptions(request *CreateErRouteMapReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateErRouteMapResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Users can use this API to create routing policy by specifying the network instance connection under Lingjun HUB.
-//
-// Description:
-//
-// When you call this operation to create a routing policy, note that:
-//
-//   - Make sure that you have created a Lingjun HUB instance.
-//
-//   - Make sure that you have created a network instance connection.
-//
-//   - This operation is an asynchronous operation. After you call this operation, the system returns the ID of the routing policy. In this case, the routing policy instance may not be created yet, and the system background creation task is still in progress. You can use ListErRouteMaps or GetErRouteMap to query the status of a routing policy.
-//
-//   - If the status of the routing policy is Execute, the system is creating the instance.
-//
-//   - If the status of the routing policy is Available, the creation is successful.
-//
-// @param request - CreateErRouteMapRequest
-//
-// @return CreateErRouteMapResponse
-func (client *Client) CreateErRouteMap(request *CreateErRouteMapRequest) (_result *CreateErRouteMapResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateErRouteMapResponse{}
-	_body, _err := client.CreateErRouteMapWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -911,7 +646,7 @@ func (client *Client) CreateErRouteMap(request *CreateErRouteMapRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSubnetResponse
-func (client *Client) CreateSubnetWithOptions(request *CreateSubnetRequest, runtime *dara.RuntimeOptions) (_result *CreateSubnetResponse, _err error) {
+func (client *Client) CreateSubnetWithContext(ctx context.Context, request *CreateSubnetRequest, runtime *dara.RuntimeOptions) (_result *CreateSubnetResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -962,47 +697,11 @@ func (client *Client) CreateSubnetWithOptions(request *CreateSubnetRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSubnetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Users can use this API to create a Lingjun subnet under the Lingjun network segment.
-//
-// Description:
-//
-// When you call this operation to create a Lingjun subnet, note that:
-//
-//   - You have created a Lingjun CIDR block.
-//
-//   - Only one network segment can be specified for a Lingjun subnet.
-//
-//   - The network segment cannot be modified after the Lingjun subnet is created.
-//
-//   - Make sure that you have sufficient Lingjun subnet quota.
-//
-//   - This interface is an asynchronous interface. After calling this interface, the system will return the ID of a Lingjun subnet. At this time, the Lingjun network segment may not be created yet, and the system background creation task is still in progress. You can call the ListSubnets or GetSubnet operation to query the status of the CIDR block of Lingjun.
-//
-//   - If the status of the Lingjun subnet is Executed, it indicates that it is being created.
-//
-//   - If the status of the Lingjun subnet is Available, the creation is successful.
-//
-// @param request - CreateSubnetRequest
-//
-// @return CreateSubnetResponse
-func (client *Client) CreateSubnet(request *CreateSubnetRequest) (_result *CreateSubnetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateSubnetResponse{}
-	_body, _err := client.CreateSubnetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1029,7 +728,7 @@ func (client *Client) CreateSubnet(request *CreateSubnetRequest) (_result *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVccResponse
-func (client *Client) CreateVccWithOptions(request *CreateVccRequest, runtime *dara.RuntimeOptions) (_result *CreateVccResponse, _err error) {
+func (client *Client) CreateVccWithContext(ctx context.Context, request *CreateVccRequest, runtime *dara.RuntimeOptions) (_result *CreateVccResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1120,43 +819,11 @@ func (client *Client) CreateVccWithOptions(request *CreateVccRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVccResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// You can create a Lingjun connection to connect Lingjun network environment and Alibaba Cloud network environment.
-//
-// Description:
-//
-// When you call this operation to create a Lingjun connection, note that:
-//
-//   - When you specify the vccId parameter, the system will configure the purchased Lingjun connection for you. When the default vccId parameter is set, the system will automatically place an order and configure the Lingjun connection for you.
-//
-//   - Make sure that you have called the InitializeVcc operation to grant permissions.
-//
-//   - This interface is an asynchronous interface. After this interface is called, the system will return the Lingjun connection ID, but the Lingjun connection instance may not be created yet, and the system background creation task is still in progress. You can call the ListVccs or GetVcc operation to query the status of the Lingjun connection.
-//
-//   - If the status of the Lingjun connection is Executed, the Lingjun connection is being created.
-//
-//   - If the status of the Lingjun connection is Available, the Lingjun connection is created.
-//
-// @param request - CreateVccRequest
-//
-// @return CreateVccResponse
-func (client *Client) CreateVcc(request *CreateVccRequest) (_result *CreateVccResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVccResponse{}
-	_body, _err := client.CreateVccWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1177,7 +844,7 @@ func (client *Client) CreateVcc(request *CreateVccRequest) (_result *CreateVccRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVccGrantRuleResponse
-func (client *Client) CreateVccGrantRuleWithOptions(request *CreateVccGrantRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateVccGrantRuleResponse, _err error) {
+func (client *Client) CreateVccGrantRuleWithContext(ctx context.Context, request *CreateVccGrantRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateVccGrantRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1216,37 +883,11 @@ func (client *Client) CreateVccGrantRuleWithOptions(request *CreateVccGrantRuleR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVccGrantRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Users can use this API to connect Lingjun instance to the Lingjun HUB instance of the target account. After authorization, the target account can be associated with your Lingjun connection by using the authorized Lingjun HUB instance.
-//
-// Description:
-//
-// When you call this operation to create cross-account authorization for Lingjun HUB, note that:
-//
-//   - Make sure that the Alibaba Cloud ID and Lingjun HUB instance that you want to authorize are correct.
-//
-//   - If you authorize the account of the other party, the account of the other party can load your local network instance to its Lingjun HUB, and the other party\\"s network will be connected to your network. Please proceed with caution.
-//
-// @param request - CreateVccGrantRuleRequest
-//
-// @return CreateVccGrantRuleResponse
-func (client *Client) CreateVccGrantRule(request *CreateVccGrantRuleRequest) (_result *CreateVccGrantRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVccGrantRuleResponse{}
-	_body, _err := client.CreateVccGrantRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1271,7 +912,7 @@ func (client *Client) CreateVccGrantRule(request *CreateVccGrantRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVccRouteEntryResponse
-func (client *Client) CreateVccRouteEntryWithOptions(request *CreateVccRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateVccRouteEntryResponse, _err error) {
+func (client *Client) CreateVccRouteEntryWithContext(ctx context.Context, request *CreateVccRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateVccRouteEntryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1306,41 +947,11 @@ func (client *Client) CreateVccRouteEntryWithOptions(request *CreateVccRouteEntr
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVccRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Create a Lingjun connection route entry.
-//
-// Description:
-//
-// When you call this operation to create a VBR route entry, take note of the following items:
-//
-//   - After you call this operation, static route entries and BGP network announcements are created on the VBR to which the Lingjun connection belongs.
-//
-//   - This operation is an asynchronous operation. After you call this operation, the VBR static route entry may not be created yet, and the system still creates the static route entry in the background. You can query the status of VBR static route entries by ListVccRouteEntries or GetVccRouteEntry:
-//
-//   - If the VBR static route entry is in the Executing state, it indicates that it is being created.
-//
-//   - If the status of the VBR static route entry is Available, the VBR is created.
-//
-// @param request - CreateVccRouteEntryRequest
-//
-// @return CreateVccRouteEntryResponse
-func (client *Client) CreateVccRouteEntry(request *CreateVccRouteEntryRequest) (_result *CreateVccRouteEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVccRouteEntryResponse{}
-	_body, _err := client.CreateVccRouteEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1369,7 +980,7 @@ func (client *Client) CreateVccRouteEntry(request *CreateVccRouteEntryRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVpdResponse
-func (client *Client) CreateVpdWithOptions(request *CreateVpdRequest, runtime *dara.RuntimeOptions) (_result *CreateVpdResponse, _err error) {
+func (client *Client) CreateVpdWithContext(ctx context.Context, request *CreateVpdRequest, runtime *dara.RuntimeOptions) (_result *CreateVpdResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1416,45 +1027,11 @@ func (client *Client) CreateVpdWithOptions(request *CreateVpdRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVpdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Create a private Lingjun CIDR block. This CIDR block has an independent network environment.
-//
-// Description:
-//
-// When you call this operation to create a CIDR block for Lingjun, take note of the following:
-//
-//   - A Lingjun network segment can specify an additional network segment in addition to a main network segment.
-//
-//   - After the Lingjun network segment is created, the network segment cannot be modified.
-//
-//   - Make sure that you have a sufficient quota of Lingjun CIDR blocks.
-//
-//   - This interface is an asynchronous interface. After calling this interface, the system will return the ID of a Lingjun network segment. At this time, the Lingjun network segment may not be created yet, and the system background creation task is still in progress. You can call the ListVpds or GetVpd operation to query the status of the CIDR block of Lingjun.
-//
-//   - If the status of the Lingjun CIDR block is Executed, the CIDR block is being created.
-//
-//   - If the status of the Lingjun CIDR block is Available, the creation is successful.
-//
-// @param request - CreateVpdRequest
-//
-// @return CreateVpdResponse
-func (client *Client) CreateVpd(request *CreateVpdRequest) (_result *CreateVpdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVpdResponse{}
-	_body, _err := client.CreateVpdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1475,7 +1052,7 @@ func (client *Client) CreateVpd(request *CreateVpdRequest) (_result *CreateVpdRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVpdGrantRuleResponse
-func (client *Client) CreateVpdGrantRuleWithOptions(request *CreateVpdGrantRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateVpdGrantRuleResponse, _err error) {
+func (client *Client) CreateVpdGrantRuleWithContext(ctx context.Context, request *CreateVpdGrantRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateVpdGrantRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1514,37 +1091,11 @@ func (client *Client) CreateVpdGrantRuleWithOptions(request *CreateVpdGrantRuleR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVpdGrantRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Users can use this API to authorize Lingjun HUB instances of the target account. After authorization, the target account can be associated with your Lingjun CIDR block by using the authorized Lingjun HUB instance.
-//
-// Description:
-//
-// When you call this operation to create cross-account authorization for Lingjun HUB, note that:
-//
-//   - Make sure that the Alibaba Cloud ID and Lingjun HUB instance that you want to authorize are correct.
-//
-//   - If you authorize the account of the other party, the account of the other party can load your local network instance to its Lingjun HUB, and the other party\\"s network will be connected to your network. Please proceed with caution.
-//
-// @param request - CreateVpdGrantRuleRequest
-//
-// @return CreateVpdGrantRuleResponse
-func (client *Client) CreateVpdGrantRule(request *CreateVpdGrantRuleRequest) (_result *CreateVpdGrantRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVpdGrantRuleResponse{}
-	_body, _err := client.CreateVpdGrantRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1557,7 +1108,7 @@ func (client *Client) CreateVpdGrantRule(request *CreateVpdGrantRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteElasticNetworkInterfaceResponse
-func (client *Client) DeleteElasticNetworkInterfaceWithOptions(request *DeleteElasticNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteElasticNetworkInterfaceResponse, _err error) {
+func (client *Client) DeleteElasticNetworkInterfaceWithContext(ctx context.Context, request *DeleteElasticNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteElasticNetworkInterfaceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1592,29 +1143,11 @@ func (client *Client) DeleteElasticNetworkInterfaceWithOptions(request *DeleteEl
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteElasticNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Delete Lingjun Elastic Network Interface. After deletion, all relevant data will be lost and cannot be recovered. Please operate with caution.
-//
-// @param request - DeleteElasticNetworkInterfaceRequest
-//
-// @return DeleteElasticNetworkInterfaceResponse
-func (client *Client) DeleteElasticNetworkInterface(request *DeleteElasticNetworkInterfaceRequest) (_result *DeleteElasticNetworkInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteElasticNetworkInterfaceResponse{}
-	_body, _err := client.DeleteElasticNetworkInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1641,7 +1174,7 @@ func (client *Client) DeleteElasticNetworkInterface(request *DeleteElasticNetwor
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteErResponse
-func (client *Client) DeleteErWithOptions(request *DeleteErRequest, runtime *dara.RuntimeOptions) (_result *DeleteErResponse, _err error) {
+func (client *Client) DeleteErWithContext(ctx context.Context, request *DeleteErRequest, runtime *dara.RuntimeOptions) (_result *DeleteErResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1672,43 +1205,11 @@ func (client *Client) DeleteErWithOptions(request *DeleteErRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteErResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// After you delete a Lingjun HUB instance, the related data is lost and cannot be recovered.
-//
-// Description:
-//
-// When you call this operation to delete the Lingjun HUB, note that:
-//
-//   - Before you delete the instance, make sure that no network instance is connected to the Lingjun HUB instance.
-//
-//   - After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
-//
-//   - This interface is an asynchronous interface. After this interface is called, the Lingjun HUB instance may not be deleted, and the system background deletion task is still in progress. You can call the ListErs or GetEr operation to query the deletion status of the Lingjun HUB.
-//
-//   - If the status of the Lingjun HUB is Deleting, the Lingjun HUB instance is being deleted.
-//
-//   - If no Lingjun HUB instance is recorded, the Lingjun HUB instance has been deleted.
-//
-// @param request - DeleteErRequest
-//
-// @return DeleteErResponse
-func (client *Client) DeleteEr(request *DeleteErRequest) (_result *DeleteErResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteErResponse{}
-	_body, _err := client.DeleteErWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1735,7 +1236,7 @@ func (client *Client) DeleteEr(request *DeleteErRequest) (_result *DeleteErRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteErAttachmentResponse
-func (client *Client) DeleteErAttachmentWithOptions(request *DeleteErAttachmentRequest, runtime *dara.RuntimeOptions) (_result *DeleteErAttachmentResponse, _err error) {
+func (client *Client) DeleteErAttachmentWithContext(ctx context.Context, request *DeleteErAttachmentRequest, runtime *dara.RuntimeOptions) (_result *DeleteErAttachmentResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1770,43 +1271,11 @@ func (client *Client) DeleteErAttachmentWithOptions(request *DeleteErAttachmentR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteErAttachmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// If you delete a network instance that is connected to an instance, the related data is lost and cannot be recovered.
-//
-// Description:
-//
-// When you call this operation to delete a network instance connection, take note of the following:
-//
-//   - Before you delete the instance, make sure that no routing policy exists under the network instance connection instance.
-//
-//   - After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
-//
-//   - This operation is an asynchronous operation. After you call this operation, the network instance that is connected to the instance may not be deleted. The system still deletes the instance in the background. You can call the ListErAttachments or GetErAttachment to query the deletion status of network instance connections:
-//
-//   - If the status of the network instance connection is Deleting, the network instance connection is being deleted.
-//
-//   - If there is no connection record for the network instance, the connection to the network instance has been deleted.
-//
-// @param request - DeleteErAttachmentRequest
-//
-// @return DeleteErAttachmentResponse
-func (client *Client) DeleteErAttachment(request *DeleteErAttachmentRequest) (_result *DeleteErAttachmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteErAttachmentResponse{}
-	_body, _err := client.DeleteErAttachmentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1831,7 +1300,7 @@ func (client *Client) DeleteErAttachment(request *DeleteErAttachmentRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteErRouteMapResponse
-func (client *Client) DeleteErRouteMapWithOptions(request *DeleteErRouteMapRequest, runtime *dara.RuntimeOptions) (_result *DeleteErRouteMapResponse, _err error) {
+func (client *Client) DeleteErRouteMapWithContext(ctx context.Context, request *DeleteErRouteMapRequest, runtime *dara.RuntimeOptions) (_result *DeleteErRouteMapResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1870,41 +1339,11 @@ func (client *Client) DeleteErRouteMapWithOptions(request *DeleteErRouteMapReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteErRouteMapResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// If you delete a routing policy instance, the related data is lost and cannot be recovered.
-//
-// Description:
-//
-// When you call this operation to delete a routing policy, note that:
-//
-//   - After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
-//
-//   - This interface is an asynchronous interface. After this interface is called, the routing policy instance may not be deleted yet, and the system background deletion task is still in progress. You can call the ListErRouteMaps or GetErRouteMap operation to query the deletion status of a routing policy.
-//
-//   - If the routing policy is in the Deleting state, the routing policy instance is being deleted.
-//
-//   - If no routing policy instance is recorded, the routing policy instance has been deleted.
-//
-// @param request - DeleteErRouteMapRequest
-//
-// @return DeleteErRouteMapResponse
-func (client *Client) DeleteErRouteMap(request *DeleteErRouteMapRequest) (_result *DeleteErRouteMapResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteErRouteMapResponse{}
-	_body, _err := client.DeleteErRouteMapWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1929,7 +1368,7 @@ func (client *Client) DeleteErRouteMap(request *DeleteErRouteMapRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSubnetResponse
-func (client *Client) DeleteSubnetWithOptions(request *DeleteSubnetRequest, runtime *dara.RuntimeOptions) (_result *DeleteSubnetResponse, _err error) {
+func (client *Client) DeleteSubnetWithContext(ctx context.Context, request *DeleteSubnetRequest, runtime *dara.RuntimeOptions) (_result *DeleteSubnetResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1968,41 +1407,11 @@ func (client *Client) DeleteSubnetWithOptions(request *DeleteSubnetRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSubnetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// If you delete a Lingjun subnet instance, the related data is lost and cannot be recovered.
-//
-// Description:
-//
-// When you call this operation to delete a Lingjun subnet, note that:
-//
-//   - After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
-//
-//   - This interface is an asynchronous interface. After this interface is called, the Lingjun subnet instance may not be deleted, and the system background deletion task is still in progress. You can call the ListSubnets or GetSubnet operation to query the deletion status of the subnet.
-//
-//   - If the status of the Lingjun subnet is Deleting, the Lingjun subnet instance is being deleted.
-//
-//   - If there is no record of the Lingjun subnet instance, the Lingjun subnet instance has been deleted.
-//
-// @param request - DeleteSubnetRequest
-//
-// @return DeleteSubnetResponse
-func (client *Client) DeleteSubnet(request *DeleteSubnetRequest) (_result *DeleteSubnetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSubnetResponse{}
-	_body, _err := client.DeleteSubnetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2015,7 +1424,7 @@ func (client *Client) DeleteSubnet(request *DeleteSubnetRequest) (_result *Delet
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVccGrantRuleResponse
-func (client *Client) DeleteVccGrantRuleWithOptions(request *DeleteVccGrantRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteVccGrantRuleResponse, _err error) {
+func (client *Client) DeleteVccGrantRuleWithContext(ctx context.Context, request *DeleteVccGrantRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteVccGrantRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2054,29 +1463,11 @@ func (client *Client) DeleteVccGrantRuleWithOptions(request *DeleteVccGrantRuleR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVccGrantRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// If you delete a Lingjun HUB cross-account authorization that is connected to Lingjun, the related data is lost and cannot be recovered.
-//
-// @param request - DeleteVccGrantRuleRequest
-//
-// @return DeleteVccGrantRuleResponse
-func (client *Client) DeleteVccGrantRule(request *DeleteVccGrantRuleRequest) (_result *DeleteVccGrantRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVccGrantRuleResponse{}
-	_body, _err := client.DeleteVccGrantRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2101,7 +1492,7 @@ func (client *Client) DeleteVccGrantRule(request *DeleteVccGrantRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVccRouteEntryResponse
-func (client *Client) DeleteVccRouteEntryWithOptions(request *DeleteVccRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteVccRouteEntryResponse, _err error) {
+func (client *Client) DeleteVccRouteEntryWithContext(ctx context.Context, request *DeleteVccRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteVccRouteEntryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2140,41 +1531,11 @@ func (client *Client) DeleteVccRouteEntryWithOptions(request *DeleteVccRouteEntr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVccRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Delete a Lingjun connection route entry.
-//
-// Description:
-//
-// When you call this operation to delete a VBR static route entry, note that:
-//
-//   - After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
-//
-//   - This operation is an asynchronous operation. After you call this operation, the VBR static route entries may not be deleted. The system still deletes the VBR static route entries in the background. You can call the ListVccRouteEntries or GetVccRouteEntry to query the deletion status of VBR static route entries:
-//
-//   - If the VBR static route entry is in the Deleting state, the VBR static route entry is being deleted.
-//
-//   - If no VBR static route entry instance is recorded, the VBR static route entry instance has been deleted.
-//
-// @param request - DeleteVccRouteEntryRequest
-//
-// @return DeleteVccRouteEntryResponse
-func (client *Client) DeleteVccRouteEntry(request *DeleteVccRouteEntryRequest) (_result *DeleteVccRouteEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVccRouteEntryResponse{}
-	_body, _err := client.DeleteVccRouteEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2201,7 +1562,7 @@ func (client *Client) DeleteVccRouteEntry(request *DeleteVccRouteEntryRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVpdResponse
-func (client *Client) DeleteVpdWithOptions(request *DeleteVpdRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpdResponse, _err error) {
+func (client *Client) DeleteVpdWithContext(ctx context.Context, request *DeleteVpdRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpdResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2232,43 +1593,11 @@ func (client *Client) DeleteVpdWithOptions(request *DeleteVpdRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVpdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// After you delete a Lingjun CIDR block, the related data is lost and cannot be recovered.
-//
-// Description:
-//
-// When you call this operation to delete a Lingjun CIDR block, take note of the following items:
-//
-//   - After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
-//
-//   - Before deleting, make sure that all Lingjun subnet instances under the Lingjun CIDR block have been deleted.
-//
-//   - This interface is an asynchronous interface. After this interface is called, the Lingjun network segment instance may not be deleted, and the system background deletion task is still in progress. You can call the ListVpds or GetVpd operation to query the deletion status of the CIDR block.
-//
-//   - If the status of the Lingjun CIDR block is Deleting, the Lingjun CIDR block is being deleted.
-//
-//   - If there is no record of the Lingjun CIDR block instance, the Lingjun CIDR block instance has been deleted.
-//
-// @param request - DeleteVpdRequest
-//
-// @return DeleteVpdResponse
-func (client *Client) DeleteVpd(request *DeleteVpdRequest) (_result *DeleteVpdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVpdResponse{}
-	_body, _err := client.DeleteVpdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2281,7 +1610,7 @@ func (client *Client) DeleteVpd(request *DeleteVpdRequest) (_result *DeleteVpdRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVpdGrantRuleResponse
-func (client *Client) DeleteVpdGrantRuleWithOptions(request *DeleteVpdGrantRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpdGrantRuleResponse, _err error) {
+func (client *Client) DeleteVpdGrantRuleWithContext(ctx context.Context, request *DeleteVpdGrantRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpdGrantRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2324,29 +1653,11 @@ func (client *Client) DeleteVpdGrantRuleWithOptions(request *DeleteVpdGrantRuleR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVpdGrantRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Delete the Lingjun HUB cross-account authorization for a Lingjun CIDR block. After the deletion, the related data is lost and cannot be recovered.
-//
-// @param request - DeleteVpdGrantRuleRequest
-//
-// @return DeleteVpdGrantRuleResponse
-func (client *Client) DeleteVpdGrantRule(request *DeleteVpdGrantRuleRequest) (_result *DeleteVpdGrantRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVpdGrantRuleResponse{}
-	_body, _err := client.DeleteVpdGrantRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2365,7 +1676,7 @@ func (client *Client) DeleteVpdGrantRule(request *DeleteVpdGrantRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSlrResponse
-func (client *Client) DescribeSlrWithOptions(request *DescribeSlrRequest, runtime *dara.RuntimeOptions) (_result *DescribeSlrResponse, _err error) {
+func (client *Client) DescribeSlrWithContext(ctx context.Context, request *DescribeSlrRequest, runtime *dara.RuntimeOptions) (_result *DescribeSlrResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2392,35 +1703,11 @@ func (client *Client) DescribeSlrWithOptions(request *DescribeSlrRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSlrResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query whether the user has the SLR role-AliyunServiceRoleForEfloVcc required for Lingjun connection.
-//
-// Description:
-//
-// You can call this operation to query whether a user account has a **AliyunServiceRoleForEfloVcc*	- role.
-//
-// >  If you do not have a **AliyunServiceRoleForEfloVcc*	- role, you need to use the initializeVcc interface to complete authorization, otherwise users will not be able to use Lingjun to connect to the product.
-//
-// @param request - DescribeSlrRequest
-//
-// @return DescribeSlrResponse
-func (client *Client) DescribeSlr(request *DescribeSlrRequest) (_result *DescribeSlrResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSlrResponse{}
-	_body, _err := client.DescribeSlrWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2437,7 +1724,7 @@ func (client *Client) DescribeSlr(request *DescribeSlrRequest) (_result *Describ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetachElasticNetworkInterfaceResponse
-func (client *Client) DetachElasticNetworkInterfaceWithOptions(request *DetachElasticNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *DetachElasticNetworkInterfaceResponse, _err error) {
+func (client *Client) DetachElasticNetworkInterfaceWithContext(ctx context.Context, request *DetachElasticNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *DetachElasticNetworkInterfaceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2472,33 +1759,11 @@ func (client *Client) DetachElasticNetworkInterfaceWithOptions(request *DetachEl
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetachElasticNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Unbind Lingjun ENI from NC.
-//
-// Description:
-//
-// This interface is an asynchronous interface, and you need to use the query interface to wait for the Lingjun Elastic Network Interface to reach the unbound state.
-//
-// @param request - DetachElasticNetworkInterfaceRequest
-//
-// @return DetachElasticNetworkInterfaceResponse
-func (client *Client) DetachElasticNetworkInterface(request *DetachElasticNetworkInterfaceRequest) (_result *DetachElasticNetworkInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetachElasticNetworkInterfaceResponse{}
-	_body, _err := client.DetachElasticNetworkInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2511,7 +1776,7 @@ func (client *Client) DetachElasticNetworkInterface(request *DetachElasticNetwor
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDestinationCidrBlockResponse
-func (client *Client) GetDestinationCidrBlockWithOptions(request *GetDestinationCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *GetDestinationCidrBlockResponse, _err error) {
+func (client *Client) GetDestinationCidrBlockWithContext(ctx context.Context, request *GetDestinationCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *GetDestinationCidrBlockResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2542,29 +1807,11 @@ func (client *Client) GetDestinationCidrBlockWithOptions(request *GetDestination
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDestinationCidrBlockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Users can use this API to query the destination CIDR block of the source policy instance when creating a routing strategy.
-//
-// @param request - GetDestinationCidrBlockRequest
-//
-// @return GetDestinationCidrBlockResponse
-func (client *Client) GetDestinationCidrBlock(request *GetDestinationCidrBlockRequest) (_result *GetDestinationCidrBlockResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetDestinationCidrBlockResponse{}
-	_body, _err := client.GetDestinationCidrBlockWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2577,7 +1824,7 @@ func (client *Client) GetDestinationCidrBlock(request *GetDestinationCidrBlockRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetElasticNetworkInterfaceResponse
-func (client *Client) GetElasticNetworkInterfaceWithOptions(request *GetElasticNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *GetElasticNetworkInterfaceResponse, _err error) {
+func (client *Client) GetElasticNetworkInterfaceWithContext(ctx context.Context, request *GetElasticNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *GetElasticNetworkInterfaceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2608,29 +1855,11 @@ func (client *Client) GetElasticNetworkInterfaceWithOptions(request *GetElasticN
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetElasticNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an LENI.
-//
-// @param request - GetElasticNetworkInterfaceRequest
-//
-// @return GetElasticNetworkInterfaceResponse
-func (client *Client) GetElasticNetworkInterface(request *GetElasticNetworkInterfaceRequest) (_result *GetElasticNetworkInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetElasticNetworkInterfaceResponse{}
-	_body, _err := client.GetElasticNetworkInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2643,7 +1872,7 @@ func (client *Client) GetElasticNetworkInterface(request *GetElasticNetworkInter
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetErResponse
-func (client *Client) GetErWithOptions(request *GetErRequest, runtime *dara.RuntimeOptions) (_result *GetErResponse, _err error) {
+func (client *Client) GetErWithContext(ctx context.Context, request *GetErRequest, runtime *dara.RuntimeOptions) (_result *GetErResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2674,29 +1903,11 @@ func (client *Client) GetErWithOptions(request *GetErRequest, runtime *dara.Runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetErResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Lingjun HUB.
-//
-// @param request - GetErRequest
-//
-// @return GetErResponse
-func (client *Client) GetEr(request *GetErRequest) (_result *GetErResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetErResponse{}
-	_body, _err := client.GetErWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2709,7 +1920,7 @@ func (client *Client) GetEr(request *GetErRequest) (_result *GetErResponse, _err
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetErAttachmentResponse
-func (client *Client) GetErAttachmentWithOptions(request *GetErAttachmentRequest, runtime *dara.RuntimeOptions) (_result *GetErAttachmentResponse, _err error) {
+func (client *Client) GetErAttachmentWithContext(ctx context.Context, request *GetErAttachmentRequest, runtime *dara.RuntimeOptions) (_result *GetErAttachmentResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2744,29 +1955,11 @@ func (client *Client) GetErAttachmentWithOptions(request *GetErAttachmentRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetErAttachmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries network instance connections.
-//
-// @param request - GetErAttachmentRequest
-//
-// @return GetErAttachmentResponse
-func (client *Client) GetErAttachment(request *GetErAttachmentRequest) (_result *GetErAttachmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetErAttachmentResponse{}
-	_body, _err := client.GetErAttachmentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2779,7 +1972,7 @@ func (client *Client) GetErAttachment(request *GetErAttachmentRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetErRouteEntryResponse
-func (client *Client) GetErRouteEntryWithOptions(request *GetErRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *GetErRouteEntryResponse, _err error) {
+func (client *Client) GetErRouteEntryWithContext(ctx context.Context, request *GetErRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *GetErRouteEntryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2814,29 +2007,11 @@ func (client *Client) GetErRouteEntryWithOptions(request *GetErRouteEntryRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetErRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of Lingjun HUB route entries.
-//
-// @param request - GetErRouteEntryRequest
-//
-// @return GetErRouteEntryResponse
-func (client *Client) GetErRouteEntry(request *GetErRouteEntryRequest) (_result *GetErRouteEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetErRouteEntryResponse{}
-	_body, _err := client.GetErRouteEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2849,7 +2024,7 @@ func (client *Client) GetErRouteEntry(request *GetErRouteEntryRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetErRouteMapResponse
-func (client *Client) GetErRouteMapWithOptions(request *GetErRouteMapRequest, runtime *dara.RuntimeOptions) (_result *GetErRouteMapResponse, _err error) {
+func (client *Client) GetErRouteMapWithContext(ctx context.Context, request *GetErRouteMapRequest, runtime *dara.RuntimeOptions) (_result *GetErRouteMapResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2884,29 +2059,11 @@ func (client *Client) GetErRouteMapWithOptions(request *GetErRouteMapRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetErRouteMapResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// query lingjun hub routing policy details.
-//
-// @param request - GetErRouteMapRequest
-//
-// @return GetErRouteMapResponse
-func (client *Client) GetErRouteMap(request *GetErRouteMapRequest) (_result *GetErRouteMapResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetErRouteMapResponse{}
-	_body, _err := client.GetErRouteMapWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2919,7 +2076,7 @@ func (client *Client) GetErRouteMap(request *GetErRouteMapRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetFabricTopologyResponse
-func (client *Client) GetFabricTopologyWithOptions(request *GetFabricTopologyRequest, runtime *dara.RuntimeOptions) (_result *GetFabricTopologyResponse, _err error) {
+func (client *Client) GetFabricTopologyWithContext(ctx context.Context, request *GetFabricTopologyRequest, runtime *dara.RuntimeOptions) (_result *GetFabricTopologyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2966,29 +2123,11 @@ func (client *Client) GetFabricTopologyWithOptions(request *GetFabricTopologyReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetFabricTopologyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the physical topology information of Lingjun network interface controller and Lingjun nodes under VPD.
-//
-// @param request - GetFabricTopologyRequest
-//
-// @return GetFabricTopologyResponse
-func (client *Client) GetFabricTopology(request *GetFabricTopologyRequest) (_result *GetFabricTopologyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetFabricTopologyResponse{}
-	_body, _err := client.GetFabricTopologyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3001,7 +2140,7 @@ func (client *Client) GetFabricTopology(request *GetFabricTopologyRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLeniPrivateIpAddressResponse
-func (client *Client) GetLeniPrivateIpAddressWithOptions(request *GetLeniPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *GetLeniPrivateIpAddressResponse, _err error) {
+func (client *Client) GetLeniPrivateIpAddressWithContext(ctx context.Context, request *GetLeniPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *GetLeniPrivateIpAddressResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3036,29 +2175,11 @@ func (client *Client) GetLeniPrivateIpAddressWithOptions(request *GetLeniPrivate
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLeniPrivateIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the details of the secondary private IP address of a specified Lingjun Elastic Network Interface.
-//
-// @param request - GetLeniPrivateIpAddressRequest
-//
-// @return GetLeniPrivateIpAddressResponse
-func (client *Client) GetLeniPrivateIpAddress(request *GetLeniPrivateIpAddressRequest) (_result *GetLeniPrivateIpAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLeniPrivateIpAddressResponse{}
-	_body, _err := client.GetLeniPrivateIpAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3071,7 +2192,7 @@ func (client *Client) GetLeniPrivateIpAddress(request *GetLeniPrivateIpAddressRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLniPrivateIpAddressResponse
-func (client *Client) GetLniPrivateIpAddressWithOptions(request *GetLniPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *GetLniPrivateIpAddressResponse, _err error) {
+func (client *Client) GetLniPrivateIpAddressWithContext(ctx context.Context, request *GetLniPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *GetLniPrivateIpAddressResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3106,29 +2227,11 @@ func (client *Client) GetLniPrivateIpAddressWithOptions(request *GetLniPrivateIp
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLniPrivateIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the details about the secondary private IP address.
-//
-// @param request - GetLniPrivateIpAddressRequest
-//
-// @return GetLniPrivateIpAddressResponse
-func (client *Client) GetLniPrivateIpAddress(request *GetLniPrivateIpAddressRequest) (_result *GetLniPrivateIpAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLniPrivateIpAddressResponse{}
-	_body, _err := client.GetLniPrivateIpAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3141,7 +2244,7 @@ func (client *Client) GetLniPrivateIpAddress(request *GetLniPrivateIpAddressRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetNetworkInterfaceResponse
-func (client *Client) GetNetworkInterfaceWithOptions(request *GetNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *GetNetworkInterfaceResponse, _err error) {
+func (client *Client) GetNetworkInterfaceWithContext(ctx context.Context, request *GetNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *GetNetworkInterfaceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3176,29 +2279,11 @@ func (client *Client) GetNetworkInterfaceWithOptions(request *GetNetworkInterfac
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries information about an LNI.
-//
-// @param request - GetNetworkInterfaceRequest
-//
-// @return GetNetworkInterfaceResponse
-func (client *Client) GetNetworkInterface(request *GetNetworkInterfaceRequest) (_result *GetNetworkInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetNetworkInterfaceResponse{}
-	_body, _err := client.GetNetworkInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3211,7 +2296,7 @@ func (client *Client) GetNetworkInterface(request *GetNetworkInterfaceRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetNodeInfoForPodResponse
-func (client *Client) GetNodeInfoForPodWithOptions(request *GetNodeInfoForPodRequest, runtime *dara.RuntimeOptions) (_result *GetNodeInfoForPodResponse, _err error) {
+func (client *Client) GetNodeInfoForPodWithContext(ctx context.Context, request *GetNodeInfoForPodRequest, runtime *dara.RuntimeOptions) (_result *GetNodeInfoForPodResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3242,29 +2327,11 @@ func (client *Client) GetNodeInfoForPodWithOptions(request *GetNodeInfoForPodReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetNodeInfoForPodResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the network information of a node.
-//
-// @param request - GetNodeInfoForPodRequest
-//
-// @return GetNodeInfoForPodResponse
-func (client *Client) GetNodeInfoForPod(request *GetNodeInfoForPodRequest) (_result *GetNodeInfoForPodResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetNodeInfoForPodResponse{}
-	_body, _err := client.GetNodeInfoForPodWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3277,7 +2344,7 @@ func (client *Client) GetNodeInfoForPod(request *GetNodeInfoForPodRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSubnetResponse
-func (client *Client) GetSubnetWithOptions(request *GetSubnetRequest, runtime *dara.RuntimeOptions) (_result *GetSubnetResponse, _err error) {
+func (client *Client) GetSubnetWithContext(ctx context.Context, request *GetSubnetRequest, runtime *dara.RuntimeOptions) (_result *GetSubnetResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3312,29 +2379,11 @@ func (client *Client) GetSubnetWithOptions(request *GetSubnetRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSubnetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a Lingjun subnet, including the type, CIDR block, instance ID, instance status, and number of NCs.
-//
-// @param request - GetSubnetRequest
-//
-// @return GetSubnetResponse
-func (client *Client) GetSubnet(request *GetSubnetRequest) (_result *GetSubnetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSubnetResponse{}
-	_body, _err := client.GetSubnetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3347,7 +2396,7 @@ func (client *Client) GetSubnet(request *GetSubnetRequest) (_result *GetSubnetRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVccResponse
-func (client *Client) GetVccWithOptions(request *GetVccRequest, runtime *dara.RuntimeOptions) (_result *GetVccResponse, _err error) {
+func (client *Client) GetVccWithContext(ctx context.Context, request *GetVccRequest, runtime *dara.RuntimeOptions) (_result *GetVccResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3394,29 +2443,11 @@ func (client *Client) GetVccWithOptions(request *GetVccRequest, runtime *dara.Ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVccResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a Lingjun connection, including the specification, Express Connect circuit access port type, instance status, bandwidth, and BGP CIDR block.
-//
-// @param request - GetVccRequest
-//
-// @return GetVccResponse
-func (client *Client) GetVcc(request *GetVccRequest) (_result *GetVccResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVccResponse{}
-	_body, _err := client.GetVccWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3429,7 +2460,7 @@ func (client *Client) GetVcc(request *GetVccRequest) (_result *GetVccResponse, _
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVccGrantRuleResponse
-func (client *Client) GetVccGrantRuleWithOptions(request *GetVccGrantRuleRequest, runtime *dara.RuntimeOptions) (_result *GetVccGrantRuleResponse, _err error) {
+func (client *Client) GetVccGrantRuleWithContext(ctx context.Context, request *GetVccGrantRuleRequest, runtime *dara.RuntimeOptions) (_result *GetVccGrantRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3472,29 +2503,11 @@ func (client *Client) GetVccGrantRuleWithOptions(request *GetVccGrantRuleRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVccGrantRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of cross-account resource authorization for a Lingjun connection, including the authorized tenant ID, Lingjun HUB instance ID, and network instance ID.
-//
-// @param request - GetVccGrantRuleRequest
-//
-// @return GetVccGrantRuleResponse
-func (client *Client) GetVccGrantRule(request *GetVccGrantRuleRequest) (_result *GetVccGrantRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVccGrantRuleResponse{}
-	_body, _err := client.GetVccGrantRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3507,7 +2520,7 @@ func (client *Client) GetVccGrantRule(request *GetVccGrantRuleRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVccRouteEntryResponse
-func (client *Client) GetVccRouteEntryWithOptions(request *GetVccRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *GetVccRouteEntryResponse, _err error) {
+func (client *Client) GetVccRouteEntryWithContext(ctx context.Context, request *GetVccRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *GetVccRouteEntryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3542,29 +2555,11 @@ func (client *Client) GetVccRouteEntryWithOptions(request *GetVccRouteEntryReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVccRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries route entries.
-//
-// @param request - GetVccRouteEntryRequest
-//
-// @return GetVccRouteEntryResponse
-func (client *Client) GetVccRouteEntry(request *GetVccRouteEntryRequest) (_result *GetVccRouteEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVccRouteEntryResponse{}
-	_body, _err := client.GetVccRouteEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3577,7 +2572,7 @@ func (client *Client) GetVccRouteEntry(request *GetVccRouteEntryRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVpdResponse
-func (client *Client) GetVpdWithOptions(request *GetVpdRequest, runtime *dara.RuntimeOptions) (_result *GetVpdResponse, _err error) {
+func (client *Client) GetVpdWithContext(ctx context.Context, request *GetVpdRequest, runtime *dara.RuntimeOptions) (_result *GetVpdResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3608,29 +2603,11 @@ func (client *Client) GetVpdWithOptions(request *GetVpdRequest, runtime *dara.Ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVpdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a Lingjun CIDR block, including the status of the Lingjun CIDR block, the CIDR block, the number of subnets and NCs.
-//
-// @param request - GetVpdRequest
-//
-// @return GetVpdResponse
-func (client *Client) GetVpd(request *GetVpdRequest) (_result *GetVpdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVpdResponse{}
-	_body, _err := client.GetVpdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3643,7 +2620,7 @@ func (client *Client) GetVpd(request *GetVpdRequest) (_result *GetVpdResponse, _
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVpdGrantRuleResponse
-func (client *Client) GetVpdGrantRuleWithOptions(request *GetVpdGrantRuleRequest, runtime *dara.RuntimeOptions) (_result *GetVpdGrantRuleResponse, _err error) {
+func (client *Client) GetVpdGrantRuleWithContext(ctx context.Context, request *GetVpdGrantRuleRequest, runtime *dara.RuntimeOptions) (_result *GetVpdGrantRuleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3686,29 +2663,11 @@ func (client *Client) GetVpdGrantRuleWithOptions(request *GetVpdGrantRuleRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVpdGrantRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of cross-account resource authorization for a Lingjun CIDR block, including the authorized tenant ID, Lingjun HUB instance ID, and network instance ID.
-//
-// @param request - GetVpdGrantRuleRequest
-//
-// @return GetVpdGrantRuleResponse
-func (client *Client) GetVpdGrantRule(request *GetVpdGrantRuleRequest) (_result *GetVpdGrantRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVpdGrantRuleResponse{}
-	_body, _err := client.GetVpdGrantRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3721,7 +2680,7 @@ func (client *Client) GetVpdGrantRule(request *GetVpdGrantRuleRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVpdRouteEntryResponse
-func (client *Client) GetVpdRouteEntryWithOptions(request *GetVpdRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *GetVpdRouteEntryResponse, _err error) {
+func (client *Client) GetVpdRouteEntryWithContext(ctx context.Context, request *GetVpdRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *GetVpdRouteEntryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3756,29 +2715,11 @@ func (client *Client) GetVpdRouteEntryWithOptions(request *GetVpdRouteEntryReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVpdRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries route entries.
-//
-// @param request - GetVpdRouteEntryRequest
-//
-// @return GetVpdRouteEntryResponse
-func (client *Client) GetVpdRouteEntry(request *GetVpdRouteEntryRequest) (_result *GetVpdRouteEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVpdRouteEntryResponse{}
-	_body, _err := client.GetVpdRouteEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3791,7 +2732,7 @@ func (client *Client) GetVpdRouteEntry(request *GetVpdRouteEntryRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InitializeVccResponse
-func (client *Client) InitializeVccWithOptions(request *InitializeVccRequest, runtime *dara.RuntimeOptions) (_result *InitializeVccResponse, _err error) {
+func (client *Client) InitializeVccWithContext(ctx context.Context, request *InitializeVccRequest, runtime *dara.RuntimeOptions) (_result *InitializeVccResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3818,29 +2759,11 @@ func (client *Client) InitializeVccWithOptions(request *InitializeVccRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &InitializeVccResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Initialize the Lingjun connection and authorize Intelligent Computing Lingjun to create an SLR in your account.
-//
-// @param request - InitializeVccRequest
-//
-// @return InitializeVccResponse
-func (client *Client) InitializeVcc(request *InitializeVccRequest) (_result *InitializeVccResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &InitializeVccResponse{}
-	_body, _err := client.InitializeVccWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3853,7 +2776,7 @@ func (client *Client) InitializeVcc(request *InitializeVccRequest) (_result *Ini
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListElasticNetworkInterfacesResponse
-func (client *Client) ListElasticNetworkInterfacesWithOptions(request *ListElasticNetworkInterfacesRequest, runtime *dara.RuntimeOptions) (_result *ListElasticNetworkInterfacesResponse, _err error) {
+func (client *Client) ListElasticNetworkInterfacesWithContext(ctx context.Context, request *ListElasticNetworkInterfacesRequest, runtime *dara.RuntimeOptions) (_result *ListElasticNetworkInterfacesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3932,29 +2855,11 @@ func (client *Client) ListElasticNetworkInterfacesWithOptions(request *ListElast
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListElasticNetworkInterfacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the LENIs that are associated with a Lingjun node.
-//
-// @param request - ListElasticNetworkInterfacesRequest
-//
-// @return ListElasticNetworkInterfacesResponse
-func (client *Client) ListElasticNetworkInterfaces(request *ListElasticNetworkInterfacesRequest) (_result *ListElasticNetworkInterfacesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListElasticNetworkInterfacesResponse{}
-	_body, _err := client.ListElasticNetworkInterfacesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3967,7 +2872,7 @@ func (client *Client) ListElasticNetworkInterfaces(request *ListElasticNetworkIn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListErAttachmentsResponse
-func (client *Client) ListErAttachmentsWithOptions(request *ListErAttachmentsRequest, runtime *dara.RuntimeOptions) (_result *ListErAttachmentsResponse, _err error) {
+func (client *Client) ListErAttachmentsWithContext(ctx context.Context, request *ListErAttachmentsRequest, runtime *dara.RuntimeOptions) (_result *ListErAttachmentsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4042,29 +2947,11 @@ func (client *Client) ListErAttachmentsWithOptions(request *ListErAttachmentsReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListErAttachmentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries network instance connections.
-//
-// @param request - ListErAttachmentsRequest
-//
-// @return ListErAttachmentsResponse
-func (client *Client) ListErAttachments(request *ListErAttachmentsRequest) (_result *ListErAttachmentsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListErAttachmentsResponse{}
-	_body, _err := client.ListErAttachmentsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4077,7 +2964,7 @@ func (client *Client) ListErAttachments(request *ListErAttachmentsRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListErRouteEntriesResponse
-func (client *Client) ListErRouteEntriesWithOptions(request *ListErRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *ListErRouteEntriesResponse, _err error) {
+func (client *Client) ListErRouteEntriesWithContext(ctx context.Context, request *ListErRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *ListErRouteEntriesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4152,29 +3039,11 @@ func (client *Client) ListErRouteEntriesWithOptions(request *ListErRouteEntriesR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListErRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the route entries of the Lingjun HUB.
-//
-// @param request - ListErRouteEntriesRequest
-//
-// @return ListErRouteEntriesResponse
-func (client *Client) ListErRouteEntries(request *ListErRouteEntriesRequest) (_result *ListErRouteEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListErRouteEntriesResponse{}
-	_body, _err := client.ListErRouteEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4187,7 +3056,7 @@ func (client *Client) ListErRouteEntries(request *ListErRouteEntriesRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListErRouteMapsResponse
-func (client *Client) ListErRouteMapsWithOptions(request *ListErRouteMapsRequest, runtime *dara.RuntimeOptions) (_result *ListErRouteMapsResponse, _err error) {
+func (client *Client) ListErRouteMapsWithContext(ctx context.Context, request *ListErRouteMapsRequest, runtime *dara.RuntimeOptions) (_result *ListErRouteMapsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4274,29 +3143,11 @@ func (client *Client) ListErRouteMapsWithOptions(request *ListErRouteMapsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListErRouteMapsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Routing policies are queried.
-//
-// @param request - ListErRouteMapsRequest
-//
-// @return ListErRouteMapsResponse
-func (client *Client) ListErRouteMaps(request *ListErRouteMapsRequest) (_result *ListErRouteMapsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListErRouteMapsResponse{}
-	_body, _err := client.ListErRouteMapsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4309,7 +3160,7 @@ func (client *Client) ListErRouteMaps(request *ListErRouteMapsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListErsResponse
-func (client *Client) ListErsWithOptions(request *ListErsRequest, runtime *dara.RuntimeOptions) (_result *ListErsResponse, _err error) {
+func (client *Client) ListErsWithContext(ctx context.Context, request *ListErsRequest, runtime *dara.RuntimeOptions) (_result *ListErsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4376,29 +3227,11 @@ func (client *Client) ListErsWithOptions(request *ListErsRequest, runtime *dara.
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListErsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Lingjun HUB.
-//
-// @param request - ListErsRequest
-//
-// @return ListErsResponse
-func (client *Client) ListErs(request *ListErsRequest) (_result *ListErsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListErsResponse{}
-	_body, _err := client.ListErsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4411,7 +3244,7 @@ func (client *Client) ListErs(request *ListErsRequest) (_result *ListErsResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListInstancesByNcdResponse
-func (client *Client) ListInstancesByNcdWithOptions(request *ListInstancesByNcdRequest, runtime *dara.RuntimeOptions) (_result *ListInstancesByNcdResponse, _err error) {
+func (client *Client) ListInstancesByNcdWithContext(ctx context.Context, request *ListInstancesByNcdRequest, runtime *dara.RuntimeOptions) (_result *ListInstancesByNcdResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4450,29 +3283,11 @@ func (client *Client) ListInstancesByNcdWithOptions(request *ListInstancesByNcdR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListInstancesByNcdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the GPU node list of a specified GPU node whose communication distance does not exceed the specified NCD.
-//
-// @param request - ListInstancesByNcdRequest
-//
-// @return ListInstancesByNcdResponse
-func (client *Client) ListInstancesByNcd(request *ListInstancesByNcdRequest) (_result *ListInstancesByNcdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListInstancesByNcdResponse{}
-	_body, _err := client.ListInstancesByNcdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4485,7 +3300,7 @@ func (client *Client) ListInstancesByNcd(request *ListInstancesByNcdRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLeniPrivateIpAddressesResponse
-func (client *Client) ListLeniPrivateIpAddressesWithOptions(request *ListLeniPrivateIpAddressesRequest, runtime *dara.RuntimeOptions) (_result *ListLeniPrivateIpAddressesResponse, _err error) {
+func (client *Client) ListLeniPrivateIpAddressesWithContext(ctx context.Context, request *ListLeniPrivateIpAddressesRequest, runtime *dara.RuntimeOptions) (_result *ListLeniPrivateIpAddressesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4540,29 +3355,11 @@ func (client *Client) ListLeniPrivateIpAddressesWithOptions(request *ListLeniPri
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLeniPrivateIpAddressesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the list of secondary private IP addresses of Lingjun Elastic Network Interface.
-//
-// @param request - ListLeniPrivateIpAddressesRequest
-//
-// @return ListLeniPrivateIpAddressesResponse
-func (client *Client) ListLeniPrivateIpAddresses(request *ListLeniPrivateIpAddressesRequest) (_result *ListLeniPrivateIpAddressesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListLeniPrivateIpAddressesResponse{}
-	_body, _err := client.ListLeniPrivateIpAddressesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4575,7 +3372,7 @@ func (client *Client) ListLeniPrivateIpAddresses(request *ListLeniPrivateIpAddre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLniPrivateIpAddressResponse
-func (client *Client) ListLniPrivateIpAddressWithOptions(request *ListLniPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *ListLniPrivateIpAddressResponse, _err error) {
+func (client *Client) ListLniPrivateIpAddressWithContext(ctx context.Context, request *ListLniPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *ListLniPrivateIpAddressResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4634,29 +3431,11 @@ func (client *Client) ListLniPrivateIpAddressWithOptions(request *ListLniPrivate
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLniPrivateIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the list of secondary private IP addresses of Lingjun network interface controller.
-//
-// @param request - ListLniPrivateIpAddressRequest
-//
-// @return ListLniPrivateIpAddressResponse
-func (client *Client) ListLniPrivateIpAddress(request *ListLniPrivateIpAddressRequest) (_result *ListLniPrivateIpAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListLniPrivateIpAddressResponse{}
-	_body, _err := client.ListLniPrivateIpAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4669,7 +3448,7 @@ func (client *Client) ListLniPrivateIpAddress(request *ListLniPrivateIpAddressRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListNetworkInterfacesResponse
-func (client *Client) ListNetworkInterfacesWithOptions(request *ListNetworkInterfacesRequest, runtime *dara.RuntimeOptions) (_result *ListNetworkInterfacesResponse, _err error) {
+func (client *Client) ListNetworkInterfacesWithContext(ctx context.Context, request *ListNetworkInterfacesRequest, runtime *dara.RuntimeOptions) (_result *ListNetworkInterfacesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4736,29 +3515,11 @@ func (client *Client) ListNetworkInterfacesWithOptions(request *ListNetworkInter
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListNetworkInterfacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Lingjun network interfaces (LNIs).
-//
-// @param request - ListNetworkInterfacesRequest
-//
-// @return ListNetworkInterfacesResponse
-func (client *Client) ListNetworkInterfaces(request *ListNetworkInterfacesRequest) (_result *ListNetworkInterfacesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListNetworkInterfacesResponse{}
-	_body, _err := client.ListNetworkInterfacesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4771,7 +3532,7 @@ func (client *Client) ListNetworkInterfaces(request *ListNetworkInterfacesReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListNodeInfosForPodResponse
-func (client *Client) ListNodeInfosForPodWithOptions(request *ListNodeInfosForPodRequest, runtime *dara.RuntimeOptions) (_result *ListNodeInfosForPodResponse, _err error) {
+func (client *Client) ListNodeInfosForPodWithContext(ctx context.Context, request *ListNodeInfosForPodRequest, runtime *dara.RuntimeOptions) (_result *ListNodeInfosForPodResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4810,29 +3571,11 @@ func (client *Client) ListNodeInfosForPodWithOptions(request *ListNodeInfosForPo
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListNodeInfosForPodResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries node network information.
-//
-// @param request - ListNodeInfosForPodRequest
-//
-// @return ListNodeInfosForPodResponse
-func (client *Client) ListNodeInfosForPod(request *ListNodeInfosForPodRequest) (_result *ListNodeInfosForPodResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListNodeInfosForPodResponse{}
-	_body, _err := client.ListNodeInfosForPodWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4845,7 +3588,7 @@ func (client *Client) ListNodeInfosForPod(request *ListNodeInfosForPodRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSubnetsResponse
-func (client *Client) ListSubnetsWithOptions(request *ListSubnetsRequest, runtime *dara.RuntimeOptions) (_result *ListSubnetsResponse, _err error) {
+func (client *Client) ListSubnetsWithContext(ctx context.Context, request *ListSubnetsRequest, runtime *dara.RuntimeOptions) (_result *ListSubnetsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4916,29 +3659,11 @@ func (client *Client) ListSubnetsWithOptions(request *ListSubnetsRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSubnetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// You can call this operation to query the details of one or more Lingjun subnets, including the Lingjun subnet type, network address segment, and instance ID of the Lingjun CIDR block.
-//
-// @param request - ListSubnetsRequest
-//
-// @return ListSubnetsResponse
-func (client *Client) ListSubnets(request *ListSubnetsRequest) (_result *ListSubnetsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListSubnetsResponse{}
-	_body, _err := client.ListSubnetsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4951,7 +3676,7 @@ func (client *Client) ListSubnets(request *ListSubnetsRequest) (_result *ListSub
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVccFlowInfosResponse
-func (client *Client) ListVccFlowInfosWithOptions(request *ListVccFlowInfosRequest, runtime *dara.RuntimeOptions) (_result *ListVccFlowInfosResponse, _err error) {
+func (client *Client) ListVccFlowInfosWithContext(ctx context.Context, request *ListVccFlowInfosRequest, runtime *dara.RuntimeOptions) (_result *ListVccFlowInfosResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4998,29 +3723,11 @@ func (client *Client) ListVccFlowInfosWithOptions(request *ListVccFlowInfosReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVccFlowInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the traffic rate of a Lingjun connection.
-//
-// @param request - ListVccFlowInfosRequest
-//
-// @return ListVccFlowInfosResponse
-func (client *Client) ListVccFlowInfos(request *ListVccFlowInfosRequest) (_result *ListVccFlowInfosResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVccFlowInfosResponse{}
-	_body, _err := client.ListVccFlowInfosWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5033,7 +3740,7 @@ func (client *Client) ListVccFlowInfos(request *ListVccFlowInfosRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVccGrantRulesResponse
-func (client *Client) ListVccGrantRulesWithOptions(request *ListVccGrantRulesRequest, runtime *dara.RuntimeOptions) (_result *ListVccGrantRulesResponse, _err error) {
+func (client *Client) ListVccGrantRulesWithContext(ctx context.Context, request *ListVccGrantRulesRequest, runtime *dara.RuntimeOptions) (_result *ListVccGrantRulesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5100,29 +3807,11 @@ func (client *Client) ListVccGrantRulesWithOptions(request *ListVccGrantRulesReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVccGrantRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a Lingjun connection authorization, including the authorized tenant ID, region, and Lingjun HUB instance information.
-//
-// @param request - ListVccGrantRulesRequest
-//
-// @return ListVccGrantRulesResponse
-func (client *Client) ListVccGrantRules(request *ListVccGrantRulesRequest) (_result *ListVccGrantRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVccGrantRulesResponse{}
-	_body, _err := client.ListVccGrantRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5135,7 +3824,7 @@ func (client *Client) ListVccGrantRules(request *ListVccGrantRulesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVccRouteEntriesResponse
-func (client *Client) ListVccRouteEntriesWithOptions(request *ListVccRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *ListVccRouteEntriesResponse, _err error) {
+func (client *Client) ListVccRouteEntriesWithContext(ctx context.Context, request *ListVccRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *ListVccRouteEntriesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5210,29 +3899,11 @@ func (client *Client) ListVccRouteEntriesWithOptions(request *ListVccRouteEntrie
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVccRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Lingjun connection route entries.
-//
-// @param request - ListVccRouteEntriesRequest
-//
-// @return ListVccRouteEntriesResponse
-func (client *Client) ListVccRouteEntries(request *ListVccRouteEntriesRequest) (_result *ListVccRouteEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVccRouteEntriesResponse{}
-	_body, _err := client.ListVccRouteEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5245,7 +3916,7 @@ func (client *Client) ListVccRouteEntries(request *ListVccRouteEntriesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVccsResponse
-func (client *Client) ListVccsWithOptions(request *ListVccsRequest, runtime *dara.RuntimeOptions) (_result *ListVccsResponse, _err error) {
+func (client *Client) ListVccsWithContext(ctx context.Context, request *ListVccsRequest, runtime *dara.RuntimeOptions) (_result *ListVccsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5324,29 +3995,11 @@ func (client *Client) ListVccsWithOptions(request *ListVccsRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVccsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// query the details of one or more lingjun connections, including the specification, Express Connect circuit access port type, instance status, bandwidth, and bgp network segment.
-//
-// @param request - ListVccsRequest
-//
-// @return ListVccsResponse
-func (client *Client) ListVccs(request *ListVccsRequest) (_result *ListVccsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVccsResponse{}
-	_body, _err := client.ListVccsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5359,7 +4012,7 @@ func (client *Client) ListVccs(request *ListVccsRequest) (_result *ListVccsRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVpdGrantRulesResponse
-func (client *Client) ListVpdGrantRulesWithOptions(request *ListVpdGrantRulesRequest, runtime *dara.RuntimeOptions) (_result *ListVpdGrantRulesResponse, _err error) {
+func (client *Client) ListVpdGrantRulesWithContext(ctx context.Context, request *ListVpdGrantRulesRequest, runtime *dara.RuntimeOptions) (_result *ListVpdGrantRulesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5426,29 +4079,11 @@ func (client *Client) ListVpdGrantRulesWithOptions(request *ListVpdGrantRulesReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVpdGrantRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of one or more route entries in the CIDR block of Lingjun, including the route type, route entry status, destination CIDR block, and instance information of the next route entry.
-//
-// @param request - ListVpdGrantRulesRequest
-//
-// @return ListVpdGrantRulesResponse
-func (client *Client) ListVpdGrantRules(request *ListVpdGrantRulesRequest) (_result *ListVpdGrantRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVpdGrantRulesResponse{}
-	_body, _err := client.ListVpdGrantRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5461,7 +4096,7 @@ func (client *Client) ListVpdGrantRules(request *ListVpdGrantRulesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVpdRouteEntriesResponse
-func (client *Client) ListVpdRouteEntriesWithOptions(request *ListVpdRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *ListVpdRouteEntriesResponse, _err error) {
+func (client *Client) ListVpdRouteEntriesWithContext(ctx context.Context, request *ListVpdRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *ListVpdRouteEntriesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5536,29 +4171,11 @@ func (client *Client) ListVpdRouteEntriesWithOptions(request *ListVpdRouteEntrie
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVpdRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the route entries of the Lingjun CIDR block.
-//
-// @param request - ListVpdRouteEntriesRequest
-//
-// @return ListVpdRouteEntriesResponse
-func (client *Client) ListVpdRouteEntries(request *ListVpdRouteEntriesRequest) (_result *ListVpdRouteEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVpdRouteEntriesResponse{}
-	_body, _err := client.ListVpdRouteEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5571,7 +4188,7 @@ func (client *Client) ListVpdRouteEntries(request *ListVpdRouteEntriesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVpdsResponse
-func (client *Client) ListVpdsWithOptions(request *ListVpdsRequest, runtime *dara.RuntimeOptions) (_result *ListVpdsResponse, _err error) {
+func (client *Client) ListVpdsWithContext(ctx context.Context, request *ListVpdsRequest, runtime *dara.RuntimeOptions) (_result *ListVpdsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5646,29 +4263,11 @@ func (client *Client) ListVpdsWithOptions(request *ListVpdsRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVpdsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of one or more Lingjun CIDR blocks, including the status of Lingjun CIDR blocks, Cidr addresses, service CIDR blocks, and Subnet.
-//
-// @param request - ListVpdsRequest
-//
-// @return ListVpdsResponse
-func (client *Client) ListVpds(request *ListVpdsRequest) (_result *ListVpdsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVpdsResponse{}
-	_body, _err := client.ListVpdsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5681,7 +4280,7 @@ func (client *Client) ListVpds(request *ListVpdsRequest) (_result *ListVpdsRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryInstanceNcdResponse
-func (client *Client) QueryInstanceNcdWithOptions(request *QueryInstanceNcdRequest, runtime *dara.RuntimeOptions) (_result *QueryInstanceNcdResponse, _err error) {
+func (client *Client) QueryInstanceNcdWithContext(ctx context.Context, request *QueryInstanceNcdRequest, runtime *dara.RuntimeOptions) (_result *QueryInstanceNcdResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5720,29 +4319,11 @@ func (client *Client) QueryInstanceNcdWithOptions(request *QueryInstanceNcdReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryInstanceNcdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the network communication distance (Network Communication Distance,NCD) between instances (Lingjun node, Lingjun network interface controller).
-//
-// @param request - QueryInstanceNcdRequest
-//
-// @return QueryInstanceNcdResponse
-func (client *Client) QueryInstanceNcd(request *QueryInstanceNcdRequest) (_result *QueryInstanceNcdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryInstanceNcdResponse{}
-	_body, _err := client.QueryInstanceNcdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5759,7 +4340,7 @@ func (client *Client) QueryInstanceNcd(request *QueryInstanceNcdRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RefundVccResponse
-func (client *Client) RefundVccWithOptions(request *RefundVccRequest, runtime *dara.RuntimeOptions) (_result *RefundVccResponse, _err error) {
+func (client *Client) RefundVccWithContext(ctx context.Context, request *RefundVccRequest, runtime *dara.RuntimeOptions) (_result *RefundVccResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5790,33 +4371,11 @@ func (client *Client) RefundVccWithOptions(request *RefundVccRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &RefundVccResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Unsubscribe inactive Lingjun connection
-//
-// Description:
-//
-// Only unsubscribable for Lingjun connections in the prepayment status.
-//
-// @param request - RefundVccRequest
-//
-// @return RefundVccResponse
-func (client *Client) RefundVcc(request *RefundVccRequest) (_result *RefundVccResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RefundVccResponse{}
-	_body, _err := client.RefundVccWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5833,7 +4392,7 @@ func (client *Client) RefundVcc(request *RefundVccRequest) (_result *RefundVccRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RetryVccResponse
-func (client *Client) RetryVccWithOptions(request *RetryVccRequest, runtime *dara.RuntimeOptions) (_result *RetryVccResponse, _err error) {
+func (client *Client) RetryVccWithContext(ctx context.Context, request *RetryVccRequest, runtime *dara.RuntimeOptions) (_result *RetryVccResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5864,33 +4423,11 @@ func (client *Client) RetryVccWithOptions(request *RetryVccRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &RetryVccResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Retry trying to create /delete a Lingjun connection.
-//
-// Description:
-//
-// This operation allows the user to retry the operation if the Lingjun connection creation and deletion processes fail. Only the Lingjun connection in the creation failure and deletion failure state can be retried
-//
-// @param request - RetryVccRequest
-//
-// @return RetryVccResponse
-func (client *Client) RetryVcc(request *RetryVccRequest) (_result *RetryVccResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RetryVccResponse{}
-	_body, _err := client.RetryVccWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5903,7 +4440,7 @@ func (client *Client) RetryVcc(request *RetryVccRequest) (_result *RetryVccRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SwitchVccConnectionResponse
-func (client *Client) SwitchVccConnectionWithOptions(request *SwitchVccConnectionRequest, runtime *dara.RuntimeOptions) (_result *SwitchVccConnectionResponse, _err error) {
+func (client *Client) SwitchVccConnectionWithContext(ctx context.Context, request *SwitchVccConnectionRequest, runtime *dara.RuntimeOptions) (_result *SwitchVccConnectionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5950,29 +4487,11 @@ func (client *Client) SwitchVccConnectionWithOptions(request *SwitchVccConnectio
 		BodyType:    dara.String("json"),
 	}
 	_result = &SwitchVccConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Switch the VCC connection instance or type
-//
-// @param request - SwitchVccConnectionRequest
-//
-// @return SwitchVccConnectionResponse
-func (client *Client) SwitchVccConnection(request *SwitchVccConnectionRequest) (_result *SwitchVccConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SwitchVccConnectionResponse{}
-	_body, _err := client.SwitchVccConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5985,7 +4504,7 @@ func (client *Client) SwitchVccConnection(request *SwitchVccConnectionRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnAssignPrivateIpAddressResponse
-func (client *Client) UnAssignPrivateIpAddressWithOptions(request *UnAssignPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *UnAssignPrivateIpAddressResponse, _err error) {
+func (client *Client) UnAssignPrivateIpAddressWithContext(ctx context.Context, request *UnAssignPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *UnAssignPrivateIpAddressResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6032,29 +4551,11 @@ func (client *Client) UnAssignPrivateIpAddressWithOptions(request *UnAssignPriva
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnAssignPrivateIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an assigned secondary private IP address.
-//
-// @param request - UnAssignPrivateIpAddressRequest
-//
-// @return UnAssignPrivateIpAddressResponse
-func (client *Client) UnAssignPrivateIpAddress(request *UnAssignPrivateIpAddressRequest) (_result *UnAssignPrivateIpAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnAssignPrivateIpAddressResponse{}
-	_body, _err := client.UnAssignPrivateIpAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6073,7 +4574,7 @@ func (client *Client) UnAssignPrivateIpAddress(request *UnAssignPrivateIpAddress
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnAssociateVpdCidrBlockResponse
-func (client *Client) UnAssociateVpdCidrBlockWithOptions(request *UnAssociateVpdCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *UnAssociateVpdCidrBlockResponse, _err error) {
+func (client *Client) UnAssociateVpdCidrBlockWithContext(ctx context.Context, request *UnAssociateVpdCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *UnAssociateVpdCidrBlockResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6108,35 +4609,11 @@ func (client *Client) UnAssociateVpdCidrBlockWithOptions(request *UnAssociateVpd
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnAssociateVpdCidrBlockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// This function can be used to delete the additional network segment of VPD.
-//
-// Description:
-//
-// *
-//
-// **Warning*	- If the attached CIDR block has Lingjun subnet resources, you must delete the dependent resources before you can delete the attached CIDR block.
-//
-// @param request - UnAssociateVpdCidrBlockRequest
-//
-// @return UnAssociateVpdCidrBlockResponse
-func (client *Client) UnAssociateVpdCidrBlock(request *UnAssociateVpdCidrBlockRequest) (_result *UnAssociateVpdCidrBlockResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnAssociateVpdCidrBlockResponse{}
-	_body, _err := client.UnAssociateVpdCidrBlockWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6149,7 +4626,7 @@ func (client *Client) UnAssociateVpdCidrBlock(request *UnAssociateVpdCidrBlockRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnassignLeniPrivateIpAddressResponse
-func (client *Client) UnassignLeniPrivateIpAddressWithOptions(request *UnassignLeniPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *UnassignLeniPrivateIpAddressResponse, _err error) {
+func (client *Client) UnassignLeniPrivateIpAddressWithContext(ctx context.Context, request *UnassignLeniPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *UnassignLeniPrivateIpAddressResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6188,29 +4665,11 @@ func (client *Client) UnassignLeniPrivateIpAddressWithOptions(request *UnassignL
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnassignLeniPrivateIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Delete the assigned secondary private IP address of Lingjun Elastic Network Interface.
-//
-// @param request - UnassignLeniPrivateIpAddressRequest
-//
-// @return UnassignLeniPrivateIpAddressResponse
-func (client *Client) UnassignLeniPrivateIpAddress(request *UnassignLeniPrivateIpAddressRequest) (_result *UnassignLeniPrivateIpAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnassignLeniPrivateIpAddressResponse{}
-	_body, _err := client.UnassignLeniPrivateIpAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6223,7 +4682,7 @@ func (client *Client) UnassignLeniPrivateIpAddress(request *UnassignLeniPrivateI
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateElasticNetworkInterfaceResponse
-func (client *Client) UpdateElasticNetworkInterfaceWithOptions(request *UpdateElasticNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *UpdateElasticNetworkInterfaceResponse, _err error) {
+func (client *Client) UpdateElasticNetworkInterfaceWithContext(ctx context.Context, request *UpdateElasticNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *UpdateElasticNetworkInterfaceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6266,29 +4725,11 @@ func (client *Client) UpdateElasticNetworkInterfaceWithOptions(request *UpdateEl
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateElasticNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Update Lingjun Elastic Network Interface information.
-//
-// @param request - UpdateElasticNetworkInterfaceRequest
-//
-// @return UpdateElasticNetworkInterfaceResponse
-func (client *Client) UpdateElasticNetworkInterface(request *UpdateElasticNetworkInterfaceRequest) (_result *UpdateElasticNetworkInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateElasticNetworkInterfaceResponse{}
-	_body, _err := client.UpdateElasticNetworkInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6301,7 +4742,7 @@ func (client *Client) UpdateElasticNetworkInterface(request *UpdateElasticNetwor
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateErResponse
-func (client *Client) UpdateErWithOptions(request *UpdateErRequest, runtime *dara.RuntimeOptions) (_result *UpdateErResponse, _err error) {
+func (client *Client) UpdateErWithContext(ctx context.Context, request *UpdateErRequest, runtime *dara.RuntimeOptions) (_result *UpdateErResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6340,29 +4781,11 @@ func (client *Client) UpdateErWithOptions(request *UpdateErRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateErResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updated Lingjun HUB.
-//
-// @param request - UpdateErRequest
-//
-// @return UpdateErResponse
-func (client *Client) UpdateEr(request *UpdateErRequest) (_result *UpdateErResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateErResponse{}
-	_body, _err := client.UpdateErWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6375,7 +4798,7 @@ func (client *Client) UpdateEr(request *UpdateErRequest) (_result *UpdateErRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateErAttachmentResponse
-func (client *Client) UpdateErAttachmentWithOptions(request *UpdateErAttachmentRequest, runtime *dara.RuntimeOptions) (_result *UpdateErAttachmentResponse, _err error) {
+func (client *Client) UpdateErAttachmentWithContext(ctx context.Context, request *UpdateErAttachmentRequest, runtime *dara.RuntimeOptions) (_result *UpdateErAttachmentResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6414,29 +4837,11 @@ func (client *Client) UpdateErAttachmentWithOptions(request *UpdateErAttachmentR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateErAttachmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a network instance connection.
-//
-// @param request - UpdateErAttachmentRequest
-//
-// @return UpdateErAttachmentResponse
-func (client *Client) UpdateErAttachment(request *UpdateErAttachmentRequest) (_result *UpdateErAttachmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateErAttachmentResponse{}
-	_body, _err := client.UpdateErAttachmentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6449,7 +4854,7 @@ func (client *Client) UpdateErAttachment(request *UpdateErAttachmentRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateErRouteMapResponse
-func (client *Client) UpdateErRouteMapWithOptions(request *UpdateErRouteMapRequest, runtime *dara.RuntimeOptions) (_result *UpdateErRouteMapResponse, _err error) {
+func (client *Client) UpdateErRouteMapWithContext(ctx context.Context, request *UpdateErRouteMapRequest, runtime *dara.RuntimeOptions) (_result *UpdateErRouteMapResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6488,29 +4893,11 @@ func (client *Client) UpdateErRouteMapWithOptions(request *UpdateErRouteMapReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateErRouteMapResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Update some information about the routing policy, including the description and name of the routing policy.
-//
-// @param request - UpdateErRouteMapRequest
-//
-// @return UpdateErRouteMapResponse
-func (client *Client) UpdateErRouteMap(request *UpdateErRouteMapRequest) (_result *UpdateErRouteMapResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateErRouteMapResponse{}
-	_body, _err := client.UpdateErRouteMapWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6523,7 +4910,7 @@ func (client *Client) UpdateErRouteMap(request *UpdateErRouteMapRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLeniPrivateIpAddressResponse
-func (client *Client) UpdateLeniPrivateIpAddressWithOptions(request *UpdateLeniPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *UpdateLeniPrivateIpAddressResponse, _err error) {
+func (client *Client) UpdateLeniPrivateIpAddressWithContext(ctx context.Context, request *UpdateLeniPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *UpdateLeniPrivateIpAddressResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6562,29 +4949,11 @@ func (client *Client) UpdateLeniPrivateIpAddressWithOptions(request *UpdateLeniP
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLeniPrivateIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updated the description of the secondary private network assigned by the Lingjun Elastic Network Interface.
-//
-// @param request - UpdateLeniPrivateIpAddressRequest
-//
-// @return UpdateLeniPrivateIpAddressResponse
-func (client *Client) UpdateLeniPrivateIpAddress(request *UpdateLeniPrivateIpAddressRequest) (_result *UpdateLeniPrivateIpAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLeniPrivateIpAddressResponse{}
-	_body, _err := client.UpdateLeniPrivateIpAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6597,7 +4966,7 @@ func (client *Client) UpdateLeniPrivateIpAddress(request *UpdateLeniPrivateIpAdd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateSubnetResponse
-func (client *Client) UpdateSubnetWithOptions(request *UpdateSubnetRequest, runtime *dara.RuntimeOptions) (_result *UpdateSubnetResponse, _err error) {
+func (client *Client) UpdateSubnetWithContext(ctx context.Context, request *UpdateSubnetRequest, runtime *dara.RuntimeOptions) (_result *UpdateSubnetResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6640,29 +5009,11 @@ func (client *Client) UpdateSubnetWithOptions(request *UpdateSubnetRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateSubnetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates some information about a specified subnet instance, including the name of the subnet instance.
-//
-// @param request - UpdateSubnetRequest
-//
-// @return UpdateSubnetResponse
-func (client *Client) UpdateSubnet(request *UpdateSubnetRequest) (_result *UpdateSubnetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateSubnetResponse{}
-	_body, _err := client.UpdateSubnetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6675,7 +5026,7 @@ func (client *Client) UpdateSubnet(request *UpdateSubnetRequest) (_result *Updat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateVccResponse
-func (client *Client) UpdateVccWithOptions(request *UpdateVccRequest, runtime *dara.RuntimeOptions) (_result *UpdateVccResponse, _err error) {
+func (client *Client) UpdateVccWithContext(ctx context.Context, request *UpdateVccRequest, runtime *dara.RuntimeOptions) (_result *UpdateVccResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6718,29 +5069,11 @@ func (client *Client) UpdateVccWithOptions(request *UpdateVccRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateVccResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the information about a Lingjun connection instance, including the peak bandwidth and name of the Lingjun connection instance.
-//
-// @param request - UpdateVccRequest
-//
-// @return UpdateVccResponse
-func (client *Client) UpdateVcc(request *UpdateVccRequest) (_result *UpdateVccResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateVccResponse{}
-	_body, _err := client.UpdateVccWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6753,7 +5086,7 @@ func (client *Client) UpdateVcc(request *UpdateVccRequest) (_result *UpdateVccRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateVpdResponse
-func (client *Client) UpdateVpdWithOptions(request *UpdateVpdRequest, runtime *dara.RuntimeOptions) (_result *UpdateVpdResponse, _err error) {
+func (client *Client) UpdateVpdWithContext(ctx context.Context, request *UpdateVpdRequest, runtime *dara.RuntimeOptions) (_result *UpdateVpdResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6788,28 +5121,10 @@ func (client *Client) UpdateVpdWithOptions(request *UpdateVpdRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateVpdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the information about the Lingjun CIDR block, including the name of the Lingjun CIDR block.
-//
-// @param request - UpdateVpdRequest
-//
-// @return UpdateVpdResponse
-func (client *Client) UpdateVpd(request *UpdateVpdRequest) (_result *UpdateVpdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateVpdResponse{}
-	_body, _err := client.UpdateVpdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
