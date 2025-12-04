@@ -187,6 +187,7 @@ type ListSupabaseProjectsResponseBodyItems struct {
 	//
 	// 6.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExpireTime    *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
 	// 	- **Postpaid**: pay-as-you-go
@@ -311,6 +312,10 @@ func (s *ListSupabaseProjectsResponseBodyItems) GetEngineVersion() *string {
 	return s.EngineVersion
 }
 
+func (s *ListSupabaseProjectsResponseBodyItems) GetExpireTime() *string {
+	return s.ExpireTime
+}
+
 func (s *ListSupabaseProjectsResponseBodyItems) GetPayType() *string {
 	return s.PayType
 }
@@ -390,6 +395,11 @@ func (s *ListSupabaseProjectsResponseBodyItems) SetEngine(v string) *ListSupabas
 
 func (s *ListSupabaseProjectsResponseBodyItems) SetEngineVersion(v string) *ListSupabaseProjectsResponseBodyItems {
 	s.EngineVersion = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetExpireTime(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.ExpireTime = &v
 	return s
 }
 

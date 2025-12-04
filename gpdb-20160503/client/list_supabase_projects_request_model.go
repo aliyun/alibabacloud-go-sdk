@@ -13,6 +13,10 @@ type iListSupabaseProjectsRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListSupabaseProjectsRequest
 	GetNextToken() *string
+	SetPageNumber(v int32) *ListSupabaseProjectsRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *ListSupabaseProjectsRequest
+	GetPageSize() *int32
 	SetRegionId(v string) *ListSupabaseProjectsRequest
 	GetRegionId() *string
 }
@@ -29,7 +33,9 @@ type ListSupabaseProjectsRequest struct {
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the cluster.
 	//
 	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation get a list of available region IDs.
@@ -56,6 +62,14 @@ func (s *ListSupabaseProjectsRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListSupabaseProjectsRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListSupabaseProjectsRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
 func (s *ListSupabaseProjectsRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -67,6 +81,16 @@ func (s *ListSupabaseProjectsRequest) SetMaxResults(v int32) *ListSupabaseProjec
 
 func (s *ListSupabaseProjectsRequest) SetNextToken(v string) *ListSupabaseProjectsRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsRequest) SetPageNumber(v int32) *ListSupabaseProjectsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsRequest) SetPageSize(v int32) *ListSupabaseProjectsRequest {
+	s.PageSize = &v
 	return s
 }
 

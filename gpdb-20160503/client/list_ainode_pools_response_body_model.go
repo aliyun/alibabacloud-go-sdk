@@ -227,6 +227,7 @@ type ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos struct {
 	//
 	// 2025-06-16T02:04:42Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos) String() string {
@@ -265,6 +266,10 @@ func (s *ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos) GetUpdateTime() 
 	return s.UpdateTime
 }
 
+func (s *ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos) GetZoneId() *string {
+	return s.ZoneId
+}
+
 func (s *ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos) SetBindObject(v string) *ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos {
 	s.BindObject = &v
 	return s
@@ -297,6 +302,11 @@ func (s *ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos) SetNodeSpec(v st
 
 func (s *ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos) SetUpdateTime(v string) *ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos {
 	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos) SetZoneId(v string) *ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos {
+	s.ZoneId = &v
 	return s
 }
 

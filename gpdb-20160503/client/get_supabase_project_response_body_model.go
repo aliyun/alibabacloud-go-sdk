@@ -21,6 +21,10 @@ type iGetSupabaseProjectResponseBody interface {
 	GetEngine() *string
 	SetEngineVersion(v string) *GetSupabaseProjectResponseBody
 	GetEngineVersion() *string
+	SetInstanceVersion(v string) *GetSupabaseProjectResponseBody
+	GetInstanceVersion() *string
+	SetPayType(v string) *GetSupabaseProjectResponseBody
+	GetPayType() *string
 	SetPrivateConnectUrl(v string) *GetSupabaseProjectResponseBody
 	GetPrivateConnectUrl() *string
 	SetProjectId(v string) *GetSupabaseProjectResponseBody
@@ -41,6 +45,8 @@ type iGetSupabaseProjectResponseBody interface {
 	GetStatus() *string
 	SetStorageSize(v int64) *GetSupabaseProjectResponseBody
 	GetStorageSize() *int64
+	SetStorageType(v string) *GetSupabaseProjectResponseBody
+	GetStorageType() *string
 	SetVSwitchId(v string) *GetSupabaseProjectResponseBody
 	GetVSwitchId() *string
 	SetVpcId(v string) *GetSupabaseProjectResponseBody
@@ -89,7 +95,9 @@ type GetSupabaseProjectResponseBody struct {
 	// example:
 	//
 	// 15
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	EngineVersion   *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
+	PayType         *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The private (VPC) connection URL for the Supabase Dashboard.
 	//
 	// example:
@@ -151,7 +159,8 @@ type GetSupabaseProjectResponseBody struct {
 	// example:
 	//
 	// 2
-	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	StorageSize *int64  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The vSwitch ID of the instance. This parameter must be specified when VPCId is specified.
 	//
 	// example:
@@ -212,6 +221,14 @@ func (s *GetSupabaseProjectResponseBody) GetEngineVersion() *string {
 	return s.EngineVersion
 }
 
+func (s *GetSupabaseProjectResponseBody) GetInstanceVersion() *string {
+	return s.InstanceVersion
+}
+
+func (s *GetSupabaseProjectResponseBody) GetPayType() *string {
+	return s.PayType
+}
+
 func (s *GetSupabaseProjectResponseBody) GetPrivateConnectUrl() *string {
 	return s.PrivateConnectUrl
 }
@@ -250,6 +267,10 @@ func (s *GetSupabaseProjectResponseBody) GetStatus() *string {
 
 func (s *GetSupabaseProjectResponseBody) GetStorageSize() *int64 {
 	return s.StorageSize
+}
+
+func (s *GetSupabaseProjectResponseBody) GetStorageType() *string {
+	return s.StorageType
 }
 
 func (s *GetSupabaseProjectResponseBody) GetVSwitchId() *string {
@@ -291,6 +312,16 @@ func (s *GetSupabaseProjectResponseBody) SetEngine(v string) *GetSupabaseProject
 
 func (s *GetSupabaseProjectResponseBody) SetEngineVersion(v string) *GetSupabaseProjectResponseBody {
 	s.EngineVersion = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetInstanceVersion(v string) *GetSupabaseProjectResponseBody {
+	s.InstanceVersion = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetPayType(v string) *GetSupabaseProjectResponseBody {
+	s.PayType = &v
 	return s
 }
 
@@ -341,6 +372,11 @@ func (s *GetSupabaseProjectResponseBody) SetStatus(v string) *GetSupabaseProject
 
 func (s *GetSupabaseProjectResponseBody) SetStorageSize(v int64) *GetSupabaseProjectResponseBody {
 	s.StorageSize = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetStorageType(v string) *GetSupabaseProjectResponseBody {
+	s.StorageType = &v
 	return s
 }
 

@@ -15486,6 +15486,14 @@ func (client *Client) ListSupabaseProjectsWithOptions(request *ListSupabaseProje
 		query["NextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
