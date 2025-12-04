@@ -3503,6 +3503,10 @@ func (client *Client) ModifyLindormV2InstanceSecurityGroupsWithContext(ctx conte
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改Lindorm新版实例白名单
+//
 // @param request - ModifyLindormV2WhiteIpListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3715,6 +3719,70 @@ func (client *Client) OpenComputePreCheckWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenComputePreCheckResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开通列存索引
+//
+// @param request - OpenLdpsColumnarIndexRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenLdpsColumnarIndexResponse
+func (client *Client) OpenLdpsColumnarIndexWithContext(ctx context.Context, request *OpenLdpsColumnarIndexRequest, runtime *dara.RuntimeOptions) (_result *OpenLdpsColumnarIndexResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OpenLdpsColumnarIndex"),
+		Version:     dara.String("2020-06-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OpenLdpsColumnarIndexResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
