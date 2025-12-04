@@ -12097,6 +12097,104 @@ func (client *Client) RemovePdnsUdpIpSegment(request *RemovePdnsUdpIpSegmentRequ
 
 // Summary:
 //
+// 用于删除特定域名的serverHold状态信息。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
+//
+// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
+//
+// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
+//
+// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
+//
+// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+//
+// @param request - RemoveRspDomainServerHoldStatusForGatewayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveRspDomainServerHoldStatusForGatewayResponse
+func (client *Client) RemoveRspDomainServerHoldStatusForGatewayWithOptions(request *RemoveRspDomainServerHoldStatusForGatewayRequest, runtime *dara.RuntimeOptions) (_result *RemoveRspDomainServerHoldStatusForGatewayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.StatusMsg) {
+		query["StatusMsg"] = request.StatusMsg
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveRspDomainServerHoldStatusForGateway"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveRspDomainServerHoldStatusForGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于删除特定域名的serverHold状态信息。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
+//
+// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
+//
+// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
+//
+// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
+//
+// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+//
+// @param request - RemoveRspDomainServerHoldStatusForGatewayRequest
+//
+// @return RemoveRspDomainServerHoldStatusForGatewayResponse
+func (client *Client) RemoveRspDomainServerHoldStatusForGateway(request *RemoveRspDomainServerHoldStatusForGatewayRequest) (_result *RemoveRspDomainServerHoldStatusForGatewayResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveRspDomainServerHoldStatusForGatewayResponse{}
+	_body, _err := client.RemoveRspDomainServerHoldStatusForGatewayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Replaces the addresses referenced by an address pool.
 //
 // @param tmpReq - ReplaceCloudGtmAddressPoolAddressRequest
@@ -17703,7 +17801,7 @@ func (client *Client) UpdateRecursionZoneRemark(request *UpdateRecursionZoneRema
 
 // Summary:
 //
-// 用于更新域名的状态属性
+// 用于更新特定域名的状态信息。
 //
 // Description:
 //
@@ -17719,122 +17817,12 @@ func (client *Client) UpdateRecursionZoneRemark(request *UpdateRecursionZoneRema
 //
 // - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
 //
-// @param request - UpdateRspDomainServerHoldStatusOteRequest
+// @param request - UpdateRspDomainServerProhibitStatusForGatewayRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
-// @return UpdateRspDomainServerHoldStatusOteResponse
-func (client *Client) UpdateRspDomainServerHoldStatusOteWithOptions(request *UpdateRspDomainServerHoldStatusOteRequest, runtime *dara.RuntimeOptions) (_result *UpdateRspDomainServerHoldStatusOteResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.ClientToken) {
-		query["ClientToken"] = request.ClientToken
-	}
-
-	if !dara.IsNil(request.DomainName) {
-		query["DomainName"] = request.DomainName
-	}
-
-	if !dara.IsNil(request.OperatorId) {
-		query["OperatorId"] = request.OperatorId
-	}
-
-	if !dara.IsNil(request.OperatorType) {
-		query["OperatorType"] = request.OperatorType
-	}
-
-	if !dara.IsNil(request.ServerHoldStatus) {
-		query["ServerHoldStatus"] = request.ServerHoldStatus
-	}
-
-	if !dara.IsNil(request.StatusMsg) {
-		query["StatusMsg"] = request.StatusMsg
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("UpdateRspDomainServerHoldStatusOte"),
-		Version:     dara.String("2015-01-09"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &UpdateRspDomainServerHoldStatusOteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 用于更新域名的状态属性
-//
-// Description:
-//
-// ## 请求说明
-//
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
-//
-// @param request - UpdateRspDomainServerHoldStatusOteRequest
-//
-// @return UpdateRspDomainServerHoldStatusOteResponse
-func (client *Client) UpdateRspDomainServerHoldStatusOte(request *UpdateRspDomainServerHoldStatusOteRequest) (_result *UpdateRspDomainServerHoldStatusOteResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateRspDomainServerHoldStatusOteResponse{}
-	_body, _err := client.UpdateRspDomainServerHoldStatusOteWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 用于更新域名的状态属性
-//
-// Description:
-//
-// ## 请求说明
-//
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
-//
-// @param request - UpdateRspDomainStatusOteRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UpdateRspDomainStatusOteResponse
-func (client *Client) UpdateRspDomainStatusOteWithOptions(request *UpdateRspDomainStatusOteRequest, runtime *dara.RuntimeOptions) (_result *UpdateRspDomainStatusOteResponse, _err error) {
+// @return UpdateRspDomainServerProhibitStatusForGatewayResponse
+func (client *Client) UpdateRspDomainServerProhibitStatusForGatewayWithOptions(request *UpdateRspDomainServerProhibitStatusForGatewayRequest, runtime *dara.RuntimeOptions) (_result *UpdateRspDomainServerProhibitStatusForGatewayResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -17858,19 +17846,11 @@ func (client *Client) UpdateRspDomainStatusOteWithOptions(request *UpdateRspDoma
 		query["DomainName"] = request.DomainName
 	}
 
-	if !dara.IsNil(request.OperatorId) {
-		query["OperatorId"] = request.OperatorId
-	}
-
-	if !dara.IsNil(request.OperatorType) {
-		query["OperatorType"] = request.OperatorType
-	}
-
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
-		Action:      dara.String("UpdateRspDomainStatusOte"),
+		Action:      dara.String("UpdateRspDomainServerProhibitStatusForGateway"),
 		Version:     dara.String("2015-01-09"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
@@ -17880,7 +17860,7 @@ func (client *Client) UpdateRspDomainStatusOteWithOptions(request *UpdateRspDoma
 		ReqBodyType: dara.String("formData"),
 		BodyType:    dara.String("json"),
 	}
-	_result = &UpdateRspDomainStatusOteResponse{}
+	_result = &UpdateRspDomainServerProhibitStatusForGatewayResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -17891,7 +17871,7 @@ func (client *Client) UpdateRspDomainStatusOteWithOptions(request *UpdateRspDoma
 
 // Summary:
 //
-// 用于更新域名的状态属性
+// 用于更新特定域名的状态信息。
 //
 // Description:
 //
@@ -17907,13 +17887,13 @@ func (client *Client) UpdateRspDomainStatusOteWithOptions(request *UpdateRspDoma
 //
 // - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
 //
-// @param request - UpdateRspDomainStatusOteRequest
+// @param request - UpdateRspDomainServerProhibitStatusForGatewayRequest
 //
-// @return UpdateRspDomainStatusOteResponse
-func (client *Client) UpdateRspDomainStatusOte(request *UpdateRspDomainStatusOteRequest) (_result *UpdateRspDomainStatusOteResponse, _err error) {
+// @return UpdateRspDomainServerProhibitStatusForGatewayResponse
+func (client *Client) UpdateRspDomainServerProhibitStatusForGateway(request *UpdateRspDomainServerProhibitStatusForGatewayRequest) (_result *UpdateRspDomainServerProhibitStatusForGatewayResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateRspDomainStatusOteResponse{}
-	_body, _err := client.UpdateRspDomainStatusOteWithOptions(request, runtime)
+	_result = &UpdateRspDomainServerProhibitStatusForGatewayResponse{}
+	_body, _err := client.UpdateRspDomainServerProhibitStatusForGatewayWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
