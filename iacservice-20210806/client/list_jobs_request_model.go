@@ -9,6 +9,8 @@ type iListJobsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetJobType(v string) *ListJobsRequest
+	GetJobType() *string
 	SetPageNumber(v int32) *ListJobsRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListJobsRequest
@@ -20,6 +22,10 @@ type iListJobsRequest interface {
 }
 
 type ListJobsRequest struct {
+	// example:
+	//
+	// Default
+	JobType *string `json:"jobType,omitempty" xml:"jobType,omitempty"`
 	// example:
 	//
 	// 1
@@ -43,6 +49,10 @@ func (s ListJobsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListJobsRequest) GetJobType() *string {
+	return s.JobType
+}
+
 func (s *ListJobsRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -57,6 +67,11 @@ func (s *ListJobsRequest) GetStatus() *string {
 
 func (s *ListJobsRequest) GetTaskType() *string {
 	return s.TaskType
+}
+
+func (s *ListJobsRequest) SetJobType(v string) *ListJobsRequest {
+	s.JobType = &v
+	return s
 }
 
 func (s *ListJobsRequest) SetPageNumber(v int32) *ListJobsRequest {

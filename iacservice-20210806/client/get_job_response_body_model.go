@@ -79,7 +79,11 @@ type GetJobResponseBodyJob struct {
 	// example:
 	//
 	// job-518855d9a058cfff0dc933e6b5767
-	JobId   *string                `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// example:
+	//
+	// Default
+	JobType *string                `json:"jobType,omitempty" xml:"jobType,omitempty"`
 	LogFile map[string]interface{} `json:"logFile,omitempty" xml:"logFile,omitempty"`
 	// example:
 	//
@@ -142,6 +146,10 @@ func (s *GetJobResponseBodyJob) GetIsPassAssertCheck() *bool {
 
 func (s *GetJobResponseBodyJob) GetJobId() *string {
 	return s.JobId
+}
+
+func (s *GetJobResponseBodyJob) GetJobType() *string {
+	return s.JobType
 }
 
 func (s *GetJobResponseBodyJob) GetLogFile() map[string]interface{} {
@@ -222,6 +230,11 @@ func (s *GetJobResponseBodyJob) SetIsPassAssertCheck(v bool) *GetJobResponseBody
 
 func (s *GetJobResponseBodyJob) SetJobId(v string) *GetJobResponseBodyJob {
 	s.JobId = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJob) SetJobType(v string) *GetJobResponseBodyJob {
+	s.JobType = &v
 	return s
 }
 

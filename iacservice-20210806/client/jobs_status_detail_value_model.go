@@ -9,10 +9,10 @@ type iJobsStatusDetailValue interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetJobResult(v string) *JobsStatusDetailValue
-	GetJobResult() *string
 	SetComment(v string) *JobsStatusDetailValue
 	GetComment() *string
+	SetJobResult(v string) *JobsStatusDetailValue
+	GetJobResult() *string
 	SetTimeStamps(v string) *JobsStatusDetailValue
 	GetTimeStamps() *string
 }
@@ -21,11 +21,11 @@ type JobsStatusDetailValue struct {
 	// example:
 	//
 	// ""
-	JobResult *string `json:"jobResult,omitempty" xml:"jobResult,omitempty"`
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
 	// example:
 	//
 	// ""
-	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	JobResult *string `json:"jobResult,omitempty" xml:"jobResult,omitempty"`
 	// example:
 	//
 	// 2022-06-13 17:11:34
@@ -40,25 +40,25 @@ func (s JobsStatusDetailValue) GoString() string {
 	return s.String()
 }
 
-func (s *JobsStatusDetailValue) GetJobResult() *string {
-	return s.JobResult
-}
-
 func (s *JobsStatusDetailValue) GetComment() *string {
 	return s.Comment
+}
+
+func (s *JobsStatusDetailValue) GetJobResult() *string {
+	return s.JobResult
 }
 
 func (s *JobsStatusDetailValue) GetTimeStamps() *string {
 	return s.TimeStamps
 }
 
-func (s *JobsStatusDetailValue) SetJobResult(v string) *JobsStatusDetailValue {
-	s.JobResult = &v
+func (s *JobsStatusDetailValue) SetComment(v string) *JobsStatusDetailValue {
+	s.Comment = &v
 	return s
 }
 
-func (s *JobsStatusDetailValue) SetComment(v string) *JobsStatusDetailValue {
-	s.Comment = &v
+func (s *JobsStatusDetailValue) SetJobResult(v string) *JobsStatusDetailValue {
+	s.JobResult = &v
 	return s
 }
 

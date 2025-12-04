@@ -3059,6 +3059,10 @@ func (client *Client) ListJobsWithOptions(taskId *string, request *ListJobsReque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobType) {
+		query["jobType"] = request.JobType
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["pageNumber"] = request.PageNumber
 	}

@@ -2228,6 +2228,10 @@ func (client *Client) ListJobsWithContext(ctx context.Context, taskId *string, r
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobType) {
+		query["jobType"] = request.JobType
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["pageNumber"] = request.PageNumber
 	}
