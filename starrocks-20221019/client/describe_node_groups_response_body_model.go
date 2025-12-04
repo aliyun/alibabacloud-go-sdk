@@ -266,7 +266,8 @@ type DescribeNodeGroupsResponseBodyData struct {
 	// example:
 	//
 	// 100
-	StorageSize *int32 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	StorageSize *int32                                    `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	Tags        []*DescribeNodeGroupsResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 3
@@ -403,6 +404,10 @@ func (s *DescribeNodeGroupsResponseBodyData) GetStoragePerformanceLevel() *strin
 
 func (s *DescribeNodeGroupsResponseBodyData) GetStorageSize() *int32 {
 	return s.StorageSize
+}
+
+func (s *DescribeNodeGroupsResponseBodyData) GetTags() []*DescribeNodeGroupsResponseBodyDataTags {
+	return s.Tags
 }
 
 func (s *DescribeNodeGroupsResponseBodyData) GetTargetElasticNodeNumber() *int32 {
@@ -563,6 +568,11 @@ func (s *DescribeNodeGroupsResponseBodyData) SetStorageSize(v int32) *DescribeNo
 	return s
 }
 
+func (s *DescribeNodeGroupsResponseBodyData) SetTags(v []*DescribeNodeGroupsResponseBodyDataTags) *DescribeNodeGroupsResponseBodyData {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeNodeGroupsResponseBodyData) SetTargetElasticNodeNumber(v int32) *DescribeNodeGroupsResponseBodyData {
 	s.TargetElasticNodeNumber = &v
 	return s
@@ -576,6 +586,15 @@ func (s *DescribeNodeGroupsResponseBodyData) SetZoneId(v string) *DescribeNodeGr
 func (s *DescribeNodeGroupsResponseBodyData) Validate() error {
 	if s.NodeInfo != nil {
 		for _, item := range s.NodeInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -611,5 +630,40 @@ func (s *DescribeNodeGroupsResponseBodyDataNodeInfo) SetNodeId(v string) *Descri
 }
 
 func (s *DescribeNodeGroupsResponseBodyDataNodeInfo) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeNodeGroupsResponseBodyDataTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeNodeGroupsResponseBodyDataTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeNodeGroupsResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNodeGroupsResponseBodyDataTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeNodeGroupsResponseBodyDataTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeNodeGroupsResponseBodyDataTags) SetKey(v string) *DescribeNodeGroupsResponseBodyDataTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeNodeGroupsResponseBodyDataTags) SetValue(v string) *DescribeNodeGroupsResponseBodyDataTags {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeNodeGroupsResponseBodyDataTags) Validate() error {
 	return dara.Validate(s)
 }

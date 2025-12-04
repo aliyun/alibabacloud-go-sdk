@@ -21,6 +21,10 @@ type iCreateInstanceV1Request interface {
 	GetBackendNodeGroups() []*CreateInstanceV1RequestBackendNodeGroups
 	SetClientToken(v string) *CreateInstanceV1Request
 	GetClientToken() *string
+	SetDlfCatalogName(v string) *CreateInstanceV1Request
+	GetDlfCatalogName() *string
+	SetDlfCatalogType(v string) *CreateInstanceV1Request
+	GetDlfCatalogType() *string
 	SetDuration(v int32) *CreateInstanceV1Request
 	GetDuration() *int32
 	SetEncrypted(v bool) *CreateInstanceV1Request
@@ -33,6 +37,8 @@ type iCreateInstanceV1Request interface {
 	GetInstanceName() *string
 	SetKmsKeyId(v string) *CreateInstanceV1Request
 	GetKmsKeyId() *string
+	SetLinkedRamUserName(v string) *CreateInstanceV1Request
+	GetLinkedRamUserName() *string
 	SetObserverNodeGroups(v []*CreateInstanceV1RequestObserverNodeGroups) *CreateInstanceV1Request
 	GetObserverNodeGroups() []*CreateInstanceV1RequestObserverNodeGroups
 	SetOssAccessingRoleName(v string) *CreateInstanceV1Request
@@ -43,8 +49,12 @@ type iCreateInstanceV1Request interface {
 	GetPayType() *string
 	SetPricingCycle(v string) *CreateInstanceV1Request
 	GetPricingCycle() *string
+	SetPrincipalType(v string) *CreateInstanceV1Request
+	GetPrincipalType() *string
 	SetPromotionOptionNo(v string) *CreateInstanceV1Request
 	GetPromotionOptionNo() *string
+	SetRamUserId(v string) *CreateInstanceV1Request
+	GetRamUserId() *string
 	SetRegionId(v string) *CreateInstanceV1Request
 	GetRegionId() *string
 	SetResourceGroupId(v string) *CreateInstanceV1Request
@@ -83,6 +93,14 @@ type CreateInstanceV1Request struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// example:
 	//
+	// paimon_test
+	DlfCatalogName *string `json:"DlfCatalogName,omitempty" xml:"DlfCatalogName,omitempty"`
+	// example:
+	//
+	// paimon
+	DlfCatalogType *string `json:"DlfCatalogType,omitempty" xml:"DlfCatalogType,omitempty"`
+	// example:
+	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// example:
@@ -100,7 +118,11 @@ type CreateInstanceV1Request struct {
 	// example:
 	//
 	// fdsdf****
-	KmsKeyId           *string                                      `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// example:
+	//
+	// aliyun.test1
+	LinkedRamUserName  *string                                      `json:"LinkedRamUserName,omitempty" xml:"LinkedRamUserName,omitempty"`
 	ObserverNodeGroups []*CreateInstanceV1RequestObserverNodeGroups `json:"ObserverNodeGroups,omitempty" xml:"ObserverNodeGroups,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -124,8 +146,16 @@ type CreateInstanceV1Request struct {
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	// example:
 	//
+	// RR
+	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	// example:
+	//
 	// 165445235634
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
+	// example:
+	//
+	// 123456
+	RamUserId *string `json:"RamUserId,omitempty" xml:"RamUserId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -198,6 +228,14 @@ func (s *CreateInstanceV1Request) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *CreateInstanceV1Request) GetDlfCatalogName() *string {
+	return s.DlfCatalogName
+}
+
+func (s *CreateInstanceV1Request) GetDlfCatalogType() *string {
+	return s.DlfCatalogType
+}
+
 func (s *CreateInstanceV1Request) GetDuration() *int32 {
 	return s.Duration
 }
@@ -222,6 +260,10 @@ func (s *CreateInstanceV1Request) GetKmsKeyId() *string {
 	return s.KmsKeyId
 }
 
+func (s *CreateInstanceV1Request) GetLinkedRamUserName() *string {
+	return s.LinkedRamUserName
+}
+
 func (s *CreateInstanceV1Request) GetObserverNodeGroups() []*CreateInstanceV1RequestObserverNodeGroups {
 	return s.ObserverNodeGroups
 }
@@ -242,8 +284,16 @@ func (s *CreateInstanceV1Request) GetPricingCycle() *string {
 	return s.PricingCycle
 }
 
+func (s *CreateInstanceV1Request) GetPrincipalType() *string {
+	return s.PrincipalType
+}
+
 func (s *CreateInstanceV1Request) GetPromotionOptionNo() *string {
 	return s.PromotionOptionNo
+}
+
+func (s *CreateInstanceV1Request) GetRamUserId() *string {
+	return s.RamUserId
 }
 
 func (s *CreateInstanceV1Request) GetRegionId() *string {
@@ -308,6 +358,16 @@ func (s *CreateInstanceV1Request) SetClientToken(v string) *CreateInstanceV1Requ
 	return s
 }
 
+func (s *CreateInstanceV1Request) SetDlfCatalogName(v string) *CreateInstanceV1Request {
+	s.DlfCatalogName = &v
+	return s
+}
+
+func (s *CreateInstanceV1Request) SetDlfCatalogType(v string) *CreateInstanceV1Request {
+	s.DlfCatalogType = &v
+	return s
+}
+
 func (s *CreateInstanceV1Request) SetDuration(v int32) *CreateInstanceV1Request {
 	s.Duration = &v
 	return s
@@ -338,6 +398,11 @@ func (s *CreateInstanceV1Request) SetKmsKeyId(v string) *CreateInstanceV1Request
 	return s
 }
 
+func (s *CreateInstanceV1Request) SetLinkedRamUserName(v string) *CreateInstanceV1Request {
+	s.LinkedRamUserName = &v
+	return s
+}
+
 func (s *CreateInstanceV1Request) SetObserverNodeGroups(v []*CreateInstanceV1RequestObserverNodeGroups) *CreateInstanceV1Request {
 	s.ObserverNodeGroups = v
 	return s
@@ -363,8 +428,18 @@ func (s *CreateInstanceV1Request) SetPricingCycle(v string) *CreateInstanceV1Req
 	return s
 }
 
+func (s *CreateInstanceV1Request) SetPrincipalType(v string) *CreateInstanceV1Request {
+	s.PrincipalType = &v
+	return s
+}
+
 func (s *CreateInstanceV1Request) SetPromotionOptionNo(v string) *CreateInstanceV1Request {
 	s.PromotionOptionNo = &v
+	return s
+}
+
+func (s *CreateInstanceV1Request) SetRamUserId(v string) *CreateInstanceV1Request {
+	s.RamUserId = &v
 	return s
 }
 

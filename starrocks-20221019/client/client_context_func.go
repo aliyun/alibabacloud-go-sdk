@@ -109,6 +109,14 @@ func (client *Client) CreateInstanceV1WithContext(ctx context.Context, request *
 		body["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.DlfCatalogName) {
+		body["DlfCatalogName"] = request.DlfCatalogName
+	}
+
+	if !dara.IsNil(request.DlfCatalogType) {
+		body["DlfCatalogType"] = request.DlfCatalogType
+	}
+
 	if !dara.IsNil(request.Duration) {
 		body["Duration"] = request.Duration
 	}
@@ -133,6 +141,10 @@ func (client *Client) CreateInstanceV1WithContext(ctx context.Context, request *
 		body["KmsKeyId"] = request.KmsKeyId
 	}
 
+	if !dara.IsNil(request.LinkedRamUserName) {
+		body["LinkedRamUserName"] = request.LinkedRamUserName
+	}
+
 	if !dara.IsNil(request.ObserverNodeGroups) {
 		body["ObserverNodeGroups"] = request.ObserverNodeGroups
 	}
@@ -153,8 +165,16 @@ func (client *Client) CreateInstanceV1WithContext(ctx context.Context, request *
 		body["PricingCycle"] = request.PricingCycle
 	}
 
+	if !dara.IsNil(request.PrincipalType) {
+		body["PrincipalType"] = request.PrincipalType
+	}
+
 	if !dara.IsNil(request.PromotionOptionNo) {
 		body["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
+	if !dara.IsNil(request.RamUserId) {
+		body["RamUserId"] = request.RamUserId
 	}
 
 	if !dara.IsNil(request.RegionId) {
