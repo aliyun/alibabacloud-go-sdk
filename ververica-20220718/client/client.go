@@ -2639,6 +2639,267 @@ func (client *Client) GetDeploymentDraftLock(namespace *string, request *GetDepl
 
 // Summary:
 //
+// 通过Ip获取已部署作业
+//
+// @param request - GetDeploymentsByIpRequest
+//
+// @param headers - GetDeploymentsByIpHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeploymentsByIpResponse
+func (client *Client) GetDeploymentsByIpWithOptions(namespace *string, request *GetDeploymentsByIpRequest, headers *GetDeploymentsByIpHeaders, runtime *dara.RuntimeOptions) (_result *GetDeploymentsByIpResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DstIp) {
+		query["dstIp"] = request.DstIp
+	}
+
+	if !dara.IsNil(request.DstPort) {
+		query["dstPort"] = request.DstPort
+	}
+
+	if !dara.IsNil(request.IgnoreJobSummary) {
+		query["ignoreJobSummary"] = request.IgnoreJobSummary
+	}
+
+	if !dara.IsNil(request.IgnoreResourceSetting) {
+		query["ignoreResourceSetting"] = request.IgnoreResourceSetting
+	}
+
+	if !dara.IsNil(request.SrcIp) {
+		query["srcIp"] = request.SrcIp
+	}
+
+	if !dara.IsNil(request.SrcPort) {
+		query["srcPort"] = request.SrcPort
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDeploymentsByIp"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/deployments/getDeployments/byIp"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDeploymentsByIpResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过Ip获取已部署作业
+//
+// @param request - GetDeploymentsByIpRequest
+//
+// @return GetDeploymentsByIpResponse
+func (client *Client) GetDeploymentsByIp(namespace *string, request *GetDeploymentsByIpRequest) (_result *GetDeploymentsByIpResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GetDeploymentsByIpHeaders{}
+	_result = &GetDeploymentsByIpResponse{}
+	_body, _err := client.GetDeploymentsByIpWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过标签获取已部署作业
+//
+// @param request - GetDeploymentsByLabelRequest
+//
+// @param headers - GetDeploymentsByLabelHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeploymentsByLabelResponse
+func (client *Client) GetDeploymentsByLabelWithOptions(namespace *string, request *GetDeploymentsByLabelRequest, headers *GetDeploymentsByLabelHeaders, runtime *dara.RuntimeOptions) (_result *GetDeploymentsByLabelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IgnoreJobSummary) {
+		query["ignoreJobSummary"] = request.IgnoreJobSummary
+	}
+
+	if !dara.IsNil(request.IgnoreResourceSetting) {
+		query["ignoreResourceSetting"] = request.IgnoreResourceSetting
+	}
+
+	if !dara.IsNil(request.LabelKey) {
+		query["labelKey"] = request.LabelKey
+	}
+
+	if !dara.IsNil(request.LabelValue) {
+		query["labelValue"] = request.LabelValue
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDeploymentsByLabel"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/deployments/getDeployments/byLabel"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDeploymentsByLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过标签获取已部署作业
+//
+// @param request - GetDeploymentsByLabelRequest
+//
+// @return GetDeploymentsByLabelResponse
+func (client *Client) GetDeploymentsByLabel(namespace *string, request *GetDeploymentsByLabelRequest) (_result *GetDeploymentsByLabelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GetDeploymentsByLabelHeaders{}
+	_result = &GetDeploymentsByLabelResponse{}
+	_body, _err := client.GetDeploymentsByLabelWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过名称获取已部署作业
+//
+// @param request - GetDeploymentsByNameRequest
+//
+// @param headers - GetDeploymentsByNameHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeploymentsByNameResponse
+func (client *Client) GetDeploymentsByNameWithOptions(namespace *string, deploymentName *string, request *GetDeploymentsByNameRequest, headers *GetDeploymentsByNameHeaders, runtime *dara.RuntimeOptions) (_result *GetDeploymentsByNameResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IgnoreJobSummary) {
+		query["ignoreJobSummary"] = request.IgnoreJobSummary
+	}
+
+	if !dara.IsNil(request.IgnoreResourceSetting) {
+		query["ignoreResourceSetting"] = request.IgnoreResourceSetting
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDeploymentsByName"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/deployments/name/" + dara.PercentEncode(dara.StringValue(deploymentName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDeploymentsByNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过名称获取已部署作业
+//
+// @param request - GetDeploymentsByNameRequest
+//
+// @return GetDeploymentsByNameResponse
+func (client *Client) GetDeploymentsByName(namespace *string, deploymentName *string, request *GetDeploymentsByNameRequest) (_result *GetDeploymentsByNameResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GetDeploymentsByNameHeaders{}
+	_result = &GetDeploymentsByNameResponse{}
+	_body, _err := client.GetDeploymentsByNameWithOptions(namespace, deploymentName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取运行事件
 //
 // @param request - GetEventsRequest
@@ -3555,6 +3816,65 @@ func (client *Client) GetUdfArtifacts(namespace *string, request *GetUdfArtifact
 	headers := &GetUdfArtifactsHeaders{}
 	_result = &GetUdfArtifactsResponse{}
 	_body, _err := client.GetUdfArtifactsWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Get validate DeploymentDraft result
+//
+// @param headers - GetValidateDeploymentDraftResultHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetValidateDeploymentDraftResultResponse
+func (client *Client) GetValidateDeploymentDraftResultWithOptions(namespace *string, ticketId *string, headers *GetValidateDeploymentDraftResultHeaders, runtime *dara.RuntimeOptions) (_result *GetValidateDeploymentDraftResultResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetValidateDeploymentDraftResult"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/deployment-drafts/tickets/" + dara.PercentEncode(dara.StringValue(ticketId)) + "/async-validate"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetValidateDeploymentDraftResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Get validate DeploymentDraft result
+//
+// @return GetValidateDeploymentDraftResultResponse
+func (client *Client) GetValidateDeploymentDraftResult(namespace *string, ticketId *string) (_result *GetValidateDeploymentDraftResultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GetValidateDeploymentDraftResultHeaders{}
+	_result = &GetValidateDeploymentDraftResultResponse{}
+	_body, _err := client.GetValidateDeploymentDraftResultWithOptions(namespace, ticketId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5966,6 +6286,76 @@ func (client *Client) UpdateVariable(namespace *string, name *string, request *U
 	headers := &UpdateVariableHeaders{}
 	_result = &UpdateVariableResponse{}
 	_body, _err := client.UpdateVariableWithOptions(namespace, name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// validate DeploymentDraft async
+//
+// @param request - ValidateDeploymentDraftAsyncRequest
+//
+// @param headers - ValidateDeploymentDraftAsyncHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidateDeploymentDraftAsyncResponse
+func (client *Client) ValidateDeploymentDraftAsyncWithOptions(namespace *string, request *ValidateDeploymentDraftAsyncRequest, headers *ValidateDeploymentDraftAsyncHeaders, runtime *dara.RuntimeOptions) (_result *ValidateDeploymentDraftAsyncResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ValidateDeploymentDraftAsync"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/deployment-drafts/async-validate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ValidateDeploymentDraftAsyncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// validate DeploymentDraft async
+//
+// @param request - ValidateDeploymentDraftAsyncRequest
+//
+// @return ValidateDeploymentDraftAsyncResponse
+func (client *Client) ValidateDeploymentDraftAsync(namespace *string, request *ValidateDeploymentDraftAsyncRequest) (_result *ValidateDeploymentDraftAsyncResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &ValidateDeploymentDraftAsyncHeaders{}
+	_result = &ValidateDeploymentDraftAsyncResponse{}
+	_body, _err := client.ValidateDeploymentDraftAsyncWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
