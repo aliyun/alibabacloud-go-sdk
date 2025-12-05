@@ -282,7 +282,12 @@ func (s *GetSecretValueResponseBody) SetVersionStages(v *GetSecretValueResponseB
 }
 
 func (s *GetSecretValueResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VersionStages != nil {
+		if err := s.VersionStages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSecretValueResponseBodyVersionStages struct {

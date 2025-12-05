@@ -59,5 +59,10 @@ func (s *UpdateAliasResponse) SetBody(v *UpdateAliasResponseBody) *UpdateAliasRe
 }
 
 func (s *UpdateAliasResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

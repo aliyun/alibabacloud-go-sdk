@@ -104,7 +104,12 @@ func (s *ListKmsInstancesResponseBody) SetTotalCount(v int64) *ListKmsInstancesR
 }
 
 func (s *ListKmsInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.KmsInstances != nil {
+		if err := s.KmsInstances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListKmsInstancesResponseBodyKmsInstances struct {
@@ -129,7 +134,16 @@ func (s *ListKmsInstancesResponseBodyKmsInstances) SetKmsInstance(v []*ListKmsIn
 }
 
 func (s *ListKmsInstancesResponseBodyKmsInstances) Validate() error {
-	return dara.Validate(s)
+	if s.KmsInstance != nil {
+		for _, item := range s.KmsInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListKmsInstancesResponseBodyKmsInstancesKmsInstance struct {

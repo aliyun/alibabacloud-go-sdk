@@ -59,5 +59,10 @@ func (s *DeleteClientKeyResponse) SetBody(v *DeleteClientKeyResponseBody) *Delet
 }
 
 func (s *DeleteClientKeyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

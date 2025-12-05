@@ -104,7 +104,12 @@ func (s *ListKeysResponseBody) SetTotalCount(v int32) *ListKeysResponseBody {
 }
 
 func (s *ListKeysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Keys != nil {
+		if err := s.Keys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListKeysResponseBodyKeys struct {
@@ -129,7 +134,16 @@ func (s *ListKeysResponseBodyKeys) SetKey(v []*ListKeysResponseBodyKeysKey) *Lis
 }
 
 func (s *ListKeysResponseBodyKeys) Validate() error {
-	return dara.Validate(s)
+	if s.Key != nil {
+		for _, item := range s.Key {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListKeysResponseBodyKeysKey struct {

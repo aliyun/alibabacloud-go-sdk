@@ -59,5 +59,10 @@ func (s *GetClientKeyResponse) SetBody(v *GetClientKeyResponseBody) *GetClientKe
 }
 
 func (s *GetClientKeyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

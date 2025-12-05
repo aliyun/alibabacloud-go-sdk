@@ -59,5 +59,10 @@ func (s *ListKmsInstancesResponse) SetBody(v *ListKmsInstancesResponseBody) *Lis
 }
 
 func (s *ListKmsInstancesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

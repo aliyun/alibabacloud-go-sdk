@@ -71,7 +71,12 @@ func (s *UpdateSecretRequest) SetSecretName(v string) *UpdateSecretRequest {
 }
 
 func (s *UpdateSecretRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ExtendedConfig != nil {
+		if err := s.ExtendedConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateSecretRequestExtendedConfig struct {

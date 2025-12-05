@@ -71,7 +71,12 @@ func (s *UpdateSecretShrinkRequest) SetSecretName(v string) *UpdateSecretShrinkR
 }
 
 func (s *UpdateSecretShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ExtendedConfig != nil {
+		if err := s.ExtendedConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateSecretShrinkRequestExtendedConfig struct {

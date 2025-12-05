@@ -104,7 +104,12 @@ func (s *ListApplicationAccessPointsResponseBody) SetTotalCount(v int32) *ListAp
 }
 
 func (s *ListApplicationAccessPointsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationAccessPoints != nil {
+		if err := s.ApplicationAccessPoints.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListApplicationAccessPointsResponseBodyApplicationAccessPoints struct {
@@ -129,7 +134,16 @@ func (s *ListApplicationAccessPointsResponseBodyApplicationAccessPoints) SetAppl
 }
 
 func (s *ListApplicationAccessPointsResponseBodyApplicationAccessPoints) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationAccessPoint != nil {
+		for _, item := range s.ApplicationAccessPoint {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationAccessPointsResponseBodyApplicationAccessPointsApplicationAccessPoint struct {

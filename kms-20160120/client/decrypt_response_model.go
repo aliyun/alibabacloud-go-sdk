@@ -59,5 +59,10 @@ func (s *DecryptResponse) SetBody(v *DecryptResponseBody) *DecryptResponse {
 }
 
 func (s *DecryptResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

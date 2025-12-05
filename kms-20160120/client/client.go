@@ -11,6 +11,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -93,9 +94,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AsymmetricDecryptResponse
 func (client *Client) AsymmetricDecryptWithOptions(request *AsymmetricDecryptRequest, runtime *dara.RuntimeOptions) (_result *AsymmetricDecryptResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -209,9 +212,11 @@ func (client *Client) AsymmetricDecrypt(request *AsymmetricDecryptRequest) (_res
 //
 // @return AsymmetricEncryptResponse
 func (client *Client) AsymmetricEncryptWithOptions(request *AsymmetricEncryptRequest, runtime *dara.RuntimeOptions) (_result *AsymmetricEncryptResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -309,9 +314,11 @@ func (client *Client) AsymmetricEncrypt(request *AsymmetricEncryptRequest) (_res
 //
 // @return AsymmetricSignResponse
 func (client *Client) AsymmetricSignWithOptions(request *AsymmetricSignRequest, runtime *dara.RuntimeOptions) (_result *AsymmetricSignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -413,9 +420,11 @@ func (client *Client) AsymmetricSign(request *AsymmetricSignRequest) (_result *A
 //
 // @return AsymmetricVerifyResponse
 func (client *Client) AsymmetricVerifyWithOptions(request *AsymmetricVerifyRequest, runtime *dara.RuntimeOptions) (_result *AsymmetricVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -517,9 +526,11 @@ func (client *Client) AsymmetricVerify(request *AsymmetricVerifyRequest) (_resul
 //
 // @return CancelKeyDeletionResponse
 func (client *Client) CancelKeyDeletionWithOptions(request *CancelKeyDeletionRequest, runtime *dara.RuntimeOptions) (_result *CancelKeyDeletionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyId) {
@@ -595,9 +606,11 @@ func (client *Client) CancelKeyDeletion(request *CancelKeyDeletionRequest) (_res
 //
 // @return CertificatePrivateKeyDecryptResponse
 func (client *Client) CertificatePrivateKeyDecryptWithOptions(request *CertificatePrivateKeyDecryptRequest, runtime *dara.RuntimeOptions) (_result *CertificatePrivateKeyDecryptResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -699,9 +712,11 @@ func (client *Client) CertificatePrivateKeyDecrypt(request *CertificatePrivateKe
 //
 // @return CertificatePrivateKeySignResponse
 func (client *Client) CertificatePrivateKeySignWithOptions(request *CertificatePrivateKeySignRequest, runtime *dara.RuntimeOptions) (_result *CertificatePrivateKeySignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -807,9 +822,11 @@ func (client *Client) CertificatePrivateKeySign(request *CertificatePrivateKeySi
 //
 // @return CertificatePublicKeyEncryptResponse
 func (client *Client) CertificatePublicKeyEncryptWithOptions(request *CertificatePublicKeyEncryptRequest, runtime *dara.RuntimeOptions) (_result *CertificatePublicKeyEncryptResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -911,9 +928,11 @@ func (client *Client) CertificatePublicKeyEncrypt(request *CertificatePublicKeyE
 //
 // @return CertificatePublicKeyVerifyResponse
 func (client *Client) CertificatePublicKeyVerifyWithOptions(request *CertificatePublicKeyVerifyRequest, runtime *dara.RuntimeOptions) (_result *CertificatePublicKeyVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -1011,9 +1030,11 @@ func (client *Client) CertificatePublicKeyVerify(request *CertificatePublicKeyVe
 //
 // @return ConnectKmsInstanceResponse
 func (client *Client) ConnectKmsInstanceWithOptions(request *ConnectKmsInstanceRequest, runtime *dara.RuntimeOptions) (_result *ConnectKmsInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KMProvider) {
@@ -1097,9 +1118,11 @@ func (client *Client) ConnectKmsInstance(request *ConnectKmsInstanceRequest) (_r
 //
 // @return CreateAliasResponse
 func (client *Client) CreateAliasWithOptions(request *CreateAliasRequest, runtime *dara.RuntimeOptions) (_result *CreateAliasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
@@ -1177,9 +1200,11 @@ func (client *Client) CreateAlias(request *CreateAliasRequest) (_result *CreateA
 //
 // @return CreateApplicationAccessPointResponse
 func (client *Client) CreateApplicationAccessPointWithOptions(request *CreateApplicationAccessPointRequest, runtime *dara.RuntimeOptions) (_result *CreateApplicationAccessPointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthenticationMethod) {
@@ -1251,88 +1276,6 @@ func (client *Client) CreateApplicationAccessPoint(request *CreateApplicationAcc
 	return _result, _err
 }
 
-// Description:
-//
-// To create a certificate, you must specify the type of the asymmetric key. Certificates Manager generates a private key and returns a certificate signing request (CSR). Submit the CSR in the Privacy Enhanced Mail (PEM) format to a certificate authority (CA) to obtain the formal certificate and certificate chain. Then, call the [UploadCertificate](https://help.aliyun.com/document_detail/212136.html) operation to import the certificate into Certificates Manager.
-//
-// In this example, a certificate is created and the CSR is obtained.
-//
-// @param tmpReq - CreateCertificateRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CreateCertificateResponse
-func (client *Client) CreateCertificateWithOptions(tmpReq *CreateCertificateRequest, runtime *dara.RuntimeOptions) (_result *CreateCertificateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	request := &CreateCertificateShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !dara.IsNil(tmpReq.SubjectAlternativeNames) {
-		request.SubjectAlternativeNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubjectAlternativeNames, dara.String("SubjectAlternativeNames"), dara.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.ExportablePrivateKey) {
-		query["ExportablePrivateKey"] = request.ExportablePrivateKey
-	}
-
-	if !dara.IsNil(request.KeySpec) {
-		query["KeySpec"] = request.KeySpec
-	}
-
-	if !dara.IsNil(request.Subject) {
-		query["Subject"] = request.Subject
-	}
-
-	if !dara.IsNil(request.SubjectAlternativeNamesShrink) {
-		query["SubjectAlternativeNames"] = request.SubjectAlternativeNamesShrink
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("CreateCertificate"),
-		Version:     dara.String("2016-01-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &CreateCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Description:
-//
-// To create a certificate, you must specify the type of the asymmetric key. Certificates Manager generates a private key and returns a certificate signing request (CSR). Submit the CSR in the Privacy Enhanced Mail (PEM) format to a certificate authority (CA) to obtain the formal certificate and certificate chain. Then, call the [UploadCertificate](https://help.aliyun.com/document_detail/212136.html) operation to import the certificate into Certificates Manager.
-//
-// In this example, a certificate is created and the CSR is obtained.
-//
-// @param request - CreateCertificateRequest
-//
-// @return CreateCertificateResponse
-func (client *Client) CreateCertificate(request *CreateCertificateRequest) (_result *CreateCertificateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateCertificateResponse{}
-	_body, _err := client.CreateCertificateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 // Summary:
 //
 // Creates a client key.
@@ -1359,9 +1302,11 @@ func (client *Client) CreateCertificate(request *CreateCertificateRequest) (_res
 //
 // @return CreateClientKeyResponse
 func (client *Client) CreateClientKeyWithOptions(request *CreateClientKeyRequest, runtime *dara.RuntimeOptions) (_result *CreateClientKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AapName) {
@@ -1451,9 +1396,11 @@ func (client *Client) CreateClientKey(request *CreateClientKeyRequest) (_result 
 //
 // @return CreateKeyResponse
 func (client *Client) CreateKeyWithOptions(request *CreateKeyRequest, runtime *dara.RuntimeOptions) (_result *CreateKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DKMSInstanceId) {
@@ -1567,9 +1514,11 @@ func (client *Client) CreateKey(request *CreateKeyRequest) (_result *CreateKeyRe
 //
 // @return CreateKeyVersionResponse
 func (client *Client) CreateKeyVersionWithOptions(request *CreateKeyVersionRequest, runtime *dara.RuntimeOptions) (_result *CreateKeyVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyId) {
@@ -1651,9 +1600,11 @@ func (client *Client) CreateKeyVersion(request *CreateKeyVersionRequest) (_resul
 //
 // @return CreateNetworkRuleResponse
 func (client *Client) CreateNetworkRuleWithOptions(request *CreateNetworkRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateNetworkRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -1747,9 +1698,11 @@ func (client *Client) CreateNetworkRule(request *CreateNetworkRuleRequest) (_res
 //
 // @return CreatePolicyResponse
 func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runtime *dara.RuntimeOptions) (_result *CreatePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessControlRules) {
@@ -1851,9 +1804,11 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 //
 // @return CreateSecretResponse
 func (client *Client) CreateSecretWithOptions(tmpReq *CreateSecretRequest, runtime *dara.RuntimeOptions) (_result *CreateSecretResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateSecretShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1977,9 +1932,11 @@ func (client *Client) CreateSecret(request *CreateSecretRequest) (_result *Creat
 //
 // @return DecryptResponse
 func (client *Client) DecryptWithOptions(tmpReq *DecryptRequest, runtime *dara.RuntimeOptions) (_result *DecryptResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DecryptShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2047,9 +2004,11 @@ func (client *Client) Decrypt(request *DecryptRequest) (_result *DecryptResponse
 //
 // @return DeleteAliasResponse
 func (client *Client) DeleteAliasWithOptions(request *DeleteAliasRequest, runtime *dara.RuntimeOptions) (_result *DeleteAliasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
@@ -2107,9 +2066,11 @@ func (client *Client) DeleteAlias(request *DeleteAliasRequest) (_result *DeleteA
 //
 // @return DeleteApplicationAccessPointResponse
 func (client *Client) DeleteApplicationAccessPointWithOptions(request *DeleteApplicationAccessPointRequest, runtime *dara.RuntimeOptions) (_result *DeleteApplicationAccessPointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -2173,9 +2134,11 @@ func (client *Client) DeleteApplicationAccessPoint(request *DeleteApplicationAcc
 //
 // @return DeleteCertificateResponse
 func (client *Client) DeleteCertificateWithOptions(request *DeleteCertificateRequest, runtime *dara.RuntimeOptions) (_result *DeleteCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertificateId) {
@@ -2235,9 +2198,11 @@ func (client *Client) DeleteCertificate(request *DeleteCertificateRequest) (_res
 //
 // @return DeleteClientKeyResponse
 func (client *Client) DeleteClientKeyWithOptions(request *DeleteClientKeyRequest, runtime *dara.RuntimeOptions) (_result *DeleteClientKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientKeyId) {
@@ -2299,9 +2264,11 @@ func (client *Client) DeleteClientKey(request *DeleteClientKeyRequest) (_result 
 //
 // @return DeleteKeyMaterialResponse
 func (client *Client) DeleteKeyMaterialWithOptions(request *DeleteKeyMaterialRequest, runtime *dara.RuntimeOptions) (_result *DeleteKeyMaterialResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyId) {
@@ -2367,9 +2334,11 @@ func (client *Client) DeleteKeyMaterial(request *DeleteKeyMaterialRequest) (_res
 //
 // @return DeleteNetworkRuleResponse
 func (client *Client) DeleteNetworkRuleWithOptions(request *DeleteNetworkRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteNetworkRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -2435,9 +2404,11 @@ func (client *Client) DeleteNetworkRule(request *DeleteNetworkRuleRequest) (_res
 //
 // @return DeletePolicyResponse
 func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runtime *dara.RuntimeOptions) (_result *DeletePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -2501,9 +2472,11 @@ func (client *Client) DeletePolicy(request *DeletePolicyRequest) (_result *Delet
 //
 // @return DeleteSecretResponse
 func (client *Client) DeleteSecretWithOptions(request *DeleteSecretRequest, runtime *dara.RuntimeOptions) (_result *DeleteSecretResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ForceDeleteWithoutRecovery) {
@@ -2610,9 +2583,11 @@ func (client *Client) DescribeAccountKmsStatus() (_result *DescribeAccountKmsSta
 //
 // @return DescribeApplicationAccessPointResponse
 func (client *Client) DescribeApplicationAccessPointWithOptions(request *DescribeApplicationAccessPointRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationAccessPointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -2670,9 +2645,11 @@ func (client *Client) DescribeApplicationAccessPoint(request *DescribeApplicatio
 //
 // @return DescribeCertificateResponse
 func (client *Client) DescribeCertificateWithOptions(request *DescribeCertificateRequest, runtime *dara.RuntimeOptions) (_result *DescribeCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertificateId) {
@@ -2734,9 +2711,11 @@ func (client *Client) DescribeCertificate(request *DescribeCertificateRequest) (
 //
 // @return DescribeKeyResponse
 func (client *Client) DescribeKeyWithOptions(request *DescribeKeyRequest, runtime *dara.RuntimeOptions) (_result *DescribeKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyId) {
@@ -2798,9 +2777,11 @@ func (client *Client) DescribeKey(request *DescribeKeyRequest) (_result *Describ
 //
 // @return DescribeKeyVersionResponse
 func (client *Client) DescribeKeyVersionWithOptions(request *DescribeKeyVersionRequest, runtime *dara.RuntimeOptions) (_result *DescribeKeyVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyId) {
@@ -2862,9 +2843,11 @@ func (client *Client) DescribeKeyVersion(request *DescribeKeyVersionRequest) (_r
 //
 // @return DescribeNetworkRuleResponse
 func (client *Client) DescribeNetworkRuleWithOptions(request *DescribeNetworkRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetworkRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -2922,9 +2905,11 @@ func (client *Client) DescribeNetworkRule(request *DescribeNetworkRuleRequest) (
 //
 // @return DescribePolicyResponse
 func (client *Client) DescribePolicyWithOptions(request *DescribePolicyRequest, runtime *dara.RuntimeOptions) (_result *DescribePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -3043,9 +3028,11 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 //
 // @return DescribeSecretResponse
 func (client *Client) DescribeSecretWithOptions(request *DescribeSecretRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecretResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FetchTags) {
@@ -3111,9 +3098,11 @@ func (client *Client) DescribeSecret(request *DescribeSecretRequest) (_result *D
 //
 // @return DisableKeyResponse
 func (client *Client) DisableKeyWithOptions(request *DisableKeyRequest, runtime *dara.RuntimeOptions) (_result *DisableKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyId) {
@@ -3169,9 +3158,11 @@ func (client *Client) DisableKey(request *DisableKeyRequest) (_result *DisableKe
 //
 // @return EnableKeyResponse
 func (client *Client) EnableKeyWithOptions(request *EnableKeyRequest, runtime *dara.RuntimeOptions) (_result *EnableKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyId) {
@@ -3229,9 +3220,11 @@ func (client *Client) EnableKey(request *EnableKeyRequest) (_result *EnableKeyRe
 //
 // @return EncryptResponse
 func (client *Client) EncryptWithOptions(tmpReq *EncryptRequest, runtime *dara.RuntimeOptions) (_result *EncryptResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &EncryptShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3313,9 +3306,11 @@ func (client *Client) Encrypt(request *EncryptRequest) (_result *EncryptResponse
 //
 // @return ExportDataKeyResponse
 func (client *Client) ExportDataKeyWithOptions(tmpReq *ExportDataKeyRequest, runtime *dara.RuntimeOptions) (_result *ExportDataKeyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExportDataKeyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3409,9 +3404,11 @@ func (client *Client) ExportDataKey(request *ExportDataKeyRequest) (_result *Exp
 //
 // @return GenerateAndExportDataKeyResponse
 func (client *Client) GenerateAndExportDataKeyWithOptions(tmpReq *GenerateAndExportDataKeyRequest, runtime *dara.RuntimeOptions) (_result *GenerateAndExportDataKeyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GenerateAndExportDataKeyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3533,9 +3530,11 @@ func (client *Client) GenerateAndExportDataKey(request *GenerateAndExportDataKey
 //
 // @return GenerateDataKeyResponse
 func (client *Client) GenerateDataKeyWithOptions(tmpReq *GenerateDataKeyRequest, runtime *dara.RuntimeOptions) (_result *GenerateDataKeyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GenerateDataKeyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3647,9 +3646,11 @@ func (client *Client) GenerateDataKey(request *GenerateDataKeyRequest) (_result 
 //
 // @return GenerateDataKeyWithoutPlaintextResponse
 func (client *Client) GenerateDataKeyWithoutPlaintextWithOptions(tmpReq *GenerateDataKeyWithoutPlaintextRequest, runtime *dara.RuntimeOptions) (_result *GenerateDataKeyWithoutPlaintextResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GenerateDataKeyWithoutPlaintextShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3739,9 +3740,11 @@ func (client *Client) GenerateDataKeyWithoutPlaintext(request *GenerateDataKeyWi
 //
 // @return GetCertificateResponse
 func (client *Client) GetCertificateWithOptions(request *GetCertificateRequest, runtime *dara.RuntimeOptions) (_result *GetCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertificateId) {
@@ -3799,9 +3802,11 @@ func (client *Client) GetCertificate(request *GetCertificateRequest) (_result *G
 //
 // @return GetClientKeyResponse
 func (client *Client) GetClientKeyWithOptions(request *GetClientKeyRequest, runtime *dara.RuntimeOptions) (_result *GetClientKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3902,9 +3907,11 @@ func (client *Client) GetDefaultKmsInstance() (_result *GetDefaultKmsInstanceRes
 //
 // @return GetKeyPolicyResponse
 func (client *Client) GetKeyPolicyWithOptions(request *GetKeyPolicyRequest, runtime *dara.RuntimeOptions) (_result *GetKeyPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyId) {
@@ -3966,9 +3973,11 @@ func (client *Client) GetKeyPolicy(request *GetKeyPolicyRequest) (_result *GetKe
 //
 // @return GetKmsInstanceResponse
 func (client *Client) GetKmsInstanceWithOptions(request *GetKmsInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetKmsInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KmsInstanceId) {
@@ -4018,6 +4027,72 @@ func (client *Client) GetKmsInstance(request *GetKmsInstanceRequest) (_result *G
 
 // Summary:
 //
+// 获取实例配额信息
+//
+// @param request - GetKmsInstanceQuotaInfosRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKmsInstanceQuotaInfosResponse
+func (client *Client) GetKmsInstanceQuotaInfosWithOptions(request *GetKmsInstanceQuotaInfosRequest, runtime *dara.RuntimeOptions) (_result *GetKmsInstanceQuotaInfosResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KmsInstanceId) {
+		query["KmsInstanceId"] = request.KmsInstanceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKmsInstanceQuotaInfos"),
+		Version:     dara.String("2016-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKmsInstanceQuotaInfosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例配额信息
+//
+// @param request - GetKmsInstanceQuotaInfosRequest
+//
+// @return GetKmsInstanceQuotaInfosResponse
+func (client *Client) GetKmsInstanceQuotaInfos(request *GetKmsInstanceQuotaInfosRequest) (_result *GetKmsInstanceQuotaInfosResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetKmsInstanceQuotaInfosResponse{}
+	_body, _err := client.GetKmsInstanceQuotaInfosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the parameters that are used to import key material for a customer master key (CMK).
 //
 // Description:
@@ -4054,9 +4129,11 @@ func (client *Client) GetKmsInstance(request *GetKmsInstanceRequest) (_result *G
 //
 // @return GetParametersForImportResponse
 func (client *Client) GetParametersForImportWithOptions(request *GetParametersForImportRequest, runtime *dara.RuntimeOptions) (_result *GetParametersForImportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyId) {
@@ -4146,9 +4223,11 @@ func (client *Client) GetParametersForImport(request *GetParametersForImportRequ
 //
 // @return GetPublicKeyResponse
 func (client *Client) GetPublicKeyWithOptions(request *GetPublicKeyRequest, runtime *dara.RuntimeOptions) (_result *GetPublicKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -4206,9 +4285,11 @@ func (client *Client) GetPublicKey(request *GetPublicKeyRequest) (_result *GetPu
 //
 // @return GetRandomPasswordResponse
 func (client *Client) GetRandomPasswordWithOptions(request *GetRandomPasswordRequest, runtime *dara.RuntimeOptions) (_result *GetRandomPasswordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExcludeCharacters) {
@@ -4286,9 +4367,11 @@ func (client *Client) GetRandomPassword(request *GetRandomPasswordRequest) (_res
 //
 // @return GetSecretPolicyResponse
 func (client *Client) GetSecretPolicyWithOptions(request *GetSecretPolicyRequest, runtime *dara.RuntimeOptions) (_result *GetSecretPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PolicyName) {
@@ -4358,9 +4441,11 @@ func (client *Client) GetSecretPolicy(request *GetSecretPolicyRequest) (_result 
 //
 // @return GetSecretValueResponse
 func (client *Client) GetSecretValueWithOptions(request *GetSecretValueRequest, runtime *dara.RuntimeOptions) (_result *GetSecretValueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -4460,9 +4545,11 @@ func (client *Client) GetSecretValue(request *GetSecretValueRequest) (_result *G
 //
 // @return ImportKeyMaterialResponse
 func (client *Client) ImportKeyMaterialWithOptions(request *ImportKeyMaterialRequest, runtime *dara.RuntimeOptions) (_result *ImportKeyMaterialResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EncryptedKeyMaterial) {
@@ -4550,9 +4637,11 @@ func (client *Client) ImportKeyMaterial(request *ImportKeyMaterialRequest) (_res
 //
 // @return ListAliasesResponse
 func (client *Client) ListAliasesWithOptions(request *ListAliasesRequest, runtime *dara.RuntimeOptions) (_result *ListAliasesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -4610,9 +4699,11 @@ func (client *Client) ListAliases(request *ListAliasesRequest) (_result *ListAli
 //
 // @return ListAliasesByKeyIdResponse
 func (client *Client) ListAliasesByKeyIdWithOptions(request *ListAliasesByKeyIdRequest, runtime *dara.RuntimeOptions) (_result *ListAliasesByKeyIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyId) {
@@ -4674,9 +4765,11 @@ func (client *Client) ListAliasesByKeyId(request *ListAliasesByKeyIdRequest) (_r
 //
 // @return ListApplicationAccessPointsResponse
 func (client *Client) ListApplicationAccessPointsWithOptions(request *ListApplicationAccessPointsRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationAccessPointsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -4734,9 +4827,11 @@ func (client *Client) ListApplicationAccessPoints(request *ListApplicationAccess
 //
 // @return ListClientKeysResponse
 func (client *Client) ListClientKeysWithOptions(request *ListClientKeysRequest, runtime *dara.RuntimeOptions) (_result *ListClientKeysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4786,9 +4881,11 @@ func (client *Client) ListClientKeys(request *ListClientKeysRequest) (_result *L
 //
 // @return ListKeyVersionsResponse
 func (client *Client) ListKeyVersionsWithOptions(request *ListKeyVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListKeyVersionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyId) {
@@ -4854,9 +4951,11 @@ func (client *Client) ListKeyVersions(request *ListKeyVersionsRequest) (_result 
 //
 // @return ListKeysResponse
 func (client *Client) ListKeysWithOptions(request *ListKeysRequest, runtime *dara.RuntimeOptions) (_result *ListKeysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filters) {
@@ -4922,11 +5021,17 @@ func (client *Client) ListKeys(request *ListKeysRequest) (_result *ListKeysRespo
 //
 // @return ListKmsInstancesResponse
 func (client *Client) ListKmsInstancesWithOptions(request *ListKmsInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListKmsInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Filters) {
+		query["Filters"] = request.Filters
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -4986,9 +5091,11 @@ func (client *Client) ListKmsInstances(request *ListKmsInstancesRequest) (_resul
 //
 // @return ListNetworkRulesResponse
 func (client *Client) ListNetworkRulesWithOptions(request *ListNetworkRulesRequest, runtime *dara.RuntimeOptions) (_result *ListNetworkRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -5050,9 +5157,11 @@ func (client *Client) ListNetworkRules(request *ListNetworkRulesRequest) (_resul
 //
 // @return ListPoliciesResponse
 func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListPoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -5114,9 +5223,11 @@ func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListP
 //
 // @return ListResourceTagsResponse
 func (client *Client) ListResourceTagsWithOptions(request *ListResourceTagsRequest, runtime *dara.RuntimeOptions) (_result *ListResourceTagsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyId) {
@@ -5174,9 +5285,11 @@ func (client *Client) ListResourceTags(request *ListResourceTagsRequest) (_resul
 //
 // @return ListSecretVersionIdsResponse
 func (client *Client) ListSecretVersionIdsWithOptions(request *ListSecretVersionIdsRequest, runtime *dara.RuntimeOptions) (_result *ListSecretVersionIdsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IncludeDeprecated) {
@@ -5250,9 +5363,11 @@ func (client *Client) ListSecretVersionIds(request *ListSecretVersionIdsRequest)
 //
 // @return ListSecretsResponse
 func (client *Client) ListSecretsWithOptions(request *ListSecretsRequest, runtime *dara.RuntimeOptions) (_result *ListSecretsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FetchTags) {
@@ -5326,9 +5441,11 @@ func (client *Client) ListSecrets(request *ListSecretsRequest) (_result *ListSec
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextToken) {
@@ -5483,9 +5600,11 @@ func (client *Client) OpenKmsService() (_result *OpenKmsServiceResponse, _err er
 //
 // @return PutSecretValueResponse
 func (client *Client) PutSecretValueWithOptions(request *PutSecretValueRequest, runtime *dara.RuntimeOptions) (_result *PutSecretValueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SecretData) {
@@ -5587,9 +5706,11 @@ func (client *Client) PutSecretValue(request *PutSecretValueRequest) (_result *P
 //
 // @return ReEncryptResponse
 func (client *Client) ReEncryptWithOptions(tmpReq *ReEncryptRequest, runtime *dara.RuntimeOptions) (_result *ReEncryptResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ReEncryptShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5699,9 +5820,11 @@ func (client *Client) ReEncrypt(request *ReEncryptRequest) (_result *ReEncryptRe
 //
 // @return ReleaseKmsInstanceResponse
 func (client *Client) ReleaseKmsInstanceWithOptions(request *ReleaseKmsInstanceRequest, runtime *dara.RuntimeOptions) (_result *ReleaseKmsInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ForceDeleteWithoutBackup) {
@@ -5763,9 +5886,11 @@ func (client *Client) ReleaseKmsInstance(request *ReleaseKmsInstanceRequest) (_r
 //
 // @return RestoreSecretResponse
 func (client *Client) RestoreSecretWithOptions(request *RestoreSecretRequest, runtime *dara.RuntimeOptions) (_result *RestoreSecretResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SecretName) {
@@ -5829,9 +5954,11 @@ func (client *Client) RestoreSecret(request *RestoreSecretRequest) (_result *Res
 //
 // @return RotateSecretResponse
 func (client *Client) RotateSecretWithOptions(request *RotateSecretRequest, runtime *dara.RuntimeOptions) (_result *RotateSecretResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SecretName) {
@@ -5903,9 +6030,11 @@ func (client *Client) RotateSecret(request *RotateSecretRequest) (_result *Rotat
 //
 // @return ScheduleKeyDeletionResponse
 func (client *Client) ScheduleKeyDeletionWithOptions(request *ScheduleKeyDeletionRequest, runtime *dara.RuntimeOptions) (_result *ScheduleKeyDeletionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyId) {
@@ -5979,9 +6108,11 @@ func (client *Client) ScheduleKeyDeletion(request *ScheduleKeyDeletionRequest) (
 //
 // @return SetDeletionProtectionResponse
 func (client *Client) SetDeletionProtectionWithOptions(request *SetDeletionProtectionRequest, runtime *dara.RuntimeOptions) (_result *SetDeletionProtectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeletionProtectionDescription) {
@@ -6059,9 +6190,11 @@ func (client *Client) SetDeletionProtection(request *SetDeletionProtectionReques
 //
 // @return SetKeyPolicyResponse
 func (client *Client) SetKeyPolicyWithOptions(request *SetKeyPolicyRequest, runtime *dara.RuntimeOptions) (_result *SetKeyPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyId) {
@@ -6127,9 +6260,11 @@ func (client *Client) SetKeyPolicy(request *SetKeyPolicyRequest) (_result *SetKe
 //
 // @return SetSecretPolicyResponse
 func (client *Client) SetSecretPolicyWithOptions(request *SetSecretPolicyRequest, runtime *dara.RuntimeOptions) (_result *SetSecretPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Policy) {
@@ -6197,9 +6332,11 @@ func (client *Client) SetSecretPolicy(request *SetSecretPolicyRequest) (_result 
 //
 // @return TagResourceResponse
 func (client *Client) TagResourceWithOptions(request *TagResourceRequest, runtime *dara.RuntimeOptions) (_result *TagResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertificateId) {
@@ -6275,9 +6412,11 @@ func (client *Client) TagResource(request *TagResourceRequest) (_result *TagReso
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -6355,9 +6494,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // @return UntagResourceResponse
 func (client *Client) UntagResourceWithOptions(request *UntagResourceRequest, runtime *dara.RuntimeOptions) (_result *UntagResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertificateId) {
@@ -6437,9 +6578,11 @@ func (client *Client) UntagResource(request *UntagResourceRequest) (_result *Unt
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -6515,9 +6658,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // @return UpdateAliasResponse
 func (client *Client) UpdateAliasWithOptions(request *UpdateAliasRequest, runtime *dara.RuntimeOptions) (_result *UpdateAliasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
@@ -6575,9 +6720,11 @@ func (client *Client) UpdateAlias(request *UpdateAliasRequest) (_result *UpdateA
 //
 // @return UpdateApplicationAccessPointResponse
 func (client *Client) UpdateApplicationAccessPointWithOptions(request *UpdateApplicationAccessPointRequest, runtime *dara.RuntimeOptions) (_result *UpdateApplicationAccessPointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -6643,9 +6790,11 @@ func (client *Client) UpdateApplicationAccessPoint(request *UpdateApplicationAcc
 //
 // @return UpdateCertificateStatusResponse
 func (client *Client) UpdateCertificateStatusWithOptions(request *UpdateCertificateStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateCertificateStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertificateId) {
@@ -6711,9 +6860,11 @@ func (client *Client) UpdateCertificateStatus(request *UpdateCertificateStatusRe
 //
 // @return UpdateKeyDescriptionResponse
 func (client *Client) UpdateKeyDescriptionWithOptions(request *UpdateKeyDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateKeyDescriptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -6787,11 +6938,21 @@ func (client *Client) UpdateKeyDescription(request *UpdateKeyDescriptionRequest)
 //
 // @return UpdateKmsInstanceBindVpcResponse
 func (client *Client) UpdateKmsInstanceBindVpcWithOptions(request *UpdateKmsInstanceBindVpcRequest, runtime *dara.RuntimeOptions) (_result *UpdateKmsInstanceBindVpcResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BindVpcs) {
+		query["BindVpcs"] = request.BindVpcs
+	}
+
+	if !dara.IsNil(request.KmsInstanceId) {
+		query["KmsInstanceId"] = request.KmsInstanceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6800,7 +6961,7 @@ func (client *Client) UpdateKmsInstanceBindVpcWithOptions(request *UpdateKmsInst
 		Version:     dara.String("2016-01-20"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
@@ -6857,9 +7018,11 @@ func (client *Client) UpdateKmsInstanceBindVpc(request *UpdateKmsInstanceBindVpc
 //
 // @return UpdateNetworkRuleResponse
 func (client *Client) UpdateNetworkRuleWithOptions(request *UpdateNetworkRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateNetworkRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -6937,9 +7100,11 @@ func (client *Client) UpdateNetworkRule(request *UpdateNetworkRuleRequest) (_res
 //
 // @return UpdatePolicyResponse
 func (client *Client) UpdatePolicyWithOptions(request *UpdatePolicyRequest, runtime *dara.RuntimeOptions) (_result *UpdatePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessControlRules) {
@@ -7031,9 +7196,11 @@ func (client *Client) UpdatePolicy(request *UpdatePolicyRequest) (_result *Updat
 //
 // @return UpdateRotationPolicyResponse
 func (client *Client) UpdateRotationPolicyWithOptions(request *UpdateRotationPolicyRequest, runtime *dara.RuntimeOptions) (_result *UpdateRotationPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnableAutomaticRotation) {
@@ -7115,9 +7282,11 @@ func (client *Client) UpdateRotationPolicy(request *UpdateRotationPolicyRequest)
 //
 // @return UpdateSecretResponse
 func (client *Client) UpdateSecretWithOptions(request *UpdateSecretRequest, runtime *dara.RuntimeOptions) (_result *UpdateSecretResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -7195,9 +7364,11 @@ func (client *Client) UpdateSecret(request *UpdateSecretRequest) (_result *Updat
 //
 // @return UpdateSecretRotationPolicyResponse
 func (client *Client) UpdateSecretRotationPolicyWithOptions(request *UpdateSecretRotationPolicyRequest, runtime *dara.RuntimeOptions) (_result *UpdateSecretRotationPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnableAutomaticRotation) {
@@ -7275,9 +7446,11 @@ func (client *Client) UpdateSecretRotationPolicy(request *UpdateSecretRotationPo
 //
 // @return UpdateSecretVersionStageResponse
 func (client *Client) UpdateSecretVersionStageWithOptions(request *UpdateSecretVersionStageRequest, runtime *dara.RuntimeOptions) (_result *UpdateSecretVersionStageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MoveToVersion) {
@@ -7351,9 +7524,11 @@ func (client *Client) UpdateSecretVersionStage(request *UpdateSecretVersionStage
 //
 // @return UploadCertificateResponse
 func (client *Client) UploadCertificateWithOptions(request *UploadCertificateRequest, runtime *dara.RuntimeOptions) (_result *UploadCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Certificate) {

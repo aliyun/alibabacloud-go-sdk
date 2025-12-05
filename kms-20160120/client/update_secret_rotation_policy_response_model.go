@@ -59,5 +59,10 @@ func (s *UpdateSecretRotationPolicyResponse) SetBody(v *UpdateSecretRotationPoli
 }
 
 func (s *UpdateSecretRotationPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

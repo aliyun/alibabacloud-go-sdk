@@ -104,7 +104,12 @@ func (s *ListSecretsResponseBody) SetTotalCount(v int32) *ListSecretsResponseBod
 }
 
 func (s *ListSecretsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecretList != nil {
+		if err := s.SecretList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSecretsResponseBodySecretList struct {
@@ -129,7 +134,16 @@ func (s *ListSecretsResponseBodySecretList) SetSecret(v []*ListSecretsResponseBo
 }
 
 func (s *ListSecretsResponseBodySecretList) Validate() error {
-	return dara.Validate(s)
+	if s.Secret != nil {
+		for _, item := range s.Secret {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSecretsResponseBodySecretListSecret struct {
@@ -138,7 +152,8 @@ type ListSecretsResponseBodySecretListSecret struct {
 	// example:
 	//
 	// 2022-07-17T07:59:05Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	OwingService *string `json:"OwingService,omitempty" xml:"OwingService,omitempty"`
 	// The resource tags of the secret.
 	//
 	// This parameter is not returned if you set the FetchTags parameter to false or do not specify the FetchTags parameter.
@@ -185,6 +200,10 @@ func (s *ListSecretsResponseBodySecretListSecret) GetCreateTime() *string {
 	return s.CreateTime
 }
 
+func (s *ListSecretsResponseBodySecretListSecret) GetOwingService() *string {
+	return s.OwingService
+}
+
 func (s *ListSecretsResponseBodySecretListSecret) GetPlannedDeleteTime() *string {
 	return s.PlannedDeleteTime
 }
@@ -207,6 +226,11 @@ func (s *ListSecretsResponseBodySecretListSecret) GetUpdateTime() *string {
 
 func (s *ListSecretsResponseBodySecretListSecret) SetCreateTime(v string) *ListSecretsResponseBodySecretListSecret {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ListSecretsResponseBodySecretListSecret) SetOwingService(v string) *ListSecretsResponseBodySecretListSecret {
+	s.OwingService = &v
 	return s
 }
 
@@ -236,7 +260,12 @@ func (s *ListSecretsResponseBodySecretListSecret) SetUpdateTime(v string) *ListS
 }
 
 func (s *ListSecretsResponseBodySecretListSecret) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSecretsResponseBodySecretListSecretTags struct {
@@ -261,7 +290,16 @@ func (s *ListSecretsResponseBodySecretListSecretTags) SetTag(v []*ListSecretsRes
 }
 
 func (s *ListSecretsResponseBodySecretListSecretTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSecretsResponseBodySecretListSecretTagsTag struct {

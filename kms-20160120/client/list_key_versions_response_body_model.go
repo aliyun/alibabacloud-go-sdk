@@ -104,7 +104,12 @@ func (s *ListKeyVersionsResponseBody) SetTotalCount(v int32) *ListKeyVersionsRes
 }
 
 func (s *ListKeyVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.KeyVersions != nil {
+		if err := s.KeyVersions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListKeyVersionsResponseBodyKeyVersions struct {
@@ -129,7 +134,16 @@ func (s *ListKeyVersionsResponseBodyKeyVersions) SetKeyVersion(v []*ListKeyVersi
 }
 
 func (s *ListKeyVersionsResponseBodyKeyVersions) Validate() error {
-	return dara.Validate(s)
+	if s.KeyVersion != nil {
+		for _, item := range s.KeyVersion {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListKeyVersionsResponseBodyKeyVersionsKeyVersion struct {

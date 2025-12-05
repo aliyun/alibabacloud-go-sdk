@@ -27,6 +27,8 @@ type iDescribeSecretResponseBody interface {
 	GetLastRotationDate() *string
 	SetNextRotationDate(v string) *DescribeSecretResponseBody
 	GetNextRotationDate() *string
+	SetOwingService(v string) *DescribeSecretResponseBody
+	GetOwingService() *string
 	SetPlannedDeleteTime(v string) *DescribeSecretResponseBody
 	GetPlannedDeleteTime() *string
 	SetRequestId(v string) *DescribeSecretResponseBody
@@ -112,6 +114,7 @@ type DescribeSecretResponseBody struct {
 	//
 	// 2022-07-06T18:22:03Z
 	NextRotationDate *string `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
+	OwingService     *string `json:"OwingService,omitempty" xml:"OwingService,omitempty"`
 	// The time when the secret is scheduled to be deleted.
 	//
 	// example:
@@ -210,6 +213,10 @@ func (s *DescribeSecretResponseBody) GetNextRotationDate() *string {
 	return s.NextRotationDate
 }
 
+func (s *DescribeSecretResponseBody) GetOwingService() *string {
+	return s.OwingService
+}
+
 func (s *DescribeSecretResponseBody) GetPlannedDeleteTime() *string {
 	return s.PlannedDeleteTime
 }
@@ -283,6 +290,11 @@ func (s *DescribeSecretResponseBody) SetNextRotationDate(v string) *DescribeSecr
 	return s
 }
 
+func (s *DescribeSecretResponseBody) SetOwingService(v string) *DescribeSecretResponseBody {
+	s.OwingService = &v
+	return s
+}
+
 func (s *DescribeSecretResponseBody) SetPlannedDeleteTime(v string) *DescribeSecretResponseBody {
 	s.PlannedDeleteTime = &v
 	return s
@@ -319,7 +331,12 @@ func (s *DescribeSecretResponseBody) SetUpdateTime(v string) *DescribeSecretResp
 }
 
 func (s *DescribeSecretResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecretResponseBodyTags struct {
@@ -344,7 +361,16 @@ func (s *DescribeSecretResponseBodyTags) SetTag(v []*DescribeSecretResponseBodyT
 }
 
 func (s *DescribeSecretResponseBodyTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSecretResponseBodyTagsTag struct {

@@ -87,7 +87,12 @@ func (s *PutSecretValueResponseBody) SetVersionStages(v *PutSecretValueResponseB
 }
 
 func (s *PutSecretValueResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VersionStages != nil {
+		if err := s.VersionStages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PutSecretValueResponseBodyVersionStages struct {

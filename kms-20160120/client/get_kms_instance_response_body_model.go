@@ -53,7 +53,12 @@ func (s *GetKmsInstanceResponseBody) SetRequestId(v string) *GetKmsInstanceRespo
 }
 
 func (s *GetKmsInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.KmsInstance != nil {
+		if err := s.KmsInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetKmsInstanceResponseBodyKmsInstance struct {
@@ -98,7 +103,11 @@ type GetKmsInstanceResponseBodyKmsInstance struct {
 	//
 	// 1000
 	KeyNum         *int64  `json:"KeyNum,omitempty" xml:"KeyNum,omitempty"`
+	Log            *int64  `json:"Log,omitempty" xml:"Log,omitempty"`
+	LogStorage     *int64  `json:"LogStorage,omitempty" xml:"LogStorage,omitempty"`
+	ProductType    *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
+	SaleStatus     *string `json:"SaleStatus,omitempty" xml:"SaleStatus,omitempty"`
 	// The number of secrets that can be created for the KMS instance.
 	//
 	// example:
@@ -150,13 +159,13 @@ type GetKmsInstanceResponseBodyKmsInstance struct {
 	// example:
 	//
 	// vsw-bp1i512amda6d10a0****
-	VswitchIds *string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty"`
+	VswitchIds []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
 	// The zone with which the KMS instance is associated.
 	//
 	// example:
 	//
 	// "cn-hangzhou-k",       "cn-hangzhou-j"
-	ZoneIds *string `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty"`
+	ZoneIds []*string `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty" type:"Repeated"`
 }
 
 func (s GetKmsInstanceResponseBodyKmsInstance) String() string {
@@ -199,8 +208,24 @@ func (s *GetKmsInstanceResponseBodyKmsInstance) GetKeyNum() *int64 {
 	return s.KeyNum
 }
 
+func (s *GetKmsInstanceResponseBodyKmsInstance) GetLog() *int64 {
+	return s.Log
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) GetLogStorage() *int64 {
+	return s.LogStorage
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) GetProductType() *string {
+	return s.ProductType
+}
+
 func (s *GetKmsInstanceResponseBodyKmsInstance) GetProductVersion() *string {
 	return s.ProductVersion
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) GetSaleStatus() *string {
+	return s.SaleStatus
 }
 
 func (s *GetKmsInstanceResponseBodyKmsInstance) GetSecretNum() *string {
@@ -227,11 +252,11 @@ func (s *GetKmsInstanceResponseBodyKmsInstance) GetVpcNum() *int64 {
 	return s.VpcNum
 }
 
-func (s *GetKmsInstanceResponseBodyKmsInstance) GetVswitchIds() *string {
+func (s *GetKmsInstanceResponseBodyKmsInstance) GetVswitchIds() []*string {
 	return s.VswitchIds
 }
 
-func (s *GetKmsInstanceResponseBodyKmsInstance) GetZoneIds() *string {
+func (s *GetKmsInstanceResponseBodyKmsInstance) GetZoneIds() []*string {
 	return s.ZoneIds
 }
 
@@ -275,8 +300,28 @@ func (s *GetKmsInstanceResponseBodyKmsInstance) SetKeyNum(v int64) *GetKmsInstan
 	return s
 }
 
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetLog(v int64) *GetKmsInstanceResponseBodyKmsInstance {
+	s.Log = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetLogStorage(v int64) *GetKmsInstanceResponseBodyKmsInstance {
+	s.LogStorage = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetProductType(v string) *GetKmsInstanceResponseBodyKmsInstance {
+	s.ProductType = &v
+	return s
+}
+
 func (s *GetKmsInstanceResponseBodyKmsInstance) SetProductVersion(v string) *GetKmsInstanceResponseBodyKmsInstance {
 	s.ProductVersion = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetSaleStatus(v string) *GetKmsInstanceResponseBodyKmsInstance {
+	s.SaleStatus = &v
 	return s
 }
 
@@ -310,18 +355,23 @@ func (s *GetKmsInstanceResponseBodyKmsInstance) SetVpcNum(v int64) *GetKmsInstan
 	return s
 }
 
-func (s *GetKmsInstanceResponseBodyKmsInstance) SetVswitchIds(v string) *GetKmsInstanceResponseBodyKmsInstance {
-	s.VswitchIds = &v
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetVswitchIds(v []*string) *GetKmsInstanceResponseBodyKmsInstance {
+	s.VswitchIds = v
 	return s
 }
 
-func (s *GetKmsInstanceResponseBodyKmsInstance) SetZoneIds(v string) *GetKmsInstanceResponseBodyKmsInstance {
-	s.ZoneIds = &v
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetZoneIds(v []*string) *GetKmsInstanceResponseBodyKmsInstance {
+	s.ZoneIds = v
 	return s
 }
 
 func (s *GetKmsInstanceResponseBodyKmsInstance) Validate() error {
-	return dara.Validate(s)
+	if s.BindVpcs != nil {
+		if err := s.BindVpcs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetKmsInstanceResponseBodyKmsInstanceBindVpcs struct {
@@ -346,7 +396,16 @@ func (s *GetKmsInstanceResponseBodyKmsInstanceBindVpcs) SetBindVpc(v []*GetKmsIn
 }
 
 func (s *GetKmsInstanceResponseBodyKmsInstanceBindVpcs) Validate() error {
-	return dara.Validate(s)
+	if s.BindVpc != nil {
+		for _, item := range s.BindVpc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetKmsInstanceResponseBodyKmsInstanceBindVpcsBindVpc struct {

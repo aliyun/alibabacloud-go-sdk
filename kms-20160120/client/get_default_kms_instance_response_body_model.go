@@ -16,8 +16,14 @@ type iGetDefaultKmsInstanceResponseBody interface {
 }
 
 type GetDefaultKmsInstanceResponseBody struct {
+	// example:
+	//
+	// kst-hzz65f176a0ogplgq****
 	DefaultKmsInstanceId *string `json:"DefaultKmsInstanceId,omitempty" xml:"DefaultKmsInstanceId,omitempty"`
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// bbc4e9ab-c76f-48ca-9c2a-8535772117e2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDefaultKmsInstanceResponseBody) String() string {

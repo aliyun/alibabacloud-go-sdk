@@ -59,5 +59,10 @@ func (s *ListClientKeysResponse) SetBody(v *ListClientKeysResponseBody) *ListCli
 }
 
 func (s *ListClientKeysResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

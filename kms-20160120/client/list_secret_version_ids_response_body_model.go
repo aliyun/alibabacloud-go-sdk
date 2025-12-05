@@ -121,7 +121,12 @@ func (s *ListSecretVersionIdsResponseBody) SetVersionIds(v *ListSecretVersionIds
 }
 
 func (s *ListSecretVersionIdsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VersionIds != nil {
+		if err := s.VersionIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSecretVersionIdsResponseBodyVersionIds struct {
@@ -146,7 +151,16 @@ func (s *ListSecretVersionIdsResponseBodyVersionIds) SetVersionId(v []*ListSecre
 }
 
 func (s *ListSecretVersionIdsResponseBodyVersionIds) Validate() error {
-	return dara.Validate(s)
+	if s.VersionId != nil {
+		for _, item := range s.VersionId {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSecretVersionIdsResponseBodyVersionIdsVersionId struct {
@@ -202,7 +216,12 @@ func (s *ListSecretVersionIdsResponseBodyVersionIdsVersionId) SetVersionStages(v
 }
 
 func (s *ListSecretVersionIdsResponseBodyVersionIdsVersionId) Validate() error {
-	return dara.Validate(s)
+	if s.VersionStages != nil {
+		if err := s.VersionStages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSecretVersionIdsResponseBodyVersionIdsVersionIdVersionStages struct {

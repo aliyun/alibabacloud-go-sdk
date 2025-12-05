@@ -104,7 +104,12 @@ func (s *ListNetworkRulesResponseBody) SetTotalCount(v int32) *ListNetworkRulesR
 }
 
 func (s *ListNetworkRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkRules != nil {
+		if err := s.NetworkRules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNetworkRulesResponseBodyNetworkRules struct {
@@ -129,7 +134,16 @@ func (s *ListNetworkRulesResponseBodyNetworkRules) SetNetworkRule(v []*ListNetwo
 }
 
 func (s *ListNetworkRulesResponseBodyNetworkRules) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkRule != nil {
+		for _, item := range s.NetworkRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNetworkRulesResponseBodyNetworkRulesNetworkRule struct {

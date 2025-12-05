@@ -53,7 +53,12 @@ func (s *CreateKeyVersionResponseBody) SetRequestId(v string) *CreateKeyVersionR
 }
 
 func (s *CreateKeyVersionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.KeyVersion != nil {
+		if err := s.KeyVersion.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateKeyVersionResponseBodyKeyVersion struct {

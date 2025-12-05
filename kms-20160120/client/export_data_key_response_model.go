@@ -59,6 +59,11 @@ func (s *ExportDataKeyResponse) SetBody(v *ExportDataKeyResponseBody) *ExportDat
 }
 
 func (s *ExportDataKeyResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

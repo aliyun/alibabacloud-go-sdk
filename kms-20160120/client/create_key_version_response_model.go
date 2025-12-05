@@ -59,5 +59,10 @@ func (s *CreateKeyVersionResponse) SetBody(v *CreateKeyVersionResponseBody) *Cre
 }
 
 func (s *CreateKeyVersionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

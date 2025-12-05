@@ -53,7 +53,16 @@ func (s *ListClientKeysResponseBody) SetRequestId(v string) *ListClientKeysRespo
 }
 
 func (s *ListClientKeysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClientKeys != nil {
+		for _, item := range s.ClientKeys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListClientKeysResponseBodyClientKeys struct {

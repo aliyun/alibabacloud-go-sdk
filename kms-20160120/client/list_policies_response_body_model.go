@@ -104,7 +104,12 @@ func (s *ListPoliciesResponseBody) SetTotalCount(v int32) *ListPoliciesResponseB
 }
 
 func (s *ListPoliciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Policies != nil {
+		if err := s.Policies.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPoliciesResponseBodyPolicies struct {
@@ -129,7 +134,16 @@ func (s *ListPoliciesResponseBodyPolicies) SetPolicy(v []*ListPoliciesResponseBo
 }
 
 func (s *ListPoliciesResponseBodyPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.Policy != nil {
+		for _, item := range s.Policy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPoliciesResponseBodyPoliciesPolicy struct {

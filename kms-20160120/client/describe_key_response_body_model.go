@@ -53,7 +53,12 @@ func (s *DescribeKeyResponseBody) SetRequestId(v string) *DescribeKeyResponseBod
 }
 
 func (s *DescribeKeyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.KeyMetadata != nil {
+		if err := s.KeyMetadata.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeKeyResponseBodyKeyMetadata struct {

@@ -104,7 +104,12 @@ func (s *ListAliasesResponseBody) SetTotalCount(v int32) *ListAliasesResponseBod
 }
 
 func (s *ListAliasesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Aliases != nil {
+		if err := s.Aliases.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAliasesResponseBodyAliases struct {
@@ -129,7 +134,16 @@ func (s *ListAliasesResponseBodyAliases) SetAlias(v []*ListAliasesResponseBodyAl
 }
 
 func (s *ListAliasesResponseBodyAliases) Validate() error {
-	return dara.Validate(s)
+	if s.Alias != nil {
+		for _, item := range s.Alias {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAliasesResponseBodyAliasesAlias struct {

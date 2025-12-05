@@ -59,6 +59,11 @@ func (s *EnableKeyResponse) SetBody(v *EnableKeyResponseBody) *EnableKeyResponse
 }
 
 func (s *EnableKeyResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

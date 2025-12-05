@@ -59,5 +59,10 @@ func (s *GenerateDataKeyResponse) SetBody(v *GenerateDataKeyResponseBody) *Gener
 }
 
 func (s *GenerateDataKeyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

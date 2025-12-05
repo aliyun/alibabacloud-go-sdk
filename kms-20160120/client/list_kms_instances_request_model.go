@@ -9,6 +9,8 @@ type iListKmsInstancesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetFilters(v string) *ListKmsInstancesRequest
+	GetFilters() *string
 	SetPageNumber(v int32) *ListKmsInstancesRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListKmsInstancesRequest
@@ -16,6 +18,7 @@ type iListKmsInstancesRequest interface {
 }
 
 type ListKmsInstancesRequest struct {
+	Filters *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
 	// The page number. Default value: 1.
 	//
 	// example:
@@ -38,12 +41,21 @@ func (s ListKmsInstancesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListKmsInstancesRequest) GetFilters() *string {
+	return s.Filters
+}
+
 func (s *ListKmsInstancesRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
 
 func (s *ListKmsInstancesRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *ListKmsInstancesRequest) SetFilters(v string) *ListKmsInstancesRequest {
+	s.Filters = &v
+	return s
 }
 
 func (s *ListKmsInstancesRequest) SetPageNumber(v int32) *ListKmsInstancesRequest {
