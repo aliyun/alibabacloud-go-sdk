@@ -13,6 +13,8 @@ type iListAgentlessRegionResponseBody interface {
 	GetRegionList() []*string
 	SetRequestId(v string) *ListAgentlessRegionResponseBody
 	GetRequestId() *string
+	SetVendorRegionList(v []*ListAgentlessRegionResponseBodyVendorRegionList) *ListAgentlessRegionResponseBody
+	GetVendorRegionList() []*ListAgentlessRegionResponseBodyVendorRegionList
 }
 
 type ListAgentlessRegionResponseBody struct {
@@ -23,7 +25,8 @@ type ListAgentlessRegionResponseBody struct {
 	// example:
 	//
 	// 7E0618A9-D5EF-4220-9471-C42B5E92****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VendorRegionList []*ListAgentlessRegionResponseBodyVendorRegionList `json:"VendorRegionList,omitempty" xml:"VendorRegionList,omitempty" type:"Repeated"`
 }
 
 func (s ListAgentlessRegionResponseBody) String() string {
@@ -42,6 +45,10 @@ func (s *ListAgentlessRegionResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *ListAgentlessRegionResponseBody) GetVendorRegionList() []*ListAgentlessRegionResponseBodyVendorRegionList {
+	return s.VendorRegionList
+}
+
 func (s *ListAgentlessRegionResponseBody) SetRegionList(v []*string) *ListAgentlessRegionResponseBody {
 	s.RegionList = v
 	return s
@@ -52,6 +59,55 @@ func (s *ListAgentlessRegionResponseBody) SetRequestId(v string) *ListAgentlessR
 	return s
 }
 
+func (s *ListAgentlessRegionResponseBody) SetVendorRegionList(v []*ListAgentlessRegionResponseBodyVendorRegionList) *ListAgentlessRegionResponseBody {
+	s.VendorRegionList = v
+	return s
+}
+
 func (s *ListAgentlessRegionResponseBody) Validate() error {
+	if s.VendorRegionList != nil {
+		for _, item := range s.VendorRegionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListAgentlessRegionResponseBodyVendorRegionList struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Vendor   *int32  `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+}
+
+func (s ListAgentlessRegionResponseBodyVendorRegionList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListAgentlessRegionResponseBodyVendorRegionList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAgentlessRegionResponseBodyVendorRegionList) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *ListAgentlessRegionResponseBodyVendorRegionList) GetVendor() *int32 {
+	return s.Vendor
+}
+
+func (s *ListAgentlessRegionResponseBodyVendorRegionList) SetRegionId(v string) *ListAgentlessRegionResponseBodyVendorRegionList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListAgentlessRegionResponseBodyVendorRegionList) SetVendor(v int32) *ListAgentlessRegionResponseBodyVendorRegionList {
+	s.Vendor = &v
+	return s
+}
+
+func (s *ListAgentlessRegionResponseBodyVendorRegionList) Validate() error {
 	return dara.Validate(s)
 }
