@@ -21,6 +21,8 @@ type iDescribeInstanceResponseBody interface {
 	GetInstanceId() *string
 	SetPayType(v string) *DescribeInstanceResponseBody
 	GetPayType() *string
+	SetProcessStatus(v string) *DescribeInstanceResponseBody
+	GetProcessStatus() *string
 	SetRegionId(v string) *DescribeInstanceResponseBody
 	GetRegionId() *string
 	SetRequestId(v string) *DescribeInstanceResponseBody
@@ -71,7 +73,8 @@ type DescribeInstanceResponseBody struct {
 	// example:
 	//
 	// POSTPAY
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PayType       *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	ProcessStatus *string `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
 	// 	- **cn-hangzhou:*	- the Chinese mainland
@@ -140,6 +143,10 @@ func (s *DescribeInstanceResponseBody) GetPayType() *string {
 	return s.PayType
 }
 
+func (s *DescribeInstanceResponseBody) GetProcessStatus() *string {
+	return s.ProcessStatus
+}
+
 func (s *DescribeInstanceResponseBody) GetRegionId() *string {
 	return s.RegionId
 }
@@ -183,6 +190,11 @@ func (s *DescribeInstanceResponseBody) SetInstanceId(v string) *DescribeInstance
 
 func (s *DescribeInstanceResponseBody) SetPayType(v string) *DescribeInstanceResponseBody {
 	s.PayType = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetProcessStatus(v string) *DescribeInstanceResponseBody {
+	s.ProcessStatus = &v
 	return s
 }
 
