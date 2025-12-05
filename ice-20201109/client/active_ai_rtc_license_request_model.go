@@ -18,14 +18,20 @@ type iActiveAiRtcLicenseRequest interface {
 }
 
 type ActiveAiRtcLicenseRequest struct {
+	// The authorization code.
+	//
 	// example:
 	//
 	// iU1IeJech7***
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The device ID.
+	//
 	// example:
 	//
 	// device-***
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The batch ID.
+	//
 	// example:
 	//
 	// 17712***

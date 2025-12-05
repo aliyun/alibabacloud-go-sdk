@@ -24,26 +24,38 @@ type iActiveAiRtcLicenseResponseBody interface {
 }
 
 type ActiveAiRtcLicenseResponseBody struct {
+	// The error code returned.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The license information.
+	//
 	// example:
 	//
 	// a659a06659a***
 	License *string `json:"License,omitempty" xml:"License,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4F9C14FE-1147-15AC-8EDF-A590FF12***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true

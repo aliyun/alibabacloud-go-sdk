@@ -87,6 +87,7 @@ type GetTemplateParamsResponseBodyParamList struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The thumbnail URL of the original material.
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	Height   *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
 	// The parameter name.
 	//
 	// example:
@@ -94,7 +95,9 @@ type GetTemplateParamsResponseBodyParamList struct {
 	// video1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The URL of the original material.
-	MediaUrl *string `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
+	MediaUrl    *string  `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
+	TimelineIn  *float32 `json:"TimelineIn,omitempty" xml:"TimelineIn,omitempty"`
+	TimelineOut *float32 `json:"TimelineOut,omitempty" xml:"TimelineOut,omitempty"`
 	// The material type.
 	//
 	// Valid values:
@@ -108,7 +111,10 @@ type GetTemplateParamsResponseBodyParamList struct {
 	// example:
 	//
 	// Image
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Width *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+	X     *int32  `json:"X,omitempty" xml:"X,omitempty"`
+	Y     *int32  `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s GetTemplateParamsResponseBodyParamList) String() string {
@@ -127,6 +133,10 @@ func (s *GetTemplateParamsResponseBodyParamList) GetCoverUrl() *string {
 	return s.CoverUrl
 }
 
+func (s *GetTemplateParamsResponseBodyParamList) GetHeight() *int32 {
+	return s.Height
+}
+
 func (s *GetTemplateParamsResponseBodyParamList) GetKey() *string {
 	return s.Key
 }
@@ -135,8 +145,28 @@ func (s *GetTemplateParamsResponseBodyParamList) GetMediaUrl() *string {
 	return s.MediaUrl
 }
 
+func (s *GetTemplateParamsResponseBodyParamList) GetTimelineIn() *float32 {
+	return s.TimelineIn
+}
+
+func (s *GetTemplateParamsResponseBodyParamList) GetTimelineOut() *float32 {
+	return s.TimelineOut
+}
+
 func (s *GetTemplateParamsResponseBodyParamList) GetType() *string {
 	return s.Type
+}
+
+func (s *GetTemplateParamsResponseBodyParamList) GetWidth() *int32 {
+	return s.Width
+}
+
+func (s *GetTemplateParamsResponseBodyParamList) GetX() *int32 {
+	return s.X
+}
+
+func (s *GetTemplateParamsResponseBodyParamList) GetY() *int32 {
+	return s.Y
 }
 
 func (s *GetTemplateParamsResponseBodyParamList) SetContent(v string) *GetTemplateParamsResponseBodyParamList {
@@ -146,6 +176,11 @@ func (s *GetTemplateParamsResponseBodyParamList) SetContent(v string) *GetTempla
 
 func (s *GetTemplateParamsResponseBodyParamList) SetCoverUrl(v string) *GetTemplateParamsResponseBodyParamList {
 	s.CoverUrl = &v
+	return s
+}
+
+func (s *GetTemplateParamsResponseBodyParamList) SetHeight(v int32) *GetTemplateParamsResponseBodyParamList {
+	s.Height = &v
 	return s
 }
 
@@ -159,8 +194,33 @@ func (s *GetTemplateParamsResponseBodyParamList) SetMediaUrl(v string) *GetTempl
 	return s
 }
 
+func (s *GetTemplateParamsResponseBodyParamList) SetTimelineIn(v float32) *GetTemplateParamsResponseBodyParamList {
+	s.TimelineIn = &v
+	return s
+}
+
+func (s *GetTemplateParamsResponseBodyParamList) SetTimelineOut(v float32) *GetTemplateParamsResponseBodyParamList {
+	s.TimelineOut = &v
+	return s
+}
+
 func (s *GetTemplateParamsResponseBodyParamList) SetType(v string) *GetTemplateParamsResponseBodyParamList {
 	s.Type = &v
+	return s
+}
+
+func (s *GetTemplateParamsResponseBodyParamList) SetWidth(v int32) *GetTemplateParamsResponseBodyParamList {
+	s.Width = &v
+	return s
+}
+
+func (s *GetTemplateParamsResponseBodyParamList) SetX(v int32) *GetTemplateParamsResponseBodyParamList {
+	s.X = &v
+	return s
+}
+
+func (s *GetTemplateParamsResponseBodyParamList) SetY(v int32) *GetTemplateParamsResponseBodyParamList {
+	s.Y = &v
 	return s
 }
 

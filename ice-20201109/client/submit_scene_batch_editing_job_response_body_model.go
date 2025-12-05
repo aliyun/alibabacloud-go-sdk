@@ -16,10 +16,14 @@ type iSubmitSceneBatchEditingJobResponseBody interface {
 }
 
 type SubmitSceneBatchEditingJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****C702-41BE-467E-AF2E-883D4517****

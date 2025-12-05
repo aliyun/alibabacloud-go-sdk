@@ -324,9 +324,9 @@ func (s *MediaConvertJobConfigOutputGroupsGroupConfigManifestExtend) Validate() 
 }
 
 type MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes struct {
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Language *string `json:"language,omitempty" xml:"language,omitempty"`
 }
 
 func (s MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes) String() string {
@@ -337,6 +337,10 @@ func (s MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes) GoSt
 	return s.String()
 }
 
+func (s *MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes) GetLanguage() *string {
+	return s.Language
+}
+
 func (s *MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes) GetName() *string {
 	return s.Name
 }
@@ -345,8 +349,9 @@ func (s *MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes) Get
 	return s.Type
 }
 
-func (s *MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes) GetLanguage() *string {
-	return s.Language
+func (s *MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes) SetLanguage(v string) *MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes {
+	s.Language = &v
+	return s
 }
 
 func (s *MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes) SetName(v string) *MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes {
@@ -356,11 +361,6 @@ func (s *MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes) Set
 
 func (s *MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes) SetType(v string) *MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes {
 	s.Type = &v
-	return s
-}
-
-func (s *MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes) SetLanguage(v string) *MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes {
-	s.Language = &v
 	return s
 }
 

@@ -18,6 +18,8 @@ type iSubmitSceneBatchEditingJobRequest interface {
 }
 
 type SubmitSceneBatchEditingJobRequest struct {
+	// The output configuration. The structure is the same as the [OutputConfig](https://help.aliyun.com/zh/ims/use-cases/create-highlight-videos?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_3.3af86997GreVu9\\&scm=20140722.H_2863940._.OR_help-T_cn~zh-V_1#4111a373d0xbz) for batch video generation, except that Count and GeneratePreviewOnly are not supported.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -32,13 +34,16 @@ type SubmitSceneBatchEditingJobRequest struct {
 	//
 	// }
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	// A comma-separated list of editing project IDs. The video is rendered based on the timeline from each project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ****ae91539d46bb9000f74b40b80dd2,****ae91539000f74b40b80dd9d46bb
 	ProjectIds *string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty"`
-	UserData   *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// Custom user data, including callback configurations. For more information, see [UserData](~~357745#section-urj-v3f-0s1~~).
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitSceneBatchEditingJobRequest) String() string {

@@ -26,27 +26,40 @@ type iGetAiRtcAuthCodeListResponseBody interface {
 }
 
 type GetAiRtcAuthCodeListResponseBody struct {
+	// An array of AiRtcAuthCodeDTO objects, each representing an authorization code.
 	AuthCodeList []*AiRtcAuthCodeDTO `json:"AuthCodeList,omitempty" xml:"AuthCodeList,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7B117AF5-2A16-412C-B127-FA6175ED1***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
