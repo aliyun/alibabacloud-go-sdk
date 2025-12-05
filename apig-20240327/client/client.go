@@ -1663,6 +1663,76 @@ func (client *Client) CreateService(request *CreateServiceRequest) (_result *Cre
 
 // Summary:
 //
+// 创建服务版本
+//
+// @param request - CreateServiceVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceVersionResponse
+func (client *Client) CreateServiceVersionWithOptions(serviceId *string, request *CreateServiceVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Labels) {
+		body["labels"] = request.Labels
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateServiceVersion"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/services/" + dara.PercentEncode(dara.StringValue(serviceId)) + "/versions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateServiceVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建服务版本
+//
+// @param request - CreateServiceVersionRequest
+//
+// @return CreateServiceVersionResponse
+func (client *Client) CreateServiceVersion(serviceId *string, request *CreateServiceVersionRequest) (_result *CreateServiceVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateServiceVersionResponse{}
+	_body, _err := client.CreateServiceVersionWithOptions(serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a consumer.
 //
 // @param headers - map
@@ -2375,6 +2445,56 @@ func (client *Client) DeleteService(serviceId *string) (_result *DeleteServiceRe
 	headers := make(map[string]*string)
 	_result = &DeleteServiceResponse{}
 	_body, _err := client.DeleteServiceWithOptions(serviceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除服务版本
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceVersionResponse
+func (client *Client) DeleteServiceVersionWithOptions(serviceId *string, name *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceVersionResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteServiceVersion"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/services/" + dara.PercentEncode(dara.StringValue(serviceId)) + "/versions/" + dara.PercentEncode(dara.StringValue(name))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteServiceVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除服务版本
+//
+// @return DeleteServiceVersionResponse
+func (client *Client) DeleteServiceVersion(serviceId *string, name *string) (_result *DeleteServiceVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteServiceVersionResponse{}
+	_body, _err := client.DeleteServiceVersionWithOptions(serviceId, name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6606,6 +6726,72 @@ func (client *Client) UpdatePolicy(policyId *string, request *UpdatePolicyReques
 	headers := make(map[string]*string)
 	_result = &UpdatePolicyResponse{}
 	_body, _err := client.UpdatePolicyWithOptions(policyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新服务版本
+//
+// @param request - UpdateServiceVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceVersionResponse
+func (client *Client) UpdateServiceVersionWithOptions(serviceId *string, name *string, request *UpdateServiceVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateServiceVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Labels) {
+		body["labels"] = request.Labels
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateServiceVersion"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/services/" + dara.PercentEncode(dara.StringValue(serviceId)) + "/versions/" + dara.PercentEncode(dara.StringValue(name))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateServiceVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新服务版本
+//
+// @param request - UpdateServiceVersionRequest
+//
+// @return UpdateServiceVersionResponse
+func (client *Client) UpdateServiceVersion(serviceId *string, name *string, request *UpdateServiceVersionRequest) (_result *UpdateServiceVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateServiceVersionResponse{}
+	_body, _err := client.UpdateServiceVersionWithOptions(serviceId, name, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
