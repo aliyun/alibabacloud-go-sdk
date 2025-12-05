@@ -59,5 +59,10 @@ func (s *ListHostAccountsResponse) SetBody(v *ListHostAccountsResponseBody) *Lis
 }
 
 func (s *ListHostAccountsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

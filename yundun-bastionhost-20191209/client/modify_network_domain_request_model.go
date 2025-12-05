@@ -150,7 +150,16 @@ func (s *ModifyNetworkDomainRequest) SetRegionId(v string) *ModifyNetworkDomainR
 }
 
 func (s *ModifyNetworkDomainRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Proxies != nil {
+		for _, item := range s.Proxies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyNetworkDomainRequestProxies struct {

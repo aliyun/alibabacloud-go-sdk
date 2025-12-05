@@ -59,5 +59,10 @@ func (s *DetachHostAccountsFromUserResponse) SetBody(v *DetachHostAccountsFromUs
 }
 
 func (s *DetachHostAccountsFromUserResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

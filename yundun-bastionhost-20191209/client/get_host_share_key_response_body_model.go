@@ -53,7 +53,12 @@ func (s *GetHostShareKeyResponseBody) SetRequestId(v string) *GetHostShareKeyRes
 }
 
 func (s *GetHostShareKeyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HostShareKey != nil {
+		if err := s.HostShareKey.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHostShareKeyResponseBodyHostShareKey struct {

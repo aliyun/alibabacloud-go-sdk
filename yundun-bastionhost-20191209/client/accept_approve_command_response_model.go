@@ -59,5 +59,10 @@ func (s *AcceptApproveCommandResponse) SetBody(v *AcceptApproveCommandResponseBo
 }
 
 func (s *AcceptApproveCommandResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

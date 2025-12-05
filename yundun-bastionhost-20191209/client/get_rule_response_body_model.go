@@ -53,7 +53,12 @@ func (s *GetRuleResponseBody) SetRule(v *GetRuleResponseBodyRule) *GetRuleRespon
 }
 
 func (s *GetRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Rule != nil {
+		if err := s.Rule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRuleResponseBodyRule struct {
@@ -198,7 +203,52 @@ func (s *GetRuleResponseBodyRule) SetUsers(v []*GetRuleResponseBodyRuleUsers) *G
 }
 
 func (s *GetRuleResponseBodyRule) Validate() error {
-	return dara.Validate(s)
+	if s.Databases != nil {
+		for _, item := range s.Databases {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HostGroups != nil {
+		for _, item := range s.HostGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Hosts != nil {
+		for _, item := range s.Hosts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserGroups != nil {
+		for _, item := range s.UserGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Users != nil {
+		for _, item := range s.Users {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRuleResponseBodyRuleDatabases struct {
@@ -239,7 +289,16 @@ func (s *GetRuleResponseBodyRuleDatabases) SetDatabaseId(v string) *GetRuleRespo
 }
 
 func (s *GetRuleResponseBodyRuleDatabases) Validate() error {
-	return dara.Validate(s)
+	if s.DatabaseAccounts != nil {
+		for _, item := range s.DatabaseAccounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRuleResponseBodyRuleDatabasesDatabaseAccounts struct {
@@ -351,7 +410,16 @@ func (s *GetRuleResponseBodyRuleHosts) SetHostId(v string) *GetRuleResponseBodyR
 }
 
 func (s *GetRuleResponseBodyRuleHosts) Validate() error {
-	return dara.Validate(s)
+	if s.HostAccounts != nil {
+		for _, item := range s.HostAccounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRuleResponseBodyRuleHostsHostAccounts struct {

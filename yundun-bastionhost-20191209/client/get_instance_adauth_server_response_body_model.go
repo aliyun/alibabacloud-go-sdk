@@ -53,7 +53,12 @@ func (s *GetInstanceADAuthServerResponseBody) SetRequestId(v string) *GetInstanc
 }
 
 func (s *GetInstanceADAuthServerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AD != nil {
+		if err := s.AD.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceADAuthServerResponseBodyAD struct {

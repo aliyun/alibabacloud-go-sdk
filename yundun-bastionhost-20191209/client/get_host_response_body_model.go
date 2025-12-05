@@ -53,7 +53,12 @@ func (s *GetHostResponseBody) SetRequestId(v string) *GetHostResponseBody {
 }
 
 func (s *GetHostResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Host != nil {
+		if err := s.Host.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHostResponseBodyHost struct {
@@ -287,7 +292,16 @@ func (s *GetHostResponseBodyHost) SetSourceInstanceState(v string) *GetHostRespo
 }
 
 func (s *GetHostResponseBodyHost) Validate() error {
-	return dara.Validate(s)
+	if s.Protocols != nil {
+		for _, item := range s.Protocols {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetHostResponseBodyHostProtocols struct {

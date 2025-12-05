@@ -99,7 +99,12 @@ func (s *SetPolicyProtocolConfigRequest) SetRegionId(v string) *SetPolicyProtoco
 }
 
 func (s *SetPolicyProtocolConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ProtocolConfig != nil {
+		if err := s.ProtocolConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetPolicyProtocolConfigRequestProtocolConfig struct {
@@ -136,7 +141,17 @@ func (s *SetPolicyProtocolConfigRequestProtocolConfig) SetSSH(v *SetPolicyProtoc
 }
 
 func (s *SetPolicyProtocolConfigRequestProtocolConfig) Validate() error {
-	return dara.Validate(s)
+	if s.RDP != nil {
+		if err := s.RDP.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SSH != nil {
+		if err := s.SSH.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetPolicyProtocolConfigRequestProtocolConfigRDP struct {

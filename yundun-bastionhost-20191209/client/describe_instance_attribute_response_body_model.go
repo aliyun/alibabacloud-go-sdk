@@ -53,7 +53,12 @@ func (s *DescribeInstanceAttributeResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeInstanceAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceAttribute != nil {
+		if err := s.InstanceAttribute.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceAttributeResponseBodyInstanceAttribute struct {
@@ -583,7 +588,25 @@ func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetWhiteListPol
 }
 
 func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) Validate() error {
-	return dara.Validate(s)
+	if s.Ports != nil {
+		for _, item := range s.Ports {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WhiteListPolicies != nil {
+		for _, item := range s.WhiteListPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceAttributeResponseBodyInstanceAttributePorts struct {

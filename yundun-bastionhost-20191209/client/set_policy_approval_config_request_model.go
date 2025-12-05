@@ -99,7 +99,12 @@ func (s *SetPolicyApprovalConfigRequest) SetRegionId(v string) *SetPolicyApprova
 }
 
 func (s *SetPolicyApprovalConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ApprovalConfig != nil {
+		if err := s.ApprovalConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetPolicyApprovalConfigRequestApprovalConfig struct {

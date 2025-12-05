@@ -101,7 +101,12 @@ func (s *SetPolicyCommandConfigRequest) SetRegionId(v string) *SetPolicyCommandC
 }
 
 func (s *SetPolicyCommandConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CommandConfig != nil {
+		if err := s.CommandConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetPolicyCommandConfigRequestCommandConfig struct {
@@ -142,7 +147,17 @@ func (s *SetPolicyCommandConfigRequestCommandConfig) SetDeny(v *SetPolicyCommand
 }
 
 func (s *SetPolicyCommandConfigRequestCommandConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Approval != nil {
+		if err := s.Approval.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Deny != nil {
+		if err := s.Deny.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetPolicyCommandConfigRequestCommandConfigApproval struct {

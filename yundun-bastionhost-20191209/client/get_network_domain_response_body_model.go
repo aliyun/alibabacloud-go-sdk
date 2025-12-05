@@ -53,7 +53,12 @@ func (s *GetNetworkDomainResponseBody) SetRequestId(v string) *GetNetworkDomainR
 }
 
 func (s *GetNetworkDomainResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkDomain != nil {
+		if err := s.NetworkDomain.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNetworkDomainResponseBodyNetworkDomain struct {
@@ -162,7 +167,16 @@ func (s *GetNetworkDomainResponseBodyNetworkDomain) SetProxies(v []*GetNetworkDo
 }
 
 func (s *GetNetworkDomainResponseBodyNetworkDomain) Validate() error {
-	return dara.Validate(s)
+	if s.Proxies != nil {
+		for _, item := range s.Proxies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetNetworkDomainResponseBodyNetworkDomainProxies struct {

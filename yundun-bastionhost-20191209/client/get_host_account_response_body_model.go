@@ -53,7 +53,12 @@ func (s *GetHostAccountResponseBody) SetRequestId(v string) *GetHostAccountRespo
 }
 
 func (s *GetHostAccountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HostAccount != nil {
+		if err := s.HostAccount.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHostAccountResponseBodyHostAccount struct {

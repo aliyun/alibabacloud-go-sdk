@@ -53,7 +53,12 @@ func (s *GetHostGroupResponseBody) SetRequestId(v string) *GetHostGroupResponseB
 }
 
 func (s *GetHostGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HostGroup != nil {
+		if err := s.HostGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHostGroupResponseBodyHostGroup struct {

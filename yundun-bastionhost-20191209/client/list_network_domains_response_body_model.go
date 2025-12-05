@@ -70,7 +70,16 @@ func (s *ListNetworkDomainsResponseBody) SetTotalCount(v int64) *ListNetworkDoma
 }
 
 func (s *ListNetworkDomainsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkDomains != nil {
+		for _, item := range s.NetworkDomains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNetworkDomainsResponseBodyNetworkDomains struct {
@@ -178,7 +187,16 @@ func (s *ListNetworkDomainsResponseBodyNetworkDomains) SetProxiesState(v []*List
 }
 
 func (s *ListNetworkDomainsResponseBodyNetworkDomains) Validate() error {
-	return dara.Validate(s)
+	if s.ProxiesState != nil {
+		for _, item := range s.ProxiesState {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNetworkDomainsResponseBodyNetworkDomainsProxiesState struct {

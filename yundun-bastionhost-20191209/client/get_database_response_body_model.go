@@ -53,7 +53,12 @@ func (s *GetDatabaseResponseBody) SetRequestId(v string) *GetDatabaseResponseBod
 }
 
 func (s *GetDatabaseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Database != nil {
+		if err := s.Database.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDatabaseResponseBodyDatabase struct {

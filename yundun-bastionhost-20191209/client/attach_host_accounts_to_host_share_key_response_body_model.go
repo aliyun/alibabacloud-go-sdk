@@ -53,7 +53,16 @@ func (s *AttachHostAccountsToHostShareKeyResponseBody) SetResults(v []*AttachHos
 }
 
 func (s *AttachHostAccountsToHostShareKeyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AttachHostAccountsToHostShareKeyResponseBodyResults struct {

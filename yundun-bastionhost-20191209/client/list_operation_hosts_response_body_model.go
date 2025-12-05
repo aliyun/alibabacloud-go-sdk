@@ -70,7 +70,16 @@ func (s *ListOperationHostsResponseBody) SetTotalCount(v int64) *ListOperationHo
 }
 
 func (s *ListOperationHostsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Hosts != nil {
+		for _, item := range s.Hosts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOperationHostsResponseBodyHosts struct {

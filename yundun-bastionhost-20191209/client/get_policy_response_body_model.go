@@ -53,7 +53,12 @@ func (s *GetPolicyResponseBody) SetRequestId(v string) *GetPolicyResponseBody {
 }
 
 func (s *GetPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Policy != nil {
+		if err := s.Policy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPolicyResponseBodyPolicy struct {
@@ -183,7 +188,32 @@ func (s *GetPolicyResponseBodyPolicy) SetProtocolConfig(v *GetPolicyResponseBody
 }
 
 func (s *GetPolicyResponseBodyPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.AccessTimeRangeConfig != nil {
+		if err := s.AccessTimeRangeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ApprovalConfig != nil {
+		if err := s.ApprovalConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CommandConfig != nil {
+		if err := s.CommandConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IPAclConfig != nil {
+		if err := s.IPAclConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProtocolConfig != nil {
+		if err := s.ProtocolConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPolicyResponseBodyPolicyAccessTimeRangeConfig struct {
@@ -209,7 +239,16 @@ func (s *GetPolicyResponseBodyPolicyAccessTimeRangeConfig) SetEffectiveTime(v []
 }
 
 func (s *GetPolicyResponseBodyPolicyAccessTimeRangeConfig) Validate() error {
-	return dara.Validate(s)
+	if s.EffectiveTime != nil {
+		for _, item := range s.EffectiveTime {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPolicyResponseBodyPolicyAccessTimeRangeConfigEffectiveTime struct {
@@ -317,7 +356,17 @@ func (s *GetPolicyResponseBodyPolicyCommandConfig) SetDeny(v *GetPolicyResponseB
 }
 
 func (s *GetPolicyResponseBodyPolicyCommandConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Approval != nil {
+		if err := s.Approval.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Deny != nil {
+		if err := s.Deny.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPolicyResponseBodyPolicyCommandConfigApproval struct {
@@ -470,7 +519,17 @@ func (s *GetPolicyResponseBodyPolicyProtocolConfig) SetSSH(v *GetPolicyResponseB
 }
 
 func (s *GetPolicyResponseBodyPolicyProtocolConfig) Validate() error {
-	return dara.Validate(s)
+	if s.RDP != nil {
+		if err := s.RDP.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SSH != nil {
+		if err := s.SSH.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPolicyResponseBodyPolicyProtocolConfigRDP struct {

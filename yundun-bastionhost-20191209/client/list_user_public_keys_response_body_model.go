@@ -70,7 +70,16 @@ func (s *ListUserPublicKeysResponseBody) SetTotalCount(v int64) *ListUserPublicK
 }
 
 func (s *ListUserPublicKeysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PublicKeys != nil {
+		for _, item := range s.PublicKeys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserPublicKeysResponseBodyPublicKeys struct {

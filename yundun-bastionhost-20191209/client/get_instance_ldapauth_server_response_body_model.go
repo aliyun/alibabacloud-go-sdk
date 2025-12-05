@@ -53,7 +53,12 @@ func (s *GetInstanceLDAPAuthServerResponseBody) SetRequestId(v string) *GetInsta
 }
 
 func (s *GetInstanceLDAPAuthServerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LDAP != nil {
+		if err := s.LDAP.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceLDAPAuthServerResponseBodyLDAP struct {

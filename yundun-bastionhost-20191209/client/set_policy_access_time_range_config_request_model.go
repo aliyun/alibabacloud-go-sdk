@@ -99,7 +99,12 @@ func (s *SetPolicyAccessTimeRangeConfigRequest) SetRegionId(v string) *SetPolicy
 }
 
 func (s *SetPolicyAccessTimeRangeConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AccessTimeRangeConfig != nil {
+		if err := s.AccessTimeRangeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfig struct {
@@ -125,7 +130,16 @@ func (s *SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfig) SetEffectiv
 }
 
 func (s *SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfig) Validate() error {
-	return dara.Validate(s)
+	if s.EffectiveTime != nil {
+		for _, item := range s.EffectiveTime {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfigEffectiveTime struct {

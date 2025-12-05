@@ -70,7 +70,16 @@ func (s *ListOperationHostAccountsResponseBody) SetTotalCount(v int64) *ListOper
 }
 
 func (s *ListOperationHostAccountsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HostAccounts != nil {
+		for _, item := range s.HostAccounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOperationHostAccountsResponseBodyHostAccounts struct {
@@ -209,7 +218,12 @@ func (s *ListOperationHostAccountsResponseBodyHostAccounts) SetSSHConfig(v *List
 }
 
 func (s *ListOperationHostAccountsResponseBodyHostAccounts) Validate() error {
-	return dara.Validate(s)
+	if s.SSHConfig != nil {
+		if err := s.SSHConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListOperationHostAccountsResponseBodyHostAccountsSSHConfig struct {

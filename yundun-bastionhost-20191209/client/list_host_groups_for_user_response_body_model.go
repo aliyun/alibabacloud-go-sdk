@@ -70,7 +70,16 @@ func (s *ListHostGroupsForUserResponseBody) SetTotalCount(v int32) *ListHostGrou
 }
 
 func (s *ListHostGroupsForUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HostGroups != nil {
+		for _, item := range s.HostGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHostGroupsForUserResponseBodyHostGroups struct {

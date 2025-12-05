@@ -70,7 +70,16 @@ func (s *ListApproveCommandsResponseBody) SetTotalCount(v int64) *ListApproveCom
 }
 
 func (s *ListApproveCommandsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApproveCommands != nil {
+		for _, item := range s.ApproveCommands {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApproveCommandsResponseBodyApproveCommands struct {

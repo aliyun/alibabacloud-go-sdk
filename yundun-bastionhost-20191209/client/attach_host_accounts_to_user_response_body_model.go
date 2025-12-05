@@ -53,7 +53,16 @@ func (s *AttachHostAccountsToUserResponseBody) SetResults(v []*AttachHostAccount
 }
 
 func (s *AttachHostAccountsToUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AttachHostAccountsToUserResponseBodyResults struct {
@@ -149,7 +158,16 @@ func (s *AttachHostAccountsToUserResponseBodyResults) SetUserId(v string) *Attac
 }
 
 func (s *AttachHostAccountsToUserResponseBodyResults) Validate() error {
-	return dara.Validate(s)
+	if s.HostAccounts != nil {
+		for _, item := range s.HostAccounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AttachHostAccountsToUserResponseBodyResultsHostAccounts struct {

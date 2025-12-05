@@ -53,7 +53,16 @@ func (s *DetachHostGroupAccountsFromUserGroupResponseBody) SetResults(v []*Detac
 }
 
 func (s *DetachHostGroupAccountsFromUserGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DetachHostGroupAccountsFromUserGroupResponseBodyResults struct {
@@ -145,7 +154,16 @@ func (s *DetachHostGroupAccountsFromUserGroupResponseBodyResults) SetUserGroupId
 }
 
 func (s *DetachHostGroupAccountsFromUserGroupResponseBodyResults) Validate() error {
-	return dara.Validate(s)
+	if s.HostAccountNames != nil {
+		for _, item := range s.HostAccountNames {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DetachHostGroupAccountsFromUserGroupResponseBodyResultsHostAccountNames struct {

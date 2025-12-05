@@ -198,7 +198,34 @@ func (s *CreateRuleRequest) SetUserIds(v []*string) *CreateRuleRequest {
 }
 
 func (s *CreateRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Databases != nil {
+		for _, item := range s.Databases {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HostGroups != nil {
+		for _, item := range s.HostGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Hosts != nil {
+		for _, item := range s.Hosts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateRuleRequestDatabases struct {

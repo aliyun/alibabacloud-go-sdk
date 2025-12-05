@@ -59,5 +59,10 @@ func (s *SetPolicyProtocolConfigResponse) SetBody(v *SetPolicyProtocolConfigResp
 }
 
 func (s *SetPolicyProtocolConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

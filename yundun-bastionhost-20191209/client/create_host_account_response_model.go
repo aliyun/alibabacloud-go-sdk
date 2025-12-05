@@ -59,5 +59,10 @@ func (s *CreateHostAccountResponse) SetBody(v *CreateHostAccountResponseBody) *C
 }
 
 func (s *CreateHostAccountResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

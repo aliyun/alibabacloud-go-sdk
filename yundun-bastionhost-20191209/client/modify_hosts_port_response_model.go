@@ -59,5 +59,10 @@ func (s *ModifyHostsPortResponse) SetBody(v *ModifyHostsPortResponseBody) *Modif
 }
 
 func (s *ModifyHostsPortResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

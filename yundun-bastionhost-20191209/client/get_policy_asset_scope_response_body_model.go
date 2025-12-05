@@ -53,7 +53,12 @@ func (s *GetPolicyAssetScopeResponseBody) SetRequestId(v string) *GetPolicyAsset
 }
 
 func (s *GetPolicyAssetScopeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AssetScope != nil {
+		if err := s.AssetScope.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPolicyAssetScopeResponseBodyAssetScope struct {
@@ -120,7 +125,34 @@ func (s *GetPolicyAssetScopeResponseBodyAssetScope) SetScopeType(v string) *GetP
 }
 
 func (s *GetPolicyAssetScopeResponseBodyAssetScope) Validate() error {
-	return dara.Validate(s)
+	if s.Databases != nil {
+		for _, item := range s.Databases {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HostGroups != nil {
+		for _, item := range s.HostGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Hosts != nil {
+		for _, item := range s.Hosts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPolicyAssetScopeResponseBodyAssetScopeDatabases struct {

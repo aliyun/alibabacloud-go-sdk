@@ -59,5 +59,10 @@ func (s *AttachHostGroupAccountsToUserGroupResponse) SetBody(v *AttachHostGroupA
 }
 
 func (s *AttachHostGroupAccountsToUserGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

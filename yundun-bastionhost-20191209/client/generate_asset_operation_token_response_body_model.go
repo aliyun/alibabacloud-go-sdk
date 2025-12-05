@@ -53,7 +53,12 @@ func (s *GenerateAssetOperationTokenResponseBody) SetRequestId(v string) *Genera
 }
 
 func (s *GenerateAssetOperationTokenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AssetOperationToken != nil {
+		if err := s.AssetOperationToken.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GenerateAssetOperationTokenResponseBodyAssetOperationToken struct {

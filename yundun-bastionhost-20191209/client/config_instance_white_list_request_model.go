@@ -90,7 +90,16 @@ func (s *ConfigInstanceWhiteListRequest) SetWhiteListPolicies(v []*ConfigInstanc
 }
 
 func (s *ConfigInstanceWhiteListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.WhiteListPolicies != nil {
+		for _, item := range s.WhiteListPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ConfigInstanceWhiteListRequestWhiteListPolicies struct {

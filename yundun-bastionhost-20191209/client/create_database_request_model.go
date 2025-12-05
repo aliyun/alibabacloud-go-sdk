@@ -25,6 +25,8 @@ type iCreateDatabaseRequest interface {
 	GetDatabaseType() *string
 	SetInstanceId(v string) *CreateDatabaseRequest
 	GetInstanceId() *string
+	SetInstanceMemberId(v int64) *CreateDatabaseRequest
+	GetInstanceMemberId() *int64
 	SetNetworkDomainId(v string) *CreateDatabaseRequest
 	GetNetworkDomainId() *string
 	SetPolarDBEndpointType(v string) *CreateDatabaseRequest
@@ -112,6 +114,10 @@ type CreateDatabaseRequest struct {
 	//
 	// bastionhost-cn-7mz2g5hu20e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	InstanceMemberId *int64 `json:"InstanceMemberId,omitempty" xml:"InstanceMemberId,omitempty"`
 	// The ID of the network domain to which the database to add belongs.
 	//
 	// >  You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
@@ -210,6 +216,10 @@ func (s *CreateDatabaseRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *CreateDatabaseRequest) GetInstanceMemberId() *int64 {
+	return s.InstanceMemberId
+}
+
 func (s *CreateDatabaseRequest) GetNetworkDomainId() *string {
 	return s.NetworkDomainId
 }
@@ -271,6 +281,11 @@ func (s *CreateDatabaseRequest) SetDatabaseType(v string) *CreateDatabaseRequest
 
 func (s *CreateDatabaseRequest) SetInstanceId(v string) *CreateDatabaseRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateDatabaseRequest) SetInstanceMemberId(v int64) *CreateDatabaseRequest {
+	s.InstanceMemberId = &v
 	return s
 }
 

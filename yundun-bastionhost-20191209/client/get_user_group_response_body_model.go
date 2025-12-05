@@ -53,7 +53,12 @@ func (s *GetUserGroupResponseBody) SetUserGroup(v *GetUserGroupResponseBodyUserG
 }
 
 func (s *GetUserGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserGroup != nil {
+		if err := s.UserGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserGroupResponseBodyUserGroup struct {

@@ -53,7 +53,12 @@ func (s *GetInstanceTwoFactorResponseBody) SetRequestId(v string) *GetInstanceTw
 }
 
 func (s *GetInstanceTwoFactorResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceTwoFactorResponseBodyConfig struct {

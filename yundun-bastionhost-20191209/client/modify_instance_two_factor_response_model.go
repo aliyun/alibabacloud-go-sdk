@@ -59,5 +59,10 @@ func (s *ModifyInstanceTwoFactorResponse) SetBody(v *ModifyInstanceTwoFactorResp
 }
 
 func (s *ModifyInstanceTwoFactorResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

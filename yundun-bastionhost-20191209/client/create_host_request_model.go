@@ -21,6 +21,8 @@ type iCreateHostRequest interface {
 	GetHostPublicAddress() *string
 	SetInstanceId(v string) *CreateHostRequest
 	GetInstanceId() *string
+	SetInstanceMemberId(v int64) *CreateHostRequest
+	GetInstanceMemberId() *int64
 	SetInstanceRegionId(v string) *CreateHostRequest
 	GetInstanceRegionId() *string
 	SetNetworkDomainId(v string) *CreateHostRequest
@@ -88,6 +90,10 @@ type CreateHostRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	InstanceMemberId *int64 `json:"InstanceMemberId,omitempty" xml:"InstanceMemberId,omitempty"`
 	// The ID of the region to which the ECS instance or the host in an ApsaraDB MyBase dedicated cluster belongs.
 	//
 	// > This parameter is required if the **Source*	- parameter is set to **Ecs*	- or **Rds**.
@@ -180,6 +186,10 @@ func (s *CreateHostRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *CreateHostRequest) GetInstanceMemberId() *int64 {
+	return s.InstanceMemberId
+}
+
 func (s *CreateHostRequest) GetInstanceRegionId() *string {
 	return s.InstanceRegionId
 }
@@ -231,6 +241,11 @@ func (s *CreateHostRequest) SetHostPublicAddress(v string) *CreateHostRequest {
 
 func (s *CreateHostRequest) SetInstanceId(v string) *CreateHostRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateHostRequest) SetInstanceMemberId(v int64) *CreateHostRequest {
+	s.InstanceMemberId = &v
 	return s
 }
 

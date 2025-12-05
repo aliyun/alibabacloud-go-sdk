@@ -53,7 +53,16 @@ func (s *AttachDatabaseAccountsToUserGroupResponseBody) SetResults(v []*AttachDa
 }
 
 func (s *AttachDatabaseAccountsToUserGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AttachDatabaseAccountsToUserGroupResponseBodyResults struct {
@@ -135,7 +144,16 @@ func (s *AttachDatabaseAccountsToUserGroupResponseBodyResults) SetUserGroupId(v 
 }
 
 func (s *AttachDatabaseAccountsToUserGroupResponseBodyResults) Validate() error {
-	return dara.Validate(s)
+	if s.DatabaseAccounts != nil {
+		for _, item := range s.DatabaseAccounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AttachDatabaseAccountsToUserGroupResponseBodyResultsDatabaseAccounts struct {

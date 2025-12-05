@@ -99,7 +99,12 @@ func (s *SetPolicyIPAclConfigRequest) SetRegionId(v string) *SetPolicyIPAclConfi
 }
 
 func (s *SetPolicyIPAclConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.IPAclConfig != nil {
+		if err := s.IPAclConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetPolicyIPAclConfigRequestIPAclConfig struct {

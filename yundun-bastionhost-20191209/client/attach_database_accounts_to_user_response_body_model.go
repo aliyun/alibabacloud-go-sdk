@@ -53,7 +53,16 @@ func (s *AttachDatabaseAccountsToUserResponseBody) SetResults(v []*AttachDatabas
 }
 
 func (s *AttachDatabaseAccountsToUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AttachDatabaseAccountsToUserResponseBodyResults struct {
@@ -135,7 +144,16 @@ func (s *AttachDatabaseAccountsToUserResponseBodyResults) SetUserId(v string) *A
 }
 
 func (s *AttachDatabaseAccountsToUserResponseBodyResults) Validate() error {
-	return dara.Validate(s)
+	if s.DatabaseAccounts != nil {
+		for _, item := range s.DatabaseAccounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AttachDatabaseAccountsToUserResponseBodyResultsDatabaseAccounts struct {

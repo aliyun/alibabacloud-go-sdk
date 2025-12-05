@@ -70,7 +70,16 @@ func (s *ListOperationTicketsResponseBody) SetTotalCount(v int64) *ListOperation
 }
 
 func (s *ListOperationTicketsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OperationTickets != nil {
+		for _, item := range s.OperationTickets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOperationTicketsResponseBodyOperationTickets struct {

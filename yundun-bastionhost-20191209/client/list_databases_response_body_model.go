@@ -70,7 +70,16 @@ func (s *ListDatabasesResponseBody) SetTotalCount(v int64) *ListDatabasesRespons
 }
 
 func (s *ListDatabasesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Databases != nil {
+		for _, item := range s.Databases {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDatabasesResponseBodyDatabases struct {

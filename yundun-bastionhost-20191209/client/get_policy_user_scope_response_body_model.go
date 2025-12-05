@@ -53,7 +53,12 @@ func (s *GetPolicyUserScopeResponseBody) SetUserScope(v *GetPolicyUserScopeRespo
 }
 
 func (s *GetPolicyUserScopeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserScope != nil {
+		if err := s.UserScope.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPolicyUserScopeResponseBodyUserScope struct {
