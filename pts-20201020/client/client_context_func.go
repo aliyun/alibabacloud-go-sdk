@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("central")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("pts"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -65,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AdjustJMeterSceneSpeedResponse
-func (client *Client) AdjustJMeterSceneSpeedWithOptions(request *AdjustJMeterSceneSpeedRequest, runtime *dara.RuntimeOptions) (_result *AdjustJMeterSceneSpeedResponse, _err error) {
+func (client *Client) AdjustJMeterSceneSpeedWithContext(ctx context.Context, request *AdjustJMeterSceneSpeedRequest, runtime *dara.RuntimeOptions) (_result *AdjustJMeterSceneSpeedResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -96,29 +47,11 @@ func (client *Client) AdjustJMeterSceneSpeedWithOptions(request *AdjustJMeterSce
 		BodyType:    dara.String("json"),
 	}
 	_result = &AdjustJMeterSceneSpeedResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adjusts the JMeter load.
-//
-// @param request - AdjustJMeterSceneSpeedRequest
-//
-// @return AdjustJMeterSceneSpeedResponse
-func (client *Client) AdjustJMeterSceneSpeed(request *AdjustJMeterSceneSpeedRequest) (_result *AdjustJMeterSceneSpeedResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AdjustJMeterSceneSpeedResponse{}
-	_body, _err := client.AdjustJMeterSceneSpeedWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -137,7 +70,7 @@ func (client *Client) AdjustJMeterSceneSpeed(request *AdjustJMeterSceneSpeedRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AdjustPtsSceneSpeedResponse
-func (client *Client) AdjustPtsSceneSpeedWithOptions(tmpReq *AdjustPtsSceneSpeedRequest, runtime *dara.RuntimeOptions) (_result *AdjustPtsSceneSpeedResponse, _err error) {
+func (client *Client) AdjustPtsSceneSpeedWithContext(ctx context.Context, tmpReq *AdjustPtsSceneSpeedRequest, runtime *dara.RuntimeOptions) (_result *AdjustPtsSceneSpeedResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -174,35 +107,11 @@ func (client *Client) AdjustPtsSceneSpeedWithOptions(tmpReq *AdjustPtsSceneSpeed
 		BodyType:    dara.String("json"),
 	}
 	_result = &AdjustPtsSceneSpeedResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adjusts the stress in a Performance Testing Service (PTS) scenario.
-//
-// Description:
-//
-// In concurrency mode, only the concurrency of the first API is passed as that of a session.
-//
-// In requests per second (RPS) mode, the RPS of each API can be adjusted. Make sure that the RPS decreases in the API order in the same session.
-//
-// @param request - AdjustPtsSceneSpeedRequest
-//
-// @return AdjustPtsSceneSpeedResponse
-func (client *Client) AdjustPtsSceneSpeed(request *AdjustPtsSceneSpeedRequest) (_result *AdjustPtsSceneSpeedResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AdjustPtsSceneSpeedResponse{}
-	_body, _err := client.AdjustPtsSceneSpeedWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -215,7 +124,7 @@ func (client *Client) AdjustPtsSceneSpeed(request *AdjustPtsSceneSpeedRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePtsSceneResponse
-func (client *Client) CreatePtsSceneWithOptions(request *CreatePtsSceneRequest, runtime *dara.RuntimeOptions) (_result *CreatePtsSceneResponse, _err error) {
+func (client *Client) CreatePtsSceneWithContext(ctx context.Context, request *CreatePtsSceneRequest, runtime *dara.RuntimeOptions) (_result *CreatePtsSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -242,29 +151,11 @@ func (client *Client) CreatePtsSceneWithOptions(request *CreatePtsSceneRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePtsSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a stress testing scenario.
-//
-// @param request - CreatePtsSceneRequest
-//
-// @return CreatePtsSceneResponse
-func (client *Client) CreatePtsScene(request *CreatePtsSceneRequest) (_result *CreatePtsSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePtsSceneResponse{}
-	_body, _err := client.CreatePtsSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -277,7 +168,7 @@ func (client *Client) CreatePtsScene(request *CreatePtsSceneRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePtsSceneBaseLineFromReportResponse
-func (client *Client) CreatePtsSceneBaseLineFromReportWithOptions(request *CreatePtsSceneBaseLineFromReportRequest, runtime *dara.RuntimeOptions) (_result *CreatePtsSceneBaseLineFromReportResponse, _err error) {
+func (client *Client) CreatePtsSceneBaseLineFromReportWithContext(ctx context.Context, request *CreatePtsSceneBaseLineFromReportRequest, runtime *dara.RuntimeOptions) (_result *CreatePtsSceneBaseLineFromReportResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -308,29 +199,11 @@ func (client *Client) CreatePtsSceneBaseLineFromReportWithOptions(request *Creat
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePtsSceneBaseLineFromReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// null
-//
-// @param request - CreatePtsSceneBaseLineFromReportRequest
-//
-// @return CreatePtsSceneBaseLineFromReportResponse
-func (client *Client) CreatePtsSceneBaseLineFromReport(request *CreatePtsSceneBaseLineFromReportRequest) (_result *CreatePtsSceneBaseLineFromReportResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePtsSceneBaseLineFromReportResponse{}
-	_body, _err := client.CreatePtsSceneBaseLineFromReportWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -343,7 +216,7 @@ func (client *Client) CreatePtsSceneBaseLineFromReport(request *CreatePtsSceneBa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePtsSceneResponse
-func (client *Client) DeletePtsSceneWithOptions(request *DeletePtsSceneRequest, runtime *dara.RuntimeOptions) (_result *DeletePtsSceneResponse, _err error) {
+func (client *Client) DeletePtsSceneWithContext(ctx context.Context, request *DeletePtsSceneRequest, runtime *dara.RuntimeOptions) (_result *DeletePtsSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -370,29 +243,11 @@ func (client *Client) DeletePtsSceneWithOptions(request *DeletePtsSceneRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePtsSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a Performance Testing Service (PTS) scenario.
-//
-// @param request - DeletePtsSceneRequest
-//
-// @return DeletePtsSceneResponse
-func (client *Client) DeletePtsScene(request *DeletePtsSceneRequest) (_result *DeletePtsSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePtsSceneResponse{}
-	_body, _err := client.DeletePtsSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -401,7 +256,7 @@ func (client *Client) DeletePtsScene(request *DeletePtsSceneRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePtsSceneBaseLineResponse
-func (client *Client) DeletePtsSceneBaseLineWithOptions(request *DeletePtsSceneBaseLineRequest, runtime *dara.RuntimeOptions) (_result *DeletePtsSceneBaseLineResponse, _err error) {
+func (client *Client) DeletePtsSceneBaseLineWithContext(ctx context.Context, request *DeletePtsSceneBaseLineRequest, runtime *dara.RuntimeOptions) (_result *DeletePtsSceneBaseLineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -428,25 +283,11 @@ func (client *Client) DeletePtsSceneBaseLineWithOptions(request *DeletePtsSceneB
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePtsSceneBaseLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeletePtsSceneBaseLineRequest
-//
-// @return DeletePtsSceneBaseLineResponse
-func (client *Client) DeletePtsSceneBaseLine(request *DeletePtsSceneBaseLineRequest) (_result *DeletePtsSceneBaseLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePtsSceneBaseLineResponse{}
-	_body, _err := client.DeletePtsSceneBaseLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -455,7 +296,7 @@ func (client *Client) DeletePtsSceneBaseLine(request *DeletePtsSceneBaseLineRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePtsScenesResponse
-func (client *Client) DeletePtsScenesWithOptions(tmpReq *DeletePtsScenesRequest, runtime *dara.RuntimeOptions) (_result *DeletePtsScenesResponse, _err error) {
+func (client *Client) DeletePtsScenesWithContext(ctx context.Context, tmpReq *DeletePtsScenesRequest, runtime *dara.RuntimeOptions) (_result *DeletePtsScenesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -488,72 +329,11 @@ func (client *Client) DeletePtsScenesWithOptions(tmpReq *DeletePtsScenesRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePtsScenesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeletePtsScenesRequest
-//
-// @return DeletePtsScenesResponse
-func (client *Client) DeletePtsScenes(request *DeletePtsScenesRequest) (_result *DeletePtsScenesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePtsScenesResponse{}
-	_body, _err := client.DeletePtsScenesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all supported regions.
-//
-// @param request - GetAllRegionsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetAllRegionsResponse
-func (client *Client) GetAllRegionsWithOptions(runtime *dara.RuntimeOptions) (_result *GetAllRegionsResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetAllRegions"),
-		Version:     dara.String("2020-10-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetAllRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all supported regions.
-//
-// @return GetAllRegionsResponse
-func (client *Client) GetAllRegions() (_result *GetAllRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAllRegionsResponse{}
-	_body, _err := client.GetAllRegionsWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -566,7 +346,7 @@ func (client *Client) GetAllRegions() (_result *GetAllRegionsResponse, _err erro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetJMeterLogsResponse
-func (client *Client) GetJMeterLogsWithOptions(request *GetJMeterLogsRequest, runtime *dara.RuntimeOptions) (_result *GetJMeterLogsResponse, _err error) {
+func (client *Client) GetJMeterLogsWithContext(ctx context.Context, request *GetJMeterLogsRequest, runtime *dara.RuntimeOptions) (_result *GetJMeterLogsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -625,29 +405,11 @@ func (client *Client) GetJMeterLogsWithOptions(request *GetJMeterLogsRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetJMeterLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the operational logs of JMeter stress testers. By default, the operational logs of the stress tester identified as number 0 are queried and the total number of stress testers is returned.
-//
-// @param request - GetJMeterLogsRequest
-//
-// @return GetJMeterLogsResponse
-func (client *Client) GetJMeterLogs(request *GetJMeterLogsRequest) (_result *GetJMeterLogsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetJMeterLogsResponse{}
-	_body, _err := client.GetJMeterLogsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -660,7 +422,7 @@ func (client *Client) GetJMeterLogs(request *GetJMeterLogsRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetJMeterReportDetailsResponse
-func (client *Client) GetJMeterReportDetailsWithOptions(request *GetJMeterReportDetailsRequest, runtime *dara.RuntimeOptions) (_result *GetJMeterReportDetailsResponse, _err error) {
+func (client *Client) GetJMeterReportDetailsWithContext(ctx context.Context, request *GetJMeterReportDetailsRequest, runtime *dara.RuntimeOptions) (_result *GetJMeterReportDetailsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -687,29 +449,11 @@ func (client *Client) GetJMeterReportDetailsWithOptions(request *GetJMeterReport
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetJMeterReportDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the details of a JMeter report.
-//
-// @param request - GetJMeterReportDetailsRequest
-//
-// @return GetJMeterReportDetailsResponse
-func (client *Client) GetJMeterReportDetails(request *GetJMeterReportDetailsRequest) (_result *GetJMeterReportDetailsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetJMeterReportDetailsResponse{}
-	_body, _err := client.GetJMeterReportDetailsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -722,7 +466,7 @@ func (client *Client) GetJMeterReportDetails(request *GetJMeterReportDetailsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetJMeterSampleMetricsResponse
-func (client *Client) GetJMeterSampleMetricsWithOptions(request *GetJMeterSampleMetricsRequest, runtime *dara.RuntimeOptions) (_result *GetJMeterSampleMetricsResponse, _err error) {
+func (client *Client) GetJMeterSampleMetricsWithContext(ctx context.Context, request *GetJMeterSampleMetricsRequest, runtime *dara.RuntimeOptions) (_result *GetJMeterSampleMetricsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -761,29 +505,11 @@ func (client *Client) GetJMeterSampleMetricsWithOptions(request *GetJMeterSample
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetJMeterSampleMetricsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the metrics of JMeter samplers based on specified conditions.
-//
-// @param request - GetJMeterSampleMetricsRequest
-//
-// @return GetJMeterSampleMetricsResponse
-func (client *Client) GetJMeterSampleMetrics(request *GetJMeterSampleMetricsRequest) (_result *GetJMeterSampleMetricsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetJMeterSampleMetricsResponse{}
-	_body, _err := client.GetJMeterSampleMetricsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -796,7 +522,7 @@ func (client *Client) GetJMeterSampleMetrics(request *GetJMeterSampleMetricsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetJMeterSamplingLogsResponse
-func (client *Client) GetJMeterSamplingLogsWithOptions(request *GetJMeterSamplingLogsRequest, runtime *dara.RuntimeOptions) (_result *GetJMeterSamplingLogsResponse, _err error) {
+func (client *Client) GetJMeterSamplingLogsWithContext(ctx context.Context, request *GetJMeterSamplingLogsRequest, runtime *dara.RuntimeOptions) (_result *GetJMeterSamplingLogsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -871,29 +597,11 @@ func (client *Client) GetJMeterSamplingLogsWithOptions(request *GetJMeterSamplin
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetJMeterSamplingLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the sampling logs of a JMeter sampler.
-//
-// @param request - GetJMeterSamplingLogsRequest
-//
-// @return GetJMeterSamplingLogsResponse
-func (client *Client) GetJMeterSamplingLogs(request *GetJMeterSamplingLogsRequest) (_result *GetJMeterSamplingLogsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetJMeterSamplingLogsResponse{}
-	_body, _err := client.GetJMeterSamplingLogsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -906,7 +614,7 @@ func (client *Client) GetJMeterSamplingLogs(request *GetJMeterSamplingLogsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetJMeterSceneRunningDataResponse
-func (client *Client) GetJMeterSceneRunningDataWithOptions(request *GetJMeterSceneRunningDataRequest, runtime *dara.RuntimeOptions) (_result *GetJMeterSceneRunningDataResponse, _err error) {
+func (client *Client) GetJMeterSceneRunningDataWithContext(ctx context.Context, request *GetJMeterSceneRunningDataRequest, runtime *dara.RuntimeOptions) (_result *GetJMeterSceneRunningDataResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -933,29 +641,11 @@ func (client *Client) GetJMeterSceneRunningDataWithOptions(request *GetJMeterSce
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetJMeterSceneRunningDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries data that is generated during the stress testing of a JMeter scenario based on the ID of the scenario.
-//
-// @param request - GetJMeterSceneRunningDataRequest
-//
-// @return GetJMeterSceneRunningDataResponse
-func (client *Client) GetJMeterSceneRunningData(request *GetJMeterSceneRunningDataRequest) (_result *GetJMeterSceneRunningDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetJMeterSceneRunningDataResponse{}
-	_body, _err := client.GetJMeterSceneRunningDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -968,7 +658,7 @@ func (client *Client) GetJMeterSceneRunningData(request *GetJMeterSceneRunningDa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetOpenJMeterSceneResponse
-func (client *Client) GetOpenJMeterSceneWithOptions(request *GetOpenJMeterSceneRequest, runtime *dara.RuntimeOptions) (_result *GetOpenJMeterSceneResponse, _err error) {
+func (client *Client) GetOpenJMeterSceneWithContext(ctx context.Context, request *GetOpenJMeterSceneRequest, runtime *dara.RuntimeOptions) (_result *GetOpenJMeterSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -995,29 +685,11 @@ func (client *Client) GetOpenJMeterSceneWithOptions(request *GetOpenJMeterSceneR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetOpenJMeterSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries information about a JMeter scenario.
-//
-// @param request - GetOpenJMeterSceneRequest
-//
-// @return GetOpenJMeterSceneResponse
-func (client *Client) GetOpenJMeterScene(request *GetOpenJMeterSceneRequest) (_result *GetOpenJMeterSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetOpenJMeterSceneResponse{}
-	_body, _err := client.GetOpenJMeterSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1030,7 +702,7 @@ func (client *Client) GetOpenJMeterScene(request *GetOpenJMeterSceneRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPtsDebugSampleLogsResponse
-func (client *Client) GetPtsDebugSampleLogsWithOptions(request *GetPtsDebugSampleLogsRequest, runtime *dara.RuntimeOptions) (_result *GetPtsDebugSampleLogsResponse, _err error) {
+func (client *Client) GetPtsDebugSampleLogsWithContext(ctx context.Context, request *GetPtsDebugSampleLogsRequest, runtime *dara.RuntimeOptions) (_result *GetPtsDebugSampleLogsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1065,29 +737,11 @@ func (client *Client) GetPtsDebugSampleLogsWithOptions(request *GetPtsDebugSampl
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPtsDebugSampleLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the sampling logs for a Performance Testing Service (PTS) debugging task.
-//
-// @param request - GetPtsDebugSampleLogsRequest
-//
-// @return GetPtsDebugSampleLogsResponse
-func (client *Client) GetPtsDebugSampleLogs(request *GetPtsDebugSampleLogsRequest) (_result *GetPtsDebugSampleLogsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPtsDebugSampleLogsResponse{}
-	_body, _err := client.GetPtsDebugSampleLogsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1100,7 +754,7 @@ func (client *Client) GetPtsDebugSampleLogs(request *GetPtsDebugSampleLogsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPtsReportDetailsResponse
-func (client *Client) GetPtsReportDetailsWithOptions(request *GetPtsReportDetailsRequest, runtime *dara.RuntimeOptions) (_result *GetPtsReportDetailsResponse, _err error) {
+func (client *Client) GetPtsReportDetailsWithContext(ctx context.Context, request *GetPtsReportDetailsRequest, runtime *dara.RuntimeOptions) (_result *GetPtsReportDetailsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1131,29 +785,11 @@ func (client *Client) GetPtsReportDetailsWithOptions(request *GetPtsReportDetail
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPtsReportDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a report for a performance testing task in a Performance Testing Service (PTS) scenario.
-//
-// @param request - GetPtsReportDetailsRequest
-//
-// @return GetPtsReportDetailsResponse
-func (client *Client) GetPtsReportDetails(request *GetPtsReportDetailsRequest) (_result *GetPtsReportDetailsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPtsReportDetailsResponse{}
-	_body, _err := client.GetPtsReportDetailsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1166,7 +802,7 @@ func (client *Client) GetPtsReportDetails(request *GetPtsReportDetailsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPtsReportsBySceneIdResponse
-func (client *Client) GetPtsReportsBySceneIdWithOptions(request *GetPtsReportsBySceneIdRequest, runtime *dara.RuntimeOptions) (_result *GetPtsReportsBySceneIdResponse, _err error) {
+func (client *Client) GetPtsReportsBySceneIdWithContext(ctx context.Context, request *GetPtsReportsBySceneIdRequest, runtime *dara.RuntimeOptions) (_result *GetPtsReportsBySceneIdResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1201,29 +837,11 @@ func (client *Client) GetPtsReportsBySceneIdWithOptions(request *GetPtsReportsBy
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPtsReportsBySceneIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all reports of multiple scenarios that are generated during the stress testing in batch.
-//
-// @param request - GetPtsReportsBySceneIdRequest
-//
-// @return GetPtsReportsBySceneIdResponse
-func (client *Client) GetPtsReportsBySceneId(request *GetPtsReportsBySceneIdRequest) (_result *GetPtsReportsBySceneIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPtsReportsBySceneIdResponse{}
-	_body, _err := client.GetPtsReportsBySceneIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1236,7 +854,7 @@ func (client *Client) GetPtsReportsBySceneId(request *GetPtsReportsBySceneIdRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPtsSceneResponse
-func (client *Client) GetPtsSceneWithOptions(request *GetPtsSceneRequest, runtime *dara.RuntimeOptions) (_result *GetPtsSceneResponse, _err error) {
+func (client *Client) GetPtsSceneWithContext(ctx context.Context, request *GetPtsSceneRequest, runtime *dara.RuntimeOptions) (_result *GetPtsSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1263,29 +881,11 @@ func (client *Client) GetPtsSceneWithOptions(request *GetPtsSceneRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPtsSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the structure and load settings of a Performance Testing Service (PTS) scenario.
-//
-// @param request - GetPtsSceneRequest
-//
-// @return GetPtsSceneResponse
-func (client *Client) GetPtsScene(request *GetPtsSceneRequest) (_result *GetPtsSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPtsSceneResponse{}
-	_body, _err := client.GetPtsSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1298,7 +898,7 @@ func (client *Client) GetPtsScene(request *GetPtsSceneRequest) (_result *GetPtsS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPtsSceneBaseLineResponse
-func (client *Client) GetPtsSceneBaseLineWithOptions(request *GetPtsSceneBaseLineRequest, runtime *dara.RuntimeOptions) (_result *GetPtsSceneBaseLineResponse, _err error) {
+func (client *Client) GetPtsSceneBaseLineWithContext(ctx context.Context, request *GetPtsSceneBaseLineRequest, runtime *dara.RuntimeOptions) (_result *GetPtsSceneBaseLineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1325,29 +925,11 @@ func (client *Client) GetPtsSceneBaseLineWithOptions(request *GetPtsSceneBaseLin
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPtsSceneBaseLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// null
-//
-// @param request - GetPtsSceneBaseLineRequest
-//
-// @return GetPtsSceneBaseLineResponse
-func (client *Client) GetPtsSceneBaseLine(request *GetPtsSceneBaseLineRequest) (_result *GetPtsSceneBaseLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPtsSceneBaseLineResponse{}
-	_body, _err := client.GetPtsSceneBaseLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1360,7 +942,7 @@ func (client *Client) GetPtsSceneBaseLine(request *GetPtsSceneBaseLineRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPtsSceneRunningDataResponse
-func (client *Client) GetPtsSceneRunningDataWithOptions(request *GetPtsSceneRunningDataRequest, runtime *dara.RuntimeOptions) (_result *GetPtsSceneRunningDataResponse, _err error) {
+func (client *Client) GetPtsSceneRunningDataWithContext(ctx context.Context, request *GetPtsSceneRunningDataRequest, runtime *dara.RuntimeOptions) (_result *GetPtsSceneRunningDataResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1391,29 +973,11 @@ func (client *Client) GetPtsSceneRunningDataWithOptions(request *GetPtsSceneRunn
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPtsSceneRunningDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the runtime data of a stress testing or debugging scenario.
-//
-// @param request - GetPtsSceneRunningDataRequest
-//
-// @return GetPtsSceneRunningDataResponse
-func (client *Client) GetPtsSceneRunningData(request *GetPtsSceneRunningDataRequest) (_result *GetPtsSceneRunningDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPtsSceneRunningDataResponse{}
-	_body, _err := client.GetPtsSceneRunningDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1426,7 +990,7 @@ func (client *Client) GetPtsSceneRunningData(request *GetPtsSceneRunningDataRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPtsSceneRunningStatusResponse
-func (client *Client) GetPtsSceneRunningStatusWithOptions(request *GetPtsSceneRunningStatusRequest, runtime *dara.RuntimeOptions) (_result *GetPtsSceneRunningStatusResponse, _err error) {
+func (client *Client) GetPtsSceneRunningStatusWithContext(ctx context.Context, request *GetPtsSceneRunningStatusRequest, runtime *dara.RuntimeOptions) (_result *GetPtsSceneRunningStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1453,29 +1017,11 @@ func (client *Client) GetPtsSceneRunningStatusWithOptions(request *GetPtsSceneRu
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPtsSceneRunningStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the runtime status of a Performance Testing Service (PTS) scenario.
-//
-// @param request - GetPtsSceneRunningStatusRequest
-//
-// @return GetPtsSceneRunningStatusResponse
-func (client *Client) GetPtsSceneRunningStatus(request *GetPtsSceneRunningStatusRequest) (_result *GetPtsSceneRunningStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPtsSceneRunningStatusResponse{}
-	_body, _err := client.GetPtsSceneRunningStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1484,7 +1030,7 @@ func (client *Client) GetPtsSceneRunningStatus(request *GetPtsSceneRunningStatus
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetUserVpcSecurityGroupResponse
-func (client *Client) GetUserVpcSecurityGroupWithOptions(request *GetUserVpcSecurityGroupRequest, runtime *dara.RuntimeOptions) (_result *GetUserVpcSecurityGroupResponse, _err error) {
+func (client *Client) GetUserVpcSecurityGroupWithContext(ctx context.Context, request *GetUserVpcSecurityGroupRequest, runtime *dara.RuntimeOptions) (_result *GetUserVpcSecurityGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1523,25 +1069,11 @@ func (client *Client) GetUserVpcSecurityGroupWithOptions(request *GetUserVpcSecu
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetUserVpcSecurityGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetUserVpcSecurityGroupRequest
-//
-// @return GetUserVpcSecurityGroupResponse
-func (client *Client) GetUserVpcSecurityGroup(request *GetUserVpcSecurityGroupRequest) (_result *GetUserVpcSecurityGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetUserVpcSecurityGroupResponse{}
-	_body, _err := client.GetUserVpcSecurityGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1550,7 +1082,7 @@ func (client *Client) GetUserVpcSecurityGroup(request *GetUserVpcSecurityGroupRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetUserVpcVSwitchResponse
-func (client *Client) GetUserVpcVSwitchWithOptions(request *GetUserVpcVSwitchRequest, runtime *dara.RuntimeOptions) (_result *GetUserVpcVSwitchResponse, _err error) {
+func (client *Client) GetUserVpcVSwitchWithContext(ctx context.Context, request *GetUserVpcVSwitchRequest, runtime *dara.RuntimeOptions) (_result *GetUserVpcVSwitchResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1589,25 +1121,11 @@ func (client *Client) GetUserVpcVSwitchWithOptions(request *GetUserVpcVSwitchReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetUserVpcVSwitchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetUserVpcVSwitchRequest
-//
-// @return GetUserVpcVSwitchResponse
-func (client *Client) GetUserVpcVSwitch(request *GetUserVpcVSwitchRequest) (_result *GetUserVpcVSwitchResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetUserVpcVSwitchResponse{}
-	_body, _err := client.GetUserVpcVSwitchWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1616,7 +1134,7 @@ func (client *Client) GetUserVpcVSwitch(request *GetUserVpcVSwitchRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetUserVpcsResponse
-func (client *Client) GetUserVpcsWithOptions(request *GetUserVpcsRequest, runtime *dara.RuntimeOptions) (_result *GetUserVpcsResponse, _err error) {
+func (client *Client) GetUserVpcsWithContext(ctx context.Context, request *GetUserVpcsRequest, runtime *dara.RuntimeOptions) (_result *GetUserVpcsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1655,25 +1173,11 @@ func (client *Client) GetUserVpcsWithOptions(request *GetUserVpcsRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetUserVpcsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetUserVpcsRequest
-//
-// @return GetUserVpcsResponse
-func (client *Client) GetUserVpcs(request *GetUserVpcsRequest) (_result *GetUserVpcsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetUserVpcsResponse{}
-	_body, _err := client.GetUserVpcsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1686,7 +1190,7 @@ func (client *Client) GetUserVpcs(request *GetUserVpcsRequest) (_result *GetUser
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEnvsResponse
-func (client *Client) ListEnvsWithOptions(request *ListEnvsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvsResponse, _err error) {
+func (client *Client) ListEnvsWithContext(ctx context.Context, request *ListEnvsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1725,29 +1229,11 @@ func (client *Client) ListEnvsWithOptions(request *ListEnvsRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEnvsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about JMeter environments.
-//
-// @param request - ListEnvsRequest
-//
-// @return ListEnvsResponse
-func (client *Client) ListEnvs(request *ListEnvsRequest) (_result *ListEnvsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEnvsResponse{}
-	_body, _err := client.ListEnvsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1760,7 +1246,7 @@ func (client *Client) ListEnvs(request *ListEnvsRequest) (_result *ListEnvsRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListJMeterReportsResponse
-func (client *Client) ListJMeterReportsWithOptions(request *ListJMeterReportsRequest, runtime *dara.RuntimeOptions) (_result *ListJMeterReportsResponse, _err error) {
+func (client *Client) ListJMeterReportsWithContext(ctx context.Context, request *ListJMeterReportsRequest, runtime *dara.RuntimeOptions) (_result *ListJMeterReportsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1811,29 +1297,11 @@ func (client *Client) ListJMeterReportsWithOptions(request *ListJMeterReportsReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListJMeterReportsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries JMeter reports based on specified conditions.
-//
-// @param request - ListJMeterReportsRequest
-//
-// @return ListJMeterReportsResponse
-func (client *Client) ListJMeterReports(request *ListJMeterReportsRequest) (_result *ListJMeterReportsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListJMeterReportsResponse{}
-	_body, _err := client.ListJMeterReportsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1846,7 +1314,7 @@ func (client *Client) ListJMeterReports(request *ListJMeterReportsRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListOpenJMeterScenesResponse
-func (client *Client) ListOpenJMeterScenesWithOptions(request *ListOpenJMeterScenesRequest, runtime *dara.RuntimeOptions) (_result *ListOpenJMeterScenesResponse, _err error) {
+func (client *Client) ListOpenJMeterScenesWithContext(ctx context.Context, request *ListOpenJMeterScenesRequest, runtime *dara.RuntimeOptions) (_result *ListOpenJMeterScenesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1885,29 +1353,11 @@ func (client *Client) ListOpenJMeterScenesWithOptions(request *ListOpenJMeterSce
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListOpenJMeterScenesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries JMeter scenarios based on a specified condition.
-//
-// @param request - ListOpenJMeterScenesRequest
-//
-// @return ListOpenJMeterScenesResponse
-func (client *Client) ListOpenJMeterScenes(request *ListOpenJMeterScenesRequest) (_result *ListOpenJMeterScenesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListOpenJMeterScenesResponse{}
-	_body, _err := client.ListOpenJMeterScenesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1920,7 +1370,7 @@ func (client *Client) ListOpenJMeterScenes(request *ListOpenJMeterScenesRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPtsReportsResponse
-func (client *Client) ListPtsReportsWithOptions(request *ListPtsReportsRequest, runtime *dara.RuntimeOptions) (_result *ListPtsReportsResponse, _err error) {
+func (client *Client) ListPtsReportsWithContext(ctx context.Context, request *ListPtsReportsRequest, runtime *dara.RuntimeOptions) (_result *ListPtsReportsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1971,29 +1421,11 @@ func (client *Client) ListPtsReportsWithOptions(request *ListPtsReportsRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPtsReportsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Performance Testing Service (PTS) reports based on specified conditions.
-//
-// @param request - ListPtsReportsRequest
-//
-// @return ListPtsReportsResponse
-func (client *Client) ListPtsReports(request *ListPtsReportsRequest) (_result *ListPtsReportsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPtsReportsResponse{}
-	_body, _err := client.ListPtsReportsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2006,7 +1438,7 @@ func (client *Client) ListPtsReports(request *ListPtsReportsRequest) (_result *L
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPtsSceneResponse
-func (client *Client) ListPtsSceneWithOptions(request *ListPtsSceneRequest, runtime *dara.RuntimeOptions) (_result *ListPtsSceneResponse, _err error) {
+func (client *Client) ListPtsSceneWithContext(ctx context.Context, request *ListPtsSceneRequest, runtime *dara.RuntimeOptions) (_result *ListPtsSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2041,29 +1473,11 @@ func (client *Client) ListPtsSceneWithOptions(request *ListPtsSceneRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPtsSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Performance Testing Service (PTS) scenarios by page.
-//
-// @param request - ListPtsSceneRequest
-//
-// @return ListPtsSceneResponse
-func (client *Client) ListPtsScene(request *ListPtsSceneRequest) (_result *ListPtsSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPtsSceneResponse{}
-	_body, _err := client.ListPtsSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2076,7 +1490,7 @@ func (client *Client) ListPtsScene(request *ListPtsSceneRequest) (_result *ListP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVpcConfigsResponse
-func (client *Client) ListVpcConfigsWithOptions(request *ListVpcConfigsRequest, runtime *dara.RuntimeOptions) (_result *ListVpcConfigsResponse, _err error) {
+func (client *Client) ListVpcConfigsWithContext(ctx context.Context, request *ListVpcConfigsRequest, runtime *dara.RuntimeOptions) (_result *ListVpcConfigsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2123,29 +1537,11 @@ func (client *Client) ListVpcConfigsWithOptions(request *ListVpcConfigsRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVpcConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取vpc配置信息列表
-//
-// @param request - ListVpcConfigsRequest
-//
-// @return ListVpcConfigsResponse
-func (client *Client) ListVpcConfigs(request *ListVpcConfigsRequest) (_result *ListVpcConfigsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVpcConfigsResponse{}
-	_body, _err := client.ListVpcConfigsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2158,7 +1554,7 @@ func (client *Client) ListVpcConfigs(request *ListVpcConfigsRequest) (_result *L
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyPtsSceneResponse
-func (client *Client) ModifyPtsSceneWithOptions(request *ModifyPtsSceneRequest, runtime *dara.RuntimeOptions) (_result *ModifyPtsSceneResponse, _err error) {
+func (client *Client) ModifyPtsSceneWithContext(ctx context.Context, request *ModifyPtsSceneRequest, runtime *dara.RuntimeOptions) (_result *ModifyPtsSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2185,29 +1581,11 @@ func (client *Client) ModifyPtsSceneWithOptions(request *ModifyPtsSceneRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyPtsSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// null
-//
-// @param request - ModifyPtsSceneRequest
-//
-// @return ModifyPtsSceneResponse
-func (client *Client) ModifyPtsScene(request *ModifyPtsSceneRequest) (_result *ModifyPtsSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyPtsSceneResponse{}
-	_body, _err := client.ModifyPtsSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2220,7 +1598,7 @@ func (client *Client) ModifyPtsScene(request *ModifyPtsSceneRequest) (_result *M
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveEnvResponse
-func (client *Client) RemoveEnvWithOptions(request *RemoveEnvRequest, runtime *dara.RuntimeOptions) (_result *RemoveEnvResponse, _err error) {
+func (client *Client) RemoveEnvWithContext(ctx context.Context, request *RemoveEnvRequest, runtime *dara.RuntimeOptions) (_result *RemoveEnvResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2247,29 +1625,11 @@ func (client *Client) RemoveEnvWithOptions(request *RemoveEnvRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveEnvResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes the JMeter environment that corresponds to a specific JMeter environment ID.
-//
-// @param request - RemoveEnvRequest
-//
-// @return RemoveEnvResponse
-func (client *Client) RemoveEnv(request *RemoveEnvRequest) (_result *RemoveEnvResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveEnvResponse{}
-	_body, _err := client.RemoveEnvWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2282,7 +1642,7 @@ func (client *Client) RemoveEnv(request *RemoveEnvRequest) (_result *RemoveEnvRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveOpenJMeterSceneResponse
-func (client *Client) RemoveOpenJMeterSceneWithOptions(request *RemoveOpenJMeterSceneRequest, runtime *dara.RuntimeOptions) (_result *RemoveOpenJMeterSceneResponse, _err error) {
+func (client *Client) RemoveOpenJMeterSceneWithContext(ctx context.Context, request *RemoveOpenJMeterSceneRequest, runtime *dara.RuntimeOptions) (_result *RemoveOpenJMeterSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2309,29 +1669,11 @@ func (client *Client) RemoveOpenJMeterSceneWithOptions(request *RemoveOpenJMeter
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveOpenJMeterSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes a JMeter scenario.
-//
-// @param request - RemoveOpenJMeterSceneRequest
-//
-// @return RemoveOpenJMeterSceneResponse
-func (client *Client) RemoveOpenJMeterScene(request *RemoveOpenJMeterSceneRequest) (_result *RemoveOpenJMeterSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveOpenJMeterSceneResponse{}
-	_body, _err := client.RemoveOpenJMeterSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2344,7 +1686,7 @@ func (client *Client) RemoveOpenJMeterScene(request *RemoveOpenJMeterSceneReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveEnvResponse
-func (client *Client) SaveEnvWithOptions(tmpReq *SaveEnvRequest, runtime *dara.RuntimeOptions) (_result *SaveEnvResponse, _err error) {
+func (client *Client) SaveEnvWithContext(ctx context.Context, tmpReq *SaveEnvRequest, runtime *dara.RuntimeOptions) (_result *SaveEnvResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2377,29 +1719,11 @@ func (client *Client) SaveEnvWithOptions(tmpReq *SaveEnvRequest, runtime *dara.R
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveEnvResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates or updates a JMeter environment.
-//
-// @param request - SaveEnvRequest
-//
-// @return SaveEnvResponse
-func (client *Client) SaveEnv(request *SaveEnvRequest) (_result *SaveEnvResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveEnvResponse{}
-	_body, _err := client.SaveEnvWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2412,7 +1736,7 @@ func (client *Client) SaveEnv(request *SaveEnvRequest) (_result *SaveEnvResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveOpenJMeterSceneResponse
-func (client *Client) SaveOpenJMeterSceneWithOptions(tmpReq *SaveOpenJMeterSceneRequest, runtime *dara.RuntimeOptions) (_result *SaveOpenJMeterSceneResponse, _err error) {
+func (client *Client) SaveOpenJMeterSceneWithContext(ctx context.Context, tmpReq *SaveOpenJMeterSceneRequest, runtime *dara.RuntimeOptions) (_result *SaveOpenJMeterSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2445,29 +1769,11 @@ func (client *Client) SaveOpenJMeterSceneWithOptions(tmpReq *SaveOpenJMeterScene
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveOpenJMeterSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates or updates a JMeter scenario.
-//
-// @param request - SaveOpenJMeterSceneRequest
-//
-// @return SaveOpenJMeterSceneResponse
-func (client *Client) SaveOpenJMeterScene(request *SaveOpenJMeterSceneRequest) (_result *SaveOpenJMeterSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveOpenJMeterSceneResponse{}
-	_body, _err := client.SaveOpenJMeterSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2480,7 +1786,7 @@ func (client *Client) SaveOpenJMeterScene(request *SaveOpenJMeterSceneRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SavePtsSceneResponse
-func (client *Client) SavePtsSceneWithOptions(tmpReq *SavePtsSceneRequest, runtime *dara.RuntimeOptions) (_result *SavePtsSceneResponse, _err error) {
+func (client *Client) SavePtsSceneWithContext(ctx context.Context, tmpReq *SavePtsSceneRequest, runtime *dara.RuntimeOptions) (_result *SavePtsSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2513,29 +1819,11 @@ func (client *Client) SavePtsSceneWithOptions(tmpReq *SavePtsSceneRequest, runti
 		BodyType:    dara.String("json"),
 	}
 	_result = &SavePtsSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Saves or modifies a Performance Testing Service (PTS) scenario.
-//
-// @param request - SavePtsSceneRequest
-//
-// @return SavePtsSceneResponse
-func (client *Client) SavePtsScene(request *SavePtsSceneRequest) (_result *SavePtsSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SavePtsSceneResponse{}
-	_body, _err := client.SavePtsSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2548,7 +1836,7 @@ func (client *Client) SavePtsScene(request *SavePtsSceneRequest) (_result *SaveP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartDebugPtsSceneResponse
-func (client *Client) StartDebugPtsSceneWithOptions(request *StartDebugPtsSceneRequest, runtime *dara.RuntimeOptions) (_result *StartDebugPtsSceneResponse, _err error) {
+func (client *Client) StartDebugPtsSceneWithContext(ctx context.Context, request *StartDebugPtsSceneRequest, runtime *dara.RuntimeOptions) (_result *StartDebugPtsSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2575,29 +1863,11 @@ func (client *Client) StartDebugPtsSceneWithOptions(request *StartDebugPtsSceneR
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartDebugPtsSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Starts the debugging of a scenario to check whether the settings of the scenario take effect.
-//
-// @param request - StartDebugPtsSceneRequest
-//
-// @return StartDebugPtsSceneResponse
-func (client *Client) StartDebugPtsScene(request *StartDebugPtsSceneRequest) (_result *StartDebugPtsSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartDebugPtsSceneResponse{}
-	_body, _err := client.StartDebugPtsSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2610,7 +1880,7 @@ func (client *Client) StartDebugPtsScene(request *StartDebugPtsSceneRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartDebuggingJMeterSceneResponse
-func (client *Client) StartDebuggingJMeterSceneWithOptions(request *StartDebuggingJMeterSceneRequest, runtime *dara.RuntimeOptions) (_result *StartDebuggingJMeterSceneResponse, _err error) {
+func (client *Client) StartDebuggingJMeterSceneWithContext(ctx context.Context, request *StartDebuggingJMeterSceneRequest, runtime *dara.RuntimeOptions) (_result *StartDebuggingJMeterSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2637,29 +1907,11 @@ func (client *Client) StartDebuggingJMeterSceneWithOptions(request *StartDebuggi
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartDebuggingJMeterSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Debugs a JMeter scenario.
-//
-// @param request - StartDebuggingJMeterSceneRequest
-//
-// @return StartDebuggingJMeterSceneResponse
-func (client *Client) StartDebuggingJMeterScene(request *StartDebuggingJMeterSceneRequest) (_result *StartDebuggingJMeterSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartDebuggingJMeterSceneResponse{}
-	_body, _err := client.StartDebuggingJMeterSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2672,7 +1924,7 @@ func (client *Client) StartDebuggingJMeterScene(request *StartDebuggingJMeterSce
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartPtsSceneResponse
-func (client *Client) StartPtsSceneWithOptions(request *StartPtsSceneRequest, runtime *dara.RuntimeOptions) (_result *StartPtsSceneResponse, _err error) {
+func (client *Client) StartPtsSceneWithContext(ctx context.Context, request *StartPtsSceneRequest, runtime *dara.RuntimeOptions) (_result *StartPtsSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2699,29 +1951,11 @@ func (client *Client) StartPtsSceneWithOptions(request *StartPtsSceneRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartPtsSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Starts a scenario by using its ID.
-//
-// @param request - StartPtsSceneRequest
-//
-// @return StartPtsSceneResponse
-func (client *Client) StartPtsScene(request *StartPtsSceneRequest) (_result *StartPtsSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartPtsSceneResponse{}
-	_body, _err := client.StartPtsSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2734,7 +1968,7 @@ func (client *Client) StartPtsScene(request *StartPtsSceneRequest) (_result *Sta
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartTestingJMeterSceneResponse
-func (client *Client) StartTestingJMeterSceneWithOptions(request *StartTestingJMeterSceneRequest, runtime *dara.RuntimeOptions) (_result *StartTestingJMeterSceneResponse, _err error) {
+func (client *Client) StartTestingJMeterSceneWithContext(ctx context.Context, request *StartTestingJMeterSceneRequest, runtime *dara.RuntimeOptions) (_result *StartTestingJMeterSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2761,29 +1995,11 @@ func (client *Client) StartTestingJMeterSceneWithOptions(request *StartTestingJM
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartTestingJMeterSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Starts performance testing in a JMeter scenario.
-//
-// @param request - StartTestingJMeterSceneRequest
-//
-// @return StartTestingJMeterSceneResponse
-func (client *Client) StartTestingJMeterScene(request *StartTestingJMeterSceneRequest) (_result *StartTestingJMeterSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartTestingJMeterSceneResponse{}
-	_body, _err := client.StartTestingJMeterSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2796,7 +2012,7 @@ func (client *Client) StartTestingJMeterScene(request *StartTestingJMeterSceneRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopDebugPtsSceneResponse
-func (client *Client) StopDebugPtsSceneWithOptions(request *StopDebugPtsSceneRequest, runtime *dara.RuntimeOptions) (_result *StopDebugPtsSceneResponse, _err error) {
+func (client *Client) StopDebugPtsSceneWithContext(ctx context.Context, request *StopDebugPtsSceneRequest, runtime *dara.RuntimeOptions) (_result *StopDebugPtsSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2827,29 +2043,11 @@ func (client *Client) StopDebugPtsSceneWithOptions(request *StopDebugPtsSceneReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopDebugPtsSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops the scenario that is in debugging.
-//
-// @param request - StopDebugPtsSceneRequest
-//
-// @return StopDebugPtsSceneResponse
-func (client *Client) StopDebugPtsScene(request *StopDebugPtsSceneRequest) (_result *StopDebugPtsSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopDebugPtsSceneResponse{}
-	_body, _err := client.StopDebugPtsSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2862,7 +2060,7 @@ func (client *Client) StopDebugPtsScene(request *StopDebugPtsSceneRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopDebuggingJMeterSceneResponse
-func (client *Client) StopDebuggingJMeterSceneWithOptions(request *StopDebuggingJMeterSceneRequest, runtime *dara.RuntimeOptions) (_result *StopDebuggingJMeterSceneResponse, _err error) {
+func (client *Client) StopDebuggingJMeterSceneWithContext(ctx context.Context, request *StopDebuggingJMeterSceneRequest, runtime *dara.RuntimeOptions) (_result *StopDebuggingJMeterSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2889,29 +2087,11 @@ func (client *Client) StopDebuggingJMeterSceneWithOptions(request *StopDebugging
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopDebuggingJMeterSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops the debugging of a JMeter scenario.
-//
-// @param request - StopDebuggingJMeterSceneRequest
-//
-// @return StopDebuggingJMeterSceneResponse
-func (client *Client) StopDebuggingJMeterScene(request *StopDebuggingJMeterSceneRequest) (_result *StopDebuggingJMeterSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopDebuggingJMeterSceneResponse{}
-	_body, _err := client.StopDebuggingJMeterSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2924,7 +2104,7 @@ func (client *Client) StopDebuggingJMeterScene(request *StopDebuggingJMeterScene
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopPtsSceneResponse
-func (client *Client) StopPtsSceneWithOptions(request *StopPtsSceneRequest, runtime *dara.RuntimeOptions) (_result *StopPtsSceneResponse, _err error) {
+func (client *Client) StopPtsSceneWithContext(ctx context.Context, request *StopPtsSceneRequest, runtime *dara.RuntimeOptions) (_result *StopPtsSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2951,29 +2131,11 @@ func (client *Client) StopPtsSceneWithOptions(request *StopPtsSceneRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopPtsSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops a scenario by using its ID.
-//
-// @param request - StopPtsSceneRequest
-//
-// @return StopPtsSceneResponse
-func (client *Client) StopPtsScene(request *StopPtsSceneRequest) (_result *StopPtsSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopPtsSceneResponse{}
-	_body, _err := client.StopPtsSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2986,7 +2148,7 @@ func (client *Client) StopPtsScene(request *StopPtsSceneRequest) (_result *StopP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopTestingJMeterSceneResponse
-func (client *Client) StopTestingJMeterSceneWithOptions(request *StopTestingJMeterSceneRequest, runtime *dara.RuntimeOptions) (_result *StopTestingJMeterSceneResponse, _err error) {
+func (client *Client) StopTestingJMeterSceneWithContext(ctx context.Context, request *StopTestingJMeterSceneRequest, runtime *dara.RuntimeOptions) (_result *StopTestingJMeterSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3013,29 +2175,11 @@ func (client *Client) StopTestingJMeterSceneWithOptions(request *StopTestingJMet
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopTestingJMeterSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops performance testing by using a JMeter scenario.
-//
-// @param request - StopTestingJMeterSceneRequest
-//
-// @return StopTestingJMeterSceneResponse
-func (client *Client) StopTestingJMeterScene(request *StopTestingJMeterSceneRequest) (_result *StopTestingJMeterSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopTestingJMeterSceneResponse{}
-	_body, _err := client.StopTestingJMeterSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3048,7 +2192,7 @@ func (client *Client) StopTestingJMeterScene(request *StopTestingJMeterSceneRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePtsSceneBaseLineResponse
-func (client *Client) UpdatePtsSceneBaseLineWithOptions(tmpReq *UpdatePtsSceneBaseLineRequest, runtime *dara.RuntimeOptions) (_result *UpdatePtsSceneBaseLineResponse, _err error) {
+func (client *Client) UpdatePtsSceneBaseLineWithContext(ctx context.Context, tmpReq *UpdatePtsSceneBaseLineRequest, runtime *dara.RuntimeOptions) (_result *UpdatePtsSceneBaseLineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -3093,28 +2237,10 @@ func (client *Client) UpdatePtsSceneBaseLineWithOptions(tmpReq *UpdatePtsSceneBa
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePtsSceneBaseLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// null
-//
-// @param request - UpdatePtsSceneBaseLineRequest
-//
-// @return UpdatePtsSceneBaseLineResponse
-func (client *Client) UpdatePtsSceneBaseLine(request *UpdatePtsSceneBaseLineRequest) (_result *UpdatePtsSceneBaseLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdatePtsSceneBaseLineResponse{}
-	_body, _err := client.UpdatePtsSceneBaseLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
