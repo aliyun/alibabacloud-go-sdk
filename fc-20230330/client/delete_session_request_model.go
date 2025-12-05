@@ -14,6 +14,8 @@ type iDeleteSessionRequest interface {
 }
 
 type DeleteSessionRequest struct {
+	// The function alias or version associated with the session to be deleted.
+	//
 	// example:
 	//
 	// aliasName1

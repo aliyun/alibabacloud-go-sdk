@@ -16,7 +16,10 @@ type iPutScalingConfigRequest interface {
 }
 
 type PutScalingConfigRequest struct {
+	// The function scalability configuration.
 	Body *PutScalingConfigInput `json:"body,omitempty" xml:"body,omitempty"`
+	// The function alias.
+	//
 	// example:
 	//
 	// LATEST

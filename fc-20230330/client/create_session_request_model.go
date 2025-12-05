@@ -16,7 +16,10 @@ type iCreateSessionRequest interface {
 }
 
 type CreateSessionRequest struct {
+	// Creates session configurations.
 	Body *CreateSessionInput `json:"body,omitempty" xml:"body,omitempty"`
+	// Specifies the version or alias to which the sesion belongs.
+	//
 	// example:
 	//
 	// aliasName1

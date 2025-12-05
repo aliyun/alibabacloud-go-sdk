@@ -14,6 +14,8 @@ type iGetScalingConfigRequest interface {
 }
 
 type GetScalingConfigRequest struct {
+	// The alias of the function.
+	//
 	// example:
 	//
 	// LATEST

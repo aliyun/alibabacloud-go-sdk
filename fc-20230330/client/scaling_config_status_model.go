@@ -13,6 +13,8 @@ type iScalingConfigStatus interface {
 	GetCurrentError() *string
 	SetCurrentInstances(v int64) *ScalingConfigStatus
 	GetCurrentInstances() *int64
+	SetEnableOnDemandScaling(v bool) *ScalingConfigStatus
+	GetEnableOnDemandScaling() *bool
 	SetFunctionArn(v string) *ScalingConfigStatus
 	GetFunctionArn() *string
 	SetHorizontalScalingPolicies(v []*ScalingPolicy) *ScalingConfigStatus
@@ -30,6 +32,7 @@ type iScalingConfigStatus interface {
 type ScalingConfigStatus struct {
 	CurrentError              *string            `json:"currentError,omitempty" xml:"currentError,omitempty"`
 	CurrentInstances          *int64             `json:"currentInstances,omitempty" xml:"currentInstances,omitempty"`
+	EnableOnDemandScaling     *bool              `json:"enableOnDemandScaling,omitempty" xml:"enableOnDemandScaling,omitempty"`
 	FunctionArn               *string            `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
 	HorizontalScalingPolicies []*ScalingPolicy   `json:"horizontalScalingPolicies" xml:"horizontalScalingPolicies" type:"Repeated"`
 	MinInstances              *int64             `json:"minInstances,omitempty" xml:"minInstances,omitempty"`
@@ -52,6 +55,10 @@ func (s *ScalingConfigStatus) GetCurrentError() *string {
 
 func (s *ScalingConfigStatus) GetCurrentInstances() *int64 {
 	return s.CurrentInstances
+}
+
+func (s *ScalingConfigStatus) GetEnableOnDemandScaling() *bool {
+	return s.EnableOnDemandScaling
 }
 
 func (s *ScalingConfigStatus) GetFunctionArn() *string {
@@ -85,6 +92,11 @@ func (s *ScalingConfigStatus) SetCurrentError(v string) *ScalingConfigStatus {
 
 func (s *ScalingConfigStatus) SetCurrentInstances(v int64) *ScalingConfigStatus {
 	s.CurrentInstances = &v
+	return s
+}
+
+func (s *ScalingConfigStatus) SetEnableOnDemandScaling(v bool) *ScalingConfigStatus {
+	s.EnableOnDemandScaling = &v
 	return s
 }
 

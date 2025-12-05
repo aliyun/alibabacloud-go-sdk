@@ -14,6 +14,8 @@ type iEnableFunctionInvocationResponseBody interface {
 }
 
 type EnableFunctionInvocationResponseBody struct {
+  // Indicates whether the request was successful.
+  // 
   // example:
   // 
   // true

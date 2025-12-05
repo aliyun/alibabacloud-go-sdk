@@ -9,8 +9,12 @@ type iCreateSessionInput interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDisableSessionIdReuse(v bool) *CreateSessionInput
+	GetDisableSessionIdReuse() *bool
 	SetNasConfig(v *NASConfig) *CreateSessionInput
 	GetNasConfig() *NASConfig
+	SetSessionId(v string) *CreateSessionInput
+	GetSessionId() *string
 	SetSessionIdleTimeoutInSeconds(v int64) *CreateSessionInput
 	GetSessionIdleTimeoutInSeconds() *int64
 	SetSessionTTLInSeconds(v int64) *CreateSessionInput
@@ -18,7 +22,12 @@ type iCreateSessionInput interface {
 }
 
 type CreateSessionInput struct {
-	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	DisableSessionIdReuse *bool      `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
+	NasConfig             *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	// example:
+	//
+	// custom-test-session-id
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 	// example:
 	//
 	// 1800
@@ -37,8 +46,16 @@ func (s CreateSessionInput) GoString() string {
 	return s.String()
 }
 
+func (s *CreateSessionInput) GetDisableSessionIdReuse() *bool {
+	return s.DisableSessionIdReuse
+}
+
 func (s *CreateSessionInput) GetNasConfig() *NASConfig {
 	return s.NasConfig
+}
+
+func (s *CreateSessionInput) GetSessionId() *string {
+	return s.SessionId
 }
 
 func (s *CreateSessionInput) GetSessionIdleTimeoutInSeconds() *int64 {
@@ -49,8 +66,18 @@ func (s *CreateSessionInput) GetSessionTTLInSeconds() *int64 {
 	return s.SessionTTLInSeconds
 }
 
+func (s *CreateSessionInput) SetDisableSessionIdReuse(v bool) *CreateSessionInput {
+	s.DisableSessionIdReuse = &v
+	return s
+}
+
 func (s *CreateSessionInput) SetNasConfig(v *NASConfig) *CreateSessionInput {
 	s.NasConfig = v
+	return s
+}
+
+func (s *CreateSessionInput) SetSessionId(v string) *CreateSessionInput {
+	s.SessionId = &v
 	return s
 }
 

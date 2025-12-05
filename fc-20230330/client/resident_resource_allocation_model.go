@@ -13,6 +13,8 @@ type iResidentResourceAllocation interface {
 	GetFunctionName() *string
 	SetInstanceCount(v int32) *ResidentResourceAllocation
 	GetInstanceCount() *int32
+	SetInstanceType(v string) *ResidentResourceAllocation
+	GetInstanceType() *string
 	SetQualifier(v string) *ResidentResourceAllocation
 	GetQualifier() *string
 	SetTotalCpuCores(v float64) *ResidentResourceAllocation
@@ -29,7 +31,8 @@ type ResidentResourceAllocation struct {
 	// 使用该资源池的函数名
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
 	// 实例数
-	InstanceCount *int32 `json:"instanceCount,omitempty" xml:"instanceCount,omitempty"`
+	InstanceCount *int32  `json:"instanceCount,omitempty" xml:"instanceCount,omitempty"`
+	InstanceType  *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// 函数的别名
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 	// CPU 占用总核数
@@ -56,6 +59,10 @@ func (s *ResidentResourceAllocation) GetFunctionName() *string {
 
 func (s *ResidentResourceAllocation) GetInstanceCount() *int32 {
 	return s.InstanceCount
+}
+
+func (s *ResidentResourceAllocation) GetInstanceType() *string {
+	return s.InstanceType
 }
 
 func (s *ResidentResourceAllocation) GetQualifier() *string {
@@ -85,6 +92,11 @@ func (s *ResidentResourceAllocation) SetFunctionName(v string) *ResidentResource
 
 func (s *ResidentResourceAllocation) SetInstanceCount(v int32) *ResidentResourceAllocation {
 	s.InstanceCount = &v
+	return s
+}
+
+func (s *ResidentResourceAllocation) SetInstanceType(v string) *ResidentResourceAllocation {
+	s.InstanceType = &v
 	return s
 }
 

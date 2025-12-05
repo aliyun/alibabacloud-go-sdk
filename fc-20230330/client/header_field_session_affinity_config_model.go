@@ -11,6 +11,8 @@ type iHeaderFieldSessionAffinityConfig interface {
 	GoString() string
 	SetAffinityHeaderFieldName(v string) *HeaderFieldSessionAffinityConfig
 	GetAffinityHeaderFieldName() *string
+	SetDisableSessionIdReuse(v bool) *HeaderFieldSessionAffinityConfig
+	GetDisableSessionIdReuse() *bool
 	SetSessionConcurrencyPerInstance(v int64) *HeaderFieldSessionAffinityConfig
 	GetSessionConcurrencyPerInstance() *int64
 	SetSessionIdleTimeoutInSeconds(v int64) *HeaderFieldSessionAffinityConfig
@@ -21,6 +23,7 @@ type iHeaderFieldSessionAffinityConfig interface {
 
 type HeaderFieldSessionAffinityConfig struct {
 	AffinityHeaderFieldName       *string `json:"affinityHeaderFieldName,omitempty" xml:"affinityHeaderFieldName,omitempty"`
+	DisableSessionIdReuse         *bool   `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
 	SessionConcurrencyPerInstance *int64  `json:"sessionConcurrencyPerInstance,omitempty" xml:"sessionConcurrencyPerInstance,omitempty"`
 	SessionIdleTimeoutInSeconds   *int64  `json:"sessionIdleTimeoutInSeconds,omitempty" xml:"sessionIdleTimeoutInSeconds,omitempty"`
 	SessionTTLInSeconds           *int64  `json:"sessionTTLInSeconds,omitempty" xml:"sessionTTLInSeconds,omitempty"`
@@ -38,6 +41,10 @@ func (s *HeaderFieldSessionAffinityConfig) GetAffinityHeaderFieldName() *string 
 	return s.AffinityHeaderFieldName
 }
 
+func (s *HeaderFieldSessionAffinityConfig) GetDisableSessionIdReuse() *bool {
+	return s.DisableSessionIdReuse
+}
+
 func (s *HeaderFieldSessionAffinityConfig) GetSessionConcurrencyPerInstance() *int64 {
 	return s.SessionConcurrencyPerInstance
 }
@@ -52,6 +59,11 @@ func (s *HeaderFieldSessionAffinityConfig) GetSessionTTLInSeconds() *int64 {
 
 func (s *HeaderFieldSessionAffinityConfig) SetAffinityHeaderFieldName(v string) *HeaderFieldSessionAffinityConfig {
 	s.AffinityHeaderFieldName = &v
+	return s
+}
+
+func (s *HeaderFieldSessionAffinityConfig) SetDisableSessionIdReuse(v bool) *HeaderFieldSessionAffinityConfig {
+	s.DisableSessionIdReuse = &v
 	return s
 }
 

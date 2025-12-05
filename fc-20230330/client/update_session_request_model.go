@@ -16,7 +16,10 @@ type iUpdateSessionRequest interface {
 }
 
 type UpdateSessionRequest struct {
+	// The session update configuration.
 	Body *UpdateSessionInput `json:"body,omitempty" xml:"body,omitempty"`
+	// The function alias or version associated with the session to be updated.
+	//
 	// example:
 	//
 	// aliasName1

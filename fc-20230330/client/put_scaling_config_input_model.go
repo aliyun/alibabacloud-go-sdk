@@ -9,6 +9,8 @@ type iPutScalingConfigInput interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEnableOnDemandScaling(v bool) *PutScalingConfigInput
+	GetEnableOnDemandScaling() *bool
 	SetHorizontalScalingPolicies(v []*ScalingPolicy) *PutScalingConfigInput
 	GetHorizontalScalingPolicies() []*ScalingPolicy
 	SetMinInstances(v int64) *PutScalingConfigInput
@@ -20,6 +22,7 @@ type iPutScalingConfigInput interface {
 }
 
 type PutScalingConfigInput struct {
+	EnableOnDemandScaling     *bool              `json:"enableOnDemandScaling,omitempty" xml:"enableOnDemandScaling,omitempty"`
 	HorizontalScalingPolicies []*ScalingPolicy   `json:"horizontalScalingPolicies" xml:"horizontalScalingPolicies" type:"Repeated"`
 	MinInstances              *int64             `json:"minInstances,omitempty" xml:"minInstances,omitempty"`
 	ResidentPoolId            *string            `json:"residentPoolId,omitempty" xml:"residentPoolId,omitempty"`
@@ -32,6 +35,10 @@ func (s PutScalingConfigInput) String() string {
 
 func (s PutScalingConfigInput) GoString() string {
 	return s.String()
+}
+
+func (s *PutScalingConfigInput) GetEnableOnDemandScaling() *bool {
+	return s.EnableOnDemandScaling
 }
 
 func (s *PutScalingConfigInput) GetHorizontalScalingPolicies() []*ScalingPolicy {
@@ -48,6 +55,11 @@ func (s *PutScalingConfigInput) GetResidentPoolId() *string {
 
 func (s *PutScalingConfigInput) GetScheduledPolicies() []*ScheduledPolicy {
 	return s.ScheduledPolicies
+}
+
+func (s *PutScalingConfigInput) SetEnableOnDemandScaling(v bool) *PutScalingConfigInput {
+	s.EnableOnDemandScaling = &v
+	return s
 }
 
 func (s *PutScalingConfigInput) SetHorizontalScalingPolicies(v []*ScalingPolicy) *PutScalingConfigInput {

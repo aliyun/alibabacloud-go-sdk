@@ -9,7 +9,11 @@ import (
 
 // Summary:
 //
-// 修改实例所在资源组
+// Updates the resource group of a Function Compute resource.
+//
+// Description:
+//
+// To update the resource group of a Function Compute resource, you must grant the user the ChangeResourceGroup permission on both the current resource group and the target resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -227,7 +231,7 @@ func (client *Client) CreateLayerVersionWithContext(ctx context.Context, layerNa
 
 // Summary:
 //
-// 创建会话资源
+// The CreateSession operation creates an explicit session resource. The system automatically generates a unique session ID, pre-allocates a function instance, and associates it with the session. You can specify values for TTL and idle timeout. This method applies to the HEADER_FIELD and GENERATED_COOKIE affinity types. It handles session preload and configuration initialization. After you call the InvokeFunction API, the session information can be included in the InvokeFunction request to enable request routing.
 //
 // @param request - CreateSessionRequest
 //
@@ -651,7 +655,7 @@ func (client *Client) DeleteProvisionConfigWithContext(ctx context.Context, func
 
 // Summary:
 //
-// 删除弹性配置
+// Deletes the scaling settings of a function.
 //
 // @param request - DeleteScalingConfigRequest
 //
@@ -698,7 +702,7 @@ func (client *Client) DeleteScalingConfigWithContext(ctx context.Context, functi
 
 // Summary:
 //
-// 删除会话资源
+// Deletes the specified session and prohibits new requests from being routed to it. Clears the session metadata from the database, so subsequent requests with the same session ID are treated as new sessions. Releases resources and performs session cleanup. In session isolation scenarios, terminates running requests and releases the instance bound to the session. In non-session isolation scenarios, allows running requests to continue and gracefully terminates them.
 //
 // @param request - DeleteSessionRequest
 //
@@ -811,7 +815,7 @@ func (client *Client) DeleteVpcBindingWithContext(ctx context.Context, functionN
 
 // Summary:
 //
-// 查询产品的地域信息列表
+// Queries the regions where Function Compute 3.0 is available.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -913,7 +917,7 @@ func (client *Client) DisableFunctionInvocationWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 允许函数调用
+// The EnableFunctionInvocation operation allows a function to be invoked and resumes the creation of provisioned instances. This operation is currently in private preview.
 //
 // @param headers - map
 //
@@ -1346,7 +1350,7 @@ func (client *Client) GetProvisionConfigWithContext(ctx context.Context, functio
 
 // Summary:
 //
-// 获取弹性配置
+// Gets the scaling settings of a function.
 //
 // @param request - GetScalingConfigRequest
 //
@@ -1393,7 +1397,7 @@ func (client *Client) GetScalingConfigWithContext(ctx context.Context, functionN
 
 // Summary:
 //
-// 获取函数会话信息。
+// You can use this operation to retrieve detailed information about a specific session, including its session ID, associated function, affinity type, lifecycle configuration, status, and instance details. This operation retrieves the current metadata for a session. You can identify the metadata precisely using either the function name or qualifier. This capability enables you to monitor and debug external systems with ease. Only sessions that are in the Active state can be queried.
 //
 // @param request - GetSessionRequest
 //
@@ -2257,7 +2261,7 @@ func (client *Client) ListProvisionConfigsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取弹性配置列表
+// Lists the scaling settings of a function.
 //
 // @param request - ListScalingConfigsRequest
 //
@@ -2312,7 +2316,7 @@ func (client *Client) ListScalingConfigsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 列出函数会话信息
+// Lists sessions in the Active and/or Expired state(s) under the specified function. Supports filtering by qualifier, status, and session ID, as well as paginated queries. Returns basic session attributes for batch viewing of session distribution and status, helping with operations monitoring and integration with external systems, and enhancing session visibility and management.
 //
 // @param request - ListSessionsRequest
 //
@@ -2767,7 +2771,7 @@ func (client *Client) PutProvisionConfigWithContext(ctx context.Context, functio
 
 // Summary:
 //
-// 设置弹性配置
+// # Scaling settings
 //
 // @param request - PutScalingConfigRequest
 //
@@ -3103,7 +3107,7 @@ func (client *Client) UpdateFunctionWithContext(ctx context.Context, functionNam
 
 // Summary:
 //
-// 更新会话配置
+// Updates session configurations while the session is in the Active state, such as lifecycle parameters (e.g., SessionTTLInSeconds and SessionIdleTimeoutInSeconds). After the update takes effect, LastModifiedTime is automatically refreshed. These updates can be used to extend or shorten the validity period of a session and enable dynamic management without changing the execution environment bound to the session.
 //
 // @param request - UpdateSessionRequest
 //

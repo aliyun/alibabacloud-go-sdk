@@ -13,6 +13,8 @@ type iSession interface {
 	GetContainerId() *string
 	SetCreatedTime(v string) *Session
 	GetCreatedTime() *string
+	SetDisableSessionIdReuse(v bool) *Session
+	GetDisableSessionIdReuse() *bool
 	SetFunctionName(v string) *Session
 	GetFunctionName() *string
 	SetLastModifiedTime(v string) *Session
@@ -41,7 +43,8 @@ type Session struct {
 	// example:
 	//
 	// 2025-04-01T08:15:27Z
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	CreatedTime           *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	DisableSessionIdReuse *bool   `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
 	// example:
 	//
 	// functionName1
@@ -93,6 +96,10 @@ func (s *Session) GetCreatedTime() *string {
 	return s.CreatedTime
 }
 
+func (s *Session) GetDisableSessionIdReuse() *bool {
+	return s.DisableSessionIdReuse
+}
+
 func (s *Session) GetFunctionName() *string {
 	return s.FunctionName
 }
@@ -136,6 +143,11 @@ func (s *Session) SetContainerId(v string) *Session {
 
 func (s *Session) SetCreatedTime(v string) *Session {
 	s.CreatedTime = &v
+	return s
+}
+
+func (s *Session) SetDisableSessionIdReuse(v bool) *Session {
+	s.DisableSessionIdReuse = &v
 	return s
 }
 
