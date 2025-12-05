@@ -156,8 +156,9 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	// example:
 	//
 	// test
-	BindUserId *string                                                     `json:"BindUserId,omitempty" xml:"BindUserId,omitempty"`
-	BizTags    []*DescribeAndroidInstancesResponseBodyInstanceModelBizTags `json:"BizTags,omitempty" xml:"BizTags,omitempty" type:"Repeated"`
+	BindUserId   *string                                                     `json:"BindUserId,omitempty" xml:"BindUserId,omitempty"`
+	BizImageType *string                                                     `json:"BizImageType,omitempty" xml:"BizImageType,omitempty"`
+	BizTags      []*DescribeAndroidInstancesResponseBodyInstanceModelBizTags `json:"BizTags,omitempty" xml:"BizTags,omitempty" type:"Repeated"`
 	// The billing method of the instance.
 	//
 	// example:
@@ -364,6 +365,10 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetBandwidthPackageT
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetBindUserId() *string {
 	return s.BindUserId
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetBizImageType() *string {
+	return s.BizImageType
 }
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetBizTags() []*DescribeAndroidInstancesResponseBodyInstanceModelBizTags {
@@ -575,6 +580,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetBandwidthPackageT
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetBindUserId(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.BindUserId = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetBizImageType(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.BizImageType = &v
 	return s
 }
 

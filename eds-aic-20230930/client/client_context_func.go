@@ -3325,6 +3325,58 @@ func (client *Client) GetInstancePropertiesWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// 导入自定义镜像
+//
+// @param request - ImportImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportImageResponse
+func (client *Client) ImportImageWithContext(ctx context.Context, request *ImportImageRequest, runtime *dara.RuntimeOptions) (_result *ImportImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageDescription) {
+		query["ImageDescription"] = request.ImageDescription
+	}
+
+	if !dara.IsNil(request.ImageFileURL) {
+		query["ImageFileURL"] = request.ImageFileURL
+	}
+
+	if !dara.IsNil(request.ImageName) {
+		query["ImageName"] = request.ImageName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImportImage"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImportImageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Imports the public key of an Android Debug Bridge (ADB) key pair.
 //
 // Description:
