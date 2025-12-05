@@ -94,10 +94,6 @@ func (client *Client) ChatMessagesWithOptions(tmpReq *ChatMessagesRequest, runti
 	}
 
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.ConversationId) {
 		query["ConversationId"] = request.ConversationId
 	}
@@ -172,10 +168,6 @@ func (client *Client) ChatMessagesTaskStopWithOptions(request *ChatMessagesTaskS
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.TaskId) {
 		query["TaskId"] = request.TaskId
 	}
@@ -364,10 +356,6 @@ func (client *Client) CreateCustomAgentWithOptions(tmpReq *CreateCustomAgentRequ
 	}
 
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.EnableTools) {
 		query["EnableTools"] = request.EnableTools
 	}
@@ -512,10 +500,6 @@ func (client *Client) DeleteCustomAgentWithOptions(request *DeleteCustomAgentReq
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.CustomAgentId) {
 		query["CustomAgentId"] = request.CustomAgentId
 	}
@@ -1200,10 +1184,6 @@ func (client *Client) GetConversationsWithOptions(request *GetConversationsReque
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.LastId) {
 		query["LastId"] = request.LastId
 	}
@@ -1278,10 +1258,6 @@ func (client *Client) GetCustomAgentWithOptions(request *GetCustomAgentRequest, 
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.CustomAgentId) {
 		query["CustomAgentId"] = request.CustomAgentId
 	}
@@ -1344,10 +1320,6 @@ func (client *Client) GetMessagesWithOptions(request *GetMessagesRequest, runtim
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.ConversationId) {
 		query["ConversationId"] = request.ConversationId
 	}
@@ -1418,10 +1390,6 @@ func (client *Client) ListCustomAgentWithOptions(request *ListCustomAgentRequest
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -1480,21 +1448,8 @@ func (client *Client) ListCustomAgent(request *ListCustomAgentRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCustomAgentToolsResponse
-func (client *Client) ListCustomAgentToolsWithOptions(request *ListCustomAgentToolsRequest, runtime *dara.RuntimeOptions) (_result *ListCustomAgentToolsResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
+func (client *Client) ListCustomAgentToolsWithOptions(runtime *dara.RuntimeOptions) (_result *ListCustomAgentToolsResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{}
 	params := &openapiutil.Params{
 		Action:      dara.String("ListCustomAgentTools"),
 		Version:     dara.String("2025-05-07"),
@@ -1519,13 +1474,11 @@ func (client *Client) ListCustomAgentToolsWithOptions(request *ListCustomAgentTo
 //
 // 获取专属Agent可用工具
 //
-// @param request - ListCustomAgentToolsRequest
-//
 // @return ListCustomAgentToolsResponse
-func (client *Client) ListCustomAgentTools(request *ListCustomAgentToolsRequest) (_result *ListCustomAgentToolsResponse, _err error) {
+func (client *Client) ListCustomAgentTools() (_result *ListCustomAgentToolsResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListCustomAgentToolsResponse{}
-	_body, _err := client.ListCustomAgentToolsWithOptions(request, runtime)
+	_body, _err := client.ListCustomAgentToolsWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2032,10 +1985,6 @@ func (client *Client) ModifyMessagesFeedbacksWithOptions(request *ModifyMessages
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.Content) {
 		query["Content"] = request.Content
 	}
@@ -2384,10 +2333,6 @@ func (client *Client) UpdateCustomAgentWithOptions(tmpReq *UpdateCustomAgentRequ
 	}
 
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.CustomAgentId) {
 		query["CustomAgentId"] = request.CustomAgentId
 	}
@@ -2464,10 +2409,6 @@ func (client *Client) chatMessagesWithSSE_opYieldFunc(_yield chan *ChatMessagesR
 	}
 
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.ConversationId) {
 		query["ConversationId"] = request.ConversationId
 	}

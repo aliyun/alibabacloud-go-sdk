@@ -9,8 +9,6 @@ type iUpdateCustomAgentRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetApiId(v string) *UpdateCustomAgentRequest
-	GetApiId() *string
 	SetCustomAgentId(v string) *UpdateCustomAgentRequest
 	GetCustomAgentId() *string
 	SetEnableTools(v bool) *UpdateCustomAgentRequest
@@ -24,12 +22,6 @@ type iUpdateCustomAgentRequest interface {
 }
 
 type UpdateCustomAgentRequest struct {
-	// This parameter is required.
-	//
-	// example:
-	//
-	// app-iBuGU1VxEY42zrQRQfNA****
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// AgentId。
 	//
 	// This parameter is required.
@@ -55,10 +47,6 @@ func (s UpdateCustomAgentRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateCustomAgentRequest) GetApiId() *string {
-	return s.ApiId
-}
-
 func (s *UpdateCustomAgentRequest) GetCustomAgentId() *string {
 	return s.CustomAgentId
 }
@@ -77,11 +65,6 @@ func (s *UpdateCustomAgentRequest) GetSystemPrompt() *string {
 
 func (s *UpdateCustomAgentRequest) GetTools() []*string {
 	return s.Tools
-}
-
-func (s *UpdateCustomAgentRequest) SetApiId(v string) *UpdateCustomAgentRequest {
-	s.ApiId = &v
-	return s
 }
 
 func (s *UpdateCustomAgentRequest) SetCustomAgentId(v string) *UpdateCustomAgentRequest {

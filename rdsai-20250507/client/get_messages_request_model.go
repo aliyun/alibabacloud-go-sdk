@@ -9,8 +9,6 @@ type iGetMessagesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetApiId(v string) *GetMessagesRequest
-	GetApiId() *string
 	SetConversationId(v string) *GetMessagesRequest
 	GetConversationId() *string
 	SetFirstId(v string) *GetMessagesRequest
@@ -20,10 +18,6 @@ type iGetMessagesRequest interface {
 }
 
 type GetMessagesRequest struct {
-	// example:
-	//
-	// app-iBuGU1VxEY42zrQRQfNA****
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// example:
 	//
 	// 941c6f59-acf5-4e11-9adc-31e52e1f****
@@ -46,10 +40,6 @@ func (s GetMessagesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetMessagesRequest) GetApiId() *string {
-	return s.ApiId
-}
-
 func (s *GetMessagesRequest) GetConversationId() *string {
 	return s.ConversationId
 }
@@ -60,11 +50,6 @@ func (s *GetMessagesRequest) GetFirstId() *string {
 
 func (s *GetMessagesRequest) GetLimit() *int64 {
 	return s.Limit
-}
-
-func (s *GetMessagesRequest) SetApiId(v string) *GetMessagesRequest {
-	s.ApiId = &v
-	return s
 }
 
 func (s *GetMessagesRequest) SetConversationId(v string) *GetMessagesRequest {

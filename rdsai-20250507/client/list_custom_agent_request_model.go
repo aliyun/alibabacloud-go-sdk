@@ -9,8 +9,6 @@ type iListCustomAgentRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetApiId(v string) *ListCustomAgentRequest
-	GetApiId() *string
 	SetPageNumber(v int64) *ListCustomAgentRequest
 	GetPageNumber() *int64
 	SetPageSize(v int64) *ListCustomAgentRequest
@@ -18,10 +16,6 @@ type iListCustomAgentRequest interface {
 }
 
 type ListCustomAgentRequest struct {
-	// example:
-	//
-	// app-iBuGU1VxEY42zrQRQfNA****
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// example:
 	//
 	// 1
@@ -40,21 +34,12 @@ func (s ListCustomAgentRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListCustomAgentRequest) GetApiId() *string {
-	return s.ApiId
-}
-
 func (s *ListCustomAgentRequest) GetPageNumber() *int64 {
 	return s.PageNumber
 }
 
 func (s *ListCustomAgentRequest) GetPageSize() *int64 {
 	return s.PageSize
-}
-
-func (s *ListCustomAgentRequest) SetApiId(v string) *ListCustomAgentRequest {
-	s.ApiId = &v
-	return s
 }
 
 func (s *ListCustomAgentRequest) SetPageNumber(v int64) *ListCustomAgentRequest {

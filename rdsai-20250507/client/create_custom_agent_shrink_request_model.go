@@ -9,8 +9,6 @@ type iCreateCustomAgentShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetApiId(v string) *CreateCustomAgentShrinkRequest
-	GetApiId() *string
 	SetEnableTools(v bool) *CreateCustomAgentShrinkRequest
 	GetEnableTools() *bool
 	SetName(v string) *CreateCustomAgentShrinkRequest
@@ -22,10 +20,6 @@ type iCreateCustomAgentShrinkRequest interface {
 }
 
 type CreateCustomAgentShrinkRequest struct {
-	// example:
-	//
-	// app-iBuGU1VxEY42zrQRQfNA****
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// example:
 	//
 	// true
@@ -44,10 +38,6 @@ func (s CreateCustomAgentShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateCustomAgentShrinkRequest) GetApiId() *string {
-	return s.ApiId
-}
-
 func (s *CreateCustomAgentShrinkRequest) GetEnableTools() *bool {
 	return s.EnableTools
 }
@@ -62,11 +52,6 @@ func (s *CreateCustomAgentShrinkRequest) GetSystemPrompt() *string {
 
 func (s *CreateCustomAgentShrinkRequest) GetToolsShrink() *string {
 	return s.ToolsShrink
-}
-
-func (s *CreateCustomAgentShrinkRequest) SetApiId(v string) *CreateCustomAgentShrinkRequest {
-	s.ApiId = &v
-	return s
 }
 
 func (s *CreateCustomAgentShrinkRequest) SetEnableTools(v bool) *CreateCustomAgentShrinkRequest {

@@ -46,10 +46,6 @@ func (client *Client) ChatMessagesWithContext(ctx context.Context, tmpReq *ChatM
 	}
 
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.ConversationId) {
 		query["ConversationId"] = request.ConversationId
 	}
@@ -106,10 +102,6 @@ func (client *Client) ChatMessagesTaskStopWithContext(ctx context.Context, reque
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.TaskId) {
 		query["TaskId"] = request.TaskId
 	}
@@ -262,10 +254,6 @@ func (client *Client) CreateCustomAgentWithContext(ctx context.Context, tmpReq *
 	}
 
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.EnableTools) {
 		query["EnableTools"] = request.EnableTools
 	}
@@ -374,10 +362,6 @@ func (client *Client) DeleteCustomAgentWithContext(ctx context.Context, request 
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.CustomAgentId) {
 		query["CustomAgentId"] = request.CustomAgentId
 	}
@@ -882,10 +866,6 @@ func (client *Client) GetConversationsWithContext(ctx context.Context, request *
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.LastId) {
 		query["LastId"] = request.LastId
 	}
@@ -942,10 +922,6 @@ func (client *Client) GetCustomAgentWithContext(ctx context.Context, request *Ge
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.CustomAgentId) {
 		query["CustomAgentId"] = request.CustomAgentId
 	}
@@ -990,10 +966,6 @@ func (client *Client) GetMessagesWithContext(ctx context.Context, request *GetMe
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.ConversationId) {
 		query["ConversationId"] = request.ConversationId
 	}
@@ -1046,10 +1018,6 @@ func (client *Client) ListCustomAgentWithContext(ctx context.Context, request *L
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -1073,50 +1041,6 @@ func (client *Client) ListCustomAgentWithContext(ctx context.Context, request *L
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCustomAgentResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取专属Agent可用工具
-//
-// @param request - ListCustomAgentToolsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListCustomAgentToolsResponse
-func (client *Client) ListCustomAgentToolsWithContext(ctx context.Context, request *ListCustomAgentToolsRequest, runtime *dara.RuntimeOptions) (_result *ListCustomAgentToolsResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ListCustomAgentTools"),
-		Version:     dara.String("2025-05-07"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ListCustomAgentToolsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1516,10 +1440,6 @@ func (client *Client) ModifyMessagesFeedbacksWithContext(ctx context.Context, re
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.Content) {
 		query["Content"] = request.Content
 	}
@@ -1778,10 +1698,6 @@ func (client *Client) UpdateCustomAgentWithContext(ctx context.Context, tmpReq *
 	}
 
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.CustomAgentId) {
 		query["CustomAgentId"] = request.CustomAgentId
 	}
@@ -1840,10 +1756,6 @@ func (client *Client) chatMessagesWithSSECtx_opYieldFunc(_yield chan *ChatMessag
 	}
 
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiId) {
-		query["ApiId"] = request.ApiId
-	}
-
 	if !dara.IsNil(request.ConversationId) {
 		query["ConversationId"] = request.ConversationId
 	}

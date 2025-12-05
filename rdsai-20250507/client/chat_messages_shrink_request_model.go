@@ -9,8 +9,6 @@ type iChatMessagesShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetApiId(v string) *ChatMessagesShrinkRequest
-	GetApiId() *string
 	SetConversationId(v string) *ChatMessagesShrinkRequest
 	GetConversationId() *string
 	SetInputsShrink(v string) *ChatMessagesShrinkRequest
@@ -22,12 +20,6 @@ type iChatMessagesShrinkRequest interface {
 }
 
 type ChatMessagesShrinkRequest struct {
-	// This parameter is required.
-	//
-	// example:
-	//
-	// app-iBuGU1VxEY42zrQRQfNA****
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// example:
 	//
 	// fea7bdca-e848-44dd-b1ae-852472b8****
@@ -49,10 +41,6 @@ func (s ChatMessagesShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ChatMessagesShrinkRequest) GetApiId() *string {
-	return s.ApiId
-}
-
 func (s *ChatMessagesShrinkRequest) GetConversationId() *string {
 	return s.ConversationId
 }
@@ -67,11 +55,6 @@ func (s *ChatMessagesShrinkRequest) GetParentMessageId() *string {
 
 func (s *ChatMessagesShrinkRequest) GetQuery() *string {
 	return s.Query
-}
-
-func (s *ChatMessagesShrinkRequest) SetApiId(v string) *ChatMessagesShrinkRequest {
-	s.ApiId = &v
-	return s
 }
 
 func (s *ChatMessagesShrinkRequest) SetConversationId(v string) *ChatMessagesShrinkRequest {

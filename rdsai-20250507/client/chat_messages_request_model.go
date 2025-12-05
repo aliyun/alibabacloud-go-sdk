@@ -9,8 +9,6 @@ type iChatMessagesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetApiId(v string) *ChatMessagesRequest
-	GetApiId() *string
 	SetConversationId(v string) *ChatMessagesRequest
 	GetConversationId() *string
 	SetInputs(v *ChatMessagesRequestInputs) *ChatMessagesRequest
@@ -22,12 +20,6 @@ type iChatMessagesRequest interface {
 }
 
 type ChatMessagesRequest struct {
-	// This parameter is required.
-	//
-	// example:
-	//
-	// app-iBuGU1VxEY42zrQRQfNA****
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// example:
 	//
 	// fea7bdca-e848-44dd-b1ae-852472b8****
@@ -49,10 +41,6 @@ func (s ChatMessagesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ChatMessagesRequest) GetApiId() *string {
-	return s.ApiId
-}
-
 func (s *ChatMessagesRequest) GetConversationId() *string {
 	return s.ConversationId
 }
@@ -67,11 +55,6 @@ func (s *ChatMessagesRequest) GetParentMessageId() *string {
 
 func (s *ChatMessagesRequest) GetQuery() *string {
 	return s.Query
-}
-
-func (s *ChatMessagesRequest) SetApiId(v string) *ChatMessagesRequest {
-	s.ApiId = &v
-	return s
 }
 
 func (s *ChatMessagesRequest) SetConversationId(v string) *ChatMessagesRequest {

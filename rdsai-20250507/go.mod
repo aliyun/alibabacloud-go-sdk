@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/rdsai-20250507
+module github.com/alibabacloud-go/rdsai-20250507/v2
 
 go 1.14
 

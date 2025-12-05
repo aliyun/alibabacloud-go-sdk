@@ -9,8 +9,6 @@ type iGetConversationsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetApiId(v string) *GetConversationsRequest
-	GetApiId() *string
 	SetLastId(v string) *GetConversationsRequest
 	GetLastId() *string
 	SetLimit(v string) *GetConversationsRequest
@@ -22,10 +20,6 @@ type iGetConversationsRequest interface {
 }
 
 type GetConversationsRequest struct {
-	// example:
-	//
-	// app-iBuGU1VxEY42zrQRQfNA****
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// example:
 	//
 	// 77be60cd-237b-4ca9-9c46-48b663cb****
@@ -52,10 +46,6 @@ func (s GetConversationsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetConversationsRequest) GetApiId() *string {
-	return s.ApiId
-}
-
 func (s *GetConversationsRequest) GetLastId() *string {
 	return s.LastId
 }
@@ -70,11 +60,6 @@ func (s *GetConversationsRequest) GetPinned() *string {
 
 func (s *GetConversationsRequest) GetSortBy() *string {
 	return s.SortBy
-}
-
-func (s *GetConversationsRequest) SetApiId(v string) *GetConversationsRequest {
-	s.ApiId = &v
-	return s
 }
 
 func (s *GetConversationsRequest) SetLastId(v string) *GetConversationsRequest {

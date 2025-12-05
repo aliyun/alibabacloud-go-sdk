@@ -9,17 +9,11 @@ type iChatMessagesTaskStopRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetApiId(v string) *ChatMessagesTaskStopRequest
-	GetApiId() *string
 	SetTaskId(v string) *ChatMessagesTaskStopRequest
 	GetTaskId() *string
 }
 
 type ChatMessagesTaskStopRequest struct {
-	// example:
-	//
-	// app-iBuGU1VxEY42zrQRQfNA****
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -36,17 +30,8 @@ func (s ChatMessagesTaskStopRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ChatMessagesTaskStopRequest) GetApiId() *string {
-	return s.ApiId
-}
-
 func (s *ChatMessagesTaskStopRequest) GetTaskId() *string {
 	return s.TaskId
-}
-
-func (s *ChatMessagesTaskStopRequest) SetApiId(v string) *ChatMessagesTaskStopRequest {
-	s.ApiId = &v
-	return s
 }
 
 func (s *ChatMessagesTaskStopRequest) SetTaskId(v string) *ChatMessagesTaskStopRequest {

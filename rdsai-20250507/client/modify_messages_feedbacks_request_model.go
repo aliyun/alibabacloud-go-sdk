@@ -9,8 +9,6 @@ type iModifyMessagesFeedbacksRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetApiId(v string) *ModifyMessagesFeedbacksRequest
-	GetApiId() *string
 	SetContent(v string) *ModifyMessagesFeedbacksRequest
 	GetContent() *string
 	SetMessageId(v string) *ModifyMessagesFeedbacksRequest
@@ -20,10 +18,6 @@ type iModifyMessagesFeedbacksRequest interface {
 }
 
 type ModifyMessagesFeedbacksRequest struct {
-	// example:
-	//
-	// app-iBuGU1VxEY42zrQRQfNA****
-	ApiId   *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// example:
 	//
@@ -43,10 +37,6 @@ func (s ModifyMessagesFeedbacksRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyMessagesFeedbacksRequest) GetApiId() *string {
-	return s.ApiId
-}
-
 func (s *ModifyMessagesFeedbacksRequest) GetContent() *string {
 	return s.Content
 }
@@ -57,11 +47,6 @@ func (s *ModifyMessagesFeedbacksRequest) GetMessageId() *string {
 
 func (s *ModifyMessagesFeedbacksRequest) GetRating() *string {
 	return s.Rating
-}
-
-func (s *ModifyMessagesFeedbacksRequest) SetApiId(v string) *ModifyMessagesFeedbacksRequest {
-	s.ApiId = &v
-	return s
 }
 
 func (s *ModifyMessagesFeedbacksRequest) SetContent(v string) *ModifyMessagesFeedbacksRequest {

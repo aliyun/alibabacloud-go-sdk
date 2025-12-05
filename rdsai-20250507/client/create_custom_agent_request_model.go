@@ -9,8 +9,6 @@ type iCreateCustomAgentRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetApiId(v string) *CreateCustomAgentRequest
-	GetApiId() *string
 	SetEnableTools(v bool) *CreateCustomAgentRequest
 	GetEnableTools() *bool
 	SetName(v string) *CreateCustomAgentRequest
@@ -22,10 +20,6 @@ type iCreateCustomAgentRequest interface {
 }
 
 type CreateCustomAgentRequest struct {
-	// example:
-	//
-	// app-iBuGU1VxEY42zrQRQfNA****
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// example:
 	//
 	// true
@@ -44,10 +38,6 @@ func (s CreateCustomAgentRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateCustomAgentRequest) GetApiId() *string {
-	return s.ApiId
-}
-
 func (s *CreateCustomAgentRequest) GetEnableTools() *bool {
 	return s.EnableTools
 }
@@ -62,11 +52,6 @@ func (s *CreateCustomAgentRequest) GetSystemPrompt() *string {
 
 func (s *CreateCustomAgentRequest) GetTools() []*string {
 	return s.Tools
-}
-
-func (s *CreateCustomAgentRequest) SetApiId(v string) *CreateCustomAgentRequest {
-	s.ApiId = &v
-	return s
 }
 
 func (s *CreateCustomAgentRequest) SetEnableTools(v bool) *CreateCustomAgentRequest {
