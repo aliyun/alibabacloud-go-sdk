@@ -9993,6 +9993,76 @@ func (client *Client) RestartInstances(request *RestartInstancesRequest) (_resul
 
 // Summary:
 //
+// 恢复实例的流量
+//
+// @param request - ResumeTrafficRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeTrafficResponse
+func (client *Client) ResumeTrafficWithOptions(request *ResumeTrafficRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ResumeTrafficResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResumeTraffic"),
+		Version:     dara.String("2019-05-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/v1/sam/app/instanceTrafficResume"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResumeTrafficResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 恢复实例的流量
+//
+// @param request - ResumeTrafficRequest
+//
+// @return ResumeTrafficResponse
+func (client *Client) ResumeTraffic(request *ResumeTrafficRequest) (_result *ResumeTrafficResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ResumeTrafficResponse{}
+	_body, _err := client.ResumeTrafficWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Rolls back an application.
 //
 // @param request - RollbackApplicationRequest
@@ -10424,6 +10494,76 @@ func (client *Client) SuspendJob(request *SuspendJobRequest) (_result *SuspendJo
 	headers := make(map[string]*string)
 	_result = &SuspendJobResponse{}
 	_body, _err := client.SuspendJobWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将流量从实例中摘除
+//
+// @param request - SuspendTrafficRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SuspendTrafficResponse
+func (client *Client) SuspendTrafficWithOptions(request *SuspendTrafficRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SuspendTrafficResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SuspendTraffic"),
+		Version:     dara.String("2019-05-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/v1/sam/app/instanceTrafficSuspend"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SuspendTrafficResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将流量从实例中摘除
+//
+// @param request - SuspendTrafficRequest
+//
+// @return SuspendTrafficResponse
+func (client *Client) SuspendTraffic(request *SuspendTrafficRequest) (_result *SuspendTrafficResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SuspendTrafficResponse{}
+	_body, _err := client.SuspendTrafficWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

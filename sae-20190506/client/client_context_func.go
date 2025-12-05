@@ -7613,6 +7613,57 @@ func (client *Client) RestartInstancesWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 恢复实例的流量
+//
+// @param request - ResumeTrafficRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeTrafficResponse
+func (client *Client) ResumeTrafficWithContext(ctx context.Context, request *ResumeTrafficRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ResumeTrafficResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResumeTraffic"),
+		Version:     dara.String("2019-05-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/v1/sam/app/instanceTrafficResume"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResumeTrafficResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Rolls back an application.
 //
 // @param request - RollbackApplicationRequest
@@ -7921,6 +7972,57 @@ func (client *Client) SuspendJobWithContext(ctx context.Context, request *Suspen
 		BodyType:    dara.String("json"),
 	}
 	_result = &SuspendJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将流量从实例中摘除
+//
+// @param request - SuspendTrafficRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SuspendTrafficResponse
+func (client *Client) SuspendTrafficWithContext(ctx context.Context, request *SuspendTrafficRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SuspendTrafficResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SuspendTraffic"),
+		Version:     dara.String("2019-05-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/v1/sam/app/instanceTrafficSuspend"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SuspendTrafficResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
