@@ -6089,6 +6089,62 @@ func (client *Client) GetAppInfosWithContext(ctx context.Context, request *GetAp
 
 // Summary:
 //
+// 获取应用播放密钥
+//
+// @param request - GetAppPlayKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppPlayKeyResponse
+func (client *Client) GetAppPlayKeyWithContext(ctx context.Context, request *GetAppPlayKeyRequest, runtime *dara.RuntimeOptions) (_result *GetAppPlayKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppPlayKey"),
+		Version:     dara.String("2017-03-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppPlayKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the URL and basic information about one or more auxiliary media assets such as watermark images, subtitle files, and materials based on IDs.
 //
 // Description:
@@ -9429,6 +9485,66 @@ func (client *Client) SearchMediaWithContext(ctx context.Context, request *Searc
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchMediaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置应用播放密钥
+//
+// @param request - SetAppPlayKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAppPlayKeyResponse
+func (client *Client) SetAppPlayKeyWithContext(ctx context.Context, request *SetAppPlayKeyRequest, runtime *dara.RuntimeOptions) (_result *SetAppPlayKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PlayKey) {
+		query["PlayKey"] = request.PlayKey
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetAppPlayKey"),
+		Version:     dara.String("2017-03-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetAppPlayKeyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
