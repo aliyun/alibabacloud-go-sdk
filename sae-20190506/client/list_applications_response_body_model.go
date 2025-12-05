@@ -445,7 +445,8 @@ type ListApplicationsResponseBodyDataApplications struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The number of running instances.
 	//
 	// example:
@@ -552,6 +553,10 @@ func (s *ListApplicationsResponseBodyDataApplications) GetProgrammingLanguage() 
 
 func (s *ListApplicationsResponseBodyDataApplications) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *ListApplicationsResponseBodyDataApplications) GetResourceType() *string {
+	return s.ResourceType
 }
 
 func (s *ListApplicationsResponseBodyDataApplications) GetRunningInstances() *int32 {
@@ -673,6 +678,11 @@ func (s *ListApplicationsResponseBodyDataApplications) SetProgrammingLanguage(v 
 
 func (s *ListApplicationsResponseBodyDataApplications) SetRegionId(v string) *ListApplicationsResponseBodyDataApplications {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplications) SetResourceType(v string) *ListApplicationsResponseBodyDataApplications {
+	s.ResourceType = &v
 	return s
 }
 
@@ -810,7 +820,8 @@ type ListApplicationsResponseBodyDataApplicationsChildren struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The number of instances in running state.
 	//
 	// example:
@@ -903,6 +914,10 @@ func (s *ListApplicationsResponseBodyDataApplicationsChildren) GetProgrammingLan
 
 func (s *ListApplicationsResponseBodyDataApplicationsChildren) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) GetResourceType() *string {
+	return s.ResourceType
 }
 
 func (s *ListApplicationsResponseBodyDataApplicationsChildren) GetRunningInstances() *int32 {
@@ -998,6 +1013,11 @@ func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetProgrammingLan
 
 func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetRegionId(v string) *ListApplicationsResponseBodyDataApplicationsChildren {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetResourceType(v string) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.ResourceType = &v
 	return s
 }
 
