@@ -145,7 +145,8 @@ type GetMcpServerResponseBodyData struct {
 	// example:
 	//
 	// gw-cq2vundlhtg***
-	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId            *string                                             `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GrayMcpServerConfigs []*GetMcpServerResponseBodyDataGrayMcpServerConfigs `json:"grayMcpServerConfigs,omitempty" xml:"grayMcpServerConfigs,omitempty" type:"Repeated"`
 	// The route match rule.
 	//
 	// example:
@@ -254,6 +255,10 @@ func (s *GetMcpServerResponseBodyData) GetGatewayId() *string {
 	return s.GatewayId
 }
 
+func (s *GetMcpServerResponseBodyData) GetGrayMcpServerConfigs() []*GetMcpServerResponseBodyDataGrayMcpServerConfigs {
+	return s.GrayMcpServerConfigs
+}
+
 func (s *GetMcpServerResponseBodyData) GetMatch() *HttpRouteMatch {
 	return s.Match
 }
@@ -348,6 +353,11 @@ func (s *GetMcpServerResponseBodyData) SetGatewayId(v string) *GetMcpServerRespo
 	return s
 }
 
+func (s *GetMcpServerResponseBodyData) SetGrayMcpServerConfigs(v []*GetMcpServerResponseBodyDataGrayMcpServerConfigs) *GetMcpServerResponseBodyData {
+	s.GrayMcpServerConfigs = v
+	return s
+}
+
 func (s *GetMcpServerResponseBodyData) SetMatch(v *HttpRouteMatch) *GetMcpServerResponseBodyData {
 	s.Match = v
 	return s
@@ -420,6 +430,15 @@ func (s *GetMcpServerResponseBodyData) Validate() error {
 	}
 	if s.DomainInfos != nil {
 		for _, item := range s.DomainInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.GrayMcpServerConfigs != nil {
+		for _, item := range s.GrayMcpServerConfigs {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -553,6 +572,170 @@ func (s *GetMcpServerResponseBodyDataDomainInfos) SetProtocol(v string) *GetMcpS
 }
 
 func (s *GetMcpServerResponseBodyDataDomainInfos) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetMcpServerResponseBodyDataGrayMcpServerConfigs struct {
+	BackendConfig *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
+	Match         *HttpRouteMatch                                                `json:"match,omitempty" xml:"match,omitempty"`
+	RouteId       *string                                                        `json:"routeId,omitempty" xml:"routeId,omitempty"`
+}
+
+func (s GetMcpServerResponseBodyDataGrayMcpServerConfigs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetMcpServerResponseBodyDataGrayMcpServerConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigs) GetBackendConfig() *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig {
+	return s.BackendConfig
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigs) GetMatch() *HttpRouteMatch {
+	return s.Match
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigs) GetRouteId() *string {
+	return s.RouteId
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigs) SetBackendConfig(v *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig) *GetMcpServerResponseBodyDataGrayMcpServerConfigs {
+	s.BackendConfig = v
+	return s
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigs) SetMatch(v *HttpRouteMatch) *GetMcpServerResponseBodyDataGrayMcpServerConfigs {
+	s.Match = v
+	return s
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigs) SetRouteId(v string) *GetMcpServerResponseBodyDataGrayMcpServerConfigs {
+	s.RouteId = &v
+	return s
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigs) Validate() error {
+	if s.BackendConfig != nil {
+		if err := s.BackendConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig struct {
+	Scene    *string                                                                  `json:"scene,omitempty" xml:"scene,omitempty"`
+	Services []*GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
+}
+
+func (s GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig) GetScene() *string {
+	return s.Scene
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig) GetServices() []*GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices {
+	return s.Services
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig) SetScene(v string) *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig {
+	s.Scene = &v
+	return s
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig) SetServices(v []*GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices) *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig {
+	s.Services = v
+	return s
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig) Validate() error {
+	if s.Services != nil {
+		for _, item := range s.Services {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices struct {
+	Port      *int32  `json:"port,omitempty" xml:"port,omitempty"`
+	Protocol  *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	Version   *string `json:"version,omitempty" xml:"version,omitempty"`
+	Weight    *int32  `json:"weight,omitempty" xml:"weight,omitempty"`
+}
+
+func (s GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices) GoString() string {
+	return s.String()
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices) GetPort() *int32 {
+	return s.Port
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices) GetProtocol() *string {
+	return s.Protocol
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices) GetServiceId() *string {
+	return s.ServiceId
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices) GetVersion() *string {
+	return s.Version
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices) GetWeight() *int32 {
+	return s.Weight
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices) SetPort(v int32) *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices {
+	s.Port = &v
+	return s
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices) SetProtocol(v string) *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices {
+	s.Protocol = &v
+	return s
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices) SetServiceId(v string) *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices) SetVersion(v string) *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices {
+	s.Version = &v
+	return s
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices) SetWeight(v int32) *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices {
+	s.Weight = &v
+	return s
+}
+
+func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices) Validate() error {
 	return dara.Validate(s)
 }
 

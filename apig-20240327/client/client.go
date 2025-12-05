@@ -1262,6 +1262,10 @@ func (client *Client) CreateMcpServerWithOptions(request *CreateMcpServerRequest
 		body["gatewayId"] = request.GatewayId
 	}
 
+	if !dara.IsNil(request.GrayMcpServerConfigs) {
+		body["grayMcpServerConfigs"] = request.GrayMcpServerConfigs
+	}
+
 	if !dara.IsNil(request.Match) {
 		body["match"] = request.Match
 	}
@@ -6520,6 +6524,10 @@ func (client *Client) UpdateMcpServerWithOptions(mcpServerId *string, request *U
 
 	if !dara.IsNil(request.ExposedUriPath) {
 		body["exposedUriPath"] = request.ExposedUriPath
+	}
+
+	if !dara.IsNil(request.GrayMcpServerConfigs) {
+		body["grayMcpServerConfigs"] = request.GrayMcpServerConfigs
 	}
 
 	if !dara.IsNil(request.Match) {

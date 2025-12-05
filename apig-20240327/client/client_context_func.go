@@ -955,6 +955,10 @@ func (client *Client) CreateMcpServerWithContext(ctx context.Context, request *C
 		body["gatewayId"] = request.GatewayId
 	}
 
+	if !dara.IsNil(request.GrayMcpServerConfigs) {
+		body["grayMcpServerConfigs"] = request.GrayMcpServerConfigs
+	}
+
 	if !dara.IsNil(request.Match) {
 		body["match"] = request.Match
 	}
@@ -4849,6 +4853,10 @@ func (client *Client) UpdateMcpServerWithContext(ctx context.Context, mcpServerI
 
 	if !dara.IsNil(request.ExposedUriPath) {
 		body["exposedUriPath"] = request.ExposedUriPath
+	}
+
+	if !dara.IsNil(request.GrayMcpServerConfigs) {
+		body["grayMcpServerConfigs"] = request.GrayMcpServerConfigs
 	}
 
 	if !dara.IsNil(request.Match) {

@@ -23,6 +23,8 @@ type iCreateMcpServerRequest interface {
 	GetExposedUriPath() *string
 	SetGatewayId(v string) *CreateMcpServerRequest
 	GetGatewayId() *string
+	SetGrayMcpServerConfigs(v []*CreateMcpServerRequestGrayMcpServerConfigs) *CreateMcpServerRequest
+	GetGrayMcpServerConfigs() []*CreateMcpServerRequestGrayMcpServerConfigs
 	SetMatch(v *HttpRouteMatch) *CreateMcpServerRequest
 	GetMatch() *HttpRouteMatch
 	SetMcpStatisticsEnable(v bool) *CreateMcpServerRequest
@@ -63,7 +65,8 @@ type CreateMcpServerRequest struct {
 	// example:
 	//
 	// gw-cq7l5s5lhtgi6qac0
-	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId            *string                                       `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GrayMcpServerConfigs []*CreateMcpServerRequestGrayMcpServerConfigs `json:"grayMcpServerConfigs,omitempty" xml:"grayMcpServerConfigs,omitempty" type:"Repeated"`
 	// The route match rule.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// Specifies whether MCP observability is enabled. Default: false.
@@ -134,6 +137,10 @@ func (s *CreateMcpServerRequest) GetGatewayId() *string {
 	return s.GatewayId
 }
 
+func (s *CreateMcpServerRequest) GetGrayMcpServerConfigs() []*CreateMcpServerRequestGrayMcpServerConfigs {
+	return s.GrayMcpServerConfigs
+}
+
 func (s *CreateMcpServerRequest) GetMatch() *HttpRouteMatch {
 	return s.Match
 }
@@ -189,6 +196,11 @@ func (s *CreateMcpServerRequest) SetGatewayId(v string) *CreateMcpServerRequest 
 	return s
 }
 
+func (s *CreateMcpServerRequest) SetGrayMcpServerConfigs(v []*CreateMcpServerRequestGrayMcpServerConfigs) *CreateMcpServerRequest {
+	s.GrayMcpServerConfigs = v
+	return s
+}
+
 func (s *CreateMcpServerRequest) SetMatch(v *HttpRouteMatch) *CreateMcpServerRequest {
 	s.Match = v
 	return s
@@ -227,6 +239,15 @@ func (s *CreateMcpServerRequest) Validate() error {
 	if s.BackendConfig != nil {
 		if err := s.BackendConfig.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.GrayMcpServerConfigs != nil {
+		for _, item := range s.GrayMcpServerConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.Match != nil {
@@ -434,5 +455,169 @@ func (s *CreateMcpServerRequestBackendConfigServices) SetWeight(v int32) *Create
 }
 
 func (s *CreateMcpServerRequestBackendConfigServices) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateMcpServerRequestGrayMcpServerConfigs struct {
+	BackendConfig *CreateMcpServerRequestGrayMcpServerConfigsBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
+	Match         *HttpRouteMatch                                          `json:"match,omitempty" xml:"match,omitempty"`
+	RouteId       *string                                                  `json:"routeId,omitempty" xml:"routeId,omitempty"`
+}
+
+func (s CreateMcpServerRequestGrayMcpServerConfigs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateMcpServerRequestGrayMcpServerConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigs) GetBackendConfig() *CreateMcpServerRequestGrayMcpServerConfigsBackendConfig {
+	return s.BackendConfig
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigs) GetMatch() *HttpRouteMatch {
+	return s.Match
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigs) GetRouteId() *string {
+	return s.RouteId
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigs) SetBackendConfig(v *CreateMcpServerRequestGrayMcpServerConfigsBackendConfig) *CreateMcpServerRequestGrayMcpServerConfigs {
+	s.BackendConfig = v
+	return s
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigs) SetMatch(v *HttpRouteMatch) *CreateMcpServerRequestGrayMcpServerConfigs {
+	s.Match = v
+	return s
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigs) SetRouteId(v string) *CreateMcpServerRequestGrayMcpServerConfigs {
+	s.RouteId = &v
+	return s
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigs) Validate() error {
+	if s.BackendConfig != nil {
+		if err := s.BackendConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateMcpServerRequestGrayMcpServerConfigsBackendConfig struct {
+	Scene    *string                                                            `json:"scene,omitempty" xml:"scene,omitempty"`
+	Services []*CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
+}
+
+func (s CreateMcpServerRequestGrayMcpServerConfigsBackendConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateMcpServerRequestGrayMcpServerConfigsBackendConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfig) GetScene() *string {
+	return s.Scene
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfig) GetServices() []*CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices {
+	return s.Services
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfig) SetScene(v string) *CreateMcpServerRequestGrayMcpServerConfigsBackendConfig {
+	s.Scene = &v
+	return s
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfig) SetServices(v []*CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) *CreateMcpServerRequestGrayMcpServerConfigsBackendConfig {
+	s.Services = v
+	return s
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfig) Validate() error {
+	if s.Services != nil {
+		for _, item := range s.Services {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices struct {
+	Port      *int32  `json:"port,omitempty" xml:"port,omitempty"`
+	Protocol  *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	Version   *string `json:"version,omitempty" xml:"version,omitempty"`
+	Weight    *int32  `json:"weight,omitempty" xml:"weight,omitempty"`
+}
+
+func (s CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) GetPort() *int32 {
+	return s.Port
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) GetProtocol() *string {
+	return s.Protocol
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) GetServiceId() *string {
+	return s.ServiceId
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) GetVersion() *string {
+	return s.Version
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) GetWeight() *int32 {
+	return s.Weight
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) SetPort(v int32) *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices {
+	s.Port = &v
+	return s
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) SetProtocol(v string) *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) SetServiceId(v string) *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) SetVersion(v string) *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices {
+	s.Version = &v
+	return s
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) SetWeight(v int32) *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices {
+	s.Weight = &v
+	return s
+}
+
+func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) Validate() error {
 	return dara.Validate(s)
 }
