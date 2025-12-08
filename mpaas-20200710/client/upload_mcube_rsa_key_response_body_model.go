@@ -71,7 +71,12 @@ func (s *UploadMcubeRsaKeyResponseBody) SetUploadRsaResult(v *UploadMcubeRsaKeyR
 }
 
 func (s *UploadMcubeRsaKeyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UploadRsaResult != nil {
+		if err := s.UploadRsaResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UploadMcubeRsaKeyResponseBodyUploadRsaResult struct {

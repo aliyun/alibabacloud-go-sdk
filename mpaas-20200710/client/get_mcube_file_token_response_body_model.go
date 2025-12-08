@@ -71,7 +71,12 @@ func (s *GetMcubeFileTokenResponseBody) SetResultMessage(v string) *GetMcubeFile
 }
 
 func (s *GetMcubeFileTokenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GetFileTokenResult != nil {
+		if err := s.GetFileTokenResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMcubeFileTokenResponseBodyGetFileTokenResult struct {
@@ -116,7 +121,12 @@ func (s *GetMcubeFileTokenResponseBodyGetFileTokenResult) SetSuccess(v bool) *Ge
 }
 
 func (s *GetMcubeFileTokenResponseBodyGetFileTokenResult) Validate() error {
-	return dara.Validate(s)
+	if s.FileToken != nil {
+		if err := s.FileToken.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMcubeFileTokenResponseBodyGetFileTokenResultFileToken struct {

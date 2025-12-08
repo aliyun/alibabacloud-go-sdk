@@ -71,7 +71,12 @@ func (s *PushTemplateResponseBody) SetResultMessage(v string) *PushTemplateRespo
 }
 
 func (s *PushTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PushResult != nil {
+		if err := s.PushResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PushTemplateResponseBodyPushResult struct {

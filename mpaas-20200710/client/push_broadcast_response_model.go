@@ -59,5 +59,10 @@ func (s *PushBroadcastResponse) SetBody(v *PushBroadcastResponseBody) *PushBroad
 }
 
 func (s *PushBroadcastResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

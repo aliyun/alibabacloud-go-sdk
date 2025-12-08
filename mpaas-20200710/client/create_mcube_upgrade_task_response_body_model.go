@@ -71,7 +71,12 @@ func (s *CreateMcubeUpgradeTaskResponseBody) SetResultMessage(v string) *CreateM
 }
 
 func (s *CreateMcubeUpgradeTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CreateTaskResult != nil {
+		if err := s.CreateTaskResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMcubeUpgradeTaskResponseBodyCreateTaskResult struct {

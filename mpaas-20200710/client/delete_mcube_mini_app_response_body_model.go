@@ -71,7 +71,12 @@ func (s *DeleteMcubeMiniAppResponseBody) SetResultMessage(v string) *DeleteMcube
 }
 
 func (s *DeleteMcubeMiniAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeleteMiniResult != nil {
+		if err := s.DeleteMiniResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteMcubeMiniAppResponseBodyDeleteMiniResult struct {

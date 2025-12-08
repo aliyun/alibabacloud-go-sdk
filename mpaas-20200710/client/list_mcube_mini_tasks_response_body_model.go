@@ -71,7 +71,12 @@ func (s *ListMcubeMiniTasksResponseBody) SetResultMessage(v string) *ListMcubeMi
 }
 
 func (s *ListMcubeMiniTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ListMiniTaskResult != nil {
+		if err := s.ListMiniTaskResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMcubeMiniTasksResponseBodyListMiniTaskResult struct {
@@ -116,7 +121,16 @@ func (s *ListMcubeMiniTasksResponseBodyListMiniTaskResult) SetSuccess(v bool) *L
 }
 
 func (s *ListMcubeMiniTasksResponseBodyListMiniTaskResult) Validate() error {
-	return dara.Validate(s)
+	if s.MiniTaskList != nil {
+		for _, item := range s.MiniTaskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMcubeMiniTasksResponseBodyListMiniTaskResultMiniTaskList struct {

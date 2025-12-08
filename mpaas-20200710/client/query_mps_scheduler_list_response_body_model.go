@@ -71,7 +71,12 @@ func (s *QueryMpsSchedulerListResponseBody) SetResultMessage(v string) *QueryMps
 }
 
 func (s *QueryMpsSchedulerListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMpsSchedulerListResponseBodyResultContent struct {
@@ -96,7 +101,12 @@ func (s *QueryMpsSchedulerListResponseBodyResultContent) SetData(v *QueryMpsSche
 }
 
 func (s *QueryMpsSchedulerListResponseBodyResultContent) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMpsSchedulerListResponseBodyResultContentData struct {
@@ -131,7 +141,16 @@ func (s *QueryMpsSchedulerListResponseBodyResultContentData) SetTotalCount(v int
 }
 
 func (s *QueryMpsSchedulerListResponseBodyResultContentData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMpsSchedulerListResponseBodyResultContentDataList struct {

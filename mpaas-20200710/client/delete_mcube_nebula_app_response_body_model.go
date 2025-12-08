@@ -71,7 +71,12 @@ func (s *DeleteMcubeNebulaAppResponseBody) SetResultMessage(v string) *DeleteMcu
 }
 
 func (s *DeleteMcubeNebulaAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeleteMcubeNebulaAppResult != nil {
+		if err := s.DeleteMcubeNebulaAppResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteMcubeNebulaAppResponseBodyDeleteMcubeNebulaAppResult struct {

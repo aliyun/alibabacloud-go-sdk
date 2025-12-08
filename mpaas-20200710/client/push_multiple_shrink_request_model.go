@@ -317,7 +317,16 @@ func (s *PushMultipleShrinkRequest) SetWorkspaceId(v string) *PushMultipleShrink
 }
 
 func (s *PushMultipleShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TargetMsg != nil {
+		for _, item := range s.TargetMsg {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PushMultipleShrinkRequestTargetMsg struct {

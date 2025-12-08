@@ -71,7 +71,12 @@ func (s *ChangeMcubeMiniTaskStatusResponseBody) SetResultMessage(v string) *Chan
 }
 
 func (s *ChangeMcubeMiniTaskStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeMiniTaskStatusResult != nil {
+		if err := s.ChangeMiniTaskStatusResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChangeMcubeMiniTaskStatusResponseBodyChangeMiniTaskStatusResult struct {

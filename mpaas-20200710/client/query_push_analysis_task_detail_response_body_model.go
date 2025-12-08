@@ -71,7 +71,12 @@ func (s *QueryPushAnalysisTaskDetailResponseBody) SetResultMessage(v string) *Qu
 }
 
 func (s *QueryPushAnalysisTaskDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryPushAnalysisTaskDetailResponseBodyResultContent struct {
@@ -96,7 +101,12 @@ func (s *QueryPushAnalysisTaskDetailResponseBodyResultContent) SetData(v *QueryP
 }
 
 func (s *QueryPushAnalysisTaskDetailResponseBodyResultContent) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryPushAnalysisTaskDetailResponseBodyResultContentData struct {

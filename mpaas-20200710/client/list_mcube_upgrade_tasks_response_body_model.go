@@ -71,7 +71,12 @@ func (s *ListMcubeUpgradeTasksResponseBody) SetResultMessage(v string) *ListMcub
 }
 
 func (s *ListMcubeUpgradeTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ListTaskResult != nil {
+		if err := s.ListTaskResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMcubeUpgradeTasksResponseBodyListTaskResult struct {
@@ -136,7 +141,16 @@ func (s *ListMcubeUpgradeTasksResponseBodyListTaskResult) SetTaskInfo(v []*ListM
 }
 
 func (s *ListMcubeUpgradeTasksResponseBodyListTaskResult) Validate() error {
-	return dara.Validate(s)
+	if s.TaskInfo != nil {
+		for _, item := range s.TaskInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMcubeUpgradeTasksResponseBodyListTaskResultTaskInfo struct {

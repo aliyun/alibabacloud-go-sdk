@@ -59,5 +59,10 @@ func (s *RevokePushTaskResponse) SetBody(v *RevokePushTaskResponseBody) *RevokeP
 }
 
 func (s *RevokePushTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

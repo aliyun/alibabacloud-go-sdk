@@ -71,7 +71,12 @@ func (s *DeleteCubecardWhitelistContentResponseBody) SetResultMessage(v string) 
 }
 
 func (s *DeleteCubecardWhitelistContentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteCubecardWhitelistContentResponseBodyResultContent struct {
@@ -106,7 +111,12 @@ func (s *DeleteCubecardWhitelistContentResponseBodyResultContent) SetRequestId(v
 }
 
 func (s *DeleteCubecardWhitelistContentResponseBodyResultContent) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteCubecardWhitelistContentResponseBodyResultContentData struct {

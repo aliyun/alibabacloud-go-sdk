@@ -71,7 +71,12 @@ func (s *UploadMcubeMiniPackageResponseBody) SetUploadMiniPackageResult(v *Uploa
 }
 
 func (s *UploadMcubeMiniPackageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UploadMiniPackageResult != nil {
+		if err := s.UploadMiniPackageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UploadMcubeMiniPackageResponseBodyUploadMiniPackageResult struct {
@@ -116,7 +121,12 @@ func (s *UploadMcubeMiniPackageResponseBodyUploadMiniPackageResult) SetSuccess(v
 }
 
 func (s *UploadMcubeMiniPackageResponseBodyUploadMiniPackageResult) Validate() error {
-	return dara.Validate(s)
+	if s.ReturnPackageResult != nil {
+		if err := s.ReturnPackageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UploadMcubeMiniPackageResponseBodyUploadMiniPackageResultReturnPackageResult struct {

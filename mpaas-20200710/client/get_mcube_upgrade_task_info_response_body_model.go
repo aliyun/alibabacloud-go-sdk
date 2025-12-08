@@ -71,7 +71,12 @@ func (s *GetMcubeUpgradeTaskInfoResponseBody) SetResultMessage(v string) *GetMcu
 }
 
 func (s *GetMcubeUpgradeTaskInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GetTaskResult != nil {
+		if err := s.GetTaskResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMcubeUpgradeTaskInfoResponseBodyGetTaskResult struct {
@@ -136,7 +141,12 @@ func (s *GetMcubeUpgradeTaskInfoResponseBodyGetTaskResult) SetTaskInfo(v *GetMcu
 }
 
 func (s *GetMcubeUpgradeTaskInfoResponseBodyGetTaskResult) Validate() error {
-	return dara.Validate(s)
+	if s.TaskInfo != nil {
+		if err := s.TaskInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMcubeUpgradeTaskInfoResponseBodyGetTaskResultTaskInfo struct {
@@ -431,7 +441,25 @@ func (s *GetMcubeUpgradeTaskInfoResponseBodyGetTaskResultTaskInfo) SetWorkspaceI
 }
 
 func (s *GetMcubeUpgradeTaskInfoResponseBodyGetTaskResultTaskInfo) Validate() error {
-	return dara.Validate(s)
+	if s.RuleJsonList != nil {
+		for _, item := range s.RuleJsonList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Whitelist != nil {
+		for _, item := range s.Whitelist {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMcubeUpgradeTaskInfoResponseBodyGetTaskResultTaskInfoRuleJsonList struct {

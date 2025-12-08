@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -121,9 +122,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return CancelMpsSchedulerResponse
 func (client *Client) CancelMpsSchedulerWithOptions(request *CancelMpsSchedulerRequest, runtime *dara.RuntimeOptions) (_result *CancelMpsSchedulerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -189,9 +192,11 @@ func (client *Client) CancelMpsScheduler(request *CancelMpsSchedulerRequest) (_r
 //
 // @return CancelPushSchedulerResponse
 func (client *Client) CancelPushSchedulerWithOptions(request *CancelPushSchedulerRequest, runtime *dara.RuntimeOptions) (_result *CancelPushSchedulerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -257,9 +262,11 @@ func (client *Client) CancelPushScheduler(request *CancelPushSchedulerRequest) (
 //
 // @return ChangeMcubeMiniTaskStatusResponse
 func (client *Client) ChangeMcubeMiniTaskStatusWithOptions(request *ChangeMcubeMiniTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *ChangeMcubeMiniTaskStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -333,9 +340,11 @@ func (client *Client) ChangeMcubeMiniTaskStatus(request *ChangeMcubeMiniTaskStat
 //
 // @return ChangeMcubeNebulaTaskStatusResponse
 func (client *Client) ChangeMcubeNebulaTaskStatusWithOptions(request *ChangeMcubeNebulaTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *ChangeMcubeNebulaTaskStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -409,9 +418,11 @@ func (client *Client) ChangeMcubeNebulaTaskStatus(request *ChangeMcubeNebulaTask
 //
 // @return ChangeMcubePublicTaskStatusResponse
 func (client *Client) ChangeMcubePublicTaskStatusWithOptions(request *ChangeMcubePublicTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *ChangeMcubePublicTaskStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -477,9 +488,11 @@ func (client *Client) ChangeMcubePublicTaskStatus(request *ChangeMcubePublicTask
 //
 // @return CreateMcubeMiniAppResponse
 func (client *Client) CreateMcubeMiniAppWithOptions(request *CreateMcubeMiniAppRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeMiniAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -545,9 +558,11 @@ func (client *Client) CreateMcubeMiniApp(request *CreateMcubeMiniAppRequest) (_r
 //
 // @return CreateMcubeMiniTaskResponse
 func (client *Client) CreateMcubeMiniTaskWithOptions(request *CreateMcubeMiniTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeMiniTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -637,9 +652,11 @@ func (client *Client) CreateMcubeMiniTask(request *CreateMcubeMiniTaskRequest) (
 //
 // @return CreateMcubeNebulaAppResponse
 func (client *Client) CreateMcubeNebulaAppWithOptions(request *CreateMcubeNebulaAppRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeNebulaAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -705,9 +722,11 @@ func (client *Client) CreateMcubeNebulaApp(request *CreateMcubeNebulaAppRequest)
 //
 // @return CreateMcubeNebulaResourceResponse
 func (client *Client) CreateMcubeNebulaResourceWithOptions(request *CreateMcubeNebulaResourceRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeNebulaResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -833,9 +852,11 @@ func (client *Client) CreateMcubeNebulaResource(request *CreateMcubeNebulaResour
 //
 // @return CreateMcubeNebulaTaskResponse
 func (client *Client) CreateMcubeNebulaTaskWithOptions(request *CreateMcubeNebulaTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeNebulaTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppCode) {
@@ -1033,9 +1054,11 @@ func (client *Client) CreateMcubeNebulaTask(request *CreateMcubeNebulaTaskReques
 //
 // @return CreateMcubeUpgradePackageResponse
 func (client *Client) CreateMcubeUpgradePackageWithOptions(request *CreateMcubeUpgradePackageRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeUpgradePackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1153,9 +1176,11 @@ func (client *Client) CreateMcubeUpgradePackage(request *CreateMcubeUpgradePacka
 //
 // @return CreateMcubeUpgradeTaskResponse
 func (client *Client) CreateMcubeUpgradeTaskWithOptions(request *CreateMcubeUpgradeTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeUpgradeTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1257,9 +1282,11 @@ func (client *Client) CreateMcubeUpgradeTask(request *CreateMcubeUpgradeTaskRequ
 //
 // @return CreateMcubeVhostResponse
 func (client *Client) CreateMcubeVhostWithOptions(request *CreateMcubeVhostRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeVhostResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1321,9 +1348,11 @@ func (client *Client) CreateMcubeVhost(request *CreateMcubeVhostRequest) (_resul
 //
 // @return CreateMcubeWhitelistResponse
 func (client *Client) CreateMcubeWhitelistWithOptions(request *CreateMcubeWhitelistRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1389,9 +1418,11 @@ func (client *Client) CreateMcubeWhitelist(request *CreateMcubeWhitelistRequest)
 //
 // @return CreateMcubeWhitelistForIdeResponse
 func (client *Client) CreateMcubeWhitelistForIdeWithOptions(request *CreateMcubeWhitelistForIdeRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeWhitelistForIdeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1457,9 +1488,11 @@ func (client *Client) CreateMcubeWhitelistForIde(request *CreateMcubeWhitelistFo
 //
 // @return CreateOpenGlobalDataResponse
 func (client *Client) CreateOpenGlobalDataWithOptions(request *CreateOpenGlobalDataRequest, runtime *dara.RuntimeOptions) (_result *CreateOpenGlobalDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1565,9 +1598,11 @@ func (client *Client) CreateOpenGlobalData(request *CreateOpenGlobalDataRequest)
 //
 // @return CreateOpenSingleDataResponse
 func (client *Client) CreateOpenSingleDataWithOptions(request *CreateOpenSingleDataRequest, runtime *dara.RuntimeOptions) (_result *CreateOpenSingleDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1673,9 +1708,11 @@ func (client *Client) CreateOpenSingleData(request *CreateOpenSingleDataRequest)
 //
 // @return CreateTemplateResponse
 func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1781,9 +1818,11 @@ func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *C
 //
 // @return DeleteCubecardWhitelistContentResponse
 func (client *Client) DeleteCubecardWhitelistContentWithOptions(request *DeleteCubecardWhitelistContentRequest, runtime *dara.RuntimeOptions) (_result *DeleteCubecardWhitelistContentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1849,9 +1888,11 @@ func (client *Client) DeleteCubecardWhitelistContent(request *DeleteCubecardWhit
 //
 // @return DeleteMcubeMiniAppResponse
 func (client *Client) DeleteMcubeMiniAppWithOptions(request *DeleteMcubeMiniAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteMcubeMiniAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1913,9 +1954,11 @@ func (client *Client) DeleteMcubeMiniApp(request *DeleteMcubeMiniAppRequest) (_r
 //
 // @return DeleteMcubeNebulaAppResponse
 func (client *Client) DeleteMcubeNebulaAppWithOptions(request *DeleteMcubeNebulaAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteMcubeNebulaAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1977,9 +2020,11 @@ func (client *Client) DeleteMcubeNebulaApp(request *DeleteMcubeNebulaAppRequest)
 //
 // @return DeleteMcubeUpgradeResourceResponse
 func (client *Client) DeleteMcubeUpgradeResourceWithOptions(request *DeleteMcubeUpgradeResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteMcubeUpgradeResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2045,9 +2090,11 @@ func (client *Client) DeleteMcubeUpgradeResource(request *DeleteMcubeUpgradeReso
 //
 // @return DeleteMcubeWhitelistResponse
 func (client *Client) DeleteMcubeWhitelistWithOptions(request *DeleteMcubeWhitelistRequest, runtime *dara.RuntimeOptions) (_result *DeleteMcubeWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2109,9 +2156,11 @@ func (client *Client) DeleteMcubeWhitelist(request *DeleteMcubeWhitelistRequest)
 //
 // @return DeleteMdsWhitelistContentResponse
 func (client *Client) DeleteMdsWhitelistContentWithOptions(request *DeleteMdsWhitelistContentRequest, runtime *dara.RuntimeOptions) (_result *DeleteMdsWhitelistContentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2181,9 +2230,11 @@ func (client *Client) DeleteMdsWhitelistContent(request *DeleteMdsWhitelistConte
 //
 // @return DeleteTemplateResponse
 func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2253,9 +2304,11 @@ func (client *Client) DeleteTemplate(request *DeleteTemplateRequest) (_result *D
 //
 // @return ExistMcubeRsaKeyResponse
 func (client *Client) ExistMcubeRsaKeyWithOptions(request *ExistMcubeRsaKeyRequest, runtime *dara.RuntimeOptions) (_result *ExistMcubeRsaKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2313,9 +2366,11 @@ func (client *Client) ExistMcubeRsaKey(request *ExistMcubeRsaKeyRequest) (_resul
 //
 // @return GetMcubeFileTokenResponse
 func (client *Client) GetMcubeFileTokenWithOptions(request *GetMcubeFileTokenRequest, runtime *dara.RuntimeOptions) (_result *GetMcubeFileTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2377,9 +2432,11 @@ func (client *Client) GetMcubeFileToken(request *GetMcubeFileTokenRequest) (_res
 //
 // @return GetMcubeNebulaResourceResponse
 func (client *Client) GetMcubeNebulaResourceWithOptions(request *GetMcubeNebulaResourceRequest, runtime *dara.RuntimeOptions) (_result *GetMcubeNebulaResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2441,9 +2498,11 @@ func (client *Client) GetMcubeNebulaResource(request *GetMcubeNebulaResourceRequ
 //
 // @return GetMcubeNebulaTaskDetailResponse
 func (client *Client) GetMcubeNebulaTaskDetailWithOptions(request *GetMcubeNebulaTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *GetMcubeNebulaTaskDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2505,9 +2564,11 @@ func (client *Client) GetMcubeNebulaTaskDetail(request *GetMcubeNebulaTaskDetail
 //
 // @return GetMcubeUpgradePackageInfoResponse
 func (client *Client) GetMcubeUpgradePackageInfoWithOptions(request *GetMcubeUpgradePackageInfoRequest, runtime *dara.RuntimeOptions) (_result *GetMcubeUpgradePackageInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2569,9 +2630,11 @@ func (client *Client) GetMcubeUpgradePackageInfo(request *GetMcubeUpgradePackage
 //
 // @return GetMcubeUpgradeTaskInfoResponse
 func (client *Client) GetMcubeUpgradeTaskInfoWithOptions(request *GetMcubeUpgradeTaskInfoRequest, runtime *dara.RuntimeOptions) (_result *GetMcubeUpgradeTaskInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2637,9 +2700,11 @@ func (client *Client) GetMcubeUpgradeTaskInfo(request *GetMcubeUpgradeTaskInfoRe
 //
 // @return GetTemplateResponse
 func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2713,9 +2778,11 @@ func (client *Client) GetTemplate(request *GetTemplateRequest) (_result *GetTemp
 //
 // @return ListAnalysisCoreIndexResponse
 func (client *Client) ListAnalysisCoreIndexWithOptions(request *ListAnalysisCoreIndexRequest, runtime *dara.RuntimeOptions) (_result *ListAnalysisCoreIndexResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2801,9 +2868,11 @@ func (client *Client) ListAnalysisCoreIndex(request *ListAnalysisCoreIndexReques
 //
 // @return ListMcubeMiniAppsResponse
 func (client *Client) ListMcubeMiniAppsWithOptions(request *ListMcubeMiniAppsRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeMiniAppsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2873,9 +2942,11 @@ func (client *Client) ListMcubeMiniApps(request *ListMcubeMiniAppsRequest) (_res
 //
 // @return ListMcubeMiniPackagesResponse
 func (client *Client) ListMcubeMiniPackagesWithOptions(request *ListMcubeMiniPackagesRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeMiniPackagesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2949,9 +3020,11 @@ func (client *Client) ListMcubeMiniPackages(request *ListMcubeMiniPackagesReques
 //
 // @return ListMcubeMiniTasksResponse
 func (client *Client) ListMcubeMiniTasksWithOptions(request *ListMcubeMiniTasksRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeMiniTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3013,9 +3086,11 @@ func (client *Client) ListMcubeMiniTasks(request *ListMcubeMiniTasksRequest) (_r
 //
 // @return ListMcubeNebulaAppsResponse
 func (client *Client) ListMcubeNebulaAppsWithOptions(request *ListMcubeNebulaAppsRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeNebulaAppsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3085,9 +3160,11 @@ func (client *Client) ListMcubeNebulaApps(request *ListMcubeNebulaAppsRequest) (
 //
 // @return ListMcubeNebulaResourcesResponse
 func (client *Client) ListMcubeNebulaResourcesWithOptions(request *ListMcubeNebulaResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeNebulaResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3157,9 +3234,11 @@ func (client *Client) ListMcubeNebulaResources(request *ListMcubeNebulaResources
 //
 // @return ListMcubeNebulaTasksResponse
 func (client *Client) ListMcubeNebulaTasksWithOptions(request *ListMcubeNebulaTasksRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeNebulaTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3221,9 +3300,11 @@ func (client *Client) ListMcubeNebulaTasks(request *ListMcubeNebulaTasksRequest)
 //
 // @return ListMcubeUpgradePackagesResponse
 func (client *Client) ListMcubeUpgradePackagesWithOptions(request *ListMcubeUpgradePackagesRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeUpgradePackagesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3289,9 +3370,11 @@ func (client *Client) ListMcubeUpgradePackages(request *ListMcubeUpgradePackages
 //
 // @return ListMcubeUpgradeTasksResponse
 func (client *Client) ListMcubeUpgradeTasksWithOptions(request *ListMcubeUpgradeTasksRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeUpgradeTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3353,9 +3436,11 @@ func (client *Client) ListMcubeUpgradeTasks(request *ListMcubeUpgradeTasksReques
 //
 // @return ListMcubeWhitelistsResponse
 func (client *Client) ListMcubeWhitelistsWithOptions(request *ListMcubeWhitelistsRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeWhitelistsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3429,9 +3514,11 @@ func (client *Client) ListMcubeWhitelists(request *ListMcubeWhitelistsRequest) (
 //
 // @return ListTemplatePageResponse
 func (client *Client) ListTemplatePageWithOptions(request *ListTemplatePageRequest, runtime *dara.RuntimeOptions) (_result *ListTemplatePageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3501,9 +3588,11 @@ func (client *Client) ListTemplatePage(request *ListTemplatePageRequest) (_resul
 //
 // @return PushBroadcastResponse
 func (client *Client) PushBroadcastWithOptions(tmpReq *PushBroadcastRequest, runtime *dara.RuntimeOptions) (_result *PushBroadcastResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PushBroadcastShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3679,9 +3768,11 @@ func (client *Client) PushBroadcast(request *PushBroadcastRequest) (_result *Pus
 //
 // @return PushMultipleResponse
 func (client *Client) PushMultipleWithOptions(tmpReq *PushMultipleRequest, runtime *dara.RuntimeOptions) (_result *PushMultipleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PushMultipleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3837,9 +3928,11 @@ func (client *Client) PushMultiple(request *PushMultipleRequest) (_result *PushM
 //
 // @return PushQueryDeviceStateResponse
 func (client *Client) PushQueryDeviceStateWithOptions(request *PushQueryDeviceStateRequest, runtime *dara.RuntimeOptions) (_result *PushQueryDeviceStateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3909,9 +4002,11 @@ func (client *Client) PushQueryDeviceState(request *PushQueryDeviceStateRequest)
 //
 // @return PushSimpleResponse
 func (client *Client) PushSimpleWithOptions(tmpReq *PushSimpleRequest, runtime *dara.RuntimeOptions) (_result *PushSimpleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PushSimpleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4083,9 +4178,11 @@ func (client *Client) PushSimple(request *PushSimpleRequest) (_result *PushSimpl
 //
 // @return PushTemplateResponse
 func (client *Client) PushTemplateWithOptions(tmpReq *PushTemplateRequest, runtime *dara.RuntimeOptions) (_result *PushTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PushTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4241,9 +4338,11 @@ func (client *Client) PushTemplate(request *PushTemplateRequest) (_result *PushT
 //
 // @return QueryMcubeMiniPackageResponse
 func (client *Client) QueryMcubeMiniPackageWithOptions(request *QueryMcubeMiniPackageRequest, runtime *dara.RuntimeOptions) (_result *QueryMcubeMiniPackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4309,9 +4408,11 @@ func (client *Client) QueryMcubeMiniPackage(request *QueryMcubeMiniPackageReques
 //
 // @return QueryMcubeMiniTaskResponse
 func (client *Client) QueryMcubeMiniTaskWithOptions(request *QueryMcubeMiniTaskRequest, runtime *dara.RuntimeOptions) (_result *QueryMcubeMiniTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4373,9 +4474,11 @@ func (client *Client) QueryMcubeMiniTask(request *QueryMcubeMiniTaskRequest) (_r
 //
 // @return QueryMcubeVhostResponse
 func (client *Client) QueryMcubeVhostWithOptions(request *QueryMcubeVhostRequest, runtime *dara.RuntimeOptions) (_result *QueryMcubeVhostResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4437,9 +4540,11 @@ func (client *Client) QueryMcubeVhost(request *QueryMcubeVhostRequest) (_result 
 //
 // @return QueryMpsSchedulerListResponse
 func (client *Client) QueryMpsSchedulerListWithOptions(request *QueryMpsSchedulerListRequest, runtime *dara.RuntimeOptions) (_result *QueryMpsSchedulerListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4521,9 +4626,11 @@ func (client *Client) QueryMpsSchedulerList(request *QueryMpsSchedulerListReques
 //
 // @return QueryPushAnalysisCoreIndexResponse
 func (client *Client) QueryPushAnalysisCoreIndexWithOptions(request *QueryPushAnalysisCoreIndexRequest, runtime *dara.RuntimeOptions) (_result *QueryPushAnalysisCoreIndexResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4605,9 +4712,11 @@ func (client *Client) QueryPushAnalysisCoreIndex(request *QueryPushAnalysisCoreI
 //
 // @return QueryPushAnalysisTaskDetailResponse
 func (client *Client) QueryPushAnalysisTaskDetailWithOptions(request *QueryPushAnalysisTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryPushAnalysisTaskDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4669,9 +4778,11 @@ func (client *Client) QueryPushAnalysisTaskDetail(request *QueryPushAnalysisTask
 //
 // @return QueryPushAnalysisTaskListResponse
 func (client *Client) QueryPushAnalysisTaskListWithOptions(request *QueryPushAnalysisTaskListRequest, runtime *dara.RuntimeOptions) (_result *QueryPushAnalysisTaskListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4749,9 +4860,11 @@ func (client *Client) QueryPushAnalysisTaskList(request *QueryPushAnalysisTaskLi
 //
 // @return QueryPushSchedulerListResponse
 func (client *Client) QueryPushSchedulerListWithOptions(request *QueryPushSchedulerListRequest, runtime *dara.RuntimeOptions) (_result *QueryPushSchedulerListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4833,9 +4946,11 @@ func (client *Client) QueryPushSchedulerList(request *QueryPushSchedulerListRequ
 //
 // @return RevokePushMessageResponse
 func (client *Client) RevokePushMessageWithOptions(request *RevokePushMessageRequest, runtime *dara.RuntimeOptions) (_result *RevokePushMessageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4901,9 +5016,11 @@ func (client *Client) RevokePushMessage(request *RevokePushMessageRequest) (_res
 //
 // @return RevokePushTaskResponse
 func (client *Client) RevokePushTaskWithOptions(request *RevokePushTaskRequest, runtime *dara.RuntimeOptions) (_result *RevokePushTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4965,9 +5082,11 @@ func (client *Client) RevokePushTask(request *RevokePushTaskRequest) (_result *R
 //
 // @return UpdateMcubeWhitelistResponse
 func (client *Client) UpdateMcubeWhitelistWithOptions(request *UpdateMcubeWhitelistRequest, runtime *dara.RuntimeOptions) (_result *UpdateMcubeWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -5041,9 +5160,11 @@ func (client *Client) UpdateMcubeWhitelist(request *UpdateMcubeWhitelistRequest)
 //
 // @return UploadMcubeMiniPackageResponse
 func (client *Client) UploadMcubeMiniPackageWithOptions(request *UploadMcubeMiniPackageRequest, runtime *dara.RuntimeOptions) (_result *UploadMcubeMiniPackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -5185,9 +5306,11 @@ func (client *Client) UploadMcubeMiniPackage(request *UploadMcubeMiniPackageRequ
 //
 // @return UploadMcubeRsaKeyResponse
 func (client *Client) UploadMcubeRsaKeyWithOptions(request *UploadMcubeRsaKeyRequest, runtime *dara.RuntimeOptions) (_result *UploadMcubeRsaKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {

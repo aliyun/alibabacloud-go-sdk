@@ -71,7 +71,12 @@ func (s *ChangeMcubePublicTaskStatusResponseBody) SetResultMessage(v string) *Ch
 }
 
 func (s *ChangeMcubePublicTaskStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeResult != nil {
+		if err := s.ChangeResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChangeMcubePublicTaskStatusResponseBodyChangeResult struct {

@@ -71,7 +71,12 @@ func (s *QueryPushAnalysisTaskListResponseBody) SetResultMessage(v string) *Quer
 }
 
 func (s *QueryPushAnalysisTaskListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryPushAnalysisTaskListResponseBodyResultContent struct {
@@ -96,7 +101,16 @@ func (s *QueryPushAnalysisTaskListResponseBodyResultContent) SetData(v []*QueryP
 }
 
 func (s *QueryPushAnalysisTaskListResponseBodyResultContent) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryPushAnalysisTaskListResponseBodyResultContentData struct {
@@ -181,7 +195,16 @@ func (s *QueryPushAnalysisTaskListResponseBodyResultContentData) SetType(v int64
 }
 
 func (s *QueryPushAnalysisTaskListResponseBodyResultContentData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryPushAnalysisTaskListResponseBodyResultContentDataList struct {

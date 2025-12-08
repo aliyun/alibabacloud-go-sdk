@@ -59,5 +59,10 @@ func (s *ListTemplatePageResponse) SetBody(v *ListTemplatePageResponseBody) *Lis
 }
 
 func (s *ListTemplatePageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

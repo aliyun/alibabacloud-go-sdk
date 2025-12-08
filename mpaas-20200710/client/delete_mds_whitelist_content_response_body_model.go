@@ -71,7 +71,12 @@ func (s *DeleteMdsWhitelistContentResponseBody) SetResultMessage(v string) *Dele
 }
 
 func (s *DeleteMdsWhitelistContentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteMdsWhitelistContentResponseBodyResultContent struct {
@@ -106,7 +111,12 @@ func (s *DeleteMdsWhitelistContentResponseBodyResultContent) SetRequestId(v stri
 }
 
 func (s *DeleteMdsWhitelistContentResponseBodyResultContent) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteMdsWhitelistContentResponseBodyResultContentData struct {

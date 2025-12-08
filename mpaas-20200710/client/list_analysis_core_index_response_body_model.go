@@ -95,7 +95,12 @@ func (s *ListAnalysisCoreIndexResponseBody) SetSuccess(v bool) *ListAnalysisCore
 }
 
 func (s *ListAnalysisCoreIndexResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAnalysisCoreIndexResponseBodyResultContent struct {
@@ -146,7 +151,12 @@ func (s *ListAnalysisCoreIndexResponseBodyResultContent) SetSuccess(v bool) *Lis
 }
 
 func (s *ListAnalysisCoreIndexResponseBodyResultContent) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAnalysisCoreIndexResponseBodyResultContentData struct {

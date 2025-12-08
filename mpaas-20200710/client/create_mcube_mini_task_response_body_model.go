@@ -71,7 +71,12 @@ func (s *CreateMcubeMiniTaskResponseBody) SetResultMessage(v string) *CreateMcub
 }
 
 func (s *CreateMcubeMiniTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CreateMiniTaskResult != nil {
+		if err := s.CreateMiniTaskResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMcubeMiniTaskResponseBodyCreateMiniTaskResult struct {
