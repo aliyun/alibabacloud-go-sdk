@@ -1212,6 +1212,10 @@ func (client *Client) EnableVpcEndpointConnectionWithContext(ctx context.Context
 		query["ServiceId"] = request.ServiceId
 	}
 
+	if !dara.IsNil(request.TrafficControlMode) {
+		query["TrafficControlMode"] = request.TrafficControlMode
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2570,6 +2574,10 @@ func (client *Client) UpdateVpcEndpointConnectionAttributeWithContext(ctx contex
 
 	if !dara.IsNil(request.ServiceId) {
 		query["ServiceId"] = request.ServiceId
+	}
+
+	if !dara.IsNil(request.TrafficControlMode) {
+		query["TrafficControlMode"] = request.TrafficControlMode
 	}
 
 	req := &openapiutil.OpenApiRequest{

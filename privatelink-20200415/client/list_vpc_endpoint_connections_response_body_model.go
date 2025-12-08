@@ -192,7 +192,8 @@ type ListVpcEndpointConnectionsResponseBodyConnections struct {
 	// example:
 	//
 	// epsrv-hp3vpx8yqxblby3i****
-	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId          *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	TrafficControlMode *string `json:"TrafficControlMode,omitempty" xml:"TrafficControlMode,omitempty"`
 	// The zones.
 	Zones []*ListVpcEndpointConnectionsResponseBodyConnectionsZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
@@ -241,6 +242,10 @@ func (s *ListVpcEndpointConnectionsResponseBodyConnections) GetServiceId() *stri
 	return s.ServiceId
 }
 
+func (s *ListVpcEndpointConnectionsResponseBodyConnections) GetTrafficControlMode() *string {
+	return s.TrafficControlMode
+}
+
 func (s *ListVpcEndpointConnectionsResponseBodyConnections) GetZones() []*ListVpcEndpointConnectionsResponseBodyConnectionsZones {
 	return s.Zones
 }
@@ -287,6 +292,11 @@ func (s *ListVpcEndpointConnectionsResponseBodyConnections) SetResourceOwner(v b
 
 func (s *ListVpcEndpointConnectionsResponseBodyConnections) SetServiceId(v string) *ListVpcEndpointConnectionsResponseBodyConnections {
 	s.ServiceId = &v
+	return s
+}
+
+func (s *ListVpcEndpointConnectionsResponseBodyConnections) SetTrafficControlMode(v string) *ListVpcEndpointConnectionsResponseBodyConnections {
+	s.TrafficControlMode = &v
 	return s
 }
 

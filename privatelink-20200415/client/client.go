@@ -1688,6 +1688,10 @@ func (client *Client) EnableVpcEndpointConnectionWithOptions(request *EnableVpcE
 		query["ServiceId"] = request.ServiceId
 	}
 
+	if !dara.IsNil(request.TrafficControlMode) {
+		query["TrafficControlMode"] = request.TrafficControlMode
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3444,6 +3448,10 @@ func (client *Client) UpdateVpcEndpointConnectionAttributeWithOptions(request *U
 
 	if !dara.IsNil(request.ServiceId) {
 		query["ServiceId"] = request.ServiceId
+	}
+
+	if !dara.IsNil(request.TrafficControlMode) {
+		query["TrafficControlMode"] = request.TrafficControlMode
 	}
 
 	req := &openapiutil.OpenApiRequest{

@@ -21,6 +21,8 @@ type iUpdateVpcEndpointConnectionAttributeRequest interface {
 	GetRegionId() *string
 	SetServiceId(v string) *UpdateVpcEndpointConnectionAttributeRequest
 	GetServiceId() *string
+	SetTrafficControlMode(v string) *UpdateVpcEndpointConnectionAttributeRequest
+	GetTrafficControlMode() *string
 }
 
 type UpdateVpcEndpointConnectionAttributeRequest struct {
@@ -73,7 +75,8 @@ type UpdateVpcEndpointConnectionAttributeRequest struct {
 	// example:
 	//
 	// epsrv-hp3vpx8yqxblby3i****
-	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId          *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	TrafficControlMode *string `json:"TrafficControlMode,omitempty" xml:"TrafficControlMode,omitempty"`
 }
 
 func (s UpdateVpcEndpointConnectionAttributeRequest) String() string {
@@ -108,6 +111,10 @@ func (s *UpdateVpcEndpointConnectionAttributeRequest) GetServiceId() *string {
 	return s.ServiceId
 }
 
+func (s *UpdateVpcEndpointConnectionAttributeRequest) GetTrafficControlMode() *string {
+	return s.TrafficControlMode
+}
+
 func (s *UpdateVpcEndpointConnectionAttributeRequest) SetBandwidth(v int32) *UpdateVpcEndpointConnectionAttributeRequest {
 	s.Bandwidth = &v
 	return s
@@ -135,6 +142,11 @@ func (s *UpdateVpcEndpointConnectionAttributeRequest) SetRegionId(v string) *Upd
 
 func (s *UpdateVpcEndpointConnectionAttributeRequest) SetServiceId(v string) *UpdateVpcEndpointConnectionAttributeRequest {
 	s.ServiceId = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointConnectionAttributeRequest) SetTrafficControlMode(v string) *UpdateVpcEndpointConnectionAttributeRequest {
+	s.TrafficControlMode = &v
 	return s
 }
 
