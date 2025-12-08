@@ -147,7 +147,7 @@ type GetUserAppEnhanceProcessInMsaResponseBodyResultContentData struct {
 	AssetsFileList      []*string                                                                   `json:"AssetsFileList,omitempty" xml:"AssetsFileList,omitempty" type:"Repeated"`
 	BeforeMd5           *string                                                                     `json:"BeforeMd5,omitempty" xml:"BeforeMd5,omitempty"`
 	BeforeSize          *int64                                                                      `json:"BeforeSize,omitempty" xml:"BeforeSize,omitempty"`
-	ClassForest         []*string                                                                   `json:"ClassForest,omitempty" xml:"ClassForest,omitempty" type:"Repeated"`
+	ClassForest         *string                                                                     `json:"ClassForest,omitempty" xml:"ClassForest,omitempty"`
 	EnhanceMapping      []*GetUserAppEnhanceProcessInMsaResponseBodyResultContentDataEnhanceMapping `json:"EnhanceMapping,omitempty" xml:"EnhanceMapping,omitempty" type:"Repeated"`
 	EnhanceRules        []*string                                                                   `json:"EnhanceRules,omitempty" xml:"EnhanceRules,omitempty" type:"Repeated"`
 	EnhancedAssetsFiles []*string                                                                   `json:"EnhancedAssetsFiles,omitempty" xml:"EnhancedAssetsFiles,omitempty" type:"Repeated"`
@@ -199,7 +199,7 @@ func (s *GetUserAppEnhanceProcessInMsaResponseBodyResultContentData) GetBeforeSi
 	return s.BeforeSize
 }
 
-func (s *GetUserAppEnhanceProcessInMsaResponseBodyResultContentData) GetClassForest() []*string {
+func (s *GetUserAppEnhanceProcessInMsaResponseBodyResultContentData) GetClassForest() *string {
 	return s.ClassForest
 }
 
@@ -290,8 +290,8 @@ func (s *GetUserAppEnhanceProcessInMsaResponseBodyResultContentData) SetBeforeSi
 	return s
 }
 
-func (s *GetUserAppEnhanceProcessInMsaResponseBodyResultContentData) SetClassForest(v []*string) *GetUserAppEnhanceProcessInMsaResponseBodyResultContentData {
-	s.ClassForest = v
+func (s *GetUserAppEnhanceProcessInMsaResponseBodyResultContentData) SetClassForest(v string) *GetUserAppEnhanceProcessInMsaResponseBodyResultContentData {
+	s.ClassForest = &v
 	return s
 }
 

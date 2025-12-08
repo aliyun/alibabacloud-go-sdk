@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/mpaas-20201028/v2
+module github.com/alibabacloud-go/mpaas-20201028/v3
 
 go 1.14
 
