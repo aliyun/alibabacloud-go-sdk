@@ -354,6 +354,7 @@ type ListImageResponseBodyData struct {
 	//
 	// ["eds.cpu.category"]
 	ResourceInstanceCategory *string `json:"ResourceInstanceCategory,omitempty" xml:"ResourceInstanceCategory,omitempty"`
+	Scene                    *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	// The type of the session.
 	//
 	// Valid values:
@@ -550,6 +551,10 @@ func (s *ListImageResponseBodyData) GetProtocolType() *string {
 
 func (s *ListImageResponseBodyData) GetResourceInstanceCategory() *string {
 	return s.ResourceInstanceCategory
+}
+
+func (s *ListImageResponseBodyData) GetScene() *string {
+	return s.Scene
 }
 
 func (s *ListImageResponseBodyData) GetSessionType() *string {
@@ -751,6 +756,11 @@ func (s *ListImageResponseBodyData) SetProtocolType(v string) *ListImageResponse
 
 func (s *ListImageResponseBodyData) SetResourceInstanceCategory(v string) *ListImageResponseBodyData {
 	s.ResourceInstanceCategory = &v
+	return s
+}
+
+func (s *ListImageResponseBodyData) SetScene(v string) *ListImageResponseBodyData {
+	s.Scene = &v
 	return s
 }
 
