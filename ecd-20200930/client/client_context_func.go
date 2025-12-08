@@ -394,6 +394,18 @@ func (client *Client) AllocateIpAddressWithContext(ctx context.Context, request 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Bandwidth) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
+	if !dara.IsNil(request.InternetChargeType) {
+		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
 	if !dara.IsNil(request.NetworkInterfaceId) {
 		query["NetworkInterfaceId"] = request.NetworkInterfaceId
 	}
