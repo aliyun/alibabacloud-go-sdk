@@ -59,5 +59,10 @@ func (s *MakeSuperResolutionImageResponse) SetBody(v *MakeSuperResolutionImageRe
 }
 
 func (s *MakeSuperResolutionImageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

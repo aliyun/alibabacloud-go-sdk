@@ -59,5 +59,10 @@ func (s *AssessSharpnessResponse) SetBody(v *AssessSharpnessResponseBody) *Asses
 }
 
 func (s *AssessSharpnessResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -50,7 +50,12 @@ func (s *AssessSharpnessResponseBody) SetRequestId(v string) *AssessSharpnessRes
 }
 
 func (s *AssessSharpnessResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AssessSharpnessResponseBodyData struct {

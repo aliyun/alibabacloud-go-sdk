@@ -59,5 +59,10 @@ func (s *RecolorHDImageResponse) SetBody(v *RecolorHDImageResponseBody) *Recolor
 }
 
 func (s *RecolorHDImageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

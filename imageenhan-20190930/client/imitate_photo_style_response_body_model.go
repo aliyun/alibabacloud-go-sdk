@@ -50,7 +50,12 @@ func (s *ImitatePhotoStyleResponseBody) SetRequestId(v string) *ImitatePhotoStyl
 }
 
 func (s *ImitatePhotoStyleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ImitatePhotoStyleResponseBodyData struct {

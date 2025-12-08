@@ -99,7 +99,16 @@ func (s *RecolorImageAdvanceRequest) SetUrlObject(v io.Reader) *RecolorImageAdva
 }
 
 func (s *RecolorImageAdvanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ColorTemplate != nil {
+		for _, item := range s.ColorTemplate {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecolorImageAdvanceRequestColorTemplate struct {

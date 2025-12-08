@@ -50,7 +50,12 @@ func (s *GetAsyncJobResultResponseBody) SetRequestId(v string) *GetAsyncJobResul
 }
 
 func (s *GetAsyncJobResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAsyncJobResultResponseBodyData struct {

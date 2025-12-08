@@ -50,7 +50,12 @@ func (s *ColorizeImageResponseBody) SetRequestId(v string) *ColorizeImageRespons
 }
 
 func (s *ColorizeImageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ColorizeImageResponseBodyData struct {

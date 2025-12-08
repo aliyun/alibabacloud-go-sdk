@@ -62,7 +62,12 @@ func (s *RecolorHDImageResponseBody) SetRequestId(v string) *RecolorHDImageRespo
 }
 
 func (s *RecolorHDImageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecolorHDImageResponseBodyData struct {

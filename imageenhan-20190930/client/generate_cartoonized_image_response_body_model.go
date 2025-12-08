@@ -62,7 +62,12 @@ func (s *GenerateCartoonizedImageResponseBody) SetRequestId(v string) *GenerateC
 }
 
 func (s *GenerateCartoonizedImageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GenerateCartoonizedImageResponseBodyData struct {

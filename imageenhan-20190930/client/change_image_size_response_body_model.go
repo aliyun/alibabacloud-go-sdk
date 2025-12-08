@@ -50,7 +50,12 @@ func (s *ChangeImageSizeResponseBody) SetRequestId(v string) *ChangeImageSizeRes
 }
 
 func (s *ChangeImageSizeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChangeImageSizeResponseBodyData struct {
@@ -88,7 +93,12 @@ func (s *ChangeImageSizeResponseBodyData) SetUrl(v string) *ChangeImageSizeRespo
 }
 
 func (s *ChangeImageSizeResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RetainLocation != nil {
+		if err := s.RetainLocation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChangeImageSizeResponseBodyDataRetainLocation struct {

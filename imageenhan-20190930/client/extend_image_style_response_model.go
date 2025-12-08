@@ -59,6 +59,11 @@ func (s *ExtendImageStyleResponse) SetBody(v *ExtendImageStyleResponseBody) *Ext
 }
 
 func (s *ExtendImageStyleResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

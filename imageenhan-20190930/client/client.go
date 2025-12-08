@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -36,30 +37,83 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	return nil
 }
 
-func (client *Client) _postOSSObject(bucketName *string, form map[string]interface{}) (_result map[string]interface{}, _err error) {
-	request_ := dara.NewRequest()
-	boundary := dara.GetBoundary()
-	request_.Protocol = dara.String("HTTPS")
-	request_.Method = dara.String("POST")
-	request_.Pathname = dara.String("/")
-	request_.Headers = map[string]*string{
-		"host":       dara.String(dara.ToString(form["host"])),
-		"date":       openapiutil.GetDateUTCString(),
-		"user-agent": openapiutil.GetUserAgent(dara.String("")),
-	}
-	request_.Headers["content-type"] = dara.String("multipart/form-data; boundary=" + boundary)
-	request_.Body = dara.ToFileForm(form, boundary)
-	response_, _err := dara.DoRequest(request_, nil)
-	if _err != nil {
-		return nil, _err
+func (client *Client) _postOSSObject(bucketName *string, form map[string]interface{}, runtime *dara.RuntimeOptions) (_result map[string]interface{}, _err error) {
+	_runtime := dara.NewRuntimeObject(map[string]interface{}{
+		"key":            dara.ToString(dara.Default(dara.StringValue(runtime.Key), dara.StringValue(client.Key))),
+		"cert":           dara.ToString(dara.Default(dara.StringValue(runtime.Cert), dara.StringValue(client.Cert))),
+		"ca":             dara.ToString(dara.Default(dara.StringValue(runtime.Ca), dara.StringValue(client.Ca))),
+		"readTimeout":    dara.ForceInt(dara.Default(dara.IntValue(runtime.ReadTimeout), dara.IntValue(client.ReadTimeout))),
+		"connectTimeout": dara.ForceInt(dara.Default(dara.IntValue(runtime.ConnectTimeout), dara.IntValue(client.ConnectTimeout))),
+		"httpProxy":      dara.ToString(dara.Default(dara.StringValue(runtime.HttpProxy), dara.StringValue(client.HttpProxy))),
+		"httpsProxy":     dara.ToString(dara.Default(dara.StringValue(runtime.HttpsProxy), dara.StringValue(client.HttpsProxy))),
+		"noProxy":        dara.ToString(dara.Default(dara.StringValue(runtime.NoProxy), dara.StringValue(client.NoProxy))),
+		"socks5Proxy":    dara.ToString(dara.Default(dara.StringValue(runtime.Socks5Proxy), dara.StringValue(client.Socks5Proxy))),
+		"socks5NetWork":  dara.ToString(dara.Default(dara.StringValue(runtime.Socks5NetWork), dara.StringValue(client.Socks5NetWork))),
+		"maxIdleConns":   dara.ForceInt(dara.Default(dara.IntValue(runtime.MaxIdleConns), dara.IntValue(client.MaxIdleConns))),
+		"retryOptions":   client.RetryOptions,
+		"ignoreSSL":      dara.ForceBoolean(dara.Default(dara.BoolValue(runtime.IgnoreSSL), false)),
+		"tlsMinVersion":  dara.StringValue(client.TlsMinVersion),
+	})
+
+	var retryPolicyContext *dara.RetryPolicyContext
+	var request_ *dara.Request
+	var response_ *dara.Response
+	var _resultErr error
+	retriesAttempted := int(0)
+	retryPolicyContext = &dara.RetryPolicyContext{
+		RetriesAttempted: retriesAttempted,
 	}
 
-	_result, _err = _postOSSObject_opResponse(response_)
-	if _err != nil {
-		return nil, _err
-	}
+	_result = make(map[string]interface{})
+	for dara.ShouldRetry(_runtime.RetryOptions, retryPolicyContext) {
+		_resultErr = nil
+		_backoffDelayTime := dara.GetBackoffDelay(_runtime.RetryOptions, retryPolicyContext)
+		dara.Sleep(_backoffDelayTime)
 
-	return _result, nil
+		request_ = dara.NewRequest()
+		boundary := dara.GetBoundary()
+		request_.Protocol = dara.String("HTTPS")
+		request_.Method = dara.String("POST")
+		request_.Pathname = dara.String("/")
+		request_.Headers = map[string]*string{
+			"host":       dara.String(dara.ToString(form["host"])),
+			"date":       openapiutil.GetDateUTCString(),
+			"user-agent": openapiutil.GetUserAgent(dara.String("")),
+		}
+		request_.Headers["content-type"] = dara.String("multipart/form-data; boundary=" + boundary)
+		request_.Body = dara.ToFileForm(form, boundary)
+		response_, _err = dara.DoRequest(request_, _runtime)
+		if _err != nil {
+			retriesAttempted++
+			retryPolicyContext = &dara.RetryPolicyContext{
+				RetriesAttempted: retriesAttempted,
+				HttpRequest:      request_,
+				HttpResponse:     response_,
+				Exception:        _err,
+			}
+			_resultErr = _err
+			continue
+		}
+
+		_result, _err = _postOSSObject_opResponse(response_)
+		if _err != nil {
+			retriesAttempted++
+			retryPolicyContext = &dara.RetryPolicyContext{
+				RetriesAttempted: retriesAttempted,
+				HttpRequest:      request_,
+				HttpResponse:     response_,
+				Exception:        _err,
+			}
+			_resultErr = _err
+			continue
+		}
+
+		return _result, _err
+	}
+	if dara.BoolValue(client.DisableSDKError) != true {
+		_resultErr = dara.TeaSDKError(_resultErr)
+	}
+	return _result, _resultErr
 }
 
 func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
@@ -87,9 +141,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AssessCompositionResponse
 func (client *Client) AssessCompositionWithOptions(request *AssessCompositionRequest, runtime *dara.RuntimeOptions) (_result *AssessCompositionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -224,7 +280,7 @@ func (client *Client) AssessCompositionAdvance(request *AssessCompositionAdvance
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -246,9 +302,11 @@ func (client *Client) AssessCompositionAdvance(request *AssessCompositionAdvance
 //
 // @return AssessExposureResponse
 func (client *Client) AssessExposureWithOptions(request *AssessExposureRequest, runtime *dara.RuntimeOptions) (_result *AssessExposureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -383,7 +441,7 @@ func (client *Client) AssessExposureAdvance(request *AssessExposureAdvanceReques
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -405,9 +463,11 @@ func (client *Client) AssessExposureAdvance(request *AssessExposureAdvanceReques
 //
 // @return AssessSharpnessResponse
 func (client *Client) AssessSharpnessWithOptions(request *AssessSharpnessRequest, runtime *dara.RuntimeOptions) (_result *AssessSharpnessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -542,7 +602,7 @@ func (client *Client) AssessSharpnessAdvance(request *AssessSharpnessAdvanceRequ
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -564,9 +624,11 @@ func (client *Client) AssessSharpnessAdvance(request *AssessSharpnessAdvanceRequ
 //
 // @return ChangeImageSizeResponse
 func (client *Client) ChangeImageSizeWithOptions(request *ChangeImageSizeRequest, runtime *dara.RuntimeOptions) (_result *ChangeImageSizeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Height) {
@@ -709,7 +771,7 @@ func (client *Client) ChangeImageSizeAdvance(request *ChangeImageSizeAdvanceRequ
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -731,9 +793,11 @@ func (client *Client) ChangeImageSizeAdvance(request *ChangeImageSizeAdvanceRequ
 //
 // @return ColorizeImageResponse
 func (client *Client) ColorizeImageWithOptions(request *ColorizeImageRequest, runtime *dara.RuntimeOptions) (_result *ColorizeImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -868,7 +932,7 @@ func (client *Client) ColorizeImageAdvance(request *ColorizeImageAdvanceRequest,
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -890,9 +954,11 @@ func (client *Client) ColorizeImageAdvance(request *ColorizeImageAdvanceRequest,
 //
 // @return EnhanceImageColorResponse
 func (client *Client) EnhanceImageColorWithOptions(request *EnhanceImageColorRequest, runtime *dara.RuntimeOptions) (_result *EnhanceImageColorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -1035,7 +1101,7 @@ func (client *Client) EnhanceImageColorAdvance(request *EnhanceImageColorAdvance
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1057,9 +1123,11 @@ func (client *Client) EnhanceImageColorAdvance(request *EnhanceImageColorAdvance
 //
 // @return ErasePersonResponse
 func (client *Client) ErasePersonWithOptions(request *ErasePersonRequest, runtime *dara.RuntimeOptions) (_result *ErasePersonResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -1198,7 +1266,7 @@ func (client *Client) ErasePersonAdvance(request *ErasePersonAdvanceRequest, run
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1228,7 +1296,7 @@ func (client *Client) ErasePersonAdvance(request *ErasePersonAdvanceRequest, run
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1250,9 +1318,11 @@ func (client *Client) ErasePersonAdvance(request *ErasePersonAdvanceRequest, run
 //
 // @return ExtendImageStyleResponse
 func (client *Client) ExtendImageStyleWithOptions(request *ExtendImageStyleRequest, runtime *dara.RuntimeOptions) (_result *ExtendImageStyleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.MajorUrl) {
@@ -1391,7 +1461,7 @@ func (client *Client) ExtendImageStyleAdvance(request *ExtendImageStyleAdvanceRe
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1421,7 +1491,7 @@ func (client *Client) ExtendImageStyleAdvance(request *ExtendImageStyleAdvanceRe
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1447,9 +1517,11 @@ func (client *Client) ExtendImageStyleAdvance(request *ExtendImageStyleAdvanceRe
 //
 // @return GenerateCartoonizedImageResponse
 func (client *Client) GenerateCartoonizedImageWithOptions(request *GenerateCartoonizedImageRequest, runtime *dara.RuntimeOptions) (_result *GenerateCartoonizedImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageType) {
@@ -1596,7 +1668,7 @@ func (client *Client) GenerateCartoonizedImageAdvance(request *GenerateCartooniz
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1614,432 +1686,6 @@ func (client *Client) GenerateCartoonizedImageAdvance(request *GenerateCartooniz
 
 // Summary:
 //
-// 图像微动
-//
-// @param request - GenerateDynamicImageRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GenerateDynamicImageResponse
-func (client *Client) GenerateDynamicImageWithOptions(request *GenerateDynamicImageRequest, runtime *dara.RuntimeOptions) (_result *GenerateDynamicImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.Operation) {
-		body["Operation"] = request.Operation
-	}
-
-	if !dara.IsNil(request.Url) {
-		body["Url"] = request.Url
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("GenerateDynamicImage"),
-		Version:     dara.String("2019-09-30"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GenerateDynamicImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 图像微动
-//
-// @param request - GenerateDynamicImageRequest
-//
-// @return GenerateDynamicImageResponse
-func (client *Client) GenerateDynamicImage(request *GenerateDynamicImageRequest) (_result *GenerateDynamicImageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GenerateDynamicImageResponse{}
-	_body, _err := client.GenerateDynamicImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GenerateDynamicImageAdvance(request *GenerateDynamicImageAdvanceRequest, runtime *dara.RuntimeOptions) (_result *GenerateDynamicImageResponse, _err error) {
-	// Step 0: init client
-	if dara.IsNil(client.Credential) {
-		_err = &openapi.ClientError{
-			Code:    dara.String("InvalidCredentials"),
-			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
-		}
-		return _result, _err
-	}
-
-	credentialModel, _err := client.Credential.GetCredential()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
-	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
-	securityToken := dara.StringValue(credentialModel.SecurityToken)
-	credentialType := dara.StringValue(credentialModel.Type)
-	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
-	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
-		openPlatformEndpoint = "openplatform.aliyuncs.com"
-	}
-
-	if dara.IsNil(dara.String(credentialType)) {
-		credentialType = "access_key"
-	}
-
-	authConfig := &openapiutil.Config{
-		AccessKeyId:     dara.String(accessKeyId),
-		AccessKeySecret: dara.String(accessKeySecret),
-		SecurityToken:   dara.String(securityToken),
-		Type:            dara.String(credentialType),
-		Endpoint:        dara.String(openPlatformEndpoint),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openapi.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := map[string]*string{
-		"Product":  dara.String("imageenhan"),
-		"RegionId": client.RegionId,
-	}
-	authReq := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(authRequest),
-	}
-	authParams := &openapiutil.Params{
-		Action:      dara.String("AuthorizeFileUpload"),
-		Version:     dara.String("2019-12-19"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	authResponse := map[string]interface{}{}
-	fileObj := &dara.FileField{}
-	ossHeader := map[string]interface{}{}
-	tmpBody := map[string]interface{}{}
-	useAccelerate := false
-	authResponseBody := make(map[string]*string)
-	generateDynamicImageReq := &GenerateDynamicImageRequest{}
-	openapiutil.Convert(request, generateDynamicImageReq)
-	if !dara.IsNil(request.UrlObject) {
-		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-
-		tmpBody = dara.ToMap(authResponse["body"])
-		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
-		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
-		fileObj = &dara.FileField{
-			Filename:    authResponseBody["ObjectKey"],
-			Content:     request.UrlObject,
-			ContentType: dara.String(""),
-		}
-		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
-			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
-			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
-			"Signature":             dara.StringValue(authResponseBody["Signature"]),
-			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
-			"file":                  fileObj,
-			"success_action_status": "201",
-		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
-		if _err != nil {
-			return _result, _err
-		}
-		generateDynamicImageReq.Url = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
-	}
-
-	generateDynamicImageResp, _err := client.GenerateDynamicImageWithOptions(generateDynamicImageReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = generateDynamicImageResp
-	return _result, _err
-}
-
-// Summary:
-//
-// 文本到图像生成
-//
-// @param request - GenerateImageWithTextRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GenerateImageWithTextResponse
-func (client *Client) GenerateImageWithTextWithOptions(request *GenerateImageWithTextRequest, runtime *dara.RuntimeOptions) (_result *GenerateImageWithTextResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.Number) {
-		body["Number"] = request.Number
-	}
-
-	if !dara.IsNil(request.Resolution) {
-		body["Resolution"] = request.Resolution
-	}
-
-	if !dara.IsNil(request.Text) {
-		body["Text"] = request.Text
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("GenerateImageWithText"),
-		Version:     dara.String("2019-09-30"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GenerateImageWithTextResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 文本到图像生成
-//
-// @param request - GenerateImageWithTextRequest
-//
-// @return GenerateImageWithTextResponse
-func (client *Client) GenerateImageWithText(request *GenerateImageWithTextRequest) (_result *GenerateImageWithTextResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GenerateImageWithTextResponse{}
-	_body, _err := client.GenerateImageWithTextWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 文本和参考图到图像生成
-//
-// @param request - GenerateImageWithTextAndImageRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GenerateImageWithTextAndImageResponse
-func (client *Client) GenerateImageWithTextAndImageWithOptions(request *GenerateImageWithTextAndImageRequest, runtime *dara.RuntimeOptions) (_result *GenerateImageWithTextAndImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.AspectRatioMode) {
-		body["AspectRatioMode"] = request.AspectRatioMode
-	}
-
-	if !dara.IsNil(request.Number) {
-		body["Number"] = request.Number
-	}
-
-	if !dara.IsNil(request.RefImageUrl) {
-		body["RefImageUrl"] = request.RefImageUrl
-	}
-
-	if !dara.IsNil(request.Resolution) {
-		body["Resolution"] = request.Resolution
-	}
-
-	if !dara.IsNil(request.Similarity) {
-		body["Similarity"] = request.Similarity
-	}
-
-	if !dara.IsNil(request.Text) {
-		body["Text"] = request.Text
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("GenerateImageWithTextAndImage"),
-		Version:     dara.String("2019-09-30"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GenerateImageWithTextAndImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 文本和参考图到图像生成
-//
-// @param request - GenerateImageWithTextAndImageRequest
-//
-// @return GenerateImageWithTextAndImageResponse
-func (client *Client) GenerateImageWithTextAndImage(request *GenerateImageWithTextAndImageRequest) (_result *GenerateImageWithTextAndImageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GenerateImageWithTextAndImageResponse{}
-	_body, _err := client.GenerateImageWithTextAndImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GenerateImageWithTextAndImageAdvance(request *GenerateImageWithTextAndImageAdvanceRequest, runtime *dara.RuntimeOptions) (_result *GenerateImageWithTextAndImageResponse, _err error) {
-	// Step 0: init client
-	if dara.IsNil(client.Credential) {
-		_err = &openapi.ClientError{
-			Code:    dara.String("InvalidCredentials"),
-			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
-		}
-		return _result, _err
-	}
-
-	credentialModel, _err := client.Credential.GetCredential()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
-	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
-	securityToken := dara.StringValue(credentialModel.SecurityToken)
-	credentialType := dara.StringValue(credentialModel.Type)
-	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
-	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
-		openPlatformEndpoint = "openplatform.aliyuncs.com"
-	}
-
-	if dara.IsNil(dara.String(credentialType)) {
-		credentialType = "access_key"
-	}
-
-	authConfig := &openapiutil.Config{
-		AccessKeyId:     dara.String(accessKeyId),
-		AccessKeySecret: dara.String(accessKeySecret),
-		SecurityToken:   dara.String(securityToken),
-		Type:            dara.String(credentialType),
-		Endpoint:        dara.String(openPlatformEndpoint),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openapi.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := map[string]*string{
-		"Product":  dara.String("imageenhan"),
-		"RegionId": client.RegionId,
-	}
-	authReq := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(authRequest),
-	}
-	authParams := &openapiutil.Params{
-		Action:      dara.String("AuthorizeFileUpload"),
-		Version:     dara.String("2019-12-19"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	authResponse := map[string]interface{}{}
-	fileObj := &dara.FileField{}
-	ossHeader := map[string]interface{}{}
-	tmpBody := map[string]interface{}{}
-	useAccelerate := false
-	authResponseBody := make(map[string]*string)
-	generateImageWithTextAndImageReq := &GenerateImageWithTextAndImageRequest{}
-	openapiutil.Convert(request, generateImageWithTextAndImageReq)
-	if !dara.IsNil(request.RefImageUrlObject) {
-		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-
-		tmpBody = dara.ToMap(authResponse["body"])
-		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
-		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
-		fileObj = &dara.FileField{
-			Filename:    authResponseBody["ObjectKey"],
-			Content:     request.RefImageUrlObject,
-			ContentType: dara.String(""),
-		}
-		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
-			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
-			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
-			"Signature":             dara.StringValue(authResponseBody["Signature"]),
-			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
-			"file":                  fileObj,
-			"success_action_status": "201",
-		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
-		if _err != nil {
-			return _result, _err
-		}
-		generateImageWithTextAndImageReq.RefImageUrl = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
-	}
-
-	generateImageWithTextAndImageResp, _err := client.GenerateImageWithTextAndImageWithOptions(generateImageWithTextAndImageReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = generateImageWithTextAndImageResp
-	return _result, _err
-}
-
-// Summary:
-//
 // 生成式图像超分
 //
 // @param request - GenerateSuperResolutionImageRequest
@@ -2048,9 +1694,11 @@ func (client *Client) GenerateImageWithTextAndImageAdvance(request *GenerateImag
 //
 // @return GenerateSuperResolutionImageResponse
 func (client *Client) GenerateSuperResolutionImageWithOptions(request *GenerateSuperResolutionImageRequest, runtime *dara.RuntimeOptions) (_result *GenerateSuperResolutionImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageUrl) {
@@ -2205,7 +1853,7 @@ func (client *Client) GenerateSuperResolutionImageAdvance(request *GenerateSuper
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2227,9 +1875,11 @@ func (client *Client) GenerateSuperResolutionImageAdvance(request *GenerateSuper
 //
 // @return GetAsyncJobResultResponse
 func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultRequest, runtime *dara.RuntimeOptions) (_result *GetAsyncJobResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -2279,9 +1929,11 @@ func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest) (_res
 //
 // @return ImageBlindCharacterWatermarkResponse
 func (client *Client) ImageBlindCharacterWatermarkWithOptions(request *ImageBlindCharacterWatermarkRequest, runtime *dara.RuntimeOptions) (_result *ImageBlindCharacterWatermarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FunctionType) {
@@ -2436,7 +2088,7 @@ func (client *Client) ImageBlindCharacterWatermarkAdvance(request *ImageBlindCha
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2466,7 +2118,7 @@ func (client *Client) ImageBlindCharacterWatermarkAdvance(request *ImageBlindCha
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2488,9 +2140,11 @@ func (client *Client) ImageBlindCharacterWatermarkAdvance(request *ImageBlindCha
 //
 // @return ImageBlindPicWatermarkResponse
 func (client *Client) ImageBlindPicWatermarkWithOptions(request *ImageBlindPicWatermarkRequest, runtime *dara.RuntimeOptions) (_result *ImageBlindPicWatermarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FunctionType) {
@@ -2645,7 +2299,7 @@ func (client *Client) ImageBlindPicWatermarkAdvance(request *ImageBlindPicWaterm
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2675,7 +2329,7 @@ func (client *Client) ImageBlindPicWatermarkAdvance(request *ImageBlindPicWaterm
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2705,7 +2359,7 @@ func (client *Client) ImageBlindPicWatermarkAdvance(request *ImageBlindPicWaterm
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2727,9 +2381,11 @@ func (client *Client) ImageBlindPicWatermarkAdvance(request *ImageBlindPicWaterm
 //
 // @return ImitatePhotoStyleResponse
 func (client *Client) ImitatePhotoStyleWithOptions(request *ImitatePhotoStyleRequest, runtime *dara.RuntimeOptions) (_result *ImitatePhotoStyleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -2868,7 +2524,7 @@ func (client *Client) ImitatePhotoStyleAdvance(request *ImitatePhotoStyleAdvance
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2898,7 +2554,7 @@ func (client *Client) ImitatePhotoStyleAdvance(request *ImitatePhotoStyleAdvance
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2920,9 +2576,11 @@ func (client *Client) ImitatePhotoStyleAdvance(request *ImitatePhotoStyleAdvance
 //
 // @return IntelligentCompositionResponse
 func (client *Client) IntelligentCompositionWithOptions(request *IntelligentCompositionRequest, runtime *dara.RuntimeOptions) (_result *IntelligentCompositionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -3061,7 +2719,7 @@ func (client *Client) IntelligentCompositionAdvance(request *IntelligentComposit
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -3083,9 +2741,11 @@ func (client *Client) IntelligentCompositionAdvance(request *IntelligentComposit
 //
 // @return MakeSuperResolutionImageResponse
 func (client *Client) MakeSuperResolutionImageWithOptions(request *MakeSuperResolutionImageRequest, runtime *dara.RuntimeOptions) (_result *MakeSuperResolutionImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Mode) {
@@ -3236,7 +2896,7 @@ func (client *Client) MakeSuperResolutionImageAdvance(request *MakeSuperResoluti
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -3258,9 +2918,11 @@ func (client *Client) MakeSuperResolutionImageAdvance(request *MakeSuperResoluti
 //
 // @return RecolorHDImageResponse
 func (client *Client) RecolorHDImageWithOptions(request *RecolorHDImageRequest, runtime *dara.RuntimeOptions) (_result *RecolorHDImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ColorCount) {
@@ -3415,7 +3077,7 @@ func (client *Client) RecolorHDImageAdvance(request *RecolorHDImageAdvanceReques
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -3445,7 +3107,7 @@ func (client *Client) RecolorHDImageAdvance(request *RecolorHDImageAdvanceReques
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -3467,9 +3129,11 @@ func (client *Client) RecolorHDImageAdvance(request *RecolorHDImageAdvanceReques
 //
 // @return RecolorImageResponse
 func (client *Client) RecolorImageWithOptions(request *RecolorImageRequest, runtime *dara.RuntimeOptions) (_result *RecolorImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ColorCount) {
@@ -3620,7 +3284,7 @@ func (client *Client) RecolorImageAdvance(request *RecolorImageAdvanceRequest, r
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -3650,7 +3314,7 @@ func (client *Client) RecolorImageAdvance(request *RecolorImageAdvanceRequest, r
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -3672,9 +3336,11 @@ func (client *Client) RecolorImageAdvance(request *RecolorImageAdvanceRequest, r
 //
 // @return RemoveImageSubtitlesResponse
 func (client *Client) RemoveImageSubtitlesWithOptions(request *RemoveImageSubtitlesRequest, runtime *dara.RuntimeOptions) (_result *RemoveImageSubtitlesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BH) {
@@ -3825,7 +3491,7 @@ func (client *Client) RemoveImageSubtitlesAdvance(request *RemoveImageSubtitlesA
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -3847,9 +3513,11 @@ func (client *Client) RemoveImageSubtitlesAdvance(request *RemoveImageSubtitlesA
 //
 // @return RemoveImageWatermarkResponse
 func (client *Client) RemoveImageWatermarkWithOptions(request *RemoveImageWatermarkRequest, runtime *dara.RuntimeOptions) (_result *RemoveImageWatermarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -3984,7 +3652,7 @@ func (client *Client) RemoveImageWatermarkAdvance(request *RemoveImageWatermarkA
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}

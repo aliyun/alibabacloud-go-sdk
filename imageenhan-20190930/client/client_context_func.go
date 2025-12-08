@@ -13,9 +13,11 @@ import (
 //
 // @return AssessCompositionResponse
 func (client *Client) AssessCompositionWithContext(ctx context.Context, request *AssessCompositionRequest, runtime *dara.RuntimeOptions) (_result *AssessCompositionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -51,9 +53,11 @@ func (client *Client) AssessCompositionWithContext(ctx context.Context, request 
 //
 // @return AssessExposureResponse
 func (client *Client) AssessExposureWithContext(ctx context.Context, request *AssessExposureRequest, runtime *dara.RuntimeOptions) (_result *AssessExposureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -89,9 +93,11 @@ func (client *Client) AssessExposureWithContext(ctx context.Context, request *As
 //
 // @return AssessSharpnessResponse
 func (client *Client) AssessSharpnessWithContext(ctx context.Context, request *AssessSharpnessRequest, runtime *dara.RuntimeOptions) (_result *AssessSharpnessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -127,9 +133,11 @@ func (client *Client) AssessSharpnessWithContext(ctx context.Context, request *A
 //
 // @return ChangeImageSizeResponse
 func (client *Client) ChangeImageSizeWithContext(ctx context.Context, request *ChangeImageSizeRequest, runtime *dara.RuntimeOptions) (_result *ChangeImageSizeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Height) {
@@ -173,9 +181,11 @@ func (client *Client) ChangeImageSizeWithContext(ctx context.Context, request *C
 //
 // @return ColorizeImageResponse
 func (client *Client) ColorizeImageWithContext(ctx context.Context, request *ColorizeImageRequest, runtime *dara.RuntimeOptions) (_result *ColorizeImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -211,9 +221,11 @@ func (client *Client) ColorizeImageWithContext(ctx context.Context, request *Col
 //
 // @return EnhanceImageColorResponse
 func (client *Client) EnhanceImageColorWithContext(ctx context.Context, request *EnhanceImageColorRequest, runtime *dara.RuntimeOptions) (_result *EnhanceImageColorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -257,9 +269,11 @@ func (client *Client) EnhanceImageColorWithContext(ctx context.Context, request 
 //
 // @return ErasePersonResponse
 func (client *Client) ErasePersonWithContext(ctx context.Context, request *ErasePersonRequest, runtime *dara.RuntimeOptions) (_result *ErasePersonResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -299,9 +313,11 @@ func (client *Client) ErasePersonWithContext(ctx context.Context, request *Erase
 //
 // @return ExtendImageStyleResponse
 func (client *Client) ExtendImageStyleWithContext(ctx context.Context, request *ExtendImageStyleRequest, runtime *dara.RuntimeOptions) (_result *ExtendImageStyleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.MajorUrl) {
@@ -345,9 +361,11 @@ func (client *Client) ExtendImageStyleWithContext(ctx context.Context, request *
 //
 // @return GenerateCartoonizedImageResponse
 func (client *Client) GenerateCartoonizedImageWithContext(ctx context.Context, request *GenerateCartoonizedImageRequest, runtime *dara.RuntimeOptions) (_result *GenerateCartoonizedImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageType) {
@@ -387,164 +405,6 @@ func (client *Client) GenerateCartoonizedImageWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 图像微动
-//
-// @param request - GenerateDynamicImageRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GenerateDynamicImageResponse
-func (client *Client) GenerateDynamicImageWithContext(ctx context.Context, request *GenerateDynamicImageRequest, runtime *dara.RuntimeOptions) (_result *GenerateDynamicImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.Operation) {
-		body["Operation"] = request.Operation
-	}
-
-	if !dara.IsNil(request.Url) {
-		body["Url"] = request.Url
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("GenerateDynamicImage"),
-		Version:     dara.String("2019-09-30"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GenerateDynamicImageResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 文本到图像生成
-//
-// @param request - GenerateImageWithTextRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GenerateImageWithTextResponse
-func (client *Client) GenerateImageWithTextWithContext(ctx context.Context, request *GenerateImageWithTextRequest, runtime *dara.RuntimeOptions) (_result *GenerateImageWithTextResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.Number) {
-		body["Number"] = request.Number
-	}
-
-	if !dara.IsNil(request.Resolution) {
-		body["Resolution"] = request.Resolution
-	}
-
-	if !dara.IsNil(request.Text) {
-		body["Text"] = request.Text
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("GenerateImageWithText"),
-		Version:     dara.String("2019-09-30"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GenerateImageWithTextResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 文本和参考图到图像生成
-//
-// @param request - GenerateImageWithTextAndImageRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GenerateImageWithTextAndImageResponse
-func (client *Client) GenerateImageWithTextAndImageWithContext(ctx context.Context, request *GenerateImageWithTextAndImageRequest, runtime *dara.RuntimeOptions) (_result *GenerateImageWithTextAndImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.AspectRatioMode) {
-		body["AspectRatioMode"] = request.AspectRatioMode
-	}
-
-	if !dara.IsNil(request.Number) {
-		body["Number"] = request.Number
-	}
-
-	if !dara.IsNil(request.RefImageUrl) {
-		body["RefImageUrl"] = request.RefImageUrl
-	}
-
-	if !dara.IsNil(request.Resolution) {
-		body["Resolution"] = request.Resolution
-	}
-
-	if !dara.IsNil(request.Similarity) {
-		body["Similarity"] = request.Similarity
-	}
-
-	if !dara.IsNil(request.Text) {
-		body["Text"] = request.Text
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("GenerateImageWithTextAndImage"),
-		Version:     dara.String("2019-09-30"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GenerateImageWithTextAndImageResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
 // 生成式图像超分
 //
 // @param request - GenerateSuperResolutionImageRequest
@@ -553,9 +413,11 @@ func (client *Client) GenerateImageWithTextAndImageWithContext(ctx context.Conte
 //
 // @return GenerateSuperResolutionImageResponse
 func (client *Client) GenerateSuperResolutionImageWithContext(ctx context.Context, request *GenerateSuperResolutionImageRequest, runtime *dara.RuntimeOptions) (_result *GenerateSuperResolutionImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageUrl) {
@@ -607,9 +469,11 @@ func (client *Client) GenerateSuperResolutionImageWithContext(ctx context.Contex
 //
 // @return GetAsyncJobResultResponse
 func (client *Client) GetAsyncJobResultWithContext(ctx context.Context, request *GetAsyncJobResultRequest, runtime *dara.RuntimeOptions) (_result *GetAsyncJobResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -645,9 +509,11 @@ func (client *Client) GetAsyncJobResultWithContext(ctx context.Context, request 
 //
 // @return ImageBlindCharacterWatermarkResponse
 func (client *Client) ImageBlindCharacterWatermarkWithContext(ctx context.Context, request *ImageBlindCharacterWatermarkRequest, runtime *dara.RuntimeOptions) (_result *ImageBlindCharacterWatermarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FunctionType) {
@@ -703,9 +569,11 @@ func (client *Client) ImageBlindCharacterWatermarkWithContext(ctx context.Contex
 //
 // @return ImageBlindPicWatermarkResponse
 func (client *Client) ImageBlindPicWatermarkWithContext(ctx context.Context, request *ImageBlindPicWatermarkRequest, runtime *dara.RuntimeOptions) (_result *ImageBlindPicWatermarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FunctionType) {
@@ -761,9 +629,11 @@ func (client *Client) ImageBlindPicWatermarkWithContext(ctx context.Context, req
 //
 // @return ImitatePhotoStyleResponse
 func (client *Client) ImitatePhotoStyleWithContext(ctx context.Context, request *ImitatePhotoStyleRequest, runtime *dara.RuntimeOptions) (_result *ImitatePhotoStyleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -803,9 +673,11 @@ func (client *Client) ImitatePhotoStyleWithContext(ctx context.Context, request 
 //
 // @return IntelligentCompositionResponse
 func (client *Client) IntelligentCompositionWithContext(ctx context.Context, request *IntelligentCompositionRequest, runtime *dara.RuntimeOptions) (_result *IntelligentCompositionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -845,9 +717,11 @@ func (client *Client) IntelligentCompositionWithContext(ctx context.Context, req
 //
 // @return MakeSuperResolutionImageResponse
 func (client *Client) MakeSuperResolutionImageWithContext(ctx context.Context, request *MakeSuperResolutionImageRequest, runtime *dara.RuntimeOptions) (_result *MakeSuperResolutionImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Mode) {
@@ -899,9 +773,11 @@ func (client *Client) MakeSuperResolutionImageWithContext(ctx context.Context, r
 //
 // @return RecolorHDImageResponse
 func (client *Client) RecolorHDImageWithContext(ctx context.Context, request *RecolorHDImageRequest, runtime *dara.RuntimeOptions) (_result *RecolorHDImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ColorCount) {
@@ -957,9 +833,11 @@ func (client *Client) RecolorHDImageWithContext(ctx context.Context, request *Re
 //
 // @return RecolorImageResponse
 func (client *Client) RecolorImageWithContext(ctx context.Context, request *RecolorImageRequest, runtime *dara.RuntimeOptions) (_result *RecolorImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ColorCount) {
@@ -1011,9 +889,11 @@ func (client *Client) RecolorImageWithContext(ctx context.Context, request *Reco
 //
 // @return RemoveImageSubtitlesResponse
 func (client *Client) RemoveImageSubtitlesWithContext(ctx context.Context, request *RemoveImageSubtitlesRequest, runtime *dara.RuntimeOptions) (_result *RemoveImageSubtitlesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BH) {
@@ -1065,9 +945,11 @@ func (client *Client) RemoveImageSubtitlesWithContext(ctx context.Context, reque
 //
 // @return RemoveImageWatermarkResponse
 func (client *Client) RemoveImageWatermarkWithContext(ctx context.Context, request *RemoveImageWatermarkRequest, runtime *dara.RuntimeOptions) (_result *RemoveImageWatermarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {

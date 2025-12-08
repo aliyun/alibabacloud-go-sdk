@@ -59,5 +59,10 @@ func (s *AssessCompositionResponse) SetBody(v *AssessCompositionResponseBody) *A
 }
 
 func (s *AssessCompositionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

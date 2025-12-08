@@ -115,7 +115,16 @@ func (s *RecolorHDImageRequest) SetUrl(v string) *RecolorHDImageRequest {
 }
 
 func (s *RecolorHDImageRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ColorTemplate != nil {
+		for _, item := range s.ColorTemplate {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecolorHDImageRequestColorTemplate struct {

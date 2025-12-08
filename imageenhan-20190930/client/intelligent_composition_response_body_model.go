@@ -50,7 +50,12 @@ func (s *IntelligentCompositionResponseBody) SetRequestId(v string) *Intelligent
 }
 
 func (s *IntelligentCompositionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IntelligentCompositionResponseBodyData struct {
@@ -75,7 +80,16 @@ func (s *IntelligentCompositionResponseBodyData) SetElements(v []*IntelligentCom
 }
 
 func (s *IntelligentCompositionResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Elements != nil {
+		for _, item := range s.Elements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IntelligentCompositionResponseBodyDataElements struct {
