@@ -9,6 +9,54 @@ import (
 
 // Summary:
 //
+// 分配证书使用数量
+//
+// @param request - AssignCertificateCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssignCertificateCountResponse
+func (client *Client) AssignCertificateCountWithContext(ctx context.Context, request *AssignCertificateCountRequest, runtime *dara.RuntimeOptions) (_result *AssignCertificateCountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertTotalCount) {
+		query["CertTotalCount"] = request.CertTotalCount
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AssignCertificateCount"),
+		Version:     dara.String("2020-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AssignCertificateCountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Issues a client certificate by using a system-generated certificate signing request (CSR) file.
 //
 // Description:
@@ -1373,6 +1421,70 @@ func (client *Client) GetCAInstanceStatusWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 查询终端实例
+//
+// @param request - ListAllEndEntityInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAllEndEntityInstanceResponse
+func (client *Client) ListAllEndEntityInstanceWithContext(ctx context.Context, request *ListAllEndEntityInstanceRequest, runtime *dara.RuntimeOptions) (_result *ListAllEndEntityInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ParentId) {
+		query["ParentId"] = request.ParentId
+	}
+
+	if !dara.IsNil(request.RecursiveChildren) {
+		query["RecursiveChildren"] = request.RecursiveChildren
+	}
+
+	if !dara.IsNil(request.ShowSize) {
+		query["ShowSize"] = request.ShowSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAllEndEntityInstance"),
+		Version:     dara.String("2020-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAllEndEntityInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取证书列表
 //
 // @param request - ListCertRequest
@@ -1669,6 +1781,68 @@ func (client *Client) UpdateCACertificateStatusWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateCACertificateStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新证书属性
+//
+// @param request - UpdatePcaCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePcaCertificateResponse
+func (client *Client) UpdatePcaCertificateWithContext(ctx context.Context, request *UpdatePcaCertificateRequest, runtime *dara.RuntimeOptions) (_result *UpdatePcaCertificateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AliasName) {
+		query["AliasName"] = request.AliasName
+	}
+
+	if !dara.IsNil(request.Identifier) {
+		query["Identifier"] = request.Identifier
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePcaCertificate"),
+		Version:     dara.String("2020-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePcaCertificateResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
