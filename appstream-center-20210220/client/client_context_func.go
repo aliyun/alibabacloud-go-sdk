@@ -9,6 +9,66 @@ import (
 
 // Summary:
 //
+// 终端用户登出
+//
+// @param request - ClientUserLogoutRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClientUserLogoutResponse
+func (client *Client) ClientUserLogoutWithContext(ctx context.Context, request *ClientUserLogoutRequest, runtime *dara.RuntimeOptions) (_result *ClientUserLogoutResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientId) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.LoginToken) {
+		query["LoginToken"] = request.LoginToken
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.ProfileRegion) {
+		query["ProfileRegion"] = request.ProfileRegion
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClientUserLogout"),
+		Version:     dara.String("2021-02-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("Anonymous"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClientUserLogoutResponse{}
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 身份认证查询接口
 //
 // @param tmpReq - FindIdpListByLoginIdentifierRequest
