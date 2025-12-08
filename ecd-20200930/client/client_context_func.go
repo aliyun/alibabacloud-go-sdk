@@ -2454,6 +2454,10 @@ func (client *Client) CreateCenterPolicyWithContext(ctx context.Context, request
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcademicProxy) {
+		query["AcademicProxy"] = request.AcademicProxy
+	}
+
 	if !dara.IsNil(request.AdminAccess) {
 		query["AdminAccess"] = request.AdminAccess
 	}
@@ -2472,6 +2476,10 @@ func (client *Client) CreateCenterPolicyWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.AutoReconnect) {
 		query["AutoReconnect"] = request.AutoReconnect
+	}
+
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
 	}
 
 	if !dara.IsNil(request.BusinessType) {
@@ -2518,6 +2526,10 @@ func (client *Client) CreateCenterPolicyWithContext(ctx context.Context, request
 		query["CpuDownGradeDuration"] = request.CpuDownGradeDuration
 	}
 
+	if !dara.IsNil(request.CpuOverload) {
+		query["CpuOverload"] = request.CpuOverload
+	}
+
 	if !dara.IsNil(request.CpuProcessors) {
 		query["CpuProcessors"] = request.CpuProcessors
 	}
@@ -2556,6 +2568,10 @@ func (client *Client) CreateCenterPolicyWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.DisconnectKeepSessionTime) {
 		query["DisconnectKeepSessionTime"] = request.DisconnectKeepSessionTime
+	}
+
+	if !dara.IsNil(request.DiskOverload) {
+		query["DiskOverload"] = request.DiskOverload
 	}
 
 	if !dara.IsNil(request.DisplayMode) {
@@ -2630,6 +2646,10 @@ func (client *Client) CreateCenterPolicyWithContext(ctx context.Context, request
 		query["MemoryDownGradeDuration"] = request.MemoryDownGradeDuration
 	}
 
+	if !dara.IsNil(request.MemoryOverload) {
+		query["MemoryOverload"] = request.MemoryOverload
+	}
+
 	if !dara.IsNil(request.MemoryProcessors) {
 		query["MemoryProcessors"] = request.MemoryProcessors
 	}
@@ -2670,6 +2690,10 @@ func (client *Client) CreateCenterPolicyWithContext(ctx context.Context, request
 		query["MobileWyAssistant"] = request.MobileWyAssistant
 	}
 
+	if !dara.IsNil(request.ModelLibrary) {
+		query["ModelLibrary"] = request.ModelLibrary
+	}
+
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
 	}
@@ -2688,6 +2712,10 @@ func (client *Client) CreateCenterPolicyWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.NoOperationDisconnectTime) {
 		query["NoOperationDisconnectTime"] = request.NoOperationDisconnectTime
+	}
+
+	if !dara.IsNil(request.PortProxy) {
+		query["PortProxy"] = request.PortProxy
 	}
 
 	if !dara.IsNil(request.PrinterRedirect) {
@@ -7155,8 +7183,16 @@ func (client *Client) DescribeCenterPolicyListWithContext(ctx context.Context, r
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcademicProxy) {
+		query["AcademicProxy"] = request.AcademicProxy
+	}
+
 	if !dara.IsNil(request.BusinessType) {
 		query["BusinessType"] = request.BusinessType
+	}
+
+	if !dara.IsNil(request.ModelLibrary) {
+		query["ModelLibrary"] = request.ModelLibrary
 	}
 
 	if !dara.IsNil(request.PageNumber) {
@@ -7169,6 +7205,10 @@ func (client *Client) DescribeCenterPolicyListWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.PolicyGroupId) {
 		query["PolicyGroupId"] = request.PolicyGroupId
+	}
+
+	if !dara.IsNil(request.PortProxy) {
+		query["PortProxy"] = request.PortProxy
 	}
 
 	if !dara.IsNil(request.ResourceType) {
@@ -10211,6 +10251,10 @@ func (client *Client) DescribePolicyGroupsWithContext(ctx context.Context, reque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.ExternalPolicyGroupIds) {
 		query["ExternalPolicyGroupIds"] = request.ExternalPolicyGroupIds
 	}
@@ -14339,6 +14383,10 @@ func (client *Client) ModifyCenterPolicyWithContext(ctx context.Context, request
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcademicProxy) {
+		query["AcademicProxy"] = request.AcademicProxy
+	}
+
 	if !dara.IsNil(request.AdminAccess) {
 		query["AdminAccess"] = request.AdminAccess
 	}
@@ -14357,6 +14405,10 @@ func (client *Client) ModifyCenterPolicyWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.AutoReconnect) {
 		query["AutoReconnect"] = request.AutoReconnect
+	}
+
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
 	}
 
 	if !dara.IsNil(request.BusinessType) {
@@ -14403,6 +14455,10 @@ func (client *Client) ModifyCenterPolicyWithContext(ctx context.Context, request
 		query["CpuDownGradeDuration"] = request.CpuDownGradeDuration
 	}
 
+	if !dara.IsNil(request.CpuOverload) {
+		query["CpuOverload"] = request.CpuOverload
+	}
+
 	if !dara.IsNil(request.CpuProcessors) {
 		query["CpuProcessors"] = request.CpuProcessors
 	}
@@ -14441,6 +14497,10 @@ func (client *Client) ModifyCenterPolicyWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.DisconnectKeepSessionTime) {
 		query["DisconnectKeepSessionTime"] = request.DisconnectKeepSessionTime
+	}
+
+	if !dara.IsNil(request.DiskOverload) {
+		query["DiskOverload"] = request.DiskOverload
 	}
 
 	if !dara.IsNil(request.DisplayMode) {
@@ -14515,6 +14575,10 @@ func (client *Client) ModifyCenterPolicyWithContext(ctx context.Context, request
 		query["MemoryDownGradeDuration"] = request.MemoryDownGradeDuration
 	}
 
+	if !dara.IsNil(request.MemoryOverload) {
+		query["MemoryOverload"] = request.MemoryOverload
+	}
+
 	if !dara.IsNil(request.MemoryProcessors) {
 		query["MemoryProcessors"] = request.MemoryProcessors
 	}
@@ -14555,6 +14619,10 @@ func (client *Client) ModifyCenterPolicyWithContext(ctx context.Context, request
 		query["MobileWyAssistant"] = request.MobileWyAssistant
 	}
 
+	if !dara.IsNil(request.ModelLibrary) {
+		query["ModelLibrary"] = request.ModelLibrary
+	}
+
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
 	}
@@ -14577,6 +14645,10 @@ func (client *Client) ModifyCenterPolicyWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.PolicyGroupId) {
 		query["PolicyGroupId"] = request.PolicyGroupId
+	}
+
+	if !dara.IsNil(request.PortProxy) {
+		query["PortProxy"] = request.PortProxy
 	}
 
 	if !dara.IsNil(request.PrinterRedirect) {

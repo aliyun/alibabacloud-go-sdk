@@ -9,6 +9,8 @@ type iModifyCenterPolicyRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAcademicProxy(v string) *ModifyCenterPolicyRequest
+	GetAcademicProxy() *string
 	SetAdminAccess(v string) *ModifyCenterPolicyRequest
 	GetAdminAccess() *string
 	SetAppContentProtection(v string) *ModifyCenterPolicyRequest
@@ -19,6 +21,8 @@ type iModifyCenterPolicyRequest interface {
 	GetAuthorizeSecurityPolicyRule() []*ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule
 	SetAutoReconnect(v string) *ModifyCenterPolicyRequest
 	GetAutoReconnect() *string
+	SetBusinessChannel(v string) *ModifyCenterPolicyRequest
+	GetBusinessChannel() *string
 	SetBusinessType(v int32) *ModifyCenterPolicyRequest
 	GetBusinessType() *int32
 	SetCameraRedirect(v string) *ModifyCenterPolicyRequest
@@ -41,6 +45,8 @@ type iModifyCenterPolicyRequest interface {
 	GetCpdDriveClipboard() *string
 	SetCpuDownGradeDuration(v int32) *ModifyCenterPolicyRequest
 	GetCpuDownGradeDuration() *int32
+	SetCpuOverload(v string) *ModifyCenterPolicyRequest
+	GetCpuOverload() *string
 	SetCpuProcessors(v []*string) *ModifyCenterPolicyRequest
 	GetCpuProcessors() []*string
 	SetCpuProtectedMode(v string) *ModifyCenterPolicyRequest
@@ -61,6 +67,8 @@ type iModifyCenterPolicyRequest interface {
 	GetDisconnectKeepSession() *string
 	SetDisconnectKeepSessionTime(v int32) *ModifyCenterPolicyRequest
 	GetDisconnectKeepSessionTime() *int32
+	SetDiskOverload(v string) *ModifyCenterPolicyRequest
+	GetDiskOverload() *string
 	SetDisplayMode(v string) *ModifyCenterPolicyRequest
 	GetDisplayMode() *string
 	SetDomainResolveRule(v []*ModifyCenterPolicyRequestDomainResolveRule) *ModifyCenterPolicyRequest
@@ -97,6 +105,8 @@ type iModifyCenterPolicyRequest interface {
 	GetMaxReconnectTime() *int32
 	SetMemoryDownGradeDuration(v int32) *ModifyCenterPolicyRequest
 	GetMemoryDownGradeDuration() *int32
+	SetMemoryOverload(v string) *ModifyCenterPolicyRequest
+	GetMemoryOverload() *string
 	SetMemoryProcessors(v []*string) *ModifyCenterPolicyRequest
 	GetMemoryProcessors() []*string
 	SetMemoryProtectedMode(v string) *ModifyCenterPolicyRequest
@@ -117,6 +127,8 @@ type iModifyCenterPolicyRequest interface {
 	GetMobileWuyingKeeper() *string
 	SetMobileWyAssistant(v string) *ModifyCenterPolicyRequest
 	GetMobileWyAssistant() *string
+	SetModelLibrary(v string) *ModifyCenterPolicyRequest
+	GetModelLibrary() *string
 	SetName(v string) *ModifyCenterPolicyRequest
 	GetName() *string
 	SetNetRedirect(v string) *ModifyCenterPolicyRequest
@@ -129,6 +141,8 @@ type iModifyCenterPolicyRequest interface {
 	GetNoOperationDisconnectTime() *int32
 	SetPolicyGroupId(v string) *ModifyCenterPolicyRequest
 	GetPolicyGroupId() *string
+	SetPortProxy(v string) *ModifyCenterPolicyRequest
+	GetPortProxy() *string
 	SetPrinterRedirect(v string) *ModifyCenterPolicyRequest
 	GetPrinterRedirect() *string
 	SetQualityEnhancement(v string) *ModifyCenterPolicyRequest
@@ -256,6 +270,7 @@ type iModifyCenterPolicyRequest interface {
 }
 
 type ModifyCenterPolicyRequest struct {
+	AcademicProxy *string `json:"AcademicProxy,omitempty" xml:"AcademicProxy,omitempty"`
 	// Specifies whether to grant the admin permissions to end users.
 	//
 	// >  This parameter is in private preview and only available to specific users.
@@ -291,7 +306,8 @@ type ModifyCenterPolicyRequest struct {
 	// example:
 	//
 	// off
-	AutoReconnect *string `json:"AutoReconnect,omitempty" xml:"AutoReconnect,omitempty"`
+	AutoReconnect   *string `json:"AutoReconnect,omitempty" xml:"AutoReconnect,omitempty"`
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The business type.
 	//
 	// Valid values:
@@ -358,7 +374,8 @@ type ModifyCenterPolicyRequest struct {
 	// example:
 	//
 	// 50
-	CpuDownGradeDuration *int32 `json:"CpuDownGradeDuration,omitempty" xml:"CpuDownGradeDuration,omitempty"`
+	CpuDownGradeDuration *int32  `json:"CpuDownGradeDuration,omitempty" xml:"CpuDownGradeDuration,omitempty"`
+	CpuOverload          *string `json:"CpuOverload,omitempty" xml:"CpuOverload,omitempty"`
 	// The CPU processors.
 	CpuProcessors []*string `json:"CpuProcessors,omitempty" xml:"CpuProcessors,omitempty" type:"Repeated"`
 	// The CPU spike protection policy.
@@ -428,7 +445,8 @@ type ModifyCenterPolicyRequest struct {
 	// example:
 	//
 	// 120
-	DisconnectKeepSessionTime *int32 `json:"DisconnectKeepSessionTime,omitempty" xml:"DisconnectKeepSessionTime,omitempty"`
+	DisconnectKeepSessionTime *int32  `json:"DisconnectKeepSessionTime,omitempty" xml:"DisconnectKeepSessionTime,omitempty"`
+	DiskOverload              *string `json:"DiskOverload,omitempty" xml:"DiskOverload,omitempty"`
 	// The display mode.
 	//
 	// Valid values:
@@ -581,7 +599,8 @@ type ModifyCenterPolicyRequest struct {
 	// example:
 	//
 	// 40
-	MemoryDownGradeDuration *int32 `json:"MemoryDownGradeDuration,omitempty" xml:"MemoryDownGradeDuration,omitempty"`
+	MemoryDownGradeDuration *int32  `json:"MemoryDownGradeDuration,omitempty" xml:"MemoryDownGradeDuration,omitempty"`
+	MemoryOverload          *string `json:"MemoryOverload,omitempty" xml:"MemoryOverload,omitempty"`
 	// The memory processors.
 	MemoryProcessors []*string `json:"MemoryProcessors,omitempty" xml:"MemoryProcessors,omitempty" type:"Repeated"`
 	// The memory spike protection policy.
@@ -654,6 +673,7 @@ type ModifyCenterPolicyRequest struct {
 	//
 	// off
 	MobileWyAssistant *string `json:"MobileWyAssistant,omitempty" xml:"MobileWyAssistant,omitempty"`
+	ModelLibrary      *string `json:"ModelLibrary,omitempty" xml:"ModelLibrary,omitempty"`
 	// The policy name.
 	//
 	// example:
@@ -710,6 +730,7 @@ type ModifyCenterPolicyRequest struct {
 	//
 	// pg-53iyi2aar0nd6****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	PortProxy     *string `json:"PortProxy,omitempty" xml:"PortProxy,omitempty"`
 	// The printer redirection policy. This parameter only applies if DeviceRedirects does not include a printer redirection policy.
 	//
 	// Valid values:
@@ -1220,6 +1241,10 @@ func (s ModifyCenterPolicyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyCenterPolicyRequest) GetAcademicProxy() *string {
+	return s.AcademicProxy
+}
+
 func (s *ModifyCenterPolicyRequest) GetAdminAccess() *string {
 	return s.AdminAccess
 }
@@ -1238,6 +1263,10 @@ func (s *ModifyCenterPolicyRequest) GetAuthorizeSecurityPolicyRule() []*ModifyCe
 
 func (s *ModifyCenterPolicyRequest) GetAutoReconnect() *string {
 	return s.AutoReconnect
+}
+
+func (s *ModifyCenterPolicyRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
 }
 
 func (s *ModifyCenterPolicyRequest) GetBusinessType() *int32 {
@@ -1284,6 +1313,10 @@ func (s *ModifyCenterPolicyRequest) GetCpuDownGradeDuration() *int32 {
 	return s.CpuDownGradeDuration
 }
 
+func (s *ModifyCenterPolicyRequest) GetCpuOverload() *string {
+	return s.CpuOverload
+}
+
 func (s *ModifyCenterPolicyRequest) GetCpuProcessors() []*string {
 	return s.CpuProcessors
 }
@@ -1322,6 +1355,10 @@ func (s *ModifyCenterPolicyRequest) GetDisconnectKeepSession() *string {
 
 func (s *ModifyCenterPolicyRequest) GetDisconnectKeepSessionTime() *int32 {
 	return s.DisconnectKeepSessionTime
+}
+
+func (s *ModifyCenterPolicyRequest) GetDiskOverload() *string {
+	return s.DiskOverload
 }
 
 func (s *ModifyCenterPolicyRequest) GetDisplayMode() *string {
@@ -1396,6 +1433,10 @@ func (s *ModifyCenterPolicyRequest) GetMemoryDownGradeDuration() *int32 {
 	return s.MemoryDownGradeDuration
 }
 
+func (s *ModifyCenterPolicyRequest) GetMemoryOverload() *string {
+	return s.MemoryOverload
+}
+
 func (s *ModifyCenterPolicyRequest) GetMemoryProcessors() []*string {
 	return s.MemoryProcessors
 }
@@ -1436,6 +1477,10 @@ func (s *ModifyCenterPolicyRequest) GetMobileWyAssistant() *string {
 	return s.MobileWyAssistant
 }
 
+func (s *ModifyCenterPolicyRequest) GetModelLibrary() *string {
+	return s.ModelLibrary
+}
+
 func (s *ModifyCenterPolicyRequest) GetName() *string {
 	return s.Name
 }
@@ -1458,6 +1503,10 @@ func (s *ModifyCenterPolicyRequest) GetNoOperationDisconnectTime() *int32 {
 
 func (s *ModifyCenterPolicyRequest) GetPolicyGroupId() *string {
 	return s.PolicyGroupId
+}
+
+func (s *ModifyCenterPolicyRequest) GetPortProxy() *string {
+	return s.PortProxy
 }
 
 func (s *ModifyCenterPolicyRequest) GetPrinterRedirect() *string {
@@ -1708,6 +1757,11 @@ func (s *ModifyCenterPolicyRequest) GetWyAssistant() *string {
 	return s.WyAssistant
 }
 
+func (s *ModifyCenterPolicyRequest) SetAcademicProxy(v string) *ModifyCenterPolicyRequest {
+	s.AcademicProxy = &v
+	return s
+}
+
 func (s *ModifyCenterPolicyRequest) SetAdminAccess(v string) *ModifyCenterPolicyRequest {
 	s.AdminAccess = &v
 	return s
@@ -1730,6 +1784,11 @@ func (s *ModifyCenterPolicyRequest) SetAuthorizeSecurityPolicyRule(v []*ModifyCe
 
 func (s *ModifyCenterPolicyRequest) SetAutoReconnect(v string) *ModifyCenterPolicyRequest {
 	s.AutoReconnect = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetBusinessChannel(v string) *ModifyCenterPolicyRequest {
+	s.BusinessChannel = &v
 	return s
 }
 
@@ -1788,6 +1847,11 @@ func (s *ModifyCenterPolicyRequest) SetCpuDownGradeDuration(v int32) *ModifyCent
 	return s
 }
 
+func (s *ModifyCenterPolicyRequest) SetCpuOverload(v string) *ModifyCenterPolicyRequest {
+	s.CpuOverload = &v
+	return s
+}
+
 func (s *ModifyCenterPolicyRequest) SetCpuProcessors(v []*string) *ModifyCenterPolicyRequest {
 	s.CpuProcessors = v
 	return s
@@ -1835,6 +1899,11 @@ func (s *ModifyCenterPolicyRequest) SetDisconnectKeepSession(v string) *ModifyCe
 
 func (s *ModifyCenterPolicyRequest) SetDisconnectKeepSessionTime(v int32) *ModifyCenterPolicyRequest {
 	s.DisconnectKeepSessionTime = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetDiskOverload(v string) *ModifyCenterPolicyRequest {
+	s.DiskOverload = &v
 	return s
 }
 
@@ -1928,6 +1997,11 @@ func (s *ModifyCenterPolicyRequest) SetMemoryDownGradeDuration(v int32) *ModifyC
 	return s
 }
 
+func (s *ModifyCenterPolicyRequest) SetMemoryOverload(v string) *ModifyCenterPolicyRequest {
+	s.MemoryOverload = &v
+	return s
+}
+
 func (s *ModifyCenterPolicyRequest) SetMemoryProcessors(v []*string) *ModifyCenterPolicyRequest {
 	s.MemoryProcessors = v
 	return s
@@ -1978,6 +2052,11 @@ func (s *ModifyCenterPolicyRequest) SetMobileWyAssistant(v string) *ModifyCenter
 	return s
 }
 
+func (s *ModifyCenterPolicyRequest) SetModelLibrary(v string) *ModifyCenterPolicyRequest {
+	s.ModelLibrary = &v
+	return s
+}
+
 func (s *ModifyCenterPolicyRequest) SetName(v string) *ModifyCenterPolicyRequest {
 	s.Name = &v
 	return s
@@ -2005,6 +2084,11 @@ func (s *ModifyCenterPolicyRequest) SetNoOperationDisconnectTime(v int32) *Modif
 
 func (s *ModifyCenterPolicyRequest) SetPolicyGroupId(v string) *ModifyCenterPolicyRequest {
 	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetPortProxy(v string) *ModifyCenterPolicyRequest {
+	s.PortProxy = &v
 	return s
 }
 

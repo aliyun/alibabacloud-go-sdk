@@ -9,6 +9,8 @@ type iDescribePolicyGroupsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *DescribePolicyGroupsRequest
+	GetBusinessChannel() *string
 	SetExternalPolicyGroupIds(v []*string) *DescribePolicyGroupsRequest
 	GetExternalPolicyGroupIds() []*string
 	SetMaxResults(v int32) *DescribePolicyGroupsRequest
@@ -28,6 +30,7 @@ type iDescribePolicyGroupsRequest interface {
 }
 
 type DescribePolicyGroupsRequest struct {
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The array of cloud computer policy IDs to be excluded.
 	ExternalPolicyGroupIds []*string `json:"ExternalPolicyGroupIds,omitempty" xml:"ExternalPolicyGroupIds,omitempty" type:"Repeated"`
 	// The number of entries per page.
@@ -86,6 +89,10 @@ func (s DescribePolicyGroupsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribePolicyGroupsRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *DescribePolicyGroupsRequest) GetExternalPolicyGroupIds() []*string {
 	return s.ExternalPolicyGroupIds
 }
@@ -116,6 +123,11 @@ func (s *DescribePolicyGroupsRequest) GetRegionId() *string {
 
 func (s *DescribePolicyGroupsRequest) GetScope() *string {
 	return s.Scope
+}
+
+func (s *DescribePolicyGroupsRequest) SetBusinessChannel(v string) *DescribePolicyGroupsRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *DescribePolicyGroupsRequest) SetExternalPolicyGroupIds(v []*string) *DescribePolicyGroupsRequest {

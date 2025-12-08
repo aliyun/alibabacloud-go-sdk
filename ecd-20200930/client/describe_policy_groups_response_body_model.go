@@ -119,6 +119,7 @@ func (s *DescribePolicyGroupsResponseBody) Validate() error {
 }
 
 type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
+	AcademicProxy *string `json:"AcademicProxy,omitempty" xml:"AcademicProxy,omitempty"`
 	// Indicates whether end users are granted the administrator permissions.
 	//
 	// >  This parameter is in invitational preview for specific users and not available to the public.
@@ -199,7 +200,8 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// 30
-	CpuDownGradeDuration *int32 `json:"CpuDownGradeDuration,omitempty" xml:"CpuDownGradeDuration,omitempty"`
+	CpuDownGradeDuration *int32  `json:"CpuDownGradeDuration,omitempty" xml:"CpuDownGradeDuration,omitempty"`
+	CpuOverload          *string `json:"CpuOverload,omitempty" xml:"CpuOverload,omitempty"`
 	// The process whitelist that is not restricted by the CPU usage limit.
 	CpuProcessors []*string `json:"CpuProcessors,omitempty" xml:"CpuProcessors,omitempty" type:"Repeated"`
 	// Indicates whether the CPU spike protection switch is turned on.
@@ -248,7 +250,8 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// The device redirection rules.
 	DeviceRedirects []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects `json:"DeviceRedirects,omitempty" xml:"DeviceRedirects,omitempty" type:"Repeated"`
 	// The custom peripheral rules.
-	DeviceRules []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules `json:"DeviceRules,omitempty" xml:"DeviceRules,omitempty" type:"Repeated"`
+	DeviceRules  []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules `json:"DeviceRules,omitempty" xml:"DeviceRules,omitempty" type:"Repeated"`
+	DiskOverload *string                                                            `json:"DiskOverload,omitempty" xml:"DiskOverload,omitempty"`
 	// The display mode.
 	//
 	// Valid values:
@@ -410,7 +413,8 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// 30
-	MemoryDownGradeDuration *int32 `json:"MemoryDownGradeDuration,omitempty" xml:"MemoryDownGradeDuration,omitempty"`
+	MemoryDownGradeDuration *int32  `json:"MemoryDownGradeDuration,omitempty" xml:"MemoryDownGradeDuration,omitempty"`
+	MemoryOverload          *string `json:"MemoryOverload,omitempty" xml:"MemoryOverload,omitempty"`
 	// The whitelist of processes that are not restricted by the memory usage limit.
 	MemoryProcessors []*string `json:"MemoryProcessors,omitempty" xml:"MemoryProcessors,omitempty" type:"Repeated"`
 	// Indicates whether the memory spike protection switch is turned on.
@@ -489,6 +493,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// off
 	MobileWyAssistant *string `json:"MobileWyAssistant,omitempty" xml:"MobileWyAssistant,omitempty"`
+	ModelLibrary      *string `json:"ModelLibrary,omitempty" xml:"ModelLibrary,omitempty"`
 	// The name of the cloud computer policy.
 	//
 	// example:
@@ -543,6 +548,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// AVAILABLE
 	PolicyStatus *string `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
+	PortProxy    *string `json:"PortProxy,omitempty" xml:"PortProxy,omitempty"`
 	// The cloud computer preemption feature.
 	//
 	// >  To ensure user experience and data security, when a cloud computer is used by an end user, other end users cannot connect to the cloud computer. By default, this parameter is set to `off`, which cannot be modified.
@@ -1047,6 +1053,10 @@ func (s DescribePolicyGroupsResponseBodyDescribePolicyGroups) GoString() string 
 	return s.String()
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetAcademicProxy() *string {
+	return s.AcademicProxy
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetAdminAccess() *string {
 	return s.AdminAccess
 }
@@ -1099,6 +1109,10 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetCpuDownGradeDu
 	return s.CpuDownGradeDuration
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetCpuOverload() *string {
+	return s.CpuOverload
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetCpuProcessors() []*string {
 	return s.CpuProcessors
 }
@@ -1137,6 +1151,10 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetDeviceRedirect
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetDeviceRules() []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules {
 	return s.DeviceRules
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetDiskOverload() *string {
+	return s.DiskOverload
 }
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetDisplayMode() *string {
@@ -1223,6 +1241,10 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetMemoryDownGrad
 	return s.MemoryDownGradeDuration
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetMemoryOverload() *string {
+	return s.MemoryOverload
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetMemoryProcessors() []*string {
 	return s.MemoryProcessors
 }
@@ -1263,6 +1285,10 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetMobileWyAssist
 	return s.MobileWyAssistant
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetModelLibrary() *string {
+	return s.ModelLibrary
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetName() *string {
 	return s.Name
 }
@@ -1285,6 +1311,10 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetPolicyGroupTyp
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetPolicyStatus() *string {
 	return s.PolicyStatus
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetPortProxy() *string {
+	return s.PortProxy
 }
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetPreemptLogin() *string {
@@ -1531,6 +1561,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetWyAssistant() 
 	return s.WyAssistant
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetAcademicProxy(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.AcademicProxy = &v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetAdminAccess(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.AdminAccess = &v
 	return s
@@ -1596,6 +1631,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetCpuDownGradeDu
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetCpuOverload(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.CpuOverload = &v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetCpuProcessors(v []*string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.CpuProcessors = v
 	return s
@@ -1643,6 +1683,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetDeviceRedirect
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetDeviceRules(v []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.DeviceRules = v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetDiskOverload(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.DiskOverload = &v
 	return s
 }
 
@@ -1751,6 +1796,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetMemoryDownGrad
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetMemoryOverload(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.MemoryOverload = &v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetMemoryProcessors(v []*string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.MemoryProcessors = v
 	return s
@@ -1801,6 +1851,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetMobileWyAssist
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetModelLibrary(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.ModelLibrary = &v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetName(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.Name = &v
 	return s
@@ -1828,6 +1883,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetPolicyGroupTyp
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetPolicyStatus(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.PolicyStatus = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetPortProxy(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.PortProxy = &v
 	return s
 }
 
