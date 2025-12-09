@@ -13189,6 +13189,76 @@ func (client *Client) UpdateApplicationInfo(request *UpdateApplicationInfoReques
 
 // Summary:
 //
+// 更新模板应用的SSO参数
+//
+// @param request - UpdateApplicationSsoFormParamsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApplicationSsoFormParamsResponse
+func (client *Client) UpdateApplicationSsoFormParamsWithOptions(request *UpdateApplicationSsoFormParamsRequest, runtime *dara.RuntimeOptions) (_result *UpdateApplicationSsoFormParamsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationTemplateParams) {
+		query["ApplicationTemplateParams"] = request.ApplicationTemplateParams
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateApplicationSsoFormParams"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateApplicationSsoFormParamsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新模板应用的SSO参数
+//
+// @param request - UpdateApplicationSsoFormParamsRequest
+//
+// @return UpdateApplicationSsoFormParamsResponse
+func (client *Client) UpdateApplicationSsoFormParams(request *UpdateApplicationSsoFormParamsRequest) (_result *UpdateApplicationSsoFormParamsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateApplicationSsoFormParamsResponse{}
+	_body, _err := client.UpdateApplicationSsoFormParamsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新ApplicationToken过期时间
 //
 // @param request - UpdateApplicationTokenExpirationTimeRequest
