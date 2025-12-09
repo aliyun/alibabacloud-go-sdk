@@ -3,6 +3,7 @@ package client
 
 import (
 	"context"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
@@ -1017,6 +1018,77 @@ func (client *Client) GetAirflowWithContext(ctx context.Context, request *GetAir
 
 // Summary:
 //
+// # GetChatContent
+//
+// @param request - GetChatContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChatContentResponse
+func (client *Client) GetChatContentWithSSECtx(ctx context.Context, request *GetChatContentRequest, runtime *dara.RuntimeOptions, _yield chan *GetChatContentResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.getChatContentWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, runtime)
+	return
+}
+
+// Summary:
+//
+// # GetChatContent
+//
+// @param request - GetChatContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChatContentResponse
+func (client *Client) GetChatContentWithContext(ctx context.Context, request *GetChatContentRequest, runtime *dara.RuntimeOptions) (_result *GetChatContentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.Checkpoint) {
+		query["Checkpoint"] = request.Checkpoint
+	}
+
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetChatContent"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetChatContentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取uc的数据库目录
 //
 // @param request - GetDataLakeCatalogRequest
@@ -1367,6 +1439,58 @@ func (client *Client) GetNotebookAndSubmitTaskWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetNotebookAndSubmitTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看Notebook任务运行结果
+//
+// @param request - GetNotebookTaskStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNotebookTaskStatusResponse
+func (client *Client) GetNotebookTaskStatusWithContext(ctx context.Context, request *GetNotebookTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *GetNotebookTaskStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetNotebookTaskStatus"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetNotebookTaskStatusResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2123,6 +2247,96 @@ func (client *Client) ListDataLakeTablebaseInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
+// # SendChatMessage
+//
+// @param tmpReq - SendChatMessageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendChatMessageResponse
+func (client *Client) SendChatMessageWithContext(ctx context.Context, tmpReq *SendChatMessageRequest, runtime *dara.RuntimeOptions) (_result *SendChatMessageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SendChatMessageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DataSource) {
+		request.DataSourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataSource, dara.String("DataSource"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SessionConfig) {
+		request.SessionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SessionConfig, dara.String("SessionConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.DataSourceShrink) {
+		query["DataSource"] = request.DataSourceShrink
+	}
+
+	if !dara.IsNil(request.Message) {
+		query["Message"] = request.Message
+	}
+
+	if !dara.IsNil(request.MessageType) {
+		query["MessageType"] = request.MessageType
+	}
+
+	if !dara.IsNil(request.Question) {
+		query["Question"] = request.Question
+	}
+
+	if !dara.IsNil(request.QuotedMessage) {
+		query["QuotedMessage"] = request.QuotedMessage
+	}
+
+	if !dara.IsNil(request.ReplyTo) {
+		query["ReplyTo"] = request.ReplyTo
+	}
+
+	if !dara.IsNil(request.SessionConfigShrink) {
+		query["SessionConfig"] = request.SessionConfigShrink
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SendChatMessage"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SendChatMessageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新UpdateAirflow
 //
 // @param request - UpdateAirflowRequest
@@ -2493,4 +2707,62 @@ func (client *Client) UpdateDataLakeTableWithContext(ctx context.Context, tmpReq
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+func (client *Client) getChatContentWithSSECtx_opYieldFunc(_yield chan *GetChatContentResponse, _yieldErr chan error, ctx context.Context, request *GetChatContentRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.Checkpoint) {
+		query["Checkpoint"] = request.Checkpoint
+	}
+
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetChatContent"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
 }
