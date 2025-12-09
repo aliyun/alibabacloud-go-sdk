@@ -33454,6 +33454,10 @@ func (client *Client) ListCloudAssetInstancesWithContext(ctx context.Context, re
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAssetQueryData) {
+		query["CloudAssetQueryData"] = request.CloudAssetQueryData
+	}
+
 	if !dara.IsNil(request.CloudAssetTypes) {
 		query["CloudAssetTypes"] = request.CloudAssetTypes
 	}

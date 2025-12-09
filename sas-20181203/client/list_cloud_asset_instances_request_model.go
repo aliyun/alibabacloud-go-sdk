@@ -9,6 +9,8 @@ type iListCloudAssetInstancesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCloudAssetQueryData(v []*ListCloudAssetInstancesRequestCloudAssetQueryData) *ListCloudAssetInstancesRequest
+	GetCloudAssetQueryData() []*ListCloudAssetInstancesRequestCloudAssetQueryData
 	SetCloudAssetTypes(v []*ListCloudAssetInstancesRequestCloudAssetTypes) *ListCloudAssetInstancesRequest
 	GetCloudAssetTypes() []*ListCloudAssetInstancesRequestCloudAssetTypes
 	SetCriteria(v string) *ListCloudAssetInstancesRequest
@@ -24,6 +26,7 @@ type iListCloudAssetInstancesRequest interface {
 }
 
 type ListCloudAssetInstancesRequest struct {
+	CloudAssetQueryData []*ListCloudAssetInstancesRequestCloudAssetQueryData `json:"CloudAssetQueryData,omitempty" xml:"CloudAssetQueryData,omitempty" type:"Repeated"`
 	// The details of the cloud asset.
 	CloudAssetTypes []*ListCloudAssetInstancesRequestCloudAssetTypes `json:"CloudAssetTypes,omitempty" xml:"CloudAssetTypes,omitempty" type:"Repeated"`
 	// The search conditions for assets. The value of this parameter is in the JSON format and contains the following fields:
@@ -82,6 +85,10 @@ func (s ListCloudAssetInstancesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListCloudAssetInstancesRequest) GetCloudAssetQueryData() []*ListCloudAssetInstancesRequestCloudAssetQueryData {
+	return s.CloudAssetQueryData
+}
+
 func (s *ListCloudAssetInstancesRequest) GetCloudAssetTypes() []*ListCloudAssetInstancesRequestCloudAssetTypes {
 	return s.CloudAssetTypes
 }
@@ -104,6 +111,11 @@ func (s *ListCloudAssetInstancesRequest) GetPageSize() *int32 {
 
 func (s *ListCloudAssetInstancesRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *ListCloudAssetInstancesRequest) SetCloudAssetQueryData(v []*ListCloudAssetInstancesRequestCloudAssetQueryData) *ListCloudAssetInstancesRequest {
+	s.CloudAssetQueryData = v
+	return s
 }
 
 func (s *ListCloudAssetInstancesRequest) SetCloudAssetTypes(v []*ListCloudAssetInstancesRequestCloudAssetTypes) *ListCloudAssetInstancesRequest {
@@ -137,6 +149,15 @@ func (s *ListCloudAssetInstancesRequest) SetRegionId(v string) *ListCloudAssetIn
 }
 
 func (s *ListCloudAssetInstancesRequest) Validate() error {
+	if s.CloudAssetQueryData != nil {
+		for _, item := range s.CloudAssetQueryData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.CloudAssetTypes != nil {
 		for _, item := range s.CloudAssetTypes {
 			if item != nil {
@@ -147,6 +168,41 @@ func (s *ListCloudAssetInstancesRequest) Validate() error {
 		}
 	}
 	return nil
+}
+
+type ListCloudAssetInstancesRequestCloudAssetQueryData struct {
+	Data     *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+}
+
+func (s ListCloudAssetInstancesRequestCloudAssetQueryData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListCloudAssetInstancesRequestCloudAssetQueryData) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudAssetInstancesRequestCloudAssetQueryData) GetData() *string {
+	return s.Data
+}
+
+func (s *ListCloudAssetInstancesRequestCloudAssetQueryData) GetOperator() *string {
+	return s.Operator
+}
+
+func (s *ListCloudAssetInstancesRequestCloudAssetQueryData) SetData(v string) *ListCloudAssetInstancesRequestCloudAssetQueryData {
+	s.Data = &v
+	return s
+}
+
+func (s *ListCloudAssetInstancesRequestCloudAssetQueryData) SetOperator(v string) *ListCloudAssetInstancesRequestCloudAssetQueryData {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListCloudAssetInstancesRequestCloudAssetQueryData) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListCloudAssetInstancesRequestCloudAssetTypes struct {

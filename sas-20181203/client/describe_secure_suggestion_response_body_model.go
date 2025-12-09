@@ -13,6 +13,8 @@ type iDescribeSecureSuggestionResponseBody interface {
 	GetCalTime() *int64
 	SetRequestId(v string) *DescribeSecureSuggestionResponseBody
 	GetRequestId() *string
+	SetScore(v string) *DescribeSecureSuggestionResponseBody
+	GetScore() *string
 	SetSuggestions(v []*DescribeSecureSuggestionResponseBodySuggestions) *DescribeSecureSuggestionResponseBody
 	GetSuggestions() []*DescribeSecureSuggestionResponseBodySuggestions
 	SetTotalCount(v int32) *DescribeSecureSuggestionResponseBody
@@ -28,6 +30,7 @@ type DescribeSecureSuggestionResponseBody struct {
 	//
 	// 676F80E3-4B3F-43DA-9CBB-5FF79F202AA2
 	RequestId   *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Score       *string                                            `json:"Score,omitempty" xml:"Score,omitempty"`
 	Suggestions []*DescribeSecureSuggestionResponseBodySuggestions `json:"Suggestions,omitempty" xml:"Suggestions,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -51,6 +54,10 @@ func (s *DescribeSecureSuggestionResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *DescribeSecureSuggestionResponseBody) GetScore() *string {
+	return s.Score
+}
+
 func (s *DescribeSecureSuggestionResponseBody) GetSuggestions() []*DescribeSecureSuggestionResponseBodySuggestions {
 	return s.Suggestions
 }
@@ -66,6 +73,11 @@ func (s *DescribeSecureSuggestionResponseBody) SetCalTime(v int64) *DescribeSecu
 
 func (s *DescribeSecureSuggestionResponseBody) SetRequestId(v string) *DescribeSecureSuggestionResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSecureSuggestionResponseBody) SetScore(v string) *DescribeSecureSuggestionResponseBody {
+	s.Score = &v
 	return s
 }
 
