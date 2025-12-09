@@ -1864,25 +1864,87 @@ func (client *Client) CreateClassicNetwork(request *CreateClassicNetworkRequest)
 //
 //		- Creating a cluster is an asynchronous operation. After this operation returns the response, it takes 10 to 20 minutes to initialize the cluster. You can call the DescribeCluster operation to query the cluster status. After you create a cluster, you can call the DescribeClusterKubeConfig operation to obtain the cluster certificate.
 //
-// @param request - CreateClusterRequest
+// @param tmpReq - CreateClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateClusterResponse
-func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, runtime *dara.RuntimeOptions) (_result *CreateClusterResponse, _err error) {
+func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, runtime *dara.RuntimeOptions) (_result *CreateClusterResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &CreateClusterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ControlPlaneConfig) {
+		request.ControlPlaneConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ControlPlaneConfig, dara.String("ControlPlaneConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.PodVswitchIds) {
+		request.PodVswitchIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PodVswitchIds, dara.String("PodVswitchIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.VswitchIds) {
+		request.VswitchIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VswitchIds, dara.String("VswitchIds"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterType) {
+		query["ClusterType"] = request.ClusterType
+	}
+
 	if !dara.IsNil(request.ClusterVersion) {
 		query["ClusterVersion"] = request.ClusterVersion
 	}
 
+	if !dara.IsNil(request.ContainerCidr) {
+		query["ContainerCidr"] = request.ContainerCidr
+	}
+
+	if !dara.IsNil(request.ControlPlaneConfigShrink) {
+		query["ControlPlaneConfig"] = request.ControlPlaneConfigShrink
+	}
+
+	if !dara.IsNil(request.EnsRegionId) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !dara.IsNil(request.KubernetesVersion) {
+		query["KubernetesVersion"] = request.KubernetesVersion
+	}
+
+	if !dara.IsNil(request.LoadBalancerId) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PodVswitchIdsShrink) {
+		query["PodVswitchIds"] = request.PodVswitchIdsShrink
+	}
+
+	if !dara.IsNil(request.Profile) {
+		query["Profile"] = request.Profile
+	}
+
+	if !dara.IsNil(request.PublicAccess) {
+		query["PublicAccess"] = request.PublicAccess
+	}
+
+	if !dara.IsNil(request.ServiceCidr) {
+		query["ServiceCidr"] = request.ServiceCidr
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.VswitchIdsShrink) {
+		query["VswitchIds"] = request.VswitchIdsShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
