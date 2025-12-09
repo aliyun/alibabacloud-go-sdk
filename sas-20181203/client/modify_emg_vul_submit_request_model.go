@@ -13,6 +13,8 @@ type iModifyEmgVulSubmitRequest interface {
 	GetLang() *string
 	SetName(v string) *ModifyEmgVulSubmitRequest
 	GetName() *string
+	SetResourceDirectoryAccountId(v int64) *ModifyEmgVulSubmitRequest
+	GetResourceDirectoryAccountId() *int64
 	SetUserAgreement(v string) *ModifyEmgVulSubmitRequest
 	GetUserAgreement() *string
 }
@@ -35,7 +37,8 @@ type ModifyEmgVulSubmitRequest struct {
 	// example:
 	//
 	// scan:ASCV-2019-032401
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name                       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// Specifies whether to scan for urgent vulnerabilities. Valid values:
 	//
 	// 	- **yes**
@@ -66,6 +69,10 @@ func (s *ModifyEmgVulSubmitRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *ModifyEmgVulSubmitRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *ModifyEmgVulSubmitRequest) GetUserAgreement() *string {
 	return s.UserAgreement
 }
@@ -77,6 +84,11 @@ func (s *ModifyEmgVulSubmitRequest) SetLang(v string) *ModifyEmgVulSubmitRequest
 
 func (s *ModifyEmgVulSubmitRequest) SetName(v string) *ModifyEmgVulSubmitRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *ModifyEmgVulSubmitRequest) SetResourceDirectoryAccountId(v int64) *ModifyEmgVulSubmitRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

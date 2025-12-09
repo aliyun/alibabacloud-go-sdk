@@ -11123,6 +11123,54 @@ func (client *Client) DescribeCloudVendorAccountAKListWithContext(ctx context.Co
 
 // Summary:
 //
+// 获取厂商云产品接入模板
+//
+// @param request - DescribeCloudVendorProductTemplateConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudVendorProductTemplateConfigResponse
+func (client *Client) DescribeCloudVendorProductTemplateConfigWithContext(ctx context.Context, request *DescribeCloudVendorProductTemplateConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudVendorProductTemplateConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Vendor) {
+		query["Vendor"] = request.Vendor
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCloudVendorProductTemplateConfig"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCloudVendorProductTemplateConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query the trail configuration attributes of the corresponding AK configuration
 //
 // @param request - DescribeCloudVendorTrialConfigRequest
@@ -13520,6 +13568,10 @@ func (client *Client) DescribeEmgVulItemWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.RiskStatus) {
@@ -39272,6 +39324,10 @@ func (client *Client) ModifyEmgVulSubmitWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.UserAgreement) {

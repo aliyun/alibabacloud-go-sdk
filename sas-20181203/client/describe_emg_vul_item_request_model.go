@@ -17,6 +17,8 @@ type iDescribeEmgVulItemRequest interface {
 	GetLang() *string
 	SetPageSize(v int32) *DescribeEmgVulItemRequest
 	GetPageSize() *int32
+	SetResourceDirectoryAccountId(v int64) *DescribeEmgVulItemRequest
+	GetResourceDirectoryAccountId() *int64
 	SetRiskStatus(v string) *DescribeEmgVulItemRequest
 	GetRiskStatus() *string
 	SetScanType(v string) *DescribeEmgVulItemRequest
@@ -57,7 +59,8 @@ type DescribeEmgVulItemRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize                   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// Specifies whether the vulnerability poses risks.\\
 	//
 	// If you do not specify this parameter, all vulnerabilities are queried regardless of whether the vulnerabilities pose risks. Valid values:
@@ -114,6 +117,10 @@ func (s *DescribeEmgVulItemRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *DescribeEmgVulItemRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeEmgVulItemRequest) GetRiskStatus() *string {
 	return s.RiskStatus
 }
@@ -143,6 +150,11 @@ func (s *DescribeEmgVulItemRequest) SetLang(v string) *DescribeEmgVulItemRequest
 
 func (s *DescribeEmgVulItemRequest) SetPageSize(v int32) *DescribeEmgVulItemRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeEmgVulItemRequest) SetResourceDirectoryAccountId(v int64) *DescribeEmgVulItemRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 
