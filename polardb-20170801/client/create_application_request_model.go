@@ -15,6 +15,8 @@ type iCreateApplicationRequest interface {
 	GetArchitecture() *string
 	SetAutoRenew(v bool) *CreateApplicationRequest
 	GetAutoRenew() *bool
+	SetAutoUseCoupon(v bool) *CreateApplicationRequest
+	GetAutoUseCoupon() *bool
 	SetComponents(v []*CreateApplicationRequestComponents) *CreateApplicationRequest
 	GetComponents() []*CreateApplicationRequestComponents
 	SetDBClusterId(v string) *CreateApplicationRequest
@@ -31,6 +33,8 @@ type iCreateApplicationRequest interface {
 	GetPeriod() *string
 	SetPolarFSInstanceId(v string) *CreateApplicationRequest
 	GetPolarFSInstanceId() *string
+	SetPromotionCode(v string) *CreateApplicationRequest
+	GetPromotionCode() *string
 	SetRegionId(v string) *CreateApplicationRequest
 	GetRegionId() *string
 	SetResourceGroupId(v string) *CreateApplicationRequest
@@ -61,8 +65,9 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// true
-	AutoRenew  *bool                                 `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	Components []*CreateApplicationRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	AutoRenew     *bool                                 `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoUseCoupon *bool                                 `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	Components    []*CreateApplicationRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// example:
 	//
 	// pc-**************
@@ -88,6 +93,10 @@ type CreateApplicationRequest struct {
 	//
 	// pcs-********************
 	PolarFSInstanceId *string `json:"PolarFSInstanceId,omitempty" xml:"PolarFSInstanceId,omitempty"`
+	// example:
+	//
+	// 727xxxxxx934
+	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// example:
 	//
 	// cn-beijing
@@ -131,6 +140,10 @@ func (s *CreateApplicationRequest) GetAutoRenew() *bool {
 	return s.AutoRenew
 }
 
+func (s *CreateApplicationRequest) GetAutoUseCoupon() *bool {
+	return s.AutoUseCoupon
+}
+
 func (s *CreateApplicationRequest) GetComponents() []*CreateApplicationRequestComponents {
 	return s.Components
 }
@@ -161,6 +174,10 @@ func (s *CreateApplicationRequest) GetPeriod() *string {
 
 func (s *CreateApplicationRequest) GetPolarFSInstanceId() *string {
 	return s.PolarFSInstanceId
+}
+
+func (s *CreateApplicationRequest) GetPromotionCode() *string {
+	return s.PromotionCode
 }
 
 func (s *CreateApplicationRequest) GetRegionId() *string {
@@ -202,6 +219,11 @@ func (s *CreateApplicationRequest) SetAutoRenew(v bool) *CreateApplicationReques
 	return s
 }
 
+func (s *CreateApplicationRequest) SetAutoUseCoupon(v bool) *CreateApplicationRequest {
+	s.AutoUseCoupon = &v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetComponents(v []*CreateApplicationRequestComponents) *CreateApplicationRequest {
 	s.Components = v
 	return s
@@ -239,6 +261,11 @@ func (s *CreateApplicationRequest) SetPeriod(v string) *CreateApplicationRequest
 
 func (s *CreateApplicationRequest) SetPolarFSInstanceId(v string) *CreateApplicationRequest {
 	s.PolarFSInstanceId = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetPromotionCode(v string) *CreateApplicationRequest {
+	s.PromotionCode = &v
 	return s
 }
 

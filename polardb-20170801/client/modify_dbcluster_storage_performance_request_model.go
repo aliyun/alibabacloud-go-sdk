@@ -9,6 +9,8 @@ type iModifyDBClusterStoragePerformanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoUseCoupon(v bool) *ModifyDBClusterStoragePerformanceRequest
+	GetAutoUseCoupon() *bool
 	SetBurstingEnabled(v string) *ModifyDBClusterStoragePerformanceRequest
 	GetBurstingEnabled() *string
 	SetClientToken(v string) *ModifyDBClusterStoragePerformanceRequest
@@ -17,6 +19,8 @@ type iModifyDBClusterStoragePerformanceRequest interface {
 	GetDBClusterId() *string
 	SetModifyType(v string) *ModifyDBClusterStoragePerformanceRequest
 	GetModifyType() *string
+	SetPromotionCode(v string) *ModifyDBClusterStoragePerformanceRequest
+	GetPromotionCode() *string
 	SetProvisionedIops(v int32) *ModifyDBClusterStoragePerformanceRequest
 	GetProvisionedIops() *int32
 	SetResourceOwnerId(v int64) *ModifyDBClusterStoragePerformanceRequest
@@ -26,6 +30,7 @@ type iModifyDBClusterStoragePerformanceRequest interface {
 }
 
 type ModifyDBClusterStoragePerformanceRequest struct {
+	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// Specifies whether to enable the I/O Burst feature for the ESSD AutoPL disk. Valid value:
 	//
 	// 	- **true**
@@ -54,6 +59,10 @@ type ModifyDBClusterStoragePerformanceRequest struct {
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	// example:
 	//
+	// 727xxxxxx934
+	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// example:
+	//
 	// 2500
 	ProvisionedIops *int32 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -69,6 +78,10 @@ func (s ModifyDBClusterStoragePerformanceRequest) String() string {
 
 func (s ModifyDBClusterStoragePerformanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBClusterStoragePerformanceRequest) GetAutoUseCoupon() *bool {
+	return s.AutoUseCoupon
 }
 
 func (s *ModifyDBClusterStoragePerformanceRequest) GetBurstingEnabled() *string {
@@ -87,6 +100,10 @@ func (s *ModifyDBClusterStoragePerformanceRequest) GetModifyType() *string {
 	return s.ModifyType
 }
 
+func (s *ModifyDBClusterStoragePerformanceRequest) GetPromotionCode() *string {
+	return s.PromotionCode
+}
+
 func (s *ModifyDBClusterStoragePerformanceRequest) GetProvisionedIops() *int32 {
 	return s.ProvisionedIops
 }
@@ -97,6 +114,11 @@ func (s *ModifyDBClusterStoragePerformanceRequest) GetResourceOwnerId() *int64 {
 
 func (s *ModifyDBClusterStoragePerformanceRequest) GetStorageType() *string {
 	return s.StorageType
+}
+
+func (s *ModifyDBClusterStoragePerformanceRequest) SetAutoUseCoupon(v bool) *ModifyDBClusterStoragePerformanceRequest {
+	s.AutoUseCoupon = &v
+	return s
 }
 
 func (s *ModifyDBClusterStoragePerformanceRequest) SetBurstingEnabled(v string) *ModifyDBClusterStoragePerformanceRequest {
@@ -116,6 +138,11 @@ func (s *ModifyDBClusterStoragePerformanceRequest) SetDBClusterId(v string) *Mod
 
 func (s *ModifyDBClusterStoragePerformanceRequest) SetModifyType(v string) *ModifyDBClusterStoragePerformanceRequest {
 	s.ModifyType = &v
+	return s
+}
+
+func (s *ModifyDBClusterStoragePerformanceRequest) SetPromotionCode(v string) *ModifyDBClusterStoragePerformanceRequest {
+	s.PromotionCode = &v
 	return s
 }
 

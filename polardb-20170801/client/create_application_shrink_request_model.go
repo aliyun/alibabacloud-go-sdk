@@ -15,6 +15,8 @@ type iCreateApplicationShrinkRequest interface {
 	GetArchitecture() *string
 	SetAutoRenew(v bool) *CreateApplicationShrinkRequest
 	GetAutoRenew() *bool
+	SetAutoUseCoupon(v bool) *CreateApplicationShrinkRequest
+	GetAutoUseCoupon() *bool
 	SetComponentsShrink(v string) *CreateApplicationShrinkRequest
 	GetComponentsShrink() *string
 	SetDBClusterId(v string) *CreateApplicationShrinkRequest
@@ -31,6 +33,8 @@ type iCreateApplicationShrinkRequest interface {
 	GetPeriod() *string
 	SetPolarFSInstanceId(v string) *CreateApplicationShrinkRequest
 	GetPolarFSInstanceId() *string
+	SetPromotionCode(v string) *CreateApplicationShrinkRequest
+	GetPromotionCode() *string
 	SetRegionId(v string) *CreateApplicationShrinkRequest
 	GetRegionId() *string
 	SetResourceGroupId(v string) *CreateApplicationShrinkRequest
@@ -62,6 +66,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// true
 	AutoRenew        *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoUseCoupon    *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
 	// example:
 	//
@@ -88,6 +93,10 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// pcs-********************
 	PolarFSInstanceId *string `json:"PolarFSInstanceId,omitempty" xml:"PolarFSInstanceId,omitempty"`
+	// example:
+	//
+	// 727xxxxxx934
+	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// example:
 	//
 	// cn-beijing
@@ -131,6 +140,10 @@ func (s *CreateApplicationShrinkRequest) GetAutoRenew() *bool {
 	return s.AutoRenew
 }
 
+func (s *CreateApplicationShrinkRequest) GetAutoUseCoupon() *bool {
+	return s.AutoUseCoupon
+}
+
 func (s *CreateApplicationShrinkRequest) GetComponentsShrink() *string {
 	return s.ComponentsShrink
 }
@@ -161,6 +174,10 @@ func (s *CreateApplicationShrinkRequest) GetPeriod() *string {
 
 func (s *CreateApplicationShrinkRequest) GetPolarFSInstanceId() *string {
 	return s.PolarFSInstanceId
+}
+
+func (s *CreateApplicationShrinkRequest) GetPromotionCode() *string {
+	return s.PromotionCode
 }
 
 func (s *CreateApplicationShrinkRequest) GetRegionId() *string {
@@ -202,6 +219,11 @@ func (s *CreateApplicationShrinkRequest) SetAutoRenew(v bool) *CreateApplication
 	return s
 }
 
+func (s *CreateApplicationShrinkRequest) SetAutoUseCoupon(v bool) *CreateApplicationShrinkRequest {
+	s.AutoUseCoupon = &v
+	return s
+}
+
 func (s *CreateApplicationShrinkRequest) SetComponentsShrink(v string) *CreateApplicationShrinkRequest {
 	s.ComponentsShrink = &v
 	return s
@@ -239,6 +261,11 @@ func (s *CreateApplicationShrinkRequest) SetPeriod(v string) *CreateApplicationS
 
 func (s *CreateApplicationShrinkRequest) SetPolarFSInstanceId(v string) *CreateApplicationShrinkRequest {
 	s.PolarFSInstanceId = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetPromotionCode(v string) *CreateApplicationShrinkRequest {
+	s.PromotionCode = &v
 	return s
 }
 

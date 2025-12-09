@@ -9,6 +9,8 @@ type iModifyDBNodeClassRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoUseCoupon(v bool) *ModifyDBNodeClassRequest
+	GetAutoUseCoupon() *bool
 	SetClientToken(v string) *ModifyDBNodeClassRequest
 	GetClientToken() *string
 	SetCloudProvider(v string) *ModifyDBNodeClassRequest
@@ -31,6 +33,8 @@ type iModifyDBNodeClassRequest interface {
 	GetPlannedFlashingOffTime() *string
 	SetPlannedStartTime(v string) *ModifyDBNodeClassRequest
 	GetPlannedStartTime() *string
+	SetPromotionCode(v string) *ModifyDBNodeClassRequest
+	GetPromotionCode() *string
 	SetResourceOwnerAccount(v string) *ModifyDBNodeClassRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *ModifyDBNodeClassRequest
@@ -40,6 +44,7 @@ type iModifyDBNodeClassRequest interface {
 }
 
 type ModifyDBNodeClassRequest struct {
+	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
 	//
 	// example:
@@ -114,7 +119,11 @@ type ModifyDBNodeClassRequest struct {
 	// example:
 	//
 	// 2021-01-14T09:00:00Z
-	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
+	PlannedStartTime *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
+	// example:
+	//
+	// 727xxxxxx934
+	PromotionCode        *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The category of the cluster. Valid values:
@@ -135,6 +144,10 @@ func (s ModifyDBNodeClassRequest) String() string {
 
 func (s ModifyDBNodeClassRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBNodeClassRequest) GetAutoUseCoupon() *bool {
+	return s.AutoUseCoupon
 }
 
 func (s *ModifyDBNodeClassRequest) GetClientToken() *string {
@@ -181,6 +194,10 @@ func (s *ModifyDBNodeClassRequest) GetPlannedStartTime() *string {
 	return s.PlannedStartTime
 }
 
+func (s *ModifyDBNodeClassRequest) GetPromotionCode() *string {
+	return s.PromotionCode
+}
+
 func (s *ModifyDBNodeClassRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
@@ -191,6 +208,11 @@ func (s *ModifyDBNodeClassRequest) GetResourceOwnerId() *int64 {
 
 func (s *ModifyDBNodeClassRequest) GetSubCategory() *string {
 	return s.SubCategory
+}
+
+func (s *ModifyDBNodeClassRequest) SetAutoUseCoupon(v bool) *ModifyDBNodeClassRequest {
+	s.AutoUseCoupon = &v
+	return s
 }
 
 func (s *ModifyDBNodeClassRequest) SetClientToken(v string) *ModifyDBNodeClassRequest {
@@ -245,6 +267,11 @@ func (s *ModifyDBNodeClassRequest) SetPlannedFlashingOffTime(v string) *ModifyDB
 
 func (s *ModifyDBNodeClassRequest) SetPlannedStartTime(v string) *ModifyDBNodeClassRequest {
 	s.PlannedStartTime = &v
+	return s
+}
+
+func (s *ModifyDBNodeClassRequest) SetPromotionCode(v string) *ModifyDBNodeClassRequest {
+	s.PromotionCode = &v
 	return s
 }
 

@@ -2106,6 +2106,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["AutoRenew"] = request.AutoRenew
 	}
 
+	if !dara.IsNil(request.AutoUseCoupon) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
 	if !dara.IsNil(request.ComponentsShrink) {
 		query["Components"] = request.ComponentsShrink
 	}
@@ -2136,6 +2140,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 	if !dara.IsNil(request.PolarFSInstanceId) {
 		query["PolarFSInstanceId"] = request.PolarFSInstanceId
+	}
+
+	if !dara.IsNil(request.PromotionCode) {
+		query["PromotionCode"] = request.PromotionCode
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -2632,6 +2640,10 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 		query["AutoRenew"] = request.AutoRenew
 	}
 
+	if !dara.IsNil(request.AutoUseCoupon) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
 	if !dara.IsNil(request.BackupRetentionPolicyOnClusterDeletion) {
 		query["BackupRetentionPolicyOnClusterDeletion"] = request.BackupRetentionPolicyOnClusterDeletion
 	}
@@ -2738,6 +2750,10 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 
 	if !dara.IsNil(request.Period) {
 		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PromotionCode) {
+		query["PromotionCode"] = request.PromotionCode
 	}
 
 	if !dara.IsNil(request.ProvisionedIops) {
@@ -3418,6 +3434,10 @@ func (client *Client) CreateDBNodesWithOptions(request *CreateDBNodesRequest, ru
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoUseCoupon) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -3460,6 +3480,10 @@ func (client *Client) CreateDBNodesWithOptions(request *CreateDBNodesRequest, ru
 
 	if !dara.IsNil(request.PlannedStartTime) {
 		query["PlannedStartTime"] = request.PlannedStartTime
+	}
+
+	if !dara.IsNil(request.PromotionCode) {
+		query["PromotionCode"] = request.PromotionCode
 	}
 
 	if !dara.IsNil(request.ResourceGroupId) {
@@ -4556,6 +4580,10 @@ func (client *Client) CreateStoragePlanWithOptions(request *CreateStoragePlanReq
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoUseCoupon) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -4570,6 +4598,10 @@ func (client *Client) CreateStoragePlanWithOptions(request *CreateStoragePlanReq
 
 	if !dara.IsNil(request.Period) {
 		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PromotionCode) {
+		query["PromotionCode"] = request.PromotionCode
 	}
 
 	if !dara.IsNil(request.ResourceOwnerAccount) {
@@ -19589,12 +19621,20 @@ func (client *Client) ModifyDBClusterArchWithOptions(request *ModifyDBClusterArc
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoUseCoupon) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
 	}
 
 	if !dara.IsNil(request.HotStandbyCluster) {
 		query["HotStandbyCluster"] = request.HotStandbyCluster
+	}
+
+	if !dara.IsNil(request.PromotionCode) {
+		query["PromotionCode"] = request.PromotionCode
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -21189,6 +21229,10 @@ func (client *Client) ModifyDBClusterStoragePerformanceWithOptions(request *Modi
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoUseCoupon) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
 	if !dara.IsNil(request.BurstingEnabled) {
 		query["BurstingEnabled"] = request.BurstingEnabled
 	}
@@ -21203,6 +21247,10 @@ func (client *Client) ModifyDBClusterStoragePerformanceWithOptions(request *Modi
 
 	if !dara.IsNil(request.ModifyType) {
 		query["ModifyType"] = request.ModifyType
+	}
+
+	if !dara.IsNil(request.PromotionCode) {
+		query["PromotionCode"] = request.PromotionCode
 	}
 
 	if !dara.IsNil(request.ProvisionedIops) {
@@ -21275,6 +21323,10 @@ func (client *Client) ModifyDBClusterStorageSpaceWithOptions(request *ModifyDBCl
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoUseCoupon) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -21301,6 +21353,10 @@ func (client *Client) ModifyDBClusterStorageSpaceWithOptions(request *ModifyDBCl
 
 	if !dara.IsNil(request.PlannedStartTime) {
 		query["PlannedStartTime"] = request.PlannedStartTime
+	}
+
+	if !dara.IsNil(request.PromotionCode) {
+		query["PromotionCode"] = request.PromotionCode
 	}
 
 	if !dara.IsNil(request.ResourceOwnerAccount) {
@@ -21855,6 +21911,10 @@ func (client *Client) ModifyDBNodeClassWithOptions(request *ModifyDBNodeClassReq
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoUseCoupon) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -21897,6 +21957,10 @@ func (client *Client) ModifyDBNodeClassWithOptions(request *ModifyDBNodeClassReq
 
 	if !dara.IsNil(request.PlannedStartTime) {
 		query["PlannedStartTime"] = request.PlannedStartTime
+	}
+
+	if !dara.IsNil(request.PromotionCode) {
+		query["PromotionCode"] = request.PromotionCode
 	}
 
 	if !dara.IsNil(request.ResourceOwnerAccount) {
@@ -22313,6 +22377,10 @@ func (client *Client) ModifyDBNodesClassWithOptions(request *ModifyDBNodesClassR
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoUseCoupon) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -22351,6 +22419,10 @@ func (client *Client) ModifyDBNodesClassWithOptions(request *ModifyDBNodesClassR
 
 	if !dara.IsNil(request.PlannedStartTime) {
 		query["PlannedStartTime"] = request.PlannedStartTime
+	}
+
+	if !dara.IsNil(request.PromotionCode) {
+		query["PromotionCode"] = request.PromotionCode
 	}
 
 	if !dara.IsNil(request.ResourceOwnerAccount) {
@@ -25175,6 +25247,10 @@ func (client *Client) TempModifyDBNodeWithOptions(request *TempModifyDBNodeReque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoUseCoupon) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -25201,6 +25277,10 @@ func (client *Client) TempModifyDBNodeWithOptions(request *TempModifyDBNodeReque
 
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PromotionCode) {
+		query["PromotionCode"] = request.PromotionCode
 	}
 
 	if !dara.IsNil(request.ResourceOwnerAccount) {
@@ -25283,6 +25363,10 @@ func (client *Client) TransformDBClusterPayTypeWithOptions(request *TransformDBC
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoUseCoupon) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -25305,6 +25389,10 @@ func (client *Client) TransformDBClusterPayTypeWithOptions(request *TransformDBC
 
 	if !dara.IsNil(request.Period) {
 		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PromotionCode) {
+		query["PromotionCode"] = request.PromotionCode
 	}
 
 	if !dara.IsNil(request.RegionId) {

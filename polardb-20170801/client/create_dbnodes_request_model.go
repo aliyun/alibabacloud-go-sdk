@@ -9,6 +9,8 @@ type iCreateDBNodesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoUseCoupon(v bool) *CreateDBNodesRequest
+	GetAutoUseCoupon() *bool
 	SetClientToken(v string) *CreateDBNodesRequest
 	GetClientToken() *string
 	SetCloudProvider(v string) *CreateDBNodesRequest
@@ -31,6 +33,8 @@ type iCreateDBNodesRequest interface {
 	GetPlannedEndTime() *string
 	SetPlannedStartTime(v string) *CreateDBNodesRequest
 	GetPlannedStartTime() *string
+	SetPromotionCode(v string) *CreateDBNodesRequest
+	GetPromotionCode() *string
 	SetResourceGroupId(v string) *CreateDBNodesRequest
 	GetResourceGroupId() *string
 	SetResourceOwnerAccount(v string) *CreateDBNodesRequest
@@ -40,6 +44,7 @@ type iCreateDBNodesRequest interface {
 }
 
 type CreateDBNodesRequest struct {
+	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
 	//
 	// example:
@@ -128,6 +133,10 @@ type CreateDBNodesRequest struct {
 	//
 	// 2021-01-14T09:00:00Z
 	PlannedStartTime *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
+	// example:
+	//
+	// 727xxxxxx934
+	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
@@ -144,6 +153,10 @@ func (s CreateDBNodesRequest) String() string {
 
 func (s CreateDBNodesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDBNodesRequest) GetAutoUseCoupon() *bool {
+	return s.AutoUseCoupon
 }
 
 func (s *CreateDBNodesRequest) GetClientToken() *string {
@@ -190,6 +203,10 @@ func (s *CreateDBNodesRequest) GetPlannedStartTime() *string {
 	return s.PlannedStartTime
 }
 
+func (s *CreateDBNodesRequest) GetPromotionCode() *string {
+	return s.PromotionCode
+}
+
 func (s *CreateDBNodesRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
@@ -200,6 +217,11 @@ func (s *CreateDBNodesRequest) GetResourceOwnerAccount() *string {
 
 func (s *CreateDBNodesRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
+}
+
+func (s *CreateDBNodesRequest) SetAutoUseCoupon(v bool) *CreateDBNodesRequest {
+	s.AutoUseCoupon = &v
+	return s
 }
 
 func (s *CreateDBNodesRequest) SetClientToken(v string) *CreateDBNodesRequest {
@@ -254,6 +276,11 @@ func (s *CreateDBNodesRequest) SetPlannedEndTime(v string) *CreateDBNodesRequest
 
 func (s *CreateDBNodesRequest) SetPlannedStartTime(v string) *CreateDBNodesRequest {
 	s.PlannedStartTime = &v
+	return s
+}
+
+func (s *CreateDBNodesRequest) SetPromotionCode(v string) *CreateDBNodesRequest {
+	s.PromotionCode = &v
 	return s
 }
 

@@ -23,6 +23,8 @@ type iDescribeAIDBClusterAttributeResponseBody interface {
 	GetDBNodes() []*DescribeAIDBClusterAttributeResponseBodyDBNodes
 	SetDBVersion(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetDBVersion() *string
+	SetEcsSecurityGroupId(v string) *DescribeAIDBClusterAttributeResponseBody
+	GetEcsSecurityGroupId() *string
 	SetEndpointList(v []*DescribeAIDBClusterAttributeResponseBodyEndpointList) *DescribeAIDBClusterAttributeResponseBody
 	GetEndpointList() []*DescribeAIDBClusterAttributeResponseBodyEndpointList
 	SetExpireTime(v string) *DescribeAIDBClusterAttributeResponseBody
@@ -90,8 +92,12 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// 1.0
-	DBVersion    *string                                                 `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	EndpointList []*DescribeAIDBClusterAttributeResponseBodyEndpointList `json:"EndpointList,omitempty" xml:"EndpointList,omitempty" type:"Repeated"`
+	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	// example:
+	//
+	// sg-xxxxxx
+	EcsSecurityGroupId *string                                                 `json:"EcsSecurityGroupId,omitempty" xml:"EcsSecurityGroupId,omitempty"`
+	EndpointList       []*DescribeAIDBClusterAttributeResponseBodyEndpointList `json:"EndpointList,omitempty" xml:"EndpointList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2020-11-14T16:00:00Z
@@ -200,6 +206,10 @@ func (s *DescribeAIDBClusterAttributeResponseBody) GetDBNodes() []*DescribeAIDBC
 
 func (s *DescribeAIDBClusterAttributeResponseBody) GetDBVersion() *string {
 	return s.DBVersion
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) GetEcsSecurityGroupId() *string {
+	return s.EcsSecurityGroupId
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBody) GetEndpointList() []*DescribeAIDBClusterAttributeResponseBodyEndpointList {
@@ -314,6 +324,11 @@ func (s *DescribeAIDBClusterAttributeResponseBody) SetDBNodes(v []*DescribeAIDBC
 
 func (s *DescribeAIDBClusterAttributeResponseBody) SetDBVersion(v string) *DescribeAIDBClusterAttributeResponseBody {
 	s.DBVersion = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) SetEcsSecurityGroupId(v string) *DescribeAIDBClusterAttributeResponseBody {
+	s.EcsSecurityGroupId = &v
 	return s
 }
 

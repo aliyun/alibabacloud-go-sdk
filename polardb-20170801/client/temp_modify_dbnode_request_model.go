@@ -9,6 +9,8 @@ type iTempModifyDBNodeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoUseCoupon(v bool) *TempModifyDBNodeRequest
+	GetAutoUseCoupon() *bool
 	SetClientToken(v string) *TempModifyDBNodeRequest
 	GetClientToken() *string
 	SetDBClusterId(v string) *TempModifyDBNodeRequest
@@ -23,6 +25,8 @@ type iTempModifyDBNodeRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *TempModifyDBNodeRequest
 	GetOwnerId() *int64
+	SetPromotionCode(v string) *TempModifyDBNodeRequest
+	GetPromotionCode() *string
 	SetResourceOwnerAccount(v string) *TempModifyDBNodeRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *TempModifyDBNodeRequest
@@ -32,6 +36,7 @@ type iTempModifyDBNodeRequest interface {
 }
 
 type TempModifyDBNodeRequest struct {
+	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
@@ -67,9 +72,13 @@ type TempModifyDBNodeRequest struct {
 	// example:
 	//
 	// Modify
-	OperationType        *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 727xxxxxx934
+	PromotionCode        *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The rollback time of the configuration for the temporary upgrade. Specify the time in the ISO 8601 standard in the YYYY-MM-DD hh:mm:ss format.
@@ -90,6 +99,10 @@ func (s TempModifyDBNodeRequest) String() string {
 
 func (s TempModifyDBNodeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *TempModifyDBNodeRequest) GetAutoUseCoupon() *bool {
+	return s.AutoUseCoupon
 }
 
 func (s *TempModifyDBNodeRequest) GetClientToken() *string {
@@ -120,6 +133,10 @@ func (s *TempModifyDBNodeRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
 
+func (s *TempModifyDBNodeRequest) GetPromotionCode() *string {
+	return s.PromotionCode
+}
+
 func (s *TempModifyDBNodeRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
@@ -130,6 +147,11 @@ func (s *TempModifyDBNodeRequest) GetResourceOwnerId() *int64 {
 
 func (s *TempModifyDBNodeRequest) GetRestoreTime() *string {
 	return s.RestoreTime
+}
+
+func (s *TempModifyDBNodeRequest) SetAutoUseCoupon(v bool) *TempModifyDBNodeRequest {
+	s.AutoUseCoupon = &v
+	return s
 }
 
 func (s *TempModifyDBNodeRequest) SetClientToken(v string) *TempModifyDBNodeRequest {
@@ -164,6 +186,11 @@ func (s *TempModifyDBNodeRequest) SetOwnerAccount(v string) *TempModifyDBNodeReq
 
 func (s *TempModifyDBNodeRequest) SetOwnerId(v int64) *TempModifyDBNodeRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *TempModifyDBNodeRequest) SetPromotionCode(v string) *TempModifyDBNodeRequest {
+	s.PromotionCode = &v
 	return s
 }
 

@@ -15,6 +15,8 @@ type iCreateDBClusterRequest interface {
 	GetArchitecture() *string
 	SetAutoRenew(v bool) *CreateDBClusterRequest
 	GetAutoRenew() *bool
+	SetAutoUseCoupon(v bool) *CreateDBClusterRequest
+	GetAutoUseCoupon() *bool
 	SetBackupRetentionPolicyOnClusterDeletion(v string) *CreateDBClusterRequest
 	GetBackupRetentionPolicyOnClusterDeletion() *string
 	SetBurstingEnabled(v string) *CreateDBClusterRequest
@@ -69,6 +71,8 @@ type iCreateDBClusterRequest interface {
 	GetPayType() *string
 	SetPeriod(v string) *CreateDBClusterRequest
 	GetPeriod() *string
+	SetPromotionCode(v string) *CreateDBClusterRequest
+	GetPromotionCode() *string
 	SetProvisionedIops(v int64) *CreateDBClusterRequest
 	GetProvisionedIops() *int64
 	SetProxyClass(v string) *CreateDBClusterRequest
@@ -169,7 +173,8 @@ type CreateDBClusterRequest struct {
 	// example:
 	//
 	// true
-	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenew     *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// Backup retention policy upon cluster deletion, with valid values as follows:
 	//
 	// 	- **ALL**: Permanently retain all backups.
@@ -506,6 +511,10 @@ type CreateDBClusterRequest struct {
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// 727xxxxxx934
+	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// <p id="p_wyg_t4a_glm">The provisioned read and write IOPS for ESSD AutoPL cloud disks. Possible values: 0 to min{50,000, 1000*capacity-Baseline Performance}.</p>
 	//
 	// <p id="p_6de_jxy_k2g">Baseline Performance = min{1,800+50*capacity, 50000}.</p>
@@ -805,6 +814,10 @@ func (s *CreateDBClusterRequest) GetAutoRenew() *bool {
 	return s.AutoRenew
 }
 
+func (s *CreateDBClusterRequest) GetAutoUseCoupon() *bool {
+	return s.AutoUseCoupon
+}
+
 func (s *CreateDBClusterRequest) GetBackupRetentionPolicyOnClusterDeletion() *string {
 	return s.BackupRetentionPolicyOnClusterDeletion
 }
@@ -911,6 +924,10 @@ func (s *CreateDBClusterRequest) GetPayType() *string {
 
 func (s *CreateDBClusterRequest) GetPeriod() *string {
 	return s.Period
+}
+
+func (s *CreateDBClusterRequest) GetPromotionCode() *string {
+	return s.PromotionCode
 }
 
 func (s *CreateDBClusterRequest) GetProvisionedIops() *int64 {
@@ -1052,6 +1069,11 @@ func (s *CreateDBClusterRequest) SetAutoRenew(v bool) *CreateDBClusterRequest {
 	return s
 }
 
+func (s *CreateDBClusterRequest) SetAutoUseCoupon(v bool) *CreateDBClusterRequest {
+	s.AutoUseCoupon = &v
+	return s
+}
+
 func (s *CreateDBClusterRequest) SetBackupRetentionPolicyOnClusterDeletion(v string) *CreateDBClusterRequest {
 	s.BackupRetentionPolicyOnClusterDeletion = &v
 	return s
@@ -1184,6 +1206,11 @@ func (s *CreateDBClusterRequest) SetPayType(v string) *CreateDBClusterRequest {
 
 func (s *CreateDBClusterRequest) SetPeriod(v string) *CreateDBClusterRequest {
 	s.Period = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetPromotionCode(v string) *CreateDBClusterRequest {
+	s.PromotionCode = &v
 	return s
 }
 

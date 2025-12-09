@@ -9,6 +9,8 @@ type iModifyDBClusterStorageSpaceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoUseCoupon(v bool) *ModifyDBClusterStorageSpaceRequest
+	GetAutoUseCoupon() *bool
 	SetClientToken(v string) *ModifyDBClusterStorageSpaceRequest
 	GetClientToken() *string
 	SetCloudProvider(v string) *ModifyDBClusterStorageSpaceRequest
@@ -23,6 +25,8 @@ type iModifyDBClusterStorageSpaceRequest interface {
 	GetPlannedEndTime() *string
 	SetPlannedStartTime(v string) *ModifyDBClusterStorageSpaceRequest
 	GetPlannedStartTime() *string
+	SetPromotionCode(v string) *ModifyDBClusterStorageSpaceRequest
+	GetPromotionCode() *string
 	SetResourceOwnerAccount(v string) *ModifyDBClusterStorageSpaceRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *ModifyDBClusterStorageSpaceRequest
@@ -34,6 +38,7 @@ type iModifyDBClusterStorageSpaceRequest interface {
 }
 
 type ModifyDBClusterStorageSpaceRequest struct {
+	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
 	//
 	// example:
@@ -75,7 +80,11 @@ type ModifyDBClusterStorageSpaceRequest struct {
 	// example:
 	//
 	// 2021-01-14T09:00:00Z
-	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
+	PlannedStartTime *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
+	// example:
+	//
+	// 727xxxxxx934
+	PromotionCode        *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The storage capacity that you can select when you change the cluster. Unit: GB.
@@ -108,6 +117,10 @@ func (s ModifyDBClusterStorageSpaceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyDBClusterStorageSpaceRequest) GetAutoUseCoupon() *bool {
+	return s.AutoUseCoupon
+}
+
 func (s *ModifyDBClusterStorageSpaceRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -136,6 +149,10 @@ func (s *ModifyDBClusterStorageSpaceRequest) GetPlannedStartTime() *string {
 	return s.PlannedStartTime
 }
 
+func (s *ModifyDBClusterStorageSpaceRequest) GetPromotionCode() *string {
+	return s.PromotionCode
+}
+
 func (s *ModifyDBClusterStorageSpaceRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
@@ -150,6 +167,11 @@ func (s *ModifyDBClusterStorageSpaceRequest) GetStorageSpace() *int64 {
 
 func (s *ModifyDBClusterStorageSpaceRequest) GetSubCategory() *string {
 	return s.SubCategory
+}
+
+func (s *ModifyDBClusterStorageSpaceRequest) SetAutoUseCoupon(v bool) *ModifyDBClusterStorageSpaceRequest {
+	s.AutoUseCoupon = &v
+	return s
 }
 
 func (s *ModifyDBClusterStorageSpaceRequest) SetClientToken(v string) *ModifyDBClusterStorageSpaceRequest {
@@ -184,6 +206,11 @@ func (s *ModifyDBClusterStorageSpaceRequest) SetPlannedEndTime(v string) *Modify
 
 func (s *ModifyDBClusterStorageSpaceRequest) SetPlannedStartTime(v string) *ModifyDBClusterStorageSpaceRequest {
 	s.PlannedStartTime = &v
+	return s
+}
+
+func (s *ModifyDBClusterStorageSpaceRequest) SetPromotionCode(v string) *ModifyDBClusterStorageSpaceRequest {
+	s.PromotionCode = &v
 	return s
 }
 

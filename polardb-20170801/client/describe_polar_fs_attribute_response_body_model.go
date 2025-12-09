@@ -25,6 +25,8 @@ type iDescribePolarFsAttributeResponseBody interface {
 	GetClientDownloadPath() *string
 	SetCreateTime(v string) *DescribePolarFsAttributeResponseBody
 	GetCreateTime() *string
+	SetCustomBucketPath(v string) *DescribePolarFsAttributeResponseBody
+	GetCustomBucketPath() *string
 	SetDBType(v string) *DescribePolarFsAttributeResponseBody
 	GetDBType() *string
 	SetExpireTime(v string) *DescribePolarFsAttributeResponseBody
@@ -104,6 +106,10 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// 2021-08-02T05:57:10Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// xxxxxx-%d.oss-cn-beijing-internal.aliyuncs.com
+	CustomBucketPath *string `json:"CustomBucketPath,omitempty" xml:"CustomBucketPath,omitempty"`
 	// example:
 	//
 	// MySQL
@@ -231,6 +237,10 @@ func (s *DescribePolarFsAttributeResponseBody) GetClientDownloadPath() *string {
 
 func (s *DescribePolarFsAttributeResponseBody) GetCreateTime() *string {
 	return s.CreateTime
+}
+
+func (s *DescribePolarFsAttributeResponseBody) GetCustomBucketPath() *string {
+	return s.CustomBucketPath
 }
 
 func (s *DescribePolarFsAttributeResponseBody) GetDBType() *string {
@@ -370,6 +380,11 @@ func (s *DescribePolarFsAttributeResponseBody) SetClientDownloadPath(v string) *
 
 func (s *DescribePolarFsAttributeResponseBody) SetCreateTime(v string) *DescribePolarFsAttributeResponseBody {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBody) SetCustomBucketPath(v string) *DescribePolarFsAttributeResponseBody {
+	s.CustomBucketPath = &v
 	return s
 }
 

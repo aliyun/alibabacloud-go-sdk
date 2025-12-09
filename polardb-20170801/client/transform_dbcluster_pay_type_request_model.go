@@ -9,6 +9,8 @@ type iTransformDBClusterPayTypeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoUseCoupon(v bool) *TransformDBClusterPayTypeRequest
+	GetAutoUseCoupon() *bool
 	SetClientToken(v string) *TransformDBClusterPayTypeRequest
 	GetClientToken() *string
 	SetDBClusterId(v string) *TransformDBClusterPayTypeRequest
@@ -21,6 +23,8 @@ type iTransformDBClusterPayTypeRequest interface {
 	GetPayType() *string
 	SetPeriod(v string) *TransformDBClusterPayTypeRequest
 	GetPeriod() *string
+	SetPromotionCode(v string) *TransformDBClusterPayTypeRequest
+	GetPromotionCode() *string
 	SetRegionId(v string) *TransformDBClusterPayTypeRequest
 	GetRegionId() *string
 	SetResourceGroupId(v string) *TransformDBClusterPayTypeRequest
@@ -34,6 +38,7 @@ type iTransformDBClusterPayTypeRequest interface {
 }
 
 type TransformDBClusterPayTypeRequest struct {
+	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
@@ -74,6 +79,10 @@ type TransformDBClusterPayTypeRequest struct {
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// 727xxxxxx934
+	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// The ID of the region.
 	//
 	// This parameter is required.
@@ -112,6 +121,10 @@ func (s TransformDBClusterPayTypeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *TransformDBClusterPayTypeRequest) GetAutoUseCoupon() *bool {
+	return s.AutoUseCoupon
+}
+
 func (s *TransformDBClusterPayTypeRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -136,6 +149,10 @@ func (s *TransformDBClusterPayTypeRequest) GetPeriod() *string {
 	return s.Period
 }
 
+func (s *TransformDBClusterPayTypeRequest) GetPromotionCode() *string {
+	return s.PromotionCode
+}
+
 func (s *TransformDBClusterPayTypeRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -154,6 +171,11 @@ func (s *TransformDBClusterPayTypeRequest) GetResourceOwnerId() *int64 {
 
 func (s *TransformDBClusterPayTypeRequest) GetUsedTime() *string {
 	return s.UsedTime
+}
+
+func (s *TransformDBClusterPayTypeRequest) SetAutoUseCoupon(v bool) *TransformDBClusterPayTypeRequest {
+	s.AutoUseCoupon = &v
+	return s
 }
 
 func (s *TransformDBClusterPayTypeRequest) SetClientToken(v string) *TransformDBClusterPayTypeRequest {
@@ -183,6 +205,11 @@ func (s *TransformDBClusterPayTypeRequest) SetPayType(v string) *TransformDBClus
 
 func (s *TransformDBClusterPayTypeRequest) SetPeriod(v string) *TransformDBClusterPayTypeRequest {
 	s.Period = &v
+	return s
+}
+
+func (s *TransformDBClusterPayTypeRequest) SetPromotionCode(v string) *TransformDBClusterPayTypeRequest {
+	s.PromotionCode = &v
 	return s
 }
 

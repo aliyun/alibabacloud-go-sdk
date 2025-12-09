@@ -9,6 +9,8 @@ type iCreateStoragePlanRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoUseCoupon(v bool) *CreateStoragePlanRequest
+	GetAutoUseCoupon() *bool
 	SetClientToken(v string) *CreateStoragePlanRequest
 	GetClientToken() *string
 	SetOwnerAccount(v string) *CreateStoragePlanRequest
@@ -17,6 +19,8 @@ type iCreateStoragePlanRequest interface {
 	GetOwnerId() *int64
 	SetPeriod(v string) *CreateStoragePlanRequest
 	GetPeriod() *string
+	SetPromotionCode(v string) *CreateStoragePlanRequest
+	GetPromotionCode() *string
 	SetResourceOwnerAccount(v string) *CreateStoragePlanRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *CreateStoragePlanRequest
@@ -30,6 +34,7 @@ type iCreateStoragePlanRequest interface {
 }
 
 type CreateStoragePlanRequest struct {
+	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
@@ -49,7 +54,11 @@ type CreateStoragePlanRequest struct {
 	// example:
 	//
 	// Month
-	Period               *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// 727xxxxxx934
+	PromotionCode        *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The capacity of the storage plan. Unit: GB. Valid values: 50, 100, 200, 300, 500, 1000, 2000, 3000, 5000, 10000, 15000, 20000, 25000, 30000, 50000, 100000, and 200000
@@ -94,6 +103,10 @@ func (s CreateStoragePlanRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateStoragePlanRequest) GetAutoUseCoupon() *bool {
+	return s.AutoUseCoupon
+}
+
 func (s *CreateStoragePlanRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -108,6 +121,10 @@ func (s *CreateStoragePlanRequest) GetOwnerId() *int64 {
 
 func (s *CreateStoragePlanRequest) GetPeriod() *string {
 	return s.Period
+}
+
+func (s *CreateStoragePlanRequest) GetPromotionCode() *string {
+	return s.PromotionCode
 }
 
 func (s *CreateStoragePlanRequest) GetResourceOwnerAccount() *string {
@@ -130,6 +147,11 @@ func (s *CreateStoragePlanRequest) GetUsedTime() *string {
 	return s.UsedTime
 }
 
+func (s *CreateStoragePlanRequest) SetAutoUseCoupon(v bool) *CreateStoragePlanRequest {
+	s.AutoUseCoupon = &v
+	return s
+}
+
 func (s *CreateStoragePlanRequest) SetClientToken(v string) *CreateStoragePlanRequest {
 	s.ClientToken = &v
 	return s
@@ -147,6 +169,11 @@ func (s *CreateStoragePlanRequest) SetOwnerId(v int64) *CreateStoragePlanRequest
 
 func (s *CreateStoragePlanRequest) SetPeriod(v string) *CreateStoragePlanRequest {
 	s.Period = &v
+	return s
+}
+
+func (s *CreateStoragePlanRequest) SetPromotionCode(v string) *CreateStoragePlanRequest {
+	s.PromotionCode = &v
 	return s
 }
 
