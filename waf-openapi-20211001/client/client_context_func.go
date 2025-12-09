@@ -3933,6 +3933,74 @@ func (client *Client) DescribeBaseSystemRulesWithContext(ctx context.Context, re
 
 // Summary:
 //
+// 分页获取Bot管理规则标签信息
+//
+// @param request - DescribeBotRuleLabelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBotRuleLabelsResponse
+func (client *Client) DescribeBotRuleLabelsWithContext(ctx context.Context, request *DescribeBotRuleLabelsRequest, runtime *dara.RuntimeOptions) (_result *DescribeBotRuleLabelsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.LabelType) {
+		query["LabelType"] = request.LabelType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.SubScene) {
+		query["SubScene"] = request.SubScene
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeBotRuleLabels"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeBotRuleLabelsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a certificate, such as the certificate name, expiration time, issuance time, and associated domain name.
 //
 // @param request - DescribeCertDetailRequest

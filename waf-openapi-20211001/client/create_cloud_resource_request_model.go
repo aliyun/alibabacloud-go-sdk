@@ -247,7 +247,8 @@ type CreateCloudResourceRequestListen struct {
 	// example:
 	//
 	// clb4
-	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
+	ResourceProduct  *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 	// The Transport Layer Security (TLS) version that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
 	//
 	// 	- **tlsv1**
@@ -306,6 +307,10 @@ func (s *CreateCloudResourceRequestListen) GetResourceProduct() *string {
 	return s.ResourceProduct
 }
 
+func (s *CreateCloudResourceRequestListen) GetResourceRegionId() *string {
+	return s.ResourceRegionId
+}
+
 func (s *CreateCloudResourceRequestListen) GetTLSVersion() *string {
 	return s.TLSVersion
 }
@@ -352,6 +357,11 @@ func (s *CreateCloudResourceRequestListen) SetResourceInstanceId(v string) *Crea
 
 func (s *CreateCloudResourceRequestListen) SetResourceProduct(v string) *CreateCloudResourceRequestListen {
 	s.ResourceProduct = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequestListen) SetResourceRegionId(v string) *CreateCloudResourceRequestListen {
+	s.ResourceRegionId = &v
 	return s
 }
 
