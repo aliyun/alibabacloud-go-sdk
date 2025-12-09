@@ -130,7 +130,8 @@ type ListVpcEndpointServicesByEndUserResponseBodyServices struct {
 	// example:
 	//
 	// IPv4
-	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
+	AddressIpVersion  *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
+	AutoAcceptEnabled *bool   `json:"AutoAcceptEnabled,omitempty" xml:"AutoAcceptEnabled,omitempty"`
 	// The payer. Valid values:
 	//
 	// 	- **Endpoint**: the service consumer
@@ -196,8 +197,9 @@ type ListVpcEndpointServicesByEndUserResponseBodyServices struct {
 	// Interface
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	// The list of tags.
-	Tags                []*ListVpcEndpointServicesByEndUserResponseBodyServicesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	ZoneAffinityEnabled *bool                                                       `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
+	Tags                       []*ListVpcEndpointServicesByEndUserResponseBodyServicesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpcEndpointPolicySupported *bool                                                       `json:"VpcEndpointPolicySupported,omitempty" xml:"VpcEndpointPolicySupported,omitempty"`
+	ZoneAffinityEnabled        *bool                                                       `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
 	// The zones of the endpoint service that can be associated with the endpoint.
 	Zones []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
@@ -212,6 +214,10 @@ func (s ListVpcEndpointServicesByEndUserResponseBodyServices) GoString() string 
 
 func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) GetAddressIpVersion() *string {
 	return s.AddressIpVersion
+}
+
+func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) GetAutoAcceptEnabled() *bool {
+	return s.AutoAcceptEnabled
 }
 
 func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) GetPayer() *string {
@@ -250,6 +256,10 @@ func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) GetTags() []*List
 	return s.Tags
 }
 
+func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) GetVpcEndpointPolicySupported() *bool {
+	return s.VpcEndpointPolicySupported
+}
+
 func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) GetZoneAffinityEnabled() *bool {
 	return s.ZoneAffinityEnabled
 }
@@ -260,6 +270,11 @@ func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) GetZones() []*str
 
 func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) SetAddressIpVersion(v string) *ListVpcEndpointServicesByEndUserResponseBodyServices {
 	s.AddressIpVersion = &v
+	return s
+}
+
+func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) SetAutoAcceptEnabled(v bool) *ListVpcEndpointServicesByEndUserResponseBodyServices {
+	s.AutoAcceptEnabled = &v
 	return s
 }
 
@@ -305,6 +320,11 @@ func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) SetServiceType(v 
 
 func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) SetTags(v []*ListVpcEndpointServicesByEndUserResponseBodyServicesTags) *ListVpcEndpointServicesByEndUserResponseBodyServices {
 	s.Tags = v
+	return s
+}
+
+func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) SetVpcEndpointPolicySupported(v bool) *ListVpcEndpointServicesByEndUserResponseBodyServices {
+	s.VpcEndpointPolicySupported = &v
 	return s
 }
 

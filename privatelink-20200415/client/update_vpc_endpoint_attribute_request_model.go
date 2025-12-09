@@ -25,6 +25,8 @@ type iUpdateVpcEndpointAttributeRequest interface {
 	GetPolicyDocument() *string
 	SetRegionId(v string) *UpdateVpcEndpointAttributeRequest
 	GetRegionId() *string
+	SetResetPolicy(v bool) *UpdateVpcEndpointAttributeRequest
+	GetResetPolicy() *bool
 	SetZoneAffinityEnabled(v bool) *UpdateVpcEndpointAttributeRequest
 	GetZoneAffinityEnabled() *bool
 }
@@ -136,6 +138,7 @@ type UpdateVpcEndpointAttributeRequest struct {
 	//
 	// eu-west-1
 	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResetPolicy         *bool   `json:"ResetPolicy,omitempty" xml:"ResetPolicy,omitempty"`
 	ZoneAffinityEnabled *bool   `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
 }
 
@@ -179,6 +182,10 @@ func (s *UpdateVpcEndpointAttributeRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *UpdateVpcEndpointAttributeRequest) GetResetPolicy() *bool {
+	return s.ResetPolicy
+}
+
 func (s *UpdateVpcEndpointAttributeRequest) GetZoneAffinityEnabled() *bool {
 	return s.ZoneAffinityEnabled
 }
@@ -220,6 +227,11 @@ func (s *UpdateVpcEndpointAttributeRequest) SetPolicyDocument(v string) *UpdateV
 
 func (s *UpdateVpcEndpointAttributeRequest) SetRegionId(v string) *UpdateVpcEndpointAttributeRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointAttributeRequest) SetResetPolicy(v bool) *UpdateVpcEndpointAttributeRequest {
+	s.ResetPolicy = &v
 	return s
 }
 

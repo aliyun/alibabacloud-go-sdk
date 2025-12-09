@@ -3352,6 +3352,10 @@ func (client *Client) UpdateVpcEndpointAttributeWithOptions(request *UpdateVpcEn
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.ResetPolicy) {
+		query["ResetPolicy"] = request.ResetPolicy
+	}
+
 	if !dara.IsNil(request.ZoneAffinityEnabled) {
 		query["ZoneAffinityEnabled"] = request.ZoneAffinityEnabled
 	}
