@@ -15,6 +15,8 @@ type iGenerateCLICommandRequest interface {
 	GetApiParams() map[string]interface{}
 	SetApiVersion(v string) *GenerateCLICommandRequest
 	GetApiVersion() *string
+	SetJsonApiParams(v string) *GenerateCLICommandRequest
+	GetJsonApiParams() *string
 	SetProduct(v string) *GenerateCLICommandRequest
 	GetProduct() *string
 	SetRegionId(v string) *GenerateCLICommandRequest
@@ -23,10 +25,12 @@ type iGenerateCLICommandRequest interface {
 
 type GenerateCLICommandRequest struct {
 	// This parameter is required.
-	Api       *string                `json:"api,omitempty" xml:"api,omitempty"`
+	Api *string `json:"api,omitempty" xml:"api,omitempty"`
+	// Deprecated
 	ApiParams map[string]interface{} `json:"apiParams,omitempty" xml:"apiParams,omitempty"`
 	// This parameter is required.
-	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
+	ApiVersion    *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
+	JsonApiParams *string `json:"jsonApiParams,omitempty" xml:"jsonApiParams,omitempty"`
 	// This parameter is required.
 	Product  *string `json:"product,omitempty" xml:"product,omitempty"`
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
@@ -52,6 +56,10 @@ func (s *GenerateCLICommandRequest) GetApiVersion() *string {
 	return s.ApiVersion
 }
 
+func (s *GenerateCLICommandRequest) GetJsonApiParams() *string {
+	return s.JsonApiParams
+}
+
 func (s *GenerateCLICommandRequest) GetProduct() *string {
 	return s.Product
 }
@@ -72,6 +80,11 @@ func (s *GenerateCLICommandRequest) SetApiParams(v map[string]interface{}) *Gene
 
 func (s *GenerateCLICommandRequest) SetApiVersion(v string) *GenerateCLICommandRequest {
 	s.ApiVersion = &v
+	return s
+}
+
+func (s *GenerateCLICommandRequest) SetJsonApiParams(v string) *GenerateCLICommandRequest {
+	s.JsonApiParams = &v
 	return s
 }
 

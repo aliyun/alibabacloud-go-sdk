@@ -101,6 +101,10 @@ func (client *Client) CreateApiMcpServerWithContext(ctx context.Context, request
 		body["enableAssumeRole"] = request.EnableAssumeRole
 	}
 
+	if !dara.IsNil(request.EnableCustomVpcWhitelist) {
+		body["enableCustomVpcWhitelist"] = request.EnableCustomVpcWhitelist
+	}
+
 	if !dara.IsNil(request.Instructions) {
 		body["instructions"] = request.Instructions
 	}
@@ -121,12 +125,20 @@ func (client *Client) CreateApiMcpServerWithContext(ctx context.Context, request
 		body["prompts"] = request.Prompts
 	}
 
+	if !dara.IsNil(request.PublicAccess) {
+		body["publicAccess"] = request.PublicAccess
+	}
+
 	if !dara.IsNil(request.SystemTools) {
 		body["systemTools"] = request.SystemTools
 	}
 
 	if !dara.IsNil(request.TerraformTools) {
 		body["terraformTools"] = request.TerraformTools
+	}
+
+	if !dara.IsNil(request.VpcWhitelists) {
+		body["vpcWhitelists"] = request.VpcWhitelists
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -239,6 +251,10 @@ func (client *Client) GenerateCLICommandWithContext(ctx context.Context, tmpReq 
 
 	if !dara.IsNil(request.ApiVersion) {
 		body["apiVersion"] = request.ApiVersion
+	}
+
+	if !dara.IsNil(request.JsonApiParams) {
+		body["jsonApiParams"] = request.JsonApiParams
 	}
 
 	if !dara.IsNil(request.Product) {
@@ -367,6 +383,39 @@ func (client *Client) GetApiMcpServerWithContext(ctx context.Context, request *G
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetApiMcpServerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户全局API MCP Server配置
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApiMcpServerUserConfigResponse
+func (client *Client) GetApiMcpServerUserConfigWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetApiMcpServerUserConfigResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetApiMcpServerUserConfig"),
+		Version:     dara.String("2024-11-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/userconfig/get"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetApiMcpServerUserConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -828,6 +877,10 @@ func (client *Client) UpdateApiMcpServerWithContext(ctx context.Context, request
 		body["enableAssumeRole"] = request.EnableAssumeRole
 	}
 
+	if !dara.IsNil(request.EnableCustomVpcWhitelist) {
+		body["enableCustomVpcWhitelist"] = request.EnableCustomVpcWhitelist
+	}
+
 	if !dara.IsNil(request.Instructions) {
 		body["instructions"] = request.Instructions
 	}
@@ -844,12 +897,20 @@ func (client *Client) UpdateApiMcpServerWithContext(ctx context.Context, request
 		body["prompts"] = request.Prompts
 	}
 
+	if !dara.IsNil(request.PublicAccess) {
+		body["publicAccess"] = request.PublicAccess
+	}
+
 	if !dara.IsNil(request.SystemTools) {
 		body["systemTools"] = request.SystemTools
 	}
 
 	if !dara.IsNil(request.TerraformTools) {
 		body["terraformTools"] = request.TerraformTools
+	}
+
+	if !dara.IsNil(request.VpcWhitelists) {
+		body["vpcWhitelists"] = request.VpcWhitelists
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -869,6 +930,57 @@ func (client *Client) UpdateApiMcpServerWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateApiMcpServerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改用户全局API MCP Server配置
+//
+// @param request - UpdateApiMcpServerUserConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApiMcpServerUserConfigResponse
+func (client *Client) UpdateApiMcpServerUserConfigWithContext(ctx context.Context, request *UpdateApiMcpServerUserConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateApiMcpServerUserConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EnablePublicAccess) {
+		body["enablePublicAccess"] = request.EnablePublicAccess
+	}
+
+	if !dara.IsNil(request.VpcWhitelists) {
+		body["vpcWhitelists"] = request.VpcWhitelists
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateApiMcpServerUserConfig"),
+		Version:     dara.String("2024-11-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/userconfig/update"),
+		Method:      dara.String("PATCH"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateApiMcpServerUserConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

@@ -15,6 +15,8 @@ type iGenerateCLICommandShrinkRequest interface {
 	GetApiParamsShrink() *string
 	SetApiVersion(v string) *GenerateCLICommandShrinkRequest
 	GetApiVersion() *string
+	SetJsonApiParams(v string) *GenerateCLICommandShrinkRequest
+	GetJsonApiParams() *string
 	SetProduct(v string) *GenerateCLICommandShrinkRequest
 	GetProduct() *string
 	SetRegionId(v string) *GenerateCLICommandShrinkRequest
@@ -23,10 +25,12 @@ type iGenerateCLICommandShrinkRequest interface {
 
 type GenerateCLICommandShrinkRequest struct {
 	// This parameter is required.
-	Api             *string `json:"api,omitempty" xml:"api,omitempty"`
+	Api *string `json:"api,omitempty" xml:"api,omitempty"`
+	// Deprecated
 	ApiParamsShrink *string `json:"apiParams,omitempty" xml:"apiParams,omitempty"`
 	// This parameter is required.
-	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
+	ApiVersion    *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
+	JsonApiParams *string `json:"jsonApiParams,omitempty" xml:"jsonApiParams,omitempty"`
 	// This parameter is required.
 	Product  *string `json:"product,omitempty" xml:"product,omitempty"`
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
@@ -52,6 +56,10 @@ func (s *GenerateCLICommandShrinkRequest) GetApiVersion() *string {
 	return s.ApiVersion
 }
 
+func (s *GenerateCLICommandShrinkRequest) GetJsonApiParams() *string {
+	return s.JsonApiParams
+}
+
 func (s *GenerateCLICommandShrinkRequest) GetProduct() *string {
 	return s.Product
 }
@@ -72,6 +80,11 @@ func (s *GenerateCLICommandShrinkRequest) SetApiParamsShrink(v string) *Generate
 
 func (s *GenerateCLICommandShrinkRequest) SetApiVersion(v string) *GenerateCLICommandShrinkRequest {
 	s.ApiVersion = &v
+	return s
+}
+
+func (s *GenerateCLICommandShrinkRequest) SetJsonApiParams(v string) *GenerateCLICommandShrinkRequest {
+	s.JsonApiParams = &v
 	return s
 }
 

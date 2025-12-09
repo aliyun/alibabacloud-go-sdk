@@ -152,7 +152,8 @@ type ListApiMcpServersResponseBodyApiMcpServers struct {
 	// example:
 	//
 	// true
-	EnableAssumeRole *bool `json:"enableAssumeRole,omitempty" xml:"enableAssumeRole,omitempty"`
+	EnableAssumeRole         *bool `json:"enableAssumeRole,omitempty" xml:"enableAssumeRole,omitempty"`
+	EnableCustomVpcWhitelist *bool `json:"enableCustomVpcWhitelist,omitempty" xml:"enableCustomVpcWhitelist,omitempty"`
 	// example:
 	//
 	// v6ZZ7ftCzEILW***
@@ -174,6 +175,7 @@ type ListApiMcpServersResponseBodyApiMcpServers struct {
 	// 403*************370
 	OauthClientId *string                                              `json:"oauthClientId,omitempty" xml:"oauthClientId,omitempty"`
 	Prompts       []*ListApiMcpServersResponseBodyApiMcpServersPrompts `json:"prompts,omitempty" xml:"prompts,omitempty" type:"Repeated"`
+	PublicAccess  *string                                              `json:"publicAccess,omitempty" xml:"publicAccess,omitempty"`
 	// example:
 	//
 	// system
@@ -184,8 +186,9 @@ type ListApiMcpServersResponseBodyApiMcpServers struct {
 	// example:
 	//
 	// 2025-01-10T02:11:43Z
-	UpdateTime *string                                         `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	Urls       *ListApiMcpServersResponseBodyApiMcpServersUrls `json:"urls,omitempty" xml:"urls,omitempty" type:"Struct"`
+	UpdateTime    *string                                         `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	Urls          *ListApiMcpServersResponseBodyApiMcpServersUrls `json:"urls,omitempty" xml:"urls,omitempty" type:"Struct"`
+	VpcWhitelists []*string                                       `json:"vpcWhitelists,omitempty" xml:"vpcWhitelists,omitempty" type:"Repeated"`
 }
 
 func (s ListApiMcpServersResponseBodyApiMcpServers) String() string {
@@ -224,6 +227,10 @@ func (s *ListApiMcpServersResponseBodyApiMcpServers) GetEnableAssumeRole() *bool
 	return s.EnableAssumeRole
 }
 
+func (s *ListApiMcpServersResponseBodyApiMcpServers) GetEnableCustomVpcWhitelist() *bool {
+	return s.EnableCustomVpcWhitelist
+}
+
 func (s *ListApiMcpServersResponseBodyApiMcpServers) GetId() *string {
 	return s.Id
 }
@@ -248,6 +255,10 @@ func (s *ListApiMcpServersResponseBodyApiMcpServers) GetPrompts() []*ListApiMcpS
 	return s.Prompts
 }
 
+func (s *ListApiMcpServersResponseBodyApiMcpServers) GetPublicAccess() *string {
+	return s.PublicAccess
+}
+
 func (s *ListApiMcpServersResponseBodyApiMcpServers) GetSourceType() *string {
 	return s.SourceType
 }
@@ -270,6 +281,10 @@ func (s *ListApiMcpServersResponseBodyApiMcpServers) GetUpdateTime() *string {
 
 func (s *ListApiMcpServersResponseBodyApiMcpServers) GetUrls() *ListApiMcpServersResponseBodyApiMcpServersUrls {
 	return s.Urls
+}
+
+func (s *ListApiMcpServersResponseBodyApiMcpServers) GetVpcWhitelists() []*string {
+	return s.VpcWhitelists
 }
 
 func (s *ListApiMcpServersResponseBodyApiMcpServers) SetAdditionalApiDescriptions(v []*ListApiMcpServersResponseBodyApiMcpServersAdditionalApiDescriptions) *ListApiMcpServersResponseBodyApiMcpServers {
@@ -307,6 +322,11 @@ func (s *ListApiMcpServersResponseBodyApiMcpServers) SetEnableAssumeRole(v bool)
 	return s
 }
 
+func (s *ListApiMcpServersResponseBodyApiMcpServers) SetEnableCustomVpcWhitelist(v bool) *ListApiMcpServersResponseBodyApiMcpServers {
+	s.EnableCustomVpcWhitelist = &v
+	return s
+}
+
 func (s *ListApiMcpServersResponseBodyApiMcpServers) SetId(v string) *ListApiMcpServersResponseBodyApiMcpServers {
 	s.Id = &v
 	return s
@@ -337,6 +357,11 @@ func (s *ListApiMcpServersResponseBodyApiMcpServers) SetPrompts(v []*ListApiMcpS
 	return s
 }
 
+func (s *ListApiMcpServersResponseBodyApiMcpServers) SetPublicAccess(v string) *ListApiMcpServersResponseBodyApiMcpServers {
+	s.PublicAccess = &v
+	return s
+}
+
 func (s *ListApiMcpServersResponseBodyApiMcpServers) SetSourceType(v string) *ListApiMcpServersResponseBodyApiMcpServers {
 	s.SourceType = &v
 	return s
@@ -364,6 +389,11 @@ func (s *ListApiMcpServersResponseBodyApiMcpServers) SetUpdateTime(v string) *Li
 
 func (s *ListApiMcpServersResponseBodyApiMcpServers) SetUrls(v *ListApiMcpServersResponseBodyApiMcpServersUrls) *ListApiMcpServersResponseBodyApiMcpServers {
 	s.Urls = v
+	return s
+}
+
+func (s *ListApiMcpServersResponseBodyApiMcpServers) SetVpcWhitelists(v []*string) *ListApiMcpServersResponseBodyApiMcpServers {
+	s.VpcWhitelists = v
 	return s
 }
 
@@ -895,7 +925,9 @@ type ListApiMcpServersResponseBodyApiMcpServersUrls struct {
 	// example:
 	//
 	// https://mcpserverinner-pre.cn-zhangjiakou.aliyuncs.com/accounts/xxxx/custom/xxx/id/xxxx/sse
-	Sse *string `json:"sse,omitempty" xml:"sse,omitempty"`
+	Sse    *string `json:"sse,omitempty" xml:"sse,omitempty"`
+	VpcMcp *string `json:"vpcMcp,omitempty" xml:"vpcMcp,omitempty"`
+	VpcSse *string `json:"vpcSse,omitempty" xml:"vpcSse,omitempty"`
 }
 
 func (s ListApiMcpServersResponseBodyApiMcpServersUrls) String() string {
@@ -914,6 +946,14 @@ func (s *ListApiMcpServersResponseBodyApiMcpServersUrls) GetSse() *string {
 	return s.Sse
 }
 
+func (s *ListApiMcpServersResponseBodyApiMcpServersUrls) GetVpcMcp() *string {
+	return s.VpcMcp
+}
+
+func (s *ListApiMcpServersResponseBodyApiMcpServersUrls) GetVpcSse() *string {
+	return s.VpcSse
+}
+
 func (s *ListApiMcpServersResponseBodyApiMcpServersUrls) SetMcp(v string) *ListApiMcpServersResponseBodyApiMcpServersUrls {
 	s.Mcp = &v
 	return s
@@ -921,6 +961,16 @@ func (s *ListApiMcpServersResponseBodyApiMcpServersUrls) SetMcp(v string) *ListA
 
 func (s *ListApiMcpServersResponseBodyApiMcpServersUrls) SetSse(v string) *ListApiMcpServersResponseBodyApiMcpServersUrls {
 	s.Sse = &v
+	return s
+}
+
+func (s *ListApiMcpServersResponseBodyApiMcpServersUrls) SetVpcMcp(v string) *ListApiMcpServersResponseBodyApiMcpServersUrls {
+	s.VpcMcp = &v
+	return s
+}
+
+func (s *ListApiMcpServersResponseBodyApiMcpServersUrls) SetVpcSse(v string) *ListApiMcpServersResponseBodyApiMcpServersUrls {
+	s.VpcSse = &v
 	return s
 }
 

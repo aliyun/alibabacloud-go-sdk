@@ -81,7 +81,9 @@ type CreateApiMcpServerResponseBodyUrls struct {
 	// example:
 	//
 	// https://mcpserverinner-pre.cn-zhangjiakou.aliyuncs.com/accounts/xxxx/custom/xxx/id/xxxx/sse
-	Sse *string `json:"sse,omitempty" xml:"sse,omitempty"`
+	Sse    *string `json:"sse,omitempty" xml:"sse,omitempty"`
+	VpcMcp *string `json:"vpcMcp,omitempty" xml:"vpcMcp,omitempty"`
+	VpcSse *string `json:"vpcSse,omitempty" xml:"vpcSse,omitempty"`
 }
 
 func (s CreateApiMcpServerResponseBodyUrls) String() string {
@@ -100,6 +102,14 @@ func (s *CreateApiMcpServerResponseBodyUrls) GetSse() *string {
 	return s.Sse
 }
 
+func (s *CreateApiMcpServerResponseBodyUrls) GetVpcMcp() *string {
+	return s.VpcMcp
+}
+
+func (s *CreateApiMcpServerResponseBodyUrls) GetVpcSse() *string {
+	return s.VpcSse
+}
+
 func (s *CreateApiMcpServerResponseBodyUrls) SetMcp(v string) *CreateApiMcpServerResponseBodyUrls {
 	s.Mcp = &v
 	return s
@@ -107,6 +117,16 @@ func (s *CreateApiMcpServerResponseBodyUrls) SetMcp(v string) *CreateApiMcpServe
 
 func (s *CreateApiMcpServerResponseBodyUrls) SetSse(v string) *CreateApiMcpServerResponseBodyUrls {
 	s.Sse = &v
+	return s
+}
+
+func (s *CreateApiMcpServerResponseBodyUrls) SetVpcMcp(v string) *CreateApiMcpServerResponseBodyUrls {
+	s.VpcMcp = &v
+	return s
+}
+
+func (s *CreateApiMcpServerResponseBodyUrls) SetVpcSse(v string) *CreateApiMcpServerResponseBodyUrls {
+	s.VpcSse = &v
 	return s
 }
 

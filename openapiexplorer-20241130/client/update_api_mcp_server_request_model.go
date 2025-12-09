@@ -21,6 +21,8 @@ type iUpdateApiMcpServerRequest interface {
 	GetDescription() *string
 	SetEnableAssumeRole(v bool) *UpdateApiMcpServerRequest
 	GetEnableAssumeRole() *bool
+	SetEnableCustomVpcWhitelist(v bool) *UpdateApiMcpServerRequest
+	GetEnableCustomVpcWhitelist() *bool
 	SetInstructions(v string) *UpdateApiMcpServerRequest
 	GetInstructions() *string
 	SetLanguage(v string) *UpdateApiMcpServerRequest
@@ -29,10 +31,14 @@ type iUpdateApiMcpServerRequest interface {
 	GetOauthClientId() *string
 	SetPrompts(v []*UpdateApiMcpServerRequestPrompts) *UpdateApiMcpServerRequest
 	GetPrompts() []*UpdateApiMcpServerRequestPrompts
+	SetPublicAccess(v string) *UpdateApiMcpServerRequest
+	GetPublicAccess() *string
 	SetSystemTools(v []*string) *UpdateApiMcpServerRequest
 	GetSystemTools() []*string
 	SetTerraformTools(v []*UpdateApiMcpServerRequestTerraformTools) *UpdateApiMcpServerRequest
 	GetTerraformTools() []*UpdateApiMcpServerRequestTerraformTools
+	SetVpcWhitelists(v []*string) *UpdateApiMcpServerRequest
+	GetVpcWhitelists() []*string
 	SetClientToken(v string) *UpdateApiMcpServerRequest
 	GetClientToken() *string
 	SetId(v string) *UpdateApiMcpServerRequest
@@ -80,7 +86,8 @@ type UpdateApiMcpServerRequest struct {
 	// example:
 	//
 	// true
-	EnableAssumeRole *bool `json:"enableAssumeRole,omitempty" xml:"enableAssumeRole,omitempty"`
+	EnableAssumeRole         *bool `json:"enableAssumeRole,omitempty" xml:"enableAssumeRole,omitempty"`
+	EnableCustomVpcWhitelist *bool `json:"enableCustomVpcWhitelist,omitempty" xml:"enableCustomVpcWhitelist,omitempty"`
 	// example:
 	//
 	// test
@@ -94,8 +101,10 @@ type UpdateApiMcpServerRequest struct {
 	// 403*************370
 	OauthClientId  *string                                    `json:"oauthClientId,omitempty" xml:"oauthClientId,omitempty"`
 	Prompts        []*UpdateApiMcpServerRequestPrompts        `json:"prompts,omitempty" xml:"prompts,omitempty" type:"Repeated"`
+	PublicAccess   *string                                    `json:"publicAccess,omitempty" xml:"publicAccess,omitempty"`
 	SystemTools    []*string                                  `json:"systemTools,omitempty" xml:"systemTools,omitempty" type:"Repeated"`
 	TerraformTools []*UpdateApiMcpServerRequestTerraformTools `json:"terraformTools,omitempty" xml:"terraformTools,omitempty" type:"Repeated"`
+	VpcWhitelists  []*string                                  `json:"vpcWhitelists,omitempty" xml:"vpcWhitelists,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
@@ -140,6 +149,10 @@ func (s *UpdateApiMcpServerRequest) GetEnableAssumeRole() *bool {
 	return s.EnableAssumeRole
 }
 
+func (s *UpdateApiMcpServerRequest) GetEnableCustomVpcWhitelist() *bool {
+	return s.EnableCustomVpcWhitelist
+}
+
 func (s *UpdateApiMcpServerRequest) GetInstructions() *string {
 	return s.Instructions
 }
@@ -156,12 +169,20 @@ func (s *UpdateApiMcpServerRequest) GetPrompts() []*UpdateApiMcpServerRequestPro
 	return s.Prompts
 }
 
+func (s *UpdateApiMcpServerRequest) GetPublicAccess() *string {
+	return s.PublicAccess
+}
+
 func (s *UpdateApiMcpServerRequest) GetSystemTools() []*string {
 	return s.SystemTools
 }
 
 func (s *UpdateApiMcpServerRequest) GetTerraformTools() []*UpdateApiMcpServerRequestTerraformTools {
 	return s.TerraformTools
+}
+
+func (s *UpdateApiMcpServerRequest) GetVpcWhitelists() []*string {
+	return s.VpcWhitelists
 }
 
 func (s *UpdateApiMcpServerRequest) GetClientToken() *string {
@@ -202,6 +223,11 @@ func (s *UpdateApiMcpServerRequest) SetEnableAssumeRole(v bool) *UpdateApiMcpSer
 	return s
 }
 
+func (s *UpdateApiMcpServerRequest) SetEnableCustomVpcWhitelist(v bool) *UpdateApiMcpServerRequest {
+	s.EnableCustomVpcWhitelist = &v
+	return s
+}
+
 func (s *UpdateApiMcpServerRequest) SetInstructions(v string) *UpdateApiMcpServerRequest {
 	s.Instructions = &v
 	return s
@@ -222,6 +248,11 @@ func (s *UpdateApiMcpServerRequest) SetPrompts(v []*UpdateApiMcpServerRequestPro
 	return s
 }
 
+func (s *UpdateApiMcpServerRequest) SetPublicAccess(v string) *UpdateApiMcpServerRequest {
+	s.PublicAccess = &v
+	return s
+}
+
 func (s *UpdateApiMcpServerRequest) SetSystemTools(v []*string) *UpdateApiMcpServerRequest {
 	s.SystemTools = v
 	return s
@@ -229,6 +260,11 @@ func (s *UpdateApiMcpServerRequest) SetSystemTools(v []*string) *UpdateApiMcpSer
 
 func (s *UpdateApiMcpServerRequest) SetTerraformTools(v []*UpdateApiMcpServerRequestTerraformTools) *UpdateApiMcpServerRequest {
 	s.TerraformTools = v
+	return s
+}
+
+func (s *UpdateApiMcpServerRequest) SetVpcWhitelists(v []*string) *UpdateApiMcpServerRequest {
+	s.VpcWhitelists = v
 	return s
 }
 
