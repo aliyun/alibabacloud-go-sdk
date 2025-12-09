@@ -17,10 +17,10 @@ type iModelService interface {
 	GetDescription() *string
 	SetLastUpdatedAt(v string) *ModelService
 	GetLastUpdatedAt() *string
-	SetModeServiceId(v string) *ModelService
-	GetModeServiceId() *string
 	SetModelInfoConfigs(v []*ModelInfoConfig) *ModelService
 	GetModelInfoConfigs() []*ModelInfoConfig
+	SetModelServiceId(v string) *ModelService
+	GetModelServiceId() *string
 	SetModelServiceName(v string) *ModelService
 	GetModelServiceName() *string
 	SetModelType(v string) *ModelService
@@ -42,8 +42,8 @@ type ModelService struct {
 	CredentialName       *string               `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
 	Description          *string               `json:"description,omitempty" xml:"description,omitempty"`
 	LastUpdatedAt        *string               `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
-	ModeServiceId        *string               `json:"modeServiceId,omitempty" xml:"modeServiceId,omitempty"`
 	ModelInfoConfigs     []*ModelInfoConfig    `json:"modelInfoConfigs,omitempty" xml:"modelInfoConfigs,omitempty" type:"Repeated"`
+	ModelServiceId       *string               `json:"modelServiceId,omitempty" xml:"modelServiceId,omitempty"`
 	ModelServiceName     *string               `json:"modelServiceName,omitempty" xml:"modelServiceName,omitempty"`
 	ModelType            *string               `json:"modelType,omitempty" xml:"modelType,omitempty"`
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
@@ -77,12 +77,12 @@ func (s *ModelService) GetLastUpdatedAt() *string {
 	return s.LastUpdatedAt
 }
 
-func (s *ModelService) GetModeServiceId() *string {
-	return s.ModeServiceId
-}
-
 func (s *ModelService) GetModelInfoConfigs() []*ModelInfoConfig {
 	return s.ModelInfoConfigs
+}
+
+func (s *ModelService) GetModelServiceId() *string {
+	return s.ModelServiceId
 }
 
 func (s *ModelService) GetModelServiceName() *string {
@@ -133,13 +133,13 @@ func (s *ModelService) SetLastUpdatedAt(v string) *ModelService {
 	return s
 }
 
-func (s *ModelService) SetModeServiceId(v string) *ModelService {
-	s.ModeServiceId = &v
+func (s *ModelService) SetModelInfoConfigs(v []*ModelInfoConfig) *ModelService {
+	s.ModelInfoConfigs = v
 	return s
 }
 
-func (s *ModelService) SetModelInfoConfigs(v []*ModelInfoConfig) *ModelService {
-	s.ModelInfoConfigs = v
+func (s *ModelService) SetModelServiceId(v string) *ModelService {
+	s.ModelServiceId = &v
 	return s
 }
 

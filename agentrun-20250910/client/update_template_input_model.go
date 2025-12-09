@@ -56,6 +56,8 @@ type UpdateTemplateInput struct {
 	OssConfiguration     []*OssConfiguration   `json:"ossConfiguration,omitempty" xml:"ossConfiguration,omitempty" type:"Repeated"`
 	// 沙箱空闲超时时间（秒）
 	SandboxIdleTimeoutInSeconds *int32 `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
+	// Deprecated
+	//
 	// 沙箱存活时间（秒）
 	SandboxTTLInSeconds *int32 `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
 	// 模板配置（灵活的对象结构，根据 templateType 不同而不同）

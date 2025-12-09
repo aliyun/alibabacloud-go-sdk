@@ -21,8 +21,8 @@ type iTemplate interface {
 	GetDescription() *string
 	SetDiskSize(v int32) *Template
 	GetDiskSize() *int32
-	SetEnvironmentVariables(v string) *Template
-	GetEnvironmentVariables() *string
+	SetEnvironmentVariables(v map[string]*string) *Template
+	GetEnvironmentVariables() map[string]*string
 	SetExecutionRoleArn(v string) *Template
 	GetExecutionRoleArn() *string
 	SetLastUpdatedAt(v string) *Template
@@ -51,8 +51,8 @@ type iTemplate interface {
 	GetStatusReason() *string
 	SetTemplateArn(v string) *Template
 	GetTemplateArn() *string
-	SetTemplateConfiguration(v string) *Template
-	GetTemplateConfiguration() *string
+	SetTemplateConfiguration(v map[string]interface{}) *Template
+	GetTemplateConfiguration() map[string]interface{}
 	SetTemplateId(v string) *Template
 	GetTemplateId() *string
 	SetTemplateName(v string) *Template
@@ -71,7 +71,7 @@ type Template struct {
 	CredentialConfiguration *CredentialConfiguration `json:"credentialConfiguration,omitempty" xml:"credentialConfiguration,omitempty"`
 	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
 	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	EnvironmentVariables    *string                  `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
 	ExecutionRoleArn        *string                  `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
 	LastUpdatedAt           *string                  `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
 	LogConfiguration        *LogConfiguration        `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
@@ -83,11 +83,12 @@ type Template struct {
 	OssConfiguration            []*OssConfiguration   `json:"ossConfiguration,omitempty" xml:"ossConfiguration,omitempty" type:"Repeated"`
 	ResourceName                *string               `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
 	SandboxIdleTimeoutInSeconds *string               `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
-	SandboxTTLInSeconds         *string               `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
-	Status                      *string               `json:"status,omitempty" xml:"status,omitempty"`
-	StatusReason                *string               `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
-	TemplateArn                 *string               `json:"templateArn,omitempty" xml:"templateArn,omitempty"`
-	TemplateConfiguration       *string               `json:"templateConfiguration,omitempty" xml:"templateConfiguration,omitempty"`
+	// Deprecated
+	SandboxTTLInSeconds   *string                `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
+	Status                *string                `json:"status,omitempty" xml:"status,omitempty"`
+	StatusReason          *string                `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+	TemplateArn           *string                `json:"templateArn,omitempty" xml:"templateArn,omitempty"`
+	TemplateConfiguration map[string]interface{} `json:"templateConfiguration,omitempty" xml:"templateConfiguration,omitempty"`
 	// This parameter is required.
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
 	// This parameter is required.
@@ -128,7 +129,7 @@ func (s *Template) GetDiskSize() *int32 {
 	return s.DiskSize
 }
 
-func (s *Template) GetEnvironmentVariables() *string {
+func (s *Template) GetEnvironmentVariables() map[string]*string {
 	return s.EnvironmentVariables
 }
 
@@ -188,7 +189,7 @@ func (s *Template) GetTemplateArn() *string {
 	return s.TemplateArn
 }
 
-func (s *Template) GetTemplateConfiguration() *string {
+func (s *Template) GetTemplateConfiguration() map[string]interface{} {
 	return s.TemplateConfiguration
 }
 
@@ -238,8 +239,8 @@ func (s *Template) SetDiskSize(v int32) *Template {
 	return s
 }
 
-func (s *Template) SetEnvironmentVariables(v string) *Template {
-	s.EnvironmentVariables = &v
+func (s *Template) SetEnvironmentVariables(v map[string]*string) *Template {
+	s.EnvironmentVariables = v
 	return s
 }
 
@@ -313,8 +314,8 @@ func (s *Template) SetTemplateArn(v string) *Template {
 	return s
 }
 
-func (s *Template) SetTemplateConfiguration(v string) *Template {
-	s.TemplateConfiguration = &v
+func (s *Template) SetTemplateConfiguration(v map[string]interface{}) *Template {
+	s.TemplateConfiguration = v
 	return s
 }
 
