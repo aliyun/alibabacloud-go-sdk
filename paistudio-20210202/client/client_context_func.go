@@ -2,80 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-beijing":            dara.String("pai.cn-beijing.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("pai.cn-hangzhou.data.aliyun.com"),
-		"cn-shanghai":           dara.String("pai.cn-shanghai.aliyuncs.com"),
-		"cn-shenzhen":           dara.String("pai.cn-shenzhen.aliyuncs.com"),
-		"cn-hongkong":           dara.String("pai.cn-hongkong.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("pai.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-2":        dara.String("pai.ap-southeast-2.aliyuncs.com"),
-		"ap-southeast-3":        dara.String("pai.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("pai.ap-southeast-5.aliyuncs.com"),
-		"us-east-1":             dara.String("pai.us-east-1.aliyuncs.com"),
-		"us-west-1":             dara.String("pai.us-west-1.aliyuncs.com"),
-		"eu-central-1":          dara.String("pai.eu-central-1.aliyuncs.com"),
-		"ap-south-1":            dara.String("pai.ap-south-1.aliyuncs.com"),
-		"me-east-1":             dara.String("pai.me-east-1.aliyuncs.com"),
-		"ap-northeast-1":        dara.String("pai.ap-northeast-1.aliyuncs.com"),
-		"cn-qingdao":            dara.String("pai.cn-qingdao.aliyuncs.com"),
-		"cn-shanghai-finance-1": dara.String("pai.cn-shanghai-finance-1.aliyuncs.com"),
-		"cn-wulanchabu":         dara.String("pai.cn-wulanchabu.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("pai.cn-zhangjiakou.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("paistudio"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -88,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CopyExperimentResponse
-func (client *Client) CopyExperimentWithOptions(ExperimentId *string, request *CopyExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CopyExperimentResponse, _err error) {
+func (client *Client) CopyExperimentWithContext(ctx context.Context, ExperimentId *string, request *CopyExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CopyExperimentResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -136,30 +66,11 @@ func (client *Client) CopyExperimentWithOptions(ExperimentId *string, request *C
 		BodyType:    dara.String("json"),
 	}
 	_result = &CopyExperimentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 复制实验
-//
-// @param request - CopyExperimentRequest
-//
-// @return CopyExperimentResponse
-func (client *Client) CopyExperiment(ExperimentId *string, request *CopyExperimentRequest) (_result *CopyExperimentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CopyExperimentResponse{}
-	_body, _err := client.CopyExperimentWithOptions(ExperimentId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -174,7 +85,7 @@ func (client *Client) CopyExperiment(ExperimentId *string, request *CopyExperime
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateExperimentResponse
-func (client *Client) CreateExperimentWithOptions(request *CreateExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateExperimentResponse, _err error) {
+func (client *Client) CreateExperimentWithContext(ctx context.Context, request *CreateExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateExperimentResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -230,30 +141,11 @@ func (client *Client) CreateExperimentWithOptions(request *CreateExperimentReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateExperimentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建实验，或根据实验模版创建实验
-//
-// @param request - CreateExperimentRequest
-//
-// @return CreateExperimentResponse
-func (client *Client) CreateExperiment(request *CreateExperimentRequest) (_result *CreateExperimentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateExperimentResponse{}
-	_body, _err := client.CreateExperimentWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -268,7 +160,7 @@ func (client *Client) CreateExperiment(request *CreateExperimentRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateExperimentFolderResponse
-func (client *Client) CreateExperimentFolderWithOptions(request *CreateExperimentFolderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateExperimentFolderResponse, _err error) {
+func (client *Client) CreateExperimentFolderWithContext(ctx context.Context, request *CreateExperimentFolderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateExperimentFolderResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -312,30 +204,11 @@ func (client *Client) CreateExperimentFolderWithOptions(request *CreateExperimen
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateExperimentFolderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建算法文件夹
-//
-// @param request - CreateExperimentFolderRequest
-//
-// @return CreateExperimentFolderResponse
-func (client *Client) CreateExperimentFolder(request *CreateExperimentFolderRequest) (_result *CreateExperimentFolderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateExperimentFolderResponse{}
-	_body, _err := client.CreateExperimentFolderWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -350,7 +223,7 @@ func (client *Client) CreateExperimentFolder(request *CreateExperimentFolderRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateExperimentMigrateValidationResponse
-func (client *Client) CreateExperimentMigrateValidationWithOptions(request *CreateExperimentMigrateValidationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateExperimentMigrateValidationResponse, _err error) {
+func (client *Client) CreateExperimentMigrateValidationWithContext(ctx context.Context, request *CreateExperimentMigrateValidationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateExperimentMigrateValidationResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -378,30 +251,11 @@ func (client *Client) CreateExperimentMigrateValidationWithOptions(request *Crea
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateExperimentMigrateValidationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 校验实验是否能迁移
-//
-// @param request - CreateExperimentMigrateValidationRequest
-//
-// @return CreateExperimentMigrateValidationResponse
-func (client *Client) CreateExperimentMigrateValidation(request *CreateExperimentMigrateValidationRequest) (_result *CreateExperimentMigrateValidationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateExperimentMigrateValidationResponse{}
-	_body, _err := client.CreateExperimentMigrateValidationWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -416,7 +270,7 @@ func (client *Client) CreateExperimentMigrateValidation(request *CreateExperimen
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateJobResponse
-func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateJobResponse, _err error) {
+func (client *Client) CreateJobWithContext(ctx context.Context, request *CreateJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -460,30 +314,11 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建一个工作流的作业
-//
-// @param request - CreateJobRequest
-//
-// @return CreateJobResponse
-func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateJobResponse{}
-	_body, _err := client.CreateJobWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -496,7 +331,7 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteExperimentResponse
-func (client *Client) DeleteExperimentWithOptions(ExperimentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteExperimentResponse, _err error) {
+func (client *Client) DeleteExperimentWithContext(ctx context.Context, ExperimentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteExperimentResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -512,28 +347,11 @@ func (client *Client) DeleteExperimentWithOptions(ExperimentId *string, headers 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteExperimentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除实验
-//
-// @return DeleteExperimentResponse
-func (client *Client) DeleteExperiment(ExperimentId *string) (_result *DeleteExperimentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteExperimentResponse{}
-	_body, _err := client.DeleteExperimentWithOptions(ExperimentId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -546,7 +364,7 @@ func (client *Client) DeleteExperiment(ExperimentId *string) (_result *DeleteExp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteExperimentFolderResponse
-func (client *Client) DeleteExperimentFolderWithOptions(FolderId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteExperimentFolderResponse, _err error) {
+func (client *Client) DeleteExperimentFolderWithContext(ctx context.Context, FolderId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteExperimentFolderResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -562,28 +380,11 @@ func (client *Client) DeleteExperimentFolderWithOptions(FolderId *string, header
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteExperimentFolderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除算法文件夹
-//
-// @return DeleteExperimentFolderResponse
-func (client *Client) DeleteExperimentFolder(FolderId *string) (_result *DeleteExperimentFolderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteExperimentFolderResponse{}
-	_body, _err := client.DeleteExperimentFolderWithOptions(FolderId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -598,7 +399,7 @@ func (client *Client) DeleteExperimentFolder(FolderId *string) (_result *DeleteE
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAlgoTreeResponse
-func (client *Client) GetAlgoTreeWithOptions(request *GetAlgoTreeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAlgoTreeResponse, _err error) {
+func (client *Client) GetAlgoTreeWithContext(ctx context.Context, request *GetAlgoTreeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAlgoTreeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -626,30 +427,11 @@ func (client *Client) GetAlgoTreeWithOptions(request *GetAlgoTreeRequest, header
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAlgoTreeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取算法树
-//
-// @param request - GetAlgoTreeRequest
-//
-// @return GetAlgoTreeResponse
-func (client *Client) GetAlgoTree(request *GetAlgoTreeRequest) (_result *GetAlgoTreeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetAlgoTreeResponse{}
-	_body, _err := client.GetAlgoTreeWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -664,7 +446,7 @@ func (client *Client) GetAlgoTree(request *GetAlgoTreeRequest) (_result *GetAlgo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAlgorithmDefResponse
-func (client *Client) GetAlgorithmDefWithOptions(request *GetAlgorithmDefRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAlgorithmDefResponse, _err error) {
+func (client *Client) GetAlgorithmDefWithContext(ctx context.Context, request *GetAlgorithmDefRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAlgorithmDefResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -704,30 +486,11 @@ func (client *Client) GetAlgorithmDefWithOptions(request *GetAlgorithmDefRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAlgorithmDefResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取算法定义
-//
-// @param request - GetAlgorithmDefRequest
-//
-// @return GetAlgorithmDefResponse
-func (client *Client) GetAlgorithmDef(request *GetAlgorithmDefRequest) (_result *GetAlgorithmDefResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetAlgorithmDefResponse{}
-	_body, _err := client.GetAlgorithmDefWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -742,7 +505,7 @@ func (client *Client) GetAlgorithmDef(request *GetAlgorithmDefRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAlgorithmDefsResponse
-func (client *Client) GetAlgorithmDefsWithOptions(request *GetAlgorithmDefsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAlgorithmDefsResponse, _err error) {
+func (client *Client) GetAlgorithmDefsWithContext(ctx context.Context, request *GetAlgorithmDefsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAlgorithmDefsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -782,30 +545,11 @@ func (client *Client) GetAlgorithmDefsWithOptions(request *GetAlgorithmDefsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAlgorithmDefsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 批量获取算法定义
-//
-// @param request - GetAlgorithmDefsRequest
-//
-// @return GetAlgorithmDefsResponse
-func (client *Client) GetAlgorithmDefs(request *GetAlgorithmDefsRequest) (_result *GetAlgorithmDefsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetAlgorithmDefsResponse{}
-	_body, _err := client.GetAlgorithmDefsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -820,7 +564,7 @@ func (client *Client) GetAlgorithmDefs(request *GetAlgorithmDefsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAlgorithmTreeResponse
-func (client *Client) GetAlgorithmTreeWithOptions(request *GetAlgorithmTreeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAlgorithmTreeResponse, _err error) {
+func (client *Client) GetAlgorithmTreeWithContext(ctx context.Context, request *GetAlgorithmTreeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAlgorithmTreeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -852,30 +596,11 @@ func (client *Client) GetAlgorithmTreeWithOptions(request *GetAlgorithmTreeReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAlgorithmTreeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取算法树
-//
-// @param request - GetAlgorithmTreeRequest
-//
-// @return GetAlgorithmTreeResponse
-func (client *Client) GetAlgorithmTree(request *GetAlgorithmTreeRequest) (_result *GetAlgorithmTreeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetAlgorithmTreeResponse{}
-	_body, _err := client.GetAlgorithmTreeWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -888,7 +613,7 @@ func (client *Client) GetAlgorithmTree(request *GetAlgorithmTreeRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetExperimentResponse
-func (client *Client) GetExperimentWithOptions(ExperimentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentResponse, _err error) {
+func (client *Client) GetExperimentWithContext(ctx context.Context, ExperimentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -904,28 +629,11 @@ func (client *Client) GetExperimentWithOptions(ExperimentId *string, headers map
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetExperimentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取实验信息
-//
-// @return GetExperimentResponse
-func (client *Client) GetExperiment(ExperimentId *string) (_result *GetExperimentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetExperimentResponse{}
-	_body, _err := client.GetExperimentWithOptions(ExperimentId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -940,7 +648,7 @@ func (client *Client) GetExperiment(ExperimentId *string) (_result *GetExperimen
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetExperimentFolderChildrenResponse
-func (client *Client) GetExperimentFolderChildrenWithOptions(FolderId *string, request *GetExperimentFolderChildrenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentFolderChildrenResponse, _err error) {
+func (client *Client) GetExperimentFolderChildrenWithContext(ctx context.Context, FolderId *string, request *GetExperimentFolderChildrenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentFolderChildrenResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -984,30 +692,11 @@ func (client *Client) GetExperimentFolderChildrenWithOptions(FolderId *string, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetExperimentFolderChildrenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取算法文件夹下的内容
-//
-// @param request - GetExperimentFolderChildrenRequest
-//
-// @return GetExperimentFolderChildrenResponse
-func (client *Client) GetExperimentFolderChildren(FolderId *string, request *GetExperimentFolderChildrenRequest) (_result *GetExperimentFolderChildrenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetExperimentFolderChildrenResponse{}
-	_body, _err := client.GetExperimentFolderChildrenWithOptions(FolderId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1020,7 +709,7 @@ func (client *Client) GetExperimentFolderChildren(FolderId *string, request *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetExperimentMetaResponse
-func (client *Client) GetExperimentMetaWithOptions(ExperimentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentMetaResponse, _err error) {
+func (client *Client) GetExperimentMetaWithContext(ctx context.Context, ExperimentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentMetaResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1036,28 +725,11 @@ func (client *Client) GetExperimentMetaWithOptions(ExperimentId *string, headers
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetExperimentMetaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取实验的元信息
-//
-// @return GetExperimentMetaResponse
-func (client *Client) GetExperimentMeta(ExperimentId *string) (_result *GetExperimentMetaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetExperimentMetaResponse{}
-	_body, _err := client.GetExperimentMetaWithOptions(ExperimentId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1070,7 +742,7 @@ func (client *Client) GetExperimentMeta(ExperimentId *string) (_result *GetExper
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetExperimentStatusResponse
-func (client *Client) GetExperimentStatusWithOptions(ExperimentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentStatusResponse, _err error) {
+func (client *Client) GetExperimentStatusWithContext(ctx context.Context, ExperimentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentStatusResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1086,28 +758,11 @@ func (client *Client) GetExperimentStatusWithOptions(ExperimentId *string, heade
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetExperimentStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取实验以及实验节点的状态
-//
-// @return GetExperimentStatusResponse
-func (client *Client) GetExperimentStatus(ExperimentId *string) (_result *GetExperimentStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetExperimentStatusResponse{}
-	_body, _err := client.GetExperimentStatusWithOptions(ExperimentId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1122,7 +777,7 @@ func (client *Client) GetExperimentStatus(ExperimentId *string) (_result *GetExp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetExperimentVisualizationMetaResponse
-func (client *Client) GetExperimentVisualizationMetaWithOptions(ExperimentId *string, request *GetExperimentVisualizationMetaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentVisualizationMetaResponse, _err error) {
+func (client *Client) GetExperimentVisualizationMetaWithContext(ctx context.Context, ExperimentId *string, request *GetExperimentVisualizationMetaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentVisualizationMetaResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1150,30 +805,11 @@ func (client *Client) GetExperimentVisualizationMetaWithOptions(ExperimentId *st
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetExperimentVisualizationMetaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询实验的可视化meta
-//
-// @param request - GetExperimentVisualizationMetaRequest
-//
-// @return GetExperimentVisualizationMetaResponse
-func (client *Client) GetExperimentVisualizationMeta(ExperimentId *string, request *GetExperimentVisualizationMetaRequest) (_result *GetExperimentVisualizationMetaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetExperimentVisualizationMetaResponse{}
-	_body, _err := client.GetExperimentVisualizationMetaWithOptions(ExperimentId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1188,7 +824,7 @@ func (client *Client) GetExperimentVisualizationMeta(ExperimentId *string, reque
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetExperimentsStatisticsResponse
-func (client *Client) GetExperimentsStatisticsWithOptions(request *GetExperimentsStatisticsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentsStatisticsResponse, _err error) {
+func (client *Client) GetExperimentsStatisticsWithContext(ctx context.Context, request *GetExperimentsStatisticsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentsStatisticsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1220,30 +856,11 @@ func (client *Client) GetExperimentsStatisticsWithOptions(request *GetExperiment
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetExperimentsStatisticsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取实验的统计信息
-//
-// @param request - GetExperimentsStatisticsRequest
-//
-// @return GetExperimentsStatisticsResponse
-func (client *Client) GetExperimentsStatistics(request *GetExperimentsStatisticsRequest) (_result *GetExperimentsStatisticsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetExperimentsStatisticsResponse{}
-	_body, _err := client.GetExperimentsStatisticsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1258,7 +875,7 @@ func (client *Client) GetExperimentsStatistics(request *GetExperimentsStatistics
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetExperimentsUsersStatisticsResponse
-func (client *Client) GetExperimentsUsersStatisticsWithOptions(request *GetExperimentsUsersStatisticsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentsUsersStatisticsResponse, _err error) {
+func (client *Client) GetExperimentsUsersStatisticsWithContext(ctx context.Context, request *GetExperimentsUsersStatisticsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentsUsersStatisticsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1290,30 +907,11 @@ func (client *Client) GetExperimentsUsersStatisticsWithOptions(request *GetExper
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetExperimentsUsersStatisticsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取实验或文件夹所有者列表
-//
-// @param request - GetExperimentsUsersStatisticsRequest
-//
-// @return GetExperimentsUsersStatisticsResponse
-func (client *Client) GetExperimentsUsersStatistics(request *GetExperimentsUsersStatisticsRequest) (_result *GetExperimentsUsersStatisticsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetExperimentsUsersStatisticsResponse{}
-	_body, _err := client.GetExperimentsUsersStatisticsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1328,7 +926,7 @@ func (client *Client) GetExperimentsUsersStatistics(request *GetExperimentsUsers
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetJobResponse
-func (client *Client) GetJobWithOptions(JobId *string, request *GetJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobResponse, _err error) {
+func (client *Client) GetJobWithContext(ctx context.Context, JobId *string, request *GetJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1356,30 +954,11 @@ func (client *Client) GetJobWithOptions(JobId *string, request *GetJobRequest, h
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取一个PAI Studio作业详情
-//
-// @param request - GetJobRequest
-//
-// @return GetJobResponse
-func (client *Client) GetJob(JobId *string, request *GetJobRequest) (_result *GetJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetJobResponse{}
-	_body, _err := client.GetJobWithOptions(JobId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1394,7 +973,7 @@ func (client *Client) GetJob(JobId *string, request *GetJobRequest) (_result *Ge
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMCTableSchemaResponse
-func (client *Client) GetMCTableSchemaWithOptions(TableName *string, request *GetMCTableSchemaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMCTableSchemaResponse, _err error) {
+func (client *Client) GetMCTableSchemaWithContext(ctx context.Context, TableName *string, request *GetMCTableSchemaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMCTableSchemaResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1422,30 +1001,11 @@ func (client *Client) GetMCTableSchemaWithOptions(TableName *string, request *Ge
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMCTableSchemaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取MaxCompute表schema
-//
-// @param request - GetMCTableSchemaRequest
-//
-// @return GetMCTableSchemaResponse
-func (client *Client) GetMCTableSchema(TableName *string, request *GetMCTableSchemaRequest) (_result *GetMCTableSchemaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetMCTableSchemaResponse{}
-	_body, _err := client.GetMCTableSchemaWithOptions(TableName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1460,7 +1020,7 @@ func (client *Client) GetMCTableSchema(TableName *string, request *GetMCTableSch
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetNodeInputSchemaResponse
-func (client *Client) GetNodeInputSchemaWithOptions(ExperimentId *string, NodeId *string, request *GetNodeInputSchemaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetNodeInputSchemaResponse, _err error) {
+func (client *Client) GetNodeInputSchemaWithContext(ctx context.Context, ExperimentId *string, NodeId *string, request *GetNodeInputSchemaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetNodeInputSchemaResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1492,30 +1052,11 @@ func (client *Client) GetNodeInputSchemaWithOptions(ExperimentId *string, NodeId
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetNodeInputSchemaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取实验节点输入桩的输入表的格式
-//
-// @param request - GetNodeInputSchemaRequest
-//
-// @return GetNodeInputSchemaResponse
-func (client *Client) GetNodeInputSchema(ExperimentId *string, NodeId *string, request *GetNodeInputSchemaRequest) (_result *GetNodeInputSchemaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetNodeInputSchemaResponse{}
-	_body, _err := client.GetNodeInputSchemaWithOptions(ExperimentId, NodeId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1530,7 +1071,7 @@ func (client *Client) GetNodeInputSchema(ExperimentId *string, NodeId *string, r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetNodeOutputResponse
-func (client *Client) GetNodeOutputWithOptions(ExperimentId *string, NodeId *string, OutputId *string, request *GetNodeOutputRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetNodeOutputResponse, _err error) {
+func (client *Client) GetNodeOutputWithContext(ctx context.Context, ExperimentId *string, NodeId *string, OutputId *string, request *GetNodeOutputRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetNodeOutputResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1558,30 +1099,11 @@ func (client *Client) GetNodeOutputWithOptions(ExperimentId *string, NodeId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetNodeOutputResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取某个节点的输出模型信息
-//
-// @param request - GetNodeOutputRequest
-//
-// @return GetNodeOutputResponse
-func (client *Client) GetNodeOutput(ExperimentId *string, NodeId *string, OutputId *string, request *GetNodeOutputRequest) (_result *GetNodeOutputResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetNodeOutputResponse{}
-	_body, _err := client.GetNodeOutputWithOptions(ExperimentId, NodeId, OutputId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1596,7 +1118,7 @@ func (client *Client) GetNodeOutput(ExperimentId *string, NodeId *string, Output
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTemplateResponse
-func (client *Client) GetTemplateWithOptions(TemplateId *string, request *GetTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
+func (client *Client) GetTemplateWithContext(ctx context.Context, TemplateId *string, request *GetTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1624,30 +1146,11 @@ func (client *Client) GetTemplateWithOptions(TemplateId *string, request *GetTem
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取PAI Studio中指定模板
-//
-// @param request - GetTemplateRequest
-//
-// @return GetTemplateResponse
-func (client *Client) GetTemplate(TemplateId *string, request *GetTemplateRequest) (_result *GetTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTemplateResponse{}
-	_body, _err := client.GetTemplateWithOptions(TemplateId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1662,7 +1165,7 @@ func (client *Client) GetTemplate(TemplateId *string, request *GetTemplateReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAuthRolesResponse
-func (client *Client) ListAuthRolesWithOptions(request *ListAuthRolesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAuthRolesResponse, _err error) {
+func (client *Client) ListAuthRolesWithContext(ctx context.Context, request *ListAuthRolesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAuthRolesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1694,30 +1197,11 @@ func (client *Client) ListAuthRolesWithOptions(request *ListAuthRolesRequest, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAuthRolesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取授权角色列表
-//
-// @param request - ListAuthRolesRequest
-//
-// @return ListAuthRolesResponse
-func (client *Client) ListAuthRoles(request *ListAuthRolesRequest) (_result *ListAuthRolesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListAuthRolesResponse{}
-	_body, _err := client.ListAuthRolesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1732,7 +1216,7 @@ func (client *Client) ListAuthRoles(request *ListAuthRolesRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListExperimentsResponse
-func (client *Client) ListExperimentsWithOptions(request *ListExperimentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExperimentsResponse, _err error) {
+func (client *Client) ListExperimentsWithContext(ctx context.Context, request *ListExperimentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExperimentsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1792,30 +1276,11 @@ func (client *Client) ListExperimentsWithOptions(request *ListExperimentsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListExperimentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取实验列表
-//
-// @param request - ListExperimentsRequest
-//
-// @return ListExperimentsResponse
-func (client *Client) ListExperiments(request *ListExperimentsRequest) (_result *ListExperimentsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListExperimentsResponse{}
-	_body, _err := client.ListExperimentsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1830,7 +1295,7 @@ func (client *Client) ListExperiments(request *ListExperimentsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListImageLabelsResponse
-func (client *Client) ListImageLabelsWithOptions(request *ListImageLabelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListImageLabelsResponse, _err error) {
+func (client *Client) ListImageLabelsWithContext(ctx context.Context, request *ListImageLabelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListImageLabelsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1866,30 +1331,11 @@ func (client *Client) ListImageLabelsWithOptions(request *ListImageLabelsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListImageLabelsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 列举标签
-//
-// @param request - ListImageLabelsRequest
-//
-// @return ListImageLabelsResponse
-func (client *Client) ListImageLabels(request *ListImageLabelsRequest) (_result *ListImageLabelsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListImageLabelsResponse{}
-	_body, _err := client.ListImageLabelsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1904,7 +1350,7 @@ func (client *Client) ListImageLabels(request *ListImageLabelsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListImagesResponse
-func (client *Client) ListImagesWithOptions(request *ListImagesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListImagesResponse, _err error) {
+func (client *Client) ListImagesWithContext(ctx context.Context, request *ListImagesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListImagesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1956,30 +1402,11 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, headers 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListImagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 列举已注册镜像
-//
-// @param request - ListImagesRequest
-//
-// @return ListImagesResponse
-func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImagesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListImagesResponse{}
-	_body, _err := client.ListImagesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1994,7 +1421,7 @@ func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImage
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListJobsResponse
-func (client *Client) ListJobsWithOptions(request *ListJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobsResponse, _err error) {
+func (client *Client) ListJobsWithContext(ctx context.Context, request *ListJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2038,30 +1465,11 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, headers map[
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取作业详情
-//
-// @param request - ListJobsRequest
-//
-// @return ListJobsResponse
-func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListJobsResponse{}
-	_body, _err := client.ListJobsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2074,7 +1482,7 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListNodeOutputsResponse
-func (client *Client) ListNodeOutputsWithOptions(ExperimentId *string, NodeId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListNodeOutputsResponse, _err error) {
+func (client *Client) ListNodeOutputsWithContext(ctx context.Context, ExperimentId *string, NodeId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListNodeOutputsResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2090,28 +1498,11 @@ func (client *Client) ListNodeOutputsWithOptions(ExperimentId *string, NodeId *s
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListNodeOutputsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取某个节点的输出模型列表
-//
-// @return ListNodeOutputsResponse
-func (client *Client) ListNodeOutputs(ExperimentId *string, NodeId *string) (_result *ListNodeOutputsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListNodeOutputsResponse{}
-	_body, _err := client.ListNodeOutputsWithOptions(ExperimentId, NodeId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2126,7 +1517,7 @@ func (client *Client) ListNodeOutputs(ExperimentId *string, NodeId *string) (_re
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRecentExperimentsResponse
-func (client *Client) ListRecentExperimentsWithOptions(request *ListRecentExperimentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRecentExperimentsResponse, _err error) {
+func (client *Client) ListRecentExperimentsWithContext(ctx context.Context, request *ListRecentExperimentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRecentExperimentsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2174,30 +1565,11 @@ func (client *Client) ListRecentExperimentsWithOptions(request *ListRecentExperi
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRecentExperimentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取最近的实验
-//
-// @param request - ListRecentExperimentsRequest
-//
-// @return ListRecentExperimentsResponse
-func (client *Client) ListRecentExperiments(request *ListRecentExperimentsRequest) (_result *ListRecentExperimentsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListRecentExperimentsResponse{}
-	_body, _err := client.ListRecentExperimentsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2212,7 +1584,7 @@ func (client *Client) ListRecentExperiments(request *ListRecentExperimentsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTemplatesResponse
-func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTemplatesResponse, _err error) {
+func (client *Client) ListTemplatesWithContext(ctx context.Context, request *ListTemplatesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTemplatesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2288,30 +1660,11 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取PAI Studio中指定模板列表
-//
-// @param request - ListTemplatesRequest
-//
-// @return ListTemplatesResponse
-func (client *Client) ListTemplates(request *ListTemplatesRequest) (_result *ListTemplatesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListTemplatesResponse{}
-	_body, _err := client.ListTemplatesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2326,7 +1679,7 @@ func (client *Client) ListTemplates(request *ListTemplatesRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return MigrateExperimentFoldersResponse
-func (client *Client) MigrateExperimentFoldersWithOptions(request *MigrateExperimentFoldersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *MigrateExperimentFoldersResponse, _err error) {
+func (client *Client) MigrateExperimentFoldersWithContext(ctx context.Context, request *MigrateExperimentFoldersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *MigrateExperimentFoldersResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2362,30 +1715,11 @@ func (client *Client) MigrateExperimentFoldersWithOptions(request *MigrateExperi
 		BodyType:    dara.String("json"),
 	}
 	_result = &MigrateExperimentFoldersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 迁移PAI Studio 1.0的实验目录
-//
-// @param request - MigrateExperimentFoldersRequest
-//
-// @return MigrateExperimentFoldersResponse
-func (client *Client) MigrateExperimentFolders(request *MigrateExperimentFoldersRequest) (_result *MigrateExperimentFoldersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &MigrateExperimentFoldersResponse{}
-	_body, _err := client.MigrateExperimentFoldersWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2400,7 +1734,7 @@ func (client *Client) MigrateExperimentFolders(request *MigrateExperimentFolders
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return MigrateExperimentsResponse
-func (client *Client) MigrateExperimentsWithOptions(request *MigrateExperimentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *MigrateExperimentsResponse, _err error) {
+func (client *Client) MigrateExperimentsWithContext(ctx context.Context, request *MigrateExperimentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *MigrateExperimentsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2448,30 +1782,11 @@ func (client *Client) MigrateExperimentsWithOptions(request *MigrateExperimentsR
 		BodyType:    dara.String("json"),
 	}
 	_result = &MigrateExperimentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 迁移PAI Studio 1.0的实验
-//
-// @param request - MigrateExperimentsRequest
-//
-// @return MigrateExperimentsResponse
-func (client *Client) MigrateExperiments(request *MigrateExperimentsRequest) (_result *MigrateExperimentsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &MigrateExperimentsResponse{}
-	_body, _err := client.MigrateExperimentsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2486,7 +1801,7 @@ func (client *Client) MigrateExperiments(request *MigrateExperimentsRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PreviewMCTableResponse
-func (client *Client) PreviewMCTableWithOptions(TableName *string, request *PreviewMCTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PreviewMCTableResponse, _err error) {
+func (client *Client) PreviewMCTableWithContext(ctx context.Context, TableName *string, request *PreviewMCTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PreviewMCTableResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2526,30 +1841,11 @@ func (client *Client) PreviewMCTableWithOptions(TableName *string, request *Prev
 		BodyType:    dara.String("json"),
 	}
 	_result = &PreviewMCTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 预览Maxcompute表数据
-//
-// @param request - PreviewMCTableRequest
-//
-// @return PreviewMCTableResponse
-func (client *Client) PreviewMCTable(TableName *string, request *PreviewMCTableRequest) (_result *PreviewMCTableResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &PreviewMCTableResponse{}
-	_body, _err := client.PreviewMCTableWithOptions(TableName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2564,7 +1860,7 @@ func (client *Client) PreviewMCTable(TableName *string, request *PreviewMCTableR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PublishExperimentResponse
-func (client *Client) PublishExperimentWithOptions(ExperimentId *string, request *PublishExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PublishExperimentResponse, _err error) {
+func (client *Client) PublishExperimentWithContext(ctx context.Context, ExperimentId *string, request *PublishExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PublishExperimentResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2592,30 +1888,11 @@ func (client *Client) PublishExperimentWithOptions(ExperimentId *string, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &PublishExperimentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 发布实验
-//
-// @param request - PublishExperimentRequest
-//
-// @return PublishExperimentResponse
-func (client *Client) PublishExperiment(ExperimentId *string, request *PublishExperimentRequest) (_result *PublishExperimentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &PublishExperimentResponse{}
-	_body, _err := client.PublishExperimentWithOptions(ExperimentId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2630,7 +1907,7 @@ func (client *Client) PublishExperiment(ExperimentId *string, request *PublishEx
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryExperimentVisualizationDataResponse
-func (client *Client) QueryExperimentVisualizationDataWithOptions(ExperimentId *string, request *QueryExperimentVisualizationDataRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryExperimentVisualizationDataResponse, _err error) {
+func (client *Client) QueryExperimentVisualizationDataWithContext(ctx context.Context, ExperimentId *string, request *QueryExperimentVisualizationDataRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryExperimentVisualizationDataResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2653,30 +1930,11 @@ func (client *Client) QueryExperimentVisualizationDataWithOptions(ExperimentId *
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryExperimentVisualizationDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询实验的可视化数据
-//
-// @param request - QueryExperimentVisualizationDataRequest
-//
-// @return QueryExperimentVisualizationDataResponse
-func (client *Client) QueryExperimentVisualizationData(ExperimentId *string, request *QueryExperimentVisualizationDataRequest) (_result *QueryExperimentVisualizationDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &QueryExperimentVisualizationDataResponse{}
-	_body, _err := client.QueryExperimentVisualizationDataWithOptions(ExperimentId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2691,7 +1949,7 @@ func (client *Client) QueryExperimentVisualizationData(ExperimentId *string, req
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchMCTablesResponse
-func (client *Client) SearchMCTablesWithOptions(request *SearchMCTablesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SearchMCTablesResponse, _err error) {
+func (client *Client) SearchMCTablesWithContext(ctx context.Context, request *SearchMCTablesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SearchMCTablesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2723,30 +1981,11 @@ func (client *Client) SearchMCTablesWithOptions(request *SearchMCTablesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchMCTablesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 搜索MaxCompute表
-//
-// @param request - SearchMCTablesRequest
-//
-// @return SearchMCTablesResponse
-func (client *Client) SearchMCTables(request *SearchMCTablesRequest) (_result *SearchMCTablesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &SearchMCTablesResponse{}
-	_body, _err := client.SearchMCTablesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2759,7 +1998,7 @@ func (client *Client) SearchMCTables(request *SearchMCTablesRequest) (_result *S
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopExperimentResponse
-func (client *Client) StopExperimentWithOptions(ExperimentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopExperimentResponse, _err error) {
+func (client *Client) StopExperimentWithContext(ctx context.Context, ExperimentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopExperimentResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2775,28 +2014,11 @@ func (client *Client) StopExperimentWithOptions(ExperimentId *string, headers ma
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopExperimentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 停止实验所有运行中的作业
-//
-// @return StopExperimentResponse
-func (client *Client) StopExperiment(ExperimentId *string) (_result *StopExperimentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &StopExperimentResponse{}
-	_body, _err := client.StopExperimentWithOptions(ExperimentId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2809,7 +2031,7 @@ func (client *Client) StopExperiment(ExperimentId *string) (_result *StopExperim
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopJobResponse
-func (client *Client) StopJobWithOptions(JobId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopJobResponse, _err error) {
+func (client *Client) StopJobWithContext(ctx context.Context, JobId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopJobResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2825,28 +2047,11 @@ func (client *Client) StopJobWithOptions(JobId *string, headers map[string]*stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 停止一个实验的作业
-//
-// @return StopJobResponse
-func (client *Client) StopJob(JobId *string) (_result *StopJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &StopJobResponse{}
-	_body, _err := client.StopJobWithOptions(JobId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2861,7 +2066,7 @@ func (client *Client) StopJob(JobId *string) (_result *StopJobResponse, _err err
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateExperimentContentResponse
-func (client *Client) UpdateExperimentContentWithOptions(ExperimentId *string, request *UpdateExperimentContentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateExperimentContentResponse, _err error) {
+func (client *Client) UpdateExperimentContentWithContext(ctx context.Context, ExperimentId *string, request *UpdateExperimentContentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateExperimentContentResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2893,30 +2098,11 @@ func (client *Client) UpdateExperimentContentWithOptions(ExperimentId *string, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateExperimentContentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新实验内容
-//
-// @param request - UpdateExperimentContentRequest
-//
-// @return UpdateExperimentContentResponse
-func (client *Client) UpdateExperimentContent(ExperimentId *string, request *UpdateExperimentContentRequest) (_result *UpdateExperimentContentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateExperimentContentResponse{}
-	_body, _err := client.UpdateExperimentContentWithOptions(ExperimentId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2931,7 +2117,7 @@ func (client *Client) UpdateExperimentContent(ExperimentId *string, request *Upd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateExperimentFolderResponse
-func (client *Client) UpdateExperimentFolderWithOptions(FolderId *string, request *UpdateExperimentFolderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateExperimentFolderResponse, _err error) {
+func (client *Client) UpdateExperimentFolderWithContext(ctx context.Context, FolderId *string, request *UpdateExperimentFolderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateExperimentFolderResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2963,30 +2149,11 @@ func (client *Client) UpdateExperimentFolderWithOptions(FolderId *string, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateExperimentFolderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新算法文件夹
-//
-// @param request - UpdateExperimentFolderRequest
-//
-// @return UpdateExperimentFolderResponse
-func (client *Client) UpdateExperimentFolder(FolderId *string, request *UpdateExperimentFolderRequest) (_result *UpdateExperimentFolderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateExperimentFolderResponse{}
-	_body, _err := client.UpdateExperimentFolderWithOptions(FolderId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3001,7 +2168,7 @@ func (client *Client) UpdateExperimentFolder(FolderId *string, request *UpdateEx
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateExperimentMetaResponse
-func (client *Client) UpdateExperimentMetaWithOptions(ExperimentId *string, request *UpdateExperimentMetaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateExperimentMetaResponse, _err error) {
+func (client *Client) UpdateExperimentMetaWithContext(ctx context.Context, ExperimentId *string, request *UpdateExperimentMetaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateExperimentMetaResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3045,29 +2212,10 @@ func (client *Client) UpdateExperimentMetaWithOptions(ExperimentId *string, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateExperimentMetaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新实验的Meta信息
-//
-// @param request - UpdateExperimentMetaRequest
-//
-// @return UpdateExperimentMetaResponse
-func (client *Client) UpdateExperimentMeta(ExperimentId *string, request *UpdateExperimentMetaRequest) (_result *UpdateExperimentMetaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateExperimentMetaResponse{}
-	_body, _err := client.UpdateExperimentMetaWithOptions(ExperimentId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
