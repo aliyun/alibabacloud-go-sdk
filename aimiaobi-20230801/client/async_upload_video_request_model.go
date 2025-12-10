@@ -11,22 +11,40 @@ type iAsyncUploadVideoRequest interface {
 	GoString() string
 	SetAnlysisPrompt(v string) *AsyncUploadVideoRequest
 	GetAnlysisPrompt() *string
+	SetFaceIdentitySimilarityMinScore(v float64) *AsyncUploadVideoRequest
+	GetFaceIdentitySimilarityMinScore() *float64
 	SetReferenceVideo(v *AsyncUploadVideoRequestReferenceVideo) *AsyncUploadVideoRequest
 	GetReferenceVideo() *AsyncUploadVideoRequestReferenceVideo
+	SetRemoveSubtitle(v bool) *AsyncUploadVideoRequest
+	GetRemoveSubtitle() *bool
 	SetSourceVideos(v []*AsyncUploadVideoRequestSourceVideos) *AsyncUploadVideoRequest
 	GetSourceVideos() []*AsyncUploadVideoRequestSourceVideos
 	SetSplitInterval(v int32) *AsyncUploadVideoRequest
 	GetSplitInterval() *int32
+	SetVideoRoles(v []*AsyncUploadVideoRequestVideoRoles) *AsyncUploadVideoRequest
+	GetVideoRoles() []*AsyncUploadVideoRequestVideoRoles
+	SetVideoShotFaceIdentityCount(v int32) *AsyncUploadVideoRequest
+	GetVideoShotFaceIdentityCount() *int32
 	SetWorkspaceId(v string) *AsyncUploadVideoRequest
 	GetWorkspaceId() *string
 }
 
 type AsyncUploadVideoRequest struct {
-	AnlysisPrompt  *string                                `json:"AnlysisPrompt,omitempty" xml:"AnlysisPrompt,omitempty"`
-	ReferenceVideo *AsyncUploadVideoRequestReferenceVideo `json:"ReferenceVideo,omitempty" xml:"ReferenceVideo,omitempty" type:"Struct"`
+	AnlysisPrompt *string `json:"AnlysisPrompt,omitempty" xml:"AnlysisPrompt,omitempty"`
+	// example:
+	//
+	// 0.7
+	FaceIdentitySimilarityMinScore *float64                               `json:"FaceIdentitySimilarityMinScore,omitempty" xml:"FaceIdentitySimilarityMinScore,omitempty"`
+	ReferenceVideo                 *AsyncUploadVideoRequestReferenceVideo `json:"ReferenceVideo,omitempty" xml:"ReferenceVideo,omitempty" type:"Struct"`
+	RemoveSubtitle                 *bool                                  `json:"RemoveSubtitle,omitempty" xml:"RemoveSubtitle,omitempty"`
 	// This parameter is required.
 	SourceVideos  []*AsyncUploadVideoRequestSourceVideos `json:"SourceVideos,omitempty" xml:"SourceVideos,omitempty" type:"Repeated"`
 	SplitInterval *int32                                 `json:"SplitInterval,omitempty" xml:"SplitInterval,omitempty"`
+	VideoRoles    []*AsyncUploadVideoRequestVideoRoles   `json:"VideoRoles,omitempty" xml:"VideoRoles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	VideoShotFaceIdentityCount *int32 `json:"VideoShotFaceIdentityCount,omitempty" xml:"VideoShotFaceIdentityCount,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -47,8 +65,16 @@ func (s *AsyncUploadVideoRequest) GetAnlysisPrompt() *string {
 	return s.AnlysisPrompt
 }
 
+func (s *AsyncUploadVideoRequest) GetFaceIdentitySimilarityMinScore() *float64 {
+	return s.FaceIdentitySimilarityMinScore
+}
+
 func (s *AsyncUploadVideoRequest) GetReferenceVideo() *AsyncUploadVideoRequestReferenceVideo {
 	return s.ReferenceVideo
+}
+
+func (s *AsyncUploadVideoRequest) GetRemoveSubtitle() *bool {
+	return s.RemoveSubtitle
 }
 
 func (s *AsyncUploadVideoRequest) GetSourceVideos() []*AsyncUploadVideoRequestSourceVideos {
@@ -57,6 +83,14 @@ func (s *AsyncUploadVideoRequest) GetSourceVideos() []*AsyncUploadVideoRequestSo
 
 func (s *AsyncUploadVideoRequest) GetSplitInterval() *int32 {
 	return s.SplitInterval
+}
+
+func (s *AsyncUploadVideoRequest) GetVideoRoles() []*AsyncUploadVideoRequestVideoRoles {
+	return s.VideoRoles
+}
+
+func (s *AsyncUploadVideoRequest) GetVideoShotFaceIdentityCount() *int32 {
+	return s.VideoShotFaceIdentityCount
 }
 
 func (s *AsyncUploadVideoRequest) GetWorkspaceId() *string {
@@ -68,8 +102,18 @@ func (s *AsyncUploadVideoRequest) SetAnlysisPrompt(v string) *AsyncUploadVideoRe
 	return s
 }
 
+func (s *AsyncUploadVideoRequest) SetFaceIdentitySimilarityMinScore(v float64) *AsyncUploadVideoRequest {
+	s.FaceIdentitySimilarityMinScore = &v
+	return s
+}
+
 func (s *AsyncUploadVideoRequest) SetReferenceVideo(v *AsyncUploadVideoRequestReferenceVideo) *AsyncUploadVideoRequest {
 	s.ReferenceVideo = v
+	return s
+}
+
+func (s *AsyncUploadVideoRequest) SetRemoveSubtitle(v bool) *AsyncUploadVideoRequest {
+	s.RemoveSubtitle = &v
 	return s
 }
 
@@ -80,6 +124,16 @@ func (s *AsyncUploadVideoRequest) SetSourceVideos(v []*AsyncUploadVideoRequestSo
 
 func (s *AsyncUploadVideoRequest) SetSplitInterval(v int32) *AsyncUploadVideoRequest {
 	s.SplitInterval = &v
+	return s
+}
+
+func (s *AsyncUploadVideoRequest) SetVideoRoles(v []*AsyncUploadVideoRequestVideoRoles) *AsyncUploadVideoRequest {
+	s.VideoRoles = v
+	return s
+}
+
+func (s *AsyncUploadVideoRequest) SetVideoShotFaceIdentityCount(v int32) *AsyncUploadVideoRequest {
+	s.VideoShotFaceIdentityCount = &v
 	return s
 }
 
@@ -96,6 +150,15 @@ func (s *AsyncUploadVideoRequest) Validate() error {
 	}
 	if s.SourceVideos != nil {
 		for _, item := range s.SourceVideos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoRoles != nil {
+		for _, item := range s.VideoRoles {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -199,5 +262,106 @@ func (s *AsyncUploadVideoRequestSourceVideos) SetVideoUrl(v string) *AsyncUpload
 }
 
 func (s *AsyncUploadVideoRequestSourceVideos) Validate() error {
+	return dara.Validate(s)
+}
+
+type AsyncUploadVideoRequestVideoRoles struct {
+	// example:
+	//
+	// 李晓明是一位警察
+	RoleInfo *string `json:"RoleInfo,omitempty" xml:"RoleInfo,omitempty"`
+	// example:
+	//
+	// 李晓明
+	RoleName *string                                      `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	RoleUrls []*AsyncUploadVideoRequestVideoRolesRoleUrls `json:"RoleUrls,omitempty" xml:"RoleUrls,omitempty" type:"Repeated"`
+}
+
+func (s AsyncUploadVideoRequestVideoRoles) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AsyncUploadVideoRequestVideoRoles) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncUploadVideoRequestVideoRoles) GetRoleInfo() *string {
+	return s.RoleInfo
+}
+
+func (s *AsyncUploadVideoRequestVideoRoles) GetRoleName() *string {
+	return s.RoleName
+}
+
+func (s *AsyncUploadVideoRequestVideoRoles) GetRoleUrls() []*AsyncUploadVideoRequestVideoRolesRoleUrls {
+	return s.RoleUrls
+}
+
+func (s *AsyncUploadVideoRequestVideoRoles) SetRoleInfo(v string) *AsyncUploadVideoRequestVideoRoles {
+	s.RoleInfo = &v
+	return s
+}
+
+func (s *AsyncUploadVideoRequestVideoRoles) SetRoleName(v string) *AsyncUploadVideoRequestVideoRoles {
+	s.RoleName = &v
+	return s
+}
+
+func (s *AsyncUploadVideoRequestVideoRoles) SetRoleUrls(v []*AsyncUploadVideoRequestVideoRolesRoleUrls) *AsyncUploadVideoRequestVideoRoles {
+	s.RoleUrls = v
+	return s
+}
+
+func (s *AsyncUploadVideoRequestVideoRoles) Validate() error {
+	if s.RoleUrls != nil {
+		for _, item := range s.RoleUrls {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type AsyncUploadVideoRequestVideoRolesRoleUrls struct {
+	// example:
+	//
+	// 王小明.jpeg
+	RoleFileName *string `json:"RoleFileName,omitempty" xml:"RoleFileName,omitempty"`
+	// example:
+	//
+	// http://xxx/xxx.jpeg
+	RoleFileUrl *string `json:"RoleFileUrl,omitempty" xml:"RoleFileUrl,omitempty"`
+}
+
+func (s AsyncUploadVideoRequestVideoRolesRoleUrls) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AsyncUploadVideoRequestVideoRolesRoleUrls) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncUploadVideoRequestVideoRolesRoleUrls) GetRoleFileName() *string {
+	return s.RoleFileName
+}
+
+func (s *AsyncUploadVideoRequestVideoRolesRoleUrls) GetRoleFileUrl() *string {
+	return s.RoleFileUrl
+}
+
+func (s *AsyncUploadVideoRequestVideoRolesRoleUrls) SetRoleFileName(v string) *AsyncUploadVideoRequestVideoRolesRoleUrls {
+	s.RoleFileName = &v
+	return s
+}
+
+func (s *AsyncUploadVideoRequestVideoRolesRoleUrls) SetRoleFileUrl(v string) *AsyncUploadVideoRequestVideoRolesRoleUrls {
+	s.RoleFileUrl = &v
+	return s
+}
+
+func (s *AsyncUploadVideoRequestVideoRolesRoleUrls) Validate() error {
 	return dara.Validate(s)
 }

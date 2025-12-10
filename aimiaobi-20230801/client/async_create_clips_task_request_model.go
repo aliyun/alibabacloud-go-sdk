@@ -9,14 +9,26 @@ type iAsyncCreateClipsTaskRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCloseMusic(v bool) *AsyncCreateClipsTaskRequest
+	GetCloseMusic() *bool
+	SetCloseSubtitle(v bool) *AsyncCreateClipsTaskRequest
+	GetCloseSubtitle() *bool
+	SetCloseVoice(v bool) *AsyncCreateClipsTaskRequest
+	GetCloseVoice() *bool
 	SetColorWords(v []*AsyncCreateClipsTaskRequestColorWords) *AsyncCreateClipsTaskRequest
 	GetColorWords() []*AsyncCreateClipsTaskRequestColorWords
+	SetCustomVoiceUrl(v string) *AsyncCreateClipsTaskRequest
+	GetCustomVoiceUrl() *string
+	SetCustomVoiceVolume(v int32) *AsyncCreateClipsTaskRequest
+	GetCustomVoiceVolume() *int32
 	SetHeight(v int32) *AsyncCreateClipsTaskRequest
 	GetHeight() *int32
 	SetMusicUrl(v string) *AsyncCreateClipsTaskRequest
 	GetMusicUrl() *string
 	SetMusicVolume(v int32) *AsyncCreateClipsTaskRequest
 	GetMusicVolume() *int32
+	SetStickers(v []*AsyncCreateClipsTaskRequestStickers) *AsyncCreateClipsTaskRequest
+	GetStickers() []*AsyncCreateClipsTaskRequestStickers
 	SetSubtitleFontSize(v int32) *AsyncCreateClipsTaskRequest
 	GetSubtitleFontSize() *int32
 	SetTaskId(v string) *AsyncCreateClipsTaskRequest
@@ -32,7 +44,18 @@ type iAsyncCreateClipsTaskRequest interface {
 }
 
 type AsyncCreateClipsTaskRequest struct {
-	ColorWords []*AsyncCreateClipsTaskRequestColorWords `json:"ColorWords,omitempty" xml:"ColorWords,omitempty" type:"Repeated"`
+	CloseMusic    *bool                                    `json:"CloseMusic,omitempty" xml:"CloseMusic,omitempty"`
+	CloseSubtitle *bool                                    `json:"CloseSubtitle,omitempty" xml:"CloseSubtitle,omitempty"`
+	CloseVoice    *bool                                    `json:"CloseVoice,omitempty" xml:"CloseVoice,omitempty"`
+	ColorWords    []*AsyncCreateClipsTaskRequestColorWords `json:"ColorWords,omitempty" xml:"ColorWords,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http://xxx/xxx.mp4
+	CustomVoiceUrl *string `json:"CustomVoiceUrl,omitempty" xml:"CustomVoiceUrl,omitempty"`
+	// example:
+	//
+	// 0
+	CustomVoiceVolume *int32 `json:"CustomVoiceVolume,omitempty" xml:"CustomVoiceVolume,omitempty"`
 	// example:
 	//
 	// 1920
@@ -40,9 +63,10 @@ type AsyncCreateClipsTaskRequest struct {
 	// example:
 	//
 	// http://music.mp4
-	MusicUrl         *string `json:"MusicUrl,omitempty" xml:"MusicUrl,omitempty"`
-	MusicVolume      *int32  `json:"MusicVolume,omitempty" xml:"MusicVolume,omitempty"`
-	SubtitleFontSize *int32  `json:"SubtitleFontSize,omitempty" xml:"SubtitleFontSize,omitempty"`
+	MusicUrl         *string                                `json:"MusicUrl,omitempty" xml:"MusicUrl,omitempty"`
+	MusicVolume      *int32                                 `json:"MusicVolume,omitempty" xml:"MusicVolume,omitempty"`
+	Stickers         []*AsyncCreateClipsTaskRequestStickers `json:"Stickers,omitempty" xml:"Stickers,omitempty" type:"Repeated"`
+	SubtitleFontSize *int32                                 `json:"SubtitleFontSize,omitempty" xml:"SubtitleFontSize,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -71,8 +95,28 @@ func (s AsyncCreateClipsTaskRequest) GoString() string {
 	return s.String()
 }
 
+func (s *AsyncCreateClipsTaskRequest) GetCloseMusic() *bool {
+	return s.CloseMusic
+}
+
+func (s *AsyncCreateClipsTaskRequest) GetCloseSubtitle() *bool {
+	return s.CloseSubtitle
+}
+
+func (s *AsyncCreateClipsTaskRequest) GetCloseVoice() *bool {
+	return s.CloseVoice
+}
+
 func (s *AsyncCreateClipsTaskRequest) GetColorWords() []*AsyncCreateClipsTaskRequestColorWords {
 	return s.ColorWords
+}
+
+func (s *AsyncCreateClipsTaskRequest) GetCustomVoiceUrl() *string {
+	return s.CustomVoiceUrl
+}
+
+func (s *AsyncCreateClipsTaskRequest) GetCustomVoiceVolume() *int32 {
+	return s.CustomVoiceVolume
 }
 
 func (s *AsyncCreateClipsTaskRequest) GetHeight() *int32 {
@@ -85,6 +129,10 @@ func (s *AsyncCreateClipsTaskRequest) GetMusicUrl() *string {
 
 func (s *AsyncCreateClipsTaskRequest) GetMusicVolume() *int32 {
 	return s.MusicVolume
+}
+
+func (s *AsyncCreateClipsTaskRequest) GetStickers() []*AsyncCreateClipsTaskRequestStickers {
+	return s.Stickers
 }
 
 func (s *AsyncCreateClipsTaskRequest) GetSubtitleFontSize() *int32 {
@@ -111,8 +159,33 @@ func (s *AsyncCreateClipsTaskRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
 
+func (s *AsyncCreateClipsTaskRequest) SetCloseMusic(v bool) *AsyncCreateClipsTaskRequest {
+	s.CloseMusic = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetCloseSubtitle(v bool) *AsyncCreateClipsTaskRequest {
+	s.CloseSubtitle = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetCloseVoice(v bool) *AsyncCreateClipsTaskRequest {
+	s.CloseVoice = &v
+	return s
+}
+
 func (s *AsyncCreateClipsTaskRequest) SetColorWords(v []*AsyncCreateClipsTaskRequestColorWords) *AsyncCreateClipsTaskRequest {
 	s.ColorWords = v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetCustomVoiceUrl(v string) *AsyncCreateClipsTaskRequest {
+	s.CustomVoiceUrl = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetCustomVoiceVolume(v int32) *AsyncCreateClipsTaskRequest {
+	s.CustomVoiceVolume = &v
 	return s
 }
 
@@ -128,6 +201,11 @@ func (s *AsyncCreateClipsTaskRequest) SetMusicUrl(v string) *AsyncCreateClipsTas
 
 func (s *AsyncCreateClipsTaskRequest) SetMusicVolume(v int32) *AsyncCreateClipsTaskRequest {
 	s.MusicVolume = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetStickers(v []*AsyncCreateClipsTaskRequestStickers) *AsyncCreateClipsTaskRequest {
+	s.Stickers = v
 	return s
 }
 
@@ -164,6 +242,15 @@ func (s *AsyncCreateClipsTaskRequest) SetWorkspaceId(v string) *AsyncCreateClips
 func (s *AsyncCreateClipsTaskRequest) Validate() error {
 	if s.ColorWords != nil {
 		for _, item := range s.ColorWords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Stickers != nil {
+		for _, item := range s.Stickers {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -268,5 +355,124 @@ func (s *AsyncCreateClipsTaskRequestColorWords) SetY(v float32) *AsyncCreateClip
 }
 
 func (s *AsyncCreateClipsTaskRequestColorWords) Validate() error {
+	return dara.Validate(s)
+}
+
+type AsyncCreateClipsTaskRequestStickers struct {
+	// example:
+	//
+	// 10
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 8
+	DyncFrames *int32 `json:"DyncFrames,omitempty" xml:"DyncFrames,omitempty"`
+	// example:
+	//
+	// 100
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 5
+	TimelineIn *int32 `json:"TimelineIn,omitempty" xml:"TimelineIn,omitempty"`
+	// example:
+	//
+	// http://xxx/xxx.gif
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 100
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 200
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 200
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s AsyncCreateClipsTaskRequestStickers) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AsyncCreateClipsTaskRequestStickers) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncCreateClipsTaskRequestStickers) GetDuration() *int32 {
+	return s.Duration
+}
+
+func (s *AsyncCreateClipsTaskRequestStickers) GetDyncFrames() *int32 {
+	return s.DyncFrames
+}
+
+func (s *AsyncCreateClipsTaskRequestStickers) GetHeight() *int32 {
+	return s.Height
+}
+
+func (s *AsyncCreateClipsTaskRequestStickers) GetTimelineIn() *int32 {
+	return s.TimelineIn
+}
+
+func (s *AsyncCreateClipsTaskRequestStickers) GetUrl() *string {
+	return s.Url
+}
+
+func (s *AsyncCreateClipsTaskRequestStickers) GetWidth() *int32 {
+	return s.Width
+}
+
+func (s *AsyncCreateClipsTaskRequestStickers) GetX() *float32 {
+	return s.X
+}
+
+func (s *AsyncCreateClipsTaskRequestStickers) GetY() *float32 {
+	return s.Y
+}
+
+func (s *AsyncCreateClipsTaskRequestStickers) SetDuration(v int32) *AsyncCreateClipsTaskRequestStickers {
+	s.Duration = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequestStickers) SetDyncFrames(v int32) *AsyncCreateClipsTaskRequestStickers {
+	s.DyncFrames = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequestStickers) SetHeight(v int32) *AsyncCreateClipsTaskRequestStickers {
+	s.Height = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequestStickers) SetTimelineIn(v int32) *AsyncCreateClipsTaskRequestStickers {
+	s.TimelineIn = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequestStickers) SetUrl(v string) *AsyncCreateClipsTaskRequestStickers {
+	s.Url = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequestStickers) SetWidth(v int32) *AsyncCreateClipsTaskRequestStickers {
+	s.Width = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequestStickers) SetX(v float32) *AsyncCreateClipsTaskRequestStickers {
+	s.X = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequestStickers) SetY(v float32) *AsyncCreateClipsTaskRequestStickers {
+	s.Y = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequestStickers) Validate() error {
 	return dara.Validate(s)
 }

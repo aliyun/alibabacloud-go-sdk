@@ -9,14 +9,26 @@ type iAsyncCreateClipsTaskShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCloseMusic(v bool) *AsyncCreateClipsTaskShrinkRequest
+	GetCloseMusic() *bool
+	SetCloseSubtitle(v bool) *AsyncCreateClipsTaskShrinkRequest
+	GetCloseSubtitle() *bool
+	SetCloseVoice(v bool) *AsyncCreateClipsTaskShrinkRequest
+	GetCloseVoice() *bool
 	SetColorWordsShrink(v string) *AsyncCreateClipsTaskShrinkRequest
 	GetColorWordsShrink() *string
+	SetCustomVoiceUrl(v string) *AsyncCreateClipsTaskShrinkRequest
+	GetCustomVoiceUrl() *string
+	SetCustomVoiceVolume(v int32) *AsyncCreateClipsTaskShrinkRequest
+	GetCustomVoiceVolume() *int32
 	SetHeight(v int32) *AsyncCreateClipsTaskShrinkRequest
 	GetHeight() *int32
 	SetMusicUrl(v string) *AsyncCreateClipsTaskShrinkRequest
 	GetMusicUrl() *string
 	SetMusicVolume(v int32) *AsyncCreateClipsTaskShrinkRequest
 	GetMusicVolume() *int32
+	SetStickersShrink(v string) *AsyncCreateClipsTaskShrinkRequest
+	GetStickersShrink() *string
 	SetSubtitleFontSize(v int32) *AsyncCreateClipsTaskShrinkRequest
 	GetSubtitleFontSize() *int32
 	SetTaskId(v string) *AsyncCreateClipsTaskShrinkRequest
@@ -32,7 +44,18 @@ type iAsyncCreateClipsTaskShrinkRequest interface {
 }
 
 type AsyncCreateClipsTaskShrinkRequest struct {
+	CloseMusic       *bool   `json:"CloseMusic,omitempty" xml:"CloseMusic,omitempty"`
+	CloseSubtitle    *bool   `json:"CloseSubtitle,omitempty" xml:"CloseSubtitle,omitempty"`
+	CloseVoice       *bool   `json:"CloseVoice,omitempty" xml:"CloseVoice,omitempty"`
 	ColorWordsShrink *string `json:"ColorWords,omitempty" xml:"ColorWords,omitempty"`
+	// example:
+	//
+	// http://xxx/xxx.mp4
+	CustomVoiceUrl *string `json:"CustomVoiceUrl,omitempty" xml:"CustomVoiceUrl,omitempty"`
+	// example:
+	//
+	// 0
+	CustomVoiceVolume *int32 `json:"CustomVoiceVolume,omitempty" xml:"CustomVoiceVolume,omitempty"`
 	// example:
 	//
 	// 1920
@@ -42,6 +65,7 @@ type AsyncCreateClipsTaskShrinkRequest struct {
 	// http://music.mp4
 	MusicUrl         *string `json:"MusicUrl,omitempty" xml:"MusicUrl,omitempty"`
 	MusicVolume      *int32  `json:"MusicVolume,omitempty" xml:"MusicVolume,omitempty"`
+	StickersShrink   *string `json:"Stickers,omitempty" xml:"Stickers,omitempty"`
 	SubtitleFontSize *int32  `json:"SubtitleFontSize,omitempty" xml:"SubtitleFontSize,omitempty"`
 	// This parameter is required.
 	//
@@ -71,8 +95,28 @@ func (s AsyncCreateClipsTaskShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *AsyncCreateClipsTaskShrinkRequest) GetCloseMusic() *bool {
+	return s.CloseMusic
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) GetCloseSubtitle() *bool {
+	return s.CloseSubtitle
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) GetCloseVoice() *bool {
+	return s.CloseVoice
+}
+
 func (s *AsyncCreateClipsTaskShrinkRequest) GetColorWordsShrink() *string {
 	return s.ColorWordsShrink
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) GetCustomVoiceUrl() *string {
+	return s.CustomVoiceUrl
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) GetCustomVoiceVolume() *int32 {
+	return s.CustomVoiceVolume
 }
 
 func (s *AsyncCreateClipsTaskShrinkRequest) GetHeight() *int32 {
@@ -85,6 +129,10 @@ func (s *AsyncCreateClipsTaskShrinkRequest) GetMusicUrl() *string {
 
 func (s *AsyncCreateClipsTaskShrinkRequest) GetMusicVolume() *int32 {
 	return s.MusicVolume
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) GetStickersShrink() *string {
+	return s.StickersShrink
 }
 
 func (s *AsyncCreateClipsTaskShrinkRequest) GetSubtitleFontSize() *int32 {
@@ -111,8 +159,33 @@ func (s *AsyncCreateClipsTaskShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
 
+func (s *AsyncCreateClipsTaskShrinkRequest) SetCloseMusic(v bool) *AsyncCreateClipsTaskShrinkRequest {
+	s.CloseMusic = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetCloseSubtitle(v bool) *AsyncCreateClipsTaskShrinkRequest {
+	s.CloseSubtitle = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetCloseVoice(v bool) *AsyncCreateClipsTaskShrinkRequest {
+	s.CloseVoice = &v
+	return s
+}
+
 func (s *AsyncCreateClipsTaskShrinkRequest) SetColorWordsShrink(v string) *AsyncCreateClipsTaskShrinkRequest {
 	s.ColorWordsShrink = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetCustomVoiceUrl(v string) *AsyncCreateClipsTaskShrinkRequest {
+	s.CustomVoiceUrl = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetCustomVoiceVolume(v int32) *AsyncCreateClipsTaskShrinkRequest {
+	s.CustomVoiceVolume = &v
 	return s
 }
 
@@ -128,6 +201,11 @@ func (s *AsyncCreateClipsTaskShrinkRequest) SetMusicUrl(v string) *AsyncCreateCl
 
 func (s *AsyncCreateClipsTaskShrinkRequest) SetMusicVolume(v int32) *AsyncCreateClipsTaskShrinkRequest {
 	s.MusicVolume = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetStickersShrink(v string) *AsyncCreateClipsTaskShrinkRequest {
+	s.StickersShrink = &v
 	return s
 }
 

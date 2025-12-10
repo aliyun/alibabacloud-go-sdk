@@ -112,11 +112,22 @@ func (s *GetAutoClipsTaskInfoResponseBody) Validate() error {
 }
 
 type GetAutoClipsTaskInfoResponseBodyData struct {
-	ColorWords         []*GetAutoClipsTaskInfoResponseBodyDataColorWords `json:"ColorWords,omitempty" xml:"ColorWords,omitempty" type:"Repeated"`
-	Content            *string                                           `json:"Content,omitempty" xml:"Content,omitempty"`
-	ErrorMessage       *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	MediaCloudTimeline *string                                           `json:"MediaCloudTimeline,omitempty" xml:"MediaCloudTimeline,omitempty"`
-	MusicStyle         *string                                           `json:"MusicStyle,omitempty" xml:"MusicStyle,omitempty"`
+	CloseMusic    *bool                                             `json:"CloseMusic,omitempty" xml:"CloseMusic,omitempty"`
+	CloseSubtitle *bool                                             `json:"CloseSubtitle,omitempty" xml:"CloseSubtitle,omitempty"`
+	CloseVoice    *bool                                             `json:"CloseVoice,omitempty" xml:"CloseVoice,omitempty"`
+	ColorWords    []*GetAutoClipsTaskInfoResponseBodyDataColorWords `json:"ColorWords,omitempty" xml:"ColorWords,omitempty" type:"Repeated"`
+	Content       *string                                           `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// http://xxx/xxx.mp4
+	CustomVoiceUrl *string `json:"CustomVoiceUrl,omitempty" xml:"CustomVoiceUrl,omitempty"`
+	// example:
+	//
+	// 0
+	CustomVoiceVolume  *int32  `json:"CustomVoiceVolume,omitempty" xml:"CustomVoiceVolume,omitempty"`
+	ErrorMessage       *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	MediaCloudTimeline *string `json:"MediaCloudTimeline,omitempty" xml:"MediaCloudTimeline,omitempty"`
+	MusicStyle         *string `json:"MusicStyle,omitempty" xml:"MusicStyle,omitempty"`
 	// example:
 	//
 	// http://music.mp4
@@ -133,7 +144,8 @@ type GetAutoClipsTaskInfoResponseBodyData struct {
 	// example:
 	//
 	// clips
-	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
+	Step     *string                                         `json:"Step,omitempty" xml:"Step,omitempty"`
+	Stickers []*GetAutoClipsTaskInfoResponseBodyDataStickers `json:"Stickers,omitempty" xml:"Stickers,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 5
@@ -158,12 +170,32 @@ func (s GetAutoClipsTaskInfoResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetAutoClipsTaskInfoResponseBodyData) GetCloseMusic() *bool {
+	return s.CloseMusic
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) GetCloseSubtitle() *bool {
+	return s.CloseSubtitle
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) GetCloseVoice() *bool {
+	return s.CloseVoice
+}
+
 func (s *GetAutoClipsTaskInfoResponseBodyData) GetColorWords() []*GetAutoClipsTaskInfoResponseBodyDataColorWords {
 	return s.ColorWords
 }
 
 func (s *GetAutoClipsTaskInfoResponseBodyData) GetContent() *string {
 	return s.Content
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) GetCustomVoiceUrl() *string {
+	return s.CustomVoiceUrl
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) GetCustomVoiceVolume() *int32 {
+	return s.CustomVoiceVolume
 }
 
 func (s *GetAutoClipsTaskInfoResponseBodyData) GetErrorMessage() *string {
@@ -198,6 +230,10 @@ func (s *GetAutoClipsTaskInfoResponseBodyData) GetStep() *string {
 	return s.Step
 }
 
+func (s *GetAutoClipsTaskInfoResponseBodyData) GetStickers() []*GetAutoClipsTaskInfoResponseBodyDataStickers {
+	return s.Stickers
+}
+
 func (s *GetAutoClipsTaskInfoResponseBodyData) GetSubtitleFontSize() *int32 {
 	return s.SubtitleFontSize
 }
@@ -218,6 +254,21 @@ func (s *GetAutoClipsTaskInfoResponseBodyData) GetVoiceVolume() *int32 {
 	return s.VoiceVolume
 }
 
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetCloseMusic(v bool) *GetAutoClipsTaskInfoResponseBodyData {
+	s.CloseMusic = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetCloseSubtitle(v bool) *GetAutoClipsTaskInfoResponseBodyData {
+	s.CloseSubtitle = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetCloseVoice(v bool) *GetAutoClipsTaskInfoResponseBodyData {
+	s.CloseVoice = &v
+	return s
+}
+
 func (s *GetAutoClipsTaskInfoResponseBodyData) SetColorWords(v []*GetAutoClipsTaskInfoResponseBodyDataColorWords) *GetAutoClipsTaskInfoResponseBodyData {
 	s.ColorWords = v
 	return s
@@ -225,6 +276,16 @@ func (s *GetAutoClipsTaskInfoResponseBodyData) SetColorWords(v []*GetAutoClipsTa
 
 func (s *GetAutoClipsTaskInfoResponseBodyData) SetContent(v string) *GetAutoClipsTaskInfoResponseBodyData {
 	s.Content = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetCustomVoiceUrl(v string) *GetAutoClipsTaskInfoResponseBodyData {
+	s.CustomVoiceUrl = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetCustomVoiceVolume(v int32) *GetAutoClipsTaskInfoResponseBodyData {
+	s.CustomVoiceVolume = &v
 	return s
 }
 
@@ -268,6 +329,11 @@ func (s *GetAutoClipsTaskInfoResponseBodyData) SetStep(v string) *GetAutoClipsTa
 	return s
 }
 
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetStickers(v []*GetAutoClipsTaskInfoResponseBodyDataStickers) *GetAutoClipsTaskInfoResponseBodyData {
+	s.Stickers = v
+	return s
+}
+
 func (s *GetAutoClipsTaskInfoResponseBodyData) SetSubtitleFontSize(v int32) *GetAutoClipsTaskInfoResponseBodyData {
 	s.SubtitleFontSize = &v
 	return s
@@ -296,6 +362,15 @@ func (s *GetAutoClipsTaskInfoResponseBodyData) SetVoiceVolume(v int32) *GetAutoC
 func (s *GetAutoClipsTaskInfoResponseBodyData) Validate() error {
 	if s.ColorWords != nil {
 		for _, item := range s.ColorWords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Stickers != nil {
+		for _, item := range s.Stickers {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -415,6 +490,125 @@ func (s *GetAutoClipsTaskInfoResponseBodyDataColorWords) SetY(v float32) *GetAut
 }
 
 func (s *GetAutoClipsTaskInfoResponseBodyDataColorWords) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetAutoClipsTaskInfoResponseBodyDataStickers struct {
+	// example:
+	//
+	// 10
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 8
+	DyncFrames *int32 `json:"DyncFrames,omitempty" xml:"DyncFrames,omitempty"`
+	// example:
+	//
+	// 200
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 10
+	TimelineIn *int32 `json:"TimelineIn,omitempty" xml:"TimelineIn,omitempty"`
+	// example:
+	//
+	// http://xxx/xxx.gif
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 200
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 100
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 100
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataStickers) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataStickers) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataStickers) GetDuration() *int32 {
+	return s.Duration
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataStickers) GetDyncFrames() *int32 {
+	return s.DyncFrames
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataStickers) GetHeight() *int32 {
+	return s.Height
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataStickers) GetTimelineIn() *int32 {
+	return s.TimelineIn
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataStickers) GetUrl() *string {
+	return s.Url
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataStickers) GetWidth() *int32 {
+	return s.Width
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataStickers) GetX() *float32 {
+	return s.X
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataStickers) GetY() *float32 {
+	return s.Y
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataStickers) SetDuration(v int32) *GetAutoClipsTaskInfoResponseBodyDataStickers {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataStickers) SetDyncFrames(v int32) *GetAutoClipsTaskInfoResponseBodyDataStickers {
+	s.DyncFrames = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataStickers) SetHeight(v int32) *GetAutoClipsTaskInfoResponseBodyDataStickers {
+	s.Height = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataStickers) SetTimelineIn(v int32) *GetAutoClipsTaskInfoResponseBodyDataStickers {
+	s.TimelineIn = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataStickers) SetUrl(v string) *GetAutoClipsTaskInfoResponseBodyDataStickers {
+	s.Url = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataStickers) SetWidth(v int32) *GetAutoClipsTaskInfoResponseBodyDataStickers {
+	s.Width = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataStickers) SetX(v float32) *GetAutoClipsTaskInfoResponseBodyDataStickers {
+	s.X = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataStickers) SetY(v float32) *GetAutoClipsTaskInfoResponseBodyDataStickers {
+	s.Y = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataStickers) Validate() error {
 	return dara.Validate(s)
 }
 

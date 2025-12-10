@@ -246,9 +246,33 @@ func (client *Client) AsyncCreateClipsTaskWithOptions(tmpReq *AsyncCreateClipsTa
 		request.ColorWordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ColorWords, dara.String("ColorWords"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.Stickers) {
+		request.StickersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Stickers, dara.String("Stickers"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.CloseMusic) {
+		body["CloseMusic"] = request.CloseMusic
+	}
+
+	if !dara.IsNil(request.CloseSubtitle) {
+		body["CloseSubtitle"] = request.CloseSubtitle
+	}
+
+	if !dara.IsNil(request.CloseVoice) {
+		body["CloseVoice"] = request.CloseVoice
+	}
+
 	if !dara.IsNil(request.ColorWordsShrink) {
 		body["ColorWords"] = request.ColorWordsShrink
+	}
+
+	if !dara.IsNil(request.CustomVoiceUrl) {
+		body["CustomVoiceUrl"] = request.CustomVoiceUrl
+	}
+
+	if !dara.IsNil(request.CustomVoiceVolume) {
+		body["CustomVoiceVolume"] = request.CustomVoiceVolume
 	}
 
 	if !dara.IsNil(request.Height) {
@@ -261,6 +285,10 @@ func (client *Client) AsyncCreateClipsTaskWithOptions(tmpReq *AsyncCreateClipsTa
 
 	if !dara.IsNil(request.MusicVolume) {
 		body["MusicVolume"] = request.MusicVolume
+	}
+
+	if !dara.IsNil(request.StickersShrink) {
+		body["Stickers"] = request.StickersShrink
 	}
 
 	if !dara.IsNil(request.SubtitleFontSize) {
@@ -586,13 +614,25 @@ func (client *Client) AsyncUploadVideoWithOptions(tmpReq *AsyncUploadVideoReques
 		request.SourceVideosShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceVideos, dara.String("SourceVideos"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.VideoRoles) {
+		request.VideoRolesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VideoRoles, dara.String("VideoRoles"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AnlysisPrompt) {
 		body["AnlysisPrompt"] = request.AnlysisPrompt
 	}
 
+	if !dara.IsNil(request.FaceIdentitySimilarityMinScore) {
+		body["FaceIdentitySimilarityMinScore"] = request.FaceIdentitySimilarityMinScore
+	}
+
 	if !dara.IsNil(request.ReferenceVideoShrink) {
 		body["ReferenceVideo"] = request.ReferenceVideoShrink
+	}
+
+	if !dara.IsNil(request.RemoveSubtitle) {
+		body["RemoveSubtitle"] = request.RemoveSubtitle
 	}
 
 	if !dara.IsNil(request.SourceVideosShrink) {
@@ -601,6 +641,14 @@ func (client *Client) AsyncUploadVideoWithOptions(tmpReq *AsyncUploadVideoReques
 
 	if !dara.IsNil(request.SplitInterval) {
 		body["SplitInterval"] = request.SplitInterval
+	}
+
+	if !dara.IsNil(request.VideoRolesShrink) {
+		body["VideoRoles"] = request.VideoRolesShrink
+	}
+
+	if !dara.IsNil(request.VideoShotFaceIdentityCount) {
+		body["VideoShotFaceIdentityCount"] = request.VideoShotFaceIdentityCount
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
