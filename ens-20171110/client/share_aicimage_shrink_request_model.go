@@ -16,12 +16,16 @@ type iShareAICImageShrinkRequest interface {
 }
 
 type ShareAICImageShrinkRequest struct {
+	// The image name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mykey
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The user groups.
+	//
 	// This parameter is required.
 	UsersShrink *string `json:"Users,omitempty" xml:"Users,omitempty"`
 }

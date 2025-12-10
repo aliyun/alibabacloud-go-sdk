@@ -22,19 +22,28 @@ type iListAICPublicKeyDeliveriesResponseBody interface {
 }
 
 type ListAICPublicKeyDeliveriesResponseBody struct {
+	// Current page number when paging
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize             *int64                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Public Key List
 	PublicKeyDeliverInfo []*ListAICPublicKeyDeliveriesResponseBodyPublicKeyDeliverInfo `json:"PublicKeyDeliverInfo,omitempty" xml:"PublicKeyDeliverInfo,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxsxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -108,22 +117,32 @@ func (s *ListAICPublicKeyDeliveriesResponseBody) Validate() error {
 }
 
 type ListAICPublicKeyDeliveriesResponseBodyPublicKeyDeliverInfo struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-10-09T15:13:21+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// aic-xxxx-0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Public Key Grouping
+	//
 	// example:
 	//
 	// test-group
 	KeyGroup *string `json:"KeyGroup,omitempty" xml:"KeyGroup,omitempty"`
+	// Public Key Name
+	//
 	// example:
 	//
 	// mykey
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// Public key type
+	//
 	// example:
 	//
 	// adb

@@ -2135,8 +2135,16 @@ func (client *Client) CreateEipInstanceWithOptions(request *CreateEipInstanceReq
 		query["InstanceChargeType"] = request.InstanceChargeType
 	}
 
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	if !dara.IsNil(request.InternetChargeType) {
 		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !dara.IsNil(request.IpAddress) {
+		query["IpAddress"] = request.IpAddress
 	}
 
 	if !dara.IsNil(request.Isp) {
@@ -4478,7 +4486,7 @@ func (client *Client) CreateSecurityGroup(request *CreateSecurityGroupRequest) (
 
 // Summary:
 //
-// 调用CreateSecurityGroupPermissions创建安全组规则。
+// Create an ENS security group rule.
 //
 // @param tmpReq - CreateSecurityGroupPermissionsRequest
 //
@@ -4532,7 +4540,7 @@ func (client *Client) CreateSecurityGroupPermissionsWithOptions(tmpReq *CreateSe
 
 // Summary:
 //
-// 调用CreateSecurityGroupPermissions创建安全组规则。
+// Create an ENS security group rule.
 //
 // @param request - CreateSecurityGroupPermissionsRequest
 //
@@ -4974,7 +4982,7 @@ func (client *Client) CreateVSwitch(request *CreateVSwitchRequest) (_result *Cre
 
 // Summary:
 //
-// 删除托管公钥
+// Deletes a specified AIC public key. You can delete a public key only if it is not associated with the public key.
 //
 // @param request - DeleteAICPublicKeyRequest
 //
@@ -5018,7 +5026,7 @@ func (client *Client) DeleteAICPublicKeyWithOptions(request *DeleteAICPublicKeyR
 
 // Summary:
 //
-// 删除托管公钥
+// Deletes a specified AIC public key. You can delete a public key only if it is not associated with the public key.
 //
 // @param request - DeleteAICPublicKeyRequest
 //
@@ -6686,7 +6694,7 @@ func (client *Client) DeleteSecurityGroup(request *DeleteSecurityGroupRequest) (
 
 // Summary:
 //
-// 调用DeleteSecurityGroupPermissions删除安全组规则。
+// Deletes an ENS security group rule.
 //
 // @param tmpReq - DeleteSecurityGroupPermissionsRequest
 //
@@ -6740,7 +6748,7 @@ func (client *Client) DeleteSecurityGroupPermissionsWithOptions(tmpReq *DeleteSe
 
 // Summary:
 //
-// 调用DeleteSecurityGroupPermissions删除安全组规则。
+// Deletes an ENS security group rule.
 //
 // @param request - DeleteSecurityGroupPermissionsRequest
 //
@@ -10290,7 +10298,7 @@ func (client *Client) DescribeFileSystems(request *DescribeFileSystemsRequest) (
 
 // Summary:
 //
-// 调用DescribeForwardEntryAttribute查询DNAT条目明细
+// You can call the DescribeForwardEntryAttribute operation to query the details of a DNAT rule.
 //
 // @param request - DescribeForwardEntryAttributeRequest
 //
@@ -10334,7 +10342,7 @@ func (client *Client) DescribeForwardEntryAttributeWithOptions(request *Describe
 
 // Summary:
 //
-// 调用DescribeForwardEntryAttribute查询DNAT条目明细
+// You can call the DescribeForwardEntryAttribute operation to query the details of a DNAT rule.
 //
 // @param request - DescribeForwardEntryAttributeRequest
 //
@@ -13504,7 +13512,7 @@ func (client *Client) DescribeSDGDeploymentStatus(request *DescribeSDGDeployment
 
 // Summary:
 //
-// 查询SDG下的共享盘
+// You can query the information of shared disks in a specified SDG.
 //
 // @param request - DescribeSDGSharedDisksRequest
 //
@@ -13564,7 +13572,7 @@ func (client *Client) DescribeSDGSharedDisksWithOptions(request *DescribeSDGShar
 
 // Summary:
 //
-// 查询SDG下的共享盘
+// You can query the information of shared disks in a specified SDG.
 //
 // @param request - DescribeSDGSharedDisksRequest
 //
@@ -16342,7 +16350,7 @@ func (client *Client) LeaveSecurityGroup(request *LeaveSecurityGroupRequest) (_r
 
 // Summary:
 //
-// 查询公钥下发信息
+// Queries the related information of AIC public keys. Paged query is supported.
 //
 // @param request - ListAICPublicKeyDeliveriesRequest
 //
@@ -16406,7 +16414,7 @@ func (client *Client) ListAICPublicKeyDeliveriesWithOptions(request *ListAICPubl
 
 // Summary:
 //
-// 查询公钥下发信息
+// Queries the related information of AIC public keys. Paged query is supported.
 //
 // @param request - ListAICPublicKeyDeliveriesRequest
 //
@@ -16424,7 +16432,7 @@ func (client *Client) ListAICPublicKeyDeliveries(request *ListAICPublicKeyDelive
 
 // Summary:
 //
-// 查询所有托管的公钥
+// Query the list of AIC public keys that meet the conditions. Paged query is supported.
 //
 // @param request - ListAICPublicKeysRequest
 //
@@ -16484,7 +16492,7 @@ func (client *Client) ListAICPublicKeysWithOptions(request *ListAICPublicKeysReq
 
 // Summary:
 //
-// 查询所有托管的公钥
+// Query the list of AIC public keys that meet the conditions. Paged query is supported.
 //
 // @param request - ListAICPublicKeysRequest
 //
@@ -16869,7 +16877,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// # AIC公钥登入管理
+// Log on to the AIC instance. You can associate or disassociate an AIC instance based on the uploaded AIC public key.
 //
 // @param request - ManageAICLoginRequest
 //
@@ -16925,7 +16933,7 @@ func (client *Client) ManageAICLoginWithOptions(request *ManageAICLoginRequest, 
 
 // Summary:
 //
-// # AIC公钥登入管理
+// Log on to the AIC instance. You can associate or disassociate an AIC instance based on the uploaded AIC public key.
 //
 // @param request - ManageAICLoginRequest
 //
@@ -17881,7 +17889,27 @@ func (client *Client) ModifyInstanceChargeType(request *ModifyInstanceChargeType
 
 // Summary:
 //
-// 修改实例网络
+// Modifies the private IP address or vSwitch of a VPC-type ECS instance.
+//
+// Description:
+//
+// The instance that you want to manage must be in the Stopped state. When you modify the parameters of a scaling group, the following limits apply:
+//
+//   - Instance:
+//
+//   - Instances that are associated with SLB are not supported.
+//
+//   - Network:
+//
+//   - Instances that are associated with EIPs are not supported.
+//
+//   - Instances that are associated with high-availability virtual IP addresses are not supported.
+//
+//   - Instances that have been used as next hops in the routing table are not supported.
+//
+//   - Secondary ENIs cannot be attached to the ECS instance.
+//
+//   - Instances configured with secondary IP addresses are not supported.
 //
 // @param request - ModifyInstanceNetworkAttributeRequest
 //
@@ -17933,7 +17961,27 @@ func (client *Client) ModifyInstanceNetworkAttributeWithOptions(request *ModifyI
 
 // Summary:
 //
-// 修改实例网络
+// Modifies the private IP address or vSwitch of a VPC-type ECS instance.
+//
+// Description:
+//
+// The instance that you want to manage must be in the Stopped state. When you modify the parameters of a scaling group, the following limits apply:
+//
+//   - Instance:
+//
+//   - Instances that are associated with SLB are not supported.
+//
+//   - Network:
+//
+//   - Instances that are associated with EIPs are not supported.
+//
+//   - Instances that are associated with high-availability virtual IP addresses are not supported.
+//
+//   - Instances that have been used as next hops in the routing table are not supported.
+//
+//   - Secondary ENIs cannot be attached to the ECS instance.
+//
+//   - Instances configured with secondary IP addresses are not supported.
 //
 // @param request - ModifyInstanceNetworkAttributeRequest
 //
@@ -22269,7 +22317,7 @@ func (client *Client) SetLoadBalancerUDPListenerAttribute(request *SetLoadBalanc
 
 // Summary:
 //
-// 共享AIC镜像
+// Share the specified AIC image to other users.
 //
 // @param tmpReq - ShareAICImageRequest
 //
@@ -22323,7 +22371,7 @@ func (client *Client) ShareAICImageWithOptions(tmpReq *ShareAICImageRequest, run
 
 // Summary:
 //
-// 共享AIC镜像
+// Share the specified AIC image to other users.
 //
 // @param request - ShareAICImageRequest
 //
@@ -23839,7 +23887,7 @@ func (client *Client) UpgradeApplication(request *UpgradeApplicationRequest) (_r
 
 // Summary:
 //
-// 上传公钥
+// Upload a new AIC public key.
 //
 // @param request - UploadAICPublicKeyRequest
 //
@@ -23899,7 +23947,7 @@ func (client *Client) UploadAICPublicKeyWithOptions(request *UploadAICPublicKeyR
 
 // Summary:
 //
-// 上传公钥
+// Upload a new AIC public key.
 //
 // @param request - UploadAICPublicKeyRequest
 //

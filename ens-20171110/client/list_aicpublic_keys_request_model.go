@@ -22,22 +22,32 @@ type iListAICPublicKeysRequest interface {
 }
 
 type ListAICPublicKeysRequest struct {
+	// Public key grouping
+	//
 	// example:
 	//
 	// g-test
 	KeyGroup *string `json:"KeyGroup,omitempty" xml:"KeyGroup,omitempty"`
+	// Public key name
+	//
 	// example:
 	//
 	// mykey
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// Public key type
+	//
 	// example:
 	//
 	// adb
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	// The page number of the page to return.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

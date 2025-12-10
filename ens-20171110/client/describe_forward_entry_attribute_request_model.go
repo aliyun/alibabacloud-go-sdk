@@ -14,6 +14,8 @@ type iDescribeForwardEntryAttributeRequest interface {
 }
 
 type DescribeForwardEntryAttributeRequest struct {
+	// The ID of the DNAT entry.
+	//
 	// This parameter is required.
 	//
 	// example:

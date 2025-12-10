@@ -251,7 +251,8 @@ type CreateClusterRequestControlPlaneConfig struct {
 	// example:
 	//
 	// ens.esk.sn1.medium
-	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	InstanceSpec  *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
 	// example:
 	//
 	// 30000-32767
@@ -290,6 +291,10 @@ func (s *CreateClusterRequestControlPlaneConfig) GetInstanceSpec() *string {
 	return s.InstanceSpec
 }
 
+func (s *CreateClusterRequestControlPlaneConfig) GetLoginPassword() *string {
+	return s.LoginPassword
+}
+
 func (s *CreateClusterRequestControlPlaneConfig) GetNodePortRange() *string {
 	return s.NodePortRange
 }
@@ -317,6 +322,11 @@ func (s *CreateClusterRequestControlPlaneConfig) SetImageId(v string) *CreateClu
 
 func (s *CreateClusterRequestControlPlaneConfig) SetInstanceSpec(v string) *CreateClusterRequestControlPlaneConfig {
 	s.InstanceSpec = &v
+	return s
+}
+
+func (s *CreateClusterRequestControlPlaneConfig) SetLoginPassword(v string) *CreateClusterRequestControlPlaneConfig {
+	s.LoginPassword = &v
 	return s
 }
 

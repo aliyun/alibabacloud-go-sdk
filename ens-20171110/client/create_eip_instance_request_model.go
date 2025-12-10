@@ -19,8 +19,12 @@ type iCreateEipInstanceRequest interface {
 	GetEnsRegionId() *string
 	SetInstanceChargeType(v string) *CreateEipInstanceRequest
 	GetInstanceChargeType() *string
+	SetInstanceId(v string) *CreateEipInstanceRequest
+	GetInstanceId() *string
 	SetInternetChargeType(v string) *CreateEipInstanceRequest
 	GetInternetChargeType() *string
+	SetIpAddress(v string) *CreateEipInstanceRequest
+	GetIpAddress() *string
 	SetIsp(v string) *CreateEipInstanceRequest
 	GetIsp() *string
 	SetName(v string) *CreateEipInstanceRequest
@@ -72,6 +76,7 @@ type CreateEipInstanceRequest struct {
 	//
 	// PostPaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The metering method of the EIP. Set the value to **95BandwidthByMonth**.
 	//
 	// This parameter is required.
@@ -80,6 +85,7 @@ type CreateEipInstanceRequest struct {
 	//
 	// 95BandwidthByMonth
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	IpAddress          *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	// The Internet service provider. Valid values:
 	//
 	// 	- **cmcc**: China Mobile.
@@ -130,8 +136,16 @@ func (s *CreateEipInstanceRequest) GetInstanceChargeType() *string {
 	return s.InstanceChargeType
 }
 
+func (s *CreateEipInstanceRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
 func (s *CreateEipInstanceRequest) GetInternetChargeType() *string {
 	return s.InternetChargeType
+}
+
+func (s *CreateEipInstanceRequest) GetIpAddress() *string {
+	return s.IpAddress
 }
 
 func (s *CreateEipInstanceRequest) GetIsp() *string {
@@ -171,8 +185,18 @@ func (s *CreateEipInstanceRequest) SetInstanceChargeType(v string) *CreateEipIns
 	return s
 }
 
+func (s *CreateEipInstanceRequest) SetInstanceId(v string) *CreateEipInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
 func (s *CreateEipInstanceRequest) SetInternetChargeType(v string) *CreateEipInstanceRequest {
 	s.InternetChargeType = &v
+	return s
+}
+
+func (s *CreateEipInstanceRequest) SetIpAddress(v string) *CreateEipInstanceRequest {
+	s.IpAddress = &v
 	return s
 }
 

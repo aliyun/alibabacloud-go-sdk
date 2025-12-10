@@ -14,6 +14,8 @@ type iDeleteSecurityGroupPermissionsResponseBody interface {
 }
 
 type DeleteSecurityGroupPermissionsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// AAE90880-4970-4D81-A534-A6C0F3631F74

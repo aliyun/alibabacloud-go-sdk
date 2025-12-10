@@ -22,26 +22,36 @@ type iUploadAICPublicKeyRequest interface {
 }
 
 type UploadAICPublicKeyRequest struct {
+	// Public Key
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// verify_dffeb6610035dcb77b413a59c3
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The description of the document.
+	//
 	// example:
 	//
 	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Public Key Grouping
+	//
 	// example:
 	//
 	// g-test
 	KeyGroup *string `json:"KeyGroup,omitempty" xml:"KeyGroup,omitempty"`
+	// Public Key Name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mykey
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// Public key type
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,22 +22,32 @@ type iDescribeSDGSharedDisksRequest interface {
 }
 
 type DescribeSDGSharedDisksRequest struct {
+	// The namespace.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The page number, which is used for paged query
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-xx
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// sdg ID
+	//
 	// This parameter is required.
 	//
 	// example:

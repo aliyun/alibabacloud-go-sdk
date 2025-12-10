@@ -40,58 +40,114 @@ type iDescribeForwardEntryAttributeResponseBody interface {
 }
 
 type DescribeForwardEntryAttributeResponseBody struct {
+	// The creation time. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2020-04-26T15:38:27Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The EIP in the DNAT entry. The public IP address is used to access the Internet.
+	//
 	// example:
 	//
 	// 36.XXX.XXX.72
 	ExternalIp *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	// The external port or port range that is used for port forwarding.
+	//
+	// 	- Valid values: 1 to 65535.
+	//
+	// 	- To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20.
+	//
 	// example:
 	//
 	// 22
 	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
+	// The ID of the DNAT entry.
+	//
 	// example:
 	//
 	// fwd-5tfi6f0rutmd00xrhkag7****
 	ForwardEntryId *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
+	// The name of the DNAT entry.
+	//
 	// example:
 	//
 	// test0
 	ForwardEntryName *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
+	// The DNAT probe port. The port must be within the internal port range. By default, this parameter is empty.
+	//
 	// example:
 	//
 	// 80
 	HealthCheckPort *string `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+	// The private IP address of the instance that uses the DNAT entry for Internet communication.
+	//
 	// example:
 	//
 	// 10.XXX.XXX.50
 	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	// The internal port or port range that is used for port forwarding.
+	//
+	// 	- Valid values: 1 to 65535.
+	//
+	// 	- To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20.
+	//
 	// example:
 	//
 	// 22
 	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
+	// The protocol. Valid values:
+	//
+	// 	- **TCP**: forwards TCP packets.
+	//
+	// 	- **UDP**: forwards UDP packets.
+	//
+	// 	- **Any**: forwards all packets.
+	//
 	// example:
 	//
 	// Any
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// The ID of the NAT gateway.
+	//
 	// example:
 	//
 	// nat-5t7nh1cfm6kxiszlttr38****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6666C5A5-75ED-422E-A022-7121FA18C968
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The secondary EIP that is used to access the Internet. You need to select a secondary EIP that is bound to NAT. After the DNAT entry is created, the secondary EIP takes effect.
+	//
 	// example:
 	//
 	// 101.XXX.XXX.4
 	StandbyExternalIp *string `json:"StandbyExternalIp,omitempty" xml:"StandbyExternalIp,omitempty"`
+	// The status of the secondary EIP.
+	//
+	// 	- Running
+	//
+	// 	- Stopping
+	//
+	// 	- Stopped
+	//
+	// 	- Starting
+	//
 	// example:
 	//
 	// Stopped
 	StandbyStatus *string `json:"StandbyStatus,omitempty" xml:"StandbyStatus,omitempty"`
+	// The status of the DNAT entry.
+	//
+	// 	- Pending: The DNAT entry is being created or modified.
+	//
+	// 	- Available: The DNAT entry is available.
+	//
+	// 	- Deleting: The DNAT entry is being deleted.
+	//
 	// example:
 	//
 	// Available

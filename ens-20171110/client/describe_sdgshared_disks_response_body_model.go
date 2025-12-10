@@ -22,19 +22,28 @@ type iDescribeSDGSharedDisksResponseBody interface {
 }
 
 type DescribeSDGSharedDisksResponseBody struct {
+	// Current page number when paging
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxsxxxxx
-	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Shared disk list
 	SharedDisks []*DescribeSDGSharedDisksResponseBodySharedDisks `json:"SharedDisks,omitempty" xml:"SharedDisks,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -108,34 +117,50 @@ func (s *DescribeSDGSharedDisksResponseBody) Validate() error {
 }
 
 type DescribeSDGSharedDisksResponseBodySharedDisks struct {
+	// The time when the shared disk was created.
+	//
 	// example:
 	//
 	// 2025-10-09T15:13:21+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// shared disk id
+	//
 	// example:
 	//
 	// d-57kvvpuj1rk2ghumlgs6
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// Shared disk type
+	//
 	// example:
 	//
 	// standard
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The namespace of the service.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// SdgId of the shared disk
+	//
 	// example:
 	//
 	// sdg-fqehhfdjv
 	SdgId *string `json:"SdgId,omitempty" xml:"SdgId,omitempty"`
+	// Number of shared mounts
+	//
 	// example:
 	//
 	// 10
 	SharedNum *int32 `json:"SharedNum,omitempty" xml:"SharedNum,omitempty"`
+	// Shared disk status
+	//
 	// example:
 	//
 	// avaliable

@@ -20,22 +20,36 @@ type iManageAICLoginRequest interface {
 }
 
 type ManageAICLoginRequest struct {
+	// Manage actions
+	//
+	// Valid value:
+	//
+	// 	- open
+	//
+	// 	- close
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// open
 	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aic-xxx-1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Public Key Grouping
+	//
 	// example:
 	//
 	// g-test
 	KeyGroup *string `json:"KeyGroup,omitempty" xml:"KeyGroup,omitempty"`
+	// Public Key Name
+	//
 	// example:
 	//
 	// mykey

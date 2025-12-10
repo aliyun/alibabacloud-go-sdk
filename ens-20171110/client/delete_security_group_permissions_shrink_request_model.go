@@ -16,8 +16,12 @@ type iDeleteSecurityGroupPermissionsShrinkRequest interface {
 }
 
 type DeleteSecurityGroupPermissionsShrinkRequest struct {
+	// The security group rules.
+	//
 	// This parameter is required.
 	PermissionsShrink *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
+	// The ID of the security group.
+	//
 	// This parameter is required.
 	//
 	// example:

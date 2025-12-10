@@ -24,26 +24,38 @@ type iListAICPublicKeyDeliveriesRequest interface {
 }
 
 type ListAICPublicKeyDeliveriesRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// aic-xxxx-0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Public Key Grouping
+	//
 	// example:
 	//
 	// g-test
 	KeyGroup *string `json:"KeyGroup,omitempty" xml:"KeyGroup,omitempty"`
+	// Public Key Name
+	//
 	// example:
 	//
 	// mykey
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// Public key type
+	//
 	// example:
 	//
 	// adb
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	// The page number of the page to return.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

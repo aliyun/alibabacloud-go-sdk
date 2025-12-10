@@ -1572,8 +1572,16 @@ func (client *Client) CreateEipInstanceWithContext(ctx context.Context, request 
 		query["InstanceChargeType"] = request.InstanceChargeType
 	}
 
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	if !dara.IsNil(request.InternetChargeType) {
 		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !dara.IsNil(request.IpAddress) {
+		query["IpAddress"] = request.IpAddress
 	}
 
 	if !dara.IsNil(request.Isp) {
@@ -3393,7 +3401,7 @@ func (client *Client) CreateSecurityGroupWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 调用CreateSecurityGroupPermissions创建安全组规则。
+// Create an ENS security group rule.
 //
 // @param tmpReq - CreateSecurityGroupPermissionsRequest
 //
@@ -3781,7 +3789,7 @@ func (client *Client) CreateVSwitchWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// 删除托管公钥
+// Deletes a specified AIC public key. You can delete a public key only if it is not associated with the public key.
 //
 // @param request - DeleteAICPublicKeyRequest
 //
@@ -5005,7 +5013,7 @@ func (client *Client) DeleteSecurityGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 调用DeleteSecurityGroupPermissions删除安全组规则。
+// Deletes an ENS security group rule.
 //
 // @param tmpReq - DeleteSecurityGroupPermissionsRequest
 //
@@ -7489,7 +7497,7 @@ func (client *Client) DescribeFileSystemsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 调用DescribeForwardEntryAttribute查询DNAT条目明细
+// You can call the DescribeForwardEntryAttribute operation to query the details of a DNAT rule.
 //
 // @param request - DescribeForwardEntryAttributeRequest
 //
@@ -9735,7 +9743,7 @@ func (client *Client) DescribeSDGDeploymentStatusWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询SDG下的共享盘
+// You can query the information of shared disks in a specified SDG.
 //
 // @param request - DescribeSDGSharedDisksRequest
 //
@@ -11831,7 +11839,7 @@ func (client *Client) LeaveSecurityGroupWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询公钥下发信息
+// Queries the related information of AIC public keys. Paged query is supported.
 //
 // @param request - ListAICPublicKeyDeliveriesRequest
 //
@@ -11895,7 +11903,7 @@ func (client *Client) ListAICPublicKeyDeliveriesWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询所有托管的公钥
+// Query the list of AIC public keys that meet the conditions. Paged query is supported.
 //
 // @param request - ListAICPublicKeysRequest
 //
@@ -12203,7 +12211,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # AIC公钥登入管理
+// Log on to the AIC instance. You can associate or disassociate an AIC instance based on the uploaded AIC public key.
 //
 // @param request - ManageAICLoginRequest
 //
@@ -12959,7 +12967,27 @@ func (client *Client) ModifyInstanceChargeTypeWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 修改实例网络
+// Modifies the private IP address or vSwitch of a VPC-type ECS instance.
+//
+// Description:
+//
+// The instance that you want to manage must be in the Stopped state. When you modify the parameters of a scaling group, the following limits apply:
+//
+//   - Instance:
+//
+//   - Instances that are associated with SLB are not supported.
+//
+//   - Network:
+//
+//   - Instances that are associated with EIPs are not supported.
+//
+//   - Instances that are associated with high-availability virtual IP addresses are not supported.
+//
+//   - Instances that have been used as next hops in the routing table are not supported.
+//
+//   - Secondary ENIs cannot be attached to the ECS instance.
+//
+//   - Instances configured with secondary IP addresses are not supported.
 //
 // @param request - ModifyInstanceNetworkAttributeRequest
 //
@@ -16267,7 +16295,7 @@ func (client *Client) SetLoadBalancerUDPListenerAttributeWithContext(ctx context
 
 // Summary:
 //
-// 共享AIC镜像
+// Share the specified AIC image to other users.
 //
 // @param tmpReq - ShareAICImageRequest
 //
@@ -17409,7 +17437,7 @@ func (client *Client) UpgradeApplicationWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 上传公钥
+// Upload a new AIC public key.
 //
 // @param request - UploadAICPublicKeyRequest
 //

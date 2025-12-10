@@ -22,19 +22,28 @@ type iListAICPublicKeysResponseBody interface {
 }
 
 type ListAICPublicKeysResponseBody struct {
+	// Current page number when paging
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize   *int64                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Public key list
 	PublicKeys []*ListAICPublicKeysResponseBodyPublicKeys `json:"PublicKeys,omitempty" xml:"PublicKeys,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxsxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -108,26 +117,38 @@ func (s *ListAICPublicKeysResponseBody) Validate() error {
 }
 
 type ListAICPublicKeysResponseBodyPublicKeys struct {
+	// Public key content
+	//
 	// example:
 	//
 	// fvsvshbvjfksvj
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The creation time of the voiceprint.
+	//
 	// example:
 	//
 	// 2025-10-09T15:13:21+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// Public key description
+	//
 	// example:
 	//
 	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Public key grouping
+	//
 	// example:
 	//
 	// test-group
 	KeyGroup *string `json:"KeyGroup,omitempty" xml:"KeyGroup,omitempty"`
+	// Public key name
+	//
 	// example:
 	//
 	// mykey
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// Public key type
+	//
 	// example:
 	//
 	// adb

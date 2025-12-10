@@ -14,6 +14,8 @@ type iDeleteAICPublicKeyRequest interface {
 }
 
 type DeleteAICPublicKeyRequest struct {
+	// Public Key Name
+	//
 	// This parameter is required.
 	//
 	// example:
