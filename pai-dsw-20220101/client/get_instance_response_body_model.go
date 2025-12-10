@@ -71,6 +71,8 @@ type iGetInstanceResponseBody interface {
 	GetNodeErrorRecovery() *GetInstanceResponseBodyNodeErrorRecovery
 	SetPaymentType(v string) *GetInstanceResponseBody
 	GetPaymentType() *string
+	SetPodIps(v []*PodIp) *GetInstanceResponseBody
+	GetPodIps() []*PodIp
 	SetPriority(v int64) *GetInstanceResponseBody
 	GetPriority() *int64
 	SetProxyPath(v string) *GetInstanceResponseBody
@@ -299,7 +301,8 @@ type GetInstanceResponseBody struct {
 	// example:
 	//
 	// PayAsYouGo
-	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	PaymentType *string  `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	PodIps      []*PodIp `json:"PodIps,omitempty" xml:"PodIps,omitempty" type:"Repeated"`
 	// The priority based on which resources are allocated to instances.
 	//
 	// example:
@@ -582,6 +585,10 @@ func (s *GetInstanceResponseBody) GetPaymentType() *string {
 	return s.PaymentType
 }
 
+func (s *GetInstanceResponseBody) GetPodIps() []*PodIp {
+	return s.PodIps
+}
+
 func (s *GetInstanceResponseBody) GetPriority() *int64 {
 	return s.Priority
 }
@@ -821,6 +828,11 @@ func (s *GetInstanceResponseBody) SetPaymentType(v string) *GetInstanceResponseB
 	return s
 }
 
+func (s *GetInstanceResponseBody) SetPodIps(v []*PodIp) *GetInstanceResponseBody {
+	s.PodIps = v
+	return s
+}
+
 func (s *GetInstanceResponseBody) SetPriority(v int64) *GetInstanceResponseBody {
 	s.Priority = &v
 	return s
@@ -996,6 +1008,15 @@ func (s *GetInstanceResponseBody) Validate() error {
 	if s.NodeErrorRecovery != nil {
 		if err := s.NodeErrorRecovery.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.PodIps != nil {
+		for _, item := range s.PodIps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.RequestedResource != nil {
