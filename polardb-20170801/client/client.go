@@ -1747,6 +1747,72 @@ func (client *Client) ContinueDBClusterMigration(request *ContinueDBClusterMigra
 
 // Summary:
 //
+// 创建AI节点
+//
+// @param request - CreateAINodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAINodesResponse
+func (client *Client) CreateAINodesWithOptions(request *CreateAINodesRequest, runtime *dara.RuntimeOptions) (_result *CreateAINodesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DBNodes) {
+		query["DBNodes"] = request.DBNodes
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAINodes"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAINodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建AI节点
+//
+// @param request - CreateAINodesRequest
+//
+// @return CreateAINodesResponse
+func (client *Client) CreateAINodes(request *CreateAINodesRequest) (_result *CreateAINodesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAINodesResponse{}
+	_body, _err := client.CreateAINodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a database account for a PolarDB cluster.
 //
 // @param request - CreateAccountRequest
@@ -4720,6 +4786,72 @@ func (client *Client) DeleteAIDBCluster(request *DeleteAIDBClusterRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteAIDBClusterResponse{}
 	_body, _err := client.DeleteAIDBClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除ai实例子节点
+//
+// @param request - DeleteAINodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAINodesResponse
+func (client *Client) DeleteAINodesWithOptions(request *DeleteAINodesRequest, runtime *dara.RuntimeOptions) (_result *DeleteAINodesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DBNodeId) {
+		query["DBNodeId"] = request.DBNodeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAINodes"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAINodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除ai实例子节点
+//
+// @param request - DeleteAINodesRequest
+//
+// @return DeleteAINodesResponse
+func (client *Client) DeleteAINodes(request *DeleteAINodesRequest) (_result *DeleteAINodesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAINodesResponse{}
+	_body, _err := client.DeleteAINodesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
