@@ -2779,9 +2779,10 @@ func (s *ModifyCenterPolicyRequestClientType) Validate() error {
 }
 
 type ModifyCenterPolicyRequestClipboardGraineds struct {
-	ClipboardSize *int32  `json:"ClipboardSize,omitempty" xml:"ClipboardSize,omitempty"`
-	ClipboardType *string `json:"ClipboardType,omitempty" xml:"ClipboardType,omitempty"`
-	GrainedType   *string `json:"GrainedType,omitempty" xml:"GrainedType,omitempty"`
+	ClipboardSize     *int32  `json:"ClipboardSize,omitempty" xml:"ClipboardSize,omitempty"`
+	ClipboardSizeUnit *string `json:"ClipboardSizeUnit,omitempty" xml:"ClipboardSizeUnit,omitempty"`
+	ClipboardType     *string `json:"ClipboardType,omitempty" xml:"ClipboardType,omitempty"`
+	GrainedType       *string `json:"GrainedType,omitempty" xml:"GrainedType,omitempty"`
 }
 
 func (s ModifyCenterPolicyRequestClipboardGraineds) String() string {
@@ -2796,6 +2797,10 @@ func (s *ModifyCenterPolicyRequestClipboardGraineds) GetClipboardSize() *int32 {
 	return s.ClipboardSize
 }
 
+func (s *ModifyCenterPolicyRequestClipboardGraineds) GetClipboardSizeUnit() *string {
+	return s.ClipboardSizeUnit
+}
+
 func (s *ModifyCenterPolicyRequestClipboardGraineds) GetClipboardType() *string {
 	return s.ClipboardType
 }
@@ -2806,6 +2811,11 @@ func (s *ModifyCenterPolicyRequestClipboardGraineds) GetGrainedType() *string {
 
 func (s *ModifyCenterPolicyRequestClipboardGraineds) SetClipboardSize(v int32) *ModifyCenterPolicyRequestClipboardGraineds {
 	s.ClipboardSize = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestClipboardGraineds) SetClipboardSizeUnit(v string) *ModifyCenterPolicyRequestClipboardGraineds {
+	s.ClipboardSizeUnit = &v
 	return s
 }
 
