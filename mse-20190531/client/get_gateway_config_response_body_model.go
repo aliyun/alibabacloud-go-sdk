@@ -235,6 +235,7 @@ type GetGatewayConfigResponseBodyData struct {
 	//
 	// 0
 	KeepaliveHeaderTimeout *int32 `json:"KeepaliveHeaderTimeout,omitempty" xml:"KeepaliveHeaderTimeout,omitempty"`
+	LiteMetrics            *bool  `json:"LiteMetrics,omitempty" xml:"LiteMetrics,omitempty"`
 	// example:
 	//
 	// ""
@@ -246,7 +247,8 @@ type GetGatewayConfigResponseBodyData struct {
 	// example:
 	//
 	// KEEP_UNCHANGED
-	PathWithEscapedSlashes *string `json:"PathWithEscapedSlashes,omitempty" xml:"PathWithEscapedSlashes,omitempty"`
+	PathWithEscapedSlashes    *string `json:"PathWithEscapedSlashes,omitempty" xml:"PathWithEscapedSlashes,omitempty"`
+	PreserveExternalRequestID *bool   `json:"PreserveExternalRequestID,omitempty" xml:"PreserveExternalRequestID,omitempty"`
 	// example:
 	//
 	// true
@@ -363,6 +365,10 @@ func (s *GetGatewayConfigResponseBodyData) GetKeepaliveHeaderTimeout() *int32 {
 	return s.KeepaliveHeaderTimeout
 }
 
+func (s *GetGatewayConfigResponseBodyData) GetLiteMetrics() *bool {
+	return s.LiteMetrics
+}
+
 func (s *GetGatewayConfigResponseBodyData) GetLogFilterConfig() *string {
 	return s.LogFilterConfig
 }
@@ -373,6 +379,10 @@ func (s *GetGatewayConfigResponseBodyData) GetNoSupportedConfigList() *string {
 
 func (s *GetGatewayConfigResponseBodyData) GetPathWithEscapedSlashes() *string {
 	return s.PathWithEscapedSlashes
+}
+
+func (s *GetGatewayConfigResponseBodyData) GetPreserveExternalRequestID() *bool {
+	return s.PreserveExternalRequestID
 }
 
 func (s *GetGatewayConfigResponseBodyData) GetPreserveHeaderFormat() *bool {
@@ -507,6 +517,11 @@ func (s *GetGatewayConfigResponseBodyData) SetKeepaliveHeaderTimeout(v int32) *G
 	return s
 }
 
+func (s *GetGatewayConfigResponseBodyData) SetLiteMetrics(v bool) *GetGatewayConfigResponseBodyData {
+	s.LiteMetrics = &v
+	return s
+}
+
 func (s *GetGatewayConfigResponseBodyData) SetLogFilterConfig(v string) *GetGatewayConfigResponseBodyData {
 	s.LogFilterConfig = &v
 	return s
@@ -519,6 +534,11 @@ func (s *GetGatewayConfigResponseBodyData) SetNoSupportedConfigList(v string) *G
 
 func (s *GetGatewayConfigResponseBodyData) SetPathWithEscapedSlashes(v string) *GetGatewayConfigResponseBodyData {
 	s.PathWithEscapedSlashes = &v
+	return s
+}
+
+func (s *GetGatewayConfigResponseBodyData) SetPreserveExternalRequestID(v bool) *GetGatewayConfigResponseBodyData {
+	s.PreserveExternalRequestID = &v
 	return s
 }
 
