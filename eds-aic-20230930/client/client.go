@@ -979,6 +979,10 @@ func (client *Client) CreateCloudPhoneNodeWithOptions(tmpReq *CreateCloudPhoneNo
 		query["InstanceType"] = request.InstanceType
 	}
 
+	if !dara.IsNil(request.IsSingleImgDisk) {
+		query["IsSingleImgDisk"] = request.IsSingleImgDisk
+	}
+
 	if !dara.IsNil(request.NetworkId) {
 		query["NetworkId"] = request.NetworkId
 	}

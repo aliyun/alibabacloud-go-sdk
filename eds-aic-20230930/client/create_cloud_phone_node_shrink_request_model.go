@@ -31,6 +31,8 @@ type iCreateCloudPhoneNodeShrinkRequest interface {
 	GetImageId() *string
 	SetInstanceType(v string) *CreateCloudPhoneNodeShrinkRequest
 	GetInstanceType() *string
+	SetIsSingleImgDisk(v bool) *CreateCloudPhoneNodeShrinkRequest
+	GetIsSingleImgDisk() *bool
 	SetNetworkId(v string) *CreateCloudPhoneNodeShrinkRequest
 	GetNetworkId() *string
 	SetNetworkInfoShrink(v string) *CreateCloudPhoneNodeShrinkRequest
@@ -137,7 +139,8 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	// example:
 	//
 	// ac.max
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	IsSingleImgDisk *bool   `json:"IsSingleImgDisk,omitempty" xml:"IsSingleImgDisk,omitempty"`
 	// The office network ID.
 	//
 	// example:
@@ -278,6 +281,10 @@ func (s *CreateCloudPhoneNodeShrinkRequest) GetInstanceType() *string {
 	return s.InstanceType
 }
 
+func (s *CreateCloudPhoneNodeShrinkRequest) GetIsSingleImgDisk() *bool {
+	return s.IsSingleImgDisk
+}
+
 func (s *CreateCloudPhoneNodeShrinkRequest) GetNetworkId() *string {
 	return s.NetworkId
 }
@@ -406,6 +413,11 @@ func (s *CreateCloudPhoneNodeShrinkRequest) SetImageId(v string) *CreateCloudPho
 
 func (s *CreateCloudPhoneNodeShrinkRequest) SetInstanceType(v string) *CreateCloudPhoneNodeShrinkRequest {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeShrinkRequest) SetIsSingleImgDisk(v bool) *CreateCloudPhoneNodeShrinkRequest {
+	s.IsSingleImgDisk = &v
 	return s
 }
 

@@ -738,6 +738,10 @@ func (client *Client) CreateCloudPhoneNodeWithContext(ctx context.Context, tmpRe
 		query["InstanceType"] = request.InstanceType
 	}
 
+	if !dara.IsNil(request.IsSingleImgDisk) {
+		query["IsSingleImgDisk"] = request.IsSingleImgDisk
+	}
+
 	if !dara.IsNil(request.NetworkId) {
 		query["NetworkId"] = request.NetworkId
 	}
