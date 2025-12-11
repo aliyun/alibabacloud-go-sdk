@@ -536,6 +536,11 @@ type CreateDomainRequestRedirect struct {
 	//
 	// true
 	FocusHttpBackend *bool `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
+	Http2Origin      *bool `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
+	// example:
+	//
+	// 128
+	Http2OriginMaxConcurrency *int32 `json:"Http2OriginMaxConcurrency,omitempty" xml:"Http2OriginMaxConcurrency,omitempty"`
 	// Specifies whether to enable the persistent connection feature. Valid values:
 	//
 	// 	- **true*	- (default)
@@ -700,6 +705,14 @@ func (s *CreateDomainRequestRedirect) GetFocusHttpBackend() *bool {
 	return s.FocusHttpBackend
 }
 
+func (s *CreateDomainRequestRedirect) GetHttp2Origin() *bool {
+	return s.Http2Origin
+}
+
+func (s *CreateDomainRequestRedirect) GetHttp2OriginMaxConcurrency() *int32 {
+	return s.Http2OriginMaxConcurrency
+}
+
 func (s *CreateDomainRequestRedirect) GetKeepalive() *bool {
 	return s.Keepalive
 }
@@ -795,6 +808,16 @@ func (s *CreateDomainRequestRedirect) SetConnectTimeout(v int32) *CreateDomainRe
 
 func (s *CreateDomainRequestRedirect) SetFocusHttpBackend(v bool) *CreateDomainRequestRedirect {
 	s.FocusHttpBackend = &v
+	return s
+}
+
+func (s *CreateDomainRequestRedirect) SetHttp2Origin(v bool) *CreateDomainRequestRedirect {
+	s.Http2Origin = &v
+	return s
+}
+
+func (s *CreateDomainRequestRedirect) SetHttp2OriginMaxConcurrency(v int32) *CreateDomainRequestRedirect {
+	s.Http2OriginMaxConcurrency = &v
 	return s
 }
 

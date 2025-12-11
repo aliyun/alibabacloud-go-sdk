@@ -638,6 +638,11 @@ type DescribeDomainDetailResponseBodyRedirect struct {
 	//
 	// true
 	FocusHttpBackend *bool `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
+	Http2Origin      *bool `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
+	// example:
+	//
+	// 128
+	Http2OriginMaxConcurrency *int32 `json:"Http2OriginMaxConcurrency,omitempty" xml:"Http2OriginMaxConcurrency,omitempty"`
 	// Indicates whether the persistent connection feature is enabled. Valid values:
 	//
 	// 	- **true:*	- The persistent connection feature is enabled. This is the default value.
@@ -772,6 +777,14 @@ func (s *DescribeDomainDetailResponseBodyRedirect) GetFocusHttpBackend() *bool {
 	return s.FocusHttpBackend
 }
 
+func (s *DescribeDomainDetailResponseBodyRedirect) GetHttp2Origin() *bool {
+	return s.Http2Origin
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) GetHttp2OriginMaxConcurrency() *int32 {
+	return s.Http2OriginMaxConcurrency
+}
+
 func (s *DescribeDomainDetailResponseBodyRedirect) GetKeepalive() *bool {
 	return s.Keepalive
 }
@@ -868,6 +881,16 @@ func (s *DescribeDomainDetailResponseBodyRedirect) SetConnectTimeout(v int32) *D
 
 func (s *DescribeDomainDetailResponseBodyRedirect) SetFocusHttpBackend(v bool) *DescribeDomainDetailResponseBodyRedirect {
 	s.FocusHttpBackend = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) SetHttp2Origin(v bool) *DescribeDomainDetailResponseBodyRedirect {
+	s.Http2Origin = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) SetHttp2OriginMaxConcurrency(v int32) *DescribeDomainDetailResponseBodyRedirect {
+	s.Http2OriginMaxConcurrency = &v
 	return s
 }
 
