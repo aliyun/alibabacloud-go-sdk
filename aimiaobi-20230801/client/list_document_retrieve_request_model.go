@@ -31,6 +31,8 @@ type iListDocumentRetrieveRequest interface {
 	GetStartDate() *string
 	SetSubContentType(v string) *ListDocumentRetrieveRequest
 	GetSubContentType() *string
+	SetSubjectClassify(v string) *ListDocumentRetrieveRequest
+	GetSubjectClassify() *string
 	SetWordSize(v string) *ListDocumentRetrieveRequest
 	GetWordSize() *string
 	SetWorkspaceId(v string) *ListDocumentRetrieveRequest
@@ -82,6 +84,10 @@ type ListDocumentRetrieveRequest struct {
 	//
 	// 1
 	SubContentType *string `json:"SubContentType,omitempty" xml:"SubContentType,omitempty"`
+	// example:
+	//
+	// 国防和交流合作事务
+	SubjectClassify *string `json:"SubjectClassify,omitempty" xml:"SubjectClassify,omitempty"`
 	// example:
 	//
 	// 宁民规〔2020〕5号
@@ -146,6 +152,10 @@ func (s *ListDocumentRetrieveRequest) GetSubContentType() *string {
 	return s.SubContentType
 }
 
+func (s *ListDocumentRetrieveRequest) GetSubjectClassify() *string {
+	return s.SubjectClassify
+}
+
 func (s *ListDocumentRetrieveRequest) GetWordSize() *string {
 	return s.WordSize
 }
@@ -206,6 +216,11 @@ func (s *ListDocumentRetrieveRequest) SetStartDate(v string) *ListDocumentRetrie
 
 func (s *ListDocumentRetrieveRequest) SetSubContentType(v string) *ListDocumentRetrieveRequest {
 	s.SubContentType = &v
+	return s
+}
+
+func (s *ListDocumentRetrieveRequest) SetSubjectClassify(v string) *ListDocumentRetrieveRequest {
+	s.SubjectClassify = &v
 	return s
 }
 

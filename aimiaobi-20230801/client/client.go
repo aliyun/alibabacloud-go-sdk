@@ -7776,44 +7776,19 @@ func (client *Client) ListDocumentRetrieveWithOptions(request *ListDocumentRetri
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !dara.IsNil(request.ContentType) {
-		query["ContentType"] = request.ContentType
+		body["ContentType"] = request.ContentType
 	}
 
 	if !dara.IsNil(request.ElementScope) {
-		query["ElementScope"] = request.ElementScope
+		body["ElementScope"] = request.ElementScope
 	}
 
 	if !dara.IsNil(request.EndDate) {
-		query["EndDate"] = request.EndDate
+		body["EndDate"] = request.EndDate
 	}
 
-	if !dara.IsNil(request.Office) {
-		query["Office"] = request.Office
-	}
-
-	if !dara.IsNil(request.Region) {
-		query["Region"] = request.Region
-	}
-
-	if !dara.IsNil(request.Source) {
-		query["Source"] = request.Source
-	}
-
-	if !dara.IsNil(request.StartDate) {
-		query["StartDate"] = request.StartDate
-	}
-
-	if !dara.IsNil(request.SubContentType) {
-		query["SubContentType"] = request.SubContentType
-	}
-
-	if !dara.IsNil(request.WordSize) {
-		query["WordSize"] = request.WordSize
-	}
-
-	body := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
 		body["MaxResults"] = request.MaxResults
 	}
@@ -7822,8 +7797,36 @@ func (client *Client) ListDocumentRetrieveWithOptions(request *ListDocumentRetri
 		body["NextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.Office) {
+		body["Office"] = request.Office
+	}
+
 	if !dara.IsNil(request.Query) {
 		body["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.Region) {
+		body["Region"] = request.Region
+	}
+
+	if !dara.IsNil(request.Source) {
+		body["Source"] = request.Source
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.SubContentType) {
+		body["SubContentType"] = request.SubContentType
+	}
+
+	if !dara.IsNil(request.SubjectClassify) {
+		body["SubjectClassify"] = request.SubjectClassify
+	}
+
+	if !dara.IsNil(request.WordSize) {
+		body["WordSize"] = request.WordSize
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -7831,8 +7834,7 @@ func (client *Client) ListDocumentRetrieveWithOptions(request *ListDocumentRetri
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ListDocumentRetrieve"),
