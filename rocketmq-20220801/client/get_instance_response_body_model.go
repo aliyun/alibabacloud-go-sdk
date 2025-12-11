@@ -1099,6 +1099,10 @@ func (s *GetInstanceResponseBodyDataNetworkInfo) Validate() error {
 }
 
 type GetInstanceResponseBodyDataNetworkInfoEndpoints struct {
+	// example:
+	//
+	// ep-bpxxx
+	EndpointId *string `json:"endpointId,omitempty" xml:"endpointId,omitempty"`
 	// The type of the endpoint that is used to access the instance.
 	//
 	// Valid values:
@@ -1139,6 +1143,10 @@ func (s GetInstanceResponseBodyDataNetworkInfoEndpoints) GoString() string {
 	return s.String()
 }
 
+func (s *GetInstanceResponseBodyDataNetworkInfoEndpoints) GetEndpointId() *string {
+	return s.EndpointId
+}
+
 func (s *GetInstanceResponseBodyDataNetworkInfoEndpoints) GetEndpointType() *string {
 	return s.EndpointType
 }
@@ -1149,6 +1157,11 @@ func (s *GetInstanceResponseBodyDataNetworkInfoEndpoints) GetEndpointUrl() *stri
 
 func (s *GetInstanceResponseBodyDataNetworkInfoEndpoints) GetIpWhitelist() []*string {
 	return s.IpWhitelist
+}
+
+func (s *GetInstanceResponseBodyDataNetworkInfoEndpoints) SetEndpointId(v string) *GetInstanceResponseBodyDataNetworkInfoEndpoints {
+	s.EndpointId = &v
+	return s
 }
 
 func (s *GetInstanceResponseBodyDataNetworkInfoEndpoints) SetEndpointType(v string) *GetInstanceResponseBodyDataNetworkInfoEndpoints {
