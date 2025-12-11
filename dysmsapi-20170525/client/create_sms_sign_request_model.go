@@ -9,6 +9,8 @@ type iCreateSmsSignRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppIcpRecordId(v int64) *CreateSmsSignRequest
+	GetAppIcpRecordId() *int64
 	SetApplySceneContent(v string) *CreateSmsSignRequest
 	GetApplySceneContent() *string
 	SetAuthorizationLetterId(v int64) *CreateSmsSignRequest
@@ -33,9 +35,12 @@ type iCreateSmsSignRequest interface {
 	GetSignType() *int32
 	SetThirdParty(v bool) *CreateSmsSignRequest
 	GetThirdParty() *bool
+	SetTrademarkId(v int64) *CreateSmsSignRequest
+	GetTrademarkId() *int64
 }
 
 type CreateSmsSignRequest struct {
+	AppIcpRecordId *int64 `json:"AppIcpRecordId,omitempty" xml:"AppIcpRecordId,omitempty"`
 	// Application scenarios, instructions as follows:
 	//
 	// - For registered websites, enter the domain name with HTTP or HTTPS that has been registered with the MIIT.
@@ -137,7 +142,8 @@ type CreateSmsSignRequest struct {
 	// example:
 	//
 	// false
-	ThirdParty *bool `json:"ThirdParty,omitempty" xml:"ThirdParty,omitempty"`
+	ThirdParty  *bool  `json:"ThirdParty,omitempty" xml:"ThirdParty,omitempty"`
+	TrademarkId *int64 `json:"TrademarkId,omitempty" xml:"TrademarkId,omitempty"`
 }
 
 func (s CreateSmsSignRequest) String() string {
@@ -146,6 +152,10 @@ func (s CreateSmsSignRequest) String() string {
 
 func (s CreateSmsSignRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSmsSignRequest) GetAppIcpRecordId() *int64 {
+	return s.AppIcpRecordId
 }
 
 func (s *CreateSmsSignRequest) GetApplySceneContent() *string {
@@ -194,6 +204,15 @@ func (s *CreateSmsSignRequest) GetSignType() *int32 {
 
 func (s *CreateSmsSignRequest) GetThirdParty() *bool {
 	return s.ThirdParty
+}
+
+func (s *CreateSmsSignRequest) GetTrademarkId() *int64 {
+	return s.TrademarkId
+}
+
+func (s *CreateSmsSignRequest) SetAppIcpRecordId(v int64) *CreateSmsSignRequest {
+	s.AppIcpRecordId = &v
+	return s
 }
 
 func (s *CreateSmsSignRequest) SetApplySceneContent(v string) *CreateSmsSignRequest {
@@ -253,6 +272,11 @@ func (s *CreateSmsSignRequest) SetSignType(v int32) *CreateSmsSignRequest {
 
 func (s *CreateSmsSignRequest) SetThirdParty(v bool) *CreateSmsSignRequest {
 	s.ThirdParty = &v
+	return s
+}
+
+func (s *CreateSmsSignRequest) SetTrademarkId(v int64) *CreateSmsSignRequest {
+	s.TrademarkId = &v
 	return s
 }
 

@@ -155,6 +155,7 @@ func (s *QuerySmsSignListResponseBody) Validate() error {
 }
 
 type QuerySmsSignListResponseBodySmsSignList struct {
+	AppIcpRecordId *int64 `json:"AppIcpRecordId,omitempty" xml:"AppIcpRecordId,omitempty"`
 	// The approval status of the signature. Valid values:
 	//
 	// 	- **AUDIT_STATE_INIT**: The signature is pending approval.
@@ -204,6 +205,7 @@ type QuerySmsSignListResponseBodySmsSignList struct {
 	//
 	// Aliyun
 	SignName                     *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	TrademarkId                  *int64  `json:"TrademarkId,omitempty" xml:"TrademarkId,omitempty"`
 	AuthorizationLetterAuditPass *bool   `json:"authorizationLetterAuditPass,omitempty" xml:"authorizationLetterAuditPass,omitempty"`
 }
 
@@ -213,6 +215,10 @@ func (s QuerySmsSignListResponseBodySmsSignList) String() string {
 
 func (s QuerySmsSignListResponseBodySmsSignList) GoString() string {
 	return s.String()
+}
+
+func (s *QuerySmsSignListResponseBodySmsSignList) GetAppIcpRecordId() *int64 {
+	return s.AppIcpRecordId
 }
 
 func (s *QuerySmsSignListResponseBodySmsSignList) GetAuditStatus() *string {
@@ -243,8 +249,17 @@ func (s *QuerySmsSignListResponseBodySmsSignList) GetSignName() *string {
 	return s.SignName
 }
 
+func (s *QuerySmsSignListResponseBodySmsSignList) GetTrademarkId() *int64 {
+	return s.TrademarkId
+}
+
 func (s *QuerySmsSignListResponseBodySmsSignList) GetAuthorizationLetterAuditPass() *bool {
 	return s.AuthorizationLetterAuditPass
+}
+
+func (s *QuerySmsSignListResponseBodySmsSignList) SetAppIcpRecordId(v int64) *QuerySmsSignListResponseBodySmsSignList {
+	s.AppIcpRecordId = &v
+	return s
 }
 
 func (s *QuerySmsSignListResponseBodySmsSignList) SetAuditStatus(v string) *QuerySmsSignListResponseBodySmsSignList {
@@ -279,6 +294,11 @@ func (s *QuerySmsSignListResponseBodySmsSignList) SetReason(v *QuerySmsSignListR
 
 func (s *QuerySmsSignListResponseBodySmsSignList) SetSignName(v string) *QuerySmsSignListResponseBodySmsSignList {
 	s.SignName = &v
+	return s
+}
+
+func (s *QuerySmsSignListResponseBodySmsSignList) SetTrademarkId(v int64) *QuerySmsSignListResponseBodySmsSignList {
+	s.TrademarkId = &v
 	return s
 }
 

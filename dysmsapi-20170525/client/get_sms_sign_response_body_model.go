@@ -9,6 +9,8 @@ type iGetSmsSignResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppIcpRecordId(v int64) *GetSmsSignResponseBody
+	GetAppIcpRecordId() *int64
 	SetApplyScene(v string) *GetSmsSignResponseBody
 	GetApplyScene() *string
 	SetAuditInfo(v *GetSmsSignResponseBodyAuditInfo) *GetSmsSignResponseBody
@@ -49,9 +51,12 @@ type iGetSmsSignResponseBody interface {
 	GetSignUsage() *string
 	SetThirdParty(v bool) *GetSmsSignResponseBody
 	GetThirdParty() *bool
+	SetTrademarkId(v int64) *GetSmsSignResponseBody
+	GetTrademarkId() *int64
 }
 
 type GetSmsSignResponseBody struct {
+	AppIcpRecordId *int64 `json:"AppIcpRecordId,omitempty" xml:"AppIcpRecordId,omitempty"`
 	// Content of application scenarios.
 	//
 	// example:
@@ -169,7 +174,8 @@ type GetSmsSignResponseBody struct {
 	// example:
 	//
 	// false
-	ThirdParty *bool `json:"ThirdParty,omitempty" xml:"ThirdParty,omitempty"`
+	ThirdParty  *bool  `json:"ThirdParty,omitempty" xml:"ThirdParty,omitempty"`
+	TrademarkId *int64 `json:"TrademarkId,omitempty" xml:"TrademarkId,omitempty"`
 }
 
 func (s GetSmsSignResponseBody) String() string {
@@ -178,6 +184,10 @@ func (s GetSmsSignResponseBody) String() string {
 
 func (s GetSmsSignResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetSmsSignResponseBody) GetAppIcpRecordId() *int64 {
+	return s.AppIcpRecordId
 }
 
 func (s *GetSmsSignResponseBody) GetApplyScene() *string {
@@ -258,6 +268,15 @@ func (s *GetSmsSignResponseBody) GetSignUsage() *string {
 
 func (s *GetSmsSignResponseBody) GetThirdParty() *bool {
 	return s.ThirdParty
+}
+
+func (s *GetSmsSignResponseBody) GetTrademarkId() *int64 {
+	return s.TrademarkId
+}
+
+func (s *GetSmsSignResponseBody) SetAppIcpRecordId(v int64) *GetSmsSignResponseBody {
+	s.AppIcpRecordId = &v
+	return s
 }
 
 func (s *GetSmsSignResponseBody) SetApplyScene(v string) *GetSmsSignResponseBody {
@@ -357,6 +376,11 @@ func (s *GetSmsSignResponseBody) SetSignUsage(v string) *GetSmsSignResponseBody 
 
 func (s *GetSmsSignResponseBody) SetThirdParty(v bool) *GetSmsSignResponseBody {
 	s.ThirdParty = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBody) SetTrademarkId(v int64) *GetSmsSignResponseBody {
+	s.TrademarkId = &v
 	return s
 }
 

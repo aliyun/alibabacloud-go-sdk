@@ -9,6 +9,8 @@ type iUpdateSmsSignRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppIcpRecordId(v int64) *UpdateSmsSignRequest
+	GetAppIcpRecordId() *int64
 	SetApplySceneContent(v string) *UpdateSmsSignRequest
 	GetApplySceneContent() *string
 	SetAuthorizationLetterId(v int64) *UpdateSmsSignRequest
@@ -33,9 +35,12 @@ type iUpdateSmsSignRequest interface {
 	GetSignType() *int32
 	SetThirdParty(v bool) *UpdateSmsSignRequest
 	GetThirdParty() *bool
+	SetTrademarkId(v int64) *UpdateSmsSignRequest
+	GetTrademarkId() *int64
 }
 
 type UpdateSmsSignRequest struct {
+	AppIcpRecordId *int64 `json:"AppIcpRecordId,omitempty" xml:"AppIcpRecordId,omitempty"`
 	// Application scenarios, instructions as follows:
 	//
 	// - For registered websites, please enter the domain name registered with MIIT, including HTTP or HTTPS.
@@ -125,7 +130,8 @@ type UpdateSmsSignRequest struct {
 	// example:
 	//
 	// false
-	ThirdParty *bool `json:"ThirdParty,omitempty" xml:"ThirdParty,omitempty"`
+	ThirdParty  *bool  `json:"ThirdParty,omitempty" xml:"ThirdParty,omitempty"`
+	TrademarkId *int64 `json:"TrademarkId,omitempty" xml:"TrademarkId,omitempty"`
 }
 
 func (s UpdateSmsSignRequest) String() string {
@@ -134,6 +140,10 @@ func (s UpdateSmsSignRequest) String() string {
 
 func (s UpdateSmsSignRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateSmsSignRequest) GetAppIcpRecordId() *int64 {
+	return s.AppIcpRecordId
 }
 
 func (s *UpdateSmsSignRequest) GetApplySceneContent() *string {
@@ -182,6 +192,15 @@ func (s *UpdateSmsSignRequest) GetSignType() *int32 {
 
 func (s *UpdateSmsSignRequest) GetThirdParty() *bool {
 	return s.ThirdParty
+}
+
+func (s *UpdateSmsSignRequest) GetTrademarkId() *int64 {
+	return s.TrademarkId
+}
+
+func (s *UpdateSmsSignRequest) SetAppIcpRecordId(v int64) *UpdateSmsSignRequest {
+	s.AppIcpRecordId = &v
+	return s
 }
 
 func (s *UpdateSmsSignRequest) SetApplySceneContent(v string) *UpdateSmsSignRequest {
@@ -241,6 +260,11 @@ func (s *UpdateSmsSignRequest) SetSignType(v int32) *UpdateSmsSignRequest {
 
 func (s *UpdateSmsSignRequest) SetThirdParty(v bool) *UpdateSmsSignRequest {
 	s.ThirdParty = &v
+	return s
+}
+
+func (s *UpdateSmsSignRequest) SetTrademarkId(v int64) *UpdateSmsSignRequest {
+	s.TrademarkId = &v
 	return s
 }
 

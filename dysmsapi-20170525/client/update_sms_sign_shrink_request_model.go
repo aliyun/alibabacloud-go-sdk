@@ -9,6 +9,8 @@ type iUpdateSmsSignShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppIcpRecordId(v int64) *UpdateSmsSignShrinkRequest
+	GetAppIcpRecordId() *int64
 	SetApplySceneContent(v string) *UpdateSmsSignShrinkRequest
 	GetApplySceneContent() *string
 	SetAuthorizationLetterId(v int64) *UpdateSmsSignShrinkRequest
@@ -33,9 +35,12 @@ type iUpdateSmsSignShrinkRequest interface {
 	GetSignType() *int32
 	SetThirdParty(v bool) *UpdateSmsSignShrinkRequest
 	GetThirdParty() *bool
+	SetTrademarkId(v int64) *UpdateSmsSignShrinkRequest
+	GetTrademarkId() *int64
 }
 
 type UpdateSmsSignShrinkRequest struct {
+	AppIcpRecordId *int64 `json:"AppIcpRecordId,omitempty" xml:"AppIcpRecordId,omitempty"`
 	// Application scenarios, instructions as follows:
 	//
 	// - For registered websites, please enter the domain name registered with MIIT, including HTTP or HTTPS.
@@ -125,7 +130,8 @@ type UpdateSmsSignShrinkRequest struct {
 	// example:
 	//
 	// false
-	ThirdParty *bool `json:"ThirdParty,omitempty" xml:"ThirdParty,omitempty"`
+	ThirdParty  *bool  `json:"ThirdParty,omitempty" xml:"ThirdParty,omitempty"`
+	TrademarkId *int64 `json:"TrademarkId,omitempty" xml:"TrademarkId,omitempty"`
 }
 
 func (s UpdateSmsSignShrinkRequest) String() string {
@@ -134,6 +140,10 @@ func (s UpdateSmsSignShrinkRequest) String() string {
 
 func (s UpdateSmsSignShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateSmsSignShrinkRequest) GetAppIcpRecordId() *int64 {
+	return s.AppIcpRecordId
 }
 
 func (s *UpdateSmsSignShrinkRequest) GetApplySceneContent() *string {
@@ -182,6 +192,15 @@ func (s *UpdateSmsSignShrinkRequest) GetSignType() *int32 {
 
 func (s *UpdateSmsSignShrinkRequest) GetThirdParty() *bool {
 	return s.ThirdParty
+}
+
+func (s *UpdateSmsSignShrinkRequest) GetTrademarkId() *int64 {
+	return s.TrademarkId
+}
+
+func (s *UpdateSmsSignShrinkRequest) SetAppIcpRecordId(v int64) *UpdateSmsSignShrinkRequest {
+	s.AppIcpRecordId = &v
+	return s
 }
 
 func (s *UpdateSmsSignShrinkRequest) SetApplySceneContent(v string) *UpdateSmsSignShrinkRequest {
@@ -241,6 +260,11 @@ func (s *UpdateSmsSignShrinkRequest) SetSignType(v int32) *UpdateSmsSignShrinkRe
 
 func (s *UpdateSmsSignShrinkRequest) SetThirdParty(v bool) *UpdateSmsSignShrinkRequest {
 	s.ThirdParty = &v
+	return s
+}
+
+func (s *UpdateSmsSignShrinkRequest) SetTrademarkId(v int64) *UpdateSmsSignShrinkRequest {
+	s.TrademarkId = &v
 	return s
 }
 

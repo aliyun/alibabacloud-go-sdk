@@ -1074,6 +1074,10 @@ func (client *Client) CreateSmsSignWithOptions(tmpReq *CreateSmsSignRequest, run
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppIcpRecordId) {
+		query["AppIcpRecordId"] = request.AppIcpRecordId
+	}
+
 	if !dara.IsNil(request.ApplySceneContent) {
 		query["ApplySceneContent"] = request.ApplySceneContent
 	}
@@ -1120,6 +1124,10 @@ func (client *Client) CreateSmsSignWithOptions(tmpReq *CreateSmsSignRequest, run
 
 	if !dara.IsNil(request.ThirdParty) {
 		query["ThirdParty"] = request.ThirdParty
+	}
+
+	if !dara.IsNil(request.TrademarkId) {
+		query["TrademarkId"] = request.TrademarkId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5643,6 +5651,10 @@ func (client *Client) UpdateSmsSignWithOptions(tmpReq *UpdateSmsSignRequest, run
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppIcpRecordId) {
+		query["AppIcpRecordId"] = request.AppIcpRecordId
+	}
+
 	if !dara.IsNil(request.ApplySceneContent) {
 		query["ApplySceneContent"] = request.ApplySceneContent
 	}
@@ -5689,6 +5701,10 @@ func (client *Client) UpdateSmsSignWithOptions(tmpReq *UpdateSmsSignRequest, run
 
 	if !dara.IsNil(request.ThirdParty) {
 		query["ThirdParty"] = request.ThirdParty
+	}
+
+	if !dara.IsNil(request.TrademarkId) {
+		query["TrademarkId"] = request.TrademarkId
 	}
 
 	req := &openapiutil.OpenApiRequest{
