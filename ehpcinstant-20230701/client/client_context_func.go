@@ -1011,6 +1011,64 @@ func (client *Client) ListActionPlansWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
+// 查询Executor的事件信息
+//
+// @param tmpReq - ListExecutorEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExecutorEventsResponse
+func (client *Client) ListExecutorEventsWithContext(ctx context.Context, tmpReq *ListExecutorEventsRequest, runtime *dara.RuntimeOptions) (_result *ListExecutorEventsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListExecutorEventsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Filter) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, dara.String("Filter"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FilterShrink) {
+		query["Filter"] = request.FilterShrink
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListExecutorEvents"),
+		Version:     dara.String("2023-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListExecutorEventsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Querying Global Executor Information
 //
 // @param tmpReq - ListExecutorsRequest
