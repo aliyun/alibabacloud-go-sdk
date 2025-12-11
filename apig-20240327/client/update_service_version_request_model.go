@@ -14,6 +14,8 @@ type iUpdateServiceVersionRequest interface {
 }
 
 type UpdateServiceVersionRequest struct {
+	// The list of tags.
+	//
 	// This parameter is required.
 	Labels []*UpdateServiceVersionRequestLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
 }
@@ -49,12 +51,16 @@ func (s *UpdateServiceVersionRequest) Validate() error {
 }
 
 type UpdateServiceVersionRequestLabels struct {
+	// The tag key.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// topology.kubernetes.io/zone
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// cn-hangzhou-k

@@ -18,14 +18,20 @@ type iDeleteServiceVersionResponseBody interface {
 }
 
 type DeleteServiceVersionResponseBody struct {
+	// The status code returned.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A1994B10-C6A8-58FA-8347-6A08B0D4EFDE

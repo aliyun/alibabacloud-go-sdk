@@ -16,8 +16,12 @@ type iCreateServiceVersionRequest interface {
 }
 
 type CreateServiceVersionRequest struct {
+	// The service tags.
+	//
 	// This parameter is required.
 	Labels []*CreateServiceVersionRequestLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	// The version name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -66,12 +70,16 @@ func (s *CreateServiceVersionRequest) Validate() error {
 }
 
 type CreateServiceVersionRequestLabels struct {
+	// The tag key.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// topology.kubernetes.io/zone
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// cn-hangzhou-j

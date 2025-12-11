@@ -1667,7 +1667,7 @@ func (client *Client) CreateService(request *CreateServiceRequest) (_result *Cre
 
 // Summary:
 //
-// 创建服务版本
+// Creates a service version.
 //
 // @param request - CreateServiceVersionRequest
 //
@@ -1718,7 +1718,7 @@ func (client *Client) CreateServiceVersionWithOptions(serviceId *string, request
 
 // Summary:
 //
-// 创建服务版本
+// Creates a service version.
 //
 // @param request - CreateServiceVersionRequest
 //
@@ -1728,6 +1728,88 @@ func (client *Client) CreateServiceVersion(serviceId *string, request *CreateSer
 	headers := make(map[string]*string)
 	_result = &CreateServiceVersionResponse{}
 	_body, _err := client.CreateServiceVersionWithOptions(serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建服务来源
+//
+// @param request - CreateSourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSourceResponse
+func (client *Client) CreateSourceWithOptions(request *CreateSourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.K8sSourceConfig) {
+		body["k8sSourceConfig"] = request.K8sSourceConfig
+	}
+
+	if !dara.IsNil(request.NacosSourceConfig) {
+		body["nacosSourceConfig"] = request.NacosSourceConfig
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSource"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/sources"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建服务来源
+//
+// @param request - CreateSourceRequest
+//
+// @return CreateSourceResponse
+func (client *Client) CreateSource(request *CreateSourceRequest) (_result *CreateSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateSourceResponse{}
+	_body, _err := client.CreateSourceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2458,7 +2540,7 @@ func (client *Client) DeleteService(serviceId *string) (_result *DeleteServiceRe
 
 // Summary:
 //
-// 删除服务版本
+// Deletes a service version.
 //
 // @param headers - map
 //
@@ -2491,7 +2573,7 @@ func (client *Client) DeleteServiceVersionWithOptions(serviceId *string, name *s
 
 // Summary:
 //
-// 删除服务版本
+// Deletes a service version.
 //
 // @return DeleteServiceVersionResponse
 func (client *Client) DeleteServiceVersion(serviceId *string, name *string) (_result *DeleteServiceVersionResponse, _err error) {
@@ -2499,6 +2581,56 @@ func (client *Client) DeleteServiceVersion(serviceId *string, name *string) (_re
 	headers := make(map[string]*string)
 	_result = &DeleteServiceVersionResponse{}
 	_body, _err := client.DeleteServiceVersionWithOptions(serviceId, name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除服务来源
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSourceResponse
+func (client *Client) DeleteSourceWithOptions(sourceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteSourceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSource"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/sources/" + dara.PercentEncode(dara.StringValue(sourceId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除服务来源
+//
+// @return DeleteSourceResponse
+func (client *Client) DeleteSource(sourceId *string) (_result *DeleteSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteSourceResponse{}
+	_body, _err := client.DeleteSourceWithOptions(sourceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3542,6 +3674,56 @@ func (client *Client) GetService(serviceId *string) (_result *GetServiceResponse
 	headers := make(map[string]*string)
 	_result = &GetServiceResponse{}
 	_body, _err := client.GetServiceWithOptions(serviceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取服务来源
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSourceResponse
+func (client *Client) GetSourceWithOptions(sourceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSourceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSource"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/sources/" + dara.PercentEncode(dara.StringValue(sourceId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取服务来源
+//
+// @return GetSourceResponse
+func (client *Client) GetSource(sourceId *string) (_result *GetSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSourceResponse{}
+	_body, _err := client.GetSourceWithOptions(sourceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6743,7 +6925,7 @@ func (client *Client) UpdatePolicy(policyId *string, request *UpdatePolicyReques
 
 // Summary:
 //
-// 更新服务版本
+// Updates a service version.
 //
 // @param request - UpdateServiceVersionRequest
 //
@@ -6790,7 +6972,7 @@ func (client *Client) UpdateServiceVersionWithOptions(serviceId *string, name *s
 
 // Summary:
 //
-// 更新服务版本
+// Updates a service version.
 //
 // @param request - UpdateServiceVersionRequest
 //
