@@ -555,6 +555,10 @@ func (client *Client) CreateQualityCheckTaskWithContext(ctx context.Context, wor
 		body["requestId"] = request.RequestId
 	}
 
+	if !dara.IsNil(request.SceneCode) {
+		body["sceneCode"] = request.SceneCode
+	}
+
 	if !dara.IsNil(request.Type) {
 		body["type"] = request.Type
 	}
@@ -673,6 +677,85 @@ func (client *Client) DeleteLibraryWithContext(ctx context.Context, workspaceId 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLibraryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 端到端实时对话
+//
+// @param request - EndToEndRealTimeDialogRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EndToEndRealTimeDialogResponse
+func (client *Client) EndToEndRealTimeDialogWithContext(ctx context.Context, workspaceId *string, request *EndToEndRealTimeDialogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EndToEndRealTimeDialogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AsrModelId) {
+		query["asrModelId"] = request.AsrModelId
+	}
+
+	if !dara.IsNil(request.InputFormat) {
+		query["inputFormat"] = request.InputFormat
+	}
+
+	if !dara.IsNil(request.OutputFormat) {
+		query["outputFormat"] = request.OutputFormat
+	}
+
+	if !dara.IsNil(request.PitchRate) {
+		query["pitchRate"] = request.PitchRate
+	}
+
+	if !dara.IsNil(request.SampleRate) {
+		query["sampleRate"] = request.SampleRate
+	}
+
+	if !dara.IsNil(request.SpeechRate) {
+		query["speechRate"] = request.SpeechRate
+	}
+
+	if !dara.IsNil(request.TtsModelId) {
+		query["ttsModelId"] = request.TtsModelId
+	}
+
+	if !dara.IsNil(request.VoiceCode) {
+		query["voiceCode"] = request.VoiceCode
+	}
+
+	if !dara.IsNil(request.Volume) {
+		query["volume"] = request.Volume
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EndToEndRealTimeDialog"),
+		Version:     dara.String("2024-06-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/ws/realtime/dialog"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EndToEndRealTimeDialogResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

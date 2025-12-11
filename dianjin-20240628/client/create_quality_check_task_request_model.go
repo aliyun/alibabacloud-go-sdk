@@ -19,6 +19,8 @@ type iCreateQualityCheckTaskRequest interface {
 	GetQualityGroup() []*string
 	SetRequestId(v string) *CreateQualityCheckTaskRequest
 	GetRequestId() *string
+	SetSceneCode(v string) *CreateQualityCheckTaskRequest
+	GetSceneCode() *string
 	SetType(v string) *CreateQualityCheckTaskRequest
 	GetType() *string
 }
@@ -40,6 +42,7 @@ type CreateQualityCheckTaskRequest struct {
 	//
 	// 0FC6636E-380A-5369-AE01-D1C15BB9B254
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SceneCode *string `json:"sceneCode,omitempty" xml:"sceneCode,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -76,6 +79,10 @@ func (s *CreateQualityCheckTaskRequest) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *CreateQualityCheckTaskRequest) GetSceneCode() *string {
+	return s.SceneCode
+}
+
 func (s *CreateQualityCheckTaskRequest) GetType() *string {
 	return s.Type
 }
@@ -102,6 +109,11 @@ func (s *CreateQualityCheckTaskRequest) SetQualityGroup(v []*string) *CreateQual
 
 func (s *CreateQualityCheckTaskRequest) SetRequestId(v string) *CreateQualityCheckTaskRequest {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequest) SetSceneCode(v string) *CreateQualityCheckTaskRequest {
+	s.SceneCode = &v
 	return s
 }
 
