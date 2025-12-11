@@ -332,6 +332,7 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	// pro-test
 	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	OpType     *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
 	OriginTime *string `json:"OriginTime,omitempty" xml:"OriginTime,omitempty"`
 	// example:
 	//
@@ -525,6 +526,10 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetNamespace() *string {
 
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetNodeId() *string {
 	return s.NodeId
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetOpType() *string {
+	return s.OpType
 }
 
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetOriginTime() *string {
@@ -746,6 +751,11 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetNamespace(v string) *Des
 
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetNodeId(v string) *DescribeSlowLogRecordsResponseBodyDataLogs {
 	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetOpType(v string) *DescribeSlowLogRecordsResponseBodyDataLogs {
+	s.OpType = &v
 	return s
 }
 
