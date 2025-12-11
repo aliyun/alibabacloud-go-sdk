@@ -99,6 +99,11 @@ type ListInstancesResponseBodyInstances struct {
 	//
 	// idaas_eypq6ljgyeuwmlw672sulxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// sase
+	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
+	ServiceManaged     *bool   `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	// The status of the instance. Valid values:
 	//
 	// 	- creating
@@ -135,6 +140,14 @@ func (s *ListInstancesResponseBodyInstances) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *ListInstancesResponseBodyInstances) GetManagedServiceCode() *string {
+	return s.ManagedServiceCode
+}
+
+func (s *ListInstancesResponseBodyInstances) GetServiceManaged() *bool {
+	return s.ServiceManaged
+}
+
 func (s *ListInstancesResponseBodyInstances) GetStatus() *string {
 	return s.Status
 }
@@ -156,6 +169,16 @@ func (s *ListInstancesResponseBodyInstances) SetDescription(v string) *ListInsta
 
 func (s *ListInstancesResponseBodyInstances) SetInstanceId(v string) *ListInstancesResponseBodyInstances {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetManagedServiceCode(v string) *ListInstancesResponseBodyInstances {
+	s.ManagedServiceCode = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetServiceManaged(v bool) *ListInstancesResponseBodyInstances {
+	s.ServiceManaged = &v
 	return s
 }
 

@@ -86,6 +86,16 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	// idaas_abt3pfwojojcq323si6g5xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// sase
+	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
+	// if can be null:
+	// false
+	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	// The status of the instance. Valid values:
 	//
 	// 	- creating
@@ -130,6 +140,14 @@ func (s *GetInstanceResponseBodyInstance) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *GetInstanceResponseBodyInstance) GetManagedServiceCode() *string {
+	return s.ManagedServiceCode
+}
+
+func (s *GetInstanceResponseBodyInstance) GetServiceManaged() *bool {
+	return s.ServiceManaged
+}
+
 func (s *GetInstanceResponseBodyInstance) GetStatus() *string {
 	return s.Status
 }
@@ -161,6 +179,16 @@ func (s *GetInstanceResponseBodyInstance) SetEgressAddresses(v []*string) *GetIn
 
 func (s *GetInstanceResponseBodyInstance) SetInstanceId(v string) *GetInstanceResponseBodyInstance {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstance) SetManagedServiceCode(v string) *GetInstanceResponseBodyInstance {
+	s.ManagedServiceCode = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstance) SetServiceManaged(v bool) *GetInstanceResponseBodyInstance {
+	s.ServiceManaged = &v
 	return s
 }
 
