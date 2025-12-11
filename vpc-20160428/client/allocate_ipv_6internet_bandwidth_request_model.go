@@ -86,8 +86,6 @@ type AllocateIpv6InternetBandwidthRequest struct {
 	Ipv6AddressId *string `json:"Ipv6AddressId,omitempty" xml:"Ipv6AddressId,omitempty"`
 	// The ID of the IPv6 gateway.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// ipv6gw-uf6hcyzu65v98v3du****

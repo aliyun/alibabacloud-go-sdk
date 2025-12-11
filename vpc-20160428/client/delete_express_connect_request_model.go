@@ -48,7 +48,7 @@ type DeleteExpressConnectRequest struct {
 	Force        *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the Express Connect instance is deployed. Call the [DescribeRegions](36063) operation to query the region list.
+	// The ID of the region where the Express Connect instance is deployed. Call the [DescribeRegion](https://www.alibabacloud.com/help/vpc/developer-reference/api-vpc-2016-04-28-describeregions?spm=a2c63.p38356.0.i2) operation to query the region list.
 	//
 	// This parameter is required.
 	//
