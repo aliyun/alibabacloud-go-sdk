@@ -2858,32 +2858,34 @@ func (client *Client) GenerateUserAccessTokenWithContext(ctx context.Context, re
 		query["AgentKey"] = request.AgentKey
 	}
 
+	body := map[string]interface{}{}
 	if !dara.IsNil(request.Email) {
-		query["Email"] = request.Email
+		body["Email"] = request.Email
 	}
 
 	if !dara.IsNil(request.ExpireTime) {
-		query["ExpireTime"] = request.ExpireTime
+		body["ExpireTime"] = request.ExpireTime
 	}
 
 	if !dara.IsNil(request.ExtraInfo) {
-		query["ExtraInfo"] = request.ExtraInfo
+		body["ExtraInfo"] = request.ExtraInfo
 	}
 
 	if !dara.IsNil(request.ForeignId) {
-		query["ForeignId"] = request.ForeignId
+		body["ForeignId"] = request.ForeignId
 	}
 
 	if !dara.IsNil(request.Nick) {
-		query["Nick"] = request.Nick
+		body["Nick"] = request.Nick
 	}
 
 	if !dara.IsNil(request.Telephone) {
-		query["Telephone"] = request.Telephone
+		body["Telephone"] = request.Telephone
 	}
 
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GenerateUserAccessToken"),
@@ -3174,16 +3176,18 @@ func (client *Client) InitIMConnectWithContext(ctx context.Context, request *Ini
 		query["AgentKey"] = request.AgentKey
 	}
 
+	body := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
-		query["From"] = request.From
+		body["From"] = request.From
 	}
 
 	if !dara.IsNil(request.UserAccessToken) {
-		query["UserAccessToken"] = request.UserAccessToken
+		body["UserAccessToken"] = request.UserAccessToken
 	}
 
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("InitIMConnect"),

@@ -30,15 +30,49 @@ type GenerateUserAccessTokenRequest struct {
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// example:
-	//
-	// a***bcx@gmail.com
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Email    *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// example:
 	//
 	// 1000
-	ExpireTime *int32  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ExtraInfo  *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//     "xx": 123,
+	//
+	//     "yy": 22332,
+	//
+	//     "customerNameCard": [
+	//
+	//         {
+	//
+	//             "key": "姓名",
+	//
+	//             "value": "张三"
+	//
+	//         },
+	//
+	//         {
+	//
+	//             "key": "等级",
+	//
+	//             "value": "v2"
+	//
+	//         },
+	//
+	//         {
+	//
+	//             "key": "联系方式",
+	//
+	//             "value": "123"
+	//
+	//         }
+	//
+	//     ]
+	//
+	// }
+	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -46,10 +80,11 @@ type GenerateUserAccessTokenRequest struct {
 	// 8882022040000000171
 	ForeignId *string `json:"ForeignId,omitempty" xml:"ForeignId,omitempty"`
 	// This parameter is required.
-	Nick *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
+	//
 	// example:
 	//
-	// 1381111****
+	// 张三
+	Nick      *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
 	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
 }
 

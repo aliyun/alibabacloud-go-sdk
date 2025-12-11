@@ -23,14 +23,7 @@ type InitIMConnectRequest struct {
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 8XNBzDucJv
-	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// example:
-	//
-	// QUM4SndaY3VPMjhkQldDZUNOR0ZaTmZ5R3NBY0FKWHJ4OGc4dERZbEJzcjNIKzFiS1RyTjhXRUpBYmVpQlpsakprNDRFVkdxcy9HWVk2RXZvalU3bHhxRkJlc1NBUXZwdHFKOTE2UTNwamQ4b1U4N3dEbmhyRjc4R2hOQStvMnMrYkV2dlVpSHNvWC96SEVNZWRqMjBuMXdjNklpamJzaDNWYllnUldDZGhJPQ==
+	From            *string `json:"From,omitempty" xml:"From,omitempty"`
 	UserAccessToken *string `json:"UserAccessToken,omitempty" xml:"UserAccessToken,omitempty"`
 }
 
