@@ -145,6 +145,7 @@ type TextTranslateRequestExt struct {
 	// technology
 	DomainHint    *string                                 `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
 	Examples      []*TextTranslateRequestExtExamples      `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
+	Prefix        *string                                 `json:"prefix,omitempty" xml:"prefix,omitempty"`
 	Sensitives    []*string                               `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
 	Terminologies []*TextTranslateRequestExtTerminologies `json:"terminologies,omitempty" xml:"terminologies,omitempty" type:"Repeated"`
 	TextTransform *TextTranslateRequestExtTextTransform   `json:"textTransform,omitempty" xml:"textTransform,omitempty" type:"Struct"`
@@ -172,6 +173,10 @@ func (s *TextTranslateRequestExt) GetDomainHint() *string {
 
 func (s *TextTranslateRequestExt) GetExamples() []*TextTranslateRequestExtExamples {
 	return s.Examples
+}
+
+func (s *TextTranslateRequestExt) GetPrefix() *string {
+	return s.Prefix
 }
 
 func (s *TextTranslateRequestExt) GetSensitives() []*string {
@@ -203,6 +208,11 @@ func (s *TextTranslateRequestExt) SetDomainHint(v string) *TextTranslateRequestE
 
 func (s *TextTranslateRequestExt) SetExamples(v []*TextTranslateRequestExtExamples) *TextTranslateRequestExt {
 	s.Examples = v
+	return s
+}
+
+func (s *TextTranslateRequestExt) SetPrefix(v string) *TextTranslateRequestExt {
+	s.Prefix = &v
 	return s
 }
 
