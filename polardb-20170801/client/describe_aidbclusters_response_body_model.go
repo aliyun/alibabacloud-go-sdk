@@ -183,7 +183,8 @@ type DescribeAIDBClustersResponseBodyItemsDBCluster struct {
 	// example:
 	//
 	// Unlock
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LockMode  *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	// example:
 	//
 	// Postpaid
@@ -270,6 +271,10 @@ func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) GetKubeClusterId() *str
 
 func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) GetLockMode() *string {
 	return s.LockMode
+}
+
+func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) GetModelType() *string {
+	return s.ModelType
 }
 
 func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) GetPayType() *string {
@@ -364,6 +369,11 @@ func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) SetKubeClusterId(v stri
 
 func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) SetLockMode(v string) *DescribeAIDBClustersResponseBodyItemsDBCluster {
 	s.LockMode = &v
+	return s
+}
+
+func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) SetModelType(v string) *DescribeAIDBClustersResponseBodyItemsDBCluster {
+	s.ModelType = &v
 	return s
 }
 

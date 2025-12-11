@@ -5290,6 +5290,10 @@ func (client *Client) DeleteDBClusterWithOptions(request *DeleteDBClusterRequest
 		query["BackupRetentionPolicyOnClusterDeletion"] = request.BackupRetentionPolicyOnClusterDeletion
 	}
 
+	if !dara.IsNil(request.CloudProvider) {
+		query["CloudProvider"] = request.CloudProvider
+	}
+
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
 	}
@@ -24177,6 +24181,10 @@ func (client *Client) RemoveDBClusterFromGDNWithOptions(request *RemoveDBCluster
 
 	if !dara.IsNil(request.SecurityToken) {
 		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.TargetDBClusterId) {
+		query["TargetDBClusterId"] = request.TargetDBClusterId
 	}
 
 	req := &openapiutil.OpenApiRequest{

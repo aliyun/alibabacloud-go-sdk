@@ -25,6 +25,8 @@ type iRemoveDBClusterFromGDNRequest interface {
 	GetResourceOwnerId() *int64
 	SetSecurityToken(v string) *RemoveDBClusterFromGDNRequest
 	GetSecurityToken() *string
+	SetTargetDBClusterId(v string) *RemoveDBClusterFromGDNRequest
+	GetTargetDBClusterId() *string
 }
 
 type RemoveDBClusterFromGDNRequest struct {
@@ -52,6 +54,7 @@ type RemoveDBClusterFromGDNRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	TargetDBClusterId    *string `json:"TargetDBClusterId,omitempty" xml:"TargetDBClusterId,omitempty"`
 }
 
 func (s RemoveDBClusterFromGDNRequest) String() string {
@@ -94,6 +97,10 @@ func (s *RemoveDBClusterFromGDNRequest) GetSecurityToken() *string {
 	return s.SecurityToken
 }
 
+func (s *RemoveDBClusterFromGDNRequest) GetTargetDBClusterId() *string {
+	return s.TargetDBClusterId
+}
+
 func (s *RemoveDBClusterFromGDNRequest) SetDBClusterId(v string) *RemoveDBClusterFromGDNRequest {
 	s.DBClusterId = &v
 	return s
@@ -131,6 +138,11 @@ func (s *RemoveDBClusterFromGDNRequest) SetResourceOwnerId(v int64) *RemoveDBClu
 
 func (s *RemoveDBClusterFromGDNRequest) SetSecurityToken(v string) *RemoveDBClusterFromGDNRequest {
 	s.SecurityToken = &v
+	return s
+}
+
+func (s *RemoveDBClusterFromGDNRequest) SetTargetDBClusterId(v string) *RemoveDBClusterFromGDNRequest {
+	s.TargetDBClusterId = &v
 	return s
 }
 

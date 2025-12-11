@@ -43,6 +43,8 @@ type iDescribeAIDBClusterAttributeResponseBody interface {
 	GetMaxQPM() *string
 	SetModelName(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetModelName() *string
+	SetModelType(v string) *DescribeAIDBClusterAttributeResponseBody
+	GetModelType() *string
 	SetPayType(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetPayType() *string
 	SetPublicIp(v string) *DescribeAIDBClusterAttributeResponseBody
@@ -130,6 +132,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// Qwen3-Embedding-8B
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	// example:
 	//
 	// Postpaid
@@ -246,6 +249,10 @@ func (s *DescribeAIDBClusterAttributeResponseBody) GetMaxQPM() *string {
 
 func (s *DescribeAIDBClusterAttributeResponseBody) GetModelName() *string {
 	return s.ModelName
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) GetModelType() *string {
+	return s.ModelType
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBody) GetPayType() *string {
@@ -374,6 +381,11 @@ func (s *DescribeAIDBClusterAttributeResponseBody) SetMaxQPM(v string) *Describe
 
 func (s *DescribeAIDBClusterAttributeResponseBody) SetModelName(v string) *DescribeAIDBClusterAttributeResponseBody {
 	s.ModelName = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) SetModelType(v string) *DescribeAIDBClusterAttributeResponseBody {
+	s.ModelType = &v
 	return s
 }
 

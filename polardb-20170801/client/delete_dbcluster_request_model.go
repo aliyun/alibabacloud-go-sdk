@@ -11,6 +11,8 @@ type iDeleteDBClusterRequest interface {
 	GoString() string
 	SetBackupRetentionPolicyOnClusterDeletion(v string) *DeleteDBClusterRequest
 	GetBackupRetentionPolicyOnClusterDeletion() *string
+	SetCloudProvider(v string) *DeleteDBClusterRequest
+	GetCloudProvider() *string
 	SetDBClusterId(v string) *DeleteDBClusterRequest
 	GetDBClusterId() *string
 	SetOwnerAccount(v string) *DeleteDBClusterRequest
@@ -36,6 +38,7 @@ type DeleteDBClusterRequest struct {
 	//
 	// NONE
 	BackupRetentionPolicyOnClusterDeletion *string `json:"BackupRetentionPolicyOnClusterDeletion,omitempty" xml:"BackupRetentionPolicyOnClusterDeletion,omitempty"`
+	CloudProvider                          *string `json:"CloudProvider,omitempty" xml:"CloudProvider,omitempty"`
 	// The cluster ID.
 	//
 	// This parameter is required.
@@ -62,6 +65,10 @@ func (s *DeleteDBClusterRequest) GetBackupRetentionPolicyOnClusterDeletion() *st
 	return s.BackupRetentionPolicyOnClusterDeletion
 }
 
+func (s *DeleteDBClusterRequest) GetCloudProvider() *string {
+	return s.CloudProvider
+}
+
 func (s *DeleteDBClusterRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
@@ -84,6 +91,11 @@ func (s *DeleteDBClusterRequest) GetResourceOwnerId() *int64 {
 
 func (s *DeleteDBClusterRequest) SetBackupRetentionPolicyOnClusterDeletion(v string) *DeleteDBClusterRequest {
 	s.BackupRetentionPolicyOnClusterDeletion = &v
+	return s
+}
+
+func (s *DeleteDBClusterRequest) SetCloudProvider(v string) *DeleteDBClusterRequest {
+	s.CloudProvider = &v
 	return s
 }
 
