@@ -2012,6 +2012,72 @@ func (client *Client) GetLivyComputeToken(workspaceBizId *string, livyComputeId 
 
 // Summary:
 //
+// 获取任务配置
+//
+// @param request - GetRunConfigurationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRunConfigurationResponse
+func (client *Client) GetRunConfigurationWithOptions(workspaceId *string, runId *string, request *GetRunConfigurationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRunConfigurationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRunConfiguration"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/runs/" + dara.PercentEncode(dara.StringValue(runId)) + "/action/getRunConfiguration"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRunConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务配置
+//
+// @param request - GetRunConfigurationRequest
+//
+// @return GetRunConfigurationResponse
+func (client *Client) GetRunConfiguration(workspaceId *string, runId *string, request *GetRunConfigurationRequest) (_result *GetRunConfigurationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetRunConfigurationResponse{}
+	_body, _err := client.GetRunConfigurationWithOptions(workspaceId, runId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about a session.
 //
 // @param request - GetSessionClusterRequest
