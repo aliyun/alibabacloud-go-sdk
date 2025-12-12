@@ -655,6 +655,7 @@ type GetLindormV2InstanceResponseBodyEngineListNodeGroup struct {
 	Category              *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	CpuCoreCount          *int32  `json:"CpuCoreCount,omitempty" xml:"CpuCoreCount,omitempty"`
 	EnableAttachLocalDisk *bool   `json:"EnableAttachLocalDisk,omitempty" xml:"EnableAttachLocalDisk,omitempty"`
+	IsScaleSpecGroup      *bool   `json:"IsScaleSpecGroup,omitempty" xml:"IsScaleSpecGroup,omitempty"`
 	LocalDiskCapacity     *int64  `json:"LocalDiskCapacity,omitempty" xml:"LocalDiskCapacity,omitempty"`
 	LocalDiskCategory     *string `json:"LocalDiskCategory,omitempty" xml:"LocalDiskCategory,omitempty"`
 	MemorySizeGiB         *int32  `json:"MemorySizeGiB,omitempty" xml:"MemorySizeGiB,omitempty"`
@@ -683,6 +684,10 @@ func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) GetCpuCoreCount() 
 
 func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) GetEnableAttachLocalDisk() *bool {
 	return s.EnableAttachLocalDisk
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) GetIsScaleSpecGroup() *bool {
+	return s.IsScaleSpecGroup
 }
 
 func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) GetLocalDiskCapacity() *int64 {
@@ -729,6 +734,11 @@ func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) SetCpuCoreCount(v 
 
 func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) SetEnableAttachLocalDisk(v bool) *GetLindormV2InstanceResponseBodyEngineListNodeGroup {
 	s.EnableAttachLocalDisk = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) SetIsScaleSpecGroup(v bool) *GetLindormV2InstanceResponseBodyEngineListNodeGroup {
+	s.IsScaleSpecGroup = &v
 	return s
 }
 

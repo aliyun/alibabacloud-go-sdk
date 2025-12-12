@@ -186,6 +186,7 @@ type ListAutoScalingConfigsResponseBodyDataScaleConfigs struct {
 	ScaleRuleList      []*ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList `json:"ScaleRuleList,omitempty" xml:"ScaleRuleList,omitempty" type:"Repeated"`
 	ScaleType          *string                                                            `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
 	SpecId             *string                                                            `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	StorageCapacityMax *int64                                                             `json:"StorageCapacityMax,omitempty" xml:"StorageCapacityMax,omitempty"`
 }
 
 func (s ListAutoScalingConfigsResponseBodyDataScaleConfigs) String() string {
@@ -242,6 +243,10 @@ func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) GetScaleType() *str
 
 func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) GetSpecId() *string {
 	return s.SpecId
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) GetStorageCapacityMax() *int64 {
+	return s.StorageCapacityMax
 }
 
 func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) SetConfigId(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigs {
@@ -301,6 +306,11 @@ func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) SetScaleType(v stri
 
 func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) SetSpecId(v string) *ListAutoScalingConfigsResponseBodyDataScaleConfigs {
 	s.SpecId = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsResponseBodyDataScaleConfigs) SetStorageCapacityMax(v int64) *ListAutoScalingConfigsResponseBodyDataScaleConfigs {
+	s.StorageCapacityMax = &v
 	return s
 }
 

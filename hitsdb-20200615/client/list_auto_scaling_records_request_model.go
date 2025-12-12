@@ -23,6 +23,8 @@ type iListAutoScalingRecordsRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *ListAutoScalingRecordsRequest
 	GetResourceOwnerId() *int64
+	SetScaleTypes(v []*string) *ListAutoScalingRecordsRequest
+	GetScaleTypes() []*string
 	SetSecurityToken(v string) *ListAutoScalingRecordsRequest
 	GetSecurityToken() *string
 }
@@ -35,10 +37,11 @@ type ListAutoScalingRecordsRequest struct {
 	// This parameter is required.
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// This parameter is required.
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	PageSize             *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ScaleTypes           []*string `json:"ScaleTypes,omitempty" xml:"ScaleTypes,omitempty" type:"Repeated"`
+	SecurityToken        *string   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s ListAutoScalingRecordsRequest) String() string {
@@ -77,6 +80,10 @@ func (s *ListAutoScalingRecordsRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
 
+func (s *ListAutoScalingRecordsRequest) GetScaleTypes() []*string {
+	return s.ScaleTypes
+}
+
 func (s *ListAutoScalingRecordsRequest) GetSecurityToken() *string {
 	return s.SecurityToken
 }
@@ -113,6 +120,11 @@ func (s *ListAutoScalingRecordsRequest) SetResourceOwnerAccount(v string) *ListA
 
 func (s *ListAutoScalingRecordsRequest) SetResourceOwnerId(v int64) *ListAutoScalingRecordsRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListAutoScalingRecordsRequest) SetScaleTypes(v []*string) *ListAutoScalingRecordsRequest {
+	s.ScaleTypes = v
 	return s
 }
 

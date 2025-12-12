@@ -119,6 +119,10 @@ func (client *Client) CheckLdpsColumnarIndexStatusWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建弹性伸缩配置
+//
 // @param tmpReq - CreateAutoScalingConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -202,6 +206,10 @@ func (client *Client) CreateAutoScalingConfigWithContext(ctx context.Context, tm
 		query["SpecId"] = request.SpecId
 	}
 
+	if !dara.IsNil(request.StorageCapacityMax) {
+		query["StorageCapacityMax"] = request.StorageCapacityMax
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -225,6 +233,10 @@ func (client *Client) CreateAutoScalingConfigWithContext(ctx context.Context, tm
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建弹性伸缩规则
+//
 // @param request - CreateAutoScalingRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2617,18 +2629,28 @@ func (client *Client) GetLindormV2StreamEngineInfoWithContext(ctx context.Contex
 	return _result, _err
 }
 
-// @param request - ListAutoScalingConfigsRequest
+// Summary:
+//
+// 查询弹性伸缩配置
+//
+// @param tmpReq - ListAutoScalingConfigsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAutoScalingConfigsResponse
-func (client *Client) ListAutoScalingConfigsWithContext(ctx context.Context, request *ListAutoScalingConfigsRequest, runtime *dara.RuntimeOptions) (_result *ListAutoScalingConfigsResponse, _err error) {
+func (client *Client) ListAutoScalingConfigsWithContext(ctx context.Context, tmpReq *ListAutoScalingConfigsRequest, runtime *dara.RuntimeOptions) (_result *ListAutoScalingConfigsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListAutoScalingConfigsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ScaleTypes) {
+		request.ScaleTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScaleTypes, dara.String("ScaleTypes"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
@@ -2648,6 +2670,10 @@ func (client *Client) ListAutoScalingConfigsWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.ResourceOwnerId) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.ScaleTypesShrink) {
+		query["ScaleTypes"] = request.ScaleTypesShrink
 	}
 
 	if !dara.IsNil(request.SecurityToken) {
@@ -2677,18 +2703,28 @@ func (client *Client) ListAutoScalingConfigsWithContext(ctx context.Context, req
 	return _result, _err
 }
 
-// @param request - ListAutoScalingRecordsRequest
+// Summary:
+//
+// 查询伸缩记录
+//
+// @param tmpReq - ListAutoScalingRecordsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAutoScalingRecordsResponse
-func (client *Client) ListAutoScalingRecordsWithContext(ctx context.Context, request *ListAutoScalingRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListAutoScalingRecordsResponse, _err error) {
+func (client *Client) ListAutoScalingRecordsWithContext(ctx context.Context, tmpReq *ListAutoScalingRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListAutoScalingRecordsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListAutoScalingRecordsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ScaleTypes) {
+		request.ScaleTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScaleTypes, dara.String("ScaleTypes"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
@@ -2716,6 +2752,10 @@ func (client *Client) ListAutoScalingRecordsWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.ResourceOwnerId) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.ScaleTypesShrink) {
+		query["ScaleTypes"] = request.ScaleTypesShrink
 	}
 
 	if !dara.IsNil(request.SecurityToken) {
@@ -3037,18 +3077,28 @@ func (client *Client) MigrateSingleZoneToMultiZoneWithContext(ctx context.Contex
 	return _result, _err
 }
 
-// @param request - ModifyAutoScalingConfigRequest
+// Summary:
+//
+// 修改弹性伸缩配置
+//
+// @param tmpReq - ModifyAutoScalingConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAutoScalingConfigResponse
-func (client *Client) ModifyAutoScalingConfigWithContext(ctx context.Context, request *ModifyAutoScalingConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyAutoScalingConfigResponse, _err error) {
+func (client *Client) ModifyAutoScalingConfigWithContext(ctx context.Context, tmpReq *ModifyAutoScalingConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyAutoScalingConfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ModifyAutoScalingConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ScaleRuleList) {
+		request.ScaleRuleListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScaleRuleList, dara.String("ScaleRuleList"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigId) {
 		query["ConfigId"] = request.ConfigId
@@ -3102,6 +3152,10 @@ func (client *Client) ModifyAutoScalingConfigWithContext(ctx context.Context, re
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !dara.IsNil(request.ScaleRuleListShrink) {
+		query["ScaleRuleList"] = request.ScaleRuleListShrink
+	}
+
 	if !dara.IsNil(request.ScaleType) {
 		query["ScaleType"] = request.ScaleType
 	}
@@ -3112,6 +3166,10 @@ func (client *Client) ModifyAutoScalingConfigWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.SpecId) {
 		query["SpecId"] = request.SpecId
+	}
+
+	if !dara.IsNil(request.StorageCapacityMax) {
+		query["StorageCapacityMax"] = request.StorageCapacityMax
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3137,6 +3195,10 @@ func (client *Client) ModifyAutoScalingConfigWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改弹性伸缩规则
+//
 // @param request - ModifyAutoScalingRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4819,6 +4881,78 @@ func (client *Client) UpdateLindormV2InstanceParameterWithContext(ctx context.Co
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLindormV2InstanceParameterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改Lindorm新版实例白名单分组列表
+//
+// @param request - UpdateLindormV2WhiteIpListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLindormV2WhiteIpListResponse
+func (client *Client) UpdateLindormV2WhiteIpListWithContext(ctx context.Context, request *UpdateLindormV2WhiteIpListRequest, runtime *dara.RuntimeOptions) (_result *UpdateLindormV2WhiteIpListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.WhiteIpGroupList) {
+		query["WhiteIpGroupList"] = request.WhiteIpGroupList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateLindormV2WhiteIpList"),
+		Version:     dara.String("2020-06-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateLindormV2WhiteIpListResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

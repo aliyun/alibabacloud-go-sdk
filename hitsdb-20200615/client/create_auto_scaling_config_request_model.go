@@ -41,6 +41,8 @@ type iCreateAutoScalingConfigRequest interface {
 	GetSecurityToken() *string
 	SetSpecId(v string) *CreateAutoScalingConfigRequest
 	GetSpecId() *string
+	SetStorageCapacityMax(v int64) *CreateAutoScalingConfigRequest
+	GetStorageCapacityMax() *int64
 }
 
 type CreateAutoScalingConfigRequest struct {
@@ -64,7 +66,8 @@ type CreateAutoScalingConfigRequest struct {
 	ScaleType     *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// This parameter is required.
-	SpecId *string `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	SpecId             *string `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	StorageCapacityMax *int64  `json:"StorageCapacityMax,omitempty" xml:"StorageCapacityMax,omitempty"`
 }
 
 func (s CreateAutoScalingConfigRequest) String() string {
@@ -137,6 +140,10 @@ func (s *CreateAutoScalingConfigRequest) GetSecurityToken() *string {
 
 func (s *CreateAutoScalingConfigRequest) GetSpecId() *string {
 	return s.SpecId
+}
+
+func (s *CreateAutoScalingConfigRequest) GetStorageCapacityMax() *int64 {
+	return s.StorageCapacityMax
 }
 
 func (s *CreateAutoScalingConfigRequest) SetConfigName(v string) *CreateAutoScalingConfigRequest {
@@ -216,6 +223,11 @@ func (s *CreateAutoScalingConfigRequest) SetSecurityToken(v string) *CreateAutoS
 
 func (s *CreateAutoScalingConfigRequest) SetSpecId(v string) *CreateAutoScalingConfigRequest {
 	s.SpecId = &v
+	return s
+}
+
+func (s *CreateAutoScalingConfigRequest) SetStorageCapacityMax(v int64) *CreateAutoScalingConfigRequest {
+	s.StorageCapacityMax = &v
 	return s
 }
 

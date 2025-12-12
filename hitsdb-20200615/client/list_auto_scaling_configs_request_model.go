@@ -19,18 +19,21 @@ type iListAutoScalingConfigsRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *ListAutoScalingConfigsRequest
 	GetResourceOwnerId() *int64
+	SetScaleTypes(v []*string) *ListAutoScalingConfigsRequest
+	GetScaleTypes() []*string
 	SetSecurityToken(v string) *ListAutoScalingConfigsRequest
 	GetSecurityToken() *string
 }
 
 type ListAutoScalingConfigsRequest struct {
 	// This parameter is required.
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	InstanceId           *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ScaleTypes           []*string `json:"ScaleTypes,omitempty" xml:"ScaleTypes,omitempty" type:"Repeated"`
+	SecurityToken        *string   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s ListAutoScalingConfigsRequest) String() string {
@@ -61,6 +64,10 @@ func (s *ListAutoScalingConfigsRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
 
+func (s *ListAutoScalingConfigsRequest) GetScaleTypes() []*string {
+	return s.ScaleTypes
+}
+
 func (s *ListAutoScalingConfigsRequest) GetSecurityToken() *string {
 	return s.SecurityToken
 }
@@ -87,6 +94,11 @@ func (s *ListAutoScalingConfigsRequest) SetResourceOwnerAccount(v string) *ListA
 
 func (s *ListAutoScalingConfigsRequest) SetResourceOwnerId(v int64) *ListAutoScalingConfigsRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListAutoScalingConfigsRequest) SetScaleTypes(v []*string) *ListAutoScalingConfigsRequest {
+	s.ScaleTypes = v
 	return s
 }
 
