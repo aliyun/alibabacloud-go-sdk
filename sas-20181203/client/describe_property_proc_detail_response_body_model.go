@@ -95,7 +95,8 @@ type DescribePropertyProcDetailResponseBodyPageInfo struct {
 	// example:
 	//
 	// 1
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The number of entries returned per page. Default value: **10**.
 	//
 	// example:
@@ -126,6 +127,10 @@ func (s *DescribePropertyProcDetailResponseBodyPageInfo) GetCurrentPage() *int32
 	return s.CurrentPage
 }
 
+func (s *DescribePropertyProcDetailResponseBodyPageInfo) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *DescribePropertyProcDetailResponseBodyPageInfo) GetPageSize() *int32 {
 	return s.PageSize
 }
@@ -141,6 +146,11 @@ func (s *DescribePropertyProcDetailResponseBodyPageInfo) SetCount(v int32) *Desc
 
 func (s *DescribePropertyProcDetailResponseBodyPageInfo) SetCurrentPage(v int32) *DescribePropertyProcDetailResponseBodyPageInfo {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribePropertyProcDetailResponseBodyPageInfo) SetNextToken(v string) *DescribePropertyProcDetailResponseBodyPageInfo {
+	s.NextToken = &v
 	return s
 }
 

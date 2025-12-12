@@ -95,7 +95,8 @@ type DescribePropertyCronDetailResponseBodyPageInfo struct {
 	// example:
 	//
 	// 1
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The number of entries returned per page. Default value: **10**.
 	//
 	// example:
@@ -126,6 +127,10 @@ func (s *DescribePropertyCronDetailResponseBodyPageInfo) GetCurrentPage() *int32
 	return s.CurrentPage
 }
 
+func (s *DescribePropertyCronDetailResponseBodyPageInfo) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *DescribePropertyCronDetailResponseBodyPageInfo) GetPageSize() *int32 {
 	return s.PageSize
 }
@@ -141,6 +146,11 @@ func (s *DescribePropertyCronDetailResponseBodyPageInfo) SetCount(v int32) *Desc
 
 func (s *DescribePropertyCronDetailResponseBodyPageInfo) SetCurrentPage(v int32) *DescribePropertyCronDetailResponseBodyPageInfo {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribePropertyCronDetailResponseBodyPageInfo) SetNextToken(v string) *DescribePropertyCronDetailResponseBodyPageInfo {
+	s.NextToken = &v
 	return s
 }
 

@@ -17,6 +17,8 @@ type iDescribePropertyProcDetailRequest interface {
 	GetExtend() *string
 	SetName(v string) *DescribePropertyProcDetailRequest
 	GetName() *string
+	SetNextToken(v string) *DescribePropertyProcDetailRequest
+	GetNextToken() *string
 	SetPageSize(v int32) *DescribePropertyProcDetailRequest
 	GetPageSize() *int32
 	SetProcTimeEnd(v int64) *DescribePropertyProcDetailRequest
@@ -27,6 +29,8 @@ type iDescribePropertyProcDetailRequest interface {
 	GetRemark() *string
 	SetResourceDirectoryAccountId(v int64) *DescribePropertyProcDetailRequest
 	GetResourceDirectoryAccountId() *int64
+	SetUseNextToken(v bool) *DescribePropertyProcDetailRequest
+	GetUseNextToken() *bool
 	SetUser(v string) *DescribePropertyProcDetailRequest
 	GetUser() *string
 	SetUuid(v string) *DescribePropertyProcDetailRequest
@@ -57,7 +61,8 @@ type DescribePropertyProcDetailRequest struct {
 	// example:
 	//
 	// 8888
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The number of entries to return on each page. Default value: **10**.
 	//
 	// example:
@@ -90,6 +95,7 @@ type DescribePropertyProcDetailRequest struct {
 	//
 	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	UseNextToken               *bool  `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
 	// The user who runs the process.
 	//
 	// example:
@@ -128,6 +134,10 @@ func (s *DescribePropertyProcDetailRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *DescribePropertyProcDetailRequest) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *DescribePropertyProcDetailRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
@@ -146,6 +156,10 @@ func (s *DescribePropertyProcDetailRequest) GetRemark() *string {
 
 func (s *DescribePropertyProcDetailRequest) GetResourceDirectoryAccountId() *int64 {
 	return s.ResourceDirectoryAccountId
+}
+
+func (s *DescribePropertyProcDetailRequest) GetUseNextToken() *bool {
+	return s.UseNextToken
 }
 
 func (s *DescribePropertyProcDetailRequest) GetUser() *string {
@@ -176,6 +190,11 @@ func (s *DescribePropertyProcDetailRequest) SetName(v string) *DescribePropertyP
 	return s
 }
 
+func (s *DescribePropertyProcDetailRequest) SetNextToken(v string) *DescribePropertyProcDetailRequest {
+	s.NextToken = &v
+	return s
+}
+
 func (s *DescribePropertyProcDetailRequest) SetPageSize(v int32) *DescribePropertyProcDetailRequest {
 	s.PageSize = &v
 	return s
@@ -198,6 +217,11 @@ func (s *DescribePropertyProcDetailRequest) SetRemark(v string) *DescribePropert
 
 func (s *DescribePropertyProcDetailRequest) SetResourceDirectoryAccountId(v int64) *DescribePropertyProcDetailRequest {
 	s.ResourceDirectoryAccountId = &v
+	return s
+}
+
+func (s *DescribePropertyProcDetailRequest) SetUseNextToken(v bool) *DescribePropertyProcDetailRequest {
+	s.UseNextToken = &v
 	return s
 }
 

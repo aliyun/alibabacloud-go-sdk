@@ -18268,6 +18268,10 @@ func (client *Client) DescribePropertyCronDetailWithContext(ctx context.Context,
 		query["Extend"] = request.Extend
 	}
 
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
@@ -18278,6 +18282,10 @@ func (client *Client) DescribePropertyCronDetailWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.Source) {
 		query["Source"] = request.Source
+	}
+
+	if !dara.IsNil(request.UseNextToken) {
+		query["UseNextToken"] = request.UseNextToken
 	}
 
 	if !dara.IsNil(request.User) {
@@ -18396,6 +18404,10 @@ func (client *Client) DescribePropertyPortDetailWithContext(ctx context.Context,
 		query["Extend"] = request.Extend
 	}
 
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
@@ -18414,6 +18426,10 @@ func (client *Client) DescribePropertyPortDetailWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.ResourceDirectoryAccountId) {
 		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
+	if !dara.IsNil(request.UseNextToken) {
+		query["UseNextToken"] = request.UseNextToken
 	}
 
 	if !dara.IsNil(request.Uuid) {
@@ -18532,6 +18548,10 @@ func (client *Client) DescribePropertyProcDetailWithContext(ctx context.Context,
 		query["Name"] = request.Name
 	}
 
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
@@ -18550,6 +18570,10 @@ func (client *Client) DescribePropertyProcDetailWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.ResourceDirectoryAccountId) {
 		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
+	if !dara.IsNil(request.UseNextToken) {
+		query["UseNextToken"] = request.UseNextToken
 	}
 
 	if !dara.IsNil(request.User) {
@@ -18676,6 +18700,10 @@ func (client *Client) DescribePropertyScaDetailWithContext(ctx context.Context, 
 		query["Name"] = request.Name
 	}
 
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
@@ -18726,6 +18754,10 @@ func (client *Client) DescribePropertyScaDetailWithContext(ctx context.Context, 
 
 	if !dara.IsNil(request.SearchItemSub) {
 		query["SearchItemSub"] = request.SearchItemSub
+	}
+
+	if !dara.IsNil(request.UseNextToken) {
+		query["UseNextToken"] = request.UseNextToken
 	}
 
 	if !dara.IsNil(request.User) {
@@ -18976,6 +19008,10 @@ func (client *Client) DescribePropertySoftwareDetailWithContext(ctx context.Cont
 		query["Name"] = request.Name
 	}
 
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
@@ -18990,6 +19026,10 @@ func (client *Client) DescribePropertySoftwareDetailWithContext(ctx context.Cont
 
 	if !dara.IsNil(request.SoftwareVersion) {
 		query["SoftwareVersion"] = request.SoftwareVersion
+	}
+
+	if !dara.IsNil(request.UseNextToken) {
+		query["UseNextToken"] = request.UseNextToken
 	}
 
 	if !dara.IsNil(request.Uuid) {
@@ -19212,12 +19252,20 @@ func (client *Client) DescribePropertyUserDetailWithContext(ctx context.Context,
 		query["LastLoginTimeStart"] = request.LastLoginTimeStart
 	}
 
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
 
 	if !dara.IsNil(request.Remark) {
 		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.UseNextToken) {
+		query["UseNextToken"] = request.UseNextToken
 	}
 
 	if !dara.IsNil(request.User) {
@@ -26528,6 +26576,10 @@ func (client *Client) GetAssetsPropertyDetailWithContext(ctx context.Context, re
 		query["Lang"] = request.Lang
 	}
 
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
@@ -26538,6 +26590,10 @@ func (client *Client) GetAssetsPropertyDetailWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.SearchCriteriaList) {
 		query["SearchCriteriaList"] = request.SearchCriteriaList
+	}
+
+	if !dara.IsNil(request.UseNextToken) {
+		query["UseNextToken"] = request.UseNextToken
 	}
 
 	if !dara.IsNil(request.Uuid) {
@@ -39307,7 +39363,7 @@ func (client *Client) ModifyDingTalkStatusWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Runs a scan task for urgent vulnerabilities.
+// Scans for urgent vulnerabilities.
 //
 // @param request - ModifyEmgVulSubmitRequest
 //

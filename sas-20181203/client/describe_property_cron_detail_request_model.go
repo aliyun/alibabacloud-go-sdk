@@ -13,12 +13,16 @@ type iDescribePropertyCronDetailRequest interface {
 	GetCurrentPage() *int32
 	SetExtend(v string) *DescribePropertyCronDetailRequest
 	GetExtend() *string
+	SetNextToken(v string) *DescribePropertyCronDetailRequest
+	GetNextToken() *string
 	SetPageSize(v int32) *DescribePropertyCronDetailRequest
 	GetPageSize() *int32
 	SetRemark(v string) *DescribePropertyCronDetailRequest
 	GetRemark() *string
 	SetSource(v string) *DescribePropertyCronDetailRequest
 	GetSource() *string
+	SetUseNextToken(v bool) *DescribePropertyCronDetailRequest
+	GetUseNextToken() *bool
 	SetUser(v string) *DescribePropertyCronDetailRequest
 	GetUser() *string
 	SetUuid(v string) *DescribePropertyCronDetailRequest
@@ -37,7 +41,8 @@ type DescribePropertyCronDetailRequest struct {
 	// example:
 	//
 	// 1
-	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	Extend    *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The number of entries to return on each page. Default value: **10**.
 	//
 	// example:
@@ -55,7 +60,8 @@ type DescribePropertyCronDetailRequest struct {
 	// example:
 	//
 	// /etc/cron.d/root
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Source       *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	UseNextToken *bool   `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
 	// The username of the account that runs the scheduled task.
 	//
 	// example:
@@ -86,6 +92,10 @@ func (s *DescribePropertyCronDetailRequest) GetExtend() *string {
 	return s.Extend
 }
 
+func (s *DescribePropertyCronDetailRequest) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *DescribePropertyCronDetailRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
@@ -96,6 +106,10 @@ func (s *DescribePropertyCronDetailRequest) GetRemark() *string {
 
 func (s *DescribePropertyCronDetailRequest) GetSource() *string {
 	return s.Source
+}
+
+func (s *DescribePropertyCronDetailRequest) GetUseNextToken() *bool {
+	return s.UseNextToken
 }
 
 func (s *DescribePropertyCronDetailRequest) GetUser() *string {
@@ -116,6 +130,11 @@ func (s *DescribePropertyCronDetailRequest) SetExtend(v string) *DescribePropert
 	return s
 }
 
+func (s *DescribePropertyCronDetailRequest) SetNextToken(v string) *DescribePropertyCronDetailRequest {
+	s.NextToken = &v
+	return s
+}
+
 func (s *DescribePropertyCronDetailRequest) SetPageSize(v int32) *DescribePropertyCronDetailRequest {
 	s.PageSize = &v
 	return s
@@ -128,6 +147,11 @@ func (s *DescribePropertyCronDetailRequest) SetRemark(v string) *DescribePropert
 
 func (s *DescribePropertyCronDetailRequest) SetSource(v string) *DescribePropertyCronDetailRequest {
 	s.Source = &v
+	return s
+}
+
+func (s *DescribePropertyCronDetailRequest) SetUseNextToken(v bool) *DescribePropertyCronDetailRequest {
+	s.UseNextToken = &v
 	return s
 }
 

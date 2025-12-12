@@ -95,7 +95,8 @@ type DescribePropertySoftwareDetailResponseBodyPageInfo struct {
 	// example:
 	//
 	// 1
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The number of entries per page. Default value: **10**.
 	//
 	// example:
@@ -126,6 +127,10 @@ func (s *DescribePropertySoftwareDetailResponseBodyPageInfo) GetCurrentPage() *i
 	return s.CurrentPage
 }
 
+func (s *DescribePropertySoftwareDetailResponseBodyPageInfo) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *DescribePropertySoftwareDetailResponseBodyPageInfo) GetPageSize() *int32 {
 	return s.PageSize
 }
@@ -141,6 +146,11 @@ func (s *DescribePropertySoftwareDetailResponseBodyPageInfo) SetCount(v int32) *
 
 func (s *DescribePropertySoftwareDetailResponseBodyPageInfo) SetCurrentPage(v int32) *DescribePropertySoftwareDetailResponseBodyPageInfo {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribePropertySoftwareDetailResponseBodyPageInfo) SetNextToken(v string) *DescribePropertySoftwareDetailResponseBodyPageInfo {
+	s.NextToken = &v
 	return s
 }
 

@@ -19,6 +19,8 @@ type iDescribePropertyScaDetailRequest interface {
 	GetLang() *string
 	SetName(v int64) *DescribePropertyScaDetailRequest
 	GetName() *int64
+	SetNextToken(v string) *DescribePropertyScaDetailRequest
+	GetNextToken() *string
 	SetPageSize(v int32) *DescribePropertyScaDetailRequest
 	GetPageSize() *int32
 	SetPid(v string) *DescribePropertyScaDetailRequest
@@ -45,6 +47,8 @@ type iDescribePropertyScaDetailRequest interface {
 	GetSearchItem() *string
 	SetSearchItemSub(v string) *DescribePropertyScaDetailRequest
 	GetSearchItemSub() *string
+	SetUseNextToken(v bool) *DescribePropertyScaDetailRequest
+	GetUseNextToken() *bool
 	SetUser(v string) *DescribePropertyScaDetailRequest
 	GetUser() *string
 	SetUuid(v string) *DescribePropertyScaDetailRequest
@@ -109,7 +113,8 @@ type DescribePropertyScaDetailRequest struct {
 	// example:
 	//
 	// 1
-	Name *int64 `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name      *int64  `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The number of entries to return on each page. Default value: **10**.
 	//
 	// >  We recommend that you do not leave this parameter empty.
@@ -236,6 +241,7 @@ type DescribePropertyScaDetailRequest struct {
 	//
 	// version
 	SearchItemSub *string `json:"SearchItemSub,omitempty" xml:"SearchItemSub,omitempty"`
+	UseNextToken  *bool   `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
 	// The user who runs the process.
 	//
 	// example:
@@ -276,6 +282,10 @@ func (s *DescribePropertyScaDetailRequest) GetLang() *string {
 
 func (s *DescribePropertyScaDetailRequest) GetName() *int64 {
 	return s.Name
+}
+
+func (s *DescribePropertyScaDetailRequest) GetNextToken() *string {
+	return s.NextToken
 }
 
 func (s *DescribePropertyScaDetailRequest) GetPageSize() *int32 {
@@ -330,6 +340,10 @@ func (s *DescribePropertyScaDetailRequest) GetSearchItemSub() *string {
 	return s.SearchItemSub
 }
 
+func (s *DescribePropertyScaDetailRequest) GetUseNextToken() *bool {
+	return s.UseNextToken
+}
+
 func (s *DescribePropertyScaDetailRequest) GetUser() *string {
 	return s.User
 }
@@ -360,6 +374,11 @@ func (s *DescribePropertyScaDetailRequest) SetLang(v string) *DescribePropertySc
 
 func (s *DescribePropertyScaDetailRequest) SetName(v int64) *DescribePropertyScaDetailRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribePropertyScaDetailRequest) SetNextToken(v string) *DescribePropertyScaDetailRequest {
+	s.NextToken = &v
 	return s
 }
 
@@ -425,6 +444,11 @@ func (s *DescribePropertyScaDetailRequest) SetSearchItem(v string) *DescribeProp
 
 func (s *DescribePropertyScaDetailRequest) SetSearchItemSub(v string) *DescribePropertyScaDetailRequest {
 	s.SearchItemSub = &v
+	return s
+}
+
+func (s *DescribePropertyScaDetailRequest) SetUseNextToken(v bool) *DescribePropertyScaDetailRequest {
+	s.UseNextToken = &v
 	return s
 }
 

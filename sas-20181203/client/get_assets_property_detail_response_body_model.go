@@ -95,7 +95,8 @@ type GetAssetsPropertyDetailResponseBodyPageInfo struct {
 	// example:
 	//
 	// 1
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The number of entries returned per page.
 	//
 	// example:
@@ -126,6 +127,10 @@ func (s *GetAssetsPropertyDetailResponseBodyPageInfo) GetCurrentPage() *int32 {
 	return s.CurrentPage
 }
 
+func (s *GetAssetsPropertyDetailResponseBodyPageInfo) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *GetAssetsPropertyDetailResponseBodyPageInfo) GetPageSize() *int32 {
 	return s.PageSize
 }
@@ -141,6 +146,11 @@ func (s *GetAssetsPropertyDetailResponseBodyPageInfo) SetCount(v int32) *GetAsse
 
 func (s *GetAssetsPropertyDetailResponseBodyPageInfo) SetCurrentPage(v int32) *GetAssetsPropertyDetailResponseBodyPageInfo {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetAssetsPropertyDetailResponseBodyPageInfo) SetNextToken(v string) *GetAssetsPropertyDetailResponseBodyPageInfo {
+	s.NextToken = &v
 	return s
 }
 

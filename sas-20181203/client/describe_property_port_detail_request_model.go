@@ -15,6 +15,8 @@ type iDescribePropertyPortDetailRequest interface {
 	GetCurrentPage() *int32
 	SetExtend(v string) *DescribePropertyPortDetailRequest
 	GetExtend() *string
+	SetNextToken(v string) *DescribePropertyPortDetailRequest
+	GetNextToken() *string
 	SetPageSize(v int32) *DescribePropertyPortDetailRequest
 	GetPageSize() *int32
 	SetPort(v string) *DescribePropertyPortDetailRequest
@@ -25,6 +27,8 @@ type iDescribePropertyPortDetailRequest interface {
 	GetRemark() *string
 	SetResourceDirectoryAccountId(v int64) *DescribePropertyPortDetailRequest
 	GetResourceDirectoryAccountId() *int64
+	SetUseNextToken(v bool) *DescribePropertyPortDetailRequest
+	GetUseNextToken() *bool
 	SetUuid(v string) *DescribePropertyPortDetailRequest
 	GetUuid() *string
 }
@@ -47,7 +51,8 @@ type DescribePropertyPortDetailRequest struct {
 	// example:
 	//
 	// 1
-	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	Extend    *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The number of entries to return on each page. Default value: **10**.
 	//
 	// example:
@@ -80,6 +85,7 @@ type DescribePropertyPortDetailRequest struct {
 	//
 	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	UseNextToken               *bool  `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
 	// The UUID of the server.
 	//
 	// example:
@@ -108,6 +114,10 @@ func (s *DescribePropertyPortDetailRequest) GetExtend() *string {
 	return s.Extend
 }
 
+func (s *DescribePropertyPortDetailRequest) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *DescribePropertyPortDetailRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
@@ -128,6 +138,10 @@ func (s *DescribePropertyPortDetailRequest) GetResourceDirectoryAccountId() *int
 	return s.ResourceDirectoryAccountId
 }
 
+func (s *DescribePropertyPortDetailRequest) GetUseNextToken() *bool {
+	return s.UseNextToken
+}
+
 func (s *DescribePropertyPortDetailRequest) GetUuid() *string {
 	return s.Uuid
 }
@@ -144,6 +158,11 @@ func (s *DescribePropertyPortDetailRequest) SetCurrentPage(v int32) *DescribePro
 
 func (s *DescribePropertyPortDetailRequest) SetExtend(v string) *DescribePropertyPortDetailRequest {
 	s.Extend = &v
+	return s
+}
+
+func (s *DescribePropertyPortDetailRequest) SetNextToken(v string) *DescribePropertyPortDetailRequest {
+	s.NextToken = &v
 	return s
 }
 
@@ -169,6 +188,11 @@ func (s *DescribePropertyPortDetailRequest) SetRemark(v string) *DescribePropert
 
 func (s *DescribePropertyPortDetailRequest) SetResourceDirectoryAccountId(v int64) *DescribePropertyPortDetailRequest {
 	s.ResourceDirectoryAccountId = &v
+	return s
+}
+
+func (s *DescribePropertyPortDetailRequest) SetUseNextToken(v bool) *DescribePropertyPortDetailRequest {
+	s.UseNextToken = &v
 	return s
 }
 

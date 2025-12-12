@@ -17,12 +17,16 @@ type iGetAssetsPropertyDetailRequest interface {
 	GetItemName() *string
 	SetLang(v string) *GetAssetsPropertyDetailRequest
 	GetLang() *string
+	SetNextToken(v string) *GetAssetsPropertyDetailRequest
+	GetNextToken() *string
 	SetPageSize(v int32) *GetAssetsPropertyDetailRequest
 	GetPageSize() *int32
 	SetRemark(v string) *GetAssetsPropertyDetailRequest
 	GetRemark() *string
 	SetSearchCriteriaList(v []*GetAssetsPropertyDetailRequestSearchCriteriaList) *GetAssetsPropertyDetailRequest
 	GetSearchCriteriaList() []*GetAssetsPropertyDetailRequestSearchCriteriaList
+	SetUseNextToken(v bool) *GetAssetsPropertyDetailRequest
+	GetUseNextToken() *bool
 	SetUuid(v string) *GetAssetsPropertyDetailRequest
 	GetUuid() *string
 }
@@ -65,7 +69,8 @@ type GetAssetsPropertyDetailRequest struct {
 	// example:
 	//
 	// en
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
 	//
 	// > We recommend that you do not leave this parameter empty.
@@ -82,6 +87,7 @@ type GetAssetsPropertyDetailRequest struct {
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The conditions that are used to query the details about the asset fingerprint.
 	SearchCriteriaList []*GetAssetsPropertyDetailRequestSearchCriteriaList `json:"SearchCriteriaList,omitempty" xml:"SearchCriteriaList,omitempty" type:"Repeated"`
+	UseNextToken       *bool                                               `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
 	// The UUID of the server.
 	//
 	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
@@ -116,6 +122,10 @@ func (s *GetAssetsPropertyDetailRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *GetAssetsPropertyDetailRequest) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *GetAssetsPropertyDetailRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
@@ -126,6 +136,10 @@ func (s *GetAssetsPropertyDetailRequest) GetRemark() *string {
 
 func (s *GetAssetsPropertyDetailRequest) GetSearchCriteriaList() []*GetAssetsPropertyDetailRequestSearchCriteriaList {
 	return s.SearchCriteriaList
+}
+
+func (s *GetAssetsPropertyDetailRequest) GetUseNextToken() *bool {
+	return s.UseNextToken
 }
 
 func (s *GetAssetsPropertyDetailRequest) GetUuid() *string {
@@ -152,6 +166,11 @@ func (s *GetAssetsPropertyDetailRequest) SetLang(v string) *GetAssetsPropertyDet
 	return s
 }
 
+func (s *GetAssetsPropertyDetailRequest) SetNextToken(v string) *GetAssetsPropertyDetailRequest {
+	s.NextToken = &v
+	return s
+}
+
 func (s *GetAssetsPropertyDetailRequest) SetPageSize(v int32) *GetAssetsPropertyDetailRequest {
 	s.PageSize = &v
 	return s
@@ -164,6 +183,11 @@ func (s *GetAssetsPropertyDetailRequest) SetRemark(v string) *GetAssetsPropertyD
 
 func (s *GetAssetsPropertyDetailRequest) SetSearchCriteriaList(v []*GetAssetsPropertyDetailRequestSearchCriteriaList) *GetAssetsPropertyDetailRequest {
 	s.SearchCriteriaList = v
+	return s
+}
+
+func (s *GetAssetsPropertyDetailRequest) SetUseNextToken(v bool) *GetAssetsPropertyDetailRequest {
+	s.UseNextToken = &v
 	return s
 }
 

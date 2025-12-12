@@ -19,10 +19,14 @@ type iDescribePropertyUserDetailRequest interface {
 	GetLastLoginTimeEnd() *int64
 	SetLastLoginTimeStart(v int64) *DescribePropertyUserDetailRequest
 	GetLastLoginTimeStart() *int64
+	SetNextToken(v string) *DescribePropertyUserDetailRequest
+	GetNextToken() *string
 	SetPageSize(v int32) *DescribePropertyUserDetailRequest
 	GetPageSize() *int32
 	SetRemark(v string) *DescribePropertyUserDetailRequest
 	GetRemark() *string
+	SetUseNextToken(v bool) *DescribePropertyUserDetailRequest
+	GetUseNextToken() *bool
 	SetUser(v string) *DescribePropertyUserDetailRequest
 	GetUser() *string
 	SetUuid(v string) *DescribePropertyUserDetailRequest
@@ -63,7 +67,8 @@ type DescribePropertyUserDetailRequest struct {
 	// example:
 	//
 	// 164922523600
-	LastLoginTimeStart *int64 `json:"LastLoginTimeStart,omitempty" xml:"LastLoginTimeStart,omitempty"`
+	LastLoginTimeStart *int64  `json:"LastLoginTimeStart,omitempty" xml:"LastLoginTimeStart,omitempty"`
+	NextToken          *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The number of entries to return on each page. Default value: **10**.
 	//
 	// example:
@@ -75,7 +80,8 @@ type DescribePropertyUserDetailRequest struct {
 	// example:
 	//
 	// 192.168.XX.XX
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	UseNextToken *bool   `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
 	// The name of the account to which the server belongs.
 	//
 	// example:
@@ -118,12 +124,20 @@ func (s *DescribePropertyUserDetailRequest) GetLastLoginTimeStart() *int64 {
 	return s.LastLoginTimeStart
 }
 
+func (s *DescribePropertyUserDetailRequest) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *DescribePropertyUserDetailRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
 func (s *DescribePropertyUserDetailRequest) GetRemark() *string {
 	return s.Remark
+}
+
+func (s *DescribePropertyUserDetailRequest) GetUseNextToken() *bool {
+	return s.UseNextToken
 }
 
 func (s *DescribePropertyUserDetailRequest) GetUser() *string {
@@ -159,6 +173,11 @@ func (s *DescribePropertyUserDetailRequest) SetLastLoginTimeStart(v int64) *Desc
 	return s
 }
 
+func (s *DescribePropertyUserDetailRequest) SetNextToken(v string) *DescribePropertyUserDetailRequest {
+	s.NextToken = &v
+	return s
+}
+
 func (s *DescribePropertyUserDetailRequest) SetPageSize(v int32) *DescribePropertyUserDetailRequest {
 	s.PageSize = &v
 	return s
@@ -166,6 +185,11 @@ func (s *DescribePropertyUserDetailRequest) SetPageSize(v int32) *DescribeProper
 
 func (s *DescribePropertyUserDetailRequest) SetRemark(v string) *DescribePropertyUserDetailRequest {
 	s.Remark = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailRequest) SetUseNextToken(v bool) *DescribePropertyUserDetailRequest {
+	s.UseNextToken = &v
 	return s
 }
 

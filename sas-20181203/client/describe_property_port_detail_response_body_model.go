@@ -95,7 +95,8 @@ type DescribePropertyPortDetailResponseBodyPageInfo struct {
 	// example:
 	//
 	// 1
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The number of entries returned per page. Default value: **10**.
 	//
 	// example:
@@ -126,6 +127,10 @@ func (s *DescribePropertyPortDetailResponseBodyPageInfo) GetCurrentPage() *int32
 	return s.CurrentPage
 }
 
+func (s *DescribePropertyPortDetailResponseBodyPageInfo) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *DescribePropertyPortDetailResponseBodyPageInfo) GetPageSize() *int32 {
 	return s.PageSize
 }
@@ -141,6 +146,11 @@ func (s *DescribePropertyPortDetailResponseBodyPageInfo) SetCount(v int32) *Desc
 
 func (s *DescribePropertyPortDetailResponseBodyPageInfo) SetCurrentPage(v int32) *DescribePropertyPortDetailResponseBodyPageInfo {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribePropertyPortDetailResponseBodyPageInfo) SetNextToken(v string) *DescribePropertyPortDetailResponseBodyPageInfo {
+	s.NextToken = &v
 	return s
 }
 

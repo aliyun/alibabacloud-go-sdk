@@ -37,8 +37,15 @@ type ModifyEmgVulSubmitRequest struct {
 	// example:
 	//
 	// scan:ASCV-2019-032401
-	Name                       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Alibaba Cloud account ID of the member in the resource directory.
+	//
+	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	//
+	// example:
+	//
+	// 1232428423234****
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// Specifies whether to scan for urgent vulnerabilities. Valid values:
 	//
 	// 	- **yes**

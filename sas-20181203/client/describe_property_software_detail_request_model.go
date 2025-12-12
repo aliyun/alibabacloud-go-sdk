@@ -19,6 +19,8 @@ type iDescribePropertySoftwareDetailRequest interface {
 	GetInstallTimeStart() *int64
 	SetName(v string) *DescribePropertySoftwareDetailRequest
 	GetName() *string
+	SetNextToken(v string) *DescribePropertySoftwareDetailRequest
+	GetNextToken() *string
 	SetPageSize(v int32) *DescribePropertySoftwareDetailRequest
 	GetPageSize() *int32
 	SetPath(v string) *DescribePropertySoftwareDetailRequest
@@ -27,6 +29,8 @@ type iDescribePropertySoftwareDetailRequest interface {
 	GetRemark() *string
 	SetSoftwareVersion(v string) *DescribePropertySoftwareDetailRequest
 	GetSoftwareVersion() *string
+	SetUseNextToken(v bool) *DescribePropertySoftwareDetailRequest
+	GetUseNextToken() *bool
 	SetUuid(v string) *DescribePropertySoftwareDetailRequest
 	GetUuid() *string
 }
@@ -61,7 +65,8 @@ type DescribePropertySoftwareDetailRequest struct {
 	// example:
 	//
 	// kernel
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The number of entries per page. Default value: **10**.
 	//
 	// example:
@@ -86,6 +91,7 @@ type DescribePropertySoftwareDetailRequest struct {
 	//
 	// 3.10.0
 	SoftwareVersion *string `json:"SoftwareVersion,omitempty" xml:"SoftwareVersion,omitempty"`
+	UseNextToken    *bool   `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
 	// The UUID of the server.
 	//
 	// example:
@@ -122,6 +128,10 @@ func (s *DescribePropertySoftwareDetailRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *DescribePropertySoftwareDetailRequest) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *DescribePropertySoftwareDetailRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
@@ -136,6 +146,10 @@ func (s *DescribePropertySoftwareDetailRequest) GetRemark() *string {
 
 func (s *DescribePropertySoftwareDetailRequest) GetSoftwareVersion() *string {
 	return s.SoftwareVersion
+}
+
+func (s *DescribePropertySoftwareDetailRequest) GetUseNextToken() *bool {
+	return s.UseNextToken
 }
 
 func (s *DescribePropertySoftwareDetailRequest) GetUuid() *string {
@@ -167,6 +181,11 @@ func (s *DescribePropertySoftwareDetailRequest) SetName(v string) *DescribePrope
 	return s
 }
 
+func (s *DescribePropertySoftwareDetailRequest) SetNextToken(v string) *DescribePropertySoftwareDetailRequest {
+	s.NextToken = &v
+	return s
+}
+
 func (s *DescribePropertySoftwareDetailRequest) SetPageSize(v int32) *DescribePropertySoftwareDetailRequest {
 	s.PageSize = &v
 	return s
@@ -184,6 +203,11 @@ func (s *DescribePropertySoftwareDetailRequest) SetRemark(v string) *DescribePro
 
 func (s *DescribePropertySoftwareDetailRequest) SetSoftwareVersion(v string) *DescribePropertySoftwareDetailRequest {
 	s.SoftwareVersion = &v
+	return s
+}
+
+func (s *DescribePropertySoftwareDetailRequest) SetUseNextToken(v bool) *DescribePropertySoftwareDetailRequest {
+	s.UseNextToken = &v
 	return s
 }
 
