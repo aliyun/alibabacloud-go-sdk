@@ -104,6 +104,76 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 白名单模板关联实例
+//
+// @param request - AttachWhitelistTemplateToInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachWhitelistTemplateToInstanceResponse
+func (client *Client) AttachWhitelistTemplateToInstanceWithOptions(request *AttachWhitelistTemplateToInstanceRequest, runtime *dara.RuntimeOptions) (_result *AttachWhitelistTemplateToInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AttachWhitelistTemplateToInstance"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AttachWhitelistTemplateToInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 白名单模板关联实例
+//
+// @param request - AttachWhitelistTemplateToInstanceRequest
+//
+// @return AttachWhitelistTemplateToInstanceResponse
+func (client *Client) AttachWhitelistTemplateToInstance(request *AttachWhitelistTemplateToInstanceRequest) (_result *AttachWhitelistTemplateToInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AttachWhitelistTemplateToInstanceResponse{}
+	_body, _err := client.AttachWhitelistTemplateToInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 资源转组
 //
 // @param request - ChangeResourceGroupRequest
@@ -1001,6 +1071,76 @@ func (client *Client) DeleteEndpoint(request *DeleteEndpointRequest) (_result *D
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteEndpointResponse{}
 	_body, _err := client.DeleteEndpointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除白名单模板
+//
+// @param request - DeleteWhitelistTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWhitelistTemplateResponse
+func (client *Client) DeleteWhitelistTemplateWithOptions(request *DeleteWhitelistTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteWhitelistTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWhitelistTemplate"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWhitelistTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除白名单模板
+//
+// @param request - DeleteWhitelistTemplateRequest
+//
+// @return DeleteWhitelistTemplateResponse
+func (client *Client) DeleteWhitelistTemplate(request *DeleteWhitelistTemplateRequest) (_result *DeleteWhitelistTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteWhitelistTemplateResponse{}
+	_body, _err := client.DeleteWhitelistTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2058,6 +2198,142 @@ func (client *Client) DescribeSlowLogTrend(request *DescribeSlowLogTrendRequest)
 
 // Summary:
 //
+// 取消白名单模板和实例关联关系
+//
+// @param request - DetachWhitelistTemplateToInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachWhitelistTemplateToInstanceResponse
+func (client *Client) DetachWhitelistTemplateToInstanceWithOptions(request *DetachWhitelistTemplateToInstanceRequest, runtime *dara.RuntimeOptions) (_result *DetachWhitelistTemplateToInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DetachWhitelistTemplateToInstance"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DetachWhitelistTemplateToInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消白名单模板和实例关联关系
+//
+// @param request - DetachWhitelistTemplateToInstanceRequest
+//
+// @return DetachWhitelistTemplateToInstanceResponse
+func (client *Client) DetachWhitelistTemplateToInstance(request *DetachWhitelistTemplateToInstanceRequest) (_result *DetachWhitelistTemplateToInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DetachWhitelistTemplateToInstanceResponse{}
+	_body, _err := client.DetachWhitelistTemplateToInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询白名单模板详情
+//
+// @param request - GetWhitelistTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWhitelistTemplateResponse
+func (client *Client) GetWhitelistTemplateWithOptions(request *GetWhitelistTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetWhitelistTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWhitelistTemplate"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWhitelistTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询白名单模板详情
+//
+// @param request - GetWhitelistTemplateRequest
+//
+// @return GetWhitelistTemplateResponse
+func (client *Client) GetWhitelistTemplate(request *GetWhitelistTemplateRequest) (_result *GetWhitelistTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetWhitelistTemplateResponse{}
+	_body, _err := client.GetWhitelistTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Terminates an ongoing query.
 //
 // @param request - KillProcessRequest
@@ -2123,6 +2399,146 @@ func (client *Client) KillProcess(request *KillProcessRequest) (_result *KillPro
 	runtime := &dara.RuntimeOptions{}
 	_result = &KillProcessResponse{}
 	_body, _err := client.KillProcessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例关联的白名单模板清单
+//
+// @param request - ListInstanceLinkedWhitelistTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceLinkedWhitelistTemplatesResponse
+func (client *Client) ListInstanceLinkedWhitelistTemplatesWithOptions(request *ListInstanceLinkedWhitelistTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceLinkedWhitelistTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstanceLinkedWhitelistTemplates"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstanceLinkedWhitelistTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例关联的白名单模板清单
+//
+// @param request - ListInstanceLinkedWhitelistTemplatesRequest
+//
+// @return ListInstanceLinkedWhitelistTemplatesResponse
+func (client *Client) ListInstanceLinkedWhitelistTemplates(request *ListInstanceLinkedWhitelistTemplatesRequest) (_result *ListInstanceLinkedWhitelistTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListInstanceLinkedWhitelistTemplatesResponse{}
+	_body, _err := client.ListInstanceLinkedWhitelistTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询白名单模板清单
+//
+// @param request - ListWhitelistTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWhitelistTemplatesResponse
+func (client *Client) ListWhitelistTemplatesWithOptions(request *ListWhitelistTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListWhitelistTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWhitelistTemplates"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWhitelistTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询白名单模板清单
+//
+// @param request - ListWhitelistTemplatesRequest
+//
+// @return ListWhitelistTemplatesResponse
+func (client *Client) ListWhitelistTemplates(request *ListWhitelistTemplatesRequest) (_result *ListWhitelistTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListWhitelistTemplatesResponse{}
+	_body, _err := client.ListWhitelistTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3041,6 +3457,80 @@ func (client *Client) StopDBInstance(request *StopDBInstanceRequest) (_result *S
 	runtime := &dara.RuntimeOptions{}
 	_result = &StopDBInstanceResponse{}
 	_body, _err := client.StopDBInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新白名单模板
+//
+// @param request - UpdateWhitelistTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWhitelistTemplateResponse
+func (client *Client) UpdateWhitelistTemplateWithOptions(request *UpdateWhitelistTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateWhitelistTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityIPList) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateWhitelistTemplate"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateWhitelistTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新白名单模板
+//
+// @param request - UpdateWhitelistTemplateRequest
+//
+// @return UpdateWhitelistTemplateResponse
+func (client *Client) UpdateWhitelistTemplate(request *UpdateWhitelistTemplateRequest) (_result *UpdateWhitelistTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateWhitelistTemplateResponse{}
+	_body, _err := client.UpdateWhitelistTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
