@@ -186,6 +186,268 @@ func (client *Client) AllocateClusterPublicConnection(request *AllocateClusterPu
 
 // Summary:
 //
+// 取消运维事件任务
+//
+// @param request - CancelActiveOperationTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelActiveOperationTasksResponse
+func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiveOperationTasksRequest, runtime *dara.RuntimeOptions) (_result *CancelActiveOperationTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Ids) {
+		query["Ids"] = request.Ids
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelActiveOperationTasks"),
+		Version:     dara.String("2019-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelActiveOperationTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消运维事件任务
+//
+// @param request - CancelActiveOperationTasksRequest
+//
+// @return CancelActiveOperationTasksResponse
+func (client *Client) CancelActiveOperationTasks(request *CancelActiveOperationTasksRequest) (_result *CancelActiveOperationTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CancelActiveOperationTasksResponse{}
+	_body, _err := client.CancelActiveOperationTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消预约Zookeeper切主
+//
+// @param request - CancelAppointmentElectZookeeperLeaderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelAppointmentElectZookeeperLeaderResponse
+func (client *Client) CancelAppointmentElectZookeeperLeaderWithOptions(request *CancelAppointmentElectZookeeperLeaderRequest, runtime *dara.RuntimeOptions) (_result *CancelAppointmentElectZookeeperLeaderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelAppointmentElectZookeeperLeader"),
+		Version:     dara.String("2019-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelAppointmentElectZookeeperLeaderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消预约Zookeeper切主
+//
+// @param request - CancelAppointmentElectZookeeperLeaderRequest
+//
+// @return CancelAppointmentElectZookeeperLeaderResponse
+func (client *Client) CancelAppointmentElectZookeeperLeader(request *CancelAppointmentElectZookeeperLeaderRequest) (_result *CancelAppointmentElectZookeeperLeaderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CancelAppointmentElectZookeeperLeaderResponse{}
+	_body, _err := client.CancelAppointmentElectZookeeperLeaderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消预约重启节点列表
+//
+// @param request - CancelAppointmentRestartInstanceNodeListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelAppointmentRestartInstanceNodeListResponse
+func (client *Client) CancelAppointmentRestartInstanceNodeListWithOptions(request *CancelAppointmentRestartInstanceNodeListRequest, runtime *dara.RuntimeOptions) (_result *CancelAppointmentRestartInstanceNodeListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelAppointmentRestartInstanceNodeList"),
+		Version:     dara.String("2019-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelAppointmentRestartInstanceNodeListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消预约重启节点列表
+//
+// @param request - CancelAppointmentRestartInstanceNodeListRequest
+//
+// @return CancelAppointmentRestartInstanceNodeListResponse
+func (client *Client) CancelAppointmentRestartInstanceNodeList(request *CancelAppointmentRestartInstanceNodeListRequest) (_result *CancelAppointmentRestartInstanceNodeListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CancelAppointmentRestartInstanceNodeListResponse{}
+	_body, _err := client.CancelAppointmentRestartInstanceNodeListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 取消预约重启
 //
 // @param request - CancelRestartInstanceRequest
@@ -2528,6 +2790,198 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 
 // Summary:
 //
+// 主动运维
+//
+// @param request - DescribeActiveOperationMaintainConfRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeActiveOperationMaintainConfResponse
+func (client *Client) DescribeActiveOperationMaintainConfWithOptions(request *DescribeActiveOperationMaintainConfRequest, runtime *dara.RuntimeOptions) (_result *DescribeActiveOperationMaintainConfResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeActiveOperationMaintainConf"),
+		Version:     dara.String("2019-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeActiveOperationMaintainConfResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 主动运维
+//
+// @param request - DescribeActiveOperationMaintainConfRequest
+//
+// @return DescribeActiveOperationMaintainConfResponse
+func (client *Client) DescribeActiveOperationMaintainConf(request *DescribeActiveOperationMaintainConfRequest) (_result *DescribeActiveOperationMaintainConfResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeActiveOperationMaintainConfResponse{}
+	_body, _err := client.DescribeActiveOperationMaintainConfWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeActiveOperationTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeActiveOperationTasksResponse
+func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeActiveOperationTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeActiveOperationTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AllowCancel) {
+		query["AllowCancel"] = request.AllowCancel
+	}
+
+	if !dara.IsNil(request.AllowChange) {
+		query["AllowChange"] = request.AllowChange
+	}
+
+	if !dara.IsNil(request.ChangeLevel) {
+		query["ChangeLevel"] = request.ChangeLevel
+	}
+
+	if !dara.IsNil(request.DbType) {
+		query["DbType"] = request.DbType
+	}
+
+	if !dara.IsNil(request.InsName) {
+		query["InsName"] = request.InsName
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductId) {
+		query["ProductId"] = request.ProductId
+	}
+
+	if !dara.IsNil(request.Region) {
+		query["Region"] = request.Region
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeActiveOperationTasks"),
+		Version:     dara.String("2019-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeActiveOperationTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeActiveOperationTasksRequest
+//
+// @return DescribeActiveOperationTasksResponse
+func (client *Client) DescribeActiveOperationTasks(request *DescribeActiveOperationTasksRequest) (_result *DescribeActiveOperationTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeActiveOperationTasksResponse{}
+	_body, _err := client.DescribeActiveOperationTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of databases, tables, and columns in an ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeAllDataSourceRequest
@@ -3582,6 +4036,96 @@ func (client *Client) DescribeDBClusterNetInfoItems(request *DescribeDBClusterNe
 
 // Summary:
 //
+// 获取实例节点信息
+//
+// @param request - DescribeDBClusterNodeInfosRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterNodeInfosResponse
+func (client *Client) DescribeDBClusterNodeInfosWithOptions(request *DescribeDBClusterNodeInfosRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBClusterNodeInfosResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDBClusterNodeInfos"),
+		Version:     dara.String("2019-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDBClusterNodeInfosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例节点信息
+//
+// @param request - DescribeDBClusterNodeInfosRequest
+//
+// @return DescribeDBClusterNodeInfosResponse
+func (client *Client) DescribeDBClusterNodeInfos(request *DescribeDBClusterNodeInfosRequest) (_result *DescribeDBClusterNodeInfosResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDBClusterNodeInfosResponse{}
+	_body, _err := client.DescribeDBClusterNodeInfosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries performance data about an ApsaraDB for ClickHouse cluster.
 //
 // Description:
@@ -3675,6 +4219,76 @@ func (client *Client) DescribeDBClusterPerformance(request *DescribeDBClusterPer
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeDBClusterPerformanceResponse{}
 	_body, _err := client.DescribeDBClusterPerformanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeDBClusterStatusSetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterStatusSetResponse
+func (client *Client) DescribeDBClusterStatusSetWithOptions(request *DescribeDBClusterStatusSetRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBClusterStatusSetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDBClusterStatusSet"),
+		Version:     dara.String("2019-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDBClusterStatusSetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeDBClusterStatusSetRequest
+//
+// @return DescribeDBClusterStatusSetResponse
+func (client *Client) DescribeDBClusterStatusSet(request *DescribeDBClusterStatusSetRequest) (_result *DescribeDBClusterStatusSetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDBClusterStatusSetResponse{}
+	_body, _err := client.DescribeDBClusterStatusSetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3863,6 +4477,76 @@ func (client *Client) DescribeDBConfig(request *DescribeDBConfigRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeDBConfigResponse{}
 	_body, _err := client.DescribeDBConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # DescribeEventMetaInfo
+//
+// @param request - DescribeEventMetaInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEventMetaInfoResponse
+func (client *Client) DescribeEventMetaInfoWithOptions(request *DescribeEventMetaInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeEventMetaInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.SourceCode) {
+		query["SourceCode"] = request.SourceCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeEventMetaInfo"),
+		Version:     dara.String("2019-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeEventMetaInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DescribeEventMetaInfo
+//
+// @param request - DescribeEventMetaInfoRequest
+//
+// @return DescribeEventMetaInfoResponse
+func (client *Client) DescribeEventMetaInfo(request *DescribeEventMetaInfoRequest) (_result *DescribeEventMetaInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeEventMetaInfoResponse{}
+	_body, _err := client.DescribeEventMetaInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4738,6 +5422,166 @@ func (client *Client) DescribeTransferHistory(request *DescribeTransferHistoryRe
 	return _result, _err
 }
 
+// @param request - DescribeUserEncryptionKeyListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserEncryptionKeyListResponse
+func (client *Client) DescribeUserEncryptionKeyListWithOptions(request *DescribeUserEncryptionKeyListRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserEncryptionKeyListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeUserEncryptionKeyList"),
+		Version:     dara.String("2019-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeUserEncryptionKeyListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeUserEncryptionKeyListRequest
+//
+// @return DescribeUserEncryptionKeyListResponse
+func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncryptionKeyListRequest) (_result *DescribeUserEncryptionKeyListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeUserEncryptionKeyListResponse{}
+	_body, _err := client.DescribeUserEncryptionKeyListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Zookeeper主动切主
+//
+// @param request - ElectZookeeperLeaderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ElectZookeeperLeaderResponse
+func (client *Client) ElectZookeeperLeaderWithOptions(request *ElectZookeeperLeaderRequest, runtime *dara.RuntimeOptions) (_result *ElectZookeeperLeaderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DisableWrite) {
+		query["DisableWrite"] = request.DisableWrite
+	}
+
+	if !dara.IsNil(request.ElectTime) {
+		query["ElectTime"] = request.ElectTime
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ElectZookeeperLeader"),
+		Version:     dara.String("2019-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ElectZookeeperLeaderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Zookeeper主动切主
+//
+// @param request - ElectZookeeperLeaderRequest
+//
+// @return ElectZookeeperLeaderResponse
+func (client *Client) ElectZookeeperLeader(request *ElectZookeeperLeaderRequest) (_result *ElectZookeeperLeaderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ElectZookeeperLeaderResponse{}
+	_body, _err := client.ElectZookeeperLeaderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Terminates an ongoing task.
@@ -4817,6 +5661,100 @@ func (client *Client) KillProcess(request *KillProcessRequest) (_result *KillPro
 	runtime := &dara.RuntimeOptions{}
 	_result = &KillProcessResponse{}
 	_body, _err := client.KillProcessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the tags that are added to ApsaraDB for ClickHouse clusters.
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTagResources"),
+		Version:     dara.String("2019-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the tags that are added to ApsaraDB for ClickHouse clusters.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5013,6 +5951,186 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyAccountDescriptionResponse{}
 	_body, _err := client.ModifyAccountDescriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改主动运维设置
+//
+// @param request - ModifyActiveOperationMaintainConfRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyActiveOperationMaintainConfResponse
+func (client *Client) ModifyActiveOperationMaintainConfWithOptions(request *ModifyActiveOperationMaintainConfRequest, runtime *dara.RuntimeOptions) (_result *ModifyActiveOperationMaintainConfResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CycleTime) {
+		query["CycleTime"] = request.CycleTime
+	}
+
+	if !dara.IsNil(request.CycleType) {
+		query["CycleType"] = request.CycleType
+	}
+
+	if !dara.IsNil(request.MaintainEndTime) {
+		query["MaintainEndTime"] = request.MaintainEndTime
+	}
+
+	if !dara.IsNil(request.MaintainStartTime) {
+		query["MaintainStartTime"] = request.MaintainStartTime
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyActiveOperationMaintainConf"),
+		Version:     dara.String("2019-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyActiveOperationMaintainConfResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改主动运维设置
+//
+// @param request - ModifyActiveOperationMaintainConfRequest
+//
+// @return ModifyActiveOperationMaintainConfResponse
+func (client *Client) ModifyActiveOperationMaintainConf(request *ModifyActiveOperationMaintainConfRequest) (_result *ModifyActiveOperationMaintainConfResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyActiveOperationMaintainConfResponse{}
+	_body, _err := client.ModifyActiveOperationMaintainConfWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ModifyActiveOperationTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyActiveOperationTasksResponse
+func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiveOperationTasksRequest, runtime *dara.RuntimeOptions) (_result *ModifyActiveOperationTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Ids) {
+		query["Ids"] = request.Ids
+	}
+
+	if !dara.IsNil(request.ImmediateStart) {
+		query["ImmediateStart"] = request.ImmediateStart
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.SwitchTime) {
+		query["SwitchTime"] = request.SwitchTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyActiveOperationTasks"),
+		Version:     dara.String("2019-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyActiveOperationTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ModifyActiveOperationTasksRequest
+//
+// @return ModifyActiveOperationTasksResponse
+func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationTasksRequest) (_result *ModifyActiveOperationTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyActiveOperationTasksResponse{}
+	_body, _err := client.ModifyActiveOperationTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6298,6 +7416,200 @@ func (client *Client) RestartInstance(request *RestartInstanceRequest) (_result 
 
 // Summary:
 //
+// 批量重启实例节点
+//
+// @param tmpReq - RestartInstanceNodeListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartInstanceNodeListResponse
+func (client *Client) RestartInstanceNodeListWithOptions(tmpReq *RestartInstanceNodeListRequest, runtime *dara.RuntimeOptions) (_result *RestartInstanceNodeListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &RestartInstanceNodeListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.NodeList) {
+		request.NodeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodeList, dara.String("NodeList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.NodeListShrink) {
+		query["NodeList"] = request.NodeListShrink
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.RestartTime) {
+		query["RestartTime"] = request.RestartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RestartInstanceNodeList"),
+		Version:     dara.String("2019-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RestartInstanceNodeListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量重启实例节点
+//
+// @param request - RestartInstanceNodeListRequest
+//
+// @return RestartInstanceNodeListResponse
+func (client *Client) RestartInstanceNodeList(request *RestartInstanceNodeListRequest) (_result *RestartInstanceNodeListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RestartInstanceNodeListResponse{}
+	_body, _err := client.RestartInstanceNodeListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates tags for ApsaraDB for ClickHouse clusters and adds the tags to the ApsaraDB for ClickHouse clusters.
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TagResources"),
+		Version:     dara.String("2019-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates tags for ApsaraDB for ClickHouse clusters and adds the tags to the ApsaraDB for ClickHouse clusters.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Migrates the data of a source ApsaraDB for ClickHouse cluster to a destination ApsaraDB for ClickHouse cluster.
 //
 // Description:
@@ -6431,6 +7743,100 @@ func (client *Client) TransferVersion(request *TransferVersionRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &TransferVersionResponse{}
 	_body, _err := client.TransferVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes tags from ApsaraDB for ClickHouse clusters.
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.All) {
+		query["All"] = request.All
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TagKey) {
+		query["TagKey"] = request.TagKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UntagResources"),
+		Version:     dara.String("2019-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes tags from ApsaraDB for ClickHouse clusters.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
