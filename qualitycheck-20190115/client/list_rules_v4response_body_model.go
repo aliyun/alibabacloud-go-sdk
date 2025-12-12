@@ -209,5 +209,14 @@ func (s *ListRulesV4ResponseBody) SetTotalCount(v int32) *ListRulesV4ResponseBod
 }
 
 func (s *ListRulesV4ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

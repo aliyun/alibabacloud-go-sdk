@@ -83,7 +83,12 @@ func (s *GetWarningStrategyConfigResponseBody) SetSuccess(v bool) *GetWarningStr
 }
 
 func (s *GetWarningStrategyConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWarningStrategyConfigResponseBodyData struct {
@@ -168,7 +173,12 @@ func (s *GetWarningStrategyConfigResponseBodyData) SetWarningStrategyList(v *Get
 }
 
 func (s *GetWarningStrategyConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.WarningStrategyList != nil {
+		if err := s.WarningStrategyList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWarningStrategyConfigResponseBodyDataWarningStrategyList struct {
@@ -193,7 +203,16 @@ func (s *GetWarningStrategyConfigResponseBodyDataWarningStrategyList) SetWarning
 }
 
 func (s *GetWarningStrategyConfigResponseBodyDataWarningStrategyList) Validate() error {
-	return dara.Validate(s)
+	if s.WarningStrategyList != nil {
+		for _, item := range s.WarningStrategyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetWarningStrategyConfigResponseBodyDataWarningStrategyListWarningStrategyList struct {
@@ -308,7 +327,12 @@ func (s *GetWarningStrategyConfigResponseBodyDataWarningStrategyListWarningStrat
 }
 
 func (s *GetWarningStrategyConfigResponseBodyDataWarningStrategyListWarningStrategyList) Validate() error {
-	return dara.Validate(s)
+	if s.Range != nil {
+		if err := s.Range.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWarningStrategyConfigResponseBodyDataWarningStrategyListWarningStrategyListRange struct {

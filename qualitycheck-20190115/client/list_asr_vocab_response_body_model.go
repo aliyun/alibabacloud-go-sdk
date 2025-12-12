@@ -95,7 +95,12 @@ func (s *ListAsrVocabResponseBody) SetSuccess(v bool) *ListAsrVocabResponseBody 
 }
 
 func (s *ListAsrVocabResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAsrVocabResponseBodyData struct {
@@ -120,7 +125,16 @@ func (s *ListAsrVocabResponseBodyData) SetAsrVocab(v []*ListAsrVocabResponseBody
 }
 
 func (s *ListAsrVocabResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AsrVocab != nil {
+		for _, item := range s.AsrVocab {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAsrVocabResponseBodyDataAsrVocab struct {

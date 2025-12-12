@@ -47,7 +47,16 @@ func (s *NextNodeSituations) SetType(v string) *NextNodeSituations {
 }
 
 func (s *NextNodeSituations) Validate() error {
-	return dara.Validate(s)
+	if s.ConditionGroup != nil {
+		for _, item := range s.ConditionGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type NextNodeSituationsConditionGroup struct {
@@ -82,5 +91,14 @@ func (s *NextNodeSituationsConditionGroup) SetType(v string) *NextNodeSituations
 }
 
 func (s *NextNodeSituationsConditionGroup) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

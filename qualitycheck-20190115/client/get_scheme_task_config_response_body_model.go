@@ -110,7 +110,12 @@ func (s *GetSchemeTaskConfigResponseBody) SetSuccess(v string) *GetSchemeTaskCon
 }
 
 func (s *GetSchemeTaskConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSchemeTaskConfigResponseBodyData struct {
@@ -270,7 +275,21 @@ func (s *GetSchemeTaskConfigResponseBodyData) SetStatus(v string) *GetSchemeTask
 }
 
 func (s *GetSchemeTaskConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DataConfig != nil {
+		if err := s.DataConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SchemeList != nil {
+		for _, item := range s.SchemeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSchemeTaskConfigResponseBodyDataDataConfig struct {
@@ -334,7 +353,16 @@ func (s *GetSchemeTaskConfigResponseBodyDataDataConfig) SetResultParam(v string)
 }
 
 func (s *GetSchemeTaskConfigResponseBodyDataDataConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AssignConfigs != nil {
+		for _, item := range s.AssignConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigs struct {
@@ -359,7 +387,16 @@ func (s *GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigs) SetAssignCo
 }
 
 func (s *GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.AssignConfigContests != nil {
+		for _, item := range s.AssignConfigContests {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests struct {

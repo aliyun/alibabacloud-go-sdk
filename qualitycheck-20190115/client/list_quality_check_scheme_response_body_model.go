@@ -155,7 +155,16 @@ func (s *ListQualityCheckSchemeResponseBody) SetSuccess(v bool) *ListQualityChec
 }
 
 func (s *ListQualityCheckSchemeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQualityCheckSchemeResponseBodyData struct {
@@ -337,7 +346,25 @@ func (s *ListQualityCheckSchemeResponseBodyData) SetVersion(v int64) *ListQualit
 }
 
 func (s *ListQualityCheckSchemeResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RuleList != nil {
+		for _, item := range s.RuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SchemeCheckTypeList != nil {
+		for _, item := range s.SchemeCheckTypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQualityCheckSchemeResponseBodyDataRuleList struct {
@@ -362,7 +389,16 @@ func (s *ListQualityCheckSchemeResponseBodyDataRuleList) SetRules(v []*ListQuali
 }
 
 func (s *ListQualityCheckSchemeResponseBodyDataRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQualityCheckSchemeResponseBodyDataRuleListRules struct {

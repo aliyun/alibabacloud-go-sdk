@@ -95,7 +95,12 @@ func (s *GetScoreInfoResponseBody) SetSuccess(v bool) *GetScoreInfoResponseBody 
 }
 
 func (s *GetScoreInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetScoreInfoResponseBodyData struct {
@@ -120,7 +125,16 @@ func (s *GetScoreInfoResponseBodyData) SetScorePo(v []*GetScoreInfoResponseBodyD
 }
 
 func (s *GetScoreInfoResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ScorePo != nil {
+		for _, item := range s.ScorePo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetScoreInfoResponseBodyDataScorePo struct {
@@ -168,7 +182,12 @@ func (s *GetScoreInfoResponseBodyDataScorePo) SetScoreName(v string) *GetScoreIn
 }
 
 func (s *GetScoreInfoResponseBodyDataScorePo) Validate() error {
-	return dara.Validate(s)
+	if s.ScoreInfos != nil {
+		if err := s.ScoreInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetScoreInfoResponseBodyDataScorePoScoreInfos struct {
@@ -193,7 +212,16 @@ func (s *GetScoreInfoResponseBodyDataScorePoScoreInfos) SetScoreParam(v []*GetSc
 }
 
 func (s *GetScoreInfoResponseBodyDataScorePoScoreInfos) Validate() error {
-	return dara.Validate(s)
+	if s.ScoreParam != nil {
+		for _, item := range s.ScoreParam {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetScoreInfoResponseBodyDataScorePoScoreInfosScoreParam struct {

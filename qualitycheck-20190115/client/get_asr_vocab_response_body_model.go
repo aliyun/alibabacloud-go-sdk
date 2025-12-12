@@ -95,7 +95,12 @@ func (s *GetAsrVocabResponseBody) SetSuccess(v bool) *GetAsrVocabResponseBody {
 }
 
 func (s *GetAsrVocabResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAsrVocabResponseBodyData struct {
@@ -153,7 +158,12 @@ func (s *GetAsrVocabResponseBodyData) SetWords(v *GetAsrVocabResponseBodyDataWor
 }
 
 func (s *GetAsrVocabResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Words != nil {
+		if err := s.Words.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAsrVocabResponseBodyDataWords struct {
@@ -178,7 +188,16 @@ func (s *GetAsrVocabResponseBodyDataWords) SetWord(v []*GetAsrVocabResponseBodyD
 }
 
 func (s *GetAsrVocabResponseBodyDataWords) Validate() error {
-	return dara.Validate(s)
+	if s.Word != nil {
+		for _, item := range s.Word {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAsrVocabResponseBodyDataWordsWord struct {

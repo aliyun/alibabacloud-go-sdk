@@ -110,7 +110,12 @@ func (s *BatchSubmitReviewInfoResponseBody) SetSuccess(v bool) *BatchSubmitRevie
 }
 
 func (s *BatchSubmitReviewInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		if err := s.Messages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchSubmitReviewInfoResponseBodyMessages struct {

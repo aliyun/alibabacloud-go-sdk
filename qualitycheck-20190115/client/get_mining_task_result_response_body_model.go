@@ -97,7 +97,12 @@ func (s *GetMiningTaskResultResponseBody) SetSuccess(v string) *GetMiningTaskRes
 }
 
 func (s *GetMiningTaskResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMiningTaskResultResponseBodyData struct {
@@ -174,7 +179,16 @@ func (s *GetMiningTaskResultResponseBodyData) SetTaskStatus(v string) *GetMining
 }
 
 func (s *GetMiningTaskResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.FilePathList != nil {
+		for _, item := range s.FilePathList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMiningTaskResultResponseBodyDataFilePathList struct {

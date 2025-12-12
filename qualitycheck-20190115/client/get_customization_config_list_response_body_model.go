@@ -95,7 +95,12 @@ func (s *GetCustomizationConfigListResponseBody) SetSuccess(v bool) *GetCustomiz
 }
 
 func (s *GetCustomizationConfigListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCustomizationConfigListResponseBodyData struct {
@@ -120,7 +125,16 @@ func (s *GetCustomizationConfigListResponseBodyData) SetModelCustomizationDataSe
 }
 
 func (s *GetCustomizationConfigListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ModelCustomizationDataSetPo != nil {
+		for _, item := range s.ModelCustomizationDataSetPo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo struct {

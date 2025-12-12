@@ -95,7 +95,12 @@ func (s *GetNextResultToVerifyResponseBody) SetSuccess(v bool) *GetNextResultToV
 }
 
 func (s *GetNextResultToVerifyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNextResultToVerifyResponseBodyData struct {
@@ -289,7 +294,12 @@ func (s *GetNextResultToVerifyResponseBodyData) SetVerifiedCount(v int32) *GetNe
 }
 
 func (s *GetNextResultToVerifyResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Dialogues != nil {
+		if err := s.Dialogues.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNextResultToVerifyResponseBodyDataDialogues struct {
@@ -314,7 +324,16 @@ func (s *GetNextResultToVerifyResponseBodyDataDialogues) SetDialogue(v []*GetNex
 }
 
 func (s *GetNextResultToVerifyResponseBodyDataDialogues) Validate() error {
-	return dara.Validate(s)
+	if s.Dialogue != nil {
+		for _, item := range s.Dialogue {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetNextResultToVerifyResponseBodyDataDialoguesDialogue struct {
@@ -493,7 +512,12 @@ func (s *GetNextResultToVerifyResponseBodyDataDialoguesDialogue) SetWords(v stri
 }
 
 func (s *GetNextResultToVerifyResponseBodyDataDialoguesDialogue) Validate() error {
-	return dara.Validate(s)
+	if s.Deltas != nil {
+		if err := s.Deltas.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltas struct {
@@ -518,7 +542,16 @@ func (s *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltas) SetDelta(
 }
 
 func (s *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltas) Validate() error {
-	return dara.Validate(s)
+	if s.Delta != nil {
+		for _, item := range s.Delta {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDelta struct {
@@ -566,7 +599,17 @@ func (s *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDelta) SetT
 }
 
 func (s *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDelta) Validate() error {
-	return dara.Validate(s)
+	if s.Source != nil {
+		if err := s.Source.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaSource struct {
@@ -604,7 +647,12 @@ func (s *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaSource
 }
 
 func (s *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaSource) Validate() error {
-	return dara.Validate(s)
+	if s.Line != nil {
+		if err := s.Line.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaSourceLine struct {
@@ -667,7 +715,12 @@ func (s *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaTarget
 }
 
 func (s *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaTarget) Validate() error {
-	return dara.Validate(s)
+	if s.Line != nil {
+		if err := s.Line.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaTargetLine struct {

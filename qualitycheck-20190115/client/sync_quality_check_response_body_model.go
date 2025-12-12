@@ -95,7 +95,12 @@ func (s *SyncQualityCheckResponseBody) SetSuccess(v bool) *SyncQualityCheckRespo
 }
 
 func (s *SyncQualityCheckResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SyncQualityCheckResponseBodyData struct {
@@ -172,7 +177,16 @@ func (s *SyncQualityCheckResponseBodyData) SetTid(v string) *SyncQualityCheckRes
 }
 
 func (s *SyncQualityCheckResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SyncQualityCheckResponseBodyDataRules struct {
@@ -230,7 +244,21 @@ func (s *SyncQualityCheckResponseBodyDataRules) SetRuleName(v string) *SyncQuali
 }
 
 func (s *SyncQualityCheckResponseBodyDataRules) Validate() error {
-	return dara.Validate(s)
+	if s.Hit != nil {
+		for _, item := range s.Hit {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RuleInfoBase != nil {
+		if err := s.RuleInfoBase.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SyncQualityCheckResponseBodyDataRulesHit struct {
@@ -265,7 +293,21 @@ func (s *SyncQualityCheckResponseBodyDataRulesHit) SetPhrase(v *SyncQualityCheck
 }
 
 func (s *SyncQualityCheckResponseBodyDataRulesHit) Validate() error {
-	return dara.Validate(s)
+	if s.HitKeyWords != nil {
+		for _, item := range s.HitKeyWords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Phrase != nil {
+		if err := s.Phrase.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SyncQualityCheckResponseBodyDataRulesHitHitKeyWords struct {

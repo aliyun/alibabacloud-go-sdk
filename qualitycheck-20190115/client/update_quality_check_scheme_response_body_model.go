@@ -110,7 +110,12 @@ func (s *UpdateQualityCheckSchemeResponseBody) SetSuccess(v bool) *UpdateQuality
 }
 
 func (s *UpdateQualityCheckSchemeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		if err := s.Messages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateQualityCheckSchemeResponseBodyMessages struct {

@@ -59,5 +59,10 @@ func (s *CreateCheckTypeToSchemeResponse) SetBody(v *CreateCheckTypeToSchemeResp
 }
 
 func (s *CreateCheckTypeToSchemeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

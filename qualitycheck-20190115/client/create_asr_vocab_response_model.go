@@ -59,5 +59,10 @@ func (s *CreateAsrVocabResponse) SetBody(v *CreateAsrVocabResponseBody) *CreateA
 }
 
 func (s *CreateAsrVocabResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

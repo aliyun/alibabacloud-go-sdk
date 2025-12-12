@@ -140,7 +140,12 @@ func (s *VerifySentenceResponseBody) SetTargetRole(v int32) *VerifySentenceRespo
 }
 
 func (s *VerifySentenceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VerifySentenceResponseBodyData struct {
@@ -165,7 +170,16 @@ func (s *VerifySentenceResponseBodyData) SetDelta(v []*VerifySentenceResponseBod
 }
 
 func (s *VerifySentenceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Delta != nil {
+		for _, item := range s.Delta {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type VerifySentenceResponseBodyDataDelta struct {
@@ -213,7 +227,17 @@ func (s *VerifySentenceResponseBodyDataDelta) SetType(v string) *VerifySentenceR
 }
 
 func (s *VerifySentenceResponseBodyDataDelta) Validate() error {
-	return dara.Validate(s)
+	if s.Source != nil {
+		if err := s.Source.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VerifySentenceResponseBodyDataDeltaSource struct {
@@ -251,7 +275,12 @@ func (s *VerifySentenceResponseBodyDataDeltaSource) SetPosition(v int32) *Verify
 }
 
 func (s *VerifySentenceResponseBodyDataDeltaSource) Validate() error {
-	return dara.Validate(s)
+	if s.Line != nil {
+		if err := s.Line.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VerifySentenceResponseBodyDataDeltaSourceLine struct {
@@ -314,7 +343,12 @@ func (s *VerifySentenceResponseBodyDataDeltaTarget) SetPosition(v int32) *Verify
 }
 
 func (s *VerifySentenceResponseBodyDataDeltaTarget) Validate() error {
-	return dara.Validate(s)
+	if s.Line != nil {
+		if err := s.Line.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VerifySentenceResponseBodyDataDeltaTargetLine struct {

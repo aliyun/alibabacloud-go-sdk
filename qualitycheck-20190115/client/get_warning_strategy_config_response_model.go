@@ -59,5 +59,10 @@ func (s *GetWarningStrategyConfigResponse) SetBody(v *GetWarningStrategyConfigRe
 }
 
 func (s *GetWarningStrategyConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

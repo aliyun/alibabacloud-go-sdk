@@ -59,5 +59,10 @@ func (s *SaveConfigDataSetResponse) SetBody(v *SaveConfigDataSetResponseBody) *S
 }
 
 func (s *SaveConfigDataSetResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

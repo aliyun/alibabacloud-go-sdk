@@ -95,7 +95,12 @@ func (s *GetRuleDetailResponseBody) SetSuccess(v bool) *GetRuleDetailResponseBod
 }
 
 func (s *GetRuleDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRuleDetailResponseBodyData struct {
@@ -169,7 +174,17 @@ func (s *GetRuleDetailResponseBodyData) SetRules(v *GetRuleDetailResponseBodyDat
 }
 
 func (s *GetRuleDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		if err := s.Conditions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		if err := s.Rules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRuleDetailResponseBodyDataConditions struct {
@@ -194,7 +209,16 @@ func (s *GetRuleDetailResponseBodyDataConditions) SetConditionBasicInfo(v []*Get
 }
 
 func (s *GetRuleDetailResponseBodyDataConditions) Validate() error {
-	return dara.Validate(s)
+	if s.ConditionBasicInfo != nil {
+		for _, item := range s.ConditionBasicInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRuleDetailResponseBodyDataConditionsConditionBasicInfo struct {
@@ -255,7 +279,17 @@ func (s *GetRuleDetailResponseBodyDataConditionsConditionBasicInfo) SetOperators
 }
 
 func (s *GetRuleDetailResponseBodyDataConditionsConditionBasicInfo) Validate() error {
-	return dara.Validate(s)
+	if s.CheckRange != nil {
+		if err := s.CheckRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Operators != nil {
+		if err := s.Operators.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRuleDetailResponseBodyDataConditionsConditionBasicInfoCheckRange struct {
@@ -313,7 +347,17 @@ func (s *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoCheckRange) Se
 }
 
 func (s *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoCheckRange) Validate() error {
-	return dara.Validate(s)
+	if s.Anchor != nil {
+		if err := s.Anchor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Range != nil {
+		if err := s.Range.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRuleDetailResponseBodyDataConditionsConditionBasicInfoCheckRangeAnchor struct {
@@ -433,7 +477,16 @@ func (s *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperators) Set
 }
 
 func (s *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperators) Validate() error {
-	return dara.Validate(s)
+	if s.OperatorBasicInfo != nil {
+		for _, item := range s.OperatorBasicInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfo struct {
@@ -497,7 +550,12 @@ func (s *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOpera
 }
 
 func (s *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Param != nil {
+		if err := s.Param.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfoParam struct {
@@ -888,7 +946,37 @@ func (s *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOpera
 }
 
 func (s *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfoParam) Validate() error {
-	return dara.Validate(s)
+	if s.AntModelInfo != nil {
+		if err := s.AntModelInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Excludes != nil {
+		if err := s.Excludes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OperKeyWords != nil {
+		if err := s.OperKeyWords.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Pvalues != nil {
+		if err := s.Pvalues.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.References != nil {
+		if err := s.References.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SimilarlySentences != nil {
+		if err := s.SimilarlySentences.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamAntModelInfo struct {
@@ -1063,7 +1151,16 @@ func (s *GetRuleDetailResponseBodyDataRules) SetRuleBasicInfo(v []*GetRuleDetail
 }
 
 func (s *GetRuleDetailResponseBodyDataRules) Validate() error {
-	return dara.Validate(s)
+	if s.RuleBasicInfo != nil {
+		for _, item := range s.RuleBasicInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRuleDetailResponseBodyDataRulesRuleBasicInfo struct {
@@ -1124,7 +1221,17 @@ func (s *GetRuleDetailResponseBodyDataRulesRuleBasicInfo) SetTriggers(v *GetRule
 }
 
 func (s *GetRuleDetailResponseBodyDataRulesRuleBasicInfo) Validate() error {
-	return dara.Validate(s)
+	if s.BusinessCategories != nil {
+		if err := s.BusinessCategories.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Triggers != nil {
+		if err := s.Triggers.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRuleDetailResponseBodyDataRulesRuleBasicInfoBusinessCategories struct {
@@ -1149,7 +1256,16 @@ func (s *GetRuleDetailResponseBodyDataRulesRuleBasicInfoBusinessCategories) SetB
 }
 
 func (s *GetRuleDetailResponseBodyDataRulesRuleBasicInfoBusinessCategories) Validate() error {
-	return dara.Validate(s)
+	if s.BusinessCategoryBasicInfo != nil {
+		for _, item := range s.BusinessCategoryBasicInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRuleDetailResponseBodyDataRulesRuleBasicInfoBusinessCategoriesBusinessCategoryBasicInfo struct {

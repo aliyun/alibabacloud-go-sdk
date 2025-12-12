@@ -95,7 +95,12 @@ func (s *GetSkillGroupConfigResponseBody) SetSuccess(v bool) *GetSkillGroupConfi
 }
 
 func (s *GetSkillGroupConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSkillGroupConfigResponseBodyData struct {
@@ -364,7 +369,17 @@ func (s *GetSkillGroupConfigResponseBodyData) SetVocabName(v string) *GetSkillGr
 }
 
 func (s *GetSkillGroupConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AllRuleList != nil {
+		if err := s.AllRuleList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuleList != nil {
+		if err := s.RuleList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSkillGroupConfigResponseBodyDataAllRuleList struct {
@@ -389,7 +404,16 @@ func (s *GetSkillGroupConfigResponseBodyDataAllRuleList) SetRuleNameInfo(v []*Ge
 }
 
 func (s *GetSkillGroupConfigResponseBodyDataAllRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.RuleNameInfo != nil {
+		for _, item := range s.RuleNameInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSkillGroupConfigResponseBodyDataAllRuleListRuleNameInfo struct {
@@ -455,7 +479,16 @@ func (s *GetSkillGroupConfigResponseBodyDataRuleList) SetRuleNameInfo(v []*GetSk
 }
 
 func (s *GetSkillGroupConfigResponseBodyDataRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.RuleNameInfo != nil {
+		for _, item := range s.RuleNameInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSkillGroupConfigResponseBodyDataRuleListRuleNameInfo struct {

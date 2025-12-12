@@ -209,7 +209,17 @@ func (s *ListSchemeTaskConfigResponseBody) SetSuccess(v bool) *ListSchemeTaskCon
 }
 
 func (s *ListSchemeTaskConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Messages != nil {
+		if err := s.Messages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSchemeTaskConfigResponseBodyData struct {
@@ -234,7 +244,16 @@ func (s *ListSchemeTaskConfigResponseBodyData) SetData(v []*ListSchemeTaskConfig
 }
 
 func (s *ListSchemeTaskConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSchemeTaskConfigResponseBodyDataData struct {
@@ -579,7 +598,22 @@ func (s *ListSchemeTaskConfigResponseBodyDataData) SetVocabName(v string) *ListS
 }
 
 func (s *ListSchemeTaskConfigResponseBodyDataData) Validate() error {
-	return dara.Validate(s)
+	if s.DataConfig != nil {
+		if err := s.DataConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SchemeIdList != nil {
+		if err := s.SchemeIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SchemeList != nil {
+		if err := s.SchemeList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSchemeTaskConfigResponseBodyDataDataDataConfig struct {
@@ -643,7 +677,12 @@ func (s *ListSchemeTaskConfigResponseBodyDataDataDataConfig) SetResultParam(v st
 }
 
 func (s *ListSchemeTaskConfigResponseBodyDataDataDataConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AssignConfigs != nil {
+		if err := s.AssignConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSchemeTaskConfigResponseBodyDataDataDataConfigAssignConfigs struct {
@@ -668,7 +707,16 @@ func (s *ListSchemeTaskConfigResponseBodyDataDataDataConfigAssignConfigs) SetAss
 }
 
 func (s *ListSchemeTaskConfigResponseBodyDataDataDataConfigAssignConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.AssignConfig != nil {
+		for _, item := range s.AssignConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSchemeTaskConfigResponseBodyDataDataDataConfigAssignConfigsAssignConfig struct {
@@ -693,7 +741,12 @@ func (s *ListSchemeTaskConfigResponseBodyDataDataDataConfigAssignConfigsAssignCo
 }
 
 func (s *ListSchemeTaskConfigResponseBodyDataDataDataConfigAssignConfigsAssignConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AssignConfigContests != nil {
+		if err := s.AssignConfigContests.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSchemeTaskConfigResponseBodyDataDataDataConfigAssignConfigsAssignConfigAssignConfigContests struct {
@@ -718,7 +771,16 @@ func (s *ListSchemeTaskConfigResponseBodyDataDataDataConfigAssignConfigsAssignCo
 }
 
 func (s *ListSchemeTaskConfigResponseBodyDataDataDataConfigAssignConfigsAssignConfigAssignConfigContests) Validate() error {
-	return dara.Validate(s)
+	if s.AssignConfigContest != nil {
+		for _, item := range s.AssignConfigContest {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSchemeTaskConfigResponseBodyDataDataDataConfigAssignConfigsAssignConfigAssignConfigContestsAssignConfigContest struct {
@@ -795,7 +857,12 @@ func (s *ListSchemeTaskConfigResponseBodyDataDataDataConfigAssignConfigsAssignCo
 }
 
 func (s *ListSchemeTaskConfigResponseBodyDataDataDataConfigAssignConfigsAssignConfigAssignConfigContestsAssignConfigContest) Validate() error {
-	return dara.Validate(s)
+	if s.ListObject != nil {
+		if err := s.ListObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSchemeTaskConfigResponseBodyDataDataDataConfigAssignConfigsAssignConfigAssignConfigContestsAssignConfigContestListObject struct {
@@ -870,7 +937,16 @@ func (s *ListSchemeTaskConfigResponseBodyDataDataSchemeList) SetSchemeList(v []*
 }
 
 func (s *ListSchemeTaskConfigResponseBodyDataDataSchemeList) Validate() error {
-	return dara.Validate(s)
+	if s.SchemeList != nil {
+		for _, item := range s.SchemeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSchemeTaskConfigResponseBodyDataDataSchemeListSchemeList struct {

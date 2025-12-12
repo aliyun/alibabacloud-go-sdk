@@ -110,7 +110,12 @@ func (s *AssignReviewerBySessionGroupResponseBody) SetSuccess(v bool) *AssignRev
 }
 
 func (s *AssignReviewerBySessionGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		if err := s.Messages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AssignReviewerBySessionGroupResponseBodyMessages struct {

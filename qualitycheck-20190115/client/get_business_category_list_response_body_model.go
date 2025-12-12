@@ -95,7 +95,12 @@ func (s *GetBusinessCategoryListResponseBody) SetSuccess(v bool) *GetBusinessCat
 }
 
 func (s *GetBusinessCategoryListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBusinessCategoryListResponseBodyData struct {
@@ -120,7 +125,16 @@ func (s *GetBusinessCategoryListResponseBodyData) SetBusinessCategoryBasicInfo(v
 }
 
 func (s *GetBusinessCategoryListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.BusinessCategoryBasicInfo != nil {
+		for _, item := range s.BusinessCategoryBasicInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetBusinessCategoryListResponseBodyDataBusinessCategoryBasicInfo struct {

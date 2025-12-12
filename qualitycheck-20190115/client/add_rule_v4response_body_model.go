@@ -122,7 +122,12 @@ func (s *AddRuleV4ResponseBody) SetSuccess(v bool) *AddRuleV4ResponseBody {
 }
 
 func (s *AddRuleV4ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		if err := s.Messages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddRuleV4ResponseBodyMessages struct {

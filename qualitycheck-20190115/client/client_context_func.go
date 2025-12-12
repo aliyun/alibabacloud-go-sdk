@@ -13,9 +13,11 @@ import (
 //
 // @return AddBusinessCategoryResponse
 func (client *Client) AddBusinessCategoryWithContext(ctx context.Context, request *AddBusinessCategoryRequest, runtime *dara.RuntimeOptions) (_result *AddBusinessCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -55,9 +57,11 @@ func (client *Client) AddBusinessCategoryWithContext(ctx context.Context, reques
 //
 // @return AddRuleCategoryResponse
 func (client *Client) AddRuleCategoryWithContext(ctx context.Context, request *AddRuleCategoryRequest, runtime *dara.RuntimeOptions) (_result *AddRuleCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -101,9 +105,11 @@ func (client *Client) AddRuleCategoryWithContext(ctx context.Context, request *A
 //
 // @return AddRuleV4Response
 func (client *Client) AddRuleV4WithContext(ctx context.Context, request *AddRuleV4Request, runtime *dara.RuntimeOptions) (_result *AddRuleV4Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -153,9 +159,11 @@ func (client *Client) AddRuleV4WithContext(ctx context.Context, request *AddRule
 //
 // @return ApplyWsTokenResponse
 func (client *Client) ApplyWsTokenWithContext(ctx context.Context, request *ApplyWsTokenRequest, runtime *dara.RuntimeOptions) (_result *ApplyWsTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -195,9 +203,11 @@ func (client *Client) ApplyWsTokenWithContext(ctx context.Context, request *Appl
 //
 // @return AssignReviewerResponse
 func (client *Client) AssignReviewerWithContext(ctx context.Context, request *AssignReviewerRequest, runtime *dara.RuntimeOptions) (_result *AssignReviewerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -243,9 +253,11 @@ func (client *Client) AssignReviewerWithContext(ctx context.Context, request *As
 //
 // @return AssignReviewerBySessionGroupResponse
 func (client *Client) AssignReviewerBySessionGroupWithContext(ctx context.Context, request *AssignReviewerBySessionGroupRequest, runtime *dara.RuntimeOptions) (_result *AssignReviewerBySessionGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -289,9 +301,11 @@ func (client *Client) AssignReviewerBySessionGroupWithContext(ctx context.Contex
 //
 // @return BatchSubmitReviewInfoResponse
 func (client *Client) BatchSubmitReviewInfoWithContext(ctx context.Context, request *BatchSubmitReviewInfoRequest, runtime *dara.RuntimeOptions) (_result *BatchSubmitReviewInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -335,9 +349,11 @@ func (client *Client) BatchSubmitReviewInfoWithContext(ctx context.Context, requ
 //
 // @return CreateAsrVocabResponse
 func (client *Client) CreateAsrVocabWithContext(ctx context.Context, request *CreateAsrVocabRequest, runtime *dara.RuntimeOptions) (_result *CreateAsrVocabResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -381,9 +397,11 @@ func (client *Client) CreateAsrVocabWithContext(ctx context.Context, request *Cr
 //
 // @return CreateCheckTypeToSchemeResponse
 func (client *Client) CreateCheckTypeToSchemeWithContext(ctx context.Context, request *CreateCheckTypeToSchemeRequest, runtime *dara.RuntimeOptions) (_result *CreateCheckTypeToSchemeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -427,9 +445,11 @@ func (client *Client) CreateCheckTypeToSchemeWithContext(ctx context.Context, re
 //
 // @return CreateMiningTaskResponse
 func (client *Client) CreateMiningTaskWithContext(ctx context.Context, request *CreateMiningTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateMiningTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -487,9 +507,11 @@ func (client *Client) CreateMiningTaskWithContext(ctx context.Context, request *
 //
 // @return CreateQualityCheckSchemeResponse
 func (client *Client) CreateQualityCheckSchemeWithContext(ctx context.Context, request *CreateQualityCheckSchemeRequest, runtime *dara.RuntimeOptions) (_result *CreateQualityCheckSchemeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -533,9 +555,11 @@ func (client *Client) CreateQualityCheckSchemeWithContext(ctx context.Context, r
 //
 // @return CreateSchemeTaskConfigResponse
 func (client *Client) CreateSchemeTaskConfigWithContext(ctx context.Context, request *CreateSchemeTaskConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateSchemeTaskConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -577,9 +601,11 @@ func (client *Client) CreateSchemeTaskConfigWithContext(ctx context.Context, req
 //
 // @return CreateSkillGroupConfigResponse
 func (client *Client) CreateSkillGroupConfigWithContext(ctx context.Context, request *CreateSkillGroupConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateSkillGroupConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -619,9 +645,11 @@ func (client *Client) CreateSkillGroupConfigWithContext(ctx context.Context, req
 //
 // @return CreateTaskAssignRuleResponse
 func (client *Client) CreateTaskAssignRuleWithContext(ctx context.Context, request *CreateTaskAssignRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateTaskAssignRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -661,9 +689,11 @@ func (client *Client) CreateTaskAssignRuleWithContext(ctx context.Context, reque
 //
 // @return CreateWarningConfigResponse
 func (client *Client) CreateWarningConfigWithContext(ctx context.Context, request *CreateWarningConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateWarningConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -707,9 +737,11 @@ func (client *Client) CreateWarningConfigWithContext(ctx context.Context, reques
 //
 // @return CreateWarningStrategyConfigResponse
 func (client *Client) CreateWarningStrategyConfigWithContext(ctx context.Context, request *CreateWarningStrategyConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateWarningStrategyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -749,9 +781,11 @@ func (client *Client) CreateWarningStrategyConfigWithContext(ctx context.Context
 //
 // @return DelRuleCategoryResponse
 func (client *Client) DelRuleCategoryWithContext(ctx context.Context, request *DelRuleCategoryRequest, runtime *dara.RuntimeOptions) (_result *DelRuleCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -791,9 +825,11 @@ func (client *Client) DelRuleCategoryWithContext(ctx context.Context, request *D
 //
 // @return DeleteAsrVocabResponse
 func (client *Client) DeleteAsrVocabWithContext(ctx context.Context, request *DeleteAsrVocabRequest, runtime *dara.RuntimeOptions) (_result *DeleteAsrVocabResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -833,9 +869,11 @@ func (client *Client) DeleteAsrVocabWithContext(ctx context.Context, request *De
 //
 // @return DeleteBusinessCategoryResponse
 func (client *Client) DeleteBusinessCategoryWithContext(ctx context.Context, request *DeleteBusinessCategoryRequest, runtime *dara.RuntimeOptions) (_result *DeleteBusinessCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -879,9 +917,11 @@ func (client *Client) DeleteBusinessCategoryWithContext(ctx context.Context, req
 //
 // @return DeleteCheckTypeToSchemeResponse
 func (client *Client) DeleteCheckTypeToSchemeWithContext(ctx context.Context, request *DeleteCheckTypeToSchemeRequest, runtime *dara.RuntimeOptions) (_result *DeleteCheckTypeToSchemeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -921,9 +961,11 @@ func (client *Client) DeleteCheckTypeToSchemeWithContext(ctx context.Context, re
 //
 // @return DeleteCustomizationConfigResponse
 func (client *Client) DeleteCustomizationConfigWithContext(ctx context.Context, request *DeleteCustomizationConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomizationConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -965,9 +1007,11 @@ func (client *Client) DeleteCustomizationConfigWithContext(ctx context.Context, 
 //
 // @return DeleteDataSetResponse
 func (client *Client) DeleteDataSetWithContext(ctx context.Context, request *DeleteDataSetRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataSetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1007,9 +1051,11 @@ func (client *Client) DeleteDataSetWithContext(ctx context.Context, request *Del
 //
 // @return DeletePrecisionTaskResponse
 func (client *Client) DeletePrecisionTaskWithContext(ctx context.Context, request *DeletePrecisionTaskRequest, runtime *dara.RuntimeOptions) (_result *DeletePrecisionTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1053,9 +1099,11 @@ func (client *Client) DeletePrecisionTaskWithContext(ctx context.Context, reques
 //
 // @return DeleteQualityCheckSchemeResponse
 func (client *Client) DeleteQualityCheckSchemeWithContext(ctx context.Context, request *DeleteQualityCheckSchemeRequest, runtime *dara.RuntimeOptions) (_result *DeleteQualityCheckSchemeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1101,9 +1149,11 @@ func (client *Client) DeleteQualityCheckSchemeWithContext(ctx context.Context, r
 //
 // @return DeleteRuleResponse
 func (client *Client) DeleteRuleWithContext(ctx context.Context, request *DeleteRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1157,9 +1207,11 @@ func (client *Client) DeleteRuleWithContext(ctx context.Context, request *Delete
 //
 // @return DeleteRuleV4Response
 func (client *Client) DeleteRuleV4WithContext(ctx context.Context, request *DeleteRuleV4Request, runtime *dara.RuntimeOptions) (_result *DeleteRuleV4Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1209,9 +1261,11 @@ func (client *Client) DeleteRuleV4WithContext(ctx context.Context, request *Dele
 //
 // @return DeleteSchemeTaskConfigResponse
 func (client *Client) DeleteSchemeTaskConfigWithContext(ctx context.Context, request *DeleteSchemeTaskConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteSchemeTaskConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1253,9 +1307,11 @@ func (client *Client) DeleteSchemeTaskConfigWithContext(ctx context.Context, req
 //
 // @return DeleteSkillGroupConfigResponse
 func (client *Client) DeleteSkillGroupConfigWithContext(ctx context.Context, request *DeleteSkillGroupConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteSkillGroupConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1295,9 +1351,11 @@ func (client *Client) DeleteSkillGroupConfigWithContext(ctx context.Context, req
 //
 // @return DeleteTaskAssignRuleResponse
 func (client *Client) DeleteTaskAssignRuleWithContext(ctx context.Context, request *DeleteTaskAssignRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteTaskAssignRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1337,9 +1395,11 @@ func (client *Client) DeleteTaskAssignRuleWithContext(ctx context.Context, reque
 //
 // @return DeleteWarningConfigResponse
 func (client *Client) DeleteWarningConfigWithContext(ctx context.Context, request *DeleteWarningConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteWarningConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1383,9 +1443,11 @@ func (client *Client) DeleteWarningConfigWithContext(ctx context.Context, reques
 //
 // @return DeleteWarningStrategyConfigResponse
 func (client *Client) DeleteWarningStrategyConfigWithContext(ctx context.Context, request *DeleteWarningStrategyConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteWarningStrategyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1425,9 +1487,11 @@ func (client *Client) DeleteWarningStrategyConfigWithContext(ctx context.Context
 //
 // @return GetAsrVocabResponse
 func (client *Client) GetAsrVocabWithContext(ctx context.Context, request *GetAsrVocabRequest, runtime *dara.RuntimeOptions) (_result *GetAsrVocabResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1467,9 +1531,11 @@ func (client *Client) GetAsrVocabWithContext(ctx context.Context, request *GetAs
 //
 // @return GetBusinessCategoryListResponse
 func (client *Client) GetBusinessCategoryListWithContext(ctx context.Context, request *GetBusinessCategoryListRequest, runtime *dara.RuntimeOptions) (_result *GetBusinessCategoryListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1513,9 +1579,11 @@ func (client *Client) GetBusinessCategoryListWithContext(ctx context.Context, re
 //
 // @return GetCustomizationConfigListResponse
 func (client *Client) GetCustomizationConfigListWithContext(ctx context.Context, request *GetCustomizationConfigListRequest, runtime *dara.RuntimeOptions) (_result *GetCustomizationConfigListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1559,9 +1627,11 @@ func (client *Client) GetCustomizationConfigListWithContext(ctx context.Context,
 //
 // @return GetMiningTaskResultResponse
 func (client *Client) GetMiningTaskResultWithContext(ctx context.Context, request *GetMiningTaskResultRequest, runtime *dara.RuntimeOptions) (_result *GetMiningTaskResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1601,9 +1671,11 @@ func (client *Client) GetMiningTaskResultWithContext(ctx context.Context, reques
 //
 // @return GetNextResultToVerifyResponse
 func (client *Client) GetNextResultToVerifyWithContext(ctx context.Context, request *GetNextResultToVerifyRequest, runtime *dara.RuntimeOptions) (_result *GetNextResultToVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1643,9 +1715,11 @@ func (client *Client) GetNextResultToVerifyWithContext(ctx context.Context, requ
 //
 // @return GetPrecisionTaskResponse
 func (client *Client) GetPrecisionTaskWithContext(ctx context.Context, request *GetPrecisionTaskRequest, runtime *dara.RuntimeOptions) (_result *GetPrecisionTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1689,9 +1763,11 @@ func (client *Client) GetPrecisionTaskWithContext(ctx context.Context, request *
 //
 // @return GetQualityCheckSchemeResponse
 func (client *Client) GetQualityCheckSchemeWithContext(ctx context.Context, request *GetQualityCheckSchemeRequest, runtime *dara.RuntimeOptions) (_result *GetQualityCheckSchemeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1731,9 +1807,11 @@ func (client *Client) GetQualityCheckSchemeWithContext(ctx context.Context, requ
 //
 // @return GetResultResponse
 func (client *Client) GetResultWithContext(ctx context.Context, request *GetResultRequest, runtime *dara.RuntimeOptions) (_result *GetResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1773,9 +1851,11 @@ func (client *Client) GetResultWithContext(ctx context.Context, request *GetResu
 //
 // @return GetResultToReviewResponse
 func (client *Client) GetResultToReviewWithContext(ctx context.Context, request *GetResultToReviewRequest, runtime *dara.RuntimeOptions) (_result *GetResultToReviewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1817,9 +1897,11 @@ func (client *Client) GetResultToReviewWithContext(ctx context.Context, request 
 //
 // @return GetRuleResponse
 func (client *Client) GetRuleWithContext(ctx context.Context, request *GetRuleRequest, runtime *dara.RuntimeOptions) (_result *GetRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1865,9 +1947,11 @@ func (client *Client) GetRuleWithContext(ctx context.Context, request *GetRuleRe
 //
 // @return GetRuleByIdResponse
 func (client *Client) GetRuleByIdWithContext(ctx context.Context, request *GetRuleByIdRequest, runtime *dara.RuntimeOptions) (_result *GetRuleByIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1909,9 +1993,11 @@ func (client *Client) GetRuleByIdWithContext(ctx context.Context, request *GetRu
 //
 // @return GetRuleCategoryResponse
 func (client *Client) GetRuleCategoryWithContext(ctx context.Context, request *GetRuleCategoryRequest, runtime *dara.RuntimeOptions) (_result *GetRuleCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1953,9 +2039,11 @@ func (client *Client) GetRuleCategoryWithContext(ctx context.Context, request *G
 //
 // @return GetRuleDetailResponse
 func (client *Client) GetRuleDetailWithContext(ctx context.Context, request *GetRuleDetailRequest, runtime *dara.RuntimeOptions) (_result *GetRuleDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -1999,9 +2087,11 @@ func (client *Client) GetRuleDetailWithContext(ctx context.Context, request *Get
 //
 // @return GetRuleV4Response
 func (client *Client) GetRuleV4WithContext(ctx context.Context, request *GetRuleV4Request, runtime *dara.RuntimeOptions) (_result *GetRuleV4Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RuleId) {
@@ -2041,9 +2131,11 @@ func (client *Client) GetRuleV4WithContext(ctx context.Context, request *GetRule
 //
 // @return GetRulesCountListResponse
 func (client *Client) GetRulesCountListWithContext(ctx context.Context, request *GetRulesCountListRequest, runtime *dara.RuntimeOptions) (_result *GetRulesCountListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -2185,9 +2277,11 @@ func (client *Client) GetRulesCountListWithContext(ctx context.Context, request 
 //
 // @return GetSchemeTaskConfigResponse
 func (client *Client) GetSchemeTaskConfigWithContext(ctx context.Context, request *GetSchemeTaskConfigRequest, runtime *dara.RuntimeOptions) (_result *GetSchemeTaskConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -2229,9 +2323,11 @@ func (client *Client) GetSchemeTaskConfigWithContext(ctx context.Context, reques
 //
 // @return GetScoreInfoResponse
 func (client *Client) GetScoreInfoWithContext(ctx context.Context, request *GetScoreInfoRequest, runtime *dara.RuntimeOptions) (_result *GetScoreInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -2273,9 +2369,11 @@ func (client *Client) GetScoreInfoWithContext(ctx context.Context, request *GetS
 //
 // @return GetSkillGroupConfigResponse
 func (client *Client) GetSkillGroupConfigWithContext(ctx context.Context, request *GetSkillGroupConfigRequest, runtime *dara.RuntimeOptions) (_result *GetSkillGroupConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -2317,9 +2415,11 @@ func (client *Client) GetSkillGroupConfigWithContext(ctx context.Context, reques
 //
 // @return GetSyncResultResponse
 func (client *Client) GetSyncResultWithContext(ctx context.Context, request *GetSyncResultRequest, runtime *dara.RuntimeOptions) (_result *GetSyncResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -2363,9 +2463,11 @@ func (client *Client) GetSyncResultWithContext(ctx context.Context, request *Get
 //
 // @return GetWarningStrategyConfigResponse
 func (client *Client) GetWarningStrategyConfigWithContext(ctx context.Context, request *GetWarningStrategyConfigRequest, runtime *dara.RuntimeOptions) (_result *GetWarningStrategyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -2405,9 +2507,11 @@ func (client *Client) GetWarningStrategyConfigWithContext(ctx context.Context, r
 //
 // @return HandleComplaintResponse
 func (client *Client) HandleComplaintWithContext(ctx context.Context, request *HandleComplaintRequest, runtime *dara.RuntimeOptions) (_result *HandleComplaintResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -2449,9 +2553,11 @@ func (client *Client) HandleComplaintWithContext(ctx context.Context, request *H
 //
 // @return InvalidRuleResponse
 func (client *Client) InvalidRuleWithContext(ctx context.Context, request *InvalidRuleRequest, runtime *dara.RuntimeOptions) (_result *InvalidRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -2495,9 +2601,11 @@ func (client *Client) InvalidRuleWithContext(ctx context.Context, request *Inval
 //
 // @return ListAsrVocabResponse
 func (client *Client) ListAsrVocabWithContext(ctx context.Context, request *ListAsrVocabRequest, runtime *dara.RuntimeOptions) (_result *ListAsrVocabResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -2543,9 +2651,11 @@ func (client *Client) ListAsrVocabWithContext(ctx context.Context, request *List
 //
 // @return ListDataSetResponse
 func (client *Client) ListDataSetWithContext(ctx context.Context, request *ListDataSetRequest, runtime *dara.RuntimeOptions) (_result *ListDataSetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -2585,9 +2695,11 @@ func (client *Client) ListDataSetWithContext(ctx context.Context, request *ListD
 //
 // @return ListPrecisionTaskResponse
 func (client *Client) ListPrecisionTaskWithContext(ctx context.Context, request *ListPrecisionTaskRequest, runtime *dara.RuntimeOptions) (_result *ListPrecisionTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -2631,9 +2743,11 @@ func (client *Client) ListPrecisionTaskWithContext(ctx context.Context, request 
 //
 // @return ListQualityCheckSchemeResponse
 func (client *Client) ListQualityCheckSchemeWithContext(ctx context.Context, request *ListQualityCheckSchemeRequest, runtime *dara.RuntimeOptions) (_result *ListQualityCheckSchemeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -2675,9 +2789,11 @@ func (client *Client) ListQualityCheckSchemeWithContext(ctx context.Context, req
 //
 // @return ListRulesResponse
 func (client *Client) ListRulesWithContext(ctx context.Context, request *ListRulesRequest, runtime *dara.RuntimeOptions) (_result *ListRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -2721,9 +2837,11 @@ func (client *Client) ListRulesWithContext(ctx context.Context, request *ListRul
 //
 // @return ListRulesV4Response
 func (client *Client) ListRulesV4WithContext(ctx context.Context, request *ListRulesV4Request, runtime *dara.RuntimeOptions) (_result *ListRulesV4Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -2865,9 +2983,11 @@ func (client *Client) ListRulesV4WithContext(ctx context.Context, request *ListR
 //
 // @return ListSchemeTaskConfigResponse
 func (client *Client) ListSchemeTaskConfigWithContext(ctx context.Context, request *ListSchemeTaskConfigRequest, runtime *dara.RuntimeOptions) (_result *ListSchemeTaskConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -2913,9 +3033,11 @@ func (client *Client) ListSchemeTaskConfigWithContext(ctx context.Context, reque
 //
 // @return ListSessionGroupResponse
 func (client *Client) ListSessionGroupWithContext(ctx context.Context, request *ListSessionGroupRequest, runtime *dara.RuntimeOptions) (_result *ListSessionGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -2957,9 +3079,11 @@ func (client *Client) ListSessionGroupWithContext(ctx context.Context, request *
 //
 // @return ListSkillGroupConfigResponse
 func (client *Client) ListSkillGroupConfigWithContext(ctx context.Context, request *ListSkillGroupConfigRequest, runtime *dara.RuntimeOptions) (_result *ListSkillGroupConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -2999,9 +3123,11 @@ func (client *Client) ListSkillGroupConfigWithContext(ctx context.Context, reque
 //
 // @return ListTaskAssignRulesResponse
 func (client *Client) ListTaskAssignRulesWithContext(ctx context.Context, request *ListTaskAssignRulesRequest, runtime *dara.RuntimeOptions) (_result *ListTaskAssignRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3041,9 +3167,11 @@ func (client *Client) ListTaskAssignRulesWithContext(ctx context.Context, reques
 //
 // @return ListUsersResponse
 func (client *Client) ListUsersWithContext(ctx context.Context, request *ListUsersRequest, runtime *dara.RuntimeOptions) (_result *ListUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3083,9 +3211,11 @@ func (client *Client) ListUsersWithContext(ctx context.Context, request *ListUse
 //
 // @return ListWarningConfigResponse
 func (client *Client) ListWarningConfigWithContext(ctx context.Context, request *ListWarningConfigRequest, runtime *dara.RuntimeOptions) (_result *ListWarningConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3129,9 +3259,11 @@ func (client *Client) ListWarningConfigWithContext(ctx context.Context, request 
 //
 // @return ListWarningStrategyConfigResponse
 func (client *Client) ListWarningStrategyConfigWithContext(ctx context.Context, request *ListWarningStrategyConfigRequest, runtime *dara.RuntimeOptions) (_result *ListWarningStrategyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3175,9 +3307,11 @@ func (client *Client) ListWarningStrategyConfigWithContext(ctx context.Context, 
 //
 // @return RevertAssignedSessionResponse
 func (client *Client) RevertAssignedSessionWithContext(ctx context.Context, request *RevertAssignedSessionRequest, runtime *dara.RuntimeOptions) (_result *RevertAssignedSessionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3223,9 +3357,11 @@ func (client *Client) RevertAssignedSessionWithContext(ctx context.Context, requ
 //
 // @return RevertAssignedSessionGroupResponse
 func (client *Client) RevertAssignedSessionGroupWithContext(ctx context.Context, request *RevertAssignedSessionGroupRequest, runtime *dara.RuntimeOptions) (_result *RevertAssignedSessionGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3267,9 +3403,11 @@ func (client *Client) RevertAssignedSessionGroupWithContext(ctx context.Context,
 //
 // @return SaveConfigDataSetResponse
 func (client *Client) SaveConfigDataSetWithContext(ctx context.Context, request *SaveConfigDataSetRequest, runtime *dara.RuntimeOptions) (_result *SaveConfigDataSetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3309,9 +3447,11 @@ func (client *Client) SaveConfigDataSetWithContext(ctx context.Context, request 
 //
 // @return SubmitComplaintResponse
 func (client *Client) SubmitComplaintWithContext(ctx context.Context, request *SubmitComplaintRequest, runtime *dara.RuntimeOptions) (_result *SubmitComplaintResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3351,9 +3491,11 @@ func (client *Client) SubmitComplaintWithContext(ctx context.Context, request *S
 //
 // @return SubmitPrecisionTaskResponse
 func (client *Client) SubmitPrecisionTaskWithContext(ctx context.Context, request *SubmitPrecisionTaskRequest, runtime *dara.RuntimeOptions) (_result *SubmitPrecisionTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3393,9 +3535,11 @@ func (client *Client) SubmitPrecisionTaskWithContext(ctx context.Context, reques
 //
 // @return SubmitQualityCheckTaskResponse
 func (client *Client) SubmitQualityCheckTaskWithContext(ctx context.Context, request *SubmitQualityCheckTaskRequest, runtime *dara.RuntimeOptions) (_result *SubmitQualityCheckTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3435,9 +3579,11 @@ func (client *Client) SubmitQualityCheckTaskWithContext(ctx context.Context, req
 //
 // @return SubmitReviewInfoResponse
 func (client *Client) SubmitReviewInfoWithContext(ctx context.Context, request *SubmitReviewInfoRequest, runtime *dara.RuntimeOptions) (_result *SubmitReviewInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3477,9 +3623,11 @@ func (client *Client) SubmitReviewInfoWithContext(ctx context.Context, request *
 //
 // @return SyncQualityCheckResponse
 func (client *Client) SyncQualityCheckWithContext(ctx context.Context, request *SyncQualityCheckRequest, runtime *dara.RuntimeOptions) (_result *SyncQualityCheckResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3523,9 +3671,11 @@ func (client *Client) SyncQualityCheckWithContext(ctx context.Context, request *
 //
 // @return TestRuleV4Response
 func (client *Client) TestRuleV4WithContext(ctx context.Context, request *TestRuleV4Request, runtime *dara.RuntimeOptions) (_result *TestRuleV4Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IsSchemeData) {
@@ -3565,9 +3715,11 @@ func (client *Client) TestRuleV4WithContext(ctx context.Context, request *TestRu
 //
 // @return UpdateAsrVocabResponse
 func (client *Client) UpdateAsrVocabWithContext(ctx context.Context, request *UpdateAsrVocabRequest, runtime *dara.RuntimeOptions) (_result *UpdateAsrVocabResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3611,9 +3763,11 @@ func (client *Client) UpdateAsrVocabWithContext(ctx context.Context, request *Up
 //
 // @return UpdateCheckTypeToSchemeResponse
 func (client *Client) UpdateCheckTypeToSchemeWithContext(ctx context.Context, request *UpdateCheckTypeToSchemeRequest, runtime *dara.RuntimeOptions) (_result *UpdateCheckTypeToSchemeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3657,9 +3811,11 @@ func (client *Client) UpdateCheckTypeToSchemeWithContext(ctx context.Context, re
 //
 // @return UpdateQualityCheckDataResponse
 func (client *Client) UpdateQualityCheckDataWithContext(ctx context.Context, request *UpdateQualityCheckDataRequest, runtime *dara.RuntimeOptions) (_result *UpdateQualityCheckDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3703,9 +3859,11 @@ func (client *Client) UpdateQualityCheckDataWithContext(ctx context.Context, req
 //
 // @return UpdateQualityCheckSchemeResponse
 func (client *Client) UpdateQualityCheckSchemeWithContext(ctx context.Context, request *UpdateQualityCheckSchemeRequest, runtime *dara.RuntimeOptions) (_result *UpdateQualityCheckSchemeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3747,9 +3905,11 @@ func (client *Client) UpdateQualityCheckSchemeWithContext(ctx context.Context, r
 //
 // @return UpdateRuleResponse
 func (client *Client) UpdateRuleWithContext(ctx context.Context, request *UpdateRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3795,9 +3955,11 @@ func (client *Client) UpdateRuleWithContext(ctx context.Context, request *Update
 //
 // @return UpdateRuleByIdResponse
 func (client *Client) UpdateRuleByIdWithContext(ctx context.Context, request *UpdateRuleByIdRequest, runtime *dara.RuntimeOptions) (_result *UpdateRuleByIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3855,9 +4017,11 @@ func (client *Client) UpdateRuleByIdWithContext(ctx context.Context, request *Up
 //
 // @return UpdateRuleToSchemeResponse
 func (client *Client) UpdateRuleToSchemeWithContext(ctx context.Context, request *UpdateRuleToSchemeRequest, runtime *dara.RuntimeOptions) (_result *UpdateRuleToSchemeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3901,9 +4065,11 @@ func (client *Client) UpdateRuleToSchemeWithContext(ctx context.Context, request
 //
 // @return UpdateRuleV4Response
 func (client *Client) UpdateRuleV4WithContext(ctx context.Context, request *UpdateRuleV4Request, runtime *dara.RuntimeOptions) (_result *UpdateRuleV4Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3953,9 +4119,11 @@ func (client *Client) UpdateRuleV4WithContext(ctx context.Context, request *Upda
 //
 // @return UpdateSchemeTaskConfigResponse
 func (client *Client) UpdateSchemeTaskConfigWithContext(ctx context.Context, request *UpdateSchemeTaskConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateSchemeTaskConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -3997,9 +4165,11 @@ func (client *Client) UpdateSchemeTaskConfigWithContext(ctx context.Context, req
 //
 // @return UpdateSkillGroupConfigResponse
 func (client *Client) UpdateSkillGroupConfigWithContext(ctx context.Context, request *UpdateSkillGroupConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateSkillGroupConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -4039,9 +4209,11 @@ func (client *Client) UpdateSkillGroupConfigWithContext(ctx context.Context, req
 //
 // @return UpdateSyncQualityCheckDataResponse
 func (client *Client) UpdateSyncQualityCheckDataWithContext(ctx context.Context, request *UpdateSyncQualityCheckDataRequest, runtime *dara.RuntimeOptions) (_result *UpdateSyncQualityCheckDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -4081,9 +4253,11 @@ func (client *Client) UpdateSyncQualityCheckDataWithContext(ctx context.Context,
 //
 // @return UpdateTaskAssignRuleResponse
 func (client *Client) UpdateTaskAssignRuleWithContext(ctx context.Context, request *UpdateTaskAssignRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateTaskAssignRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -4123,9 +4297,11 @@ func (client *Client) UpdateTaskAssignRuleWithContext(ctx context.Context, reque
 //
 // @return UpdateUserResponse
 func (client *Client) UpdateUserWithContext(ctx context.Context, request *UpdateUserRequest, runtime *dara.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -4165,9 +4341,11 @@ func (client *Client) UpdateUserWithContext(ctx context.Context, request *Update
 //
 // @return UpdateWarningConfigResponse
 func (client *Client) UpdateWarningConfigWithContext(ctx context.Context, request *UpdateWarningConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateWarningConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -4211,9 +4389,11 @@ func (client *Client) UpdateWarningConfigWithContext(ctx context.Context, reques
 //
 // @return UpdateWarningStrategyConfigResponse
 func (client *Client) UpdateWarningStrategyConfigWithContext(ctx context.Context, request *UpdateWarningStrategyConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateWarningStrategyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -4253,9 +4433,11 @@ func (client *Client) UpdateWarningStrategyConfigWithContext(ctx context.Context
 //
 // @return UploadAudioDataResponse
 func (client *Client) UploadAudioDataWithContext(ctx context.Context, request *UploadAudioDataRequest, runtime *dara.RuntimeOptions) (_result *UploadAudioDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -4301,9 +4483,11 @@ func (client *Client) UploadAudioDataWithContext(ctx context.Context, request *U
 //
 // @return UploadDataResponse
 func (client *Client) UploadDataWithContext(ctx context.Context, request *UploadDataRequest, runtime *dara.RuntimeOptions) (_result *UploadDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -4347,9 +4531,11 @@ func (client *Client) UploadDataWithContext(ctx context.Context, request *Upload
 //
 // @return UploadDataSyncResponse
 func (client *Client) UploadDataSyncWithContext(ctx context.Context, request *UploadDataSyncRequest, runtime *dara.RuntimeOptions) (_result *UploadDataSyncResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -4393,9 +4579,11 @@ func (client *Client) UploadDataSyncWithContext(ctx context.Context, request *Up
 //
 // @return UploadDataSyncForLLMResponse
 func (client *Client) UploadDataSyncForLLMWithContext(ctx context.Context, request *UploadDataSyncForLLMRequest, runtime *dara.RuntimeOptions) (_result *UploadDataSyncForLLMResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -4439,9 +4627,11 @@ func (client *Client) UploadDataSyncForLLMWithContext(ctx context.Context, reque
 //
 // @return UploadDataV4Response
 func (client *Client) UploadDataV4WithContext(ctx context.Context, request *UploadDataV4Request, runtime *dara.RuntimeOptions) (_result *UploadDataV4Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -4481,9 +4671,11 @@ func (client *Client) UploadDataV4WithContext(ctx context.Context, request *Uplo
 //
 // @return UploadRuleResponse
 func (client *Client) UploadRuleWithContext(ctx context.Context, request *UploadRuleRequest, runtime *dara.RuntimeOptions) (_result *UploadRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -4523,9 +4715,11 @@ func (client *Client) UploadRuleWithContext(ctx context.Context, request *Upload
 //
 // @return VerifyFileResponse
 func (client *Client) VerifyFileWithContext(ctx context.Context, request *VerifyFileRequest, runtime *dara.RuntimeOptions) (_result *VerifyFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {
@@ -4565,9 +4759,11 @@ func (client *Client) VerifyFileWithContext(ctx context.Context, request *Verify
 //
 // @return VerifySentenceResponse
 func (client *Client) VerifySentenceWithContext(ctx context.Context, request *VerifySentenceRequest, runtime *dara.RuntimeOptions) (_result *VerifySentenceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseMeAgentId) {

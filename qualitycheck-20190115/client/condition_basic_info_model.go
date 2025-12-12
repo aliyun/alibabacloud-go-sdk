@@ -131,7 +131,21 @@ func (s *ConditionBasicInfo) SetUserGroup(v string) *ConditionBasicInfo {
 }
 
 func (s *ConditionBasicInfo) Validate() error {
-	return dara.Validate(s)
+	if s.CheckRange != nil {
+		if err := s.CheckRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Operators != nil {
+		for _, item := range s.Operators {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ConditionBasicInfoCheckRange struct {
@@ -206,7 +220,17 @@ func (s *ConditionBasicInfoCheckRange) SetRoleId(v int32) *ConditionBasicInfoChe
 }
 
 func (s *ConditionBasicInfoCheckRange) Validate() error {
-	return dara.Validate(s)
+	if s.Anchor != nil {
+		if err := s.Anchor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Range != nil {
+		if err := s.Range.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ConditionBasicInfoCheckRangeAnchor struct {

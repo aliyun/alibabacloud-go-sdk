@@ -110,7 +110,12 @@ func (s *DeleteQualityCheckSchemeResponseBody) SetSuccess(v bool) *DeleteQuality
 }
 
 func (s *DeleteQualityCheckSchemeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		if err := s.Messages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteQualityCheckSchemeResponseBodyMessages struct {

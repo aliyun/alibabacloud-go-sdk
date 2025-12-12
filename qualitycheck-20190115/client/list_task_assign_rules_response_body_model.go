@@ -140,7 +140,12 @@ func (s *ListTaskAssignRulesResponseBody) SetSuccess(v bool) *ListTaskAssignRule
 }
 
 func (s *ListTaskAssignRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTaskAssignRulesResponseBodyData struct {
@@ -165,7 +170,16 @@ func (s *ListTaskAssignRulesResponseBodyData) SetTaskAssignRuleInfo(v []*ListTas
 }
 
 func (s *ListTaskAssignRulesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.TaskAssignRuleInfo != nil {
+		for _, item := range s.TaskAssignRuleInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfo struct {
@@ -409,7 +423,32 @@ func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfo) SetUpdateTime(v 
 }
 
 func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Agents != nil {
+		if err := s.Agents.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Reviewers != nil {
+		if err := s.Reviewers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		if err := s.Rules.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SamplingMode != nil {
+		if err := s.SamplingMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SkillGroups != nil {
+		if err := s.SkillGroups.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoAgents struct {
@@ -434,7 +473,16 @@ func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoAgents) SetAgent(v
 }
 
 func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoAgents) Validate() error {
-	return dara.Validate(s)
+	if s.Agent != nil {
+		for _, item := range s.Agent {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoAgentsAgent struct {
@@ -500,7 +548,16 @@ func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoReviewers) SetRevi
 }
 
 func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoReviewers) Validate() error {
-	return dara.Validate(s)
+	if s.Reviewer != nil {
+		for _, item := range s.Reviewer {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoReviewersReviewer struct {
@@ -563,7 +620,16 @@ func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoRules) SetRuleBasi
 }
 
 func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoRules) Validate() error {
-	return dara.Validate(s)
+	if s.RuleBasicInfo != nil {
+		for _, item := range s.RuleBasicInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoRulesRuleBasicInfo struct {
@@ -717,7 +783,12 @@ func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSamplingMode) SetS
 }
 
 func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSamplingMode) Validate() error {
-	return dara.Validate(s)
+	if s.SamplingModeAgents != nil {
+		if err := s.SamplingModeAgents.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSamplingModeSamplingModeAgents struct {
@@ -742,7 +813,16 @@ func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSamplingModeSampli
 }
 
 func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSamplingModeSamplingModeAgents) Validate() error {
-	return dara.Validate(s)
+	if s.SamplingModeAgent != nil {
+		for _, item := range s.SamplingModeAgent {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSamplingModeSamplingModeAgentsSamplingModeAgent struct {
@@ -808,7 +888,16 @@ func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSkillGroups) SetSk
 }
 
 func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSkillGroups) Validate() error {
-	return dara.Validate(s)
+	if s.SkillGroup != nil {
+		for _, item := range s.SkillGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSkillGroupsSkillGroup struct {

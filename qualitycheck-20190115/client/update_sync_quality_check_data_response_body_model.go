@@ -95,7 +95,12 @@ func (s *UpdateSyncQualityCheckDataResponseBody) SetSuccess(v bool) *UpdateSyncQ
 }
 
 func (s *UpdateSyncQualityCheckDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateSyncQualityCheckDataResponseBodyData struct {

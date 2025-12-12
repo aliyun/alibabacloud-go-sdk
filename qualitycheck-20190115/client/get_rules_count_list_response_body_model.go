@@ -209,7 +209,17 @@ func (s *GetRulesCountListResponseBody) SetTotalCount(v int32) *GetRulesCountLis
 }
 
 func (s *GetRulesCountListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Messages != nil {
+		if err := s.Messages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRulesCountListResponseBodyData struct {

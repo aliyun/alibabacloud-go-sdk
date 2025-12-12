@@ -125,7 +125,12 @@ func (s *CreateQualityCheckSchemeResponseBody) SetSuccess(v bool) *CreateQuality
 }
 
 func (s *CreateQualityCheckSchemeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		if err := s.Messages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateQualityCheckSchemeResponseBodyMessages struct {

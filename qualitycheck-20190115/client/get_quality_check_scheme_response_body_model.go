@@ -122,7 +122,12 @@ func (s *GetQualityCheckSchemeResponseBody) SetSuccess(v bool) *GetQualityCheckS
 }
 
 func (s *GetQualityCheckSchemeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetQualityCheckSchemeResponseBodyData struct {
@@ -343,7 +348,25 @@ func (s *GetQualityCheckSchemeResponseBodyData) SetVersion(v int64) *GetQualityC
 }
 
 func (s *GetQualityCheckSchemeResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RuleList != nil {
+		for _, item := range s.RuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SchemeCheckTypeList != nil {
+		for _, item := range s.SchemeCheckTypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetQualityCheckSchemeResponseBodyDataSchemeCheckTypeList struct {

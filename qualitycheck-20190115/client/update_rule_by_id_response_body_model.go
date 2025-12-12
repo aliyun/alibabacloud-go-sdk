@@ -110,7 +110,12 @@ func (s *UpdateRuleByIdResponseBody) SetSuccess(v bool) *UpdateRuleByIdResponseB
 }
 
 func (s *UpdateRuleByIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		if err := s.Messages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateRuleByIdResponseBodyMessages struct {

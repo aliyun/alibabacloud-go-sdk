@@ -59,5 +59,10 @@ func (s *DelRuleCategoryResponse) SetBody(v *DelRuleCategoryResponseBody) *DelRu
 }
 
 func (s *DelRuleCategoryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

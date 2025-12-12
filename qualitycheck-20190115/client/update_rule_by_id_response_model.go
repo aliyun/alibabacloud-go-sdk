@@ -59,5 +59,10 @@ func (s *UpdateRuleByIdResponse) SetBody(v *UpdateRuleByIdResponseBody) *UpdateR
 }
 
 func (s *UpdateRuleByIdResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

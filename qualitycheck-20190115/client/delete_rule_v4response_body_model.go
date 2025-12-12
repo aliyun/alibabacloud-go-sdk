@@ -110,7 +110,12 @@ func (s *DeleteRuleV4ResponseBody) SetSuccess(v bool) *DeleteRuleV4ResponseBody 
 }
 
 func (s *DeleteRuleV4ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		if err := s.Messages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteRuleV4ResponseBodyMessages struct {

@@ -155,7 +155,16 @@ func (s *GetSyncResultResponseBody) SetSuccess(v bool) *GetSyncResultResponseBod
 }
 
 func (s *GetSyncResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSyncResultResponseBodyData struct {
@@ -347,7 +356,35 @@ func (s *GetSyncResultResponseBodyData) SetTaskName(v string) *GetSyncResultResp
 }
 
 func (s *GetSyncResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Agent != nil {
+		if err := s.Agent.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AsrResult != nil {
+		for _, item := range s.AsrResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HitResult != nil {
+		for _, item := range s.HitResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Recording != nil {
+		if err := s.Recording.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSyncResultResponseBodyDataAgent struct {
@@ -569,7 +606,16 @@ func (s *GetSyncResultResponseBodyDataHitResult) SetType(v string) *GetSyncResul
 }
 
 func (s *GetSyncResultResponseBodyDataHitResult) Validate() error {
-	return dara.Validate(s)
+	if s.Hits != nil {
+		for _, item := range s.Hits {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSyncResultResponseBodyDataHitResultHits struct {
@@ -614,7 +660,21 @@ func (s *GetSyncResultResponseBodyDataHitResultHits) SetPhrase(v *GetSyncResultR
 }
 
 func (s *GetSyncResultResponseBodyDataHitResultHits) Validate() error {
-	return dara.Validate(s)
+	if s.KeyWords != nil {
+		for _, item := range s.KeyWords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Phrase != nil {
+		if err := s.Phrase.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSyncResultResponseBodyDataHitResultHitsKeyWords struct {

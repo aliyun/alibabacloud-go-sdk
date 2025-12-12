@@ -125,7 +125,12 @@ func (s *UpdateRuleToSchemeResponseBody) SetSuccess(v bool) *UpdateRuleToSchemeR
 }
 
 func (s *UpdateRuleToSchemeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		if err := s.Messages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateRuleToSchemeResponseBodyMessages struct {

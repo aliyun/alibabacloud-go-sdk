@@ -95,7 +95,12 @@ func (s *ListSkillGroupConfigResponseBody) SetSuccess(v bool) *ListSkillGroupCon
 }
 
 func (s *ListSkillGroupConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSkillGroupConfigResponseBodyData struct {
@@ -120,7 +125,16 @@ func (s *ListSkillGroupConfigResponseBodyData) SetSkillGroupConfig(v []*ListSkil
 }
 
 func (s *ListSkillGroupConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.SkillGroupConfig != nil {
+		for _, item := range s.SkillGroupConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSkillGroupConfigResponseBodyDataSkillGroupConfig struct {
@@ -412,7 +426,22 @@ func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfig) SetVocabName(v st
 }
 
 func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AllRuleList != nil {
+		if err := s.AllRuleList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuleList != nil {
+		if err := s.RuleList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SkillGroupScreens != nil {
+		if err := s.SkillGroupScreens.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSkillGroupConfigResponseBodyDataSkillGroupConfigAllRuleList struct {
@@ -437,7 +466,16 @@ func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfigAllRuleList) SetRul
 }
 
 func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfigAllRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.RuleNameInfo != nil {
+		for _, item := range s.RuleNameInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSkillGroupConfigResponseBodyDataSkillGroupConfigAllRuleListRuleNameInfo struct {
@@ -503,7 +541,16 @@ func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfigRuleList) SetRuleNa
 }
 
 func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfigRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.RuleNameInfo != nil {
+		for _, item := range s.RuleNameInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSkillGroupConfigResponseBodyDataSkillGroupConfigRuleListRuleNameInfo struct {
@@ -569,7 +616,16 @@ func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreens) 
 }
 
 func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreens) Validate() error {
-	return dara.Validate(s)
+	if s.SkillGroupScreen != nil {
+		for _, item := range s.SkillGroupScreen {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen struct {

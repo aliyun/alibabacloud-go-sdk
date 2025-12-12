@@ -95,7 +95,12 @@ func (s *GetRuleCategoryResponseBody) SetSuccess(v bool) *GetRuleCategoryRespons
 }
 
 func (s *GetRuleCategoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRuleCategoryResponseBodyData struct {
@@ -120,7 +125,16 @@ func (s *GetRuleCategoryResponseBodyData) SetRuleCountInfo(v []*GetRuleCategoryR
 }
 
 func (s *GetRuleCategoryResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RuleCountInfo != nil {
+		for _, item := range s.RuleCountInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRuleCategoryResponseBodyDataRuleCountInfo struct {

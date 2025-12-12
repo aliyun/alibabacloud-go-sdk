@@ -209,7 +209,17 @@ func (s *ListSessionGroupResponseBody) SetSuccess(v bool) *ListSessionGroupRespo
 }
 
 func (s *ListSessionGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Messages != nil {
+		if err := s.Messages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSessionGroupResponseBodyData struct {
@@ -234,7 +244,16 @@ func (s *ListSessionGroupResponseBodyData) SetData(v []*ListSessionGroupResponse
 }
 
 func (s *ListSessionGroupResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSessionGroupResponseBodyDataData struct {
@@ -459,7 +478,42 @@ func (s *ListSessionGroupResponseBodyDataData) SetSkillGroupNameList(v *ListSess
 }
 
 func (s *ListSessionGroupResponseBodyDataData) Validate() error {
-	return dara.Validate(s)
+	if s.CallerList != nil {
+		if err := s.CallerList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomerIdList != nil {
+		if err := s.CustomerIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomerNameList != nil {
+		if err := s.CustomerNameList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomerServiceIdList != nil {
+		if err := s.CustomerServiceIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomerServiceNameList != nil {
+		if err := s.CustomerServiceNameList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReviewerList != nil {
+		if err := s.ReviewerList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SkillGroupNameList != nil {
+		if err := s.SkillGroupNameList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSessionGroupResponseBodyDataDataCallerList struct {

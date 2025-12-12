@@ -95,7 +95,12 @@ func (s *GetPrecisionTaskResponseBody) SetSuccess(v bool) *GetPrecisionTaskRespo
 }
 
 func (s *GetPrecisionTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPrecisionTaskResponseBodyData struct {
@@ -257,7 +262,12 @@ func (s *GetPrecisionTaskResponseBodyData) SetVerifiedCount(v int32) *GetPrecisi
 }
 
 func (s *GetPrecisionTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Precisions != nil {
+		if err := s.Precisions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPrecisionTaskResponseBodyDataPrecisions struct {
@@ -282,7 +292,16 @@ func (s *GetPrecisionTaskResponseBodyDataPrecisions) SetPrecision(v []*GetPrecis
 }
 
 func (s *GetPrecisionTaskResponseBodyDataPrecisions) Validate() error {
-	return dara.Validate(s)
+	if s.Precision != nil {
+		for _, item := range s.Precision {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPrecisionTaskResponseBodyDataPrecisionsPrecision struct {

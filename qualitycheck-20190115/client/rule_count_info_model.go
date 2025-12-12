@@ -587,5 +587,14 @@ func (s *RuleCountInfo) SetUserGroup(v string) *RuleCountInfo {
 }
 
 func (s *RuleCountInfo) Validate() error {
-	return dara.Validate(s)
+	if s.BusinessCategoryBasicInfoList != nil {
+		for _, item := range s.BusinessCategoryBasicInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

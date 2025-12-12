@@ -59,5 +59,10 @@ func (s *DeleteAsrVocabResponse) SetBody(v *DeleteAsrVocabResponseBody) *DeleteA
 }
 
 func (s *DeleteAsrVocabResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

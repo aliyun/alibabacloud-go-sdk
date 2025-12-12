@@ -119,7 +119,25 @@ func (s *SchemeCheckType) SetTaskFlowScoreInfoList(v []*SchemeCheckTypeTaskFlowS
 }
 
 func (s *SchemeCheckType) Validate() error {
-	return dara.Validate(s)
+	if s.SchemeScoreInfoList != nil {
+		for _, item := range s.SchemeScoreInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TaskFlowScoreInfoList != nil {
+		for _, item := range s.TaskFlowScoreInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SchemeCheckTypeSchemeScoreInfoList struct {
@@ -269,7 +287,16 @@ func (s *SchemeCheckTypeTaskFlowScoreInfoList) SetTaskFlowType(v int32) *SchemeC
 }
 
 func (s *SchemeCheckTypeTaskFlowScoreInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.SchemeScoreInfoList != nil {
+		for _, item := range s.SchemeScoreInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SchemeCheckTypeTaskFlowScoreInfoListSchemeScoreInfoList struct {

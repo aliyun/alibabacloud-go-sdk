@@ -95,7 +95,12 @@ func (s *UploadDataSyncResponseBody) SetSuccess(v bool) *UploadDataSyncResponseB
 }
 
 func (s *UploadDataSyncResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UploadDataSyncResponseBodyData struct {
@@ -120,7 +125,16 @@ func (s *UploadDataSyncResponseBodyData) SetResultInfo(v []*UploadDataSyncRespon
 }
 
 func (s *UploadDataSyncResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ResultInfo != nil {
+		for _, item := range s.ResultInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UploadDataSyncResponseBodyDataResultInfo struct {
@@ -168,7 +182,17 @@ func (s *UploadDataSyncResponseBodyDataResultInfo) SetScore(v int32) *UploadData
 }
 
 func (s *UploadDataSyncResponseBodyDataResultInfo) Validate() error {
-	return dara.Validate(s)
+	if s.HandScoreIdList != nil {
+		if err := s.HandScoreIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		if err := s.Rules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UploadDataSyncResponseBodyDataResultInfoHandScoreIdList struct {
@@ -218,7 +242,16 @@ func (s *UploadDataSyncResponseBodyDataResultInfoRules) SetRuleHitInfo(v []*Uplo
 }
 
 func (s *UploadDataSyncResponseBodyDataResultInfoRules) Validate() error {
-	return dara.Validate(s)
+	if s.RuleHitInfo != nil {
+		for _, item := range s.RuleHitInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo struct {
@@ -279,7 +312,17 @@ func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo) SetTid(v stri
 }
 
 func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ConditionInfo != nil {
+		if err := s.ConditionInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Hit != nil {
+		if err := s.Hit.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoConditionInfo struct {
@@ -304,7 +347,16 @@ func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoConditionInfo) 
 }
 
 func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoConditionInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ConditionBasicInfo != nil {
+		for _, item := range s.ConditionBasicInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoConditionInfoConditionBasicInfo struct {
@@ -357,7 +409,16 @@ func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHit) SetConditi
 }
 
 func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHit) Validate() error {
-	return dara.Validate(s)
+	if s.ConditionHitInfo != nil {
+		for _, item := range s.ConditionHitInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfo struct {
@@ -402,7 +463,22 @@ func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHit
 }
 
 func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfo) Validate() error {
-	return dara.Validate(s)
+	if s.HitCids != nil {
+		if err := s.HitCids.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HitKeyWords != nil {
+		if err := s.HitKeyWords.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Phrase != nil {
+		if err := s.Phrase.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitCids struct {
@@ -452,7 +528,16 @@ func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHit
 }
 
 func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWords) Validate() error {
-	return dara.Validate(s)
+	if s.HitKeyWord != nil {
+		for _, item := range s.HitKeyWord {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord struct {

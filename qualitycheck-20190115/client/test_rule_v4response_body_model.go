@@ -110,7 +110,12 @@ func (s *TestRuleV4ResponseBody) SetSuccess(v bool) *TestRuleV4ResponseBody {
 }
 
 func (s *TestRuleV4ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TestRuleV4ResponseBodyData struct {
@@ -155,7 +160,34 @@ func (s *TestRuleV4ResponseBodyData) SetUnhitRuleReviewInfoList(v []*TestRuleV4R
 }
 
 func (s *TestRuleV4ResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.HitRuleReviewInfoList != nil {
+		for _, item := range s.HitRuleReviewInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HitTaskFlowList != nil {
+		for _, item := range s.HitTaskFlowList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UnhitRuleReviewInfoList != nil {
+		for _, item := range s.UnhitRuleReviewInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TestRuleV4ResponseBodyDataHitRuleReviewInfoList struct {
@@ -324,7 +356,34 @@ func (s *TestRuleV4ResponseBodyDataHitRuleReviewInfoList) SetTaskFlowId(v int64)
 }
 
 func (s *TestRuleV4ResponseBodyDataHitRuleReviewInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.BranchInfoList != nil {
+		for _, item := range s.BranchInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ConditionHitInfoList != nil {
+		for _, item := range s.ConditionHitInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ConditionInfoList != nil {
+		for _, item := range s.ConditionInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TestRuleV4ResponseBodyDataHitRuleReviewInfoListBranchInfoList struct {
@@ -421,7 +480,12 @@ func (s *TestRuleV4ResponseBodyDataHitRuleReviewInfoListBranchInfoList) SetTrigg
 }
 
 func (s *TestRuleV4ResponseBodyDataHitRuleReviewInfoListBranchInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.Situation != nil {
+		if err := s.Situation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoList struct {
@@ -466,7 +530,21 @@ func (s *TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoList) Se
 }
 
 func (s *TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.KeyWords != nil {
+		for _, item := range s.KeyWords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Phrase != nil {
+		if err := s.Phrase.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListKeyWords struct {
@@ -869,7 +947,12 @@ func (s *TestRuleV4ResponseBodyDataHitTaskFlowList) SetTaskFlowType(v int32) *Te
 }
 
 func (s *TestRuleV4ResponseBodyDataHitTaskFlowList) Validate() error {
-	return dara.Validate(s)
+	if s.GraphFlow != nil {
+		if err := s.GraphFlow.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TestRuleV4ResponseBodyDataUnhitRuleReviewInfoList struct {
@@ -930,5 +1013,14 @@ func (s *TestRuleV4ResponseBodyDataUnhitRuleReviewInfoList) SetTaskFlowType(v in
 }
 
 func (s *TestRuleV4ResponseBodyDataUnhitRuleReviewInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.ConditionInfoList != nil {
+		for _, item := range s.ConditionInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

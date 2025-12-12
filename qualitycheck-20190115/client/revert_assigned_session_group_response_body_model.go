@@ -110,7 +110,12 @@ func (s *RevertAssignedSessionGroupResponseBody) SetSuccess(v bool) *RevertAssig
 }
 
 func (s *RevertAssignedSessionGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		if err := s.Messages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RevertAssignedSessionGroupResponseBodyMessages struct {

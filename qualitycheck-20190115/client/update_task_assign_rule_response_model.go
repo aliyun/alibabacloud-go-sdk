@@ -59,5 +59,10 @@ func (s *UpdateTaskAssignRuleResponse) SetBody(v *UpdateTaskAssignRuleResponseBo
 }
 
 func (s *UpdateTaskAssignRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

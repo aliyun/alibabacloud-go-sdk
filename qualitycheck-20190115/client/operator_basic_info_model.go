@@ -107,7 +107,12 @@ func (s *OperatorBasicInfo) SetUserGroup(v string) *OperatorBasicInfo {
 }
 
 func (s *OperatorBasicInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Param != nil {
+		if err := s.Param.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type OperatorBasicInfoParam struct {
@@ -652,5 +657,10 @@ func (s *OperatorBasicInfoParam) SetVelocityInMint(v int32) *OperatorBasicInfoPa
 }
 
 func (s *OperatorBasicInfoParam) Validate() error {
-	return dara.Validate(s)
+	if s.CustomerParam != nil {
+		if err := s.CustomerParam.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

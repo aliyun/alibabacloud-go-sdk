@@ -59,5 +59,10 @@ func (s *UploadAudioDataResponse) SetBody(v *UploadAudioDataResponseBody) *Uploa
 }
 
 func (s *UploadAudioDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

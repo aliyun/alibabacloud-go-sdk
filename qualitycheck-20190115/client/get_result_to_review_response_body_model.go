@@ -95,7 +95,12 @@ func (s *GetResultToReviewResponseBody) SetSuccess(v bool) *GetResultToReviewRes
 }
 
 func (s *GetResultToReviewResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResultToReviewResponseBodyData struct {
@@ -264,7 +269,32 @@ func (s *GetResultToReviewResponseBodyData) SetVid(v string) *GetResultToReviewR
 }
 
 func (s *GetResultToReviewResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Dialogues != nil {
+		if err := s.Dialogues.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HitRuleReviewInfoList != nil {
+		if err := s.HitRuleReviewInfoList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ManualScoreInfoList != nil {
+		if err := s.ManualScoreInfoList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReviewHistoryList != nil {
+		if err := s.ReviewHistoryList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReviewTypeIdList != nil {
+		if err := s.ReviewTypeIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResultToReviewResponseBodyDataDialogues struct {
@@ -289,7 +319,16 @@ func (s *GetResultToReviewResponseBodyDataDialogues) SetDialogue(v []*GetResultT
 }
 
 func (s *GetResultToReviewResponseBodyDataDialogues) Validate() error {
-	return dara.Validate(s)
+	if s.Dialogue != nil {
+		for _, item := range s.Dialogue {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResultToReviewResponseBodyDataDialoguesDialogue struct {
@@ -460,7 +499,16 @@ func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoList) SetHitRuleRevie
 }
 
 func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.HitRuleReviewInfo != nil {
+		for _, item := range s.HitRuleReviewInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo struct {
@@ -626,7 +674,22 @@ func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo
 }
 
 func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ComplainHistories != nil {
+		if err := s.ComplainHistories.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ConditionHitInfoList != nil {
+		if err := s.ConditionHitInfoList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReviewInfo != nil {
+		if err := s.ReviewInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoComplainHistories struct {
@@ -651,7 +714,16 @@ func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo
 }
 
 func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoComplainHistories) Validate() error {
-	return dara.Validate(s)
+	if s.ComplainHistories != nil {
+		for _, item := range s.ComplainHistories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoComplainHistoriesComplainHistories struct {
@@ -750,7 +822,16 @@ func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo
 }
 
 func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.ConditionHitInfo != nil {
+		for _, item := range s.ConditionHitInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo struct {
@@ -795,7 +876,22 @@ func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo
 }
 
 func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Cid != nil {
+		if err := s.Cid.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.KeyWords != nil {
+		if err := s.KeyWords.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Phrase != nil {
+		if err := s.Phrase.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid struct {
@@ -845,7 +941,16 @@ func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo
 }
 
 func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords) Validate() error {
-	return dara.Validate(s)
+	if s.KeyWord != nil {
+		for _, item := range s.KeyWord {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord struct {
@@ -1160,7 +1265,16 @@ func (s *GetResultToReviewResponseBodyDataManualScoreInfoList) SetManualScoreInf
 }
 
 func (s *GetResultToReviewResponseBodyDataManualScoreInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.ManualScoreInfo != nil {
+		for _, item := range s.ManualScoreInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfo struct {
@@ -1247,7 +1361,12 @@ func (s *GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfo) Se
 }
 
 func (s *GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ComplainHistories != nil {
+		if err := s.ComplainHistories.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfoComplainHistories struct {
@@ -1272,7 +1391,16 @@ func (s *GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfoComp
 }
 
 func (s *GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfoComplainHistories) Validate() error {
-	return dara.Validate(s)
+	if s.ComplainHistories != nil {
+		for _, item := range s.ComplainHistories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfoComplainHistoriesComplainHistories struct {
@@ -1371,7 +1499,16 @@ func (s *GetResultToReviewResponseBodyDataReviewHistoryList) SetReviewHistory(v 
 }
 
 func (s *GetResultToReviewResponseBodyDataReviewHistoryList) Validate() error {
-	return dara.Validate(s)
+	if s.ReviewHistory != nil {
+		for _, item := range s.ReviewHistory {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory struct {
@@ -1524,7 +1661,12 @@ func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory) SetTyp
 }
 
 func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory) Validate() error {
-	return dara.Validate(s)
+	if s.ReviewRightRule != nil {
+		if err := s.ReviewRightRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule struct {
@@ -1549,7 +1691,16 @@ func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRi
 }
 
 func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule) Validate() error {
-	return dara.Validate(s)
+	if s.ReviewRightRule != nil {
+		for _, item := range s.ReviewRightRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule struct {
@@ -1609,7 +1760,16 @@ func (s *GetResultToReviewResponseBodyDataReviewTypeIdList) SetReviewTypeIdList(
 }
 
 func (s *GetResultToReviewResponseBodyDataReviewTypeIdList) Validate() error {
-	return dara.Validate(s)
+	if s.ReviewTypeIdList != nil {
+		for _, item := range s.ReviewTypeIdList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResultToReviewResponseBodyDataReviewTypeIdListReviewTypeIdList struct {
@@ -1644,7 +1804,12 @@ func (s *GetResultToReviewResponseBodyDataReviewTypeIdListReviewTypeIdList) SetR
 }
 
 func (s *GetResultToReviewResponseBodyDataReviewTypeIdListReviewTypeIdList) Validate() error {
-	return dara.Validate(s)
+	if s.ReviewKeyIdList != nil {
+		if err := s.ReviewKeyIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResultToReviewResponseBodyDataReviewTypeIdListReviewTypeIdListReviewKeyIdList struct {

@@ -125,7 +125,12 @@ func (s *UpdateCheckTypeToSchemeResponseBody) SetSuccess(v bool) *UpdateCheckTyp
 }
 
 func (s *UpdateCheckTypeToSchemeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		if err := s.Messages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateCheckTypeToSchemeResponseBodyMessages struct {

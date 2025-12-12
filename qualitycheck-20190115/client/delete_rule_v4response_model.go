@@ -59,5 +59,10 @@ func (s *DeleteRuleV4Response) SetBody(v *DeleteRuleV4ResponseBody) *DeleteRuleV
 }
 
 func (s *DeleteRuleV4Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

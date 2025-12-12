@@ -59,5 +59,10 @@ func (s *ListSessionGroupResponse) SetBody(v *ListSessionGroupResponseBody) *Lis
 }
 
 func (s *ListSessionGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

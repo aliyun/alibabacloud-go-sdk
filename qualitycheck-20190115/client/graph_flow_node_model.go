@@ -143,7 +143,30 @@ func (s *GraphFlowNode) SetUseConditions(v bool) *GraphFlowNode {
 }
 
 func (s *GraphFlowNode) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NextNodes != nil {
+		for _, item := range s.NextNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Properties != nil {
+		if err := s.Properties.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GraphFlowNodeNextNodes struct {

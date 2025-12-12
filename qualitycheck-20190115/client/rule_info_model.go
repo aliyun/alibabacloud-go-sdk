@@ -683,5 +683,19 @@ func (s *RuleInfo) SetWeight(v string) *RuleInfo {
 }
 
 func (s *RuleInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Dialogues != nil {
+		for _, item := range s.Dialogues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SchemeCheckType != nil {
+		if err := s.SchemeCheckType.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *UploadDataSyncResponse) SetBody(v *UploadDataSyncResponseBody) *UploadD
 }
 
 func (s *UploadDataSyncResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *AddRuleCategoryResponse) SetBody(v *AddRuleCategoryResponseBody) *AddRu
 }
 
 func (s *AddRuleCategoryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

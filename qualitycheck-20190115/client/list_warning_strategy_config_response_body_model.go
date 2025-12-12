@@ -95,7 +95,12 @@ func (s *ListWarningStrategyConfigResponseBody) SetSuccess(v bool) *ListWarningS
 }
 
 func (s *ListWarningStrategyConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWarningStrategyConfigResponseBodyData struct {
@@ -120,7 +125,16 @@ func (s *ListWarningStrategyConfigResponseBodyData) SetData(v []*ListWarningStra
 }
 
 func (s *ListWarningStrategyConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWarningStrategyConfigResponseBodyDataData struct {

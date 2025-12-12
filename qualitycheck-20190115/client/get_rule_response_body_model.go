@@ -95,7 +95,12 @@ func (s *GetRuleResponseBody) SetSuccess(v bool) *GetRuleResponseBody {
 }
 
 func (s *GetRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRuleResponseBodyData struct {
@@ -120,7 +125,12 @@ func (s *GetRuleResponseBodyData) SetRules(v *GetRuleResponseBodyDataRules) *Get
 }
 
 func (s *GetRuleResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		if err := s.Rules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRuleResponseBodyDataRules struct {
@@ -145,7 +155,16 @@ func (s *GetRuleResponseBodyDataRules) SetRuleInfo(v []*GetRuleResponseBodyDataR
 }
 
 func (s *GetRuleResponseBodyDataRules) Validate() error {
-	return dara.Validate(s)
+	if s.RuleInfo != nil {
+		for _, item := range s.RuleInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRuleResponseBodyDataRulesRuleInfo struct {
@@ -434,7 +453,12 @@ func (s *GetRuleResponseBodyDataRulesRuleInfo) SetWeight(v string) *GetRuleRespo
 }
 
 func (s *GetRuleResponseBodyDataRulesRuleInfo) Validate() error {
-	return dara.Validate(s)
+	if s.BusinessCategoryNameList != nil {
+		if err := s.BusinessCategoryNameList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRuleResponseBodyDataRulesRuleInfoBusinessCategoryNameList struct {

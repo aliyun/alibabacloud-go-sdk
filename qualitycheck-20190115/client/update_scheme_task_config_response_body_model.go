@@ -110,7 +110,12 @@ func (s *UpdateSchemeTaskConfigResponseBody) SetSuccess(v bool) *UpdateSchemeTas
 }
 
 func (s *UpdateSchemeTaskConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		if err := s.Messages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateSchemeTaskConfigResponseBodyMessages struct {

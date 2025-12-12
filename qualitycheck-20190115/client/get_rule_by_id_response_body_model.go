@@ -122,5 +122,10 @@ func (s *GetRuleByIdResponseBody) SetSuccess(v bool) *GetRuleByIdResponseBody {
 }
 
 func (s *GetRuleByIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

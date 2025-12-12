@@ -95,7 +95,12 @@ func (s *ListWarningConfigResponseBody) SetSuccess(v bool) *ListWarningConfigRes
 }
 
 func (s *ListWarningConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWarningConfigResponseBodyData struct {
@@ -120,7 +125,16 @@ func (s *ListWarningConfigResponseBodyData) SetWarningConfigInfo(v []*ListWarnin
 }
 
 func (s *ListWarningConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.WarningConfigInfo != nil {
+		for _, item := range s.WarningConfigInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWarningConfigResponseBodyDataWarningConfigInfo struct {
@@ -227,7 +241,22 @@ func (s *ListWarningConfigResponseBodyDataWarningConfigInfo) SetUpdateTime(v str
 }
 
 func (s *ListWarningConfigResponseBodyDataWarningConfigInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Channels != nil {
+		if err := s.Channels.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RidList != nil {
+		if err := s.RidList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuleList != nil {
+		if err := s.RuleList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWarningConfigResponseBodyDataWarningConfigInfoChannels struct {
@@ -252,7 +281,16 @@ func (s *ListWarningConfigResponseBodyDataWarningConfigInfoChannels) SetChannel(
 }
 
 func (s *ListWarningConfigResponseBodyDataWarningConfigInfoChannels) Validate() error {
-	return dara.Validate(s)
+	if s.Channel != nil {
+		for _, item := range s.Channel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWarningConfigResponseBodyDataWarningConfigInfoChannelsChannel struct {
@@ -343,7 +381,16 @@ func (s *ListWarningConfigResponseBodyDataWarningConfigInfoRuleList) SetWarningR
 }
 
 func (s *ListWarningConfigResponseBodyDataWarningConfigInfoRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.WarningRule != nil {
+		for _, item := range s.WarningRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWarningConfigResponseBodyDataWarningConfigInfoRuleListWarningRule struct {
