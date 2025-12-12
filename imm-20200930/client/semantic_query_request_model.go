@@ -21,6 +21,8 @@ type iSemanticQueryRequest interface {
 	GetProjectName() *string
 	SetQuery(v string) *SemanticQueryRequest
 	GetQuery() *string
+	SetSourceURI(v string) *SemanticQueryRequest
+	GetSourceURI() *string
 	SetWithFields(v []*string) *SemanticQueryRequest
 	GetWithFields() []*string
 }
@@ -59,7 +61,8 @@ type SemanticQueryRequest struct {
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The content of the query that you input.
-	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	Query     *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 	// The fields that you want to include in the response. Including only necessary metadata fields can help reduce the size of the response.
 	//
 	// If you do not specify this parameter or set the value to null, all existing metadata fields are returned.
@@ -98,6 +101,10 @@ func (s *SemanticQueryRequest) GetQuery() *string {
 	return s.Query
 }
 
+func (s *SemanticQueryRequest) GetSourceURI() *string {
+	return s.SourceURI
+}
+
 func (s *SemanticQueryRequest) GetWithFields() []*string {
 	return s.WithFields
 }
@@ -129,6 +136,11 @@ func (s *SemanticQueryRequest) SetProjectName(v string) *SemanticQueryRequest {
 
 func (s *SemanticQueryRequest) SetQuery(v string) *SemanticQueryRequest {
 	s.Query = &v
+	return s
+}
+
+func (s *SemanticQueryRequest) SetSourceURI(v string) *SemanticQueryRequest {
+	s.SourceURI = &v
 	return s
 }
 

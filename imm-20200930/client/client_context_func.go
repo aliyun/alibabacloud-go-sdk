@@ -7348,6 +7348,10 @@ func (client *Client) SemanticQueryWithContext(ctx context.Context, tmpReq *Sema
 		query["Query"] = request.Query
 	}
 
+	if !dara.IsNil(request.SourceURI) {
+		query["SourceURI"] = request.SourceURI
+	}
+
 	if !dara.IsNil(request.WithFieldsShrink) {
 		query["WithFields"] = request.WithFieldsShrink
 	}

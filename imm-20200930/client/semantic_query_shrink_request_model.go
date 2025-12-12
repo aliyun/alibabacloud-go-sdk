@@ -21,6 +21,8 @@ type iSemanticQueryShrinkRequest interface {
 	GetProjectName() *string
 	SetQuery(v string) *SemanticQueryShrinkRequest
 	GetQuery() *string
+	SetSourceURI(v string) *SemanticQueryShrinkRequest
+	GetSourceURI() *string
 	SetWithFieldsShrink(v string) *SemanticQueryShrinkRequest
 	GetWithFieldsShrink() *string
 }
@@ -59,7 +61,8 @@ type SemanticQueryShrinkRequest struct {
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The content of the query that you input.
-	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	Query     *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 	// The fields that you want to include in the response. Including only necessary metadata fields can help reduce the size of the response.
 	//
 	// If you do not specify this parameter or set the value to null, all existing metadata fields are returned.
@@ -98,6 +101,10 @@ func (s *SemanticQueryShrinkRequest) GetQuery() *string {
 	return s.Query
 }
 
+func (s *SemanticQueryShrinkRequest) GetSourceURI() *string {
+	return s.SourceURI
+}
+
 func (s *SemanticQueryShrinkRequest) GetWithFieldsShrink() *string {
 	return s.WithFieldsShrink
 }
@@ -129,6 +136,11 @@ func (s *SemanticQueryShrinkRequest) SetProjectName(v string) *SemanticQueryShri
 
 func (s *SemanticQueryShrinkRequest) SetQuery(v string) *SemanticQueryShrinkRequest {
 	s.Query = &v
+	return s
+}
+
+func (s *SemanticQueryShrinkRequest) SetSourceURI(v string) *SemanticQueryShrinkRequest {
+	s.SourceURI = &v
 	return s
 }
 
