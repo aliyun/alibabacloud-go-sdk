@@ -19,6 +19,10 @@ type iUpdateAntCloudAuthSceneRequest interface {
 	GetMiniProgramName() *string
 	SetPlatform(v string) *UpdateAntCloudAuthSceneRequest
 	GetPlatform() *string
+	SetReturnPicCount(v int64) *UpdateAntCloudAuthSceneRequest
+	GetReturnPicCount() *int64
+	SetReturnVideoLength(v int64) *UpdateAntCloudAuthSceneRequest
+	GetReturnVideoLength() *int64
 	SetSceneId(v int64) *UpdateAntCloudAuthSceneRequest
 	GetSceneId() *int64
 	SetSceneName(v string) *UpdateAntCloudAuthSceneRequest
@@ -71,7 +75,9 @@ type UpdateAntCloudAuthSceneRequest struct {
 	// example:
 	//
 	// IOS
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	Platform          *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	ReturnPicCount    *int64  `json:"ReturnPicCount,omitempty" xml:"ReturnPicCount,omitempty"`
+	ReturnVideoLength *int64  `json:"ReturnVideoLength,omitempty" xml:"ReturnVideoLength,omitempty"`
 	// Scenario ID.
 	//
 	// This parameter is required.
@@ -132,6 +138,14 @@ func (s *UpdateAntCloudAuthSceneRequest) GetPlatform() *string {
 	return s.Platform
 }
 
+func (s *UpdateAntCloudAuthSceneRequest) GetReturnPicCount() *int64 {
+	return s.ReturnPicCount
+}
+
+func (s *UpdateAntCloudAuthSceneRequest) GetReturnVideoLength() *int64 {
+	return s.ReturnVideoLength
+}
+
 func (s *UpdateAntCloudAuthSceneRequest) GetSceneId() *int64 {
 	return s.SceneId
 }
@@ -170,6 +184,16 @@ func (s *UpdateAntCloudAuthSceneRequest) SetMiniProgramName(v string) *UpdateAnt
 
 func (s *UpdateAntCloudAuthSceneRequest) SetPlatform(v string) *UpdateAntCloudAuthSceneRequest {
 	s.Platform = &v
+	return s
+}
+
+func (s *UpdateAntCloudAuthSceneRequest) SetReturnPicCount(v int64) *UpdateAntCloudAuthSceneRequest {
+	s.ReturnPicCount = &v
+	return s
+}
+
+func (s *UpdateAntCloudAuthSceneRequest) SetReturnVideoLength(v int64) *UpdateAntCloudAuthSceneRequest {
+	s.ReturnVideoLength = &v
 	return s
 }
 

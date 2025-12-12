@@ -252,7 +252,16 @@ type InitFaceVerifyRequest struct {
 	// example:
 	//
 	// DeviceRisk
-	FaceGuardOutput     *string `json:"FaceGuardOutput,omitempty" xml:"FaceGuardOutput,omitempty"`
+	FaceGuardOutput *string `json:"FaceGuardOutput,omitempty" xml:"FaceGuardOutput,omitempty"`
+	// H5 Downgrade Confirmation Button Switch:
+	//
+	// - **Y**: Enabled (On)
+	//
+	// - **N (default)**: Disabled (Off)
+	//
+	// example:
+	//
+	// Y
 	H5DegradeConfirmBtn *string `json:"H5DegradeConfirmBtn,omitempty" xml:"H5DegradeConfirmBtn,omitempty"`
 	// User\\"s IP address.
 	//

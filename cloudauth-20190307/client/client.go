@@ -967,6 +967,14 @@ func (client *Client) CreateAntCloudAuthSceneWithOptions(request *CreateAntCloud
 		query["Platform"] = request.Platform
 	}
 
+	if !dara.IsNil(request.ReturnPicCount) {
+		query["ReturnPicCount"] = request.ReturnPicCount
+	}
+
+	if !dara.IsNil(request.ReturnVideoLength) {
+		query["ReturnVideoLength"] = request.ReturnVideoLength
+	}
+
 	if !dara.IsNil(request.SceneName) {
 		query["SceneName"] = request.SceneName
 	}
@@ -8950,6 +8958,14 @@ func (client *Client) UpdateAntCloudAuthSceneWithOptions(request *UpdateAntCloud
 
 	if !dara.IsNil(request.Platform) {
 		query["Platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.ReturnPicCount) {
+		query["ReturnPicCount"] = request.ReturnPicCount
+	}
+
+	if !dara.IsNil(request.ReturnVideoLength) {
+		query["ReturnVideoLength"] = request.ReturnVideoLength
 	}
 
 	if !dara.IsNil(request.SceneId) {

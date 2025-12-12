@@ -123,7 +123,9 @@ type DescribeListAntCloudAuthScenesResponseBodyScenes struct {
 	// example:
 	//
 	// WECHAT
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	Platform          *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	ReturnPicCount    *int64  `json:"ReturnPicCount,omitempty" xml:"ReturnPicCount,omitempty"`
+	ReturnVideoLength *int64  `json:"ReturnVideoLength,omitempty" xml:"ReturnVideoLength,omitempty"`
 	// Scenario ID.
 	//
 	// example:
@@ -200,6 +202,14 @@ func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) GetPlatform() *string
 	return s.Platform
 }
 
+func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) GetReturnPicCount() *int64 {
+	return s.ReturnPicCount
+}
+
+func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) GetReturnVideoLength() *int64 {
+	return s.ReturnVideoLength
+}
+
 func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) GetSceneId() *int64 {
 	return s.SceneId
 }
@@ -257,6 +267,16 @@ func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) SetModifier(v string)
 
 func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) SetPlatform(v string) *DescribeListAntCloudAuthScenesResponseBodyScenes {
 	s.Platform = &v
+	return s
+}
+
+func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) SetReturnPicCount(v int64) *DescribeListAntCloudAuthScenesResponseBodyScenes {
+	s.ReturnPicCount = &v
+	return s
+}
+
+func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) SetReturnVideoLength(v int64) *DescribeListAntCloudAuthScenesResponseBodyScenes {
+	s.ReturnVideoLength = &v
 	return s
 }
 

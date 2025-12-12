@@ -19,6 +19,10 @@ type iCreateAntCloudAuthSceneRequest interface {
 	GetMiniProgramName() *string
 	SetPlatform(v string) *CreateAntCloudAuthSceneRequest
 	GetPlatform() *string
+	SetReturnPicCount(v int64) *CreateAntCloudAuthSceneRequest
+	GetReturnPicCount() *int64
+	SetReturnVideoLength(v int64) *CreateAntCloudAuthSceneRequest
+	GetReturnVideoLength() *int64
 	SetSceneName(v string) *CreateAntCloudAuthSceneRequest
 	GetSceneName() *string
 	SetStoreImage(v string) *CreateAntCloudAuthSceneRequest
@@ -65,7 +69,9 @@ type CreateAntCloudAuthSceneRequest struct {
 	// example:
 	//
 	// WECHAT
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	Platform          *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	ReturnPicCount    *int64  `json:"ReturnPicCount,omitempty" xml:"ReturnPicCount,omitempty"`
+	ReturnVideoLength *int64  `json:"ReturnVideoLength,omitempty" xml:"ReturnVideoLength,omitempty"`
 	// Scene name.
 	//
 	// This parameter is required.
@@ -114,6 +120,14 @@ func (s *CreateAntCloudAuthSceneRequest) GetPlatform() *string {
 	return s.Platform
 }
 
+func (s *CreateAntCloudAuthSceneRequest) GetReturnPicCount() *int64 {
+	return s.ReturnPicCount
+}
+
+func (s *CreateAntCloudAuthSceneRequest) GetReturnVideoLength() *int64 {
+	return s.ReturnVideoLength
+}
+
 func (s *CreateAntCloudAuthSceneRequest) GetSceneName() *string {
 	return s.SceneName
 }
@@ -144,6 +158,16 @@ func (s *CreateAntCloudAuthSceneRequest) SetMiniProgramName(v string) *CreateAnt
 
 func (s *CreateAntCloudAuthSceneRequest) SetPlatform(v string) *CreateAntCloudAuthSceneRequest {
 	s.Platform = &v
+	return s
+}
+
+func (s *CreateAntCloudAuthSceneRequest) SetReturnPicCount(v int64) *CreateAntCloudAuthSceneRequest {
+	s.ReturnPicCount = &v
+	return s
+}
+
+func (s *CreateAntCloudAuthSceneRequest) SetReturnVideoLength(v int64) *CreateAntCloudAuthSceneRequest {
+	s.ReturnVideoLength = &v
 	return s
 }
 
