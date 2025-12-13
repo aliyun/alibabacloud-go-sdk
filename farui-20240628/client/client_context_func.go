@@ -73,6 +73,73 @@ func (client *Client) CreateTextFileWithContext(ctx context.Context, WorkspaceId
 
 // Summary:
 //
+// 合同抽取
+//
+// @param tmpReq - RunContractExtractRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunContractExtractResponse
+func (client *Client) RunContractExtractWithContext(ctx context.Context, workspaceId *string, tmpReq *RunContractExtractRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunContractExtractResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &RunContractExtractShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.FieldsToExtract) {
+		request.FieldsToExtractShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FieldsToExtract, dara.String("fieldsToExtract"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["appId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.FieldsToExtractShrink) {
+		body["fieldsToExtract"] = request.FieldsToExtractShrink
+	}
+
+	if !dara.IsNil(request.FileOssUrl) {
+		body["fileOssUrl"] = request.FileOssUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunContractExtract"),
+		Version:     dara.String("2024-06-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/pop/contract/extraction"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunContractExtractResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 生成合同审查结果
 //
 // @param tmpReq - RunContractResultGenerationRequest
