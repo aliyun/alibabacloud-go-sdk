@@ -196,6 +196,10 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 		body["Labels"] = request.Labels
 	}
 
+	if !dara.IsNil(request.MigrationOptions) {
+		body["MigrationOptions"] = request.MigrationOptions
+	}
+
 	if !dara.IsNil(request.OversoldType) {
 		body["OversoldType"] = request.OversoldType
 	}
@@ -1831,6 +1835,10 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, InstanceId 
 		body["DisassociateForwardInfos"] = request.DisassociateForwardInfos
 	}
 
+	if !dara.IsNil(request.DisassociateMigrationOptions) {
+		body["DisassociateMigrationOptions"] = request.DisassociateMigrationOptions
+	}
+
 	if !dara.IsNil(request.DisassociateSpot) {
 		body["DisassociateSpot"] = request.DisassociateSpot
 	}
@@ -1873,6 +1881,10 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, InstanceId 
 
 	if !dara.IsNil(request.InstanceName) {
 		body["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.MigrationOptions) {
+		body["MigrationOptions"] = request.MigrationOptions
 	}
 
 	if !dara.IsNil(request.OversoldType) {

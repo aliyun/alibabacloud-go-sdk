@@ -39,6 +39,8 @@ type iCreateInstanceRequest interface {
 	GetInstanceName() *string
 	SetLabels(v []*CreateInstanceRequestLabels) *CreateInstanceRequest
 	GetLabels() []*CreateInstanceRequestLabels
+	SetMigrationOptions(v map[string]interface{}) *CreateInstanceRequest
+	GetMigrationOptions() map[string]interface{}
 	SetOversoldType(v string) *CreateInstanceRequest
 	GetOversoldType() *string
 	SetPriority(v int64) *CreateInstanceRequest
@@ -142,8 +144,9 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// {\\"foo\\": \\"bar\\"}
-	Labels       []*CreateInstanceRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	OversoldType *string                        `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
+	Labels           []*CreateInstanceRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	MigrationOptions map[string]interface{}         `json:"MigrationOptions,omitempty" xml:"MigrationOptions,omitempty"`
+	OversoldType     *string                        `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
 	// The priority based on which resources are allocated to instances. Valid values: 1 to 9.
 	//
 	// 	- 1: the lowest priority.
@@ -276,6 +279,10 @@ func (s *CreateInstanceRequest) GetLabels() []*CreateInstanceRequestLabels {
 	return s.Labels
 }
 
+func (s *CreateInstanceRequest) GetMigrationOptions() map[string]interface{} {
+	return s.MigrationOptions
+}
+
 func (s *CreateInstanceRequest) GetOversoldType() *string {
 	return s.OversoldType
 }
@@ -392,6 +399,11 @@ func (s *CreateInstanceRequest) SetInstanceName(v string) *CreateInstanceRequest
 
 func (s *CreateInstanceRequest) SetLabels(v []*CreateInstanceRequestLabels) *CreateInstanceRequest {
 	s.Labels = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetMigrationOptions(v map[string]interface{}) *CreateInstanceRequest {
+	s.MigrationOptions = v
 	return s
 }
 

@@ -67,6 +67,8 @@ type iGetInstanceResponseBody interface {
 	GetLatestSnapshot() *GetInstanceResponseBodyLatestSnapshot
 	SetMessage(v string) *GetInstanceResponseBody
 	GetMessage() *string
+	SetMigrationOptions(v map[string]interface{}) *GetInstanceResponseBody
+	GetMigrationOptions() map[string]interface{}
 	SetNodeErrorRecovery(v *GetInstanceResponseBodyNodeErrorRecovery) *GetInstanceResponseBody
 	GetNodeErrorRecovery() *GetInstanceResponseBodyNodeErrorRecovery
 	SetPaymentType(v string) *GetInstanceResponseBody
@@ -289,7 +291,8 @@ type GetInstanceResponseBody struct {
 	// example:
 	//
 	// "XXX"
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message          *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MigrationOptions map[string]interface{} `json:"MigrationOptions,omitempty" xml:"MigrationOptions,omitempty"`
 	// The error recovery configuration of the node.
 	NodeErrorRecovery *GetInstanceResponseBodyNodeErrorRecovery `json:"NodeErrorRecovery,omitempty" xml:"NodeErrorRecovery,omitempty" type:"Struct"`
 	// The billing method. Valid values:
@@ -577,6 +580,10 @@ func (s *GetInstanceResponseBody) GetMessage() *string {
 	return s.Message
 }
 
+func (s *GetInstanceResponseBody) GetMigrationOptions() map[string]interface{} {
+	return s.MigrationOptions
+}
+
 func (s *GetInstanceResponseBody) GetNodeErrorRecovery() *GetInstanceResponseBodyNodeErrorRecovery {
 	return s.NodeErrorRecovery
 }
@@ -815,6 +822,11 @@ func (s *GetInstanceResponseBody) SetLatestSnapshot(v *GetInstanceResponseBodyLa
 
 func (s *GetInstanceResponseBody) SetMessage(v string) *GetInstanceResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetMigrationOptions(v map[string]interface{}) *GetInstanceResponseBody {
+	s.MigrationOptions = v
 	return s
 }
 

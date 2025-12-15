@@ -33,6 +33,8 @@ type iUpdateInstanceRequest interface {
 	GetDisassociateEnvironmentVariables() *bool
 	SetDisassociateForwardInfos(v bool) *UpdateInstanceRequest
 	GetDisassociateForwardInfos() *bool
+	SetDisassociateMigrationOptions(v bool) *UpdateInstanceRequest
+	GetDisassociateMigrationOptions() *bool
 	SetDisassociateSpot(v bool) *UpdateInstanceRequest
 	GetDisassociateSpot() *bool
 	SetDisassociateUserCommand(v bool) *UpdateInstanceRequest
@@ -55,6 +57,8 @@ type iUpdateInstanceRequest interface {
 	GetImageUrl() *string
 	SetInstanceName(v string) *UpdateInstanceRequest
 	GetInstanceName() *string
+	SetMigrationOptions(v map[string]interface{}) *UpdateInstanceRequest
+	GetMigrationOptions() map[string]interface{}
 	SetOversoldType(v string) *UpdateInstanceRequest
 	GetOversoldType() *string
 	SetPriority(v int64) *UpdateInstanceRequest
@@ -130,9 +134,10 @@ type UpdateInstanceRequest struct {
 	// example:
 	//
 	// false
-	DisassociateForwardInfos *bool `json:"DisassociateForwardInfos,omitempty" xml:"DisassociateForwardInfos,omitempty"`
-	DisassociateSpot         *bool `json:"DisassociateSpot,omitempty" xml:"DisassociateSpot,omitempty"`
-	DisassociateUserCommand  *bool `json:"DisassociateUserCommand,omitempty" xml:"DisassociateUserCommand,omitempty"`
+	DisassociateForwardInfos     *bool `json:"DisassociateForwardInfos,omitempty" xml:"DisassociateForwardInfos,omitempty"`
+	DisassociateMigrationOptions *bool `json:"DisassociateMigrationOptions,omitempty" xml:"DisassociateMigrationOptions,omitempty"`
+	DisassociateSpot             *bool `json:"DisassociateSpot,omitempty" xml:"DisassociateSpot,omitempty"`
+	DisassociateUserCommand      *bool `json:"DisassociateUserCommand,omitempty" xml:"DisassociateUserCommand,omitempty"`
 	// Specifies whether to delete the associated user VPC.
 	//
 	// example:
@@ -181,8 +186,9 @@ type UpdateInstanceRequest struct {
 	// example:
 	//
 	// training_data
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	OversoldType *string `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
+	InstanceName     *string                `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	MigrationOptions map[string]interface{} `json:"MigrationOptions,omitempty" xml:"MigrationOptions,omitempty"`
+	OversoldType     *string                `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
 	// The priority based on which resources are allocated to instances. Valid values: 1 to 9.
 	//
 	// 	- 1: the lowest priority.
@@ -290,6 +296,10 @@ func (s *UpdateInstanceRequest) GetDisassociateForwardInfos() *bool {
 	return s.DisassociateForwardInfos
 }
 
+func (s *UpdateInstanceRequest) GetDisassociateMigrationOptions() *bool {
+	return s.DisassociateMigrationOptions
+}
+
 func (s *UpdateInstanceRequest) GetDisassociateSpot() *bool {
 	return s.DisassociateSpot
 }
@@ -332,6 +342,10 @@ func (s *UpdateInstanceRequest) GetImageUrl() *string {
 
 func (s *UpdateInstanceRequest) GetInstanceName() *string {
 	return s.InstanceName
+}
+
+func (s *UpdateInstanceRequest) GetMigrationOptions() map[string]interface{} {
+	return s.MigrationOptions
 }
 
 func (s *UpdateInstanceRequest) GetOversoldType() *string {
@@ -430,6 +444,11 @@ func (s *UpdateInstanceRequest) SetDisassociateForwardInfos(v bool) *UpdateInsta
 	return s
 }
 
+func (s *UpdateInstanceRequest) SetDisassociateMigrationOptions(v bool) *UpdateInstanceRequest {
+	s.DisassociateMigrationOptions = &v
+	return s
+}
+
 func (s *UpdateInstanceRequest) SetDisassociateSpot(v bool) *UpdateInstanceRequest {
 	s.DisassociateSpot = &v
 	return s
@@ -482,6 +501,11 @@ func (s *UpdateInstanceRequest) SetImageUrl(v string) *UpdateInstanceRequest {
 
 func (s *UpdateInstanceRequest) SetInstanceName(v string) *UpdateInstanceRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetMigrationOptions(v map[string]interface{}) *UpdateInstanceRequest {
+	s.MigrationOptions = v
 	return s
 }
 

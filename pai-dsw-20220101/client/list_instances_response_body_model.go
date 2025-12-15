@@ -17,6 +17,8 @@ type iListInstancesResponseBody interface {
 	GetInstances() []*ListInstancesResponseBodyInstances
 	SetMessage(v string) *ListInstancesResponseBody
 	GetMessage() *string
+	SetMigrationOptions(v map[string]interface{}) *ListInstancesResponseBody
+	GetMigrationOptions() map[string]interface{}
 	SetRequestId(v string) *ListInstancesResponseBody
 	GetRequestId() *string
 	SetSuccess(v bool) *ListInstancesResponseBody
@@ -53,7 +55,8 @@ type ListInstancesResponseBody struct {
 	// example:
 	//
 	// "XXX"
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message          *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MigrationOptions map[string]interface{} `json:"MigrationOptions,omitempty" xml:"MigrationOptions,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -102,6 +105,10 @@ func (s *ListInstancesResponseBody) GetMessage() *string {
 	return s.Message
 }
 
+func (s *ListInstancesResponseBody) GetMigrationOptions() map[string]interface{} {
+	return s.MigrationOptions
+}
+
 func (s *ListInstancesResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -131,6 +138,11 @@ func (s *ListInstancesResponseBody) SetInstances(v []*ListInstancesResponseBodyI
 
 func (s *ListInstancesResponseBody) SetMessage(v string) *ListInstancesResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *ListInstancesResponseBody) SetMigrationOptions(v map[string]interface{}) *ListInstancesResponseBody {
+	s.MigrationOptions = v
 	return s
 }
 
