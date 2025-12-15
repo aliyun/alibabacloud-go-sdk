@@ -498,11 +498,6 @@ func (client *Client) CreateWuyingServerWithContext(ctx context.Context, request
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.SavingPlanId) {
-		query["SavingPlanId"] = request.SavingPlanId
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Amount) {
 		body["Amount"] = request.Amount
@@ -531,6 +526,10 @@ func (client *Client) CreateWuyingServerWithContext(ctx context.Context, request
 	bodyFlat := map[string]interface{}{}
 	if !dara.IsNil(request.DataDisk) {
 		bodyFlat["DataDisk"] = request.DataDisk
+	}
+
+	if !dara.IsNil(request.HostName) {
+		body["HostName"] = request.HostName
 	}
 
 	if !dara.IsNil(request.IdempotenceToken) {
@@ -563,6 +562,10 @@ func (client *Client) CreateWuyingServerWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.PromotionId) {
 		body["PromotionId"] = request.PromotionId
+	}
+
+	if !dara.IsNil(request.SavingPlanId) {
+		body["SavingPlanId"] = request.SavingPlanId
 	}
 
 	if !dara.IsNil(request.ServerInstanceType) {
@@ -600,8 +603,7 @@ func (client *Client) CreateWuyingServerWithContext(ctx context.Context, request
 	body = dara.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateWuyingServer"),

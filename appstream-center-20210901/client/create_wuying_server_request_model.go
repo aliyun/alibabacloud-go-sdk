@@ -23,6 +23,8 @@ type iCreateWuyingServerRequest interface {
 	GetChargeType() *string
 	SetDataDisk(v []*CreateWuyingServerRequestDataDisk) *CreateWuyingServerRequest
 	GetDataDisk() []*CreateWuyingServerRequestDataDisk
+	SetHostName(v string) *CreateWuyingServerRequest
+	GetHostName() *string
 	SetIdempotenceToken(v string) *CreateWuyingServerRequest
 	GetIdempotenceToken() *string
 	SetImageId(v string) *CreateWuyingServerRequest
@@ -102,6 +104,7 @@ type CreateWuyingServerRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The list of data disks.
 	DataDisk []*CreateWuyingServerRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	HostName *string                              `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// Idempotence token to ensure operation uniqueness
 	//
 	// example:
@@ -238,6 +241,10 @@ func (s *CreateWuyingServerRequest) GetDataDisk() []*CreateWuyingServerRequestDa
 	return s.DataDisk
 }
 
+func (s *CreateWuyingServerRequest) GetHostName() *string {
+	return s.HostName
+}
+
 func (s *CreateWuyingServerRequest) GetIdempotenceToken() *string {
 	return s.IdempotenceToken
 }
@@ -338,6 +345,11 @@ func (s *CreateWuyingServerRequest) SetChargeType(v string) *CreateWuyingServerR
 
 func (s *CreateWuyingServerRequest) SetDataDisk(v []*CreateWuyingServerRequestDataDisk) *CreateWuyingServerRequest {
 	s.DataDisk = v
+	return s
+}
+
+func (s *CreateWuyingServerRequest) SetHostName(v string) *CreateWuyingServerRequest {
+	s.HostName = &v
 	return s
 }
 
