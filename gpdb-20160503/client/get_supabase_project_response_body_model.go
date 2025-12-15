@@ -21,6 +21,8 @@ type iGetSupabaseProjectResponseBody interface {
 	GetEngine() *string
 	SetEngineVersion(v string) *GetSupabaseProjectResponseBody
 	GetEngineVersion() *string
+	SetEni(v string) *GetSupabaseProjectResponseBody
+	GetEni() *string
 	SetInstanceVersion(v string) *GetSupabaseProjectResponseBody
 	GetInstanceVersion() *string
 	SetPayType(v string) *GetSupabaseProjectResponseBody
@@ -96,6 +98,7 @@ type GetSupabaseProjectResponseBody struct {
 	//
 	// 15
 	EngineVersion   *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	Eni             *string `json:"Eni,omitempty" xml:"Eni,omitempty"`
 	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
 	PayType         *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The private (VPC) connection URL for the Supabase Dashboard.
@@ -221,6 +224,10 @@ func (s *GetSupabaseProjectResponseBody) GetEngineVersion() *string {
 	return s.EngineVersion
 }
 
+func (s *GetSupabaseProjectResponseBody) GetEni() *string {
+	return s.Eni
+}
+
 func (s *GetSupabaseProjectResponseBody) GetInstanceVersion() *string {
 	return s.InstanceVersion
 }
@@ -312,6 +319,11 @@ func (s *GetSupabaseProjectResponseBody) SetEngine(v string) *GetSupabaseProject
 
 func (s *GetSupabaseProjectResponseBody) SetEngineVersion(v string) *GetSupabaseProjectResponseBody {
 	s.EngineVersion = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetEni(v string) *GetSupabaseProjectResponseBody {
+	s.Eni = &v
 	return s
 }
 
