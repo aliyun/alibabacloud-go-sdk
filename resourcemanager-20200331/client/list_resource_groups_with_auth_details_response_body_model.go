@@ -32,7 +32,12 @@ type ListResourceGroupsWithAuthDetailsResponseBody struct {
 	// example:
 	//
 	// 10
-	PageSize       *int32                                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The response parameters.
+	//
+	// example:
+	//
+	// 4141780B-4E3D-5D2A-A8F4-44D6D34F****
 	RequestId      *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceGroups []*ListResourceGroupsWithAuthDetailsResponseBodyResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
 	// example:

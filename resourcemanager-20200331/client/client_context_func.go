@@ -2725,7 +2725,7 @@ func (client *Client) ListAncestorsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 列出自动分组修正记录
+// Queries a list of automatic grouping remediation records.
 //
 // @param request - ListAutoGroupingRemediationsRequest
 //
@@ -3413,6 +3413,58 @@ func (client *Client) ListPolicyVersionsWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出资源组能力项
+//
+// @param request - ListResourceGroupCapabilityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourceGroupCapabilityResponse
+func (client *Client) ListResourceGroupCapabilityWithContext(ctx context.Context, request *ListResourceGroupCapabilityRequest, runtime *dara.RuntimeOptions) (_result *ListResourceGroupCapabilityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.Service) {
+		query["Service"] = request.Service
+	}
+
+	if !dara.IsNil(request.SupportResourceGroupEvent) {
+		query["SupportResourceGroupEvent"] = request.SupportResourceGroupEvent
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListResourceGroupCapability"),
+		Version:     dara.String("2020-03-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListResourceGroupCapabilityResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Description:
 //
 // You can call this API operation to query all resource groups within the current account. You can also call this API operation to query a specific resource group based on the status, ID, identifier, or display name of the resource group.
@@ -3991,6 +4043,78 @@ func (client *Client) ListTrustedServiceStatusWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTrustedServiceStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资源组事件
+//
+// @param request - LookupResourceGroupEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LookupResourceGroupEventsResponse
+func (client *Client) LookupResourceGroupEventsWithContext(ctx context.Context, request *LookupResourceGroupEventsRequest, runtime *dara.RuntimeOptions) (_result *LookupResourceGroupEventsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EventCategory) {
+		query["EventCategory"] = request.EventCategory
+	}
+
+	if !dara.IsNil(request.LookupAttributes) {
+		query["LookupAttributes"] = request.LookupAttributes
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceGroupDisplayName) {
+		query["ResourceGroupDisplayName"] = request.ResourceGroupDisplayName
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("LookupResourceGroupEvents"),
+		Version:     dara.String("2020-03-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &LookupResourceGroupEventsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5089,7 +5213,7 @@ func (client *Client) UpdateResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 更新资源组管理员配置
+// Updates the configurations of a resource group administrator.
 //
 // @param request - UpdateResourceGroupAdminSettingRequest
 //

@@ -20,15 +20,24 @@ type iListAutoGroupingRemediationsResponseBody interface {
 }
 
 type ListAutoGroupingRemediationsResponseBody struct {
+	// The number of entries per page.
+	//
+	// Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// TGlzdFJlc291cm****
-	NextToken    *string                                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The remediation records.
 	Remediations []*ListAutoGroupingRemediationsResponseBodyRemediations `json:"Remediations,omitempty" xml:"Remediations,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6F959E33-7B6D-5F58-BB0B-ED616DC7C70B
@@ -93,30 +102,47 @@ func (s *ListAutoGroupingRemediationsResponseBody) Validate() error {
 }
 
 type ListAutoGroupingRemediationsResponseBodyRemediations struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The remediation record ID.
+	//
 	// example:
 	//
 	// 0028d4****cfe94956ef6708a373f396fbc840e306f
 	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	// The remediation time.
+	//
 	// example:
 	//
 	// 2022-01-01 00:00:00
 	RemediationTime *string `json:"RemediationTime,omitempty" xml:"RemediationTime,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// i-uf664f66v1****drkea4
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type.
+	//
+	// You can obtain the resource type from the **Resource type*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ID of the Alibaba Cloud service.
+	//
+	// You can obtain the ID from the **Service code*	- column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+	//
 	// example:
 	//
 	// ecs
-	Service                 *string                                                                      `json:"Service,omitempty" xml:"Service,omitempty"`
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The information about the new resource group.
 	TargetResourceGroupInfo *ListAutoGroupingRemediationsResponseBodyRemediationsTargetResourceGroupInfo `json:"TargetResourceGroupInfo,omitempty" xml:"TargetResourceGroupInfo,omitempty" type:"Struct"`
 }
 
@@ -201,10 +227,14 @@ func (s *ListAutoGroupingRemediationsResponseBodyRemediations) Validate() error 
 }
 
 type ListAutoGroupingRemediationsResponseBodyRemediationsTargetResourceGroupInfo struct {
+	// The resource group name.
+	//
 	// example:
 	//
 	// ProjectA
 	ResourceGroupDisplayName *string `json:"ResourceGroupDisplayName,omitempty" xml:"ResourceGroupDisplayName,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmygrk****wfa

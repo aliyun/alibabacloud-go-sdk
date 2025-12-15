@@ -16,10 +16,14 @@ type iGetResourceGroupNotificationSettingResponseBody interface {
 }
 
 type GetResourceGroupNotificationSettingResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 7F70D09B-0EE5-54A6-A09A-1EBDB9297172
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the group event notification is enabled.
+	//
 	// example:
 	//
 	// true

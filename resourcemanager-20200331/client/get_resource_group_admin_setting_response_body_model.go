@@ -16,10 +16,14 @@ type iGetResourceGroupAdminSettingResponseBody interface {
 }
 
 type GetResourceGroupAdminSettingResponseBody struct {
+	// Indicates whether enable the Use Creator as Administrator feature.
+	//
 	// example:
 	//
 	// true
 	CreatorAsAdmin *bool `json:"CreatorAsAdmin,omitempty" xml:"CreatorAsAdmin,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 776B05B3-A0B0-464B-A191-F4E1119A94B2

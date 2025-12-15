@@ -2722,7 +2722,7 @@ func (client *Client) DisableControlPolicy() (_result *DisableControlPolicyRespo
 
 // Summary:
 //
-// 关闭资源组通知
+// Disables group event notification.
 //
 // @param request - DisableResourceGroupNotificationRequest
 //
@@ -2753,7 +2753,7 @@ func (client *Client) DisableResourceGroupNotificationWithOptions(runtime *dara.
 
 // Summary:
 //
-// 关闭资源组通知
+// Disables group event notification.
 //
 // @return DisableResourceGroupNotificationResponse
 func (client *Client) DisableResourceGroupNotification() (_result *DisableResourceGroupNotificationResponse, _err error) {
@@ -3004,7 +3004,7 @@ func (client *Client) EnableResourceDirectory(request *EnableResourceDirectoryRe
 
 // Summary:
 //
-// 开通资源组通知
+// Enables group event notification.
 //
 // @param request - EnableResourceGroupNotificationRequest
 //
@@ -3035,7 +3035,7 @@ func (client *Client) EnableResourceGroupNotificationWithOptions(runtime *dara.R
 
 // Summary:
 //
-// 开通资源组通知
+// Enables group event notification.
 //
 // @return EnableResourceGroupNotificationResponse
 func (client *Client) EnableResourceGroupNotification() (_result *EnableResourceGroupNotificationResponse, _err error) {
@@ -3930,7 +3930,7 @@ func (client *Client) GetResourceGroup(request *GetResourceGroupRequest) (_resul
 
 // Summary:
 //
-// 查询资源组管理员配置
+// Queries the configurations of a resource group administrator.
 //
 // @param request - GetResourceGroupAdminSettingRequest
 //
@@ -3961,7 +3961,7 @@ func (client *Client) GetResourceGroupAdminSettingWithOptions(runtime *dara.Runt
 
 // Summary:
 //
-// 查询资源组管理员配置
+// Queries the configurations of a resource group administrator.
 //
 // @return GetResourceGroupAdminSettingResponse
 func (client *Client) GetResourceGroupAdminSetting() (_result *GetResourceGroupAdminSettingResponse, _err error) {
@@ -3977,7 +3977,7 @@ func (client *Client) GetResourceGroupAdminSetting() (_result *GetResourceGroupA
 
 // Summary:
 //
-// 查询资源组通知设置
+// Queries the notification settings of a resource group.
 //
 // @param request - GetResourceGroupNotificationSettingRequest
 //
@@ -4008,7 +4008,7 @@ func (client *Client) GetResourceGroupNotificationSettingWithOptions(runtime *da
 
 // Summary:
 //
-// 查询资源组通知设置
+// Queries the notification settings of a resource group.
 //
 // @return GetResourceGroupNotificationSettingResponse
 func (client *Client) GetResourceGroupNotificationSetting() (_result *GetResourceGroupNotificationSettingResponse, _err error) {
@@ -4636,7 +4636,7 @@ func (client *Client) ListAssociatedTransferSetting() (_result *ListAssociatedTr
 
 // Summary:
 //
-// 列出自动分组修正记录
+// Queries a list of automatic grouping remediation records.
 //
 // @param request - ListAutoGroupingRemediationsRequest
 //
@@ -4712,7 +4712,7 @@ func (client *Client) ListAutoGroupingRemediationsWithOptions(request *ListAutoG
 
 // Summary:
 //
-// 列出自动分组修正记录
+// Queries a list of automatic grouping remediation records.
 //
 // @param request - ListAutoGroupingRemediationsRequest
 //
@@ -5566,6 +5566,76 @@ func (client *Client) ListPolicyVersions(request *ListPolicyVersionsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出资源组能力项
+//
+// @param request - ListResourceGroupCapabilityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourceGroupCapabilityResponse
+func (client *Client) ListResourceGroupCapabilityWithOptions(request *ListResourceGroupCapabilityRequest, runtime *dara.RuntimeOptions) (_result *ListResourceGroupCapabilityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.Service) {
+		query["Service"] = request.Service
+	}
+
+	if !dara.IsNil(request.SupportResourceGroupEvent) {
+		query["SupportResourceGroupEvent"] = request.SupportResourceGroupEvent
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListResourceGroupCapability"),
+		Version:     dara.String("2020-03-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListResourceGroupCapabilityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出资源组能力项
+//
+// @param request - ListResourceGroupCapabilityRequest
+//
+// @return ListResourceGroupCapabilityResponse
+func (client *Client) ListResourceGroupCapability(request *ListResourceGroupCapabilityRequest) (_result *ListResourceGroupCapabilityResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListResourceGroupCapabilityResponse{}
+	_body, _err := client.ListResourceGroupCapabilityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Description:
 //
 // You can call this API operation to query all resource groups within the current account. You can also call this API operation to query a specific resource group based on the status, ID, identifier, or display name of the resource group.
@@ -6333,6 +6403,96 @@ func (client *Client) ListTrustedServiceStatus(request *ListTrustedServiceStatus
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListTrustedServiceStatusResponse{}
 	_body, _err := client.ListTrustedServiceStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资源组事件
+//
+// @param request - LookupResourceGroupEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LookupResourceGroupEventsResponse
+func (client *Client) LookupResourceGroupEventsWithOptions(request *LookupResourceGroupEventsRequest, runtime *dara.RuntimeOptions) (_result *LookupResourceGroupEventsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EventCategory) {
+		query["EventCategory"] = request.EventCategory
+	}
+
+	if !dara.IsNil(request.LookupAttributes) {
+		query["LookupAttributes"] = request.LookupAttributes
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceGroupDisplayName) {
+		query["ResourceGroupDisplayName"] = request.ResourceGroupDisplayName
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("LookupResourceGroupEvents"),
+		Version:     dara.String("2020-03-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &LookupResourceGroupEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资源组事件
+//
+// @param request - LookupResourceGroupEventsRequest
+//
+// @return LookupResourceGroupEventsResponse
+func (client *Client) LookupResourceGroupEvents(request *LookupResourceGroupEventsRequest) (_result *LookupResourceGroupEventsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &LookupResourceGroupEventsResponse{}
+	_body, _err := client.LookupResourceGroupEventsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7852,7 +8012,7 @@ func (client *Client) UpdateResourceGroup(request *UpdateResourceGroupRequest) (
 
 // Summary:
 //
-// 更新资源组管理员配置
+// Updates the configurations of a resource group administrator.
 //
 // @param request - UpdateResourceGroupAdminSettingRequest
 //
@@ -7896,7 +8056,7 @@ func (client *Client) UpdateResourceGroupAdminSettingWithOptions(request *Update
 
 // Summary:
 //
-// 更新资源组管理员配置
+// Updates the configurations of a resource group administrator.
 //
 // @param request - UpdateResourceGroupAdminSettingRequest
 //
