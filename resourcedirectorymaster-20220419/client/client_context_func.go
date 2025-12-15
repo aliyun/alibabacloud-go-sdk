@@ -1821,6 +1821,110 @@ func (client *Client) ListAncestorsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
+// Queries a list of members who have the permission to query member information in a resource directory.
+//
+// Description:
+//
+// The permission to query member information refers to the permission to call the [GetAccount](~~GetAccount~~) API operation.
+//
+// @param request - ListAuthorizedAccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthorizedAccountsResponse
+func (client *Client) ListAuthorizedAccountsWithContext(ctx context.Context, request *ListAuthorizedAccountsRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorizedAccountsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAuthorizedAccounts"),
+		Version:     dara.String("2022-04-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAuthorizedAccountsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of folders that have permissions to query subfolder information in a resource directory.
+//
+// Description:
+//
+// The permissions to query subfolder information refer to the permissions to call the [ListAccountsForParent](~~ListAccountsForParent~~) and [ListFoldersForParent](~~ListFoldersForParent~~) API operations.
+//
+// @param request - ListAuthorizedFoldersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthorizedFoldersResponse
+func (client *Client) ListAuthorizedFoldersWithContext(ctx context.Context, request *ListAuthorizedFoldersRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorizedFoldersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAuthorizedFolders"),
+		Version:     dara.String("2022-04-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAuthorizedFoldersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries access control policies.
 //
 // @param request - ListControlPoliciesRequest
