@@ -409,7 +409,25 @@ func (s *CreateTCInstanceRequest) SetZoneId(v string) *CreateTCInstanceRequest {
 }
 
 func (s *CreateTCInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DataDisk != nil {
+		for _, item := range s.DataDisk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTCInstanceRequestDataDisk struct {

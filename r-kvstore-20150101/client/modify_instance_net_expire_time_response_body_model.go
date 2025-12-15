@@ -70,7 +70,12 @@ func (s *ModifyInstanceNetExpireTimeResponseBody) SetRequestId(v string) *Modify
 }
 
 func (s *ModifyInstanceNetExpireTimeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetInfoItems != nil {
+		if err := s.NetInfoItems.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyInstanceNetExpireTimeResponseBodyNetInfoItems struct {
@@ -95,7 +100,16 @@ func (s *ModifyInstanceNetExpireTimeResponseBodyNetInfoItems) SetNetInfoItem(v [
 }
 
 func (s *ModifyInstanceNetExpireTimeResponseBodyNetInfoItems) Validate() error {
-	return dara.Validate(s)
+	if s.NetInfoItem != nil {
+		for _, item := range s.NetInfoItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyInstanceNetExpireTimeResponseBodyNetInfoItemsNetInfoItem struct {

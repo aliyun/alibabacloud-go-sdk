@@ -70,7 +70,12 @@ func (s *DescribeCacheAnalysisReportListResponseBody) SetRequestId(v string) *De
 }
 
 func (s *DescribeCacheAnalysisReportListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DailyTasks != nil {
+		if err := s.DailyTasks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCacheAnalysisReportListResponseBodyDailyTasks struct {
@@ -95,7 +100,16 @@ func (s *DescribeCacheAnalysisReportListResponseBodyDailyTasks) SetDailyTask(v [
 }
 
 func (s *DescribeCacheAnalysisReportListResponseBodyDailyTasks) Validate() error {
-	return dara.Validate(s)
+	if s.DailyTask != nil {
+		for _, item := range s.DailyTask {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTask struct {
@@ -136,7 +150,12 @@ func (s *DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTask) SetTask
 }
 
 func (s *DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTask) Validate() error {
-	return dara.Validate(s)
+	if s.Tasks != nil {
+		if err := s.Tasks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTaskTasks struct {
@@ -161,7 +180,16 @@ func (s *DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTaskTasks) Se
 }
 
 func (s *DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTaskTasks) Validate() error {
-	return dara.Validate(s)
+	if s.Task != nil {
+		for _, item := range s.Task {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTaskTasksTask struct {

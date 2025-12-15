@@ -14,6 +14,8 @@ type iModifyBackupExpireTimeResponseBody interface {
 }
 
 type ModifyBackupExpireTimeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// B560AAD5-5027-51AD-A0D4-FA4DB1A76F40

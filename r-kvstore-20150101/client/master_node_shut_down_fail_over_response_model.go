@@ -59,5 +59,10 @@ func (s *MasterNodeShutDownFailOverResponse) SetBody(v *MasterNodeShutDownFailOv
 }
 
 func (s *MasterNodeShutDownFailOverResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

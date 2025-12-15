@@ -340,7 +340,17 @@ func (s *DescribeEngineVersionResponseBody) SetRequestId(v string) *DescribeEngi
 }
 
 func (s *DescribeEngineVersionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBLatestMinorVersion != nil {
+		if err := s.DBLatestMinorVersion.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProxyLatestMinorVersion != nil {
+		if err := s.ProxyLatestMinorVersion.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEngineVersionResponseBodyDBLatestMinorVersion struct {
@@ -402,7 +412,12 @@ func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersion) SetVersionReleas
 }
 
 func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersion) Validate() error {
-	return dara.Validate(s)
+	if s.VersionRelease != nil {
+		if err := s.VersionRelease.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease struct {
@@ -449,7 +464,12 @@ func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease) Se
 }
 
 func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease) Validate() error {
-	return dara.Validate(s)
+	if s.ReleaseInfo != nil {
+		if err := s.ReleaseInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfo struct {
@@ -474,7 +494,16 @@ func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseRele
 }
 
 func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ReleaseInfoList != nil {
+		for _, item := range s.ReleaseInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList struct {
@@ -626,7 +655,12 @@ func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersion) SetVersionRel
 }
 
 func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersion) Validate() error {
-	return dara.Validate(s)
+	if s.VersionRelease != nil {
+		if err := s.VersionRelease.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease struct {
@@ -673,7 +707,12 @@ func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease)
 }
 
 func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease) Validate() error {
-	return dara.Validate(s)
+	if s.ReleaseInfo != nil {
+		if err := s.ReleaseInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfo struct {
@@ -698,7 +737,16 @@ func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseR
 }
 
 func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ReleaseInfoList != nil {
+		for _, item := range s.ReleaseInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList struct {

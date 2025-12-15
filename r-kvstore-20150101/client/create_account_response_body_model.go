@@ -9,6 +9,8 @@ type iCreateAccountResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccountName(v string) *CreateAccountResponseBody
+	GetAccountName() *string
 	SetAcountName(v string) *CreateAccountResponseBody
 	GetAcountName() *string
 	SetInstanceId(v string) *CreateAccountResponseBody
@@ -18,6 +20,7 @@ type iCreateAccountResponseBody interface {
 }
 
 type CreateAccountResponseBody struct {
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The name of the account.
 	//
 	// example:
@@ -46,6 +49,10 @@ func (s CreateAccountResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateAccountResponseBody) GetAccountName() *string {
+	return s.AccountName
+}
+
 func (s *CreateAccountResponseBody) GetAcountName() *string {
 	return s.AcountName
 }
@@ -56,6 +63,11 @@ func (s *CreateAccountResponseBody) GetInstanceId() *string {
 
 func (s *CreateAccountResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *CreateAccountResponseBody) SetAccountName(v string) *CreateAccountResponseBody {
+	s.AccountName = &v
+	return s
 }
 
 func (s *CreateAccountResponseBody) SetAcountName(v string) *CreateAccountResponseBody {

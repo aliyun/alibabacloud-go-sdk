@@ -59,5 +59,10 @@ func (s *RenewAdditionalBandwidthResponse) SetBody(v *RenewAdditionalBandwidthRe
 }
 
 func (s *RenewAdditionalBandwidthResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

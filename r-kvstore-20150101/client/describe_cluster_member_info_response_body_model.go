@@ -53,7 +53,16 @@ func (s *DescribeClusterMemberInfoResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeClusterMemberInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterChildren != nil {
+		for _, item := range s.ClusterChildren {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterMemberInfoResponseBodyClusterChildren struct {

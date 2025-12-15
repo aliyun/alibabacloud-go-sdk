@@ -30,6 +30,8 @@ type DeleteBackupRequest struct {
 	//
 	// 521****66
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the ID of instance.
+	//
 	// This parameter is required.
 	//
 	// example:

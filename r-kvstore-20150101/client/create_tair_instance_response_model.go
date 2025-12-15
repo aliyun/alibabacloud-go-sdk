@@ -59,5 +59,10 @@ func (s *CreateTairInstanceResponse) SetBody(v *CreateTairInstanceResponseBody) 
 }
 
 func (s *CreateTairInstanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

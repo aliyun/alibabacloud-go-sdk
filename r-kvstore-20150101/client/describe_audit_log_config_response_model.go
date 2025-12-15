@@ -59,5 +59,10 @@ func (s *DescribeAuditLogConfigResponse) SetBody(v *DescribeAuditLogConfigRespon
 }
 
 func (s *DescribeAuditLogConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *DescribeAccountsResponseBody) SetRequestId(v string) *DescribeAccountsR
 }
 
 func (s *DescribeAccountsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Accounts != nil {
+		if err := s.Accounts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAccountsResponseBodyAccounts struct {
@@ -78,7 +83,16 @@ func (s *DescribeAccountsResponseBodyAccounts) SetAccount(v []*DescribeAccountsR
 }
 
 func (s *DescribeAccountsResponseBodyAccounts) Validate() error {
-	return dara.Validate(s)
+	if s.Account != nil {
+		for _, item := range s.Account {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAccountsResponseBodyAccountsAccount struct {
@@ -187,7 +201,12 @@ func (s *DescribeAccountsResponseBodyAccountsAccount) SetInstanceId(v string) *D
 }
 
 func (s *DescribeAccountsResponseBodyAccountsAccount) Validate() error {
-	return dara.Validate(s)
+	if s.DatabasePrivileges != nil {
+		if err := s.DatabasePrivileges.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAccountsResponseBodyAccountsAccountDatabasePrivileges struct {
@@ -212,7 +231,16 @@ func (s *DescribeAccountsResponseBodyAccountsAccountDatabasePrivileges) SetDatab
 }
 
 func (s *DescribeAccountsResponseBodyAccountsAccountDatabasePrivileges) Validate() error {
-	return dara.Validate(s)
+	if s.DatabasePrivilege != nil {
+		for _, item := range s.DatabasePrivilege {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAccountsResponseBodyAccountsAccountDatabasePrivilegesDatabasePrivilege struct {

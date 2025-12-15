@@ -177,7 +177,12 @@ func (s *DescribeBackupPolicyResponseBody) SetRequestId(v string) *DescribeBacku
 }
 
 func (s *DescribeBackupPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccessDeniedDetail != nil {
+		if err := s.AccessDeniedDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackupPolicyResponseBodyAccessDeniedDetail struct {

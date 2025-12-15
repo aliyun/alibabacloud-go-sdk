@@ -28,34 +28,50 @@ type iCreateTairKVCacheVNodeResponseBody interface {
 }
 
 type CreateTairKVCacheVNodeResponseBody struct {
+	// The ID of the Tair VNode instance.
+	//
 	// example:
 	//
 	// tv-2zeb1ce76fee****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the VNode.
+	//
 	// example:
 	//
 	// vn-03a49876edb****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 20905403119****
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the region where the instance resides.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 2BE6E619-A657-42E3-AD2D-18F8428A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the VCluster.
+	//
 	// example:
 	//
 	// vc-16965a9267*****-*****
 	VClusterId *string `json:"VClusterId,omitempty" xml:"VClusterId,omitempty"`
+	// The ID of the VCluster instance.
+	//
 	// example:
 	//
 	// tk-2ze4bba3c8fe****
 	VkName *string `json:"VkName,omitempty" xml:"VkName,omitempty"`
+	// The zone ID of the instance.
+	//
 	// example:
 	//
 	// cn-beijing-f

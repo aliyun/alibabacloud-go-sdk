@@ -15,6 +15,8 @@ type iEnableAdditionalBandwidthRequest interface {
   GetAutoRenew() *bool 
   SetAutoRenewPeriod(v int32) *EnableAdditionalBandwidthRequest
   GetAutoRenewPeriod() *int32 
+  SetBandWidthBurst(v bool) *EnableAdditionalBandwidthRequest
+  GetBandWidthBurst() *bool 
   SetBandwidth(v string) *EnableAdditionalBandwidthRequest
   GetBandwidth() *string 
   SetChargeType(v string) *EnableAdditionalBandwidthRequest
@@ -72,6 +74,7 @@ type EnableAdditionalBandwidthRequest struct {
   // 
   // 1
   AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+  BandWidthBurst *bool `json:"BandWidthBurst,omitempty" xml:"BandWidthBurst,omitempty"`
   // The amount of extra bandwidth that you want to purchase. Unit: Mbit/s. The value must be an integer greater than or equal to **0**. The maximum value can be up to six times the default bandwidth of the instance or a single shard, but cannot exceed 192 Mbit/s. For example, if the default bandwidth of an instance is 10 Mbit/s, the value range of this parameter is **0*	- to **60**.
   // 
   // > 	- You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/473782.html) operation to obtain the default maximum bandwidth returned by the **DefaultBandWidth*	- response parameter. For more information about instance types, see [Overview](https://help.aliyun.com/document_detail/26350.html).
@@ -155,6 +158,10 @@ func (s *EnableAdditionalBandwidthRequest) GetAutoRenewPeriod() *int32  {
   return s.AutoRenewPeriod
 }
 
+func (s *EnableAdditionalBandwidthRequest) GetBandWidthBurst() *bool  {
+  return s.BandWidthBurst
+}
+
 func (s *EnableAdditionalBandwidthRequest) GetBandwidth() *string  {
   return s.Bandwidth
 }
@@ -215,6 +222,11 @@ func (s *EnableAdditionalBandwidthRequest) SetAutoRenew(v bool) *EnableAdditiona
 
 func (s *EnableAdditionalBandwidthRequest) SetAutoRenewPeriod(v int32) *EnableAdditionalBandwidthRequest {
   s.AutoRenewPeriod = &v
+  return s
+}
+
+func (s *EnableAdditionalBandwidthRequest) SetBandWidthBurst(v bool) *EnableAdditionalBandwidthRequest {
+  s.BandWidthBurst = &v
   return s
 }
 

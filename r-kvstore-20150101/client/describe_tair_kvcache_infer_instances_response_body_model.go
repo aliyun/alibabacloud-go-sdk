@@ -22,11 +22,23 @@ type iDescribeTairKVCacheInferInstancesResponseBody interface {
 }
 
 type DescribeTairKVCacheInferInstancesResponseBody struct {
-	Instances  *DescribeTairKVCacheInferInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	PageNumber *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Instances *DescribeTairKVCacheInferInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// CD225838-7069-5CE4-89E1-67B83AC149C8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeTairKVCacheInferInstancesResponseBody) String() string {
@@ -83,7 +95,12 @@ func (s *DescribeTairKVCacheInferInstancesResponseBody) SetTotalCount(v int32) *
 }
 
 func (s *DescribeTairKVCacheInferInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		if err := s.Instances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTairKVCacheInferInstancesResponseBodyInstances struct {
@@ -108,34 +125,114 @@ func (s *DescribeTairKVCacheInferInstancesResponseBodyInstances) SetTairInferIns
 }
 
 func (s *DescribeTairKVCacheInferInstancesResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.TairInferInstanceDTO != nil {
+		for _, item := range s.TairInferInstanceDTO {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO struct {
-	AckId           *string                                                                         `json:"AckId,omitempty" xml:"AckId,omitempty"`
-	Capacity        *int64                                                                          `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	ChargeType      *string                                                                         `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ComputeUnitNum  *int32                                                                          `json:"ComputeUnitNum,omitempty" xml:"ComputeUnitNum,omitempty"`
-	CreateTime      *string                                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DestroyTime     *string                                                                         `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
-	EndTime         *string                                                                         `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceClass   *string                                                                         `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	InstanceId      *string                                                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName    *string                                                                         `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceStatus  *string                                                                         `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InstanceType    *string                                                                         `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Model           *string                                                                         `json:"Model,omitempty" xml:"Model,omitempty"`
-	ModelServiceNum *int32                                                                          `json:"ModelServiceNum,omitempty" xml:"ModelServiceNum,omitempty"`
-	NetworkType     *string                                                                         `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PrivateIp       *string                                                                         `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	RegionId        *string                                                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// c809******************************
+	AckId *string `json:"AckId,omitempty" xml:"AckId,omitempty"`
+	// example:
+	//
+	// 256
+	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// example:
+	//
+	// PostPaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// 1
+	ComputeUnitNum *int32 `json:"ComputeUnitNum,omitempty" xml:"ComputeUnitNum,omitempty"`
+	// example:
+	//
+	// 2025-04-07T04:46Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2025-04-07T04:46Z
+	DestroyTime       *string `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
+	ElasticVNodeCount *int32  `json:"ElasticVNodeCount,omitempty" xml:"ElasticVNodeCount,omitempty"`
+	// example:
+	//
+	// 2025-11-04T02:09:26Z
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FixedVNodeCount *int32  `json:"FixedVNodeCount,omitempty" xml:"FixedVNodeCount,omitempty"`
+	// example:
+	//
+	// kvcache.cu.g4b.2
+	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	// example:
+	//
+	// tk-9dp7e37bab*****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// kvcache-7
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// Normal
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// example:
+	//
+	// TairInfer
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// DeepSeek-OCR
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// 1
+	ModelServiceNum *int32 `json:"ModelServiceNum,omitempty" xml:"ModelServiceNum,omitempty"`
+	// example:
+	//
+	// VPC
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// example:
+	//
+	// 172.16.49.***
+	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm4bdru5z****
 	ResourceGroupId *string                                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tags            *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	VNodeCount      *int32                                                                          `json:"VNodeCount,omitempty" xml:"VNodeCount,omitempty"`
-	VNodeName       *string                                                                         `json:"VNodeName,omitempty" xml:"VNodeName,omitempty"`
-	VSwitchId       *string                                                                         `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId           *string                                                                         `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId          *string                                                                         `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// 2
+	VNodeCount *int32 `json:"VNodeCount,omitempty" xml:"VNodeCount,omitempty"`
+	// example:
+	//
+	// tv-xxxxx
+	VNodeName *string `json:"VNodeName,omitempty" xml:"VNodeName,omitempty"`
+	// example:
+	//
+	// vsw-8vbf0ksk774ai6q1d****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-2zef5w848p4j5g***
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-g
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) String() string {
@@ -170,8 +267,16 @@ func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstance
 	return s.DestroyTime
 }
 
+func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) GetElasticVNodeCount() *int32 {
+	return s.ElasticVNodeCount
+}
+
 func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) GetEndTime() *string {
 	return s.EndTime
+}
+
+func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) GetFixedVNodeCount() *int32 {
+	return s.FixedVNodeCount
 }
 
 func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) GetInstanceClass() *string {
@@ -272,8 +377,18 @@ func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstance
 	return s
 }
 
+func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) SetElasticVNodeCount(v int32) *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO {
+	s.ElasticVNodeCount = &v
+	return s
+}
+
 func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) SetEndTime(v string) *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) SetFixedVNodeCount(v int32) *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO {
+	s.FixedVNodeCount = &v
 	return s
 }
 
@@ -363,7 +478,12 @@ func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstance
 }
 
 func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTOTags struct {
@@ -388,11 +508,26 @@ func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstance
 }
 
 func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTOTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTOTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// thread
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 900
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

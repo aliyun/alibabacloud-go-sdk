@@ -172,7 +172,17 @@ func (s *DescribeBackupsResponseBody) SetTotalCount(v int32) *DescribeBackupsRes
 }
 
 func (s *DescribeBackupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccessDeniedDetail != nil {
+		if err := s.AccessDeniedDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Backups != nil {
+		if err := s.Backups.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackupsResponseBodyAccessDeniedDetail struct {
@@ -317,7 +327,16 @@ func (s *DescribeBackupsResponseBodyBackups) SetBackup(v []*DescribeBackupsRespo
 }
 
 func (s *DescribeBackupsResponseBodyBackups) Validate() error {
-	return dara.Validate(s)
+	if s.Backup != nil {
+		for _, item := range s.Backup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackupsResponseBodyBackupsBackup struct {

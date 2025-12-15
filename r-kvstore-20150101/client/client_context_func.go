@@ -21,9 +21,11 @@ import (
 //
 // @return AddShardingNodeResponse
 func (client *Client) AddShardingNodeWithContext(ctx context.Context, request *AddShardingNodeRequest, runtime *dara.RuntimeOptions) (_result *AddShardingNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -125,9 +127,11 @@ func (client *Client) AddShardingNodeWithContext(ctx context.Context, request *A
 //
 // @return AllocateDirectConnectionResponse
 func (client *Client) AllocateDirectConnectionWithContext(ctx context.Context, request *AllocateDirectConnectionRequest, runtime *dara.RuntimeOptions) (_result *AllocateDirectConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConnectionString) {
@@ -199,9 +203,11 @@ func (client *Client) AllocateDirectConnectionWithContext(ctx context.Context, r
 //
 // @return AllocateInstancePublicConnectionResponse
 func (client *Client) AllocateInstancePublicConnectionWithContext(ctx context.Context, request *AllocateInstancePublicConnectionRequest, runtime *dara.RuntimeOptions) (_result *AllocateInstancePublicConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConnectionStringPrefix) {
@@ -279,9 +285,11 @@ func (client *Client) AllocateInstancePublicConnectionWithContext(ctx context.Co
 //
 // @return CancelActiveOperationTasksResponse
 func (client *Client) CancelActiveOperationTasksWithContext(ctx context.Context, request *CancelActiveOperationTasksRequest, runtime *dara.RuntimeOptions) (_result *CancelActiveOperationTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ids) {
@@ -347,9 +355,11 @@ func (client *Client) CancelActiveOperationTasksWithContext(ctx context.Context,
 //
 // @return CheckCloudResourceAuthorizedResponse
 func (client *Client) CheckCloudResourceAuthorizedWithContext(ctx context.Context, request *CheckCloudResourceAuthorizedRequest, runtime *dara.RuntimeOptions) (_result *CheckCloudResourceAuthorizedResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -423,9 +433,11 @@ func (client *Client) CheckCloudResourceAuthorizedWithContext(ctx context.Contex
 //
 // @return CreateAccountResponse
 func (client *Client) CreateAccountWithContext(ctx context.Context, request *CreateAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountDescription) {
@@ -513,9 +525,11 @@ func (client *Client) CreateAccountWithContext(ctx context.Context, request *Cre
 //
 // @return CreateBackupResponse
 func (client *Client) CreateBackupWithContext(ctx context.Context, request *CreateBackupRequest, runtime *dara.RuntimeOptions) (_result *CreateBackupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupRetentionPeriod) {
@@ -583,9 +597,11 @@ func (client *Client) CreateBackupWithContext(ctx context.Context, request *Crea
 //
 // @return CreateCacheAnalysisTaskResponse
 func (client *Client) CreateCacheAnalysisTaskWithContext(ctx context.Context, request *CreateCacheAnalysisTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateCacheAnalysisTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -655,9 +671,11 @@ func (client *Client) CreateCacheAnalysisTaskWithContext(ctx context.Context, re
 //
 // @return CreateGlobalDistributeCacheResponse
 func (client *Client) CreateGlobalDistributeCacheWithContext(ctx context.Context, request *CreateGlobalDistributeCacheRequest, runtime *dara.RuntimeOptions) (_result *CreateGlobalDistributeCacheResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EffectiveTime) {
@@ -725,9 +743,11 @@ func (client *Client) CreateGlobalDistributeCacheWithContext(ctx context.Context
 //
 // @return CreateGlobalSecurityIPGroupResponse
 func (client *Client) CreateGlobalSecurityIPGroupWithContext(ctx context.Context, request *CreateGlobalSecurityIPGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateGlobalSecurityIPGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GIpList) {
@@ -807,9 +827,11 @@ func (client *Client) CreateGlobalSecurityIPGroupWithContext(ctx context.Context
 //
 // @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Appendonly) {
@@ -1047,9 +1069,11 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 //
 // @return CreateInstancesResponse
 func (client *Client) CreateInstancesWithContext(ctx context.Context, request *CreateInstancesRequest, runtime *dara.RuntimeOptions) (_result *CreateInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -1141,9 +1165,11 @@ func (client *Client) CreateInstancesWithContext(ctx context.Context, request *C
 //
 // @return CreateParameterGroupResponse
 func (client *Client) CreateParameterGroupWithContext(ctx context.Context, request *CreateParameterGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateParameterGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Category) {
@@ -1227,9 +1253,11 @@ func (client *Client) CreateParameterGroupWithContext(ctx context.Context, reque
 //
 // @return CreateTCInstanceResponse
 func (client *Client) CreateTCInstanceWithContext(ctx context.Context, request *CreateTCInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateTCInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoRenew) {
@@ -1385,9 +1413,11 @@ func (client *Client) CreateTCInstanceWithContext(ctx context.Context, request *
 //
 // @return CreateTairInstanceResponse
 func (client *Client) CreateTairInstanceWithContext(ctx context.Context, request *CreateTairInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateTairInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -1599,7 +1629,7 @@ func (client *Client) CreateTairInstanceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 创建Tair VNode实例
+// Creates a Tair VNode instance.
 //
 // @param request - CreateTairKVCacheVNodeRequest
 //
@@ -1607,9 +1637,11 @@ func (client *Client) CreateTairInstanceWithContext(ctx context.Context, request
 //
 // @return CreateTairKVCacheVNodeResponse
 func (client *Client) CreateTairKVCacheVNodeWithContext(ctx context.Context, request *CreateTairKVCacheVNodeRequest, runtime *dara.RuntimeOptions) (_result *CreateTairKVCacheVNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -1650,6 +1682,10 @@ func (client *Client) CreateTairKVCacheVNodeWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.DryRun) {
 		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.ElasticTimeRange) {
+		query["ElasticTimeRange"] = request.ElasticTimeRange
 	}
 
 	if !dara.IsNil(request.InstanceClass) {
@@ -1694,6 +1730,10 @@ func (client *Client) CreateTairKVCacheVNodeWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
+	}
+
+	if !dara.IsNil(request.VNodeType) {
+		query["VNodeType"] = request.VNodeType
 	}
 
 	if !dara.IsNil(request.VSwitchId) {
@@ -1747,9 +1787,11 @@ func (client *Client) CreateTairKVCacheVNodeWithContext(ctx context.Context, req
 //
 // @return DeleteAccountResponse
 func (client *Client) DeleteAccountWithContext(ctx context.Context, request *DeleteAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -1809,7 +1851,7 @@ func (client *Client) DeleteAccountWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// 删除指定备份集
+// Deletes a specified backup set. However, you can delete only backup sets that are manually backed up.
 //
 // @param request - DeleteBackupRequest
 //
@@ -1817,9 +1859,11 @@ func (client *Client) DeleteAccountWithContext(ctx context.Context, request *Del
 //
 // @return DeleteBackupResponse
 func (client *Client) DeleteBackupWithContext(ctx context.Context, request *DeleteBackupRequest, runtime *dara.RuntimeOptions) (_result *DeleteBackupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupId) {
@@ -1883,9 +1927,11 @@ func (client *Client) DeleteBackupWithContext(ctx context.Context, request *Dele
 //
 // @return DeleteGlobalSecurityIPGroupResponse
 func (client *Client) DeleteGlobalSecurityIPGroupWithContext(ctx context.Context, request *DeleteGlobalSecurityIPGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteGlobalSecurityIPGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GlobalIgName) {
@@ -1969,9 +2015,11 @@ func (client *Client) DeleteGlobalSecurityIPGroupWithContext(ctx context.Context
 //
 // @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GlobalInstanceId) {
@@ -2035,9 +2083,11 @@ func (client *Client) DeleteInstanceWithContext(ctx context.Context, request *De
 //
 // @return DeleteParameterGroupResponse
 func (client *Client) DeleteParameterGroupWithContext(ctx context.Context, request *DeleteParameterGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteParameterGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -2107,9 +2157,11 @@ func (client *Client) DeleteParameterGroupWithContext(ctx context.Context, reque
 //
 // @return DeleteShardingNodeResponse
 func (client *Client) DeleteShardingNodeWithContext(ctx context.Context, request *DeleteShardingNodeRequest, runtime *dara.RuntimeOptions) (_result *DeleteShardingNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EffectiveTime) {
@@ -2189,9 +2241,11 @@ func (client *Client) DeleteShardingNodeWithContext(ctx context.Context, request
 //
 // @return DescribeAccountsResponse
 func (client *Client) DescribeAccountsWithContext(ctx context.Context, request *DescribeAccountsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccountsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -2247,6 +2301,66 @@ func (client *Client) DescribeAccountsWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// Queries the O\\\\\\&M task configurations of an instance.
+//
+// @param request - DescribeActiveOperationMaintenanceConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeActiveOperationMaintenanceConfigResponse
+func (client *Client) DescribeActiveOperationMaintenanceConfigWithContext(ctx context.Context, request *DescribeActiveOperationMaintenanceConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeActiveOperationMaintenanceConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeActiveOperationMaintenanceConfig"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeActiveOperationMaintenanceConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of the O\\&M tasks of a Tair (Redis OSS-compatible) instance.
 //
 // Description:
@@ -2259,9 +2373,11 @@ func (client *Client) DescribeAccountsWithContext(ctx context.Context, request *
 //
 // @return DescribeActiveOperationTaskResponse
 func (client *Client) DescribeActiveOperationTaskWithContext(ctx context.Context, request *DescribeActiveOperationTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeActiveOperationTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsHistory) {
@@ -2329,6 +2445,70 @@ func (client *Client) DescribeActiveOperationTaskWithContext(ctx context.Context
 
 // Summary:
 //
+// Queries the number of O\\\\\\&M tasks on a Tair (Redis OSS-compatible) instance.
+//
+// @param request - DescribeActiveOperationTaskCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeActiveOperationTaskCountResponse
+func (client *Client) DescribeActiveOperationTaskCountWithContext(ctx context.Context, request *DescribeActiveOperationTaskCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeActiveOperationTaskCountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeActiveOperationTaskCount"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeActiveOperationTaskCountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the O\\\\\\\\\\\\&M event details of an instance.
 //
 // @param request - DescribeActiveOperationTasksRequest
@@ -2337,9 +2517,11 @@ func (client *Client) DescribeActiveOperationTaskWithContext(ctx context.Context
 //
 // @return DescribeActiveOperationTasksResponse
 func (client *Client) DescribeActiveOperationTasksWithContext(ctx context.Context, request *DescribeActiveOperationTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeActiveOperationTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllowCancel) {
@@ -2443,9 +2625,11 @@ func (client *Client) DescribeActiveOperationTasksWithContext(ctx context.Contex
 //
 // @return DescribeAuditLogConfigResponse
 func (client *Client) DescribeAuditLogConfigWithContext(ctx context.Context, request *DescribeAuditLogConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeAuditLogConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -2513,9 +2697,11 @@ func (client *Client) DescribeAuditLogConfigWithContext(ctx context.Context, req
 //
 // @return DescribeAuditRecordsResponse
 func (client *Client) DescribeAuditRecordsWithContext(ctx context.Context, request *DescribeAuditRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAuditRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -2611,9 +2797,11 @@ func (client *Client) DescribeAuditRecordsWithContext(ctx context.Context, reque
 //
 // @return DescribeAvailableResourceResponse
 func (client *Client) DescribeAvailableResourceWithContext(ctx context.Context, request *DescribeAvailableResourceRequest, runtime *dara.RuntimeOptions) (_result *DescribeAvailableResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -2713,9 +2901,11 @@ func (client *Client) DescribeAvailableResourceWithContext(ctx context.Context, 
 //
 // @return DescribeBackupPolicyResponse
 func (client *Client) DescribeBackupPolicyWithContext(ctx context.Context, request *DescribeBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -2775,9 +2965,11 @@ func (client *Client) DescribeBackupPolicyWithContext(ctx context.Context, reque
 //
 // @return DescribeBackupTasksResponse
 func (client *Client) DescribeBackupTasksWithContext(ctx context.Context, request *DescribeBackupTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupJobId) {
@@ -2845,9 +3037,11 @@ func (client *Client) DescribeBackupTasksWithContext(ctx context.Context, reques
 //
 // @return DescribeBackupsResponse
 func (client *Client) DescribeBackupsWithContext(ctx context.Context, request *DescribeBackupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupId) {
@@ -2945,9 +3139,11 @@ func (client *Client) DescribeBackupsWithContext(ctx context.Context, request *D
 //
 // @return DescribeCacheAnalysisReportResponse
 func (client *Client) DescribeCacheAnalysisReportWithContext(ctx context.Context, request *DescribeCacheAnalysisReportRequest, runtime *dara.RuntimeOptions) (_result *DescribeCacheAnalysisReportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AnalysisType) {
@@ -3037,9 +3233,11 @@ func (client *Client) DescribeCacheAnalysisReportWithContext(ctx context.Context
 //
 // @return DescribeCacheAnalysisReportListResponse
 func (client *Client) DescribeCacheAnalysisReportListWithContext(ctx context.Context, request *DescribeCacheAnalysisReportListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCacheAnalysisReportListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Days) {
@@ -3119,9 +3317,11 @@ func (client *Client) DescribeCacheAnalysisReportListWithContext(ctx context.Con
 //
 // @return DescribeClusterBackupListResponse
 func (client *Client) DescribeClusterBackupListWithContext(ctx context.Context, request *DescribeClusterBackupListRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterBackupListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3161,9 +3361,11 @@ func (client *Client) DescribeClusterBackupListWithContext(ctx context.Context, 
 //
 // @return DescribeClusterMemberInfoResponse
 func (client *Client) DescribeClusterMemberInfoWithContext(ctx context.Context, request *DescribeClusterMemberInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterMemberInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3223,6 +3425,70 @@ func (client *Client) DescribeClusterMemberInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
+// Queries the collection frequency of monitoring data for a Tair (Redis OSS-compatible) instance.
+//
+// @param request - DescribeDBInstanceMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceMonitorResponse
+func (client *Client) DescribeDBInstanceMonitorWithContext(ctx context.Context, request *DescribeDBInstanceMonitorRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceMonitorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDBInstanceMonitor"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDBInstanceMonitorResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the network information of an ApsaraDB for Redis instance.
 //
 // @param request - DescribeDBInstanceNetInfoRequest
@@ -3231,13 +3497,19 @@ func (client *Client) DescribeClusterMemberInfoWithContext(ctx context.Context, 
 //
 // @return DescribeDBInstanceNetInfoResponse
 func (client *Client) DescribeDBInstanceNetInfoWithContext(ctx context.Context, request *DescribeDBInstanceNetInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceNetInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NetType) {
+		query["NetType"] = request.NetType
 	}
 
 	if !dara.IsNil(request.OwnerAccount) {
@@ -3297,9 +3569,11 @@ func (client *Client) DescribeDBInstanceNetInfoWithContext(ctx context.Context, 
 //
 // @return DescribeDBNodeDirectVipInfoResponse
 func (client *Client) DescribeDBNodeDirectVipInfoWithContext(ctx context.Context, request *DescribeDBNodeDirectVipInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBNodeDirectVipInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3347,6 +3621,74 @@ func (client *Client) DescribeDBNodeDirectVipInfoWithContext(ctx context.Context
 
 // Summary:
 //
+// Checks the connectivity between the client IP address and the instance.
+//
+// @param request - DescribeDbInstanceConnectivityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDbInstanceConnectivityResponse
+func (client *Client) DescribeDbInstanceConnectivityWithContext(ctx context.Context, request *DescribeDbInstanceConnectivityRequest, runtime *dara.RuntimeOptions) (_result *DescribeDbInstanceConnectivityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.SrcIp) {
+		query["SrcIp"] = request.SrcIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDbInstanceConnectivity"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDbInstanceConnectivityResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information of Tair (Redis OSS-compatible) instances deployed in a dedicated cluster.
 //
 // Description:
@@ -3359,9 +3701,11 @@ func (client *Client) DescribeDBNodeDirectVipInfoWithContext(ctx context.Context
 //
 // @return DescribeDedicatedClusterInstanceListResponse
 func (client *Client) DescribeDedicatedClusterInstanceListWithContext(ctx context.Context, request *DescribeDedicatedClusterInstanceListRequest, runtime *dara.RuntimeOptions) (_result *DescribeDedicatedClusterInstanceListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -3467,9 +3811,11 @@ func (client *Client) DescribeDedicatedClusterInstanceListWithContext(ctx contex
 //
 // @return DescribeEncryptionKeyResponse
 func (client *Client) DescribeEncryptionKeyWithContext(ctx context.Context, request *DescribeEncryptionKeyRequest, runtime *dara.RuntimeOptions) (_result *DescribeEncryptionKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EncryptionKey) {
@@ -3539,9 +3885,11 @@ func (client *Client) DescribeEncryptionKeyWithContext(ctx context.Context, requ
 //
 // @return DescribeEncryptionKeyListResponse
 func (client *Client) DescribeEncryptionKeyListWithContext(ctx context.Context, request *DescribeEncryptionKeyListRequest, runtime *dara.RuntimeOptions) (_result *DescribeEncryptionKeyListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3607,9 +3955,11 @@ func (client *Client) DescribeEncryptionKeyListWithContext(ctx context.Context, 
 //
 // @return DescribeEngineVersionResponse
 func (client *Client) DescribeEngineVersionWithContext(ctx context.Context, request *DescribeEngineVersionRequest, runtime *dara.RuntimeOptions) (_result *DescribeEngineVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3675,9 +4025,11 @@ func (client *Client) DescribeEngineVersionWithContext(ctx context.Context, requ
 //
 // @return DescribeGlobalDistributeCacheResponse
 func (client *Client) DescribeGlobalDistributeCacheWithContext(ctx context.Context, request *DescribeGlobalDistributeCacheRequest, runtime *dara.RuntimeOptions) (_result *DescribeGlobalDistributeCacheResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GlobalInstanceId) {
@@ -3749,11 +4101,49 @@ func (client *Client) DescribeGlobalDistributeCacheWithContext(ctx context.Conte
 //
 // @return DescribeGlobalSecurityIPGroupResponse
 func (client *Client) DescribeGlobalSecurityIPGroupWithContext(ctx context.Context, request *DescribeGlobalSecurityIPGroupRequest, runtime *dara.RuntimeOptions) (_result *DescribeGlobalSecurityIPGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Engine) {
+		query["Engine"] = request.Engine
+	}
+
+	if !dara.IsNil(request.GlobalSecurityGroupId) {
+		query["GlobalSecurityGroupId"] = request.GlobalSecurityGroupId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3762,7 +4152,7 @@ func (client *Client) DescribeGlobalSecurityIPGroupWithContext(ctx context.Conte
 		Version:     dara.String("2015-01-01"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
@@ -3787,11 +4177,45 @@ func (client *Client) DescribeGlobalSecurityIPGroupWithContext(ctx context.Conte
 //
 // @return DescribeGlobalSecurityIPGroupRelationResponse
 func (client *Client) DescribeGlobalSecurityIPGroupRelationWithContext(ctx context.Context, request *DescribeGlobalSecurityIPGroupRelationRequest, runtime *dara.RuntimeOptions) (_result *DescribeGlobalSecurityIPGroupRelationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3800,13 +4224,209 @@ func (client *Client) DescribeGlobalSecurityIPGroupRelationWithContext(ctx conte
 		Version:     dara.String("2015-01-01"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeGlobalSecurityIPGroupRelationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DescribeHistoryEvents
+//
+// @param request - DescribeHistoryEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHistoryEventsResponse
+func (client *Client) DescribeHistoryEventsWithContext(ctx context.Context, request *DescribeHistoryEventsRequest, runtime *dara.RuntimeOptions) (_result *DescribeHistoryEventsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ArchiveStatus) {
+		query["ArchiveStatus"] = request.ArchiveStatus
+	}
+
+	if !dara.IsNil(request.EventCategory) {
+		query["EventCategory"] = request.EventCategory
+	}
+
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.EventLevel) {
+		query["EventLevel"] = request.EventLevel
+	}
+
+	if !dara.IsNil(request.EventStatus) {
+		query["EventStatus"] = request.EventStatus
+	}
+
+	if !dara.IsNil(request.EventType) {
+		query["EventType"] = request.EventType
+	}
+
+	if !dara.IsNil(request.FromStartTime) {
+		query["FromStartTime"] = request.FromStartTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.ToStartTime) {
+		query["ToStartTime"] = request.ToStartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeHistoryEvents"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeHistoryEventsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the statistics of historical events.
+//
+// @param request - DescribeHistoryEventsStatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHistoryEventsStatResponse
+func (client *Client) DescribeHistoryEventsStatWithContext(ctx context.Context, request *DescribeHistoryEventsStatRequest, runtime *dara.RuntimeOptions) (_result *DescribeHistoryEventsStatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ArchiveStatus) {
+		query["ArchiveStatus"] = request.ArchiveStatus
+	}
+
+	if !dara.IsNil(request.FromStartTime) {
+		query["FromStartTime"] = request.FromStartTime
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.ToStartTime) {
+		query["ToStartTime"] = request.ToStartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeHistoryEventsStat"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeHistoryEventsStatResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3829,9 +4449,11 @@ func (client *Client) DescribeGlobalSecurityIPGroupRelationWithContext(ctx conte
 //
 // @return DescribeHistoryMonitorValuesResponse
 func (client *Client) DescribeHistoryMonitorValuesWithContext(ctx context.Context, request *DescribeHistoryMonitorValuesRequest, runtime *dara.RuntimeOptions) (_result *DescribeHistoryMonitorValuesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -3919,9 +4541,11 @@ func (client *Client) DescribeHistoryMonitorValuesWithContext(ctx context.Contex
 //
 // @return DescribeHistoryTasksResponse
 func (client *Client) DescribeHistoryTasksWithContext(ctx context.Context, request *DescribeHistoryTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeHistoryTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FromExecTime) {
@@ -4009,6 +4633,90 @@ func (client *Client) DescribeHistoryTasksWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// Queries the task statistics in the task center.
+//
+// @param request - DescribeHistoryTasksStatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHistoryTasksStatResponse
+func (client *Client) DescribeHistoryTasksStatWithContext(ctx context.Context, request *DescribeHistoryTasksStatRequest, runtime *dara.RuntimeOptions) (_result *DescribeHistoryTasksStatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FromExecTime) {
+		query["FromExecTime"] = request.FromExecTime
+	}
+
+	if !dara.IsNil(request.FromStartTime) {
+		query["FromStartTime"] = request.FromStartTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		query["TaskType"] = request.TaskType
+	}
+
+	if !dara.IsNil(request.ToExecTime) {
+		query["ToExecTime"] = request.ToExecTime
+	}
+
+	if !dara.IsNil(request.ToStartTime) {
+		query["ToStartTime"] = request.ToStartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeHistoryTasksStat"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeHistoryTasksStatResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the attribute of Tair (Redis OSS-compatible) instances.
 //
 // @param request - DescribeInstanceAttributeRequest
@@ -4017,9 +4725,11 @@ func (client *Client) DescribeHistoryTasksWithContext(ctx context.Context, reque
 //
 // @return DescribeInstanceAttributeResponse
 func (client *Client) DescribeInstanceAttributeWithContext(ctx context.Context, request *DescribeInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4079,9 +4789,11 @@ func (client *Client) DescribeInstanceAttributeWithContext(ctx context.Context, 
 //
 // @return DescribeInstanceAutoRenewalAttributeResponse
 func (client *Client) DescribeInstanceAutoRenewalAttributeWithContext(ctx context.Context, request *DescribeInstanceAutoRenewalAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAutoRenewalAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4159,9 +4871,11 @@ func (client *Client) DescribeInstanceAutoRenewalAttributeWithContext(ctx contex
 //
 // @return DescribeInstanceConfigResponse
 func (client *Client) DescribeInstanceConfigWithContext(ctx context.Context, request *DescribeInstanceConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4233,9 +4947,11 @@ func (client *Client) DescribeInstanceConfigWithContext(ctx context.Context, req
 //
 // @return DescribeInstanceSSLResponse
 func (client *Client) DescribeInstanceSSLWithContext(ctx context.Context, request *DescribeInstanceSSLRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceSSLResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4301,9 +5017,11 @@ func (client *Client) DescribeInstanceSSLWithContext(ctx context.Context, reques
 //
 // @return DescribeInstanceTDEStatusResponse
 func (client *Client) DescribeInstanceTDEStatusWithContext(ctx context.Context, request *DescribeInstanceTDEStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceTDEStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4363,9 +5081,11 @@ func (client *Client) DescribeInstanceTDEStatusWithContext(ctx context.Context, 
 //
 // @return DescribeInstancesResponse
 func (client *Client) DescribeInstancesWithContext(ctx context.Context, request *DescribeInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ArchitectureType) {
@@ -4515,9 +5235,11 @@ func (client *Client) DescribeInstancesWithContext(ctx context.Context, request 
 //
 // @return DescribeInstancesOverviewResponse
 func (client *Client) DescribeInstancesOverviewWithContext(ctx context.Context, request *DescribeInstancesOverviewRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstancesOverviewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ArchitectureType) {
@@ -4641,9 +5363,11 @@ func (client *Client) DescribeInstancesOverviewWithContext(ctx context.Context, 
 //
 // @return DescribeIntranetAttributeResponse
 func (client *Client) DescribeIntranetAttributeWithContext(ctx context.Context, request *DescribeIntranetAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeIntranetAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4711,9 +5435,11 @@ func (client *Client) DescribeIntranetAttributeWithContext(ctx context.Context, 
 //
 // @return DescribeLogicInstanceTopologyResponse
 func (client *Client) DescribeLogicInstanceTopologyWithContext(ctx context.Context, request *DescribeLogicInstanceTopologyRequest, runtime *dara.RuntimeOptions) (_result *DescribeLogicInstanceTopologyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4779,9 +5505,11 @@ func (client *Client) DescribeLogicInstanceTopologyWithContext(ctx context.Conte
 //
 // @return DescribeMonitorItemsResponse
 func (client *Client) DescribeMonitorItemsWithContext(ctx context.Context, request *DescribeMonitorItemsRequest, runtime *dara.RuntimeOptions) (_result *DescribeMonitorItemsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -4837,9 +5565,11 @@ func (client *Client) DescribeMonitorItemsWithContext(ctx context.Context, reque
 //
 // @return DescribeParameterGroupResponse
 func (client *Client) DescribeParameterGroupWithContext(ctx context.Context, request *DescribeParameterGroupRequest, runtime *dara.RuntimeOptions) (_result *DescribeParameterGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -4903,9 +5633,11 @@ func (client *Client) DescribeParameterGroupWithContext(ctx context.Context, req
 //
 // @return DescribeParameterGroupSupportParamResponse
 func (client *Client) DescribeParameterGroupSupportParamWithContext(ctx context.Context, request *DescribeParameterGroupSupportParamRequest, runtime *dara.RuntimeOptions) (_result *DescribeParameterGroupSupportParamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Category) {
@@ -4973,11 +5705,49 @@ func (client *Client) DescribeParameterGroupSupportParamWithContext(ctx context.
 //
 // @return DescribeParameterGroupTemplateListResponse
 func (client *Client) DescribeParameterGroupTemplateListWithContext(ctx context.Context, request *DescribeParameterGroupTemplateListRequest, runtime *dara.RuntimeOptions) (_result *DescribeParameterGroupTemplateListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Category) {
+		query["Category"] = request.Category
+	}
+
+	if !dara.IsNil(request.CharacterType) {
+		query["CharacterType"] = request.CharacterType
+	}
+
+	if !dara.IsNil(request.EngineType) {
+		query["EngineType"] = request.EngineType
+	}
+
+	if !dara.IsNil(request.EngineVersion) {
+		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4986,7 +5756,7 @@ func (client *Client) DescribeParameterGroupTemplateListWithContext(ctx context.
 		Version:     dara.String("2015-01-01"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
@@ -5011,9 +5781,11 @@ func (client *Client) DescribeParameterGroupTemplateListWithContext(ctx context.
 //
 // @return DescribeParameterGroupsResponse
 func (client *Client) DescribeParameterGroupsWithContext(ctx context.Context, request *DescribeParameterGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeParameterGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbType) {
@@ -5077,9 +5849,11 @@ func (client *Client) DescribeParameterGroupsWithContext(ctx context.Context, re
 //
 // @return DescribeParameterModificationHistoryResponse
 func (client *Client) DescribeParameterModificationHistoryWithContext(ctx context.Context, request *DescribeParameterModificationHistoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeParameterModificationHistoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -5159,9 +5933,11 @@ func (client *Client) DescribeParameterModificationHistoryWithContext(ctx contex
 //
 // @return DescribeParameterTemplatesResponse
 func (client *Client) DescribeParameterTemplatesWithContext(ctx context.Context, request *DescribeParameterTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeParameterTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CharacterType) {
@@ -5243,9 +6019,11 @@ func (client *Client) DescribeParameterTemplatesWithContext(ctx context.Context,
 //
 // @return DescribeParametersResponse
 func (client *Client) DescribeParametersWithContext(ctx context.Context, request *DescribeParametersRequest, runtime *dara.RuntimeOptions) (_result *DescribeParametersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -5313,9 +6091,11 @@ func (client *Client) DescribeParametersWithContext(ctx context.Context, request
 //
 // @return DescribePriceResponse
 func (client *Client) DescribePriceWithContext(ctx context.Context, request *DescribePriceRequest, runtime *dara.RuntimeOptions) (_result *DescribePriceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessInfo) {
@@ -5443,9 +6223,11 @@ func (client *Client) DescribePriceWithContext(ctx context.Context, request *Des
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -5505,9 +6287,11 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 //
 // @return DescribeRoleZoneInfoResponse
 func (client *Client) DescribeRoleZoneInfoWithContext(ctx context.Context, request *DescribeRoleZoneInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeRoleZoneInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5585,9 +6369,11 @@ func (client *Client) DescribeRoleZoneInfoWithContext(ctx context.Context, reque
 //
 // @return DescribeRunningLogRecordsResponse
 func (client *Client) DescribeRunningLogRecordsWithContext(ctx context.Context, request *DescribeRunningLogRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRunningLogRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CharacterType) {
@@ -5691,9 +6477,11 @@ func (client *Client) DescribeRunningLogRecordsWithContext(ctx context.Context, 
 //
 // @return DescribeSecurityGroupConfigurationResponse
 func (client *Client) DescribeSecurityGroupConfigurationWithContext(ctx context.Context, request *DescribeSecurityGroupConfigurationRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityGroupConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5753,9 +6541,11 @@ func (client *Client) DescribeSecurityGroupConfigurationWithContext(ctx context.
 //
 // @return DescribeSecurityIpsResponse
 func (client *Client) DescribeSecurityIpsWithContext(ctx context.Context, request *DescribeSecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityIpsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5807,6 +6597,78 @@ func (client *Client) DescribeSecurityIpsWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// Queries whether the related service-linked role is created for Tair (Redis OSS-compatible) in the current account.
+//
+// Description:
+//
+// You can call this operation to query whether the service-lined role AliyunServiceRoleForKvstore is created for Tair (Redis OSS-compatible). For more information, see [Service-linked role of Tair (Redis OSS-compatible)](https://help.aliyun.com/document_detail/184337.html).
+//
+// @param request - DescribeServiceLinkedRoleExistsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeServiceLinkedRoleExistsResponse
+func (client *Client) DescribeServiceLinkedRoleExistsWithContext(ctx context.Context, request *DescribeServiceLinkedRoleExistsRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceLinkedRoleExistsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Engine) {
+		query["Engine"] = request.Engine
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeServiceLinkedRoleExists"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeServiceLinkedRoleExistsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the slow query logs of a Tair (Redis OSS-compatible) instance that are generated within a specified period of time.
 //
 // Description:
@@ -5819,9 +6681,11 @@ func (client *Client) DescribeSecurityIpsWithContext(ctx context.Context, reques
 //
 // @return DescribeSlowLogRecordsResponse
 func (client *Client) DescribeSlowLogRecordsWithContext(ctx context.Context, request *DescribeSlowLogRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSlowLogRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBName) {
@@ -5913,6 +6777,74 @@ func (client *Client) DescribeSlowLogRecordsWithContext(ctx context.Context, req
 
 // Summary:
 //
+// Queries all tags in a region.
+//
+// @param request - DescribeTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTagsResponse
+func (client *Client) DescribeTagsWithContext(ctx context.Context, request *DescribeTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTags"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTagsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查看TairCustom实例
 //
 // @param request - DescribeTairKVCacheCustomInstanceAttributeRequest
@@ -5921,9 +6853,11 @@ func (client *Client) DescribeSlowLogRecordsWithContext(ctx context.Context, req
 //
 // @return DescribeTairKVCacheCustomInstanceAttributeResponse
 func (client *Client) DescribeTairKVCacheCustomInstanceAttributeWithContext(ctx context.Context, request *DescribeTairKVCacheCustomInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeTairKVCacheCustomInstanceAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -5959,9 +6893,11 @@ func (client *Client) DescribeTairKVCacheCustomInstanceAttributeWithContext(ctx 
 //
 // @return DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse
 func (client *Client) DescribeTairKVCacheCustomInstanceHistoryMonitorValuesWithContext(ctx context.Context, request *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest, runtime *dara.RuntimeOptions) (_result *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -5997,9 +6933,11 @@ func (client *Client) DescribeTairKVCacheCustomInstanceHistoryMonitorValuesWithC
 //
 // @return DescribeTairKVCacheCustomInstancesResponse
 func (client *Client) DescribeTairKVCacheCustomInstancesWithContext(ctx context.Context, request *DescribeTairKVCacheCustomInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeTairKVCacheCustomInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -6035,9 +6973,11 @@ func (client *Client) DescribeTairKVCacheCustomInstancesWithContext(ctx context.
 //
 // @return DescribeTairKVCacheInferInstanceAttributeResponse
 func (client *Client) DescribeTairKVCacheInferInstanceAttributeWithContext(ctx context.Context, request *DescribeTairKVCacheInferInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeTairKVCacheInferInstanceAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -6073,9 +7013,11 @@ func (client *Client) DescribeTairKVCacheInferInstanceAttributeWithContext(ctx c
 //
 // @return DescribeTairKVCacheInferInstancesResponse
 func (client *Client) DescribeTairKVCacheInferInstancesWithContext(ctx context.Context, request *DescribeTairKVCacheInferInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeTairKVCacheInferInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -6111,9 +7053,11 @@ func (client *Client) DescribeTairKVCacheInferInstancesWithContext(ctx context.C
 //
 // @return DescribeZonesResponse
 func (client *Client) DescribeZonesWithContext(ctx context.Context, request *DescribeZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -6169,6 +7113,80 @@ func (client *Client) DescribeZonesWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
+// Permanently destroys instances and their data backups in the recycle bin.
+//
+// Description:
+//
+// Before you call this operation, instances must be available in the recycle bin. For more information, see [Instance recycle bin](https://help.aliyun.com/document_detail/86114.html).
+//
+// > Calling this operation permanently deletes the instances and their data backups in the recycle bin.
+//
+// **
+//
+// **Warning*	- After you destroy the instance, data in the instance is permanently deleted and can no longer be restored. Proceed with caution.
+//
+// @param request - DestroyInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DestroyInstanceResponse
+func (client *Client) DestroyInstanceWithContext(ctx context.Context, request *DestroyInstanceRequest, runtime *dara.RuntimeOptions) (_result *DestroyInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DestroyInstance"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DestroyInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Adjusts the bandwidth of a Tair (Redis OSS-compatible) instance. Only the pay-as-you-go billing method is supported for bandwidth adjustment. You need to specify the InstanceId, NodeId (optional), Bandwidth, and ChargeType parameters.
 //
 // Description:
@@ -6183,9 +7201,11 @@ func (client *Client) DescribeZonesWithContext(ctx context.Context, request *Des
 //
 // @return EnableAdditionalBandwidthResponse
 func (client *Client) EnableAdditionalBandwidthWithContext(ctx context.Context, request *EnableAdditionalBandwidthRequest, runtime *dara.RuntimeOptions) (_result *EnableAdditionalBandwidthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -6198,6 +7218,10 @@ func (client *Client) EnableAdditionalBandwidthWithContext(ctx context.Context, 
 
 	if !dara.IsNil(request.AutoRenewPeriod) {
 		query["AutoRenewPeriod"] = request.AutoRenewPeriod
+	}
+
+	if !dara.IsNil(request.BandWidthBurst) {
+		query["BandWidthBurst"] = request.BandWidthBurst
 	}
 
 	if !dara.IsNil(request.Bandwidth) {
@@ -6287,9 +7311,11 @@ func (client *Client) EnableAdditionalBandwidthWithContext(ctx context.Context, 
 //
 // @return FlushExpireKeysResponse
 func (client *Client) FlushExpireKeysWithContext(ctx context.Context, request *FlushExpireKeysRequest, runtime *dara.RuntimeOptions) (_result *FlushExpireKeysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EffectiveTime) {
@@ -6353,9 +7379,11 @@ func (client *Client) FlushExpireKeysWithContext(ctx context.Context, request *F
 //
 // @return FlushInstanceResponse
 func (client *Client) FlushInstanceWithContext(ctx context.Context, request *FlushInstanceRequest, runtime *dara.RuntimeOptions) (_result *FlushInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -6421,9 +7449,11 @@ func (client *Client) FlushInstanceWithContext(ctx context.Context, request *Flu
 //
 // @return FlushInstanceForDBResponse
 func (client *Client) FlushInstanceForDBWithContext(ctx context.Context, request *FlushInstanceForDBRequest, runtime *dara.RuntimeOptions) (_result *FlushInstanceForDBResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbIndex) {
@@ -6491,9 +7521,11 @@ func (client *Client) FlushInstanceForDBWithContext(ctx context.Context, request
 //
 // @return GrantAccountPrivilegeResponse
 func (client *Client) GrantAccountPrivilegeWithContext(ctx context.Context, request *GrantAccountPrivilegeRequest, runtime *dara.RuntimeOptions) (_result *GrantAccountPrivilegeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -6569,9 +7601,11 @@ func (client *Client) GrantAccountPrivilegeWithContext(ctx context.Context, requ
 //
 // @return InitializeKvstorePermissionResponse
 func (client *Client) InitializeKvstorePermissionWithContext(ctx context.Context, request *InitializeKvstorePermissionRequest, runtime *dara.RuntimeOptions) (_result *InitializeKvstorePermissionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -6635,9 +7669,11 @@ func (client *Client) InitializeKvstorePermissionWithContext(ctx context.Context
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextToken) {
@@ -6709,9 +7745,11 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 //
 // @return LockDBInstanceWriteResponse
 func (client *Client) LockDBInstanceWriteWithContext(ctx context.Context, request *LockDBInstanceWriteRequest, runtime *dara.RuntimeOptions) (_result *LockDBInstanceWriteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -6775,9 +7813,11 @@ func (client *Client) LockDBInstanceWriteWithContext(ctx context.Context, reques
 //
 // @return MasterNodeShutDownFailOverResponse
 func (client *Client) MasterNodeShutDownFailOverWithContext(ctx context.Context, request *MasterNodeShutDownFailOverRequest, runtime *dara.RuntimeOptions) (_result *MasterNodeShutDownFailOverResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Category) {
@@ -6851,9 +7891,11 @@ func (client *Client) MasterNodeShutDownFailOverWithContext(ctx context.Context,
 //
 // @return MigrateToOtherZoneResponse
 func (client *Client) MigrateToOtherZoneWithContext(ctx context.Context, request *MigrateToOtherZoneRequest, runtime *dara.RuntimeOptions) (_result *MigrateToOtherZoneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -6949,9 +7991,11 @@ func (client *Client) MigrateToOtherZoneWithContext(ctx context.Context, request
 //
 // @return ModifyAccountDescriptionResponse
 func (client *Client) ModifyAccountDescriptionWithContext(ctx context.Context, request *ModifyAccountDescriptionRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccountDescriptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountDescription) {
@@ -7023,9 +8067,11 @@ func (client *Client) ModifyAccountDescriptionWithContext(ctx context.Context, r
 //
 // @return ModifyAccountPasswordResponse
 func (client *Client) ModifyAccountPasswordWithContext(ctx context.Context, request *ModifyAccountPasswordRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccountPasswordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -7093,6 +8139,86 @@ func (client *Client) ModifyAccountPasswordWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// # ModifyActiveOperationMaintainConf
+//
+// @param request - ModifyActiveOperationMaintainConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyActiveOperationMaintainConfigResponse
+func (client *Client) ModifyActiveOperationMaintainConfigWithContext(ctx context.Context, request *ModifyActiveOperationMaintainConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyActiveOperationMaintainConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CycleTime) {
+		query["CycleTime"] = request.CycleTime
+	}
+
+	if !dara.IsNil(request.CycleType) {
+		query["CycleType"] = request.CycleType
+	}
+
+	if !dara.IsNil(request.MaintainEndTime) {
+		query["MaintainEndTime"] = request.MaintainEndTime
+	}
+
+	if !dara.IsNil(request.MaintainStartTime) {
+		query["MaintainStartTime"] = request.MaintainStartTime
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyActiveOperationMaintainConfig"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyActiveOperationMaintainConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Changes the scheduled switchover time of an O&M task.
 //
 // Description:
@@ -7105,9 +8231,11 @@ func (client *Client) ModifyAccountPasswordWithContext(ctx context.Context, requ
 //
 // @return ModifyActiveOperationTaskResponse
 func (client *Client) ModifyActiveOperationTaskWithContext(ctx context.Context, request *ModifyActiveOperationTaskRequest, runtime *dara.RuntimeOptions) (_result *ModifyActiveOperationTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ids) {
@@ -7171,9 +8299,11 @@ func (client *Client) ModifyActiveOperationTaskWithContext(ctx context.Context, 
 //
 // @return ModifyActiveOperationTasksResponse
 func (client *Client) ModifyActiveOperationTasksWithContext(ctx context.Context, request *ModifyActiveOperationTasksRequest, runtime *dara.RuntimeOptions) (_result *ModifyActiveOperationTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ids) {
@@ -7251,9 +8381,11 @@ func (client *Client) ModifyActiveOperationTasksWithContext(ctx context.Context,
 //
 // @return ModifyAuditLogConfigResponse
 func (client *Client) ModifyAuditLogConfigWithContext(ctx context.Context, request *ModifyAuditLogConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyAuditLogConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbAudit) {
@@ -7313,7 +8445,7 @@ func (client *Client) ModifyAuditLogConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 修改备份集过期时间
+// Extends the expiration time of manual backup data.
 //
 // @param request - ModifyBackupExpireTimeRequest
 //
@@ -7321,9 +8453,11 @@ func (client *Client) ModifyAuditLogConfigWithContext(ctx context.Context, reque
 //
 // @return ModifyBackupExpireTimeResponse
 func (client *Client) ModifyBackupExpireTimeWithContext(ctx context.Context, request *ModifyBackupExpireTimeRequest, runtime *dara.RuntimeOptions) (_result *ModifyBackupExpireTimeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupId) {
@@ -7387,9 +8521,11 @@ func (client *Client) ModifyBackupExpireTimeWithContext(ctx context.Context, req
 //
 // @return ModifyBackupPolicyResponse
 func (client *Client) ModifyBackupPolicyWithContext(ctx context.Context, request *ModifyBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyBackupPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupRetentionPeriod) {
@@ -7465,9 +8601,11 @@ func (client *Client) ModifyBackupPolicyWithContext(ctx context.Context, request
 //
 // @return ModifyDBInstanceAutoUpgradeResponse
 func (client *Client) ModifyDBInstanceAutoUpgradeWithContext(ctx context.Context, request *ModifyDBInstanceAutoUpgradeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceAutoUpgradeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -7535,9 +8673,11 @@ func (client *Client) ModifyDBInstanceAutoUpgradeWithContext(ctx context.Context
 //
 // @return ModifyDBInstanceConnectionStringResponse
 func (client *Client) ModifyDBInstanceConnectionStringWithContext(ctx context.Context, request *ModifyDBInstanceConnectionStringRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceConnectionStringResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentConnectionString) {
@@ -7605,6 +8745,134 @@ func (client *Client) ModifyDBInstanceConnectionStringWithContext(ctx context.Co
 
 // Summary:
 //
+// Modifies the monitoring granularity of a Tair (Redis OSS-compatible) instance.
+//
+// @param request - ModifyDBInstanceMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceMonitorResponse
+func (client *Client) ModifyDBInstanceMonitorWithContext(ctx context.Context, request *ModifyDBInstanceMonitorRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceMonitorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Interval) {
+		query["Interval"] = request.Interval
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyDBInstanceMonitor"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyDBInstanceMonitorResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 事件中心修改事件信息
+//
+// @param request - ModifyEventInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyEventInfoResponse
+func (client *Client) ModifyEventInfoWithContext(ctx context.Context, request *ModifyEventInfoRequest, runtime *dara.RuntimeOptions) (_result *ModifyEventInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActionParams) {
+		query["ActionParams"] = request.ActionParams
+	}
+
+	if !dara.IsNil(request.EventAction) {
+		query["EventAction"] = request.EventAction
+	}
+
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyEventInfo"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyEventInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies a global IP whitelist template.
 //
 // @param request - ModifyGlobalSecurityIPGroupRequest
@@ -7613,9 +8881,11 @@ func (client *Client) ModifyDBInstanceConnectionStringWithContext(ctx context.Co
 //
 // @return ModifyGlobalSecurityIPGroupResponse
 func (client *Client) ModifyGlobalSecurityIPGroupWithContext(ctx context.Context, request *ModifyGlobalSecurityIPGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyGlobalSecurityIPGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GIpList) {
@@ -7691,9 +8961,11 @@ func (client *Client) ModifyGlobalSecurityIPGroupWithContext(ctx context.Context
 //
 // @return ModifyGlobalSecurityIPGroupNameResponse
 func (client *Client) ModifyGlobalSecurityIPGroupNameWithContext(ctx context.Context, request *ModifyGlobalSecurityIPGroupNameRequest, runtime *dara.RuntimeOptions) (_result *ModifyGlobalSecurityIPGroupNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GlobalIgName) {
@@ -7765,9 +9037,11 @@ func (client *Client) ModifyGlobalSecurityIPGroupNameWithContext(ctx context.Con
 //
 // @return ModifyGlobalSecurityIPGroupRelationResponse
 func (client *Client) ModifyGlobalSecurityIPGroupRelationWithContext(ctx context.Context, request *ModifyGlobalSecurityIPGroupRelationRequest, runtime *dara.RuntimeOptions) (_result *ModifyGlobalSecurityIPGroupRelationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
@@ -7843,9 +9117,11 @@ func (client *Client) ModifyGlobalSecurityIPGroupRelationWithContext(ctx context
 //
 // @return ModifyInstanceAttributeResponse
 func (client *Client) ModifyInstanceAttributeWithContext(ctx context.Context, request *ModifyInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7921,9 +9197,11 @@ func (client *Client) ModifyInstanceAttributeWithContext(ctx context.Context, re
 //
 // @return ModifyInstanceAutoRenewalAttributeResponse
 func (client *Client) ModifyInstanceAutoRenewalAttributeWithContext(ctx context.Context, request *ModifyInstanceAutoRenewalAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceAutoRenewalAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoRenew) {
@@ -8001,9 +9279,11 @@ func (client *Client) ModifyInstanceAutoRenewalAttributeWithContext(ctx context.
 //
 // @return ModifyInstanceBandwidthResponse
 func (client *Client) ModifyInstanceBandwidthWithContext(ctx context.Context, request *ModifyInstanceBandwidthRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceBandwidthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8067,9 +9347,11 @@ func (client *Client) ModifyInstanceBandwidthWithContext(ctx context.Context, re
 //
 // @return ModifyInstanceConfigResponse
 func (client *Client) ModifyInstanceConfigWithContext(ctx context.Context, request *ModifyInstanceConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -8161,9 +9443,11 @@ func (client *Client) ModifyInstanceConfigWithContext(ctx context.Context, reque
 //
 // @return ModifyInstanceMaintainTimeResponse
 func (client *Client) ModifyInstanceMaintainTimeWithContext(ctx context.Context, request *ModifyInstanceMaintainTimeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceMaintainTimeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8235,9 +9519,11 @@ func (client *Client) ModifyInstanceMaintainTimeWithContext(ctx context.Context,
 //
 // @return ModifyInstanceMajorVersionResponse
 func (client *Client) ModifyInstanceMajorVersionWithContext(ctx context.Context, request *ModifyInstanceMajorVersionRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceMajorVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EffectiveTime) {
@@ -8315,9 +9601,11 @@ func (client *Client) ModifyInstanceMajorVersionWithContext(ctx context.Context,
 //
 // @return ModifyInstanceMinorVersionResponse
 func (client *Client) ModifyInstanceMinorVersionWithContext(ctx context.Context, request *ModifyInstanceMinorVersionRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceMinorVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EffectiveTime) {
@@ -8391,9 +9679,11 @@ func (client *Client) ModifyInstanceMinorVersionWithContext(ctx context.Context,
 //
 // @return ModifyInstanceNetExpireTimeResponse
 func (client *Client) ModifyInstanceNetExpireTimeWithContext(ctx context.Context, request *ModifyInstanceNetExpireTimeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceNetExpireTimeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClassicExpiredDays) {
@@ -8461,9 +9751,11 @@ func (client *Client) ModifyInstanceNetExpireTimeWithContext(ctx context.Context
 //
 // @return ModifyInstanceParameterResponse
 func (client *Client) ModifyInstanceParameterWithContext(ctx context.Context, request *ModifyInstanceParameterRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceParameterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8541,9 +9833,11 @@ func (client *Client) ModifyInstanceParameterWithContext(ctx context.Context, re
 //
 // @return ModifyInstanceSSLResponse
 func (client *Client) ModifyInstanceSSLWithContext(ctx context.Context, request *ModifyInstanceSSLRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceSSLResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8611,9 +9905,11 @@ func (client *Client) ModifyInstanceSSLWithContext(ctx context.Context, request 
 //
 // @return ModifyInstanceSpecResponse
 func (client *Client) ModifyInstanceSpecWithContext(ctx context.Context, request *ModifyInstanceSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceSpecResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -8757,9 +10053,11 @@ func (client *Client) ModifyInstanceSpecWithContext(ctx context.Context, request
 //
 // @return ModifyInstanceTDEResponse
 func (client *Client) ModifyInstanceTDEWithContext(ctx context.Context, request *ModifyInstanceTDERequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceTDEResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EncryptionKey) {
@@ -8841,9 +10139,11 @@ func (client *Client) ModifyInstanceTDEWithContext(ctx context.Context, request 
 //
 // @return ModifyInstanceVpcAuthModeResponse
 func (client *Client) ModifyInstanceVpcAuthModeWithContext(ctx context.Context, request *ModifyInstanceVpcAuthModeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceVpcAuthModeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8913,9 +10213,11 @@ func (client *Client) ModifyInstanceVpcAuthModeWithContext(ctx context.Context, 
 //
 // @return ModifyIntranetAttributeResponse
 func (client *Client) ModifyIntranetAttributeWithContext(ctx context.Context, request *ModifyIntranetAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyIntranetAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BandWidth) {
@@ -8983,9 +10285,11 @@ func (client *Client) ModifyIntranetAttributeWithContext(ctx context.Context, re
 //
 // @return ModifyParameterGroupResponse
 func (client *Client) ModifyParameterGroupWithContext(ctx context.Context, request *ModifyParameterGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyParameterGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Category) {
@@ -9071,9 +10375,11 @@ func (client *Client) ModifyParameterGroupWithContext(ctx context.Context, reque
 //
 // @return ModifyResourceGroupResponse
 func (client *Client) ModifyResourceGroupWithContext(ctx context.Context, request *ModifyResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -9145,9 +10451,11 @@ func (client *Client) ModifyResourceGroupWithContext(ctx context.Context, reques
 //
 // @return ModifySecurityGroupConfigurationResponse
 func (client *Client) ModifySecurityGroupConfigurationWithContext(ctx context.Context, request *ModifySecurityGroupConfigurationRequest, runtime *dara.RuntimeOptions) (_result *ModifySecurityGroupConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -9215,9 +10523,11 @@ func (client *Client) ModifySecurityGroupConfigurationWithContext(ctx context.Co
 //
 // @return ModifySecurityIpsResponse
 func (client *Client) ModifySecurityIpsWithContext(ctx context.Context, request *ModifySecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *ModifySecurityIpsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -9293,9 +10603,11 @@ func (client *Client) ModifySecurityIpsWithContext(ctx context.Context, request 
 //
 // @return ModifyTairKVCacheCustomInstanceAttributeResponse
 func (client *Client) ModifyTairKVCacheCustomInstanceAttributeWithContext(ctx context.Context, request *ModifyTairKVCacheCustomInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyTairKVCacheCustomInstanceAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -9363,9 +10675,11 @@ func (client *Client) ModifyTairKVCacheCustomInstanceAttributeWithContext(ctx co
 //
 // @return ModifyTaskInfoResponse
 func (client *Client) ModifyTaskInfoWithContext(ctx context.Context, request *ModifyTaskInfoRequest, runtime *dara.RuntimeOptions) (_result *ModifyTaskInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActionParams) {
@@ -9425,6 +10739,86 @@ func (client *Client) ModifyTaskInfoWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
+// Restarts the proxy node of a running Tair (Redis OSS-compatible) instance.
+//
+// Description:
+//
+// This operation supports only instances that use the read/write splitting architecture or the cluster architecture in proxy mode. For more information, see [Restart or rebuild proxy nodes](https://help.aliyun.com/document_detail/164224.html).
+//
+// @param request - RebootProxyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RebootProxyResponse
+func (client *Client) RebootProxyWithContext(ctx context.Context, request *RebootProxyRequest, runtime *dara.RuntimeOptions) (_result *RebootProxyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ProxyList) {
+		query["ProxyList"] = request.ProxyList
+	}
+
+	if !dara.IsNil(request.ProxyNodeList) {
+		query["ProxyNodeList"] = request.ProxyNodeList
+	}
+
+	if !dara.IsNil(request.RebootMode) {
+		query["RebootMode"] = request.RebootMode
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RebootProxy"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RebootProxyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Releases the private endpoint of an ApsaraDB for Redis cluster instance.
 //
 // Description:
@@ -9437,9 +10831,11 @@ func (client *Client) ModifyTaskInfoWithContext(ctx context.Context, request *Mo
 //
 // @return ReleaseDirectConnectionResponse
 func (client *Client) ReleaseDirectConnectionWithContext(ctx context.Context, request *ReleaseDirectConnectionRequest, runtime *dara.RuntimeOptions) (_result *ReleaseDirectConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -9503,9 +10899,11 @@ func (client *Client) ReleaseDirectConnectionWithContext(ctx context.Context, re
 //
 // @return ReleaseInstancePublicConnectionResponse
 func (client *Client) ReleaseInstancePublicConnectionWithContext(ctx context.Context, request *ReleaseInstancePublicConnectionRequest, runtime *dara.RuntimeOptions) (_result *ReleaseInstancePublicConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentConnectionString) {
@@ -9573,9 +10971,11 @@ func (client *Client) ReleaseInstancePublicConnectionWithContext(ctx context.Con
 //
 // @return RemoveSubInstanceResponse
 func (client *Client) RemoveSubInstanceWithContext(ctx context.Context, request *RemoveSubInstanceRequest, runtime *dara.RuntimeOptions) (_result *RemoveSubInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -9639,9 +11039,11 @@ func (client *Client) RemoveSubInstanceWithContext(ctx context.Context, request 
 //
 // @return RenewAdditionalBandwidthResponse
 func (client *Client) RenewAdditionalBandwidthWithContext(ctx context.Context, request *RenewAdditionalBandwidthRequest, runtime *dara.RuntimeOptions) (_result *RenewAdditionalBandwidthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -9721,9 +11123,11 @@ func (client *Client) RenewAdditionalBandwidthWithContext(ctx context.Context, r
 //
 // @return RenewInstanceResponse
 func (client *Client) RenewInstanceWithContext(ctx context.Context, request *RenewInstanceRequest, runtime *dara.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -9823,9 +11227,11 @@ func (client *Client) RenewInstanceWithContext(ctx context.Context, request *Ren
 //
 // @return ResetAccountPasswordResponse
 func (client *Client) ResetAccountPasswordWithContext(ctx context.Context, request *ResetAccountPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetAccountPasswordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -9897,9 +11303,11 @@ func (client *Client) ResetAccountPasswordWithContext(ctx context.Context, reque
 //
 // @return ResetTairKVCacheCustomInstancePasswordResponse
 func (client *Client) ResetTairKVCacheCustomInstancePasswordWithContext(ctx context.Context, request *ResetTairKVCacheCustomInstancePasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetTairKVCacheCustomInstancePasswordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -9967,9 +11375,11 @@ func (client *Client) ResetTairKVCacheCustomInstancePasswordWithContext(ctx cont
 //
 // @return ResizeTairKVCacheCustomInstanceDiskResponse
 func (client *Client) ResizeTairKVCacheCustomInstanceDiskWithContext(ctx context.Context, request *ResizeTairKVCacheCustomInstanceDiskRequest, runtime *dara.RuntimeOptions) (_result *ResizeTairKVCacheCustomInstanceDiskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -10041,9 +11451,11 @@ func (client *Client) ResizeTairKVCacheCustomInstanceDiskWithContext(ctx context
 //
 // @return RestartInstanceResponse
 func (client *Client) RestartInstanceWithContext(ctx context.Context, request *RestartInstanceRequest, runtime *dara.RuntimeOptions) (_result *RestartInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EffectiveTime) {
@@ -10111,9 +11523,11 @@ func (client *Client) RestartInstanceWithContext(ctx context.Context, request *R
 //
 // @return RestartTairKVCacheCustomInstanceResponse
 func (client *Client) RestartTairKVCacheCustomInstanceWithContext(ctx context.Context, request *RestartTairKVCacheCustomInstanceRequest, runtime *dara.RuntimeOptions) (_result *RestartTairKVCacheCustomInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -10179,9 +11593,11 @@ func (client *Client) RestartTairKVCacheCustomInstanceWithContext(ctx context.Co
 //
 // @return RestoreInstanceResponse
 func (client *Client) RestoreInstanceWithContext(ctx context.Context, request *RestoreInstanceRequest, runtime *dara.RuntimeOptions) (_result *RestoreInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupId) {
@@ -10261,9 +11677,11 @@ func (client *Client) RestoreInstanceWithContext(ctx context.Context, request *R
 //
 // @return StartTairKVCacheCustomInstanceResponse
 func (client *Client) StartTairKVCacheCustomInstanceWithContext(ctx context.Context, request *StartTairKVCacheCustomInstanceRequest, runtime *dara.RuntimeOptions) (_result *StartTairKVCacheCustomInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -10323,9 +11741,11 @@ func (client *Client) StartTairKVCacheCustomInstanceWithContext(ctx context.Cont
 //
 // @return StopTairKVCacheCustomInstanceResponse
 func (client *Client) StopTairKVCacheCustomInstanceWithContext(ctx context.Context, request *StopTairKVCacheCustomInstanceRequest, runtime *dara.RuntimeOptions) (_result *StopTairKVCacheCustomInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -10397,9 +11817,11 @@ func (client *Client) StopTairKVCacheCustomInstanceWithContext(ctx context.Conte
 //
 // @return SwitchInstanceHAResponse
 func (client *Client) SwitchInstanceHAWithContext(ctx context.Context, request *SwitchInstanceHARequest, runtime *dara.RuntimeOptions) (_result *SwitchInstanceHAResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -10481,9 +11903,11 @@ func (client *Client) SwitchInstanceHAWithContext(ctx context.Context, request *
 //
 // @return SwitchInstanceProxyResponse
 func (client *Client) SwitchInstanceProxyWithContext(ctx context.Context, request *SwitchInstanceProxyRequest, runtime *dara.RuntimeOptions) (_result *SwitchInstanceProxyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -10543,9 +11967,11 @@ func (client *Client) SwitchInstanceProxyWithContext(ctx context.Context, reques
 //
 // @return SwitchInstanceZoneFailOverResponse
 func (client *Client) SwitchInstanceZoneFailOverWithContext(ctx context.Context, request *SwitchInstanceZoneFailOverRequest, runtime *dara.RuntimeOptions) (_result *SwitchInstanceZoneFailOverResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -10593,9 +12019,11 @@ func (client *Client) SwitchInstanceZoneFailOverWithContext(ctx context.Context,
 //
 // @return SwitchNetworkResponse
 func (client *Client) SwitchNetworkWithContext(ctx context.Context, request *SwitchNetworkRequest, runtime *dara.RuntimeOptions) (_result *SwitchNetworkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClassicExpiredDays) {
@@ -10675,9 +12103,11 @@ func (client *Client) SwitchNetworkWithContext(ctx context.Context, request *Swi
 //
 // @return SyncDtsStatusResponse
 func (client *Client) SyncDtsStatusWithContext(ctx context.Context, request *SyncDtsStatusRequest, runtime *dara.RuntimeOptions) (_result *SyncDtsStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -10765,9 +12195,11 @@ func (client *Client) SyncDtsStatusWithContext(ctx context.Context, request *Syn
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -10843,9 +12275,11 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 //
 // @return TransformInstanceChargeTypeResponse
 func (client *Client) TransformInstanceChargeTypeWithContext(ctx context.Context, request *TransformInstanceChargeTypeRequest, runtime *dara.RuntimeOptions) (_result *TransformInstanceChargeTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -10917,7 +12351,7 @@ func (client *Client) TransformInstanceChargeTypeWithContext(ctx context.Context
 
 // Summary:
 //
-// 转换本地盘到云原生
+// Converts an instance use local disks to a cloud-native instance.
 //
 // @param request - TransformToEcsRequest
 //
@@ -10925,9 +12359,11 @@ func (client *Client) TransformInstanceChargeTypeWithContext(ctx context.Context
 //
 // @return TransformToEcsResponse
 func (client *Client) TransformToEcsWithContext(ctx context.Context, request *TransformToEcsRequest, runtime *dara.RuntimeOptions) (_result *TransformToEcsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoRenew) {
@@ -11025,9 +12461,11 @@ func (client *Client) TransformToEcsWithContext(ctx context.Context, request *Tr
 //
 // @return TransformToPrePaidResponse
 func (client *Client) TransformToPrePaidWithContext(ctx context.Context, request *TransformToPrePaidRequest, runtime *dara.RuntimeOptions) (_result *TransformToPrePaidResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -11103,9 +12541,11 @@ func (client *Client) TransformToPrePaidWithContext(ctx context.Context, request
 //
 // @return UnlockDBInstanceWriteResponse
 func (client *Client) UnlockDBInstanceWriteWithContext(ctx context.Context, request *UnlockDBInstanceWriteRequest, runtime *dara.RuntimeOptions) (_result *UnlockDBInstanceWriteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -11173,9 +12613,11 @@ func (client *Client) UnlockDBInstanceWriteWithContext(ctx context.Context, requ
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -11229,6 +12671,88 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the proxy node of a cluster instance to the latest version.
+//
+// Description:
+//
+// The procedure and impacts for updating the minor version of an instance varies based on the instance architecture. For more information, see [Update the minor version of an instance](https://help.aliyun.com/document_detail/56450.html).
+//
+// >
+//
+//   - Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/473781.html) operation to query the current minor version of the proxy node.
+//
+//   - The connection to the instance is interrupted during the update. We recommend that perform an update during off-peak hours. Make sure your application can reconnect to the instance after the update. For more information, see [Minor version update](https://help.aliyun.com/document_detail/56450.html).
+//
+// @param request - UpgradeProxyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeProxyResponse
+func (client *Client) UpgradeProxyWithContext(ctx context.Context, request *UpgradeProxyRequest, runtime *dara.RuntimeOptions) (_result *UpgradeProxyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ProxyInstanceIds) {
+		query["ProxyInstanceIds"] = request.ProxyInstanceIds
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.SwitchTimeMode) {
+		query["SwitchTimeMode"] = request.SwitchTimeMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpgradeProxy"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpgradeProxyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

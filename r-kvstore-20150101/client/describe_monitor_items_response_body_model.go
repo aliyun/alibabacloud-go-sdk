@@ -57,7 +57,12 @@ func (s *DescribeMonitorItemsResponseBody) SetRequestId(v string) *DescribeMonit
 }
 
 func (s *DescribeMonitorItemsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorItems != nil {
+		if err := s.MonitorItems.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorItemsResponseBodyMonitorItems struct {
@@ -82,7 +87,16 @@ func (s *DescribeMonitorItemsResponseBodyMonitorItems) SetKVStoreMonitorItem(v [
 }
 
 func (s *DescribeMonitorItemsResponseBodyMonitorItems) Validate() error {
-	return dara.Validate(s)
+	if s.KVStoreMonitorItem != nil {
+		for _, item := range s.KVStoreMonitorItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorItemsResponseBodyMonitorItemsKVStoreMonitorItem struct {

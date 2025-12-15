@@ -104,7 +104,12 @@ func (s *DescribeInstancesResponseBody) SetTotalCount(v int32) *DescribeInstance
 }
 
 func (s *DescribeInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		if err := s.Instances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstances struct {
@@ -129,7 +134,16 @@ func (s *DescribeInstancesResponseBodyInstances) SetKVStoreInstance(v []*Describ
 }
 
 func (s *DescribeInstancesResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.KVStoreInstance != nil {
+		for _, item := range s.KVStoreInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesKVStoreInstance struct {
@@ -894,7 +908,12 @@ func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetZoneId(v stri
 }
 
 func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesKVStoreInstanceTags struct {
@@ -919,7 +938,16 @@ func (s *DescribeInstancesResponseBodyInstancesKVStoreInstanceTags) SetTag(v []*
 }
 
 func (s *DescribeInstancesResponseBodyInstancesKVStoreInstanceTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesKVStoreInstanceTagsTag struct {

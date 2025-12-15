@@ -172,7 +172,12 @@ func (s *DescribeRunningLogRecordsResponseBody) SetTotalRecordCount(v int32) *De
 }
 
 func (s *DescribeRunningLogRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRunningLogRecordsResponseBodyItems struct {
@@ -197,7 +202,16 @@ func (s *DescribeRunningLogRecordsResponseBodyItems) SetLogRecords(v []*Describe
 }
 
 func (s *DescribeRunningLogRecordsResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.LogRecords != nil {
+		for _, item := range s.LogRecords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRunningLogRecordsResponseBodyItemsLogRecords struct {

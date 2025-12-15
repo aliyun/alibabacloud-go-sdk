@@ -70,7 +70,12 @@ func (s *DescribeDBNodeDirectVipInfoResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeDBNodeDirectVipInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DirectVipInfo != nil {
+		if err := s.DirectVipInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBNodeDirectVipInfoResponseBodyDirectVipInfo struct {
@@ -95,7 +100,16 @@ func (s *DescribeDBNodeDirectVipInfoResponseBodyDirectVipInfo) SetVipInfo(v []*D
 }
 
 func (s *DescribeDBNodeDirectVipInfoResponseBodyDirectVipInfo) Validate() error {
-	return dara.Validate(s)
+	if s.VipInfo != nil {
+		for _, item := range s.VipInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBNodeDirectVipInfoResponseBodyDirectVipInfoVipInfo struct {

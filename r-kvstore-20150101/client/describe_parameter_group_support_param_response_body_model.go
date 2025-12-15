@@ -53,7 +53,16 @@ func (s *DescribeParameterGroupSupportParamResponseBody) SetResourceList(v []*De
 }
 
 func (s *DescribeParameterGroupSupportParamResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceList != nil {
+		for _, item := range s.ResourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeParameterGroupSupportParamResponseBodyResourceList struct {

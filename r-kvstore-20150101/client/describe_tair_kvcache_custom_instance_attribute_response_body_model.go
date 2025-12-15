@@ -434,7 +434,17 @@ func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetZoneType(v s
 }
 
 func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Disks != nil {
+		if err := s.Disks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisks struct {
@@ -459,7 +469,16 @@ func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisks) SetDisk(v 
 }
 
 func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisks) Validate() error {
-	return dara.Validate(s)
+	if s.Disk != nil {
+		for _, item := range s.Disk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisksDisk struct {
@@ -538,7 +557,16 @@ func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBodyTags) SetTag(v []
 }
 
 func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBodyTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTairKVCacheCustomInstanceAttributeResponseBodyTagsTag struct {

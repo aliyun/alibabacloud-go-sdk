@@ -59,5 +59,10 @@ func (s *FlushExpireKeysResponse) SetBody(v *FlushExpireKeysResponseBody) *Flush
 }
 
 func (s *FlushExpireKeysResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

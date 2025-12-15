@@ -104,7 +104,12 @@ func (s *DescribeRoleZoneInfoResponseBody) SetTotalCount(v int32) *DescribeRoleZ
 }
 
 func (s *DescribeRoleZoneInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Node != nil {
+		if err := s.Node.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRoleZoneInfoResponseBodyNode struct {
@@ -129,7 +134,16 @@ func (s *DescribeRoleZoneInfoResponseBodyNode) SetNodeInfo(v []*DescribeRoleZone
 }
 
 func (s *DescribeRoleZoneInfoResponseBodyNode) Validate() error {
-	return dara.Validate(s)
+	if s.NodeInfo != nil {
+		for _, item := range s.NodeInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRoleZoneInfoResponseBodyNodeNodeInfo struct {

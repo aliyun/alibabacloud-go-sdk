@@ -66,8 +66,6 @@ type MasterNodeShutDownFailOverRequest struct {
 	FailMode *string `json:"FailMode,omitempty" xml:"FailMode,omitempty"`
 	// The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the instance ID.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****

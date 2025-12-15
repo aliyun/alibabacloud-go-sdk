@@ -59,5 +59,10 @@ func (s *FlushInstanceForDBResponse) SetBody(v *FlushInstanceForDBResponseBody) 
 }
 
 func (s *FlushInstanceForDBResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

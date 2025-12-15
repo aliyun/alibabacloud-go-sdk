@@ -53,7 +53,12 @@ func (s *DescribeSecurityGroupConfigurationResponseBody) SetRequestId(v string) 
 }
 
 func (s *DescribeSecurityGroupConfigurationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityGroupConfigurationResponseBodyItems struct {
@@ -78,7 +83,16 @@ func (s *DescribeSecurityGroupConfigurationResponseBodyItems) SetEcsSecurityGrou
 }
 
 func (s *DescribeSecurityGroupConfigurationResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.EcsSecurityGroupRelation != nil {
+		for _, item := range s.EcsSecurityGroupRelation {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation struct {

@@ -11,6 +11,8 @@ type iDescribeDBInstanceNetInfoRequest interface {
 	GoString() string
 	SetInstanceId(v string) *DescribeDBInstanceNetInfoRequest
 	GetInstanceId() *string
+	SetNetType(v string) *DescribeDBInstanceNetInfoRequest
+	GetNetType() *string
 	SetOwnerAccount(v string) *DescribeDBInstanceNetInfoRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeDBInstanceNetInfoRequest
@@ -32,6 +34,7 @@ type DescribeDBInstanceNetInfoRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetType              *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -49,6 +52,10 @@ func (s DescribeDBInstanceNetInfoRequest) GoString() string {
 
 func (s *DescribeDBInstanceNetInfoRequest) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *DescribeDBInstanceNetInfoRequest) GetNetType() *string {
+	return s.NetType
 }
 
 func (s *DescribeDBInstanceNetInfoRequest) GetOwnerAccount() *string {
@@ -73,6 +80,11 @@ func (s *DescribeDBInstanceNetInfoRequest) GetSecurityToken() *string {
 
 func (s *DescribeDBInstanceNetInfoRequest) SetInstanceId(v string) *DescribeDBInstanceNetInfoRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceNetInfoRequest) SetNetType(v string) *DescribeDBInstanceNetInfoRequest {
+	s.NetType = &v
 	return s
 }
 

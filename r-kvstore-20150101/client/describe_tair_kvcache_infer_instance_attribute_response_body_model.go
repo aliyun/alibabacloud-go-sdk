@@ -47,7 +47,12 @@ func (s *DescribeTairKVCacheInferInstanceAttributeResponseBody) SetRequestId(v s
 }
 
 func (s *DescribeTairKVCacheInferInstanceAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		if err := s.Instances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTairKVCacheInferInstanceAttributeResponseBodyInstances struct {
@@ -72,7 +77,16 @@ func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstances) SetDBIn
 }
 
 func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstanceAttribute != nil {
+		for _, item := range s.DBInstanceAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute struct {
@@ -94,6 +108,7 @@ type DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAtt
 	NetworkType      *string                                                                                `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	PrivateIp        *string                                                                                `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
 	RegionId         *string                                                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReplicaNum       *string                                                                                `json:"ReplicaNum,omitempty" xml:"ReplicaNum,omitempty"`
 	ResourceGroupId  *string                                                                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Storage          *int64                                                                                 `json:"Storage,omitempty" xml:"Storage,omitempty"`
 	Tags             *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
@@ -181,6 +196,10 @@ func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanc
 
 func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute) GetReplicaNum() *string {
+	return s.ReplicaNum
 }
 
 func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute) GetResourceGroupId() *string {
@@ -301,6 +320,11 @@ func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanc
 	return s
 }
 
+func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetReplicaNum(v string) *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
+	s.ReplicaNum = &v
+	return s
+}
+
 func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetResourceGroupId(v string) *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
 	s.ResourceGroupId = &v
 	return s
@@ -337,7 +361,12 @@ func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanc
 }
 
 func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttributeTags struct {
@@ -362,7 +391,16 @@ func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanc
 }
 
 func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttributeTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttributeTagsTag struct {

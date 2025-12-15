@@ -53,7 +53,12 @@ func (s *DescribeInstanceAttributeResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeInstanceAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		if err := s.Instances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceAttributeResponseBodyInstances struct {
@@ -78,7 +83,16 @@ func (s *DescribeInstanceAttributeResponseBodyInstances) SetDBInstanceAttribute(
 }
 
 func (s *DescribeInstanceAttributeResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstanceAttribute != nil {
+		for _, item := range s.DBInstanceAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute struct {
@@ -155,7 +169,8 @@ type DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute struct {
 	// example:
 	//
 	// cloudbox
-	CloudType *string `json:"CloudType,omitempty" xml:"CloudType,omitempty"`
+	CloudType     *string `json:"CloudType,omitempty" xml:"CloudType,omitempty"`
+	ComputingType *string `json:"ComputingType,omitempty" xml:"ComputingType,omitempty"`
 	// The parameter configurations of the instance in the JSON format. For more information, see [Parameter descriptions](https://help.aliyun.com/document_detail/43885.html). You can use the [DescribeAuditLogConfig](https://help.aliyun.com/document_detail/473830.html) operation to query audit log configurations.
 	//
 	// example:
@@ -572,6 +587,10 @@ func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) GetC
 	return s.CloudType
 }
 
+func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) GetComputingType() *string {
+	return s.ComputingType
+}
+
 func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) GetConfig() *string {
 	return s.Config
 }
@@ -802,6 +821,11 @@ func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetC
 
 func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetCloudType(v string) *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
 	s.CloudType = &v
+	return s
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetComputingType(v string) *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
+	s.ComputingType = &v
 	return s
 }
 
@@ -1041,7 +1065,12 @@ func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetZ
 }
 
 func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttributeTags struct {
@@ -1066,7 +1095,16 @@ func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttributeTags) 
 }
 
 func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttributeTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttributeTagsTag struct {

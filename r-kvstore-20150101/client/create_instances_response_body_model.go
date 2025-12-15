@@ -70,7 +70,12 @@ func (s *CreateInstancesResponseBody) SetRequestId(v string) *CreateInstancesRes
 }
 
 func (s *CreateInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceIds != nil {
+		if err := s.InstanceIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateInstancesResponseBodyInstanceIds struct {

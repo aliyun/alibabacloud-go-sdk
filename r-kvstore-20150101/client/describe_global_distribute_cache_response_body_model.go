@@ -104,7 +104,16 @@ func (s *DescribeGlobalDistributeCacheResponseBody) SetTotalRecordCount(v int32)
 }
 
 func (s *DescribeGlobalDistributeCacheResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GlobalDistributeCaches != nil {
+		for _, item := range s.GlobalDistributeCaches {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCaches struct {
@@ -166,7 +175,16 @@ func (s *DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCaches) SetSub
 }
 
 func (s *DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCaches) Validate() error {
-	return dara.Validate(s)
+	if s.SubInstances != nil {
+		for _, item := range s.SubInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCachesSubInstances struct {

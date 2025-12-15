@@ -59,5 +59,10 @@ func (s *DescribeParameterGroupTemplateListResponse) SetBody(v *DescribeParamete
 }
 
 func (s *DescribeParameterGroupTemplateListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

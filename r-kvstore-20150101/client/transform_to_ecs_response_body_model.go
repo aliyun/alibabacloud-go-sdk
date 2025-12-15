@@ -16,6 +16,8 @@ type iTransformToEcsResponseBody interface {
 }
 
 type TransformToEcsResponseBody struct {
+	// The order ID.
+	//
 	// example:
 	//
 	// 20905403119****

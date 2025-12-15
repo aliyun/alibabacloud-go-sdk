@@ -95,7 +95,12 @@ func (s *DescribeTairKVCacheCustomInstancesResponseBody) SetTotalCount(v int32) 
 }
 
 func (s *DescribeTairKVCacheCustomInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		if err := s.Instances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTairKVCacheCustomInstancesResponseBodyInstances struct {
@@ -120,7 +125,16 @@ func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstances) SetKVStoreInst
 }
 
 func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.KVStoreInstance != nil {
+		for _, item := range s.KVStoreInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance struct {
@@ -386,7 +400,12 @@ func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance)
 }
 
 func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTags struct {
@@ -411,7 +430,16 @@ func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceT
 }
 
 func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTagsTag struct {

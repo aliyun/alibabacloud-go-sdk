@@ -59,5 +59,10 @@ func (s *DescribeIntranetAttributeResponse) SetBody(v *DescribeIntranetAttribute
 }
 
 func (s *DescribeIntranetAttributeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

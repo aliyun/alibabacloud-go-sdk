@@ -159,7 +159,16 @@ func (s *DescribeClusterBackupListResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeClusterBackupListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterBackups != nil {
+		for _, item := range s.ClusterBackups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterBackupListResponseBodyClusterBackups struct {
@@ -336,7 +345,16 @@ func (s *DescribeClusterBackupListResponseBodyClusterBackups) SetShardClassMemor
 }
 
 func (s *DescribeClusterBackupListResponseBodyClusterBackups) Validate() error {
-	return dara.Validate(s)
+	if s.Backups != nil {
+		for _, item := range s.Backups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterBackupListResponseBodyClusterBackupsBackups struct {
@@ -552,7 +570,12 @@ func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) SetRecoverC
 }
 
 func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) Validate() error {
-	return dara.Validate(s)
+	if s.ExtraInfo != nil {
+		if err := s.ExtraInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo struct {

@@ -104,7 +104,16 @@ func (s *DescribeDedicatedClusterInstanceListResponseBody) SetTotalCount(v int32
 }
 
 func (s *DescribeDedicatedClusterInstanceListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedClusterInstanceListResponseBodyInstances struct {
@@ -517,7 +526,16 @@ func (s *DescribeDedicatedClusterInstanceListResponseBodyInstances) SetZoneId(v 
 }
 
 func (s *DescribeDedicatedClusterInstanceListResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceNodeList != nil {
+		for _, item := range s.InstanceNodeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedClusterInstanceListResponseBodyInstancesInstanceNodeList struct {

@@ -83,7 +83,17 @@ func (s *DescribeLogicInstanceTopologyResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribeLogicInstanceTopologyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RedisProxyList != nil {
+		if err := s.RedisProxyList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RedisShardList != nil {
+		if err := s.RedisShardList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLogicInstanceTopologyResponseBodyRedisProxyList struct {
@@ -108,7 +118,16 @@ func (s *DescribeLogicInstanceTopologyResponseBodyRedisProxyList) SetNodeInfo(v 
 }
 
 func (s *DescribeLogicInstanceTopologyResponseBodyRedisProxyList) Validate() error {
-	return dara.Validate(s)
+	if s.NodeInfo != nil {
+		for _, item := range s.NodeInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLogicInstanceTopologyResponseBodyRedisProxyListNodeInfo struct {
@@ -227,7 +246,16 @@ func (s *DescribeLogicInstanceTopologyResponseBodyRedisShardList) SetNodeInfo(v 
 }
 
 func (s *DescribeLogicInstanceTopologyResponseBodyRedisShardList) Validate() error {
-	return dara.Validate(s)
+	if s.NodeInfo != nil {
+		for _, item := range s.NodeInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLogicInstanceTopologyResponseBodyRedisShardListNodeInfo struct {

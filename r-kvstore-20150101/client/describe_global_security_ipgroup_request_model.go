@@ -9,6 +9,8 @@ type iDescribeGlobalSecurityIPGroupRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEngine(v string) *DescribeGlobalSecurityIPGroupRequest
+	GetEngine() *string
 	SetGlobalSecurityGroupId(v string) *DescribeGlobalSecurityIPGroupRequest
 	GetGlobalSecurityGroupId() *string
 	SetOwnerAccount(v string) *DescribeGlobalSecurityIPGroupRequest
@@ -28,6 +30,7 @@ type iDescribeGlobalSecurityIPGroupRequest interface {
 }
 
 type DescribeGlobalSecurityIPGroupRequest struct {
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The ID of the IP whitelist template.
 	//
 	// example:
@@ -63,6 +66,10 @@ func (s DescribeGlobalSecurityIPGroupRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeGlobalSecurityIPGroupRequest) GetEngine() *string {
+	return s.Engine
+}
+
 func (s *DescribeGlobalSecurityIPGroupRequest) GetGlobalSecurityGroupId() *string {
 	return s.GlobalSecurityGroupId
 }
@@ -93,6 +100,11 @@ func (s *DescribeGlobalSecurityIPGroupRequest) GetResourceOwnerId() *int64 {
 
 func (s *DescribeGlobalSecurityIPGroupRequest) GetSecurityToken() *string {
 	return s.SecurityToken
+}
+
+func (s *DescribeGlobalSecurityIPGroupRequest) SetEngine(v string) *DescribeGlobalSecurityIPGroupRequest {
+	s.Engine = &v
+	return s
 }
 
 func (s *DescribeGlobalSecurityIPGroupRequest) SetGlobalSecurityGroupId(v string) *DescribeGlobalSecurityIPGroupRequest {

@@ -74,7 +74,12 @@ func (s *DescribeDBInstanceNetInfoResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeDBInstanceNetInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetInfoItems != nil {
+		if err := s.NetInfoItems.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceNetInfoResponseBodyNetInfoItems struct {
@@ -99,7 +104,16 @@ func (s *DescribeDBInstanceNetInfoResponseBodyNetInfoItems) SetInstanceNetInfo(v
 }
 
 func (s *DescribeDBInstanceNetInfoResponseBodyNetInfoItems) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceNetInfo != nil {
+		for _, item := range s.InstanceNetInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceNetInfoResponseBodyNetInfoItemsInstanceNetInfo struct {

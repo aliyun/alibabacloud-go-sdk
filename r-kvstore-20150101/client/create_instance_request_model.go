@@ -915,7 +915,16 @@ func (s *CreateInstanceRequest) SetZoneId(v string) *CreateInstanceRequest {
 }
 
 func (s *CreateInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateInstanceRequestTag struct {
