@@ -13,6 +13,8 @@ type iUpdateAppGroupRequest interface {
 	GetAppVersion() *int32
 	SetDescription(v string) *UpdateAppGroupRequest
 	GetDescription() *string
+	SetEnableLog(v bool) *UpdateAppGroupRequest
+	GetEnableLog() *bool
 	SetGroupId(v string) *UpdateAppGroupRequest
 	GetGroupId() *string
 	SetMaxConcurrency(v int32) *UpdateAppGroupRequest
@@ -42,6 +44,7 @@ type UpdateAppGroupRequest struct {
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableLog   *bool   `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
 	// The ID of the application. You can obtain the application ID on the **Application Management*	- page in the SchedulerX console.
 	//
 	// This parameter is required.
@@ -114,6 +117,10 @@ func (s *UpdateAppGroupRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *UpdateAppGroupRequest) GetEnableLog() *bool {
+	return s.EnableLog
+}
+
 func (s *UpdateAppGroupRequest) GetGroupId() *string {
 	return s.GroupId
 }
@@ -149,6 +156,11 @@ func (s *UpdateAppGroupRequest) SetAppVersion(v int32) *UpdateAppGroupRequest {
 
 func (s *UpdateAppGroupRequest) SetDescription(v string) *UpdateAppGroupRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateAppGroupRequest) SetEnableLog(v bool) *UpdateAppGroupRequest {
+	s.EnableLog = &v
 	return s
 }
 

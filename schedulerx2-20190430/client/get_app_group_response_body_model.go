@@ -147,6 +147,7 @@ type GetAppGroupResponseBodyData struct {
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableLog   *bool   `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
 	// The ID of the application.
 	//
 	// example:
@@ -215,6 +216,10 @@ func (s *GetAppGroupResponseBodyData) GetDescription() *string {
 	return s.Description
 }
 
+func (s *GetAppGroupResponseBodyData) GetEnableLog() *bool {
+	return s.EnableLog
+}
+
 func (s *GetAppGroupResponseBodyData) GetGroupId() *string {
 	return s.GroupId
 }
@@ -261,6 +266,11 @@ func (s *GetAppGroupResponseBodyData) SetCurJobs(v int32) *GetAppGroupResponseBo
 
 func (s *GetAppGroupResponseBodyData) SetDescription(v string) *GetAppGroupResponseBodyData {
 	s.Description = &v
+	return s
+}
+
+func (s *GetAppGroupResponseBodyData) SetEnableLog(v bool) *GetAppGroupResponseBodyData {
+	s.EnableLog = &v
 	return s
 }
 

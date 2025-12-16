@@ -22,28 +22,38 @@ type iListJobScriptHistoryRequest interface {
 }
 
 type ListJobScriptHistoryRequest struct {
+	// The application ID. You can obtain the application ID on the Applications page in the SchedulerX console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testSchedulerx.defaultGroup
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The job ID. You can obtain the job ID on the Tasks page in the SchedulerX console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 92583
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The namespace ID. You can obtain the namespace ID on the Namespaces page in the SchedulerX console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4F68ABED-AC31-4412-9297-D9A8F0401108
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The source of the namespace. This parameter is required only for a special third party.
+	//
 	// example:
 	//
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

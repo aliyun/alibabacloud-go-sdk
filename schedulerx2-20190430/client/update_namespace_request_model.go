@@ -20,14 +20,28 @@ type iUpdateNamespaceRequest interface {
 }
 
 type UpdateNamespaceRequest struct {
+	// The description of the namespace.
+	//
+	// example:
+	//
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The namespace ID. You can obtain the namespace ID on the Namespaces page in the SchedulerX console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
-	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The name of the namespace.
+	//
+	// example:
+	//
+	// test
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

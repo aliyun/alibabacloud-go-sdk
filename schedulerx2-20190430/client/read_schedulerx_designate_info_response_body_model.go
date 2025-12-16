@@ -24,21 +24,30 @@ type iReadSchedulerxDesignateInfoResponseBody interface {
 }
 
 type ReadSchedulerxDesignateInfoResponseBody struct {
+	// The access denial details.
 	AccessDeniedDetail *ReadSchedulerxDesignateInfoResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// -
+	// *
 	Data *ReadSchedulerxDesignateInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned only if an error occurs.
+	//
 	// example:
 	//
 	// jobId=xxx is not existed
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4F68ABED-AC31-4412-9297-D9A8F0401108
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -122,30 +131,44 @@ func (s *ReadSchedulerxDesignateInfoResponseBody) Validate() error {
 }
 
 type ReadSchedulerxDesignateInfoResponseBodyAccessDeniedDetail struct {
+	// The authentication operation.
+	//
 	// example:
 	//
 	// edas:ReadSchedulerxDesignateInfo
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The principal name.
+	//
 	// example:
 	//
 	// 209312833131416xxx
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	// The principal account.
+	//
 	// example:
 	//
 	// 1827811800526xxx
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// The principal type.
+	//
 	// example:
 	//
 	// SubUser
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The encoded diagnostic message.
+	//
 	// example:
 	//
 	// AQFn/cLPZ/3Cz0YxQkZBMjVGLTY0REUtNTlGNS05NzUwLTgyMUE4M0MwMTFDRQ==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	// The permission denial type.
+	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// The policy type.
+	//
 	// example:
 	//
 	// AccountLevelIdentityBasedPolicy
@@ -228,12 +251,28 @@ func (s *ReadSchedulerxDesignateInfoResponseBodyAccessDeniedDetail) Validate() e
 }
 
 type ReadSchedulerxDesignateInfoResponseBodyData struct {
-	// -
+	// *
 	DesignateDetailVos []*ReadSchedulerxDesignateInfoResponseBodyDataDesignateDetailVos `json:"DesignateDetailVos,omitempty" xml:"DesignateDetailVos,omitempty" type:"Repeated"`
+	// The information type of the specified workers.
+	//
+	// 	- 1: the IP address of the specified workers.
+	//
+	// 	- 2: the tags of the specified workers.
+	//
+	// >  The default value of the DesignateType parameter is 1.
+	//
 	// example:
 	//
 	// 1
 	DesignateType *int32 `json:"DesignateType,omitempty" xml:"DesignateType,omitempty"`
+	// Indicates whether to enable failover for the workers. If you set this parameter to true, the job is scheduled to other workers when the specified workers go offline.
+	//
+	// 	- true: enables failover for the workers.
+	//
+	// 	- false: disables failover for the workers.
+	//
+	// >  The default value of the Transferable parameter is false.
+	//
 	// example:
 	//
 	// true
@@ -289,31 +328,62 @@ func (s *ReadSchedulerxDesignateInfoResponseBodyData) Validate() error {
 }
 
 type ReadSchedulerxDesignateInfoResponseBodyDataDesignateDetailVos struct {
+	// The status of the workers. Valid values:
+	//
+	// 	- FREE: idle.
+	//
+	// 	- LOAD5_BUSY: The average of the latest five values of CPU workload is too high.
+	//
+	// 	- HEAP5_BUSY: The average of the latest five values of heap memory usage is too high.
+	//
+	// 	- DISK_BUSY: The disk usage is too high.
+	//
 	// example:
 	//
 	// FREE
 	Busy *string `json:"Busy,omitempty" xml:"Busy,omitempty"`
+	// Indicates whether the workers are specified.
+	//
+	// 	- true: The workers are specified.
+	//
+	// 	- false: The workers are not specified.
+	//
 	// example:
 	//
 	// true
 	Checked *bool `json:"Checked,omitempty" xml:"Checked,omitempty"`
+	// The information returned based on the value of the DesignateType parameter.
+	//
+	// 	- If you set the DesignateType parameter to 2, the tags of the workers are returned.
+	//
+	// 	- If you set the DesignateType parameter to 1, the IP addresses of the workers are returned.
+	//
 	// example:
 	//
 	// 10.52.169.25
-	Key     *string                                                               `json:"Key,omitempty" xml:"Key,omitempty"`
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The metric values.
 	Metrics *ReadSchedulerxDesignateInfoResponseBodyDataDesignateDetailVosMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// Indicates whether the workers are offline.
+	//
 	// example:
 	//
 	// fasle
 	Offline *bool `json:"Offline,omitempty" xml:"Offline,omitempty"`
+	// The number of workers.
+	//
 	// example:
 	//
 	// 1
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The startup method of the workers.
+	//
 	// example:
 	//
 	// pod
 	Starter *string `json:"Starter,omitempty" xml:"Starter,omitempty"`
+	// The version of the workers.
+	//
 	// example:
 	//
 	// 1.12.5
@@ -410,54 +480,80 @@ func (s *ReadSchedulerxDesignateInfoResponseBodyDataDesignateDetailVos) Validate
 }
 
 type ReadSchedulerxDesignateInfoResponseBodyDataDesignateDetailVosMetrics struct {
+	// The most recent value of CPU workload.
+	//
 	// example:
 	//
 	// 0
 	CpuLoad1 *float64 `json:"CpuLoad1,omitempty" xml:"CpuLoad1,omitempty"`
+	// The average of the latest five values of CPU workload.
+	//
 	// example:
 	//
 	// 0
 	CpuLoad5 *float64 `json:"CpuLoad5,omitempty" xml:"CpuLoad5,omitempty"`
+	// The number of available CPU processors.
+	//
 	// example:
 	//
 	// 1
 	CpuProcessors *int32 `json:"CpuProcessors,omitempty" xml:"CpuProcessors,omitempty"`
+	// The total disk capacity in MB.
+	//
 	// example:
 	//
 	// 1024
 	DiskMax *int32 `json:"DiskMax,omitempty" xml:"DiskMax,omitempty"`
+	// The disk usage.
+	//
 	// example:
 	//
 	// 0.19142496008515167
 	DiskUsage *float64 `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
+	// The used disk space in MB.
+	//
 	// example:
 	//
 	// 148
 	DiskUsed *int32 `json:"DiskUsed,omitempty" xml:"DiskUsed,omitempty"`
+	// The number of job executions.
+	//
 	// example:
 	//
 	// 56
 	ExecCount *int64 `json:"ExecCount,omitempty" xml:"ExecCount,omitempty"`
+	// The most recent value of heap memory usage.
+	//
 	// example:
 	//
 	// 0.06072874493927125
 	Heap1Usage *float64 `json:"Heap1Usage,omitempty" xml:"Heap1Usage,omitempty"`
+	// The most recent value of used heap memory in MB.
+	//
 	// example:
 	//
 	// 14
 	Heap1Used *float64 `json:"Heap1Used,omitempty" xml:"Heap1Used,omitempty"`
+	// The average of the latest five values of heap memory usage.
+	//
 	// example:
 	//
 	// 0.06477732793522267
 	Heap5Usage *float64 `json:"Heap5Usage,omitempty" xml:"Heap5Usage,omitempty"`
+	// The maximum heap memory in MB.
+	//
 	// example:
 	//
 	// 500
 	HeapMax *int32 `json:"HeapMax,omitempty" xml:"HeapMax,omitempty"`
+	// The number of available resources in the shared pool.
+	//
 	// example:
 	//
 	// 72
 	SharePoolAvailableSize *int32 `json:"SharePoolAvailableSize,omitempty" xml:"SharePoolAvailableSize,omitempty"`
+	// The queue size in the shared pool.
+	//
 	// example:
 	//
 	// 1

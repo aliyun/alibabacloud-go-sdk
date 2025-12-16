@@ -20,18 +20,26 @@ type iManageSchedulerxJobSyncResponseBody interface {
 }
 
 type ManageSchedulerxJobSyncResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message. Returned only when an error occurs.
+	//
 	// example:
 	//
 	// jobId=xxx is not existed
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 71BCC0E3-64B2-4B63-A870-AFB64EBCB58C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

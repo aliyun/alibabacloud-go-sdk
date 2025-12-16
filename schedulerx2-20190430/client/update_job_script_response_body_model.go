@@ -20,18 +20,26 @@ type iUpdateJobScriptResponseBody interface {
 }
 
 type UpdateJobScriptResponseBody struct {
+	// The returned code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information returned only if an error occurs.
+	//
 	// example:
 	//
 	// job is not existed, jobId=302
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4F68ABED-AC31-4412-9297-D9A8F0401108
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

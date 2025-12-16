@@ -182,6 +182,7 @@ type ListGroupsResponseBodyDataAppGroups struct {
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableLog   *bool   `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
 	// The application ID.
 	//
 	// example:
@@ -224,6 +225,10 @@ func (s *ListGroupsResponseBodyDataAppGroups) GetDescription() *string {
 	return s.Description
 }
 
+func (s *ListGroupsResponseBodyDataAppGroups) GetEnableLog() *bool {
+	return s.EnableLog
+}
+
 func (s *ListGroupsResponseBodyDataAppGroups) GetGroupId() *string {
 	return s.GroupId
 }
@@ -254,6 +259,11 @@ func (s *ListGroupsResponseBodyDataAppGroups) SetAppVersion(v int32) *ListGroups
 
 func (s *ListGroupsResponseBodyDataAppGroups) SetDescription(v string) *ListGroupsResponseBodyDataAppGroups {
 	s.Description = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyDataAppGroups) SetEnableLog(v bool) *ListGroupsResponseBodyDataAppGroups {
+	s.EnableLog = &v
 	return s
 }
 

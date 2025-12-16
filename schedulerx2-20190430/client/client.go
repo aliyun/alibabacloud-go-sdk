@@ -918,6 +918,154 @@ func (client *Client) CreateRouteStrategy(request *CreateRouteStrategyRequest) (
 
 // Summary:
 //
+// Creates a calendar.
+//
+// @param request - CreateSchedulerxCalendarRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSchedulerxCalendarResponse
+func (client *Client) CreateSchedulerxCalendarWithOptions(request *CreateSchedulerxCalendarRequest, runtime *dara.RuntimeOptions) (_result *CreateSchedulerxCalendarResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CalendarName) {
+		body["CalendarName"] = request.CalendarName
+	}
+
+	if !dara.IsNil(request.MonthDaysContent) {
+		body["MonthDaysContent"] = request.MonthDaysContent
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Year) {
+		body["Year"] = request.Year
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSchedulerxCalendar"),
+		Version:     dara.String("2019-04-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSchedulerxCalendarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a calendar.
+//
+// @param request - CreateSchedulerxCalendarRequest
+//
+// @return CreateSchedulerxCalendarResponse
+func (client *Client) CreateSchedulerxCalendar(request *CreateSchedulerxCalendarRequest) (_result *CreateSchedulerxCalendarResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateSchedulerxCalendarResponse{}
+	_body, _err := client.CreateSchedulerxCalendarWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a notification policy.
+//
+// @param request - CreateSchedulerxNotificationPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSchedulerxNotificationPolicyResponse
+func (client *Client) CreateSchedulerxNotificationPolicyWithOptions(request *CreateSchedulerxNotificationPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateSchedulerxNotificationPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChannelTimeRange) {
+		body["ChannelTimeRange"] = request.ChannelTimeRange
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.PolicyName) {
+		body["PolicyName"] = request.PolicyName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSchedulerxNotificationPolicy"),
+		Version:     dara.String("2019-04-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSchedulerxNotificationPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a notification policy.
+//
+// @param request - CreateSchedulerxNotificationPolicyRequest
+//
+// @return CreateSchedulerxNotificationPolicyResponse
+func (client *Client) CreateSchedulerxNotificationPolicy(request *CreateSchedulerxNotificationPolicyRequest) (_result *CreateSchedulerxNotificationPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateSchedulerxNotificationPolicyResponse{}
+	_body, _err := client.CreateSchedulerxNotificationPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a workflow. By default, the created workflow is disabled. After you update the directed acyclic graph (DAG) of the workflow, you must manually or call the corresponding operation to enable the workflow. You can call this operation only in the professional edition.
 //
 // @param request - CreateWorkflowRequest
@@ -1148,7 +1296,7 @@ func (client *Client) DeleteJob(request *DeleteJobRequest) (_result *DeleteJobRe
 
 // Summary:
 //
-// 删除命名空间
+// Deletes a namespace.
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -1196,7 +1344,7 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 
 // Summary:
 //
-// 删除命名空间
+// Deletes a namespace.
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -1279,6 +1427,142 @@ func (client *Client) DeleteRouteStrategy(request *DeleteRouteStrategyRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteRouteStrategyResponse{}
 	_body, _err := client.DeleteRouteStrategyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a calendar.
+//
+// @param request - DeleteSchedulerxCalendarRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSchedulerxCalendarResponse
+func (client *Client) DeleteSchedulerxCalendarWithOptions(request *DeleteSchedulerxCalendarRequest, runtime *dara.RuntimeOptions) (_result *DeleteSchedulerxCalendarResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CalendarName) {
+		body["CalendarName"] = request.CalendarName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Year) {
+		body["Year"] = request.Year
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSchedulerxCalendar"),
+		Version:     dara.String("2019-04-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSchedulerxCalendarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a calendar.
+//
+// @param request - DeleteSchedulerxCalendarRequest
+//
+// @return DeleteSchedulerxCalendarResponse
+func (client *Client) DeleteSchedulerxCalendar(request *DeleteSchedulerxCalendarRequest) (_result *DeleteSchedulerxCalendarResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteSchedulerxCalendarResponse{}
+	_body, _err := client.DeleteSchedulerxCalendarWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a notification policy.
+//
+// @param request - DeleteSchedulerxNotificationPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSchedulerxNotificationPolicyResponse
+func (client *Client) DeleteSchedulerxNotificationPolicyWithOptions(request *DeleteSchedulerxNotificationPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteSchedulerxNotificationPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PolicyName) {
+		body["PolicyName"] = request.PolicyName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSchedulerxNotificationPolicy"),
+		Version:     dara.String("2019-04-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSchedulerxNotificationPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a notification policy.
+//
+// @param request - DeleteSchedulerxNotificationPolicyRequest
+//
+// @return DeleteSchedulerxNotificationPolicyResponse
+func (client *Client) DeleteSchedulerxNotificationPolicy(request *DeleteSchedulerxNotificationPolicyRequest) (_result *DeleteSchedulerxNotificationPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteSchedulerxNotificationPolicyResponse{}
+	_body, _err := client.DeleteSchedulerxNotificationPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2124,7 +2408,7 @@ func (client *Client) GetLog(request *GetLogRequest) (_result *GetLogResponse, _
 
 // Summary:
 //
-// 查询概览数据信息
+// Retrieves job scheduling data for Professional Edition applications.
 //
 // @param request - GetOverviewRequest
 //
@@ -2196,7 +2480,7 @@ func (client *Client) GetOverviewWithOptions(request *GetOverviewRequest, runtim
 
 // Summary:
 //
-// 查询概览数据信息
+// Retrieves job scheduling data for Professional Edition applications.
 //
 // @param request - GetOverviewRequest
 //
@@ -2584,7 +2868,7 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 
 // Summary:
 //
-// 获取任务脚本历史列表
+// Queries historical scripts of a job.
 //
 // @param request - ListJobScriptHistoryRequest
 //
@@ -2644,7 +2928,7 @@ func (client *Client) ListJobScriptHistoryWithOptions(request *ListJobScriptHist
 
 // Summary:
 //
-// 获取任务脚本历史列表
+// Queries historical scripts of a job.
 //
 // @param request - ListJobScriptHistoryRequest
 //
@@ -2846,6 +3130,96 @@ func (client *Client) ListNamespaces(request *ListNamespacesRequest) (_result *L
 
 // Summary:
 //
+// Queries the information of a workflow.
+//
+// @param request - ListWorkFlowsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkFlowsResponse
+func (client *Client) ListWorkFlowsWithOptions(request *ListWorkFlowsRequest, runtime *dara.RuntimeOptions) (_result *ListWorkFlowsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NamespaceSource) {
+		query["NamespaceSource"] = request.NamespaceSource
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.WorkflowName) {
+		query["WorkflowName"] = request.WorkflowName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWorkFlows"),
+		Version:     dara.String("2019-04-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWorkFlowsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information of a workflow.
+//
+// @param request - ListWorkFlowsRequest
+//
+// @return ListWorkFlowsResponse
+func (client *Client) ListWorkFlows(request *ListWorkFlowsRequest) (_result *ListWorkFlowsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListWorkFlowsResponse{}
+	_body, _err := client.ListWorkFlowsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the execution history of a workflow. You can call this operation only in the professional edition.
 //
 // @param request - ListWorkflowInstanceRequest
@@ -2904,7 +3278,85 @@ func (client *Client) ListWorkflowInstance(request *ListWorkflowInstanceRequest)
 
 // Summary:
 //
-// 同步任务
+// Updates a calendar.
+//
+// @param request - ManageSchedulerxCalendarRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ManageSchedulerxCalendarResponse
+func (client *Client) ManageSchedulerxCalendarWithOptions(request *ManageSchedulerxCalendarRequest, runtime *dara.RuntimeOptions) (_result *ManageSchedulerxCalendarResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CalendarName) {
+		body["CalendarName"] = request.CalendarName
+	}
+
+	if !dara.IsNil(request.Incremental) {
+		body["Incremental"] = request.Incremental
+	}
+
+	if !dara.IsNil(request.MonthDaysContent) {
+		body["MonthDaysContent"] = request.MonthDaysContent
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Year) {
+		body["Year"] = request.Year
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ManageSchedulerxCalendar"),
+		Version:     dara.String("2019-04-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ManageSchedulerxCalendarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a calendar.
+//
+// @param request - ManageSchedulerxCalendarRequest
+//
+// @return ManageSchedulerxCalendarResponse
+func (client *Client) ManageSchedulerxCalendar(request *ManageSchedulerxCalendarRequest) (_result *ManageSchedulerxCalendarResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ManageSchedulerxCalendarResponse{}
+	_body, _err := client.ManageSchedulerxCalendarWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Synchronizes tasks across namespaces.
 //
 // @param tmpReq - ManageSchedulerxJobSyncRequest
 //
@@ -2978,7 +3430,7 @@ func (client *Client) ManageSchedulerxJobSyncWithOptions(tmpReq *ManageScheduler
 
 // Summary:
 //
-// 同步任务
+// Synchronizes tasks across namespaces.
 //
 // @param request - ManageSchedulerxJobSyncRequest
 //
@@ -2996,7 +3448,167 @@ func (client *Client) ManageSchedulerxJobSync(request *ManageSchedulerxJobSyncRe
 
 // Summary:
 //
-// 获取机器详细信息
+// Updates a notification policy.
+//
+// @param request - ManageSchedulerxNotificationPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ManageSchedulerxNotificationPolicyResponse
+func (client *Client) ManageSchedulerxNotificationPolicyWithOptions(request *ManageSchedulerxNotificationPolicyRequest, runtime *dara.RuntimeOptions) (_result *ManageSchedulerxNotificationPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChannelTimeRange) {
+		body["ChannelTimeRange"] = request.ChannelTimeRange
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.PolicyName) {
+		body["PolicyName"] = request.PolicyName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ManageSchedulerxNotificationPolicy"),
+		Version:     dara.String("2019-04-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ManageSchedulerxNotificationPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a notification policy.
+//
+// @param request - ManageSchedulerxNotificationPolicyRequest
+//
+// @return ManageSchedulerxNotificationPolicyResponse
+func (client *Client) ManageSchedulerxNotificationPolicy(request *ManageSchedulerxNotificationPolicyRequest) (_result *ManageSchedulerxNotificationPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ManageSchedulerxNotificationPolicyResponse{}
+	_body, _err := client.ManageSchedulerxNotificationPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the information of a calendar.
+//
+// @param request - ReadSchedulerxCalendarRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReadSchedulerxCalendarResponse
+func (client *Client) ReadSchedulerxCalendarWithOptions(request *ReadSchedulerxCalendarRequest, runtime *dara.RuntimeOptions) (_result *ReadSchedulerxCalendarResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CalendarName) {
+		query["CalendarName"] = request.CalendarName
+	}
+
+	if !dara.IsNil(request.FetchCalendarDetail) {
+		query["FetchCalendarDetail"] = request.FetchCalendarDetail
+	}
+
+	if !dara.IsNil(request.FetchSystemCalendar) {
+		query["FetchSystemCalendar"] = request.FetchSystemCalendar
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Year) {
+		query["Year"] = request.Year
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReadSchedulerxCalendar"),
+		Version:     dara.String("2019-04-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReadSchedulerxCalendarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the information of a calendar.
+//
+// @param request - ReadSchedulerxCalendarRequest
+//
+// @return ReadSchedulerxCalendarResponse
+func (client *Client) ReadSchedulerxCalendar(request *ReadSchedulerxCalendarRequest) (_result *ReadSchedulerxCalendarResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ReadSchedulerxCalendarResponse{}
+	_body, _err := client.ReadSchedulerxCalendarWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries detailed information of the workers specified by a job.
 //
 // @param request - ReadSchedulerxDesignateDetailRequest
 //
@@ -3060,7 +3672,7 @@ func (client *Client) ReadSchedulerxDesignateDetailWithOptions(request *ReadSche
 
 // Summary:
 //
-// 获取机器详细信息
+// Queries detailed information of the workers specified by a job.
 //
 // @param request - ReadSchedulerxDesignateDetailRequest
 //
@@ -3078,7 +3690,7 @@ func (client *Client) ReadSchedulerxDesignateDetail(request *ReadSchedulerxDesig
 
 // Summary:
 //
-// 获取指定机器基本信息
+// Queries the basic information of specified workers.
 //
 // @param request - ReadSchedulerxDesignateInfoRequest
 //
@@ -3138,7 +3750,7 @@ func (client *Client) ReadSchedulerxDesignateInfoWithOptions(request *ReadSchedu
 
 // Summary:
 //
-// 获取指定机器基本信息
+// Queries the basic information of specified workers.
 //
 // @param request - ReadSchedulerxDesignateInfoRequest
 //
@@ -3147,6 +3759,80 @@ func (client *Client) ReadSchedulerxDesignateInfo(request *ReadSchedulerxDesigna
 	runtime := &dara.RuntimeOptions{}
 	_result = &ReadSchedulerxDesignateInfoResponse{}
 	_body, _err := client.ReadSchedulerxDesignateInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries notification policies.
+//
+// @param request - ReadSchedulerxNotificationPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReadSchedulerxNotificationPolicyResponse
+func (client *Client) ReadSchedulerxNotificationPolicyWithOptions(request *ReadSchedulerxNotificationPolicyRequest, runtime *dara.RuntimeOptions) (_result *ReadSchedulerxNotificationPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PolicyName) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReadSchedulerxNotificationPolicy"),
+		Version:     dara.String("2019-04-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReadSchedulerxNotificationPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries notification policies.
+//
+// @param request - ReadSchedulerxNotificationPolicyRequest
+//
+// @return ReadSchedulerxNotificationPolicyResponse
+func (client *Client) ReadSchedulerxNotificationPolicy(request *ReadSchedulerxNotificationPolicyRequest) (_result *ReadSchedulerxNotificationPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ReadSchedulerxNotificationPolicyResponse{}
+	_body, _err := client.ReadSchedulerxNotificationPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3651,6 +4337,10 @@ func (client *Client) UpdateAppGroupWithOptions(request *UpdateAppGroupRequest, 
 		query["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.EnableLog) {
+		query["EnableLog"] = request.EnableLog
+	}
+
 	if !dara.IsNil(request.GroupId) {
 		query["GroupId"] = request.GroupId
 	}
@@ -3934,7 +4624,7 @@ func (client *Client) UpdateJob(request *UpdateJobRequest) (_result *UpdateJobRe
 
 // Summary:
 //
-// 更新任务执行脚本
+// Updates the execution script of a job.
 //
 // @param request - UpdateJobScriptRequest
 //
@@ -4002,7 +4692,7 @@ func (client *Client) UpdateJobScriptWithOptions(request *UpdateJobScriptRequest
 
 // Summary:
 //
-// 更新任务执行脚本
+// Updates the execution script of a job.
 //
 // @param request - UpdateJobScriptRequest
 //
@@ -4020,7 +4710,7 @@ func (client *Client) UpdateJobScript(request *UpdateJobScriptRequest) (_result 
 
 // Summary:
 //
-// 更新命名空间
+// Updates a namespace.
 //
 // @param request - UpdateNamespaceRequest
 //
@@ -4076,7 +4766,7 @@ func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest
 
 // Summary:
 //
-// 更新命名空间
+// Updates a namespace.
 //
 // @param request - UpdateNamespaceRequest
 //

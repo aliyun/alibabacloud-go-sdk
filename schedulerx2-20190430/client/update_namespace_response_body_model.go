@@ -20,18 +20,26 @@ type iUpdateNamespaceResponseBody interface {
 }
 
 type UpdateNamespaceResponseBody struct {
+	// The returned code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information returned only if an error occurs.
+	//
 	// example:
 	//
 	// The system namespace cannot be modified
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 39090022-1F3B-4797-8518-6B61095F1AF0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

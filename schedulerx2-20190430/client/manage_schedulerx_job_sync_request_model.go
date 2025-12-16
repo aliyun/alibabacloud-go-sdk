@@ -26,36 +26,50 @@ type iManageSchedulerxJobSyncRequest interface {
 }
 
 type ManageSchedulerxJobSyncRequest struct {
+	// The list of task IDs.
+	//
 	// This parameter is required.
 	JobIdList []*int64 `json:"JobIdList,omitempty" xml:"JobIdList,omitempty" type:"Repeated"`
+	// The source of the namespace. Required only for specific third-party cases.
+	//
 	// example:
 	//
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// The source application group to which the task belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testSchedulerx.defaultGroup
 	OriginalGroupId *string `json:"OriginalGroupId,omitempty" xml:"OriginalGroupId,omitempty"`
+	// The source namespace where the task resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	OriginalNamespace *string `json:"OriginalNamespace,omitempty" xml:"OriginalNamespace,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the destination application group to which the task will be synchronized.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testSyncJobGroup
 	TargetGroupId *string `json:"TargetGroupId,omitempty" xml:"TargetGroupId,omitempty"`
+	// The destination namespace to which the task will be synchronized.
+	//
 	// This parameter is required.
 	//
 	// example:
