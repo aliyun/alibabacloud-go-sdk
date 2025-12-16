@@ -248,7 +248,8 @@ type CreateDataAgentSessionResponseBodyDataSessionConfig struct {
 	// example:
 	//
 	// CHINESE
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Language     *string   `json:"Language,omitempty" xml:"Language,omitempty"`
+	McpServerIds []*string `json:"McpServerIds,omitempty" xml:"McpServerIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// ANALYSIS
@@ -279,6 +280,10 @@ func (s *CreateDataAgentSessionResponseBodyDataSessionConfig) GetLanguage() *str
 	return s.Language
 }
 
+func (s *CreateDataAgentSessionResponseBodyDataSessionConfig) GetMcpServerIds() []*string {
+	return s.McpServerIds
+}
+
 func (s *CreateDataAgentSessionResponseBodyDataSessionConfig) GetMode() *string {
 	return s.Mode
 }
@@ -300,6 +305,11 @@ func (s *CreateDataAgentSessionResponseBodyDataSessionConfig) SetEnableSearch(v 
 
 func (s *CreateDataAgentSessionResponseBodyDataSessionConfig) SetLanguage(v string) *CreateDataAgentSessionResponseBodyDataSessionConfig {
 	s.Language = &v
+	return s
+}
+
+func (s *CreateDataAgentSessionResponseBodyDataSessionConfig) SetMcpServerIds(v []*string) *CreateDataAgentSessionResponseBodyDataSessionConfig {
+	s.McpServerIds = v
 	return s
 }
 
