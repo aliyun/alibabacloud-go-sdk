@@ -4658,6 +4658,88 @@ func (client *Client) DescribeAuditLogRecordsWithContext(ctx context.Context, re
 
 // Summary:
 //
+// 查询自动续费参数
+//
+// @param tmpReq - DescribeAutoRenewalAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAutoRenewalAttributeResponse
+func (client *Client) DescribeAutoRenewalAttributeWithContext(ctx context.Context, tmpReq *DescribeAutoRenewalAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeAutoRenewalAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribeAutoRenewalAttributeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DBClusterId) {
+		request.DBClusterIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DBClusterId, dara.String("DBClusterId"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterIdShrink) {
+		query["DBClusterId"] = request.DBClusterIdShrink
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAutoRenewalAttribute"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAutoRenewalAttributeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the available optimization suggestions for an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeAvailableAdvicesRequest
@@ -13243,6 +13325,82 @@ func (client *Client) ModifyAuditLogConfigWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAuditLogConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改自动续费配置
+//
+// @param request - ModifyAutoRenewalAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAutoRenewalAttributeResponse
+func (client *Client) ModifyAutoRenewalAttributeWithContext(ctx context.Context, request *ModifyAutoRenewalAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyAutoRenewalAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRenewalPeriod) {
+		query["AutoRenewalPeriod"] = request.AutoRenewalPeriod
+	}
+
+	if !dara.IsNil(request.AutoRenewalPeriodUnit) {
+		query["AutoRenewalPeriodUnit"] = request.AutoRenewalPeriodUnit
+	}
+
+	if !dara.IsNil(request.AutoRenewalStatus) {
+		query["AutoRenewalStatus"] = request.AutoRenewalStatus
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAutoRenewalAttribute"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAutoRenewalAttributeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
