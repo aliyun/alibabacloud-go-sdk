@@ -7,6 +7,10 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
+// Summary:
+//
+// 服务单授权
+//
 // @param request - BindProduceAuthorizationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1866,6 +1870,10 @@ func (client *Client) TransferIntentionOwnerWithContext(ctx context.Context, req
 		query["BizType"] = request.BizType
 	}
 
+	if !dara.IsNil(request.EmployeeCode) {
+		query["EmployeeCode"] = request.EmployeeCode
+	}
+
 	if !dara.IsNil(request.PersonId) {
 		query["PersonId"] = request.PersonId
 	}
@@ -1920,6 +1928,10 @@ func (client *Client) TransferProduceOwnerWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.BizType) {
 		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.EmployeeCode) {
+		query["EmployeeCode"] = request.EmployeeCode
 	}
 
 	if !dara.IsNil(request.PersonId) {

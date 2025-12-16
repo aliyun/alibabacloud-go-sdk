@@ -114,6 +114,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 服务单授权
+//
 // @param request - BindProduceAuthorizationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -162,6 +166,10 @@ func (client *Client) BindProduceAuthorizationWithOptions(request *BindProduceAu
 	return _result, _err
 }
 
+// Summary:
+//
+// 服务单授权
+//
 // @param request - BindProduceAuthorizationRequest
 //
 // @return BindProduceAuthorizationResponse
@@ -2536,6 +2544,10 @@ func (client *Client) TransferIntentionOwnerWithOptions(request *TransferIntenti
 		query["BizType"] = request.BizType
 	}
 
+	if !dara.IsNil(request.EmployeeCode) {
+		query["EmployeeCode"] = request.EmployeeCode
+	}
+
 	if !dara.IsNil(request.PersonId) {
 		query["PersonId"] = request.PersonId
 	}
@@ -2608,6 +2620,10 @@ func (client *Client) TransferProduceOwnerWithOptions(request *TransferProduceOw
 
 	if !dara.IsNil(request.BizType) {
 		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.EmployeeCode) {
+		query["EmployeeCode"] = request.EmployeeCode
 	}
 
 	if !dara.IsNil(request.PersonId) {

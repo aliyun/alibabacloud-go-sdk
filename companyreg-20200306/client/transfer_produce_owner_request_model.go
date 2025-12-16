@@ -13,6 +13,8 @@ type iTransferProduceOwnerRequest interface {
 	GetBizId() *string
 	SetBizType(v string) *TransferProduceOwnerRequest
 	GetBizType() *string
+	SetEmployeeCode(v string) *TransferProduceOwnerRequest
+	GetEmployeeCode() *string
 	SetPersonId(v int32) *TransferProduceOwnerRequest
 	GetPersonId() *int32
 	SetRemark(v string) *TransferProduceOwnerRequest
@@ -31,9 +33,8 @@ type TransferProduceOwnerRequest struct {
 	// example:
 	//
 	// esp.companyreg_cloud
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// This parameter is required.
-	//
+	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	EmployeeCode *string `json:"EmployeeCode,omitempty" xml:"EmployeeCode,omitempty"`
 	// example:
 	//
 	// 15565
@@ -57,6 +58,10 @@ func (s *TransferProduceOwnerRequest) GetBizType() *string {
 	return s.BizType
 }
 
+func (s *TransferProduceOwnerRequest) GetEmployeeCode() *string {
+	return s.EmployeeCode
+}
+
 func (s *TransferProduceOwnerRequest) GetPersonId() *int32 {
 	return s.PersonId
 }
@@ -72,6 +77,11 @@ func (s *TransferProduceOwnerRequest) SetBizId(v string) *TransferProduceOwnerRe
 
 func (s *TransferProduceOwnerRequest) SetBizType(v string) *TransferProduceOwnerRequest {
 	s.BizType = &v
+	return s
+}
+
+func (s *TransferProduceOwnerRequest) SetEmployeeCode(v string) *TransferProduceOwnerRequest {
+	s.EmployeeCode = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iTransferIntentionOwnerRequest interface {
 	GetBizId() *string
 	SetBizType(v string) *TransferIntentionOwnerRequest
 	GetBizType() *string
+	SetEmployeeCode(v string) *TransferIntentionOwnerRequest
+	GetEmployeeCode() *string
 	SetPersonId(v int32) *TransferIntentionOwnerRequest
 	GetPersonId() *int32
 	SetRemark(v string) *TransferIntentionOwnerRequest
@@ -31,9 +33,8 @@ type TransferIntentionOwnerRequest struct {
 	// example:
 	//
 	// esp.wangwen
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// This parameter is required.
-	//
+	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	EmployeeCode *string `json:"EmployeeCode,omitempty" xml:"EmployeeCode,omitempty"`
 	// example:
 	//
 	// 67842
@@ -57,6 +58,10 @@ func (s *TransferIntentionOwnerRequest) GetBizType() *string {
 	return s.BizType
 }
 
+func (s *TransferIntentionOwnerRequest) GetEmployeeCode() *string {
+	return s.EmployeeCode
+}
+
 func (s *TransferIntentionOwnerRequest) GetPersonId() *int32 {
 	return s.PersonId
 }
@@ -72,6 +77,11 @@ func (s *TransferIntentionOwnerRequest) SetBizId(v string) *TransferIntentionOwn
 
 func (s *TransferIntentionOwnerRequest) SetBizType(v string) *TransferIntentionOwnerRequest {
 	s.BizType = &v
+	return s
+}
+
+func (s *TransferIntentionOwnerRequest) SetEmployeeCode(v string) *TransferIntentionOwnerRequest {
+	s.EmployeeCode = &v
 	return s
 }
 
