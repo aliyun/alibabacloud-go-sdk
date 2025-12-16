@@ -9,6 +9,8 @@ type iRunVideoAnalysisRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAddDocumentParam(v *RunVideoAnalysisRequestAddDocumentParam) *RunVideoAnalysisRequest
+	GetAddDocumentParam() *RunVideoAnalysisRequestAddDocumentParam
 	SetAutoRoleRecognitionVideoUrl(v string) *RunVideoAnalysisRequest
 	GetAutoRoleRecognitionVideoUrl() *string
 	SetExcludeGenerateOptions(v []*string) *RunVideoAnalysisRequest
@@ -56,6 +58,7 @@ type iRunVideoAnalysisRequest interface {
 }
 
 type RunVideoAnalysisRequest struct {
+	AddDocumentParam               *RunVideoAnalysisRequestAddDocumentParam  `json:"addDocumentParam,omitempty" xml:"addDocumentParam,omitempty" type:"Struct"`
 	AutoRoleRecognitionVideoUrl    *string                                   `json:"autoRoleRecognitionVideoUrl,omitempty" xml:"autoRoleRecognitionVideoUrl,omitempty"`
 	ExcludeGenerateOptions         []*string                                 `json:"excludeGenerateOptions,omitempty" xml:"excludeGenerateOptions,omitempty" type:"Repeated"`
 	FaceIdentitySimilarityMinScore *float32                                  `json:"faceIdentitySimilarityMinScore,omitempty" xml:"faceIdentitySimilarityMinScore,omitempty"`
@@ -113,6 +116,10 @@ func (s RunVideoAnalysisRequest) String() string {
 
 func (s RunVideoAnalysisRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RunVideoAnalysisRequest) GetAddDocumentParam() *RunVideoAnalysisRequestAddDocumentParam {
+	return s.AddDocumentParam
 }
 
 func (s *RunVideoAnalysisRequest) GetAutoRoleRecognitionVideoUrl() *string {
@@ -201,6 +208,11 @@ func (s *RunVideoAnalysisRequest) GetVideoShotFaceIdentityCount() *int32 {
 
 func (s *RunVideoAnalysisRequest) GetVideoUrl() *string {
 	return s.VideoUrl
+}
+
+func (s *RunVideoAnalysisRequest) SetAddDocumentParam(v *RunVideoAnalysisRequestAddDocumentParam) *RunVideoAnalysisRequest {
+	s.AddDocumentParam = v
+	return s
 }
 
 func (s *RunVideoAnalysisRequest) SetAutoRoleRecognitionVideoUrl(v string) *RunVideoAnalysisRequest {
@@ -314,6 +326,11 @@ func (s *RunVideoAnalysisRequest) SetVideoUrl(v string) *RunVideoAnalysisRequest
 }
 
 func (s *RunVideoAnalysisRequest) Validate() error {
+	if s.AddDocumentParam != nil {
+		if err := s.AddDocumentParam.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.FrameSampleMethod != nil {
 		if err := s.FrameSampleMethod.Validate(); err != nil {
 			return err
@@ -343,6 +360,91 @@ func (s *RunVideoAnalysisRequest) Validate() error {
 		}
 	}
 	return nil
+}
+
+type RunVideoAnalysisRequestAddDocumentParam struct {
+	DatasetId   *int64                                           `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
+	DatasetName *string                                          `json:"datasetName,omitempty" xml:"datasetName,omitempty"`
+	Document    *RunVideoAnalysisRequestAddDocumentParamDocument `json:"document,omitempty" xml:"document,omitempty" type:"Struct"`
+}
+
+func (s RunVideoAnalysisRequestAddDocumentParam) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunVideoAnalysisRequestAddDocumentParam) GoString() string {
+	return s.String()
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParam) GetDatasetId() *int64 {
+	return s.DatasetId
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParam) GetDatasetName() *string {
+	return s.DatasetName
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParam) GetDocument() *RunVideoAnalysisRequestAddDocumentParamDocument {
+	return s.Document
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParam) SetDatasetId(v int64) *RunVideoAnalysisRequestAddDocumentParam {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParam) SetDatasetName(v string) *RunVideoAnalysisRequestAddDocumentParam {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParam) SetDocument(v *RunVideoAnalysisRequestAddDocumentParamDocument) *RunVideoAnalysisRequestAddDocumentParam {
+	s.Document = v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParam) Validate() error {
+	if s.Document != nil {
+		if err := s.Document.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type RunVideoAnalysisRequestAddDocumentParamDocument struct {
+	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s RunVideoAnalysisRequestAddDocumentParamDocument) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunVideoAnalysisRequestAddDocumentParamDocument) GoString() string {
+	return s.String()
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocument) GetDocId() *string {
+	return s.DocId
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocument) GetTitle() *string {
+	return s.Title
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocument) SetDocId(v string) *RunVideoAnalysisRequestAddDocumentParamDocument {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocument) SetTitle(v string) *RunVideoAnalysisRequestAddDocumentParamDocument {
+	s.Title = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestAddDocumentParamDocument) Validate() error {
+	return dara.Validate(s)
 }
 
 type RunVideoAnalysisRequestFrameSampleMethod struct {

@@ -2611,6 +2611,10 @@ func (client *Client) RunVideoAnalysisWithOptions(workspaceId *string, tmpReq *R
 	}
 	request := &RunVideoAnalysisShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AddDocumentParam) {
+		request.AddDocumentParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AddDocumentParam, dara.String("addDocumentParam"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.ExcludeGenerateOptions) {
 		request.ExcludeGenerateOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExcludeGenerateOptions, dara.String("excludeGenerateOptions"), dara.String("json"))
 	}
@@ -2636,6 +2640,10 @@ func (client *Client) RunVideoAnalysisWithOptions(workspaceId *string, tmpReq *R
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AddDocumentParamShrink) {
+		body["addDocumentParam"] = request.AddDocumentParamShrink
+	}
+
 	if !dara.IsNil(request.AutoRoleRecognitionVideoUrl) {
 		body["autoRoleRecognitionVideoUrl"] = request.AutoRoleRecognitionVideoUrl
 	}
@@ -3256,6 +3264,10 @@ func (client *Client) SubmitVideoAnalysisTaskWithOptions(workspaceId *string, tm
 	}
 	request := &SubmitVideoAnalysisTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AddDocumentParam) {
+		request.AddDocumentParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AddDocumentParam, dara.String("addDocumentParam"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.ExcludeGenerateOptions) {
 		request.ExcludeGenerateOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExcludeGenerateOptions, dara.String("excludeGenerateOptions"), dara.String("json"))
 	}
@@ -3281,6 +3293,10 @@ func (client *Client) SubmitVideoAnalysisTaskWithOptions(workspaceId *string, tm
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AddDocumentParamShrink) {
+		body["addDocumentParam"] = request.AddDocumentParamShrink
+	}
+
 	if !dara.IsNil(request.AutoRoleRecognitionVideoUrl) {
 		body["autoRoleRecognitionVideoUrl"] = request.AutoRoleRecognitionVideoUrl
 	}
@@ -4894,6 +4910,10 @@ func (client *Client) runVideoAnalysisWithSSE_opYieldFunc(_yield chan *RunVideoA
 	}
 	request := &RunVideoAnalysisShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AddDocumentParam) {
+		request.AddDocumentParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AddDocumentParam, dara.String("addDocumentParam"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.ExcludeGenerateOptions) {
 		request.ExcludeGenerateOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExcludeGenerateOptions, dara.String("excludeGenerateOptions"), dara.String("json"))
 	}
@@ -4919,6 +4939,10 @@ func (client *Client) runVideoAnalysisWithSSE_opYieldFunc(_yield chan *RunVideoA
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AddDocumentParamShrink) {
+		body["addDocumentParam"] = request.AddDocumentParamShrink
+	}
+
 	if !dara.IsNil(request.AutoRoleRecognitionVideoUrl) {
 		body["autoRoleRecognitionVideoUrl"] = request.AutoRoleRecognitionVideoUrl
 	}

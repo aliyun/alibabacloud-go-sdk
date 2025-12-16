@@ -371,8 +371,10 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayload) Validate() error {
 }
 
 type GetVideoAnalysisTaskResponseBodyDataPayloadOutput struct {
+	AddDatasetDocumentsResult      *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult      `json:"addDatasetDocumentsResult,omitempty" xml:"addDatasetDocumentsResult,omitempty" type:"Struct"`
 	ResultJsonFileUrl              *string                                                                          `json:"resultJsonFileUrl,omitempty" xml:"resultJsonFileUrl,omitempty"`
 	VideoAnalysisResult            *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult            `json:"videoAnalysisResult,omitempty" xml:"videoAnalysisResult,omitempty" type:"Struct"`
+	VideoCalculatorResult          *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResult          `json:"videoCalculatorResult,omitempty" xml:"videoCalculatorResult,omitempty" type:"Struct"`
 	VideoCaptionResult             *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResult             `json:"videoCaptionResult,omitempty" xml:"videoCaptionResult,omitempty" type:"Struct"`
 	VideoGenerateResult            *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult            `json:"videoGenerateResult,omitempty" xml:"videoGenerateResult,omitempty" type:"Struct"`
 	VideoGenerateResults           []*GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResults         `json:"videoGenerateResults,omitempty" xml:"videoGenerateResults,omitempty" type:"Repeated"`
@@ -389,12 +391,20 @@ func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutput) GoString() string {
 	return s.String()
 }
 
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) GetAddDatasetDocumentsResult() *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult {
+	return s.AddDatasetDocumentsResult
+}
+
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) GetResultJsonFileUrl() *string {
 	return s.ResultJsonFileUrl
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) GetVideoAnalysisResult() *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult {
 	return s.VideoAnalysisResult
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) GetVideoCalculatorResult() *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResult {
+	return s.VideoCalculatorResult
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) GetVideoCaptionResult() *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResult {
@@ -421,6 +431,11 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) GetVideoTitleGenerat
 	return s.VideoTitleGenerateResult
 }
 
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) SetAddDatasetDocumentsResult(v *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult) *GetVideoAnalysisTaskResponseBodyDataPayloadOutput {
+	s.AddDatasetDocumentsResult = v
+	return s
+}
+
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) SetResultJsonFileUrl(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutput {
 	s.ResultJsonFileUrl = &v
 	return s
@@ -428,6 +443,11 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) SetResultJsonFileUrl
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) SetVideoAnalysisResult(v *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult) *GetVideoAnalysisTaskResponseBodyDataPayloadOutput {
 	s.VideoAnalysisResult = v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) SetVideoCalculatorResult(v *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResult) *GetVideoAnalysisTaskResponseBodyDataPayloadOutput {
+	s.VideoCalculatorResult = v
 	return s
 }
 
@@ -462,8 +482,18 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) SetVideoTitleGenerat
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) Validate() error {
+	if s.AddDatasetDocumentsResult != nil {
+		if err := s.AddDatasetDocumentsResult.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.VideoAnalysisResult != nil {
 		if err := s.VideoAnalysisResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoCalculatorResult != nil {
+		if err := s.VideoCalculatorResult.Validate(); err != nil {
 			return err
 		}
 	}
@@ -502,6 +532,71 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) Validate() error {
 		}
 	}
 	return nil
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult struct {
+	DocId        *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	DocUuid      *string `json:"docUuid,omitempty" xml:"docUuid,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Status       *int64  `json:"status,omitempty" xml:"status,omitempty"`
+	Title        *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult) GetDocId() *string {
+	return s.DocId
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult) GetDocUuid() *string {
+	return s.DocUuid
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult) GetErrorMessage() *string {
+	return s.ErrorMessage
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult) GetStatus() *int64 {
+	return s.Status
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult) GetTitle() *string {
+	return s.Title
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult) SetDocId(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult {
+	s.DocId = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult) SetDocUuid(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult) SetErrorMessage(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult) SetStatus(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult) SetTitle(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult {
+	s.Title = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult) Validate() error {
+	return dara.Validate(s)
 }
 
 type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult struct {
@@ -580,6 +675,7 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult) V
 }
 
 type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage struct {
+	ImageTokens *int64 `json:"imageTokens,omitempty" xml:"imageTokens,omitempty"`
 	// example:
 	//
 	// 0
@@ -602,6 +698,10 @@ func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsag
 	return s.String()
 }
 
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage) GetImageTokens() *int64 {
+	return s.ImageTokens
+}
+
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage) GetInputTokens() *int64 {
 	return s.InputTokens
 }
@@ -612,6 +712,11 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsa
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage) GetTotalTokens() *int64 {
 	return s.TotalTokens
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage) SetImageTokens(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage {
+	s.ImageTokens = &v
+	return s
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage) SetInputTokens(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage {
@@ -681,6 +786,151 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultVid
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultVideoShotAnalysisResults) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResult struct {
+	Items []*GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResult) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResult) GetItems() []*GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems {
+	return s.Items
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResult) SetItems(v []*GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResult {
+	s.Items = v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResult) Validate() error {
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems struct {
+	InputExpense *float64 `json:"inputExpense,omitempty" xml:"inputExpense,omitempty"`
+	InputToken   *int64   `json:"inputToken,omitempty" xml:"inputToken,omitempty"`
+	// example:
+	//
+	// xxx
+	Name          *string  `json:"name,omitempty" xml:"name,omitempty"`
+	OutputExpense *float64 `json:"outputExpense,omitempty" xml:"outputExpense,omitempty"`
+	OutputToken   *int64   `json:"outputToken,omitempty" xml:"outputToken,omitempty"`
+	Time          *int64   `json:"time,omitempty" xml:"time,omitempty"`
+	TimeExpense   *float64 `json:"timeExpense,omitempty" xml:"timeExpense,omitempty"`
+	// example:
+	//
+	// 0.098
+	TotalExpense *float64 `json:"totalExpense,omitempty" xml:"totalExpense,omitempty"`
+	Type         *string  `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) GetInputExpense() *float64 {
+	return s.InputExpense
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) GetInputToken() *int64 {
+	return s.InputToken
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) GetName() *string {
+	return s.Name
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) GetOutputExpense() *float64 {
+	return s.OutputExpense
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) GetOutputToken() *int64 {
+	return s.OutputToken
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) GetTime() *int64 {
+	return s.Time
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) GetTimeExpense() *float64 {
+	return s.TimeExpense
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) GetTotalExpense() *float64 {
+	return s.TotalExpense
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) GetType() *string {
+	return s.Type
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) SetInputExpense(v float64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems {
+	s.InputExpense = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) SetInputToken(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems {
+	s.InputToken = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) SetName(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems {
+	s.Name = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) SetOutputExpense(v float64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems {
+	s.OutputExpense = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) SetOutputToken(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems {
+	s.OutputToken = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) SetTime(v int64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems {
+	s.Time = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) SetTimeExpense(v float64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems {
+	s.TimeExpense = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) SetTotalExpense(v float64) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems {
+	s.TotalExpense = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) SetType(v string) *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems {
+	s.Type = &v
+	return s
+}
+
+func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems) Validate() error {
 	return dara.Validate(s)
 }
 

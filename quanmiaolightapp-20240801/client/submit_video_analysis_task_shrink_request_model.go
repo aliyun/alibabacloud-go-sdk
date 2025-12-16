@@ -9,6 +9,8 @@ type iSubmitVideoAnalysisTaskShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAddDocumentParamShrink(v string) *SubmitVideoAnalysisTaskShrinkRequest
+	GetAddDocumentParamShrink() *string
 	SetAutoRoleRecognitionVideoUrl(v string) *SubmitVideoAnalysisTaskShrinkRequest
 	GetAutoRoleRecognitionVideoUrl() *string
 	SetDeduplicationId(v string) *SubmitVideoAnalysisTaskShrinkRequest
@@ -54,6 +56,7 @@ type iSubmitVideoAnalysisTaskShrinkRequest interface {
 }
 
 type SubmitVideoAnalysisTaskShrinkRequest struct {
+	AddDocumentParamShrink      *string `json:"addDocumentParam,omitempty" xml:"addDocumentParam,omitempty"`
 	AutoRoleRecognitionVideoUrl *string `json:"autoRoleRecognitionVideoUrl,omitempty" xml:"autoRoleRecognitionVideoUrl,omitempty"`
 	// example:
 	//
@@ -112,6 +115,10 @@ func (s SubmitVideoAnalysisTaskShrinkRequest) String() string {
 
 func (s SubmitVideoAnalysisTaskShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) GetAddDocumentParamShrink() *string {
+	return s.AddDocumentParamShrink
 }
 
 func (s *SubmitVideoAnalysisTaskShrinkRequest) GetAutoRoleRecognitionVideoUrl() *string {
@@ -196,6 +203,11 @@ func (s *SubmitVideoAnalysisTaskShrinkRequest) GetVideoShotFaceIdentityCount() *
 
 func (s *SubmitVideoAnalysisTaskShrinkRequest) GetVideoUrl() *string {
 	return s.VideoUrl
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) SetAddDocumentParamShrink(v string) *SubmitVideoAnalysisTaskShrinkRequest {
+	s.AddDocumentParamShrink = &v
+	return s
 }
 
 func (s *SubmitVideoAnalysisTaskShrinkRequest) SetAutoRoleRecognitionVideoUrl(v string) *SubmitVideoAnalysisTaskShrinkRequest {

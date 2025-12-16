@@ -9,6 +9,8 @@ type iRunVideoAnalysisShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAddDocumentParamShrink(v string) *RunVideoAnalysisShrinkRequest
+	GetAddDocumentParamShrink() *string
 	SetAutoRoleRecognitionVideoUrl(v string) *RunVideoAnalysisShrinkRequest
 	GetAutoRoleRecognitionVideoUrl() *string
 	SetExcludeGenerateOptionsShrink(v string) *RunVideoAnalysisShrinkRequest
@@ -56,6 +58,7 @@ type iRunVideoAnalysisShrinkRequest interface {
 }
 
 type RunVideoAnalysisShrinkRequest struct {
+	AddDocumentParamShrink         *string  `json:"addDocumentParam,omitempty" xml:"addDocumentParam,omitempty"`
 	AutoRoleRecognitionVideoUrl    *string  `json:"autoRoleRecognitionVideoUrl,omitempty" xml:"autoRoleRecognitionVideoUrl,omitempty"`
 	ExcludeGenerateOptionsShrink   *string  `json:"excludeGenerateOptions,omitempty" xml:"excludeGenerateOptions,omitempty"`
 	FaceIdentitySimilarityMinScore *float32 `json:"faceIdentitySimilarityMinScore,omitempty" xml:"faceIdentitySimilarityMinScore,omitempty"`
@@ -113,6 +116,10 @@ func (s RunVideoAnalysisShrinkRequest) String() string {
 
 func (s RunVideoAnalysisShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RunVideoAnalysisShrinkRequest) GetAddDocumentParamShrink() *string {
+	return s.AddDocumentParamShrink
 }
 
 func (s *RunVideoAnalysisShrinkRequest) GetAutoRoleRecognitionVideoUrl() *string {
@@ -201,6 +208,11 @@ func (s *RunVideoAnalysisShrinkRequest) GetVideoShotFaceIdentityCount() *int32 {
 
 func (s *RunVideoAnalysisShrinkRequest) GetVideoUrl() *string {
 	return s.VideoUrl
+}
+
+func (s *RunVideoAnalysisShrinkRequest) SetAddDocumentParamShrink(v string) *RunVideoAnalysisShrinkRequest {
+	s.AddDocumentParamShrink = &v
+	return s
 }
 
 func (s *RunVideoAnalysisShrinkRequest) SetAutoRoleRecognitionVideoUrl(v string) *RunVideoAnalysisShrinkRequest {
