@@ -1473,6 +1473,62 @@ func (client *Client) CreateEdgeContainerAppWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 创建边缘容器应用的镜像秘钥
+//
+// @param request - CreateEdgeContainerAppImageSecretRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEdgeContainerAppImageSecretResponse
+func (client *Client) CreateEdgeContainerAppImageSecretWithContext(ctx context.Context, request *CreateEdgeContainerAppImageSecretRequest, runtime *dara.RuntimeOptions) (_result *CreateEdgeContainerAppImageSecretResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.Registry) {
+		query["Registry"] = request.Registry
+	}
+
+	if !dara.IsNil(request.Username) {
+		query["Username"] = request.Username
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateEdgeContainerAppImageSecret"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateEdgeContainerAppImageSecretResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Associates a domain name with a containerized application. This way, requests destined for the associated domain name are forwarded to the application.
 //
 // @param request - CreateEdgeContainerAppRecordRequest
@@ -4835,6 +4891,54 @@ func (client *Client) DeleteEdgeContainerAppWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEdgeContainerAppResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除边缘容器应用的镜像秘钥
+//
+// @param request - DeleteEdgeContainerAppImageSecretRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEdgeContainerAppImageSecretResponse
+func (client *Client) DeleteEdgeContainerAppImageSecretWithContext(ctx context.Context, request *DeleteEdgeContainerAppImageSecretRequest, runtime *dara.RuntimeOptions) (_result *DeleteEdgeContainerAppImageSecretResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteEdgeContainerAppImageSecret"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteEdgeContainerAppImageSecretResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8321,6 +8425,50 @@ func (client *Client) GetEdgeContainerAppLogRiverWithContext(ctx context.Context
 
 // Summary:
 //
+// 获取边缘容器应用的资源容量
+//
+// @param request - GetEdgeContainerAppResourceCapacityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEdgeContainerAppResourceCapacityResponse
+func (client *Client) GetEdgeContainerAppResourceCapacityWithContext(ctx context.Context, request *GetEdgeContainerAppResourceCapacityRequest, runtime *dara.RuntimeOptions) (_result *GetEdgeContainerAppResourceCapacityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetEdgeContainerAppResourceCapacity"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetEdgeContainerAppResourceCapacityResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtain the resource reservation configuration of the edge container.
 //
 // @param request - GetEdgeContainerAppResourceReserveRequest
@@ -11237,6 +11385,50 @@ func (client *Client) ListESAIPInfoWithContext(ctx context.Context, request *Lis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListESAIPInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取边缘容器应用的镜像秘钥列表
+//
+// @param request - ListEdgeContainerAppImageSecretsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEdgeContainerAppImageSecretsResponse
+func (client *Client) ListEdgeContainerAppImageSecretsWithContext(ctx context.Context, request *ListEdgeContainerAppImageSecretsRequest, runtime *dara.RuntimeOptions) (_result *ListEdgeContainerAppImageSecretsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListEdgeContainerAppImageSecrets"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListEdgeContainerAppImageSecretsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

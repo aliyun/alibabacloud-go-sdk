@@ -62,6 +62,7 @@ func (s *GetWafQuotaResponseBody) Validate() error {
 }
 
 type GetWafQuotaResponseBodyQuota struct {
+	Captcha *GetWafQuotaResponseBodyQuotaCaptcha `json:"Captcha,omitempty" xml:"Captcha,omitempty" type:"Struct"`
 	// Quota information related to custom lists.
 	List *GetWafQuotaResponseBodyQuotaList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
 	// Quota information related to the WAF managed rules group.
@@ -80,6 +81,10 @@ func (s GetWafQuotaResponseBodyQuota) GoString() string {
 	return s.String()
 }
 
+func (s *GetWafQuotaResponseBodyQuota) GetCaptcha() *GetWafQuotaResponseBodyQuotaCaptcha {
+	return s.Captcha
+}
+
 func (s *GetWafQuotaResponseBodyQuota) GetList() *GetWafQuotaResponseBodyQuotaList {
 	return s.List
 }
@@ -94,6 +99,11 @@ func (s *GetWafQuotaResponseBodyQuota) GetPage() *GetWafQuotaResponseBodyQuotaPa
 
 func (s *GetWafQuotaResponseBodyQuota) GetScenePolicy() *GetWafQuotaResponseBodyQuotaScenePolicy {
 	return s.ScenePolicy
+}
+
+func (s *GetWafQuotaResponseBodyQuota) SetCaptcha(v *GetWafQuotaResponseBodyQuotaCaptcha) *GetWafQuotaResponseBodyQuota {
+	s.Captcha = v
+	return s
 }
 
 func (s *GetWafQuotaResponseBodyQuota) SetList(v *GetWafQuotaResponseBodyQuotaList) *GetWafQuotaResponseBodyQuota {
@@ -117,6 +127,11 @@ func (s *GetWafQuotaResponseBodyQuota) SetScenePolicy(v *GetWafQuotaResponseBody
 }
 
 func (s *GetWafQuotaResponseBodyQuota) Validate() error {
+	if s.Captcha != nil {
+		if err := s.Captcha.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.List != nil {
 		if err := s.List.Validate(); err != nil {
 			return err
@@ -134,6 +149,46 @@ func (s *GetWafQuotaResponseBodyQuota) Validate() error {
 	}
 	if s.ScenePolicy != nil {
 		if err := s.ScenePolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetWafQuotaResponseBodyQuotaCaptcha struct {
+	Enable      *bool            `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	NumberTotal *WafQuotaInteger `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
+}
+
+func (s GetWafQuotaResponseBodyQuotaCaptcha) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetWafQuotaResponseBodyQuotaCaptcha) GoString() string {
+	return s.String()
+}
+
+func (s *GetWafQuotaResponseBodyQuotaCaptcha) GetEnable() *bool {
+	return s.Enable
+}
+
+func (s *GetWafQuotaResponseBodyQuotaCaptcha) GetNumberTotal() *WafQuotaInteger {
+	return s.NumberTotal
+}
+
+func (s *GetWafQuotaResponseBodyQuotaCaptcha) SetEnable(v bool) *GetWafQuotaResponseBodyQuotaCaptcha {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetWafQuotaResponseBodyQuotaCaptcha) SetNumberTotal(v *WafQuotaInteger) *GetWafQuotaResponseBodyQuotaCaptcha {
+	s.NumberTotal = v
+	return s
+}
+
+func (s *GetWafQuotaResponseBodyQuotaCaptcha) Validate() error {
+	if s.NumberTotal != nil {
+		if err := s.NumberTotal.Validate(); err != nil {
 			return err
 		}
 	}
