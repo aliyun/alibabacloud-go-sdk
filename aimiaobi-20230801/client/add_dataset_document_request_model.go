@@ -123,7 +123,8 @@ type AddDatasetDocumentRequestDocument struct {
 	// example:
 	//
 	// 扩展字段3
-	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	Extend3  *string                                    `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	Metadata *AddDatasetDocumentRequestDocumentMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
 	// example:
 	//
 	// 模型名称 todo 商业化 仅个别账号可传入
@@ -189,6 +190,10 @@ func (s *AddDatasetDocumentRequestDocument) GetExtend2() *string {
 
 func (s *AddDatasetDocumentRequestDocument) GetExtend3() *string {
 	return s.Extend3
+}
+
+func (s *AddDatasetDocumentRequestDocument) GetMetadata() *AddDatasetDocumentRequestDocumentMetadata {
+	return s.Metadata
 }
 
 func (s *AddDatasetDocumentRequestDocument) GetMultimodalIndexName() *string {
@@ -259,6 +264,11 @@ func (s *AddDatasetDocumentRequestDocument) SetExtend3(v string) *AddDatasetDocu
 	return s
 }
 
+func (s *AddDatasetDocumentRequestDocument) SetMetadata(v *AddDatasetDocumentRequestDocumentMetadata) *AddDatasetDocumentRequestDocument {
+	s.Metadata = v
+	return s
+}
+
 func (s *AddDatasetDocumentRequestDocument) SetMultimodalIndexName(v string) *AddDatasetDocumentRequestDocument {
 	s.MultimodalIndexName = &v
 	return s
@@ -295,6 +305,11 @@ func (s *AddDatasetDocumentRequestDocument) SetUrl(v string) *AddDatasetDocument
 }
 
 func (s *AddDatasetDocumentRequestDocument) Validate() error {
+	if s.Metadata != nil {
+		if err := s.Metadata.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.MultimodalMedias != nil {
 		for _, item := range s.MultimodalMedias {
 			if item != nil {
@@ -305,6 +320,159 @@ func (s *AddDatasetDocumentRequestDocument) Validate() error {
 		}
 	}
 	return nil
+}
+
+type AddDatasetDocumentRequestDocumentMetadata struct {
+	AsrSentences []*AddDatasetDocumentRequestDocumentMetadataAsrSentences `json:"AsrSentences,omitempty" xml:"AsrSentences,omitempty" type:"Repeated"`
+	Text         *string                                                  `json:"Text,omitempty" xml:"Text,omitempty"`
+	VideoShots   []*AddDatasetDocumentRequestDocumentMetadataVideoShots   `json:"VideoShots,omitempty" xml:"VideoShots,omitempty" type:"Repeated"`
+}
+
+func (s AddDatasetDocumentRequestDocumentMetadata) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AddDatasetDocumentRequestDocumentMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadata) GetAsrSentences() []*AddDatasetDocumentRequestDocumentMetadataAsrSentences {
+	return s.AsrSentences
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadata) GetText() *string {
+	return s.Text
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadata) GetVideoShots() []*AddDatasetDocumentRequestDocumentMetadataVideoShots {
+	return s.VideoShots
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadata) SetAsrSentences(v []*AddDatasetDocumentRequestDocumentMetadataAsrSentences) *AddDatasetDocumentRequestDocumentMetadata {
+	s.AsrSentences = v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadata) SetText(v string) *AddDatasetDocumentRequestDocumentMetadata {
+	s.Text = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadata) SetVideoShots(v []*AddDatasetDocumentRequestDocumentMetadataVideoShots) *AddDatasetDocumentRequestDocumentMetadata {
+	s.VideoShots = v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadata) Validate() error {
+	if s.AsrSentences != nil {
+		for _, item := range s.AsrSentences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoShots != nil {
+		for _, item := range s.VideoShots {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type AddDatasetDocumentRequestDocumentMetadataAsrSentences struct {
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s AddDatasetDocumentRequestDocumentMetadataAsrSentences) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AddDatasetDocumentRequestDocumentMetadataAsrSentences) GoString() string {
+	return s.String()
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataAsrSentences) GetEndTime() *int64 {
+	return s.EndTime
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataAsrSentences) GetStartTime() *int64 {
+	return s.StartTime
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataAsrSentences) GetText() *string {
+	return s.Text
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataAsrSentences) SetEndTime(v int64) *AddDatasetDocumentRequestDocumentMetadataAsrSentences {
+	s.EndTime = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataAsrSentences) SetStartTime(v int64) *AddDatasetDocumentRequestDocumentMetadataAsrSentences {
+	s.StartTime = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataAsrSentences) SetText(v string) *AddDatasetDocumentRequestDocumentMetadataAsrSentences {
+	s.Text = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataAsrSentences) Validate() error {
+	return dara.Validate(s)
+}
+
+type AddDatasetDocumentRequestDocumentMetadataVideoShots struct {
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s AddDatasetDocumentRequestDocumentMetadataVideoShots) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AddDatasetDocumentRequestDocumentMetadataVideoShots) GoString() string {
+	return s.String()
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataVideoShots) GetEndTime() *int64 {
+	return s.EndTime
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataVideoShots) GetStartTime() *int64 {
+	return s.StartTime
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataVideoShots) GetText() *string {
+	return s.Text
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataVideoShots) SetEndTime(v int64) *AddDatasetDocumentRequestDocumentMetadataVideoShots {
+	s.EndTime = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataVideoShots) SetStartTime(v int64) *AddDatasetDocumentRequestDocumentMetadataVideoShots {
+	s.StartTime = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataVideoShots) SetText(v string) *AddDatasetDocumentRequestDocumentMetadataVideoShots {
+	s.Text = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocumentMetadataVideoShots) Validate() error {
+	return dara.Validate(s)
 }
 
 type AddDatasetDocumentRequestDocumentMultimodalMedias struct {

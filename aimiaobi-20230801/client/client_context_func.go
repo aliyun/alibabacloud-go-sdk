@@ -3628,18 +3628,24 @@ func (client *Client) GetDatasetWithContext(ctx context.Context, request *GetDat
 //
 // 获取数据集文档
 //
-// @param request - GetDatasetDocumentRequest
+// @param tmpReq - GetDatasetDocumentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDatasetDocumentResponse
-func (client *Client) GetDatasetDocumentWithContext(ctx context.Context, request *GetDatasetDocumentRequest, runtime *dara.RuntimeOptions) (_result *GetDatasetDocumentResponse, _err error) {
+func (client *Client) GetDatasetDocumentWithContext(ctx context.Context, tmpReq *GetDatasetDocumentRequest, runtime *dara.RuntimeOptions) (_result *GetDatasetDocumentResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &GetDatasetDocumentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.IncludeFields) {
+		request.IncludeFieldsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IncludeFields, dara.String("IncludeFields"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetId) {
 		body["DatasetId"] = request.DatasetId
@@ -3655,6 +3661,10 @@ func (client *Client) GetDatasetDocumentWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.DocUuid) {
 		body["DocUuid"] = request.DocUuid
+	}
+
+	if !dara.IsNil(request.IncludeFieldsShrink) {
+		body["IncludeFields"] = request.IncludeFieldsShrink
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {

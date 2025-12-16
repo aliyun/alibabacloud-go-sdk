@@ -127,11 +127,13 @@ type GetDatasetDocumentResponseBodyData struct {
 	// example:
 	//
 	// 用户指定的文档唯一ID
-	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	DocId   *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
 	// example:
 	//
 	// 内部文档唯一ID
-	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	DocUuid  *string                                     `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	Metadata *GetDatasetDocumentResponseBodyDataMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
 	// example:
 	//
 	// 2024-05-14 08:54:33
@@ -140,6 +142,7 @@ type GetDatasetDocumentResponseBodyData struct {
 	//
 	// 来源
 	SourceFrom *string `json:"SourceFrom,omitempty" xml:"SourceFrom,omitempty"`
+	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	// example:
 	//
 	// 文章摘要
@@ -171,8 +174,16 @@ func (s *GetDatasetDocumentResponseBodyData) GetDocId() *string {
 	return s.DocId
 }
 
+func (s *GetDatasetDocumentResponseBodyData) GetDocType() *string {
+	return s.DocType
+}
+
 func (s *GetDatasetDocumentResponseBodyData) GetDocUuid() *string {
 	return s.DocUuid
+}
+
+func (s *GetDatasetDocumentResponseBodyData) GetMetadata() *GetDatasetDocumentResponseBodyDataMetadata {
+	return s.Metadata
 }
 
 func (s *GetDatasetDocumentResponseBodyData) GetPubTime() *string {
@@ -181,6 +192,10 @@ func (s *GetDatasetDocumentResponseBodyData) GetPubTime() *string {
 
 func (s *GetDatasetDocumentResponseBodyData) GetSourceFrom() *string {
 	return s.SourceFrom
+}
+
+func (s *GetDatasetDocumentResponseBodyData) GetStatus() *int32 {
+	return s.Status
 }
 
 func (s *GetDatasetDocumentResponseBodyData) GetSummary() *string {
@@ -210,8 +225,18 @@ func (s *GetDatasetDocumentResponseBodyData) SetDocId(v string) *GetDatasetDocum
 	return s
 }
 
+func (s *GetDatasetDocumentResponseBodyData) SetDocType(v string) *GetDatasetDocumentResponseBodyData {
+	s.DocType = &v
+	return s
+}
+
 func (s *GetDatasetDocumentResponseBodyData) SetDocUuid(v string) *GetDatasetDocumentResponseBodyData {
 	s.DocUuid = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyData) SetMetadata(v *GetDatasetDocumentResponseBodyDataMetadata) *GetDatasetDocumentResponseBodyData {
+	s.Metadata = v
 	return s
 }
 
@@ -222,6 +247,11 @@ func (s *GetDatasetDocumentResponseBodyData) SetPubTime(v string) *GetDatasetDoc
 
 func (s *GetDatasetDocumentResponseBodyData) SetSourceFrom(v string) *GetDatasetDocumentResponseBodyData {
 	s.SourceFrom = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyData) SetStatus(v int32) *GetDatasetDocumentResponseBodyData {
+	s.Status = &v
 	return s
 }
 
@@ -241,5 +271,163 @@ func (s *GetDatasetDocumentResponseBodyData) SetUrl(v string) *GetDatasetDocumen
 }
 
 func (s *GetDatasetDocumentResponseBodyData) Validate() error {
+	if s.Metadata != nil {
+		if err := s.Metadata.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetDatasetDocumentResponseBodyDataMetadata struct {
+	AsrSentences []*GetDatasetDocumentResponseBodyDataMetadataAsrSentences `json:"AsrSentences,omitempty" xml:"AsrSentences,omitempty" type:"Repeated"`
+	Text         *string                                                   `json:"Text,omitempty" xml:"Text,omitempty"`
+	VideoShots   []*GetDatasetDocumentResponseBodyDataMetadataVideoShots   `json:"VideoShots,omitempty" xml:"VideoShots,omitempty" type:"Repeated"`
+}
+
+func (s GetDatasetDocumentResponseBodyDataMetadata) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDatasetDocumentResponseBodyDataMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadata) GetAsrSentences() []*GetDatasetDocumentResponseBodyDataMetadataAsrSentences {
+	return s.AsrSentences
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadata) GetText() *string {
+	return s.Text
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadata) GetVideoShots() []*GetDatasetDocumentResponseBodyDataMetadataVideoShots {
+	return s.VideoShots
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadata) SetAsrSentences(v []*GetDatasetDocumentResponseBodyDataMetadataAsrSentences) *GetDatasetDocumentResponseBodyDataMetadata {
+	s.AsrSentences = v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadata) SetText(v string) *GetDatasetDocumentResponseBodyDataMetadata {
+	s.Text = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadata) SetVideoShots(v []*GetDatasetDocumentResponseBodyDataMetadataVideoShots) *GetDatasetDocumentResponseBodyDataMetadata {
+	s.VideoShots = v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadata) Validate() error {
+	if s.AsrSentences != nil {
+		for _, item := range s.AsrSentences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoShots != nil {
+		for _, item := range s.VideoShots {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetDatasetDocumentResponseBodyDataMetadataAsrSentences struct {
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s GetDatasetDocumentResponseBodyDataMetadataAsrSentences) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDatasetDocumentResponseBodyDataMetadataAsrSentences) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataAsrSentences) GetEndTime() *int64 {
+	return s.EndTime
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataAsrSentences) GetStartTime() *int64 {
+	return s.StartTime
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataAsrSentences) GetText() *string {
+	return s.Text
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataAsrSentences) SetEndTime(v int64) *GetDatasetDocumentResponseBodyDataMetadataAsrSentences {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataAsrSentences) SetStartTime(v int64) *GetDatasetDocumentResponseBodyDataMetadataAsrSentences {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataAsrSentences) SetText(v string) *GetDatasetDocumentResponseBodyDataMetadataAsrSentences {
+	s.Text = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataAsrSentences) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetDatasetDocumentResponseBodyDataMetadataVideoShots struct {
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s GetDatasetDocumentResponseBodyDataMetadataVideoShots) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDatasetDocumentResponseBodyDataMetadataVideoShots) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataVideoShots) GetEndTime() *int64 {
+	return s.EndTime
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataVideoShots) GetStartTime() *int64 {
+	return s.StartTime
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataVideoShots) GetText() *string {
+	return s.Text
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataVideoShots) SetEndTime(v int64) *GetDatasetDocumentResponseBodyDataMetadataVideoShots {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataVideoShots) SetStartTime(v int64) *GetDatasetDocumentResponseBodyDataMetadataVideoShots {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataVideoShots) SetText(v string) *GetDatasetDocumentResponseBodyDataMetadataVideoShots {
+	s.Text = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyDataMetadataVideoShots) Validate() error {
 	return dara.Validate(s)
 }

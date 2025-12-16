@@ -17,6 +17,8 @@ type iGetDatasetDocumentRequest interface {
 	GetDocId() *string
 	SetDocUuid(v string) *GetDatasetDocumentRequest
 	GetDocUuid() *string
+	SetIncludeFields(v []*string) *GetDatasetDocumentRequest
+	GetIncludeFields() []*string
 	SetWorkspaceId(v string) *GetDatasetDocumentRequest
 	GetWorkspaceId() *string
 }
@@ -37,7 +39,8 @@ type GetDatasetDocumentRequest struct {
 	// example:
 	//
 	// xxx
-	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	DocUuid       *string   `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	IncludeFields []*string `json:"IncludeFields,omitempty" xml:"IncludeFields,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -70,6 +73,10 @@ func (s *GetDatasetDocumentRequest) GetDocUuid() *string {
 	return s.DocUuid
 }
 
+func (s *GetDatasetDocumentRequest) GetIncludeFields() []*string {
+	return s.IncludeFields
+}
+
 func (s *GetDatasetDocumentRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -91,6 +98,11 @@ func (s *GetDatasetDocumentRequest) SetDocId(v string) *GetDatasetDocumentReques
 
 func (s *GetDatasetDocumentRequest) SetDocUuid(v string) *GetDatasetDocumentRequest {
 	s.DocUuid = &v
+	return s
+}
+
+func (s *GetDatasetDocumentRequest) SetIncludeFields(v []*string) *GetDatasetDocumentRequest {
+	s.IncludeFields = v
 	return s
 }
 
