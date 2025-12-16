@@ -15,6 +15,8 @@ type iUpdateCloudAppInfoShrinkRequest interface {
 	GetDescription() *string
 	SetPatchShrink(v string) *UpdateCloudAppInfoShrinkRequest
 	GetPatchShrink() *string
+	SetPkgLabelsShrink(v string) *UpdateCloudAppInfoShrinkRequest
+	GetPkgLabelsShrink() *string
 	SetStablePatchId(v string) *UpdateCloudAppInfoShrinkRequest
 	GetStablePatchId() *string
 }
@@ -25,9 +27,10 @@ type UpdateCloudAppInfoShrinkRequest struct {
 	// example:
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PatchShrink *string `json:"Patch,omitempty" xml:"Patch,omitempty"`
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	PatchShrink     *string `json:"Patch,omitempty" xml:"Patch,omitempty"`
+	PkgLabelsShrink *string `json:"PkgLabels,omitempty" xml:"PkgLabels,omitempty"`
 	// example:
 	//
 	// patch-03fa76e8e13a49b6a966b063d9d309b4
@@ -54,6 +57,10 @@ func (s *UpdateCloudAppInfoShrinkRequest) GetPatchShrink() *string {
 	return s.PatchShrink
 }
 
+func (s *UpdateCloudAppInfoShrinkRequest) GetPkgLabelsShrink() *string {
+	return s.PkgLabelsShrink
+}
+
 func (s *UpdateCloudAppInfoShrinkRequest) GetStablePatchId() *string {
 	return s.StablePatchId
 }
@@ -70,6 +77,11 @@ func (s *UpdateCloudAppInfoShrinkRequest) SetDescription(v string) *UpdateCloudA
 
 func (s *UpdateCloudAppInfoShrinkRequest) SetPatchShrink(v string) *UpdateCloudAppInfoShrinkRequest {
 	s.PatchShrink = &v
+	return s
+}
+
+func (s *UpdateCloudAppInfoShrinkRequest) SetPkgLabelsShrink(v string) *UpdateCloudAppInfoShrinkRequest {
+	s.PkgLabelsShrink = &v
 	return s
 }
 

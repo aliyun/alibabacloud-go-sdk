@@ -17,14 +17,20 @@ type iListCloudAppsRequest interface {
 	GetAppVersion() *string
 	SetEndTime(v string) *ListCloudAppsRequest
 	GetEndTime() *string
+	SetLatestVersionOnly(v bool) *ListCloudAppsRequest
+	GetLatestVersionOnly() *bool
 	SetPageNumber(v int64) *ListCloudAppsRequest
 	GetPageNumber() *int64
 	SetPageSize(v int64) *ListCloudAppsRequest
 	GetPageSize() *int64
+	SetPkgLabel(v string) *ListCloudAppsRequest
+	GetPkgLabel() *string
 	SetPkgType(v string) *ListCloudAppsRequest
 	GetPkgType() *string
 	SetStartTime(v string) *ListCloudAppsRequest
 	GetStartTime() *string
+	SetStatus(v string) *ListCloudAppsRequest
+	GetStatus() *string
 }
 
 type ListCloudAppsRequest struct {
@@ -39,8 +45,9 @@ type ListCloudAppsRequest struct {
 	// example:
 	//
 	// 1.0
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	AppVersion        *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	LatestVersionOnly *bool   `json:"LatestVersionOnly,omitempty" xml:"LatestVersionOnly,omitempty"`
 	// example:
 	//
 	// 1
@@ -49,8 +56,10 @@ type ListCloudAppsRequest struct {
 	//
 	// 10
 	PageSize  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PkgLabel  *string `json:"PkgLabel,omitempty" xml:"PkgLabel,omitempty"`
 	PkgType   *string `json:"PkgType,omitempty" xml:"PkgType,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListCloudAppsRequest) String() string {
@@ -77,6 +86,10 @@ func (s *ListCloudAppsRequest) GetEndTime() *string {
 	return s.EndTime
 }
 
+func (s *ListCloudAppsRequest) GetLatestVersionOnly() *bool {
+	return s.LatestVersionOnly
+}
+
 func (s *ListCloudAppsRequest) GetPageNumber() *int64 {
 	return s.PageNumber
 }
@@ -85,12 +98,20 @@ func (s *ListCloudAppsRequest) GetPageSize() *int64 {
 	return s.PageSize
 }
 
+func (s *ListCloudAppsRequest) GetPkgLabel() *string {
+	return s.PkgLabel
+}
+
 func (s *ListCloudAppsRequest) GetPkgType() *string {
 	return s.PkgType
 }
 
 func (s *ListCloudAppsRequest) GetStartTime() *string {
 	return s.StartTime
+}
+
+func (s *ListCloudAppsRequest) GetStatus() *string {
+	return s.Status
 }
 
 func (s *ListCloudAppsRequest) SetAppId(v string) *ListCloudAppsRequest {
@@ -113,6 +134,11 @@ func (s *ListCloudAppsRequest) SetEndTime(v string) *ListCloudAppsRequest {
 	return s
 }
 
+func (s *ListCloudAppsRequest) SetLatestVersionOnly(v bool) *ListCloudAppsRequest {
+	s.LatestVersionOnly = &v
+	return s
+}
+
 func (s *ListCloudAppsRequest) SetPageNumber(v int64) *ListCloudAppsRequest {
 	s.PageNumber = &v
 	return s
@@ -123,6 +149,11 @@ func (s *ListCloudAppsRequest) SetPageSize(v int64) *ListCloudAppsRequest {
 	return s
 }
 
+func (s *ListCloudAppsRequest) SetPkgLabel(v string) *ListCloudAppsRequest {
+	s.PkgLabel = &v
+	return s
+}
+
 func (s *ListCloudAppsRequest) SetPkgType(v string) *ListCloudAppsRequest {
 	s.PkgType = &v
 	return s
@@ -130,6 +161,11 @@ func (s *ListCloudAppsRequest) SetPkgType(v string) *ListCloudAppsRequest {
 
 func (s *ListCloudAppsRequest) SetStartTime(v string) *ListCloudAppsRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *ListCloudAppsRequest) SetStatus(v string) *ListCloudAppsRequest {
+	s.Status = &v
 	return s
 }
 

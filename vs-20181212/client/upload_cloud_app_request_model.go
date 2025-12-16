@@ -21,6 +21,8 @@ type iUploadCloudAppRequest interface {
 	GetMd5() *string
 	SetPkgFormat(v string) *UploadCloudAppRequest
 	GetPkgFormat() *string
+	SetPkgLabels(v []*string) *UploadCloudAppRequest
+	GetPkgLabels() []*string
 	SetPkgType(v string) *UploadCloudAppRequest
 	GetPkgType() *string
 }
@@ -50,9 +52,10 @@ type UploadCloudAppRequest struct {
 	// example:
 	//
 	// 0CFBB7BD10CDD7279642ADAB8FEF3DEE
-	Md5       *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	PkgFormat *string `json:"PkgFormat,omitempty" xml:"PkgFormat,omitempty"`
-	PkgType   *string `json:"PkgType,omitempty" xml:"PkgType,omitempty"`
+	Md5       *string   `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	PkgFormat *string   `json:"PkgFormat,omitempty" xml:"PkgFormat,omitempty"`
+	PkgLabels []*string `json:"PkgLabels,omitempty" xml:"PkgLabels,omitempty" type:"Repeated"`
+	PkgType   *string   `json:"PkgType,omitempty" xml:"PkgType,omitempty"`
 }
 
 func (s UploadCloudAppRequest) String() string {
@@ -87,6 +90,10 @@ func (s *UploadCloudAppRequest) GetPkgFormat() *string {
 	return s.PkgFormat
 }
 
+func (s *UploadCloudAppRequest) GetPkgLabels() []*string {
+	return s.PkgLabels
+}
+
 func (s *UploadCloudAppRequest) GetPkgType() *string {
 	return s.PkgType
 }
@@ -118,6 +125,11 @@ func (s *UploadCloudAppRequest) SetMd5(v string) *UploadCloudAppRequest {
 
 func (s *UploadCloudAppRequest) SetPkgFormat(v string) *UploadCloudAppRequest {
 	s.PkgFormat = &v
+	return s
+}
+
+func (s *UploadCloudAppRequest) SetPkgLabels(v []*string) *UploadCloudAppRequest {
+	s.PkgLabels = v
 	return s
 }
 

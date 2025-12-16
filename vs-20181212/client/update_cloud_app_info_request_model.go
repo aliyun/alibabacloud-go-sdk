@@ -15,6 +15,8 @@ type iUpdateCloudAppInfoRequest interface {
 	GetDescription() *string
 	SetPatch(v *UpdateCloudAppInfoRequestPatch) *UpdateCloudAppInfoRequest
 	GetPatch() *UpdateCloudAppInfoRequestPatch
+	SetPkgLabels(v []*string) *UpdateCloudAppInfoRequest
+	GetPkgLabels() []*string
 	SetStablePatchId(v string) *UpdateCloudAppInfoRequest
 	GetStablePatchId() *string
 }
@@ -28,6 +30,7 @@ type UpdateCloudAppInfoRequest struct {
 	AppId       *string                         `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Description *string                         `json:"Description,omitempty" xml:"Description,omitempty"`
 	Patch       *UpdateCloudAppInfoRequestPatch `json:"Patch,omitempty" xml:"Patch,omitempty" type:"Struct"`
+	PkgLabels   []*string                       `json:"PkgLabels,omitempty" xml:"PkgLabels,omitempty" type:"Repeated"`
 	// example:
 	//
 	// patch-03fa76e8e13a49b6a966b063d9d309b4
@@ -54,6 +57,10 @@ func (s *UpdateCloudAppInfoRequest) GetPatch() *UpdateCloudAppInfoRequestPatch {
 	return s.Patch
 }
 
+func (s *UpdateCloudAppInfoRequest) GetPkgLabels() []*string {
+	return s.PkgLabels
+}
+
 func (s *UpdateCloudAppInfoRequest) GetStablePatchId() *string {
 	return s.StablePatchId
 }
@@ -73,6 +80,11 @@ func (s *UpdateCloudAppInfoRequest) SetPatch(v *UpdateCloudAppInfoRequestPatch) 
 	return s
 }
 
+func (s *UpdateCloudAppInfoRequest) SetPkgLabels(v []*string) *UpdateCloudAppInfoRequest {
+	s.PkgLabels = v
+	return s
+}
+
 func (s *UpdateCloudAppInfoRequest) SetStablePatchId(v string) *UpdateCloudAppInfoRequest {
 	s.StablePatchId = &v
 	return s
@@ -88,6 +100,7 @@ func (s *UpdateCloudAppInfoRequest) Validate() error {
 }
 
 type UpdateCloudAppInfoRequestPatch struct {
+	AsStablePatch *bool `json:"AsStablePatch,omitempty" xml:"AsStablePatch,omitempty"`
 	// example:
 	//
 	// https://test_host/app/test-tar-pkg.tar
@@ -100,6 +113,11 @@ type UpdateCloudAppInfoRequestPatch struct {
 	//
 	// p1
 	PatchName *string `json:"PatchName,omitempty" xml:"PatchName,omitempty"`
+	// example:
+	//
+	// tar
+	PkgFormat           *string `json:"PkgFormat,omitempty" xml:"PkgFormat,omitempty"`
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
 }
 
 func (s UpdateCloudAppInfoRequestPatch) String() string {
@@ -108,6 +126,10 @@ func (s UpdateCloudAppInfoRequestPatch) String() string {
 
 func (s UpdateCloudAppInfoRequestPatch) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateCloudAppInfoRequestPatch) GetAsStablePatch() *bool {
+	return s.AsStablePatch
 }
 
 func (s *UpdateCloudAppInfoRequestPatch) GetDownloadURL() *string {
@@ -122,6 +144,19 @@ func (s *UpdateCloudAppInfoRequestPatch) GetPatchName() *string {
 	return s.PatchName
 }
 
+func (s *UpdateCloudAppInfoRequestPatch) GetPkgFormat() *string {
+	return s.PkgFormat
+}
+
+func (s *UpdateCloudAppInfoRequestPatch) GetRenderingInstanceId() *string {
+	return s.RenderingInstanceId
+}
+
+func (s *UpdateCloudAppInfoRequestPatch) SetAsStablePatch(v bool) *UpdateCloudAppInfoRequestPatch {
+	s.AsStablePatch = &v
+	return s
+}
+
 func (s *UpdateCloudAppInfoRequestPatch) SetDownloadURL(v string) *UpdateCloudAppInfoRequestPatch {
 	s.DownloadURL = &v
 	return s
@@ -134,6 +169,16 @@ func (s *UpdateCloudAppInfoRequestPatch) SetMd5(v string) *UpdateCloudAppInfoReq
 
 func (s *UpdateCloudAppInfoRequestPatch) SetPatchName(v string) *UpdateCloudAppInfoRequestPatch {
 	s.PatchName = &v
+	return s
+}
+
+func (s *UpdateCloudAppInfoRequestPatch) SetPkgFormat(v string) *UpdateCloudAppInfoRequestPatch {
+	s.PkgFormat = &v
+	return s
+}
+
+func (s *UpdateCloudAppInfoRequestPatch) SetRenderingInstanceId(v string) *UpdateCloudAppInfoRequestPatch {
+	s.RenderingInstanceId = &v
 	return s
 }
 

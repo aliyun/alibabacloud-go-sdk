@@ -9707,6 +9707,10 @@ func (client *Client) UpdateCloudAppInfoWithContext(ctx context.Context, tmpReq 
 		request.PatchShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Patch, dara.String("Patch"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.PkgLabels) {
+		request.PkgLabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PkgLabels, dara.String("PkgLabels"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
 		query["AppId"] = request.AppId
@@ -9716,16 +9720,22 @@ func (client *Client) UpdateCloudAppInfoWithContext(ctx context.Context, tmpReq 
 		query["Description"] = request.Description
 	}
 
-	if !dara.IsNil(request.PatchShrink) {
-		query["Patch"] = request.PatchShrink
+	if !dara.IsNil(request.PkgLabelsShrink) {
+		query["PkgLabels"] = request.PkgLabelsShrink
 	}
 
 	if !dara.IsNil(request.StablePatchId) {
 		query["StablePatchId"] = request.StablePatchId
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PatchShrink) {
+		body["Patch"] = request.PatchShrink
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("UpdateCloudAppInfo"),
@@ -10039,18 +10049,24 @@ func (client *Client) UpdateVsPullStreamInfoConfigWithContext(ctx context.Contex
 //
 // 应用上架
 //
-// @param request - UploadCloudAppRequest
+// @param tmpReq - UploadCloudAppRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UploadCloudAppResponse
-func (client *Client) UploadCloudAppWithContext(ctx context.Context, request *UploadCloudAppRequest, runtime *dara.RuntimeOptions) (_result *UploadCloudAppResponse, _err error) {
+func (client *Client) UploadCloudAppWithContext(ctx context.Context, tmpReq *UploadCloudAppRequest, runtime *dara.RuntimeOptions) (_result *UploadCloudAppResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &UploadCloudAppShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.PkgLabels) {
+		request.PkgLabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PkgLabels, dara.String("PkgLabels"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
 		query["AppName"] = request.AppName
@@ -10074,6 +10090,10 @@ func (client *Client) UploadCloudAppWithContext(ctx context.Context, request *Up
 
 	if !dara.IsNil(request.PkgFormat) {
 		query["PkgFormat"] = request.PkgFormat
+	}
+
+	if !dara.IsNil(request.PkgLabelsShrink) {
+		query["PkgLabels"] = request.PkgLabelsShrink
 	}
 
 	if !dara.IsNil(request.PkgType) {
