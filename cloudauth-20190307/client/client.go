@@ -2905,6 +2905,72 @@ func (client *Client) DescribeAntAndCloudAuthUserStatus() (_result *DescribeAntA
 
 // Summary:
 //
+// 获取结果
+//
+// @param request - DescribeAuthVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAuthVerifyResponse
+func (client *Client) DescribeAuthVerifyWithOptions(request *DescribeAuthVerifyRequest, runtime *dara.RuntimeOptions) (_result *DescribeAuthVerifyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CertifyId) {
+		body["CertifyId"] = request.CertifyId
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		body["SceneId"] = request.SceneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAuthVerify"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAuthVerifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取结果
+//
+// @param request - DescribeAuthVerifyRequest
+//
+// @return DescribeAuthVerifyResponse
+func (client *Client) DescribeAuthVerify(request *DescribeAuthVerifyRequest) (_result *DescribeAuthVerifyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAuthVerifyResponse{}
+	_body, _err := client.DescribeAuthVerifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Obtain Authentication Results from Image Element Verification
 //
 // Description:
@@ -6626,6 +6692,104 @@ func (client *Client) Id3MetaVerifyWithOCRAdvance(request *Id3MetaVerifyWithOCRA
 	}
 
 	_result = id3MetaVerifyWithOCRResp
+	return _result, _err
+}
+
+// Summary:
+//
+// 服务端初始化
+//
+// @param request - InitAuthVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InitAuthVerifyResponse
+func (client *Client) InitAuthVerifyWithOptions(request *InitAuthVerifyRequest, runtime *dara.RuntimeOptions) (_result *InitAuthVerifyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CallbackToken) {
+		body["CallbackToken"] = request.CallbackToken
+	}
+
+	if !dara.IsNil(request.CallbackUrl) {
+		body["CallbackUrl"] = request.CallbackUrl
+	}
+
+	if !dara.IsNil(request.CardPageNumber) {
+		body["CardPageNumber"] = request.CardPageNumber
+	}
+
+	if !dara.IsNil(request.CardType) {
+		body["CardType"] = request.CardType
+	}
+
+	if !dara.IsNil(request.DocScanMode) {
+		body["DocScanMode"] = request.DocScanMode
+	}
+
+	if !dara.IsNil(request.IdSpoof) {
+		body["IdSpoof"] = request.IdSpoof
+	}
+
+	if !dara.IsNil(request.MetaInfo) {
+		body["MetaInfo"] = request.MetaInfo
+	}
+
+	if !dara.IsNil(request.OuterOrderNo) {
+		body["OuterOrderNo"] = request.OuterOrderNo
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		body["SceneId"] = request.SceneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InitAuthVerify"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InitAuthVerifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 服务端初始化
+//
+// @param request - InitAuthVerifyRequest
+//
+// @return InitAuthVerifyResponse
+func (client *Client) InitAuthVerify(request *InitAuthVerifyRequest) (_result *InitAuthVerifyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &InitAuthVerifyResponse{}
+	_body, _err := client.InitAuthVerifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
