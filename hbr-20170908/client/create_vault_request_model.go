@@ -15,6 +15,8 @@ type iCreateVaultRequest interface {
 	GetEncryptType() *string
 	SetKmsKeyId(v string) *CreateVaultRequest
 	GetKmsKeyId() *string
+	SetReplication(v bool) *CreateVaultRequest
+	GetReplication() *bool
 	SetVaultName(v string) *CreateVaultRequest
 	GetVaultName() *string
 	SetVaultRegionId(v string) *CreateVaultRequest
@@ -49,7 +51,8 @@ type CreateVaultRequest struct {
 	// example:
 	//
 	// alias/yzs-hhht
-	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	KmsKeyId    *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	Replication *bool   `json:"Replication,omitempty" xml:"Replication,omitempty"`
 	// The name of the backup vault. The name must be 1 to 64 characters in length.
 	//
 	// This parameter is required.
@@ -118,6 +121,10 @@ func (s *CreateVaultRequest) GetKmsKeyId() *string {
 	return s.KmsKeyId
 }
 
+func (s *CreateVaultRequest) GetReplication() *bool {
+	return s.Replication
+}
+
 func (s *CreateVaultRequest) GetVaultName() *string {
 	return s.VaultName
 }
@@ -150,6 +157,11 @@ func (s *CreateVaultRequest) SetEncryptType(v string) *CreateVaultRequest {
 
 func (s *CreateVaultRequest) SetKmsKeyId(v string) *CreateVaultRequest {
 	s.KmsKeyId = &v
+	return s
+}
+
+func (s *CreateVaultRequest) SetReplication(v bool) *CreateVaultRequest {
+	s.Replication = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iDescribeVaultsRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *DescribeVaultsRequest
 	GetPageSize() *int32
+	SetReplication(v bool) *DescribeVaultsRequest
+	GetReplication() *bool
 	SetResourceGroupId(v string) *DescribeVaultsRequest
 	GetResourceGroupId() *string
 	SetStatus(v string) *DescribeVaultsRequest
@@ -23,6 +25,8 @@ type iDescribeVaultsRequest interface {
 	GetVaultId() *string
 	SetVaultName(v string) *DescribeVaultsRequest
 	GetVaultName() *string
+	SetVaultOwnerId(v int64) *DescribeVaultsRequest
+	GetVaultOwnerId() *int64
 	SetVaultRegionId(v string) *DescribeVaultsRequest
 	GetVaultRegionId() *string
 	SetVaultType(v string) *DescribeVaultsRequest
@@ -41,7 +45,8 @@ type DescribeVaultsRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Replication *bool  `json:"Replication,omitempty" xml:"Replication,omitempty"`
 	// Resource group ID.
 	//
 	// example:
@@ -79,7 +84,8 @@ type DescribeVaultsRequest struct {
 	// example:
 	//
 	// vaultname
-	VaultName *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
+	VaultName    *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
+	VaultOwnerId *int64  `json:"VaultOwnerId,omitempty" xml:"VaultOwnerId,omitempty"`
 	// The region ID to which the backup vault belongs.
 	//
 	// example:
@@ -114,6 +120,10 @@ func (s *DescribeVaultsRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *DescribeVaultsRequest) GetReplication() *bool {
+	return s.Replication
+}
+
 func (s *DescribeVaultsRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
@@ -134,6 +144,10 @@ func (s *DescribeVaultsRequest) GetVaultName() *string {
 	return s.VaultName
 }
 
+func (s *DescribeVaultsRequest) GetVaultOwnerId() *int64 {
+	return s.VaultOwnerId
+}
+
 func (s *DescribeVaultsRequest) GetVaultRegionId() *string {
 	return s.VaultRegionId
 }
@@ -149,6 +163,11 @@ func (s *DescribeVaultsRequest) SetPageNumber(v int32) *DescribeVaultsRequest {
 
 func (s *DescribeVaultsRequest) SetPageSize(v int32) *DescribeVaultsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeVaultsRequest) SetReplication(v bool) *DescribeVaultsRequest {
+	s.Replication = &v
 	return s
 }
 
@@ -174,6 +193,11 @@ func (s *DescribeVaultsRequest) SetVaultId(v string) *DescribeVaultsRequest {
 
 func (s *DescribeVaultsRequest) SetVaultName(v string) *DescribeVaultsRequest {
 	s.VaultName = &v
+	return s
+}
+
+func (s *DescribeVaultsRequest) SetVaultOwnerId(v int64) *DescribeVaultsRequest {
+	s.VaultOwnerId = &v
 	return s
 }
 

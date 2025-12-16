@@ -1452,6 +1452,10 @@ func (client *Client) CreateVaultWithContext(ctx context.Context, request *Creat
 		query["KmsKeyId"] = request.KmsKeyId
 	}
 
+	if !dara.IsNil(request.Replication) {
+		query["Replication"] = request.Replication
+	}
+
 	if !dara.IsNil(request.VaultName) {
 		query["VaultName"] = request.VaultName
 	}
@@ -1487,6 +1491,58 @@ func (client *Client) CreateVaultWithContext(ctx context.Context, request *Creat
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVaultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建备份库复制
+//
+// @param request - CreateVaultReplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVaultReplicationResponse
+func (client *Client) CreateVaultReplicationWithContext(ctx context.Context, request *CreateVaultReplicationRequest, runtime *dara.RuntimeOptions) (_result *CreateVaultReplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ReplicationSourceRegionId) {
+		query["ReplicationSourceRegionId"] = request.ReplicationSourceRegionId
+	}
+
+	if !dara.IsNil(request.ReplicationSourceVaultId) {
+		query["ReplicationSourceVaultId"] = request.ReplicationSourceVaultId
+	}
+
+	if !dara.IsNil(request.ReplicationTargetVaultId) {
+		query["ReplicationTargetVaultId"] = request.ReplicationTargetVaultId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateVaultReplication"),
+		Version:     dara.String("2017-09-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateVaultReplicationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2203,6 +2259,58 @@ func (client *Client) DeleteVaultWithContext(ctx context.Context, request *Delet
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVaultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭备份库复制
+//
+// @param request - DeleteVaultReplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVaultReplicationResponse
+func (client *Client) DeleteVaultReplicationWithContext(ctx context.Context, request *DeleteVaultReplicationRequest, runtime *dara.RuntimeOptions) (_result *DeleteVaultReplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ReplicationSourceRegionId) {
+		query["ReplicationSourceRegionId"] = request.ReplicationSourceRegionId
+	}
+
+	if !dara.IsNil(request.ReplicationSourceVaultId) {
+		query["ReplicationSourceVaultId"] = request.ReplicationSourceVaultId
+	}
+
+	if !dara.IsNil(request.ReplicationTargetVaultId) {
+		query["ReplicationTargetVaultId"] = request.ReplicationTargetVaultId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteVaultReplication"),
+		Version:     dara.String("2017-09-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteVaultReplicationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3633,6 +3741,10 @@ func (client *Client) DescribeVaultsWithContext(ctx context.Context, request *De
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.Replication) {
+		query["Replication"] = request.Replication
+	}
+
 	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -3647,6 +3759,10 @@ func (client *Client) DescribeVaultsWithContext(ctx context.Context, request *De
 
 	if !dara.IsNil(request.VaultName) {
 		query["VaultName"] = request.VaultName
+	}
+
+	if !dara.IsNil(request.VaultOwnerId) {
+		query["VaultOwnerId"] = request.VaultOwnerId
 	}
 
 	if !dara.IsNil(request.VaultRegionId) {

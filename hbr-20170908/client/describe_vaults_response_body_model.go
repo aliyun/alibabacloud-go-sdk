@@ -341,7 +341,8 @@ type DescribeVaultsResponseBodyVaultsVault struct {
 	// false
 	Replication *bool `json:"Replication,omitempty" xml:"Replication,omitempty"`
 	// The progress of data synchronization from the backup vault to the mirror vault.
-	ReplicationProgress *DescribeVaultsResponseBodyVaultsVaultReplicationProgress `json:"ReplicationProgress,omitempty" xml:"ReplicationProgress,omitempty" type:"Struct"`
+	ReplicationProgress      *DescribeVaultsResponseBodyVaultsVaultReplicationProgress `json:"ReplicationProgress,omitempty" xml:"ReplicationProgress,omitempty" type:"Struct"`
+	ReplicationSourceOwnerId *int64                                                    `json:"ReplicationSourceOwnerId,omitempty" xml:"ReplicationSourceOwnerId,omitempty"`
 	// The ID of the region in which the source vault resides. This parameter is valid only for remote backup vaults.
 	//
 	// example:
@@ -364,12 +365,15 @@ type DescribeVaultsResponseBodyVaultsVault struct {
 	//
 	// v-*********************
 	ReplicationSourceVaultId *string `json:"ReplicationSourceVaultId,omitempty" xml:"ReplicationSourceVaultId,omitempty"`
+	ReplicationStatus        *string `json:"ReplicationStatus,omitempty" xml:"ReplicationStatus,omitempty"`
+	ReplicationTargetOwnerId *int64  `json:"ReplicationTargetOwnerId,omitempty" xml:"ReplicationTargetOwnerId,omitempty"`
 	// Target region for remote backup repository.
 	//
 	// example:
 	//
 	// cn-shanghai
 	ReplicationTargetRegionId *string `json:"ReplicationTargetRegionId,omitempty" xml:"ReplicationTargetRegionId,omitempty"`
+	ReplicationTargetVaultId  *string `json:"ReplicationTargetVaultId,omitempty" xml:"ReplicationTargetVaultId,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
@@ -381,7 +385,8 @@ type DescribeVaultsResponseBodyVaultsVault struct {
 	// example:
 	//
 	// 2
-	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	Retention          *int64                                                   `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	RsTargetAccountIds *DescribeVaultsResponseBodyVaultsVaultRsTargetAccountIds `json:"RsTargetAccountIds,omitempty" xml:"RsTargetAccountIds,omitempty" type:"Struct"`
 	// Indicates whether the backup search feature is enabled.
 	//
 	// example:
@@ -437,7 +442,8 @@ type DescribeVaultsResponseBodyVaultsVault struct {
 	// example:
 	//
 	// vaultname
-	VaultName *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
+	VaultName    *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
+	VaultOwnerId *int64  `json:"VaultOwnerId,omitempty" xml:"VaultOwnerId,omitempty"`
 	// The ID of the region in which the backup vault resides.
 	//
 	// example:
@@ -562,6 +568,10 @@ func (s *DescribeVaultsResponseBodyVaultsVault) GetReplicationProgress() *Descri
 	return s.ReplicationProgress
 }
 
+func (s *DescribeVaultsResponseBodyVaultsVault) GetReplicationSourceOwnerId() *int64 {
+	return s.ReplicationSourceOwnerId
+}
+
 func (s *DescribeVaultsResponseBodyVaultsVault) GetReplicationSourceRegionId() *string {
 	return s.ReplicationSourceRegionId
 }
@@ -574,8 +584,20 @@ func (s *DescribeVaultsResponseBodyVaultsVault) GetReplicationSourceVaultId() *s
 	return s.ReplicationSourceVaultId
 }
 
+func (s *DescribeVaultsResponseBodyVaultsVault) GetReplicationStatus() *string {
+	return s.ReplicationStatus
+}
+
+func (s *DescribeVaultsResponseBodyVaultsVault) GetReplicationTargetOwnerId() *int64 {
+	return s.ReplicationTargetOwnerId
+}
+
 func (s *DescribeVaultsResponseBodyVaultsVault) GetReplicationTargetRegionId() *string {
 	return s.ReplicationTargetRegionId
+}
+
+func (s *DescribeVaultsResponseBodyVaultsVault) GetReplicationTargetVaultId() *string {
+	return s.ReplicationTargetVaultId
 }
 
 func (s *DescribeVaultsResponseBodyVaultsVault) GetResourceGroupId() *string {
@@ -584,6 +606,10 @@ func (s *DescribeVaultsResponseBodyVaultsVault) GetResourceGroupId() *string {
 
 func (s *DescribeVaultsResponseBodyVaultsVault) GetRetention() *int64 {
 	return s.Retention
+}
+
+func (s *DescribeVaultsResponseBodyVaultsVault) GetRsTargetAccountIds() *DescribeVaultsResponseBodyVaultsVaultRsTargetAccountIds {
+	return s.RsTargetAccountIds
 }
 
 func (s *DescribeVaultsResponseBodyVaultsVault) GetSearchEnabled() *bool {
@@ -624,6 +650,10 @@ func (s *DescribeVaultsResponseBodyVaultsVault) GetVaultId() *string {
 
 func (s *DescribeVaultsResponseBodyVaultsVault) GetVaultName() *string {
 	return s.VaultName
+}
+
+func (s *DescribeVaultsResponseBodyVaultsVault) GetVaultOwnerId() *int64 {
+	return s.VaultOwnerId
 }
 
 func (s *DescribeVaultsResponseBodyVaultsVault) GetVaultRegionId() *string {
@@ -746,6 +776,11 @@ func (s *DescribeVaultsResponseBodyVaultsVault) SetReplicationProgress(v *Descri
 	return s
 }
 
+func (s *DescribeVaultsResponseBodyVaultsVault) SetReplicationSourceOwnerId(v int64) *DescribeVaultsResponseBodyVaultsVault {
+	s.ReplicationSourceOwnerId = &v
+	return s
+}
+
 func (s *DescribeVaultsResponseBodyVaultsVault) SetReplicationSourceRegionId(v string) *DescribeVaultsResponseBodyVaultsVault {
 	s.ReplicationSourceRegionId = &v
 	return s
@@ -761,8 +796,23 @@ func (s *DescribeVaultsResponseBodyVaultsVault) SetReplicationSourceVaultId(v st
 	return s
 }
 
+func (s *DescribeVaultsResponseBodyVaultsVault) SetReplicationStatus(v string) *DescribeVaultsResponseBodyVaultsVault {
+	s.ReplicationStatus = &v
+	return s
+}
+
+func (s *DescribeVaultsResponseBodyVaultsVault) SetReplicationTargetOwnerId(v int64) *DescribeVaultsResponseBodyVaultsVault {
+	s.ReplicationTargetOwnerId = &v
+	return s
+}
+
 func (s *DescribeVaultsResponseBodyVaultsVault) SetReplicationTargetRegionId(v string) *DescribeVaultsResponseBodyVaultsVault {
 	s.ReplicationTargetRegionId = &v
+	return s
+}
+
+func (s *DescribeVaultsResponseBodyVaultsVault) SetReplicationTargetVaultId(v string) *DescribeVaultsResponseBodyVaultsVault {
+	s.ReplicationTargetVaultId = &v
 	return s
 }
 
@@ -773,6 +823,11 @@ func (s *DescribeVaultsResponseBodyVaultsVault) SetResourceGroupId(v string) *De
 
 func (s *DescribeVaultsResponseBodyVaultsVault) SetRetention(v int64) *DescribeVaultsResponseBodyVaultsVault {
 	s.Retention = &v
+	return s
+}
+
+func (s *DescribeVaultsResponseBodyVaultsVault) SetRsTargetAccountIds(v *DescribeVaultsResponseBodyVaultsVaultRsTargetAccountIds) *DescribeVaultsResponseBodyVaultsVault {
+	s.RsTargetAccountIds = v
 	return s
 }
 
@@ -826,6 +881,11 @@ func (s *DescribeVaultsResponseBodyVaultsVault) SetVaultName(v string) *Describe
 	return s
 }
 
+func (s *DescribeVaultsResponseBodyVaultsVault) SetVaultOwnerId(v int64) *DescribeVaultsResponseBodyVaultsVault {
+	s.VaultOwnerId = &v
+	return s
+}
+
 func (s *DescribeVaultsResponseBodyVaultsVault) SetVaultRegionId(v string) *DescribeVaultsResponseBodyVaultsVault {
 	s.VaultRegionId = &v
 	return s
@@ -859,6 +919,11 @@ func (s *DescribeVaultsResponseBodyVaultsVault) Validate() error {
 	}
 	if s.ReplicationProgress != nil {
 		if err := s.ReplicationProgress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RsTargetAccountIds != nil {
+		if err := s.RsTargetAccountIds.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1162,6 +1227,31 @@ func (s *DescribeVaultsResponseBodyVaultsVaultReplicationProgress) SetNewReplica
 }
 
 func (s *DescribeVaultsResponseBodyVaultsVaultReplicationProgress) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeVaultsResponseBodyVaultsVaultRsTargetAccountIds struct {
+	RsTargetAccountId []*int64 `json:"RsTargetAccountId,omitempty" xml:"RsTargetAccountId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVaultsResponseBodyVaultsVaultRsTargetAccountIds) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeVaultsResponseBodyVaultsVaultRsTargetAccountIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVaultsResponseBodyVaultsVaultRsTargetAccountIds) GetRsTargetAccountId() []*int64 {
+	return s.RsTargetAccountId
+}
+
+func (s *DescribeVaultsResponseBodyVaultsVaultRsTargetAccountIds) SetRsTargetAccountId(v []*int64) *DescribeVaultsResponseBodyVaultsVaultRsTargetAccountIds {
+	s.RsTargetAccountId = v
+	return s
+}
+
+func (s *DescribeVaultsResponseBodyVaultsVaultRsTargetAccountIds) Validate() error {
 	return dara.Validate(s)
 }
 
