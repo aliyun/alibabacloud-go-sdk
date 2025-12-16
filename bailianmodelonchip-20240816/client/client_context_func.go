@@ -162,6 +162,57 @@ func (client *Client) DeviceRegisterWithContext(ctx context.Context, request *De
 
 // Summary:
 //
+// 云端获取透传鉴权信息
+//
+// @param request - GetPassThroughAuthInfoRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPassThroughAuthInfoResponse
+func (client *Client) GetPassThroughAuthInfoWithContext(ctx context.Context, request *GetPassThroughAuthInfoRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPassThroughAuthInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["appId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.DeviceName) {
+		body["deviceName"] = request.DeviceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPassThroughAuthInfo"),
+		Version:     dara.String("2024-08-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/open/api/auth/v1/token/getPassThroughAuthInfo"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPassThroughAuthInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取网关校验Token
 //
 // @param request - GetTokenRequest
