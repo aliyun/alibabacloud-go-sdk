@@ -1222,6 +1222,10 @@ func (client *Client) DescribeCertificatePrivateKeyWithContext(ctx context.Conte
 		query["Identifier"] = request.Identifier
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1311,6 +1315,52 @@ func (client *Client) DescribeClientCertificateWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeClientCertificateForSerialNumber is deprecated, please use cas::2020-06-30::DescribeClientCertificate instead.
+//
+// Summary:
+//
+// 获取客户端证书
+//
+// @param request - DescribeClientCertificateForSerialNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClientCertificateForSerialNumberResponse
+func (client *Client) DescribeClientCertificateForSerialNumberWithContext(ctx context.Context, request *DescribeClientCertificateForSerialNumberRequest, runtime *dara.RuntimeOptions) (_result *DescribeClientCertificateForSerialNumberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SerialNumber) {
+		query["SerialNumber"] = request.SerialNumber
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeClientCertificateForSerialNumber"),
+		Version:     dara.String("2020-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeClientCertificateForSerialNumberResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries the status information about client certificates and server certificates by using the unique identifiers of the certificates.
@@ -1355,6 +1405,100 @@ func (client *Client) DescribeClientCertificateStatusWithContext(ctx context.Con
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeClientCertificateStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取客户端证书状态
+//
+// @param request - DescribeClientCertificateStatusForSerialNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClientCertificateStatusForSerialNumberResponse
+func (client *Client) DescribeClientCertificateStatusForSerialNumberWithContext(ctx context.Context, request *DescribeClientCertificateStatusForSerialNumberRequest, runtime *dara.RuntimeOptions) (_result *DescribeClientCertificateStatusForSerialNumberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SerialNumber) {
+		query["SerialNumber"] = request.SerialNumber
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeClientCertificateStatusForSerialNumber"),
+		Version:     dara.String("2020-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeClientCertificateStatusForSerialNumberResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Deprecated: OpenAPI DescribePcaAndExternalCACertificateList is deprecated, please use cas::2020-06-30::ListAllEndEntityInstance instead.
+//
+// Summary:
+//
+// 返回用户所有CaCertificate，包括PCA内部产生的与导入的外部证书
+//
+// @param request - DescribePcaAndExternalCACertificateListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePcaAndExternalCACertificateListResponse
+func (client *Client) DescribePcaAndExternalCACertificateListWithContext(ctx context.Context, request *DescribePcaAndExternalCACertificateListRequest, runtime *dara.RuntimeOptions) (_result *DescribePcaAndExternalCACertificateListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.ShowSize) {
+		query["ShowSize"] = request.ShowSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePcaAndExternalCACertificateList"),
+		Version:     dara.String("2020-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePcaAndExternalCACertificateListResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1475,6 +1619,50 @@ func (client *Client) ListAllEndEntityInstanceWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAllEndEntityInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取证书日志
+//
+// @param request - ListCACertificateLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCACertificateLogResponse
+func (client *Client) ListCACertificateLogWithContext(ctx context.Context, request *ListCACertificateLogRequest, runtime *dara.RuntimeOptions) (_result *ListCACertificateLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Identifier) {
+		query["Identifier"] = request.Identifier
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCACertificateLog"),
+		Version:     dara.String("2020-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCACertificateLogResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

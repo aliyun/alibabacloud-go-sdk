@@ -1739,6 +1739,10 @@ func (client *Client) DescribeCertificatePrivateKeyWithOptions(request *Describe
 		query["Identifier"] = request.Identifier
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1910,6 +1914,73 @@ func (client *Client) DescribeClientCertificate(request *DescribeClientCertifica
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeClientCertificateForSerialNumber is deprecated, please use cas::2020-06-30::DescribeClientCertificate instead.
+//
+// Summary:
+//
+// 获取客户端证书
+//
+// @param request - DescribeClientCertificateForSerialNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClientCertificateForSerialNumberResponse
+func (client *Client) DescribeClientCertificateForSerialNumberWithOptions(request *DescribeClientCertificateForSerialNumberRequest, runtime *dara.RuntimeOptions) (_result *DescribeClientCertificateForSerialNumberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SerialNumber) {
+		query["SerialNumber"] = request.SerialNumber
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeClientCertificateForSerialNumber"),
+		Version:     dara.String("2020-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeClientCertificateForSerialNumberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Deprecated: OpenAPI DescribeClientCertificateForSerialNumber is deprecated, please use cas::2020-06-30::DescribeClientCertificate instead.
+//
+// Summary:
+//
+// 获取客户端证书
+//
+// @param request - DescribeClientCertificateForSerialNumberRequest
+//
+// @return DescribeClientCertificateForSerialNumberResponse
+// Deprecated
+func (client *Client) DescribeClientCertificateForSerialNumber(request *DescribeClientCertificateForSerialNumberRequest) (_result *DescribeClientCertificateForSerialNumberResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeClientCertificateForSerialNumberResponse{}
+	_body, _err := client.DescribeClientCertificateForSerialNumberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries the status information about client certificates and server certificates by using the unique identifiers of the certificates.
@@ -1981,6 +2052,139 @@ func (client *Client) DescribeClientCertificateStatus(request *DescribeClientCer
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeClientCertificateStatusResponse{}
 	_body, _err := client.DescribeClientCertificateStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取客户端证书状态
+//
+// @param request - DescribeClientCertificateStatusForSerialNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClientCertificateStatusForSerialNumberResponse
+func (client *Client) DescribeClientCertificateStatusForSerialNumberWithOptions(request *DescribeClientCertificateStatusForSerialNumberRequest, runtime *dara.RuntimeOptions) (_result *DescribeClientCertificateStatusForSerialNumberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SerialNumber) {
+		query["SerialNumber"] = request.SerialNumber
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeClientCertificateStatusForSerialNumber"),
+		Version:     dara.String("2020-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeClientCertificateStatusForSerialNumberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取客户端证书状态
+//
+// @param request - DescribeClientCertificateStatusForSerialNumberRequest
+//
+// @return DescribeClientCertificateStatusForSerialNumberResponse
+func (client *Client) DescribeClientCertificateStatusForSerialNumber(request *DescribeClientCertificateStatusForSerialNumberRequest) (_result *DescribeClientCertificateStatusForSerialNumberResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeClientCertificateStatusForSerialNumberResponse{}
+	_body, _err := client.DescribeClientCertificateStatusForSerialNumberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Deprecated: OpenAPI DescribePcaAndExternalCACertificateList is deprecated, please use cas::2020-06-30::ListAllEndEntityInstance instead.
+//
+// Summary:
+//
+// 返回用户所有CaCertificate，包括PCA内部产生的与导入的外部证书
+//
+// @param request - DescribePcaAndExternalCACertificateListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePcaAndExternalCACertificateListResponse
+func (client *Client) DescribePcaAndExternalCACertificateListWithOptions(request *DescribePcaAndExternalCACertificateListRequest, runtime *dara.RuntimeOptions) (_result *DescribePcaAndExternalCACertificateListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.ShowSize) {
+		query["ShowSize"] = request.ShowSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePcaAndExternalCACertificateList"),
+		Version:     dara.String("2020-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePcaAndExternalCACertificateListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Deprecated: OpenAPI DescribePcaAndExternalCACertificateList is deprecated, please use cas::2020-06-30::ListAllEndEntityInstance instead.
+//
+// Summary:
+//
+// 返回用户所有CaCertificate，包括PCA内部产生的与导入的外部证书
+//
+// @param request - DescribePcaAndExternalCACertificateListRequest
+//
+// @return DescribePcaAndExternalCACertificateListResponse
+// Deprecated
+func (client *Client) DescribePcaAndExternalCACertificateList(request *DescribePcaAndExternalCACertificateListRequest) (_result *DescribePcaAndExternalCACertificateListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePcaAndExternalCACertificateListResponse{}
+	_body, _err := client.DescribePcaAndExternalCACertificateListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2145,6 +2349,68 @@ func (client *Client) ListAllEndEntityInstance(request *ListAllEndEntityInstance
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListAllEndEntityInstanceResponse{}
 	_body, _err := client.ListAllEndEntityInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取证书日志
+//
+// @param request - ListCACertificateLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCACertificateLogResponse
+func (client *Client) ListCACertificateLogWithOptions(request *ListCACertificateLogRequest, runtime *dara.RuntimeOptions) (_result *ListCACertificateLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Identifier) {
+		query["Identifier"] = request.Identifier
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCACertificateLog"),
+		Version:     dara.String("2020-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCACertificateLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取证书日志
+//
+// @param request - ListCACertificateLogRequest
+//
+// @return ListCACertificateLogResponse
+func (client *Client) ListCACertificateLog(request *ListCACertificateLogRequest) (_result *ListCACertificateLogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCACertificateLogResponse{}
+	_body, _err := client.ListCACertificateLogWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

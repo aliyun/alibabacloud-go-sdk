@@ -13,6 +13,8 @@ type iDescribeCertificatePrivateKeyRequest interface {
 	GetEncryptedCode() *string
 	SetIdentifier(v string) *DescribeCertificatePrivateKeyRequest
 	GetIdentifier() *string
+	SetResourceGroupId(v string) *DescribeCertificatePrivateKeyRequest
+	GetResourceGroupId() *string
 }
 
 type DescribeCertificatePrivateKeyRequest struct {
@@ -35,7 +37,8 @@ type DescribeCertificatePrivateKeyRequest struct {
 	// example:
 	//
 	// bc37133bb7ed68c7938d928fd26d****
-	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	Identifier      *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeCertificatePrivateKeyRequest) String() string {
@@ -54,6 +57,10 @@ func (s *DescribeCertificatePrivateKeyRequest) GetIdentifier() *string {
 	return s.Identifier
 }
 
+func (s *DescribeCertificatePrivateKeyRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *DescribeCertificatePrivateKeyRequest) SetEncryptedCode(v string) *DescribeCertificatePrivateKeyRequest {
 	s.EncryptedCode = &v
 	return s
@@ -61,6 +68,11 @@ func (s *DescribeCertificatePrivateKeyRequest) SetEncryptedCode(v string) *Descr
 
 func (s *DescribeCertificatePrivateKeyRequest) SetIdentifier(v string) *DescribeCertificatePrivateKeyRequest {
 	s.Identifier = &v
+	return s
+}
+
+func (s *DescribeCertificatePrivateKeyRequest) SetResourceGroupId(v string) *DescribeCertificatePrivateKeyRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
