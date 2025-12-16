@@ -17,6 +17,8 @@ type iModifyNetworkRuleAttributeRequest interface {
 	GetFrontendPort() *int32
 	SetInstanceId(v string) *ModifyNetworkRuleAttributeRequest
 	GetInstanceId() *string
+	SetModule(v string) *ModifyNetworkRuleAttributeRequest
+	GetModule() *string
 }
 
 type ModifyNetworkRuleAttributeRequest struct {
@@ -98,6 +100,7 @@ type ModifyNetworkRuleAttributeRequest struct {
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Module     *string `json:"Module,omitempty" xml:"Module,omitempty"`
 }
 
 func (s ModifyNetworkRuleAttributeRequest) String() string {
@@ -124,6 +127,10 @@ func (s *ModifyNetworkRuleAttributeRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *ModifyNetworkRuleAttributeRequest) GetModule() *string {
+	return s.Module
+}
+
 func (s *ModifyNetworkRuleAttributeRequest) SetConfig(v string) *ModifyNetworkRuleAttributeRequest {
 	s.Config = &v
 	return s
@@ -141,6 +148,11 @@ func (s *ModifyNetworkRuleAttributeRequest) SetFrontendPort(v int32) *ModifyNetw
 
 func (s *ModifyNetworkRuleAttributeRequest) SetInstanceId(v string) *ModifyNetworkRuleAttributeRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyNetworkRuleAttributeRequest) SetModule(v string) *ModifyNetworkRuleAttributeRequest {
+	s.Module = &v
 	return s
 }
 

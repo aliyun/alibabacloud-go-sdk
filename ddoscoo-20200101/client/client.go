@@ -12686,6 +12686,10 @@ func (client *Client) ModifyNetworkRuleAttributeWithOptions(request *ModifyNetwo
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.Module) {
+		query["Module"] = request.Module
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
