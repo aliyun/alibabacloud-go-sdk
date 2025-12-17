@@ -388,6 +388,53 @@ func (client *Client) CreateInstanceSnapshotWithContext(ctx context.Context, Ins
 
 // Summary:
 //
+// 创建一个健康检查任务
+//
+// @param request - CreateSanityCheckTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSanityCheckTaskResponse
+func (client *Client) CreateSanityCheckTaskWithContext(ctx context.Context, CheckType *string, request *CreateSanityCheckTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSanityCheckTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSanityCheckTask"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/sanitychecks/" + dara.PercentEncode(dara.StringValue(CheckType))),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSanityCheckTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes the automatic stop policy of an instance.
 //
 // @param headers - map
@@ -1077,6 +1124,53 @@ func (client *Client) GetResourceGroupStatisticsWithContext(ctx context.Context,
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetResourceGroupStatisticsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询健康检查任务结果
+//
+// @param request - GetSanityCheckTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSanityCheckTaskResponse
+func (client *Client) GetSanityCheckTaskWithContext(ctx context.Context, CheckType *string, TaskId *string, request *GetSanityCheckTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSanityCheckTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Verbose) {
+		query["Verbose"] = request.Verbose
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSanityCheckTask"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/sanitychecks/" + dara.PercentEncode(dara.StringValue(CheckType)) + "/" + dara.PercentEncode(dara.StringValue(TaskId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSanityCheckTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
