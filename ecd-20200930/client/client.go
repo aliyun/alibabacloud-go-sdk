@@ -1350,6 +1350,14 @@ func (client *Client) AttachEndUser(request *AttachEndUserRequest) (_result *Att
 	return _result, _err
 }
 
+// Description:
+//
+//	  The cloud computers for which you want to change their policies must be in the Running state.
+//
+//		- After you call this operation, the assignment result is immediately returned. You can call the [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) operation to query the assignment of the cloud computer. The value of the `ManagementFlags` response parameter indicates the assignment of the cloud computer. A value of `ASSIGNING` indicates that the cloud computer is being assigned, and other values indicate that the cloud computer is assigned.
+//
+//		- We recommend that you check the assignment every 2 to 5 seconds and perform the checks within 50 seconds. Typically, 1 to 5 seconds are required to complete the assignment.
+//
 // @param request - BatchModifyEntitlementRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1414,6 +1422,14 @@ func (client *Client) BatchModifyEntitlementWithOptions(request *BatchModifyEnti
 	return _result, _err
 }
 
+// Description:
+//
+//	  The cloud computers for which you want to change their policies must be in the Running state.
+//
+//		- After you call this operation, the assignment result is immediately returned. You can call the [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) operation to query the assignment of the cloud computer. The value of the `ManagementFlags` response parameter indicates the assignment of the cloud computer. A value of `ASSIGNING` indicates that the cloud computer is being assigned, and other values indicate that the cloud computer is assigned.
+//
+//		- We recommend that you check the assignment every 2 to 5 seconds and perform the checks within 50 seconds. Typically, 1 to 5 seconds are required to complete the assignment.
+//
 // @param request - BatchModifyEntitlementRequest
 //
 // @return BatchModifyEntitlementResponse
@@ -11907,6 +11923,186 @@ func (client *Client) DescribeGlobalDesktopRecords(request *DescribeGlobalDeskto
 
 // Summary:
 //
+// 查询全局定时任务Batch记录
+//
+// @param request - DescribeGlobalTimerBatchesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGlobalTimerBatchesResponse
+func (client *Client) DescribeGlobalTimerBatchesWithOptions(request *DescribeGlobalTimerBatchesRequest, runtime *dara.RuntimeOptions) (_result *DescribeGlobalTimerBatchesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SearchRegionId) {
+		query["SearchRegionId"] = request.SearchRegionId
+	}
+
+	if !dara.IsNil(request.TimerType) {
+		query["TimerType"] = request.TimerType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeGlobalTimerBatches"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeGlobalTimerBatchesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询全局定时任务Batch记录
+//
+// @param request - DescribeGlobalTimerBatchesRequest
+//
+// @return DescribeGlobalTimerBatchesResponse
+func (client *Client) DescribeGlobalTimerBatches(request *DescribeGlobalTimerBatchesRequest) (_result *DescribeGlobalTimerBatchesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeGlobalTimerBatchesResponse{}
+	_body, _err := client.DescribeGlobalTimerBatchesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the execution records of scheduled tasks on cloud computers.
+//
+// @param request - DescribeGlobalTimerRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGlobalTimerRecordsResponse
+func (client *Client) DescribeGlobalTimerRecordsWithOptions(request *DescribeGlobalTimerRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeGlobalTimerRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BatchId) {
+		query["BatchId"] = request.BatchId
+	}
+
+	if !dara.IsNil(request.DesktopIds) {
+		query["DesktopIds"] = request.DesktopIds
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResultCategory) {
+		query["ResultCategory"] = request.ResultCategory
+	}
+
+	if !dara.IsNil(request.SearchRegionId) {
+		query["SearchRegionId"] = request.SearchRegionId
+	}
+
+	if !dara.IsNil(request.TimerResult) {
+		query["TimerResult"] = request.TimerResult
+	}
+
+	if !dara.IsNil(request.TimerTypes) {
+		query["TimerTypes"] = request.TimerTypes
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeGlobalTimerRecords"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeGlobalTimerRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the execution records of scheduled tasks on cloud computers.
+//
+// @param request - DescribeGlobalTimerRecordsRequest
+//
+// @return DescribeGlobalTimerRecordsResponse
+func (client *Client) DescribeGlobalTimerRecords(request *DescribeGlobalTimerRecordsRequest) (_result *DescribeGlobalTimerRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeGlobalTimerRecordsResponse{}
+	_body, _err := client.DescribeGlobalTimerRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the applications and their processes of an end user.
 //
 // @param request - DescribeGuestApplicationsRequest
@@ -21611,6 +21807,12 @@ func (client *Client) ModifySecurityGroupAttribute(request *ModifySecurityGroupA
 //
 // Modifies a custom cloud computer template.
 //
+// Description:
+//
+// *
+//
+// **Warning*	- This operation employs the full parameter update logic to maintain compatibility between the no-configuration logic and the default update logic. In other words, any unspecified parameters are treated as empty.
+//
 // @param request - ModifyTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -21737,6 +21939,12 @@ func (client *Client) ModifyTemplateWithOptions(request *ModifyTemplateRequest, 
 // Summary:
 //
 // Modifies a custom cloud computer template.
+//
+// Description:
+//
+// *
+//
+// **Warning*	- This operation employs the full parameter update logic to maintain compatibility between the no-configuration logic and the default update logic. In other words, any unspecified parameters are treated as empty.
 //
 // @param request - ModifyTemplateRequest
 //

@@ -58,47 +58,102 @@ type ModifyTemplateRequest struct {
 	AutoRenew    *bool                                `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	ChargeType   *string                              `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	DataDiskList []*ModifyTemplateRequestDataDiskList `json:"DataDiskList,omitempty" xml:"DataDiskList,omitempty" type:"Repeated"`
+	// The default language of the cloud computer during startup. This parameter takes effect only when the cloud computer is created from a system image.
+	//
+	// Valid values:
+	//
+	// 	- en-US: English.
+	//
+	// 	- zh-HK: Chinese, Traditional (Hong Kong, China).
+	//
+	// 	- zh-CN: Simplified Chinese.
+	//
+	// 	- ja-JP: Japanese.
+	//
 	// example:
 	//
 	// zh-CN
 	DefaultLanguage *string `json:"DefaultLanguage,omitempty" xml:"DefaultLanguage,omitempty"`
+	// The template description. It must meet the following criteria:
+	//
+	// 	- It can be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	//
+	// 	- It can contain letters, digits, and special characters, including spaces. Note: You can use carriage returns to break lines.
+	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the cloud computer image. You can query image IDs on the Images page. System images and custom images are supported.
+	//
 	// example:
 	//
 	// m-gx2x1dhsmusr2****
 	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	Period     *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The ID of the policy group.
+	//
 	// example:
 	//
 	// pg-gx2x1dhsmthe9****
-	PolicyGroupId       *string                                  `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	PostPaidAfterUsedUp *bool                                    `json:"PostPaidAfterUsedUp,omitempty" xml:"PostPaidAfterUsedUp,omitempty"`
-	RegionConfigList    []*ModifyTemplateRequestRegionConfigList `json:"RegionConfigList,omitempty" xml:"RegionConfigList,omitempty" type:"Repeated"`
+	PolicyGroupId       *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	PostPaidAfterUsedUp *bool   `json:"PostPaidAfterUsedUp,omitempty" xml:"PostPaidAfterUsedUp,omitempty"`
+	// The regions by which you can search for cloud computer templates. When this parameter takes effect, cloud computer templates are matched based on the specified regions.
+	//
+	// >  You can specify up to 20 regions.
+	RegionConfigList []*ModifyTemplateRequestRegionConfigList `json:"RegionConfigList,omitempty" xml:"RegionConfigList,omitempty" type:"Repeated"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-a5fqjjqaejt***
-	ResourceGroupId *string                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags added to cloud computers. Specify tags in key-value pairs. You can specify up to 20 tags.
 	ResourceTagList []*ModifyTemplateRequestResourceTagList `json:"ResourceTagList,omitempty" xml:"ResourceTagList,omitempty" type:"Repeated"`
 	SiteConfigList  []*ModifyTemplateRequestSiteConfigList  `json:"SiteConfigList,omitempty" xml:"SiteConfigList,omitempty" type:"Repeated"`
+	// The performance level (PL) of the system disk.
+	//
+	// >  Only cloud computers of the Graphics or High Frequency type support Enterprise SSDs (ESSDs).
+	//
+	// Valid values:
+	//
+	// 	- PL1: a PL1 ESSD.
+	//
+	// 	- PL0: a PL0 ESSD.
+	//
+	// 	- AutoPL: an AutoPL ESSD.
+	//
 	// example:
 	//
 	// AutoPL
 	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
+	// The size of the system disk. Unit: GiB. Valid values: 40 to 500. Increments: 10 GiB.
+	//
+	// >  The system disk size must be at least as large as the configured image size.
+	//
 	// example:
 	//
 	// 80
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// b-0caoeogs88y*****
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template name. It must meet the following criteria:
+	//
+	// 	- It can be 2 to 126 characters in length.
+	//
+	// 	- It must begin with a letter and cannot start with `http://` or `https://`.
+	//
+	// 	- It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Note: Periods (.) are not supported in the name.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The ID of the scheduled task group.
+	//
 	// example:
 	//
 	// bcc-dweha*****
@@ -354,7 +409,7 @@ type ModifyTemplateRequestDataDiskList struct {
 	//
 	// 	- AutoPL: an AutoPL ESSD
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The size of the data disk. Unit: GiB. Valid range: 40 to 2040 GiB with an increment of 10 GiB.
+	// The size of the data disk. Unit: GiB.Valid range: 40 to 2040 GiB with an increment of 10 GiB.
 	//
 	// example:
 	//
@@ -393,30 +448,50 @@ func (s *ModifyTemplateRequestDataDiskList) Validate() error {
 }
 
 type ModifyTemplateRequestRegionConfigList struct {
+	// The office network ID.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-709****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the cloud computer type.
+	//
 	// example:
 	//
 	// eds.enterprise_office.8c16g
 	ResourceInstanceType *string `json:"ResourceInstanceType,omitempty" xml:"ResourceInstanceType,omitempty"`
+	// The ID of the automatic snapshot policy.
+	//
 	// example:
 	//
 	// sp-35fvn8m2*****
 	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
+	// The subnet ID.
+	//
 	// example:
 	//
 	// vsw-adjrehad1****
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// Specifies whether to enable disk encryption.
+	//
+	// Valid values:
+	//
+	// 	- false (default): disables disk encryption.
+	//
+	// 	- true: enables disk encryption.
+	//
 	// example:
 	//
 	// false
 	VolumeEncryptionEnable *bool `json:"VolumeEncryptionEnable,omitempty" xml:"VolumeEncryptionEnable,omitempty"`
+	// The ID of the Key Management Service (KMS) key that you want to use to encrypt disks.
+	//
 	// example:
 	//
 	// a7b3c0c8-b3a2-4876-b1cc-116dddc9****
@@ -499,10 +574,14 @@ func (s *ModifyTemplateRequestRegionConfigList) Validate() error {
 }
 
 type ModifyTemplateRequestResourceTagList struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// department
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// design

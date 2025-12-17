@@ -26,27 +26,44 @@ type iBatchModifyEntitlementRequest interface {
 }
 
 type BatchModifyEntitlementRequest struct {
+	// The IDs of the cloud computers for which you want to modify end users.
+	//
 	// This parameter is required.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
+	// The IDs of the users.
 	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	// The number of cloud computers allocated to each user.
+	//
 	// example:
 	//
 	// 0
 	MaxDesktopPerUser *int32 `json:"MaxDesktopPerUser,omitempty" xml:"MaxDesktopPerUser,omitempty"`
+	// The number of users assigned to each cloud computer.
+	//
 	// example:
 	//
 	// 1
 	MaxUserPerDesktop *int32 `json:"MaxUserPerDesktop,omitempty" xml:"MaxUserPerDesktop,omitempty"`
+	// Whether to preview the assign results instead of actually assigning cloud computers.
+	//
 	// example:
 	//
 	// true
 	Preview *bool `json:"Preview,omitempty" xml:"Preview,omitempty"`
+	// The ID of the region. Call the DescribeRegions operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The disproportional assignment policy. Valid values:
+	//
+	// AVERAGE: The system preferentially guarantees that each user is assigned with at least a cloud computer. If the number of selected cloud computers cannot be proportionally assigned to the selected users, ensure that each user is assigned a cloud computer.
+	//
+	// CENTRAL: The system preferentially assigns the designated number of cloud computers to each user. If the number of selected cloud computers cannot be proportionally assigned to the selected users, ensure that each user is assigned the specified number of cloud computers.
+	//
 	// example:
 	//
 	// AVERAGE

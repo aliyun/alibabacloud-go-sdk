@@ -174,7 +174,12 @@ type DescribeOfficeSitesRequest struct {
 	//
 	// REGISTERED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	//
+	// example:
+	//
+	// vpc-uf6bpyqivwl5f3pvoxxu0
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeOfficeSitesRequest) String() string {
