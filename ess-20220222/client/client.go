@@ -3370,6 +3370,64 @@ func (client *Client) DeleteAlarm(request *DeleteAlarmRequest) (_result *DeleteA
 
 // Summary:
 //
+// # DeleteDiagnoseReport
+//
+// @param request - DeleteDiagnoseReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDiagnoseReportResponse
+func (client *Client) DeleteDiagnoseReportWithOptions(request *DeleteDiagnoseReportRequest, runtime *dara.RuntimeOptions) (_result *DeleteDiagnoseReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDiagnoseReport"),
+		Version:     dara.String("2022-02-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDiagnoseReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteDiagnoseReport
+//
+// @param request - DeleteDiagnoseReportRequest
+//
+// @return DeleteDiagnoseReportResponse
+func (client *Client) DeleteDiagnoseReport(request *DeleteDiagnoseReportRequest) (_result *DeleteDiagnoseReportResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDiagnoseReportResponse{}
+	_body, _err := client.DeleteDiagnoseReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a scaling configuration of the Elastic Container Instance type. If the scaling configuration of a scaling group is in the Inactive state and the scaling group contains no elastic container instances created from the scaling configuration, you can call the DeleteEciScalingConfiguration operation to delete the scaling configuration to free up the scaling configuration quota.
 //
 // Description:

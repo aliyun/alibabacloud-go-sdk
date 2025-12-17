@@ -356,8 +356,15 @@ type ModifyEciScalingConfigurationRequest struct {
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The endpoints of Network Time Protocol (NTP) servers.
 	NtpServers []*string `json:"NtpServers,omitempty" xml:"NtpServers,omitempty" type:"Repeated"`
-	Override   *bool     `json:"Override,omitempty" xml:"Override,omitempty"`
-	OwnerId    *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies whether to override existing data. Valid Values:
+	//
+	// true false
+	//
+	// example:
+	//
+	// false
+	Override *bool  `json:"Override,omitempty" xml:"Override,omitempty"`
+	OwnerId  *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The name of the instance Resource Access Management (RAM) role. You can use the same RAM role to access elastic container instances and Elastic Compute Service (ECS) instances. For more information, see [Use an instance RAM role by calling API operations](https://help.aliyun.com/document_detail/61178.html).
 	//
 	// example:

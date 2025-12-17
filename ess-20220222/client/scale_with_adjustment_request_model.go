@@ -98,7 +98,7 @@ type ScaleWithAdjustmentRequest struct {
 	//
 	// 1
 	MinAdjustmentMagnitude *int32 `json:"MinAdjustmentMagnitude,omitempty" xml:"MinAdjustmentMagnitude,omitempty"`
-	// The overrides that allow you to adjust the scaling group of the Elastic Container Instance type during a scale-out event.
+	// The overrides that allow you to adjust the scaling group of the Elastic Container Instance (ECI) type during a scale-out event.
 	Overrides *ScaleWithAdjustmentRequestOverrides `json:"Overrides,omitempty" xml:"Overrides,omitempty" type:"Struct"`
 	OwnerId   *int64                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Whether the current scale-out task supports concurrency.
@@ -272,7 +272,7 @@ func (s *ScaleWithAdjustmentRequest) Validate() error {
 }
 
 type ScaleWithAdjustmentRequestLifecycleHookContext struct {
-	// Specifies whether to disable the Lifecycle Hook feature. Valid values:
+	// Specifies whether to disable the lifecycle hook. Valid values:
 	//
 	// 	- true
 	//
@@ -341,6 +341,8 @@ type ScaleWithAdjustmentRequestOverrides struct {
 	//
 	// 4
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The user data of the Elastic Compute Service (ECS) instance. The user data must be encoded in Base64 format. The size of raw data before Base64 encoding cannot exceed 32 KB.
+	//
 	// example:
 	//
 	// ZWNobyBoZWxsbyBlY3Mh
@@ -423,7 +425,7 @@ type ScaleWithAdjustmentRequestOverridesContainerOverrides struct {
 	//
 	// 4
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The name of container N. If you specify ContainerOverrides, you must also specify Name. ContainerOverrides takes effect only when the container name specified by Name matches that specified in the scaling configuration.
+	// The name of the container. If you specify ContainerOverrides, you must also specify Name. ContainerOverrides takes effect only when the container name specified by Name matches that specified in the scaling configuration.
 	//
 	// example:
 	//

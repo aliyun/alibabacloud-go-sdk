@@ -271,7 +271,7 @@ func (s *RemoveInstancesRequest) Validate() error {
 }
 
 type RemoveInstancesRequestLifecycleHookContext struct {
-	// Specifies whether to disable the lifecycle hook. Valid Values:
+	// Specifies whether to disable the lifecycle hook. Valid values:
 	//
 	// 	- true
 	//

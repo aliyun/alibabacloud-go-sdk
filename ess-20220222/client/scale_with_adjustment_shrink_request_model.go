@@ -98,7 +98,7 @@ type ScaleWithAdjustmentShrinkRequest struct {
 	//
 	// 1
 	MinAdjustmentMagnitude *int32 `json:"MinAdjustmentMagnitude,omitempty" xml:"MinAdjustmentMagnitude,omitempty"`
-	// The overrides that allow you to adjust the scaling group of the Elastic Container Instance type during a scale-out event.
+	// The overrides that allow you to adjust the scaling group of the Elastic Container Instance (ECI) type during a scale-out event.
 	OverridesShrink *string `json:"Overrides,omitempty" xml:"Overrides,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Whether the current scale-out task supports concurrency.
