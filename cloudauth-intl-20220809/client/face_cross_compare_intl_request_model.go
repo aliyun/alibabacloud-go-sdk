@@ -73,12 +73,7 @@ type FaceCrossCompareIntlRequest struct {
 	// example:
 	//
 	// 1234567890
-	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
-	// Base64 encoded portrait photo.
-	//
-	// example:
-	//
-	// base64
+	SceneCode          *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
 	SourceAFacePicture *string `json:"SourceAFacePicture,omitempty" xml:"SourceAFacePicture,omitempty"`
 	// Portrait image URL, accessible via HTTP or HTTPS on the public network.
 	//
@@ -86,24 +81,14 @@ type FaceCrossCompareIntlRequest struct {
 	//
 	// https://www.xxx.com/1.jpg
 	SourceAFacePictureUrl *string `json:"SourceAFacePictureUrl,omitempty" xml:"SourceAFacePictureUrl,omitempty"`
-	// Base64 encoded portrait photo.
-	//
-	// example:
-	//
-	// base64
-	SourceBFacePicture *string `json:"SourceBFacePicture,omitempty" xml:"SourceBFacePicture,omitempty"`
+	SourceBFacePicture    *string `json:"SourceBFacePicture,omitempty" xml:"SourceBFacePicture,omitempty"`
 	// Portrait image URL, accessible via HTTP or HTTPS on the public network.
 	//
 	// example:
 	//
 	// https://www.xxx.com/1.jpg
 	SourceBFacePictureUrl *string `json:"SourceBFacePictureUrl,omitempty" xml:"SourceBFacePictureUrl,omitempty"`
-	// Base64 encoded portrait photo.
-	//
-	// example:
-	//
-	// base64
-	SourceCFacePicture *string `json:"SourceCFacePicture,omitempty" xml:"SourceCFacePicture,omitempty"`
+	SourceCFacePicture    *string `json:"SourceCFacePicture,omitempty" xml:"SourceCFacePicture,omitempty"`
 	// Portrait image URL, accessible via HTTP or HTTPS on the public network.
 	//
 	// example:

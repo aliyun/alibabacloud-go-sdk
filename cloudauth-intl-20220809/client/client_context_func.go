@@ -67,6 +67,8 @@ func (client *Client) AddressCompareIntlWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Deprecated: OpenAPI AddressVerifyIntl is deprecated, please use Cloudauth-intl::2022-08-09::AddressVerifyV2Intl instead.
+//
 // Summary:
 //
 // # Address Verification
@@ -1221,6 +1223,66 @@ func (client *Client) DocOcrMaxWithContext(ctx context.Context, request *DocOcrM
 
 // Summary:
 //
+// # Console Export Records
+//
+// @param request - DownloadVerifyRecordIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DownloadVerifyRecordIntlResponse
+func (client *Client) DownloadVerifyRecordIntlWithContext(ctx context.Context, request *DownloadVerifyRecordIntlRequest, runtime *dara.RuntimeOptions) (_result *DownloadVerifyRecordIntlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.Code) {
+		query["Code"] = request.Code
+	}
+
+	if !dara.IsNil(request.DownloadMode) {
+		query["DownloadMode"] = request.DownloadMode
+	}
+
+	if !dara.IsNil(request.Param) {
+		query["Param"] = request.Param
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DownloadVerifyRecordIntl"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DownloadVerifyRecordIntlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // This topic describes how to integrate with ID Verification using only the server-side API.
 //
 // @param request - EkycVerifyRequest
@@ -1416,32 +1478,34 @@ func (client *Client) FaceCrossCompareIntlWithContext(ctx context.Context, reque
 		query["SceneCode"] = request.SceneCode
 	}
 
-	if !dara.IsNil(request.SourceAFacePicture) {
-		query["SourceAFacePicture"] = request.SourceAFacePicture
-	}
-
 	if !dara.IsNil(request.SourceAFacePictureUrl) {
 		query["SourceAFacePictureUrl"] = request.SourceAFacePictureUrl
-	}
-
-	if !dara.IsNil(request.SourceBFacePicture) {
-		query["SourceBFacePicture"] = request.SourceBFacePicture
 	}
 
 	if !dara.IsNil(request.SourceBFacePictureUrl) {
 		query["SourceBFacePictureUrl"] = request.SourceBFacePictureUrl
 	}
 
-	if !dara.IsNil(request.SourceCFacePicture) {
-		query["SourceCFacePicture"] = request.SourceCFacePicture
-	}
-
 	if !dara.IsNil(request.SourceCFacePictureUrl) {
 		query["SourceCFacePictureUrl"] = request.SourceCFacePictureUrl
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SourceAFacePicture) {
+		body["SourceAFacePicture"] = request.SourceAFacePicture
+	}
+
+	if !dara.IsNil(request.SourceBFacePicture) {
+		body["SourceBFacePicture"] = request.SourceBFacePicture
+	}
+
+	if !dara.IsNil(request.SourceCFacePicture) {
+		body["SourceCFacePicture"] = request.SourceCFacePicture
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("FaceCrossCompareIntl"),
@@ -1699,6 +1763,8 @@ func (client *Client) FaceLivenessWithContext(ctx context.Context, request *Face
 	return _result, _err
 }
 
+// Deprecated: OpenAPI FraudResultCallBack is deprecated
+//
 // Summary:
 //
 // # Anti-Fraud Callback Interface

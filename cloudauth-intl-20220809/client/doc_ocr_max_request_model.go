@@ -42,6 +42,23 @@ type iDocOcrMaxRequest interface {
 }
 
 type DocOcrMaxRequest struct {
+	// Specifies whether to enable verification with an authoritative data source to enhance document anti-spoofing capabilities.
+	//
+	// - **T**: Enable
+	//
+	// - **F**: Disable (default)
+	//
+	// >
+	//
+	// > - **Applicable document types**: Chinese resident ID cards (CHN01001) and Chinese mainland driver\\"s licenses (CHN02001).
+	//
+	// > - **Data transfer declaration**: If you enable this parameter, you agree to transfer the user\\"s name and certificate number to an authoritative data source in the Chinese mainland for consistency verification.
+	//
+	// > - **Performance impact:*	- After you enable this feature, the response time of the API operation increases by 1 to 2 seconds. Adjust the timeout setting.
+	//
+	// example:
+	//
+	// T
 	Authorize *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
 	// Page expected to be recognized
 	//
@@ -121,6 +138,12 @@ type DocOcrMaxRequest struct {
 	//
 	// 0
 	OcrModel *string `json:"OcrModel,omitempty" xml:"OcrModel,omitempty"`
+	// Specifies whether to return additional OCR fields in a standardized format:
+	//
+	// - **0**: No (default)
+	//
+	// - **1**: Yes
+	//
 	// example:
 	//
 	// 0
