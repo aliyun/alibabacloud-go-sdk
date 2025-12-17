@@ -2365,6 +2365,78 @@ func (client *Client) ListDataLakeTablebaseInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
+// # ListFileUpload
+//
+// @param request - ListFileUploadRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFileUploadResponse
+func (client *Client) ListFileUploadWithContext(ctx context.Context, request *ListFileUploadRequest, runtime *dara.RuntimeOptions) (_result *ListFileUploadResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallFrom) {
+		query["CallFrom"] = request.CallFrom
+	}
+
+	if !dara.IsNil(request.DmsUnit) {
+		query["DmsUnit"] = request.DmsUnit
+	}
+
+	if !dara.IsNil(request.FileCategory) {
+		query["FileCategory"] = request.FileCategory
+	}
+
+	if !dara.IsNil(request.FileFrom) {
+		query["FileFrom"] = request.FileFrom
+	}
+
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.SortColumn) {
+		query["SortColumn"] = request.SortColumn
+	}
+
+	if !dara.IsNil(request.SortDirection) {
+		query["SortDirection"] = request.SortDirection
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFileUpload"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListFileUploadResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # SendChatMessage
 //
 // @param tmpReq - SendChatMessageRequest
