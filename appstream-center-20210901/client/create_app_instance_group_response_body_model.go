@@ -16,7 +16,10 @@ type iCreateAppInstanceGroupResponseBody interface {
 }
 
 type CreateAppInstanceGroupResponseBody struct {
+	// The delivery group.
 	AppInstanceGroupModel *CreateAppInstanceGroupResponseBodyAppInstanceGroupModel `json:"AppInstanceGroupModel,omitempty" xml:"AppInstanceGroupModel,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -59,14 +62,20 @@ func (s *CreateAppInstanceGroupResponseBody) Validate() error {
 }
 
 type CreateAppInstanceGroupResponseBodyAppInstanceGroupModel struct {
+	// The ID of the delivery group.
+	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The ID of the resource group. This parameter is returned if a resource group was created.
+	//
 	// example:
 	//
 	// rg-ew7va2g1wl3vm****
 	NodePoolId *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 12345****

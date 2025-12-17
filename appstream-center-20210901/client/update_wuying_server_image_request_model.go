@@ -18,14 +18,20 @@ type iUpdateWuyingServerImageRequest interface {
 }
 
 type UpdateWuyingServerImageRequest struct {
+	// The image ID.
+	//
 	// example:
 	//
 	// imgc-0aae4rgk9****6e8p
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The product type. Set this parameter to WuyingServer.
+	//
 	// example:
 	//
 	// WuyingServer
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The ID of the workstation.
+	//
 	// example:
 	//
 	// ws-0bw2f11****dial

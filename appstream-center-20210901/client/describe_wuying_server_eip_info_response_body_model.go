@@ -62,6 +62,7 @@ func (s *DescribeWuyingServerEipInfoResponseBody) Validate() error {
 }
 
 type DescribeWuyingServerEipInfoResponseBodyEipInfoModel struct {
+	EipId *string `json:"EipId,omitempty" xml:"EipId,omitempty"`
 	// The public IP address.
 	//
 	// example:
@@ -90,6 +91,10 @@ func (s DescribeWuyingServerEipInfoResponseBodyEipInfoModel) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeWuyingServerEipInfoResponseBodyEipInfoModel) GetEipId() *string {
+	return s.EipId
+}
+
 func (s *DescribeWuyingServerEipInfoResponseBodyEipInfoModel) GetIpAddress() *string {
 	return s.IpAddress
 }
@@ -100,6 +105,11 @@ func (s *DescribeWuyingServerEipInfoResponseBodyEipInfoModel) GetNetworkInterfac
 
 func (s *DescribeWuyingServerEipInfoResponseBodyEipInfoModel) GetServerPortRange() *string {
 	return s.ServerPortRange
+}
+
+func (s *DescribeWuyingServerEipInfoResponseBodyEipInfoModel) SetEipId(v string) *DescribeWuyingServerEipInfoResponseBodyEipInfoModel {
+	s.EipId = &v
+	return s
 }
 
 func (s *DescribeWuyingServerEipInfoResponseBodyEipInfoModel) SetIpAddress(v string) *DescribeWuyingServerEipInfoResponseBodyEipInfoModel {
