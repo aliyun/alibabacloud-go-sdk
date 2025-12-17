@@ -70,6 +70,10 @@ type GetQueueResponseBodyQueue struct {
 	AllocationStrategy *string `json:"AllocationStrategy,omitempty" xml:"AllocationStrategy,omitempty"`
 	// The hardware configurations of the compute nodes in the queue.
 	ComputeNodes []*NodeTemplate `json:"ComputeNodes,omitempty" xml:"ComputeNodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2025-01-01T12:05:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Indicates whether auto scale-in is enabled for the queue. Valid values:
 	//
 	// 	- true
@@ -158,6 +162,10 @@ type GetQueueResponseBodyQueue struct {
 	//
 	// rnp-756vlp7a
 	ReservedNodePoolId *string `json:"ReservedNodePoolId,omitempty" xml:"ReservedNodePoolId,omitempty"`
+	// example:
+	//
+	// 2025-01-01T12:05:00Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The available vSwitches for compute nodes in the queue. Valid values of N: 1 to 5.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
@@ -176,6 +184,10 @@ func (s *GetQueueResponseBodyQueue) GetAllocationStrategy() *string {
 
 func (s *GetQueueResponseBodyQueue) GetComputeNodes() []*NodeTemplate {
 	return s.ComputeNodes
+}
+
+func (s *GetQueueResponseBodyQueue) GetCreateTime() *string {
+	return s.CreateTime
 }
 
 func (s *GetQueueResponseBodyQueue) GetEnableScaleIn() *bool {
@@ -230,6 +242,10 @@ func (s *GetQueueResponseBodyQueue) GetReservedNodePoolId() *string {
 	return s.ReservedNodePoolId
 }
 
+func (s *GetQueueResponseBodyQueue) GetUpdateTime() *string {
+	return s.UpdateTime
+}
+
 func (s *GetQueueResponseBodyQueue) GetVSwitchIds() []*string {
 	return s.VSwitchIds
 }
@@ -241,6 +257,11 @@ func (s *GetQueueResponseBodyQueue) SetAllocationStrategy(v string) *GetQueueRes
 
 func (s *GetQueueResponseBodyQueue) SetComputeNodes(v []*NodeTemplate) *GetQueueResponseBodyQueue {
 	s.ComputeNodes = v
+	return s
+}
+
+func (s *GetQueueResponseBodyQueue) SetCreateTime(v string) *GetQueueResponseBodyQueue {
+	s.CreateTime = &v
 	return s
 }
 
@@ -306,6 +327,11 @@ func (s *GetQueueResponseBodyQueue) SetRamRole(v string) *GetQueueResponseBodyQu
 
 func (s *GetQueueResponseBodyQueue) SetReservedNodePoolId(v string) *GetQueueResponseBodyQueue {
 	s.ReservedNodePoolId = &v
+	return s
+}
+
+func (s *GetQueueResponseBodyQueue) SetUpdateTime(v string) *GetQueueResponseBodyQueue {
+	s.UpdateTime = &v
 	return s
 }
 
