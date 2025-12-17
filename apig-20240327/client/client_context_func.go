@@ -5140,6 +5140,85 @@ func (client *Client) UpdatePolicyWithContext(ctx context.Context, policyId *str
 
 // Summary:
 //
+// 更新服务
+//
+// @param request - UpdateServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceResponse
+func (client *Client) UpdateServiceWithContext(ctx context.Context, serviceId *string, request *UpdateServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Addresses) {
+		body["addresses"] = request.Addresses
+	}
+
+	if !dara.IsNil(request.AgentServiceConfig) {
+		body["agentServiceConfig"] = request.AgentServiceConfig
+	}
+
+	if !dara.IsNil(request.AiServiceConfig) {
+		body["aiServiceConfig"] = request.AiServiceConfig
+	}
+
+	if !dara.IsNil(request.DnsServers) {
+		body["dnsServers"] = request.DnsServers
+	}
+
+	if !dara.IsNil(request.HealthCheckConfig) {
+		body["healthCheckConfig"] = request.HealthCheckConfig
+	}
+
+	if !dara.IsNil(request.HealthyPanicThreshold) {
+		body["healthyPanicThreshold"] = request.HealthyPanicThreshold
+	}
+
+	if !dara.IsNil(request.OutlierDetectionConfig) {
+		body["outlierDetectionConfig"] = request.OutlierDetectionConfig
+	}
+
+	if !dara.IsNil(request.Ports) {
+		body["ports"] = request.Ports
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		body["protocol"] = request.Protocol
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateService"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/services/" + dara.PercentEncode(dara.StringValue(serviceId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateServiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates a service version.
 //
 // @param request - UpdateServiceVersionRequest
