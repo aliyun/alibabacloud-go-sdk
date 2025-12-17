@@ -15,6 +15,8 @@ type iUpdateModelProxyInput interface {
 	GetCredentialName() *string
 	SetDescription(v string) *UpdateModelProxyInput
 	GetDescription() *string
+	SetExecutionRoleArn(v string) *UpdateModelProxyInput
+	GetExecutionRoleArn() *string
 	SetLogConfiguration(v *LogConfiguration) *UpdateModelProxyInput
 	GetLogConfiguration() *LogConfiguration
 	SetNetworkConfiguration(v *NetworkConfiguration) *UpdateModelProxyInput
@@ -27,6 +29,7 @@ type UpdateModelProxyInput struct {
 	ArmsConfiguration    *ArmsConfiguration    `json:"armsConfiguration,omitempty" xml:"armsConfiguration,omitempty"`
 	CredentialName       *string               `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
 	Description          *string               `json:"description,omitempty" xml:"description,omitempty"`
+	ExecutionRoleArn     *string               `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
 	LogConfiguration     *LogConfiguration     `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
 	ProxyConfig          *ProxyConfig          `json:"proxyConfig,omitempty" xml:"proxyConfig,omitempty"`
@@ -50,6 +53,10 @@ func (s *UpdateModelProxyInput) GetCredentialName() *string {
 
 func (s *UpdateModelProxyInput) GetDescription() *string {
 	return s.Description
+}
+
+func (s *UpdateModelProxyInput) GetExecutionRoleArn() *string {
+	return s.ExecutionRoleArn
 }
 
 func (s *UpdateModelProxyInput) GetLogConfiguration() *LogConfiguration {
@@ -76,6 +83,11 @@ func (s *UpdateModelProxyInput) SetCredentialName(v string) *UpdateModelProxyInp
 
 func (s *UpdateModelProxyInput) SetDescription(v string) *UpdateModelProxyInput {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateModelProxyInput) SetExecutionRoleArn(v string) *UpdateModelProxyInput {
+	s.ExecutionRoleArn = &v
 	return s
 }
 

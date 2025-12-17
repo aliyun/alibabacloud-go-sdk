@@ -120,11 +120,13 @@ func (s *ProxyConfigEndpoints) Validate() error {
 }
 
 type ProxyConfigPolicies struct {
-	Cache            *bool                           `json:"cache,omitempty" xml:"cache,omitempty"`
-	ConcurrencyLimit *int32                          `json:"concurrencyLimit,omitempty" xml:"concurrencyLimit,omitempty"`
-	Fallbacks        []*ProxyConfigPoliciesFallbacks `json:"fallbacks,omitempty" xml:"fallbacks,omitempty" type:"Repeated"`
-	NumRetries       *int32                          `json:"numRetries,omitempty" xml:"numRetries,omitempty"`
-	RequestTimeout   *int32                          `json:"requestTimeout,omitempty" xml:"requestTimeout,omitempty"`
+	AiGuardrailConfig *ProxyConfigPoliciesAiGuardrailConfig `json:"aiGuardrailConfig,omitempty" xml:"aiGuardrailConfig,omitempty" type:"Struct"`
+	Cache             *bool                                 `json:"cache,omitempty" xml:"cache,omitempty"`
+	ConcurrencyLimit  *int32                                `json:"concurrencyLimit,omitempty" xml:"concurrencyLimit,omitempty"`
+	Fallbacks         []*ProxyConfigPoliciesFallbacks       `json:"fallbacks,omitempty" xml:"fallbacks,omitempty" type:"Repeated"`
+	NumRetries        *int32                                `json:"numRetries,omitempty" xml:"numRetries,omitempty"`
+	RequestTimeout    *int32                                `json:"requestTimeout,omitempty" xml:"requestTimeout,omitempty"`
+	TokenRateLimiter  *ProxyConfigPoliciesTokenRateLimiter  `json:"tokenRateLimiter,omitempty" xml:"tokenRateLimiter,omitempty" type:"Struct"`
 }
 
 func (s ProxyConfigPolicies) String() string {
@@ -133,6 +135,10 @@ func (s ProxyConfigPolicies) String() string {
 
 func (s ProxyConfigPolicies) GoString() string {
 	return s.String()
+}
+
+func (s *ProxyConfigPolicies) GetAiGuardrailConfig() *ProxyConfigPoliciesAiGuardrailConfig {
+	return s.AiGuardrailConfig
 }
 
 func (s *ProxyConfigPolicies) GetCache() *bool {
@@ -153,6 +159,15 @@ func (s *ProxyConfigPolicies) GetNumRetries() *int32 {
 
 func (s *ProxyConfigPolicies) GetRequestTimeout() *int32 {
 	return s.RequestTimeout
+}
+
+func (s *ProxyConfigPolicies) GetTokenRateLimiter() *ProxyConfigPoliciesTokenRateLimiter {
+	return s.TokenRateLimiter
+}
+
+func (s *ProxyConfigPolicies) SetAiGuardrailConfig(v *ProxyConfigPoliciesAiGuardrailConfig) *ProxyConfigPolicies {
+	s.AiGuardrailConfig = v
+	return s
 }
 
 func (s *ProxyConfigPolicies) SetCache(v bool) *ProxyConfigPolicies {
@@ -180,7 +195,17 @@ func (s *ProxyConfigPolicies) SetRequestTimeout(v int32) *ProxyConfigPolicies {
 	return s
 }
 
+func (s *ProxyConfigPolicies) SetTokenRateLimiter(v *ProxyConfigPoliciesTokenRateLimiter) *ProxyConfigPolicies {
+	s.TokenRateLimiter = v
+	return s
+}
+
 func (s *ProxyConfigPolicies) Validate() error {
+	if s.AiGuardrailConfig != nil {
+		if err := s.AiGuardrailConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Fallbacks != nil {
 		for _, item := range s.Fallbacks {
 			if item != nil {
@@ -190,7 +215,117 @@ func (s *ProxyConfigPolicies) Validate() error {
 			}
 		}
 	}
+	if s.TokenRateLimiter != nil {
+		if err := s.TokenRateLimiter.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
+}
+
+type ProxyConfigPoliciesAiGuardrailConfig struct {
+	BlockOnContentModeration  *bool   `json:"blockOnContentModeration,omitempty" xml:"blockOnContentModeration,omitempty"`
+	BlockOnMaliciousUrl       *bool   `json:"blockOnMaliciousUrl,omitempty" xml:"blockOnMaliciousUrl,omitempty"`
+	BlockOnModelHallucination *bool   `json:"blockOnModelHallucination,omitempty" xml:"blockOnModelHallucination,omitempty"`
+	BlockOnPromptAttack       *bool   `json:"blockOnPromptAttack,omitempty" xml:"blockOnPromptAttack,omitempty"`
+	BlockOnSensitiveData      *bool   `json:"blockOnSensitiveData,omitempty" xml:"blockOnSensitiveData,omitempty"`
+	CheckRequest              *bool   `json:"checkRequest,omitempty" xml:"checkRequest,omitempty"`
+	CheckResponse             *bool   `json:"checkResponse,omitempty" xml:"checkResponse,omitempty"`
+	Level                     *string `json:"level,omitempty" xml:"level,omitempty"`
+	MaxTextLength             *int32  `json:"maxTextLength,omitempty" xml:"maxTextLength,omitempty"`
+}
+
+func (s ProxyConfigPoliciesAiGuardrailConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ProxyConfigPoliciesAiGuardrailConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) GetBlockOnContentModeration() *bool {
+	return s.BlockOnContentModeration
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) GetBlockOnMaliciousUrl() *bool {
+	return s.BlockOnMaliciousUrl
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) GetBlockOnModelHallucination() *bool {
+	return s.BlockOnModelHallucination
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) GetBlockOnPromptAttack() *bool {
+	return s.BlockOnPromptAttack
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) GetBlockOnSensitiveData() *bool {
+	return s.BlockOnSensitiveData
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) GetCheckRequest() *bool {
+	return s.CheckRequest
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) GetCheckResponse() *bool {
+	return s.CheckResponse
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) GetLevel() *string {
+	return s.Level
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) GetMaxTextLength() *int32 {
+	return s.MaxTextLength
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) SetBlockOnContentModeration(v bool) *ProxyConfigPoliciesAiGuardrailConfig {
+	s.BlockOnContentModeration = &v
+	return s
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) SetBlockOnMaliciousUrl(v bool) *ProxyConfigPoliciesAiGuardrailConfig {
+	s.BlockOnMaliciousUrl = &v
+	return s
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) SetBlockOnModelHallucination(v bool) *ProxyConfigPoliciesAiGuardrailConfig {
+	s.BlockOnModelHallucination = &v
+	return s
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) SetBlockOnPromptAttack(v bool) *ProxyConfigPoliciesAiGuardrailConfig {
+	s.BlockOnPromptAttack = &v
+	return s
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) SetBlockOnSensitiveData(v bool) *ProxyConfigPoliciesAiGuardrailConfig {
+	s.BlockOnSensitiveData = &v
+	return s
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) SetCheckRequest(v bool) *ProxyConfigPoliciesAiGuardrailConfig {
+	s.CheckRequest = &v
+	return s
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) SetCheckResponse(v bool) *ProxyConfigPoliciesAiGuardrailConfig {
+	s.CheckResponse = &v
+	return s
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) SetLevel(v string) *ProxyConfigPoliciesAiGuardrailConfig {
+	s.Level = &v
+	return s
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) SetMaxTextLength(v int32) *ProxyConfigPoliciesAiGuardrailConfig {
+	s.MaxTextLength = &v
+	return s
+}
+
+func (s *ProxyConfigPoliciesAiGuardrailConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type ProxyConfigPoliciesFallbacks struct {
@@ -225,5 +360,60 @@ func (s *ProxyConfigPoliciesFallbacks) SetModelServiceName(v string) *ProxyConfi
 }
 
 func (s *ProxyConfigPoliciesFallbacks) Validate() error {
+	return dara.Validate(s)
+}
+
+type ProxyConfigPoliciesTokenRateLimiter struct {
+	Tpd *int32 `json:"tpd,omitempty" xml:"tpd,omitempty"`
+	Tph *int32 `json:"tph,omitempty" xml:"tph,omitempty"`
+	Tpm *int32 `json:"tpm,omitempty" xml:"tpm,omitempty"`
+	Tps *int32 `json:"tps,omitempty" xml:"tps,omitempty"`
+}
+
+func (s ProxyConfigPoliciesTokenRateLimiter) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ProxyConfigPoliciesTokenRateLimiter) GoString() string {
+	return s.String()
+}
+
+func (s *ProxyConfigPoliciesTokenRateLimiter) GetTpd() *int32 {
+	return s.Tpd
+}
+
+func (s *ProxyConfigPoliciesTokenRateLimiter) GetTph() *int32 {
+	return s.Tph
+}
+
+func (s *ProxyConfigPoliciesTokenRateLimiter) GetTpm() *int32 {
+	return s.Tpm
+}
+
+func (s *ProxyConfigPoliciesTokenRateLimiter) GetTps() *int32 {
+	return s.Tps
+}
+
+func (s *ProxyConfigPoliciesTokenRateLimiter) SetTpd(v int32) *ProxyConfigPoliciesTokenRateLimiter {
+	s.Tpd = &v
+	return s
+}
+
+func (s *ProxyConfigPoliciesTokenRateLimiter) SetTph(v int32) *ProxyConfigPoliciesTokenRateLimiter {
+	s.Tph = &v
+	return s
+}
+
+func (s *ProxyConfigPoliciesTokenRateLimiter) SetTpm(v int32) *ProxyConfigPoliciesTokenRateLimiter {
+	s.Tpm = &v
+	return s
+}
+
+func (s *ProxyConfigPoliciesTokenRateLimiter) SetTps(v int32) *ProxyConfigPoliciesTokenRateLimiter {
+	s.Tps = &v
+	return s
+}
+
+func (s *ProxyConfigPoliciesTokenRateLimiter) Validate() error {
 	return dara.Validate(s)
 }

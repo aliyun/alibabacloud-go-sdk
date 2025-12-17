@@ -17,6 +17,8 @@ type iCreateModelProxyInput interface {
 	GetCredentialName() *string
 	SetDescription(v string) *CreateModelProxyInput
 	GetDescription() *string
+	SetExecutionRoleArn(v string) *CreateModelProxyInput
+	GetExecutionRoleArn() *string
 	SetLitellmVersion(v string) *CreateModelProxyInput
 	GetLitellmVersion() *string
 	SetLogConfiguration(v *LogConfiguration) *CreateModelProxyInput
@@ -43,6 +45,7 @@ type CreateModelProxyInput struct {
 	Cpu              *float32          `json:"cpu,omitempty" xml:"cpu,omitempty"`
 	CredentialName   *string           `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
 	Description      *string           `json:"description,omitempty" xml:"description,omitempty"`
+	ExecutionRoleArn *string           `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
 	LitellmVersion   *string           `json:"litellmVersion,omitempty" xml:"litellmVersion,omitempty"`
 	LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
 	// This parameter is required.
@@ -80,6 +83,10 @@ func (s *CreateModelProxyInput) GetCredentialName() *string {
 
 func (s *CreateModelProxyInput) GetDescription() *string {
 	return s.Description
+}
+
+func (s *CreateModelProxyInput) GetExecutionRoleArn() *string {
+	return s.ExecutionRoleArn
 }
 
 func (s *CreateModelProxyInput) GetLitellmVersion() *string {
@@ -135,6 +142,11 @@ func (s *CreateModelProxyInput) SetCredentialName(v string) *CreateModelProxyInp
 
 func (s *CreateModelProxyInput) SetDescription(v string) *CreateModelProxyInput {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateModelProxyInput) SetExecutionRoleArn(v string) *CreateModelProxyInput {
+	s.ExecutionRoleArn = &v
 	return s
 }
 

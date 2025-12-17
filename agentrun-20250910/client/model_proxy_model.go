@@ -19,6 +19,8 @@ type iModelProxy interface {
 	GetDescription() *string
 	SetEndpoint(v string) *ModelProxy
 	GetEndpoint() *string
+	SetExecutionRoleArn(v string) *ModelProxy
+	GetExecutionRoleArn() *string
 	SetFunctionName(v string) *ModelProxy
 	GetFunctionName() *string
 	SetLastUpdatedAt(v string) *ModelProxy
@@ -55,6 +57,7 @@ type ModelProxy struct {
 	CredentialName       *string               `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
 	Description          *string               `json:"description,omitempty" xml:"description,omitempty"`
 	Endpoint             *string               `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	ExecutionRoleArn     *string               `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
 	FunctionName         *string               `json:"functionName,omitempty" xml:"functionName,omitempty"`
 	LastUpdatedAt        *string               `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
 	LitellmVersion       *string               `json:"litellmVersion,omitempty" xml:"litellmVersion,omitempty"`
@@ -97,6 +100,10 @@ func (s *ModelProxy) GetDescription() *string {
 
 func (s *ModelProxy) GetEndpoint() *string {
 	return s.Endpoint
+}
+
+func (s *ModelProxy) GetExecutionRoleArn() *string {
+	return s.ExecutionRoleArn
 }
 
 func (s *ModelProxy) GetFunctionName() *string {
@@ -177,6 +184,11 @@ func (s *ModelProxy) SetDescription(v string) *ModelProxy {
 
 func (s *ModelProxy) SetEndpoint(v string) *ModelProxy {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *ModelProxy) SetExecutionRoleArn(v string) *ModelProxy {
+	s.ExecutionRoleArn = &v
 	return s
 }
 
