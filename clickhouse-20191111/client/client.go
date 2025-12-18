@@ -1463,6 +1463,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		query["SourceDBClusterId"] = request.SourceDBClusterId
 	}
 
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
 	if !dara.IsNil(request.UsedTime) {
 		query["UsedTime"] = request.UsedTime
 	}

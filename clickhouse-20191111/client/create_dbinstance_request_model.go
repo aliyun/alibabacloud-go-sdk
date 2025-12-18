@@ -53,6 +53,8 @@ type iCreateDBInstanceRequest interface {
 	GetResourceOwnerId() *int64
 	SetSourceDBClusterId(v string) *CreateDBInstanceRequest
 	GetSourceDBClusterId() *string
+	SetTags(v []*CreateDBInstanceRequestTags) *CreateDBInstanceRequest
+	GetTags() []*CreateDBInstanceRequestTags
 	SetUsedTime(v string) *CreateDBInstanceRequest
 	GetUsedTime() *string
 	SetVPCId(v string) *CreateDBInstanceRequest
@@ -269,7 +271,8 @@ type CreateDBInstanceRequest struct {
 	// example:
 	//
 	// cc-bp1lxbo89u950****
-	SourceDBClusterId *string `json:"SourceDBClusterId,omitempty" xml:"SourceDBClusterId,omitempty"`
+	SourceDBClusterId *string                        `json:"SourceDBClusterId,omitempty" xml:"SourceDBClusterId,omitempty"`
+	Tags              []*CreateDBInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The subscription duration of the subscription cluster.
 	//
 	// >  This parameter is required only when PayType is set to Prepaid.
@@ -426,6 +429,10 @@ func (s *CreateDBInstanceRequest) GetSourceDBClusterId() *string {
 	return s.SourceDBClusterId
 }
 
+func (s *CreateDBInstanceRequest) GetTags() []*CreateDBInstanceRequestTags {
+	return s.Tags
+}
+
 func (s *CreateDBInstanceRequest) GetUsedTime() *string {
 	return s.UsedTime
 }
@@ -568,6 +575,11 @@ func (s *CreateDBInstanceRequest) SetSourceDBClusterId(v string) *CreateDBInstan
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetTags(v []*CreateDBInstanceRequestTags) *CreateDBInstanceRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetUsedTime(v string) *CreateDBInstanceRequest {
 	s.UsedTime = &v
 	return s
@@ -609,5 +621,55 @@ func (s *CreateDBInstanceRequest) SetZoneIdBak(v string) *CreateDBInstanceReques
 }
 
 func (s *CreateDBInstanceRequest) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateDBInstanceRequestTags struct {
+	// example:
+	//
+	// user123
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// 示例字符串
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateDBInstanceRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDBInstanceRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBInstanceRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateDBInstanceRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateDBInstanceRequestTags) SetKey(v string) *CreateDBInstanceRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequestTags) SetValue(v string) *CreateDBInstanceRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequestTags) Validate() error {
 	return dara.Validate(s)
 }

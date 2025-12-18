@@ -1108,6 +1108,10 @@ func (client *Client) CreateDBInstanceWithContext(ctx context.Context, request *
 		query["SourceDBClusterId"] = request.SourceDBClusterId
 	}
 
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
 	if !dara.IsNil(request.UsedTime) {
 		query["UsedTime"] = request.UsedTime
 	}
