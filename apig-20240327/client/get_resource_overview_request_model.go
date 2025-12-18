@@ -14,6 +14,9 @@ type iGetResourceOverviewRequest interface {
 }
 
 type GetResourceOverviewRequest struct {
+	// example:
+	//
+	// AI
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
 }
 

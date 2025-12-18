@@ -99,7 +99,8 @@ type GetResourceOverviewResponseBodyData struct {
 	// API information.
 	Api *GetResourceOverviewResponseBodyDataApi `json:"api,omitempty" xml:"api,omitempty" type:"Struct"`
 	// Gateway information.
-	Gateway *GetResourceOverviewResponseBodyDataGateway `json:"gateway,omitempty" xml:"gateway,omitempty" type:"Struct"`
+	Gateway      *GetResourceOverviewResponseBodyDataGateway        `json:"gateway,omitempty" xml:"gateway,omitempty" type:"Struct"`
+	RiskOverview []*GetResourceOverviewResponseBodyDataRiskOverview `json:"riskOverview,omitempty" xml:"riskOverview,omitempty" type:"Repeated"`
 }
 
 func (s GetResourceOverviewResponseBodyData) String() string {
@@ -118,6 +119,10 @@ func (s *GetResourceOverviewResponseBodyData) GetGateway() *GetResourceOverviewR
 	return s.Gateway
 }
 
+func (s *GetResourceOverviewResponseBodyData) GetRiskOverview() []*GetResourceOverviewResponseBodyDataRiskOverview {
+	return s.RiskOverview
+}
+
 func (s *GetResourceOverviewResponseBodyData) SetApi(v *GetResourceOverviewResponseBodyDataApi) *GetResourceOverviewResponseBodyData {
 	s.Api = v
 	return s
@@ -125,6 +130,11 @@ func (s *GetResourceOverviewResponseBodyData) SetApi(v *GetResourceOverviewRespo
 
 func (s *GetResourceOverviewResponseBodyData) SetGateway(v *GetResourceOverviewResponseBodyDataGateway) *GetResourceOverviewResponseBodyData {
 	s.Gateway = v
+	return s
+}
+
+func (s *GetResourceOverviewResponseBodyData) SetRiskOverview(v []*GetResourceOverviewResponseBodyDataRiskOverview) *GetResourceOverviewResponseBodyData {
+	s.RiskOverview = v
 	return s
 }
 
@@ -137,6 +147,15 @@ func (s *GetResourceOverviewResponseBodyData) Validate() error {
 	if s.Gateway != nil {
 		if err := s.Gateway.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.RiskOverview != nil {
+		for _, item := range s.RiskOverview {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil
@@ -229,5 +248,142 @@ func (s *GetResourceOverviewResponseBodyDataGateway) SetTotalCount(v int64) *Get
 }
 
 func (s *GetResourceOverviewResponseBodyDataGateway) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetResourceOverviewResponseBodyDataRiskOverview struct {
+	// example:
+	//
+	// 1
+	Count       *string                                                       `json:"count,omitempty" xml:"count,omitempty"`
+	RiskDetails []*GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails `json:"riskDetails,omitempty" xml:"riskDetails,omitempty" type:"Repeated"`
+	// example:
+	//
+	// LOW
+	RiskLevel *string `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
+}
+
+func (s GetResourceOverviewResponseBodyDataRiskOverview) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetResourceOverviewResponseBodyDataRiskOverview) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceOverviewResponseBodyDataRiskOverview) GetCount() *string {
+	return s.Count
+}
+
+func (s *GetResourceOverviewResponseBodyDataRiskOverview) GetRiskDetails() []*GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails {
+	return s.RiskDetails
+}
+
+func (s *GetResourceOverviewResponseBodyDataRiskOverview) GetRiskLevel() *string {
+	return s.RiskLevel
+}
+
+func (s *GetResourceOverviewResponseBodyDataRiskOverview) SetCount(v string) *GetResourceOverviewResponseBodyDataRiskOverview {
+	s.Count = &v
+	return s
+}
+
+func (s *GetResourceOverviewResponseBodyDataRiskOverview) SetRiskDetails(v []*GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails) *GetResourceOverviewResponseBodyDataRiskOverview {
+	s.RiskDetails = v
+	return s
+}
+
+func (s *GetResourceOverviewResponseBodyDataRiskOverview) SetRiskLevel(v string) *GetResourceOverviewResponseBodyDataRiskOverview {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *GetResourceOverviewResponseBodyDataRiskOverview) Validate() error {
+	if s.RiskDetails != nil {
+		for _, item := range s.RiskDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails struct {
+	// example:
+	//
+	// gw-xxxxxx
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// example:
+	//
+	// test-gateway
+	GatewayName *string `json:"gatewayName,omitempty" xml:"gatewayName,omitempty"`
+	// example:
+	//
+	// LOW
+	RiskLevel *string   `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
+	RiskNames []*string `json:"riskNames,omitempty" xml:"riskNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	Score *string `json:"score,omitempty" xml:"score,omitempty"`
+}
+
+func (s GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails) GetGatewayId() *string {
+	return s.GatewayId
+}
+
+func (s *GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails) GetGatewayName() *string {
+	return s.GatewayName
+}
+
+func (s *GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails) GetRiskLevel() *string {
+	return s.RiskLevel
+}
+
+func (s *GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails) GetRiskNames() []*string {
+	return s.RiskNames
+}
+
+func (s *GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails) GetScore() *string {
+	return s.Score
+}
+
+func (s *GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails) SetGatewayId(v string) *GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails) SetGatewayName(v string) *GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails {
+	s.GatewayName = &v
+	return s
+}
+
+func (s *GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails) SetRiskLevel(v string) *GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails) SetRiskNames(v []*string) *GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails {
+	s.RiskNames = v
+	return s
+}
+
+func (s *GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails) SetScore(v string) *GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails {
+	s.Score = &v
+	return s
+}
+
+func (s *GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails) Validate() error {
 	return dara.Validate(s)
 }
