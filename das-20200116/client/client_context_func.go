@@ -4989,6 +4989,108 @@ func (client *Client) GetHDMLastAliyunResourceSyncResultWithContext(ctx context.
 
 // Summary:
 //
+// 获取实例组日报详情
+//
+// @param request - GetInstanceGroupInspectReportDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceGroupInspectReportDetailResponse
+func (client *Client) GetInstanceGroupInspectReportDetailWithContext(ctx context.Context, request *GetInstanceGroupInspectReportDetailRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceGroupInspectReportDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ReportId) {
+		body["ReportId"] = request.ReportId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceGroupInspectReportDetail"),
+		Version:     dara.String("2020-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstanceGroupInspectReportDetailResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例组的报告信息
+//
+// @param request - GetInstanceGroupInspectReportListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceGroupInspectReportListResponse
+func (client *Client) GetInstanceGroupInspectReportListWithContext(ctx context.Context, request *GetInstanceGroupInspectReportListRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceGroupInspectReportListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceGroupInspectReportList"),
+		Version:     dara.String("2020-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstanceGroupInspectReportListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the result of an inspection that is performed on a database instance by using the inspection and scoring feature.
 //
 // Description:
