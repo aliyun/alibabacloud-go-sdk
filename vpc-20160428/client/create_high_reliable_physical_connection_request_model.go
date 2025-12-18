@@ -354,7 +354,8 @@ type CreateHighReliablePhysicalConnectionRequestApList struct {
 	// example:
 	//
 	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OpticalModuleModel *string `json:"OpticalModuleModel,omitempty" xml:"OpticalModuleModel,omitempty"`
 	// The geographical location of the data center.
 	//
 	// example:
@@ -417,6 +418,10 @@ func (s *CreateHighReliablePhysicalConnectionRequestApList) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateHighReliablePhysicalConnectionRequestApList) GetOpticalModuleModel() *string {
+	return s.OpticalModuleModel
+}
+
 func (s *CreateHighReliablePhysicalConnectionRequestApList) GetPeerLocation() *string {
 	return s.PeerLocation
 }
@@ -460,6 +465,11 @@ func (s *CreateHighReliablePhysicalConnectionRequestApList) SetLineOperator(v st
 
 func (s *CreateHighReliablePhysicalConnectionRequestApList) SetName(v string) *CreateHighReliablePhysicalConnectionRequestApList {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequestApList) SetOpticalModuleModel(v string) *CreateHighReliablePhysicalConnectionRequestApList {
+	s.OpticalModuleModel = &v
 	return s
 }
 

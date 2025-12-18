@@ -97,7 +97,8 @@ type ListBusinessAccessPointsResponseBodyBusinessAccessPoints struct {
 	// example:
 	//
 	// 120.247514
-	Longitude *float64 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	Longitude           *float64                                                                       `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	OpticalModuleModels []*ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels `json:"OpticalModuleModels,omitempty" xml:"OpticalModuleModels,omitempty" type:"Repeated"`
 	// The connectivity provider of the Express Connect circuit. Valid values:
 	//
 	// 	- **CT**: China Telecom.
@@ -168,6 +169,10 @@ func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPoints) GetLongitude(
 	return s.Longitude
 }
 
+func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPoints) GetOpticalModuleModels() []*ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels {
+	return s.OpticalModuleModels
+}
+
 func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPoints) GetSupportLineOperator() *string {
 	return s.SupportLineOperator
 }
@@ -201,6 +206,11 @@ func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPoints) SetLongitude(
 	return s
 }
 
+func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPoints) SetOpticalModuleModels(v []*ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels) *ListBusinessAccessPointsResponseBodyBusinessAccessPoints {
+	s.OpticalModuleModels = v
+	return s
+}
+
 func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPoints) SetSupportLineOperator(v string) *ListBusinessAccessPointsResponseBodyBusinessAccessPoints {
 	s.SupportLineOperator = &v
 	return s
@@ -212,5 +222,49 @@ func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPoints) SetSupportPor
 }
 
 func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPoints) Validate() error {
+	if s.OpticalModuleModels != nil {
+		for _, item := range s.OpticalModuleModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels struct {
+	OpticalModuleModel *string `json:"OpticalModuleModel,omitempty" xml:"OpticalModuleModel,omitempty"`
+	PortType           *string `json:"PortType,omitempty" xml:"PortType,omitempty"`
+}
+
+func (s ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels) GoString() string {
+	return s.String()
+}
+
+func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels) GetOpticalModuleModel() *string {
+	return s.OpticalModuleModel
+}
+
+func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels) GetPortType() *string {
+	return s.PortType
+}
+
+func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels) SetOpticalModuleModel(v string) *ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels {
+	s.OpticalModuleModel = &v
+	return s
+}
+
+func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels) SetPortType(v string) *ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels {
+	s.PortType = &v
+	return s
+}
+
+func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels) Validate() error {
 	return dara.Validate(s)
 }

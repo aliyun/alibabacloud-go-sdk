@@ -23,6 +23,8 @@ type iCreatePhysicalConnectionRequest interface {
 	GetLineOperator() *string
 	SetName(v string) *CreatePhysicalConnectionRequest
 	GetName() *string
+	SetOpticalModuleModel(v string) *CreatePhysicalConnectionRequest
+	GetOpticalModuleModel() *string
 	SetOwnerAccount(v string) *CreatePhysicalConnectionRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *CreatePhysicalConnectionRequest
@@ -111,9 +113,10 @@ type CreatePhysicalConnectionRequest struct {
 	// example:
 	//
 	// test
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OpticalModuleModel *string `json:"OpticalModuleModel,omitempty" xml:"OpticalModuleModel,omitempty"`
+	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The geographical location of the data center.
 	//
 	// example:
@@ -220,6 +223,10 @@ func (s *CreatePhysicalConnectionRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreatePhysicalConnectionRequest) GetOpticalModuleModel() *string {
+	return s.OpticalModuleModel
+}
+
 func (s *CreatePhysicalConnectionRequest) GetOwnerAccount() *string {
 	return s.OwnerAccount
 }
@@ -300,6 +307,11 @@ func (s *CreatePhysicalConnectionRequest) SetLineOperator(v string) *CreatePhysi
 
 func (s *CreatePhysicalConnectionRequest) SetName(v string) *CreatePhysicalConnectionRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreatePhysicalConnectionRequest) SetOpticalModuleModel(v string) *CreatePhysicalConnectionRequest {
+	s.OpticalModuleModel = &v
 	return s
 }
 

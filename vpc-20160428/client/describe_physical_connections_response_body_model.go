@@ -290,7 +290,8 @@ type DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnect
 	// example:
 	//
 	// nametest
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OpticalModuleModel *string `json:"OpticalModuleModel,omitempty" xml:"OpticalModuleModel,omitempty"`
 	// The payer for the hosted connection. Valid values:
 	//
 	// 	- **PayByPhysicalConnectionOwner**: The partner pays for the shared Express Connect circuit.
@@ -549,6 +550,10 @@ func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalCon
 	return s.Name
 }
 
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) GetOpticalModuleModel() *string {
+	return s.OpticalModuleModel
+}
+
 func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) GetOrderMode() *string {
 	return s.OrderMode
 }
@@ -715,6 +720,11 @@ func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalCon
 
 func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) SetName(v string) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) SetOpticalModuleModel(v string) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType {
+	s.OpticalModuleModel = &v
 	return s
 }
 

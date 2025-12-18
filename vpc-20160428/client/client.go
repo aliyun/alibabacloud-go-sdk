@@ -8196,6 +8196,10 @@ func (client *Client) CreatePhysicalConnectionWithOptions(request *CreatePhysica
 		query["Name"] = request.Name
 	}
 
+	if !dara.IsNil(request.OpticalModuleModel) {
+		query["OpticalModuleModel"] = request.OpticalModuleModel
+	}
+
 	if !dara.IsNil(request.OwnerAccount) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
