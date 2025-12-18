@@ -27,6 +27,8 @@ type iAgentRuntime interface {
 	GetCpu() *float32
 	SetCreatedAt(v string) *AgentRuntime
 	GetCreatedAt() *string
+	SetCredentialName(v string) *AgentRuntime
+	GetCredentialName() *string
 	SetDescription(v string) *AgentRuntime
 	GetDescription() *string
 	SetEnvironmentVariables(v map[string]*string) *AgentRuntime
@@ -112,6 +114,12 @@ type AgentRuntime struct {
 	//
 	// 2025-01-10T10:30:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// 用于访问智能体的凭证名称，访问智能体运行时将使用此凭证进行身份验证
+	//
+	// example:
+	//
+	// my-credential
+	CredentialName *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
 	// 智能体运行时的描述信息，说明该运行时的用途和功能
 	//
 	// example:
@@ -242,6 +250,10 @@ func (s *AgentRuntime) GetCreatedAt() *string {
 	return s.CreatedAt
 }
 
+func (s *AgentRuntime) GetCredentialName() *string {
+	return s.CredentialName
+}
+
 func (s *AgentRuntime) GetDescription() *string {
 	return s.Description
 }
@@ -340,6 +352,11 @@ func (s *AgentRuntime) SetCpu(v float32) *AgentRuntime {
 
 func (s *AgentRuntime) SetCreatedAt(v string) *AgentRuntime {
 	s.CreatedAt = &v
+	return s
+}
+
+func (s *AgentRuntime) SetCredentialName(v string) *AgentRuntime {
+	s.CredentialName = &v
 	return s
 }
 
