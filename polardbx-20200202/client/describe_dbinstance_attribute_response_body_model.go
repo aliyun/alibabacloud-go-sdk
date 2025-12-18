@@ -118,7 +118,8 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	// example:
 	//
 	// polarx
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Engine        *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// example:
 	//
 	// 2022-08-31T16:00:00.000+0000
@@ -328,6 +329,10 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) GetDnNodeCount() *in
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) GetEngine() *string {
 	return s.Engine
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) GetEngineVersion() *string {
+	return s.EngineVersion
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) GetExpireDate() *string {
@@ -576,6 +581,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetDnNodeCount(v int
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetEngine(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
 	s.Engine = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetEngineVersion(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
+	s.EngineVersion = &v
 	return s
 }
 

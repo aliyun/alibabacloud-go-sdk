@@ -834,6 +834,10 @@ func (client *Client) CreateDBInstanceWithContext(ctx context.Context, tmpReq *C
 		query["DNNodeCount"] = request.DNNodeCount
 	}
 
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
 	if !dara.IsNil(request.DnClass) {
 		query["DnClass"] = request.DnClass
 	}
@@ -1639,6 +1643,10 @@ func (client *Client) DeleteDBWithContext(ctx context.Context, request *DeleteDB
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放实例
+//
 // @param request - DeleteDBInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions

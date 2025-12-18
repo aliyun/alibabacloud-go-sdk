@@ -23,6 +23,8 @@ type iCreateDBInstanceShrinkRequest interface {
 	GetDBNodeCount() *int32
 	SetDNNodeCount(v int32) *CreateDBInstanceShrinkRequest
 	GetDNNodeCount() *int32
+	SetDescription(v string) *CreateDBInstanceShrinkRequest
+	GetDescription() *string
 	SetDnClass(v string) *CreateDBInstanceShrinkRequest
 	GetDnClass() *string
 	SetDnStorageSpace(v string) *CreateDBInstanceShrinkRequest
@@ -87,6 +89,7 @@ type CreateDBInstanceShrinkRequest struct {
 	// 2
 	DBNodeCount    *int32  `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
 	DNNodeCount    *int32  `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DnClass        *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
 	DnStorageSpace *string `json:"DnStorageSpace,omitempty" xml:"DnStorageSpace,omitempty"`
 	// This parameter is required.
@@ -202,6 +205,10 @@ func (s *CreateDBInstanceShrinkRequest) GetDBNodeCount() *int32 {
 
 func (s *CreateDBInstanceShrinkRequest) GetDNNodeCount() *int32 {
 	return s.DNNodeCount
+}
+
+func (s *CreateDBInstanceShrinkRequest) GetDescription() *string {
+	return s.Description
 }
 
 func (s *CreateDBInstanceShrinkRequest) GetDnClass() *string {
@@ -320,6 +327,11 @@ func (s *CreateDBInstanceShrinkRequest) SetDBNodeCount(v int32) *CreateDBInstanc
 
 func (s *CreateDBInstanceShrinkRequest) SetDNNodeCount(v int32) *CreateDBInstanceShrinkRequest {
 	s.DNNodeCount = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetDescription(v string) *CreateDBInstanceShrinkRequest {
+	s.Description = &v
 	return s
 }
 

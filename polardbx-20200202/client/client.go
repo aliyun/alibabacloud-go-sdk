@@ -1150,6 +1150,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 		query["DNNodeCount"] = request.DNNodeCount
 	}
 
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
 	if !dara.IsNil(request.DnClass) {
 		query["DnClass"] = request.DnClass
 	}
@@ -2159,6 +2163,10 @@ func (client *Client) DeleteDB(request *DeleteDBRequest) (_result *DeleteDBRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放实例
+//
 // @param request - DeleteDBInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2203,6 +2211,10 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放实例
+//
 // @param request - DeleteDBInstanceRequest
 //
 // @return DeleteDBInstanceResponse

@@ -23,6 +23,8 @@ type iCreateDBInstanceRequest interface {
 	GetDBNodeCount() *int32
 	SetDNNodeCount(v int32) *CreateDBInstanceRequest
 	GetDNNodeCount() *int32
+	SetDescription(v string) *CreateDBInstanceRequest
+	GetDescription() *string
 	SetDnClass(v string) *CreateDBInstanceRequest
 	GetDnClass() *string
 	SetDnStorageSpace(v string) *CreateDBInstanceRequest
@@ -87,6 +89,7 @@ type CreateDBInstanceRequest struct {
 	// 2
 	DBNodeCount    *int32  `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
 	DNNodeCount    *int32  `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DnClass        *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
 	DnStorageSpace *string `json:"DnStorageSpace,omitempty" xml:"DnStorageSpace,omitempty"`
 	// This parameter is required.
@@ -202,6 +205,10 @@ func (s *CreateDBInstanceRequest) GetDBNodeCount() *int32 {
 
 func (s *CreateDBInstanceRequest) GetDNNodeCount() *int32 {
 	return s.DNNodeCount
+}
+
+func (s *CreateDBInstanceRequest) GetDescription() *string {
+	return s.Description
 }
 
 func (s *CreateDBInstanceRequest) GetDnClass() *string {
@@ -320,6 +327,11 @@ func (s *CreateDBInstanceRequest) SetDBNodeCount(v int32) *CreateDBInstanceReque
 
 func (s *CreateDBInstanceRequest) SetDNNodeCount(v int32) *CreateDBInstanceRequest {
 	s.DNNodeCount = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetDescription(v string) *CreateDBInstanceRequest {
+	s.Description = &v
 	return s
 }
 
