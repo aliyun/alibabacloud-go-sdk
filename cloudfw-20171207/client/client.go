@@ -18070,6 +18070,72 @@ func (client *Client) ModifyAddressBook(request *ModifyAddressBookRequest) (_res
 
 // Summary:
 //
+// 更新用户版本信息
+//
+// @param request - ModifyCfwInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCfwInstanceResponse
+func (client *Client) ModifyCfwInstanceWithOptions(request *ModifyCfwInstanceRequest, runtime *dara.RuntimeOptions) (_result *ModifyCfwInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.UpdateList) {
+		query["UpdateList"] = request.UpdateList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyCfwInstance"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyCfwInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新用户版本信息
+//
+// @param request - ModifyCfwInstanceRequest
+//
+// @return ModifyCfwInstanceResponse
+func (client *Client) ModifyCfwInstance(request *ModifyCfwInstanceRequest) (_result *ModifyCfwInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyCfwInstanceResponse{}
+	_body, _err := client.ModifyCfwInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the configurations of an access control policy.
 //
 // Description:
