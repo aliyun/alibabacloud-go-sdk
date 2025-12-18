@@ -12378,6 +12378,154 @@ func (client *Client) SubmitBatchTask(request *SubmitBatchTaskRequest) (_result 
 
 // Summary:
 //
+// 同步部门信息。
+//
+// @param tmpReq - SyncDepartmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncDepartmentResponse
+func (client *Client) SyncDepartmentWithOptions(tmpReq *SyncDepartmentRequest, runtime *dara.RuntimeOptions) (_result *SyncDepartmentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SyncDepartmentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SyncDepartmentCommand) {
+		request.SyncDepartmentCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SyncDepartmentCommand, dara.String("SyncDepartmentCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SyncDepartmentCommandShrink) {
+		body["SyncDepartmentCommand"] = request.SyncDepartmentCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SyncDepartment"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SyncDepartmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步部门信息。
+//
+// @param request - SyncDepartmentRequest
+//
+// @return SyncDepartmentResponse
+func (client *Client) SyncDepartment(request *SyncDepartmentRequest) (_result *SyncDepartmentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SyncDepartmentResponse{}
+	_body, _err := client.SyncDepartmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步部门成员信息
+//
+// @param tmpReq - SyncDepartmentUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncDepartmentUserResponse
+func (client *Client) SyncDepartmentUserWithOptions(tmpReq *SyncDepartmentUserRequest, runtime *dara.RuntimeOptions) (_result *SyncDepartmentUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SyncDepartmentUserShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SyncDepartmentUserCommand) {
+		request.SyncDepartmentUserCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SyncDepartmentUserCommand, dara.String("SyncDepartmentUserCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SyncDepartmentUserCommandShrink) {
+		body["SyncDepartmentUserCommand"] = request.SyncDepartmentUserCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SyncDepartmentUser"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SyncDepartmentUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步部门成员信息
+//
+// @param request - SyncDepartmentUserRequest
+//
+// @return SyncDepartmentUserResponse
+func (client *Client) SyncDepartmentUser(request *SyncDepartmentUserRequest) (_result *SyncDepartmentUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SyncDepartmentUserResponse{}
+	_body, _err := client.SyncDepartmentUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 一键转交负责人
 //
 // @param tmpReq - TransferOwnershipForAllObjectRequest
