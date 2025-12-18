@@ -13,6 +13,8 @@ type iScalingConfigStatus interface {
 	GetCurrentError() *string
 	SetCurrentInstances(v int64) *ScalingConfigStatus
 	GetCurrentInstances() *int64
+	SetEnableMixMode(v bool) *ScalingConfigStatus
+	GetEnableMixMode() *bool
 	SetEnableOnDemandScaling(v bool) *ScalingConfigStatus
 	GetEnableOnDemandScaling() *bool
 	SetFunctionArn(v string) *ScalingConfigStatus
@@ -21,6 +23,8 @@ type iScalingConfigStatus interface {
 	GetHorizontalScalingPolicies() []*ScalingPolicy
 	SetMinInstances(v int64) *ScalingConfigStatus
 	GetMinInstances() *int64
+	SetRequestDispatchPolicy(v string) *ScalingConfigStatus
+	GetRequestDispatchPolicy() *string
 	SetResidentPoolId(v string) *ScalingConfigStatus
 	GetResidentPoolId() *string
 	SetScheduledPolicies(v []*ScheduledPolicy) *ScalingConfigStatus
@@ -32,10 +36,12 @@ type iScalingConfigStatus interface {
 type ScalingConfigStatus struct {
 	CurrentError              *string            `json:"currentError,omitempty" xml:"currentError,omitempty"`
 	CurrentInstances          *int64             `json:"currentInstances,omitempty" xml:"currentInstances,omitempty"`
+	EnableMixMode             *bool              `json:"enableMixMode,omitempty" xml:"enableMixMode,omitempty"`
 	EnableOnDemandScaling     *bool              `json:"enableOnDemandScaling,omitempty" xml:"enableOnDemandScaling,omitempty"`
 	FunctionArn               *string            `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
 	HorizontalScalingPolicies []*ScalingPolicy   `json:"horizontalScalingPolicies" xml:"horizontalScalingPolicies" type:"Repeated"`
 	MinInstances              *int64             `json:"minInstances,omitempty" xml:"minInstances,omitempty"`
+	RequestDispatchPolicy     *string            `json:"requestDispatchPolicy,omitempty" xml:"requestDispatchPolicy,omitempty"`
 	ResidentPoolId            *string            `json:"residentPoolId,omitempty" xml:"residentPoolId,omitempty"`
 	ScheduledPolicies         []*ScheduledPolicy `json:"scheduledPolicies" xml:"scheduledPolicies" type:"Repeated"`
 	TargetInstances           *int64             `json:"targetInstances,omitempty" xml:"targetInstances,omitempty"`
@@ -57,6 +63,10 @@ func (s *ScalingConfigStatus) GetCurrentInstances() *int64 {
 	return s.CurrentInstances
 }
 
+func (s *ScalingConfigStatus) GetEnableMixMode() *bool {
+	return s.EnableMixMode
+}
+
 func (s *ScalingConfigStatus) GetEnableOnDemandScaling() *bool {
 	return s.EnableOnDemandScaling
 }
@@ -71,6 +81,10 @@ func (s *ScalingConfigStatus) GetHorizontalScalingPolicies() []*ScalingPolicy {
 
 func (s *ScalingConfigStatus) GetMinInstances() *int64 {
 	return s.MinInstances
+}
+
+func (s *ScalingConfigStatus) GetRequestDispatchPolicy() *string {
+	return s.RequestDispatchPolicy
 }
 
 func (s *ScalingConfigStatus) GetResidentPoolId() *string {
@@ -95,6 +109,11 @@ func (s *ScalingConfigStatus) SetCurrentInstances(v int64) *ScalingConfigStatus 
 	return s
 }
 
+func (s *ScalingConfigStatus) SetEnableMixMode(v bool) *ScalingConfigStatus {
+	s.EnableMixMode = &v
+	return s
+}
+
 func (s *ScalingConfigStatus) SetEnableOnDemandScaling(v bool) *ScalingConfigStatus {
 	s.EnableOnDemandScaling = &v
 	return s
@@ -112,6 +131,11 @@ func (s *ScalingConfigStatus) SetHorizontalScalingPolicies(v []*ScalingPolicy) *
 
 func (s *ScalingConfigStatus) SetMinInstances(v int64) *ScalingConfigStatus {
 	s.MinInstances = &v
+	return s
+}
+
+func (s *ScalingConfigStatus) SetRequestDispatchPolicy(v string) *ScalingConfigStatus {
+	s.RequestDispatchPolicy = &v
 	return s
 }
 

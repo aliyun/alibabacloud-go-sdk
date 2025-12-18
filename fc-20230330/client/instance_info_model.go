@@ -17,6 +17,8 @@ type iInstanceInfo interface {
 	GetInstanceId() *string
 	SetQualifier(v string) *InstanceInfo
 	GetQualifier() *string
+	SetResourceType(v string) *InstanceInfo
+	GetResourceType() *string
 	SetStatus(v string) *InstanceInfo
 	GetStatus() *string
 	SetVersionId(v string) *InstanceInfo
@@ -29,10 +31,11 @@ type InstanceInfo struct {
 	// example:
 	//
 	// 1ef6b6ff-7f7b-485e-ab49-501ac681****
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	Qualifier  *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
-	VersionId  *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	InstanceId   *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Qualifier    *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	Status       *string `json:"status,omitempty" xml:"status,omitempty"`
+	VersionId    *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s InstanceInfo) String() string {
@@ -57,6 +60,10 @@ func (s *InstanceInfo) GetInstanceId() *string {
 
 func (s *InstanceInfo) GetQualifier() *string {
 	return s.Qualifier
+}
+
+func (s *InstanceInfo) GetResourceType() *string {
+	return s.ResourceType
 }
 
 func (s *InstanceInfo) GetStatus() *string {
@@ -84,6 +91,11 @@ func (s *InstanceInfo) SetInstanceId(v string) *InstanceInfo {
 
 func (s *InstanceInfo) SetQualifier(v string) *InstanceInfo {
 	s.Qualifier = &v
+	return s
+}
+
+func (s *InstanceInfo) SetResourceType(v string) *InstanceInfo {
+	s.ResourceType = &v
 	return s
 }
 
