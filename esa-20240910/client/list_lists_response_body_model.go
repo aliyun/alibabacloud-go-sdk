@@ -9,6 +9,8 @@ type iListListsResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetItemsUsage(v int64) *ListListsResponseBody
+	GetItemsUsage() *int64
 	SetLists(v []*ListListsResponseBodyLists) *ListListsResponseBody
 	GetLists() []*ListListsResponseBodyLists
 	SetPageNumber(v int32) *ListListsResponseBody
@@ -24,6 +26,7 @@ type iListListsResponseBody interface {
 }
 
 type ListListsResponseBody struct {
+	ItemsUsage *int64 `json:"ItemsUsage,omitempty" xml:"ItemsUsage,omitempty"`
 	// The array that contains list information, including list data after paging.
 	Lists []*ListListsResponseBodyLists `json:"Lists,omitempty" xml:"Lists,omitempty" type:"Repeated"`
 	// The page number returned.
@@ -66,6 +69,10 @@ func (s ListListsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListListsResponseBody) GetItemsUsage() *int64 {
+	return s.ItemsUsage
+}
+
 func (s *ListListsResponseBody) GetLists() []*ListListsResponseBodyLists {
 	return s.Lists
 }
@@ -88,6 +95,11 @@ func (s *ListListsResponseBody) GetTotalCount() *int32 {
 
 func (s *ListListsResponseBody) GetUsage() *int64 {
 	return s.Usage
+}
+
+func (s *ListListsResponseBody) SetItemsUsage(v int64) *ListListsResponseBody {
+	s.ItemsUsage = &v
+	return s
 }
 
 func (s *ListListsResponseBody) SetLists(v []*ListListsResponseBodyLists) *ListListsResponseBody {

@@ -9617,7 +9617,7 @@ func (client *Client) GetOriginProtectionWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Query a Single Origin Rule Configuration
+// Queries the configurations of a single origin rule.
 //
 // @param request - GetOriginRuleRequest
 //

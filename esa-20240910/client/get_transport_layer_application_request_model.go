@@ -16,7 +16,7 @@ type iGetTransportLayerApplicationRequest interface {
 }
 
 type GetTransportLayerApplicationRequest struct {
-	// Application ID, which can be obtained by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) interface.
+	// Number of forwarding rules contained in the transport layer acceleration application.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetTransportLayerApplicationRequest struct {
 	//
 	// 170997271816****
 	ApplicationId *int64 `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	// Transport layer application ID.
 	//
 	// This parameter is required.
 	//

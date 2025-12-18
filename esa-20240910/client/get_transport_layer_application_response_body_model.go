@@ -38,18 +38,12 @@ type iGetTransportLayerApplicationResponseBody interface {
 }
 
 type GetTransportLayerApplicationResponseBody struct {
-	// Transport layer application ID.
+	// Specific value of the origin, which needs to match the type of the origin.
 	//
 	// example:
 	//
 	// 17099311410****
 	ApplicationId *int64 `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The CNAME domain corresponding to the transport layer acceleration application. This field is not empty only when the site is accessed via CNAME.
-	//
-	// example:
-	//
-	// example.com.ialicdn.com
-	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	// Whether to enable China mainland network access optimization, default is off. Value range:
 	//
 	// - on: Enabled.
@@ -58,25 +52,25 @@ type GetTransportLayerApplicationResponseBody struct {
 	//
 	// example:
 	//
+	// example.com.ialicdn.com
+	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// example:
+	//
 	// on
 	CrossBorderOptimization *string `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty"`
-	// Switch for IP access rules. When turned on, the IP access rules in WAF take effect on the transport layer application.
-	//
-	// - on: Turned on.
-	//
-	// - off: Turned off.
+	// #/components/schemas/WafRuleMatch2
 	//
 	// example:
 	//
 	// on
 	IpAccessRule *string `json:"IpAccessRule,omitempty" xml:"IpAccessRule,omitempty"`
-	// IPv6 switch.
+	// Ipv6 switch
 	//
 	// example:
 	//
 	// on
 	Ipv6 *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
-	// The domain name of the transport layer application.
+	// Query Transport Layer Acceleration Application
 	//
 	// example:
 	//
@@ -88,15 +82,25 @@ type GetTransportLayerApplicationResponseBody struct {
 	//
 	// EB635996-1FD6-5DFD-BA57-27A849599940
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of forwarding rules.
+	// Edge port. Supports:
+	//
+	// - A single port, such as 80.
+	//
+	// - Port range, such as 81-85, representing ports 81, 82, 83, 84, 85.
+	//
+	// - Combination of ports and port ranges, separated by commas, for example 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, 90.
 	Rules []*GetTransportLayerApplicationResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// Number of forwarding rules contained in the transport layer acceleration application.
+	// Forwarding rule protocol, with values:
+	//
+	// - TCP: TCP protocol.
+	//
+	// - UDP: UDP protocol.
 	//
 	// example:
 	//
 	// 1
 	RulesCount *int32 `json:"RulesCount,omitempty" xml:"RulesCount,omitempty"`
-	// Site ID.
+	// Details of the forwarding rule.
 	//
 	// example:
 	//
@@ -104,12 +108,6 @@ type GetTransportLayerApplicationResponseBody struct {
 	SiteId         *int64                                                    `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	StaticIp       *string                                                   `json:"StaticIp,omitempty" xml:"StaticIp,omitempty"`
 	StaticIpV4List []*GetTransportLayerApplicationResponseBodyStaticIpV4List `json:"StaticIpV4List,omitempty" xml:"StaticIpV4List,omitempty" type:"Repeated"`
-	// Status of the transport layer application
-	//
-	// - **deploying**: Deploying. In this state, modification and deletion are not allowed.
-	//
-	// - **active**: Active.
-	//
 	// example:
 	//
 	// active
@@ -264,6 +262,28 @@ func (s *GetTransportLayerApplicationResponseBody) Validate() error {
 }
 
 type GetTransportLayerApplicationResponseBodyRules struct {
+	// The domain name of the transport layer application.
+	//
+	// example:
+	//
+	// off
+	ClientIPPassThroughMode *string `json:"ClientIPPassThroughMode,omitempty" xml:"ClientIPPassThroughMode,omitempty"`
+	// Switch for IP access rules. When turned on, the IP access rules in WAF take effect on the transport layer application.
+	//
+	// - on: Turned on.
+	//
+	// - off: Turned off.
+	//
+	// example:
+	//
+	// IPv6 switch.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Comment information of the rule.
+	//
+	// example:
+	//
+	// 80
+	EdgePort *string `json:"EdgePort,omitempty" xml:"EdgePort,omitempty"`
 	// Client IP pass-through protocol, supporting:
 	//
 	// - **off**: No pass-through.
@@ -276,48 +296,18 @@ type GetTransportLayerApplicationResponseBodyRules struct {
 	//
 	// example:
 	//
-	// off
-	ClientIPPassThroughMode *string `json:"ClientIPPassThroughMode,omitempty" xml:"ClientIPPassThroughMode,omitempty"`
-	// Comment information of the rule.
-	//
-	// example:
-	//
-	// 测试
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Edge port. Supports:
-	//
-	// - A single port, such as 80.
-	//
-	// - Port range, such as 81-85, representing ports 81, 82, 83, 84, 85.
-	//
-	// - Combination of ports and port ranges, separated by commas, for example 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, 90.
-	//
-	// example:
-	//
-	// 80
-	EdgePort *string `json:"EdgePort,omitempty" xml:"EdgePort,omitempty"`
-	// Forwarding rule protocol, with values:
-	//
-	// - TCP: TCP protocol.
-	//
-	// - UDP: UDP protocol.
-	//
-	// example:
-	//
 	// TCP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// Rule ID.
+	// Status of the transport layer application
+	//
+	// - **deploying**: Deploying. In this state, modification and deletion are not allowed.
+	//
+	// - **active**: Active.
 	//
 	// example:
 	//
 	// 1234323***
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// Specific value of the origin, which needs to match the type of the origin.
-	//
-	// example:
-	//
-	// 1.1.1.1
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// Origin port. Supports:
 	//
 	// - A single port, when the origin port is a single port, any valid edge port combination is supported.
@@ -326,17 +316,15 @@ type GetTransportLayerApplicationResponseBodyRules struct {
 	//
 	// example:
 	//
+	// 1.1.1.1
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The CNAME domain corresponding to the transport layer acceleration application. This field is not empty only when the site is accessed via CNAME.
+	//
+	// example:
+	//
 	// 80
 	SourcePort *string `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	// Origin type, supporting:
-	//
-	// - **ip**: IP.
-	//
-	// - **domain**: Domain name.
-	//
-	// - **OP**: Origin pool.
-	//
-	// - **LB**: Load balancer.
+	// Rule ID.
 	//
 	// example:
 	//
