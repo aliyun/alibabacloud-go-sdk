@@ -19,6 +19,8 @@ type iUnifiedSearchInput interface {
 	GetEngineType() *string
 	SetLocation(v string) *UnifiedSearchInput
 	GetLocation() *string
+	SetLocationInfo(v *LocationInfo) *UnifiedSearchInput
+	GetLocationInfo() *LocationInfo
 	SetQuery(v string) *UnifiedSearchInput
 	GetQuery() *string
 	SetTimeRange(v string) *UnifiedSearchInput
@@ -31,6 +33,7 @@ type UnifiedSearchInput struct {
 	Contents       *RequestContents       `json:"contents,omitempty" xml:"contents,omitempty"`
 	EngineType     *string                `json:"engineType,omitempty" xml:"engineType,omitempty"`
 	Location       *string                `json:"location,omitempty" xml:"location,omitempty"`
+	LocationInfo   *LocationInfo          `json:"locationInfo,omitempty" xml:"locationInfo,omitempty"`
 	Query          *string                `json:"query,omitempty" xml:"query,omitempty"`
 	TimeRange      *string                `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
 }
@@ -61,6 +64,10 @@ func (s *UnifiedSearchInput) GetEngineType() *string {
 
 func (s *UnifiedSearchInput) GetLocation() *string {
 	return s.Location
+}
+
+func (s *UnifiedSearchInput) GetLocationInfo() *LocationInfo {
+	return s.LocationInfo
 }
 
 func (s *UnifiedSearchInput) GetQuery() *string {
@@ -96,6 +103,11 @@ func (s *UnifiedSearchInput) SetLocation(v string) *UnifiedSearchInput {
 	return s
 }
 
+func (s *UnifiedSearchInput) SetLocationInfo(v *LocationInfo) *UnifiedSearchInput {
+	s.LocationInfo = v
+	return s
+}
+
 func (s *UnifiedSearchInput) SetQuery(v string) *UnifiedSearchInput {
 	s.Query = &v
 	return s
@@ -109,6 +121,11 @@ func (s *UnifiedSearchInput) SetTimeRange(v string) *UnifiedSearchInput {
 func (s *UnifiedSearchInput) Validate() error {
 	if s.Contents != nil {
 		if err := s.Contents.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LocationInfo != nil {
+		if err := s.LocationInfo.Validate(); err != nil {
 			return err
 		}
 	}
