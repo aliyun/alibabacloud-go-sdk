@@ -25,6 +25,8 @@ type iCreateAppInstanceShrinkRequest interface {
 	GetDashboardUsername() *string
 	SetDatabasePassword(v string) *CreateAppInstanceShrinkRequest
 	GetDatabasePassword() *string
+	SetInitializeWithExistingData(v bool) *CreateAppInstanceShrinkRequest
+	GetInitializeWithExistingData() *bool
 	SetInstanceClass(v string) *CreateAppInstanceShrinkRequest
 	GetInstanceClass() *string
 	SetPublicEndpointEnabled(v bool) *CreateAppInstanceShrinkRequest
@@ -68,7 +70,8 @@ type CreateAppInstanceShrinkRequest struct {
 	// example:
 	//
 	// test_Password
-	DatabasePassword *string `json:"DatabasePassword,omitempty" xml:"DatabasePassword,omitempty"`
+	DatabasePassword           *string `json:"DatabasePassword,omitempty" xml:"DatabasePassword,omitempty"`
+	InitializeWithExistingData *bool   `json:"InitializeWithExistingData,omitempty" xml:"InitializeWithExistingData,omitempty"`
 	// example:
 	//
 	// rdsai.supabase.basic
@@ -127,6 +130,10 @@ func (s *CreateAppInstanceShrinkRequest) GetDashboardUsername() *string {
 
 func (s *CreateAppInstanceShrinkRequest) GetDatabasePassword() *string {
 	return s.DatabasePassword
+}
+
+func (s *CreateAppInstanceShrinkRequest) GetInitializeWithExistingData() *bool {
+	return s.InitializeWithExistingData
 }
 
 func (s *CreateAppInstanceShrinkRequest) GetInstanceClass() *string {
@@ -190,6 +197,11 @@ func (s *CreateAppInstanceShrinkRequest) SetDashboardUsername(v string) *CreateA
 
 func (s *CreateAppInstanceShrinkRequest) SetDatabasePassword(v string) *CreateAppInstanceShrinkRequest {
 	s.DatabasePassword = &v
+	return s
+}
+
+func (s *CreateAppInstanceShrinkRequest) SetInitializeWithExistingData(v bool) *CreateAppInstanceShrinkRequest {
+	s.InitializeWithExistingData = &v
 	return s
 }
 

@@ -25,6 +25,8 @@ type iCreateAppInstanceRequest interface {
 	GetDashboardUsername() *string
 	SetDatabasePassword(v string) *CreateAppInstanceRequest
 	GetDatabasePassword() *string
+	SetInitializeWithExistingData(v bool) *CreateAppInstanceRequest
+	GetInitializeWithExistingData() *bool
 	SetInstanceClass(v string) *CreateAppInstanceRequest
 	GetInstanceClass() *string
 	SetPublicEndpointEnabled(v bool) *CreateAppInstanceRequest
@@ -68,7 +70,8 @@ type CreateAppInstanceRequest struct {
 	// example:
 	//
 	// test_Password
-	DatabasePassword *string `json:"DatabasePassword,omitempty" xml:"DatabasePassword,omitempty"`
+	DatabasePassword           *string `json:"DatabasePassword,omitempty" xml:"DatabasePassword,omitempty"`
+	InitializeWithExistingData *bool   `json:"InitializeWithExistingData,omitempty" xml:"InitializeWithExistingData,omitempty"`
 	// example:
 	//
 	// rdsai.supabase.basic
@@ -127,6 +130,10 @@ func (s *CreateAppInstanceRequest) GetDashboardUsername() *string {
 
 func (s *CreateAppInstanceRequest) GetDatabasePassword() *string {
 	return s.DatabasePassword
+}
+
+func (s *CreateAppInstanceRequest) GetInitializeWithExistingData() *bool {
+	return s.InitializeWithExistingData
 }
 
 func (s *CreateAppInstanceRequest) GetInstanceClass() *string {
@@ -190,6 +197,11 @@ func (s *CreateAppInstanceRequest) SetDashboardUsername(v string) *CreateAppInst
 
 func (s *CreateAppInstanceRequest) SetDatabasePassword(v string) *CreateAppInstanceRequest {
 	s.DatabasePassword = &v
+	return s
+}
+
+func (s *CreateAppInstanceRequest) SetInitializeWithExistingData(v bool) *CreateAppInstanceRequest {
+	s.InitializeWithExistingData = &v
 	return s
 }
 

@@ -184,6 +184,10 @@ func (client *Client) CreateAppInstanceWithContext(ctx context.Context, tmpReq *
 		query["DatabasePassword"] = request.DatabasePassword
 	}
 
+	if !dara.IsNil(request.InitializeWithExistingData) {
+		query["InitializeWithExistingData"] = request.InitializeWithExistingData
+	}
+
 	if !dara.IsNil(request.InstanceClass) {
 		query["InstanceClass"] = request.InstanceClass
 	}

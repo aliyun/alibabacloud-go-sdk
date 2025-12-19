@@ -268,6 +268,10 @@ func (client *Client) CreateAppInstanceWithOptions(tmpReq *CreateAppInstanceRequ
 		query["DatabasePassword"] = request.DatabasePassword
 	}
 
+	if !dara.IsNil(request.InitializeWithExistingData) {
+		query["InitializeWithExistingData"] = request.InitializeWithExistingData
+	}
+
 	if !dara.IsNil(request.InstanceClass) {
 		query["InstanceClass"] = request.InstanceClass
 	}
