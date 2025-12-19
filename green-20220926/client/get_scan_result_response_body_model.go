@@ -210,6 +210,7 @@ func (s *GetScanResultResponseBodyData) Validate() error {
 }
 
 type GetScanResultResponseBodyDataItems struct {
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// Automated review labels.
 	//
 	// example:
@@ -320,6 +321,7 @@ type GetScanResultResponseBodyDataItems struct {
 	//
 	// nonLabel
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
 	// Malicious file risk level.
 	//
 	// example:
@@ -530,6 +532,10 @@ func (s GetScanResultResponseBodyDataItems) GoString() string {
 	return s.String()
 }
 
+func (s *GetScanResultResponseBodyDataItems) GetAccountId() *string {
+	return s.AccountId
+}
+
 func (s *GetScanResultResponseBodyDataItems) GetApiLabels() *string {
 	return s.ApiLabels
 }
@@ -604,6 +610,10 @@ func (s *GetScanResultResponseBodyDataItems) GetImageUrl() *string {
 
 func (s *GetScanResultResponseBodyDataItems) GetLabels() *string {
 	return s.Labels
+}
+
+func (s *GetScanResultResponseBodyDataItems) GetLiveId() *string {
+	return s.LiveId
 }
 
 func (s *GetScanResultResponseBodyDataItems) GetMaliciousFileLevel() *string {
@@ -738,6 +748,11 @@ func (s *GetScanResultResponseBodyDataItems) GetVoiceService() *string {
 	return s.VoiceService
 }
 
+func (s *GetScanResultResponseBodyDataItems) SetAccountId(v string) *GetScanResultResponseBodyDataItems {
+	s.AccountId = &v
+	return s
+}
+
 func (s *GetScanResultResponseBodyDataItems) SetApiLabels(v string) *GetScanResultResponseBodyDataItems {
 	s.ApiLabels = &v
 	return s
@@ -830,6 +845,11 @@ func (s *GetScanResultResponseBodyDataItems) SetImageUrl(v string) *GetScanResul
 
 func (s *GetScanResultResponseBodyDataItems) SetLabels(v string) *GetScanResultResponseBodyDataItems {
 	s.Labels = &v
+	return s
+}
+
+func (s *GetScanResultResponseBodyDataItems) SetLiveId(v string) *GetScanResultResponseBodyDataItems {
+	s.LiveId = &v
 	return s
 }
 
