@@ -15,6 +15,8 @@ type iGetValidateFileStatusResponseBody interface {
 	GetCompleteTime() *string
 	SetDoNotMailNum(v string) *GetValidateFileStatusResponseBody
 	GetDoNotMailNum() *string
+	SetFileId(v string) *GetValidateFileStatusResponseBody
+	GetFileId() *string
 	SetFileName(v string) *GetValidateFileStatusResponseBody
 	GetFileName() *string
 	SetInvalidNum(v string) *GetValidateFileStatusResponseBody
@@ -50,6 +52,7 @@ type GetValidateFileStatusResponseBody struct {
 	//
 	// 1
 	DoNotMailNum *string `json:"DoNotMailNum,omitempty" xml:"DoNotMailNum,omitempty"`
+	FileId       *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	// example:
 	//
 	// file.txt
@@ -112,6 +115,10 @@ func (s *GetValidateFileStatusResponseBody) GetDoNotMailNum() *string {
 	return s.DoNotMailNum
 }
 
+func (s *GetValidateFileStatusResponseBody) GetFileId() *string {
+	return s.FileId
+}
+
 func (s *GetValidateFileStatusResponseBody) GetFileName() *string {
 	return s.FileName
 }
@@ -164,6 +171,11 @@ func (s *GetValidateFileStatusResponseBody) SetCompleteTime(v string) *GetValida
 
 func (s *GetValidateFileStatusResponseBody) SetDoNotMailNum(v string) *GetValidateFileStatusResponseBody {
 	s.DoNotMailNum = &v
+	return s
+}
+
+func (s *GetValidateFileStatusResponseBody) SetFileId(v string) *GetValidateFileStatusResponseBody {
+	s.FileId = &v
 	return s
 }
 

@@ -2773,6 +2773,66 @@ func (client *Client) ListUserSuppressionWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 获取上传的校验文件的列表
+//
+// @param request - ListValidateFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListValidateFileResponse
+func (client *Client) ListValidateFileWithContext(ctx context.Context, request *ListValidateFileRequest, runtime *dara.RuntimeOptions) (_result *ListValidateFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.FileKeyword) {
+		query["FileKeyword"] = request.FileKeyword
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["Page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListValidateFile"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListValidateFileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Modify the sending address
 //
 // @param request - ModifyMailAddressRequest
