@@ -580,6 +580,58 @@ func (client *Client) AsyncWritingBiddingDocWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 绑定PPT作品信息
+//
+// @param request - BindPptArtifactRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindPptArtifactResponse
+func (client *Client) BindPptArtifactWithContext(ctx context.Context, request *BindPptArtifactRequest, runtime *dara.RuntimeOptions) (_result *BindPptArtifactResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ArtifactId) {
+		body["ArtifactId"] = request.ArtifactId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BindPptArtifact"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BindPptArtifactResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 取消异步任务
 //
 // @param request - CancelAsyncTaskRequest
@@ -4480,6 +4532,50 @@ func (client *Client) GetMaterialByIdWithContext(ctx context.Context, request *G
 
 // Summary:
 //
+// 获取PPT组件的配置
+//
+// @param request - GetPptConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPptConfigResponse
+func (client *Client) GetPptConfigWithContext(ctx context.Context, request *GetPptConfigRequest, runtime *dara.RuntimeOptions) (_result *GetPptConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPptConfig"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPptConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取当前用户的配置
 //
 // @param request - GetPropertiesRequest
@@ -4876,6 +4972,58 @@ func (client *Client) ImportInterveneFileAsyncWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &ImportInterveneFileAsyncResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 初始化PPT创建操作
+//
+// @param request - InitiatePptCreationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InitiatePptCreationResponse
+func (client *Client) InitiatePptCreationWithContext(ctx context.Context, request *InitiatePptCreationRequest, runtime *dara.RuntimeOptions) (_result *InitiatePptCreationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Outline) {
+		body["Outline"] = request.Outline
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InitiatePptCreation"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InitiatePptCreationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7633,6 +7781,95 @@ func (client *Client) RunAbbreviationContentWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 妙笔：AI助手写作
+//
+// @param tmpReq - RunAiHelperWritingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunAiHelperWritingResponse
+func (client *Client) RunAiHelperWritingWithSSECtx(ctx context.Context, tmpReq *RunAiHelperWritingRequest, runtime *dara.RuntimeOptions, _yield chan *RunAiHelperWritingResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runAiHelperWritingWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, tmpReq, runtime)
+	return
+}
+
+// Summary:
+//
+// 妙笔：AI助手写作
+//
+// @param tmpReq - RunAiHelperWritingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunAiHelperWritingResponse
+func (client *Client) RunAiHelperWritingWithContext(ctx context.Context, tmpReq *RunAiHelperWritingRequest, runtime *dara.RuntimeOptions) (_result *RunAiHelperWritingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &RunAiHelperWritingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.WritingParams) {
+		request.WritingParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WritingParams, dara.String("WritingParams"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DistributeWriting) {
+		body["DistributeWriting"] = request.DistributeWriting
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.PromptMode) {
+		body["PromptMode"] = request.PromptMode
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WritingParamsShrink) {
+		body["WritingParams"] = request.WritingParamsShrink
+	}
+
+	if !dara.IsNil(request.WritingScene) {
+		body["WritingScene"] = request.WritingScene
+	}
+
+	if !dara.IsNil(request.WritingStyle) {
+		body["WritingStyle"] = request.WritingStyle
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunAiHelperWriting"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunAiHelperWritingResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 妙读生成书籍脑图
 //
 // @param request - RunBookBrainmapRequest
@@ -9275,6 +9512,69 @@ func (client *Client) RunMultiDocIntroductionWithContext(ctx context.Context, tm
 		BodyType:    dara.String("json"),
 	}
 	_result = &RunMultiDocIntroductionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 流式输出PPT大纲
+//
+// @param request - RunPptOutlineGenerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunPptOutlineGenerationResponse
+func (client *Client) RunPptOutlineGenerationWithSSECtx(ctx context.Context, request *RunPptOutlineGenerationRequest, runtime *dara.RuntimeOptions, _yield chan *RunPptOutlineGenerationResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runPptOutlineGenerationWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 流式输出PPT大纲
+//
+// @param request - RunPptOutlineGenerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunPptOutlineGenerationResponse
+func (client *Client) RunPptOutlineGenerationWithContext(ctx context.Context, request *RunPptOutlineGenerationRequest, runtime *dara.RuntimeOptions) (_result *RunPptOutlineGenerationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunPptOutlineGeneration"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunPptOutlineGenerationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -12599,6 +12899,82 @@ func (client *Client) runAbbreviationContentWithSSECtx_opYieldFunc(_yield chan *
 	}
 }
 
+func (client *Client) runAiHelperWritingWithSSECtx_opYieldFunc(_yield chan *RunAiHelperWritingResponse, _yieldErr chan error, ctx context.Context, tmpReq *RunAiHelperWritingRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	request := &RunAiHelperWritingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.WritingParams) {
+		request.WritingParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WritingParams, dara.String("WritingParams"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DistributeWriting) {
+		body["DistributeWriting"] = request.DistributeWriting
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.PromptMode) {
+		body["PromptMode"] = request.PromptMode
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WritingParamsShrink) {
+		body["WritingParams"] = request.WritingParamsShrink
+	}
+
+	if !dara.IsNil(request.WritingScene) {
+		body["WritingScene"] = request.WritingScene
+	}
+
+	if !dara.IsNil(request.WritingStyle) {
+		body["WritingStyle"] = request.WritingStyle
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunAiHelperWriting"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
 func (client *Client) runBookBrainmapWithSSECtx_opYieldFunc(_yield chan *RunBookBrainmapResponse, _yieldErr chan error, ctx context.Context, request *RunBookBrainmapRequest, runtime *dara.RuntimeOptions) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err := request.Validate()
@@ -13963,6 +14339,56 @@ func (client *Client) runMultiDocIntroductionWithSSECtx_opYieldFunc(_yield chan 
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("RunMultiDocIntroduction"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runPptOutlineGenerationWithSSECtx_opYieldFunc(_yield chan *RunPptOutlineGenerationResponse, _yieldErr chan error, ctx context.Context, request *RunPptOutlineGenerationRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunPptOutlineGeneration"),
 		Version:     dara.String("2023-08-01"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
