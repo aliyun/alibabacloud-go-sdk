@@ -83,6 +83,8 @@ type iNode interface {
 	GetResourceGroupName() *string
 	SetSelfQuotaWorkloadNum(v int64) *Node
 	GetSelfQuotaWorkloadNum() *int64
+	SetSubNodes(v []*string) *Node
+	GetSubNodes() []*string
 	SetSystemReservedCPU(v string) *Node
 	GetSystemReservedCPU() *string
 	SetSystemReservedMemory(v string) *Node
@@ -131,6 +133,7 @@ type Node struct {
 	ResourceGroupId            *string        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceGroupName          *string        `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 	SelfQuotaWorkloadNum       *int64         `json:"SelfQuotaWorkloadNum,omitempty" xml:"SelfQuotaWorkloadNum,omitempty"`
+	SubNodes                   []*string      `json:"SubNodes,omitempty" xml:"SubNodes,omitempty" type:"Repeated"`
 	SystemReservedCPU          *string        `json:"SystemReservedCPU,omitempty" xml:"SystemReservedCPU,omitempty"`
 	SystemReservedMemory       *string        `json:"SystemReservedMemory,omitempty" xml:"SystemReservedMemory,omitempty"`
 	Users                      []*UserInfo    `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
@@ -291,6 +294,10 @@ func (s *Node) GetResourceGroupName() *string {
 
 func (s *Node) GetSelfQuotaWorkloadNum() *int64 {
 	return s.SelfQuotaWorkloadNum
+}
+
+func (s *Node) GetSubNodes() []*string {
+	return s.SubNodes
 }
 
 func (s *Node) GetSystemReservedCPU() *string {
@@ -491,6 +498,11 @@ func (s *Node) SetResourceGroupName(v string) *Node {
 
 func (s *Node) SetSelfQuotaWorkloadNum(v int64) *Node {
 	s.SelfQuotaWorkloadNum = &v
+	return s
+}
+
+func (s *Node) SetSubNodes(v []*string) *Node {
+	s.SubNodes = v
 	return s
 }
 

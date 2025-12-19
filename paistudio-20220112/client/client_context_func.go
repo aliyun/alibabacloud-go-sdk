@@ -1627,20 +1627,30 @@ func (client *Client) ListAlgorithmsWithContext(ctx context.Context, request *Li
 //
 // 获取资源节点列表
 //
-// @param request - ListNodesRequest
+// @param tmpReq - ListNodesRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListNodesResponse
-func (client *Client) ListNodesWithContext(ctx context.Context, request *ListNodesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListNodesResponse, _err error) {
+func (client *Client) ListNodesWithContext(ctx context.Context, tmpReq *ListNodesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListNodesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListNodesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.HealthCount) {
+		request.HealthCountShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HealthCount, dara.String("HealthCount"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.HealthRate) {
+		request.HealthRateShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HealthRate, dara.String("HealthRate"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceleratorType) {
 		query["AcceleratorType"] = request.AcceleratorType
@@ -1666,12 +1676,24 @@ func (client *Client) ListNodesWithContext(ctx context.Context, request *ListNod
 		query["GPUType"] = request.GPUType
 	}
 
+	if !dara.IsNil(request.HealthCountShrink) {
+		query["HealthCount"] = request.HealthCountShrink
+	}
+
+	if !dara.IsNil(request.HealthRateShrink) {
+		query["HealthRate"] = request.HealthRateShrink
+	}
+
 	if !dara.IsNil(request.HyperNode) {
 		query["HyperNode"] = request.HyperNode
 	}
 
 	if !dara.IsNil(request.HyperZone) {
 		query["HyperZone"] = request.HyperZone
+	}
+
+	if !dara.IsNil(request.LayoutMode) {
+		query["LayoutMode"] = request.LayoutMode
 	}
 
 	if !dara.IsNil(request.MachineGroupIds) {

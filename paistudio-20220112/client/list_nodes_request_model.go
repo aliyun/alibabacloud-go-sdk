@@ -21,10 +21,16 @@ type iListNodesRequest interface {
 	GetFilterByResourceGroupIds() *string
 	SetGPUType(v string) *ListNodesRequest
 	GetGPUType() *string
+	SetHealthCount(v *ListNodesRequestHealthCount) *ListNodesRequest
+	GetHealthCount() *ListNodesRequestHealthCount
+	SetHealthRate(v *ListNodesRequestHealthRate) *ListNodesRequest
+	GetHealthRate() *ListNodesRequestHealthRate
 	SetHyperNode(v string) *ListNodesRequest
 	GetHyperNode() *string
 	SetHyperZone(v string) *ListNodesRequest
 	GetHyperZone() *string
+	SetLayoutMode(v string) *ListNodesRequest
+	GetLayoutMode() *string
 	SetMachineGroupIds(v string) *ListNodesRequest
 	GetMachineGroupIds() *string
 	SetNodeNames(v string) *ListNodesRequest
@@ -77,10 +83,13 @@ type ListNodesRequest struct {
 	// example:
 	//
 	// T4
-	GPUType         *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	HyperNode       *string `json:"HyperNode,omitempty" xml:"HyperNode,omitempty"`
-	HyperZone       *string `json:"HyperZone,omitempty" xml:"HyperZone,omitempty"`
-	MachineGroupIds *string `json:"MachineGroupIds,omitempty" xml:"MachineGroupIds,omitempty"`
+	GPUType         *string                      `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	HealthCount     *ListNodesRequestHealthCount `json:"HealthCount,omitempty" xml:"HealthCount,omitempty" type:"Struct"`
+	HealthRate      *ListNodesRequestHealthRate  `json:"HealthRate,omitempty" xml:"HealthRate,omitempty" type:"Struct"`
+	HyperNode       *string                      `json:"HyperNode,omitempty" xml:"HyperNode,omitempty"`
+	HyperZone       *string                      `json:"HyperZone,omitempty" xml:"HyperZone,omitempty"`
+	LayoutMode      *string                      `json:"LayoutMode,omitempty" xml:"LayoutMode,omitempty"`
+	MachineGroupIds *string                      `json:"MachineGroupIds,omitempty" xml:"MachineGroupIds,omitempty"`
 	// example:
 	//
 	// lingjxxxx
@@ -166,12 +175,24 @@ func (s *ListNodesRequest) GetGPUType() *string {
 	return s.GPUType
 }
 
+func (s *ListNodesRequest) GetHealthCount() *ListNodesRequestHealthCount {
+	return s.HealthCount
+}
+
+func (s *ListNodesRequest) GetHealthRate() *ListNodesRequestHealthRate {
+	return s.HealthRate
+}
+
 func (s *ListNodesRequest) GetHyperNode() *string {
 	return s.HyperNode
 }
 
 func (s *ListNodesRequest) GetHyperZone() *string {
 	return s.HyperZone
+}
+
+func (s *ListNodesRequest) GetLayoutMode() *string {
+	return s.LayoutMode
 }
 
 func (s *ListNodesRequest) GetMachineGroupIds() *string {
@@ -268,6 +289,16 @@ func (s *ListNodesRequest) SetGPUType(v string) *ListNodesRequest {
 	return s
 }
 
+func (s *ListNodesRequest) SetHealthCount(v *ListNodesRequestHealthCount) *ListNodesRequest {
+	s.HealthCount = v
+	return s
+}
+
+func (s *ListNodesRequest) SetHealthRate(v *ListNodesRequestHealthRate) *ListNodesRequest {
+	s.HealthRate = v
+	return s
+}
+
 func (s *ListNodesRequest) SetHyperNode(v string) *ListNodesRequest {
 	s.HyperNode = &v
 	return s
@@ -275,6 +306,11 @@ func (s *ListNodesRequest) SetHyperNode(v string) *ListNodesRequest {
 
 func (s *ListNodesRequest) SetHyperZone(v string) *ListNodesRequest {
 	s.HyperZone = &v
+	return s
+}
+
+func (s *ListNodesRequest) SetLayoutMode(v string) *ListNodesRequest {
+	s.LayoutMode = &v
 	return s
 }
 
@@ -359,5 +395,85 @@ func (s *ListNodesRequest) SetWorkspaceId(v string) *ListNodesRequest {
 }
 
 func (s *ListNodesRequest) Validate() error {
+	if s.HealthCount != nil {
+		if err := s.HealthCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HealthRate != nil {
+		if err := s.HealthRate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListNodesRequestHealthCount struct {
+	Operation *string `json:"operation,omitempty" xml:"operation,omitempty"`
+	Value     *int32  `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListNodesRequestHealthCount) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListNodesRequestHealthCount) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodesRequestHealthCount) GetOperation() *string {
+	return s.Operation
+}
+
+func (s *ListNodesRequestHealthCount) GetValue() *int32 {
+	return s.Value
+}
+
+func (s *ListNodesRequestHealthCount) SetOperation(v string) *ListNodesRequestHealthCount {
+	s.Operation = &v
+	return s
+}
+
+func (s *ListNodesRequestHealthCount) SetValue(v int32) *ListNodesRequestHealthCount {
+	s.Value = &v
+	return s
+}
+
+func (s *ListNodesRequestHealthCount) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListNodesRequestHealthRate struct {
+	Operation *string `json:"operation,omitempty" xml:"operation,omitempty"`
+	Value     *int32  `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListNodesRequestHealthRate) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListNodesRequestHealthRate) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodesRequestHealthRate) GetOperation() *string {
+	return s.Operation
+}
+
+func (s *ListNodesRequestHealthRate) GetValue() *int32 {
+	return s.Value
+}
+
+func (s *ListNodesRequestHealthRate) SetOperation(v string) *ListNodesRequestHealthRate {
+	s.Operation = &v
+	return s
+}
+
+func (s *ListNodesRequestHealthRate) SetValue(v int32) *ListNodesRequestHealthRate {
+	s.Value = &v
+	return s
+}
+
+func (s *ListNodesRequestHealthRate) Validate() error {
 	return dara.Validate(s)
 }
