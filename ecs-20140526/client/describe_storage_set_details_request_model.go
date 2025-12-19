@@ -66,9 +66,9 @@ type DescribeStorageSetDetailsRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
 	//
-	// Valid values: 1 to 100.
+	// Maximum value: 100
 	//
-	// Default value: 10.
+	// Default value: 10
 	//
 	// example:
 	//

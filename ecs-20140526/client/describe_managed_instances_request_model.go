@@ -11,6 +11,8 @@ type iDescribeManagedInstancesRequest interface {
 	GoString() string
 	SetActivationId(v string) *DescribeManagedInstancesRequest
 	GetActivationId() *string
+	SetConnected(v string) *DescribeManagedInstancesRequest
+	GetConnected() *string
 	SetInstanceId(v []*string) *DescribeManagedInstancesRequest
 	GetInstanceId() []*string
 	SetInstanceIp(v string) *DescribeManagedInstancesRequest
@@ -52,6 +54,7 @@ type DescribeManagedInstancesRequest struct {
 	//
 	// 4ECEEE12-56F1-4FBC-9AB1-890F7494****
 	ActivationId *string `json:"ActivationId,omitempty" xml:"ActivationId,omitempty"`
+	Connected    *string `json:"Connected,omitempty" xml:"Connected,omitempty"`
 	// The ID of managed instance N. Valid values of N: 1 to 50.
 	//
 	// example:
@@ -170,6 +173,10 @@ func (s *DescribeManagedInstancesRequest) GetActivationId() *string {
 	return s.ActivationId
 }
 
+func (s *DescribeManagedInstancesRequest) GetConnected() *string {
+	return s.Connected
+}
+
 func (s *DescribeManagedInstancesRequest) GetInstanceId() []*string {
 	return s.InstanceId
 }
@@ -236,6 +243,11 @@ func (s *DescribeManagedInstancesRequest) GetTag() []*DescribeManagedInstancesRe
 
 func (s *DescribeManagedInstancesRequest) SetActivationId(v string) *DescribeManagedInstancesRequest {
 	s.ActivationId = &v
+	return s
+}
+
+func (s *DescribeManagedInstancesRequest) SetConnected(v string) *DescribeManagedInstancesRequest {
+	s.Connected = &v
 	return s
 }
 

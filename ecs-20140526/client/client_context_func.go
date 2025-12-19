@@ -16712,6 +16712,10 @@ func (client *Client) DescribeManagedInstancesWithContext(ctx context.Context, r
 		query["ActivationId"] = request.ActivationId
 	}
 
+	if !dara.IsNil(request.Connected) {
+		query["Connected"] = request.Connected
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}

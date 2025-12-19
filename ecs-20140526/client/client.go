@@ -21395,6 +21395,10 @@ func (client *Client) DescribeManagedInstancesWithOptions(request *DescribeManag
 		query["ActivationId"] = request.ActivationId
 	}
 
+	if !dara.IsNil(request.Connected) {
+		query["Connected"] = request.Connected
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
