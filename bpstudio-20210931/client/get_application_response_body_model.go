@@ -87,7 +87,12 @@ func (s *GetApplicationResponseBody) SetRequestId(v string) *GetApplicationRespo
 }
 
 func (s *GetApplicationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApplicationResponseBodyData struct {
@@ -290,7 +295,43 @@ func (s *GetApplicationResponseBodyData) SetTemplateId(v string) *GetApplication
 }
 
 func (s *GetApplicationResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Checklist != nil {
+		for _, item := range s.Checklist {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ComplianceList != nil {
+		for _, item := range s.ComplianceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PriceList != nil {
+		for _, item := range s.PriceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourceList != nil {
+		for _, item := range s.ResourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetApplicationResponseBodyDataChecklist struct {
@@ -455,7 +496,16 @@ func (s *GetApplicationResponseBodyDataComplianceList) SetRules(v []*GetApplicat
 }
 
 func (s *GetApplicationResponseBodyDataComplianceList) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetApplicationResponseBodyDataComplianceListRules struct {

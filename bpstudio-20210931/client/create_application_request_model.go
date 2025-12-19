@@ -187,7 +187,16 @@ func (s *CreateApplicationRequest) SetVariables(v map[string]interface{}) *Creat
 }
 
 func (s *CreateApplicationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateApplicationRequestInstances struct {

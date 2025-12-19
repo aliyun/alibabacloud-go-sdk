@@ -59,6 +59,11 @@ func (s *ExecuteOperationASyncResponse) SetBody(v *ExecuteOperationASyncResponse
 }
 
 func (s *ExecuteOperationASyncResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

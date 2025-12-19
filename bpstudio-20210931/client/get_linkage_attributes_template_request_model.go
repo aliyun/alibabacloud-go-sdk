@@ -126,7 +126,16 @@ func (s *GetLinkageAttributesTemplateRequest) SetVariables(v map[string]interfac
 }
 
 func (s *GetLinkageAttributesTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLinkageAttributesTemplateRequestInstances struct {

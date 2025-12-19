@@ -59,5 +59,10 @@ func (s *QueryInstancePrice4ModifyResponse) SetBody(v *QueryInstancePrice4Modify
 }
 
 func (s *QueryInstancePrice4ModifyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

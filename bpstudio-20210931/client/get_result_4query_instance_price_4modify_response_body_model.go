@@ -111,7 +111,12 @@ func (s *GetResult4QueryInstancePrice4ModifyResponseBody) SetRequestId(v string)
 }
 
 func (s *GetResult4QueryInstancePrice4ModifyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResult4QueryInstancePrice4ModifyResponseBodyData struct {
@@ -162,7 +167,16 @@ func (s *GetResult4QueryInstancePrice4ModifyResponseBodyData) SetTaskId(v string
 }
 
 func (s *GetResult4QueryInstancePrice4ModifyResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PriceList != nil {
+		for _, item := range s.PriceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList struct {

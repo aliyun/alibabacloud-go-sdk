@@ -87,7 +87,12 @@ func (s *GetTemplateResponseBody) SetRequestId(v string) *GetTemplateResponseBod
 }
 
 func (s *GetTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTemplateResponseBodyData struct {
@@ -213,7 +218,16 @@ func (s *GetTemplateResponseBodyData) SetVariables(v []*GetTemplateResponseBodyD
 }
 
 func (s *GetTemplateResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Variables != nil {
+		for _, item := range s.Variables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTemplateResponseBodyDataVariables struct {

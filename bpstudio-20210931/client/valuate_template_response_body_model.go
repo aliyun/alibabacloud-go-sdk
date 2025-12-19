@@ -87,7 +87,12 @@ func (s *ValuateTemplateResponseBody) SetRequestId(v string) *ValuateTemplateRes
 }
 
 func (s *ValuateTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ValuateTemplateResponseBodyData struct {
@@ -113,7 +118,16 @@ func (s *ValuateTemplateResponseBodyData) SetResourceList(v []*ValuateTemplateRe
 }
 
 func (s *ValuateTemplateResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceList != nil {
+		for _, item := range s.ResourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ValuateTemplateResponseBodyDataResourceList struct {
@@ -244,7 +258,16 @@ func (s *ValuateTemplateResponseBodyDataResourceList) SetTradePrice(v float64) *
 }
 
 func (s *ValuateTemplateResponseBodyDataResourceList) Validate() error {
-	return dara.Validate(s)
+	if s.PriceList != nil {
+		for _, item := range s.PriceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ValuateTemplateResponseBodyDataResourceListPriceList struct {

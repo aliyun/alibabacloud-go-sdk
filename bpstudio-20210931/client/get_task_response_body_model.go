@@ -82,7 +82,12 @@ func (s *GetTaskResponseBody) SetRequestId(v string) *GetTaskResponseBody {
 }
 
 func (s *GetTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTaskResponseBodyData struct {

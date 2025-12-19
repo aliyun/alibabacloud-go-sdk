@@ -126,7 +126,12 @@ func (s *QueryInstanceSpec4ModifyResponseBody) SetSuccess(v bool) *QueryInstance
 }
 
 func (s *QueryInstanceSpec4ModifyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryInstanceSpec4ModifyResponseBodyData struct {
@@ -151,7 +156,16 @@ func (s *QueryInstanceSpec4ModifyResponseBodyData) SetOptionalValues(v []*QueryI
 }
 
 func (s *QueryInstanceSpec4ModifyResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.OptionalValues != nil {
+		for _, item := range s.OptionalValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryInstanceSpec4ModifyResponseBodyDataOptionalValues struct {

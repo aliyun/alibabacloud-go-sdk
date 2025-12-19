@@ -83,7 +83,12 @@ func (s *ExecuteOperationSyncResponseBody) SetRequestId(v string) *ExecuteOperat
 }
 
 func (s *ExecuteOperationSyncResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.Data != nil {
+    if err := s.Data.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ExecuteOperationSyncResponseBodyData struct {

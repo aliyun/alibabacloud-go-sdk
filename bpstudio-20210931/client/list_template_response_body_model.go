@@ -121,7 +121,16 @@ func (s *ListTemplateResponseBody) SetTotalCount(v int32) *ListTemplateResponseB
 }
 
 func (s *ListTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTemplateResponseBodyData struct {
@@ -275,7 +284,16 @@ func (s *ListTemplateResponseBodyData) SetTemplateId(v string) *ListTemplateResp
 }
 
 func (s *ListTemplateResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTemplateResponseBodyDataTag struct {

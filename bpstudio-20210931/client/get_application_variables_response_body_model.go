@@ -82,7 +82,16 @@ func (s *GetApplicationVariablesResponseBody) SetRequestId(v string) *GetApplica
 }
 
 func (s *GetApplicationVariablesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetApplicationVariablesResponseBodyData struct {
@@ -120,7 +129,16 @@ func (s *GetApplicationVariablesResponseBodyData) SetVariableList(v []*GetApplic
 }
 
 func (s *GetApplicationVariablesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.VariableList != nil {
+		for _, item := range s.VariableList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetApplicationVariablesResponseBodyDataVariableList struct {

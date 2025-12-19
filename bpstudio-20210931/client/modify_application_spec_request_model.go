@@ -52,7 +52,16 @@ func (s *ModifyApplicationSpecRequest) SetInstanceSpec(v []*ModifyApplicationSpe
 }
 
 func (s *ModifyApplicationSpecRequest) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceSpec != nil {
+		for _, item := range s.InstanceSpec {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyApplicationSpecRequestInstanceSpec struct {

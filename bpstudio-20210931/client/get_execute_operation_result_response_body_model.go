@@ -87,7 +87,12 @@ func (s *GetExecuteOperationResultResponseBody) SetRequestId(v string) *GetExecu
 }
 
 func (s *GetExecuteOperationResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetExecuteOperationResultResponseBodyData struct {

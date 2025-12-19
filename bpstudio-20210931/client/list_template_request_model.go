@@ -172,7 +172,16 @@ func (s *ListTemplateRequest) SetType(v string) *ListTemplateRequest {
 }
 
 func (s *ListTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTemplateRequestTag struct {
