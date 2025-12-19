@@ -17,6 +17,8 @@ type iAttachWhitelistTemplateToInstanceResponseBody interface {
 
 type AttachWhitelistTemplateToInstanceResponseBody struct {
 	Data *AttachWhitelistTemplateToInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 1234567890

@@ -593,6 +593,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 		query["StorageType"] = request.StorageType
 	}
 
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
 	if !dara.IsNil(request.VpcId) {
 		query["VpcId"] = request.VpcId
 	}
@@ -1747,6 +1751,10 @@ func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstance
 
 	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	req := &openapiutil.OpenApiRequest{

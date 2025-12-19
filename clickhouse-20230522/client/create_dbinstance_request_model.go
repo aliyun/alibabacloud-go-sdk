@@ -47,6 +47,8 @@ type iCreateDBInstanceRequest interface {
 	GetStorageQuota() *int64
 	SetStorageType(v string) *CreateDBInstanceRequest
 	GetStorageType() *string
+	SetTags(v []*CreateDBInstanceRequestTags) *CreateDBInstanceRequest
+	GetTags() []*CreateDBInstanceRequestTags
 	SetVpcId(v string) *CreateDBInstanceRequest
 	GetVpcId() *string
 	SetVswitchId(v string) *CreateDBInstanceRequest
@@ -145,7 +147,8 @@ type CreateDBInstanceRequest struct {
 	// example:
 	//
 	// OSS
-	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageType *string                        `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Tags        []*CreateDBInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The virtual private cloud (VPC) ID.
 	//
 	// example:
@@ -248,6 +251,10 @@ func (s *CreateDBInstanceRequest) GetStorageQuota() *int64 {
 
 func (s *CreateDBInstanceRequest) GetStorageType() *string {
 	return s.StorageType
+}
+
+func (s *CreateDBInstanceRequest) GetTags() []*CreateDBInstanceRequestTags {
+	return s.Tags
 }
 
 func (s *CreateDBInstanceRequest) GetVpcId() *string {
@@ -357,6 +364,11 @@ func (s *CreateDBInstanceRequest) SetStorageType(v string) *CreateDBInstanceRequ
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetTags(v []*CreateDBInstanceRequestTags) *CreateDBInstanceRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetVpcId(v string) *CreateDBInstanceRequest {
 	s.VpcId = &v
 	return s
@@ -375,6 +387,15 @@ func (s *CreateDBInstanceRequest) SetZoneId(v string) *CreateDBInstanceRequest {
 func (s *CreateDBInstanceRequest) Validate() error {
 	if s.MultiZone != nil {
 		for _, item := range s.MultiZone {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -423,5 +444,46 @@ func (s *CreateDBInstanceRequestMultiZone) SetZoneId(v string) *CreateDBInstance
 }
 
 func (s *CreateDBInstanceRequestMultiZone) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateDBInstanceRequestTags struct {
+	// example:
+	//
+	// user_123
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 示例字符串
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDBInstanceRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDBInstanceRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBInstanceRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateDBInstanceRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateDBInstanceRequestTags) SetKey(v string) *CreateDBInstanceRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequestTags) SetValue(v string) *CreateDBInstanceRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequestTags) Validate() error {
 	return dara.Validate(s)
 }

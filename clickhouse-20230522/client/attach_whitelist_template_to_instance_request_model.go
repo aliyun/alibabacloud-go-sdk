@@ -24,6 +24,8 @@ type AttachWhitelistTemplateToInstanceRequest struct {
 	//
 	// cc-nkhdbf1d,cc-nkhdbf1s
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// RegionId
+	//
 	// This parameter is required.
 	//
 	// example:

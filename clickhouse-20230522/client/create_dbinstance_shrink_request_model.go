@@ -47,6 +47,8 @@ type iCreateDBInstanceShrinkRequest interface {
 	GetStorageQuota() *int64
 	SetStorageType(v string) *CreateDBInstanceShrinkRequest
 	GetStorageType() *string
+	SetTags(v []*CreateDBInstanceShrinkRequestTags) *CreateDBInstanceShrinkRequest
+	GetTags() []*CreateDBInstanceShrinkRequestTags
 	SetVpcId(v string) *CreateDBInstanceShrinkRequest
 	GetVpcId() *string
 	SetVswitchId(v string) *CreateDBInstanceShrinkRequest
@@ -145,7 +147,8 @@ type CreateDBInstanceShrinkRequest struct {
 	// example:
 	//
 	// OSS
-	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageType *string                              `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Tags        []*CreateDBInstanceShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The virtual private cloud (VPC) ID.
 	//
 	// example:
@@ -248,6 +251,10 @@ func (s *CreateDBInstanceShrinkRequest) GetStorageQuota() *int64 {
 
 func (s *CreateDBInstanceShrinkRequest) GetStorageType() *string {
 	return s.StorageType
+}
+
+func (s *CreateDBInstanceShrinkRequest) GetTags() []*CreateDBInstanceShrinkRequestTags {
+	return s.Tags
 }
 
 func (s *CreateDBInstanceShrinkRequest) GetVpcId() *string {
@@ -357,6 +364,11 @@ func (s *CreateDBInstanceShrinkRequest) SetStorageType(v string) *CreateDBInstan
 	return s
 }
 
+func (s *CreateDBInstanceShrinkRequest) SetTags(v []*CreateDBInstanceShrinkRequestTags) *CreateDBInstanceShrinkRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateDBInstanceShrinkRequest) SetVpcId(v string) *CreateDBInstanceShrinkRequest {
 	s.VpcId = &v
 	return s
@@ -373,5 +385,55 @@ func (s *CreateDBInstanceShrinkRequest) SetZoneId(v string) *CreateDBInstanceShr
 }
 
 func (s *CreateDBInstanceShrinkRequest) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateDBInstanceShrinkRequestTags struct {
+	// example:
+	//
+	// user_123
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 示例字符串
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDBInstanceShrinkRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDBInstanceShrinkRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBInstanceShrinkRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateDBInstanceShrinkRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateDBInstanceShrinkRequestTags) SetKey(v string) *CreateDBInstanceShrinkRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequestTags) SetValue(v string) *CreateDBInstanceShrinkRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequestTags) Validate() error {
 	return dara.Validate(s)
 }

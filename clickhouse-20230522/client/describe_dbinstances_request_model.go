@@ -23,6 +23,8 @@ type iDescribeDBInstancesRequest interface {
 	GetRegionId() *string
 	SetResourceGroupId(v string) *DescribeDBInstancesRequest
 	GetResourceGroupId() *string
+	SetTags(v []*DescribeDBInstancesRequestTags) *DescribeDBInstancesRequest
+	GetTags() []*DescribeDBInstancesRequestTags
 }
 
 type DescribeDBInstancesRequest struct {
@@ -67,7 +69,8 @@ type DescribeDBInstancesRequest struct {
 	// example:
 	//
 	// rg-4690g37929****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            []*DescribeDBInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDBInstancesRequest) String() string {
@@ -106,6 +109,10 @@ func (s *DescribeDBInstancesRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
+func (s *DescribeDBInstancesRequest) GetTags() []*DescribeDBInstancesRequestTags {
+	return s.Tags
+}
+
 func (s *DescribeDBInstancesRequest) SetDBInstanceIds(v string) *DescribeDBInstancesRequest {
 	s.DBInstanceIds = &v
 	return s
@@ -141,6 +148,61 @@ func (s *DescribeDBInstancesRequest) SetResourceGroupId(v string) *DescribeDBIns
 	return s
 }
 
+func (s *DescribeDBInstancesRequest) SetTags(v []*DescribeDBInstancesRequestTags) *DescribeDBInstancesRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeDBInstancesRequest) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeDBInstancesRequestTags struct {
+	// example:
+	//
+	// user_123
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 示例值
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDBInstancesRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBInstancesRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstancesRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeDBInstancesRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeDBInstancesRequestTags) SetKey(v string) *DescribeDBInstancesRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeDBInstancesRequestTags) SetValue(v string) *DescribeDBInstancesRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeDBInstancesRequestTags) Validate() error {
 	return dara.Validate(s)
 }
