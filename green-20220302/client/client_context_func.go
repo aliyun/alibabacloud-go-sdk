@@ -699,6 +699,60 @@ func (client *Client) MultiModalGuardWithContext(ctx context.Context, request *M
 
 // Summary:
 //
+// 多模态同步检测接口，支持图片base64字符串
+//
+// @param request - MultiModalGuardForBase64Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MultiModalGuardForBase64Response
+func (client *Client) MultiModalGuardForBase64WithContext(ctx context.Context, request *MultiModalGuardForBase64Request, runtime *dara.RuntimeOptions) (_result *MultiModalGuardForBase64Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Service) {
+		query["Service"] = request.Service
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ImageBase64Str) {
+		body["ImageBase64Str"] = request.ImageBase64Str
+	}
+
+	if !dara.IsNil(request.ServiceParameters) {
+		body["ServiceParameters"] = request.ServiceParameters
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MultiModalGuardForBase64"),
+		Version:     dara.String("2022-03-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MultiModalGuardForBase64Response{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 多模态-异步检测
 //
 // @param request - MultimodalAsyncModerationRequest

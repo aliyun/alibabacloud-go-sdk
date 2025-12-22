@@ -96,6 +96,7 @@ func (s *DescribeFileModerationResultResponseBody) Validate() error {
 }
 
 type DescribeFileModerationResultResponseBodyData struct {
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The ID of the moderated object.
 	//
 	// example:
@@ -134,6 +135,10 @@ func (s DescribeFileModerationResultResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeFileModerationResultResponseBodyData) GetAccountId() *string {
+	return s.AccountId
+}
+
 func (s *DescribeFileModerationResultResponseBodyData) GetDataId() *string {
 	return s.DataId
 }
@@ -156,6 +161,11 @@ func (s *DescribeFileModerationResultResponseBodyData) GetRiskLevel() *string {
 
 func (s *DescribeFileModerationResultResponseBodyData) GetUrl() *string {
 	return s.Url
+}
+
+func (s *DescribeFileModerationResultResponseBodyData) SetAccountId(v string) *DescribeFileModerationResultResponseBodyData {
+	s.AccountId = &v
+	return s
 }
 
 func (s *DescribeFileModerationResultResponseBodyData) SetDataId(v string) *DescribeFileModerationResultResponseBodyData {

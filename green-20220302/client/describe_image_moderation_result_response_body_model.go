@@ -96,6 +96,7 @@ func (s *DescribeImageModerationResultResponseBody) Validate() error {
 }
 
 type DescribeImageModerationResultResponseBodyData struct {
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The value of dataId that is specified in the API request. If this parameter is not specified in the API request, this field is not available in the response.
 	//
 	// example:
@@ -139,6 +140,10 @@ func (s DescribeImageModerationResultResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeImageModerationResultResponseBodyData) GetAccountId() *string {
+	return s.AccountId
+}
+
 func (s *DescribeImageModerationResultResponseBodyData) GetDataId() *string {
 	return s.DataId
 }
@@ -165,6 +170,11 @@ func (s *DescribeImageModerationResultResponseBodyData) GetResult() []*DescribeI
 
 func (s *DescribeImageModerationResultResponseBodyData) GetRiskLevel() *string {
 	return s.RiskLevel
+}
+
+func (s *DescribeImageModerationResultResponseBodyData) SetAccountId(v string) *DescribeImageModerationResultResponseBodyData {
+	s.AccountId = &v
+	return s
 }
 
 func (s *DescribeImageModerationResultResponseBodyData) SetDataId(v string) *DescribeImageModerationResultResponseBodyData {

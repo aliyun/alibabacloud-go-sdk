@@ -96,6 +96,7 @@ func (s *ImageModerationResponseBody) Validate() error {
 }
 
 type ImageModerationResponseBodyData struct {
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The ID of the moderated object.
 	//
 	// >  If you specify the dataId parameter in the request, the value of the dataId parameter is returned in the response.
@@ -125,6 +126,10 @@ func (s ImageModerationResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *ImageModerationResponseBodyData) GetAccountId() *string {
+	return s.AccountId
+}
+
 func (s *ImageModerationResponseBodyData) GetDataId() *string {
 	return s.DataId
 }
@@ -143,6 +148,11 @@ func (s *ImageModerationResponseBodyData) GetResult() []*ImageModerationResponse
 
 func (s *ImageModerationResponseBodyData) GetRiskLevel() *string {
 	return s.RiskLevel
+}
+
+func (s *ImageModerationResponseBodyData) SetAccountId(v string) *ImageModerationResponseBodyData {
+	s.AccountId = &v
+	return s
 }
 
 func (s *ImageModerationResponseBodyData) SetDataId(v string) *ImageModerationResponseBodyData {

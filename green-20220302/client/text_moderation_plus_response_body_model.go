@@ -96,6 +96,7 @@ func (s *TextModerationPlusResponseBody) Validate() error {
 }
 
 type TextModerationPlusResponseBodyData struct {
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The suggestion.
 	Advice []*TextModerationPlusResponseBodyDataAdvice `json:"Advice,omitempty" xml:"Advice,omitempty" type:"Repeated"`
 	// The level of prompt attack
@@ -147,6 +148,10 @@ func (s TextModerationPlusResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *TextModerationPlusResponseBodyData) GetAccountId() *string {
+	return s.AccountId
+}
+
 func (s *TextModerationPlusResponseBodyData) GetAdvice() []*TextModerationPlusResponseBodyDataAdvice {
 	return s.Advice
 }
@@ -193,6 +198,11 @@ func (s *TextModerationPlusResponseBodyData) GetSensitiveResult() []*TextModerat
 
 func (s *TextModerationPlusResponseBodyData) GetTranslatedContent() *string {
 	return s.TranslatedContent
+}
+
+func (s *TextModerationPlusResponseBodyData) SetAccountId(v string) *TextModerationPlusResponseBodyData {
+	s.AccountId = &v
+	return s
 }
 
 func (s *TextModerationPlusResponseBodyData) SetAdvice(v []*TextModerationPlusResponseBodyDataAdvice) *TextModerationPlusResponseBodyData {
