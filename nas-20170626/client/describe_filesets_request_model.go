@@ -30,8 +30,6 @@ type DescribeFilesetsRequest struct {
 	//
 	// 	- The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
 	//
-	// >  CPFS is not supported on the international site.
-	//
 	// This parameter is required.
 	//
 	// example:

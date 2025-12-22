@@ -30,8 +30,6 @@ type DescribeFilesetsResponseBody struct {
 	//
 	// 	- The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
 	//
-	// >  CPFS is not supported on the international site.
-	//
 	// example:
 	//
 	// bmcpfs-290w65p03ok64ya****
@@ -146,13 +144,13 @@ type DescribeFilesetsResponseBodyEntriesEntrie struct {
 	//
 	// 2021-09-30T10:08:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2838077.html) operation. Valid values:
+	// Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2402263.html) operation. Valid values:
 	//
-	// 	- true
+	// 	- true: enables release protection.
 	//
-	// 	- false
+	// 	- false: disables release protection.
 	//
-	// >  This parameter can protect filesets only against manual releases, but not against automatic releases.
+	// > This parameter can protect filesets only against manual releases, but not against automatic releases.
 	//
 	// example:
 	//
@@ -177,8 +175,6 @@ type DescribeFilesetsResponseBodyEntriesEntrie struct {
 	// 	- The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
 	//
 	// 	- The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
-	//
-	// >  CPFS is not supported on the international site.
 	//
 	// example:
 	//

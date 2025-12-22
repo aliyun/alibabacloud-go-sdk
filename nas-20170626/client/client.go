@@ -273,25 +273,27 @@ func (client *Client) ApplyAutoSnapshotPolicy(request *ApplyAutoSnapshotPolicyRe
 //
 // Description:
 //
-//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems.
 //
-//		- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+//		- Only CPFS V2.2.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
 //		- You can add AutoRefresh configurations only to the dataflows that are in the `Running` state.
 //
 //		- You can add a maximum of five AutoRefresh configurations to a dataflow.
 //
-//		- It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the dataflow status.
+//		- It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the dataflow status.
 //
-//		- AutoRefresh depends on the object modification events collected by EventBridge from the source Object Storage Service (OSS) bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
+//		- AutoRefresh depends on the object modification events collected by EventBridge from the source OSS bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
 //
-//	    > The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
+//	    **
 //
-//		- The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
+//	    **Note*	- The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
 //
-//		- After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
+//		- The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS data flow.
 //
-//		- AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes Misconfigured. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
+//		- After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a data flow task to load the updated data.
+//
+//		- AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS data flow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the data flow status becomes Misconfigured. To resolve these issues, you can increase the data flow specifications or reduce the frequency of triggering the object modification event.
 //
 // @param request - ApplyDataFlowAutoRefreshRequest
 //
@@ -363,25 +365,27 @@ func (client *Client) ApplyDataFlowAutoRefreshWithOptions(request *ApplyDataFlow
 //
 // Description:
 //
-//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems.
 //
-//		- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+//		- Only CPFS V2.2.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
 //		- You can add AutoRefresh configurations only to the dataflows that are in the `Running` state.
 //
 //		- You can add a maximum of five AutoRefresh configurations to a dataflow.
 //
-//		- It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the dataflow status.
+//		- It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the dataflow status.
 //
-//		- AutoRefresh depends on the object modification events collected by EventBridge from the source Object Storage Service (OSS) bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
+//		- AutoRefresh depends on the object modification events collected by EventBridge from the source OSS bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
 //
-//	    > The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
+//	    **
 //
-//		- The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
+//	    **Note*	- The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
 //
-//		- After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
+//		- The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS data flow.
 //
-//		- AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes Misconfigured. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
+//		- After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a data flow task to load the updated data.
+//
+//		- AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS data flow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the data flow status becomes Misconfigured. To resolve these issues, you can increase the data flow specifications or reduce the frequency of triggering the object modification event.
 //
 // @param request - ApplyDataFlowAutoRefreshRequest
 //
@@ -555,13 +559,13 @@ func (client *Client) CancelAutoSnapshotPolicy(request *CancelAutoSnapshotPolicy
 //
 // Description:
 //
-//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems.
 //
-//		- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+//		- Only CPFS V2.2.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
 //		- You can cancel AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
 //
-//		- It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the status of the AutoRefresh tasks.
+//		- It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402270.html) operation to query the status of the AutoRefresh tasks.
 //
 // @param request - CancelDataFlowAutoRefreshRequest
 //
@@ -625,13 +629,13 @@ func (client *Client) CancelDataFlowAutoRefreshWithOptions(request *CancelDataFl
 //
 // Description:
 //
-//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems.
 //
-//		- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+//		- Only CPFS V2.2.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
 //		- You can cancel AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
 //
-//		- It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the status of the AutoRefresh tasks.
+//		- It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402270.html) operation to query the status of the AutoRefresh tasks.
 //
 // @param request - CancelDataFlowAutoRefreshRequest
 //
@@ -747,15 +751,17 @@ func (client *Client) CancelDataFlowSubTask(request *CancelDataFlowSubTaskReques
 
 // Summary:
 //
-// Cancels a dataflow task that is not running.
+// Cancels a batch or streaming task that is in the Pending or Execute state.
 //
 // Description:
 //
-//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flow tasks. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for Lingjun V2.4.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
 //		- You can cancel only the data flow tasks that are in the `Pending` and `Executing` states.
 //
-//		- It generally takes 5 to 10 minutes to cancel a data flow task. You can query the task execution status by calling the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation.
+//		- It generally takes 5 to 10 minutes to cancel a data flow task. You can query the task execution status by calling the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2402275.html) operation.
+//
+//		- If a data streaming task contains running subtasks, you cannot cancel the streaming task. Otherwise, an InvalidStatus.ResourceMismatch error message is returned.
 //
 // @param request - CancelDataFlowTaskRequest
 //
@@ -815,15 +821,17 @@ func (client *Client) CancelDataFlowTaskWithOptions(request *CancelDataFlowTaskR
 
 // Summary:
 //
-// Cancels a dataflow task that is not running.
+// Cancels a batch or streaming task that is in the Pending or Execute state.
 //
 // Description:
 //
-//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flow tasks. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for Lingjun V2.4.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
 //		- You can cancel only the data flow tasks that are in the `Pending` and `Executing` states.
 //
-//		- It generally takes 5 to 10 minutes to cancel a data flow task. You can query the task execution status by calling the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation.
+//		- It generally takes 5 to 10 minutes to cancel a data flow task. You can query the task execution status by calling the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2402275.html) operation.
+//
+//		- If a data streaming task contains running subtasks, you cannot cancel the streaming task. Otherwise, an InvalidStatus.ResourceMismatch error message is returned.
 //
 // @param request - CancelDataFlowTaskRequest
 //
@@ -1645,37 +1653,97 @@ func (client *Client) CreateAutoSnapshotPolicy(request *CreateAutoSnapshotPolicy
 //
 //	  Basic operations
 //
-//	    	- Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows.
+//	    	- Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for Lingjun V2.4.0 and later support data flows.
 //
-//	    	- You can create a data flow only when a CPFS for LINGJUN file system is in the Running state.
+//	    	- You can create a data flow only when a CPFS or CPFS for Lingjun file system is in the Running state.
 //
-//	    	- A maximum of 10 data flows can be created for a CPFS for LINGJUN file system.
+//	    	- A maximum of 10 data flows can be created for a CPFS or CPFS for Lingjun file system.
 //
 //	    	- It generally takes 2 to 5 minutes to create a data flow. You can call the DescribeDataFlows operation to check whether the data flow has been created.
 //
-//		- Permissions
+//		- Permission
 //
-//	    When you create a data flow, CPFS for LINGJUN obtains the following two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/2837688.html).
+//	    When you create a data flow, CPFS obtains the following two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/185138.html).
 //
-//		- CPFS for LINGJUN usage notes
+//		- CPFS usage notes
 //
-//	     	- Source storage
+//	    	- Billing
 //
-//	         	- The source storage is an Object Storage Service (OSS) bucket. SourceStorage for a data flow must be an OSS bucket.
+//	        	- If you create a data flow, you are charged for using the data flow throughput. For more information, see [Billing of CPFS](https://help.aliyun.com/document_detail/111858.html).
 //
-//	         	- CPFS for LINGJUN data flows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
+//	        	- When you configure the AutoRefresh feature for a data flow, CPFS must use EventBridge to collect object modification events from the source Object Storage Service (OSS) bucket. Event fees are incurred. For more information, see [Billing of EventBridge](https://help.aliyun.com/document_detail/163752.html).
 //
-//	         	- If data flows for multiple CPFS for LINGJUN file systems or multiple data flows for the same CPFS for LINGJUN file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS for LINGJUN file systems to one OSS bucket.
+//	    	- Data flow specifications
 //
-//	         	- Data flows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
+//	        	- The data flow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The data flow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a data flow.
 //
-//	         	- CPFS for LINGJUN V2.6.0 and later allow you to create data flows for OSS buckets across accounts.
+//	        	- When you create a data flow, the vSwitch IP addresses used by a CPFS mount target are consumed. Make sure that the vSwitch can provide sufficient IP addresses.
 //
-//	         	- The account id parameter is required only when you use OSS buckets across accounts.
+//	        	- Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the data flow whose throughput is changed meet the requirements.
 //
-//	         	- To use OSS buckets across accounts, you must first grant permissions to the related accounts. For more information, see [Cross-account authorization on data flows](https://help.aliyun.com/document_detail/2713462.html).
+//	    	- Fileset
 //
-//	         >  Before you create a data flow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created data flow can access the data in the OSS bucket. When a data flow is being used, do not delete or modify the tag. Otherwise, the data flow for CPFS for LINGJUN cannot access the data in the OSS bucket.
+//	        	- The destination for a data flow is a fileset in the CPFS file system. A fileset is a new directory tree structure (a small file directory) in a CPFS file system. Each fileset independently manages an inode space.
+//
+//	        	- When you create a data flow for a CPFS file system, the related fileset must already exist and cannot be nested with other filesets. Only one data flow can be created in a fileset, which corresponds to one source storage.
+//
+//	        	- A fileset supports a maximum of one million files. If the number of files imported from an OSS bucket into the fileset exceeds the upper limit, the `no space` error message is returned when you add new files.
+//
+//	    **
+//
+//	    **Note **If data already exists in the fileset, after you create a data flow, the existing data in the fileset is cleared and replaced with the data synchronized from the OSS bucket.
+//
+//	    	- AutoRefresh
+//
+//	        	- After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a data flow task to load the updated data.
+//
+//	        	- AutoRefresh depends on the object modification events collected by EventBridge from the source OSS bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
+//
+//	        	- The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. You can configure a maximum of five AutoRefresh directories for a data flow.
+//
+//	        	- AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS data flow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the data flow status becomes `Misconfigured`. To resolve these issues, you can increase the data flow specifications or reduce the frequency of triggering the object modification event.
+//
+//	        	- When you add an AutoRefresh configuration to the prefix for a CPFS data flow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS data flow.
+//
+//	        **
+//
+//	        **Note **The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
+//
+//	    	- Source storage
+//
+//	        	- The source storage is an OSS bucket. SourceStorage for a data flow must be an OSS bucket.
+//
+//	        	- CPFS data flows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
+//
+//	        	- If data flows for multiple CPFS file systems or multiple data flows for the same CPFS file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS file systems to one OSS bucket.
+//
+//	        	- Data flows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
+//
+//	        **
+//
+//	        **Note **Before you create a data flow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created data flow can access the data in the OSS bucket. When a data flow is being used, do not delete or modify the tag. Otherwise, the data flow for CPFS cannot access the data in the OSS bucket.
+//
+//		- CPFS for Lingjun usage notes
+//
+//	    	- Source storage
+//
+//	        	- The source storage is an OSS bucket. SourceStorage for a data flow must be an OSS bucket.
+//
+//	        	- CPFS for Lingjun data flows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
+//
+//	        	- If data flows for multiple CPFS for Lingjun file systems or multiple data flows for the same CPFS for Lingjun file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS for Lingjun file systems to one OSS bucket.
+//
+//	        	- Data flows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
+//
+//	        	- CPFS for Lingjun V2.6.0 and later allow you to create data flows for OSS buckets across accounts.
+//
+//	        	- The account id parameter is required only when you use OSS buckets across accounts.
+//
+//	        	- To use OSS buckets across accounts, you must first grant permissions to the related accounts. For more information, see [Cross-account authorization on data flows](https://help.aliyun.com/document_detail/2713462.html).
+//
+//	            **
+//
+//	            **Note **Before you create a data flow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created data flow can access the data in the OSS bucket. When a data flow is being used, do not delete or modify the tag. Otherwise, the data flow for CPFS for Lingjun cannot access the data in the OSS bucket.
 //
 //	    	- Limits of data flows on file systems
 //
@@ -1687,7 +1755,7 @@ func (client *Client) CreateAutoSnapshotPolicy(request *CreateAutoSnapshotPolicy
 //
 //	    	- Limits of data flows on import
 //
-//	        	- After a symbolic link is imported to CPFS for LINGJUN, the symbolic link is converted into a common data file that contains no symbolic link information.
+//	        	- After a symbolic link is imported to CPFS for Lingjun, the symbolic link is converted into a common data file that contains no symbolic link information.
 //
 //	        	- If an OSS bucket has multiple versions, only data of the latest version is used.
 //
@@ -1799,37 +1867,97 @@ func (client *Client) CreateDataFlowWithOptions(request *CreateDataFlowRequest, 
 //
 //	  Basic operations
 //
-//	    	- Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows.
+//	    	- Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for Lingjun V2.4.0 and later support data flows.
 //
-//	    	- You can create a data flow only when a CPFS for LINGJUN file system is in the Running state.
+//	    	- You can create a data flow only when a CPFS or CPFS for Lingjun file system is in the Running state.
 //
-//	    	- A maximum of 10 data flows can be created for a CPFS for LINGJUN file system.
+//	    	- A maximum of 10 data flows can be created for a CPFS or CPFS for Lingjun file system.
 //
 //	    	- It generally takes 2 to 5 minutes to create a data flow. You can call the DescribeDataFlows operation to check whether the data flow has been created.
 //
-//		- Permissions
+//		- Permission
 //
-//	    When you create a data flow, CPFS for LINGJUN obtains the following two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/2837688.html).
+//	    When you create a data flow, CPFS obtains the following two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/185138.html).
 //
-//		- CPFS for LINGJUN usage notes
+//		- CPFS usage notes
 //
-//	     	- Source storage
+//	    	- Billing
 //
-//	         	- The source storage is an Object Storage Service (OSS) bucket. SourceStorage for a data flow must be an OSS bucket.
+//	        	- If you create a data flow, you are charged for using the data flow throughput. For more information, see [Billing of CPFS](https://help.aliyun.com/document_detail/111858.html).
 //
-//	         	- CPFS for LINGJUN data flows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
+//	        	- When you configure the AutoRefresh feature for a data flow, CPFS must use EventBridge to collect object modification events from the source Object Storage Service (OSS) bucket. Event fees are incurred. For more information, see [Billing of EventBridge](https://help.aliyun.com/document_detail/163752.html).
 //
-//	         	- If data flows for multiple CPFS for LINGJUN file systems or multiple data flows for the same CPFS for LINGJUN file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS for LINGJUN file systems to one OSS bucket.
+//	    	- Data flow specifications
 //
-//	         	- Data flows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
+//	        	- The data flow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The data flow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a data flow.
 //
-//	         	- CPFS for LINGJUN V2.6.0 and later allow you to create data flows for OSS buckets across accounts.
+//	        	- When you create a data flow, the vSwitch IP addresses used by a CPFS mount target are consumed. Make sure that the vSwitch can provide sufficient IP addresses.
 //
-//	         	- The account id parameter is required only when you use OSS buckets across accounts.
+//	        	- Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the data flow whose throughput is changed meet the requirements.
 //
-//	         	- To use OSS buckets across accounts, you must first grant permissions to the related accounts. For more information, see [Cross-account authorization on data flows](https://help.aliyun.com/document_detail/2713462.html).
+//	    	- Fileset
 //
-//	         >  Before you create a data flow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created data flow can access the data in the OSS bucket. When a data flow is being used, do not delete or modify the tag. Otherwise, the data flow for CPFS for LINGJUN cannot access the data in the OSS bucket.
+//	        	- The destination for a data flow is a fileset in the CPFS file system. A fileset is a new directory tree structure (a small file directory) in a CPFS file system. Each fileset independently manages an inode space.
+//
+//	        	- When you create a data flow for a CPFS file system, the related fileset must already exist and cannot be nested with other filesets. Only one data flow can be created in a fileset, which corresponds to one source storage.
+//
+//	        	- A fileset supports a maximum of one million files. If the number of files imported from an OSS bucket into the fileset exceeds the upper limit, the `no space` error message is returned when you add new files.
+//
+//	    **
+//
+//	    **Note **If data already exists in the fileset, after you create a data flow, the existing data in the fileset is cleared and replaced with the data synchronized from the OSS bucket.
+//
+//	    	- AutoRefresh
+//
+//	        	- After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a data flow task to load the updated data.
+//
+//	        	- AutoRefresh depends on the object modification events collected by EventBridge from the source OSS bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
+//
+//	        	- The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. You can configure a maximum of five AutoRefresh directories for a data flow.
+//
+//	        	- AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS data flow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the data flow status becomes `Misconfigured`. To resolve these issues, you can increase the data flow specifications or reduce the frequency of triggering the object modification event.
+//
+//	        	- When you add an AutoRefresh configuration to the prefix for a CPFS data flow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS data flow.
+//
+//	        **
+//
+//	        **Note **The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
+//
+//	    	- Source storage
+//
+//	        	- The source storage is an OSS bucket. SourceStorage for a data flow must be an OSS bucket.
+//
+//	        	- CPFS data flows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
+//
+//	        	- If data flows for multiple CPFS file systems or multiple data flows for the same CPFS file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS file systems to one OSS bucket.
+//
+//	        	- Data flows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
+//
+//	        **
+//
+//	        **Note **Before you create a data flow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created data flow can access the data in the OSS bucket. When a data flow is being used, do not delete or modify the tag. Otherwise, the data flow for CPFS cannot access the data in the OSS bucket.
+//
+//		- CPFS for Lingjun usage notes
+//
+//	    	- Source storage
+//
+//	        	- The source storage is an OSS bucket. SourceStorage for a data flow must be an OSS bucket.
+//
+//	        	- CPFS for Lingjun data flows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
+//
+//	        	- If data flows for multiple CPFS for Lingjun file systems or multiple data flows for the same CPFS for Lingjun file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS for Lingjun file systems to one OSS bucket.
+//
+//	        	- Data flows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
+//
+//	        	- CPFS for Lingjun V2.6.0 and later allow you to create data flows for OSS buckets across accounts.
+//
+//	        	- The account id parameter is required only when you use OSS buckets across accounts.
+//
+//	        	- To use OSS buckets across accounts, you must first grant permissions to the related accounts. For more information, see [Cross-account authorization on data flows](https://help.aliyun.com/document_detail/2713462.html).
+//
+//	            **
+//
+//	            **Note **Before you create a data flow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created data flow can access the data in the OSS bucket. When a data flow is being used, do not delete or modify the tag. Otherwise, the data flow for CPFS for Lingjun cannot access the data in the OSS bucket.
 //
 //	    	- Limits of data flows on file systems
 //
@@ -1841,7 +1969,7 @@ func (client *Client) CreateDataFlowWithOptions(request *CreateDataFlowRequest, 
 //
 //	    	- Limits of data flows on import
 //
-//	        	- After a symbolic link is imported to CPFS for LINGJUN, the symbolic link is converted into a common data file that contains no symbolic link information.
+//	        	- After a symbolic link is imported to CPFS for Lingjun, the symbolic link is converted into a common data file that contains no symbolic link information.
 //
 //	        	- If an OSS bucket has multiple versions, only data of the latest version is used.
 //
@@ -1987,17 +2115,29 @@ func (client *Client) CreateDataFlowSubTask(request *CreateDataFlowSubTaskReques
 //
 // Description:
 //
-//	  Only Cloud Parallel File Storage (CPFS) for Lingjun V2.4.0 and later support dataflow. You can view the version information on the file system details page in the console.
+//	  CPFS usage notes
 //
-//		- Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
+//	    	- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
 //
-//		- You can create a dataflow task only for a dataflow that is in the Running state.
+//	    	- Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2402275.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
 //
-//		- When you manually run a dataflow task, the automatic data update task for the dataflow is interrupted and enters the pending state.
+//	    	- You can create a dataflow task only for a dataflow that is in the Running state.
 //
-//		- When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS for Lingjun file system does not exceed 1,023 characters.
+//	    	- When you manually run a dataflow task, the automatic data update task for the dataflow is interrupted and enters the pending state.
 //
-//		- CPFS for Lingjun supports two types of tasks: batch tasks and streaming tasks. For more information, see [Task types](https://help.aliyun.com/document_detail/2845429.html).
+//	    	- When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS file system does not exceed 1,023 characters.
+//
+//		- CPFS for Lingjun usage notes
+//
+//	    	- Only CPFS for Lingjun V2.4.0 and later support dataflow. You can view the version information on the file system details page in the console.
+//
+//	    	- Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2402275.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
+//
+//	    	- You can create a dataflow task only for a dataflow that is in the Running state.
+//
+//	    	- When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS for Lingjun file system does not exceed 1,023 characters.
+//
+//	    	- CPFS for Lingjun supports two types of tasks: batch tasks and streaming tasks. For more information, see [Task types](https://help.aliyun.com/document_detail/2845429.html).
 //
 // @param request - CreateDataFlowTaskRequest
 //
@@ -2097,17 +2237,29 @@ func (client *Client) CreateDataFlowTaskWithOptions(request *CreateDataFlowTaskR
 //
 // Description:
 //
-//	  Only Cloud Parallel File Storage (CPFS) for Lingjun V2.4.0 and later support dataflow. You can view the version information on the file system details page in the console.
+//	  CPFS usage notes
 //
-//		- Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
+//	    	- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
 //
-//		- You can create a dataflow task only for a dataflow that is in the Running state.
+//	    	- Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2402275.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
 //
-//		- When you manually run a dataflow task, the automatic data update task for the dataflow is interrupted and enters the pending state.
+//	    	- You can create a dataflow task only for a dataflow that is in the Running state.
 //
-//		- When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS for Lingjun file system does not exceed 1,023 characters.
+//	    	- When you manually run a dataflow task, the automatic data update task for the dataflow is interrupted and enters the pending state.
 //
-//		- CPFS for Lingjun supports two types of tasks: batch tasks and streaming tasks. For more information, see [Task types](https://help.aliyun.com/document_detail/2845429.html).
+//	    	- When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS file system does not exceed 1,023 characters.
+//
+//		- CPFS for Lingjun usage notes
+//
+//	    	- Only CPFS for Lingjun V2.4.0 and later support dataflow. You can view the version information on the file system details page in the console.
+//
+//	    	- Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2402275.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
+//
+//	    	- You can create a dataflow task only for a dataflow that is in the Running state.
+//
+//	    	- When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS for Lingjun file system does not exceed 1,023 characters.
+//
+//	    	- CPFS for Lingjun supports two types of tasks: batch tasks and streaming tasks. For more information, see [Task types](https://help.aliyun.com/document_detail/2845429.html).
 //
 // @param request - CreateDataFlowTaskRequest
 //
@@ -2309,9 +2461,9 @@ func (client *Client) CreateFile(request *CreateFileRequest) (_result *CreateFil
 //
 // Description:
 //
-//	  Before you call this operation, you must understand the billing and pricing of File Storage NAS. For more information, see [Billing](https://help.aliyun.com/document_detail/178365.html) and [Pricing](https://www.alibabacloud.com/product/nas/pricing).
+//	  Before you call this operation, you must understand the billing and pricing of Apsara File Storage NAS. For more information, see [Billing](https://help.aliyun.com/document_detail/178365.html) and [Pricing](https://www.aliyun.com/price/product?#/nas/detail).
 //
-//		- Before you create a file system, you must complete real-name verification.
+//		- Before you create a file system, you must complete real-name verification. For more information, see [Real-name verification](https://help.aliyun.com/document_detail/48263.html).
 //
 //		- When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](https://help.aliyun.com/document_detail/208530.html).
 //
@@ -2372,6 +2524,14 @@ func (client *Client) CreateFileSystemWithOptions(request *CreateFileSystemReque
 		query["ProtocolType"] = request.ProtocolType
 	}
 
+	if !dara.IsNil(request.RedundancyType) {
+		query["RedundancyType"] = request.RedundancyType
+	}
+
+	if !dara.IsNil(request.RedundancyVSwitchIds) {
+		query["RedundancyVSwitchIds"] = request.RedundancyVSwitchIds
+	}
+
 	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -2429,9 +2589,9 @@ func (client *Client) CreateFileSystemWithOptions(request *CreateFileSystemReque
 //
 // Description:
 //
-//	  Before you call this operation, you must understand the billing and pricing of File Storage NAS. For more information, see [Billing](https://help.aliyun.com/document_detail/178365.html) and [Pricing](https://www.alibabacloud.com/product/nas/pricing).
+//	  Before you call this operation, you must understand the billing and pricing of Apsara File Storage NAS. For more information, see [Billing](https://help.aliyun.com/document_detail/178365.html) and [Pricing](https://www.aliyun.com/price/product?#/nas/detail).
 //
-//		- Before you create a file system, you must complete real-name verification.
+//		- Before you create a file system, you must complete real-name verification. For more information, see [Real-name verification](https://help.aliyun.com/document_detail/48263.html).
 //
 //		- When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](https://help.aliyun.com/document_detail/208530.html).
 //
@@ -2455,25 +2615,41 @@ func (client *Client) CreateFileSystem(request *CreateFileSystemRequest) (_resul
 //
 // Description:
 //
-//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
+//	  CPFS usage notes
 //
-//		- A maximum of 500 filesets can be created for a CPFS file system.
+//	    	- Only CPFS V2.2.0 and later support fileset creation. You can view the version information on the file system details page in the console.
 //
-//		- The fileset path must be a new path and cannot be an existing path. Fileset paths cannot be renamed and cannot be symbolic links.
+//	    	- A maximum of 10 filesets can be created for a CPFS file system.
 //
-//		- The maximum depth supported by a fileset path is eight levels. The depth of the root directory / is 0 levels. For example, the fileset path /test/aaa/ccc/ has three levels.
+//	    	- The parent directory must be an existing directory.
 //
-//		- If the fileset path is a multi-level path, the parent directory must be an existing directory.
+//	    	- The maximum depth supported by a fileset path is eight levels. The depth of the root directory / is 0 levels. For example, the fileset path /test/aaa/ccc/ has three levels.
 //
-//		- Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset. A fileset path supports only one quota.
+//	    	- Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset.
 //
-//		- The minimum capacity quota of a fileset is 10 GiB. The scaling step size is 1 GiB. The maximum capacity quota is 1,000 TiB. The capacity quota cannot exceed the total capacity of the file system.
+//	    	- A fileset supports a maximum of one million files. If the number of files exceeds the upper limit, the `no space` error message is returned when you add new files.
 //
-//		- A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
+//		- CPFS for Lingjun usage notes
 //
-//		- When you modify a directory quota, you must set the quota capacity or the number of files to be greater than the capacity or file quantity that has been used.
+//	    	- Only CPFS for Lingjun V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
-//		- The quota statistics have a 5-minute latency. The actual usage takes effect after 5 minutes.
+//	    	- A maximum of 500 filesets can be created for a CPFS file system.
+//
+//	    	- The fileset path must be a new path and cannot be an existing path. Fileset paths cannot be renamed and cannot be symbolic links.
+//
+//	    	- The maximum depth supported by a fileset path is eight levels. The depth of the root directory / is 0 levels. For example, the fileset path /test/aaa/ccc/ has three levels.
+//
+//	    	- If the fileset path is a multi-level path, the parent directory must be an existing directory.
+//
+//	    	- Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset. A fileset path supports only one quota.
+//
+//	    	- The minimum capacity quota of a fileset is 10 GiB. The scaling step size is 1 GiB.
+//
+//	    	- A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
+//
+//	    	- When you modify a directory quota, you must set the quota capacity or the number of files to be greater than the capacity or file quantity that has been used.
+//
+//	    	- The quota statistics have a 15-minute latency. The actual usage takes effect after 15 minutes.
 //
 // @param request - CreateFilesetRequest
 //
@@ -2545,25 +2721,41 @@ func (client *Client) CreateFilesetWithOptions(request *CreateFilesetRequest, ru
 //
 // Description:
 //
-//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
+//	  CPFS usage notes
 //
-//		- A maximum of 500 filesets can be created for a CPFS file system.
+//	    	- Only CPFS V2.2.0 and later support fileset creation. You can view the version information on the file system details page in the console.
 //
-//		- The fileset path must be a new path and cannot be an existing path. Fileset paths cannot be renamed and cannot be symbolic links.
+//	    	- A maximum of 10 filesets can be created for a CPFS file system.
 //
-//		- The maximum depth supported by a fileset path is eight levels. The depth of the root directory / is 0 levels. For example, the fileset path /test/aaa/ccc/ has three levels.
+//	    	- The parent directory must be an existing directory.
 //
-//		- If the fileset path is a multi-level path, the parent directory must be an existing directory.
+//	    	- The maximum depth supported by a fileset path is eight levels. The depth of the root directory / is 0 levels. For example, the fileset path /test/aaa/ccc/ has three levels.
 //
-//		- Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset. A fileset path supports only one quota.
+//	    	- Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset.
 //
-//		- The minimum capacity quota of a fileset is 10 GiB. The scaling step size is 1 GiB. The maximum capacity quota is 1,000 TiB. The capacity quota cannot exceed the total capacity of the file system.
+//	    	- A fileset supports a maximum of one million files. If the number of files exceeds the upper limit, the `no space` error message is returned when you add new files.
 //
-//		- A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
+//		- CPFS for Lingjun usage notes
 //
-//		- When you modify a directory quota, you must set the quota capacity or the number of files to be greater than the capacity or file quantity that has been used.
+//	    	- Only CPFS for Lingjun V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
-//		- The quota statistics have a 5-minute latency. The actual usage takes effect after 5 minutes.
+//	    	- A maximum of 500 filesets can be created for a CPFS file system.
+//
+//	    	- The fileset path must be a new path and cannot be an existing path. Fileset paths cannot be renamed and cannot be symbolic links.
+//
+//	    	- The maximum depth supported by a fileset path is eight levels. The depth of the root directory / is 0 levels. For example, the fileset path /test/aaa/ccc/ has three levels.
+//
+//	    	- If the fileset path is a multi-level path, the parent directory must be an existing directory.
+//
+//	    	- Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset. A fileset path supports only one quota.
+//
+//	    	- The minimum capacity quota of a fileset is 10 GiB. The scaling step size is 1 GiB.
+//
+//	    	- A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
+//
+//	    	- When you modify a directory quota, you must set the quota capacity or the number of files to be greater than the capacity or file quantity that has been used.
+//
+//	    	- The quota statistics have a 15-minute latency. The actual usage takes effect after 15 minutes.
 //
 // @param request - CreateFilesetRequest
 //
@@ -3008,7 +3200,7 @@ func (client *Client) CreateMountTarget(request *CreateMountTargetRequest) (_res
 //
 // Description:
 //
-//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems.
 //
 //		- Prerequisites
 //
@@ -3022,7 +3214,7 @@ func (client *Client) CreateMountTarget(request *CreateMountTargetRequest) (_res
 //
 //	    	- You can create a maximum of 10 export directories for a protocol service.
 //
-//	    	- When you create export directories for a protocol service, a maximum of 32 IP addresses that are allocated by the specified vSwitch are used. Make sure that the vSwitch can provide sufficient IP addresses.
+//	    	- A protocol service can use a maximum of 32 IP addresses that are allocated by a specified vSwitch. Make sure that the vSwitch can provide sufficient IP addresses.
 //
 // @param request - CreateProtocolMountTargetRequest
 //
@@ -3073,6 +3265,10 @@ func (client *Client) CreateProtocolMountTargetWithOptions(request *CreateProtoc
 		query["VSwitchId"] = request.VSwitchId
 	}
 
+	if !dara.IsNil(request.VSwitchIds) {
+		query["VSwitchIds"] = request.VSwitchIds
+	}
+
 	if !dara.IsNil(request.VpcId) {
 		query["VpcId"] = request.VpcId
 	}
@@ -3106,7 +3302,7 @@ func (client *Client) CreateProtocolMountTargetWithOptions(request *CreateProtoc
 //
 // Description:
 //
-//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems.
 //
 //		- Prerequisites
 //
@@ -3120,7 +3316,7 @@ func (client *Client) CreateProtocolMountTargetWithOptions(request *CreateProtoc
 //
 //	    	- You can create a maximum of 10 export directories for a protocol service.
 //
-//	    	- When you create export directories for a protocol service, a maximum of 32 IP addresses that are allocated by the specified vSwitch are used. Make sure that the vSwitch can provide sufficient IP addresses.
+//	    	- A protocol service can use a maximum of 32 IP addresses that are allocated by a specified vSwitch. Make sure that the vSwitch can provide sufficient IP addresses.
 //
 // @param request - CreateProtocolMountTargetRequest
 //
@@ -3142,21 +3338,23 @@ func (client *Client) CreateProtocolMountTarget(request *CreateProtocolMountTarg
 //
 // Description:
 //
-//	  This operation is available only to CPFS file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems.
 //
-//		- Only CPFS V2.3.0 and later support protocol services. You can query the version information of the file system by calling the [DescribeFileSystems](~~2402188.~~) operation.
+//		- Only CPFS V2.3.0 and later support protocol services. You can query the version information of the file system by calling the [DescribeFileSystems](https://help.aliyun.com/document_detail/163314.html) operation.
 //
 //		- Protocol service types
 //
 //	    Protocol services are classified into general-purpose protocol services and cache protocol services. Different from general-purpose protocol services, cache protocol services can cache hot data. If data exists in the cache, the bandwidth of the cache protocol service may exceed the bandwidth of the CPFS file system, reaching the maximum bandwidth specified for the protocol service.
 //
-//	    	- General-purpose protocol services: provide NFS access and [directory-level mount targets](https://help.aliyun.com/document_detail/427175.html) for CPFS file systems. You do not need to configure a POSIX client to manage clusters. General-purpose protocol services are provided free of charge.
+//	    	- General-purpose protocol services: provide NFS access and [directory-level mount targets](https://help.aliyun.com/document_detail/427175.html) for CPFS file systems. You do not need to configure a POSIX client to manage clusters. The compliance package check feature is free of charge.
 //
 //	    	- Cache protocol services: provide the server memory cache based on the least recently used (LRU) policy. When data is cached in the memory, CPFS provides higher internal bandwidth. Cache protocol services are divided into Cache L1 and Cache L2 specifications. The differences are the internal bandwidth size and memory cache size.
 //
-//	       >   Note You are charged for using cache protocol services, which are in invitational preview. For more information about the billing method of cache protocol services, see [Billable items](https://help.aliyun.com/document_detail/111858.html). If you have any feedback or questions, you can join the DingTalk group (group number: 31045006299).
+//	    **
 //
-//		- Protocol type
+//	    **Note*	- You are charged for using cache protocol services, which are in invitational preview. For more information about the billing method of cache protocol services, see [Billable items](https://help.aliyun.com/document_detail/111858.html). If you have any feedback or questions, you can join the DingTalk group (group number: 31045006299).
+//
+//		- Protocol Type
 //
 //	    Only NFSv3 is supported.
 //
@@ -3244,21 +3442,23 @@ func (client *Client) CreateProtocolServiceWithOptions(request *CreateProtocolSe
 //
 // Description:
 //
-//	  This operation is available only to CPFS file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems.
 //
-//		- Only CPFS V2.3.0 and later support protocol services. You can query the version information of the file system by calling the [DescribeFileSystems](~~2402188.~~) operation.
+//		- Only CPFS V2.3.0 and later support protocol services. You can query the version information of the file system by calling the [DescribeFileSystems](https://help.aliyun.com/document_detail/163314.html) operation.
 //
 //		- Protocol service types
 //
 //	    Protocol services are classified into general-purpose protocol services and cache protocol services. Different from general-purpose protocol services, cache protocol services can cache hot data. If data exists in the cache, the bandwidth of the cache protocol service may exceed the bandwidth of the CPFS file system, reaching the maximum bandwidth specified for the protocol service.
 //
-//	    	- General-purpose protocol services: provide NFS access and [directory-level mount targets](https://help.aliyun.com/document_detail/427175.html) for CPFS file systems. You do not need to configure a POSIX client to manage clusters. General-purpose protocol services are provided free of charge.
+//	    	- General-purpose protocol services: provide NFS access and [directory-level mount targets](https://help.aliyun.com/document_detail/427175.html) for CPFS file systems. You do not need to configure a POSIX client to manage clusters. The compliance package check feature is free of charge.
 //
 //	    	- Cache protocol services: provide the server memory cache based on the least recently used (LRU) policy. When data is cached in the memory, CPFS provides higher internal bandwidth. Cache protocol services are divided into Cache L1 and Cache L2 specifications. The differences are the internal bandwidth size and memory cache size.
 //
-//	       >   Note You are charged for using cache protocol services, which are in invitational preview. For more information about the billing method of cache protocol services, see [Billable items](https://help.aliyun.com/document_detail/111858.html). If you have any feedback or questions, you can join the DingTalk group (group number: 31045006299).
+//	    **
 //
-//		- Protocol type
+//	    **Note*	- You are charged for using cache protocol services, which are in invitational preview. For more information about the billing method of cache protocol services, see [Billable items](https://help.aliyun.com/document_detail/111858.html). If you have any feedback or questions, you can join the DingTalk group (group number: 31045006299).
+//
+//		- Protocol Type
 //
 //	    Only NFSv3 is supported.
 //
@@ -3862,7 +4062,7 @@ func (client *Client) DeleteAutoSnapshotPolicy(request *DeleteAutoSnapshotPolicy
 //
 // Description:
 //
-//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for Lingjun V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
 //		- You can delete the data flows that are only in the `Running` or `Stopped` state.
 //
@@ -3926,7 +4126,7 @@ func (client *Client) DeleteDataFlowWithOptions(request *DeleteDataFlowRequest, 
 //
 // Description:
 //
-//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for Lingjun V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
 //		- You can delete the data flows that are only in the `Running` or `Stopped` state.
 //
@@ -4030,7 +4230,7 @@ func (client *Client) DeleteFileSystem(request *DeleteFileSystemRequest) (_resul
 //
 // Description:
 //
-//	  Only Cloud Parallel File Storage (CPFS) for Lingjun V2.7.0 and later support this operation. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
+//	  Only Cloud Parallel File Storage (CPFS) V2.2.0 and CPFS for Lingjun V2.7.0 and later support this operation. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
 //
 //		- If deletion protection is enabled for the fileset, you must disable deletion protection before you delete the fileset.
 //
@@ -4094,7 +4294,7 @@ func (client *Client) DeleteFilesetWithOptions(request *DeleteFilesetRequest, ru
 //
 // Description:
 //
-//	  Only Cloud Parallel File Storage (CPFS) for Lingjun V2.7.0 and later support this operation. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
+//	  Only Cloud Parallel File Storage (CPFS) V2.2.0 and CPFS for Lingjun V2.7.0 and later support this operation. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
 //
 //		- If deletion protection is enabled for the fileset, you must disable deletion protection before you delete the fileset.
 //
@@ -4118,7 +4318,7 @@ func (client *Client) DeleteFileset(request *DeleteFilesetRequest) (_result *Del
 //
 // Summary:
 //
-// 删除LDAP配置
+// {"summary1":""}
 //
 // @param request - DeleteLDAPConfigRequest
 //
@@ -4164,7 +4364,7 @@ func (client *Client) DeleteLDAPConfigWithOptions(request *DeleteLDAPConfigReque
 //
 // Summary:
 //
-// 删除LDAP配置
+// {"summary1":""}
 //
 // @param request - DeleteLDAPConfigRequest
 //
@@ -4487,7 +4687,7 @@ func (client *Client) DeleteProtocolMountTarget(request *DeleteProtocolMountTarg
 //
 // Description:
 //
-//	  This operation is available only to CPFS file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems.
 //
 //		- When you delete a protocol service, the export directories in the protocol service are also deleted.
 //
@@ -4549,7 +4749,7 @@ func (client *Client) DeleteProtocolServiceWithOptions(request *DeleteProtocolSe
 //
 // Description:
 //
-//	  This operation is available only to CPFS file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems.
 //
 //		- When you delete a protocol service, the export directories in the protocol service are also deleted.
 //
@@ -5300,11 +5500,11 @@ func (client *Client) DescribeDataFlowSubTasks(request *DescribeDataFlowSubTasks
 
 // Summary:
 //
-// Queries the details of data flow tasks.
+// Queries the details of dataflow tasks.
 //
 // Description:
 //
-// Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support query of data flow tasks. You can view the version information on the file system details page in the console.
+// Only CPFS V2.2.0 and later and CPFS for Lingjun V2.4.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
 // @param request - DescribeDataFlowTasksRequest
 //
@@ -5364,11 +5564,11 @@ func (client *Client) DescribeDataFlowTasksWithOptions(request *DescribeDataFlow
 
 // Summary:
 //
-// Queries the details of data flow tasks.
+// Queries the details of dataflow tasks.
 //
 // Description:
 //
-// Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support query of data flow tasks. You can view the version information on the file system details page in the console.
+// Only CPFS V2.2.0 and later and CPFS for Lingjun V2.4.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
 // @param request - DescribeDataFlowTasksRequest
 //
@@ -5390,7 +5590,7 @@ func (client *Client) DescribeDataFlowTasks(request *DescribeDataFlowTasksReques
 //
 // Description:
 //
-//	  Only CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for Lingjun V2.4.0 and later support dataflows. You can view the version information on the file system details page in the console.
 //
 //		- In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath, Description, and SourceStoragePath support fuzzy match.
 //
@@ -5454,7 +5654,7 @@ func (client *Client) DescribeDataFlowsWithOptions(request *DescribeDataFlowsReq
 //
 // Description:
 //
-//	  Only CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for Lingjun V2.4.0 and later support dataflows. You can view the version information on the file system details page in the console.
 //
 //		- In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath, Description, and SourceStoragePath support fuzzy match.
 //
@@ -5719,7 +5919,7 @@ func (client *Client) DescribeFileSystems(request *DescribeFileSystemsRequest) (
 //
 // Description:
 //
-//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) V2.2.0 and CPFS for Lingjun V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
 //		- In Filters, FsetIds supports exact match only. FileSystemPath and Description support fuzzy match.
 //
@@ -5791,7 +5991,7 @@ func (client *Client) DescribeFilesetsWithOptions(request *DescribeFilesetsReque
 //
 // Description:
 //
-//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) V2.2.0 and CPFS for Lingjun V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
 //		- In Filters, FsetIds supports exact match only. FileSystemPath and Description support fuzzy match.
 //
@@ -6273,7 +6473,7 @@ func (client *Client) DescribeNfsAcl(request *DescribeNfsAclRequest) (_result *D
 //
 // Description:
 //
-// This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+// This operation is available only to Cloud Parallel File Storage (CPFS) file systems.
 //
 // @param request - DescribeProtocolMountTargetRequest
 //
@@ -6308,6 +6508,10 @@ func (client *Client) DescribeProtocolMountTargetWithOptions(request *DescribePr
 		query["NextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.ProtocolServiceIds) {
+		query["ProtocolServiceIds"] = request.ProtocolServiceIds
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6337,7 +6541,7 @@ func (client *Client) DescribeProtocolMountTargetWithOptions(request *DescribePr
 //
 // Description:
 //
-// This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+// This operation is available only to Cloud Parallel File Storage (CPFS) file systems.
 //
 // @param request - DescribeProtocolMountTargetRequest
 //
@@ -6359,7 +6563,7 @@ func (client *Client) DescribeProtocolMountTarget(request *DescribeProtocolMount
 //
 // Description:
 //
-// This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+// This operation is available only to Cloud Parallel File Storage (CPFS) file systems.
 //
 // @param request - DescribeProtocolServiceRequest
 //
@@ -6431,7 +6635,7 @@ func (client *Client) DescribeProtocolServiceWithOptions(request *DescribeProtoc
 //
 // Description:
 //
-// This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+// This operation is available only to Cloud Parallel File Storage (CPFS) file systems.
 //
 // @param request - DescribeProtocolServiceRequest
 //
@@ -8253,11 +8457,21 @@ func (client *Client) ModifyAutoSnapshotPolicy(request *ModifyAutoSnapshotPolicy
 //
 // Description:
 //
-//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows.
+//	  Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for Lingjun V2.4.0 and later support data flows.
 //
 //		- You can modify the attributes only of the data flows that are in the `Running` state.
 //
-//		- It generally takes 2 to 5 minutes to modify the attributes of a data flow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the status of the data flow to be modified.
+//		- It generally takes 2 to 5 minutes to modify the attributes of a data flow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402270.html) operation to query the status of the data flow to be modified.
+//
+//		- CPFS data flow specifications:
+//
+//	    	- The data flow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The data flow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a data flow.
+//
+//	    	- Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
+//
+//		- Billing of CPFS file systems
+//
+//	    Changing the dataflow throughput involves the billing of dataflow bandwidth. We recommend that you understand CPFS billing methods in advance. For more information, see [Billing methods and billable items of CPFS](https://help.aliyun.com/document_detail/111858.html).
 //
 // @param request - ModifyDataFlowRequest
 //
@@ -8325,11 +8539,21 @@ func (client *Client) ModifyDataFlowWithOptions(request *ModifyDataFlowRequest, 
 //
 // Description:
 //
-//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows.
+//	  Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for Lingjun V2.4.0 and later support data flows.
 //
 //		- You can modify the attributes only of the data flows that are in the `Running` state.
 //
-//		- It generally takes 2 to 5 minutes to modify the attributes of a data flow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the status of the data flow to be modified.
+//		- It generally takes 2 to 5 minutes to modify the attributes of a data flow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402270.html) operation to query the status of the data flow to be modified.
+//
+//		- CPFS data flow specifications:
+//
+//	    	- The data flow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The data flow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a data flow.
+//
+//	    	- Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
+//
+//		- Billing of CPFS file systems
+//
+//	    Changing the dataflow throughput involves the billing of dataflow bandwidth. We recommend that you understand CPFS billing methods in advance. For more information, see [Billing methods and billable items of CPFS](https://help.aliyun.com/document_detail/111858.html).
 //
 // @param request - ModifyDataFlowRequest
 //
@@ -8351,13 +8575,13 @@ func (client *Client) ModifyDataFlow(request *ModifyDataFlowRequest) (_result *M
 //
 // Description:
 //
-//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to CPFS file systems.
 //
 //		- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
 //
 //		- You can modify the AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
 //
-//		- It generally takes 2 to 5 minutes to modify an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the task of modifying an AutoRefresh configuration.
+//		- It generally takes 2 to 5 minutes to modify an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402270.html) operation to query the task of modifying an AutoRefresh configuration.
 //
 // @param request - ModifyDataFlowAutoRefreshRequest
 //
@@ -8425,13 +8649,13 @@ func (client *Client) ModifyDataFlowAutoRefreshWithOptions(request *ModifyDataFl
 //
 // Description:
 //
-//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to CPFS file systems.
 //
 //		- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
 //
 //		- You can modify the AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
 //
-//		- It generally takes 2 to 5 minutes to modify an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the task of modifying an AutoRefresh configuration.
+//		- It generally takes 2 to 5 minutes to modify an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402270.html) operation to query the task of modifying an AutoRefresh configuration.
 //
 // @param request - ModifyDataFlowAutoRefreshRequest
 //
@@ -8529,7 +8753,7 @@ func (client *Client) ModifyFileSystem(request *ModifyFileSystemRequest) (_resul
 //
 // Description:
 //
-// Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation.
+// Only Cloud Parallel File Storage (CPFS) V2.2.0 and CPFS for Lingjun V2.7.0 and later support this operation.
 //
 // @param request - ModifyFilesetRequest
 //
@@ -8597,7 +8821,7 @@ func (client *Client) ModifyFilesetWithOptions(request *ModifyFilesetRequest, ru
 //
 // Description:
 //
-// Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation.
+// Only Cloud Parallel File Storage (CPFS) V2.2.0 and CPFS for Lingjun V2.7.0 and later support this operation.
 //
 // @param request - ModifyFilesetRequest
 //
@@ -8870,7 +9094,7 @@ func (client *Client) ModifyMountTarget(request *ModifyMountTargetRequest) (_res
 //
 // Description:
 //
-// This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+// This operation is available only to Cloud Parallel File Storage (CPFS) file systems.
 //
 // @param request - ModifyProtocolMountTargetRequest
 //
@@ -8938,7 +9162,7 @@ func (client *Client) ModifyProtocolMountTargetWithOptions(request *ModifyProtoc
 //
 // Description:
 //
-// This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+// This operation is available only to Cloud Parallel File Storage (CPFS) file systems.
 //
 // @param request - ModifyProtocolMountTargetRequest
 //
@@ -9630,7 +9854,7 @@ func (client *Client) SetFilesetQuota(request *SetFilesetQuotaRequest) (_result 
 //
 // Description:
 //
-//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems.
 //
 //		- Only CPFS V2.2.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
@@ -9698,7 +9922,7 @@ func (client *Client) StartDataFlowWithOptions(request *StartDataFlowRequest, ru
 //
 // Description:
 //
-//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems.
 //
 //		- Only CPFS V2.2.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
@@ -9728,7 +9952,7 @@ func (client *Client) StartDataFlow(request *StartDataFlowRequest) (_result *Sta
 //
 // Description:
 //
-//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to CPFS file systems.
 //
 //		- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
 //
@@ -9798,7 +10022,7 @@ func (client *Client) StopDataFlowWithOptions(request *StopDataFlowRequest, runt
 //
 // Description:
 //
-//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to CPFS file systems.
 //
 //		- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
 //

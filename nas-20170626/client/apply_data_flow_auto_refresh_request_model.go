@@ -26,9 +26,9 @@ type iApplyDataFlowAutoRefreshRequest interface {
 }
 
 type ApplyDataFlowAutoRefreshRequest struct {
-	// The automatic update interval. CPFS checks whether data is updated in the directory at the interval specified by this parameter. If data is updated, CPFS starts an automatic update task. Unit: minutes.
+	// The automatic update interval. CPFS checks whether data is updated in the directory at the interval specified by this parameter. If data is updated, CPFS starts an automatic update task. Unit: minute.
 	//
-	// Valid values: 5 to 526600. Default value: 10.
+	// Valid values: 10 to 525600. Default value: 10.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ApplyDataFlowAutoRefreshRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The dataflow ID.
+	// The ID of the dataflow.
 	//
 	// This parameter is required.
 	//

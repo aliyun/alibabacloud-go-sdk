@@ -19,6 +19,8 @@ type iDescribeProtocolMountTargetRequest interface {
 	GetMaxResults() *int64
 	SetNextToken(v string) *DescribeProtocolMountTargetRequest
 	GetNextToken() *string
+	SetProtocolServiceIds(v string) *DescribeProtocolMountTargetRequest
+	GetProtocolServiceIds() *string
 }
 
 type DescribeProtocolMountTargetRequest struct {
@@ -58,6 +60,10 @@ type DescribeProtocolMountTargetRequest struct {
 	//
 	// aBcdg==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// ptc-123xxx
+	ProtocolServiceIds *string `json:"ProtocolServiceIds,omitempty" xml:"ProtocolServiceIds,omitempty"`
 }
 
 func (s DescribeProtocolMountTargetRequest) String() string {
@@ -88,6 +94,10 @@ func (s *DescribeProtocolMountTargetRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *DescribeProtocolMountTargetRequest) GetProtocolServiceIds() *string {
+	return s.ProtocolServiceIds
+}
+
 func (s *DescribeProtocolMountTargetRequest) SetClientToken(v string) *DescribeProtocolMountTargetRequest {
 	s.ClientToken = &v
 	return s
@@ -110,6 +120,11 @@ func (s *DescribeProtocolMountTargetRequest) SetMaxResults(v int64) *DescribePro
 
 func (s *DescribeProtocolMountTargetRequest) SetNextToken(v string) *DescribeProtocolMountTargetRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeProtocolMountTargetRequest) SetProtocolServiceIds(v string) *DescribeProtocolMountTargetRequest {
+	s.ProtocolServiceIds = &v
 	return s
 }
 
