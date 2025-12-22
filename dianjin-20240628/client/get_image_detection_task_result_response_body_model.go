@@ -182,8 +182,16 @@ func (s *GetImageDetectionTaskResultResponseBodyData) Validate() error {
 }
 
 type GetImageDetectionTaskResultResponseBodyDataDetectionResult struct {
+	// example:
+	//
+	// 图像为一只猫
+	Description      *string                                                                       `json:"description,omitempty" xml:"description,omitempty"`
 	DetectionDetails []*GetImageDetectionTaskResultResponseBodyDataDetectionResultDetectionDetails `json:"detectionDetails,omitempty" xml:"detectionDetails,omitempty" type:"Repeated"`
-	Suggestions      []*string                                                                     `json:"suggestions,omitempty" xml:"suggestions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// full_body
+	PortraitType *string   `json:"portraitType,omitempty" xml:"portraitType,omitempty"`
+	Suggestions  []*string `json:"suggestions,omitempty" xml:"suggestions,omitempty" type:"Repeated"`
 }
 
 func (s GetImageDetectionTaskResultResponseBodyDataDetectionResult) String() string {
@@ -194,16 +202,34 @@ func (s GetImageDetectionTaskResultResponseBodyDataDetectionResult) GoString() s
 	return s.String()
 }
 
+func (s *GetImageDetectionTaskResultResponseBodyDataDetectionResult) GetDescription() *string {
+	return s.Description
+}
+
 func (s *GetImageDetectionTaskResultResponseBodyDataDetectionResult) GetDetectionDetails() []*GetImageDetectionTaskResultResponseBodyDataDetectionResultDetectionDetails {
 	return s.DetectionDetails
+}
+
+func (s *GetImageDetectionTaskResultResponseBodyDataDetectionResult) GetPortraitType() *string {
+	return s.PortraitType
 }
 
 func (s *GetImageDetectionTaskResultResponseBodyDataDetectionResult) GetSuggestions() []*string {
 	return s.Suggestions
 }
 
+func (s *GetImageDetectionTaskResultResponseBodyDataDetectionResult) SetDescription(v string) *GetImageDetectionTaskResultResponseBodyDataDetectionResult {
+	s.Description = &v
+	return s
+}
+
 func (s *GetImageDetectionTaskResultResponseBodyDataDetectionResult) SetDetectionDetails(v []*GetImageDetectionTaskResultResponseBodyDataDetectionResultDetectionDetails) *GetImageDetectionTaskResultResponseBodyDataDetectionResult {
 	s.DetectionDetails = v
+	return s
+}
+
+func (s *GetImageDetectionTaskResultResponseBodyDataDetectionResult) SetPortraitType(v string) *GetImageDetectionTaskResultResponseBodyDataDetectionResult {
+	s.PortraitType = &v
 	return s
 }
 
@@ -228,16 +254,16 @@ func (s *GetImageDetectionTaskResultResponseBodyDataDetectionResult) Validate() 
 type GetImageDetectionTaskResultResponseBodyDataDetectionResultDetectionDetails struct {
 	// example:
 	//
-	// x
+	// no_face_detected
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// example:
 	//
-	// xxx
+	// 0.8
 	Confidence *float64 `json:"confidence,omitempty" xml:"confidence,omitempty"`
 	Pass       *bool    `json:"pass,omitempty" xml:"pass,omitempty"`
 	// example:
 	//
-	// xxx
+	// 未检测到人脸
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
 }
 
