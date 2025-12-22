@@ -58,6 +58,82 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// # AddUserDefinedSg
+//
+// @param tmpReq - AddUserDefinedSgRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserDefinedSgResponse
+func (client *Client) AddUserDefinedSgWithOptions(tmpReq *AddUserDefinedSgRequest, runtime *dara.RuntimeOptions) (_result *AddUserDefinedSgResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddUserDefinedSgShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SgIdList) {
+		request.SgIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SgIdList, dara.String("SgIdList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SgIdListShrink) {
+		query["SgIdList"] = request.SgIdListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddUserDefinedSg"),
+		Version:     dara.String("2019-09-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddUserDefinedSgResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # AddUserDefinedSg
+//
+// @param request - AddUserDefinedSgRequest
+//
+// @return AddUserDefinedSgResponse
+func (client *Client) AddUserDefinedSg(request *AddUserDefinedSgRequest) (_result *AddUserDefinedSgResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddUserDefinedSgResponse{}
+	_body, _err := client.AddUserDefinedSgWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Changes the resource group of an ApsaraMQ for Kafka instance.
 //
 // @param request - ChangeResourceGroupRequest
@@ -1637,6 +1713,82 @@ func (client *Client) DeleteTopic(request *DeleteTopicRequest) (_result *DeleteT
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteTopicResponse{}
 	_body, _err := client.DeleteTopicWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteUserDefinedSg
+//
+// @param tmpReq - DeleteUserDefinedSgRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserDefinedSgResponse
+func (client *Client) DeleteUserDefinedSgWithOptions(tmpReq *DeleteUserDefinedSgRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserDefinedSgResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteUserDefinedSgShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SgIdList) {
+		request.SgIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SgIdList, dara.String("SgIdList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SgIdListShrink) {
+		query["SgIdList"] = request.SgIdListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteUserDefinedSg"),
+		Version:     dara.String("2019-09-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteUserDefinedSgResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteUserDefinedSg
+//
+// @param request - DeleteUserDefinedSgRequest
+//
+// @return DeleteUserDefinedSgResponse
+func (client *Client) DeleteUserDefinedSg(request *DeleteUserDefinedSgRequest) (_result *DeleteUserDefinedSgResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteUserDefinedSgResponse{}
+	_body, _err := client.DeleteUserDefinedSgWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3673,6 +3825,82 @@ func (client *Client) ModifyTopicRemark(request *ModifyTopicRemarkRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyTopicRemarkResponse{}
 	_body, _err := client.ModifyTopicRemarkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ModifyUserDefinedSg
+//
+// @param tmpReq - ModifyUserDefinedSgRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyUserDefinedSgResponse
+func (client *Client) ModifyUserDefinedSgWithOptions(tmpReq *ModifyUserDefinedSgRequest, runtime *dara.RuntimeOptions) (_result *ModifyUserDefinedSgResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyUserDefinedSgShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SgIdList) {
+		request.SgIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SgIdList, dara.String("SgIdList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SgIdListShrink) {
+		query["SgIdList"] = request.SgIdListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyUserDefinedSg"),
+		Version:     dara.String("2019-09-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyUserDefinedSgResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ModifyUserDefinedSg
+//
+// @param request - ModifyUserDefinedSgRequest
+//
+// @return ModifyUserDefinedSgResponse
+func (client *Client) ModifyUserDefinedSg(request *ModifyUserDefinedSgRequest) (_result *ModifyUserDefinedSgResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyUserDefinedSgResponse{}
+	_body, _err := client.ModifyUserDefinedSgWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
