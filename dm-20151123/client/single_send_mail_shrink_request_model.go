@@ -15,6 +15,8 @@ type iSingleSendMailShrinkRequest interface {
 	GetAddressType() *int32
 	SetAttachments(v []*SingleSendMailShrinkRequestAttachments) *SingleSendMailShrinkRequest
 	GetAttachments() []*SingleSendMailShrinkRequestAttachments
+	SetBccAddress(v string) *SingleSendMailShrinkRequest
+	GetBccAddress() *string
 	SetClickTrace(v string) *SingleSendMailShrinkRequest
 	GetClickTrace() *string
 	SetFromAlias(v string) *SingleSendMailShrinkRequest
@@ -57,16 +59,23 @@ type SingleSendMailShrinkRequest struct {
 	// This parameter is required.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// This parameter is required.
-	AddressType       *int32                                    `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	Attachments       []*SingleSendMailShrinkRequestAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
-	ClickTrace        *string                                   `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
-	FromAlias         *string                                   `json:"FromAlias,omitempty" xml:"FromAlias,omitempty"`
-	Headers           *string                                   `json:"Headers,omitempty" xml:"Headers,omitempty"`
-	HtmlBody          *string                                   `json:"HtmlBody,omitempty" xml:"HtmlBody,omitempty"`
-	IpPoolId          *string                                   `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
-	OwnerId           *int64                                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ReplyAddress      *string                                   `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
-	ReplyAddressAlias *string                                   `json:"ReplyAddressAlias,omitempty" xml:"ReplyAddressAlias,omitempty"`
+	AddressType *int32                                    `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	Attachments []*SingleSendMailShrinkRequestAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 1@example.com,2@example.com
+	BccAddress        *string `json:"BccAddress,omitempty" xml:"BccAddress,omitempty"`
+	ClickTrace        *string `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
+	FromAlias         *string `json:"FromAlias,omitempty" xml:"FromAlias,omitempty"`
+	Headers           *string `json:"Headers,omitempty" xml:"Headers,omitempty"`
+	HtmlBody          *string `json:"HtmlBody,omitempty" xml:"HtmlBody,omitempty"`
+	IpPoolId          *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ReplyAddress      *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
+	ReplyAddressAlias *string `json:"ReplyAddressAlias,omitempty" xml:"ReplyAddressAlias,omitempty"`
 	// This parameter is required.
 	ReplyToAddress       *bool   `json:"ReplyToAddress,omitempty" xml:"ReplyToAddress,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -100,6 +109,10 @@ func (s *SingleSendMailShrinkRequest) GetAddressType() *int32 {
 
 func (s *SingleSendMailShrinkRequest) GetAttachments() []*SingleSendMailShrinkRequestAttachments {
 	return s.Attachments
+}
+
+func (s *SingleSendMailShrinkRequest) GetBccAddress() *string {
+	return s.BccAddress
 }
 
 func (s *SingleSendMailShrinkRequest) GetClickTrace() *string {
@@ -186,6 +199,11 @@ func (s *SingleSendMailShrinkRequest) SetAddressType(v int32) *SingleSendMailShr
 
 func (s *SingleSendMailShrinkRequest) SetAttachments(v []*SingleSendMailShrinkRequestAttachments) *SingleSendMailShrinkRequest {
 	s.Attachments = v
+	return s
+}
+
+func (s *SingleSendMailShrinkRequest) SetBccAddress(v string) *SingleSendMailShrinkRequest {
+	s.BccAddress = &v
 	return s
 }
 

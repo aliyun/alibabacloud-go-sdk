@@ -5701,6 +5701,10 @@ func (client *Client) SingleSendMailWithOptions(tmpReq *SingleSendMailRequest, r
 		body["Attachments"] = request.Attachments
 	}
 
+	if !dara.IsNil(request.BccAddress) {
+		body["BccAddress"] = request.BccAddress
+	}
+
 	if !dara.IsNil(request.ClickTrace) {
 		body["ClickTrace"] = request.ClickTrace
 	}

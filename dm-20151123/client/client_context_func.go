@@ -4115,6 +4115,10 @@ func (client *Client) SingleSendMailWithContext(ctx context.Context, tmpReq *Sin
 		body["Attachments"] = request.Attachments
 	}
 
+	if !dara.IsNil(request.BccAddress) {
+		body["BccAddress"] = request.BccAddress
+	}
+
 	if !dara.IsNil(request.ClickTrace) {
 		body["ClickTrace"] = request.ClickTrace
 	}

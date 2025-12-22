@@ -16,6 +16,8 @@ type iSingleSendMailAdvanceRequest interface {
 	GetAddressType() *int32
 	SetAttachments(v []*SingleSendMailAdvanceRequestAttachments) *SingleSendMailAdvanceRequest
 	GetAttachments() []*SingleSendMailAdvanceRequestAttachments
+	SetBccAddress(v string) *SingleSendMailAdvanceRequest
+	GetBccAddress() *string
 	SetClickTrace(v string) *SingleSendMailAdvanceRequest
 	GetClickTrace() *string
 	SetFromAlias(v string) *SingleSendMailAdvanceRequest
@@ -58,16 +60,23 @@ type SingleSendMailAdvanceRequest struct {
 	// This parameter is required.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// This parameter is required.
-	AddressType       *int32                                     `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	Attachments       []*SingleSendMailAdvanceRequestAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
-	ClickTrace        *string                                    `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
-	FromAlias         *string                                    `json:"FromAlias,omitempty" xml:"FromAlias,omitempty"`
-	Headers           *string                                    `json:"Headers,omitempty" xml:"Headers,omitempty"`
-	HtmlBody          *string                                    `json:"HtmlBody,omitempty" xml:"HtmlBody,omitempty"`
-	IpPoolId          *string                                    `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
-	OwnerId           *int64                                     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ReplyAddress      *string                                    `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
-	ReplyAddressAlias *string                                    `json:"ReplyAddressAlias,omitempty" xml:"ReplyAddressAlias,omitempty"`
+	AddressType *int32                                     `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	Attachments []*SingleSendMailAdvanceRequestAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 1@example.com,2@example.com
+	BccAddress        *string `json:"BccAddress,omitempty" xml:"BccAddress,omitempty"`
+	ClickTrace        *string `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
+	FromAlias         *string `json:"FromAlias,omitempty" xml:"FromAlias,omitempty"`
+	Headers           *string `json:"Headers,omitempty" xml:"Headers,omitempty"`
+	HtmlBody          *string `json:"HtmlBody,omitempty" xml:"HtmlBody,omitempty"`
+	IpPoolId          *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ReplyAddress      *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
+	ReplyAddressAlias *string `json:"ReplyAddressAlias,omitempty" xml:"ReplyAddressAlias,omitempty"`
 	// This parameter is required.
 	ReplyToAddress       *bool   `json:"ReplyToAddress,omitempty" xml:"ReplyToAddress,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -101,6 +110,10 @@ func (s *SingleSendMailAdvanceRequest) GetAddressType() *int32 {
 
 func (s *SingleSendMailAdvanceRequest) GetAttachments() []*SingleSendMailAdvanceRequestAttachments {
 	return s.Attachments
+}
+
+func (s *SingleSendMailAdvanceRequest) GetBccAddress() *string {
+	return s.BccAddress
 }
 
 func (s *SingleSendMailAdvanceRequest) GetClickTrace() *string {
@@ -187,6 +200,11 @@ func (s *SingleSendMailAdvanceRequest) SetAddressType(v int32) *SingleSendMailAd
 
 func (s *SingleSendMailAdvanceRequest) SetAttachments(v []*SingleSendMailAdvanceRequestAttachments) *SingleSendMailAdvanceRequest {
 	s.Attachments = v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetBccAddress(v string) *SingleSendMailAdvanceRequest {
+	s.BccAddress = &v
 	return s
 }
 
