@@ -5049,6 +5049,58 @@ func (client *Client) DeleteEdgeContainerAppVersionWithContext(ctx context.Conte
 
 // Summary:
 //
+// 删除深度学习和防护下发的规则
+//
+// @param request - DeleteHttpDDoSIntelligentRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHttpDDoSIntelligentRuleResponse
+func (client *Client) DeleteHttpDDoSIntelligentRuleWithContext(ctx context.Context, request *DeleteHttpDDoSIntelligentRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteHttpDDoSIntelligentRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RecordName) {
+		query["RecordName"] = request.RecordName
+	}
+
+	if !dara.IsNil(request.RuleId) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteHttpDDoSIntelligentRule"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteHttpDDoSIntelligentRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes the configuration of modifying incoming HTTP request headers for a website.
 //
 // @param request - DeleteHttpIncomingRequestHeaderModificationRuleRequest
@@ -15117,6 +15169,110 @@ func (client *Client) SetHttpDDoSAttackProtectionWithContext(ctx context.Context
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetHttpDDoSAttackProtectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置HTTP DDoS攻击防护指定规则防护动作
+//
+// @param request - SetHttpDDoSAttackRuleActionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetHttpDDoSAttackRuleActionResponse
+func (client *Client) SetHttpDDoSAttackRuleActionWithContext(ctx context.Context, request *SetHttpDDoSAttackRuleActionRequest, runtime *dara.RuntimeOptions) (_result *SetHttpDDoSAttackRuleActionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RuleAction) {
+		query["RuleAction"] = request.RuleAction
+	}
+
+	if !dara.IsNil(request.RuleIds) {
+		query["RuleIds"] = request.RuleIds
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetHttpDDoSAttackRuleAction"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetHttpDDoSAttackRuleActionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置HTTP DDoS攻击防护指定规则防护状态
+//
+// @param request - SetHttpDDoSAttackRuleStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetHttpDDoSAttackRuleStatusResponse
+func (client *Client) SetHttpDDoSAttackRuleStatusWithContext(ctx context.Context, request *SetHttpDDoSAttackRuleStatusRequest, runtime *dara.RuntimeOptions) (_result *SetHttpDDoSAttackRuleStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RuleIds) {
+		query["RuleIds"] = request.RuleIds
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetHttpDDoSAttackRuleStatus"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetHttpDDoSAttackRuleStatusResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
