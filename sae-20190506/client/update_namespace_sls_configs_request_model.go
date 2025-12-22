@@ -15,6 +15,8 @@ type iUpdateNamespaceSlsConfigsRequest interface {
 	GetNamespaceId() *string
 	SetSlsConfigs(v string) *UpdateNamespaceSlsConfigsRequest
 	GetSlsConfigs() *string
+	SetSlsLogEnvTags(v string) *UpdateNamespaceSlsConfigsRequest
+	GetSlsLogEnvTags() *string
 }
 
 type UpdateNamespaceSlsConfigsRequest struct {
@@ -55,7 +57,8 @@ type UpdateNamespaceSlsConfigsRequest struct {
 	// example:
 	//
 	// [{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]
-	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	SlsConfigs    *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	SlsLogEnvTags *string `json:"SlsLogEnvTags,omitempty" xml:"SlsLogEnvTags,omitempty"`
 }
 
 func (s UpdateNamespaceSlsConfigsRequest) String() string {
@@ -78,6 +81,10 @@ func (s *UpdateNamespaceSlsConfigsRequest) GetSlsConfigs() *string {
 	return s.SlsConfigs
 }
 
+func (s *UpdateNamespaceSlsConfigsRequest) GetSlsLogEnvTags() *string {
+	return s.SlsLogEnvTags
+}
+
 func (s *UpdateNamespaceSlsConfigsRequest) SetNameSpaceShortId(v string) *UpdateNamespaceSlsConfigsRequest {
 	s.NameSpaceShortId = &v
 	return s
@@ -90,6 +97,11 @@ func (s *UpdateNamespaceSlsConfigsRequest) SetNamespaceId(v string) *UpdateNames
 
 func (s *UpdateNamespaceSlsConfigsRequest) SetSlsConfigs(v string) *UpdateNamespaceSlsConfigsRequest {
 	s.SlsConfigs = &v
+	return s
+}
+
+func (s *UpdateNamespaceSlsConfigsRequest) SetSlsLogEnvTags(v string) *UpdateNamespaceSlsConfigsRequest {
+	s.SlsLogEnvTags = &v
 	return s
 }
 

@@ -805,6 +805,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["Liveness"] = request.Liveness
 	}
 
+	if !dara.IsNil(request.LokiConfigs) {
+		query["LokiConfigs"] = request.LokiConfigs
+	}
+
 	if !dara.IsNil(request.Memory) {
 		query["Memory"] = request.Memory
 	}
@@ -3445,6 +3449,10 @@ func (client *Client) DeployApplicationWithOptions(tmpReq *DeployApplicationRequ
 
 	if !dara.IsNil(request.Liveness) {
 		query["Liveness"] = request.Liveness
+	}
+
+	if !dara.IsNil(request.LokiConfigs) {
+		query["LokiConfigs"] = request.LokiConfigs
 	}
 
 	if !dara.IsNil(request.MaxSurgeInstanceRatio) {
@@ -11938,6 +11946,10 @@ func (client *Client) UpdateNamespaceSlsConfigsWithOptions(request *UpdateNamesp
 
 	if !dara.IsNil(request.SlsConfigs) {
 		query["SlsConfigs"] = request.SlsConfigs
+	}
+
+	if !dara.IsNil(request.SlsLogEnvTags) {
+		query["SlsLogEnvTags"] = request.SlsLogEnvTags
 	}
 
 	req := &openapiutil.OpenApiRequest{

@@ -83,6 +83,8 @@ type iDeployApplicationShrinkRequest interface {
 	GetKafkaConfigs() *string
 	SetLiveness(v string) *DeployApplicationShrinkRequest
 	GetLiveness() *string
+	SetLokiConfigs(v string) *DeployApplicationShrinkRequest
+	GetLokiConfigs() *string
 	SetMaxSurgeInstanceRatio(v int32) *DeployApplicationShrinkRequest
 	GetMaxSurgeInstanceRatio() *int32
 	SetMaxSurgeInstances(v int32) *DeployApplicationShrinkRequest
@@ -527,6 +529,7 @@ type DeployApplicationShrinkRequest struct {
 	//
 	// {"exec":{"command":["sleep","5s"]},"initialDelaySeconds":10,"timeoutSeconds":11}
 	Liveness              *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	LokiConfigs           *string `json:"LokiConfigs,omitempty" xml:"LokiConfigs,omitempty"`
 	MaxSurgeInstanceRatio *int32  `json:"MaxSurgeInstanceRatio,omitempty" xml:"MaxSurgeInstanceRatio,omitempty"`
 	MaxSurgeInstances     *int32  `json:"MaxSurgeInstances,omitempty" xml:"MaxSurgeInstances,omitempty"`
 	// The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
@@ -1176,6 +1179,10 @@ func (s *DeployApplicationShrinkRequest) GetLiveness() *string {
 	return s.Liveness
 }
 
+func (s *DeployApplicationShrinkRequest) GetLokiConfigs() *string {
+	return s.LokiConfigs
+}
+
 func (s *DeployApplicationShrinkRequest) GetMaxSurgeInstanceRatio() *int32 {
 	return s.MaxSurgeInstanceRatio
 }
@@ -1542,6 +1549,11 @@ func (s *DeployApplicationShrinkRequest) SetKafkaConfigs(v string) *DeployApplic
 
 func (s *DeployApplicationShrinkRequest) SetLiveness(v string) *DeployApplicationShrinkRequest {
 	s.Liveness = &v
+	return s
+}
+
+func (s *DeployApplicationShrinkRequest) SetLokiConfigs(v string) *DeployApplicationShrinkRequest {
+	s.LokiConfigs = &v
 	return s
 }
 

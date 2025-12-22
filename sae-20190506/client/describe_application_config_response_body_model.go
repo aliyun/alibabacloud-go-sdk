@@ -509,6 +509,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	//
 	// {"exec":{"command":["curl http://localhost:8080"]},"initialDelaySeconds":20,"timeoutSeconds":3}
 	Liveness              *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	LokiConfigs           *string `json:"LokiConfigs,omitempty" xml:"LokiConfigs,omitempty"`
 	MaxSurgeInstanceRatio *int32  `json:"MaxSurgeInstanceRatio,omitempty" xml:"MaxSurgeInstanceRatio,omitempty"`
 	MaxSurgeInstances     *int32  `json:"MaxSurgeInstances,omitempty" xml:"MaxSurgeInstances,omitempty"`
 	// The size of memory required by each instance. Unit: MB. You cannot set this parameter to 0. The values of this parameter correspond to the values of the Cpu parameter:
@@ -1140,6 +1141,10 @@ func (s *DescribeApplicationConfigResponseBodyData) GetLiveness() *string {
 	return s.Liveness
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) GetLokiConfigs() *string {
+	return s.LokiConfigs
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) GetMaxSurgeInstanceRatio() *int32 {
 	return s.MaxSurgeInstanceRatio
 }
@@ -1578,6 +1583,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetKafkaConfigs(v string) *D
 
 func (s *DescribeApplicationConfigResponseBodyData) SetLiveness(v string) *DescribeApplicationConfigResponseBodyData {
 	s.Liveness = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetLokiConfigs(v string) *DescribeApplicationConfigResponseBodyData {
+	s.LokiConfigs = &v
 	return s
 }
 

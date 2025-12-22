@@ -89,6 +89,8 @@ type iCreateApplicationShrinkRequest interface {
 	GetKafkaConfigs() *string
 	SetLiveness(v string) *CreateApplicationShrinkRequest
 	GetLiveness() *string
+	SetLokiConfigs(v string) *CreateApplicationShrinkRequest
+	GetLokiConfigs() *string
 	SetMemory(v int32) *CreateApplicationShrinkRequest
 	GetMemory() *int32
 	SetMicroRegistration(v string) *CreateApplicationShrinkRequest
@@ -526,7 +528,8 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// {"exec":{"command":["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}
-	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	Liveness    *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	LokiConfigs *string `json:"LokiConfigs,omitempty" xml:"LokiConfigs,omitempty"`
 	// The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
 	//
 	// 	- This parameter is set to **1024*	- if the Cpu parameter is set to 500 or 1000.
@@ -1128,6 +1131,10 @@ func (s *CreateApplicationShrinkRequest) GetLiveness() *string {
 	return s.Liveness
 }
 
+func (s *CreateApplicationShrinkRequest) GetLokiConfigs() *string {
+	return s.LokiConfigs
+}
+
 func (s *CreateApplicationShrinkRequest) GetMemory() *int32 {
 	return s.Memory
 }
@@ -1505,6 +1512,11 @@ func (s *CreateApplicationShrinkRequest) SetKafkaConfigs(v string) *CreateApplic
 
 func (s *CreateApplicationShrinkRequest) SetLiveness(v string) *CreateApplicationShrinkRequest {
 	s.Liveness = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetLokiConfigs(v string) *CreateApplicationShrinkRequest {
+	s.LokiConfigs = &v
 	return s
 }
 
