@@ -9439,6 +9439,72 @@ func (client *Client) ListDocuments(request *ListDocumentsRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询反馈记录
+//
+// @param request - ListFeedbacksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFeedbacksResponse
+func (client *Client) ListFeedbacksWithOptions(request *ListFeedbacksRequest, runtime *dara.RuntimeOptions) (_result *ListFeedbacksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.TaskIdList) {
+		query["TaskIdList"] = request.TaskIdList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFeedbacks"),
+		Version:     dara.String("2020-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListFeedbacksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询反馈记录
+//
+// @param request - ListFeedbacksRequest
+//
+// @return ListFeedbacksResponse
+func (client *Client) ListFeedbacks(request *ListFeedbacksRequest) (_result *ListFeedbacksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListFeedbacksResponse{}
+	_body, _err := client.ListFeedbacksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - ListFlashSmsApplicationsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15874,6 +15940,84 @@ func (client *Client) SendDtmfSignaling(request *SendDtmfSignalingRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &SendDtmfSignalingResponse{}
 	_body, _err := client.SendDtmfSignalingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 推送消息
+//
+// @param request - SendNotificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendNotificationResponse
+func (client *Client) SendNotificationWithOptions(request *SendNotificationRequest, runtime *dara.RuntimeOptions) (_result *SendNotificationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MessageBody) {
+		query["MessageBody"] = request.MessageBody
+	}
+
+	if !dara.IsNil(request.NotificationTarget) {
+		query["NotificationTarget"] = request.NotificationTarget
+	}
+
+	if !dara.IsNil(request.NotificationType) {
+		query["NotificationType"] = request.NotificationType
+	}
+
+	if !dara.IsNil(request.ShardingKey) {
+		query["ShardingKey"] = request.ShardingKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SendNotification"),
+		Version:     dara.String("2020-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SendNotificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 推送消息
+//
+// @param request - SendNotificationRequest
+//
+// @return SendNotificationResponse
+func (client *Client) SendNotification(request *SendNotificationRequest) (_result *SendNotificationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SendNotificationResponse{}
+	_body, _err := client.SendNotificationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
