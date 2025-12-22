@@ -341,6 +341,74 @@ func (client *Client) CreateFinReportSummaryTaskWithContext(ctx context.Context,
 
 // Summary:
 //
+// 创建图片检测任务
+//
+// @param request - CreateImageDetectionTaskRequest
+//
+// @param headers - CreateImageDetectionTaskHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateImageDetectionTaskResponse
+func (client *Client) CreateImageDetectionTaskWithContext(ctx context.Context, workspaceId *string, request *CreateImageDetectionTaskRequest, headers *CreateImageDetectionTaskHeaders, runtime *dara.RuntimeOptions) (_result *CreateImageDetectionTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FileInfo) {
+		body["fileInfo"] = request.FileInfo
+	}
+
+	if !dara.IsNil(request.FileUrl) {
+		body["fileUrl"] = request.FileUrl
+	}
+
+	if !dara.IsNil(request.RequestId) {
+		body["requestId"] = request.RequestId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		body["userId"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XLoadTest) {
+		realHeaders["X-Load-Test"] = dara.String(dara.Stringify(dara.BoolValue(headers.XLoadTest)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateImageDetectionTask"),
+		Version:     dara.String("2024-06-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/api/imageDetect/task/submit"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateImageDetectionTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建文档库
 //
 // @param request - CreateLibraryRequest
@@ -579,6 +647,78 @@ func (client *Client) CreateQualityCheckTaskWithContext(ctx context.Context, wor
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateQualityCheckTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建视频生成任务
+//
+// @param request - CreateVideoCreationTaskRequest
+//
+// @param headers - CreateVideoCreationTaskHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVideoCreationTaskResponse
+func (client *Client) CreateVideoCreationTaskWithContext(ctx context.Context, workspaceId *string, request *CreateVideoCreationTaskRequest, headers *CreateVideoCreationTaskHeaders, runtime *dara.RuntimeOptions) (_result *CreateVideoCreationTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreationInstruction) {
+		body["creationInstruction"] = request.CreationInstruction
+	}
+
+	if !dara.IsNil(request.FileInfo) {
+		body["fileInfo"] = request.FileInfo
+	}
+
+	if !dara.IsNil(request.ImageDetectionTaskId) {
+		body["imageDetectionTaskId"] = request.ImageDetectionTaskId
+	}
+
+	if !dara.IsNil(request.RequestId) {
+		body["requestId"] = request.RequestId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		body["userId"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XLoadTest) {
+		realHeaders["X-Load-Test"] = dara.String(dara.Stringify(dara.BoolValue(headers.XLoadTest)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateVideoCreationTask"),
+		Version:     dara.String("2024-06-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/api/videoCreation/task/create"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateVideoCreationTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1424,6 +1564,66 @@ func (client *Client) GetHistoryListByBizTypeWithContext(ctx context.Context, wo
 
 // Summary:
 //
+// 获取检测结果
+//
+// @param request - GetImageDetectionTaskResultRequest
+//
+// @param headers - GetImageDetectionTaskResultHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetImageDetectionTaskResultResponse
+func (client *Client) GetImageDetectionTaskResultWithContext(ctx context.Context, workspaceId *string, request *GetImageDetectionTaskResultRequest, headers *GetImageDetectionTaskResultHeaders, runtime *dara.RuntimeOptions) (_result *GetImageDetectionTaskResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		body["taskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		body["userId"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XLoadTest) {
+		realHeaders["X-Load-Test"] = dara.String(dara.Stringify(dara.BoolValue(headers.XLoadTest)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetImageDetectionTaskResult"),
+		Version:     dara.String("2024-06-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/api/imageDetect/task/query"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetImageDetectionTaskResultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取文档库配置详情
 //
 // @param request - GetLibraryRequest
@@ -1759,6 +1959,66 @@ func (client *Client) GetTaskStatusWithContext(ctx context.Context, workspaceId 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取视频生成任务结果
+//
+// @param request - GetVideoCreationTaskResultRequest
+//
+// @param headers - GetVideoCreationTaskResultHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoCreationTaskResultResponse
+func (client *Client) GetVideoCreationTaskResultWithContext(ctx context.Context, workspaceId *string, request *GetVideoCreationTaskResultRequest, headers *GetVideoCreationTaskResultHeaders, runtime *dara.RuntimeOptions) (_result *GetVideoCreationTaskResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		body["taskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		body["userId"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XLoadTest) {
+		realHeaders["X-Load-Test"] = dara.String(dara.Stringify(dara.BoolValue(headers.XLoadTest)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVideoCreationTaskResult"),
+		Version:     dara.String("2024-06-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/api/videoCreation/task/query"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVideoCreationTaskResultResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
