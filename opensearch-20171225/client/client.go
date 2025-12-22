@@ -5849,6 +5849,10 @@ func (client *Client) ModifyAppGroupQuotaWithOptions(appGroupIdentity *string, r
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.DryRun) {
 		query["dryRun"] = request.DryRun
 	}

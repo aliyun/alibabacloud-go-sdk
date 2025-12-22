@@ -11,13 +11,16 @@ type iModifyAppGroupQuotaRequest interface {
 	GoString() string
 	SetBody(v *Quota) *ModifyAppGroupQuotaRequest
 	GetBody() *Quota
+	SetClientToken(v string) *ModifyAppGroupQuotaRequest
+	GetClientToken() *string
 	SetDryRun(v bool) *ModifyAppGroupQuotaRequest
 	GetDryRun() *bool
 }
 
 type ModifyAppGroupQuotaRequest struct {
 	// The request body.
-	Body *Quota `json:"body,omitempty" xml:"body,omitempty"`
+	Body        *Quota  `json:"body,omitempty" xml:"body,omitempty"`
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	// Specifies whether to check the validity of input parameters. Default value: false.
 	//
 	// Valid values:
@@ -44,12 +47,21 @@ func (s *ModifyAppGroupQuotaRequest) GetBody() *Quota {
 	return s.Body
 }
 
+func (s *ModifyAppGroupQuotaRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *ModifyAppGroupQuotaRequest) GetDryRun() *bool {
 	return s.DryRun
 }
 
 func (s *ModifyAppGroupQuotaRequest) SetBody(v *Quota) *ModifyAppGroupQuotaRequest {
 	s.Body = v
+	return s
+}
+
+func (s *ModifyAppGroupQuotaRequest) SetClientToken(v string) *ModifyAppGroupQuotaRequest {
+	s.ClientToken = &v
 	return s
 }
 
