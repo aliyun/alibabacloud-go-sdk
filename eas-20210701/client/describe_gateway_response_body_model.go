@@ -33,6 +33,8 @@ type iDescribeGatewayResponseBody interface {
 	GetIntranetEnabled() *bool
 	SetIsDefault(v bool) *DescribeGatewayResponseBody
 	GetIsDefault() *bool
+	SetLabels(v []*DescribeGatewayResponseBodyLabels) *DescribeGatewayResponseBody
+	GetLabels() []*DescribeGatewayResponseBodyLabels
 	SetReplicas(v int32) *DescribeGatewayResponseBody
 	GetReplicas() *int32
 	SetRequestId(v string) *DescribeGatewayResponseBody
@@ -129,7 +131,8 @@ type DescribeGatewayResponseBody struct {
 	// example:
 	//
 	// true
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	IsDefault *bool                                `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Labels    []*DescribeGatewayResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The number of nodes in the private gateway.
 	//
 	// example:
@@ -234,6 +237,10 @@ func (s *DescribeGatewayResponseBody) GetIsDefault() *bool {
 	return s.IsDefault
 }
 
+func (s *DescribeGatewayResponseBody) GetLabels() []*DescribeGatewayResponseBodyLabels {
+	return s.Labels
+}
+
 func (s *DescribeGatewayResponseBody) GetReplicas() *int32 {
 	return s.Replicas
 }
@@ -314,6 +321,11 @@ func (s *DescribeGatewayResponseBody) SetIsDefault(v bool) *DescribeGatewayRespo
 	return s
 }
 
+func (s *DescribeGatewayResponseBody) SetLabels(v []*DescribeGatewayResponseBodyLabels) *DescribeGatewayResponseBody {
+	s.Labels = v
+	return s
+}
+
 func (s *DescribeGatewayResponseBody) SetReplicas(v int32) *DescribeGatewayResponseBody {
 	s.Replicas = &v
 	return s
@@ -340,5 +352,55 @@ func (s *DescribeGatewayResponseBody) SetUpdateTime(v string) *DescribeGatewayRe
 }
 
 func (s *DescribeGatewayResponseBody) Validate() error {
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeGatewayResponseBodyLabels struct {
+	// example:
+	//
+	// key1
+	LabelKey *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
+	// example:
+	//
+	// value1
+	LabelValue *string `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
+}
+
+func (s DescribeGatewayResponseBodyLabels) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeGatewayResponseBodyLabels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGatewayResponseBodyLabels) GetLabelKey() *string {
+	return s.LabelKey
+}
+
+func (s *DescribeGatewayResponseBodyLabels) GetLabelValue() *string {
+	return s.LabelValue
+}
+
+func (s *DescribeGatewayResponseBodyLabels) SetLabelKey(v string) *DescribeGatewayResponseBodyLabels {
+	s.LabelKey = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBodyLabels) SetLabelValue(v string) *DescribeGatewayResponseBodyLabels {
+	s.LabelValue = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBodyLabels) Validate() error {
 	return dara.Validate(s)
 }

@@ -19,6 +19,8 @@ type iListGatewayRequest interface {
 	GetGatewayType() *string
 	SetInternetEnabled(v bool) *ListGatewayRequest
 	GetInternetEnabled() *bool
+	SetLabel(v map[string]*string) *ListGatewayRequest
+	GetLabel() map[string]*string
 	SetOrder(v string) *ListGatewayRequest
 	GetOrder() *string
 	SetPageNumber(v int32) *ListGatewayRequest
@@ -46,10 +48,11 @@ type ListGatewayRequest struct {
 	// example:
 	//
 	// mygateway1
-	GatewayName     *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
-	GatewayType     *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
-	InternetEnabled *bool   `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
-	Order           *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	GatewayName     *string            `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
+	GatewayType     *string            `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	InternetEnabled *bool              `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
+	Label           map[string]*string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Order           *string            `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The page number. Default value: 1.
 	//
 	// example:
@@ -100,6 +103,10 @@ func (s *ListGatewayRequest) GetInternetEnabled() *bool {
 	return s.InternetEnabled
 }
 
+func (s *ListGatewayRequest) GetLabel() map[string]*string {
+	return s.Label
+}
+
 func (s *ListGatewayRequest) GetOrder() *string {
 	return s.Order
 }
@@ -146,6 +153,11 @@ func (s *ListGatewayRequest) SetGatewayType(v string) *ListGatewayRequest {
 
 func (s *ListGatewayRequest) SetInternetEnabled(v bool) *ListGatewayRequest {
 	s.InternetEnabled = &v
+	return s
+}
+
+func (s *ListGatewayRequest) SetLabel(v map[string]*string) *ListGatewayRequest {
+	s.Label = v
 	return s
 }
 

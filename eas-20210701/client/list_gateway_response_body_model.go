@@ -175,7 +175,8 @@ type ListGatewayResponseBodyGateways struct {
 	// example:
 	//
 	// true
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	IsDefault *bool                                    `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Labels    []*ListGatewayResponseBodyGatewaysLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The number of nodes in the private gateway.
 	//
 	// example:
@@ -266,6 +267,10 @@ func (s *ListGatewayResponseBodyGateways) GetIsDefault() *bool {
 	return s.IsDefault
 }
 
+func (s *ListGatewayResponseBodyGateways) GetLabels() []*ListGatewayResponseBodyGatewaysLabels {
+	return s.Labels
+}
+
 func (s *ListGatewayResponseBodyGateways) GetReplicas() *int32 {
 	return s.Replicas
 }
@@ -332,6 +337,11 @@ func (s *ListGatewayResponseBodyGateways) SetIsDefault(v bool) *ListGatewayRespo
 	return s
 }
 
+func (s *ListGatewayResponseBodyGateways) SetLabels(v []*ListGatewayResponseBodyGatewaysLabels) *ListGatewayResponseBodyGateways {
+	s.Labels = v
+	return s
+}
+
 func (s *ListGatewayResponseBodyGateways) SetReplicas(v int32) *ListGatewayResponseBodyGateways {
 	s.Replicas = &v
 	return s
@@ -353,5 +363,55 @@ func (s *ListGatewayResponseBodyGateways) SetUpdateTime(v string) *ListGatewayRe
 }
 
 func (s *ListGatewayResponseBodyGateways) Validate() error {
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListGatewayResponseBodyGatewaysLabels struct {
+	// example:
+	//
+	// key1
+	LabelKey *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
+	// example:
+	//
+	// value1
+	LabelValue *string `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
+}
+
+func (s ListGatewayResponseBodyGatewaysLabels) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListGatewayResponseBodyGatewaysLabels) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayResponseBodyGatewaysLabels) GetLabelKey() *string {
+	return s.LabelKey
+}
+
+func (s *ListGatewayResponseBodyGatewaysLabels) GetLabelValue() *string {
+	return s.LabelValue
+}
+
+func (s *ListGatewayResponseBodyGatewaysLabels) SetLabelKey(v string) *ListGatewayResponseBodyGatewaysLabels {
+	s.LabelKey = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyGatewaysLabels) SetLabelValue(v string) *ListGatewayResponseBodyGatewaysLabels {
+	s.LabelValue = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyGatewaysLabels) Validate() error {
 	return dara.Validate(s)
 }

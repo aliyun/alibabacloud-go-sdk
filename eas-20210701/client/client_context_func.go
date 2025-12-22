@@ -2956,20 +2956,26 @@ func (client *Client) ListBenchmarkTaskWithContext(ctx context.Context, request 
 //
 // Queries a list of private gateways.
 //
-// @param request - ListGatewayRequest
+// @param tmpReq - ListGatewayRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListGatewayResponse
-func (client *Client) ListGatewayWithContext(ctx context.Context, request *ListGatewayRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewayResponse, _err error) {
+func (client *Client) ListGatewayWithContext(ctx context.Context, tmpReq *ListGatewayRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewayResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListGatewayShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Label) {
+		request.LabelShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Label, dara.String("Label"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChargeType) {
 		query["ChargeType"] = request.ChargeType
@@ -2989,6 +2995,10 @@ func (client *Client) ListGatewayWithContext(ctx context.Context, request *ListG
 
 	if !dara.IsNil(request.InternetEnabled) {
 		query["InternetEnabled"] = request.InternetEnabled
+	}
+
+	if !dara.IsNil(request.LabelShrink) {
+		query["Label"] = request.LabelShrink
 	}
 
 	if !dara.IsNil(request.Order) {
