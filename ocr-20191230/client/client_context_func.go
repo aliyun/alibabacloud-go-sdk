@@ -13,9 +13,11 @@ import (
 //
 // @return GetAsyncJobResultResponse
 func (client *Client) GetAsyncJobResultWithContext(ctx context.Context, request *GetAsyncJobResultRequest, runtime *dara.RuntimeOptions) (_result *GetAsyncJobResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -51,9 +53,11 @@ func (client *Client) GetAsyncJobResultWithContext(ctx context.Context, request 
 //
 // @return RecognizeBankCardResponse
 func (client *Client) RecognizeBankCardWithContext(ctx context.Context, request *RecognizeBankCardRequest, runtime *dara.RuntimeOptions) (_result *RecognizeBankCardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -89,9 +93,11 @@ func (client *Client) RecognizeBankCardWithContext(ctx context.Context, request 
 //
 // @return RecognizeBusinessLicenseResponse
 func (client *Client) RecognizeBusinessLicenseWithContext(ctx context.Context, request *RecognizeBusinessLicenseRequest, runtime *dara.RuntimeOptions) (_result *RecognizeBusinessLicenseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -121,15 +127,21 @@ func (client *Client) RecognizeBusinessLicenseWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 通用文字识别
+//
 // @param request - RecognizeCharacterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RecognizeCharacterResponse
 func (client *Client) RecognizeCharacterWithContext(ctx context.Context, request *RecognizeCharacterRequest, runtime *dara.RuntimeOptions) (_result *RecognizeCharacterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -173,9 +185,11 @@ func (client *Client) RecognizeCharacterWithContext(ctx context.Context, request
 //
 // @return RecognizeDriverLicenseResponse
 func (client *Client) RecognizeDriverLicenseWithContext(ctx context.Context, request *RecognizeDriverLicenseRequest, runtime *dara.RuntimeOptions) (_result *RecognizeDriverLicenseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -215,9 +229,11 @@ func (client *Client) RecognizeDriverLicenseWithContext(ctx context.Context, req
 //
 // @return RecognizeDrivingLicenseResponse
 func (client *Client) RecognizeDrivingLicenseWithContext(ctx context.Context, request *RecognizeDrivingLicenseRequest, runtime *dara.RuntimeOptions) (_result *RecognizeDrivingLicenseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -257,9 +273,11 @@ func (client *Client) RecognizeDrivingLicenseWithContext(ctx context.Context, re
 //
 // @return RecognizeIdentityCardResponse
 func (client *Client) RecognizeIdentityCardWithContext(ctx context.Context, request *RecognizeIdentityCardRequest, runtime *dara.RuntimeOptions) (_result *RecognizeIdentityCardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -299,9 +317,11 @@ func (client *Client) RecognizeIdentityCardWithContext(ctx context.Context, requ
 //
 // @return RecognizeLicensePlateResponse
 func (client *Client) RecognizeLicensePlateWithContext(ctx context.Context, request *RecognizeLicensePlateRequest, runtime *dara.RuntimeOptions) (_result *RecognizeLicensePlateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -341,9 +361,11 @@ func (client *Client) RecognizeLicensePlateWithContext(ctx context.Context, requ
 //
 // @return RecognizePdfResponse
 func (client *Client) RecognizePdfWithContext(ctx context.Context, request *RecognizePdfRequest, runtime *dara.RuntimeOptions) (_result *RecognizePdfResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FileURL) {
@@ -379,9 +401,11 @@ func (client *Client) RecognizePdfWithContext(ctx context.Context, request *Reco
 //
 // @return RecognizeQrCodeResponse
 func (client *Client) RecognizeQrCodeWithContext(ctx context.Context, request *RecognizeQrCodeRequest, runtime *dara.RuntimeOptions) (_result *RecognizeQrCodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Tasks) {
@@ -421,9 +445,11 @@ func (client *Client) RecognizeQrCodeWithContext(ctx context.Context, request *R
 //
 // @return RecognizeQuotaInvoiceResponse
 func (client *Client) RecognizeQuotaInvoiceWithContext(ctx context.Context, request *RecognizeQuotaInvoiceRequest, runtime *dara.RuntimeOptions) (_result *RecognizeQuotaInvoiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -459,9 +485,11 @@ func (client *Client) RecognizeQuotaInvoiceWithContext(ctx context.Context, requ
 //
 // @return RecognizeTableResponse
 func (client *Client) RecognizeTableWithContext(ctx context.Context, request *RecognizeTableRequest, runtime *dara.RuntimeOptions) (_result *RecognizeTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssureDirection) {
@@ -517,9 +545,11 @@ func (client *Client) RecognizeTableWithContext(ctx context.Context, request *Re
 //
 // @return RecognizeTaxiInvoiceResponse
 func (client *Client) RecognizeTaxiInvoiceWithContext(ctx context.Context, request *RecognizeTaxiInvoiceRequest, runtime *dara.RuntimeOptions) (_result *RecognizeTaxiInvoiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -559,9 +589,11 @@ func (client *Client) RecognizeTaxiInvoiceWithContext(ctx context.Context, reque
 //
 // @return RecognizeTicketInvoiceResponse
 func (client *Client) RecognizeTicketInvoiceWithContext(ctx context.Context, request *RecognizeTicketInvoiceRequest, runtime *dara.RuntimeOptions) (_result *RecognizeTicketInvoiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -597,9 +629,11 @@ func (client *Client) RecognizeTicketInvoiceWithContext(ctx context.Context, req
 //
 // @return RecognizeTrainTicketResponse
 func (client *Client) RecognizeTrainTicketWithContext(ctx context.Context, request *RecognizeTrainTicketRequest, runtime *dara.RuntimeOptions) (_result *RecognizeTrainTicketResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -635,9 +669,11 @@ func (client *Client) RecognizeTrainTicketWithContext(ctx context.Context, reque
 //
 // @return RecognizeVATInvoiceResponse
 func (client *Client) RecognizeVATInvoiceWithContext(ctx context.Context, request *RecognizeVATInvoiceRequest, runtime *dara.RuntimeOptions) (_result *RecognizeVATInvoiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FileType) {
@@ -677,9 +713,11 @@ func (client *Client) RecognizeVATInvoiceWithContext(ctx context.Context, reques
 //
 // @return RecognizeVINCodeResponse
 func (client *Client) RecognizeVINCodeWithContext(ctx context.Context, request *RecognizeVINCodeRequest, runtime *dara.RuntimeOptions) (_result *RecognizeVINCodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -719,9 +757,11 @@ func (client *Client) RecognizeVINCodeWithContext(ctx context.Context, request *
 //
 // @return RecognizeVideoCharacterResponse
 func (client *Client) RecognizeVideoCharacterWithContext(ctx context.Context, request *RecognizeVideoCharacterRequest, runtime *dara.RuntimeOptions) (_result *RecognizeVideoCharacterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.VideoURL) {

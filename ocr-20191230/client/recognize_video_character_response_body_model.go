@@ -62,7 +62,12 @@ func (s *RecognizeVideoCharacterResponseBody) SetRequestId(v string) *RecognizeV
 }
 
 func (s *RecognizeVideoCharacterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeVideoCharacterResponseBodyData struct {
@@ -126,7 +131,16 @@ func (s *RecognizeVideoCharacterResponseBodyData) SetWidth(v int64) *RecognizeVi
 }
 
 func (s *RecognizeVideoCharacterResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Frames != nil {
+		for _, item := range s.Frames {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeVideoCharacterResponseBodyDataFrames struct {
@@ -164,7 +178,16 @@ func (s *RecognizeVideoCharacterResponseBodyDataFrames) SetTimestamp(v int64) *R
 }
 
 func (s *RecognizeVideoCharacterResponseBodyDataFrames) Validate() error {
-	return dara.Validate(s)
+	if s.Elements != nil {
+		for _, item := range s.Elements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeVideoCharacterResponseBodyDataFramesElements struct {
@@ -212,7 +235,16 @@ func (s *RecognizeVideoCharacterResponseBodyDataFramesElements) SetTextRectangle
 }
 
 func (s *RecognizeVideoCharacterResponseBodyDataFramesElements) Validate() error {
-	return dara.Validate(s)
+	if s.TextRectangles != nil {
+		for _, item := range s.TextRectangles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeVideoCharacterResponseBodyDataFramesElementsTextRectangles struct {

@@ -50,7 +50,12 @@ func (s *RecognizeQrCodeResponseBody) SetRequestId(v string) *RecognizeQrCodeRes
 }
 
 func (s *RecognizeQrCodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeQrCodeResponseBodyData struct {
@@ -75,7 +80,16 @@ func (s *RecognizeQrCodeResponseBodyData) SetElements(v []*RecognizeQrCodeRespon
 }
 
 func (s *RecognizeQrCodeResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Elements != nil {
+		for _, item := range s.Elements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeQrCodeResponseBodyDataElements struct {
@@ -126,7 +140,16 @@ func (s *RecognizeQrCodeResponseBodyDataElements) SetTaskId(v string) *Recognize
 }
 
 func (s *RecognizeQrCodeResponseBodyDataElements) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeQrCodeResponseBodyDataElementsResults struct {

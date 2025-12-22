@@ -59,5 +59,10 @@ func (s *RecognizeCharacterResponse) SetBody(v *RecognizeCharacterResponseBody) 
 }
 
 func (s *RecognizeCharacterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -50,7 +50,12 @@ func (s *RecognizeLicensePlateResponseBody) SetRequestId(v string) *RecognizeLic
 }
 
 func (s *RecognizeLicensePlateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeLicensePlateResponseBodyData struct {
@@ -75,7 +80,16 @@ func (s *RecognizeLicensePlateResponseBodyData) SetPlates(v []*RecognizeLicenseP
 }
 
 func (s *RecognizeLicensePlateResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Plates != nil {
+		for _, item := range s.Plates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeLicensePlateResponseBodyDataPlates struct {
@@ -156,7 +170,21 @@ func (s *RecognizeLicensePlateResponseBodyDataPlates) SetRoi(v *RecognizeLicense
 }
 
 func (s *RecognizeLicensePlateResponseBodyDataPlates) Validate() error {
-	return dara.Validate(s)
+	if s.Positions != nil {
+		for _, item := range s.Positions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Roi != nil {
+		if err := s.Roi.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeLicensePlateResponseBodyDataPlatesPositions struct {

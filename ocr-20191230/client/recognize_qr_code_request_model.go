@@ -38,7 +38,16 @@ func (s *RecognizeQrCodeRequest) SetTasks(v []*RecognizeQrCodeRequestTasks) *Rec
 }
 
 func (s *RecognizeQrCodeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tasks != nil {
+		for _, item := range s.Tasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeQrCodeRequestTasks struct {

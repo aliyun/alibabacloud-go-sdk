@@ -50,7 +50,12 @@ func (s *RecognizePdfResponseBody) SetRequestId(v string) *RecognizePdfResponseB
 }
 
 func (s *RecognizePdfResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizePdfResponseBodyData struct {
@@ -153,7 +158,16 @@ func (s *RecognizePdfResponseBodyData) SetWordsInfo(v []*RecognizePdfResponseBod
 }
 
 func (s *RecognizePdfResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.WordsInfo != nil {
+		for _, item := range s.WordsInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizePdfResponseBodyDataWordsInfo struct {
@@ -253,7 +267,16 @@ func (s *RecognizePdfResponseBodyDataWordsInfo) SetY(v int64) *RecognizePdfRespo
 }
 
 func (s *RecognizePdfResponseBodyDataWordsInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Positions != nil {
+		for _, item := range s.Positions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizePdfResponseBodyDataWordsInfoPositions struct {

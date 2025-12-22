@@ -50,7 +50,12 @@ func (s *RecognizeTableResponseBody) SetRequestId(v string) *RecognizeTableRespo
 }
 
 func (s *RecognizeTableResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeTableResponseBodyData struct {
@@ -88,7 +93,16 @@ func (s *RecognizeTableResponseBodyData) SetTables(v []*RecognizeTableResponseBo
 }
 
 func (s *RecognizeTableResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Tables != nil {
+		for _, item := range s.Tables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeTableResponseBodyDataTables struct {
@@ -133,7 +147,16 @@ func (s *RecognizeTableResponseBodyDataTables) SetTail(v []*string) *RecognizeTa
 }
 
 func (s *RecognizeTableResponseBodyDataTables) Validate() error {
-	return dara.Validate(s)
+	if s.TableRows != nil {
+		for _, item := range s.TableRows {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeTableResponseBodyDataTablesTableRows struct {
@@ -158,7 +181,16 @@ func (s *RecognizeTableResponseBodyDataTablesTableRows) SetTableColumns(v []*Rec
 }
 
 func (s *RecognizeTableResponseBodyDataTablesTableRows) Validate() error {
-	return dara.Validate(s)
+	if s.TableColumns != nil {
+		for _, item := range s.TableColumns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeTableResponseBodyDataTablesTableRowsTableColumns struct {

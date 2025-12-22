@@ -50,7 +50,12 @@ func (s *RecognizeDriverLicenseResponseBody) SetRequestId(v string) *RecognizeDr
 }
 
 func (s *RecognizeDriverLicenseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeDriverLicenseResponseBodyData struct {
@@ -85,7 +90,17 @@ func (s *RecognizeDriverLicenseResponseBodyData) SetFaceResult(v *RecognizeDrive
 }
 
 func (s *RecognizeDriverLicenseResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.BackResult != nil {
+		if err := s.BackResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FaceResult != nil {
+		if err := s.FaceResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeDriverLicenseResponseBodyDataBackResult struct {

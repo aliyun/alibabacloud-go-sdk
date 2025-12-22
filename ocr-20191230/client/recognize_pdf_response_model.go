@@ -59,5 +59,10 @@ func (s *RecognizePdfResponse) SetBody(v *RecognizePdfResponseBody) *RecognizePd
 }
 
 func (s *RecognizePdfResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

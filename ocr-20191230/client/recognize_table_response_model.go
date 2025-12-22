@@ -59,5 +59,10 @@ func (s *RecognizeTableResponse) SetBody(v *RecognizeTableResponseBody) *Recogni
 }
 
 func (s *RecognizeTableResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

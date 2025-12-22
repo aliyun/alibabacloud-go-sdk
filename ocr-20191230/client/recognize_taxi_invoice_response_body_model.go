@@ -50,7 +50,12 @@ func (s *RecognizeTaxiInvoiceResponseBody) SetRequestId(v string) *RecognizeTaxi
 }
 
 func (s *RecognizeTaxiInvoiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeTaxiInvoiceResponseBodyData struct {
@@ -75,7 +80,16 @@ func (s *RecognizeTaxiInvoiceResponseBodyData) SetInvoices(v []*RecognizeTaxiInv
 }
 
 func (s *RecognizeTaxiInvoiceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Invoices != nil {
+		for _, item := range s.Invoices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeTaxiInvoiceResponseBodyDataInvoices struct {
@@ -123,7 +137,21 @@ func (s *RecognizeTaxiInvoiceResponseBodyDataInvoices) SetRotateType(v int32) *R
 }
 
 func (s *RecognizeTaxiInvoiceResponseBodyDataInvoices) Validate() error {
-	return dara.Validate(s)
+	if s.InvoiceRoi != nil {
+		if err := s.InvoiceRoi.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeTaxiInvoiceResponseBodyDataInvoicesInvoiceRoi struct {
@@ -228,7 +256,12 @@ func (s *RecognizeTaxiInvoiceResponseBodyDataInvoicesItems) SetText(v string) *R
 }
 
 func (s *RecognizeTaxiInvoiceResponseBodyDataInvoicesItems) Validate() error {
-	return dara.Validate(s)
+	if s.ItemRoi != nil {
+		if err := s.ItemRoi.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeTaxiInvoiceResponseBodyDataInvoicesItemsItemRoi struct {
@@ -276,7 +309,17 @@ func (s *RecognizeTaxiInvoiceResponseBodyDataInvoicesItemsItemRoi) SetSize(v *Re
 }
 
 func (s *RecognizeTaxiInvoiceResponseBodyDataInvoicesItemsItemRoi) Validate() error {
-	return dara.Validate(s)
+	if s.Center != nil {
+		if err := s.Center.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Size != nil {
+		if err := s.Size.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeTaxiInvoiceResponseBodyDataInvoicesItemsItemRoiCenter struct {

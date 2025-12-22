@@ -50,7 +50,12 @@ func (s *RecognizeIdentityCardResponseBody) SetRequestId(v string) *RecognizeIde
 }
 
 func (s *RecognizeIdentityCardResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeIdentityCardResponseBodyData struct {
@@ -85,7 +90,17 @@ func (s *RecognizeIdentityCardResponseBodyData) SetFrontResult(v *RecognizeIdent
 }
 
 func (s *RecognizeIdentityCardResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.BackResult != nil {
+		if err := s.BackResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FrontResult != nil {
+		if err := s.FrontResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeIdentityCardResponseBodyDataBackResult struct {
@@ -247,7 +262,30 @@ func (s *RecognizeIdentityCardResponseBodyDataFrontResult) SetNationality(v stri
 }
 
 func (s *RecognizeIdentityCardResponseBodyDataFrontResult) Validate() error {
-	return dara.Validate(s)
+	if s.CardAreas != nil {
+		for _, item := range s.CardAreas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FaceRectVertices != nil {
+		for _, item := range s.FaceRectVertices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FaceRectangle != nil {
+		if err := s.FaceRectangle.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeIdentityCardResponseBodyDataFrontResultCardAreas struct {
@@ -377,7 +415,17 @@ func (s *RecognizeIdentityCardResponseBodyDataFrontResultFaceRectangle) SetSize(
 }
 
 func (s *RecognizeIdentityCardResponseBodyDataFrontResultFaceRectangle) Validate() error {
-	return dara.Validate(s)
+	if s.Center != nil {
+		if err := s.Center.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Size != nil {
+		if err := s.Size.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeIdentityCardResponseBodyDataFrontResultFaceRectangleCenter struct {

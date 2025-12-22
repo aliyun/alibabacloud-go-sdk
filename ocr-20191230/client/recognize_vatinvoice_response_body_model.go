@@ -50,7 +50,12 @@ func (s *RecognizeVATInvoiceResponseBody) SetRequestId(v string) *RecognizeVATIn
 }
 
 func (s *RecognizeVATInvoiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeVATInvoiceResponseBodyData struct {
@@ -85,7 +90,17 @@ func (s *RecognizeVATInvoiceResponseBodyData) SetContent(v *RecognizeVATInvoiceR
 }
 
 func (s *RecognizeVATInvoiceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Box != nil {
+		if err := s.Box.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeVATInvoiceResponseBodyDataBox struct {

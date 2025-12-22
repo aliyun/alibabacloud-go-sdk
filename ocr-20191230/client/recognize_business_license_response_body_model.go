@@ -50,7 +50,12 @@ func (s *RecognizeBusinessLicenseResponseBody) SetRequestId(v string) *Recognize
 }
 
 func (s *RecognizeBusinessLicenseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeBusinessLicenseResponseBodyData struct {
@@ -217,7 +222,27 @@ func (s *RecognizeBusinessLicenseResponseBodyData) SetValidPeriod(v string) *Rec
 }
 
 func (s *RecognizeBusinessLicenseResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Emblem != nil {
+		if err := s.Emblem.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QRCode != nil {
+		if err := s.QRCode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Stamp != nil {
+		if err := s.Stamp.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Title != nil {
+		if err := s.Title.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeBusinessLicenseResponseBodyDataEmblem struct {

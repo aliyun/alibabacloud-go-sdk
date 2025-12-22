@@ -50,7 +50,12 @@ func (s *RecognizeQuotaInvoiceResponseBody) SetRequestId(v string) *RecognizeQuo
 }
 
 func (s *RecognizeQuotaInvoiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeQuotaInvoiceResponseBodyData struct {
@@ -150,7 +155,21 @@ func (s *RecognizeQuotaInvoiceResponseBodyData) SetWidth(v int64) *RecognizeQuot
 }
 
 func (s *RecognizeQuotaInvoiceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.KeyValueInfos != nil {
+		for _, item := range s.KeyValueInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeQuotaInvoiceResponseBodyDataContent struct {
@@ -282,7 +301,16 @@ func (s *RecognizeQuotaInvoiceResponseBodyDataKeyValueInfos) SetValueScore(v flo
 }
 
 func (s *RecognizeQuotaInvoiceResponseBodyDataKeyValueInfos) Validate() error {
-	return dara.Validate(s)
+	if s.ValuePositions != nil {
+		for _, item := range s.ValuePositions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeQuotaInvoiceResponseBodyDataKeyValueInfosValuePositions struct {

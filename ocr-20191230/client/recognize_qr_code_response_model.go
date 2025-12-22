@@ -59,5 +59,10 @@ func (s *RecognizeQrCodeResponse) SetBody(v *RecognizeQrCodeResponseBody) *Recog
 }
 
 func (s *RecognizeQrCodeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

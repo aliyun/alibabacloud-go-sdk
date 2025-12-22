@@ -50,7 +50,12 @@ func (s *RecognizeCharacterResponseBody) SetRequestId(v string) *RecognizeCharac
 }
 
 func (s *RecognizeCharacterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeCharacterResponseBodyData struct {
@@ -75,7 +80,16 @@ func (s *RecognizeCharacterResponseBodyData) SetResults(v []*RecognizeCharacterR
 }
 
 func (s *RecognizeCharacterResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeCharacterResponseBodyDataResults struct {
@@ -123,7 +137,12 @@ func (s *RecognizeCharacterResponseBodyDataResults) SetTextRectangles(v *Recogni
 }
 
 func (s *RecognizeCharacterResponseBodyDataResults) Validate() error {
-	return dara.Validate(s)
+	if s.TextRectangles != nil {
+		if err := s.TextRectangles.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeCharacterResponseBodyDataResultsTextRectangles struct {
@@ -138,7 +157,8 @@ type RecognizeCharacterResponseBodyDataResultsTextRectangles struct {
 	// example:
 	//
 	// 511
-	Left *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
+	Left *int32                                                        `json:"Left,omitempty" xml:"Left,omitempty"`
+	Pos  []*RecognizeCharacterResponseBodyDataResultsTextRectanglesPos `json:"Pos,omitempty" xml:"Pos,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 150
@@ -169,6 +189,10 @@ func (s *RecognizeCharacterResponseBodyDataResultsTextRectangles) GetLeft() *int
 	return s.Left
 }
 
+func (s *RecognizeCharacterResponseBodyDataResultsTextRectangles) GetPos() []*RecognizeCharacterResponseBodyDataResultsTextRectanglesPos {
+	return s.Pos
+}
+
 func (s *RecognizeCharacterResponseBodyDataResultsTextRectangles) GetTop() *int32 {
 	return s.Top
 }
@@ -192,6 +216,11 @@ func (s *RecognizeCharacterResponseBodyDataResultsTextRectangles) SetLeft(v int3
 	return s
 }
 
+func (s *RecognizeCharacterResponseBodyDataResultsTextRectangles) SetPos(v []*RecognizeCharacterResponseBodyDataResultsTextRectanglesPos) *RecognizeCharacterResponseBodyDataResultsTextRectangles {
+	s.Pos = v
+	return s
+}
+
 func (s *RecognizeCharacterResponseBodyDataResultsTextRectangles) SetTop(v int32) *RecognizeCharacterResponseBodyDataResultsTextRectangles {
 	s.Top = &v
 	return s
@@ -203,5 +232,49 @@ func (s *RecognizeCharacterResponseBodyDataResultsTextRectangles) SetWidth(v int
 }
 
 func (s *RecognizeCharacterResponseBodyDataResultsTextRectangles) Validate() error {
+	if s.Pos != nil {
+		for _, item := range s.Pos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type RecognizeCharacterResponseBodyDataResultsTextRectanglesPos struct {
+	X *int32 `json:"x,omitempty" xml:"x,omitempty"`
+	Y *int32 `json:"y,omitempty" xml:"y,omitempty"`
+}
+
+func (s RecognizeCharacterResponseBodyDataResultsTextRectanglesPos) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RecognizeCharacterResponseBodyDataResultsTextRectanglesPos) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeCharacterResponseBodyDataResultsTextRectanglesPos) GetX() *int32 {
+	return s.X
+}
+
+func (s *RecognizeCharacterResponseBodyDataResultsTextRectanglesPos) GetY() *int32 {
+	return s.Y
+}
+
+func (s *RecognizeCharacterResponseBodyDataResultsTextRectanglesPos) SetX(v int32) *RecognizeCharacterResponseBodyDataResultsTextRectanglesPos {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeCharacterResponseBodyDataResultsTextRectanglesPos) SetY(v int32) *RecognizeCharacterResponseBodyDataResultsTextRectanglesPos {
+	s.Y = &v
+	return s
+}
+
+func (s *RecognizeCharacterResponseBodyDataResultsTextRectanglesPos) Validate() error {
 	return dara.Validate(s)
 }

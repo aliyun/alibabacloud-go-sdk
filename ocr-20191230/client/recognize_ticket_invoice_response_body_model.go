@@ -50,7 +50,12 @@ func (s *RecognizeTicketInvoiceResponseBody) SetRequestId(v string) *RecognizeTi
 }
 
 func (s *RecognizeTicketInvoiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecognizeTicketInvoiceResponseBodyData struct {
@@ -140,7 +145,16 @@ func (s *RecognizeTicketInvoiceResponseBodyData) SetWidth(v int64) *RecognizeTic
 }
 
 func (s *RecognizeTicketInvoiceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeTicketInvoiceResponseBodyDataResults struct {
@@ -208,7 +222,30 @@ func (s *RecognizeTicketInvoiceResponseBodyDataResults) SetType(v string) *Recog
 }
 
 func (s *RecognizeTicketInvoiceResponseBodyDataResults) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.KeyValueInfos != nil {
+		for _, item := range s.KeyValueInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SliceRectangle != nil {
+		for _, item := range s.SliceRectangle {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeTicketInvoiceResponseBodyDataResultsContent struct {
@@ -395,7 +432,16 @@ func (s *RecognizeTicketInvoiceResponseBodyDataResultsKeyValueInfos) SetValueSco
 }
 
 func (s *RecognizeTicketInvoiceResponseBodyDataResultsKeyValueInfos) Validate() error {
-	return dara.Validate(s)
+	if s.ValuePositions != nil {
+		for _, item := range s.ValuePositions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeTicketInvoiceResponseBodyDataResultsKeyValueInfosValuePositions struct {

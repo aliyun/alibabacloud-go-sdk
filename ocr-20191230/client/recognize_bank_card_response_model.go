@@ -59,5 +59,10 @@ func (s *RecognizeBankCardResponse) SetBody(v *RecognizeBankCardResponseBody) *R
 }
 
 func (s *RecognizeBankCardResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
