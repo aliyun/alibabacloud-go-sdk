@@ -4636,6 +4636,39 @@ func (client *Client) ListAddonsWithContext(ctx context.Context, request *ListAd
 
 // Summary:
 //
+// 获取集群组件实例的资源列表
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListClusterAddonInstanceResourcesResponse
+func (client *Client) ListClusterAddonInstanceResourcesWithContext(ctx context.Context, clusterId *string, instanceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListClusterAddonInstanceResourcesResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListClusterAddonInstanceResources"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/clusters/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/addon_instances/" + dara.PercentEncode(dara.StringValue(instanceName)) + "/resources"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListClusterAddonInstanceResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the component instances that are running in the specified cluster and the information about the component instances. The information includes the component version and status.
 //
 // @param headers - map
