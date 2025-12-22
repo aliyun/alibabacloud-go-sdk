@@ -25,6 +25,8 @@ type iCreateCustomCertificateRequest interface {
 	GetTags() []*CreateCustomCertificateRequestTags
 	SetValidity(v string) *CreateCustomCertificateRequest
 	GetValidity() *string
+	SetCustomIdentifier(v string) *CreateCustomCertificateRequest
+	GetCustomIdentifier() *string
 }
 
 type CreateCustomCertificateRequest struct {
@@ -115,7 +117,8 @@ type CreateCustomCertificateRequest struct {
 	// ● 2006-01-02T15:04:05Z
 	//
 	// ● 2006-01-02T15:04:05Z/2023-03-09T17:48:13Z
-	Validity *string `json:"Validity,omitempty" xml:"Validity,omitempty"`
+	Validity         *string `json:"Validity,omitempty" xml:"Validity,omitempty"`
+	CustomIdentifier *string `json:"customIdentifier,omitempty" xml:"customIdentifier,omitempty"`
 }
 
 func (s CreateCustomCertificateRequest) String() string {
@@ -158,6 +161,10 @@ func (s *CreateCustomCertificateRequest) GetValidity() *string {
 	return s.Validity
 }
 
+func (s *CreateCustomCertificateRequest) GetCustomIdentifier() *string {
+	return s.CustomIdentifier
+}
+
 func (s *CreateCustomCertificateRequest) SetApiPassthrough(v *CreateCustomCertificateRequestApiPassthrough) *CreateCustomCertificateRequest {
 	s.ApiPassthrough = v
 	return s
@@ -195,6 +202,11 @@ func (s *CreateCustomCertificateRequest) SetTags(v []*CreateCustomCertificateReq
 
 func (s *CreateCustomCertificateRequest) SetValidity(v string) *CreateCustomCertificateRequest {
 	s.Validity = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequest) SetCustomIdentifier(v string) *CreateCustomCertificateRequest {
+	s.CustomIdentifier = &v
 	return s
 }
 

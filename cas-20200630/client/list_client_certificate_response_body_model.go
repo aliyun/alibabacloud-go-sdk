@@ -181,7 +181,8 @@ type ListClientCertificateResponseBodyCertificateList struct {
 	// example:
 	//
 	// CN
-	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CountryCode      *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CustomIdentifier *string `json:"CustomIdentifier,omitempty" xml:"CustomIdentifier,omitempty"`
 	// The validity period of the certificate. Unit: days.
 	//
 	// example:
@@ -343,6 +344,10 @@ func (s *ListClientCertificateResponseBodyCertificateList) GetCountryCode() *str
 	return s.CountryCode
 }
 
+func (s *ListClientCertificateResponseBodyCertificateList) GetCustomIdentifier() *string {
+	return s.CustomIdentifier
+}
+
 func (s *ListClientCertificateResponseBodyCertificateList) GetDays() *int32 {
 	return s.Days
 }
@@ -438,6 +443,11 @@ func (s *ListClientCertificateResponseBodyCertificateList) SetCommonName(v strin
 
 func (s *ListClientCertificateResponseBodyCertificateList) SetCountryCode(v string) *ListClientCertificateResponseBodyCertificateList {
 	s.CountryCode = &v
+	return s
+}
+
+func (s *ListClientCertificateResponseBodyCertificateList) SetCustomIdentifier(v string) *ListClientCertificateResponseBodyCertificateList {
+	s.CustomIdentifier = &v
 	return s
 }
 

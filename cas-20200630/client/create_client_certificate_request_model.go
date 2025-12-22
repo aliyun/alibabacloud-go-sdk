@@ -19,6 +19,8 @@ type iCreateClientCertificateRequest interface {
 	GetCommonName() *string
 	SetCountry(v string) *CreateClientCertificateRequest
 	GetCountry() *string
+	SetCustomIdentifier(v string) *CreateClientCertificateRequest
+	GetCustomIdentifier() *string
 	SetDays(v int32) *CreateClientCertificateRequest
 	GetDays() *int32
 	SetEnableCrl(v int64) *CreateClientCertificateRequest
@@ -101,7 +103,8 @@ type CreateClientCertificateRequest struct {
 	// example:
 	//
 	// CN
-	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	Country          *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	CustomIdentifier *string `json:"CustomIdentifier,omitempty" xml:"CustomIdentifier,omitempty"`
 	// The validity period of the client certificate. Unit: day. You must specify at least one of the **Days**, **BeforeTime**, and **AfterTime*	- parameters. The **BeforeTime*	- and **AfterTime*	- parameters must be both empty or both specified. The following list describes how to specify these parameters:
 	//
 	// 	- If you specify the **Days*	- parameter, you can specify both the **BeforeTime*	- and **AfterTime*	- parameters or leave them both empty.
@@ -232,6 +235,10 @@ func (s *CreateClientCertificateRequest) GetCountry() *string {
 	return s.Country
 }
 
+func (s *CreateClientCertificateRequest) GetCustomIdentifier() *string {
+	return s.CustomIdentifier
+}
+
 func (s *CreateClientCertificateRequest) GetDays() *int32 {
 	return s.Days
 }
@@ -310,6 +317,11 @@ func (s *CreateClientCertificateRequest) SetCommonName(v string) *CreateClientCe
 
 func (s *CreateClientCertificateRequest) SetCountry(v string) *CreateClientCertificateRequest {
 	s.Country = &v
+	return s
+}
+
+func (s *CreateClientCertificateRequest) SetCustomIdentifier(v string) *CreateClientCertificateRequest {
+	s.CustomIdentifier = &v
 	return s
 }
 

@@ -85,7 +85,8 @@ type DescribeClientCertificateResponseBodyCertificate struct {
 	// example:
 	//
 	// 1634283958000
-	BeforeDate *int64 `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
+	BeforeDate *int64  `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
+	CertChain  *string `json:"CertChain,omitempty" xml:"CertChain,omitempty"`
 	// The type of the certificate. Valid values:
 	//
 	// 	- **CLIENT**: client certificate
@@ -109,7 +110,8 @@ type DescribeClientCertificateResponseBodyCertificate struct {
 	// example:
 	//
 	// CN
-	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CountryCode      *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CustomIdentifier *string `json:"CustomIdentifier,omitempty" xml:"CustomIdentifier,omitempty"`
 	// The validity period of the certificate. Unit: days.
 	//
 	// example:
@@ -260,6 +262,10 @@ func (s *DescribeClientCertificateResponseBodyCertificate) GetBeforeDate() *int6
 	return s.BeforeDate
 }
 
+func (s *DescribeClientCertificateResponseBodyCertificate) GetCertChain() *string {
+	return s.CertChain
+}
+
 func (s *DescribeClientCertificateResponseBodyCertificate) GetCertificateType() *string {
 	return s.CertificateType
 }
@@ -270,6 +276,10 @@ func (s *DescribeClientCertificateResponseBodyCertificate) GetCommonName() *stri
 
 func (s *DescribeClientCertificateResponseBodyCertificate) GetCountryCode() *string {
 	return s.CountryCode
+}
+
+func (s *DescribeClientCertificateResponseBodyCertificate) GetCustomIdentifier() *string {
+	return s.CustomIdentifier
 }
 
 func (s *DescribeClientCertificateResponseBodyCertificate) GetDays() *int32 {
@@ -359,6 +369,11 @@ func (s *DescribeClientCertificateResponseBodyCertificate) SetBeforeDate(v int64
 	return s
 }
 
+func (s *DescribeClientCertificateResponseBodyCertificate) SetCertChain(v string) *DescribeClientCertificateResponseBodyCertificate {
+	s.CertChain = &v
+	return s
+}
+
 func (s *DescribeClientCertificateResponseBodyCertificate) SetCertificateType(v string) *DescribeClientCertificateResponseBodyCertificate {
 	s.CertificateType = &v
 	return s
@@ -371,6 +386,11 @@ func (s *DescribeClientCertificateResponseBodyCertificate) SetCommonName(v strin
 
 func (s *DescribeClientCertificateResponseBodyCertificate) SetCountryCode(v string) *DescribeClientCertificateResponseBodyCertificate {
 	s.CountryCode = &v
+	return s
+}
+
+func (s *DescribeClientCertificateResponseBodyCertificate) SetCustomIdentifier(v string) *DescribeClientCertificateResponseBodyCertificate {
+	s.CustomIdentifier = &v
 	return s
 }
 

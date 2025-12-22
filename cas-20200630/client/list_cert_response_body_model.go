@@ -181,7 +181,8 @@ type ListCertResponseBodyList struct {
 	// example:
 	//
 	// www.kfsjn.xyz
-	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	CommonName       *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	CustomIdentifier *string `json:"CustomIdentifier,omitempty" xml:"CustomIdentifier,omitempty"`
 	// example:
 	//
 	// {\\"appId\\":\\"APP_PFHMIGUHKDUW6S3N7ZL2\\"}
@@ -253,6 +254,10 @@ func (s *ListCertResponseBodyList) GetCertificateType() *string {
 
 func (s *ListCertResponseBodyList) GetCommonName() *string {
 	return s.CommonName
+}
+
+func (s *ListCertResponseBodyList) GetCustomIdentifier() *string {
+	return s.CustomIdentifier
 }
 
 func (s *ListCertResponseBodyList) GetExtra() *string {
@@ -332,6 +337,11 @@ func (s *ListCertResponseBodyList) SetCertificateType(v string) *ListCertRespons
 
 func (s *ListCertResponseBodyList) SetCommonName(v string) *ListCertResponseBodyList {
 	s.CommonName = &v
+	return s
+}
+
+func (s *ListCertResponseBodyList) SetCustomIdentifier(v string) *ListCertResponseBodyList {
+	s.CustomIdentifier = &v
 	return s
 }
 

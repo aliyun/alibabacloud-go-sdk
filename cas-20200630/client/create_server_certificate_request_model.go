@@ -19,6 +19,8 @@ type iCreateServerCertificateRequest interface {
 	GetCommonName() *string
 	SetCountry(v string) *CreateServerCertificateRequest
 	GetCountry() *string
+	SetCustomIdentifier(v string) *CreateServerCertificateRequest
+	GetCustomIdentifier() *string
 	SetDays(v int32) *CreateServerCertificateRequest
 	GetDays() *int32
 	SetDomain(v string) *CreateServerCertificateRequest
@@ -103,7 +105,8 @@ type CreateServerCertificateRequest struct {
 	// example:
 	//
 	// CN
-	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	Country          *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	CustomIdentifier *string `json:"CustomIdentifier,omitempty" xml:"CustomIdentifier,omitempty"`
 	// The validity period of the server certificate. Unit: days. You must specify at least one of the **Days**, **BeforeTime**, and **AfterTime*	- parameters. The **BeforeTime*	- and **AfterTime*	- parameters must be both empty or both specified. The following list describes how to specify these parameters:
 	//
 	// 	- If you specify the **Days*	- parameter, you can specify both the **BeforeTime*	- and **AfterTime*	- parameters or leave them both empty.
@@ -228,6 +231,10 @@ func (s *CreateServerCertificateRequest) GetCountry() *string {
 	return s.Country
 }
 
+func (s *CreateServerCertificateRequest) GetCustomIdentifier() *string {
+	return s.CustomIdentifier
+}
+
 func (s *CreateServerCertificateRequest) GetDays() *int32 {
 	return s.Days
 }
@@ -302,6 +309,11 @@ func (s *CreateServerCertificateRequest) SetCommonName(v string) *CreateServerCe
 
 func (s *CreateServerCertificateRequest) SetCountry(v string) *CreateServerCertificateRequest {
 	s.Country = &v
+	return s
+}
+
+func (s *CreateServerCertificateRequest) SetCustomIdentifier(v string) *CreateServerCertificateRequest {
+	s.CustomIdentifier = &v
 	return s
 }
 

@@ -220,6 +220,10 @@ func (client *Client) CreateClientCertificateWithOptions(request *CreateClientCe
 		query["Country"] = request.Country
 	}
 
+	if !dara.IsNil(request.CustomIdentifier) {
+		query["CustomIdentifier"] = request.CustomIdentifier
+	}
+
 	if !dara.IsNil(request.Days) {
 		query["Days"] = request.Days
 	}
@@ -372,6 +376,10 @@ func (client *Client) CreateClientCertificateWithCsrWithOptions(request *CreateC
 
 	if !dara.IsNil(request.Csr) {
 		query["Csr"] = request.Csr
+	}
+
+	if !dara.IsNil(request.CustomIdentifier) {
+		query["CustomIdentifier"] = request.CustomIdentifier
 	}
 
 	if !dara.IsNil(request.Days) {
@@ -558,6 +566,10 @@ func (client *Client) CreateCustomCertificateWithOptions(request *CreateCustomCe
 
 	if !dara.IsNil(request.Validity) {
 		query["Validity"] = request.Validity
+	}
+
+	if !dara.IsNil(request.CustomIdentifier) {
+		query["customIdentifier"] = request.CustomIdentifier
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -970,6 +982,10 @@ func (client *Client) CreateServerCertificateWithOptions(request *CreateServerCe
 		query["Country"] = request.Country
 	}
 
+	if !dara.IsNil(request.CustomIdentifier) {
+		query["CustomIdentifier"] = request.CustomIdentifier
+	}
+
 	if !dara.IsNil(request.Days) {
 		query["Days"] = request.Days
 	}
@@ -1116,6 +1132,10 @@ func (client *Client) CreateServerCertificateWithCsrWithOptions(request *CreateS
 
 	if !dara.IsNil(request.Csr) {
 		query["Csr"] = request.Csr
+	}
+
+	if !dara.IsNil(request.CustomIdentifier) {
+		query["CustomIdentifier"] = request.CustomIdentifier
 	}
 
 	if !dara.IsNil(request.Days) {

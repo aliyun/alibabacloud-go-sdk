@@ -177,7 +177,8 @@ type ListRevokeCertificateResponseBodyCertificateList struct {
 	// example:
 	//
 	// CN
-	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CountryCode      *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CustomIdentifier *string `json:"CustomIdentifier,omitempty" xml:"CustomIdentifier,omitempty"`
 	// The unique identifier of the certificate.
 	//
 	// example:
@@ -328,6 +329,10 @@ func (s *ListRevokeCertificateResponseBodyCertificateList) GetCountryCode() *str
 	return s.CountryCode
 }
 
+func (s *ListRevokeCertificateResponseBodyCertificateList) GetCustomIdentifier() *string {
+	return s.CustomIdentifier
+}
+
 func (s *ListRevokeCertificateResponseBodyCertificateList) GetIdentifier() *string {
 	return s.Identifier
 }
@@ -415,6 +420,11 @@ func (s *ListRevokeCertificateResponseBodyCertificateList) SetCommonName(v strin
 
 func (s *ListRevokeCertificateResponseBodyCertificateList) SetCountryCode(v string) *ListRevokeCertificateResponseBodyCertificateList {
 	s.CountryCode = &v
+	return s
+}
+
+func (s *ListRevokeCertificateResponseBodyCertificateList) SetCustomIdentifier(v string) *ListRevokeCertificateResponseBodyCertificateList {
+	s.CustomIdentifier = &v
 	return s
 }
 
