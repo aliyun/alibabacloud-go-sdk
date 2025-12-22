@@ -509,6 +509,60 @@ func (client *Client) CreateEndpointWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
+// 新增白名单模板
+//
+// @param request - CreateWhitelistTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWhitelistTemplateResponse
+func (client *Client) CreateWhitelistTemplateWithContext(ctx context.Context, request *CreateWhitelistTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateWhitelistTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SecurityIPList) {
+		body["SecurityIPList"] = request.SecurityIPList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWhitelistTemplate"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWhitelistTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a database account from an ApsaraDB for ClickHouse cluster.
 //
 // @param request - DeleteAccountRequest
