@@ -125,7 +125,16 @@ func (s *ListIpamResourceDiscoveryAssociationsResponseBody) SetTotalCount(v int6
 }
 
 func (s *ListIpamResourceDiscoveryAssociationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IpamResourceDiscoveryAssociations != nil {
+		for _, item := range s.IpamResourceDiscoveryAssociations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations struct {

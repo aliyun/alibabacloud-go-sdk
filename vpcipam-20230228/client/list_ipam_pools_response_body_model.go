@@ -125,7 +125,16 @@ func (s *ListIpamPoolsResponseBody) SetTotalCount(v int64) *ListIpamPoolsRespons
 }
 
 func (s *ListIpamPoolsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IpamPools != nil {
+		for _, item := range s.IpamPools {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIpamPoolsResponseBodyIpamPools struct {
@@ -525,7 +534,16 @@ func (s *ListIpamPoolsResponseBodyIpamPools) SetTags(v []*ListIpamPoolsResponseB
 }
 
 func (s *ListIpamPoolsResponseBodyIpamPools) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIpamPoolsResponseBodyIpamPoolsTags struct {

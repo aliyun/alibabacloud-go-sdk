@@ -59,5 +59,10 @@ func (s *CreateIpamResponse) SetBody(v *CreateIpamResponseBody) *CreateIpamRespo
 }
 
 func (s *CreateIpamResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

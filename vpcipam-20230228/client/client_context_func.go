@@ -9,6 +9,78 @@ import (
 
 // Summary:
 //
+// 添加ipam可信服务纳管成员
+//
+// @param request - AddIpamMembersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddIpamMembersResponse
+func (client *Client) AddIpamMembersWithContext(ctx context.Context, request *AddIpamMembersRequest, runtime *dara.RuntimeOptions) (_result *AddIpamMembersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.Members) {
+		query["Members"] = request.Members
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddIpamMembers"),
+		Version:     dara.String("2023-02-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddIpamMembersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Provisions a CIDR block to an IP Address Manager (IPAM) pool.
 //
 // Description:
@@ -33,9 +105,11 @@ import (
 //
 // @return AddIpamPoolCidrResponse
 func (client *Client) AddIpamPoolCidrWithContext(ctx context.Context, request *AddIpamPoolCidrRequest, runtime *dara.RuntimeOptions) (_result *AddIpamPoolCidrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cidr) {
@@ -99,9 +173,11 @@ func (client *Client) AddIpamPoolCidrWithContext(ctx context.Context, request *A
 //
 // @return AssociateIpamResourceDiscoveryResponse
 func (client *Client) AssociateIpamResourceDiscoveryWithContext(ctx context.Context, request *AssociateIpamResourceDiscoveryRequest, runtime *dara.RuntimeOptions) (_result *AssociateIpamResourceDiscoveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -173,9 +249,11 @@ func (client *Client) AssociateIpamResourceDiscoveryWithContext(ctx context.Cont
 //
 // @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NewResourceGroupId) {
@@ -255,9 +333,11 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 //
 // @return CreateIpamResponse
 func (client *Client) CreateIpamWithContext(ctx context.Context, request *CreateIpamRequest, runtime *dara.RuntimeOptions) (_result *CreateIpamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -345,9 +425,11 @@ func (client *Client) CreateIpamWithContext(ctx context.Context, request *Create
 //
 // @return CreateIpamPoolResponse
 func (client *Client) CreateIpamPoolWithContext(ctx context.Context, request *CreateIpamPoolRequest, runtime *dara.RuntimeOptions) (_result *CreateIpamPoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllocationDefaultCidrMask) {
@@ -473,9 +555,11 @@ func (client *Client) CreateIpamPoolWithContext(ctx context.Context, request *Cr
 //
 // @return CreateIpamPoolAllocationResponse
 func (client *Client) CreateIpamPoolAllocationWithContext(ctx context.Context, request *CreateIpamPoolAllocationRequest, runtime *dara.RuntimeOptions) (_result *CreateIpamPoolAllocationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cidr) {
@@ -549,9 +633,11 @@ func (client *Client) CreateIpamPoolAllocationWithContext(ctx context.Context, r
 //
 // @return CreateIpamResourceDiscoveryResponse
 func (client *Client) CreateIpamResourceDiscoveryWithContext(ctx context.Context, request *CreateIpamResourceDiscoveryRequest, runtime *dara.RuntimeOptions) (_result *CreateIpamResourceDiscoveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -635,9 +721,11 @@ func (client *Client) CreateIpamResourceDiscoveryWithContext(ctx context.Context
 //
 // @return CreateIpamScopeResponse
 func (client *Client) CreateIpamScopeWithContext(ctx context.Context, request *CreateIpamScopeRequest, runtime *dara.RuntimeOptions) (_result *CreateIpamScopeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -733,9 +821,11 @@ func (client *Client) CreateIpamScopeWithContext(ctx context.Context, request *C
 //
 // @return DeleteIpamResponse
 func (client *Client) DeleteIpamWithContext(ctx context.Context, request *DeleteIpamRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -813,9 +903,11 @@ func (client *Client) DeleteIpamWithContext(ctx context.Context, request *Delete
 //
 // @return DeleteIpamPoolResponse
 func (client *Client) DeleteIpamPoolWithContext(ctx context.Context, request *DeleteIpamPoolRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpamPoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -883,9 +975,11 @@ func (client *Client) DeleteIpamPoolWithContext(ctx context.Context, request *De
 //
 // @return DeleteIpamPoolAllocationResponse
 func (client *Client) DeleteIpamPoolAllocationWithContext(ctx context.Context, request *DeleteIpamPoolAllocationRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpamPoolAllocationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -947,9 +1041,11 @@ func (client *Client) DeleteIpamPoolAllocationWithContext(ctx context.Context, r
 //
 // @return DeleteIpamPoolCidrResponse
 func (client *Client) DeleteIpamPoolCidrWithContext(ctx context.Context, request *DeleteIpamPoolCidrRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpamPoolCidrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cidr) {
@@ -1009,9 +1105,11 @@ func (client *Client) DeleteIpamPoolCidrWithContext(ctx context.Context, request
 //
 // @return DeleteIpamResourceDiscoveryResponse
 func (client *Client) DeleteIpamResourceDiscoveryWithContext(ctx context.Context, request *DeleteIpamResourceDiscoveryRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpamResourceDiscoveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1087,9 +1185,11 @@ func (client *Client) DeleteIpamResourceDiscoveryWithContext(ctx context.Context
 //
 // @return DeleteIpamScopeResponse
 func (client *Client) DeleteIpamScopeWithContext(ctx context.Context, request *DeleteIpamScopeRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpamScopeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1157,9 +1257,11 @@ func (client *Client) DeleteIpamScopeWithContext(ctx context.Context, request *D
 //
 // @return DissociateIpamResourceDiscoveryResponse
 func (client *Client) DissociateIpamResourceDiscoveryWithContext(ctx context.Context, request *DissociateIpamResourceDiscoveryRequest, runtime *dara.RuntimeOptions) (_result *DissociateIpamResourceDiscoveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1231,9 +1333,11 @@ func (client *Client) DissociateIpamResourceDiscoveryWithContext(ctx context.Con
 //
 // @return GetIpamPoolAllocationResponse
 func (client *Client) GetIpamPoolAllocationWithContext(ctx context.Context, request *GetIpamPoolAllocationRequest, runtime *dara.RuntimeOptions) (_result *GetIpamPoolAllocationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1269,9 +1373,11 @@ func (client *Client) GetIpamPoolAllocationWithContext(ctx context.Context, requ
 //
 // @return GetIpamPoolNextAvailableCidrResponse
 func (client *Client) GetIpamPoolNextAvailableCidrWithContext(ctx context.Context, request *GetIpamPoolNextAvailableCidrRequest, runtime *dara.RuntimeOptions) (_result *GetIpamPoolNextAvailableCidrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1307,9 +1413,11 @@ func (client *Client) GetIpamPoolNextAvailableCidrWithContext(ctx context.Contex
 //
 // @return GetVpcIpamServiceStatusResponse
 func (client *Client) GetVpcIpamServiceStatusWithContext(ctx context.Context, request *GetVpcIpamServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *GetVpcIpamServiceStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1369,9 +1477,11 @@ func (client *Client) GetVpcIpamServiceStatusWithContext(ctx context.Context, re
 //
 // @return ListIpamDiscoveredResourceResponse
 func (client *Client) ListIpamDiscoveredResourceWithContext(ctx context.Context, request *ListIpamDiscoveredResourceRequest, runtime *dara.RuntimeOptions) (_result *ListIpamDiscoveredResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpamResourceDiscoveryId) {
@@ -1423,6 +1533,78 @@ func (client *Client) ListIpamDiscoveredResourceWithContext(ctx context.Context,
 
 // Summary:
 //
+// 查询ipam可信服务纳管成员
+//
+// @param request - ListIpamMembersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIpamMembersResponse
+func (client *Client) ListIpamMembersWithContext(ctx context.Context, request *ListIpamMembersRequest, runtime *dara.RuntimeOptions) (_result *ListIpamMembersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.MemberIds) {
+		query["MemberIds"] = request.MemberIds
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIpamMembers"),
+		Version:     dara.String("2023-02-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIpamMembersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
 //
 // @param request - ListIpamPoolAllocationsRequest
@@ -1431,9 +1613,11 @@ func (client *Client) ListIpamDiscoveredResourceWithContext(ctx context.Context,
 //
 // @return ListIpamPoolAllocationsResponse
 func (client *Client) ListIpamPoolAllocationsWithContext(ctx context.Context, request *ListIpamPoolAllocationsRequest, runtime *dara.RuntimeOptions) (_result *ListIpamPoolAllocationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cidr) {
@@ -1497,9 +1681,11 @@ func (client *Client) ListIpamPoolAllocationsWithContext(ctx context.Context, re
 //
 // @return ListIpamPoolCidrsResponse
 func (client *Client) ListIpamPoolCidrsWithContext(ctx context.Context, request *ListIpamPoolCidrsRequest, runtime *dara.RuntimeOptions) (_result *ListIpamPoolCidrsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cidr) {
@@ -1555,9 +1741,11 @@ func (client *Client) ListIpamPoolCidrsWithContext(ctx context.Context, request 
 //
 // @return ListIpamPoolsResponse
 func (client *Client) ListIpamPoolsWithContext(ctx context.Context, request *ListIpamPoolsRequest, runtime *dara.RuntimeOptions) (_result *ListIpamPoolsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpVersion) {
@@ -1661,9 +1849,11 @@ func (client *Client) ListIpamPoolsWithContext(ctx context.Context, request *Lis
 //
 // @return ListIpamResourceCidrsResponse
 func (client *Client) ListIpamResourceCidrsWithContext(ctx context.Context, request *ListIpamResourceCidrsRequest, runtime *dara.RuntimeOptions) (_result *ListIpamResourceCidrsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpamPoolId) {
@@ -1735,9 +1925,11 @@ func (client *Client) ListIpamResourceCidrsWithContext(ctx context.Context, requ
 //
 // @return ListIpamResourceDiscoveriesResponse
 func (client *Client) ListIpamResourceDiscoveriesWithContext(ctx context.Context, request *ListIpamResourceDiscoveriesRequest, runtime *dara.RuntimeOptions) (_result *ListIpamResourceDiscoveriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpamResourceDiscoveryIds) {
@@ -1825,9 +2017,11 @@ func (client *Client) ListIpamResourceDiscoveriesWithContext(ctx context.Context
 //
 // @return ListIpamResourceDiscoveryAssociationsResponse
 func (client *Client) ListIpamResourceDiscoveryAssociationsWithContext(ctx context.Context, request *ListIpamResourceDiscoveryAssociationsRequest, runtime *dara.RuntimeOptions) (_result *ListIpamResourceDiscoveryAssociationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpamId) {
@@ -1899,9 +2093,11 @@ func (client *Client) ListIpamResourceDiscoveryAssociationsWithContext(ctx conte
 //
 // @return ListIpamScopesResponse
 func (client *Client) ListIpamScopesWithContext(ctx context.Context, request *ListIpamScopesRequest, runtime *dara.RuntimeOptions) (_result *ListIpamScopesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpamId) {
@@ -1989,9 +2185,11 @@ func (client *Client) ListIpamScopesWithContext(ctx context.Context, request *Li
 //
 // @return ListIpamsResponse
 func (client *Client) ListIpamsWithContext(ctx context.Context, request *ListIpamsRequest, runtime *dara.RuntimeOptions) (_result *ListIpamsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpamIds) {
@@ -2083,9 +2281,11 @@ func (client *Client) ListIpamsWithContext(ctx context.Context, request *ListIpa
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -2161,9 +2361,11 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 //
 // @return OpenVpcIpamServiceResponse
 func (client *Client) OpenVpcIpamServiceWithContext(ctx context.Context, request *OpenVpcIpamServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenVpcIpamServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -2215,6 +2417,78 @@ func (client *Client) OpenVpcIpamServiceWithContext(ctx context.Context, request
 
 // Summary:
 //
+// 移除ipam可信服务纳管成员
+//
+// @param request - RemoveIpamMembersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveIpamMembersResponse
+func (client *Client) RemoveIpamMembersWithContext(ctx context.Context, request *RemoveIpamMembersRequest, runtime *dara.RuntimeOptions) (_result *RemoveIpamMembersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.Members) {
+		query["Members"] = request.Members
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveIpamMembers"),
+		Version:     dara.String("2023-02-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveIpamMembersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds a tag to a resource.
 //
 // Description:
@@ -2235,9 +2509,11 @@ func (client *Client) OpenVpcIpamServiceWithContext(ctx context.Context, request
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -2305,9 +2581,11 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -2379,9 +2657,11 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 //
 // @return UpdateIpamResponse
 func (client *Client) UpdateIpamWithContext(ctx context.Context, request *UpdateIpamRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddOperatingRegion) {
@@ -2465,9 +2745,11 @@ func (client *Client) UpdateIpamWithContext(ctx context.Context, request *Update
 //
 // @return UpdateIpamPoolResponse
 func (client *Client) UpdateIpamPoolWithContext(ctx context.Context, request *UpdateIpamPoolRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpamPoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllocationDefaultCidrMask) {
@@ -2563,9 +2845,11 @@ func (client *Client) UpdateIpamPoolWithContext(ctx context.Context, request *Up
 //
 // @return UpdateIpamPoolAllocationResponse
 func (client *Client) UpdateIpamPoolAllocationWithContext(ctx context.Context, request *UpdateIpamPoolAllocationRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpamPoolAllocationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -2631,9 +2915,11 @@ func (client *Client) UpdateIpamPoolAllocationWithContext(ctx context.Context, r
 //
 // @return UpdateIpamResourceDiscoveryResponse
 func (client *Client) UpdateIpamResourceDiscoveryWithContext(ctx context.Context, request *UpdateIpamResourceDiscoveryRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpamResourceDiscoveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddOperatingRegion) {
@@ -2717,9 +3003,11 @@ func (client *Client) UpdateIpamResourceDiscoveryWithContext(ctx context.Context
 //
 // @return UpdateIpamScopeResponse
 func (client *Client) UpdateIpamScopeWithContext(ctx context.Context, request *UpdateIpamScopeRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpamScopeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {

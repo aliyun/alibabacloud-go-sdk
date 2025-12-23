@@ -125,7 +125,16 @@ func (s *ListIpamDiscoveredResourceResponseBody) SetTotalCount(v int64) *ListIpa
 }
 
 func (s *ListIpamDiscoveredResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IpamDiscoveredResources != nil {
+		for _, item := range s.IpamDiscoveredResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources struct {
@@ -321,7 +330,12 @@ func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetVpcId
 }
 
 func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) Validate() error {
-	return dara.Validate(s)
+	if s.IpCountDetail != nil {
+		if err := s.IpCountDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail struct {

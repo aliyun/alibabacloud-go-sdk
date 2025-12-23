@@ -59,5 +59,10 @@ func (s *UpdateIpamPoolAllocationResponse) SetBody(v *UpdateIpamPoolAllocationRe
 }
 
 func (s *UpdateIpamPoolAllocationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

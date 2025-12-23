@@ -125,7 +125,16 @@ func (s *ListIpamResourceCidrsResponseBody) SetTotalCount(v int64) *ListIpamReso
 }
 
 func (s *ListIpamResourceCidrsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IpamResourceCidrs != nil {
+		for _, item := range s.IpamResourceCidrs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIpamResourceCidrsResponseBodyIpamResourceCidrs struct {
@@ -444,7 +453,21 @@ func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrs) SetVpcId(v string) 
 }
 
 func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrs) Validate() error {
-	return dara.Validate(s)
+	if s.IpCountDetail != nil {
+		if err := s.IpCountDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OverlapDetail != nil {
+		for _, item := range s.OverlapDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail struct {

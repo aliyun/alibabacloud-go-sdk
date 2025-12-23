@@ -59,5 +59,10 @@ func (s *ListIpamPoolsResponse) SetBody(v *ListIpamPoolsResponseBody) *ListIpamP
 }
 
 func (s *ListIpamPoolsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

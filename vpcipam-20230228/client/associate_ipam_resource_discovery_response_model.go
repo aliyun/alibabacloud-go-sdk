@@ -59,5 +59,10 @@ func (s *AssociateIpamResourceDiscoveryResponse) SetBody(v *AssociateIpamResourc
 }
 
 func (s *AssociateIpamResourceDiscoveryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

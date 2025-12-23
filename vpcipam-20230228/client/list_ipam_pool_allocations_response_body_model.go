@@ -125,7 +125,16 @@ func (s *ListIpamPoolAllocationsResponseBody) SetTotalCount(v int64) *ListIpamPo
 }
 
 func (s *ListIpamPoolAllocationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IpamPoolAllocations != nil {
+		for _, item := range s.IpamPoolAllocations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIpamPoolAllocationsResponseBodyIpamPoolAllocations struct {
