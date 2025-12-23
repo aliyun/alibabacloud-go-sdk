@@ -10423,6 +10423,10 @@ func (client *Client) DescribeOfficeSitesWithContext(ctx context.Context, reques
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountType) {
+		query["AccountType"] = request.AccountType
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
 	}

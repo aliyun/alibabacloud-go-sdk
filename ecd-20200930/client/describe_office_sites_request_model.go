@@ -9,6 +9,8 @@ type iDescribeOfficeSitesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccountType(v string) *DescribeOfficeSitesRequest
+	GetAccountType() *string
 	SetMaxResults(v int32) *DescribeOfficeSitesRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *DescribeOfficeSitesRequest
@@ -28,6 +30,7 @@ type iDescribeOfficeSitesRequest interface {
 }
 
 type DescribeOfficeSitesRequest struct {
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The number of entries to return on each page.
 	//
 	// 	- Maximum value: 100.
@@ -190,6 +193,10 @@ func (s DescribeOfficeSitesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeOfficeSitesRequest) GetAccountType() *string {
+	return s.AccountType
+}
+
 func (s *DescribeOfficeSitesRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -220,6 +227,11 @@ func (s *DescribeOfficeSitesRequest) GetStatus() *string {
 
 func (s *DescribeOfficeSitesRequest) GetVpcId() *string {
 	return s.VpcId
+}
+
+func (s *DescribeOfficeSitesRequest) SetAccountType(v string) *DescribeOfficeSitesRequest {
+	s.AccountType = &v
+	return s
 }
 
 func (s *DescribeOfficeSitesRequest) SetMaxResults(v int32) *DescribeOfficeSitesRequest {

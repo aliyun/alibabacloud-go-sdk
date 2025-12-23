@@ -80,6 +80,16 @@ type DescribeTimerGroupResponseBodyData struct {
 	//
 	// cg-75aazkg2tnqb2*****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// INNER_TIMER_10_MINUTES_HIBERNATE_NO_UPDATE_DESC
+	InnerTimerDesc *string `json:"InnerTimerDesc,omitempty" xml:"InnerTimerDesc,omitempty"`
+	// example:
+	//
+	// INNER_TIMER_10_MINUTES_HIBERNATE_NO_UPDATE
+	InnerTimerName *string `json:"InnerTimerName,omitempty" xml:"InnerTimerName,omitempty"`
+	IsBind         *bool   `json:"IsBind,omitempty" xml:"IsBind,omitempty"`
+	IsUpdate       *bool   `json:"IsUpdate,omitempty" xml:"IsUpdate,omitempty"`
 	// The name of the configuration group.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The service type of the configuration group.
@@ -148,6 +158,22 @@ func (s *DescribeTimerGroupResponseBodyData) GetGroupId() *string {
 	return s.GroupId
 }
 
+func (s *DescribeTimerGroupResponseBodyData) GetInnerTimerDesc() *string {
+	return s.InnerTimerDesc
+}
+
+func (s *DescribeTimerGroupResponseBodyData) GetInnerTimerName() *string {
+	return s.InnerTimerName
+}
+
+func (s *DescribeTimerGroupResponseBodyData) GetIsBind() *bool {
+	return s.IsBind
+}
+
+func (s *DescribeTimerGroupResponseBodyData) GetIsUpdate() *bool {
+	return s.IsUpdate
+}
+
 func (s *DescribeTimerGroupResponseBodyData) GetName() *string {
 	return s.Name
 }
@@ -186,6 +212,26 @@ func (s *DescribeTimerGroupResponseBodyData) SetDescription(v string) *DescribeT
 
 func (s *DescribeTimerGroupResponseBodyData) SetGroupId(v string) *DescribeTimerGroupResponseBodyData {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyData) SetInnerTimerDesc(v string) *DescribeTimerGroupResponseBodyData {
+	s.InnerTimerDesc = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyData) SetInnerTimerName(v string) *DescribeTimerGroupResponseBodyData {
+	s.InnerTimerName = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyData) SetIsBind(v bool) *DescribeTimerGroupResponseBodyData {
+	s.IsBind = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyData) SetIsUpdate(v bool) *DescribeTimerGroupResponseBodyData {
+	s.IsUpdate = &v
 	return s
 }
 
@@ -438,9 +484,21 @@ func (s *DescribeTimerGroupResponseBodyDataConfigTimers) Validate() error {
 }
 
 type DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers struct {
-	EndCronExpression   *string   `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
-	Enforce             *bool     `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
-	Interval            *int32    `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 1764660600967
+	AppointmentTimer  *int64  `json:"AppointmentTimer,omitempty" xml:"AppointmentTimer,omitempty"`
+	EndCronExpression *string `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
+	Enforce           *bool   `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
+	// example:
+	//
+	// m-5b0vjqbiqu010XXXXXX
+	ImageId  *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	Interval *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 1800
+	LockScreenTime      *int32    `json:"LockScreenTime,omitempty" xml:"LockScreenTime,omitempty"`
 	NotificationTime    *int32    `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
 	OperationType       *string   `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	ProcessWhitelist    []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
@@ -459,6 +517,10 @@ func (s DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GoString() 
 	return s.String()
 }
 
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetAppointmentTimer() *int64 {
+	return s.AppointmentTimer
+}
+
 func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetEndCronExpression() *string {
 	return s.EndCronExpression
 }
@@ -467,8 +529,16 @@ func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetEnforce
 	return s.Enforce
 }
 
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetImageId() *string {
+	return s.ImageId
+}
+
 func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetInterval() *int32 {
 	return s.Interval
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetLockScreenTime() *int32 {
+	return s.LockScreenTime
 }
 
 func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetNotificationTime() *int32 {
@@ -503,6 +573,11 @@ func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetTrigger
 	return s.TriggerType
 }
 
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetAppointmentTimer(v int64) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
+	s.AppointmentTimer = &v
+	return s
+}
+
 func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetEndCronExpression(v string) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
 	s.EndCronExpression = &v
 	return s
@@ -513,8 +588,18 @@ func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetEnforce
 	return s
 }
 
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetImageId(v string) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
+	s.ImageId = &v
+	return s
+}
+
 func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetInterval(v int32) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
 	s.Interval = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetLockScreenTime(v int32) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
+	s.LockScreenTime = &v
 	return s
 }
 

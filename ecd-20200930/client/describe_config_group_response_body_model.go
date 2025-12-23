@@ -137,6 +137,16 @@ type DescribeConfigGroupResponseBodyData struct {
 	//
 	// ccg-0cid8v30an12****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// INNER_TIMER_10_MINUTES_HIBERNATE_NO_UPDATE_DESC
+	InnerTimerDesc *string `json:"InnerTimerDesc,omitempty" xml:"InnerTimerDesc,omitempty"`
+	// example:
+	//
+	// INNER_TIMER_10_MINUTES_HIBERNATE_NO_UPDATE
+	InnerTimerName *string `json:"InnerTimerName,omitempty" xml:"InnerTimerName,omitempty"`
+	IsBind         *bool   `json:"IsBind,omitempty" xml:"IsBind,omitempty"`
+	IsUpdate       *bool   `json:"IsUpdate,omitempty" xml:"IsUpdate,omitempty"`
 	// The name of the configuration group.
 	//
 	// example:
@@ -205,6 +215,22 @@ func (s *DescribeConfigGroupResponseBodyData) GetGroupId() *string {
 	return s.GroupId
 }
 
+func (s *DescribeConfigGroupResponseBodyData) GetInnerTimerDesc() *string {
+	return s.InnerTimerDesc
+}
+
+func (s *DescribeConfigGroupResponseBodyData) GetInnerTimerName() *string {
+	return s.InnerTimerName
+}
+
+func (s *DescribeConfigGroupResponseBodyData) GetIsBind() *bool {
+	return s.IsBind
+}
+
+func (s *DescribeConfigGroupResponseBodyData) GetIsUpdate() *bool {
+	return s.IsUpdate
+}
+
 func (s *DescribeConfigGroupResponseBodyData) GetName() *string {
 	return s.Name
 }
@@ -238,6 +264,26 @@ func (s *DescribeConfigGroupResponseBodyData) SetDescription(v string) *Describe
 
 func (s *DescribeConfigGroupResponseBodyData) SetGroupId(v string) *DescribeConfigGroupResponseBodyData {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeConfigGroupResponseBodyData) SetInnerTimerDesc(v string) *DescribeConfigGroupResponseBodyData {
+	s.InnerTimerDesc = &v
+	return s
+}
+
+func (s *DescribeConfigGroupResponseBodyData) SetInnerTimerName(v string) *DescribeConfigGroupResponseBodyData {
+	s.InnerTimerName = &v
+	return s
+}
+
+func (s *DescribeConfigGroupResponseBodyData) SetIsBind(v bool) *DescribeConfigGroupResponseBodyData {
+	s.IsBind = &v
+	return s
+}
+
+func (s *DescribeConfigGroupResponseBodyData) SetIsUpdate(v bool) *DescribeConfigGroupResponseBodyData {
+	s.IsUpdate = &v
 	return s
 }
 

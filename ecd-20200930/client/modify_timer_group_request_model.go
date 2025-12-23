@@ -328,9 +328,21 @@ func (s *ModifyTimerGroupRequestConfigTimers) Validate() error {
 }
 
 type ModifyTimerGroupRequestConfigTimersSegmentTimers struct {
-	EndCronExpression   *string   `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
-	Enforce             *bool     `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
-	Interval            *int32    `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 1764660600967
+	AppointmentTimer  *int64  `json:"AppointmentTimer,omitempty" xml:"AppointmentTimer,omitempty"`
+	EndCronExpression *string `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
+	Enforce           *bool   `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
+	// example:
+	//
+	// m-5b0vjqbiqu010XXXXXX
+	ImageId  *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	Interval *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 1800
+	LockScreenTime      *int32    `json:"LockScreenTime,omitempty" xml:"LockScreenTime,omitempty"`
 	NotificationTime    *int32    `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
 	OperationType       *string   `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	ProcessWhitelist    []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
@@ -349,6 +361,10 @@ func (s ModifyTimerGroupRequestConfigTimersSegmentTimers) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) GetAppointmentTimer() *int64 {
+	return s.AppointmentTimer
+}
+
 func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) GetEndCronExpression() *string {
 	return s.EndCronExpression
 }
@@ -357,8 +373,16 @@ func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) GetEnforce() *bool {
 	return s.Enforce
 }
 
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) GetImageId() *string {
+	return s.ImageId
+}
+
 func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) GetInterval() *int32 {
 	return s.Interval
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) GetLockScreenTime() *int32 {
+	return s.LockScreenTime
 }
 
 func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) GetNotificationTime() *int32 {
@@ -393,6 +417,11 @@ func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) GetTriggerType() *str
 	return s.TriggerType
 }
 
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetAppointmentTimer(v int64) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
+	s.AppointmentTimer = &v
+	return s
+}
+
 func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetEndCronExpression(v string) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
 	s.EndCronExpression = &v
 	return s
@@ -403,8 +432,18 @@ func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetEnforce(v bool) *M
 	return s
 }
 
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetImageId(v string) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
+	s.ImageId = &v
+	return s
+}
+
 func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetInterval(v int32) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
 	s.Interval = &v
+	return s
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetLockScreenTime(v int32) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
+	s.LockScreenTime = &v
 	return s
 }
 
