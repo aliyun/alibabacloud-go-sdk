@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("emrstudio"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -67,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateWorkflowResponse
-func (client *Client) CreateWorkflowWithOptions(projectId *string, request *CreateWorkflowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateWorkflowResponse, _err error) {
+func (client *Client) CreateWorkflowWithContext(ctx context.Context, projectId *string, request *CreateWorkflowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateWorkflowResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -177,30 +128,11 @@ func (client *Client) CreateWorkflowWithOptions(projectId *string, request *Crea
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建工作流
-//
-// @param request - CreateWorkflowRequest
-//
-// @return CreateWorkflowResponse
-func (client *Client) CreateWorkflow(projectId *string, request *CreateWorkflowRequest) (_result *CreateWorkflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateWorkflowResponse{}
-	_body, _err := client.CreateWorkflowWithOptions(projectId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -215,7 +147,7 @@ func (client *Client) CreateWorkflow(projectId *string, request *CreateWorkflowR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteWorkflowResponse
-func (client *Client) DeleteWorkflowWithOptions(projectId *string, workflowId *string, request *DeleteWorkflowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteWorkflowResponse, _err error) {
+func (client *Client) DeleteWorkflowWithContext(ctx context.Context, projectId *string, workflowId *string, request *DeleteWorkflowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteWorkflowResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -243,30 +175,11 @@ func (client *Client) DeleteWorkflowWithOptions(projectId *string, workflowId *s
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除工作流
-//
-// @param request - DeleteWorkflowRequest
-//
-// @return DeleteWorkflowResponse
-func (client *Client) DeleteWorkflow(projectId *string, workflowId *string, request *DeleteWorkflowRequest) (_result *DeleteWorkflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteWorkflowResponse{}
-	_body, _err := client.DeleteWorkflowWithOptions(projectId, workflowId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -281,7 +194,7 @@ func (client *Client) DeleteWorkflow(projectId *string, workflowId *string, requ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeIdResponse
-func (client *Client) DescribeIdWithOptions(request *DescribeIdRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeIdResponse, _err error) {
+func (client *Client) DescribeIdWithContext(ctx context.Context, request *DescribeIdRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeIdResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -313,30 +226,11 @@ func (client *Client) DescribeIdWithOptions(request *DescribeIdRequest, headers 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取id关联信息
-//
-// @param request - DescribeIdRequest
-//
-// @return DescribeIdResponse
-func (client *Client) DescribeId(request *DescribeIdRequest) (_result *DescribeIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeIdResponse{}
-	_body, _err := client.DescribeIdWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -351,7 +245,7 @@ func (client *Client) DescribeId(request *DescribeIdRequest) (_result *DescribeI
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeManualTaskResponse
-func (client *Client) DescribeManualTaskWithOptions(projectId *string, manualTaskId *string, request *DescribeManualTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeManualTaskResponse, _err error) {
+func (client *Client) DescribeManualTaskWithContext(ctx context.Context, projectId *string, manualTaskId *string, request *DescribeManualTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeManualTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -379,30 +273,11 @@ func (client *Client) DescribeManualTaskWithOptions(projectId *string, manualTas
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeManualTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取手动任务定义
-//
-// @param request - DescribeManualTaskRequest
-//
-// @return DescribeManualTaskResponse
-func (client *Client) DescribeManualTask(projectId *string, manualTaskId *string, request *DescribeManualTaskRequest) (_result *DescribeManualTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeManualTaskResponse{}
-	_body, _err := client.DescribeManualTaskWithOptions(projectId, manualTaskId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -417,7 +292,7 @@ func (client *Client) DescribeManualTask(projectId *string, manualTaskId *string
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeManualTaskInstanceResponse
-func (client *Client) DescribeManualTaskInstanceWithOptions(manualTaskInstanceId *string, projectId *string, request *DescribeManualTaskInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeManualTaskInstanceResponse, _err error) {
+func (client *Client) DescribeManualTaskInstanceWithContext(ctx context.Context, manualTaskInstanceId *string, projectId *string, request *DescribeManualTaskInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeManualTaskInstanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -445,30 +320,11 @@ func (client *Client) DescribeManualTaskInstanceWithOptions(manualTaskInstanceId
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeManualTaskInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取手动任务实例
-//
-// @param request - DescribeManualTaskInstanceRequest
-//
-// @return DescribeManualTaskInstanceResponse
-func (client *Client) DescribeManualTaskInstance(manualTaskInstanceId *string, projectId *string, request *DescribeManualTaskInstanceRequest) (_result *DescribeManualTaskInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeManualTaskInstanceResponse{}
-	_body, _err := client.DescribeManualTaskInstanceWithOptions(manualTaskInstanceId, projectId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -483,7 +339,7 @@ func (client *Client) DescribeManualTaskInstance(manualTaskInstanceId *string, p
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeProjectResponse
-func (client *Client) DescribeProjectWithOptions(projectId *string, request *DescribeProjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeProjectResponse, _err error) {
+func (client *Client) DescribeProjectWithContext(ctx context.Context, projectId *string, request *DescribeProjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeProjectResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -511,30 +367,11 @@ func (client *Client) DescribeProjectWithOptions(projectId *string, request *Des
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取项目详情
-//
-// @param request - DescribeProjectRequest
-//
-// @return DescribeProjectResponse
-func (client *Client) DescribeProject(projectId *string, request *DescribeProjectRequest) (_result *DescribeProjectResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeProjectResponse{}
-	_body, _err := client.DescribeProjectWithOptions(projectId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -549,7 +386,7 @@ func (client *Client) DescribeProject(projectId *string, request *DescribeProjec
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTaskResponse
-func (client *Client) DescribeTaskWithOptions(workflowId *string, projectId *string, taskId *string, request *DescribeTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeTaskResponse, _err error) {
+func (client *Client) DescribeTaskWithContext(ctx context.Context, workflowId *string, projectId *string, taskId *string, request *DescribeTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -577,30 +414,11 @@ func (client *Client) DescribeTaskWithOptions(workflowId *string, projectId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询任务定义
-//
-// @param request - DescribeTaskRequest
-//
-// @return DescribeTaskResponse
-func (client *Client) DescribeTask(workflowId *string, projectId *string, taskId *string, request *DescribeTaskRequest) (_result *DescribeTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeTaskResponse{}
-	_body, _err := client.DescribeTaskWithOptions(workflowId, projectId, taskId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -615,7 +433,7 @@ func (client *Client) DescribeTask(workflowId *string, projectId *string, taskId
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTaskInstanceResponse
-func (client *Client) DescribeTaskInstanceWithOptions(projectId *string, workflowInstanceId *string, taskInstanceId *string, request *DescribeTaskInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeTaskInstanceResponse, _err error) {
+func (client *Client) DescribeTaskInstanceWithContext(ctx context.Context, projectId *string, workflowInstanceId *string, taskInstanceId *string, request *DescribeTaskInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeTaskInstanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -643,30 +461,11 @@ func (client *Client) DescribeTaskInstanceWithOptions(projectId *string, workflo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTaskInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取任务实例
-//
-// @param request - DescribeTaskInstanceRequest
-//
-// @return DescribeTaskInstanceResponse
-func (client *Client) DescribeTaskInstance(projectId *string, workflowInstanceId *string, taskInstanceId *string, request *DescribeTaskInstanceRequest) (_result *DescribeTaskInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeTaskInstanceResponse{}
-	_body, _err := client.DescribeTaskInstanceWithOptions(projectId, workflowInstanceId, taskInstanceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -681,7 +480,7 @@ func (client *Client) DescribeTaskInstance(projectId *string, workflowInstanceId
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeWorkflowResponse
-func (client *Client) DescribeWorkflowWithOptions(projectId *string, workflowId *string, request *DescribeWorkflowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeWorkflowResponse, _err error) {
+func (client *Client) DescribeWorkflowWithContext(ctx context.Context, projectId *string, workflowId *string, request *DescribeWorkflowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeWorkflowResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -709,30 +508,11 @@ func (client *Client) DescribeWorkflowWithOptions(projectId *string, workflowId 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取工作流详情
-//
-// @param request - DescribeWorkflowRequest
-//
-// @return DescribeWorkflowResponse
-func (client *Client) DescribeWorkflow(projectId *string, workflowId *string, request *DescribeWorkflowRequest) (_result *DescribeWorkflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeWorkflowResponse{}
-	_body, _err := client.DescribeWorkflowWithOptions(projectId, workflowId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -747,7 +527,7 @@ func (client *Client) DescribeWorkflow(projectId *string, workflowId *string, re
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeWorkflowInstanceResponse
-func (client *Client) DescribeWorkflowInstanceWithOptions(projectId *string, workflowInstanceId *string, request *DescribeWorkflowInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeWorkflowInstanceResponse, _err error) {
+func (client *Client) DescribeWorkflowInstanceWithContext(ctx context.Context, projectId *string, workflowInstanceId *string, request *DescribeWorkflowInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeWorkflowInstanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -775,30 +555,11 @@ func (client *Client) DescribeWorkflowInstanceWithOptions(projectId *string, wor
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeWorkflowInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取工作流实例详情
-//
-// @param request - DescribeWorkflowInstanceRequest
-//
-// @return DescribeWorkflowInstanceResponse
-func (client *Client) DescribeWorkflowInstance(projectId *string, workflowInstanceId *string, request *DescribeWorkflowInstanceRequest) (_result *DescribeWorkflowInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeWorkflowInstanceResponse{}
-	_body, _err := client.DescribeWorkflowInstanceWithOptions(projectId, workflowInstanceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -813,7 +574,7 @@ func (client *Client) DescribeWorkflowInstance(projectId *string, workflowInstan
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceLogResponse
-func (client *Client) GetInstanceLogWithOptions(projectId *string, instanceId *string, request *GetInstanceLogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceLogResponse, _err error) {
+func (client *Client) GetInstanceLogWithContext(ctx context.Context, projectId *string, instanceId *string, request *GetInstanceLogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceLogResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -849,30 +610,11 @@ func (client *Client) GetInstanceLogWithOptions(projectId *string, instanceId *s
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetInstanceLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取实例的日志
-//
-// @param request - GetInstanceLogRequest
-//
-// @return GetInstanceLogResponse
-func (client *Client) GetInstanceLog(projectId *string, instanceId *string, request *GetInstanceLogRequest) (_result *GetInstanceLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetInstanceLogResponse{}
-	_body, _err := client.GetInstanceLogWithOptions(projectId, instanceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -887,7 +629,7 @@ func (client *Client) GetInstanceLog(projectId *string, instanceId *string, requ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAlertGroupsResponse
-func (client *Client) ListAlertGroupsWithOptions(projectId *string, request *ListAlertGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAlertGroupsResponse, _err error) {
+func (client *Client) ListAlertGroupsWithContext(ctx context.Context, projectId *string, request *ListAlertGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAlertGroupsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -927,30 +669,11 @@ func (client *Client) ListAlertGroupsWithOptions(projectId *string, request *Lis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAlertGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询告警组列表
-//
-// @param request - ListAlertGroupsRequest
-//
-// @return ListAlertGroupsResponse
-func (client *Client) ListAlertGroups(projectId *string, request *ListAlertGroupsRequest) (_result *ListAlertGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListAlertGroupsResponse{}
-	_body, _err := client.ListAlertGroupsWithOptions(projectId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -965,7 +688,7 @@ func (client *Client) ListAlertGroups(projectId *string, request *ListAlertGroup
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListManualTaskInstancesResponse
-func (client *Client) ListManualTaskInstancesWithOptions(projectId *string, request *ListManualTaskInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListManualTaskInstancesResponse, _err error) {
+func (client *Client) ListManualTaskInstancesWithContext(ctx context.Context, projectId *string, request *ListManualTaskInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListManualTaskInstancesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1017,30 +740,11 @@ func (client *Client) ListManualTaskInstancesWithOptions(projectId *string, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListManualTaskInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取手动任务实例列表
-//
-// @param request - ListManualTaskInstancesRequest
-//
-// @return ListManualTaskInstancesResponse
-func (client *Client) ListManualTaskInstances(projectId *string, request *ListManualTaskInstancesRequest) (_result *ListManualTaskInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListManualTaskInstancesResponse{}
-	_body, _err := client.ListManualTaskInstancesWithOptions(projectId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1055,7 +759,7 @@ func (client *Client) ListManualTaskInstances(projectId *string, request *ListMa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListManualTasksResponse
-func (client *Client) ListManualTasksWithOptions(projectId *string, request *ListManualTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListManualTasksResponse, _err error) {
+func (client *Client) ListManualTasksWithContext(ctx context.Context, projectId *string, request *ListManualTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListManualTasksResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1099,30 +803,11 @@ func (client *Client) ListManualTasksWithOptions(projectId *string, request *Lis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListManualTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询手动任务定义列表
-//
-// @param request - ListManualTasksRequest
-//
-// @return ListManualTasksResponse
-func (client *Client) ListManualTasks(projectId *string, request *ListManualTasksRequest) (_result *ListManualTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListManualTasksResponse{}
-	_body, _err := client.ListManualTasksWithOptions(projectId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1137,7 +822,7 @@ func (client *Client) ListManualTasks(projectId *string, request *ListManualTask
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListProjectsResponse
-func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
+func (client *Client) ListProjectsWithContext(ctx context.Context, request *ListProjectsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1177,30 +862,11 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, head
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListProjectsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取项目详情
-//
-// @param request - ListProjectsRequest
-//
-// @return ListProjectsResponse
-func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListProjectsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListProjectsResponse{}
-	_body, _err := client.ListProjectsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1215,7 +881,7 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListResourceGroupsResponse
-func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceGroupsResponse, _err error) {
+func (client *Client) ListResourceGroupsWithContext(ctx context.Context, request *ListResourceGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceGroupsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1259,30 +925,11 @@ func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListResourceGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询调度资源组列表
-//
-// @param request - ListResourceGroupsRequest
-//
-// @return ListResourceGroupsResponse
-func (client *Client) ListResourceGroups(request *ListResourceGroupsRequest) (_result *ListResourceGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListResourceGroupsResponse{}
-	_body, _err := client.ListResourceGroupsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1297,7 +944,7 @@ func (client *Client) ListResourceGroups(request *ListResourceGroupsRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTaskInstancesResponse
-func (client *Client) ListTaskInstancesWithOptions(projectId *string, request *ListTaskInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTaskInstancesResponse, _err error) {
+func (client *Client) ListTaskInstancesWithContext(ctx context.Context, projectId *string, request *ListTaskInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTaskInstancesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1353,30 +1000,11 @@ func (client *Client) ListTaskInstancesWithOptions(projectId *string, request *L
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTaskInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取任务实例列表
-//
-// @param request - ListTaskInstancesRequest
-//
-// @return ListTaskInstancesResponse
-func (client *Client) ListTaskInstances(projectId *string, request *ListTaskInstancesRequest) (_result *ListTaskInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListTaskInstancesResponse{}
-	_body, _err := client.ListTaskInstancesWithOptions(projectId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1391,7 +1019,7 @@ func (client *Client) ListTaskInstances(projectId *string, request *ListTaskInst
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTasksResponse
-func (client *Client) ListTasksWithOptions(projectId *string, request *ListTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTasksResponse, _err error) {
+func (client *Client) ListTasksWithContext(ctx context.Context, projectId *string, request *ListTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTasksResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1439,30 +1067,11 @@ func (client *Client) ListTasksWithOptions(projectId *string, request *ListTasks
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询任务定义列表
-//
-// @param request - ListTasksRequest
-//
-// @return ListTasksResponse
-func (client *Client) ListTasks(projectId *string, request *ListTasksRequest) (_result *ListTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListTasksResponse{}
-	_body, _err := client.ListTasksWithOptions(projectId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1477,7 +1086,7 @@ func (client *Client) ListTasks(projectId *string, request *ListTasksRequest) (_
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListWorkflowDirectoriesResponse
-func (client *Client) ListWorkflowDirectoriesWithOptions(projectId *string, request *ListWorkflowDirectoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkflowDirectoriesResponse, _err error) {
+func (client *Client) ListWorkflowDirectoriesWithContext(ctx context.Context, projectId *string, request *ListWorkflowDirectoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkflowDirectoriesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1521,30 +1130,11 @@ func (client *Client) ListWorkflowDirectoriesWithOptions(projectId *string, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListWorkflowDirectoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询工作流目录列表
-//
-// @param request - ListWorkflowDirectoriesRequest
-//
-// @return ListWorkflowDirectoriesResponse
-func (client *Client) ListWorkflowDirectories(projectId *string, request *ListWorkflowDirectoriesRequest) (_result *ListWorkflowDirectoriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListWorkflowDirectoriesResponse{}
-	_body, _err := client.ListWorkflowDirectoriesWithOptions(projectId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1559,7 +1149,7 @@ func (client *Client) ListWorkflowDirectories(projectId *string, request *ListWo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListWorkflowInstancesResponse
-func (client *Client) ListWorkflowInstancesWithOptions(projectId *string, request *ListWorkflowInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkflowInstancesResponse, _err error) {
+func (client *Client) ListWorkflowInstancesWithContext(ctx context.Context, projectId *string, request *ListWorkflowInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkflowInstancesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1611,30 +1201,11 @@ func (client *Client) ListWorkflowInstancesWithOptions(projectId *string, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListWorkflowInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取工作流实例列表
-//
-// @param request - ListWorkflowInstancesRequest
-//
-// @return ListWorkflowInstancesResponse
-func (client *Client) ListWorkflowInstances(projectId *string, request *ListWorkflowInstancesRequest) (_result *ListWorkflowInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListWorkflowInstancesResponse{}
-	_body, _err := client.ListWorkflowInstancesWithOptions(projectId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1649,7 +1220,7 @@ func (client *Client) ListWorkflowInstances(projectId *string, request *ListWork
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListWorkflowsResponse
-func (client *Client) ListWorkflowsWithOptions(projectId *string, request *ListWorkflowsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkflowsResponse, _err error) {
+func (client *Client) ListWorkflowsWithContext(ctx context.Context, projectId *string, request *ListWorkflowsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkflowsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1689,30 +1260,11 @@ func (client *Client) ListWorkflowsWithOptions(projectId *string, request *ListW
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListWorkflowsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取工作流列表
-//
-// @param request - ListWorkflowsRequest
-//
-// @return ListWorkflowsResponse
-func (client *Client) ListWorkflows(projectId *string, request *ListWorkflowsRequest) (_result *ListWorkflowsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListWorkflowsResponse{}
-	_body, _err := client.ListWorkflowsWithOptions(projectId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1727,7 +1279,7 @@ func (client *Client) ListWorkflows(projectId *string, request *ListWorkflowsReq
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OperateWorkflowInstanceResponse
-func (client *Client) OperateWorkflowInstanceWithOptions(projectId *string, request *OperateWorkflowInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OperateWorkflowInstanceResponse, _err error) {
+func (client *Client) OperateWorkflowInstanceWithContext(ctx context.Context, projectId *string, request *OperateWorkflowInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OperateWorkflowInstanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1765,30 +1317,11 @@ func (client *Client) OperateWorkflowInstanceWithOptions(projectId *string, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &OperateWorkflowInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 操作工作流实例
-//
-// @param request - OperateWorkflowInstanceRequest
-//
-// @return OperateWorkflowInstanceResponse
-func (client *Client) OperateWorkflowInstance(projectId *string, request *OperateWorkflowInstanceRequest) (_result *OperateWorkflowInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &OperateWorkflowInstanceResponse{}
-	_body, _err := client.OperateWorkflowInstanceWithOptions(projectId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1803,7 +1336,7 @@ func (client *Client) OperateWorkflowInstance(projectId *string, request *Operat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunWorkflowResponse
-func (client *Client) RunWorkflowWithOptions(projectId *string, request *RunWorkflowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunWorkflowResponse, _err error) {
+func (client *Client) RunWorkflowWithContext(ctx context.Context, projectId *string, request *RunWorkflowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunWorkflowResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1883,30 +1416,11 @@ func (client *Client) RunWorkflowWithOptions(projectId *string, request *RunWork
 		BodyType:    dara.String("json"),
 	}
 	_result = &RunWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 运行工作流
-//
-// @param request - RunWorkflowRequest
-//
-// @return RunWorkflowResponse
-func (client *Client) RunWorkflow(projectId *string, request *RunWorkflowRequest) (_result *RunWorkflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RunWorkflowResponse{}
-	_body, _err := client.RunWorkflowWithOptions(projectId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1921,7 +1435,7 @@ func (client *Client) RunWorkflow(projectId *string, request *RunWorkflowRequest
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateWorkflowResponse
-func (client *Client) UpdateWorkflowWithOptions(projectId *string, workflowId *string, request *UpdateWorkflowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateWorkflowResponse, _err error) {
+func (client *Client) UpdateWorkflowWithContext(ctx context.Context, projectId *string, workflowId *string, request *UpdateWorkflowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateWorkflowResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2031,29 +1545,10 @@ func (client *Client) UpdateWorkflowWithOptions(projectId *string, workflowId *s
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新工作流
-//
-// @param request - UpdateWorkflowRequest
-//
-// @return UpdateWorkflowResponse
-func (client *Client) UpdateWorkflow(projectId *string, workflowId *string, request *UpdateWorkflowRequest) (_result *UpdateWorkflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateWorkflowResponse{}
-	_body, _err := client.UpdateWorkflowWithOptions(projectId, workflowId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
