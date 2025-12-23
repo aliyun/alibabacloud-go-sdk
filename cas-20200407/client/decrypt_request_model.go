@@ -15,6 +15,8 @@ type iDecryptRequest interface {
 	GetCertIdentifier() *string
 	SetCiphertextBlob(v string) *DecryptRequest
 	GetCiphertextBlob() *string
+	SetCustomIdentifier(v string) *DecryptRequest
+	GetCustomIdentifier() *string
 	SetMessageType(v string) *DecryptRequest
 	GetMessageType() *string
 }
@@ -40,8 +42,6 @@ type DecryptRequest struct {
 	//
 	// 	- If the certificate is a private certificate, the value of this parameter must be the value of the Identifier field for the private certificate.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 12345678-1234-1234-1234-12345678****
@@ -53,7 +53,8 @@ type DecryptRequest struct {
 	// example:
 	//
 	// ZOyIygCyaOW6Gj****MlNKiuyjfzw=
-	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
+	CiphertextBlob   *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
+	CustomIdentifier *string `json:"CustomIdentifier,omitempty" xml:"CustomIdentifier,omitempty"`
 	// The value type of the Message parameter. Valid values:
 	//
 	// 	- RAW: The returned result is raw data encoded in UTF-8.
@@ -86,6 +87,10 @@ func (s *DecryptRequest) GetCiphertextBlob() *string {
 	return s.CiphertextBlob
 }
 
+func (s *DecryptRequest) GetCustomIdentifier() *string {
+	return s.CustomIdentifier
+}
+
 func (s *DecryptRequest) GetMessageType() *string {
 	return s.MessageType
 }
@@ -102,6 +107,11 @@ func (s *DecryptRequest) SetCertIdentifier(v string) *DecryptRequest {
 
 func (s *DecryptRequest) SetCiphertextBlob(v string) *DecryptRequest {
 	s.CiphertextBlob = &v
+	return s
+}
+
+func (s *DecryptRequest) SetCustomIdentifier(v string) *DecryptRequest {
+	s.CustomIdentifier = &v
 	return s
 }
 

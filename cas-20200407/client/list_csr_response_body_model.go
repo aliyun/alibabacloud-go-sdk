@@ -104,7 +104,16 @@ func (s *ListCsrResponseBody) SetTotalCount(v int64) *ListCsrResponseBody {
 }
 
 func (s *ListCsrResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CsrList != nil {
+		for _, item := range s.CsrList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCsrResponseBodyCsrList struct {

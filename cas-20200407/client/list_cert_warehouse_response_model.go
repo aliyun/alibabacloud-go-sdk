@@ -59,5 +59,10 @@ func (s *ListCertWarehouseResponse) SetBody(v *ListCertWarehouseResponseBody) *L
 }
 
 func (s *ListCertWarehouseResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

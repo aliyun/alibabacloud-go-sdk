@@ -121,7 +121,16 @@ func (s *ListContactResponseBody) SetTotalCount(v int64) *ListContactResponseBod
 }
 
 func (s *ListContactResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ContactList != nil {
+		for _, item := range s.ContactList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListContactResponseBodyContactList struct {

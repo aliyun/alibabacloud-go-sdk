@@ -21,9 +21,11 @@ import (
 //
 // @return CancelCertificateForPackageRequestResponse
 func (client *Client) CancelCertificateForPackageRequestWithContext(ctx context.Context, request *CancelCertificateForPackageRequestRequest, runtime *dara.RuntimeOptions) (_result *CancelCertificateForPackageRequestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -67,9 +69,11 @@ func (client *Client) CancelCertificateForPackageRequestWithContext(ctx context.
 //
 // @return CancelOrderRequestResponse
 func (client *Client) CancelOrderRequestWithContext(ctx context.Context, request *CancelOrderRequestRequest, runtime *dara.RuntimeOptions) (_result *CancelOrderRequestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -117,9 +121,11 @@ func (client *Client) CancelOrderRequestWithContext(ctx context.Context, request
 //
 // @return CreateCertificateForPackageRequestResponse
 func (client *Client) CreateCertificateForPackageRequestWithContext(ctx context.Context, request *CreateCertificateForPackageRequestRequest, runtime *dara.RuntimeOptions) (_result *CreateCertificateForPackageRequestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CompanyName) {
@@ -201,9 +207,11 @@ func (client *Client) CreateCertificateForPackageRequestWithContext(ctx context.
 //
 // @return CreateCertificateRequestResponse
 func (client *Client) CreateCertificateRequestWithContext(ctx context.Context, request *CreateCertificateRequestRequest, runtime *dara.RuntimeOptions) (_result *CreateCertificateRequestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -277,9 +285,11 @@ func (client *Client) CreateCertificateRequestWithContext(ctx context.Context, r
 //
 // @return CreateCertificateWithCsrRequestResponse
 func (client *Client) CreateCertificateWithCsrRequestWithContext(ctx context.Context, request *CreateCertificateWithCsrRequestRequest, runtime *dara.RuntimeOptions) (_result *CreateCertificateWithCsrRequestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Csr) {
@@ -343,9 +353,11 @@ func (client *Client) CreateCertificateWithCsrRequestWithContext(ctx context.Con
 //
 // @return CreateCsrResponse
 func (client *Client) CreateCsrWithContext(ctx context.Context, request *CreateCsrRequest, runtime *dara.RuntimeOptions) (_result *CreateCsrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -425,9 +437,11 @@ func (client *Client) CreateCsrWithContext(ctx context.Context, request *CreateC
 //
 // @return CreateDeploymentJobResponse
 func (client *Client) CreateDeploymentJobWithContext(ctx context.Context, request *CreateDeploymentJobRequest, runtime *dara.RuntimeOptions) (_result *CreateDeploymentJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertIds) {
@@ -491,9 +505,11 @@ func (client *Client) CreateDeploymentJobWithContext(ctx context.Context, reques
 //
 // @return DecryptResponse
 func (client *Client) DecryptWithContext(ctx context.Context, request *DecryptRequest, runtime *dara.RuntimeOptions) (_result *DecryptResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -506,6 +522,10 @@ func (client *Client) DecryptWithContext(ctx context.Context, request *DecryptRe
 
 	if !dara.IsNil(request.CiphertextBlob) {
 		query["CiphertextBlob"] = request.CiphertextBlob
+	}
+
+	if !dara.IsNil(request.CustomIdentifier) {
+		query["CustomIdentifier"] = request.CustomIdentifier
 	}
 
 	if !dara.IsNil(request.MessageType) {
@@ -553,9 +573,11 @@ func (client *Client) DecryptWithContext(ctx context.Context, request *DecryptRe
 //
 // @return DeleteCertificateRequestResponse
 func (client *Client) DeleteCertificateRequestWithContext(ctx context.Context, request *DeleteCertificateRequestRequest, runtime *dara.RuntimeOptions) (_result *DeleteCertificateRequestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -595,9 +617,11 @@ func (client *Client) DeleteCertificateRequestWithContext(ctx context.Context, r
 //
 // @return DeleteCsrResponse
 func (client *Client) DeleteCsrWithContext(ctx context.Context, request *DeleteCsrRequest, runtime *dara.RuntimeOptions) (_result *DeleteCsrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CsrId) {
@@ -637,9 +661,11 @@ func (client *Client) DeleteCsrWithContext(ctx context.Context, request *DeleteC
 //
 // @return DeleteDeploymentJobResponse
 func (client *Client) DeleteDeploymentJobWithContext(ctx context.Context, request *DeleteDeploymentJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteDeploymentJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -687,9 +713,11 @@ func (client *Client) DeleteDeploymentJobWithContext(ctx context.Context, reques
 //
 // @return DeletePCACertResponse
 func (client *Client) DeletePCACertWithContext(ctx context.Context, request *DeletePCACertRequest, runtime *dara.RuntimeOptions) (_result *DeletePCACertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Identifier) {
@@ -733,9 +761,11 @@ func (client *Client) DeletePCACertWithContext(ctx context.Context, request *Del
 //
 // @return DeleteUserCertificateResponse
 func (client *Client) DeleteUserCertificateWithContext(ctx context.Context, request *DeleteUserCertificateRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertId) {
@@ -775,9 +805,11 @@ func (client *Client) DeleteUserCertificateWithContext(ctx context.Context, requ
 //
 // @return DeleteWorkerResourceResponse
 func (client *Client) DeleteWorkerResourceWithContext(ctx context.Context, request *DeleteWorkerResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteWorkerResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -827,9 +859,11 @@ func (client *Client) DeleteWorkerResourceWithContext(ctx context.Context, reque
 //
 // @return DescribeCertificateStateResponse
 func (client *Client) DescribeCertificateStateWithContext(ctx context.Context, request *DescribeCertificateStateRequest, runtime *dara.RuntimeOptions) (_result *DescribeCertificateStateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -869,9 +903,11 @@ func (client *Client) DescribeCertificateStateWithContext(ctx context.Context, r
 //
 // @return DescribeCloudResourceStatusResponse
 func (client *Client) DescribeCloudResourceStatusWithContext(ctx context.Context, request *DescribeCloudResourceStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudResourceStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SecretId) {
@@ -911,9 +947,11 @@ func (client *Client) DescribeCloudResourceStatusWithContext(ctx context.Context
 //
 // @return DescribeDeploymentJobResponse
 func (client *Client) DescribeDeploymentJobWithContext(ctx context.Context, request *DescribeDeploymentJobRequest, runtime *dara.RuntimeOptions) (_result *DescribeDeploymentJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -953,9 +991,11 @@ func (client *Client) DescribeDeploymentJobWithContext(ctx context.Context, requ
 //
 // @return DescribeDeploymentJobStatusResponse
 func (client *Client) DescribeDeploymentJobStatusWithContext(ctx context.Context, request *DescribeDeploymentJobStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeDeploymentJobStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -995,9 +1035,11 @@ func (client *Client) DescribeDeploymentJobStatusWithContext(ctx context.Context
 //
 // @return DescribePackageStateResponse
 func (client *Client) DescribePackageStateWithContext(ctx context.Context, request *DescribePackageStateRequest, runtime *dara.RuntimeOptions) (_result *DescribePackageStateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProductCode) {
@@ -1041,9 +1083,11 @@ func (client *Client) DescribePackageStateWithContext(ctx context.Context, reque
 //
 // @return EncryptResponse
 func (client *Client) EncryptWithContext(ctx context.Context, request *EncryptRequest, runtime *dara.RuntimeOptions) (_result *EncryptResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -1052,6 +1096,10 @@ func (client *Client) EncryptWithContext(ctx context.Context, request *EncryptRe
 
 	if !dara.IsNil(request.CertIdentifier) {
 		query["CertIdentifier"] = request.CertIdentifier
+	}
+
+	if !dara.IsNil(request.CustomIdentifier) {
+		query["CustomIdentifier"] = request.CustomIdentifier
 	}
 
 	if !dara.IsNil(request.MessageType) {
@@ -1095,9 +1143,11 @@ func (client *Client) EncryptWithContext(ctx context.Context, request *EncryptRe
 //
 // @return GetCsrDetailResponse
 func (client *Client) GetCsrDetailWithContext(ctx context.Context, request *GetCsrDetailRequest, runtime *dara.RuntimeOptions) (_result *GetCsrDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CsrId) {
@@ -1141,9 +1191,11 @@ func (client *Client) GetCsrDetailWithContext(ctx context.Context, request *GetC
 //
 // @return GetUserCertificateDetailResponse
 func (client *Client) GetUserCertificateDetailWithContext(ctx context.Context, request *GetUserCertificateDetailRequest, runtime *dara.RuntimeOptions) (_result *GetUserCertificateDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertFilter) {
@@ -1191,9 +1243,11 @@ func (client *Client) GetUserCertificateDetailWithContext(ctx context.Context, r
 //
 // @return ListCertResponse
 func (client *Client) ListCertWithContext(ctx context.Context, request *ListCertRequest, runtime *dara.RuntimeOptions) (_result *ListCertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertType) {
@@ -1265,9 +1319,11 @@ func (client *Client) ListCertWithContext(ctx context.Context, request *ListCert
 //
 // @return ListCertWarehouseResponse
 func (client *Client) ListCertWarehouseWithContext(ctx context.Context, request *ListCertWarehouseRequest, runtime *dara.RuntimeOptions) (_result *ListCertWarehouseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -1323,9 +1379,11 @@ func (client *Client) ListCertWarehouseWithContext(ctx context.Context, request 
 //
 // @return ListCloudAccessResponse
 func (client *Client) ListCloudAccessWithContext(ctx context.Context, request *ListCloudAccessRequest, runtime *dara.RuntimeOptions) (_result *ListCloudAccessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CloudName) {
@@ -1377,9 +1435,11 @@ func (client *Client) ListCloudAccessWithContext(ctx context.Context, request *L
 //
 // @return ListCloudResourcesResponse
 func (client *Client) ListCloudResourcesWithContext(ctx context.Context, tmpReq *ListCloudResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListCloudResourcesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListCloudResourcesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1449,9 +1509,11 @@ func (client *Client) ListCloudResourcesWithContext(ctx context.Context, tmpReq 
 //
 // @return ListContactResponse
 func (client *Client) ListContactWithContext(ctx context.Context, request *ListContactRequest, runtime *dara.RuntimeOptions) (_result *ListContactResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -1499,9 +1561,11 @@ func (client *Client) ListContactWithContext(ctx context.Context, request *ListC
 //
 // @return ListCsrResponse
 func (client *Client) ListCsrWithContext(ctx context.Context, request *ListCsrRequest, runtime *dara.RuntimeOptions) (_result *ListCsrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -1553,9 +1617,11 @@ func (client *Client) ListCsrWithContext(ctx context.Context, request *ListCsrRe
 //
 // @return ListDeploymentJobResponse
 func (client *Client) ListDeploymentJobWithContext(ctx context.Context, request *ListDeploymentJobRequest, runtime *dara.RuntimeOptions) (_result *ListDeploymentJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -1607,9 +1673,11 @@ func (client *Client) ListDeploymentJobWithContext(ctx context.Context, request 
 //
 // @return ListDeploymentJobCertResponse
 func (client *Client) ListDeploymentJobCertWithContext(ctx context.Context, request *ListDeploymentJobCertRequest, runtime *dara.RuntimeOptions) (_result *ListDeploymentJobCertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -1649,9 +1717,11 @@ func (client *Client) ListDeploymentJobCertWithContext(ctx context.Context, requ
 //
 // @return ListDeploymentJobResourceResponse
 func (client *Client) ListDeploymentJobResourceWithContext(ctx context.Context, request *ListDeploymentJobResourceRequest, runtime *dara.RuntimeOptions) (_result *ListDeploymentJobResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -1699,9 +1769,11 @@ func (client *Client) ListDeploymentJobResourceWithContext(ctx context.Context, 
 //
 // @return ListUserCertificateOrderResponse
 func (client *Client) ListUserCertificateOrderWithContext(ctx context.Context, request *ListUserCertificateOrderRequest, runtime *dara.RuntimeOptions) (_result *ListUserCertificateOrderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -1761,9 +1833,11 @@ func (client *Client) ListUserCertificateOrderWithContext(ctx context.Context, r
 //
 // @return ListWorkerResourceResponse
 func (client *Client) ListWorkerResourceWithContext(ctx context.Context, request *ListWorkerResourceRequest, runtime *dara.RuntimeOptions) (_result *ListWorkerResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CloudProduct) {
@@ -1819,9 +1893,11 @@ func (client *Client) ListWorkerResourceWithContext(ctx context.Context, request
 //
 // @return MoveResourceGroupResponse
 func (client *Client) MoveResourceGroupWithContext(ctx context.Context, request *MoveResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1879,9 +1955,11 @@ func (client *Client) MoveResourceGroupWithContext(ctx context.Context, request 
 //
 // @return RenewCertificateOrderForPackageRequestResponse
 func (client *Client) RenewCertificateOrderForPackageRequestWithContext(ctx context.Context, request *RenewCertificateOrderForPackageRequestRequest, runtime *dara.RuntimeOptions) (_result *RenewCertificateOrderForPackageRequestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Csr) {
@@ -1937,13 +2015,19 @@ func (client *Client) RenewCertificateOrderForPackageRequestWithContext(ctx cont
 //
 // @return SignResponse
 func (client *Client) SignWithContext(ctx context.Context, request *SignRequest, runtime *dara.RuntimeOptions) (_result *SignResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertIdentifier) {
 		query["CertIdentifier"] = request.CertIdentifier
+	}
+
+	if !dara.IsNil(request.CustomIdentifier) {
+		query["CustomIdentifier"] = request.CustomIdentifier
 	}
 
 	if !dara.IsNil(request.Message) {
@@ -1991,9 +2075,11 @@ func (client *Client) SignWithContext(ctx context.Context, request *SignRequest,
 //
 // @return UpdateCsrResponse
 func (client *Client) UpdateCsrWithContext(ctx context.Context, request *UpdateCsrRequest, runtime *dara.RuntimeOptions) (_result *UpdateCsrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CsrId) {
@@ -2037,9 +2123,11 @@ func (client *Client) UpdateCsrWithContext(ctx context.Context, request *UpdateC
 //
 // @return UpdateDeploymentJobResponse
 func (client *Client) UpdateDeploymentJobWithContext(ctx context.Context, request *UpdateDeploymentJobRequest, runtime *dara.RuntimeOptions) (_result *UpdateDeploymentJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertIds) {
@@ -2099,9 +2187,11 @@ func (client *Client) UpdateDeploymentJobWithContext(ctx context.Context, reques
 //
 // @return UpdateDeploymentJobStatusResponse
 func (client *Client) UpdateDeploymentJobStatusWithContext(ctx context.Context, request *UpdateDeploymentJobStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateDeploymentJobStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -2145,9 +2235,11 @@ func (client *Client) UpdateDeploymentJobStatusWithContext(ctx context.Context, 
 //
 // @return UpdateWorkerResourceStatusResponse
 func (client *Client) UpdateWorkerResourceStatusWithContext(ctx context.Context, request *UpdateWorkerResourceStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateWorkerResourceStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -2195,9 +2287,11 @@ func (client *Client) UpdateWorkerResourceStatusWithContext(ctx context.Context,
 //
 // @return UploadCsrResponse
 func (client *Client) UploadCsrWithContext(ctx context.Context, request *UploadCsrRequest, runtime *dara.RuntimeOptions) (_result *UploadCsrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Csr) {
@@ -2249,9 +2343,11 @@ func (client *Client) UploadCsrWithContext(ctx context.Context, request *UploadC
 //
 // @return UploadUserCertificateResponse
 func (client *Client) UploadUserCertificateWithContext(ctx context.Context, request *UploadUserCertificateRequest, runtime *dara.RuntimeOptions) (_result *UploadUserCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cert) {
@@ -2331,13 +2427,19 @@ func (client *Client) UploadUserCertificateWithContext(ctx context.Context, requ
 //
 // @return VerifyResponse
 func (client *Client) VerifyWithContext(ctx context.Context, request *VerifyRequest, runtime *dara.RuntimeOptions) (_result *VerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertIdentifier) {
 		query["CertIdentifier"] = request.CertIdentifier
+	}
+
+	if !dara.IsNil(request.CustomIdentifier) {
+		query["CustomIdentifier"] = request.CustomIdentifier
 	}
 
 	if !dara.IsNil(request.Message) {

@@ -13,6 +13,8 @@ type iEncryptRequest interface {
   GetAlgorithm() *string 
   SetCertIdentifier(v string) *EncryptRequest
   GetCertIdentifier() *string 
+  SetCustomIdentifier(v string) *EncryptRequest
+  GetCustomIdentifier() *string 
   SetMessageType(v string) *EncryptRequest
   GetMessageType() *string 
   SetPlaintext(v string) *EncryptRequest
@@ -40,12 +42,11 @@ type EncryptRequest struct {
   // 
   // 	- If the certificate is a private certificate, the value of this parameter must be the value of the Identifier field for the private certificate.
   // 
-  // This parameter is required.
-  // 
   // example:
   // 
   // 12345678-1234-1234-1234-12345678****
   CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+  CustomIdentifier *string `json:"CustomIdentifier,omitempty" xml:"CustomIdentifier,omitempty"`
   // The value type of the Message parameter. Valid values:
   // 
   // 	- RAW: The value of the Plaintext parameter is directly encrypted. This is the default value.
@@ -88,6 +89,10 @@ func (s *EncryptRequest) GetCertIdentifier() *string  {
   return s.CertIdentifier
 }
 
+func (s *EncryptRequest) GetCustomIdentifier() *string  {
+  return s.CustomIdentifier
+}
+
 func (s *EncryptRequest) GetMessageType() *string  {
   return s.MessageType
 }
@@ -103,6 +108,11 @@ func (s *EncryptRequest) SetAlgorithm(v string) *EncryptRequest {
 
 func (s *EncryptRequest) SetCertIdentifier(v string) *EncryptRequest {
   s.CertIdentifier = &v
+  return s
+}
+
+func (s *EncryptRequest) SetCustomIdentifier(v string) *EncryptRequest {
+  s.CustomIdentifier = &v
   return s
 }
 

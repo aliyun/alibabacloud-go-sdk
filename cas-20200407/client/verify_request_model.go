@@ -11,6 +11,8 @@ type iVerifyRequest interface {
 	GoString() string
 	SetCertIdentifier(v string) *VerifyRequest
 	GetCertIdentifier() *string
+	SetCustomIdentifier(v string) *VerifyRequest
+	GetCustomIdentifier() *string
 	SetMessage(v string) *VerifyRequest
 	GetMessage() *string
 	SetMessageType(v string) *VerifyRequest
@@ -28,12 +30,11 @@ type VerifyRequest struct {
 	//
 	// 	- If the certificate is a private certificate, the value of this parameter must be the value of the Identifier field for the private certificate.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 5870821-cn-hangzhou
-	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	CertIdentifier   *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	CustomIdentifier *string `json:"CustomIdentifier,omitempty" xml:"CustomIdentifier,omitempty"`
 	// The data for which you want to verify the signature. The value must be encoded in Base64.\\
 	//
 	// For example, if the hexadecimal data that you want to verify is [0x31, 0x32, 0x33, 0x34], set the parameter to the Base64-encoded value MTIzNA==. If you set MessageType to RAW, the size of the data must be less than 4 KB. If the size of the data is greater than 4 KB, you can set MessageType to DIGEST and set Message to the digest of the data. The digest is also called hash value. You can compute the digest of the data on an on-premises machine. The certificate repository uses your certificate application system to compute the message digest. The message digest algorithm that is used must meet the requirements of the specified signature algorithm. The following signature algorithms require different message digest algorithms:
@@ -98,6 +99,10 @@ func (s *VerifyRequest) GetCertIdentifier() *string {
 	return s.CertIdentifier
 }
 
+func (s *VerifyRequest) GetCustomIdentifier() *string {
+	return s.CustomIdentifier
+}
+
 func (s *VerifyRequest) GetMessage() *string {
 	return s.Message
 }
@@ -116,6 +121,11 @@ func (s *VerifyRequest) GetSigningAlgorithm() *string {
 
 func (s *VerifyRequest) SetCertIdentifier(v string) *VerifyRequest {
 	s.CertIdentifier = &v
+	return s
+}
+
+func (s *VerifyRequest) SetCustomIdentifier(v string) *VerifyRequest {
+	s.CustomIdentifier = &v
 	return s
 }
 

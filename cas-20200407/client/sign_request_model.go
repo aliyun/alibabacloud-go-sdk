@@ -11,6 +11,8 @@ type iSignRequest interface {
 	GoString() string
 	SetCertIdentifier(v string) *SignRequest
 	GetCertIdentifier() *string
+	SetCustomIdentifier(v string) *SignRequest
+	GetCustomIdentifier() *string
 	SetMessage(v string) *SignRequest
 	GetMessage() *string
 	SetMessageType(v string) *SignRequest
@@ -26,12 +28,11 @@ type SignRequest struct {
 	//
 	// 	- If the certificate is a private certificate, the value of this parameter must be the value of the Identifier field for the private certificate.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// ccaf0c629c2be1e2abb63bb76b
-	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	CertIdentifier   *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	CustomIdentifier *string `json:"CustomIdentifier,omitempty" xml:"CustomIdentifier,omitempty"`
 	// The data to sign. The value must be encoded in Base64.\\
 	//
 	// For example, if the hexadecimal data that you want to sign is [0x31, 0x32, 0x33, 0x34], set the parameter to the Base64-encoded value MTIzNA==. If you set MessageType to RAW, the size of the data must be less than 4 KB. If the size of the data is greater than 4 KB, you can set MessageType to DIGEST and set Message to the digest of the data. The digest is a hash value. You can compute the digest of the data on an on-premises machine. The certificate application repository uses the digest that you compute in your own certificate application system. The message digest algorithm that you use must match the specified signature algorithm. The following items describe the details:
@@ -88,6 +89,10 @@ func (s *SignRequest) GetCertIdentifier() *string {
 	return s.CertIdentifier
 }
 
+func (s *SignRequest) GetCustomIdentifier() *string {
+	return s.CustomIdentifier
+}
+
 func (s *SignRequest) GetMessage() *string {
 	return s.Message
 }
@@ -102,6 +107,11 @@ func (s *SignRequest) GetSigningAlgorithm() *string {
 
 func (s *SignRequest) SetCertIdentifier(v string) *SignRequest {
 	s.CertIdentifier = &v
+	return s
+}
+
+func (s *SignRequest) SetCustomIdentifier(v string) *SignRequest {
+	s.CustomIdentifier = &v
 	return s
 }
 

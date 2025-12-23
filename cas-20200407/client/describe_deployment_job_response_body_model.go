@@ -374,7 +374,16 @@ func (s *DescribeDeploymentJobResponseBody) SetUserId(v int64) *DescribeDeployme
 }
 
 func (s *DescribeDeploymentJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CasContacts != nil {
+		for _, item := range s.CasContacts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeploymentJobResponseBodyCasContacts struct {

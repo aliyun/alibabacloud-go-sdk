@@ -582,7 +582,25 @@ func (s *GetUserCertificateDetailResponseBody) SetTags(v []*GetUserCertificateDe
 }
 
 func (s *GetUserCertificateDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CertChain != nil {
+		for _, item := range s.CertChain {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetUserCertificateDetailResponseBodyCertChain struct {

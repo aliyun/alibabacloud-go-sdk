@@ -104,7 +104,16 @@ func (s *ListCloudAccessResponseBody) SetTotalCount(v int32) *ListCloudAccessRes
 }
 
 func (s *ListCloudAccessResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CloudAccessList != nil {
+		for _, item := range s.CloudAccessList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCloudAccessResponseBodyCloudAccessList struct {

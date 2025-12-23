@@ -257,7 +257,16 @@ func (s *DescribeDeploymentJobStatusResponseBody) SetWorkerCount(v int32) *Descr
 }
 
 func (s *DescribeDeploymentJobStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProductWorkerCount != nil {
+		for _, item := range s.ProductWorkerCount {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeploymentJobStatusResponseBodyProductWorkerCount struct {

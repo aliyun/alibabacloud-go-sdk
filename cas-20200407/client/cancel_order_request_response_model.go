@@ -59,5 +59,10 @@ func (s *CancelOrderRequestResponse) SetBody(v *CancelOrderRequestResponseBody) 
 }
 
 func (s *CancelOrderRequestResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
