@@ -134,7 +134,9 @@ type DescribeHotBigKeysResponseBodyData struct {
 	// current version doesn\\"t support
 	HotKeyMsg *string `json:"HotKeyMsg,omitempty" xml:"HotKeyMsg,omitempty"`
 	// The list of hot keys.
-	HotKeys *DescribeHotBigKeysResponseBodyDataHotKeys `json:"HotKeys,omitempty" xml:"HotKeys,omitempty" type:"Struct"`
+	HotKeys     *DescribeHotBigKeysResponseBodyDataHotKeys   `json:"HotKeys,omitempty" xml:"HotKeys,omitempty" type:"Struct"`
+	LargeKeyMsg *string                                      `json:"LargeKeyMsg,omitempty" xml:"LargeKeyMsg,omitempty"`
+	LargeKeys   *DescribeHotBigKeysResponseBodyDataLargeKeys `json:"LargeKeys,omitempty" xml:"LargeKeys,omitempty" type:"Struct"`
 }
 
 func (s DescribeHotBigKeysResponseBodyData) String() string {
@@ -169,6 +171,14 @@ func (s *DescribeHotBigKeysResponseBodyData) GetHotKeys() *DescribeHotBigKeysRes
 	return s.HotKeys
 }
 
+func (s *DescribeHotBigKeysResponseBodyData) GetLargeKeyMsg() *string {
+	return s.LargeKeyMsg
+}
+
+func (s *DescribeHotBigKeysResponseBodyData) GetLargeKeys() *DescribeHotBigKeysResponseBodyDataLargeKeys {
+	return s.LargeKeys
+}
+
 func (s *DescribeHotBigKeysResponseBodyData) SetBigKeyMsg(v string) *DescribeHotBigKeysResponseBodyData {
 	s.BigKeyMsg = &v
 	return s
@@ -199,6 +209,16 @@ func (s *DescribeHotBigKeysResponseBodyData) SetHotKeys(v *DescribeHotBigKeysRes
 	return s
 }
 
+func (s *DescribeHotBigKeysResponseBodyData) SetLargeKeyMsg(v string) *DescribeHotBigKeysResponseBodyData {
+	s.LargeKeyMsg = &v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyData) SetLargeKeys(v *DescribeHotBigKeysResponseBodyDataLargeKeys) *DescribeHotBigKeysResponseBodyData {
+	s.LargeKeys = v
+	return s
+}
+
 func (s *DescribeHotBigKeysResponseBodyData) Validate() error {
 	if s.BigKeys != nil {
 		if err := s.BigKeys.Validate(); err != nil {
@@ -212,6 +232,11 @@ func (s *DescribeHotBigKeysResponseBodyData) Validate() error {
 	}
 	if s.HotKeys != nil {
 		if err := s.HotKeys.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LargeKeys != nil {
+		if err := s.LargeKeys.Validate(); err != nil {
 			return err
 		}
 	}
@@ -617,5 +642,104 @@ func (s *DescribeHotBigKeysResponseBodyDataHotKeysHotKey) SetSize(v int64) *Desc
 }
 
 func (s *DescribeHotBigKeysResponseBodyDataHotKeysHotKey) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeHotBigKeysResponseBodyDataLargeKeys struct {
+	LargeKey []*DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey `json:"LargeKey,omitempty" xml:"LargeKey,omitempty" type:"Repeated"`
+}
+
+func (s DescribeHotBigKeysResponseBodyDataLargeKeys) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeHotBigKeysResponseBodyDataLargeKeys) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataLargeKeys) GetLargeKey() []*DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey {
+	return s.LargeKey
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataLargeKeys) SetLargeKey(v []*DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey) *DescribeHotBigKeysResponseBodyDataLargeKeys {
+	s.LargeKey = v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataLargeKeys) Validate() error {
+	if s.LargeKey != nil {
+		for _, item := range s.LargeKey {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey struct {
+	DataSize *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	Db       *string `json:"Db,omitempty" xml:"Db,omitempty"`
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	KeyType  *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey) GetDataSize() *string {
+	return s.DataSize
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey) GetDb() *string {
+	return s.Db
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey) GetKeyType() *string {
+	return s.KeyType
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey) GetNodeId() *string {
+	return s.NodeId
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey) SetDataSize(v string) *DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey {
+	s.DataSize = &v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey) SetDb(v string) *DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey {
+	s.Db = &v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey) SetKey(v string) *DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey) SetKeyType(v string) *DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey {
+	s.KeyType = &v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey) SetNodeId(v string) *DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey) Validate() error {
 	return dara.Validate(s)
 }
