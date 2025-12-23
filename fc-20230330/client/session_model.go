@@ -21,6 +21,10 @@ type iSession interface {
 	GetLastModifiedTime() *string
 	SetNasConfig(v *NASConfig) *Session
 	GetNasConfig() *NASConfig
+	SetOssMountConfig(v *OSSMountConfig) *Session
+	GetOssMountConfig() *OSSMountConfig
+	SetPolarFsConfig(v *PolarFsConfig) *Session
+	GetPolarFsConfig() *PolarFsConfig
 	SetQualifier(v string) *Session
 	GetQualifier() *string
 	SetSessionAffinityType(v string) *Session
@@ -52,8 +56,10 @@ type Session struct {
 	// example:
 	//
 	// 2025-04-01T18:15:27Z
-	LastModifiedTime *string    `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	NasConfig        *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	LastModifiedTime *string         `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	NasConfig        *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig   *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	PolarFsConfig    *PolarFsConfig  `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
 	// example:
 	//
 	// AliasName1
@@ -112,6 +118,14 @@ func (s *Session) GetNasConfig() *NASConfig {
 	return s.NasConfig
 }
 
+func (s *Session) GetOssMountConfig() *OSSMountConfig {
+	return s.OssMountConfig
+}
+
+func (s *Session) GetPolarFsConfig() *PolarFsConfig {
+	return s.PolarFsConfig
+}
+
 func (s *Session) GetQualifier() *string {
 	return s.Qualifier
 }
@@ -166,6 +180,16 @@ func (s *Session) SetNasConfig(v *NASConfig) *Session {
 	return s
 }
 
+func (s *Session) SetOssMountConfig(v *OSSMountConfig) *Session {
+	s.OssMountConfig = v
+	return s
+}
+
+func (s *Session) SetPolarFsConfig(v *PolarFsConfig) *Session {
+	s.PolarFsConfig = v
+	return s
+}
+
 func (s *Session) SetQualifier(v string) *Session {
 	s.Qualifier = &v
 	return s
@@ -199,6 +223,16 @@ func (s *Session) SetSessionTTLInSeconds(v int64) *Session {
 func (s *Session) Validate() error {
 	if s.NasConfig != nil {
 		if err := s.NasConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OssMountConfig != nil {
+		if err := s.OssMountConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PolarFsConfig != nil {
+		if err := s.PolarFsConfig.Validate(); err != nil {
 			return err
 		}
 	}

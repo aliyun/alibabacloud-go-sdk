@@ -13,6 +13,10 @@ type iCreateSessionInput interface {
 	GetDisableSessionIdReuse() *bool
 	SetNasConfig(v *NASConfig) *CreateSessionInput
 	GetNasConfig() *NASConfig
+	SetOssMountConfig(v *OSSMountConfig) *CreateSessionInput
+	GetOssMountConfig() *OSSMountConfig
+	SetPolarFsConfig(v *PolarFsConfig) *CreateSessionInput
+	GetPolarFsConfig() *PolarFsConfig
 	SetSessionId(v string) *CreateSessionInput
 	GetSessionId() *string
 	SetSessionIdleTimeoutInSeconds(v int64) *CreateSessionInput
@@ -22,8 +26,10 @@ type iCreateSessionInput interface {
 }
 
 type CreateSessionInput struct {
-	DisableSessionIdReuse *bool      `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
-	NasConfig             *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	DisableSessionIdReuse *bool           `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
+	NasConfig             *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig        *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	PolarFsConfig         *PolarFsConfig  `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
 	// example:
 	//
 	// custom-test-session-id
@@ -54,6 +60,14 @@ func (s *CreateSessionInput) GetNasConfig() *NASConfig {
 	return s.NasConfig
 }
 
+func (s *CreateSessionInput) GetOssMountConfig() *OSSMountConfig {
+	return s.OssMountConfig
+}
+
+func (s *CreateSessionInput) GetPolarFsConfig() *PolarFsConfig {
+	return s.PolarFsConfig
+}
+
 func (s *CreateSessionInput) GetSessionId() *string {
 	return s.SessionId
 }
@@ -76,6 +90,16 @@ func (s *CreateSessionInput) SetNasConfig(v *NASConfig) *CreateSessionInput {
 	return s
 }
 
+func (s *CreateSessionInput) SetOssMountConfig(v *OSSMountConfig) *CreateSessionInput {
+	s.OssMountConfig = v
+	return s
+}
+
+func (s *CreateSessionInput) SetPolarFsConfig(v *PolarFsConfig) *CreateSessionInput {
+	s.PolarFsConfig = v
+	return s
+}
+
 func (s *CreateSessionInput) SetSessionId(v string) *CreateSessionInput {
 	s.SessionId = &v
 	return s
@@ -94,6 +118,16 @@ func (s *CreateSessionInput) SetSessionTTLInSeconds(v int64) *CreateSessionInput
 func (s *CreateSessionInput) Validate() error {
 	if s.NasConfig != nil {
 		if err := s.NasConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OssMountConfig != nil {
+		if err := s.OssMountConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PolarFsConfig != nil {
+		if err := s.PolarFsConfig.Validate(); err != nil {
 			return err
 		}
 	}

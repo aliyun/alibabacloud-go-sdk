@@ -18,9 +18,9 @@ type iChangeResourceGroupOutput interface {
 }
 
 type ChangeResourceGroupOutput struct {
-	NewResourceGroupId *string `json:"newResourceGroupId,omitempty" xml:"newResourceGroupId,omitempty"`
-	OldResourceGroupId *string `json:"oldResourceGroupId,omitempty" xml:"oldResourceGroupId,omitempty"`
-	ResourceId         *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	OldResourceGroupId *string `json:"OldResourceGroupId,omitempty" xml:"OldResourceGroupId,omitempty"`
+	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
 func (s ChangeResourceGroupOutput) String() string {
