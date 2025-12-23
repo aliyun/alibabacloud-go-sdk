@@ -140,7 +140,8 @@ type ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings struct {
 	// example:
 	//
 	// 1762309642177
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime   *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExternalData *string `json:"ExternalData,omitempty" xml:"ExternalData,omitempty"`
 	// 来源Idp Id
 	//
 	// example:
@@ -189,6 +190,10 @@ func (s *ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings) GetCrea
 	return s.CreateTime
 }
 
+func (s *ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings) GetExternalData() *string {
+	return s.ExternalData
+}
+
 func (s *ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings) GetIdentityProviderId() *string {
 	return s.IdentityProviderId
 }
@@ -216,6 +221,11 @@ func (s *ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings) SetAuth
 
 func (s *ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings) SetCreateTime(v int64) *ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings) SetExternalData(v string) *ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings {
+	s.ExternalData = &v
 	return s
 }
 
