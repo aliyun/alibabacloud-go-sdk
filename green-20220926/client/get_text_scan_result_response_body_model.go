@@ -193,6 +193,7 @@ func (s *GetTextScanResultResponseBodyData) Validate() error {
 }
 
 type GetTextScanResultResponseBodyDataItems struct {
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// Bailian Request ID
 	//
 	// example:
@@ -205,6 +206,7 @@ type GetTextScanResultResponseBodyDataItems struct {
 	//
 	// 测试内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	DataId  *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	// Feedback information.
 	//
 	// example:
@@ -299,12 +301,20 @@ func (s GetTextScanResultResponseBodyDataItems) GoString() string {
 	return s.String()
 }
 
+func (s *GetTextScanResultResponseBodyDataItems) GetAccountId() *string {
+	return s.AccountId
+}
+
 func (s *GetTextScanResultResponseBodyDataItems) GetBailianRequestId() *string {
 	return s.BailianRequestId
 }
 
 func (s *GetTextScanResultResponseBodyDataItems) GetContent() *string {
 	return s.Content
+}
+
+func (s *GetTextScanResultResponseBodyDataItems) GetDataId() *string {
+	return s.DataId
 }
 
 func (s *GetTextScanResultResponseBodyDataItems) GetExtFeedback() *string {
@@ -359,6 +369,11 @@ func (s *GetTextScanResultResponseBodyDataItems) GetTaskId() *string {
 	return s.TaskId
 }
 
+func (s *GetTextScanResultResponseBodyDataItems) SetAccountId(v string) *GetTextScanResultResponseBodyDataItems {
+	s.AccountId = &v
+	return s
+}
+
 func (s *GetTextScanResultResponseBodyDataItems) SetBailianRequestId(v string) *GetTextScanResultResponseBodyDataItems {
 	s.BailianRequestId = &v
 	return s
@@ -366,6 +381,11 @@ func (s *GetTextScanResultResponseBodyDataItems) SetBailianRequestId(v string) *
 
 func (s *GetTextScanResultResponseBodyDataItems) SetContent(v string) *GetTextScanResultResponseBodyDataItems {
 	s.Content = &v
+	return s
+}
+
+func (s *GetTextScanResultResponseBodyDataItems) SetDataId(v string) *GetTextScanResultResponseBodyDataItems {
+	s.DataId = &v
 	return s
 }
 
