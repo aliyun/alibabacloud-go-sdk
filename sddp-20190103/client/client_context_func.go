@@ -660,6 +660,10 @@ func (client *Client) DescribeAuditLogsWithContext(ctx context.Context, request 
 		query["LoadWhiteList"] = request.LoadWhiteList
 	}
 
+	if !dara.IsNil(request.LogQueryOpJson) {
+		query["LogQueryOpJson"] = request.LogQueryOpJson
+	}
+
 	if !dara.IsNil(request.LogSource) {
 		query["LogSource"] = request.LogSource
 	}

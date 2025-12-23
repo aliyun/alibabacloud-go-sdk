@@ -874,6 +874,10 @@ func (client *Client) DescribeAuditLogsWithOptions(request *DescribeAuditLogsReq
 		query["LoadWhiteList"] = request.LoadWhiteList
 	}
 
+	if !dara.IsNil(request.LogQueryOpJson) {
+		query["LogQueryOpJson"] = request.LogQueryOpJson
+	}
+
 	if !dara.IsNil(request.LogSource) {
 		query["LogSource"] = request.LogSource
 	}

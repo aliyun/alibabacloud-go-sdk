@@ -33,6 +33,8 @@ type iDescribeAuditLogsRequest interface {
 	GetLang() *string
 	SetLoadWhiteList(v bool) *DescribeAuditLogsRequest
 	GetLoadWhiteList() *bool
+	SetLogQueryOpJson(v string) *DescribeAuditLogsRequest
+	GetLogQueryOpJson() *string
 	SetLogSource(v string) *DescribeAuditLogsRequest
 	GetLogSource() *string
 	SetMemberAccount(v string) *DescribeAuditLogsRequest
@@ -114,6 +116,10 @@ type DescribeAuditLogsRequest struct {
 	//
 	// false
 	LoadWhiteList *bool `json:"LoadWhiteList,omitempty" xml:"LoadWhiteList,omitempty"`
+	// example:
+	//
+	// [ {   "isContain" : false,   "queryKey" : "effectRowRange" }, {   "isContain" : false,   "queryKey" : "remoteClientIp" } ]
+	LogQueryOpJson *string `json:"LogQueryOpJson,omitempty" xml:"LogQueryOpJson,omitempty"`
 	// example:
 	//
 	// SLOW_SQL
@@ -224,6 +230,10 @@ func (s *DescribeAuditLogsRequest) GetLang() *string {
 
 func (s *DescribeAuditLogsRequest) GetLoadWhiteList() *bool {
 	return s.LoadWhiteList
+}
+
+func (s *DescribeAuditLogsRequest) GetLogQueryOpJson() *string {
+	return s.LogQueryOpJson
 }
 
 func (s *DescribeAuditLogsRequest) GetLogSource() *string {
@@ -343,6 +353,11 @@ func (s *DescribeAuditLogsRequest) SetLang(v string) *DescribeAuditLogsRequest {
 
 func (s *DescribeAuditLogsRequest) SetLoadWhiteList(v bool) *DescribeAuditLogsRequest {
 	s.LoadWhiteList = &v
+	return s
+}
+
+func (s *DescribeAuditLogsRequest) SetLogQueryOpJson(v string) *DescribeAuditLogsRequest {
+	s.LogQueryOpJson = &v
 	return s
 }
 
