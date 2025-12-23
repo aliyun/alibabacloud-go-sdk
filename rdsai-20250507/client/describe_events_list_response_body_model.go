@@ -171,6 +171,7 @@ type DescribeEventsListResponseBodyEvents struct {
 	//
 	// 2025-07-23T02:11:07Z
 	RecoveryTime *string `json:"RecoveryTime,omitempty" xml:"RecoveryTime,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeEventsListResponseBodyEvents) String() string {
@@ -205,6 +206,10 @@ func (s *DescribeEventsListResponseBodyEvents) GetRecoveryTime() *string {
 	return s.RecoveryTime
 }
 
+func (s *DescribeEventsListResponseBodyEvents) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *DescribeEventsListResponseBodyEvents) SetEventCode(v string) *DescribeEventsListResponseBodyEvents {
 	s.EventCode = &v
 	return s
@@ -232,6 +237,11 @@ func (s *DescribeEventsListResponseBodyEvents) SetInstanceId(v string) *Describe
 
 func (s *DescribeEventsListResponseBodyEvents) SetRecoveryTime(v string) *DescribeEventsListResponseBodyEvents {
 	s.RecoveryTime = &v
+	return s
+}
+
+func (s *DescribeEventsListResponseBodyEvents) SetRegionId(v string) *DescribeEventsListResponseBodyEvents {
+	s.RegionId = &v
 	return s
 }
 
