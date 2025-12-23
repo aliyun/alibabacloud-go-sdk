@@ -358,6 +358,7 @@ func (s *DescribeApplicationSlbsResponseBodyData) Validate() error {
 }
 
 type DescribeApplicationSlbsResponseBodyDataInternet struct {
+	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
 	// example:
 	//
 	// wwe
@@ -371,7 +372,8 @@ type DescribeApplicationSlbsResponseBodyDataInternet struct {
 	// example:
 	//
 	// 1741247308294
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime            *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableConnectionDrain *bool  `json:"EnableConnectionDrain,omitempty" xml:"EnableConnectionDrain,omitempty"`
 	// example:
 	//
 	// 1513561019707729_16f37aae5f3_-375882821_-169099****
@@ -407,7 +409,8 @@ type DescribeApplicationSlbsResponseBodyDataInternet struct {
 	// example:
 	//
 	// 8080
-	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+	TargetPort     *int32  `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
 func (s DescribeApplicationSlbsResponseBodyDataInternet) String() string {
@@ -416,6 +419,10 @@ func (s DescribeApplicationSlbsResponseBodyDataInternet) String() string {
 
 func (s DescribeApplicationSlbsResponseBodyDataInternet) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeApplicationSlbsResponseBodyDataInternet) GetConnectionDrainTimeout() *int32 {
+	return s.ConnectionDrainTimeout
 }
 
 func (s *DescribeApplicationSlbsResponseBodyDataInternet) GetCookie() *string {
@@ -428,6 +435,10 @@ func (s *DescribeApplicationSlbsResponseBodyDataInternet) GetCookieTimeout() *in
 
 func (s *DescribeApplicationSlbsResponseBodyDataInternet) GetCreateTime() *int64 {
 	return s.CreateTime
+}
+
+func (s *DescribeApplicationSlbsResponseBodyDataInternet) GetEnableConnectionDrain() *bool {
+	return s.EnableConnectionDrain
 }
 
 func (s *DescribeApplicationSlbsResponseBodyDataInternet) GetHttpsCaCertId() *string {
@@ -458,6 +469,15 @@ func (s *DescribeApplicationSlbsResponseBodyDataInternet) GetTargetPort() *int32
 	return s.TargetPort
 }
 
+func (s *DescribeApplicationSlbsResponseBodyDataInternet) GetVServerGroupId() *string {
+	return s.VServerGroupId
+}
+
+func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetConnectionDrainTimeout(v int32) *DescribeApplicationSlbsResponseBodyDataInternet {
+	s.ConnectionDrainTimeout = &v
+	return s
+}
+
 func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetCookie(v string) *DescribeApplicationSlbsResponseBodyDataInternet {
 	s.Cookie = &v
 	return s
@@ -470,6 +490,11 @@ func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetCookieTimeout(v int
 
 func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetCreateTime(v int64) *DescribeApplicationSlbsResponseBodyDataInternet {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetEnableConnectionDrain(v bool) *DescribeApplicationSlbsResponseBodyDataInternet {
+	s.EnableConnectionDrain = &v
 	return s
 }
 
@@ -508,11 +533,17 @@ func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetTargetPort(v int32)
 	return s
 }
 
+func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetVServerGroupId(v string) *DescribeApplicationSlbsResponseBodyDataInternet {
+	s.VServerGroupId = &v
+	return s
+}
+
 func (s *DescribeApplicationSlbsResponseBodyDataInternet) Validate() error {
 	return dara.Validate(s)
 }
 
 type DescribeApplicationSlbsResponseBodyDataIntranet struct {
+	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
 	// example:
 	//
 	// wwe
@@ -526,7 +557,8 @@ type DescribeApplicationSlbsResponseBodyDataIntranet struct {
 	// example:
 	//
 	// 1741247308294
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime            *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableConnectionDrain *bool  `json:"EnableConnectionDrain,omitempty" xml:"EnableConnectionDrain,omitempty"`
 	// example:
 	//
 	// 1513561019707729_16f37aae5f3_-375882821_-169099****
@@ -562,7 +594,8 @@ type DescribeApplicationSlbsResponseBodyDataIntranet struct {
 	// example:
 	//
 	// 8080
-	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+	TargetPort     *int32  `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
 func (s DescribeApplicationSlbsResponseBodyDataIntranet) String() string {
@@ -571,6 +604,10 @@ func (s DescribeApplicationSlbsResponseBodyDataIntranet) String() string {
 
 func (s DescribeApplicationSlbsResponseBodyDataIntranet) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeApplicationSlbsResponseBodyDataIntranet) GetConnectionDrainTimeout() *int32 {
+	return s.ConnectionDrainTimeout
 }
 
 func (s *DescribeApplicationSlbsResponseBodyDataIntranet) GetCookie() *string {
@@ -583,6 +620,10 @@ func (s *DescribeApplicationSlbsResponseBodyDataIntranet) GetCookieTimeout() *in
 
 func (s *DescribeApplicationSlbsResponseBodyDataIntranet) GetCreateTime() *int64 {
 	return s.CreateTime
+}
+
+func (s *DescribeApplicationSlbsResponseBodyDataIntranet) GetEnableConnectionDrain() *bool {
+	return s.EnableConnectionDrain
 }
 
 func (s *DescribeApplicationSlbsResponseBodyDataIntranet) GetHttpsCaCertId() *string {
@@ -613,6 +654,15 @@ func (s *DescribeApplicationSlbsResponseBodyDataIntranet) GetTargetPort() *int32
 	return s.TargetPort
 }
 
+func (s *DescribeApplicationSlbsResponseBodyDataIntranet) GetVServerGroupId() *string {
+	return s.VServerGroupId
+}
+
+func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetConnectionDrainTimeout(v int32) *DescribeApplicationSlbsResponseBodyDataIntranet {
+	s.ConnectionDrainTimeout = &v
+	return s
+}
+
 func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetCookie(v string) *DescribeApplicationSlbsResponseBodyDataIntranet {
 	s.Cookie = &v
 	return s
@@ -625,6 +675,11 @@ func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetCookieTimeout(v int
 
 func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetCreateTime(v int64) *DescribeApplicationSlbsResponseBodyDataIntranet {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetEnableConnectionDrain(v bool) *DescribeApplicationSlbsResponseBodyDataIntranet {
+	s.EnableConnectionDrain = &v
 	return s
 }
 
@@ -660,6 +715,11 @@ func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetStickySessionType(v
 
 func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetTargetPort(v int32) *DescribeApplicationSlbsResponseBodyDataIntranet {
 	s.TargetPort = &v
+	return s
+}
+
+func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetVServerGroupId(v string) *DescribeApplicationSlbsResponseBodyDataIntranet {
+	s.VServerGroupId = &v
 	return s
 }
 
