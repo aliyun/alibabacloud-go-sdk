@@ -8060,6 +8060,98 @@ func (client *Client) DescribeDesktopInfoWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 查询云电脑基础元数据
+//
+// @param request - DescribeDesktopMetadataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDesktopMetadataResponse
+func (client *Client) DescribeDesktopMetadataWithContext(ctx context.Context, request *DescribeDesktopMetadataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDesktopMetadataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CreationTimeStart) {
+		query["CreationTimeStart"] = request.CreationTimeStart
+	}
+
+	if !dara.IsNil(request.DesktopIds) {
+		query["DesktopIds"] = request.DesktopIds
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.HostName) {
+		query["HostName"] = request.HostName
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.IncludeDesktopGroup) {
+		query["IncludeDesktopGroup"] = request.IncludeDesktopGroup
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.OperationTimeStart) {
+		query["OperationTimeStart"] = request.OperationTimeStart
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SearchRegionId) {
+		query["SearchRegionId"] = request.SearchRegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDesktopMetadata"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDesktopMetadataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询超卖组
 //
 // @param request - DescribeDesktopOversoldGroupRequest
