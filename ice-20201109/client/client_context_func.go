@@ -1677,6 +1677,58 @@ func (client *Client) CreateHotwordLibraryWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
+// # IPC下单
+//
+// @param request - CreateIpcOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIpcOrderResponse
+func (client *Client) CreateIpcOrderWithContext(ctx context.Context, request *CreateIpcOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateIpcOrderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Capability) {
+		query["Capability"] = request.Capability
+	}
+
+	if !dara.IsNil(request.DeviceId) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateIpcOrder"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateIpcOrderResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a live package channel.
 //
 // Description:
@@ -7375,6 +7427,70 @@ func (client *Client) GetHotwordLibraryWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetHotwordLibraryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询IPC设备信息
+//
+// @param request - GetIpcDeviceInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIpcDeviceInfoResponse
+func (client *Client) GetIpcDeviceInfoWithContext(ctx context.Context, request *GetIpcDeviceInfoRequest, runtime *dara.RuntimeOptions) (_result *GetIpcDeviceInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Capability) {
+		query["Capability"] = request.Capability
+	}
+
+	if !dara.IsNil(request.DeviceId) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetIpcDeviceInfo"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetIpcDeviceInfoResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -13855,6 +13971,66 @@ func (client *Client) QueryIProductionJobWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryIProductionJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询IPC用量
+//
+// @param request - QueryIpcQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryIpcQuotaResponse
+func (client *Client) QueryIpcQuotaWithContext(ctx context.Context, request *QueryIpcQuotaRequest, runtime *dara.RuntimeOptions) (_result *QueryIpcQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Capability) {
+		query["Capability"] = request.Capability
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryIpcQuota"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryIpcQuotaResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

@@ -15,6 +15,8 @@ type iQuerySmarttagJobResponseBody interface {
 	GetRequestId() *string
 	SetResults(v *QuerySmarttagJobResponseBodyResults) *QuerySmarttagJobResponseBody
 	GetResults() *QuerySmarttagJobResponseBodyResults
+	SetUsages(v *QuerySmarttagJobResponseBodyUsages) *QuerySmarttagJobResponseBody
+	GetUsages() *QuerySmarttagJobResponseBodyUsages
 	SetUserData(v string) *QuerySmarttagJobResponseBody
 	GetUserData() *string
 }
@@ -42,6 +44,7 @@ type QuerySmarttagJobResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The analysis results of the smart tagging job. The value is an array.
 	Results *QuerySmarttagJobResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	Usages  *QuerySmarttagJobResponseBodyUsages  `json:"Usages,omitempty" xml:"Usages,omitempty" type:"Struct"`
 	// The content of callback messages that are sent to Simple Message Queue (SMQ) when the information of the smart tagging job changes. For more information about the parameters contained in the callback message, see the "Callback parameters" section of this topic.
 	//
 	// example:
@@ -70,6 +73,10 @@ func (s *QuerySmarttagJobResponseBody) GetResults() *QuerySmarttagJobResponseBod
 	return s.Results
 }
 
+func (s *QuerySmarttagJobResponseBody) GetUsages() *QuerySmarttagJobResponseBodyUsages {
+	return s.Usages
+}
+
 func (s *QuerySmarttagJobResponseBody) GetUserData() *string {
 	return s.UserData
 }
@@ -89,6 +96,11 @@ func (s *QuerySmarttagJobResponseBody) SetResults(v *QuerySmarttagJobResponseBod
 	return s
 }
 
+func (s *QuerySmarttagJobResponseBody) SetUsages(v *QuerySmarttagJobResponseBodyUsages) *QuerySmarttagJobResponseBody {
+	s.Usages = v
+	return s
+}
+
 func (s *QuerySmarttagJobResponseBody) SetUserData(v string) *QuerySmarttagJobResponseBody {
 	s.UserData = &v
 	return s
@@ -97,6 +109,11 @@ func (s *QuerySmarttagJobResponseBody) SetUserData(v string) *QuerySmarttagJobRe
 func (s *QuerySmarttagJobResponseBody) Validate() error {
 	if s.Results != nil {
 		if err := s.Results.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usages != nil {
+		if err := s.Usages.Validate(); err != nil {
 			return err
 		}
 	}
@@ -203,5 +220,74 @@ func (s *QuerySmarttagJobResponseBodyResultsResult) SetType(v string) *QuerySmar
 }
 
 func (s *QuerySmarttagJobResponseBodyResultsResult) Validate() error {
+	return dara.Validate(s)
+}
+
+type QuerySmarttagJobResponseBodyUsages struct {
+	Usage []*QuerySmarttagJobResponseBodyUsagesUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Repeated"`
+}
+
+func (s QuerySmarttagJobResponseBodyUsages) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QuerySmarttagJobResponseBodyUsages) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmarttagJobResponseBodyUsages) GetUsage() []*QuerySmarttagJobResponseBodyUsagesUsage {
+	return s.Usage
+}
+
+func (s *QuerySmarttagJobResponseBodyUsages) SetUsage(v []*QuerySmarttagJobResponseBodyUsagesUsage) *QuerySmarttagJobResponseBodyUsages {
+	s.Usage = v
+	return s
+}
+
+func (s *QuerySmarttagJobResponseBodyUsages) Validate() error {
+	if s.Usage != nil {
+		for _, item := range s.Usage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type QuerySmarttagJobResponseBodyUsagesUsage struct {
+	Quota *int64  `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QuerySmarttagJobResponseBodyUsagesUsage) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QuerySmarttagJobResponseBodyUsagesUsage) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmarttagJobResponseBodyUsagesUsage) GetQuota() *int64 {
+	return s.Quota
+}
+
+func (s *QuerySmarttagJobResponseBodyUsagesUsage) GetType() *string {
+	return s.Type
+}
+
+func (s *QuerySmarttagJobResponseBodyUsagesUsage) SetQuota(v int64) *QuerySmarttagJobResponseBodyUsagesUsage {
+	s.Quota = &v
+	return s
+}
+
+func (s *QuerySmarttagJobResponseBodyUsagesUsage) SetType(v string) *QuerySmarttagJobResponseBodyUsagesUsage {
+	s.Type = &v
+	return s
+}
+
+func (s *QuerySmarttagJobResponseBodyUsagesUsage) Validate() error {
 	return dara.Validate(s)
 }
