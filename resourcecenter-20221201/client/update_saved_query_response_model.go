@@ -59,5 +59,10 @@ func (s *UpdateSavedQueryResponse) SetBody(v *UpdateSavedQueryResponseBody) *Upd
 }
 
 func (s *UpdateSavedQueryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -125,7 +125,25 @@ func (s *SearchMultiAccountResourcesResponseBody) SetScope(v string) *SearchMult
 }
 
 func (s *SearchMultiAccountResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Filters != nil {
+		for _, item := range s.Filters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchMultiAccountResourcesResponseBodyFilters struct {
@@ -370,7 +388,25 @@ func (s *SearchMultiAccountResourcesResponseBodyResources) SetZoneId(v string) *
 }
 
 func (s *SearchMultiAccountResourcesResponseBodyResources) Validate() error {
-	return dara.Validate(s)
+	if s.IpAddressAttributes != nil {
+		for _, item := range s.IpAddressAttributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes struct {

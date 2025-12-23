@@ -131,7 +131,16 @@ func (s *ListResourceRelationshipsRequest) SetResourceType(v string) *ListResour
 }
 
 func (s *ListResourceRelationshipsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RelatedResourceFilter != nil {
+		for _, item := range s.RelatedResourceFilter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceRelationshipsRequestRelatedResourceFilter struct {

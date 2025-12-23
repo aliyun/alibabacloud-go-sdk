@@ -59,5 +59,10 @@ func (s *DeleteMultiAccountDeliveryChannelResponse) SetBody(v *DeleteMultiAccoun
 }
 
 func (s *DeleteMultiAccountDeliveryChannelResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

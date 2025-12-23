@@ -87,7 +87,16 @@ func (s *ListResourceRelationshipsResponseBody) SetResourceRelationships(v []*Li
 }
 
 func (s *ListResourceRelationshipsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceRelationships != nil {
+		for _, item := range s.ResourceRelationships {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceRelationshipsResponseBodyResourceRelationships struct {

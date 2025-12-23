@@ -126,7 +126,22 @@ func (s *GetMultiAccountDeliveryChannelResponseBody) SetResourceSnapshotDelivery
 }
 
 func (s *GetMultiAccountDeliveryChannelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeliveryChannelFilter != nil {
+		if err := s.DeliveryChannelFilter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceChangeDelivery != nil {
+		if err := s.ResourceChangeDelivery.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceSnapshotDelivery != nil {
+		if err := s.ResourceSnapshotDelivery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter struct {
@@ -229,7 +244,12 @@ func (s *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery) SetTa
 }
 
 func (s *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery) Validate() error {
-	return dara.Validate(s)
+	if s.SlsProperties != nil {
+		if err := s.SlsProperties.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties struct {
@@ -355,7 +375,12 @@ func (s *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery) Set
 }
 
 func (s *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery) Validate() error {
-	return dara.Validate(s)
+	if s.SlsProperties != nil {
+		if err := s.SlsProperties.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties struct {

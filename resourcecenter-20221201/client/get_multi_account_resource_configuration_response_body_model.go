@@ -247,7 +247,25 @@ func (s *GetMultiAccountResourceConfigurationResponseBody) SetZoneId(v string) *
 }
 
 func (s *GetMultiAccountResourceConfigurationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IpAddressAttributes != nil {
+		for _, item := range s.IpAddressAttributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes struct {

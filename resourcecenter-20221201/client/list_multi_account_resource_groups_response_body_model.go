@@ -70,7 +70,16 @@ func (s *ListMultiAccountResourceGroupsResponseBody) SetResourceGroups(v []*List
 }
 
 func (s *ListMultiAccountResourceGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceGroups != nil {
+		for _, item := range s.ResourceGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMultiAccountResourceGroupsResponseBodyResourceGroups struct {

@@ -83,7 +83,25 @@ func (s *GetResourceCountsResponseBody) SetResourceCounts(v []*GetResourceCounts
 }
 
 func (s *GetResourceCountsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Filters != nil {
+		for _, item := range s.Filters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourceCounts != nil {
+		for _, item := range s.ResourceCounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResourceCountsResponseBodyFilters struct {

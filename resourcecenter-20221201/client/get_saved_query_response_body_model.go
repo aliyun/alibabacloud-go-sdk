@@ -53,7 +53,12 @@ func (s *GetSavedQueryResponseBody) SetSavedQuery(v *GetSavedQueryResponseBodySa
 }
 
 func (s *GetSavedQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SavedQuery != nil {
+		if err := s.SavedQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSavedQueryResponseBodySavedQuery struct {

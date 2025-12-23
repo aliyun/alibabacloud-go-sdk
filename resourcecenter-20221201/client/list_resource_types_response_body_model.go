@@ -53,7 +53,16 @@ func (s *ListResourceTypesResponseBody) SetResourceTypes(v []*ListResourceTypesR
 }
 
 func (s *ListResourceTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceTypes != nil {
+		for _, item := range s.ResourceTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceTypesResponseBodyResourceTypes struct {
@@ -146,7 +155,12 @@ func (s *ListResourceTypesResponseBodyResourceTypes) SetResourceTypeName(v strin
 }
 
 func (s *ListResourceTypesResponseBodyResourceTypes) Validate() error {
-	return dara.Validate(s)
+	if s.CodeMapping != nil {
+		if err := s.CodeMapping.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListResourceTypesResponseBodyResourceTypesCodeMapping struct {

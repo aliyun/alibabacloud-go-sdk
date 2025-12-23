@@ -59,5 +59,10 @@ func (s *GetExampleQueryResponse) SetBody(v *GetExampleQueryResponseBody) *GetEx
 }
 
 func (s *GetExampleQueryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

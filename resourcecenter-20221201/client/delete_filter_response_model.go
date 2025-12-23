@@ -59,5 +59,10 @@ func (s *DeleteFilterResponse) SetBody(v *DeleteFilterResponseBody) *DeleteFilte
 }
 
 func (s *DeleteFilterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

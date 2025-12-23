@@ -11,19 +11,24 @@ type iSearchResourcesRequest interface {
 	GoString() string
 	SetFilter(v []*SearchResourcesRequestFilter) *SearchResourcesRequest
 	GetFilter() []*SearchResourcesRequestFilter
+	SetIncludeDeletedResources(v bool) *SearchResourcesRequest
+	GetIncludeDeletedResources() *bool
 	SetMaxResults(v int32) *SearchResourcesRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *SearchResourcesRequest
 	GetNextToken() *string
 	SetResourceGroupId(v string) *SearchResourcesRequest
 	GetResourceGroupId() *string
+	SetSearchExpression(v string) *SearchResourcesRequest
+	GetSearchExpression() *string
 	SetSortCriterion(v *SearchResourcesRequestSortCriterion) *SearchResourcesRequest
 	GetSortCriterion() *SearchResourcesRequestSortCriterion
 }
 
 type SearchResourcesRequest struct {
 	// The filter conditions.
-	Filter []*SearchResourcesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	Filter                  []*SearchResourcesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	IncludeDeletedResources *bool                           `json:"IncludeDeletedResources,omitempty" xml:"IncludeDeletedResources,omitempty"`
 	// The maximum number of entries per page.
 	//
 	// Valid values: 1 to 100.
@@ -47,7 +52,8 @@ type SearchResourcesRequest struct {
 	// example:
 	//
 	// rg-acfmzawhxxc****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SearchExpression *string `json:"SearchExpression,omitempty" xml:"SearchExpression,omitempty"`
 	// The method that is used to sort the entries returned.
 	SortCriterion *SearchResourcesRequestSortCriterion `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty" type:"Struct"`
 }
@@ -64,6 +70,10 @@ func (s *SearchResourcesRequest) GetFilter() []*SearchResourcesRequestFilter {
 	return s.Filter
 }
 
+func (s *SearchResourcesRequest) GetIncludeDeletedResources() *bool {
+	return s.IncludeDeletedResources
+}
+
 func (s *SearchResourcesRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -76,12 +86,21 @@ func (s *SearchResourcesRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
+func (s *SearchResourcesRequest) GetSearchExpression() *string {
+	return s.SearchExpression
+}
+
 func (s *SearchResourcesRequest) GetSortCriterion() *SearchResourcesRequestSortCriterion {
 	return s.SortCriterion
 }
 
 func (s *SearchResourcesRequest) SetFilter(v []*SearchResourcesRequestFilter) *SearchResourcesRequest {
 	s.Filter = v
+	return s
+}
+
+func (s *SearchResourcesRequest) SetIncludeDeletedResources(v bool) *SearchResourcesRequest {
+	s.IncludeDeletedResources = &v
 	return s
 }
 
@@ -100,13 +119,32 @@ func (s *SearchResourcesRequest) SetResourceGroupId(v string) *SearchResourcesRe
 	return s
 }
 
+func (s *SearchResourcesRequest) SetSearchExpression(v string) *SearchResourcesRequest {
+	s.SearchExpression = &v
+	return s
+}
+
 func (s *SearchResourcesRequest) SetSortCriterion(v *SearchResourcesRequestSortCriterion) *SearchResourcesRequest {
 	s.SortCriterion = v
 	return s
 }
 
 func (s *SearchResourcesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		for _, item := range s.Filter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SortCriterion != nil {
+		if err := s.SortCriterion.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchResourcesRequestFilter struct {

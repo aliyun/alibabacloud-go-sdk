@@ -87,7 +87,16 @@ func (s *ListExampleQueriesResponseBody) SetRequestId(v string) *ListExampleQuer
 }
 
 func (s *ListExampleQueriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ExampleQueries != nil {
+		for _, item := range s.ExampleQueries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListExampleQueriesResponseBodyExampleQueries struct {

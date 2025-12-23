@@ -87,7 +87,16 @@ func (s *ListSavedQueriesResponseBody) SetSavedQueries(v []*ListSavedQueriesResp
 }
 
 func (s *ListSavedQueriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SavedQueries != nil {
+		for _, item := range s.SavedQueries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSavedQueriesResponseBodySavedQueries struct {

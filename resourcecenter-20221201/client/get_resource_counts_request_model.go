@@ -13,6 +13,10 @@ type iGetResourceCountsRequest interface {
 	GetFilter() []*GetResourceCountsRequestFilter
 	SetGroupByKey(v string) *GetResourceCountsRequest
 	GetGroupByKey() *string
+	SetIncludeDeletedResources(v bool) *GetResourceCountsRequest
+	GetIncludeDeletedResources() *bool
+	SetSearchExpression(v string) *GetResourceCountsRequest
+	GetSearchExpression() *string
 }
 
 type GetResourceCountsRequest struct {
@@ -33,7 +37,9 @@ type GetResourceCountsRequest struct {
 	// example:
 	//
 	// ResourceType
-	GroupByKey *string `json:"GroupByKey,omitempty" xml:"GroupByKey,omitempty"`
+	GroupByKey              *string `json:"GroupByKey,omitempty" xml:"GroupByKey,omitempty"`
+	IncludeDeletedResources *bool   `json:"IncludeDeletedResources,omitempty" xml:"IncludeDeletedResources,omitempty"`
+	SearchExpression        *string `json:"SearchExpression,omitempty" xml:"SearchExpression,omitempty"`
 }
 
 func (s GetResourceCountsRequest) String() string {
@@ -52,6 +58,14 @@ func (s *GetResourceCountsRequest) GetGroupByKey() *string {
 	return s.GroupByKey
 }
 
+func (s *GetResourceCountsRequest) GetIncludeDeletedResources() *bool {
+	return s.IncludeDeletedResources
+}
+
+func (s *GetResourceCountsRequest) GetSearchExpression() *string {
+	return s.SearchExpression
+}
+
 func (s *GetResourceCountsRequest) SetFilter(v []*GetResourceCountsRequestFilter) *GetResourceCountsRequest {
 	s.Filter = v
 	return s
@@ -62,8 +76,27 @@ func (s *GetResourceCountsRequest) SetGroupByKey(v string) *GetResourceCountsReq
 	return s
 }
 
+func (s *GetResourceCountsRequest) SetIncludeDeletedResources(v bool) *GetResourceCountsRequest {
+	s.IncludeDeletedResources = &v
+	return s
+}
+
+func (s *GetResourceCountsRequest) SetSearchExpression(v string) *GetResourceCountsRequest {
+	s.SearchExpression = &v
+	return s
+}
+
 func (s *GetResourceCountsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		for _, item := range s.Filter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResourceCountsRequestFilter struct {

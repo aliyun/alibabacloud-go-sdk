@@ -53,7 +53,12 @@ func (s *GetExampleQueryResponseBody) SetRequestId(v string) *GetExampleQueryRes
 }
 
 func (s *GetExampleQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ExampleQuery != nil {
+		if err := s.ExampleQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetExampleQueryResponseBodyExampleQuery struct {

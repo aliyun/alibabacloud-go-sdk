@@ -17,9 +17,11 @@ import (
 //
 // @return AssociateDefaultFilterResponse
 func (client *Client) AssociateDefaultFilterWithContext(ctx context.Context, request *AssociateDefaultFilterRequest, runtime *dara.RuntimeOptions) (_result *AssociateDefaultFilterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FilterName) {
@@ -69,9 +71,11 @@ func (client *Client) AssociateDefaultFilterWithContext(ctx context.Context, req
 //
 // @return CreateDeliveryChannelResponse
 func (client *Client) CreateDeliveryChannelWithContext(ctx context.Context, request *CreateDeliveryChannelRequest, runtime *dara.RuntimeOptions) (_result *CreateDeliveryChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeliveryChannelDescription) {
@@ -127,9 +131,11 @@ func (client *Client) CreateDeliveryChannelWithContext(ctx context.Context, requ
 //
 // @return CreateFilterResponse
 func (client *Client) CreateFilterWithContext(ctx context.Context, request *CreateFilterRequest, runtime *dara.RuntimeOptions) (_result *CreateFilterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FilterConfiguration) {
@@ -183,9 +189,11 @@ func (client *Client) CreateFilterWithContext(ctx context.Context, request *Crea
 //
 // @return CreateMultiAccountDeliveryChannelResponse
 func (client *Client) CreateMultiAccountDeliveryChannelWithContext(ctx context.Context, request *CreateMultiAccountDeliveryChannelRequest, runtime *dara.RuntimeOptions) (_result *CreateMultiAccountDeliveryChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeliveryChannelDescription) {
@@ -241,9 +249,11 @@ func (client *Client) CreateMultiAccountDeliveryChannelWithContext(ctx context.C
 //
 // @return CreateSavedQueryResponse
 func (client *Client) CreateSavedQueryWithContext(ctx context.Context, request *CreateSavedQueryRequest, runtime *dara.RuntimeOptions) (_result *CreateSavedQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -291,9 +301,11 @@ func (client *Client) CreateSavedQueryWithContext(ctx context.Context, request *
 //
 // @return DeleteDeliveryChannelResponse
 func (client *Client) DeleteDeliveryChannelWithContext(ctx context.Context, request *DeleteDeliveryChannelRequest, runtime *dara.RuntimeOptions) (_result *DeleteDeliveryChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeliveryChannelId) {
@@ -333,9 +345,11 @@ func (client *Client) DeleteDeliveryChannelWithContext(ctx context.Context, requ
 //
 // @return DeleteFilterResponse
 func (client *Client) DeleteFilterWithContext(ctx context.Context, request *DeleteFilterRequest, runtime *dara.RuntimeOptions) (_result *DeleteFilterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FilterName) {
@@ -375,9 +389,11 @@ func (client *Client) DeleteFilterWithContext(ctx context.Context, request *Dele
 //
 // @return DeleteMultiAccountDeliveryChannelResponse
 func (client *Client) DeleteMultiAccountDeliveryChannelWithContext(ctx context.Context, request *DeleteMultiAccountDeliveryChannelRequest, runtime *dara.RuntimeOptions) (_result *DeleteMultiAccountDeliveryChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeliveryChannelId) {
@@ -417,9 +433,11 @@ func (client *Client) DeleteMultiAccountDeliveryChannelWithContext(ctx context.C
 //
 // @return DeleteSavedQueryResponse
 func (client *Client) DeleteSavedQueryWithContext(ctx context.Context, request *DeleteSavedQueryRequest, runtime *dara.RuntimeOptions) (_result *DeleteSavedQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.QueryId) {
@@ -459,9 +477,11 @@ func (client *Client) DeleteSavedQueryWithContext(ctx context.Context, request *
 //
 // @return ExecuteMultiAccountSQLQueryResponse
 func (client *Client) ExecuteMultiAccountSQLQueryWithContext(ctx context.Context, request *ExecuteMultiAccountSQLQueryRequest, runtime *dara.RuntimeOptions) (_result *ExecuteMultiAccountSQLQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Expression) {
@@ -513,9 +533,11 @@ func (client *Client) ExecuteMultiAccountSQLQueryWithContext(ctx context.Context
 //
 // @return ExecuteSQLQueryResponse
 func (client *Client) ExecuteSQLQueryWithContext(ctx context.Context, request *ExecuteSQLQueryRequest, runtime *dara.RuntimeOptions) (_result *ExecuteSQLQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Expression) {
@@ -567,9 +589,11 @@ func (client *Client) ExecuteSQLQueryWithContext(ctx context.Context, request *E
 //
 // @return GetDeliveryChannelResponse
 func (client *Client) GetDeliveryChannelWithContext(ctx context.Context, request *GetDeliveryChannelRequest, runtime *dara.RuntimeOptions) (_result *GetDeliveryChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeliveryChannelId) {
@@ -609,9 +633,11 @@ func (client *Client) GetDeliveryChannelWithContext(ctx context.Context, request
 //
 // @return GetDeliveryChannelStatisticsResponse
 func (client *Client) GetDeliveryChannelStatisticsWithContext(ctx context.Context, request *GetDeliveryChannelStatisticsRequest, runtime *dara.RuntimeOptions) (_result *GetDeliveryChannelStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeliveryChannelId) {
@@ -651,9 +677,11 @@ func (client *Client) GetDeliveryChannelStatisticsWithContext(ctx context.Contex
 //
 // @return GetExampleQueryResponse
 func (client *Client) GetExampleQueryWithContext(ctx context.Context, request *GetExampleQueryRequest, runtime *dara.RuntimeOptions) (_result *GetExampleQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.QueryId) {
@@ -693,9 +721,11 @@ func (client *Client) GetExampleQueryWithContext(ctx context.Context, request *G
 //
 // @return GetMultiAccountDeliveryChannelResponse
 func (client *Client) GetMultiAccountDeliveryChannelWithContext(ctx context.Context, request *GetMultiAccountDeliveryChannelRequest, runtime *dara.RuntimeOptions) (_result *GetMultiAccountDeliveryChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeliveryChannelId) {
@@ -735,9 +765,11 @@ func (client *Client) GetMultiAccountDeliveryChannelWithContext(ctx context.Cont
 //
 // @return GetMultiAccountDeliveryChannelStatisticsResponse
 func (client *Client) GetMultiAccountDeliveryChannelStatisticsWithContext(ctx context.Context, request *GetMultiAccountDeliveryChannelStatisticsRequest, runtime *dara.RuntimeOptions) (_result *GetMultiAccountDeliveryChannelStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeliveryChannelId) {
@@ -777,9 +809,11 @@ func (client *Client) GetMultiAccountDeliveryChannelStatisticsWithContext(ctx co
 //
 // @return GetMultiAccountResourceConfigurationResponse
 func (client *Client) GetMultiAccountResourceConfigurationWithContext(ctx context.Context, request *GetMultiAccountResourceConfigurationRequest, runtime *dara.RuntimeOptions) (_result *GetMultiAccountResourceConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -831,9 +865,11 @@ func (client *Client) GetMultiAccountResourceConfigurationWithContext(ctx contex
 //
 // @return GetMultiAccountResourceCountsResponse
 func (client *Client) GetMultiAccountResourceCountsWithContext(ctx context.Context, request *GetMultiAccountResourceCountsRequest, runtime *dara.RuntimeOptions) (_result *GetMultiAccountResourceCountsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
@@ -881,9 +917,11 @@ func (client *Client) GetMultiAccountResourceCountsWithContext(ctx context.Conte
 //
 // @return GetResourceConfigurationResponse
 func (client *Client) GetResourceConfigurationWithContext(ctx context.Context, request *GetResourceConfigurationRequest, runtime *dara.RuntimeOptions) (_result *GetResourceConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceId) {
@@ -931,9 +969,11 @@ func (client *Client) GetResourceConfigurationWithContext(ctx context.Context, r
 //
 // @return GetResourceCountsResponse
 func (client *Client) GetResourceCountsWithContext(ctx context.Context, request *GetResourceCountsRequest, runtime *dara.RuntimeOptions) (_result *GetResourceCountsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
@@ -942,6 +982,14 @@ func (client *Client) GetResourceCountsWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.GroupByKey) {
 		query["GroupByKey"] = request.GroupByKey
+	}
+
+	if !dara.IsNil(request.IncludeDeletedResources) {
+		query["IncludeDeletedResources"] = request.IncludeDeletedResources
+	}
+
+	if !dara.IsNil(request.SearchExpression) {
+		query["SearchExpression"] = request.SearchExpression
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -977,9 +1025,11 @@ func (client *Client) GetResourceCountsWithContext(ctx context.Context, request 
 //
 // @return GetSavedQueryResponse
 func (client *Client) GetSavedQueryWithContext(ctx context.Context, request *GetSavedQueryRequest, runtime *dara.RuntimeOptions) (_result *GetSavedQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.QueryId) {
@@ -1019,9 +1069,11 @@ func (client *Client) GetSavedQueryWithContext(ctx context.Context, request *Get
 //
 // @return ListDeliveryChannelsResponse
 func (client *Client) ListDeliveryChannelsWithContext(ctx context.Context, request *ListDeliveryChannelsRequest, runtime *dara.RuntimeOptions) (_result *ListDeliveryChannelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -1065,9 +1117,11 @@ func (client *Client) ListDeliveryChannelsWithContext(ctx context.Context, reque
 //
 // @return ListExampleQueriesResponse
 func (client *Client) ListExampleQueriesWithContext(ctx context.Context, request *ListExampleQueriesRequest, runtime *dara.RuntimeOptions) (_result *ListExampleQueriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -1111,9 +1165,11 @@ func (client *Client) ListExampleQueriesWithContext(ctx context.Context, request
 //
 // @return ListMultiAccountDeliveryChannelsResponse
 func (client *Client) ListMultiAccountDeliveryChannelsWithContext(ctx context.Context, request *ListMultiAccountDeliveryChannelsRequest, runtime *dara.RuntimeOptions) (_result *ListMultiAccountDeliveryChannelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -1157,9 +1213,11 @@ func (client *Client) ListMultiAccountDeliveryChannelsWithContext(ctx context.Co
 //
 // @return ListMultiAccountResourceGroupsResponse
 func (client *Client) ListMultiAccountResourceGroupsWithContext(ctx context.Context, request *ListMultiAccountResourceGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListMultiAccountResourceGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -1221,9 +1279,11 @@ func (client *Client) ListMultiAccountResourceGroupsWithContext(ctx context.Cont
 //
 // @return ListMultiAccountResourceRelationshipsResponse
 func (client *Client) ListMultiAccountResourceRelationshipsWithContext(ctx context.Context, request *ListMultiAccountResourceRelationshipsRequest, runtime *dara.RuntimeOptions) (_result *ListMultiAccountResourceRelationshipsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -1287,9 +1347,11 @@ func (client *Client) ListMultiAccountResourceRelationshipsWithContext(ctx conte
 //
 // @return ListMultiAccountTagKeysResponse
 func (client *Client) ListMultiAccountTagKeysWithContext(ctx context.Context, request *ListMultiAccountTagKeysRequest, runtime *dara.RuntimeOptions) (_result *ListMultiAccountTagKeysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MatchType) {
@@ -1345,9 +1407,11 @@ func (client *Client) ListMultiAccountTagKeysWithContext(ctx context.Context, re
 //
 // @return ListMultiAccountTagValuesResponse
 func (client *Client) ListMultiAccountTagValuesWithContext(ctx context.Context, request *ListMultiAccountTagValuesRequest, runtime *dara.RuntimeOptions) (_result *ListMultiAccountTagValuesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MatchType) {
@@ -1417,9 +1481,11 @@ func (client *Client) ListMultiAccountTagValuesWithContext(ctx context.Context, 
 //
 // @return ListResourceRelationshipsResponse
 func (client *Client) ListResourceRelationshipsWithContext(ctx context.Context, request *ListResourceRelationshipsRequest, runtime *dara.RuntimeOptions) (_result *ListResourceRelationshipsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -1479,9 +1545,11 @@ func (client *Client) ListResourceRelationshipsWithContext(ctx context.Context, 
 //
 // @return ListResourceTypesResponse
 func (client *Client) ListResourceTypesWithContext(ctx context.Context, request *ListResourceTypesRequest, runtime *dara.RuntimeOptions) (_result *ListResourceTypesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -1529,9 +1597,11 @@ func (client *Client) ListResourceTypesWithContext(ctx context.Context, request 
 //
 // @return ListSavedQueriesResponse
 func (client *Client) ListSavedQueriesWithContext(ctx context.Context, request *ListSavedQueriesRequest, runtime *dara.RuntimeOptions) (_result *ListSavedQueriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -1575,9 +1645,11 @@ func (client *Client) ListSavedQueriesWithContext(ctx context.Context, request *
 //
 // @return ListTagKeysResponse
 func (client *Client) ListTagKeysWithContext(ctx context.Context, request *ListTagKeysRequest, runtime *dara.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MatchType) {
@@ -1629,9 +1701,11 @@ func (client *Client) ListTagKeysWithContext(ctx context.Context, request *ListT
 //
 // @return ListTagValuesResponse
 func (client *Client) ListTagValuesWithContext(ctx context.Context, request *ListTagValuesRequest, runtime *dara.RuntimeOptions) (_result *ListTagValuesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MatchType) {
@@ -1701,9 +1775,11 @@ func (client *Client) ListTagValuesWithContext(ctx context.Context, request *Lis
 //
 // @return SearchMultiAccountResourcesResponse
 func (client *Client) SearchMultiAccountResourcesWithContext(ctx context.Context, request *SearchMultiAccountResourcesRequest, runtime *dara.RuntimeOptions) (_result *SearchMultiAccountResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
@@ -1771,13 +1847,19 @@ func (client *Client) SearchMultiAccountResourcesWithContext(ctx context.Context
 //
 // @return SearchResourcesResponse
 func (client *Client) SearchResourcesWithContext(ctx context.Context, request *SearchResourcesRequest, runtime *dara.RuntimeOptions) (_result *SearchResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
 		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.IncludeDeletedResources) {
+		query["IncludeDeletedResources"] = request.IncludeDeletedResources
 	}
 
 	if !dara.IsNil(request.MaxResults) {
@@ -1790,6 +1872,10 @@ func (client *Client) SearchResourcesWithContext(ctx context.Context, request *S
 
 	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.SearchExpression) {
+		query["SearchExpression"] = request.SearchExpression
 	}
 
 	if !dara.IsNil(request.SortCriterion) {
@@ -1839,9 +1925,11 @@ func (client *Client) SearchResourcesWithContext(ctx context.Context, request *S
 //
 // @return UpdateDeliveryChannelResponse
 func (client *Client) UpdateDeliveryChannelWithContext(ctx context.Context, request *UpdateDeliveryChannelRequest, runtime *dara.RuntimeOptions) (_result *UpdateDeliveryChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeliveryChannelDescription) {
@@ -1901,9 +1989,11 @@ func (client *Client) UpdateDeliveryChannelWithContext(ctx context.Context, requ
 //
 // @return UpdateFilterResponse
 func (client *Client) UpdateFilterWithContext(ctx context.Context, request *UpdateFilterRequest, runtime *dara.RuntimeOptions) (_result *UpdateFilterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FilterConfiguration) {
@@ -1957,9 +2047,11 @@ func (client *Client) UpdateFilterWithContext(ctx context.Context, request *Upda
 //
 // @return UpdateMultiAccountDeliveryChannelResponse
 func (client *Client) UpdateMultiAccountDeliveryChannelWithContext(ctx context.Context, request *UpdateMultiAccountDeliveryChannelRequest, runtime *dara.RuntimeOptions) (_result *UpdateMultiAccountDeliveryChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeliveryChannelDescription) {
@@ -2019,9 +2111,11 @@ func (client *Client) UpdateMultiAccountDeliveryChannelWithContext(ctx context.C
 //
 // @return UpdateSavedQueryResponse
 func (client *Client) UpdateSavedQueryWithContext(ctx context.Context, request *UpdateSavedQueryRequest, runtime *dara.RuntimeOptions) (_result *UpdateSavedQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {

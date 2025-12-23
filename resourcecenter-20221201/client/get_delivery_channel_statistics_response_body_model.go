@@ -53,7 +53,12 @@ func (s *GetDeliveryChannelStatisticsResponseBody) SetRequestId(v string) *GetDe
 }
 
 func (s *GetDeliveryChannelStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeliveryChannelStatistics != nil {
+		if err := s.DeliveryChannelStatistics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics struct {

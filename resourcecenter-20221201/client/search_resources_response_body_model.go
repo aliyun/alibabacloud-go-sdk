@@ -100,7 +100,25 @@ func (s *SearchResourcesResponseBody) SetResources(v []*SearchResourcesResponseB
 }
 
 func (s *SearchResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Filters != nil {
+		for _, item := range s.Filters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchResourcesResponseBodyFilters struct {
@@ -174,6 +192,7 @@ type SearchResourcesResponseBodyResources struct {
 	//
 	// 2021-06-30T09:20:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Deleted    *bool   `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
 	// The time when the resource expires.
 	//
 	// example:
@@ -244,6 +263,10 @@ func (s *SearchResourcesResponseBodyResources) GetCreateTime() *string {
 	return s.CreateTime
 }
 
+func (s *SearchResourcesResponseBodyResources) GetDeleted() *bool {
+	return s.Deleted
+}
+
 func (s *SearchResourcesResponseBodyResources) GetExpireTime() *string {
 	return s.ExpireTime
 }
@@ -291,6 +314,11 @@ func (s *SearchResourcesResponseBodyResources) SetAccountId(v string) *SearchRes
 
 func (s *SearchResourcesResponseBodyResources) SetCreateTime(v string) *SearchResourcesResponseBodyResources {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *SearchResourcesResponseBodyResources) SetDeleted(v bool) *SearchResourcesResponseBodyResources {
+	s.Deleted = &v
 	return s
 }
 
@@ -345,7 +373,25 @@ func (s *SearchResourcesResponseBodyResources) SetZoneId(v string) *SearchResour
 }
 
 func (s *SearchResourcesResponseBodyResources) Validate() error {
-	return dara.Validate(s)
+	if s.IpAddressAttributes != nil {
+		for _, item := range s.IpAddressAttributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchResourcesResponseBodyResourcesIpAddressAttributes struct {

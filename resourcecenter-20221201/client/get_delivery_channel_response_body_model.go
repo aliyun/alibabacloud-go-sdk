@@ -126,7 +126,22 @@ func (s *GetDeliveryChannelResponseBody) SetResourceSnapshotDelivery(v *GetDeliv
 }
 
 func (s *GetDeliveryChannelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeliveryChannelFilter != nil {
+		if err := s.DeliveryChannelFilter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceChangeDelivery != nil {
+		if err := s.ResourceChangeDelivery.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceSnapshotDelivery != nil {
+		if err := s.ResourceSnapshotDelivery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDeliveryChannelResponseBodyDeliveryChannelFilter struct {
@@ -218,7 +233,12 @@ func (s *GetDeliveryChannelResponseBodyResourceChangeDelivery) SetTargetType(v s
 }
 
 func (s *GetDeliveryChannelResponseBodyResourceChangeDelivery) Validate() error {
-	return dara.Validate(s)
+	if s.SlsProperties != nil {
+		if err := s.SlsProperties.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties struct {
@@ -344,7 +364,12 @@ func (s *GetDeliveryChannelResponseBodyResourceSnapshotDelivery) SetTargetType(v
 }
 
 func (s *GetDeliveryChannelResponseBodyResourceSnapshotDelivery) Validate() error {
-	return dara.Validate(s)
+	if s.SlsProperties != nil {
+		if err := s.SlsProperties.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties struct {

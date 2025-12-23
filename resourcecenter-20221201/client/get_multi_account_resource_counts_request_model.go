@@ -65,7 +65,16 @@ func (s *GetMultiAccountResourceCountsRequest) SetScope(v string) *GetMultiAccou
 }
 
 func (s *GetMultiAccountResourceCountsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		for _, item := range s.Filter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMultiAccountResourceCountsRequestFilter struct {

@@ -59,5 +59,10 @@ func (s *ListFiltersResponse) SetBody(v *ListFiltersResponseBody) *ListFiltersRe
 }
 
 func (s *ListFiltersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

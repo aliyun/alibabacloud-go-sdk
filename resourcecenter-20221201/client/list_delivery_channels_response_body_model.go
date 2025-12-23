@@ -89,7 +89,16 @@ func (s *ListDeliveryChannelsResponseBody) SetRequestId(v string) *ListDeliveryC
 }
 
 func (s *ListDeliveryChannelsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeliveryChannels != nil {
+		for _, item := range s.DeliveryChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDeliveryChannelsResponseBodyDeliveryChannels struct {

@@ -89,7 +89,16 @@ func (s *ListMultiAccountDeliveryChannelsResponseBody) SetRequestId(v string) *L
 }
 
 func (s *ListMultiAccountDeliveryChannelsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeliveryChannels != nil {
+		for _, item := range s.DeliveryChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels struct {

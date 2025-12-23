@@ -59,5 +59,10 @@ func (s *DisableMultiAccountResourceCenterResponse) SetBody(v *DisableMultiAccou
 }
 
 func (s *DisableMultiAccountResourceCenterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

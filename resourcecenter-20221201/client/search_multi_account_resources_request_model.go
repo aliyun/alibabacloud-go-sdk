@@ -116,7 +116,21 @@ func (s *SearchMultiAccountResourcesRequest) SetSortCriterion(v *SearchMultiAcco
 }
 
 func (s *SearchMultiAccountResourcesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		for _, item := range s.Filter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SortCriterion != nil {
+		if err := s.SortCriterion.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchMultiAccountResourcesRequestFilter struct {
