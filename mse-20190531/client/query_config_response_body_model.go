@@ -324,7 +324,8 @@ type QueryConfigResponseBodyData struct {
 	// example:
 	//
 	// password
-	PassWord *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
+	PassWord                    *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
+	PrometheusSdProtocolEnabled *string `json:"PrometheusSdProtocolEnabled,omitempty" xml:"PrometheusSdProtocolEnabled,omitempty"`
 	// Indicates whether the instance was restarted and new configurations have taken effect. Valid values:
 	//
 	// 	- `true`: The restart was successful.
@@ -481,6 +482,10 @@ func (s *QueryConfigResponseBodyData) GetOpenSuperAcl() *bool {
 
 func (s *QueryConfigResponseBodyData) GetPassWord() *string {
 	return s.PassWord
+}
+
+func (s *QueryConfigResponseBodyData) GetPrometheusSdProtocolEnabled() *string {
+	return s.PrometheusSdProtocolEnabled
 }
 
 func (s *QueryConfigResponseBodyData) GetRestartFlag() *bool {
@@ -642,6 +647,11 @@ func (s *QueryConfigResponseBodyData) SetPassWord(v string) *QueryConfigResponse
 	return s
 }
 
+func (s *QueryConfigResponseBodyData) SetPrometheusSdProtocolEnabled(v string) *QueryConfigResponseBodyData {
+	s.PrometheusSdProtocolEnabled = &v
+	return s
+}
+
 func (s *QueryConfigResponseBodyData) SetRestartFlag(v bool) *QueryConfigResponseBodyData {
 	s.RestartFlag = &v
 	return s
@@ -687,8 +697,10 @@ type QueryConfigResponseBodyDataNacosRunningEnv struct {
 	// example:
 	//
 	// true
-	EmptyProtect *bool   `json:"emptyProtect,omitempty" xml:"emptyProtect,omitempty"`
-	GrayAuth     *string `json:"grayAuth,omitempty" xml:"grayAuth,omitempty"`
+	EmptyProtect *bool                                                  `json:"emptyProtect,omitempty" xml:"emptyProtect,omitempty"`
+	FenceEnabled *bool                                                  `json:"fenceEnabled,omitempty" xml:"fenceEnabled,omitempty"`
+	FencePolicy  *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy `json:"fencePolicy,omitempty" xml:"fencePolicy,omitempty" type:"Struct"`
+	GrayAuth     *string                                                `json:"grayAuth,omitempty" xml:"grayAuth,omitempty"`
 }
 
 func (s QueryConfigResponseBodyDataNacosRunningEnv) String() string {
@@ -703,6 +715,14 @@ func (s *QueryConfigResponseBodyDataNacosRunningEnv) GetEmptyProtect() *bool {
 	return s.EmptyProtect
 }
 
+func (s *QueryConfigResponseBodyDataNacosRunningEnv) GetFenceEnabled() *bool {
+	return s.FenceEnabled
+}
+
+func (s *QueryConfigResponseBodyDataNacosRunningEnv) GetFencePolicy() *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy {
+	return s.FencePolicy
+}
+
 func (s *QueryConfigResponseBodyDataNacosRunningEnv) GetGrayAuth() *string {
 	return s.GrayAuth
 }
@@ -712,11 +732,61 @@ func (s *QueryConfigResponseBodyDataNacosRunningEnv) SetEmptyProtect(v bool) *Qu
 	return s
 }
 
+func (s *QueryConfigResponseBodyDataNacosRunningEnv) SetFenceEnabled(v bool) *QueryConfigResponseBodyDataNacosRunningEnv {
+	s.FenceEnabled = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyDataNacosRunningEnv) SetFencePolicy(v *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy) *QueryConfigResponseBodyDataNacosRunningEnv {
+	s.FencePolicy = v
+	return s
+}
+
 func (s *QueryConfigResponseBodyDataNacosRunningEnv) SetGrayAuth(v string) *QueryConfigResponseBodyDataNacosRunningEnv {
 	s.GrayAuth = &v
 	return s
 }
 
 func (s *QueryConfigResponseBodyDataNacosRunningEnv) Validate() error {
+	if s.FencePolicy != nil {
+		if err := s.FencePolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type QueryConfigResponseBodyDataNacosRunningEnvFencePolicy struct {
+	EnabledModules  []*string          `json:"enabledModules,omitempty" xml:"enabledModules,omitempty" type:"Repeated"`
+	InterceptPolicy map[string]*string `json:"interceptPolicy,omitempty" xml:"interceptPolicy,omitempty"`
+}
+
+func (s QueryConfigResponseBodyDataNacosRunningEnvFencePolicy) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryConfigResponseBodyDataNacosRunningEnvFencePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy) GetEnabledModules() []*string {
+	return s.EnabledModules
+}
+
+func (s *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy) GetInterceptPolicy() map[string]*string {
+	return s.InterceptPolicy
+}
+
+func (s *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy) SetEnabledModules(v []*string) *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy {
+	s.EnabledModules = v
+	return s
+}
+
+func (s *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy) SetInterceptPolicy(v map[string]*string) *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy {
+	s.InterceptPolicy = v
+	return s
+}
+
+func (s *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy) Validate() error {
 	return dara.Validate(s)
 }

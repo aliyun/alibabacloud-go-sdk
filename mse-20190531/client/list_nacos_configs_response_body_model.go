@@ -211,13 +211,15 @@ type ListNacosConfigsResponseBodyConfigurations struct {
 	// example:
 	//
 	// test
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ConfigTags *string `json:"ConfigTags,omitempty" xml:"ConfigTags,omitempty"`
 	// The ID of the configuration.
 	//
 	// example:
 	//
 	// log.yaml
-	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataId      *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the group.
 	//
 	// example:
@@ -244,8 +246,16 @@ func (s *ListNacosConfigsResponseBodyConfigurations) GetAppName() *string {
 	return s.AppName
 }
 
+func (s *ListNacosConfigsResponseBodyConfigurations) GetConfigTags() *string {
+	return s.ConfigTags
+}
+
 func (s *ListNacosConfigsResponseBodyConfigurations) GetDataId() *string {
 	return s.DataId
+}
+
+func (s *ListNacosConfigsResponseBodyConfigurations) GetDescription() *string {
+	return s.Description
 }
 
 func (s *ListNacosConfigsResponseBodyConfigurations) GetGroup() *string {
@@ -261,8 +271,18 @@ func (s *ListNacosConfigsResponseBodyConfigurations) SetAppName(v string) *ListN
 	return s
 }
 
+func (s *ListNacosConfigsResponseBodyConfigurations) SetConfigTags(v string) *ListNacosConfigsResponseBodyConfigurations {
+	s.ConfigTags = &v
+	return s
+}
+
 func (s *ListNacosConfigsResponseBodyConfigurations) SetDataId(v string) *ListNacosConfigsResponseBodyConfigurations {
 	s.DataId = &v
+	return s
+}
+
+func (s *ListNacosConfigsResponseBodyConfigurations) SetDescription(v string) *ListNacosConfigsResponseBodyConfigurations {
+	s.Description = &v
 	return s
 }
 
