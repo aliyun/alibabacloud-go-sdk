@@ -11,18 +11,26 @@ type iPatchEventResponseBody interface {
 	GoString() string
 	SetAttendees(v []*PatchEventResponseBodyAttendees) *PatchEventResponseBody
 	GetAttendees() []*PatchEventResponseBodyAttendees
+	SetCardInstances(v []*PatchEventResponseBodyCardInstances) *PatchEventResponseBody
+	GetCardInstances() []*PatchEventResponseBodyCardInstances
+	SetCategories(v []*PatchEventResponseBodyCategories) *PatchEventResponseBody
+	GetCategories() []*PatchEventResponseBodyCategories
 	SetCreateTime(v string) *PatchEventResponseBody
 	GetCreateTime() *string
 	SetDescription(v string) *PatchEventResponseBody
 	GetDescription() *string
 	SetEnd(v *PatchEventResponseBodyEnd) *PatchEventResponseBody
 	GetEnd() *PatchEventResponseBodyEnd
+	SetFreeBusyStatus(v string) *PatchEventResponseBody
+	GetFreeBusyStatus() *string
 	SetId(v string) *PatchEventResponseBody
 	GetId() *string
 	SetIsAllDay(v bool) *PatchEventResponseBody
 	GetIsAllDay() *bool
 	SetLocation(v *PatchEventResponseBodyLocation) *PatchEventResponseBody
 	GetLocation() *PatchEventResponseBodyLocation
+	SetOnlineMeetingInfo(v *PatchEventResponseBodyOnlineMeetingInfo) *PatchEventResponseBody
+	GetOnlineMeetingInfo() *PatchEventResponseBodyOnlineMeetingInfo
 	SetOrganizer(v *PatchEventResponseBodyOrganizer) *PatchEventResponseBody
 	GetOrganizer() *PatchEventResponseBodyOrganizer
 	SetRecurrence(v *PatchEventResponseBodyRecurrence) *PatchEventResponseBody
@@ -31,22 +39,29 @@ type iPatchEventResponseBody interface {
 	GetReminders() []*PatchEventResponseBodyReminders
 	SetRequestId(v string) *PatchEventResponseBody
 	GetRequestId() *string
+	SetRichTextDescription(v *PatchEventResponseBodyRichTextDescription) *PatchEventResponseBody
+	GetRichTextDescription() *PatchEventResponseBodyRichTextDescription
 	SetStart(v *PatchEventResponseBodyStart) *PatchEventResponseBody
 	GetStart() *PatchEventResponseBodyStart
 	SetSummary(v string) *PatchEventResponseBody
 	GetSummary() *string
+	SetUiConfigs(v []*PatchEventResponseBodyUiConfigs) *PatchEventResponseBody
+	GetUiConfigs() []*PatchEventResponseBodyUiConfigs
 	SetUpdateTime(v string) *PatchEventResponseBody
 	GetUpdateTime() *string
 }
 
 type PatchEventResponseBody struct {
-	Attendees []*PatchEventResponseBodyAttendees `json:"attendees,omitempty" xml:"attendees,omitempty" type:"Repeated"`
+	Attendees     []*PatchEventResponseBodyAttendees     `json:"attendees,omitempty" xml:"attendees,omitempty" type:"Repeated"`
+	CardInstances []*PatchEventResponseBodyCardInstances `json:"cardInstances,omitempty" xml:"cardInstances,omitempty" type:"Repeated"`
+	Categories    []*PatchEventResponseBodyCategories    `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2022-10-25T02:26:14Z
-	CreateTime  *string                    `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description *string                    `json:"description,omitempty" xml:"description,omitempty"`
-	End         *PatchEventResponseBodyEnd `json:"end,omitempty" xml:"end,omitempty" type:"Struct"`
+	CreateTime     *string                    `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description    *string                    `json:"description,omitempty" xml:"description,omitempty"`
+	End            *PatchEventResponseBodyEnd `json:"end,omitempty" xml:"end,omitempty" type:"Struct"`
+	FreeBusyStatus *string                    `json:"freeBusyStatus,omitempty" xml:"freeBusyStatus,omitempty"`
 	// example:
 	//
 	// 123456
@@ -54,19 +69,22 @@ type PatchEventResponseBody struct {
 	// example:
 	//
 	// true
-	IsAllDay   *bool                              `json:"isAllDay,omitempty" xml:"isAllDay,omitempty"`
-	Location   *PatchEventResponseBodyLocation    `json:"location,omitempty" xml:"location,omitempty" type:"Struct"`
-	Organizer  *PatchEventResponseBodyOrganizer   `json:"organizer,omitempty" xml:"organizer,omitempty" type:"Struct"`
-	Recurrence *PatchEventResponseBodyRecurrence  `json:"recurrence,omitempty" xml:"recurrence,omitempty" type:"Struct"`
-	Reminders  []*PatchEventResponseBodyReminders `json:"reminders,omitempty" xml:"reminders,omitempty" type:"Repeated"`
+	IsAllDay          *bool                                    `json:"isAllDay,omitempty" xml:"isAllDay,omitempty"`
+	Location          *PatchEventResponseBodyLocation          `json:"location,omitempty" xml:"location,omitempty" type:"Struct"`
+	OnlineMeetingInfo *PatchEventResponseBodyOnlineMeetingInfo `json:"onlineMeetingInfo,omitempty" xml:"onlineMeetingInfo,omitempty" type:"Struct"`
+	Organizer         *PatchEventResponseBodyOrganizer         `json:"organizer,omitempty" xml:"organizer,omitempty" type:"Struct"`
+	Recurrence        *PatchEventResponseBodyRecurrence        `json:"recurrence,omitempty" xml:"recurrence,omitempty" type:"Struct"`
+	Reminders         []*PatchEventResponseBodyReminders       `json:"reminders,omitempty" xml:"reminders,omitempty" type:"Repeated"`
 	// requestId
 	//
 	// example:
 	//
 	// 4248DCC9-785F-5A14-8BE0-830FD52E1261
-	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Start     *PatchEventResponseBodyStart `json:"start,omitempty" xml:"start,omitempty" type:"Struct"`
-	Summary   *string                      `json:"summary,omitempty" xml:"summary,omitempty"`
+	RequestId           *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RichTextDescription *PatchEventResponseBodyRichTextDescription `json:"richTextDescription,omitempty" xml:"richTextDescription,omitempty" type:"Struct"`
+	Start               *PatchEventResponseBodyStart               `json:"start,omitempty" xml:"start,omitempty" type:"Struct"`
+	Summary             *string                                    `json:"summary,omitempty" xml:"summary,omitempty"`
+	UiConfigs           []*PatchEventResponseBodyUiConfigs         `json:"uiConfigs,omitempty" xml:"uiConfigs,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2020-01-01T10:15:30+08:00
@@ -85,6 +103,14 @@ func (s *PatchEventResponseBody) GetAttendees() []*PatchEventResponseBodyAttende
 	return s.Attendees
 }
 
+func (s *PatchEventResponseBody) GetCardInstances() []*PatchEventResponseBodyCardInstances {
+	return s.CardInstances
+}
+
+func (s *PatchEventResponseBody) GetCategories() []*PatchEventResponseBodyCategories {
+	return s.Categories
+}
+
 func (s *PatchEventResponseBody) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -97,6 +123,10 @@ func (s *PatchEventResponseBody) GetEnd() *PatchEventResponseBodyEnd {
 	return s.End
 }
 
+func (s *PatchEventResponseBody) GetFreeBusyStatus() *string {
+	return s.FreeBusyStatus
+}
+
 func (s *PatchEventResponseBody) GetId() *string {
 	return s.Id
 }
@@ -107,6 +137,10 @@ func (s *PatchEventResponseBody) GetIsAllDay() *bool {
 
 func (s *PatchEventResponseBody) GetLocation() *PatchEventResponseBodyLocation {
 	return s.Location
+}
+
+func (s *PatchEventResponseBody) GetOnlineMeetingInfo() *PatchEventResponseBodyOnlineMeetingInfo {
+	return s.OnlineMeetingInfo
 }
 
 func (s *PatchEventResponseBody) GetOrganizer() *PatchEventResponseBodyOrganizer {
@@ -125,6 +159,10 @@ func (s *PatchEventResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *PatchEventResponseBody) GetRichTextDescription() *PatchEventResponseBodyRichTextDescription {
+	return s.RichTextDescription
+}
+
 func (s *PatchEventResponseBody) GetStart() *PatchEventResponseBodyStart {
 	return s.Start
 }
@@ -133,12 +171,26 @@ func (s *PatchEventResponseBody) GetSummary() *string {
 	return s.Summary
 }
 
+func (s *PatchEventResponseBody) GetUiConfigs() []*PatchEventResponseBodyUiConfigs {
+	return s.UiConfigs
+}
+
 func (s *PatchEventResponseBody) GetUpdateTime() *string {
 	return s.UpdateTime
 }
 
 func (s *PatchEventResponseBody) SetAttendees(v []*PatchEventResponseBodyAttendees) *PatchEventResponseBody {
 	s.Attendees = v
+	return s
+}
+
+func (s *PatchEventResponseBody) SetCardInstances(v []*PatchEventResponseBodyCardInstances) *PatchEventResponseBody {
+	s.CardInstances = v
+	return s
+}
+
+func (s *PatchEventResponseBody) SetCategories(v []*PatchEventResponseBodyCategories) *PatchEventResponseBody {
+	s.Categories = v
 	return s
 }
 
@@ -157,6 +209,11 @@ func (s *PatchEventResponseBody) SetEnd(v *PatchEventResponseBodyEnd) *PatchEven
 	return s
 }
 
+func (s *PatchEventResponseBody) SetFreeBusyStatus(v string) *PatchEventResponseBody {
+	s.FreeBusyStatus = &v
+	return s
+}
+
 func (s *PatchEventResponseBody) SetId(v string) *PatchEventResponseBody {
 	s.Id = &v
 	return s
@@ -169,6 +226,11 @@ func (s *PatchEventResponseBody) SetIsAllDay(v bool) *PatchEventResponseBody {
 
 func (s *PatchEventResponseBody) SetLocation(v *PatchEventResponseBodyLocation) *PatchEventResponseBody {
 	s.Location = v
+	return s
+}
+
+func (s *PatchEventResponseBody) SetOnlineMeetingInfo(v *PatchEventResponseBodyOnlineMeetingInfo) *PatchEventResponseBody {
+	s.OnlineMeetingInfo = v
 	return s
 }
 
@@ -192,6 +254,11 @@ func (s *PatchEventResponseBody) SetRequestId(v string) *PatchEventResponseBody 
 	return s
 }
 
+func (s *PatchEventResponseBody) SetRichTextDescription(v *PatchEventResponseBodyRichTextDescription) *PatchEventResponseBody {
+	s.RichTextDescription = v
+	return s
+}
+
 func (s *PatchEventResponseBody) SetStart(v *PatchEventResponseBodyStart) *PatchEventResponseBody {
 	s.Start = v
 	return s
@@ -199,6 +266,11 @@ func (s *PatchEventResponseBody) SetStart(v *PatchEventResponseBodyStart) *Patch
 
 func (s *PatchEventResponseBody) SetSummary(v string) *PatchEventResponseBody {
 	s.Summary = &v
+	return s
+}
+
+func (s *PatchEventResponseBody) SetUiConfigs(v []*PatchEventResponseBodyUiConfigs) *PatchEventResponseBody {
+	s.UiConfigs = v
 	return s
 }
 
@@ -217,6 +289,24 @@ func (s *PatchEventResponseBody) Validate() error {
 			}
 		}
 	}
+	if s.CardInstances != nil {
+		for _, item := range s.CardInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Categories != nil {
+		for _, item := range s.Categories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.End != nil {
 		if err := s.End.Validate(); err != nil {
 			return err
@@ -224,6 +314,11 @@ func (s *PatchEventResponseBody) Validate() error {
 	}
 	if s.Location != nil {
 		if err := s.Location.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OnlineMeetingInfo != nil {
+		if err := s.OnlineMeetingInfo.Validate(); err != nil {
 			return err
 		}
 	}
@@ -246,9 +341,23 @@ func (s *PatchEventResponseBody) Validate() error {
 			}
 		}
 	}
+	if s.RichTextDescription != nil {
+		if err := s.RichTextDescription.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Start != nil {
 		if err := s.Start.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.UiConfigs != nil {
+		for _, item := range s.UiConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil
@@ -331,6 +440,76 @@ func (s *PatchEventResponseBodyAttendees) SetSelf(v bool) *PatchEventResponseBod
 }
 
 func (s *PatchEventResponseBodyAttendees) Validate() error {
+	return dara.Validate(s)
+}
+
+type PatchEventResponseBodyCardInstances struct {
+	OutTrackId *string `json:"outTrackId,omitempty" xml:"outTrackId,omitempty"`
+	Scenario   *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
+}
+
+func (s PatchEventResponseBodyCardInstances) String() string {
+	return dara.Prettify(s)
+}
+
+func (s PatchEventResponseBodyCardInstances) GoString() string {
+	return s.String()
+}
+
+func (s *PatchEventResponseBodyCardInstances) GetOutTrackId() *string {
+	return s.OutTrackId
+}
+
+func (s *PatchEventResponseBodyCardInstances) GetScenario() *string {
+	return s.Scenario
+}
+
+func (s *PatchEventResponseBodyCardInstances) SetOutTrackId(v string) *PatchEventResponseBodyCardInstances {
+	s.OutTrackId = &v
+	return s
+}
+
+func (s *PatchEventResponseBodyCardInstances) SetScenario(v string) *PatchEventResponseBodyCardInstances {
+	s.Scenario = &v
+	return s
+}
+
+func (s *PatchEventResponseBodyCardInstances) Validate() error {
+	return dara.Validate(s)
+}
+
+type PatchEventResponseBodyCategories struct {
+	CategoryId  *string `json:"categoryId,omitempty" xml:"categoryId,omitempty"`
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+}
+
+func (s PatchEventResponseBodyCategories) String() string {
+	return dara.Prettify(s)
+}
+
+func (s PatchEventResponseBodyCategories) GoString() string {
+	return s.String()
+}
+
+func (s *PatchEventResponseBodyCategories) GetCategoryId() *string {
+	return s.CategoryId
+}
+
+func (s *PatchEventResponseBodyCategories) GetDisplayName() *string {
+	return s.DisplayName
+}
+
+func (s *PatchEventResponseBodyCategories) SetCategoryId(v string) *PatchEventResponseBodyCategories {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *PatchEventResponseBodyCategories) SetDisplayName(v string) *PatchEventResponseBodyCategories {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *PatchEventResponseBodyCategories) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -423,6 +602,51 @@ func (s *PatchEventResponseBodyLocation) SetMeetingRooms(v []*string) *PatchEven
 }
 
 func (s *PatchEventResponseBodyLocation) Validate() error {
+	return dara.Validate(s)
+}
+
+type PatchEventResponseBodyOnlineMeetingInfo struct {
+	ConferenceId *string `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
+	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
+	Url          *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s PatchEventResponseBodyOnlineMeetingInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s PatchEventResponseBodyOnlineMeetingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *PatchEventResponseBodyOnlineMeetingInfo) GetConferenceId() *string {
+	return s.ConferenceId
+}
+
+func (s *PatchEventResponseBodyOnlineMeetingInfo) GetType() *string {
+	return s.Type
+}
+
+func (s *PatchEventResponseBodyOnlineMeetingInfo) GetUrl() *string {
+	return s.Url
+}
+
+func (s *PatchEventResponseBodyOnlineMeetingInfo) SetConferenceId(v string) *PatchEventResponseBodyOnlineMeetingInfo {
+	s.ConferenceId = &v
+	return s
+}
+
+func (s *PatchEventResponseBodyOnlineMeetingInfo) SetType(v string) *PatchEventResponseBodyOnlineMeetingInfo {
+	s.Type = &v
+	return s
+}
+
+func (s *PatchEventResponseBodyOnlineMeetingInfo) SetUrl(v string) *PatchEventResponseBodyOnlineMeetingInfo {
+	s.Url = &v
+	return s
+}
+
+func (s *PatchEventResponseBodyOnlineMeetingInfo) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -713,6 +937,31 @@ func (s *PatchEventResponseBodyReminders) Validate() error {
 	return dara.Validate(s)
 }
 
+type PatchEventResponseBodyRichTextDescription struct {
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s PatchEventResponseBodyRichTextDescription) String() string {
+	return dara.Prettify(s)
+}
+
+func (s PatchEventResponseBodyRichTextDescription) GoString() string {
+	return s.String()
+}
+
+func (s *PatchEventResponseBodyRichTextDescription) GetText() *string {
+	return s.Text
+}
+
+func (s *PatchEventResponseBodyRichTextDescription) SetText(v string) *PatchEventResponseBodyRichTextDescription {
+	s.Text = &v
+	return s
+}
+
+func (s *PatchEventResponseBodyRichTextDescription) Validate() error {
+	return dara.Validate(s)
+}
+
 type PatchEventResponseBodyStart struct {
 	// example:
 	//
@@ -764,5 +1013,40 @@ func (s *PatchEventResponseBodyStart) SetTimeZone(v string) *PatchEventResponseB
 }
 
 func (s *PatchEventResponseBodyStart) Validate() error {
+	return dara.Validate(s)
+}
+
+type PatchEventResponseBodyUiConfigs struct {
+	UiName   *string `json:"uiName,omitempty" xml:"uiName,omitempty"`
+	UiStatus *string `json:"uiStatus,omitempty" xml:"uiStatus,omitempty"`
+}
+
+func (s PatchEventResponseBodyUiConfigs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s PatchEventResponseBodyUiConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *PatchEventResponseBodyUiConfigs) GetUiName() *string {
+	return s.UiName
+}
+
+func (s *PatchEventResponseBodyUiConfigs) GetUiStatus() *string {
+	return s.UiStatus
+}
+
+func (s *PatchEventResponseBodyUiConfigs) SetUiName(v string) *PatchEventResponseBodyUiConfigs {
+	s.UiName = &v
+	return s
+}
+
+func (s *PatchEventResponseBodyUiConfigs) SetUiStatus(v string) *PatchEventResponseBodyUiConfigs {
+	s.UiStatus = &v
+	return s
+}
+
+func (s *PatchEventResponseBodyUiConfigs) Validate() error {
 	return dara.Validate(s)
 }

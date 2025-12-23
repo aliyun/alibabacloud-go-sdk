@@ -35,6 +35,16 @@ type iPatchEventShrinkRequest interface {
 	GetStartShrink() *string
 	SetSummary(v string) *PatchEventShrinkRequest
 	GetSummary() *string
+	SetCategoriesShrink(v string) *PatchEventShrinkRequest
+	GetCategoriesShrink() *string
+	SetFreeBusyStatus(v string) *PatchEventShrinkRequest
+	GetFreeBusyStatus() *string
+	SetOnlineMeetingInfoShrink(v string) *PatchEventShrinkRequest
+	GetOnlineMeetingInfoShrink() *string
+	SetRichTextDescriptionShrink(v string) *PatchEventShrinkRequest
+	GetRichTextDescriptionShrink() *string
+	SetUiConfigsShrink(v string) *PatchEventShrinkRequest
+	GetUiConfigsShrink() *string
 }
 
 type PatchEventShrinkRequest struct {
@@ -58,12 +68,17 @@ type PatchEventShrinkRequest struct {
 	// example:
 	//
 	// true
-	IsAllDay         *bool   `json:"IsAllDay,omitempty" xml:"IsAllDay,omitempty"`
-	LocationShrink   *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	RecurrenceShrink *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	RemindersShrink  *string `json:"Reminders,omitempty" xml:"Reminders,omitempty"`
-	StartShrink      *string `json:"Start,omitempty" xml:"Start,omitempty"`
-	Summary          *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	IsAllDay                  *bool   `json:"IsAllDay,omitempty" xml:"IsAllDay,omitempty"`
+	LocationShrink            *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	RecurrenceShrink          *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	RemindersShrink           *string `json:"Reminders,omitempty" xml:"Reminders,omitempty"`
+	StartShrink               *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	Summary                   *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	CategoriesShrink          *string `json:"categories,omitempty" xml:"categories,omitempty"`
+	FreeBusyStatus            *string `json:"freeBusyStatus,omitempty" xml:"freeBusyStatus,omitempty"`
+	OnlineMeetingInfoShrink   *string `json:"onlineMeetingInfo,omitempty" xml:"onlineMeetingInfo,omitempty"`
+	RichTextDescriptionShrink *string `json:"richTextDescription,omitempty" xml:"richTextDescription,omitempty"`
+	UiConfigsShrink           *string `json:"uiConfigs,omitempty" xml:"uiConfigs,omitempty"`
 }
 
 func (s PatchEventShrinkRequest) String() string {
@@ -124,6 +139,26 @@ func (s *PatchEventShrinkRequest) GetStartShrink() *string {
 
 func (s *PatchEventShrinkRequest) GetSummary() *string {
 	return s.Summary
+}
+
+func (s *PatchEventShrinkRequest) GetCategoriesShrink() *string {
+	return s.CategoriesShrink
+}
+
+func (s *PatchEventShrinkRequest) GetFreeBusyStatus() *string {
+	return s.FreeBusyStatus
+}
+
+func (s *PatchEventShrinkRequest) GetOnlineMeetingInfoShrink() *string {
+	return s.OnlineMeetingInfoShrink
+}
+
+func (s *PatchEventShrinkRequest) GetRichTextDescriptionShrink() *string {
+	return s.RichTextDescriptionShrink
+}
+
+func (s *PatchEventShrinkRequest) GetUiConfigsShrink() *string {
+	return s.UiConfigsShrink
 }
 
 func (s *PatchEventShrinkRequest) SetAttendeesShrink(v string) *PatchEventShrinkRequest {
@@ -188,6 +223,31 @@ func (s *PatchEventShrinkRequest) SetStartShrink(v string) *PatchEventShrinkRequ
 
 func (s *PatchEventShrinkRequest) SetSummary(v string) *PatchEventShrinkRequest {
 	s.Summary = &v
+	return s
+}
+
+func (s *PatchEventShrinkRequest) SetCategoriesShrink(v string) *PatchEventShrinkRequest {
+	s.CategoriesShrink = &v
+	return s
+}
+
+func (s *PatchEventShrinkRequest) SetFreeBusyStatus(v string) *PatchEventShrinkRequest {
+	s.FreeBusyStatus = &v
+	return s
+}
+
+func (s *PatchEventShrinkRequest) SetOnlineMeetingInfoShrink(v string) *PatchEventShrinkRequest {
+	s.OnlineMeetingInfoShrink = &v
+	return s
+}
+
+func (s *PatchEventShrinkRequest) SetRichTextDescriptionShrink(v string) *PatchEventShrinkRequest {
+	s.RichTextDescriptionShrink = &v
+	return s
+}
+
+func (s *PatchEventShrinkRequest) SetUiConfigsShrink(v string) *PatchEventShrinkRequest {
+	s.UiConfigsShrink = &v
 	return s
 }
 

@@ -35,6 +35,16 @@ type iPatchEventRequest interface {
 	GetStart() *PatchEventRequestStart
 	SetSummary(v string) *PatchEventRequest
 	GetSummary() *string
+	SetCategories(v []*PatchEventRequestCategories) *PatchEventRequest
+	GetCategories() []*PatchEventRequestCategories
+	SetFreeBusyStatus(v string) *PatchEventRequest
+	GetFreeBusyStatus() *string
+	SetOnlineMeetingInfo(v *PatchEventRequestOnlineMeetingInfo) *PatchEventRequest
+	GetOnlineMeetingInfo() *PatchEventRequestOnlineMeetingInfo
+	SetRichTextDescription(v *PatchEventRequestRichTextDescription) *PatchEventRequest
+	GetRichTextDescription() *PatchEventRequestRichTextDescription
+	SetUiConfigs(v []*PatchEventRequestUiConfigs) *PatchEventRequest
+	GetUiConfigs() []*PatchEventRequestUiConfigs
 }
 
 type PatchEventRequest struct {
@@ -58,12 +68,17 @@ type PatchEventRequest struct {
 	// example:
 	//
 	// true
-	IsAllDay   *bool                         `json:"IsAllDay,omitempty" xml:"IsAllDay,omitempty"`
-	Location   *PatchEventRequestLocation    `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	Recurrence *PatchEventRequestRecurrence  `json:"Recurrence,omitempty" xml:"Recurrence,omitempty" type:"Struct"`
-	Reminders  []*PatchEventRequestReminders `json:"Reminders,omitempty" xml:"Reminders,omitempty" type:"Repeated"`
-	Start      *PatchEventRequestStart       `json:"Start,omitempty" xml:"Start,omitempty" type:"Struct"`
-	Summary    *string                       `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	IsAllDay            *bool                                 `json:"IsAllDay,omitempty" xml:"IsAllDay,omitempty"`
+	Location            *PatchEventRequestLocation            `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	Recurrence          *PatchEventRequestRecurrence          `json:"Recurrence,omitempty" xml:"Recurrence,omitempty" type:"Struct"`
+	Reminders           []*PatchEventRequestReminders         `json:"Reminders,omitempty" xml:"Reminders,omitempty" type:"Repeated"`
+	Start               *PatchEventRequestStart               `json:"Start,omitempty" xml:"Start,omitempty" type:"Struct"`
+	Summary             *string                               `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Categories          []*PatchEventRequestCategories        `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
+	FreeBusyStatus      *string                               `json:"freeBusyStatus,omitempty" xml:"freeBusyStatus,omitempty"`
+	OnlineMeetingInfo   *PatchEventRequestOnlineMeetingInfo   `json:"onlineMeetingInfo,omitempty" xml:"onlineMeetingInfo,omitempty" type:"Struct"`
+	RichTextDescription *PatchEventRequestRichTextDescription `json:"richTextDescription,omitempty" xml:"richTextDescription,omitempty" type:"Struct"`
+	UiConfigs           []*PatchEventRequestUiConfigs         `json:"uiConfigs,omitempty" xml:"uiConfigs,omitempty" type:"Repeated"`
 }
 
 func (s PatchEventRequest) String() string {
@@ -124,6 +139,26 @@ func (s *PatchEventRequest) GetStart() *PatchEventRequestStart {
 
 func (s *PatchEventRequest) GetSummary() *string {
 	return s.Summary
+}
+
+func (s *PatchEventRequest) GetCategories() []*PatchEventRequestCategories {
+	return s.Categories
+}
+
+func (s *PatchEventRequest) GetFreeBusyStatus() *string {
+	return s.FreeBusyStatus
+}
+
+func (s *PatchEventRequest) GetOnlineMeetingInfo() *PatchEventRequestOnlineMeetingInfo {
+	return s.OnlineMeetingInfo
+}
+
+func (s *PatchEventRequest) GetRichTextDescription() *PatchEventRequestRichTextDescription {
+	return s.RichTextDescription
+}
+
+func (s *PatchEventRequest) GetUiConfigs() []*PatchEventRequestUiConfigs {
+	return s.UiConfigs
 }
 
 func (s *PatchEventRequest) SetAttendees(v []*PatchEventRequestAttendees) *PatchEventRequest {
@@ -191,6 +226,31 @@ func (s *PatchEventRequest) SetSummary(v string) *PatchEventRequest {
 	return s
 }
 
+func (s *PatchEventRequest) SetCategories(v []*PatchEventRequestCategories) *PatchEventRequest {
+	s.Categories = v
+	return s
+}
+
+func (s *PatchEventRequest) SetFreeBusyStatus(v string) *PatchEventRequest {
+	s.FreeBusyStatus = &v
+	return s
+}
+
+func (s *PatchEventRequest) SetOnlineMeetingInfo(v *PatchEventRequestOnlineMeetingInfo) *PatchEventRequest {
+	s.OnlineMeetingInfo = v
+	return s
+}
+
+func (s *PatchEventRequest) SetRichTextDescription(v *PatchEventRequestRichTextDescription) *PatchEventRequest {
+	s.RichTextDescription = v
+	return s
+}
+
+func (s *PatchEventRequest) SetUiConfigs(v []*PatchEventRequestUiConfigs) *PatchEventRequest {
+	s.UiConfigs = v
+	return s
+}
+
 func (s *PatchEventRequest) Validate() error {
 	if s.Attendees != nil {
 		for _, item := range s.Attendees {
@@ -237,6 +297,34 @@ func (s *PatchEventRequest) Validate() error {
 	if s.Start != nil {
 		if err := s.Start.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Categories != nil {
+		for _, item := range s.Categories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OnlineMeetingInfo != nil {
+		if err := s.OnlineMeetingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RichTextDescription != nil {
+		if err := s.RichTextDescription.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UiConfigs != nil {
+		for _, item := range s.UiConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil
@@ -671,5 +759,125 @@ func (s *PatchEventRequestStart) SetTimeZone(v string) *PatchEventRequestStart {
 }
 
 func (s *PatchEventRequestStart) Validate() error {
+	return dara.Validate(s)
+}
+
+type PatchEventRequestCategories struct {
+	CategoryId  *string `json:"categoryId,omitempty" xml:"categoryId,omitempty"`
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+}
+
+func (s PatchEventRequestCategories) String() string {
+	return dara.Prettify(s)
+}
+
+func (s PatchEventRequestCategories) GoString() string {
+	return s.String()
+}
+
+func (s *PatchEventRequestCategories) GetCategoryId() *string {
+	return s.CategoryId
+}
+
+func (s *PatchEventRequestCategories) GetDisplayName() *string {
+	return s.DisplayName
+}
+
+func (s *PatchEventRequestCategories) SetCategoryId(v string) *PatchEventRequestCategories {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *PatchEventRequestCategories) SetDisplayName(v string) *PatchEventRequestCategories {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *PatchEventRequestCategories) Validate() error {
+	return dara.Validate(s)
+}
+
+type PatchEventRequestOnlineMeetingInfo struct {
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s PatchEventRequestOnlineMeetingInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s PatchEventRequestOnlineMeetingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *PatchEventRequestOnlineMeetingInfo) GetType() *string {
+	return s.Type
+}
+
+func (s *PatchEventRequestOnlineMeetingInfo) SetType(v string) *PatchEventRequestOnlineMeetingInfo {
+	s.Type = &v
+	return s
+}
+
+func (s *PatchEventRequestOnlineMeetingInfo) Validate() error {
+	return dara.Validate(s)
+}
+
+type PatchEventRequestRichTextDescription struct {
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s PatchEventRequestRichTextDescription) String() string {
+	return dara.Prettify(s)
+}
+
+func (s PatchEventRequestRichTextDescription) GoString() string {
+	return s.String()
+}
+
+func (s *PatchEventRequestRichTextDescription) GetText() *string {
+	return s.Text
+}
+
+func (s *PatchEventRequestRichTextDescription) SetText(v string) *PatchEventRequestRichTextDescription {
+	s.Text = &v
+	return s
+}
+
+func (s *PatchEventRequestRichTextDescription) Validate() error {
+	return dara.Validate(s)
+}
+
+type PatchEventRequestUiConfigs struct {
+	UiName   *string `json:"uiName,omitempty" xml:"uiName,omitempty"`
+	UiStatus *string `json:"uiStatus,omitempty" xml:"uiStatus,omitempty"`
+}
+
+func (s PatchEventRequestUiConfigs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s PatchEventRequestUiConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *PatchEventRequestUiConfigs) GetUiName() *string {
+	return s.UiName
+}
+
+func (s *PatchEventRequestUiConfigs) GetUiStatus() *string {
+	return s.UiStatus
+}
+
+func (s *PatchEventRequestUiConfigs) SetUiName(v string) *PatchEventRequestUiConfigs {
+	s.UiName = &v
+	return s
+}
+
+func (s *PatchEventRequestUiConfigs) SetUiStatus(v string) *PatchEventRequestUiConfigs {
+	s.UiStatus = &v
+	return s
+}
+
+func (s *PatchEventRequestUiConfigs) Validate() error {
 	return dara.Validate(s)
 }

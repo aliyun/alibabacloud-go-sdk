@@ -11,6 +11,8 @@ type iInvokeAssistantRequest interface {
 	GoString() string
 	SetAssistantId(v string) *InvokeAssistantRequest
 	GetAssistantId() *string
+	SetClientEnum(v string) *InvokeAssistantRequest
+	GetClientEnum() *string
 	SetExtLoginUser(v *InvokeAssistantRequestExtLoginUser) *InvokeAssistantRequest
 	GetExtLoginUser() *InvokeAssistantRequestExtLoginUser
 	SetMessages(v []*InvokeAssistantRequestMessages) *InvokeAssistantRequest
@@ -34,6 +36,7 @@ type InvokeAssistantRequest struct {
 	//
 	// assistantId1
 	AssistantId  *string                             `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
+	ClientEnum   *string                             `json:"clientEnum,omitempty" xml:"clientEnum,omitempty"`
 	ExtLoginUser *InvokeAssistantRequestExtLoginUser `json:"extLoginUser,omitempty" xml:"extLoginUser,omitempty" type:"Struct"`
 	// This parameter is required.
 	Messages []*InvokeAssistantRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
@@ -71,6 +74,10 @@ func (s *InvokeAssistantRequest) GetAssistantId() *string {
 	return s.AssistantId
 }
 
+func (s *InvokeAssistantRequest) GetClientEnum() *string {
+	return s.ClientEnum
+}
+
 func (s *InvokeAssistantRequest) GetExtLoginUser() *InvokeAssistantRequestExtLoginUser {
 	return s.ExtLoginUser
 }
@@ -101,6 +108,11 @@ func (s *InvokeAssistantRequest) GetStream() *bool {
 
 func (s *InvokeAssistantRequest) SetAssistantId(v string) *InvokeAssistantRequest {
 	s.AssistantId = &v
+	return s
+}
+
+func (s *InvokeAssistantRequest) SetClientEnum(v string) *InvokeAssistantRequest {
+	s.ClientEnum = &v
 	return s
 }
 

@@ -17,8 +17,6 @@ type iQueryDentriesInfoShrinkRequest interface {
 	GetSpaceId() *string
 	SetTenantContextShrink(v string) *QueryDentriesInfoShrinkRequest
 	GetTenantContextShrink() *string
-	SetUnionId(v string) *QueryDentriesInfoShrinkRequest
-	GetUnionId() *string
 	SetWithThumbnail(v bool) *QueryDentriesInfoShrinkRequest
 	GetWithThumbnail() *bool
 }
@@ -38,12 +36,6 @@ type QueryDentriesInfoShrinkRequest struct {
 	// 22443475065
 	SpaceId             *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// urv3ZIAtcmmIgQzHq08YcAiEiE
-	UnionId *string `json:"UnionId,omitempty" xml:"UnionId,omitempty"`
 	// example:
 	//
 	// false
@@ -74,10 +66,6 @@ func (s *QueryDentriesInfoShrinkRequest) GetTenantContextShrink() *string {
 	return s.TenantContextShrink
 }
 
-func (s *QueryDentriesInfoShrinkRequest) GetUnionId() *string {
-	return s.UnionId
-}
-
 func (s *QueryDentriesInfoShrinkRequest) GetWithThumbnail() *bool {
 	return s.WithThumbnail
 }
@@ -99,11 +87,6 @@ func (s *QueryDentriesInfoShrinkRequest) SetSpaceId(v string) *QueryDentriesInfo
 
 func (s *QueryDentriesInfoShrinkRequest) SetTenantContextShrink(v string) *QueryDentriesInfoShrinkRequest {
 	s.TenantContextShrink = &v
-	return s
-}
-
-func (s *QueryDentriesInfoShrinkRequest) SetUnionId(v string) *QueryDentriesInfoShrinkRequest {
-	s.UnionId = &v
 	return s
 }
 

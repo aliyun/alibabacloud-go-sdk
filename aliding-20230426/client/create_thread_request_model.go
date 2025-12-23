@@ -11,6 +11,8 @@ type iCreateThreadRequest interface {
 	GoString() string
 	SetAssistantId(v string) *CreateThreadRequest
 	GetAssistantId() *string
+	SetClientEnum(v string) *CreateThreadRequest
+	GetClientEnum() *string
 	SetExtLoginUser(v *CreateThreadRequestExtLoginUser) *CreateThreadRequest
 	GetExtLoginUser() *CreateThreadRequestExtLoginUser
 	SetOriginalAssistantId(v string) *CreateThreadRequest
@@ -28,6 +30,7 @@ type CreateThreadRequest struct {
 	//
 	// assistantId1
 	AssistantId  *string                          `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
+	ClientEnum   *string                          `json:"clientEnum,omitempty" xml:"clientEnum,omitempty"`
 	ExtLoginUser *CreateThreadRequestExtLoginUser `json:"extLoginUser,omitempty" xml:"extLoginUser,omitempty" type:"Struct"`
 	// example:
 	//
@@ -52,6 +55,10 @@ func (s *CreateThreadRequest) GetAssistantId() *string {
 	return s.AssistantId
 }
 
+func (s *CreateThreadRequest) GetClientEnum() *string {
+	return s.ClientEnum
+}
+
 func (s *CreateThreadRequest) GetExtLoginUser() *CreateThreadRequestExtLoginUser {
 	return s.ExtLoginUser
 }
@@ -70,6 +77,11 @@ func (s *CreateThreadRequest) GetSourceTypeOfOriginalAssistantId() *int32 {
 
 func (s *CreateThreadRequest) SetAssistantId(v string) *CreateThreadRequest {
 	s.AssistantId = &v
+	return s
+}
+
+func (s *CreateThreadRequest) SetClientEnum(v string) *CreateThreadRequest {
+	s.ClientEnum = &v
 	return s
 }
 

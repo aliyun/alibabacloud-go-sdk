@@ -5490,6 +5490,10 @@ func (client *Client) CreateThreadWithOptions(request *CreateThreadRequest, head
 		body["assistantId"] = request.AssistantId
 	}
 
+	if !dara.IsNil(request.ClientEnum) {
+		body["clientEnum"] = request.ClientEnum
+	}
+
 	if !dara.IsNil(request.ExtLoginUser) {
 		body["extLoginUser"] = request.ExtLoginUser
 	}
@@ -16091,6 +16095,10 @@ func (client *Client) InvokeAssistantWithOptions(request *InvokeAssistantRequest
 		body["assistantId"] = request.AssistantId
 	}
 
+	if !dara.IsNil(request.ClientEnum) {
+		body["clientEnum"] = request.ClientEnum
+	}
+
 	if !dara.IsNil(request.ExtLoginUser) {
 		body["extLoginUser"] = request.ExtLoginUser
 	}
@@ -18274,6 +18282,43 @@ func (client *Client) PatchEventWithOptions(tmpReq *PatchEventRequest, tmpHeader
 		request.StartShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Start, dara.String("Start"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.Categories) {
+		request.CategoriesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Categories, dara.String("categories"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.OnlineMeetingInfo) {
+		request.OnlineMeetingInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OnlineMeetingInfo, dara.String("onlineMeetingInfo"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RichTextDescription) {
+		request.RichTextDescriptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RichTextDescription, dara.String("richTextDescription"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.UiConfigs) {
+		request.UiConfigsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UiConfigs, dara.String("uiConfigs"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CategoriesShrink) {
+		query["categories"] = request.CategoriesShrink
+	}
+
+	if !dara.IsNil(request.FreeBusyStatus) {
+		query["freeBusyStatus"] = request.FreeBusyStatus
+	}
+
+	if !dara.IsNil(request.OnlineMeetingInfoShrink) {
+		query["onlineMeetingInfo"] = request.OnlineMeetingInfoShrink
+	}
+
+	if !dara.IsNil(request.RichTextDescriptionShrink) {
+		query["richTextDescription"] = request.RichTextDescriptionShrink
+	}
+
+	if !dara.IsNil(request.UiConfigsShrink) {
+		query["uiConfigs"] = request.UiConfigsShrink
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AttendeesShrink) {
 		body["Attendees"] = request.AttendeesShrink
@@ -18338,6 +18383,7 @@ func (client *Client) PatchEventWithOptions(tmpReq *PatchEventRequest, tmpHeader
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -19004,10 +19050,6 @@ func (client *Client) QueryDentriesInfoWithOptions(tmpReq *QueryDentriesInfoRequ
 
 	if !dara.IsNil(request.TenantContextShrink) {
 		body["TenantContext"] = request.TenantContextShrink
-	}
-
-	if !dara.IsNil(request.UnionId) {
-		body["UnionId"] = request.UnionId
 	}
 
 	if !dara.IsNil(request.WithThumbnail) {
@@ -27420,6 +27462,10 @@ func (client *Client) invokeAssistantWithSSE_opYieldFunc(_yield chan *InvokeAssi
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssistantId) {
 		body["assistantId"] = request.AssistantId
+	}
+
+	if !dara.IsNil(request.ClientEnum) {
+		body["clientEnum"] = request.ClientEnum
 	}
 
 	if !dara.IsNil(request.ExtLoginUser) {
