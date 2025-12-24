@@ -1854,6 +1854,78 @@ func (client *Client) DeleteGatewayIntranetLinkedVpcPeer(ClusterId *string, Gate
 
 // Summary:
 //
+// 删除网关标签
+//
+// @param tmpReq - DeleteGatewayLabelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGatewayLabelResponse
+func (client *Client) DeleteGatewayLabelWithOptions(ClusterId *string, GatewayId *string, tmpReq *DeleteGatewayLabelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteGatewayLabelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteGatewayLabelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.LabelKeys) {
+		request.LabelKeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelKeys, dara.String("LabelKeys"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.LabelKeysShrink) {
+		query["LabelKeys"] = request.LabelKeysShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteGatewayLabel"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/gateways/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(GatewayId)) + "/label"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteGatewayLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除网关标签
+//
+// @param request - DeleteGatewayLabelRequest
+//
+// @return DeleteGatewayLabelResponse
+func (client *Client) DeleteGatewayLabel(ClusterId *string, GatewayId *string, request *DeleteGatewayLabelRequest) (_result *DeleteGatewayLabelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteGatewayLabelResponse{}
+	_body, _err := client.DeleteGatewayLabelWithOptions(ClusterId, GatewayId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a resource group that contains no resources or instances.
 //
 // @param headers - map
@@ -6233,6 +6305,72 @@ func (client *Client) UpdateGateway(GatewayId *string, ClusterId *string, reques
 	headers := make(map[string]*string)
 	_result = &UpdateGatewayResponse{}
 	_body, _err := client.UpdateGatewayWithOptions(GatewayId, ClusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改网关标签
+//
+// @param request - UpdateGatewayLabelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGatewayLabelResponse
+func (client *Client) UpdateGatewayLabelWithOptions(ClusterId *string, GatewayId *string, request *UpdateGatewayLabelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGatewayLabelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Labels) {
+		body["Labels"] = request.Labels
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateGatewayLabel"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/gateways/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(GatewayId)) + "/label"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateGatewayLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改网关标签
+//
+// @param request - UpdateGatewayLabelRequest
+//
+// @return UpdateGatewayLabelResponse
+func (client *Client) UpdateGatewayLabel(ClusterId *string, GatewayId *string, request *UpdateGatewayLabelRequest) (_result *UpdateGatewayLabelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateGatewayLabelResponse{}
+	_body, _err := client.UpdateGatewayLabelWithOptions(ClusterId, GatewayId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
