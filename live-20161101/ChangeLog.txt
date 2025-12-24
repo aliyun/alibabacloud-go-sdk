@@ -2,6 +2,10 @@
 - Support API ListLiveTagResources.
 
 
+2025-12-24 Version: v2.5.0
+- Support API ListLiveTagResources.
+
+
 2025-12-04 Version: v2.4.0
 - Support API DescribeLiveRtcRecordUsageData.
 
