@@ -59,5 +59,10 @@ func (s *SegmentSkyResponse) SetBody(v *SegmentSkyResponseBody) *SegmentSkyRespo
 }
 
 func (s *SegmentSkyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

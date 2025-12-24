@@ -50,7 +50,12 @@ func (s *RefineMaskResponseBody) SetRequestId(v string) *RefineMaskResponseBody 
 }
 
 func (s *RefineMaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RefineMaskResponseBodyData struct {
@@ -75,7 +80,16 @@ func (s *RefineMaskResponseBodyData) SetElements(v []*RefineMaskResponseBodyData
 }
 
 func (s *RefineMaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Elements != nil {
+		for _, item := range s.Elements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RefineMaskResponseBodyDataElements struct {

@@ -50,7 +50,12 @@ func (s *SegmentBodyResponseBody) SetRequestId(v string) *SegmentBodyResponseBod
 }
 
 func (s *SegmentBodyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SegmentBodyResponseBodyData struct {

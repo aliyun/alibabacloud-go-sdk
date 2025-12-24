@@ -50,7 +50,12 @@ func (s *SegmentSkyResponseBody) SetRequestId(v string) *SegmentSkyResponseBody 
 }
 
 func (s *SegmentSkyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SegmentSkyResponseBodyData struct {

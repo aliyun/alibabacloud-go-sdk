@@ -50,7 +50,12 @@ func (s *ParseFaceResponseBody) SetRequestId(v string) *ParseFaceResponseBody {
 }
 
 func (s *ParseFaceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ParseFaceResponseBodyData struct {
@@ -88,7 +93,16 @@ func (s *ParseFaceResponseBodyData) SetOriginImageURL(v string) *ParseFaceRespon
 }
 
 func (s *ParseFaceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Elements != nil {
+		for _, item := range s.Elements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ParseFaceResponseBodyDataElements struct {

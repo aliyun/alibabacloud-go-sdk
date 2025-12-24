@@ -59,5 +59,10 @@ func (s *SegmentCommonImageResponse) SetBody(v *SegmentCommonImageResponseBody) 
 }
 
 func (s *SegmentCommonImageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

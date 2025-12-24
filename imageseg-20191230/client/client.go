@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -36,30 +37,83 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	return nil
 }
 
-func (client *Client) _postOSSObject(bucketName *string, form map[string]interface{}) (_result map[string]interface{}, _err error) {
-	request_ := dara.NewRequest()
-	boundary := dara.GetBoundary()
-	request_.Protocol = dara.String("HTTPS")
-	request_.Method = dara.String("POST")
-	request_.Pathname = dara.String("/")
-	request_.Headers = map[string]*string{
-		"host":       dara.String(dara.ToString(form["host"])),
-		"date":       openapiutil.GetDateUTCString(),
-		"user-agent": openapiutil.GetUserAgent(dara.String("")),
-	}
-	request_.Headers["content-type"] = dara.String("multipart/form-data; boundary=" + boundary)
-	request_.Body = dara.ToFileForm(form, boundary)
-	response_, _err := dara.DoRequest(request_, nil)
-	if _err != nil {
-		return nil, _err
+func (client *Client) _postOSSObject(bucketName *string, form map[string]interface{}, runtime *dara.RuntimeOptions) (_result map[string]interface{}, _err error) {
+	_runtime := dara.NewRuntimeObject(map[string]interface{}{
+		"key":            dara.ToString(dara.Default(dara.StringValue(runtime.Key), dara.StringValue(client.Key))),
+		"cert":           dara.ToString(dara.Default(dara.StringValue(runtime.Cert), dara.StringValue(client.Cert))),
+		"ca":             dara.ToString(dara.Default(dara.StringValue(runtime.Ca), dara.StringValue(client.Ca))),
+		"readTimeout":    dara.ForceInt(dara.Default(dara.IntValue(runtime.ReadTimeout), dara.IntValue(client.ReadTimeout))),
+		"connectTimeout": dara.ForceInt(dara.Default(dara.IntValue(runtime.ConnectTimeout), dara.IntValue(client.ConnectTimeout))),
+		"httpProxy":      dara.ToString(dara.Default(dara.StringValue(runtime.HttpProxy), dara.StringValue(client.HttpProxy))),
+		"httpsProxy":     dara.ToString(dara.Default(dara.StringValue(runtime.HttpsProxy), dara.StringValue(client.HttpsProxy))),
+		"noProxy":        dara.ToString(dara.Default(dara.StringValue(runtime.NoProxy), dara.StringValue(client.NoProxy))),
+		"socks5Proxy":    dara.ToString(dara.Default(dara.StringValue(runtime.Socks5Proxy), dara.StringValue(client.Socks5Proxy))),
+		"socks5NetWork":  dara.ToString(dara.Default(dara.StringValue(runtime.Socks5NetWork), dara.StringValue(client.Socks5NetWork))),
+		"maxIdleConns":   dara.ForceInt(dara.Default(dara.IntValue(runtime.MaxIdleConns), dara.IntValue(client.MaxIdleConns))),
+		"retryOptions":   client.RetryOptions,
+		"ignoreSSL":      dara.ForceBoolean(dara.Default(dara.BoolValue(runtime.IgnoreSSL), false)),
+		"tlsMinVersion":  dara.StringValue(client.TlsMinVersion),
+	})
+
+	var retryPolicyContext *dara.RetryPolicyContext
+	var request_ *dara.Request
+	var response_ *dara.Response
+	var _resultErr error
+	retriesAttempted := int(0)
+	retryPolicyContext = &dara.RetryPolicyContext{
+		RetriesAttempted: retriesAttempted,
 	}
 
-	_result, _err = _postOSSObject_opResponse(response_)
-	if _err != nil {
-		return nil, _err
-	}
+	_result = make(map[string]interface{})
+	for dara.ShouldRetry(_runtime.RetryOptions, retryPolicyContext) {
+		_resultErr = nil
+		_backoffDelayTime := dara.GetBackoffDelay(_runtime.RetryOptions, retryPolicyContext)
+		dara.Sleep(_backoffDelayTime)
 
-	return _result, nil
+		request_ = dara.NewRequest()
+		boundary := dara.GetBoundary()
+		request_.Protocol = dara.String("HTTPS")
+		request_.Method = dara.String("POST")
+		request_.Pathname = dara.String("/")
+		request_.Headers = map[string]*string{
+			"host":       dara.String(dara.ToString(form["host"])),
+			"date":       openapiutil.GetDateUTCString(),
+			"user-agent": openapiutil.GetUserAgent(dara.String("")),
+		}
+		request_.Headers["content-type"] = dara.String("multipart/form-data; boundary=" + boundary)
+		request_.Body = dara.ToFileForm(form, boundary)
+		response_, _err = dara.DoRequest(request_, _runtime)
+		if _err != nil {
+			retriesAttempted++
+			retryPolicyContext = &dara.RetryPolicyContext{
+				RetriesAttempted: retriesAttempted,
+				HttpRequest:      request_,
+				HttpResponse:     response_,
+				Exception:        _err,
+			}
+			_resultErr = _err
+			continue
+		}
+
+		_result, _err = _postOSSObject_opResponse(response_)
+		if _err != nil {
+			retriesAttempted++
+			retryPolicyContext = &dara.RetryPolicyContext{
+				RetriesAttempted: retriesAttempted,
+				HttpRequest:      request_,
+				HttpResponse:     response_,
+				Exception:        _err,
+			}
+			_resultErr = _err
+			continue
+		}
+
+		return _result, _err
+	}
+	if dara.BoolValue(client.DisableSDKError) != true {
+		_resultErr = dara.TeaSDKError(_resultErr)
+	}
+	return _result, _resultErr
 }
 
 func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
@@ -87,9 +141,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return ChangeSkyResponse
 func (client *Client) ChangeSkyWithOptions(request *ChangeSkyRequest, runtime *dara.RuntimeOptions) (_result *ChangeSkyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -228,7 +284,7 @@ func (client *Client) ChangeSkyAdvance(request *ChangeSkyAdvanceRequest, runtime
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -258,7 +314,7 @@ func (client *Client) ChangeSkyAdvance(request *ChangeSkyAdvanceRequest, runtime
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -280,9 +336,11 @@ func (client *Client) ChangeSkyAdvance(request *ChangeSkyAdvanceRequest, runtime
 //
 // @return GetAsyncJobResultResponse
 func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultRequest, runtime *dara.RuntimeOptions) (_result *GetAsyncJobResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -332,9 +390,11 @@ func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest) (_res
 //
 // @return ParseFaceResponse
 func (client *Client) ParseFaceWithOptions(request *ParseFaceRequest, runtime *dara.RuntimeOptions) (_result *ParseFaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -469,7 +529,7 @@ func (client *Client) ParseFaceAdvance(request *ParseFaceAdvanceRequest, runtime
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -491,9 +551,11 @@ func (client *Client) ParseFaceAdvance(request *ParseFaceAdvanceRequest, runtime
 //
 // @return RefineMaskResponse
 func (client *Client) RefineMaskWithOptions(request *RefineMaskRequest, runtime *dara.RuntimeOptions) (_result *RefineMaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -632,7 +694,7 @@ func (client *Client) RefineMaskAdvance(request *RefineMaskAdvanceRequest, runti
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -662,7 +724,7 @@ func (client *Client) RefineMaskAdvance(request *RefineMaskAdvanceRequest, runti
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -684,9 +746,11 @@ func (client *Client) RefineMaskAdvance(request *RefineMaskAdvanceRequest, runti
 //
 // @return SegmentBodyResponse
 func (client *Client) SegmentBodyWithOptions(request *SegmentBodyRequest, runtime *dara.RuntimeOptions) (_result *SegmentBodyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -825,7 +889,7 @@ func (client *Client) SegmentBodyAdvance(request *SegmentBodyAdvanceRequest, run
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -847,9 +911,11 @@ func (client *Client) SegmentBodyAdvance(request *SegmentBodyAdvanceRequest, run
 //
 // @return SegmentClothResponse
 func (client *Client) SegmentClothWithOptions(request *SegmentClothRequest, runtime *dara.RuntimeOptions) (_result *SegmentClothResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClothClass) {
@@ -996,7 +1062,7 @@ func (client *Client) SegmentClothAdvance(request *SegmentClothAdvanceRequest, r
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1018,9 +1084,11 @@ func (client *Client) SegmentClothAdvance(request *SegmentClothAdvanceRequest, r
 //
 // @return SegmentCommodityResponse
 func (client *Client) SegmentCommodityWithOptions(request *SegmentCommodityRequest, runtime *dara.RuntimeOptions) (_result *SegmentCommodityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -1159,7 +1227,7 @@ func (client *Client) SegmentCommodityAdvance(request *SegmentCommodityAdvanceRe
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1181,9 +1249,11 @@ func (client *Client) SegmentCommodityAdvance(request *SegmentCommodityAdvanceRe
 //
 // @return SegmentCommonImageResponse
 func (client *Client) SegmentCommonImageWithOptions(request *SegmentCommonImageRequest, runtime *dara.RuntimeOptions) (_result *SegmentCommonImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -1322,7 +1392,7 @@ func (client *Client) SegmentCommonImageAdvance(request *SegmentCommonImageAdvan
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1344,9 +1414,11 @@ func (client *Client) SegmentCommonImageAdvance(request *SegmentCommonImageAdvan
 //
 // @return SegmentFoodResponse
 func (client *Client) SegmentFoodWithOptions(request *SegmentFoodRequest, runtime *dara.RuntimeOptions) (_result *SegmentFoodResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -1485,7 +1557,7 @@ func (client *Client) SegmentFoodAdvance(request *SegmentFoodAdvanceRequest, run
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1507,9 +1579,11 @@ func (client *Client) SegmentFoodAdvance(request *SegmentFoodAdvanceRequest, run
 //
 // @return SegmentHDBodyResponse
 func (client *Client) SegmentHDBodyWithOptions(request *SegmentHDBodyRequest, runtime *dara.RuntimeOptions) (_result *SegmentHDBodyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -1644,7 +1718,7 @@ func (client *Client) SegmentHDBodyAdvance(request *SegmentHDBodyAdvanceRequest,
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1666,9 +1740,11 @@ func (client *Client) SegmentHDBodyAdvance(request *SegmentHDBodyAdvanceRequest,
 //
 // @return SegmentHDCommonImageResponse
 func (client *Client) SegmentHDCommonImageWithOptions(request *SegmentHDCommonImageRequest, runtime *dara.RuntimeOptions) (_result *SegmentHDCommonImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageUrl) {
@@ -1803,7 +1879,7 @@ func (client *Client) SegmentHDCommonImageAdvance(request *SegmentHDCommonImageA
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1825,9 +1901,11 @@ func (client *Client) SegmentHDCommonImageAdvance(request *SegmentHDCommonImageA
 //
 // @return SegmentHDSkyResponse
 func (client *Client) SegmentHDSkyWithOptions(request *SegmentHDSkyRequest, runtime *dara.RuntimeOptions) (_result *SegmentHDSkyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -1962,7 +2040,7 @@ func (client *Client) SegmentHDSkyAdvance(request *SegmentHDSkyAdvanceRequest, r
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -1984,9 +2062,11 @@ func (client *Client) SegmentHDSkyAdvance(request *SegmentHDSkyAdvanceRequest, r
 //
 // @return SegmentHairResponse
 func (client *Client) SegmentHairWithOptions(request *SegmentHairRequest, runtime *dara.RuntimeOptions) (_result *SegmentHairResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -2121,7 +2201,7 @@ func (client *Client) SegmentHairAdvance(request *SegmentHairAdvanceRequest, run
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2143,9 +2223,11 @@ func (client *Client) SegmentHairAdvance(request *SegmentHairAdvanceRequest, run
 //
 // @return SegmentHeadResponse
 func (client *Client) SegmentHeadWithOptions(request *SegmentHeadRequest, runtime *dara.RuntimeOptions) (_result *SegmentHeadResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -2284,7 +2366,7 @@ func (client *Client) SegmentHeadAdvance(request *SegmentHeadAdvanceRequest, run
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2310,9 +2392,11 @@ func (client *Client) SegmentHeadAdvance(request *SegmentHeadAdvanceRequest, run
 //
 // @return SegmentSkinResponse
 func (client *Client) SegmentSkinWithOptions(request *SegmentSkinRequest, runtime *dara.RuntimeOptions) (_result *SegmentSkinResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.URL) {
@@ -2451,7 +2535,7 @@ func (client *Client) SegmentSkinAdvance(request *SegmentSkinAdvanceRequest, run
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}
@@ -2473,9 +2557,11 @@ func (client *Client) SegmentSkinAdvance(request *SegmentSkinAdvanceRequest, run
 //
 // @return SegmentSkyResponse
 func (client *Client) SegmentSkyWithOptions(request *SegmentSkyRequest, runtime *dara.RuntimeOptions) (_result *SegmentSkyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -2610,7 +2696,7 @@ func (client *Client) SegmentSkyAdvance(request *SegmentSkyAdvanceRequest, runti
 			"file":                  fileObj,
 			"success_action_status": "201",
 		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
 		if _err != nil {
 			return _result, _err
 		}

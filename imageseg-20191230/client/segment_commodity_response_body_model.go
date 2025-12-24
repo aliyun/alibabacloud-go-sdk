@@ -50,7 +50,12 @@ func (s *SegmentCommodityResponseBody) SetRequestId(v string) *SegmentCommodityR
 }
 
 func (s *SegmentCommodityResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SegmentCommodityResponseBodyData struct {

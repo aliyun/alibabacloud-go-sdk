@@ -13,9 +13,11 @@ import (
 //
 // @return ChangeSkyResponse
 func (client *Client) ChangeSkyWithContext(ctx context.Context, request *ChangeSkyRequest, runtime *dara.RuntimeOptions) (_result *ChangeSkyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -55,9 +57,11 @@ func (client *Client) ChangeSkyWithContext(ctx context.Context, request *ChangeS
 //
 // @return GetAsyncJobResultResponse
 func (client *Client) GetAsyncJobResultWithContext(ctx context.Context, request *GetAsyncJobResultRequest, runtime *dara.RuntimeOptions) (_result *GetAsyncJobResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -93,9 +97,11 @@ func (client *Client) GetAsyncJobResultWithContext(ctx context.Context, request 
 //
 // @return ParseFaceResponse
 func (client *Client) ParseFaceWithContext(ctx context.Context, request *ParseFaceRequest, runtime *dara.RuntimeOptions) (_result *ParseFaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -131,9 +137,11 @@ func (client *Client) ParseFaceWithContext(ctx context.Context, request *ParseFa
 //
 // @return RefineMaskResponse
 func (client *Client) RefineMaskWithContext(ctx context.Context, request *RefineMaskRequest, runtime *dara.RuntimeOptions) (_result *RefineMaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -173,9 +181,11 @@ func (client *Client) RefineMaskWithContext(ctx context.Context, request *Refine
 //
 // @return SegmentBodyResponse
 func (client *Client) SegmentBodyWithContext(ctx context.Context, request *SegmentBodyRequest, runtime *dara.RuntimeOptions) (_result *SegmentBodyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -215,9 +225,11 @@ func (client *Client) SegmentBodyWithContext(ctx context.Context, request *Segme
 //
 // @return SegmentClothResponse
 func (client *Client) SegmentClothWithContext(ctx context.Context, request *SegmentClothRequest, runtime *dara.RuntimeOptions) (_result *SegmentClothResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClothClass) {
@@ -265,9 +277,11 @@ func (client *Client) SegmentClothWithContext(ctx context.Context, request *Segm
 //
 // @return SegmentCommodityResponse
 func (client *Client) SegmentCommodityWithContext(ctx context.Context, request *SegmentCommodityRequest, runtime *dara.RuntimeOptions) (_result *SegmentCommodityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -307,9 +321,11 @@ func (client *Client) SegmentCommodityWithContext(ctx context.Context, request *
 //
 // @return SegmentCommonImageResponse
 func (client *Client) SegmentCommonImageWithContext(ctx context.Context, request *SegmentCommonImageRequest, runtime *dara.RuntimeOptions) (_result *SegmentCommonImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -349,9 +365,11 @@ func (client *Client) SegmentCommonImageWithContext(ctx context.Context, request
 //
 // @return SegmentFoodResponse
 func (client *Client) SegmentFoodWithContext(ctx context.Context, request *SegmentFoodRequest, runtime *dara.RuntimeOptions) (_result *SegmentFoodResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -391,9 +409,11 @@ func (client *Client) SegmentFoodWithContext(ctx context.Context, request *Segme
 //
 // @return SegmentHDBodyResponse
 func (client *Client) SegmentHDBodyWithContext(ctx context.Context, request *SegmentHDBodyRequest, runtime *dara.RuntimeOptions) (_result *SegmentHDBodyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -429,9 +449,11 @@ func (client *Client) SegmentHDBodyWithContext(ctx context.Context, request *Seg
 //
 // @return SegmentHDCommonImageResponse
 func (client *Client) SegmentHDCommonImageWithContext(ctx context.Context, request *SegmentHDCommonImageRequest, runtime *dara.RuntimeOptions) (_result *SegmentHDCommonImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageUrl) {
@@ -467,9 +489,11 @@ func (client *Client) SegmentHDCommonImageWithContext(ctx context.Context, reque
 //
 // @return SegmentHDSkyResponse
 func (client *Client) SegmentHDSkyWithContext(ctx context.Context, request *SegmentHDSkyRequest, runtime *dara.RuntimeOptions) (_result *SegmentHDSkyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -505,9 +529,11 @@ func (client *Client) SegmentHDSkyWithContext(ctx context.Context, request *Segm
 //
 // @return SegmentHairResponse
 func (client *Client) SegmentHairWithContext(ctx context.Context, request *SegmentHairRequest, runtime *dara.RuntimeOptions) (_result *SegmentHairResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -543,9 +569,11 @@ func (client *Client) SegmentHairWithContext(ctx context.Context, request *Segme
 //
 // @return SegmentHeadResponse
 func (client *Client) SegmentHeadWithContext(ctx context.Context, request *SegmentHeadRequest, runtime *dara.RuntimeOptions) (_result *SegmentHeadResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {
@@ -589,9 +617,11 @@ func (client *Client) SegmentHeadWithContext(ctx context.Context, request *Segme
 //
 // @return SegmentSkinResponse
 func (client *Client) SegmentSkinWithContext(ctx context.Context, request *SegmentSkinRequest, runtime *dara.RuntimeOptions) (_result *SegmentSkinResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.URL) {
@@ -627,9 +657,11 @@ func (client *Client) SegmentSkinWithContext(ctx context.Context, request *Segme
 //
 // @return SegmentSkyResponse
 func (client *Client) SegmentSkyWithContext(ctx context.Context, request *SegmentSkyRequest, runtime *dara.RuntimeOptions) (_result *SegmentSkyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageURL) {

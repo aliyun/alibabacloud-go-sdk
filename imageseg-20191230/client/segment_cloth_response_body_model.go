@@ -50,7 +50,12 @@ func (s *SegmentClothResponseBody) SetRequestId(v string) *SegmentClothResponseB
 }
 
 func (s *SegmentClothResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SegmentClothResponseBodyData struct {
@@ -75,7 +80,16 @@ func (s *SegmentClothResponseBodyData) SetElements(v []*SegmentClothResponseBody
 }
 
 func (s *SegmentClothResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Elements != nil {
+		for _, item := range s.Elements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SegmentClothResponseBodyDataElements struct {

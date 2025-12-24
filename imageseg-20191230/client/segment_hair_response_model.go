@@ -59,5 +59,10 @@ func (s *SegmentHairResponse) SetBody(v *SegmentHairResponseBody) *SegmentHairRe
 }
 
 func (s *SegmentHairResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *SegmentFoodResponse) SetBody(v *SegmentFoodResponseBody) *SegmentFoodRe
 }
 
 func (s *SegmentFoodResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
