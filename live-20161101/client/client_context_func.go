@@ -10709,6 +10709,10 @@ func (client *Client) DescribeLiveAudioAuditNotifyConfigWithContext(ctx context.
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询直播CDN诊断信息
+//
 // @param request - DescribeLiveCdnDiagnoseInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13439,6 +13443,10 @@ func (client *Client) DescribeLiveDomainTrafficDataWithContext(ctx context.Conte
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询直播域名转码参数
+//
 // @param request - DescribeLiveDomainTranscodeParamsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13491,6 +13499,10 @@ func (client *Client) DescribeLiveDomainTranscodeParamsWithContext(ctx context.C
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取直播DRM用量数据
+//
 // Description:
 //
 // ### [](#)Usage notes
@@ -18111,6 +18123,10 @@ func (client *Client) DescribeLiveUserStreamMetricDataWithContext(ctx context.Co
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取直播用户标签
+//
 // @param request - DescribeLiveUserTagsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -20515,6 +20531,10 @@ func (client *Client) GetMessageTokenWithContext(ctx context.Context, request *G
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取转码任务状态
+//
 // @param request - GetTranscodeTaskStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -21733,6 +21753,78 @@ func (client *Client) ListLiveRealtimeLogDeliveryInfosWithContext(ctx context.Co
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLiveRealtimeLogDeliveryInfosResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询符合条件的资源和标签
+//
+// @param request - ListLiveTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLiveTagResourcesResponse
+func (client *Client) ListLiveTagResourcesWithContext(ctx context.Context, request *ListLiveTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListLiveTagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	if !dara.IsNil(request.TagOwnerBid) {
+		query["TagOwnerBid"] = request.TagOwnerBid
+	}
+
+	if !dara.IsNil(request.TagOwnerUid) {
+		query["TagOwnerUid"] = request.TagOwnerUid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListLiveTagResources"),
+		Version:     dara.String("2016-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListLiveTagResourcesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24993,6 +25085,10 @@ func (client *Client) RestartLivePullToPushWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 重启转码任务
+//
 // @param request - RestartTranscodeTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
