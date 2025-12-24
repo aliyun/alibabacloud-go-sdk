@@ -9,6 +9,8 @@ type iDescribeZonesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAcceptLanguage(v string) *DescribeZonesRequest
+	GetAcceptLanguage() *string
 	SetOwnerAccount(v string) *DescribeZonesRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeZonesRequest
@@ -22,8 +24,9 @@ type iDescribeZonesRequest interface {
 }
 
 type DescribeZonesRequest struct {
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the Server Load Balancer (SLB) instance.
 	//
 	// This parameter is required.
@@ -44,6 +47,10 @@ func (s DescribeZonesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeZonesRequest) GetAcceptLanguage() *string {
+	return s.AcceptLanguage
+}
+
 func (s *DescribeZonesRequest) GetOwnerAccount() *string {
 	return s.OwnerAccount
 }
@@ -62,6 +69,11 @@ func (s *DescribeZonesRequest) GetResourceOwnerAccount() *string {
 
 func (s *DescribeZonesRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
+}
+
+func (s *DescribeZonesRequest) SetAcceptLanguage(v string) *DescribeZonesRequest {
+	s.AcceptLanguage = &v
+	return s
 }
 
 func (s *DescribeZonesRequest) SetOwnerAccount(v string) *DescribeZonesRequest {

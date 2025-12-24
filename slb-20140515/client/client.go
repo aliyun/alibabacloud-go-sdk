@@ -5704,6 +5704,10 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
 	if !dara.IsNil(request.OwnerAccount) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
