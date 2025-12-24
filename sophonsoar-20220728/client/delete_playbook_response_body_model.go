@@ -1,0 +1,44 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iDeletePlaybookResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *DeletePlaybookResponseBody
+	GetRequestId() *string
+}
+
+type DeletePlaybookResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 6F3CA8A9-B5BB-506A-9182-FFE80A6E0584
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeletePlaybookResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DeletePlaybookResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePlaybookResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *DeletePlaybookResponseBody) SetRequestId(v string) *DeletePlaybookResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeletePlaybookResponseBody) Validate() error {
+	return dara.Validate(s)
+}

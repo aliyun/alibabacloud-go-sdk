@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("sophonsoar"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -65,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ComparePlaybooksResponse
-func (client *Client) ComparePlaybooksWithOptions(request *ComparePlaybooksRequest, runtime *dara.RuntimeOptions) (_result *ComparePlaybooksResponse, _err error) {
+func (client *Client) ComparePlaybooksWithContext(ctx context.Context, request *ComparePlaybooksRequest, runtime *dara.RuntimeOptions) (_result *ComparePlaybooksResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -104,29 +55,11 @@ func (client *Client) ComparePlaybooksWithOptions(request *ComparePlaybooksReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ComparePlaybooksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Compares configurations between two versions of a published playbook.
-//
-// @param request - ComparePlaybooksRequest
-//
-// @return ComparePlaybooksResponse
-func (client *Client) ComparePlaybooks(request *ComparePlaybooksRequest) (_result *ComparePlaybooksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ComparePlaybooksResponse{}
-	_body, _err := client.ComparePlaybooksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -143,7 +76,7 @@ func (client *Client) ComparePlaybooks(request *ComparePlaybooksRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConvertPlaybookResponse
-func (client *Client) ConvertPlaybookWithOptions(request *ConvertPlaybookRequest, runtime *dara.RuntimeOptions) (_result *ConvertPlaybookResponse, _err error) {
+func (client *Client) ConvertPlaybookWithContext(ctx context.Context, request *ConvertPlaybookRequest, runtime *dara.RuntimeOptions) (_result *ConvertPlaybookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -184,33 +117,11 @@ func (client *Client) ConvertPlaybookWithOptions(request *ConvertPlaybookRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ConvertPlaybookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Convert XML configuration.
-//
-// Description:
-//
-// Please ensure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of the orchestration product before using this interface.
-//
-// @param request - ConvertPlaybookRequest
-//
-// @return ConvertPlaybookResponse
-func (client *Client) ConvertPlaybook(request *ConvertPlaybookRequest) (_result *ConvertPlaybookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ConvertPlaybookResponse{}
-	_body, _err := client.ConvertPlaybookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -227,7 +138,7 @@ func (client *Client) ConvertPlaybook(request *ConvertPlaybookRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CopyPlaybookResponse
-func (client *Client) CopyPlaybookWithOptions(request *CopyPlaybookRequest, runtime *dara.RuntimeOptions) (_result *CopyPlaybookResponse, _err error) {
+func (client *Client) CopyPlaybookWithContext(ctx context.Context, request *CopyPlaybookRequest, runtime *dara.RuntimeOptions) (_result *CopyPlaybookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -280,33 +191,11 @@ func (client *Client) CopyPlaybookWithOptions(request *CopyPlaybookRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &CopyPlaybookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Copies a playbook.
-//
-// Description:
-//
-// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
-//
-// @param request - CopyPlaybookRequest
-//
-// @return CopyPlaybookResponse
-func (client *Client) CopyPlaybook(request *CopyPlaybookRequest) (_result *CopyPlaybookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CopyPlaybookResponse{}
-	_body, _err := client.CopyPlaybookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -323,7 +212,7 @@ func (client *Client) CopyPlaybook(request *CopyPlaybookRequest) (_result *CopyP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePlaybookResponse
-func (client *Client) CreatePlaybookWithOptions(request *CreatePlaybookRequest, runtime *dara.RuntimeOptions) (_result *CreatePlaybookResponse, _err error) {
+func (client *Client) CreatePlaybookWithContext(ctx context.Context, request *CreatePlaybookRequest, runtime *dara.RuntimeOptions) (_result *CreatePlaybookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -370,33 +259,11 @@ func (client *Client) CreatePlaybookWithOptions(request *CreatePlaybookRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePlaybookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// New Playbook.
-//
-// Description:
-//
-// Create Playbook.
-//
-// @param request - CreatePlaybookRequest
-//
-// @return CreatePlaybookResponse
-func (client *Client) CreatePlaybook(request *CreatePlaybookRequest) (_result *CreatePlaybookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePlaybookResponse{}
-	_body, _err := client.CreatePlaybookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -409,7 +276,7 @@ func (client *Client) CreatePlaybook(request *CreatePlaybookRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DebugPlaybookResponse
-func (client *Client) DebugPlaybookWithOptions(request *DebugPlaybookRequest, runtime *dara.RuntimeOptions) (_result *DebugPlaybookResponse, _err error) {
+func (client *Client) DebugPlaybookWithContext(ctx context.Context, request *DebugPlaybookRequest, runtime *dara.RuntimeOptions) (_result *DebugPlaybookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -448,29 +315,11 @@ func (client *Client) DebugPlaybookWithOptions(request *DebugPlaybookRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DebugPlaybookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Debugs a playbook.
-//
-// @param request - DebugPlaybookRequest
-//
-// @return DebugPlaybookResponse
-func (client *Client) DebugPlaybook(request *DebugPlaybookRequest) (_result *DebugPlaybookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DebugPlaybookResponse{}
-	_body, _err := client.DebugPlaybookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -483,7 +332,7 @@ func (client *Client) DebugPlaybook(request *DebugPlaybookRequest) (_result *Deb
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteComponentAssetResponse
-func (client *Client) DeleteComponentAssetWithOptions(request *DeleteComponentAssetRequest, runtime *dara.RuntimeOptions) (_result *DeleteComponentAssetResponse, _err error) {
+func (client *Client) DeleteComponentAssetWithContext(ctx context.Context, request *DeleteComponentAssetRequest, runtime *dara.RuntimeOptions) (_result *DeleteComponentAssetResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -514,29 +363,11 @@ func (client *Client) DeleteComponentAssetWithOptions(request *DeleteComponentAs
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteComponentAssetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the assets in a component.
-//
-// @param request - DeleteComponentAssetRequest
-//
-// @return DeleteComponentAssetResponse
-func (client *Client) DeleteComponentAsset(request *DeleteComponentAssetRequest) (_result *DeleteComponentAssetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteComponentAssetResponse{}
-	_body, _err := client.DeleteComponentAssetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -549,7 +380,7 @@ func (client *Client) DeleteComponentAsset(request *DeleteComponentAssetRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePlaybookResponse
-func (client *Client) DeletePlaybookWithOptions(request *DeletePlaybookRequest, runtime *dara.RuntimeOptions) (_result *DeletePlaybookResponse, _err error) {
+func (client *Client) DeletePlaybookWithContext(ctx context.Context, request *DeletePlaybookRequest, runtime *dara.RuntimeOptions) (_result *DeletePlaybookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -580,29 +411,11 @@ func (client *Client) DeletePlaybookWithOptions(request *DeletePlaybookRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePlaybookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a custom playbook.
-//
-// @param request - DeletePlaybookRequest
-//
-// @return DeletePlaybookResponse
-func (client *Client) DeletePlaybook(request *DeletePlaybookRequest) (_result *DeletePlaybookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePlaybookResponse{}
-	_body, _err := client.DeletePlaybookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -615,7 +428,7 @@ func (client *Client) DeletePlaybook(request *DeletePlaybookRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeComponentAssetFormResponse
-func (client *Client) DescribeComponentAssetFormWithOptions(request *DescribeComponentAssetFormRequest, runtime *dara.RuntimeOptions) (_result *DescribeComponentAssetFormResponse, _err error) {
+func (client *Client) DescribeComponentAssetFormWithContext(ctx context.Context, request *DescribeComponentAssetFormRequest, runtime *dara.RuntimeOptions) (_result *DescribeComponentAssetFormResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -638,29 +451,11 @@ func (client *Client) DescribeComponentAssetFormWithOptions(request *DescribeCom
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeComponentAssetFormResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the metadata of assets in a component. The metadata of an asset refers to the fields that describe the asset.
-//
-// @param request - DescribeComponentAssetFormRequest
-//
-// @return DescribeComponentAssetFormResponse
-func (client *Client) DescribeComponentAssetForm(request *DescribeComponentAssetFormRequest) (_result *DescribeComponentAssetFormResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeComponentAssetFormResponse{}
-	_body, _err := client.DescribeComponentAssetFormWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -673,7 +468,7 @@ func (client *Client) DescribeComponentAssetForm(request *DescribeComponentAsset
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeComponentAssetsResponse
-func (client *Client) DescribeComponentAssetsWithOptions(request *DescribeComponentAssetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeComponentAssetsResponse, _err error) {
+func (client *Client) DescribeComponentAssetsWithContext(ctx context.Context, request *DescribeComponentAssetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeComponentAssetsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -696,29 +491,11 @@ func (client *Client) DescribeComponentAssetsWithOptions(request *DescribeCompon
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeComponentAssetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of assets in a component.
-//
-// @param request - DescribeComponentAssetsRequest
-//
-// @return DescribeComponentAssetsResponse
-func (client *Client) DescribeComponentAssets(request *DescribeComponentAssetsRequest) (_result *DescribeComponentAssetsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeComponentAssetsResponse{}
-	_body, _err := client.DescribeComponentAssetsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -731,7 +508,7 @@ func (client *Client) DescribeComponentAssets(request *DescribeComponentAssetsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeComponentListResponse
-func (client *Client) DescribeComponentListWithOptions(request *DescribeComponentListRequest, runtime *dara.RuntimeOptions) (_result *DescribeComponentListResponse, _err error) {
+func (client *Client) DescribeComponentListWithContext(ctx context.Context, request *DescribeComponentListRequest, runtime *dara.RuntimeOptions) (_result *DescribeComponentListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -754,29 +531,11 @@ func (client *Client) DescribeComponentListWithOptions(request *DescribeComponen
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeComponentListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of common components that are available.
-//
-// @param request - DescribeComponentListRequest
-//
-// @return DescribeComponentListResponse
-func (client *Client) DescribeComponentList(request *DescribeComponentListRequest) (_result *DescribeComponentListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeComponentListResponse{}
-	_body, _err := client.DescribeComponentListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -789,7 +548,7 @@ func (client *Client) DescribeComponentList(request *DescribeComponentListReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeComponentPlaybookResponse
-func (client *Client) DescribeComponentPlaybookWithOptions(request *DescribeComponentPlaybookRequest, runtime *dara.RuntimeOptions) (_result *DescribeComponentPlaybookResponse, _err error) {
+func (client *Client) DescribeComponentPlaybookWithContext(ctx context.Context, request *DescribeComponentPlaybookRequest, runtime *dara.RuntimeOptions) (_result *DescribeComponentPlaybookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -812,29 +571,11 @@ func (client *Client) DescribeComponentPlaybookWithOptions(request *DescribeComp
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeComponentPlaybookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of predefined components that are available.
-//
-// @param request - DescribeComponentPlaybookRequest
-//
-// @return DescribeComponentPlaybookResponse
-func (client *Client) DescribeComponentPlaybook(request *DescribeComponentPlaybookRequest) (_result *DescribeComponentPlaybookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeComponentPlaybookResponse{}
-	_body, _err := client.DescribeComponentPlaybookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -847,7 +588,7 @@ func (client *Client) DescribeComponentPlaybook(request *DescribeComponentPlaybo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeComponentsJsResponse
-func (client *Client) DescribeComponentsJsWithOptions(request *DescribeComponentsJsRequest, runtime *dara.RuntimeOptions) (_result *DescribeComponentsJsResponse, _err error) {
+func (client *Client) DescribeComponentsJsWithContext(ctx context.Context, request *DescribeComponentsJsRequest, runtime *dara.RuntimeOptions) (_result *DescribeComponentsJsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -870,29 +611,11 @@ func (client *Client) DescribeComponentsJsWithOptions(request *DescribeComponent
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeComponentsJsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the JavaScript file of a component. The component uses the returned JavaScript file for page rendering.
-//
-// @param request - DescribeComponentsJsRequest
-//
-// @return DescribeComponentsJsResponse
-func (client *Client) DescribeComponentsJs(request *DescribeComponentsJsRequest) (_result *DescribeComponentsJsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeComponentsJsResponse{}
-	_body, _err := client.DescribeComponentsJsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -905,7 +628,7 @@ func (client *Client) DescribeComponentsJs(request *DescribeComponentsJsRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDistinctReleasesResponse
-func (client *Client) DescribeDistinctReleasesWithOptions(request *DescribeDistinctReleasesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDistinctReleasesResponse, _err error) {
+func (client *Client) DescribeDistinctReleasesWithContext(ctx context.Context, request *DescribeDistinctReleasesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDistinctReleasesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -928,29 +651,11 @@ func (client *Client) DescribeDistinctReleasesWithOptions(request *DescribeDisti
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDistinctReleasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about the published versions of a playbook after deduplication.
-//
-// @param request - DescribeDistinctReleasesRequest
-//
-// @return DescribeDistinctReleasesResponse
-func (client *Client) DescribeDistinctReleases(request *DescribeDistinctReleasesRequest) (_result *DescribeDistinctReleasesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDistinctReleasesResponse{}
-	_body, _err := client.DescribeDistinctReleasesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -963,7 +668,7 @@ func (client *Client) DescribeDistinctReleases(request *DescribeDistinctReleases
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEnumItemsResponse
-func (client *Client) DescribeEnumItemsWithOptions(request *DescribeEnumItemsRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnumItemsResponse, _err error) {
+func (client *Client) DescribeEnumItemsWithContext(ctx context.Context, request *DescribeEnumItemsRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnumItemsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -986,29 +691,11 @@ func (client *Client) DescribeEnumItemsWithOptions(request *DescribeEnumItemsReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEnumItemsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries enumeration items that are required by a cloud service.
-//
-// @param request - DescribeEnumItemsRequest
-//
-// @return DescribeEnumItemsResponse
-func (client *Client) DescribeEnumItems(request *DescribeEnumItemsRequest) (_result *DescribeEnumItemsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEnumItemsResponse{}
-	_body, _err := client.DescribeEnumItemsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1021,7 +708,7 @@ func (client *Client) DescribeEnumItems(request *DescribeEnumItemsRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeExecutePlaybooksResponse
-func (client *Client) DescribeExecutePlaybooksWithOptions(request *DescribeExecutePlaybooksRequest, runtime *dara.RuntimeOptions) (_result *DescribeExecutePlaybooksResponse, _err error) {
+func (client *Client) DescribeExecutePlaybooksWithContext(ctx context.Context, request *DescribeExecutePlaybooksRequest, runtime *dara.RuntimeOptions) (_result *DescribeExecutePlaybooksResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1044,29 +731,11 @@ func (client *Client) DescribeExecutePlaybooksWithOptions(request *DescribeExecu
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeExecutePlaybooksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the playbooks that are available for an automatic response plan.
-//
-// @param request - DescribeExecutePlaybooksRequest
-//
-// @return DescribeExecutePlaybooksResponse
-func (client *Client) DescribeExecutePlaybooks(request *DescribeExecutePlaybooksRequest) (_result *DescribeExecutePlaybooksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeExecutePlaybooksResponse{}
-	_body, _err := client.DescribeExecutePlaybooksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1079,7 +748,7 @@ func (client *Client) DescribeExecutePlaybooks(request *DescribeExecutePlaybooks
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeFieldResponse
-func (client *Client) DescribeFieldWithOptions(request *DescribeFieldRequest, runtime *dara.RuntimeOptions) (_result *DescribeFieldResponse, _err error) {
+func (client *Client) DescribeFieldWithContext(ctx context.Context, request *DescribeFieldRequest, runtime *dara.RuntimeOptions) (_result *DescribeFieldResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1102,29 +771,11 @@ func (client *Client) DescribeFieldWithOptions(request *DescribeFieldRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeFieldResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the global configuration information about a cloud service.
-//
-// @param request - DescribeFieldRequest
-//
-// @return DescribeFieldResponse
-func (client *Client) DescribeField(request *DescribeFieldRequest) (_result *DescribeFieldResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeFieldResponse{}
-	_body, _err := client.DescribeFieldWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1141,7 +792,7 @@ func (client *Client) DescribeField(request *DescribeFieldRequest) (_result *Des
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeGroupProductionsResponse
-func (client *Client) DescribeGroupProductionsWithOptions(request *DescribeGroupProductionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeGroupProductionsResponse, _err error) {
+func (client *Client) DescribeGroupProductionsWithContext(ctx context.Context, request *DescribeGroupProductionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeGroupProductionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1164,33 +815,11 @@ func (client *Client) DescribeGroupProductionsWithOptions(request *DescribeGroup
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeGroupProductionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries groups of Alibaba Cloud services.
-//
-// Description:
-//
-// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
-//
-// @param request - DescribeGroupProductionsRequest
-//
-// @return DescribeGroupProductionsResponse
-func (client *Client) DescribeGroupProductions(request *DescribeGroupProductionsRequest) (_result *DescribeGroupProductionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeGroupProductionsResponse{}
-	_body, _err := client.DescribeGroupProductionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1203,7 +832,7 @@ func (client *Client) DescribeGroupProductions(request *DescribeGroupProductions
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLatestRecordSchemaResponse
-func (client *Client) DescribeLatestRecordSchemaWithOptions(request *DescribeLatestRecordSchemaRequest, runtime *dara.RuntimeOptions) (_result *DescribeLatestRecordSchemaResponse, _err error) {
+func (client *Client) DescribeLatestRecordSchemaWithContext(ctx context.Context, request *DescribeLatestRecordSchemaRequest, runtime *dara.RuntimeOptions) (_result *DescribeLatestRecordSchemaResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1226,29 +855,11 @@ func (client *Client) DescribeLatestRecordSchemaWithOptions(request *DescribeLat
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLatestRecordSchemaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the output structure information of each node in a playbook based on the most recent running record of the playbook.
-//
-// @param request - DescribeLatestRecordSchemaRequest
-//
-// @return DescribeLatestRecordSchemaResponse
-func (client *Client) DescribeLatestRecordSchema(request *DescribeLatestRecordSchemaRequest) (_result *DescribeLatestRecordSchemaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLatestRecordSchemaResponse{}
-	_body, _err := client.DescribeLatestRecordSchemaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1261,7 +872,7 @@ func (client *Client) DescribeLatestRecordSchema(request *DescribeLatestRecordSc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNodeParamTagsResponse
-func (client *Client) DescribeNodeParamTagsWithOptions(request *DescribeNodeParamTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeNodeParamTagsResponse, _err error) {
+func (client *Client) DescribeNodeParamTagsWithContext(ctx context.Context, request *DescribeNodeParamTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeNodeParamTagsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1284,29 +895,11 @@ func (client *Client) DescribeNodeParamTagsWithOptions(request *DescribeNodePara
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNodeParamTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries recommended dynamic input parameters of a component for playbook orchestration.
-//
-// @param request - DescribeNodeParamTagsRequest
-//
-// @return DescribeNodeParamTagsResponse
-func (client *Client) DescribeNodeParamTags(request *DescribeNodeParamTagsRequest) (_result *DescribeNodeParamTagsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNodeParamTagsResponse{}
-	_body, _err := client.DescribeNodeParamTagsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1323,7 +916,7 @@ func (client *Client) DescribeNodeParamTags(request *DescribeNodeParamTagsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNotifyTemplateListResponse
-func (client *Client) DescribeNotifyTemplateListWithOptions(request *DescribeNotifyTemplateListRequest, runtime *dara.RuntimeOptions) (_result *DescribeNotifyTemplateListResponse, _err error) {
+func (client *Client) DescribeNotifyTemplateListWithContext(ctx context.Context, request *DescribeNotifyTemplateListRequest, runtime *dara.RuntimeOptions) (_result *DescribeNotifyTemplateListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1346,33 +939,11 @@ func (client *Client) DescribeNotifyTemplateListWithOptions(request *DescribeNot
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNotifyTemplateListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries notification templates.
-//
-// Description:
-//
-// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
-//
-// @param request - DescribeNotifyTemplateListRequest
-//
-// @return DescribeNotifyTemplateListResponse
-func (client *Client) DescribeNotifyTemplateList(request *DescribeNotifyTemplateListRequest) (_result *DescribeNotifyTemplateListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNotifyTemplateListResponse{}
-	_body, _err := client.DescribeNotifyTemplateListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1389,7 +960,7 @@ func (client *Client) DescribeNotifyTemplateList(request *DescribeNotifyTemplate
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeOpenApiInfoResponse
-func (client *Client) DescribeOpenApiInfoWithOptions(request *DescribeOpenApiInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeOpenApiInfoResponse, _err error) {
+func (client *Client) DescribeOpenApiInfoWithContext(ctx context.Context, request *DescribeOpenApiInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeOpenApiInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1412,33 +983,11 @@ func (client *Client) DescribeOpenApiInfoWithOptions(request *DescribeOpenApiInf
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeOpenApiInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an API operation.
-//
-// Description:
-//
-// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
-//
-// @param request - DescribeOpenApiInfoRequest
-//
-// @return DescribeOpenApiInfoResponse
-func (client *Client) DescribeOpenApiInfo(request *DescribeOpenApiInfoRequest) (_result *DescribeOpenApiInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeOpenApiInfoResponse{}
-	_body, _err := client.DescribeOpenApiInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1455,7 +1004,7 @@ func (client *Client) DescribeOpenApiInfo(request *DescribeOpenApiInfoRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeOpenApiListResponse
-func (client *Client) DescribeOpenApiListWithOptions(request *DescribeOpenApiListRequest, runtime *dara.RuntimeOptions) (_result *DescribeOpenApiListResponse, _err error) {
+func (client *Client) DescribeOpenApiListWithContext(ctx context.Context, request *DescribeOpenApiListRequest, runtime *dara.RuntimeOptions) (_result *DescribeOpenApiListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1478,33 +1027,11 @@ func (client *Client) DescribeOpenApiListWithOptions(request *DescribeOpenApiLis
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeOpenApiListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the API operations of an Alibaba Cloud service.
-//
-// Description:
-//
-// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or the pricing for log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
-//
-// @param request - DescribeOpenApiListRequest
-//
-// @return DescribeOpenApiListResponse
-func (client *Client) DescribeOpenApiList(request *DescribeOpenApiListRequest) (_result *DescribeOpenApiListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeOpenApiListResponse{}
-	_body, _err := client.DescribeOpenApiListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1517,7 +1044,7 @@ func (client *Client) DescribeOpenApiList(request *DescribeOpenApiListRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePlaybookResponse
-func (client *Client) DescribePlaybookWithOptions(request *DescribePlaybookRequest, runtime *dara.RuntimeOptions) (_result *DescribePlaybookResponse, _err error) {
+func (client *Client) DescribePlaybookWithContext(ctx context.Context, request *DescribePlaybookRequest, runtime *dara.RuntimeOptions) (_result *DescribePlaybookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1540,29 +1067,11 @@ func (client *Client) DescribePlaybookWithOptions(request *DescribePlaybookReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePlaybookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the XML configuration of a playbook.
-//
-// @param request - DescribePlaybookRequest
-//
-// @return DescribePlaybookResponse
-func (client *Client) DescribePlaybook(request *DescribePlaybookRequest) (_result *DescribePlaybookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePlaybookResponse{}
-	_body, _err := client.DescribePlaybookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1575,7 +1084,7 @@ func (client *Client) DescribePlaybook(request *DescribePlaybookRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePlaybookInputOutputResponse
-func (client *Client) DescribePlaybookInputOutputWithOptions(request *DescribePlaybookInputOutputRequest, runtime *dara.RuntimeOptions) (_result *DescribePlaybookInputOutputResponse, _err error) {
+func (client *Client) DescribePlaybookInputOutputWithContext(ctx context.Context, request *DescribePlaybookInputOutputRequest, runtime *dara.RuntimeOptions) (_result *DescribePlaybookInputOutputResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1598,29 +1107,11 @@ func (client *Client) DescribePlaybookInputOutputWithOptions(request *DescribePl
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePlaybookInputOutputResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the input and output parameter configurations of a playbook.
-//
-// @param request - DescribePlaybookInputOutputRequest
-//
-// @return DescribePlaybookInputOutputResponse
-func (client *Client) DescribePlaybookInputOutput(request *DescribePlaybookInputOutputRequest) (_result *DescribePlaybookInputOutputResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePlaybookInputOutputResponse{}
-	_body, _err := client.DescribePlaybookInputOutputWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1633,7 +1124,7 @@ func (client *Client) DescribePlaybookInputOutput(request *DescribePlaybookInput
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePlaybookMetricsResponse
-func (client *Client) DescribePlaybookMetricsWithOptions(request *DescribePlaybookMetricsRequest, runtime *dara.RuntimeOptions) (_result *DescribePlaybookMetricsResponse, _err error) {
+func (client *Client) DescribePlaybookMetricsWithContext(ctx context.Context, request *DescribePlaybookMetricsRequest, runtime *dara.RuntimeOptions) (_result *DescribePlaybookMetricsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1656,29 +1147,11 @@ func (client *Client) DescribePlaybookMetricsWithOptions(request *DescribePlaybo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePlaybookMetricsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the metrics of a playbook. The metrics include the playbook name, playbook description, the number of times that the playbook is run, and the failure rate of the playbook.
-//
-// @param request - DescribePlaybookMetricsRequest
-//
-// @return DescribePlaybookMetricsResponse
-func (client *Client) DescribePlaybookMetrics(request *DescribePlaybookMetricsRequest) (_result *DescribePlaybookMetricsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePlaybookMetricsResponse{}
-	_body, _err := client.DescribePlaybookMetricsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1691,7 +1164,7 @@ func (client *Client) DescribePlaybookMetrics(request *DescribePlaybookMetricsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePlaybookNodesOutputResponse
-func (client *Client) DescribePlaybookNodesOutputWithOptions(request *DescribePlaybookNodesOutputRequest, runtime *dara.RuntimeOptions) (_result *DescribePlaybookNodesOutputResponse, _err error) {
+func (client *Client) DescribePlaybookNodesOutputWithContext(ctx context.Context, request *DescribePlaybookNodesOutputRequest, runtime *dara.RuntimeOptions) (_result *DescribePlaybookNodesOutputResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1714,29 +1187,11 @@ func (client *Client) DescribePlaybookNodesOutputWithOptions(request *DescribePl
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePlaybookNodesOutputResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the historical output data of a component node.
-//
-// @param request - DescribePlaybookNodesOutputRequest
-//
-// @return DescribePlaybookNodesOutputResponse
-func (client *Client) DescribePlaybookNodesOutput(request *DescribePlaybookNodesOutputRequest) (_result *DescribePlaybookNodesOutputResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePlaybookNodesOutputResponse{}
-	_body, _err := client.DescribePlaybookNodesOutputWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1749,7 +1204,7 @@ func (client *Client) DescribePlaybookNodesOutput(request *DescribePlaybookNodes
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePlaybookNumberMetricsResponse
-func (client *Client) DescribePlaybookNumberMetricsWithOptions(request *DescribePlaybookNumberMetricsRequest, runtime *dara.RuntimeOptions) (_result *DescribePlaybookNumberMetricsResponse, _err error) {
+func (client *Client) DescribePlaybookNumberMetricsWithContext(ctx context.Context, request *DescribePlaybookNumberMetricsRequest, runtime *dara.RuntimeOptions) (_result *DescribePlaybookNumberMetricsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1772,29 +1227,11 @@ func (client *Client) DescribePlaybookNumberMetricsWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePlaybookNumberMetricsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the statistics of Security Orchestration Automation Response (SOAR), such as the numbers of created and enabled playbooks.
-//
-// @param request - DescribePlaybookNumberMetricsRequest
-//
-// @return DescribePlaybookNumberMetricsResponse
-func (client *Client) DescribePlaybookNumberMetrics(request *DescribePlaybookNumberMetricsRequest) (_result *DescribePlaybookNumberMetricsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePlaybookNumberMetricsResponse{}
-	_body, _err := client.DescribePlaybookNumberMetricsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1807,7 +1244,7 @@ func (client *Client) DescribePlaybookNumberMetrics(request *DescribePlaybookNum
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePlaybookReleasesResponse
-func (client *Client) DescribePlaybookReleasesWithOptions(request *DescribePlaybookReleasesRequest, runtime *dara.RuntimeOptions) (_result *DescribePlaybookReleasesResponse, _err error) {
+func (client *Client) DescribePlaybookReleasesWithContext(ctx context.Context, request *DescribePlaybookReleasesRequest, runtime *dara.RuntimeOptions) (_result *DescribePlaybookReleasesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1830,29 +1267,11 @@ func (client *Client) DescribePlaybookReleasesWithOptions(request *DescribePlayb
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePlaybookReleasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about the published versions of a playbook.
-//
-// @param request - DescribePlaybookReleasesRequest
-//
-// @return DescribePlaybookReleasesResponse
-func (client *Client) DescribePlaybookReleases(request *DescribePlaybookReleasesRequest) (_result *DescribePlaybookReleasesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePlaybookReleasesResponse{}
-	_body, _err := client.DescribePlaybookReleasesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1865,7 +1284,7 @@ func (client *Client) DescribePlaybookReleases(request *DescribePlaybookReleases
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePlaybooksResponse
-func (client *Client) DescribePlaybooksWithOptions(request *DescribePlaybooksRequest, runtime *dara.RuntimeOptions) (_result *DescribePlaybooksResponse, _err error) {
+func (client *Client) DescribePlaybooksWithContext(ctx context.Context, request *DescribePlaybooksRequest, runtime *dara.RuntimeOptions) (_result *DescribePlaybooksResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1888,29 +1307,11 @@ func (client *Client) DescribePlaybooksWithOptions(request *DescribePlaybooksReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePlaybooksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Retrieve the list of playbooks.
-//
-// @param request - DescribePlaybooksRequest
-//
-// @return DescribePlaybooksResponse
-func (client *Client) DescribePlaybooks(request *DescribePlaybooksRequest) (_result *DescribePlaybooksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePlaybooksResponse{}
-	_body, _err := client.DescribePlaybooksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1923,7 +1324,7 @@ func (client *Client) DescribePlaybooks(request *DescribePlaybooksRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePopApiResponse
-func (client *Client) DescribePopApiWithOptions(request *DescribePopApiRequest, runtime *dara.RuntimeOptions) (_result *DescribePopApiResponse, _err error) {
+func (client *Client) DescribePopApiWithContext(ctx context.Context, request *DescribePopApiRequest, runtime *dara.RuntimeOptions) (_result *DescribePopApiResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1946,29 +1347,11 @@ func (client *Client) DescribePopApiWithOptions(request *DescribePopApiRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePopApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an API operation.
-//
-// @param request - DescribePopApiRequest
-//
-// @return DescribePopApiResponse
-func (client *Client) DescribePopApi(request *DescribePopApiRequest) (_result *DescribePopApiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePopApiResponse{}
-	_body, _err := client.DescribePopApiWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1985,7 +1368,7 @@ func (client *Client) DescribePopApi(request *DescribePopApiRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeProcessStatisticsResponse
-func (client *Client) DescribeProcessStatisticsWithOptions(request *DescribeProcessStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeProcessStatisticsResponse, _err error) {
+func (client *Client) DescribeProcessStatisticsWithContext(ctx context.Context, request *DescribeProcessStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeProcessStatisticsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2008,33 +1391,11 @@ func (client *Client) DescribeProcessStatisticsWithOptions(request *DescribeProc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeProcessStatisticsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries statistics.
-//
-// Description:
-//
-// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
-//
-// @param request - DescribeProcessStatisticsRequest
-//
-// @return DescribeProcessStatisticsResponse
-func (client *Client) DescribeProcessStatistics(request *DescribeProcessStatisticsRequest) (_result *DescribeProcessStatisticsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeProcessStatisticsResponse{}
-	_body, _err := client.DescribeProcessStatisticsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2047,7 +1408,7 @@ func (client *Client) DescribeProcessStatistics(request *DescribeProcessStatisti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeProcessTaskCountResponse
-func (client *Client) DescribeProcessTaskCountWithOptions(request *DescribeProcessTaskCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeProcessTaskCountResponse, _err error) {
+func (client *Client) DescribeProcessTaskCountWithContext(ctx context.Context, request *DescribeProcessTaskCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeProcessTaskCountResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2070,29 +1431,11 @@ func (client *Client) DescribeProcessTaskCountWithOptions(request *DescribeProce
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeProcessTaskCountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the number of associated disposal tasks based on the entity UUID.
-//
-// @param request - DescribeProcessTaskCountRequest
-//
-// @return DescribeProcessTaskCountResponse
-func (client *Client) DescribeProcessTaskCount(request *DescribeProcessTaskCountRequest) (_result *DescribeProcessTaskCountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeProcessTaskCountResponse{}
-	_body, _err := client.DescribeProcessTaskCountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2109,7 +1452,7 @@ func (client *Client) DescribeProcessTaskCount(request *DescribeProcessTaskCount
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeProcessTasksResponse
-func (client *Client) DescribeProcessTasksWithOptions(request *DescribeProcessTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeProcessTasksResponse, _err error) {
+func (client *Client) DescribeProcessTasksWithContext(ctx context.Context, request *DescribeProcessTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeProcessTasksResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2220,33 +1563,11 @@ func (client *Client) DescribeProcessTasksWithOptions(request *DescribeProcessTa
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeProcessTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about handling tasks. When you use Security Orchestration Automation Response (SOAR) to handle events, handling tasks are generated in the handling center.
-//
-// Description:
-//
-// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
-//
-// @param request - DescribeProcessTasksRequest
-//
-// @return DescribeProcessTasksResponse
-func (client *Client) DescribeProcessTasks(request *DescribeProcessTasksRequest) (_result *DescribeProcessTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeProcessTasksResponse{}
-	_body, _err := client.DescribeProcessTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2259,7 +1580,7 @@ func (client *Client) DescribeProcessTasks(request *DescribeProcessTasksRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSoarRecordActionOutputListResponse
-func (client *Client) DescribeSoarRecordActionOutputListWithOptions(request *DescribeSoarRecordActionOutputListRequest, runtime *dara.RuntimeOptions) (_result *DescribeSoarRecordActionOutputListResponse, _err error) {
+func (client *Client) DescribeSoarRecordActionOutputListWithContext(ctx context.Context, request *DescribeSoarRecordActionOutputListRequest, runtime *dara.RuntimeOptions) (_result *DescribeSoarRecordActionOutputListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2282,29 +1603,11 @@ func (client *Client) DescribeSoarRecordActionOutputListWithOptions(request *Des
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSoarRecordActionOutputListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the data that is returned when a component initiates an action in a playbook task.
-//
-// @param request - DescribeSoarRecordActionOutputListRequest
-//
-// @return DescribeSoarRecordActionOutputListResponse
-func (client *Client) DescribeSoarRecordActionOutputList(request *DescribeSoarRecordActionOutputListRequest) (_result *DescribeSoarRecordActionOutputListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSoarRecordActionOutputListResponse{}
-	_body, _err := client.DescribeSoarRecordActionOutputListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2317,7 +1620,7 @@ func (client *Client) DescribeSoarRecordActionOutputList(request *DescribeSoarRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSoarRecordInOutputResponse
-func (client *Client) DescribeSoarRecordInOutputWithOptions(request *DescribeSoarRecordInOutputRequest, runtime *dara.RuntimeOptions) (_result *DescribeSoarRecordInOutputResponse, _err error) {
+func (client *Client) DescribeSoarRecordInOutputWithContext(ctx context.Context, request *DescribeSoarRecordInOutputRequest, runtime *dara.RuntimeOptions) (_result *DescribeSoarRecordInOutputResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2340,29 +1643,11 @@ func (client *Client) DescribeSoarRecordInOutputWithOptions(request *DescribeSoa
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSoarRecordInOutputResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the input and output data of a component action. You can call this operation after a playbook is run.
-//
-// @param request - DescribeSoarRecordInOutputRequest
-//
-// @return DescribeSoarRecordInOutputResponse
-func (client *Client) DescribeSoarRecordInOutput(request *DescribeSoarRecordInOutputRequest) (_result *DescribeSoarRecordInOutputResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSoarRecordInOutputResponse{}
-	_body, _err := client.DescribeSoarRecordInOutputWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2375,7 +1660,7 @@ func (client *Client) DescribeSoarRecordInOutput(request *DescribeSoarRecordInOu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSoarRecordsResponse
-func (client *Client) DescribeSoarRecordsWithOptions(request *DescribeSoarRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSoarRecordsResponse, _err error) {
+func (client *Client) DescribeSoarRecordsWithContext(ctx context.Context, request *DescribeSoarRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSoarRecordsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2398,29 +1683,11 @@ func (client *Client) DescribeSoarRecordsWithOptions(request *DescribeSoarRecord
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSoarRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Get the execution records of a playbook.
-//
-// @param request - DescribeSoarRecordsRequest
-//
-// @return DescribeSoarRecordsResponse
-func (client *Client) DescribeSoarRecords(request *DescribeSoarRecordsRequest) (_result *DescribeSoarRecordsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSoarRecordsResponse{}
-	_body, _err := client.DescribeSoarRecordsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2433,7 +1700,7 @@ func (client *Client) DescribeSoarRecords(request *DescribeSoarRecordsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSoarTaskAndActionsResponse
-func (client *Client) DescribeSoarTaskAndActionsWithOptions(request *DescribeSoarTaskAndActionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSoarTaskAndActionsResponse, _err error) {
+func (client *Client) DescribeSoarTaskAndActionsWithContext(ctx context.Context, request *DescribeSoarTaskAndActionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSoarTaskAndActionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2456,29 +1723,11 @@ func (client *Client) DescribeSoarTaskAndActionsWithOptions(request *DescribeSoa
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSoarTaskAndActionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the execution records of a component during the running of a playbook.
-//
-// @param request - DescribeSoarTaskAndActionsRequest
-//
-// @return DescribeSoarTaskAndActionsResponse
-func (client *Client) DescribeSoarTaskAndActions(request *DescribeSoarTaskAndActionsRequest) (_result *DescribeSoarTaskAndActionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSoarTaskAndActionsResponse{}
-	_body, _err := client.DescribeSoarTaskAndActionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2491,7 +1740,7 @@ func (client *Client) DescribeSoarTaskAndActions(request *DescribeSoarTaskAndAct
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSophonCommandsResponse
-func (client *Client) DescribeSophonCommandsWithOptions(request *DescribeSophonCommandsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSophonCommandsResponse, _err error) {
+func (client *Client) DescribeSophonCommandsWithContext(ctx context.Context, request *DescribeSophonCommandsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSophonCommandsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2518,29 +1767,11 @@ func (client *Client) DescribeSophonCommandsWithOptions(request *DescribeSophonC
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSophonCommandsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the commands that can be run to obtain objects.
-//
-// @param request - DescribeSophonCommandsRequest
-//
-// @return DescribeSophonCommandsResponse
-func (client *Client) DescribeSophonCommands(request *DescribeSophonCommandsRequest) (_result *DescribeSophonCommandsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSophonCommandsResponse{}
-	_body, _err := client.DescribeSophonCommandsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2557,7 +1788,7 @@ func (client *Client) DescribeSophonCommands(request *DescribeSophonCommandsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVendorApiListResponse
-func (client *Client) DescribeVendorApiListWithOptions(request *DescribeVendorApiListRequest, runtime *dara.RuntimeOptions) (_result *DescribeVendorApiListResponse, _err error) {
+func (client *Client) DescribeVendorApiListWithContext(ctx context.Context, request *DescribeVendorApiListRequest, runtime *dara.RuntimeOptions) (_result *DescribeVendorApiListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2604,33 +1835,11 @@ func (client *Client) DescribeVendorApiListWithOptions(request *DescribeVendorAp
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVendorApiListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query OpenApi List of Cloud Vendors.
-//
-// Description:
-//
-// Please ensure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of the response orchestration product (i.e., threat analysis and response log access traffic) before using this interface.
-//
-// @param request - DescribeVendorApiListRequest
-//
-// @return DescribeVendorApiListResponse
-func (client *Client) DescribeVendorApiList(request *DescribeVendorApiListRequest) (_result *DescribeVendorApiListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVendorApiListResponse{}
-	_body, _err := client.DescribeVendorApiListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2643,7 +1852,7 @@ func (client *Client) DescribeVendorApiList(request *DescribeVendorApiListReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescriberPython3ScriptLogsResponse
-func (client *Client) DescriberPython3ScriptLogsWithOptions(request *DescriberPython3ScriptLogsRequest, runtime *dara.RuntimeOptions) (_result *DescriberPython3ScriptLogsResponse, _err error) {
+func (client *Client) DescriberPython3ScriptLogsWithContext(ctx context.Context, request *DescriberPython3ScriptLogsRequest, runtime *dara.RuntimeOptions) (_result *DescriberPython3ScriptLogsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2666,29 +1875,11 @@ func (client *Client) DescriberPython3ScriptLogsWithOptions(request *DescriberPy
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescriberPython3ScriptLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the operational logs of a Python3 script by using the UUID that is returned when the script is run. The UUID is specified by requestUuid.
-//
-// @param request - DescriberPython3ScriptLogsRequest
-//
-// @return DescriberPython3ScriptLogsResponse
-func (client *Client) DescriberPython3ScriptLogs(request *DescriberPython3ScriptLogsRequest) (_result *DescriberPython3ScriptLogsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescriberPython3ScriptLogsResponse{}
-	_body, _err := client.DescriberPython3ScriptLogsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2701,7 +1892,7 @@ func (client *Client) DescriberPython3ScriptLogs(request *DescriberPython3Script
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyComponentAssetResponse
-func (client *Client) ModifyComponentAssetWithOptions(request *ModifyComponentAssetRequest, runtime *dara.RuntimeOptions) (_result *ModifyComponentAssetResponse, _err error) {
+func (client *Client) ModifyComponentAssetWithContext(ctx context.Context, request *ModifyComponentAssetRequest, runtime *dara.RuntimeOptions) (_result *ModifyComponentAssetResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2732,29 +1923,11 @@ func (client *Client) ModifyComponentAssetWithOptions(request *ModifyComponentAs
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyComponentAssetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the information about the asset that is configured for a component.
-//
-// @param request - ModifyComponentAssetRequest
-//
-// @return ModifyComponentAssetResponse
-func (client *Client) ModifyComponentAsset(request *ModifyComponentAssetRequest) (_result *ModifyComponentAssetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyComponentAssetResponse{}
-	_body, _err := client.ModifyComponentAssetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2767,7 +1940,7 @@ func (client *Client) ModifyComponentAsset(request *ModifyComponentAssetRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyPlaybookResponse
-func (client *Client) ModifyPlaybookWithOptions(request *ModifyPlaybookRequest, runtime *dara.RuntimeOptions) (_result *ModifyPlaybookResponse, _err error) {
+func (client *Client) ModifyPlaybookWithContext(ctx context.Context, request *ModifyPlaybookRequest, runtime *dara.RuntimeOptions) (_result *ModifyPlaybookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2810,29 +1983,11 @@ func (client *Client) ModifyPlaybookWithOptions(request *ModifyPlaybookRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyPlaybookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of a playbook.
-//
-// @param request - ModifyPlaybookRequest
-//
-// @return ModifyPlaybookResponse
-func (client *Client) ModifyPlaybook(request *ModifyPlaybookRequest) (_result *ModifyPlaybookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyPlaybookResponse{}
-	_body, _err := client.ModifyPlaybookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2845,7 +2000,7 @@ func (client *Client) ModifyPlaybook(request *ModifyPlaybookRequest) (_result *M
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyPlaybookInputOutputResponse
-func (client *Client) ModifyPlaybookInputOutputWithOptions(request *ModifyPlaybookInputOutputRequest, runtime *dara.RuntimeOptions) (_result *ModifyPlaybookInputOutputResponse, _err error) {
+func (client *Client) ModifyPlaybookInputOutputWithContext(ctx context.Context, request *ModifyPlaybookInputOutputRequest, runtime *dara.RuntimeOptions) (_result *ModifyPlaybookInputOutputResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2892,29 +2047,11 @@ func (client *Client) ModifyPlaybookInputOutputWithOptions(request *ModifyPlaybo
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyPlaybookInputOutputResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the input and output parameters of a playbook.
-//
-// @param request - ModifyPlaybookInputOutputRequest
-//
-// @return ModifyPlaybookInputOutputResponse
-func (client *Client) ModifyPlaybookInputOutput(request *ModifyPlaybookInputOutputRequest) (_result *ModifyPlaybookInputOutputResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyPlaybookInputOutputResponse{}
-	_body, _err := client.ModifyPlaybookInputOutputWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2927,7 +2064,7 @@ func (client *Client) ModifyPlaybookInputOutput(request *ModifyPlaybookInputOutp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PublishPlaybookResponse
-func (client *Client) PublishPlaybookWithOptions(request *PublishPlaybookRequest, runtime *dara.RuntimeOptions) (_result *PublishPlaybookResponse, _err error) {
+func (client *Client) PublishPlaybookWithContext(ctx context.Context, request *PublishPlaybookRequest, runtime *dara.RuntimeOptions) (_result *PublishPlaybookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2958,29 +2095,11 @@ func (client *Client) PublishPlaybookWithOptions(request *PublishPlaybookRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &PublishPlaybookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Publishes the playbook. After the playbook is published, the playbook runs based on the new logic.
-//
-// @param request - PublishPlaybookRequest
-//
-// @return PublishPlaybookResponse
-func (client *Client) PublishPlaybook(request *PublishPlaybookRequest) (_result *PublishPlaybookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PublishPlaybookResponse{}
-	_body, _err := client.PublishPlaybookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2993,7 +2112,7 @@ func (client *Client) PublishPlaybook(request *PublishPlaybookRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryTreeDataResponse
-func (client *Client) QueryTreeDataWithOptions(request *QueryTreeDataRequest, runtime *dara.RuntimeOptions) (_result *QueryTreeDataResponse, _err error) {
+func (client *Client) QueryTreeDataWithContext(ctx context.Context, request *QueryTreeDataRequest, runtime *dara.RuntimeOptions) (_result *QueryTreeDataResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3016,29 +2135,11 @@ func (client *Client) QueryTreeDataWithOptions(request *QueryTreeDataRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryTreeDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all playbooks at a time.
-//
-// @param request - QueryTreeDataRequest
-//
-// @return QueryTreeDataResponse
-func (client *Client) QueryTreeData(request *QueryTreeDataRequest) (_result *QueryTreeDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryTreeDataResponse{}
-	_body, _err := client.QueryTreeDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3051,7 +2152,7 @@ func (client *Client) QueryTreeData(request *QueryTreeDataRequest) (_result *Que
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RevertPlaybookReleaseResponse
-func (client *Client) RevertPlaybookReleaseWithOptions(request *RevertPlaybookReleaseRequest, runtime *dara.RuntimeOptions) (_result *RevertPlaybookReleaseResponse, _err error) {
+func (client *Client) RevertPlaybookReleaseWithContext(ctx context.Context, request *RevertPlaybookReleaseRequest, runtime *dara.RuntimeOptions) (_result *RevertPlaybookReleaseResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3086,29 +2187,11 @@ func (client *Client) RevertPlaybookReleaseWithOptions(request *RevertPlaybookRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &RevertPlaybookReleaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Rolls back a playbook to a specific version. You can determine whether to publish the new playbook version during the rollback.
-//
-// @param request - RevertPlaybookReleaseRequest
-//
-// @return RevertPlaybookReleaseResponse
-func (client *Client) RevertPlaybookRelease(request *RevertPlaybookReleaseRequest) (_result *RevertPlaybookReleaseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RevertPlaybookReleaseResponse{}
-	_body, _err := client.RevertPlaybookReleaseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3125,7 +2208,7 @@ func (client *Client) RevertPlaybookRelease(request *RevertPlaybookReleaseReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunNotifyComponentWithEmailResponse
-func (client *Client) RunNotifyComponentWithEmailWithOptions(request *RunNotifyComponentWithEmailRequest, runtime *dara.RuntimeOptions) (_result *RunNotifyComponentWithEmailResponse, _err error) {
+func (client *Client) RunNotifyComponentWithEmailWithContext(ctx context.Context, request *RunNotifyComponentWithEmailRequest, runtime *dara.RuntimeOptions) (_result *RunNotifyComponentWithEmailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3192,33 +2275,11 @@ func (client *Client) RunNotifyComponentWithEmailWithOptions(request *RunNotifyC
 		BodyType:    dara.String("json"),
 	}
 	_result = &RunNotifyComponentWithEmailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Runs the email notification component to send messages.
-//
-// Description:
-//
-// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
-//
-// @param request - RunNotifyComponentWithEmailRequest
-//
-// @return RunNotifyComponentWithEmailResponse
-func (client *Client) RunNotifyComponentWithEmail(request *RunNotifyComponentWithEmailRequest) (_result *RunNotifyComponentWithEmailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RunNotifyComponentWithEmailResponse{}
-	_body, _err := client.RunNotifyComponentWithEmailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3235,7 +2296,7 @@ func (client *Client) RunNotifyComponentWithEmail(request *RunNotifyComponentWit
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunNotifyComponentWithMessageCenterResponse
-func (client *Client) RunNotifyComponentWithMessageCenterWithOptions(request *RunNotifyComponentWithMessageCenterRequest, runtime *dara.RuntimeOptions) (_result *RunNotifyComponentWithMessageCenterResponse, _err error) {
+func (client *Client) RunNotifyComponentWithMessageCenterWithContext(ctx context.Context, request *RunNotifyComponentWithMessageCenterRequest, runtime *dara.RuntimeOptions) (_result *RunNotifyComponentWithMessageCenterResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3306,33 +2367,11 @@ func (client *Client) RunNotifyComponentWithMessageCenterWithOptions(request *Ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &RunNotifyComponentWithMessageCenterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Execute Notification Component - Send Message via Message Center.
-//
-// Description:
-//
-// Please ensure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of the response orchestration product (i.e., Threat Analysis and Response Log Access Traffic) before using this interface.
-//
-// @param request - RunNotifyComponentWithMessageCenterRequest
-//
-// @return RunNotifyComponentWithMessageCenterResponse
-func (client *Client) RunNotifyComponentWithMessageCenter(request *RunNotifyComponentWithMessageCenterRequest) (_result *RunNotifyComponentWithMessageCenterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RunNotifyComponentWithMessageCenterResponse{}
-	_body, _err := client.RunNotifyComponentWithMessageCenterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3349,7 +2388,7 @@ func (client *Client) RunNotifyComponentWithMessageCenter(request *RunNotifyComp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunNotifyComponentWithWebhookResponse
-func (client *Client) RunNotifyComponentWithWebhookWithOptions(request *RunNotifyComponentWithWebhookRequest, runtime *dara.RuntimeOptions) (_result *RunNotifyComponentWithWebhookResponse, _err error) {
+func (client *Client) RunNotifyComponentWithWebhookWithContext(ctx context.Context, request *RunNotifyComponentWithWebhookRequest, runtime *dara.RuntimeOptions) (_result *RunNotifyComponentWithWebhookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3420,33 +2459,11 @@ func (client *Client) RunNotifyComponentWithWebhookWithOptions(request *RunNotif
 		BodyType:    dara.String("json"),
 	}
 	_result = &RunNotifyComponentWithWebhookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Runs the webhook notification component to send messages.
-//
-// Description:
-//
-// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
-//
-// @param request - RunNotifyComponentWithWebhookRequest
-//
-// @return RunNotifyComponentWithWebhookResponse
-func (client *Client) RunNotifyComponentWithWebhook(request *RunNotifyComponentWithWebhookRequest) (_result *RunNotifyComponentWithWebhookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RunNotifyComponentWithWebhookResponse{}
-	_body, _err := client.RunNotifyComponentWithWebhookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3463,7 +2480,7 @@ func (client *Client) RunNotifyComponentWithWebhook(request *RunNotifyComponentW
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunPython3ScriptResponse
-func (client *Client) RunPython3ScriptWithOptions(request *RunPython3ScriptRequest, runtime *dara.RuntimeOptions) (_result *RunPython3ScriptResponse, _err error) {
+func (client *Client) RunPython3ScriptWithContext(ctx context.Context, request *RunPython3ScriptRequest, runtime *dara.RuntimeOptions) (_result *RunPython3ScriptResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3508,33 +2525,11 @@ func (client *Client) RunPython3ScriptWithOptions(request *RunPython3ScriptReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &RunPython3ScriptResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Submits and runs a Python3 script. You can call this operation only for data processing.
-//
-// Description:
-//
-// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1&spm=openapi-amp.newDocPublishment.0.0.4c41281fWhbdPa#/commodity/vm_intl).
-//
-// @param request - RunPython3ScriptRequest
-//
-// @return RunPython3ScriptResponse
-func (client *Client) RunPython3Script(request *RunPython3ScriptRequest) (_result *RunPython3ScriptResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RunPython3ScriptResponse{}
-	_body, _err := client.RunPython3ScriptWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3551,7 +2546,7 @@ func (client *Client) RunPython3Script(request *RunPython3ScriptRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TriggerPlaybookResponse
-func (client *Client) TriggerPlaybookWithOptions(request *TriggerPlaybookRequest, runtime *dara.RuntimeOptions) (_result *TriggerPlaybookResponse, _err error) {
+func (client *Client) TriggerPlaybookWithContext(ctx context.Context, request *TriggerPlaybookRequest, runtime *dara.RuntimeOptions) (_result *TriggerPlaybookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3582,33 +2577,11 @@ func (client *Client) TriggerPlaybookWithOptions(request *TriggerPlaybookRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &TriggerPlaybookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Triggers an enabled custom playbook or a predefined playbook.
-//
-// Description:
-//
-// Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1&spm=a2796.7960336.3034855210.1.7adab91arMeIx2#/commodity/vm_intl).
-//
-// @param request - TriggerPlaybookRequest
-//
-// @return TriggerPlaybookResponse
-func (client *Client) TriggerPlaybook(request *TriggerPlaybookRequest) (_result *TriggerPlaybookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TriggerPlaybookResponse{}
-	_body, _err := client.TriggerPlaybookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3621,7 +2594,7 @@ func (client *Client) TriggerPlaybook(request *TriggerPlaybookRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TriggerProcessTaskResponse
-func (client *Client) TriggerProcessTaskWithOptions(request *TriggerProcessTaskRequest, runtime *dara.RuntimeOptions) (_result *TriggerProcessTaskResponse, _err error) {
+func (client *Client) TriggerProcessTaskWithContext(ctx context.Context, request *TriggerProcessTaskRequest, runtime *dara.RuntimeOptions) (_result *TriggerProcessTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3654,29 +2627,11 @@ func (client *Client) TriggerProcessTaskWithOptions(request *TriggerProcessTaskR
 		BodyType:    dara.String("json"),
 	}
 	_result = &TriggerProcessTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Performs an action on a handling task that is generated by the handling center when an event is handled by using Security Orchestration Automation Response (SOAR). For example, you can call this operation to cancel blocking or isolation, or retry blocking.
-//
-// @param request - TriggerProcessTaskRequest
-//
-// @return TriggerProcessTaskResponse
-func (client *Client) TriggerProcessTask(request *TriggerProcessTaskRequest) (_result *TriggerProcessTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TriggerProcessTaskResponse{}
-	_body, _err := client.TriggerProcessTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3693,7 +2648,7 @@ func (client *Client) TriggerProcessTask(request *TriggerProcessTaskRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TriggerSophonPlaybookResponse
-func (client *Client) TriggerSophonPlaybookWithOptions(request *TriggerSophonPlaybookRequest, runtime *dara.RuntimeOptions) (_result *TriggerSophonPlaybookResponse, _err error) {
+func (client *Client) TriggerSophonPlaybookWithContext(ctx context.Context, request *TriggerSophonPlaybookRequest, runtime *dara.RuntimeOptions) (_result *TriggerSophonPlaybookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3736,33 +2691,11 @@ func (client *Client) TriggerSophonPlaybookWithOptions(request *TriggerSophonPla
 		BodyType:    dara.String("json"),
 	}
 	_result = &TriggerSophonPlaybookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Triggers a playbook or a command.
-//
-// Description:
-//
-// Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1&spm=a2796.7960336.3034855210.1.7adab91arMeIx2#/commodity/vm_intl).
-//
-// @param request - TriggerSophonPlaybookRequest
-//
-// @return TriggerSophonPlaybookResponse
-func (client *Client) TriggerSophonPlaybook(request *TriggerSophonPlaybookRequest) (_result *TriggerSophonPlaybookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TriggerSophonPlaybookResponse{}
-	_body, _err := client.TriggerSophonPlaybookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3775,7 +2708,7 @@ func (client *Client) TriggerSophonPlaybook(request *TriggerSophonPlaybookReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return VerifyPlaybookResponse
-func (client *Client) VerifyPlaybookWithOptions(request *VerifyPlaybookRequest, runtime *dara.RuntimeOptions) (_result *VerifyPlaybookResponse, _err error) {
+func (client *Client) VerifyPlaybookWithContext(ctx context.Context, request *VerifyPlaybookRequest, runtime *dara.RuntimeOptions) (_result *VerifyPlaybookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3806,29 +2739,11 @@ func (client *Client) VerifyPlaybookWithOptions(request *VerifyPlaybookRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &VerifyPlaybookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Checks whether the configuration of the playbook is correct and whether the logic of the orchestration is reasonable.
-//
-// @param request - VerifyPlaybookRequest
-//
-// @return VerifyPlaybookResponse
-func (client *Client) VerifyPlaybook(request *VerifyPlaybookRequest) (_result *VerifyPlaybookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &VerifyPlaybookResponse{}
-	_body, _err := client.VerifyPlaybookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3841,7 +2756,7 @@ func (client *Client) VerifyPlaybook(request *VerifyPlaybookRequest) (_result *V
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return VerifyPythonFileResponse
-func (client *Client) VerifyPythonFileWithOptions(request *VerifyPythonFileRequest, runtime *dara.RuntimeOptions) (_result *VerifyPythonFileResponse, _err error) {
+func (client *Client) VerifyPythonFileWithContext(ctx context.Context, request *VerifyPythonFileRequest, runtime *dara.RuntimeOptions) (_result *VerifyPythonFileResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3868,28 +2783,10 @@ func (client *Client) VerifyPythonFileWithOptions(request *VerifyPythonFileReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &VerifyPythonFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Checks whether the syntax of a Python code snippet is correct.
-//
-// @param request - VerifyPythonFileRequest
-//
-// @return VerifyPythonFileResponse
-func (client *Client) VerifyPythonFile(request *VerifyPythonFileRequest) (_result *VerifyPythonFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &VerifyPythonFileResponse{}
-	_body, _err := client.VerifyPythonFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
