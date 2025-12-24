@@ -25,6 +25,10 @@ type iGetLindormV2StorageUsageRequest interface {
 
 type GetLindormV2StorageUsageRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-ufxxxxxxxxxx
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
