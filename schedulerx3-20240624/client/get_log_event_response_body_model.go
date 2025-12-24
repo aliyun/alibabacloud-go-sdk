@@ -193,6 +193,10 @@ type GetLogEventResponseBodyDataRecords struct {
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
 	// example:
 	//
+	// JOB
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// example:
+	//
 	// 101
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
 	// example:
@@ -207,6 +211,14 @@ type GetLogEventResponseBodyDataRecords struct {
 	//
 	// 030225016025_9357_60125@127.0.0.1:51363
 	WorkerAddr *string `json:"WorkerAddr,omitempty" xml:"WorkerAddr,omitempty"`
+	// example:
+	//
+	// 1450568762586578000
+	WorkflowExecutionId *string `json:"WorkflowExecutionId,omitempty" xml:"WorkflowExecutionId,omitempty"`
+	// example:
+	//
+	// 工作流0001
+	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
 }
 
 func (s GetLogEventResponseBodyDataRecords) String() string {
@@ -229,6 +241,10 @@ func (s *GetLogEventResponseBodyDataRecords) GetEvent() *string {
 	return s.Event
 }
 
+func (s *GetLogEventResponseBodyDataRecords) GetEventType() *string {
+	return s.EventType
+}
+
 func (s *GetLogEventResponseBodyDataRecords) GetJobExecutionId() *string {
 	return s.JobExecutionId
 }
@@ -245,6 +261,14 @@ func (s *GetLogEventResponseBodyDataRecords) GetWorkerAddr() *string {
 	return s.WorkerAddr
 }
 
+func (s *GetLogEventResponseBodyDataRecords) GetWorkflowExecutionId() *string {
+	return s.WorkflowExecutionId
+}
+
+func (s *GetLogEventResponseBodyDataRecords) GetWorkflowName() *string {
+	return s.WorkflowName
+}
+
 func (s *GetLogEventResponseBodyDataRecords) SetAppName(v string) *GetLogEventResponseBodyDataRecords {
 	s.AppName = &v
 	return s
@@ -257,6 +281,11 @@ func (s *GetLogEventResponseBodyDataRecords) SetContent(v string) *GetLogEventRe
 
 func (s *GetLogEventResponseBodyDataRecords) SetEvent(v string) *GetLogEventResponseBodyDataRecords {
 	s.Event = &v
+	return s
+}
+
+func (s *GetLogEventResponseBodyDataRecords) SetEventType(v string) *GetLogEventResponseBodyDataRecords {
+	s.EventType = &v
 	return s
 }
 
@@ -277,6 +306,16 @@ func (s *GetLogEventResponseBodyDataRecords) SetTime(v string) *GetLogEventRespo
 
 func (s *GetLogEventResponseBodyDataRecords) SetWorkerAddr(v string) *GetLogEventResponseBodyDataRecords {
 	s.WorkerAddr = &v
+	return s
+}
+
+func (s *GetLogEventResponseBodyDataRecords) SetWorkflowExecutionId(v string) *GetLogEventResponseBodyDataRecords {
+	s.WorkflowExecutionId = &v
+	return s
+}
+
+func (s *GetLogEventResponseBodyDataRecords) SetWorkflowName(v string) *GetLogEventResponseBodyDataRecords {
+	s.WorkflowName = &v
 	return s
 }
 

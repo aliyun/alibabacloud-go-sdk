@@ -17,6 +17,8 @@ type iOperateRetryJobExecutionRequest interface {
 	GetJobExecutionId() *string
 	SetTaskList(v []*string) *OperateRetryJobExecutionRequest
 	GetTaskList() []*string
+	SetTriggerChild(v bool) *OperateRetryJobExecutionRequest
+	GetTriggerChild() *bool
 }
 
 type OperateRetryJobExecutionRequest struct {
@@ -39,6 +41,7 @@ type OperateRetryJobExecutionRequest struct {
 	// 1310630367761285120
 	JobExecutionId *string   `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
 	TaskList       []*string `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
+	TriggerChild   *bool     `json:"TriggerChild,omitempty" xml:"TriggerChild,omitempty"`
 }
 
 func (s OperateRetryJobExecutionRequest) String() string {
@@ -65,6 +68,10 @@ func (s *OperateRetryJobExecutionRequest) GetTaskList() []*string {
 	return s.TaskList
 }
 
+func (s *OperateRetryJobExecutionRequest) GetTriggerChild() *bool {
+	return s.TriggerChild
+}
+
 func (s *OperateRetryJobExecutionRequest) SetAppName(v string) *OperateRetryJobExecutionRequest {
 	s.AppName = &v
 	return s
@@ -82,6 +89,11 @@ func (s *OperateRetryJobExecutionRequest) SetJobExecutionId(v string) *OperateRe
 
 func (s *OperateRetryJobExecutionRequest) SetTaskList(v []*string) *OperateRetryJobExecutionRequest {
 	s.TaskList = v
+	return s
+}
+
+func (s *OperateRetryJobExecutionRequest) SetTriggerChild(v bool) *OperateRetryJobExecutionRequest {
+	s.TriggerChild = &v
 	return s
 }
 

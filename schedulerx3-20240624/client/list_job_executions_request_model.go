@@ -29,6 +29,8 @@ type iListJobExecutionsRequest interface {
 	GetStartTime() *string
 	SetStatus(v int32) *ListJobExecutionsRequest
 	GetStatus() *int32
+	SetWorkflowExecutionId(v int64) *ListJobExecutionsRequest
+	GetWorkflowExecutionId() *int64
 }
 
 type ListJobExecutionsRequest struct {
@@ -74,6 +76,10 @@ type ListJobExecutionsRequest struct {
 	//
 	// 4
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 100
+	WorkflowExecutionId *int64 `json:"WorkflowExecutionId,omitempty" xml:"WorkflowExecutionId,omitempty"`
 }
 
 func (s ListJobExecutionsRequest) String() string {
@@ -124,6 +130,10 @@ func (s *ListJobExecutionsRequest) GetStatus() *int32 {
 	return s.Status
 }
 
+func (s *ListJobExecutionsRequest) GetWorkflowExecutionId() *int64 {
+	return s.WorkflowExecutionId
+}
+
 func (s *ListJobExecutionsRequest) SetAppName(v string) *ListJobExecutionsRequest {
 	s.AppName = &v
 	return s
@@ -171,6 +181,11 @@ func (s *ListJobExecutionsRequest) SetStartTime(v string) *ListJobExecutionsRequ
 
 func (s *ListJobExecutionsRequest) SetStatus(v int32) *ListJobExecutionsRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListJobExecutionsRequest) SetWorkflowExecutionId(v int64) *ListJobExecutionsRequest {
+	s.WorkflowExecutionId = &v
 	return s
 }
 

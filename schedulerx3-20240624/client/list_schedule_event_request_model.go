@@ -33,6 +33,10 @@ type iListScheduleEventRequest interface {
 	GetReverse() *bool
 	SetStartTime(v int64) *ListScheduleEventRequest
 	GetStartTime() *int64
+	SetWorkflowExecutionId(v int64) *ListScheduleEventRequest
+	GetWorkflowExecutionId() *int64
+	SetWorkflowName(v string) *ListScheduleEventRequest
+	GetWorkflowName() *string
 }
 
 type ListScheduleEventRequest struct {
@@ -53,7 +57,10 @@ type ListScheduleEventRequest struct {
 	// example:
 	//
 	// INFO
-	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// JOB | WORKFLOW
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// example:
 	//
@@ -83,6 +90,14 @@ type ListScheduleEventRequest struct {
 	//
 	// 1581317873000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1450568762586578000
+	WorkflowExecutionId *int64 `json:"WorkflowExecutionId,omitempty" xml:"WorkflowExecutionId,omitempty"`
+	// example:
+	//
+	// 流程001
+	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
 }
 
 func (s ListScheduleEventRequest) String() string {
@@ -139,6 +154,14 @@ func (s *ListScheduleEventRequest) GetReverse() *bool {
 
 func (s *ListScheduleEventRequest) GetStartTime() *int64 {
 	return s.StartTime
+}
+
+func (s *ListScheduleEventRequest) GetWorkflowExecutionId() *int64 {
+	return s.WorkflowExecutionId
+}
+
+func (s *ListScheduleEventRequest) GetWorkflowName() *string {
+	return s.WorkflowName
 }
 
 func (s *ListScheduleEventRequest) SetAppName(v string) *ListScheduleEventRequest {
@@ -198,6 +221,16 @@ func (s *ListScheduleEventRequest) SetReverse(v bool) *ListScheduleEventRequest 
 
 func (s *ListScheduleEventRequest) SetStartTime(v int64) *ListScheduleEventRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *ListScheduleEventRequest) SetWorkflowExecutionId(v int64) *ListScheduleEventRequest {
+	s.WorkflowExecutionId = &v
+	return s
+}
+
+func (s *ListScheduleEventRequest) SetWorkflowName(v string) *ListScheduleEventRequest {
+	s.WorkflowName = &v
 	return s
 }
 

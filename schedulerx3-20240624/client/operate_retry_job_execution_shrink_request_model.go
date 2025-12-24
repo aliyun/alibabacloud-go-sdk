@@ -17,6 +17,8 @@ type iOperateRetryJobExecutionShrinkRequest interface {
 	GetJobExecutionId() *string
 	SetTaskListShrink(v string) *OperateRetryJobExecutionShrinkRequest
 	GetTaskListShrink() *string
+	SetTriggerChild(v bool) *OperateRetryJobExecutionShrinkRequest
+	GetTriggerChild() *bool
 }
 
 type OperateRetryJobExecutionShrinkRequest struct {
@@ -39,6 +41,7 @@ type OperateRetryJobExecutionShrinkRequest struct {
 	// 1310630367761285120
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
 	TaskListShrink *string `json:"TaskList,omitempty" xml:"TaskList,omitempty"`
+	TriggerChild   *bool   `json:"TriggerChild,omitempty" xml:"TriggerChild,omitempty"`
 }
 
 func (s OperateRetryJobExecutionShrinkRequest) String() string {
@@ -65,6 +68,10 @@ func (s *OperateRetryJobExecutionShrinkRequest) GetTaskListShrink() *string {
 	return s.TaskListShrink
 }
 
+func (s *OperateRetryJobExecutionShrinkRequest) GetTriggerChild() *bool {
+	return s.TriggerChild
+}
+
 func (s *OperateRetryJobExecutionShrinkRequest) SetAppName(v string) *OperateRetryJobExecutionShrinkRequest {
 	s.AppName = &v
 	return s
@@ -82,6 +89,11 @@ func (s *OperateRetryJobExecutionShrinkRequest) SetJobExecutionId(v string) *Ope
 
 func (s *OperateRetryJobExecutionShrinkRequest) SetTaskListShrink(v string) *OperateRetryJobExecutionShrinkRequest {
 	s.TaskListShrink = &v
+	return s
+}
+
+func (s *OperateRetryJobExecutionShrinkRequest) SetTriggerChild(v bool) *OperateRetryJobExecutionShrinkRequest {
+	s.TriggerChild = &v
 	return s
 }
 

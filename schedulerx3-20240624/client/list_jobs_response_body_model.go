@@ -195,7 +195,11 @@ type ListJobsResponseBodyDataRecords struct {
 	// example:
 	//
 	// 3
-	DataOffset            *int32  `json:"DataOffset,omitempty" xml:"DataOffset,omitempty"`
+	DataOffset *int32 `json:"DataOffset,omitempty" xml:"DataOffset,omitempty"`
+	// example:
+	//
+	// 1
+	DependentStrategy     *int32  `json:"DependentStrategy,omitempty" xml:"DependentStrategy,omitempty"`
 	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExecutorBlockStrategy *string `json:"ExecutorBlockStrategy,omitempty" xml:"ExecutorBlockStrategy,omitempty"`
 	// example:
@@ -226,6 +230,10 @@ type ListJobsResponseBodyDataRecords struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// example:
 	//
+	// 1
+	NodeType *int32 `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// example:
+	//
 	// {"failLimitTimes":1,"failEnable":true,"timeoutKillEnable":false,"missWorkerEnable":true,"timeoutEnable":true,"sendChannel":"","timeout":300,"successNotice":false}
 	NoticeConfig   *string `json:"NoticeConfig,omitempty" xml:"NoticeConfig,omitempty"`
 	NoticeContacts *string `json:"NoticeContacts,omitempty" xml:"NoticeContacts,omitempty"`
@@ -242,6 +250,10 @@ type ListJobsResponseBodyDataRecords struct {
 	// 1
 	RouteStrategy *int32  `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
 	Script        *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	// example:
+	//
+	// 1
+	StartTimeType *int32 `json:"StartTimeType,omitempty" xml:"StartTimeType,omitempty"`
 	// example:
 	//
 	// 1
@@ -269,8 +281,12 @@ type ListJobsResponseBodyDataRecords struct {
 	// example:
 	//
 	// 1
-	Weight *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	Xattrs *string `json:"Xattrs,omitempty" xml:"Xattrs,omitempty"`
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// example:
+	//
+	// 10
+	WorkflowId *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	Xattrs     *string `json:"Xattrs,omitempty" xml:"Xattrs,omitempty"`
 }
 
 func (s ListJobsResponseBodyDataRecords) String() string {
@@ -313,6 +329,10 @@ func (s *ListJobsResponseBodyDataRecords) GetDataOffset() *int32 {
 	return s.DataOffset
 }
 
+func (s *ListJobsResponseBodyDataRecords) GetDependentStrategy() *int32 {
+	return s.DependentStrategy
+}
+
 func (s *ListJobsResponseBodyDataRecords) GetDescription() *string {
 	return s.Description
 }
@@ -353,6 +373,10 @@ func (s *ListJobsResponseBodyDataRecords) GetName() *string {
 	return s.Name
 }
 
+func (s *ListJobsResponseBodyDataRecords) GetNodeType() *int32 {
+	return s.NodeType
+}
+
 func (s *ListJobsResponseBodyDataRecords) GetNoticeConfig() *string {
 	return s.NoticeConfig
 }
@@ -375,6 +399,10 @@ func (s *ListJobsResponseBodyDataRecords) GetRouteStrategy() *int32 {
 
 func (s *ListJobsResponseBodyDataRecords) GetScript() *string {
 	return s.Script
+}
+
+func (s *ListJobsResponseBodyDataRecords) GetStartTimeType() *int32 {
+	return s.StartTimeType
 }
 
 func (s *ListJobsResponseBodyDataRecords) GetStatus() *int32 {
@@ -403,6 +431,10 @@ func (s *ListJobsResponseBodyDataRecords) GetUpdater() *string {
 
 func (s *ListJobsResponseBodyDataRecords) GetWeight() *int32 {
 	return s.Weight
+}
+
+func (s *ListJobsResponseBodyDataRecords) GetWorkflowId() *int64 {
+	return s.WorkflowId
 }
 
 func (s *ListJobsResponseBodyDataRecords) GetXattrs() *string {
@@ -446,6 +478,11 @@ func (s *ListJobsResponseBodyDataRecords) SetCurrentExecuteStatus(v int32) *List
 
 func (s *ListJobsResponseBodyDataRecords) SetDataOffset(v int32) *ListJobsResponseBodyDataRecords {
 	s.DataOffset = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataRecords) SetDependentStrategy(v int32) *ListJobsResponseBodyDataRecords {
+	s.DependentStrategy = &v
 	return s
 }
 
@@ -499,6 +536,11 @@ func (s *ListJobsResponseBodyDataRecords) SetName(v string) *ListJobsResponseBod
 	return s
 }
 
+func (s *ListJobsResponseBodyDataRecords) SetNodeType(v int32) *ListJobsResponseBodyDataRecords {
+	s.NodeType = &v
+	return s
+}
+
 func (s *ListJobsResponseBodyDataRecords) SetNoticeConfig(v string) *ListJobsResponseBodyDataRecords {
 	s.NoticeConfig = &v
 	return s
@@ -526,6 +568,11 @@ func (s *ListJobsResponseBodyDataRecords) SetRouteStrategy(v int32) *ListJobsRes
 
 func (s *ListJobsResponseBodyDataRecords) SetScript(v string) *ListJobsResponseBodyDataRecords {
 	s.Script = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataRecords) SetStartTimeType(v int32) *ListJobsResponseBodyDataRecords {
+	s.StartTimeType = &v
 	return s
 }
 
@@ -561,6 +608,11 @@ func (s *ListJobsResponseBodyDataRecords) SetUpdater(v string) *ListJobsResponse
 
 func (s *ListJobsResponseBodyDataRecords) SetWeight(v int32) *ListJobsResponseBodyDataRecords {
 	s.Weight = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataRecords) SetWorkflowId(v int64) *ListJobsResponseBodyDataRecords {
+	s.WorkflowId = &v
 	return s
 }
 

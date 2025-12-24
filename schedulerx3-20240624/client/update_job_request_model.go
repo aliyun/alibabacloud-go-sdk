@@ -19,6 +19,8 @@ type iUpdateJobRequest interface {
 	GetChildJobId() *string
 	SetClusterId(v string) *UpdateJobRequest
 	GetClusterId() *string
+	SetDependentStrategy(v int32) *UpdateJobRequest
+	GetDependentStrategy() *int32
 	SetDescription(v string) *UpdateJobRequest
 	GetDescription() *string
 	SetExecutorBlockStrategy(v int32) *UpdateJobRequest
@@ -47,6 +49,8 @@ type iUpdateJobRequest interface {
 	GetScript() *string
 	SetStartTime(v int64) *UpdateJobRequest
 	GetStartTime() *int64
+	SetStartTimeType(v string) *UpdateJobRequest
+	GetStartTimeType() *string
 	SetTimeExpression(v string) *UpdateJobRequest
 	GetTimeExpression() *string
 	SetTimeType(v int32) *UpdateJobRequest
@@ -71,7 +75,10 @@ type UpdateJobRequest struct {
 	// example:
 	//
 	// workday
-	Calendar   *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
+	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
+	// example:
+	//
+	// 1,2
 	ChildJobId *string `json:"ChildJobId,omitempty" xml:"ChildJobId,omitempty"`
 	// This parameter is required.
 	//
@@ -79,6 +86,10 @@ type UpdateJobRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 1
+	DependentStrategy *int32 `json:"DependentStrategy,omitempty" xml:"DependentStrategy,omitempty"`
 	// example:
 	//
 	// test
@@ -122,12 +133,19 @@ type UpdateJobRequest struct {
 	// example:
 	//
 	// 1
-	RouteStrategy *int32  `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
-	Script        *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	RouteStrategy *int32 `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
+	// example:
+	//
+	// echo "hello world"
+	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
 	// example:
 	//
 	// 1716902187
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1
+	StartTimeType *string `json:"StartTimeType,omitempty" xml:"StartTimeType,omitempty"`
 	// example:
 	//
 	// 0 0 4 ? 	- Mon/1
@@ -172,6 +190,10 @@ func (s *UpdateJobRequest) GetChildJobId() *string {
 
 func (s *UpdateJobRequest) GetClusterId() *string {
 	return s.ClusterId
+}
+
+func (s *UpdateJobRequest) GetDependentStrategy() *int32 {
+	return s.DependentStrategy
 }
 
 func (s *UpdateJobRequest) GetDescription() *string {
@@ -230,6 +252,10 @@ func (s *UpdateJobRequest) GetStartTime() *int64 {
 	return s.StartTime
 }
 
+func (s *UpdateJobRequest) GetStartTimeType() *string {
+	return s.StartTimeType
+}
+
 func (s *UpdateJobRequest) GetTimeExpression() *string {
 	return s.TimeExpression
 }
@@ -268,6 +294,11 @@ func (s *UpdateJobRequest) SetChildJobId(v string) *UpdateJobRequest {
 
 func (s *UpdateJobRequest) SetClusterId(v string) *UpdateJobRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetDependentStrategy(v int32) *UpdateJobRequest {
+	s.DependentStrategy = &v
 	return s
 }
 
@@ -341,6 +372,11 @@ func (s *UpdateJobRequest) SetStartTime(v int64) *UpdateJobRequest {
 	return s
 }
 
+func (s *UpdateJobRequest) SetStartTimeType(v string) *UpdateJobRequest {
+	s.StartTimeType = &v
+	return s
+}
+
 func (s *UpdateJobRequest) SetTimeExpression(v string) *UpdateJobRequest {
 	s.TimeExpression = &v
 	return s
@@ -380,6 +416,11 @@ func (s *UpdateJobRequest) Validate() error {
 }
 
 type UpdateJobRequestNoticeConfig struct {
+	// example:
+	//
+	// 30
+	EndEarly       *int32 `json:"EndEarly,omitempty" xml:"EndEarly,omitempty"`
+	EndEarlyEnable *bool  `json:"EndEarlyEnable,omitempty" xml:"EndEarlyEnable,omitempty"`
 	// example:
 	//
 	// true
@@ -422,6 +463,14 @@ func (s UpdateJobRequestNoticeConfig) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateJobRequestNoticeConfig) GetEndEarly() *int32 {
+	return s.EndEarly
+}
+
+func (s *UpdateJobRequestNoticeConfig) GetEndEarlyEnable() *bool {
+	return s.EndEarlyEnable
+}
+
 func (s *UpdateJobRequestNoticeConfig) GetFailEnable() *bool {
 	return s.FailEnable
 }
@@ -452,6 +501,16 @@ func (s *UpdateJobRequestNoticeConfig) GetTimeoutEnable() *bool {
 
 func (s *UpdateJobRequestNoticeConfig) GetTimeoutKillEnable() *bool {
 	return s.TimeoutKillEnable
+}
+
+func (s *UpdateJobRequestNoticeConfig) SetEndEarly(v int32) *UpdateJobRequestNoticeConfig {
+	s.EndEarly = &v
+	return s
+}
+
+func (s *UpdateJobRequestNoticeConfig) SetEndEarlyEnable(v bool) *UpdateJobRequestNoticeConfig {
+	s.EndEarlyEnable = &v
+	return s
 }
 
 func (s *UpdateJobRequestNoticeConfig) SetFailEnable(v bool) *UpdateJobRequestNoticeConfig {

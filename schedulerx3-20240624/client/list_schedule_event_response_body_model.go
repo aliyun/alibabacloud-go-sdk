@@ -190,6 +190,10 @@ type ListScheduleEventResponseBodyDataRecords struct {
 	//
 	// INFO
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// JOB
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// 130
 	//
 	// example:
@@ -208,6 +212,14 @@ type ListScheduleEventResponseBodyDataRecords struct {
 	//
 	// http://192.168.1.5:9999/
 	WorkerAddr *string `json:"WorkerAddr,omitempty" xml:"WorkerAddr,omitempty"`
+	// example:
+	//
+	// 1450568762586578000
+	WorkflowExecutionId *string `json:"WorkflowExecutionId,omitempty" xml:"WorkflowExecutionId,omitempty"`
+	// example:
+	//
+	// 工作流0001
+	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
 }
 
 func (s ListScheduleEventResponseBodyDataRecords) String() string {
@@ -230,6 +242,10 @@ func (s *ListScheduleEventResponseBodyDataRecords) GetEvent() *string {
 	return s.Event
 }
 
+func (s *ListScheduleEventResponseBodyDataRecords) GetEventType() *string {
+	return s.EventType
+}
+
 func (s *ListScheduleEventResponseBodyDataRecords) GetJobExecutionId() *string {
 	return s.JobExecutionId
 }
@@ -246,6 +262,14 @@ func (s *ListScheduleEventResponseBodyDataRecords) GetWorkerAddr() *string {
 	return s.WorkerAddr
 }
 
+func (s *ListScheduleEventResponseBodyDataRecords) GetWorkflowExecutionId() *string {
+	return s.WorkflowExecutionId
+}
+
+func (s *ListScheduleEventResponseBodyDataRecords) GetWorkflowName() *string {
+	return s.WorkflowName
+}
+
 func (s *ListScheduleEventResponseBodyDataRecords) SetAppName(v string) *ListScheduleEventResponseBodyDataRecords {
 	s.AppName = &v
 	return s
@@ -258,6 +282,11 @@ func (s *ListScheduleEventResponseBodyDataRecords) SetContent(v string) *ListSch
 
 func (s *ListScheduleEventResponseBodyDataRecords) SetEvent(v string) *ListScheduleEventResponseBodyDataRecords {
 	s.Event = &v
+	return s
+}
+
+func (s *ListScheduleEventResponseBodyDataRecords) SetEventType(v string) *ListScheduleEventResponseBodyDataRecords {
+	s.EventType = &v
 	return s
 }
 
@@ -278,6 +307,16 @@ func (s *ListScheduleEventResponseBodyDataRecords) SetTime(v string) *ListSchedu
 
 func (s *ListScheduleEventResponseBodyDataRecords) SetWorkerAddr(v string) *ListScheduleEventResponseBodyDataRecords {
 	s.WorkerAddr = &v
+	return s
+}
+
+func (s *ListScheduleEventResponseBodyDataRecords) SetWorkflowExecutionId(v string) *ListScheduleEventResponseBodyDataRecords {
+	s.WorkflowExecutionId = &v
+	return s
+}
+
+func (s *ListScheduleEventResponseBodyDataRecords) SetWorkflowName(v string) *ListScheduleEventResponseBodyDataRecords {
+	s.WorkflowName = &v
 	return s
 }
 

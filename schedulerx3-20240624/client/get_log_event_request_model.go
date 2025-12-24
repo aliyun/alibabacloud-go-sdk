@@ -17,6 +17,8 @@ type iGetLogEventRequest interface {
 	GetEndTime() *int64
 	SetEvent(v string) *GetLogEventRequest
 	GetEvent() *string
+	SetEventType(v string) *GetLogEventRequest
+	GetEventType() *string
 	SetJobExecutionId(v int64) *GetLogEventRequest
 	GetJobExecutionId() *int64
 	SetJobName(v string) *GetLogEventRequest
@@ -31,6 +33,10 @@ type iGetLogEventRequest interface {
 	GetReverse() *bool
 	SetStartTime(v int64) *GetLogEventRequest
 	GetStartTime() *int64
+	SetWorkflowExecutionId(v int64) *GetLogEventRequest
+	GetWorkflowExecutionId() *int64
+	SetWorkflowName(v string) *GetLogEventRequest
+	GetWorkflowName() *string
 }
 
 type GetLogEventRequest struct {
@@ -52,6 +58,10 @@ type GetLogEventRequest struct {
 	//
 	// INFO
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// JOB
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// example:
 	//
 	// 101
@@ -80,6 +90,14 @@ type GetLogEventRequest struct {
 	//
 	// 1721268302000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1450568762586578000
+	WorkflowExecutionId *int64 `json:"WorkflowExecutionId,omitempty" xml:"WorkflowExecutionId,omitempty"`
+	// example:
+	//
+	// 流程001
+	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
 }
 
 func (s GetLogEventRequest) String() string {
@@ -104,6 +122,10 @@ func (s *GetLogEventRequest) GetEndTime() *int64 {
 
 func (s *GetLogEventRequest) GetEvent() *string {
 	return s.Event
+}
+
+func (s *GetLogEventRequest) GetEventType() *string {
+	return s.EventType
 }
 
 func (s *GetLogEventRequest) GetJobExecutionId() *int64 {
@@ -134,6 +156,14 @@ func (s *GetLogEventRequest) GetStartTime() *int64 {
 	return s.StartTime
 }
 
+func (s *GetLogEventRequest) GetWorkflowExecutionId() *int64 {
+	return s.WorkflowExecutionId
+}
+
+func (s *GetLogEventRequest) GetWorkflowName() *string {
+	return s.WorkflowName
+}
+
 func (s *GetLogEventRequest) SetAppName(v string) *GetLogEventRequest {
 	s.AppName = &v
 	return s
@@ -151,6 +181,11 @@ func (s *GetLogEventRequest) SetEndTime(v int64) *GetLogEventRequest {
 
 func (s *GetLogEventRequest) SetEvent(v string) *GetLogEventRequest {
 	s.Event = &v
+	return s
+}
+
+func (s *GetLogEventRequest) SetEventType(v string) *GetLogEventRequest {
+	s.EventType = &v
 	return s
 }
 
@@ -186,6 +221,16 @@ func (s *GetLogEventRequest) SetReverse(v bool) *GetLogEventRequest {
 
 func (s *GetLogEventRequest) SetStartTime(v int64) *GetLogEventRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *GetLogEventRequest) SetWorkflowExecutionId(v int64) *GetLogEventRequest {
+	s.WorkflowExecutionId = &v
+	return s
+}
+
+func (s *GetLogEventRequest) SetWorkflowName(v string) *GetLogEventRequest {
+	s.WorkflowName = &v
 	return s
 }
 

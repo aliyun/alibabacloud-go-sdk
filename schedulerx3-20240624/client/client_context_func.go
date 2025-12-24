@@ -165,6 +165,62 @@ func (client *Client) CreateClusterWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
+// 添加执行器
+//
+// @param request - CreateExecutorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateExecutorsResponse
+func (client *Client) CreateExecutorsWithContext(ctx context.Context, request *CreateExecutorsRequest, runtime *dara.RuntimeOptions) (_result *CreateExecutorsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.WorkerType) {
+		body["WorkerType"] = request.WorkerType
+	}
+
+	if !dara.IsNil(request.Workers) {
+		body["Workers"] = request.Workers
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateExecutors"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateExecutorsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建任务
 //
 // @param tmpReq - CreateJobRequest
@@ -181,6 +237,10 @@ func (client *Client) CreateJobWithContext(ctx context.Context, tmpReq *CreateJo
 	}
 	request := &CreateJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Coordinate) {
+		request.CoordinateShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Coordinate, dara.String("Coordinate"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.NoticeConfig) {
 		request.NoticeConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NoticeConfig, dara.String("NoticeConfig"), dara.String("json"))
 	}
@@ -208,6 +268,14 @@ func (client *Client) CreateJobWithContext(ctx context.Context, tmpReq *CreateJo
 
 	if !dara.IsNil(request.ClusterId) {
 		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.CoordinateShrink) {
+		body["Coordinate"] = request.CoordinateShrink
+	}
+
+	if !dara.IsNil(request.DependentStrategy) {
+		body["DependentStrategy"] = request.DependentStrategy
 	}
 
 	if !dara.IsNil(request.Description) {
@@ -264,6 +332,10 @@ func (client *Client) CreateJobWithContext(ctx context.Context, tmpReq *CreateJo
 
 	if !dara.IsNil(request.StartTime) {
 		body["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.StartTimeType) {
+		body["StartTimeType"] = request.StartTimeType
 	}
 
 	if !dara.IsNil(request.Status) {
@@ -641,6 +713,54 @@ func (client *Client) GetDesigateInfoWithContext(ctx context.Context, request *G
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDesigateInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询执行器配置信息
+//
+// @param request - GetExecutorConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetExecutorConfigResponse
+func (client *Client) GetExecutorConfigWithContext(ctx context.Context, request *GetExecutorConfigRequest, runtime *dara.RuntimeOptions) (_result *GetExecutorConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetExecutorConfig"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetExecutorConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1233,7 +1353,51 @@ func (client *Client) ListJobExecutionsWithContext(ctx context.Context, request 
 			return _result, _err
 		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.JobExecutionId) {
+		query["JobExecutionId"] = request.JobExecutionId
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.JobName) {
+		query["JobName"] = request.JobName
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.WorkflowExecutionId) {
+		query["WorkflowExecutionId"] = request.WorkflowExecutionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1242,7 +1406,7 @@ func (client *Client) ListJobExecutionsWithContext(ctx context.Context, request 
 		Version:     dara.String("2024-06-24"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
@@ -1333,7 +1497,47 @@ func (client *Client) ListJobsWithContext(ctx context.Context, request *ListJobs
 			return _result, _err
 		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.JobHandler) {
+		query["JobHandler"] = request.JobHandler
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.JobName) {
+		query["JobName"] = request.JobName
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.WorkflowId) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1342,13 +1546,73 @@ func (client *Client) ListJobsWithContext(ctx context.Context, request *ListJobs
 		Version:     dara.String("2024-06-24"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListJobsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取k8s资源列表
+//
+// @param request - ListK8sResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListK8sResourceResponse
+func (client *Client) ListK8sResourceWithContext(ctx context.Context, request *ListK8sResourceRequest, runtime *dara.RuntimeOptions) (_result *ListK8sResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.K8sClusterId) {
+		query["K8sClusterId"] = request.K8sClusterId
+	}
+
+	if !dara.IsNil(request.K8sNamespace) {
+		query["K8sNamespace"] = request.K8sNamespace
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListK8sResource"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListK8sResourceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1830,6 +2094,10 @@ func (client *Client) OperateRetryJobExecutionWithContext(ctx context.Context, t
 		query["TaskList"] = request.TaskListShrink
 	}
 
+	if !dara.IsNil(request.TriggerChild) {
+		query["TriggerChild"] = request.TriggerChild
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1855,7 +2123,7 @@ func (client *Client) OperateRetryJobExecutionWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 停止正在运行的任务实例
+// 停止运行中的任务实例
 //
 // @param tmpReq - OperateStopJobExecutionRequest
 //
@@ -1907,6 +2175,72 @@ func (client *Client) OperateStopJobExecutionWithContext(ctx context.Context, tm
 		BodyType:    dara.String("json"),
 	}
 	_result = &OperateStopJobExecutionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步任务
+//
+// @param tmpReq - SyncJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncJobsResponse
+func (client *Client) SyncJobsWithContext(ctx context.Context, tmpReq *SyncJobsRequest, runtime *dara.RuntimeOptions) (_result *SyncJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SyncJobsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.JobIds) {
+		request.JobIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.JobIds, dara.String("JobIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.JobIdsShrink) {
+		body["JobIds"] = request.JobIdsShrink
+	}
+
+	if !dara.IsNil(request.OriginalAppName) {
+		body["OriginalAppName"] = request.OriginalAppName
+	}
+
+	if !dara.IsNil(request.OriginalClusterId) {
+		body["OriginalClusterId"] = request.OriginalClusterId
+	}
+
+	if !dara.IsNil(request.TargetAppName) {
+		body["TargetAppName"] = request.TargetAppName
+	}
+
+	if !dara.IsNil(request.TargetClusterId) {
+		body["TargetClusterId"] = request.TargetClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SyncJobs"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SyncJobsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2033,6 +2367,62 @@ func (client *Client) UpdateClusterWithContext(ctx context.Context, request *Upd
 
 // Summary:
 //
+// 更新执行器
+//
+// @param request - UpdateExecutorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateExecutorsResponse
+func (client *Client) UpdateExecutorsWithContext(ctx context.Context, request *UpdateExecutorsRequest, runtime *dara.RuntimeOptions) (_result *UpdateExecutorsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.WorkerType) {
+		body["WorkerType"] = request.WorkerType
+	}
+
+	if !dara.IsNil(request.Workers) {
+		body["Workers"] = request.Workers
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateExecutors"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateExecutorsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新任务信息
 //
 // @param tmpReq - UpdateJobRequest
@@ -2076,6 +2466,10 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, tmpReq *UpdateJo
 
 	if !dara.IsNil(request.ClusterId) {
 		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.DependentStrategy) {
+		body["DependentStrategy"] = request.DependentStrategy
 	}
 
 	if !dara.IsNil(request.Description) {
@@ -2132,6 +2526,10 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, tmpReq *UpdateJo
 
 	if !dara.IsNil(request.StartTime) {
 		body["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.StartTimeType) {
+		body["StartTimeType"] = request.StartTimeType
 	}
 
 	if !dara.IsNil(request.TimeExpression) {

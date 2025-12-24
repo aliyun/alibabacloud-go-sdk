@@ -19,6 +19,10 @@ type iCreateJobRequest interface {
 	GetChildJobId() *string
 	SetClusterId(v string) *CreateJobRequest
 	GetClusterId() *string
+	SetCoordinate(v *CreateJobRequestCoordinate) *CreateJobRequest
+	GetCoordinate() *CreateJobRequestCoordinate
+	SetDependentStrategy(v int32) *CreateJobRequest
+	GetDependentStrategy() *int32
 	SetDescription(v string) *CreateJobRequest
 	GetDescription() *string
 	SetExecutorBlockStrategy(v int32) *CreateJobRequest
@@ -47,6 +51,8 @@ type iCreateJobRequest interface {
 	GetScript() *string
 	SetStartTime(v int64) *CreateJobRequest
 	GetStartTime() *int64
+	SetStartTimeType(v int32) *CreateJobRequest
+	GetStartTimeType() *int32
 	SetStatus(v int32) *CreateJobRequest
 	GetStatus() *int32
 	SetTimeExpression(v string) *CreateJobRequest
@@ -73,14 +79,22 @@ type CreateJobRequest struct {
 	// example:
 	//
 	// workday
-	Calendar   *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
+	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
+	// example:
+	//
+	// 1,2
 	ChildJobId *string `json:"ChildJobId,omitempty" xml:"ChildJobId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId  *string                     `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Coordinate *CreateJobRequestCoordinate `json:"Coordinate,omitempty" xml:"Coordinate,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	DependentStrategy *int32 `json:"DependentStrategy,omitempty" xml:"DependentStrategy,omitempty"`
 	// example:
 	//
 	// test
@@ -126,12 +140,19 @@ type CreateJobRequest struct {
 	// example:
 	//
 	// 1
-	RouteStrategy *int32  `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
-	Script        *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	RouteStrategy *int32 `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
+	// example:
+	//
+	// echo "hello world"
+	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
 	// example:
 	//
 	// 1701310327000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1
+	StartTimeType *int32 `json:"StartTimeType,omitempty" xml:"StartTimeType,omitempty"`
 	// example:
 	//
 	// 1
@@ -182,6 +203,14 @@ func (s *CreateJobRequest) GetChildJobId() *string {
 
 func (s *CreateJobRequest) GetClusterId() *string {
 	return s.ClusterId
+}
+
+func (s *CreateJobRequest) GetCoordinate() *CreateJobRequestCoordinate {
+	return s.Coordinate
+}
+
+func (s *CreateJobRequest) GetDependentStrategy() *int32 {
+	return s.DependentStrategy
 }
 
 func (s *CreateJobRequest) GetDescription() *string {
@@ -240,6 +269,10 @@ func (s *CreateJobRequest) GetStartTime() *int64 {
 	return s.StartTime
 }
 
+func (s *CreateJobRequest) GetStartTimeType() *int32 {
+	return s.StartTimeType
+}
+
 func (s *CreateJobRequest) GetStatus() *int32 {
 	return s.Status
 }
@@ -282,6 +315,16 @@ func (s *CreateJobRequest) SetChildJobId(v string) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetClusterId(v string) *CreateJobRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetCoordinate(v *CreateJobRequestCoordinate) *CreateJobRequest {
+	s.Coordinate = v
+	return s
+}
+
+func (s *CreateJobRequest) SetDependentStrategy(v int32) *CreateJobRequest {
+	s.DependentStrategy = &v
 	return s
 }
 
@@ -355,6 +398,11 @@ func (s *CreateJobRequest) SetStartTime(v int64) *CreateJobRequest {
 	return s
 }
 
+func (s *CreateJobRequest) SetStartTimeType(v int32) *CreateJobRequest {
+	s.StartTimeType = &v
+	return s
+}
+
 func (s *CreateJobRequest) SetStatus(v int32) *CreateJobRequest {
 	s.Status = &v
 	return s
@@ -381,6 +429,11 @@ func (s *CreateJobRequest) SetWeight(v int32) *CreateJobRequest {
 }
 
 func (s *CreateJobRequest) Validate() error {
+	if s.Coordinate != nil {
+		if err := s.Coordinate.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.NoticeConfig != nil {
 		if err := s.NoticeConfig.Validate(); err != nil {
 			return err
@@ -398,7 +451,79 @@ func (s *CreateJobRequest) Validate() error {
 	return nil
 }
 
+type CreateJobRequestCoordinate struct {
+	// example:
+	//
+	// 50.0
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 100.0
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 100.0
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 100.0
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s CreateJobRequestCoordinate) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateJobRequestCoordinate) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobRequestCoordinate) GetHeight() *float32 {
+	return s.Height
+}
+
+func (s *CreateJobRequestCoordinate) GetWidth() *float32 {
+	return s.Width
+}
+
+func (s *CreateJobRequestCoordinate) GetX() *float32 {
+	return s.X
+}
+
+func (s *CreateJobRequestCoordinate) GetY() *float32 {
+	return s.Y
+}
+
+func (s *CreateJobRequestCoordinate) SetHeight(v float32) *CreateJobRequestCoordinate {
+	s.Height = &v
+	return s
+}
+
+func (s *CreateJobRequestCoordinate) SetWidth(v float32) *CreateJobRequestCoordinate {
+	s.Width = &v
+	return s
+}
+
+func (s *CreateJobRequestCoordinate) SetX(v float32) *CreateJobRequestCoordinate {
+	s.X = &v
+	return s
+}
+
+func (s *CreateJobRequestCoordinate) SetY(v float32) *CreateJobRequestCoordinate {
+	s.Y = &v
+	return s
+}
+
+func (s *CreateJobRequestCoordinate) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateJobRequestNoticeConfig struct {
+	// example:
+	//
+	// 30
+	EndEarly       *int32 `json:"EndEarly,omitempty" xml:"EndEarly,omitempty"`
+	EndEarlyEnable *bool  `json:"EndEarlyEnable,omitempty" xml:"EndEarlyEnable,omitempty"`
 	// example:
 	//
 	// true
@@ -441,6 +566,14 @@ func (s CreateJobRequestNoticeConfig) GoString() string {
 	return s.String()
 }
 
+func (s *CreateJobRequestNoticeConfig) GetEndEarly() *int32 {
+	return s.EndEarly
+}
+
+func (s *CreateJobRequestNoticeConfig) GetEndEarlyEnable() *bool {
+	return s.EndEarlyEnable
+}
+
 func (s *CreateJobRequestNoticeConfig) GetFailEnable() *bool {
 	return s.FailEnable
 }
@@ -471,6 +604,16 @@ func (s *CreateJobRequestNoticeConfig) GetTimeoutEnable() *bool {
 
 func (s *CreateJobRequestNoticeConfig) GetTimeoutKillEnable() *bool {
 	return s.TimeoutKillEnable
+}
+
+func (s *CreateJobRequestNoticeConfig) SetEndEarly(v int32) *CreateJobRequestNoticeConfig {
+	s.EndEarly = &v
+	return s
+}
+
+func (s *CreateJobRequestNoticeConfig) SetEndEarlyEnable(v bool) *CreateJobRequestNoticeConfig {
+	s.EndEarlyEnable = &v
+	return s
 }
 
 func (s *CreateJobRequestNoticeConfig) SetFailEnable(v bool) *CreateJobRequestNoticeConfig {

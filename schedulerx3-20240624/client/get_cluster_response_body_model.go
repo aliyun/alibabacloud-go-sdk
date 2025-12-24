@@ -202,6 +202,10 @@ type GetClusterResponseBodyData struct {
 	MaxJobNum *int32 `json:"MaxJobNum,omitempty" xml:"MaxJobNum,omitempty"`
 	// example:
 	//
+	// 100
+	MaxWorkflowNum *int32 `json:"MaxWorkflowNum,omitempty" xml:"MaxWorkflowNum,omitempty"`
+	// example:
+	//
 	// 2
 	ProductType *int32 `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// example:
@@ -224,8 +228,12 @@ type GetClusterResponseBodyData struct {
 	// example:
 	//
 	// 10
-	WorkerNum *int32    `json:"WorkerNum,omitempty" xml:"WorkerNum,omitempty"`
-	Zones     []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	WorkerNum *int32 `json:"WorkerNum,omitempty" xml:"WorkerNum,omitempty"`
+	// example:
+	//
+	// 20
+	WorkflowNum *int32    `json:"WorkflowNum,omitempty" xml:"WorkflowNum,omitempty"`
+	Zones       []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s GetClusterResponseBodyData) String() string {
@@ -288,6 +296,10 @@ func (s *GetClusterResponseBodyData) GetMaxJobNum() *int32 {
 	return s.MaxJobNum
 }
 
+func (s *GetClusterResponseBodyData) GetMaxWorkflowNum() *int32 {
+	return s.MaxWorkflowNum
+}
+
 func (s *GetClusterResponseBodyData) GetProductType() *int32 {
 	return s.ProductType
 }
@@ -318,6 +330,10 @@ func (s *GetClusterResponseBodyData) GetVpcId() *string {
 
 func (s *GetClusterResponseBodyData) GetWorkerNum() *int32 {
 	return s.WorkerNum
+}
+
+func (s *GetClusterResponseBodyData) GetWorkflowNum() *int32 {
+	return s.WorkflowNum
 }
 
 func (s *GetClusterResponseBodyData) GetZones() []*string {
@@ -389,6 +405,11 @@ func (s *GetClusterResponseBodyData) SetMaxJobNum(v int32) *GetClusterResponseBo
 	return s
 }
 
+func (s *GetClusterResponseBodyData) SetMaxWorkflowNum(v int32) *GetClusterResponseBodyData {
+	s.MaxWorkflowNum = &v
+	return s
+}
+
 func (s *GetClusterResponseBodyData) SetProductType(v int32) *GetClusterResponseBodyData {
 	s.ProductType = &v
 	return s
@@ -426,6 +447,11 @@ func (s *GetClusterResponseBodyData) SetVpcId(v string) *GetClusterResponseBodyD
 
 func (s *GetClusterResponseBodyData) SetWorkerNum(v int32) *GetClusterResponseBodyData {
 	s.WorkerNum = &v
+	return s
+}
+
+func (s *GetClusterResponseBodyData) SetWorkflowNum(v int32) *GetClusterResponseBodyData {
+	s.WorkflowNum = &v
 	return s
 }
 

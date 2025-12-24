@@ -19,6 +19,10 @@ type iCreateJobShrinkRequest interface {
 	GetChildJobId() *string
 	SetClusterId(v string) *CreateJobShrinkRequest
 	GetClusterId() *string
+	SetCoordinateShrink(v string) *CreateJobShrinkRequest
+	GetCoordinateShrink() *string
+	SetDependentStrategy(v int32) *CreateJobShrinkRequest
+	GetDependentStrategy() *int32
 	SetDescription(v string) *CreateJobShrinkRequest
 	GetDescription() *string
 	SetExecutorBlockStrategy(v int32) *CreateJobShrinkRequest
@@ -47,6 +51,8 @@ type iCreateJobShrinkRequest interface {
 	GetScript() *string
 	SetStartTime(v int64) *CreateJobShrinkRequest
 	GetStartTime() *int64
+	SetStartTimeType(v int32) *CreateJobShrinkRequest
+	GetStartTimeType() *int32
 	SetStatus(v int32) *CreateJobShrinkRequest
 	GetStatus() *int32
 	SetTimeExpression(v string) *CreateJobShrinkRequest
@@ -73,14 +79,22 @@ type CreateJobShrinkRequest struct {
 	// example:
 	//
 	// workday
-	Calendar   *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
+	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
+	// example:
+	//
+	// 1,2
 	ChildJobId *string `json:"ChildJobId,omitempty" xml:"ChildJobId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CoordinateShrink *string `json:"Coordinate,omitempty" xml:"Coordinate,omitempty"`
+	// example:
+	//
+	// 1
+	DependentStrategy *int32 `json:"DependentStrategy,omitempty" xml:"DependentStrategy,omitempty"`
 	// example:
 	//
 	// test
@@ -126,12 +140,19 @@ type CreateJobShrinkRequest struct {
 	// example:
 	//
 	// 1
-	RouteStrategy *int32  `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
-	Script        *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	RouteStrategy *int32 `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
+	// example:
+	//
+	// echo "hello world"
+	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
 	// example:
 	//
 	// 1701310327000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1
+	StartTimeType *int32 `json:"StartTimeType,omitempty" xml:"StartTimeType,omitempty"`
 	// example:
 	//
 	// 1
@@ -182,6 +203,14 @@ func (s *CreateJobShrinkRequest) GetChildJobId() *string {
 
 func (s *CreateJobShrinkRequest) GetClusterId() *string {
 	return s.ClusterId
+}
+
+func (s *CreateJobShrinkRequest) GetCoordinateShrink() *string {
+	return s.CoordinateShrink
+}
+
+func (s *CreateJobShrinkRequest) GetDependentStrategy() *int32 {
+	return s.DependentStrategy
 }
 
 func (s *CreateJobShrinkRequest) GetDescription() *string {
@@ -240,6 +269,10 @@ func (s *CreateJobShrinkRequest) GetStartTime() *int64 {
 	return s.StartTime
 }
 
+func (s *CreateJobShrinkRequest) GetStartTimeType() *int32 {
+	return s.StartTimeType
+}
+
 func (s *CreateJobShrinkRequest) GetStatus() *int32 {
 	return s.Status
 }
@@ -282,6 +315,16 @@ func (s *CreateJobShrinkRequest) SetChildJobId(v string) *CreateJobShrinkRequest
 
 func (s *CreateJobShrinkRequest) SetClusterId(v string) *CreateJobShrinkRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetCoordinateShrink(v string) *CreateJobShrinkRequest {
+	s.CoordinateShrink = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetDependentStrategy(v int32) *CreateJobShrinkRequest {
+	s.DependentStrategy = &v
 	return s
 }
 
@@ -352,6 +395,11 @@ func (s *CreateJobShrinkRequest) SetScript(v string) *CreateJobShrinkRequest {
 
 func (s *CreateJobShrinkRequest) SetStartTime(v int64) *CreateJobShrinkRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetStartTimeType(v int32) *CreateJobShrinkRequest {
+	s.StartTimeType = &v
 	return s
 }
 

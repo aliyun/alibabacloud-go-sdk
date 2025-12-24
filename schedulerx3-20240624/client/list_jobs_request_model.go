@@ -27,6 +27,8 @@ type iListJobsRequest interface {
 	GetPageSize() *int32
 	SetStatus(v string) *ListJobsRequest
 	GetStatus() *string
+	SetWorkflowId(v int64) *ListJobsRequest
+	GetWorkflowId() *int64
 }
 
 type ListJobsRequest struct {
@@ -65,6 +67,10 @@ type ListJobsRequest struct {
 	//
 	// 0
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 }
 
 func (s ListJobsRequest) String() string {
@@ -111,6 +117,10 @@ func (s *ListJobsRequest) GetStatus() *string {
 	return s.Status
 }
 
+func (s *ListJobsRequest) GetWorkflowId() *int64 {
+	return s.WorkflowId
+}
+
 func (s *ListJobsRequest) SetAppName(v string) *ListJobsRequest {
 	s.AppName = &v
 	return s
@@ -153,6 +163,11 @@ func (s *ListJobsRequest) SetPageSize(v int32) *ListJobsRequest {
 
 func (s *ListJobsRequest) SetStatus(v string) *ListJobsRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetWorkflowId(v int64) *ListJobsRequest {
+	s.WorkflowId = &v
 	return s
 }
 

@@ -248,7 +248,10 @@ type ListJobExecutionsResponseBodyDataRecords struct {
 	// example:
 	//
 	// 1
-	TimeType    *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	// example:
+	//
+	// 1000
 	TotalTokens *int32 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
 	// example:
 	//
@@ -258,6 +261,18 @@ type ListJobExecutionsResponseBodyDataRecords struct {
 	//
 	// http://192.168.1.9:9999/
 	WorkAddr *string `json:"WorkAddr,omitempty" xml:"WorkAddr,omitempty"`
+	// example:
+	//
+	// 100
+	WorkflowExecutionId *string `json:"WorkflowExecutionId,omitempty" xml:"WorkflowExecutionId,omitempty"`
+	// example:
+	//
+	// 10
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// example:
+	//
+	// myWorkflow
+	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
 }
 
 func (s ListJobExecutionsResponseBodyDataRecords) String() string {
@@ -346,6 +361,18 @@ func (s *ListJobExecutionsResponseBodyDataRecords) GetTriggerType() *int32 {
 
 func (s *ListJobExecutionsResponseBodyDataRecords) GetWorkAddr() *string {
 	return s.WorkAddr
+}
+
+func (s *ListJobExecutionsResponseBodyDataRecords) GetWorkflowExecutionId() *string {
+	return s.WorkflowExecutionId
+}
+
+func (s *ListJobExecutionsResponseBodyDataRecords) GetWorkflowId() *int64 {
+	return s.WorkflowId
+}
+
+func (s *ListJobExecutionsResponseBodyDataRecords) GetWorkflowName() *string {
+	return s.WorkflowName
 }
 
 func (s *ListJobExecutionsResponseBodyDataRecords) SetAppName(v string) *ListJobExecutionsResponseBodyDataRecords {
@@ -445,6 +472,21 @@ func (s *ListJobExecutionsResponseBodyDataRecords) SetTriggerType(v int32) *List
 
 func (s *ListJobExecutionsResponseBodyDataRecords) SetWorkAddr(v string) *ListJobExecutionsResponseBodyDataRecords {
 	s.WorkAddr = &v
+	return s
+}
+
+func (s *ListJobExecutionsResponseBodyDataRecords) SetWorkflowExecutionId(v string) *ListJobExecutionsResponseBodyDataRecords {
+	s.WorkflowExecutionId = &v
+	return s
+}
+
+func (s *ListJobExecutionsResponseBodyDataRecords) SetWorkflowId(v int64) *ListJobExecutionsResponseBodyDataRecords {
+	s.WorkflowId = &v
+	return s
+}
+
+func (s *ListJobExecutionsResponseBodyDataRecords) SetWorkflowName(v string) *ListJobExecutionsResponseBodyDataRecords {
+	s.WorkflowName = &v
 	return s
 }
 
