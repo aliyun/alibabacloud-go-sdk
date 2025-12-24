@@ -12138,6 +12138,10 @@ func (client *Client) DescribeGlobalTimerRecordsWithOptions(request *DescribeGlo
 		query["DesktopIds"] = request.DesktopIds
 	}
 
+	if !dara.IsNil(request.DisplayResultName) {
+		query["DisplayResultName"] = request.DisplayResultName
+	}
+
 	if !dara.IsNil(request.GroupId) {
 		query["GroupId"] = request.GroupId
 	}
@@ -12156,6 +12160,10 @@ func (client *Client) DescribeGlobalTimerRecordsWithOptions(request *DescribeGlo
 
 	if !dara.IsNil(request.ResultCategory) {
 		query["ResultCategory"] = request.ResultCategory
+	}
+
+	if !dara.IsNil(request.Retryable) {
+		query["Retryable"] = request.Retryable
 	}
 
 	if !dara.IsNil(request.SearchRegionId) {

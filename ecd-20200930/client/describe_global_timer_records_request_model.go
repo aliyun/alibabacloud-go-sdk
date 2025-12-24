@@ -13,6 +13,8 @@ type iDescribeGlobalTimerRecordsRequest interface {
 	GetBatchId() *string
 	SetDesktopIds(v []*string) *DescribeGlobalTimerRecordsRequest
 	GetDesktopIds() []*string
+	SetDisplayResultName(v string) *DescribeGlobalTimerRecordsRequest
+	GetDisplayResultName() *string
 	SetGroupId(v string) *DescribeGlobalTimerRecordsRequest
 	GetGroupId() *string
 	SetMaxResults(v string) *DescribeGlobalTimerRecordsRequest
@@ -23,6 +25,8 @@ type iDescribeGlobalTimerRecordsRequest interface {
 	GetRegionId() *string
 	SetResultCategory(v string) *DescribeGlobalTimerRecordsRequest
 	GetResultCategory() *string
+	SetRetryable(v bool) *DescribeGlobalTimerRecordsRequest
+	GetRetryable() *bool
 	SetSearchRegionId(v string) *DescribeGlobalTimerRecordsRequest
 	GetSearchRegionId() *string
 	SetTimerResult(v string) *DescribeGlobalTimerRecordsRequest
@@ -39,7 +43,8 @@ type DescribeGlobalTimerRecordsRequest struct {
 	// ccg-****
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	// The cloud computer IDs.
-	DesktopIds []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
+	DesktopIds        []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
+	DisplayResultName *string   `json:"DisplayResultName,omitempty" xml:"DisplayResultName,omitempty"`
 	// The ID of the scheduled task group.
 	//
 	// example:
@@ -84,6 +89,7 @@ type DescribeGlobalTimerRecordsRequest struct {
 	//
 	// SUCCEED
 	ResultCategory *string `json:"ResultCategory,omitempty" xml:"ResultCategory,omitempty"`
+	Retryable      *bool   `json:"Retryable,omitempty" xml:"Retryable,omitempty"`
 	// The ID of the searched region. You can specify this parameter to filter cloud computers in specific regions.
 	//
 	// example:
@@ -130,6 +136,10 @@ func (s *DescribeGlobalTimerRecordsRequest) GetDesktopIds() []*string {
 	return s.DesktopIds
 }
 
+func (s *DescribeGlobalTimerRecordsRequest) GetDisplayResultName() *string {
+	return s.DisplayResultName
+}
+
 func (s *DescribeGlobalTimerRecordsRequest) GetGroupId() *string {
 	return s.GroupId
 }
@@ -148,6 +158,10 @@ func (s *DescribeGlobalTimerRecordsRequest) GetRegionId() *string {
 
 func (s *DescribeGlobalTimerRecordsRequest) GetResultCategory() *string {
 	return s.ResultCategory
+}
+
+func (s *DescribeGlobalTimerRecordsRequest) GetRetryable() *bool {
+	return s.Retryable
 }
 
 func (s *DescribeGlobalTimerRecordsRequest) GetSearchRegionId() *string {
@@ -169,6 +183,11 @@ func (s *DescribeGlobalTimerRecordsRequest) SetBatchId(v string) *DescribeGlobal
 
 func (s *DescribeGlobalTimerRecordsRequest) SetDesktopIds(v []*string) *DescribeGlobalTimerRecordsRequest {
 	s.DesktopIds = v
+	return s
+}
+
+func (s *DescribeGlobalTimerRecordsRequest) SetDisplayResultName(v string) *DescribeGlobalTimerRecordsRequest {
+	s.DisplayResultName = &v
 	return s
 }
 
@@ -194,6 +213,11 @@ func (s *DescribeGlobalTimerRecordsRequest) SetRegionId(v string) *DescribeGloba
 
 func (s *DescribeGlobalTimerRecordsRequest) SetResultCategory(v string) *DescribeGlobalTimerRecordsRequest {
 	s.ResultCategory = &v
+	return s
+}
+
+func (s *DescribeGlobalTimerRecordsRequest) SetRetryable(v bool) *DescribeGlobalTimerRecordsRequest {
+	s.Retryable = &v
 	return s
 }
 

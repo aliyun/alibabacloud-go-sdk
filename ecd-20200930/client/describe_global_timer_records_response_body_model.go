@@ -125,7 +125,8 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	// example:
 	//
 	// DesktopName
-	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	DesktopName       *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	DisplayResultName *string `json:"DisplayResultName,omitempty" xml:"DisplayResultName,omitempty"`
 	// The time when the scheduled task ended.
 	//
 	// example:
@@ -137,13 +138,15 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Retryable *bool   `json:"Retryable,omitempty" xml:"Retryable,omitempty"`
 	// The ID of the scheduled task group.
 	//
 	// example:
 	//
 	// ccg-xxxx
-	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
+	TimerGroupId  *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
+	TimerRecordId *string `json:"TimerRecordId,omitempty" xml:"TimerRecordId,omitempty"`
 	// The execution result of the scheduled task.
 	//
 	// example:
@@ -190,6 +193,10 @@ func (s *DescribeGlobalTimerRecordsResponseBodyResults) GetDesktopName() *string
 	return s.DesktopName
 }
 
+func (s *DescribeGlobalTimerRecordsResponseBodyResults) GetDisplayResultName() *string {
+	return s.DisplayResultName
+}
+
 func (s *DescribeGlobalTimerRecordsResponseBodyResults) GetFinishTime() *string {
 	return s.FinishTime
 }
@@ -198,8 +205,16 @@ func (s *DescribeGlobalTimerRecordsResponseBodyResults) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DescribeGlobalTimerRecordsResponseBodyResults) GetRetryable() *bool {
+	return s.Retryable
+}
+
 func (s *DescribeGlobalTimerRecordsResponseBodyResults) GetTimerGroupId() *string {
 	return s.TimerGroupId
+}
+
+func (s *DescribeGlobalTimerRecordsResponseBodyResults) GetTimerRecordId() *string {
+	return s.TimerRecordId
 }
 
 func (s *DescribeGlobalTimerRecordsResponseBodyResults) GetTimerResult() *string {
@@ -240,6 +255,11 @@ func (s *DescribeGlobalTimerRecordsResponseBodyResults) SetDesktopName(v string)
 	return s
 }
 
+func (s *DescribeGlobalTimerRecordsResponseBodyResults) SetDisplayResultName(v string) *DescribeGlobalTimerRecordsResponseBodyResults {
+	s.DisplayResultName = &v
+	return s
+}
+
 func (s *DescribeGlobalTimerRecordsResponseBodyResults) SetFinishTime(v string) *DescribeGlobalTimerRecordsResponseBodyResults {
 	s.FinishTime = &v
 	return s
@@ -250,8 +270,18 @@ func (s *DescribeGlobalTimerRecordsResponseBodyResults) SetRegionId(v string) *D
 	return s
 }
 
+func (s *DescribeGlobalTimerRecordsResponseBodyResults) SetRetryable(v bool) *DescribeGlobalTimerRecordsResponseBodyResults {
+	s.Retryable = &v
+	return s
+}
+
 func (s *DescribeGlobalTimerRecordsResponseBodyResults) SetTimerGroupId(v string) *DescribeGlobalTimerRecordsResponseBodyResults {
 	s.TimerGroupId = &v
+	return s
+}
+
+func (s *DescribeGlobalTimerRecordsResponseBodyResults) SetTimerRecordId(v string) *DescribeGlobalTimerRecordsResponseBodyResults {
+	s.TimerRecordId = &v
 	return s
 }
 
