@@ -2960,6 +2960,10 @@ func (client *Client) CreateAutoProvisioningGroupWithContext(ctx context.Context
 		query["ExcessCapacityTerminationPolicy"] = request.ExcessCapacityTerminationPolicy
 	}
 
+	if !dara.IsNil(request.ExecutionMode) {
+		query["ExecutionMode"] = request.ExecutionMode
+	}
+
 	if !dara.IsNil(request.HibernationOptionsConfigured) {
 		query["HibernationOptionsConfigured"] = request.HibernationOptionsConfigured
 	}

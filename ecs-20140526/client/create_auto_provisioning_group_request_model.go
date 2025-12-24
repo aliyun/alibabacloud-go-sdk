@@ -25,6 +25,8 @@ type iCreateAutoProvisioningGroupRequest interface {
 	GetDescription() *string
 	SetExcessCapacityTerminationPolicy(v string) *CreateAutoProvisioningGroupRequest
 	GetExcessCapacityTerminationPolicy() *string
+	SetExecutionMode(v string) *CreateAutoProvisioningGroupRequest
+	GetExecutionMode() *string
 	SetHibernationOptionsConfigured(v bool) *CreateAutoProvisioningGroupRequest
 	GetHibernationOptionsConfigured() *bool
 	SetLaunchTemplateConfig(v []*CreateAutoProvisioningGroupRequestLaunchTemplateConfig) *CreateAutoProvisioningGroupRequest
@@ -141,6 +143,7 @@ type CreateAutoProvisioningGroupRequest struct {
 	//
 	// termination
 	ExcessCapacityTerminationPolicy *string `json:"ExcessCapacityTerminationPolicy,omitempty" xml:"ExcessCapacityTerminationPolicy,omitempty"`
+	ExecutionMode                   *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
 	// >This parameter is in invitational preview and is not publicly available.
 	//
 	// example:
@@ -367,6 +370,10 @@ func (s *CreateAutoProvisioningGroupRequest) GetExcessCapacityTerminationPolicy(
 	return s.ExcessCapacityTerminationPolicy
 }
 
+func (s *CreateAutoProvisioningGroupRequest) GetExecutionMode() *string {
+	return s.ExecutionMode
+}
+
 func (s *CreateAutoProvisioningGroupRequest) GetHibernationOptionsConfigured() *bool {
 	return s.HibernationOptionsConfigured
 }
@@ -512,6 +519,11 @@ func (s *CreateAutoProvisioningGroupRequest) SetDescription(v string) *CreateAut
 
 func (s *CreateAutoProvisioningGroupRequest) SetExcessCapacityTerminationPolicy(v string) *CreateAutoProvisioningGroupRequest {
 	s.ExcessCapacityTerminationPolicy = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequest) SetExecutionMode(v string) *CreateAutoProvisioningGroupRequest {
+	s.ExecutionMode = &v
 	return s
 }
 

@@ -4056,6 +4056,10 @@ func (client *Client) CreateAutoProvisioningGroupWithOptions(tmpReq *CreateAutoP
 		query["ExcessCapacityTerminationPolicy"] = request.ExcessCapacityTerminationPolicy
 	}
 
+	if !dara.IsNil(request.ExecutionMode) {
+		query["ExecutionMode"] = request.ExecutionMode
+	}
+
 	if !dara.IsNil(request.HibernationOptionsConfigured) {
 		query["HibernationOptionsConfigured"] = request.HibernationOptionsConfigured
 	}
