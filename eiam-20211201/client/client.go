@@ -1638,6 +1638,72 @@ func (client *Client) CreateIdentityProvider(request *CreateIdentityProviderRequ
 
 // Summary:
 //
+// 创建IdP状态检查任务
+//
+// @param request - CreateIdentityProviderStatusCheckJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIdentityProviderStatusCheckJobResponse
+func (client *Client) CreateIdentityProviderStatusCheckJobWithOptions(request *CreateIdentityProviderStatusCheckJobRequest, runtime *dara.RuntimeOptions) (_result *CreateIdentityProviderStatusCheckJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IdentityProviderId) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateIdentityProviderStatusCheckJob"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateIdentityProviderStatusCheckJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建IdP状态检查任务
+//
+// @param request - CreateIdentityProviderStatusCheckJobRequest
+//
+// @return CreateIdentityProviderStatusCheckJobResponse
+func (client *Client) CreateIdentityProviderStatusCheckJob(request *CreateIdentityProviderStatusCheckJobRequest) (_result *CreateIdentityProviderStatusCheckJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateIdentityProviderStatusCheckJobResponse{}
+	_body, _err := client.CreateIdentityProviderStatusCheckJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an instance based on which all capabilities of Identity as a Service (IDaaS) Enterprise Identity and Access Management (EIAM) are provided.
 //
 // @param request - CreateInstanceRequest
@@ -3296,6 +3362,142 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 
 // Summary:
 //
+// 批量删除账号
+//
+// @param request - DeleteUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUsersResponse
+func (client *Client) DeleteUsersWithOptions(request *DeleteUsersRequest, runtime *dara.RuntimeOptions) (_result *DeleteUsersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.UserIds) {
+		query["UserIds"] = request.UserIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteUsers"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除账号
+//
+// @param request - DeleteUsersRequest
+//
+// @return DeleteUsersResponse
+func (client *Client) DeleteUsers(request *DeleteUsersRequest) (_result *DeleteUsersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteUsersResponse{}
+	_body, _err := client.DeleteUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定WebAuthn认证器名称
+//
+// @param request - DeleteWebAuthnAuthenticatorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWebAuthnAuthenticatorResponse
+func (client *Client) DeleteWebAuthnAuthenticatorWithOptions(request *DeleteWebAuthnAuthenticatorRequest, runtime *dara.RuntimeOptions) (_result *DeleteWebAuthnAuthenticatorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthenticatorId) {
+		query["AuthenticatorId"] = request.AuthenticatorId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWebAuthnAuthenticator"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWebAuthnAuthenticatorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定WebAuthn认证器名称
+//
+// @param request - DeleteWebAuthnAuthenticatorRequest
+//
+// @return DeleteWebAuthnAuthenticatorResponse
+func (client *Client) DeleteWebAuthnAuthenticator(request *DeleteWebAuthnAuthenticatorRequest) (_result *DeleteWebAuthnAuthenticatorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteWebAuthnAuthenticatorResponse{}
+	_body, _err := client.DeleteWebAuthnAuthenticatorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables an enabled Employee Identity and Access Management (EIAM) application. All features of the EIAM application cannot be used if you disable the EIAM application.
 //
 // Description:
@@ -4120,6 +4322,72 @@ func (client *Client) DisableFederatedCredentialProvider(request *DisableFederat
 
 // Summary:
 //
+// 禁用高级配置
+//
+// @param request - DisableIdentityProviderAdvancedAbilityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableIdentityProviderAdvancedAbilityResponse
+func (client *Client) DisableIdentityProviderAdvancedAbilityWithOptions(request *DisableIdentityProviderAdvancedAbilityRequest, runtime *dara.RuntimeOptions) (_result *DisableIdentityProviderAdvancedAbilityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IdentityProviderId) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableIdentityProviderAdvancedAbility"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableIdentityProviderAdvancedAbilityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用高级配置
+//
+// @param request - DisableIdentityProviderAdvancedAbilityRequest
+//
+// @return DisableIdentityProviderAdvancedAbilityResponse
+func (client *Client) DisableIdentityProviderAdvancedAbility(request *DisableIdentityProviderAdvancedAbilityRequest) (_result *DisableIdentityProviderAdvancedAbilityResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisableIdentityProviderAdvancedAbilityResponse{}
+	_body, _err := client.DisableIdentityProviderAdvancedAbilityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 禁用认证
 //
 // @param request - DisableIdentityProviderAuthnRequest
@@ -4305,6 +4573,72 @@ func (client *Client) DisableInitDomainAutoRedirect(request *DisableInitDomainAu
 	runtime := &dara.RuntimeOptions{}
 	_result = &DisableInitDomainAutoRedirectResponse{}
 	_body, _err := client.DisableInitDomainAutoRedirectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用内部认证源
+//
+// @param request - DisableInternalAuthenticationSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableInternalAuthenticationSourceResponse
+func (client *Client) DisableInternalAuthenticationSourceWithOptions(request *DisableInternalAuthenticationSourceRequest, runtime *dara.RuntimeOptions) (_result *DisableInternalAuthenticationSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthenticationSourceId) {
+		query["AuthenticationSourceId"] = request.AuthenticationSourceId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableInternalAuthenticationSource"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableInternalAuthenticationSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用内部认证源
+//
+// @param request - DisableInternalAuthenticationSourceRequest
+//
+// @return DisableInternalAuthenticationSourceResponse
+func (client *Client) DisableInternalAuthenticationSource(request *DisableInternalAuthenticationSourceRequest) (_result *DisableInternalAuthenticationSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisableInternalAuthenticationSourceResponse{}
+	_body, _err := client.DisableInternalAuthenticationSourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5196,6 +5530,72 @@ func (client *Client) EnableFederatedCredentialProvider(request *EnableFederated
 
 // Summary:
 //
+// 启用高级配置
+//
+// @param request - EnableIdentityProviderAdvancedAbilityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableIdentityProviderAdvancedAbilityResponse
+func (client *Client) EnableIdentityProviderAdvancedAbilityWithOptions(request *EnableIdentityProviderAdvancedAbilityRequest, runtime *dara.RuntimeOptions) (_result *EnableIdentityProviderAdvancedAbilityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IdentityProviderId) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableIdentityProviderAdvancedAbility"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableIdentityProviderAdvancedAbilityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用高级配置
+//
+// @param request - EnableIdentityProviderAdvancedAbilityRequest
+//
+// @return EnableIdentityProviderAdvancedAbilityResponse
+func (client *Client) EnableIdentityProviderAdvancedAbility(request *EnableIdentityProviderAdvancedAbilityRequest) (_result *EnableIdentityProviderAdvancedAbilityResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnableIdentityProviderAdvancedAbilityResponse{}
+	_body, _err := client.EnableIdentityProviderAdvancedAbilityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 启用认证
 //
 // @param request - EnableIdentityProviderAuthnRequest
@@ -5390,6 +5790,72 @@ func (client *Client) EnableInitDomainAutoRedirect(request *EnableInitDomainAuto
 
 // Summary:
 //
+// 启用内部认证源
+//
+// @param request - EnableInternalAuthenticationSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableInternalAuthenticationSourceResponse
+func (client *Client) EnableInternalAuthenticationSourceWithOptions(request *EnableInternalAuthenticationSourceRequest, runtime *dara.RuntimeOptions) (_result *EnableInternalAuthenticationSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthenticationSourceId) {
+		query["AuthenticationSourceId"] = request.AuthenticationSourceId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableInternalAuthenticationSource"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableInternalAuthenticationSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用内部认证源
+//
+// @param request - EnableInternalAuthenticationSourceRequest
+//
+// @return EnableInternalAuthenticationSourceResponse
+func (client *Client) EnableInternalAuthenticationSource(request *EnableInternalAuthenticationSourceRequest) (_result *EnableInternalAuthenticationSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnableInternalAuthenticationSourceResponse{}
+	_body, _err := client.EnableInternalAuthenticationSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS).
 //
 // @param request - EnableUserRequest
@@ -5447,6 +5913,208 @@ func (client *Client) EnableUser(request *EnableUserRequest) (_result *EnableUse
 	runtime := &dara.RuntimeOptions{}
 	_result = &EnableUserResponse{}
 	_body, _err := client.EnableUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成文件导入结果下载地址
+//
+// @param request - GenerateDownloadUrlForSynchronizationJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateDownloadUrlForSynchronizationJobResponse
+func (client *Client) GenerateDownloadUrlForSynchronizationJobWithOptions(request *GenerateDownloadUrlForSynchronizationJobRequest, runtime *dara.RuntimeOptions) (_result *GenerateDownloadUrlForSynchronizationJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.SynchronizationJobId) {
+		query["SynchronizationJobId"] = request.SynchronizationJobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateDownloadUrlForSynchronizationJob"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateDownloadUrlForSynchronizationJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成文件导入结果下载地址
+//
+// @param request - GenerateDownloadUrlForSynchronizationJobRequest
+//
+// @return GenerateDownloadUrlForSynchronizationJobResponse
+func (client *Client) GenerateDownloadUrlForSynchronizationJob(request *GenerateDownloadUrlForSynchronizationJobRequest) (_result *GenerateDownloadUrlForSynchronizationJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GenerateDownloadUrlForSynchronizationJobResponse{}
+	_body, _err := client.GenerateDownloadUrlForSynchronizationJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成文件导入模板
+//
+// @param request - GenerateFileImportTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateFileImportTemplateResponse
+func (client *Client) GenerateFileImportTemplateWithOptions(request *GenerateFileImportTemplateRequest, runtime *dara.RuntimeOptions) (_result *GenerateFileImportTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.TargetType) {
+		query["TargetType"] = request.TargetType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateFileImportTemplate"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateFileImportTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成文件导入模板
+//
+// @param request - GenerateFileImportTemplateRequest
+//
+// @return GenerateFileImportTemplateResponse
+func (client *Client) GenerateFileImportTemplate(request *GenerateFileImportTemplateRequest) (_result *GenerateFileImportTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GenerateFileImportTemplateResponse{}
+	_body, _err := client.GenerateFileImportTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取上传认证
+//
+// @param request - GenerateUploadAuthRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateUploadAuthResponse
+func (client *Client) GenerateUploadAuthWithOptions(request *GenerateUploadAuthRequest, runtime *dara.RuntimeOptions) (_result *GenerateUploadAuthResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Purpose) {
+		query["Purpose"] = request.Purpose
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateUploadAuth"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateUploadAuthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取上传认证
+//
+// @param request - GenerateUploadAuthRequest
+//
+// @return GenerateUploadAuthResponse
+func (client *Client) GenerateUploadAuth(request *GenerateUploadAuthRequest) (_result *GenerateUploadAuthResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GenerateUploadAuthResponse{}
+	_body, _err := client.GenerateUploadAuthWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11882,6 +12550,76 @@ func (client *Client) SetApplicationProvisioningScope(request *SetApplicationPro
 	runtime := &dara.RuntimeOptions{}
 	_result = &SetApplicationProvisioningScopeResponse{}
 	_body, _err := client.SetApplicationProvisioningScopeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置应用同步用户主组织
+//
+// @param request - SetApplicationProvisioningUserPrimaryOrganizationalUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetApplicationProvisioningUserPrimaryOrganizationalUnitResponse
+func (client *Client) SetApplicationProvisioningUserPrimaryOrganizationalUnitWithOptions(request *SetApplicationProvisioningUserPrimaryOrganizationalUnitRequest, runtime *dara.RuntimeOptions) (_result *SetApplicationProvisioningUserPrimaryOrganizationalUnitResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.UserPrimaryOrganizationalUnitId) {
+		query["UserPrimaryOrganizationalUnitId"] = request.UserPrimaryOrganizationalUnitId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetApplicationProvisioningUserPrimaryOrganizationalUnit"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetApplicationProvisioningUserPrimaryOrganizationalUnitResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置应用同步用户主组织
+//
+// @param request - SetApplicationProvisioningUserPrimaryOrganizationalUnitRequest
+//
+// @return SetApplicationProvisioningUserPrimaryOrganizationalUnitResponse
+func (client *Client) SetApplicationProvisioningUserPrimaryOrganizationalUnit(request *SetApplicationProvisioningUserPrimaryOrganizationalUnitRequest) (_result *SetApplicationProvisioningUserPrimaryOrganizationalUnitResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SetApplicationProvisioningUserPrimaryOrganizationalUnitResponse{}
+	_body, _err := client.SetApplicationProvisioningUserPrimaryOrganizationalUnitWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
