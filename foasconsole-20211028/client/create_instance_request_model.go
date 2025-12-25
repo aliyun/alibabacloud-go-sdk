@@ -303,7 +303,31 @@ func (s *CreateInstanceRequest) SetVpcId(v string) *CreateInstanceRequest {
 }
 
 func (s *CreateInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.HaResourceSpec != nil {
+		if err := s.HaResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceSpec != nil {
+		if err := s.ResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Storage != nil {
+		if err := s.Storage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateInstanceRequestHaResourceSpec struct {
@@ -414,7 +438,12 @@ func (s *CreateInstanceRequestStorage) SetOss(v *CreateInstanceRequestStorageOss
 }
 
 func (s *CreateInstanceRequestStorage) Validate() error {
-	return dara.Validate(s)
+	if s.Oss != nil {
+		if err := s.Oss.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateInstanceRequestStorageOss struct {

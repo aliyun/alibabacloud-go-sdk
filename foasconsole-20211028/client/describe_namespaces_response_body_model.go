@@ -125,7 +125,16 @@ func (s *DescribeNamespacesResponseBody) SetTotalPage(v int32) *DescribeNamespac
 }
 
 func (s *DescribeNamespacesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Namespaces != nil {
+		for _, item := range s.Namespaces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNamespacesResponseBodyNamespaces struct {
@@ -252,7 +261,36 @@ func (s *DescribeNamespacesResponseBodyNamespaces) SetTags(v []*DescribeNamespac
 }
 
 func (s *DescribeNamespacesResponseBodyNamespaces) Validate() error {
-	return dara.Validate(s)
+	if s.ElasticResourceSpec != nil {
+		if err := s.ElasticResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.GuaranteedResourceSpec != nil {
+		if err := s.GuaranteedResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceSpec != nil {
+		if err := s.ResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceUsed != nil {
+		if err := s.ResourceUsed.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNamespacesResponseBodyNamespacesElasticResourceSpec struct {

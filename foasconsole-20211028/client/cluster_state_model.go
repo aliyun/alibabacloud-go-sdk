@@ -59,5 +59,10 @@ func (s *ClusterState) SetSubStatus(v string) *ClusterState {
 }
 
 func (s *ClusterState) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterStage != nil {
+		if err := s.ClusterStage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

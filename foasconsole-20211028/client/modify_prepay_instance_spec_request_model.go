@@ -126,7 +126,17 @@ func (s *ModifyPrepayInstanceSpecRequest) SetResourceSpec(v *ModifyPrepayInstanc
 }
 
 func (s *ModifyPrepayInstanceSpecRequest) Validate() error {
-	return dara.Validate(s)
+	if s.HaResourceSpec != nil {
+		if err := s.HaResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceSpec != nil {
+		if err := s.ResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyPrepayInstanceSpecRequestHaResourceSpec struct {

@@ -125,7 +125,16 @@ func (s *DescribeSupportedRegionsResponseBody) SetTotalPage(v int32) *DescribeSu
 }
 
 func (s *DescribeSupportedRegionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Regions != nil {
+		for _, item := range s.Regions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSupportedRegionsResponseBodyRegions struct {

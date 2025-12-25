@@ -59,5 +59,10 @@ func (s *ModifyNamespaceSpecV2Response) SetBody(v *ModifyNamespaceSpecV2Response
 }
 
 func (s *ModifyNamespaceSpecV2Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

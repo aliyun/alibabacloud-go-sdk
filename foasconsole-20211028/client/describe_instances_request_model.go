@@ -15,6 +15,10 @@ type iDescribeInstancesRequest interface {
 	GetChargeType() *string
 	SetInstanceId(v string) *DescribeInstancesRequest
 	GetInstanceId() *string
+	SetInstanceName(v string) *DescribeInstancesRequest
+	GetInstanceName() *string
+	SetNamespaceName(v string) *DescribeInstancesRequest
+	GetNamespaceName() *string
 	SetPageIndex(v int32) *DescribeInstancesRequest
 	GetPageIndex() *int32
 	SetPageSize(v int32) *DescribeInstancesRequest
@@ -28,6 +32,9 @@ type iDescribeInstancesRequest interface {
 }
 
 type DescribeInstancesRequest struct {
+	// example:
+	//
+	// X86
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
 	// example:
 	//
@@ -37,6 +44,14 @@ type DescribeInstancesRequest struct {
 	//
 	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// e2e-test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// e2e-test-default
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	// example:
 	//
 	// 2
@@ -75,6 +90,14 @@ func (s *DescribeInstancesRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DescribeInstancesRequest) GetInstanceName() *string {
+	return s.InstanceName
+}
+
+func (s *DescribeInstancesRequest) GetNamespaceName() *string {
+	return s.NamespaceName
+}
+
 func (s *DescribeInstancesRequest) GetPageIndex() *int32 {
 	return s.PageIndex
 }
@@ -110,6 +133,16 @@ func (s *DescribeInstancesRequest) SetInstanceId(v string) *DescribeInstancesReq
 	return s
 }
 
+func (s *DescribeInstancesRequest) SetInstanceName(v string) *DescribeInstancesRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeInstancesRequest) SetNamespaceName(v string) *DescribeInstancesRequest {
+	s.NamespaceName = &v
+	return s
+}
+
 func (s *DescribeInstancesRequest) SetPageIndex(v int32) *DescribeInstancesRequest {
 	s.PageIndex = &v
 	return s
@@ -136,7 +169,16 @@ func (s *DescribeInstancesRequest) SetTags(v []*DescribeInstancesRequestTags) *D
 }
 
 func (s *DescribeInstancesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesRequestTags struct {

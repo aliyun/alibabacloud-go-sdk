@@ -215,5 +215,19 @@ func (s *FlussInstance) SetVpcId(v string) *FlussInstance {
 }
 
 func (s *FlussInstance) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterState != nil {
+		if err := s.ClusterState.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VSwitches != nil {
+		for _, item := range s.VSwitches {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

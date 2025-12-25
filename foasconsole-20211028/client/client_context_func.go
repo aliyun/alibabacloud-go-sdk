@@ -17,9 +17,11 @@ import (
 //
 // @return ConvertHybridInstanceResponse
 func (client *Client) ConvertHybridInstanceWithContext(ctx context.Context, tmpReq *ConvertHybridInstanceRequest, runtime *dara.RuntimeOptions) (_result *ConvertHybridInstanceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ConvertHybridInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -73,9 +75,11 @@ func (client *Client) ConvertHybridInstanceWithContext(ctx context.Context, tmpR
 //
 // @return ConvertInstanceResponse
 func (client *Client) ConvertInstanceWithContext(ctx context.Context, tmpReq *ConvertInstanceRequest, runtime *dara.RuntimeOptions) (_result *ConvertInstanceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ConvertInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -149,9 +153,11 @@ func (client *Client) ConvertInstanceWithContext(ctx context.Context, tmpReq *Co
 //
 // @return ConvertPrepayInstanceResponse
 func (client *Client) ConvertPrepayInstanceWithContext(ctx context.Context, request *ConvertPrepayInstanceRequest, runtime *dara.RuntimeOptions) (_result *ConvertPrepayInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -195,9 +201,11 @@ func (client *Client) ConvertPrepayInstanceWithContext(ctx context.Context, requ
 //
 // @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithContext(ctx context.Context, tmpReq *CreateInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -339,9 +347,11 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, tmpReq *Cre
 //
 // @return CreateNamespaceResponse
 func (client *Client) CreateNamespaceWithContext(ctx context.Context, tmpReq *CreateNamespaceRequest, runtime *dara.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateNamespaceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -403,9 +413,11 @@ func (client *Client) CreateNamespaceWithContext(ctx context.Context, tmpReq *Cr
 //
 // @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -449,9 +461,11 @@ func (client *Client) DeleteInstanceWithContext(ctx context.Context, request *De
 //
 // @return DeleteNamespaceResponse
 func (client *Client) DeleteNamespaceWithContext(ctx context.Context, request *DeleteNamespaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteNamespaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -499,9 +513,11 @@ func (client *Client) DeleteNamespaceWithContext(ctx context.Context, request *D
 //
 // @return DescribeInstancesResponse
 func (client *Client) DescribeInstancesWithContext(ctx context.Context, tmpReq *DescribeInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -543,9 +559,11 @@ func (client *Client) DescribeInstancesWithContext(ctx context.Context, tmpReq *
 //
 // @return DescribeNamespacesResponse
 func (client *Client) DescribeNamespacesWithContext(ctx context.Context, tmpReq *DescribeNamespacesRequest, runtime *dara.RuntimeOptions) (_result *DescribeNamespacesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeNamespacesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -587,9 +605,11 @@ func (client *Client) DescribeNamespacesWithContext(ctx context.Context, tmpReq 
 //
 // @return DescribeSupportedZonesResponse
 func (client *Client) DescribeSupportedZonesWithContext(ctx context.Context, request *DescribeSupportedZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSupportedZonesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -625,9 +645,11 @@ func (client *Client) DescribeSupportedZonesWithContext(ctx context.Context, req
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextToken) {
@@ -683,9 +705,11 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 //
 // @return ModifyElasticResourceSpecResponse
 func (client *Client) ModifyElasticResourceSpecWithContext(ctx context.Context, tmpReq *ModifyElasticResourceSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyElasticResourceSpecResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyElasticResourceSpecShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -741,9 +765,11 @@ func (client *Client) ModifyElasticResourceSpecWithContext(ctx context.Context, 
 //
 // @return ModifyInstanceVswitchResponse
 func (client *Client) ModifyInstanceVswitchWithContext(ctx context.Context, tmpReq *ModifyInstanceVswitchRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceVswitchResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyInstanceVswitchShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -801,9 +827,11 @@ func (client *Client) ModifyInstanceVswitchWithContext(ctx context.Context, tmpR
 //
 // @return ModifyNamespaceSpecV2Response
 func (client *Client) ModifyNamespaceSpecV2WithContext(ctx context.Context, tmpReq *ModifyNamespaceSpecV2Request, runtime *dara.RuntimeOptions) (_result *ModifyNamespaceSpecV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyNamespaceSpecV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -877,9 +905,11 @@ func (client *Client) ModifyNamespaceSpecV2WithContext(ctx context.Context, tmpR
 //
 // @return ModifyPrepayInstanceSpecResponse
 func (client *Client) ModifyPrepayInstanceSpecWithContext(ctx context.Context, tmpReq *ModifyPrepayInstanceSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyPrepayInstanceSpecResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyPrepayInstanceSpecShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -959,9 +989,11 @@ func (client *Client) ModifyPrepayInstanceSpecWithContext(ctx context.Context, t
 //
 // @return ModifyPrepayNamespaceSpecResponse
 func (client *Client) ModifyPrepayNamespaceSpecWithContext(ctx context.Context, tmpReq *ModifyPrepayNamespaceSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyPrepayNamespaceSpecResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyPrepayNamespaceSpecShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1019,9 +1051,11 @@ func (client *Client) ModifyPrepayNamespaceSpecWithContext(ctx context.Context, 
 //
 // @return QueryConvertInstancePriceResponse
 func (client *Client) QueryConvertInstancePriceWithContext(ctx context.Context, tmpReq *QueryConvertInstancePriceRequest, runtime *dara.RuntimeOptions) (_result *QueryConvertInstancePriceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryConvertInstancePriceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1095,9 +1129,11 @@ func (client *Client) QueryConvertInstancePriceWithContext(ctx context.Context, 
 //
 // @return QueryConvertPrepayInstancePriceResponse
 func (client *Client) QueryConvertPrepayInstancePriceWithContext(ctx context.Context, request *QueryConvertPrepayInstancePriceRequest, runtime *dara.RuntimeOptions) (_result *QueryConvertPrepayInstancePriceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -1141,9 +1177,11 @@ func (client *Client) QueryConvertPrepayInstancePriceWithContext(ctx context.Con
 //
 // @return QueryCreateInstancePriceResponse
 func (client *Client) QueryCreateInstancePriceWithContext(ctx context.Context, tmpReq *QueryCreateInstancePriceRequest, runtime *dara.RuntimeOptions) (_result *QueryCreateInstancePriceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryCreateInstancePriceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1261,9 +1299,11 @@ func (client *Client) QueryCreateInstancePriceWithContext(ctx context.Context, t
 //
 // @return QueryModifyInstancePriceResponse
 func (client *Client) QueryModifyInstancePriceWithContext(ctx context.Context, tmpReq *QueryModifyInstancePriceRequest, runtime *dara.RuntimeOptions) (_result *QueryModifyInstancePriceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryModifyInstancePriceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1345,9 +1385,11 @@ func (client *Client) QueryModifyInstancePriceWithContext(ctx context.Context, t
 //
 // @return QueryRenewInstancePriceResponse
 func (client *Client) QueryRenewInstancePriceWithContext(ctx context.Context, request *QueryRenewInstancePriceRequest, runtime *dara.RuntimeOptions) (_result *QueryRenewInstancePriceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Duration) {
@@ -1407,9 +1449,11 @@ func (client *Client) QueryRenewInstancePriceWithContext(ctx context.Context, re
 //
 // @return RenewInstanceResponse
 func (client *Client) RenewInstanceWithContext(ctx context.Context, request *RenewInstanceRequest, runtime *dara.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Duration) {
@@ -1469,9 +1513,11 @@ func (client *Client) RenewInstanceWithContext(ctx context.Context, request *Ren
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1523,9 +1569,11 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {

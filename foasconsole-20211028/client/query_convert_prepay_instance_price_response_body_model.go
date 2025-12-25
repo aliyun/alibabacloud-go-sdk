@@ -65,7 +65,12 @@ func (s *QueryConvertPrepayInstancePriceResponseBody) SetSuccess(v bool) *QueryC
 }
 
 func (s *QueryConvertPrepayInstancePriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PriceInfo != nil {
+		if err := s.PriceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryConvertPrepayInstancePriceResponseBodyPriceInfo struct {
@@ -86,6 +91,10 @@ type QueryConvertPrepayInstancePriceResponseBodyPriceInfo struct {
 	//
 	// true
 	IsContractActivity *bool `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
+	LxRequestId *string `json:"LxRequestId,omitempty" xml:"LxRequestId,omitempty"`
 	// example:
 	//
 	// 存在未支付订单，请先支付或取消原有订单
@@ -136,6 +145,10 @@ func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) GetDiscountAmount
 
 func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) GetIsContractActivity() *bool {
 	return s.IsContractActivity
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) GetLxRequestId() *string {
+	return s.LxRequestId
 }
 
 func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) GetMessage() *string {
@@ -191,6 +204,11 @@ func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetIsContractActi
 	return s
 }
 
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetLxRequestId(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.LxRequestId = &v
+	return s
+}
+
 func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetMessage(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
 	s.Message = &v
 	return s
@@ -227,7 +245,30 @@ func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetTradeAmount(v 
 }
 
 func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DepreciateInfo != nil {
+		if err := s.DepreciateInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OptionalPromotions != nil {
+		for _, item := range s.OptionalPromotions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo struct {

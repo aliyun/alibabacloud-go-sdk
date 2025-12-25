@@ -245,7 +245,22 @@ func (s *QueryCreateInstancePriceRequest) SetVpcId(v string) *QueryCreateInstanc
 }
 
 func (s *QueryCreateInstancePriceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.HaResourceSpec != nil {
+		if err := s.HaResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceSpec != nil {
+		if err := s.ResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Storage != nil {
+		if err := s.Storage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCreateInstancePriceRequestHaResourceSpec struct {
@@ -350,7 +365,12 @@ func (s *QueryCreateInstancePriceRequestStorage) SetOss(v *QueryCreateInstancePr
 }
 
 func (s *QueryCreateInstancePriceRequestStorage) Validate() error {
-	return dara.Validate(s)
+	if s.Oss != nil {
+		if err := s.Oss.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCreateInstancePriceRequestStorageOss struct {

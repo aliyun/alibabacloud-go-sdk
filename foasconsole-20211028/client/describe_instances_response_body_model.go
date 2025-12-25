@@ -125,7 +125,16 @@ func (s *DescribeInstancesResponseBody) SetTotalPage(v int32) *DescribeInstances
 }
 
 func (s *DescribeInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstances struct {
@@ -144,13 +153,17 @@ type DescribeInstancesResponseBodyInstances struct {
 	ClusterUsedResources *DescribeInstancesResponseBodyInstancesClusterUsedResources `json:"ClusterUsedResources,omitempty" xml:"ClusterUsedResources,omitempty" type:"Struct"`
 	ClusterUsedStorage   *DescribeInstancesResponseBodyInstancesClusterUsedStorage   `json:"ClusterUsedStorage,omitempty" xml:"ClusterUsedStorage,omitempty" type:"Struct"`
 	Elastic              *bool                                                       `json:"Elastic,omitempty" xml:"Elastic,omitempty"`
-	ElasticOrderState    *string                                                     `json:"ElasticOrderState,omitempty" xml:"ElasticOrderState,omitempty"`
-	ElasticResourceSpec  *DescribeInstancesResponseBodyInstancesElasticResourceSpec  `json:"ElasticResourceSpec,omitempty" xml:"ElasticResourceSpec,omitempty" type:"Struct"`
-	Ha                   *bool                                                       `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	HaResourceSpec       *DescribeInstancesResponseBodyInstancesHaResourceSpec       `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
-	HaVSwitchIds         []*string                                                   `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
-	HaVSwitchInfo        []*DescribeInstancesResponseBodyInstancesHaVSwitchInfo      `json:"HaVSwitchInfo,omitempty" xml:"HaVSwitchInfo,omitempty" type:"Repeated"`
-	HaZoneId             *string                                                     `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
+	// example:
+	//
+	// f-cn-e3afbd321
+	ElasticInstanceId   *string                                                    `json:"ElasticInstanceId,omitempty" xml:"ElasticInstanceId,omitempty"`
+	ElasticOrderState   *string                                                    `json:"ElasticOrderState,omitempty" xml:"ElasticOrderState,omitempty"`
+	ElasticResourceSpec *DescribeInstancesResponseBodyInstancesElasticResourceSpec `json:"ElasticResourceSpec,omitempty" xml:"ElasticResourceSpec,omitempty" type:"Struct"`
+	Ha                  *bool                                                      `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	HaResourceSpec      *DescribeInstancesResponseBodyInstancesHaResourceSpec      `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
+	HaVSwitchIds        []*string                                                  `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
+	HaVSwitchInfo       []*DescribeInstancesResponseBodyInstancesHaVSwitchInfo     `json:"HaVSwitchInfo,omitempty" xml:"HaVSwitchInfo,omitempty" type:"Repeated"`
+	HaZoneId            *string                                                    `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
 	// This parameter is required.
 	HostAliases []*DescribeInstancesResponseBodyInstancesHostAliases `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
 	// example:
@@ -246,6 +259,10 @@ func (s *DescribeInstancesResponseBodyInstances) GetClusterUsedStorage() *Descri
 
 func (s *DescribeInstancesResponseBodyInstances) GetElastic() *bool {
 	return s.Elastic
+}
+
+func (s *DescribeInstancesResponseBodyInstances) GetElasticInstanceId() *string {
+	return s.ElasticInstanceId
 }
 
 func (s *DescribeInstancesResponseBodyInstances) GetElasticOrderState() *string {
@@ -401,6 +418,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetElastic(v bool) *DescribeIns
 	return s
 }
 
+func (s *DescribeInstancesResponseBodyInstances) SetElasticInstanceId(v string) *DescribeInstancesResponseBodyInstances {
+	s.ElasticInstanceId = &v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstances) SetElasticOrderState(v string) *DescribeInstancesResponseBodyInstances {
 	s.ElasticOrderState = &v
 	return s
@@ -537,7 +559,88 @@ func (s *DescribeInstancesResponseBodyInstances) SetZoneId(v string) *DescribeIn
 }
 
 func (s *DescribeInstancesResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterState != nil {
+		if err := s.ClusterState.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClusterUsedResources != nil {
+		if err := s.ClusterUsedResources.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClusterUsedStorage != nil {
+		if err := s.ClusterUsedStorage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ElasticResourceSpec != nil {
+		if err := s.ElasticResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HaResourceSpec != nil {
+		if err := s.HaResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HaVSwitchInfo != nil {
+		for _, item := range s.HaVSwitchInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HostAliases != nil {
+		for _, item := range s.HostAliases {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OssInfo != nil {
+		if err := s.OssInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceSpec != nil {
+		if err := s.ResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Storage != nil {
+		if err := s.Storage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VSwitchInfo != nil {
+		for _, item := range s.VSwitchInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VpcInfo != nil {
+		if err := s.VpcInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesClusterState struct {
@@ -632,7 +735,17 @@ func (s *DescribeInstancesResponseBodyInstancesClusterState) SetVpcCidr(v string
 }
 
 func (s *DescribeInstancesResponseBodyInstancesClusterState) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterStage != nil {
+		if err := s.ClusterStage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserSlbDto != nil {
+		if err := s.UserSlbDto.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesClusterStateClusterStage struct {
@@ -697,7 +810,16 @@ func (s *DescribeInstancesResponseBodyInstancesClusterStateClusterStage) SetTota
 }
 
 func (s *DescribeInstancesResponseBodyInstancesClusterStateClusterStage) Validate() error {
-	return dara.Validate(s)
+	if s.TotalStageWithWeight != nil {
+		for _, item := range s.TotalStageWithWeight {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesClusterStateClusterStageTotalStageWithWeight struct {
@@ -807,7 +929,16 @@ func (s *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto) SetUserSl
 }
 
 func (s *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto) Validate() error {
-	return dara.Validate(s)
+	if s.UserSlbListeners != nil {
+		for _, item := range s.UserSlbListeners {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesClusterStateUserSlbDtoUserSlbListeners struct {
@@ -1405,7 +1536,12 @@ func (s *DescribeInstancesResponseBodyInstancesStorage) SetSupportMigrationProgr
 }
 
 func (s *DescribeInstancesResponseBodyInstancesStorage) Validate() error {
-	return dara.Validate(s)
+	if s.Oss != nil {
+		if err := s.Oss.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesStorageOss struct {

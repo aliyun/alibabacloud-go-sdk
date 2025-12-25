@@ -70,7 +70,12 @@ func (s *ConvertHybridInstanceRequest) SetResourceSpec(v *ConvertHybridInstanceR
 }
 
 func (s *ConvertHybridInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceSpec != nil {
+		if err := s.ResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ConvertHybridInstanceRequestResourceSpec struct {

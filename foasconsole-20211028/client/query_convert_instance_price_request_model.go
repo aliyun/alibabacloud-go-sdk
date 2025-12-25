@@ -145,7 +145,16 @@ func (s *QueryConvertInstancePriceRequest) SetUsePromotionCode(v bool) *QueryCon
 }
 
 func (s *QueryConvertInstancePriceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NamespaceResourceSpecs != nil {
+		for _, item := range s.NamespaceResourceSpecs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryConvertInstancePriceRequestNamespaceResourceSpecs struct {
@@ -186,7 +195,12 @@ func (s *QueryConvertInstancePriceRequestNamespaceResourceSpecs) SetResourceSpec
 }
 
 func (s *QueryConvertInstancePriceRequestNamespaceResourceSpecs) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceSpec != nil {
+		if err := s.ResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryConvertInstancePriceRequestNamespaceResourceSpecsResourceSpec struct {

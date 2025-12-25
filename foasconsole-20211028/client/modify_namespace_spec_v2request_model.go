@@ -115,7 +115,17 @@ func (s *ModifyNamespaceSpecV2Request) SetRegion(v string) *ModifyNamespaceSpecV
 }
 
 func (s *ModifyNamespaceSpecV2Request) Validate() error {
-	return dara.Validate(s)
+	if s.ElasticResourceSpec != nil {
+		if err := s.ElasticResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.GuaranteedResourceSpec != nil {
+		if err := s.GuaranteedResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyNamespaceSpecV2RequestElasticResourceSpec struct {

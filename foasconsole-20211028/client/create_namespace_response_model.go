@@ -59,5 +59,10 @@ func (s *CreateNamespaceResponse) SetBody(v *CreateNamespaceResponseBody) *Creat
 }
 
 func (s *CreateNamespaceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

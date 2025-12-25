@@ -59,5 +59,10 @@ func (s *ConvertPrepayInstanceResponse) SetBody(v *ConvertPrepayInstanceResponse
 }
 
 func (s *ConvertPrepayInstanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

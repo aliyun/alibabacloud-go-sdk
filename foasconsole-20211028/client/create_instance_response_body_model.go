@@ -65,7 +65,12 @@ func (s *CreateInstanceResponseBody) SetSuccess(v bool) *CreateInstanceResponseB
 }
 
 func (s *CreateInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OrderInfo != nil {
+		if err := s.OrderInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateInstanceResponseBodyOrderInfo struct {

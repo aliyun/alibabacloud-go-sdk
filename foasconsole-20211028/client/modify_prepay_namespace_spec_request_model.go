@@ -87,7 +87,12 @@ func (s *ModifyPrepayNamespaceSpecRequest) SetResourceSpec(v *ModifyPrepayNamesp
 }
 
 func (s *ModifyPrepayNamespaceSpecRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceSpec != nil {
+		if err := s.ResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyPrepayNamespaceSpecRequestResourceSpec struct {

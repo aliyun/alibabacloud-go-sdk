@@ -145,7 +145,16 @@ func (s *ConvertInstanceRequest) SetUsePromotionCode(v bool) *ConvertInstanceReq
 }
 
 func (s *ConvertInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NamespaceResourceSpecs != nil {
+		for _, item := range s.NamespaceResourceSpecs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ConvertInstanceRequestNamespaceResourceSpecs struct {
@@ -186,7 +195,12 @@ func (s *ConvertInstanceRequestNamespaceResourceSpecs) SetResourceSpec(v *Conver
 }
 
 func (s *ConvertInstanceRequestNamespaceResourceSpecs) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceSpec != nil {
+		if err := s.ResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ConvertInstanceRequestNamespaceResourceSpecsResourceSpec struct {

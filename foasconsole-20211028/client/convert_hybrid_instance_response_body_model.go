@@ -80,7 +80,12 @@ func (s *ConvertHybridInstanceResponseBody) SetSuccess(v bool) *ConvertHybridIns
 }
 
 func (s *ConvertHybridInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OrderInfo != nil {
+		if err := s.OrderInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ConvertHybridInstanceResponseBodyOrderInfo struct {

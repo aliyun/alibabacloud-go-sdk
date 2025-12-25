@@ -15,6 +15,10 @@ type iDescribeInstancesShrinkRequest interface {
 	GetChargeType() *string
 	SetInstanceId(v string) *DescribeInstancesShrinkRequest
 	GetInstanceId() *string
+	SetInstanceName(v string) *DescribeInstancesShrinkRequest
+	GetInstanceName() *string
+	SetNamespaceName(v string) *DescribeInstancesShrinkRequest
+	GetNamespaceName() *string
 	SetPageIndex(v int32) *DescribeInstancesShrinkRequest
 	GetPageIndex() *int32
 	SetPageSize(v int32) *DescribeInstancesShrinkRequest
@@ -28,6 +32,9 @@ type iDescribeInstancesShrinkRequest interface {
 }
 
 type DescribeInstancesShrinkRequest struct {
+	// example:
+	//
+	// X86
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
 	// example:
 	//
@@ -37,6 +44,14 @@ type DescribeInstancesShrinkRequest struct {
 	//
 	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// e2e-test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// e2e-test-default
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	// example:
 	//
 	// 2
@@ -75,6 +90,14 @@ func (s *DescribeInstancesShrinkRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DescribeInstancesShrinkRequest) GetInstanceName() *string {
+	return s.InstanceName
+}
+
+func (s *DescribeInstancesShrinkRequest) GetNamespaceName() *string {
+	return s.NamespaceName
+}
+
 func (s *DescribeInstancesShrinkRequest) GetPageIndex() *int32 {
 	return s.PageIndex
 }
@@ -107,6 +130,16 @@ func (s *DescribeInstancesShrinkRequest) SetChargeType(v string) *DescribeInstan
 
 func (s *DescribeInstancesShrinkRequest) SetInstanceId(v string) *DescribeInstancesShrinkRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstancesShrinkRequest) SetInstanceName(v string) *DescribeInstancesShrinkRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeInstancesShrinkRequest) SetNamespaceName(v string) *DescribeInstancesShrinkRequest {
+	s.NamespaceName = &v
 	return s
 }
 

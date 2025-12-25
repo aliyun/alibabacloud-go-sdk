@@ -70,7 +70,12 @@ func (s *ModifyElasticResourceSpecRequest) SetResourceSpec(v *ModifyElasticResou
 }
 
 func (s *ModifyElasticResourceSpecRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceSpec != nil {
+		if err := s.ResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyElasticResourceSpecRequestResourceSpec struct {

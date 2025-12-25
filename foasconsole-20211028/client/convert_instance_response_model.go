@@ -59,5 +59,10 @@ func (s *ConvertInstanceResponse) SetBody(v *ConvertInstanceResponseBody) *Conve
 }
 
 func (s *ConvertInstanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

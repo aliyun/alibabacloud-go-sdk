@@ -65,7 +65,12 @@ func (s *QueryRenewInstancePriceResponseBody) SetSuccess(v bool) *QueryRenewInst
 }
 
 func (s *QueryRenewInstancePriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PriceInfo != nil {
+		if err := s.PriceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryRenewInstancePriceResponseBodyPriceInfo struct {
@@ -83,6 +88,10 @@ type QueryRenewInstancePriceResponseBodyPriceInfo struct {
 	// 655.2
 	DiscountAmount     *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
 	IsContractActivity *bool    `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
+	LxRequestId *string `json:"LxRequestId,omitempty" xml:"LxRequestId,omitempty"`
 	// example:
 	//
 	// 存在未支付订单，请先支付或取消原有订单
@@ -127,6 +136,10 @@ func (s *QueryRenewInstancePriceResponseBodyPriceInfo) GetDiscountAmount() *floa
 
 func (s *QueryRenewInstancePriceResponseBodyPriceInfo) GetIsContractActivity() *bool {
 	return s.IsContractActivity
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfo) GetLxRequestId() *string {
+	return s.LxRequestId
 }
 
 func (s *QueryRenewInstancePriceResponseBodyPriceInfo) GetMessage() *string {
@@ -182,6 +195,11 @@ func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetIsContractActivity(v b
 	return s
 }
 
+func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetLxRequestId(v string) *QueryRenewInstancePriceResponseBodyPriceInfo {
+	s.LxRequestId = &v
+	return s
+}
+
 func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetMessage(v string) *QueryRenewInstancePriceResponseBodyPriceInfo {
 	s.Message = &v
 	return s
@@ -218,7 +236,30 @@ func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetTradeAmount(v float32)
 }
 
 func (s *QueryRenewInstancePriceResponseBodyPriceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DepreciateInfo != nil {
+		if err := s.DepreciateInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OptionalPromotions != nil {
+		for _, item := range s.OptionalPromotions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo struct {

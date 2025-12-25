@@ -71,5 +71,14 @@ func (s *ClusterStage) SetTotalStageWithWeight(v []*StageWithWeight) *ClusterSta
 }
 
 func (s *ClusterStage) Validate() error {
-	return dara.Validate(s)
+	if s.TotalStageWithWeight != nil {
+		for _, item := range s.TotalStageWithWeight {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
