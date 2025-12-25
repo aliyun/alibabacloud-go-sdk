@@ -419,6 +419,7 @@ func (s *HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs) Validat
 }
 
 type HttpApiDeployConfigServiceConfigs struct {
+	IntentCode *string `json:"intentCode,omitempty" xml:"intentCode,omitempty"`
 	// example:
 	//
 	// qwen-max
@@ -445,6 +446,10 @@ func (s HttpApiDeployConfigServiceConfigs) GoString() string {
 	return s.String()
 }
 
+func (s *HttpApiDeployConfigServiceConfigs) GetIntentCode() *string {
+	return s.IntentCode
+}
+
 func (s *HttpApiDeployConfigServiceConfigs) GetModelName() *string {
 	return s.ModelName
 }
@@ -459,6 +464,11 @@ func (s *HttpApiDeployConfigServiceConfigs) GetServiceId() *string {
 
 func (s *HttpApiDeployConfigServiceConfigs) GetWeight() *int64 {
 	return s.Weight
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) SetIntentCode(v string) *HttpApiDeployConfigServiceConfigs {
+	s.IntentCode = &v
+	return s
 }
 
 func (s *HttpApiDeployConfigServiceConfigs) SetModelName(v string) *HttpApiDeployConfigServiceConfigs {

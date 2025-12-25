@@ -161,6 +161,7 @@ type CreateServiceRequestServiceConfigs struct {
 	//
 	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	SourceId  *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
 }
 
 func (s CreateServiceRequestServiceConfigs) String() string {
@@ -203,6 +204,10 @@ func (s *CreateServiceRequestServiceConfigs) GetQualifier() *string {
 	return s.Qualifier
 }
 
+func (s *CreateServiceRequestServiceConfigs) GetSourceId() *string {
+	return s.SourceId
+}
+
 func (s *CreateServiceRequestServiceConfigs) SetAddresses(v []*string) *CreateServiceRequestServiceConfigs {
 	s.Addresses = v
 	return s
@@ -240,6 +245,11 @@ func (s *CreateServiceRequestServiceConfigs) SetNamespace(v string) *CreateServi
 
 func (s *CreateServiceRequestServiceConfigs) SetQualifier(v string) *CreateServiceRequestServiceConfigs {
 	s.Qualifier = &v
+	return s
+}
+
+func (s *CreateServiceRequestServiceConfigs) SetSourceId(v string) *CreateServiceRequestServiceConfigs {
+	s.SourceId = &v
 	return s
 }
 

@@ -2639,7 +2639,7 @@ func (client *Client) GetServiceWithContext(ctx context.Context, serviceId *stri
 
 // Summary:
 //
-// 获取服务来源
+// Obtains the details of a service source.
 //
 // @param headers - map
 //
@@ -3068,7 +3068,7 @@ func (client *Client) ListEnvironmentsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取Gateway的Features
+// Queries the feature parameter configurations of an instance.
 //
 // @param headers - map
 //
@@ -4168,6 +4168,69 @@ func (client *Client) RestartGatewayWithContext(ctx context.Context, gatewayId *
 		BodyType:    dara.String("json"),
 	}
 	_result = &RestartGatewayResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步外部MCP server
+//
+// @param request - SyncMCPServersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncMCPServersResponse
+func (client *Client) SyncMCPServersWithContext(ctx context.Context, request *SyncMCPServersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SyncMCPServersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DomainIds) {
+		body["domainIds"] = request.DomainIds
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.NacosMcpServers) {
+		body["nacosMcpServers"] = request.NacosMcpServers
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		body["namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		body["sourceId"] = request.SourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SyncMCPServers"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/mcp-servers/sync-mcp-server"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SyncMCPServersResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

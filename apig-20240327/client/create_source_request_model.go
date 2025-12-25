@@ -22,13 +22,28 @@ type iCreateSourceRequest interface {
 }
 
 type CreateSourceRequest struct {
+	// The gateway instance ID.
+	//
 	// example:
 	//
 	// gw-cq7l5s5lhtgi6q***
-	GatewayId         *string                               `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	K8sSourceConfig   *CreateSourceRequestK8sSourceConfig   `json:"k8sSourceConfig,omitempty" xml:"k8sSourceConfig,omitempty" type:"Struct"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The source configuration when the source type is K8S.
+	K8sSourceConfig *CreateSourceRequestK8sSourceConfig `json:"k8sSourceConfig,omitempty" xml:"k8sSourceConfig,omitempty" type:"Struct"`
+	// The source configuration when the source type is MSE_NACOS.
 	NacosSourceConfig *CreateSourceRequestNacosSourceConfig `json:"nacosSourceConfig,omitempty" xml:"nacosSourceConfig,omitempty" type:"Struct"`
-	ResourceGroupId   *string                               `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-xxx
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The source type. Valid values:
+	//
+	// 	- MSE_NACOS: MSE Nacos
+	//
+	// 	- K8S: Container Service for Kubernetes (ACK)
+	//
 	// example:
 	//
 	// MSE_NACOS
@@ -103,7 +118,10 @@ func (s *CreateSourceRequest) Validate() error {
 }
 
 type CreateSourceRequestK8sSourceConfig struct {
+	// The security group rules.
 	AuthorizeSecurityGroupRules []*CreateSourceRequestK8sSourceConfigAuthorizeSecurityGroupRules `json:"authorizeSecurityGroupRules,omitempty" xml:"authorizeSecurityGroupRules,omitempty" type:"Repeated"`
+	// The ID of the ACK cluster.
+	//
 	// example:
 	//
 	// c3fbe6caaaece4062b*****
@@ -150,8 +168,12 @@ func (s *CreateSourceRequestK8sSourceConfig) Validate() error {
 }
 
 type CreateSourceRequestK8sSourceConfigAuthorizeSecurityGroupRules struct {
-	Description *string   `json:"description,omitempty" xml:"description,omitempty"`
-	PortRanges  []*string `json:"portRanges,omitempty" xml:"portRanges,omitempty" type:"Repeated"`
+	// The rule description.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The list of port ranges.
+	PortRanges []*string `json:"portRanges,omitempty" xml:"portRanges,omitempty" type:"Repeated"`
+	// The ID of a security group.
+	//
 	// example:
 	//
 	// sg-bp14w4fa4j***
@@ -198,6 +220,8 @@ func (s *CreateSourceRequestK8sSourceConfigAuthorizeSecurityGroupRules) Validate
 }
 
 type CreateSourceRequestNacosSourceConfig struct {
+	// The Nacos instance ID.
+	//
 	// example:
 	//
 	// mse-cn-0dw3w***

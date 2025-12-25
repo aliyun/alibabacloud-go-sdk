@@ -20,11 +20,16 @@ type iGetSourceResponseBody interface {
 }
 
 type GetSourceResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                    `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *GetSourceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -91,32 +96,48 @@ func (s *GetSourceResponseBody) Validate() error {
 }
 
 type GetSourceResponseBodyData struct {
+	// The creation timestamp.
+	//
 	// example:
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// gw-cq2vundlhtg***
-	GatewayId       *string                                   `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	K8SSourceInfo   *GetSourceResponseBodyDataK8SSourceInfo   `json:"k8SSourceInfo,omitempty" xml:"k8SSourceInfo,omitempty" type:"Struct"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Kubernetes source information.
+	K8SSourceInfo *GetSourceResponseBodyDataK8SSourceInfo `json:"k8SSourceInfo,omitempty" xml:"k8SSourceInfo,omitempty" type:"Struct"`
+	// The source information when the source type is MSE_NACOS.
 	NacosSourceInfo *GetSourceResponseBodyDataNacosSourceInfo `json:"nacosSourceInfo,omitempty" xml:"nacosSourceInfo,omitempty" type:"Struct"`
+	// The name.
+	//
 	// example:
 	//
 	// import-test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aekz4us4iruleja
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The source ID.
+	//
 	// example:
 	//
 	// src-crdddallhtgt***
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The type.
+	//
 	// example:
 	//
 	// K8S
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The update timestamp.
+	//
 	// example:
 	//
 	// 1719386834548
@@ -227,6 +248,8 @@ func (s *GetSourceResponseBodyData) Validate() error {
 }
 
 type GetSourceResponseBodyDataK8SSourceInfo struct {
+	// The ID of the Container Service for Kubernetes (ACK) cluster.
+	//
 	// example:
 	//
 	// c2d290b2d8b5d4935864cace5f0173f31
@@ -255,14 +278,20 @@ func (s *GetSourceResponseBodyDataK8SSourceInfo) Validate() error {
 }
 
 type GetSourceResponseBodyDataNacosSourceInfo struct {
+	// The endpoint of the Nacos instance.
+	//
 	// example:
 	//
 	// mse
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// fluss-cn-w7k4hann601
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// The Nacos instance ID.
+	//
 	// example:
 	//
 	// hgprecn-cn-cfn47q7oh001
