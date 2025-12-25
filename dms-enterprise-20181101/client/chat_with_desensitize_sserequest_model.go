@@ -39,6 +39,8 @@ type iChatWithDesensitizeSSERequest interface {
 	GetModel() *string
 	SetNeedDesensitization(v bool) *ChatWithDesensitizeSSERequest
 	GetNeedDesensitization() *bool
+	SetParameters(v string) *ChatWithDesensitizeSSERequest
+	GetParameters() *string
 	SetPresencePenalty(v string) *ChatWithDesensitizeSSERequest
 	GetPresencePenalty() *string
 	SetResponseFormat(v string) *ChatWithDesensitizeSSERequest
@@ -140,6 +142,10 @@ type ChatWithDesensitizeSSERequest struct {
 	//
 	// false
 	NeedDesensitization *bool `json:"NeedDesensitization,omitempty" xml:"NeedDesensitization,omitempty"`
+	// example:
+	//
+	// {}
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// example:
 	//
 	// 0.0
@@ -257,6 +263,10 @@ func (s *ChatWithDesensitizeSSERequest) GetModel() *string {
 
 func (s *ChatWithDesensitizeSSERequest) GetNeedDesensitization() *bool {
 	return s.NeedDesensitization
+}
+
+func (s *ChatWithDesensitizeSSERequest) GetParameters() *string {
+	return s.Parameters
 }
 
 func (s *ChatWithDesensitizeSSERequest) GetPresencePenalty() *string {
@@ -383,6 +393,11 @@ func (s *ChatWithDesensitizeSSERequest) SetModel(v string) *ChatWithDesensitizeS
 
 func (s *ChatWithDesensitizeSSERequest) SetNeedDesensitization(v bool) *ChatWithDesensitizeSSERequest {
 	s.NeedDesensitization = &v
+	return s
+}
+
+func (s *ChatWithDesensitizeSSERequest) SetParameters(v string) *ChatWithDesensitizeSSERequest {
+	s.Parameters = &v
 	return s
 }
 

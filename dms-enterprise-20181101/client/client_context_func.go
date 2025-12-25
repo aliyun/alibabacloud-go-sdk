@@ -1603,6 +1603,10 @@ func (client *Client) ChatWithDesensitizeSSEWithContext(ctx context.Context, tmp
 		query["NeedDesensitization"] = request.NeedDesensitization
 	}
 
+	if !dara.IsNil(request.Parameters) {
+		query["Parameters"] = request.Parameters
+	}
+
 	if !dara.IsNil(request.PresencePenalty) {
 		query["PresencePenalty"] = request.PresencePenalty
 	}
@@ -19305,6 +19309,10 @@ func (client *Client) chatWithDesensitizeSSEWithSSECtx_opYieldFunc(_yield chan *
 
 	if !dara.IsNil(request.NeedDesensitization) {
 		query["NeedDesensitization"] = request.NeedDesensitization
+	}
+
+	if !dara.IsNil(request.Parameters) {
+		query["Parameters"] = request.Parameters
 	}
 
 	if !dara.IsNil(request.PresencePenalty) {

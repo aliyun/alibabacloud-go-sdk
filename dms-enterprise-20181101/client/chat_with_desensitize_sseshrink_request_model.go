@@ -39,6 +39,8 @@ type iChatWithDesensitizeSSEShrinkRequest interface {
 	GetModel() *string
 	SetNeedDesensitization(v bool) *ChatWithDesensitizeSSEShrinkRequest
 	GetNeedDesensitization() *bool
+	SetParameters(v string) *ChatWithDesensitizeSSEShrinkRequest
+	GetParameters() *string
 	SetPresencePenalty(v string) *ChatWithDesensitizeSSEShrinkRequest
 	GetPresencePenalty() *string
 	SetResponseFormat(v string) *ChatWithDesensitizeSSEShrinkRequest
@@ -140,6 +142,10 @@ type ChatWithDesensitizeSSEShrinkRequest struct {
 	//
 	// false
 	NeedDesensitization *bool `json:"NeedDesensitization,omitempty" xml:"NeedDesensitization,omitempty"`
+	// example:
+	//
+	// {}
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// example:
 	//
 	// 0.0
@@ -257,6 +263,10 @@ func (s *ChatWithDesensitizeSSEShrinkRequest) GetModel() *string {
 
 func (s *ChatWithDesensitizeSSEShrinkRequest) GetNeedDesensitization() *bool {
 	return s.NeedDesensitization
+}
+
+func (s *ChatWithDesensitizeSSEShrinkRequest) GetParameters() *string {
+	return s.Parameters
 }
 
 func (s *ChatWithDesensitizeSSEShrinkRequest) GetPresencePenalty() *string {
@@ -383,6 +393,11 @@ func (s *ChatWithDesensitizeSSEShrinkRequest) SetModel(v string) *ChatWithDesens
 
 func (s *ChatWithDesensitizeSSEShrinkRequest) SetNeedDesensitization(v bool) *ChatWithDesensitizeSSEShrinkRequest {
 	s.NeedDesensitization = &v
+	return s
+}
+
+func (s *ChatWithDesensitizeSSEShrinkRequest) SetParameters(v string) *ChatWithDesensitizeSSEShrinkRequest {
+	s.Parameters = &v
 	return s
 }
 
