@@ -3108,6 +3108,146 @@ func (client *Client) DescribeAccountDelegatedStatus(request *DescribeAccountDel
 
 // Summary:
 //
+// 查询实例信息
+//
+// @param request - DescribeAlarmBannerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAlarmBannerResponse
+func (client *Client) DescribeAlarmBannerWithOptions(request *DescribeAlarmBannerRequest, runtime *dara.RuntimeOptions) (_result *DescribeAlarmBannerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAlarmBanner"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAlarmBannerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例信息
+//
+// @param request - DescribeAlarmBannerRequest
+//
+// @return DescribeAlarmBannerResponse
+func (client *Client) DescribeAlarmBanner(request *DescribeAlarmBannerRequest) (_result *DescribeAlarmBannerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAlarmBannerResponse{}
+	_body, _err := client.DescribeAlarmBannerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例信息
+//
+// @param request - DescribeAlarmListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAlarmListResponse
+func (client *Client) DescribeAlarmListWithOptions(request *DescribeAlarmListRequest, runtime *dara.RuntimeOptions) (_result *DescribeAlarmListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAlarmList"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAlarmListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例信息
+//
+// @param request - DescribeAlarmListRequest
+//
+// @return DescribeAlarmListResponse
+func (client *Client) DescribeAlarmList(request *DescribeAlarmListRequest) (_result *DescribeAlarmListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAlarmListResponse{}
+	_body, _err := client.DescribeAlarmListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of data export tasks in the API security module.
 //
 // @param request - DescribeApiExportsRequest
@@ -5011,6 +5151,80 @@ func (client *Client) DescribeBaseSystemRules(request *DescribeBaseSystemRulesRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeBaseSystemRulesResponse{}
 	_body, _err := client.DescribeBaseSystemRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询防护模板
+//
+// @param request - DescribeBotAppKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBotAppKeyResponse
+func (client *Client) DescribeBotAppKeyWithOptions(request *DescribeBotAppKeyRequest, runtime *dara.RuntimeOptions) (_result *DescribeBotAppKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.KeyVersion) {
+		query["KeyVersion"] = request.KeyVersion
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeBotAppKey"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeBotAppKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询防护模板
+//
+// @param request - DescribeBotAppKeyRequest
+//
+// @return DescribeBotAppKeyResponse
+func (client *Client) DescribeBotAppKey(request *DescribeBotAppKeyRequest) (_result *DescribeBotAppKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeBotAppKeyResponse{}
+	_body, _err := client.DescribeBotAppKeyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13427,6 +13641,170 @@ func (client *Client) DescribeTemplateResources(request *DescribeTemplateResourc
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeTemplateResourcesResponse{}
 	_body, _err := client.DescribeTemplateResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看攻击事件列表
+//
+// @param request - DescribeThreatEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeThreatEventResponse
+func (client *Client) DescribeThreatEventWithOptions(request *DescribeThreatEventRequest, runtime *dara.RuntimeOptions) (_result *DescribeThreatEventResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeThreatEvent"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeThreatEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看攻击事件列表
+//
+// @param request - DescribeThreatEventRequest
+//
+// @return DescribeThreatEventResponse
+func (client *Client) DescribeThreatEvent(request *DescribeThreatEventRequest) (_result *DescribeThreatEventResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeThreatEventResponse{}
+	_body, _err := client.DescribeThreatEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看威胁事件详情
+//
+// @param request - DescribeThreatEventDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeThreatEventDetailResponse
+func (client *Client) DescribeThreatEventDetailWithOptions(request *DescribeThreatEventDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeThreatEventDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeThreatEventDetail"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeThreatEventDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看威胁事件详情
+//
+// @param request - DescribeThreatEventDetailRequest
+//
+// @return DescribeThreatEventDetailResponse
+func (client *Client) DescribeThreatEventDetail(request *DescribeThreatEventDetailRequest) (_result *DescribeThreatEventDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeThreatEventDetailResponse{}
+	_body, _err := client.DescribeThreatEventDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
