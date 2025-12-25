@@ -881,6 +881,8 @@ type PushTaskNotificationHmos struct {
 	ReceiptId          *string   `json:"ReceiptId,omitempty" xml:"ReceiptId,omitempty"`
 	RenderStyle        *string   `json:"RenderStyle,omitempty" xml:"RenderStyle,omitempty"`
 	SlotType           *string   `json:"SlotType,omitempty" xml:"SlotType,omitempty"`
+	Sound              *string   `json:"Sound,omitempty" xml:"Sound,omitempty"`
+	SoundDuration      *int32    `json:"SoundDuration,omitempty" xml:"SoundDuration,omitempty"`
 	TestMessage        *bool     `json:"TestMessage,omitempty" xml:"TestMessage,omitempty"`
 	Uri                *string   `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
@@ -947,6 +949,14 @@ func (s *PushTaskNotificationHmos) GetRenderStyle() *string {
 
 func (s *PushTaskNotificationHmos) GetSlotType() *string {
 	return s.SlotType
+}
+
+func (s *PushTaskNotificationHmos) GetSound() *string {
+	return s.Sound
+}
+
+func (s *PushTaskNotificationHmos) GetSoundDuration() *int32 {
+	return s.SoundDuration
 }
 
 func (s *PushTaskNotificationHmos) GetTestMessage() *bool {
@@ -1024,6 +1034,16 @@ func (s *PushTaskNotificationHmos) SetRenderStyle(v string) *PushTaskNotificatio
 
 func (s *PushTaskNotificationHmos) SetSlotType(v string) *PushTaskNotificationHmos {
 	s.SlotType = &v
+	return s
+}
+
+func (s *PushTaskNotificationHmos) SetSound(v string) *PushTaskNotificationHmos {
+	s.Sound = &v
+	return s
+}
+
+func (s *PushTaskNotificationHmos) SetSoundDuration(v int32) *PushTaskNotificationHmos {
+	s.SoundDuration = &v
 	return s
 }
 
