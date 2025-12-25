@@ -2,62 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-hangzhou": dara.String("lyj.cn-hangzhou.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("tdsr"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -68,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddHotspotFileResponse
-func (client *Client) AddHotspotFileWithOptions(request *AddHotspotFileRequest, runtime *dara.RuntimeOptions) (_result *AddHotspotFileResponse, _err error) {
+func (client *Client) AddHotspotFileWithContext(ctx context.Context, request *AddHotspotFileRequest, runtime *dara.RuntimeOptions) (_result *AddHotspotFileResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -103,29 +51,11 @@ func (client *Client) AddHotspotFileWithOptions(request *AddHotspotFileRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddHotspotFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 保存模型文件
-//
-// @param request - AddHotspotFileRequest
-//
-// @return AddHotspotFileResponse
-func (client *Client) AddHotspotFile(request *AddHotspotFileRequest) (_result *AddHotspotFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddHotspotFileResponse{}
-	_body, _err := client.AddHotspotFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -138,7 +68,7 @@ func (client *Client) AddHotspotFile(request *AddHotspotFileRequest) (_result *A
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddMosaicsResponse
-func (client *Client) AddMosaicsWithOptions(request *AddMosaicsRequest, runtime *dara.RuntimeOptions) (_result *AddMosaicsResponse, _err error) {
+func (client *Client) AddMosaicsWithContext(ctx context.Context, request *AddMosaicsRequest, runtime *dara.RuntimeOptions) (_result *AddMosaicsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -169,29 +99,11 @@ func (client *Client) AddMosaicsWithOptions(request *AddMosaicsRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddMosaicsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 打马赛克
-//
-// @param request - AddMosaicsRequest
-//
-// @return AddMosaicsResponse
-func (client *Client) AddMosaics(request *AddMosaicsRequest) (_result *AddMosaicsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddMosaicsResponse{}
-	_body, _err := client.AddMosaicsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -204,7 +116,7 @@ func (client *Client) AddMosaics(request *AddMosaicsRequest) (_result *AddMosaic
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddProjectResponse
-func (client *Client) AddProjectWithOptions(request *AddProjectRequest, runtime *dara.RuntimeOptions) (_result *AddProjectResponse, _err error) {
+func (client *Client) AddProjectWithContext(ctx context.Context, request *AddProjectRequest, runtime *dara.RuntimeOptions) (_result *AddProjectResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -235,29 +147,11 @@ func (client *Client) AddProjectWithOptions(request *AddProjectRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 添加项目
-//
-// @param request - AddProjectRequest
-//
-// @return AddProjectResponse
-func (client *Client) AddProject(request *AddProjectRequest) (_result *AddProjectResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddProjectResponse{}
-	_body, _err := client.AddProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -272,7 +166,7 @@ func (client *Client) AddProject(request *AddProjectRequest) (_result *AddProjec
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddRelativePositionResponse
-func (client *Client) AddRelativePositionWithOptions(request *AddRelativePositionRequest, runtime *dara.RuntimeOptions) (_result *AddRelativePositionResponse, _err error) {
+func (client *Client) AddRelativePositionWithContext(ctx context.Context, request *AddRelativePositionRequest, runtime *dara.RuntimeOptions) (_result *AddRelativePositionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -303,32 +197,11 @@ func (client *Client) AddRelativePositionWithOptions(request *AddRelativePositio
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddRelativePositionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AddRelativePosition is deprecated
-//
-// Summary:
-//
-// 添加相对位置
-//
-// @param request - AddRelativePositionRequest
-//
-// @return AddRelativePositionResponse
-// Deprecated
-func (client *Client) AddRelativePosition(request *AddRelativePositionRequest) (_result *AddRelativePositionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddRelativePositionResponse{}
-	_body, _err := client.AddRelativePositionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -341,7 +214,7 @@ func (client *Client) AddRelativePosition(request *AddRelativePositionRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddRoomPlanResponse
-func (client *Client) AddRoomPlanWithOptions(request *AddRoomPlanRequest, runtime *dara.RuntimeOptions) (_result *AddRoomPlanResponse, _err error) {
+func (client *Client) AddRoomPlanWithContext(ctx context.Context, request *AddRoomPlanRequest, runtime *dara.RuntimeOptions) (_result *AddRoomPlanResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -368,29 +241,11 @@ func (client *Client) AddRoomPlanWithOptions(request *AddRoomPlanRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddRoomPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 移动端添加rooms.json
-//
-// @param request - AddRoomPlanRequest
-//
-// @return AddRoomPlanResponse
-func (client *Client) AddRoomPlan(request *AddRoomPlanRequest) (_result *AddRoomPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddRoomPlanResponse{}
-	_body, _err := client.AddRoomPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -403,7 +258,7 @@ func (client *Client) AddRoomPlan(request *AddRoomPlanRequest) (_result *AddRoom
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddSceneResponse
-func (client *Client) AddSceneWithOptions(request *AddSceneRequest, runtime *dara.RuntimeOptions) (_result *AddSceneResponse, _err error) {
+func (client *Client) AddSceneWithContext(ctx context.Context, request *AddSceneRequest, runtime *dara.RuntimeOptions) (_result *AddSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -442,29 +297,11 @@ func (client *Client) AddSceneWithOptions(request *AddSceneRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 添加主场景
-//
-// @param request - AddSceneRequest
-//
-// @return AddSceneResponse
-func (client *Client) AddScene(request *AddSceneRequest) (_result *AddSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddSceneResponse{}
-	_body, _err := client.AddSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -477,7 +314,7 @@ func (client *Client) AddScene(request *AddSceneRequest) (_result *AddSceneRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddSubSceneResponse
-func (client *Client) AddSubSceneWithOptions(request *AddSubSceneRequest, runtime *dara.RuntimeOptions) (_result *AddSubSceneResponse, _err error) {
+func (client *Client) AddSubSceneWithContext(ctx context.Context, request *AddSubSceneRequest, runtime *dara.RuntimeOptions) (_result *AddSubSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -512,29 +349,11 @@ func (client *Client) AddSubSceneWithOptions(request *AddSubSceneRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddSubSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建子场景
-//
-// @param request - AddSubSceneRequest
-//
-// @return AddSubSceneResponse
-func (client *Client) AddSubScene(request *AddSubSceneRequest) (_result *AddSubSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddSubSceneResponse{}
-	_body, _err := client.AddSubSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -547,7 +366,7 @@ func (client *Client) AddSubScene(request *AddSubSceneRequest) (_result *AddSubS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckUserPropertyResponse
-func (client *Client) CheckUserPropertyWithOptions(request *CheckUserPropertyRequest, runtime *dara.RuntimeOptions) (_result *CheckUserPropertyResponse, _err error) {
+func (client *Client) CheckUserPropertyWithContext(ctx context.Context, request *CheckUserPropertyRequest, runtime *dara.RuntimeOptions) (_result *CheckUserPropertyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -574,29 +393,11 @@ func (client *Client) CheckUserPropertyWithOptions(request *CheckUserPropertyReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckUserPropertyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 检查指定uid用户属性
-//
-// @param request - CheckUserPropertyRequest
-//
-// @return CheckUserPropertyResponse
-func (client *Client) CheckUserProperty(request *CheckUserPropertyRequest) (_result *CheckUserPropertyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckUserPropertyResponse{}
-	_body, _err := client.CheckUserPropertyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -609,7 +410,7 @@ func (client *Client) CheckUserProperty(request *CheckUserPropertyRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CopySceneResponse
-func (client *Client) CopySceneWithOptions(request *CopySceneRequest, runtime *dara.RuntimeOptions) (_result *CopySceneResponse, _err error) {
+func (client *Client) CopySceneWithContext(ctx context.Context, request *CopySceneRequest, runtime *dara.RuntimeOptions) (_result *CopySceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -644,29 +445,11 @@ func (client *Client) CopySceneWithOptions(request *CopySceneRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &CopySceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 复制主场景
-//
-// @param request - CopySceneRequest
-//
-// @return CopySceneResponse
-func (client *Client) CopyScene(request *CopySceneRequest) (_result *CopySceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CopySceneResponse{}
-	_body, _err := client.CopySceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -679,7 +462,7 @@ func (client *Client) CopyScene(request *CopySceneRequest) (_result *CopySceneRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateUploadPolicyResponse
-func (client *Client) CreateUploadPolicyWithOptions(request *CreateUploadPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateUploadPolicyResponse, _err error) {
+func (client *Client) CreateUploadPolicyWithContext(ctx context.Context, request *CreateUploadPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateUploadPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -710,29 +493,11 @@ func (client *Client) CreateUploadPolicyWithOptions(request *CreateUploadPolicyR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateUploadPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取OSS授权
-//
-// @param request - CreateUploadPolicyRequest
-//
-// @return CreateUploadPolicyResponse
-func (client *Client) CreateUploadPolicy(request *CreateUploadPolicyRequest) (_result *CreateUploadPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateUploadPolicyResponse{}
-	_body, _err := client.CreateUploadPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -745,7 +510,7 @@ func (client *Client) CreateUploadPolicy(request *CreateUploadPolicyRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetailProjectResponse
-func (client *Client) DetailProjectWithOptions(request *DetailProjectRequest, runtime *dara.RuntimeOptions) (_result *DetailProjectResponse, _err error) {
+func (client *Client) DetailProjectWithContext(ctx context.Context, request *DetailProjectRequest, runtime *dara.RuntimeOptions) (_result *DetailProjectResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -772,29 +537,11 @@ func (client *Client) DetailProjectWithOptions(request *DetailProjectRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetailProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询项目详情
-//
-// @param request - DetailProjectRequest
-//
-// @return DetailProjectResponse
-func (client *Client) DetailProject(request *DetailProjectRequest) (_result *DetailProjectResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetailProjectResponse{}
-	_body, _err := client.DetailProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -807,7 +554,7 @@ func (client *Client) DetailProject(request *DetailProjectRequest) (_result *Det
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetailSceneResponse
-func (client *Client) DetailSceneWithOptions(request *DetailSceneRequest, runtime *dara.RuntimeOptions) (_result *DetailSceneResponse, _err error) {
+func (client *Client) DetailSceneWithContext(ctx context.Context, request *DetailSceneRequest, runtime *dara.RuntimeOptions) (_result *DetailSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -834,29 +581,11 @@ func (client *Client) DetailSceneWithOptions(request *DetailSceneRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetailSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 主场景详细
-//
-// @param request - DetailSceneRequest
-//
-// @return DetailSceneResponse
-func (client *Client) DetailScene(request *DetailSceneRequest) (_result *DetailSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetailSceneResponse{}
-	_body, _err := client.DetailSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -869,7 +598,7 @@ func (client *Client) DetailScene(request *DetailSceneRequest) (_result *DetailS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetailSubSceneResponse
-func (client *Client) DetailSubSceneWithOptions(request *DetailSubSceneRequest, runtime *dara.RuntimeOptions) (_result *DetailSubSceneResponse, _err error) {
+func (client *Client) DetailSubSceneWithContext(ctx context.Context, request *DetailSubSceneRequest, runtime *dara.RuntimeOptions) (_result *DetailSubSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -896,29 +625,11 @@ func (client *Client) DetailSubSceneWithOptions(request *DetailSubSceneRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetailSubSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询子场景详情
-//
-// @param request - DetailSubSceneRequest
-//
-// @return DetailSubSceneResponse
-func (client *Client) DetailSubScene(request *DetailSubSceneRequest) (_result *DetailSubSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetailSubSceneResponse{}
-	_body, _err := client.DetailSubSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -931,7 +642,7 @@ func (client *Client) DetailSubScene(request *DetailSubSceneRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DropProjectResponse
-func (client *Client) DropProjectWithOptions(request *DropProjectRequest, runtime *dara.RuntimeOptions) (_result *DropProjectResponse, _err error) {
+func (client *Client) DropProjectWithContext(ctx context.Context, request *DropProjectRequest, runtime *dara.RuntimeOptions) (_result *DropProjectResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -958,29 +669,11 @@ func (client *Client) DropProjectWithOptions(request *DropProjectRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &DropProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除项目
-//
-// @param request - DropProjectRequest
-//
-// @return DropProjectResponse
-func (client *Client) DropProject(request *DropProjectRequest) (_result *DropProjectResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DropProjectResponse{}
-	_body, _err := client.DropProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -993,7 +686,7 @@ func (client *Client) DropProject(request *DropProjectRequest) (_result *DropPro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DropSceneResponse
-func (client *Client) DropSceneWithOptions(request *DropSceneRequest, runtime *dara.RuntimeOptions) (_result *DropSceneResponse, _err error) {
+func (client *Client) DropSceneWithContext(ctx context.Context, request *DropSceneRequest, runtime *dara.RuntimeOptions) (_result *DropSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1020,29 +713,11 @@ func (client *Client) DropSceneWithOptions(request *DropSceneRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &DropSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除主场景
-//
-// @param request - DropSceneRequest
-//
-// @return DropSceneResponse
-func (client *Client) DropScene(request *DropSceneRequest) (_result *DropSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DropSceneResponse{}
-	_body, _err := client.DropSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1055,7 +730,7 @@ func (client *Client) DropScene(request *DropSceneRequest) (_result *DropSceneRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DropSubSceneResponse
-func (client *Client) DropSubSceneWithOptions(request *DropSubSceneRequest, runtime *dara.RuntimeOptions) (_result *DropSubSceneResponse, _err error) {
+func (client *Client) DropSubSceneWithContext(ctx context.Context, request *DropSubSceneRequest, runtime *dara.RuntimeOptions) (_result *DropSubSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1082,29 +757,11 @@ func (client *Client) DropSubSceneWithOptions(request *DropSubSceneRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DropSubSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除子场景
-//
-// @param request - DropSubSceneRequest
-//
-// @return DropSubSceneResponse
-func (client *Client) DropSubScene(request *DropSubSceneRequest) (_result *DropSubSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DropSubSceneResponse{}
-	_body, _err := client.DropSubSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1117,7 +774,7 @@ func (client *Client) DropSubScene(request *DropSubSceneRequest) (_result *DropS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetConnDataResponse
-func (client *Client) GetConnDataWithOptions(request *GetConnDataRequest, runtime *dara.RuntimeOptions) (_result *GetConnDataResponse, _err error) {
+func (client *Client) GetConnDataWithContext(ctx context.Context, request *GetConnDataRequest, runtime *dara.RuntimeOptions) (_result *GetConnDataResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1144,29 +801,11 @@ func (client *Client) GetConnDataWithOptions(request *GetConnDataRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetConnDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询关联数据
-//
-// @param request - GetConnDataRequest
-//
-// @return GetConnDataResponse
-func (client *Client) GetConnData(request *GetConnDataRequest) (_result *GetConnDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetConnDataResponse{}
-	_body, _err := client.GetConnDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1179,7 +818,7 @@ func (client *Client) GetConnData(request *GetConnDataRequest) (_result *GetConn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCopySceneTaskStatusResponse
-func (client *Client) GetCopySceneTaskStatusWithOptions(request *GetCopySceneTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *GetCopySceneTaskStatusResponse, _err error) {
+func (client *Client) GetCopySceneTaskStatusWithContext(ctx context.Context, request *GetCopySceneTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *GetCopySceneTaskStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1206,29 +845,11 @@ func (client *Client) GetCopySceneTaskStatusWithOptions(request *GetCopySceneTas
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCopySceneTaskStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 复制场景任务状态查询
-//
-// @param request - GetCopySceneTaskStatusRequest
-//
-// @return GetCopySceneTaskStatusResponse
-func (client *Client) GetCopySceneTaskStatus(request *GetCopySceneTaskStatusRequest) (_result *GetCopySceneTaskStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetCopySceneTaskStatusResponse{}
-	_body, _err := client.GetCopySceneTaskStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1237,7 +858,7 @@ func (client *Client) GetCopySceneTaskStatus(request *GetCopySceneTaskStatusRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetHotspotConfigResponse
-func (client *Client) GetHotspotConfigWithOptions(request *GetHotspotConfigRequest, runtime *dara.RuntimeOptions) (_result *GetHotspotConfigResponse, _err error) {
+func (client *Client) GetHotspotConfigWithContext(ctx context.Context, request *GetHotspotConfigRequest, runtime *dara.RuntimeOptions) (_result *GetHotspotConfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1276,25 +897,11 @@ func (client *Client) GetHotspotConfigWithOptions(request *GetHotspotConfigReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetHotspotConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetHotspotConfigRequest
-//
-// @return GetHotspotConfigResponse
-func (client *Client) GetHotspotConfig(request *GetHotspotConfigRequest) (_result *GetHotspotConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetHotspotConfigResponse{}
-	_body, _err := client.GetHotspotConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1307,7 +914,7 @@ func (client *Client) GetHotspotConfig(request *GetHotspotConfigRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetHotspotSceneDataResponse
-func (client *Client) GetHotspotSceneDataWithOptions(request *GetHotspotSceneDataRequest, runtime *dara.RuntimeOptions) (_result *GetHotspotSceneDataResponse, _err error) {
+func (client *Client) GetHotspotSceneDataWithContext(ctx context.Context, request *GetHotspotSceneDataRequest, runtime *dara.RuntimeOptions) (_result *GetHotspotSceneDataResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1346,29 +953,11 @@ func (client *Client) GetHotspotSceneDataWithOptions(request *GetHotspotSceneDat
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetHotspotSceneDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询后处理场景信息
-//
-// @param request - GetHotspotSceneDataRequest
-//
-// @return GetHotspotSceneDataResponse
-func (client *Client) GetHotspotSceneData(request *GetHotspotSceneDataRequest) (_result *GetHotspotSceneDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetHotspotSceneDataResponse{}
-	_body, _err := client.GetHotspotSceneDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1377,7 +966,7 @@ func (client *Client) GetHotspotSceneData(request *GetHotspotSceneDataRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetHotspotTagResponse
-func (client *Client) GetHotspotTagWithOptions(request *GetHotspotTagRequest, runtime *dara.RuntimeOptions) (_result *GetHotspotTagResponse, _err error) {
+func (client *Client) GetHotspotTagWithContext(ctx context.Context, request *GetHotspotTagRequest, runtime *dara.RuntimeOptions) (_result *GetHotspotTagResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1420,25 +1009,11 @@ func (client *Client) GetHotspotTagWithOptions(request *GetHotspotTagRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetHotspotTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetHotspotTagRequest
-//
-// @return GetHotspotTagResponse
-func (client *Client) GetHotspotTag(request *GetHotspotTagRequest) (_result *GetHotspotTagResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetHotspotTagResponse{}
-	_body, _err := client.GetHotspotTagWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1451,7 +1026,7 @@ func (client *Client) GetHotspotTag(request *GetHotspotTagRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLayoutDataResponse
-func (client *Client) GetLayoutDataWithOptions(request *GetLayoutDataRequest, runtime *dara.RuntimeOptions) (_result *GetLayoutDataResponse, _err error) {
+func (client *Client) GetLayoutDataWithContext(ctx context.Context, request *GetLayoutDataRequest, runtime *dara.RuntimeOptions) (_result *GetLayoutDataResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1478,29 +1053,11 @@ func (client *Client) GetLayoutDataWithOptions(request *GetLayoutDataRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLayoutDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取标注数据
-//
-// @param request - GetLayoutDataRequest
-//
-// @return GetLayoutDataResponse
-func (client *Client) GetLayoutData(request *GetLayoutDataRequest) (_result *GetLayoutDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLayoutDataResponse{}
-	_body, _err := client.GetLayoutDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1513,7 +1070,7 @@ func (client *Client) GetLayoutData(request *GetLayoutDataRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetOriginLayoutDataResponse
-func (client *Client) GetOriginLayoutDataWithOptions(request *GetOriginLayoutDataRequest, runtime *dara.RuntimeOptions) (_result *GetOriginLayoutDataResponse, _err error) {
+func (client *Client) GetOriginLayoutDataWithContext(ctx context.Context, request *GetOriginLayoutDataRequest, runtime *dara.RuntimeOptions) (_result *GetOriginLayoutDataResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1540,29 +1097,11 @@ func (client *Client) GetOriginLayoutDataWithOptions(request *GetOriginLayoutDat
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetOriginLayoutDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取算法自动标注数据
-//
-// @param request - GetOriginLayoutDataRequest
-//
-// @return GetOriginLayoutDataResponse
-func (client *Client) GetOriginLayoutData(request *GetOriginLayoutDataRequest) (_result *GetOriginLayoutDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetOriginLayoutDataResponse{}
-	_body, _err := client.GetOriginLayoutDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1575,7 +1114,7 @@ func (client *Client) GetOriginLayoutData(request *GetOriginLayoutDataRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetOssPolicyResponse
-func (client *Client) GetOssPolicyWithOptions(request *GetOssPolicyRequest, runtime *dara.RuntimeOptions) (_result *GetOssPolicyResponse, _err error) {
+func (client *Client) GetOssPolicyWithContext(ctx context.Context, request *GetOssPolicyRequest, runtime *dara.RuntimeOptions) (_result *GetOssPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1602,29 +1141,11 @@ func (client *Client) GetOssPolicyWithOptions(request *GetOssPolicyRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetOssPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取OSS授权
-//
-// @param request - GetOssPolicyRequest
-//
-// @return GetOssPolicyResponse
-func (client *Client) GetOssPolicy(request *GetOssPolicyRequest) (_result *GetOssPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetOssPolicyResponse{}
-	_body, _err := client.GetOssPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1637,7 +1158,7 @@ func (client *Client) GetOssPolicy(request *GetOssPolicyRequest) (_result *GetOs
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPackSceneTaskStatusResponse
-func (client *Client) GetPackSceneTaskStatusWithOptions(request *GetPackSceneTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *GetPackSceneTaskStatusResponse, _err error) {
+func (client *Client) GetPackSceneTaskStatusWithContext(ctx context.Context, request *GetPackSceneTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *GetPackSceneTaskStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1668,29 +1189,11 @@ func (client *Client) GetPackSceneTaskStatusWithOptions(request *GetPackSceneTas
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPackSceneTaskStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 打包场景任务状态查询
-//
-// @param request - GetPackSceneTaskStatusRequest
-//
-// @return GetPackSceneTaskStatusResponse
-func (client *Client) GetPackSceneTaskStatus(request *GetPackSceneTaskStatusRequest) (_result *GetPackSceneTaskStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPackSceneTaskStatusResponse{}
-	_body, _err := client.GetPackSceneTaskStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1703,7 +1206,7 @@ func (client *Client) GetPackSceneTaskStatus(request *GetPackSceneTaskStatusRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRectifyImageResponse
-func (client *Client) GetRectifyImageWithOptions(request *GetRectifyImageRequest, runtime *dara.RuntimeOptions) (_result *GetRectifyImageResponse, _err error) {
+func (client *Client) GetRectifyImageWithContext(ctx context.Context, request *GetRectifyImageRequest, runtime *dara.RuntimeOptions) (_result *GetRectifyImageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1730,29 +1233,11 @@ func (client *Client) GetRectifyImageWithOptions(request *GetRectifyImageRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRectifyImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询矫正后图片
-//
-// @param request - GetRectifyImageRequest
-//
-// @return GetRectifyImageResponse
-func (client *Client) GetRectifyImage(request *GetRectifyImageRequest) (_result *GetRectifyImageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRectifyImageResponse{}
-	_body, _err := client.GetRectifyImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1765,7 +1250,7 @@ func (client *Client) GetRectifyImage(request *GetRectifyImageRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSceneBuildTaskStatusResponse
-func (client *Client) GetSceneBuildTaskStatusWithOptions(request *GetSceneBuildTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *GetSceneBuildTaskStatusResponse, _err error) {
+func (client *Client) GetSceneBuildTaskStatusWithContext(ctx context.Context, request *GetSceneBuildTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *GetSceneBuildTaskStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1792,29 +1277,11 @@ func (client *Client) GetSceneBuildTaskStatusWithOptions(request *GetSceneBuildT
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSceneBuildTaskStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看场景下重建任务
-//
-// @param request - GetSceneBuildTaskStatusRequest
-//
-// @return GetSceneBuildTaskStatusResponse
-func (client *Client) GetSceneBuildTaskStatus(request *GetSceneBuildTaskStatusRequest) (_result *GetSceneBuildTaskStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSceneBuildTaskStatusResponse{}
-	_body, _err := client.GetSceneBuildTaskStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1827,7 +1294,7 @@ func (client *Client) GetSceneBuildTaskStatus(request *GetSceneBuildTaskStatusRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetScenePackUrlResponse
-func (client *Client) GetScenePackUrlWithOptions(request *GetScenePackUrlRequest, runtime *dara.RuntimeOptions) (_result *GetScenePackUrlResponse, _err error) {
+func (client *Client) GetScenePackUrlWithContext(ctx context.Context, request *GetScenePackUrlRequest, runtime *dara.RuntimeOptions) (_result *GetScenePackUrlResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1854,29 +1321,11 @@ func (client *Client) GetScenePackUrlWithOptions(request *GetScenePackUrlRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetScenePackUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取场景的打包地址
-//
-// @param request - GetScenePackUrlRequest
-//
-// @return GetScenePackUrlResponse
-func (client *Client) GetScenePackUrl(request *GetScenePackUrlRequest) (_result *GetScenePackUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetScenePackUrlResponse{}
-	_body, _err := client.GetScenePackUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1889,7 +1338,7 @@ func (client *Client) GetScenePackUrl(request *GetScenePackUrlRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetScenePreviewDataResponse
-func (client *Client) GetScenePreviewDataWithOptions(request *GetScenePreviewDataRequest, runtime *dara.RuntimeOptions) (_result *GetScenePreviewDataResponse, _err error) {
+func (client *Client) GetScenePreviewDataWithContext(ctx context.Context, request *GetScenePreviewDataRequest, runtime *dara.RuntimeOptions) (_result *GetScenePreviewDataResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1928,29 +1377,11 @@ func (client *Client) GetScenePreviewDataWithOptions(request *GetScenePreviewDat
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetScenePreviewDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询模型数据
-//
-// @param request - GetScenePreviewDataRequest
-//
-// @return GetScenePreviewDataResponse
-func (client *Client) GetScenePreviewData(request *GetScenePreviewDataRequest) (_result *GetScenePreviewDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetScenePreviewDataResponse{}
-	_body, _err := client.GetScenePreviewDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1963,7 +1394,7 @@ func (client *Client) GetScenePreviewData(request *GetScenePreviewDataRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetScenePreviewInfoResponse
-func (client *Client) GetScenePreviewInfoWithOptions(request *GetScenePreviewInfoRequest, runtime *dara.RuntimeOptions) (_result *GetScenePreviewInfoResponse, _err error) {
+func (client *Client) GetScenePreviewInfoWithContext(ctx context.Context, request *GetScenePreviewInfoRequest, runtime *dara.RuntimeOptions) (_result *GetScenePreviewInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1998,29 +1429,11 @@ func (client *Client) GetScenePreviewInfoWithOptions(request *GetScenePreviewInf
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetScenePreviewInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询模型预览信息
-//
-// @param request - GetScenePreviewInfoRequest
-//
-// @return GetScenePreviewInfoResponse
-func (client *Client) GetScenePreviewInfo(request *GetScenePreviewInfoRequest) (_result *GetScenePreviewInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetScenePreviewInfoResponse{}
-	_body, _err := client.GetScenePreviewInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2033,7 +1446,7 @@ func (client *Client) GetScenePreviewInfo(request *GetScenePreviewInfoRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetScenePreviewResourceResponse
-func (client *Client) GetScenePreviewResourceWithOptions(request *GetScenePreviewResourceRequest, runtime *dara.RuntimeOptions) (_result *GetScenePreviewResourceResponse, _err error) {
+func (client *Client) GetScenePreviewResourceWithContext(ctx context.Context, request *GetScenePreviewResourceRequest, runtime *dara.RuntimeOptions) (_result *GetScenePreviewResourceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2064,29 +1477,11 @@ func (client *Client) GetScenePreviewResourceWithOptions(request *GetScenePrevie
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetScenePreviewResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取模型预览数据
-//
-// @param request - GetScenePreviewResourceRequest
-//
-// @return GetScenePreviewResourceResponse
-func (client *Client) GetScenePreviewResource(request *GetScenePreviewResourceRequest) (_result *GetScenePreviewResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetScenePreviewResourceResponse{}
-	_body, _err := client.GetScenePreviewResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2099,7 +1494,7 @@ func (client *Client) GetScenePreviewResource(request *GetScenePreviewResourceRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSingleConnDataResponse
-func (client *Client) GetSingleConnDataWithOptions(request *GetSingleConnDataRequest, runtime *dara.RuntimeOptions) (_result *GetSingleConnDataResponse, _err error) {
+func (client *Client) GetSingleConnDataWithContext(ctx context.Context, request *GetSingleConnDataRequest, runtime *dara.RuntimeOptions) (_result *GetSingleConnDataResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2126,29 +1521,11 @@ func (client *Client) GetSingleConnDataWithOptions(request *GetSingleConnDataReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSingleConnDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询单场景关联数据
-//
-// @param request - GetSingleConnDataRequest
-//
-// @return GetSingleConnDataResponse
-func (client *Client) GetSingleConnData(request *GetSingleConnDataRequest) (_result *GetSingleConnDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSingleConnDataResponse{}
-	_body, _err := client.GetSingleConnDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2161,7 +1538,7 @@ func (client *Client) GetSingleConnData(request *GetSingleConnDataRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSourcePackStatusResponse
-func (client *Client) GetSourcePackStatusWithOptions(request *GetSourcePackStatusRequest, runtime *dara.RuntimeOptions) (_result *GetSourcePackStatusResponse, _err error) {
+func (client *Client) GetSourcePackStatusWithContext(ctx context.Context, request *GetSourcePackStatusRequest, runtime *dara.RuntimeOptions) (_result *GetSourcePackStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2188,29 +1565,11 @@ func (client *Client) GetSourcePackStatusWithOptions(request *GetSourcePackStatu
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSourcePackStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 打包58数据状态检查
-//
-// @param request - GetSourcePackStatusRequest
-//
-// @return GetSourcePackStatusResponse
-func (client *Client) GetSourcePackStatus(request *GetSourcePackStatusRequest) (_result *GetSourcePackStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSourcePackStatusResponse{}
-	_body, _err := client.GetSourcePackStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2223,7 +1582,7 @@ func (client *Client) GetSourcePackStatus(request *GetSourcePackStatusRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSubSceneTaskStatusResponse
-func (client *Client) GetSubSceneTaskStatusWithOptions(request *GetSubSceneTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *GetSubSceneTaskStatusResponse, _err error) {
+func (client *Client) GetSubSceneTaskStatusWithContext(ctx context.Context, request *GetSubSceneTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *GetSubSceneTaskStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2250,29 +1609,11 @@ func (client *Client) GetSubSceneTaskStatusWithOptions(request *GetSubSceneTaskS
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSubSceneTaskStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看子场景下预处理及切图任务
-//
-// @param request - GetSubSceneTaskStatusRequest
-//
-// @return GetSubSceneTaskStatusResponse
-func (client *Client) GetSubSceneTaskStatus(request *GetSubSceneTaskStatusRequest) (_result *GetSubSceneTaskStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSubSceneTaskStatusResponse{}
-	_body, _err := client.GetSubSceneTaskStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2285,7 +1626,7 @@ func (client *Client) GetSubSceneTaskStatus(request *GetSubSceneTaskStatusReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTaskStatusResponse
-func (client *Client) GetTaskStatusWithOptions(request *GetTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *GetTaskStatusResponse, _err error) {
+func (client *Client) GetTaskStatusWithContext(ctx context.Context, request *GetTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *GetTaskStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2312,29 +1653,11 @@ func (client *Client) GetTaskStatusWithOptions(request *GetTaskStatusRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看任务状态
-//
-// @param request - GetTaskStatusRequest
-//
-// @return GetTaskStatusResponse
-func (client *Client) GetTaskStatus(request *GetTaskStatusRequest) (_result *GetTaskStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTaskStatusResponse{}
-	_body, _err := client.GetTaskStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2343,7 +1666,7 @@ func (client *Client) GetTaskStatus(request *GetTaskStatusRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetWindowConfigResponse
-func (client *Client) GetWindowConfigWithOptions(request *GetWindowConfigRequest, runtime *dara.RuntimeOptions) (_result *GetWindowConfigResponse, _err error) {
+func (client *Client) GetWindowConfigWithContext(ctx context.Context, request *GetWindowConfigRequest, runtime *dara.RuntimeOptions) (_result *GetWindowConfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2370,25 +1693,11 @@ func (client *Client) GetWindowConfigWithOptions(request *GetWindowConfigRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetWindowConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetWindowConfigRequest
-//
-// @return GetWindowConfigResponse
-func (client *Client) GetWindowConfig(request *GetWindowConfigRequest) (_result *GetWindowConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetWindowConfigResponse{}
-	_body, _err := client.GetWindowConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2401,7 +1710,7 @@ func (client *Client) GetWindowConfig(request *GetWindowConfigRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return LabelBuildResponse
-func (client *Client) LabelBuildWithOptions(request *LabelBuildRequest, runtime *dara.RuntimeOptions) (_result *LabelBuildResponse, _err error) {
+func (client *Client) LabelBuildWithContext(ctx context.Context, request *LabelBuildRequest, runtime *dara.RuntimeOptions) (_result *LabelBuildResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2448,29 +1757,11 @@ func (client *Client) LabelBuildWithOptions(request *LabelBuildRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &LabelBuildResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 重建
-//
-// @param request - LabelBuildRequest
-//
-// @return LabelBuildResponse
-func (client *Client) LabelBuild(request *LabelBuildRequest) (_result *LabelBuildResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &LabelBuildResponse{}
-	_body, _err := client.LabelBuildWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2483,7 +1774,7 @@ func (client *Client) LabelBuild(request *LabelBuildRequest) (_result *LabelBuil
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return LinkImageResponse
-func (client *Client) LinkImageWithOptions(request *LinkImageRequest, runtime *dara.RuntimeOptions) (_result *LinkImageResponse, _err error) {
+func (client *Client) LinkImageWithContext(ctx context.Context, request *LinkImageRequest, runtime *dara.RuntimeOptions) (_result *LinkImageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2522,29 +1813,11 @@ func (client *Client) LinkImageWithOptions(request *LinkImageRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &LinkImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 关联图片
-//
-// @param request - LinkImageRequest
-//
-// @return LinkImageResponse
-func (client *Client) LinkImage(request *LinkImageRequest) (_result *LinkImageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &LinkImageResponse{}
-	_body, _err := client.LinkImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2557,7 +1830,7 @@ func (client *Client) LinkImage(request *LinkImageRequest) (_result *LinkImageRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListProjectResponse
-func (client *Client) ListProjectWithOptions(request *ListProjectRequest, runtime *dara.RuntimeOptions) (_result *ListProjectResponse, _err error) {
+func (client *Client) ListProjectWithContext(ctx context.Context, request *ListProjectRequest, runtime *dara.RuntimeOptions) (_result *ListProjectResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2592,29 +1865,11 @@ func (client *Client) ListProjectWithOptions(request *ListProjectRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 分页查询项目列表
-//
-// @param request - ListProjectRequest
-//
-// @return ListProjectResponse
-func (client *Client) ListProject(request *ListProjectRequest) (_result *ListProjectResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListProjectResponse{}
-	_body, _err := client.ListProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2627,7 +1882,7 @@ func (client *Client) ListProject(request *ListProjectRequest) (_result *ListPro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSceneResponse
-func (client *Client) ListSceneWithOptions(request *ListSceneRequest, runtime *dara.RuntimeOptions) (_result *ListSceneResponse, _err error) {
+func (client *Client) ListSceneWithContext(ctx context.Context, request *ListSceneRequest, runtime *dara.RuntimeOptions) (_result *ListSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2666,29 +1921,11 @@ func (client *Client) ListSceneWithOptions(request *ListSceneRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 分页查询主场景列表
-//
-// @param request - ListSceneRequest
-//
-// @return ListSceneResponse
-func (client *Client) ListScene(request *ListSceneRequest) (_result *ListSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListSceneResponse{}
-	_body, _err := client.ListSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2701,7 +1938,7 @@ func (client *Client) ListScene(request *ListSceneRequest) (_result *ListSceneRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSubSceneResponse
-func (client *Client) ListSubSceneWithOptions(request *ListSubSceneRequest, runtime *dara.RuntimeOptions) (_result *ListSubSceneResponse, _err error) {
+func (client *Client) ListSubSceneWithContext(ctx context.Context, request *ListSubSceneRequest, runtime *dara.RuntimeOptions) (_result *ListSubSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2744,29 +1981,11 @@ func (client *Client) ListSubSceneWithOptions(request *ListSubSceneRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSubSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询子场景列表
-//
-// @param request - ListSubSceneRequest
-//
-// @return ListSubSceneResponse
-func (client *Client) ListSubScene(request *ListSubSceneRequest) (_result *ListSubSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListSubSceneResponse{}
-	_body, _err := client.ListSubSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2779,7 +1998,7 @@ func (client *Client) ListSubScene(request *ListSubSceneRequest) (_result *ListS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OptimizeRightAngleResponse
-func (client *Client) OptimizeRightAngleWithOptions(request *OptimizeRightAngleRequest, runtime *dara.RuntimeOptions) (_result *OptimizeRightAngleResponse, _err error) {
+func (client *Client) OptimizeRightAngleWithContext(ctx context.Context, request *OptimizeRightAngleRequest, runtime *dara.RuntimeOptions) (_result *OptimizeRightAngleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2806,29 +2025,11 @@ func (client *Client) OptimizeRightAngleWithOptions(request *OptimizeRightAngleR
 		BodyType:    dara.String("json"),
 	}
 	_result = &OptimizeRightAngleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 直角优化
-//
-// @param request - OptimizeRightAngleRequest
-//
-// @return OptimizeRightAngleResponse
-func (client *Client) OptimizeRightAngle(request *OptimizeRightAngleRequest) (_result *OptimizeRightAngleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OptimizeRightAngleResponse{}
-	_body, _err := client.OptimizeRightAngleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2841,7 +2042,7 @@ func (client *Client) OptimizeRightAngle(request *OptimizeRightAngleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PackSceneResponse
-func (client *Client) PackSceneWithOptions(request *PackSceneRequest, runtime *dara.RuntimeOptions) (_result *PackSceneResponse, _err error) {
+func (client *Client) PackSceneWithContext(ctx context.Context, request *PackSceneRequest, runtime *dara.RuntimeOptions) (_result *PackSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2872,29 +2073,11 @@ func (client *Client) PackSceneWithOptions(request *PackSceneRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &PackSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 打包场景
-//
-// @param request - PackSceneRequest
-//
-// @return PackSceneResponse
-func (client *Client) PackScene(request *PackSceneRequest) (_result *PackSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PackSceneResponse{}
-	_body, _err := client.PackSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2907,7 +2090,7 @@ func (client *Client) PackScene(request *PackSceneRequest) (_result *PackSceneRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PackSourceResponse
-func (client *Client) PackSourceWithOptions(request *PackSourceRequest, runtime *dara.RuntimeOptions) (_result *PackSourceResponse, _err error) {
+func (client *Client) PackSourceWithContext(ctx context.Context, request *PackSourceRequest, runtime *dara.RuntimeOptions) (_result *PackSourceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2934,29 +2117,11 @@ func (client *Client) PackSourceWithOptions(request *PackSourceRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &PackSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 打包场景
-//
-// @param request - PackSourceRequest
-//
-// @return PackSourceResponse
-func (client *Client) PackSource(request *PackSourceRequest) (_result *PackSourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PackSourceResponse{}
-	_body, _err := client.PackSourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2969,7 +2134,7 @@ func (client *Client) PackSource(request *PackSourceRequest) (_result *PackSourc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PredImageResponse
-func (client *Client) PredImageWithOptions(request *PredImageRequest, runtime *dara.RuntimeOptions) (_result *PredImageResponse, _err error) {
+func (client *Client) PredImageWithContext(ctx context.Context, request *PredImageRequest, runtime *dara.RuntimeOptions) (_result *PredImageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3008,29 +2173,11 @@ func (client *Client) PredImageWithOptions(request *PredImageRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &PredImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 预处理
-//
-// @param request - PredImageRequest
-//
-// @return PredImageResponse
-func (client *Client) PredImage(request *PredImageRequest) (_result *PredImageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PredImageResponse{}
-	_body, _err := client.PredImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3043,7 +2190,7 @@ func (client *Client) PredImage(request *PredImageRequest) (_result *PredImageRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PredictionWallLineResponse
-func (client *Client) PredictionWallLineWithOptions(request *PredictionWallLineRequest, runtime *dara.RuntimeOptions) (_result *PredictionWallLineResponse, _err error) {
+func (client *Client) PredictionWallLineWithContext(ctx context.Context, request *PredictionWallLineRequest, runtime *dara.RuntimeOptions) (_result *PredictionWallLineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3074,29 +2221,11 @@ func (client *Client) PredictionWallLineWithOptions(request *PredictionWallLineR
 		BodyType:    dara.String("json"),
 	}
 	_result = &PredictionWallLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 墙线预测
-//
-// @param request - PredictionWallLineRequest
-//
-// @return PredictionWallLineResponse
-func (client *Client) PredictionWallLine(request *PredictionWallLineRequest) (_result *PredictionWallLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PredictionWallLineResponse{}
-	_body, _err := client.PredictionWallLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3105,7 +2234,7 @@ func (client *Client) PredictionWallLine(request *PredictionWallLineRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PublishHotspotResponse
-func (client *Client) PublishHotspotWithOptions(request *PublishHotspotRequest, runtime *dara.RuntimeOptions) (_result *PublishHotspotResponse, _err error) {
+func (client *Client) PublishHotspotWithContext(ctx context.Context, request *PublishHotspotRequest, runtime *dara.RuntimeOptions) (_result *PublishHotspotResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3136,25 +2265,11 @@ func (client *Client) PublishHotspotWithOptions(request *PublishHotspotRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &PublishHotspotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - PublishHotspotRequest
-//
-// @return PublishHotspotResponse
-func (client *Client) PublishHotspot(request *PublishHotspotRequest) (_result *PublishHotspotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PublishHotspotResponse{}
-	_body, _err := client.PublishHotspotWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3167,7 +2282,7 @@ func (client *Client) PublishHotspot(request *PublishHotspotRequest) (_result *P
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PublishHotspotConfigResponse
-func (client *Client) PublishHotspotConfigWithOptions(request *PublishHotspotConfigRequest, runtime *dara.RuntimeOptions) (_result *PublishHotspotConfigResponse, _err error) {
+func (client *Client) PublishHotspotConfigWithContext(ctx context.Context, request *PublishHotspotConfigRequest, runtime *dara.RuntimeOptions) (_result *PublishHotspotConfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3194,29 +2309,11 @@ func (client *Client) PublishHotspotConfigWithOptions(request *PublishHotspotCon
 		BodyType:    dara.String("json"),
 	}
 	_result = &PublishHotspotConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 保存扩展配置
-//
-// @param request - PublishHotspotConfigRequest
-//
-// @return PublishHotspotConfigResponse
-func (client *Client) PublishHotspotConfig(request *PublishHotspotConfigRequest) (_result *PublishHotspotConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PublishHotspotConfigResponse{}
-	_body, _err := client.PublishHotspotConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3229,7 +2326,7 @@ func (client *Client) PublishHotspotConfig(request *PublishHotspotConfigRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PublishSceneResponse
-func (client *Client) PublishSceneWithOptions(request *PublishSceneRequest, runtime *dara.RuntimeOptions) (_result *PublishSceneResponse, _err error) {
+func (client *Client) PublishSceneWithContext(ctx context.Context, request *PublishSceneRequest, runtime *dara.RuntimeOptions) (_result *PublishSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3256,29 +2353,11 @@ func (client *Client) PublishSceneWithOptions(request *PublishSceneRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &PublishSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 发布
-//
-// @param request - PublishSceneRequest
-//
-// @return PublishSceneResponse
-func (client *Client) PublishScene(request *PublishSceneRequest) (_result *PublishSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PublishSceneResponse{}
-	_body, _err := client.PublishSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3291,7 +2370,7 @@ func (client *Client) PublishScene(request *PublishSceneRequest) (_result *Publi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PublishStatusResponse
-func (client *Client) PublishStatusWithOptions(request *PublishStatusRequest, runtime *dara.RuntimeOptions) (_result *PublishStatusResponse, _err error) {
+func (client *Client) PublishStatusWithContext(ctx context.Context, request *PublishStatusRequest, runtime *dara.RuntimeOptions) (_result *PublishStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3318,29 +2397,11 @@ func (client *Client) PublishStatusWithOptions(request *PublishStatusRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &PublishStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 发布
-//
-// @param request - PublishStatusRequest
-//
-// @return PublishStatusResponse
-func (client *Client) PublishStatus(request *PublishStatusRequest) (_result *PublishStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PublishStatusResponse{}
-	_body, _err := client.PublishStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3353,7 +2414,7 @@ func (client *Client) PublishStatus(request *PublishStatusRequest) (_result *Pub
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RecoveryOriginImageResponse
-func (client *Client) RecoveryOriginImageWithOptions(request *RecoveryOriginImageRequest, runtime *dara.RuntimeOptions) (_result *RecoveryOriginImageResponse, _err error) {
+func (client *Client) RecoveryOriginImageWithContext(ctx context.Context, request *RecoveryOriginImageRequest, runtime *dara.RuntimeOptions) (_result *RecoveryOriginImageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3380,29 +2441,11 @@ func (client *Client) RecoveryOriginImageWithOptions(request *RecoveryOriginImag
 		BodyType:    dara.String("json"),
 	}
 	_result = &RecoveryOriginImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 恢复原图
-//
-// @param request - RecoveryOriginImageRequest
-//
-// @return RecoveryOriginImageResponse
-func (client *Client) RecoveryOriginImage(request *RecoveryOriginImageRequest) (_result *RecoveryOriginImageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RecoveryOriginImageResponse{}
-	_body, _err := client.RecoveryOriginImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3415,7 +2458,7 @@ func (client *Client) RecoveryOriginImage(request *RecoveryOriginImageRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RectVerticalResponse
-func (client *Client) RectVerticalWithOptions(request *RectVerticalRequest, runtime *dara.RuntimeOptions) (_result *RectVerticalResponse, _err error) {
+func (client *Client) RectVerticalWithContext(ctx context.Context, request *RectVerticalRequest, runtime *dara.RuntimeOptions) (_result *RectVerticalResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3454,29 +2497,11 @@ func (client *Client) RectVerticalWithOptions(request *RectVerticalRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &RectVerticalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 手动矫正
-//
-// @param request - RectVerticalRequest
-//
-// @return RectVerticalResponse
-func (client *Client) RectVertical(request *RectVerticalRequest) (_result *RectVerticalResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RectVerticalResponse{}
-	_body, _err := client.RectVerticalWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3489,7 +2514,7 @@ func (client *Client) RectVertical(request *RectVerticalRequest) (_result *RectV
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RectifyImageResponse
-func (client *Client) RectifyImageWithOptions(request *RectifyImageRequest, runtime *dara.RuntimeOptions) (_result *RectifyImageResponse, _err error) {
+func (client *Client) RectifyImageWithContext(ctx context.Context, request *RectifyImageRequest, runtime *dara.RuntimeOptions) (_result *RectifyImageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3520,29 +2545,11 @@ func (client *Client) RectifyImageWithOptions(request *RectifyImageRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &RectifyImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 图片矫正
-//
-// @param request - RectifyImageRequest
-//
-// @return RectifyImageResponse
-func (client *Client) RectifyImage(request *RectifyImageRequest) (_result *RectifyImageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RectifyImageResponse{}
-	_body, _err := client.RectifyImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3555,7 +2562,7 @@ func (client *Client) RectifyImage(request *RectifyImageRequest) (_result *Recti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RollbackSubSceneResponse
-func (client *Client) RollbackSubSceneWithOptions(request *RollbackSubSceneRequest, runtime *dara.RuntimeOptions) (_result *RollbackSubSceneResponse, _err error) {
+func (client *Client) RollbackSubSceneWithContext(ctx context.Context, request *RollbackSubSceneRequest, runtime *dara.RuntimeOptions) (_result *RollbackSubSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3582,29 +2589,11 @@ func (client *Client) RollbackSubSceneWithOptions(request *RollbackSubSceneReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &RollbackSubSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 恢复子场景
-//
-// @param request - RollbackSubSceneRequest
-//
-// @return RollbackSubSceneResponse
-func (client *Client) RollbackSubScene(request *RollbackSubSceneRequest) (_result *RollbackSubSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RollbackSubSceneResponse{}
-	_body, _err := client.RollbackSubSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3613,7 +2602,7 @@ func (client *Client) RollbackSubScene(request *RollbackSubSceneRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveHotspotConfigResponse
-func (client *Client) SaveHotspotConfigWithOptions(request *SaveHotspotConfigRequest, runtime *dara.RuntimeOptions) (_result *SaveHotspotConfigResponse, _err error) {
+func (client *Client) SaveHotspotConfigWithContext(ctx context.Context, request *SaveHotspotConfigRequest, runtime *dara.RuntimeOptions) (_result *SaveHotspotConfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3644,25 +2633,11 @@ func (client *Client) SaveHotspotConfigWithOptions(request *SaveHotspotConfigReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveHotspotConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveHotspotConfigRequest
-//
-// @return SaveHotspotConfigResponse
-func (client *Client) SaveHotspotConfig(request *SaveHotspotConfigRequest) (_result *SaveHotspotConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveHotspotConfigResponse{}
-	_body, _err := client.SaveHotspotConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3671,7 +2646,7 @@ func (client *Client) SaveHotspotConfig(request *SaveHotspotConfigRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveHotspotTagResponse
-func (client *Client) SaveHotspotTagWithOptions(request *SaveHotspotTagRequest, runtime *dara.RuntimeOptions) (_result *SaveHotspotTagResponse, _err error) {
+func (client *Client) SaveHotspotTagWithContext(ctx context.Context, request *SaveHotspotTagRequest, runtime *dara.RuntimeOptions) (_result *SaveHotspotTagResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3702,25 +2677,11 @@ func (client *Client) SaveHotspotTagWithOptions(request *SaveHotspotTagRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveHotspotTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveHotspotTagRequest
-//
-// @return SaveHotspotTagResponse
-func (client *Client) SaveHotspotTag(request *SaveHotspotTagRequest) (_result *SaveHotspotTagResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveHotspotTagResponse{}
-	_body, _err := client.SaveHotspotTagWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3733,7 +2694,7 @@ func (client *Client) SaveHotspotTag(request *SaveHotspotTagRequest) (_result *S
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveHotspotTagListResponse
-func (client *Client) SaveHotspotTagListWithOptions(request *SaveHotspotTagListRequest, runtime *dara.RuntimeOptions) (_result *SaveHotspotTagListResponse, _err error) {
+func (client *Client) SaveHotspotTagListWithContext(ctx context.Context, request *SaveHotspotTagListRequest, runtime *dara.RuntimeOptions) (_result *SaveHotspotTagListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3764,29 +2725,11 @@ func (client *Client) SaveHotspotTagListWithOptions(request *SaveHotspotTagListR
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveHotspotTagListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 保存热点
-//
-// @param request - SaveHotspotTagListRequest
-//
-// @return SaveHotspotTagListResponse
-func (client *Client) SaveHotspotTagList(request *SaveHotspotTagListRequest) (_result *SaveHotspotTagListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveHotspotTagListResponse{}
-	_body, _err := client.SaveHotspotTagListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3799,7 +2742,7 @@ func (client *Client) SaveHotspotTagList(request *SaveHotspotTagListRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveMinimapResponse
-func (client *Client) SaveMinimapWithOptions(request *SaveMinimapRequest, runtime *dara.RuntimeOptions) (_result *SaveMinimapResponse, _err error) {
+func (client *Client) SaveMinimapWithContext(ctx context.Context, request *SaveMinimapRequest, runtime *dara.RuntimeOptions) (_result *SaveMinimapResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3830,29 +2773,11 @@ func (client *Client) SaveMinimapWithOptions(request *SaveMinimapRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveMinimapResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 保存小地图数据
-//
-// @param request - SaveMinimapRequest
-//
-// @return SaveMinimapResponse
-func (client *Client) SaveMinimap(request *SaveMinimapRequest) (_result *SaveMinimapResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveMinimapResponse{}
-	_body, _err := client.SaveMinimapWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3865,7 +2790,7 @@ func (client *Client) SaveMinimap(request *SaveMinimapRequest) (_result *SaveMin
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveModelConfigResponse
-func (client *Client) SaveModelConfigWithOptions(request *SaveModelConfigRequest, runtime *dara.RuntimeOptions) (_result *SaveModelConfigResponse, _err error) {
+func (client *Client) SaveModelConfigWithContext(ctx context.Context, request *SaveModelConfigRequest, runtime *dara.RuntimeOptions) (_result *SaveModelConfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3896,29 +2821,11 @@ func (client *Client) SaveModelConfigWithOptions(request *SaveModelConfigRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveModelConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 保存模型文件
-//
-// @param request - SaveModelConfigRequest
-//
-// @return SaveModelConfigResponse
-func (client *Client) SaveModelConfig(request *SaveModelConfigRequest) (_result *SaveModelConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveModelConfigResponse{}
-	_body, _err := client.SaveModelConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3931,7 +2838,7 @@ func (client *Client) SaveModelConfig(request *SaveModelConfigRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ScenePublishResponse
-func (client *Client) ScenePublishWithOptions(request *ScenePublishRequest, runtime *dara.RuntimeOptions) (_result *ScenePublishResponse, _err error) {
+func (client *Client) ScenePublishWithContext(ctx context.Context, request *ScenePublishRequest, runtime *dara.RuntimeOptions) (_result *ScenePublishResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3958,29 +2865,11 @@ func (client *Client) ScenePublishWithOptions(request *ScenePublishRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ScenePublishResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 发布
-//
-// @param request - ScenePublishRequest
-//
-// @return ScenePublishResponse
-func (client *Client) ScenePublish(request *ScenePublishRequest) (_result *ScenePublishResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ScenePublishResponse{}
-	_body, _err := client.ScenePublishWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3993,7 +2882,7 @@ func (client *Client) ScenePublish(request *ScenePublishRequest) (_result *Scene
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TempPreviewResponse
-func (client *Client) TempPreviewWithOptions(request *TempPreviewRequest, runtime *dara.RuntimeOptions) (_result *TempPreviewResponse, _err error) {
+func (client *Client) TempPreviewWithContext(ctx context.Context, request *TempPreviewRequest, runtime *dara.RuntimeOptions) (_result *TempPreviewResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4020,29 +2909,11 @@ func (client *Client) TempPreviewWithOptions(request *TempPreviewRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &TempPreviewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 预览
-//
-// @param request - TempPreviewRequest
-//
-// @return TempPreviewResponse
-func (client *Client) TempPreview(request *TempPreviewRequest) (_result *TempPreviewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TempPreviewResponse{}
-	_body, _err := client.TempPreviewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4055,7 +2926,7 @@ func (client *Client) TempPreview(request *TempPreviewRequest) (_result *TempPre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TempPreviewStatusResponse
-func (client *Client) TempPreviewStatusWithOptions(request *TempPreviewStatusRequest, runtime *dara.RuntimeOptions) (_result *TempPreviewStatusResponse, _err error) {
+func (client *Client) TempPreviewStatusWithContext(ctx context.Context, request *TempPreviewStatusRequest, runtime *dara.RuntimeOptions) (_result *TempPreviewStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4082,29 +2953,11 @@ func (client *Client) TempPreviewStatusWithOptions(request *TempPreviewStatusReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &TempPreviewStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询预览任务处理状态
-//
-// @param request - TempPreviewStatusRequest
-//
-// @return TempPreviewStatusResponse
-func (client *Client) TempPreviewStatus(request *TempPreviewStatusRequest) (_result *TempPreviewStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TempPreviewStatusResponse{}
-	_body, _err := client.TempPreviewStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4117,7 +2970,7 @@ func (client *Client) TempPreviewStatus(request *TempPreviewStatusRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateConnDataResponse
-func (client *Client) UpdateConnDataWithOptions(request *UpdateConnDataRequest, runtime *dara.RuntimeOptions) (_result *UpdateConnDataResponse, _err error) {
+func (client *Client) UpdateConnDataWithContext(ctx context.Context, request *UpdateConnDataRequest, runtime *dara.RuntimeOptions) (_result *UpdateConnDataResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4148,29 +3001,11 @@ func (client *Client) UpdateConnDataWithOptions(request *UpdateConnDataRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateConnDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新关联数据
-//
-// @param request - UpdateConnDataRequest
-//
-// @return UpdateConnDataResponse
-func (client *Client) UpdateConnData(request *UpdateConnDataRequest) (_result *UpdateConnDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateConnDataResponse{}
-	_body, _err := client.UpdateConnDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4183,7 +3018,7 @@ func (client *Client) UpdateConnData(request *UpdateConnDataRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLayoutDataResponse
-func (client *Client) UpdateLayoutDataWithOptions(request *UpdateLayoutDataRequest, runtime *dara.RuntimeOptions) (_result *UpdateLayoutDataResponse, _err error) {
+func (client *Client) UpdateLayoutDataWithContext(ctx context.Context, request *UpdateLayoutDataRequest, runtime *dara.RuntimeOptions) (_result *UpdateLayoutDataResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4214,29 +3049,11 @@ func (client *Client) UpdateLayoutDataWithOptions(request *UpdateLayoutDataReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLayoutDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新标注数据
-//
-// @param request - UpdateLayoutDataRequest
-//
-// @return UpdateLayoutDataResponse
-func (client *Client) UpdateLayoutData(request *UpdateLayoutDataRequest) (_result *UpdateLayoutDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLayoutDataResponse{}
-	_body, _err := client.UpdateLayoutDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4249,7 +3066,7 @@ func (client *Client) UpdateLayoutData(request *UpdateLayoutDataRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateProjectResponse
-func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, runtime *dara.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
+func (client *Client) UpdateProjectWithContext(ctx context.Context, request *UpdateProjectRequest, runtime *dara.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4284,29 +3101,11 @@ func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 变更项目信息
-//
-// @param request - UpdateProjectRequest
-//
-// @return UpdateProjectResponse
-func (client *Client) UpdateProject(request *UpdateProjectRequest) (_result *UpdateProjectResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateProjectResponse{}
-	_body, _err := client.UpdateProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4319,7 +3118,7 @@ func (client *Client) UpdateProject(request *UpdateProjectRequest) (_result *Upd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateSceneResponse
-func (client *Client) UpdateSceneWithOptions(request *UpdateSceneRequest, runtime *dara.RuntimeOptions) (_result *UpdateSceneResponse, _err error) {
+func (client *Client) UpdateSceneWithContext(ctx context.Context, request *UpdateSceneRequest, runtime *dara.RuntimeOptions) (_result *UpdateSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4350,29 +3149,11 @@ func (client *Client) UpdateSceneWithOptions(request *UpdateSceneRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新主场景
-//
-// @param request - UpdateSceneRequest
-//
-// @return UpdateSceneResponse
-func (client *Client) UpdateScene(request *UpdateSceneRequest) (_result *UpdateSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateSceneResponse{}
-	_body, _err := client.UpdateSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4385,7 +3166,7 @@ func (client *Client) UpdateScene(request *UpdateSceneRequest) (_result *UpdateS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateSubSceneResponse
-func (client *Client) UpdateSubSceneWithOptions(tmpReq *UpdateSubSceneRequest, runtime *dara.RuntimeOptions) (_result *UpdateSubSceneResponse, _err error) {
+func (client *Client) UpdateSubSceneWithContext(ctx context.Context, tmpReq *UpdateSubSceneRequest, runtime *dara.RuntimeOptions) (_result *UpdateSubSceneResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -4426,29 +3207,11 @@ func (client *Client) UpdateSubSceneWithOptions(tmpReq *UpdateSubSceneRequest, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateSubSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新子场景
-//
-// @param request - UpdateSubSceneRequest
-//
-// @return UpdateSubSceneResponse
-func (client *Client) UpdateSubScene(request *UpdateSubSceneRequest) (_result *UpdateSubSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateSubSceneResponse{}
-	_body, _err := client.UpdateSubSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4461,7 +3224,7 @@ func (client *Client) UpdateSubScene(request *UpdateSubSceneRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateSubSceneSeqResponse
-func (client *Client) UpdateSubSceneSeqWithOptions(tmpReq *UpdateSubSceneSeqRequest, runtime *dara.RuntimeOptions) (_result *UpdateSubSceneSeqResponse, _err error) {
+func (client *Client) UpdateSubSceneSeqWithContext(ctx context.Context, tmpReq *UpdateSubSceneSeqRequest, runtime *dara.RuntimeOptions) (_result *UpdateSubSceneSeqResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -4498,28 +3261,10 @@ func (client *Client) UpdateSubSceneSeqWithOptions(tmpReq *UpdateSubSceneSeqRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateSubSceneSeqResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新子场景顺序
-//
-// @param request - UpdateSubSceneSeqRequest
-//
-// @return UpdateSubSceneSeqResponse
-func (client *Client) UpdateSubSceneSeq(request *UpdateSubSceneSeqRequest) (_result *UpdateSubSceneSeqResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateSubSceneSeqResponse{}
-	_body, _err := client.UpdateSubSceneSeqWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
