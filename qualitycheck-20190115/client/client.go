@@ -970,6 +970,72 @@ func (client *Client) CreateTaskAssignRule(request *CreateTaskAssignRuleRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建用户
+//
+// @param request - CreateUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserResponse
+func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime *dara.RuntimeOptions) (_result *CreateUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		body["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		body["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateUser"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建用户
+//
+// @param request - CreateUserRequest
+//
+// @return CreateUserResponse
+func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateUserResponse{}
+	_body, _err := client.CreateUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - CreateWarningConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2531,6 +2597,10 @@ func (client *Client) GetResult(request *GetResultRequest) (_result *GetResultRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取质检结果详情用于复核
+//
 // @param request - GetResultToReviewRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2575,6 +2645,10 @@ func (client *Client) GetResultToReviewWithOptions(request *GetResultToReviewReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取质检结果详情用于复核
+//
 // @param request - GetResultToReviewRequest
 //
 // @return GetResultToReviewResponse
@@ -4867,6 +4941,72 @@ func (client *Client) SubmitReviewInfo(request *SubmitReviewInfoRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitReviewInfoResponse{}
 	_body, _err := client.SubmitReviewInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交复核结果v4
+//
+// @param request - SubmitReviewInfoV4Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitReviewInfoV4Response
+func (client *Client) SubmitReviewInfoV4WithOptions(request *SubmitReviewInfoV4Request, runtime *dara.RuntimeOptions) (_result *SubmitReviewInfoV4Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		body["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		body["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitReviewInfoV4"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitReviewInfoV4Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交复核结果v4
+//
+// @param request - SubmitReviewInfoV4Request
+//
+// @return SubmitReviewInfoV4Response
+func (client *Client) SubmitReviewInfoV4(request *SubmitReviewInfoV4Request) (_result *SubmitReviewInfoV4Response, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitReviewInfoV4Response{}
+	_body, _err := client.SubmitReviewInfoV4WithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

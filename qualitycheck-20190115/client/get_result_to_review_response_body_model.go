@@ -1183,7 +1183,8 @@ type GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoRevi
 	// example:
 	//
 	// 451
-	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	Rid                   *int64                                                                                                  `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	SentenceReviewResults *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResults `json:"SentenceReviewResults,omitempty" xml:"SentenceReviewResults,omitempty" type:"Struct"`
 }
 
 func (s GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) String() string {
@@ -1214,6 +1215,10 @@ func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo
 	return s.Rid
 }
 
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) GetSentenceReviewResults() *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResults {
+	return s.SentenceReviewResults
+}
+
 func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) SetHitId(v string) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo {
 	s.HitId = &v
 	return s
@@ -1239,7 +1244,193 @@ func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo
 	return s
 }
 
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) SetSentenceReviewResults(v *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResults) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo {
+	s.SentenceReviewResults = v
+	return s
+}
+
 func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) Validate() error {
+	if s.SentenceReviewResults != nil {
+		if err := s.SentenceReviewResults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResults struct {
+	SentenceReviewResults []*GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults `json:"SentenceReviewResults,omitempty" xml:"SentenceReviewResults,omitempty" type:"Repeated"`
+}
+
+func (s GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResults) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResults) GoString() string {
+	return s.String()
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResults) GetSentenceReviewResults() []*GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults {
+	return s.SentenceReviewResults
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResults) SetSentenceReviewResults(v []*GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResults {
+	s.SentenceReviewResults = v
+	return s
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResults) Validate() error {
+	if s.SentenceReviewResults != nil {
+		for _, item := range s.SentenceReviewResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults struct {
+	Changed *bool `json:"Changed,omitempty" xml:"Changed,omitempty"`
+	// example:
+	//
+	// 1
+	Cid *int64 `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	// example:
+	//
+	// 无意见
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// 1
+	HitStatus *int32 `json:"HitStatus,omitempty" xml:"HitStatus,omitempty"`
+	// example:
+	//
+	// 122-122-22-333
+	OriginTaskId *string `json:"OriginTaskId,omitempty" xml:"OriginTaskId,omitempty"`
+	// example:
+	//
+	// 1001
+	OriginVid *string `json:"OriginVid,omitempty" xml:"OriginVid,omitempty"`
+	// example:
+	//
+	// 1
+	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// example:
+	//
+	// 2
+	ReviewDimensionType *string `json:"ReviewDimensionType,omitempty" xml:"ReviewDimensionType,omitempty"`
+	// example:
+	//
+	// 1
+	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// example:
+	//
+	// 1
+	Sid *int64 `json:"Sid,omitempty" xml:"Sid,omitempty"`
+}
+
+func (s GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) GoString() string {
+	return s.String()
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) GetChanged() *bool {
+	return s.Changed
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) GetCid() *int64 {
+	return s.Cid
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) GetComment() *string {
+	return s.Comment
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) GetHitStatus() *int32 {
+	return s.HitStatus
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) GetOriginTaskId() *string {
+	return s.OriginTaskId
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) GetOriginVid() *string {
+	return s.OriginVid
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) GetPid() *string {
+	return s.Pid
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) GetReviewDimensionType() *string {
+	return s.ReviewDimensionType
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) GetRid() *int64 {
+	return s.Rid
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) GetSid() *int64 {
+	return s.Sid
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) SetChanged(v bool) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults {
+	s.Changed = &v
+	return s
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) SetCid(v int64) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults {
+	s.Cid = &v
+	return s
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) SetComment(v string) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults {
+	s.Comment = &v
+	return s
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) SetHitStatus(v int32) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults {
+	s.HitStatus = &v
+	return s
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) SetOriginTaskId(v string) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults {
+	s.OriginTaskId = &v
+	return s
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) SetOriginVid(v string) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults {
+	s.OriginVid = &v
+	return s
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) SetPid(v string) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults {
+	s.Pid = &v
+	return s
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) SetReviewDimensionType(v string) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults {
+	s.ReviewDimensionType = &v
+	return s
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) SetRid(v int64) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults {
+	s.Rid = &v
+	return s
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) SetSid(v int64) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults {
+	s.Sid = &v
+	return s
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResultsSentenceReviewResults) Validate() error {
 	return dara.Validate(s)
 }
 
