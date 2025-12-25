@@ -117,6 +117,10 @@ func (s *DescribeRCDisksResponseBody) Validate() error {
 }
 
 type DescribeRCDisksResponseBodyDisks struct {
+	// example:
+	//
+	// 2017-12-05T2340:00Z
+	AttachedTime *string `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
 	// The category of the disk. Valid values:
 	//
 	// 	- **cloud_efficiency**: ultra disk.
@@ -329,6 +333,10 @@ func (s DescribeRCDisksResponseBodyDisks) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeRCDisksResponseBodyDisks) GetAttachedTime() *string {
+	return s.AttachedTime
+}
+
 func (s *DescribeRCDisksResponseBodyDisks) GetCategory() *string {
 	return s.Category
 }
@@ -431,6 +439,11 @@ func (s *DescribeRCDisksResponseBodyDisks) GetType() *string {
 
 func (s *DescribeRCDisksResponseBodyDisks) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *DescribeRCDisksResponseBodyDisks) SetAttachedTime(v string) *DescribeRCDisksResponseBodyDisks {
+	s.AttachedTime = &v
+	return s
 }
 
 func (s *DescribeRCDisksResponseBodyDisks) SetCategory(v string) *DescribeRCDisksResponseBodyDisks {

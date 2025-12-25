@@ -27,7 +27,7 @@ type ModifyRCElasticScalingRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// example:
 	//
-	// mysql.x2.medium.9cm
+	// rc-3ndh4shwes*
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// example:
 	//
