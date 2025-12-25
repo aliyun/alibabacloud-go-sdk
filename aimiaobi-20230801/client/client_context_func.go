@@ -10119,6 +10119,10 @@ func (client *Client) RunTextPolishingWithContext(ctx context.Context, request *
 		body["Content"] = request.Content
 	}
 
+	if !dara.IsNil(request.OriginContent) {
+		body["OriginContent"] = request.OriginContent
+	}
+
 	if !dara.IsNil(request.Prompt) {
 		body["Prompt"] = request.Prompt
 	}
@@ -14850,6 +14854,10 @@ func (client *Client) runTextPolishingWithSSECtx_opYieldFunc(_yield chan *RunTex
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Content) {
 		body["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.OriginContent) {
+		body["OriginContent"] = request.OriginContent
 	}
 
 	if !dara.IsNil(request.Prompt) {
