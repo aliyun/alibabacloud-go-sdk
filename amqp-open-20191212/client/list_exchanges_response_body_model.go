@@ -155,6 +155,7 @@ type ListExchangesResponseBodyDataExchanges struct {
 	//
 	// DIRECT
 	ExchangeType *string `json:"ExchangeType,omitempty" xml:"ExchangeType,omitempty"`
+	Internal     *bool   `json:"Internal,omitempty" xml:"Internal,omitempty"`
 	// The exchange name.
 	//
 	// example:
@@ -193,6 +194,10 @@ func (s *ListExchangesResponseBodyDataExchanges) GetExchangeType() *string {
 	return s.ExchangeType
 }
 
+func (s *ListExchangesResponseBodyDataExchanges) GetInternal() *bool {
+	return s.Internal
+}
+
 func (s *ListExchangesResponseBodyDataExchanges) GetName() *string {
 	return s.Name
 }
@@ -218,6 +223,11 @@ func (s *ListExchangesResponseBodyDataExchanges) SetCreateTime(v int64) *ListExc
 
 func (s *ListExchangesResponseBodyDataExchanges) SetExchangeType(v string) *ListExchangesResponseBodyDataExchanges {
 	s.ExchangeType = &v
+	return s
+}
+
+func (s *ListExchangesResponseBodyDataExchanges) SetInternal(v bool) *ListExchangesResponseBodyDataExchanges {
+	s.Internal = &v
 	return s
 }
 
