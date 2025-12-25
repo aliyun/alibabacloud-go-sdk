@@ -1835,6 +1835,54 @@ func (client *Client) KillProcessWithContext(ctx context.Context, request *KillP
 
 // Summary:
 //
+// 列举ClickHouse时区参数枚举值
+//
+// @param request - ListClickHouseDBTimezonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListClickHouseDBTimezonesResponse
+func (client *Client) ListClickHouseDBTimezonesWithContext(ctx context.Context, request *ListClickHouseDBTimezonesRequest, runtime *dara.RuntimeOptions) (_result *ListClickHouseDBTimezonesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListClickHouseDBTimezones"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListClickHouseDBTimezonesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询实例关联的白名单模板清单
 //
 // @param request - ListInstanceLinkedWhitelistTemplatesRequest
