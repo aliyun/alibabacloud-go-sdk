@@ -222,6 +222,8 @@ type ListAppsResponseBodyDataRecords struct {
 	//
 	// 100
 	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 1000
@@ -235,6 +237,10 @@ type ListAppsResponseBodyDataRecords struct {
 	//
 	// k8s_service
 	WorkerRegistry *string `json:"WorkerRegistry,omitempty" xml:"WorkerRegistry,omitempty"`
+	// example:
+	//
+	// 3
+	WorkflowNum *int32 `json:"WorkflowNum,omitempty" xml:"WorkflowNum,omitempty"`
 }
 
 func (s ListAppsResponseBodyDataRecords) String() string {
@@ -303,6 +309,10 @@ func (s *ListAppsResponseBodyDataRecords) GetUpdater() *string {
 
 func (s *ListAppsResponseBodyDataRecords) GetWorkerRegistry() *string {
 	return s.WorkerRegistry
+}
+
+func (s *ListAppsResponseBodyDataRecords) GetWorkflowNum() *int32 {
+	return s.WorkflowNum
 }
 
 func (s *ListAppsResponseBodyDataRecords) SetAccessToken(v string) *ListAppsResponseBodyDataRecords {
@@ -377,6 +387,11 @@ func (s *ListAppsResponseBodyDataRecords) SetUpdater(v string) *ListAppsResponse
 
 func (s *ListAppsResponseBodyDataRecords) SetWorkerRegistry(v string) *ListAppsResponseBodyDataRecords {
 	s.WorkerRegistry = &v
+	return s
+}
+
+func (s *ListAppsResponseBodyDataRecords) SetWorkflowNum(v int32) *ListAppsResponseBodyDataRecords {
+	s.WorkflowNum = &v
 	return s
 }
 

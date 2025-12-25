@@ -148,6 +148,84 @@ func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppRe
 
 // Summary:
 //
+// 创建日历
+//
+// @param request - CreateCalendarRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCalendarResponse
+func (client *Client) CreateCalendarWithOptions(request *CreateCalendarRequest, runtime *dara.RuntimeOptions) (_result *CreateCalendarResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CalendarName) {
+		body["CalendarName"] = request.CalendarName
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Months) {
+		body["Months"] = request.Months
+	}
+
+	if !dara.IsNil(request.Year) {
+		body["Year"] = request.Year
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCalendar"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCalendarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建日历
+//
+// @param request - CreateCalendarRequest
+//
+// @return CreateCalendarResponse
+func (client *Client) CreateCalendar(request *CreateCalendarRequest) (_result *CreateCalendarResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateCalendarResponse{}
+	_body, _err := client.CreateCalendarWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建集群
 //
 // @param tmpReq - CreateClusterRequest
@@ -504,6 +582,108 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 
 // Summary:
 //
+// 创建应用
+//
+// @param request - CreateWorkflowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWorkflowResponse
+func (client *Client) CreateWorkflowWithOptions(request *CreateWorkflowRequest, runtime *dara.RuntimeOptions) (_result *CreateWorkflowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.Calendar) {
+		body["Calendar"] = request.Calendar
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.MaxConcurrency) {
+		body["MaxConcurrency"] = request.MaxConcurrency
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TimeExpression) {
+		body["TimeExpression"] = request.TimeExpression
+	}
+
+	if !dara.IsNil(request.TimeType) {
+		body["TimeType"] = request.TimeType
+	}
+
+	if !dara.IsNil(request.Timezone) {
+		body["Timezone"] = request.Timezone
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWorkflow"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用
+//
+// @param request - CreateWorkflowRequest
+//
+// @return CreateWorkflowResponse
+func (client *Client) CreateWorkflow(request *CreateWorkflowRequest) (_result *CreateWorkflowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateWorkflowResponse{}
+	_body, _err := client.CreateWorkflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除应用分组
 //
 // @param request - DeleteAppRequest
@@ -561,6 +741,76 @@ func (client *Client) DeleteApp(request *DeleteAppRequest) (_result *DeleteAppRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteAppResponse{}
 	_body, _err := client.DeleteAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除日历
+//
+// @param request - DeleteCalendarRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCalendarResponse
+func (client *Client) DeleteCalendarWithOptions(request *DeleteCalendarRequest, runtime *dara.RuntimeOptions) (_result *DeleteCalendarResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CalendarName) {
+		body["CalendarName"] = request.CalendarName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Year) {
+		body["Year"] = request.Year
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCalendar"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCalendarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除日历
+//
+// @param request - DeleteCalendarRequest
+//
+// @return DeleteCalendarResponse
+func (client *Client) DeleteCalendar(request *DeleteCalendarRequest) (_result *DeleteCalendarResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteCalendarResponse{}
+	_body, _err := client.DeleteCalendarWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -708,6 +958,160 @@ func (client *Client) DeleteJobs(request *DeleteJobsRequest) (_result *DeleteJob
 
 // Summary:
 //
+// 删除工作流
+//
+// @param request - DeleteWorkflowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWorkflowResponse
+func (client *Client) DeleteWorkflowWithOptions(request *DeleteWorkflowRequest, runtime *dara.RuntimeOptions) (_result *DeleteWorkflowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.DeleteJobs) {
+		body["DeleteJobs"] = request.DeleteJobs
+	}
+
+	if !dara.IsNil(request.WorkflowId) {
+		body["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWorkflow"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除工作流
+//
+// @param request - DeleteWorkflowRequest
+//
+// @return DeleteWorkflowResponse
+func (client *Client) DeleteWorkflow(request *DeleteWorkflowRequest) (_result *DeleteWorkflowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteWorkflowResponse{}
+	_body, _err := client.DeleteWorkflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除工作流
+//
+// @param tmpReq - DeleteWorkflowsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWorkflowsResponse
+func (client *Client) DeleteWorkflowsWithOptions(tmpReq *DeleteWorkflowsRequest, runtime *dara.RuntimeOptions) (_result *DeleteWorkflowsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteWorkflowsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.WorkflowIds) {
+		request.WorkflowIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkflowIds, dara.String("WorkflowIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.DeleteJobs) {
+		body["DeleteJobs"] = request.DeleteJobs
+	}
+
+	if !dara.IsNil(request.WorkflowIdsShrink) {
+		body["WorkflowIds"] = request.WorkflowIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWorkflows"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWorkflowsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除工作流
+//
+// @param request - DeleteWorkflowsRequest
+//
+// @return DeleteWorkflowsResponse
+func (client *Client) DeleteWorkflows(request *DeleteWorkflowsRequest) (_result *DeleteWorkflowsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteWorkflowsResponse{}
+	_body, _err := client.DeleteWorkflowsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 批量导出任务信息
 //
 // @param tmpReq - ExportJobsRequest
@@ -788,6 +1192,82 @@ func (client *Client) ExportJobs(request *ExportJobsRequest) (_result *ExportJob
 
 // Summary:
 //
+// 批量导出工作流信息
+//
+// @param tmpReq - ExportWorkflowsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportWorkflowsResponse
+func (client *Client) ExportWorkflowsWithOptions(tmpReq *ExportWorkflowsRequest, runtime *dara.RuntimeOptions) (_result *ExportWorkflowsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ExportWorkflowsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.WorkflowId) {
+		request.WorkflowIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkflowId, dara.String("WorkflowId"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.WorkflowIdShrink) {
+		body["WorkflowId"] = request.WorkflowIdShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExportWorkflows"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("byte"),
+	}
+	_result = &ExportWorkflowsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量导出工作流信息
+//
+// @param request - ExportWorkflowsRequest
+//
+// @return ExportWorkflowsResponse
+func (client *Client) ExportWorkflows(request *ExportWorkflowsRequest) (_result *ExportWorkflowsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ExportWorkflowsResponse{}
+	_body, _err := client.ExportWorkflowsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取指定应用
 //
 // @param request - GetAppRequest
@@ -845,6 +1325,76 @@ func (client *Client) GetApp(request *GetAppRequest) (_result *GetAppResponse, _
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetAppResponse{}
 	_body, _err := client.GetAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取日历信息
+//
+// @param request - GetCalendarRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCalendarResponse
+func (client *Client) GetCalendarWithOptions(request *GetCalendarRequest, runtime *dara.RuntimeOptions) (_result *GetCalendarResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CalendarName) {
+		query["CalendarName"] = request.CalendarName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Year) {
+		query["Year"] = request.Year
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCalendar"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCalendarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取日历信息
+//
+// @param request - GetCalendarRequest
+//
+// @return GetCalendarResponse
+func (client *Client) GetCalendar(request *GetCalendarRequest) (_result *GetCalendarResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetCalendarResponse{}
+	_body, _err := client.GetCalendarWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1342,6 +1892,290 @@ func (client *Client) GetLogEvent(request *GetLogEventRequest) (_result *GetLogE
 
 // Summary:
 //
+// 获取工作流
+//
+// @param request - GetWorkflowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkflowResponse
+func (client *Client) GetWorkflowWithOptions(request *GetWorkflowRequest, runtime *dara.RuntimeOptions) (_result *GetWorkflowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.WorkflowId) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkflow"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作流
+//
+// @param request - GetWorkflowRequest
+//
+// @return GetWorkflowResponse
+func (client *Client) GetWorkflow(request *GetWorkflowRequest) (_result *GetWorkflowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetWorkflowResponse{}
+	_body, _err := client.GetWorkflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作流的DAG信息
+//
+// @param request - GetWorkflowDAGRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkflowDAGResponse
+func (client *Client) GetWorkflowDAGWithOptions(request *GetWorkflowDAGRequest, runtime *dara.RuntimeOptions) (_result *GetWorkflowDAGResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.WorkflowId) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkflowDAG"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkflowDAGResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作流的DAG信息
+//
+// @param request - GetWorkflowDAGRequest
+//
+// @return GetWorkflowDAGResponse
+func (client *Client) GetWorkflowDAG(request *GetWorkflowDAGRequest) (_result *GetWorkflowDAGResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetWorkflowDAGResponse{}
+	_body, _err := client.GetWorkflowDAGWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作流的DAG信息
+//
+// @param request - GetWorkflowDAGPreviewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkflowDAGPreviewResponse
+func (client *Client) GetWorkflowDAGPreviewWithOptions(request *GetWorkflowDAGPreviewRequest, runtime *dara.RuntimeOptions) (_result *GetWorkflowDAGPreviewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.DagVersion) {
+		query["DagVersion"] = request.DagVersion
+	}
+
+	if !dara.IsNil(request.WorkflowId) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkflowDAGPreview"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkflowDAGPreviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作流的DAG信息
+//
+// @param request - GetWorkflowDAGPreviewRequest
+//
+// @return GetWorkflowDAGPreviewResponse
+func (client *Client) GetWorkflowDAGPreview(request *GetWorkflowDAGPreviewRequest) (_result *GetWorkflowDAGPreviewResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetWorkflowDAGPreviewResponse{}
+	_body, _err := client.GetWorkflowDAGPreviewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作流实例DAG信息
+//
+// @param request - GetWorkflowExecutionDAGRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkflowExecutionDAGResponse
+func (client *Client) GetWorkflowExecutionDAGWithOptions(request *GetWorkflowExecutionDAGRequest, runtime *dara.RuntimeOptions) (_result *GetWorkflowExecutionDAGResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.WorkflowExecutionId) {
+		query["WorkflowExecutionId"] = request.WorkflowExecutionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkflowExecutionDAG"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkflowExecutionDAGResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作流实例DAG信息
+//
+// @param request - GetWorkflowExecutionDAGRequest
+//
+// @return GetWorkflowExecutionDAGResponse
+func (client *Client) GetWorkflowExecutionDAG(request *GetWorkflowExecutionDAGRequest) (_result *GetWorkflowExecutionDAGResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetWorkflowExecutionDAGResponse{}
+	_body, _err := client.GetWorkflowExecutionDAGWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 导入日历
 //
 // @param request - ImportCalendarRequest
@@ -1481,6 +2315,80 @@ func (client *Client) ImportJobs(request *ImportJobsRequest) (_result *ImportJob
 	runtime := &dara.RuntimeOptions{}
 	_result = &ImportJobsResponse{}
 	_body, _err := client.ImportJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量导入工作流
+//
+// @param request - ImportWorkflowsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportWorkflowsResponse
+func (client *Client) ImportWorkflowsWithOptions(request *ImportWorkflowsRequest, runtime *dara.RuntimeOptions) (_result *ImportWorkflowsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AutoCreateApp) {
+		body["AutoCreateApp"] = request.AutoCreateApp
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Content) {
+		body["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.Overwrite) {
+		body["Overwrite"] = request.Overwrite
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImportWorkflows"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImportWorkflowsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量导入工作流
+//
+// @param request - ImportWorkflowsRequest
+//
+// @return ImportWorkflowsResponse
+func (client *Client) ImportWorkflows(request *ImportWorkflowsRequest) (_result *ImportWorkflowsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ImportWorkflowsResponse{}
+	_body, _err := client.ImportWorkflowsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1713,6 +2621,88 @@ func (client *Client) ListCalendarNames(request *ListCalendarNamesRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListCalendarNamesResponse{}
 	_body, _err := client.ListCalendarNamesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询日历
+//
+// @param request - ListCalendarsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCalendarsResponse
+func (client *Client) ListCalendarsWithOptions(request *ListCalendarsRequest, runtime *dara.RuntimeOptions) (_result *ListCalendarsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CalendarName) {
+		query["CalendarName"] = request.CalendarName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.FetchCalendarDetail) {
+		query["FetchCalendarDetail"] = request.FetchCalendarDetail
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Year) {
+		query["Year"] = request.Year
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCalendars"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCalendarsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询日历
+//
+// @param request - ListCalendarsRequest
+//
+// @return ListCalendarsResponse
+func (client *Client) ListCalendars(request *ListCalendarsRequest) (_result *ListCalendarsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCalendarsResponse{}
+	_body, _err := client.ListCalendarsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2462,6 +3452,366 @@ func (client *Client) ListScheduleTimes(request *ListScheduleTimesRequest) (_res
 
 // Summary:
 //
+// 获取流程实例列表
+//
+// @param request - ListWorkflowExecutionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkflowExecutionsResponse
+func (client *Client) ListWorkflowExecutionsWithOptions(request *ListWorkflowExecutionsRequest, runtime *dara.RuntimeOptions) (_result *ListWorkflowExecutionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.WorkflowExecutionId) {
+		query["WorkflowExecutionId"] = request.WorkflowExecutionId
+	}
+
+	if !dara.IsNil(request.WorkflowId) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
+	if !dara.IsNil(request.WorkflowName) {
+		query["WorkflowName"] = request.WorkflowName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWorkflowExecutions"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWorkflowExecutionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取流程实例列表
+//
+// @param request - ListWorkflowExecutionsRequest
+//
+// @return ListWorkflowExecutionsResponse
+func (client *Client) ListWorkflowExecutions(request *ListWorkflowExecutionsRequest) (_result *ListWorkflowExecutionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListWorkflowExecutionsResponse{}
+	_body, _err := client.ListWorkflowExecutionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前工作流版本列表
+//
+// @param request - ListWorkflowVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkflowVersionsResponse
+func (client *Client) ListWorkflowVersionsWithOptions(request *ListWorkflowVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListWorkflowVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.WorkflowId) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWorkflowVersions"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWorkflowVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前工作流版本列表
+//
+// @param request - ListWorkflowVersionsRequest
+//
+// @return ListWorkflowVersionsResponse
+func (client *Client) ListWorkflowVersions(request *ListWorkflowVersionsRequest) (_result *ListWorkflowVersionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListWorkflowVersionsResponse{}
+	_body, _err := client.ListWorkflowVersionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作流列表
+//
+// @param request - ListWorkflowsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkflowsResponse
+func (client *Client) ListWorkflowsWithOptions(request *ListWorkflowsRequest, runtime *dara.RuntimeOptions) (_result *ListWorkflowsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.WorkflowId) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWorkflows"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWorkflowsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作流列表
+//
+// @param request - ListWorkflowsRequest
+//
+// @return ListWorkflowsResponse
+func (client *Client) ListWorkflows(request *ListWorkflowsRequest) (_result *ListWorkflowsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListWorkflowsResponse{}
+	_body, _err := client.ListWorkflowsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 补数工作流
+//
+// @param request - OperateBackfillWorkflowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateBackfillWorkflowResponse
+func (client *Client) OperateBackfillWorkflowWithOptions(request *OperateBackfillWorkflowRequest, runtime *dara.RuntimeOptions) (_result *OperateBackfillWorkflowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.WorkflowId) {
+		body["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateBackfillWorkflow"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateBackfillWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 补数工作流
+//
+// @param request - OperateBackfillWorkflowRequest
+//
+// @return OperateBackfillWorkflowResponse
+func (client *Client) OperateBackfillWorkflow(request *OperateBackfillWorkflowRequest) (_result *OperateBackfillWorkflowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OperateBackfillWorkflowResponse{}
+	_body, _err := client.OperateBackfillWorkflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 指定执行器
 //
 // @param tmpReq - OperateDesignateExecutorsRequest
@@ -2626,6 +3976,82 @@ func (client *Client) OperateDisableJobs(request *OperateDisableJobsRequest) (_r
 
 // Summary:
 //
+// 批量禁用工作流
+//
+// @param tmpReq - OperateDisableWorkflowsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateDisableWorkflowsResponse
+func (client *Client) OperateDisableWorkflowsWithOptions(tmpReq *OperateDisableWorkflowsRequest, runtime *dara.RuntimeOptions) (_result *OperateDisableWorkflowsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &OperateDisableWorkflowsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.WorkflowIds) {
+		request.WorkflowIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkflowIds, dara.String("WorkflowIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.WorkflowIdsShrink) {
+		body["WorkflowIds"] = request.WorkflowIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateDisableWorkflows"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateDisableWorkflowsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量禁用工作流
+//
+// @param request - OperateDisableWorkflowsRequest
+//
+// @return OperateDisableWorkflowsResponse
+func (client *Client) OperateDisableWorkflows(request *OperateDisableWorkflowsRequest) (_result *OperateDisableWorkflowsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OperateDisableWorkflowsResponse{}
+	_body, _err := client.OperateDisableWorkflowsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 批量启用任务
 //
 // @param tmpReq - OperateEnableJobsRequest
@@ -2693,6 +4119,82 @@ func (client *Client) OperateEnableJobs(request *OperateEnableJobsRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &OperateEnableJobsResponse{}
 	_body, _err := client.OperateEnableJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量启用工作流
+//
+// @param tmpReq - OperateEnableWorkflowsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateEnableWorkflowsResponse
+func (client *Client) OperateEnableWorkflowsWithOptions(tmpReq *OperateEnableWorkflowsRequest, runtime *dara.RuntimeOptions) (_result *OperateEnableWorkflowsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &OperateEnableWorkflowsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.WorkflowIds) {
+		request.WorkflowIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkflowIds, dara.String("WorkflowIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.WorkflowIdsShrink) {
+		body["WorkflowIds"] = request.WorkflowIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateEnableWorkflows"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateEnableWorkflowsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量启用工作流
+//
+// @param request - OperateEnableWorkflowsRequest
+//
+// @return OperateEnableWorkflowsResponse
+func (client *Client) OperateEnableWorkflows(request *OperateEnableWorkflowsRequest) (_result *OperateEnableWorkflowsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OperateEnableWorkflowsResponse{}
+	_body, _err := client.OperateEnableWorkflowsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2775,6 +4277,356 @@ func (client *Client) OperateExecuteJob(request *OperateExecuteJobRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &OperateExecuteJobResponse{}
 	_body, _err := client.OperateExecuteJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 运行一次工作流
+//
+// @param request - OperateExecuteWorkflowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateExecuteWorkflowResponse
+func (client *Client) OperateExecuteWorkflowWithOptions(request *OperateExecuteWorkflowRequest, runtime *dara.RuntimeOptions) (_result *OperateExecuteWorkflowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.WorkflowId) {
+		body["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateExecuteWorkflow"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateExecuteWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 运行一次工作流
+//
+// @param request - OperateExecuteWorkflowRequest
+//
+// @return OperateExecuteWorkflowResponse
+func (client *Client) OperateExecuteWorkflow(request *OperateExecuteWorkflowRequest) (_result *OperateExecuteWorkflowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OperateExecuteWorkflowResponse{}
+	_body, _err := client.OperateExecuteWorkflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Hold住任务实例
+//
+// @param request - OperateHoldJobExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateHoldJobExecutionResponse
+func (client *Client) OperateHoldJobExecutionWithOptions(request *OperateHoldJobExecutionRequest, runtime *dara.RuntimeOptions) (_result *OperateHoldJobExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.JobExecutionId) {
+		query["JobExecutionId"] = request.JobExecutionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateHoldJobExecution"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateHoldJobExecutionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Hold住任务实例
+//
+// @param request - OperateHoldJobExecutionRequest
+//
+// @return OperateHoldJobExecutionResponse
+func (client *Client) OperateHoldJobExecution(request *OperateHoldJobExecutionRequest) (_result *OperateHoldJobExecutionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OperateHoldJobExecutionResponse{}
+	_body, _err := client.OperateHoldJobExecutionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将工作流中未开始的节点置为Held状态
+//
+// @param request - OperateHoldWorkflowExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateHoldWorkflowExecutionResponse
+func (client *Client) OperateHoldWorkflowExecutionWithOptions(request *OperateHoldWorkflowExecutionRequest, runtime *dara.RuntimeOptions) (_result *OperateHoldWorkflowExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.WorkflowExecutionId) {
+		body["WorkflowExecutionId"] = request.WorkflowExecutionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateHoldWorkflowExecution"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateHoldWorkflowExecutionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将工作流中未开始的节点置为Held状态
+//
+// @param request - OperateHoldWorkflowExecutionRequest
+//
+// @return OperateHoldWorkflowExecutionResponse
+func (client *Client) OperateHoldWorkflowExecution(request *OperateHoldWorkflowExecutionRequest) (_result *OperateHoldWorkflowExecutionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OperateHoldWorkflowExecutionResponse{}
+	_body, _err := client.OperateHoldWorkflowExecutionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 标记任务实例为成功状态
+//
+// @param request - OperateMarkSuccessJobExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateMarkSuccessJobExecutionResponse
+func (client *Client) OperateMarkSuccessJobExecutionWithOptions(request *OperateMarkSuccessJobExecutionRequest, runtime *dara.RuntimeOptions) (_result *OperateMarkSuccessJobExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.JobExecutionId) {
+		query["JobExecutionId"] = request.JobExecutionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateMarkSuccessJobExecution"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateMarkSuccessJobExecutionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 标记任务实例为成功状态
+//
+// @param request - OperateMarkSuccessJobExecutionRequest
+//
+// @return OperateMarkSuccessJobExecutionResponse
+func (client *Client) OperateMarkSuccessJobExecution(request *OperateMarkSuccessJobExecutionRequest) (_result *OperateMarkSuccessJobExecutionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OperateMarkSuccessJobExecutionResponse{}
+	_body, _err := client.OperateMarkSuccessJobExecutionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将工作流实例标记为成功
+//
+// @param request - OperateMarkSuccessWorkflowExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateMarkSuccessWorkflowExecutionResponse
+func (client *Client) OperateMarkSuccessWorkflowExecutionWithOptions(request *OperateMarkSuccessWorkflowExecutionRequest, runtime *dara.RuntimeOptions) (_result *OperateMarkSuccessWorkflowExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.WorkflowExecutionId) {
+		body["WorkflowExecutionId"] = request.WorkflowExecutionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateMarkSuccessWorkflowExecution"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateMarkSuccessWorkflowExecutionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将工作流实例标记为成功
+//
+// @param request - OperateMarkSuccessWorkflowExecutionRequest
+//
+// @return OperateMarkSuccessWorkflowExecutionResponse
+func (client *Client) OperateMarkSuccessWorkflowExecution(request *OperateMarkSuccessWorkflowExecutionRequest) (_result *OperateMarkSuccessWorkflowExecutionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OperateMarkSuccessWorkflowExecutionResponse{}
+	_body, _err := client.OperateMarkSuccessWorkflowExecutionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2950,6 +4802,150 @@ func (client *Client) OperateRetryJobExecution(request *OperateRetryJobExecution
 
 // Summary:
 //
+// 重跑工作流实例
+//
+// @param request - OperateRetryWorkflowExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateRetryWorkflowExecutionResponse
+func (client *Client) OperateRetryWorkflowExecutionWithOptions(request *OperateRetryWorkflowExecutionRequest, runtime *dara.RuntimeOptions) (_result *OperateRetryWorkflowExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.OnlyFailed) {
+		body["OnlyFailed"] = request.OnlyFailed
+	}
+
+	if !dara.IsNil(request.WorkflowExecutionId) {
+		body["WorkflowExecutionId"] = request.WorkflowExecutionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateRetryWorkflowExecution"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateRetryWorkflowExecutionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重跑工作流实例
+//
+// @param request - OperateRetryWorkflowExecutionRequest
+//
+// @return OperateRetryWorkflowExecutionResponse
+func (client *Client) OperateRetryWorkflowExecution(request *OperateRetryWorkflowExecutionRequest) (_result *OperateRetryWorkflowExecutionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OperateRetryWorkflowExecutionResponse{}
+	_body, _err := client.OperateRetryWorkflowExecutionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 跳过任务实例
+//
+// @param request - OperateSkipJobExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateSkipJobExecutionResponse
+func (client *Client) OperateSkipJobExecutionWithOptions(request *OperateSkipJobExecutionRequest, runtime *dara.RuntimeOptions) (_result *OperateSkipJobExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.JobExecutionId) {
+		query["JobExecutionId"] = request.JobExecutionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateSkipJobExecution"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateSkipJobExecutionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 跳过任务实例
+//
+// @param request - OperateSkipJobExecutionRequest
+//
+// @return OperateSkipJobExecutionResponse
+func (client *Client) OperateSkipJobExecution(request *OperateSkipJobExecutionRequest) (_result *OperateSkipJobExecutionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OperateSkipJobExecutionResponse{}
+	_body, _err := client.OperateSkipJobExecutionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 停止运行中的任务实例
 //
 // @param tmpReq - OperateStopJobExecutionRequest
@@ -3021,6 +5017,286 @@ func (client *Client) OperateStopJobExecution(request *OperateStopJobExecutionRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &OperateStopJobExecutionResponse{}
 	_body, _err := client.OperateStopJobExecutionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止正在运行的工作流实例
+//
+// @param request - OperateStopWorkflowExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateStopWorkflowExecutionResponse
+func (client *Client) OperateStopWorkflowExecutionWithOptions(request *OperateStopWorkflowExecutionRequest, runtime *dara.RuntimeOptions) (_result *OperateStopWorkflowExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.WorkflowExecutionId) {
+		body["WorkflowExecutionId"] = request.WorkflowExecutionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateStopWorkflowExecution"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateStopWorkflowExecutionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止正在运行的工作流实例
+//
+// @param request - OperateStopWorkflowExecutionRequest
+//
+// @return OperateStopWorkflowExecutionResponse
+func (client *Client) OperateStopWorkflowExecution(request *OperateStopWorkflowExecutionRequest) (_result *OperateStopWorkflowExecutionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OperateStopWorkflowExecutionResponse{}
+	_body, _err := client.OperateStopWorkflowExecutionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将held状态的任务恢复
+//
+// @param request - OperateUnholdJobExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateUnholdJobExecutionResponse
+func (client *Client) OperateUnholdJobExecutionWithOptions(request *OperateUnholdJobExecutionRequest, runtime *dara.RuntimeOptions) (_result *OperateUnholdJobExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.JobExecutionId) {
+		query["JobExecutionId"] = request.JobExecutionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateUnholdJobExecution"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateUnholdJobExecutionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将held状态的任务恢复
+//
+// @param request - OperateUnholdJobExecutionRequest
+//
+// @return OperateUnholdJobExecutionResponse
+func (client *Client) OperateUnholdJobExecution(request *OperateUnholdJobExecutionRequest) (_result *OperateUnholdJobExecutionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OperateUnholdJobExecutionResponse{}
+	_body, _err := client.OperateUnholdJobExecutionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将工作流中held状态的节点恢复
+//
+// @param request - OperateUnholdWorkflowExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateUnholdWorkflowExecutionResponse
+func (client *Client) OperateUnholdWorkflowExecutionWithOptions(request *OperateUnholdWorkflowExecutionRequest, runtime *dara.RuntimeOptions) (_result *OperateUnholdWorkflowExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.WorkflowExecutionId) {
+		body["WorkflowExecutionId"] = request.WorkflowExecutionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateUnholdWorkflowExecution"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateUnholdWorkflowExecutionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将工作流中held状态的节点恢复
+//
+// @param request - OperateUnholdWorkflowExecutionRequest
+//
+// @return OperateUnholdWorkflowExecutionResponse
+func (client *Client) OperateUnholdWorkflowExecution(request *OperateUnholdWorkflowExecutionRequest) (_result *OperateUnholdWorkflowExecutionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OperateUnholdWorkflowExecutionResponse{}
+	_body, _err := client.OperateUnholdWorkflowExecutionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将skipped状态的任务恢复
+//
+// @param request - OperateUnskipJobExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateUnskipJobExecutionResponse
+func (client *Client) OperateUnskipJobExecutionWithOptions(request *OperateUnskipJobExecutionRequest, runtime *dara.RuntimeOptions) (_result *OperateUnskipJobExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.JobExecutionId) {
+		query["JobExecutionId"] = request.JobExecutionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateUnskipJobExecution"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateUnskipJobExecutionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将skipped状态的任务恢复
+//
+// @param request - OperateUnskipJobExecutionRequest
+//
+// @return OperateUnskipJobExecutionResponse
+func (client *Client) OperateUnskipJobExecution(request *OperateUnskipJobExecutionRequest) (_result *OperateUnskipJobExecutionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OperateUnskipJobExecutionResponse{}
+	_body, _err := client.OperateUnskipJobExecutionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3191,6 +5467,88 @@ func (client *Client) UpdateApp(request *UpdateAppRequest) (_result *UpdateAppRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateAppResponse{}
 	_body, _err := client.UpdateAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新日历
+//
+// @param request - UpdateCalendarRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCalendarResponse
+func (client *Client) UpdateCalendarWithOptions(request *UpdateCalendarRequest, runtime *dara.RuntimeOptions) (_result *UpdateCalendarResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CalendarName) {
+		body["CalendarName"] = request.CalendarName
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Incremental) {
+		body["Incremental"] = request.Incremental
+	}
+
+	if !dara.IsNil(request.Months) {
+		body["Months"] = request.Months
+	}
+
+	if !dara.IsNil(request.Year) {
+		body["Year"] = request.Year
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCalendar"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCalendarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新日历
+//
+// @param request - UpdateCalendarRequest
+//
+// @return UpdateCalendarResponse
+func (client *Client) UpdateCalendar(request *UpdateCalendarRequest) (_result *UpdateCalendarResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateCalendarResponse{}
+	_body, _err := client.UpdateCalendarWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3577,6 +5935,266 @@ func (client *Client) UpdateJobScript(request *UpdateJobScriptRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateJobScriptResponse{}
 	_body, _err := client.UpdateJobScriptWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新工作流
+//
+// @param request - UpdateWorkflowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkflowResponse
+func (client *Client) UpdateWorkflowWithOptions(request *UpdateWorkflowRequest, runtime *dara.RuntimeOptions) (_result *UpdateWorkflowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.Calendar) {
+		body["Calendar"] = request.Calendar
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.MaxConcurrency) {
+		body["MaxConcurrency"] = request.MaxConcurrency
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.TimeExpression) {
+		body["TimeExpression"] = request.TimeExpression
+	}
+
+	if !dara.IsNil(request.TimeType) {
+		body["TimeType"] = request.TimeType
+	}
+
+	if !dara.IsNil(request.Timezone) {
+		body["Timezone"] = request.Timezone
+	}
+
+	if !dara.IsNil(request.WorkflowId) {
+		body["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateWorkflow"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新工作流
+//
+// @param request - UpdateWorkflowRequest
+//
+// @return UpdateWorkflowResponse
+func (client *Client) UpdateWorkflow(request *UpdateWorkflowRequest) (_result *UpdateWorkflowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateWorkflowResponse{}
+	_body, _err := client.UpdateWorkflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新工作流DAG
+//
+// @param tmpReq - UpdateWorkflowDAGRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkflowDAGResponse
+func (client *Client) UpdateWorkflowDAGWithOptions(tmpReq *UpdateWorkflowDAGRequest, runtime *dara.RuntimeOptions) (_result *UpdateWorkflowDAGResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateWorkflowDAGShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Dag) {
+		request.DagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Dag, dara.String("Dag"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.DagShrink) {
+		body["Dag"] = request.DagShrink
+	}
+
+	if !dara.IsNil(request.DagVersion) {
+		body["DagVersion"] = request.DagVersion
+	}
+
+	if !dara.IsNil(request.WorkflowId) {
+		body["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateWorkflowDAG"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateWorkflowDAGResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新工作流DAG
+//
+// @param request - UpdateWorkflowDAGRequest
+//
+// @return UpdateWorkflowDAGResponse
+func (client *Client) UpdateWorkflowDAG(request *UpdateWorkflowDAGRequest) (_result *UpdateWorkflowDAGResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateWorkflowDAGResponse{}
+	_body, _err := client.UpdateWorkflowDAGWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 切换工作流DAG版本
+//
+// @param request - UpdateWorkflowDAGVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkflowDAGVersionResponse
+func (client *Client) UpdateWorkflowDAGVersionWithOptions(request *UpdateWorkflowDAGVersionRequest, runtime *dara.RuntimeOptions) (_result *UpdateWorkflowDAGVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.DagVersion) {
+		body["DagVersion"] = request.DagVersion
+	}
+
+	if !dara.IsNil(request.WorkflowId) {
+		body["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateWorkflowDAGVersion"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateWorkflowDAGVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 切换工作流DAG版本
+//
+// @param request - UpdateWorkflowDAGVersionRequest
+//
+// @return UpdateWorkflowDAGVersionResponse
+func (client *Client) UpdateWorkflowDAGVersion(request *UpdateWorkflowDAGVersionRequest) (_result *UpdateWorkflowDAGVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateWorkflowDAGVersionResponse{}
+	_body, _err := client.UpdateWorkflowDAGVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
