@@ -751,6 +751,10 @@ type StartRtcCloudRecordingRequestStorageParamsFileInfo struct {
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
 	// example:
 	//
+	// 30
+	SliceDuration *int64 `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
+	// example:
+	//
 	// {AppId}_{ChannelId}_{StartTime}_{Sequence}
 	SliceNamePattern *string `json:"SliceNamePattern,omitempty" xml:"SliceNamePattern,omitempty"`
 }
@@ -775,6 +779,10 @@ func (s *StartRtcCloudRecordingRequestStorageParamsFileInfo) GetFormat() *string
 	return s.Format
 }
 
+func (s *StartRtcCloudRecordingRequestStorageParamsFileInfo) GetSliceDuration() *int64 {
+	return s.SliceDuration
+}
+
 func (s *StartRtcCloudRecordingRequestStorageParamsFileInfo) GetSliceNamePattern() *string {
 	return s.SliceNamePattern
 }
@@ -791,6 +799,11 @@ func (s *StartRtcCloudRecordingRequestStorageParamsFileInfo) SetFilePathPrefix(v
 
 func (s *StartRtcCloudRecordingRequestStorageParamsFileInfo) SetFormat(v string) *StartRtcCloudRecordingRequestStorageParamsFileInfo {
 	s.Format = &v
+	return s
+}
+
+func (s *StartRtcCloudRecordingRequestStorageParamsFileInfo) SetSliceDuration(v int64) *StartRtcCloudRecordingRequestStorageParamsFileInfo {
+	s.SliceDuration = &v
 	return s
 }
 
