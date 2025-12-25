@@ -5683,6 +5683,148 @@ func (client *Client) CreateUserDeliveryTask(request *CreateUserDeliveryTaskRequ
 
 // Summary:
 //
+// 用于创建实例级别的Web应用防火墙规则集，支持多种类型的防护规则。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 本API允许用户为指定实例创建新的WAF（Web Application Firewall）规则集。
+//
+// - `InstanceId` 是必需参数，指定了要为其创建规则集的具体实例。
+//
+// - `Phase` 参数定义了规则集的应用阶段，例如自定义规则、频次控制等。
+//
+// - `Name` 和 `Expression` 是必填项，分别代表规则集的名字和具体的匹配表达式。
+//
+// - 可选参数 `Description` 提供了对规则集功能或用途的文字描述。
+//
+// - `Status` 控制着规则集是否立即生效 (`on`) 或者处于关闭状态 (`off`)。
+//
+// - 通过 `Rules` 参数可以进一步配置更详细的规则列表，每个规则都包含名称、位置、表达式及动作等属性。
+//
+// - 成功响应将返回新创建规则集的唯一标识符 `Id` 以及所有关联规则的ID列表 `RuleIds`。
+//
+// @param tmpReq - CreateUserWafRulesetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserWafRulesetResponse
+func (client *Client) CreateUserWafRulesetWithOptions(tmpReq *CreateUserWafRulesetRequest, runtime *dara.RuntimeOptions) (_result *CreateUserWafRulesetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateUserWafRulesetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Rules) {
+		request.RulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rules, dara.String("Rules"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Shared) {
+		request.SharedShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Shared, dara.String("Shared"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Expression) {
+		body["Expression"] = request.Expression
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Phase) {
+		body["Phase"] = request.Phase
+	}
+
+	if !dara.IsNil(request.RulesShrink) {
+		body["Rules"] = request.RulesShrink
+	}
+
+	if !dara.IsNil(request.SharedShrink) {
+		body["Shared"] = request.SharedShrink
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateUserWafRuleset"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateUserWafRulesetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于创建实例级别的Web应用防火墙规则集，支持多种类型的防护规则。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 本API允许用户为指定实例创建新的WAF（Web Application Firewall）规则集。
+//
+// - `InstanceId` 是必需参数，指定了要为其创建规则集的具体实例。
+//
+// - `Phase` 参数定义了规则集的应用阶段，例如自定义规则、频次控制等。
+//
+// - `Name` 和 `Expression` 是必填项，分别代表规则集的名字和具体的匹配表达式。
+//
+// - 可选参数 `Description` 提供了对规则集功能或用途的文字描述。
+//
+// - `Status` 控制着规则集是否立即生效 (`on`) 或者处于关闭状态 (`off`)。
+//
+// - 通过 `Rules` 参数可以进一步配置更详细的规则列表，每个规则都包含名称、位置、表达式及动作等属性。
+//
+// - 成功响应将返回新创建规则集的唯一标识符 `Id` 以及所有关联规则的ID列表 `RuleIds`。
+//
+// @param request - CreateUserWafRulesetRequest
+//
+// @return CreateUserWafRulesetResponse
+func (client *Client) CreateUserWafRuleset(request *CreateUserWafRulesetRequest) (_result *CreateUserWafRulesetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateUserWafRulesetResponse{}
+	_body, _err := client.CreateUserWafRulesetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Add video processing configurations for a website.
 //
 // @param request - CreateVideoProcessingRequest
@@ -9218,6 +9360,114 @@ func (client *Client) DeleteUserDeliveryTask(request *DeleteUserDeliveryTaskRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteUserDeliveryTaskResponse{}
 	_body, _err := client.DeleteUserDeliveryTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于删除实例级别的Web应用防火墙规则集。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 本API允许用户为指定实例创建新的WAF（Web Application Firewall）规则集。
+//
+// - `InstanceId` 是必需参数，指定了要为其创建规则集的具体实例。
+//
+// - `Phase` 参数定义了规则集的应用阶段，例如自定义规则、频次控制等。
+//
+// - `Name` 和 `Expression` 是必填项，分别代表规则集的名字和具体的匹配表达式。
+//
+// - 可选参数 `Description` 提供了对规则集功能或用途的文字描述。
+//
+// - `Status` 控制着规则集是否立即生效 (`on`) 或者处于关闭状态 (`off`)。
+//
+// - 通过 `Rules` 参数可以进一步配置更详细的规则列表，每个规则都包含名称、位置、表达式及动作等属性。
+//
+// - 成功响应将返回新创建规则集的唯一标识符 `Id` 以及所有关联规则的ID列表 `RuleIds`。
+//
+// @param request - DeleteUserWafRulesetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserWafRulesetResponse
+func (client *Client) DeleteUserWafRulesetWithOptions(request *DeleteUserWafRulesetRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserWafRulesetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteUserWafRuleset"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteUserWafRulesetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于删除实例级别的Web应用防火墙规则集。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 本API允许用户为指定实例创建新的WAF（Web Application Firewall）规则集。
+//
+// - `InstanceId` 是必需参数，指定了要为其创建规则集的具体实例。
+//
+// - `Phase` 参数定义了规则集的应用阶段，例如自定义规则、频次控制等。
+//
+// - `Name` 和 `Expression` 是必填项，分别代表规则集的名字和具体的匹配表达式。
+//
+// - 可选参数 `Description` 提供了对规则集功能或用途的文字描述。
+//
+// - `Status` 控制着规则集是否立即生效 (`on`) 或者处于关闭状态 (`off`)。
+//
+// - 通过 `Rules` 参数可以进一步配置更详细的规则列表，每个规则都包含名称、位置、表达式及动作等属性。
+//
+// - 成功响应将返回新创建规则集的唯一标识符 `Id` 以及所有关联规则的ID列表 `RuleIds`。
+//
+// @param request - DeleteUserWafRulesetRequest
+//
+// @return DeleteUserWafRulesetResponse
+func (client *Client) DeleteUserWafRuleset(request *DeleteUserWafRulesetRequest) (_result *DeleteUserWafRulesetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteUserWafRulesetResponse{}
+	_body, _err := client.DeleteUserWafRulesetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14110,6 +14360,68 @@ func (client *Client) GetRoutine(request *GetRoutineRequest) (_result *GetRoutin
 
 // Summary:
 //
+// 查询Routine默认访问记录访问鉴权token
+//
+// @param request - GetRoutineAccessTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRoutineAccessTokenResponse
+func (client *Client) GetRoutineAccessTokenWithOptions(request *GetRoutineAccessTokenRequest, runtime *dara.RuntimeOptions) (_result *GetRoutineAccessTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRoutineAccessToken"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRoutineAccessTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Routine默认访问记录访问鉴权token
+//
+// @param request - GetRoutineAccessTokenRequest
+//
+// @return GetRoutineAccessTokenResponse
+func (client *Client) GetRoutineAccessToken(request *GetRoutineAccessTokenRequest) (_result *GetRoutineAccessTokenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetRoutineAccessTokenResponse{}
+	_body, _err := client.GetRoutineAccessTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries information about a code version of a routine.
 //
 // @param request - GetRoutineCodeVersionRequest
@@ -15417,6 +15729,72 @@ func (client *Client) GetUserLogDeliveryQuota(request *GetUserLogDeliveryQuotaRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetUserLogDeliveryQuotaResponse{}
 	_body, _err := client.GetUserLogDeliveryQuotaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于获取实例级别的Web应用防火墙规则集详情
+//
+// @param request - GetUserWafRulesetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserWafRulesetResponse
+func (client *Client) GetUserWafRulesetWithOptions(request *GetUserWafRulesetRequest, runtime *dara.RuntimeOptions) (_result *GetUserWafRulesetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUserWafRuleset"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUserWafRulesetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于获取实例级别的Web应用防火墙规则集详情
+//
+// @param request - GetUserWafRulesetRequest
+//
+// @return GetUserWafRulesetResponse
+func (client *Client) GetUserWafRuleset(request *GetUserWafRulesetRequest) (_result *GetUserWafRulesetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetUserWafRulesetResponse{}
+	_body, _err := client.GetUserWafRulesetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19322,6 +19700,90 @@ func (client *Client) ListUserRoutines(request *ListUserRoutinesRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListUserRoutinesResponse{}
 	_body, _err := client.ListUserRoutinesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于列举实例级别的Web应用防火墙规则集。
+//
+// @param tmpReq - ListUserWafRulesetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserWafRulesetsResponse
+func (client *Client) ListUserWafRulesetsWithOptions(tmpReq *ListUserWafRulesetsRequest, runtime *dara.RuntimeOptions) (_result *ListUserWafRulesetsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListUserWafRulesetsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.QueryArgs) {
+		request.QueryArgsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryArgs, dara.String("QueryArgs"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Phase) {
+		query["Phase"] = request.Phase
+	}
+
+	if !dara.IsNil(request.QueryArgsShrink) {
+		query["QueryArgs"] = request.QueryArgsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUserWafRulesets"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUserWafRulesetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于列举实例级别的Web应用防火墙规则集。
+//
+// @param request - ListUserWafRulesetsRequest
+//
+// @return ListUserWafRulesetsResponse
+func (client *Client) ListUserWafRulesets(request *ListUserWafRulesetsRequest) (_result *ListUserWafRulesetsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListUserWafRulesetsResponse{}
+	_body, _err := client.ListUserWafRulesetsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26357,6 +26819,152 @@ func (client *Client) UpdateUserDeliveryTaskStatus(request *UpdateUserDeliveryTa
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateUserDeliveryTaskStatusResponse{}
 	_body, _err := client.UpdateUserDeliveryTaskStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于更新实例级别的Web应用防火墙规则集，支持多种类型的防护规则。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 本API允许用户为指定实例创建新的WAF（Web Application Firewall）规则集。
+//
+// - `InstanceId` 是必需参数，指定了要为其创建规则集的具体实例。
+//
+// - `Phase` 参数定义了规则集的应用阶段，例如自定义规则、频次控制等。
+//
+// - `Name` 和 `Expression` 是必填项，分别代表规则集的名字和具体的匹配表达式。
+//
+// - 可选参数 `Description` 提供了对规则集功能或用途的文字描述。
+//
+// - `Status` 控制着规则集是否立即生效 (`on`) 或者处于关闭状态 (`off`)。
+//
+// - 通过 `Rules` 参数可以进一步配置更详细的规则列表，每个规则都包含名称、位置、表达式及动作等属性。
+//
+// - 成功响应将返回新创建规则集的唯一标识符 `Id` 以及所有关联规则的ID列表 `RuleIds`。
+//
+// @param tmpReq - UpdateUserWafRulesetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserWafRulesetResponse
+func (client *Client) UpdateUserWafRulesetWithOptions(tmpReq *UpdateUserWafRulesetRequest, runtime *dara.RuntimeOptions) (_result *UpdateUserWafRulesetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateUserWafRulesetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Rules) {
+		request.RulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rules, dara.String("Rules"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Shared) {
+		request.SharedShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Shared, dara.String("Shared"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Expression) {
+		body["Expression"] = request.Expression
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Position) {
+		body["Position"] = request.Position
+	}
+
+	if !dara.IsNil(request.RulesShrink) {
+		body["Rules"] = request.RulesShrink
+	}
+
+	if !dara.IsNil(request.SharedShrink) {
+		body["Shared"] = request.SharedShrink
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateUserWafRuleset"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateUserWafRulesetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于更新实例级别的Web应用防火墙规则集，支持多种类型的防护规则。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 本API允许用户为指定实例创建新的WAF（Web Application Firewall）规则集。
+//
+// - `InstanceId` 是必需参数，指定了要为其创建规则集的具体实例。
+//
+// - `Phase` 参数定义了规则集的应用阶段，例如自定义规则、频次控制等。
+//
+// - `Name` 和 `Expression` 是必填项，分别代表规则集的名字和具体的匹配表达式。
+//
+// - 可选参数 `Description` 提供了对规则集功能或用途的文字描述。
+//
+// - `Status` 控制着规则集是否立即生效 (`on`) 或者处于关闭状态 (`off`)。
+//
+// - 通过 `Rules` 参数可以进一步配置更详细的规则列表，每个规则都包含名称、位置、表达式及动作等属性。
+//
+// - 成功响应将返回新创建规则集的唯一标识符 `Id` 以及所有关联规则的ID列表 `RuleIds`。
+//
+// @param request - UpdateUserWafRulesetRequest
+//
+// @return UpdateUserWafRulesetResponse
+func (client *Client) UpdateUserWafRuleset(request *UpdateUserWafRulesetRequest) (_result *UpdateUserWafRulesetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateUserWafRulesetResponse{}
+	_body, _err := client.UpdateUserWafRulesetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
