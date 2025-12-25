@@ -13,6 +13,8 @@ type iCreateInstanceRequest interface {
 	GetRegionId() *string
 	SetAutoBackup(v bool) *CreateInstanceRequest
 	GetAutoBackup() *bool
+	SetAutoRenew(v bool) *CreateInstanceRequest
+	GetAutoRenew() *bool
 	SetComponents(v []*CreateInstanceRequestComponents) *CreateInstanceRequest
 	GetComponents() []*CreateInstanceRequestComponents
 	SetConfiguration(v string) *CreateInstanceRequest
@@ -27,8 +29,12 @@ type iCreateInstanceRequest interface {
 	GetHa() *bool
 	SetInstanceName(v string) *CreateInstanceRequest
 	GetInstanceName() *string
+	SetIsMultiAzStorage(v bool) *CreateInstanceRequest
+	GetIsMultiAzStorage() *bool
 	SetKmsKeyId(v string) *CreateInstanceRequest
 	GetKmsKeyId() *string
+	SetLoadReplicas(v int32) *CreateInstanceRequest
+	GetLoadReplicas() *int32
 	SetMultiZoneMode(v string) *CreateInstanceRequest
 	GetMultiZoneMode() *string
 	SetPaymentDuration(v int32) *CreateInstanceRequest
@@ -37,6 +43,8 @@ type iCreateInstanceRequest interface {
 	GetPaymentDurationUnit() *string
 	SetPaymentType(v string) *CreateInstanceRequest
 	GetPaymentType() *string
+	SetPromotionNo(v string) *CreateInstanceRequest
+	GetPromotionNo() *string
 	SetResourceGroupId(v string) *CreateInstanceRequest
 	GetResourceGroupId() *string
 	SetTags(v []*CreateInstanceRequestTags) *CreateInstanceRequest
@@ -57,6 +65,7 @@ type CreateInstanceRequest struct {
 	// cn-beijing
 	RegionId      *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AutoBackup    *bool                              `json:"autoBackup,omitempty" xml:"autoBackup,omitempty"`
+	AutoRenew     *bool                              `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
 	Components    []*CreateInstanceRequestComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
 	Configuration *string                            `json:"configuration,omitempty" xml:"configuration,omitempty"`
 	// example:
@@ -77,9 +86,11 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// milvus-test
-	InstanceName  *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	KmsKeyId      *string `json:"kmsKeyId,omitempty" xml:"kmsKeyId,omitempty"`
-	MultiZoneMode *string `json:"multiZoneMode,omitempty" xml:"multiZoneMode,omitempty"`
+	InstanceName     *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
+	IsMultiAzStorage *bool   `json:"isMultiAzStorage,omitempty" xml:"isMultiAzStorage,omitempty"`
+	KmsKeyId         *string `json:"kmsKeyId,omitempty" xml:"kmsKeyId,omitempty"`
+	LoadReplicas     *int32  `json:"loadReplicas,omitempty" xml:"loadReplicas,omitempty"`
+	MultiZoneMode    *string `json:"multiZoneMode,omitempty" xml:"multiZoneMode,omitempty"`
 	// example:
 	//
 	// 1
@@ -94,6 +105,7 @@ type CreateInstanceRequest struct {
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	PromotionNo *string `json:"promotionNo,omitempty" xml:"promotionNo,omitempty"`
 	// example:
 	//
 	// rg-xxx
@@ -134,6 +146,10 @@ func (s *CreateInstanceRequest) GetAutoBackup() *bool {
 	return s.AutoBackup
 }
 
+func (s *CreateInstanceRequest) GetAutoRenew() *bool {
+	return s.AutoRenew
+}
+
 func (s *CreateInstanceRequest) GetComponents() []*CreateInstanceRequestComponents {
 	return s.Components
 }
@@ -162,8 +178,16 @@ func (s *CreateInstanceRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
+func (s *CreateInstanceRequest) GetIsMultiAzStorage() *bool {
+	return s.IsMultiAzStorage
+}
+
 func (s *CreateInstanceRequest) GetKmsKeyId() *string {
 	return s.KmsKeyId
+}
+
+func (s *CreateInstanceRequest) GetLoadReplicas() *int32 {
+	return s.LoadReplicas
 }
 
 func (s *CreateInstanceRequest) GetMultiZoneMode() *string {
@@ -180,6 +204,10 @@ func (s *CreateInstanceRequest) GetPaymentDurationUnit() *string {
 
 func (s *CreateInstanceRequest) GetPaymentType() *string {
 	return s.PaymentType
+}
+
+func (s *CreateInstanceRequest) GetPromotionNo() *string {
+	return s.PromotionNo
 }
 
 func (s *CreateInstanceRequest) GetResourceGroupId() *string {
@@ -213,6 +241,11 @@ func (s *CreateInstanceRequest) SetRegionId(v string) *CreateInstanceRequest {
 
 func (s *CreateInstanceRequest) SetAutoBackup(v bool) *CreateInstanceRequest {
 	s.AutoBackup = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetAutoRenew(v bool) *CreateInstanceRequest {
+	s.AutoRenew = &v
 	return s
 }
 
@@ -251,8 +284,18 @@ func (s *CreateInstanceRequest) SetInstanceName(v string) *CreateInstanceRequest
 	return s
 }
 
+func (s *CreateInstanceRequest) SetIsMultiAzStorage(v bool) *CreateInstanceRequest {
+	s.IsMultiAzStorage = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetKmsKeyId(v string) *CreateInstanceRequest {
 	s.KmsKeyId = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetLoadReplicas(v int32) *CreateInstanceRequest {
+	s.LoadReplicas = &v
 	return s
 }
 
@@ -273,6 +316,11 @@ func (s *CreateInstanceRequest) SetPaymentDurationUnit(v string) *CreateInstance
 
 func (s *CreateInstanceRequest) SetPaymentType(v string) *CreateInstanceRequest {
 	s.PaymentType = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetPromotionNo(v string) *CreateInstanceRequest {
+	s.PromotionNo = &v
 	return s
 }
 

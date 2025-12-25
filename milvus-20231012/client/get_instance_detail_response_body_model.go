@@ -189,7 +189,8 @@ type GetInstanceDetailResponseBodyData struct {
 	// example:
 	//
 	// 1721664000000
-	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTime       *int64                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HighAvailability *GetInstanceDetailResponseBodyDataHighAvailability `json:"HighAvailability,omitempty" xml:"HighAvailability,omitempty" type:"Struct"`
 	// The ID of the instance.
 	//
 	// example:
@@ -361,6 +362,10 @@ func (s *GetInstanceDetailResponseBodyData) GetExpireTime() *int64 {
 	return s.ExpireTime
 }
 
+func (s *GetInstanceDetailResponseBodyData) GetHighAvailability() *GetInstanceDetailResponseBodyDataHighAvailability {
+	return s.HighAvailability
+}
+
 func (s *GetInstanceDetailResponseBodyData) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -494,6 +499,11 @@ func (s *GetInstanceDetailResponseBodyData) SetExpireTime(v int64) *GetInstanceD
 	return s
 }
 
+func (s *GetInstanceDetailResponseBodyData) SetHighAvailability(v *GetInstanceDetailResponseBodyDataHighAvailability) *GetInstanceDetailResponseBodyData {
+	s.HighAvailability = v
+	return s
+}
+
 func (s *GetInstanceDetailResponseBodyData) SetInstanceId(v string) *GetInstanceDetailResponseBodyData {
 	s.InstanceId = &v
 	return s
@@ -607,6 +617,11 @@ func (s *GetInstanceDetailResponseBodyData) SetZoneId(v string) *GetInstanceDeta
 func (s *GetInstanceDetailResponseBodyData) Validate() error {
 	if s.ClusterInfo != nil {
 		if err := s.ClusterInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HighAvailability != nil {
+		if err := s.HighAvailability.Validate(); err != nil {
 			return err
 		}
 	}
@@ -837,7 +852,8 @@ type GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList struct {
 	// example:
 	//
 	// 2
-	Replica *int32 `json:"Replica,omitempty" xml:"Replica,omitempty"`
+	Replica *int32  `json:"Replica,omitempty" xml:"Replica,omitempty"`
+	ZoneId  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) String() string {
@@ -872,6 +888,10 @@ func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) Get
 	return s.Replica
 }
 
+func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) GetZoneId() *string {
+	return s.ZoneId
+}
+
 func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) SetComponentType(v string) *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList {
 	s.ComponentType = &v
 	return s
@@ -902,7 +922,67 @@ func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) Set
 	return s
 }
 
+func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) SetZoneId(v string) *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList {
+	s.ZoneId = &v
+	return s
+}
+
 func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetInstanceDetailResponseBodyDataHighAvailability struct {
+	CurrentActiveAZ *string `json:"CurrentActiveAZ,omitempty" xml:"CurrentActiveAZ,omitempty"`
+	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	PrimaryZoneId   *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
+}
+
+func (s GetInstanceDetailResponseBodyDataHighAvailability) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetInstanceDetailResponseBodyDataHighAvailability) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceDetailResponseBodyDataHighAvailability) GetCurrentActiveAZ() *string {
+	return s.CurrentActiveAZ
+}
+
+func (s *GetInstanceDetailResponseBodyDataHighAvailability) GetMode() *string {
+	return s.Mode
+}
+
+func (s *GetInstanceDetailResponseBodyDataHighAvailability) GetPrimaryZoneId() *string {
+	return s.PrimaryZoneId
+}
+
+func (s *GetInstanceDetailResponseBodyDataHighAvailability) GetSecondaryZoneId() *string {
+	return s.SecondaryZoneId
+}
+
+func (s *GetInstanceDetailResponseBodyDataHighAvailability) SetCurrentActiveAZ(v string) *GetInstanceDetailResponseBodyDataHighAvailability {
+	s.CurrentActiveAZ = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataHighAvailability) SetMode(v string) *GetInstanceDetailResponseBodyDataHighAvailability {
+	s.Mode = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataHighAvailability) SetPrimaryZoneId(v string) *GetInstanceDetailResponseBodyDataHighAvailability {
+	s.PrimaryZoneId = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataHighAvailability) SetSecondaryZoneId(v string) *GetInstanceDetailResponseBodyDataHighAvailability {
+	s.SecondaryZoneId = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataHighAvailability) Validate() error {
 	return dara.Validate(s)
 }
 

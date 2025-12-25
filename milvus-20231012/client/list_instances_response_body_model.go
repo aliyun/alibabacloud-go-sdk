@@ -275,8 +275,9 @@ type ListInstancesResponseBodyData struct {
 	// example:
 	//
 	// sg-123xxx
-	SgId *string                              `json:"SgId,omitempty" xml:"SgId,omitempty"`
-	Tags []*ListInstancesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SgId    *string                              `json:"SgId,omitempty" xml:"SgId,omitempty"`
+	Tags    []*ListInstancesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Version *string                              `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The virtual private cloud (VPC) ID.
 	//
 	// example:
@@ -373,6 +374,10 @@ func (s *ListInstancesResponseBodyData) GetTags() []*ListInstancesResponseBodyDa
 	return s.Tags
 }
 
+func (s *ListInstancesResponseBodyData) GetVersion() *string {
+	return s.Version
+}
+
 func (s *ListInstancesResponseBodyData) GetVpcId() *string {
 	return s.VpcId
 }
@@ -467,6 +472,11 @@ func (s *ListInstancesResponseBodyData) SetSgId(v string) *ListInstancesResponse
 
 func (s *ListInstancesResponseBodyData) SetTags(v []*ListInstancesResponseBodyDataTags) *ListInstancesResponseBodyData {
 	s.Tags = v
+	return s
+}
+
+func (s *ListInstancesResponseBodyData) SetVersion(v string) *ListInstancesResponseBodyData {
+	s.Version = &v
 	return s
 }
 

@@ -135,6 +135,10 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 		body["autoBackup"] = request.AutoBackup
 	}
 
+	if !dara.IsNil(request.AutoRenew) {
+		body["autoRenew"] = request.AutoRenew
+	}
+
 	if !dara.IsNil(request.Components) {
 		body["components"] = request.Components
 	}
@@ -163,8 +167,16 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 		body["instanceName"] = request.InstanceName
 	}
 
+	if !dara.IsNil(request.IsMultiAzStorage) {
+		body["isMultiAzStorage"] = request.IsMultiAzStorage
+	}
+
 	if !dara.IsNil(request.KmsKeyId) {
 		body["kmsKeyId"] = request.KmsKeyId
+	}
+
+	if !dara.IsNil(request.LoadReplicas) {
+		body["loadReplicas"] = request.LoadReplicas
 	}
 
 	if !dara.IsNil(request.MultiZoneMode) {
@@ -181,6 +193,10 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 
 	if !dara.IsNil(request.PaymentType) {
 		body["paymentType"] = request.PaymentType
+	}
+
+	if !dara.IsNil(request.PromotionNo) {
+		body["promotionNo"] = request.PromotionNo
 	}
 
 	if !dara.IsNil(request.ResourceGroupId) {
