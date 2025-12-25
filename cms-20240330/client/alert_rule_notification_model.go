@@ -13,6 +13,8 @@ type iAlertRuleNotification interface {
 	GetContacts() []*string
 	SetCustomWebhooks(v []*string) *AlertRuleNotification
 	GetCustomWebhooks() []*string
+	SetDingCoolAppWebhooks(v []*string) *AlertRuleNotification
+	GetDingCoolAppWebhooks() []*string
 	SetDingWebhooks(v []*string) *AlertRuleNotification
 	GetDingWebhooks() []*string
 	SetFsWebhooks(v []*string) *AlertRuleNotification
@@ -30,15 +32,16 @@ type iAlertRuleNotification interface {
 }
 
 type AlertRuleNotification struct {
-	Contacts       []*string          `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
-	CustomWebhooks []*string          `json:"customWebhooks,omitempty" xml:"customWebhooks,omitempty" type:"Repeated"`
-	DingWebhooks   []*string          `json:"dingWebhooks,omitempty" xml:"dingWebhooks,omitempty" type:"Repeated"`
-	FsWebhooks     []*string          `json:"fsWebhooks,omitempty" xml:"fsWebhooks,omitempty" type:"Repeated"`
-	Groups         []*string          `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
-	NotifyTime     *AlertRuleTimeSpan `json:"notifyTime,omitempty" xml:"notifyTime,omitempty"`
-	SilenceTime    *int64             `json:"silenceTime,omitempty" xml:"silenceTime,omitempty"`
-	SlackWebhooks  []*string          `json:"slackWebhooks,omitempty" xml:"slackWebhooks,omitempty" type:"Repeated"`
-	WxWebhooks     []*string          `json:"wxWebhooks,omitempty" xml:"wxWebhooks,omitempty" type:"Repeated"`
+	Contacts            []*string          `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
+	CustomWebhooks      []*string          `json:"customWebhooks,omitempty" xml:"customWebhooks,omitempty" type:"Repeated"`
+	DingCoolAppWebhooks []*string          `json:"dingCoolAppWebhooks,omitempty" xml:"dingCoolAppWebhooks,omitempty" type:"Repeated"`
+	DingWebhooks        []*string          `json:"dingWebhooks,omitempty" xml:"dingWebhooks,omitempty" type:"Repeated"`
+	FsWebhooks          []*string          `json:"fsWebhooks,omitempty" xml:"fsWebhooks,omitempty" type:"Repeated"`
+	Groups              []*string          `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
+	NotifyTime          *AlertRuleTimeSpan `json:"notifyTime,omitempty" xml:"notifyTime,omitempty"`
+	SilenceTime         *int64             `json:"silenceTime,omitempty" xml:"silenceTime,omitempty"`
+	SlackWebhooks       []*string          `json:"slackWebhooks,omitempty" xml:"slackWebhooks,omitempty" type:"Repeated"`
+	WxWebhooks          []*string          `json:"wxWebhooks,omitempty" xml:"wxWebhooks,omitempty" type:"Repeated"`
 }
 
 func (s AlertRuleNotification) String() string {
@@ -55,6 +58,10 @@ func (s *AlertRuleNotification) GetContacts() []*string {
 
 func (s *AlertRuleNotification) GetCustomWebhooks() []*string {
 	return s.CustomWebhooks
+}
+
+func (s *AlertRuleNotification) GetDingCoolAppWebhooks() []*string {
+	return s.DingCoolAppWebhooks
 }
 
 func (s *AlertRuleNotification) GetDingWebhooks() []*string {
@@ -92,6 +99,11 @@ func (s *AlertRuleNotification) SetContacts(v []*string) *AlertRuleNotification 
 
 func (s *AlertRuleNotification) SetCustomWebhooks(v []*string) *AlertRuleNotification {
 	s.CustomWebhooks = v
+	return s
+}
+
+func (s *AlertRuleNotification) SetDingCoolAppWebhooks(v []*string) *AlertRuleNotification {
+	s.DingCoolAppWebhooks = v
 	return s
 }
 

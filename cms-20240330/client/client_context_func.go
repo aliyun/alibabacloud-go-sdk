@@ -3,6 +3,7 @@ package client
 
 import (
 	"context"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
@@ -272,6 +273,86 @@ func (client *Client) CreateBizTraceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
+// 创建对话
+//
+// @param request - CreateChatRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateChatResponse
+func (client *Client) CreateChatWithSSECtx(ctx context.Context, request *CreateChatRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *CreateChatResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.createChatWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// 创建对话
+//
+// @param request - CreateChatRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateChatResponse
+func (client *Client) CreateChatWithContext(ctx context.Context, request *CreateChatRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateChatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Action) {
+		body["action"] = request.Action
+	}
+
+	if !dara.IsNil(request.DigitalEmployeeName) {
+		body["digitalEmployeeName"] = request.DigitalEmployeeName
+	}
+
+	if !dara.IsNil(request.Messages) {
+		body["messages"] = request.Messages
+	}
+
+	if !dara.IsNil(request.ThreadId) {
+		body["threadId"] = request.ThreadId
+	}
+
+	if !dara.IsNil(request.Variables) {
+		body["variables"] = request.Variables
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateChat"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/chat"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateChatResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建云资源中心
 //
 // @param headers - map
@@ -295,6 +376,73 @@ func (client *Client) CreateCloudResourceWithContext(ctx context.Context, header
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCloudResourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建DigitalEmployee
+//
+// @param request - CreateDigitalEmployeeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDigitalEmployeeResponse
+func (client *Client) CreateDigitalEmployeeWithContext(ctx context.Context, request *CreateDigitalEmployeeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDigitalEmployeeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DefaultRule) {
+		body["defaultRule"] = request.DefaultRule
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.Knowledges) {
+		body["knowledges"] = request.Knowledges
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RoleArn) {
+		body["roleArn"] = request.RoleArn
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDigitalEmployee"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digital-employee"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDigitalEmployeeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -709,6 +857,57 @@ func (client *Client) CreateServiceWithContext(ctx context.Context, workspace *s
 
 // Summary:
 //
+// 创建会话
+//
+// @param request - CreateThreadRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateThreadResponse
+func (client *Client) CreateThreadWithContext(ctx context.Context, name *string, request *CreateThreadRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateThreadResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Title) {
+		body["title"] = request.Title
+	}
+
+	if !dara.IsNil(request.Variables) {
+		body["variables"] = request.Variables
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateThread"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/thread"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateThreadResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create Ticket
 //
 // @param request - CreateTicketRequest
@@ -965,6 +1164,39 @@ func (client *Client) DeleteCloudResourceWithContext(ctx context.Context, header
 
 // Summary:
 //
+// 删除DigitalEmployee
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDigitalEmployeeResponse
+func (client *Client) DeleteDigitalEmployeeWithContext(ctx context.Context, name *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDigitalEmployeeResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDigitalEmployee"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digital-employee/" + dara.PercentEncode(dara.StringValue(name))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDigitalEmployeeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete EntityStore related storage
 //
 // @param headers - map
@@ -1142,6 +1374,39 @@ func (client *Client) DeleteServiceWithContext(ctx context.Context, workspace *s
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteServiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除会话
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteThreadResponse
+func (client *Client) DeleteThreadWithContext(ctx context.Context, name *string, threadId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteThreadResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteThread"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/thread/" + dara.PercentEncode(dara.StringValue(threadId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteThreadResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1774,6 +2039,39 @@ func (client *Client) GetCmsServiceWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
+// 查询 DigitalEmployee
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDigitalEmployeeResponse
+func (client *Client) GetDigitalEmployeeWithContext(ctx context.Context, name *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDigitalEmployeeResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDigitalEmployee"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digital-employee/" + dara.PercentEncode(dara.StringValue(name))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDigitalEmployeeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get EntityStore related storage information
 //
 // @param headers - map
@@ -2168,6 +2466,90 @@ func (client *Client) GetServiceObservabilityWithContext(ctx context.Context, wo
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetServiceObservabilityResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取会话
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetThreadResponse
+func (client *Client) GetThreadWithContext(ctx context.Context, name *string, threadId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetThreadResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetThread"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/thread/" + dara.PercentEncode(dara.StringValue(threadId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetThreadResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取会话数据
+//
+// @param request - GetThreadDataRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetThreadDataResponse
+func (client *Client) GetThreadDataWithContext(ctx context.Context, name *string, threadId *string, request *GetThreadDataRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetThreadDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetThreadData"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/thread/" + dara.PercentEncode(dara.StringValue(threadId)) + "/data"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetThreadDataResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2647,6 +3029,61 @@ func (client *Client) ListBizTracesWithContext(ctx context.Context, request *Lis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListBizTracesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出资源DigitalEmployee
+//
+// @param request - ListDigitalEmployeesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDigitalEmployeesResponse
+func (client *Client) ListDigitalEmployeesWithContext(ctx context.Context, request *ListDigitalEmployeesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDigitalEmployeesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDigitalEmployees"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digital-employee"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDigitalEmployeesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3486,6 +3923,75 @@ func (client *Client) ListServicesWithContext(ctx context.Context, workspace *st
 
 // Summary:
 //
+// 列出会话
+//
+// @param tmpReq - ListThreadsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListThreadsResponse
+func (client *Client) ListThreadsWithContext(ctx context.Context, name *string, tmpReq *ListThreadsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListThreadsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListThreadsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Filter) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, dara.String("filter"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FilterShrink) {
+		query["filter"] = request.FilterShrink
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.ThreadId) {
+		query["threadId"] = request.ThreadId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListThreads"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/threads"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListThreadsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get Workspace List
 //
 // @param tmpReq - ListWorkspacesRequest
@@ -3872,6 +4378,69 @@ func (client *Client) UpdateBizTraceWithContext(ctx context.Context, bizTraceId 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateBizTraceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新UpdateDigitalEmployee
+//
+// @param request - UpdateDigitalEmployeeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDigitalEmployeeResponse
+func (client *Client) UpdateDigitalEmployeeWithContext(ctx context.Context, name *string, request *UpdateDigitalEmployeeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDigitalEmployeeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DefaultRule) {
+		body["defaultRule"] = request.DefaultRule
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.Knowledges) {
+		body["knowledges"] = request.Knowledges
+	}
+
+	if !dara.IsNil(request.RoleArn) {
+		body["roleArn"] = request.RoleArn
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDigitalEmployee"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digital-employee/" + dara.PercentEncode(dara.StringValue(name))),
+		Method:      dara.String("PATCH"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDigitalEmployeeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4309,6 +4878,57 @@ func (client *Client) UpdateSubscriptionWithContext(ctx context.Context, subscri
 
 // Summary:
 //
+// 更新会话
+//
+// @param request - UpdateThreadRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateThreadResponse
+func (client *Client) UpdateThreadWithContext(ctx context.Context, name *string, threadId *string, request *UpdateThreadRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateThreadResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Title) {
+		body["title"] = request.Title
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateThread"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/thread/" + dara.PercentEncode(dara.StringValue(threadId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateThreadResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Update Umodel configuration information
 //
 // Description:
@@ -4460,4 +5080,67 @@ func (client *Client) UpsertUmodelDataWithContext(ctx context.Context, workspace
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+func (client *Client) createChatWithSSECtx_opYieldFunc(_yield chan *CreateChatResponse, _yieldErr chan error, ctx context.Context, request *CreateChatRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Action) {
+		body["action"] = request.Action
+	}
+
+	if !dara.IsNil(request.DigitalEmployeeName) {
+		body["digitalEmployeeName"] = request.DigitalEmployeeName
+	}
+
+	if !dara.IsNil(request.Messages) {
+		body["messages"] = request.Messages
+	}
+
+	if !dara.IsNil(request.ThreadId) {
+		body["threadId"] = request.ThreadId
+	}
+
+	if !dara.IsNil(request.Variables) {
+		body["variables"] = request.Variables
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateChat"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/chat"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
 }
