@@ -157,8 +157,6 @@ func (s *DetachServerGroupsRequest) Validate() error {
 type DetachServerGroupsRequestServerGroups struct {
 	// The port used by ECS instances or elastic container instances as backend servers of the server group.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 22
