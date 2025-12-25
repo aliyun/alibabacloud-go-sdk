@@ -130,6 +130,7 @@ func (s *TermEditRequest) Validate() error {
 }
 
 type TermEditRequestExt struct {
+	ParamMap interface{} `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
 	// This parameter is required.
 	Terms []*TermEditRequestExtTerms `json:"terms,omitempty" xml:"terms,omitempty" type:"Repeated"`
 }
@@ -142,8 +143,17 @@ func (s TermEditRequestExt) GoString() string {
 	return s.String()
 }
 
+func (s *TermEditRequestExt) GetParamMap() interface{} {
+	return s.ParamMap
+}
+
 func (s *TermEditRequestExt) GetTerms() []*TermEditRequestExtTerms {
 	return s.Terms
+}
+
+func (s *TermEditRequestExt) SetParamMap(v interface{}) *TermEditRequestExt {
+	s.ParamMap = v
+	return s
 }
 
 func (s *TermEditRequestExt) SetTerms(v []*TermEditRequestExtTerms) *TermEditRequestExt {

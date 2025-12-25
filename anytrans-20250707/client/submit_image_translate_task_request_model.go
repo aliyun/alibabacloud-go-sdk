@@ -141,6 +141,7 @@ type SubmitImageTranslateTaskRequestExt struct {
 	// technology
 	DomainHint    *string                                            `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
 	Examples      []*SubmitImageTranslateTaskRequestExtExamples      `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
+	ParamMap      interface{}                                        `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
 	Sensitives    []*string                                          `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
 	Terminologies []*SubmitImageTranslateTaskRequestExtTerminologies `json:"terminologies,omitempty" xml:"terminologies,omitempty" type:"Repeated"`
 	TextTransform *SubmitImageTranslateTaskRequestExtTextTransform   `json:"textTransform,omitempty" xml:"textTransform,omitempty" type:"Struct"`
@@ -162,6 +163,10 @@ func (s *SubmitImageTranslateTaskRequestExt) GetExamples() []*SubmitImageTransla
 	return s.Examples
 }
 
+func (s *SubmitImageTranslateTaskRequestExt) GetParamMap() interface{} {
+	return s.ParamMap
+}
+
 func (s *SubmitImageTranslateTaskRequestExt) GetSensitives() []*string {
 	return s.Sensitives
 }
@@ -181,6 +186,11 @@ func (s *SubmitImageTranslateTaskRequestExt) SetDomainHint(v string) *SubmitImag
 
 func (s *SubmitImageTranslateTaskRequestExt) SetExamples(v []*SubmitImageTranslateTaskRequestExtExamples) *SubmitImageTranslateTaskRequestExt {
 	s.Examples = v
+	return s
+}
+
+func (s *SubmitImageTranslateTaskRequestExt) SetParamMap(v interface{}) *SubmitImageTranslateTaskRequestExt {
+	s.ParamMap = v
 	return s
 }
 

@@ -1028,21 +1028,31 @@ func (client *Client) TermEdit(request *TermEditRequest) (_result *TermEditRespo
 //
 // 通义多模态翻译术语查询
 //
-// @param request - TermQueryRequest
+// @param tmpReq - TermQueryRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TermQueryResponse
-func (client *Client) TermQueryWithOptions(request *TermQueryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TermQueryResponse, _err error) {
+func (client *Client) TermQueryWithOptions(tmpReq *TermQueryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TermQueryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &TermQueryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Ext) {
+		request.ExtShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ext, dara.String("ext"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExtShrink) {
+		body["ext"] = request.ExtShrink
+	}
+
 	if !dara.IsNil(request.Scene) {
 		body["scene"] = request.Scene
 	}

@@ -1,0 +1,119 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iTermQueryShrinkRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetExtShrink(v string) *TermQueryShrinkRequest
+	GetExtShrink() *string
+	SetScene(v string) *TermQueryShrinkRequest
+	GetScene() *string
+	SetSourceLanguage(v string) *TermQueryShrinkRequest
+	GetSourceLanguage() *string
+	SetTargetLanguage(v string) *TermQueryShrinkRequest
+	GetTargetLanguage() *string
+	SetText(v string) *TermQueryShrinkRequest
+	GetText() *string
+	SetWorkspaceId(v string) *TermQueryShrinkRequest
+	GetWorkspaceId() *string
+}
+
+type TermQueryShrinkRequest struct {
+	ExtShrink *string `json:"ext,omitempty" xml:"ext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mt-turbo
+	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh
+	SourceLanguage *string `json:"sourceLanguage,omitempty" xml:"sourceLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// en
+	TargetLanguage *string `json:"targetLanguage,omitempty" xml:"targetLanguage,omitempty"`
+	Text           *string `json:"text,omitempty" xml:"text,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-kqtrcpdee4xm29xx
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s TermQueryShrinkRequest) String() string {
+	return dara.Prettify(s)
+}
+
+func (s TermQueryShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TermQueryShrinkRequest) GetExtShrink() *string {
+	return s.ExtShrink
+}
+
+func (s *TermQueryShrinkRequest) GetScene() *string {
+	return s.Scene
+}
+
+func (s *TermQueryShrinkRequest) GetSourceLanguage() *string {
+	return s.SourceLanguage
+}
+
+func (s *TermQueryShrinkRequest) GetTargetLanguage() *string {
+	return s.TargetLanguage
+}
+
+func (s *TermQueryShrinkRequest) GetText() *string {
+	return s.Text
+}
+
+func (s *TermQueryShrinkRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
+func (s *TermQueryShrinkRequest) SetExtShrink(v string) *TermQueryShrinkRequest {
+	s.ExtShrink = &v
+	return s
+}
+
+func (s *TermQueryShrinkRequest) SetScene(v string) *TermQueryShrinkRequest {
+	s.Scene = &v
+	return s
+}
+
+func (s *TermQueryShrinkRequest) SetSourceLanguage(v string) *TermQueryShrinkRequest {
+	s.SourceLanguage = &v
+	return s
+}
+
+func (s *TermQueryShrinkRequest) SetTargetLanguage(v string) *TermQueryShrinkRequest {
+	s.TargetLanguage = &v
+	return s
+}
+
+func (s *TermQueryShrinkRequest) SetText(v string) *TermQueryShrinkRequest {
+	s.Text = &v
+	return s
+}
+
+func (s *TermQueryShrinkRequest) SetWorkspaceId(v string) *TermQueryShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *TermQueryShrinkRequest) Validate() error {
+	return dara.Validate(s)
+}

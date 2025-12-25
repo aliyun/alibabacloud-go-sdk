@@ -147,6 +147,7 @@ type SubmitDocTranslateTaskRequestExt struct {
 	//
 	// This text comes from a rigorous academic paper. Please provide a translation that complies with academic standards.
 	DomainHint    *string                                          `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
+	ParamMap      interface{}                                      `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
 	Terminologies []*SubmitDocTranslateTaskRequestExtTerminologies `json:"terminologies,omitempty" xml:"terminologies,omitempty" type:"Repeated"`
 }
 
@@ -166,6 +167,10 @@ func (s *SubmitDocTranslateTaskRequestExt) GetDomainHint() *string {
 	return s.DomainHint
 }
 
+func (s *SubmitDocTranslateTaskRequestExt) GetParamMap() interface{} {
+	return s.ParamMap
+}
+
 func (s *SubmitDocTranslateTaskRequestExt) GetTerminologies() []*SubmitDocTranslateTaskRequestExtTerminologies {
 	return s.Terminologies
 }
@@ -177,6 +182,11 @@ func (s *SubmitDocTranslateTaskRequestExt) SetConfig(v *SubmitDocTranslateTaskRe
 
 func (s *SubmitDocTranslateTaskRequestExt) SetDomainHint(v string) *SubmitDocTranslateTaskRequestExt {
 	s.DomainHint = &v
+	return s
+}
+
+func (s *SubmitDocTranslateTaskRequestExt) SetParamMap(v interface{}) *SubmitDocTranslateTaskRequestExt {
+	s.ParamMap = v
 	return s
 }
 

@@ -139,6 +139,7 @@ type SubmitLongTextTranslateTaskRequestExt struct {
 	// technology
 	DomainHint    *string                                               `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
 	Examples      []*SubmitLongTextTranslateTaskRequestExtExamples      `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
+	ParamMap      interface{}                                           `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
 	Sensitives    []*string                                             `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
 	Terminologies []*SubmitLongTextTranslateTaskRequestExtTerminologies `json:"terminologies,omitempty" xml:"terminologies,omitempty" type:"Repeated"`
 	TextTransform *SubmitLongTextTranslateTaskRequestExtTextTransform   `json:"textTransform,omitempty" xml:"textTransform,omitempty" type:"Struct"`
@@ -162,6 +163,10 @@ func (s *SubmitLongTextTranslateTaskRequestExt) GetDomainHint() *string {
 
 func (s *SubmitLongTextTranslateTaskRequestExt) GetExamples() []*SubmitLongTextTranslateTaskRequestExtExamples {
 	return s.Examples
+}
+
+func (s *SubmitLongTextTranslateTaskRequestExt) GetParamMap() interface{} {
+	return s.ParamMap
 }
 
 func (s *SubmitLongTextTranslateTaskRequestExt) GetSensitives() []*string {
@@ -188,6 +193,11 @@ func (s *SubmitLongTextTranslateTaskRequestExt) SetDomainHint(v string) *SubmitL
 
 func (s *SubmitLongTextTranslateTaskRequestExt) SetExamples(v []*SubmitLongTextTranslateTaskRequestExtExamples) *SubmitLongTextTranslateTaskRequestExt {
 	s.Examples = v
+	return s
+}
+
+func (s *SubmitLongTextTranslateTaskRequestExt) SetParamMap(v interface{}) *SubmitLongTextTranslateTaskRequestExt {
+	s.ParamMap = v
 	return s
 }
 

@@ -156,6 +156,7 @@ type BatchTranslateRequestExt struct {
 	// technology
 	DomainHint    *string                                  `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
 	Examples      []*BatchTranslateRequestExtExamples      `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
+	ParamMap      interface{}                              `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
 	Sensitives    []*string                                `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
 	Terminologies []*BatchTranslateRequestExtTerminologies `json:"terminologies,omitempty" xml:"terminologies,omitempty" type:"Repeated"`
 	TextTransform *BatchTranslateRequestExtTextTransform   `json:"textTransform,omitempty" xml:"textTransform,omitempty" type:"Struct"`
@@ -179,6 +180,10 @@ func (s *BatchTranslateRequestExt) GetDomainHint() *string {
 
 func (s *BatchTranslateRequestExt) GetExamples() []*BatchTranslateRequestExtExamples {
 	return s.Examples
+}
+
+func (s *BatchTranslateRequestExt) GetParamMap() interface{} {
+	return s.ParamMap
 }
 
 func (s *BatchTranslateRequestExt) GetSensitives() []*string {
@@ -205,6 +210,11 @@ func (s *BatchTranslateRequestExt) SetDomainHint(v string) *BatchTranslateReques
 
 func (s *BatchTranslateRequestExt) SetExamples(v []*BatchTranslateRequestExtExamples) *BatchTranslateRequestExt {
 	s.Examples = v
+	return s
+}
+
+func (s *BatchTranslateRequestExt) SetParamMap(v interface{}) *BatchTranslateRequestExt {
+	s.ParamMap = v
 	return s
 }
 

@@ -9,6 +9,8 @@ type iTermQueryRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetExt(v *TermQueryRequestExt) *TermQueryRequest
+	GetExt() *TermQueryRequestExt
 	SetScene(v string) *TermQueryRequest
 	GetScene() *string
 	SetSourceLanguage(v string) *TermQueryRequest
@@ -22,6 +24,7 @@ type iTermQueryRequest interface {
 }
 
 type TermQueryRequest struct {
+	Ext *TermQueryRequestExt `json:"ext,omitempty" xml:"ext,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -57,6 +60,10 @@ func (s TermQueryRequest) GoString() string {
 	return s.String()
 }
 
+func (s *TermQueryRequest) GetExt() *TermQueryRequestExt {
+	return s.Ext
+}
+
 func (s *TermQueryRequest) GetScene() *string {
 	return s.Scene
 }
@@ -75,6 +82,11 @@ func (s *TermQueryRequest) GetText() *string {
 
 func (s *TermQueryRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *TermQueryRequest) SetExt(v *TermQueryRequestExt) *TermQueryRequest {
+	s.Ext = v
+	return s
 }
 
 func (s *TermQueryRequest) SetScene(v string) *TermQueryRequest {
@@ -103,5 +115,35 @@ func (s *TermQueryRequest) SetWorkspaceId(v string) *TermQueryRequest {
 }
 
 func (s *TermQueryRequest) Validate() error {
+	if s.Ext != nil {
+		if err := s.Ext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type TermQueryRequestExt struct {
+	ParamMap interface{} `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
+}
+
+func (s TermQueryRequestExt) String() string {
+	return dara.Prettify(s)
+}
+
+func (s TermQueryRequestExt) GoString() string {
+	return s.String()
+}
+
+func (s *TermQueryRequestExt) GetParamMap() interface{} {
+	return s.ParamMap
+}
+
+func (s *TermQueryRequestExt) SetParamMap(v interface{}) *TermQueryRequestExt {
+	s.ParamMap = v
+	return s
+}
+
+func (s *TermQueryRequestExt) Validate() error {
 	return dara.Validate(s)
 }
