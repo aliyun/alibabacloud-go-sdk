@@ -624,6 +624,53 @@ func (client *Client) GetBroadcastTemplateWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 根据ID获取TTS音色
+//
+// @param request - GetTTSVoiceByIdCustomRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTTSVoiceByIdCustomResponse
+func (client *Client) GetTTSVoiceByIdCustomWithContext(ctx context.Context, request *GetTTSVoiceByIdCustomRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTTSVoiceByIdCustomResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.VoiceId) {
+		query["voiceId"] = request.VoiceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTTSVoiceByIdCustom"),
+		Version:     dara.String("2025-05-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/voice/getTTSVoiceById"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTTSVoiceByIdCustomResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询图片训练数字人的状态
 //
 // @param request - GetTrainPicAvatarStatusRequest
