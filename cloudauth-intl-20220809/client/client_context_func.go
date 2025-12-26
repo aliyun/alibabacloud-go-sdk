@@ -9,6 +9,74 @@ import (
 
 // Summary:
 //
+// 人脸图片入库
+//
+// @param request - AddFaceRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddFaceRecordResponse
+func (client *Client) AddFaceRecordWithContext(ctx context.Context, request *AddFaceRecordRequest, runtime *dara.RuntimeOptions) (_result *AddFaceRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FaceGroupCode) {
+		body["FaceGroupCode"] = request.FaceGroupCode
+	}
+
+	if !dara.IsNil(request.FacePicture) {
+		body["FacePicture"] = request.FacePicture
+	}
+
+	if !dara.IsNil(request.FacePictureFile) {
+		body["FacePictureFile"] = request.FacePictureFile
+	}
+
+	if !dara.IsNil(request.FacePictureUrl) {
+		body["FacePictureUrl"] = request.FacePictureUrl
+	}
+
+	if !dara.IsNil(request.FaceQualityCheck) {
+		body["FaceQualityCheck"] = request.FaceQualityCheck
+	}
+
+	if !dara.IsNil(request.MerchantUserId) {
+		body["MerchantUserId"] = request.MerchantUserId
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddFaceRecord"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddFaceRecordResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Address Similarity Comparison
 //
 // Description:
