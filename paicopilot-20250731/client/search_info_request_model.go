@@ -140,6 +140,7 @@ func (s *SearchInfoRequestKnowledgeBaseFilters) Validate() error {
 }
 
 type SearchInfoRequestWebFilters struct {
+	Category     *string   `json:"Category,omitempty" xml:"Category,omitempty"`
 	IncludeSites []*string `json:"IncludeSites,omitempty" xml:"IncludeSites,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
@@ -165,6 +166,10 @@ func (s SearchInfoRequestWebFilters) GoString() string {
 	return s.String()
 }
 
+func (s *SearchInfoRequestWebFilters) GetCategory() *string {
+	return s.Category
+}
+
 func (s *SearchInfoRequestWebFilters) GetIncludeSites() []*string {
 	return s.IncludeSites
 }
@@ -179,6 +184,11 @@ func (s *SearchInfoRequestWebFilters) GetResultLimit() *int32 {
 
 func (s *SearchInfoRequestWebFilters) GetScoreThreshold() *float64 {
 	return s.ScoreThreshold
+}
+
+func (s *SearchInfoRequestWebFilters) SetCategory(v string) *SearchInfoRequestWebFilters {
+	s.Category = &v
+	return s
 }
 
 func (s *SearchInfoRequestWebFilters) SetIncludeSites(v []*string) *SearchInfoRequestWebFilters {
