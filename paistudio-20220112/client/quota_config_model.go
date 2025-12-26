@@ -19,6 +19,8 @@ type iQuotaConfig interface {
 	GetEnableGPUShare() *bool
 	SetEnablePreemptSubquotaWorkloads(v bool) *QuotaConfig
 	GetEnablePreemptSubquotaWorkloads() *bool
+	SetEnableSelfQuotaPreemption(v bool) *QuotaConfig
+	GetEnableSelfQuotaPreemption() *bool
 	SetEnableSubQuotaPreemption(v bool) *QuotaConfig
 	GetEnableSubQuotaPreemption() *bool
 	SetEniCacheConfig(v *EniCacheConfig) *QuotaConfig
@@ -55,6 +57,7 @@ type QuotaConfig struct {
 	DefaultGPUDriver               *string                    `json:"DefaultGPUDriver,omitempty" xml:"DefaultGPUDriver,omitempty"`
 	EnableGPUShare                 *bool                      `json:"EnableGPUShare,omitempty" xml:"EnableGPUShare,omitempty"`
 	EnablePreemptSubquotaWorkloads *bool                      `json:"EnablePreemptSubquotaWorkloads,omitempty" xml:"EnablePreemptSubquotaWorkloads,omitempty"`
+	EnableSelfQuotaPreemption      *bool                      `json:"EnableSelfQuotaPreemption,omitempty" xml:"EnableSelfQuotaPreemption,omitempty"`
 	EnableSubQuotaPreemption       *bool                      `json:"EnableSubQuotaPreemption,omitempty" xml:"EnableSubQuotaPreemption,omitempty"`
 	EniCacheConfig                 *EniCacheConfig            `json:"EniCacheConfig,omitempty" xml:"EniCacheConfig,omitempty"`
 	OversoldUsageInfo              *OversoldUsageConfig       `json:"OversoldUsageInfo,omitempty" xml:"OversoldUsageInfo,omitempty"`
@@ -97,6 +100,10 @@ func (s *QuotaConfig) GetEnableGPUShare() *bool {
 
 func (s *QuotaConfig) GetEnablePreemptSubquotaWorkloads() *bool {
 	return s.EnablePreemptSubquotaWorkloads
+}
+
+func (s *QuotaConfig) GetEnableSelfQuotaPreemption() *bool {
+	return s.EnableSelfQuotaPreemption
 }
 
 func (s *QuotaConfig) GetEnableSubQuotaPreemption() *bool {
@@ -165,6 +172,11 @@ func (s *QuotaConfig) SetEnableGPUShare(v bool) *QuotaConfig {
 
 func (s *QuotaConfig) SetEnablePreemptSubquotaWorkloads(v bool) *QuotaConfig {
 	s.EnablePreemptSubquotaWorkloads = &v
+	return s
+}
+
+func (s *QuotaConfig) SetEnableSelfQuotaPreemption(v bool) *QuotaConfig {
+	s.EnableSelfQuotaPreemption = &v
 	return s
 }
 
