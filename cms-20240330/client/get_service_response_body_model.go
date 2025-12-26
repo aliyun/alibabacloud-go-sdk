@@ -98,6 +98,10 @@ type GetServiceResponseBodyService struct {
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// rg-aekxxzuad5zzzz
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// Service ID.
 	//
 	// example:
@@ -121,7 +125,8 @@ type GetServiceResponseBodyService struct {
 	// example:
 	//
 	// TRACE
-	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	ServiceType *string                              `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	Tags        []*GetServiceResponseBodyServiceTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// Workspace name
 	//
 	// example:
@@ -162,6 +167,10 @@ func (s *GetServiceResponseBodyService) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *GetServiceResponseBodyService) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *GetServiceResponseBodyService) GetServiceId() *string {
 	return s.ServiceId
 }
@@ -176,6 +185,10 @@ func (s *GetServiceResponseBodyService) GetServiceStatus() *string {
 
 func (s *GetServiceResponseBodyService) GetServiceType() *string {
 	return s.ServiceType
+}
+
+func (s *GetServiceResponseBodyService) GetTags() []*GetServiceResponseBodyServiceTags {
+	return s.Tags
 }
 
 func (s *GetServiceResponseBodyService) GetWorkspace() *string {
@@ -212,6 +225,11 @@ func (s *GetServiceResponseBodyService) SetRegionId(v string) *GetServiceRespons
 	return s
 }
 
+func (s *GetServiceResponseBodyService) SetResourceGroupId(v string) *GetServiceResponseBodyService {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetServiceResponseBodyService) SetServiceId(v string) *GetServiceResponseBodyService {
 	s.ServiceId = &v
 	return s
@@ -232,11 +250,66 @@ func (s *GetServiceResponseBodyService) SetServiceType(v string) *GetServiceResp
 	return s
 }
 
+func (s *GetServiceResponseBodyService) SetTags(v []*GetServiceResponseBodyServiceTags) *GetServiceResponseBodyService {
+	s.Tags = v
+	return s
+}
+
 func (s *GetServiceResponseBodyService) SetWorkspace(v string) *GetServiceResponseBodyService {
 	s.Workspace = &v
 	return s
 }
 
 func (s *GetServiceResponseBodyService) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetServiceResponseBodyServiceTags struct {
+	// example:
+	//
+	// env
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// prod
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetServiceResponseBodyServiceTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetServiceResponseBodyServiceTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyServiceTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *GetServiceResponseBodyServiceTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *GetServiceResponseBodyServiceTags) SetKey(v string) *GetServiceResponseBodyServiceTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyServiceTags) SetValue(v string) *GetServiceResponseBodyServiceTags {
+	s.Value = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyServiceTags) Validate() error {
 	return dara.Validate(s)
 }

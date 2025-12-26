@@ -819,6 +819,10 @@ func (client *Client) CreateServiceWithContext(ctx context.Context, workspace *s
 		body["pid"] = request.Pid
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.ServiceName) {
 		body["serviceName"] = request.ServiceName
 	}
@@ -829,6 +833,10 @@ func (client *Client) CreateServiceWithContext(ctx context.Context, workspace *s
 
 	if !dara.IsNil(request.ServiceType) {
 		body["serviceType"] = request.ServiceType
+	}
+
+	if !dara.IsNil(request.Tags) {
+		body["tags"] = request.Tags
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3870,20 +3878,26 @@ func (client *Client) ListPrometheusVirtualInstancesWithContext(ctx context.Cont
 //
 // # List Resource Services
 //
-// @param request - ListServicesRequest
+// @param tmpReq - ListServicesRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListServicesResponse
-func (client *Client) ListServicesWithContext(ctx context.Context, workspace *string, request *ListServicesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListServicesResponse, _err error) {
+func (client *Client) ListServicesWithContext(ctx context.Context, workspace *string, tmpReq *ListServicesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListServicesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListServicesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("tags"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
@@ -3893,8 +3907,20 @@ func (client *Client) ListServicesWithContext(ctx context.Context, workspace *st
 		query["nextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ServiceName) {
+		query["serviceName"] = request.ServiceName
+	}
+
 	if !dara.IsNil(request.ServiceType) {
 		query["serviceType"] = request.ServiceType
+	}
+
+	if !dara.IsNil(request.TagsShrink) {
+		query["tags"] = request.TagsShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{

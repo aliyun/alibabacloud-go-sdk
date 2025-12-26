@@ -17,12 +17,16 @@ type iCreateServiceRequest interface {
 	GetDisplayName() *string
 	SetPid(v string) *CreateServiceRequest
 	GetPid() *string
+	SetResourceGroupId(v string) *CreateServiceRequest
+	GetResourceGroupId() *string
 	SetServiceName(v string) *CreateServiceRequest
 	GetServiceName() *string
 	SetServiceStatus(v string) *CreateServiceRequest
 	GetServiceStatus() *string
 	SetServiceType(v string) *CreateServiceRequest
 	GetServiceType() *string
+	SetTags(v []*CreateServiceRequestTags) *CreateServiceRequest
+	GetTags() []*CreateServiceRequestTags
 }
 
 type CreateServiceRequest struct {
@@ -50,6 +54,10 @@ type CreateServiceRequest struct {
 	//
 	// bx3udsi5ie@ed2ba6beebdb6de
 	Pid *string `json:"pid,omitempty" xml:"pid,omitempty"`
+	// example:
+	//
+	// rg-xxekxxzuad5zzzz
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// Service name
 	//
 	// This parameter is required.
@@ -71,7 +79,8 @@ type CreateServiceRequest struct {
 	// example:
 	//
 	// TRACE
-	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	ServiceType *string                     `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	Tags        []*CreateServiceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s CreateServiceRequest) String() string {
@@ -98,6 +107,10 @@ func (s *CreateServiceRequest) GetPid() *string {
 	return s.Pid
 }
 
+func (s *CreateServiceRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *CreateServiceRequest) GetServiceName() *string {
 	return s.ServiceName
 }
@@ -108,6 +121,10 @@ func (s *CreateServiceRequest) GetServiceStatus() *string {
 
 func (s *CreateServiceRequest) GetServiceType() *string {
 	return s.ServiceType
+}
+
+func (s *CreateServiceRequest) GetTags() []*CreateServiceRequestTags {
+	return s.Tags
 }
 
 func (s *CreateServiceRequest) SetAttributes(v string) *CreateServiceRequest {
@@ -130,6 +147,11 @@ func (s *CreateServiceRequest) SetPid(v string) *CreateServiceRequest {
 	return s
 }
 
+func (s *CreateServiceRequest) SetResourceGroupId(v string) *CreateServiceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateServiceRequest) SetServiceName(v string) *CreateServiceRequest {
 	s.ServiceName = &v
 	return s
@@ -145,6 +167,61 @@ func (s *CreateServiceRequest) SetServiceType(v string) *CreateServiceRequest {
 	return s
 }
 
+func (s *CreateServiceRequest) SetTags(v []*CreateServiceRequestTags) *CreateServiceRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateServiceRequest) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateServiceRequestTags struct {
+	// example:
+	//
+	// env
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// prod
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateServiceRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateServiceRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateServiceRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateServiceRequestTags) SetKey(v string) *CreateServiceRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateServiceRequestTags) SetValue(v string) *CreateServiceRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateServiceRequestTags) Validate() error {
 	return dara.Validate(s)
 }

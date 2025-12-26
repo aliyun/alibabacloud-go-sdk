@@ -147,6 +147,10 @@ type ListServicesResponseBodyServices struct {
 	//
 	// kgcsf@192197e828d51aa
 	Pid *string `json:"pid,omitempty" xml:"pid,omitempty"`
+	// example:
+	//
+	// rg-aekxxzuad5zzzz
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// Service ID
 	//
 	// example:
@@ -207,6 +211,10 @@ func (s *ListServicesResponseBodyServices) GetPid() *string {
 	return s.Pid
 }
 
+func (s *ListServicesResponseBodyServices) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *ListServicesResponseBodyServices) GetServiceId() *string {
 	return s.ServiceId
 }
@@ -249,6 +257,11 @@ func (s *ListServicesResponseBodyServices) SetDisplayName(v string) *ListService
 
 func (s *ListServicesResponseBodyServices) SetPid(v string) *ListServicesResponseBodyServices {
 	s.Pid = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetResourceGroupId(v string) *ListServicesResponseBodyServices {
+	s.ResourceGroupId = &v
 	return s
 }
 
