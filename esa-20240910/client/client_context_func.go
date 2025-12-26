@@ -9435,6 +9435,54 @@ func (client *Client) GetKvWithContext(ctx context.Context, request *GetKvReques
 
 // Summary:
 //
+// 查询Key-Value对的某个Key的详情
+//
+// @param request - GetKvDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKvDetailResponse
+func (client *Client) GetKvDetailWithContext(ctx context.Context, request *GetKvDetailRequest, runtime *dara.RuntimeOptions) (_result *GetKvDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Key) {
+		query["Key"] = request.Key
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKvDetail"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKvDetailResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about a namespace in your Alibaba Cloud account.
 //
 // @param request - GetKvNamespaceRequest
