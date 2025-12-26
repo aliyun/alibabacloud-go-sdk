@@ -29,6 +29,8 @@ type iCreateWuyingServerRequest interface {
 	GetIdempotenceToken() *string
 	SetImageId(v string) *CreateWuyingServerRequest
 	GetImageId() *string
+	SetMaxPrice(v float32) *CreateWuyingServerRequest
+	GetMaxPrice() *float32
 	SetNetworkStrategyType(v string) *CreateWuyingServerRequest
 	GetNetworkStrategyType() *string
 	SetOfficeSiteId(v string) *CreateWuyingServerRequest
@@ -47,6 +49,8 @@ type iCreateWuyingServerRequest interface {
 	GetServerInstanceType() *string
 	SetServerPortRange(v string) *CreateWuyingServerRequest
 	GetServerPortRange() *string
+	SetSubPayType(v string) *CreateWuyingServerRequest
+	GetSubPayType() *string
 	SetSystemDiskCategory(v string) *CreateWuyingServerRequest
 	GetSystemDiskCategory() *string
 	SetSystemDiskPerformanceLevel(v string) *CreateWuyingServerRequest
@@ -116,7 +120,8 @@ type CreateWuyingServerRequest struct {
 	// example:
 	//
 	// img-bp13mu****
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId  *string  `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
 	// The type of the network policy (in invitational preview).
 	//
 	// example:
@@ -169,6 +174,7 @@ type CreateWuyingServerRequest struct {
 	// eds.proworkstation_flagship_elite_ne.96c384g.192g4x
 	ServerInstanceType *string `json:"ServerInstanceType,omitempty" xml:"ServerInstanceType,omitempty"`
 	ServerPortRange    *string `json:"ServerPortRange,omitempty" xml:"ServerPortRange,omitempty"`
+	SubPayType         *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
 	// The system disk category.
 	//
 	// Valid values:
@@ -253,6 +259,10 @@ func (s *CreateWuyingServerRequest) GetImageId() *string {
 	return s.ImageId
 }
 
+func (s *CreateWuyingServerRequest) GetMaxPrice() *float32 {
+	return s.MaxPrice
+}
+
 func (s *CreateWuyingServerRequest) GetNetworkStrategyType() *string {
 	return s.NetworkStrategyType
 }
@@ -287,6 +297,10 @@ func (s *CreateWuyingServerRequest) GetServerInstanceType() *string {
 
 func (s *CreateWuyingServerRequest) GetServerPortRange() *string {
 	return s.ServerPortRange
+}
+
+func (s *CreateWuyingServerRequest) GetSubPayType() *string {
+	return s.SubPayType
 }
 
 func (s *CreateWuyingServerRequest) GetSystemDiskCategory() *string {
@@ -363,6 +377,11 @@ func (s *CreateWuyingServerRequest) SetImageId(v string) *CreateWuyingServerRequ
 	return s
 }
 
+func (s *CreateWuyingServerRequest) SetMaxPrice(v float32) *CreateWuyingServerRequest {
+	s.MaxPrice = &v
+	return s
+}
+
 func (s *CreateWuyingServerRequest) SetNetworkStrategyType(v string) *CreateWuyingServerRequest {
 	s.NetworkStrategyType = &v
 	return s
@@ -405,6 +424,11 @@ func (s *CreateWuyingServerRequest) SetServerInstanceType(v string) *CreateWuyin
 
 func (s *CreateWuyingServerRequest) SetServerPortRange(v string) *CreateWuyingServerRequest {
 	s.ServerPortRange = &v
+	return s
+}
+
+func (s *CreateWuyingServerRequest) SetSubPayType(v string) *CreateWuyingServerRequest {
+	s.SubPayType = &v
 	return s
 }
 

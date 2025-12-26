@@ -154,6 +154,7 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// The list of information about the workstation instance.
 	InstanceInfoList []*ListWuyingServerResponseBodyWuyingServerListInstanceInfoList `json:"InstanceInfoList,omitempty" xml:"InstanceInfoList,omitempty" type:"Repeated"`
+	MaxPrice         *float32                                                        `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
 	// The private IP address.
 	//
 	// example:
@@ -192,7 +193,8 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	// example:
 	//
 	// RUNNING
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
 	// The type of the system disk.
 	//
 	// example:
@@ -270,6 +272,10 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) GetInstanceInfoList() []*
 	return s.InstanceInfoList
 }
 
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetMaxPrice() *float32 {
+	return s.MaxPrice
+}
+
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetNetworkInterfaceIp() *string {
 	return s.NetworkInterfaceIp
 }
@@ -300,6 +306,10 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) GetServerInstanceTypeInfo
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetSubPayType() *string {
+	return s.SubPayType
 }
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetSystemDiskCategory() *string {
@@ -371,6 +381,11 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) SetInstanceInfoList(v []*
 	return s
 }
 
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetMaxPrice(v float32) *ListWuyingServerResponseBodyWuyingServerList {
+	s.MaxPrice = &v
+	return s
+}
+
 func (s *ListWuyingServerResponseBodyWuyingServerList) SetNetworkInterfaceIp(v string) *ListWuyingServerResponseBodyWuyingServerList {
 	s.NetworkInterfaceIp = &v
 	return s
@@ -408,6 +423,11 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) SetServerInstanceTypeInfo
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) SetStatus(v string) *ListWuyingServerResponseBodyWuyingServerList {
 	s.Status = &v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetSubPayType(v string) *ListWuyingServerResponseBodyWuyingServerList {
+	s.SubPayType = &v
 	return s
 }
 

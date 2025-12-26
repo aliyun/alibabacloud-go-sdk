@@ -546,6 +546,10 @@ func (client *Client) CreateWuyingServerWithContext(ctx context.Context, request
 		body["ImageId"] = request.ImageId
 	}
 
+	if !dara.IsNil(request.MaxPrice) {
+		body["MaxPrice"] = request.MaxPrice
+	}
+
 	if !dara.IsNil(request.NetworkStrategyType) {
 		body["NetworkStrategyType"] = request.NetworkStrategyType
 	}
@@ -580,6 +584,10 @@ func (client *Client) CreateWuyingServerWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.ServerPortRange) {
 		body["ServerPortRange"] = request.ServerPortRange
+	}
+
+	if !dara.IsNil(request.SubPayType) {
+		body["SubPayType"] = request.SubPayType
 	}
 
 	if !dara.IsNil(request.SystemDiskCategory) {
