@@ -102,6 +102,7 @@ type DescribeDesktopMetadataResponseBodyDesktops struct {
 	//
 	// Running
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
+	DesktopType   *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
 	// example:
 	//
 	// 2021-12-31T15:59Z
@@ -112,10 +113,12 @@ type DescribeDesktopMetadataResponseBodyDesktops struct {
 	ImageId         *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	LocalName       *string   `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	ManagementFlags []*string `json:"ManagementFlags,omitempty" xml:"ManagementFlags,omitempty" type:"Repeated"`
+	MemberEniIp     *string   `json:"MemberEniIp,omitempty" xml:"MemberEniIp,omitempty"`
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	Platform     *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	// example:
 	//
 	// cn-hangzhou
@@ -166,6 +169,10 @@ func (s *DescribeDesktopMetadataResponseBodyDesktops) GetDesktopStatus() *string
 	return s.DesktopStatus
 }
 
+func (s *DescribeDesktopMetadataResponseBodyDesktops) GetDesktopType() *string {
+	return s.DesktopType
+}
+
 func (s *DescribeDesktopMetadataResponseBodyDesktops) GetExpiredTime() *string {
 	return s.ExpiredTime
 }
@@ -182,8 +189,16 @@ func (s *DescribeDesktopMetadataResponseBodyDesktops) GetManagementFlags() []*st
 	return s.ManagementFlags
 }
 
+func (s *DescribeDesktopMetadataResponseBodyDesktops) GetMemberEniIp() *string {
+	return s.MemberEniIp
+}
+
 func (s *DescribeDesktopMetadataResponseBodyDesktops) GetOfficeSiteId() *string {
 	return s.OfficeSiteId
+}
+
+func (s *DescribeDesktopMetadataResponseBodyDesktops) GetPlatform() *string {
+	return s.Platform
 }
 
 func (s *DescribeDesktopMetadataResponseBodyDesktops) GetRegionId() *string {
@@ -232,6 +247,11 @@ func (s *DescribeDesktopMetadataResponseBodyDesktops) SetDesktopStatus(v string)
 	return s
 }
 
+func (s *DescribeDesktopMetadataResponseBodyDesktops) SetDesktopType(v string) *DescribeDesktopMetadataResponseBodyDesktops {
+	s.DesktopType = &v
+	return s
+}
+
 func (s *DescribeDesktopMetadataResponseBodyDesktops) SetExpiredTime(v string) *DescribeDesktopMetadataResponseBodyDesktops {
 	s.ExpiredTime = &v
 	return s
@@ -252,8 +272,18 @@ func (s *DescribeDesktopMetadataResponseBodyDesktops) SetManagementFlags(v []*st
 	return s
 }
 
+func (s *DescribeDesktopMetadataResponseBodyDesktops) SetMemberEniIp(v string) *DescribeDesktopMetadataResponseBodyDesktops {
+	s.MemberEniIp = &v
+	return s
+}
+
 func (s *DescribeDesktopMetadataResponseBodyDesktops) SetOfficeSiteId(v string) *DescribeDesktopMetadataResponseBodyDesktops {
 	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *DescribeDesktopMetadataResponseBodyDesktops) SetPlatform(v string) *DescribeDesktopMetadataResponseBodyDesktops {
+	s.Platform = &v
 	return s
 }
 

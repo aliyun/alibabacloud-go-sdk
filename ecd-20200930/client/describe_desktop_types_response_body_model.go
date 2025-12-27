@@ -78,6 +78,7 @@ type DescribeDesktopTypesResponseBodyDesktopTypes struct {
 	//
 	// 150
 	DataDiskSize *string `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the cloud desktop type.
 	//
 	// example:
@@ -164,6 +165,10 @@ func (s *DescribeDesktopTypesResponseBodyDesktopTypes) GetDataDiskSize() *string
 	return s.DataDiskSize
 }
 
+func (s *DescribeDesktopTypesResponseBodyDesktopTypes) GetDescription() *string {
+	return s.Description
+}
+
 func (s *DescribeDesktopTypesResponseBodyDesktopTypes) GetDesktopTypeId() *string {
 	return s.DesktopTypeId
 }
@@ -215,6 +220,11 @@ func (s *DescribeDesktopTypesResponseBodyDesktopTypes) SetCpuCount(v string) *De
 
 func (s *DescribeDesktopTypesResponseBodyDesktopTypes) SetDataDiskSize(v string) *DescribeDesktopTypesResponseBodyDesktopTypes {
 	s.DataDiskSize = &v
+	return s
+}
+
+func (s *DescribeDesktopTypesResponseBodyDesktopTypes) SetDescription(v string) *DescribeDesktopTypesResponseBodyDesktopTypes {
+	s.Description = &v
 	return s
 }
 
