@@ -11,6 +11,8 @@ type iDescribeDBInstanceSSLResponseBody interface {
 	GoString() string
 	SetCertCommonName(v string) *DescribeDBInstanceSSLResponseBody
 	GetCertCommonName() *string
+	SetForceEncryption(v string) *DescribeDBInstanceSSLResponseBody
+	GetForceEncryption() *string
 	SetRequestId(v string) *DescribeDBInstanceSSLResponseBody
 	GetRequestId() *string
 	SetSSLExpiredTime(v string) *DescribeDBInstanceSSLResponseBody
@@ -25,7 +27,8 @@ type DescribeDBInstanceSSLResponseBody struct {
 	// example:
 	//
 	// dds-bpxxxxxxxx.mongodb.rds.aliyuncs.com
-	CertCommonName *string `json:"CertCommonName,omitempty" xml:"CertCommonName,omitempty"`
+	CertCommonName  *string `json:"CertCommonName,omitempty" xml:"CertCommonName,omitempty"`
+	ForceEncryption *string `json:"ForceEncryption,omitempty" xml:"ForceEncryption,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -62,6 +65,10 @@ func (s *DescribeDBInstanceSSLResponseBody) GetCertCommonName() *string {
 	return s.CertCommonName
 }
 
+func (s *DescribeDBInstanceSSLResponseBody) GetForceEncryption() *string {
+	return s.ForceEncryption
+}
+
 func (s *DescribeDBInstanceSSLResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -76,6 +83,11 @@ func (s *DescribeDBInstanceSSLResponseBody) GetSSLStatus() *string {
 
 func (s *DescribeDBInstanceSSLResponseBody) SetCertCommonName(v string) *DescribeDBInstanceSSLResponseBody {
 	s.CertCommonName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSSLResponseBody) SetForceEncryption(v string) *DescribeDBInstanceSSLResponseBody {
+	s.ForceEncryption = &v
 	return s
 }
 

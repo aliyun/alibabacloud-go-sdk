@@ -11,6 +11,8 @@ type iModifyDBInstanceSSLRequest interface {
 	GoString() string
 	SetDBInstanceId(v string) *ModifyDBInstanceSSLRequest
 	GetDBInstanceId() *string
+	SetForceEncryption(v string) *ModifyDBInstanceSSLRequest
+	GetForceEncryption() *string
 	SetOwnerAccount(v string) *ModifyDBInstanceSSLRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *ModifyDBInstanceSSLRequest
@@ -34,6 +36,7 @@ type ModifyDBInstanceSSLRequest struct {
 	//
 	// dds-bp2235****
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ForceEncryption      *string `json:"ForceEncryption,omitempty" xml:"ForceEncryption,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -67,6 +70,10 @@ func (s *ModifyDBInstanceSSLRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
 }
 
+func (s *ModifyDBInstanceSSLRequest) GetForceEncryption() *string {
+	return s.ForceEncryption
+}
+
 func (s *ModifyDBInstanceSSLRequest) GetOwnerAccount() *string {
 	return s.OwnerAccount
 }
@@ -93,6 +100,11 @@ func (s *ModifyDBInstanceSSLRequest) GetSwitchMode() *string {
 
 func (s *ModifyDBInstanceSSLRequest) SetDBInstanceId(v string) *ModifyDBInstanceSSLRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSSLRequest) SetForceEncryption(v string) *ModifyDBInstanceSSLRequest {
+	s.ForceEncryption = &v
 	return s
 }
 

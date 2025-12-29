@@ -11,6 +11,8 @@ type iDescribeShardingNetworkAddressRequest interface {
 	GoString() string
 	SetDBInstanceId(v string) *DescribeShardingNetworkAddressRequest
 	GetDBInstanceId() *string
+	SetNetworkType(v string) *DescribeShardingNetworkAddressRequest
+	GetNetworkType() *string
 	SetNodeId(v string) *DescribeShardingNetworkAddressRequest
 	GetNodeId() *string
 	SetOwnerAccount(v string) *DescribeShardingNetworkAddressRequest
@@ -32,6 +34,7 @@ type DescribeShardingNetworkAddressRequest struct {
 	//
 	// dds-bpxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The ID of the mongos, shard, or Configserver node in the sharded cluster instance.
 	//
 	// >  You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to view the ID of the mongos, shard, or Configserver node.
@@ -58,6 +61,10 @@ func (s *DescribeShardingNetworkAddressRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
 }
 
+func (s *DescribeShardingNetworkAddressRequest) GetNetworkType() *string {
+	return s.NetworkType
+}
+
 func (s *DescribeShardingNetworkAddressRequest) GetNodeId() *string {
 	return s.NodeId
 }
@@ -80,6 +87,11 @@ func (s *DescribeShardingNetworkAddressRequest) GetResourceOwnerId() *int64 {
 
 func (s *DescribeShardingNetworkAddressRequest) SetDBInstanceId(v string) *DescribeShardingNetworkAddressRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeShardingNetworkAddressRequest) SetNetworkType(v string) *DescribeShardingNetworkAddressRequest {
+	s.NetworkType = &v
 	return s
 }
 

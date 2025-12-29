@@ -31,6 +31,8 @@ type iDescribeDBInstancePerformanceRequest interface {
 	GetResourceOwnerId() *int64
 	SetRoleId(v string) *DescribeDBInstancePerformanceRequest
 	GetRoleId() *string
+	SetSearchId(v string) *DescribeDBInstancePerformanceRequest
+	GetSearchId() *string
 	SetStartTime(v string) *DescribeDBInstancePerformanceRequest
 	GetStartTime() *string
 }
@@ -103,7 +105,8 @@ type DescribeDBInstancePerformanceRequest struct {
 	// example:
 	//
 	// 6025****
-	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleId   *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	SearchId *string `json:"SearchId,omitempty" xml:"SearchId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	//
 	// This parameter is required.
@@ -166,6 +169,10 @@ func (s *DescribeDBInstancePerformanceRequest) GetRoleId() *string {
 	return s.RoleId
 }
 
+func (s *DescribeDBInstancePerformanceRequest) GetSearchId() *string {
+	return s.SearchId
+}
+
 func (s *DescribeDBInstancePerformanceRequest) GetStartTime() *string {
 	return s.StartTime
 }
@@ -222,6 +229,11 @@ func (s *DescribeDBInstancePerformanceRequest) SetResourceOwnerId(v int64) *Desc
 
 func (s *DescribeDBInstancePerformanceRequest) SetRoleId(v string) *DescribeDBInstancePerformanceRequest {
 	s.RoleId = &v
+	return s
+}
+
+func (s *DescribeDBInstancePerformanceRequest) SetSearchId(v string) *DescribeDBInstancePerformanceRequest {
+	s.SearchId = &v
 	return s
 }
 
