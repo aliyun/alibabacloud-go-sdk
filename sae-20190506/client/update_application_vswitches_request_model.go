@@ -13,6 +13,10 @@ type iUpdateApplicationVswitchesRequest interface {
 	GetAppId() *string
 	SetDeploy(v bool) *UpdateApplicationVswitchesRequest
 	GetDeploy() *bool
+	SetMinReadyInstanceRatio(v int32) *UpdateApplicationVswitchesRequest
+	GetMinReadyInstanceRatio() *int32
+	SetMinReadyInstances(v int32) *UpdateApplicationVswitchesRequest
+	GetMinReadyInstances() *int32
 	SetVSwitchId(v string) *UpdateApplicationVswitchesRequest
 	GetVSwitchId() *string
 }
@@ -25,8 +29,10 @@ type UpdateApplicationVswitchesRequest struct {
 	// example:
 	//
 	// 0099b7be-5f5b-4512-a7fc-56049ef1****
-	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Deploy *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
+	AppId                 *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Deploy                *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
+	MinReadyInstanceRatio *int32  `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
+	MinReadyInstances     *int32  `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
 	// The ID of the vSwitch.
 	//
 	// This parameter is required.
@@ -53,6 +59,14 @@ func (s *UpdateApplicationVswitchesRequest) GetDeploy() *bool {
 	return s.Deploy
 }
 
+func (s *UpdateApplicationVswitchesRequest) GetMinReadyInstanceRatio() *int32 {
+	return s.MinReadyInstanceRatio
+}
+
+func (s *UpdateApplicationVswitchesRequest) GetMinReadyInstances() *int32 {
+	return s.MinReadyInstances
+}
+
 func (s *UpdateApplicationVswitchesRequest) GetVSwitchId() *string {
 	return s.VSwitchId
 }
@@ -64,6 +78,16 @@ func (s *UpdateApplicationVswitchesRequest) SetAppId(v string) *UpdateApplicatio
 
 func (s *UpdateApplicationVswitchesRequest) SetDeploy(v bool) *UpdateApplicationVswitchesRequest {
 	s.Deploy = &v
+	return s
+}
+
+func (s *UpdateApplicationVswitchesRequest) SetMinReadyInstanceRatio(v int32) *UpdateApplicationVswitchesRequest {
+	s.MinReadyInstanceRatio = &v
+	return s
+}
+
+func (s *UpdateApplicationVswitchesRequest) SetMinReadyInstances(v int32) *UpdateApplicationVswitchesRequest {
+	s.MinReadyInstances = &v
 	return s
 }
 

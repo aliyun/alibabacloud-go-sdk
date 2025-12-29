@@ -11238,6 +11238,14 @@ func (client *Client) UpdateApplicationVswitchesWithOptions(request *UpdateAppli
 		query["Deploy"] = request.Deploy
 	}
 
+	if !dara.IsNil(request.MinReadyInstanceRatio) {
+		query["MinReadyInstanceRatio"] = request.MinReadyInstanceRatio
+	}
+
+	if !dara.IsNil(request.MinReadyInstances) {
+		query["MinReadyInstances"] = request.MinReadyInstances
+	}
+
 	if !dara.IsNil(request.VSwitchId) {
 		query["VSwitchId"] = request.VSwitchId
 	}

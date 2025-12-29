@@ -357,6 +357,7 @@ type DescribeApplicationInstancesResponseBodyDataInstances struct {
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
 	// The status of the sidecar container.
 	SidecarContainersStatus []*DescribeApplicationInstancesResponseBodyDataInstancesSidecarContainersStatus `json:"SidecarContainersStatus,omitempty" xml:"SidecarContainersStatus,omitempty" type:"Repeated"`
+	Tags                    []*DescribeApplicationInstancesResponseBodyDataInstancesTags                    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1750061980000
@@ -438,6 +439,10 @@ func (s *DescribeApplicationInstancesResponseBodyDataInstances) GetPackageVersio
 
 func (s *DescribeApplicationInstancesResponseBodyDataInstances) GetSidecarContainersStatus() []*DescribeApplicationInstancesResponseBodyDataInstancesSidecarContainersStatus {
 	return s.SidecarContainersStatus
+}
+
+func (s *DescribeApplicationInstancesResponseBodyDataInstances) GetTags() []*DescribeApplicationInstancesResponseBodyDataInstancesTags {
+	return s.Tags
 }
 
 func (s *DescribeApplicationInstancesResponseBodyDataInstances) GetTimestamp() *int64 {
@@ -526,6 +531,11 @@ func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetSidecarContai
 	return s
 }
 
+func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetTags(v []*DescribeApplicationInstancesResponseBodyDataInstancesTags) *DescribeApplicationInstancesResponseBodyDataInstances {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetTimestamp(v int64) *DescribeApplicationInstancesResponseBodyDataInstances {
 	s.Timestamp = &v
 	return s
@@ -549,6 +559,15 @@ func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetVSwitchId(v s
 func (s *DescribeApplicationInstancesResponseBodyDataInstances) Validate() error {
 	if s.SidecarContainersStatus != nil {
 		for _, item := range s.SidecarContainersStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -616,5 +635,40 @@ func (s *DescribeApplicationInstancesResponseBodyDataInstancesSidecarContainersS
 }
 
 func (s *DescribeApplicationInstancesResponseBodyDataInstancesSidecarContainersStatus) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeApplicationInstancesResponseBodyDataInstancesTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeApplicationInstancesResponseBodyDataInstancesTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeApplicationInstancesResponseBodyDataInstancesTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationInstancesResponseBodyDataInstancesTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeApplicationInstancesResponseBodyDataInstancesTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeApplicationInstancesResponseBodyDataInstancesTags) SetKey(v string) *DescribeApplicationInstancesResponseBodyDataInstancesTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeApplicationInstancesResponseBodyDataInstancesTags) SetValue(v string) *DescribeApplicationInstancesResponseBodyDataInstancesTags {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeApplicationInstancesResponseBodyDataInstancesTags) Validate() error {
 	return dara.Validate(s)
 }
