@@ -10127,6 +10127,10 @@ func (client *Client) RunTextPolishingWithContext(ctx context.Context, request *
 		body["Prompt"] = request.Prompt
 	}
 
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		body["WorkspaceId"] = request.WorkspaceId
 	}
@@ -14862,6 +14866,10 @@ func (client *Client) runTextPolishingWithSSECtx_opYieldFunc(_yield chan *RunTex
 
 	if !dara.IsNil(request.Prompt) {
 		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {

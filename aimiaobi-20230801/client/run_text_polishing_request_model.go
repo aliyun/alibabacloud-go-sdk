@@ -15,6 +15,8 @@ type iRunTextPolishingRequest interface {
 	GetOriginContent() *string
 	SetPrompt(v string) *RunTextPolishingRequest
 	GetPrompt() *string
+	SetTaskId(v string) *RunTextPolishingRequest
+	GetTaskId() *string
 	SetWorkspaceId(v string) *RunTextPolishingRequest
 	GetWorkspaceId() *string
 }
@@ -28,6 +30,10 @@ type RunTextPolishingRequest struct {
 	Content       *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	OriginContent *string `json:"OriginContent,omitempty" xml:"OriginContent,omitempty"`
 	Prompt        *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// taskld-xxxxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -56,6 +62,10 @@ func (s *RunTextPolishingRequest) GetPrompt() *string {
 	return s.Prompt
 }
 
+func (s *RunTextPolishingRequest) GetTaskId() *string {
+	return s.TaskId
+}
+
 func (s *RunTextPolishingRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -72,6 +82,11 @@ func (s *RunTextPolishingRequest) SetOriginContent(v string) *RunTextPolishingRe
 
 func (s *RunTextPolishingRequest) SetPrompt(v string) *RunTextPolishingRequest {
 	s.Prompt = &v
+	return s
+}
+
+func (s *RunTextPolishingRequest) SetTaskId(v string) *RunTextPolishingRequest {
+	s.TaskId = &v
 	return s
 }
 

@@ -13073,6 +13073,10 @@ func (client *Client) RunTextPolishingWithOptions(request *RunTextPolishingReque
 		body["Prompt"] = request.Prompt
 	}
 
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		body["WorkspaceId"] = request.WorkspaceId
 	}
@@ -18492,6 +18496,10 @@ func (client *Client) runTextPolishingWithSSE_opYieldFunc(_yield chan *RunTextPo
 
 	if !dara.IsNil(request.Prompt) {
 		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
