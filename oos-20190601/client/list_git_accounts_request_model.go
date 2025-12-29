@@ -9,6 +9,8 @@ type iListGitAccountsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBindType(v string) *ListGitAccountsRequest
+	GetBindType() *string
 	SetClientToken(v string) *ListGitAccountsRequest
 	GetClientToken() *string
 	SetPlatform(v string) *ListGitAccountsRequest
@@ -20,6 +22,7 @@ type iListGitAccountsRequest interface {
 }
 
 type ListGitAccountsRequest struct {
+	BindType *string `json:"BindType,omitempty" xml:"BindType,omitempty"`
 	// example:
 	//
 	// -
@@ -48,6 +51,10 @@ func (s ListGitAccountsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListGitAccountsRequest) GetBindType() *string {
+	return s.BindType
+}
+
 func (s *ListGitAccountsRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -62,6 +69,11 @@ func (s *ListGitAccountsRequest) GetRegionId() *string {
 
 func (s *ListGitAccountsRequest) GetRoleName() *string {
 	return s.RoleName
+}
+
+func (s *ListGitAccountsRequest) SetBindType(v string) *ListGitAccountsRequest {
+	s.BindType = &v
+	return s
 }
 
 func (s *ListGitAccountsRequest) SetClientToken(v string) *ListGitAccountsRequest {

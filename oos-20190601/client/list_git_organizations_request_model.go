@@ -9,6 +9,8 @@ type iListGitOrganizationsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBindType(v string) *ListGitOrganizationsRequest
+	GetBindType() *string
 	SetClientToken(v string) *ListGitOrganizationsRequest
 	GetClientToken() *string
 	SetOwner(v string) *ListGitOrganizationsRequest
@@ -20,6 +22,7 @@ type iListGitOrganizationsRequest interface {
 }
 
 type ListGitOrganizationsRequest struct {
+	BindType *string `json:"BindType,omitempty" xml:"BindType,omitempty"`
 	// example:
 	//
 	// -
@@ -50,6 +53,10 @@ func (s ListGitOrganizationsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListGitOrganizationsRequest) GetBindType() *string {
+	return s.BindType
+}
+
 func (s *ListGitOrganizationsRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -64,6 +71,11 @@ func (s *ListGitOrganizationsRequest) GetPlatform() *string {
 
 func (s *ListGitOrganizationsRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *ListGitOrganizationsRequest) SetBindType(v string) *ListGitOrganizationsRequest {
+	s.BindType = &v
+	return s
 }
 
 func (s *ListGitOrganizationsRequest) SetClientToken(v string) *ListGitOrganizationsRequest {

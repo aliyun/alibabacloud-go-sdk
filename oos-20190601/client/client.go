@@ -4397,6 +4397,10 @@ func (client *Client) ListGitAccountsWithOptions(request *ListGitAccountsRequest
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BindType) {
+		query["BindType"] = request.BindType
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -4557,6 +4561,10 @@ func (client *Client) ListGitOrganizationsWithOptions(request *ListGitOrganizati
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BindType) {
+		query["BindType"] = request.BindType
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -6793,6 +6801,80 @@ func (client *Client) SetServiceSettings(request *SetServiceSettingsRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &SetServiceSettingsResponse{}
 	_body, _err := client.SetServiceSettingsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动一个调试执行
+//
+// @param request - StartDebugExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartDebugExecutionResponse
+func (client *Client) StartDebugExecutionWithOptions(request *StartDebugExecutionRequest, runtime *dara.RuntimeOptions) (_result *StartDebugExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Properties) {
+		query["Properties"] = request.Properties
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartDebugExecution"),
+		Version:     dara.String("2019-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartDebugExecutionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动一个调试执行
+//
+// @param request - StartDebugExecutionRequest
+//
+// @return StartDebugExecutionResponse
+func (client *Client) StartDebugExecution(request *StartDebugExecutionRequest) (_result *StartDebugExecutionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &StartDebugExecutionResponse{}
+	_body, _err := client.StartDebugExecutionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

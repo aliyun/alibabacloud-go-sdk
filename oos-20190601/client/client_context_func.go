@@ -3390,6 +3390,10 @@ func (client *Client) ListGitAccountsWithContext(ctx context.Context, request *L
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BindType) {
+		query["BindType"] = request.BindType
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -3514,6 +3518,10 @@ func (client *Client) ListGitOrganizationsWithContext(ctx context.Context, reque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BindType) {
+		query["BindType"] = request.BindType
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -5285,6 +5293,62 @@ func (client *Client) SetServiceSettingsWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetServiceSettingsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动一个调试执行
+//
+// @param request - StartDebugExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartDebugExecutionResponse
+func (client *Client) StartDebugExecutionWithContext(ctx context.Context, request *StartDebugExecutionRequest, runtime *dara.RuntimeOptions) (_result *StartDebugExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Properties) {
+		query["Properties"] = request.Properties
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartDebugExecution"),
+		Version:     dara.String("2019-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartDebugExecutionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
