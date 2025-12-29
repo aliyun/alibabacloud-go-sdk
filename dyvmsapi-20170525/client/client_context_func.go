@@ -1549,6 +1549,84 @@ func (client *Client) ListHotlineTransferRegisterFileWithContext(ctx context.Con
 
 // Summary:
 //
+// 分页查询服务实例列表
+//
+// @param tmpReq - ListServiceInstanceForPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceInstanceForPageResponse
+func (client *Client) ListServiceInstanceForPageWithContext(ctx context.Context, tmpReq *ListServiceInstanceForPageRequest, runtime *dara.RuntimeOptions) (_result *ListServiceInstanceForPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListServiceInstanceForPageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Pager) {
+		request.PagerShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Pager, dara.String("Pager"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Code) {
+		query["Code"] = request.Code
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PagerShrink) {
+		query["Pager"] = request.PagerShrink
+	}
+
+	if !dara.IsNil(request.RelationNumber) {
+		query["RelationNumber"] = request.RelationNumber
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !dara.IsNil(request.UsageId) {
+		query["UsageId"] = request.UsageId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListServiceInstanceForPage"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListServiceInstanceForPageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # PauseVideoFile
 //
 // @param request - PauseVideoFileRequest
