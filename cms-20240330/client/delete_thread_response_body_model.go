@@ -9,14 +9,11 @@ type iDeleteThreadResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetDeleted(v bool) *DeleteThreadResponseBody
-	GetDeleted() *bool
 	SetRequestId(v string) *DeleteThreadResponseBody
 	GetRequestId() *string
 }
 
 type DeleteThreadResponseBody struct {
-	Deleted *bool `json:"deleted,omitempty" xml:"deleted,omitempty"`
 	// Id of the request
 	//
 	// example:
@@ -33,17 +30,8 @@ func (s DeleteThreadResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteThreadResponseBody) GetDeleted() *bool {
-	return s.Deleted
-}
-
 func (s *DeleteThreadResponseBody) GetRequestId() *string {
 	return s.RequestId
-}
-
-func (s *DeleteThreadResponseBody) SetDeleted(v bool) *DeleteThreadResponseBody {
-	s.Deleted = &v
-	return s
 }
 
 func (s *DeleteThreadResponseBody) SetRequestId(v string) *DeleteThreadResponseBody {
