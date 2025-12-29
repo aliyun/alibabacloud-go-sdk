@@ -991,6 +991,10 @@ func (client *Client) CreateSortScriptWithContext(ctx context.Context, appGroupI
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
 	if !dara.IsNil(request.Scope) {
 		body["scope"] = request.Scope
 	}
@@ -5624,14 +5628,28 @@ func (client *Client) UpdateSearchStrategyWithContext(ctx context.Context, appGr
 //
 // You can call this operation to modify the description of a sort script.
 //
+// @param request - UpdateSortScriptRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateSortScriptResponse
-func (client *Client) UpdateSortScriptWithContext(ctx context.Context, appGroupIdentity *string, appVersionId *string, scriptName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateSortScriptResponse, _err error) {
+func (client *Client) UpdateSortScriptWithContext(ctx context.Context, appGroupIdentity *string, appVersionId *string, scriptName *string, request *UpdateSortScriptRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateSortScriptResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("UpdateSortScript"),

@@ -1388,6 +1388,10 @@ func (client *Client) CreateSortScriptWithOptions(appGroupIdentity *string, appV
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
 	if !dara.IsNil(request.Scope) {
 		body["scope"] = request.Scope
 	}
@@ -7998,14 +8002,28 @@ func (client *Client) UpdateSearchStrategy(appGroupIdentity *string, appId *stri
 //
 // You can call this operation to modify the description of a sort script.
 //
+// @param request - UpdateSortScriptRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateSortScriptResponse
-func (client *Client) UpdateSortScriptWithOptions(appGroupIdentity *string, appVersionId *string, scriptName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateSortScriptResponse, _err error) {
+func (client *Client) UpdateSortScriptWithOptions(appGroupIdentity *string, appVersionId *string, scriptName *string, request *UpdateSortScriptRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateSortScriptResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("UpdateSortScript"),
@@ -8035,12 +8053,14 @@ func (client *Client) UpdateSortScriptWithOptions(appGroupIdentity *string, appV
 //
 // You can call this operation to modify the description of a sort script.
 //
+// @param request - UpdateSortScriptRequest
+//
 // @return UpdateSortScriptResponse
-func (client *Client) UpdateSortScript(appGroupIdentity *string, appVersionId *string, scriptName *string) (_result *UpdateSortScriptResponse, _err error) {
+func (client *Client) UpdateSortScript(appGroupIdentity *string, appVersionId *string, scriptName *string, request *UpdateSortScriptRequest) (_result *UpdateSortScriptResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &UpdateSortScriptResponse{}
-	_body, _err := client.UpdateSortScriptWithOptions(appGroupIdentity, appVersionId, scriptName, headers, runtime)
+	_body, _err := client.UpdateSortScriptWithOptions(appGroupIdentity, appVersionId, scriptName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

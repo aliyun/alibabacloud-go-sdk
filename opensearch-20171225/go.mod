@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/opensearch-20171225/v4
+module github.com/alibabacloud-go/opensearch-20171225/v5
 
 go 1.14
 

@@ -67,7 +67,8 @@ type GetSortScriptResponseBodyResult struct {
 	// example:
 	//
 	// 2020-04-02 20:21:14
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreateTime  *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The time when the script was last modified.
 	//
 	// example:
@@ -112,6 +113,10 @@ func (s *GetSortScriptResponseBodyResult) GetCreateTime() *string {
 	return s.CreateTime
 }
 
+func (s *GetSortScriptResponseBodyResult) GetDescription() *string {
+	return s.Description
+}
+
 func (s *GetSortScriptResponseBodyResult) GetModifyTime() *string {
 	return s.ModifyTime
 }
@@ -134,6 +139,11 @@ func (s *GetSortScriptResponseBodyResult) GetType() *string {
 
 func (s *GetSortScriptResponseBodyResult) SetCreateTime(v string) *GetSortScriptResponseBodyResult {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetSortScriptResponseBodyResult) SetDescription(v string) *GetSortScriptResponseBodyResult {
+	s.Description = &v
 	return s
 }
 

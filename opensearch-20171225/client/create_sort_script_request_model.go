@@ -9,6 +9,8 @@ type iCreateSortScriptRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDescription(v string) *CreateSortScriptRequest
+	GetDescription() *string
 	SetScope(v string) *CreateSortScriptRequest
 	GetScope() *string
 	SetScriptName(v string) *CreateSortScriptRequest
@@ -18,6 +20,7 @@ type iCreateSortScriptRequest interface {
 }
 
 type CreateSortScriptRequest struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The sort phase to which the script applies.
 	//
 	// example:
@@ -46,6 +49,10 @@ func (s CreateSortScriptRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateSortScriptRequest) GetDescription() *string {
+	return s.Description
+}
+
 func (s *CreateSortScriptRequest) GetScope() *string {
 	return s.Scope
 }
@@ -56,6 +63,11 @@ func (s *CreateSortScriptRequest) GetScriptName() *string {
 
 func (s *CreateSortScriptRequest) GetType() *string {
 	return s.Type
+}
+
+func (s *CreateSortScriptRequest) SetDescription(v string) *CreateSortScriptRequest {
+	s.Description = &v
+	return s
 }
 
 func (s *CreateSortScriptRequest) SetScope(v string) *CreateSortScriptRequest {
