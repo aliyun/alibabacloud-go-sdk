@@ -6293,6 +6293,80 @@ func (client *Client) InstallClusterAddons(ClusterId *string, request *InstallCl
 
 // Summary:
 //
+// 为ACK集群节点池安装节点组件
+//
+// @param request - InstallNodePoolComponentsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InstallNodePoolComponentsResponse
+func (client *Client) InstallNodePoolComponentsWithOptions(clusterId *string, nodePoolId *string, request *InstallNodePoolComponentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *InstallNodePoolComponentsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Components) {
+		body["components"] = request.Components
+	}
+
+	if !dara.IsNil(request.NodeNames) {
+		body["nodeNames"] = request.NodeNames
+	}
+
+	if !dara.IsNil(request.RollingPolicy) {
+		body["rollingPolicy"] = request.RollingPolicy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InstallNodePoolComponents"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/clusters/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/nodepools/" + dara.PercentEncode(dara.StringValue(nodePoolId)) + "/components"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InstallNodePoolComponentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 为ACK集群节点池安装节点组件
+//
+// @param request - InstallNodePoolComponentsRequest
+//
+// @return InstallNodePoolComponentsResponse
+func (client *Client) InstallNodePoolComponents(clusterId *string, nodePoolId *string, request *InstallNodePoolComponentsRequest) (_result *InstallNodePoolComponentsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &InstallNodePoolComponentsResponse{}
+	_body, _err := client.InstallNodePoolComponentsWithOptions(clusterId, nodePoolId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the available components based on specific conditions such as the region, cluster type, cluster subtype defined by cluster profile, and cluster version and queries the detailed information about a component. The information includes whether the component is managed, the supported custom parameter schema, and compatible operating system architecture.
 //
 // @param request - ListAddonsRequest
@@ -9581,6 +9655,92 @@ func (client *Client) UpdateK8sClusterUserConfigExpire(ClusterId *string, reques
 	headers := make(map[string]*string)
 	_result = &UpdateK8sClusterUserConfigExpireResponse{}
 	_body, _err := client.UpdateK8sClusterUserConfigExpireWithOptions(ClusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新节点组件
+//
+// @param request - UpdateNodePoolComponentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNodePoolComponentResponse
+func (client *Client) UpdateNodePoolComponentWithOptions(clusterId *string, nodepoolId *string, request *UpdateNodePoolComponentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateNodePoolComponentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["config"] = request.Config
+	}
+
+	if !dara.IsNil(request.DisableRolling) {
+		body["disableRolling"] = request.DisableRolling
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NodeNames) {
+		body["nodeNames"] = request.NodeNames
+	}
+
+	if !dara.IsNil(request.RollingPolicy) {
+		body["rollingPolicy"] = request.RollingPolicy
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateNodePoolComponent"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/clusters/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/nodepools/" + dara.PercentEncode(dara.StringValue(nodepoolId)) + "/component"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateNodePoolComponentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新节点组件
+//
+// @param request - UpdateNodePoolComponentRequest
+//
+// @return UpdateNodePoolComponentResponse
+func (client *Client) UpdateNodePoolComponent(clusterId *string, nodepoolId *string, request *UpdateNodePoolComponentRequest) (_result *UpdateNodePoolComponentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateNodePoolComponentResponse{}
+	_body, _err := client.UpdateNodePoolComponentWithOptions(clusterId, nodepoolId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
