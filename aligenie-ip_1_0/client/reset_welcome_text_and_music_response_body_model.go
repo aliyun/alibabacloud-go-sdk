@@ -1,0 +1,99 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iResetWelcomeTextAndMusicResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetExtentions(v map[string]interface{}) *ResetWelcomeTextAndMusicResponseBody
+	GetExtentions() map[string]interface{}
+	SetMessage(v string) *ResetWelcomeTextAndMusicResponseBody
+	GetMessage() *string
+	SetRequestId(v string) *ResetWelcomeTextAndMusicResponseBody
+	GetRequestId() *string
+	SetResult(v bool) *ResetWelcomeTextAndMusicResponseBody
+	GetResult() *bool
+	SetStatusCode(v int32) *ResetWelcomeTextAndMusicResponseBody
+	GetStatusCode() *int32
+}
+
+type ResetWelcomeTextAndMusicResponseBody struct {
+	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ResetWelcomeTextAndMusicResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ResetWelcomeTextAndMusicResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResetWelcomeTextAndMusicResponseBody) GetExtentions() map[string]interface{} {
+	return s.Extentions
+}
+
+func (s *ResetWelcomeTextAndMusicResponseBody) GetMessage() *string {
+	return s.Message
+}
+
+func (s *ResetWelcomeTextAndMusicResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *ResetWelcomeTextAndMusicResponseBody) GetResult() *bool {
+	return s.Result
+}
+
+func (s *ResetWelcomeTextAndMusicResponseBody) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ResetWelcomeTextAndMusicResponseBody) SetExtentions(v map[string]interface{}) *ResetWelcomeTextAndMusicResponseBody {
+	s.Extentions = v
+	return s
+}
+
+func (s *ResetWelcomeTextAndMusicResponseBody) SetMessage(v string) *ResetWelcomeTextAndMusicResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ResetWelcomeTextAndMusicResponseBody) SetRequestId(v string) *ResetWelcomeTextAndMusicResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ResetWelcomeTextAndMusicResponseBody) SetResult(v bool) *ResetWelcomeTextAndMusicResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *ResetWelcomeTextAndMusicResponseBody) SetStatusCode(v int32) *ResetWelcomeTextAndMusicResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResetWelcomeTextAndMusicResponseBody) Validate() error {
+	return dara.Validate(s)
+}
