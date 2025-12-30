@@ -13880,6 +13880,54 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 获取文件列表
+//
+// @param request - ListTransferFileDownloadUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTransferFileDownloadUrlResponse
+func (client *Client) ListTransferFileDownloadUrlWithContext(ctx context.Context, request *ListTransferFileDownloadUrlRequest, runtime *dara.RuntimeOptions) (_result *ListTransferFileDownloadUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileIds) {
+		query["FileIds"] = request.FileIds
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTransferFileDownloadUrl"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTransferFileDownloadUrlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the file information of a file transmission task.
 //
 // @param request - ListTransferFilesRequest
