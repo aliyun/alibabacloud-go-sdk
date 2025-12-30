@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/agentidentitydata-20251127
+module github.com/alibabacloud-go/agentidentitydata-20251127/v2
 
 go 1.14
 

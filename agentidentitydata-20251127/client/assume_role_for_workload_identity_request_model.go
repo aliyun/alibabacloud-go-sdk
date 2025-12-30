@@ -9,8 +9,8 @@ type iAssumeRoleForWorkloadIdentityRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetDurationSeconds(v string) *AssumeRoleForWorkloadIdentityRequest
-	GetDurationSeconds() *string
+	SetDurationSeconds(v int64) *AssumeRoleForWorkloadIdentityRequest
+	GetDurationSeconds() *int64
 	SetPolicy(v string) *AssumeRoleForWorkloadIdentityRequest
 	GetPolicy() *string
 	SetRoleSessionName(v string) *AssumeRoleForWorkloadIdentityRequest
@@ -23,7 +23,7 @@ type AssumeRoleForWorkloadIdentityRequest struct {
 	// example:
 	//
 	// 3600
-	DurationSeconds *string `json:"DurationSeconds,omitempty" xml:"DurationSeconds,omitempty"`
+	DurationSeconds *int64 `json:"DurationSeconds,omitempty" xml:"DurationSeconds,omitempty"`
 	// example:
 	//
 	// {"Statement": [{"Action": ["*"],"Effect": "Allow","Resource": ["*"]}],"Version":"1"}
@@ -46,7 +46,7 @@ func (s AssumeRoleForWorkloadIdentityRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AssumeRoleForWorkloadIdentityRequest) GetDurationSeconds() *string {
+func (s *AssumeRoleForWorkloadIdentityRequest) GetDurationSeconds() *int64 {
 	return s.DurationSeconds
 }
 
@@ -62,7 +62,7 @@ func (s *AssumeRoleForWorkloadIdentityRequest) GetWorkloadAccessToken() *string 
 	return s.WorkloadAccessToken
 }
 
-func (s *AssumeRoleForWorkloadIdentityRequest) SetDurationSeconds(v string) *AssumeRoleForWorkloadIdentityRequest {
+func (s *AssumeRoleForWorkloadIdentityRequest) SetDurationSeconds(v int64) *AssumeRoleForWorkloadIdentityRequest {
 	s.DurationSeconds = &v
 	return s
 }
