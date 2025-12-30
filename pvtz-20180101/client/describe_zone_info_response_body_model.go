@@ -395,7 +395,17 @@ func (s *DescribeZoneInfoResponseBody) SetZoneType(v string) *DescribeZoneInfoRe
 }
 
 func (s *DescribeZoneInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BindEdgeDnsClusters != nil {
+		if err := s.BindEdgeDnsClusters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BindVpcs != nil {
+		if err := s.BindVpcs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeZoneInfoResponseBodyBindEdgeDnsClusters struct {
@@ -420,7 +430,16 @@ func (s *DescribeZoneInfoResponseBodyBindEdgeDnsClusters) SetEdgeDnsCluster(v []
 }
 
 func (s *DescribeZoneInfoResponseBodyBindEdgeDnsClusters) Validate() error {
-	return dara.Validate(s)
+	if s.EdgeDnsCluster != nil {
+		for _, item := range s.EdgeDnsCluster {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeZoneInfoResponseBodyBindEdgeDnsClustersEdgeDnsCluster struct {
@@ -490,7 +509,16 @@ func (s *DescribeZoneInfoResponseBodyBindVpcs) SetVpc(v []*DescribeZoneInfoRespo
 }
 
 func (s *DescribeZoneInfoResponseBodyBindVpcs) Validate() error {
-	return dara.Validate(s)
+	if s.Vpc != nil {
+		for _, item := range s.Vpc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeZoneInfoResponseBodyBindVpcsVpc struct {

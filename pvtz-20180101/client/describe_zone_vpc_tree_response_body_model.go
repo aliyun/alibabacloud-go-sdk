@@ -53,7 +53,12 @@ func (s *DescribeZoneVpcTreeResponseBody) SetZones(v *DescribeZoneVpcTreeRespons
 }
 
 func (s *DescribeZoneVpcTreeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Zones != nil {
+		if err := s.Zones.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeZoneVpcTreeResponseBodyZones struct {
@@ -78,7 +83,16 @@ func (s *DescribeZoneVpcTreeResponseBodyZones) SetZone(v []*DescribeZoneVpcTreeR
 }
 
 func (s *DescribeZoneVpcTreeResponseBodyZones) Validate() error {
-	return dara.Validate(s)
+	if s.Zone != nil {
+		for _, item := range s.Zone {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeZoneVpcTreeResponseBodyZonesZone struct {
@@ -352,7 +366,12 @@ func (s *DescribeZoneVpcTreeResponseBodyZonesZone) SetZoneType(v string) *Descri
 }
 
 func (s *DescribeZoneVpcTreeResponseBodyZonesZone) Validate() error {
-	return dara.Validate(s)
+	if s.Vpcs != nil {
+		if err := s.Vpcs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeZoneVpcTreeResponseBodyZonesZoneVpcs struct {
@@ -377,7 +396,16 @@ func (s *DescribeZoneVpcTreeResponseBodyZonesZoneVpcs) SetVpc(v []*DescribeZoneV
 }
 
 func (s *DescribeZoneVpcTreeResponseBodyZonesZoneVpcs) Validate() error {
-	return dara.Validate(s)
+	if s.Vpc != nil {
+		for _, item := range s.Vpc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeZoneVpcTreeResponseBodyZonesZoneVpcsVpc struct {

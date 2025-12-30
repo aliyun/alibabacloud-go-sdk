@@ -17,6 +17,8 @@ type iUpdateResolverRuleRequest interface {
 	GetLang() *string
 	SetName(v string) *UpdateResolverRuleRequest
 	GetName() *string
+	SetPriorityForwardConfigs(v []*UpdateResolverRuleRequestPriorityForwardConfigs) *UpdateResolverRuleRequest
+	GetPriorityForwardConfigs() []*UpdateResolverRuleRequestPriorityForwardConfigs
 	SetRuleId(v string) *UpdateResolverRuleRequest
 	GetRuleId() *string
 }
@@ -49,7 +51,8 @@ type UpdateResolverRuleRequest struct {
 	// example:
 	//
 	// forward rule-test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name                   *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	PriorityForwardConfigs []*UpdateResolverRuleRequestPriorityForwardConfigs `json:"PriorityForwardConfigs,omitempty" xml:"PriorityForwardConfigs,omitempty" type:"Repeated"`
 	// The ID of the forwarding rule.
 	//
 	// This parameter is required.
@@ -84,6 +87,10 @@ func (s *UpdateResolverRuleRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *UpdateResolverRuleRequest) GetPriorityForwardConfigs() []*UpdateResolverRuleRequestPriorityForwardConfigs {
+	return s.PriorityForwardConfigs
+}
+
 func (s *UpdateResolverRuleRequest) GetRuleId() *string {
 	return s.RuleId
 }
@@ -108,13 +115,36 @@ func (s *UpdateResolverRuleRequest) SetName(v string) *UpdateResolverRuleRequest
 	return s
 }
 
+func (s *UpdateResolverRuleRequest) SetPriorityForwardConfigs(v []*UpdateResolverRuleRequestPriorityForwardConfigs) *UpdateResolverRuleRequest {
+	s.PriorityForwardConfigs = v
+	return s
+}
+
 func (s *UpdateResolverRuleRequest) SetRuleId(v string) *UpdateResolverRuleRequest {
 	s.RuleId = &v
 	return s
 }
 
 func (s *UpdateResolverRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ForwardIp != nil {
+		for _, item := range s.ForwardIp {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PriorityForwardConfigs != nil {
+		for _, item := range s.PriorityForwardConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateResolverRuleRequestForwardIp struct {
@@ -161,5 +191,70 @@ func (s *UpdateResolverRuleRequestForwardIp) SetPort(v int32) *UpdateResolverRul
 }
 
 func (s *UpdateResolverRuleRequestForwardIp) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateResolverRuleRequestPriorityForwardConfigs struct {
+	AlidnsServiceAddresses []*string `json:"AlidnsServiceAddresses,omitempty" xml:"AlidnsServiceAddresses,omitempty" type:"Repeated"`
+	CustomAddresses        []*string `json:"CustomAddresses,omitempty" xml:"CustomAddresses,omitempty" type:"Repeated"`
+	EnableStatus           *string   `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	Priority               *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Protocol               *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s UpdateResolverRuleRequestPriorityForwardConfigs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateResolverRuleRequestPriorityForwardConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResolverRuleRequestPriorityForwardConfigs) GetAlidnsServiceAddresses() []*string {
+	return s.AlidnsServiceAddresses
+}
+
+func (s *UpdateResolverRuleRequestPriorityForwardConfigs) GetCustomAddresses() []*string {
+	return s.CustomAddresses
+}
+
+func (s *UpdateResolverRuleRequestPriorityForwardConfigs) GetEnableStatus() *string {
+	return s.EnableStatus
+}
+
+func (s *UpdateResolverRuleRequestPriorityForwardConfigs) GetPriority() *int32 {
+	return s.Priority
+}
+
+func (s *UpdateResolverRuleRequestPriorityForwardConfigs) GetProtocol() *string {
+	return s.Protocol
+}
+
+func (s *UpdateResolverRuleRequestPriorityForwardConfigs) SetAlidnsServiceAddresses(v []*string) *UpdateResolverRuleRequestPriorityForwardConfigs {
+	s.AlidnsServiceAddresses = v
+	return s
+}
+
+func (s *UpdateResolverRuleRequestPriorityForwardConfigs) SetCustomAddresses(v []*string) *UpdateResolverRuleRequestPriorityForwardConfigs {
+	s.CustomAddresses = v
+	return s
+}
+
+func (s *UpdateResolverRuleRequestPriorityForwardConfigs) SetEnableStatus(v string) *UpdateResolverRuleRequestPriorityForwardConfigs {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *UpdateResolverRuleRequestPriorityForwardConfigs) SetPriority(v int32) *UpdateResolverRuleRequestPriorityForwardConfigs {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdateResolverRuleRequestPriorityForwardConfigs) SetProtocol(v string) *UpdateResolverRuleRequestPriorityForwardConfigs {
+	s.Protocol = &v
+	return s
+}
+
+func (s *UpdateResolverRuleRequestPriorityForwardConfigs) Validate() error {
 	return dara.Validate(s)
 }

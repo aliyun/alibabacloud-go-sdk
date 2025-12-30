@@ -125,7 +125,17 @@ func (s *DescribeSyncEcsHostTaskResponseBody) SetZoneId(v string) *DescribeSyncE
 }
 
 func (s *DescribeSyncEcsHostTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EcsRegions != nil {
+		if err := s.EcsRegions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Regions != nil {
+		if err := s.Regions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSyncEcsHostTaskResponseBodyEcsRegions struct {
@@ -150,7 +160,16 @@ func (s *DescribeSyncEcsHostTaskResponseBodyEcsRegions) SetEcsRegion(v []*Descri
 }
 
 func (s *DescribeSyncEcsHostTaskResponseBodyEcsRegions) Validate() error {
-	return dara.Validate(s)
+	if s.EcsRegion != nil {
+		for _, item := range s.EcsRegion {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSyncEcsHostTaskResponseBodyEcsRegionsEcsRegion struct {
@@ -191,7 +210,12 @@ func (s *DescribeSyncEcsHostTaskResponseBodyEcsRegionsEcsRegion) SetUserId(v int
 }
 
 func (s *DescribeSyncEcsHostTaskResponseBodyEcsRegionsEcsRegion) Validate() error {
-	return dara.Validate(s)
+	if s.RegionIds != nil {
+		if err := s.RegionIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSyncEcsHostTaskResponseBodyEcsRegionsEcsRegionRegionIds struct {

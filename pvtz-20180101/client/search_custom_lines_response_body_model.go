@@ -121,7 +121,12 @@ func (s *SearchCustomLinesResponseBody) SetTotalPages(v int32) *SearchCustomLine
 }
 
 func (s *SearchCustomLinesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CustomLines != nil {
+		if err := s.CustomLines.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchCustomLinesResponseBodyCustomLines struct {
@@ -146,7 +151,16 @@ func (s *SearchCustomLinesResponseBodyCustomLines) SetCustomLine(v []*SearchCust
 }
 
 func (s *SearchCustomLinesResponseBodyCustomLines) Validate() error {
-	return dara.Validate(s)
+	if s.CustomLine != nil {
+		for _, item := range s.CustomLine {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchCustomLinesResponseBodyCustomLinesCustomLine struct {
@@ -325,7 +339,12 @@ func (s *SearchCustomLinesResponseBodyCustomLinesCustomLine) SetUpdateTimestamp(
 }
 
 func (s *SearchCustomLinesResponseBodyCustomLinesCustomLine) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv4s != nil {
+		if err := s.Ipv4s.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchCustomLinesResponseBodyCustomLinesCustomLineIpv4s struct {

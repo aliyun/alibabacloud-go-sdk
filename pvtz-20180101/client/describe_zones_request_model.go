@@ -224,7 +224,16 @@ func (s *DescribeZonesRequest) SetZoneType(v string) *DescribeZonesRequest {
 }
 
 func (s *DescribeZonesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceTag != nil {
+		for _, item := range s.ResourceTag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeZonesRequestResourceTag struct {

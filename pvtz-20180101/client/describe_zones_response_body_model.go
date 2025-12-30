@@ -121,7 +121,12 @@ func (s *DescribeZonesResponseBody) SetZones(v *DescribeZonesResponseBodyZones) 
 }
 
 func (s *DescribeZonesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Zones != nil {
+		if err := s.Zones.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeZonesResponseBodyZones struct {
@@ -146,7 +151,16 @@ func (s *DescribeZonesResponseBodyZones) SetZone(v []*DescribeZonesResponseBodyZ
 }
 
 func (s *DescribeZonesResponseBodyZones) Validate() error {
-	return dara.Validate(s)
+	if s.Zone != nil {
+		for _, item := range s.Zone {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeZonesResponseBodyZonesZone struct {
@@ -469,7 +483,12 @@ func (s *DescribeZonesResponseBodyZonesZone) SetZoneType(v string) *DescribeZone
 }
 
 func (s *DescribeZonesResponseBodyZonesZone) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceTags != nil {
+		if err := s.ResourceTags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeZonesResponseBodyZonesZoneResourceTags struct {
@@ -494,7 +513,16 @@ func (s *DescribeZonesResponseBodyZonesZoneResourceTags) SetResourceTag(v []*Des
 }
 
 func (s *DescribeZonesResponseBodyZonesZoneResourceTags) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceTag != nil {
+		for _, item := range s.ResourceTag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeZonesResponseBodyZonesZoneResourceTagsResourceTag struct {

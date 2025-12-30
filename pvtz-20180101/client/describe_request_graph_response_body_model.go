@@ -53,7 +53,12 @@ func (s *DescribeRequestGraphResponseBody) SetRequestId(v string) *DescribeReque
 }
 
 func (s *DescribeRequestGraphResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RequestDetails != nil {
+		if err := s.RequestDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRequestGraphResponseBodyRequestDetails struct {
@@ -78,7 +83,16 @@ func (s *DescribeRequestGraphResponseBodyRequestDetails) SetZoneRequestTop(v []*
 }
 
 func (s *DescribeRequestGraphResponseBodyRequestDetails) Validate() error {
-	return dara.Validate(s)
+	if s.ZoneRequestTop != nil {
+		for _, item := range s.ZoneRequestTop {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRequestGraphResponseBodyRequestDetailsZoneRequestTop struct {

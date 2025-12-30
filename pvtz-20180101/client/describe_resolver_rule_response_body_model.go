@@ -250,7 +250,34 @@ func (s *DescribeResolverRuleResponseBody) SetZoneName(v string) *DescribeResolv
 }
 
 func (s *DescribeResolverRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BindEdgeDnsClusters != nil {
+		for _, item := range s.BindEdgeDnsClusters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BindVpcs != nil {
+		for _, item := range s.BindVpcs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ForwardIps != nil {
+		for _, item := range s.ForwardIps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResolverRuleResponseBodyBindEdgeDnsClusters struct {

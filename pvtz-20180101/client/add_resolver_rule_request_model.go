@@ -163,7 +163,34 @@ func (s *AddResolverRuleRequest) SetZoneName(v string) *AddResolverRuleRequest {
 }
 
 func (s *AddResolverRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EdgeDnsClusters != nil {
+		for _, item := range s.EdgeDnsClusters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ForwardIp != nil {
+		for _, item := range s.ForwardIp {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Vpcs != nil {
+		for _, item := range s.Vpcs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddResolverRuleRequestEdgeDnsClusters struct {

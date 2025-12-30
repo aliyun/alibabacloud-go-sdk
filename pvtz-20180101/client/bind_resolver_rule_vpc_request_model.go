@@ -78,7 +78,16 @@ func (s *BindResolverRuleVpcRequest) SetVpc(v []*BindResolverRuleVpcRequestVpc) 
 }
 
 func (s *BindResolverRuleVpcRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Vpc != nil {
+		for _, item := range s.Vpc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BindResolverRuleVpcRequestVpc struct {

@@ -97,7 +97,16 @@ func (s *UpdateResolverEndpointRequest) SetName(v string) *UpdateResolverEndpoin
 }
 
 func (s *UpdateResolverEndpointRequest) Validate() error {
-	return dara.Validate(s)
+	if s.IpConfig != nil {
+		for _, item := range s.IpConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateResolverEndpointRequestIpConfig struct {

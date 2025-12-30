@@ -83,7 +83,17 @@ func (s *DescribeStatisticSummaryResponseBody) SetZoneRequestTops(v *DescribeSta
 }
 
 func (s *DescribeStatisticSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VpcRequestTops != nil {
+		if err := s.VpcRequestTops.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ZoneRequestTops != nil {
+		if err := s.ZoneRequestTops.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeStatisticSummaryResponseBodyVpcRequestTops struct {
@@ -108,7 +118,16 @@ func (s *DescribeStatisticSummaryResponseBodyVpcRequestTops) SetVpcRequestTop(v 
 }
 
 func (s *DescribeStatisticSummaryResponseBodyVpcRequestTops) Validate() error {
-	return dara.Validate(s)
+	if s.VpcRequestTop != nil {
+		for _, item := range s.VpcRequestTop {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStatisticSummaryResponseBodyVpcRequestTopsVpcRequestTop struct {
@@ -242,7 +261,16 @@ func (s *DescribeStatisticSummaryResponseBodyZoneRequestTops) SetZoneRequestTop(
 }
 
 func (s *DescribeStatisticSummaryResponseBodyZoneRequestTops) Validate() error {
-	return dara.Validate(s)
+	if s.ZoneRequestTop != nil {
+		for _, item := range s.ZoneRequestTop {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStatisticSummaryResponseBodyZoneRequestTopsZoneRequestTop struct {

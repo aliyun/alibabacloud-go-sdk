@@ -121,7 +121,12 @@ func (s *DescribeZoneRecordsResponseBody) SetTotalPages(v int32) *DescribeZoneRe
 }
 
 func (s *DescribeZoneRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		if err := s.Records.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeZoneRecordsResponseBodyRecords struct {
@@ -146,7 +151,16 @@ func (s *DescribeZoneRecordsResponseBodyRecords) SetRecord(v []*DescribeZoneReco
 }
 
 func (s *DescribeZoneRecordsResponseBodyRecords) Validate() error {
-	return dara.Validate(s)
+	if s.Record != nil {
+		for _, item := range s.Record {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeZoneRecordsResponseBodyRecordsRecord struct {

@@ -103,7 +103,16 @@ func (s *UpdateSyncEcsHostTaskRequest) SetZoneId(v string) *UpdateSyncEcsHostTas
 }
 
 func (s *UpdateSyncEcsHostTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Region != nil {
+		for _, item := range s.Region {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateSyncEcsHostTaskRequestRegion struct {

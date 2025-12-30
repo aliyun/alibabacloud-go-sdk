@@ -269,7 +269,16 @@ func (s *DescribeResolverEndpointResponseBody) SetVpcRegionName(v string) *Descr
 }
 
 func (s *DescribeResolverEndpointResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IpConfigs != nil {
+		for _, item := range s.IpConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResolverEndpointResponseBodyIpConfigs struct {

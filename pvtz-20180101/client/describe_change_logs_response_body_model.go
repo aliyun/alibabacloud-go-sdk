@@ -121,7 +121,12 @@ func (s *DescribeChangeLogsResponseBody) SetTotalPages(v int32) *DescribeChangeL
 }
 
 func (s *DescribeChangeLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeLogs != nil {
+		if err := s.ChangeLogs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeChangeLogsResponseBodyChangeLogs struct {
@@ -146,7 +151,16 @@ func (s *DescribeChangeLogsResponseBodyChangeLogs) SetChangeLog(v []*DescribeCha
 }
 
 func (s *DescribeChangeLogsResponseBodyChangeLogs) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeLog != nil {
+		for _, item := range s.ChangeLog {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeChangeLogsResponseBodyChangeLogsChangeLog struct {

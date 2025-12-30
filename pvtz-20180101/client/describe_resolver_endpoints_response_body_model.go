@@ -121,7 +121,16 @@ func (s *DescribeResolverEndpointsResponseBody) SetTotalPages(v int32) *Describe
 }
 
 func (s *DescribeResolverEndpointsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Endpoints != nil {
+		for _, item := range s.Endpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResolverEndpointsResponseBodyEndpoints struct {
@@ -339,7 +348,16 @@ func (s *DescribeResolverEndpointsResponseBodyEndpoints) SetVpcRegionName(v stri
 }
 
 func (s *DescribeResolverEndpointsResponseBodyEndpoints) Validate() error {
-	return dara.Validate(s)
+	if s.IpConfigs != nil {
+		for _, item := range s.IpConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResolverEndpointsResponseBodyEndpointsIpConfigs struct {

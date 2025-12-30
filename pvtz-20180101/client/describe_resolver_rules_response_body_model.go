@@ -121,7 +121,16 @@ func (s *DescribeResolverRulesResponseBody) SetTotalPages(v int32) *DescribeReso
 }
 
 func (s *DescribeResolverRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResolverRulesResponseBodyRules struct {
@@ -165,7 +174,8 @@ type DescribeResolverRulesResponseBodyRules struct {
 	// example:
 	//
 	// forward rule-test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name                   *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	PriorityForwardConfigs []*DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs `json:"PriorityForwardConfigs,omitempty" xml:"PriorityForwardConfigs,omitempty" type:"Repeated"`
 	// The type of the forwarding rule.
 	//
 	// The parameter value can only be OUTBOUND, which indicates that Domain Name System (DNS) requests are forwarded to one or more external IP addresses.
@@ -238,6 +248,10 @@ func (s *DescribeResolverRulesResponseBodyRules) GetName() *string {
 	return s.Name
 }
 
+func (s *DescribeResolverRulesResponseBodyRules) GetPriorityForwardConfigs() []*DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs {
+	return s.PriorityForwardConfigs
+}
+
 func (s *DescribeResolverRulesResponseBodyRules) GetType() *string {
 	return s.Type
 }
@@ -299,6 +313,11 @@ func (s *DescribeResolverRulesResponseBodyRules) SetName(v string) *DescribeReso
 	return s
 }
 
+func (s *DescribeResolverRulesResponseBodyRules) SetPriorityForwardConfigs(v []*DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs) *DescribeResolverRulesResponseBodyRules {
+	s.PriorityForwardConfigs = v
+	return s
+}
+
 func (s *DescribeResolverRulesResponseBodyRules) SetType(v string) *DescribeResolverRulesResponseBodyRules {
 	s.Type = &v
 	return s
@@ -320,7 +339,43 @@ func (s *DescribeResolverRulesResponseBodyRules) SetZoneName(v string) *Describe
 }
 
 func (s *DescribeResolverRulesResponseBodyRules) Validate() error {
-	return dara.Validate(s)
+	if s.BindEdgeDnsClusters != nil {
+		for _, item := range s.BindEdgeDnsClusters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BindVpcs != nil {
+		for _, item := range s.BindVpcs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ForwardIps != nil {
+		for _, item := range s.ForwardIps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PriorityForwardConfigs != nil {
+		for _, item := range s.PriorityForwardConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResolverRulesResponseBodyRulesBindEdgeDnsClusters struct {
@@ -519,5 +574,70 @@ func (s *DescribeResolverRulesResponseBodyRulesForwardIps) SetPort(v int32) *Des
 }
 
 func (s *DescribeResolverRulesResponseBodyRulesForwardIps) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs struct {
+	AlidnsServiceAddresses []*string `json:"AlidnsServiceAddresses,omitempty" xml:"AlidnsServiceAddresses,omitempty" type:"Repeated"`
+	CustomAddresses        []*string `json:"CustomAddresses,omitempty" xml:"CustomAddresses,omitempty" type:"Repeated"`
+	EnableStatus           *string   `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	Priority               *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Protocol               *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs) GetAlidnsServiceAddresses() []*string {
+	return s.AlidnsServiceAddresses
+}
+
+func (s *DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs) GetCustomAddresses() []*string {
+	return s.CustomAddresses
+}
+
+func (s *DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs) GetEnableStatus() *string {
+	return s.EnableStatus
+}
+
+func (s *DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs) GetPriority() *int32 {
+	return s.Priority
+}
+
+func (s *DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs) GetProtocol() *string {
+	return s.Protocol
+}
+
+func (s *DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs) SetAlidnsServiceAddresses(v []*string) *DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs {
+	s.AlidnsServiceAddresses = v
+	return s
+}
+
+func (s *DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs) SetCustomAddresses(v []*string) *DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs {
+	s.CustomAddresses = v
+	return s
+}
+
+func (s *DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs) SetEnableStatus(v string) *DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs) SetPriority(v int32) *DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs {
+	s.Priority = &v
+	return s
+}
+
+func (s *DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs) SetProtocol(v string) *DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs {
+	s.Protocol = &v
+	return s
+}
+
+func (s *DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs) Validate() error {
 	return dara.Validate(s)
 }

@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -65,9 +66,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AddCustomLineResponse
 func (client *Client) AddCustomLineWithOptions(request *AddCustomLineRequest, runtime *dara.RuntimeOptions) (_result *AddCustomLineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DnsCategory) {
@@ -141,9 +144,11 @@ func (client *Client) AddCustomLine(request *AddCustomLineRequest) (_result *Add
 //
 // @return AddResolverEndpointResponse
 func (client *Client) AddResolverEndpointWithOptions(request *AddResolverEndpointRequest, runtime *dara.RuntimeOptions) (_result *AddResolverEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpConfig) {
@@ -227,9 +232,11 @@ func (client *Client) AddResolverEndpoint(request *AddResolverEndpointRequest) (
 //
 // @return AddResolverRuleResponse
 func (client *Client) AddResolverRuleWithOptions(request *AddResolverRuleRequest, runtime *dara.RuntimeOptions) (_result *AddResolverRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EdgeDnsClusters) {
@@ -333,9 +340,11 @@ func (client *Client) AddResolverRule(request *AddResolverRuleRequest) (_result 
 //
 // @return AddUserVpcAuthorizationResponse
 func (client *Client) AddUserVpcAuthorizationWithOptions(request *AddUserVpcAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *AddUserVpcAuthorizationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthChannel) {
@@ -417,9 +426,11 @@ func (client *Client) AddUserVpcAuthorization(request *AddUserVpcAuthorizationRe
 //
 // @return AddZoneResponse
 func (client *Client) AddZoneWithOptions(request *AddZoneRequest, runtime *dara.RuntimeOptions) (_result *AddZoneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -505,9 +516,11 @@ func (client *Client) AddZone(request *AddZoneRequest) (_result *AddZoneResponse
 //
 // @return AddZoneRecordResponse
 func (client *Client) AddZoneRecordWithOptions(request *AddZoneRecordRequest, runtime *dara.RuntimeOptions) (_result *AddZoneRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -609,9 +622,11 @@ func (client *Client) AddZoneRecord(request *AddZoneRecordRequest) (_result *Add
 //
 // @return BindResolverRuleVpcResponse
 func (client *Client) BindResolverRuleVpcWithOptions(request *BindResolverRuleVpcRequest, runtime *dara.RuntimeOptions) (_result *BindResolverRuleVpcResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -683,9 +698,11 @@ func (client *Client) BindResolverRuleVpc(request *BindResolverRuleVpcRequest) (
 //
 // @return BindZoneVpcResponse
 func (client *Client) BindZoneVpcWithOptions(request *BindZoneVpcRequest, runtime *dara.RuntimeOptions) (_result *BindZoneVpcResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -765,9 +782,11 @@ func (client *Client) BindZoneVpc(request *BindZoneVpcRequest) (_result *BindZon
 //
 // @return ChangeZoneDnsGroupResponse
 func (client *Client) ChangeZoneDnsGroupWithOptions(request *ChangeZoneDnsGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeZoneDnsGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -833,9 +852,11 @@ func (client *Client) ChangeZoneDnsGroup(request *ChangeZoneDnsGroupRequest) (_r
 //
 // @return CheckZoneNameResponse
 func (client *Client) CheckZoneNameWithOptions(request *CheckZoneNameRequest, runtime *dara.RuntimeOptions) (_result *CheckZoneNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -901,9 +922,11 @@ func (client *Client) CheckZoneName(request *CheckZoneNameRequest) (_result *Che
 //
 // @return DeleteCustomLineResponse
 func (client *Client) DeleteCustomLineWithOptions(request *DeleteCustomLineRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomLineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -965,9 +988,11 @@ func (client *Client) DeleteCustomLine(request *DeleteCustomLineRequest) (_resul
 //
 // @return DeleteResolverEndpointResponse
 func (client *Client) DeleteResolverEndpointWithOptions(request *DeleteResolverEndpointRequest, runtime *dara.RuntimeOptions) (_result *DeleteResolverEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndpointId) {
@@ -1029,9 +1054,11 @@ func (client *Client) DeleteResolverEndpoint(request *DeleteResolverEndpointRequ
 //
 // @return DeleteResolverRuleResponse
 func (client *Client) DeleteResolverRuleWithOptions(request *DeleteResolverRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteResolverRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -1093,9 +1120,11 @@ func (client *Client) DeleteResolverRule(request *DeleteResolverRuleRequest) (_r
 //
 // @return DeleteUserVpcAuthorizationResponse
 func (client *Client) DeleteUserVpcAuthorizationWithOptions(request *DeleteUserVpcAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserVpcAuthorizationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthType) {
@@ -1163,9 +1192,11 @@ func (client *Client) DeleteUserVpcAuthorization(request *DeleteUserVpcAuthoriza
 //
 // @return DeleteZoneResponse
 func (client *Client) DeleteZoneWithOptions(request *DeleteZoneRequest, runtime *dara.RuntimeOptions) (_result *DeleteZoneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1247,9 +1278,11 @@ func (client *Client) DeleteZone(request *DeleteZoneRequest) (_result *DeleteZon
 //
 // @return DeleteZoneRecordResponse
 func (client *Client) DeleteZoneRecordWithOptions(request *DeleteZoneRecordRequest, runtime *dara.RuntimeOptions) (_result *DeleteZoneRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1331,9 +1364,11 @@ func (client *Client) DeleteZoneRecord(request *DeleteZoneRecordRequest) (_resul
 //
 // @return DescribeChangeLogsResponse
 func (client *Client) DescribeChangeLogsWithOptions(request *DescribeChangeLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeChangeLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTimestamp) {
@@ -1429,9 +1464,11 @@ func (client *Client) DescribeChangeLogs(request *DescribeChangeLogsRequest) (_r
 //
 // @return DescribeCustomLineInfoResponse
 func (client *Client) DescribeCustomLineInfoWithOptions(request *DescribeCustomLineInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomLineInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -1493,9 +1530,11 @@ func (client *Client) DescribeCustomLineInfo(request *DescribeCustomLineInfoRequ
 //
 // @return DescribeCustomLinesResponse
 func (client *Client) DescribeCustomLinesWithOptions(request *DescribeCustomLinesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomLinesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -1561,9 +1600,11 @@ func (client *Client) DescribeCustomLines(request *DescribeCustomLinesRequest) (
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -1641,9 +1682,11 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 //
 // @return DescribeRequestGraphResponse
 func (client *Client) DescribeRequestGraphWithOptions(request *DescribeRequestGraphRequest, runtime *dara.RuntimeOptions) (_result *DescribeRequestGraphResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -1729,9 +1772,11 @@ func (client *Client) DescribeRequestGraph(request *DescribeRequestGraphRequest)
 //
 // @return DescribeResolverAvailableZonesResponse
 func (client *Client) DescribeResolverAvailableZonesWithOptions(request *DescribeResolverAvailableZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeResolverAvailableZonesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AzId) {
@@ -1797,9 +1842,11 @@ func (client *Client) DescribeResolverAvailableZones(request *DescribeResolverAv
 //
 // @return DescribeResolverEndpointResponse
 func (client *Client) DescribeResolverEndpointWithOptions(request *DescribeResolverEndpointRequest, runtime *dara.RuntimeOptions) (_result *DescribeResolverEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndpointId) {
@@ -1861,9 +1908,11 @@ func (client *Client) DescribeResolverEndpoint(request *DescribeResolverEndpoint
 //
 // @return DescribeResolverEndpointsResponse
 func (client *Client) DescribeResolverEndpointsWithOptions(request *DescribeResolverEndpointsRequest, runtime *dara.RuntimeOptions) (_result *DescribeResolverEndpointsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -1941,9 +1990,11 @@ func (client *Client) DescribeResolverEndpoints(request *DescribeResolverEndpoin
 //
 // @return DescribeResolverRuleResponse
 func (client *Client) DescribeResolverRuleWithOptions(request *DescribeResolverRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribeResolverRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2005,9 +2056,11 @@ func (client *Client) DescribeResolverRule(request *DescribeResolverRuleRequest)
 //
 // @return DescribeResolverRulesResponse
 func (client *Client) DescribeResolverRulesWithOptions(request *DescribeResolverRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeResolverRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndpointId) {
@@ -2085,9 +2138,11 @@ func (client *Client) DescribeResolverRules(request *DescribeResolverRulesReques
 //
 // @return DescribeStatisticSummaryResponse
 func (client *Client) DescribeStatisticSummaryWithOptions(request *DescribeStatisticSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeStatisticSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2153,9 +2208,11 @@ func (client *Client) DescribeStatisticSummary(request *DescribeStatisticSummary
 //
 // @return DescribeSyncEcsHostTaskResponse
 func (client *Client) DescribeSyncEcsHostTaskWithOptions(request *DescribeSyncEcsHostTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeSyncEcsHostTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2227,9 +2284,11 @@ func (client *Client) DescribeSyncEcsHostTask(request *DescribeSyncEcsHostTaskRe
 //
 // @return DescribeTagsResponse
 func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2305,9 +2364,11 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 //
 // @return DescribeUserServiceStatusResponse
 func (client *Client) DescribeUserServiceStatusWithOptions(request *DescribeUserServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserServiceStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2365,9 +2426,11 @@ func (client *Client) DescribeUserServiceStatus(request *DescribeUserServiceStat
 //
 // @return DescribeUserVpcAuthorizationsResponse
 func (client *Client) DescribeUserVpcAuthorizationsWithOptions(request *DescribeUserVpcAuthorizationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserVpcAuthorizationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthType) {
@@ -2437,9 +2500,11 @@ func (client *Client) DescribeUserVpcAuthorizations(request *DescribeUserVpcAuth
 //
 // @return DescribeZoneInfoResponse
 func (client *Client) DescribeZoneInfoWithOptions(request *DescribeZoneInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeZoneInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2501,9 +2566,11 @@ func (client *Client) DescribeZoneInfo(request *DescribeZoneInfoRequest) (_resul
 //
 // @return DescribeZoneRecordResponse
 func (client *Client) DescribeZoneRecordWithOptions(request *DescribeZoneRecordRequest, runtime *dara.RuntimeOptions) (_result *DescribeZoneRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RecordId) {
@@ -2561,9 +2628,11 @@ func (client *Client) DescribeZoneRecord(request *DescribeZoneRecordRequest) (_r
 //
 // @return DescribeZoneRecordsResponse
 func (client *Client) DescribeZoneRecordsWithOptions(request *DescribeZoneRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeZoneRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -2653,9 +2722,11 @@ func (client *Client) DescribeZoneRecords(request *DescribeZoneRecordsRequest) (
 //
 // @return DescribeZoneVpcTreeResponse
 func (client *Client) DescribeZoneVpcTreeWithOptions(request *DescribeZoneVpcTreeRequest, runtime *dara.RuntimeOptions) (_result *DescribeZoneVpcTreeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2721,9 +2792,11 @@ func (client *Client) DescribeZoneVpcTree(request *DescribeZoneVpcTreeRequest) (
 //
 // @return DescribeZonesResponse
 func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -2827,9 +2900,11 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2919,9 +2994,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // @return MoveResourceGroupResponse
 func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -2997,9 +3074,11 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 //
 // @return SearchCustomLinesResponse
 func (client *Client) SearchCustomLinesWithOptions(request *SearchCustomLinesRequest, runtime *dara.RuntimeOptions) (_result *SearchCustomLinesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateTimestampEnd) {
@@ -3093,9 +3172,11 @@ func (client *Client) SearchCustomLines(request *SearchCustomLinesRequest) (_res
 //
 // @return SetProxyPatternResponse
 func (client *Client) SetProxyPatternWithOptions(request *SetProxyPatternRequest, runtime *dara.RuntimeOptions) (_result *SetProxyPatternResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -3169,9 +3250,11 @@ func (client *Client) SetProxyPattern(request *SetProxyPatternRequest) (_result 
 //
 // @return SetZoneRecordStatusResponse
 func (client *Client) SetZoneRecordStatusWithOptions(request *SetZoneRecordStatusRequest, runtime *dara.RuntimeOptions) (_result *SetZoneRecordStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -3251,9 +3334,11 @@ func (client *Client) SetZoneRecordStatus(request *SetZoneRecordStatusRequest) (
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -3339,9 +3424,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -3421,9 +3508,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // @return UpdateCustomLineResponse
 func (client *Client) UpdateCustomLineWithOptions(request *UpdateCustomLineRequest, runtime *dara.RuntimeOptions) (_result *UpdateCustomLineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DnsCategory) {
@@ -3497,9 +3586,11 @@ func (client *Client) UpdateCustomLine(request *UpdateCustomLineRequest) (_resul
 //
 // @return UpdateRecordRemarkResponse
 func (client *Client) UpdateRecordRemarkWithOptions(request *UpdateRecordRemarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecordRemarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -3569,9 +3660,11 @@ func (client *Client) UpdateRecordRemark(request *UpdateRecordRemarkRequest) (_r
 //
 // @return UpdateResolverEndpointResponse
 func (client *Client) UpdateResolverEndpointWithOptions(request *UpdateResolverEndpointRequest, runtime *dara.RuntimeOptions) (_result *UpdateResolverEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndpointId) {
@@ -3641,9 +3734,11 @@ func (client *Client) UpdateResolverEndpoint(request *UpdateResolverEndpointRequ
 //
 // @return UpdateResolverRuleResponse
 func (client *Client) UpdateResolverRuleWithOptions(request *UpdateResolverRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateResolverRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndpointId) {
@@ -3660,6 +3755,10 @@ func (client *Client) UpdateResolverRuleWithOptions(request *UpdateResolverRuleR
 
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PriorityForwardConfigs) {
+		query["PriorityForwardConfigs"] = request.PriorityForwardConfigs
 	}
 
 	if !dara.IsNil(request.RuleId) {
@@ -3717,9 +3816,11 @@ func (client *Client) UpdateResolverRule(request *UpdateResolverRuleRequest) (_r
 //
 // @return UpdateSyncEcsHostTaskResponse
 func (client *Client) UpdateSyncEcsHostTaskWithOptions(request *UpdateSyncEcsHostTaskRequest, runtime *dara.RuntimeOptions) (_result *UpdateSyncEcsHostTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -3795,9 +3896,11 @@ func (client *Client) UpdateSyncEcsHostTask(request *UpdateSyncEcsHostTaskReques
 //
 // @return UpdateZoneRecordResponse
 func (client *Client) UpdateZoneRecordWithOptions(request *UpdateZoneRecordRequest, runtime *dara.RuntimeOptions) (_result *UpdateZoneRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -3901,9 +4004,11 @@ func (client *Client) UpdateZoneRecord(request *UpdateZoneRecordRequest) (_resul
 //
 // @return UpdateZoneRemarkResponse
 func (client *Client) UpdateZoneRemarkWithOptions(request *UpdateZoneRemarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateZoneRemarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {

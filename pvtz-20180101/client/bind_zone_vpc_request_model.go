@@ -114,7 +114,16 @@ func (s *BindZoneVpcRequest) SetZoneId(v string) *BindZoneVpcRequest {
 }
 
 func (s *BindZoneVpcRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Vpcs != nil {
+		for _, item := range s.Vpcs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BindZoneVpcRequestVpcs struct {

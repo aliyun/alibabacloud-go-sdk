@@ -59,5 +59,10 @@ func (s *DescribeUserVpcAuthorizationsResponse) SetBody(v *DescribeUserVpcAuthor
 }
 
 func (s *DescribeUserVpcAuthorizationsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

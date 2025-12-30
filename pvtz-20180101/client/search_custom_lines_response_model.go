@@ -59,5 +59,10 @@ func (s *SearchCustomLinesResponse) SetBody(v *SearchCustomLinesResponseBody) *S
 }
 
 func (s *SearchCustomLinesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
