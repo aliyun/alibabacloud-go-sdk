@@ -11,6 +11,8 @@ type iSubmitIntentionForPartnerResponseBody interface {
 	GoString() string
 	SetErrorMsg(v string) *SubmitIntentionForPartnerResponseBody
 	GetErrorMsg() *string
+	SetExtInfo(v string) *SubmitIntentionForPartnerResponseBody
+	GetExtInfo() *string
 	SetIntentionBizId(v string) *SubmitIntentionForPartnerResponseBody
 	GetIntentionBizId() *string
 	SetRequestId(v string) *SubmitIntentionForPartnerResponseBody
@@ -21,6 +23,7 @@ type iSubmitIntentionForPartnerResponseBody interface {
 
 type SubmitIntentionForPartnerResponseBody struct {
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	ExtInfo  *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
 	// example:
 	//
 	// I20211223101045000001
@@ -49,6 +52,10 @@ func (s *SubmitIntentionForPartnerResponseBody) GetErrorMsg() *string {
 	return s.ErrorMsg
 }
 
+func (s *SubmitIntentionForPartnerResponseBody) GetExtInfo() *string {
+	return s.ExtInfo
+}
+
 func (s *SubmitIntentionForPartnerResponseBody) GetIntentionBizId() *string {
 	return s.IntentionBizId
 }
@@ -63,6 +70,11 @@ func (s *SubmitIntentionForPartnerResponseBody) GetSuccess() *bool {
 
 func (s *SubmitIntentionForPartnerResponseBody) SetErrorMsg(v string) *SubmitIntentionForPartnerResponseBody {
 	s.ErrorMsg = &v
+	return s
+}
+
+func (s *SubmitIntentionForPartnerResponseBody) SetExtInfo(v string) *SubmitIntentionForPartnerResponseBody {
+	s.ExtInfo = &v
 	return s
 }
 
