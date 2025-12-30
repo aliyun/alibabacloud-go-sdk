@@ -255,6 +255,7 @@ type ListPrivateTTSVoicesCustomResponseBodyDataData struct {
 	//
 	// Optional for WH managernif no issue will be cancel
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	ErrorCode   *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	// example:
 	//
 	// Error
@@ -322,6 +323,10 @@ func (s *ListPrivateTTSVoicesCustomResponseBodyDataData) GetDescription() *strin
 	return s.Description
 }
 
+func (s *ListPrivateTTSVoicesCustomResponseBodyDataData) GetErrorCode() *string {
+	return s.ErrorCode
+}
+
 func (s *ListPrivateTTSVoicesCustomResponseBodyDataData) GetErrorDetail() *string {
 	return s.ErrorDetail
 }
@@ -384,6 +389,11 @@ func (s *ListPrivateTTSVoicesCustomResponseBodyDataData) SetCreateTime(v string)
 
 func (s *ListPrivateTTSVoicesCustomResponseBodyDataData) SetDescription(v string) *ListPrivateTTSVoicesCustomResponseBodyDataData {
 	s.Description = &v
+	return s
+}
+
+func (s *ListPrivateTTSVoicesCustomResponseBodyDataData) SetErrorCode(v string) *ListPrivateTTSVoicesCustomResponseBodyDataData {
+	s.ErrorCode = &v
 	return s
 }
 

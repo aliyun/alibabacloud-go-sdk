@@ -139,6 +139,7 @@ type GetTTSVoiceByIdCustomResponseBodyData struct {
 	//
 	// This is a testTTSVoice。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	ErrorCode   *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorDetail *string `json:"errorDetail,omitempty" xml:"errorDetail,omitempty"`
 	// example:
 	//
@@ -198,6 +199,10 @@ func (s *GetTTSVoiceByIdCustomResponseBodyData) GetCreateTime() *string {
 
 func (s *GetTTSVoiceByIdCustomResponseBodyData) GetDescription() *string {
 	return s.Description
+}
+
+func (s *GetTTSVoiceByIdCustomResponseBodyData) GetErrorCode() *string {
+	return s.ErrorCode
 }
 
 func (s *GetTTSVoiceByIdCustomResponseBodyData) GetErrorDetail() *string {
@@ -262,6 +267,11 @@ func (s *GetTTSVoiceByIdCustomResponseBodyData) SetCreateTime(v string) *GetTTSV
 
 func (s *GetTTSVoiceByIdCustomResponseBodyData) SetDescription(v string) *GetTTSVoiceByIdCustomResponseBodyData {
 	s.Description = &v
+	return s
+}
+
+func (s *GetTTSVoiceByIdCustomResponseBodyData) SetErrorCode(v string) *GetTTSVoiceByIdCustomResponseBodyData {
+	s.ErrorCode = &v
 	return s
 }
 
