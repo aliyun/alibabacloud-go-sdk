@@ -1112,6 +1112,72 @@ func (client *Client) AlterSearchIndex(request *AlterSearchIndexRequest) (_resul
 
 // Summary:
 //
+// 修改库
+//
+// @param request - AlterSearchLibRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AlterSearchLibResponse
+func (client *Client) AlterSearchLibWithOptions(request *AlterSearchLibRequest, runtime *dara.RuntimeOptions) (_result *AlterSearchLibResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SearchLibConfig) {
+		query["SearchLibConfig"] = request.SearchLibConfig
+	}
+
+	if !dara.IsNil(request.SearchLibName) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AlterSearchLib"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AlterSearchLibResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改库
+//
+// @param request - AlterSearchLibRequest
+//
+// @return AlterSearchLibResponse
+func (client *Client) AlterSearchLib(request *AlterSearchLibRequest) (_result *AlterSearchLibResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AlterSearchLibResponse{}
+	_body, _err := client.AlterSearchLibWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Ingests multiple assets for VOD packaging.
 //
 // @param tmpReq - BatchCreateVodPackagingAssetRequest
@@ -3913,6 +3979,10 @@ func (client *Client) CreateSearchLibWithOptions(request *CreateSearchLibRequest
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.SearchLibConfig) {
+		query["SearchLibConfig"] = request.SearchLibConfig
+	}
+
 	if !dara.IsNil(request.SearchLibName) {
 		query["SearchLibName"] = request.SearchLibName
 	}

@@ -15,6 +15,8 @@ type iQuerySearchLibResponseBody interface {
 	GetIndexInfo() []*QuerySearchLibResponseBodyIndexInfo
 	SetRequestId(v string) *QuerySearchLibResponseBody
 	GetRequestId() *string
+	SetSearchLibConfig(v string) *QuerySearchLibResponseBody
+	GetSearchLibConfig() *string
 	SetSearchLibName(v string) *QuerySearchLibResponseBody
 	GetSearchLibName() *string
 	SetStatus(v string) *QuerySearchLibResponseBody
@@ -36,7 +38,8 @@ type QuerySearchLibResponseBody struct {
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SearchLibConfig *string `json:"SearchLibConfig,omitempty" xml:"SearchLibConfig,omitempty"`
 	// The name of the search library.
 	//
 	// example:
@@ -89,6 +92,10 @@ func (s *QuerySearchLibResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *QuerySearchLibResponseBody) GetSearchLibConfig() *string {
+	return s.SearchLibConfig
+}
+
 func (s *QuerySearchLibResponseBody) GetSearchLibName() *string {
 	return s.SearchLibName
 }
@@ -113,6 +120,11 @@ func (s *QuerySearchLibResponseBody) SetIndexInfo(v []*QuerySearchLibResponseBod
 
 func (s *QuerySearchLibResponseBody) SetRequestId(v string) *QuerySearchLibResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySearchLibResponseBody) SetSearchLibConfig(v string) *QuerySearchLibResponseBody {
+	s.SearchLibConfig = &v
 	return s
 }
 

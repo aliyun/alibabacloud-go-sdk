@@ -747,6 +747,54 @@ func (client *Client) AlterSearchIndexWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 修改库
+//
+// @param request - AlterSearchLibRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AlterSearchLibResponse
+func (client *Client) AlterSearchLibWithContext(ctx context.Context, request *AlterSearchLibRequest, runtime *dara.RuntimeOptions) (_result *AlterSearchLibResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SearchLibConfig) {
+		query["SearchLibConfig"] = request.SearchLibConfig
+	}
+
+	if !dara.IsNil(request.SearchLibName) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AlterSearchLib"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AlterSearchLibResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Ingests multiple assets for VOD packaging.
 //
 // @param tmpReq - BatchCreateVodPackagingAssetRequest
@@ -2854,6 +2902,10 @@ func (client *Client) CreateSearchLibWithContext(ctx context.Context, request *C
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.SearchLibConfig) {
+		query["SearchLibConfig"] = request.SearchLibConfig
+	}
+
 	if !dara.IsNil(request.SearchLibName) {
 		query["SearchLibName"] = request.SearchLibName
 	}

@@ -15,6 +15,8 @@ type iAIAgentOutboundCallConfig interface {
 	GetAsrConfig() *AIAgentOutboundCallConfigAsrConfig
 	SetAutoSpeechConfig(v *AIAgentOutboundCallConfigAutoSpeechConfig) *AIAgentOutboundCallConfig
 	GetAutoSpeechConfig() *AIAgentOutboundCallConfigAutoSpeechConfig
+	SetBackChannelingConfig(v *AIAgentOutboundCallConfigBackChannelingConfig) *AIAgentOutboundCallConfig
+	GetBackChannelingConfig() *AIAgentOutboundCallConfigBackChannelingConfig
 	SetEnableIntelligentSegment(v bool) *AIAgentOutboundCallConfig
 	GetEnableIntelligentSegment() *bool
 	SetExperimentalConfig(v string) *AIAgentOutboundCallConfig
@@ -36,18 +38,19 @@ type iAIAgentOutboundCallConfig interface {
 }
 
 type AIAgentOutboundCallConfig struct {
-	AmbientSoundConfig       *AIAgentOutboundCallConfigAmbientSoundConfig  `json:"AmbientSoundConfig,omitempty" xml:"AmbientSoundConfig,omitempty" type:"Struct"`
-	AsrConfig                *AIAgentOutboundCallConfigAsrConfig           `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
-	AutoSpeechConfig         *AIAgentOutboundCallConfigAutoSpeechConfig    `json:"AutoSpeechConfig,omitempty" xml:"AutoSpeechConfig,omitempty" type:"Struct"`
-	EnableIntelligentSegment *bool                                         `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
-	ExperimentalConfig       *string                                       `json:"ExperimentalConfig,omitempty" xml:"ExperimentalConfig,omitempty"`
-	Greeting                 *string                                       `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
-	GreetingDelay            *int32                                        `json:"GreetingDelay,omitempty" xml:"GreetingDelay,omitempty"`
-	InterruptConfig          *AIAgentOutboundCallConfigInterruptConfig     `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
-	LlmConfig                *AIAgentOutboundCallConfigLlmConfig           `json:"LlmConfig,omitempty" xml:"LlmConfig,omitempty" type:"Struct"`
-	MaxIdleTime              *int32                                        `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
-	TtsConfig                *AIAgentOutboundCallConfigTtsConfig           `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
-	TurnDetectionConfig      *AIAgentOutboundCallConfigTurnDetectionConfig `json:"TurnDetectionConfig,omitempty" xml:"TurnDetectionConfig,omitempty" type:"Struct"`
+	AmbientSoundConfig       *AIAgentOutboundCallConfigAmbientSoundConfig   `json:"AmbientSoundConfig,omitempty" xml:"AmbientSoundConfig,omitempty" type:"Struct"`
+	AsrConfig                *AIAgentOutboundCallConfigAsrConfig            `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
+	AutoSpeechConfig         *AIAgentOutboundCallConfigAutoSpeechConfig     `json:"AutoSpeechConfig,omitempty" xml:"AutoSpeechConfig,omitempty" type:"Struct"`
+	BackChannelingConfig     *AIAgentOutboundCallConfigBackChannelingConfig `json:"BackChannelingConfig,omitempty" xml:"BackChannelingConfig,omitempty" type:"Struct"`
+	EnableIntelligentSegment *bool                                          `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
+	ExperimentalConfig       *string                                        `json:"ExperimentalConfig,omitempty" xml:"ExperimentalConfig,omitempty"`
+	Greeting                 *string                                        `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	GreetingDelay            *int32                                         `json:"GreetingDelay,omitempty" xml:"GreetingDelay,omitempty"`
+	InterruptConfig          *AIAgentOutboundCallConfigInterruptConfig      `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
+	LlmConfig                *AIAgentOutboundCallConfigLlmConfig            `json:"LlmConfig,omitempty" xml:"LlmConfig,omitempty" type:"Struct"`
+	MaxIdleTime              *int32                                         `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
+	TtsConfig                *AIAgentOutboundCallConfigTtsConfig            `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
+	TurnDetectionConfig      *AIAgentOutboundCallConfigTurnDetectionConfig  `json:"TurnDetectionConfig,omitempty" xml:"TurnDetectionConfig,omitempty" type:"Struct"`
 }
 
 func (s AIAgentOutboundCallConfig) String() string {
@@ -68,6 +71,10 @@ func (s *AIAgentOutboundCallConfig) GetAsrConfig() *AIAgentOutboundCallConfigAsr
 
 func (s *AIAgentOutboundCallConfig) GetAutoSpeechConfig() *AIAgentOutboundCallConfigAutoSpeechConfig {
 	return s.AutoSpeechConfig
+}
+
+func (s *AIAgentOutboundCallConfig) GetBackChannelingConfig() *AIAgentOutboundCallConfigBackChannelingConfig {
+	return s.BackChannelingConfig
 }
 
 func (s *AIAgentOutboundCallConfig) GetEnableIntelligentSegment() *bool {
@@ -118,6 +125,11 @@ func (s *AIAgentOutboundCallConfig) SetAsrConfig(v *AIAgentOutboundCallConfigAsr
 
 func (s *AIAgentOutboundCallConfig) SetAutoSpeechConfig(v *AIAgentOutboundCallConfigAutoSpeechConfig) *AIAgentOutboundCallConfig {
 	s.AutoSpeechConfig = v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfig) SetBackChannelingConfig(v *AIAgentOutboundCallConfigBackChannelingConfig) *AIAgentOutboundCallConfig {
+	s.BackChannelingConfig = v
 	return s
 }
 
@@ -179,6 +191,11 @@ func (s *AIAgentOutboundCallConfig) Validate() error {
 	}
 	if s.AutoSpeechConfig != nil {
 		if err := s.AutoSpeechConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BackChannelingConfig != nil {
+		if err := s.BackChannelingConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -528,9 +545,107 @@ func (s *AIAgentOutboundCallConfigAutoSpeechConfigUserIdleMessages) Validate() e
 	return dara.Validate(s)
 }
 
+type AIAgentOutboundCallConfigBackChannelingConfig struct {
+	Enabled      *bool                                               `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Probability  *float64                                            `json:"Probability,omitempty" xml:"Probability,omitempty"`
+	TriggerStage *string                                             `json:"TriggerStage,omitempty" xml:"TriggerStage,omitempty"`
+	Words        *AIAgentOutboundCallConfigBackChannelingConfigWords `json:"Words,omitempty" xml:"Words,omitempty" type:"Struct"`
+}
+
+func (s AIAgentOutboundCallConfigBackChannelingConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AIAgentOutboundCallConfigBackChannelingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfigBackChannelingConfig) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *AIAgentOutboundCallConfigBackChannelingConfig) GetProbability() *float64 {
+	return s.Probability
+}
+
+func (s *AIAgentOutboundCallConfigBackChannelingConfig) GetTriggerStage() *string {
+	return s.TriggerStage
+}
+
+func (s *AIAgentOutboundCallConfigBackChannelingConfig) GetWords() *AIAgentOutboundCallConfigBackChannelingConfigWords {
+	return s.Words
+}
+
+func (s *AIAgentOutboundCallConfigBackChannelingConfig) SetEnabled(v bool) *AIAgentOutboundCallConfigBackChannelingConfig {
+	s.Enabled = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigBackChannelingConfig) SetProbability(v float64) *AIAgentOutboundCallConfigBackChannelingConfig {
+	s.Probability = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigBackChannelingConfig) SetTriggerStage(v string) *AIAgentOutboundCallConfigBackChannelingConfig {
+	s.TriggerStage = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigBackChannelingConfig) SetWords(v *AIAgentOutboundCallConfigBackChannelingConfigWords) *AIAgentOutboundCallConfigBackChannelingConfig {
+	s.Words = v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigBackChannelingConfig) Validate() error {
+	if s.Words != nil {
+		if err := s.Words.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type AIAgentOutboundCallConfigBackChannelingConfigWords struct {
+	Probability *float64 `json:"Probability,omitempty" xml:"Probability,omitempty"`
+	Text        *string  `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s AIAgentOutboundCallConfigBackChannelingConfigWords) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AIAgentOutboundCallConfigBackChannelingConfigWords) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfigBackChannelingConfigWords) GetProbability() *float64 {
+	return s.Probability
+}
+
+func (s *AIAgentOutboundCallConfigBackChannelingConfigWords) GetText() *string {
+	return s.Text
+}
+
+func (s *AIAgentOutboundCallConfigBackChannelingConfigWords) SetProbability(v float64) *AIAgentOutboundCallConfigBackChannelingConfigWords {
+	s.Probability = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigBackChannelingConfigWords) SetText(v string) *AIAgentOutboundCallConfigBackChannelingConfigWords {
+	s.Text = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigBackChannelingConfigWords) Validate() error {
+	return dara.Validate(s)
+}
+
 type AIAgentOutboundCallConfigInterruptConfig struct {
+	// Deprecated
+	Eagerness            *string   `json:"Eagerness,omitempty" xml:"Eagerness,omitempty"`
 	EnableVoiceInterrupt *bool     `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
 	InterruptWords       []*string `json:"InterruptWords,omitempty" xml:"InterruptWords,omitempty" type:"Repeated"`
+	NoInterruptMode      *string   `json:"NoInterruptMode,omitempty" xml:"NoInterruptMode,omitempty"`
 }
 
 func (s AIAgentOutboundCallConfigInterruptConfig) String() string {
@@ -541,12 +656,25 @@ func (s AIAgentOutboundCallConfigInterruptConfig) GoString() string {
 	return s.String()
 }
 
+func (s *AIAgentOutboundCallConfigInterruptConfig) GetEagerness() *string {
+	return s.Eagerness
+}
+
 func (s *AIAgentOutboundCallConfigInterruptConfig) GetEnableVoiceInterrupt() *bool {
 	return s.EnableVoiceInterrupt
 }
 
 func (s *AIAgentOutboundCallConfigInterruptConfig) GetInterruptWords() []*string {
 	return s.InterruptWords
+}
+
+func (s *AIAgentOutboundCallConfigInterruptConfig) GetNoInterruptMode() *string {
+	return s.NoInterruptMode
+}
+
+func (s *AIAgentOutboundCallConfigInterruptConfig) SetEagerness(v string) *AIAgentOutboundCallConfigInterruptConfig {
+	s.Eagerness = &v
+	return s
 }
 
 func (s *AIAgentOutboundCallConfigInterruptConfig) SetEnableVoiceInterrupt(v bool) *AIAgentOutboundCallConfigInterruptConfig {
@@ -556,6 +684,11 @@ func (s *AIAgentOutboundCallConfigInterruptConfig) SetEnableVoiceInterrupt(v boo
 
 func (s *AIAgentOutboundCallConfigInterruptConfig) SetInterruptWords(v []*string) *AIAgentOutboundCallConfigInterruptConfig {
 	s.InterruptWords = v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigInterruptConfig) SetNoInterruptMode(v string) *AIAgentOutboundCallConfigInterruptConfig {
+	s.NoInterruptMode = &v
 	return s
 }
 
@@ -906,6 +1039,7 @@ func (s *AIAgentOutboundCallConfigTtsConfigPronunciationRules) Validate() error 
 }
 
 type AIAgentOutboundCallConfigTurnDetectionConfig struct {
+	Eagerness            *string   `json:"Eagerness,omitempty" xml:"Eagerness,omitempty"`
 	Mode                 *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	SemanticWaitDuration *int32    `json:"SemanticWaitDuration,omitempty" xml:"SemanticWaitDuration,omitempty"`
 	TurnEndWords         []*string `json:"TurnEndWords,omitempty" xml:"TurnEndWords,omitempty" type:"Repeated"`
@@ -919,6 +1053,10 @@ func (s AIAgentOutboundCallConfigTurnDetectionConfig) GoString() string {
 	return s.String()
 }
 
+func (s *AIAgentOutboundCallConfigTurnDetectionConfig) GetEagerness() *string {
+	return s.Eagerness
+}
+
 func (s *AIAgentOutboundCallConfigTurnDetectionConfig) GetMode() *string {
 	return s.Mode
 }
@@ -929,6 +1067,11 @@ func (s *AIAgentOutboundCallConfigTurnDetectionConfig) GetSemanticWaitDuration()
 
 func (s *AIAgentOutboundCallConfigTurnDetectionConfig) GetTurnEndWords() []*string {
 	return s.TurnEndWords
+}
+
+func (s *AIAgentOutboundCallConfigTurnDetectionConfig) SetEagerness(v string) *AIAgentOutboundCallConfigTurnDetectionConfig {
+	s.Eagerness = &v
+	return s
 }
 
 func (s *AIAgentOutboundCallConfigTurnDetectionConfig) SetMode(v string) *AIAgentOutboundCallConfigTurnDetectionConfig {

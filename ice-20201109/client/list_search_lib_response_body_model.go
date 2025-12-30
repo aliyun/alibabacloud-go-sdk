@@ -117,7 +117,8 @@ func (s *ListSearchLibResponseBody) Validate() error {
 }
 
 type ListSearchLibResponseBodySearchLibInfoList struct {
-	IndexInfo []*ListSearchLibResponseBodySearchLibInfoListIndexInfo `json:"IndexInfo,omitempty" xml:"IndexInfo,omitempty" type:"Repeated"`
+	IndexInfo       []*ListSearchLibResponseBodySearchLibInfoListIndexInfo `json:"IndexInfo,omitempty" xml:"IndexInfo,omitempty" type:"Repeated"`
+	SearchLibConfig *string                                                `json:"SearchLibConfig,omitempty" xml:"SearchLibConfig,omitempty"`
 	// The search library.
 	//
 	// example:
@@ -150,6 +151,10 @@ func (s *ListSearchLibResponseBodySearchLibInfoList) GetIndexInfo() []*ListSearc
 	return s.IndexInfo
 }
 
+func (s *ListSearchLibResponseBodySearchLibInfoList) GetSearchLibConfig() *string {
+	return s.SearchLibConfig
+}
+
 func (s *ListSearchLibResponseBodySearchLibInfoList) GetSearchLibName() *string {
 	return s.SearchLibName
 }
@@ -160,6 +165,11 @@ func (s *ListSearchLibResponseBodySearchLibInfoList) GetStatus() *string {
 
 func (s *ListSearchLibResponseBodySearchLibInfoList) SetIndexInfo(v []*ListSearchLibResponseBodySearchLibInfoListIndexInfo) *ListSearchLibResponseBodySearchLibInfoList {
 	s.IndexInfo = v
+	return s
+}
+
+func (s *ListSearchLibResponseBodySearchLibInfoList) SetSearchLibConfig(v string) *ListSearchLibResponseBodySearchLibInfoList {
+	s.SearchLibConfig = &v
 	return s
 }
 
