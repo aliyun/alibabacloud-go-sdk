@@ -1073,6 +1073,64 @@ func (client *Client) AddRecursionZoneWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 用于删除特定域名的serverHold状态信息。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 本接口专为网关用户设计，允许他们添加指定域名的serverHold属性。
+//
+// @param request - AddRspDomainServerHoldStatusForGatewayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddRspDomainServerHoldStatusForGatewayResponse
+func (client *Client) AddRspDomainServerHoldStatusForGatewayWithContext(ctx context.Context, request *AddRspDomainServerHoldStatusForGatewayRequest, runtime *dara.RuntimeOptions) (_result *AddRspDomainServerHoldStatusForGatewayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.StatusMsg) {
+		query["StatusMsg"] = request.StatusMsg
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddRspDomainServerHoldStatusForGateway"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddRspDomainServerHoldStatusForGatewayResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Binds one or more domain names to a paid Alibaba Cloud DNS instance.
 //
 // Description:
