@@ -562,6 +562,10 @@ func (client *Client) CreateNodesWithOptions(tmpReq *CreateNodesRequest, runtime
 		request.ComputeNodeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ComputeNode, dara.String("ComputeNode"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.Hostnames) {
+		request.HostnamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Hostnames, dara.String("Hostnames"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
 		query["ClusterId"] = request.ClusterId
@@ -589,6 +593,10 @@ func (client *Client) CreateNodesWithOptions(tmpReq *CreateNodesRequest, runtime
 
 	if !dara.IsNil(request.HostnameSuffix) {
 		query["HostnameSuffix"] = request.HostnameSuffix
+	}
+
+	if !dara.IsNil(request.HostnamesShrink) {
+		query["Hostnames"] = request.HostnamesShrink
 	}
 
 	if !dara.IsNil(request.KeepAlive) {

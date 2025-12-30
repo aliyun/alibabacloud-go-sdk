@@ -23,6 +23,8 @@ type iCreateNodesShrinkRequest interface {
 	GetHostnamePrefix() *string
 	SetHostnameSuffix(v string) *CreateNodesShrinkRequest
 	GetHostnameSuffix() *string
+	SetHostnamesShrink(v string) *CreateNodesShrinkRequest
+	GetHostnamesShrink() *string
 	SetKeepAlive(v string) *CreateNodesShrinkRequest
 	GetKeepAlive() *string
 	SetQueueName(v string) *CreateNodesShrinkRequest
@@ -85,7 +87,8 @@ type CreateNodesShrinkRequest struct {
 	// example:
 	//
 	// demo
-	HostnameSuffix *string `json:"HostnameSuffix,omitempty" xml:"HostnameSuffix,omitempty"`
+	HostnameSuffix  *string `json:"HostnameSuffix,omitempty" xml:"HostnameSuffix,omitempty"`
+	HostnamesShrink *string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty"`
 	// Specifies whether to enable deletion protection for the added compute nodes.
 	//
 	// example:
@@ -154,6 +157,10 @@ func (s *CreateNodesShrinkRequest) GetHostnameSuffix() *string {
 	return s.HostnameSuffix
 }
 
+func (s *CreateNodesShrinkRequest) GetHostnamesShrink() *string {
+	return s.HostnamesShrink
+}
+
 func (s *CreateNodesShrinkRequest) GetKeepAlive() *string {
 	return s.KeepAlive
 }
@@ -206,6 +213,11 @@ func (s *CreateNodesShrinkRequest) SetHostnamePrefix(v string) *CreateNodesShrin
 
 func (s *CreateNodesShrinkRequest) SetHostnameSuffix(v string) *CreateNodesShrinkRequest {
 	s.HostnameSuffix = &v
+	return s
+}
+
+func (s *CreateNodesShrinkRequest) SetHostnamesShrink(v string) *CreateNodesShrinkRequest {
+	s.HostnamesShrink = &v
 	return s
 }
 

@@ -1145,6 +1145,7 @@ func (s *GetClusterResponseBodyMonitorSpec) Validate() error {
 }
 
 type GetClusterResponseBodySchedulerSpec struct {
+	EnablePowerSaving *bool `json:"EnablePowerSaving,omitempty" xml:"EnablePowerSaving,omitempty"`
 	// Indicates whether the topology awareness feature is enabled for the cluster. Valid values:
 	//
 	// 	- true
@@ -1165,8 +1166,17 @@ func (s GetClusterResponseBodySchedulerSpec) GoString() string {
 	return s.String()
 }
 
+func (s *GetClusterResponseBodySchedulerSpec) GetEnablePowerSaving() *bool {
+	return s.EnablePowerSaving
+}
+
 func (s *GetClusterResponseBodySchedulerSpec) GetEnableTopologyAwareness() *bool {
 	return s.EnableTopologyAwareness
+}
+
+func (s *GetClusterResponseBodySchedulerSpec) SetEnablePowerSaving(v bool) *GetClusterResponseBodySchedulerSpec {
+	s.EnablePowerSaving = &v
+	return s
 }
 
 func (s *GetClusterResponseBodySchedulerSpec) SetEnableTopologyAwareness(v bool) *GetClusterResponseBodySchedulerSpec {

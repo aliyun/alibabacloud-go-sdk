@@ -23,6 +23,8 @@ type iCreateNodesRequest interface {
 	GetHostnamePrefix() *string
 	SetHostnameSuffix(v string) *CreateNodesRequest
 	GetHostnameSuffix() *string
+	SetHostnames(v []*string) *CreateNodesRequest
+	GetHostnames() []*string
 	SetKeepAlive(v string) *CreateNodesRequest
 	GetKeepAlive() *string
 	SetQueueName(v string) *CreateNodesRequest
@@ -85,7 +87,8 @@ type CreateNodesRequest struct {
 	// example:
 	//
 	// demo
-	HostnameSuffix *string `json:"HostnameSuffix,omitempty" xml:"HostnameSuffix,omitempty"`
+	HostnameSuffix *string   `json:"HostnameSuffix,omitempty" xml:"HostnameSuffix,omitempty"`
+	Hostnames      []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
 	// Specifies whether to enable deletion protection for the added compute nodes.
 	//
 	// example:
@@ -154,6 +157,10 @@ func (s *CreateNodesRequest) GetHostnameSuffix() *string {
 	return s.HostnameSuffix
 }
 
+func (s *CreateNodesRequest) GetHostnames() []*string {
+	return s.Hostnames
+}
+
 func (s *CreateNodesRequest) GetKeepAlive() *string {
 	return s.KeepAlive
 }
@@ -206,6 +213,11 @@ func (s *CreateNodesRequest) SetHostnamePrefix(v string) *CreateNodesRequest {
 
 func (s *CreateNodesRequest) SetHostnameSuffix(v string) *CreateNodesRequest {
 	s.HostnameSuffix = &v
+	return s
+}
+
+func (s *CreateNodesRequest) SetHostnames(v []*string) *CreateNodesRequest {
+	s.Hostnames = v
 	return s
 }
 
