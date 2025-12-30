@@ -1,0 +1,78 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iChatBIPatternIndexDeleteRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetDbName(v string) *ChatBIPatternIndexDeleteRequest
+	GetDbName() *string
+	SetInstanceName(v string) *ChatBIPatternIndexDeleteRequest
+	GetInstanceName() *string
+	SetTableName(v string) *ChatBIPatternIndexDeleteRequest
+	GetTableName() *string
+}
+
+type ChatBIPatternIndexDeleteRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// db_test
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-2ze454l20me07****
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pattern_index, pattern_index_1
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s ChatBIPatternIndexDeleteRequest) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ChatBIPatternIndexDeleteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChatBIPatternIndexDeleteRequest) GetDbName() *string {
+	return s.DbName
+}
+
+func (s *ChatBIPatternIndexDeleteRequest) GetInstanceName() *string {
+	return s.InstanceName
+}
+
+func (s *ChatBIPatternIndexDeleteRequest) GetTableName() *string {
+	return s.TableName
+}
+
+func (s *ChatBIPatternIndexDeleteRequest) SetDbName(v string) *ChatBIPatternIndexDeleteRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *ChatBIPatternIndexDeleteRequest) SetInstanceName(v string) *ChatBIPatternIndexDeleteRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ChatBIPatternIndexDeleteRequest) SetTableName(v string) *ChatBIPatternIndexDeleteRequest {
+	s.TableName = &v
+	return s
+}
+
+func (s *ChatBIPatternIndexDeleteRequest) Validate() error {
+	return dara.Validate(s)
+}
