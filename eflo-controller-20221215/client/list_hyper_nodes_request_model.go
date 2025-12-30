@@ -11,6 +11,8 @@ type iListHyperNodesRequest interface {
 	GoString() string
 	SetClusterName(v string) *ListHyperNodesRequest
 	GetClusterName() *string
+	SetCommodityCode(v string) *ListHyperNodesRequest
+	GetCommodityCode() *string
 	SetHpnZone(v string) *ListHyperNodesRequest
 	GetHpnZone() *string
 	SetHyperNodeId(v string) *ListHyperNodesRequest
@@ -23,6 +25,8 @@ type iListHyperNodesRequest interface {
 	GetNextToken() *string
 	SetNodeGroupName(v string) *ListHyperNodesRequest
 	GetNodeGroupName() *string
+	SetOperatingStates(v []*string) *ListHyperNodesRequest
+	GetOperatingStates() []*string
 	SetResourceGroupId(v string) *ListHyperNodesRequest
 	GetResourceGroupId() *string
 	SetTags(v []*ListHyperNodesRequestTags) *ListHyperNodesRequest
@@ -35,7 +39,8 @@ type ListHyperNodesRequest struct {
 	// example:
 	//
 	// Standard_Cluster
-	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ClusterName   *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// example:
 	//
 	// A1
@@ -59,7 +64,8 @@ type ListHyperNodesRequest struct {
 	// example:
 	//
 	// emr-default
-	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	NodeGroupName   *string   `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	OperatingStates []*string `json:"OperatingStates,omitempty" xml:"OperatingStates,omitempty" type:"Repeated"`
 	// example:
 	//
 	// rg-acfmwfm33rlt6zi
@@ -81,6 +87,10 @@ func (s ListHyperNodesRequest) GoString() string {
 
 func (s *ListHyperNodesRequest) GetClusterName() *string {
 	return s.ClusterName
+}
+
+func (s *ListHyperNodesRequest) GetCommodityCode() *string {
+	return s.CommodityCode
 }
 
 func (s *ListHyperNodesRequest) GetHpnZone() *string {
@@ -107,6 +117,10 @@ func (s *ListHyperNodesRequest) GetNodeGroupName() *string {
 	return s.NodeGroupName
 }
 
+func (s *ListHyperNodesRequest) GetOperatingStates() []*string {
+	return s.OperatingStates
+}
+
 func (s *ListHyperNodesRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
@@ -121,6 +135,11 @@ func (s *ListHyperNodesRequest) GetZoneId() *string {
 
 func (s *ListHyperNodesRequest) SetClusterName(v string) *ListHyperNodesRequest {
 	s.ClusterName = &v
+	return s
+}
+
+func (s *ListHyperNodesRequest) SetCommodityCode(v string) *ListHyperNodesRequest {
+	s.CommodityCode = &v
 	return s
 }
 
@@ -151,6 +170,11 @@ func (s *ListHyperNodesRequest) SetNextToken(v string) *ListHyperNodesRequest {
 
 func (s *ListHyperNodesRequest) SetNodeGroupName(v string) *ListHyperNodesRequest {
 	s.NodeGroupName = &v
+	return s
+}
+
+func (s *ListHyperNodesRequest) SetOperatingStates(v []*string) *ListHyperNodesRequest {
+	s.OperatingStates = v
 	return s
 }
 

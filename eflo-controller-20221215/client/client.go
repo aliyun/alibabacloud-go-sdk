@@ -2722,18 +2722,33 @@ func (client *Client) ListFreeNodes(request *ListFreeNodesRequest) (_result *Lis
 //
 // 机器列表
 //
-// @param request - ListHyperNodesRequest
+// @param tmpReq - ListHyperNodesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListHyperNodesResponse
-func (client *Client) ListHyperNodesWithOptions(request *ListHyperNodesRequest, runtime *dara.RuntimeOptions) (_result *ListHyperNodesResponse, _err error) {
+func (client *Client) ListHyperNodesWithOptions(tmpReq *ListHyperNodesRequest, runtime *dara.RuntimeOptions) (_result *ListHyperNodesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListHyperNodesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.OperatingStates) {
+		request.OperatingStatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OperatingStates, dara.String("OperatingStates"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CommodityCode) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !dara.IsNil(request.OperatingStatesShrink) {
+		query["OperatingStates"] = request.OperatingStatesShrink
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterName) {
 		body["ClusterName"] = request.ClusterName
@@ -2776,7 +2791,8 @@ func (client *Client) ListHyperNodesWithOptions(request *ListHyperNodesRequest, 
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ListHyperNodes"),
