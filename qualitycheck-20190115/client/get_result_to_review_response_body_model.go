@@ -1164,6 +1164,7 @@ func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo
 }
 
 type GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo struct {
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// example:
 	//
 	// 013c68142fec4f0899fa6ee0exxx
@@ -1195,6 +1196,10 @@ func (s GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoR
 	return s.String()
 }
 
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) GetComment() *string {
+	return s.Comment
+}
+
 func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) GetHitId() *string {
 	return s.HitId
 }
@@ -1217,6 +1222,11 @@ func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo
 
 func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) GetSentenceReviewResults() *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResults {
 	return s.SentenceReviewResults
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) SetComment(v string) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo {
+	s.Comment = &v
+	return s
 }
 
 func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) SetHitId(v string) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo {
