@@ -1065,6 +1065,81 @@ func (client *Client) CreateVideoCreationTask(workspaceId *string, request *Crea
 
 // Summary:
 //
+// # Dashscope异步任务完成事件处理
+//
+// @param request - DashscopeAsyncTaskFinishEventRequest
+//
+// @param headers - DashscopeAsyncTaskFinishEventHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DashscopeAsyncTaskFinishEventResponse
+func (client *Client) DashscopeAsyncTaskFinishEventWithOptions(workspaceId *string, request *DashscopeAsyncTaskFinishEventRequest, headers *DashscopeAsyncTaskFinishEventHeaders, runtime *dara.RuntimeOptions) (_result *DashscopeAsyncTaskFinishEventResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Body) {
+		body["body"] = request.Body
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XLoadTest) {
+		realHeaders["X-Load-Test"] = dara.String(dara.Stringify(dara.BoolValue(headers.XLoadTest)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DashscopeAsyncTaskFinishEvent"),
+		Version:     dara.String("2024-06-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/event/dashscopeAsyncTaskFinish"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DashscopeAsyncTaskFinishEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Dashscope异步任务完成事件处理
+//
+// @param request - DashscopeAsyncTaskFinishEventRequest
+//
+// @return DashscopeAsyncTaskFinishEventResponse
+func (client *Client) DashscopeAsyncTaskFinishEvent(workspaceId *string, request *DashscopeAsyncTaskFinishEventRequest) (_result *DashscopeAsyncTaskFinishEventResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &DashscopeAsyncTaskFinishEventHeaders{}
+	_result = &DashscopeAsyncTaskFinishEventResponse{}
+	_body, _err := client.DashscopeAsyncTaskFinishEventWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除文档
 //
 // @param request - DeleteDocumentRequest
