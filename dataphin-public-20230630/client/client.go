@@ -1308,6 +1308,80 @@ func (client *Client) CreateBizEntity(request *CreateBizEntityRequest) (_result 
 
 // Summary:
 //
+// 新建业务指标
+//
+// @param tmpReq - CreateBizMetricRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBizMetricResponse
+func (client *Client) CreateBizMetricWithOptions(tmpReq *CreateBizMetricRequest, runtime *dara.RuntimeOptions) (_result *CreateBizMetricResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateBizMetricShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateBizMetricCommand) {
+		request.CreateBizMetricCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateBizMetricCommand, dara.String("CreateBizMetricCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateBizMetricCommandShrink) {
+		body["CreateBizMetricCommand"] = request.CreateBizMetricCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateBizMetric"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateBizMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建业务指标
+//
+// @param request - CreateBizMetricRequest
+//
+// @return CreateBizMetricResponse
+func (client *Client) CreateBizMetric(request *CreateBizMetricRequest) (_result *CreateBizMetricResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateBizMetricResponse{}
+	_body, _err := client.CreateBizMetricWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建数据板块。
 //
 // @param tmpReq - CreateBizUnitRequest
@@ -2647,6 +2721,80 @@ func (client *Client) DeleteBizEntity(request *DeleteBizEntityRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteBizEntityResponse{}
 	_body, _err := client.DeleteBizEntityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除业务指标
+//
+// @param tmpReq - DeleteBizMetricRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBizMetricResponse
+func (client *Client) DeleteBizMetricWithOptions(tmpReq *DeleteBizMetricRequest, runtime *dara.RuntimeOptions) (_result *DeleteBizMetricResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteBizMetricShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DeleteBizMetricCommand) {
+		request.DeleteBizMetricCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteBizMetricCommand, dara.String("DeleteBizMetricCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteBizMetricCommandShrink) {
+		body["DeleteBizMetricCommand"] = request.DeleteBizMetricCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteBizMetric"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteBizMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除业务指标
+//
+// @param request - DeleteBizMetricRequest
+//
+// @return DeleteBizMetricResponse
+func (client *Client) DeleteBizMetric(request *DeleteBizMetricRequest) (_result *DeleteBizMetricResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteBizMetricResponse{}
+	_body, _err := client.DeleteBizMetricWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4392,6 +4540,80 @@ func (client *Client) GetBizEntityInfoByVersion(request *GetBizEntityInfoByVersi
 
 // Summary:
 //
+// 查询业务指标详情
+//
+// @param tmpReq - GetBizMetricByNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBizMetricByNameResponse
+func (client *Client) GetBizMetricByNameWithOptions(tmpReq *GetBizMetricByNameRequest, runtime *dara.RuntimeOptions) (_result *GetBizMetricByNameResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetBizMetricByNameShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BizMetricByNameQuery) {
+		request.BizMetricByNameQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizMetricByNameQuery, dara.String("BizMetricByNameQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BizMetricByNameQueryShrink) {
+		body["BizMetricByNameQuery"] = request.BizMetricByNameQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetBizMetricByName"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetBizMetricByNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询业务指标详情
+//
+// @param request - GetBizMetricByNameRequest
+//
+// @return GetBizMetricByNameResponse
+func (client *Client) GetBizMetricByName(request *GetBizMetricByNameRequest) (_result *GetBizMetricByNameResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetBizMetricByNameResponse{}
+	_body, _err := client.GetBizMetricByNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取数据板块详情。
 //
 // @param request - GetBizUnitInfoRequest
@@ -4449,6 +4671,72 @@ func (client *Client) GetBizUnitInfo(request *GetBizUnitInfoRequest) (_result *G
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetBizUnitInfoResponse{}
 	_body, _err := client.GetBizUnitInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据源连通性检查任务。
+//
+// @param request - GetCheckConnectivityJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCheckConnectivityJobsResponse
+func (client *Client) GetCheckConnectivityJobsWithOptions(request *GetCheckConnectivityJobsRequest, runtime *dara.RuntimeOptions) (_result *GetCheckConnectivityJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DataSourceId) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCheckConnectivityJobs"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCheckConnectivityJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据源连通性检查任务。
+//
+// @param request - GetCheckConnectivityJobsRequest
+//
+// @return GetCheckConnectivityJobsResponse
+func (client *Client) GetCheckConnectivityJobs(request *GetCheckConnectivityJobsRequest) (_result *GetCheckConnectivityJobsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetCheckConnectivityJobsResponse{}
+	_body, _err := client.GetCheckConnectivityJobsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12887,6 +13175,80 @@ func (client *Client) UpdateBizEntity(request *UpdateBizEntityRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateBizEntityResponse{}
 	_body, _err := client.UpdateBizEntityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新业务指标
+//
+// @param tmpReq - UpdateBizMetricRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateBizMetricResponse
+func (client *Client) UpdateBizMetricWithOptions(tmpReq *UpdateBizMetricRequest, runtime *dara.RuntimeOptions) (_result *UpdateBizMetricResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateBizMetricShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateBizMetricCommand) {
+		request.UpdateBizMetricCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateBizMetricCommand, dara.String("UpdateBizMetricCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateBizMetricCommandShrink) {
+		body["UpdateBizMetricCommand"] = request.UpdateBizMetricCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateBizMetric"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateBizMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新业务指标
+//
+// @param request - UpdateBizMetricRequest
+//
+// @return UpdateBizMetricResponse
+func (client *Client) UpdateBizMetric(request *UpdateBizMetricRequest) (_result *UpdateBizMetricResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateBizMetricResponse{}
+	_body, _err := client.UpdateBizMetricWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
