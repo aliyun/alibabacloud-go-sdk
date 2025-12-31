@@ -3655,6 +3655,108 @@ func (client *Client) QueryUsageStatisticsByTagId(request *QueryUsageStatisticsB
 
 // Summary:
 //
+// 预警联系人保存
+//
+// @param request - SaveContactsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveContactsResponse
+func (client *Client) SaveContactsWithOptions(request *SaveContactsRequest, runtime *dara.RuntimeOptions) (_result *SaveContactsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.ContactEmail) {
+		query["ContactEmail"] = request.ContactEmail
+	}
+
+	if !dara.IsNil(request.ContactName) {
+		query["ContactName"] = request.ContactName
+	}
+
+	if !dara.IsNil(request.ContactPhone) {
+		query["ContactPhone"] = request.ContactPhone
+	}
+
+	if !dara.IsNil(request.MailStatus) {
+		query["MailStatus"] = request.MailStatus
+	}
+
+	if !dara.IsNil(request.OpenStatusWarning) {
+		query["OpenStatusWarning"] = request.OpenStatusWarning
+	}
+
+	if !dara.IsNil(request.OpentAttributionWarning) {
+		query["OpentAttributionWarning"] = request.OpentAttributionWarning
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PhoneStatus) {
+		query["PhoneStatus"] = request.PhoneStatus
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SaveContacts"),
+		Version:     dara.String("2020-02-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SaveContactsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 预警联系人保存
+//
+// @param request - SaveContactsRequest
+//
+// @return SaveContactsResponse
+func (client *Client) SaveContacts(request *SaveContactsRequest) (_result *SaveContactsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SaveContactsResponse{}
+	_body, _err := client.SaveContactsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Verifies whether the name, phone number, and ID card number entered by a user belong to the same user.
 //
 // Description:
