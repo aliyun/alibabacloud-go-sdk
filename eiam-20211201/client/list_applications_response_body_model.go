@@ -83,6 +83,10 @@ func (s *ListApplicationsResponseBody) Validate() error {
 }
 
 type ListApplicationsResponseBodyApplications struct {
+	// example:
+	//
+	// user_created
+	ApplicationCreationType *string `json:"ApplicationCreationType,omitempty" xml:"ApplicationCreationType,omitempty"`
 	// The ID of the application.
 	//
 	// example:
@@ -167,6 +171,18 @@ type ListApplicationsResponseBodyApplications struct {
 	//
 	// rpa
 	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
+	// example:
+	//
+	// test
+	ResourceServerIdentifier *string `json:"ResourceServerIdentifier,omitempty" xml:"ResourceServerIdentifier,omitempty"`
+	// example:
+	//
+	// urn:cloud:idaas:resourceserver:source:custom
+	ResourceServerSourceType *string `json:"ResourceServerSourceType,omitempty" xml:"ResourceServerSourceType,omitempty"`
+	// example:
+	//
+	// enabled
+	ResourceServerStatus *string `json:"ResourceServerStatus,omitempty" xml:"ResourceServerStatus,omitempty"`
 	// Indicates whether the application template is managed by a cloud service.
 	//
 	// example:
@@ -213,6 +229,10 @@ func (s ListApplicationsResponseBodyApplications) GoString() string {
 	return s.String()
 }
 
+func (s *ListApplicationsResponseBodyApplications) GetApplicationCreationType() *string {
+	return s.ApplicationCreationType
+}
+
 func (s *ListApplicationsResponseBodyApplications) GetApplicationId() *string {
 	return s.ApplicationId
 }
@@ -257,6 +277,18 @@ func (s *ListApplicationsResponseBodyApplications) GetManagedServiceCode() *stri
 	return s.ManagedServiceCode
 }
 
+func (s *ListApplicationsResponseBodyApplications) GetResourceServerIdentifier() *string {
+	return s.ResourceServerIdentifier
+}
+
+func (s *ListApplicationsResponseBodyApplications) GetResourceServerSourceType() *string {
+	return s.ResourceServerSourceType
+}
+
+func (s *ListApplicationsResponseBodyApplications) GetResourceServerStatus() *string {
+	return s.ResourceServerStatus
+}
+
 func (s *ListApplicationsResponseBodyApplications) GetServiceManaged() *bool {
 	return s.ServiceManaged
 }
@@ -271,6 +303,11 @@ func (s *ListApplicationsResponseBodyApplications) GetStatus() *string {
 
 func (s *ListApplicationsResponseBodyApplications) GetUpdateTime() *int64 {
 	return s.UpdateTime
+}
+
+func (s *ListApplicationsResponseBodyApplications) SetApplicationCreationType(v string) *ListApplicationsResponseBodyApplications {
+	s.ApplicationCreationType = &v
+	return s
 }
 
 func (s *ListApplicationsResponseBodyApplications) SetApplicationId(v string) *ListApplicationsResponseBodyApplications {
@@ -325,6 +362,21 @@ func (s *ListApplicationsResponseBodyApplications) SetLogoUrl(v string) *ListApp
 
 func (s *ListApplicationsResponseBodyApplications) SetManagedServiceCode(v string) *ListApplicationsResponseBodyApplications {
 	s.ManagedServiceCode = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyApplications) SetResourceServerIdentifier(v string) *ListApplicationsResponseBodyApplications {
+	s.ResourceServerIdentifier = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyApplications) SetResourceServerSourceType(v string) *ListApplicationsResponseBodyApplications {
+	s.ResourceServerSourceType = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyApplications) SetResourceServerStatus(v string) *ListApplicationsResponseBodyApplications {
+	s.ResourceServerStatus = &v
 	return s
 }
 

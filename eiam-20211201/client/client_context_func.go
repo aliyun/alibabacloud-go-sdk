@@ -6372,6 +6372,10 @@ func (client *Client) ListApplicationsWithContext(ctx context.Context, request *
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationCreationType) {
+		query["ApplicationCreationType"] = request.ApplicationCreationType
+	}
+
 	if !dara.IsNil(request.ApplicationIds) {
 		query["ApplicationIds"] = request.ApplicationIds
 	}

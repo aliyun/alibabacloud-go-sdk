@@ -72,6 +72,10 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// disabled
 	ApiInvokeStatus *string `json:"ApiInvokeStatus,omitempty" xml:"ApiInvokeStatus,omitempty"`
+	// example:
+	//
+	// user_custom
+	ApplicationCreationType *string `json:"ApplicationCreationType,omitempty" xml:"ApplicationCreationType,omitempty"`
 	// The ID of the application.
 	//
 	// example:
@@ -173,6 +177,10 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// https://www.example.com
 	ResourceServerIdentifier *string `json:"ResourceServerIdentifier,omitempty" xml:"ResourceServerIdentifier,omitempty"`
+	// example:
+	//
+	// urn:cloud:idaas:resourceserver:source:custom
+	ResourceServerSourceType *string `json:"ResourceServerSourceType,omitempty" xml:"ResourceServerSourceType,omitempty"`
 	// Resource server status.
 	//
 	// example:
@@ -223,6 +231,10 @@ func (s GetApplicationResponseBodyApplication) GoString() string {
 
 func (s *GetApplicationResponseBodyApplication) GetApiInvokeStatus() *string {
 	return s.ApiInvokeStatus
+}
+
+func (s *GetApplicationResponseBodyApplication) GetApplicationCreationType() *string {
+	return s.ApplicationCreationType
 }
 
 func (s *GetApplicationResponseBodyApplication) GetApplicationId() *string {
@@ -289,6 +301,10 @@ func (s *GetApplicationResponseBodyApplication) GetResourceServerIdentifier() *s
 	return s.ResourceServerIdentifier
 }
 
+func (s *GetApplicationResponseBodyApplication) GetResourceServerSourceType() *string {
+	return s.ResourceServerSourceType
+}
+
 func (s *GetApplicationResponseBodyApplication) GetResourceServerStatus() *string {
 	return s.ResourceServerStatus
 }
@@ -311,6 +327,11 @@ func (s *GetApplicationResponseBodyApplication) GetUpdateTime() *int64 {
 
 func (s *GetApplicationResponseBodyApplication) SetApiInvokeStatus(v string) *GetApplicationResponseBodyApplication {
 	s.ApiInvokeStatus = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetApplicationCreationType(v string) *GetApplicationResponseBodyApplication {
+	s.ApplicationCreationType = &v
 	return s
 }
 
@@ -391,6 +412,11 @@ func (s *GetApplicationResponseBodyApplication) SetManagedServiceCode(v string) 
 
 func (s *GetApplicationResponseBodyApplication) SetResourceServerIdentifier(v string) *GetApplicationResponseBodyApplication {
 	s.ResourceServerIdentifier = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetResourceServerSourceType(v string) *GetApplicationResponseBodyApplication {
+	s.ResourceServerSourceType = &v
 	return s
 }
 

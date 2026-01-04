@@ -9,6 +9,8 @@ type iListApplicationsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApplicationCreationType(v string) *ListApplicationsRequest
+	GetApplicationCreationType() *string
 	SetApplicationIds(v []*string) *ListApplicationsRequest
 	GetApplicationIds() []*string
 	SetApplicationName(v string) *ListApplicationsRequest
@@ -32,6 +34,10 @@ type iListApplicationsRequest interface {
 }
 
 type ListApplicationsRequest struct {
+	// example:
+	//
+	// system_init
+	ApplicationCreationType *string `json:"ApplicationCreationType,omitempty" xml:"ApplicationCreationType,omitempty"`
 	// The IDs of the applications.
 	//
 	// example:
@@ -126,6 +132,10 @@ func (s ListApplicationsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListApplicationsRequest) GetApplicationCreationType() *string {
+	return s.ApplicationCreationType
+}
+
 func (s *ListApplicationsRequest) GetApplicationIds() []*string {
 	return s.ApplicationIds
 }
@@ -164,6 +174,11 @@ func (s *ListApplicationsRequest) GetSsoType() *string {
 
 func (s *ListApplicationsRequest) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListApplicationsRequest) SetApplicationCreationType(v string) *ListApplicationsRequest {
+	s.ApplicationCreationType = &v
+	return s
 }
 
 func (s *ListApplicationsRequest) SetApplicationIds(v []*string) *ListApplicationsRequest {
