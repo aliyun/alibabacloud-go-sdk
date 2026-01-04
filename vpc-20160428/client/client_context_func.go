@@ -7075,6 +7075,96 @@ func (client *Client) CreateRouteTableWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// # Create Route Target Group
+//
+// Description:
+//
+// - The **CreateRouteTargetGroup*	- interface is an asynchronous interface, meaning the system will return an instance ID, but the route target group instance has not yet been fully created, and the system\\"s background creation task is still in progress. You can call **ListRouteTargetGroup*	- to query the creation status of the route target group:
+//
+//   - When the route target group is in the **Pending*	- state, it indicates that the route target group is being created.
+//
+//   - When the route target group is in the **Available**, **Unavailable**, **Switched**, or **Abnormal*	- state, it indicates that the route target group has been created.
+//
+// - **Active-Standby Mode**: When creating a route target group, you need to configure primary and standby instances that are located in different availability zones and have the same type.
+//
+// - **Primary Instance**: The weight is 100. Under normal circumstances, it carries all traffic and takes effect when the health check is normal.
+//
+// - **Standby Instance**: The weight is 0. It takes over the traffic after the primary instance fails, serving as a disaster recovery backup.
+//
+// @param request - CreateRouteTargetGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRouteTargetGroupResponse
+func (client *Client) CreateRouteTargetGroupWithContext(ctx context.Context, request *CreateRouteTargetGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteTargetGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ConfigMode) {
+		query["ConfigMode"] = request.ConfigMode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.RouteTargetGroupDescription) {
+		query["RouteTargetGroupDescription"] = request.RouteTargetGroupDescription
+	}
+
+	if !dara.IsNil(request.RouteTargetGroupName) {
+		query["RouteTargetGroupName"] = request.RouteTargetGroupName
+	}
+
+	if !dara.IsNil(request.RouteTargetMemberList) {
+		query["RouteTargetMemberList"] = request.RouteTargetMemberList
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRouteTargetGroup"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRouteTargetGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a router interface.
 //
 // Description:
@@ -12461,6 +12551,70 @@ func (client *Client) DeleteRouteTableWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRouteTableResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete Route Target Group
+//
+// Description:
+//
+// - The **DeleteRouteTargetGroup*	- interface is an asynchronous API, meaning the system will return a request ID, but the route target group has not yet been successfully deleted as the deletion task is still in progress in the background. You can call ListRouteTargetGroup to query the deletion status of the route target group:
+//
+//   - When the route target group is in the **Deleting*	- state, it indicates that the route target group is being deleted.
+//
+//   - If you cannot find the specified route target group, it means the route target group has been successfully deleted.
+//
+// @param request - DeleteRouteTargetGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRouteTargetGroupResponse
+func (client *Client) DeleteRouteTargetGroupWithContext(ctx context.Context, request *DeleteRouteTargetGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteTargetGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RouteTargetGroupId) {
+		query["RouteTargetGroupId"] = request.RouteTargetGroupId
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRouteTargetGroup"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRouteTargetGroupResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -21941,6 +22095,66 @@ func (client *Client) GetPublicIpAddressPoolServiceStatusWithContext(ctx context
 
 // Summary:
 //
+// # Get the route target group
+//
+// Description:
+//
+// Get the information of the route target group instance.
+//
+// @param request - GetRouteTargetGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRouteTargetGroupResponse
+func (client *Client) GetRouteTargetGroupWithContext(ctx context.Context, request *GetRouteTargetGroupRequest, runtime *dara.RuntimeOptions) (_result *GetRouteTargetGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RouteTargetGroupId) {
+		query["RouteTargetGroupId"] = request.RouteTargetGroupId
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRouteTargetGroup"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRouteTargetGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the status of the traffic mirror feature.
 //
 // @param request - GetTrafficMirrorServiceStatusRequest
@@ -23779,6 +23993,86 @@ func (client *Client) ListPublicIpAddressPoolsWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPublicIpAddressPoolsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Batch query for route target groups
+//
+// Description:
+//
+// Lists the route target groups.
+//
+// @param request - ListRouteTargetGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRouteTargetGroupsResponse
+func (client *Client) ListRouteTargetGroupsWithContext(ctx context.Context, request *ListRouteTargetGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListRouteTargetGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.MemberId) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.RouteTargetGroupIds) {
+		query["RouteTargetGroupIds"] = request.RouteTargetGroupIds
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRouteTargetGroups"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRouteTargetGroupsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -31737,6 +32031,66 @@ func (client *Client) StopFailoverTestJobWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// Switch Active and Standby For RouteTargetGroup.
+//
+// Description:
+//
+// Switch Active and Standby For RouteTargetGroup.
+//
+// @param request - SwitchActiveRouteTargetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SwitchActiveRouteTargetResponse
+func (client *Client) SwitchActiveRouteTargetWithContext(ctx context.Context, request *SwitchActiveRouteTargetRequest, runtime *dara.RuntimeOptions) (_result *SwitchActiveRouteTargetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RouteTargetGroupId) {
+		query["RouteTargetGroupId"] = request.RouteTargetGroupId
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SwitchActiveRouteTarget"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SwitchActiveRouteTargetResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates and adds tags to resources.
 //
 // Description:
@@ -33629,6 +33983,78 @@ func (client *Client) UpdatePublicIpAddressPoolAttributeWithContext(ctx context.
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePublicIpAddressPoolAttributeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Update Route Target Group
+//
+// Description:
+//
+// - The **UpdateRouteTargetGroup*	- interface is an asynchronous API, meaning the system will return a request ID, but the route target group has not yet been fully updated, and the system\\"s background update task is still in progress. You can call ListRouteTargetGroup to query the update status of the route target group:
+//
+//   - When the route target group is in the **Updating*	- state, it indicates that the route target group is being created.
+//
+//   - When the route target group is in the **Available**, **Unavailable**, **Switched**, or **Abnormal*	- state, it indicates that the route target group has completed its update.
+//
+// @param request - UpdateRouteTargetGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRouteTargetGroupResponse
+func (client *Client) UpdateRouteTargetGroupWithContext(ctx context.Context, request *UpdateRouteTargetGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateRouteTargetGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RouteTargetGroupDescription) {
+		query["RouteTargetGroupDescription"] = request.RouteTargetGroupDescription
+	}
+
+	if !dara.IsNil(request.RouteTargetGroupId) {
+		query["RouteTargetGroupId"] = request.RouteTargetGroupId
+	}
+
+	if !dara.IsNil(request.RouteTargetGroupName) {
+		query["RouteTargetGroupName"] = request.RouteTargetGroupName
+	}
+
+	if !dara.IsNil(request.RouteTargetMemberList) {
+		query["RouteTargetMemberList"] = request.RouteTargetMemberList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRouteTargetGroup"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRouteTargetGroupResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
