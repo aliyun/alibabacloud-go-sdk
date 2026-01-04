@@ -3547,6 +3547,50 @@ func (client *Client) DescribeDomainBpsWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// @param request - DescribeDomainCcProtectSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainCcProtectSwitchResponse
+func (client *Client) DescribeDomainCcProtectSwitchWithContext(ctx context.Context, request *DescribeDomainCcProtectSwitchRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainCcProtectSwitchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Domains) {
+		query["Domains"] = request.Domains
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDomainCcProtectSwitch"),
+		Version:     dara.String("2020-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDomainCcProtectSwitchResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries the information about HTTP/2 fingerprints of a website.
