@@ -108,7 +108,16 @@ func (s *ListServerGroupsResponseBody) SetTotalCount(v int32) *ListServerGroupsR
 }
 
 func (s *ListServerGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ServerGroups != nil {
+		for _, item := range s.ServerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServerGroupsResponseBodyServerGroups struct {
@@ -434,7 +443,21 @@ func (s *ListServerGroupsResponseBodyServerGroups) SetVpcId(v string) *ListServe
 }
 
 func (s *ListServerGroupsResponseBodyServerGroups) Validate() error {
-	return dara.Validate(s)
+	if s.HealthCheck != nil {
+		if err := s.HealthCheck.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServerGroupsResponseBodyServerGroupsHealthCheck struct {

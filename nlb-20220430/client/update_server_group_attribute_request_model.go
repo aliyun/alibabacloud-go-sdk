@@ -227,7 +227,12 @@ func (s *UpdateServerGroupAttributeRequest) SetServerGroupName(v string) *Update
 }
 
 func (s *UpdateServerGroupAttributeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.HealthCheckConfig != nil {
+		if err := s.HealthCheckConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
