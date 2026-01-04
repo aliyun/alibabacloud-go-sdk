@@ -16510,6 +16510,53 @@ func (client *Client) ListAICPublicKeys(request *ListAICPublicKeysRequest) (_res
 
 // Summary:
 //
+// 查询可用的组件列表
+//
+// @param request - ListAddonsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAddonsResponse
+func (client *Client) ListAddonsWithOptions(runtime *dara.RuntimeOptions) (_result *ListAddonsResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAddons"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAddonsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询可用的组件列表
+//
+// @return ListAddonsResponse
+func (client *Client) ListAddons() (_result *ListAddonsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAddonsResponse{}
+	_body, _err := client.ListAddonsWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the created applications.
 //
 // @param request - ListApplicationsRequest
@@ -16661,6 +16708,68 @@ func (client *Client) ListBuckets(request *ListBucketsRequest) (_result *ListBuc
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListBucketsResponse{}
 	_body, _err := client.ListBucketsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询集群已安装的组件实例列表
+//
+// @param request - ListClusterAddonInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListClusterAddonInstancesResponse
+func (client *Client) ListClusterAddonInstancesWithOptions(request *ListClusterAddonInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListClusterAddonInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListClusterAddonInstances"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListClusterAddonInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询集群已安装的组件实例列表
+//
+// @param request - ListClusterAddonInstancesRequest
+//
+// @return ListClusterAddonInstancesResponse
+func (client *Client) ListClusterAddonInstances(request *ListClusterAddonInstancesRequest) (_result *ListClusterAddonInstancesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListClusterAddonInstancesResponse{}
+	_body, _err := client.ListClusterAddonInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
