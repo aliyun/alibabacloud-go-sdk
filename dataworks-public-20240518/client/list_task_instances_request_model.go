@@ -63,8 +63,25 @@ type ListTaskInstancesRequest struct {
 	// example:
 	//
 	// 1710239005403
-	Bizdate *int64  `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	Filter  *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//     "startedTimeStart": "1763481600000",
+	//
+	//     "startedTimeEnd": "1763481600000",
+	//
+	//     "finishedTimeStart": "1763481600000",
+	//
+	//     "finishedTimeEnd": "1763481600000",
+	//
+	//     "createTimeStart": "1763481600000",
+	//
+	//     "createTimeEnd": "1763481600000"
+	//
+	// }
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The ID of the instance. The instance may be rerun. If the instance is rerun and you configure this parameter, the system returns the historical information of the instance, including the rerun information. You can use the RunNumber parameter to distinguish each entry in the historical information.
 	//
 	// example:
@@ -192,8 +209,11 @@ type ListTaskInstancesRequest struct {
 	// example:
 	//
 	// Normal
-	TriggerType               *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	UnifiedWorkflowInstanceId *int64  `json:"UnifiedWorkflowInstanceId,omitempty" xml:"UnifiedWorkflowInstanceId,omitempty"`
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// example:
+	//
+	// 1234
+	UnifiedWorkflowInstanceId *int64 `json:"UnifiedWorkflowInstanceId,omitempty" xml:"UnifiedWorkflowInstanceId,omitempty"`
 	// The ID of the workflow to which the instance belongs.
 	//
 	// example:
@@ -217,6 +237,8 @@ type ListTaskInstancesRequest struct {
 	// 	- ManualWorkflow: Manually triggered workflow
 	//
 	// 	- Normal: Scheduled execution
+	//
+	// 	- TriggerWorkflow: Triggered Workflow
 	//
 	// example:
 	//

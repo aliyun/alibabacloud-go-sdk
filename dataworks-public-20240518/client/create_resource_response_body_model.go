@@ -9,19 +9,21 @@ type iCreateResourceResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetId(v int64) *CreateResourceResponseBody
-	GetId() *int64
+	SetId(v string) *CreateResourceResponseBody
+	GetId() *string
 	SetRequestId(v string) *CreateResourceResponseBody
 	GetRequestId() *string
 }
 
 type CreateResourceResponseBody struct {
-	// The ID of the file resource.
+	// The unique identifier of the resource file.
+	//
+	// > This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK; parameters are still returned according to the type defined in the SDK. Compilation failures due to the type change may occur only when upgrading the SDK across version 8.0.0, in which case users need to manually correct the data type.
 	//
 	// example:
 	//
 	// 631478864897630XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// A5B97987-66EA-5563-9599-A2752292XXXX
 	//
 	// example:
@@ -38,7 +40,7 @@ func (s CreateResourceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateResourceResponseBody) GetId() *int64 {
+func (s *CreateResourceResponseBody) GetId() *string {
 	return s.Id
 }
 
@@ -46,7 +48,7 @@ func (s *CreateResourceResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *CreateResourceResponseBody) SetId(v int64) *CreateResourceResponseBody {
+func (s *CreateResourceResponseBody) SetId(v string) *CreateResourceResponseBody {
 	s.Id = &v
 	return s
 }

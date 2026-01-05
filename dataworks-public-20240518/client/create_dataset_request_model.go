@@ -26,32 +26,84 @@ type iCreateDatasetRequest interface {
 }
 
 type CreateDatasetRequest struct {
+	// The description of the dataset. It must not exceed 1,024 characters in length.
+	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The data type. Valid values:
+	//
+	// 	- COMMON: Common (Default)
+	//
+	// 	- PIC
+	//
+	// 	- TEXT
+	//
+	// 	- TABLE
+	//
+	// 	- VIDEO
+	//
+	// 	- AUDIO
+	//
+	// 	- INDEX
+	//
 	// example:
 	//
 	// COMMON
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The initial version of the dataset.
+	//
 	// This parameter is required.
 	InitVersion *CreateDatasetRequestInitVersion `json:"InitVersion,omitempty" xml:"InitVersion,omitempty" type:"Struct"`
+	// The name of the dataset. It cannot be an empty string and must not exceed 128 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_oss_dataset
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The source of the dataset. Currently, only DataWorks is supported.
+	//
 	// example:
 	//
 	// DataWorks
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The storage type. Currently supported values:
+	//
+	// 	- OSS
+	//
+	// 	- NAS: General-purpose NAS file systems
+	//
+	// 	- EXTREMENAS: Extreme NAS file systems
+	//
+	// 	- DLF_LANCE: Data Lake Formation
+	//
+	// Valid values:
+	//
+	// 	- NAS: General-purpose NAS file systems
+	//
+	// 	- MAXCOMPUTE: MaxCompute table
+	//
+	// 	- CPFS: Cloud Parallel File Storage
+	//
+	// 	- BMCPFS: CPFS for Lingjun
+	//
+	// 	- EXTREMENAS: Extreme NAS file systems
+	//
+	// 	- OSS: Object Storage Service
+	//
+	// 	- DLF_LANCE: Data Lake Formation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -141,15 +193,40 @@ func (s *CreateDatasetRequest) Validate() error {
 }
 
 type CreateDatasetRequestInitVersion struct {
+	// The description. It must not exceed 1,024 characters in length.
+	//
 	// example:
 	//
 	// Initial Version
-	Comment    *string            `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The storage import configuration for the dataset. The required configuration information varies by storage type.
+	//
+	// **NAS**
+	//
+	// For valid values, refer to the response of the file storage API DescribeFileSystems.
+	//
+	// ```JSON
+	//
+	// {
+	//
+	// "fileSystemId": "3b6XXX89c9", // The file system ID.
+	//
+	// "fileSystemStorageType":  "Performance" // The storage specification of the file system.
+	//
+	// "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // The VPC ID of the mount point.
+	//
+	// }
+	//
+	// ```
 	ImportInfo map[string]*string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
+	// The mount path. It must start with /mnt/. Default value: /mnt/data.
+	//
 	// example:
 	//
 	// /mnt/data
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// URL
+	//
 	// This parameter is required.
 	//
 	// example:

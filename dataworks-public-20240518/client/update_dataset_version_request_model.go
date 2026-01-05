@@ -16,10 +16,14 @@ type iUpdateDatasetVersionRequest interface {
 }
 
 type UpdateDatasetVersionRequest struct {
+	// The dataset version description. Maximum length: 1024 characters.
+	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The dataset version ID. Only DataWorks datasets can be updated.
+	//
 	// This parameter is required.
 	//
 	// example:

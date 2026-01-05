@@ -9,8 +9,8 @@ type iMoveNodeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetId(v int64) *MoveNodeRequest
-	GetId() *int64
+	SetId(v string) *MoveNodeRequest
+	GetId() *string
 	SetPath(v string) *MoveNodeRequest
 	GetPath() *string
 	SetProjectId(v int64) *MoveNodeRequest
@@ -25,7 +25,7 @@ type MoveNodeRequest struct {
 	// example:
 	//
 	// 652567824470354XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The path to which you want to move the node. You do not need to specify a node name in the path.
 	//
 	// For example, if you want to move the test node to root/demo/test, you must set this parameter to root/demo.
@@ -56,7 +56,7 @@ func (s MoveNodeRequest) GoString() string {
 	return s.String()
 }
 
-func (s *MoveNodeRequest) GetId() *int64 {
+func (s *MoveNodeRequest) GetId() *string {
 	return s.Id
 }
 
@@ -68,7 +68,7 @@ func (s *MoveNodeRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
 
-func (s *MoveNodeRequest) SetId(v int64) *MoveNodeRequest {
+func (s *MoveNodeRequest) SetId(v string) *MoveNodeRequest {
 	s.Id = &v
 	return s
 }

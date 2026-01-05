@@ -14,6 +14,8 @@ type iGetDatasetVersionRequest interface {
 }
 
 type GetDatasetVersionRequest struct {
+	// The dataset version ID.
+	//
 	// This parameter is required.
 	//
 	// example:

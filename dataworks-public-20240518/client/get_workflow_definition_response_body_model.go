@@ -73,7 +73,7 @@ type GetWorkflowDefinitionResponseBodyWorkflowDefinition struct {
 	// example:
 	//
 	// 463497880880954XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The time when the workflow was last modified. This value is a UNIX timestamp.
 	//
 	// example:
@@ -270,7 +270,7 @@ func (s *GetWorkflowDefinitionResponseBodyWorkflowDefinition) GetCreateTime() *i
 	return s.CreateTime
 }
 
-func (s *GetWorkflowDefinitionResponseBodyWorkflowDefinition) GetId() *int64 {
+func (s *GetWorkflowDefinitionResponseBodyWorkflowDefinition) GetId() *string {
 	return s.Id
 }
 
@@ -303,7 +303,7 @@ func (s *GetWorkflowDefinitionResponseBodyWorkflowDefinition) SetCreateTime(v in
 	return s
 }
 
-func (s *GetWorkflowDefinitionResponseBodyWorkflowDefinition) SetId(v int64) *GetWorkflowDefinitionResponseBodyWorkflowDefinition {
+func (s *GetWorkflowDefinitionResponseBodyWorkflowDefinition) SetId(v string) *GetWorkflowDefinitionResponseBodyWorkflowDefinition {
 	s.Id = &v
 	return s
 }

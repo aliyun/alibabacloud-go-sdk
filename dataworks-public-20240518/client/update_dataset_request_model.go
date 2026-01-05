@@ -20,20 +20,28 @@ type iUpdateDatasetRequest interface {
 }
 
 type UpdateDatasetRequest struct {
+	// The dataset description. Length not exceeding 1024.
+	//
 	// example:
 	//
 	// new comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The dataset ID. Only DataWorks datasets are supported for update.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataworks-dataset:3pXXXb8o0ngr07njhps1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The dataset name. A non-empty string, length not exceeding 128.
+	//
 	// example:
 	//
 	// test_oss_dataset_new
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The user guide, supports Markdown formatted rich text.
+	//
 	// example:
 	//
 	// ## introduction

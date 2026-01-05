@@ -64,13 +64,13 @@ type ListTasksRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The environment of the workspace.
+	// The workspace environment.
 	//
 	// Valid values:
 	//
-	// 	- Prod: production environment
+	// 	- Prod
 	//
-	// 	- Dev: development environment
+	// 	- Dev
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type ListTasksRequest struct {
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The running mode of the task after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler.
+	// The run mode when triggered. Valid only if TriggerType is Scheduler.
 	//
 	// Valid values:
 	//
@@ -168,9 +168,9 @@ type ListTasksRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Scheduler: scheduling cycle-based trigger
+	// 	- Scheduler: Triggered by schedule.
 	//
-	// 	- Manual: manual trigger
+	// 	- Manual: Triggered manually.
 	//
 	// example:
 	//

@@ -9,8 +9,8 @@ type iUpdateNodeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetId(v int64) *UpdateNodeRequest
-	GetId() *int64
+	SetId(v string) *UpdateNodeRequest
+	GetId() *string
 	SetProjectId(v int64) *UpdateNodeRequest
 	GetProjectId() *int64
 	SetSpec(v string) *UpdateNodeRequest
@@ -18,14 +18,16 @@ type iUpdateNodeRequest interface {
 }
 
 type UpdateNodeRequest struct {
-	// The ID of the node.
+	// The unique identifier of the Data Studio node.
+	//
+	// >  This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect normal SDK usage; the parameter will still be returned according to the type defined in the SDK. However, compilation failures may occur due to the type change only when upgrading the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 652567824470354XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
 	// This parameter is required.
@@ -186,7 +188,7 @@ func (s UpdateNodeRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateNodeRequest) GetId() *int64 {
+func (s *UpdateNodeRequest) GetId() *string {
 	return s.Id
 }
 
@@ -198,7 +200,7 @@ func (s *UpdateNodeRequest) GetSpec() *string {
 	return s.Spec
 }
 
-func (s *UpdateNodeRequest) SetId(v int64) *UpdateNodeRequest {
+func (s *UpdateNodeRequest) SetId(v string) *UpdateNodeRequest {
 	s.Id = &v
 	return s
 }

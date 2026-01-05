@@ -74,7 +74,7 @@ type ListResourcesResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The queried file resources.
+	// The returned resource list.
 	Resources []*ListResourcesResponseBodyPagingInfoResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -148,21 +148,23 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	//
 	// 1724505917000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The information about the data source.
+	// The data source.
 	DataSource *ListResourcesResponseBodyPagingInfoResourcesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
-	// The ID of the file resource.
+	// The unique identifier of the file resource.
+	//
+	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// example:
 	//
 	// 631478864897630XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The times when the file resource was last modified. This value is a UNIX timestamp.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The timestamp when the file resource was last modified.
 	//
 	// example:
 	//
 	// 1724505917000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The name of the file resource.
+	// The resource name.
 	//
 	// example:
 	//
@@ -174,7 +176,7 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	//
 	// 110755000425XXXX
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
+	// The ID of the DataWorks workspace. To obtain the workspace ID, log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and navigate to the workspace configuration page.
 	//
 	// example:
 	//
@@ -182,45 +184,45 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The script information.
 	Script *ListResourcesResponseBodyPagingInfoResourcesScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
-	// The path of the source of the file resource. If the SourecType parameter is set to Local, this parameter is left empty.
+	// Source path of the file resource. This parameter is empty if the type is Local.
 	//
 	// example:
 	//
 	// XXX/unknown/ide/1/XXX/20240820200851_963a9da676de44ef8d06a6576a8c4d6a.py
 	SourcePath *string `json:"SourcePath,omitempty" xml:"SourcePath,omitempty"`
-	// The storage type of the source of the file resource.
+	// The source storage type of the file resource.
 	//
 	// Valid values:
 	//
-	// 	- Local
+	// 	- Local: Local storage
 	//
-	// 	- Oss
+	// 	- OSS: Object Storage Service
 	//
 	// example:
 	//
 	// local
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The storage path of the destination of the file resource.
+	// The destination storage path
 	//
 	// example:
 	//
 	// XXX/unknown/ide/1/XXX/20240820200851_963a9da676de44ef8d06a6576a8c4d6a.py
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The storage type of the destination of the file resource.
+	// The destination storage type.
 	//
 	// Valid values:
 	//
 	// 	- Gateway
 	//
-	// 	- Oss
+	// 	- OSS
 	//
-	// 	- Hdfs
+	// 	- HDFS
 	//
 	// example:
 	//
 	// oss
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The type of the file resource.
+	// The resource type.
 	//
 	// Valid values:
 	//
@@ -254,7 +256,7 @@ func (s *ListResourcesResponseBodyPagingInfoResources) GetDataSource() *ListReso
 	return s.DataSource
 }
 
-func (s *ListResourcesResponseBodyPagingInfoResources) GetId() *int64 {
+func (s *ListResourcesResponseBodyPagingInfoResources) GetId() *string {
 	return s.Id
 }
 
@@ -308,7 +310,7 @@ func (s *ListResourcesResponseBodyPagingInfoResources) SetDataSource(v *ListReso
 	return s
 }
 
-func (s *ListResourcesResponseBodyPagingInfoResources) SetId(v int64) *ListResourcesResponseBodyPagingInfoResources {
+func (s *ListResourcesResponseBodyPagingInfoResources) SetId(v string) *ListResourcesResponseBodyPagingInfoResources {
 	s.Id = &v
 	return s
 }
@@ -378,7 +380,7 @@ func (s *ListResourcesResponseBodyPagingInfoResources) Validate() error {
 }
 
 type ListResourcesResponseBodyPagingInfoResourcesDataSource struct {
-	// The name of the data source.
+	// The data source name.
 	//
 	// example:
 	//
@@ -423,19 +425,21 @@ func (s *ListResourcesResponseBodyPagingInfoResourcesDataSource) Validate() erro
 }
 
 type ListResourcesResponseBodyPagingInfoResourcesScript struct {
-	// The script ID.
+	// Script ID.
+	//
+	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// example:
 	//
 	// 123348864897630XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The script path.
 	//
 	// example:
 	//
 	// root/demo
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The runtime.
+	// Runtime
 	Runtime *ListResourcesResponseBodyPagingInfoResourcesScriptRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
 }
 
@@ -447,7 +451,7 @@ func (s ListResourcesResponseBodyPagingInfoResourcesScript) GoString() string {
 	return s.String()
 }
 
-func (s *ListResourcesResponseBodyPagingInfoResourcesScript) GetId() *int64 {
+func (s *ListResourcesResponseBodyPagingInfoResourcesScript) GetId() *string {
 	return s.Id
 }
 
@@ -459,7 +463,7 @@ func (s *ListResourcesResponseBodyPagingInfoResourcesScript) GetRuntime() *ListR
 	return s.Runtime
 }
 
-func (s *ListResourcesResponseBodyPagingInfoResourcesScript) SetId(v int64) *ListResourcesResponseBodyPagingInfoResourcesScript {
+func (s *ListResourcesResponseBodyPagingInfoResourcesScript) SetId(v string) *ListResourcesResponseBodyPagingInfoResourcesScript {
 	s.Id = &v
 	return s
 }
@@ -484,7 +488,7 @@ func (s *ListResourcesResponseBodyPagingInfoResourcesScript) Validate() error {
 }
 
 type ListResourcesResponseBodyPagingInfoResourcesScriptRuntime struct {
-	// The command used to distinguish file resource types.
+	// Command. This parameter indicates the file type.
 	//
 	// example:
 	//

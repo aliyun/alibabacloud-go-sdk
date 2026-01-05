@@ -14,6 +14,8 @@ type iGetDatasetRequest interface {
 }
 
 type GetDatasetRequest struct {
+	// The dataset ID.
+	//
 	// This parameter is required.
 	//
 	// example:

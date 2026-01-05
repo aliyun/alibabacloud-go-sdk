@@ -18,6 +18,7 @@ type iPreviewDatasetVersionResponseBody interface {
 }
 
 type PreviewDatasetVersionResponseBody struct {
+	// Preview results
 	PreviewResult *PreviewDatasetVersionResponseBodyPreviewResult `json:"PreviewResult,omitempty" xml:"PreviewResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -25,6 +26,8 @@ type PreviewDatasetVersionResponseBody struct {
 	//
 	// A6C6B486-E3A2-5D52-9E76-D9380485DXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -76,18 +79,26 @@ func (s *PreviewDatasetVersionResponseBody) Validate() error {
 }
 
 type PreviewDatasetVersionResponseBodyPreviewResult struct {
+	// Content
+	//
 	// example:
 	//
 	// this is content
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// File name
+	//
 	// example:
 	//
 	// parth/data.csv
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The MIME type
+	//
 	// example:
 	//
 	// text/plain
 	MimeType *string `json:"MimeType,omitempty" xml:"MimeType,omitempty"`
+	// Preview availability
+	//
 	// example:
 	//
 	// true

@@ -16,8 +16,14 @@ type iListComputeResourcesResponseBody interface {
 }
 
 type ListComputeResourcesResponseBody struct {
+	// Pagination information.
 	PagingInfo *ListComputeResourcesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID. Used to locate logs and troubleshoot issues.
+	//
+	// example:
+	//
+	// 7C352CB7-CD88-50CF-9D0D-E81BDF02XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListComputeResourcesResponseBody) String() string {
@@ -56,10 +62,26 @@ func (s *ListComputeResourcesResponseBody) Validate() error {
 }
 
 type ListComputeResourcesResponseBodyPagingInfo struct {
+	// The list of computing resources. Each element is a computing resource group that contains information about the development environment (if any) and the production environment.
 	ComputeResources []*ListComputeResourcesResponseBodyPagingInfoComputeResources `json:"ComputeResources,omitempty" xml:"ComputeResources,omitempty" type:"Repeated"`
-	PageNumber       *int64                                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int64                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount       *int64                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The current page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records.
+	//
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListComputeResourcesResponseBodyPagingInfo) String() string {
@@ -120,9 +142,20 @@ func (s *ListComputeResourcesResponseBodyPagingInfo) Validate() error {
 }
 
 type ListComputeResourcesResponseBodyPagingInfoComputeResources struct {
+	// Details of a single computing resource.
 	ComputeResource []*ListComputeResourcesResponseBodyPagingInfoComputeResourcesComputeResource `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Repeated"`
-	Name            *string                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type            *string                                                                      `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the computing resource.
+	//
+	// example:
+	//
+	// cal_all_vemg_workflow_parallel
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the computing resource.
+	//
+	// example:
+	//
+	// hologres
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListComputeResourcesResponseBodyPagingInfoComputeResources) String() string {
@@ -174,15 +207,64 @@ func (s *ListComputeResourcesResponseBodyPagingInfoComputeResources) Validate() 
 }
 
 type ListComputeResourcesResponseBodyPagingInfoComputeResourcesComputeResource struct {
-	ConnectionProperties     interface{} `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
-	ConnectionPropertiesMode *string     `json:"ConnectionPropertiesMode,omitempty" xml:"ConnectionPropertiesMode,omitempty"`
-	CreateTime               *int64      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUser               *string     `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	Description              *string     `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id                       *int64      `json:"Id,omitempty" xml:"Id,omitempty"`
-	ModifyTime               *int64      `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ModifyUser               *string     `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	WhetherDefault           *bool       `json:"WhetherDefault,omitempty" xml:"WhetherDefault,omitempty"`
+	// The category of the added compute resource. Different types have different subtypes with corresponding parameter constraints. Examples: InstanceMode: The instance mode. UrlMode: The connection string mode.
+	//
+	// example:
+	//
+	// {\\n    \\"clusterIdentifier\\": \\"c-da123456\\",\\n    \\"database\\": \\"testdb\\",\\n    \\"loginMode\\":\\"Anonymous\\",\\n    \\"defaultFS\\":\\"127.0.0.1\\",\\n    \\"envType\\": \\"Prod\\"\\n}
+	ConnectionProperties interface{} `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
+	// The specific connection configuration details for the computing resource, including the connection address, access identity, and environment information. envType, which specifies the computing resource environment, is a property of this object. Valid values:
+	//
+	// 	- Dev
+	//
+	// 	- Prod Different types of computing resources have different attribute specifications under different configuration modes (ConnectionPropertiesMode).
+	//
+	// example:
+	//
+	// UrlMode
+	ConnectionPropertiesMode *string `json:"ConnectionPropertiesMode,omitempty" xml:"ConnectionPropertiesMode,omitempty"`
+	// The creation time (timestamp).
+	//
+	// example:
+	//
+	// 1624387842781448
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator ID.
+	//
+	// example:
+	//
+	// 1648711113000
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The unique identifier of the computing resource.
+	//
+	// example:
+	//
+	// home_feed
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The computing resource ID, which is the unique identifier for the resource.
+	//
+	// example:
+	//
+	// 8649832502405358603
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The last modified time of the computing resource (timestamp).
+	//
+	// example:
+	//
+	// 1624387842781448
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The modifier ID.
+	//
+	// example:
+	//
+	// 1648711113000
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// Specifies whether it is the default compute resource.
+	//
+	// example:
+	//
+	// true
+	WhetherDefault *bool `json:"WhetherDefault,omitempty" xml:"WhetherDefault,omitempty"`
 }
 
 func (s ListComputeResourcesResponseBodyPagingInfoComputeResourcesComputeResource) String() string {

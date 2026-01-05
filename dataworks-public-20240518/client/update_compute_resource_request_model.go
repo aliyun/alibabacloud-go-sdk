@@ -22,13 +22,53 @@ type iUpdateComputeResourceRequest interface {
 }
 
 type UpdateComputeResourceRequest struct {
+	// The specific connection configuration of the computing resource, including the connection address, access identity, and environment information. The environment type (EnvType) of the computing resource is a member attribute of this object, including DEV (development environment) and PROD (production environment). The value is not case-sensitive.
+	//
 	// This parameter is required.
-	ConnectionProperties     *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
+	//
+	// example:
+	//
+	// {
+	//
+	//     "envType": "Prod",
+	//
+	//     "regionId": "cn-beijing",
+	//
+	//     "instanceId": "hgprecn-cn-x0r3oun4k001",
+	//
+	//     "database": "testdb",
+	//
+	//     "securityProtocol": "authTypeNone",
+	//
+	//     "authType": "Executor",
+	//
+	//     "authIdentity": "1107550004253538"
+	//
+	// }
+	ConnectionProperties *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
+	// The category of the computing resource to be added. Different types have different subtypes and corresponding parameter schema constraints. Examples: InstanceMode and UrlMode.
+	//
+	// example:
+	//
+	// InstanceMode
 	ConnectionPropertiesMode *string `json:"ConnectionPropertiesMode,omitempty" xml:"ConnectionPropertiesMode,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the computing resource. The maximum length is 3000 characters.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the computing resource.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 10001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 10001
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 

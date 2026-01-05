@@ -24,6 +24,11 @@ type iListWorkflowDefinitionsRequest interface {
 }
 
 type ListWorkflowDefinitionsRequest struct {
+	// The name of the workflow. Fuzzy search is supported.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the Alibaba Cloud account used by the workspace administrator. You can log on to the Alibaba Cloud Management Console and view the ID on the Security Settings page.
 	//
@@ -31,7 +36,7 @@ type ListWorkflowDefinitionsRequest struct {
 	//
 	// 110755000425XXXX
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The page number.
+	// The page number of the data to retrieve, used for pagination.
 	//
 	// example:
 	//
@@ -53,7 +58,7 @@ type ListWorkflowDefinitionsRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The workflow type. This parameter specifies a filter condition.
+	// Filter condition: The type of the workflow. The default value is CycleWorkflow.
 	//
 	// Valid values:
 	//

@@ -9,8 +9,8 @@ type iGetWorkflowDefinitionRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetId(v int64) *GetWorkflowDefinitionRequest
-	GetId() *int64
+	SetId(v string) *GetWorkflowDefinitionRequest
+	GetId() *string
 	SetIncludeScriptContent(v bool) *GetWorkflowDefinitionRequest
 	GetIncludeScriptContent() *bool
 	SetProjectId(v int64) *GetWorkflowDefinitionRequest
@@ -25,7 +25,7 @@ type GetWorkflowDefinitionRequest struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// 查询结果是否包含工作流内部节点的脚本内容（对于内容较多的节点，可能存在较长的网络传输延时）。
 	//
 	// example:
@@ -50,7 +50,7 @@ func (s GetWorkflowDefinitionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetWorkflowDefinitionRequest) GetId() *int64 {
+func (s *GetWorkflowDefinitionRequest) GetId() *string {
 	return s.Id
 }
 
@@ -62,7 +62,7 @@ func (s *GetWorkflowDefinitionRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
 
-func (s *GetWorkflowDefinitionRequest) SetId(v int64) *GetWorkflowDefinitionRequest {
+func (s *GetWorkflowDefinitionRequest) SetId(v string) *GetWorkflowDefinitionRequest {
 	s.Id = &v
 	return s
 }

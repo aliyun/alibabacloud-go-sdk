@@ -28,15 +28,72 @@ type iListComputeResourcesRequest interface {
 }
 
 type ListComputeResourcesRequest struct {
-	EnvType    *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The environment type of the computing resource. Valid values:
+	//
+	// 	- Dev
+	//
+	// 	- Prod
+	//
+	// example:
+	//
+	// Dev
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The name of the computing resource.
+	//
+	// example:
+	//
+	// category name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sort direction of the computing resource list. Valid values:
+	//
+	// 	- Desc: descending order.
+	//
+	// 	- Asc: ascending order.
+	//
+	// Default value: Desc
+	//
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number to query. The default value is 1, which indicates the first page.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. The default value is 10, and the maximum value is 100.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the DataWorks workspace.
+	//
 	// This parameter is required.
-	ProjectId *int64    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SortBy    *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	Types     []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// 21229
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The field to sort the computing resource list by. Supported fields include name, creation time, and computing resource ID.
+	//
+	// 	- CreateTime: Sorts by creation time
+	//
+	// 	- Id: Sorts by computing resource ID
+	//
+	// 	- Name: Sorts by computing resource name.
+	//
+	// 	- CreateTimeWithDefaultFirst: Sorts based on whether it is the default resource and by creation time, with the default computing resource listed first.
+	//
+	// Default value: CreateTime
+	//
+	// example:
+	//
+	// CreateTimeWithDefaultFirst
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The filter for computing resource types. You can configure multiple types for filtering.
+	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 
 func (s ListComputeResourcesRequest) String() string {

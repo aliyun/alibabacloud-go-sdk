@@ -82,7 +82,8 @@ type GetCreateWorkflowInstancesResultResponseBodyResult struct {
 	Status                     *string  `json:"Status,omitempty" xml:"Status,omitempty"`
 	UnifiedWorkflowInstanceIds []*int64 `json:"UnifiedWorkflowInstanceIds,omitempty" xml:"UnifiedWorkflowInstanceIds,omitempty" type:"Repeated"`
 	// The workflow instance IDs. This parameter is returned only if the creation is successful.
-	WorkflowInstanceIds     []*int64 `json:"WorkflowInstanceIds,omitempty" xml:"WorkflowInstanceIds,omitempty" type:"Repeated"`
+	WorkflowInstanceIds []*int64 `json:"WorkflowInstanceIds,omitempty" xml:"WorkflowInstanceIds,omitempty" type:"Repeated"`
+	// The list of task instance IDs corresponding to the workflow instance. This field is returned after successful creation.
 	WorkflowTaskInstanceIds []*int64 `json:"WorkflowTaskInstanceIds,omitempty" xml:"WorkflowTaskInstanceIds,omitempty" type:"Repeated"`
 }
 

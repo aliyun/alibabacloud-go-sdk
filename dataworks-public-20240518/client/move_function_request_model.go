@@ -9,8 +9,8 @@ type iMoveFunctionRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetId(v int64) *MoveFunctionRequest
-	GetId() *int64
+	SetId(v string) *MoveFunctionRequest
+	GetId() *string
 	SetPath(v string) *MoveFunctionRequest
 	GetPath() *string
 	SetProjectId(v int64) *MoveFunctionRequest
@@ -18,14 +18,16 @@ type iMoveFunctionRequest interface {
 }
 
 type MoveFunctionRequest struct {
-	// The ID of the UDF.
+	// The unique identifier of the UDF.
+	//
+	// >  This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect normal SDK usage; the parameter will still be returned according to the type defined in the SDK.. However, compilation failures may occur due to the type change only when upgrading the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 543217824470354XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The path to which you want to move the UDF. You do not need to specify a UDF name in the path.
 	//
 	// For example, if you want to move the test UDF to root/demo/test, you must set this parameter to root/demo.
@@ -56,7 +58,7 @@ func (s MoveFunctionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *MoveFunctionRequest) GetId() *int64 {
+func (s *MoveFunctionRequest) GetId() *string {
 	return s.Id
 }
 
@@ -68,7 +70,7 @@ func (s *MoveFunctionRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
 
-func (s *MoveFunctionRequest) SetId(v int64) *MoveFunctionRequest {
+func (s *MoveFunctionRequest) SetId(v string) *MoveFunctionRequest {
 	s.Id = &v
 	return s
 }

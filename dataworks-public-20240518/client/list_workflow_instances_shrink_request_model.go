@@ -45,8 +45,17 @@ type ListWorkflowInstancesShrinkRequest struct {
 	// example:
 	//
 	// 1710239005403
-	BizDate *int64  `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	Filter  *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//     "status": "Success",
+	//
+	//     "executionDate": "1763481600000"
+	//
+	// }
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The IDs of the workflow instances. You can query multiple instances at a time by instance ID.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	// The instance name. Fuzzy match is supported.
@@ -117,8 +126,11 @@ type ListWorkflowInstancesShrinkRequest struct {
 	// example:
 	//
 	// Normal
-	Type                      *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UnifiedWorkflowInstanceId *int64  `json:"UnifiedWorkflowInstanceId,omitempty" xml:"UnifiedWorkflowInstanceId,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1234
+	UnifiedWorkflowInstanceId *int64 `json:"UnifiedWorkflowInstanceId,omitempty" xml:"UnifiedWorkflowInstanceId,omitempty"`
 	// The ID of the workflow to which the instance belongs.
 	//
 	// example:

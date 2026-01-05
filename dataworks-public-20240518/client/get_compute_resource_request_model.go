@@ -16,9 +16,21 @@ type iGetComputeResourceRequest interface {
 }
 
 type GetComputeResourceRequest struct {
+	// The computing resource ID, which is the unique identifier for the resource.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 11792
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the DataWorks workspace.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 10003
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 

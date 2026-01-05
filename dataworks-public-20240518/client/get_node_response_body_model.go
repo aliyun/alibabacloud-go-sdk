@@ -16,7 +16,7 @@ type iGetNodeResponseBody interface {
 }
 
 type GetNodeResponseBody struct {
-	// The information about the node.
+	// Data Studio node details.
 	Node *GetNodeResponseBodyNode `json:"Node,omitempty" xml:"Node,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,12 +68,14 @@ type GetNodeResponseBodyNode struct {
 	//
 	// 1700539206000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the node.
+	// The unique identifier of the Data Studio node.
+	//
+	// >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK; parameters are still returned according to the type defined in the SDK. Compilation failures due to the type change may occur only when upgrading the SDK across version 8.0.0, in which case users need to manually correct the data type.
 	//
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The time when the node was last modified. This value is a UNIX timestamp.
 	//
 	// example:
@@ -270,7 +272,7 @@ type GetNodeResponseBodyNode struct {
 	//
 	// }
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The Id of the scheduled task after the node is published.
+	// The ID of the corresponding scheduling task after the node is published.
 	//
 	// example:
 	//
@@ -290,7 +292,7 @@ func (s *GetNodeResponseBodyNode) GetCreateTime() *int64 {
 	return s.CreateTime
 }
 
-func (s *GetNodeResponseBodyNode) GetId() *int64 {
+func (s *GetNodeResponseBodyNode) GetId() *string {
 	return s.Id
 }
 
@@ -323,7 +325,7 @@ func (s *GetNodeResponseBodyNode) SetCreateTime(v int64) *GetNodeResponseBodyNod
 	return s
 }
 
-func (s *GetNodeResponseBodyNode) SetId(v int64) *GetNodeResponseBodyNode {
+func (s *GetNodeResponseBodyNode) SetId(v string) *GetNodeResponseBodyNode {
 	s.Id = &v
 	return s
 }

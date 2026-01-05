@@ -18,6 +18,7 @@ type iListDatasetVersionsResponseBody interface {
 }
 
 type ListDatasetVersionsResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListDatasetVersionsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// RequestId
 	//
@@ -25,6 +26,8 @@ type ListDatasetVersionsResponseBody struct {
 	//
 	// E25887B7-579C-54A5-9C4F-83A0DE367XXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -76,15 +79,22 @@ func (s *ListDatasetVersionsResponseBody) Validate() error {
 }
 
 type ListDatasetVersionsResponseBodyPagingInfo struct {
+	// The dataset version list.
 	DatasetVersions []*DatasetVersion `json:"DatasetVersions,omitempty" xml:"DatasetVersions,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100

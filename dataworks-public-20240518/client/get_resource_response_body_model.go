@@ -22,7 +22,7 @@ type GetResourceResponseBody struct {
 	//
 	// E871F6C0-2EFF-5790-A00D-C57543EEXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the file resource.
+	// File resource details
 	Resource *GetResourceResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 }
 
@@ -68,12 +68,14 @@ type GetResourceResponseBodyResource struct {
 	//
 	// 1700539206000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the file resource.
+	// The unique identifier of the file resource.
+	//
+	// >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK; parameters are still returned according to the type defined in the SDK. Compilation failures due to the type change may occur only when upgrading the SDK across version 8.0.0, in which case users need to manually correct the data type.
 	//
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The time when the file resource was last modified. This value is a UNIX timestamp.
 	//
 	// example:
@@ -176,7 +178,7 @@ func (s *GetResourceResponseBodyResource) GetCreateTime() *int64 {
 	return s.CreateTime
 }
 
-func (s *GetResourceResponseBodyResource) GetId() *int64 {
+func (s *GetResourceResponseBodyResource) GetId() *string {
 	return s.Id
 }
 
@@ -205,7 +207,7 @@ func (s *GetResourceResponseBodyResource) SetCreateTime(v int64) *GetResourceRes
 	return s
 }
 
-func (s *GetResourceResponseBodyResource) SetId(v int64) *GetResourceResponseBodyResource {
+func (s *GetResourceResponseBodyResource) SetId(v string) *GetResourceResponseBodyResource {
 	s.Id = &v
 	return s
 }

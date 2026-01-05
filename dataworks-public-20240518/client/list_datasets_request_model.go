@@ -32,39 +32,103 @@ type iListDatasetsRequest interface {
 }
 
 type ListDatasetsRequest struct {
+	// The creator ID.
+	//
 	// example:
 	//
 	// 12103XXX46492139
-	CreatorId    *string   `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The data type. Multiple selections are allowed. Valid values:
+	//
+	// 	- COMMON
+	//
+	// 	- PIC
+	//
+	// 	- TEXT
+	//
+	// 	- TABLE
+	//
+	// 	- VIDEO
+	//
+	// 	- AUDIO
+	//
+	// 	- INDEX
 	DataTypeList []*string `json:"DataTypeList,omitempty" xml:"DataTypeList,omitempty" type:"Repeated"`
+	// The dataset name. Supports fuzzy search.
+	//
 	// example:
 	//
 	// test_dataset
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sort order. Default: Desc.
+	//
+	// Valid values:
+	//
+	// 	- Asc: Ascending.
+	//
+	// 	- Desc: Descending.
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The dataset source. Valid values:
+	//
+	// 	- DataWorks
+	//
+	// 	- PAI
+	//
 	// example:
 	//
 	// DataWorks
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The page number. Default: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default: 10. Maximum: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// example:
 	//
 	// 251363
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The sort field. Default: CreateTime.
+	//
+	// Valid values:
+	//
+	// 	- ModifyTime: Modification time.
+	//
+	// 	- CreateTime: Creation time.
+	//
+	// 	- Name
+	//
 	// example:
 	//
 	// CreateTime
-	SortBy          *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The storage type. Multiple selections are allowed. Supported values:
+	//
+	// 	- OSS
+	//
+	// 	- NAS: General-purpose NAS file systems
+	//
+	// 	- EXTREMENAS: Extreme NAS file systems
+	//
+	// 	- DLF_LANCE: Data Lake Formation
+	//
+	// 	- CPFS: Cloud Parallel File Storage
+	//
+	// 	- BMCPFS: CPFS for Lingjun
+	//
+	// 	- MAXCOMPUTE: MaxCompute table
 	StorageTypeList []*string `json:"StorageTypeList,omitempty" xml:"StorageTypeList,omitempty" type:"Repeated"`
 }
 

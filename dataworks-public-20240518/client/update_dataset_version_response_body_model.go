@@ -22,6 +22,8 @@ type UpdateDatasetVersionResponseBody struct {
 	//
 	// A090666C-74FB-5629-ABFC-2FE99DD55XXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the update succeeded.
+	//
 	// example:
 	//
 	// true

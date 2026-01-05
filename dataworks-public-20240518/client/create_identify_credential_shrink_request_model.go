@@ -14,6 +14,7 @@ type iCreateIdentifyCredentialShrinkRequest interface {
 }
 
 type CreateIdentifyCredentialShrinkRequest struct {
+	// The user credential object.
 	IdentifyCredentialShrink *string `json:"IdentifyCredential,omitempty" xml:"IdentifyCredential,omitempty"`
 }
 

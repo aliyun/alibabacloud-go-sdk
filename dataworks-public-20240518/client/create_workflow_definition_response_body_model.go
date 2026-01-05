@@ -9,19 +9,21 @@ type iCreateWorkflowDefinitionResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetId(v int64) *CreateWorkflowDefinitionResponseBody
-	GetId() *int64
+	SetId(v string) *CreateWorkflowDefinitionResponseBody
+	GetId() *string
 	SetRequestId(v string) *CreateWorkflowDefinitionResponseBody
 	GetRequestId() *string
 }
 
 type CreateWorkflowDefinitionResponseBody struct {
-	// The ID of the workflow.
+	// The unique identifier of the workflow.
+	//
+	// >  This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect normal SDK usage; the parameter will still be returned according to the type defined in the SDK. However, compilation failures may occur due to the type change only when upgrading the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// example:
 	//
 	// 463497880880954XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -38,7 +40,7 @@ func (s CreateWorkflowDefinitionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateWorkflowDefinitionResponseBody) GetId() *int64 {
+func (s *CreateWorkflowDefinitionResponseBody) GetId() *string {
 	return s.Id
 }
 
@@ -46,7 +48,7 @@ func (s *CreateWorkflowDefinitionResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *CreateWorkflowDefinitionResponseBody) SetId(v int64) *CreateWorkflowDefinitionResponseBody {
+func (s *CreateWorkflowDefinitionResponseBody) SetId(v string) *CreateWorkflowDefinitionResponseBody {
 	s.Id = &v
 	return s
 }

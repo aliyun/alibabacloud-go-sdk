@@ -14,6 +14,8 @@ type iDeleteDatasetVersionRequest interface {
 }
 
 type DeleteDatasetVersionRequest struct {
+	// The dataset version ID. Only DataWorks datasets are supported.
+	//
 	// This parameter is required.
 	//
 	// example:

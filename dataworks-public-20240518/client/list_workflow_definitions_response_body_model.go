@@ -142,25 +142,27 @@ func (s *ListWorkflowDefinitionsResponseBodyPagingInfo) Validate() error {
 }
 
 type ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions struct {
-	// The time when the workflow was created. This value is a UNIX timestamp.
+	// The timestamp when the workflow was created.
 	//
 	// example:
 	//
 	// 1698057323000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the workflow.
+	// Description
 	//
 	// example:
 	//
 	// Workflow description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the workflow.
+	// The unique identifier of the workflow.
+	//
+	// >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK; parameters are still returned according to the type defined in the SDK. Compilation failures due to the type change may occur only when upgrading the SDK across version 8.0.0, in which case users need to manually correct the data type.
 	//
 	// example:
 	//
 	// 463497880880954XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time when the workflow was last modified. This value is a UNIX timestamp.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The timestamp when the workflow was last modified.
 	//
 	// example:
 	//
@@ -172,7 +174,7 @@ type ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions struct {
 	//
 	// OpenAPI test workflow Demo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The owner.
+	// Owner
 	//
 	// example:
 	//
@@ -218,7 +220,7 @@ func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions) GetDe
 	return s.Description
 }
 
-func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions) GetId() *int64 {
+func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions) GetId() *string {
 	return s.Id
 }
 
@@ -256,7 +258,7 @@ func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions) SetDe
 	return s
 }
 
-func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions) SetId(v int64) *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions {
+func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions) SetId(v string) *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions {
 	s.Id = &v
 	return s
 }
@@ -301,19 +303,21 @@ func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions) Valid
 }
 
 type ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript struct {
-	// The script ID.
+	// The ID of the script.
+	//
+	// >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK; parameters are still returned according to the type defined in the SDK. Compilation failures due to the type change may occur only when upgrading the SDK across version 8.0.0, in which case users need to manually correct the data type.
 	//
 	// example:
 	//
 	// 698002781368644XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The script path.
 	//
 	// example:
 	//
 	// XX/OpenAPI_test/workflow_test/OpenAPI_test_workflow_Demo
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The runtime.
+	// Runtime
 	Runtime *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScriptRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
 }
 
@@ -325,7 +329,7 @@ func (s ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript) 
 	return s.String()
 }
 
-func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript) GetId() *int64 {
+func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript) GetId() *string {
 	return s.Id
 }
 
@@ -337,7 +341,7 @@ func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript)
 	return s.Runtime
 }
 
-func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript) SetId(v int64) *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript {
+func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript) SetId(v string) *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript {
 	s.Id = &v
 	return s
 }
@@ -362,7 +366,7 @@ func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript)
 }
 
 type ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScriptRuntime struct {
-	// The command.
+	// Command
 	//
 	// example:
 	//

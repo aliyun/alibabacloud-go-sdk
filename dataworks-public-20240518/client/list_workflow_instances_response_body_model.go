@@ -16,7 +16,7 @@ type iListWorkflowInstancesResponseBody interface {
 }
 
 type ListWorkflowInstancesResponseBody struct {
-	// The pagination information.
+	// Pagination information.
 	PagingInfo *ListWorkflowInstancesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -198,6 +198,8 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	//
 	// WorkflowInstance1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The account ID of the workflow owner.
+	//
 	// example:
 	//
 	// 1000
@@ -255,8 +257,11 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	// example:
 	//
 	// Normal
-	Type                      *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UnifiedWorkflowInstanceId *int64  `json:"UnifiedWorkflowInstanceId,omitempty" xml:"UnifiedWorkflowInstanceId,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1234
+	UnifiedWorkflowInstanceId *int64 `json:"UnifiedWorkflowInstanceId,omitempty" xml:"UnifiedWorkflowInstanceId,omitempty"`
 	// The ID of the workflow to which the instance belongs.
 	//
 	// example:
@@ -265,6 +270,8 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 	// The workflow parameters.
 	WorkflowParameters *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
+	// The task instance ID corresponding to the workflow instance.
+	//
 	// example:
 	//
 	// 1234

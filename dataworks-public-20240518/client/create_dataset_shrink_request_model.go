@@ -26,32 +26,84 @@ type iCreateDatasetShrinkRequest interface {
 }
 
 type CreateDatasetShrinkRequest struct {
+	// The description of the dataset. It must not exceed 1,024 characters in length.
+	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The data type. Valid values:
+	//
+	// 	- COMMON: Common (Default)
+	//
+	// 	- PIC
+	//
+	// 	- TEXT
+	//
+	// 	- TABLE
+	//
+	// 	- VIDEO
+	//
+	// 	- AUDIO
+	//
+	// 	- INDEX
+	//
 	// example:
 	//
 	// COMMON
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The initial version of the dataset.
+	//
 	// This parameter is required.
 	InitVersionShrink *string `json:"InitVersion,omitempty" xml:"InitVersion,omitempty"`
+	// The name of the dataset. It cannot be an empty string and must not exceed 128 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_oss_dataset
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The source of the dataset. Currently, only DataWorks is supported.
+	//
 	// example:
 	//
 	// DataWorks
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The storage type. Currently supported values:
+	//
+	// 	- OSS
+	//
+	// 	- NAS: General-purpose NAS file systems
+	//
+	// 	- EXTREMENAS: Extreme NAS file systems
+	//
+	// 	- DLF_LANCE: Data Lake Formation
+	//
+	// Valid values:
+	//
+	// 	- NAS: General-purpose NAS file systems
+	//
+	// 	- MAXCOMPUTE: MaxCompute table
+	//
+	// 	- CPFS: Cloud Parallel File Storage
+	//
+	// 	- BMCPFS: CPFS for Lingjun
+	//
+	// 	- EXTREMENAS: Extreme NAS file systems
+	//
+	// 	- OSS: Object Storage Service
+	//
+	// 	- DLF_LANCE: Data Lake Formation.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,7 +16,7 @@ type iGetFunctionResponseBody interface {
 }
 
 type GetFunctionResponseBody struct {
-	// The information about the UDF.
+	// UDF function details
 	Function *GetFunctionResponseBodyFunction `json:"Function,omitempty" xml:"Function,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,12 +68,14 @@ type GetFunctionResponseBodyFunction struct {
 	//
 	// 1724505917000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the UDF.
+	// The unique identifier of the UDF function.
+	//
+	// >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK; parameters are still returned according to the type defined in the SDK. Compilation failures due to the type change may occur only when upgrading the SDK across version 8.0.0, in which case users need to manually correct the data type.
 	//
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The time when the UDF was last modified. This value is a UNIX timestamp.
 	//
 	// example:
@@ -178,7 +180,7 @@ func (s *GetFunctionResponseBodyFunction) GetCreateTime() *int64 {
 	return s.CreateTime
 }
 
-func (s *GetFunctionResponseBodyFunction) GetId() *int64 {
+func (s *GetFunctionResponseBodyFunction) GetId() *string {
 	return s.Id
 }
 
@@ -207,7 +209,7 @@ func (s *GetFunctionResponseBodyFunction) SetCreateTime(v int64) *GetFunctionRes
 	return s
 }
 
-func (s *GetFunctionResponseBodyFunction) SetId(v int64) *GetFunctionResponseBodyFunction {
+func (s *GetFunctionResponseBodyFunction) SetId(v string) *GetFunctionResponseBodyFunction {
 	s.Id = &v
 	return s
 }

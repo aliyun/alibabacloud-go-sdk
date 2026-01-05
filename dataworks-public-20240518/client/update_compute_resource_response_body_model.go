@@ -16,6 +16,11 @@ type iUpdateComputeResourceResponseBody interface {
 }
 
 type UpdateComputeResourceResponseBody struct {
+	// The request ID. Used to locate logs and troubleshoot issues.
+	//
+	// example:
+	//
+	// 7C352CB7-CD88-50CF-9D0D-E81BDF02XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//

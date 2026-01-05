@@ -26,30 +26,63 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"ap-northeast-1":        dara.String("dataworks.ap-northeast-1.aliyuncs.com"),
-		"ap-south-1":            dara.String("dataworks.ap-south-1.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("dataworks.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-2":        dara.String("dataworks.ap-southeast-2.aliyuncs.com"),
-		"ap-southeast-3":        dara.String("dataworks.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("dataworks.ap-southeast-5.aliyuncs.com"),
-		"cn-beijing":            dara.String("dataworks.cn-beijing.aliyuncs.com"),
-		"cn-chengdu":            dara.String("dataworks.cn-chengdu.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("dataworks.cn-hangzhou.aliyuncs.com"),
-		"cn-hongkong":           dara.String("dataworks.cn-hongkong.aliyuncs.com"),
-		"cn-huhehaote":          dara.String("dataworks.aliyuncs.com"),
-		"cn-qingdao":            dara.String("dataworks.aliyuncs.com"),
-		"cn-shanghai":           dara.String("dataworks.cn-shanghai.aliyuncs.com"),
-		"cn-shenzhen":           dara.String("dataworks.cn-shenzhen.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("dataworks.aliyuncs.com"),
-		"eu-central-1":          dara.String("dataworks.eu-central-1.aliyuncs.com"),
-		"eu-west-1":             dara.String("dataworks.eu-west-1.aliyuncs.com"),
-		"me-east-1":             dara.String("dataworks.me-east-1.aliyuncs.com"),
-		"us-east-1":             dara.String("dataworks.us-east-1.aliyuncs.com"),
-		"us-west-1":             dara.String("dataworks.us-west-1.aliyuncs.com"),
-		"cn-hangzhou-finance":   dara.String("dataworks.aliyuncs.com"),
-		"cn-shenzhen-finance-1": dara.String("dataworks.aliyuncs.com"),
-		"cn-shanghai-finance-1": dara.String("dataworks.aliyuncs.com"),
-		"cn-north-2-gov-1":      dara.String("dataworks.aliyuncs.com"),
+		"ap-northeast-1":              dara.String("dataworks.ap-northeast-1.aliyuncs.com"),
+		"ap-northeast-2-pop":          dara.String("dataworks.aliyuncs.com"),
+		"ap-south-1":                  dara.String("dataworks.aliyuncs.com"),
+		"ap-southeast-1":              dara.String("dataworks.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-2":              dara.String("dataworks.aliyuncs.com"),
+		"ap-southeast-3":              dara.String("dataworks.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-5":              dara.String("dataworks.ap-southeast-5.aliyuncs.com"),
+		"cn-beijing":                  dara.String("dataworks.cn-beijing.aliyuncs.com"),
+		"cn-beijing-finance-1":        dara.String("dataworks.cn-beijing-finance-1.aliyuncs.com"),
+		"cn-beijing-finance-pop":      dara.String("dataworks.aliyuncs.com"),
+		"cn-beijing-gov-1":            dara.String("dataworks.aliyuncs.com"),
+		"cn-beijing-nu16-b01":         dara.String("dataworks.aliyuncs.com"),
+		"cn-chengdu":                  dara.String("dataworks.cn-chengdu.aliyuncs.com"),
+		"cn-edge-1":                   dara.String("dataworks.aliyuncs.com"),
+		"cn-fujian":                   dara.String("dataworks.aliyuncs.com"),
+		"cn-haidian-cm12-c01":         dara.String("dataworks.aliyuncs.com"),
+		"cn-hangzhou":                 dara.String("dataworks.cn-hangzhou.aliyuncs.com"),
+		"cn-hangzhou-bj-b01":          dara.String("dataworks.aliyuncs.com"),
+		"cn-hangzhou-finance":         dara.String("dataworks.aliyuncs.com"),
+		"cn-hangzhou-internal-prod-1": dara.String("dataworks.aliyuncs.com"),
+		"cn-hangzhou-internal-test-1": dara.String("dataworks.aliyuncs.com"),
+		"cn-hangzhou-internal-test-2": dara.String("dataworks.aliyuncs.com"),
+		"cn-hangzhou-internal-test-3": dara.String("dataworks.aliyuncs.com"),
+		"cn-hangzhou-test-306":        dara.String("dataworks.aliyuncs.com"),
+		"cn-hongkong":                 dara.String("dataworks.cn-hongkong.aliyuncs.com"),
+		"cn-hongkong-finance-pop":     dara.String("dataworks.aliyuncs.com"),
+		"cn-huhehaote":                dara.String("dataworks.aliyuncs.com"),
+		"cn-huhehaote-nebula-1":       dara.String("dataworks.aliyuncs.com"),
+		"cn-north-2-gov-1":            dara.String("dataworks.cn-north-2-gov-1.aliyuncs.com"),
+		"cn-qingdao":                  dara.String("dataworks.aliyuncs.com"),
+		"cn-qingdao-nebula":           dara.String("dataworks.aliyuncs.com"),
+		"cn-shanghai":                 dara.String("dataworks.cn-shanghai.aliyuncs.com"),
+		"cn-shanghai-et15-b01":        dara.String("dataworks.aliyuncs.com"),
+		"cn-shanghai-et2-b01":         dara.String("dataworks.aliyuncs.com"),
+		"cn-shanghai-finance-1":       dara.String("dataworks.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-shanghai-inner":           dara.String("dataworks.aliyuncs.com"),
+		"cn-shanghai-internal-test-1": dara.String("dataworks.aliyuncs.com"),
+		"cn-shenzhen":                 dara.String("dataworks.cn-shenzhen.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       dara.String("dataworks.cn-shenzhen-finance-1.aliyuncs.com"),
+		"cn-shenzhen-inner":           dara.String("dataworks.aliyuncs.com"),
+		"cn-shenzhen-st4-d01":         dara.String("dataworks.aliyuncs.com"),
+		"cn-shenzhen-su18-b01":        dara.String("dataworks.aliyuncs.com"),
+		"cn-wuhan":                    dara.String("dataworks.aliyuncs.com"),
+		"cn-wulanchabu":               dara.String("dataworks.cn-wulanchabu.aliyuncs.com"),
+		"cn-yushanfang":               dara.String("dataworks.aliyuncs.com"),
+		"cn-zhangbei":                 dara.String("dataworks.aliyuncs.com"),
+		"cn-zhangbei-na61-b01":        dara.String("dataworks.aliyuncs.com"),
+		"cn-zhangjiakou":              dara.String("dataworks.cn-zhangjiakou.aliyuncs.com"),
+		"cn-zhangjiakou-na62-a01":     dara.String("dataworks.aliyuncs.com"),
+		"cn-zhengzhou-nebula-1":       dara.String("dataworks.aliyuncs.com"),
+		"eu-central-1":                dara.String("dataworks.eu-central-1.aliyuncs.com"),
+		"eu-west-1":                   dara.String("dataworks.eu-west-1.aliyuncs.com"),
+		"eu-west-1-oxs":               dara.String("dataworks.aliyuncs.com"),
+		"me-east-1":                   dara.String("dataworks.me-east-1.aliyuncs.com"),
+		"rus-west-1-pop":              dara.String("dataworks.aliyuncs.com"),
+		"us-east-1":                   dara.String("dataworks.us-east-1.aliyuncs.com"),
+		"us-west-1":                   dara.String("dataworks.us-west-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -163,7 +196,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Terminates the process for deploying or undeploying an entity. The process is not deleted and can still be queried by calling query operations.
+// Terminates the specified deployment process. This operation changes the status of the process to Terminated but does not delete the process. You can still query the process.
+//
+// Description:
+//
+// >  This operation may not be available in earlier versions of the SDK. In this case, use the AbolishDeployment operation. The parameters for AbolishDeployment are the same as those described in this topic.
 //
 // @param request - AbolishPipelineRunRequest
 //
@@ -211,7 +248,11 @@ func (client *Client) AbolishPipelineRunWithOptions(request *AbolishPipelineRunR
 
 // Summary:
 //
-// Terminates the process for deploying or undeploying an entity. The process is not deleted and can still be queried by calling query operations.
+// Terminates the specified deployment process. This operation changes the status of the process to Terminated but does not delete the process. You can still query the process.
+//
+// Description:
+//
+// >  This operation may not be available in earlier versions of the SDK. In this case, use the AbolishDeployment operation. The parameters for AbolishDeployment are the same as those described in this topic.
 //
 // @param request - AbolishPipelineRunRequest
 //
@@ -2249,7 +2290,7 @@ func (client *Client) CreateDataSourceSharedRule(request *CreateDataSourceShared
 
 // Summary:
 //
-// 创建数据集
+// Creates a dataset. This operation is supported only in workspaces that the user has joined. Currently, only DataWorks datasets are supported. The maximum number of datasets allowed per tenant is 2,000.
 //
 // @param tmpReq - CreateDatasetRequest
 //
@@ -2323,7 +2364,7 @@ func (client *Client) CreateDatasetWithOptions(tmpReq *CreateDatasetRequest, run
 
 // Summary:
 //
-// 创建数据集
+// Creates a dataset. This operation is supported only in workspaces that the user has joined. Currently, only DataWorks datasets are supported. The maximum number of datasets allowed per tenant is 2,000.
 //
 // @param request - CreateDatasetRequest
 //
@@ -2341,7 +2382,7 @@ func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *Cre
 
 // Summary:
 //
-// 创建数据集版本
+// Creates a dataset version. Currently supports DataWorks datasets only, with a maximum of 20 versions.
 //
 // @param tmpReq - CreateDatasetVersionRequest
 //
@@ -2407,7 +2448,7 @@ func (client *Client) CreateDatasetVersionWithOptions(tmpReq *CreateDatasetVersi
 
 // Summary:
 //
-// 创建数据集版本
+// Creates a dataset version. Currently supports DataWorks datasets only, with a maximum of 20 versions.
 //
 // @param request - CreateDatasetVersionRequest
 //
@@ -2747,7 +2788,11 @@ func (client *Client) CreateFunction(request *CreateFunctionRequest) (_result *C
 
 // Summary:
 //
-// 创建身份凭证
+// Creates an identity credential.
+//
+// Description:
+//
+// >  This operation does not support batch processing. If multiple publishing entities are specified in the parameters, only the first one will be processed; the others will be ignored.
 //
 // @param tmpReq - CreateIdentifyCredentialRequest
 //
@@ -2797,7 +2842,11 @@ func (client *Client) CreateIdentifyCredentialWithOptions(tmpReq *CreateIdentify
 
 // Summary:
 //
-// 创建身份凭证
+// Creates an identity credential.
+//
+// Description:
+//
+// >  This operation does not support batch processing. If multiple publishing entities are specified in the parameters, only the first one will be processed; the others will be ignored.
 //
 // @param request - CreateIdentifyCredentialRequest
 //
@@ -3137,11 +3186,13 @@ func (client *Client) CreateNode(request *CreateNodeRequest) (_result *CreateNod
 
 // Summary:
 //
-// Creates a process for deploying or undeploying an entity in Data Studio.
+// Creates a deployment process for entities in the Data Studio (new version).
 //
 // Description:
 //
-// >  You cannot use this API operation to create a process for multiple entities at a time. If you specify multiple entities in a request, the system creates a process only for the first entity.
+// >  Batch operations are not currently supported. If you specify multiple entities in the parameters, only the first entity takes effect, and the rest are ignored.
+//
+// >  This operation may not be available in earlier versions of the SDK. In this case, use the CreateDeployment operation. The parameters for CreateDeployment are the same as those described in this topic.
 //
 // @param tmpReq - CreatePipelineRunRequest
 //
@@ -3203,11 +3254,13 @@ func (client *Client) CreatePipelineRunWithOptions(tmpReq *CreatePipelineRunRequ
 
 // Summary:
 //
-// Creates a process for deploying or undeploying an entity in Data Studio.
+// Creates a deployment process for entities in the Data Studio (new version).
 //
 // Description:
 //
-// >  You cannot use this API operation to create a process for multiple entities at a time. If you specify multiple entities in a request, the system creates a process only for the first entity.
+// >  Batch operations are not currently supported. If you specify multiple entities in the parameters, only the first entity takes effect, and the rest are ignored.
+//
+// >  This operation may not be available in earlier versions of the SDK. In this case, use the CreateDeployment operation. The parameters for CreateDeployment are the same as those described in this topic.
 //
 // @param request - CreatePipelineRunRequest
 //
@@ -4583,6 +4636,14 @@ func (client *Client) DeleteComponent(request *DeleteComponentRequest) (_result 
 //
 // 验证用
 //
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 3.  Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M.
+//
 // @param request - DeleteComputeResourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4630,6 +4691,14 @@ func (client *Client) DeleteComputeResourceWithOptions(request *DeleteComputeRes
 // Summary:
 //
 // 验证用
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 3.  Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M.
 //
 // @param request - DeleteComputeResourceRequest
 //
@@ -5427,7 +5496,7 @@ func (client *Client) DeleteDataSourceSharedRule(request *DeleteDataSourceShared
 
 // Summary:
 //
-// 删除数据集
+// Delete a dataset. Only DataWorks datasets are supported. This operation cascades to delete all associated dataset versions. Requires dataset creator or workspace administrator permissions.
 //
 // @param request - DeleteDatasetRequest
 //
@@ -5471,7 +5540,7 @@ func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, ru
 
 // Summary:
 //
-// 删除数据集
+// Delete a dataset. Only DataWorks datasets are supported. This operation cascades to delete all associated dataset versions. Requires dataset creator or workspace administrator permissions.
 //
 // @param request - DeleteDatasetRequest
 //
@@ -5489,7 +5558,7 @@ func (client *Client) DeleteDataset(request *DeleteDatasetRequest) (_result *Del
 
 // Summary:
 //
-// 删除数据集版本
+// Deletes a dataset version. Only non-v1 DataWorks datasets are supported. To delete v1 datasets, use the DeleteDataset operation. Requires dataset creator or workspace administrator permissions.
 //
 // @param request - DeleteDatasetVersionRequest
 //
@@ -5533,7 +5602,7 @@ func (client *Client) DeleteDatasetVersionWithOptions(request *DeleteDatasetVers
 
 // Summary:
 //
-// 删除数据集版本
+// Deletes a dataset version. Only non-v1 DataWorks datasets are supported. To delete v1 datasets, use the DeleteDataset operation. Requires dataset creator or workspace administrator permissions.
 //
 // @param request - DeleteDatasetVersionRequest
 //
@@ -8525,7 +8594,7 @@ func (client *Client) GetDataset(request *GetDatasetRequest) (_result *GetDatase
 
 // Summary:
 //
-// 获取数据集版本
+// Gets information for a given dataset version.
 //
 // @param request - GetDatasetVersionRequest
 //
@@ -8569,7 +8638,7 @@ func (client *Client) GetDatasetVersionWithOptions(request *GetDatasetVersionReq
 
 // Summary:
 //
-// 获取数据集版本
+// Gets information for a given dataset version.
 //
 // @param request - GetDatasetVersionRequest
 //
@@ -12683,7 +12752,7 @@ func (client *Client) ListDatabases(request *ListDatabasesRequest) (_result *Lis
 
 // Summary:
 //
-// 获取数据集版本列表
+// Retrieves the version list for a given dataset.
 //
 // @param request - ListDatasetVersionsRequest
 //
@@ -12747,7 +12816,7 @@ func (client *Client) ListDatasetVersionsWithOptions(request *ListDatasetVersion
 
 // Summary:
 //
-// 获取数据集版本列表
+// Retrieves the version list for a given dataset.
 //
 // @param request - ListDatasetVersionsRequest
 //
@@ -12765,7 +12834,7 @@ func (client *Client) ListDatasetVersions(request *ListDatasetVersionsRequest) (
 
 // Summary:
 //
-// 获取数据集列表
+// Queries a list of datasets. Currently, DataWorks datasets and PAI datasets are supported.
 //
 // @param tmpReq - ListDatasetsRequest
 //
@@ -12855,7 +12924,7 @@ func (client *Client) ListDatasetsWithOptions(tmpReq *ListDatasetsRequest, runti
 
 // Summary:
 //
-// 获取数据集列表
+// Queries a list of datasets. Currently, DataWorks datasets and PAI datasets are supported.
 //
 // @param request - ListDatasetsRequest
 //
@@ -13635,7 +13704,7 @@ func (client *Client) ListLineageRelationships(request *ListLineageRelationships
 
 // Summary:
 //
-// Queries a list of ancestor and descendant entities of an entity in Data Map. You can specify whether to return the lineage between the entities.
+// 查询实体血缘
 //
 // @param request - ListLineagesRequest
 //
@@ -13675,7 +13744,7 @@ func (client *Client) ListLineagesWithOptions(request *ListLineagesRequest, runt
 
 // Summary:
 //
-// Queries a list of ancestor and descendant entities of an entity in Data Map. You can specify whether to return the lineage between the entities.
+// 查询实体血缘
 //
 // @param request - ListLineagesRequest
 //
@@ -16025,7 +16094,7 @@ func (client *Client) MoveWorkflowDefinition(request *MoveWorkflowDefinitionRequ
 
 // Summary:
 //
-// 预览数据集版本内容
+// Previews the content of a specified dataset version. Currently only text file preview is supported for OSS-type datasets. Supported MIME types 1. application/json 2. application/xml 3. text/html 4. text/plain 5. application/octet-stream
 //
 // @param request - PreviewDatasetVersionRequest
 //
@@ -16069,7 +16138,7 @@ func (client *Client) PreviewDatasetVersionWithOptions(request *PreviewDatasetVe
 
 // Summary:
 //
-// 预览数据集版本内容
+// Previews the content of a specified dataset version. Currently only text file preview is supported for OSS-type datasets. Supported MIME types 1. application/json 2. application/xml 3. text/html 4. text/plain 5. application/octet-stream
 //
 // @param request - PreviewDatasetVersionRequest
 //
@@ -19263,7 +19332,7 @@ func (client *Client) UpdateDataSource(request *UpdateDataSourceRequest) (_resul
 
 // Summary:
 //
-// 更新数据集
+// Updates dataset information. Only DataWorks datasets are supported. The operator must be the creator of the dataset or the administrator of the workspace where the dataset is located.
 //
 // @param request - UpdateDatasetRequest
 //
@@ -19319,7 +19388,7 @@ func (client *Client) UpdateDatasetWithOptions(request *UpdateDatasetRequest, ru
 
 // Summary:
 //
-// 更新数据集
+// Updates dataset information. Only DataWorks datasets are supported. The operator must be the creator of the dataset or the administrator of the workspace where the dataset is located.
 //
 // @param request - UpdateDatasetRequest
 //
@@ -19337,7 +19406,7 @@ func (client *Client) UpdateDataset(request *UpdateDatasetRequest) (_result *Upd
 
 // Summary:
 //
-// 更新数据集版本信息
+// Updates dataset version information. Only DataWorks datasets are supported. Requires dataset creator or workspace administrator permissions.
 //
 // @param request - UpdateDatasetVersionRequest
 //
@@ -19385,7 +19454,7 @@ func (client *Client) UpdateDatasetVersionWithOptions(request *UpdateDatasetVers
 
 // Summary:
 //
-// 更新数据集版本信息
+// Updates dataset version information. Only DataWorks datasets are supported. Requires dataset creator or workspace administrator permissions.
 //
 // @param request - UpdateDatasetVersionRequest
 //

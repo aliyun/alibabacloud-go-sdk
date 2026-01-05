@@ -24,6 +24,11 @@ type iListResourcesRequest interface {
 }
 
 type ListResourcesRequest struct {
+	// The name of the file resource. Supports fuzzy search.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the Alibaba Cloud account used by the workspace administrator. You can log on to the Alibaba Cloud Management Console and view the ID on the Security Settings page.
 	//
@@ -31,7 +36,7 @@ type ListResourcesRequest struct {
 	//
 	// 110755000425XXXX
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The page number.
+	// The page number of the data to retrieve, used for pagination.
 	//
 	// example:
 	//

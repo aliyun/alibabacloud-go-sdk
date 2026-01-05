@@ -9,8 +9,8 @@ type iListNodeDependenciesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetId(v int64) *ListNodeDependenciesRequest
-	GetId() *int64
+	SetId(v string) *ListNodeDependenciesRequest
+	GetId() *string
 	SetPageNumber(v int32) *ListNodeDependenciesRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListNodeDependenciesRequest
@@ -20,14 +20,16 @@ type iListNodeDependenciesRequest interface {
 }
 
 type ListNodeDependenciesRequest struct {
-	// The ID of the node.
+	// The unique identifier of the Data Studio node.
+	//
+	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The page number, starting from 1. Default value: 1.
 	//
 	// example:
@@ -60,7 +62,7 @@ func (s ListNodeDependenciesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodeDependenciesRequest) GetId() *int64 {
+func (s *ListNodeDependenciesRequest) GetId() *string {
 	return s.Id
 }
 
@@ -76,7 +78,7 @@ func (s *ListNodeDependenciesRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
 
-func (s *ListNodeDependenciesRequest) SetId(v int64) *ListNodeDependenciesRequest {
+func (s *ListNodeDependenciesRequest) SetId(v string) *ListNodeDependenciesRequest {
 	s.Id = &v
 	return s
 }

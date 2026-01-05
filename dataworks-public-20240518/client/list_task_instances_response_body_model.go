@@ -16,7 +16,7 @@ type iListTaskInstancesResponseBody interface {
 }
 
 type ListTaskInstancesResponseBody struct {
-	// The pagination information.
+	// Pagination information.
 	PagingInfo *ListTaskInstancesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -351,8 +351,11 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	// example:
 	//
 	// Scheduler
-	TriggerType               *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	UnifiedWorkflowInstanceId *int64  `json:"UnifiedWorkflowInstanceId,omitempty" xml:"UnifiedWorkflowInstanceId,omitempty"`
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// example:
+	//
+	// 1234
+	UnifiedWorkflowInstanceId *int64 `json:"UnifiedWorkflowInstanceId,omitempty" xml:"UnifiedWorkflowInstanceId,omitempty"`
 	// The timestamp for when it started waiting for resources.
 	//
 	// example:

@@ -9,19 +9,21 @@ type iCreateNodeResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetId(v int64) *CreateNodeResponseBody
-	GetId() *int64
+	SetId(v string) *CreateNodeResponseBody
+	GetId() *string
 	SetRequestId(v string) *CreateNodeResponseBody
 	GetRequestId() *string
 }
 
 type CreateNodeResponseBody struct {
-	// The ID of the node.
+	// The unique identifier of the Data Studio node.
+	//
+	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// example:
 	//
 	// 860438872620113XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -38,7 +40,7 @@ func (s CreateNodeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateNodeResponseBody) GetId() *int64 {
+func (s *CreateNodeResponseBody) GetId() *string {
 	return s.Id
 }
 
@@ -46,7 +48,7 @@ func (s *CreateNodeResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *CreateNodeResponseBody) SetId(v int64) *CreateNodeResponseBody {
+func (s *CreateNodeResponseBody) SetId(v string) *CreateNodeResponseBody {
 	s.Id = &v
 	return s
 }

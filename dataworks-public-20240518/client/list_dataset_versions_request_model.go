@@ -24,28 +24,54 @@ type iListDatasetVersionsRequest interface {
 }
 
 type ListDatasetVersionsRequest struct {
+	// The creator ID.
+	//
 	// example:
 	//
 	// 12103XXX46492139
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The dataset ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataworks-dataset:3pXXXb8o0ngr07njhps1
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The sort order. Default: Desc.
+	//
+	// Valid values:
+	//
+	// 	- Asc: Ascending.
+	//
+	// 	- Desc: Descending.
+	//
 	// example:
 	//
 	// Desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default: 10. Maximum: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sort field. Default: VersionNumber.
+	//
+	// Valid values:
+	//
+	// 	- ModifyTime: Modification time.
+	//
+	// 	- CreateTime: Creation time.
+	//
+	// 	- VersionNumber: Version number.
+	//
 	// example:
 	//
 	// CreateTime

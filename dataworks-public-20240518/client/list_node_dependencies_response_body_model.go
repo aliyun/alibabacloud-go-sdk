@@ -156,13 +156,15 @@ type ListNodeDependenciesResponseBodyPagingInfoNodes struct {
 	//
 	// Node description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the node.
+	// The unique identifier of the Data Studio node.
+	//
+	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// example:
 	//
 	// 723932906364267XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The input of the node.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The node input.
 	Inputs *ListNodeDependenciesResponseBodyPagingInfoNodesInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
 	// The timestamp when the node was last modified.
 	//
@@ -242,7 +244,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodes) GetDescription() *stri
 	return s.Description
 }
 
-func (s *ListNodeDependenciesResponseBodyPagingInfoNodes) GetId() *int64 {
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodes) GetId() *string {
 	return s.Id
 }
 
@@ -313,7 +315,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodes) SetDescription(v strin
 	return s
 }
 
-func (s *ListNodeDependenciesResponseBodyPagingInfoNodes) SetId(v int64) *ListNodeDependenciesResponseBodyPagingInfoNodes {
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodes) SetId(v string) *ListNodeDependenciesResponseBodyPagingInfoNodes {
 	s.Id = &v
 	return s
 }
@@ -620,10 +622,12 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables struct {
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
 	// The variable ID.
 	//
+	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	//
 	// example:
 	//
 	// 543218872620113XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The variable name.
 	//
 	// example:
@@ -682,7 +686,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables) GetArti
 	return s.ArtifactType
 }
 
-func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables) GetId() *int64 {
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables) GetId() *string {
 	return s.Id
 }
 
@@ -711,7 +715,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables) SetArti
 	return s
 }
 
-func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables) SetId(v int64) *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables {
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables) SetId(v string) *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables {
 	s.Id = &v
 	return s
 }
@@ -924,10 +928,12 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables struct {
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
 	// The variable ID.
 	//
+	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	//
 	// example:
 	//
 	// 543217824470354XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The variable name.
 	//
 	// example:
@@ -986,7 +992,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables) GetArt
 	return s.ArtifactType
 }
 
-func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables) GetId() *int64 {
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables) GetId() *string {
 	return s.Id
 }
 
@@ -1015,7 +1021,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables) SetArt
 	return s
 }
 
-func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables) SetId(v int64) *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables {
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables) SetId(v string) *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables {
 	s.Id = &v
 	return s
 }
@@ -1115,12 +1121,14 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesRuntimeResource) Validat
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesScript struct {
-	// The script ID.
+	// The ID of the script.
+	//
+	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// example:
 	//
 	// 853573334108680XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The script path.
 	//
 	// example:
@@ -1139,7 +1147,7 @@ func (s ListNodeDependenciesResponseBodyPagingInfoNodesScript) GoString() string
 	return s.String()
 }
 
-func (s *ListNodeDependenciesResponseBodyPagingInfoNodesScript) GetId() *int64 {
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodesScript) GetId() *string {
 	return s.Id
 }
 
@@ -1151,7 +1159,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesScript) GetRuntime() *Li
 	return s.Runtime
 }
 
-func (s *ListNodeDependenciesResponseBodyPagingInfoNodesScript) SetId(v int64) *ListNodeDependenciesResponseBodyPagingInfoNodesScript {
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodesScript) SetId(v string) *ListNodeDependenciesResponseBodyPagingInfoNodesScript {
 	s.Id = &v
 	return s
 }
@@ -1365,10 +1373,12 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesTrigger struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The unique identifier of the trigger.
 	//
+	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	//
 	// example:
 	//
 	// 543680677872062XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The effective start time of the schedule, in the format yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
@@ -1413,7 +1423,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesTrigger) GetEndTime() *s
 	return s.EndTime
 }
 
-func (s *ListNodeDependenciesResponseBodyPagingInfoNodesTrigger) GetId() *int64 {
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodesTrigger) GetId() *string {
 	return s.Id
 }
 
@@ -1439,7 +1449,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesTrigger) SetEndTime(v st
 	return s
 }
 
-func (s *ListNodeDependenciesResponseBodyPagingInfoNodesTrigger) SetId(v int64) *ListNodeDependenciesResponseBodyPagingInfoNodesTrigger {
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodesTrigger) SetId(v string) *ListNodeDependenciesResponseBodyPagingInfoNodesTrigger {
 	s.Id = &v
 	return s
 }

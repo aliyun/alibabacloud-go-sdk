@@ -16,12 +16,16 @@ type iDeleteComputeResourceRequest interface {
 }
 
 type DeleteComputeResourceRequest struct {
+	// The computing resource ID, the unique identifier of the data source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

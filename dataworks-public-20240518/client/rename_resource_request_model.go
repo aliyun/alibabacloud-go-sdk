@@ -9,8 +9,8 @@ type iRenameResourceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetId(v int64) *RenameResourceRequest
-	GetId() *int64
+	SetId(v string) *RenameResourceRequest
+	GetId() *string
 	SetName(v string) *RenameResourceRequest
 	GetName() *string
 	SetProjectId(v int64) *RenameResourceRequest
@@ -18,14 +18,16 @@ type iRenameResourceRequest interface {
 }
 
 type RenameResourceRequest struct {
-	// The ID of the file resource.
+	// The unique identifier of the Data Studio file resource.
+	//
+	// >  This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect normal SDK usage; the parameter will still be returned according to the type defined in the SDK. However, compilation failures may occur due to the type change only when upgrading the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 543217824470354XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The new name.
 	//
 	// This parameter is required.
@@ -54,7 +56,7 @@ func (s RenameResourceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RenameResourceRequest) GetId() *int64 {
+func (s *RenameResourceRequest) GetId() *string {
 	return s.Id
 }
 
@@ -66,7 +68,7 @@ func (s *RenameResourceRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
 
-func (s *RenameResourceRequest) SetId(v int64) *RenameResourceRequest {
+func (s *RenameResourceRequest) SetId(v string) *RenameResourceRequest {
 	s.Id = &v
 	return s
 }

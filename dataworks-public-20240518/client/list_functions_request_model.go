@@ -24,6 +24,11 @@ type iListFunctionsRequest interface {
 }
 
 type ListFunctionsRequest struct {
+	// Filter criteria: UDF name. Supports fuzzy search.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the owner of the UDF. This parameter specifies a filter condition.
 	//

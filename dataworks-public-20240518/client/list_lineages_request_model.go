@@ -30,80 +30,38 @@ type iListLineagesRequest interface {
 }
 
 type ListLineagesRequest struct {
-	// The destination entity ID. You can refer to the table or column ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
-	//
 	// example:
 	//
-	// maxcompute-table:123456XXX::test_project::test_tbl
-	//
-	// dlf-table:123456XXX:test_catalog:test_db::test_tbl
-	//
-	// hms-table:c-abc123xxx::test_db::test_tbl
-	//
-	// holo-table:h-abc123xxx::test_db:test_schema:test_tbl
-	//
-	// custom-api:api123
-	//
-	// custom-table:table456
+	// dlf-table::catalog_id:database_name::table_name
 	DstEntityId *string `json:"DstEntityId,omitempty" xml:"DstEntityId,omitempty"`
-	// The destination entity name. Supports fuzzy matching.
-	//
 	// example:
 	//
 	// dstName1
 	DstEntityName *string `json:"DstEntityName,omitempty" xml:"DstEntityName,omitempty"`
-	// Specifies whether to return lineage information.
-	//
 	// example:
 	//
 	// false
 	NeedAttachRelationship *bool `json:"NeedAttachRelationship,omitempty" xml:"NeedAttachRelationship,omitempty"`
-	// The sort order. Default value: Asc. Valid values:
-	//
-	// 	- Asc
-	//
-	// 	- Desc
-	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Default value: 1.
-	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page. Default value: 10. Maximum value: 100.
-	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sort field. Default value: Name.
-	//
 	// example:
 	//
 	// Name
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The source entity ID. You can refer to the table or column ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
-	//
 	// example:
 	//
-	// maxcompute-table:123456XXX::test_project::test_tbl
-	//
-	// dlf-table:123456XXX:test_catalog:test_db::test_tbl
-	//
-	// hms-table:c-abc123xxx::test_db::test_tbl
-	//
-	// holo-table:h-abc123xxx::test_db:test_schema:test_tbl
-	//
-	// custom-api:api123
-	//
-	// custom-table:table456
+	// maxcompute-table:::project_name:[schema_name]:table_name
 	SrcEntityId *string `json:"SrcEntityId,omitempty" xml:"SrcEntityId,omitempty"`
-	// The source entity name. Supports fuzzy matching.
-	//
 	// example:
 	//
 	// srcName1

@@ -97,6 +97,8 @@ type ListWorkflowsShrinkRequest struct {
 	//
 	// 	- Manual
 	//
+	// 	- TriggerWorkflow
+	//
 	// example:
 	//
 	// Scheduler

@@ -18,13 +18,16 @@ type iGetDatasetResponseBody interface {
 }
 
 type GetDatasetResponseBody struct {
+	// The dataset information.
 	Dataset *Dataset `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 204EAF68-CCE3-5112-8DA0-E7A60F02XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true

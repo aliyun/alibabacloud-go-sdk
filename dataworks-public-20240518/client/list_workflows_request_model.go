@@ -97,6 +97,8 @@ type ListWorkflowsRequest struct {
 	//
 	// 	- Manual
 	//
+	// 	- TriggerWorkflow
+	//
 	// example:
 	//
 	// Scheduler

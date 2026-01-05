@@ -9,8 +9,8 @@ type iMoveResourceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetId(v int64) *MoveResourceRequest
-	GetId() *int64
+	SetId(v string) *MoveResourceRequest
+	GetId() *string
 	SetPath(v string) *MoveResourceRequest
 	GetPath() *string
 	SetProjectId(v int64) *MoveResourceRequest
@@ -18,14 +18,16 @@ type iMoveResourceRequest interface {
 }
 
 type MoveResourceRequest struct {
-	// The ID of the file resource.
+	// The unique identifier of the Data Studio file resource.
+	//
+	// >  This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect normal SDK usage; the parameter will still be returned according to the type defined in the SDK. However, compilation failures may occur due to the type change only when upgrading the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 652567824470354XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The path to which you want to move the file resource. You do not need to specify a file resource name in the path.
 	//
 	// For example, if you want to move the test file resource to root/demo/test, you must set this parameter to root/demo.
@@ -56,7 +58,7 @@ func (s MoveResourceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *MoveResourceRequest) GetId() *int64 {
+func (s *MoveResourceRequest) GetId() *string {
 	return s.Id
 }
 
@@ -68,7 +70,7 @@ func (s *MoveResourceRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
 
-func (s *MoveResourceRequest) SetId(v int64) *MoveResourceRequest {
+func (s *MoveResourceRequest) SetId(v string) *MoveResourceRequest {
 	s.Id = &v
 	return s
 }

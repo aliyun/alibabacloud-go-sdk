@@ -263,12 +263,19 @@ type GetTaskInstanceResponseBodyTaskInstance struct {
 	// example:
 	//
 	// Scheduler
-	TriggerType               *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	UnifiedWorkflowInstanceId *int64  `json:"UnifiedWorkflowInstanceId,omitempty" xml:"UnifiedWorkflowInstanceId,omitempty"`
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// example:
+	//
+	// 1234
+	UnifiedWorkflowInstanceId *int64 `json:"UnifiedWorkflowInstanceId,omitempty" xml:"UnifiedWorkflowInstanceId,omitempty"`
+	// The timestamp for when it started waiting for resources.
+	//
 	// example:
 	//
 	// 1710239005403
 	WaitingResourceTime *int64 `json:"WaitingResourceTime,omitempty" xml:"WaitingResourceTime,omitempty"`
+	// The timestamp for when it started waiting for the scheduled time.
+	//
 	// example:
 	//
 	// 1710239005403

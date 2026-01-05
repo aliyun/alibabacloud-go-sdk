@@ -18,16 +18,11 @@ type iListLineagesResponseBody interface {
 }
 
 type ListLineagesResponseBody struct {
-	// The pagination result.
 	PagingInfo *ListLineagesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
-	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
-	//
 	// example:
 	//
 	// true
@@ -79,22 +74,15 @@ func (s *ListLineagesResponseBody) Validate() error {
 }
 
 type ListLineagesResponseBodyPagingInfo struct {
-	// The lineage information list.
 	Lineages []*ListLineagesResponseBodyPagingInfoLineages `json:"Lineages,omitempty" xml:"Lineages,omitempty" type:"Repeated"`
-	// The requested page number for pagination.
-	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size. Default value: 10.
-	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Total record count.
-	//
 	// example:
 	//
 	// 12
@@ -159,12 +147,9 @@ func (s *ListLineagesResponseBodyPagingInfo) Validate() error {
 }
 
 type ListLineagesResponseBodyPagingInfoLineages struct {
-	// The destination entity.
-	DstEntity *LineageEntity `json:"DstEntity,omitempty" xml:"DstEntity,omitempty"`
-	// The lineage details.
+	DstEntity     *LineageEntity         `json:"DstEntity,omitempty" xml:"DstEntity,omitempty"`
 	Relationships []*LineageRelationship `json:"Relationships,omitempty" xml:"Relationships,omitempty" type:"Repeated"`
-	// The source entity.
-	SrcEntity *LineageEntity `json:"SrcEntity,omitempty" xml:"SrcEntity,omitempty"`
+	SrcEntity     *LineageEntity         `json:"SrcEntity,omitempty" xml:"SrcEntity,omitempty"`
 }
 
 func (s ListLineagesResponseBodyPagingInfoLineages) String() string {

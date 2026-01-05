@@ -18,6 +18,7 @@ type iGetDatasetVersionResponseBody interface {
 }
 
 type GetDatasetVersionResponseBody struct {
+	// The dataset version.
 	DatasetVersion *DatasetVersion `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
 	// Id of the request
 	//
@@ -25,6 +26,8 @@ type GetDatasetVersionResponseBody struct {
 	//
 	// 4CDF7B72-020B-542A-8465-21CFFA8XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

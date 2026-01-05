@@ -16,7 +16,7 @@ type iListWorkflowsResponseBody interface {
 }
 
 type ListWorkflowsResponseBody struct {
-	// The pagination information.
+	// Pagination information.
 	PagingInfo *ListWorkflowsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -377,10 +377,14 @@ func (s *ListWorkflowsResponseBodyPagingInfoWorkflows) Validate() error {
 }
 
 type ListWorkflowsResponseBodyPagingInfoWorkflowsTags struct {
+	// The key of a tag.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of a tag.
+	//
 	// example:
 	//
 	// value1

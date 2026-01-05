@@ -30,6 +30,8 @@ type CreateDatasetResponseBody struct {
 	//
 	// 99EBE7CF-69C0-5089-BE3E-79563C31XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the creation was successful.
+	//
 	// example:
 	//
 	// true

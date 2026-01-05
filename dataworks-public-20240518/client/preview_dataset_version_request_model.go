@@ -14,6 +14,8 @@ type iPreviewDatasetVersionRequest interface {
 }
 
 type PreviewDatasetVersionRequest struct {
+	// The dataset version ID
+	//
 	// This parameter is required.
 	//
 	// example:

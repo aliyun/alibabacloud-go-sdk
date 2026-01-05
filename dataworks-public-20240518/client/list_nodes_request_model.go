@@ -9,8 +9,8 @@ type iListNodesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetContainerId(v int64) *ListNodesRequest
-	GetContainerId() *int64
+	SetContainerId(v string) *ListNodesRequest
+	GetContainerId() *string
 	SetName(v string) *ListNodesRequest
 	GetName() *string
 	SetPageNumber(v int32) *ListNodesRequest
@@ -28,12 +28,14 @@ type iListNodesRequest interface {
 }
 
 type ListNodesRequest struct {
-	// The container ID, which is a filter condition. If you do not want to use this condition for filtering, you do not need to configure this parameter. The container ID that you specify is unrelated to the resource group ID indicated by the ResourceGroupId parameter.
+	// Leave this parameter empty if not specified. Filter condition: within a specified container. Specify the container ID. This parameter is independent of the resource group ID (ResourceGroupId).
+	//
+	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// example:
 	//
 	// 860438872620113XXXX
-	ContainerId *int64 `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
 	// The name of the node. Fuzzy search is supported.
 	//
 	// example:
@@ -106,7 +108,7 @@ func (s ListNodesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodesRequest) GetContainerId() *int64 {
+func (s *ListNodesRequest) GetContainerId() *string {
 	return s.ContainerId
 }
 
@@ -138,7 +140,7 @@ func (s *ListNodesRequest) GetScene() *string {
 	return s.Scene
 }
 
-func (s *ListNodesRequest) SetContainerId(v int64) *ListNodesRequest {
+func (s *ListNodesRequest) SetContainerId(v string) *ListNodesRequest {
 	s.ContainerId = &v
 	return s
 }

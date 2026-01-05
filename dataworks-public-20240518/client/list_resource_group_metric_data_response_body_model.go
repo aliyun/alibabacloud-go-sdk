@@ -20,10 +20,14 @@ type iListResourceGroupMetricDataResponseBody interface {
 type ListResourceGroupMetricDataResponseBody struct {
 	// Monitoring metric data.
 	MetricData *ListResourceGroupMetricDataResponseBodyMetricData `json:"MetricData,omitempty" xml:"MetricData,omitempty" type:"Struct"`
+	// The request ID, used for locating logs and troubleshooting.
+	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -75,11 +79,13 @@ func (s *ListResourceGroupMetricDataResponseBody) Validate() error {
 }
 
 type ListResourceGroupMetricDataResponseBodyMetricData struct {
+	// The unique identifier for the resource group.
+	//
 	// example:
 	//
 	// Serverless_res_group_524257424564736_6831777003XXXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The metric name. Available metrics include:
+	// The metric name. Valid values:
 	//
 	// 	- CUSpec: Maximum CU capacity of the resource group, in CUs.
 	//
@@ -87,7 +93,7 @@ type ListResourceGroupMetricDataResponseBodyMetricData struct {
 	//
 	// 	- CUUtilization: CU utilization of the resource group, in %.
 	//
-	// 	- SlotSpec: Maximum concurrency for resource group scheduling, in slots.
+	// 	- SlotSpec: Maximum number of concurrent slots for resource group scheduling, in slots.
 	//
 	// 	- SlotUsage: Used concurrency for resource group scheduling, in slots.
 	//
@@ -118,8 +124,11 @@ type ListResourceGroupMetricDataResponseBodyMetricData struct {
 	// example:
 	//
 	// CUSpec
-	MetricName *string                                                     `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	Metrics    []*ListResourceGroupMetricDataResponseBodyMetricDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The list of metric data.
+	Metrics []*ListResourceGroupMetricDataResponseBodyMetricDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// The pagination cursor.
+	//
 	// example:
 	//
 	// tSBOXZcAmk+akxRkwRuXnGQEsIDODyd5ulPqgytNTbLp4bhb7fuvz13FXtm87Kfl
@@ -184,10 +193,14 @@ func (s *ListResourceGroupMetricDataResponseBodyMetricData) Validate() error {
 }
 
 type ListResourceGroupMetricDataResponseBodyMetricDataMetrics struct {
+	// The timestamp.
+	//
 	// example:
 	//
 	// 1761184929633
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The value of the metric data.
+	//
 	// example:
 	//
 	// 1.0

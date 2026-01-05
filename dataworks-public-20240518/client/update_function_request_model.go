@@ -9,8 +9,8 @@ type iUpdateFunctionRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetId(v int64) *UpdateFunctionRequest
-	GetId() *int64
+	SetId(v string) *UpdateFunctionRequest
+	GetId() *string
 	SetProjectId(v int64) *UpdateFunctionRequest
 	GetProjectId() *int64
 	SetSpec(v string) *UpdateFunctionRequest
@@ -18,14 +18,16 @@ type iUpdateFunctionRequest interface {
 }
 
 type UpdateFunctionRequest struct {
-	// The ID of the UDF.
+	// The unique identifier of the UDF.
+	//
+	// >  This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect normal SDK usage; the parameter will still be returned according to the type defined in the SDK.. However, compilation failures may occur due to the type change only when upgrading the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 463497880880954XXXX
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
 	// This parameter is required.
@@ -100,7 +102,7 @@ func (s UpdateFunctionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateFunctionRequest) GetId() *int64 {
+func (s *UpdateFunctionRequest) GetId() *string {
 	return s.Id
 }
 
@@ -112,7 +114,7 @@ func (s *UpdateFunctionRequest) GetSpec() *string {
 	return s.Spec
 }
 
-func (s *UpdateFunctionRequest) SetId(v int64) *UpdateFunctionRequest {
+func (s *UpdateFunctionRequest) SetId(v string) *UpdateFunctionRequest {
 	s.Id = &v
 	return s
 }
