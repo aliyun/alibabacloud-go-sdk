@@ -1036,6 +1036,58 @@ func (client *Client) DeleteDataLakeTableWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// # DeleteFileUpload
+//
+// @param request - DeleteFileUploadRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFileUploadResponse
+func (client *Client) DeleteFileUploadWithContext(ctx context.Context, request *DeleteFileUploadRequest, runtime *dara.RuntimeOptions) (_result *DeleteFileUploadResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallFrom) {
+		query["CallFrom"] = request.CallFrom
+	}
+
+	if !dara.IsNil(request.DmsUnit) {
+		query["DmsUnit"] = request.DmsUnit
+	}
+
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteFileUpload"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteFileUploadResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # DescribeCustomAgent
 //
 // @param request - DescribeCustomAgentRequest
@@ -1126,6 +1178,114 @@ func (client *Client) DescribeDataAgentSessionWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDataAgentSessionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DescribeFileUploadSignature
+//
+// @param request - DescribeFileUploadSignatureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFileUploadSignatureResponse
+func (client *Client) DescribeFileUploadSignatureWithContext(ctx context.Context, request *DescribeFileUploadSignatureRequest, runtime *dara.RuntimeOptions) (_result *DescribeFileUploadSignatureResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallFrom) {
+		query["CallFrom"] = request.CallFrom
+	}
+
+	if !dara.IsNil(request.DmsUnit) {
+		query["DmsUnit"] = request.DmsUnit
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeFileUploadSignature"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeFileUploadSignatureResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # FileUploadCallback
+//
+// @param request - FileUploadCallbackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FileUploadCallbackResponse
+func (client *Client) FileUploadCallbackWithContext(ctx context.Context, request *FileUploadCallbackRequest, runtime *dara.RuntimeOptions) (_result *FileUploadCallbackResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallFrom) {
+		query["CallFrom"] = request.CallFrom
+	}
+
+	if !dara.IsNil(request.DmsUnit) {
+		query["DmsUnit"] = request.DmsUnit
+	}
+
+	if !dara.IsNil(request.FileSize) {
+		query["FileSize"] = request.FileSize
+	}
+
+	if !dara.IsNil(request.Filename) {
+		query["Filename"] = request.Filename
+	}
+
+	if !dara.IsNil(request.UploadLocation) {
+		query["UploadLocation"] = request.UploadLocation
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("FileUploadCallback"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &FileUploadCallbackResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
