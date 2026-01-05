@@ -182,7 +182,8 @@ type DescribeNetworkInterfaceAttributeResponseBody struct {
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	// The private IP addresses of the ENI.
 	PrivateIpSets *DescribeNetworkInterfaceAttributeResponseBodyPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Struct"`
-	QoSConfig     *DescribeNetworkInterfaceAttributeResponseBodyQoSConfig     `json:"QoSConfig,omitempty" xml:"QoSConfig,omitempty" type:"Struct"`
+	// QoS Speed Limit Settings
+	QoSConfig *DescribeNetworkInterfaceAttributeResponseBodyQoSConfig `json:"QoSConfig,omitempty" xml:"QoSConfig,omitempty" type:"Struct"`
 	// The number of queues supported by the ENI.
 	//
 	// 	- For a primary ENI: The default number of queues that the instance type supports for the ENI is returned.
@@ -1549,8 +1550,10 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyPrivateIpSetsPrivateIpSetA
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyQoSConfig struct {
-	EnableQoS *bool                                                      `json:"EnableQoS,omitempty" xml:"EnableQoS,omitempty"`
-	QoS       *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS `json:"QoS,omitempty" xml:"QoS,omitempty" type:"Struct"`
+	// Whether to enable QoS speed limit settings
+	EnableQoS *bool `json:"EnableQoS,omitempty" xml:"EnableQoS,omitempty"`
+	// QoS Speed Limit Settings
+	QoS *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS `json:"QoS,omitempty" xml:"QoS,omitempty" type:"Struct"`
 }
 
 func (s DescribeNetworkInterfaceAttributeResponseBodyQoSConfig) String() string {
@@ -1589,22 +1592,32 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyQoSConfig) Validate() erro
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS struct {
+	// maximum inbound internal bandwidth
+	//
 	// example:
 	//
 	// 50000
 	BandwidthRx *int64 `json:"BandwidthRx,omitempty" xml:"BandwidthRx,omitempty"`
+	// Maximum outbound internal bandwidth
+	//
 	// example:
 	//
 	// 50000
 	BandwidthTx *int64 `json:"BandwidthTx,omitempty" xml:"BandwidthTx,omitempty"`
+	// Maximum number of sessions
+	//
 	// example:
 	//
 	// 50000
 	ConcurrentConnections *int64 `json:"ConcurrentConnections,omitempty" xml:"ConcurrentConnections,omitempty"`
+	// Inbound packet forwarding rate over the internal network
+	//
 	// example:
 	//
 	// 50000
 	PpsRx *int64 `json:"PpsRx,omitempty" xml:"PpsRx,omitempty"`
+	// Outbound packet forwarding rate over the internal network
+	//
 	// example:
 	//
 	// 50000

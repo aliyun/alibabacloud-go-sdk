@@ -158,7 +158,8 @@ type DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesInstan
 	// example:
 	//
 	// 1
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration               *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EnableExpectedRenewDay *bool  `json:"EnableExpectedRenewDay,omitempty" xml:"EnableExpectedRenewDay,omitempty"`
 	// The ID of the instance.
 	//
 	// example:
@@ -201,6 +202,10 @@ func (s *DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesIn
 	return s.Duration
 }
 
+func (s *DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesInstanceRenewAttribute) GetEnableExpectedRenewDay() *bool {
+	return s.EnableExpectedRenewDay
+}
+
 func (s *DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesInstanceRenewAttribute) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -220,6 +225,11 @@ func (s *DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesIn
 
 func (s *DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesInstanceRenewAttribute) SetDuration(v int32) *DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesInstanceRenewAttribute {
 	s.Duration = &v
+	return s
+}
+
+func (s *DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesInstanceRenewAttribute) SetEnableExpectedRenewDay(v bool) *DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesInstanceRenewAttribute {
+	s.EnableExpectedRenewDay = &v
 	return s
 }
 

@@ -16693,6 +16693,86 @@ func (client *Client) DescribeLimitationWithContext(ctx context.Context, request
 
 // Summary:
 //
+// Queries the lock information of a snapshot, such as snapshot lock status and lock configuration.
+//
+// @param request - DescribeLockedSnapshotsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLockedSnapshotsResponse
+func (client *Client) DescribeLockedSnapshotsWithContext(ctx context.Context, request *DescribeLockedSnapshotsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLockedSnapshotsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.LockStatus) {
+		query["LockStatus"] = request.LockStatus
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SnapshotIds) {
+		query["SnapshotIds"] = request.SnapshotIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLockedSnapshots"),
+		Version:     dara.String("2014-05-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLockedSnapshotsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries managed instances.
 //
 // Description:
@@ -21947,7 +22027,7 @@ func (client *Client) DisableDiskEncryptionByDefaultWithContext(ctx context.Cont
 
 // Summary:
 //
-// 禁用弹性网卡QoS限速设置
+// Disables Elastic Network Interface (ENI) QoS speed setting.
 //
 // @param request - DisableNetworkInterfaceQoSRequest
 //
@@ -23803,6 +23883,100 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lock the snapshot in compliance mode to prevent it from being accidentally or maliciously deleted. During the snapshot lock period, no user can delete it.
+//
+// Description:
+//
+// You can also use this operation to reconfigure locked snapshots. The configurable items depend on the lock mode and lock status:
+//
+//   - If a snapshot is locked in compliance mode and is in a cooling-off period, you can extend or shorten the cooling-off period and extend or shorten the lock duration.
+//
+//   - If the snapshot is locked in compliance mode and the cooling-off period has expired, you can only extend the lock duration.
+//
+// >  If you reconfigure a locked snapshot during the cooling-off period, the system will be regarded as a relock operation, and all lock parameters will be reset instead of individual adjustments.
+//
+// @param request - LockSnapshotRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LockSnapshotResponse
+func (client *Client) LockSnapshotWithContext(ctx context.Context, request *LockSnapshotRequest, runtime *dara.RuntimeOptions) (_result *LockSnapshotResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CoolOffPeriod) {
+		query["CoolOffPeriod"] = request.CoolOffPeriod
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.LockDuration) {
+		query["LockDuration"] = request.LockDuration
+	}
+
+	if !dara.IsNil(request.LockMode) {
+		query["LockMode"] = request.LockMode
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SnapshotId) {
+		query["SnapshotId"] = request.SnapshotId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("LockSnapshot"),
+		Version:     dara.String("2014-05-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &LockSnapshotResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -34889,6 +35063,78 @@ func (client *Client) UnassociateHaVipWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnassociateHaVipResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Unlock snapshots that are locked in compliance mode but are still in a cooling-off period. If the snapshot is locked in compliance mode and the cooling-off period has ended, it cannot be unlocked.
+//
+// @param request - UnlockSnapshotRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnlockSnapshotResponse
+func (client *Client) UnlockSnapshotWithContext(ctx context.Context, request *UnlockSnapshotRequest, runtime *dara.RuntimeOptions) (_result *UnlockSnapshotResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SnapshotId) {
+		query["SnapshotId"] = request.SnapshotId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UnlockSnapshot"),
+		Version:     dara.String("2014-05-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UnlockSnapshotResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
