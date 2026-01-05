@@ -1089,6 +1089,62 @@ func (client *Client) CheckServiceLinkedRoleWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 支持基础版支持clone文件或目录快照
+//
+// @param request - ClonePolarFsBasicSnapshotRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClonePolarFsBasicSnapshotResponse
+func (client *Client) ClonePolarFsBasicSnapshotWithContext(ctx context.Context, request *ClonePolarFsBasicSnapshotRequest, runtime *dara.RuntimeOptions) (_result *ClonePolarFsBasicSnapshotResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	if !dara.IsNil(request.SourcePath) {
+		query["SourcePath"] = request.SourcePath
+	}
+
+	if !dara.IsNil(request.TargetPath) {
+		query["TargetPath"] = request.TargetPath
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClonePolarFsBasicSnapshot"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClonePolarFsBasicSnapshotResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 关闭DB4AI
 //
 // @param request - CloseAITaskRequest
