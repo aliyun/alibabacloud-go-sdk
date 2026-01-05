@@ -376,7 +376,63 @@ func (s *GetListenerAttributeResponseBody) SetXForwardedForConfig(v *GetListener
 }
 
 func (s *GetListenerAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AclConfig != nil {
+		if err := s.AclConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CaCertificates != nil {
+		for _, item := range s.CaCertificates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Certificates != nil {
+		for _, item := range s.Certificates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DefaultActions != nil {
+		for _, item := range s.DefaultActions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LogConfig != nil {
+		if err := s.LogConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QuicConfig != nil {
+		if err := s.QuicConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.XForwardedForConfig != nil {
+		if err := s.XForwardedForConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetListenerAttributeResponseBodyAclConfig struct {
@@ -425,7 +481,16 @@ func (s *GetListenerAttributeResponseBodyAclConfig) SetAclType(v string) *GetLis
 }
 
 func (s *GetListenerAttributeResponseBodyAclConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AclRelations != nil {
+		for _, item := range s.AclRelations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetListenerAttributeResponseBodyAclConfigAclRelations struct {
@@ -613,7 +678,12 @@ func (s *GetListenerAttributeResponseBodyDefaultActions) SetType(v string) *GetL
 }
 
 func (s *GetListenerAttributeResponseBodyDefaultActions) Validate() error {
-	return dara.Validate(s)
+	if s.ForwardGroupConfig != nil {
+		if err := s.ForwardGroupConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfig struct {
@@ -639,7 +709,16 @@ func (s *GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfig) SetSe
 }
 
 func (s *GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ServerGroupTuples != nil {
+		for _, item := range s.ServerGroupTuples {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfigServerGroupTuples struct {
@@ -714,7 +793,12 @@ func (s *GetListenerAttributeResponseBodyLogConfig) SetAccessLogTracingConfig(v 
 }
 
 func (s *GetListenerAttributeResponseBodyLogConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AccessLogTracingConfig != nil {
+		if err := s.AccessLogTracingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetListenerAttributeResponseBodyLogConfigAccessLogTracingConfig struct {

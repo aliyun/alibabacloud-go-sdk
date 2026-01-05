@@ -112,7 +112,16 @@ func (s *ListAScriptsResponseBody) SetTotalCount(v int32) *ListAScriptsResponseB
 }
 
 func (s *ListAScriptsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AScripts != nil {
+		for _, item := range s.AScripts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAScriptsResponseBodyAScripts struct {

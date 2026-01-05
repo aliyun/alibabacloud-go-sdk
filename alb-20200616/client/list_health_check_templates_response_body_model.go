@@ -108,7 +108,16 @@ func (s *ListHealthCheckTemplatesResponseBody) SetTotalCount(v int32) *ListHealt
 }
 
 func (s *ListHealthCheckTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HealthCheckTemplates != nil {
+		for _, item := range s.HealthCheckTemplates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHealthCheckTemplatesResponseBodyHealthCheckTemplates struct {
@@ -388,7 +397,16 @@ func (s *ListHealthCheckTemplatesResponseBodyHealthCheckTemplates) SetUnhealthyT
 }
 
 func (s *ListHealthCheckTemplatesResponseBodyHealthCheckTemplates) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHealthCheckTemplatesResponseBodyHealthCheckTemplatesTags struct {

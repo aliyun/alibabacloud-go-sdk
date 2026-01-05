@@ -108,7 +108,16 @@ func (s *ListSecurityPoliciesResponseBody) SetTotalCount(v int32) *ListSecurityP
 }
 
 func (s *ListSecurityPoliciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityPolicies != nil {
+		for _, item := range s.SecurityPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSecurityPoliciesResponseBodySecurityPolicies struct {
@@ -235,7 +244,16 @@ func (s *ListSecurityPoliciesResponseBodySecurityPolicies) SetTags(v []*ListSecu
 }
 
 func (s *ListSecurityPoliciesResponseBodySecurityPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSecurityPoliciesResponseBodySecurityPoliciesTags struct {

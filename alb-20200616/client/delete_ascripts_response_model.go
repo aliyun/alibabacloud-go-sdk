@@ -59,5 +59,10 @@ func (s *DeleteAScriptsResponse) SetBody(v *DeleteAScriptsResponseBody) *DeleteA
 }
 
 func (s *DeleteAScriptsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

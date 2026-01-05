@@ -108,7 +108,16 @@ func (s *ListRulesResponseBody) SetTotalCount(v int32) *ListRulesResponseBody {
 }
 
 func (s *ListRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRulesResponseBodyRules struct {
@@ -275,7 +284,34 @@ func (s *ListRulesResponseBodyRules) SetTags(v []*ListRulesResponseBodyRulesTags
 }
 
 func (s *ListRulesResponseBodyRules) Validate() error {
-	return dara.Validate(s)
+	if s.RuleActions != nil {
+		for _, item := range s.RuleActions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RuleConditions != nil {
+		for _, item := range s.RuleConditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRulesResponseBodyRulesRuleActions struct {
@@ -443,7 +479,52 @@ func (s *ListRulesResponseBodyRulesRuleActions) SetType(v string) *ListRulesResp
 }
 
 func (s *ListRulesResponseBodyRulesRuleActions) Validate() error {
-	return dara.Validate(s)
+	if s.CorsConfig != nil {
+		if err := s.CorsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FixedResponseConfig != nil {
+		if err := s.FixedResponseConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ForwardGroupConfig != nil {
+		if err := s.ForwardGroupConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InsertHeaderConfig != nil {
+		if err := s.InsertHeaderConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RedirectConfig != nil {
+		if err := s.RedirectConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RemoveHeaderConfig != nil {
+		if err := s.RemoveHeaderConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RewriteConfig != nil {
+		if err := s.RewriteConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TrafficLimitConfig != nil {
+		if err := s.TrafficLimitConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TrafficMirrorConfig != nil {
+		if err := s.TrafficMirrorConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRulesResponseBodyRulesRuleActionsCorsConfig struct {
@@ -637,7 +718,21 @@ func (s *ListRulesResponseBodyRulesRuleActionsForwardGroupConfig) SetServerGroup
 }
 
 func (s *ListRulesResponseBodyRulesRuleActionsForwardGroupConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ServerGroupStickySession != nil {
+		if err := s.ServerGroupStickySession.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServerGroupTuples != nil {
+		for _, item := range s.ServerGroupTuples {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupStickySession struct {
@@ -1144,7 +1239,12 @@ func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) SetTargetType
 }
 
 func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) Validate() error {
-	return dara.Validate(s)
+	if s.MirrorGroupConfig != nil {
+		if err := s.MirrorGroupConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig struct {
@@ -1170,7 +1270,16 @@ func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConf
 }
 
 func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ServerGroupTuples != nil {
+		for _, item := range s.ServerGroupTuples {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples struct {
@@ -1358,7 +1467,52 @@ func (s *ListRulesResponseBodyRulesRuleConditions) SetType(v string) *ListRulesR
 }
 
 func (s *ListRulesResponseBodyRulesRuleConditions) Validate() error {
-	return dara.Validate(s)
+	if s.CookieConfig != nil {
+		if err := s.CookieConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HeaderConfig != nil {
+		if err := s.HeaderConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HostConfig != nil {
+		if err := s.HostConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MethodConfig != nil {
+		if err := s.MethodConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PathConfig != nil {
+		if err := s.PathConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QueryStringConfig != nil {
+		if err := s.QueryStringConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResponseHeaderConfig != nil {
+		if err := s.ResponseHeaderConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResponseStatusCodeConfig != nil {
+		if err := s.ResponseStatusCodeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceIpConfig != nil {
+		if err := s.SourceIpConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRulesResponseBodyRulesRuleConditionsCookieConfig struct {
@@ -1384,7 +1538,16 @@ func (s *ListRulesResponseBodyRulesRuleConditionsCookieConfig) SetValues(v []*Li
 }
 
 func (s *ListRulesResponseBodyRulesRuleConditionsCookieConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Values != nil {
+		for _, item := range s.Values {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRulesResponseBodyRulesRuleConditionsCookieConfigValues struct {
@@ -1574,7 +1737,16 @@ func (s *ListRulesResponseBodyRulesRuleConditionsQueryStringConfig) SetValues(v 
 }
 
 func (s *ListRulesResponseBodyRulesRuleConditionsQueryStringConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Values != nil {
+		for _, item := range s.Values {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRulesResponseBodyRulesRuleConditionsQueryStringConfigValues struct {

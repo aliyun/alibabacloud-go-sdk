@@ -95,7 +95,16 @@ func (s *CreateAScriptsRequest) SetListenerId(v string) *CreateAScriptsRequest {
 }
 
 func (s *CreateAScriptsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AScripts != nil {
+		for _, item := range s.AScripts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAScriptsRequestAScripts struct {
@@ -216,7 +225,16 @@ func (s *CreateAScriptsRequestAScripts) SetScriptContent(v string) *CreateAScrip
 }
 
 func (s *CreateAScriptsRequestAScripts) Validate() error {
-	return dara.Validate(s)
+	if s.ExtAttributes != nil {
+		for _, item := range s.ExtAttributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAScriptsRequestAScriptsExtAttributes struct {

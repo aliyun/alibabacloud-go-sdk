@@ -116,7 +116,25 @@ func (s *ReplaceServersInServerGroupRequest) SetServerGroupId(v string) *Replace
 }
 
 func (s *ReplaceServersInServerGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AddedServers != nil {
+		for _, item := range s.AddedServers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RemovedServers != nil {
+		for _, item := range s.RemovedServers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ReplaceServersInServerGroupRequestAddedServers struct {

@@ -108,7 +108,16 @@ func (s *ListServerGroupsResponseBody) SetTotalCount(v int32) *ListServerGroupsR
 }
 
 func (s *ListServerGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ServerGroups != nil {
+		for _, item := range s.ServerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServerGroupsResponseBodyServerGroups struct {
@@ -483,7 +492,41 @@ func (s *ListServerGroupsResponseBodyServerGroups) SetVpcId(v string) *ListServe
 }
 
 func (s *ListServerGroupsResponseBodyServerGroups) Validate() error {
-	return dara.Validate(s)
+	if s.ConnectionDrainConfig != nil {
+		if err := s.ConnectionDrainConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HealthCheckConfig != nil {
+		if err := s.HealthCheckConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SlowStartConfig != nil {
+		if err := s.SlowStartConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StickySessionConfig != nil {
+		if err := s.StickySessionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UchConfig != nil {
+		if err := s.UchConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListServerGroupsResponseBodyServerGroupsConnectionDrainConfig struct {

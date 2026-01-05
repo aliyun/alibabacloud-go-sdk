@@ -99,7 +99,16 @@ func (s *AddEntriesToAclRequest) SetDryRun(v bool) *AddEntriesToAclRequest {
 }
 
 func (s *AddEntriesToAclRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AclEntries != nil {
+		for _, item := range s.AclEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddEntriesToAclRequestAclEntries struct {

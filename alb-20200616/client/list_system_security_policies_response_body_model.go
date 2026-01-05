@@ -53,7 +53,16 @@ func (s *ListSystemSecurityPoliciesResponseBody) SetSecurityPolicies(v []*ListSy
 }
 
 func (s *ListSystemSecurityPoliciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityPolicies != nil {
+		for _, item := range s.SecurityPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSystemSecurityPoliciesResponseBodySecurityPolicies struct {

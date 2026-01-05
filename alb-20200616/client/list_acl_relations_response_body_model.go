@@ -53,7 +53,16 @@ func (s *ListAclRelationsResponseBody) SetRequestId(v string) *ListAclRelationsR
 }
 
 func (s *ListAclRelationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AclRelations != nil {
+		for _, item := range s.AclRelations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAclRelationsResponseBodyAclRelations struct {
@@ -94,7 +103,16 @@ func (s *ListAclRelationsResponseBodyAclRelations) SetRelatedListeners(v []*List
 }
 
 func (s *ListAclRelationsResponseBodyAclRelations) Validate() error {
-	return dara.Validate(s)
+	if s.RelatedListeners != nil {
+		for _, item := range s.RelatedListeners {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAclRelationsResponseBodyAclRelationsRelatedListeners struct {

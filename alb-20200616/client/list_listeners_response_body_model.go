@@ -104,7 +104,16 @@ func (s *ListListenersResponseBody) SetTotalCount(v int32) *ListListenersRespons
 }
 
 func (s *ListListenersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Listeners != nil {
+		for _, item := range s.Listeners {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListListenersResponseBodyListeners struct {
@@ -369,7 +378,40 @@ func (s *ListListenersResponseBodyListeners) SetXForwardedForConfig(v *ListListe
 }
 
 func (s *ListListenersResponseBodyListeners) Validate() error {
-	return dara.Validate(s)
+	if s.DefaultActions != nil {
+		for _, item := range s.DefaultActions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LogConfig != nil {
+		if err := s.LogConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QuicConfig != nil {
+		if err := s.QuicConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.XForwardedForConfig != nil {
+		if err := s.XForwardedForConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListListenersResponseBodyListenersDefaultActions struct {
@@ -410,7 +452,12 @@ func (s *ListListenersResponseBodyListenersDefaultActions) SetType(v string) *Li
 }
 
 func (s *ListListenersResponseBodyListenersDefaultActions) Validate() error {
-	return dara.Validate(s)
+	if s.ForwardGroupConfig != nil {
+		if err := s.ForwardGroupConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListListenersResponseBodyListenersDefaultActionsForwardGroupConfig struct {
@@ -436,7 +483,16 @@ func (s *ListListenersResponseBodyListenersDefaultActionsForwardGroupConfig) Set
 }
 
 func (s *ListListenersResponseBodyListenersDefaultActionsForwardGroupConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ServerGroupTuples != nil {
+		for _, item := range s.ServerGroupTuples {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListListenersResponseBodyListenersDefaultActionsForwardGroupConfigServerGroupTuples struct {
@@ -511,7 +567,12 @@ func (s *ListListenersResponseBodyListenersLogConfig) SetAccessLogTracingConfig(
 }
 
 func (s *ListListenersResponseBodyListenersLogConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AccessLogTracingConfig != nil {
+		if err := s.AccessLogTracingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListListenersResponseBodyListenersLogConfigAccessLogTracingConfig struct {

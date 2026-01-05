@@ -53,7 +53,16 @@ func (s *ListSecurityPolicyRelationsResponseBody) SetSecrityPolicyRelations(v []
 }
 
 func (s *ListSecurityPolicyRelationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecrityPolicyRelations != nil {
+		for _, item := range s.SecrityPolicyRelations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSecurityPolicyRelationsResponseBodySecrityPolicyRelations struct {
@@ -94,7 +103,16 @@ func (s *ListSecurityPolicyRelationsResponseBodySecrityPolicyRelations) SetSecur
 }
 
 func (s *ListSecurityPolicyRelationsResponseBodySecrityPolicyRelations) Validate() error {
-	return dara.Validate(s)
+	if s.RelatedListeners != nil {
+		for _, item := range s.RelatedListeners {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSecurityPolicyRelationsResponseBodySecrityPolicyRelationsRelatedListeners struct {

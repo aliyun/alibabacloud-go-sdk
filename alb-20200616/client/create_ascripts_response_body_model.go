@@ -70,7 +70,16 @@ func (s *CreateAScriptsResponseBody) SetRequestId(v string) *CreateAScriptsRespo
 }
 
 func (s *CreateAScriptsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AScriptIds != nil {
+		for _, item := range s.AScriptIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAScriptsResponseBodyAScriptIds struct {

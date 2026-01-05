@@ -357,7 +357,53 @@ func (s *CreateListenerRequest) SetXForwardedForConfig(v *CreateListenerRequestX
 }
 
 func (s *CreateListenerRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CaCertificates != nil {
+		for _, item := range s.CaCertificates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Certificates != nil {
+		for _, item := range s.Certificates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DefaultActions != nil {
+		for _, item := range s.DefaultActions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.QuicConfig != nil {
+		if err := s.QuicConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.XForwardedForConfig != nil {
+		if err := s.XForwardedForConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateListenerRequestCaCertificates struct {
@@ -466,7 +512,12 @@ func (s *CreateListenerRequestDefaultActions) SetType(v string) *CreateListenerR
 }
 
 func (s *CreateListenerRequestDefaultActions) Validate() error {
-	return dara.Validate(s)
+	if s.ForwardGroupConfig != nil {
+		if err := s.ForwardGroupConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateListenerRequestDefaultActionsForwardGroupConfig struct {
@@ -494,7 +545,16 @@ func (s *CreateListenerRequestDefaultActionsForwardGroupConfig) SetServerGroupTu
 }
 
 func (s *CreateListenerRequestDefaultActionsForwardGroupConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ServerGroupTuples != nil {
+		for _, item := range s.ServerGroupTuples {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateListenerRequestDefaultActionsForwardGroupConfigServerGroupTuples struct {

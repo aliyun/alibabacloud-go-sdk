@@ -120,7 +120,12 @@ func (s *UpdateListenerLogConfigRequest) SetListenerId(v string) *UpdateListener
 }
 
 func (s *UpdateListenerLogConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AccessLogTracingConfig != nil {
+		if err := s.AccessLogTracingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateListenerLogConfigRequestAccessLogTracingConfig struct {

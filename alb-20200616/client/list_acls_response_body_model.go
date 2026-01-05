@@ -108,7 +108,16 @@ func (s *ListAclsResponseBody) SetTotalCount(v int32) *ListAclsResponseBody {
 }
 
 func (s *ListAclsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Acls != nil {
+		for _, item := range s.Acls {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAclsResponseBodyAcls struct {
@@ -249,7 +258,16 @@ func (s *ListAclsResponseBodyAcls) SetTags(v []*ListAclsResponseBodyAclsTags) *L
 }
 
 func (s *ListAclsResponseBodyAcls) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAclsResponseBodyAclsTags struct {

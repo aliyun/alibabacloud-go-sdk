@@ -108,7 +108,16 @@ func (s *ListLoadBalancersResponseBody) SetTotalCount(v int32) *ListLoadBalancer
 }
 
 func (s *ListLoadBalancersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LoadBalancers != nil {
+		for _, item := range s.LoadBalancers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLoadBalancersResponseBodyLoadBalancers struct {
@@ -445,7 +454,45 @@ func (s *ListLoadBalancersResponseBodyLoadBalancers) SetVpcId(v string) *ListLoa
 }
 
 func (s *ListLoadBalancersResponseBodyLoadBalancers) Validate() error {
-	return dara.Validate(s)
+	if s.AccessLogConfig != nil {
+		if err := s.AccessLogConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeletionProtectionConfig != nil {
+		if err := s.DeletionProtectionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LoadBalancerBillingConfig != nil {
+		if err := s.LoadBalancerBillingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LoadBalancerOperationLocks != nil {
+		for _, item := range s.LoadBalancerOperationLocks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ModificationProtectionConfig != nil {
+		if err := s.ModificationProtectionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersAccessLogConfig struct {

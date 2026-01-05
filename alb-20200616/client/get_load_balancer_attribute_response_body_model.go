@@ -447,7 +447,54 @@ func (s *GetLoadBalancerAttributeResponseBody) SetZoneMappings(v []*GetLoadBalan
 }
 
 func (s *GetLoadBalancerAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccessLogConfig != nil {
+		if err := s.AccessLogConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeletionProtectionConfig != nil {
+		if err := s.DeletionProtectionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LoadBalancerBillingConfig != nil {
+		if err := s.LoadBalancerBillingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LoadBalancerOperationLocks != nil {
+		for _, item := range s.LoadBalancerOperationLocks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ModificationProtectionConfig != nil {
+		if err := s.ModificationProtectionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ZoneMappings != nil {
+		for _, item := range s.ZoneMappings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLoadBalancerAttributeResponseBodyAccessLogConfig struct {
@@ -813,7 +860,16 @@ func (s *GetLoadBalancerAttributeResponseBodyZoneMappings) SetZoneId(v string) *
 }
 
 func (s *GetLoadBalancerAttributeResponseBodyZoneMappings) Validate() error {
-	return dara.Validate(s)
+	if s.LoadBalancerAddresses != nil {
+		for _, item := range s.LoadBalancerAddresses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses struct {

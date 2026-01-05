@@ -114,7 +114,12 @@ func (s *UpdateLoadBalancerAttributeRequest) SetModificationProtectionConfig(v *
 }
 
 func (s *UpdateLoadBalancerAttributeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ModificationProtectionConfig != nil {
+		if err := s.ModificationProtectionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateLoadBalancerAttributeRequestModificationProtectionConfig struct {

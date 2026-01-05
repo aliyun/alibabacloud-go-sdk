@@ -266,7 +266,32 @@ func (s *UpdateServerGroupAttributeRequest) SetUpstreamKeepaliveEnabled(v bool) 
 }
 
 func (s *UpdateServerGroupAttributeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConnectionDrainConfig != nil {
+		if err := s.ConnectionDrainConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HealthCheckConfig != nil {
+		if err := s.HealthCheckConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SlowStartConfig != nil {
+		if err := s.SlowStartConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StickySessionConfig != nil {
+		if err := s.StickySessionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UchConfig != nil {
+		if err := s.UchConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateServerGroupAttributeRequestConnectionDrainConfig struct {

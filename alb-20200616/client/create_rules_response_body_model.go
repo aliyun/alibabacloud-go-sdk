@@ -72,7 +72,16 @@ func (s *CreateRulesResponseBody) SetRuleIds(v []*CreateRulesResponseBodyRuleIds
 }
 
 func (s *CreateRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RuleIds != nil {
+		for _, item := range s.RuleIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateRulesResponseBodyRuleIds struct {

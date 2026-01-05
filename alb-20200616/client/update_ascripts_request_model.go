@@ -78,7 +78,16 @@ func (s *UpdateAScriptsRequest) SetDryRun(v bool) *UpdateAScriptsRequest {
 }
 
 func (s *UpdateAScriptsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AScripts != nil {
+		for _, item := range s.AScripts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateAScriptsRequestAScripts struct {
@@ -191,7 +200,16 @@ func (s *UpdateAScriptsRequestAScripts) SetScriptContent(v string) *UpdateAScrip
 }
 
 func (s *UpdateAScriptsRequestAScripts) Validate() error {
-	return dara.Validate(s)
+	if s.ExtAttributes != nil {
+		for _, item := range s.ExtAttributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateAScriptsRequestAScriptsExtAttributes struct {

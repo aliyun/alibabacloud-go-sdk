@@ -292,7 +292,44 @@ func (s *UpdateListenerAttributeRequest) SetXForwardedForConfig(v *UpdateListene
 }
 
 func (s *UpdateListenerAttributeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CaCertificates != nil {
+		for _, item := range s.CaCertificates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Certificates != nil {
+		for _, item := range s.Certificates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DefaultActions != nil {
+		for _, item := range s.DefaultActions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.QuicConfig != nil {
+		if err := s.QuicConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.XForwardedForConfig != nil {
+		if err := s.XForwardedForConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateListenerAttributeRequestCaCertificates struct {
@@ -399,7 +436,12 @@ func (s *UpdateListenerAttributeRequestDefaultActions) SetType(v string) *Update
 }
 
 func (s *UpdateListenerAttributeRequestDefaultActions) Validate() error {
-	return dara.Validate(s)
+	if s.ForwardGroupConfig != nil {
+		if err := s.ForwardGroupConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateListenerAttributeRequestDefaultActionsForwardGroupConfig struct {
@@ -427,7 +469,16 @@ func (s *UpdateListenerAttributeRequestDefaultActionsForwardGroupConfig) SetServ
 }
 
 func (s *UpdateListenerAttributeRequestDefaultActionsForwardGroupConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ServerGroupTuples != nil {
+		for _, item := range s.ServerGroupTuples {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateListenerAttributeRequestDefaultActionsForwardGroupConfigServerGroupTuples struct {

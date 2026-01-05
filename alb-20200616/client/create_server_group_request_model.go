@@ -368,7 +368,41 @@ func (s *CreateServerGroupRequest) SetVpcId(v string) *CreateServerGroupRequest 
 }
 
 func (s *CreateServerGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConnectionDrainConfig != nil {
+		if err := s.ConnectionDrainConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HealthCheckConfig != nil {
+		if err := s.HealthCheckConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SlowStartConfig != nil {
+		if err := s.SlowStartConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StickySessionConfig != nil {
+		if err := s.StickySessionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UchConfig != nil {
+		if err := s.UchConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateServerGroupRequestConnectionDrainConfig struct {
