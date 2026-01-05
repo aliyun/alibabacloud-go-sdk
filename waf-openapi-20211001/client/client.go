@@ -8367,6 +8367,10 @@ func (client *Client) DescribeDomainsWithOptions(request *DescribeDomainsRequest
 		query["Domain"] = request.Domain
 	}
 
+	if !dara.IsNil(request.DomainId) {
+		query["DomainId"] = request.DomainId
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}

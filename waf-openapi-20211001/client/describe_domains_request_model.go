@@ -13,6 +13,8 @@ type iDescribeDomainsRequest interface {
 	GetBackend() *string
 	SetDomain(v string) *DescribeDomainsRequest
 	GetDomain() *string
+	SetDomainId(v string) *DescribeDomainsRequest
+	GetDomainId() *string
 	SetInstanceId(v string) *DescribeDomainsRequest
 	GetInstanceId() *string
 	SetPageNumber(v int64) *DescribeDomainsRequest
@@ -39,7 +41,8 @@ type DescribeDomainsRequest struct {
 	// example:
 	//
 	// www.aliyundoc.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The page number of the page to return. Default value: 1.
 	//
 	// This parameter is required.
@@ -96,6 +99,10 @@ func (s *DescribeDomainsRequest) GetDomain() *string {
 	return s.Domain
 }
 
+func (s *DescribeDomainsRequest) GetDomainId() *string {
+	return s.DomainId
+}
+
 func (s *DescribeDomainsRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -127,6 +134,11 @@ func (s *DescribeDomainsRequest) SetBackend(v string) *DescribeDomainsRequest {
 
 func (s *DescribeDomainsRequest) SetDomain(v string) *DescribeDomainsRequest {
 	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainsRequest) SetDomainId(v string) *DescribeDomainsRequest {
+	s.DomainId = &v
 	return s
 }
 

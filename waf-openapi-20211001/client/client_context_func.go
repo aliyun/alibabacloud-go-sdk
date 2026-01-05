@@ -6542,6 +6542,10 @@ func (client *Client) DescribeDomainsWithContext(ctx context.Context, request *D
 		query["Domain"] = request.Domain
 	}
 
+	if !dara.IsNil(request.DomainId) {
+		query["DomainId"] = request.DomainId
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
