@@ -1,3 +1,6 @@
+2026-01-05 Version: v1.0.3
+- Generated golang 2021-09-01 for servicecatalog.
+
 2024-02-27 Version: v1.0.2
 - Update API CreateProduct: add param TemplateType.
 - Update API GetProductAsAdmin: update response param.

@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("servicecatalog"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -65,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ApproveProvisionedProductPlanResponse
-func (client *Client) ApproveProvisionedProductPlanWithOptions(request *ApproveProvisionedProductPlanRequest, runtime *dara.RuntimeOptions) (_result *ApproveProvisionedProductPlanResponse, _err error) {
+func (client *Client) ApproveProvisionedProductPlanWithContext(ctx context.Context, request *ApproveProvisionedProductPlanRequest, runtime *dara.RuntimeOptions) (_result *ApproveProvisionedProductPlanResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -100,29 +51,11 @@ func (client *Client) ApproveProvisionedProductPlanWithOptions(request *ApproveP
 		BodyType:    dara.String("json"),
 	}
 	_result = &ApproveProvisionedProductPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Reviews a plan.
-//
-// @param request - ApproveProvisionedProductPlanRequest
-//
-// @return ApproveProvisionedProductPlanResponse
-func (client *Client) ApproveProvisionedProductPlan(request *ApproveProvisionedProductPlanRequest) (_result *ApproveProvisionedProductPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ApproveProvisionedProductPlanResponse{}
-	_body, _err := client.ApproveProvisionedProductPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -135,7 +68,7 @@ func (client *Client) ApproveProvisionedProductPlan(request *ApproveProvisionedP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociatePrincipalWithPortfolioResponse
-func (client *Client) AssociatePrincipalWithPortfolioWithOptions(request *AssociatePrincipalWithPortfolioRequest, runtime *dara.RuntimeOptions) (_result *AssociatePrincipalWithPortfolioResponse, _err error) {
+func (client *Client) AssociatePrincipalWithPortfolioWithContext(ctx context.Context, request *AssociatePrincipalWithPortfolioRequest, runtime *dara.RuntimeOptions) (_result *AssociatePrincipalWithPortfolioResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -170,29 +103,11 @@ func (client *Client) AssociatePrincipalWithPortfolioWithOptions(request *Associ
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociatePrincipalWithPortfolioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 将产品组合授权给某个RAM实体
-//
-// @param request - AssociatePrincipalWithPortfolioRequest
-//
-// @return AssociatePrincipalWithPortfolioResponse
-func (client *Client) AssociatePrincipalWithPortfolio(request *AssociatePrincipalWithPortfolioRequest) (_result *AssociatePrincipalWithPortfolioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociatePrincipalWithPortfolioResponse{}
-	_body, _err := client.AssociatePrincipalWithPortfolioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -205,7 +120,7 @@ func (client *Client) AssociatePrincipalWithPortfolio(request *AssociatePrincipa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociateProductWithPortfolioResponse
-func (client *Client) AssociateProductWithPortfolioWithOptions(request *AssociateProductWithPortfolioRequest, runtime *dara.RuntimeOptions) (_result *AssociateProductWithPortfolioResponse, _err error) {
+func (client *Client) AssociateProductWithPortfolioWithContext(ctx context.Context, request *AssociateProductWithPortfolioRequest, runtime *dara.RuntimeOptions) (_result *AssociateProductWithPortfolioResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -236,29 +151,11 @@ func (client *Client) AssociateProductWithPortfolioWithOptions(request *Associat
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociateProductWithPortfolioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a product to a product portfolio.
-//
-// @param request - AssociateProductWithPortfolioRequest
-//
-// @return AssociateProductWithPortfolioResponse
-func (client *Client) AssociateProductWithPortfolio(request *AssociateProductWithPortfolioRequest) (_result *AssociateProductWithPortfolioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociateProductWithPortfolioResponse{}
-	_body, _err := client.AssociateProductWithPortfolioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -271,7 +168,7 @@ func (client *Client) AssociateProductWithPortfolio(request *AssociateProductWit
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociateTagOptionWithResourceResponse
-func (client *Client) AssociateTagOptionWithResourceWithOptions(request *AssociateTagOptionWithResourceRequest, runtime *dara.RuntimeOptions) (_result *AssociateTagOptionWithResourceResponse, _err error) {
+func (client *Client) AssociateTagOptionWithResourceWithContext(ctx context.Context, request *AssociateTagOptionWithResourceRequest, runtime *dara.RuntimeOptions) (_result *AssociateTagOptionWithResourceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -302,29 +199,11 @@ func (client *Client) AssociateTagOptionWithResourceWithOptions(request *Associa
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociateTagOptionWithResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates the tag option with a resource.
-//
-// @param request - AssociateTagOptionWithResourceRequest
-//
-// @return AssociateTagOptionWithResourceResponse
-func (client *Client) AssociateTagOptionWithResource(request *AssociateTagOptionWithResourceRequest) (_result *AssociateTagOptionWithResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociateTagOptionWithResourceResponse{}
-	_body, _err := client.AssociateTagOptionWithResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -337,7 +216,7 @@ func (client *Client) AssociateTagOptionWithResource(request *AssociateTagOption
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelProvisionedProductPlanResponse
-func (client *Client) CancelProvisionedProductPlanWithOptions(request *CancelProvisionedProductPlanRequest, runtime *dara.RuntimeOptions) (_result *CancelProvisionedProductPlanResponse, _err error) {
+func (client *Client) CancelProvisionedProductPlanWithContext(ctx context.Context, request *CancelProvisionedProductPlanRequest, runtime *dara.RuntimeOptions) (_result *CancelProvisionedProductPlanResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -364,29 +243,11 @@ func (client *Client) CancelProvisionedProductPlanWithOptions(request *CancelPro
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelProvisionedProductPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels a plan.
-//
-// @param request - CancelProvisionedProductPlanRequest
-//
-// @return CancelProvisionedProductPlanResponse
-func (client *Client) CancelProvisionedProductPlan(request *CancelProvisionedProductPlanRequest) (_result *CancelProvisionedProductPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelProvisionedProductPlanResponse{}
-	_body, _err := client.CancelProvisionedProductPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -399,7 +260,7 @@ func (client *Client) CancelProvisionedProductPlan(request *CancelProvisionedPro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CopyProductResponse
-func (client *Client) CopyProductWithOptions(request *CopyProductRequest, runtime *dara.RuntimeOptions) (_result *CopyProductResponse, _err error) {
+func (client *Client) CopyProductWithContext(ctx context.Context, request *CopyProductRequest, runtime *dara.RuntimeOptions) (_result *CopyProductResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -430,29 +291,11 @@ func (client *Client) CopyProductWithOptions(request *CopyProductRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &CopyProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Replicates a product.
-//
-// @param request - CopyProductRequest
-//
-// @return CopyProductResponse
-func (client *Client) CopyProduct(request *CopyProductRequest) (_result *CopyProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CopyProductResponse{}
-	_body, _err := client.CopyProductWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -465,7 +308,7 @@ func (client *Client) CopyProduct(request *CopyProductRequest) (_result *CopyPro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateConstraintResponse
-func (client *Client) CreateConstraintWithOptions(request *CreateConstraintRequest, runtime *dara.RuntimeOptions) (_result *CreateConstraintResponse, _err error) {
+func (client *Client) CreateConstraintWithContext(ctx context.Context, request *CreateConstraintRequest, runtime *dara.RuntimeOptions) (_result *CreateConstraintResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -508,29 +351,11 @@ func (client *Client) CreateConstraintWithOptions(request *CreateConstraintReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateConstraintResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a constraint.
-//
-// @param request - CreateConstraintRequest
-//
-// @return CreateConstraintResponse
-func (client *Client) CreateConstraint(request *CreateConstraintRequest) (_result *CreateConstraintResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateConstraintResponse{}
-	_body, _err := client.CreateConstraintWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -543,7 +368,7 @@ func (client *Client) CreateConstraint(request *CreateConstraintRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePortfolioResponse
-func (client *Client) CreatePortfolioWithOptions(request *CreatePortfolioRequest, runtime *dara.RuntimeOptions) (_result *CreatePortfolioResponse, _err error) {
+func (client *Client) CreatePortfolioWithContext(ctx context.Context, request *CreatePortfolioRequest, runtime *dara.RuntimeOptions) (_result *CreatePortfolioResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -578,29 +403,11 @@ func (client *Client) CreatePortfolioWithOptions(request *CreatePortfolioRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePortfolioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a product portfolio.
-//
-// @param request - CreatePortfolioRequest
-//
-// @return CreatePortfolioResponse
-func (client *Client) CreatePortfolio(request *CreatePortfolioRequest) (_result *CreatePortfolioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePortfolioResponse{}
-	_body, _err := client.CreatePortfolioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -617,7 +424,7 @@ func (client *Client) CreatePortfolio(request *CreatePortfolioRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateProductResponse
-func (client *Client) CreateProductWithOptions(tmpReq *CreateProductRequest, runtime *dara.RuntimeOptions) (_result *CreateProductResponse, _err error) {
+func (client *Client) CreateProductWithContext(ctx context.Context, tmpReq *CreateProductRequest, runtime *dara.RuntimeOptions) (_result *CreateProductResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -670,33 +477,11 @@ func (client *Client) CreateProductWithOptions(tmpReq *CreateProductRequest, run
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a product.
-//
-// Description:
-//
-// Before you call the CreateProduct operation, you must call the [CreateTemplate](~~CreateTemplate~~) operation to create a template.
-//
-// @param request - CreateProductRequest
-//
-// @return CreateProductResponse
-func (client *Client) CreateProduct(request *CreateProductRequest) (_result *CreateProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateProductResponse{}
-	_body, _err := client.CreateProductWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -713,7 +498,7 @@ func (client *Client) CreateProduct(request *CreateProductRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateProductVersionResponse
-func (client *Client) CreateProductVersionWithOptions(request *CreateProductVersionRequest, runtime *dara.RuntimeOptions) (_result *CreateProductVersionResponse, _err error) {
+func (client *Client) CreateProductVersionWithContext(ctx context.Context, request *CreateProductVersionRequest, runtime *dara.RuntimeOptions) (_result *CreateProductVersionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -764,33 +549,11 @@ func (client *Client) CreateProductVersionWithOptions(request *CreateProductVers
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateProductVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a product version.
-//
-// Description:
-//
-// Before you call the CreateProductVersion operation, you must call the [CreateTemplate](~~CreateTemplate~~) operation to create a template.
-//
-// @param request - CreateProductVersionRequest
-//
-// @return CreateProductVersionResponse
-func (client *Client) CreateProductVersion(request *CreateProductVersionRequest) (_result *CreateProductVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateProductVersionResponse{}
-	_body, _err := client.CreateProductVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -803,7 +566,7 @@ func (client *Client) CreateProductVersion(request *CreateProductVersionRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateProvisionedProductPlanResponse
-func (client *Client) CreateProvisionedProductPlanWithOptions(request *CreateProvisionedProductPlanRequest, runtime *dara.RuntimeOptions) (_result *CreateProvisionedProductPlanResponse, _err error) {
+func (client *Client) CreateProvisionedProductPlanWithContext(ctx context.Context, request *CreateProvisionedProductPlanRequest, runtime *dara.RuntimeOptions) (_result *CreateProvisionedProductPlanResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -870,29 +633,11 @@ func (client *Client) CreateProvisionedProductPlanWithOptions(request *CreatePro
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateProvisionedProductPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a plan.
-//
-// @param request - CreateProvisionedProductPlanRequest
-//
-// @return CreateProvisionedProductPlanResponse
-func (client *Client) CreateProvisionedProductPlan(request *CreateProvisionedProductPlanRequest) (_result *CreateProvisionedProductPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateProvisionedProductPlanResponse{}
-	_body, _err := client.CreateProvisionedProductPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -905,7 +650,7 @@ func (client *Client) CreateProvisionedProductPlan(request *CreateProvisionedPro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateTagOptionResponse
-func (client *Client) CreateTagOptionWithOptions(request *CreateTagOptionRequest, runtime *dara.RuntimeOptions) (_result *CreateTagOptionResponse, _err error) {
+func (client *Client) CreateTagOptionWithContext(ctx context.Context, request *CreateTagOptionRequest, runtime *dara.RuntimeOptions) (_result *CreateTagOptionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -936,29 +681,11 @@ func (client *Client) CreateTagOptionWithOptions(request *CreateTagOptionRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateTagOptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a tag option.
-//
-// @param request - CreateTagOptionRequest
-//
-// @return CreateTagOptionResponse
-func (client *Client) CreateTagOption(request *CreateTagOptionRequest) (_result *CreateTagOptionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateTagOptionResponse{}
-	_body, _err := client.CreateTagOptionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -971,7 +698,7 @@ func (client *Client) CreateTagOption(request *CreateTagOptionRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateTemplateResponse
-func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateTemplateResponse, _err error) {
+func (client *Client) CreateTemplateWithContext(ctx context.Context, request *CreateTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1006,29 +733,11 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a template. Service Catalog saves the template based on the parameters that you specify and returns the URL of the template.
-//
-// @param request - CreateTemplateRequest
-//
-// @return CreateTemplateResponse
-func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *CreateTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateTemplateResponse{}
-	_body, _err := client.CreateTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1041,7 +750,7 @@ func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteConstraintResponse
-func (client *Client) DeleteConstraintWithOptions(request *DeleteConstraintRequest, runtime *dara.RuntimeOptions) (_result *DeleteConstraintResponse, _err error) {
+func (client *Client) DeleteConstraintWithContext(ctx context.Context, request *DeleteConstraintRequest, runtime *dara.RuntimeOptions) (_result *DeleteConstraintResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1068,29 +777,11 @@ func (client *Client) DeleteConstraintWithOptions(request *DeleteConstraintReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteConstraintResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a constraint.
-//
-// @param request - DeleteConstraintRequest
-//
-// @return DeleteConstraintResponse
-func (client *Client) DeleteConstraint(request *DeleteConstraintRequest) (_result *DeleteConstraintResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteConstraintResponse{}
-	_body, _err := client.DeleteConstraintWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1103,7 +794,7 @@ func (client *Client) DeleteConstraint(request *DeleteConstraintRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePortfolioResponse
-func (client *Client) DeletePortfolioWithOptions(request *DeletePortfolioRequest, runtime *dara.RuntimeOptions) (_result *DeletePortfolioResponse, _err error) {
+func (client *Client) DeletePortfolioWithContext(ctx context.Context, request *DeletePortfolioRequest, runtime *dara.RuntimeOptions) (_result *DeletePortfolioResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1130,29 +821,11 @@ func (client *Client) DeletePortfolioWithOptions(request *DeletePortfolioRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePortfolioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a product portfolio.
-//
-// @param request - DeletePortfolioRequest
-//
-// @return DeletePortfolioResponse
-func (client *Client) DeletePortfolio(request *DeletePortfolioRequest) (_result *DeletePortfolioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePortfolioResponse{}
-	_body, _err := client.DeletePortfolioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1165,7 +838,7 @@ func (client *Client) DeletePortfolio(request *DeletePortfolioRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteProductResponse
-func (client *Client) DeleteProductWithOptions(request *DeleteProductRequest, runtime *dara.RuntimeOptions) (_result *DeleteProductResponse, _err error) {
+func (client *Client) DeleteProductWithContext(ctx context.Context, request *DeleteProductRequest, runtime *dara.RuntimeOptions) (_result *DeleteProductResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1192,29 +865,11 @@ func (client *Client) DeleteProductWithOptions(request *DeleteProductRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a product.
-//
-// @param request - DeleteProductRequest
-//
-// @return DeleteProductResponse
-func (client *Client) DeleteProduct(request *DeleteProductRequest) (_result *DeleteProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteProductResponse{}
-	_body, _err := client.DeleteProductWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1227,7 +882,7 @@ func (client *Client) DeleteProduct(request *DeleteProductRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteProductVersionResponse
-func (client *Client) DeleteProductVersionWithOptions(request *DeleteProductVersionRequest, runtime *dara.RuntimeOptions) (_result *DeleteProductVersionResponse, _err error) {
+func (client *Client) DeleteProductVersionWithContext(ctx context.Context, request *DeleteProductVersionRequest, runtime *dara.RuntimeOptions) (_result *DeleteProductVersionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1254,29 +909,11 @@ func (client *Client) DeleteProductVersionWithOptions(request *DeleteProductVers
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteProductVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a product version.
-//
-// @param request - DeleteProductVersionRequest
-//
-// @return DeleteProductVersionResponse
-func (client *Client) DeleteProductVersion(request *DeleteProductVersionRequest) (_result *DeleteProductVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteProductVersionResponse{}
-	_body, _err := client.DeleteProductVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1289,7 +926,7 @@ func (client *Client) DeleteProductVersion(request *DeleteProductVersionRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteProvisionedProductPlanResponse
-func (client *Client) DeleteProvisionedProductPlanWithOptions(request *DeleteProvisionedProductPlanRequest, runtime *dara.RuntimeOptions) (_result *DeleteProvisionedProductPlanResponse, _err error) {
+func (client *Client) DeleteProvisionedProductPlanWithContext(ctx context.Context, request *DeleteProvisionedProductPlanRequest, runtime *dara.RuntimeOptions) (_result *DeleteProvisionedProductPlanResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1316,29 +953,11 @@ func (client *Client) DeleteProvisionedProductPlanWithOptions(request *DeletePro
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteProvisionedProductPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a plan.
-//
-// @param request - DeleteProvisionedProductPlanRequest
-//
-// @return DeleteProvisionedProductPlanResponse
-func (client *Client) DeleteProvisionedProductPlan(request *DeleteProvisionedProductPlanRequest) (_result *DeleteProvisionedProductPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteProvisionedProductPlanResponse{}
-	_body, _err := client.DeleteProvisionedProductPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1351,7 +970,7 @@ func (client *Client) DeleteProvisionedProductPlan(request *DeleteProvisionedPro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteTagOptionResponse
-func (client *Client) DeleteTagOptionWithOptions(request *DeleteTagOptionRequest, runtime *dara.RuntimeOptions) (_result *DeleteTagOptionResponse, _err error) {
+func (client *Client) DeleteTagOptionWithContext(ctx context.Context, request *DeleteTagOptionRequest, runtime *dara.RuntimeOptions) (_result *DeleteTagOptionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1378,29 +997,11 @@ func (client *Client) DeleteTagOptionWithOptions(request *DeleteTagOptionRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteTagOptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a tag option.
-//
-// @param request - DeleteTagOptionRequest
-//
-// @return DeleteTagOptionResponse
-func (client *Client) DeleteTagOption(request *DeleteTagOptionRequest) (_result *DeleteTagOptionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteTagOptionResponse{}
-	_body, _err := client.DeleteTagOptionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1413,7 +1014,7 @@ func (client *Client) DeleteTagOption(request *DeleteTagOptionRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisAssociateTagOptionFromResourceResponse
-func (client *Client) DisAssociateTagOptionFromResourceWithOptions(request *DisAssociateTagOptionFromResourceRequest, runtime *dara.RuntimeOptions) (_result *DisAssociateTagOptionFromResourceResponse, _err error) {
+func (client *Client) DisAssociateTagOptionFromResourceWithContext(ctx context.Context, request *DisAssociateTagOptionFromResourceRequest, runtime *dara.RuntimeOptions) (_result *DisAssociateTagOptionFromResourceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1444,29 +1045,11 @@ func (client *Client) DisAssociateTagOptionFromResourceWithOptions(request *DisA
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisAssociateTagOptionFromResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates a tag option from a resource.
-//
-// @param request - DisAssociateTagOptionFromResourceRequest
-//
-// @return DisAssociateTagOptionFromResourceResponse
-func (client *Client) DisAssociateTagOptionFromResource(request *DisAssociateTagOptionFromResourceRequest) (_result *DisAssociateTagOptionFromResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisAssociateTagOptionFromResourceResponse{}
-	_body, _err := client.DisAssociateTagOptionFromResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1479,7 +1062,7 @@ func (client *Client) DisAssociateTagOptionFromResource(request *DisAssociateTag
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisassociatePrincipalFromPortfolioResponse
-func (client *Client) DisassociatePrincipalFromPortfolioWithOptions(request *DisassociatePrincipalFromPortfolioRequest, runtime *dara.RuntimeOptions) (_result *DisassociatePrincipalFromPortfolioResponse, _err error) {
+func (client *Client) DisassociatePrincipalFromPortfolioWithContext(ctx context.Context, request *DisassociatePrincipalFromPortfolioRequest, runtime *dara.RuntimeOptions) (_result *DisassociatePrincipalFromPortfolioResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1514,29 +1097,11 @@ func (client *Client) DisassociatePrincipalFromPortfolioWithOptions(request *Dis
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisassociatePrincipalFromPortfolioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Revokes the permissions to access a product portfolio.
-//
-// @param request - DisassociatePrincipalFromPortfolioRequest
-//
-// @return DisassociatePrincipalFromPortfolioResponse
-func (client *Client) DisassociatePrincipalFromPortfolio(request *DisassociatePrincipalFromPortfolioRequest) (_result *DisassociatePrincipalFromPortfolioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisassociatePrincipalFromPortfolioResponse{}
-	_body, _err := client.DisassociatePrincipalFromPortfolioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1549,7 +1114,7 @@ func (client *Client) DisassociatePrincipalFromPortfolio(request *DisassociatePr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisassociateProductFromPortfolioResponse
-func (client *Client) DisassociateProductFromPortfolioWithOptions(request *DisassociateProductFromPortfolioRequest, runtime *dara.RuntimeOptions) (_result *DisassociateProductFromPortfolioResponse, _err error) {
+func (client *Client) DisassociateProductFromPortfolioWithContext(ctx context.Context, request *DisassociateProductFromPortfolioRequest, runtime *dara.RuntimeOptions) (_result *DisassociateProductFromPortfolioResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1580,29 +1145,11 @@ func (client *Client) DisassociateProductFromPortfolioWithOptions(request *Disas
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisassociateProductFromPortfolioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes a product from the product portfolio.
-//
-// @param request - DisassociateProductFromPortfolioRequest
-//
-// @return DisassociateProductFromPortfolioResponse
-func (client *Client) DisassociateProductFromPortfolio(request *DisassociateProductFromPortfolioRequest) (_result *DisassociateProductFromPortfolioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisassociateProductFromPortfolioResponse{}
-	_body, _err := client.DisassociateProductFromPortfolioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1615,7 +1162,7 @@ func (client *Client) DisassociateProductFromPortfolio(request *DisassociateProd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExecuteProvisionedProductPlanResponse
-func (client *Client) ExecuteProvisionedProductPlanWithOptions(request *ExecuteProvisionedProductPlanRequest, runtime *dara.RuntimeOptions) (_result *ExecuteProvisionedProductPlanResponse, _err error) {
+func (client *Client) ExecuteProvisionedProductPlanWithContext(ctx context.Context, request *ExecuteProvisionedProductPlanRequest, runtime *dara.RuntimeOptions) (_result *ExecuteProvisionedProductPlanResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1642,29 +1189,11 @@ func (client *Client) ExecuteProvisionedProductPlanWithOptions(request *ExecuteP
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecuteProvisionedProductPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Runs a plan.
-//
-// @param request - ExecuteProvisionedProductPlanRequest
-//
-// @return ExecuteProvisionedProductPlanResponse
-func (client *Client) ExecuteProvisionedProductPlan(request *ExecuteProvisionedProductPlanRequest) (_result *ExecuteProvisionedProductPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ExecuteProvisionedProductPlanResponse{}
-	_body, _err := client.ExecuteProvisionedProductPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1677,7 +1206,7 @@ func (client *Client) ExecuteProvisionedProductPlan(request *ExecuteProvisionedP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetConstraintResponse
-func (client *Client) GetConstraintWithOptions(request *GetConstraintRequest, runtime *dara.RuntimeOptions) (_result *GetConstraintResponse, _err error) {
+func (client *Client) GetConstraintWithContext(ctx context.Context, request *GetConstraintRequest, runtime *dara.RuntimeOptions) (_result *GetConstraintResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1704,29 +1233,11 @@ func (client *Client) GetConstraintWithOptions(request *GetConstraintRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetConstraintResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a constraint.
-//
-// @param request - GetConstraintRequest
-//
-// @return GetConstraintResponse
-func (client *Client) GetConstraint(request *GetConstraintRequest) (_result *GetConstraintResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetConstraintResponse{}
-	_body, _err := client.GetConstraintWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1739,7 +1250,7 @@ func (client *Client) GetConstraint(request *GetConstraintRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPortfolioResponse
-func (client *Client) GetPortfolioWithOptions(request *GetPortfolioRequest, runtime *dara.RuntimeOptions) (_result *GetPortfolioResponse, _err error) {
+func (client *Client) GetPortfolioWithContext(ctx context.Context, request *GetPortfolioRequest, runtime *dara.RuntimeOptions) (_result *GetPortfolioResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1766,29 +1277,11 @@ func (client *Client) GetPortfolioWithOptions(request *GetPortfolioRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPortfolioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a product portfolio.
-//
-// @param request - GetPortfolioRequest
-//
-// @return GetPortfolioResponse
-func (client *Client) GetPortfolio(request *GetPortfolioRequest) (_result *GetPortfolioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPortfolioResponse{}
-	_body, _err := client.GetPortfolioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1801,7 +1294,7 @@ func (client *Client) GetPortfolio(request *GetPortfolioRequest) (_result *GetPo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetProductAsAdminResponse
-func (client *Client) GetProductAsAdminWithOptions(request *GetProductAsAdminRequest, runtime *dara.RuntimeOptions) (_result *GetProductAsAdminResponse, _err error) {
+func (client *Client) GetProductAsAdminWithContext(ctx context.Context, request *GetProductAsAdminRequest, runtime *dara.RuntimeOptions) (_result *GetProductAsAdminResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1828,29 +1321,11 @@ func (client *Client) GetProductAsAdminWithOptions(request *GetProductAsAdminReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetProductAsAdminResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a product as the administrator.
-//
-// @param request - GetProductAsAdminRequest
-//
-// @return GetProductAsAdminResponse
-func (client *Client) GetProductAsAdmin(request *GetProductAsAdminRequest) (_result *GetProductAsAdminResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetProductAsAdminResponse{}
-	_body, _err := client.GetProductAsAdminWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1867,7 +1342,7 @@ func (client *Client) GetProductAsAdmin(request *GetProductAsAdminRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetProductAsEndUserResponse
-func (client *Client) GetProductAsEndUserWithOptions(request *GetProductAsEndUserRequest, runtime *dara.RuntimeOptions) (_result *GetProductAsEndUserResponse, _err error) {
+func (client *Client) GetProductAsEndUserWithContext(ctx context.Context, request *GetProductAsEndUserRequest, runtime *dara.RuntimeOptions) (_result *GetProductAsEndUserResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1894,33 +1369,11 @@ func (client *Client) GetProductAsEndUserWithOptions(request *GetProductAsEndUse
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetProductAsEndUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a product as a user.
-//
-// Description:
-//
-// Make sure that you are granted the permissions to manage relevant products as a user by an administrator. For more information, see [Manage access permissions](https://help.aliyun.com/document_detail/405233.html).
-//
-// @param request - GetProductAsEndUserRequest
-//
-// @return GetProductAsEndUserResponse
-func (client *Client) GetProductAsEndUser(request *GetProductAsEndUserRequest) (_result *GetProductAsEndUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetProductAsEndUserResponse{}
-	_body, _err := client.GetProductAsEndUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1933,7 +1386,7 @@ func (client *Client) GetProductAsEndUser(request *GetProductAsEndUserRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetProductVersionResponse
-func (client *Client) GetProductVersionWithOptions(request *GetProductVersionRequest, runtime *dara.RuntimeOptions) (_result *GetProductVersionResponse, _err error) {
+func (client *Client) GetProductVersionWithContext(ctx context.Context, request *GetProductVersionRequest, runtime *dara.RuntimeOptions) (_result *GetProductVersionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1960,29 +1413,11 @@ func (client *Client) GetProductVersionWithOptions(request *GetProductVersionReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetProductVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a product version.
-//
-// @param request - GetProductVersionRequest
-//
-// @return GetProductVersionResponse
-func (client *Client) GetProductVersion(request *GetProductVersionRequest) (_result *GetProductVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetProductVersionResponse{}
-	_body, _err := client.GetProductVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1995,7 +1430,7 @@ func (client *Client) GetProductVersion(request *GetProductVersionRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetProvisionedProductResponse
-func (client *Client) GetProvisionedProductWithOptions(request *GetProvisionedProductRequest, runtime *dara.RuntimeOptions) (_result *GetProvisionedProductResponse, _err error) {
+func (client *Client) GetProvisionedProductWithContext(ctx context.Context, request *GetProvisionedProductRequest, runtime *dara.RuntimeOptions) (_result *GetProvisionedProductResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2022,29 +1457,11 @@ func (client *Client) GetProvisionedProductWithOptions(request *GetProvisionedPr
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetProvisionedProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a product instance.
-//
-// @param request - GetProvisionedProductRequest
-//
-// @return GetProvisionedProductResponse
-func (client *Client) GetProvisionedProduct(request *GetProvisionedProductRequest) (_result *GetProvisionedProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetProvisionedProductResponse{}
-	_body, _err := client.GetProvisionedProductWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2057,7 +1474,7 @@ func (client *Client) GetProvisionedProduct(request *GetProvisionedProductReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetProvisionedProductPlanResponse
-func (client *Client) GetProvisionedProductPlanWithOptions(request *GetProvisionedProductPlanRequest, runtime *dara.RuntimeOptions) (_result *GetProvisionedProductPlanResponse, _err error) {
+func (client *Client) GetProvisionedProductPlanWithContext(ctx context.Context, request *GetProvisionedProductPlanRequest, runtime *dara.RuntimeOptions) (_result *GetProvisionedProductPlanResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2084,29 +1501,11 @@ func (client *Client) GetProvisionedProductPlanWithOptions(request *GetProvision
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetProvisionedProductPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a plan.
-//
-// @param request - GetProvisionedProductPlanRequest
-//
-// @return GetProvisionedProductPlanResponse
-func (client *Client) GetProvisionedProductPlan(request *GetProvisionedProductPlanRequest) (_result *GetProvisionedProductPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetProvisionedProductPlanResponse{}
-	_body, _err := client.GetProvisionedProductPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2119,7 +1518,7 @@ func (client *Client) GetProvisionedProductPlan(request *GetProvisionedProductPl
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTagOptionResponse
-func (client *Client) GetTagOptionWithOptions(request *GetTagOptionRequest, runtime *dara.RuntimeOptions) (_result *GetTagOptionResponse, _err error) {
+func (client *Client) GetTagOptionWithContext(ctx context.Context, request *GetTagOptionRequest, runtime *dara.RuntimeOptions) (_result *GetTagOptionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2142,29 +1541,11 @@ func (client *Client) GetTagOptionWithOptions(request *GetTagOptionRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTagOptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a tag option.
-//
-// @param request - GetTagOptionRequest
-//
-// @return GetTagOptionResponse
-func (client *Client) GetTagOption(request *GetTagOptionRequest) (_result *GetTagOptionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTagOptionResponse{}
-	_body, _err := client.GetTagOptionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2177,7 +1558,7 @@ func (client *Client) GetTagOption(request *GetTagOptionRequest) (_result *GetTa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTaskResponse
-func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *dara.RuntimeOptions) (_result *GetTaskResponse, _err error) {
+func (client *Client) GetTaskWithContext(ctx context.Context, request *GetTaskRequest, runtime *dara.RuntimeOptions) (_result *GetTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2204,29 +1585,11 @@ func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *dara.
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a task.
-//
-// @param request - GetTaskRequest
-//
-// @return GetTaskResponse
-func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTaskResponse{}
-	_body, _err := client.GetTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2239,7 +1602,7 @@ func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTemplateResponse
-func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
+func (client *Client) GetTemplateWithContext(ctx context.Context, request *GetTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2270,29 +1633,11 @@ func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a template.
-//
-// @param request - GetTemplateRequest
-//
-// @return GetTemplateResponse
-func (client *Client) GetTemplate(request *GetTemplateRequest) (_result *GetTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTemplateResponse{}
-	_body, _err := client.GetTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2305,7 +1650,7 @@ func (client *Client) GetTemplate(request *GetTemplateRequest) (_result *GetTemp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return LaunchProductResponse
-func (client *Client) LaunchProductWithOptions(request *LaunchProductRequest, runtime *dara.RuntimeOptions) (_result *LaunchProductResponse, _err error) {
+func (client *Client) LaunchProductWithContext(ctx context.Context, request *LaunchProductRequest, runtime *dara.RuntimeOptions) (_result *LaunchProductResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2356,29 +1701,11 @@ func (client *Client) LaunchProductWithOptions(request *LaunchProductRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &LaunchProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Launches a product.
-//
-// @param request - LaunchProductRequest
-//
-// @return LaunchProductResponse
-func (client *Client) LaunchProduct(request *LaunchProductRequest) (_result *LaunchProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &LaunchProductResponse{}
-	_body, _err := client.LaunchProductWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2391,7 +1718,7 @@ func (client *Client) LaunchProduct(request *LaunchProductRequest) (_result *Lau
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLaunchOptionsResponse
-func (client *Client) ListLaunchOptionsWithOptions(request *ListLaunchOptionsRequest, runtime *dara.RuntimeOptions) (_result *ListLaunchOptionsResponse, _err error) {
+func (client *Client) ListLaunchOptionsWithContext(ctx context.Context, request *ListLaunchOptionsRequest, runtime *dara.RuntimeOptions) (_result *ListLaunchOptionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2418,29 +1745,11 @@ func (client *Client) ListLaunchOptionsWithOptions(request *ListLaunchOptionsReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLaunchOptionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries launch options.
-//
-// @param request - ListLaunchOptionsRequest
-//
-// @return ListLaunchOptionsResponse
-func (client *Client) ListLaunchOptions(request *ListLaunchOptionsRequest) (_result *ListLaunchOptionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListLaunchOptionsResponse{}
-	_body, _err := client.ListLaunchOptionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2453,7 +1762,7 @@ func (client *Client) ListLaunchOptions(request *ListLaunchOptionsRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPortfoliosResponse
-func (client *Client) ListPortfoliosWithOptions(request *ListPortfoliosRequest, runtime *dara.RuntimeOptions) (_result *ListPortfoliosResponse, _err error) {
+func (client *Client) ListPortfoliosWithContext(ctx context.Context, request *ListPortfoliosRequest, runtime *dara.RuntimeOptions) (_result *ListPortfoliosResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2504,29 +1813,11 @@ func (client *Client) ListPortfoliosWithOptions(request *ListPortfoliosRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPortfoliosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The number of entries returned per page.
-//
-// @param request - ListPortfoliosRequest
-//
-// @return ListPortfoliosResponse
-func (client *Client) ListPortfolios(request *ListPortfoliosRequest) (_result *ListPortfoliosResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPortfoliosResponse{}
-	_body, _err := client.ListPortfoliosWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2539,7 +1830,7 @@ func (client *Client) ListPortfolios(request *ListPortfoliosRequest) (_result *L
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPrincipalsResponse
-func (client *Client) ListPrincipalsWithOptions(request *ListPrincipalsRequest, runtime *dara.RuntimeOptions) (_result *ListPrincipalsResponse, _err error) {
+func (client *Client) ListPrincipalsWithContext(ctx context.Context, request *ListPrincipalsRequest, runtime *dara.RuntimeOptions) (_result *ListPrincipalsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2566,29 +1857,11 @@ func (client *Client) ListPrincipalsWithOptions(request *ListPrincipalsRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPrincipalsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Resource Access Management (RAM) users and RAM roles that are granted the permissions to access a product portfolio.
-//
-// @param request - ListPrincipalsRequest
-//
-// @return ListPrincipalsResponse
-func (client *Client) ListPrincipals(request *ListPrincipalsRequest) (_result *ListPrincipalsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPrincipalsResponse{}
-	_body, _err := client.ListPrincipalsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2601,7 +1874,7 @@ func (client *Client) ListPrincipals(request *ListPrincipalsRequest) (_result *L
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListProductVersionsResponse
-func (client *Client) ListProductVersionsWithOptions(request *ListProductVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListProductVersionsResponse, _err error) {
+func (client *Client) ListProductVersionsWithContext(ctx context.Context, request *ListProductVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListProductVersionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2628,29 +1901,11 @@ func (client *Client) ListProductVersionsWithOptions(request *ListProductVersion
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListProductVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the versions of a product.
-//
-// @param request - ListProductVersionsRequest
-//
-// @return ListProductVersionsResponse
-func (client *Client) ListProductVersions(request *ListProductVersionsRequest) (_result *ListProductVersionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListProductVersionsResponse{}
-	_body, _err := client.ListProductVersionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2663,7 +1918,7 @@ func (client *Client) ListProductVersions(request *ListProductVersionsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListProductsAsAdminResponse
-func (client *Client) ListProductsAsAdminWithOptions(request *ListProductsAsAdminRequest, runtime *dara.RuntimeOptions) (_result *ListProductsAsAdminResponse, _err error) {
+func (client *Client) ListProductsAsAdminWithContext(ctx context.Context, request *ListProductsAsAdminRequest, runtime *dara.RuntimeOptions) (_result *ListProductsAsAdminResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2714,29 +1969,11 @@ func (client *Client) ListProductsAsAdminWithOptions(request *ListProductsAsAdmi
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListProductsAsAdminResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries products as an administrator.
-//
-// @param request - ListProductsAsAdminRequest
-//
-// @return ListProductsAsAdminResponse
-func (client *Client) ListProductsAsAdmin(request *ListProductsAsAdminRequest) (_result *ListProductsAsAdminResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListProductsAsAdminResponse{}
-	_body, _err := client.ListProductsAsAdminWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2753,7 +1990,7 @@ func (client *Client) ListProductsAsAdmin(request *ListProductsAsAdminRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListProductsAsEndUserResponse
-func (client *Client) ListProductsAsEndUserWithOptions(request *ListProductsAsEndUserRequest, runtime *dara.RuntimeOptions) (_result *ListProductsAsEndUserResponse, _err error) {
+func (client *Client) ListProductsAsEndUserWithContext(ctx context.Context, request *ListProductsAsEndUserRequest, runtime *dara.RuntimeOptions) (_result *ListProductsAsEndUserResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2796,33 +2033,11 @@ func (client *Client) ListProductsAsEndUserWithOptions(request *ListProductsAsEn
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListProductsAsEndUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries products as a user.
-//
-// Description:
-//
-// Make sure that you are granted the permissions to manage relevant products as a user by an administrator. For more information, see [Manage access permissions](https://help.aliyun.com/document_detail/405233.html).
-//
-// @param request - ListProductsAsEndUserRequest
-//
-// @return ListProductsAsEndUserResponse
-func (client *Client) ListProductsAsEndUser(request *ListProductsAsEndUserRequest) (_result *ListProductsAsEndUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListProductsAsEndUserResponse{}
-	_body, _err := client.ListProductsAsEndUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2835,7 +2050,7 @@ func (client *Client) ListProductsAsEndUser(request *ListProductsAsEndUserReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListProvisionedProductPlanApproversResponse
-func (client *Client) ListProvisionedProductPlanApproversWithOptions(request *ListProvisionedProductPlanApproversRequest, runtime *dara.RuntimeOptions) (_result *ListProvisionedProductPlanApproversResponse, _err error) {
+func (client *Client) ListProvisionedProductPlanApproversWithContext(ctx context.Context, request *ListProvisionedProductPlanApproversRequest, runtime *dara.RuntimeOptions) (_result *ListProvisionedProductPlanApproversResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2858,29 +2073,11 @@ func (client *Client) ListProvisionedProductPlanApproversWithOptions(request *Li
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListProvisionedProductPlanApproversResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of plan reviewers.
-//
-// @param request - ListProvisionedProductPlanApproversRequest
-//
-// @return ListProvisionedProductPlanApproversResponse
-func (client *Client) ListProvisionedProductPlanApprovers(request *ListProvisionedProductPlanApproversRequest) (_result *ListProvisionedProductPlanApproversResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListProvisionedProductPlanApproversResponse{}
-	_body, _err := client.ListProvisionedProductPlanApproversWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2893,7 +2090,7 @@ func (client *Client) ListProvisionedProductPlanApprovers(request *ListProvision
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListProvisionedProductPlansResponse
-func (client *Client) ListProvisionedProductPlansWithOptions(request *ListProvisionedProductPlansRequest, runtime *dara.RuntimeOptions) (_result *ListProvisionedProductPlansResponse, _err error) {
+func (client *Client) ListProvisionedProductPlansWithContext(ctx context.Context, request *ListProvisionedProductPlansRequest, runtime *dara.RuntimeOptions) (_result *ListProvisionedProductPlansResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2948,29 +2145,11 @@ func (client *Client) ListProvisionedProductPlansWithOptions(request *ListProvis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListProvisionedProductPlansResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of plans. You can query plans from the end user dimension or from the review dimension.
-//
-// @param request - ListProvisionedProductPlansRequest
-//
-// @return ListProvisionedProductPlansResponse
-func (client *Client) ListProvisionedProductPlans(request *ListProvisionedProductPlansRequest) (_result *ListProvisionedProductPlansResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListProvisionedProductPlansResponse{}
-	_body, _err := client.ListProvisionedProductPlansWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2983,7 +2162,7 @@ func (client *Client) ListProvisionedProductPlans(request *ListProvisionedProduc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListProvisionedProductsResponse
-func (client *Client) ListProvisionedProductsWithOptions(request *ListProvisionedProductsRequest, runtime *dara.RuntimeOptions) (_result *ListProvisionedProductsResponse, _err error) {
+func (client *Client) ListProvisionedProductsWithContext(ctx context.Context, request *ListProvisionedProductsRequest, runtime *dara.RuntimeOptions) (_result *ListProvisionedProductsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3030,76 +2209,11 @@ func (client *Client) ListProvisionedProductsWithOptions(request *ListProvisione
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListProvisionedProductsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries product instances.
-//
-// @param request - ListProvisionedProductsRequest
-//
-// @return ListProvisionedProductsResponse
-func (client *Client) ListProvisionedProducts(request *ListProvisionedProductsRequest) (_result *ListProvisionedProductsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListProvisionedProductsResponse{}
-	_body, _err := client.ListProvisionedProductsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries regions.
-//
-// @param request - ListRegionsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListRegionsResponse
-func (client *Client) ListRegionsWithOptions(runtime *dara.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("ListRegions"),
-		Version:     dara.String("2021-09-01"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ListRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries regions.
-//
-// @return ListRegionsResponse
-func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListRegionsResponse{}
-	_body, _err := client.ListRegionsWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3112,7 +2226,7 @@ func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListResourcesForTagOptionResponse
-func (client *Client) ListResourcesForTagOptionWithOptions(request *ListResourcesForTagOptionRequest, runtime *dara.RuntimeOptions) (_result *ListResourcesForTagOptionResponse, _err error) {
+func (client *Client) ListResourcesForTagOptionWithContext(ctx context.Context, request *ListResourcesForTagOptionRequest, runtime *dara.RuntimeOptions) (_result *ListResourcesForTagOptionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3135,29 +2249,11 @@ func (client *Client) ListResourcesForTagOptionWithOptions(request *ListResource
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListResourcesForTagOptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the resources that are associated with a tag option.
-//
-// @param request - ListResourcesForTagOptionRequest
-//
-// @return ListResourcesForTagOptionResponse
-func (client *Client) ListResourcesForTagOption(request *ListResourcesForTagOptionRequest) (_result *ListResourcesForTagOptionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListResourcesForTagOptionResponse{}
-	_body, _err := client.ListResourcesForTagOptionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3170,7 +2266,7 @@ func (client *Client) ListResourcesForTagOption(request *ListResourcesForTagOpti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagOptionsResponse
-func (client *Client) ListTagOptionsWithOptions(tmpReq *ListTagOptionsRequest, runtime *dara.RuntimeOptions) (_result *ListTagOptionsResponse, _err error) {
+func (client *Client) ListTagOptionsWithContext(ctx context.Context, tmpReq *ListTagOptionsRequest, runtime *dara.RuntimeOptions) (_result *ListTagOptionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -3199,29 +2295,11 @@ func (client *Client) ListTagOptionsWithOptions(tmpReq *ListTagOptionsRequest, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagOptionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of tag options.
-//
-// @param request - ListTagOptionsRequest
-//
-// @return ListTagOptionsResponse
-func (client *Client) ListTagOptions(request *ListTagOptionsRequest) (_result *ListTagOptionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagOptionsResponse{}
-	_body, _err := client.ListTagOptionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3234,7 +2312,7 @@ func (client *Client) ListTagOptions(request *ListTagOptionsRequest) (_result *L
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTasksResponse
-func (client *Client) ListTasksWithOptions(request *ListTasksRequest, runtime *dara.RuntimeOptions) (_result *ListTasksResponse, _err error) {
+func (client *Client) ListTasksWithContext(ctx context.Context, request *ListTasksRequest, runtime *dara.RuntimeOptions) (_result *ListTasksResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3277,29 +2355,11 @@ func (client *Client) ListTasksWithOptions(request *ListTasksRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The page number of the returned page.
-//
-// @param request - ListTasksRequest
-//
-// @return ListTasksResponse
-func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTasksResponse{}
-	_body, _err := client.ListTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3316,7 +2376,7 @@ func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TerminateProvisionedProductResponse
-func (client *Client) TerminateProvisionedProductWithOptions(request *TerminateProvisionedProductRequest, runtime *dara.RuntimeOptions) (_result *TerminateProvisionedProductResponse, _err error) {
+func (client *Client) TerminateProvisionedProductWithContext(ctx context.Context, request *TerminateProvisionedProductRequest, runtime *dara.RuntimeOptions) (_result *TerminateProvisionedProductResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3343,33 +2403,11 @@ func (client *Client) TerminateProvisionedProductWithOptions(request *TerminateP
 		BodyType:    dara.String("json"),
 	}
 	_result = &TerminateProvisionedProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Terminates a product instance.
-//
-// Description:
-//
-// After a product instance is terminated, the product instance is deleted from the product instance list. End users cannot manage the product instance throughout its lifecycle. Proceed with caution.
-//
-// @param request - TerminateProvisionedProductRequest
-//
-// @return TerminateProvisionedProductResponse
-func (client *Client) TerminateProvisionedProduct(request *TerminateProvisionedProductRequest) (_result *TerminateProvisionedProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TerminateProvisionedProductResponse{}
-	_body, _err := client.TerminateProvisionedProductWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3382,7 +2420,7 @@ func (client *Client) TerminateProvisionedProduct(request *TerminateProvisionedP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateConstraintResponse
-func (client *Client) UpdateConstraintWithOptions(request *UpdateConstraintRequest, runtime *dara.RuntimeOptions) (_result *UpdateConstraintResponse, _err error) {
+func (client *Client) UpdateConstraintWithContext(ctx context.Context, request *UpdateConstraintRequest, runtime *dara.RuntimeOptions) (_result *UpdateConstraintResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3417,29 +2455,11 @@ func (client *Client) UpdateConstraintWithOptions(request *UpdateConstraintReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateConstraintResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the information about a constraint.
-//
-// @param request - UpdateConstraintRequest
-//
-// @return UpdateConstraintResponse
-func (client *Client) UpdateConstraint(request *UpdateConstraintRequest) (_result *UpdateConstraintResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateConstraintResponse{}
-	_body, _err := client.UpdateConstraintWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3452,7 +2472,7 @@ func (client *Client) UpdateConstraint(request *UpdateConstraintRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePortfolioResponse
-func (client *Client) UpdatePortfolioWithOptions(request *UpdatePortfolioRequest, runtime *dara.RuntimeOptions) (_result *UpdatePortfolioResponse, _err error) {
+func (client *Client) UpdatePortfolioWithContext(ctx context.Context, request *UpdatePortfolioRequest, runtime *dara.RuntimeOptions) (_result *UpdatePortfolioResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3491,29 +2511,11 @@ func (client *Client) UpdatePortfolioWithOptions(request *UpdatePortfolioRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePortfolioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The ID of the product portfolio.
-//
-// @param request - UpdatePortfolioRequest
-//
-// @return UpdatePortfolioResponse
-func (client *Client) UpdatePortfolio(request *UpdatePortfolioRequest) (_result *UpdatePortfolioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdatePortfolioResponse{}
-	_body, _err := client.UpdatePortfolioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3526,7 +2528,7 @@ func (client *Client) UpdatePortfolio(request *UpdatePortfolioRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateProductResponse
-func (client *Client) UpdateProductWithOptions(request *UpdateProductRequest, runtime *dara.RuntimeOptions) (_result *UpdateProductResponse, _err error) {
+func (client *Client) UpdateProductWithContext(ctx context.Context, request *UpdateProductRequest, runtime *dara.RuntimeOptions) (_result *UpdateProductResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3565,29 +2567,11 @@ func (client *Client) UpdateProductWithOptions(request *UpdateProductRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The ID of the product.
-//
-// @param request - UpdateProductRequest
-//
-// @return UpdateProductResponse
-func (client *Client) UpdateProduct(request *UpdateProductRequest) (_result *UpdateProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateProductResponse{}
-	_body, _err := client.UpdateProductWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3600,7 +2584,7 @@ func (client *Client) UpdateProduct(request *UpdateProductRequest) (_result *Upd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateProductVersionResponse
-func (client *Client) UpdateProductVersionWithOptions(request *UpdateProductVersionRequest, runtime *dara.RuntimeOptions) (_result *UpdateProductVersionResponse, _err error) {
+func (client *Client) UpdateProductVersionWithContext(ctx context.Context, request *UpdateProductVersionRequest, runtime *dara.RuntimeOptions) (_result *UpdateProductVersionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3643,29 +2627,11 @@ func (client *Client) UpdateProductVersionWithOptions(request *UpdateProductVers
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateProductVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the information about a product version.
-//
-// @param request - UpdateProductVersionRequest
-//
-// @return UpdateProductVersionResponse
-func (client *Client) UpdateProductVersion(request *UpdateProductVersionRequest) (_result *UpdateProductVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateProductVersionResponse{}
-	_body, _err := client.UpdateProductVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3678,7 +2644,7 @@ func (client *Client) UpdateProductVersion(request *UpdateProductVersionRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateProvisionedProductResponse
-func (client *Client) UpdateProvisionedProductWithOptions(request *UpdateProvisionedProductRequest, runtime *dara.RuntimeOptions) (_result *UpdateProvisionedProductResponse, _err error) {
+func (client *Client) UpdateProvisionedProductWithContext(ctx context.Context, request *UpdateProvisionedProductRequest, runtime *dara.RuntimeOptions) (_result *UpdateProvisionedProductResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3725,29 +2691,11 @@ func (client *Client) UpdateProvisionedProductWithOptions(request *UpdateProvisi
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateProvisionedProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the information about a product instance.
-//
-// @param request - UpdateProvisionedProductRequest
-//
-// @return UpdateProvisionedProductResponse
-func (client *Client) UpdateProvisionedProduct(request *UpdateProvisionedProductRequest) (_result *UpdateProvisionedProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateProvisionedProductResponse{}
-	_body, _err := client.UpdateProvisionedProductWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3760,7 +2708,7 @@ func (client *Client) UpdateProvisionedProduct(request *UpdateProvisionedProduct
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateProvisionedProductPlanResponse
-func (client *Client) UpdateProvisionedProductPlanWithOptions(request *UpdateProvisionedProductPlanRequest, runtime *dara.RuntimeOptions) (_result *UpdateProvisionedProductPlanResponse, _err error) {
+func (client *Client) UpdateProvisionedProductPlanWithContext(ctx context.Context, request *UpdateProvisionedProductPlanRequest, runtime *dara.RuntimeOptions) (_result *UpdateProvisionedProductPlanResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3811,29 +2759,11 @@ func (client *Client) UpdateProvisionedProductPlanWithOptions(request *UpdatePro
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateProvisionedProductPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a plan.
-//
-// @param request - UpdateProvisionedProductPlanRequest
-//
-// @return UpdateProvisionedProductPlanResponse
-func (client *Client) UpdateProvisionedProductPlan(request *UpdateProvisionedProductPlanRequest) (_result *UpdateProvisionedProductPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateProvisionedProductPlanResponse{}
-	_body, _err := client.UpdateProvisionedProductPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3846,7 +2776,7 @@ func (client *Client) UpdateProvisionedProductPlan(request *UpdateProvisionedPro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateTagOptionResponse
-func (client *Client) UpdateTagOptionWithOptions(request *UpdateTagOptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateTagOptionResponse, _err error) {
+func (client *Client) UpdateTagOptionWithContext(ctx context.Context, request *UpdateTagOptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateTagOptionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3881,28 +2811,10 @@ func (client *Client) UpdateTagOptionWithOptions(request *UpdateTagOptionRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateTagOptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the tag option.
-//
-// @param request - UpdateTagOptionRequest
-//
-// @return UpdateTagOptionResponse
-func (client *Client) UpdateTagOption(request *UpdateTagOptionRequest) (_result *UpdateTagOptionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateTagOptionResponse{}
-	_body, _err := client.UpdateTagOptionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
