@@ -20,16 +20,21 @@ type iSyncMCPServersResponseBody interface {
 }
 
 type SyncMCPServersResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                         `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *SyncMCPServersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -91,7 +96,9 @@ func (s *SyncMCPServersResponseBody) Validate() error {
 }
 
 type SyncMCPServersResponseBodyData struct {
-	FailedMcpServers  []*SyncMCPServersResponseBodyDataFailedMcpServers  `json:"failedMcpServers,omitempty" xml:"failedMcpServers,omitempty" type:"Repeated"`
+	// The list of MCP servers that failed to synchronize.
+	FailedMcpServers []*SyncMCPServersResponseBodyDataFailedMcpServers `json:"failedMcpServers,omitempty" xml:"failedMcpServers,omitempty" type:"Repeated"`
+	// The list of MCP servers successfully synchronized.
 	SucceedMcpServers []*SyncMCPServersResponseBodyDataSucceedMcpServers `json:"succeedMcpServers,omitempty" xml:"succeedMcpServers,omitempty" type:"Repeated"`
 }
 
@@ -144,11 +151,14 @@ func (s *SyncMCPServersResponseBodyData) Validate() error {
 }
 
 type SyncMCPServersResponseBodyDataFailedMcpServers struct {
+	// The name of the MCP server.
+	//
 	// example:
 	//
 	// mcp-fail
-	McpServerName *string   `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
-	Protocols     []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	McpServerName *string `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
+	// The protocol.
+	Protocols []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
 }
 
 func (s SyncMCPServersResponseBodyDataFailedMcpServers) String() string {
@@ -182,11 +192,14 @@ func (s *SyncMCPServersResponseBodyDataFailedMcpServers) Validate() error {
 }
 
 type SyncMCPServersResponseBodyDataSucceedMcpServers struct {
+	// The name of the MCP server.
+	//
 	// example:
 	//
 	// mcp-success
-	McpServerName *string   `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
-	Protocols     []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	McpServerName *string `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
+	// The protocol.
+	Protocols []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
 }
 
 func (s SyncMCPServersResponseBodyDataSucceedMcpServers) String() string {

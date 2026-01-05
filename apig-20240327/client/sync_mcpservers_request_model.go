@@ -22,16 +22,24 @@ type iSyncMCPServersRequest interface {
 }
 
 type SyncMCPServersRequest struct {
+	// The domain ID.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
+	// The ID of the gateway.
+	//
 	// example:
 	//
 	// gw-cq7l5s5lhtg***
-	GatewayId       *string                                 `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The synchronized Nacos MCP server list. If the synchronized MCP server is included, add the mcpServerId parameter.
 	NacosMcpServers []*SyncMCPServersRequestNacosMcpServers `json:"nacosMcpServers,omitempty" xml:"nacosMcpServers,omitempty" type:"Repeated"`
+	// The Nacos namespace.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The source ID.
+	//
 	// example:
 	//
 	// src-d40mff6m1hkpt84vep60
@@ -105,25 +113,32 @@ func (s *SyncMCPServersRequest) Validate() error {
 }
 
 type SyncMCPServersRequestNacosMcpServers struct {
+	// The exposed URI path. This parameter is required when the protocol parameter is set to SSE or StreamableHTTP and the type parameter is set to RealMCP.
+	//
 	// example:
 	//
 	// /sse
 	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
+	// The Nacos instance ID.
+	//
 	// example:
 	//
 	// mse-24afmoioxxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// MCP Server ID
+	// The MCP server ID.
 	//
 	// example:
 	//
 	// mcp-d3s8qo6m1hknegofa3bg
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
+	// The name of the MCP server.
+	//
 	// example:
 	//
 	// test
-	McpServerName *string   `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
-	Protocols     []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	McpServerName *string `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
+	// The protocol.
+	Protocols []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
 }
 
 func (s SyncMCPServersRequestNacosMcpServers) String() string {

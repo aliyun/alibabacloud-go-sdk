@@ -3983,6 +3983,80 @@ func (client *Client) InstallPlugin(request *InstallPluginRequest) (_result *Ins
 
 // Summary:
 //
+// 查询消费者授权规则列表
+//
+// @param request - ListConsumerAuthorizationRulesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConsumerAuthorizationRulesResponse
+func (client *Client) ListConsumerAuthorizationRulesWithOptions(consumerId *string, request *ListConsumerAuthorizationRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConsumerAuthorizationRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiNameLike) {
+		query["apiNameLike"] = request.ApiNameLike
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListConsumerAuthorizationRules"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumers/" + dara.PercentEncode(dara.StringValue(consumerId)) + "/authorization-rules"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListConsumerAuthorizationRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者授权规则列表
+//
+// @param request - ListConsumerAuthorizationRulesRequest
+//
+// @return ListConsumerAuthorizationRulesResponse
+func (client *Client) ListConsumerAuthorizationRules(consumerId *string, request *ListConsumerAuthorizationRulesRequest) (_result *ListConsumerAuthorizationRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListConsumerAuthorizationRulesResponse{}
+	_body, _err := client.ListConsumerAuthorizationRulesWithOptions(consumerId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of consumers.
 //
 // @param request - ListConsumersRequest
@@ -4954,6 +5028,112 @@ func (client *Client) ListPluginAttachments(request *ListPluginAttachmentsReques
 
 // Summary:
 //
+// # ListPluginClasses
+//
+// @param request - ListPluginClassesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPluginClassesResponse
+func (client *Client) ListPluginClassesWithOptions(request *ListPluginClassesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPluginClassesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AliasLike) {
+		query["aliasLike"] = request.AliasLike
+	}
+
+	if !dara.IsNil(request.Direction) {
+		query["direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.ExcludeBuiltinAiProxy) {
+		query["excludeBuiltinAiProxy"] = request.ExcludeBuiltinAiProxy
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.GatewayType) {
+		query["gatewayType"] = request.GatewayType
+	}
+
+	if !dara.IsNil(request.Installed) {
+		query["installed"] = request.Installed
+	}
+
+	if !dara.IsNil(request.NameLike) {
+		query["nameLike"] = request.NameLike
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["source"] = request.Source
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPluginClasses"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/plugin-classes"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPluginClassesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListPluginClasses
+//
+// @param request - ListPluginClassesRequest
+//
+// @return ListPluginClassesResponse
+func (client *Client) ListPluginClasses(request *ListPluginClassesRequest) (_result *ListPluginClassesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPluginClassesResponse{}
+	_body, _err := client.ListPluginClassesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries plug-ins.
 //
 // @param request - ListPluginsRequest
@@ -5656,7 +5836,7 @@ func (client *Client) RestartGateway(gatewayId *string) (_result *RestartGateway
 
 // Summary:
 //
-// 同步外部MCP server
+// Synchronizes Nacos Model Context Protocol (MCP) server configurations to Cloud-native API Gateway.
 //
 // @param request - SyncMCPServersRequest
 //
@@ -5719,7 +5899,7 @@ func (client *Client) SyncMCPServersWithOptions(request *SyncMCPServersRequest, 
 
 // Summary:
 //
-// 同步外部MCP server
+// Synchronizes Nacos Model Context Protocol (MCP) server configurations to Cloud-native API Gateway.
 //
 // @param request - SyncMCPServersRequest
 //
