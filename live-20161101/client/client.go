@@ -24361,6 +24361,92 @@ func (client *Client) DescribeLiveStreamsTotalCount(request *DescribeLiveStreams
 
 // Summary:
 //
+// Queries the tags of domain names.
+//
+// Description:
+//
+// You can call this operation up to 10 times per second per account.
+//
+// @param request - DescribeLiveTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLiveTagResourcesResponse
+func (client *Client) DescribeLiveTagResourcesWithOptions(request *DescribeLiveTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveTagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLiveTagResources"),
+		Version:     dara.String("2016-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLiveTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the tags of domain names.
+//
+// Description:
+//
+// You can call this operation up to 10 times per second per account.
+//
+// @param request - DescribeLiveTagResourcesRequest
+//
+// @return DescribeLiveTagResourcesResponse
+func (client *Client) DescribeLiveTagResources(request *DescribeLiveTagResourcesRequest) (_result *DescribeLiveTagResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeLiveTagResourcesResponse{}
+	_body, _err := client.DescribeLiveTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the top domain names ranked by traffic.
 //
 // Description:
