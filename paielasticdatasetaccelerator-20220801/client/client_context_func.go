@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("paielasticdatasetaccelerator"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -65,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindEndpointResponse
-func (client *Client) BindEndpointWithOptions(EndpointId *string, SlotId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BindEndpointResponse, _err error) {
+func (client *Client) BindEndpointWithContext(ctx context.Context, EndpointId *string, SlotId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BindEndpointResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -81,28 +32,11 @@ func (client *Client) BindEndpointWithOptions(EndpointId *string, SlotId *string
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 将一个挂载点关联到一个数据集加速槽上。
-//
-// @return BindEndpointResponse
-func (client *Client) BindEndpoint(EndpointId *string, SlotId *string) (_result *BindEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &BindEndpointResponse{}
-	_body, _err := client.BindEndpointWithOptions(EndpointId, SlotId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -117,7 +51,7 @@ func (client *Client) BindEndpoint(EndpointId *string, SlotId *string) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEndpointResponse
-func (client *Client) CreateEndpointWithOptions(request *CreateEndpointRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateEndpointResponse, _err error) {
+func (client *Client) CreateEndpointWithContext(ctx context.Context, request *CreateEndpointRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateEndpointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -161,30 +95,11 @@ func (client *Client) CreateEndpointWithOptions(request *CreateEndpointRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建并注册一个数据集加速槽挂载点。
-//
-// @param request - CreateEndpointRequest
-//
-// @return CreateEndpointResponse
-func (client *Client) CreateEndpoint(request *CreateEndpointRequest) (_result *CreateEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateEndpointResponse{}
-	_body, _err := client.CreateEndpointWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -199,7 +114,7 @@ func (client *Client) CreateEndpoint(request *CreateEndpointRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateInstanceResponse
-func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
+func (client *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -263,30 +178,11 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建数据集加速实例
-//
-// @param request - CreateInstanceRequest
-//
-// @return CreateInstanceResponse
-func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateInstanceResponse{}
-	_body, _err := client.CreateInstanceWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -301,7 +197,7 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSlotResponse
-func (client *Client) CreateSlotWithOptions(request *CreateSlotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSlotResponse, _err error) {
+func (client *Client) CreateSlotWithContext(ctx context.Context, request *CreateSlotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSlotResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -369,30 +265,11 @@ func (client *Client) CreateSlotWithOptions(request *CreateSlotRequest, headers 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSlotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建并注册一个 数据集加速槽。
-//
-// @param request - CreateSlotRequest
-//
-// @return CreateSlotResponse
-func (client *Client) CreateSlot(request *CreateSlotRequest) (_result *CreateSlotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateSlotResponse{}
-	_body, _err := client.CreateSlotWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -407,7 +284,7 @@ func (client *Client) CreateSlot(request *CreateSlotRequest) (_result *CreateSlo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSlotsResponse
-func (client *Client) CreateSlotsWithOptions(request *CreateSlotsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSlotsResponse, _err error) {
+func (client *Client) CreateSlotsWithContext(ctx context.Context, request *CreateSlotsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSlotsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -439,30 +316,11 @@ func (client *Client) CreateSlotsWithOptions(request *CreateSlotsRequest, header
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSlotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 同时创建并注册多个数据集加速槽，并使用相同的一组数据加速槽挂载点。
-//
-// @param request - CreateSlotsRequest
-//
-// @return CreateSlotsResponse
-func (client *Client) CreateSlots(request *CreateSlotsRequest) (_result *CreateSlotsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateSlotsResponse{}
-	_body, _err := client.CreateSlotsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -477,7 +335,7 @@ func (client *Client) CreateSlots(request *CreateSlotsRequest) (_result *CreateS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateTagResponse
-func (client *Client) CreateTagWithOptions(request *CreateTagRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTagResponse, _err error) {
+func (client *Client) CreateTagWithContext(ctx context.Context, request *CreateTagRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTagResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -517,30 +375,11 @@ func (client *Client) CreateTagWithOptions(request *CreateTagRequest, headers ma
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 针对一个资源，创建一个标签。
-//
-// @param request - CreateTagRequest
-//
-// @return CreateTagResponse
-func (client *Client) CreateTag(request *CreateTagRequest) (_result *CreateTagResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateTagResponse{}
-	_body, _err := client.CreateTagWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -553,7 +392,7 @@ func (client *Client) CreateTag(request *CreateTagRequest) (_result *CreateTagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEndpointResponse
-func (client *Client) DeleteEndpointWithOptions(EndpointId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteEndpointResponse, _err error) {
+func (client *Client) DeleteEndpointWithContext(ctx context.Context, EndpointId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteEndpointResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -569,28 +408,11 @@ func (client *Client) DeleteEndpointWithOptions(EndpointId *string, headers map[
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除一个数据集加速槽挂载点。
-//
-// @return DeleteEndpointResponse
-func (client *Client) DeleteEndpoint(EndpointId *string) (_result *DeleteEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteEndpointResponse{}
-	_body, _err := client.DeleteEndpointWithOptions(EndpointId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -603,7 +425,7 @@ func (client *Client) DeleteEndpoint(EndpointId *string) (_result *DeleteEndpoin
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteInstanceResponse
-func (client *Client) DeleteInstanceWithOptions(InstanceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
+func (client *Client) DeleteInstanceWithContext(ctx context.Context, InstanceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -619,28 +441,11 @@ func (client *Client) DeleteInstanceWithOptions(InstanceId *string, headers map[
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除一个数据集加速实例。
-//
-// @return DeleteInstanceResponse
-func (client *Client) DeleteInstance(InstanceId *string) (_result *DeleteInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteInstanceResponse{}
-	_body, _err := client.DeleteInstanceWithOptions(InstanceId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -655,7 +460,7 @@ func (client *Client) DeleteInstance(InstanceId *string) (_result *DeleteInstanc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSlotResponse
-func (client *Client) DeleteSlotWithOptions(SlotId *string, request *DeleteSlotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteSlotResponse, _err error) {
+func (client *Client) DeleteSlotWithContext(ctx context.Context, SlotId *string, request *DeleteSlotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteSlotResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -683,30 +488,11 @@ func (client *Client) DeleteSlotWithOptions(SlotId *string, request *DeleteSlotR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSlotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除一个数据集加速槽。
-//
-// @param request - DeleteSlotRequest
-//
-// @return DeleteSlotResponse
-func (client *Client) DeleteSlot(SlotId *string, request *DeleteSlotRequest) (_result *DeleteSlotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteSlotResponse{}
-	_body, _err := client.DeleteSlotWithOptions(SlotId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -721,7 +507,7 @@ func (client *Client) DeleteSlot(SlotId *string, request *DeleteSlotRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteTagResponse
-func (client *Client) DeleteTagWithOptions(request *DeleteTagRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTagResponse, _err error) {
+func (client *Client) DeleteTagWithContext(ctx context.Context, request *DeleteTagRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTagResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -757,30 +543,11 @@ func (client *Client) DeleteTagWithOptions(request *DeleteTagRequest, headers ma
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除一个资源上的一个标签。
-//
-// @param request - DeleteTagRequest
-//
-// @return DeleteTagResponse
-func (client *Client) DeleteTag(request *DeleteTagRequest) (_result *DeleteTagResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteTagResponse{}
-	_body, _err := client.DeleteTagWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -795,7 +562,7 @@ func (client *Client) DeleteTag(request *DeleteTagRequest) (_result *DeleteTagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeComponentResponse
-func (client *Client) DescribeComponentWithOptions(ComponentId *string, tmpReq *DescribeComponentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeComponentResponse, _err error) {
+func (client *Client) DescribeComponentWithContext(ctx context.Context, ComponentId *string, tmpReq *DescribeComponentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeComponentResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -833,30 +600,11 @@ func (client *Client) DescribeComponentWithOptions(ComponentId *string, tmpReq *
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeComponentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取指定数据集加速组件的信息。
-//
-// @param request - DescribeComponentRequest
-//
-// @return DescribeComponentResponse
-func (client *Client) DescribeComponent(ComponentId *string, request *DescribeComponentRequest) (_result *DescribeComponentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeComponentResponse{}
-	_body, _err := client.DescribeComponentWithOptions(ComponentId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -869,7 +617,7 @@ func (client *Client) DescribeComponent(ComponentId *string, request *DescribeCo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEndpointResponse
-func (client *Client) DescribeEndpointWithOptions(EndpointId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeEndpointResponse, _err error) {
+func (client *Client) DescribeEndpointWithContext(ctx context.Context, EndpointId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeEndpointResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -885,28 +633,11 @@ func (client *Client) DescribeEndpointWithOptions(EndpointId *string, headers ma
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取指定数据集加速槽挂载点的信息。
-//
-// @return DescribeEndpointResponse
-func (client *Client) DescribeEndpoint(EndpointId *string) (_result *DescribeEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeEndpointResponse{}
-	_body, _err := client.DescribeEndpointWithOptions(EndpointId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -919,7 +650,7 @@ func (client *Client) DescribeEndpoint(EndpointId *string) (_result *DescribeEnd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceResponse
-func (client *Client) DescribeInstanceWithOptions(InstanceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeInstanceResponse, _err error) {
+func (client *Client) DescribeInstanceWithContext(ctx context.Context, InstanceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeInstanceResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -935,28 +666,11 @@ func (client *Client) DescribeInstanceWithOptions(InstanceId *string, headers ma
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取指定数据集加速实例信息。
-//
-// @return DescribeInstanceResponse
-func (client *Client) DescribeInstance(InstanceId *string) (_result *DescribeInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeInstanceResponse{}
-	_body, _err := client.DescribeInstanceWithOptions(InstanceId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -969,7 +683,7 @@ func (client *Client) DescribeInstance(InstanceId *string) (_result *DescribeIns
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSlotResponse
-func (client *Client) DescribeSlotWithOptions(SlotId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeSlotResponse, _err error) {
+func (client *Client) DescribeSlotWithContext(ctx context.Context, SlotId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeSlotResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -985,28 +699,11 @@ func (client *Client) DescribeSlotWithOptions(SlotId *string, headers map[string
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSlotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取指定数据集加速槽的信息。
-//
-// @return DescribeSlotResponse
-func (client *Client) DescribeSlot(SlotId *string) (_result *DescribeSlotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeSlotResponse{}
-	_body, _err := client.DescribeSlotWithOptions(SlotId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1021,7 +718,7 @@ func (client *Client) DescribeSlot(SlotId *string) (_result *DescribeSlotRespons
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListComponentsResponse
-func (client *Client) ListComponentsWithOptions(request *ListComponentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListComponentsResponse, _err error) {
+func (client *Client) ListComponentsWithContext(ctx context.Context, request *ListComponentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListComponentsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1073,30 +770,11 @@ func (client *Client) ListComponentsWithOptions(request *ListComponentsRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListComponentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取数据集加速组件的信息列表。
-//
-// @param request - ListComponentsRequest
-//
-// @return ListComponentsResponse
-func (client *Client) ListComponents(request *ListComponentsRequest) (_result *ListComponentsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListComponentsResponse{}
-	_body, _err := client.ListComponentsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1111,7 +789,7 @@ func (client *Client) ListComponents(request *ListComponentsRequest) (_result *L
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEndpointsResponse
-func (client *Client) ListEndpointsWithOptions(request *ListEndpointsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEndpointsResponse, _err error) {
+func (client *Client) ListEndpointsWithContext(ctx context.Context, request *ListEndpointsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEndpointsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1171,30 +849,11 @@ func (client *Client) ListEndpointsWithOptions(request *ListEndpointsRequest, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEndpointsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取数据集加速槽挂载点的信息列表。
-//
-// @param request - ListEndpointsRequest
-//
-// @return ListEndpointsResponse
-func (client *Client) ListEndpoints(request *ListEndpointsRequest) (_result *ListEndpointsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListEndpointsResponse{}
-	_body, _err := client.ListEndpointsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1209,7 +868,7 @@ func (client *Client) ListEndpoints(request *ListEndpointsRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListInstancesResponse
-func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
+func (client *Client) ListInstancesWithContext(ctx context.Context, request *ListInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1269,30 +928,11 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取数据集加速实例信息列表。
-//
-// @param request - ListInstancesRequest
-//
-// @return ListInstancesResponse
-func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListInstancesResponse{}
-	_body, _err := client.ListInstancesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1307,7 +947,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSlotsResponse
-func (client *Client) ListSlotsWithOptions(request *ListSlotsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSlotsResponse, _err error) {
+func (client *Client) ListSlotsWithContext(ctx context.Context, request *ListSlotsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSlotsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1375,30 +1015,11 @@ func (client *Client) ListSlotsWithOptions(request *ListSlotsRequest, headers ma
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSlotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取数据集加速槽的信息列表。
-//
-// @param request - ListSlotsRequest
-//
-// @return ListSlotsResponse
-func (client *Client) ListSlots(request *ListSlotsRequest) (_result *ListSlotsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListSlotsResponse{}
-	_body, _err := client.ListSlotsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1413,7 +1034,7 @@ func (client *Client) ListSlots(request *ListSlotsRequest) (_result *ListSlotsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagsResponse
-func (client *Client) ListTagsWithOptions(request *ListTagsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTagsResponse, _err error) {
+func (client *Client) ListTagsWithContext(ctx context.Context, request *ListTagsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTagsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1469,30 +1090,11 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, headers map[
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取标签列表信息。
-//
-// @param request - ListTagsRequest
-//
-// @return ListTagsResponse
-func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListTagsResponse{}
-	_body, _err := client.ListTagsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1507,7 +1109,7 @@ func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryInstanceMetricsResponse
-func (client *Client) QueryInstanceMetricsWithOptions(InstanceId *string, tmpReq *QueryInstanceMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryInstanceMetricsResponse, _err error) {
+func (client *Client) QueryInstanceMetricsWithContext(ctx context.Context, InstanceId *string, tmpReq *QueryInstanceMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryInstanceMetricsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1557,30 +1159,11 @@ func (client *Client) QueryInstanceMetricsWithOptions(InstanceId *string, tmpReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryInstanceMetricsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询并获取监控指标信息。
-//
-// @param request - QueryInstanceMetricsRequest
-//
-// @return QueryInstanceMetricsResponse
-func (client *Client) QueryInstanceMetrics(InstanceId *string, request *QueryInstanceMetricsRequest) (_result *QueryInstanceMetricsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &QueryInstanceMetricsResponse{}
-	_body, _err := client.QueryInstanceMetricsWithOptions(InstanceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1595,7 +1178,7 @@ func (client *Client) QueryInstanceMetrics(InstanceId *string, request *QueryIns
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySlotMetricsResponse
-func (client *Client) QuerySlotMetricsWithOptions(SlotId *string, tmpReq *QuerySlotMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QuerySlotMetricsResponse, _err error) {
+func (client *Client) QuerySlotMetricsWithContext(ctx context.Context, SlotId *string, tmpReq *QuerySlotMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QuerySlotMetricsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1645,30 +1228,11 @@ func (client *Client) QuerySlotMetricsWithOptions(SlotId *string, tmpReq *QueryS
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySlotMetricsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询并获取监控指标信息
-//
-// @param request - QuerySlotMetricsRequest
-//
-// @return QuerySlotMetricsResponse
-func (client *Client) QuerySlotMetrics(SlotId *string, request *QuerySlotMetricsRequest) (_result *QuerySlotMetricsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &QuerySlotMetricsResponse{}
-	_body, _err := client.QuerySlotMetricsWithOptions(SlotId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1683,7 +1247,7 @@ func (client *Client) QuerySlotMetrics(SlotId *string, request *QuerySlotMetrics
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryStatisticResponse
-func (client *Client) QueryStatisticWithOptions(request *QueryStatisticRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryStatisticResponse, _err error) {
+func (client *Client) QueryStatisticWithContext(ctx context.Context, request *QueryStatisticRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryStatisticResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1719,30 +1283,11 @@ func (client *Client) QueryStatisticWithOptions(request *QueryStatisticRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryStatisticResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询当前账号下数据集加速相关的统计信息。
-//
-// @param request - QueryStatisticRequest
-//
-// @return QueryStatisticResponse
-func (client *Client) QueryStatistic(request *QueryStatisticRequest) (_result *QueryStatisticResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &QueryStatisticResponse{}
-	_body, _err := client.QueryStatisticWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1755,7 +1300,7 @@ func (client *Client) QueryStatistic(request *QueryStatisticRequest) (_result *Q
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReloadSlotResponse
-func (client *Client) ReloadSlotWithOptions(SlotId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReloadSlotResponse, _err error) {
+func (client *Client) ReloadSlotWithContext(ctx context.Context, SlotId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReloadSlotResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1771,28 +1316,11 @@ func (client *Client) ReloadSlotWithOptions(SlotId *string, headers map[string]*
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReloadSlotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 重载数据加速槽的数据
-//
-// @return ReloadSlotResponse
-func (client *Client) ReloadSlot(SlotId *string) (_result *ReloadSlotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ReloadSlotResponse{}
-	_body, _err := client.ReloadSlotWithOptions(SlotId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1805,7 +1333,7 @@ func (client *Client) ReloadSlot(SlotId *string) (_result *ReloadSlotResponse, _
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopSlotResponse
-func (client *Client) StopSlotWithOptions(SlotId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopSlotResponse, _err error) {
+func (client *Client) StopSlotWithContext(ctx context.Context, SlotId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopSlotResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1821,28 +1349,11 @@ func (client *Client) StopSlotWithOptions(SlotId *string, headers map[string]*st
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopSlotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 停止一个数据集加速槽。
-//
-// @return StopSlotResponse
-func (client *Client) StopSlot(SlotId *string) (_result *StopSlotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &StopSlotResponse{}
-	_body, _err := client.StopSlotWithOptions(SlotId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1855,7 +1366,7 @@ func (client *Client) StopSlot(SlotId *string) (_result *StopSlotResponse, _err 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnbindEndpointResponse
-func (client *Client) UnbindEndpointWithOptions(EndpointId *string, SlotId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UnbindEndpointResponse, _err error) {
+func (client *Client) UnbindEndpointWithContext(ctx context.Context, EndpointId *string, SlotId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UnbindEndpointResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1871,28 +1382,11 @@ func (client *Client) UnbindEndpointWithOptions(EndpointId *string, SlotId *stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnbindEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 取消挂载点关联和指定数据集加速槽的关联关系。
-//
-// @return UnbindEndpointResponse
-func (client *Client) UnbindEndpoint(EndpointId *string, SlotId *string) (_result *UnbindEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UnbindEndpointResponse{}
-	_body, _err := client.UnbindEndpointWithOptions(EndpointId, SlotId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1907,7 +1401,7 @@ func (client *Client) UnbindEndpoint(EndpointId *string, SlotId *string) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateInstanceResponse
-func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *UpdateInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
+func (client *Client) UpdateInstanceWithContext(ctx context.Context, InstanceId *string, request *UpdateInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1943,30 +1437,11 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新一个数据集加速实例的信息。
-//
-// @param request - UpdateInstanceRequest
-//
-// @return UpdateInstanceResponse
-func (client *Client) UpdateInstance(InstanceId *string, request *UpdateInstanceRequest) (_result *UpdateInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateInstanceResponse{}
-	_body, _err := client.UpdateInstanceWithOptions(InstanceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1981,7 +1456,7 @@ func (client *Client) UpdateInstance(InstanceId *string, request *UpdateInstance
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateSlotResponse
-func (client *Client) UpdateSlotWithOptions(SlotId *string, request *UpdateSlotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateSlotResponse, _err error) {
+func (client *Client) UpdateSlotWithContext(ctx context.Context, SlotId *string, request *UpdateSlotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateSlotResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2033,29 +1508,10 @@ func (client *Client) UpdateSlotWithOptions(SlotId *string, request *UpdateSlotR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateSlotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新一个数据集加速槽的信息。
-//
-// @param request - UpdateSlotRequest
-//
-// @return UpdateSlotResponse
-func (client *Client) UpdateSlot(SlotId *string, request *UpdateSlotRequest) (_result *UpdateSlotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateSlotResponse{}
-	_body, _err := client.UpdateSlotWithOptions(SlotId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
