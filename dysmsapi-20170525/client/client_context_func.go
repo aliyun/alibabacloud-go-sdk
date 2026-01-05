@@ -647,6 +647,82 @@ func (client *Client) CreateSmartShortUrlWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 创建APP-ICP备案对客openAPI
+//
+// @param request - CreateSmsAppIcpRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSmsAppIcpRecordResponse
+func (client *Client) CreateSmsAppIcpRecordWithContext(ctx context.Context, request *CreateSmsAppIcpRecordRequest, runtime *dara.RuntimeOptions) (_result *CreateSmsAppIcpRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppApprovalDate) {
+		query["AppApprovalDate"] = request.AppApprovalDate
+	}
+
+	if !dara.IsNil(request.AppIcpLicenseNumber) {
+		query["AppIcpLicenseNumber"] = request.AppIcpLicenseNumber
+	}
+
+	if !dara.IsNil(request.AppIcpRecordPic) {
+		query["AppIcpRecordPic"] = request.AppIcpRecordPic
+	}
+
+	if !dara.IsNil(request.AppPrincipalUnitName) {
+		query["AppPrincipalUnitName"] = request.AppPrincipalUnitName
+	}
+
+	if !dara.IsNil(request.AppServiceName) {
+		query["AppServiceName"] = request.AppServiceName
+	}
+
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSmsAppIcpRecord"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSmsAppIcpRecordResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建委托授权书
 //
 // @param tmpReq - CreateSmsAuthorizationLetterRequest
@@ -947,6 +1023,78 @@ func (client *Client) CreateSmsTemplateWithContext(ctx context.Context, tmpReq *
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSmsTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建商标对客openAPI
+//
+// @param request - CreateSmsTrademarkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSmsTrademarkResponse
+func (client *Client) CreateSmsTrademarkWithContext(ctx context.Context, request *CreateSmsTrademarkRequest, runtime *dara.RuntimeOptions) (_result *CreateSmsTrademarkResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TrademarkApplicantName) {
+		query["TrademarkApplicantName"] = request.TrademarkApplicantName
+	}
+
+	if !dara.IsNil(request.TrademarkEffExpDate) {
+		query["TrademarkEffExpDate"] = request.TrademarkEffExpDate
+	}
+
+	if !dara.IsNil(request.TrademarkName) {
+		query["TrademarkName"] = request.TrademarkName
+	}
+
+	if !dara.IsNil(request.TrademarkPic) {
+		query["TrademarkPic"] = request.TrademarkPic
+	}
+
+	if !dara.IsNil(request.TrademarkRegistrationNumber) {
+		query["TrademarkRegistrationNumber"] = request.TrademarkRegistrationNumber
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSmsTrademark"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSmsTrademarkResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1797,6 +1945,100 @@ func (client *Client) GetSmsTemplateWithContext(ctx context.Context, request *Ge
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSmsTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模板列表详情（新接口）
+//
+// @param tmpReq - GetSmsTemplateListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSmsTemplateListResponse
+func (client *Client) GetSmsTemplateListWithContext(ctx context.Context, tmpReq *GetSmsTemplateListRequest, runtime *dara.RuntimeOptions) (_result *GetSmsTemplateListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetSmsTemplateListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UsableStateList) {
+		request.UsableStateListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UsableStateList, dara.String("UsableStateList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuditStatus) {
+		query["AuditStatus"] = request.AuditStatus
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SignName) {
+		query["SignName"] = request.SignName
+	}
+
+	if !dara.IsNil(request.TemplateCode) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !dara.IsNil(request.TemplateTag) {
+		query["TemplateTag"] = request.TemplateTag
+	}
+
+	if !dara.IsNil(request.TemplateType) {
+		query["TemplateType"] = request.TemplateType
+	}
+
+	if !dara.IsNil(request.UsableStateListShrink) {
+		query["UsableStateList"] = request.UsableStateListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSmsTemplateList"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSmsTemplateListResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2665,6 +2907,68 @@ func (client *Client) QuerySingleSmsQualificationWithContext(ctx context.Context
 
 // Summary:
 //
+// 查询APP-ICP备案对客openAPI
+//
+// @param tmpReq - QuerySmsAppIcpRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySmsAppIcpRecordResponse
+func (client *Client) QuerySmsAppIcpRecordWithContext(ctx context.Context, tmpReq *QuerySmsAppIcpRecordRequest, runtime *dara.RuntimeOptions) (_result *QuerySmsAppIcpRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &QuerySmsAppIcpRecordShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AppIcpRecordIdList) {
+		request.AppIcpRecordIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AppIcpRecordIdList, dara.String("AppIcpRecordIdList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppIcpRecordIdListShrink) {
+		query["AppIcpRecordIdList"] = request.AppIcpRecordIdListShrink
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QuerySmsAppIcpRecord"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QuerySmsAppIcpRecordResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询委托授权书
 //
 // @param tmpReq - QuerySmsAuthorizationLetterRequest
@@ -3083,6 +3387,68 @@ func (client *Client) QuerySmsTemplateListWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySmsTemplateListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询商标对客openAPI
+//
+// @param tmpReq - QuerySmsTrademarkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySmsTrademarkResponse
+func (client *Client) QuerySmsTrademarkWithContext(ctx context.Context, tmpReq *QuerySmsTrademarkRequest, runtime *dara.RuntimeOptions) (_result *QuerySmsTrademarkResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &QuerySmsTrademarkShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TrademarkIdList) {
+		request.TrademarkIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TrademarkIdList, dara.String("TrademarkIdList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TrademarkIdListShrink) {
+		query["TrademarkIdList"] = request.TrademarkIdListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QuerySmsTrademark"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QuerySmsTrademarkResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
