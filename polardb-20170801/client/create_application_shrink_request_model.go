@@ -13,6 +13,8 @@ type iCreateApplicationShrinkRequest interface {
 	GetApplicationType() *string
 	SetArchitecture(v string) *CreateApplicationShrinkRequest
 	GetArchitecture() *string
+	SetAutoCreatePolarFs(v bool) *CreateApplicationShrinkRequest
+	GetAutoCreatePolarFs() *bool
 	SetAutoRenew(v bool) *CreateApplicationShrinkRequest
 	GetAutoRenew() *bool
 	SetAutoUseCoupon(v bool) *CreateApplicationShrinkRequest
@@ -61,7 +63,8 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// x86
-	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	Architecture      *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	AutoCreatePolarFs *bool   `json:"AutoCreatePolarFs,omitempty" xml:"AutoCreatePolarFs,omitempty"`
 	// example:
 	//
 	// true
@@ -134,6 +137,10 @@ func (s *CreateApplicationShrinkRequest) GetApplicationType() *string {
 
 func (s *CreateApplicationShrinkRequest) GetArchitecture() *string {
 	return s.Architecture
+}
+
+func (s *CreateApplicationShrinkRequest) GetAutoCreatePolarFs() *bool {
+	return s.AutoCreatePolarFs
 }
 
 func (s *CreateApplicationShrinkRequest) GetAutoRenew() *bool {
@@ -211,6 +218,11 @@ func (s *CreateApplicationShrinkRequest) SetApplicationType(v string) *CreateApp
 
 func (s *CreateApplicationShrinkRequest) SetArchitecture(v string) *CreateApplicationShrinkRequest {
 	s.Architecture = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetAutoCreatePolarFs(v bool) *CreateApplicationShrinkRequest {
+	s.AutoCreatePolarFs = &v
 	return s
 }
 

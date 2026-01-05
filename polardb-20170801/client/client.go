@@ -2168,6 +2168,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["Architecture"] = request.Architecture
 	}
 
+	if !dara.IsNil(request.AutoCreatePolarFs) {
+		query["AutoCreatePolarFs"] = request.AutoCreatePolarFs
+	}
+
 	if !dara.IsNil(request.AutoRenew) {
 		query["AutoRenew"] = request.AutoRenew
 	}

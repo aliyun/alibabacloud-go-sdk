@@ -13,6 +13,8 @@ type iCreateApplicationRequest interface {
 	GetApplicationType() *string
 	SetArchitecture(v string) *CreateApplicationRequest
 	GetArchitecture() *string
+	SetAutoCreatePolarFs(v bool) *CreateApplicationRequest
+	GetAutoCreatePolarFs() *bool
 	SetAutoRenew(v bool) *CreateApplicationRequest
 	GetAutoRenew() *bool
 	SetAutoUseCoupon(v bool) *CreateApplicationRequest
@@ -61,7 +63,8 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// x86
-	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	Architecture      *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	AutoCreatePolarFs *bool   `json:"AutoCreatePolarFs,omitempty" xml:"AutoCreatePolarFs,omitempty"`
 	// example:
 	//
 	// true
@@ -134,6 +137,10 @@ func (s *CreateApplicationRequest) GetApplicationType() *string {
 
 func (s *CreateApplicationRequest) GetArchitecture() *string {
 	return s.Architecture
+}
+
+func (s *CreateApplicationRequest) GetAutoCreatePolarFs() *bool {
+	return s.AutoCreatePolarFs
 }
 
 func (s *CreateApplicationRequest) GetAutoRenew() *bool {
@@ -211,6 +218,11 @@ func (s *CreateApplicationRequest) SetApplicationType(v string) *CreateApplicati
 
 func (s *CreateApplicationRequest) SetArchitecture(v string) *CreateApplicationRequest {
 	s.Architecture = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetAutoCreatePolarFs(v bool) *CreateApplicationRequest {
+	s.AutoCreatePolarFs = &v
 	return s
 }
 
