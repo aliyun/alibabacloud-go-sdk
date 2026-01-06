@@ -35,7 +35,7 @@ type CreateResourceAdvanceRequest struct {
 	//
 	// http://bucketname1.oss-cn-shanghai.aliyuncs.com/example
 	ResourceFileObject io.Reader `json:"ResourceFile,omitempty" xml:"ResourceFile,omitempty"`
-	// The FlowSpec field information about the file resource. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
+	// The ID of the DataWorks workspace. To obtain the workspace ID, log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and navigate to the workspace configuration page.
 	//
 	// This parameter is required.
 	//

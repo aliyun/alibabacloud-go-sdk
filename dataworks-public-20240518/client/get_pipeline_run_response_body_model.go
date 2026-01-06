@@ -74,6 +74,10 @@ type GetPipelineRunResponseBodyPipeline struct {
 	//
 	// 137946317766XXXX
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// 发布流程描述信息
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The process ID.
 	//
 	// example:
@@ -138,6 +142,10 @@ func (s *GetPipelineRunResponseBodyPipeline) GetCreator() *string {
 	return s.Creator
 }
 
+func (s *GetPipelineRunResponseBodyPipeline) GetDescription() *string {
+	return s.Description
+}
+
 func (s *GetPipelineRunResponseBodyPipeline) GetId() *string {
 	return s.Id
 }
@@ -169,6 +177,11 @@ func (s *GetPipelineRunResponseBodyPipeline) SetCreateTime(v int64) *GetPipeline
 
 func (s *GetPipelineRunResponseBodyPipeline) SetCreator(v string) *GetPipelineRunResponseBodyPipeline {
 	s.Creator = &v
+	return s
+}
+
+func (s *GetPipelineRunResponseBodyPipeline) SetDescription(v string) *GetPipelineRunResponseBodyPipeline {
+	s.Description = &v
 	return s
 }
 

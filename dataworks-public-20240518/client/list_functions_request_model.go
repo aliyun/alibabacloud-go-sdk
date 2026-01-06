@@ -42,7 +42,7 @@ type ListFunctionsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 100.
+	// The page number. Default value: 1. Minimum value: 1.
 	//
 	// example:
 	//

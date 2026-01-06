@@ -52,11 +52,11 @@ type UpdateWorkflowShrinkRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The environment of the workspace. Valid values:
+	// The project environment.
 	//
-	// 	- Prod: production environment
+	// 	- Prod
 	//
-	// 	- Dev: development environment
+	// 	- Dev
 	//
 	// example:
 	//
@@ -69,7 +69,16 @@ type UpdateWorkflowShrinkRequest struct {
 	// example:
 	//
 	// 1234
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The instance generation mode.
+	//
+	// 	- T+1: the next day
+	//
+	// 	- Immediately Note: Periodic instances will only be generated normally if the workflow\\"s scheduled time is more than 10 minutes after the workflow publication time. Real-time instance generation is not available during the batch instance generation period (23:30 to 24:00). While workflows can be published during this time, instances will not be regenerated immediately after submission.
+	//
+	// example:
+	//
+	// T+1
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
 	// The name of the workflow.
 	//
@@ -97,7 +106,7 @@ type UpdateWorkflowShrinkRequest struct {
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The tags.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The tasks.
+	// Details about tasks.
 	TasksShrink *string `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
 	// The trigger method.
 	//

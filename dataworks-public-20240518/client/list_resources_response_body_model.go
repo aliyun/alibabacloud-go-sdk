@@ -194,15 +194,15 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	//
 	// Valid values:
 	//
-	// 	- Local: Local storage
+	// 	- Local
 	//
-	// 	- OSS: Object Storage Service
+	// 	- OSS
 	//
 	// example:
 	//
 	// local
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The destination storage path
+	// The destination storage path.
 	//
 	// example:
 	//
@@ -380,7 +380,7 @@ func (s *ListResourcesResponseBodyPagingInfoResources) Validate() error {
 }
 
 type ListResourcesResponseBodyPagingInfoResourcesDataSource struct {
-	// The data source name.
+	// The name of the data source.
 	//
 	// example:
 	//
@@ -425,9 +425,9 @@ func (s *ListResourcesResponseBodyPagingInfoResourcesDataSource) Validate() erro
 }
 
 type ListResourcesResponseBodyPagingInfoResourcesScript struct {
-	// Script ID.
+	// The ID of the script.
 	//
-	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// example:
 	//

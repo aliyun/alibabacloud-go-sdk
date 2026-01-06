@@ -42,7 +42,7 @@ type ListResourcesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	// The page number of the data to retrieve, used for pagination.
 	//
 	// example:
 	//

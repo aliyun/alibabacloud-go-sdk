@@ -142,7 +142,7 @@ func (s *ListNodesResponseBodyPagingInfo) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfoNodes struct {
-	// The timestamp when the node in DataStudio was created.
+	// The timestamp when the node in Data Studio was created.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type ListNodesResponseBodyPagingInfoNodes struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The unique identifier of the Data Studio node.
 	//
-	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// >  This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ type ListNodesResponseBodyPagingInfoNodes struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The output of the node.
 	Outputs *ListNodesResponseBodyPagingInfoNodesOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
-	// The owner of nodes in DataStudio.
+	// The owner of nodes in Data Studio.
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ type ListNodesResponseBodyPagingInfoNodes struct {
 	Strategy *ListNodesResponseBodyPagingInfoNodesStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
 	// The tag information (not in use).
 	Tags []*ListNodesResponseBodyPagingInfoNodesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The scheduling task ID.
+	// The ID of the scheduling task.
 	//
 	// example:
 	//
@@ -554,7 +554,7 @@ func (s *ListNodesResponseBodyPagingInfoNodesInputs) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfoNodesInputsNodeOutputs struct {
-	// The node output.
+	// The output of the node.
 	//
 	// example:
 	//
@@ -755,7 +755,7 @@ func (s *ListNodesResponseBodyPagingInfoNodesInputsVariables) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfoNodesInputsVariablesNode struct {
-	// The node output.
+	// The output of the node.
 	//
 	// example:
 	//
@@ -860,7 +860,7 @@ func (s *ListNodesResponseBodyPagingInfoNodesOutputs) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfoNodesOutputsNodeOutputs struct {
-	// The node output.
+	// The output of the node.
 	//
 	// example:
 	//
@@ -1061,7 +1061,7 @@ func (s *ListNodesResponseBodyPagingInfoNodesOutputsVariables) Validate() error 
 }
 
 type ListNodesResponseBodyPagingInfoNodesOutputsVariablesNode struct {
-	// The node output.
+	// The output of the node.
 	//
 	// example:
 	//
@@ -1138,7 +1138,7 @@ func (s *ListNodesResponseBodyPagingInfoNodesRuntimeResource) Validate() error {
 type ListNodesResponseBodyPagingInfoNodesScript struct {
 	// The ID of the script.
 	//
-	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// example:
 	//
@@ -1374,7 +1374,7 @@ func (s *ListNodesResponseBodyPagingInfoNodesTags) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfoNodesTrigger struct {
-	// The cron expression for scheduling
+	// The cron expression for scheduling.
 	//
 	// example:
 	//
@@ -1410,11 +1410,11 @@ type ListNodesResponseBodyPagingInfoNodesTrigger struct {
 	//
 	// Valid values:
 	//
-	// 	- Scheduler: periodic scheduling
+	// 	- Scheduler: Periodic scheduling
 	//
-	// 	- Manual: manual trigger
+	// 	- Manual: Manual trigger
 	//
-	// 	- Streaming: streaming task
+	// 	- Streaming: Streaming task
 	//
 	// example:
 	//

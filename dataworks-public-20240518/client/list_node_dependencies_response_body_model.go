@@ -214,7 +214,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodes struct {
 	Strategy *ListNodeDependenciesResponseBodyPagingInfoNodesStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
 	// The tags. This parameter is not in use.
 	Tags []*ListNodeDependenciesResponseBodyPagingInfoNodesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The scheduling task ID.
+	// The ID of the scheduling task.
 	//
 	// example:
 	//
@@ -479,7 +479,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesDataSource) Validate() e
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesInputs struct {
-	// The list of node outputs.
+	// The node output list.
 	NodeOutputs []*ListNodeDependenciesResponseBodyPagingInfoNodesInputsNodeOutputs `json:"NodeOutputs,omitempty" xml:"NodeOutputs,omitempty" type:"Repeated"`
 	// The table list.
 	Tables []*ListNodeDependenciesResponseBodyPagingInfoNodesInputsTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
@@ -554,7 +554,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputs) Validate() error
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesInputsNodeOutputs struct {
-	// The node output.
+	// The output of the node.
 	//
 	// example:
 	//
@@ -628,7 +628,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables struct {
 	//
 	// 543218872620113XXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The variable name.
+	// The name of the variable.
 	//
 	// example:
 	//
@@ -650,7 +650,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables struct {
 	//
 	// NodeParameter
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The type of the variable. Valid values:
+	// The type of the variable.
 	//
 	// 	- NoKvVariableExpression
 	//
@@ -785,11 +785,11 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariablesNode) Val
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesOutputs struct {
-	// The list of node outputs.
+	// The node output list.
 	NodeOutputs []*ListNodeDependenciesResponseBodyPagingInfoNodesOutputsNodeOutputs `json:"NodeOutputs,omitempty" xml:"NodeOutputs,omitempty" type:"Repeated"`
 	// The table list.
 	Tables []*ListNodeDependenciesResponseBodyPagingInfoNodesOutputsTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	// The variable list.
+	// The variables.
 	Variables []*ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -972,7 +972,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables struct {
 	//
 	// Constant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value of the variable.
+	// The variable name.
 	//
 	// example:
 	//
@@ -1123,7 +1123,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesRuntimeResource) Validat
 type ListNodeDependenciesResponseBodyPagingInfoNodesScript struct {
 	// The ID of the script.
 	//
-	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// example:
 	//
@@ -1135,7 +1135,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesScript struct {
 	//
 	// root/demo
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The runtime.
+	// Runtime
 	Runtime *ListNodeDependenciesResponseBodyPagingInfoNodesScriptRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
 }
 
@@ -1214,7 +1214,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesScriptRuntime) Validate(
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesStrategy struct {
-	// The instance generation mode. Valid values:
+	// The instance generation mode.
 	//
 	// 	- T+1
 	//
@@ -1230,7 +1230,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesStrategy struct {
 	//
 	// 180000
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
-	// The rerun mode. Valid values:
+	// The rerun mode.
 	//
 	// 	- Allowed
 	//
@@ -1395,11 +1395,11 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesTrigger struct {
 	//
 	// Valid values:
 	//
-	// 	- Scheduler: periodic scheduling.
+	// 	- Scheduler: Periodic scheduling.
 	//
-	// 	- Manual: manual scheduling.
+	// 	- Manual: Manual scheduling.
 	//
-	// 	- Streaming: streaming scheduler.
+	// 	- Streaming: Streaming scheduler.
 	//
 	// example:
 	//

@@ -30,13 +30,15 @@ type ListNodeDependenciesRequest struct {
 	//
 	// 860438872620113XXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The page number, starting from 1. Default value: 1.
+	// The unique identifier of the Data Studio node.
+	//
+	// >  This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 100.
+	// The page number, starting from 1. Default value: 1.
 	//
 	// example:
 	//

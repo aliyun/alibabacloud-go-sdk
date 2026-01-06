@@ -47,8 +47,19 @@ type ListDataQualityScanRunsRequest struct {
 	// example:
 	//
 	// 10001
-	DataQualityScanId *int64                 `json:"DataQualityScanId,omitempty" xml:"DataQualityScanId,omitempty"`
-	Filter            map[string]interface{} `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	DataQualityScanId *int64 `json:"DataQualityScanId,omitempty" xml:"DataQualityScanId,omitempty"`
+	// The extended query filter. Supported parameters:
+	//
+	// 	- TaskInstanceId
+	//
+	// example:
+	//
+	// {
+	//
+	//     "TaskInstanceId": 111L
+	//
+	// }
+	Filter map[string]interface{} `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The page number of the results. Default value: 1.
 	//
 	// example:

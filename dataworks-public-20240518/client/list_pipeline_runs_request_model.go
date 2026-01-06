@@ -11,6 +11,8 @@ type iListPipelineRunsRequest interface {
 	GoString() string
 	SetCreator(v string) *ListPipelineRunsRequest
 	GetCreator() *string
+	SetObjectId(v string) *ListPipelineRunsRequest
+	GetObjectId() *string
 	SetPageNumber(v int32) *ListPipelineRunsRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListPipelineRunsRequest
@@ -27,7 +29,8 @@ type ListPipelineRunsRequest struct {
 	// example:
 	//
 	// 110755000425****
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Creator  *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
 	//
 	// example:
@@ -84,6 +87,10 @@ func (s *ListPipelineRunsRequest) GetCreator() *string {
 	return s.Creator
 }
 
+func (s *ListPipelineRunsRequest) GetObjectId() *string {
+	return s.ObjectId
+}
+
 func (s *ListPipelineRunsRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -102,6 +109,11 @@ func (s *ListPipelineRunsRequest) GetStatus() *string {
 
 func (s *ListPipelineRunsRequest) SetCreator(v string) *ListPipelineRunsRequest {
 	s.Creator = &v
+	return s
+}
+
+func (s *ListPipelineRunsRequest) SetObjectId(v string) *ListPipelineRunsRequest {
+	s.ObjectId = &v
 	return s
 }
 
