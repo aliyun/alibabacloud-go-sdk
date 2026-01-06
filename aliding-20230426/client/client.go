@@ -9857,6 +9857,767 @@ func (client *Client) GetDeptNo(request *GetDeptNoRequest) (_result *GetDeptNoRe
 
 // Summary:
 //
+// 获取钉钉会议信息
+//
+// @param tmpReq - GetDingtalkMeetingInfoRequest
+//
+// @param tmpHeader - GetDingtalkMeetingInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDingtalkMeetingInfoResponse
+func (client *Client) GetDingtalkMeetingInfoWithOptions(tmpReq *GetDingtalkMeetingInfoRequest, tmpHeader *GetDingtalkMeetingInfoHeaders, runtime *dara.RuntimeOptions) (_result *GetDingtalkMeetingInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetDingtalkMeetingInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetDingtalkMeetingInfoShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !dara.IsNil(request.ConferenceId) {
+		body["conferenceId"] = request.ConferenceId
+	}
+
+	if !dara.IsNil(request.OrgId) {
+		body["orgId"] = request.OrgId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDingtalkMeetingInfo"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/ysp/getDingtalkMeetingInfo"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDingtalkMeetingInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取钉钉会议信息
+//
+// @param request - GetDingtalkMeetingInfoRequest
+//
+// @return GetDingtalkMeetingInfoResponse
+func (client *Client) GetDingtalkMeetingInfo(request *GetDingtalkMeetingInfoRequest) (_result *GetDingtalkMeetingInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GetDingtalkMeetingInfoHeaders{}
+	_result = &GetDingtalkMeetingInfoResponse{}
+	_body, _err := client.GetDingtalkMeetingInfoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取钉钉会议列表
+//
+// @param tmpReq - GetDingtalkMeetingListRequest
+//
+// @param tmpHeader - GetDingtalkMeetingListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDingtalkMeetingListResponse
+func (client *Client) GetDingtalkMeetingListWithOptions(tmpReq *GetDingtalkMeetingListRequest, tmpHeader *GetDingtalkMeetingListHeaders, runtime *dara.RuntimeOptions) (_result *GetDingtalkMeetingListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetDingtalkMeetingListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetDingtalkMeetingListShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		body["currentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.OrgId) {
+		body["orgId"] = request.OrgId
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RoomCode) {
+		body["roomCode"] = request.RoomCode
+	}
+
+	if !dara.IsNil(request.RoomName) {
+		body["roomName"] = request.RoomName
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["startTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.WorkNo) {
+		body["workNo"] = request.WorkNo
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDingtalkMeetingList"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/ysp/getDingtalkMeetingList"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDingtalkMeetingListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取钉钉会议列表
+//
+// @param request - GetDingtalkMeetingListRequest
+//
+// @return GetDingtalkMeetingListResponse
+func (client *Client) GetDingtalkMeetingList(request *GetDingtalkMeetingListRequest) (_result *GetDingtalkMeetingListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GetDingtalkMeetingListHeaders{}
+	_result = &GetDingtalkMeetingListResponse{}
+	_body, _err := client.GetDingtalkMeetingListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取钉钉会议成员事件
+//
+// @param tmpReq - GetDingtalkMeetingMemberEventRequest
+//
+// @param tmpHeader - GetDingtalkMeetingMemberEventHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDingtalkMeetingMemberEventResponse
+func (client *Client) GetDingtalkMeetingMemberEventWithOptions(tmpReq *GetDingtalkMeetingMemberEventRequest, tmpHeader *GetDingtalkMeetingMemberEventHeaders, runtime *dara.RuntimeOptions) (_result *GetDingtalkMeetingMemberEventResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetDingtalkMeetingMemberEventShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetDingtalkMeetingMemberEventShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !dara.IsNil(request.BeginTime) {
+		body["beginTime"] = request.BeginTime
+	}
+
+	if !dara.IsNil(request.ConferenceId) {
+		body["conferenceId"] = request.ConferenceId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.OrgId) {
+		body["orgId"] = request.OrgId
+	}
+
+	if !dara.IsNil(request.WorkNo) {
+		body["workNo"] = request.WorkNo
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDingtalkMeetingMemberEvent"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/ysp/getDingtalkMeetingMemberEvent"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDingtalkMeetingMemberEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取钉钉会议成员事件
+//
+// @param request - GetDingtalkMeetingMemberEventRequest
+//
+// @return GetDingtalkMeetingMemberEventResponse
+func (client *Client) GetDingtalkMeetingMemberEvent(request *GetDingtalkMeetingMemberEventRequest) (_result *GetDingtalkMeetingMemberEventResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GetDingtalkMeetingMemberEventHeaders{}
+	_result = &GetDingtalkMeetingMemberEventResponse{}
+	_body, _err := client.GetDingtalkMeetingMemberEventWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取钉钉会议成员列表
+//
+// @param tmpReq - GetDingtalkMeetingMemberListRequest
+//
+// @param tmpHeader - GetDingtalkMeetingMemberListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDingtalkMeetingMemberListResponse
+func (client *Client) GetDingtalkMeetingMemberListWithOptions(tmpReq *GetDingtalkMeetingMemberListRequest, tmpHeader *GetDingtalkMeetingMemberListHeaders, runtime *dara.RuntimeOptions) (_result *GetDingtalkMeetingMemberListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetDingtalkMeetingMemberListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetDingtalkMeetingMemberListShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !dara.IsNil(request.ClusterName) {
+		body["clusterName"] = request.ClusterName
+	}
+
+	if !dara.IsNil(request.ConferenceId) {
+		body["conferenceId"] = request.ConferenceId
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		body["currentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.OrgId) {
+		body["orgId"] = request.OrgId
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDingtalkMeetingMemberList"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/ysp/getDingtalkMeetingMemberList"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDingtalkMeetingMemberListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取钉钉会议成员列表
+//
+// @param request - GetDingtalkMeetingMemberListRequest
+//
+// @return GetDingtalkMeetingMemberListResponse
+func (client *Client) GetDingtalkMeetingMemberList(request *GetDingtalkMeetingMemberListRequest) (_result *GetDingtalkMeetingMemberListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GetDingtalkMeetingMemberListHeaders{}
+	_result = &GetDingtalkMeetingMemberListResponse{}
+	_body, _err := client.GetDingtalkMeetingMemberListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取会议指标数据
+//
+// @param tmpReq - GetDingtalkMeetingMetricDataRequest
+//
+// @param tmpHeader - GetDingtalkMeetingMetricDataHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDingtalkMeetingMetricDataResponse
+func (client *Client) GetDingtalkMeetingMetricDataWithOptions(tmpReq *GetDingtalkMeetingMetricDataRequest, tmpHeader *GetDingtalkMeetingMetricDataHeaders, runtime *dara.RuntimeOptions) (_result *GetDingtalkMeetingMetricDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetDingtalkMeetingMetricDataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetDingtalkMeetingMetricDataShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !dara.IsNil(request.BeginTime) {
+		body["beginTime"] = request.BeginTime
+	}
+
+	if !dara.IsNil(request.ConferenceId) {
+		body["conferenceId"] = request.ConferenceId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.OrgId) {
+		body["orgId"] = request.OrgId
+	}
+
+	if !dara.IsNil(request.TypeName) {
+		body["typeName"] = request.TypeName
+	}
+
+	if !dara.IsNil(request.WorkNo) {
+		body["workNo"] = request.WorkNo
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDingtalkMeetingMetricData"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/ysp/getDingtalkMeetingMetricData"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDingtalkMeetingMetricDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取会议指标数据
+//
+// @param request - GetDingtalkMeetingMetricDataRequest
+//
+// @return GetDingtalkMeetingMetricDataResponse
+func (client *Client) GetDingtalkMeetingMetricData(request *GetDingtalkMeetingMetricDataRequest) (_result *GetDingtalkMeetingMetricDataResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GetDingtalkMeetingMetricDataHeaders{}
+	_result = &GetDingtalkMeetingMetricDataResponse{}
+	_body, _err := client.GetDingtalkMeetingMetricDataWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取钉钉投屏信息
+//
+// @param tmpReq - GetDingtalkProjectionInfoRequest
+//
+// @param tmpHeader - GetDingtalkProjectionInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDingtalkProjectionInfoResponse
+func (client *Client) GetDingtalkProjectionInfoWithOptions(tmpReq *GetDingtalkProjectionInfoRequest, tmpHeader *GetDingtalkProjectionInfoHeaders, runtime *dara.RuntimeOptions) (_result *GetDingtalkProjectionInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetDingtalkProjectionInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetDingtalkProjectionInfoShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !dara.IsNil(request.Client) {
+		body["client"] = request.Client
+	}
+
+	if !dara.IsNil(request.EndTs) {
+		body["endTs"] = request.EndTs
+	}
+
+	if !dara.IsNil(request.OrgId) {
+		body["orgId"] = request.OrgId
+	}
+
+	if !dara.IsNil(request.PubWorkNo) {
+		body["pubWorkNo"] = request.PubWorkNo
+	}
+
+	if !dara.IsNil(request.RoomId) {
+		body["roomId"] = request.RoomId
+	}
+
+	if !dara.IsNil(request.StartTs) {
+		body["startTs"] = request.StartTs
+	}
+
+	if !dara.IsNil(request.SubUid) {
+		body["subUid"] = request.SubUid
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDingtalkProjectionInfo"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/ysp/getDingtalkProjectionInfo"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDingtalkProjectionInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取钉钉投屏信息
+//
+// @param request - GetDingtalkProjectionInfoRequest
+//
+// @return GetDingtalkProjectionInfoResponse
+func (client *Client) GetDingtalkProjectionInfo(request *GetDingtalkProjectionInfoRequest) (_result *GetDingtalkProjectionInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GetDingtalkProjectionInfoHeaders{}
+	_result = &GetDingtalkProjectionInfoResponse{}
+	_body, _err := client.GetDingtalkProjectionInfoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取钉钉投屏列表
+//
+// @param tmpReq - GetDingtalkProjectionListRequest
+//
+// @param tmpHeader - GetDingtalkProjectionListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDingtalkProjectionListResponse
+func (client *Client) GetDingtalkProjectionListWithOptions(tmpReq *GetDingtalkProjectionListRequest, tmpHeader *GetDingtalkProjectionListHeaders, runtime *dara.RuntimeOptions) (_result *GetDingtalkProjectionListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetDingtalkProjectionListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetDingtalkProjectionListShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !dara.IsNil(request.Code) {
+		body["code"] = request.Code
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		body["currentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.OrgId) {
+		body["orgId"] = request.OrgId
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectorWorkNo) {
+		body["projectorWorkNo"] = request.ProjectorWorkNo
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDingtalkProjectionList"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/ysp/getDingtalkProjectionList"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDingtalkProjectionListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取钉钉投屏列表
+//
+// @param request - GetDingtalkProjectionListRequest
+//
+// @return GetDingtalkProjectionListResponse
+func (client *Client) GetDingtalkProjectionList(request *GetDingtalkProjectionListRequest) (_result *GetDingtalkProjectionListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GetDingtalkProjectionListHeaders{}
+	_result = &GetDingtalkProjectionListResponse{}
+	_body, _err := client.GetDingtalkProjectionListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 委托权限获取文档内容
 //
 // @param tmpReq - GetDocContentRequest
@@ -20621,6 +21382,84 @@ func (client *Client) QueryReportDetail(request *QueryReportDetailRequest) (_res
 	headers := &QueryReportDetailHeaders{}
 	_result = &QueryReportDetailResponse{}
 	_body, _err := client.QueryReportDetailWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询钉钉机器人退订工号
+//
+// @param request - QueryRobotUnsubscriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRobotUnsubscriptionResponse
+func (client *Client) QueryRobotUnsubscriptionWithOptions(request *QueryRobotUnsubscriptionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryRobotUnsubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PageNo) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RobotCode) {
+		body["RobotCode"] = request.RobotCode
+	}
+
+	if !dara.IsNil(request.SceneCode) {
+		body["SceneCode"] = request.SceneCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryRobotUnsubscription"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/aliding/v1/robot/queryRobotUnsubscription"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryRobotUnsubscriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询钉钉机器人退订工号
+//
+// @param request - QueryRobotUnsubscriptionRequest
+//
+// @return QueryRobotUnsubscriptionResponse
+func (client *Client) QueryRobotUnsubscription(request *QueryRobotUnsubscriptionRequest) (_result *QueryRobotUnsubscriptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryRobotUnsubscriptionResponse{}
+	_body, _err := client.QueryRobotUnsubscriptionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
