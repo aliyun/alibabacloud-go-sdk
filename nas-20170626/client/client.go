@@ -7583,6 +7583,154 @@ func (client *Client) GetDirectoryOrFileProperties(request *GetDirectoryOrFilePr
 
 // Summary:
 //
+// 查询特定智能目录
+//
+// @param request - GetFilesetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFilesetResponse
+func (client *Client) GetFilesetWithOptions(request *GetFilesetRequest, runtime *dara.RuntimeOptions) (_result *GetFilesetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileSystemId) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !dara.IsNil(request.FsetId) {
+		query["FsetId"] = request.FsetId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFileset"),
+		Version:     dara.String("2017-06-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFilesetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询特定智能目录
+//
+// @param request - GetFilesetRequest
+//
+// @return GetFilesetResponse
+func (client *Client) GetFileset(request *GetFilesetRequest) (_result *GetFilesetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetFilesetResponse{}
+	_body, _err := client.GetFilesetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询协议机挂载点
+//
+// @param request - GetProtocolMountTargetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProtocolMountTargetResponse
+func (client *Client) GetProtocolMountTargetWithOptions(request *GetProtocolMountTargetRequest, runtime *dara.RuntimeOptions) (_result *GetProtocolMountTargetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ExportId) {
+		query["ExportId"] = request.ExportId
+	}
+
+	if !dara.IsNil(request.FileSystemId) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ProtocolServiceId) {
+		query["ProtocolServiceId"] = request.ProtocolServiceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetProtocolMountTarget"),
+		Version:     dara.String("2017-06-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetProtocolMountTargetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询协议机挂载点
+//
+// @param request - GetProtocolMountTargetRequest
+//
+// @return GetProtocolMountTargetResponse
+func (client *Client) GetProtocolMountTarget(request *GetProtocolMountTargetRequest) (_result *GetProtocolMountTargetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetProtocolMountTargetResponse{}
+	_body, _err := client.GetProtocolMountTargetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the recycle bin configurations of a General-purpose NAS file system.
 //
 // Description:
