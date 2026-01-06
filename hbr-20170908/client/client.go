@@ -2365,6 +2365,10 @@ func (client *Client) DeleteBackupPlan(request *DeleteBackupPlanRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除客户端
+//
 // @param request - DeleteClientRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2413,6 +2417,10 @@ func (client *Client) DeleteClientWithOptions(request *DeleteClientRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除客户端
+//
 // @param request - DeleteClientRequest
 //
 // @return DeleteClientResponse

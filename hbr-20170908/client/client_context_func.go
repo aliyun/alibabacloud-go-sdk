@@ -1781,6 +1781,10 @@ func (client *Client) DeleteBackupPlanWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除客户端
+//
 // @param request - DeleteClientRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions

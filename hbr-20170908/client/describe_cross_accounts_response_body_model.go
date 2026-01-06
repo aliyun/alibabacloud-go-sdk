@@ -220,6 +220,10 @@ type DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount struct {
 	//
 	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	// example:
+	//
+	// CROSS_ACCOUNT
+	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
 	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
 	//
 	// example:
@@ -266,6 +270,10 @@ func (s *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) GetCrossAcc
 	return s.CrossAccountRoleName
 }
 
+func (s *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) GetCrossAccountType() *string {
+	return s.CrossAccountType
+}
+
 func (s *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) GetCrossAccountUserId() *int64 {
 	return s.CrossAccountUserId
 }
@@ -294,6 +302,11 @@ func (s *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) SetCreatedT
 
 func (s *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) SetCrossAccountRoleName(v string) *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount {
 	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) SetCrossAccountType(v string) *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount {
+	s.CrossAccountType = &v
 	return s
 }
 
