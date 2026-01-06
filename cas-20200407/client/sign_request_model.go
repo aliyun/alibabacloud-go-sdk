@@ -19,6 +19,8 @@ type iSignRequest interface {
 	GetMessageType() *string
 	SetSigningAlgorithm(v string) *SignRequest
 	GetSigningAlgorithm() *string
+	SetWarehouseId(v int64) *SignRequest
+	GetWarehouseId() *int64
 }
 
 type SignRequest struct {
@@ -75,6 +77,7 @@ type SignRequest struct {
 	//
 	// SHA256withRSA
 	SigningAlgorithm *string `json:"SigningAlgorithm,omitempty" xml:"SigningAlgorithm,omitempty"`
+	WarehouseId      *int64  `json:"WarehouseId,omitempty" xml:"WarehouseId,omitempty"`
 }
 
 func (s SignRequest) String() string {
@@ -105,6 +108,10 @@ func (s *SignRequest) GetSigningAlgorithm() *string {
 	return s.SigningAlgorithm
 }
 
+func (s *SignRequest) GetWarehouseId() *int64 {
+	return s.WarehouseId
+}
+
 func (s *SignRequest) SetCertIdentifier(v string) *SignRequest {
 	s.CertIdentifier = &v
 	return s
@@ -127,6 +134,11 @@ func (s *SignRequest) SetMessageType(v string) *SignRequest {
 
 func (s *SignRequest) SetSigningAlgorithm(v string) *SignRequest {
 	s.SigningAlgorithm = &v
+	return s
+}
+
+func (s *SignRequest) SetWarehouseId(v int64) *SignRequest {
+	s.WarehouseId = &v
 	return s
 }
 

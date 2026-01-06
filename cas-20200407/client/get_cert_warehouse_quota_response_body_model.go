@@ -9,6 +9,10 @@ type iGetCertWarehouseQuotaResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppTotalQuota(v int64) *GetCertWarehouseQuotaResponseBody
+	GetAppTotalQuota() *int64
+	SetAppUseCount(v int64) *GetCertWarehouseQuotaResponseBody
+	GetAppUseCount() *int64
 	SetRequestId(v string) *GetCertWarehouseQuotaResponseBody
 	GetRequestId() *string
 	SetTotalQuota(v int64) *GetCertWarehouseQuotaResponseBody
@@ -18,6 +22,8 @@ type iGetCertWarehouseQuotaResponseBody interface {
 }
 
 type GetCertWarehouseQuotaResponseBody struct {
+	AppTotalQuota *int64 `json:"AppTotalQuota,omitempty" xml:"AppTotalQuota,omitempty"`
+	AppUseCount   *int64 `json:"AppUseCount,omitempty" xml:"AppUseCount,omitempty"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
 	//
 	// example:
@@ -46,6 +52,14 @@ func (s GetCertWarehouseQuotaResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetCertWarehouseQuotaResponseBody) GetAppTotalQuota() *int64 {
+	return s.AppTotalQuota
+}
+
+func (s *GetCertWarehouseQuotaResponseBody) GetAppUseCount() *int64 {
+	return s.AppUseCount
+}
+
 func (s *GetCertWarehouseQuotaResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -56,6 +70,16 @@ func (s *GetCertWarehouseQuotaResponseBody) GetTotalQuota() *int64 {
 
 func (s *GetCertWarehouseQuotaResponseBody) GetUseCount() *int64 {
 	return s.UseCount
+}
+
+func (s *GetCertWarehouseQuotaResponseBody) SetAppTotalQuota(v int64) *GetCertWarehouseQuotaResponseBody {
+	s.AppTotalQuota = &v
+	return s
+}
+
+func (s *GetCertWarehouseQuotaResponseBody) SetAppUseCount(v int64) *GetCertWarehouseQuotaResponseBody {
+	s.AppUseCount = &v
+	return s
 }
 
 func (s *GetCertWarehouseQuotaResponseBody) SetRequestId(v string) *GetCertWarehouseQuotaResponseBody {

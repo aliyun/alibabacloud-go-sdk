@@ -800,6 +800,10 @@ func (client *Client) DecryptWithOptions(request *DecryptRequest, runtime *dara.
 		query["MessageType"] = request.MessageType
 	}
 
+	if !dara.IsNil(request.WarehouseId) {
+		query["WarehouseId"] = request.WarehouseId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1622,6 +1626,10 @@ func (client *Client) EncryptWithOptions(request *EncryptRequest, runtime *dara.
 
 	if !dara.IsNil(request.Plaintext) {
 		query["Plaintext"] = request.Plaintext
+	}
+
+	if !dara.IsNil(request.WarehouseId) {
+		query["WarehouseId"] = request.WarehouseId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2933,6 +2941,10 @@ func (client *Client) SignWithOptions(request *SignRequest, runtime *dara.Runtim
 		query["SigningAlgorithm"] = request.SigningAlgorithm
 	}
 
+	if !dara.IsNil(request.WarehouseId) {
+		query["WarehouseId"] = request.WarehouseId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3485,6 +3497,10 @@ func (client *Client) VerifyWithOptions(request *VerifyRequest, runtime *dara.Ru
 
 	if !dara.IsNil(request.SigningAlgorithm) {
 		query["SigningAlgorithm"] = request.SigningAlgorithm
+	}
+
+	if !dara.IsNil(request.WarehouseId) {
+		query["WarehouseId"] = request.WarehouseId
 	}
 
 	req := &openapiutil.OpenApiRequest{

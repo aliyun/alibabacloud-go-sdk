@@ -19,6 +19,8 @@ type iDecryptRequest interface {
 	GetCustomIdentifier() *string
 	SetMessageType(v string) *DecryptRequest
 	GetMessageType() *string
+	SetWarehouseId(v int64) *DecryptRequest
+	GetWarehouseId() *int64
 }
 
 type DecryptRequest struct {
@@ -65,6 +67,7 @@ type DecryptRequest struct {
 	//
 	// Base64
 	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	WarehouseId *int64  `json:"WarehouseId,omitempty" xml:"WarehouseId,omitempty"`
 }
 
 func (s DecryptRequest) String() string {
@@ -95,6 +98,10 @@ func (s *DecryptRequest) GetMessageType() *string {
 	return s.MessageType
 }
 
+func (s *DecryptRequest) GetWarehouseId() *int64 {
+	return s.WarehouseId
+}
+
 func (s *DecryptRequest) SetAlgorithm(v string) *DecryptRequest {
 	s.Algorithm = &v
 	return s
@@ -117,6 +124,11 @@ func (s *DecryptRequest) SetCustomIdentifier(v string) *DecryptRequest {
 
 func (s *DecryptRequest) SetMessageType(v string) *DecryptRequest {
 	s.MessageType = &v
+	return s
+}
+
+func (s *DecryptRequest) SetWarehouseId(v int64) *DecryptRequest {
+	s.WarehouseId = &v
 	return s
 }
 

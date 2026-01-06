@@ -21,6 +21,8 @@ type iVerifyRequest interface {
 	GetSignatureValue() *string
 	SetSigningAlgorithm(v string) *VerifyRequest
 	GetSigningAlgorithm() *string
+	SetWarehouseId(v string) *VerifyRequest
+	GetWarehouseId() *string
 }
 
 type VerifyRequest struct {
@@ -85,6 +87,7 @@ type VerifyRequest struct {
 	//
 	// SHA256withRSA
 	SigningAlgorithm *string `json:"SigningAlgorithm,omitempty" xml:"SigningAlgorithm,omitempty"`
+	WarehouseId      *string `json:"WarehouseId,omitempty" xml:"WarehouseId,omitempty"`
 }
 
 func (s VerifyRequest) String() string {
@@ -119,6 +122,10 @@ func (s *VerifyRequest) GetSigningAlgorithm() *string {
 	return s.SigningAlgorithm
 }
 
+func (s *VerifyRequest) GetWarehouseId() *string {
+	return s.WarehouseId
+}
+
 func (s *VerifyRequest) SetCertIdentifier(v string) *VerifyRequest {
 	s.CertIdentifier = &v
 	return s
@@ -146,6 +153,11 @@ func (s *VerifyRequest) SetSignatureValue(v string) *VerifyRequest {
 
 func (s *VerifyRequest) SetSigningAlgorithm(v string) *VerifyRequest {
 	s.SigningAlgorithm = &v
+	return s
+}
+
+func (s *VerifyRequest) SetWarehouseId(v string) *VerifyRequest {
+	s.WarehouseId = &v
 	return s
 }
 

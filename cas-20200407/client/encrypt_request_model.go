@@ -19,6 +19,8 @@ type iEncryptRequest interface {
   GetMessageType() *string 
   SetPlaintext(v string) *EncryptRequest
   GetPlaintext() *string 
+  SetWarehouseId(v int64) *EncryptRequest
+  GetWarehouseId() *int64 
 }
 
 type EncryptRequest struct {
@@ -71,6 +73,7 @@ type EncryptRequest struct {
   // 
   // 1234***
   Plaintext *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
+  WarehouseId *int64 `json:"WarehouseId,omitempty" xml:"WarehouseId,omitempty"`
 }
 
 func (s EncryptRequest) String() string {
@@ -101,6 +104,10 @@ func (s *EncryptRequest) GetPlaintext() *string  {
   return s.Plaintext
 }
 
+func (s *EncryptRequest) GetWarehouseId() *int64  {
+  return s.WarehouseId
+}
+
 func (s *EncryptRequest) SetAlgorithm(v string) *EncryptRequest {
   s.Algorithm = &v
   return s
@@ -123,6 +130,11 @@ func (s *EncryptRequest) SetMessageType(v string) *EncryptRequest {
 
 func (s *EncryptRequest) SetPlaintext(v string) *EncryptRequest {
   s.Plaintext = &v
+  return s
+}
+
+func (s *EncryptRequest) SetWarehouseId(v int64) *EncryptRequest {
+  s.WarehouseId = &v
   return s
 }
 
