@@ -3766,6 +3766,10 @@ func (client *Client) ListDatasetFileMetasWithContext(ctx context.Context, Datas
 		query["QueryType"] = request.QueryType
 	}
 
+	if !dara.IsNil(request.QueryVideo) {
+		query["QueryVideo"] = request.QueryVideo
+	}
+
 	if !dara.IsNil(request.ScoreThreshold) {
 		query["ScoreThreshold"] = request.ScoreThreshold
 	}

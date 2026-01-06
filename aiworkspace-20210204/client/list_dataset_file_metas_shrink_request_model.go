@@ -45,6 +45,8 @@ type iListDatasetFileMetasShrinkRequest interface {
 	GetQueryText() *string
 	SetQueryType(v string) *ListDatasetFileMetasShrinkRequest
 	GetQueryType() *string
+	SetQueryVideo(v string) *ListDatasetFileMetasShrinkRequest
+	GetQueryVideo() *string
 	SetScoreThreshold(v float32) *ListDatasetFileMetasShrinkRequest
 	GetScoreThreshold() *float32
 	SetSortBy(v string) *ListDatasetFileMetasShrinkRequest
@@ -145,7 +147,8 @@ type ListDatasetFileMetasShrinkRequest struct {
 	// example:
 	//
 	// TAG
-	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	QueryType  *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	QueryVideo *string `json:"QueryVideo,omitempty" xml:"QueryVideo,omitempty"`
 	// The similarity score. Only dataset files whose similarity score is greater than the value of ScoreThreshold are returned. This parameter is valid only when QueryType is set to VECTOR.
 	//
 	// example:
@@ -277,6 +280,10 @@ func (s *ListDatasetFileMetasShrinkRequest) GetQueryType() *string {
 	return s.QueryType
 }
 
+func (s *ListDatasetFileMetasShrinkRequest) GetQueryVideo() *string {
+	return s.QueryVideo
+}
+
 func (s *ListDatasetFileMetasShrinkRequest) GetScoreThreshold() *float32 {
 	return s.ScoreThreshold
 }
@@ -396,6 +403,11 @@ func (s *ListDatasetFileMetasShrinkRequest) SetQueryText(v string) *ListDatasetF
 
 func (s *ListDatasetFileMetasShrinkRequest) SetQueryType(v string) *ListDatasetFileMetasShrinkRequest {
 	s.QueryType = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetQueryVideo(v string) *ListDatasetFileMetasShrinkRequest {
+	s.QueryVideo = &v
 	return s
 }
 

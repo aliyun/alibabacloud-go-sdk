@@ -5125,6 +5125,10 @@ func (client *Client) ListDatasetFileMetasWithOptions(DatasetId *string, tmpReq 
 		query["QueryType"] = request.QueryType
 	}
 
+	if !dara.IsNil(request.QueryVideo) {
+		query["QueryVideo"] = request.QueryVideo
+	}
+
 	if !dara.IsNil(request.ScoreThreshold) {
 		query["ScoreThreshold"] = request.ScoreThreshold
 	}
