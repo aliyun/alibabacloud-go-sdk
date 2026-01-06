@@ -23,8 +23,6 @@ type iDescribeDBInstancesRequest interface {
 	GetRegionId() *string
 	SetResourceGroupId(v string) *DescribeDBInstancesRequest
 	GetResourceGroupId() *string
-	SetResourceOwnerId(v int64) *DescribeDBInstancesRequest
-	GetResourceOwnerId() *int64
 	SetTag(v []*DescribeDBInstancesRequestTag) *DescribeDBInstancesRequest
 	GetTag() []*DescribeDBInstancesRequestTag
 }
@@ -88,7 +86,6 @@ type DescribeDBInstancesRequest struct {
 	//
 	// rg-4690g37929****
 	ResourceGroupId *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerId *int64                           `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	Tag             []*DescribeDBInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -128,10 +125,6 @@ func (s *DescribeDBInstancesRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
-func (s *DescribeDBInstancesRequest) GetResourceOwnerId() *int64 {
-	return s.ResourceOwnerId
-}
-
 func (s *DescribeDBInstancesRequest) GetTag() []*DescribeDBInstancesRequestTag {
 	return s.Tag
 }
@@ -168,11 +161,6 @@ func (s *DescribeDBInstancesRequest) SetRegionId(v string) *DescribeDBInstancesR
 
 func (s *DescribeDBInstancesRequest) SetResourceGroupId(v string) *DescribeDBInstancesRequest {
 	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *DescribeDBInstancesRequest) SetResourceOwnerId(v int64) *DescribeDBInstancesRequest {
-	s.ResourceOwnerId = &v
 	return s
 }
 

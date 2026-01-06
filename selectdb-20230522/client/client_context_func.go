@@ -1492,10 +1492,6 @@ func (client *Client) DescribeDBInstancesWithContext(ctx context.Context, tmpReq
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
-	if !dara.IsNil(request.ResourceOwnerId) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
 	if !dara.IsNil(request.TagShrink) {
 		query["Tag"] = request.TagShrink
 	}

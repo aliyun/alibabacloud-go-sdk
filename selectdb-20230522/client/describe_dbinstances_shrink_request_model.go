@@ -23,8 +23,6 @@ type iDescribeDBInstancesShrinkRequest interface {
 	GetRegionId() *string
 	SetResourceGroupId(v string) *DescribeDBInstancesShrinkRequest
 	GetResourceGroupId() *string
-	SetResourceOwnerId(v int64) *DescribeDBInstancesShrinkRequest
-	GetResourceOwnerId() *int64
 	SetTagShrink(v string) *DescribeDBInstancesShrinkRequest
 	GetTagShrink() *string
 }
@@ -88,7 +86,6 @@ type DescribeDBInstancesShrinkRequest struct {
 	//
 	// rg-4690g37929****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TagShrink       *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -128,10 +125,6 @@ func (s *DescribeDBInstancesShrinkRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
-func (s *DescribeDBInstancesShrinkRequest) GetResourceOwnerId() *int64 {
-	return s.ResourceOwnerId
-}
-
 func (s *DescribeDBInstancesShrinkRequest) GetTagShrink() *string {
 	return s.TagShrink
 }
@@ -168,11 +161,6 @@ func (s *DescribeDBInstancesShrinkRequest) SetRegionId(v string) *DescribeDBInst
 
 func (s *DescribeDBInstancesShrinkRequest) SetResourceGroupId(v string) *DescribeDBInstancesShrinkRequest {
 	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *DescribeDBInstancesShrinkRequest) SetResourceOwnerId(v int64) *DescribeDBInstancesShrinkRequest {
-	s.ResourceOwnerId = &v
 	return s
 }
 
