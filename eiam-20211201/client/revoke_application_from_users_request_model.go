@@ -11,6 +11,8 @@ type iRevokeApplicationFromUsersRequest interface {
 	GoString() string
 	SetApplicationId(v string) *RevokeApplicationFromUsersRequest
 	GetApplicationId() *string
+	SetApplicationRoleId(v string) *RevokeApplicationFromUsersRequest
+	GetApplicationRoleId() *string
 	SetInstanceId(v string) *RevokeApplicationFromUsersRequest
 	GetInstanceId() *string
 	SetUserIds(v []*string) *RevokeApplicationFromUsersRequest
@@ -26,6 +28,12 @@ type RevokeApplicationFromUsersRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// 应用角色ID。
+	//
+	// example:
+	//
+	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
+	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
 	// The ID of the instance.
 	//
 	// This parameter is required.
@@ -56,6 +64,10 @@ func (s *RevokeApplicationFromUsersRequest) GetApplicationId() *string {
 	return s.ApplicationId
 }
 
+func (s *RevokeApplicationFromUsersRequest) GetApplicationRoleId() *string {
+	return s.ApplicationRoleId
+}
+
 func (s *RevokeApplicationFromUsersRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -66,6 +78,11 @@ func (s *RevokeApplicationFromUsersRequest) GetUserIds() []*string {
 
 func (s *RevokeApplicationFromUsersRequest) SetApplicationId(v string) *RevokeApplicationFromUsersRequest {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *RevokeApplicationFromUsersRequest) SetApplicationRoleId(v string) *RevokeApplicationFromUsersRequest {
+	s.ApplicationRoleId = &v
 	return s
 }
 

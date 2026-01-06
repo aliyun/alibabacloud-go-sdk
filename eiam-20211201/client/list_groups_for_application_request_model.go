@@ -11,6 +11,8 @@ type iListGroupsForApplicationRequest interface {
 	GoString() string
 	SetApplicationId(v string) *ListGroupsForApplicationRequest
 	GetApplicationId() *string
+	SetApplicationRoleId(v string) *ListGroupsForApplicationRequest
+	GetApplicationRoleId() *string
 	SetGroupIds(v []*string) *ListGroupsForApplicationRequest
 	GetGroupIds() []*string
 	SetInstanceId(v string) *ListGroupsForApplicationRequest
@@ -30,6 +32,12 @@ type ListGroupsForApplicationRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// 应用角色ID。
+	//
+	// example:
+	//
+	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
+	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
 	// The group IDs. You can specify up to 100 group IDs at a time.
 	//
 	// example:
@@ -70,6 +78,10 @@ func (s *ListGroupsForApplicationRequest) GetApplicationId() *string {
 	return s.ApplicationId
 }
 
+func (s *ListGroupsForApplicationRequest) GetApplicationRoleId() *string {
+	return s.ApplicationRoleId
+}
+
 func (s *ListGroupsForApplicationRequest) GetGroupIds() []*string {
 	return s.GroupIds
 }
@@ -88,6 +100,11 @@ func (s *ListGroupsForApplicationRequest) GetPageSize() *int64 {
 
 func (s *ListGroupsForApplicationRequest) SetApplicationId(v string) *ListGroupsForApplicationRequest {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *ListGroupsForApplicationRequest) SetApplicationRoleId(v string) *ListGroupsForApplicationRequest {
+	s.ApplicationRoleId = &v
 	return s
 }
 

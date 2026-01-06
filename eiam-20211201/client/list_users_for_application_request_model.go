@@ -11,6 +11,8 @@ type iListUsersForApplicationRequest interface {
 	GoString() string
 	SetApplicationId(v string) *ListUsersForApplicationRequest
 	GetApplicationId() *string
+	SetApplicationRoleId(v string) *ListUsersForApplicationRequest
+	GetApplicationRoleId() *string
 	SetInstanceId(v string) *ListUsersForApplicationRequest
 	GetInstanceId() *string
 	SetPageNumber(v int64) *ListUsersForApplicationRequest
@@ -30,6 +32,12 @@ type ListUsersForApplicationRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// 应用角色ID。
+	//
+	// example:
+	//
+	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
+	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
 	// The ID of the instance.
 	//
 	// This parameter is required.
@@ -70,6 +78,10 @@ func (s *ListUsersForApplicationRequest) GetApplicationId() *string {
 	return s.ApplicationId
 }
 
+func (s *ListUsersForApplicationRequest) GetApplicationRoleId() *string {
+	return s.ApplicationRoleId
+}
+
 func (s *ListUsersForApplicationRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -88,6 +100,11 @@ func (s *ListUsersForApplicationRequest) GetUserIds() []*string {
 
 func (s *ListUsersForApplicationRequest) SetApplicationId(v string) *ListUsersForApplicationRequest {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *ListUsersForApplicationRequest) SetApplicationRoleId(v string) *ListUsersForApplicationRequest {
+	s.ApplicationRoleId = &v
 	return s
 }
 

@@ -89,6 +89,8 @@ type ListApplicationsForOrganizationalUnitResponseBodyApplications struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// 应用角色列表。
+	ApplicationRoles []*ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRoles `json:"ApplicationRoles,omitempty" xml:"ApplicationRoles,omitempty" type:"Repeated"`
 }
 
 func (s ListApplicationsForOrganizationalUnitResponseBodyApplications) String() string {
@@ -103,11 +105,59 @@ func (s *ListApplicationsForOrganizationalUnitResponseBodyApplications) GetAppli
 	return s.ApplicationId
 }
 
+func (s *ListApplicationsForOrganizationalUnitResponseBodyApplications) GetApplicationRoles() []*ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRoles {
+	return s.ApplicationRoles
+}
+
 func (s *ListApplicationsForOrganizationalUnitResponseBodyApplications) SetApplicationId(v string) *ListApplicationsForOrganizationalUnitResponseBodyApplications {
 	s.ApplicationId = &v
 	return s
 }
 
+func (s *ListApplicationsForOrganizationalUnitResponseBodyApplications) SetApplicationRoles(v []*ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRoles) *ListApplicationsForOrganizationalUnitResponseBodyApplications {
+	s.ApplicationRoles = v
+	return s
+}
+
 func (s *ListApplicationsForOrganizationalUnitResponseBodyApplications) Validate() error {
+	if s.ApplicationRoles != nil {
+		for _, item := range s.ApplicationRoles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRoles struct {
+	// 应用角色标识。
+	//
+	// example:
+	//
+	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
+	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
+}
+
+func (s ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRoles) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRoles) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRoles) GetApplicationRoleId() *string {
+	return s.ApplicationRoleId
+}
+
+func (s *ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRoles) SetApplicationRoleId(v string) *ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRoles {
+	s.ApplicationRoleId = &v
+	return s
+}
+
+func (s *ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRoles) Validate() error {
 	return dara.Validate(s)
 }

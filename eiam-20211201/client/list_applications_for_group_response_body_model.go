@@ -84,6 +84,8 @@ type ListApplicationsForGroupResponseBodyApplications struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// 应用角色列表。
+	ApplicationRoles []*ListApplicationsForGroupResponseBodyApplicationsApplicationRoles `json:"ApplicationRoles,omitempty" xml:"ApplicationRoles,omitempty" type:"Repeated"`
 	// 直接分配给当前用户的权限，视为直接授权。
 	//
 	// example:
@@ -110,6 +112,10 @@ func (s *ListApplicationsForGroupResponseBodyApplications) GetApplicationId() *s
 	return s.ApplicationId
 }
 
+func (s *ListApplicationsForGroupResponseBodyApplications) GetApplicationRoles() []*ListApplicationsForGroupResponseBodyApplicationsApplicationRoles {
+	return s.ApplicationRoles
+}
+
 func (s *ListApplicationsForGroupResponseBodyApplications) GetHasDirectAuthorization() *bool {
 	return s.HasDirectAuthorization
 }
@@ -120,6 +126,11 @@ func (s *ListApplicationsForGroupResponseBodyApplications) GetHasInheritAuthoriz
 
 func (s *ListApplicationsForGroupResponseBodyApplications) SetApplicationId(v string) *ListApplicationsForGroupResponseBodyApplications {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *ListApplicationsForGroupResponseBodyApplications) SetApplicationRoles(v []*ListApplicationsForGroupResponseBodyApplicationsApplicationRoles) *ListApplicationsForGroupResponseBodyApplications {
+	s.ApplicationRoles = v
 	return s
 }
 
@@ -134,5 +145,44 @@ func (s *ListApplicationsForGroupResponseBodyApplications) SetHasInheritAuthoriz
 }
 
 func (s *ListApplicationsForGroupResponseBodyApplications) Validate() error {
+	if s.ApplicationRoles != nil {
+		for _, item := range s.ApplicationRoles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListApplicationsForGroupResponseBodyApplicationsApplicationRoles struct {
+	// 应用角色标识。
+	//
+	// example:
+	//
+	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
+	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
+}
+
+func (s ListApplicationsForGroupResponseBodyApplicationsApplicationRoles) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListApplicationsForGroupResponseBodyApplicationsApplicationRoles) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsForGroupResponseBodyApplicationsApplicationRoles) GetApplicationRoleId() *string {
+	return s.ApplicationRoleId
+}
+
+func (s *ListApplicationsForGroupResponseBodyApplicationsApplicationRoles) SetApplicationRoleId(v string) *ListApplicationsForGroupResponseBodyApplicationsApplicationRoles {
+	s.ApplicationRoleId = &v
+	return s
+}
+
+func (s *ListApplicationsForGroupResponseBodyApplicationsApplicationRoles) Validate() error {
 	return dara.Validate(s)
 }

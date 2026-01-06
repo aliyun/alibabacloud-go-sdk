@@ -361,6 +361,10 @@ func (client *Client) AuthorizeApplicationToGroupsWithOptions(request *Authorize
 		query["ApplicationId"] = request.ApplicationId
 	}
 
+	if !dara.IsNil(request.ApplicationRoleId) {
+		query["ApplicationRoleId"] = request.ApplicationRoleId
+	}
+
 	if !dara.IsNil(request.GroupIds) {
 		query["GroupIds"] = request.GroupIds
 	}
@@ -431,6 +435,10 @@ func (client *Client) AuthorizeApplicationToOrganizationalUnitsWithOptions(reque
 		query["ApplicationId"] = request.ApplicationId
 	}
 
+	if !dara.IsNil(request.ApplicationRoleId) {
+		query["ApplicationRoleId"] = request.ApplicationRoleId
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -499,6 +507,10 @@ func (client *Client) AuthorizeApplicationToUsersWithOptions(request *AuthorizeA
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
 		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationRoleId) {
+		query["ApplicationRoleId"] = request.ApplicationRoleId
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -10110,6 +10122,10 @@ func (client *Client) ListGroupsForApplicationWithOptions(request *ListGroupsFor
 		query["ApplicationId"] = request.ApplicationId
 	}
 
+	if !dara.IsNil(request.ApplicationRoleId) {
+		query["ApplicationRoleId"] = request.ApplicationRoleId
+	}
+
 	if !dara.IsNil(request.GroupIds) {
 		query["GroupIds"] = request.GroupIds
 	}
@@ -10975,6 +10991,10 @@ func (client *Client) ListOrganizationalUnitsForApplicationWithOptions(request *
 		query["ApplicationId"] = request.ApplicationId
 	}
 
+	if !dara.IsNil(request.ApplicationRoleId) {
+		query["ApplicationRoleId"] = request.ApplicationRoleId
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -11404,6 +11424,10 @@ func (client *Client) ListUsersForApplicationWithOptions(request *ListUsersForAp
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
 		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationRoleId) {
+		query["ApplicationRoleId"] = request.ApplicationRoleId
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -12056,6 +12080,10 @@ func (client *Client) RevokeApplicationFromGroupsWithOptions(request *RevokeAppl
 		query["ApplicationId"] = request.ApplicationId
 	}
 
+	if !dara.IsNil(request.ApplicationRoleId) {
+		query["ApplicationRoleId"] = request.ApplicationRoleId
+	}
+
 	if !dara.IsNil(request.GroupIds) {
 		query["GroupIds"] = request.GroupIds
 	}
@@ -12126,6 +12154,10 @@ func (client *Client) RevokeApplicationFromOrganizationalUnitsWithOptions(reques
 		query["ApplicationId"] = request.ApplicationId
 	}
 
+	if !dara.IsNil(request.ApplicationRoleId) {
+		query["ApplicationRoleId"] = request.ApplicationRoleId
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -12194,6 +12226,10 @@ func (client *Client) RevokeApplicationFromUsersWithOptions(request *RevokeAppli
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
 		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationRoleId) {
+		query["ApplicationRoleId"] = request.ApplicationRoleId
 	}
 
 	if !dara.IsNil(request.InstanceId) {

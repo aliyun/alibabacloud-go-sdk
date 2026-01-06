@@ -11,6 +11,8 @@ type iRevokeApplicationFromOrganizationalUnitsRequest interface {
 	GoString() string
 	SetApplicationId(v string) *RevokeApplicationFromOrganizationalUnitsRequest
 	GetApplicationId() *string
+	SetApplicationRoleId(v string) *RevokeApplicationFromOrganizationalUnitsRequest
+	GetApplicationRoleId() *string
 	SetInstanceId(v string) *RevokeApplicationFromOrganizationalUnitsRequest
 	GetInstanceId() *string
 	SetOrganizationalUnitIds(v []*string) *RevokeApplicationFromOrganizationalUnitsRequest
@@ -26,6 +28,12 @@ type RevokeApplicationFromOrganizationalUnitsRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// 应用角色ID。
+	//
+	// example:
+	//
+	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
+	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
 	// The ID of the instance.
 	//
 	// This parameter is required.
@@ -56,6 +64,10 @@ func (s *RevokeApplicationFromOrganizationalUnitsRequest) GetApplicationId() *st
 	return s.ApplicationId
 }
 
+func (s *RevokeApplicationFromOrganizationalUnitsRequest) GetApplicationRoleId() *string {
+	return s.ApplicationRoleId
+}
+
 func (s *RevokeApplicationFromOrganizationalUnitsRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -66,6 +78,11 @@ func (s *RevokeApplicationFromOrganizationalUnitsRequest) GetOrganizationalUnitI
 
 func (s *RevokeApplicationFromOrganizationalUnitsRequest) SetApplicationId(v string) *RevokeApplicationFromOrganizationalUnitsRequest {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *RevokeApplicationFromOrganizationalUnitsRequest) SetApplicationRoleId(v string) *RevokeApplicationFromOrganizationalUnitsRequest {
+	s.ApplicationRoleId = &v
 	return s
 }
 

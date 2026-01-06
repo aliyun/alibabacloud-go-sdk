@@ -11,6 +11,8 @@ type iAuthorizeApplicationToOrganizationalUnitsRequest interface {
 	GoString() string
 	SetApplicationId(v string) *AuthorizeApplicationToOrganizationalUnitsRequest
 	GetApplicationId() *string
+	SetApplicationRoleId(v string) *AuthorizeApplicationToOrganizationalUnitsRequest
+	GetApplicationRoleId() *string
 	SetInstanceId(v string) *AuthorizeApplicationToOrganizationalUnitsRequest
 	GetInstanceId() *string
 	SetOrganizationalUnitIds(v []*string) *AuthorizeApplicationToOrganizationalUnitsRequest
@@ -26,6 +28,12 @@ type AuthorizeApplicationToOrganizationalUnitsRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// 应用角色ID。
+	//
+	// example:
+	//
+	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
+	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
 	// The ID of the instance.
 	//
 	// This parameter is required.
@@ -56,6 +64,10 @@ func (s *AuthorizeApplicationToOrganizationalUnitsRequest) GetApplicationId() *s
 	return s.ApplicationId
 }
 
+func (s *AuthorizeApplicationToOrganizationalUnitsRequest) GetApplicationRoleId() *string {
+	return s.ApplicationRoleId
+}
+
 func (s *AuthorizeApplicationToOrganizationalUnitsRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -66,6 +78,11 @@ func (s *AuthorizeApplicationToOrganizationalUnitsRequest) GetOrganizationalUnit
 
 func (s *AuthorizeApplicationToOrganizationalUnitsRequest) SetApplicationId(v string) *AuthorizeApplicationToOrganizationalUnitsRequest {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *AuthorizeApplicationToOrganizationalUnitsRequest) SetApplicationRoleId(v string) *AuthorizeApplicationToOrganizationalUnitsRequest {
+	s.ApplicationRoleId = &v
 	return s
 }
 

@@ -83,6 +83,8 @@ func (s *ListOrganizationalUnitsForApplicationResponseBody) Validate() error {
 }
 
 type ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits struct {
+	// 应用角色列表。
+	ApplicationRoles []*ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles `json:"ApplicationRoles,omitempty" xml:"ApplicationRoles,omitempty" type:"Repeated"`
 	// The ID of the organization that is allowed to access the application.
 	//
 	// example:
@@ -99,8 +101,17 @@ func (s ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits) Go
 	return s.String()
 }
 
+func (s *ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits) GetApplicationRoles() []*ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles {
+	return s.ApplicationRoles
+}
+
 func (s *ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits) GetOrganizationalUnitId() *string {
 	return s.OrganizationalUnitId
+}
+
+func (s *ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits) SetApplicationRoles(v []*ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles) *ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits {
+	s.ApplicationRoles = v
+	return s
 }
 
 func (s *ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits) SetOrganizationalUnitId(v string) *ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits {
@@ -109,5 +120,44 @@ func (s *ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits) S
 }
 
 func (s *ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits) Validate() error {
+	if s.ApplicationRoles != nil {
+		for _, item := range s.ApplicationRoles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles struct {
+	// 应用角色标识。
+	//
+	// example:
+	//
+	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
+	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
+}
+
+func (s ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles) GetApplicationRoleId() *string {
+	return s.ApplicationRoleId
+}
+
+func (s *ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles) SetApplicationRoleId(v string) *ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles {
+	s.ApplicationRoleId = &v
+	return s
+}
+
+func (s *ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles) Validate() error {
 	return dara.Validate(s)
 }

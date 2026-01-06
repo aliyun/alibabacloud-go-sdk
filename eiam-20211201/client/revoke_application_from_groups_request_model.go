@@ -11,6 +11,8 @@ type iRevokeApplicationFromGroupsRequest interface {
 	GoString() string
 	SetApplicationId(v string) *RevokeApplicationFromGroupsRequest
 	GetApplicationId() *string
+	SetApplicationRoleId(v string) *RevokeApplicationFromGroupsRequest
+	GetApplicationRoleId() *string
 	SetGroupIds(v []*string) *RevokeApplicationFromGroupsRequest
 	GetGroupIds() []*string
 	SetInstanceId(v string) *RevokeApplicationFromGroupsRequest
@@ -26,6 +28,12 @@ type RevokeApplicationFromGroupsRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// 应用角色ID。
+	//
+	// example:
+	//
+	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
+	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
 	// The group IDs. You can specify up to 100 group IDs at a time.
 	//
 	// This parameter is required.
@@ -56,6 +64,10 @@ func (s *RevokeApplicationFromGroupsRequest) GetApplicationId() *string {
 	return s.ApplicationId
 }
 
+func (s *RevokeApplicationFromGroupsRequest) GetApplicationRoleId() *string {
+	return s.ApplicationRoleId
+}
+
 func (s *RevokeApplicationFromGroupsRequest) GetGroupIds() []*string {
 	return s.GroupIds
 }
@@ -66,6 +78,11 @@ func (s *RevokeApplicationFromGroupsRequest) GetInstanceId() *string {
 
 func (s *RevokeApplicationFromGroupsRequest) SetApplicationId(v string) *RevokeApplicationFromGroupsRequest {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *RevokeApplicationFromGroupsRequest) SetApplicationRoleId(v string) *RevokeApplicationFromGroupsRequest {
+	s.ApplicationRoleId = &v
 	return s
 }
 
