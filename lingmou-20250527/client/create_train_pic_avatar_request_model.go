@@ -42,8 +42,6 @@ type CreateTrainPicAvatarRequest struct {
 	ImageOssPath *string `json:"imageOssPath,omitempty" xml:"imageOssPath,omitempty"`
 	// This parameter is required.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// M16vSG46Pby9HWOrFSZ7QaQA
