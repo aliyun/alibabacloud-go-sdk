@@ -9,6 +9,8 @@ type iModifyRCDiskChargeTypeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoPay(v bool) *ModifyRCDiskChargeTypeRequest
+	GetAutoPay() *bool
 	SetAutoRenew(v string) *ModifyRCDiskChargeTypeRequest
 	GetAutoRenew() *string
 	SetAutoUseCoupon(v bool) *ModifyRCDiskChargeTypeRequest
@@ -28,6 +30,7 @@ type iModifyRCDiskChargeTypeRequest interface {
 }
 
 type ModifyRCDiskChargeTypeRequest struct {
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// example:
 	//
 	// true
@@ -47,8 +50,6 @@ type ModifyRCDiskChargeTypeRequest struct {
 	//
 	// rcd-pq2091s13go9bkb04*
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// Postpaid
@@ -74,6 +75,10 @@ func (s ModifyRCDiskChargeTypeRequest) String() string {
 
 func (s ModifyRCDiskChargeTypeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyRCDiskChargeTypeRequest) GetAutoPay() *bool {
+	return s.AutoPay
 }
 
 func (s *ModifyRCDiskChargeTypeRequest) GetAutoRenew() *string {
@@ -106,6 +111,11 @@ func (s *ModifyRCDiskChargeTypeRequest) GetPromotionCode() *string {
 
 func (s *ModifyRCDiskChargeTypeRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *ModifyRCDiskChargeTypeRequest) SetAutoPay(v bool) *ModifyRCDiskChargeTypeRequest {
+	s.AutoPay = &v
+	return s
 }
 
 func (s *ModifyRCDiskChargeTypeRequest) SetAutoRenew(v string) *ModifyRCDiskChargeTypeRequest {

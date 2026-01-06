@@ -25884,6 +25884,10 @@ func (client *Client) ModifyRCDiskChargeTypeWithContext(ctx context.Context, req
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
 	if !dara.IsNil(request.AutoRenew) {
 		query["AutoRenew"] = request.AutoRenew
 	}
@@ -30598,6 +30602,10 @@ func (client *Client) StopRCInstanceWithContext(ctx context.Context, request *St
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.StoppedMode) {
+		query["StoppedMode"] = request.StoppedMode
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30672,6 +30680,10 @@ func (client *Client) StopRCInstancesWithContext(ctx context.Context, tmpReq *St
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StoppedMode) {
+		query["StoppedMode"] = request.StoppedMode
 	}
 
 	req := &openapiutil.OpenApiRequest{
