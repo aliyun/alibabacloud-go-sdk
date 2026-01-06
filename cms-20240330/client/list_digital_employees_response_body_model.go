@@ -125,8 +125,9 @@ type ListDigitalEmployeesResponseBodyDigitalEmployees struct {
 	// example:
 	//
 	// test
-	DisplayName *string                                                     `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Knowledges  *ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
+	DisplayName  *string                                                     `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	EmployeeType *string                                                     `json:"employeeType,omitempty" xml:"employeeType,omitempty"`
+	Knowledges   *ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
 	// example:
 	//
 	// test
@@ -167,6 +168,10 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetDisplayName() *str
 	return s.DisplayName
 }
 
+func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetEmployeeType() *string {
+	return s.EmployeeType
+}
+
 func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetKnowledges() *ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges {
 	return s.Knowledges
 }
@@ -200,6 +205,11 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) SetDescription(v stri
 
 func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) SetDisplayName(v string) *ListDigitalEmployeesResponseBodyDigitalEmployees {
 	s.DisplayName = &v
+	return s
+}
+
+func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) SetEmployeeType(v string) *ListDigitalEmployeesResponseBodyDigitalEmployees {
+	s.EmployeeType = &v
 	return s
 }
 

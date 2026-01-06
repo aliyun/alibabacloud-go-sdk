@@ -1227,6 +1227,56 @@ func (client *Client) CreateService(workspace *string, request *CreateServiceReq
 
 // Summary:
 //
+// 创建应用可观测实例
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceObservabilityResponse
+func (client *Client) CreateServiceObservabilityWithOptions(workspace *string, _type *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceObservabilityResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateServiceObservability"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/service-observability/" + dara.PercentEncode(dara.StringValue(_type))),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateServiceObservabilityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用可观测实例
+//
+// @return CreateServiceObservabilityResponse
+func (client *Client) CreateServiceObservability(workspace *string, _type *string) (_result *CreateServiceObservabilityResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateServiceObservabilityResponse{}
+	_body, _err := client.CreateServiceObservabilityWithOptions(workspace, _type, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建会话
 //
 // @param request - CreateThreadRequest
@@ -4349,6 +4399,10 @@ func (client *Client) ListDigitalEmployeesWithOptions(request *ListDigitalEmploy
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EmployeeType) {
+		query["employeeType"] = request.EmployeeType
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
 	}

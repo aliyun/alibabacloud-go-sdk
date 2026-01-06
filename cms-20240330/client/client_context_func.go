@@ -920,6 +920,39 @@ func (client *Client) CreateServiceWithContext(ctx context.Context, workspace *s
 
 // Summary:
 //
+// 创建应用可观测实例
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceObservabilityResponse
+func (client *Client) CreateServiceObservabilityWithContext(ctx context.Context, workspace *string, _type *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceObservabilityResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateServiceObservability"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/service-observability/" + dara.PercentEncode(dara.StringValue(_type))),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateServiceObservabilityResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建会话
 //
 // @param request - CreateThreadRequest
@@ -3119,6 +3152,10 @@ func (client *Client) ListDigitalEmployeesWithContext(ctx context.Context, reque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EmployeeType) {
+		query["employeeType"] = request.EmployeeType
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
 	}

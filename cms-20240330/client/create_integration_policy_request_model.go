@@ -148,7 +148,8 @@ type CreateIntegrationPolicyRequestEntityGroup struct {
 	// example:
 	//
 	// na61prod3-na61cloudhdfsssd
-	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	ClusterId        *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	ClusterNamespace *string `json:"clusterNamespace,omitempty" xml:"clusterNamespace,omitempty"`
 	// Whether to disable the unique binding of the Policy. If enabled, multiple Policies can be created for a single container cluster.
 	//
 	// example:
@@ -191,6 +192,10 @@ func (s *CreateIntegrationPolicyRequestEntityGroup) GetClusterId() *string {
 	return s.ClusterId
 }
 
+func (s *CreateIntegrationPolicyRequestEntityGroup) GetClusterNamespace() *string {
+	return s.ClusterNamespace
+}
+
 func (s *CreateIntegrationPolicyRequestEntityGroup) GetDisablePolicyShare() *bool {
 	return s.DisablePolicyShare
 }
@@ -214,6 +219,11 @@ func (s *CreateIntegrationPolicyRequestEntityGroup) SetClusterEntityType(v strin
 
 func (s *CreateIntegrationPolicyRequestEntityGroup) SetClusterId(v string) *CreateIntegrationPolicyRequestEntityGroup {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateIntegrationPolicyRequestEntityGroup) SetClusterNamespace(v string) *CreateIntegrationPolicyRequestEntityGroup {
+	s.ClusterNamespace = &v
 	return s
 }
 

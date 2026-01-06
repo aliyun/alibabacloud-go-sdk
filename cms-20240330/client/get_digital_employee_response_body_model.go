@@ -17,6 +17,8 @@ type iGetDigitalEmployeeResponseBody interface {
 	GetDescription() *string
 	SetDisplayName(v string) *GetDigitalEmployeeResponseBody
 	GetDisplayName() *string
+	SetEmployeeType(v string) *GetDigitalEmployeeResponseBody
+	GetEmployeeType() *string
 	SetKnowledges(v *GetDigitalEmployeeResponseBodyKnowledges) *GetDigitalEmployeeResponseBody
 	GetKnowledges() *GetDigitalEmployeeResponseBodyKnowledges
 	SetName(v string) *GetDigitalEmployeeResponseBody
@@ -49,8 +51,9 @@ type GetDigitalEmployeeResponseBody struct {
 	// example:
 	//
 	// test
-	DisplayName *string                                   `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Knowledges  *GetDigitalEmployeeResponseBodyKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
+	DisplayName  *string                                   `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	EmployeeType *string                                   `json:"employeeType,omitempty" xml:"employeeType,omitempty"`
+	Knowledges   *GetDigitalEmployeeResponseBodyKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
 	// example:
 	//
 	// test
@@ -99,6 +102,10 @@ func (s *GetDigitalEmployeeResponseBody) GetDisplayName() *string {
 	return s.DisplayName
 }
 
+func (s *GetDigitalEmployeeResponseBody) GetEmployeeType() *string {
+	return s.EmployeeType
+}
+
 func (s *GetDigitalEmployeeResponseBody) GetKnowledges() *GetDigitalEmployeeResponseBodyKnowledges {
 	return s.Knowledges
 }
@@ -140,6 +147,11 @@ func (s *GetDigitalEmployeeResponseBody) SetDescription(v string) *GetDigitalEmp
 
 func (s *GetDigitalEmployeeResponseBody) SetDisplayName(v string) *GetDigitalEmployeeResponseBody {
 	s.DisplayName = &v
+	return s
+}
+
+func (s *GetDigitalEmployeeResponseBody) SetEmployeeType(v string) *GetDigitalEmployeeResponseBody {
+	s.EmployeeType = &v
 	return s
 }
 
