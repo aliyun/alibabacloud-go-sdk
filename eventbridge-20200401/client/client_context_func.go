@@ -2160,6 +2160,10 @@ func (client *Client) QueryTracedEventsWithContext(ctx context.Context, request 
 		query["StartTime"] = request.StartTime
 	}
 
+	if !dara.IsNil(request.Subject) {
+		query["Subject"] = request.Subject
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}

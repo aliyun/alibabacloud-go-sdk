@@ -25,6 +25,8 @@ type iQueryTracedEventsRequest interface {
 	GetNextToken() *string
 	SetStartTime(v int64) *QueryTracedEventsRequest
 	GetStartTime() *int64
+	SetSubject(v string) *QueryTracedEventsRequest
+	GetSubject() *string
 }
 
 type QueryTracedEventsRequest struct {
@@ -83,7 +85,8 @@ type QueryTracedEventsRequest struct {
 	// example:
 	//
 	// 1661773509000
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Subject   *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
 }
 
 func (s QueryTracedEventsRequest) String() string {
@@ -126,6 +129,10 @@ func (s *QueryTracedEventsRequest) GetStartTime() *int64 {
 	return s.StartTime
 }
 
+func (s *QueryTracedEventsRequest) GetSubject() *string {
+	return s.Subject
+}
+
 func (s *QueryTracedEventsRequest) SetEndTime(v int64) *QueryTracedEventsRequest {
 	s.EndTime = &v
 	return s
@@ -163,6 +170,11 @@ func (s *QueryTracedEventsRequest) SetNextToken(v string) *QueryTracedEventsRequ
 
 func (s *QueryTracedEventsRequest) SetStartTime(v int64) *QueryTracedEventsRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *QueryTracedEventsRequest) SetSubject(v string) *QueryTracedEventsRequest {
+	s.Subject = &v
 	return s
 }
 
