@@ -14,6 +14,8 @@ type iModifyAutoRenewalAttributeResponseBody interface {
 }
 
 type ModifyAutoRenewalAttributeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 421794A3-72A5-5D27-9E8B-A75A4C503E17

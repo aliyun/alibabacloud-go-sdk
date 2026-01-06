@@ -153,6 +153,9 @@ type DescribeAuditLogRecordsResponseBodyItems struct {
 	// 2022-08-12 10:10:00
 	ExecuteTime      *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
 	ExecuteTimestamp *int64  `json:"ExecuteTimestamp,omitempty" xml:"ExecuteTimestamp,omitempty"`
+	// if can be null:
+	// true
+	HasDiagnosticInfo *bool `json:"HasDiagnosticInfo,omitempty" xml:"HasDiagnosticInfo,omitempty"`
 	// The IP address and port number of the client that is used to execute the SQL statement.
 	//
 	// example:
@@ -225,6 +228,10 @@ func (s *DescribeAuditLogRecordsResponseBodyItems) GetExecuteTimestamp() *int64 
 	return s.ExecuteTimestamp
 }
 
+func (s *DescribeAuditLogRecordsResponseBodyItems) GetHasDiagnosticInfo() *bool {
+	return s.HasDiagnosticInfo
+}
+
 func (s *DescribeAuditLogRecordsResponseBodyItems) GetHostAddress() *string {
 	return s.HostAddress
 }
@@ -270,6 +277,11 @@ func (s *DescribeAuditLogRecordsResponseBodyItems) SetExecuteTime(v string) *Des
 
 func (s *DescribeAuditLogRecordsResponseBodyItems) SetExecuteTimestamp(v int64) *DescribeAuditLogRecordsResponseBodyItems {
 	s.ExecuteTimestamp = &v
+	return s
+}
+
+func (s *DescribeAuditLogRecordsResponseBodyItems) SetHasDiagnosticInfo(v bool) *DescribeAuditLogRecordsResponseBodyItems {
+	s.HasDiagnosticInfo = &v
 	return s
 }
 

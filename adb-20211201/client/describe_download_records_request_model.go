@@ -28,6 +28,8 @@ type DescribeDownloadRecordsRequest struct {
 	//
 	// amv-8vb6ha79k6e****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Deprecated
+	//
 	// The language of the returned data. Valid values:
 	//
 	// 	- **zh**: simplified Chinese.

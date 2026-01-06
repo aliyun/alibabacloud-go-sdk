@@ -30,18 +30,42 @@ type iModifyAutoRenewalAttributeRequest interface {
 }
 
 type ModifyAutoRenewalAttributeRequest struct {
+	// The duration of the auto-renewal. Default value: 1. Valid values:
+	//
+	// 	- When **AutoRenewalPeriod*	- is set to **Month**, the value ranges from 1 to 11 (integer).
+	//
+	// 	- When **AutoRenewalPeriod*	- is set to **Month**, the valid values are 1, 2, 3, and 5 (integer).
+	//
+	// >  Longer renewal periods offer better pricing. Renewing for 1 year is more cost-effective than renewing for 10 or 11 months.
+	//
 	// example:
 	//
 	// 1
 	AutoRenewalPeriod *string `json:"AutoRenewalPeriod,omitempty" xml:"AutoRenewalPeriod,omitempty"`
+	// Auto-renewal duration. Valid values:
+	//
+	// 	- Year.
+	//
+	// 	- Month.
+	//
 	// example:
 	//
 	// Year
 	AutoRenewalPeriodUnit *string `json:"AutoRenewalPeriodUnit,omitempty" xml:"AutoRenewalPeriodUnit,omitempty"`
+	// The renewal method. Valid values:
+	//
+	// 	- **AutoRenewal**: The cluster is automatically renewed.
+	//
+	// 	- **Normal**: The cluster is manually renewed. Before the cluster expires, the system sends you a reminder by SMS message.
+	//
+	// 	- **NotRenewal**: The cluster is not renewed. Reminders are only sent three days before cluster expiration.
+	//
 	// example:
 	//
 	// AutoRenewal
 	AutoRenewalStatus *string `json:"AutoRenewalStatus,omitempty" xml:"AutoRenewalStatus,omitempty"`
+	// The ID of cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -50,6 +74,8 @@ type ModifyAutoRenewalAttributeRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

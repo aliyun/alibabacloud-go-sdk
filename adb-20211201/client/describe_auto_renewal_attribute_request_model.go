@@ -30,23 +30,38 @@ type iDescribeAutoRenewalAttributeRequest interface {
 }
 
 type DescribeAutoRenewalAttributeRequest struct {
+	// The cluster IDs.
 	DBClusterId  []*string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty" type:"Repeated"`
 	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. A positive integer greater than 0 and not exceeding the maximum value of the Integer data type. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on each page. Valid values:
+	//
+	// 	- **30**(Default)
+	//
+	// 	- **50**
+	//
+	// 	- **100**
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-4690g37929****

@@ -6122,7 +6122,7 @@ func (client *Client) DescribeAuditLogRecords(request *DescribeAuditLogRecordsRe
 
 // Summary:
 //
-// 查询自动续费参数
+// Queries the auto-renewal status of a subscription cluster.
 //
 // @param tmpReq - DescribeAutoRenewalAttributeRequest
 //
@@ -6204,7 +6204,7 @@ func (client *Client) DescribeAutoRenewalAttributeWithOptions(tmpReq *DescribeAu
 
 // Summary:
 //
-// 查询自动续费参数
+// Queries the auto-renewal status of a subscription cluster.
 //
 // @param request - DescribeAutoRenewalAttributeRequest
 //
@@ -17672,7 +17672,7 @@ func (client *Client) ModifyAuditLogConfig(request *ModifyAuditLogConfigRequest)
 
 // Summary:
 //
-// 修改自动续费配置
+// Configures auto-renewal for a subscription cluster.
 //
 // @param request - ModifyAutoRenewalAttributeRequest
 //
@@ -17748,7 +17748,7 @@ func (client *Client) ModifyAutoRenewalAttributeWithOptions(request *ModifyAutoR
 
 // Summary:
 //
-// 修改自动续费配置
+// Configures auto-renewal for a subscription cluster.
 //
 // @param request - ModifyAutoRenewalAttributeRequest
 //

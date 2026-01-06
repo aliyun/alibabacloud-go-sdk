@@ -4658,7 +4658,7 @@ func (client *Client) DescribeAuditLogRecordsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询自动续费参数
+// Queries the auto-renewal status of a subscription cluster.
 //
 // @param tmpReq - DescribeAutoRenewalAttributeRequest
 //
@@ -13335,7 +13335,7 @@ func (client *Client) ModifyAuditLogConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 修改自动续费配置
+// Configures auto-renewal for a subscription cluster.
 //
 // @param request - ModifyAutoRenewalAttributeRequest
 //

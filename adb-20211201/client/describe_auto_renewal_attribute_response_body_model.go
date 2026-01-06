@@ -22,19 +22,28 @@ type iDescribeAutoRenewalAttributeResponseBody interface {
 }
 
 type DescribeAutoRenewalAttributeResponseBody struct {
+	// The list of auto-renewal details.
 	Items *DescribeAutoRenewalAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on each page.
+	//
 	// example:
 	//
 	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BA0F6761-7A8C-59F8-9624-FB56788C0EDF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 20
@@ -138,26 +147,52 @@ func (s *DescribeAutoRenewalAttributeResponseBodyItems) Validate() error {
 }
 
 type DescribeAutoRenewalAttributeResponseBodyItemsAutoRenewalAttribute struct {
+	// Indicates whether auto-renewal is enabled for the cluster. Valid values:
+	//
+	// 	- **true**: Enables.
+	//
+	// 	- **false**: Disables.
+	//
 	// example:
 	//
 	// true
 	AutoRenewalEnabled *bool `json:"AutoRenewalEnabled,omitempty" xml:"AutoRenewalEnabled,omitempty"`
+	// The auto-renewal duration.
+	//
 	// example:
 	//
 	// 1
 	AutoRenewalPeriod *int64 `json:"AutoRenewalPeriod,omitempty" xml:"AutoRenewalPeriod,omitempty"`
+	// The unit of auto-renewal duration. Valid values:
+	//
+	// 	- **Year**
+	//
+	// 	- **Month**
+	//
 	// example:
 	//
 	// Year
 	AutoRenewalPeriodUnit *string `json:"AutoRenewalPeriodUnit,omitempty" xml:"AutoRenewalPeriodUnit,omitempty"`
+	// The renewal method. Valid values:
+	//
+	// 	- **AutoRenewal**: The cluster is automatically renewed.
+	//
+	// 	- **Normal**: The cluster is manually renewed. Before the cluster expires, the system sends you a reminder by SMS message.
+	//
+	// 	- **NotRenewal**: The cluster is not renewed. Reminders are only sent three days before cluster expiration.
+	//
 	// example:
 	//
 	// AutoRenewal
 	AutoRenewalStatus *string `json:"AutoRenewalStatus,omitempty" xml:"AutoRenewalStatus,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// amv-uf6485635fz8****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shenzhen
