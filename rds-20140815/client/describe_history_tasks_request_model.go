@@ -27,8 +27,8 @@ type iDescribeHistoryTasksRequest interface {
 	GetRegionId() *string
 	SetResourceGroupId(v string) *DescribeHistoryTasksRequest
 	GetResourceGroupId() *string
-	SetResourceOwnerAccount(v int64) *DescribeHistoryTasksRequest
-	GetResourceOwnerAccount() *int64
+	SetResourceOwnerAccount(v string) *DescribeHistoryTasksRequest
+	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *DescribeHistoryTasksRequest
 	GetResourceOwnerId() *int64
 	SetSecurityToken(v string) *DescribeHistoryTasksRequest
@@ -97,7 +97,7 @@ type DescribeHistoryTasksRequest struct {
 	//
 	// rg-aekzbvctytru7ua
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *int64  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The task status. Valid values:
@@ -194,7 +194,7 @@ func (s *DescribeHistoryTasksRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
-func (s *DescribeHistoryTasksRequest) GetResourceOwnerAccount() *int64 {
+func (s *DescribeHistoryTasksRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
 
@@ -271,7 +271,7 @@ func (s *DescribeHistoryTasksRequest) SetResourceGroupId(v string) *DescribeHist
 	return s
 }
 
-func (s *DescribeHistoryTasksRequest) SetResourceOwnerAccount(v int64) *DescribeHistoryTasksRequest {
+func (s *DescribeHistoryTasksRequest) SetResourceOwnerAccount(v string) *DescribeHistoryTasksRequest {
 	s.ResourceOwnerAccount = &v
 	return s
 }
