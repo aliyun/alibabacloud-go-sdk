@@ -9,6 +9,10 @@ type iChatBIConfigQueryTablesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthMessage(v string) *ChatBIConfigQueryTablesRequest
+	GetAuthMessage() *string
+	SetAuthType(v string) *ChatBIConfigQueryTablesRequest
+	GetAuthType() *string
 	SetDbName(v string) *ChatBIConfigQueryTablesRequest
 	GetDbName() *string
 	SetInputField(v string) *ChatBIConfigQueryTablesRequest
@@ -18,6 +22,8 @@ type iChatBIConfigQueryTablesRequest interface {
 }
 
 type ChatBIConfigQueryTablesRequest struct {
+	AuthMessage *string `json:"AuthMessage,omitempty" xml:"AuthMessage,omitempty"`
+	AuthType    *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -44,6 +50,14 @@ func (s ChatBIConfigQueryTablesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ChatBIConfigQueryTablesRequest) GetAuthMessage() *string {
+	return s.AuthMessage
+}
+
+func (s *ChatBIConfigQueryTablesRequest) GetAuthType() *string {
+	return s.AuthType
+}
+
 func (s *ChatBIConfigQueryTablesRequest) GetDbName() *string {
 	return s.DbName
 }
@@ -54,6 +68,16 @@ func (s *ChatBIConfigQueryTablesRequest) GetInputField() *string {
 
 func (s *ChatBIConfigQueryTablesRequest) GetInstanceName() *string {
 	return s.InstanceName
+}
+
+func (s *ChatBIConfigQueryTablesRequest) SetAuthMessage(v string) *ChatBIConfigQueryTablesRequest {
+	s.AuthMessage = &v
+	return s
+}
+
+func (s *ChatBIConfigQueryTablesRequest) SetAuthType(v string) *ChatBIConfigQueryTablesRequest {
+	s.AuthType = &v
+	return s
 }
 
 func (s *ChatBIConfigQueryTablesRequest) SetDbName(v string) *ChatBIConfigQueryTablesRequest {

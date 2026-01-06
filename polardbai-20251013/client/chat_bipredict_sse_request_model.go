@@ -9,6 +9,10 @@ type iChatBIPredictSseRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthMessage(v string) *ChatBIPredictSseRequest
+	GetAuthMessage() *string
+	SetAuthType(v string) *ChatBIPredictSseRequest
+	GetAuthType() *string
 	SetDbName(v string) *ChatBIPredictSseRequest
 	GetDbName() *string
 	SetGenerateChart(v bool) *ChatBIPredictSseRequest
@@ -27,9 +31,13 @@ type iChatBIPredictSseRequest interface {
 	GetSchemaIndexTableName() *string
 	SetSelectData(v bool) *ChatBIPredictSseRequest
 	GetSelectData() *bool
+	SetThinkingMode(v bool) *ChatBIPredictSseRequest
+	GetThinkingMode() *bool
 }
 
 type ChatBIPredictSseRequest struct {
+	AuthMessage *string `json:"AuthMessage,omitempty" xml:"AuthMessage,omitempty"`
+	AuthType    *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -69,6 +77,10 @@ type ChatBIPredictSseRequest struct {
 	//
 	// true
 	SelectData *bool `json:"SelectData,omitempty" xml:"SelectData,omitempty"`
+	// example:
+	//
+	// false
+	ThinkingMode *bool `json:"ThinkingMode,omitempty" xml:"ThinkingMode,omitempty"`
 }
 
 func (s ChatBIPredictSseRequest) String() string {
@@ -77,6 +89,14 @@ func (s ChatBIPredictSseRequest) String() string {
 
 func (s ChatBIPredictSseRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ChatBIPredictSseRequest) GetAuthMessage() *string {
+	return s.AuthMessage
+}
+
+func (s *ChatBIPredictSseRequest) GetAuthType() *string {
+	return s.AuthType
 }
 
 func (s *ChatBIPredictSseRequest) GetDbName() *string {
@@ -113,6 +133,20 @@ func (s *ChatBIPredictSseRequest) GetSchemaIndexTableName() *string {
 
 func (s *ChatBIPredictSseRequest) GetSelectData() *bool {
 	return s.SelectData
+}
+
+func (s *ChatBIPredictSseRequest) GetThinkingMode() *bool {
+	return s.ThinkingMode
+}
+
+func (s *ChatBIPredictSseRequest) SetAuthMessage(v string) *ChatBIPredictSseRequest {
+	s.AuthMessage = &v
+	return s
+}
+
+func (s *ChatBIPredictSseRequest) SetAuthType(v string) *ChatBIPredictSseRequest {
+	s.AuthType = &v
+	return s
 }
 
 func (s *ChatBIPredictSseRequest) SetDbName(v string) *ChatBIPredictSseRequest {
@@ -157,6 +191,11 @@ func (s *ChatBIPredictSseRequest) SetSchemaIndexTableName(v string) *ChatBIPredi
 
 func (s *ChatBIPredictSseRequest) SetSelectData(v bool) *ChatBIPredictSseRequest {
 	s.SelectData = &v
+	return s
+}
+
+func (s *ChatBIPredictSseRequest) SetThinkingMode(v bool) *ChatBIPredictSseRequest {
+	s.ThinkingMode = &v
 	return s
 }
 

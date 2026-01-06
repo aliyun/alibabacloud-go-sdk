@@ -9,6 +9,10 @@ type iChatBIPatternQueryEntriesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthMessage(v string) *ChatBIPatternQueryEntriesRequest
+	GetAuthMessage() *string
+	SetAuthType(v string) *ChatBIPatternQueryEntriesRequest
+	GetAuthType() *string
 	SetDbName(v string) *ChatBIPatternQueryEntriesRequest
 	GetDbName() *string
 	SetId(v int32) *ChatBIPatternQueryEntriesRequest
@@ -24,6 +28,8 @@ type iChatBIPatternQueryEntriesRequest interface {
 }
 
 type ChatBIPatternQueryEntriesRequest struct {
+	AuthMessage *string `json:"AuthMessage,omitempty" xml:"AuthMessage,omitempty"`
+	AuthType    *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -64,6 +70,14 @@ func (s ChatBIPatternQueryEntriesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ChatBIPatternQueryEntriesRequest) GetAuthMessage() *string {
+	return s.AuthMessage
+}
+
+func (s *ChatBIPatternQueryEntriesRequest) GetAuthType() *string {
+	return s.AuthType
+}
+
 func (s *ChatBIPatternQueryEntriesRequest) GetDbName() *string {
 	return s.DbName
 }
@@ -86,6 +100,16 @@ func (s *ChatBIPatternQueryEntriesRequest) GetPageSize() *int32 {
 
 func (s *ChatBIPatternQueryEntriesRequest) GetTableName() *string {
 	return s.TableName
+}
+
+func (s *ChatBIPatternQueryEntriesRequest) SetAuthMessage(v string) *ChatBIPatternQueryEntriesRequest {
+	s.AuthMessage = &v
+	return s
+}
+
+func (s *ChatBIPatternQueryEntriesRequest) SetAuthType(v string) *ChatBIPatternQueryEntriesRequest {
+	s.AuthType = &v
+	return s
 }
 
 func (s *ChatBIPatternQueryEntriesRequest) SetDbName(v string) *ChatBIPatternQueryEntriesRequest {

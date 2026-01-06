@@ -9,6 +9,10 @@ type iChatBISchemaIndexDeleteRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthMessage(v string) *ChatBISchemaIndexDeleteRequest
+	GetAuthMessage() *string
+	SetAuthType(v string) *ChatBISchemaIndexDeleteRequest
+	GetAuthType() *string
 	SetDbName(v string) *ChatBISchemaIndexDeleteRequest
 	GetDbName() *string
 	SetInstanceName(v string) *ChatBISchemaIndexDeleteRequest
@@ -18,6 +22,8 @@ type iChatBISchemaIndexDeleteRequest interface {
 }
 
 type ChatBISchemaIndexDeleteRequest struct {
+	AuthMessage *string `json:"AuthMessage,omitempty" xml:"AuthMessage,omitempty"`
+	AuthType    *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -46,6 +52,14 @@ func (s ChatBISchemaIndexDeleteRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ChatBISchemaIndexDeleteRequest) GetAuthMessage() *string {
+	return s.AuthMessage
+}
+
+func (s *ChatBISchemaIndexDeleteRequest) GetAuthType() *string {
+	return s.AuthType
+}
+
 func (s *ChatBISchemaIndexDeleteRequest) GetDbName() *string {
 	return s.DbName
 }
@@ -56,6 +70,16 @@ func (s *ChatBISchemaIndexDeleteRequest) GetInstanceName() *string {
 
 func (s *ChatBISchemaIndexDeleteRequest) GetTableName() *string {
 	return s.TableName
+}
+
+func (s *ChatBISchemaIndexDeleteRequest) SetAuthMessage(v string) *ChatBISchemaIndexDeleteRequest {
+	s.AuthMessage = &v
+	return s
+}
+
+func (s *ChatBISchemaIndexDeleteRequest) SetAuthType(v string) *ChatBISchemaIndexDeleteRequest {
+	s.AuthType = &v
+	return s
 }
 
 func (s *ChatBISchemaIndexDeleteRequest) SetDbName(v string) *ChatBISchemaIndexDeleteRequest {

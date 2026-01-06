@@ -9,6 +9,10 @@ type iChatBISchemaIndexQueryTablesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthMessage(v string) *ChatBISchemaIndexQueryTablesRequest
+	GetAuthMessage() *string
+	SetAuthType(v string) *ChatBISchemaIndexQueryTablesRequest
+	GetAuthType() *string
 	SetDbName(v string) *ChatBISchemaIndexQueryTablesRequest
 	GetDbName() *string
 	SetInputField(v string) *ChatBISchemaIndexQueryTablesRequest
@@ -22,6 +26,8 @@ type iChatBISchemaIndexQueryTablesRequest interface {
 }
 
 type ChatBISchemaIndexQueryTablesRequest struct {
+	AuthMessage *string `json:"AuthMessage,omitempty" xml:"AuthMessage,omitempty"`
+	AuthType    *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -56,6 +62,14 @@ func (s ChatBISchemaIndexQueryTablesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ChatBISchemaIndexQueryTablesRequest) GetAuthMessage() *string {
+	return s.AuthMessage
+}
+
+func (s *ChatBISchemaIndexQueryTablesRequest) GetAuthType() *string {
+	return s.AuthType
+}
+
 func (s *ChatBISchemaIndexQueryTablesRequest) GetDbName() *string {
 	return s.DbName
 }
@@ -74,6 +88,16 @@ func (s *ChatBISchemaIndexQueryTablesRequest) GetPageNumber() *string {
 
 func (s *ChatBISchemaIndexQueryTablesRequest) GetPageSize() *string {
 	return s.PageSize
+}
+
+func (s *ChatBISchemaIndexQueryTablesRequest) SetAuthMessage(v string) *ChatBISchemaIndexQueryTablesRequest {
+	s.AuthMessage = &v
+	return s
+}
+
+func (s *ChatBISchemaIndexQueryTablesRequest) SetAuthType(v string) *ChatBISchemaIndexQueryTablesRequest {
+	s.AuthType = &v
+	return s
 }
 
 func (s *ChatBISchemaIndexQueryTablesRequest) SetDbName(v string) *ChatBISchemaIndexQueryTablesRequest {

@@ -9,6 +9,10 @@ type iChatBIUpdateTableValidationColumnsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthMessage(v string) *ChatBIUpdateTableValidationColumnsRequest
+	GetAuthMessage() *string
+	SetAuthType(v string) *ChatBIUpdateTableValidationColumnsRequest
+	GetAuthType() *string
 	SetDbName(v string) *ChatBIUpdateTableValidationColumnsRequest
 	GetDbName() *string
 	SetInstanceName(v string) *ChatBIUpdateTableValidationColumnsRequest
@@ -20,6 +24,8 @@ type iChatBIUpdateTableValidationColumnsRequest interface {
 }
 
 type ChatBIUpdateTableValidationColumnsRequest struct {
+	AuthMessage *string `json:"AuthMessage,omitempty" xml:"AuthMessage,omitempty"`
+	AuthType    *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -54,6 +60,14 @@ func (s ChatBIUpdateTableValidationColumnsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ChatBIUpdateTableValidationColumnsRequest) GetAuthMessage() *string {
+	return s.AuthMessage
+}
+
+func (s *ChatBIUpdateTableValidationColumnsRequest) GetAuthType() *string {
+	return s.AuthType
+}
+
 func (s *ChatBIUpdateTableValidationColumnsRequest) GetDbName() *string {
 	return s.DbName
 }
@@ -68,6 +82,16 @@ func (s *ChatBIUpdateTableValidationColumnsRequest) GetTableName() *string {
 
 func (s *ChatBIUpdateTableValidationColumnsRequest) GetTableType() *string {
 	return s.TableType
+}
+
+func (s *ChatBIUpdateTableValidationColumnsRequest) SetAuthMessage(v string) *ChatBIUpdateTableValidationColumnsRequest {
+	s.AuthMessage = &v
+	return s
+}
+
+func (s *ChatBIUpdateTableValidationColumnsRequest) SetAuthType(v string) *ChatBIUpdateTableValidationColumnsRequest {
+	s.AuthType = &v
+	return s
 }
 
 func (s *ChatBIUpdateTableValidationColumnsRequest) SetDbName(v string) *ChatBIUpdateTableValidationColumnsRequest {

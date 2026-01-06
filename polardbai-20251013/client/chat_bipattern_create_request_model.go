@@ -9,6 +9,10 @@ type iChatBIPatternCreateRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthMessage(v string) *ChatBIPatternCreateRequest
+	GetAuthMessage() *string
+	SetAuthType(v string) *ChatBIPatternCreateRequest
+	GetAuthType() *string
 	SetDbName(v string) *ChatBIPatternCreateRequest
 	GetDbName() *string
 	SetInstanceName(v string) *ChatBIPatternCreateRequest
@@ -18,6 +22,8 @@ type iChatBIPatternCreateRequest interface {
 }
 
 type ChatBIPatternCreateRequest struct {
+	AuthMessage *string `json:"AuthMessage,omitempty" xml:"AuthMessage,omitempty"`
+	AuthType    *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -44,6 +50,14 @@ func (s ChatBIPatternCreateRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ChatBIPatternCreateRequest) GetAuthMessage() *string {
+	return s.AuthMessage
+}
+
+func (s *ChatBIPatternCreateRequest) GetAuthType() *string {
+	return s.AuthType
+}
+
 func (s *ChatBIPatternCreateRequest) GetDbName() *string {
 	return s.DbName
 }
@@ -54,6 +68,16 @@ func (s *ChatBIPatternCreateRequest) GetInstanceName() *string {
 
 func (s *ChatBIPatternCreateRequest) GetTableNameSuffix() *string {
 	return s.TableNameSuffix
+}
+
+func (s *ChatBIPatternCreateRequest) SetAuthMessage(v string) *ChatBIPatternCreateRequest {
+	s.AuthMessage = &v
+	return s
+}
+
+func (s *ChatBIPatternCreateRequest) SetAuthType(v string) *ChatBIPatternCreateRequest {
+	s.AuthType = &v
+	return s
 }
 
 func (s *ChatBIPatternCreateRequest) SetDbName(v string) *ChatBIPatternCreateRequest {

@@ -9,6 +9,10 @@ type iChatBIFileUploadRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthMessage(v string) *ChatBIFileUploadRequest
+	GetAuthMessage() *string
+	SetAuthType(v string) *ChatBIFileUploadRequest
+	GetAuthType() *string
 	SetFileName(v string) *ChatBIFileUploadRequest
 	GetFileName() *string
 	SetInstanceName(v string) *ChatBIFileUploadRequest
@@ -16,6 +20,8 @@ type iChatBIFileUploadRequest interface {
 }
 
 type ChatBIFileUploadRequest struct {
+	AuthMessage *string `json:"AuthMessage,omitempty" xml:"AuthMessage,omitempty"`
+	AuthType    *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// example:
 	//
 	// pattern_test.csv
@@ -36,12 +42,30 @@ func (s ChatBIFileUploadRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ChatBIFileUploadRequest) GetAuthMessage() *string {
+	return s.AuthMessage
+}
+
+func (s *ChatBIFileUploadRequest) GetAuthType() *string {
+	return s.AuthType
+}
+
 func (s *ChatBIFileUploadRequest) GetFileName() *string {
 	return s.FileName
 }
 
 func (s *ChatBIFileUploadRequest) GetInstanceName() *string {
 	return s.InstanceName
+}
+
+func (s *ChatBIFileUploadRequest) SetAuthMessage(v string) *ChatBIFileUploadRequest {
+	s.AuthMessage = &v
+	return s
+}
+
+func (s *ChatBIFileUploadRequest) SetAuthType(v string) *ChatBIFileUploadRequest {
+	s.AuthType = &v
+	return s
 }
 
 func (s *ChatBIFileUploadRequest) SetFileName(v string) *ChatBIFileUploadRequest {

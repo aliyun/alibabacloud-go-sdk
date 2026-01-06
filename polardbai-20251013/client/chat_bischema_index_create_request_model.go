@@ -9,6 +9,10 @@ type iChatBISchemaIndexCreateRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthMessage(v string) *ChatBISchemaIndexCreateRequest
+	GetAuthMessage() *string
+	SetAuthType(v string) *ChatBISchemaIndexCreateRequest
+	GetAuthType() *string
 	SetColumnsExcluded(v string) *ChatBISchemaIndexCreateRequest
 	GetColumnsExcluded() *string
 	SetDbName(v string) *ChatBISchemaIndexCreateRequest
@@ -24,6 +28,8 @@ type iChatBISchemaIndexCreateRequest interface {
 }
 
 type ChatBISchemaIndexCreateRequest struct {
+	AuthMessage *string `json:"AuthMessage,omitempty" xml:"AuthMessage,omitempty"`
+	AuthType    *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// example:
 	//
 	// 空字符串, \"graph_info.time,text_info.ext\"
@@ -62,6 +68,14 @@ func (s ChatBISchemaIndexCreateRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ChatBISchemaIndexCreateRequest) GetAuthMessage() *string {
+	return s.AuthMessage
+}
+
+func (s *ChatBISchemaIndexCreateRequest) GetAuthType() *string {
+	return s.AuthType
+}
+
 func (s *ChatBISchemaIndexCreateRequest) GetColumnsExcluded() *string {
 	return s.ColumnsExcluded
 }
@@ -84,6 +98,16 @@ func (s *ChatBISchemaIndexCreateRequest) GetTablesIncluded() *string {
 
 func (s *ChatBISchemaIndexCreateRequest) GetToSample() *int32 {
 	return s.ToSample
+}
+
+func (s *ChatBISchemaIndexCreateRequest) SetAuthMessage(v string) *ChatBISchemaIndexCreateRequest {
+	s.AuthMessage = &v
+	return s
+}
+
+func (s *ChatBISchemaIndexCreateRequest) SetAuthType(v string) *ChatBISchemaIndexCreateRequest {
+	s.AuthType = &v
+	return s
 }
 
 func (s *ChatBISchemaIndexCreateRequest) SetColumnsExcluded(v string) *ChatBISchemaIndexCreateRequest {

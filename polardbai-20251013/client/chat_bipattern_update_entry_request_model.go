@@ -9,6 +9,10 @@ type iChatBIPatternUpdateEntryRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthMessage(v string) *ChatBIPatternUpdateEntryRequest
+	GetAuthMessage() *string
+	SetAuthType(v string) *ChatBIPatternUpdateEntryRequest
+	GetAuthType() *string
 	SetDbName(v string) *ChatBIPatternUpdateEntryRequest
 	GetDbName() *string
 	SetId(v int32) *ChatBIPatternUpdateEntryRequest
@@ -28,6 +32,8 @@ type iChatBIPatternUpdateEntryRequest interface {
 }
 
 type ChatBIPatternUpdateEntryRequest struct {
+	AuthMessage *string `json:"AuthMessage,omitempty" xml:"AuthMessage,omitempty"`
+	AuthType    *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -92,6 +98,14 @@ func (s ChatBIPatternUpdateEntryRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ChatBIPatternUpdateEntryRequest) GetAuthMessage() *string {
+	return s.AuthMessage
+}
+
+func (s *ChatBIPatternUpdateEntryRequest) GetAuthType() *string {
+	return s.AuthType
+}
+
 func (s *ChatBIPatternUpdateEntryRequest) GetDbName() *string {
 	return s.DbName
 }
@@ -122,6 +136,16 @@ func (s *ChatBIPatternUpdateEntryRequest) GetPatternSql() *string {
 
 func (s *ChatBIPatternUpdateEntryRequest) GetTableName() *string {
 	return s.TableName
+}
+
+func (s *ChatBIPatternUpdateEntryRequest) SetAuthMessage(v string) *ChatBIPatternUpdateEntryRequest {
+	s.AuthMessage = &v
+	return s
+}
+
+func (s *ChatBIPatternUpdateEntryRequest) SetAuthType(v string) *ChatBIPatternUpdateEntryRequest {
+	s.AuthType = &v
+	return s
 }
 
 func (s *ChatBIPatternUpdateEntryRequest) SetDbName(v string) *ChatBIPatternUpdateEntryRequest {

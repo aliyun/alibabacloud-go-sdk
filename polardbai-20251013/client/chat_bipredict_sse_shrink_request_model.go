@@ -9,6 +9,10 @@ type iChatBIPredictSseShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthMessage(v string) *ChatBIPredictSseShrinkRequest
+	GetAuthMessage() *string
+	SetAuthType(v string) *ChatBIPredictSseShrinkRequest
+	GetAuthType() *string
 	SetDbName(v string) *ChatBIPredictSseShrinkRequest
 	GetDbName() *string
 	SetGenerateChart(v bool) *ChatBIPredictSseShrinkRequest
@@ -27,9 +31,13 @@ type iChatBIPredictSseShrinkRequest interface {
 	GetSchemaIndexTableName() *string
 	SetSelectData(v bool) *ChatBIPredictSseShrinkRequest
 	GetSelectData() *bool
+	SetThinkingMode(v bool) *ChatBIPredictSseShrinkRequest
+	GetThinkingMode() *bool
 }
 
 type ChatBIPredictSseShrinkRequest struct {
+	AuthMessage *string `json:"AuthMessage,omitempty" xml:"AuthMessage,omitempty"`
+	AuthType    *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -69,6 +77,10 @@ type ChatBIPredictSseShrinkRequest struct {
 	//
 	// true
 	SelectData *bool `json:"SelectData,omitempty" xml:"SelectData,omitempty"`
+	// example:
+	//
+	// false
+	ThinkingMode *bool `json:"ThinkingMode,omitempty" xml:"ThinkingMode,omitempty"`
 }
 
 func (s ChatBIPredictSseShrinkRequest) String() string {
@@ -77,6 +89,14 @@ func (s ChatBIPredictSseShrinkRequest) String() string {
 
 func (s ChatBIPredictSseShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ChatBIPredictSseShrinkRequest) GetAuthMessage() *string {
+	return s.AuthMessage
+}
+
+func (s *ChatBIPredictSseShrinkRequest) GetAuthType() *string {
+	return s.AuthType
 }
 
 func (s *ChatBIPredictSseShrinkRequest) GetDbName() *string {
@@ -113,6 +133,20 @@ func (s *ChatBIPredictSseShrinkRequest) GetSchemaIndexTableName() *string {
 
 func (s *ChatBIPredictSseShrinkRequest) GetSelectData() *bool {
 	return s.SelectData
+}
+
+func (s *ChatBIPredictSseShrinkRequest) GetThinkingMode() *bool {
+	return s.ThinkingMode
+}
+
+func (s *ChatBIPredictSseShrinkRequest) SetAuthMessage(v string) *ChatBIPredictSseShrinkRequest {
+	s.AuthMessage = &v
+	return s
+}
+
+func (s *ChatBIPredictSseShrinkRequest) SetAuthType(v string) *ChatBIPredictSseShrinkRequest {
+	s.AuthType = &v
+	return s
 }
 
 func (s *ChatBIPredictSseShrinkRequest) SetDbName(v string) *ChatBIPredictSseShrinkRequest {
@@ -157,6 +191,11 @@ func (s *ChatBIPredictSseShrinkRequest) SetSchemaIndexTableName(v string) *ChatB
 
 func (s *ChatBIPredictSseShrinkRequest) SetSelectData(v bool) *ChatBIPredictSseShrinkRequest {
 	s.SelectData = &v
+	return s
+}
+
+func (s *ChatBIPredictSseShrinkRequest) SetThinkingMode(v bool) *ChatBIPredictSseShrinkRequest {
+	s.ThinkingMode = &v
 	return s
 }
 

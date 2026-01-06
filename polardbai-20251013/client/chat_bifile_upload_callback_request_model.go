@@ -9,6 +9,10 @@ type iChatBIFileUploadCallbackRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthMessage(v string) *ChatBIFileUploadCallbackRequest
+	GetAuthMessage() *string
+	SetAuthType(v string) *ChatBIFileUploadCallbackRequest
+	GetAuthType() *string
 	SetCharacterSetName(v string) *ChatBIFileUploadCallbackRequest
 	GetCharacterSetName() *string
 	SetDbName(v string) *ChatBIFileUploadCallbackRequest
@@ -24,6 +28,8 @@ type iChatBIFileUploadCallbackRequest interface {
 }
 
 type ChatBIFileUploadCallbackRequest struct {
+	AuthMessage *string `json:"AuthMessage,omitempty" xml:"AuthMessage,omitempty"`
+	AuthType    *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// example:
 	//
 	// gbk, utf-8
@@ -68,6 +74,14 @@ func (s ChatBIFileUploadCallbackRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ChatBIFileUploadCallbackRequest) GetAuthMessage() *string {
+	return s.AuthMessage
+}
+
+func (s *ChatBIFileUploadCallbackRequest) GetAuthType() *string {
+	return s.AuthType
+}
+
 func (s *ChatBIFileUploadCallbackRequest) GetCharacterSetName() *string {
 	return s.CharacterSetName
 }
@@ -90,6 +104,16 @@ func (s *ChatBIFileUploadCallbackRequest) GetTableName() *string {
 
 func (s *ChatBIFileUploadCallbackRequest) GetTableType() *string {
 	return s.TableType
+}
+
+func (s *ChatBIFileUploadCallbackRequest) SetAuthMessage(v string) *ChatBIFileUploadCallbackRequest {
+	s.AuthMessage = &v
+	return s
+}
+
+func (s *ChatBIFileUploadCallbackRequest) SetAuthType(v string) *ChatBIFileUploadCallbackRequest {
+	s.AuthType = &v
+	return s
 }
 
 func (s *ChatBIFileUploadCallbackRequest) SetCharacterSetName(v string) *ChatBIFileUploadCallbackRequest {

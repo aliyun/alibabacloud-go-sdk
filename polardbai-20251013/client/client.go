@@ -73,6 +73,14 @@ func (client *Client) ChatBIConfigCreateWithOptions(request *ChatBIConfigCreateR
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -139,6 +147,14 @@ func (client *Client) ChatBIConfigDeleteWithOptions(request *ChatBIConfigDeleteR
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -205,6 +221,14 @@ func (client *Client) ChatBIConfigDeleteEntryWithOptions(request *ChatBIConfigDe
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -275,6 +299,14 @@ func (client *Client) ChatBIConfigQueryEntriesWithOptions(request *ChatBIConfigQ
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -353,6 +385,14 @@ func (client *Client) ChatBIConfigQueryTablesWithOptions(request *ChatBIConfigQu
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -423,6 +463,14 @@ func (client *Client) ChatBIConfigUpdateEntryWithOptions(request *ChatBIConfigUp
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -517,6 +565,14 @@ func (client *Client) ChatBIFileTemplateDownloadWithOptions(request *ChatBIFileT
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
 	}
@@ -583,6 +639,14 @@ func (client *Client) ChatBIFileUploadWithOptions(request *ChatBIFileUploadReque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}
@@ -649,6 +713,14 @@ func (client *Client) ChatBIFileUploadCallbackWithOptions(request *ChatBIFileUpl
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.CharacterSetName) {
 		query["CharacterSetName"] = request.CharacterSetName
 	}
@@ -731,6 +803,14 @@ func (client *Client) ChatBIPatternCreateWithOptions(request *ChatBIPatternCreat
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -801,6 +881,14 @@ func (client *Client) ChatBIPatternDeleteWithOptions(request *ChatBIPatternDelet
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -871,6 +959,14 @@ func (client *Client) ChatBIPatternDeleteEntryWithOptions(request *ChatBIPattern
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -945,6 +1041,14 @@ func (client *Client) ChatBIPatternIndexCreateWithOptions(request *ChatBIPattern
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -1019,6 +1123,14 @@ func (client *Client) ChatBIPatternIndexDeleteWithOptions(request *ChatBIPattern
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -1089,6 +1201,14 @@ func (client *Client) ChatBIPatternIndexQueryTablesWithOptions(request *ChatBIPa
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -1167,6 +1287,14 @@ func (client *Client) ChatBIPatternQueryEntriesWithOptions(request *ChatBIPatter
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -1249,6 +1377,14 @@ func (client *Client) ChatBIPatternQueryTablesWithOptions(request *ChatBIPattern
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -1327,6 +1463,14 @@ func (client *Client) ChatBIPatternUpdateEntryWithOptions(request *ChatBIPattern
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -1438,6 +1582,14 @@ func (client *Client) ChatBIPredictSseWithOptions(tmpReq *ChatBIPredictSseReques
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -1472,6 +1624,10 @@ func (client *Client) ChatBIPredictSseWithOptions(tmpReq *ChatBIPredictSseReques
 
 	if !dara.IsNil(request.SelectData) {
 		query["SelectData"] = request.SelectData
+	}
+
+	if !dara.IsNil(request.ThinkingMode) {
+		query["ThinkingMode"] = request.ThinkingMode
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1532,6 +1688,14 @@ func (client *Client) ChatBISchemaIndexCreateWithOptions(request *ChatBISchemaIn
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.ColumnsExcluded) {
 		query["ColumnsExcluded"] = request.ColumnsExcluded
 	}
@@ -1614,6 +1778,14 @@ func (client *Client) ChatBISchemaIndexDeleteWithOptions(request *ChatBISchemaIn
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -1684,6 +1856,14 @@ func (client *Client) ChatBISchemaIndexQueryTablesWithOptions(request *ChatBISch
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -1762,6 +1942,14 @@ func (client *Client) ChatBIUpdateTableValidationColumnsWithOptions(request *Cha
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -2247,6 +2435,76 @@ func (client *Client) DownloadMultimodalSearchTaskResultMetadata(request *Downlo
 
 // Summary:
 //
+// 获得鉴权token
+//
+// @param request - GetUserTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserTokenResponse
+func (client *Client) GetUserTokenWithOptions(request *GetUserTokenRequest, runtime *dara.RuntimeOptions) (_result *GetUserTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.Username) {
+		query["Username"] = request.Username
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUserToken"),
+		Version:     dara.String("2025-10-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUserTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获得鉴权token
+//
+// @param request - GetUserTokenRequest
+//
+// @return GetUserTokenResponse
+func (client *Client) GetUserToken(request *GetUserTokenRequest) (_result *GetUserTokenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetUserTokenResponse{}
+	_body, _err := client.GetUserTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询多模态数据集列表
 //
 // @param request - ListMultimodalDatasetRequest
@@ -2461,6 +2719,80 @@ func (client *Client) ListMultimodalSearchTask(request *ListMultimodalSearchTask
 
 // Summary:
 //
+// 查询search task结果列表
+//
+// @param request - ListMultimodalSearchTaskResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMultimodalSearchTaskResultResponse
+func (client *Client) ListMultimodalSearchTaskResultWithOptions(request *ListMultimodalSearchTaskResultRequest, runtime *dara.RuntimeOptions) (_result *ListMultimodalSearchTaskResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMultimodalSearchTaskResult"),
+		Version:     dara.String("2025-10-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMultimodalSearchTaskResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询search task结果列表
+//
+// @param request - ListMultimodalSearchTaskResultRequest
+//
+// @return ListMultimodalSearchTaskResultResponse
+func (client *Client) ListMultimodalSearchTaskResult(request *ListMultimodalSearchTaskResultRequest) (_result *ListMultimodalSearchTaskResultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListMultimodalSearchTaskResultResponse{}
+	_body, _err := client.ListMultimodalSearchTaskResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新数据集信息
 //
 // @param request - UpdateMultimodalDatasetRequest
@@ -2603,6 +2935,150 @@ func (client *Client) UploadOSSMultimodalDataset(request *UploadOSSMultimodalDat
 	return _result, _err
 }
 
+// Summary:
+//
+// 预检验鉴权token
+//
+// @param request - ValidateDatabaseUserTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidateDatabaseUserTokenResponse
+func (client *Client) ValidateDatabaseUserTokenWithOptions(request *ValidateDatabaseUserTokenRequest, runtime *dara.RuntimeOptions) (_result *ValidateDatabaseUserTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DBName) {
+		query["DBName"] = request.DBName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ValidateDatabaseUserToken"),
+		Version:     dara.String("2025-10-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ValidateDatabaseUserTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 预检验鉴权token
+//
+// @param request - ValidateDatabaseUserTokenRequest
+//
+// @return ValidateDatabaseUserTokenResponse
+func (client *Client) ValidateDatabaseUserToken(request *ValidateDatabaseUserTokenRequest) (_result *ValidateDatabaseUserTokenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ValidateDatabaseUserTokenResponse{}
+	_body, _err := client.ValidateDatabaseUserTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 预检验鉴权token
+//
+// @param request - ValidateUserTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidateUserTokenResponse
+func (client *Client) ValidateUserTokenWithOptions(request *ValidateUserTokenRequest, runtime *dara.RuntimeOptions) (_result *ValidateUserTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ValidateUserToken"),
+		Version:     dara.String("2025-10-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ValidateUserTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 预检验鉴权token
+//
+// @param request - ValidateUserTokenRequest
+//
+// @return ValidateUserTokenResponse
+func (client *Client) ValidateUserToken(request *ValidateUserTokenRequest) (_result *ValidateUserTokenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ValidateUserTokenResponse{}
+	_body, _err := client.ValidateUserTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) chatBIPredictSseWithSSE_opYieldFunc(_yield chan *ChatBIPredictSseResponse, _yieldErr chan error, tmpReq *ChatBIPredictSseRequest, runtime *dara.RuntimeOptions) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err := tmpReq.Validate()
@@ -2618,6 +3094,14 @@ func (client *Client) chatBIPredictSseWithSSE_opYieldFunc(_yield chan *ChatBIPre
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthMessage) {
+		query["AuthMessage"] = request.AuthMessage
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !dara.IsNil(request.DbName) {
 		query["DbName"] = request.DbName
 	}
@@ -2652,6 +3136,10 @@ func (client *Client) chatBIPredictSseWithSSE_opYieldFunc(_yield chan *ChatBIPre
 
 	if !dara.IsNil(request.SelectData) {
 		query["SelectData"] = request.SelectData
+	}
+
+	if !dara.IsNil(request.ThinkingMode) {
+		query["ThinkingMode"] = request.ThinkingMode
 	}
 
 	req := &openapiutil.OpenApiRequest{

@@ -9,6 +9,10 @@ type iChatBIConfigDeleteEntryRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthMessage(v string) *ChatBIConfigDeleteEntryRequest
+	GetAuthMessage() *string
+	SetAuthType(v string) *ChatBIConfigDeleteEntryRequest
+	GetAuthType() *string
 	SetDbName(v string) *ChatBIConfigDeleteEntryRequest
 	GetDbName() *string
 	SetId(v string) *ChatBIConfigDeleteEntryRequest
@@ -18,6 +22,8 @@ type iChatBIConfigDeleteEntryRequest interface {
 }
 
 type ChatBIConfigDeleteEntryRequest struct {
+	AuthMessage *string `json:"AuthMessage,omitempty" xml:"AuthMessage,omitempty"`
+	AuthType    *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -46,6 +52,14 @@ func (s ChatBIConfigDeleteEntryRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ChatBIConfigDeleteEntryRequest) GetAuthMessage() *string {
+	return s.AuthMessage
+}
+
+func (s *ChatBIConfigDeleteEntryRequest) GetAuthType() *string {
+	return s.AuthType
+}
+
 func (s *ChatBIConfigDeleteEntryRequest) GetDbName() *string {
 	return s.DbName
 }
@@ -56,6 +70,16 @@ func (s *ChatBIConfigDeleteEntryRequest) GetId() *string {
 
 func (s *ChatBIConfigDeleteEntryRequest) GetInstanceName() *string {
 	return s.InstanceName
+}
+
+func (s *ChatBIConfigDeleteEntryRequest) SetAuthMessage(v string) *ChatBIConfigDeleteEntryRequest {
+	s.AuthMessage = &v
+	return s
+}
+
+func (s *ChatBIConfigDeleteEntryRequest) SetAuthType(v string) *ChatBIConfigDeleteEntryRequest {
+	s.AuthType = &v
+	return s
 }
 
 func (s *ChatBIConfigDeleteEntryRequest) SetDbName(v string) *ChatBIConfigDeleteEntryRequest {
