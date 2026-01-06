@@ -1,3 +1,7 @@
+2026-01-06 Version: v7.4.0
+- Support API DescribeHistoryEvents.
+
+
 2026-01-05 Version: v7.3.0
 - Support API ClonePolarFsBasicSnapshot.
 

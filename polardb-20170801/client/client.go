@@ -13483,6 +13483,124 @@ func (client *Client) DescribeHALogs(request *DescribeHALogsRequest) (_result *D
 
 // Summary:
 //
+// 事件中心事件列表
+//
+// @param request - DescribeHistoryEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHistoryEventsResponse
+func (client *Client) DescribeHistoryEventsWithOptions(request *DescribeHistoryEventsRequest, runtime *dara.RuntimeOptions) (_result *DescribeHistoryEventsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ArchiveStatus) {
+		query["ArchiveStatus"] = request.ArchiveStatus
+	}
+
+	if !dara.IsNil(request.EventCategory) {
+		query["EventCategory"] = request.EventCategory
+	}
+
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.EventLevel) {
+		query["EventLevel"] = request.EventLevel
+	}
+
+	if !dara.IsNil(request.EventStatus) {
+		query["EventStatus"] = request.EventStatus
+	}
+
+	if !dara.IsNil(request.EventType) {
+		query["EventType"] = request.EventType
+	}
+
+	if !dara.IsNil(request.FromStartTime) {
+		query["FromStartTime"] = request.FromStartTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.ToStartTime) {
+		query["ToStartTime"] = request.ToStartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeHistoryEvents"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeHistoryEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 事件中心事件列表
+//
+// @param request - DescribeHistoryEventsRequest
+//
+// @return DescribeHistoryEventsResponse
+func (client *Client) DescribeHistoryEvents(request *DescribeHistoryEventsRequest) (_result *DescribeHistoryEventsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeHistoryEventsResponse{}
+	_body, _err := client.DescribeHistoryEventsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 任务中心任务列表
 //
 // @param request - DescribeHistoryTasksRequest
