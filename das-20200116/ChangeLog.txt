@@ -1,6 +1,9 @@
 2026-01-06 Version: v3.11.2
 - Generated golang 2020-01-16 for DAS.
 
+2026-01-06 Version: v3.11.2
+- Generated golang 2020-01-16 for DAS.
+
 2025-12-23 Version: v3.11.1
 - Update API DescribeHotBigKeys: add response parameters Body.Data.LargeKeyMsg.
 - Update API DescribeHotBigKeys: add response parameters Body.Data.LargeKeys.
