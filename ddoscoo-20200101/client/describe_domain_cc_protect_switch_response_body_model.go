@@ -86,7 +86,8 @@ type DescribeDomainCcProtectSwitchResponseBodyProtectSwitchList struct {
 	// example:
 	//
 	// 1
-	CcEnable *int32 `json:"CcEnable,omitempty" xml:"CcEnable,omitempty"`
+	CcEnable       *int32  `json:"CcEnable,omitempty" xml:"CcEnable,omitempty"`
+	CcGlobalSwitch *string `json:"CcGlobalSwitch,omitempty" xml:"CcGlobalSwitch,omitempty"`
 	// example:
 	//
 	// default
@@ -137,6 +138,10 @@ func (s *DescribeDomainCcProtectSwitchResponseBodyProtectSwitchList) GetCcEnable
 	return s.CcEnable
 }
 
+func (s *DescribeDomainCcProtectSwitchResponseBodyProtectSwitchList) GetCcGlobalSwitch() *string {
+	return s.CcGlobalSwitch
+}
+
 func (s *DescribeDomainCcProtectSwitchResponseBodyProtectSwitchList) GetCcTemplate() *string {
 	return s.CcTemplate
 }
@@ -180,6 +185,11 @@ func (s *DescribeDomainCcProtectSwitchResponseBodyProtectSwitchList) SetCcCustom
 
 func (s *DescribeDomainCcProtectSwitchResponseBodyProtectSwitchList) SetCcEnable(v int32) *DescribeDomainCcProtectSwitchResponseBodyProtectSwitchList {
 	s.CcEnable = &v
+	return s
+}
+
+func (s *DescribeDomainCcProtectSwitchResponseBodyProtectSwitchList) SetCcGlobalSwitch(v string) *DescribeDomainCcProtectSwitchResponseBodyProtectSwitchList {
+	s.CcGlobalSwitch = &v
 	return s
 }
 
