@@ -11,6 +11,8 @@ type iListServicesRequest interface {
 	GoString() string
 	SetAutoscalerEnabled(v bool) *ListServicesRequest
 	GetAutoscalerEnabled() *bool
+	SetCallerUid(v string) *ListServicesRequest
+	GetCallerUid() *string
 	SetCronscalerEnabled(v bool) *ListServicesRequest
 	GetCronscalerEnabled() *bool
 	SetFilter(v string) *ListServicesRequest
@@ -63,7 +65,11 @@ type iListServicesRequest interface {
 
 type ListServicesRequest struct {
 	AutoscalerEnabled *bool `json:"AutoscalerEnabled,omitempty" xml:"AutoscalerEnabled,omitempty"`
-	CronscalerEnabled *bool `json:"CronscalerEnabled,omitempty" xml:"CronscalerEnabled,omitempty"`
+	// example:
+	//
+	// 19989224166xxxxxxx
+	CallerUid         *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	CronscalerEnabled *bool   `json:"CronscalerEnabled,omitempty" xml:"CronscalerEnabled,omitempty"`
 	// The field that is used for fuzzy matches. The system performs fuzzy matches only by service name.
 	//
 	// example:
@@ -396,6 +402,10 @@ func (s *ListServicesRequest) GetAutoscalerEnabled() *bool {
 	return s.AutoscalerEnabled
 }
 
+func (s *ListServicesRequest) GetCallerUid() *string {
+	return s.CallerUid
+}
+
 func (s *ListServicesRequest) GetCronscalerEnabled() *bool {
 	return s.CronscalerEnabled
 }
@@ -494,6 +504,11 @@ func (s *ListServicesRequest) GetWorkspaceId() *string {
 
 func (s *ListServicesRequest) SetAutoscalerEnabled(v bool) *ListServicesRequest {
 	s.AutoscalerEnabled = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetCallerUid(v string) *ListServicesRequest {
+	s.CallerUid = &v
 	return s
 }
 

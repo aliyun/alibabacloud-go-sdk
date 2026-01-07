@@ -3463,6 +3463,10 @@ func (client *Client) ListResourceInstancesWithContext(ctx context.Context, Clus
 		query["Sort"] = request.Sort
 	}
 
+	if !dara.IsNil(request.Zone) {
+		query["Zone"] = request.Zone
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -3748,8 +3752,16 @@ func (client *Client) ListServiceInstancesWithContext(ctx context.Context, Clust
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.QuotaId) {
+		query["QuotaId"] = request.QuotaId
+	}
+
 	if !dara.IsNil(request.ReplicaName) {
 		query["ReplicaName"] = request.ReplicaName
+	}
+
+	if !dara.IsNil(request.Resource) {
+		query["Resource"] = request.Resource
 	}
 
 	if !dara.IsNil(request.ResourceType) {
@@ -3866,6 +3878,10 @@ func (client *Client) ListServicesWithContext(ctx context.Context, tmpReq *ListS
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoscalerEnabled) {
 		query["AutoscalerEnabled"] = request.AutoscalerEnabled
+	}
+
+	if !dara.IsNil(request.CallerUid) {
+		query["CallerUid"] = request.CallerUid
 	}
 
 	if !dara.IsNil(request.CronscalerEnabled) {

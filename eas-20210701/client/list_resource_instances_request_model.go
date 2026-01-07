@@ -31,6 +31,8 @@ type iListResourceInstancesRequest interface {
 	GetPageSize() *int32
 	SetSort(v string) *ListResourceInstancesRequest
 	GetSort() *string
+	SetZone(v string) *ListResourceInstancesRequest
+	GetZone() *string
 }
 
 type ListResourceInstancesRequest struct {
@@ -274,6 +276,7 @@ type ListResourceInstancesRequest struct {
 	//
 	// CreateTime
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s ListResourceInstancesRequest) String() string {
@@ -328,6 +331,10 @@ func (s *ListResourceInstancesRequest) GetSort() *string {
 	return s.Sort
 }
 
+func (s *ListResourceInstancesRequest) GetZone() *string {
+	return s.Zone
+}
+
 func (s *ListResourceInstancesRequest) SetChargeType(v string) *ListResourceInstancesRequest {
 	s.ChargeType = &v
 	return s
@@ -380,6 +387,11 @@ func (s *ListResourceInstancesRequest) SetPageSize(v int32) *ListResourceInstanc
 
 func (s *ListResourceInstancesRequest) SetSort(v string) *ListResourceInstancesRequest {
 	s.Sort = &v
+	return s
+}
+
+func (s *ListResourceInstancesRequest) SetZone(v string) *ListResourceInstancesRequest {
+	s.Zone = &v
 	return s
 }
 

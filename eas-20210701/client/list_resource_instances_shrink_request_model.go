@@ -31,6 +31,8 @@ type iListResourceInstancesShrinkRequest interface {
 	GetPageSize() *int32
 	SetSort(v string) *ListResourceInstancesShrinkRequest
 	GetSort() *string
+	SetZone(v string) *ListResourceInstancesShrinkRequest
+	GetZone() *string
 }
 
 type ListResourceInstancesShrinkRequest struct {
@@ -274,6 +276,7 @@ type ListResourceInstancesShrinkRequest struct {
 	//
 	// CreateTime
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s ListResourceInstancesShrinkRequest) String() string {
@@ -328,6 +331,10 @@ func (s *ListResourceInstancesShrinkRequest) GetSort() *string {
 	return s.Sort
 }
 
+func (s *ListResourceInstancesShrinkRequest) GetZone() *string {
+	return s.Zone
+}
+
 func (s *ListResourceInstancesShrinkRequest) SetChargeType(v string) *ListResourceInstancesShrinkRequest {
 	s.ChargeType = &v
 	return s
@@ -380,6 +387,11 @@ func (s *ListResourceInstancesShrinkRequest) SetPageSize(v int32) *ListResourceI
 
 func (s *ListResourceInstancesShrinkRequest) SetSort(v string) *ListResourceInstancesShrinkRequest {
 	s.Sort = &v
+	return s
+}
+
+func (s *ListResourceInstancesShrinkRequest) SetZone(v string) *ListResourceInstancesShrinkRequest {
+	s.Zone = &v
 	return s
 }
 

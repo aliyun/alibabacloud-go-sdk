@@ -33,8 +33,12 @@ type iListServiceInstancesRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListServiceInstancesRequest
 	GetPageSize() *int32
+	SetQuotaId(v string) *ListServiceInstancesRequest
+	GetQuotaId() *string
 	SetReplicaName(v string) *ListServiceInstancesRequest
 	GetReplicaName() *string
+	SetResource(v string) *ListServiceInstancesRequest
+	GetResource() *string
 	SetResourceType(v string) *ListServiceInstancesRequest
 	GetResourceType() *string
 	SetRole(v string) *ListServiceInstancesRequest
@@ -132,7 +136,9 @@ type ListServiceInstancesRequest struct {
 	//
 	// 20
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QuotaId     *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
 	ReplicaName *string `json:"ReplicaName,omitempty" xml:"ReplicaName,omitempty"`
+	Resource    *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The type of the resource group to which the instance belongs.
 	//
 	// Valid values:
@@ -297,8 +303,16 @@ func (s *ListServiceInstancesRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListServiceInstancesRequest) GetQuotaId() *string {
+	return s.QuotaId
+}
+
 func (s *ListServiceInstancesRequest) GetReplicaName() *string {
 	return s.ReplicaName
+}
+
+func (s *ListServiceInstancesRequest) GetResource() *string {
+	return s.Resource
 }
 
 func (s *ListServiceInstancesRequest) GetResourceType() *string {
@@ -373,8 +387,18 @@ func (s *ListServiceInstancesRequest) SetPageSize(v int32) *ListServiceInstances
 	return s
 }
 
+func (s *ListServiceInstancesRequest) SetQuotaId(v string) *ListServiceInstancesRequest {
+	s.QuotaId = &v
+	return s
+}
+
 func (s *ListServiceInstancesRequest) SetReplicaName(v string) *ListServiceInstancesRequest {
 	s.ReplicaName = &v
+	return s
+}
+
+func (s *ListServiceInstancesRequest) SetResource(v string) *ListServiceInstancesRequest {
+	s.Resource = &v
 	return s
 }
 
