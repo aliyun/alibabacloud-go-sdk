@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("accountcenter"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -65,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AccountContactAddResponse
-func (client *Client) AccountContactAddWithOptions(request *AccountContactAddRequest, runtime *dara.RuntimeOptions) (_result *AccountContactAddResponse, _err error) {
+func (client *Client) AccountContactAddWithContext(ctx context.Context, request *AccountContactAddRequest, runtime *dara.RuntimeOptions) (_result *AccountContactAddResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -140,29 +91,11 @@ func (client *Client) AccountContactAddWithOptions(request *AccountContactAddReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &AccountContactAddResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 添加私有联系人
-//
-// @param request - AccountContactAddRequest
-//
-// @return AccountContactAddResponse
-func (client *Client) AccountContactAdd(request *AccountContactAddRequest) (_result *AccountContactAddResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AccountContactAddResponse{}
-	_body, _err := client.AccountContactAddWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -175,7 +108,7 @@ func (client *Client) AccountContactAdd(request *AccountContactAddRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AccountContactDeleteResponse
-func (client *Client) AccountContactDeleteWithOptions(request *AccountContactDeleteRequest, runtime *dara.RuntimeOptions) (_result *AccountContactDeleteResponse, _err error) {
+func (client *Client) AccountContactDeleteWithContext(ctx context.Context, request *AccountContactDeleteRequest, runtime *dara.RuntimeOptions) (_result *AccountContactDeleteResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -218,29 +151,11 @@ func (client *Client) AccountContactDeleteWithOptions(request *AccountContactDel
 		BodyType:    dara.String("json"),
 	}
 	_result = &AccountContactDeleteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除私有联系人
-//
-// @param request - AccountContactDeleteRequest
-//
-// @return AccountContactDeleteResponse
-func (client *Client) AccountContactDelete(request *AccountContactDeleteRequest) (_result *AccountContactDeleteResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AccountContactDeleteResponse{}
-	_body, _err := client.AccountContactDeleteWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -253,7 +168,7 @@ func (client *Client) AccountContactDelete(request *AccountContactDeleteRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AccountContactEditResponse
-func (client *Client) AccountContactEditWithOptions(request *AccountContactEditRequest, runtime *dara.RuntimeOptions) (_result *AccountContactEditResponse, _err error) {
+func (client *Client) AccountContactEditWithContext(ctx context.Context, request *AccountContactEditRequest, runtime *dara.RuntimeOptions) (_result *AccountContactEditResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -332,29 +247,11 @@ func (client *Client) AccountContactEditWithOptions(request *AccountContactEditR
 		BodyType:    dara.String("json"),
 	}
 	_result = &AccountContactEditResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改私有联系人
-//
-// @param request - AccountContactEditRequest
-//
-// @return AccountContactEditResponse
-func (client *Client) AccountContactEdit(request *AccountContactEditRequest) (_result *AccountContactEditResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AccountContactEditResponse{}
-	_body, _err := client.AccountContactEditWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -367,7 +264,7 @@ func (client *Client) AccountContactEdit(request *AccountContactEditRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AccountContactQueryDetailResponse
-func (client *Client) AccountContactQueryDetailWithOptions(request *AccountContactQueryDetailRequest, runtime *dara.RuntimeOptions) (_result *AccountContactQueryDetailResponse, _err error) {
+func (client *Client) AccountContactQueryDetailWithContext(ctx context.Context, request *AccountContactQueryDetailRequest, runtime *dara.RuntimeOptions) (_result *AccountContactQueryDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -410,29 +307,11 @@ func (client *Client) AccountContactQueryDetailWithOptions(request *AccountConta
 		BodyType:    dara.String("json"),
 	}
 	_result = &AccountContactQueryDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询联系人详情
-//
-// @param request - AccountContactQueryDetailRequest
-//
-// @return AccountContactQueryDetailResponse
-func (client *Client) AccountContactQueryDetail(request *AccountContactQueryDetailRequest) (_result *AccountContactQueryDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AccountContactQueryDetailResponse{}
-	_body, _err := client.AccountContactQueryDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -445,7 +324,7 @@ func (client *Client) AccountContactQueryDetail(request *AccountContactQueryDeta
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AccountContactQueryPageListResponse
-func (client *Client) AccountContactQueryPageListWithOptions(request *AccountContactQueryPageListRequest, runtime *dara.RuntimeOptions) (_result *AccountContactQueryPageListResponse, _err error) {
+func (client *Client) AccountContactQueryPageListWithContext(ctx context.Context, request *AccountContactQueryPageListRequest, runtime *dara.RuntimeOptions) (_result *AccountContactQueryPageListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -510,29 +389,11 @@ func (client *Client) AccountContactQueryPageListWithOptions(request *AccountCon
 		BodyType:    dara.String("json"),
 	}
 	_result = &AccountContactQueryPageListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询联系人列表
-//
-// @param request - AccountContactQueryPageListRequest
-//
-// @return AccountContactQueryPageListResponse
-func (client *Client) AccountContactQueryPageList(request *AccountContactQueryPageListRequest) (_result *AccountContactQueryPageListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AccountContactQueryPageListResponse{}
-	_body, _err := client.AccountContactQueryPageListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -545,7 +406,7 @@ func (client *Client) AccountContactQueryPageList(request *AccountContactQueryPa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseAccountChangeLoginPasswordResponse
-func (client *Client) EnterpriseAccountChangeLoginPasswordWithOptions(request *EnterpriseAccountChangeLoginPasswordRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountChangeLoginPasswordResponse, _err error) {
+func (client *Client) EnterpriseAccountChangeLoginPasswordWithContext(ctx context.Context, request *EnterpriseAccountChangeLoginPasswordRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountChangeLoginPasswordResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -598,29 +459,11 @@ func (client *Client) EnterpriseAccountChangeLoginPasswordWithOptions(request *E
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseAccountChangeLoginPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改登录密码
-//
-// @param request - EnterpriseAccountChangeLoginPasswordRequest
-//
-// @return EnterpriseAccountChangeLoginPasswordResponse
-func (client *Client) EnterpriseAccountChangeLoginPassword(request *EnterpriseAccountChangeLoginPasswordRequest) (_result *EnterpriseAccountChangeLoginPasswordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseAccountChangeLoginPasswordResponse{}
-	_body, _err := client.EnterpriseAccountChangeLoginPasswordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -633,7 +476,7 @@ func (client *Client) EnterpriseAccountChangeLoginPassword(request *EnterpriseAc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseAccountChangeSecurityEmailResponse
-func (client *Client) EnterpriseAccountChangeSecurityEmailWithOptions(request *EnterpriseAccountChangeSecurityEmailRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountChangeSecurityEmailResponse, _err error) {
+func (client *Client) EnterpriseAccountChangeSecurityEmailWithContext(ctx context.Context, request *EnterpriseAccountChangeSecurityEmailRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountChangeSecurityEmailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -690,29 +533,11 @@ func (client *Client) EnterpriseAccountChangeSecurityEmailWithOptions(request *E
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseAccountChangeSecurityEmailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改安全邮箱
-//
-// @param request - EnterpriseAccountChangeSecurityEmailRequest
-//
-// @return EnterpriseAccountChangeSecurityEmailResponse
-func (client *Client) EnterpriseAccountChangeSecurityEmail(request *EnterpriseAccountChangeSecurityEmailRequest) (_result *EnterpriseAccountChangeSecurityEmailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseAccountChangeSecurityEmailResponse{}
-	_body, _err := client.EnterpriseAccountChangeSecurityEmailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -725,7 +550,7 @@ func (client *Client) EnterpriseAccountChangeSecurityEmail(request *EnterpriseAc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseAccountChangeSecurityMobileResponse
-func (client *Client) EnterpriseAccountChangeSecurityMobileWithOptions(request *EnterpriseAccountChangeSecurityMobileRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountChangeSecurityMobileResponse, _err error) {
+func (client *Client) EnterpriseAccountChangeSecurityMobileWithContext(ctx context.Context, request *EnterpriseAccountChangeSecurityMobileRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountChangeSecurityMobileResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -786,29 +611,11 @@ func (client *Client) EnterpriseAccountChangeSecurityMobileWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseAccountChangeSecurityMobileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改成员账号安全手机号
-//
-// @param request - EnterpriseAccountChangeSecurityMobileRequest
-//
-// @return EnterpriseAccountChangeSecurityMobileResponse
-func (client *Client) EnterpriseAccountChangeSecurityMobile(request *EnterpriseAccountChangeSecurityMobileRequest) (_result *EnterpriseAccountChangeSecurityMobileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseAccountChangeSecurityMobileResponse{}
-	_body, _err := client.EnterpriseAccountChangeSecurityMobileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -821,7 +628,7 @@ func (client *Client) EnterpriseAccountChangeSecurityMobile(request *EnterpriseA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseAccountQueryAccountGrantedRolesResponse
-func (client *Client) EnterpriseAccountQueryAccountGrantedRolesWithOptions(request *EnterpriseAccountQueryAccountGrantedRolesRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountQueryAccountGrantedRolesResponse, _err error) {
+func (client *Client) EnterpriseAccountQueryAccountGrantedRolesWithContext(ctx context.Context, request *EnterpriseAccountQueryAccountGrantedRolesRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountQueryAccountGrantedRolesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -872,29 +679,11 @@ func (client *Client) EnterpriseAccountQueryAccountGrantedRolesWithOptions(reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseAccountQueryAccountGrantedRolesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询纳管账号授权角色
-//
-// @param request - EnterpriseAccountQueryAccountGrantedRolesRequest
-//
-// @return EnterpriseAccountQueryAccountGrantedRolesResponse
-func (client *Client) EnterpriseAccountQueryAccountGrantedRoles(request *EnterpriseAccountQueryAccountGrantedRolesRequest) (_result *EnterpriseAccountQueryAccountGrantedRolesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseAccountQueryAccountGrantedRolesResponse{}
-	_body, _err := client.EnterpriseAccountQueryAccountGrantedRolesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -907,7 +696,7 @@ func (client *Client) EnterpriseAccountQueryAccountGrantedRoles(request *Enterpr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseAccountQueryAccountsInfoResponse
-func (client *Client) EnterpriseAccountQueryAccountsInfoWithOptions(request *EnterpriseAccountQueryAccountsInfoRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountQueryAccountsInfoResponse, _err error) {
+func (client *Client) EnterpriseAccountQueryAccountsInfoWithContext(ctx context.Context, request *EnterpriseAccountQueryAccountsInfoRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountQueryAccountsInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -968,29 +757,11 @@ func (client *Client) EnterpriseAccountQueryAccountsInfoWithOptions(request *Ent
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseAccountQueryAccountsInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 批量查询纳管账号信息
-//
-// @param request - EnterpriseAccountQueryAccountsInfoRequest
-//
-// @return EnterpriseAccountQueryAccountsInfoResponse
-func (client *Client) EnterpriseAccountQueryAccountsInfo(request *EnterpriseAccountQueryAccountsInfoRequest) (_result *EnterpriseAccountQueryAccountsInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseAccountQueryAccountsInfoResponse{}
-	_body, _err := client.EnterpriseAccountQueryAccountsInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1003,7 +774,7 @@ func (client *Client) EnterpriseAccountQueryAccountsInfo(request *EnterpriseAcco
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseAccountQueryLoginSettingsResponse
-func (client *Client) EnterpriseAccountQueryLoginSettingsWithOptions(request *EnterpriseAccountQueryLoginSettingsRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountQueryLoginSettingsResponse, _err error) {
+func (client *Client) EnterpriseAccountQueryLoginSettingsWithContext(ctx context.Context, request *EnterpriseAccountQueryLoginSettingsRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountQueryLoginSettingsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1054,29 +825,11 @@ func (client *Client) EnterpriseAccountQueryLoginSettingsWithOptions(request *En
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseAccountQueryLoginSettingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询纳管账号登录设置
-//
-// @param request - EnterpriseAccountQueryLoginSettingsRequest
-//
-// @return EnterpriseAccountQueryLoginSettingsResponse
-func (client *Client) EnterpriseAccountQueryLoginSettings(request *EnterpriseAccountQueryLoginSettingsRequest) (_result *EnterpriseAccountQueryLoginSettingsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseAccountQueryLoginSettingsResponse{}
-	_body, _err := client.EnterpriseAccountQueryLoginSettingsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1089,7 +842,7 @@ func (client *Client) EnterpriseAccountQueryLoginSettings(request *EnterpriseAcc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseAccountRemoveMfaResponse
-func (client *Client) EnterpriseAccountRemoveMfaWithOptions(request *EnterpriseAccountRemoveMfaRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountRemoveMfaResponse, _err error) {
+func (client *Client) EnterpriseAccountRemoveMfaWithContext(ctx context.Context, request *EnterpriseAccountRemoveMfaRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountRemoveMfaResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1138,29 +891,11 @@ func (client *Client) EnterpriseAccountRemoveMfaWithOptions(request *EnterpriseA
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseAccountRemoveMfaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 移除mfa
-//
-// @param request - EnterpriseAccountRemoveMfaRequest
-//
-// @return EnterpriseAccountRemoveMfaResponse
-func (client *Client) EnterpriseAccountRemoveMfa(request *EnterpriseAccountRemoveMfaRequest) (_result *EnterpriseAccountRemoveMfaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseAccountRemoveMfaResponse{}
-	_body, _err := client.EnterpriseAccountRemoveMfaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1173,7 +908,7 @@ func (client *Client) EnterpriseAccountRemoveMfa(request *EnterpriseAccountRemov
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseAccountSeparateEaResponse
-func (client *Client) EnterpriseAccountSeparateEaWithOptions(request *EnterpriseAccountSeparateEaRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountSeparateEaResponse, _err error) {
+func (client *Client) EnterpriseAccountSeparateEaWithContext(ctx context.Context, request *EnterpriseAccountSeparateEaRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountSeparateEaResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1218,29 +953,11 @@ func (client *Client) EnterpriseAccountSeparateEaWithOptions(request *Enterprise
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseAccountSeparateEaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 脱离ea
-//
-// @param request - EnterpriseAccountSeparateEaRequest
-//
-// @return EnterpriseAccountSeparateEaResponse
-func (client *Client) EnterpriseAccountSeparateEa(request *EnterpriseAccountSeparateEaRequest) (_result *EnterpriseAccountSeparateEaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseAccountSeparateEaResponse{}
-	_body, _err := client.EnterpriseAccountSeparateEaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1253,7 +970,7 @@ func (client *Client) EnterpriseAccountSeparateEa(request *EnterpriseAccountSepa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseAccountUpdateAccountAliasResponse
-func (client *Client) EnterpriseAccountUpdateAccountAliasWithOptions(request *EnterpriseAccountUpdateAccountAliasRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountUpdateAccountAliasResponse, _err error) {
+func (client *Client) EnterpriseAccountUpdateAccountAliasWithContext(ctx context.Context, request *EnterpriseAccountUpdateAccountAliasRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountUpdateAccountAliasResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1310,29 +1027,11 @@ func (client *Client) EnterpriseAccountUpdateAccountAliasWithOptions(request *En
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseAccountUpdateAccountAliasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新账号企业多账号中的别名
-//
-// @param request - EnterpriseAccountUpdateAccountAliasRequest
-//
-// @return EnterpriseAccountUpdateAccountAliasResponse
-func (client *Client) EnterpriseAccountUpdateAccountAlias(request *EnterpriseAccountUpdateAccountAliasRequest) (_result *EnterpriseAccountUpdateAccountAliasResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseAccountUpdateAccountAliasResponse{}
-	_body, _err := client.EnterpriseAccountUpdateAccountAliasWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1345,7 +1044,7 @@ func (client *Client) EnterpriseAccountUpdateAccountAlias(request *EnterpriseAcc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseAccountUpdateAccountBizRoleGrantResponse
-func (client *Client) EnterpriseAccountUpdateAccountBizRoleGrantWithOptions(request *EnterpriseAccountUpdateAccountBizRoleGrantRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountUpdateAccountBizRoleGrantResponse, _err error) {
+func (client *Client) EnterpriseAccountUpdateAccountBizRoleGrantWithContext(ctx context.Context, request *EnterpriseAccountUpdateAccountBizRoleGrantRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountUpdateAccountBizRoleGrantResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1394,29 +1093,11 @@ func (client *Client) EnterpriseAccountUpdateAccountBizRoleGrantWithOptions(requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseAccountUpdateAccountBizRoleGrantResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新账号授权
-//
-// @param request - EnterpriseAccountUpdateAccountBizRoleGrantRequest
-//
-// @return EnterpriseAccountUpdateAccountBizRoleGrantResponse
-func (client *Client) EnterpriseAccountUpdateAccountBizRoleGrant(request *EnterpriseAccountUpdateAccountBizRoleGrantRequest) (_result *EnterpriseAccountUpdateAccountBizRoleGrantResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseAccountUpdateAccountBizRoleGrantResponse{}
-	_body, _err := client.EnterpriseAccountUpdateAccountBizRoleGrantWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1429,7 +1110,7 @@ func (client *Client) EnterpriseAccountUpdateAccountBizRoleGrant(request *Enterp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseAccountUpdateIpMaskResponse
-func (client *Client) EnterpriseAccountUpdateIpMaskWithOptions(request *EnterpriseAccountUpdateIpMaskRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountUpdateIpMaskResponse, _err error) {
+func (client *Client) EnterpriseAccountUpdateIpMaskWithContext(ctx context.Context, request *EnterpriseAccountUpdateIpMaskRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountUpdateIpMaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1486,29 +1167,11 @@ func (client *Client) EnterpriseAccountUpdateIpMaskWithOptions(request *Enterpri
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseAccountUpdateIpMaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 设置Ip掩码
-//
-// @param request - EnterpriseAccountUpdateIpMaskRequest
-//
-// @return EnterpriseAccountUpdateIpMaskResponse
-func (client *Client) EnterpriseAccountUpdateIpMask(request *EnterpriseAccountUpdateIpMaskRequest) (_result *EnterpriseAccountUpdateIpMaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseAccountUpdateIpMaskResponse{}
-	_body, _err := client.EnterpriseAccountUpdateIpMaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1521,7 +1184,7 @@ func (client *Client) EnterpriseAccountUpdateIpMask(request *EnterpriseAccountUp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseAccountUpdateOperateRiskControlResponse
-func (client *Client) EnterpriseAccountUpdateOperateRiskControlWithOptions(request *EnterpriseAccountUpdateOperateRiskControlRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountUpdateOperateRiskControlResponse, _err error) {
+func (client *Client) EnterpriseAccountUpdateOperateRiskControlWithContext(ctx context.Context, request *EnterpriseAccountUpdateOperateRiskControlRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountUpdateOperateRiskControlResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1578,29 +1241,11 @@ func (client *Client) EnterpriseAccountUpdateOperateRiskControlWithOptions(reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseAccountUpdateOperateRiskControlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新操作风控
-//
-// @param request - EnterpriseAccountUpdateOperateRiskControlRequest
-//
-// @return EnterpriseAccountUpdateOperateRiskControlResponse
-func (client *Client) EnterpriseAccountUpdateOperateRiskControl(request *EnterpriseAccountUpdateOperateRiskControlRequest) (_result *EnterpriseAccountUpdateOperateRiskControlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseAccountUpdateOperateRiskControlResponse{}
-	_body, _err := client.EnterpriseAccountUpdateOperateRiskControlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1613,7 +1258,7 @@ func (client *Client) EnterpriseAccountUpdateOperateRiskControl(request *Enterpr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseAccountUpdateSecurityMobileLoginStatusResponse
-func (client *Client) EnterpriseAccountUpdateSecurityMobileLoginStatusWithOptions(request *EnterpriseAccountUpdateSecurityMobileLoginStatusRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountUpdateSecurityMobileLoginStatusResponse, _err error) {
+func (client *Client) EnterpriseAccountUpdateSecurityMobileLoginStatusWithContext(ctx context.Context, request *EnterpriseAccountUpdateSecurityMobileLoginStatusRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountUpdateSecurityMobileLoginStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1666,29 +1311,11 @@ func (client *Client) EnterpriseAccountUpdateSecurityMobileLoginStatusWithOption
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseAccountUpdateSecurityMobileLoginStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改安全手机启用状态
-//
-// @param request - EnterpriseAccountUpdateSecurityMobileLoginStatusRequest
-//
-// @return EnterpriseAccountUpdateSecurityMobileLoginStatusResponse
-func (client *Client) EnterpriseAccountUpdateSecurityMobileLoginStatus(request *EnterpriseAccountUpdateSecurityMobileLoginStatusRequest) (_result *EnterpriseAccountUpdateSecurityMobileLoginStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseAccountUpdateSecurityMobileLoginStatusResponse{}
-	_body, _err := client.EnterpriseAccountUpdateSecurityMobileLoginStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1701,7 +1328,7 @@ func (client *Client) EnterpriseAccountUpdateSecurityMobileLoginStatus(request *
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseAccountUpdateSessionExpireTimeResponse
-func (client *Client) EnterpriseAccountUpdateSessionExpireTimeWithOptions(request *EnterpriseAccountUpdateSessionExpireTimeRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountUpdateSessionExpireTimeResponse, _err error) {
+func (client *Client) EnterpriseAccountUpdateSessionExpireTimeWithContext(ctx context.Context, request *EnterpriseAccountUpdateSessionExpireTimeRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseAccountUpdateSessionExpireTimeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1754,29 +1381,11 @@ func (client *Client) EnterpriseAccountUpdateSessionExpireTimeWithOptions(reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseAccountUpdateSessionExpireTimeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新过期时间
-//
-// @param request - EnterpriseAccountUpdateSessionExpireTimeRequest
-//
-// @return EnterpriseAccountUpdateSessionExpireTimeResponse
-func (client *Client) EnterpriseAccountUpdateSessionExpireTime(request *EnterpriseAccountUpdateSessionExpireTimeRequest) (_result *EnterpriseAccountUpdateSessionExpireTimeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseAccountUpdateSessionExpireTimeResponse{}
-	_body, _err := client.EnterpriseAccountUpdateSessionExpireTimeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1789,7 +1398,7 @@ func (client *Client) EnterpriseAccountUpdateSessionExpireTime(request *Enterpri
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseContactAddResponse
-func (client *Client) EnterpriseContactAddWithOptions(request *EnterpriseContactAddRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseContactAddResponse, _err error) {
+func (client *Client) EnterpriseContactAddWithContext(ctx context.Context, request *EnterpriseContactAddRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseContactAddResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1864,29 +1473,11 @@ func (client *Client) EnterpriseContactAddWithOptions(request *EnterpriseContact
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseContactAddResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 增加企业联系人
-//
-// @param request - EnterpriseContactAddRequest
-//
-// @return EnterpriseContactAddResponse
-func (client *Client) EnterpriseContactAdd(request *EnterpriseContactAddRequest) (_result *EnterpriseContactAddResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseContactAddResponse{}
-	_body, _err := client.EnterpriseContactAddWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1899,7 +1490,7 @@ func (client *Client) EnterpriseContactAdd(request *EnterpriseContactAddRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseContactDeleteResponse
-func (client *Client) EnterpriseContactDeleteWithOptions(request *EnterpriseContactDeleteRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseContactDeleteResponse, _err error) {
+func (client *Client) EnterpriseContactDeleteWithContext(ctx context.Context, request *EnterpriseContactDeleteRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseContactDeleteResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1942,29 +1533,11 @@ func (client *Client) EnterpriseContactDeleteWithOptions(request *EnterpriseCont
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseContactDeleteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除企业联系人
-//
-// @param request - EnterpriseContactDeleteRequest
-//
-// @return EnterpriseContactDeleteResponse
-func (client *Client) EnterpriseContactDelete(request *EnterpriseContactDeleteRequest) (_result *EnterpriseContactDeleteResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseContactDeleteResponse{}
-	_body, _err := client.EnterpriseContactDeleteWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1977,7 +1550,7 @@ func (client *Client) EnterpriseContactDelete(request *EnterpriseContactDeleteRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseContactEditResponse
-func (client *Client) EnterpriseContactEditWithOptions(request *EnterpriseContactEditRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseContactEditResponse, _err error) {
+func (client *Client) EnterpriseContactEditWithContext(ctx context.Context, request *EnterpriseContactEditRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseContactEditResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2056,29 +1629,11 @@ func (client *Client) EnterpriseContactEditWithOptions(request *EnterpriseContac
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseContactEditResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改私企业联系人
-//
-// @param request - EnterpriseContactEditRequest
-//
-// @return EnterpriseContactEditResponse
-func (client *Client) EnterpriseContactEdit(request *EnterpriseContactEditRequest) (_result *EnterpriseContactEditResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseContactEditResponse{}
-	_body, _err := client.EnterpriseContactEditWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2091,7 +1646,7 @@ func (client *Client) EnterpriseContactEdit(request *EnterpriseContactEditReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseContactQueryDetailResponse
-func (client *Client) EnterpriseContactQueryDetailWithOptions(request *EnterpriseContactQueryDetailRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseContactQueryDetailResponse, _err error) {
+func (client *Client) EnterpriseContactQueryDetailWithContext(ctx context.Context, request *EnterpriseContactQueryDetailRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseContactQueryDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2134,29 +1689,11 @@ func (client *Client) EnterpriseContactQueryDetailWithOptions(request *Enterpris
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseContactQueryDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询联系人详情
-//
-// @param request - EnterpriseContactQueryDetailRequest
-//
-// @return EnterpriseContactQueryDetailResponse
-func (client *Client) EnterpriseContactQueryDetail(request *EnterpriseContactQueryDetailRequest) (_result *EnterpriseContactQueryDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseContactQueryDetailResponse{}
-	_body, _err := client.EnterpriseContactQueryDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2169,7 +1706,7 @@ func (client *Client) EnterpriseContactQueryDetail(request *EnterpriseContactQue
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseContactQueryPageListResponse
-func (client *Client) EnterpriseContactQueryPageListWithOptions(request *EnterpriseContactQueryPageListRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseContactQueryPageListResponse, _err error) {
+func (client *Client) EnterpriseContactQueryPageListWithContext(ctx context.Context, request *EnterpriseContactQueryPageListRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseContactQueryPageListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2234,29 +1771,11 @@ func (client *Client) EnterpriseContactQueryPageListWithOptions(request *Enterpr
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseContactQueryPageListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询联系人列表
-//
-// @param request - EnterpriseContactQueryPageListRequest
-//
-// @return EnterpriseContactQueryPageListResponse
-func (client *Client) EnterpriseContactQueryPageList(request *EnterpriseContactQueryPageListRequest) (_result *EnterpriseContactQueryPageListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseContactQueryPageListResponse{}
-	_body, _err := client.EnterpriseContactQueryPageListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2269,7 +1788,7 @@ func (client *Client) EnterpriseContactQueryPageList(request *EnterpriseContactQ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseOrgQueryLoadTreeResponse
-func (client *Client) EnterpriseOrgQueryLoadTreeWithOptions(request *EnterpriseOrgQueryLoadTreeRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseOrgQueryLoadTreeResponse, _err error) {
+func (client *Client) EnterpriseOrgQueryLoadTreeWithContext(ctx context.Context, request *EnterpriseOrgQueryLoadTreeRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseOrgQueryLoadTreeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2318,29 +1837,11 @@ func (client *Client) EnterpriseOrgQueryLoadTreeWithOptions(request *EnterpriseO
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseOrgQueryLoadTreeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 组织目录树查询
-//
-// @param request - EnterpriseOrgQueryLoadTreeRequest
-//
-// @return EnterpriseOrgQueryLoadTreeResponse
-func (client *Client) EnterpriseOrgQueryLoadTree(request *EnterpriseOrgQueryLoadTreeRequest) (_result *EnterpriseOrgQueryLoadTreeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseOrgQueryLoadTreeResponse{}
-	_body, _err := client.EnterpriseOrgQueryLoadTreeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2353,7 +1854,7 @@ func (client *Client) EnterpriseOrgQueryLoadTree(request *EnterpriseOrgQueryLoad
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseRegisterAccountResponse
-func (client *Client) EnterpriseRegisterAccountWithOptions(request *EnterpriseRegisterAccountRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseRegisterAccountResponse, _err error) {
+func (client *Client) EnterpriseRegisterAccountWithContext(ctx context.Context, request *EnterpriseRegisterAccountRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseRegisterAccountResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2422,29 +1923,11 @@ func (client *Client) EnterpriseRegisterAccountWithOptions(request *EnterpriseRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseRegisterAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建成员账号
-//
-// @param request - EnterpriseRegisterAccountRequest
-//
-// @return EnterpriseRegisterAccountResponse
-func (client *Client) EnterpriseRegisterAccount(request *EnterpriseRegisterAccountRequest) (_result *EnterpriseRegisterAccountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseRegisterAccountResponse{}
-	_body, _err := client.EnterpriseRegisterAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2457,7 +1940,7 @@ func (client *Client) EnterpriseRegisterAccount(request *EnterpriseRegisterAccou
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseRoleCreateBizRoleResponse
-func (client *Client) EnterpriseRoleCreateBizRoleWithOptions(request *EnterpriseRoleCreateBizRoleRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseRoleCreateBizRoleResponse, _err error) {
+func (client *Client) EnterpriseRoleCreateBizRoleWithContext(ctx context.Context, request *EnterpriseRoleCreateBizRoleRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseRoleCreateBizRoleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2514,29 +1997,11 @@ func (client *Client) EnterpriseRoleCreateBizRoleWithOptions(request *Enterprise
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseRoleCreateBizRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建业务角色
-//
-// @param request - EnterpriseRoleCreateBizRoleRequest
-//
-// @return EnterpriseRoleCreateBizRoleResponse
-func (client *Client) EnterpriseRoleCreateBizRole(request *EnterpriseRoleCreateBizRoleRequest) (_result *EnterpriseRoleCreateBizRoleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseRoleCreateBizRoleResponse{}
-	_body, _err := client.EnterpriseRoleCreateBizRoleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2549,7 +2014,7 @@ func (client *Client) EnterpriseRoleCreateBizRole(request *EnterpriseRoleCreateB
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseRoleDeleteBizRoleResponse
-func (client *Client) EnterpriseRoleDeleteBizRoleWithOptions(request *EnterpriseRoleDeleteBizRoleRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseRoleDeleteBizRoleResponse, _err error) {
+func (client *Client) EnterpriseRoleDeleteBizRoleWithContext(ctx context.Context, request *EnterpriseRoleDeleteBizRoleRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseRoleDeleteBizRoleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2594,29 +2059,11 @@ func (client *Client) EnterpriseRoleDeleteBizRoleWithOptions(request *Enterprise
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseRoleDeleteBizRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除业务角色
-//
-// @param request - EnterpriseRoleDeleteBizRoleRequest
-//
-// @return EnterpriseRoleDeleteBizRoleResponse
-func (client *Client) EnterpriseRoleDeleteBizRole(request *EnterpriseRoleDeleteBizRoleRequest) (_result *EnterpriseRoleDeleteBizRoleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseRoleDeleteBizRoleResponse{}
-	_body, _err := client.EnterpriseRoleDeleteBizRoleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2629,7 +2076,7 @@ func (client *Client) EnterpriseRoleDeleteBizRole(request *EnterpriseRoleDeleteB
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseRoleQueryAccountForRoleGrantByPageResponse
-func (client *Client) EnterpriseRoleQueryAccountForRoleGrantByPageWithOptions(request *EnterpriseRoleQueryAccountForRoleGrantByPageRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseRoleQueryAccountForRoleGrantByPageResponse, _err error) {
+func (client *Client) EnterpriseRoleQueryAccountForRoleGrantByPageWithContext(ctx context.Context, request *EnterpriseRoleQueryAccountForRoleGrantByPageRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseRoleQueryAccountForRoleGrantByPageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2702,29 +2149,11 @@ func (client *Client) EnterpriseRoleQueryAccountForRoleGrantByPageWithOptions(re
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseRoleQueryAccountForRoleGrantByPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 角色授权场景下分页查询账号
-//
-// @param request - EnterpriseRoleQueryAccountForRoleGrantByPageRequest
-//
-// @return EnterpriseRoleQueryAccountForRoleGrantByPageResponse
-func (client *Client) EnterpriseRoleQueryAccountForRoleGrantByPage(request *EnterpriseRoleQueryAccountForRoleGrantByPageRequest) (_result *EnterpriseRoleQueryAccountForRoleGrantByPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseRoleQueryAccountForRoleGrantByPageResponse{}
-	_body, _err := client.EnterpriseRoleQueryAccountForRoleGrantByPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2737,7 +2166,7 @@ func (client *Client) EnterpriseRoleQueryAccountForRoleGrantByPage(request *Ente
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseRoleQueryBizRoleByPageResponse
-func (client *Client) EnterpriseRoleQueryBizRoleByPageWithOptions(request *EnterpriseRoleQueryBizRoleByPageRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseRoleQueryBizRoleByPageResponse, _err error) {
+func (client *Client) EnterpriseRoleQueryBizRoleByPageWithContext(ctx context.Context, request *EnterpriseRoleQueryBizRoleByPageRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseRoleQueryBizRoleByPageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2806,29 +2235,11 @@ func (client *Client) EnterpriseRoleQueryBizRoleByPageWithOptions(request *Enter
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseRoleQueryBizRoleByPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 分页查询业务角色
-//
-// @param request - EnterpriseRoleQueryBizRoleByPageRequest
-//
-// @return EnterpriseRoleQueryBizRoleByPageResponse
-func (client *Client) EnterpriseRoleQueryBizRoleByPage(request *EnterpriseRoleQueryBizRoleByPageRequest) (_result *EnterpriseRoleQueryBizRoleByPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseRoleQueryBizRoleByPageResponse{}
-	_body, _err := client.EnterpriseRoleQueryBizRoleByPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2841,7 +2252,7 @@ func (client *Client) EnterpriseRoleQueryBizRoleByPage(request *EnterpriseRoleQu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseRoleQueryBizRoleDetailResponse
-func (client *Client) EnterpriseRoleQueryBizRoleDetailWithOptions(request *EnterpriseRoleQueryBizRoleDetailRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseRoleQueryBizRoleDetailResponse, _err error) {
+func (client *Client) EnterpriseRoleQueryBizRoleDetailWithContext(ctx context.Context, request *EnterpriseRoleQueryBizRoleDetailRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseRoleQueryBizRoleDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2886,29 +2297,11 @@ func (client *Client) EnterpriseRoleQueryBizRoleDetailWithOptions(request *Enter
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseRoleQueryBizRoleDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询业务角色详情
-//
-// @param request - EnterpriseRoleQueryBizRoleDetailRequest
-//
-// @return EnterpriseRoleQueryBizRoleDetailResponse
-func (client *Client) EnterpriseRoleQueryBizRoleDetail(request *EnterpriseRoleQueryBizRoleDetailRequest) (_result *EnterpriseRoleQueryBizRoleDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseRoleQueryBizRoleDetailResponse{}
-	_body, _err := client.EnterpriseRoleQueryBizRoleDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2921,7 +2314,7 @@ func (client *Client) EnterpriseRoleQueryBizRoleDetail(request *EnterpriseRoleQu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseRoleUpdateBizRoleResponse
-func (client *Client) EnterpriseRoleUpdateBizRoleWithOptions(request *EnterpriseRoleUpdateBizRoleRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseRoleUpdateBizRoleResponse, _err error) {
+func (client *Client) EnterpriseRoleUpdateBizRoleWithContext(ctx context.Context, request *EnterpriseRoleUpdateBizRoleRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseRoleUpdateBizRoleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2978,29 +2371,11 @@ func (client *Client) EnterpriseRoleUpdateBizRoleWithOptions(request *Enterprise
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseRoleUpdateBizRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新业务角色
-//
-// @param request - EnterpriseRoleUpdateBizRoleRequest
-//
-// @return EnterpriseRoleUpdateBizRoleResponse
-func (client *Client) EnterpriseRoleUpdateBizRole(request *EnterpriseRoleUpdateBizRoleRequest) (_result *EnterpriseRoleUpdateBizRoleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseRoleUpdateBizRoleResponse{}
-	_body, _err := client.EnterpriseRoleUpdateBizRoleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3013,7 +2388,7 @@ func (client *Client) EnterpriseRoleUpdateBizRole(request *EnterpriseRoleUpdateB
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseTodoDealAccountTodoResponse
-func (client *Client) EnterpriseTodoDealAccountTodoWithOptions(request *EnterpriseTodoDealAccountTodoRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseTodoDealAccountTodoResponse, _err error) {
+func (client *Client) EnterpriseTodoDealAccountTodoWithContext(ctx context.Context, request *EnterpriseTodoDealAccountTodoRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseTodoDealAccountTodoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3064,29 +2439,11 @@ func (client *Client) EnterpriseTodoDealAccountTodoWithOptions(request *Enterpri
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseTodoDealAccountTodoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 处理待办项
-//
-// @param request - EnterpriseTodoDealAccountTodoRequest
-//
-// @return EnterpriseTodoDealAccountTodoResponse
-func (client *Client) EnterpriseTodoDealAccountTodo(request *EnterpriseTodoDealAccountTodoRequest) (_result *EnterpriseTodoDealAccountTodoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseTodoDealAccountTodoResponse{}
-	_body, _err := client.EnterpriseTodoDealAccountTodoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3099,7 +2456,7 @@ func (client *Client) EnterpriseTodoDealAccountTodo(request *EnterpriseTodoDealA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseTodoQueryAccountTodoListResponse
-func (client *Client) EnterpriseTodoQueryAccountTodoListWithOptions(request *EnterpriseTodoQueryAccountTodoListRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseTodoQueryAccountTodoListResponse, _err error) {
+func (client *Client) EnterpriseTodoQueryAccountTodoListWithContext(ctx context.Context, request *EnterpriseTodoQueryAccountTodoListRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseTodoQueryAccountTodoListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3172,29 +2529,11 @@ func (client *Client) EnterpriseTodoQueryAccountTodoListWithOptions(request *Ent
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseTodoQueryAccountTodoListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询当前登录用户处理的待办项列表
-//
-// @param request - EnterpriseTodoQueryAccountTodoListRequest
-//
-// @return EnterpriseTodoQueryAccountTodoListResponse
-func (client *Client) EnterpriseTodoQueryAccountTodoList(request *EnterpriseTodoQueryAccountTodoListRequest) (_result *EnterpriseTodoQueryAccountTodoListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseTodoQueryAccountTodoListResponse{}
-	_body, _err := client.EnterpriseTodoQueryAccountTodoListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3207,7 +2546,7 @@ func (client *Client) EnterpriseTodoQueryAccountTodoList(request *EnterpriseTodo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseTodoQueryAccountTodoListByApplicantResponse
-func (client *Client) EnterpriseTodoQueryAccountTodoListByApplicantWithOptions(request *EnterpriseTodoQueryAccountTodoListByApplicantRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseTodoQueryAccountTodoListByApplicantResponse, _err error) {
+func (client *Client) EnterpriseTodoQueryAccountTodoListByApplicantWithContext(ctx context.Context, request *EnterpriseTodoQueryAccountTodoListByApplicantRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseTodoQueryAccountTodoListByApplicantResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3280,29 +2619,11 @@ func (client *Client) EnterpriseTodoQueryAccountTodoListByApplicantWithOptions(r
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseTodoQueryAccountTodoListByApplicantResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询当前登录用户发起的待办项列表
-//
-// @param request - EnterpriseTodoQueryAccountTodoListByApplicantRequest
-//
-// @return EnterpriseTodoQueryAccountTodoListByApplicantResponse
-func (client *Client) EnterpriseTodoQueryAccountTodoListByApplicant(request *EnterpriseTodoQueryAccountTodoListByApplicantRequest) (_result *EnterpriseTodoQueryAccountTodoListByApplicantResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseTodoQueryAccountTodoListByApplicantResponse{}
-	_body, _err := client.EnterpriseTodoQueryAccountTodoListByApplicantWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3315,7 +2636,7 @@ func (client *Client) EnterpriseTodoQueryAccountTodoListByApplicant(request *Ent
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnterpriseUninvitedAdminInviteJoinEnterpriseResponse
-func (client *Client) EnterpriseUninvitedAdminInviteJoinEnterpriseWithOptions(request *EnterpriseUninvitedAdminInviteJoinEnterpriseRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseUninvitedAdminInviteJoinEnterpriseResponse, _err error) {
+func (client *Client) EnterpriseUninvitedAdminInviteJoinEnterpriseWithContext(ctx context.Context, request *EnterpriseUninvitedAdminInviteJoinEnterpriseRequest, runtime *dara.RuntimeOptions) (_result *EnterpriseUninvitedAdminInviteJoinEnterpriseResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3362,29 +2683,11 @@ func (client *Client) EnterpriseUninvitedAdminInviteJoinEnterpriseWithOptions(re
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnterpriseUninvitedAdminInviteJoinEnterpriseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 管理员邀请纳管
-//
-// @param request - EnterpriseUninvitedAdminInviteJoinEnterpriseRequest
-//
-// @return EnterpriseUninvitedAdminInviteJoinEnterpriseResponse
-func (client *Client) EnterpriseUninvitedAdminInviteJoinEnterprise(request *EnterpriseUninvitedAdminInviteJoinEnterpriseRequest) (_result *EnterpriseUninvitedAdminInviteJoinEnterpriseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnterpriseUninvitedAdminInviteJoinEnterpriseResponse{}
-	_body, _err := client.EnterpriseUninvitedAdminInviteJoinEnterpriseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3397,7 +2700,7 @@ func (client *Client) EnterpriseUninvitedAdminInviteJoinEnterprise(request *Ente
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendAsyncEmailCaptchaResponse
-func (client *Client) SendAsyncEmailCaptchaWithOptions(request *SendAsyncEmailCaptchaRequest, runtime *dara.RuntimeOptions) (_result *SendAsyncEmailCaptchaResponse, _err error) {
+func (client *Client) SendAsyncEmailCaptchaWithContext(ctx context.Context, request *SendAsyncEmailCaptchaRequest, runtime *dara.RuntimeOptions) (_result *SendAsyncEmailCaptchaResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3432,29 +2735,11 @@ func (client *Client) SendAsyncEmailCaptchaWithOptions(request *SendAsyncEmailCa
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendAsyncEmailCaptchaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 账号中心发送异步验证邮件
-//
-// @param request - SendAsyncEmailCaptchaRequest
-//
-// @return SendAsyncEmailCaptchaResponse
-func (client *Client) SendAsyncEmailCaptcha(request *SendAsyncEmailCaptchaRequest) (_result *SendAsyncEmailCaptchaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendAsyncEmailCaptchaResponse{}
-	_body, _err := client.SendAsyncEmailCaptchaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3467,7 +2752,7 @@ func (client *Client) SendAsyncEmailCaptcha(request *SendAsyncEmailCaptchaReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendAsyncMobileCaptchaResponse
-func (client *Client) SendAsyncMobileCaptchaWithOptions(request *SendAsyncMobileCaptchaRequest, runtime *dara.RuntimeOptions) (_result *SendAsyncMobileCaptchaResponse, _err error) {
+func (client *Client) SendAsyncMobileCaptchaWithContext(ctx context.Context, request *SendAsyncMobileCaptchaRequest, runtime *dara.RuntimeOptions) (_result *SendAsyncMobileCaptchaResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3502,28 +2787,10 @@ func (client *Client) SendAsyncMobileCaptchaWithOptions(request *SendAsyncMobile
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendAsyncMobileCaptchaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 账号中心发送异步验证短信
-//
-// @param request - SendAsyncMobileCaptchaRequest
-//
-// @return SendAsyncMobileCaptchaResponse
-func (client *Client) SendAsyncMobileCaptcha(request *SendAsyncMobileCaptchaRequest) (_result *SendAsyncMobileCaptchaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendAsyncMobileCaptchaResponse{}
-	_body, _err := client.SendAsyncMobileCaptchaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
