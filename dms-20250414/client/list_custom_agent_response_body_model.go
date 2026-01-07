@@ -474,10 +474,13 @@ func (s *ListCustomAgentResponseBodyDataContent) Validate() error {
 }
 
 type ListCustomAgentResponseBodyDataContentExecutionConfig struct {
+	SkipAskHuman *bool `json:"SkipAskHuman,omitempty" xml:"SkipAskHuman,omitempty"`
 	// example:
 	//
 	// true
-	SkipPlan *bool `json:"SkipPlan,omitempty" xml:"SkipPlan,omitempty"`
+	SkipPlan             *bool `json:"SkipPlan,omitempty" xml:"SkipPlan,omitempty"`
+	SkipSqlConfirm       *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
+	SkipWebReportConfirm *bool `json:"SkipWebReportConfirm,omitempty" xml:"SkipWebReportConfirm,omitempty"`
 }
 
 func (s ListCustomAgentResponseBodyDataContentExecutionConfig) String() string {
@@ -488,12 +491,39 @@ func (s ListCustomAgentResponseBodyDataContentExecutionConfig) GoString() string
 	return s.String()
 }
 
+func (s *ListCustomAgentResponseBodyDataContentExecutionConfig) GetSkipAskHuman() *bool {
+	return s.SkipAskHuman
+}
+
 func (s *ListCustomAgentResponseBodyDataContentExecutionConfig) GetSkipPlan() *bool {
 	return s.SkipPlan
 }
 
+func (s *ListCustomAgentResponseBodyDataContentExecutionConfig) GetSkipSqlConfirm() *bool {
+	return s.SkipSqlConfirm
+}
+
+func (s *ListCustomAgentResponseBodyDataContentExecutionConfig) GetSkipWebReportConfirm() *bool {
+	return s.SkipWebReportConfirm
+}
+
+func (s *ListCustomAgentResponseBodyDataContentExecutionConfig) SetSkipAskHuman(v bool) *ListCustomAgentResponseBodyDataContentExecutionConfig {
+	s.SkipAskHuman = &v
+	return s
+}
+
 func (s *ListCustomAgentResponseBodyDataContentExecutionConfig) SetSkipPlan(v bool) *ListCustomAgentResponseBodyDataContentExecutionConfig {
 	s.SkipPlan = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodyDataContentExecutionConfig) SetSkipSqlConfirm(v bool) *ListCustomAgentResponseBodyDataContentExecutionConfig {
+	s.SkipSqlConfirm = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodyDataContentExecutionConfig) SetSkipWebReportConfirm(v bool) *ListCustomAgentResponseBodyDataContentExecutionConfig {
+	s.SkipWebReportConfirm = &v
 	return s
 }
 

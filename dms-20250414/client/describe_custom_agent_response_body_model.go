@@ -388,10 +388,13 @@ func (s *DescribeCustomAgentResponseBodyData) Validate() error {
 }
 
 type DescribeCustomAgentResponseBodyDataExecutionConfig struct {
+	SkipAskHuman *bool `json:"SkipAskHuman,omitempty" xml:"SkipAskHuman,omitempty"`
 	// example:
 	//
 	// true
-	SkipPlan *bool `json:"SkipPlan,omitempty" xml:"SkipPlan,omitempty"`
+	SkipPlan             *bool `json:"SkipPlan,omitempty" xml:"SkipPlan,omitempty"`
+	SkipSqlConfirm       *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
+	SkipWebReportConfirm *bool `json:"SkipWebReportConfirm,omitempty" xml:"SkipWebReportConfirm,omitempty"`
 }
 
 func (s DescribeCustomAgentResponseBodyDataExecutionConfig) String() string {
@@ -402,12 +405,39 @@ func (s DescribeCustomAgentResponseBodyDataExecutionConfig) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeCustomAgentResponseBodyDataExecutionConfig) GetSkipAskHuman() *bool {
+	return s.SkipAskHuman
+}
+
 func (s *DescribeCustomAgentResponseBodyDataExecutionConfig) GetSkipPlan() *bool {
 	return s.SkipPlan
 }
 
+func (s *DescribeCustomAgentResponseBodyDataExecutionConfig) GetSkipSqlConfirm() *bool {
+	return s.SkipSqlConfirm
+}
+
+func (s *DescribeCustomAgentResponseBodyDataExecutionConfig) GetSkipWebReportConfirm() *bool {
+	return s.SkipWebReportConfirm
+}
+
+func (s *DescribeCustomAgentResponseBodyDataExecutionConfig) SetSkipAskHuman(v bool) *DescribeCustomAgentResponseBodyDataExecutionConfig {
+	s.SkipAskHuman = &v
+	return s
+}
+
 func (s *DescribeCustomAgentResponseBodyDataExecutionConfig) SetSkipPlan(v bool) *DescribeCustomAgentResponseBodyDataExecutionConfig {
 	s.SkipPlan = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyDataExecutionConfig) SetSkipSqlConfirm(v bool) *DescribeCustomAgentResponseBodyDataExecutionConfig {
+	s.SkipSqlConfirm = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyDataExecutionConfig) SetSkipWebReportConfirm(v bool) *DescribeCustomAgentResponseBodyDataExecutionConfig {
+	s.SkipWebReportConfirm = &v
 	return s
 }
 
