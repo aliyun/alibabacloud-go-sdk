@@ -2379,8 +2379,16 @@ func (client *Client) RealtimeDialogAssistWithContext(ctx context.Context, works
 		body["requestId"] = request.RequestId
 	}
 
+	if !dara.IsNil(request.ScriptContentPlayed) {
+		body["scriptContentPlayed"] = request.ScriptContentPlayed
+	}
+
 	if !dara.IsNil(request.SessionId) {
 		body["sessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.UserVad) {
+		body["userVad"] = request.UserVad
 	}
 
 	req := &openapiutil.OpenApiRequest{

@@ -23,8 +23,12 @@ type iRealtimeDialogAssistRequest interface {
 	GetMetaData() map[string]interface{}
 	SetRequestId(v string) *RealtimeDialogAssistRequest
 	GetRequestId() *string
+	SetScriptContentPlayed(v string) *RealtimeDialogAssistRequest
+	GetScriptContentPlayed() *string
 	SetSessionId(v string) *RealtimeDialogAssistRequest
 	GetSessionId() *string
+	SetUserVad(v bool) *RealtimeDialogAssistRequest
+	GetUserVad() *bool
 }
 
 type RealtimeDialogAssistRequest struct {
@@ -56,12 +60,17 @@ type RealtimeDialogAssistRequest struct {
 	//
 	// 0FC6636E-380A-5369-AE01-D1C15BB9B254
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 你好
+	ScriptContentPlayed *string `json:"scriptContentPlayed,omitempty" xml:"scriptContentPlayed,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1915593248420413441
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	UserVad   *bool   `json:"userVad,omitempty" xml:"userVad,omitempty"`
 }
 
 func (s RealtimeDialogAssistRequest) String() string {
@@ -100,8 +109,16 @@ func (s *RealtimeDialogAssistRequest) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *RealtimeDialogAssistRequest) GetScriptContentPlayed() *string {
+	return s.ScriptContentPlayed
+}
+
 func (s *RealtimeDialogAssistRequest) GetSessionId() *string {
 	return s.SessionId
+}
+
+func (s *RealtimeDialogAssistRequest) GetUserVad() *bool {
+	return s.UserVad
 }
 
 func (s *RealtimeDialogAssistRequest) SetAnalysis(v bool) *RealtimeDialogAssistRequest {
@@ -139,8 +156,18 @@ func (s *RealtimeDialogAssistRequest) SetRequestId(v string) *RealtimeDialogAssi
 	return s
 }
 
+func (s *RealtimeDialogAssistRequest) SetScriptContentPlayed(v string) *RealtimeDialogAssistRequest {
+	s.ScriptContentPlayed = &v
+	return s
+}
+
 func (s *RealtimeDialogAssistRequest) SetSessionId(v string) *RealtimeDialogAssistRequest {
 	s.SessionId = &v
+	return s
+}
+
+func (s *RealtimeDialogAssistRequest) SetUserVad(v bool) *RealtimeDialogAssistRequest {
+	s.UserVad = &v
 	return s
 }
 
@@ -158,6 +185,14 @@ func (s *RealtimeDialogAssistRequest) Validate() error {
 }
 
 type RealtimeDialogAssistRequestConversationModel struct {
+	// example:
+	//
+	// 1
+	Begin *int32 `json:"begin,omitempty" xml:"begin,omitempty"`
+	// example:
+	//
+	// 2025-12-12 09:00:00
+	BeginTime *string `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
 	// This parameter is required.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// example:
@@ -172,6 +207,10 @@ type RealtimeDialogAssistRequestConversationModel struct {
 	//
 	// 0
 	CustomerServiceType *string `json:"customerServiceType,omitempty" xml:"customerServiceType,omitempty"`
+	// example:
+	//
+	// 1
+	End *int32 `json:"end,omitempty" xml:"end,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -192,6 +231,14 @@ func (s RealtimeDialogAssistRequestConversationModel) GoString() string {
 	return s.String()
 }
 
+func (s *RealtimeDialogAssistRequestConversationModel) GetBegin() *int32 {
+	return s.Begin
+}
+
+func (s *RealtimeDialogAssistRequestConversationModel) GetBeginTime() *string {
+	return s.BeginTime
+}
+
 func (s *RealtimeDialogAssistRequestConversationModel) GetContent() *string {
 	return s.Content
 }
@@ -208,12 +255,26 @@ func (s *RealtimeDialogAssistRequestConversationModel) GetCustomerServiceType() 
 	return s.CustomerServiceType
 }
 
+func (s *RealtimeDialogAssistRequestConversationModel) GetEnd() *int32 {
+	return s.End
+}
+
 func (s *RealtimeDialogAssistRequestConversationModel) GetRole() *int32 {
 	return s.Role
 }
 
 func (s *RealtimeDialogAssistRequestConversationModel) GetType() *string {
 	return s.Type
+}
+
+func (s *RealtimeDialogAssistRequestConversationModel) SetBegin(v int32) *RealtimeDialogAssistRequestConversationModel {
+	s.Begin = &v
+	return s
+}
+
+func (s *RealtimeDialogAssistRequestConversationModel) SetBeginTime(v string) *RealtimeDialogAssistRequestConversationModel {
+	s.BeginTime = &v
+	return s
 }
 
 func (s *RealtimeDialogAssistRequestConversationModel) SetContent(v string) *RealtimeDialogAssistRequestConversationModel {
@@ -233,6 +294,11 @@ func (s *RealtimeDialogAssistRequestConversationModel) SetCustomerServiceId(v st
 
 func (s *RealtimeDialogAssistRequestConversationModel) SetCustomerServiceType(v string) *RealtimeDialogAssistRequestConversationModel {
 	s.CustomerServiceType = &v
+	return s
+}
+
+func (s *RealtimeDialogAssistRequestConversationModel) SetEnd(v int32) *RealtimeDialogAssistRequestConversationModel {
+	s.End = &v
 	return s
 }
 

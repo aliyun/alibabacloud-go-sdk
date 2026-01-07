@@ -153,6 +153,7 @@ type RealtimeDialogAssistResponseBodyData struct {
 	AssistScripts     []*RealtimeDialogAssistResponseBodyDataAssistScripts     `json:"assistScripts,omitempty" xml:"assistScripts,omitempty" type:"Repeated"`
 	AssistSop         []*RealtimeDialogAssistResponseBodyDataAssistSop         `json:"assistSop,omitempty" xml:"assistSop,omitempty" type:"Repeated"`
 	ConversationModel []*RealtimeDialogAssistResponseBodyDataConversationModel `json:"conversationModel,omitempty" xml:"conversationModel,omitempty" type:"Repeated"`
+	Interrupt         *bool                                                    `json:"interrupt,omitempty" xml:"interrupt,omitempty"`
 	// example:
 	//
 	// 0FC6636E-380A-5369-AE01-D1C15BB9B254
@@ -187,6 +188,10 @@ func (s *RealtimeDialogAssistResponseBodyData) GetConversationModel() []*Realtim
 	return s.ConversationModel
 }
 
+func (s *RealtimeDialogAssistResponseBodyData) GetInterrupt() *bool {
+	return s.Interrupt
+}
+
 func (s *RealtimeDialogAssistResponseBodyData) GetRequestId() *string {
 	return s.RequestId
 }
@@ -212,6 +217,11 @@ func (s *RealtimeDialogAssistResponseBodyData) SetAssistSop(v []*RealtimeDialogA
 
 func (s *RealtimeDialogAssistResponseBodyData) SetConversationModel(v []*RealtimeDialogAssistResponseBodyDataConversationModel) *RealtimeDialogAssistResponseBodyData {
 	s.ConversationModel = v
+	return s
+}
+
+func (s *RealtimeDialogAssistResponseBodyData) SetInterrupt(v bool) *RealtimeDialogAssistResponseBodyData {
+	s.Interrupt = &v
 	return s
 }
 
