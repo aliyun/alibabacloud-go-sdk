@@ -1581,6 +1581,92 @@ func (client *Client) CreatePolicyAttachment(request *CreatePolicyAttachmentRequ
 
 // Summary:
 //
+// 创建密钥
+//
+// @param request - CreateSecretRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSecretResponse
+func (client *Client) CreateSecretWithOptions(request *CreateSecretRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSecretResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.GatewayType) {
+		body["gatewayType"] = request.GatewayType
+	}
+
+	if !dara.IsNil(request.KmsConfig) {
+		body["kmsConfig"] = request.KmsConfig
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SecretData) {
+		body["secretData"] = request.SecretData
+	}
+
+	if !dara.IsNil(request.SecretSource) {
+		body["secretSource"] = request.SecretSource
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSecret"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/secrets"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSecretResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建密钥
+//
+// @param request - CreateSecretRequest
+//
+// @return CreateSecretResponse
+func (client *Client) CreateSecret(request *CreateSecretRequest) (_result *CreateSecretResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateSecretResponse{}
+	_body, _err := client.CreateSecretWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a service.
 //
 // Description:
@@ -2481,6 +2567,56 @@ func (client *Client) DeletePolicyAttachment(policyAttachmentId *string) (_resul
 	headers := make(map[string]*string)
 	_result = &DeletePolicyAttachmentResponse{}
 	_body, _err := client.DeletePolicyAttachmentWithOptions(policyAttachmentId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除密钥
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSecretResponse
+func (client *Client) DeleteSecretWithOptions(secretId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteSecretResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSecret"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/secrets/" + dara.PercentEncode(dara.StringValue(secretId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSecretResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除密钥
+//
+// @return DeleteSecretResponse
+func (client *Client) DeleteSecret(secretId *string) (_result *DeleteSecretResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteSecretResponse{}
+	_body, _err := client.DeleteSecretWithOptions(secretId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3624,6 +3760,56 @@ func (client *Client) GetResourceOverview(request *GetResourceOverviewRequest) (
 	headers := make(map[string]*string)
 	_result = &GetResourceOverviewResponse{}
 	_body, _err := client.GetResourceOverviewWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询密钥值
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSecretValueResponse
+func (client *Client) GetSecretValueWithOptions(name *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSecretValueResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSecretValue"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/secrets/name/" + dara.PercentEncode(dara.StringValue(name)) + "/value"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSecretValueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询密钥值
+//
+// @return GetSecretValueResponse
+func (client *Client) GetSecretValue(name *string) (_result *GetSecretValueResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSecretValueResponse{}
+	_body, _err := client.GetSecretValueWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5412,6 +5598,154 @@ func (client *Client) ListPolicyClasses(request *ListPolicyClassesRequest) (_res
 
 // Summary:
 //
+// 查询密钥的引用详情
+//
+// @param request - ListSecretReferencesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSecretReferencesResponse
+func (client *Client) ListSecretReferencesWithOptions(secretId *string, request *ListSecretReferencesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSecretReferencesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSecretReferences"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/secrets/" + dara.PercentEncode(dara.StringValue(secretId)) + "/references"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSecretReferencesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询密钥的引用详情
+//
+// @param request - ListSecretReferencesRequest
+//
+// @return ListSecretReferencesResponse
+func (client *Client) ListSecretReferences(secretId *string, request *ListSecretReferencesRequest) (_result *ListSecretReferencesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSecretReferencesResponse{}
+	_body, _err := client.ListSecretReferencesWithOptions(secretId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询密钥列表
+//
+// @param request - ListSecretsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSecretsResponse
+func (client *Client) ListSecretsWithOptions(request *ListSecretsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSecretsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayType) {
+		query["gatewayType"] = request.GatewayType
+	}
+
+	if !dara.IsNil(request.NameLike) {
+		query["nameLike"] = request.NameLike
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSecrets"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/secrets"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSecretsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询密钥列表
+//
+// @param request - ListSecretsRequest
+//
+// @return ListSecretsResponse
+func (client *Client) ListSecrets(request *ListSecretsRequest) (_result *ListSecretsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSecretsResponse{}
+	_body, _err := client.ListSecretsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of services.
 //
 // @param request - ListServicesRequest
@@ -7178,6 +7512,72 @@ func (client *Client) UpdatePolicy(policyId *string, request *UpdatePolicyReques
 	headers := make(map[string]*string)
 	_result = &UpdatePolicyResponse{}
 	_body, _err := client.UpdatePolicyWithOptions(policyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新消费者
+//
+// @param request - UpdateSecretRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSecretResponse
+func (client *Client) UpdateSecretWithOptions(secretId *string, request *UpdateSecretRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateSecretResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SecretData) {
+		body["secretData"] = request.SecretData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateSecret"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/secrets/" + dara.PercentEncode(dara.StringValue(secretId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateSecretResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新消费者
+//
+// @param request - UpdateSecretRequest
+//
+// @return UpdateSecretResponse
+func (client *Client) UpdateSecret(secretId *string, request *UpdateSecretRequest) (_result *UpdateSecretResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateSecretResponse{}
+	_body, _err := client.UpdateSecretWithOptions(secretId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
