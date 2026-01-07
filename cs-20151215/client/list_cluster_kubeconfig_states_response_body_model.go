@@ -186,7 +186,8 @@ type ListClusterKubeconfigStatesResponseBodyStates struct {
 	// example:
 	//
 	// Expired
-	CertState *string `json:"cert_state,omitempty" xml:"cert_state,omitempty"`
+	CertState         *string                                                           `json:"cert_state,omitempty" xml:"cert_state,omitempty"`
+	CloudServiceRoles []*ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles `json:"cloud_service_roles,omitempty" xml:"cloud_service_roles,omitempty" type:"Repeated"`
 	// Indicates whether the client certificate for the kubeconfig file can be revoked.
 	//
 	// example:
@@ -231,6 +232,10 @@ func (s *ListClusterKubeconfigStatesResponseBodyStates) GetCertState() *string {
 	return s.CertState
 }
 
+func (s *ListClusterKubeconfigStatesResponseBodyStates) GetCloudServiceRoles() []*ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles {
+	return s.CloudServiceRoles
+}
+
 func (s *ListClusterKubeconfigStatesResponseBodyStates) GetRevokable() *bool {
 	return s.Revokable
 }
@@ -270,11 +275,80 @@ func (s *ListClusterKubeconfigStatesResponseBodyStates) SetCertState(v string) *
 	return s
 }
 
+func (s *ListClusterKubeconfigStatesResponseBodyStates) SetCloudServiceRoles(v []*ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles) *ListClusterKubeconfigStatesResponseBodyStates {
+	s.CloudServiceRoles = v
+	return s
+}
+
 func (s *ListClusterKubeconfigStatesResponseBodyStates) SetRevokable(v bool) *ListClusterKubeconfigStatesResponseBodyStates {
 	s.Revokable = &v
 	return s
 }
 
 func (s *ListClusterKubeconfigStatesResponseBodyStates) Validate() error {
+	if s.CloudServiceRoles != nil {
+		for _, item := range s.CloudServiceRoles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles struct {
+	IsDefaultTemplate *bool   `json:"is_default_template,omitempty" xml:"is_default_template,omitempty"`
+	RoleName          *string `json:"role_name,omitempty" xml:"role_name,omitempty"`
+	RoleNamespace     *string `json:"role_namespace,omitempty" xml:"role_namespace,omitempty"`
+	Type              *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles) GetIsDefaultTemplate() *bool {
+	return s.IsDefaultTemplate
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles) GetRoleName() *string {
+	return s.RoleName
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles) GetRoleNamespace() *string {
+	return s.RoleNamespace
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles) GetType() *string {
+	return s.Type
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles) SetIsDefaultTemplate(v bool) *ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles {
+	s.IsDefaultTemplate = &v
+	return s
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles) SetRoleName(v string) *ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles {
+	s.RoleName = &v
+	return s
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles) SetRoleNamespace(v string) *ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles {
+	s.RoleNamespace = &v
+	return s
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles) SetType(v string) *ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles {
+	s.Type = &v
+	return s
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles) Validate() error {
 	return dara.Validate(s)
 }

@@ -4882,6 +4882,10 @@ func (client *Client) ListClusterKubeconfigStatesWithContext(ctx context.Context
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudServiceKubeConfig) {
+		query["cloudServiceKubeConfig"] = request.CloudServiceKubeConfig
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["pageNumber"] = request.PageNumber
 	}

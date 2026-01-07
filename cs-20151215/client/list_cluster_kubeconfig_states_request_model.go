@@ -9,6 +9,8 @@ type iListClusterKubeconfigStatesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCloudServiceKubeConfig(v bool) *ListClusterKubeconfigStatesRequest
+	GetCloudServiceKubeConfig() *bool
 	SetPageNumber(v int32) *ListClusterKubeconfigStatesRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListClusterKubeconfigStatesRequest
@@ -16,6 +18,7 @@ type iListClusterKubeconfigStatesRequest interface {
 }
 
 type ListClusterKubeconfigStatesRequest struct {
+	CloudServiceKubeConfig *bool `json:"cloudServiceKubeConfig,omitempty" xml:"cloudServiceKubeConfig,omitempty"`
 	// The page number.
 	//
 	// 	- Valid values: ≥ 1.
@@ -46,12 +49,21 @@ func (s ListClusterKubeconfigStatesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListClusterKubeconfigStatesRequest) GetCloudServiceKubeConfig() *bool {
+	return s.CloudServiceKubeConfig
+}
+
 func (s *ListClusterKubeconfigStatesRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
 
 func (s *ListClusterKubeconfigStatesRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *ListClusterKubeconfigStatesRequest) SetCloudServiceKubeConfig(v bool) *ListClusterKubeconfigStatesRequest {
+	s.CloudServiceKubeConfig = &v
+	return s
 }
 
 func (s *ListClusterKubeconfigStatesRequest) SetPageNumber(v int32) *ListClusterKubeconfigStatesRequest {
