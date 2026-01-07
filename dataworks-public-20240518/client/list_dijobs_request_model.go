@@ -23,6 +23,8 @@ type iListDIJobsRequest interface {
 	GetProjectId() *int64
 	SetSourceDataSourceType(v string) *ListDIJobsRequest
 	GetSourceDataSourceType() *string
+	SetSpecType(v string) *ListDIJobsRequest
+	GetSpecType() *string
 }
 
 type ListDIJobsRequest struct {
@@ -82,6 +84,7 @@ type ListDIJobsRequest struct {
 	//
 	// MySQL
 	SourceDataSourceType *string `json:"SourceDataSourceType,omitempty" xml:"SourceDataSourceType,omitempty"`
+	SpecType             *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
 }
 
 func (s ListDIJobsRequest) String() string {
@@ -120,6 +123,10 @@ func (s *ListDIJobsRequest) GetSourceDataSourceType() *string {
 	return s.SourceDataSourceType
 }
 
+func (s *ListDIJobsRequest) GetSpecType() *string {
+	return s.SpecType
+}
+
 func (s *ListDIJobsRequest) SetDestinationDataSourceType(v string) *ListDIJobsRequest {
 	s.DestinationDataSourceType = &v
 	return s
@@ -152,6 +159,11 @@ func (s *ListDIJobsRequest) SetProjectId(v int64) *ListDIJobsRequest {
 
 func (s *ListDIJobsRequest) SetSourceDataSourceType(v string) *ListDIJobsRequest {
 	s.SourceDataSourceType = &v
+	return s
+}
+
+func (s *ListDIJobsRequest) SetSpecType(v string) *ListDIJobsRequest {
+	s.SpecType = &v
 	return s
 }
 
