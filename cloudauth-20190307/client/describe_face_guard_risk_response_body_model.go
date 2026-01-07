@@ -101,7 +101,8 @@ type DescribeFaceGuardRiskResponseBodyResultObject struct {
 	// example:
 	//
 	// sha43d9cabd52d370d9f4cca9468f71e
-	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	CertifyId      *string  `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	GuardRiskScore *float64 `json:"GuardRiskScore,omitempty" xml:"GuardRiskScore,omitempty"`
 	// Extended information, in JSON format. (Customized return based on tenant requirements)
 	//
 	// example:
@@ -150,6 +151,10 @@ func (s *DescribeFaceGuardRiskResponseBodyResultObject) GetCertifyId() *string {
 	return s.CertifyId
 }
 
+func (s *DescribeFaceGuardRiskResponseBodyResultObject) GetGuardRiskScore() *float64 {
+	return s.GuardRiskScore
+}
+
 func (s *DescribeFaceGuardRiskResponseBodyResultObject) GetRiskExtends() *string {
 	return s.RiskExtends
 }
@@ -160,6 +165,11 @@ func (s *DescribeFaceGuardRiskResponseBodyResultObject) GetRiskTags() *string {
 
 func (s *DescribeFaceGuardRiskResponseBodyResultObject) SetCertifyId(v string) *DescribeFaceGuardRiskResponseBodyResultObject {
 	s.CertifyId = &v
+	return s
+}
+
+func (s *DescribeFaceGuardRiskResponseBodyResultObject) SetGuardRiskScore(v float64) *DescribeFaceGuardRiskResponseBodyResultObject {
+	s.GuardRiskScore = &v
 	return s
 }
 
