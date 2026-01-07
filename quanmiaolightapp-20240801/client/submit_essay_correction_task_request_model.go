@@ -141,7 +141,8 @@ type SubmitEssayCorrectionTaskRequestTasks struct {
 	// example:
 	//
 	// xxx
-	Answer *string `json:"answer,omitempty" xml:"answer,omitempty"`
+	Answer   *string `json:"answer,omitempty" xml:"answer,omitempty"`
+	CustomId *string `json:"customId,omitempty" xml:"customId,omitempty"`
 	// example:
 	//
 	// 高中二年级
@@ -176,6 +177,10 @@ func (s *SubmitEssayCorrectionTaskRequestTasks) GetAnswer() *string {
 	return s.Answer
 }
 
+func (s *SubmitEssayCorrectionTaskRequestTasks) GetCustomId() *string {
+	return s.CustomId
+}
+
 func (s *SubmitEssayCorrectionTaskRequestTasks) GetGrade() *string {
 	return s.Grade
 }
@@ -198,6 +203,11 @@ func (s *SubmitEssayCorrectionTaskRequestTasks) GetTotalScore() *int32 {
 
 func (s *SubmitEssayCorrectionTaskRequestTasks) SetAnswer(v string) *SubmitEssayCorrectionTaskRequestTasks {
 	s.Answer = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskRequestTasks) SetCustomId(v string) *SubmitEssayCorrectionTaskRequestTasks {
+	s.CustomId = &v
 	return s
 }
 
