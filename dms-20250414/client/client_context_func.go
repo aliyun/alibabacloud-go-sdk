@@ -10,6 +10,62 @@ import (
 
 // Summary:
 //
+// 为空间添加用户
+//
+// @param request - AddUserToDataAgentWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserToDataAgentWorkspaceResponse
+func (client *Client) AddUserToDataAgentWorkspaceWithContext(ctx context.Context, request *AddUserToDataAgentWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *AddUserToDataAgentWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.MemberId) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !dara.IsNil(request.RoleName) {
+		query["RoleName"] = request.RoleName
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddUserToDataAgentWorkspace"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddUserToDataAgentWorkspaceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 批量新建湖仓表分区
 //
 // @param tmpReq - BatchCreateDataLakePartitionsRequest
@@ -444,6 +500,58 @@ func (client *Client) CreateDataAgentSessionWithContext(ctx context.Context, tmp
 
 // Summary:
 //
+// 创建DataAgent工作空间
+//
+// @param request - CreateDataAgentWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataAgentWorkspaceResponse
+func (client *Client) CreateDataAgentWorkspaceWithContext(ctx context.Context, request *CreateDataAgentWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *CreateDataAgentWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.WorkspaceDesc) {
+		query["WorkspaceDesc"] = request.WorkspaceDesc
+	}
+
+	if !dara.IsNil(request.WorkspaceName) {
+		query["WorkspaceName"] = request.WorkspaceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataAgentWorkspace"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataAgentWorkspaceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 新建湖仓数据库
 //
 // @param tmpReq - CreateDataLakeDatabaseRequest
@@ -776,6 +884,54 @@ func (client *Client) DeleteAirflowWithContext(ctx context.Context, request *Del
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAirflowResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除DataAgent工作空间
+//
+// @param request - DeleteDataAgentWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataAgentWorkspaceResponse
+func (client *Client) DeleteDataAgentWorkspaceWithContext(ctx context.Context, request *DeleteDataAgentWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataAgentWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataAgentWorkspace"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataAgentWorkspaceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1415,6 +1571,102 @@ func (client *Client) GetChatContentWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
+// 获取主账号下的子账号信息
+//
+// @param request - GetDataAgentSubAccountInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataAgentSubAccountInfoResponse
+func (client *Client) GetDataAgentSubAccountInfoWithContext(ctx context.Context, request *GetDataAgentSubAccountInfoRequest, runtime *dara.RuntimeOptions) (_result *GetDataAgentSubAccountInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DmsUnit) {
+		query["DmsUnit"] = request.DmsUnit
+	}
+
+	if !dara.IsNil(request.SubAccountId) {
+		query["SubAccountId"] = request.SubAccountId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataAgentSubAccountInfo"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataAgentSubAccountInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取空间信息
+//
+// @param request - GetDataAgentWorkspaceInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataAgentWorkspaceInfoResponse
+func (client *Client) GetDataAgentWorkspaceInfoWithContext(ctx context.Context, request *GetDataAgentWorkspaceInfoRequest, runtime *dara.RuntimeOptions) (_result *GetDataAgentWorkspaceInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataAgentWorkspaceInfo"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataAgentWorkspaceInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取uc的数据库目录
 //
 // @param request - GetDataLakeCatalogRequest
@@ -1941,6 +2193,162 @@ func (client *Client) ListCustomAgentWithContext(ctx context.Context, request *L
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCustomAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取主账号下的空间（分页）
+//
+// @param request - ListDataAgentWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataAgentWorkspaceResponse
+func (client *Client) ListDataAgentWorkspaceWithContext(ctx context.Context, request *ListDataAgentWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *ListDataAgentWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.WorkspaceName) {
+		query["WorkspaceName"] = request.WorkspaceName
+	}
+
+	if !dara.IsNil(request.WorkspaceType) {
+		query["WorkspaceType"] = request.WorkspaceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataAgentWorkspace"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataAgentWorkspaceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取空间所有成员
+//
+// @param request - ListDataAgentWorkspaceMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataAgentWorkspaceMemberResponse
+func (client *Client) ListDataAgentWorkspaceMemberWithContext(ctx context.Context, request *ListDataAgentWorkspaceMemberRequest, runtime *dara.RuntimeOptions) (_result *ListDataAgentWorkspaceMemberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SearchMemberId) {
+		query["SearchMemberId"] = request.SearchMemberId
+	}
+
+	if !dara.IsNil(request.SearchRoleName) {
+		query["SearchRoleName"] = request.SearchRoleName
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataAgentWorkspaceMember"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataAgentWorkspaceMemberResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2709,6 +3117,58 @@ func (client *Client) ListFileUploadWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
+// 从空间中移除用户
+//
+// @param request - RemoveUserToDataAgentWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveUserToDataAgentWorkspaceResponse
+func (client *Client) RemoveUserToDataAgentWorkspaceWithContext(ctx context.Context, request *RemoveUserToDataAgentWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *RemoveUserToDataAgentWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.MemberId) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveUserToDataAgentWorkspace"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveUserToDataAgentWorkspaceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # SendChatMessage
 //
 // @param tmpReq - SendChatMessageRequest
@@ -2873,6 +3333,118 @@ func (client *Client) UpdateAirflowWithContext(ctx context.Context, request *Upd
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAirflowResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新空间的信息
+//
+// @param request - UpdateDataAgentSpaceInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataAgentSpaceInfoResponse
+func (client *Client) UpdateDataAgentSpaceInfoWithContext(ctx context.Context, request *UpdateDataAgentSpaceInfoRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataAgentSpaceInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.WorkspaceDesc) {
+		query["WorkspaceDesc"] = request.WorkspaceDesc
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WorkspaceName) {
+		query["WorkspaceName"] = request.WorkspaceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataAgentSpaceInfo"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataAgentSpaceInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 调整空间成员的角色
+//
+// @param request - UpdateDataAgentWorkspaceMemberRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataAgentWorkspaceMemberRoleResponse
+func (client *Client) UpdateDataAgentWorkspaceMemberRoleWithContext(ctx context.Context, request *UpdateDataAgentWorkspaceMemberRoleRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataAgentWorkspaceMemberRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.MemberId) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !dara.IsNil(request.RoleName) {
+		query["RoleName"] = request.RoleName
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataAgentWorkspaceMemberRole"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataAgentWorkspaceMemberRoleResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
