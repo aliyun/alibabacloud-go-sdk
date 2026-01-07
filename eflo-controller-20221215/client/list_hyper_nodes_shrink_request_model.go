@@ -17,6 +17,8 @@ type iListHyperNodesShrinkRequest interface {
 	GetHpnZone() *string
 	SetHyperNodeId(v string) *ListHyperNodesShrinkRequest
 	GetHyperNodeId() *string
+	SetHyperNodeIdsShrink(v string) *ListHyperNodesShrinkRequest
+	GetHyperNodeIdsShrink() *string
 	SetMachineType(v string) *ListHyperNodesShrinkRequest
 	GetMachineType() *string
 	SetMaxResults(v int32) *ListHyperNodesShrinkRequest
@@ -48,7 +50,8 @@ type ListHyperNodesShrinkRequest struct {
 	// example:
 	//
 	// e01-cn-zvp2tgykr08
-	HyperNodeId *string `json:"HyperNodeId,omitempty" xml:"HyperNodeId,omitempty"`
+	HyperNodeId        *string `json:"HyperNodeId,omitempty" xml:"HyperNodeId,omitempty"`
+	HyperNodeIdsShrink *string `json:"HyperNodeIds,omitempty" xml:"HyperNodeIds,omitempty"`
 	// example:
 	//
 	// efg1.nvga1
@@ -101,6 +104,10 @@ func (s *ListHyperNodesShrinkRequest) GetHyperNodeId() *string {
 	return s.HyperNodeId
 }
 
+func (s *ListHyperNodesShrinkRequest) GetHyperNodeIdsShrink() *string {
+	return s.HyperNodeIdsShrink
+}
+
 func (s *ListHyperNodesShrinkRequest) GetMachineType() *string {
 	return s.MachineType
 }
@@ -150,6 +157,11 @@ func (s *ListHyperNodesShrinkRequest) SetHpnZone(v string) *ListHyperNodesShrink
 
 func (s *ListHyperNodesShrinkRequest) SetHyperNodeId(v string) *ListHyperNodesShrinkRequest {
 	s.HyperNodeId = &v
+	return s
+}
+
+func (s *ListHyperNodesShrinkRequest) SetHyperNodeIdsShrink(v string) *ListHyperNodesShrinkRequest {
+	s.HyperNodeIdsShrink = &v
 	return s
 }
 

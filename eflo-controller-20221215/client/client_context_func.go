@@ -2027,6 +2027,10 @@ func (client *Client) ListHyperNodesWithContext(ctx context.Context, tmpReq *Lis
 	}
 	request := &ListHyperNodesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.HyperNodeIds) {
+		request.HyperNodeIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HyperNodeIds, dara.String("HyperNodeIds"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.OperatingStates) {
 		request.OperatingStatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OperatingStates, dara.String("OperatingStates"), dara.String("json"))
 	}
@@ -2034,6 +2038,10 @@ func (client *Client) ListHyperNodesWithContext(ctx context.Context, tmpReq *Lis
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CommodityCode) {
 		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !dara.IsNil(request.HyperNodeIdsShrink) {
+		query["HyperNodeIds"] = request.HyperNodeIdsShrink
 	}
 
 	if !dara.IsNil(request.OperatingStatesShrink) {
