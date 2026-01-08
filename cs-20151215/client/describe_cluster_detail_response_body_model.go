@@ -23,6 +23,8 @@ type iDescribeClusterDetailResponseBody interface {
 	GetContainerCidr() *string
 	SetControlPlaneConfig(v *DescribeClusterDetailResponseBodyControlPlaneConfig) *DescribeClusterDetailResponseBody
 	GetControlPlaneConfig() *DescribeClusterDetailResponseBodyControlPlaneConfig
+	SetControlPlaneEndpointsConfig(v *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig) *DescribeClusterDetailResponseBody
+	GetControlPlaneEndpointsConfig() *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig
 	SetCreated(v string) *DescribeClusterDetailResponseBody
 	GetCreated() *string
 	SetCurrentVersion(v string) *DescribeClusterDetailResponseBody
@@ -140,7 +142,8 @@ type DescribeClusterDetailResponseBody struct {
 	// 172.20.0.0/16
 	ContainerCidr *string `json:"container_cidr,omitempty" xml:"container_cidr,omitempty"`
 	// The control plane configurations in an ACK dedicated cluster.
-	ControlPlaneConfig *DescribeClusterDetailResponseBodyControlPlaneConfig `json:"control_plane_config,omitempty" xml:"control_plane_config,omitempty" type:"Struct"`
+	ControlPlaneConfig          *DescribeClusterDetailResponseBodyControlPlaneConfig          `json:"control_plane_config,omitempty" xml:"control_plane_config,omitempty" type:"Struct"`
+	ControlPlaneEndpointsConfig *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig `json:"control_plane_endpoints_config,omitempty" xml:"control_plane_endpoints_config,omitempty" type:"Struct"`
 	// The time when the cluster was created.
 	//
 	// example:
@@ -435,6 +438,10 @@ func (s *DescribeClusterDetailResponseBody) GetControlPlaneConfig() *DescribeClu
 	return s.ControlPlaneConfig
 }
 
+func (s *DescribeClusterDetailResponseBody) GetControlPlaneEndpointsConfig() *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig {
+	return s.ControlPlaneEndpointsConfig
+}
+
 func (s *DescribeClusterDetailResponseBody) GetCreated() *string {
 	return s.Created
 }
@@ -611,6 +618,11 @@ func (s *DescribeClusterDetailResponseBody) SetContainerCidr(v string) *Describe
 
 func (s *DescribeClusterDetailResponseBody) SetControlPlaneConfig(v *DescribeClusterDetailResponseBodyControlPlaneConfig) *DescribeClusterDetailResponseBody {
 	s.ControlPlaneConfig = v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBody) SetControlPlaneEndpointsConfig(v *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig) *DescribeClusterDetailResponseBody {
+	s.ControlPlaneEndpointsConfig = v
 	return s
 }
 
@@ -802,6 +814,11 @@ func (s *DescribeClusterDetailResponseBody) Validate() error {
 	}
 	if s.ControlPlaneConfig != nil {
 		if err := s.ControlPlaneConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ControlPlaneEndpointsConfig != nil {
+		if err := s.ControlPlaneEndpointsConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1226,6 +1243,71 @@ func (s *DescribeClusterDetailResponseBodyControlPlaneConfig) Validate() error {
 		}
 	}
 	return nil
+}
+
+type DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig struct {
+	InternalDnsConfig *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig `json:"internal_dns_config,omitempty" xml:"internal_dns_config,omitempty" type:"Struct"`
+}
+
+func (s DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig) GetInternalDnsConfig() *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig {
+	return s.InternalDnsConfig
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig) SetInternalDnsConfig(v *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig) *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig {
+	s.InternalDnsConfig = v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig) Validate() error {
+	if s.InternalDnsConfig != nil {
+		if err := s.InternalDnsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig struct {
+	BindVpcs []*string `json:"bind_vpcs,omitempty" xml:"bind_vpcs,omitempty" type:"Repeated"`
+	Enabled  *bool     `json:"enabled,omitempty" xml:"enabled,omitempty"`
+}
+
+func (s DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig) GetBindVpcs() []*string {
+	return s.BindVpcs
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig) SetBindVpcs(v []*string) *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig {
+	s.BindVpcs = v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig) SetEnabled(v bool) *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeClusterDetailResponseBodyOperationPolicy struct {

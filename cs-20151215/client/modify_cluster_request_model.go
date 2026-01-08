@@ -21,6 +21,8 @@ type iModifyClusterRequest interface {
 	GetClusterName() *string
 	SetControlPlaneConfig(v *ModifyClusterRequestControlPlaneConfig) *ModifyClusterRequest
 	GetControlPlaneConfig() *ModifyClusterRequestControlPlaneConfig
+	SetControlPlaneEndpointsConfig(v *ModifyClusterRequestControlPlaneEndpointsConfig) *ModifyClusterRequest
+	GetControlPlaneEndpointsConfig() *ModifyClusterRequestControlPlaneEndpointsConfig
 	SetDeletionProtection(v bool) *ModifyClusterRequest
 	GetDeletionProtection() *bool
 	SetEnableRrsa(v bool) *ModifyClusterRequest
@@ -79,7 +81,8 @@ type ModifyClusterRequest struct {
 	// cluster-new-name
 	ClusterName *string `json:"cluster_name,omitempty" xml:"cluster_name,omitempty"`
 	// The control plane configurations of an ACK dedicated cluster.
-	ControlPlaneConfig *ModifyClusterRequestControlPlaneConfig `json:"control_plane_config,omitempty" xml:"control_plane_config,omitempty" type:"Struct"`
+	ControlPlaneConfig          *ModifyClusterRequestControlPlaneConfig          `json:"control_plane_config,omitempty" xml:"control_plane_config,omitempty" type:"Struct"`
+	ControlPlaneEndpointsConfig *ModifyClusterRequestControlPlaneEndpointsConfig `json:"control_plane_endpoints_config,omitempty" xml:"control_plane_endpoints_config,omitempty" type:"Struct"`
 	// Specifies whether to enable cluster deletion protection. If you enable this option, the cluster cannot be deleted in the console or by calling API operations. Valid values:
 	//
 	// 	- `true`: enables cluster deletion protection.
@@ -240,6 +243,10 @@ func (s *ModifyClusterRequest) GetControlPlaneConfig() *ModifyClusterRequestCont
 	return s.ControlPlaneConfig
 }
 
+func (s *ModifyClusterRequest) GetControlPlaneEndpointsConfig() *ModifyClusterRequestControlPlaneEndpointsConfig {
+	return s.ControlPlaneEndpointsConfig
+}
+
 func (s *ModifyClusterRequest) GetDeletionProtection() *bool {
 	return s.DeletionProtection
 }
@@ -318,6 +325,11 @@ func (s *ModifyClusterRequest) SetControlPlaneConfig(v *ModifyClusterRequestCont
 	return s
 }
 
+func (s *ModifyClusterRequest) SetControlPlaneEndpointsConfig(v *ModifyClusterRequestControlPlaneEndpointsConfig) *ModifyClusterRequest {
+	s.ControlPlaneEndpointsConfig = v
+	return s
+}
+
 func (s *ModifyClusterRequest) SetDeletionProtection(v bool) *ModifyClusterRequest {
 	s.DeletionProtection = &v
 	return s
@@ -386,6 +398,11 @@ func (s *ModifyClusterRequest) Validate() error {
 	}
 	if s.ControlPlaneConfig != nil {
 		if err := s.ControlPlaneConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ControlPlaneEndpointsConfig != nil {
+		if err := s.ControlPlaneEndpointsConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -890,6 +907,71 @@ func (s *ModifyClusterRequestControlPlaneConfig) SetSystemDiskSnapshotPolicyId(v
 }
 
 func (s *ModifyClusterRequestControlPlaneConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type ModifyClusterRequestControlPlaneEndpointsConfig struct {
+	InternalDnsConfig *ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig `json:"internal_dns_config,omitempty" xml:"internal_dns_config,omitempty" type:"Struct"`
+}
+
+func (s ModifyClusterRequestControlPlaneEndpointsConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyClusterRequestControlPlaneEndpointsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterRequestControlPlaneEndpointsConfig) GetInternalDnsConfig() *ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig {
+	return s.InternalDnsConfig
+}
+
+func (s *ModifyClusterRequestControlPlaneEndpointsConfig) SetInternalDnsConfig(v *ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig) *ModifyClusterRequestControlPlaneEndpointsConfig {
+	s.InternalDnsConfig = v
+	return s
+}
+
+func (s *ModifyClusterRequestControlPlaneEndpointsConfig) Validate() error {
+	if s.InternalDnsConfig != nil {
+		if err := s.InternalDnsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig struct {
+	BindVpcs []*string `json:"bind_vpcs,omitempty" xml:"bind_vpcs,omitempty" type:"Repeated"`
+	Enabled  *bool     `json:"enabled,omitempty" xml:"enabled,omitempty"`
+}
+
+func (s ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig) GetBindVpcs() []*string {
+	return s.BindVpcs
+}
+
+func (s *ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig) SetBindVpcs(v []*string) *ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig {
+	s.BindVpcs = v
+	return s
+}
+
+func (s *ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig) SetEnabled(v bool) *ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig) Validate() error {
 	return dara.Validate(s)
 }
 

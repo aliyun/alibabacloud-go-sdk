@@ -701,6 +701,10 @@ func (client *Client) CreateClusterWithContext(ctx context.Context, request *Cre
 		body["control_plane_config"] = request.ControlPlaneConfig
 	}
 
+	if !dara.IsNil(request.ControlPlaneEndpointsConfig) {
+		body["control_plane_endpoints_config"] = request.ControlPlaneEndpointsConfig
+	}
+
 	if !dara.IsNil(request.ControlplaneLogComponents) {
 		body["controlplane_log_components"] = request.ControlplaneLogComponents
 	}
@@ -5244,6 +5248,10 @@ func (client *Client) ModifyClusterWithContext(ctx context.Context, ClusterId *s
 
 	if !dara.IsNil(request.ControlPlaneConfig) {
 		body["control_plane_config"] = request.ControlPlaneConfig
+	}
+
+	if !dara.IsNil(request.ControlPlaneEndpointsConfig) {
+		body["control_plane_endpoints_config"] = request.ControlPlaneEndpointsConfig
 	}
 
 	if !dara.IsNil(request.DeletionProtection) {

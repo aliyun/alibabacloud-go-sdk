@@ -39,6 +39,8 @@ type iCreateClusterRequest interface {
 	GetContainerCidr() *string
 	SetControlPlaneConfig(v *CreateClusterRequestControlPlaneConfig) *CreateClusterRequest
 	GetControlPlaneConfig() *CreateClusterRequestControlPlaneConfig
+	SetControlPlaneEndpointsConfig(v *CreateClusterRequestControlPlaneEndpointsConfig) *CreateClusterRequest
+	GetControlPlaneEndpointsConfig() *CreateClusterRequestControlPlaneEndpointsConfig
 	SetControlplaneLogComponents(v []*string) *CreateClusterRequest
 	GetControlplaneLogComponents() []*string
 	SetControlplaneLogProject(v string) *CreateClusterRequest
@@ -377,7 +379,8 @@ type CreateClusterRequest struct {
 	// 172.20.0.0/16
 	ContainerCidr *string `json:"container_cidr,omitempty" xml:"container_cidr,omitempty"`
 	// The control plane configurations of an ACK dedicated cluster.
-	ControlPlaneConfig *CreateClusterRequestControlPlaneConfig `json:"control_plane_config,omitempty" xml:"control_plane_config,omitempty" type:"Struct"`
+	ControlPlaneConfig          *CreateClusterRequestControlPlaneConfig          `json:"control_plane_config,omitempty" xml:"control_plane_config,omitempty" type:"Struct"`
+	ControlPlaneEndpointsConfig *CreateClusterRequestControlPlaneEndpointsConfig `json:"control_plane_endpoints_config,omitempty" xml:"control_plane_endpoints_config,omitempty" type:"Struct"`
 	// The control plane components for which you want to enable log collection.
 	//
 	// By default, the logs of kube-apiserver, kube-controller-manager, and kube-scheduler are collected.
@@ -1382,6 +1385,10 @@ func (s *CreateClusterRequest) GetControlPlaneConfig() *CreateClusterRequestCont
 	return s.ControlPlaneConfig
 }
 
+func (s *CreateClusterRequest) GetControlPlaneEndpointsConfig() *CreateClusterRequestControlPlaneEndpointsConfig {
+	return s.ControlPlaneEndpointsConfig
+}
+
 func (s *CreateClusterRequest) GetControlplaneLogComponents() []*string {
 	return s.ControlplaneLogComponents
 }
@@ -1802,6 +1809,11 @@ func (s *CreateClusterRequest) SetContainerCidr(v string) *CreateClusterRequest 
 
 func (s *CreateClusterRequest) SetControlPlaneConfig(v *CreateClusterRequestControlPlaneConfig) *CreateClusterRequest {
 	s.ControlPlaneConfig = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetControlPlaneEndpointsConfig(v *CreateClusterRequestControlPlaneEndpointsConfig) *CreateClusterRequest {
+	s.ControlPlaneEndpointsConfig = v
 	return s
 }
 
@@ -2262,6 +2274,11 @@ func (s *CreateClusterRequest) Validate() error {
 	}
 	if s.ControlPlaneConfig != nil {
 		if err := s.ControlPlaneConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ControlPlaneEndpointsConfig != nil {
+		if err := s.ControlPlaneEndpointsConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -2768,6 +2785,61 @@ func (s *CreateClusterRequestControlPlaneConfig) Validate() error {
 		}
 	}
 	return nil
+}
+
+type CreateClusterRequestControlPlaneEndpointsConfig struct {
+	InternalDnsConfig *CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig `json:"internal_dns_config,omitempty" xml:"internal_dns_config,omitempty" type:"Struct"`
+}
+
+func (s CreateClusterRequestControlPlaneEndpointsConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateClusterRequestControlPlaneEndpointsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequestControlPlaneEndpointsConfig) GetInternalDnsConfig() *CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig {
+	return s.InternalDnsConfig
+}
+
+func (s *CreateClusterRequestControlPlaneEndpointsConfig) SetInternalDnsConfig(v *CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig) *CreateClusterRequestControlPlaneEndpointsConfig {
+	s.InternalDnsConfig = v
+	return s
+}
+
+func (s *CreateClusterRequestControlPlaneEndpointsConfig) Validate() error {
+	if s.InternalDnsConfig != nil {
+		if err := s.InternalDnsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig struct {
+	BindVpcs []*string `json:"bind_vpcs,omitempty" xml:"bind_vpcs,omitempty" type:"Repeated"`
+}
+
+func (s CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig) GetBindVpcs() []*string {
+	return s.BindVpcs
+}
+
+func (s *CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig) SetBindVpcs(v []*string) *CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig {
+	s.BindVpcs = v
+	return s
+}
+
+func (s *CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateClusterRequestOperationPolicy struct {
