@@ -112,9 +112,10 @@ type TextModerationPlusResponseBodyData struct {
 	// example:
 	//
 	// text1234
-	DataId           *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	DetectedLanguage *string `json:"DetectedLanguage,omitempty" xml:"DetectedLanguage,omitempty"`
-	ManualTaskId     *string `json:"ManualTaskId,omitempty" xml:"ManualTaskId,omitempty"`
+	DataId           *string                                `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DetectedLanguage *string                                `json:"DetectedLanguage,omitempty" xml:"DetectedLanguage,omitempty"`
+	Ext              *TextModerationPlusResponseBodyDataExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
+	ManualTaskId     *string                                `json:"ManualTaskId,omitempty" xml:"ManualTaskId,omitempty"`
 	// The results.
 	Result []*TextModerationPlusResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// Risk Level
@@ -170,6 +171,10 @@ func (s *TextModerationPlusResponseBodyData) GetDataId() *string {
 
 func (s *TextModerationPlusResponseBodyData) GetDetectedLanguage() *string {
 	return s.DetectedLanguage
+}
+
+func (s *TextModerationPlusResponseBodyData) GetExt() *TextModerationPlusResponseBodyDataExt {
+	return s.Ext
 }
 
 func (s *TextModerationPlusResponseBodyData) GetManualTaskId() *string {
@@ -230,6 +235,11 @@ func (s *TextModerationPlusResponseBodyData) SetDetectedLanguage(v string) *Text
 	return s
 }
 
+func (s *TextModerationPlusResponseBodyData) SetExt(v *TextModerationPlusResponseBodyDataExt) *TextModerationPlusResponseBodyData {
+	s.Ext = v
+	return s
+}
+
 func (s *TextModerationPlusResponseBodyData) SetManualTaskId(v string) *TextModerationPlusResponseBodyData {
 	s.ManualTaskId = &v
 	return s
@@ -282,6 +292,11 @@ func (s *TextModerationPlusResponseBodyData) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.Ext != nil {
+		if err := s.Ext.Validate(); err != nil {
+			return err
 		}
 	}
 	if s.Result != nil {
@@ -437,6 +452,61 @@ func (s *TextModerationPlusResponseBodyDataAttackResult) SetLabel(v string) *Tex
 }
 
 func (s *TextModerationPlusResponseBodyDataAttackResult) Validate() error {
+	return dara.Validate(s)
+}
+
+type TextModerationPlusResponseBodyDataExt struct {
+	LlmContent *TextModerationPlusResponseBodyDataExtLlmContent `json:"LlmContent,omitempty" xml:"LlmContent,omitempty" type:"Struct"`
+}
+
+func (s TextModerationPlusResponseBodyDataExt) String() string {
+	return dara.Prettify(s)
+}
+
+func (s TextModerationPlusResponseBodyDataExt) GoString() string {
+	return s.String()
+}
+
+func (s *TextModerationPlusResponseBodyDataExt) GetLlmContent() *TextModerationPlusResponseBodyDataExtLlmContent {
+	return s.LlmContent
+}
+
+func (s *TextModerationPlusResponseBodyDataExt) SetLlmContent(v *TextModerationPlusResponseBodyDataExtLlmContent) *TextModerationPlusResponseBodyDataExt {
+	s.LlmContent = v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyDataExt) Validate() error {
+	if s.LlmContent != nil {
+		if err := s.LlmContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type TextModerationPlusResponseBodyDataExtLlmContent struct {
+	OutputText *string `json:"OutputText,omitempty" xml:"OutputText,omitempty"`
+}
+
+func (s TextModerationPlusResponseBodyDataExtLlmContent) String() string {
+	return dara.Prettify(s)
+}
+
+func (s TextModerationPlusResponseBodyDataExtLlmContent) GoString() string {
+	return s.String()
+}
+
+func (s *TextModerationPlusResponseBodyDataExtLlmContent) GetOutputText() *string {
+	return s.OutputText
+}
+
+func (s *TextModerationPlusResponseBodyDataExtLlmContent) SetOutputText(v string) *TextModerationPlusResponseBodyDataExtLlmContent {
+	s.OutputText = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyDataExtLlmContent) Validate() error {
 	return dara.Validate(s)
 }
 

@@ -119,7 +119,8 @@ type TextModerationResponseBodyData struct {
 	// example:
 	//
 	// xxxxxx
-	DeviceId *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
+	DeviceId *string                            `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
+	Ext      *TextModerationResponseBodyDataExt `json:"ext,omitempty" xml:"ext,omitempty" type:"Struct"`
 	// The labels. Multiple labels are separated by commas (,). Valid values: ad: ad violation profanity: abuse contraband: contraband sexual_content: pornography violence: violence nonsense: irrigation spam: spam negative_content: undesirable content cyberbullying: cyberbullying C_customized: custom library that is hit
 	//
 	// example:
@@ -159,6 +160,10 @@ func (s *TextModerationResponseBodyData) GetDeviceId() *string {
 	return s.DeviceId
 }
 
+func (s *TextModerationResponseBodyData) GetExt() *TextModerationResponseBodyDataExt {
+	return s.Ext
+}
+
 func (s *TextModerationResponseBodyData) GetLabels() *string {
 	return s.Labels
 }
@@ -191,6 +196,11 @@ func (s *TextModerationResponseBodyData) SetDeviceId(v string) *TextModerationRe
 	return s
 }
 
+func (s *TextModerationResponseBodyData) SetExt(v *TextModerationResponseBodyDataExt) *TextModerationResponseBodyData {
+	s.Ext = v
+	return s
+}
+
 func (s *TextModerationResponseBodyData) SetLabels(v string) *TextModerationResponseBodyData {
 	s.Labels = &v
 	return s
@@ -207,5 +217,65 @@ func (s *TextModerationResponseBodyData) SetReason(v string) *TextModerationResp
 }
 
 func (s *TextModerationResponseBodyData) Validate() error {
+	if s.Ext != nil {
+		if err := s.Ext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type TextModerationResponseBodyDataExt struct {
+	LlmContent *TextModerationResponseBodyDataExtLlmContent `json:"llmContent,omitempty" xml:"llmContent,omitempty" type:"Struct"`
+}
+
+func (s TextModerationResponseBodyDataExt) String() string {
+	return dara.Prettify(s)
+}
+
+func (s TextModerationResponseBodyDataExt) GoString() string {
+	return s.String()
+}
+
+func (s *TextModerationResponseBodyDataExt) GetLlmContent() *TextModerationResponseBodyDataExtLlmContent {
+	return s.LlmContent
+}
+
+func (s *TextModerationResponseBodyDataExt) SetLlmContent(v *TextModerationResponseBodyDataExtLlmContent) *TextModerationResponseBodyDataExt {
+	s.LlmContent = v
+	return s
+}
+
+func (s *TextModerationResponseBodyDataExt) Validate() error {
+	if s.LlmContent != nil {
+		if err := s.LlmContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type TextModerationResponseBodyDataExtLlmContent struct {
+	OutputText *string `json:"outputText,omitempty" xml:"outputText,omitempty"`
+}
+
+func (s TextModerationResponseBodyDataExtLlmContent) String() string {
+	return dara.Prettify(s)
+}
+
+func (s TextModerationResponseBodyDataExtLlmContent) GoString() string {
+	return s.String()
+}
+
+func (s *TextModerationResponseBodyDataExtLlmContent) GetOutputText() *string {
+	return s.OutputText
+}
+
+func (s *TextModerationResponseBodyDataExtLlmContent) SetOutputText(v string) *TextModerationResponseBodyDataExtLlmContent {
+	s.OutputText = &v
+	return s
+}
+
+func (s *TextModerationResponseBodyDataExtLlmContent) Validate() error {
 	return dara.Validate(s)
 }
