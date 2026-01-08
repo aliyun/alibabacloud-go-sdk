@@ -9,6 +9,8 @@ type iCreateLifecyclePolicyResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetLifecyclePolicyId(v string) *CreateLifecyclePolicyResponseBody
+	GetLifecyclePolicyId() *string
 	SetRequestId(v string) *CreateLifecyclePolicyResponseBody
 	GetRequestId() *string
 	SetSuccess(v bool) *CreateLifecyclePolicyResponseBody
@@ -16,6 +18,10 @@ type iCreateLifecyclePolicyResponseBody interface {
 }
 
 type CreateLifecyclePolicyResponseBody struct {
+	// example:
+	//
+	// lc-xxx
+	LifecyclePolicyId *string `json:"LifecyclePolicyId,omitempty" xml:"LifecyclePolicyId,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -44,12 +50,21 @@ func (s CreateLifecyclePolicyResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateLifecyclePolicyResponseBody) GetLifecyclePolicyId() *string {
+	return s.LifecyclePolicyId
+}
+
 func (s *CreateLifecyclePolicyResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
 func (s *CreateLifecyclePolicyResponseBody) GetSuccess() *bool {
 	return s.Success
+}
+
+func (s *CreateLifecyclePolicyResponseBody) SetLifecyclePolicyId(v string) *CreateLifecyclePolicyResponseBody {
+	s.LifecyclePolicyId = &v
+	return s
 }
 
 func (s *CreateLifecyclePolicyResponseBody) SetRequestId(v string) *CreateLifecyclePolicyResponseBody {

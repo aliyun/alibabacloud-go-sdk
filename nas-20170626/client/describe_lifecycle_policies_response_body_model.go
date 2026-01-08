@@ -125,18 +125,30 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	//
 	// 2019-10-30T10:08:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the file system.
 	//
 	// example:
 	//
 	// 31a8e4****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// example:
+	//
+	// lc-xxx
+	LifecyclePolicyId *string `json:"LifecyclePolicyId,omitempty" xml:"LifecyclePolicyId,omitempty"`
 	// The name of the lifecycle policy.
 	//
 	// example:
 	//
 	// lifecyclepolicy_01
 	LifecyclePolicyName *string `json:"LifecyclePolicyName,omitempty" xml:"LifecyclePolicyName,omitempty"`
+	// example:
+	//
+	// Auto
+	LifecyclePolicyType *string `json:"LifecyclePolicyType,omitempty" xml:"LifecyclePolicyType,omitempty"`
 	// The management rule that is associated with the lifecycle policy.
 	//
 	// Valid values:
@@ -160,7 +172,8 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	// /pathway/to/folder
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The absolute paths to multiple directories associated with the lifecycle policy.
-	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	Paths         []*string                                                              `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	RetrieveRules []*DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules `json:"RetrieveRules,omitempty" xml:"RetrieveRules,omitempty" type:"Repeated"`
 	// The storage type of the data that is dumped to the IA storage medium.
 	//
 	// Default value: InfrequentAccess (IA).
@@ -168,7 +181,8 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	// example:
 	//
 	// InfrequentAccess
-	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageType  *string                                                               `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	TransitRules []*DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules `json:"TransitRules,omitempty" xml:"TransitRules,omitempty" type:"Repeated"`
 }
 
 func (s DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) String() string {
@@ -183,12 +197,24 @@ func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) GetCreateTime()
 	return s.CreateTime
 }
 
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) GetDescription() *string {
+	return s.Description
+}
+
 func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) GetFileSystemId() *string {
 	return s.FileSystemId
 }
 
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) GetLifecyclePolicyId() *string {
+	return s.LifecyclePolicyId
+}
+
 func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) GetLifecyclePolicyName() *string {
 	return s.LifecyclePolicyName
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) GetLifecyclePolicyType() *string {
+	return s.LifecyclePolicyType
 }
 
 func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) GetLifecycleRuleName() *string {
@@ -203,12 +229,25 @@ func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) GetPaths() []*s
 	return s.Paths
 }
 
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) GetRetrieveRules() []*DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules {
+	return s.RetrieveRules
+}
+
 func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) GetStorageType() *string {
 	return s.StorageType
 }
 
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) GetTransitRules() []*DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules {
+	return s.TransitRules
+}
+
 func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetCreateTime(v string) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetDescription(v string) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
+	s.Description = &v
 	return s
 }
 
@@ -217,8 +256,18 @@ func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetFileSystemId
 	return s
 }
 
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetLifecyclePolicyId(v string) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
+	s.LifecyclePolicyId = &v
+	return s
+}
+
 func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetLifecyclePolicyName(v string) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
 	s.LifecyclePolicyName = &v
+	return s
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetLifecyclePolicyType(v string) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
+	s.LifecyclePolicyType = &v
 	return s
 }
 
@@ -237,11 +286,121 @@ func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetPaths(v []*s
 	return s
 }
 
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetRetrieveRules(v []*DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
+	s.RetrieveRules = v
+	return s
+}
+
 func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetStorageType(v string) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
 	s.StorageType = &v
 	return s
 }
 
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetTransitRules(v []*DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
+	s.TransitRules = v
+	return s
+}
+
 func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) Validate() error {
+	if s.RetrieveRules != nil {
+		for _, item := range s.RetrieveRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TransitRules != nil {
+		for _, item := range s.TransitRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules struct {
+	// example:
+	//
+	// RetrieveType
+	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	// example:
+	//
+	// All
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules) GetAttribute() *string {
+	return s.Attribute
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules) GetThreshold() *string {
+	return s.Threshold
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules) SetAttribute(v string) *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules {
+	s.Attribute = &v
+	return s
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules) SetThreshold(v string) *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules {
+	s.Threshold = &v
+	return s
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules struct {
+	// example:
+	//
+	// Atime
+	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	// example:
+	//
+	// 3
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules) GetAttribute() *string {
+	return s.Attribute
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules) GetThreshold() *string {
+	return s.Threshold
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules) SetAttribute(v string) *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules {
+	s.Attribute = &v
+	return s
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules) SetThreshold(v string) *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules {
+	s.Threshold = &v
+	return s
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules) Validate() error {
 	return dara.Validate(s)
 }

@@ -11,6 +11,8 @@ type iModifyLifecyclePolicyRequest interface {
 	GoString() string
 	SetFileSystemId(v string) *ModifyLifecyclePolicyRequest
 	GetFileSystemId() *string
+	SetLifecyclePolicyId(v string) *ModifyLifecyclePolicyRequest
+	GetLifecyclePolicyId() *string
 	SetLifecyclePolicyName(v string) *ModifyLifecyclePolicyRequest
 	GetLifecyclePolicyName() *string
 	SetLifecycleRuleName(v string) *ModifyLifecyclePolicyRequest
@@ -30,11 +32,13 @@ type ModifyLifecyclePolicyRequest struct {
 	//
 	// 31a8e4****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// example:
+	//
+	// lc-xxx
+	LifecyclePolicyId *string `json:"LifecyclePolicyId,omitempty" xml:"LifecyclePolicyId,omitempty"`
 	// The name of the lifecycle policy.
 	//
 	// The name must be 3 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -86,6 +90,10 @@ func (s *ModifyLifecyclePolicyRequest) GetFileSystemId() *string {
 	return s.FileSystemId
 }
 
+func (s *ModifyLifecyclePolicyRequest) GetLifecyclePolicyId() *string {
+	return s.LifecyclePolicyId
+}
+
 func (s *ModifyLifecyclePolicyRequest) GetLifecyclePolicyName() *string {
 	return s.LifecyclePolicyName
 }
@@ -104,6 +112,11 @@ func (s *ModifyLifecyclePolicyRequest) GetStorageType() *string {
 
 func (s *ModifyLifecyclePolicyRequest) SetFileSystemId(v string) *ModifyLifecyclePolicyRequest {
 	s.FileSystemId = &v
+	return s
+}
+
+func (s *ModifyLifecyclePolicyRequest) SetLifecyclePolicyId(v string) *ModifyLifecyclePolicyRequest {
+	s.LifecyclePolicyId = &v
 	return s
 }
 

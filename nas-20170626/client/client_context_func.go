@@ -1988,12 +1988,20 @@ func (client *Client) CreateLifecyclePolicyWithContext(ctx context.Context, requ
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
 	if !dara.IsNil(request.FileSystemId) {
 		query["FileSystemId"] = request.FileSystemId
 	}
 
 	if !dara.IsNil(request.LifecyclePolicyName) {
 		query["LifecyclePolicyName"] = request.LifecyclePolicyName
+	}
+
+	if !dara.IsNil(request.LifecyclePolicyType) {
+		query["LifecyclePolicyType"] = request.LifecyclePolicyType
 	}
 
 	if !dara.IsNil(request.LifecycleRuleName) {
@@ -2008,8 +2016,16 @@ func (client *Client) CreateLifecyclePolicyWithContext(ctx context.Context, requ
 		query["Paths"] = request.Paths
 	}
 
+	if !dara.IsNil(request.RetrieveRules) {
+		query["RetrieveRules"] = request.RetrieveRules
+	}
+
 	if !dara.IsNil(request.StorageType) {
 		query["StorageType"] = request.StorageType
+	}
+
+	if !dara.IsNil(request.TransitRules) {
+		query["TransitRules"] = request.TransitRules
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3062,6 +3078,10 @@ func (client *Client) DeleteLifecyclePolicyWithContext(ctx context.Context, requ
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileSystemId) {
 		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !dara.IsNil(request.LifecyclePolicyId) {
+		query["LifecyclePolicyId"] = request.LifecyclePolicyId
 	}
 
 	if !dara.IsNil(request.LifecyclePolicyName) {
@@ -6474,6 +6494,10 @@ func (client *Client) ModifyLifecyclePolicyWithContext(ctx context.Context, requ
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileSystemId) {
 		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !dara.IsNil(request.LifecyclePolicyId) {
+		query["LifecyclePolicyId"] = request.LifecyclePolicyId
 	}
 
 	if !dara.IsNil(request.LifecyclePolicyName) {

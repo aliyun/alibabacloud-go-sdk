@@ -11,6 +11,8 @@ type iDeleteLifecyclePolicyRequest interface {
 	GoString() string
 	SetFileSystemId(v string) *DeleteLifecyclePolicyRequest
 	GetFileSystemId() *string
+	SetLifecyclePolicyId(v string) *DeleteLifecyclePolicyRequest
+	GetLifecyclePolicyId() *string
 	SetLifecyclePolicyName(v string) *DeleteLifecyclePolicyRequest
 	GetLifecyclePolicyName() *string
 }
@@ -24,9 +26,11 @@ type DeleteLifecyclePolicyRequest struct {
 	//
 	// 31a8e4****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The name of the lifecycle policy.
+	// example:
 	//
-	// This parameter is required.
+	// lc-xxx
+	LifecyclePolicyId *string `json:"LifecyclePolicyId,omitempty" xml:"LifecyclePolicyId,omitempty"`
+	// The name of the lifecycle policy.
 	//
 	// example:
 	//
@@ -46,12 +50,21 @@ func (s *DeleteLifecyclePolicyRequest) GetFileSystemId() *string {
 	return s.FileSystemId
 }
 
+func (s *DeleteLifecyclePolicyRequest) GetLifecyclePolicyId() *string {
+	return s.LifecyclePolicyId
+}
+
 func (s *DeleteLifecyclePolicyRequest) GetLifecyclePolicyName() *string {
 	return s.LifecyclePolicyName
 }
 
 func (s *DeleteLifecyclePolicyRequest) SetFileSystemId(v string) *DeleteLifecyclePolicyRequest {
 	s.FileSystemId = &v
+	return s
+}
+
+func (s *DeleteLifecyclePolicyRequest) SetLifecyclePolicyId(v string) *DeleteLifecyclePolicyRequest {
+	s.LifecyclePolicyId = &v
 	return s
 }
 
