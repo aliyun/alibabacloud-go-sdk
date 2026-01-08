@@ -1257,6 +1257,7 @@ func (s *GetInstanceResponseBodyCloudDisksStatus) Validate() error {
 }
 
 type GetInstanceResponseBodyDatasets struct {
+	ActualMountAccess *string `json:"ActualMountAccess,omitempty" xml:"ActualMountAccess,omitempty"`
 	// The dataset ID.
 	//
 	// example:
@@ -1323,6 +1324,10 @@ func (s GetInstanceResponseBodyDatasets) GoString() string {
 	return s.String()
 }
 
+func (s *GetInstanceResponseBodyDatasets) GetActualMountAccess() *string {
+	return s.ActualMountAccess
+}
+
 func (s *GetInstanceResponseBodyDatasets) GetDatasetId() *string {
 	return s.DatasetId
 }
@@ -1353,6 +1358,11 @@ func (s *GetInstanceResponseBodyDatasets) GetOptions() *string {
 
 func (s *GetInstanceResponseBodyDatasets) GetUri() *string {
 	return s.Uri
+}
+
+func (s *GetInstanceResponseBodyDatasets) SetActualMountAccess(v string) *GetInstanceResponseBodyDatasets {
+	s.ActualMountAccess = &v
+	return s
 }
 
 func (s *GetInstanceResponseBodyDatasets) SetDatasetId(v string) *GetInstanceResponseBodyDatasets {
