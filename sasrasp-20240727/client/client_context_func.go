@@ -100,6 +100,10 @@ func (client *Client) DescribeAttacksWithContext(ctx context.Context, request *D
 		query["EndTimestamp"] = request.EndTimestamp
 	}
 
+	if !dara.IsNil(request.HandleStatus) {
+		query["HandleStatus"] = request.HandleStatus
+	}
+
 	if !dara.IsNil(request.HandlerType) {
 		query["HandlerType"] = request.HandlerType
 	}

@@ -21,6 +21,8 @@ type iDescribeAttacksRequest interface {
 	GetAttackUrl() *string
 	SetEndTimestamp(v int64) *DescribeAttacksRequest
 	GetEndTimestamp() *int64
+	SetHandleStatus(v int32) *DescribeAttacksRequest
+	GetHandleStatus() *int32
 	SetHandlerType(v string) *DescribeAttacksRequest
 	GetHandlerType() *string
 	SetHostname(v string) *DescribeAttacksRequest
@@ -76,6 +78,7 @@ type DescribeAttacksRequest struct {
 	//
 	// 1737216000000
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	HandleStatus *int32 `json:"HandleStatus,omitempty" xml:"HandleStatus,omitempty"`
 	// example:
 	//
 	// block
@@ -158,6 +161,10 @@ func (s *DescribeAttacksRequest) GetEndTimestamp() *int64 {
 	return s.EndTimestamp
 }
 
+func (s *DescribeAttacksRequest) GetHandleStatus() *int32 {
+	return s.HandleStatus
+}
+
 func (s *DescribeAttacksRequest) GetHandlerType() *string {
 	return s.HandlerType
 }
@@ -237,6 +244,11 @@ func (s *DescribeAttacksRequest) SetAttackUrl(v string) *DescribeAttacksRequest 
 
 func (s *DescribeAttacksRequest) SetEndTimestamp(v int64) *DescribeAttacksRequest {
 	s.EndTimestamp = &v
+	return s
+}
+
+func (s *DescribeAttacksRequest) SetHandleStatus(v int32) *DescribeAttacksRequest {
+	s.HandleStatus = &v
 	return s
 }
 
