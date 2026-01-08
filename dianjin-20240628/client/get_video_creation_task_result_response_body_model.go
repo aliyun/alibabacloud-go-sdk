@@ -114,6 +114,10 @@ type GetVideoCreationTaskResultResponseBodyData struct {
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// example:
 	//
+	// 1
+	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+	// example:
+	//
 	// xxx
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 	// example:
@@ -154,6 +158,10 @@ func (s *GetVideoCreationTaskResultResponseBodyData) GetStartTime() *string {
 	return s.StartTime
 }
 
+func (s *GetVideoCreationTaskResultResponseBodyData) GetStatusReason() *string {
+	return s.StatusReason
+}
+
 func (s *GetVideoCreationTaskResultResponseBodyData) GetTaskId() *string {
 	return s.TaskId
 }
@@ -188,6 +196,11 @@ func (s *GetVideoCreationTaskResultResponseBodyData) SetMediaDetectionTaskResult
 
 func (s *GetVideoCreationTaskResultResponseBodyData) SetStartTime(v string) *GetVideoCreationTaskResultResponseBodyData {
 	s.StartTime = &v
+	return s
+}
+
+func (s *GetVideoCreationTaskResultResponseBodyData) SetStatusReason(v string) *GetVideoCreationTaskResultResponseBodyData {
+	s.StatusReason = &v
 	return s
 }
 
