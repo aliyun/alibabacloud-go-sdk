@@ -12559,6 +12559,178 @@ func (client *Client) DescribeVpcFirewallDetailWithContext(ctx context.Context, 
 
 // Summary:
 //
+// 查询VPC互访的域名信息
+//
+// @param request - DescribeVpcFirewallDomainListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVpcFirewallDomainListResponse
+func (client *Client) DescribeVpcFirewallDomainListWithContext(ctx context.Context, request *DescribeVpcFirewallDomainListRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallDomainListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.IsAITraffic) {
+		query["IsAITraffic"] = request.IsAITraffic
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.SrcIP) {
+		query["SrcIP"] = request.SrcIP
+	}
+
+	if !dara.IsNil(request.SrcVpcId) {
+		query["SrcVpcId"] = request.SrcVpcId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVpcFirewallDomainList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVpcFirewallDomainListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询VPC互访的域名信息
+//
+// @param request - DescribeVpcFirewallDomainRelationListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVpcFirewallDomainRelationListResponse
+func (client *Client) DescribeVpcFirewallDomainRelationListWithContext(ctx context.Context, request *DescribeVpcFirewallDomainRelationListRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallDomainRelationListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.DomainList) {
+		query["DomainList"] = request.DomainList
+	}
+
+	if !dara.IsNil(request.DstIP) {
+		query["DstIP"] = request.DstIP
+	}
+
+	if !dara.IsNil(request.DstVpcId) {
+		query["DstVpcId"] = request.DstVpcId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.SrcIP) {
+		query["SrcIP"] = request.SrcIP
+	}
+
+	if !dara.IsNil(request.SrcVpcId) {
+		query["SrcVpcId"] = request.SrcVpcId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVpcFirewallDomainRelationList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVpcFirewallDomainRelationListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 概览页-vpc防火墙拦截趋势
 //
 // @param request - DescribeVpcFirewallDropTrafficTrendRequest
