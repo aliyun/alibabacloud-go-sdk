@@ -6450,6 +6450,10 @@ func (client *Client) DisableApplicationScalingRule(request *DisableApplicationS
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables ARMS monitoring.
+//
 // @param request - DisableArmsRequest
 //
 // @param headers - map
@@ -6493,6 +6497,10 @@ func (client *Client) DisableArmsWithOptions(request *DisableArmsRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables ARMS monitoring.
+//
 // @param request - DisableArmsRequest
 //
 // @return DisableArmsResponse
@@ -10001,7 +10009,7 @@ func (client *Client) RestartInstances(request *RestartInstancesRequest) (_resul
 
 // Summary:
 //
-// 恢复实例的流量
+// Resumes traffic from Classic Load Balancer (CLB) application access, Network Load Balancer (NLB) application access, CLB gateway routing, Application Load Balancer (ALB) gateway routing, and Kubernetes Services on an instance.
 //
 // @param request - ResumeTrafficRequest
 //
@@ -10052,7 +10060,7 @@ func (client *Client) ResumeTrafficWithOptions(request *ResumeTrafficRequest, he
 
 // Summary:
 //
-// 恢复实例的流量
+// Resumes traffic from Classic Load Balancer (CLB) application access, Network Load Balancer (NLB) application access, CLB gateway routing, Application Load Balancer (ALB) gateway routing, and Kubernetes Services on an instance.
 //
 // @param request - ResumeTrafficRequest
 //
@@ -10511,7 +10519,7 @@ func (client *Client) SuspendJob(request *SuspendJobRequest) (_result *SuspendJo
 
 // Summary:
 //
-// 将流量从实例中摘除
+// Removes traffic routed from Classic Load Balancer (CLB) application access, Network Load Balancer (NLB) application access, CLB gateway routes, Application Load Balancer (ALB) gateway routes, or Kubernetes (K8s) services.
 //
 // @param request - SuspendTrafficRequest
 //
@@ -10562,7 +10570,7 @@ func (client *Client) SuspendTrafficWithOptions(request *SuspendTrafficRequest, 
 
 // Summary:
 //
-// 将流量从实例中摘除
+// Removes traffic routed from Classic Load Balancer (CLB) application access, Network Load Balancer (NLB) application access, CLB gateway routes, Application Load Balancer (ALB) gateway routes, or Kubernetes (K8s) services.
 //
 // @param request - SuspendTrafficRequest
 //
@@ -10920,6 +10928,10 @@ func (client *Client) UpdateAppModeWithOptions(request *UpdateAppModeRequest, he
 
 	if !dara.IsNil(request.EnableIdle) {
 		query["EnableIdle"] = request.EnableIdle
+	}
+
+	if !dara.IsNil(request.IdleHour) {
+		query["IdleHour"] = request.IdleHour
 	}
 
 	if !dara.IsNil(request.NamespaceId) {

@@ -26,26 +26,60 @@ type iSuspendTrafficResponseBody interface {
 }
 
 type SuspendTrafficResponseBody struct {
+	// The HTTP status code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SuspendTrafficResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *SuspendTrafficResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
+	// - The **ErrorCode*	- parameter is not returned when the request succeeds.
+	//
+	// - The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	//
+	// example:
+	//
+	// Null
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The message returned. Valid values:
+	//
+	// 	- If the request was successful, **success*	- is returned.
+	//
+	// 	- If the request failed, an error code is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// B4D805CA-926D-41B1-8E63-7AD0C1ED****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the traffic was removed. Valid values:
+	//
+	// - **true**: The traffic was removed.
+	//
+	// - **false**: The traffic failed to be removed.
+	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID.
+	//
 	// example:
 	//
 	// 0a98a02315955564772843261e****
@@ -133,10 +167,18 @@ func (s *SuspendTrafficResponseBody) Validate() error {
 }
 
 type SuspendTrafficResponseBodyData struct {
+	// The description of the returned code.
+	//
 	// example:
 	//
 	// success
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// Indicates whether the traffic was removed. Valid values:
+	//
+	// 	- **true**: The traffic was removed.
+	//
+	// 	- **false**: The traffic failed to be removed.
+	//
 	// example:
 	//
 	// True

@@ -14,6 +14,8 @@ type iDisableArmsRequest interface {
 }
 
 type DisableArmsRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:

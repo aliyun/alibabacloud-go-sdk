@@ -4943,6 +4943,10 @@ func (client *Client) DisableApplicationScalingRuleWithContext(ctx context.Conte
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables ARMS monitoring.
+//
 // @param request - DisableArmsRequest
 //
 // @param headers - map
@@ -7621,7 +7625,7 @@ func (client *Client) RestartInstancesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 恢复实例的流量
+// Resumes traffic from Classic Load Balancer (CLB) application access, Network Load Balancer (NLB) application access, CLB gateway routing, Application Load Balancer (ALB) gateway routing, and Kubernetes Services on an instance.
 //
 // @param request - ResumeTrafficRequest
 //
@@ -7990,7 +7994,7 @@ func (client *Client) SuspendJobWithContext(ctx context.Context, request *Suspen
 
 // Summary:
 //
-// 将流量从实例中摘除
+// Removes traffic routed from Classic Load Balancer (CLB) application access, Network Load Balancer (NLB) application access, CLB gateway routes, Application Load Balancer (ALB) gateway routes, or Kubernetes (K8s) services.
 //
 // @param request - SuspendTrafficRequest
 //
@@ -8304,6 +8308,10 @@ func (client *Client) UpdateAppModeWithContext(ctx context.Context, request *Upd
 
 	if !dara.IsNil(request.EnableIdle) {
 		query["EnableIdle"] = request.EnableIdle
+	}
+
+	if !dara.IsNil(request.IdleHour) {
+		query["IdleHour"] = request.IdleHour
 	}
 
 	if !dara.IsNil(request.NamespaceId) {

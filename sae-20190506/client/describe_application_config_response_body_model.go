@@ -406,6 +406,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	GpuType               *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
 	HeadlessPvtzDiscovery *string `json:"HeadlessPvtzDiscovery,omitempty" xml:"HeadlessPvtzDiscovery,omitempty"`
 	Html                  *string `json:"Html,omitempty" xml:"Html,omitempty"`
+	IdleHour              *string `json:"IdleHour,omitempty" xml:"IdleHour,omitempty"`
 	// The ID of the corresponding secret dictionary.
 	//
 	// example:
@@ -1105,6 +1106,10 @@ func (s *DescribeApplicationConfigResponseBodyData) GetHtml() *string {
 	return s.Html
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) GetIdleHour() *string {
+	return s.IdleHour
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) GetImagePullSecrets() *string {
 	return s.ImagePullSecrets
 }
@@ -1538,6 +1543,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetHeadlessPvtzDiscovery(v s
 
 func (s *DescribeApplicationConfigResponseBodyData) SetHtml(v string) *DescribeApplicationConfigResponseBodyData {
 	s.Html = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetIdleHour(v string) *DescribeApplicationConfigResponseBodyData {
+	s.IdleHour = &v
 	return s
 }
 

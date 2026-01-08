@@ -15,6 +15,8 @@ type iUpdateAppModeRequest interface {
 	GetAppIds() *string
 	SetEnableIdle(v bool) *UpdateAppModeRequest
 	GetEnableIdle() *bool
+	SetIdleHour(v string) *UpdateAppModeRequest
+	GetIdleHour() *string
 	SetNamespaceId(v string) *UpdateAppModeRequest
 	GetNamespaceId() *string
 }
@@ -39,6 +41,7 @@ type UpdateAppModeRequest struct {
 	//
 	// true
 	EnableIdle  *bool   `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
+	IdleHour    *string `json:"IdleHour,omitempty" xml:"IdleHour,omitempty"`
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -62,6 +65,10 @@ func (s *UpdateAppModeRequest) GetEnableIdle() *bool {
 	return s.EnableIdle
 }
 
+func (s *UpdateAppModeRequest) GetIdleHour() *string {
+	return s.IdleHour
+}
+
 func (s *UpdateAppModeRequest) GetNamespaceId() *string {
 	return s.NamespaceId
 }
@@ -78,6 +85,11 @@ func (s *UpdateAppModeRequest) SetAppIds(v string) *UpdateAppModeRequest {
 
 func (s *UpdateAppModeRequest) SetEnableIdle(v bool) *UpdateAppModeRequest {
 	s.EnableIdle = &v
+	return s
+}
+
+func (s *UpdateAppModeRequest) SetIdleHour(v string) *UpdateAppModeRequest {
+	s.IdleHour = &v
 	return s
 }
 

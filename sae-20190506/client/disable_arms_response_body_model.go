@@ -26,27 +26,56 @@ type iDisableArmsResponseBody interface {
 }
 
 type DisableArmsResponseBody struct {
+	// The HTTP status code. Valid values:
+	//
+	// 	- **2xx**: The call was successful.
+	//
+	// 	- **3xx**: The call was redirected.
+	//
+	// 	- **4xx**: The call failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *DisableArmsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code. Valid values:
+	//
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	//
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
 	// example:
 	//
-	// success
+	// Null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C0616FF6-9536-47BF-8A03-FB70386DFC71
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID.
+	//
 	// example:
 	//
 	// ac1a0b2215623063975374318e6d53
@@ -134,6 +163,12 @@ func (s *DisableArmsResponseBody) Validate() error {
 }
 
 type DisableArmsResponseBodyData struct {
+	// Indicates if enabled. Valid values:
+	//
+	// 	- true: enabled
+	//
+	// 	- false: disabled
+	//
 	// example:
 	//
 	// true

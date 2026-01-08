@@ -26,26 +26,52 @@ type iResumeTrafficResponseBody interface {
 }
 
 type ResumeTrafficResponseBody struct {
+	// The HTTP status code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ResumeTrafficResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned results.
+	Data *ResumeTrafficResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The message returned for the operation. Valid values:
+	//
+	// 	- If the request is successful, **success*	- is returned.
+	//
+	// 	- If the request fails, a specific error code is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **True**: The traffic was resumed.
+	//
+	// 	- **False**: The traffic failed to be resumed.
+	//
 	// example:
 	//
 	// True
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID.
+	//
 	// example:
 	//
 	// ac1a0b2215622920113732501e****
@@ -133,13 +159,21 @@ func (s *ResumeTrafficResponseBody) Validate() error {
 }
 
 type ResumeTrafficResponseBodyData struct {
+	// The description of the returned code.
+	//
 	// example:
 	//
 	// succeed in handling request
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// Indicates whether the traffic was removed. Valid values:
+	//
+	// 	- **true**: The traffic was removed.
+	//
+	// 	- **false**: The traffic failed to be removed.
+	//
 	// example:
 	//
-	// True
+	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 

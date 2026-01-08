@@ -16,10 +16,14 @@ type iResumeTrafficRequest interface {
 }
 
 type ResumeTrafficRequest struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-668727a8-17d86664-41e5bb******,c-668727a8-17d86664-7e4958******
