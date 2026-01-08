@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -117,9 +118,11 @@ func (client *Client) CancelSpecReviewTask(appName *string, taskId *string) (_re
 //
 // @return CreateAppResponse
 func (client *Client) CreateAppWithOptions(request *CreateAppRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -231,9 +234,11 @@ func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppRe
 //
 // @return CreateEndpointResponse
 func (client *Client) CreateEndpointWithOptions(request *CreateEndpointRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Type) {
@@ -309,9 +314,11 @@ func (client *Client) CreateEndpoint(request *CreateEndpointRequest) (_result *C
 //
 // @return CreateSnapshotResponse
 func (client *Client) CreateSnapshotWithOptions(appName *string, repository *string, request *CreateSnapshotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSnapshotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -433,9 +440,11 @@ func (client *Client) DeleteApp(appName *string) (_result *DeleteAppResponse, _e
 //
 // @return DeleteDictResponse
 func (client *Client) DeleteDictWithOptions(appName *string, request *DeleteDictRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDictResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -601,9 +610,11 @@ func (client *Client) DeleteSnapshot(appName *string, repository *string, snapsh
 //
 // @return GetAppResponse
 func (client *Client) GetAppWithOptions(appName *string, request *GetAppRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Detailed) {
@@ -715,9 +726,11 @@ func (client *Client) GetAppQuota(appName *string) (_result *GetAppQuotaResponse
 //
 // @return GetMonitorDataResponse
 func (client *Client) GetMonitorDataWithOptions(request *GetMonitorDataRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMonitorDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
@@ -874,9 +887,11 @@ func (client *Client) GetSpecReviewTask(appName *string, taskId *string) (_resul
 //
 // @return ListAppsResponse
 func (client *Client) ListAppsWithOptions(request *ListAppsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAppsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -966,9 +981,11 @@ func (client *Client) ListApps(request *ListAppsRequest) (_result *ListAppsRespo
 //
 // @return ListDictsResponse
 func (client *Client) ListDictsWithOptions(appName *string, request *ListDictsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDictsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -1034,9 +1051,11 @@ func (client *Client) ListDicts(appName *string, request *ListDictsRequest) (_re
 //
 // @return ListEndpointsResponse
 func (client *Client) ListEndpointsWithOptions(request *ListEndpointsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEndpointsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -1214,9 +1233,11 @@ func (client *Client) ListSnapshotRepositories(appName *string) (_result *ListSn
 //
 // @return ListSnapshotsResponse
 func (client *Client) ListSnapshotsWithOptions(appName *string, request *ListSnapshotsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSnapshotsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -1290,9 +1311,11 @@ func (client *Client) ListSnapshots(appName *string, request *ListSnapshotsReque
 //
 // @return ListSpecReviewTasksResponse
 func (client *Client) ListSpecReviewTasksWithOptions(appName *string, request *ListSpecReviewTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSpecReviewTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Page) {
@@ -1374,9 +1397,11 @@ func (client *Client) ListSpecReviewTasks(appName *string, request *ListSpecRevi
 //
 // @return UpdateAppResponse
 func (client *Client) UpdateAppWithOptions(appName *string, request *UpdateAppRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApplyReason) {
@@ -1462,9 +1487,11 @@ func (client *Client) UpdateApp(appName *string, request *UpdateAppRequest) (_re
 //
 // @return UpdateDictResponse
 func (client *Client) UpdateDictWithOptions(appName *string, request *UpdateDictRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDictResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllowCover) {
@@ -1544,9 +1571,11 @@ func (client *Client) UpdateDict(appName *string, request *UpdateDictRequest) (_
 //
 // @return UpdateEndpointResponse
 func (client *Client) UpdateEndpointWithOptions(endpointId *string, request *UpdateEndpointRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EndpointZones) {
@@ -1612,9 +1641,11 @@ func (client *Client) UpdateEndpoint(endpointId *string, request *UpdateEndpoint
 //
 // @return UpdateNetworkResponse
 func (client *Client) UpdateNetworkWithOptions(appName *string, request *UpdateNetworkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateNetworkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
@@ -1661,6 +1692,67 @@ func (client *Client) UpdateNetwork(appName *string, request *UpdateNetworkReque
 
 // Summary:
 //
+// 修改应用公网信息。
+//
+// @param request - UpdatePrivateNetwrokRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePrivateNetwrokResponse
+func (client *Client) UpdatePrivateNetwrokWithOptions(appName *string, request *UpdatePrivateNetwrokRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePrivateNetwrokResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ToArray(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePrivateNetwrok"),
+		Version:     dara.String("2023-06-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/es-serverless/instances/" + dara.PercentEncode(dara.StringValue(appName)) + "/private-networks"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePrivateNetwrokResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改应用公网信息。
+//
+// @param request - UpdatePrivateNetwrokRequest
+//
+// @return UpdatePrivateNetwrokResponse
+func (client *Client) UpdatePrivateNetwrok(appName *string, request *UpdatePrivateNetwrokRequest) (_result *UpdatePrivateNetwrokResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdatePrivateNetwrokResponse{}
+	_body, _err := client.UpdatePrivateNetwrokWithOptions(appName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改自动备份配置
 //
 // @param request - UpdateSnapshotSettingRequest
@@ -1671,9 +1763,11 @@ func (client *Client) UpdateNetwork(appName *string, request *UpdateNetworkReque
 //
 // @return UpdateSnapshotSettingResponse
 func (client *Client) UpdateSnapshotSettingWithOptions(appName *string, request *UpdateSnapshotSettingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateSnapshotSettingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Enable) {

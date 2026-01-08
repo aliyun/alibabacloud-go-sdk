@@ -59,5 +59,10 @@ func (s *GetSpecReviewTaskResponse) SetBody(v *GetSpecReviewTaskResponseBody) *G
 }
 
 func (s *GetSpecReviewTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

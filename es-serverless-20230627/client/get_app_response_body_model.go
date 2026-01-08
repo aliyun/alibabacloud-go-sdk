@@ -50,7 +50,12 @@ func (s *GetAppResponseBody) SetResult(v *GetAppResponseBodyResult) *GetAppRespo
 }
 
 func (s *GetAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAppResponseBodyResult struct {
@@ -249,7 +254,34 @@ func (s *GetAppResponseBodyResult) SetVersion(v string) *GetAppResponseBodyResul
 }
 
 func (s *GetAppResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Network != nil {
+		for _, item := range s.Network {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PrivateNetwork != nil {
+		for _, item := range s.PrivateNetwork {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAppResponseBodyResultNetwork struct {
@@ -314,7 +346,16 @@ func (s *GetAppResponseBodyResultNetwork) SetWhiteIpGroup(v []*GetAppResponseBod
 }
 
 func (s *GetAppResponseBodyResultNetwork) Validate() error {
-	return dara.Validate(s)
+	if s.WhiteIpGroup != nil {
+		for _, item := range s.WhiteIpGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAppResponseBodyResultNetworkWhiteIpGroup struct {
@@ -434,7 +475,16 @@ func (s *GetAppResponseBodyResultPrivateNetwork) SetWhiteIpGroup(v []*GetAppResp
 }
 
 func (s *GetAppResponseBodyResultPrivateNetwork) Validate() error {
-	return dara.Validate(s)
+	if s.WhiteIpGroup != nil {
+		for _, item := range s.WhiteIpGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAppResponseBodyResultPrivateNetworkWhiteIpGroup struct {

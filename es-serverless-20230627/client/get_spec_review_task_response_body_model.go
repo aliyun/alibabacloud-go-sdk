@@ -50,7 +50,12 @@ func (s *GetSpecReviewTaskResponseBody) SetResult(v *GetSpecReviewTaskResponseBo
 }
 
 func (s *GetSpecReviewTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSpecReviewTaskResponseBodyResult struct {

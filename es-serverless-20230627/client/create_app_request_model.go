@@ -185,7 +185,44 @@ func (s *CreateAppRequest) SetDryRun(v bool) *CreateAppRequest {
 }
 
 func (s *CreateAppRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Authentication != nil {
+		if err := s.Authentication.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Network != nil {
+		for _, item := range s.Network {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PrivateNetwork != nil {
+		for _, item := range s.PrivateNetwork {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.QuotaInfo != nil {
+		if err := s.QuotaInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAppRequestAuthentication struct {
@@ -210,7 +247,16 @@ func (s *CreateAppRequestAuthentication) SetBasicAuth(v []*CreateAppRequestAuthe
 }
 
 func (s *CreateAppRequestAuthentication) Validate() error {
-	return dara.Validate(s)
+	if s.BasicAuth != nil {
+		for _, item := range s.BasicAuth {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAppRequestAuthenticationBasicAuth struct {
@@ -310,7 +356,16 @@ func (s *CreateAppRequestNetwork) SetWhiteIpGroup(v []*CreateAppRequestNetworkWh
 }
 
 func (s *CreateAppRequestNetwork) Validate() error {
-	return dara.Validate(s)
+	if s.WhiteIpGroup != nil {
+		for _, item := range s.WhiteIpGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAppRequestNetworkWhiteIpGroup struct {
@@ -410,7 +465,16 @@ func (s *CreateAppRequestPrivateNetwork) SetWhiteIpGroup(v []*CreateAppRequestPr
 }
 
 func (s *CreateAppRequestPrivateNetwork) Validate() error {
-	return dara.Validate(s)
+	if s.WhiteIpGroup != nil {
+		for _, item := range s.WhiteIpGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAppRequestPrivateNetworkWhiteIpGroup struct {

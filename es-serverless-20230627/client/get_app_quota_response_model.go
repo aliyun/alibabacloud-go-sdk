@@ -59,5 +59,10 @@ func (s *GetAppQuotaResponse) SetBody(v *GetAppQuotaResponseBody) *GetAppQuotaRe
 }
 
 func (s *GetAppQuotaResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

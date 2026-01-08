@@ -96,7 +96,16 @@ func (s *UpdateDictRequest) SetDryRun(v bool) *UpdateDictRequest {
 }
 
 func (s *UpdateDictRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Files != nil {
+		for _, item := range s.Files {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateDictRequestFiles struct {
@@ -134,7 +143,12 @@ func (s *UpdateDictRequestFiles) SetOssObject(v *UpdateDictRequestFilesOssObject
 }
 
 func (s *UpdateDictRequestFiles) Validate() error {
-	return dara.Validate(s)
+	if s.OssObject != nil {
+		if err := s.OssObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateDictRequestFilesOssObject struct {

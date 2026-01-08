@@ -83,7 +83,16 @@ func (s *CreateEndpointRequest) SetType(v string) *CreateEndpointRequest {
 }
 
 func (s *CreateEndpointRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EndpointZones != nil {
+		for _, item := range s.EndpointZones {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateEndpointRequestEndpointZones struct {

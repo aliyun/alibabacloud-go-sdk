@@ -50,7 +50,12 @@ func (s *UpdateAppResponseBody) SetResult(v *UpdateAppResponseBodyResult) *Updat
 }
 
 func (s *UpdateAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateAppResponseBodyResult struct {

@@ -59,5 +59,10 @@ func (s *DeleteEndpointResponse) SetBody(v *DeleteEndpointResponseBody) *DeleteE
 }
 
 func (s *DeleteEndpointResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

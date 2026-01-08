@@ -65,7 +65,16 @@ func (s *ListEndpointsResponseBody) SetTotalCount(v int32) *ListEndpointsRespons
 }
 
 func (s *ListEndpointsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEndpointsResponseBodyResult struct {
@@ -230,7 +239,16 @@ func (s *ListEndpointsResponseBodyResult) SetVpcId(v string) *ListEndpointsRespo
 }
 
 func (s *ListEndpointsResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.EndpointZones != nil {
+		for _, item := range s.EndpointZones {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEndpointsResponseBodyResultEndpointZones struct {

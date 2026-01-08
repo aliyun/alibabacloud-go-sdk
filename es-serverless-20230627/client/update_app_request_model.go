@@ -108,7 +108,35 @@ func (s *UpdateAppRequest) SetPrivateNetwork(v []*UpdateAppRequestPrivateNetwork
 }
 
 func (s *UpdateAppRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Authentication != nil {
+		if err := s.Authentication.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LimiterInfo != nil {
+		if err := s.LimiterInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Network != nil {
+		for _, item := range s.Network {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PrivateNetwork != nil {
+		for _, item := range s.PrivateNetwork {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateAppRequestAuthentication struct {
@@ -133,7 +161,16 @@ func (s *UpdateAppRequestAuthentication) SetBasicAuth(v []*UpdateAppRequestAuthe
 }
 
 func (s *UpdateAppRequestAuthentication) Validate() error {
-	return dara.Validate(s)
+	if s.BasicAuth != nil {
+		for _, item := range s.BasicAuth {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateAppRequestAuthenticationBasicAuth struct {
@@ -193,7 +230,16 @@ func (s *UpdateAppRequestLimiterInfo) SetLimiters(v []*UpdateAppRequestLimiterIn
 }
 
 func (s *UpdateAppRequestLimiterInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Limiters != nil {
+		for _, item := range s.Limiters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateAppRequestLimiterInfoLimiters struct {
@@ -313,7 +359,16 @@ func (s *UpdateAppRequestNetwork) SetWhiteIpGroup(v []*UpdateAppRequestNetworkWh
 }
 
 func (s *UpdateAppRequestNetwork) Validate() error {
-	return dara.Validate(s)
+	if s.WhiteIpGroup != nil {
+		for _, item := range s.WhiteIpGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateAppRequestNetworkWhiteIpGroup struct {
@@ -413,7 +468,16 @@ func (s *UpdateAppRequestPrivateNetwork) SetWhiteIpGroup(v []*UpdateAppRequestPr
 }
 
 func (s *UpdateAppRequestPrivateNetwork) Validate() error {
-	return dara.Validate(s)
+	if s.WhiteIpGroup != nil {
+		for _, item := range s.WhiteIpGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateAppRequestPrivateNetworkWhiteIpGroup struct {

@@ -59,5 +59,10 @@ func (s *UpdateDictResponse) SetBody(v *UpdateDictResponseBody) *UpdateDictRespo
 }
 
 func (s *UpdateDictResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -50,7 +50,16 @@ func (s *UpdateNetworkResponseBody) SetResult(v []*UpdateNetworkResponseBodyResu
 }
 
 func (s *UpdateNetworkResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateNetworkResponseBodyResult struct {
@@ -127,7 +136,16 @@ func (s *UpdateNetworkResponseBodyResult) SetWhiteIpGroup(v []*UpdateNetworkResp
 }
 
 func (s *UpdateNetworkResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.WhiteIpGroup != nil {
+		for _, item := range s.WhiteIpGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateNetworkResponseBodyResultWhiteIpGroup struct {

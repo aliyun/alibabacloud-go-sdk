@@ -50,7 +50,12 @@ func (s *DeleteAppResponseBody) SetResult(v *DeleteAppResponseBodyResult) *Delet
 }
 
 func (s *DeleteAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteAppResponseBodyResult struct {

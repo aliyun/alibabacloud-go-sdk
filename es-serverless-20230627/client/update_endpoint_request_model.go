@@ -51,7 +51,16 @@ func (s *UpdateEndpointRequest) SetName(v string) *UpdateEndpointRequest {
 }
 
 func (s *UpdateEndpointRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EndpointZones != nil {
+		for _, item := range s.EndpointZones {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateEndpointRequestEndpointZones struct {

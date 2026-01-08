@@ -59,5 +59,10 @@ func (s *UpdateNetworkResponse) SetBody(v *UpdateNetworkResponseBody) *UpdateNet
 }
 
 func (s *UpdateNetworkResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

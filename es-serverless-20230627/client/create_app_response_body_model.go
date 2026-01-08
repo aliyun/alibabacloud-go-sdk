@@ -50,7 +50,12 @@ func (s *CreateAppResponseBody) SetResult(v *CreateAppResponseBodyResult) *Creat
 }
 
 func (s *CreateAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAppResponseBodyResult struct {

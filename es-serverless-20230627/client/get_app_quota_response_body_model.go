@@ -50,7 +50,12 @@ func (s *GetAppQuotaResponseBody) SetResult(v *GetAppQuotaResponseBodyResult) *G
 }
 
 func (s *GetAppQuotaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAppQuotaResponseBodyResult struct {
@@ -85,7 +90,12 @@ func (s *GetAppQuotaResponseBodyResult) SetQuotaInfo(v map[string]interface{}) *
 }
 
 func (s *GetAppQuotaResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.LimiterInfo != nil {
+		if err := s.LimiterInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAppQuotaResponseBodyResultLimiterInfo struct {
@@ -110,7 +120,16 @@ func (s *GetAppQuotaResponseBodyResultLimiterInfo) SetLimiters(v []*GetAppQuotaR
 }
 
 func (s *GetAppQuotaResponseBodyResultLimiterInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Limiters != nil {
+		for _, item := range s.Limiters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAppQuotaResponseBodyResultLimiterInfoLimiters struct {
