@@ -19,6 +19,8 @@ type iListChatappMessageRequest interface {
 	GetCustSpaceId() *string
 	SetEndTime(v int64) *ListChatappMessageRequest
 	GetEndTime() *int64
+	SetEndTimeStr(v string) *ListChatappMessageRequest
+	GetEndTimeStr() *string
 	SetEventAction(v string) *ListChatappMessageRequest
 	GetEventAction() *string
 	SetGroupMessageId(v string) *ListChatappMessageRequest
@@ -35,6 +37,8 @@ type iListChatappMessageRequest interface {
 	GetResourceOwnerId() *int64
 	SetStartTime(v int64) *ListChatappMessageRequest
 	GetStartTime() *int64
+	SetStartTimeStr(v string) *ListChatappMessageRequest
+	GetStartTimeStr() *string
 	SetTemplateCode(v string) *ListChatappMessageRequest
 	GetTemplateCode() *string
 	SetUserNumber(v string) *ListChatappMessageRequest
@@ -70,6 +74,10 @@ type ListChatappMessageRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// example:
 	//
+	// 2024-01-30 00:00:00
+	EndTimeStr *string `json:"EndTimeStr,omitempty" xml:"EndTimeStr,omitempty"`
+	// example:
+	//
 	// UP
 	EventAction *string `json:"EventAction,omitempty" xml:"EventAction,omitempty"`
 	// example:
@@ -89,6 +97,10 @@ type ListChatappMessageRequest struct {
 	//
 	// 1727057232686
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2024-01-01 00:00:00
+	StartTimeStr *string `json:"StartTimeStr,omitempty" xml:"StartTimeStr,omitempty"`
 	// example:
 	//
 	// 9938***
@@ -127,6 +139,10 @@ func (s *ListChatappMessageRequest) GetEndTime() *int64 {
 	return s.EndTime
 }
 
+func (s *ListChatappMessageRequest) GetEndTimeStr() *string {
+	return s.EndTimeStr
+}
+
 func (s *ListChatappMessageRequest) GetEventAction() *string {
 	return s.EventAction
 }
@@ -159,6 +175,10 @@ func (s *ListChatappMessageRequest) GetStartTime() *int64 {
 	return s.StartTime
 }
 
+func (s *ListChatappMessageRequest) GetStartTimeStr() *string {
+	return s.StartTimeStr
+}
+
 func (s *ListChatappMessageRequest) GetTemplateCode() *string {
 	return s.TemplateCode
 }
@@ -189,6 +209,11 @@ func (s *ListChatappMessageRequest) SetCustSpaceId(v string) *ListChatappMessage
 
 func (s *ListChatappMessageRequest) SetEndTime(v int64) *ListChatappMessageRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *ListChatappMessageRequest) SetEndTimeStr(v string) *ListChatappMessageRequest {
+	s.EndTimeStr = &v
 	return s
 }
 
@@ -232,6 +257,11 @@ func (s *ListChatappMessageRequest) SetStartTime(v int64) *ListChatappMessageReq
 	return s
 }
 
+func (s *ListChatappMessageRequest) SetStartTimeStr(v string) *ListChatappMessageRequest {
+	s.StartTimeStr = &v
+	return s
+}
+
 func (s *ListChatappMessageRequest) SetTemplateCode(v string) *ListChatappMessageRequest {
 	s.TemplateCode = &v
 	return s
@@ -243,7 +273,12 @@ func (s *ListChatappMessageRequest) SetUserNumber(v string) *ListChatappMessageR
 }
 
 func (s *ListChatappMessageRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Page != nil {
+		if err := s.Page.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListChatappMessageRequestPage struct {

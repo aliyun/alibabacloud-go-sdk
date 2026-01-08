@@ -62,6 +62,8 @@ type SendChatappMassMessageRequest struct {
 	//
 	// 示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 示例值示例值示例值
@@ -85,6 +87,8 @@ type SendChatappMassMessageRequest struct {
 	//
 	// 示例值示例值
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 示例值示例值
@@ -314,7 +318,16 @@ func (s *SendChatappMassMessageRequest) SetTtl(v int64) *SendChatappMassMessageR
 }
 
 func (s *SendChatappMassMessageRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SenderList != nil {
+		for _, item := range s.SenderList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SendChatappMassMessageRequestSenderList struct {
@@ -382,7 +395,17 @@ func (s *SendChatappMassMessageRequestSenderList) SetTo(v string) *SendChatappMa
 }
 
 func (s *SendChatappMassMessageRequestSenderList) Validate() error {
-	return dara.Validate(s)
+	if s.FlowAction != nil {
+		if err := s.FlowAction.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProductAction != nil {
+		if err := s.ProductAction.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SendChatappMassMessageRequestSenderListFlowAction struct {
@@ -458,7 +481,16 @@ func (s *SendChatappMassMessageRequestSenderListProductAction) SetThumbnailProdu
 }
 
 func (s *SendChatappMassMessageRequestSenderListProductAction) Validate() error {
-	return dara.Validate(s)
+	if s.Sections != nil {
+		for _, item := range s.Sections {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SendChatappMassMessageRequestSenderListProductActionSections struct {
@@ -496,7 +528,16 @@ func (s *SendChatappMassMessageRequestSenderListProductActionSections) SetTitle(
 }
 
 func (s *SendChatappMassMessageRequestSenderListProductActionSections) Validate() error {
-	return dara.Validate(s)
+	if s.ProductItems != nil {
+		for _, item := range s.ProductItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SendChatappMassMessageRequestSenderListProductActionSectionsProductItems struct {

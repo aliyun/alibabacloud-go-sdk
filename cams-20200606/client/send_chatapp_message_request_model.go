@@ -9,6 +9,8 @@ type iSendChatappMessageRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAdAccountId(v string) *SendChatappMessageRequest
+	GetAdAccountId() *string
 	SetChannelType(v string) *SendChatappMessageRequest
 	GetChannelType() *string
 	SetContent(v string) *SendChatappMessageRequest
@@ -37,6 +39,8 @@ type iSendChatappMessageRequest interface {
 	GetLabel() *string
 	SetLanguage(v string) *SendChatappMessageRequest
 	GetLanguage() *string
+	SetMessageCampaignId(v string) *SendChatappMessageRequest
+	GetMessageCampaignId() *string
 	SetMessageType(v string) *SendChatappMessageRequest
 	GetMessageType() *string
 	SetOwnerId(v int64) *SendChatappMessageRequest
@@ -63,6 +67,8 @@ type iSendChatappMessageRequest interface {
 	GetTemplateParams() map[string]*string
 	SetTo(v string) *SendChatappMessageRequest
 	GetTo() *string
+	SetTokenType(v string) *SendChatappMessageRequest
+	GetTokenType() *string
 	SetTrackingData(v string) *SendChatappMessageRequest
 	GetTrackingData() *string
 	SetTtl(v int32) *SendChatappMessageRequest
@@ -72,6 +78,10 @@ type iSendChatappMessageRequest interface {
 }
 
 type SendChatappMessageRequest struct {
+	// example:
+	//
+	// 示例值示例值
+	AdAccountId *string `json:"AdAccountId,omitempty" xml:"AdAccountId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -132,6 +142,8 @@ type SendChatappMessageRequest struct {
 	//
 	// 示例值示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 示例值示例值
@@ -156,6 +168,8 @@ type SendChatappMessageRequest struct {
 	//
 	// 示例值示例值
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 示例值
@@ -168,6 +182,10 @@ type SendChatappMessageRequest struct {
 	//
 	// 示例值示例值示例值
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	MessageCampaignId *string `json:"MessageCampaignId,omitempty" xml:"MessageCampaignId,omitempty"`
 	// example:
 	//
 	// 示例值
@@ -211,6 +229,10 @@ type SendChatappMessageRequest struct {
 	To *string `json:"To,omitempty" xml:"To,omitempty"`
 	// example:
 	//
+	// 示例值
+	TokenType *string `json:"TokenType,omitempty" xml:"TokenType,omitempty"`
+	// example:
+	//
 	// 示例值示例值
 	TrackingData *string `json:"TrackingData,omitempty" xml:"TrackingData,omitempty"`
 	Ttl          *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
@@ -228,6 +250,10 @@ func (s SendChatappMessageRequest) String() string {
 
 func (s SendChatappMessageRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SendChatappMessageRequest) GetAdAccountId() *string {
+	return s.AdAccountId
 }
 
 func (s *SendChatappMessageRequest) GetChannelType() *string {
@@ -286,6 +312,10 @@ func (s *SendChatappMessageRequest) GetLanguage() *string {
 	return s.Language
 }
 
+func (s *SendChatappMessageRequest) GetMessageCampaignId() *string {
+	return s.MessageCampaignId
+}
+
 func (s *SendChatappMessageRequest) GetMessageType() *string {
 	return s.MessageType
 }
@@ -338,6 +368,10 @@ func (s *SendChatappMessageRequest) GetTo() *string {
 	return s.To
 }
 
+func (s *SendChatappMessageRequest) GetTokenType() *string {
+	return s.TokenType
+}
+
 func (s *SendChatappMessageRequest) GetTrackingData() *string {
 	return s.TrackingData
 }
@@ -348,6 +382,11 @@ func (s *SendChatappMessageRequest) GetTtl() *int32 {
 
 func (s *SendChatappMessageRequest) GetType() *string {
 	return s.Type
+}
+
+func (s *SendChatappMessageRequest) SetAdAccountId(v string) *SendChatappMessageRequest {
+	s.AdAccountId = &v
+	return s
 }
 
 func (s *SendChatappMessageRequest) SetChannelType(v string) *SendChatappMessageRequest {
@@ -420,6 +459,11 @@ func (s *SendChatappMessageRequest) SetLanguage(v string) *SendChatappMessageReq
 	return s
 }
 
+func (s *SendChatappMessageRequest) SetMessageCampaignId(v string) *SendChatappMessageRequest {
+	s.MessageCampaignId = &v
+	return s
+}
+
 func (s *SendChatappMessageRequest) SetMessageType(v string) *SendChatappMessageRequest {
 	s.MessageType = &v
 	return s
@@ -485,6 +529,11 @@ func (s *SendChatappMessageRequest) SetTo(v string) *SendChatappMessageRequest {
 	return s
 }
 
+func (s *SendChatappMessageRequest) SetTokenType(v string) *SendChatappMessageRequest {
+	s.TokenType = &v
+	return s
+}
+
 func (s *SendChatappMessageRequest) SetTrackingData(v string) *SendChatappMessageRequest {
 	s.TrackingData = &v
 	return s
@@ -501,7 +550,17 @@ func (s *SendChatappMessageRequest) SetType(v string) *SendChatappMessageRequest
 }
 
 func (s *SendChatappMessageRequest) Validate() error {
-	return dara.Validate(s)
+	if s.FlowAction != nil {
+		if err := s.FlowAction.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProductAction != nil {
+		if err := s.ProductAction.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SendChatappMessageRequestFlowAction struct {
@@ -577,7 +636,16 @@ func (s *SendChatappMessageRequestProductAction) SetThumbnailProductRetailerId(v
 }
 
 func (s *SendChatappMessageRequestProductAction) Validate() error {
-	return dara.Validate(s)
+	if s.Sections != nil {
+		for _, item := range s.Sections {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SendChatappMessageRequestProductActionSections struct {
@@ -615,7 +683,16 @@ func (s *SendChatappMessageRequestProductActionSections) SetTitle(v string) *Sen
 }
 
 func (s *SendChatappMessageRequestProductActionSections) Validate() error {
-	return dara.Validate(s)
+	if s.ProductItems != nil {
+		for _, item := range s.ProductItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SendChatappMessageRequestProductActionSectionsProductItems struct {

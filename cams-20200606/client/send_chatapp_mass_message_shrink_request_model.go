@@ -62,6 +62,8 @@ type SendChatappMassMessageShrinkRequest struct {
 	//
 	// 示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 示例值示例值示例值
@@ -85,6 +87,8 @@ type SendChatappMassMessageShrinkRequest struct {
 	//
 	// 示例值示例值
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 示例值示例值

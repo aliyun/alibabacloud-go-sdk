@@ -59,5 +59,10 @@ func (s *CreateChatappMigrationInitiateResponse) SetBody(v *CreateChatappMigrati
 }
 
 func (s *CreateChatappMigrationInitiateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

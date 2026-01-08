@@ -59,5 +59,10 @@ func (s *CreatePhoneMessageQrdlResponse) SetBody(v *CreatePhoneMessageQrdlRespon
 }
 
 func (s *CreatePhoneMessageQrdlResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

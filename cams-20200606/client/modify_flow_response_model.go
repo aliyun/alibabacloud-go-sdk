@@ -59,5 +59,10 @@ func (s *ModifyFlowResponse) SetBody(v *ModifyFlowResponseBody) *ModifyFlowRespo
 }
 
 func (s *ModifyFlowResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -137,7 +137,12 @@ func (s *ListChatGroupParticipantsRequest) SetResourceOwnerId(v int64) *ListChat
 }
 
 func (s *ListChatGroupParticipantsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Page != nil {
+		if err := s.Page.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListChatGroupParticipantsRequestPage struct {

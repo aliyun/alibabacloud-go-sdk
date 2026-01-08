@@ -112,7 +112,12 @@ func (s *GetChatappTemplateDetailResponseBody) SetRequestId(v string) *GetChatap
 }
 
 func (s *GetChatappTemplateDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetChatappTemplateDetailResponseBodyData struct {
@@ -346,7 +351,16 @@ func (s *GetChatappTemplateDetailResponseBodyData) SetTemplateType(v string) *Ge
 }
 
 func (s *GetChatappTemplateDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Components != nil {
+		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetChatappTemplateDetailResponseBodyDataComponents struct {
@@ -668,7 +682,25 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponents) SetHasExpiration(v 
 }
 
 func (s *GetChatappTemplateDetailResponseBodyDataComponents) Validate() error {
-	return dara.Validate(s)
+	if s.Buttons != nil {
+		for _, item := range s.Buttons {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Cards != nil {
+		for _, item := range s.Cards {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetChatappTemplateDetailResponseBodyDataComponentsButtons struct {
@@ -920,7 +952,21 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtons) SetUrlType(v
 }
 
 func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtons) Validate() error {
-	return dara.Validate(s)
+	if s.ExtendAttrs != nil {
+		if err := s.ExtendAttrs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SupportedApps != nil {
+		for _, item := range s.SupportedApps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetChatappTemplateDetailResponseBodyDataComponentsButtonsExtendAttrs struct {
@@ -1081,7 +1127,16 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponentsCards) SetCardCompone
 }
 
 func (s *GetChatappTemplateDetailResponseBodyDataComponentsCards) Validate() error {
-	return dara.Validate(s)
+	if s.CardComponents != nil {
+		for _, item := range s.CardComponents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponents struct {
@@ -1167,7 +1222,16 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponents) 
 }
 
 func (s *GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponents) Validate() error {
-	return dara.Validate(s)
+	if s.Buttons != nil {
+		for _, item := range s.Buttons {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponentsButtons struct {

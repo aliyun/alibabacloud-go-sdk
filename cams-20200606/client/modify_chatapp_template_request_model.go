@@ -252,7 +252,16 @@ func (s *ModifyChatappTemplateRequest) SetTemplateType(v string) *ModifyChatappT
 }
 
 func (s *ModifyChatappTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Components != nil {
+		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyChatappTemplateRequestComponents struct {
@@ -515,7 +524,25 @@ func (s *ModifyChatappTemplateRequestComponents) SetUrl(v string) *ModifyChatapp
 }
 
 func (s *ModifyChatappTemplateRequestComponents) Validate() error {
-	return dara.Validate(s)
+	if s.Buttons != nil {
+		for _, item := range s.Buttons {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Cards != nil {
+		for _, item := range s.Cards {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyChatappTemplateRequestComponentsButtons struct {
@@ -768,7 +795,16 @@ func (s *ModifyChatappTemplateRequestComponentsButtons) SetUrlType(v string) *Mo
 }
 
 func (s *ModifyChatappTemplateRequestComponentsButtons) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedApps != nil {
+		for _, item := range s.SupportedApps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyChatappTemplateRequestComponentsButtonsSupportedApps struct {
@@ -841,7 +877,16 @@ func (s *ModifyChatappTemplateRequestComponentsCards) SetCardComponents(v []*Mod
 }
 
 func (s *ModifyChatappTemplateRequestComponentsCards) Validate() error {
-	return dara.Validate(s)
+	if s.CardComponents != nil {
+		for _, item := range s.CardComponents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyChatappTemplateRequestComponentsCardsCardComponents struct {
@@ -939,7 +984,16 @@ func (s *ModifyChatappTemplateRequestComponentsCardsCardComponents) SetUrl(v str
 }
 
 func (s *ModifyChatappTemplateRequestComponentsCardsCardComponents) Validate() error {
-	return dara.Validate(s)
+	if s.Buttons != nil {
+		for _, item := range s.Buttons {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyChatappTemplateRequestComponentsCardsCardComponentsButtons struct {

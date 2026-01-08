@@ -59,5 +59,10 @@ func (s *ReadFlowVersionResponse) SetBody(v *ReadFlowVersionResponseBody) *ReadF
 }
 
 func (s *ReadFlowVersionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

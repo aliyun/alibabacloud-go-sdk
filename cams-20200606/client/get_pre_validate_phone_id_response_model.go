@@ -59,5 +59,10 @@ func (s *GetPreValidatePhoneIdResponse) SetBody(v *GetPreValidatePhoneIdResponse
 }
 
 func (s *GetPreValidatePhoneIdResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

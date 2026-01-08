@@ -59,5 +59,10 @@ func (s *AddChatappPhoneNumberResponse) SetBody(v *AddChatappPhoneNumberResponse
 }
 
 func (s *AddChatappPhoneNumberResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

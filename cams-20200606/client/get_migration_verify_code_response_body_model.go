@@ -108,7 +108,12 @@ func (s *GetMigrationVerifyCodeResponseBody) SetRequestId(v string) *GetMigratio
 }
 
 func (s *GetMigrationVerifyCodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMigrationVerifyCodeResponseBodyData struct {

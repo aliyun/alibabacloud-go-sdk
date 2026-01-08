@@ -17,6 +17,8 @@ type iFlowUnbindPhoneResponseBody interface {
 	GetMessage() *string
 	SetModel(v bool) *FlowUnbindPhoneResponseBody
 	GetModel() *bool
+	SetRequestId(v string) *FlowUnbindPhoneResponseBody
+	GetRequestId() *string
 	SetSuccess(v bool) *FlowUnbindPhoneResponseBody
 	GetSuccess() *bool
 }
@@ -45,7 +47,8 @@ type FlowUnbindPhoneResponseBody struct {
 	// example:
 	//
 	// false
-	Model *bool `json:"Model,omitempty" xml:"Model,omitempty"`
+	Model     *bool   `json:"Model,omitempty" xml:"Model,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Whether the operation was successful. Values: true: success; false: failure.
 	//
 	// example:
@@ -78,6 +81,10 @@ func (s *FlowUnbindPhoneResponseBody) GetModel() *bool {
 	return s.Model
 }
 
+func (s *FlowUnbindPhoneResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *FlowUnbindPhoneResponseBody) GetSuccess() *bool {
 	return s.Success
 }
@@ -99,6 +106,11 @@ func (s *FlowUnbindPhoneResponseBody) SetMessage(v string) *FlowUnbindPhoneRespo
 
 func (s *FlowUnbindPhoneResponseBody) SetModel(v bool) *FlowUnbindPhoneResponseBody {
 	s.Model = &v
+	return s
+}
+
+func (s *FlowUnbindPhoneResponseBody) SetRequestId(v string) *FlowUnbindPhoneResponseBody {
+	s.RequestId = &v
 	return s
 }
 

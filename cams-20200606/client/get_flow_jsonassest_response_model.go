@@ -59,5 +59,10 @@ func (s *GetFlowJSONAssestResponse) SetBody(v *GetFlowJSONAssestResponseBody) *G
 }
 
 func (s *GetFlowJSONAssestResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

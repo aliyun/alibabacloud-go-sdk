@@ -129,7 +129,12 @@ func (s *QueryChatappBindWabaResponseBody) SetSuccess(v bool) *QueryChatappBindW
 }
 
 func (s *QueryChatappBindWabaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryChatappBindWabaResponseBodyData struct {

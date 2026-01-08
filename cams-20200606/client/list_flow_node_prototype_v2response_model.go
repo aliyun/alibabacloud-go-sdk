@@ -59,5 +59,10 @@ func (s *ListFlowNodePrototypeV2Response) SetBody(v *ListFlowNodePrototypeV2Resp
 }
 
 func (s *ListFlowNodePrototypeV2Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *DeleteChatGroupParticipantsResponse) SetBody(v *DeleteChatGroupParticip
 }
 
 func (s *DeleteChatGroupParticipantsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

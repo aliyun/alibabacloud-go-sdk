@@ -245,7 +245,12 @@ func (s *ListChatappTemplateRequest) SetTemplateType(v string) *ListChatappTempl
 }
 
 func (s *ListChatappTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Page != nil {
+		if err := s.Page.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListChatappTemplateRequestPage struct {

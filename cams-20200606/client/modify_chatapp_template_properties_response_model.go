@@ -59,5 +59,10 @@ func (s *ModifyChatappTemplatePropertiesResponse) SetBody(v *ModifyChatappTempla
 }
 
 func (s *ModifyChatappTemplatePropertiesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -99,7 +99,12 @@ func (s *ModifyFlowResponseBody) SetRequestId(v string) *ModifyFlowResponseBody 
 }
 
 func (s *ModifyFlowResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyFlowResponseBodyData struct {

@@ -137,7 +137,16 @@ func (s *DeleteChatGroupParticipantsRequest) SetResourceOwnerId(v int64) *Delete
 }
 
 func (s *DeleteChatGroupParticipantsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteChatGroupParticipantsRequestList struct {

@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -57,6 +58,182 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 申请：变更目的地/恢复/暂停
+//
+// @param tmpReq - AddAddressRecoverSuspendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddAddressRecoverSuspendResponse
+func (client *Client) AddAddressRecoverSuspendWithOptions(tmpReq *AddAddressRecoverSuspendRequest, runtime *dara.RuntimeOptions) (_result *AddAddressRecoverSuspendResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddAddressRecoverSuspendShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AuditRecord) {
+		request.AuditRecordShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AuditRecord, dara.String("AuditRecord"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuditRecordShrink) {
+		query["AuditRecord"] = request.AuditRecordShrink
+	}
+
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RequestType) {
+		query["RequestType"] = request.RequestType
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddAddressRecoverSuspend"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddAddressRecoverSuspendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 申请：变更目的地/恢复/暂停
+//
+// @param request - AddAddressRecoverSuspendRequest
+//
+// @return AddAddressRecoverSuspendResponse
+func (client *Client) AddAddressRecoverSuspend(request *AddAddressRecoverSuspendRequest) (_result *AddAddressRecoverSuspendResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddAddressRecoverSuspendResponse{}
+	_body, _err := client.AddAddressRecoverSuspendWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 注册viber账号，开户
+//
+// @param tmpReq - AddAuditViberOpenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddAuditViberOpenResponse
+func (client *Client) AddAuditViberOpenWithOptions(tmpReq *AddAuditViberOpenRequest, runtime *dara.RuntimeOptions) (_result *AddAuditViberOpenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddAuditViberOpenShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AuditRecord) {
+		request.AuditRecordShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AuditRecord, dara.String("AuditRecord"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuditRecordShrink) {
+		query["AuditRecord"] = request.AuditRecordShrink
+	}
+
+	if !dara.IsNil(request.AuditResult) {
+		query["AuditResult"] = request.AuditResult
+	}
+
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddAuditViberOpen"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddAuditViberOpenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 注册viber账号，开户
+//
+// @param request - AddAuditViberOpenRequest
+//
+// @return AddAuditViberOpenResponse
+func (client *Client) AddAuditViberOpen(request *AddAuditViberOpenRequest) (_result *AddAuditViberOpenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddAuditViberOpenResponse{}
+	_body, _err := client.AddAuditViberOpenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # AddChatGroup
 //
 // @param request - AddChatGroupRequest
@@ -65,9 +242,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AddChatGroupResponse
 func (client *Client) AddChatGroupWithOptions(request *AddChatGroupRequest, runtime *dara.RuntimeOptions) (_result *AddChatGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessNumber) {
@@ -153,9 +332,11 @@ func (client *Client) AddChatGroup(request *AddChatGroupRequest) (_result *AddCh
 //
 // @return AddChatGroupInviteLinkResponse
 func (client *Client) AddChatGroupInviteLinkWithOptions(request *AddChatGroupInviteLinkRequest, runtime *dara.RuntimeOptions) (_result *AddChatGroupInviteLinkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessNumber) {
@@ -237,9 +418,11 @@ func (client *Client) AddChatGroupInviteLink(request *AddChatGroupInviteLinkRequ
 //
 // @return AddChatappPhoneNumberResponse
 func (client *Client) AddChatappPhoneNumberWithOptions(request *AddChatappPhoneNumberRequest, runtime *dara.RuntimeOptions) (_result *AddChatappPhoneNumberResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cc) {
@@ -317,6 +500,792 @@ func (client *Client) AddChatappPhoneNumber(request *AddChatappPhoneNumberReques
 
 // Summary:
 //
+// 编辑联系人-新增联系人
+//
+// @param tmpReq - AddContactsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddContactsResponse
+func (client *Client) AddContactsWithOptions(tmpReq *AddContactsRequest, runtime *dara.RuntimeOptions) (_result *AddContactsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddContactsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BizExtend) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, dara.String("BizExtend"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizCode) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !dara.IsNil(request.BizExtendShrink) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !dara.IsNil(request.ContactDetails) {
+		query["ContactDetails"] = request.ContactDetails
+	}
+
+	if !dara.IsNil(request.ContactName) {
+		query["ContactName"] = request.ContactName
+	}
+
+	if !dara.IsNil(request.Country) {
+		query["Country"] = request.Country
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.FilePath) {
+		query["FilePath"] = request.FilePath
+	}
+
+	if !dara.IsNil(request.Groups) {
+		query["Groups"] = request.Groups
+	}
+
+	if !dara.IsNil(request.NeedUpdate) {
+		query["NeedUpdate"] = request.NeedUpdate
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddContacts"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddContactsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑联系人-新增联系人
+//
+// @param request - AddContactsRequest
+//
+// @return AddContactsResponse
+func (client *Client) AddContacts(request *AddContactsRequest) (_result *AddContactsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddContactsResponse{}
+	_body, _err := client.AddContactsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 增加自定义受众(这个接口需要从镇元直接配置）
+//
+// @param tmpReq - AddCustomAudienceUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddCustomAudienceUserResponse
+func (client *Client) AddCustomAudienceUserWithOptions(tmpReq *AddCustomAudienceUserRequest, runtime *dara.RuntimeOptions) (_result *AddCustomAudienceUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddCustomAudienceUserShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Users) {
+		request.UsersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Users, dara.String("Users"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdAccountId) {
+		query["AdAccountId"] = request.AdAccountId
+	}
+
+	if !dara.IsNil(request.BatchLastFlag) {
+		query["BatchLastFlag"] = request.BatchLastFlag
+	}
+
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.CustomAudienceId) {
+		query["CustomAudienceId"] = request.CustomAudienceId
+	}
+
+	if !dara.IsNil(request.EstimatedNumTotal) {
+		query["EstimatedNumTotal"] = request.EstimatedNumTotal
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.UsersShrink) {
+		query["Users"] = request.UsersShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddCustomAudienceUser"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddCustomAudienceUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 增加自定义受众(这个接口需要从镇元直接配置）
+//
+// @param request - AddCustomAudienceUserRequest
+//
+// @return AddCustomAudienceUserResponse
+func (client *Client) AddCustomAudienceUser(request *AddCustomAudienceUserRequest) (_result *AddCustomAudienceUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddCustomAudienceUserResponse{}
+	_body, _err := client.AddCustomAudienceUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加群组
+//
+// @param tmpReq - AddGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddGroupResponse
+func (client *Client) AddGroupWithOptions(tmpReq *AddGroupRequest, runtime *dara.RuntimeOptions) (_result *AddGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BizExtend) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, dara.String("BizExtend"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizCode) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !dara.IsNil(request.BizExtendShrink) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !dara.IsNil(request.ContactDetails) {
+		query["ContactDetails"] = request.ContactDetails
+	}
+
+	if !dara.IsNil(request.ContactName) {
+		query["ContactName"] = request.ContactName
+	}
+
+	if !dara.IsNil(request.Country) {
+		query["Country"] = request.Country
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.FilePath) {
+		query["FilePath"] = request.FilePath
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddGroup"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加群组
+//
+// @param request - AddGroupRequest
+//
+// @return AddGroupResponse
+func (client *Client) AddGroup(request *AddGroupRequest) (_result *AddGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddGroupResponse{}
+	_body, _err := client.AddGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增营销活动
+//
+// @param tmpReq - AddMarketingFlowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddMarketingFlowResponse
+func (client *Client) AddMarketingFlowWithOptions(tmpReq *AddMarketingFlowRequest, runtime *dara.RuntimeOptions) (_result *AddMarketingFlowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddMarketingFlowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BizExtend) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, dara.String("BizExtend"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActivityDesc) {
+		query["ActivityDesc"] = request.ActivityDesc
+	}
+
+	if !dara.IsNil(request.ActivityName) {
+		query["ActivityName"] = request.ActivityName
+	}
+
+	if !dara.IsNil(request.BizCode) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !dara.IsNil(request.BizExtendShrink) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !dara.IsNil(request.CronExpression) {
+		query["CronExpression"] = request.CronExpression
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.ExecutionType) {
+		query["ExecutionType"] = request.ExecutionType
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ParamFlag) {
+		query["ParamFlag"] = request.ParamFlag
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		query["Params"] = request.ParamsShrink
+	}
+
+	if !dara.IsNil(request.RelatedFlowCode) {
+		query["RelatedFlowCode"] = request.RelatedFlowCode
+	}
+
+	if !dara.IsNil(request.RelatedFlowName) {
+		query["RelatedFlowName"] = request.RelatedFlowName
+	}
+
+	if !dara.IsNil(request.RelatedGroupId) {
+		query["RelatedGroupId"] = request.RelatedGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddMarketingFlow"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddMarketingFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增营销活动
+//
+// @param request - AddMarketingFlowRequest
+//
+// @return AddMarketingFlowResponse
+func (client *Client) AddMarketingFlow(request *AddMarketingFlowRequest) (_result *AddMarketingFlowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddMarketingFlowResponse{}
+	_body, _err := client.AddMarketingFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 绑定DM账号
+//
+// @param tmpReq - BindDmAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindDmAccountResponse
+func (client *Client) BindDmAccountWithOptions(tmpReq *BindDmAccountRequest, runtime *dara.RuntimeOptions) (_result *BindDmAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BindDmAccountShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ExtendAttr) {
+		request.ExtendAttrShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExtendAttr, dara.String("ExtendAttr"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountCode) {
+		query["AccountCode"] = request.AccountCode
+	}
+
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.ExtendAttrShrink) {
+		query["ExtendAttr"] = request.ExtendAttrShrink
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BindDmAccount"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BindDmAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 绑定DM账号
+//
+// @param request - BindDmAccountRequest
+//
+// @return BindDmAccountResponse
+func (client *Client) BindDmAccount(request *BindDmAccountRequest) (_result *BindDmAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BindDmAccountResponse{}
+	_body, _err := client.BindDmAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 绑定ins的page
+//
+// @param request - BindInstagramPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindInstagramPageResponse
+func (client *Client) BindInstagramPageWithOptions(request *BindInstagramPageRequest, runtime *dara.RuntimeOptions) (_result *BindInstagramPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BindInstagramPage"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BindInstagramPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 绑定ins的page
+//
+// @param request - BindInstagramPageRequest
+//
+// @return BindInstagramPageResponse
+func (client *Client) BindInstagramPage(request *BindInstagramPageRequest) (_result *BindInstagramPageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BindInstagramPageResponse{}
+	_body, _err := client.BindInstagramPageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 绑定选择的pageId
+//
+// @param request - BindMessengerPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindMessengerPageResponse
+func (client *Client) BindMessengerPageWithOptions(request *BindMessengerPageRequest, runtime *dara.RuntimeOptions) (_result *BindMessengerPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BindMessengerPage"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BindMessengerPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 绑定选择的pageId
+//
+// @param request - BindMessengerPageRequest
+//
+// @return BindMessengerPageResponse
+func (client *Client) BindMessengerPage(request *BindMessengerPageRequest) (_result *BindMessengerPageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BindMessengerPageResponse{}
+	_body, _err := client.BindMessengerPageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 资源转组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
+func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ChangeResourceGroup"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 资源转组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
+func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Binds the WhatsApp Business account with ChatApp.
 //
 // Description:
@@ -329,9 +1298,11 @@ func (client *Client) AddChatappPhoneNumber(request *AddChatappPhoneNumberReques
 //
 // @return ChatappBindWabaResponse
 func (client *Client) ChatappBindWabaWithOptions(request *ChatappBindWabaRequest, runtime *dara.RuntimeOptions) (_result *ChatappBindWabaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -397,86 +1368,6 @@ func (client *Client) ChatappBindWaba(request *ChatappBindWabaRequest) (_result 
 
 // Summary:
 //
-// Queries WhatsApp Business account (WABA) information after embedded signup. You do not need to call this API operation if you use Version 2 of WhatsApp embedded signup.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ChatappEmbedSignUpRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ChatappEmbedSignUpResponse
-func (client *Client) ChatappEmbedSignUpWithOptions(request *ChatappEmbedSignUpRequest, runtime *dara.RuntimeOptions) (_result *ChatappEmbedSignUpResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.InputToken) {
-		query["InputToken"] = request.InputToken
-	}
-
-	if !dara.IsNil(request.OwnerId) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !dara.IsNil(request.ResourceOwnerAccount) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !dara.IsNil(request.ResourceOwnerId) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ChatappEmbedSignUp"),
-		Version:     dara.String("2020-06-06"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ChatappEmbedSignUpResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries WhatsApp Business account (WABA) information after embedded signup. You do not need to call this API operation if you use Version 2 of WhatsApp embedded signup.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ChatappEmbedSignUpRequest
-//
-// @return ChatappEmbedSignUpResponse
-func (client *Client) ChatappEmbedSignUp(request *ChatappEmbedSignUpRequest) (_result *ChatappEmbedSignUpResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChatappEmbedSignUpResponse{}
-	_body, _err := client.ChatappEmbedSignUpWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Registers a phone number for migration.
 //
 // Description:
@@ -489,9 +1380,11 @@ func (client *Client) ChatappEmbedSignUp(request *ChatappEmbedSignUpRequest) (_r
 //
 // @return ChatappMigrationRegisterResponse
 func (client *Client) ChatappMigrationRegisterWithOptions(request *ChatappMigrationRegisterRequest, runtime *dara.RuntimeOptions) (_result *ChatappMigrationRegisterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -573,9 +1466,11 @@ func (client *Client) ChatappMigrationRegister(request *ChatappMigrationRegister
 //
 // @return ChatappMigrationVerifiedResponse
 func (client *Client) ChatappMigrationVerifiedWithOptions(request *ChatappMigrationVerifiedRequest, runtime *dara.RuntimeOptions) (_result *ChatappMigrationVerifiedResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -661,9 +1556,11 @@ func (client *Client) ChatappMigrationVerified(request *ChatappMigrationVerified
 //
 // @return ChatappPhoneNumberDeregisterResponse
 func (client *Client) ChatappPhoneNumberDeregisterWithOptions(request *ChatappPhoneNumberDeregisterRequest, runtime *dara.RuntimeOptions) (_result *ChatappPhoneNumberDeregisterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -745,9 +1642,11 @@ func (client *Client) ChatappPhoneNumberDeregister(request *ChatappPhoneNumberDe
 //
 // @return ChatappPhoneNumberRegisterResponse
 func (client *Client) ChatappPhoneNumberRegisterWithOptions(request *ChatappPhoneNumberRegisterRequest, runtime *dara.RuntimeOptions) (_result *ChatappPhoneNumberRegisterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -829,9 +1728,11 @@ func (client *Client) ChatappPhoneNumberRegister(request *ChatappPhoneNumberRegi
 //
 // @return ChatappSyncPhoneNumberResponse
 func (client *Client) ChatappSyncPhoneNumberWithOptions(request *ChatappSyncPhoneNumberRequest, runtime *dara.RuntimeOptions) (_result *ChatappSyncPhoneNumberResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -909,9 +1810,11 @@ func (client *Client) ChatappSyncPhoneNumber(request *ChatappSyncPhoneNumberRequ
 //
 // @return ChatappVerifyAndRegisterResponse
 func (client *Client) ChatappVerifyAndRegisterWithOptions(request *ChatappVerifyAndRegisterRequest, runtime *dara.RuntimeOptions) (_result *ChatappVerifyAndRegisterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -985,6 +1888,92 @@ func (client *Client) ChatappVerifyAndRegister(request *ChatappVerifyAndRegister
 
 // Summary:
 //
+// 复制模板
+//
+// @param request - CopyTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CopyTemplateResponse
+func (client *Client) CopyTemplateWithOptions(request *CopyTemplateRequest, runtime *dara.RuntimeOptions) (_result *CopyTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SceneTemplateCode) {
+		query["SceneTemplateCode"] = request.SceneTemplateCode
+	}
+
+	if !dara.IsNil(request.SceneTemplateName) {
+		query["SceneTemplateName"] = request.SceneTemplateName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CopyTemplate"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CopyTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 复制模板
+//
+// @param request - CopyTemplateRequest
+//
+// @return CopyTemplateResponse
+func (client *Client) CopyTemplate(request *CopyTemplateRequest) (_result *CopyTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CopyTemplateResponse{}
+	_body, _err := client.CopyTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create Chatflow
 //
 // @param tmpReq - CreateChatFlowRequest
@@ -993,9 +1982,11 @@ func (client *Client) ChatappVerifyAndRegister(request *ChatappVerifyAndRegister
 //
 // @return CreateChatFlowResponse
 func (client *Client) CreateChatFlowWithOptions(tmpReq *CreateChatFlowRequest, runtime *dara.RuntimeOptions) (_result *CreateChatFlowResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateChatFlowShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1087,9 +2078,11 @@ func (client *Client) CreateChatFlow(request *CreateChatFlowRequest) (_result *C
 //
 // @return CreateChatFlowByImportResponse
 func (client *Client) CreateChatFlowByImportWithOptions(tmpReq *CreateChatFlowByImportRequest, runtime *dara.RuntimeOptions) (_result *CreateChatFlowByImportResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateChatFlowByImportShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1181,9 +2174,11 @@ func (client *Client) CreateChatFlowByImport(request *CreateChatFlowByImportRequ
 //
 // @return CreateChatFlowLogSettingResponse
 func (client *Client) CreateChatFlowLogSettingWithOptions(request *CreateChatFlowLogSettingRequest, runtime *dara.RuntimeOptions) (_result *CreateChatFlowLogSettingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowCode) {
@@ -1257,9 +2252,11 @@ func (client *Client) CreateChatFlowLogSetting(request *CreateChatFlowLogSetting
 //
 // @return CreateChatappMigrationInitiateResponse
 func (client *Client) CreateChatappMigrationInitiateWithOptions(request *CreateChatappMigrationInitiateRequest, runtime *dara.RuntimeOptions) (_result *CreateChatappMigrationInitiateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CountryCode) {
@@ -1351,9 +2348,11 @@ func (client *Client) CreateChatappMigrationInitiate(request *CreateChatappMigra
 //
 // @return CreateChatappTemplateResponse
 func (client *Client) CreateChatappTemplateWithOptions(tmpReq *CreateChatappTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateChatappTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateChatappTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1467,6 +2466,104 @@ func (client *Client) CreateChatappTemplate(request *CreateChatappTemplateReques
 
 // Summary:
 //
+// 创建自定义受众
+//
+// @param request - CreateCustomAudienceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCustomAudienceResponse
+func (client *Client) CreateCustomAudienceWithOptions(request *CreateCustomAudienceRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomAudienceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdAccountId) {
+		query["AdAccountId"] = request.AdAccountId
+	}
+
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.FilePath) {
+		query["FilePath"] = request.FilePath
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.UploadType) {
+		query["UploadType"] = request.UploadType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCustomAudience"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCustomAudienceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建自定义受众
+//
+// @param request - CreateCustomAudienceRequest
+//
+// @return CreateCustomAudienceResponse
+func (client *Client) CreateCustomAudience(request *CreateCustomAudienceRequest) (_result *CreateCustomAudienceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateCustomAudienceResponse{}
+	_body, _err := client.CreateCustomAudienceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a Flow.
 //
 // Description:
@@ -1479,9 +2576,11 @@ func (client *Client) CreateChatappTemplate(request *CreateChatappTemplateReques
 //
 // @return CreateFlowResponse
 func (client *Client) CreateFlowWithOptions(tmpReq *CreateFlowRequest, runtime *dara.RuntimeOptions) (_result *CreateFlowResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateFlowShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1569,9 +2668,11 @@ func (client *Client) CreateFlow(request *CreateFlowRequest) (_result *CreateFlo
 //
 // @return CreateFlowVersionResponse
 func (client *Client) CreateFlowVersionWithOptions(tmpReq *CreateFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *CreateFlowVersionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateFlowVersionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1655,6 +2756,306 @@ func (client *Client) CreateFlowVersion(request *CreateFlowVersionRequest) (_res
 
 // Summary:
 //
+// 新建实例
+//
+// @param request - CreateInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceResponse
+func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChannelType) {
+		query["ChannelType"] = request.ChannelType
+	}
+
+	if !dara.IsNil(request.ContactMail) {
+		query["ContactMail"] = request.ContactMail
+	}
+
+	if !dara.IsNil(request.CountryId) {
+		query["CountryId"] = request.CountryId
+	}
+
+	if !dara.IsNil(request.FacebookBmId) {
+		query["FacebookBmId"] = request.FacebookBmId
+	}
+
+	if !dara.IsNil(request.InstanceDescription) {
+		query["InstanceDescription"] = request.InstanceDescription
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.IsConfirmAudit) {
+		query["IsConfirmAudit"] = request.IsConfirmAudit
+	}
+
+	if !dara.IsNil(request.IsvTerms) {
+		query["IsvTerms"] = request.IsvTerms
+	}
+
+	if !dara.IsNil(request.OfficeAddress) {
+		query["OfficeAddress"] = request.OfficeAddress
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInstance"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建实例
+//
+// @param request - CreateInstanceRequest
+//
+// @return CreateInstanceResponse
+func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateInstanceResponse{}
+	_body, _err := client.CreateInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建预算
+//
+// @param request - CreateMessageCampaignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMessageCampaignResponse
+func (client *Client) CreateMessageCampaignWithOptions(request *CreateMessageCampaignRequest, runtime *dara.RuntimeOptions) (_result *CreateMessageCampaignResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdAccountId) {
+		query["AdAccountId"] = request.AdAccountId
+	}
+
+	if !dara.IsNil(request.Budget) {
+		query["Budget"] = request.Budget
+	}
+
+	if !dara.IsNil(request.BudgetType) {
+		query["BudgetType"] = request.BudgetType
+	}
+
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMessageCampaign"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMessageCampaignResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建预算
+//
+// @param request - CreateMessageCampaignRequest
+//
+// @return CreateMessageCampaignResponse
+func (client *Client) CreateMessageCampaign(request *CreateMessageCampaignRequest) (_result *CreateMessageCampaignResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateMessageCampaignResponse{}
+	_body, _err := client.CreateMessageCampaignWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 嵌入式授权messenger
+//
+// @param tmpReq - CreateMessengerPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMessengerPageResponse
+func (client *Client) CreateMessengerPageWithOptions(tmpReq *CreateMessengerPageRequest, runtime *dara.RuntimeOptions) (_result *CreateMessengerPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateMessengerPageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AdAccountIds) {
+		request.AdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AdAccountIds, dara.String("AdAccountIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdAccountIdsShrink) {
+		query["AdAccountIds"] = request.AdAccountIdsShrink
+	}
+
+	if !dara.IsNil(request.AuthenticationCode) {
+		query["AuthenticationCode"] = request.AuthenticationCode
+	}
+
+	if !dara.IsNil(request.BusinessId) {
+		query["BusinessId"] = request.BusinessId
+	}
+
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMessengerPage"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMessengerPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 嵌入式授权messenger
+//
+// @param request - CreateMessengerPageRequest
+//
+// @return CreateMessengerPageResponse
+func (client *Client) CreateMessengerPage(request *CreateMessengerPageRequest) (_result *CreateMessengerPageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateMessengerPageResponse{}
+	_body, _err := client.CreateMessengerPageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a quick-response (QR) code that contains a message.
 //
 // @param request - CreatePhoneMessageQrdlRequest
@@ -1663,9 +3064,11 @@ func (client *Client) CreateFlowVersion(request *CreateFlowVersionRequest) (_res
 //
 // @return CreatePhoneMessageQrdlResponse
 func (client *Client) CreatePhoneMessageQrdlWithOptions(request *CreatePhoneMessageQrdlRequest, runtime *dara.RuntimeOptions) (_result *CreatePhoneMessageQrdlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -1739,6 +3142,94 @@ func (client *Client) CreatePhoneMessageQrdl(request *CreatePhoneMessageQrdlRequ
 
 // Summary:
 //
+// 根据嵌入式code获取pageId入库
+//
+// @param tmpReq - CreateWhatsappConversionApiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWhatsappConversionApiResponse
+func (client *Client) CreateWhatsappConversionApiWithOptions(tmpReq *CreateWhatsappConversionApiRequest, runtime *dara.RuntimeOptions) (_result *CreateWhatsappConversionApiResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateWhatsappConversionApiShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Permissions) {
+		request.PermissionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Permissions, dara.String("Permissions"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Code) {
+		query["Code"] = request.Code
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PermissionsShrink) {
+		query["Permissions"] = request.PermissionsShrink
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWhatsappConversionApi"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWhatsappConversionApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据嵌入式code获取pageId入库
+//
+// @param request - CreateWhatsappConversionApiRequest
+//
+// @return CreateWhatsappConversionApiResponse
+func (client *Client) CreateWhatsappConversionApi(request *CreateWhatsappConversionApiRequest) (_result *CreateWhatsappConversionApiResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateWhatsappConversionApiResponse{}
+	_body, _err := client.CreateWhatsappConversionApiWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete Process
 //
 // @param tmpReq - DeleteChatFlowRequest
@@ -1747,9 +3238,11 @@ func (client *Client) CreatePhoneMessageQrdl(request *CreatePhoneMessageQrdlRequ
 //
 // @return DeleteChatFlowResponse
 func (client *Client) DeleteChatFlowWithOptions(tmpReq *DeleteChatFlowRequest, runtime *dara.RuntimeOptions) (_result *DeleteChatFlowResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteChatFlowShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1833,9 +3326,11 @@ func (client *Client) DeleteChatFlow(request *DeleteChatFlowRequest) (_result *D
 //
 // @return DeleteChatGroupResponse
 func (client *Client) DeleteChatGroupWithOptions(request *DeleteChatGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteChatGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessNumber) {
@@ -1917,9 +3412,11 @@ func (client *Client) DeleteChatGroup(request *DeleteChatGroupRequest) (_result 
 //
 // @return DeleteChatGroupInviteLinkResponse
 func (client *Client) DeleteChatGroupInviteLinkWithOptions(request *DeleteChatGroupInviteLinkRequest, runtime *dara.RuntimeOptions) (_result *DeleteChatGroupInviteLinkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessNumber) {
@@ -2001,9 +3498,11 @@ func (client *Client) DeleteChatGroupInviteLink(request *DeleteChatGroupInviteLi
 //
 // @return DeleteChatGroupParticipantsResponse
 func (client *Client) DeleteChatGroupParticipantsWithOptions(tmpReq *DeleteChatGroupParticipantsRequest, runtime *dara.RuntimeOptions) (_result *DeleteChatGroupParticipantsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteChatGroupParticipantsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2101,9 +3600,11 @@ func (client *Client) DeleteChatGroupParticipants(request *DeleteChatGroupPartic
 //
 // @return DeleteChatappTemplateResponse
 func (client *Client) DeleteChatappTemplateWithOptions(request *DeleteChatappTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteChatappTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -2195,6 +3696,180 @@ func (client *Client) DeleteChatappTemplate(request *DeleteChatappTemplateReques
 
 // Summary:
 //
+// 编辑联系人-删除联系人
+//
+// @param tmpReq - DeleteContactsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteContactsResponse
+func (client *Client) DeleteContactsWithOptions(tmpReq *DeleteContactsRequest, runtime *dara.RuntimeOptions) (_result *DeleteContactsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteContactsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BizExtend) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, dara.String("BizExtend"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizCode) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !dara.IsNil(request.BizExtendShrink) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !dara.IsNil(request.ContactDetails) {
+		query["ContactDetails"] = request.ContactDetails
+	}
+
+	if !dara.IsNil(request.ContactName) {
+		query["ContactName"] = request.ContactName
+	}
+
+	if !dara.IsNil(request.Country) {
+		query["Country"] = request.Country
+	}
+
+	if !dara.IsNil(request.FilePath) {
+		query["FilePath"] = request.FilePath
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteContacts"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteContactsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑联系人-删除联系人
+//
+// @param request - DeleteContactsRequest
+//
+// @return DeleteContactsResponse
+func (client *Client) DeleteContacts(request *DeleteContactsRequest) (_result *DeleteContactsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteContactsResponse{}
+	_body, _err := client.DeleteContactsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除联系人(选择后删除)
+//
+// @param request - DeleteContactsByIdsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteContactsByIdsResponse
+func (client *Client) DeleteContactsByIdsWithOptions(request *DeleteContactsByIdsRequest, runtime *dara.RuntimeOptions) (_result *DeleteContactsByIdsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Contacts) {
+		query["Contacts"] = request.Contacts
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteContactsByIds"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteContactsByIdsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除联系人(选择后删除)
+//
+// @param request - DeleteContactsByIdsRequest
+//
+// @return DeleteContactsByIdsResponse
+func (client *Client) DeleteContactsByIds(request *DeleteContactsByIdsRequest) (_result *DeleteContactsByIdsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteContactsByIdsResponse{}
+	_body, _err := client.DeleteContactsByIdsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a Flow. Only Flows in the DRAFT state can be deleted.
 //
 // Description:
@@ -2207,9 +3882,11 @@ func (client *Client) DeleteChatappTemplate(request *DeleteChatappTemplateReques
 //
 // @return DeleteFlowResponse
 func (client *Client) DeleteFlowWithOptions(request *DeleteFlowRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -2287,9 +3964,11 @@ func (client *Client) DeleteFlow(request *DeleteFlowRequest) (_result *DeleteFlo
 //
 // @return DeleteFlowVersionResponse
 func (client *Client) DeleteFlowVersionWithOptions(tmpReq *DeleteFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowVersionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteFlowVersionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2369,6 +4048,474 @@ func (client *Client) DeleteFlowVersion(request *DeleteFlowVersionRequest) (_res
 
 // Summary:
 //
+// 删除群组
+//
+// @param request - DeleteGroupByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGroupByIdResponse
+func (client *Client) DeleteGroupByIdWithOptions(request *DeleteGroupByIdRequest, runtime *dara.RuntimeOptions) (_result *DeleteGroupByIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteGroupById"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteGroupByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除群组
+//
+// @param request - DeleteGroupByIdRequest
+//
+// @return DeleteGroupByIdResponse
+func (client *Client) DeleteGroupById(request *DeleteGroupByIdRequest) (_result *DeleteGroupByIdResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteGroupByIdResponse{}
+	_body, _err := client.DeleteGroupByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除ins的page
+//
+// @param request - DeleteInstagramPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstagramPageResponse
+func (client *Client) DeleteInstagramPageWithOptions(request *DeleteInstagramPageRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstagramPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteInstagramPage"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteInstagramPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除ins的page
+//
+// @param request - DeleteInstagramPageRequest
+//
+// @return DeleteInstagramPageResponse
+func (client *Client) DeleteInstagramPage(request *DeleteInstagramPageRequest) (_result *DeleteInstagramPageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteInstagramPageResponse{}
+	_body, _err := client.DeleteInstagramPageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除实例
+//
+// @param request - DeleteInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceResponse
+func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteInstance"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除实例
+//
+// @param request - DeleteInstanceRequest
+//
+// @return DeleteInstanceResponse
+func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteInstanceResponse{}
+	_body, _err := client.DeleteInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除营销活动
+//
+// @param request - DeleteMarketingFlowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMarketingFlowResponse
+func (client *Client) DeleteMarketingFlowWithOptions(request *DeleteMarketingFlowRequest, runtime *dara.RuntimeOptions) (_result *DeleteMarketingFlowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActivityCode) {
+		query["ActivityCode"] = request.ActivityCode
+	}
+
+	if !dara.IsNil(request.ActivityId) {
+		query["ActivityId"] = request.ActivityId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMarketingFlow"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMarketingFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除营销活动
+//
+// @param request - DeleteMarketingFlowRequest
+//
+// @return DeleteMarketingFlowResponse
+func (client *Client) DeleteMarketingFlow(request *DeleteMarketingFlowRequest) (_result *DeleteMarketingFlowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteMarketingFlowResponse{}
+	_body, _err := client.DeleteMarketingFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除预算
+//
+// @param request - DeleteMessageCampaignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMessageCampaignResponse
+func (client *Client) DeleteMessageCampaignWithOptions(request *DeleteMessageCampaignRequest, runtime *dara.RuntimeOptions) (_result *DeleteMessageCampaignResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdAccountId) {
+		query["AdAccountId"] = request.AdAccountId
+	}
+
+	if !dara.IsNil(request.CampaignId) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMessageCampaign"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMessageCampaignResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除预算
+//
+// @param request - DeleteMessageCampaignRequest
+//
+// @return DeleteMessageCampaignResponse
+func (client *Client) DeleteMessageCampaign(request *DeleteMessageCampaignRequest) (_result *DeleteMessageCampaignResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteMessageCampaignResponse{}
+	_body, _err := client.DeleteMessageCampaignWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除messenger的page
+//
+// @param request - DeleteMessengerPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMessengerPageResponse
+func (client *Client) DeleteMessengerPageWithOptions(request *DeleteMessengerPageRequest, runtime *dara.RuntimeOptions) (_result *DeleteMessengerPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMessengerPage"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMessengerPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除messenger的page
+//
+// @param request - DeleteMessengerPageRequest
+//
+// @return DeleteMessengerPageResponse
+func (client *Client) DeleteMessengerPage(request *DeleteMessengerPageRequest) (_result *DeleteMessengerPageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteMessengerPageResponse{}
+	_body, _err := client.DeleteMessengerPageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a quick-response (QR) code that contains a message.
 //
 // @param request - DeletePhoneMessageQrdlRequest
@@ -2377,9 +4524,11 @@ func (client *Client) DeleteFlowVersion(request *DeleteFlowVersionRequest) (_res
 //
 // @return DeletePhoneMessageQrdlResponse
 func (client *Client) DeletePhoneMessageQrdlWithOptions(request *DeletePhoneMessageQrdlRequest, runtime *dara.RuntimeOptions) (_result *DeletePhoneMessageQrdlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -2457,9 +4606,11 @@ func (client *Client) DeletePhoneMessageQrdl(request *DeletePhoneMessageQrdlRequ
 //
 // @return DeprecateFlowResponse
 func (client *Client) DeprecateFlowWithOptions(request *DeprecateFlowRequest, runtime *dara.RuntimeOptions) (_result *DeprecateFlowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -2537,9 +4688,11 @@ func (client *Client) DeprecateFlow(request *DeprecateFlowRequest) (_result *Dep
 //
 // @return EnableWhatsappROIMetricResponse
 func (client *Client) EnableWhatsappROIMetricWithOptions(request *EnableWhatsappROIMetricRequest, runtime *dara.RuntimeOptions) (_result *EnableWhatsappROIMetricResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -2617,9 +4770,11 @@ func (client *Client) EnableWhatsappROIMetric(request *EnableWhatsappROIMetricRe
 //
 // @return FlowBindPhoneResponse
 func (client *Client) FlowBindPhoneWithOptions(tmpReq *FlowBindPhoneRequest, runtime *dara.RuntimeOptions) (_result *FlowBindPhoneResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlowBindPhoneShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2715,9 +4870,11 @@ func (client *Client) FlowBindPhone(request *FlowBindPhoneRequest) (_result *Flo
 //
 // @return FlowRebindPhoneResponse
 func (client *Client) FlowRebindPhoneWithOptions(tmpReq *FlowRebindPhoneRequest, runtime *dara.RuntimeOptions) (_result *FlowRebindPhoneResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlowRebindPhoneShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2813,9 +4970,11 @@ func (client *Client) FlowRebindPhone(request *FlowRebindPhoneRequest) (_result 
 //
 // @return FlowUnbindPhoneResponse
 func (client *Client) FlowUnbindPhoneWithOptions(tmpReq *FlowUnbindPhoneRequest, runtime *dara.RuntimeOptions) (_result *FlowUnbindPhoneResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FlowUnbindPhoneShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2895,6 +5054,158 @@ func (client *Client) FlowUnbindPhone(request *FlowUnbindPhoneRequest) (_result 
 
 // Summary:
 //
+// 获取临时的URL
+//
+// @param request - GeneratePresignedUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GeneratePresignedUrlResponse
+func (client *Client) GeneratePresignedUrlWithOptions(request *GeneratePresignedUrlRequest, runtime *dara.RuntimeOptions) (_result *GeneratePresignedUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FilePath) {
+		query["FilePath"] = request.FilePath
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GeneratePresignedUrl"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GeneratePresignedUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取临时的URL
+//
+// @param request - GeneratePresignedUrlRequest
+//
+// @return GeneratePresignedUrlResponse
+func (client *Client) GeneratePresignedUrl(request *GeneratePresignedUrlRequest) (_result *GeneratePresignedUrlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GeneratePresignedUrlResponse{}
+	_body, _err := client.GeneratePresignedUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过类型查询出个人待审核的单子
+//
+// @param request - GetAuditRequestByTypeUnAuditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAuditRequestByTypeUnAuditResponse
+func (client *Client) GetAuditRequestByTypeUnAuditWithOptions(request *GetAuditRequestByTypeUnAuditRequest, runtime *dara.RuntimeOptions) (_result *GetAuditRequestByTypeUnAuditResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RequestType) {
+		query["RequestType"] = request.RequestType
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAuditRequestByTypeUnAudit"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAuditRequestByTypeUnAuditResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过类型查询出个人待审核的单子
+//
+// @param request - GetAuditRequestByTypeUnAuditRequest
+//
+// @return GetAuditRequestByTypeUnAuditResponse
+func (client *Client) GetAuditRequestByTypeUnAudit(request *GetAuditRequestByTypeUnAuditRequest) (_result *GetAuditRequestByTypeUnAuditResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAuditRequestByTypeUnAuditResponse{}
+	_body, _err := client.GetAuditRequestByTypeUnAuditWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get ChatFlow Runtime Data
 //
 // @param tmpReq - GetChatFlowMetricRequest
@@ -2903,9 +5214,11 @@ func (client *Client) FlowUnbindPhone(request *FlowUnbindPhoneRequest) (_result 
 //
 // @return GetChatFlowMetricResponse
 func (client *Client) GetChatFlowMetricWithOptions(tmpReq *GetChatFlowMetricRequest, runtime *dara.RuntimeOptions) (_result *GetChatFlowMetricResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetChatFlowMetricShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3013,9 +5326,11 @@ func (client *Client) GetChatFlowMetric(request *GetChatFlowMetricRequest) (_res
 //
 // @return GetChatFlowTemplateResponse
 func (client *Client) GetChatFlowTemplateWithOptions(request *GetChatFlowTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetChatFlowTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizCode) {
@@ -3081,6 +5396,76 @@ func (client *Client) GetChatFlowTemplate(request *GetChatFlowTemplateRequest) (
 
 // Summary:
 //
+// 查询ChatApp开通状态
+//
+// @param request - GetChatappOpenStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChatappOpenStatusResponse
+func (client *Client) GetChatappOpenStatusWithOptions(request *GetChatappOpenStatusRequest, runtime *dara.RuntimeOptions) (_result *GetChatappOpenStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetChatappOpenStatus"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetChatappOpenStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询ChatApp开通状态
+//
+// @param request - GetChatappOpenStatusRequest
+//
+// @return GetChatappOpenStatusResponse
+func (client *Client) GetChatappOpenStatus(request *GetChatappOpenStatusRequest) (_result *GetChatappOpenStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetChatappOpenStatusResponse{}
+	_body, _err := client.GetChatappOpenStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the number of messages that are sent by using a phone number by a specific metric.
 //
 // Description:
@@ -3093,9 +5478,11 @@ func (client *Client) GetChatFlowTemplate(request *GetChatFlowTemplateRequest) (
 //
 // @return GetChatappPhoneNumberMetricResponse
 func (client *Client) GetChatappPhoneNumberMetricWithOptions(request *GetChatappPhoneNumberMetricRequest, runtime *dara.RuntimeOptions) (_result *GetChatappPhoneNumberMetricResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -3181,6 +5568,84 @@ func (client *Client) GetChatappPhoneNumberMetric(request *GetChatappPhoneNumber
 
 // Summary:
 //
+// 获取Chatapp号码其它控制
+//
+// @param request - GetChatappPhoneNumberSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChatappPhoneNumberSettingResponse
+func (client *Client) GetChatappPhoneNumberSettingWithOptions(request *GetChatappPhoneNumberSettingRequest, runtime *dara.RuntimeOptions) (_result *GetChatappPhoneNumberSettingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PhoneNumber) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetChatappPhoneNumberSetting"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetChatappPhoneNumberSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Chatapp号码其它控制
+//
+// @param request - GetChatappPhoneNumberSettingRequest
+//
+// @return GetChatappPhoneNumberSettingResponse
+func (client *Client) GetChatappPhoneNumberSetting(request *GetChatappPhoneNumberSettingRequest) (_result *GetChatappPhoneNumberSettingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetChatappPhoneNumberSettingResponse{}
+	_body, _err := client.GetChatappPhoneNumberSettingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information of a message template.
 //
 // Description:
@@ -3195,9 +5660,11 @@ func (client *Client) GetChatappPhoneNumberMetric(request *GetChatappPhoneNumber
 //
 // @return GetChatappTemplateDetailResponse
 func (client *Client) GetChatappTemplateDetailWithOptions(request *GetChatappTemplateDetailRequest, runtime *dara.RuntimeOptions) (_result *GetChatappTemplateDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -3289,9 +5756,11 @@ func (client *Client) GetChatappTemplateDetail(request *GetChatappTemplateDetail
 //
 // @return GetChatappTemplateMetricResponse
 func (client *Client) GetChatappTemplateMetricWithOptions(request *GetChatappTemplateMetricRequest, runtime *dara.RuntimeOptions) (_result *GetChatappTemplateMetricResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -3397,9 +5866,11 @@ func (client *Client) GetChatappTemplateMetric(request *GetChatappTemplateMetric
 //
 // @return GetChatappUploadAuthorizationResponse
 func (client *Client) GetChatappUploadAuthorizationWithOptions(request *GetChatappUploadAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *GetChatappUploadAuthorizationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -3477,9 +5948,11 @@ func (client *Client) GetChatappUploadAuthorization(request *GetChatappUploadAut
 //
 // @return GetChatappVerifyCodeResponse
 func (client *Client) GetChatappVerifyCodeWithOptions(request *GetChatappVerifyCodeRequest, runtime *dara.RuntimeOptions) (_result *GetChatappVerifyCodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -3569,9 +6042,11 @@ func (client *Client) GetChatappVerifyCode(request *GetChatappVerifyCodeRequest)
 //
 // @return GetCommerceSettingResponse
 func (client *Client) GetCommerceSettingWithOptions(request *GetCommerceSettingRequest, runtime *dara.RuntimeOptions) (_result *GetCommerceSettingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -3657,9 +6132,11 @@ func (client *Client) GetCommerceSetting(request *GetCommerceSettingRequest) (_r
 //
 // @return GetConversationalAutomationResponse
 func (client *Client) GetConversationalAutomationWithOptions(request *GetConversationalAutomationRequest, runtime *dara.RuntimeOptions) (_result *GetConversationalAutomationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -3733,6 +6210,348 @@ func (client *Client) GetConversationalAutomation(request *GetConversationalAuto
 
 // Summary:
 //
+// 查询客户来源站点
+//
+// @param request - GetCustomerSiteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCustomerSiteResponse
+func (client *Client) GetCustomerSiteWithOptions(request *GetCustomerSiteRequest, runtime *dara.RuntimeOptions) (_result *GetCustomerSiteResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCustomerSite"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCustomerSiteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询客户来源站点
+//
+// @param request - GetCustomerSiteRequest
+//
+// @return GetCustomerSiteResponse
+func (client *Client) GetCustomerSite(request *GetCustomerSiteRequest) (_result *GetCustomerSiteResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetCustomerSiteResponse{}
+	_body, _err := client.GetCustomerSiteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 下载excel数据
+//
+// @param tmpReq - GetDownloadExcelListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDownloadExcelListResponse
+func (client *Client) GetDownloadExcelListWithOptions(tmpReq *GetDownloadExcelListRequest, runtime *dara.RuntimeOptions) (_result *GetDownloadExcelListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetDownloadExcelListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BizExtend) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, dara.String("BizExtend"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.CountryNames) {
+		request.CountryNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CountryNames, dara.String("CountryNames"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.GroupIds) {
+		request.GroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GroupIds, dara.String("GroupIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizCode) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !dara.IsNil(request.BizExtendShrink) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !dara.IsNil(request.Condition) {
+		query["Condition"] = request.Condition
+	}
+
+	if !dara.IsNil(request.CountryNamesShrink) {
+		query["CountryNames"] = request.CountryNamesShrink
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.GroupIdsShrink) {
+		query["GroupIds"] = request.GroupIdsShrink
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDownloadExcelList"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDownloadExcelListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 下载excel数据
+//
+// @param request - GetDownloadExcelListRequest
+//
+// @return GetDownloadExcelListResponse
+func (client *Client) GetDownloadExcelList(request *GetDownloadExcelListRequest) (_result *GetDownloadExcelListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDownloadExcelListResponse{}
+	_body, _err := client.GetDownloadExcelListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取ins的page列表
+//
+// @param request - GetFbInstagramPagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFbInstagramPagesResponse
+func (client *Client) GetFbInstagramPagesWithOptions(request *GetFbInstagramPagesRequest, runtime *dara.RuntimeOptions) (_result *GetFbInstagramPagesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessToken) {
+		query["AccessToken"] = request.AccessToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFbInstagramPages"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFbInstagramPagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取ins的page列表
+//
+// @param request - GetFbInstagramPagesRequest
+//
+// @return GetFbInstagramPagesResponse
+func (client *Client) GetFbInstagramPages(request *GetFbInstagramPagesRequest) (_result *GetFbInstagramPagesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetFbInstagramPagesResponse{}
+	_body, _err := client.GetFbInstagramPagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取facebook的pageId列表
+//
+// @param request - GetFbMessengerPagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFbMessengerPagesResponse
+func (client *Client) GetFbMessengerPagesWithOptions(request *GetFbMessengerPagesRequest, runtime *dara.RuntimeOptions) (_result *GetFbMessengerPagesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessToken) {
+		query["AccessToken"] = request.AccessToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFbMessengerPages"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFbMessengerPagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取facebook的pageId列表
+//
+// @param request - GetFbMessengerPagesRequest
+//
+// @return GetFbMessengerPagesResponse
+func (client *Client) GetFbMessengerPages(request *GetFbMessengerPagesRequest) (_result *GetFbMessengerPagesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetFbMessengerPagesResponse{}
+	_body, _err := client.GetFbMessengerPagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about a Flow.
 //
 // Description:
@@ -3745,9 +6564,11 @@ func (client *Client) GetConversationalAutomation(request *GetConversationalAuto
 //
 // @return GetFlowResponse
 func (client *Client) GetFlowWithOptions(request *GetFlowRequest, runtime *dara.RuntimeOptions) (_result *GetFlowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -3825,9 +6646,11 @@ func (client *Client) GetFlow(request *GetFlowRequest) (_result *GetFlowResponse
 //
 // @return GetFlowJSONAssestResponse
 func (client *Client) GetFlowJSONAssestWithOptions(request *GetFlowJSONAssestRequest, runtime *dara.RuntimeOptions) (_result *GetFlowJSONAssestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -3905,9 +6728,11 @@ func (client *Client) GetFlowJSONAssest(request *GetFlowJSONAssestRequest) (_res
 //
 // @return GetFlowPreviewUrlResponse
 func (client *Client) GetFlowPreviewUrlWithOptions(request *GetFlowPreviewUrlRequest, runtime *dara.RuntimeOptions) (_result *GetFlowPreviewUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -3977,6 +6802,180 @@ func (client *Client) GetFlowPreviewUrl(request *GetFlowPreviewUrlRequest) (_res
 
 // Summary:
 //
+// 查询群组是否重名
+//
+// @param tmpReq - GetGroupExistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGroupExistResponse
+func (client *Client) GetGroupExistWithOptions(tmpReq *GetGroupExistRequest, runtime *dara.RuntimeOptions) (_result *GetGroupExistResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetGroupExistShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BizExtend) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, dara.String("BizExtend"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizCode) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !dara.IsNil(request.BizExtendShrink) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGroupExist"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGroupExistResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询群组是否重名
+//
+// @param request - GetGroupExistRequest
+//
+// @return GetGroupExistResponse
+func (client *Client) GetGroupExist(request *GetGroupExistRequest) (_result *GetGroupExistResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetGroupExistResponse{}
+	_body, _err := client.GetGroupExistWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询预算指标
+//
+// @param request - GetMessageCampaignInsightsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMessageCampaignInsightsResponse
+func (client *Client) GetMessageCampaignInsightsWithOptions(request *GetMessageCampaignInsightsRequest, runtime *dara.RuntimeOptions) (_result *GetMessageCampaignInsightsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdAccountId) {
+		query["AdAccountId"] = request.AdAccountId
+	}
+
+	if !dara.IsNil(request.CampaignId) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMessageCampaignInsights"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMessageCampaignInsightsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询预算指标
+//
+// @param request - GetMessageCampaignInsightsRequest
+//
+// @return GetMessageCampaignInsightsResponse
+func (client *Client) GetMessageCampaignInsights(request *GetMessageCampaignInsightsRequest) (_result *GetMessageCampaignInsightsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetMessageCampaignInsightsResponse{}
+	_body, _err := client.GetMessageCampaignInsightsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtain the verification code for the migration number.
 //
 // Description:
@@ -3989,9 +6988,11 @@ func (client *Client) GetFlowPreviewUrl(request *GetFlowPreviewUrlRequest) (_res
 //
 // @return GetMigrationVerifyCodeResponse
 func (client *Client) GetMigrationVerifyCodeWithOptions(request *GetMigrationVerifyCodeRequest, runtime *dara.RuntimeOptions) (_result *GetMigrationVerifyCodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -4077,9 +7078,11 @@ func (client *Client) GetMigrationVerifyCode(request *GetMigrationVerifyCodeRequ
 //
 // @return GetPermissionByCodeResponse
 func (client *Client) GetPermissionByCodeWithOptions(tmpReq *GetPermissionByCodeRequest, runtime *dara.RuntimeOptions) (_result *GetPermissionByCodeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetPermissionByCodeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4163,9 +7166,11 @@ func (client *Client) GetPermissionByCode(request *GetPermissionByCodeRequest) (
 //
 // @return GetPhoneEncryptionPublicKeyResponse
 func (client *Client) GetPhoneEncryptionPublicKeyWithOptions(request *GetPhoneEncryptionPublicKeyRequest, runtime *dara.RuntimeOptions) (_result *GetPhoneEncryptionPublicKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -4243,9 +7248,11 @@ func (client *Client) GetPhoneEncryptionPublicKey(request *GetPhoneEncryptionPub
 //
 // @return GetPhoneNumberVerificationStatusResponse
 func (client *Client) GetPhoneNumberVerificationStatusWithOptions(request *GetPhoneNumberVerificationStatusRequest, runtime *dara.RuntimeOptions) (_result *GetPhoneNumberVerificationStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -4315,6 +7322,84 @@ func (client *Client) GetPhoneNumberVerificationStatus(request *GetPhoneNumberVe
 
 // Summary:
 //
+// 下载保证函模板的地址
+//
+// @param request - GetPledgeTemplateAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPledgeTemplateAddressResponse
+func (client *Client) GetPledgeTemplateAddressWithOptions(request *GetPledgeTemplateAddressRequest, runtime *dara.RuntimeOptions) (_result *GetPledgeTemplateAddressResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.IndustryType) {
+		query["IndustryType"] = request.IndustryType
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPledgeTemplateAddress"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPledgeTemplateAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 下载保证函模板的地址
+//
+// @param request - GetPledgeTemplateAddressRequest
+//
+// @return GetPledgeTemplateAddressResponse
+func (client *Client) GetPledgeTemplateAddress(request *GetPledgeTemplateAddressRequest) (_result *GetPledgeTemplateAddressResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetPledgeTemplateAddressResponse{}
+	_body, _err := client.GetPledgeTemplateAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains the ID of a pre-registered phone number used for embedded signup without the need to re-obtain a verification code.
 //
 // Description:
@@ -4327,9 +7412,11 @@ func (client *Client) GetPhoneNumberVerificationStatus(request *GetPhoneNumberVe
 //
 // @return GetPreValidatePhoneIdResponse
 func (client *Client) GetPreValidatePhoneIdWithOptions(request *GetPreValidatePhoneIdRequest, runtime *dara.RuntimeOptions) (_result *GetPreValidatePhoneIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PhoneNumber) {
@@ -4387,6 +7474,158 @@ func (client *Client) GetPreValidatePhoneId(request *GetPreValidatePhoneIdReques
 
 // Summary:
 //
+// 通过requestNo查询申请单
+//
+// @param request - GetViberByRequestNoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetViberByRequestNoResponse
+func (client *Client) GetViberByRequestNoWithOptions(request *GetViberByRequestNoRequest, runtime *dara.RuntimeOptions) (_result *GetViberByRequestNoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RequestNo) {
+		query["RequestNo"] = request.RequestNo
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetViberByRequestNo"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetViberByRequestNoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过requestNo查询申请单
+//
+// @param request - GetViberByRequestNoRequest
+//
+// @return GetViberByRequestNoResponse
+func (client *Client) GetViberByRequestNo(request *GetViberByRequestNoRequest) (_result *GetViberByRequestNoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetViberByRequestNoResponse{}
+	_body, _err := client.GetViberByRequestNoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 可以申请暂停的次数
+//
+// @param request - GetViberPauseTimesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetViberPauseTimesResponse
+func (client *Client) GetViberPauseTimesWithOptions(request *GetViberPauseTimesRequest, runtime *dara.RuntimeOptions) (_result *GetViberPauseTimesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetViberPauseTimes"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetViberPauseTimesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 可以申请暂停的次数
+//
+// @param request - GetViberPauseTimesRequest
+//
+// @return GetViberPauseTimesResponse
+func (client *Client) GetViberPauseTimes(request *GetViberPauseTimesRequest) (_result *GetViberPauseTimesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetViberPauseTimesResponse{}
+	_body, _err := client.GetViberPauseTimesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the product catalogs that are associated with a WhatsApp Business account (WABA).
 //
 // Description:
@@ -4399,9 +7638,11 @@ func (client *Client) GetPreValidatePhoneId(request *GetPreValidatePhoneIdReques
 //
 // @return GetWhatsappConnectionCatalogResponse
 func (client *Client) GetWhatsappConnectionCatalogWithOptions(request *GetWhatsappConnectionCatalogRequest, runtime *dara.RuntimeOptions) (_result *GetWhatsappConnectionCatalogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -4471,6 +7712,80 @@ func (client *Client) GetWhatsappConnectionCatalog(request *GetWhatsappConnectio
 
 // Summary:
 //
+// 获取嵌入式授权page
+//
+// @param request - GetWhatsappConversionApiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWhatsappConversionApiResponse
+func (client *Client) GetWhatsappConversionApiWithOptions(request *GetWhatsappConversionApiRequest, runtime *dara.RuntimeOptions) (_result *GetWhatsappConversionApiResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWhatsappConversionApi"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWhatsappConversionApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取嵌入式授权page
+//
+// @param request - GetWhatsappConversionApiRequest
+//
+// @return GetWhatsappConversionApiResponse
+func (client *Client) GetWhatsappConversionApi(request *GetWhatsappConversionApiRequest) (_result *GetWhatsappConversionApiResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetWhatsappConversionApiResponse{}
+	_body, _err := client.GetWhatsappConversionApiWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the messaging health status of different types of nodes.
 //
 // Description:
@@ -4487,9 +7802,11 @@ func (client *Client) GetWhatsappConnectionCatalog(request *GetWhatsappConnectio
 //
 // @return GetWhatsappHealthStatusResponse
 func (client *Client) GetWhatsappHealthStatusWithOptions(request *GetWhatsappHealthStatusRequest, runtime *dara.RuntimeOptions) (_result *GetWhatsappHealthStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -4591,9 +7908,11 @@ func (client *Client) GetWhatsappHealthStatus(request *GetWhatsappHealthStatusRe
 //
 // @return IsvGetAppIdResponse
 func (client *Client) IsvGetAppIdWithOptions(request *IsvGetAppIdRequest, runtime *dara.RuntimeOptions) (_result *IsvGetAppIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IntlVersion) {
@@ -4667,6 +7986,164 @@ func (client *Client) IsvGetAppId(request *IsvGetAppIdRequest) (_result *IsvGetA
 
 // Summary:
 //
+// 查询群组列表
+//
+// @param tmpReq - ListAllGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAllGroupsResponse
+func (client *Client) ListAllGroupsWithOptions(tmpReq *ListAllGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListAllGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListAllGroupsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BizExtend) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, dara.String("BizExtend"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizCode) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !dara.IsNil(request.BizExtendShrink) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAllGroups"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAllGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询群组列表
+//
+// @param request - ListAllGroupsRequest
+//
+// @return ListAllGroupsResponse
+func (client *Client) ListAllGroups(request *ListAllGroupsRequest) (_result *ListAllGroupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAllGroupsResponse{}
+	_body, _err := client.ListAllGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询绑定的dm账号
+//
+// @param request - ListBindDmAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBindDmAccountResponse
+func (client *Client) ListBindDmAccountWithOptions(request *ListBindDmAccountRequest, runtime *dara.RuntimeOptions) (_result *ListBindDmAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListBindDmAccount"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListBindDmAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询绑定的dm账号
+//
+// @param request - ListBindDmAccountRequest
+//
+// @return ListBindDmAccountResponse
+func (client *Client) ListBindDmAccount(request *ListBindDmAccountRequest) (_result *ListBindDmAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListBindDmAccountResponse{}
+	_body, _err := client.ListBindDmAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query Bound List Based on flowCode
 //
 // Description:
@@ -4683,9 +8160,11 @@ func (client *Client) IsvGetAppId(request *IsvGetAppIdRequest) (_result *IsvGetA
 //
 // @return ListBindingRelationsForFlowVersionResponse
 func (client *Client) ListBindingRelationsForFlowVersionWithOptions(request *ListBindingRelationsForFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *ListBindingRelationsForFlowVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelType) {
@@ -4767,9 +8246,11 @@ func (client *Client) ListBindingRelationsForFlowVersion(request *ListBindingRel
 //
 // @return ListChatFlowResponse
 func (client *Client) ListChatFlowWithOptions(tmpReq *ListChatFlowRequest, runtime *dara.RuntimeOptions) (_result *ListChatFlowResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListChatFlowShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4873,9 +8354,11 @@ func (client *Client) ListChatFlow(request *ListChatFlowRequest) (_result *ListC
 //
 // @return ListChatFlowTemplateResponse
 func (client *Client) ListChatFlowTemplateWithOptions(request *ListChatFlowTemplateRequest, runtime *dara.RuntimeOptions) (_result *ListChatFlowTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizCode) {
@@ -4961,9 +8444,11 @@ func (client *Client) ListChatFlowTemplate(request *ListChatFlowTemplateRequest)
 //
 // @return ListChatGroupResponse
 func (client *Client) ListChatGroupWithOptions(tmpReq *ListChatGroupRequest, runtime *dara.RuntimeOptions) (_result *ListChatGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListChatGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5059,9 +8544,11 @@ func (client *Client) ListChatGroup(request *ListChatGroupRequest) (_result *Lis
 //
 // @return ListChatGroupParticipantsResponse
 func (client *Client) ListChatGroupParticipantsWithOptions(tmpReq *ListChatGroupParticipantsRequest, runtime *dara.RuntimeOptions) (_result *ListChatGroupParticipantsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListChatGroupParticipantsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5153,9 +8640,11 @@ func (client *Client) ListChatGroupParticipants(request *ListChatGroupParticipan
 //
 // @return ListChatappMessageResponse
 func (client *Client) ListChatappMessageWithOptions(tmpReq *ListChatappMessageRequest, runtime *dara.RuntimeOptions) (_result *ListChatappMessageResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListChatappMessageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5182,6 +8671,10 @@ func (client *Client) ListChatappMessageWithOptions(tmpReq *ListChatappMessageRe
 
 	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EndTimeStr) {
+		query["EndTimeStr"] = request.EndTimeStr
 	}
 
 	if !dara.IsNil(request.EventAction) {
@@ -5214,6 +8707,10 @@ func (client *Client) ListChatappMessageWithOptions(tmpReq *ListChatappMessageRe
 
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.StartTimeStr) {
+		query["StartTimeStr"] = request.StartTimeStr
 	}
 
 	if !dara.IsNil(request.TemplateCode) {
@@ -5281,9 +8778,11 @@ func (client *Client) ListChatappMessage(request *ListChatappMessageRequest) (_r
 //
 // @return ListChatappTemplateResponse
 func (client *Client) ListChatappTemplateWithOptions(tmpReq *ListChatappTemplateRequest, runtime *dara.RuntimeOptions) (_result *ListChatappTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListChatappTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5393,6 +8892,352 @@ func (client *Client) ListChatappTemplate(request *ListChatappTemplateRequest) (
 
 // Summary:
 //
+// 查询自定义受众组列表
+//
+// @param tmpReq - ListCustomAudienceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCustomAudienceResponse
+func (client *Client) ListCustomAudienceWithOptions(tmpReq *ListCustomAudienceRequest, runtime *dara.RuntimeOptions) (_result *ListCustomAudienceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListCustomAudienceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Page) {
+		request.PageShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Page, dara.String("Page"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdAccountId) {
+		query["AdAccountId"] = request.AdAccountId
+	}
+
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.CustomAudienceId) {
+		query["CustomAudienceId"] = request.CustomAudienceId
+	}
+
+	if !dara.IsNil(request.CustomAudienceName) {
+		query["CustomAudienceName"] = request.CustomAudienceName
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageShrink) {
+		query["Page"] = request.PageShrink
+	}
+
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TokenType) {
+		query["TokenType"] = request.TokenType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCustomAudience"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCustomAudienceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自定义受众组列表
+//
+// @param request - ListCustomAudienceRequest
+//
+// @return ListCustomAudienceResponse
+func (client *Client) ListCustomAudience(request *ListCustomAudienceRequest) (_result *ListCustomAudienceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCustomAudienceResponse{}
+	_body, _err := client.ListCustomAudienceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询账号下的Dm账号
+//
+// @param request - ListDmAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDmAccountResponse
+func (client *Client) ListDmAccountWithOptions(request *ListDmAccountRequest, runtime *dara.RuntimeOptions) (_result *ListDmAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SendType) {
+		query["SendType"] = request.SendType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDmAccount"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDmAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询账号下的Dm账号
+//
+// @param request - ListDmAccountRequest
+//
+// @return ListDmAccountResponse
+func (client *Client) ListDmAccount(request *ListDmAccountRequest) (_result *ListDmAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDmAccountResponse{}
+	_body, _err := client.ListDmAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询DM的tag
+//
+// @param request - ListDmTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDmTagResponse
+func (client *Client) ListDmTagWithOptions(request *ListDmTagRequest, runtime *dara.RuntimeOptions) (_result *ListDmTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDmTag"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDmTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询DM的tag
+//
+// @param request - ListDmTagRequest
+//
+// @return ListDmTagResponse
+func (client *Client) ListDmTag(request *ListDmTagRequest) (_result *ListDmTagResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDmTagResponse{}
+	_body, _err := client.ListDmTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询facebook帖子列表
+//
+// @param request - ListFacebookPostsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFacebookPostsResponse
+func (client *Client) ListFacebookPostsWithOptions(request *ListFacebookPostsRequest, runtime *dara.RuntimeOptions) (_result *ListFacebookPostsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFacebookPosts"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListFacebookPostsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询facebook帖子列表
+//
+// @param request - ListFacebookPostsRequest
+//
+// @return ListFacebookPostsResponse
+func (client *Client) ListFacebookPosts(request *ListFacebookPostsRequest) (_result *ListFacebookPostsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListFacebookPostsResponse{}
+	_body, _err := client.ListFacebookPostsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of Flows.
 //
 // Description:
@@ -5405,9 +9250,11 @@ func (client *Client) ListChatappTemplate(request *ListChatappTemplateRequest) (
 //
 // @return ListFlowResponse
 func (client *Client) ListFlowWithOptions(tmpReq *ListFlowRequest, runtime *dara.RuntimeOptions) (_result *ListFlowResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListFlowShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5487,6 +9334,84 @@ func (client *Client) ListFlow(request *ListFlowRequest) (_result *ListFlowRespo
 
 // Summary:
 //
+// # ListFlowNodeGroup
+//
+// @param request - ListFlowNodeGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFlowNodeGroupResponse
+func (client *Client) ListFlowNodeGroupWithOptions(request *ListFlowNodeGroupRequest, runtime *dara.RuntimeOptions) (_result *ListFlowNodeGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFlowNodeGroup"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListFlowNodeGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListFlowNodeGroup
+//
+// @param request - ListFlowNodeGroupRequest
+//
+// @return ListFlowNodeGroupResponse
+func (client *Client) ListFlowNodeGroup(request *ListFlowNodeGroupRequest) (_result *ListFlowNodeGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListFlowNodeGroupResponse{}
+	_body, _err := client.ListFlowNodeGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # ListFlowNodePrototypeV2
 //
 // @param request - ListFlowNodePrototypeV2Request
@@ -5495,9 +9420,11 @@ func (client *Client) ListFlow(request *ListFlowRequest) (_result *ListFlowRespo
 //
 // @return ListFlowNodePrototypeV2Response
 func (client *Client) ListFlowNodePrototypeV2WithOptions(request *ListFlowNodePrototypeV2Request, runtime *dara.RuntimeOptions) (_result *ListFlowNodePrototypeV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizCode) {
@@ -5583,9 +9510,11 @@ func (client *Client) ListFlowNodePrototypeV2(request *ListFlowNodePrototypeV2Re
 //
 // @return ListFlowVersionResponse
 func (client *Client) ListFlowVersionWithOptions(tmpReq *ListFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *ListFlowVersionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListFlowVersionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5673,6 +9602,644 @@ func (client *Client) ListFlowVersion(request *ListFlowVersionRequest) (_result 
 
 // Summary:
 //
+// 获取ins的page
+//
+// @param request - ListInstagramPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstagramPageResponse
+func (client *Client) ListInstagramPageWithOptions(request *ListInstagramPageRequest, runtime *dara.RuntimeOptions) (_result *ListInstagramPageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstagramPage"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstagramPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取ins的page
+//
+// @param request - ListInstagramPageRequest
+//
+// @return ListInstagramPageResponse
+func (client *Client) ListInstagramPage(request *ListInstagramPageRequest) (_result *ListInstagramPageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListInstagramPageResponse{}
+	_body, _err := client.ListInstagramPageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询instagram帖子列表
+//
+// @param request - ListInstagramPostsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstagramPostsResponse
+func (client *Client) ListInstagramPostsWithOptions(request *ListInstagramPostsRequest, runtime *dara.RuntimeOptions) (_result *ListInstagramPostsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstagramPosts"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstagramPostsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询instagram帖子列表
+//
+// @param request - ListInstagramPostsRequest
+//
+// @return ListInstagramPostsResponse
+func (client *Client) ListInstagramPosts(request *ListInstagramPostsRequest) (_result *ListInstagramPostsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListInstagramPostsResponse{}
+	_body, _err := client.ListInstagramPostsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例列表
+//
+// @param request - ListInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceResponse
+func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChannelType) {
+		query["ChannelType"] = request.ChannelType
+	}
+
+	if !dara.IsNil(request.FilterStr) {
+		query["FilterStr"] = request.FilterStr
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SubmitTime) {
+		query["SubmitTime"] = request.SubmitTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstance"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例列表
+//
+// @param request - ListInstanceRequest
+//
+// @return ListInstanceResponse
+func (client *Client) ListInstance(request *ListInstanceRequest) (_result *ListInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListInstanceResponse{}
+	_body, _err := client.ListInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询活动列表
+//
+// @param tmpReq - ListMarketingFlowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMarketingFlowResponse
+func (client *Client) ListMarketingFlowWithOptions(tmpReq *ListMarketingFlowRequest, runtime *dara.RuntimeOptions) (_result *ListMarketingFlowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListMarketingFlowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BizExtend) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, dara.String("BizExtend"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActivityCode) {
+		query["ActivityCode"] = request.ActivityCode
+	}
+
+	if !dara.IsNil(request.ActivityName) {
+		query["ActivityName"] = request.ActivityName
+	}
+
+	if !dara.IsNil(request.ActivityStatus) {
+		query["ActivityStatus"] = request.ActivityStatus
+	}
+
+	if !dara.IsNil(request.BizCode) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !dara.IsNil(request.BizExtendShrink) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RelatedFlowCode) {
+		query["RelatedFlowCode"] = request.RelatedFlowCode
+	}
+
+	if !dara.IsNil(request.RelatedGroupId) {
+		query["RelatedGroupId"] = request.RelatedGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMarketingFlow"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMarketingFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询活动列表
+//
+// @param request - ListMarketingFlowRequest
+//
+// @return ListMarketingFlowResponse
+func (client *Client) ListMarketingFlow(request *ListMarketingFlowRequest) (_result *ListMarketingFlowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListMarketingFlowResponse{}
+	_body, _err := client.ListMarketingFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询预算列表
+//
+// @param tmpReq - ListMessageCampaignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMessageCampaignResponse
+func (client *Client) ListMessageCampaignWithOptions(tmpReq *ListMessageCampaignRequest, runtime *dara.RuntimeOptions) (_result *ListMessageCampaignResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListMessageCampaignShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Page) {
+		request.PageShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Page, dara.String("Page"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdAccountId) {
+		query["AdAccountId"] = request.AdAccountId
+	}
+
+	if !dara.IsNil(request.CampaignId) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !dara.IsNil(request.CampaignName) {
+		query["CampaignName"] = request.CampaignName
+	}
+
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageShrink) {
+		query["Page"] = request.PageShrink
+	}
+
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMessageCampaign"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMessageCampaignResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询预算列表
+//
+// @param request - ListMessageCampaignRequest
+//
+// @return ListMessageCampaignResponse
+func (client *Client) ListMessageCampaign(request *ListMessageCampaignRequest) (_result *ListMessageCampaignResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListMessageCampaignResponse{}
+	_body, _err := client.ListMessageCampaignWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询订阅token
+//
+// @param request - ListMessengerSubscriptionTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMessengerSubscriptionTokenResponse
+func (client *Client) ListMessengerSubscriptionTokenWithOptions(request *ListMessengerSubscriptionTokenRequest, runtime *dara.RuntimeOptions) (_result *ListMessengerSubscriptionTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.CustomAudienceId) {
+		query["CustomAudienceId"] = request.CustomAudienceId
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.PageKey) {
+		query["PageKey"] = request.PageKey
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TokenType) {
+		query["TokenType"] = request.TokenType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMessengerSubscriptionToken"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMessengerSubscriptionTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询订阅token
+//
+// @param request - ListMessengerSubscriptionTokenRequest
+//
+// @return ListMessengerSubscriptionTokenResponse
+func (client *Client) ListMessengerSubscriptionToken(request *ListMessengerSubscriptionTokenRequest) (_result *ListMessengerSubscriptionTokenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListMessengerSubscriptionTokenResponse{}
+	_body, _err := client.ListMessengerSubscriptionTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Page绑定的广告账户列表
+//
+// @param request - ListPageAdAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPageAdAccountResponse
+func (client *Client) ListPageAdAccountWithOptions(request *ListPageAdAccountRequest, runtime *dara.RuntimeOptions) (_result *ListPageAdAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPageAdAccount"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPageAdAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Page绑定的广告账户列表
+//
+// @param request - ListPageAdAccountRequest
+//
+// @return ListPageAdAccountResponse
+func (client *Client) ListPageAdAccount(request *ListPageAdAccountRequest) (_result *ListPageAdAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListPageAdAccountResponse{}
+	_body, _err := client.ListPageAdAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about a list of quick-response (QR) codes that contain messages.
 //
 // @param request - ListPhoneMessageQrdlRequest
@@ -5681,9 +10248,11 @@ func (client *Client) ListFlowVersion(request *ListFlowVersionRequest) (_result 
 //
 // @return ListPhoneMessageQrdlResponse
 func (client *Client) ListPhoneMessageQrdlWithOptions(request *ListPhoneMessageQrdlRequest, runtime *dara.RuntimeOptions) (_result *ListPhoneMessageQrdlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -5761,9 +10330,11 @@ func (client *Client) ListPhoneMessageQrdl(request *ListPhoneMessageQrdlRequest)
 //
 // @return ListProductResponse
 func (client *Client) ListProductWithOptions(request *ListProductRequest, runtime *dara.RuntimeOptions) (_result *ListProductResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.After) {
@@ -5865,9 +10436,11 @@ func (client *Client) ListProduct(request *ListProductRequest) (_result *ListPro
 //
 // @return ListProductCatalogResponse
 func (client *Client) ListProductCatalogWithOptions(request *ListProductCatalogRequest, runtime *dara.RuntimeOptions) (_result *ListProductCatalogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.After) {
@@ -5953,6 +10526,80 @@ func (client *Client) ListProductCatalog(request *ListProductCatalogRequest) (_r
 
 // Summary:
 //
+// 展示viber申请单服务号卡片
+//
+// @param request - ListViberServiceMessageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListViberServiceMessageResponse
+func (client *Client) ListViberServiceMessageWithOptions(request *ListViberServiceMessageRequest, runtime *dara.RuntimeOptions) (_result *ListViberServiceMessageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListViberServiceMessage"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListViberServiceMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 展示viber申请单服务号卡片
+//
+// @param request - ListViberServiceMessageRequest
+//
+// @return ListViberServiceMessageResponse
+func (client *Client) ListViberServiceMessage(request *ListViberServiceMessageRequest) (_result *ListViberServiceMessageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListViberServiceMessageResponse{}
+	_body, _err := client.ListViberServiceMessageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // The code of the message template.
 //
 // Description:
@@ -5965,9 +10612,11 @@ func (client *Client) ListProductCatalog(request *ListProductCatalogRequest) (_r
 //
 // @return ModifyChatappTemplateResponse
 func (client *Client) ModifyChatappTemplateWithOptions(tmpReq *ModifyChatappTemplateRequest, runtime *dara.RuntimeOptions) (_result *ModifyChatappTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyChatappTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6083,9 +10732,11 @@ func (client *Client) ModifyChatappTemplate(request *ModifyChatappTemplateReques
 //
 // @return ModifyChatappTemplatePropertiesResponse
 func (client *Client) ModifyChatappTemplatePropertiesWithOptions(request *ModifyChatappTemplatePropertiesRequest, runtime *dara.RuntimeOptions) (_result *ModifyChatappTemplatePropertiesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllowSend) {
@@ -6179,9 +10830,11 @@ func (client *Client) ModifyChatappTemplateProperties(request *ModifyChatappTemp
 //
 // @return ModifyFlowResponse
 func (client *Client) ModifyFlowWithOptions(tmpReq *ModifyFlowRequest, runtime *dara.RuntimeOptions) (_result *ModifyFlowResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyFlowShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6277,9 +10930,11 @@ func (client *Client) ModifyFlow(request *ModifyFlowRequest) (_result *ModifyFlo
 //
 // @return ModifyPhoneBusinessProfileResponse
 func (client *Client) ModifyPhoneBusinessProfileWithOptions(tmpReq *ModifyPhoneBusinessProfileRequest, runtime *dara.RuntimeOptions) (_result *ModifyPhoneBusinessProfileResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyPhoneBusinessProfileShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6383,6 +11038,102 @@ func (client *Client) ModifyPhoneBusinessProfile(request *ModifyPhoneBusinessPro
 
 // Summary:
 //
+// 联系人变更群组
+//
+// @param tmpReq - MoveContactToGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MoveContactToGroupResponse
+func (client *Client) MoveContactToGroupWithOptions(tmpReq *MoveContactToGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveContactToGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &MoveContactToGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BizExtend) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, dara.String("BizExtend"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizCode) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !dara.IsNil(request.BizExtendShrink) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !dara.IsNil(request.Contacts) {
+		query["Contacts"] = request.Contacts
+	}
+
+	if !dara.IsNil(request.LinkExistGroups) {
+		query["LinkExistGroups"] = request.LinkExistGroups
+	}
+
+	if !dara.IsNil(request.LinkNewGroups) {
+		query["LinkNewGroups"] = request.LinkNewGroups
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MoveContactToGroup"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MoveContactToGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 联系人变更群组
+//
+// @param request - MoveContactToGroupRequest
+//
+// @return MoveContactToGroupResponse
+func (client *Client) MoveContactToGroup(request *MoveContactToGroupRequest) (_result *MoveContactToGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &MoveContactToGroupResponse{}
+	_body, _err := client.MoveContactToGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Offline Flow Version
 //
 // @param tmpReq - OfflineFlowVersionRequest
@@ -6391,9 +11142,11 @@ func (client *Client) ModifyPhoneBusinessProfile(request *ModifyPhoneBusinessPro
 //
 // @return OfflineFlowVersionResponse
 func (client *Client) OfflineFlowVersionWithOptions(tmpReq *OfflineFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *OfflineFlowVersionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &OfflineFlowVersionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6485,9 +11238,11 @@ func (client *Client) OfflineFlowVersion(request *OfflineFlowVersionRequest) (_r
 //
 // @return OnlineFlowVersionResponse
 func (client *Client) OnlineFlowVersionWithOptions(tmpReq *OnlineFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *OnlineFlowVersionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &OnlineFlowVersionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6571,6 +11326,154 @@ func (client *Client) OnlineFlowVersion(request *OnlineFlowVersionRequest) (_res
 
 // Summary:
 //
+// 开通Chatapp服务
+//
+// @param request - OpenChatappServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenChatappServiceResponse
+func (client *Client) OpenChatappServiceWithOptions(request *OpenChatappServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenChatappServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OpenChatappService"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OpenChatappServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开通Chatapp服务
+//
+// @param request - OpenChatappServiceRequest
+//
+// @return OpenChatappServiceResponse
+func (client *Client) OpenChatappService(request *OpenChatappServiceRequest) (_result *OpenChatappServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OpenChatappServiceResponse{}
+	_body, _err := client.OpenChatappServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 暂停服务
+//
+// @param request - PauseMarketingFLowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PauseMarketingFLowResponse
+func (client *Client) PauseMarketingFLowWithOptions(request *PauseMarketingFLowRequest, runtime *dara.RuntimeOptions) (_result *PauseMarketingFLowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActivityCode) {
+		query["ActivityCode"] = request.ActivityCode
+	}
+
+	if !dara.IsNil(request.ActivityId) {
+		query["ActivityId"] = request.ActivityId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PauseMarketingFLow"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PauseMarketingFLowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 暂停服务
+//
+// @param request - PauseMarketingFLowRequest
+//
+// @return PauseMarketingFLowResponse
+func (client *Client) PauseMarketingFLow(request *PauseMarketingFLowRequest) (_result *PauseMarketingFLowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &PauseMarketingFLowResponse{}
+	_body, _err := client.PauseMarketingFLowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Publishes a Flow.
 //
 // Description:
@@ -6583,9 +11486,11 @@ func (client *Client) OnlineFlowVersion(request *OnlineFlowVersionRequest) (_res
 //
 // @return PublishFlowResponse
 func (client *Client) PublishFlowWithOptions(request *PublishFlowRequest, runtime *dara.RuntimeOptions) (_result *PublishFlowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -6667,9 +11572,11 @@ func (client *Client) PublishFlow(request *PublishFlowRequest) (_result *Publish
 //
 // @return QueryChatappBindWabaResponse
 func (client *Client) QueryChatappBindWabaWithOptions(request *QueryChatappBindWabaRequest, runtime *dara.RuntimeOptions) (_result *QueryChatappBindWabaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -6751,9 +11658,11 @@ func (client *Client) QueryChatappBindWaba(request *QueryChatappBindWabaRequest)
 //
 // @return QueryChatappPhoneNumbersResponse
 func (client *Client) QueryChatappPhoneNumbersWithOptions(request *QueryChatappPhoneNumbersRequest, runtime *dara.RuntimeOptions) (_result *QueryChatappPhoneNumbersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -6827,6 +11736,154 @@ func (client *Client) QueryChatappPhoneNumbers(request *QueryChatappPhoneNumbers
 
 // Summary:
 //
+// 查询实例
+//
+// @param request - QueryInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryInstanceResponse
+func (client *Client) QueryInstanceWithOptions(request *QueryInstanceRequest, runtime *dara.RuntimeOptions) (_result *QueryInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryInstance"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例
+//
+// @param request - QueryInstanceRequest
+//
+// @return QueryInstanceResponse
+func (client *Client) QueryInstance(request *QueryInstanceRequest) (_result *QueryInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryInstanceResponse{}
+	_body, _err := client.QueryInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询营销消息是否生效
+//
+// @param request - QueryMMLActiveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMMLActiveResponse
+func (client *Client) QueryMMLActiveWithOptions(request *QueryMMLActiveRequest, runtime *dara.RuntimeOptions) (_result *QueryMMLActiveResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryMMLActive"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryMMLActiveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询营销消息是否生效
+//
+// @param request - QueryMMLActiveRequest
+//
+// @return QueryMMLActiveResponse
+func (client *Client) QueryMMLActive(request *QueryMMLActiveRequest) (_result *QueryMMLActiveResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryMMLActiveResponse{}
+	_body, _err := client.QueryMMLActiveWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the business information of the account to which a specified phone number is bound.
 //
 // Description:
@@ -6839,9 +11896,11 @@ func (client *Client) QueryChatappPhoneNumbers(request *QueryChatappPhoneNumbers
 //
 // @return QueryPhoneBusinessProfileResponse
 func (client *Client) QueryPhoneBusinessProfileWithOptions(request *QueryPhoneBusinessProfileRequest, runtime *dara.RuntimeOptions) (_result *QueryPhoneBusinessProfileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -6923,9 +11982,11 @@ func (client *Client) QueryPhoneBusinessProfile(request *QueryPhoneBusinessProfi
 //
 // @return QueryWabaBusinessInfoResponse
 func (client *Client) QueryWabaBusinessInfoWithOptions(request *QueryWabaBusinessInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryWabaBusinessInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -7003,9 +12064,11 @@ func (client *Client) QueryWabaBusinessInfo(request *QueryWabaBusinessInfoReques
 //
 // @return ReadChatFlowResponse
 func (client *Client) ReadChatFlowWithOptions(tmpReq *ReadChatFlowRequest, runtime *dara.RuntimeOptions) (_result *ReadChatFlowResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ReadChatFlowShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7089,9 +12152,11 @@ func (client *Client) ReadChatFlow(request *ReadChatFlowRequest) (_result *ReadC
 //
 // @return ReadChatFlowLogSettingResponse
 func (client *Client) ReadChatFlowLogSettingWithOptions(request *ReadChatFlowLogSettingRequest, runtime *dara.RuntimeOptions) (_result *ReadChatFlowLogSettingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowCode) {
@@ -7161,9 +12226,11 @@ func (client *Client) ReadChatFlowLogSetting(request *ReadChatFlowLogSettingRequ
 //
 // @return ReadFlowVersionResponse
 func (client *Client) ReadFlowVersionWithOptions(tmpReq *ReadFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *ReadFlowVersionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ReadFlowVersionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7247,6 +12314,172 @@ func (client *Client) ReadFlowVersion(request *ReadFlowVersionRequest) (_result 
 
 // Summary:
 //
+// 当前群组移除单个联系人
+//
+// @param request - RemoveContactByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveContactByIdResponse
+func (client *Client) RemoveContactByIdWithOptions(request *RemoveContactByIdRequest, runtime *dara.RuntimeOptions) (_result *RemoveContactByIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContactId) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveContactById"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveContactByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 当前群组移除单个联系人
+//
+// @param request - RemoveContactByIdRequest
+//
+// @return RemoveContactByIdResponse
+func (client *Client) RemoveContactById(request *RemoveContactByIdRequest) (_result *RemoveContactByIdResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveContactByIdResponse{}
+	_body, _err := client.RemoveContactByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 请求Whatsapp Conversion api
+//
+// @param tmpReq - RequestWhatsappConversionApiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RequestWhatsappConversionApiResponse
+func (client *Client) RequestWhatsappConversionApiWithOptions(tmpReq *RequestWhatsappConversionApiRequest, runtime *dara.RuntimeOptions) (_result *RequestWhatsappConversionApiResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &RequestWhatsappConversionApiShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RequestData) {
+		request.RequestDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RequestData, dara.String("RequestData"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.RequestDataShrink) {
+		query["RequestData"] = request.RequestDataShrink
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RequestWhatsappConversionApi"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RequestWhatsappConversionApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 请求Whatsapp Conversion api
+//
+// @param request - RequestWhatsappConversionApiRequest
+//
+// @return RequestWhatsappConversionApiResponse
+func (client *Client) RequestWhatsappConversionApi(request *RequestWhatsappConversionApiRequest) (_result *RequestWhatsappConversionApiResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RequestWhatsappConversionApiResponse{}
+	_body, _err := client.RequestWhatsappConversionApiWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Sends a message to multiple phone numbers by using ChatAPP at a time.
 //
 // Description:
@@ -7261,9 +12494,11 @@ func (client *Client) ReadFlowVersion(request *ReadFlowVersionRequest) (_result 
 //
 // @return SendChatappMassMessageResponse
 func (client *Client) SendChatappMassMessageWithOptions(tmpReq *SendChatappMassMessageRequest, runtime *dara.RuntimeOptions) (_result *SendChatappMassMessageResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SendChatappMassMessageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7413,9 +12648,11 @@ func (client *Client) SendChatappMassMessage(request *SendChatappMassMessageRequ
 //
 // @return SendChatappMessageResponse
 func (client *Client) SendChatappMessageWithOptions(tmpReq *SendChatappMessageRequest, runtime *dara.RuntimeOptions) (_result *SendChatappMessageResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SendChatappMessageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7436,6 +12673,10 @@ func (client *Client) SendChatappMessageWithOptions(tmpReq *SendChatappMessageRe
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdAccountId) {
+		query["AdAccountId"] = request.AdAccountId
+	}
+
 	if !dara.IsNil(request.ChannelType) {
 		query["ChannelType"] = request.ChannelType
 	}
@@ -7492,6 +12733,10 @@ func (client *Client) SendChatappMessageWithOptions(tmpReq *SendChatappMessageRe
 		query["Language"] = request.Language
 	}
 
+	if !dara.IsNil(request.MessageCampaignId) {
+		query["MessageCampaignId"] = request.MessageCampaignId
+	}
+
 	if !dara.IsNil(request.MessageType) {
 		query["MessageType"] = request.MessageType
 	}
@@ -7542,6 +12787,10 @@ func (client *Client) SendChatappMessageWithOptions(tmpReq *SendChatappMessageRe
 
 	if !dara.IsNil(request.To) {
 		query["To"] = request.To
+	}
+
+	if !dara.IsNil(request.TokenType) {
+		query["TokenType"] = request.TokenType
 	}
 
 	if !dara.IsNil(request.TrackingData) {
@@ -7603,51 +12852,23 @@ func (client *Client) SendChatappMessage(request *SendChatappMessageRequest) (_r
 
 // Summary:
 //
-// Submits the agreement information for independent software vendor (ISV) customers.
+// 同步flow
 //
-// Description:
-//
-//	  You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-//		- After you call the [GetChatappUploadAuthorization](~~GetChatappUploadAuthorization~~) operation to obtain the authentication information for uploading the file to Object Storage Service (OSS), you can use the authentication information to upload the file to the OSS server. To upload the file, you can call the SDK provided by OSS. When you upload the file, set the value of the key to the value of `Dir + "/" + file name`, such as C200293990209/isvTerms.pdf. The value of Dir is obtained from the [GetChatappUploadAuthorization](~~GetChatappUploadAuthorization~~) operation. The value of IsvTerms is obtained from the PutObject operation.
-//
-// @param request - SubmitIsvCustomerTermsRequest
+// @param request - SyncFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
-// @return SubmitIsvCustomerTermsResponse
-func (client *Client) SubmitIsvCustomerTermsWithOptions(request *SubmitIsvCustomerTermsRequest, runtime *dara.RuntimeOptions) (_result *SubmitIsvCustomerTermsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+// @return SyncFlowResponse
+func (client *Client) SyncFlowWithOptions(request *SyncFlowRequest, runtime *dara.RuntimeOptions) (_result *SyncFlowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.BusinessDesc) {
-		query["BusinessDesc"] = request.BusinessDesc
-	}
-
-	if !dara.IsNil(request.ContactMail) {
-		query["ContactMail"] = request.ContactMail
-	}
-
-	if !dara.IsNil(request.CountryId) {
-		query["CountryId"] = request.CountryId
-	}
-
-	if !dara.IsNil(request.CustName) {
-		query["CustName"] = request.CustName
-	}
-
 	if !dara.IsNil(request.CustSpaceId) {
 		query["CustSpaceId"] = request.CustSpaceId
-	}
-
-	if !dara.IsNil(request.IsvTerms) {
-		query["IsvTerms"] = request.IsvTerms
-	}
-
-	if !dara.IsNil(request.OfficeAddress) {
-		query["OfficeAddress"] = request.OfficeAddress
 	}
 
 	if !dara.IsNil(request.OwnerId) {
@@ -7666,7 +12887,7 @@ func (client *Client) SubmitIsvCustomerTermsWithOptions(request *SubmitIsvCustom
 		Query: openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
-		Action:      dara.String("SubmitIsvCustomerTerms"),
+		Action:      dara.String("SyncFlow"),
 		Version:     dara.String("2020-06-06"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
@@ -7676,7 +12897,7 @@ func (client *Client) SubmitIsvCustomerTermsWithOptions(request *SubmitIsvCustom
 		ReqBodyType: dara.String("formData"),
 		BodyType:    dara.String("json"),
 	}
-	_result = &SubmitIsvCustomerTermsResponse{}
+	_result = &SyncFlowResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7687,21 +12908,179 @@ func (client *Client) SubmitIsvCustomerTermsWithOptions(request *SubmitIsvCustom
 
 // Summary:
 //
-// Submits the agreement information for independent software vendor (ISV) customers.
+// 同步flow
 //
-// Description:
+// @param request - SyncFlowRequest
 //
-//	  You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-//		- After you call the [GetChatappUploadAuthorization](~~GetChatappUploadAuthorization~~) operation to obtain the authentication information for uploading the file to Object Storage Service (OSS), you can use the authentication information to upload the file to the OSS server. To upload the file, you can call the SDK provided by OSS. When you upload the file, set the value of the key to the value of `Dir + "/" + file name`, such as C200293990209/isvTerms.pdf. The value of Dir is obtained from the [GetChatappUploadAuthorization](~~GetChatappUploadAuthorization~~) operation. The value of IsvTerms is obtained from the PutObject operation.
-//
-// @param request - SubmitIsvCustomerTermsRequest
-//
-// @return SubmitIsvCustomerTermsResponse
-func (client *Client) SubmitIsvCustomerTerms(request *SubmitIsvCustomerTermsRequest) (_result *SubmitIsvCustomerTermsResponse, _err error) {
+// @return SyncFlowResponse
+func (client *Client) SyncFlow(request *SyncFlowRequest) (_result *SyncFlowResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitIsvCustomerTermsResponse{}
-	_body, _err := client.SubmitIsvCustomerTermsWithOptions(request, runtime)
+	_result = &SyncFlowResponse{}
+	_body, _err := client.SyncFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步查询预算
+//
+// @param request - SyncMessageCampaignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncMessageCampaignResponse
+func (client *Client) SyncMessageCampaignWithOptions(request *SyncMessageCampaignRequest, runtime *dara.RuntimeOptions) (_result *SyncMessageCampaignResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdAccountId) {
+		query["AdAccountId"] = request.AdAccountId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SyncMessageCampaign"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SyncMessageCampaignResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步查询预算
+//
+// @param request - SyncMessageCampaignRequest
+//
+// @return SyncMessageCampaignResponse
+func (client *Client) SyncMessageCampaign(request *SyncMessageCampaignRequest) (_result *SyncMessageCampaignResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SyncMessageCampaignResponse{}
+	_body, _err := client.SyncMessageCampaignWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Messenger订阅token
+//
+// @param request - SyncMessengerSubscriptionTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncMessengerSubscriptionTokenResponse
+func (client *Client) SyncMessengerSubscriptionTokenWithOptions(request *SyncMessengerSubscriptionTokenRequest, runtime *dara.RuntimeOptions) (_result *SyncMessengerSubscriptionTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.CustomAudienceId) {
+		query["CustomAudienceId"] = request.CustomAudienceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageId) {
+		query["PageId"] = request.PageId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TokenType) {
+		query["TokenType"] = request.TokenType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SyncMessengerSubscriptionToken"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SyncMessengerSubscriptionTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Messenger订阅token
+//
+// @param request - SyncMessengerSubscriptionTokenRequest
+//
+// @return SyncMessengerSubscriptionTokenResponse
+func (client *Client) SyncMessengerSubscriptionToken(request *SyncMessengerSubscriptionTokenRequest) (_result *SyncMessengerSubscriptionTokenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SyncMessengerSubscriptionTokenResponse{}
+	_body, _err := client.SyncMessengerSubscriptionTokenWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7723,9 +13102,11 @@ func (client *Client) SubmitIsvCustomerTerms(request *SubmitIsvCustomerTermsRequ
 //
 // @return TriggerChatFlowResponse
 func (client *Client) TriggerChatFlowWithOptions(tmpReq *TriggerChatFlowRequest, runtime *dara.RuntimeOptions) (_result *TriggerChatFlowResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TriggerChatFlowShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7817,6 +13198,80 @@ func (client *Client) TriggerChatFlow(request *TriggerChatFlowRequest) (_result 
 
 // Summary:
 //
+// 解绑邮件账号
+//
+// @param request - UnbindDmAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindDmAccountResponse
+func (client *Client) UnbindDmAccountWithOptions(request *UnbindDmAccountRequest, runtime *dara.RuntimeOptions) (_result *UnbindDmAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UnbindDmAccount"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UnbindDmAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑邮件账号
+//
+// @param request - UnbindDmAccountRequest
+//
+// @return UnbindDmAccountResponse
+func (client *Client) UnbindDmAccount(request *UnbindDmAccountRequest) (_result *UnbindDmAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UnbindDmAccountResponse{}
+	_body, _err := client.UnbindDmAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the callback URL of an account.
 //
 // Description:
@@ -7829,9 +13284,11 @@ func (client *Client) TriggerChatFlow(request *TriggerChatFlowRequest) (_result 
 //
 // @return UpdateAccountWebhookResponse
 func (client *Client) UpdateAccountWebhookWithOptions(request *UpdateAccountWebhookRequest, runtime *dara.RuntimeOptions) (_result *UpdateAccountWebhookResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -7909,6 +13366,98 @@ func (client *Client) UpdateAccountWebhook(request *UpdateAccountWebhookRequest)
 
 // Summary:
 //
+// 修改viber申请单
+//
+// @param tmpReq - UpdateAuditRequestRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAuditRequestResponse
+func (client *Client) UpdateAuditRequestWithOptions(tmpReq *UpdateAuditRequestRequest, runtime *dara.RuntimeOptions) (_result *UpdateAuditRequestResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateAuditRequestShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AuditRecord) {
+		request.AuditRecordShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AuditRecord, dara.String("AuditRecord"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuditRecordShrink) {
+		query["AuditRecord"] = request.AuditRecordShrink
+	}
+
+	if !dara.IsNil(request.AuditResult) {
+		query["AuditResult"] = request.AuditResult
+	}
+
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RequestNo) {
+		query["RequestNo"] = request.RequestNo
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAuditRequest"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAuditRequestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改viber申请单
+//
+// @param request - UpdateAuditRequestRequest
+//
+// @return UpdateAuditRequestResponse
+func (client *Client) UpdateAuditRequest(request *UpdateAuditRequestRequest) (_result *UpdateAuditRequestResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAuditRequestResponse{}
+	_body, _err := client.UpdateAuditRequestWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get Process
 //
 // @param tmpReq - UpdateChatFlowRequest
@@ -7917,9 +13466,11 @@ func (client *Client) UpdateAccountWebhook(request *UpdateAccountWebhookRequest)
 //
 // @return UpdateChatFlowResponse
 func (client *Client) UpdateChatFlowWithOptions(tmpReq *UpdateChatFlowRequest, runtime *dara.RuntimeOptions) (_result *UpdateChatFlowResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateChatFlowShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8011,9 +13562,11 @@ func (client *Client) UpdateChatFlow(request *UpdateChatFlowRequest) (_result *U
 //
 // @return UpdateChatFlowLogSettingResponse
 func (client *Client) UpdateChatFlowLogSettingWithOptions(request *UpdateChatFlowLogSettingRequest, runtime *dara.RuntimeOptions) (_result *UpdateChatFlowLogSettingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowCode) {
@@ -8091,9 +13644,11 @@ func (client *Client) UpdateChatFlowLogSetting(request *UpdateChatFlowLogSetting
 //
 // @return UpdateChatGroupResponse
 func (client *Client) UpdateChatGroupWithOptions(request *UpdateChatGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateChatGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessNumber) {
@@ -8191,9 +13746,11 @@ func (client *Client) UpdateChatGroup(request *UpdateChatGroupRequest) (_result 
 //
 // @return UpdateCommerceSettingResponse
 func (client *Client) UpdateCommerceSettingWithOptions(request *UpdateCommerceSettingRequest, runtime *dara.RuntimeOptions) (_result *UpdateCommerceSettingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CartEnable) {
@@ -8271,6 +13828,114 @@ func (client *Client) UpdateCommerceSetting(request *UpdateCommerceSettingReques
 
 // Summary:
 //
+// 修改联系人
+//
+// @param tmpReq - UpdateContactByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateContactByIdResponse
+func (client *Client) UpdateContactByIdWithOptions(tmpReq *UpdateContactByIdRequest, runtime *dara.RuntimeOptions) (_result *UpdateContactByIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateContactByIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BizExtend) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, dara.String("BizExtend"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizCode) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !dara.IsNil(request.BizExtendShrink) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !dara.IsNil(request.ContactDetails) {
+		query["ContactDetails"] = request.ContactDetails
+	}
+
+	if !dara.IsNil(request.ContactId) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !dara.IsNil(request.ContactName) {
+		query["ContactName"] = request.ContactName
+	}
+
+	if !dara.IsNil(request.Country) {
+		query["Country"] = request.Country
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateContactById"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateContactByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改联系人
+//
+// @param request - UpdateContactByIdRequest
+//
+// @return UpdateContactByIdResponse
+func (client *Client) UpdateContactById(request *UpdateContactByIdRequest) (_result *UpdateContactByIdResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateContactByIdResponse{}
+	_body, _err := client.UpdateContactByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies welcoming messages, opening remarks, and commands for a phone number.
 //
 // Description:
@@ -8287,9 +13952,11 @@ func (client *Client) UpdateCommerceSetting(request *UpdateCommerceSettingReques
 //
 // @return UpdateConversationalAutomationResponse
 func (client *Client) UpdateConversationalAutomationWithOptions(tmpReq *UpdateConversationalAutomationRequest, runtime *dara.RuntimeOptions) (_result *UpdateConversationalAutomationResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateConversationalAutomationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8393,9 +14060,11 @@ func (client *Client) UpdateConversationalAutomation(request *UpdateConversation
 //
 // @return UpdateFlowJSONAssetResponse
 func (client *Client) UpdateFlowJSONAssetWithOptions(request *UpdateFlowJSONAssetRequest, runtime *dara.RuntimeOptions) (_result *UpdateFlowJSONAssetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -8473,9 +14142,11 @@ func (client *Client) UpdateFlowJSONAsset(request *UpdateFlowJSONAssetRequest) (
 //
 // @return UpdateFlowVersionResponse
 func (client *Client) UpdateFlowVersionWithOptions(tmpReq *UpdateFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *UpdateFlowVersionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateFlowVersionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8563,6 +14234,318 @@ func (client *Client) UpdateFlowVersion(request *UpdateFlowVersionRequest) (_res
 
 // Summary:
 //
+// 群组改名
+//
+// @param request - UpdateGroupNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGroupNameResponse
+func (client *Client) UpdateGroupNameWithOptions(request *UpdateGroupNameRequest, runtime *dara.RuntimeOptions) (_result *UpdateGroupNameResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateGroupName"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateGroupNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 群组改名
+//
+// @param request - UpdateGroupNameRequest
+//
+// @return UpdateGroupNameResponse
+func (client *Client) UpdateGroupName(request *UpdateGroupNameRequest) (_result *UpdateGroupNameResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateGroupNameResponse{}
+	_body, _err := client.UpdateGroupNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改实例
+//
+// @param request - UpdateInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceResponse
+func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContactMail) {
+		query["ContactMail"] = request.ContactMail
+	}
+
+	if !dara.IsNil(request.CountryId) {
+		query["CountryId"] = request.CountryId
+	}
+
+	if !dara.IsNil(request.FacebookBmId) {
+		query["FacebookBmId"] = request.FacebookBmId
+	}
+
+	if !dara.IsNil(request.InstanceDescription) {
+		query["InstanceDescription"] = request.InstanceDescription
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.IsConfirmAudit) {
+		query["IsConfirmAudit"] = request.IsConfirmAudit
+	}
+
+	if !dara.IsNil(request.IsvTerms) {
+		query["IsvTerms"] = request.IsvTerms
+	}
+
+	if !dara.IsNil(request.OfficeAddress) {
+		query["OfficeAddress"] = request.OfficeAddress
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateInstance"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改实例
+//
+// @param request - UpdateInstanceRequest
+//
+// @return UpdateInstanceResponse
+func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *UpdateInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateInstanceResponse{}
+	_body, _err := client.UpdateInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改营销活动
+//
+// @param tmpReq - UpdateMarketingFLowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMarketingFLowResponse
+func (client *Client) UpdateMarketingFLowWithOptions(tmpReq *UpdateMarketingFLowRequest, runtime *dara.RuntimeOptions) (_result *UpdateMarketingFLowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateMarketingFLowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActivityCode) {
+		query["ActivityCode"] = request.ActivityCode
+	}
+
+	if !dara.IsNil(request.ActivityDesc) {
+		query["ActivityDesc"] = request.ActivityDesc
+	}
+
+	if !dara.IsNil(request.ActivityId) {
+		query["ActivityId"] = request.ActivityId
+	}
+
+	if !dara.IsNil(request.ActivityName) {
+		query["ActivityName"] = request.ActivityName
+	}
+
+	if !dara.IsNil(request.CronExpression) {
+		query["CronExpression"] = request.CronExpression
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.ExecutionType) {
+		query["ExecutionType"] = request.ExecutionType
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ParamFlag) {
+		query["ParamFlag"] = request.ParamFlag
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		query["Params"] = request.ParamsShrink
+	}
+
+	if !dara.IsNil(request.RelatedFlowCode) {
+		query["RelatedFlowCode"] = request.RelatedFlowCode
+	}
+
+	if !dara.IsNil(request.RelatedFlowName) {
+		query["RelatedFlowName"] = request.RelatedFlowName
+	}
+
+	if !dara.IsNil(request.RelatedGroupId) {
+		query["RelatedGroupId"] = request.RelatedGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMarketingFLow"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMarketingFLowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改营销活动
+//
+// @param request - UpdateMarketingFLowRequest
+//
+// @return UpdateMarketingFLowResponse
+func (client *Client) UpdateMarketingFLow(request *UpdateMarketingFLowRequest) (_result *UpdateMarketingFLowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateMarketingFLowResponse{}
+	_body, _err := client.UpdateMarketingFLowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the encryption public key of a phone number.
 //
 // @param request - UpdatePhoneEncryptionPublicKeyRequest
@@ -8571,9 +14554,11 @@ func (client *Client) UpdateFlowVersion(request *UpdateFlowVersionRequest) (_res
 //
 // @return UpdatePhoneEncryptionPublicKeyResponse
 func (client *Client) UpdatePhoneEncryptionPublicKeyWithOptions(request *UpdatePhoneEncryptionPublicKeyRequest, runtime *dara.RuntimeOptions) (_result *UpdatePhoneEncryptionPublicKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -8651,9 +14636,11 @@ func (client *Client) UpdatePhoneEncryptionPublicKey(request *UpdatePhoneEncrypt
 //
 // @return UpdatePhoneMessageQrdlResponse
 func (client *Client) UpdatePhoneMessageQrdlWithOptions(request *UpdatePhoneMessageQrdlRequest, runtime *dara.RuntimeOptions) (_result *UpdatePhoneMessageQrdlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -8747,9 +14734,11 @@ func (client *Client) UpdatePhoneMessageQrdl(request *UpdatePhoneMessageQrdlRequ
 //
 // @return UpdatePhoneWebhookResponse
 func (client *Client) UpdatePhoneWebhookWithOptions(request *UpdatePhoneWebhookRequest, runtime *dara.RuntimeOptions) (_result *UpdatePhoneWebhookResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustSpaceId) {
@@ -8830,6 +14819,88 @@ func (client *Client) UpdatePhoneWebhook(request *UpdatePhoneWebhookRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdatePhoneWebhookResponse{}
 	_body, _err := client.UpdatePhoneWebhookWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新waba的mml状态
+//
+// @param request - UpdateWabaMmlStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWabaMmlStatusResponse
+func (client *Client) UpdateWabaMmlStatusWithOptions(request *UpdateWabaMmlStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateWabaMmlStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Code) {
+		query["Code"] = request.Code
+	}
+
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.WabaId) {
+		query["WabaId"] = request.WabaId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateWabaMmlStatus"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateWabaMmlStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新waba的mml状态
+//
+// @param request - UpdateWabaMmlStatusRequest
+//
+// @return UpdateWabaMmlStatusResponse
+func (client *Client) UpdateWabaMmlStatus(request *UpdateWabaMmlStatusRequest) (_result *UpdateWabaMmlStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateWabaMmlStatusResponse{}
+	_body, _err := client.UpdateWabaMmlStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

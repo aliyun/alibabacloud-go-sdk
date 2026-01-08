@@ -129,7 +129,12 @@ func (s *GetWhatsappHealthStatusResponseBody) SetSuccess(v bool) *GetWhatsappHea
 }
 
 func (s *GetWhatsappHealthStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWhatsappHealthStatusResponseBodyData struct {
@@ -170,7 +175,16 @@ func (s *GetWhatsappHealthStatusResponseBodyData) SetEntities(v []*GetWhatsappHe
 }
 
 func (s *GetWhatsappHealthStatusResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Entities != nil {
+		for _, item := range s.Entities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetWhatsappHealthStatusResponseBodyDataEntities struct {
@@ -301,7 +315,16 @@ func (s *GetWhatsappHealthStatusResponseBodyDataEntities) SetWabaId(v string) *G
 }
 
 func (s *GetWhatsappHealthStatusResponseBodyDataEntities) Validate() error {
-	return dara.Validate(s)
+	if s.Errors != nil {
+		for _, item := range s.Errors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetWhatsappHealthStatusResponseBodyDataEntitiesErrors struct {

@@ -146,7 +146,16 @@ func (s *ListChatappTemplateResponseBody) SetTotal(v int32) *ListChatappTemplate
 }
 
 func (s *ListChatappTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ListTemplate != nil {
+		for _, item := range s.ListTemplate {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListChatappTemplateResponseBodyListTemplate struct {

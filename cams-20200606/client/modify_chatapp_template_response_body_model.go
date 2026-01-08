@@ -108,7 +108,12 @@ func (s *ModifyChatappTemplateResponseBody) SetRequestId(v string) *ModifyChatap
 }
 
 func (s *ModifyChatappTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyChatappTemplateResponseBodyData struct {

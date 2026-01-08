@@ -59,5 +59,10 @@ func (s *ChatappBindWabaResponse) SetBody(v *ChatappBindWabaResponseBody) *Chata
 }
 
 func (s *ChatappBindWabaResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

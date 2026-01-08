@@ -129,7 +129,12 @@ func (s *GetConversationalAutomationResponseBody) SetSuccess(v bool) *GetConvers
 }
 
 func (s *GetConversationalAutomationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConversationalAutomationResponseBodyData struct {
@@ -196,7 +201,16 @@ func (s *GetConversationalAutomationResponseBodyData) SetPrompts(v []*string) *G
 }
 
 func (s *GetConversationalAutomationResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Commands != nil {
+		for _, item := range s.Commands {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetConversationalAutomationResponseBodyDataCommands struct {

@@ -9,6 +9,8 @@ type iSendChatappMessageShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAdAccountId(v string) *SendChatappMessageShrinkRequest
+	GetAdAccountId() *string
 	SetChannelType(v string) *SendChatappMessageShrinkRequest
 	GetChannelType() *string
 	SetContent(v string) *SendChatappMessageShrinkRequest
@@ -37,6 +39,8 @@ type iSendChatappMessageShrinkRequest interface {
 	GetLabel() *string
 	SetLanguage(v string) *SendChatappMessageShrinkRequest
 	GetLanguage() *string
+	SetMessageCampaignId(v string) *SendChatappMessageShrinkRequest
+	GetMessageCampaignId() *string
 	SetMessageType(v string) *SendChatappMessageShrinkRequest
 	GetMessageType() *string
 	SetOwnerId(v int64) *SendChatappMessageShrinkRequest
@@ -63,6 +67,8 @@ type iSendChatappMessageShrinkRequest interface {
 	GetTemplateParamsShrink() *string
 	SetTo(v string) *SendChatappMessageShrinkRequest
 	GetTo() *string
+	SetTokenType(v string) *SendChatappMessageShrinkRequest
+	GetTokenType() *string
 	SetTrackingData(v string) *SendChatappMessageShrinkRequest
 	GetTrackingData() *string
 	SetTtl(v int32) *SendChatappMessageShrinkRequest
@@ -72,6 +78,10 @@ type iSendChatappMessageShrinkRequest interface {
 }
 
 type SendChatappMessageShrinkRequest struct {
+	// example:
+	//
+	// 示例值示例值
+	AdAccountId *string `json:"AdAccountId,omitempty" xml:"AdAccountId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -132,6 +142,8 @@ type SendChatappMessageShrinkRequest struct {
 	//
 	// 示例值示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 示例值示例值
@@ -156,6 +168,8 @@ type SendChatappMessageShrinkRequest struct {
 	//
 	// 示例值示例值
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 示例值
@@ -168,6 +182,10 @@ type SendChatappMessageShrinkRequest struct {
 	//
 	// 示例值示例值示例值
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	MessageCampaignId *string `json:"MessageCampaignId,omitempty" xml:"MessageCampaignId,omitempty"`
 	// example:
 	//
 	// 示例值
@@ -211,6 +229,10 @@ type SendChatappMessageShrinkRequest struct {
 	To *string `json:"To,omitempty" xml:"To,omitempty"`
 	// example:
 	//
+	// 示例值
+	TokenType *string `json:"TokenType,omitempty" xml:"TokenType,omitempty"`
+	// example:
+	//
 	// 示例值示例值
 	TrackingData *string `json:"TrackingData,omitempty" xml:"TrackingData,omitempty"`
 	Ttl          *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
@@ -228,6 +250,10 @@ func (s SendChatappMessageShrinkRequest) String() string {
 
 func (s SendChatappMessageShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SendChatappMessageShrinkRequest) GetAdAccountId() *string {
+	return s.AdAccountId
 }
 
 func (s *SendChatappMessageShrinkRequest) GetChannelType() *string {
@@ -286,6 +312,10 @@ func (s *SendChatappMessageShrinkRequest) GetLanguage() *string {
 	return s.Language
 }
 
+func (s *SendChatappMessageShrinkRequest) GetMessageCampaignId() *string {
+	return s.MessageCampaignId
+}
+
 func (s *SendChatappMessageShrinkRequest) GetMessageType() *string {
 	return s.MessageType
 }
@@ -338,6 +368,10 @@ func (s *SendChatappMessageShrinkRequest) GetTo() *string {
 	return s.To
 }
 
+func (s *SendChatappMessageShrinkRequest) GetTokenType() *string {
+	return s.TokenType
+}
+
 func (s *SendChatappMessageShrinkRequest) GetTrackingData() *string {
 	return s.TrackingData
 }
@@ -348,6 +382,11 @@ func (s *SendChatappMessageShrinkRequest) GetTtl() *int32 {
 
 func (s *SendChatappMessageShrinkRequest) GetType() *string {
 	return s.Type
+}
+
+func (s *SendChatappMessageShrinkRequest) SetAdAccountId(v string) *SendChatappMessageShrinkRequest {
+	s.AdAccountId = &v
+	return s
 }
 
 func (s *SendChatappMessageShrinkRequest) SetChannelType(v string) *SendChatappMessageShrinkRequest {
@@ -420,6 +459,11 @@ func (s *SendChatappMessageShrinkRequest) SetLanguage(v string) *SendChatappMess
 	return s
 }
 
+func (s *SendChatappMessageShrinkRequest) SetMessageCampaignId(v string) *SendChatappMessageShrinkRequest {
+	s.MessageCampaignId = &v
+	return s
+}
+
 func (s *SendChatappMessageShrinkRequest) SetMessageType(v string) *SendChatappMessageShrinkRequest {
 	s.MessageType = &v
 	return s
@@ -482,6 +526,11 @@ func (s *SendChatappMessageShrinkRequest) SetTemplateParamsShrink(v string) *Sen
 
 func (s *SendChatappMessageShrinkRequest) SetTo(v string) *SendChatappMessageShrinkRequest {
 	s.To = &v
+	return s
+}
+
+func (s *SendChatappMessageShrinkRequest) SetTokenType(v string) *SendChatappMessageShrinkRequest {
+	s.TokenType = &v
 	return s
 }
 

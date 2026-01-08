@@ -104,7 +104,16 @@ func (s *GetChatappTemplateMetricResponseBody) SetRequestId(v string) *GetChatap
 }
 
 func (s *GetChatappTemplateMetricResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetChatappTemplateMetricResponseBodyData struct {
@@ -235,7 +244,16 @@ func (s *GetChatappTemplateMetricResponseBodyData) SetTemplateCode(v string) *Ge
 }
 
 func (s *GetChatappTemplateMetricResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Cliented != nil {
+		for _, item := range s.Cliented {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetChatappTemplateMetricResponseBodyDataCliented struct {

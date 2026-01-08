@@ -108,7 +108,12 @@ func (s *CreateChatappMigrationInitiateResponseBody) SetRequestId(v string) *Cre
 }
 
 func (s *CreateChatappMigrationInitiateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateChatappMigrationInitiateResponseBodyData struct {

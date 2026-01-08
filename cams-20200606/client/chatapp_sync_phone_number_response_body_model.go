@@ -129,7 +129,16 @@ func (s *ChatappSyncPhoneNumberResponseBody) SetSuccess(v bool) *ChatappSyncPhon
 }
 
 func (s *ChatappSyncPhoneNumberResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PhoneNumbers != nil {
+		for _, item := range s.PhoneNumbers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChatappSyncPhoneNumberResponseBodyPhoneNumbers struct {

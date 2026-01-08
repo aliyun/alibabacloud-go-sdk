@@ -19,6 +19,8 @@ type iListChatappMessageShrinkRequest interface {
 	GetCustSpaceId() *string
 	SetEndTime(v int64) *ListChatappMessageShrinkRequest
 	GetEndTime() *int64
+	SetEndTimeStr(v string) *ListChatappMessageShrinkRequest
+	GetEndTimeStr() *string
 	SetEventAction(v string) *ListChatappMessageShrinkRequest
 	GetEventAction() *string
 	SetGroupMessageId(v string) *ListChatappMessageShrinkRequest
@@ -35,6 +37,8 @@ type iListChatappMessageShrinkRequest interface {
 	GetResourceOwnerId() *int64
 	SetStartTime(v int64) *ListChatappMessageShrinkRequest
 	GetStartTime() *int64
+	SetStartTimeStr(v string) *ListChatappMessageShrinkRequest
+	GetStartTimeStr() *string
 	SetTemplateCode(v string) *ListChatappMessageShrinkRequest
 	GetTemplateCode() *string
 	SetUserNumber(v string) *ListChatappMessageShrinkRequest
@@ -70,6 +74,10 @@ type ListChatappMessageShrinkRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// example:
 	//
+	// 2024-01-30 00:00:00
+	EndTimeStr *string `json:"EndTimeStr,omitempty" xml:"EndTimeStr,omitempty"`
+	// example:
+	//
 	// UP
 	EventAction *string `json:"EventAction,omitempty" xml:"EventAction,omitempty"`
 	// example:
@@ -89,6 +97,10 @@ type ListChatappMessageShrinkRequest struct {
 	//
 	// 1727057232686
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2024-01-01 00:00:00
+	StartTimeStr *string `json:"StartTimeStr,omitempty" xml:"StartTimeStr,omitempty"`
 	// example:
 	//
 	// 9938***
@@ -127,6 +139,10 @@ func (s *ListChatappMessageShrinkRequest) GetEndTime() *int64 {
 	return s.EndTime
 }
 
+func (s *ListChatappMessageShrinkRequest) GetEndTimeStr() *string {
+	return s.EndTimeStr
+}
+
 func (s *ListChatappMessageShrinkRequest) GetEventAction() *string {
 	return s.EventAction
 }
@@ -159,6 +175,10 @@ func (s *ListChatappMessageShrinkRequest) GetStartTime() *int64 {
 	return s.StartTime
 }
 
+func (s *ListChatappMessageShrinkRequest) GetStartTimeStr() *string {
+	return s.StartTimeStr
+}
+
 func (s *ListChatappMessageShrinkRequest) GetTemplateCode() *string {
 	return s.TemplateCode
 }
@@ -189,6 +209,11 @@ func (s *ListChatappMessageShrinkRequest) SetCustSpaceId(v string) *ListChatappM
 
 func (s *ListChatappMessageShrinkRequest) SetEndTime(v int64) *ListChatappMessageShrinkRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *ListChatappMessageShrinkRequest) SetEndTimeStr(v string) *ListChatappMessageShrinkRequest {
+	s.EndTimeStr = &v
 	return s
 }
 
@@ -229,6 +254,11 @@ func (s *ListChatappMessageShrinkRequest) SetResourceOwnerId(v int64) *ListChata
 
 func (s *ListChatappMessageShrinkRequest) SetStartTime(v int64) *ListChatappMessageShrinkRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *ListChatappMessageShrinkRequest) SetStartTimeStr(v string) *ListChatappMessageShrinkRequest {
+	s.StartTimeStr = &v
 	return s
 }
 

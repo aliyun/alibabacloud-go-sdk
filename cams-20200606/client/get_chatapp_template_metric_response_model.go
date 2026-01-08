@@ -59,5 +59,10 @@ func (s *GetChatappTemplateMetricResponse) SetBody(v *GetChatappTemplateMetricRe
 }
 
 func (s *GetChatappTemplateMetricResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

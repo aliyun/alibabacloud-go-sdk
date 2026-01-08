@@ -59,5 +59,10 @@ func (s *OnlineFlowVersionResponse) SetBody(v *OnlineFlowVersionResponseBody) *O
 }
 
 func (s *OnlineFlowVersionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

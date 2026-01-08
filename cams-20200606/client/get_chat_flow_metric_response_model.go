@@ -59,5 +59,10 @@ func (s *GetChatFlowMetricResponse) SetBody(v *GetChatFlowMetricResponseBody) *G
 }
 
 func (s *GetChatFlowMetricResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -104,7 +104,12 @@ func (s *ListFlowNodePrototypeV2ResponseBody) SetSuccess(v bool) *ListFlowNodePr
 }
 
 func (s *ListFlowNodePrototypeV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListFlowNodePrototypeV2ResponseBodyData struct {
@@ -129,7 +134,16 @@ func (s *ListFlowNodePrototypeV2ResponseBodyData) SetModel(v []*ListFlowNodeProt
 }
 
 func (s *ListFlowNodePrototypeV2ResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Model != nil {
+		for _, item := range s.Model {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFlowNodePrototypeV2ResponseBodyDataModel struct {

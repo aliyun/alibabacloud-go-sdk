@@ -129,7 +129,12 @@ func (s *ListProductCatalogResponseBody) SetSuccess(v bool) *ListProductCatalogR
 }
 
 func (s *ListProductCatalogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Model != nil {
+		if err := s.Model.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListProductCatalogResponseBodyModel struct {
@@ -166,7 +171,12 @@ func (s *ListProductCatalogResponseBodyModel) SetPaging(v *ListProductCatalogRes
 }
 
 func (s *ListProductCatalogResponseBodyModel) Validate() error {
-	return dara.Validate(s)
+	if s.Paging != nil {
+		if err := s.Paging.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListProductCatalogResponseBodyModelPaging struct {
@@ -192,7 +202,12 @@ func (s *ListProductCatalogResponseBodyModelPaging) SetCursors(v *ListProductCat
 }
 
 func (s *ListProductCatalogResponseBodyModelPaging) Validate() error {
-	return dara.Validate(s)
+	if s.Cursors != nil {
+		if err := s.Cursors.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListProductCatalogResponseBodyModelPagingCursors struct {

@@ -129,7 +129,16 @@ func (s *QueryChatappPhoneNumbersResponseBody) SetSuccess(v bool) *QueryChatappP
 }
 
 func (s *QueryChatappPhoneNumbersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PhoneNumbers != nil {
+		for _, item := range s.PhoneNumbers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryChatappPhoneNumbersResponseBodyPhoneNumbers struct {

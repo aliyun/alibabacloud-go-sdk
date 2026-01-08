@@ -101,7 +101,12 @@ func (s *ListFlowRequest) SetResourceOwnerId(v int64) *ListFlowRequest {
 }
 
 func (s *ListFlowRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Page != nil {
+		if err := s.Page.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListFlowRequestPage struct {

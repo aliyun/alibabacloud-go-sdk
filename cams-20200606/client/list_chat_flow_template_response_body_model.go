@@ -121,7 +121,12 @@ func (s *ListChatFlowTemplateResponseBody) SetSuccess(v bool) *ListChatFlowTempl
 }
 
 func (s *ListChatFlowTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListChatFlowTemplateResponseBodyData struct {

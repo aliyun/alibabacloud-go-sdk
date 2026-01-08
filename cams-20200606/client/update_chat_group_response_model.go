@@ -59,5 +59,10 @@ func (s *UpdateChatGroupResponse) SetBody(v *UpdateChatGroupResponseBody) *Updat
 }
 
 func (s *UpdateChatGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *FlowUnbindPhoneResponse) SetBody(v *FlowUnbindPhoneResponseBody) *FlowU
 }
 
 func (s *FlowUnbindPhoneResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

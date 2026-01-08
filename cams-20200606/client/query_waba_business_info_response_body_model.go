@@ -129,7 +129,12 @@ func (s *QueryWabaBusinessInfoResponseBody) SetSuccess(v bool) *QueryWabaBusines
 }
 
 func (s *QueryWabaBusinessInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryWabaBusinessInfoResponseBodyData struct {
