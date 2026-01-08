@@ -15,6 +15,8 @@ type iListNatIpsRequest interface {
 	GetDryRun() *bool
 	SetIpOrigin(v string) *ListNatIpsRequest
 	GetIpOrigin() *string
+	SetIpv4Prefix(v string) *ListNatIpsRequest
+	GetIpv4Prefix() *string
 	SetMaxResults(v string) *ListNatIpsRequest
 	GetMaxResults() *string
 	SetNatGatewayId(v string) *ListNatIpsRequest
@@ -65,7 +67,8 @@ type ListNatIpsRequest struct {
 	// example:
 	//
 	// cidr
-	IpOrigin *string `json:"IpOrigin,omitempty" xml:"IpOrigin,omitempty"`
+	IpOrigin   *string `json:"IpOrigin,omitempty" xml:"IpOrigin,omitempty"`
+	Ipv4Prefix *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
 	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
@@ -156,6 +159,10 @@ func (s *ListNatIpsRequest) GetIpOrigin() *string {
 	return s.IpOrigin
 }
 
+func (s *ListNatIpsRequest) GetIpv4Prefix() *string {
+	return s.Ipv4Prefix
+}
+
 func (s *ListNatIpsRequest) GetMaxResults() *string {
 	return s.MaxResults
 }
@@ -216,6 +223,11 @@ func (s *ListNatIpsRequest) SetDryRun(v bool) *ListNatIpsRequest {
 
 func (s *ListNatIpsRequest) SetIpOrigin(v string) *ListNatIpsRequest {
 	s.IpOrigin = &v
+	return s
+}
+
+func (s *ListNatIpsRequest) SetIpv4Prefix(v string) *ListNatIpsRequest {
+	s.Ipv4Prefix = &v
 	return s
 }
 

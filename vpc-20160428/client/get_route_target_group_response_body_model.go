@@ -88,7 +88,23 @@ type GetRouteTargetGroupResponseBody struct {
 	RouteTargetGroupName *string `json:"RouteTargetGroupName,omitempty" xml:"RouteTargetGroupName,omitempty"`
 	// List of members in the route target group.
 	RouteTargetMemberList []*GetRouteTargetGroupResponseBodyRouteTargetMemberList `json:"RouteTargetMemberList,omitempty" xml:"RouteTargetMemberList,omitempty" type:"Repeated"`
-	// Status of the route target group.
+	// The status of the route target group. Values:
+	//
+	// - **Recovering**: In the process of switching back to the primary
+	//
+	// - **Switched**: The primary and secondary have been switched
+	//
+	// - **Available**: Available
+	//
+	// - **Abnormal**: Secondary instance is abnormal
+	//
+	// - **Pending**: In the process of being created
+	//
+	// - **Switching**: In the process of switching between primary and secondary
+	//
+	// - **Deleting**: In the process of being deleted
+	//
+	// - **Unavailable**: Both primary and secondary instances are abnormal
 	//
 	// example:
 	//

@@ -23594,6 +23594,10 @@ func (client *Client) ListNatIpsWithContext(ctx context.Context, request *ListNa
 		query["IpOrigin"] = request.IpOrigin
 	}
 
+	if !dara.IsNil(request.Ipv4Prefix) {
+		query["Ipv4Prefix"] = request.Ipv4Prefix
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
 	}
