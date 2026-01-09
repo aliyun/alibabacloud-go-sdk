@@ -1198,12 +1198,20 @@ func (client *Client) GetTokenWithContext(ctx context.Context, request *GetToken
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Audience) {
+		query["Audience"] = request.Audience
+	}
+
 	if !dara.IsNil(request.ExpireTime) {
 		query["ExpireTime"] = request.ExpireTime
 	}
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
 	}
 
 	req := &openapiutil.OpenApiRequest{
