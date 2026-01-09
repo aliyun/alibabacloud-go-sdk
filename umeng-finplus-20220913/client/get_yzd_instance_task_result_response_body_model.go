@@ -83,7 +83,16 @@ func (s *GetYzdInstanceTaskResultResponseBody) SetSuccess(v bool) *GetYzdInstanc
 }
 
 func (s *GetYzdInstanceTaskResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetYzdInstanceTaskResultResponseBodyData struct {
@@ -168,7 +177,16 @@ func (s *GetYzdInstanceTaskResultResponseBodyData) SetTimeDuration(v string) *Ge
 }
 
 func (s *GetYzdInstanceTaskResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DownloadUrls != nil {
+		for _, item := range s.DownloadUrls {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetYzdInstanceTaskResultResponseBodyDataDownloadUrls struct {

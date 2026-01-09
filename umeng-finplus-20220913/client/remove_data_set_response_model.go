@@ -59,5 +59,10 @@ func (s *RemoveDataSetResponse) SetBody(v *RemoveDataSetResponseBody) *RemoveDat
 }
 
 func (s *RemoveDataSetResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

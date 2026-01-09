@@ -59,5 +59,10 @@ func (s *GetCrowdDatasetResponse) SetBody(v *GetCrowdDatasetResponseBody) *GetCr
 }
 
 func (s *GetCrowdDatasetResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -35,7 +35,12 @@ func (s *CreateKnowLedgeRequest) SetBody(v *CreateKnowLedgeRequestBody) *CreateK
 }
 
 func (s *CreateKnowLedgeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateKnowLedgeRequestBody struct {

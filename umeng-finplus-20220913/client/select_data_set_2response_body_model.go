@@ -83,7 +83,12 @@ func (s *SelectDataSet2ResponseBody) SetSuccess(v bool) *SelectDataSet2ResponseB
 }
 
 func (s *SelectDataSet2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SelectDataSet2ResponseBodyData struct {

@@ -59,5 +59,10 @@ func (s *BuildStsAKResponse) SetBody(v *BuildStsAKResponseBody) *BuildStsAKRespo
 }
 
 func (s *BuildStsAKResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

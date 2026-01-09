@@ -59,5 +59,10 @@ func (s *SelectDataSet2Response) SetBody(v *SelectDataSet2ResponseBody) *SelectD
 }
 
 func (s *SelectDataSet2Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -83,7 +83,12 @@ func (s *ListDataSet2ResponseBody) SetSuccess(v bool) *ListDataSet2ResponseBody 
 }
 
 func (s *ListDataSet2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataSet2ResponseBodyData struct {
@@ -118,7 +123,16 @@ func (s *ListDataSet2ResponseBodyData) SetTotalNum(v int32) *ListDataSet2Respons
 }
 
 func (s *ListDataSet2ResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataSet2ResponseBodyDataData struct {

@@ -19,9 +19,11 @@ import (
 //
 // @return BuildStsAKResponse
 func (client *Client) BuildStsAKWithContext(ctx context.Context, request *BuildStsAKRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BuildStsAKResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
@@ -59,9 +61,11 @@ func (client *Client) BuildStsAKWithContext(ctx context.Context, request *BuildS
 //
 // @return BuildStsAK2Response
 func (client *Client) BuildStsAK2WithContext(ctx context.Context, request *BuildStsAK2Request, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BuildStsAK2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -108,9 +112,11 @@ func (client *Client) BuildStsAK2WithContext(ctx context.Context, request *Build
 //
 // @return CancelTaskResponse
 func (client *Client) CancelTaskWithContext(ctx context.Context, request *CancelTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
@@ -148,9 +154,11 @@ func (client *Client) CancelTaskWithContext(ctx context.Context, request *Cancel
 //
 // @return CancelTask2Response
 func (client *Client) CancelTask2WithContext(ctx context.Context, request *CancelTask2Request, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelTask2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BcId) {
@@ -197,9 +205,11 @@ func (client *Client) CancelTask2WithContext(ctx context.Context, request *Cance
 //
 // @return CreateComputeTaskResponse
 func (client *Client) CreateComputeTaskWithContext(ctx context.Context, request *CreateComputeTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateComputeTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -262,9 +272,11 @@ func (client *Client) CreateComputeTaskWithContext(ctx context.Context, request 
 //
 // @return CreateComputeTask2Response
 func (client *Client) CreateComputeTask2WithContext(ctx context.Context, request *CreateComputeTask2Request, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateComputeTask2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -335,9 +347,11 @@ func (client *Client) CreateComputeTask2WithContext(ctx context.Context, request
 //
 // @return CreateDataSetResponse
 func (client *Client) CreateDataSetWithContext(ctx context.Context, request *CreateDataSetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDataSetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -384,9 +398,11 @@ func (client *Client) CreateDataSetWithContext(ctx context.Context, request *Cre
 //
 // @return CreateDataSet2Response
 func (client *Client) CreateDataSet2WithContext(ctx context.Context, request *CreateDataSet2Request, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDataSet2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -427,6 +443,85 @@ func (client *Client) CreateDataSet2WithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
+// 创建友准达实例任务
+//
+// @param request - CreateInstanceTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceTaskResponse
+func (client *Client) CreateInstanceTaskWithContext(ctx context.Context, request *CreateInstanceTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.CalbackUrl) {
+		body["CalbackUrl"] = request.CalbackUrl
+	}
+
+	if !dara.IsNil(request.ClientId) {
+		body["ClientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.DatasetIds) {
+		body["DatasetIds"] = request.DatasetIds
+	}
+
+	if !dara.IsNil(request.MonitorType) {
+		body["MonitorType"] = request.MonitorType
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OutputConfig) {
+		body["OutputConfig"] = request.OutputConfig
+	}
+
+	if !dara.IsNil(request.RequestId) {
+		body["RequestId"] = request.RequestId
+	}
+
+	if !dara.IsNil(request.ScoreStrategyConfig) {
+		body["ScoreStrategyConfig"] = request.ScoreStrategyConfig
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInstanceTask"),
+		Version:     dara.String("2022-09-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/CreateInstanceTask"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateInstanceTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 友准达-创建知识库
 //
 // @param tmpReq - CreateKnowLedgeRequest
@@ -437,9 +532,11 @@ func (client *Client) CreateDataSet2WithContext(ctx context.Context, request *Cr
 //
 // @return CreateKnowLedgeResponse
 func (client *Client) CreateKnowLedgeWithContext(ctx context.Context, tmpReq *CreateKnowLedgeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateKnowLedgeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateKnowLedgeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -488,9 +585,11 @@ func (client *Client) CreateKnowLedgeWithContext(ctx context.Context, tmpReq *Cr
 //
 // @return EncryptInvokeResponse
 func (client *Client) EncryptInvokeWithContext(ctx context.Context, request *EncryptInvokeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EncryptInvokeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -549,9 +648,11 @@ func (client *Client) EncryptInvokeWithContext(ctx context.Context, request *Enc
 //
 // @return GetCrowdDatasetResponse
 func (client *Client) GetCrowdDatasetWithContext(ctx context.Context, tmpReq *GetCrowdDatasetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCrowdDatasetResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetCrowdDatasetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -600,9 +701,11 @@ func (client *Client) GetCrowdDatasetWithContext(ctx context.Context, tmpReq *Ge
 //
 // @return GetKnowledgeDataResponse
 func (client *Client) GetKnowledgeDataWithContext(ctx context.Context, tmpReq *GetKnowledgeDataRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetKnowledgeDataResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetKnowledgeDataShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -651,9 +754,11 @@ func (client *Client) GetKnowledgeDataWithContext(ctx context.Context, tmpReq *G
 //
 // @return GetYzdInstanceTaskResultResponse
 func (client *Client) GetYzdInstanceTaskResultWithContext(ctx context.Context, tmpReq *GetYzdInstanceTaskResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetYzdInstanceTaskResultResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetYzdInstanceTaskResultShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -768,9 +873,11 @@ func (client *Client) ListComputeTaskWithContext(ctx context.Context, headers ma
 //
 // @return ListComputeTask2Response
 func (client *Client) ListComputeTask2WithContext(ctx context.Context, request *ListComputeTask2Request, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListComputeTask2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -854,9 +961,11 @@ func (client *Client) ListDataSetWithContext(ctx context.Context, headers map[st
 //
 // @return ListDataSet2Response
 func (client *Client) ListDataSet2WithContext(ctx context.Context, request *ListDataSet2Request, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDataSet2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -907,9 +1016,11 @@ func (client *Client) ListDataSet2WithContext(ctx context.Context, request *List
 //
 // @return RemoveDataSetResponse
 func (client *Client) RemoveDataSetWithContext(ctx context.Context, request *RemoveDataSetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveDataSetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
@@ -947,9 +1058,11 @@ func (client *Client) RemoveDataSetWithContext(ctx context.Context, request *Rem
 //
 // @return RemoveDataSet2Response
 func (client *Client) RemoveDataSet2WithContext(ctx context.Context, request *RemoveDataSet2Request, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveDataSet2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -996,9 +1109,11 @@ func (client *Client) RemoveDataSet2WithContext(ctx context.Context, request *Re
 //
 // @return SaveCrowdDatasetAndBindingDatasetResponse
 func (client *Client) SaveCrowdDatasetAndBindingDatasetWithContext(ctx context.Context, tmpReq *SaveCrowdDatasetAndBindingDatasetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SaveCrowdDatasetAndBindingDatasetResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SaveCrowdDatasetAndBindingDatasetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1047,9 +1162,11 @@ func (client *Client) SaveCrowdDatasetAndBindingDatasetWithContext(ctx context.C
 //
 // @return SelectComputeTaskResponse
 func (client *Client) SelectComputeTaskWithContext(ctx context.Context, request *SelectComputeTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SelectComputeTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
@@ -1087,9 +1204,11 @@ func (client *Client) SelectComputeTaskWithContext(ctx context.Context, request 
 //
 // @return SelectComputeTask2Response
 func (client *Client) SelectComputeTask2WithContext(ctx context.Context, request *SelectComputeTask2Request, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SelectComputeTask2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BcConfirm) {
@@ -1140,9 +1259,11 @@ func (client *Client) SelectComputeTask2WithContext(ctx context.Context, request
 //
 // @return SelectDataSetResponse
 func (client *Client) SelectDataSetWithContext(ctx context.Context, request *SelectDataSetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SelectDataSetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
@@ -1180,9 +1301,11 @@ func (client *Client) SelectDataSetWithContext(ctx context.Context, request *Sel
 //
 // @return SelectDataSet2Response
 func (client *Client) SelectDataSet2WithContext(ctx context.Context, request *SelectDataSet2Request, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SelectDataSet2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -1229,9 +1352,11 @@ func (client *Client) SelectDataSet2WithContext(ctx context.Context, request *Se
 //
 // @return SubmitDataSetTaskResponse
 func (client *Client) SubmitDataSetTaskWithContext(ctx context.Context, request *SubmitDataSetTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitDataSetTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
@@ -1269,9 +1394,11 @@ func (client *Client) SubmitDataSetTaskWithContext(ctx context.Context, request 
 //
 // @return SubmitDataSetTask2Response
 func (client *Client) SubmitDataSetTask2WithContext(ctx context.Context, request *SubmitDataSetTask2Request, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitDataSetTask2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -1318,9 +1445,11 @@ func (client *Client) SubmitDataSetTask2WithContext(ctx context.Context, request
 //
 // @return ValidateKnowLedgeResponse
 func (client *Client) ValidateKnowLedgeWithContext(ctx context.Context, tmpReq *ValidateKnowLedgeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ValidateKnowLedgeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ValidateKnowLedgeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)

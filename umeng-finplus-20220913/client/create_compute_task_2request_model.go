@@ -119,7 +119,16 @@ func (s *CreateComputeTask2Request) SetType(v string) *CreateComputeTask2Request
 }
 
 func (s *CreateComputeTask2Request) Validate() error {
-	return dara.Validate(s)
+	if s.MorseInfoList != nil {
+		for _, item := range s.MorseInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateComputeTask2RequestMorseInfoList struct {

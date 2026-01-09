@@ -83,7 +83,12 @@ func (s *BuildStsAKResponseBody) SetSuccess(v bool) *BuildStsAKResponseBody {
 }
 
 func (s *BuildStsAKResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BuildStsAKResponseBodyData struct {

@@ -35,7 +35,12 @@ func (s *SaveCrowdDatasetAndBindingDatasetRequest) SetBody(v *SaveCrowdDatasetAn
 }
 
 func (s *SaveCrowdDatasetAndBindingDatasetRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SaveCrowdDatasetAndBindingDatasetRequestBody struct {

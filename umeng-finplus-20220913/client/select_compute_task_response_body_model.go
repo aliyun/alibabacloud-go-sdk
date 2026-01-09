@@ -83,7 +83,12 @@ func (s *SelectComputeTaskResponseBody) SetSuccess(v bool) *SelectComputeTaskRes
 }
 
 func (s *SelectComputeTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SelectComputeTaskResponseBodyData struct {
@@ -208,7 +213,25 @@ func (s *SelectComputeTaskResponseBodyData) SetTaskResultList(v []*SelectCompute
 }
 
 func (s *SelectComputeTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ExportOssFileList != nil {
+		for _, item := range s.ExportOssFileList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TaskResultList != nil {
+		for _, item := range s.TaskResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SelectComputeTaskResponseBodyDataExportOssFileList struct {

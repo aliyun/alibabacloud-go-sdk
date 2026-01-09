@@ -59,5 +59,10 @@ func (s *CreateDataSetResponse) SetBody(v *CreateDataSetResponseBody) *CreateDat
 }
 
 func (s *CreateDataSetResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *CreateComputeTaskResponse) SetBody(v *CreateComputeTaskResponseBody) *C
 }
 
 func (s *CreateComputeTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

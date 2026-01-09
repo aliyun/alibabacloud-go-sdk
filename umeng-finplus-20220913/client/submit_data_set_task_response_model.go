@@ -59,5 +59,10 @@ func (s *SubmitDataSetTaskResponse) SetBody(v *SubmitDataSetTaskResponseBody) *S
 }
 
 func (s *SubmitDataSetTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

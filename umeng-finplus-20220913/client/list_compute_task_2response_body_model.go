@@ -83,7 +83,12 @@ func (s *ListComputeTask2ResponseBody) SetSuccess(v bool) *ListComputeTask2Respo
 }
 
 func (s *ListComputeTask2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListComputeTask2ResponseBodyData struct {
@@ -118,7 +123,16 @@ func (s *ListComputeTask2ResponseBodyData) SetTotalNum(v int32) *ListComputeTask
 }
 
 func (s *ListComputeTask2ResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListComputeTask2ResponseBodyDataData struct {
@@ -233,7 +247,16 @@ func (s *ListComputeTask2ResponseBodyDataData) SetTaskResultList(v []*ListComput
 }
 
 func (s *ListComputeTask2ResponseBodyDataData) Validate() error {
-	return dara.Validate(s)
+	if s.TaskResultList != nil {
+		for _, item := range s.TaskResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListComputeTask2ResponseBodyDataDataTaskResultList struct {

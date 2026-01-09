@@ -83,7 +83,12 @@ func (s *GetCrowdDatasetResponseBody) SetSuccess(v bool) *GetCrowdDatasetRespons
 }
 
 func (s *GetCrowdDatasetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCrowdDatasetResponseBodyData struct {

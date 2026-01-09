@@ -59,5 +59,10 @@ func (s *CreateKnowLedgeResponse) SetBody(v *CreateKnowLedgeResponseBody) *Creat
 }
 
 func (s *CreateKnowLedgeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

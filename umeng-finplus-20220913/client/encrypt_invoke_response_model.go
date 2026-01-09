@@ -59,6 +59,11 @@ func (s *EncryptInvokeResponse) SetBody(v *EncryptInvokeResponseBody) *EncryptIn
 }
 
 func (s *EncryptInvokeResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

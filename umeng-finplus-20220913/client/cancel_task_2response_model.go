@@ -59,5 +59,10 @@ func (s *CancelTask2Response) SetBody(v *CancelTask2ResponseBody) *CancelTask2Re
 }
 
 func (s *CancelTask2Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
