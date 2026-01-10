@@ -9,6 +9,8 @@ type iCreateTemplateInput interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAllowAnonymousManage(v bool) *CreateTemplateInput
+	GetAllowAnonymousManage() *bool
 	SetArmsConfiguration(v *ArmsConfiguration) *CreateTemplateInput
 	GetArmsConfiguration() *ArmsConfiguration
 	SetContainerConfiguration(v *ContainerConfiguration) *CreateTemplateInput
@@ -46,7 +48,10 @@ type iCreateTemplateInput interface {
 }
 
 type CreateTemplateInput struct {
-	ArmsConfiguration *ArmsConfiguration `json:"armsConfiguration,omitempty" xml:"armsConfiguration,omitempty"`
+	// if can be null:
+	// true
+	AllowAnonymousManage *bool              `json:"allowAnonymousManage,omitempty" xml:"allowAnonymousManage,omitempty"`
+	ArmsConfiguration    *ArmsConfiguration `json:"armsConfiguration,omitempty" xml:"armsConfiguration,omitempty"`
 	// 容器配置，只允许基于 Browser/Code Interpreter 基础镜像的 image
 	ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
 	// CPU资源配置（单位：核心）
@@ -88,6 +93,10 @@ func (s CreateTemplateInput) String() string {
 
 func (s CreateTemplateInput) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTemplateInput) GetAllowAnonymousManage() *bool {
+	return s.AllowAnonymousManage
 }
 
 func (s *CreateTemplateInput) GetArmsConfiguration() *ArmsConfiguration {
@@ -156,6 +165,11 @@ func (s *CreateTemplateInput) GetTemplateName() *string {
 
 func (s *CreateTemplateInput) GetTemplateType() *string {
 	return s.TemplateType
+}
+
+func (s *CreateTemplateInput) SetAllowAnonymousManage(v bool) *CreateTemplateInput {
+	s.AllowAnonymousManage = &v
+	return s
 }
 
 func (s *CreateTemplateInput) SetArmsConfiguration(v *ArmsConfiguration) *CreateTemplateInput {

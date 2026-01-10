@@ -9,6 +9,10 @@ type iCreateSandboxInput interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetNasConfig(v *NASConfig) *CreateSandboxInput
+	GetNasConfig() *NASConfig
+	SetOssMountConfig(v *OSSMountConfig) *CreateSandboxInput
+	GetOssMountConfig() *OSSMountConfig
 	SetSandboxId(v string) *CreateSandboxInput
 	GetSandboxId() *string
 	SetSandboxIdleTimeoutSeconds(v int32) *CreateSandboxInput
@@ -18,7 +22,9 @@ type iCreateSandboxInput interface {
 }
 
 type CreateSandboxInput struct {
-	SandboxId *string `json:"sandboxId,omitempty" xml:"sandboxId,omitempty"`
+	NasConfig      *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	SandboxId      *string         `json:"sandboxId,omitempty" xml:"sandboxId,omitempty"`
 	// 沙箱空闲超时时间（秒）
 	SandboxIdleTimeoutSeconds *int32 `json:"sandboxIdleTimeoutSeconds,omitempty" xml:"sandboxIdleTimeoutSeconds,omitempty"`
 	// 模板名称（系统内部通过 templateName 查询 template_id）
@@ -35,6 +41,14 @@ func (s CreateSandboxInput) GoString() string {
 	return s.String()
 }
 
+func (s *CreateSandboxInput) GetNasConfig() *NASConfig {
+	return s.NasConfig
+}
+
+func (s *CreateSandboxInput) GetOssMountConfig() *OSSMountConfig {
+	return s.OssMountConfig
+}
+
 func (s *CreateSandboxInput) GetSandboxId() *string {
 	return s.SandboxId
 }
@@ -45,6 +59,16 @@ func (s *CreateSandboxInput) GetSandboxIdleTimeoutSeconds() *int32 {
 
 func (s *CreateSandboxInput) GetTemplateName() *string {
 	return s.TemplateName
+}
+
+func (s *CreateSandboxInput) SetNasConfig(v *NASConfig) *CreateSandboxInput {
+	s.NasConfig = v
+	return s
+}
+
+func (s *CreateSandboxInput) SetOssMountConfig(v *OSSMountConfig) *CreateSandboxInput {
+	s.OssMountConfig = v
+	return s
 }
 
 func (s *CreateSandboxInput) SetSandboxId(v string) *CreateSandboxInput {
@@ -63,5 +87,15 @@ func (s *CreateSandboxInput) SetTemplateName(v string) *CreateSandboxInput {
 }
 
 func (s *CreateSandboxInput) Validate() error {
-	return dara.Validate(s)
+	if s.NasConfig != nil {
+		if err := s.NasConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OssMountConfig != nil {
+		if err := s.OssMountConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

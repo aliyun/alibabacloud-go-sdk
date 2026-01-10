@@ -9,6 +9,8 @@ type iUpdateTemplateInput interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAllowAnonymousManage(v bool) *UpdateTemplateInput
+	GetAllowAnonymousManage() *bool
 	SetArmsConfiguration(v *ArmsConfiguration) *UpdateTemplateInput
 	GetArmsConfiguration() *ArmsConfiguration
 	SetContainerConfiguration(v *ContainerConfiguration) *UpdateTemplateInput
@@ -40,7 +42,10 @@ type iUpdateTemplateInput interface {
 }
 
 type UpdateTemplateInput struct {
-	ArmsConfiguration *ArmsConfiguration `json:"armsConfiguration,omitempty" xml:"armsConfiguration,omitempty"`
+	// if can be null:
+	// true
+	AllowAnonymousManage *bool              `json:"allowAnonymousManage,omitempty" xml:"allowAnonymousManage,omitempty"`
+	ArmsConfiguration    *ArmsConfiguration `json:"armsConfiguration,omitempty" xml:"armsConfiguration,omitempty"`
 	// 容器配置（内置的不可改）
 	ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
 	// CPU资源配置（单位：核心）
@@ -70,6 +75,10 @@ func (s UpdateTemplateInput) String() string {
 
 func (s UpdateTemplateInput) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateTemplateInput) GetAllowAnonymousManage() *bool {
+	return s.AllowAnonymousManage
 }
 
 func (s *UpdateTemplateInput) GetArmsConfiguration() *ArmsConfiguration {
@@ -126,6 +135,11 @@ func (s *UpdateTemplateInput) GetSandboxTTLInSeconds() *int32 {
 
 func (s *UpdateTemplateInput) GetTemplateConfiguration() map[string]interface{} {
 	return s.TemplateConfiguration
+}
+
+func (s *UpdateTemplateInput) SetAllowAnonymousManage(v bool) *UpdateTemplateInput {
+	s.AllowAnonymousManage = &v
+	return s
 }
 
 func (s *UpdateTemplateInput) SetArmsConfiguration(v *ArmsConfiguration) *UpdateTemplateInput {

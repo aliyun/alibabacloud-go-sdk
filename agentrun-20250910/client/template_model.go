@@ -9,6 +9,8 @@ type iTemplate interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAllowAnonymousManage(v bool) *Template
+	GetAllowAnonymousManage() *bool
 	SetContainerConfiguration(v *ContainerConfiguration) *Template
 	GetContainerConfiguration() *ContainerConfiguration
 	SetCpu(v float32) *Template
@@ -64,6 +66,7 @@ type iTemplate interface {
 }
 
 type Template struct {
+	AllowAnonymousManage   *bool                   `json:"allowAnonymousManage,omitempty" xml:"allowAnonymousManage,omitempty"`
 	ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
 	// This parameter is required.
 	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
@@ -103,6 +106,10 @@ func (s Template) String() string {
 
 func (s Template) GoString() string {
 	return s.String()
+}
+
+func (s *Template) GetAllowAnonymousManage() *bool {
+	return s.AllowAnonymousManage
 }
 
 func (s *Template) GetContainerConfiguration() *ContainerConfiguration {
@@ -207,6 +214,11 @@ func (s *Template) GetTemplateType() *string {
 
 func (s *Template) GetTemplateVersion() *string {
 	return s.TemplateVersion
+}
+
+func (s *Template) SetAllowAnonymousManage(v bool) *Template {
+	s.AllowAnonymousManage = &v
+	return s
 }
 
 func (s *Template) SetContainerConfiguration(v *ContainerConfiguration) *Template {
