@@ -17,6 +17,8 @@ type iCreateOrderShrinkRequest interface {
 	GetPluginParamShrink() *string
 	SetPluginType(v string) *CreateOrderShrinkRequest
 	GetPluginType() *string
+	SetRealLoginUserUid(v string) *CreateOrderShrinkRequest
+	GetRealLoginUserUid() *string
 	SetRelatedUserList(v string) *CreateOrderShrinkRequest
 	GetRelatedUserList() *string
 	SetTid(v int64) *CreateOrderShrinkRequest
@@ -53,7 +55,8 @@ type CreateOrderShrinkRequest struct {
 	// example:
 	//
 	// DATA_EXPORT
-	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	PluginType       *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The IDs of the stakeholders that are involved in the ticket. Separate multiple IDs with commas (,).
 	//
 	// example:
@@ -92,6 +95,10 @@ func (s *CreateOrderShrinkRequest) GetPluginType() *string {
 	return s.PluginType
 }
 
+func (s *CreateOrderShrinkRequest) GetRealLoginUserUid() *string {
+	return s.RealLoginUserUid
+}
+
 func (s *CreateOrderShrinkRequest) GetRelatedUserList() *string {
 	return s.RelatedUserList
 }
@@ -117,6 +124,11 @@ func (s *CreateOrderShrinkRequest) SetPluginParamShrink(v string) *CreateOrderSh
 
 func (s *CreateOrderShrinkRequest) SetPluginType(v string) *CreateOrderShrinkRequest {
 	s.PluginType = &v
+	return s
+}
+
+func (s *CreateOrderShrinkRequest) SetRealLoginUserUid(v string) *CreateOrderShrinkRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 

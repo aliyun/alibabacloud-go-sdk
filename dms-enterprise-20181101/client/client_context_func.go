@@ -3447,6 +3447,10 @@ func (client *Client) CreateOrderWithContext(ctx context.Context, tmpReq *Create
 		query["PluginType"] = request.PluginType
 	}
 
+	if !dara.IsNil(request.RealLoginUserUid) {
+		query["RealLoginUserUid"] = request.RealLoginUserUid
+	}
+
 	if !dara.IsNil(request.RelatedUserList) {
 		query["RelatedUserList"] = request.RelatedUserList
 	}

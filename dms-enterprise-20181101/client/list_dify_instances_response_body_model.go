@@ -174,8 +174,12 @@ func (s *ListDifyInstancesResponseBodyRoot) Validate() error {
 }
 
 type ListDifyInstancesResponseBodyRootData struct {
-	AppUuid               *string `json:"AppUuid,omitempty" xml:"AppUuid,omitempty"`
-	CreatedTime           *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	AppUuid     *string `json:"AppUuid,omitempty" xml:"AppUuid,omitempty"`
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// 实例描述
+	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Edition               *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	EnterpriseInternetUrl *string `json:"EnterpriseInternetUrl,omitempty" xml:"EnterpriseInternetUrl,omitempty"`
 	EnterpriseIntranetUrl *string `json:"EnterpriseIntranetUrl,omitempty" xml:"EnterpriseIntranetUrl,omitempty"`
@@ -184,11 +188,19 @@ type ListDifyInstancesResponseBodyRootData struct {
 	InternetUrl           *string `json:"InternetUrl,omitempty" xml:"InternetUrl,omitempty"`
 	IntranetUrl           *string `json:"IntranetUrl,omitempty" xml:"IntranetUrl,omitempty"`
 	MajorVersion          *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	SecurityGroupId       *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId             *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                 *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	WorkspaceId           *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	ZoneId                *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// 地域信息
+	RegionCode      *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// example:
+	//
+	// running
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	ZoneId      *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListDifyInstancesResponseBodyRootData) String() string {
@@ -205,6 +217,10 @@ func (s *ListDifyInstancesResponseBodyRootData) GetAppUuid() *string {
 
 func (s *ListDifyInstancesResponseBodyRootData) GetCreatedTime() *string {
 	return s.CreatedTime
+}
+
+func (s *ListDifyInstancesResponseBodyRootData) GetDescription() *string {
+	return s.Description
 }
 
 func (s *ListDifyInstancesResponseBodyRootData) GetEdition() *string {
@@ -239,8 +255,16 @@ func (s *ListDifyInstancesResponseBodyRootData) GetMajorVersion() *string {
 	return s.MajorVersion
 }
 
+func (s *ListDifyInstancesResponseBodyRootData) GetRegionCode() *string {
+	return s.RegionCode
+}
+
 func (s *ListDifyInstancesResponseBodyRootData) GetSecurityGroupId() *string {
 	return s.SecurityGroupId
+}
+
+func (s *ListDifyInstancesResponseBodyRootData) GetStatus() *string {
+	return s.Status
 }
 
 func (s *ListDifyInstancesResponseBodyRootData) GetVSwitchId() *string {
@@ -266,6 +290,11 @@ func (s *ListDifyInstancesResponseBodyRootData) SetAppUuid(v string) *ListDifyIn
 
 func (s *ListDifyInstancesResponseBodyRootData) SetCreatedTime(v string) *ListDifyInstancesResponseBodyRootData {
 	s.CreatedTime = &v
+	return s
+}
+
+func (s *ListDifyInstancesResponseBodyRootData) SetDescription(v string) *ListDifyInstancesResponseBodyRootData {
+	s.Description = &v
 	return s
 }
 
@@ -309,8 +338,18 @@ func (s *ListDifyInstancesResponseBodyRootData) SetMajorVersion(v string) *ListD
 	return s
 }
 
+func (s *ListDifyInstancesResponseBodyRootData) SetRegionCode(v string) *ListDifyInstancesResponseBodyRootData {
+	s.RegionCode = &v
+	return s
+}
+
 func (s *ListDifyInstancesResponseBodyRootData) SetSecurityGroupId(v string) *ListDifyInstancesResponseBodyRootData {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *ListDifyInstancesResponseBodyRootData) SetStatus(v string) *ListDifyInstancesResponseBodyRootData {
+	s.Status = &v
 	return s
 }
 

@@ -4349,6 +4349,10 @@ func (client *Client) CreateOrderWithOptions(tmpReq *CreateOrderRequest, runtime
 		query["PluginType"] = request.PluginType
 	}
 
+	if !dara.IsNil(request.RealLoginUserUid) {
+		query["RealLoginUserUid"] = request.RealLoginUserUid
+	}
+
 	if !dara.IsNil(request.RelatedUserList) {
 		query["RelatedUserList"] = request.RelatedUserList
 	}

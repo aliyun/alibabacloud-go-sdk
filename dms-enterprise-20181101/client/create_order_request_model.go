@@ -17,6 +17,8 @@ type iCreateOrderRequest interface {
 	GetPluginParam() map[string]interface{}
 	SetPluginType(v string) *CreateOrderRequest
 	GetPluginType() *string
+	SetRealLoginUserUid(v string) *CreateOrderRequest
+	GetRealLoginUserUid() *string
 	SetRelatedUserList(v string) *CreateOrderRequest
 	GetRelatedUserList() *string
 	SetTid(v int64) *CreateOrderRequest
@@ -53,7 +55,8 @@ type CreateOrderRequest struct {
 	// example:
 	//
 	// DATA_EXPORT
-	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	PluginType       *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The IDs of the stakeholders that are involved in the ticket. Separate multiple IDs with commas (,).
 	//
 	// example:
@@ -92,6 +95,10 @@ func (s *CreateOrderRequest) GetPluginType() *string {
 	return s.PluginType
 }
 
+func (s *CreateOrderRequest) GetRealLoginUserUid() *string {
+	return s.RealLoginUserUid
+}
+
 func (s *CreateOrderRequest) GetRelatedUserList() *string {
 	return s.RelatedUserList
 }
@@ -117,6 +124,11 @@ func (s *CreateOrderRequest) SetPluginParam(v map[string]interface{}) *CreateOrd
 
 func (s *CreateOrderRequest) SetPluginType(v string) *CreateOrderRequest {
 	s.PluginType = &v
+	return s
+}
+
+func (s *CreateOrderRequest) SetRealLoginUserUid(v string) *CreateOrderRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
