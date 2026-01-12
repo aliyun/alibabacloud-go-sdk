@@ -14,6 +14,8 @@ type iListClusterAddonInstancesRequest interface {
 }
 
 type ListClusterAddonInstancesRequest struct {
+	// Cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:

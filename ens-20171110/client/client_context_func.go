@@ -5851,6 +5851,58 @@ func (client *Client) DescribeClusterKubeConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
+// 查询集群列表
+//
+// @param request - DescribeClustersV1Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClustersV1Response
+func (client *Client) DescribeClustersV1WithContext(ctx context.Context, request *DescribeClustersV1Request, runtime *dara.RuntimeOptions) (_result *DescribeClustersV1Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.EnsRegionId) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeClustersV1"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeClustersV1Response{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the results of creating an instance.
 //
 // @param request - DescribeCreatePrePaidInstanceResultRequest
@@ -12087,7 +12139,7 @@ func (client *Client) ListBucketsWithContext(ctx context.Context, request *ListB
 
 // Summary:
 //
-// 查询集群已安装的组件实例列表
+// # List of Installed Addon Instances in the Cluster
 //
 // @param request - ListClusterAddonInstancesRequest
 //

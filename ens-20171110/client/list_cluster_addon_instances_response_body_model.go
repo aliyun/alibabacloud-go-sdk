@@ -16,8 +16,9 @@ type iListClusterAddonInstancesResponseBody interface {
 }
 
 type ListClusterAddonInstancesResponseBody struct {
+	// List of addon information.
 	Addons []*ListClusterAddonInstancesResponseBodyAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -65,19 +66,38 @@ func (s *ListClusterAddonInstancesResponseBody) Validate() error {
 }
 
 type ListClusterAddonInstancesResponseBodyAddons struct {
+	// Whether to automatically clean up associated cloud resources.
+	//
 	// example:
 	//
 	// true
-	CleanupCloudResources *bool                                                      `json:"CleanupCloudResources,omitempty" xml:"CleanupCloudResources,omitempty"`
-	ConfigSchema          []*ListClusterAddonInstancesResponseBodyAddonsConfigSchema `json:"ConfigSchema,omitempty" xml:"ConfigSchema,omitempty" type:"Repeated"`
+	CleanupCloudResources *bool `json:"CleanupCloudResources,omitempty" xml:"CleanupCloudResources,omitempty"`
+	// List of custom parameter schemas for the addon.
+	ConfigSchema []*ListClusterAddonInstancesResponseBodyAddonsConfigSchema `json:"ConfigSchema,omitempty" xml:"ConfigSchema,omitempty" type:"Repeated"`
+	// Addon name.
+	//
 	// example:
 	//
 	// test1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Current addon status. Values:
+	//
+	// - **enabling**: Enabling.
+	//
+	// - **enabled**: Enabled.
+	//
+	// - **disabling**: Disabling.
+	//
+	// - **disabled**: Disabled.
+	//
+	// - **upgrading**: Upgrading.
+	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Version number.
+	//
 	// example:
 	//
 	// v1
@@ -151,18 +171,26 @@ func (s *ListClusterAddonInstancesResponseBodyAddons) Validate() error {
 }
 
 type ListClusterAddonInstancesResponseBodyAddonsConfigSchema struct {
+	// Application version.
+	//
 	// example:
 	//
 	// 7380581386597434629002
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// Configuration version.
+	//
 	// example:
 	//
 	// 4572581386436834662215
 	ConfigVersion *string `json:"ConfigVersion,omitempty" xml:"ConfigVersion,omitempty"`
+	// Component name.
+	//
 	// example:
 	//
 	// edge-csi-lite
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Custom parameters.
+	//
 	// example:
 	//
 	// {"key1": "val1"}

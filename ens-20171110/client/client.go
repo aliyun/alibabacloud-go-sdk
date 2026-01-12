@@ -8020,6 +8020,76 @@ func (client *Client) DescribeClusterKubeConfig(request *DescribeClusterKubeConf
 
 // Summary:
 //
+// 查询集群列表
+//
+// @param request - DescribeClustersV1Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClustersV1Response
+func (client *Client) DescribeClustersV1WithOptions(request *DescribeClustersV1Request, runtime *dara.RuntimeOptions) (_result *DescribeClustersV1Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.EnsRegionId) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeClustersV1"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeClustersV1Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询集群列表
+//
+// @param request - DescribeClustersV1Request
+//
+// @return DescribeClustersV1Response
+func (client *Client) DescribeClustersV1(request *DescribeClustersV1Request) (_result *DescribeClustersV1Response, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeClustersV1Response{}
+	_body, _err := client.DescribeClustersV1WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the results of creating an instance.
 //
 // @param request - DescribeCreatePrePaidInstanceResultRequest
@@ -16510,7 +16580,7 @@ func (client *Client) ListAICPublicKeys(request *ListAICPublicKeysRequest) (_res
 
 // Summary:
 //
-// 查询可用的组件列表
+// # Querying the details of a cluster component
 //
 // @param request - ListAddonsRequest
 //
@@ -16541,7 +16611,7 @@ func (client *Client) ListAddonsWithOptions(runtime *dara.RuntimeOptions) (_resu
 
 // Summary:
 //
-// 查询可用的组件列表
+// # Querying the details of a cluster component
 //
 // @return ListAddonsResponse
 func (client *Client) ListAddons() (_result *ListAddonsResponse, _err error) {
@@ -16717,7 +16787,7 @@ func (client *Client) ListBuckets(request *ListBucketsRequest) (_result *ListBuc
 
 // Summary:
 //
-// 查询集群已安装的组件实例列表
+// # List of Installed Addon Instances in the Cluster
 //
 // @param request - ListClusterAddonInstancesRequest
 //
@@ -16761,7 +16831,7 @@ func (client *Client) ListClusterAddonInstancesWithOptions(request *ListClusterA
 
 // Summary:
 //
-// 查询集群已安装的组件实例列表
+// # List of Installed Addon Instances in the Cluster
 //
 // @param request - ListClusterAddonInstancesRequest
 //
