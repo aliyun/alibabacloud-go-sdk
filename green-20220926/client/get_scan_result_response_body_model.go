@@ -241,6 +241,10 @@ type GetScanResultResponseBodyDataItems struct {
 	//
 	// xxx
 	ApiTaskId *string `json:"ApiTaskId,omitempty" xml:"ApiTaskId,omitempty"`
+	// example:
+	//
+	// agent_01
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// Attack level, returned based on the set high and low risk scores. The return values include:
 	//
 	// - high: High risk
@@ -314,7 +318,8 @@ type GetScanResultResponseBodyDataItems struct {
 	// example:
 	//
 	// https://www.aliyuncs.com/xxx.png
-	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ImageUrl  *string   `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ImageUrls []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
 	// Labels.
 	//
 	// example:
@@ -556,6 +561,10 @@ func (s *GetScanResultResponseBodyDataItems) GetApiTaskId() *string {
 	return s.ApiTaskId
 }
 
+func (s *GetScanResultResponseBodyDataItems) GetAppId() *string {
+	return s.AppId
+}
+
 func (s *GetScanResultResponseBodyDataItems) GetAttackLevel() *string {
 	return s.AttackLevel
 }
@@ -606,6 +615,10 @@ func (s *GetScanResultResponseBodyDataItems) GetImageService() *string {
 
 func (s *GetScanResultResponseBodyDataItems) GetImageUrl() *string {
 	return s.ImageUrl
+}
+
+func (s *GetScanResultResponseBodyDataItems) GetImageUrls() []*string {
+	return s.ImageUrls
 }
 
 func (s *GetScanResultResponseBodyDataItems) GetLabels() *string {
@@ -778,6 +791,11 @@ func (s *GetScanResultResponseBodyDataItems) SetApiTaskId(v string) *GetScanResu
 	return s
 }
 
+func (s *GetScanResultResponseBodyDataItems) SetAppId(v string) *GetScanResultResponseBodyDataItems {
+	s.AppId = &v
+	return s
+}
+
 func (s *GetScanResultResponseBodyDataItems) SetAttackLevel(v string) *GetScanResultResponseBodyDataItems {
 	s.AttackLevel = &v
 	return s
@@ -840,6 +858,11 @@ func (s *GetScanResultResponseBodyDataItems) SetImageService(v string) *GetScanR
 
 func (s *GetScanResultResponseBodyDataItems) SetImageUrl(v string) *GetScanResultResponseBodyDataItems {
 	s.ImageUrl = &v
+	return s
+}
+
+func (s *GetScanResultResponseBodyDataItems) SetImageUrls(v []*string) *GetScanResultResponseBodyDataItems {
+	s.ImageUrls = v
 	return s
 }
 

@@ -3926,6 +3926,10 @@ func (client *Client) LlmStreamChatWithContext(ctx context.Context, request *Llm
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Channel) {
+		body["Channel"] = request.Channel
+	}
+
 	if !dara.IsNil(request.Messages) {
 		body["Messages"] = request.Messages
 	}
@@ -5156,6 +5160,10 @@ func (client *Client) llmStreamChatWithSSECtx_opYieldFunc(_yield chan *LlmStream
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Channel) {
+		body["Channel"] = request.Channel
+	}
+
 	if !dara.IsNil(request.Messages) {
 		body["Messages"] = request.Messages
 	}

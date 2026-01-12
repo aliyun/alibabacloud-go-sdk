@@ -9,6 +9,8 @@ type iLlmStreamChatRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetChannel(v string) *LlmStreamChatRequest
+	GetChannel() *string
 	SetMessages(v interface{}) *LlmStreamChatRequest
 	GetMessages() interface{}
 	SetTemperature(v float32) *LlmStreamChatRequest
@@ -20,6 +22,10 @@ type iLlmStreamChatRequest interface {
 }
 
 type LlmStreamChatRequest struct {
+	// example:
+	//
+	// guardCustomTest
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	// Conversation information
 	//
 	// example:
@@ -54,6 +60,10 @@ func (s LlmStreamChatRequest) GoString() string {
 	return s.String()
 }
 
+func (s *LlmStreamChatRequest) GetChannel() *string {
+	return s.Channel
+}
+
 func (s *LlmStreamChatRequest) GetMessages() interface{} {
 	return s.Messages
 }
@@ -68,6 +78,11 @@ func (s *LlmStreamChatRequest) GetTopP() *float32 {
 
 func (s *LlmStreamChatRequest) GetType() *string {
 	return s.Type
+}
+
+func (s *LlmStreamChatRequest) SetChannel(v string) *LlmStreamChatRequest {
+	s.Channel = &v
+	return s
 }
 
 func (s *LlmStreamChatRequest) SetMessages(v interface{}) *LlmStreamChatRequest {
