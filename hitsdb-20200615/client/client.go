@@ -3574,6 +3574,10 @@ func (client *Client) ListAutoScalingRules(request *ListAutoScalingRulesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取计算引擎资源组列表
+//
 // @param request - ListLdpsComputeGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3638,6 +3642,10 @@ func (client *Client) ListLdpsComputeGroupsWithOptions(request *ListLdpsComputeG
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取计算引擎资源组列表
+//
 // @param request - ListLdpsComputeGroupsRequest
 //
 // @return ListLdpsComputeGroupsResponse

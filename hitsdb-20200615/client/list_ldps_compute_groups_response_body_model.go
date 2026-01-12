@@ -72,12 +72,14 @@ func (s *ListLdpsComputeGroupsResponseBody) Validate() error {
 }
 
 type ListLdpsComputeGroupsResponseBodyGroupList struct {
-	ExceptionInfo *string                `json:"ExceptionInfo,omitempty" xml:"ExceptionInfo,omitempty"`
-	GroupName     *string                `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	IsDefault     *bool                  `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Properties    map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	State         *string                `json:"State,omitempty" xml:"State,omitempty"`
-	WebUI         *string                `json:"WebUI,omitempty" xml:"WebUI,omitempty"`
+	ExceptionInfo            *string                `json:"ExceptionInfo,omitempty" xml:"ExceptionInfo,omitempty"`
+	GroupName                *string                `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	IsDefault                *bool                  `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Properties               map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	RayInteractiveAccessAddr *string                `json:"RayInteractiveAccessAddr,omitempty" xml:"RayInteractiveAccessAddr,omitempty"`
+	RayVpcWebUIAddr          *string                `json:"RayVpcWebUIAddr,omitempty" xml:"RayVpcWebUIAddr,omitempty"`
+	State                    *string                `json:"State,omitempty" xml:"State,omitempty"`
+	WebUI                    *string                `json:"WebUI,omitempty" xml:"WebUI,omitempty"`
 }
 
 func (s ListLdpsComputeGroupsResponseBodyGroupList) String() string {
@@ -102,6 +104,14 @@ func (s *ListLdpsComputeGroupsResponseBodyGroupList) GetIsDefault() *bool {
 
 func (s *ListLdpsComputeGroupsResponseBodyGroupList) GetProperties() map[string]interface{} {
 	return s.Properties
+}
+
+func (s *ListLdpsComputeGroupsResponseBodyGroupList) GetRayInteractiveAccessAddr() *string {
+	return s.RayInteractiveAccessAddr
+}
+
+func (s *ListLdpsComputeGroupsResponseBodyGroupList) GetRayVpcWebUIAddr() *string {
+	return s.RayVpcWebUIAddr
 }
 
 func (s *ListLdpsComputeGroupsResponseBodyGroupList) GetState() *string {
@@ -129,6 +139,16 @@ func (s *ListLdpsComputeGroupsResponseBodyGroupList) SetIsDefault(v bool) *ListL
 
 func (s *ListLdpsComputeGroupsResponseBodyGroupList) SetProperties(v map[string]interface{}) *ListLdpsComputeGroupsResponseBodyGroupList {
 	s.Properties = v
+	return s
+}
+
+func (s *ListLdpsComputeGroupsResponseBodyGroupList) SetRayInteractiveAccessAddr(v string) *ListLdpsComputeGroupsResponseBodyGroupList {
+	s.RayInteractiveAccessAddr = &v
+	return s
+}
+
+func (s *ListLdpsComputeGroupsResponseBodyGroupList) SetRayVpcWebUIAddr(v string) *ListLdpsComputeGroupsResponseBodyGroupList {
+	s.RayVpcWebUIAddr = &v
 	return s
 }
 

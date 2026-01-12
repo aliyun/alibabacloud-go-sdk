@@ -2909,6 +2909,10 @@ func (client *Client) ListAutoScalingRulesWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取计算引擎资源组列表
+//
 // @param request - ListLdpsComputeGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
