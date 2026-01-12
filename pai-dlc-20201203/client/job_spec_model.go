@@ -37,6 +37,8 @@ type iJobSpec interface {
 	GetServiceSpec() *ServiceSpec
 	SetSpotSpec(v *SpotSpec) *JobSpec
 	GetSpotSpec() *SpotSpec
+	SetStartupDependencies(v []*StartupDependency) *JobSpec
+	GetStartupDependencies() []*StartupDependency
 	SetSystemDisk(v *SystemDisk) *JobSpec
 	GetSystemDisk() *SystemDisk
 	SetType(v string) *JobSpec
@@ -65,12 +67,13 @@ type JobSpec struct {
 	// example:
 	//
 	// 1
-	PodCount       *int64          `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
-	ResourceConfig *ResourceConfig `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
-	RestartPolicy  *string         `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
-	ServiceSpec    *ServiceSpec    `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
-	SpotSpec       *SpotSpec       `json:"SpotSpec,omitempty" xml:"SpotSpec,omitempty"`
-	SystemDisk     *SystemDisk     `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
+	PodCount            *int64               `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
+	ResourceConfig      *ResourceConfig      `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
+	RestartPolicy       *string              `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
+	ServiceSpec         *ServiceSpec         `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
+	SpotSpec            *SpotSpec            `json:"SpotSpec,omitempty" xml:"SpotSpec,omitempty"`
+	StartupDependencies []*StartupDependency `json:"StartupDependencies,omitempty" xml:"StartupDependencies,omitempty" type:"Repeated"`
+	SystemDisk          *SystemDisk          `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
 	// example:
 	//
 	// Worker
@@ -145,6 +148,10 @@ func (s *JobSpec) GetServiceSpec() *ServiceSpec {
 
 func (s *JobSpec) GetSpotSpec() *SpotSpec {
 	return s.SpotSpec
+}
+
+func (s *JobSpec) GetStartupDependencies() []*StartupDependency {
+	return s.StartupDependencies
 }
 
 func (s *JobSpec) GetSystemDisk() *SystemDisk {
@@ -229,6 +236,11 @@ func (s *JobSpec) SetSpotSpec(v *SpotSpec) *JobSpec {
 	return s
 }
 
+func (s *JobSpec) SetStartupDependencies(v []*StartupDependency) *JobSpec {
+	s.StartupDependencies = v
+	return s
+}
+
 func (s *JobSpec) SetSystemDisk(v *SystemDisk) *JobSpec {
 	s.SystemDisk = v
 	return s
@@ -287,6 +299,15 @@ func (s *JobSpec) Validate() error {
 	if s.SpotSpec != nil {
 		if err := s.SpotSpec.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.StartupDependencies != nil {
+		for _, item := range s.StartupDependencies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.SystemDisk != nil {

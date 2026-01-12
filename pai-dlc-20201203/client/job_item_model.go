@@ -53,8 +53,8 @@ type iJobItem interface {
 	GetJobId() *string
 	SetJobMaxRunningTimeMinutes(v int64) *JobItem
 	GetJobMaxRunningTimeMinutes() *int64
-	SetJobReplicaStatuses(v *JobReplicaStatus) *JobItem
-	GetJobReplicaStatuses() *JobReplicaStatus
+	SetJobReplicaStatuses(v []*JobReplicaStatus) *JobItem
+	GetJobReplicaStatuses() []*JobReplicaStatus
 	SetJobSpecs(v []*JobSpec) *JobItem
 	GetJobSpecs() []*JobSpec
 	SetJobType(v string) *JobItem
@@ -195,9 +195,9 @@ type JobItem struct {
 	// example:
 	//
 	// 1
-	JobMaxRunningTimeMinutes *int64            `json:"JobMaxRunningTimeMinutes,omitempty" xml:"JobMaxRunningTimeMinutes,omitempty"`
-	JobReplicaStatuses       *JobReplicaStatus `json:"JobReplicaStatuses,omitempty" xml:"JobReplicaStatuses,omitempty"`
-	JobSpecs                 []*JobSpec        `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
+	JobMaxRunningTimeMinutes *int64              `json:"JobMaxRunningTimeMinutes,omitempty" xml:"JobMaxRunningTimeMinutes,omitempty"`
+	JobReplicaStatuses       []*JobReplicaStatus `json:"JobReplicaStatuses,omitempty" xml:"JobReplicaStatuses,omitempty" type:"Repeated"`
+	JobSpecs                 []*JobSpec          `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
 	// example:
 	//
 	// TFJob
@@ -407,7 +407,7 @@ func (s *JobItem) GetJobMaxRunningTimeMinutes() *int64 {
 	return s.JobMaxRunningTimeMinutes
 }
 
-func (s *JobItem) GetJobReplicaStatuses() *JobReplicaStatus {
+func (s *JobItem) GetJobReplicaStatuses() []*JobReplicaStatus {
 	return s.JobReplicaStatuses
 }
 
@@ -657,7 +657,7 @@ func (s *JobItem) SetJobMaxRunningTimeMinutes(v int64) *JobItem {
 	return s
 }
 
-func (s *JobItem) SetJobReplicaStatuses(v *JobReplicaStatus) *JobItem {
+func (s *JobItem) SetJobReplicaStatuses(v []*JobReplicaStatus) *JobItem {
 	s.JobReplicaStatuses = v
 	return s
 }
@@ -858,8 +858,12 @@ func (s *JobItem) Validate() error {
 		}
 	}
 	if s.JobReplicaStatuses != nil {
-		if err := s.JobReplicaStatuses.Validate(); err != nil {
-			return err
+		for _, item := range s.JobReplicaStatuses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.JobSpecs != nil {
