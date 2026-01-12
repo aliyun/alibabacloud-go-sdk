@@ -544,6 +544,10 @@ func (client *Client) CreateAntCloudAuthSceneWithContext(ctx context.Context, re
 		query["CheckFileName"] = request.CheckFileName
 	}
 
+	if !dara.IsNil(request.DeviceRiskPlus) {
+		query["DeviceRiskPlus"] = request.DeviceRiskPlus
+	}
+
 	if !dara.IsNil(request.MiniProgramName) {
 		query["MiniProgramName"] = request.MiniProgramName
 	}
@@ -5165,6 +5169,58 @@ func (client *Client) MobileOnlineTimeWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 手机号二次放号核验
+//
+// @param request - MobileRecycledMetaVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MobileRecycledMetaVerifyResponse
+func (client *Client) MobileRecycledMetaVerifyWithContext(ctx context.Context, request *MobileRecycledMetaVerifyRequest, runtime *dara.RuntimeOptions) (_result *MobileRecycledMetaVerifyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Mobile) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !dara.IsNil(request.ParamType) {
+		query["ParamType"] = request.ParamType
+	}
+
+	if !dara.IsNil(request.RegisterDate) {
+		query["RegisterDate"] = request.RegisterDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MobileRecycledMetaVerify"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MobileRecycledMetaVerifyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Modify Black and White List Policy
 //
 // Description:
@@ -5978,6 +6034,10 @@ func (client *Client) UpdateAntCloudAuthSceneWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.CheckFileName) {
 		query["CheckFileName"] = request.CheckFileName
+	}
+
+	if !dara.IsNil(request.DeviceRiskPlus) {
+		query["DeviceRiskPlus"] = request.DeviceRiskPlus
 	}
 
 	if !dara.IsNil(request.MiniProgramName) {

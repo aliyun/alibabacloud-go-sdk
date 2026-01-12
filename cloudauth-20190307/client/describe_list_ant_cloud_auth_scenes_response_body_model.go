@@ -93,7 +93,8 @@ type DescribeListAntCloudAuthScenesResponseBodyScenes struct {
 	// example:
 	//
 	// 189884094677xxxx
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Creator        *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	DeviceRiskPlus *string `json:"DeviceRiskPlus,omitempty" xml:"DeviceRiskPlus,omitempty"`
 	// Bound domain.
 	//
 	// example:
@@ -186,6 +187,10 @@ func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) GetCreator() *string 
 	return s.Creator
 }
 
+func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) GetDeviceRiskPlus() *string {
+	return s.DeviceRiskPlus
+}
+
 func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) GetDomain() *string {
 	return s.Domain
 }
@@ -247,6 +252,11 @@ func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) SetCreateTime(v strin
 
 func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) SetCreator(v string) *DescribeListAntCloudAuthScenesResponseBodyScenes {
 	s.Creator = &v
+	return s
+}
+
+func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) SetDeviceRiskPlus(v string) *DescribeListAntCloudAuthScenesResponseBodyScenes {
+	s.DeviceRiskPlus = &v
 	return s
 }
 

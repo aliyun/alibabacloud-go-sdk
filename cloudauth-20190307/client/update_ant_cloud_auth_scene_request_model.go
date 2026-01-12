@@ -15,6 +15,8 @@ type iUpdateAntCloudAuthSceneRequest interface {
 	GetCheckFileBody() *string
 	SetCheckFileName(v string) *UpdateAntCloudAuthSceneRequest
 	GetCheckFileName() *string
+	SetDeviceRiskPlus(v string) *UpdateAntCloudAuthSceneRequest
+	GetDeviceRiskPlus() *string
 	SetMiniProgramName(v string) *UpdateAntCloudAuthSceneRequest
 	GetMiniProgramName() *string
 	SetPlatform(v string) *UpdateAntCloudAuthSceneRequest
@@ -57,7 +59,8 @@ type UpdateAntCloudAuthSceneRequest struct {
 	// example:
 	//
 	// 测试.txt
-	CheckFileName *string `json:"CheckFileName,omitempty" xml:"CheckFileName,omitempty"`
+	CheckFileName  *string `json:"CheckFileName,omitempty" xml:"CheckFileName,omitempty"`
+	DeviceRiskPlus *string `json:"DeviceRiskPlus,omitempty" xml:"DeviceRiskPlus,omitempty"`
 	// Mini program name.
 	//
 	// example:
@@ -130,6 +133,10 @@ func (s *UpdateAntCloudAuthSceneRequest) GetCheckFileName() *string {
 	return s.CheckFileName
 }
 
+func (s *UpdateAntCloudAuthSceneRequest) GetDeviceRiskPlus() *string {
+	return s.DeviceRiskPlus
+}
+
 func (s *UpdateAntCloudAuthSceneRequest) GetMiniProgramName() *string {
 	return s.MiniProgramName
 }
@@ -174,6 +181,11 @@ func (s *UpdateAntCloudAuthSceneRequest) SetCheckFileBody(v string) *UpdateAntCl
 
 func (s *UpdateAntCloudAuthSceneRequest) SetCheckFileName(v string) *UpdateAntCloudAuthSceneRequest {
 	s.CheckFileName = &v
+	return s
+}
+
+func (s *UpdateAntCloudAuthSceneRequest) SetDeviceRiskPlus(v string) *UpdateAntCloudAuthSceneRequest {
+	s.DeviceRiskPlus = &v
 	return s
 }
 
