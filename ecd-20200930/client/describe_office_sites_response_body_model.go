@@ -242,6 +242,7 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// Administrator
 	DomainUserName *string `json:"DomainUserName,omitempty" xml:"DomainUserName,omitempty"`
+	Eid            *string `json:"Eid,omitempty" xml:"Eid,omitempty"`
 	// Indicates whether the local administrator permissions are granted to users that are authorized to use cloud computers in the office network.
 	//
 	// Valid values:
@@ -271,7 +272,8 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	// example:
 	//
 	// false
-	EnableServiceRoute *bool `json:"EnableServiceRoute,omitempty" xml:"EnableServiceRoute,omitempty"`
+	EnableServiceRoute *bool   `json:"EnableServiceRoute,omitempty" xml:"EnableServiceRoute,omitempty"`
+	EnvType            *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// An array of File Storage NAS (NAS) file system IDs.
 	FileSystemIds []*string `json:"FileSystemIds,omitempty" xml:"FileSystemIds,omitempty" type:"Repeated"`
 	IsLdap        *bool     `json:"IsLdap,omitempty" xml:"IsLdap,omitempty"`
@@ -617,6 +619,10 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetDomainUserName() *string
 	return s.DomainUserName
 }
 
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetEid() *string {
+	return s.Eid
+}
+
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetEnableAdminAccess() *bool {
 	return s.EnableAdminAccess
 }
@@ -631,6 +637,10 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetEnableInternetAccess() *
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetEnableServiceRoute() *bool {
 	return s.EnableServiceRoute
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetEnvType() *string {
+	return s.EnvType
 }
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetFileSystemIds() []*string {
@@ -895,6 +905,11 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetDomainUserName(v string)
 	return s
 }
 
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetEid(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.Eid = &v
+	return s
+}
+
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetEnableAdminAccess(v bool) *DescribeOfficeSitesResponseBodyOfficeSites {
 	s.EnableAdminAccess = &v
 	return s
@@ -912,6 +927,11 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetEnableInternetAccess(v b
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetEnableServiceRoute(v bool) *DescribeOfficeSitesResponseBodyOfficeSites {
 	s.EnableServiceRoute = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetEnvType(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.EnvType = &v
 	return s
 }
 

@@ -9,6 +9,8 @@ type iDescribeSubnetsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEid(v string) *DescribeSubnetsRequest
+	GetEid() *string
 	SetMaxResults(v int32) *DescribeSubnetsRequest
 	GetMaxResults() *int32
 	SetName(v string) *DescribeSubnetsRequest
@@ -24,6 +26,7 @@ type iDescribeSubnetsRequest interface {
 }
 
 type DescribeSubnetsRequest struct {
+	Eid          *string `json:"Eid,omitempty" xml:"Eid,omitempty"`
 	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -39,6 +42,10 @@ func (s DescribeSubnetsRequest) String() string {
 
 func (s DescribeSubnetsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSubnetsRequest) GetEid() *string {
+	return s.Eid
 }
 
 func (s *DescribeSubnetsRequest) GetMaxResults() *int32 {
@@ -63,6 +70,11 @@ func (s *DescribeSubnetsRequest) GetRegionId() *string {
 
 func (s *DescribeSubnetsRequest) GetSubnetId() *string {
 	return s.SubnetId
+}
+
+func (s *DescribeSubnetsRequest) SetEid(v string) *DescribeSubnetsRequest {
+	s.Eid = &v
+	return s
 }
 
 func (s *DescribeSubnetsRequest) SetMaxResults(v int32) *DescribeSubnetsRequest {

@@ -31,6 +31,8 @@ type iCreateSimpleOfficeSiteRequest interface {
 	GetDesktopAccessType() *string
 	SetDomainName(v string) *CreateSimpleOfficeSiteRequest
 	GetDomainName() *string
+	SetEid(v string) *CreateSimpleOfficeSiteRequest
+	GetEid() *string
 	SetEnableAdminAccess(v bool) *CreateSimpleOfficeSiteRequest
 	GetEnableAdminAccess() *bool
 	SetEnableInternetAccess(v bool) *CreateSimpleOfficeSiteRequest
@@ -125,6 +127,7 @@ type CreateSimpleOfficeSiteRequest struct {
 	// Internet
 	DesktopAccessType *string `json:"DesktopAccessType,omitempty" xml:"DesktopAccessType,omitempty"`
 	DomainName        *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Eid               *string `json:"Eid,omitempty" xml:"Eid,omitempty"`
 	// Specifies whether to grant the local administrator permissions to users that are authorized to use cloud computers in the office network.
 	//
 	// Valid values:
@@ -256,6 +259,10 @@ func (s *CreateSimpleOfficeSiteRequest) GetDomainName() *string {
 	return s.DomainName
 }
 
+func (s *CreateSimpleOfficeSiteRequest) GetEid() *string {
+	return s.Eid
+}
+
 func (s *CreateSimpleOfficeSiteRequest) GetEnableAdminAccess() *bool {
 	return s.EnableAdminAccess
 }
@@ -344,6 +351,11 @@ func (s *CreateSimpleOfficeSiteRequest) SetDesktopAccessType(v string) *CreateSi
 
 func (s *CreateSimpleOfficeSiteRequest) SetDomainName(v string) *CreateSimpleOfficeSiteRequest {
 	s.DomainName = &v
+	return s
+}
+
+func (s *CreateSimpleOfficeSiteRequest) SetEid(v string) *CreateSimpleOfficeSiteRequest {
+	s.Eid = &v
 	return s
 }
 

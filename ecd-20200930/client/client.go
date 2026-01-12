@@ -1350,6 +1350,10 @@ func (client *Client) AttachEndUser(request *AttachEndUserRequest) (_result *Att
 	return _result, _err
 }
 
+// Summary:
+//
+// Assigns multiple cloud computers to users in a batch.
+//
 // Description:
 //
 //	  The cloud computers for which you want to change their policies must be in the Running state.
@@ -1422,6 +1426,10 @@ func (client *Client) BatchModifyEntitlementWithOptions(request *BatchModifyEnti
 	return _result, _err
 }
 
+// Summary:
+//
+// Assigns multiple cloud computers to users in a batch.
+//
 // Description:
 //
 //	  The cloud computers for which you want to change their policies must be in the Running state.
@@ -6197,6 +6205,10 @@ func (client *Client) CreateSimpleOfficeSiteWithOptions(request *CreateSimpleOff
 
 	if !dara.IsNil(request.DomainName) {
 		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.Eid) {
+		query["Eid"] = request.Eid
 	}
 
 	if !dara.IsNil(request.EnableAdminAccess) {
@@ -14762,6 +14774,10 @@ func (client *Client) DescribeSubnetsWithOptions(request *DescribeSubnetsRequest
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Eid) {
+		query["Eid"] = request.Eid
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
 	}

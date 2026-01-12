@@ -16,6 +16,7 @@ type iBatchModifyEntitlementResponseBody interface {
 }
 
 type BatchModifyEntitlementResponseBody struct {
+	// The results.
 	Entitlements *BatchModifyEntitlementResponseBodyEntitlements `json:"Entitlements,omitempty" xml:"Entitlements,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -61,6 +62,7 @@ func (s *BatchModifyEntitlementResponseBody) Validate() error {
 }
 
 type BatchModifyEntitlementResponseBodyEntitlements struct {
+	// The assignment results.
 	AssignModels []*BatchModifyEntitlementResponseBodyEntitlementsAssignModels `json:"AssignModels,omitempty" xml:"AssignModels,omitempty" type:"Repeated"`
 	// The result.
 	//
