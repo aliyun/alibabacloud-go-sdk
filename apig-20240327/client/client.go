@@ -7214,6 +7214,10 @@ func (client *Client) UpdateHttpApiRouteWithOptions(httpApiId *string, routeId *
 		body["name"] = request.Name
 	}
 
+	if !dara.IsNil(request.PolicyConfigs) {
+		body["policyConfigs"] = request.PolicyConfigs
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),

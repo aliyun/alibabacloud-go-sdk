@@ -5361,6 +5361,10 @@ func (client *Client) UpdateHttpApiRouteWithContext(ctx context.Context, httpApi
 		body["name"] = request.Name
 	}
 
+	if !dara.IsNil(request.PolicyConfigs) {
+		body["policyConfigs"] = request.PolicyConfigs
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
