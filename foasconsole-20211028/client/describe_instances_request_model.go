@@ -13,6 +13,8 @@ type iDescribeInstancesRequest interface {
 	GetArchitectureType() *string
 	SetChargeType(v string) *DescribeInstancesRequest
 	GetChargeType() *string
+	SetElastic(v bool) *DescribeInstancesRequest
+	GetElastic() *bool
 	SetInstanceId(v string) *DescribeInstancesRequest
 	GetInstanceId() *string
 	SetInstanceName(v string) *DescribeInstancesRequest
@@ -40,6 +42,10 @@ type DescribeInstancesRequest struct {
 	//
 	// PRE
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// true
+	Elastic *bool `json:"Elastic,omitempty" xml:"Elastic,omitempty"`
 	// example:
 	//
 	// f-cn-wwo36qj4g06
@@ -86,6 +92,10 @@ func (s *DescribeInstancesRequest) GetChargeType() *string {
 	return s.ChargeType
 }
 
+func (s *DescribeInstancesRequest) GetElastic() *bool {
+	return s.Elastic
+}
+
 func (s *DescribeInstancesRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -125,6 +135,11 @@ func (s *DescribeInstancesRequest) SetArchitectureType(v string) *DescribeInstan
 
 func (s *DescribeInstancesRequest) SetChargeType(v string) *DescribeInstancesRequest {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeInstancesRequest) SetElastic(v bool) *DescribeInstancesRequest {
+	s.Elastic = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iDescribeInstancesShrinkRequest interface {
 	GetArchitectureType() *string
 	SetChargeType(v string) *DescribeInstancesShrinkRequest
 	GetChargeType() *string
+	SetElastic(v bool) *DescribeInstancesShrinkRequest
+	GetElastic() *bool
 	SetInstanceId(v string) *DescribeInstancesShrinkRequest
 	GetInstanceId() *string
 	SetInstanceName(v string) *DescribeInstancesShrinkRequest
@@ -40,6 +42,10 @@ type DescribeInstancesShrinkRequest struct {
 	//
 	// PRE
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// true
+	Elastic *bool `json:"Elastic,omitempty" xml:"Elastic,omitempty"`
 	// example:
 	//
 	// f-cn-wwo36qj4g06
@@ -86,6 +92,10 @@ func (s *DescribeInstancesShrinkRequest) GetChargeType() *string {
 	return s.ChargeType
 }
 
+func (s *DescribeInstancesShrinkRequest) GetElastic() *bool {
+	return s.Elastic
+}
+
 func (s *DescribeInstancesShrinkRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -125,6 +135,11 @@ func (s *DescribeInstancesShrinkRequest) SetArchitectureType(v string) *Describe
 
 func (s *DescribeInstancesShrinkRequest) SetChargeType(v string) *DescribeInstancesShrinkRequest {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeInstancesShrinkRequest) SetElastic(v bool) *DescribeInstancesShrinkRequest {
+	s.Elastic = &v
 	return s
 }
 

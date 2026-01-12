@@ -753,6 +753,92 @@ func (client *Client) ModifyElasticResourceSpecWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 对包年实例升降配，对按量实例修改resource quota
+//
+// @param tmpReq - ModifyInstanceSpecRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceSpecResponse
+func (client *Client) ModifyInstanceSpecWithContext(ctx context.Context, tmpReq *ModifyInstanceSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceSpecResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyInstanceSpecShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.HaResourceSpec) {
+		request.HaResourceSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HaResourceSpec, dara.String("HaResourceSpec"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.HaVSwitchIds) {
+		request.HaVSwitchIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HaVSwitchIds, dara.String("HaVSwitchIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ResourceSpec) {
+		request.ResourceSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceSpec, dara.String("ResourceSpec"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Ha) {
+		body["Ha"] = request.Ha
+	}
+
+	if !dara.IsNil(request.HaResourceSpecShrink) {
+		body["HaResourceSpec"] = request.HaResourceSpecShrink
+	}
+
+	if !dara.IsNil(request.HaVSwitchIdsShrink) {
+		body["HaVSwitchIds"] = request.HaVSwitchIdsShrink
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PromotionCode) {
+		body["PromotionCode"] = request.PromotionCode
+	}
+
+	if !dara.IsNil(request.Region) {
+		body["Region"] = request.Region
+	}
+
+	if !dara.IsNil(request.ResourceSpecShrink) {
+		body["ResourceSpec"] = request.ResourceSpecShrink
+	}
+
+	if !dara.IsNil(request.UsePromotionCode) {
+		body["UsePromotionCode"] = request.UsePromotionCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyInstanceSpec"),
+		Version:     dara.String("2021-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyInstanceSpecResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Deprecated: OpenAPI ModifyInstanceVswitch is deprecated
 //
 // Summary:
