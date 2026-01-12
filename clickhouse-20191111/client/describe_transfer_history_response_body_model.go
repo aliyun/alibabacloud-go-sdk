@@ -150,7 +150,8 @@ type DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail struct {
 	// example:
 	//
 	// SubJob
-	SubJob *string `json:"SubJob,omitempty" xml:"SubJob,omitempty"`
+	SubJob        *string `json:"SubJob,omitempty" xml:"SubJob,omitempty"`
+	SubJobMessage *string `json:"SubJobMessage,omitempty" xml:"SubJobMessage,omitempty"`
 	// The subtask status.
 	//
 	// example:
@@ -223,6 +224,10 @@ func (s *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail) GetSubJ
 	return s.SubJob
 }
 
+func (s *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail) GetSubJobMessage() *string {
+	return s.SubJobMessage
+}
+
 func (s *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail) GetSubJobStatus() *string {
 	return s.SubJobStatus
 }
@@ -280,6 +285,11 @@ func (s *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail) SetStat
 
 func (s *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail) SetSubJob(v string) *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail {
 	s.SubJob = &v
+	return s
+}
+
+func (s *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail) SetSubJobMessage(v string) *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail {
+	s.SubJobMessage = &v
 	return s
 }
 
