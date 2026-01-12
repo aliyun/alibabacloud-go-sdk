@@ -286,6 +286,48 @@ func (client *Client) CreateCredentialWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 创建知识库
+//
+// @param request - CreateKnowledgeBaseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKnowledgeBaseResponse
+func (client *Client) CreateKnowledgeBaseWithContext(ctx context.Context, request *CreateKnowledgeBaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKnowledgeBase"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/knowledgebases"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateKnowledgeBaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 新增模型
 //
 // @param request - CreateModelProxyRequest
@@ -629,6 +671,39 @@ func (client *Client) DeleteCredentialWithContext(ctx context.Context, credentia
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCredentialResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除知识库
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKnowledgeBaseResponse
+func (client *Client) DeleteKnowledgeBaseWithContext(ctx context.Context, knowledgeBaseName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteKnowledgeBaseResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteKnowledgeBase"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/knowledgebases/" + dara.PercentEncode(dara.StringValue(knowledgeBaseName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteKnowledgeBaseResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1011,6 +1086,39 @@ func (client *Client) GetCredentialWithContext(ctx context.Context, credentialNa
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCredentialResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取知识库
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKnowledgeBaseResponse
+func (client *Client) GetKnowledgeBaseWithContext(ctx context.Context, knowledgeBaseName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetKnowledgeBaseResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKnowledgeBase"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/knowledgebases/" + dara.PercentEncode(dara.StringValue(knowledgeBaseName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKnowledgeBaseResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1525,6 +1633,61 @@ func (client *Client) ListCredentialsWithContext(ctx context.Context, request *L
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCredentialsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出知识库
+//
+// @param request - ListKnowledgeBasesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKnowledgeBasesResponse
+func (client *Client) ListKnowledgeBasesWithContext(ctx context.Context, request *ListKnowledgeBasesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListKnowledgeBasesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Provider) {
+		query["provider"] = request.Provider
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKnowledgeBases"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/knowledgebases"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKnowledgeBasesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2090,6 +2253,48 @@ func (client *Client) UpdateCredentialWithContext(ctx context.Context, credentia
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateCredentialResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新知识库
+//
+// @param request - UpdateKnowledgeBaseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateKnowledgeBaseResponse
+func (client *Client) UpdateKnowledgeBaseWithContext(ctx context.Context, knowledgeBaseName *string, request *UpdateKnowledgeBaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateKnowledgeBase"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/knowledgebases/" + dara.PercentEncode(dara.StringValue(knowledgeBaseName))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateKnowledgeBaseResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

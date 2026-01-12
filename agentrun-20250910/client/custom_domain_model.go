@@ -17,6 +17,8 @@ type iCustomDomain interface {
 	GetDescription() *string
 	SetDomainName(v string) *CustomDomain
 	GetDomainName() *string
+	SetDomainType(v string) *CustomDomain
+	GetDomainType() *string
 	SetProtocol(v string) *CustomDomain
 	GetProtocol() *string
 	SetRouteConfig(v *RouteConfig) *CustomDomain
@@ -48,6 +50,7 @@ type CustomDomain struct {
 	//
 	// example.com
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	DomainType *string `json:"domainType,omitempty" xml:"domainType,omitempty"`
 	// 域名支持的协议类型：● HTTP：仅支持 HTTP 协议。● HTTPS：仅支持 HTTPS 协议。● HTTP,HTTPS：支持 HTTP 及 HTTPS 协议。
 	//
 	// example:
@@ -98,6 +101,10 @@ func (s *CustomDomain) GetDomainName() *string {
 	return s.DomainName
 }
 
+func (s *CustomDomain) GetDomainType() *string {
+	return s.DomainType
+}
+
 func (s *CustomDomain) GetProtocol() *string {
 	return s.Protocol
 }
@@ -131,6 +138,11 @@ func (s *CustomDomain) SetDescription(v string) *CustomDomain {
 
 func (s *CustomDomain) SetDomainName(v string) *CustomDomain {
 	s.DomainName = &v
+	return s
+}
+
+func (s *CustomDomain) SetDomainType(v string) *CustomDomain {
+	s.DomainType = &v
 	return s
 }
 

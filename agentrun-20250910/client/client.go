@@ -465,6 +465,67 @@ func (client *Client) CreateCredential(request *CreateCredentialRequest) (_resul
 
 // Summary:
 //
+// 创建知识库
+//
+// @param request - CreateKnowledgeBaseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKnowledgeBaseResponse
+func (client *Client) CreateKnowledgeBaseWithOptions(request *CreateKnowledgeBaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKnowledgeBase"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/knowledgebases"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建知识库
+//
+// @param request - CreateKnowledgeBaseRequest
+//
+// @return CreateKnowledgeBaseResponse
+func (client *Client) CreateKnowledgeBase(request *CreateKnowledgeBaseRequest) (_result *CreateKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateKnowledgeBaseResponse{}
+	_body, _err := client.CreateKnowledgeBaseWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 新增模型
 //
 // @param request - CreateModelProxyRequest
@@ -990,6 +1051,56 @@ func (client *Client) DeleteCredential(credentialName *string) (_result *DeleteC
 	headers := make(map[string]*string)
 	_result = &DeleteCredentialResponse{}
 	_body, _err := client.DeleteCredentialWithOptions(credentialName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除知识库
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKnowledgeBaseResponse
+func (client *Client) DeleteKnowledgeBaseWithOptions(knowledgeBaseName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteKnowledgeBaseResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteKnowledgeBase"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/knowledgebases/" + dara.PercentEncode(dara.StringValue(knowledgeBaseName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除知识库
+//
+// @return DeleteKnowledgeBaseResponse
+func (client *Client) DeleteKnowledgeBase(knowledgeBaseName *string) (_result *DeleteKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteKnowledgeBaseResponse{}
+	_body, _err := client.DeleteKnowledgeBaseWithOptions(knowledgeBaseName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1562,6 +1673,56 @@ func (client *Client) GetCredential(credentialName *string) (_result *GetCredent
 	headers := make(map[string]*string)
 	_result = &GetCredentialResponse{}
 	_body, _err := client.GetCredentialWithOptions(credentialName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取知识库
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKnowledgeBaseResponse
+func (client *Client) GetKnowledgeBaseWithOptions(knowledgeBaseName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetKnowledgeBaseResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKnowledgeBase"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/knowledgebases/" + dara.PercentEncode(dara.StringValue(knowledgeBaseName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取知识库
+//
+// @return GetKnowledgeBaseResponse
+func (client *Client) GetKnowledgeBase(knowledgeBaseName *string) (_result *GetKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetKnowledgeBaseResponse{}
+	_body, _err := client.GetKnowledgeBaseWithOptions(knowledgeBaseName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2282,6 +2443,80 @@ func (client *Client) ListCredentials(request *ListCredentialsRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &ListCredentialsResponse{}
 	_body, _err := client.ListCredentialsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出知识库
+//
+// @param request - ListKnowledgeBasesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKnowledgeBasesResponse
+func (client *Client) ListKnowledgeBasesWithOptions(request *ListKnowledgeBasesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListKnowledgeBasesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Provider) {
+		query["provider"] = request.Provider
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKnowledgeBases"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/knowledgebases"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKnowledgeBasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出知识库
+//
+// @param request - ListKnowledgeBasesRequest
+//
+// @return ListKnowledgeBasesResponse
+func (client *Client) ListKnowledgeBases(request *ListKnowledgeBasesRequest) (_result *ListKnowledgeBasesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListKnowledgeBasesResponse{}
+	_body, _err := client.ListKnowledgeBasesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3072,6 +3307,67 @@ func (client *Client) UpdateCredential(credentialName *string, request *UpdateCr
 	headers := make(map[string]*string)
 	_result = &UpdateCredentialResponse{}
 	_body, _err := client.UpdateCredentialWithOptions(credentialName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新知识库
+//
+// @param request - UpdateKnowledgeBaseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateKnowledgeBaseResponse
+func (client *Client) UpdateKnowledgeBaseWithOptions(knowledgeBaseName *string, request *UpdateKnowledgeBaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateKnowledgeBase"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/knowledgebases/" + dara.PercentEncode(dara.StringValue(knowledgeBaseName))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新知识库
+//
+// @param request - UpdateKnowledgeBaseRequest
+//
+// @return UpdateKnowledgeBaseResponse
+func (client *Client) UpdateKnowledgeBase(knowledgeBaseName *string, request *UpdateKnowledgeBaseRequest) (_result *UpdateKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateKnowledgeBaseResponse{}
+	_body, _err := client.UpdateKnowledgeBaseWithOptions(knowledgeBaseName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -15,6 +15,8 @@ type iCreateCustomDomainInput interface {
 	GetDescription() *string
 	SetDomainName(v string) *CreateCustomDomainInput
 	GetDomainName() *string
+	SetDomainType(v string) *CreateCustomDomainInput
+	GetDomainType() *string
 	SetProtocol(v string) *CreateCustomDomainInput
 	GetProtocol() *string
 	SetRouteConfig(v *RouteConfig) *CreateCustomDomainInput
@@ -40,6 +42,7 @@ type CreateCustomDomainInput struct {
 	//
 	// example.com
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	DomainType *string `json:"domainType,omitempty" xml:"domainType,omitempty"`
 	// 域名支持的协议类型：● HTTP：仅支持 HTTP 协议。● HTTPS：仅支持 HTTPS 协议。● HTTP,HTTPS：支持 HTTP 及 HTTPS 协议。
 	//
 	// This parameter is required.
@@ -82,6 +85,10 @@ func (s *CreateCustomDomainInput) GetDomainName() *string {
 	return s.DomainName
 }
 
+func (s *CreateCustomDomainInput) GetDomainType() *string {
+	return s.DomainType
+}
+
 func (s *CreateCustomDomainInput) GetProtocol() *string {
 	return s.Protocol
 }
@@ -106,6 +113,11 @@ func (s *CreateCustomDomainInput) SetDescription(v string) *CreateCustomDomainIn
 
 func (s *CreateCustomDomainInput) SetDomainName(v string) *CreateCustomDomainInput {
 	s.DomainName = &v
+	return s
+}
+
+func (s *CreateCustomDomainInput) SetDomainType(v string) *CreateCustomDomainInput {
+	s.DomainType = &v
 	return s
 }
 
