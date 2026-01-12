@@ -28,31 +28,46 @@ type iDescribeEventsListResponseBody interface {
 }
 
 type DescribeEventsListResponseBody struct {
+	// The total number of events.
+	//
 	// example:
 	//
 	// OtherException:3,MysqlIOException:1
-	EventCodeCounts *string                                 `json:"EventCodeCounts,omitempty" xml:"EventCodeCounts,omitempty"`
-	Events          []*DescribeEventsListResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	EventCodeCounts *string `json:"EventCodeCounts,omitempty" xml:"EventCodeCounts,omitempty"`
+	// The information about the events.
+	Events []*DescribeEventsListResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
 	PageCount *int64 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 20
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
@@ -153,20 +168,30 @@ func (s *DescribeEventsListResponseBody) Validate() error {
 }
 
 type DescribeEventsListResponseBodyEvents struct {
+	// The event code.
+	//
 	// example:
 	//
 	// ExceptionEvent
 	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
+	// The state of the event.
+	//
 	// example:
 	//
 	// None
-	EventStatus         *string   `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	EventTimeList       []*string `json:"EventTimeList,omitempty" xml:"EventTimeList,omitempty" type:"Repeated"`
-	InstanceDescription *string   `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	EventStatus *string `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
+	// The event.
+	EventTimeList []*string `json:"EventTimeList,omitempty" xml:"EventTimeList,omitempty" type:"Repeated"`
+	// The description of the instance.
+	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rm-2zecnb327gp36e7lh
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The recovery time.
+	//
 	// example:
 	//
 	// 2025-07-23T02:11:07Z

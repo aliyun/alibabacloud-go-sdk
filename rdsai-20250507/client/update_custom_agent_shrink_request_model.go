@@ -22,7 +22,7 @@ type iUpdateCustomAgentShrinkRequest interface {
 }
 
 type UpdateCustomAgentShrinkRequest struct {
-	// AgentId。
+	// The operation that you want to perform. Set the value to **UpdateCustomAgent**.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,18 @@ type UpdateCustomAgentShrinkRequest struct {
 	//
 	// ebe44453-3b41-4c74-94d1-01d088d7****
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
+	// The system prompts.
+	//
 	// example:
 	//
 	// true
-	EnableTools  *bool   `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	EnableTools *bool `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
+	// The ID of the agent.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the agent.
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	ToolsShrink  *string `json:"Tools,omitempty" xml:"Tools,omitempty"`
+	// Specifies whether to enable tools.
+	ToolsShrink *string `json:"Tools,omitempty" xml:"Tools,omitempty"`
 }
 
 func (s UpdateCustomAgentShrinkRequest) String() string {

@@ -20,15 +20,22 @@ type iGetMessagesResponseBody interface {
 }
 
 type GetMessagesResponseBody struct {
+	// The returned results.
 	Data []*GetMessagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Indicates whether the current page is followed by a page.
+	//
 	// example:
 	//
 	// true
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	// The maximum number of entries to return.
+	//
 	// example:
 	//
 	// 100
 	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
@@ -93,24 +100,35 @@ func (s *GetMessagesResponseBody) Validate() error {
 }
 
 type GetMessagesResponseBodyData struct {
+	// The response to the query.
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// The ID of the conversation.
+	//
 	// example:
 	//
 	// 9cbbe885-b240-4803-9d15-6781a3fd****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The creation time of the conversation.
+	//
 	// example:
 	//
 	// 1763986004
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The feedback.
+	//
 	// example:
 	//
 	// like
 	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	// The message ID.
+	//
 	// example:
 	//
 	// 84dc9f9b-424a-404d-9c36-35e9d000****
-	Id                 *string       `json:"Id,omitempty" xml:"Id,omitempty"`
-	Query              *string       `json:"Query,omitempty" xml:"Query,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The query statement.
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The retriever resources.
 	RetrieverResources []interface{} `json:"RetrieverResources,omitempty" xml:"RetrieverResources,omitempty" type:"Repeated"`
 }
 

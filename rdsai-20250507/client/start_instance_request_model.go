@@ -16,10 +16,14 @@ type iStartInstanceRequest interface {
 }
 
 type StartInstanceRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The operation that you want to perform. Set the value to **StartInstance**.
+	//
 	// example:
 	//
 	// cn-beijing

@@ -16,7 +16,10 @@ type iListCustomAgentToolsResponseBody interface {
 }
 
 type ListCustomAgentToolsResponseBody struct {
+	// The returned data.
 	Data []*ListCustomAgentToolsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 32DEFB4A-861F-5D1D-ADD5-918E4FD7****
@@ -63,21 +66,30 @@ func (s *ListCustomAgentToolsResponseBody) Validate() error {
 }
 
 type ListCustomAgentToolsResponseBodyData struct {
+	// The description in English.
+	//
 	// example:
 	//
 	// Queries RDS instances.
 	En *string `json:"En,omitempty" xml:"En,omitempty"`
+	// The description in Japanese.
 	Ja *string `json:"Ja,omitempty" xml:"Ja,omitempty"`
+	// The tool name.
+	//
 	// example:
 	//
 	// describe_db_instances
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Tc   *string `json:"Tc,omitempty" xml:"Tc,omitempty"`
+	// The description in Traditional Chinese.
+	Tc *string `json:"Tc,omitempty" xml:"Tc,omitempty"`
+	// The read/write type of the tool.
+	//
 	// example:
 	//
 	// get
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Zh   *string `json:"Zh,omitempty" xml:"Zh,omitempty"`
+	// The description in Simplified Chinese.
+	Zh *string `json:"Zh,omitempty" xml:"Zh,omitempty"`
 }
 
 func (s ListCustomAgentToolsResponseBodyData) String() string {

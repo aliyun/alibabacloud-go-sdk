@@ -20,18 +20,26 @@ type iGetConversationsRequest interface {
 }
 
 type GetConversationsRequest struct {
+	// The operation that you want to perform. Set the value to **GetConversations**.
+	//
 	// example:
 	//
 	// 77be60cd-237b-4ca9-9c46-48b663cb****
 	LastId *string `json:"LastId,omitempty" xml:"LastId,omitempty"`
+	// The ID of the last conversation.
+	//
 	// example:
 	//
 	// 10
 	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// true
 	Pinned *string `json:"Pinned,omitempty" xml:"Pinned,omitempty"`
+	// Specifies whether to pin the application.
+	//
 	// example:
 	//
 	// CreatedAt

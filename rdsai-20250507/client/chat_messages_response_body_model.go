@@ -30,32 +30,48 @@ type iChatMessagesResponseBody interface {
 }
 
 type ChatMessagesResponseBody struct {
+	// The answer.
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// The ID of the conversation.
+	//
 	// example:
 	//
 	// 9cbbe885-b240-4803-9d15-6781a3fd****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The creation time of the conversation.
+	//
 	// example:
 	//
 	// 1763986004
 	CreatedAt *int64 `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The event.
+	//
 	// example:
 	//
 	// MysqlIOException
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The message ID.
+	//
 	// example:
 	//
 	// 60b335ca-124d-4ee1-864b-de554987****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The message ID.
+	//
 	// example:
 	//
 	// oas8pwy2-slxw-sf98-bx83-cb2hkktl****
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	Mode      *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The query mode.
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the asynchronous task.
+	//
 	// example:
 	//
 	// 01c3d43d-9466-4bd5-8196-4cbbce08****

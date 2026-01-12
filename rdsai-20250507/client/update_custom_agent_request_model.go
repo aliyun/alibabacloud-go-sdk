@@ -22,7 +22,7 @@ type iUpdateCustomAgentRequest interface {
 }
 
 type UpdateCustomAgentRequest struct {
-	// AgentId。
+	// The operation that you want to perform. Set the value to **UpdateCustomAgent**.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,18 @@ type UpdateCustomAgentRequest struct {
 	//
 	// ebe44453-3b41-4c74-94d1-01d088d7****
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
+	// The system prompts.
+	//
 	// example:
 	//
 	// true
-	EnableTools  *bool     `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
-	Name         *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	SystemPrompt *string   `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	Tools        []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
+	EnableTools *bool `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
+	// The ID of the agent.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the agent.
+	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
+	// Specifies whether to enable tools.
+	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
 }
 
 func (s UpdateCustomAgentRequest) String() string {

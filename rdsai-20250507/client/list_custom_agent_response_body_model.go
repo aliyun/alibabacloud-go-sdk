@@ -22,19 +22,28 @@ type iListCustomAgentResponseBody interface {
 }
 
 type ListCustomAgentResponseBody struct {
+	// The returned data.
 	Data []*ListCustomAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned. By default, this parameter is not returned.
+	//
 	// example:
 	//
 	// 20
@@ -108,23 +117,32 @@ func (s *ListCustomAgentResponseBody) Validate() error {
 }
 
 type ListCustomAgentResponseBodyData struct {
+	// The creation time of the agent.
+	//
 	// example:
 	//
 	// 2020-11-27 16:01:28
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// Indicates whether tools are enabled.
+	//
 	// example:
 	//
 	// true
 	EnableTools *bool `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
-	// AgentId。
+	// The ID of the agent.
 	//
 	// example:
 	//
 	// d1b7d639-f34e-44c7-8231-987da14d****
-	Id           *string   `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	SystemPrompt *string   `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	Tools        []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the dedicated agent.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The system prompts.
+	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
+	// The information about the tool.
+	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
+	// The modification time of the agent.
+	//
 	// example:
 	//
 	// 2020-11-27 16:02:28

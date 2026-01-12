@@ -18,14 +18,24 @@ type iModifyInstanceRAGConfigResponseBody interface {
 }
 
 type ModifyInstanceRAGConfigResponseBody struct {
+	// The ID of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the RAG agent.
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true

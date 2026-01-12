@@ -24,23 +24,30 @@ type iUpdateCustomAgentResponseBody interface {
 }
 
 type UpdateCustomAgentResponseBody struct {
+	// Indicates whether tools are enabled.
+	//
 	// example:
 	//
 	// true
 	EnableTools *string `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
-	// AgentId。
+	// The ID of the agent.
 	//
 	// example:
 	//
 	// 82cf3d62-0add-47bd-869f-877131f7****
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the agent.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
-	RequestId    *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SystemPrompt *string   `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	Tools        []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The system prompts.
+	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
+	// The information about the tool.
+	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
 }
 
 func (s UpdateCustomAgentResponseBody) String() string {

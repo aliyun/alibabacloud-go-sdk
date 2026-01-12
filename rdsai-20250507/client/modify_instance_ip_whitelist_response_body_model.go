@@ -16,10 +16,14 @@ type iModifyInstanceIpWhitelistResponseBody interface {
 }
 
 type ModifyInstanceIpWhitelistResponseBody struct {
+	// The ID of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 87249A6F-xxx-804C-E1E0AD1FAD90

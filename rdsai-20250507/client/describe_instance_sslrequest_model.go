@@ -16,12 +16,16 @@ type iDescribeInstanceSSLRequest interface {
 }
 
 type DescribeInstanceSSLRequest struct {
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The operation that you want to perform. Set the value to **DescribeInstanceSSL**.
+	//
 	// example:
 	//
 	// cn-beijing

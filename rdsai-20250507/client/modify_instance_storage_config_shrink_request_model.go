@@ -20,17 +20,24 @@ type iModifyInstanceStorageConfigShrinkRequest interface {
 }
 
 type ModifyInstanceStorageConfigShrinkRequest struct {
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the RDS Supabase instance.
 	ConfigListShrink *string `json:"ConfigList,omitempty" xml:"ConfigList,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The operation that you want to perform. Set the value to **ModifyInstanceStorageConfig**.
+	//
 	// example:
 	//
 	// cn-beijing

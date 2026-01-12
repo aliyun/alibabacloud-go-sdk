@@ -20,17 +20,30 @@ type iResetInstancePasswordRequest interface {
 }
 
 type ResetInstancePasswordRequest struct {
+	// The ID of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// test_Password
 	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
-	DatabasePassword  *string `json:"DatabasePassword,omitempty" xml:"DatabasePassword,omitempty"`
+	// The Supabase Dashboard password.
+	//
+	// The password must be 8 to 32 characters in length and must contain at least three of the following types: uppercase letters, lowercase letters, digits, and underscores (_).
+	//
+	// example:
+	//
+	// test_Password
+	DatabasePassword *string `json:"DatabasePassword,omitempty" xml:"DatabasePassword,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The operation that you want to perform. Set the value to **ResetInstancePassword**.
+	//
 	// example:
 	//
 	// cn-beijing

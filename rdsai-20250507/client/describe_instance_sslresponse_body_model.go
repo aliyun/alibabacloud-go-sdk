@@ -24,26 +24,42 @@ type iDescribeInstanceSSLResponseBody interface {
 }
 
 type DescribeInstanceSSLResponseBody struct {
+	// The type of the certificate. Set the value to **custom**, which indicates that a custom certificate is used.
+	//
 	// example:
 	//
 	// custom
 	CAType *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
+	// The ID of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 32DEFB4A-861F-5D1D-ADD5-918E4FD7AB8C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Specifies whether to enable SSL encryption. Valid values:
+	//
+	// 	- **1**: enables SSL encryption.
+	//
+	// 	- **0**: disables SSL encryption.
+	//
 	// example:
 	//
 	// 1
 	SSLEnabled *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
+	// The content of the custom certificate.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----MIID*****QqEP-----END CERTIFICATE-----
 	ServerCert *string `json:"ServerCert,omitempty" xml:"ServerCert,omitempty"`
+	// The private key of the certificate.
+	//
 	// example:
 	//
 	// -----BEGIN PRIVATE KEY-----MIIE****ihfg==-----END PRIVATE KEY-----

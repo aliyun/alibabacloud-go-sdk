@@ -18,14 +18,20 @@ type iGetMessagesRequest interface {
 }
 
 type GetMessagesRequest struct {
+	// The operation that you want to perform. Set the value to **GetMessages**.
+	//
 	// example:
 	//
 	// 941c6f59-acf5-4e11-9adc-31e52e1f****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The ID of the conversation.
+	//
 	// example:
 	//
 	// 038866af-a050-4bc5-bfad-b7bfc838****
 	FirstId *string `json:"FirstId,omitempty" xml:"FirstId,omitempty"`
+	// The ID of the first message.
+	//
 	// example:
 	//
 	// 10

@@ -24,28 +24,40 @@ type iDescribeEventsListRequest interface {
 }
 
 type DescribeEventsListRequest struct {
+	// The start time of the query period.
+	//
 	// example:
 	//
 	// 2025-08-28 18:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// r-uf6ce0r08lr7xnriq2
 	InstanceIdList *string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The end time of the query period.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The operation that you want to perform. Set the value to **DescribeEventsList**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The RDS Supabase instances.
+	//
 	// example:
 	//
 	// 2025-01-01 18:00:00

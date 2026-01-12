@@ -28,25 +28,38 @@ type iGetCustomAgentResponseBody interface {
 }
 
 type GetCustomAgentResponseBody struct {
+	// The creation time of the agent.
+	//
 	// example:
 	//
 	// 2025-06-04T02:25:43Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// Indicates whether tools are enabled.
+	//
 	// example:
 	//
 	// true
 	EnableTools *bool `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
+	// The ID of the backup set.
+	//
 	// example:
 	//
 	// 17053
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the dedicated agent.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
-	RequestId    *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SystemPrompt *string   `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	Tools        []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The system prompts.
+	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
+	// The details of the tools.
+	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
+	// The modification time of the agent.
+	//
 	// example:
 	//
 	// 2020-11-27 16:02:28

@@ -18,11 +18,16 @@ type iDescribeInstanceIpWhitelistResponseBody interface {
 }
 
 type DescribeInstanceIpWhitelistResponseBody struct {
+	// The ID of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
-	InstanceName      *string                                                     `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The IP address whitelists.
 	IpWhiteListGroups []*DescribeInstanceIpWhitelistResponseBodyIpWhiteListGroups `json:"IpWhiteListGroups,omitempty" xml:"IpWhiteListGroups,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 32DEFB4A-861F-5D1D-ADD5-918E4FD7AB8C
@@ -78,10 +83,14 @@ func (s *DescribeInstanceIpWhitelistResponseBody) Validate() error {
 }
 
 type DescribeInstanceIpWhitelistResponseBodyIpWhiteListGroups struct {
+	// The IP address whitelist name.
+	//
 	// example:
 	//
 	// default
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The IP addresses or CIDR blocks in the whitelist.
+	//
 	// example:
 	//
 	// 192.168.XXX.XXX/24,10.0.XXX.XXX/24

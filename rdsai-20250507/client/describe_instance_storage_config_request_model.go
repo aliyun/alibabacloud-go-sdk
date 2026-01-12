@@ -16,12 +16,16 @@ type iDescribeInstanceStorageConfigRequest interface {
 }
 
 type DescribeInstanceStorageConfigRequest struct {
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The operation that you want to perform. Set the value to **DescribeInstanceStorageConfig**.
+	//
 	// example:
 	//
 	// cn-beijing

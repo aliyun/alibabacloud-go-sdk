@@ -14,6 +14,8 @@ type iChatMessagesTaskStopRequest interface {
 }
 
 type ChatMessagesTaskStopRequest struct {
+	// The operation that you want to perform. Set the value to **ChatMessagesTaskStop**.
+	//
 	// This parameter is required.
 	//
 	// example:

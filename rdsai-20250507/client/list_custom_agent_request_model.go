@@ -16,10 +16,14 @@ type iListCustomAgentRequest interface {
 }
 
 type ListCustomAgentRequest struct {
+	// The operation that you want to perform. Set the value to **ListCustomAgent**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 10

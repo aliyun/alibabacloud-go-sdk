@@ -10,7 +10,7 @@ import (
 
 // Summary:
 //
-// 发送对话消息
+// Sends chat messages.
 //
 // @param tmpReq - ChatMessagesRequest
 //
@@ -25,7 +25,7 @@ func (client *Client) ChatMessagesWithSSECtx(ctx context.Context, tmpReq *ChatMe
 
 // Summary:
 //
-// 发送对话消息
+// Sends chat messages.
 //
 // @param tmpReq - ChatMessagesRequest
 //
@@ -87,7 +87,7 @@ func (client *Client) ChatMessagesWithContext(ctx context.Context, tmpReq *ChatM
 
 // Summary:
 //
-// 停止对话
+// Stops a conversation.
 //
 // @param request - ChatMessagesTaskStopRequest
 //
@@ -131,7 +131,19 @@ func (client *Client) ChatMessagesTaskStopWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建应用服务实例
+// Creates an RDS Supabase instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// >  Fees of an instance are changed if the call is successful. Before you call this operation, carefully read the related topics.
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param tmpReq - CreateAppInstanceRequest
 //
@@ -237,7 +249,7 @@ func (client *Client) CreateAppInstanceWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 创建自定义agent
+// Creates a dedicated agent.
 //
 // @param tmpReq - CreateCustomAgentRequest
 //
@@ -299,7 +311,21 @@ func (client *Client) CreateCustomAgentWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 删除应用服务实例
+// Deletes an RDS Supabase instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// >  Fees of an instance are changed if the call is successful. Before you call this operation, carefully read the related topics.
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
+// >  If you delete an RDS Supabase instance, the created RDS for PostgreSQL instance and the created NAT gateway are not automatically deleted. You must manually release the instance and delete the Internet NAT gateway and EIP.
 //
 // @param request - DeleteAppInstanceRequest
 //
@@ -351,7 +377,7 @@ func (client *Client) DeleteAppInstanceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除Custom Agent
+// Deletes the dedicated agent created by a user.
 //
 // @param request - DeleteCustomAgentRequest
 //
@@ -395,7 +421,17 @@ func (client *Client) DeleteCustomAgentWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询应用服务详情
+// Queries the details of an RDS Supabase instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - DescribeAppInstanceAttributeRequest
 //
@@ -443,7 +479,17 @@ func (client *Client) DescribeAppInstanceAttributeWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询应用服务列表
+// Queries the RDS Supabase instances.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - DescribeAppInstancesRequest
 //
@@ -503,7 +549,7 @@ func (client *Client) DescribeAppInstancesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询事件信息列表
+// Queries the events.
 //
 // @param request - DescribeEventsListRequest
 //
@@ -567,7 +613,17 @@ func (client *Client) DescribeEventsListWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查看实例认证信息
+// Queries the authentication information about an RDS Supabase instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - DescribeInstanceAuthInfoRequest
 //
@@ -615,7 +671,17 @@ func (client *Client) DescribeInstanceAuthInfoWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查看服务连接信息
+// Queries the endpoint of an RDS Supabase instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - DescribeInstanceEndpointsRequest
 //
@@ -663,7 +729,17 @@ func (client *Client) DescribeInstanceEndpointsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询服务白名单
+// Queries the IP address whitelists of an RDS Supabase instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - DescribeInstanceIpWhitelistRequest
 //
@@ -678,6 +754,10 @@ func (client *Client) DescribeInstanceIpWhitelistWithContext(ctx context.Context
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
 	}
@@ -711,7 +791,7 @@ func (client *Client) DescribeInstanceIpWhitelistWithContext(ctx context.Context
 
 // Summary:
 //
-// 查看实例RAG配置
+// Queries the RAG agent configurations of an RDS Supabase instance.
 //
 // @param request - DescribeInstanceRAGConfigRequest
 //
@@ -759,7 +839,17 @@ func (client *Client) DescribeInstanceRAGConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查看实例SSL配置
+// Queries the SSL settings of an RDS Supabase instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - DescribeInstanceSSLRequest
 //
@@ -807,7 +897,19 @@ func (client *Client) DescribeInstanceSSLWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查看实例存储配置
+// Queries the storage configurations of an RDS Supabase instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
+// >  Only Object Storage Service (OSS) is supported for the storage of RDS Supabase.
 //
 // @param request - DescribeInstanceStorageConfigRequest
 //
@@ -855,7 +957,7 @@ func (client *Client) DescribeInstanceStorageConfigWithContext(ctx context.Conte
 
 // Summary:
 //
-// 获取会话列表
+// Queries the history conversations of a user.
 //
 // @param request - GetConversationsRequest
 //
@@ -911,7 +1013,7 @@ func (client *Client) GetConversationsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询CustomAgent
+// Queries the dedicated agents created by a user.
 //
 // @param request - GetCustomAgentRequest
 //
@@ -955,7 +1057,7 @@ func (client *Client) GetCustomAgentWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 获取会话历史消息
+// Queries specific conversation messages.
 //
 // @param request - GetMessagesRequest
 //
@@ -1007,7 +1109,7 @@ func (client *Client) GetMessagesWithContext(ctx context.Context, request *GetMe
 
 // Summary:
 //
-// 获取Custom Agent列表
+// Queries the dedicated agents created by a user.
 //
 // @param request - ListCustomAgentRequest
 //
@@ -1055,7 +1157,17 @@ func (client *Client) ListCustomAgentWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 修改Supabase Auth相关配置
+// Modifies the authentication configurations of an RDS Supabase instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param tmpReq - ModifyInstanceAuthConfigRequest
 //
@@ -1113,7 +1225,7 @@ func (client *Client) ModifyInstanceAuthConfigWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 修改实例RAG配置
+// Modifies the general configurations of an instance, such as the EIP and NAT settings.
 //
 // @param request - ModifyInstanceConfigRequest
 //
@@ -1173,7 +1285,17 @@ func (client *Client) ModifyInstanceConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 修改服务白名单
+// Modifies the IP address whitelist of an RDS Supabase instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - ModifyInstanceIpWhitelistRequest
 //
@@ -1237,7 +1359,7 @@ func (client *Client) ModifyInstanceIpWhitelistWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 修改实例RAG配置
+// Modifies the RAG agent configurations of an RDS Supabase instance.
 //
 // @param tmpReq - ModifyInstanceRAGConfigRequest
 //
@@ -1303,7 +1425,17 @@ func (client *Client) ModifyInstanceRAGConfigWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 修改实例SSL配置
+// Modifies the SSL settings of an RDS Supabase instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - ModifyInstanceSSLRequest
 //
@@ -1367,7 +1499,19 @@ func (client *Client) ModifyInstanceSSLWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 修改实例存储配置
+// Modifies the storage configurations of an RDS Supabase instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
+// >  Only Object Storage Service (OSS) is supported for the storage of RDS Supabase.
 //
 // @param tmpReq - ModifyInstanceStorageConfigRequest
 //
@@ -1429,7 +1573,7 @@ func (client *Client) ModifyInstanceStorageConfigWithContext(ctx context.Context
 
 // Summary:
 //
-// 消息终端用户反馈、点赞/点踩
+// Modifies the returned messages.
 //
 // @param request - ModifyMessagesFeedbacksRequest
 //
@@ -1481,7 +1625,19 @@ func (client *Client) ModifyMessagesFeedbacksWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 重置实例密码
+// Resets the logon password of the RDS Supabase instance and the access password of the database.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
+// >  You can only change the password of a RDS Supabase Dashboard user.
 //
 // @param request - ResetInstancePasswordRequest
 //
@@ -1537,7 +1693,17 @@ func (client *Client) ResetInstancePasswordWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 重启实例
+// Restarts an RDS Supabase instance that is in the Running state.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - RestartInstanceRequest
 //
@@ -1585,7 +1751,17 @@ func (client *Client) RestartInstanceWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// 启动实例
+// Starts a stopped RDS Supabase instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - StartInstanceRequest
 //
@@ -1633,7 +1809,17 @@ func (client *Client) StartInstanceWithContext(ctx context.Context, request *Sta
 
 // Summary:
 //
-// 暂停实例
+// Stops a running RDS Supabase instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// # RDS PostgreSQL
+//
+// ### [](#)References
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - StopInstanceRequest
 //
@@ -1681,7 +1867,7 @@ func (client *Client) StopInstanceWithContext(ctx context.Context, request *Stop
 
 // Summary:
 //
-// 更新Custom Agent
+// Updates the custom agent.
 //
 // @param tmpReq - UpdateCustomAgentRequest
 //

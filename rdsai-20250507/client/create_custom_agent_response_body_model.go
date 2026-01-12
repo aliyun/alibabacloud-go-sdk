@@ -26,10 +26,14 @@ type iCreateCustomAgentResponseBody interface {
 }
 
 type CreateCustomAgentResponseBody struct {
+	// The creation time of the agent.
+	//
 	// example:
 	//
 	// 2020-11-27 16:01:28
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// Indicates whether tools are enabled.
+	//
 	// example:
 	//
 	// true
@@ -39,14 +43,19 @@ type CreateCustomAgentResponseBody struct {
 	// example:
 	//
 	// d1b7d639-f34e-44c7-8231-987da14d****
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the agent.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
-	RequestId    *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SystemPrompt *string   `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	Tools        []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The system prompts.
+	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
+	// The information about the tool.
+	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
 }
 
 func (s CreateCustomAgentResponseBody) String() string {

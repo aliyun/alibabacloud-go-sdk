@@ -20,15 +20,26 @@ type iDescribeInstanceRAGConfigResponseBody interface {
 }
 
 type DescribeInstanceRAGConfigResponseBody struct {
+	// The RAG agent configurations.
 	ConfigList []*DescribeInstanceRAGConfigResponseBodyConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
+	// The ID of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the RAG agent.
+	//
+	// 	- **true**: RAG agent is enabled.
+	//
+	// 	- **false**: RAG agent is disabled.
+	//
 	// example:
 	//
 	// true
@@ -93,10 +104,14 @@ func (s *DescribeInstanceRAGConfigResponseBody) Validate() error {
 }
 
 type DescribeInstanceRAGConfigResponseBodyConfigList struct {
+	// The name of the configuration item.
+	//
 	// example:
 	//
 	// LLM_MODEL
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// qwen-flash

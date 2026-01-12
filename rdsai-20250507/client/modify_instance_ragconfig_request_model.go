@@ -22,21 +22,34 @@ type iModifyInstanceRAGConfigRequest interface {
 }
 
 type ModifyInstanceRAGConfigRequest struct {
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken *string                                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigList  []*ModifyInstanceRAGConfigRequestConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to enable the RAG agent. If you do not configure this parameter, the RAG agent state remains unchanged. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	ConfigList []*ModifyInstanceRAGConfigRequestConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The operation that you want to perform. Set the value to **ModifyInstanceRAGConfig**.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// true

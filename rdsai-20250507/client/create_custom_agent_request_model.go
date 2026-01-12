@@ -20,14 +20,20 @@ type iCreateCustomAgentRequest interface {
 }
 
 type CreateCustomAgentRequest struct {
+	// The system prompts.
+	//
 	// example:
 	//
 	// true
-	EnableTools *bool   `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	EnableTools *bool `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
+	// The operation that you want to perform. Set the value to **CreateCustomAgent**.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the dedicated agent.
+	//
 	// This parameter is required.
-	SystemPrompt *string   `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	Tools        []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
+	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
+	// Specifies whether to enable tools.
+	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
 }
 
 func (s CreateCustomAgentRequest) String() string {

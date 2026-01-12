@@ -24,23 +24,34 @@ type iDescribeAppInstancesResponseBody interface {
 }
 
 type DescribeAppInstancesResponseBody struct {
+	// The information about the RDS Supabase instances.
 	Instances []*DescribeAppInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// A reserved parameter. You do not need to specify this parameter.
+	//
 	// example:
 	//
 	// None
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 32DEFB4A-861F-5D1D-ADD5-918E4FD7AB8C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 20
@@ -123,46 +134,68 @@ func (s *DescribeAppInstancesResponseBody) Validate() error {
 }
 
 type DescribeAppInstancesResponseBodyInstances struct {
+	// The name of the AI application.
+	//
 	// example:
 	//
 	// test-supabase
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The application type. Only **supabase*	- is supported. For more information, see [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
+	//
 	// example:
 	//
 	// supabase
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The ID of the RDS for PostgreSQL instance with which the RDS Supabase instances are associated.
+	//
 	// example:
 	//
 	// pgm-2ze49qv594vi****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The instance type.
+	//
 	// example:
 	//
 	// rdsai.supabase.basic
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	// The minor version number of RDS Supabase instance.
+	//
 	// example:
 	//
 	// 20241231
 	InstanceMinorVersion *string `json:"InstanceMinorVersion,omitempty" xml:"InstanceMinorVersion,omitempty"`
+	// The ID of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The public endpoint of the AI application.
+	//
 	// example:
 	//
 	// 8.152. XXX.XXX:8000
 	PublicConnectionString *string `json:"PublicConnectionString,omitempty" xml:"PublicConnectionString,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance status. For more information, see [Instance state table](https://help.aliyun.com/document_detail/2623972.html).
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-2zeaepb8k4ku05ov2****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The internal endpoint of the AI application.
+	//
 	// example:
 	//
 	// 172.16.XXX.XXX:8000

@@ -20,15 +20,22 @@ type iGetConversationsResponseBody interface {
 }
 
 type GetConversationsResponseBody struct {
+	// The returned results.
 	Data []*GetConversationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Indicates whether the current page is followed by a page.
+	//
 	// example:
 	//
 	// true
 	HasMore *string `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 100.
+	//
 	// example:
 	//
 	// 100
 	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
@@ -93,16 +100,22 @@ func (s *GetConversationsResponseBody) Validate() error {
 }
 
 type GetConversationsResponseBodyData struct {
+	// The creation time of the conversation.
+	//
 	// example:
 	//
 	// 1764055092
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The ID of the history conversation.
+	//
 	// example:
 	//
 	// 60b335ca-124d-4ee1-864b-de554987****
-	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The introduction to the conversation.
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the history conversation.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetConversationsResponseBodyData) String() string {

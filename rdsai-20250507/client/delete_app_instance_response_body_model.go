@@ -16,10 +16,14 @@ type iDeleteAppInstanceResponseBody interface {
 }
 
 type DeleteAppInstanceResponseBody struct {
+	// The ID of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba***
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C

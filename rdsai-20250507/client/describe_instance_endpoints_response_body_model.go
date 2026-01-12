@@ -20,12 +20,18 @@ type iDescribeInstanceEndpointsResponseBody interface {
 }
 
 type DescribeInstanceEndpointsResponseBody struct {
+	// The information about the endpoints of the RDS instance.
 	DBInstanceEndpoints []*DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints `json:"DBInstanceEndpoints,omitempty" xml:"DBInstanceEndpoints,omitempty" type:"Repeated"`
-	InstanceEndpoints   []*DescribeInstanceEndpointsResponseBodyInstanceEndpoints   `json:"InstanceEndpoints,omitempty" xml:"InstanceEndpoints,omitempty" type:"Repeated"`
+	// The information about the endpoints of the RDS Supabase instance.
+	InstanceEndpoints []*DescribeInstanceEndpointsResponseBodyInstanceEndpoints `json:"InstanceEndpoints,omitempty" xml:"InstanceEndpoints,omitempty" type:"Repeated"`
+	// The ID of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 32DEFB4A-861F-5D1D-ADD5-918E4FD7AB8C
@@ -99,9 +105,28 @@ func (s *DescribeInstanceEndpointsResponseBody) Validate() error {
 }
 
 type DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints struct {
+	// The endpoint of the RDS instance.
+	//
+	// example:
+	//
+	// pgm-xxxx.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	IpType           *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The network type of the RDS instance. Valid values:
+	//
+	// 	- **public**: Internet
+	//
+	// 	- **vpc**: VPC
+	//
+	// example:
+	//
+	// vpc
+	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// The port used to access the RDS instance.
+	//
+	// example:
+	//
+	// 5432
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints) String() string {
@@ -144,18 +169,30 @@ func (s *DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints) Validate() er
 }
 
 type DescribeInstanceEndpointsResponseBodyInstanceEndpoints struct {
+	// The endpoint of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// 8.152.XXX.XXX:8000
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The IP address used to access the RDS Supabase instance.
+	//
 	// example:
 	//
 	// 8.152.XXX.XXX
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// The network type of the RDS Supabase instance. Valid values:
+	//
+	// 	- **public**: Internet
+	//
+	// 	- **vpc**: VPC
+	//
 	// example:
 	//
 	// public
 	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// The port used to access the RDS Supabase instance.
+	//
 	// example:
 	//
 	// 8000

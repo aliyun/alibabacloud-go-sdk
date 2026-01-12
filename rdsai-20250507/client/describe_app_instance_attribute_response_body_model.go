@@ -42,56 +42,82 @@ type iDescribeAppInstanceAttributeResponseBody interface {
 }
 
 type DescribeAppInstanceAttributeResponseBody struct {
+	// The name of the AI application.
+	//
 	// example:
 	//
 	// test-supabase
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The application type. Only **supabase*	- is supported. For more information, see [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
+	//
 	// example:
 	//
 	// supabase
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The ID of the RDS for PostgreSQL instance with which the RDS Supabase instances are associated.
+	//
 	// example:
 	//
 	// pgm-2ze49qv594vi****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	EipStatus      *string `json:"EipStatus,omitempty" xml:"EipStatus,omitempty"`
+	// The instance type of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// rdsai.supabase.basic
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	// The minor version number of RDS Supabase instance.
+	//
 	// example:
 	//
 	// 20241231
 	InstanceMinorVersion *string `json:"InstanceMinorVersion,omitempty" xml:"InstanceMinorVersion,omitempty"`
+	// The ID of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	NatStatus    *string `json:"NatStatus,omitempty" xml:"NatStatus,omitempty"`
+	// The public endpoint of the AI application.
+	//
 	// example:
 	//
 	// 8.152. XXX.XXX:8000
 	PublicConnectionString *string `json:"PublicConnectionString,omitempty" xml:"PublicConnectionString,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the instance. For more information, see [Instance state table](https://help.aliyun.com/document_detail/2623972.html).
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-2zeaepb8k4ku05ov2****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The internal endpoint of the AI application.
+	//
 	// example:
 	//
 	// 172.16.XXX.XXX:8000
 	VpcConnectionString *string `json:"VpcConnectionString,omitempty" xml:"VpcConnectionString,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-beijing-i

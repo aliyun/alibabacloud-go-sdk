@@ -20,17 +20,24 @@ type iModifyInstanceStorageConfigRequest interface {
 }
 
 type ModifyInstanceStorageConfigRequest struct {
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken *string                                         `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigList  []*ModifyInstanceStorageConfigRequestConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the RDS Supabase instance.
+	ConfigList []*ModifyInstanceStorageConfigRequestConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The operation that you want to perform. Set the value to **ModifyInstanceStorageConfig**.
+	//
 	// example:
 	//
 	// cn-beijing

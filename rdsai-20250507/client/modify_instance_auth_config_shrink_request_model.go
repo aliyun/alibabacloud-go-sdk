@@ -18,11 +18,16 @@ type iModifyInstanceAuthConfigShrinkRequest interface {
 }
 
 type ModifyInstanceAuthConfigShrinkRequest struct {
+	// The ID of the RDS Supabase instance.
 	ConfigListShrink *string `json:"ConfigList,omitempty" xml:"ConfigList,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The operation that you want to perform. Set the value to **ModifyInstanceAuthConfig**.
+	//
 	// example:
 	//
 	// cn-beijing

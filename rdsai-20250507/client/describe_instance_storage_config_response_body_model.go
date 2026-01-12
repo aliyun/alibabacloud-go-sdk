@@ -18,11 +18,16 @@ type iDescribeInstanceStorageConfigResponseBody interface {
 }
 
 type DescribeInstanceStorageConfigResponseBody struct {
+	// The storage configurations.
 	ConfigList []*DescribeInstanceStorageConfigResponseBodyConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
+	// The ID of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
@@ -78,10 +83,28 @@ func (s *DescribeInstanceStorageConfigResponseBody) Validate() error {
 }
 
 type DescribeInstanceStorageConfigResponseBodyConfigList struct {
+	// The configuration item name. Valid values:
+	//
+	// 	- **AWS_SESSION_TOKEN**: temporary OSS access token (session token).
+	//
+	// 	- **AWS_ACCESS_KEY_ID**: the AccessKey ID of OSS.
+	//
+	// 	- **AWS_SECRET_ACCESS_KEY**: the AccessKey secret of OSS.
+	//
+	// 	- **GLOBAL_S3_BUCKET**: the name of the OSS bucket.
+	//
+	// 	- **TENANT_ID**: the tenant ID of the OSS Prefix (prefix or directory).
+	//
+	// 	- **GLOBAL_S3_ENDPOINT**: the endpoint of OSS.
+	//
+	// 	- **REGION**: the region of OSS.
+	//
 	// example:
 	//
 	// REGION
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// cn-beijing

@@ -24,30 +24,50 @@ type iModifyInstanceSSLRequest interface {
 }
 
 type ModifyInstanceSSLRequest struct {
+	// Enables or disables SSL. Valid values:
+	//
+	// 	- **1**: enables SSL.
+	//
+	// 	- **0**: disables SSL.
+	//
 	// example:
 	//
 	// custom
 	CAType *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The operation that you want to perform. Set the value to **ModifyInstanceSSL**.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the RDS Supabase instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	SSLEnabled *int32 `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
+	// The certificate type. Only **custom*	- is supported.
+	//
+	// >  This parameter is required if **SSLEnabled*	- is set to **1**.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----MIID*****QqEP-----END CERTIFICATE-----
 	ServerCert *string `json:"ServerCert,omitempty" xml:"ServerCert,omitempty"`
+	// The content of the custom certificate.
+	//
+	// >  This parameter is required if **CAType*	- is set to **custom**.
+	//
 	// example:
 	//
 	// -----BEGIN PRIVATE KEY-----MIIE****ihfg==-----END PRIVATE KEY-----

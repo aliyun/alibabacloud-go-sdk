@@ -20,15 +20,22 @@ type iChatMessagesRequest interface {
 }
 
 type ChatMessagesRequest struct {
+	// The query content.
+	//
 	// example:
 	//
 	// fea7bdca-e848-44dd-b1ae-852472b8****
-	ConversationId *string                    `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	Inputs         *ChatMessagesRequestInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
+	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The ID of the parent message.
+	Inputs *ChatMessagesRequestInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
+	// The ID of the conversation.
+	//
 	// example:
 	//
 	// 84dc9f9b-424a-404d-9c36-35e9d000****
 	ParentMessageId *string `json:"ParentMessageId,omitempty" xml:"ParentMessageId,omitempty"`
+	// The operation that you want to perform. Set the value to **ChatMessages**.
+	//
 	// This parameter is required.
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }

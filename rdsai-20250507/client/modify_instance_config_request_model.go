@@ -22,24 +22,34 @@ type iModifyInstanceConfigRequest interface {
 }
 
 type ModifyInstanceConfigRequest struct {
+	// The ID of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
 	// example:
 	//
 	// eip、nat
 	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	// The name of the configuration item that you want to modify. Configure this parameter together with the ConfigValue parameter.
+	//
 	// example:
 	//
 	// on、off
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The operation that you want to perform. Set the value to **ModifyInstanceConfig**.
+	//
 	// example:
 	//
 	// cn-beijing
