@@ -1532,6 +1532,14 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, tmpReq *List
 		query["Accessibility"] = request.Accessibility
 	}
 
+	if !dara.IsNil(request.CreateTimeAfter) {
+		query["CreateTimeAfter"] = request.CreateTimeAfter
+	}
+
+	if !dara.IsNil(request.CreateTimeBefore) {
+		query["CreateTimeBefore"] = request.CreateTimeBefore
+	}
+
 	if !dara.IsNil(request.CreateUserId) {
 		query["CreateUserId"] = request.CreateUserId
 	}

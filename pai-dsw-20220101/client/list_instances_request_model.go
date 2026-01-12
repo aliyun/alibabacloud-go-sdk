@@ -13,6 +13,10 @@ type iListInstancesRequest interface {
 	GetAcceleratorType() *string
 	SetAccessibility(v string) *ListInstancesRequest
 	GetAccessibility() *string
+	SetCreateTimeAfter(v string) *ListInstancesRequest
+	GetCreateTimeAfter() *string
+	SetCreateTimeBefore(v string) *ListInstancesRequest
+	GetCreateTimeBefore() *string
 	SetCreateUserId(v string) *ListInstancesRequest
 	GetCreateUserId() *string
 	SetGpuType(v string) *ListInstancesRequest
@@ -85,7 +89,9 @@ type ListInstancesRequest struct {
 	// example:
 	//
 	// PRIVATE
-	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Accessibility    *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	CreateTimeAfter  *string `json:"CreateTimeAfter,omitempty" xml:"CreateTimeAfter,omitempty"`
+	CreateTimeBefore *string `json:"CreateTimeBefore,omitempty" xml:"CreateTimeBefore,omitempty"`
 	// The UID of the creator.
 	//
 	// example:
@@ -300,6 +306,14 @@ func (s *ListInstancesRequest) GetAccessibility() *string {
 	return s.Accessibility
 }
 
+func (s *ListInstancesRequest) GetCreateTimeAfter() *string {
+	return s.CreateTimeAfter
+}
+
+func (s *ListInstancesRequest) GetCreateTimeBefore() *string {
+	return s.CreateTimeBefore
+}
+
 func (s *ListInstancesRequest) GetCreateUserId() *string {
 	return s.CreateUserId
 }
@@ -407,6 +421,16 @@ func (s *ListInstancesRequest) SetAcceleratorType(v string) *ListInstancesReques
 
 func (s *ListInstancesRequest) SetAccessibility(v string) *ListInstancesRequest {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetCreateTimeAfter(v string) *ListInstancesRequest {
+	s.CreateTimeAfter = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetCreateTimeBefore(v string) *ListInstancesRequest {
+	s.CreateTimeBefore = &v
 	return s
 }
 

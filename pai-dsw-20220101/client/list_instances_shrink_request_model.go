@@ -13,6 +13,10 @@ type iListInstancesShrinkRequest interface {
 	GetAcceleratorType() *string
 	SetAccessibility(v string) *ListInstancesShrinkRequest
 	GetAccessibility() *string
+	SetCreateTimeAfter(v string) *ListInstancesShrinkRequest
+	GetCreateTimeAfter() *string
+	SetCreateTimeBefore(v string) *ListInstancesShrinkRequest
+	GetCreateTimeBefore() *string
 	SetCreateUserId(v string) *ListInstancesShrinkRequest
 	GetCreateUserId() *string
 	SetGpuType(v string) *ListInstancesShrinkRequest
@@ -85,7 +89,9 @@ type ListInstancesShrinkRequest struct {
 	// example:
 	//
 	// PRIVATE
-	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Accessibility    *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	CreateTimeAfter  *string `json:"CreateTimeAfter,omitempty" xml:"CreateTimeAfter,omitempty"`
+	CreateTimeBefore *string `json:"CreateTimeBefore,omitempty" xml:"CreateTimeBefore,omitempty"`
 	// The UID of the creator.
 	//
 	// example:
@@ -300,6 +306,14 @@ func (s *ListInstancesShrinkRequest) GetAccessibility() *string {
 	return s.Accessibility
 }
 
+func (s *ListInstancesShrinkRequest) GetCreateTimeAfter() *string {
+	return s.CreateTimeAfter
+}
+
+func (s *ListInstancesShrinkRequest) GetCreateTimeBefore() *string {
+	return s.CreateTimeBefore
+}
+
 func (s *ListInstancesShrinkRequest) GetCreateUserId() *string {
 	return s.CreateUserId
 }
@@ -407,6 +421,16 @@ func (s *ListInstancesShrinkRequest) SetAcceleratorType(v string) *ListInstances
 
 func (s *ListInstancesShrinkRequest) SetAccessibility(v string) *ListInstancesShrinkRequest {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetCreateTimeAfter(v string) *ListInstancesShrinkRequest {
+	s.CreateTimeAfter = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetCreateTimeBefore(v string) *ListInstancesShrinkRequest {
+	s.CreateTimeBefore = &v
 	return s
 }
 

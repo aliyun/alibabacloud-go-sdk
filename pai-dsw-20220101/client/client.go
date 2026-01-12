@@ -2097,6 +2097,14 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 		query["Accessibility"] = request.Accessibility
 	}
 
+	if !dara.IsNil(request.CreateTimeAfter) {
+		query["CreateTimeAfter"] = request.CreateTimeAfter
+	}
+
+	if !dara.IsNil(request.CreateTimeBefore) {
+		query["CreateTimeBefore"] = request.CreateTimeBefore
+	}
+
 	if !dara.IsNil(request.CreateUserId) {
 		query["CreateUserId"] = request.CreateUserId
 	}
