@@ -121,6 +121,130 @@ func (client *Client) AuthorizeAndroidInstanceWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 整机备份
+//
+// @param request - BackupAndroidInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BackupAndroidInstanceResponse
+func (client *Client) BackupAndroidInstanceWithContext(ctx context.Context, request *BackupAndroidInstanceRequest, runtime *dara.RuntimeOptions) (_result *BackupAndroidInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AndroidInstanceIdList) {
+		query["AndroidInstanceIdList"] = request.AndroidInstanceIdList
+	}
+
+	if !dara.IsNil(request.BackupFileName) {
+		query["BackupFileName"] = request.BackupFileName
+	}
+
+	if !dara.IsNil(request.BackupFilePath) {
+		query["BackupFilePath"] = request.BackupFilePath
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.UploadEndpoint) {
+		query["UploadEndpoint"] = request.UploadEndpoint
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BackupAndroidInstance"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BackupAndroidInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用备份
+//
+// @param request - BackupAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BackupAppResponse
+func (client *Client) BackupAppWithContext(ctx context.Context, request *BackupAppRequest, runtime *dara.RuntimeOptions) (_result *BackupAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AndroidInstanceIdList) {
+		query["AndroidInstanceIdList"] = request.AndroidInstanceIdList
+	}
+
+	if !dara.IsNil(request.BackupFileName) {
+		query["BackupFileName"] = request.BackupFileName
+	}
+
+	if !dara.IsNil(request.BackupFilePath) {
+		query["BackupFilePath"] = request.BackupFilePath
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.SourceAppList) {
+		query["SourceAppList"] = request.SourceAppList
+	}
+
+	if !dara.IsNil(request.UploadEndpoint) {
+		query["UploadEndpoint"] = request.UploadEndpoint
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BackupApp"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BackupAppResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Generates and uploads backup files.
 //
 // Description:
@@ -4437,6 +4561,126 @@ func (client *Client) RebootAndroidInstancesInGroupWithContext(ctx context.Conte
 		BodyType:    dara.String("json"),
 	}
 	_result = &RebootAndroidInstancesInGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 整机恢复
+//
+// @param request - RecoverAndroidInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecoverAndroidInstanceResponse
+func (client *Client) RecoverAndroidInstanceWithContext(ctx context.Context, request *RecoverAndroidInstanceRequest, runtime *dara.RuntimeOptions) (_result *RecoverAndroidInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AndroidInstanceIdList) {
+		query["AndroidInstanceIdList"] = request.AndroidInstanceIdList
+	}
+
+	if !dara.IsNil(request.BackupFileId) {
+		query["BackupFileId"] = request.BackupFileId
+	}
+
+	if !dara.IsNil(request.BackupFilePath) {
+		query["BackupFilePath"] = request.BackupFilePath
+	}
+
+	if !dara.IsNil(request.UploadEndpoint) {
+		query["UploadEndpoint"] = request.UploadEndpoint
+	}
+
+	if !dara.IsNil(request.UploadType) {
+		query["UploadType"] = request.UploadType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RecoverAndroidInstance"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RecoverAndroidInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 恢复应用
+//
+// @param request - RecoverAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecoverAppResponse
+func (client *Client) RecoverAppWithContext(ctx context.Context, request *RecoverAppRequest, runtime *dara.RuntimeOptions) (_result *RecoverAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AndroidInstanceIdList) {
+		query["AndroidInstanceIdList"] = request.AndroidInstanceIdList
+	}
+
+	if !dara.IsNil(request.BackupFileId) {
+		query["BackupFileId"] = request.BackupFileId
+	}
+
+	if !dara.IsNil(request.BackupFilePath) {
+		query["BackupFilePath"] = request.BackupFilePath
+	}
+
+	if !dara.IsNil(request.UploadEndpoint) {
+		query["UploadEndpoint"] = request.UploadEndpoint
+	}
+
+	if !dara.IsNil(request.UploadType) {
+		query["UploadType"] = request.UploadType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RecoverApp"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RecoverAppResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

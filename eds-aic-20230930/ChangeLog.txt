@@ -1,3 +1,10 @@
+2026-01-12 Version: v4.17.0
+- Support API BackupAndroidInstance.
+- Support API BackupApp.
+- Support API RecoverAndroidInstance.
+- Support API RecoverApp.
+
+
 2026-01-05 Version: v4.16.2
 - Generated golang 2023-09-30 for eds-aic.
 
