@@ -328,6 +328,48 @@ func (client *Client) CreateKnowledgeBaseWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 添加记忆存储
+//
+// @param request - CreateMemoryCollectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMemoryCollectionResponse
+func (client *Client) CreateMemoryCollectionWithContext(ctx context.Context, request *CreateMemoryCollectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMemoryCollectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMemoryCollection"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/memory-collections"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMemoryCollectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 新增模型
 //
 // @param request - CreateModelProxyRequest
@@ -704,6 +746,39 @@ func (client *Client) DeleteKnowledgeBaseWithContext(ctx context.Context, knowle
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteKnowledgeBaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除记忆存储
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMemoryCollectionResponse
+func (client *Client) DeleteMemoryCollectionWithContext(ctx context.Context, memoryCollectionName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryCollectionResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMemoryCollection"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/memory-collections/" + dara.PercentEncode(dara.StringValue(memoryCollectionName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMemoryCollectionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1119,6 +1194,39 @@ func (client *Client) GetKnowledgeBaseWithContext(ctx context.Context, knowledge
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetKnowledgeBaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询记忆存储详情
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMemoryCollectionResponse
+func (client *Client) GetMemoryCollectionWithContext(ctx context.Context, memoryCollectionName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryCollectionResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMemoryCollection"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/memory-collections/" + dara.PercentEncode(dara.StringValue(memoryCollectionName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMemoryCollectionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1688,6 +1796,69 @@ func (client *Client) ListKnowledgeBasesWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListKnowledgeBasesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询记忆存储列表
+//
+// @param request - ListMemoryCollectionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMemoryCollectionsResponse
+func (client *Client) ListMemoryCollectionsWithContext(ctx context.Context, request *ListMemoryCollectionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMemoryCollectionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MemoryCollectionName) {
+		query["memoryCollectionName"] = request.MemoryCollectionName
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMemoryCollections"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/memory-collections"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMemoryCollectionsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2295,6 +2466,48 @@ func (client *Client) UpdateKnowledgeBaseWithContext(ctx context.Context, knowle
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateKnowledgeBaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改记忆存储信息
+//
+// @param request - UpdateMemoryCollectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMemoryCollectionResponse
+func (client *Client) UpdateMemoryCollectionWithContext(ctx context.Context, memoryCollectionName *string, request *UpdateMemoryCollectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMemoryCollectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMemoryCollection"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/memory-collections/" + dara.PercentEncode(dara.StringValue(memoryCollectionName))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMemoryCollectionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
