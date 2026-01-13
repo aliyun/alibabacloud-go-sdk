@@ -184,6 +184,7 @@ type ListKyuubiSparkApplicationsResponseBodyApplications struct {
 	//
 	// STARTING
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	Tags  []*Tag  `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The total number of CPU cores allocated to the job multiplied by the running duration (seconds).
 	//
 	// example:
@@ -248,6 +249,10 @@ func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetStartTime() *st
 
 func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetState() *string {
 	return s.State
+}
+
+func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetTags() []*Tag {
+	return s.Tags
 }
 
 func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetVcoreSeconds() *int64 {
@@ -318,6 +323,11 @@ func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetState(v string)
 	return s
 }
 
+func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetTags(v []*Tag) *ListKyuubiSparkApplicationsResponseBodyApplications {
+	s.Tags = v
+	return s
+}
+
 func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetVcoreSeconds(v int64) *ListKyuubiSparkApplicationsResponseBodyApplications {
 	s.VcoreSeconds = &v
 	return s
@@ -332,6 +342,15 @@ func (s *ListKyuubiSparkApplicationsResponseBodyApplications) Validate() error {
 	if s.RunLog != nil {
 		if err := s.RunLog.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil

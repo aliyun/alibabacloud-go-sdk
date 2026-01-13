@@ -116,6 +116,10 @@ func (s *ListCatalogsResponseBody) Validate() error {
 }
 
 type ListCatalogsResponseBodyCatalogs struct {
+	// example:
+	//
+	// alias
+	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// regionId。
 	//
 	// example:
@@ -160,6 +164,10 @@ func (s ListCatalogsResponseBodyCatalogs) GoString() string {
 	return s.String()
 }
 
+func (s *ListCatalogsResponseBodyCatalogs) GetAlias() *string {
+	return s.Alias
+}
+
 func (s *ListCatalogsResponseBodyCatalogs) GetCatalogId() *string {
 	return s.CatalogId
 }
@@ -194,6 +202,11 @@ func (s *ListCatalogsResponseBodyCatalogs) GetResourceOwnerId() *string {
 
 func (s *ListCatalogsResponseBodyCatalogs) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *ListCatalogsResponseBodyCatalogs) SetAlias(v string) *ListCatalogsResponseBodyCatalogs {
+	s.Alias = &v
+	return s
 }
 
 func (s *ListCatalogsResponseBodyCatalogs) SetCatalogId(v string) *ListCatalogsResponseBodyCatalogs {
