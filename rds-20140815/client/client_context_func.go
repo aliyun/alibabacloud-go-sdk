@@ -17080,6 +17080,10 @@ func (client *Client) DescribeRCSnapshotsWithContext(ctx context.Context, reques
 		query["DiskId"] = request.DiskId
 	}
 
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -25859,6 +25863,70 @@ func (client *Client) ModifyParameterGroupWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyParameterGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改块存储属性
+//
+// @param request - ModifyRCDiskAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyRCDiskAttributeResponse
+func (client *Client) ModifyRCDiskAttributeWithContext(ctx context.Context, request *ModifyRCDiskAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyRCDiskAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BurstingEnabled) {
+		query["BurstingEnabled"] = request.BurstingEnabled
+	}
+
+	if !dara.IsNil(request.DeleteWithInstance) {
+		query["DeleteWithInstance"] = request.DeleteWithInstance
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DiskId) {
+		query["DiskId"] = request.DiskId
+	}
+
+	if !dara.IsNil(request.DiskName) {
+		query["DiskName"] = request.DiskName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyRCDiskAttribute"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyRCDiskAttributeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
