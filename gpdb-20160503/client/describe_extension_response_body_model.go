@@ -30,38 +30,56 @@ type iDescribeExtensionResponseBody interface {
 }
 
 type DescribeExtensionResponseBody struct {
+	// The current version.
+	//
 	// example:
 	//
 	// 2.1
 	CurrentVersion *string `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	// The description of the extension.
+	//
 	// example:
 	//
 	// zhparser
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The extension ID.
+	//
 	// example:
 	//
 	// 37
 	ExtensionId *string `json:"ExtensionId,omitempty" xml:"ExtensionId,omitempty"`
+	// The extension name.
+	//
 	// example:
 	//
 	// zhparser
 	ExtensionName *string `json:"ExtensionName,omitempty" xml:"ExtensionName,omitempty"`
+	// Indicates whether an instance restart is required after you install the extension.
+	//
 	// example:
 	//
 	// False
 	IsInstallNeedRestart *bool `json:"IsInstallNeedRestart,omitempty" xml:"IsInstallNeedRestart,omitempty"`
+	// Whether it is the latest version extension.
+	//
 	// example:
 	//
 	// True
 	IsLatestVersion *bool `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
+	// The latest version.
+	//
 	// example:
 	//
 	// 2.1
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the extension.
+	//
 	// example:
 	//
 	// installed

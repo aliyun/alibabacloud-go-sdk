@@ -4457,7 +4457,7 @@ func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_resul
 
 // Summary:
 //
-// 删除IP分组
+// Deletes an IP whitelist group from an instance.
 //
 // @param request - DeleteDBInstanceIPArrayRequest
 //
@@ -4505,7 +4505,7 @@ func (client *Client) DeleteDBInstanceIPArrayWithOptions(request *DeleteDBInstan
 
 // Summary:
 //
-// 删除IP分组
+// Deletes an IP whitelist group from an instance.
 //
 // @param request - DeleteDBInstanceIPArrayRequest
 //
@@ -4679,7 +4679,7 @@ func (client *Client) DeleteDBResourceGroup(request *DeleteDBResourceGroupReques
 
 // Summary:
 //
-// 删除数据库
+// Deletes a database from an instance.
 //
 // @param request - DeleteDatabaseRequest
 //
@@ -4727,7 +4727,7 @@ func (client *Client) DeleteDatabaseWithOptions(request *DeleteDatabaseRequest, 
 
 // Summary:
 //
-// 删除数据库
+// Deletes a database from an instance.
 //
 // @param request - DeleteDatabaseRequest
 //
@@ -5447,7 +5447,7 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 
 // Summary:
 //
-// 关闭私有RAG服务
+// Deletes a private RAG service.
 //
 // @param request - DeletePrivateRAGServiceRequest
 //
@@ -5491,7 +5491,7 @@ func (client *Client) DeletePrivateRAGServiceWithOptions(request *DeletePrivateR
 
 // Summary:
 //
-// 关闭私有RAG服务
+// Deletes a private RAG service.
 //
 // @param request - DeletePrivateRAGServiceRequest
 //
@@ -6035,7 +6035,13 @@ func (client *Client) DeleteVectorIndex(request *DeleteVectorIndexRequest) (_res
 
 // Summary:
 //
-// 部署私有RAG服务
+// Deploy a private RAG service.
+//
+// Description:
+//
+// 1.  Before you deploy the private RAG service, create an initial account.
+//
+// 2.  The private RAG service supports vector interfaces. When you call this operation, you must configure a CA certificate.
 //
 // @param request - DeployPrivateRAGServiceRequest
 //
@@ -6087,7 +6093,13 @@ func (client *Client) DeployPrivateRAGServiceWithOptions(request *DeployPrivateR
 
 // Summary:
 //
-// 部署私有RAG服务
+// Deploy a private RAG service.
+//
+// Description:
+//
+// 1.  Before you deploy the private RAG service, create an initial account.
+//
+// 2.  The private RAG service supports vector interfaces. When you call this operation, you must configure a CA certificate.
 //
 // @param request - DeployPrivateRAGServiceRequest
 //
@@ -8617,7 +8629,7 @@ func (client *Client) DescribeDataSharePerformance(request *DescribeDataSharePer
 
 // Summary:
 //
-// 描述数据库
+// Describes the basic information about an AnalyticDB for PostgreSQL database.
 //
 // @param request - DescribeDatabaseRequest
 //
@@ -8665,7 +8677,7 @@ func (client *Client) DescribeDatabaseWithOptions(request *DescribeDatabaseReque
 
 // Summary:
 //
-// 描述数据库
+// Describes the basic information about an AnalyticDB for PostgreSQL database.
 //
 // @param request - DescribeDatabaseRequest
 //
@@ -9281,7 +9293,7 @@ func (client *Client) DescribeDownloadSQLLogs(request *DescribeDownloadSQLLogsRe
 
 // Summary:
 //
-// 获取安装在某个数据库上的插件信息
+// Describes the extension information.
 //
 // @param request - DescribeExtensionRequest
 //
@@ -9333,7 +9345,7 @@ func (client *Client) DescribeExtensionWithOptions(request *DescribeExtensionReq
 
 // Summary:
 //
-// 获取安装在某个数据库上的插件信息
+// Describes the extension information.
 //
 // @param request - DescribeExtensionRequest
 //
@@ -10337,7 +10349,7 @@ func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_r
 
 // Summary:
 //
-// 获取私有RAG服务详情
+// Obtains the details of a private RAG service.
 //
 // @param request - DescribePrivateRAGServiceRequest
 //
@@ -10381,7 +10393,7 @@ func (client *Client) DescribePrivateRAGServiceWithOptions(request *DescribePriv
 
 // Summary:
 //
-// 获取私有RAG服务详情
+// Obtains the details of a private RAG service.
 //
 // @param request - DescribePrivateRAGServiceRequest
 //
@@ -12003,7 +12015,7 @@ func (client *Client) DescribeWaitingSQLRecords(request *DescribeWaitingSQLRecor
 
 // Summary:
 //
-// 获取私有RAG服务可部署可用区
+// Obtains the deployable zone of the private RAG service.
 //
 // @param request - DescribeZonesPrivateRAGServiceRequest
 //
@@ -12051,7 +12063,7 @@ func (client *Client) DescribeZonesPrivateRAGServiceWithOptions(request *Describ
 
 // Summary:
 //
-// 获取私有RAG服务可部署可用区
+// Obtains the deployable zone of the private RAG service.
 //
 // @param request - DescribeZonesPrivateRAGServiceRequest
 //
@@ -14015,7 +14027,7 @@ func (client *Client) ListCollections(request *ListCollectionsRequest) (_result 
 
 // Summary:
 //
-// 获取安装在某个数据库上的所有插件信息
+// List all extensions installed in the instance.
 //
 // @param request - ListDatabaseExtensionsRequest
 //
@@ -14063,7 +14075,7 @@ func (client *Client) ListDatabaseExtensionsWithOptions(request *ListDatabaseExt
 
 // Summary:
 //
-// 获取安装在某个数据库上的所有插件信息
+// List all extensions installed in the instance.
 //
 // @param request - ListDatabaseExtensionsRequest
 //
@@ -14569,7 +14581,7 @@ func (client *Client) ListIndices(request *ListIndicesRequest) (_result *ListInd
 
 // Summary:
 //
-// 列举数据库
+// List all databases in an AnalyticDB for PostgreSQL instance.
 //
 // @param request - ListInstanceDatabasesRequest
 //
@@ -14621,7 +14633,7 @@ func (client *Client) ListInstanceDatabasesWithOptions(request *ListInstanceData
 
 // Summary:
 //
-// 列举数据库
+// List all databases in an AnalyticDB for PostgreSQL instance.
 //
 // @param request - ListInstanceDatabasesRequest
 //

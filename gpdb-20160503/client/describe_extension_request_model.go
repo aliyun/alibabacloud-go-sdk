@@ -18,18 +18,32 @@ type iDescribeExtensionRequest interface {
 }
 
 type DescribeExtensionRequest struct {
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) Interface to query the details of all AnalyticDB PostgreSQL Instances in the target region, including Instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Database name.
+	//
+	// 	- Only contain letters, digits, and underscores (_).
+	//
+	// 	- Must start with a letter.
+	//
+	// 	- Up to 63 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test01
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The extension name.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/gpdb-20160503/v4
+module github.com/alibabacloud-go/gpdb-20160503/v5
 
 go 1.14
 

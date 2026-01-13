@@ -16,10 +16,14 @@ type iDescribePrivateRAGServiceResponseBody interface {
 }
 
 type DescribePrivateRAGServiceResponseBody struct {
+	// CA certificate Info. The returned OSS link, valid for 2 hours.
+	//
 	// example:
 	//
 	// https://oss-xxx
 	CaCert *string `json:"CaCert,omitempty" xml:"CaCert,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521

@@ -16,12 +16,18 @@ type iDeleteDBInstanceIPArrayRequest interface {
 }
 
 type DeleteDBInstanceIPArrayRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the IP whitelist group.
+	//
 	// This parameter is required.
 	//
 	// example:

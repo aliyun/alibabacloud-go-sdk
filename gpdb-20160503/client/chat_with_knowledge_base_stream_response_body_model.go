@@ -722,7 +722,7 @@ type ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches s
 	// {"page":1}
 	LoaderMetadata interface{} `json:"LoaderMetadata,omitempty" xml:"LoaderMetadata,omitempty"`
 	// Metadata.
-	Metadata *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatchesMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// The rerank score.
 	//
 	// example:
@@ -773,7 +773,7 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatch
 	return s.LoaderMetadata
 }
 
-func (s *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches) GetMetadata() *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatchesMetadata {
+func (s *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches) GetMetadata() map[string]interface{} {
 	return s.Metadata
 }
 
@@ -818,7 +818,7 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatch
 	return s
 }
 
-func (s *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches) SetMetadata(v *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatchesMetadata) *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches {
+func (s *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches) SetMetadata(v map[string]interface{}) *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches {
 	s.Metadata = v
 	return s
 }
@@ -844,41 +844,6 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatch
 }
 
 func (s *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches) Validate() error {
-	if s.Metadata != nil {
-		if err := s.Metadata.Validate(); err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
-type ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatchesMetadata struct {
-	// The source of the retrieved results. 1 indicates vector retrieval, 2 indicates full-text retrieval, and 3 indicates dual-path retrieval.
-	//
-	// example:
-	//
-	// 1
-	Source *int64 `json:"Source,omitempty" xml:"Source,omitempty"`
-}
-
-func (s ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatchesMetadata) String() string {
-	return dara.Prettify(s)
-}
-
-func (s ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatchesMetadata) GoString() string {
-	return s.String()
-}
-
-func (s *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatchesMetadata) GetSource() *int64 {
-	return s.Source
-}
-
-func (s *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatchesMetadata) SetSource(v int64) *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatchesMetadata {
-	s.Source = &v
-	return s
-}
-
-func (s *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatchesMetadata) Validate() error {
 	return dara.Validate(s)
 }
 

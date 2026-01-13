@@ -53,6 +53,8 @@ type ChatWithKnowledgeBaseStreamRequest struct {
 	PromptParams *string `json:"PromptParams,omitempty" xml:"PromptParams,omitempty"`
 	// The region ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -858,6 +860,8 @@ func (s *ChatWithKnowledgeBaseStreamRequestModelParams) Validate() error {
 
 type ChatWithKnowledgeBaseStreamRequestModelParamsMessages struct {
 	// The message content.
+	//
+	// This parameter is required.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The message role. Valid values:
 	//
@@ -866,6 +870,8 @@ type ChatWithKnowledgeBaseStreamRequestModelParamsMessages struct {
 	// 	- user
 	//
 	// 	- assistant
+	//
+	// This parameter is required.
 	//
 	// example:
 	//

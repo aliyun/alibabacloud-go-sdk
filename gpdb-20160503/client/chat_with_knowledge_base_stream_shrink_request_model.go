@@ -53,6 +53,8 @@ type ChatWithKnowledgeBaseStreamShrinkRequest struct {
 	PromptParams *string `json:"PromptParams,omitempty" xml:"PromptParams,omitempty"`
 	// The region ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou

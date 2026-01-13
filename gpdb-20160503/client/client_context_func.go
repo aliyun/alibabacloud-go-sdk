@@ -3415,7 +3415,7 @@ func (client *Client) DeleteDBInstanceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除IP分组
+// Deletes an IP whitelist group from an instance.
 //
 // @param request - DeleteDBInstanceIPArrayRequest
 //
@@ -3575,7 +3575,7 @@ func (client *Client) DeleteDBResourceGroupWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 删除数据库
+// Deletes a database from an instance.
 //
 // @param request - DeleteDatabaseRequest
 //
@@ -4159,7 +4159,7 @@ func (client *Client) DeleteNamespaceWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 关闭私有RAG服务
+// Deletes a private RAG service.
 //
 // @param request - DeletePrivateRAGServiceRequest
 //
@@ -4599,7 +4599,13 @@ func (client *Client) DeleteVectorIndexWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 部署私有RAG服务
+// Deploy a private RAG service.
+//
+// Description:
+//
+// 1.  Before you deploy the private RAG service, create an initial account.
+//
+// 2.  The private RAG service supports vector interfaces. When you call this operation, you must configure a CA certificate.
 //
 // @param request - DeployPrivateRAGServiceRequest
 //
@@ -6519,7 +6525,7 @@ func (client *Client) DescribeDataSharePerformanceWithContext(ctx context.Contex
 
 // Summary:
 //
-// 描述数据库
+// Describes the basic information about an AnalyticDB for PostgreSQL database.
 //
 // @param request - DescribeDatabaseRequest
 //
@@ -7003,7 +7009,7 @@ func (client *Client) DescribeDownloadSQLLogsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取安装在某个数据库上的插件信息
+// Describes the extension information.
 //
 // @param request - DescribeExtensionRequest
 //
@@ -7781,7 +7787,7 @@ func (client *Client) DescribeParametersWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取私有RAG服务详情
+// Obtains the details of a private RAG service.
 //
 // @param request - DescribePrivateRAGServiceRequest
 //
@@ -9045,7 +9051,7 @@ func (client *Client) DescribeWaitingSQLRecordsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取私有RAG服务可部署可用区
+// Obtains the deployable zone of the private RAG service.
 //
 // @param request - DescribeZonesPrivateRAGServiceRequest
 //
@@ -10587,7 +10593,7 @@ func (client *Client) ListCollectionsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 获取安装在某个数据库上的所有插件信息
+// List all extensions installed in the instance.
 //
 // @param request - ListDatabaseExtensionsRequest
 //
@@ -11015,7 +11021,7 @@ func (client *Client) ListIndicesWithContext(ctx context.Context, request *ListI
 
 // Summary:
 //
-// 列举数据库
+// List all databases in an AnalyticDB for PostgreSQL instance.
 //
 // @param request - ListInstanceDatabasesRequest
 //

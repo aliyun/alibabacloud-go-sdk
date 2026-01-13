@@ -720,7 +720,7 @@ type ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches struct 
 	// {"page":1}
 	LoaderMetadata interface{} `json:"LoaderMetadata,omitempty" xml:"LoaderMetadata,omitempty"`
 	// The metadata.
-	Metadata *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatchesMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// The rerank score.
 	//
 	// example:
@@ -771,7 +771,7 @@ func (s *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches) Ge
 	return s.LoaderMetadata
 }
 
-func (s *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches) GetMetadata() *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatchesMetadata {
+func (s *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches) GetMetadata() map[string]interface{} {
 	return s.Metadata
 }
 
@@ -816,7 +816,7 @@ func (s *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches) Se
 	return s
 }
 
-func (s *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches) SetMetadata(v *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatchesMetadata) *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches {
+func (s *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches) SetMetadata(v map[string]interface{}) *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches {
 	s.Metadata = v
 	return s
 }
@@ -842,41 +842,6 @@ func (s *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches) Se
 }
 
 func (s *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches) Validate() error {
-	if s.Metadata != nil {
-		if err := s.Metadata.Validate(); err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
-type ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatchesMetadata struct {
-	// The source of the document.
-	//
-	// example:
-	//
-	// 1
-	Source *int64 `json:"Source,omitempty" xml:"Source,omitempty"`
-}
-
-func (s ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatchesMetadata) String() string {
-	return dara.Prettify(s)
-}
-
-func (s ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatchesMetadata) GoString() string {
-	return s.String()
-}
-
-func (s *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatchesMetadata) GetSource() *int64 {
-	return s.Source
-}
-
-func (s *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatchesMetadata) SetSource(v int64) *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatchesMetadata {
-	s.Source = &v
-	return s
-}
-
-func (s *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatchesMetadata) Validate() error {
 	return dara.Validate(s)
 }
 

@@ -14,6 +14,8 @@ type iDeleteDBInstanceIPArrayResponseBody interface {
 }
 
 type DeleteDBInstanceIPArrayResponseBody struct {
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521

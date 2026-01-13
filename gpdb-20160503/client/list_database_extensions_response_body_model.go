@@ -16,7 +16,10 @@ type iListDatabaseExtensionsResponseBody interface {
 }
 
 type ListDatabaseExtensionsResponseBody struct {
+	// Extension list.
 	Extensions []*ListDatabaseExtensionsResponseBodyExtensions `json:"Extensions,omitempty" xml:"Extensions,omitempty" type:"Repeated"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
@@ -63,14 +66,20 @@ func (s *ListDatabaseExtensionsResponseBody) Validate() error {
 }
 
 type ListDatabaseExtensionsResponseBodyExtensions struct {
+	// The description of the extension.
+	//
 	// example:
 	//
 	// zhparser
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The extension name.
+	//
 	// example:
 	//
 	// zhparser
 	ExtensionName *string `json:"ExtensionName,omitempty" xml:"ExtensionName,omitempty"`
+	// The status of the extension.
+	//
 	// example:
 	//
 	// installed

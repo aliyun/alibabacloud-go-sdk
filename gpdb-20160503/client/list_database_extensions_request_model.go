@@ -16,12 +16,24 @@ type iListDatabaseExtensionsRequest interface {
 }
 
 type ListDatabaseExtensionsRequest struct {
+	// The cluster ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in the specified region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database. The following restrictions apply:
+	//
+	// 	- Contain letters, digits, and underscores (_).
+	//
+	// 	- Must start with a letter.
+	//
+	// 	- Up to 63 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,11 +16,14 @@ type iDescribeZonesPrivateRAGServiceResponseBody interface {
 }
 
 type DescribeZonesPrivateRAGServiceResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ZoneIds   []*string `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of zones.
+	ZoneIds []*string `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty" type:"Repeated"`
 }
 
 func (s DescribeZonesPrivateRAGServiceResponseBody) String() string {

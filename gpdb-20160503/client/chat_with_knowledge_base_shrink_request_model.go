@@ -53,6 +53,8 @@ type ChatWithKnowledgeBaseShrinkRequest struct {
 	PromptParams *string `json:"PromptParams,omitempty" xml:"PromptParams,omitempty"`
 	// 实例所在的地域ID
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou

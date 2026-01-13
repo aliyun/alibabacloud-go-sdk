@@ -53,6 +53,8 @@ type ChatWithKnowledgeBaseRequest struct {
 	PromptParams *string `json:"PromptParams,omitempty" xml:"PromptParams,omitempty"`
 	// 实例所在的地域ID
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -858,6 +860,8 @@ func (s *ChatWithKnowledgeBaseRequestModelParams) Validate() error {
 
 type ChatWithKnowledgeBaseRequestModelParamsMessages struct {
 	// The message content.
+	//
+	// This parameter is required.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The message role. Valid values:
 	//
@@ -866,6 +870,8 @@ type ChatWithKnowledgeBaseRequestModelParamsMessages struct {
 	// 	- user
 	//
 	// 	- assistant
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
