@@ -195,6 +195,10 @@ func (client *Client) CreateActionPlanWithOptions(tmpReq *CreateActionPlanReques
 		query["DesiredCapacity"] = request.DesiredCapacity
 	}
 
+	if !dara.IsNil(request.IntervalMinutes) {
+		query["IntervalMinutes"] = request.IntervalMinutes
+	}
+
 	if !dara.IsNil(request.Level) {
 		query["Level"] = request.Level
 	}
@@ -1376,7 +1380,11 @@ func (client *Client) ListActionPlans(request *ListActionPlansRequest) (_result 
 
 // Summary:
 //
-// 查询Executor的事件信息
+// Queries the running event list of one or more executers.
+//
+// Description:
+//
+// Queries job executor information.
 //
 // @param tmpReq - ListExecutorEventsRequest
 //
@@ -1434,7 +1442,11 @@ func (client *Client) ListExecutorEventsWithOptions(tmpReq *ListExecutorEventsRe
 
 // Summary:
 //
-// 查询Executor的事件信息
+// Queries the running event list of one or more executers.
+//
+// Description:
+//
+// Queries job executor information.
 //
 // @param request - ListExecutorEventsRequest
 //
@@ -2251,6 +2263,10 @@ func (client *Client) UpdateActionPlanWithOptions(request *UpdateActionPlanReque
 
 	if !dara.IsNil(request.Enabled) {
 		query["Enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.IntervalMinutes) {
+		query["IntervalMinutes"] = request.IntervalMinutes
 	}
 
 	req := &openapiutil.OpenApiRequest{

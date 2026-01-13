@@ -128,6 +128,10 @@ func (client *Client) CreateActionPlanWithContext(ctx context.Context, tmpReq *C
 		query["DesiredCapacity"] = request.DesiredCapacity
 	}
 
+	if !dara.IsNil(request.IntervalMinutes) {
+		query["IntervalMinutes"] = request.IntervalMinutes
+	}
+
 	if !dara.IsNil(request.Level) {
 		query["Level"] = request.Level
 	}
@@ -1011,7 +1015,11 @@ func (client *Client) ListActionPlansWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// 查询Executor的事件信息
+// Queries the running event list of one or more executers.
+//
+// Description:
+//
+// Queries job executor information.
 //
 // @param tmpReq - ListExecutorEventsRequest
 //
@@ -1684,6 +1692,10 @@ func (client *Client) UpdateActionPlanWithContext(ctx context.Context, request *
 
 	if !dara.IsNil(request.Enabled) {
 		query["Enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.IntervalMinutes) {
+		query["IntervalMinutes"] = request.IntervalMinutes
 	}
 
 	req := &openapiutil.OpenApiRequest{

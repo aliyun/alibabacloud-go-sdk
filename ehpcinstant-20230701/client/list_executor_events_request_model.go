@@ -18,11 +18,20 @@ type iListExecutorEventsRequest interface {
 }
 
 type ListExecutorEventsRequest struct {
+	// Queries the Executor filter conditions.
 	Filter *ListExecutorEventsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// The current page number.\\
+	//
+	// Starting value: 1\\
+	//
+	// Default value: 1
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on the current page. Default value: 50. Maximum value: 100.
+	//
 	// example:
 	//
 	// 50
@@ -74,19 +83,34 @@ func (s *ListExecutorEventsRequest) Validate() error {
 }
 
 type ListExecutorEventsRequestFilter struct {
+	// The list of executor IDs. A maximum of 100 IDs are supported.
 	ExecutorIds []*string `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
+	// The job ID.
+	//
 	// example:
 	//
 	// job-xxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The level of the running event. Valid value:
+	//
+	// 	- Normal
+	//
+	// 	- Warning
+	//
+	// 	- Error
+	//
 	// example:
 	//
 	// Normal
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// For jobs submitted after this time, the time in the region is converted into a Unix timestamp (UI8 regionfor Aliyun sites).
+	//
 	// example:
 	//
 	// 1703820113
 	TimeAfter *int64 `json:"TimeAfter,omitempty" xml:"TimeAfter,omitempty"`
+	// For jobs submitted before this time, the time in the region is converted into a Unix timestamp (UI8 regionfor Aliyun sites).
+	//
 	// example:
 	//
 	// 1703819914

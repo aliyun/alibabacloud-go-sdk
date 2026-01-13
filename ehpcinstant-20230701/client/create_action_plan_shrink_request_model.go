@@ -17,6 +17,8 @@ type iCreateActionPlanShrinkRequest interface {
 	GetAppId() *string
 	SetDesiredCapacity(v float64) *CreateActionPlanShrinkRequest
 	GetDesiredCapacity() *float64
+	SetIntervalMinutes(v int32) *CreateActionPlanShrinkRequest
+	GetIntervalMinutes() *int32
 	SetLevel(v string) *CreateActionPlanShrinkRequest
 	GetLevel() *string
 	SetPrologScript(v string) *CreateActionPlanShrinkRequest
@@ -62,6 +64,10 @@ type CreateActionPlanShrinkRequest struct {
 	//
 	// 1000
 	DesiredCapacity *float64 `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
+	// example:
+	//
+	// 60
+	IntervalMinutes *int32 `json:"IntervalMinutes,omitempty" xml:"IntervalMinutes,omitempty"`
 	// The computing power level. This value is valid only when the resource type is Economic. The following disk categories are supported:
 	//
 	// 	- General
@@ -130,6 +136,10 @@ func (s *CreateActionPlanShrinkRequest) GetDesiredCapacity() *float64 {
 	return s.DesiredCapacity
 }
 
+func (s *CreateActionPlanShrinkRequest) GetIntervalMinutes() *int32 {
+	return s.IntervalMinutes
+}
+
 func (s *CreateActionPlanShrinkRequest) GetLevel() *string {
 	return s.Level
 }
@@ -171,6 +181,11 @@ func (s *CreateActionPlanShrinkRequest) SetAppId(v string) *CreateActionPlanShri
 
 func (s *CreateActionPlanShrinkRequest) SetDesiredCapacity(v float64) *CreateActionPlanShrinkRequest {
 	s.DesiredCapacity = &v
+	return s
+}
+
+func (s *CreateActionPlanShrinkRequest) SetIntervalMinutes(v int32) *CreateActionPlanShrinkRequest {
+	s.IntervalMinutes = &v
 	return s
 }
 

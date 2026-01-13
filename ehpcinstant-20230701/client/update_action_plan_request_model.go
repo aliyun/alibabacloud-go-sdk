@@ -15,6 +15,8 @@ type iUpdateActionPlanRequest interface {
 	GetDesiredCapacity() *float32
 	SetEnabled(v string) *UpdateActionPlanRequest
 	GetEnabled() *string
+	SetIntervalMinutes(v int32) *UpdateActionPlanRequest
+	GetIntervalMinutes() *int32
 }
 
 type UpdateActionPlanRequest struct {
@@ -44,6 +46,10 @@ type UpdateActionPlanRequest struct {
 	//
 	// true
 	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// 60
+	IntervalMinutes *int32 `json:"IntervalMinutes,omitempty" xml:"IntervalMinutes,omitempty"`
 }
 
 func (s UpdateActionPlanRequest) String() string {
@@ -66,6 +72,10 @@ func (s *UpdateActionPlanRequest) GetEnabled() *string {
 	return s.Enabled
 }
 
+func (s *UpdateActionPlanRequest) GetIntervalMinutes() *int32 {
+	return s.IntervalMinutes
+}
+
 func (s *UpdateActionPlanRequest) SetActionPlanId(v string) *UpdateActionPlanRequest {
 	s.ActionPlanId = &v
 	return s
@@ -78,6 +88,11 @@ func (s *UpdateActionPlanRequest) SetDesiredCapacity(v float32) *UpdateActionPla
 
 func (s *UpdateActionPlanRequest) SetEnabled(v string) *UpdateActionPlanRequest {
 	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateActionPlanRequest) SetIntervalMinutes(v int32) *UpdateActionPlanRequest {
+	s.IntervalMinutes = &v
 	return s
 }
 

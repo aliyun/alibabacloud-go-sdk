@@ -21,6 +21,8 @@ type iGetActionPlanResponseBody interface {
 	GetCreateTime() *string
 	SetDesiredCapacity(v float32) *GetActionPlanResponseBody
 	GetDesiredCapacity() *float32
+	SetIntervalMinutes(v int32) *GetActionPlanResponseBody
+	GetIntervalMinutes() *int32
 	SetLevel(v string) *GetActionPlanResponseBody
 	GetLevel() *string
 	SetPrologScript(v string) *GetActionPlanResponseBody
@@ -78,6 +80,10 @@ type GetActionPlanResponseBody struct {
 	//
 	// 1000
 	DesiredCapacity *float32 `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
+	// example:
+	//
+	// 60
+	IntervalMinutes *int32 `json:"IntervalMinutes,omitempty" xml:"IntervalMinutes,omitempty"`
 	// The computing power level.
 	//
 	// example:
@@ -168,6 +174,10 @@ func (s *GetActionPlanResponseBody) GetDesiredCapacity() *float32 {
 	return s.DesiredCapacity
 }
 
+func (s *GetActionPlanResponseBody) GetIntervalMinutes() *int32 {
+	return s.IntervalMinutes
+}
+
 func (s *GetActionPlanResponseBody) GetLevel() *string {
 	return s.Level
 }
@@ -231,6 +241,11 @@ func (s *GetActionPlanResponseBody) SetCreateTime(v string) *GetActionPlanRespon
 
 func (s *GetActionPlanResponseBody) SetDesiredCapacity(v float32) *GetActionPlanResponseBody {
 	s.DesiredCapacity = &v
+	return s
+}
+
+func (s *GetActionPlanResponseBody) SetIntervalMinutes(v int32) *GetActionPlanResponseBody {
+	s.IntervalMinutes = &v
 	return s
 }
 
