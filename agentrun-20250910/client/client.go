@@ -465,6 +465,67 @@ func (client *Client) CreateCredential(request *CreateCredentialRequest) (_resul
 
 // Summary:
 //
+// 创建自定义域名
+//
+// @param request - CreateCustomDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCustomDomainResponse
+func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateCustomDomainResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCustomDomain"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/custom-domains"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCustomDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建自定义域名
+//
+// @param request - CreateCustomDomainRequest
+//
+// @return CreateCustomDomainResponse
+func (client *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (_result *CreateCustomDomainResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateCustomDomainResponse{}
+	_body, _err := client.CreateCustomDomainWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建知识库
 //
 // @param request - CreateKnowledgeBaseRequest
@@ -1112,6 +1173,56 @@ func (client *Client) DeleteCredential(credentialName *string) (_result *DeleteC
 	headers := make(map[string]*string)
 	_result = &DeleteCredentialResponse{}
 	_body, _err := client.DeleteCredentialWithOptions(credentialName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete a custom domain
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomDomainResponse
+func (client *Client) DeleteCustomDomainWithOptions(domainName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteCustomDomainResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCustomDomain"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/custom-domains/" + dara.PercentEncode(dara.StringValue(domainName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCustomDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete a custom domain
+//
+// @return DeleteCustomDomainResponse
+func (client *Client) DeleteCustomDomain(domainName *string) (_result *DeleteCustomDomainResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteCustomDomainResponse{}
+	_body, _err := client.DeleteCustomDomainWithOptions(domainName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1784,6 +1895,56 @@ func (client *Client) GetCredential(credentialName *string) (_result *GetCredent
 	headers := make(map[string]*string)
 	_result = &GetCredentialResponse{}
 	_body, _err := client.GetCredentialWithOptions(credentialName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义域名详情
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCustomDomainResponse
+func (client *Client) GetCustomDomainWithOptions(domainName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCustomDomainResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCustomDomain"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/custom-domains/" + dara.PercentEncode(dara.StringValue(domainName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCustomDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义域名详情
+//
+// @return GetCustomDomainResponse
+func (client *Client) GetCustomDomain(domainName *string) (_result *GetCustomDomainResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCustomDomainResponse{}
+	_body, _err := client.GetCustomDomainWithOptions(domainName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2604,6 +2765,88 @@ func (client *Client) ListCredentials(request *ListCredentialsRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &ListCredentialsResponse{}
 	_body, _err := client.ListCredentialsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 自定义域名列表
+//
+// @param request - ListCustomDomainsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCustomDomainsResponse
+func (client *Client) ListCustomDomainsWithOptions(request *ListCustomDomainsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListCustomDomainsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DomainName) {
+		query["domainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceName) {
+		query["resourceName"] = request.ResourceName
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCustomDomains"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/custom-domains"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCustomDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 自定义域名列表
+//
+// @param request - ListCustomDomainsRequest
+//
+// @return ListCustomDomainsResponse
+func (client *Client) ListCustomDomains(request *ListCustomDomainsRequest) (_result *ListCustomDomainsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListCustomDomainsResponse{}
+	_body, _err := client.ListCustomDomainsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3550,6 +3793,67 @@ func (client *Client) UpdateCredential(credentialName *string, request *UpdateCr
 	headers := make(map[string]*string)
 	_result = &UpdateCredentialResponse{}
 	_body, _err := client.UpdateCredentialWithOptions(credentialName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自定义域名
+//
+// @param request - UpdateCustomDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCustomDomainResponse
+func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request *UpdateCustomDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateCustomDomainResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCustomDomain"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/custom-domains/" + dara.PercentEncode(dara.StringValue(domainName))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCustomDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自定义域名
+//
+// @param request - UpdateCustomDomainRequest
+//
+// @return UpdateCustomDomainResponse
+func (client *Client) UpdateCustomDomain(domainName *string, request *UpdateCustomDomainRequest) (_result *UpdateCustomDomainResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateCustomDomainResponse{}
+	_body, _err := client.UpdateCustomDomainWithOptions(domainName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
