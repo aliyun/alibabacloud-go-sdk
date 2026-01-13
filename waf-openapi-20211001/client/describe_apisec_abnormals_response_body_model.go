@@ -161,6 +161,8 @@ type DescribeApisecAbnormalsResponseBodyData struct {
 	//
 	// 1684252800
 	DiscoverTime *int64 `json:"DiscoverTime,omitempty" xml:"DiscoverTime,omitempty"`
+	// Deprecated
+	//
 	// The risk-related samples.
 	Examples []*string `json:"Examples,omitempty" xml:"Examples,omitempty" type:"Repeated"`
 	// The time at which the API was first detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.

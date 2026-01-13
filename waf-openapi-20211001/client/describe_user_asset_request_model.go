@@ -56,6 +56,8 @@ type DescribeUserAssetRequest struct {
 	//
 	// asset_num
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// Deprecated
+	//
 	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// 	Notice: The parameter has been deprecated.

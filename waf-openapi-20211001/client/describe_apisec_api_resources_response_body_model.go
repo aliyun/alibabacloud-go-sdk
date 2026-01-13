@@ -247,6 +247,8 @@ type DescribeApisecApiResourcesResponseBodyData struct {
 	//
 	// 2
 	EventNum *int64 `json:"EventNum,omitempty" xml:"EventNum,omitempty"`
+	// Deprecated
+	//
 	// The sample APIs.
 	Examples []*string `json:"Examples,omitempty" xml:"Examples,omitempty" type:"Repeated"`
 	// The time when the API asset was first detected. This value is a UNIX timestamp in UTC. Unit: seconds.

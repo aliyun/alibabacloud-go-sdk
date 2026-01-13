@@ -6202,6 +6202,104 @@ func (client *Client) DescribeCloudResourceAccessedPorts(request *DescribeCloudR
 
 // Summary:
 //
+// 查询云产品接入资源列表
+//
+// @param request - DescribeCloudResourceListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudResourceListResponse
+func (client *Client) DescribeCloudResourceListWithOptions(request *DescribeCloudResourceListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudResourceListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudResourceId) {
+		query["CloudResourceId"] = request.CloudResourceId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OwnerUserId) {
+		query["OwnerUserId"] = request.OwnerUserId
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceInstanceId) {
+		query["ResourceInstanceId"] = request.ResourceInstanceId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceProduct) {
+		query["ResourceProduct"] = request.ResourceProduct
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCloudResourceList"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCloudResourceListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云产品接入资源列表
+//
+// @param request - DescribeCloudResourceListRequest
+//
+// @return DescribeCloudResourceListResponse
+func (client *Client) DescribeCloudResourceList(request *DescribeCloudResourceListRequest) (_result *DescribeCloudResourceListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeCloudResourceListResponse{}
+	_body, _err := client.DescribeCloudResourceListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries cloud service resources that are added to Web Application Firewall (WAF).
 //
 // @param request - DescribeCloudResourcesRequest
@@ -14305,6 +14403,84 @@ func (client *Client) DescribeThreatEventDetail(request *DescribeThreatEventDeta
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeThreatEventDetailResponse{}
 	_body, _err := client.DescribeThreatEventDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询安全事件Top攻击统计数据
+//
+// @param request - DescribeThreatEventTopMetricRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeThreatEventTopMetricResponse
+func (client *Client) DescribeThreatEventTopMetricWithOptions(request *DescribeThreatEventTopMetricRequest, runtime *dara.RuntimeOptions) (_result *DescribeThreatEventTopMetricResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Metric) {
+		query["Metric"] = request.Metric
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeThreatEventTopMetric"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeThreatEventTopMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询安全事件Top攻击统计数据
+//
+// @param request - DescribeThreatEventTopMetricRequest
+//
+// @return DescribeThreatEventTopMetricResponse
+func (client *Client) DescribeThreatEventTopMetric(request *DescribeThreatEventTopMetricRequest) (_result *DescribeThreatEventTopMetricResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeThreatEventTopMetricResponse{}
+	_body, _err := client.DescribeThreatEventTopMetricWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

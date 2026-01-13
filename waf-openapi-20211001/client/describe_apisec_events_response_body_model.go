@@ -117,18 +117,24 @@ type DescribeApisecEventsResponseBodyData struct {
 	//
 	// Chrome
 	AttackClient *string `json:"AttackClient,omitempty" xml:"AttackClient,omitempty"`
+	// Deprecated
+	//
 	// The information about the number of attacks. The value of this parameter is a JSON string that contains multiple parameters. Key indicates the timestamp in seconds, and Value indicates the number of attacks.
 	//
 	// example:
 	//
 	// {\\"1717498320\\":500,\\"1717498380\\":529,\\"1717498440\\":20,\\"1717498260\\":518,\\"1717498200\\":481,\\"1717498140\\":52}
 	AttackCntInfo *string `json:"AttackCntInfo,omitempty" xml:"AttackCntInfo,omitempty"`
+	// Deprecated
+	//
 	// The source IP address of the attack.
 	//
 	// example:
 	//
 	// 104.234.140.33
 	AttackIp *string `json:"AttackIp,omitempty" xml:"AttackIp,omitempty"`
+	// Deprecated
+	//
 	// The information about the attack source IP address. The value of this parameter is a JSON string that contains multiple parameters. The value includes the following parameters:
 	//
 	// 	- **ip**: the IP address
@@ -143,6 +149,8 @@ type DescribeApisecEventsResponseBodyData struct {
 	//
 	// [{\\"ip\\":\\"72.*.*.119\\",\\"country_id\\":\\"US\\",\\"region_id\\":\\"\\",\\"cnt\\":\\"2100\\"}]
 	AttackIpInfo *string `json:"AttackIpInfo,omitempty" xml:"AttackIpInfo,omitempty"`
+	// Deprecated
+	//
 	// The source IP addresses of the attacks.
 	AttackIps    []*string `json:"AttackIps,omitempty" xml:"AttackIps,omitempty" type:"Repeated"`
 	AttackerList []*string `json:"AttackerList,omitempty" xml:"AttackerList,omitempty" type:"Repeated"`
@@ -158,6 +166,8 @@ type DescribeApisecEventsResponseBodyData struct {
 	//
 	// c82cb276847e9c96f9597d9f4b0cdcff
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// Deprecated
+	//
 	// The details of the event. The value of this parameter is a JSON string that contains multiple parameters. The value includes the following parameters:
 	//
 	// 	- **ip_info**: the information about the attack source IP address. This parameter corresponds to the **AttackIpInfo*	- response parameter.
@@ -234,12 +244,16 @@ type DescribeApisecEventsResponseBodyData struct {
 	//
 	// 110000
 	RemoteRegion *string `json:"RemoteRegion,omitempty" xml:"RemoteRegion,omitempty"`
+	// Deprecated
+	//
 	// The sample API request. The value of this parameter is a JSON string that contains multiple parameters.
 	//
 	// example:
 	//
 	// {}
 	RequestData *string `json:"RequestData,omitempty" xml:"RequestData,omitempty"`
+	// Deprecated
+	//
 	// The sample API response. The value of this parameter is a JSON string that contains multiple parameters.
 	//
 	// example:

@@ -34,6 +34,8 @@ type DescribeApiExportsRequest struct {
 	//
 	// waf_v3prepaid_public_cn-p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Deprecated
+	//
 	// Language type. Valid values:
 	//
 	// - **cn**: Chinese.

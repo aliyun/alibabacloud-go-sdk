@@ -28,6 +28,8 @@ type iDescribeUserApiRequestRequest interface {
 }
 
 type DescribeUserApiRequestRequest struct {
+	// Deprecated
+	//
 	// The API.
 	//
 	// 	Notice: This parameter is deprecated, please use ApiId to query.
@@ -52,6 +54,8 @@ type DescribeUserApiRequestRequest struct {
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Deprecated
+	//
 	// The domain name or IP address of the API.
 	//
 	// 	Notice: This parameter is deprecated, please use ApiId to query.

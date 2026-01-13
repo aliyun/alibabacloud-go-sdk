@@ -84,6 +84,8 @@ type DescribeUserAbnormalTrendResponseBodyTrend struct {
 	//
 	// 14
 	AbnormalMedium *int64 `json:"AbnormalMedium,omitempty" xml:"AbnormalMedium,omitempty"`
+	// Deprecated
+	//
 	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// 	Notice: The parameter has been deprecated, it is recommended to use the Timestamp parameter.
