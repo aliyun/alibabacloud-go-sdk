@@ -31,6 +31,8 @@ type iDescribeDesktopTypesRequest interface {
 	GetInstanceTypeFamily() *string
 	SetMemorySize(v int32) *DescribeDesktopTypesRequest
 	GetMemorySize() *int32
+	SetOfficeSiteId(v string) *DescribeDesktopTypesRequest
+	GetOfficeSiteId() *string
 	SetOrderBy(v string) *DescribeDesktopTypesRequest
 	GetOrderBy() *string
 	SetOrderType(v string) *DescribeDesktopTypesRequest
@@ -191,7 +193,8 @@ type DescribeDesktopTypesRequest struct {
 	// example:
 	//
 	// 4
-	MemorySize *int32 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	MemorySize   *int32  `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	// The sorting field. If this parameter is not provided, results are sorted by creation time in descending order.
 	//
 	// Valid values:
@@ -309,6 +312,10 @@ func (s *DescribeDesktopTypesRequest) GetMemorySize() *int32 {
 	return s.MemorySize
 }
 
+func (s *DescribeDesktopTypesRequest) GetOfficeSiteId() *string {
+	return s.OfficeSiteId
+}
+
 func (s *DescribeDesktopTypesRequest) GetOrderBy() *string {
 	return s.OrderBy
 }
@@ -393,6 +400,11 @@ func (s *DescribeDesktopTypesRequest) SetInstanceTypeFamily(v string) *DescribeD
 
 func (s *DescribeDesktopTypesRequest) SetMemorySize(v int32) *DescribeDesktopTypesRequest {
 	s.MemorySize = &v
+	return s
+}
+
+func (s *DescribeDesktopTypesRequest) SetOfficeSiteId(v string) *DescribeDesktopTypesRequest {
+	s.OfficeSiteId = &v
 	return s
 }
 

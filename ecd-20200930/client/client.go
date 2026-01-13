@@ -10758,6 +10758,10 @@ func (client *Client) DescribeDesktopTypesWithOptions(request *DescribeDesktopTy
 		query["MemorySize"] = request.MemorySize
 	}
 
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
 	if !dara.IsNil(request.OrderBy) {
 		query["OrderBy"] = request.OrderBy
 	}
@@ -11940,6 +11944,10 @@ func (client *Client) DescribeGlobalDesktopRecordsWithOptions(request *DescribeG
 		query["DesktopName"] = request.DesktopName
 	}
 
+	if !dara.IsNil(request.DesktopStatusList) {
+		query["DesktopStatusList"] = request.DesktopStatusList
+	}
+
 	if !dara.IsNil(request.DesktopType) {
 		query["DesktopType"] = request.DesktopType
 	}
@@ -11950,6 +11958,10 @@ func (client *Client) DescribeGlobalDesktopRecordsWithOptions(request *DescribeG
 
 	if !dara.IsNil(request.EndUserId) {
 		query["EndUserId"] = request.EndUserId
+	}
+
+	if !dara.IsNil(request.ExcludeDesktopStatusList) {
+		query["ExcludeDesktopStatusList"] = request.ExcludeDesktopStatusList
 	}
 
 	if !dara.IsNil(request.OfficeSiteId) {

@@ -282,6 +282,8 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	// The end user IDs.
 	EndUserIds      []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	EntraDomainName *string   `json:"EntraDomainName,omitempty" xml:"EntraDomainName,omitempty"`
+	EnvId           *string   `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	EnvType         *string   `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The time when a subscription cloud computer expired.
 	//
 	// example:
@@ -669,6 +671,14 @@ func (s *DescribeDesktopsResponseBodyDesktops) GetEntraDomainName() *string {
 	return s.EntraDomainName
 }
 
+func (s *DescribeDesktopsResponseBodyDesktops) GetEnvId() *string {
+	return s.EnvId
+}
+
+func (s *DescribeDesktopsResponseBodyDesktops) GetEnvType() *string {
+	return s.EnvType
+}
+
 func (s *DescribeDesktopsResponseBodyDesktops) GetExpiredTime() *string {
 	return s.ExpiredTime
 }
@@ -962,6 +972,16 @@ func (s *DescribeDesktopsResponseBodyDesktops) SetEndUserIds(v []*string) *Descr
 
 func (s *DescribeDesktopsResponseBodyDesktops) SetEntraDomainName(v string) *DescribeDesktopsResponseBodyDesktops {
 	s.EntraDomainName = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktops) SetEnvId(v string) *DescribeDesktopsResponseBodyDesktops {
+	s.EnvId = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktops) SetEnvType(v string) *DescribeDesktopsResponseBodyDesktops {
+	s.EnvType = &v
 	return s
 }
 

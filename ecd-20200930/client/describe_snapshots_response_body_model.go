@@ -147,6 +147,8 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	//
 	// Available
 	DiskStatus *string `json:"DiskStatus,omitempty" xml:"DiskStatus,omitempty"`
+	EnvId      *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	EnvType    *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// example:
 	//
 	// Windows
@@ -353,6 +355,14 @@ func (s *DescribeSnapshotsResponseBodySnapshots) GetDiskStatus() *string {
 	return s.DiskStatus
 }
 
+func (s *DescribeSnapshotsResponseBodySnapshots) GetEnvId() *string {
+	return s.EnvId
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) GetEnvType() *string {
+	return s.EnvType
+}
+
 func (s *DescribeSnapshotsResponseBodySnapshots) GetOsType() *string {
 	return s.OsType
 }
@@ -446,6 +456,16 @@ func (s *DescribeSnapshotsResponseBodySnapshots) SetDesktopStatus(v string) *Des
 
 func (s *DescribeSnapshotsResponseBodySnapshots) SetDiskStatus(v string) *DescribeSnapshotsResponseBodySnapshots {
 	s.DiskStatus = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetEnvId(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.EnvId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetEnvType(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.EnvType = &v
 	return s
 }
 

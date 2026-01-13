@@ -91,6 +91,8 @@ type DescribeDesktopTypesResponseBodyDesktopTypes struct {
 	//
 	// SUFFICIENT
 	DesktopTypeStatus *string `json:"DesktopTypeStatus,omitempty" xml:"DesktopTypeStatus,omitempty"`
+	EnvId             *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	EnvType           *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The number of GPUs.
 	//
 	// example:
@@ -177,6 +179,14 @@ func (s *DescribeDesktopTypesResponseBodyDesktopTypes) GetDesktopTypeStatus() *s
 	return s.DesktopTypeStatus
 }
 
+func (s *DescribeDesktopTypesResponseBodyDesktopTypes) GetEnvId() *string {
+	return s.EnvId
+}
+
+func (s *DescribeDesktopTypesResponseBodyDesktopTypes) GetEnvType() *string {
+	return s.EnvType
+}
+
 func (s *DescribeDesktopTypesResponseBodyDesktopTypes) GetGpuCount() *float32 {
 	return s.GpuCount
 }
@@ -235,6 +245,16 @@ func (s *DescribeDesktopTypesResponseBodyDesktopTypes) SetDesktopTypeId(v string
 
 func (s *DescribeDesktopTypesResponseBodyDesktopTypes) SetDesktopTypeStatus(v string) *DescribeDesktopTypesResponseBodyDesktopTypes {
 	s.DesktopTypeStatus = &v
+	return s
+}
+
+func (s *DescribeDesktopTypesResponseBodyDesktopTypes) SetEnvId(v string) *DescribeDesktopTypesResponseBodyDesktopTypes {
+	s.EnvId = &v
+	return s
+}
+
+func (s *DescribeDesktopTypesResponseBodyDesktopTypes) SetEnvType(v string) *DescribeDesktopTypesResponseBodyDesktopTypes {
+	s.EnvType = &v
 	return s
 }
 

@@ -13,12 +13,16 @@ type iDescribeGlobalDesktopRecordsRequest interface {
 	GetDesktopId() []*string
 	SetDesktopName(v string) *DescribeGlobalDesktopRecordsRequest
 	GetDesktopName() *string
+	SetDesktopStatusList(v []*string) *DescribeGlobalDesktopRecordsRequest
+	GetDesktopStatusList() []*string
 	SetDesktopType(v string) *DescribeGlobalDesktopRecordsRequest
 	GetDesktopType() *string
 	SetEndTime(v string) *DescribeGlobalDesktopRecordsRequest
 	GetEndTime() *string
 	SetEndUserId(v string) *DescribeGlobalDesktopRecordsRequest
 	GetEndUserId() *string
+	SetExcludeDesktopStatusList(v []*string) *DescribeGlobalDesktopRecordsRequest
+	GetExcludeDesktopStatusList() []*string
 	SetOfficeSiteId(v string) *DescribeGlobalDesktopRecordsRequest
 	GetOfficeSiteId() *string
 	SetOrderBy(v string) *DescribeGlobalDesktopRecordsRequest
@@ -49,7 +53,8 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	// example:
 	//
 	// DemoComputer
-	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	DesktopName       *string   `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	DesktopStatusList []*string `json:"DesktopStatusList,omitempty" xml:"DesktopStatusList,omitempty" type:"Repeated"`
 	// The cloud computer type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of the specifications supported by the cloud computer.
 	//
 	// example:
@@ -69,7 +74,8 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	// example:
 	//
 	// TestUser
-	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EndUserId                *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	ExcludeDesktopStatusList []*string `json:"ExcludeDesktopStatusList,omitempty" xml:"ExcludeDesktopStatusList,omitempty" type:"Repeated"`
 	// The office network IDs.
 	//
 	// example:
@@ -172,6 +178,10 @@ func (s *DescribeGlobalDesktopRecordsRequest) GetDesktopName() *string {
 	return s.DesktopName
 }
 
+func (s *DescribeGlobalDesktopRecordsRequest) GetDesktopStatusList() []*string {
+	return s.DesktopStatusList
+}
+
 func (s *DescribeGlobalDesktopRecordsRequest) GetDesktopType() *string {
 	return s.DesktopType
 }
@@ -182,6 +192,10 @@ func (s *DescribeGlobalDesktopRecordsRequest) GetEndTime() *string {
 
 func (s *DescribeGlobalDesktopRecordsRequest) GetEndUserId() *string {
 	return s.EndUserId
+}
+
+func (s *DescribeGlobalDesktopRecordsRequest) GetExcludeDesktopStatusList() []*string {
+	return s.ExcludeDesktopStatusList
 }
 
 func (s *DescribeGlobalDesktopRecordsRequest) GetOfficeSiteId() *string {
@@ -234,6 +248,11 @@ func (s *DescribeGlobalDesktopRecordsRequest) SetDesktopName(v string) *Describe
 	return s
 }
 
+func (s *DescribeGlobalDesktopRecordsRequest) SetDesktopStatusList(v []*string) *DescribeGlobalDesktopRecordsRequest {
+	s.DesktopStatusList = v
+	return s
+}
+
 func (s *DescribeGlobalDesktopRecordsRequest) SetDesktopType(v string) *DescribeGlobalDesktopRecordsRequest {
 	s.DesktopType = &v
 	return s
@@ -246,6 +265,11 @@ func (s *DescribeGlobalDesktopRecordsRequest) SetEndTime(v string) *DescribeGlob
 
 func (s *DescribeGlobalDesktopRecordsRequest) SetEndUserId(v string) *DescribeGlobalDesktopRecordsRequest {
 	s.EndUserId = &v
+	return s
+}
+
+func (s *DescribeGlobalDesktopRecordsRequest) SetExcludeDesktopStatusList(v []*string) *DescribeGlobalDesktopRecordsRequest {
+	s.ExcludeDesktopStatusList = v
 	return s
 }
 
