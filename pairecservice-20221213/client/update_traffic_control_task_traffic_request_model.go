@@ -71,7 +71,16 @@ func (s *UpdateTrafficControlTaskTrafficRequest) SetNewParam3(v string) *UpdateT
 }
 
 func (s *UpdateTrafficControlTaskTrafficRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Traffics != nil {
+		for _, item := range s.Traffics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateTrafficControlTaskTrafficRequestTraffics struct {

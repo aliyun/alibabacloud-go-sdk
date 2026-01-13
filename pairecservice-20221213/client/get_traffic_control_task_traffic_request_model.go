@@ -16,8 +16,14 @@ type iGetTrafficControlTaskTrafficRequest interface {
 }
 
 type GetTrafficControlTaskTrafficRequest struct {
+	// example:
+	//
+	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// pairec-test-xxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetTrafficControlTaskTrafficRequest) String() string {

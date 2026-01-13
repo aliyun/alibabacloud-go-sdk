@@ -59,5 +59,10 @@ func (s *GetABMetricGroupResponse) SetBody(v *GetABMetricGroupResponseBody) *Get
 }
 
 func (s *GetABMetricGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

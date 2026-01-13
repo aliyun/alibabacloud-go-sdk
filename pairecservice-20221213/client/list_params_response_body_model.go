@@ -67,7 +67,16 @@ func (s *ListParamsResponseBody) SetTotalCount(v int64) *ListParamsResponseBody 
 }
 
 func (s *ListParamsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Params != nil {
+		for _, item := range s.Params {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListParamsResponseBodyParams struct {

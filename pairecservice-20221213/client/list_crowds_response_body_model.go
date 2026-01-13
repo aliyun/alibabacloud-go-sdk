@@ -67,7 +67,16 @@ func (s *ListCrowdsResponseBody) SetTotalCount(v int64) *ListCrowdsResponseBody 
 }
 
 func (s *ListCrowdsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Crowds != nil {
+		for _, item := range s.Crowds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCrowdsResponseBodyCrowds struct {

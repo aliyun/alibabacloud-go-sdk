@@ -59,5 +59,10 @@ func (s *UpdateTableMetaResponse) SetBody(v *UpdateTableMetaResponseBody) *Updat
 }
 
 func (s *UpdateTableMetaResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

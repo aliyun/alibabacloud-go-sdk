@@ -65,7 +65,16 @@ func (s *ListTableMetasResponseBody) SetTotalCount(v int64) *ListTableMetasRespo
 }
 
 func (s *ListTableMetasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TableMetas != nil {
+		for _, item := range s.TableMetas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTableMetasResponseBodyTableMetas struct {
@@ -256,7 +265,16 @@ func (s *ListTableMetasResponseBodyTableMetas) SetUrl(v string) *ListTableMetasR
 }
 
 func (s *ListTableMetasResponseBodyTableMetas) Validate() error {
-	return dara.Validate(s)
+	if s.Fields != nil {
+		for _, item := range s.Fields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTableMetasResponseBodyTableMetasFields struct {

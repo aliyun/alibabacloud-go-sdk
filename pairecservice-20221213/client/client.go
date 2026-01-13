@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -67,9 +68,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return ApplyEngineConfigResponse
 func (client *Client) ApplyEngineConfigWithOptions(EngineConfigId *string, request *ApplyEngineConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ApplyEngineConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -131,9 +134,11 @@ func (client *Client) ApplyEngineConfig(EngineConfigId *string, request *ApplyEn
 //
 // @return BackflowFeatureConsistencyCheckJobDataResponse
 func (client *Client) BackflowFeatureConsistencyCheckJobDataWithOptions(request *BackflowFeatureConsistencyCheckJobDataRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BackflowFeatureConsistencyCheckJobDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FeatureConsistencyCheckJobConfigId) {
@@ -225,6 +230,76 @@ func (client *Client) BackflowFeatureConsistencyCheckJobData(request *BackflowFe
 
 // Summary:
 //
+// 更改召回管理服务的版本
+//
+// @param request - ChangeRecallManagementServiceVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeRecallManagementServiceVersionResponse
+func (client *Client) ChangeRecallManagementServiceVersionWithOptions(RecallManagementServiceId *string, request *ChangeRecallManagementServiceVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ChangeRecallManagementServiceVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RecallManagementServiceVersionId) {
+		body["RecallManagementServiceVersionId"] = request.RecallManagementServiceVersionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ChangeRecallManagementServiceVersion"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementservices/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceId)) + "/action/changeversion"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ChangeRecallManagementServiceVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更改召回管理服务的版本
+//
+// @param request - ChangeRecallManagementServiceVersionRequest
+//
+// @return ChangeRecallManagementServiceVersionResponse
+func (client *Client) ChangeRecallManagementServiceVersion(RecallManagementServiceId *string, request *ChangeRecallManagementServiceVersionRequest) (_result *ChangeRecallManagementServiceVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ChangeRecallManagementServiceVersionResponse{}
+	_body, _err := client.ChangeRecallManagementServiceVersionWithOptions(RecallManagementServiceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 检测实例下配置的资源的连接状态。
 //
 // @param request - CheckInstanceResourcesRequest
@@ -235,9 +310,11 @@ func (client *Client) BackflowFeatureConsistencyCheckJobData(request *BackflowFe
 //
 // @return CheckInstanceResourcesResponse
 func (client *Client) CheckInstanceResourcesWithOptions(InstanceId *string, request *CheckInstanceResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CheckInstanceResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceId) {
@@ -307,9 +384,11 @@ func (client *Client) CheckInstanceResources(InstanceId *string, request *CheckI
 //
 // @return CheckTrafficControlTaskExpressionResponse
 func (client *Client) CheckTrafficControlTaskExpressionWithOptions(request *CheckTrafficControlTaskExpressionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CheckTrafficControlTaskExpressionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Expression) {
@@ -379,9 +458,11 @@ func (client *Client) CheckTrafficControlTaskExpression(request *CheckTrafficCon
 //
 // @return CloneEngineConfigResponse
 func (client *Client) CloneEngineConfigWithOptions(EngineConfigId *string, request *CloneEngineConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CloneEngineConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigValue) {
@@ -455,9 +536,11 @@ func (client *Client) CloneEngineConfig(EngineConfigId *string, request *CloneEn
 //
 // @return CloneExperimentResponse
 func (client *Client) CloneExperimentWithOptions(ExperimentId *string, request *CloneExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CloneExperimentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -519,9 +602,11 @@ func (client *Client) CloneExperiment(ExperimentId *string, request *CloneExperi
 //
 // @return CloneExperimentGroupResponse
 func (client *Client) CloneExperimentGroupWithOptions(ExperimentGroupId *string, request *CloneExperimentGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CloneExperimentGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Environment) {
@@ -591,9 +676,11 @@ func (client *Client) CloneExperimentGroup(ExperimentGroupId *string, request *C
 //
 // @return CloneFeatureConsistencyCheckJobConfigResponse
 func (client *Client) CloneFeatureConsistencyCheckJobConfigWithOptions(SourceFeatureConsistencyCheckJobConfigId *string, request *CloneFeatureConsistencyCheckJobConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CloneFeatureConsistencyCheckJobConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -655,9 +742,11 @@ func (client *Client) CloneFeatureConsistencyCheckJobConfig(SourceFeatureConsist
 //
 // @return CloneLaboratoryResponse
 func (client *Client) CloneLaboratoryWithOptions(LaboratoryId *string, request *CloneLaboratoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CloneLaboratoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CloneExperimentGroup) {
@@ -727,9 +816,11 @@ func (client *Client) CloneLaboratory(LaboratoryId *string, request *CloneLabora
 //
 // @return CloneTrafficControlTaskResponse
 func (client *Client) CloneTrafficControlTaskWithOptions(TrafficControlTaskId *string, request *CloneTrafficControlTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CloneTrafficControlTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -791,9 +882,11 @@ func (client *Client) CloneTrafficControlTask(TrafficControlTaskId *string, requ
 //
 // @return CompareSampleConsistencyJobResponse
 func (client *Client) CompareSampleConsistencyJobWithOptions(SampleConsistencyJobId *string, request *CompareSampleConsistencyJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CompareSampleConsistencyJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -855,9 +948,11 @@ func (client *Client) CompareSampleConsistencyJob(SampleConsistencyJobId *string
 //
 // @return CreateABMetricResponse
 func (client *Client) CreateABMetricWithOptions(request *CreateABMetricRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateABMetricResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Definition) {
@@ -967,9 +1062,11 @@ func (client *Client) CreateABMetric(request *CreateABMetricRequest) (_result *C
 //
 // @return CreateABMetricGroupResponse
 func (client *Client) CreateABMetricGroupWithOptions(request *CreateABMetricGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateABMetricGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ABMetricIds) {
@@ -1051,9 +1148,11 @@ func (client *Client) CreateABMetricGroup(request *CreateABMetricGroupRequest) (
 //
 // @return CreateCalculationJobsResponse
 func (client *Client) CreateCalculationJobsWithOptions(request *CreateCalculationJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateCalculationJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ABMetricIds) {
@@ -1127,9 +1226,11 @@ func (client *Client) CreateCalculationJobs(request *CreateCalculationJobsReques
 //
 // @return CreateCrowdResponse
 func (client *Client) CreateCrowdWithOptions(request *CreateCrowdRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateCrowdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -1211,9 +1312,11 @@ func (client *Client) CreateCrowd(request *CreateCrowdRequest) (_result *CreateC
 //
 // @return CreateEngineConfigResponse
 func (client *Client) CreateEngineConfigWithOptions(request *CreateEngineConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateEngineConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigValue) {
@@ -1291,9 +1394,11 @@ func (client *Client) CreateEngineConfig(request *CreateEngineConfigRequest) (_r
 //
 // @return CreateExperimentResponse
 func (client *Client) CreateExperimentWithOptions(request *CreateExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateExperimentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -1387,9 +1492,11 @@ func (client *Client) CreateExperiment(request *CreateExperimentRequest) (_resul
 //
 // @return CreateExperimentGroupResponse
 func (client *Client) CreateExperimentGroupWithOptions(request *CreateExperimentGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateExperimentGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -1507,9 +1614,11 @@ func (client *Client) CreateExperimentGroup(request *CreateExperimentGroupReques
 //
 // @return CreateFeatureConsistencyCheckJobResponse
 func (client *Client) CreateFeatureConsistencyCheckJobWithOptions(request *CreateFeatureConsistencyCheckJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateFeatureConsistencyCheckJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Environment) {
@@ -1583,9 +1692,11 @@ func (client *Client) CreateFeatureConsistencyCheckJob(request *CreateFeatureCon
 //
 // @return CreateFeatureConsistencyCheckJobConfigResponse
 func (client *Client) CreateFeatureConsistencyCheckJobConfigWithOptions(request *CreateFeatureConsistencyCheckJobConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateFeatureConsistencyCheckJobConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CompareFeature) {
@@ -1827,9 +1938,11 @@ func (client *Client) CreateFeatureConsistencyCheckJobConfig(request *CreateFeat
 //
 // @return CreateInstanceResourceResponse
 func (client *Client) CreateInstanceResourceWithOptions(InstanceId *string, request *CreateInstanceResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Category) {
@@ -1903,9 +2016,11 @@ func (client *Client) CreateInstanceResource(InstanceId *string, request *Create
 //
 // @return CreateLaboratoryResponse
 func (client *Client) CreateLaboratoryWithOptions(request *CreateLaboratoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateLaboratoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BucketCount) {
@@ -2011,9 +2126,11 @@ func (client *Client) CreateLaboratory(request *CreateLaboratoryRequest) (_resul
 //
 // @return CreateLayerResponse
 func (client *Client) CreateLayerWithOptions(request *CreateLayerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateLayerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -2087,9 +2204,11 @@ func (client *Client) CreateLayer(request *CreateLayerRequest) (_result *CreateL
 //
 // @return CreateParamResponse
 func (client *Client) CreateParamWithOptions(request *CreateParamRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateParamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Environment) {
@@ -2161,6 +2280,436 @@ func (client *Client) CreateParam(request *CreateParamRequest) (_result *CreateP
 
 // Summary:
 //
+// 创建召回管理初始化配置。
+//
+// @param request - CreateRecallManagementConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRecallManagementConfigResponse
+func (client *Client) CreateRecallManagementConfigWithOptions(request *CreateRecallManagementConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRecallManagementConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NetworkConfigs) {
+		body["NetworkConfigs"] = request.NetworkConfigs
+	}
+
+	if !dara.IsNil(request.Password) {
+		body["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.UserName) {
+		body["UserName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRecallManagementConfig"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementconfigs"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRecallManagementConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建召回管理初始化配置。
+//
+// @param request - CreateRecallManagementConfigRequest
+//
+// @return CreateRecallManagementConfigResponse
+func (client *Client) CreateRecallManagementConfig(request *CreateRecallManagementConfigRequest) (_result *CreateRecallManagementConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateRecallManagementConfigResponse{}
+	_body, _err := client.CreateRecallManagementConfigWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建召回管理服务
+//
+// @param request - CreateRecallManagementServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRecallManagementServiceResponse
+func (client *Client) CreateRecallManagementServiceWithOptions(request *CreateRecallManagementServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRecallManagementServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRecallManagementService"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementservices"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRecallManagementServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建召回管理服务
+//
+// @param request - CreateRecallManagementServiceRequest
+//
+// @return CreateRecallManagementServiceResponse
+func (client *Client) CreateRecallManagementService(request *CreateRecallManagementServiceRequest) (_result *CreateRecallManagementServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateRecallManagementServiceResponse{}
+	_body, _err := client.CreateRecallManagementServiceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建召回管理版本
+//
+// @param request - CreateRecallManagementServiceVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRecallManagementServiceVersionResponse
+func (client *Client) CreateRecallManagementServiceVersionWithOptions(RecallManagementServiceId *string, request *CreateRecallManagementServiceVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRecallManagementServiceVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Configs) {
+		body["Configs"] = request.Configs
+	}
+
+	if !dara.IsNil(request.SourceRecallManagementServiceVersionId) {
+		body["SourceRecallManagementServiceVersionId"] = request.SourceRecallManagementServiceVersionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRecallManagementServiceVersion"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementservices/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceId)) + "/versions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRecallManagementServiceVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建召回管理版本
+//
+// @param request - CreateRecallManagementServiceVersionRequest
+//
+// @return CreateRecallManagementServiceVersionResponse
+func (client *Client) CreateRecallManagementServiceVersion(RecallManagementServiceId *string, request *CreateRecallManagementServiceVersionRequest) (_result *CreateRecallManagementServiceVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateRecallManagementServiceVersionResponse{}
+	_body, _err := client.CreateRecallManagementServiceVersionWithOptions(RecallManagementServiceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建召回管理服务版本配置
+//
+// @param request - CreateRecallManagementServiceVersionConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRecallManagementServiceVersionConfigResponse
+func (client *Client) CreateRecallManagementServiceVersionConfigWithOptions(RecallManagementServiceId *string, RecallManagementServiceVersionId *string, request *CreateRecallManagementServiceVersionConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRecallManagementServiceVersionConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigType) {
+		body["ConfigType"] = request.ConfigType
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MergeConfig) {
+		body["MergeConfig"] = request.MergeConfig
+	}
+
+	if !dara.IsNil(request.RecallConfig) {
+		body["RecallConfig"] = request.RecallConfig
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRecallManagementServiceVersionConfig"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementservices/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceId)) + "/versions/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceVersionId)) + "/configs"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRecallManagementServiceVersionConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建召回管理服务版本配置
+//
+// @param request - CreateRecallManagementServiceVersionConfigRequest
+//
+// @return CreateRecallManagementServiceVersionConfigResponse
+func (client *Client) CreateRecallManagementServiceVersionConfig(RecallManagementServiceId *string, RecallManagementServiceVersionId *string, request *CreateRecallManagementServiceVersionConfigRequest) (_result *CreateRecallManagementServiceVersionConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateRecallManagementServiceVersionConfigResponse{}
+	_body, _err := client.CreateRecallManagementServiceVersionConfigWithOptions(RecallManagementServiceId, RecallManagementServiceVersionId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建召回管理表。
+//
+// @param request - CreateRecallManagementTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRecallManagementTableResponse
+func (client *Client) CreateRecallManagementTableWithOptions(request *CreateRecallManagementTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRecallManagementTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.DataSource) {
+		body["DataSource"] = request.DataSource
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EnableDataSizeFluctuationThreshold) {
+		body["EnableDataSizeFluctuationThreshold"] = request.EnableDataSizeFluctuationThreshold
+	}
+
+	if !dara.IsNil(request.EnableRowCountFluctuationThreshold) {
+		body["EnableRowCountFluctuationThreshold"] = request.EnableRowCountFluctuationThreshold
+	}
+
+	if !dara.IsNil(request.Fields) {
+		body["Fields"] = request.Fields
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxDataSizeFluctuationThreshold) {
+		body["MaxDataSizeFluctuationThreshold"] = request.MaxDataSizeFluctuationThreshold
+	}
+
+	if !dara.IsNil(request.MaxRowCountFluctuationThreshold) {
+		body["MaxRowCountFluctuationThreshold"] = request.MaxRowCountFluctuationThreshold
+	}
+
+	if !dara.IsNil(request.MaxcomputeProjectName) {
+		body["MaxcomputeProjectName"] = request.MaxcomputeProjectName
+	}
+
+	if !dara.IsNil(request.MaxcomputeSchema) {
+		body["MaxcomputeSchema"] = request.MaxcomputeSchema
+	}
+
+	if !dara.IsNil(request.MaxcomputeTableName) {
+		body["MaxcomputeTableName"] = request.MaxcomputeTableName
+	}
+
+	if !dara.IsNil(request.MinDataSizeFluctuationThreshold) {
+		body["MinDataSizeFluctuationThreshold"] = request.MinDataSizeFluctuationThreshold
+	}
+
+	if !dara.IsNil(request.MinRowCountFluctuationThreshold) {
+		body["MinRowCountFluctuationThreshold"] = request.MinRowCountFluctuationThreshold
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RecallType) {
+		body["RecallType"] = request.RecallType
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRecallManagementTable"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementtables"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRecallManagementTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建召回管理表。
+//
+// @param request - CreateRecallManagementTableRequest
+//
+// @return CreateRecallManagementTableResponse
+func (client *Client) CreateRecallManagementTable(request *CreateRecallManagementTableRequest) (_result *CreateRecallManagementTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateRecallManagementTableResponse{}
+	_body, _err := client.CreateRecallManagementTableWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建资源规则
 //
 // @param request - CreateResourceRuleRequest
@@ -2171,9 +2720,11 @@ func (client *Client) CreateParam(request *CreateParamRequest) (_result *CreateP
 //
 // @return CreateResourceRuleResponse
 func (client *Client) CreateResourceRuleWithOptions(request *CreateResourceRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateResourceRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -2263,9 +2814,11 @@ func (client *Client) CreateResourceRule(request *CreateResourceRuleRequest) (_r
 //
 // @return CreateResourceRuleItemResponse
 func (client *Client) CreateResourceRuleItemWithOptions(ResourceRuleId *string, request *CreateResourceRuleItemRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateResourceRuleItemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -2347,9 +2900,11 @@ func (client *Client) CreateResourceRuleItem(ResourceRuleId *string, request *Cr
 //
 // @return CreateSampleConsistencyJobResponse
 func (client *Client) CreateSampleConsistencyJobWithOptions(request *CreateSampleConsistencyJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSampleConsistencyJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Duration) {
@@ -2459,9 +3014,11 @@ func (client *Client) CreateSampleConsistencyJob(request *CreateSampleConsistenc
 //
 // @return CreateSceneResponse
 func (client *Client) CreateSceneWithOptions(request *CreateSceneRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSceneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -2535,9 +3092,11 @@ func (client *Client) CreateScene(request *CreateSceneRequest) (_result *CreateS
 //
 // @return CreateSubCrowdResponse
 func (client *Client) CreateSubCrowdWithOptions(CrowdId *string, request *CreateSubCrowdRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSubCrowdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -2607,9 +3166,11 @@ func (client *Client) CreateSubCrowd(CrowdId *string, request *CreateSubCrowdReq
 //
 // @return CreateTableMetaResponse
 func (client *Client) CreateTableMetaWithOptions(request *CreateTableMetaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTableMetaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -2695,9 +3256,11 @@ func (client *Client) CreateTableMeta(request *CreateTableMetaRequest) (_result 
 //
 // @return CreateTrafficControlTargetResponse
 func (client *Client) CreateTrafficControlTargetWithOptions(request *CreateTrafficControlTargetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTrafficControlTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -2811,9 +3374,11 @@ func (client *Client) CreateTrafficControlTarget(request *CreateTrafficControlTa
 //
 // @return CreateTrafficControlTaskResponse
 func (client *Client) CreateTrafficControlTaskWithOptions(request *CreateTrafficControlTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTrafficControlTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BehaviorTableMetaId) {
@@ -2987,9 +3552,11 @@ func (client *Client) CreateTrafficControlTask(request *CreateTrafficControlTask
 //
 // @return DebugResourceRuleResponse
 func (client *Client) DebugResourceRuleWithOptions(ResourceRuleId *string, tmpReq *DebugResourceRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DebugResourceRuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DebugResourceRuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3065,9 +3632,11 @@ func (client *Client) DebugResourceRule(ResourceRuleId *string, request *DebugRe
 //
 // @return DeleteABMetricResponse
 func (client *Client) DeleteABMetricWithOptions(ABMetricId *string, request *DeleteABMetricRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteABMetricResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3129,9 +3698,11 @@ func (client *Client) DeleteABMetric(ABMetricId *string, request *DeleteABMetric
 //
 // @return DeleteABMetricGroupResponse
 func (client *Client) DeleteABMetricGroupWithOptions(ABMetricGroupId *string, request *DeleteABMetricGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteABMetricGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3193,9 +3764,11 @@ func (client *Client) DeleteABMetricGroup(ABMetricGroupId *string, request *Dele
 //
 // @return DeleteCrowdResponse
 func (client *Client) DeleteCrowdWithOptions(CrowdId *string, request *DeleteCrowdRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteCrowdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3257,9 +3830,11 @@ func (client *Client) DeleteCrowd(CrowdId *string, request *DeleteCrowdRequest) 
 //
 // @return DeleteEngineConfigResponse
 func (client *Client) DeleteEngineConfigWithOptions(EngineConfigId *string, request *DeleteEngineConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteEngineConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3321,9 +3896,11 @@ func (client *Client) DeleteEngineConfig(EngineConfigId *string, request *Delete
 //
 // @return DeleteExperimentResponse
 func (client *Client) DeleteExperimentWithOptions(ExperimentId *string, request *DeleteExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteExperimentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3385,9 +3962,11 @@ func (client *Client) DeleteExperiment(ExperimentId *string, request *DeleteExpe
 //
 // @return DeleteExperimentGroupResponse
 func (client *Client) DeleteExperimentGroupWithOptions(ExperimentGroupId *string, request *DeleteExperimentGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteExperimentGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3499,9 +4078,11 @@ func (client *Client) DeleteInstanceResource(InstanceId *string, ResourceId *str
 //
 // @return DeleteLaboratoryResponse
 func (client *Client) DeleteLaboratoryWithOptions(LaboratoryId *string, request *DeleteLaboratoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteLaboratoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3563,9 +4144,11 @@ func (client *Client) DeleteLaboratory(LaboratoryId *string, request *DeleteLabo
 //
 // @return DeleteLayerResponse
 func (client *Client) DeleteLayerWithOptions(LayerId *string, request *DeleteLayerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteLayerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3627,9 +4210,11 @@ func (client *Client) DeleteLayer(LayerId *string, request *DeleteLayerRequest) 
 //
 // @return DeleteParamResponse
 func (client *Client) DeleteParamWithOptions(ParamId *string, request *DeleteParamRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteParamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3681,6 +4266,270 @@ func (client *Client) DeleteParam(ParamId *string, request *DeleteParamRequest) 
 
 // Summary:
 //
+// 删除指定召回管理服务
+//
+// @param request - DeleteRecallManagementServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRecallManagementServiceResponse
+func (client *Client) DeleteRecallManagementServiceWithOptions(RecallManagementServiceId *string, request *DeleteRecallManagementServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRecallManagementServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRecallManagementService"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementservices/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRecallManagementServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定召回管理服务
+//
+// @param request - DeleteRecallManagementServiceRequest
+//
+// @return DeleteRecallManagementServiceResponse
+func (client *Client) DeleteRecallManagementService(RecallManagementServiceId *string, request *DeleteRecallManagementServiceRequest) (_result *DeleteRecallManagementServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteRecallManagementServiceResponse{}
+	_body, _err := client.DeleteRecallManagementServiceWithOptions(RecallManagementServiceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定召回管理服务版本
+//
+// @param request - DeleteRecallManagementServiceVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRecallManagementServiceVersionResponse
+func (client *Client) DeleteRecallManagementServiceVersionWithOptions(RecallManagementServiceId *string, RecallManagementServiceVersionId *string, request *DeleteRecallManagementServiceVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRecallManagementServiceVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRecallManagementServiceVersion"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementservices/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceId)) + "/versions/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceVersionId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRecallManagementServiceVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定召回管理服务版本
+//
+// @param request - DeleteRecallManagementServiceVersionRequest
+//
+// @return DeleteRecallManagementServiceVersionResponse
+func (client *Client) DeleteRecallManagementServiceVersion(RecallManagementServiceId *string, RecallManagementServiceVersionId *string, request *DeleteRecallManagementServiceVersionRequest) (_result *DeleteRecallManagementServiceVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteRecallManagementServiceVersionResponse{}
+	_body, _err := client.DeleteRecallManagementServiceVersionWithOptions(RecallManagementServiceId, RecallManagementServiceVersionId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除召回管理服务版本配置
+//
+// @param request - DeleteRecallManagementServiceVersionConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRecallManagementServiceVersionConfigResponse
+func (client *Client) DeleteRecallManagementServiceVersionConfigWithOptions(RecallManagementServiceId *string, RecallManagementServiceVersionId *string, RecallManagementServiceVersionConfigId *string, request *DeleteRecallManagementServiceVersionConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRecallManagementServiceVersionConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRecallManagementServiceVersionConfig"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementservices/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceId)) + "/versions/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceVersionId)) + "/configs/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceVersionConfigId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRecallManagementServiceVersionConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除召回管理服务版本配置
+//
+// @param request - DeleteRecallManagementServiceVersionConfigRequest
+//
+// @return DeleteRecallManagementServiceVersionConfigResponse
+func (client *Client) DeleteRecallManagementServiceVersionConfig(RecallManagementServiceId *string, RecallManagementServiceVersionId *string, RecallManagementServiceVersionConfigId *string, request *DeleteRecallManagementServiceVersionConfigRequest) (_result *DeleteRecallManagementServiceVersionConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteRecallManagementServiceVersionConfigResponse{}
+	_body, _err := client.DeleteRecallManagementServiceVersionConfigWithOptions(RecallManagementServiceId, RecallManagementServiceVersionId, RecallManagementServiceVersionConfigId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定召回管理表。
+//
+// @param request - DeleteRecallManagementTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRecallManagementTableResponse
+func (client *Client) DeleteRecallManagementTableWithOptions(RecallManagementTableId *string, request *DeleteRecallManagementTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRecallManagementTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRecallManagementTable"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementtables/" + dara.PercentEncode(dara.StringValue(RecallManagementTableId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRecallManagementTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定召回管理表。
+//
+// @param request - DeleteRecallManagementTableRequest
+//
+// @return DeleteRecallManagementTableResponse
+func (client *Client) DeleteRecallManagementTable(RecallManagementTableId *string, request *DeleteRecallManagementTableRequest) (_result *DeleteRecallManagementTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteRecallManagementTableResponse{}
+	_body, _err := client.DeleteRecallManagementTableWithOptions(RecallManagementTableId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除资源规则
 //
 // @param request - DeleteResourceRuleRequest
@@ -3691,9 +4540,11 @@ func (client *Client) DeleteParam(ParamId *string, request *DeleteParamRequest) 
 //
 // @return DeleteResourceRuleResponse
 func (client *Client) DeleteResourceRuleWithOptions(ResourceRuleId *string, request *DeleteResourceRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3755,9 +4606,11 @@ func (client *Client) DeleteResourceRule(ResourceRuleId *string, request *Delete
 //
 // @return DeleteResourceRuleItemResponse
 func (client *Client) DeleteResourceRuleItemWithOptions(ResourceRuleId *string, ResourceRuleItemId *string, request *DeleteResourceRuleItemRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceRuleItemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3819,9 +4672,11 @@ func (client *Client) DeleteResourceRuleItem(ResourceRuleId *string, ResourceRul
 //
 // @return DeleteSampleConsistencyJobResponse
 func (client *Client) DeleteSampleConsistencyJobWithOptions(SampleConsistencyJobId *string, request *DeleteSampleConsistencyJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteSampleConsistencyJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3883,9 +4738,11 @@ func (client *Client) DeleteSampleConsistencyJob(SampleConsistencyJobId *string,
 //
 // @return DeleteSceneResponse
 func (client *Client) DeleteSceneWithOptions(SceneId *string, request *DeleteSceneRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteSceneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3947,9 +4804,11 @@ func (client *Client) DeleteScene(SceneId *string, request *DeleteSceneRequest) 
 //
 // @return DeleteSubCrowdResponse
 func (client *Client) DeleteSubCrowdWithOptions(CrowdId *string, SubCrowdId *string, request *DeleteSubCrowdRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteSubCrowdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4011,9 +4870,11 @@ func (client *Client) DeleteSubCrowd(CrowdId *string, SubCrowdId *string, reques
 //
 // @return DeleteTableMetaResponse
 func (client *Client) DeleteTableMetaWithOptions(TableMetaId *string, request *DeleteTableMetaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTableMetaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4075,9 +4936,11 @@ func (client *Client) DeleteTableMeta(TableMetaId *string, request *DeleteTableM
 //
 // @return DeleteTrafficControlTargetResponse
 func (client *Client) DeleteTrafficControlTargetWithOptions(TrafficControlTargetId *string, request *DeleteTrafficControlTargetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTrafficControlTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4139,9 +5002,11 @@ func (client *Client) DeleteTrafficControlTarget(TrafficControlTargetId *string,
 //
 // @return DeleteTrafficControlTaskResponse
 func (client *Client) DeleteTrafficControlTaskWithOptions(TrafficControlTaskId *string, request *DeleteTrafficControlTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTrafficControlTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4203,9 +5068,11 @@ func (client *Client) DeleteTrafficControlTask(TrafficControlTaskId *string, req
 //
 // @return GenerateAlgorithmCustomizationScriptResponse
 func (client *Client) GenerateAlgorithmCustomizationScriptWithOptions(AlgorithmCustomizationId *string, request *GenerateAlgorithmCustomizationScriptRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenerateAlgorithmCustomizationScriptResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DeployMode) {
@@ -4275,9 +5142,11 @@ func (client *Client) GenerateAlgorithmCustomizationScript(AlgorithmCustomizatio
 //
 // @return GenerateTrafficControlTaskCodeResponse
 func (client *Client) GenerateTrafficControlTaskCodeWithOptions(TrafficControlTaskId *string, request *GenerateTrafficControlTaskCodeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenerateTrafficControlTaskCodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Environment) {
@@ -4343,9 +5212,11 @@ func (client *Client) GenerateTrafficControlTaskCode(TrafficControlTaskId *strin
 //
 // @return GenerateTrafficControlTaskConfigResponse
 func (client *Client) GenerateTrafficControlTaskConfigWithOptions(TrafficControlTaskId *string, request *GenerateTrafficControlTaskConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenerateTrafficControlTaskConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4407,9 +5278,11 @@ func (client *Client) GenerateTrafficControlTaskConfig(TrafficControlTaskId *str
 //
 // @return GetABMetricResponse
 func (client *Client) GetABMetricWithOptions(ABMetricId *string, request *GetABMetricRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetABMetricResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4471,9 +5344,11 @@ func (client *Client) GetABMetric(ABMetricId *string, request *GetABMetricReques
 //
 // @return GetABMetricGroupResponse
 func (client *Client) GetABMetricGroupWithOptions(ABMetricGroupId *string, request *GetABMetricGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetABMetricGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4535,9 +5410,11 @@ func (client *Client) GetABMetricGroup(ABMetricGroupId *string, request *GetABMe
 //
 // @return GetCalculationJobResponse
 func (client *Client) GetCalculationJobWithOptions(CalculationJobId *string, request *GetCalculationJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCalculationJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4599,9 +5476,11 @@ func (client *Client) GetCalculationJob(CalculationJobId *string, request *GetCa
 //
 // @return GetEngineConfigResponse
 func (client *Client) GetEngineConfigWithOptions(EngineConfigId *string, request *GetEngineConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetEngineConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4663,9 +5542,11 @@ func (client *Client) GetEngineConfig(EngineConfigId *string, request *GetEngine
 //
 // @return GetExperimentResponse
 func (client *Client) GetExperimentWithOptions(ExperimentId *string, request *GetExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4727,9 +5608,11 @@ func (client *Client) GetExperiment(ExperimentId *string, request *GetExperiment
 //
 // @return GetExperimentGroupResponse
 func (client *Client) GetExperimentGroupWithOptions(ExperimentGroupId *string, request *GetExperimentGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4791,9 +5674,11 @@ func (client *Client) GetExperimentGroup(ExperimentGroupId *string, request *Get
 //
 // @return GetFeatureConsistencyCheckJobResponse
 func (client *Client) GetFeatureConsistencyCheckJobWithOptions(FeatureConsistencyCheckJobId *string, request *GetFeatureConsistencyCheckJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetFeatureConsistencyCheckJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4855,9 +5740,11 @@ func (client *Client) GetFeatureConsistencyCheckJob(FeatureConsistencyCheckJobId
 //
 // @return GetFeatureConsistencyCheckJobConfigResponse
 func (client *Client) GetFeatureConsistencyCheckJobConfigWithOptions(FeatureConsistencyCheckJobConfigId *string, request *GetFeatureConsistencyCheckJobConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetFeatureConsistencyCheckJobConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5069,9 +5956,11 @@ func (client *Client) GetInstanceResourceTable(InstanceId *string, ResourceId *s
 //
 // @return GetLaboratoryResponse
 func (client *Client) GetLaboratoryWithOptions(LaboratoryId *string, request *GetLaboratoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLaboratoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5133,9 +6022,11 @@ func (client *Client) GetLaboratory(LaboratoryId *string, request *GetLaboratory
 //
 // @return GetLayerResponse
 func (client *Client) GetLayerWithOptions(LayerId *string, request *GetLayerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLayerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5187,6 +6078,402 @@ func (client *Client) GetLayer(LayerId *string, request *GetLayerRequest) (_resu
 
 // Summary:
 //
+// 获取召回管理初始化配置。
+//
+// @param request - GetRecallManagementConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRecallManagementConfigResponse
+func (client *Client) GetRecallManagementConfigWithOptions(request *GetRecallManagementConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRecallManagementConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRecallManagementConfig"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementconfigs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRecallManagementConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取召回管理初始化配置。
+//
+// @param request - GetRecallManagementConfigRequest
+//
+// @return GetRecallManagementConfigResponse
+func (client *Client) GetRecallManagementConfig(request *GetRecallManagementConfigRequest) (_result *GetRecallManagementConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetRecallManagementConfigResponse{}
+	_body, _err := client.GetRecallManagementConfigWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取召回管理任务详情。
+//
+// @param request - GetRecallManagementJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRecallManagementJobResponse
+func (client *Client) GetRecallManagementJobWithOptions(RecallManagementJobId *string, request *GetRecallManagementJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRecallManagementJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRecallManagementJob"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementjobs/" + dara.PercentEncode(dara.StringValue(RecallManagementJobId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRecallManagementJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取召回管理任务详情。
+//
+// @param request - GetRecallManagementJobRequest
+//
+// @return GetRecallManagementJobResponse
+func (client *Client) GetRecallManagementJob(RecallManagementJobId *string, request *GetRecallManagementJobRequest) (_result *GetRecallManagementJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetRecallManagementJobResponse{}
+	_body, _err := client.GetRecallManagementJobWithOptions(RecallManagementJobId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定召回管理服务详细信息
+//
+// @param request - GetRecallManagementServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRecallManagementServiceResponse
+func (client *Client) GetRecallManagementServiceWithOptions(RecallManagementServiceId *string, request *GetRecallManagementServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRecallManagementServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRecallManagementService"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementservices/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRecallManagementServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定召回管理服务详细信息
+//
+// @param request - GetRecallManagementServiceRequest
+//
+// @return GetRecallManagementServiceResponse
+func (client *Client) GetRecallManagementService(RecallManagementServiceId *string, request *GetRecallManagementServiceRequest) (_result *GetRecallManagementServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetRecallManagementServiceResponse{}
+	_body, _err := client.GetRecallManagementServiceWithOptions(RecallManagementServiceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定召回管理版本详细信息
+//
+// @param request - GetRecallManagementServiceVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRecallManagementServiceVersionResponse
+func (client *Client) GetRecallManagementServiceVersionWithOptions(RecallManagementServiceId *string, RecallManagementServiceVersionId *string, request *GetRecallManagementServiceVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRecallManagementServiceVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRecallManagementServiceVersion"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementservices/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceId)) + "/versions/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceVersionId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRecallManagementServiceVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定召回管理版本详细信息
+//
+// @param request - GetRecallManagementServiceVersionRequest
+//
+// @return GetRecallManagementServiceVersionResponse
+func (client *Client) GetRecallManagementServiceVersion(RecallManagementServiceId *string, RecallManagementServiceVersionId *string, request *GetRecallManagementServiceVersionRequest) (_result *GetRecallManagementServiceVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetRecallManagementServiceVersionResponse{}
+	_body, _err := client.GetRecallManagementServiceVersionWithOptions(RecallManagementServiceId, RecallManagementServiceVersionId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取召回管理服务版本配置详细信息
+//
+// @param request - GetRecallManagementServiceVersionConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRecallManagementServiceVersionConfigResponse
+func (client *Client) GetRecallManagementServiceVersionConfigWithOptions(RecallManagementServiceId *string, RecallManagementServiceVersionId *string, RecallManagementServiceVersionConfigId *string, request *GetRecallManagementServiceVersionConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRecallManagementServiceVersionConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRecallManagementServiceVersionConfig"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementservices/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceId)) + "/versions/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceVersionId)) + "/configs/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceVersionConfigId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRecallManagementServiceVersionConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取召回管理服务版本配置详细信息
+//
+// @param request - GetRecallManagementServiceVersionConfigRequest
+//
+// @return GetRecallManagementServiceVersionConfigResponse
+func (client *Client) GetRecallManagementServiceVersionConfig(RecallManagementServiceId *string, RecallManagementServiceVersionId *string, RecallManagementServiceVersionConfigId *string, request *GetRecallManagementServiceVersionConfigRequest) (_result *GetRecallManagementServiceVersionConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetRecallManagementServiceVersionConfigResponse{}
+	_body, _err := client.GetRecallManagementServiceVersionConfigWithOptions(RecallManagementServiceId, RecallManagementServiceVersionId, RecallManagementServiceVersionConfigId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定召回管理表详细信息。
+//
+// @param request - GetRecallManagementTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRecallManagementTableResponse
+func (client *Client) GetRecallManagementTableWithOptions(RecallManagementTableId *string, request *GetRecallManagementTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRecallManagementTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRecallManagementTable"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementtables/" + dara.PercentEncode(dara.StringValue(RecallManagementTableId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRecallManagementTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定召回管理表详细信息。
+//
+// @param request - GetRecallManagementTableRequest
+//
+// @return GetRecallManagementTableResponse
+func (client *Client) GetRecallManagementTable(RecallManagementTableId *string, request *GetRecallManagementTableRequest) (_result *GetRecallManagementTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetRecallManagementTableResponse{}
+	_body, _err := client.GetRecallManagementTableWithOptions(RecallManagementTableId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取资源规则详细信息
 //
 // @param request - GetResourceRuleRequest
@@ -5197,9 +6484,11 @@ func (client *Client) GetLayer(LayerId *string, request *GetLayerRequest) (_resu
 //
 // @return GetResourceRuleResponse
 func (client *Client) GetResourceRuleWithOptions(ResourceRuleId *string, request *GetResourceRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourceRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5261,9 +6550,11 @@ func (client *Client) GetResourceRule(ResourceRuleId *string, request *GetResour
 //
 // @return GetSampleConsistencyJobResponse
 func (client *Client) GetSampleConsistencyJobWithOptions(SampleConsistencyJobId *string, request *GetSampleConsistencyJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSampleConsistencyJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5325,9 +6616,11 @@ func (client *Client) GetSampleConsistencyJob(SampleConsistencyJobId *string, re
 //
 // @return GetSceneResponse
 func (client *Client) GetSceneWithOptions(SceneId *string, request *GetSceneRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSceneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5389,9 +6682,11 @@ func (client *Client) GetScene(SceneId *string, request *GetSceneRequest) (_resu
 //
 // @return GetServiceResponse
 func (client *Client) GetServiceWithOptions(ServiceId *string, request *GetServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5453,9 +6748,11 @@ func (client *Client) GetService(ServiceId *string, request *GetServiceRequest) 
 //
 // @return GetSubCrowdResponse
 func (client *Client) GetSubCrowdWithOptions(CrowdId *string, SubCrowdId *string, request *GetSubCrowdRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSubCrowdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5517,9 +6814,11 @@ func (client *Client) GetSubCrowd(CrowdId *string, SubCrowdId *string, request *
 //
 // @return GetTableMetaResponse
 func (client *Client) GetTableMetaWithOptions(TableMetaId *string, request *GetTableMetaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTableMetaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5581,9 +6880,11 @@ func (client *Client) GetTableMeta(TableMetaId *string, request *GetTableMetaReq
 //
 // @return GetTrafficControlTargetResponse
 func (client *Client) GetTrafficControlTargetWithOptions(TrafficControlTargetId *string, request *GetTrafficControlTargetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTrafficControlTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5645,9 +6946,11 @@ func (client *Client) GetTrafficControlTarget(TrafficControlTargetId *string, re
 //
 // @return GetTrafficControlTaskResponse
 func (client *Client) GetTrafficControlTaskWithOptions(TrafficControlTaskId *string, request *GetTrafficControlTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTrafficControlTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ControlTargetFilter) {
@@ -5725,9 +7028,11 @@ func (client *Client) GetTrafficControlTask(TrafficControlTaskId *string, reques
 //
 // @return GetTrafficControlTaskTrafficResponse
 func (client *Client) GetTrafficControlTaskTrafficWithOptions(TrafficControlTaskId *string, request *GetTrafficControlTaskTrafficRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTrafficControlTaskTrafficResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Environment) {
@@ -5793,9 +7098,11 @@ func (client *Client) GetTrafficControlTaskTraffic(TrafficControlTaskId *string,
 //
 // @return ListABMetricGroupsResponse
 func (client *Client) ListABMetricGroupsWithOptions(request *ListABMetricGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListABMetricGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5881,9 +7188,11 @@ func (client *Client) ListABMetricGroups(request *ListABMetricGroupsRequest) (_r
 //
 // @return ListABMetricsResponse
 func (client *Client) ListABMetricsWithOptions(request *ListABMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListABMetricsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5973,9 +7282,11 @@ func (client *Client) ListABMetrics(request *ListABMetricsRequest) (_result *Lis
 //
 // @return ListCalculationJobsResponse
 func (client *Client) ListCalculationJobsWithOptions(request *ListCalculationJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListCalculationJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -6053,9 +7364,11 @@ func (client *Client) ListCalculationJobs(request *ListCalculationJobsRequest) (
 //
 // @return ListCrowdUsersResponse
 func (client *Client) ListCrowdUsersWithOptions(CrowdId *string, request *ListCrowdUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListCrowdUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -6117,9 +7430,11 @@ func (client *Client) ListCrowdUsers(CrowdId *string, request *ListCrowdUsersReq
 //
 // @return ListCrowdsResponse
 func (client *Client) ListCrowdsWithOptions(request *ListCrowdsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListCrowdsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -6181,9 +7496,11 @@ func (client *Client) ListCrowds(request *ListCrowdsRequest) (_result *ListCrowd
 //
 // @return ListEngineConfigsResponse
 func (client *Client) ListEngineConfigsWithOptions(request *ListEngineConfigsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEngineConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Environment) {
@@ -6269,9 +7586,11 @@ func (client *Client) ListEngineConfigs(request *ListEngineConfigsRequest) (_res
 //
 // @return ListExperimentGroupsResponse
 func (client *Client) ListExperimentGroupsWithOptions(request *ListExperimentGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExperimentGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -6353,9 +7672,11 @@ func (client *Client) ListExperimentGroups(request *ListExperimentGroupsRequest)
 //
 // @return ListExperimentsResponse
 func (client *Client) ListExperimentsWithOptions(request *ListExperimentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExperimentsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExperimentGroupId) {
@@ -6429,9 +7750,11 @@ func (client *Client) ListExperiments(request *ListExperimentsRequest) (_result 
 //
 // @return ListFeatureConsistencyCheckJobConfigsResponse
 func (client *Client) ListFeatureConsistencyCheckJobConfigsWithOptions(request *ListFeatureConsistencyCheckJobConfigsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListFeatureConsistencyCheckJobConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -6509,9 +7832,11 @@ func (client *Client) ListFeatureConsistencyCheckJobConfigs(request *ListFeature
 //
 // @return ListFeatureConsistencyCheckJobFeatureReportsResponse
 func (client *Client) ListFeatureConsistencyCheckJobFeatureReportsWithOptions(FeatureConsistencyCheckJobId *string, request *ListFeatureConsistencyCheckJobFeatureReportsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListFeatureConsistencyCheckJobFeatureReportsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -6585,9 +7910,11 @@ func (client *Client) ListFeatureConsistencyCheckJobFeatureReports(FeatureConsis
 //
 // @return ListFeatureConsistencyCheckJobScoreReportsResponse
 func (client *Client) ListFeatureConsistencyCheckJobScoreReportsWithOptions(FeatureConsistencyCheckJobId *string, tmpReq *ListFeatureConsistencyCheckJobScoreReportsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListFeatureConsistencyCheckJobScoreReportsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListFeatureConsistencyCheckJobScoreReportsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6659,9 +7986,11 @@ func (client *Client) ListFeatureConsistencyCheckJobScoreReports(FeatureConsiste
 //
 // @return ListFeatureConsistencyCheckJobsResponse
 func (client *Client) ListFeatureConsistencyCheckJobsWithOptions(request *ListFeatureConsistencyCheckJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListFeatureConsistencyCheckJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -6743,9 +8072,11 @@ func (client *Client) ListFeatureConsistencyCheckJobs(request *ListFeatureConsis
 //
 // @return ListInstanceResourcesResponse
 func (client *Client) ListInstanceResourcesWithOptions(InstanceId *string, request *ListInstanceResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstanceResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Category) {
@@ -6815,9 +8146,11 @@ func (client *Client) ListInstanceResources(InstanceId *string, request *ListIns
 //
 // @return ListInstancesResponse
 func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -6899,9 +8232,11 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 //
 // @return ListLaboratoriesResponse
 func (client *Client) ListLaboratoriesWithOptions(request *ListLaboratoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListLaboratoriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Environment) {
@@ -6975,9 +8310,11 @@ func (client *Client) ListLaboratories(request *ListLaboratoriesRequest) (_resul
 //
 // @return ListLayersResponse
 func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListLayersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7043,9 +8380,11 @@ func (client *Client) ListLayers(request *ListLayersRequest) (_result *ListLayer
 //
 // @return ListParamsResponse
 func (client *Client) ListParamsWithOptions(request *ListParamsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListParamsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Encrypted) {
@@ -7121,6 +8460,456 @@ func (client *Client) ListParams(request *ListParamsRequest) (_result *ListParam
 
 // Summary:
 //
+// 获取召回管理任务列表。
+//
+// @param request - ListRecallManagementJobsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRecallManagementJobsResponse
+func (client *Client) ListRecallManagementJobsWithOptions(request *ListRecallManagementJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRecallManagementJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Condition) {
+		query["Condition"] = request.Condition
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRecallManagementJobs"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementjobs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRecallManagementJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取召回管理任务列表。
+//
+// @param request - ListRecallManagementJobsRequest
+//
+// @return ListRecallManagementJobsResponse
+func (client *Client) ListRecallManagementJobs(request *ListRecallManagementJobsRequest) (_result *ListRecallManagementJobsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRecallManagementJobsResponse{}
+	_body, _err := client.ListRecallManagementJobsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取召回管理服务下的版本列表
+//
+// @param request - ListRecallManagementServiceVersionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRecallManagementServiceVersionsResponse
+func (client *Client) ListRecallManagementServiceVersionsWithOptions(RecallManagementServiceId *string, request *ListRecallManagementServiceVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRecallManagementServiceVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRecallManagementServiceVersions"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementservices/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceId)) + "/versions"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRecallManagementServiceVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取召回管理服务下的版本列表
+//
+// @param request - ListRecallManagementServiceVersionsRequest
+//
+// @return ListRecallManagementServiceVersionsResponse
+func (client *Client) ListRecallManagementServiceVersions(RecallManagementServiceId *string, request *ListRecallManagementServiceVersionsRequest) (_result *ListRecallManagementServiceVersionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRecallManagementServiceVersionsResponse{}
+	_body, _err := client.ListRecallManagementServiceVersionsWithOptions(RecallManagementServiceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取召回管理服务列表
+//
+// @param request - ListRecallManagementServicesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRecallManagementServicesResponse
+func (client *Client) ListRecallManagementServicesWithOptions(request *ListRecallManagementServicesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRecallManagementServicesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRecallManagementServices"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementservices"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRecallManagementServicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取召回管理服务列表
+//
+// @param request - ListRecallManagementServicesRequest
+//
+// @return ListRecallManagementServicesResponse
+func (client *Client) ListRecallManagementServices(request *ListRecallManagementServicesRequest) (_result *ListRecallManagementServicesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRecallManagementServicesResponse{}
+	_body, _err := client.ListRecallManagementServicesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取召回管理表版本列表。
+//
+// @param request - ListRecallManagementTableVersionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRecallManagementTableVersionsResponse
+func (client *Client) ListRecallManagementTableVersionsWithOptions(RecallManagementTableId *string, request *ListRecallManagementTableVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRecallManagementTableVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRecallManagementTableVersions"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementtables/" + dara.PercentEncode(dara.StringValue(RecallManagementTableId)) + "/versions"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRecallManagementTableVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取召回管理表版本列表。
+//
+// @param request - ListRecallManagementTableVersionsRequest
+//
+// @return ListRecallManagementTableVersionsResponse
+func (client *Client) ListRecallManagementTableVersions(RecallManagementTableId *string, request *ListRecallManagementTableVersionsRequest) (_result *ListRecallManagementTableVersionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRecallManagementTableVersionsResponse{}
+	_body, _err := client.ListRecallManagementTableVersionsWithOptions(RecallManagementTableId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取召回管理表列表。
+//
+// @param request - ListRecallManagementTablesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRecallManagementTablesResponse
+func (client *Client) ListRecallManagementTablesWithOptions(request *ListRecallManagementTablesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRecallManagementTablesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRecallManagementTables"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementtables"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRecallManagementTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取召回管理表列表。
+//
+// @param request - ListRecallManagementTablesRequest
+//
+// @return ListRecallManagementTablesResponse
+func (client *Client) ListRecallManagementTables(request *ListRecallManagementTablesRequest) (_result *ListRecallManagementTablesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRecallManagementTablesResponse{}
+	_body, _err := client.ListRecallManagementTablesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取资源规则列表
 //
 // @param request - ListResourceRulesRequest
@@ -7131,9 +8920,11 @@ func (client *Client) ListParams(request *ListParamsRequest) (_result *ListParam
 //
 // @return ListResourceRulesResponse
 func (client *Client) ListResourceRulesWithOptions(request *ListResourceRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -7223,9 +9014,11 @@ func (client *Client) ListResourceRules(request *ListResourceRulesRequest) (_res
 //
 // @return ListSampleConsistencyJobsResponse
 func (client *Client) ListSampleConsistencyJobsWithOptions(request *ListSampleConsistencyJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSampleConsistencyJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7303,9 +9096,11 @@ func (client *Client) ListSampleConsistencyJobs(request *ListSampleConsistencyJo
 //
 // @return ListScenesResponse
 func (client *Client) ListScenesWithOptions(request *ListScenesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListScenesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7371,9 +9166,11 @@ func (client *Client) ListScenes(request *ListScenesRequest) (_result *ListScene
 //
 // @return ListSubCrowdsResponse
 func (client *Client) ListSubCrowdsWithOptions(CrowdId *string, request *ListSubCrowdsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSubCrowdsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7435,9 +9232,11 @@ func (client *Client) ListSubCrowds(CrowdId *string, request *ListSubCrowdsReque
 //
 // @return ListTableMetasResponse
 func (client *Client) ListTableMetasWithOptions(request *ListTableMetasRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTableMetasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7519,9 +9318,11 @@ func (client *Client) ListTableMetas(request *ListTableMetasRequest) (_result *L
 //
 // @return ListTrafficControlTargetTrafficHistoryResponse
 func (client *Client) ListTrafficControlTargetTrafficHistoryWithOptions(TrafficControlTargetId *string, request *ListTrafficControlTargetTrafficHistoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTrafficControlTargetTrafficHistoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -7611,9 +9412,11 @@ func (client *Client) ListTrafficControlTargetTrafficHistory(TrafficControlTarge
 //
 // @return ListTrafficControlTasksResponse
 func (client *Client) ListTrafficControlTasksWithOptions(request *ListTrafficControlTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTrafficControlTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -7723,9 +9526,11 @@ func (client *Client) ListTrafficControlTasks(request *ListTrafficControlTasksRe
 //
 // @return OfflineExperimentResponse
 func (client *Client) OfflineExperimentWithOptions(ExperimentId *string, request *OfflineExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OfflineExperimentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7787,9 +9592,11 @@ func (client *Client) OfflineExperiment(ExperimentId *string, request *OfflineEx
 //
 // @return OfflineExperimentGroupResponse
 func (client *Client) OfflineExperimentGroupWithOptions(ExperimentGroupId *string, request *OfflineExperimentGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OfflineExperimentGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7851,9 +9658,11 @@ func (client *Client) OfflineExperimentGroup(ExperimentGroupId *string, request 
 //
 // @return OfflineLaboratoryResponse
 func (client *Client) OfflineLaboratoryWithOptions(LaboratoryId *string, request *OfflineLaboratoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OfflineLaboratoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7905,6 +9714,72 @@ func (client *Client) OfflineLaboratory(LaboratoryId *string, request *OfflineLa
 
 // Summary:
 //
+// 下线召回管理服务
+//
+// @param request - OfflineRecallManagementServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OfflineRecallManagementServiceResponse
+func (client *Client) OfflineRecallManagementServiceWithOptions(RecallManagementServiceId *string, request *OfflineRecallManagementServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OfflineRecallManagementServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OfflineRecallManagementService"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementservices/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceId)) + "/action/offline"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OfflineRecallManagementServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 下线召回管理服务
+//
+// @param request - OfflineRecallManagementServiceRequest
+//
+// @return OfflineRecallManagementServiceResponse
+func (client *Client) OfflineRecallManagementService(RecallManagementServiceId *string, request *OfflineRecallManagementServiceRequest) (_result *OfflineRecallManagementServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &OfflineRecallManagementServiceResponse{}
+	_body, _err := client.OfflineRecallManagementServiceWithOptions(RecallManagementServiceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 上线实验
 //
 // @param request - OnlineExperimentRequest
@@ -7915,9 +9790,11 @@ func (client *Client) OfflineLaboratory(LaboratoryId *string, request *OfflineLa
 //
 // @return OnlineExperimentResponse
 func (client *Client) OnlineExperimentWithOptions(ExperimentId *string, request *OnlineExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OnlineExperimentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7979,9 +9856,11 @@ func (client *Client) OnlineExperiment(ExperimentId *string, request *OnlineExpe
 //
 // @return OnlineExperimentGroupResponse
 func (client *Client) OnlineExperimentGroupWithOptions(ExperimentGroupId *string, request *OnlineExperimentGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OnlineExperimentGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8043,9 +9922,11 @@ func (client *Client) OnlineExperimentGroup(ExperimentGroupId *string, request *
 //
 // @return OnlineLaboratoryResponse
 func (client *Client) OnlineLaboratoryWithOptions(LaboratoryId *string, request *OnlineLaboratoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OnlineLaboratoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8097,6 +9978,150 @@ func (client *Client) OnlineLaboratory(LaboratoryId *string, request *OnlineLabo
 
 // Summary:
 //
+// 上线召回管理服务
+//
+// @param request - OnlineRecallManagementServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OnlineRecallManagementServiceResponse
+func (client *Client) OnlineRecallManagementServiceWithOptions(RecallManagementServiceId *string, request *OnlineRecallManagementServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OnlineRecallManagementServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OnlineRecallManagementService"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementservices/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceId)) + "/action/online"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OnlineRecallManagementServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上线召回管理服务
+//
+// @param request - OnlineRecallManagementServiceRequest
+//
+// @return OnlineRecallManagementServiceResponse
+func (client *Client) OnlineRecallManagementService(RecallManagementServiceId *string, request *OnlineRecallManagementServiceRequest) (_result *OnlineRecallManagementServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &OnlineRecallManagementServiceResponse{}
+	_body, _err := client.OnlineRecallManagementServiceWithOptions(RecallManagementServiceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将maxcompute的表同步到召回引擎中。
+//
+// @param request - PublishRecallManagementTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PublishRecallManagementTableResponse
+func (client *Client) PublishRecallManagementTableWithOptions(RecallManagementTableId *string, request *PublishRecallManagementTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PublishRecallManagementTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Mode) {
+		body["Mode"] = request.Mode
+	}
+
+	if !dara.IsNil(request.Partition) {
+		body["Partition"] = request.Partition
+	}
+
+	if !dara.IsNil(request.SkipThresholdCheck) {
+		body["SkipThresholdCheck"] = request.SkipThresholdCheck
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PublishRecallManagementTable"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementtables/" + dara.PercentEncode(dara.StringValue(RecallManagementTableId)) + "/action/publish"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PublishRecallManagementTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将maxcompute的表同步到召回引擎中。
+//
+// @param request - PublishRecallManagementTableRequest
+//
+// @return PublishRecallManagementTableResponse
+func (client *Client) PublishRecallManagementTable(RecallManagementTableId *string, request *PublishRecallManagementTableRequest) (_result *PublishRecallManagementTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PublishRecallManagementTableResponse{}
+	_body, _err := client.PublishRecallManagementTableWithOptions(RecallManagementTableId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 推全。
 //
 // @param request - PushAllExperimentRequest
@@ -8107,9 +10132,11 @@ func (client *Client) OnlineLaboratory(LaboratoryId *string, request *OnlineLabo
 //
 // @return PushAllExperimentResponse
 func (client *Client) PushAllExperimentWithOptions(ExperimentId *string, request *PushAllExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PushAllExperimentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8171,9 +10198,11 @@ func (client *Client) PushAllExperiment(ExperimentId *string, request *PushAllEx
 //
 // @return PushResourceRuleResponse
 func (client *Client) PushResourceRuleWithOptions(ResourceRuleId *string, tmpReq *PushResourceRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PushResourceRuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PushResourceRuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8245,9 +10274,11 @@ func (client *Client) PushResourceRule(ResourceRuleId *string, request *PushReso
 //
 // @return QuerySampleConsistencyJobDifferenceResponse
 func (client *Client) QuerySampleConsistencyJobDifferenceWithOptions(SampleConsistencyJobId *string, request *QuerySampleConsistencyJobDifferenceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QuerySampleConsistencyJobDifferenceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FeatureName) {
@@ -8317,9 +10348,11 @@ func (client *Client) QuerySampleConsistencyJobDifference(SampleConsistencyJobId
 //
 // @return QueryTrafficControlTargetItemReportDetailResponse
 func (client *Client) QueryTrafficControlTargetItemReportDetailWithOptions(TrafficControlTargetId *string, request *QueryTrafficControlTargetItemReportDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryTrafficControlTargetItemReportDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Date) {
@@ -8389,9 +10422,11 @@ func (client *Client) QueryTrafficControlTargetItemReportDetail(TrafficControlTa
 //
 // @return ReleaseTrafficControlTaskResponse
 func (client *Client) ReleaseTrafficControlTaskWithOptions(TrafficControlTaskId *string, request *ReleaseTrafficControlTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReleaseTrafficControlTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Environment) {
@@ -8457,9 +10492,11 @@ func (client *Client) ReleaseTrafficControlTask(TrafficControlTaskId *string, re
 //
 // @return ReportABMetricGroupResponse
 func (client *Client) ReportABMetricGroupWithOptions(ABMetricGroupId *string, request *ReportABMetricGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReportABMetricGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BaseExperimentId) {
@@ -8557,9 +10594,11 @@ func (client *Client) ReportABMetricGroup(ABMetricGroupId *string, request *Repo
 //
 // @return ReportSampleConsistencyJobResponse
 func (client *Client) ReportSampleConsistencyJobWithOptions(SampleConsistencyJobId *string, request *ReportSampleConsistencyJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReportSampleConsistencyJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8621,9 +10660,11 @@ func (client *Client) ReportSampleConsistencyJob(SampleConsistencyJobId *string,
 //
 // @return SplitTrafficControlTargetResponse
 func (client *Client) SplitTrafficControlTargetWithOptions(TrafficControlTargetId *string, request *SplitTrafficControlTargetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SplitTrafficControlTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Environment) {
@@ -8701,9 +10742,11 @@ func (client *Client) SplitTrafficControlTarget(TrafficControlTargetId *string, 
 //
 // @return StartTrafficControlTargetResponse
 func (client *Client) StartTrafficControlTargetWithOptions(TrafficControlTargetId *string, request *StartTrafficControlTargetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartTrafficControlTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8765,9 +10808,11 @@ func (client *Client) StartTrafficControlTarget(TrafficControlTargetId *string, 
 //
 // @return StartTrafficControlTaskResponse
 func (client *Client) StartTrafficControlTaskWithOptions(TrafficControlTaskId *string, request *StartTrafficControlTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartTrafficControlTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Environment) {
@@ -8833,9 +10878,11 @@ func (client *Client) StartTrafficControlTask(TrafficControlTaskId *string, requ
 //
 // @return StopSampleConsistencyJobResponse
 func (client *Client) StopSampleConsistencyJobWithOptions(SampleConsistencyJobId *string, request *StopSampleConsistencyJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopSampleConsistencyJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8897,9 +10944,11 @@ func (client *Client) StopSampleConsistencyJob(SampleConsistencyJobId *string, r
 //
 // @return StopTrafficControlTargetResponse
 func (client *Client) StopTrafficControlTargetWithOptions(TrafficControlTargetId *string, request *StopTrafficControlTargetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopTrafficControlTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8961,9 +11010,11 @@ func (client *Client) StopTrafficControlTarget(TrafficControlTargetId *string, r
 //
 // @return StopTrafficControlTaskResponse
 func (client *Client) StopTrafficControlTaskWithOptions(TrafficControlTaskId *string, request *StopTrafficControlTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopTrafficControlTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -9035,9 +11086,11 @@ func (client *Client) StopTrafficControlTask(TrafficControlTaskId *string, reque
 //
 // @return SyncFeatureConsistencyCheckJobReplayLogResponse
 func (client *Client) SyncFeatureConsistencyCheckJobReplayLogWithOptions(request *SyncFeatureConsistencyCheckJobReplayLogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SyncFeatureConsistencyCheckJobReplayLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ContextFeatures) {
@@ -9135,9 +11188,11 @@ func (client *Client) SyncFeatureConsistencyCheckJobReplayLog(request *SyncFeatu
 //
 // @return TerminateFeatureConsistencyCheckJobResponse
 func (client *Client) TerminateFeatureConsistencyCheckJobWithOptions(FeatureConsistencyCheckJobId *string, request *TerminateFeatureConsistencyCheckJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TerminateFeatureConsistencyCheckJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -9199,9 +11254,11 @@ func (client *Client) TerminateFeatureConsistencyCheckJob(FeatureConsistencyChec
 //
 // @return UpdateABMetricResponse
 func (client *Client) UpdateABMetricWithOptions(ABMetricId *string, request *UpdateABMetricRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateABMetricResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Definition) {
@@ -9311,9 +11368,11 @@ func (client *Client) UpdateABMetric(ABMetricId *string, request *UpdateABMetric
 //
 // @return UpdateABMetricGroupResponse
 func (client *Client) UpdateABMetricGroupWithOptions(ABMetricGroupId *string, request *UpdateABMetricGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateABMetricGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ABMetricIds) {
@@ -9395,9 +11454,11 @@ func (client *Client) UpdateABMetricGroup(ABMetricGroupId *string, request *Upda
 //
 // @return UpdateCrowdResponse
 func (client *Client) UpdateCrowdWithOptions(CrowdId *string, request *UpdateCrowdRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateCrowdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -9467,9 +11528,11 @@ func (client *Client) UpdateCrowd(CrowdId *string, request *UpdateCrowdRequest) 
 //
 // @return UpdateEngineConfigResponse
 func (client *Client) UpdateEngineConfigWithOptions(EngineConfigId *string, request *UpdateEngineConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateEngineConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigValue) {
@@ -9547,9 +11610,11 @@ func (client *Client) UpdateEngineConfig(EngineConfigId *string, request *Update
 //
 // @return UpdateExperimentResponse
 func (client *Client) UpdateExperimentWithOptions(ExperimentId *string, request *UpdateExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateExperimentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -9639,9 +11704,11 @@ func (client *Client) UpdateExperiment(ExperimentId *string, request *UpdateExpe
 //
 // @return UpdateExperimentGroupResponse
 func (client *Client) UpdateExperimentGroupWithOptions(ExperimentGroupId *string, request *UpdateExperimentGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateExperimentGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -9759,9 +11826,11 @@ func (client *Client) UpdateExperimentGroup(ExperimentGroupId *string, request *
 //
 // @return UpdateFeatureConsistencyCheckJobConfigResponse
 func (client *Client) UpdateFeatureConsistencyCheckJobConfigWithOptions(FeatureConsistencyCheckJobConfigId *string, request *UpdateFeatureConsistencyCheckJobConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateFeatureConsistencyCheckJobConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CompareFeature) {
@@ -10003,9 +12072,11 @@ func (client *Client) UpdateFeatureConsistencyCheckJobConfig(FeatureConsistencyC
 //
 // @return UpdateInstanceResourceResponse
 func (client *Client) UpdateInstanceResourceWithOptions(InstanceId *string, ResourceId *string, request *UpdateInstanceResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -10071,9 +12142,11 @@ func (client *Client) UpdateInstanceResource(InstanceId *string, ResourceId *str
 //
 // @return UpdateLaboratoryResponse
 func (client *Client) UpdateLaboratoryWithOptions(LaboratoryId *string, request *UpdateLaboratoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateLaboratoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BucketCount) {
@@ -10175,9 +12248,11 @@ func (client *Client) UpdateLaboratory(LaboratoryId *string, request *UpdateLabo
 //
 // @return UpdateLayerResponse
 func (client *Client) UpdateLayerWithOptions(LayerId *string, request *UpdateLayerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateLayerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -10247,9 +12322,11 @@ func (client *Client) UpdateLayer(LayerId *string, request *UpdateLayerRequest) 
 //
 // @return UpdateParamResponse
 func (client *Client) UpdateParamWithOptions(ParamId *string, request *UpdateParamRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateParamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -10305,6 +12382,328 @@ func (client *Client) UpdateParam(ParamId *string, request *UpdateParamRequest) 
 
 // Summary:
 //
+// 更新召回管理初始化配置。
+//
+// @param request - UpdateRecallManagementConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRecallManagementConfigResponse
+func (client *Client) UpdateRecallManagementConfigWithOptions(request *UpdateRecallManagementConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRecallManagementConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NetworkConfigs) {
+		body["NetworkConfigs"] = request.NetworkConfigs
+	}
+
+	if !dara.IsNil(request.Password) {
+		body["Password"] = request.Password
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRecallManagementConfig"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementconfigs"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRecallManagementConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新召回管理初始化配置。
+//
+// @param request - UpdateRecallManagementConfigRequest
+//
+// @return UpdateRecallManagementConfigResponse
+func (client *Client) UpdateRecallManagementConfig(request *UpdateRecallManagementConfigRequest) (_result *UpdateRecallManagementConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateRecallManagementConfigResponse{}
+	_body, _err := client.UpdateRecallManagementConfigWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新召回管理服务信息
+//
+// @param request - UpdateRecallManagementServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRecallManagementServiceResponse
+func (client *Client) UpdateRecallManagementServiceWithOptions(RecallManagementServiceId *string, request *UpdateRecallManagementServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRecallManagementServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRecallManagementService"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementservices/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRecallManagementServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新召回管理服务信息
+//
+// @param request - UpdateRecallManagementServiceRequest
+//
+// @return UpdateRecallManagementServiceResponse
+func (client *Client) UpdateRecallManagementService(RecallManagementServiceId *string, request *UpdateRecallManagementServiceRequest) (_result *UpdateRecallManagementServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateRecallManagementServiceResponse{}
+	_body, _err := client.UpdateRecallManagementServiceWithOptions(RecallManagementServiceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新召回管理服务版本配置
+//
+// @param request - UpdateRecallManagementServiceVersionConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRecallManagementServiceVersionConfigResponse
+func (client *Client) UpdateRecallManagementServiceVersionConfigWithOptions(RecallManagementServiceId *string, RecallManagementServiceVersionId *string, RecallManagementServiceVersionConfigId *string, request *UpdateRecallManagementServiceVersionConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRecallManagementServiceVersionConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigType) {
+		body["ConfigType"] = request.ConfigType
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MergeConfig) {
+		body["MergeConfig"] = request.MergeConfig
+	}
+
+	if !dara.IsNil(request.RecallConfig) {
+		body["RecallConfig"] = request.RecallConfig
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRecallManagementServiceVersionConfig"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementservices/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceId)) + "/versions/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceVersionId)) + "/configs/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceVersionConfigId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRecallManagementServiceVersionConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新召回管理服务版本配置
+//
+// @param request - UpdateRecallManagementServiceVersionConfigRequest
+//
+// @return UpdateRecallManagementServiceVersionConfigResponse
+func (client *Client) UpdateRecallManagementServiceVersionConfig(RecallManagementServiceId *string, RecallManagementServiceVersionId *string, RecallManagementServiceVersionConfigId *string, request *UpdateRecallManagementServiceVersionConfigRequest) (_result *UpdateRecallManagementServiceVersionConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateRecallManagementServiceVersionConfigResponse{}
+	_body, _err := client.UpdateRecallManagementServiceVersionConfigWithOptions(RecallManagementServiceId, RecallManagementServiceVersionId, RecallManagementServiceVersionConfigId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新召回管理表。
+//
+// @param request - UpdateRecallManagementTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRecallManagementTableResponse
+func (client *Client) UpdateRecallManagementTableWithOptions(RecallManagementTableId *string, request *UpdateRecallManagementTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRecallManagementTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EnableDataSizeFluctuationThreshold) {
+		body["EnableDataSizeFluctuationThreshold"] = request.EnableDataSizeFluctuationThreshold
+	}
+
+	if !dara.IsNil(request.EnableRowCountFluctuationThreshold) {
+		body["EnableRowCountFluctuationThreshold"] = request.EnableRowCountFluctuationThreshold
+	}
+
+	if !dara.IsNil(request.IndexVersionId) {
+		body["IndexVersionId"] = request.IndexVersionId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxDataSizeFluctuationThreshold) {
+		body["MaxDataSizeFluctuationThreshold"] = request.MaxDataSizeFluctuationThreshold
+	}
+
+	if !dara.IsNil(request.MaxRowCountFluctuationThreshold) {
+		body["MaxRowCountFluctuationThreshold"] = request.MaxRowCountFluctuationThreshold
+	}
+
+	if !dara.IsNil(request.MinDataSizeFluctuationThreshold) {
+		body["MinDataSizeFluctuationThreshold"] = request.MinDataSizeFluctuationThreshold
+	}
+
+	if !dara.IsNil(request.MinRowCountFluctuationThreshold) {
+		body["MinRowCountFluctuationThreshold"] = request.MinRowCountFluctuationThreshold
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRecallManagementTable"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementtables/" + dara.PercentEncode(dara.StringValue(RecallManagementTableId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRecallManagementTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新召回管理表。
+//
+// @param request - UpdateRecallManagementTableRequest
+//
+// @return UpdateRecallManagementTableResponse
+func (client *Client) UpdateRecallManagementTable(RecallManagementTableId *string, request *UpdateRecallManagementTableRequest) (_result *UpdateRecallManagementTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateRecallManagementTableResponse{}
+	_body, _err := client.UpdateRecallManagementTableWithOptions(RecallManagementTableId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取资源规则列表
 //
 // @param request - UpdateResourceRuleRequest
@@ -10315,9 +12714,11 @@ func (client *Client) UpdateParam(ParamId *string, request *UpdateParamRequest) 
 //
 // @return UpdateResourceRuleResponse
 func (client *Client) UpdateResourceRuleWithOptions(ResourceRuleId *string, request *UpdateResourceRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateResourceRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -10403,9 +12804,11 @@ func (client *Client) UpdateResourceRule(ResourceRuleId *string, request *Update
 //
 // @return UpdateResourceRuleItemResponse
 func (client *Client) UpdateResourceRuleItemWithOptions(ResourceRuleId *string, ResourceRuleItemId *string, request *UpdateResourceRuleItemRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateResourceRuleItemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -10487,9 +12890,11 @@ func (client *Client) UpdateResourceRuleItem(ResourceRuleId *string, ResourceRul
 //
 // @return UpdateSceneResponse
 func (client *Client) UpdateSceneWithOptions(SceneId *string, request *UpdateSceneRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateSceneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -10563,9 +12968,11 @@ func (client *Client) UpdateScene(SceneId *string, request *UpdateSceneRequest) 
 //
 // @return UpdateTableMetaResponse
 func (client *Client) UpdateTableMetaWithOptions(TableMetaId *string, request *UpdateTableMetaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTableMetaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -10651,9 +13058,11 @@ func (client *Client) UpdateTableMeta(TableMetaId *string, request *UpdateTableM
 //
 // @return UpdateTrafficControlTargetResponse
 func (client *Client) UpdateTrafficControlTargetWithOptions(TrafficControlTargetId *string, request *UpdateTrafficControlTargetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTrafficControlTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NewParam3) {
@@ -10769,9 +13178,11 @@ func (client *Client) UpdateTrafficControlTarget(TrafficControlTargetId *string,
 //
 // @return UpdateTrafficControlTaskResponse
 func (client *Client) UpdateTrafficControlTaskWithOptions(TrafficControlTaskId *string, request *UpdateTrafficControlTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTrafficControlTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BehaviorTableMetaId) {
@@ -10862,6 +13273,10 @@ func (client *Client) UpdateTrafficControlTaskWithOptions(TrafficControlTaskId *
 		body["StatisBaeaviorConditionArray"] = request.StatisBaeaviorConditionArray
 	}
 
+	if !dara.IsNil(request.StatisBehaviorConditionArray) {
+		body["StatisBehaviorConditionArray"] = request.StatisBehaviorConditionArray
+	}
+
 	if !dara.IsNil(request.StatisBehaviorConditionExpress) {
 		body["StatisBehaviorConditionExpress"] = request.StatisBehaviorConditionExpress
 	}
@@ -10945,9 +13360,11 @@ func (client *Client) UpdateTrafficControlTask(TrafficControlTaskId *string, req
 //
 // @return UpdateTrafficControlTaskTrafficResponse
 func (client *Client) UpdateTrafficControlTaskTrafficWithOptions(TrafficControlTaskId *string, request *UpdateTrafficControlTaskTrafficRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTrafficControlTaskTrafficResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NewParam3) {
@@ -11023,9 +13440,11 @@ func (client *Client) UpdateTrafficControlTaskTraffic(TrafficControlTaskId *stri
 //
 // @return UploadRecommendationDataResponse
 func (client *Client) UploadRecommendationDataWithOptions(request *UploadRecommendationDataRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UploadRecommendationDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {

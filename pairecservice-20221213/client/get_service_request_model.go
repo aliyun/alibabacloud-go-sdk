@@ -14,6 +14,9 @@ type iGetServiceRequest interface {
 }
 
 type GetServiceRequest struct {
+	// example:
+	//
+	// pairec-test-xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

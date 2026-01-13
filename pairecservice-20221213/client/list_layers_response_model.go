@@ -59,5 +59,10 @@ func (s *ListLayersResponse) SetBody(v *ListLayersResponseBody) *ListLayersRespo
 }
 
 func (s *ListLayersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

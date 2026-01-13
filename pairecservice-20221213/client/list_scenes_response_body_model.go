@@ -67,7 +67,16 @@ func (s *ListScenesResponseBody) SetTotalCount(v int64) *ListScenesResponseBody 
 }
 
 func (s *ListScenesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Scenes != nil {
+		for _, item := range s.Scenes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListScenesResponseBodyScenes struct {
@@ -131,7 +140,16 @@ func (s *ListScenesResponseBodyScenes) SetSceneId(v string) *ListScenesResponseB
 }
 
 func (s *ListScenesResponseBodyScenes) Validate() error {
-	return dara.Validate(s)
+	if s.Flows != nil {
+		for _, item := range s.Flows {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListScenesResponseBodyScenesFlows struct {

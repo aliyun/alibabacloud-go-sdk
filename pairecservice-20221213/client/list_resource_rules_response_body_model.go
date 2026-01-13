@@ -59,7 +59,16 @@ func (s *ListResourceRulesResponseBody) SetTotalCount(v int64) *ListResourceRule
 }
 
 func (s *ListResourceRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceRules != nil {
+		for _, item := range s.ResourceRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceRulesResponseBodyResourceRules struct {
@@ -154,7 +163,16 @@ func (s *ListResourceRulesResponseBodyResourceRules) SetRuleItems(v []*ListResou
 }
 
 func (s *ListResourceRulesResponseBodyResourceRules) Validate() error {
-	return dara.Validate(s)
+	if s.RuleItems != nil {
+		for _, item := range s.RuleItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceRulesResponseBodyResourceRulesRuleItems struct {

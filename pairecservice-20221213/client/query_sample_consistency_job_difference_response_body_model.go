@@ -71,7 +71,34 @@ func (s *QuerySampleConsistencyJobDifferenceResponseBody) SetStringFeatureDiffer
 }
 
 func (s *QuerySampleConsistencyJobDifferenceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DifferenceHistogram != nil {
+		for _, item := range s.DifferenceHistogram {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NumberFeatureDifferences != nil {
+		for _, item := range s.NumberFeatureDifferences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.StringFeatureDifferences != nil {
+		for _, item := range s.StringFeatureDifferences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySampleConsistencyJobDifferenceResponseBodyDifferenceHistogram struct {

@@ -59,7 +59,16 @@ func (s *ListTrafficControlTasksResponseBody) SetTrafficControlTasks(v []*ListTr
 }
 
 func (s *ListTrafficControlTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficControlTasks != nil {
+		for _, item := range s.TrafficControlTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
@@ -95,6 +104,7 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
 	StartTime                      *string                                                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StatisBahaviorConditionExpress *string                                                                        `json:"StatisBahaviorConditionExpress,omitempty" xml:"StatisBahaviorConditionExpress,omitempty"`
 	StatisBehaviorConditionArray   *string                                                                        `json:"StatisBehaviorConditionArray,omitempty" xml:"StatisBehaviorConditionArray,omitempty"`
+	StatisBehaviorConditionExpress *string                                                                        `json:"StatisBehaviorConditionExpress,omitempty" xml:"StatisBehaviorConditionExpress,omitempty"`
 	StatisBehaviorConditionType    *string                                                                        `json:"StatisBehaviorConditionType,omitempty" xml:"StatisBehaviorConditionType,omitempty"`
 	TrafficControlTargets          []*ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets `json:"TrafficControlTargets,omitempty" xml:"TrafficControlTargets,omitempty" type:"Repeated"`
 	TrafficControlTaskId           *string                                                                        `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
@@ -238,6 +248,10 @@ func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) GetStatisBahavi
 
 func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) GetStatisBehaviorConditionArray() *string {
 	return s.StatisBehaviorConditionArray
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) GetStatisBehaviorConditionExpress() *string {
+	return s.StatisBehaviorConditionExpress
 }
 
 func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) GetStatisBehaviorConditionType() *string {
@@ -428,6 +442,11 @@ func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetStatisBehavi
 	return s
 }
 
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetStatisBehaviorConditionExpress(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.StatisBehaviorConditionExpress = &v
+	return s
+}
+
 func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetStatisBehaviorConditionType(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
 	s.StatisBehaviorConditionType = &v
 	return s
@@ -464,7 +483,16 @@ func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetUserTableMet
 }
 
 func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficControlTargets != nil {
+		for _, item := range s.TrafficControlTargets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets struct {
@@ -659,7 +687,12 @@ func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTar
 }
 
 func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) Validate() error {
-	return dara.Validate(s)
+	if s.SplitParts != nil {
+		if err := s.SplitParts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargetsSplitParts struct {

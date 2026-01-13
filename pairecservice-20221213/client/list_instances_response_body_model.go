@@ -65,7 +65,16 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int32) *ListInstancesRespons
 }
 
 func (s *ListInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyInstances struct {
@@ -217,7 +226,17 @@ func (s *ListInstancesResponseBodyInstances) SetType(v string) *ListInstancesRes
 }
 
 func (s *ListInstancesResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OperatingTool != nil {
+		if err := s.OperatingTool.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyInstancesConfig struct {
@@ -262,7 +281,34 @@ func (s *ListInstancesResponseBodyInstancesConfig) SetMonitors(v []*ListInstance
 }
 
 func (s *ListInstancesResponseBodyInstancesConfig) Validate() error {
-	return dara.Validate(s)
+	if s.DataManagements != nil {
+		for _, item := range s.DataManagements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Engines != nil {
+		for _, item := range s.Engines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Monitors != nil {
+		for _, item := range s.Monitors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyInstancesConfigDataManagements struct {

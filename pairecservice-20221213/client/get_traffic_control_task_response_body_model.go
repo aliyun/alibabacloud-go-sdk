@@ -479,7 +479,16 @@ func (s *GetTrafficControlTaskResponseBody) SetUserTableMetaId(v string) *GetTra
 }
 
 func (s *GetTrafficControlTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficControlTargets != nil {
+		for _, item := range s.TrafficControlTargets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTrafficControlTaskResponseBodyTrafficControlTargets struct {
@@ -674,7 +683,12 @@ func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetValue(v floa
 }
 
 func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) Validate() error {
-	return dara.Validate(s)
+	if s.SplitParts != nil {
+		if err := s.SplitParts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts struct {

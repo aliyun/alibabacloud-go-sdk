@@ -65,7 +65,16 @@ func (s *ListFeatureConsistencyCheckJobsResponseBody) SetTotalCount(v string) *L
 }
 
 func (s *ListFeatureConsistencyCheckJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FeatureConsistencyCheckJobs != nil {
+		for _, item := range s.FeatureConsistencyCheckJobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFeatureConsistencyCheckJobsResponseBodyFeatureConsistencyCheckJobs struct {

@@ -80,7 +80,16 @@ func (s *UpdateSceneRequest) SetName(v string) *UpdateSceneRequest {
 }
 
 func (s *UpdateSceneRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Flows != nil {
+		for _, item := range s.Flows {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateSceneRequestFlows struct {

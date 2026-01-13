@@ -16,6 +16,9 @@ type iGetTrafficControlTaskTrafficResponseBody interface {
 }
 
 type GetTrafficControlTaskTrafficResponseBody struct {
+	// example:
+	//
+	// 6CF1E160-3F36-5E73-A170-C75504F05BBC
 	RequestId                     *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TrafficControlTaskTrafficInfo *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo `json:"TrafficControlTaskTrafficInfo,omitempty" xml:"TrafficControlTaskTrafficInfo,omitempty" type:"Struct"`
 }
@@ -47,7 +50,12 @@ func (s *GetTrafficControlTaskTrafficResponseBody) SetTrafficControlTaskTrafficI
 }
 
 func (s *GetTrafficControlTaskTrafficResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficControlTaskTrafficInfo != nil {
+		if err := s.TrafficControlTaskTrafficInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo struct {
@@ -82,12 +90,21 @@ func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo) 
 }
 
 func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo) Validate() error {
-	return dara.Validate(s)
+	if s.TargetTraffics != nil {
+		for _, item := range s.TargetTraffics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics struct {
 	Data                   map[string]*TrafficControlTaskTrafficInfoTargetTrafficsDataValue `json:"Data,omitempty" xml:"Data,omitempty"`
-	TrafficContorlTargetId *string                                                          `json:"TrafficContorlTargetId,omitempty" xml:"TrafficContorlTargetId,omitempty"`
+	TrafficControlTargetId *string                                                          `json:"TrafficControlTargetId,omitempty" xml:"TrafficControlTargetId,omitempty"`
 }
 
 func (s GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) String() string {
@@ -102,8 +119,8 @@ func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTa
 	return s.Data
 }
 
-func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) GetTrafficContorlTargetId() *string {
-	return s.TrafficContorlTargetId
+func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) GetTrafficControlTargetId() *string {
+	return s.TrafficControlTargetId
 }
 
 func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) SetData(v map[string]*TrafficControlTaskTrafficInfoTargetTrafficsDataValue) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics {
@@ -111,8 +128,8 @@ func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTa
 	return s
 }
 
-func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) SetTrafficContorlTargetId(v string) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics {
-	s.TrafficContorlTargetId = &v
+func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) SetTrafficControlTargetId(v string) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics {
+	s.TrafficControlTargetId = &v
 	return s
 }
 

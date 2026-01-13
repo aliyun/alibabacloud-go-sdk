@@ -65,7 +65,16 @@ func (s *ListABMetricGroupsResponseBody) SetTotalCount(v int64) *ListABMetricGro
 }
 
 func (s *ListABMetricGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ABMetricGroups != nil {
+		for _, item := range s.ABMetricGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListABMetricGroupsResponseBodyABMetricGroups struct {

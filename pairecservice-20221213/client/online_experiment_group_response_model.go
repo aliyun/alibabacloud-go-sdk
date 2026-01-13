@@ -59,5 +59,10 @@ func (s *OnlineExperimentGroupResponse) SetBody(v *OnlineExperimentGroupResponse
 }
 
 func (s *OnlineExperimentGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

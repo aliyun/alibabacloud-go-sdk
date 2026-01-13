@@ -59,5 +59,10 @@ func (s *PushResourceRuleResponse) SetBody(v *PushResourceRuleResponseBody) *Pus
 }
 
 func (s *PushResourceRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

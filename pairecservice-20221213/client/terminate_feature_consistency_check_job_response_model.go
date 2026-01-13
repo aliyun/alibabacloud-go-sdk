@@ -59,5 +59,10 @@ func (s *TerminateFeatureConsistencyCheckJobResponse) SetBody(v *TerminateFeatur
 }
 
 func (s *TerminateFeatureConsistencyCheckJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

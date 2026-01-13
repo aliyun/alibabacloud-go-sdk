@@ -124,7 +124,16 @@ func (s *CreateResourceRuleRequest) SetRuleItems(v []*CreateResourceRuleRequestR
 }
 
 func (s *CreateResourceRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RuleItems != nil {
+		for _, item := range s.RuleItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateResourceRuleRequestRuleItems struct {

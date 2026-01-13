@@ -80,7 +80,16 @@ func (s *ListFeatureConsistencyCheckJobScoreReportsResponseBody) SetRequestId(v 
 }
 
 func (s *ListFeatureConsistencyCheckJobScoreReportsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ReportsOfScoreDiff != nil {
+		for _, item := range s.ReportsOfScoreDiff {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFeatureConsistencyCheckJobScoreReportsResponseBodyReportsOfScoreDiff struct {

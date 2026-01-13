@@ -59,5 +59,10 @@ func (s *CreateFeatureConsistencyCheckJobConfigResponse) SetBody(v *CreateFeatur
 }
 
 func (s *CreateFeatureConsistencyCheckJobConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

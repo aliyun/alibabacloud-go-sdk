@@ -59,5 +59,10 @@ func (s *UpdateResourceRuleResponse) SetBody(v *UpdateResourceRuleResponseBody) 
 }
 
 func (s *UpdateResourceRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

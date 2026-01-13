@@ -438,7 +438,16 @@ func (s *CreateTrafficControlTaskRequest) SetUserTableMetaId(v string) *CreateTr
 }
 
 func (s *CreateTrafficControlTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficControlTargets != nil {
+		for _, item := range s.TrafficControlTargets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTrafficControlTaskRequestTrafficControlTargets struct {

@@ -59,5 +59,10 @@ func (s *ListTableMetasResponse) SetBody(v *ListTableMetasResponseBody) *ListTab
 }
 
 func (s *ListTableMetasResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *CreateABMetricResponse) SetBody(v *CreateABMetricResponseBody) *CreateA
 }
 
 func (s *CreateABMetricResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

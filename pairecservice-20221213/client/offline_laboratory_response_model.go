@@ -59,5 +59,10 @@ func (s *OfflineLaboratoryResponse) SetBody(v *OfflineLaboratoryResponseBody) *O
 }
 
 func (s *OfflineLaboratoryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

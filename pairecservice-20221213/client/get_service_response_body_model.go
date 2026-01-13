@@ -34,17 +34,44 @@ type iGetServiceResponseBody interface {
 }
 
 type GetServiceResponseBody struct {
-	Description            *string                                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	EngineConfigId         *string                                       `json:"EngineConfigId,omitempty" xml:"EngineConfigId,omitempty"`
-	GmtReleasedTime        *string                                       `json:"GmtReleasedTime,omitempty" xml:"GmtReleasedTime,omitempty"`
+	// example:
+	//
+	// this is a test rec engine
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 3
+	EngineConfigId *string `json:"EngineConfigId,omitempty" xml:"EngineConfigId,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtReleasedTime *string `json:"GmtReleasedTime,omitempty" xml:"GmtReleasedTime,omitempty"`
+	// example:
+	//
+	// ********
 	ImageAuth              *string                                       `json:"ImageAuth,omitempty" xml:"ImageAuth,omitempty"`
 	ImageName              *string                                       `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	LatestProdReleaseOrder *GetServiceResponseBodyLatestProdReleaseOrder `json:"LatestProdReleaseOrder,omitempty" xml:"LatestProdReleaseOrder,omitempty" type:"Struct"`
-	Name                   *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	Region                 *string                                       `json:"Region,omitempty" xml:"Region,omitempty"`
-	RequestId              *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceConfig          *string                                       `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
-	ServiceResourceUri     *string                                       `json:"ServiceResourceUri,omitempty" xml:"ServiceResourceUri,omitempty"`
+	// example:
+	//
+	// test_rec
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// D75C43DC-3D3A-5CC8-9AAC-8C77306C433B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// {"Port":8080}
+	ServiceConfig *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
+	// example:
+	//
+	// eas-resource-xxx
+	ServiceResourceUri *string `json:"ServiceResourceUri,omitempty" xml:"ServiceResourceUri,omitempty"`
 }
 
 func (s GetServiceResponseBody) String() string {
@@ -155,16 +182,57 @@ func (s *GetServiceResponseBody) SetServiceResourceUri(v string) *GetServiceResp
 }
 
 func (s *GetServiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LatestProdReleaseOrder != nil {
+		if err := s.LatestProdReleaseOrder.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetServiceResponseBodyLatestProdReleaseOrder struct {
-	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ImageVersion   *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	ReleaseInfo    *string `json:"ReleaseInfo,omitempty" xml:"ReleaseInfo,omitempty"`
+	// example:
+	//
+	// update golang version to 1.22
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 2.0.0
+	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
+	// example:
+	//
+	// {
+	//
+	// 	"Pre": {
+	//
+	//     "Status": "Released",
+	//
+	//     "GmtReleasedTime" : "2021-12-15T23:24:33.132+08:00",
+	//
+	//   },
+	//
+	//   "Prod": {
+	//
+	//     "Status": "Released",
+	//
+	//     "GmtReleasedTime" : "2021-12-15T23:24:33.132+08:00",
+	//
+	//   }
+	//
+	// }
+	ReleaseInfo *string `json:"ReleaseInfo,omitempty" xml:"ReleaseInfo,omitempty"`
+	// example:
+	//
+	// 3
 	ReleaseOrderId *string `json:"ReleaseOrderId,omitempty" xml:"ReleaseOrderId,omitempty"`
-	Releaser       *string `json:"Releaser,omitempty" xml:"Releaser,omitempty"`
-	Topic          *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// example:
+	//
+	// E-xxx.xxx-@xxx.onaliyun.com
+	Releaser *string `json:"Releaser,omitempty" xml:"Releaser,omitempty"`
+	// example:
+	//
+	// update version
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s GetServiceResponseBodyLatestProdReleaseOrder) String() string {

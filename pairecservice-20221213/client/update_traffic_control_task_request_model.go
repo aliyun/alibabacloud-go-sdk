@@ -53,6 +53,8 @@ type iUpdateTrafficControlTaskRequest interface {
 	GetStartTime() *string
 	SetStatisBaeaviorConditionArray(v string) *UpdateTrafficControlTaskRequest
 	GetStatisBaeaviorConditionArray() *string
+	SetStatisBehaviorConditionArray(v string) *UpdateTrafficControlTaskRequest
+	GetStatisBehaviorConditionArray() *string
 	SetStatisBehaviorConditionExpress(v string) *UpdateTrafficControlTaskRequest
 	GetStatisBehaviorConditionExpress() *string
 	SetStatisBehaviorConditionType(v string) *UpdateTrafficControlTaskRequest
@@ -92,6 +94,7 @@ type UpdateTrafficControlTaskRequest struct {
 	ServiceIds                     []*int32                                                `json:"ServiceIds,omitempty" xml:"ServiceIds,omitempty" type:"Repeated"`
 	StartTime                      *string                                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StatisBaeaviorConditionArray   *string                                                 `json:"StatisBaeaviorConditionArray,omitempty" xml:"StatisBaeaviorConditionArray,omitempty"`
+	StatisBehaviorConditionArray   *string                                                 `json:"StatisBehaviorConditionArray,omitempty" xml:"StatisBehaviorConditionArray,omitempty"`
 	StatisBehaviorConditionExpress *string                                                 `json:"StatisBehaviorConditionExpress,omitempty" xml:"StatisBehaviorConditionExpress,omitempty"`
 	StatisBehaviorConditionType    *string                                                 `json:"StatisBehaviorConditionType,omitempty" xml:"StatisBehaviorConditionType,omitempty"`
 	TrafficControlTargets          []*UpdateTrafficControlTaskRequestTrafficControlTargets `json:"TrafficControlTargets,omitempty" xml:"TrafficControlTargets,omitempty" type:"Repeated"`
@@ -195,6 +198,10 @@ func (s *UpdateTrafficControlTaskRequest) GetStartTime() *string {
 
 func (s *UpdateTrafficControlTaskRequest) GetStatisBaeaviorConditionArray() *string {
 	return s.StatisBaeaviorConditionArray
+}
+
+func (s *UpdateTrafficControlTaskRequest) GetStatisBehaviorConditionArray() *string {
+	return s.StatisBehaviorConditionArray
 }
 
 func (s *UpdateTrafficControlTaskRequest) GetStatisBehaviorConditionExpress() *string {
@@ -335,6 +342,11 @@ func (s *UpdateTrafficControlTaskRequest) SetStatisBaeaviorConditionArray(v stri
 	return s
 }
 
+func (s *UpdateTrafficControlTaskRequest) SetStatisBehaviorConditionArray(v string) *UpdateTrafficControlTaskRequest {
+	s.StatisBehaviorConditionArray = &v
+	return s
+}
+
 func (s *UpdateTrafficControlTaskRequest) SetStatisBehaviorConditionExpress(v string) *UpdateTrafficControlTaskRequest {
 	s.StatisBehaviorConditionExpress = &v
 	return s
@@ -371,7 +383,16 @@ func (s *UpdateTrafficControlTaskRequest) SetUserTableMetaId(v string) *UpdateTr
 }
 
 func (s *UpdateTrafficControlTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficControlTargets != nil {
+		for _, item := range s.TrafficControlTargets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateTrafficControlTaskRequestTrafficControlTargets struct {

@@ -59,5 +59,10 @@ func (s *ReleaseTrafficControlTaskResponse) SetBody(v *ReleaseTrafficControlTask
 }
 
 func (s *ReleaseTrafficControlTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

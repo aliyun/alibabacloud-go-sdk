@@ -59,5 +59,10 @@ func (s *CreateSceneResponse) SetBody(v *CreateSceneResponseBody) *CreateSceneRe
 }
 
 func (s *CreateSceneResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -65,7 +65,16 @@ func (s *ListEngineConfigsResponseBody) SetTotalCount(v int64) *ListEngineConfig
 }
 
 func (s *ListEngineConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EngineConfigs != nil {
+		for _, item := range s.EngineConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEngineConfigsResponseBodyEngineConfigs struct {

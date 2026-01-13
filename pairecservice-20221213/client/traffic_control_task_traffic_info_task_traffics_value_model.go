@@ -14,6 +14,9 @@ type iTrafficControlTaskTrafficInfoTaskTrafficsValue interface {
 }
 
 type TrafficControlTaskTrafficInfoTaskTrafficsValue struct {
+	// example:
+	//
+	// 100
 	Traffic *float64 `json:"Traffic,omitempty" xml:"Traffic,omitempty"`
 }
 

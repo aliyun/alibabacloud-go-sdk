@@ -95,7 +95,16 @@ func (s *ReportSampleConsistencyJobResponseBody) SetSampleTableLostFeatures(v in
 }
 
 func (s *ReportSampleConsistencyJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FeaturesDifference != nil {
+		for _, item := range s.FeaturesDifference {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ReportSampleConsistencyJobResponseBodyFeaturesDifference struct {

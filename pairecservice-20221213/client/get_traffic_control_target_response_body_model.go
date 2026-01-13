@@ -239,7 +239,12 @@ func (s *GetTrafficControlTargetResponseBody) SetValue(v float32) *GetTrafficCon
 }
 
 func (s *GetTrafficControlTargetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SplitParts != nil {
+		if err := s.SplitParts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTrafficControlTargetResponseBodySplitParts struct {

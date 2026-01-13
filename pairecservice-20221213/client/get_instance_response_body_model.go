@@ -197,7 +197,17 @@ func (s *GetInstanceResponseBody) SetType(v string) *GetInstanceResponseBody {
 }
 
 func (s *GetInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OperatingTool != nil {
+		if err := s.OperatingTool.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceResponseBodyConfig struct {
@@ -242,7 +252,34 @@ func (s *GetInstanceResponseBodyConfig) SetMonitors(v []*GetInstanceResponseBody
 }
 
 func (s *GetInstanceResponseBodyConfig) Validate() error {
-	return dara.Validate(s)
+	if s.DataManagements != nil {
+		for _, item := range s.DataManagements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Engines != nil {
+		for _, item := range s.Engines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Monitors != nil {
+		for _, item := range s.Monitors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceResponseBodyConfigDataManagements struct {

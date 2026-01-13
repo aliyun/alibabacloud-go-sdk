@@ -47,7 +47,12 @@ func (s *QueryTrafficControlTargetItemReportDetailResponseBody) SetTrafficContro
 }
 
 func (s *QueryTrafficControlTargetItemReportDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficControlTargetItemReportDetail != nil {
+		if err := s.TrafficControlTargetItemReportDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail struct {
@@ -82,7 +87,25 @@ func (s *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTarg
 }
 
 func (s *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail) Validate() error {
-	return dara.Validate(s)
+	if s.ItemControlTailReportDetails != nil {
+		for _, item := range s.ItemControlTailReportDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ItemControlTopReportDetails != nil {
+		for _, item := range s.ItemControlTopReportDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails struct {

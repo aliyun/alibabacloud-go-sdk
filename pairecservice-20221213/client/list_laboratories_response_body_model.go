@@ -67,7 +67,16 @@ func (s *ListLaboratoriesResponseBody) SetTotalCount(v int64) *ListLaboratoriesR
 }
 
 func (s *ListLaboratoriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Laboratories != nil {
+		for _, item := range s.Laboratories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLaboratoriesResponseBodyLaboratories struct {
