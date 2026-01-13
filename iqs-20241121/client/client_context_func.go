@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("iqs"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -67,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ApplyFormalServiceResponse
-func (client *Client) ApplyFormalServiceWithOptions(request *ApplyFormalServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ApplyFormalServiceResponse, _err error) {
+func (client *Client) ApplyFormalServiceWithContext(ctx context.Context, request *ApplyFormalServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ApplyFormalServiceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -90,30 +41,11 @@ func (client *Client) ApplyFormalServiceWithOptions(request *ApplyFormalServiceR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ApplyFormalServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 申请正式开通
-//
-// @param request - ApplyFormalServiceRequest
-//
-// @return ApplyFormalServiceResponse
-func (client *Client) ApplyFormalService(request *ApplyFormalServiceRequest) (_result *ApplyFormalServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ApplyFormalServiceResponse{}
-	_body, _err := client.ApplyFormalServiceWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -126,7 +58,7 @@ func (client *Client) ApplyFormalService(request *ApplyFormalServiceRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckAccountTypeResponse
-func (client *Client) CheckAccountTypeWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CheckAccountTypeResponse, _err error) {
+func (client *Client) CheckAccountTypeWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CheckAccountTypeResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -142,28 +74,11 @@ func (client *Client) CheckAccountTypeWithOptions(headers map[string]*string, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckAccountTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 校验账号类型
-//
-// @return CheckAccountTypeResponse
-func (client *Client) CheckAccountType() (_result *CheckAccountTypeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CheckAccountTypeResponse{}
-	_body, _err := client.CheckAccountTypeWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -178,7 +93,7 @@ func (client *Client) CheckAccountType() (_result *CheckAccountTypeResponse, _er
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DownloadApiCallDailyDetailResponse
-func (client *Client) DownloadApiCallDailyDetailWithOptions(request *DownloadApiCallDailyDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DownloadApiCallDailyDetailResponse, _err error) {
+func (client *Client) DownloadApiCallDailyDetailWithContext(ctx context.Context, request *DownloadApiCallDailyDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DownloadApiCallDailyDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -201,30 +116,11 @@ func (client *Client) DownloadApiCallDailyDetailWithOptions(request *DownloadApi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DownloadApiCallDailyDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 下载接口计量日明细
-//
-// @param request - DownloadApiCallDailyDetailRequest
-//
-// @return DownloadApiCallDailyDetailResponse
-func (client *Client) DownloadApiCallDailyDetail(request *DownloadApiCallDailyDetailRequest) (_result *DownloadApiCallDailyDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DownloadApiCallDailyDetailResponse{}
-	_body, _err := client.DownloadApiCallDailyDetailWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -239,7 +135,7 @@ func (client *Client) DownloadApiCallDailyDetail(request *DownloadApiCallDailyDe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DownloadMeteringDailyDetailResponse
-func (client *Client) DownloadMeteringDailyDetailWithOptions(request *DownloadMeteringDailyDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DownloadMeteringDailyDetailResponse, _err error) {
+func (client *Client) DownloadMeteringDailyDetailWithContext(ctx context.Context, request *DownloadMeteringDailyDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DownloadMeteringDailyDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -262,30 +158,11 @@ func (client *Client) DownloadMeteringDailyDetailWithOptions(request *DownloadMe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DownloadMeteringDailyDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 下载接口计量日明细
-//
-// @param request - DownloadMeteringDailyDetailRequest
-//
-// @return DownloadMeteringDailyDetailResponse
-func (client *Client) DownloadMeteringDailyDetail(request *DownloadMeteringDailyDetailRequest) (_result *DownloadMeteringDailyDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DownloadMeteringDailyDetailResponse{}
-	_body, _err := client.DownloadMeteringDailyDetailWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -300,7 +177,7 @@ func (client *Client) DownloadMeteringDailyDetail(request *DownloadMeteringDaily
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExpandSearchExpiredTimeResponse
-func (client *Client) ExpandSearchExpiredTimeWithOptions(request *ExpandSearchExpiredTimeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExpandSearchExpiredTimeResponse, _err error) {
+func (client *Client) ExpandSearchExpiredTimeWithContext(ctx context.Context, request *ExpandSearchExpiredTimeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExpandSearchExpiredTimeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -323,30 +200,11 @@ func (client *Client) ExpandSearchExpiredTimeWithOptions(request *ExpandSearchEx
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExpandSearchExpiredTimeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 延长测试时间
-//
-// @param request - ExpandSearchExpiredTimeRequest
-//
-// @return ExpandSearchExpiredTimeResponse
-func (client *Client) ExpandSearchExpiredTime(request *ExpandSearchExpiredTimeRequest) (_result *ExpandSearchExpiredTimeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ExpandSearchExpiredTimeResponse{}
-	_body, _err := client.ExpandSearchExpiredTimeWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -359,7 +217,7 @@ func (client *Client) ExpandSearchExpiredTime(request *ExpandSearchExpiredTimeRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAccountConfigInfoResponse
-func (client *Client) GetAccountConfigInfoWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAccountConfigInfoResponse, _err error) {
+func (client *Client) GetAccountConfigInfoWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAccountConfigInfoResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -375,28 +233,11 @@ func (client *Client) GetAccountConfigInfoWithOptions(headers map[string]*string
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAccountConfigInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取账号配置信息
-//
-// @return GetAccountConfigInfoResponse
-func (client *Client) GetAccountConfigInfo() (_result *GetAccountConfigInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetAccountConfigInfoResponse{}
-	_body, _err := client.GetAccountConfigInfoWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -409,7 +250,7 @@ func (client *Client) GetAccountConfigInfo() (_result *GetAccountConfigInfoRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAccountReviewRecordResponse
-func (client *Client) GetAccountReviewRecordWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAccountReviewRecordResponse, _err error) {
+func (client *Client) GetAccountReviewRecordWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAccountReviewRecordResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -425,28 +266,11 @@ func (client *Client) GetAccountReviewRecordWithOptions(headers map[string]*stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAccountReviewRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询用户申请记录
-//
-// @return GetAccountReviewRecordResponse
-func (client *Client) GetAccountReviewRecord() (_result *GetAccountReviewRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetAccountReviewRecordResponse{}
-	_body, _err := client.GetAccountReviewRecordWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -461,7 +285,7 @@ func (client *Client) GetAccountReviewRecord() (_result *GetAccountReviewRecordR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMeteringSummaryResponse
-func (client *Client) GetMeteringSummaryWithOptions(request *GetMeteringSummaryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMeteringSummaryResponse, _err error) {
+func (client *Client) GetMeteringSummaryWithContext(ctx context.Context, request *GetMeteringSummaryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMeteringSummaryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -505,30 +329,11 @@ func (client *Client) GetMeteringSummaryWithOptions(request *GetMeteringSummaryR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMeteringSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询计量汇总信息
-//
-// @param request - GetMeteringSummaryRequest
-//
-// @return GetMeteringSummaryResponse
-func (client *Client) GetMeteringSummary(request *GetMeteringSummaryRequest) (_result *GetMeteringSummaryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetMeteringSummaryResponse{}
-	_body, _err := client.GetMeteringSummaryWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -541,7 +346,7 @@ func (client *Client) GetMeteringSummary(request *GetMeteringSummaryRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetServiceConfigResponse
-func (client *Client) GetServiceConfigWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetServiceConfigResponse, _err error) {
+func (client *Client) GetServiceConfigWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetServiceConfigResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -557,28 +362,11 @@ func (client *Client) GetServiceConfigWithOptions(headers map[string]*string, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetServiceConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询服务额度信息
-//
-// @return GetServiceConfigResponse
-func (client *Client) GetServiceConfig() (_result *GetServiceConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetServiceConfigResponse{}
-	_body, _err := client.GetServiceConfigWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -593,7 +381,7 @@ func (client *Client) GetServiceConfig() (_result *GetServiceConfigResponse, _er
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListApiCallDailyDetailResponse
-func (client *Client) ListApiCallDailyDetailWithOptions(request *ListApiCallDailyDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListApiCallDailyDetailResponse, _err error) {
+func (client *Client) ListApiCallDailyDetailWithContext(ctx context.Context, request *ListApiCallDailyDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListApiCallDailyDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -641,30 +429,11 @@ func (client *Client) ListApiCallDailyDetailWithOptions(request *ListApiCallDail
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListApiCallDailyDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询Api调用量（性能）日明细
-//
-// @param request - ListApiCallDailyDetailRequest
-//
-// @return ListApiCallDailyDetailResponse
-func (client *Client) ListApiCallDailyDetail(request *ListApiCallDailyDetailRequest) (_result *ListApiCallDailyDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListApiCallDailyDetailResponse{}
-	_body, _err := client.ListApiCallDailyDetailWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -677,7 +446,7 @@ func (client *Client) ListApiCallDailyDetail(request *ListApiCallDailyDetailRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListApiNamesResponse
-func (client *Client) ListApiNamesWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListApiNamesResponse, _err error) {
+func (client *Client) ListApiNamesWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListApiNamesResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -693,28 +462,11 @@ func (client *Client) ListApiNamesWithOptions(headers map[string]*string, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListApiNamesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Api名称列表
-//
-// @return ListApiNamesResponse
-func (client *Client) ListApiNames() (_result *ListApiNamesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListApiNamesResponse{}
-	_body, _err := client.ListApiNamesWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -729,7 +481,7 @@ func (client *Client) ListApiNames() (_result *ListApiNamesResponse, _err error)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMeteringDailyDetailResponse
-func (client *Client) ListMeteringDailyDetailWithOptions(request *ListMeteringDailyDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMeteringDailyDetailResponse, _err error) {
+func (client *Client) ListMeteringDailyDetailWithContext(ctx context.Context, request *ListMeteringDailyDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMeteringDailyDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -781,30 +533,11 @@ func (client *Client) ListMeteringDailyDetailWithOptions(request *ListMeteringDa
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListMeteringDailyDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询计量日明细信息
-//
-// @param request - ListMeteringDailyDetailRequest
-//
-// @return ListMeteringDailyDetailResponse
-func (client *Client) ListMeteringDailyDetail(request *ListMeteringDailyDetailRequest) (_result *ListMeteringDailyDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListMeteringDailyDetailResponse{}
-	_body, _err := client.ListMeteringDailyDetailWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -817,7 +550,7 @@ func (client *Client) ListMeteringDailyDetail(request *ListMeteringDailyDetailRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSubAccountInfoResponse
-func (client *Client) ListSubAccountInfoWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSubAccountInfoResponse, _err error) {
+func (client *Client) ListSubAccountInfoWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSubAccountInfoResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -833,28 +566,11 @@ func (client *Client) ListSubAccountInfoWithOptions(headers map[string]*string, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSubAccountInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询主账号的所有子账号信息
-//
-// @return ListSubAccountInfoResponse
-func (client *Client) ListSubAccountInfo() (_result *ListSubAccountInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListSubAccountInfoResponse{}
-	_body, _err := client.ListSubAccountInfoWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -869,7 +585,7 @@ func (client *Client) ListSubAccountInfo() (_result *ListSubAccountInfoResponse,
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ManageSearchAccountInfoResponse
-func (client *Client) ManageSearchAccountInfoWithOptions(request *ManageSearchAccountInfoRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ManageSearchAccountInfoResponse, _err error) {
+func (client *Client) ManageSearchAccountInfoWithContext(ctx context.Context, request *ManageSearchAccountInfoRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ManageSearchAccountInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -892,29 +608,10 @@ func (client *Client) ManageSearchAccountInfoWithOptions(request *ManageSearchAc
 		BodyType:    dara.String("json"),
 	}
 	_result = &ManageSearchAccountInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 管理智搜用户
-//
-// @param request - ManageSearchAccountInfoRequest
-//
-// @return ManageSearchAccountInfoResponse
-func (client *Client) ManageSearchAccountInfo(request *ManageSearchAccountInfoRequest) (_result *ManageSearchAccountInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ManageSearchAccountInfoResponse{}
-	_body, _err := client.ManageSearchAccountInfoWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
