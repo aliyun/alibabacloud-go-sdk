@@ -9,6 +9,8 @@ type iGetIqsUsageRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCallerId(v string) *GetIqsUsageRequest
+	GetCallerId() *string
 	SetEndDate(v string) *GetIqsUsageRequest
 	GetEndDate() *string
 	SetStartDate(v string) *GetIqsUsageRequest
@@ -16,6 +18,7 @@ type iGetIqsUsageRequest interface {
 }
 
 type GetIqsUsageRequest struct {
+	CallerId *string `json:"callerId,omitempty" xml:"callerId,omitempty"`
 	// example:
 	//
 	// 20241017
@@ -34,12 +37,21 @@ func (s GetIqsUsageRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetIqsUsageRequest) GetCallerId() *string {
+	return s.CallerId
+}
+
 func (s *GetIqsUsageRequest) GetEndDate() *string {
 	return s.EndDate
 }
 
 func (s *GetIqsUsageRequest) GetStartDate() *string {
 	return s.StartDate
+}
+
+func (s *GetIqsUsageRequest) SetCallerId(v string) *GetIqsUsageRequest {
+	s.CallerId = &v
+	return s
 }
 
 func (s *GetIqsUsageRequest) SetEndDate(v string) *GetIqsUsageRequest {

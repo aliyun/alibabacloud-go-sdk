@@ -364,6 +364,10 @@ func (client *Client) GetIqsUsageWithOptions(request *GetIqsUsageRequest, header
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallerId) {
+		query["callerId"] = request.CallerId
+	}
+
 	if !dara.IsNil(request.EndDate) {
 		query["endDate"] = request.EndDate
 	}

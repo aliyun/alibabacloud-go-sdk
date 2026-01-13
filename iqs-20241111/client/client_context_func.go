@@ -259,6 +259,10 @@ func (client *Client) GetIqsUsageWithContext(ctx context.Context, request *GetIq
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallerId) {
+		query["callerId"] = request.CallerId
+	}
+
 	if !dara.IsNil(request.EndDate) {
 		query["endDate"] = request.EndDate
 	}
