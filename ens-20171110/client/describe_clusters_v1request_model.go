@@ -18,14 +18,20 @@ type iDescribeClustersV1Request interface {
 }
 
 type DescribeClustersV1Request struct {
+	// The name of the ECS instance.
+	//
 	// example:
 	//
 	// eck-xxxxxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-58
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// System specified parameters. Set the value to **DescribeClustersV1**.
+	//
 	// example:
 	//
 	// test-eck-name

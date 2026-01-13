@@ -5851,7 +5851,7 @@ func (client *Client) DescribeClusterKubeConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询集群列表
+// Queries a list of clusters.
 //
 // @param request - DescribeClustersV1Request
 //

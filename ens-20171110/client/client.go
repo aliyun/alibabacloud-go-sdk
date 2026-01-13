@@ -8020,7 +8020,7 @@ func (client *Client) DescribeClusterKubeConfig(request *DescribeClusterKubeConf
 
 // Summary:
 //
-// 查询集群列表
+// Queries a list of clusters.
 //
 // @param request - DescribeClustersV1Request
 //
@@ -8072,7 +8072,7 @@ func (client *Client) DescribeClustersV1WithOptions(request *DescribeClustersV1R
 
 // Summary:
 //
-// 查询集群列表
+// Queries a list of clusters.
 //
 // @param request - DescribeClustersV1Request
 //
@@ -16115,6 +16115,53 @@ func (client *Client) ImportKeyPair(request *ImportKeyPairRequest) (_result *Imp
 	runtime := &dara.RuntimeOptions{}
 	_result = &ImportKeyPairResponse{}
 	_body, _err := client.ImportKeyPairWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 为当前用户创建ENS的服务关联角色（SLR），管控资源。
+//
+// @param request - InitializeENSECKServiceRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InitializeENSECKServiceRoleResponse
+func (client *Client) InitializeENSECKServiceRoleWithOptions(runtime *dara.RuntimeOptions) (_result *InitializeENSECKServiceRoleResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("InitializeENSECKServiceRole"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InitializeENSECKServiceRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 为当前用户创建ENS的服务关联角色（SLR），管控资源。
+//
+// @return InitializeENSECKServiceRoleResponse
+func (client *Client) InitializeENSECKServiceRole() (_result *InitializeENSECKServiceRoleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &InitializeENSECKServiceRoleResponse{}
+	_body, _err := client.InitializeENSECKServiceRoleWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}

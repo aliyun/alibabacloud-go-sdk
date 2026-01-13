@@ -16,6 +16,7 @@ type iDescribeClustersV1ResponseBody interface {
 }
 
 type DescribeClustersV1ResponseBody struct {
+	// An array that consists of the information about clusters.
 	Clusters []*DescribeClustersV1ResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -65,14 +66,20 @@ func (s *DescribeClustersV1ResponseBody) Validate() error {
 }
 
 type DescribeClustersV1ResponseBodyClusters struct {
+	// The user IDs.
+	//
 	// example:
 	//
 	// 1375383353108460
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The cluster instance ID.
+	//
 	// example:
 	//
 	// eck-xxxxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The kubeconfig file of the cluster.
+	//
 	// example:
 	//
 	// {
@@ -141,44 +148,66 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	//
 	//       }
 	Config interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The pod CIDR block. You can specify 10.0.0.0/8, 172.16-31.0.0/12-16, 192.168.0.0/16, or their subnets as the pod CIDR block. The pod CIDR block cannot overlap with the CIDR block of the VPC in which the cluster is deployed and the CIDR blocks of existing clusters in the VPC. You cannot modify the pod CIDR block after you create the cluster.
+	//
 	// example:
 	//
 	// 10.0.0.0/8
-	ContainerCidr      *string                                                   `json:"ContainerCidr,omitempty" xml:"ContainerCidr,omitempty"`
+	ContainerCidr *string `json:"ContainerCidr,omitempty" xml:"ContainerCidr,omitempty"`
+	// Control plane configuration.
 	ControlPlaneConfig *DescribeClustersV1ResponseBodyClustersControlPlaneConfig `json:"ControlPlaneConfig,omitempty" xml:"ControlPlaneConfig,omitempty" type:"Struct"`
+	// The ID of the ENS node.
+	//
 	// example:
 	//
 	// cn-hangzhou-55
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The cluster access authentication token.
+	//
 	// example:
 	//
 	// xxxxxxxxxx.yyyyyyy
 	JoinToken *string `json:"JoinToken,omitempty" xml:"JoinToken,omitempty"`
+	// The Kubernetes version of the cluster. The Kubernetes versions supported are the same as the Kubernetes versions supported by open source Kubernetes. We recommend that you specify the latest Kubernetes version. If you do not specify this parameter, the latest Kubernetes version is used.
+	//
 	// example:
 	//
 	// 1.31.9-aliyunedge.1
 	KubernetesVersion *string `json:"KubernetesVersion,omitempty" xml:"KubernetesVersion,omitempty"`
+	// The ID of the ALB instance.
+	//
 	// example:
 	//
 	// lb-58dngw0fyimzzvwljfec7hy0z
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The name of the monitoring object.
+	//
 	// example:
 	//
 	// test-eck-name
-	Name          *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// For each vSwitch that allocates IP addresses to worker nodes, you must select a vSwitch in the same zone to allocate IP addresses to pods. If you do not specify this parameter, vswitch_ids is used by default.
 	PodVswitchIds []*string `json:"PodVswitchIds,omitempty" xml:"PodVswitchIds,omitempty" type:"Repeated"`
+	// Specifies whether to enable Internet access for the application. You can use an elastic IP address (EIP) to expose the API server. This way, you can access the cluster over the Internet. Valid values: true: enables Internet access for the application. false: disables Internet access to the API server of the cluster. If you set the value to false, the API server cannot be accessed over the Internet.
+	//
 	// example:
 	//
 	// true
 	PublicAccess *bool `json:"PublicAccess,omitempty" xml:"PublicAccess,omitempty"`
+	// Valid values: 10.0.0.0/16-24, 172.16-31.0.0/16-24, and 192.168.0.0/16-24. The Service CIDR block cannot overlap with the VPC CIDR block 10.1.0.0/21 or the CIDR blocks of existing ACK clusters in the VPC. You cannot change the Service CIDR block after you create the cluster.
+	//
 	// example:
 	//
 	// 192.168.0.0/16
 	ServiceCidr *string `json:"ServiceCidr,omitempty" xml:"ServiceCidr,omitempty"`
+	State       *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The VPC of the cluster.
+	//
 	// example:
 	//
 	// n-5wsgr3xeolb2ist303wp3cscp
-	VpcId      *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// the id of the vswitch to which the cluster node belongs. The ENS region of the vswitch_ids service must be the same as that of the ens_region_id.
 	VswitchIds []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
 }
 
@@ -240,6 +269,10 @@ func (s *DescribeClustersV1ResponseBodyClusters) GetPublicAccess() *bool {
 
 func (s *DescribeClustersV1ResponseBodyClusters) GetServiceCidr() *string {
 	return s.ServiceCidr
+}
+
+func (s *DescribeClustersV1ResponseBodyClusters) GetState() *string {
+	return s.State
 }
 
 func (s *DescribeClustersV1ResponseBodyClusters) GetVpcId() *string {
@@ -315,6 +348,11 @@ func (s *DescribeClustersV1ResponseBodyClusters) SetServiceCidr(v string) *Descr
 	return s
 }
 
+func (s *DescribeClustersV1ResponseBodyClusters) SetState(v string) *DescribeClustersV1ResponseBodyClusters {
+	s.State = &v
+	return s
+}
+
 func (s *DescribeClustersV1ResponseBodyClusters) SetVpcId(v string) *DescribeClustersV1ResponseBodyClusters {
 	s.VpcId = &v
 	return s
@@ -335,30 +373,44 @@ func (s *DescribeClustersV1ResponseBodyClusters) Validate() error {
 }
 
 type DescribeClustersV1ResponseBodyClustersControlPlaneConfig struct {
+	// The runtime type used by the nodes.
+	//
 	// example:
 	//
 	// containerd
 	ContainerRuntime *string `json:"ContainerRuntime,omitempty" xml:"ContainerRuntime,omitempty"`
+	// The ID of the custom image.
+	//
 	// example:
 	//
 	// m-68be8cb9f71fhyvjekxa23qsf
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The instance type.
+	//
 	// example:
 	//
 	// ens.sn1.medium
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	// The node port range.
+	//
 	// example:
 	//
 	// 30000-32767
 	NodePortRange *string `json:"NodePortRange,omitempty" xml:"NodePortRange,omitempty"`
+	// The number of control plane nodes.
+	//
 	// example:
 	//
 	// 5
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The system disk type of the node. Valid value: local_ssd, cloud_ssd, cloud_efficiency, and local_hdd.
+	//
 	// example:
 	//
 	// cloud_ssd
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	// The size of the system disk. Unit: GB.
+	//
 	// example:
 	//
 	// 100
