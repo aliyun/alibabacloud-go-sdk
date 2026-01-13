@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -57,6 +58,84 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 绑定vpc
+//
+// @param request - BindInstance2VpcRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindInstance2VpcResponse
+func (client *Client) BindInstance2VpcWithOptions(request *BindInstance2VpcRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BindInstance2VpcResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceName) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.InstanceVpcName) {
+		body["InstanceVpcName"] = request.InstanceVpcName
+	}
+
+	if !dara.IsNil(request.VirtualSwitchId) {
+		body["VirtualSwitchId"] = request.VirtualSwitchId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		body["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BindInstance2Vpc"),
+		Version:     dara.String("2020-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/openapi/bindinstance2vpc"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BindInstance2VpcResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 绑定vpc
+//
+// @param request - BindInstance2VpcRequest
+//
+// @return BindInstance2VpcResponse
+func (client *Client) BindInstance2Vpc(request *BindInstance2VpcRequest) (_result *BindInstance2VpcResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BindInstance2VpcResponse{}
+	_body, _err := client.BindInstance2VpcWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Changes the resource group to which an instance belongs.
 //
 // @param request - ChangeResourceGroupRequest
@@ -67,9 +146,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.NewResourceGroupId) {
@@ -135,9 +216,11 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 //
 // @return CheckInstancePolicyResponse
 func (client *Client) CheckInstancePolicyWithOptions(request *CheckInstancePolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CheckInstancePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceName) {
@@ -211,9 +294,11 @@ func (client *Client) CheckInstancePolicy(request *CheckInstancePolicyRequest) (
 //
 // @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterType) {
@@ -319,9 +404,11 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 //
 // @return CreateVCUInstanceResponse
 func (client *Client) CreateVCUInstanceWithOptions(request *CreateVCUInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateVCUInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
@@ -431,9 +518,11 @@ func (client *Client) CreateVCUInstance(request *CreateVCUInstanceRequest) (_res
 //
 // @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceName) {
@@ -509,9 +598,11 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 //
 // @return DeleteInstancePolicyResponse
 func (client *Client) DeleteInstancePolicyWithOptions(request *DeleteInstancePolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteInstancePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceName) {
@@ -573,6 +664,72 @@ func (client *Client) DeleteInstancePolicy(request *DeleteInstancePolicyRequest)
 
 // Summary:
 //
+// 删除VCU实例
+//
+// @param request - DeleteVCUInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVCUInstanceResponse
+func (client *Client) DeleteVCUInstanceWithOptions(request *DeleteVCUInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteVCUInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteVCUInstance"),
+		Version:     dara.String("2020-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/openapi/deletevcuinstance"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteVCUInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除VCU实例
+//
+// @param request - DeleteVCUInstanceRequest
+//
+// @return DeleteVCUInstanceResponse
+func (client *Client) DeleteVCUInstance(request *DeleteVCUInstanceRequest) (_result *DeleteVCUInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteVCUInstanceResponse{}
+	_body, _err := client.DeleteVCUInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries supported regions.
 //
 // @param request - DescribeRegionsRequest
@@ -583,9 +740,11 @@ func (client *Client) DeleteInstancePolicy(request *DeleteInstancePolicyRequest)
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -647,9 +806,11 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 //
 // @return GetInstanceResponse
 func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceName) {
@@ -701,6 +862,56 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 
 // Summary:
 //
+// 列举集群类型
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListClusterTypeResponse
+func (client *Client) ListClusterTypeWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListClusterTypeResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListClusterType"),
+		Version:     dara.String("2020-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/openapi/listclustertype"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListClusterTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举集群类型
+//
+// @return ListClusterTypeResponse
+func (client *Client) ListClusterType() (_result *ListClusterTypeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListClusterTypeResponse{}
+	_body, _err := client.ListClusterTypeWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries instances.
 //
 // @param tmpReq - ListInstancesRequest
@@ -711,9 +922,11 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 //
 // @return ListInstancesResponse
 func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -809,9 +1022,11 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListTagResourcesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -889,6 +1104,154 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
+// 获取实例的vpcInfo列表
+//
+// @param request - ListVpcInfoByInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVpcInfoByInstanceResponse
+func (client *Client) ListVpcInfoByInstanceWithOptions(request *ListVpcInfoByInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListVpcInfoByInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVpcInfoByInstance"),
+		Version:     dara.String("2020-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/openapi/listvpcinfobyinstance"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVpcInfoByInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例的vpcInfo列表
+//
+// @param request - ListVpcInfoByInstanceRequest
+//
+// @return ListVpcInfoByInstanceResponse
+func (client *Client) ListVpcInfoByInstance(request *ListVpcInfoByInstanceRequest) (_result *ListVpcInfoByInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListVpcInfoByInstanceResponse{}
+	_body, _err := client.ListVpcInfoByInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例的vpcInfo列表
+//
+// @param request - ListVpcInfoByVpcRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVpcInfoByVpcResponse
+func (client *Client) ListVpcInfoByVpcWithOptions(request *ListVpcInfoByVpcRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListVpcInfoByVpcResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVpcInfoByVpc"),
+		Version:     dara.String("2020-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/openapi/listvpcinfobyvpc"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVpcInfoByVpcResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例的vpcInfo列表
+//
+// @param request - ListVpcInfoByVpcRequest
+//
+// @return ListVpcInfoByVpcResponse
+func (client *Client) ListVpcInfoByVpc(request *ListVpcInfoByVpcRequest) (_result *ListVpcInfoByVpcResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListVpcInfoByVpcResponse{}
+	_body, _err := client.ListVpcInfoByVpcWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds tags to instances.
 //
 // @param request - TagResourcesRequest
@@ -899,9 +1262,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceIds) {
@@ -961,6 +1326,76 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
+// 解绑vpc
+//
+// @param request - UnbindInstance2VpcRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindInstance2VpcResponse
+func (client *Client) UnbindInstance2VpcWithOptions(request *UnbindInstance2VpcRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UnbindInstance2VpcResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceName) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.InstanceVpcName) {
+		body["InstanceVpcName"] = request.InstanceVpcName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UnbindInstance2Vpc"),
+		Version:     dara.String("2020-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/openapi/unbindinstance2vpc"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UnbindInstance2VpcResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑vpc
+//
+// @param request - UnbindInstance2VpcRequest
+//
+// @return UnbindInstance2VpcResponse
+func (client *Client) UnbindInstance2Vpc(request *UnbindInstance2VpcRequest) (_result *UnbindInstance2VpcResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UnbindInstance2VpcResponse{}
+	_body, _err := client.UnbindInstance2VpcWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Removes tags from resources.
 //
 // Description:
@@ -975,9 +1410,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -1055,9 +1492,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // @return UpdateInstanceResponse
 func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
@@ -1147,9 +1586,11 @@ func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *U
 //
 // @return UpdateInstanceElasticVCUUpperLimitResponse
 func (client *Client) UpdateInstanceElasticVCUUpperLimitWithOptions(request *UpdateInstanceElasticVCUUpperLimitRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceElasticVCUUpperLimitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ElasticVCUUpperLimit) {
@@ -1223,9 +1664,11 @@ func (client *Client) UpdateInstanceElasticVCUUpperLimit(request *UpdateInstance
 //
 // @return UpdateInstancePolicyResponse
 func (client *Client) UpdateInstancePolicyWithOptions(request *UpdateInstancePolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstancePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceName) {

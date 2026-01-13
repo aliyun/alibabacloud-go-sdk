@@ -17,13 +17,8 @@ type iDescribeRegionsResponseBody interface {
 
 type DescribeRegionsResponseBody struct {
 	// The regions.
-	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The request ID, which can be used to troubleshoot issues.
-	//
-	// example:
-	//
-	// B37BBA04-D827-55C8-B901-5264B904E8C6
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -53,7 +48,16 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 func (s *DescribeRegionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Regions != nil {
+		for _, item := range s.Regions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRegionsResponseBodyRegions struct {
