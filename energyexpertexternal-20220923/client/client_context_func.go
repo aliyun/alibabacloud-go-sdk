@@ -299,6 +299,10 @@ func (client *Client) ChatWithContext(ctx context.Context, request *ChatRequest,
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.DocumentIds) {
+		body["documentIds"] = request.DocumentIds
+	}
+
 	if !dara.IsNil(request.Question) {
 		body["question"] = request.Question
 	}
@@ -383,6 +387,10 @@ func (client *Client) ChatStreamWithContext(ctx context.Context, request *ChatSt
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.DocumentIds) {
+		body["documentIds"] = request.DocumentIds
+	}
+
 	if !dara.IsNil(request.Question) {
 		body["question"] = request.Question
 	}
@@ -2714,6 +2722,77 @@ func (client *Client) RecalculateCarbonEmissionWithContext(ctx context.Context, 
 
 // Summary:
 //
+// 支持多文件夹ID或文件ID检索的RAG结果获取接口，供客户端自行加工结果并嵌入业务逻辑。
+//
+// @param request - RetrieveRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RetrieveResponse
+func (client *Client) RetrieveWithContext(ctx context.Context, request *RetrieveRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RetrieveResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DocumentIds) {
+		body["documentIds"] = request.DocumentIds
+	}
+
+	if !dara.IsNil(request.FolderIds) {
+		body["folderIds"] = request.FolderIds
+	}
+
+	if !dara.IsNil(request.PreRetrieveTopK) {
+		body["preRetrieveTopK"] = request.PreRetrieveTopK
+	}
+
+	if !dara.IsNil(request.Query) {
+		body["query"] = request.Query
+	}
+
+	if !dara.IsNil(request.RerankerThreshold) {
+		body["rerankerThreshold"] = request.RerankerThreshold
+	}
+
+	if !dara.IsNil(request.TopK) {
+		body["topK"] = request.TopK
+	}
+
+	if !dara.IsNil(request.UseReranker) {
+		body["useReranker"] = request.UseReranker
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("Retrieve"),
+		Version:     dara.String("2022-09-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/aidoc/knowledgebase/retrieve"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RetrieveResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // [Important] This api is no longer maintained, please use the Chat api.
 //
 // @param request - SendDocumentAskQuestionRequest
@@ -3149,6 +3228,10 @@ func (client *Client) chatStreamWithSSECtx_opYieldFunc(_yield chan *ChatStreamRe
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.DocumentIds) {
+		body["documentIds"] = request.DocumentIds
+	}
+
 	if !dara.IsNil(request.Question) {
 		body["question"] = request.Question
 	}

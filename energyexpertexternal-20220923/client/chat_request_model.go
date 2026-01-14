@@ -9,6 +9,8 @@ type iChatRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDocumentIds(v []*int64) *ChatRequest
+	GetDocumentIds() []*int64
 	SetQuestion(v string) *ChatRequest
 	GetQuestion() *string
 	SetSessionId(v string) *ChatRequest
@@ -16,6 +18,7 @@ type iChatRequest interface {
 }
 
 type ChatRequest struct {
+	DocumentIds []*int64 `json:"documentIds,omitempty" xml:"documentIds,omitempty" type:"Repeated"`
 	// Q&A content.
 	//
 	// This parameter is required.
@@ -46,12 +49,21 @@ func (s ChatRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ChatRequest) GetDocumentIds() []*int64 {
+	return s.DocumentIds
+}
+
 func (s *ChatRequest) GetQuestion() *string {
 	return s.Question
 }
 
 func (s *ChatRequest) GetSessionId() *string {
 	return s.SessionId
+}
+
+func (s *ChatRequest) SetDocumentIds(v []*int64) *ChatRequest {
+	s.DocumentIds = v
+	return s
 }
 
 func (s *ChatRequest) SetQuestion(v string) *ChatRequest {
