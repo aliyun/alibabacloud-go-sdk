@@ -15,6 +15,10 @@ type iInitializeENSECKServiceRoleResponseBody interface {
 
 type InitializeENSECKServiceRoleResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// F3B261DD-3858-4D3C-877D-303ADF374600
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
