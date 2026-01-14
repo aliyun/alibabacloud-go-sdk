@@ -4513,6 +4513,80 @@ func (client *Client) DeleteAuthResource(request *DeleteAuthResourceRequest) (_r
 
 // Summary:
 //
+// 删除黑白名单
+//
+// @param request - DeleteBlackWhiteListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBlackWhiteListResponse
+func (client *Client) DeleteBlackWhiteListWithOptions(request *DeleteBlackWhiteListRequest, runtime *dara.RuntimeOptions) (_result *DeleteBlackWhiteListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.GatewayUniqueId) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteBlackWhiteList"),
+		Version:     dara.String("2019-05-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteBlackWhiteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除黑白名单
+//
+// @param request - DeleteBlackWhiteListRequest
+//
+// @return DeleteBlackWhiteListResponse
+func (client *Client) DeleteBlackWhiteList(request *DeleteBlackWhiteListRequest) (_result *DeleteBlackWhiteListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteBlackWhiteListResponse{}
+	_body, _err := client.DeleteBlackWhiteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes circuit breaking rules.
 //
 // @param tmpReq - DeleteCircuitBreakerRulesRequest
@@ -4874,6 +4948,76 @@ func (client *Client) DeleteGateway(request *DeleteGatewayRequest) (_result *Del
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteGatewayResponse{}
 	_body, _err := client.DeleteGatewayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除网关认证
+//
+// @param request - DeleteGatewayAuthRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGatewayAuthResponse
+func (client *Client) DeleteGatewayAuthWithOptions(request *DeleteGatewayAuthRequest, runtime *dara.RuntimeOptions) (_result *DeleteGatewayAuthResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !dara.IsNil(request.GatewayUniqueId) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteGatewayAuth"),
+		Version:     dara.String("2019-05-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteGatewayAuthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除网关认证
+//
+// @param request - DeleteGatewayAuthRequest
+//
+// @return DeleteGatewayAuthResponse
+func (client *Client) DeleteGatewayAuth(request *DeleteGatewayAuthRequest) (_result *DeleteGatewayAuthResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteGatewayAuthResponse{}
+	_body, _err := client.DeleteGatewayAuthWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11901,6 +12045,94 @@ func (client *Client) ListGateway(request *ListGatewayRequest) (_result *ListGat
 
 // Summary:
 //
+// 查询网关认证
+//
+// @param tmpReq - ListGatewayAuthRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGatewayAuthResponse
+func (client *Client) ListGatewayAuthWithOptions(tmpReq *ListGatewayAuthRequest, runtime *dara.RuntimeOptions) (_result *ListGatewayAuthResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListGatewayAuthShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.FilterParams) {
+		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterParams, dara.String("FilterParams"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !dara.IsNil(request.DescSort) {
+		query["DescSort"] = request.DescSort
+	}
+
+	if !dara.IsNil(request.FilterParamsShrink) {
+		query["FilterParams"] = request.FilterParamsShrink
+	}
+
+	if !dara.IsNil(request.OrderItem) {
+		query["OrderItem"] = request.OrderItem
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGatewayAuth"),
+		Version:     dara.String("2019-05-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGatewayAuthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网关认证
+//
+// @param request - ListGatewayAuthRequest
+//
+// @return ListGatewayAuthResponse
+func (client *Client) ListGatewayAuth(request *ListGatewayAuthRequest) (_result *ListGatewayAuthResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListGatewayAuthResponse{}
+	_body, _err := client.ListGatewayAuthWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of consumers on which a gateway performs authentication operations.
 //
 // @param request - ListGatewayAuthConsumerRequest
@@ -17590,6 +17822,182 @@ func (client *Client) UpdateFlowRule(request *UpdateFlowRuleRequest) (_result *U
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateFlowRuleResponse{}
 	_body, _err := client.UpdateFlowRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新网关认证
+//
+// @param tmpReq - UpdateGatewayAuthRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGatewayAuthResponse
+func (client *Client) UpdateGatewayAuthWithOptions(tmpReq *UpdateGatewayAuthRequest, runtime *dara.RuntimeOptions) (_result *UpdateGatewayAuthResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateGatewayAuthShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AuthResourceList) {
+		request.AuthResourceListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AuthResourceList, dara.String("AuthResourceList"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DeleteResourceIdList) {
+		request.DeleteResourceIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteResourceIdList, dara.String("DeleteResourceIdList"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ExternalAuthZJSON) {
+		request.ExternalAuthZJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExternalAuthZJSON, dara.String("ExternalAuthZJSON"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ScopesList) {
+		request.ScopesListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScopesList, dara.String("ScopesList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !dara.IsNil(request.AuthResourceConfig) {
+		query["AuthResourceConfig"] = request.AuthResourceConfig
+	}
+
+	if !dara.IsNil(request.AuthResourceListShrink) {
+		query["AuthResourceList"] = request.AuthResourceListShrink
+	}
+
+	if !dara.IsNil(request.AuthResourceMode) {
+		query["AuthResourceMode"] = request.AuthResourceMode
+	}
+
+	if !dara.IsNil(request.ClientId) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientSecret) {
+		query["ClientSecret"] = request.ClientSecret
+	}
+
+	if !dara.IsNil(request.CookieDomain) {
+		query["CookieDomain"] = request.CookieDomain
+	}
+
+	if !dara.IsNil(request.DeleteResourceIdListShrink) {
+		query["DeleteResourceIdList"] = request.DeleteResourceIdListShrink
+	}
+
+	if !dara.IsNil(request.ExternalAuthZJSONShrink) {
+		query["ExternalAuthZJSON"] = request.ExternalAuthZJSONShrink
+	}
+
+	if !dara.IsNil(request.GatewayUniqueId) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.IsWhite) {
+		query["IsWhite"] = request.IsWhite
+	}
+
+	if !dara.IsNil(request.Issuer) {
+		query["Issuer"] = request.Issuer
+	}
+
+	if !dara.IsNil(request.Jwks) {
+		query["Jwks"] = request.Jwks
+	}
+
+	if !dara.IsNil(request.LoginUrl) {
+		query["LoginUrl"] = request.LoginUrl
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RedirectUrl) {
+		query["RedirectUrl"] = request.RedirectUrl
+	}
+
+	if !dara.IsNil(request.ScopesListShrink) {
+		query["ScopesList"] = request.ScopesListShrink
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Sub) {
+		query["Sub"] = request.Sub
+	}
+
+	if !dara.IsNil(request.TokenName) {
+		query["TokenName"] = request.TokenName
+	}
+
+	if !dara.IsNil(request.TokenNamePrefix) {
+		query["TokenNamePrefix"] = request.TokenNamePrefix
+	}
+
+	if !dara.IsNil(request.TokenPass) {
+		query["TokenPass"] = request.TokenPass
+	}
+
+	if !dara.IsNil(request.TokenPosition) {
+		query["TokenPosition"] = request.TokenPosition
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateGatewayAuth"),
+		Version:     dara.String("2019-05-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateGatewayAuthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新网关认证
+//
+// @param request - UpdateGatewayAuthRequest
+//
+// @return UpdateGatewayAuthResponse
+func (client *Client) UpdateGatewayAuth(request *UpdateGatewayAuthRequest) (_result *UpdateGatewayAuthResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateGatewayAuthResponse{}
+	_body, _err := client.UpdateGatewayAuthWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
