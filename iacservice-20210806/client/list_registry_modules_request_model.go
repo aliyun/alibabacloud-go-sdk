@@ -17,6 +17,8 @@ type iListRegistryModulesRequest interface {
 	GetNamespaceName() *string
 	SetNextToken(v string) *ListRegistryModulesRequest
 	GetNextToken() *string
+	SetStatus(v string) *ListRegistryModulesRequest
+	GetStatus() *string
 	SetType(v string) *ListRegistryModulesRequest
 	GetType() *string
 }
@@ -38,6 +40,7 @@ type ListRegistryModulesRequest struct {
 	//
 	// NFzbQCa7/yd7rAuSo5xZb54dD+2BRJj42DLT6GrZysw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
 	// example:
 	//
 	// system
@@ -68,6 +71,10 @@ func (s *ListRegistryModulesRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListRegistryModulesRequest) GetStatus() *string {
+	return s.Status
+}
+
 func (s *ListRegistryModulesRequest) GetType() *string {
 	return s.Type
 }
@@ -89,6 +96,11 @@ func (s *ListRegistryModulesRequest) SetNamespaceName(v string) *ListRegistryMod
 
 func (s *ListRegistryModulesRequest) SetNextToken(v string) *ListRegistryModulesRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListRegistryModulesRequest) SetStatus(v string) *ListRegistryModulesRequest {
+	s.Status = &v
 	return s
 }
 

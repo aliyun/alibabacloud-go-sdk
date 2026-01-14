@@ -2634,6 +2634,10 @@ func (client *Client) ListRegistryModulesWithContext(ctx context.Context, reques
 		query["nextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
 	if !dara.IsNil(request.Type) {
 		query["type"] = request.Type
 	}

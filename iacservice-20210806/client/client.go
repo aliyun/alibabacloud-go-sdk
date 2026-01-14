@@ -3579,6 +3579,10 @@ func (client *Client) ListRegistryModulesWithOptions(request *ListRegistryModule
 		query["nextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
 	if !dara.IsNil(request.Type) {
 		query["type"] = request.Type
 	}
