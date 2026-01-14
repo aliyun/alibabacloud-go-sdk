@@ -164,7 +164,8 @@ type ListServerGroupsResponseBodyServerGroups struct {
 	// 200
 	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
 	// The configurations of health checks.
-	HealthCheck *ListServerGroupsResponseBodyServerGroupsHealthCheck `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty" type:"Struct"`
+	HealthCheck           *ListServerGroupsResponseBodyServerGroupsHealthCheck `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty" type:"Struct"`
+	IpVersionAffinityMode *string                                              `json:"IpVersionAffinityMode,omitempty" xml:"IpVersionAffinityMode,omitempty"`
 	// Indicates whether client IP preservation is enabled. Valid values:
 	//
 	// 	- **true**
@@ -295,6 +296,10 @@ func (s *ListServerGroupsResponseBodyServerGroups) GetHealthCheck() *ListServerG
 	return s.HealthCheck
 }
 
+func (s *ListServerGroupsResponseBodyServerGroups) GetIpVersionAffinityMode() *string {
+	return s.IpVersionAffinityMode
+}
+
 func (s *ListServerGroupsResponseBodyServerGroups) GetPreserveClientIpEnabled() *bool {
 	return s.PreserveClientIpEnabled
 }
@@ -374,6 +379,11 @@ func (s *ListServerGroupsResponseBodyServerGroups) SetConnectionDrainTimeout(v i
 
 func (s *ListServerGroupsResponseBodyServerGroups) SetHealthCheck(v *ListServerGroupsResponseBodyServerGroupsHealthCheck) *ListServerGroupsResponseBodyServerGroups {
 	s.HealthCheck = v
+	return s
+}
+
+func (s *ListServerGroupsResponseBodyServerGroups) SetIpVersionAffinityMode(v string) *ListServerGroupsResponseBodyServerGroups {
+	s.IpVersionAffinityMode = &v
 	return s
 }
 

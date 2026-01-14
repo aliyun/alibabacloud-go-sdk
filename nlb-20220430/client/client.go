@@ -836,6 +836,10 @@ func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupReq
 		bodyFlat["HealthCheckConfig"] = request.HealthCheckConfig
 	}
 
+	if !dara.IsNil(request.IpVersionAffinityMode) {
+		body["IpVersionAffinityMode"] = request.IpVersionAffinityMode
+	}
+
 	if !dara.IsNil(request.PreserveClientIpEnabled) {
 		body["PreserveClientIpEnabled"] = request.PreserveClientIpEnabled
 	}
@@ -4300,6 +4304,10 @@ func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServe
 	bodyFlat := map[string]interface{}{}
 	if !dara.IsNil(request.HealthCheckConfig) {
 		bodyFlat["HealthCheckConfig"] = request.HealthCheckConfig
+	}
+
+	if !dara.IsNil(request.IpVersionAffinityMode) {
+		body["IpVersionAffinityMode"] = request.IpVersionAffinityMode
 	}
 
 	if !dara.IsNil(request.PreserveClientIpEnabled) {

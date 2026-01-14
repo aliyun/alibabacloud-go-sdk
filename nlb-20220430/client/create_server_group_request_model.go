@@ -23,6 +23,8 @@ type iCreateServerGroupRequest interface {
 	GetDryRun() *bool
 	SetHealthCheckConfig(v *CreateServerGroupRequestHealthCheckConfig) *CreateServerGroupRequest
 	GetHealthCheckConfig() *CreateServerGroupRequestHealthCheckConfig
+	SetIpVersionAffinityMode(v string) *CreateServerGroupRequest
+	GetIpVersionAffinityMode() *string
 	SetPreserveClientIpEnabled(v bool) *CreateServerGroupRequest
 	GetPreserveClientIpEnabled() *bool
 	SetProtocol(v string) *CreateServerGroupRequest
@@ -101,7 +103,8 @@ type CreateServerGroupRequest struct {
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The configurations of health checks.
-	HealthCheckConfig *CreateServerGroupRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
+	HealthCheckConfig     *CreateServerGroupRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
+	IpVersionAffinityMode *string                                    `json:"IpVersionAffinityMode,omitempty" xml:"IpVersionAffinityMode,omitempty"`
 	// Specifies whether to enable client IP preservation. Valid values:
 	//
 	// 	- **true*	- (default)
@@ -244,6 +247,10 @@ func (s *CreateServerGroupRequest) GetHealthCheckConfig() *CreateServerGroupRequ
 	return s.HealthCheckConfig
 }
 
+func (s *CreateServerGroupRequest) GetIpVersionAffinityMode() *string {
+	return s.IpVersionAffinityMode
+}
+
 func (s *CreateServerGroupRequest) GetPreserveClientIpEnabled() *bool {
 	return s.PreserveClientIpEnabled
 }
@@ -312,6 +319,11 @@ func (s *CreateServerGroupRequest) SetDryRun(v bool) *CreateServerGroupRequest {
 
 func (s *CreateServerGroupRequest) SetHealthCheckConfig(v *CreateServerGroupRequestHealthCheckConfig) *CreateServerGroupRequest {
 	s.HealthCheckConfig = v
+	return s
+}
+
+func (s *CreateServerGroupRequest) SetIpVersionAffinityMode(v string) *CreateServerGroupRequest {
+	s.IpVersionAffinityMode = &v
 	return s
 }
 
