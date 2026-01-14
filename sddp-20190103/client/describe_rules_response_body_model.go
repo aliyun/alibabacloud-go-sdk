@@ -117,6 +117,10 @@ func (s *DescribeRulesResponseBody) Validate() error {
 }
 
 type DescribeRulesResponseBodyItems struct {
+	// example:
+	//
+	// 0
+	AuditMode *int32 `json:"AuditMode,omitempty" xml:"AuditMode,omitempty"`
 	// The content type of the sensitive data detection rule. Valid values:
 	//
 	// 	- **0**: keyword
@@ -317,6 +321,10 @@ type DescribeRulesResponseBodyItems struct {
 	//
 	// 1
 	TemplateRuleIds *string `json:"TemplateRuleIds,omitempty" xml:"TemplateRuleIds,omitempty"`
+	// example:
+	//
+	// 0
+	ThreatAnalysisStatus *int32 `json:"ThreatAnalysisStatus,omitempty" xml:"ThreatAnalysisStatus,omitempty"`
 	// The ID of the account that is used to create the sensitive data detection rule.
 	//
 	// example:
@@ -343,6 +351,10 @@ func (s DescribeRulesResponseBodyItems) String() string {
 
 func (s DescribeRulesResponseBodyItems) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeRulesResponseBodyItems) GetAuditMode() *int32 {
+	return s.AuditMode
 }
 
 func (s *DescribeRulesResponseBodyItems) GetCategory() *int32 {
@@ -449,12 +461,21 @@ func (s *DescribeRulesResponseBodyItems) GetTemplateRuleIds() *string {
 	return s.TemplateRuleIds
 }
 
+func (s *DescribeRulesResponseBodyItems) GetThreatAnalysisStatus() *int32 {
+	return s.ThreatAnalysisStatus
+}
+
 func (s *DescribeRulesResponseBodyItems) GetUserId() *int64 {
 	return s.UserId
 }
 
 func (s *DescribeRulesResponseBodyItems) GetWarnLevel() *int32 {
 	return s.WarnLevel
+}
+
+func (s *DescribeRulesResponseBodyItems) SetAuditMode(v int32) *DescribeRulesResponseBodyItems {
+	s.AuditMode = &v
+	return s
 }
 
 func (s *DescribeRulesResponseBodyItems) SetCategory(v int32) *DescribeRulesResponseBodyItems {
@@ -584,6 +605,11 @@ func (s *DescribeRulesResponseBodyItems) SetTarget(v string) *DescribeRulesRespo
 
 func (s *DescribeRulesResponseBodyItems) SetTemplateRuleIds(v string) *DescribeRulesResponseBodyItems {
 	s.TemplateRuleIds = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyItems) SetThreatAnalysisStatus(v int32) *DescribeRulesResponseBodyItems {
+	s.ThreatAnalysisStatus = &v
 	return s
 }
 
