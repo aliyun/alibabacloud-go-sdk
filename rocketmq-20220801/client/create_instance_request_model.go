@@ -716,6 +716,7 @@ type CreateInstanceRequestProductInfo struct {
 	//
 	// xxx
 	StorageSecretKey *string `json:"storageSecretKey,omitempty" xml:"storageSecretKey,omitempty"`
+	TraceOn          *bool   `json:"traceOn,omitempty" xml:"traceOn,omitempty"`
 }
 
 func (s CreateInstanceRequestProductInfo) String() string {
@@ -758,6 +759,10 @@ func (s *CreateInstanceRequestProductInfo) GetStorageSecretKey() *string {
 	return s.StorageSecretKey
 }
 
+func (s *CreateInstanceRequestProductInfo) GetTraceOn() *bool {
+	return s.TraceOn
+}
+
 func (s *CreateInstanceRequestProductInfo) SetAutoScaling(v bool) *CreateInstanceRequestProductInfo {
 	s.AutoScaling = &v
 	return s
@@ -795,6 +800,11 @@ func (s *CreateInstanceRequestProductInfo) SetStorageEncryption(v bool) *CreateI
 
 func (s *CreateInstanceRequestProductInfo) SetStorageSecretKey(v string) *CreateInstanceRequestProductInfo {
 	s.StorageSecretKey = &v
+	return s
+}
+
+func (s *CreateInstanceRequestProductInfo) SetTraceOn(v bool) *CreateInstanceRequestProductInfo {
+	s.TraceOn = &v
 	return s
 }
 

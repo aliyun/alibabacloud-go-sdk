@@ -24,6 +24,8 @@ type UpdateConsumerGroupRequest struct {
 	//
 	// This parameter is required.
 	ConsumeRetryPolicy *UpdateConsumerGroupRequestConsumeRetryPolicy `json:"consumeRetryPolicy,omitempty" xml:"consumeRetryPolicy,omitempty" type:"Struct"`
+	// Deprecated
+	//
 	// The new message delivery method of the consumer group.
 	//
 	// Valid values:
@@ -31,8 +33,6 @@ type UpdateConsumerGroupRequest struct {
 	// 	- Concurrently: concurrent delivery
 	//
 	// 	- Orderly: ordered delivery
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
