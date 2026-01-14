@@ -136,9 +136,10 @@ type DescribeCustomAgentResponseBodyData struct {
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
-	Knowledge   *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
+	GmtModified         *string                                                   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Instruction         *string                                                   `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
+	Knowledge           *string                                                   `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
+	KnowledgeConfigList []*DescribeCustomAgentResponseBodyDataKnowledgeConfigList `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 20372822********
@@ -226,6 +227,10 @@ func (s *DescribeCustomAgentResponseBodyData) GetInstruction() *string {
 
 func (s *DescribeCustomAgentResponseBodyData) GetKnowledge() *string {
 	return s.Knowledge
+}
+
+func (s *DescribeCustomAgentResponseBodyData) GetKnowledgeConfigList() []*DescribeCustomAgentResponseBodyDataKnowledgeConfigList {
+	return s.KnowledgeConfigList
 }
 
 func (s *DescribeCustomAgentResponseBodyData) GetModifier() *string {
@@ -328,6 +333,11 @@ func (s *DescribeCustomAgentResponseBodyData) SetKnowledge(v string) *DescribeCu
 	return s
 }
 
+func (s *DescribeCustomAgentResponseBodyData) SetKnowledgeConfigList(v []*DescribeCustomAgentResponseBodyDataKnowledgeConfigList) *DescribeCustomAgentResponseBodyData {
+	s.KnowledgeConfigList = v
+	return s
+}
+
 func (s *DescribeCustomAgentResponseBodyData) SetModifier(v string) *DescribeCustomAgentResponseBodyData {
 	s.Modifier = &v
 	return s
@@ -382,6 +392,15 @@ func (s *DescribeCustomAgentResponseBodyData) Validate() error {
 	if s.ExecutionConfig != nil {
 		if err := s.ExecutionConfig.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.KnowledgeConfigList != nil {
+		for _, item := range s.KnowledgeConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil
@@ -442,5 +461,40 @@ func (s *DescribeCustomAgentResponseBodyDataExecutionConfig) SetSkipWebReportCon
 }
 
 func (s *DescribeCustomAgentResponseBodyDataExecutionConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeCustomAgentResponseBodyDataKnowledgeConfigList struct {
+	AccessType  *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	McpServerId *string `json:"McpServerId,omitempty" xml:"McpServerId,omitempty"`
+}
+
+func (s DescribeCustomAgentResponseBodyDataKnowledgeConfigList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeCustomAgentResponseBodyDataKnowledgeConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomAgentResponseBodyDataKnowledgeConfigList) GetAccessType() *string {
+	return s.AccessType
+}
+
+func (s *DescribeCustomAgentResponseBodyDataKnowledgeConfigList) GetMcpServerId() *string {
+	return s.McpServerId
+}
+
+func (s *DescribeCustomAgentResponseBodyDataKnowledgeConfigList) SetAccessType(v string) *DescribeCustomAgentResponseBodyDataKnowledgeConfigList {
+	s.AccessType = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyDataKnowledgeConfigList) SetMcpServerId(v string) *DescribeCustomAgentResponseBodyDataKnowledgeConfigList {
+	s.McpServerId = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyDataKnowledgeConfigList) Validate() error {
 	return dara.Validate(s)
 }
