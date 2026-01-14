@@ -23,13 +23,22 @@ type iListKnowledgeBasesResponseBody interface {
 
 type ListKnowledgeBasesResponseBody struct {
 	KnowledgeBases []*KnowledgeBase `json:"KnowledgeBases,omitempty" xml:"KnowledgeBases,omitempty" type:"Repeated"`
-	MaxResults     *int32           `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken      *string          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 11
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// example:
 	//
 	// 35686626-8D83-5ADE-B400-08A6613A6057
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 25
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListKnowledgeBasesResponseBody) String() string {

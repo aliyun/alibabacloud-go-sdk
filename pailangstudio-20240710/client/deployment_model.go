@@ -11,6 +11,8 @@ type iDeployment interface {
 	GoString() string
 	SetAccessibility(v string) *Deployment
 	GetAccessibility() *string
+	SetAutoApproval(v bool) *Deployment
+	GetAutoApproval() *bool
 	SetChatHistoryConfig(v *DeploymentChatHistoryConfig) *Deployment
 	GetChatHistoryConfig() *DeploymentChatHistoryConfig
 	SetContentModerationConfig(v *DeploymentContentModerationConfig) *Deployment
@@ -25,8 +27,8 @@ type iDeployment interface {
 	GetDeploymentConfig() *string
 	SetDeploymentId(v string) *Deployment
 	GetDeploymentId() *string
-	SetDeploymentStages(v string) *Deployment
-	GetDeploymentStages() *string
+	SetDeploymentStages(v []*DeploymentDeploymentStages) *Deployment
+	GetDeploymentStages() []*DeploymentDeploymentStages
 	SetDeploymentStatus(v string) *Deployment
 	GetDeploymentStatus() *string
 	SetDescription(v string) *Deployment
@@ -67,6 +69,7 @@ type iDeployment interface {
 
 type Deployment struct {
 	Accessibility           *string                            `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	AutoApproval            *bool                              `json:"AutoApproval,omitempty" xml:"AutoApproval,omitempty"`
 	ChatHistoryConfig       *DeploymentChatHistoryConfig       `json:"ChatHistoryConfig,omitempty" xml:"ChatHistoryConfig,omitempty" type:"Struct"`
 	ContentModerationConfig *DeploymentContentModerationConfig `json:"ContentModerationConfig,omitempty" xml:"ContentModerationConfig,omitempty" type:"Struct"`
 	Creator                 *string                            `json:"Creator,omitempty" xml:"Creator,omitempty"`
@@ -74,7 +77,7 @@ type Deployment struct {
 	DataSources             []*DeploymentDataSources           `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
 	DeploymentConfig        *string                            `json:"DeploymentConfig,omitempty" xml:"DeploymentConfig,omitempty"`
 	DeploymentId            *string                            `json:"DeploymentId,omitempty" xml:"DeploymentId,omitempty"`
-	DeploymentStages        *string                            `json:"DeploymentStages,omitempty" xml:"DeploymentStages,omitempty"`
+	DeploymentStages        []*DeploymentDeploymentStages      `json:"DeploymentStages,omitempty" xml:"DeploymentStages,omitempty" type:"Repeated"`
 	DeploymentStatus        *string                            `json:"DeploymentStatus,omitempty" xml:"DeploymentStatus,omitempty"`
 	Description             *string                            `json:"Description,omitempty" xml:"Description,omitempty"`
 	EcsSpec                 *DeploymentEcsSpec                 `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty" type:"Struct"`
@@ -107,6 +110,10 @@ func (s *Deployment) GetAccessibility() *string {
 	return s.Accessibility
 }
 
+func (s *Deployment) GetAutoApproval() *bool {
+	return s.AutoApproval
+}
+
 func (s *Deployment) GetChatHistoryConfig() *DeploymentChatHistoryConfig {
 	return s.ChatHistoryConfig
 }
@@ -135,7 +142,7 @@ func (s *Deployment) GetDeploymentId() *string {
 	return s.DeploymentId
 }
 
-func (s *Deployment) GetDeploymentStages() *string {
+func (s *Deployment) GetDeploymentStages() []*DeploymentDeploymentStages {
 	return s.DeploymentStages
 }
 
@@ -216,6 +223,11 @@ func (s *Deployment) SetAccessibility(v string) *Deployment {
 	return s
 }
 
+func (s *Deployment) SetAutoApproval(v bool) *Deployment {
+	s.AutoApproval = &v
+	return s
+}
+
 func (s *Deployment) SetChatHistoryConfig(v *DeploymentChatHistoryConfig) *Deployment {
 	s.ChatHistoryConfig = v
 	return s
@@ -251,8 +263,8 @@ func (s *Deployment) SetDeploymentId(v string) *Deployment {
 	return s
 }
 
-func (s *Deployment) SetDeploymentStages(v string) *Deployment {
-	s.DeploymentStages = &v
+func (s *Deployment) SetDeploymentStages(v []*DeploymentDeploymentStages) *Deployment {
+	s.DeploymentStages = v
 	return s
 }
 
@@ -364,6 +376,15 @@ func (s *Deployment) Validate() error {
 	}
 	if s.DataSources != nil {
 		for _, item := range s.DataSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DeploymentStages != nil {
+		for _, item := range s.DeploymentStages {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -694,6 +715,109 @@ func (s *DeploymentDataSources) SetUri(v string) *DeploymentDataSources {
 }
 
 func (s *DeploymentDataSources) Validate() error {
+	return dara.Validate(s)
+}
+
+type DeploymentDeploymentStages struct {
+	// 描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 结束时间
+	GmtEndTime *string `json:"GmtEndTime,omitempty" xml:"GmtEndTime,omitempty"`
+	// 开始时间
+	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	// 阶段
+	Stage *int32 `json:"Stage,omitempty" xml:"Stage,omitempty"`
+	// 阶段信息
+	StageInfo *string `json:"StageInfo,omitempty" xml:"StageInfo,omitempty"`
+	// 阶段名称
+	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	// 阶段状态
+	StageStatus *string `json:"StageStatus,omitempty" xml:"StageStatus,omitempty"`
+}
+
+func (s DeploymentDeploymentStages) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DeploymentDeploymentStages) GoString() string {
+	return s.String()
+}
+
+func (s *DeploymentDeploymentStages) GetDescription() *string {
+	return s.Description
+}
+
+func (s *DeploymentDeploymentStages) GetErrorMessage() *string {
+	return s.ErrorMessage
+}
+
+func (s *DeploymentDeploymentStages) GetGmtEndTime() *string {
+	return s.GmtEndTime
+}
+
+func (s *DeploymentDeploymentStages) GetGmtStartTime() *string {
+	return s.GmtStartTime
+}
+
+func (s *DeploymentDeploymentStages) GetStage() *int32 {
+	return s.Stage
+}
+
+func (s *DeploymentDeploymentStages) GetStageInfo() *string {
+	return s.StageInfo
+}
+
+func (s *DeploymentDeploymentStages) GetStageName() *string {
+	return s.StageName
+}
+
+func (s *DeploymentDeploymentStages) GetStageStatus() *string {
+	return s.StageStatus
+}
+
+func (s *DeploymentDeploymentStages) SetDescription(v string) *DeploymentDeploymentStages {
+	s.Description = &v
+	return s
+}
+
+func (s *DeploymentDeploymentStages) SetErrorMessage(v string) *DeploymentDeploymentStages {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeploymentDeploymentStages) SetGmtEndTime(v string) *DeploymentDeploymentStages {
+	s.GmtEndTime = &v
+	return s
+}
+
+func (s *DeploymentDeploymentStages) SetGmtStartTime(v string) *DeploymentDeploymentStages {
+	s.GmtStartTime = &v
+	return s
+}
+
+func (s *DeploymentDeploymentStages) SetStage(v int32) *DeploymentDeploymentStages {
+	s.Stage = &v
+	return s
+}
+
+func (s *DeploymentDeploymentStages) SetStageInfo(v string) *DeploymentDeploymentStages {
+	s.StageInfo = &v
+	return s
+}
+
+func (s *DeploymentDeploymentStages) SetStageName(v string) *DeploymentDeploymentStages {
+	s.StageName = &v
+	return s
+}
+
+func (s *DeploymentDeploymentStages) SetStageStatus(v string) *DeploymentDeploymentStages {
+	s.StageStatus = &v
+	return s
+}
+
+func (s *DeploymentDeploymentStages) Validate() error {
 	return dara.Validate(s)
 }
 

@@ -538,6 +538,88 @@ func (client *Client) GetKnowledgeBaseJob(KnowledgeBaseId *string, KnowledgeBase
 
 // Summary:
 //
+// 获取知识库切片列表
+//
+// @param request - ListKnowledgeBaseChunksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKnowledgeBaseChunksResponse
+func (client *Client) ListKnowledgeBaseChunksWithOptions(KnowledgeBaseId *string, request *ListKnowledgeBaseChunksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListKnowledgeBaseChunksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChunkStatus) {
+		query["ChunkStatus"] = request.ChunkStatus
+	}
+
+	if !dara.IsNil(request.MetaData) {
+		query["MetaData"] = request.MetaData
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.VersionName) {
+		query["VersionName"] = request.VersionName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKnowledgeBaseChunks"),
+		Version:     dara.String("2024-07-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/langstudio/knowledgebases/" + dara.PercentEncode(dara.StringValue(KnowledgeBaseId)) + "/knowledgebasechunks"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKnowledgeBaseChunksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取知识库切片列表
+//
+// @param request - ListKnowledgeBaseChunksRequest
+//
+// @return ListKnowledgeBaseChunksResponse
+func (client *Client) ListKnowledgeBaseChunks(KnowledgeBaseId *string, request *ListKnowledgeBaseChunksRequest) (_result *ListKnowledgeBaseChunksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListKnowledgeBaseChunksResponse{}
+	_body, _err := client.ListKnowledgeBaseChunksWithOptions(KnowledgeBaseId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取知识库任务列表
 //
 // @param request - ListKnowledgeBaseJobsRequest
@@ -925,6 +1007,76 @@ func (client *Client) UpdateKnowledgeBase(KnowledgeBaseId *string, request *Upda
 	headers := make(map[string]*string)
 	_result = &UpdateKnowledgeBaseResponse{}
 	_body, _err := client.UpdateKnowledgeBaseWithOptions(KnowledgeBaseId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新知识库切片
+//
+// @param request - UpdateKnowledgeBaseChunkRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateKnowledgeBaseChunkResponse
+func (client *Client) UpdateKnowledgeBaseChunkWithOptions(KnowledgeBaseId *string, KnowledgeBaseChunkId *string, request *UpdateKnowledgeBaseChunkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateKnowledgeBaseChunkResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChunkContent) {
+		body["ChunkContent"] = request.ChunkContent
+	}
+
+	if !dara.IsNil(request.ChunkStatus) {
+		body["ChunkStatus"] = request.ChunkStatus
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateKnowledgeBaseChunk"),
+		Version:     dara.String("2024-07-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/langstudio/knowledgebases/" + dara.PercentEncode(dara.StringValue(KnowledgeBaseId)) + "/knowledgebasechunks/" + dara.PercentEncode(dara.StringValue(KnowledgeBaseChunkId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateKnowledgeBaseChunkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新知识库切片
+//
+// @param request - UpdateKnowledgeBaseChunkRequest
+//
+// @return UpdateKnowledgeBaseChunkResponse
+func (client *Client) UpdateKnowledgeBaseChunk(KnowledgeBaseId *string, KnowledgeBaseChunkId *string, request *UpdateKnowledgeBaseChunkRequest) (_result *UpdateKnowledgeBaseChunkResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateKnowledgeBaseChunkResponse{}
+	_body, _err := client.UpdateKnowledgeBaseChunkWithOptions(KnowledgeBaseId, KnowledgeBaseChunkId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
