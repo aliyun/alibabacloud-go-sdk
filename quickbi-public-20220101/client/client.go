@@ -2913,6 +2913,80 @@ func (client *Client) GetDataSourceConnectionInfo(request *GetDataSourceConnecti
 
 // Summary:
 //
+// 获取订阅任务列表信息
+//
+// @param request - GetMailTaskListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMailTaskListResponse
+func (client *Client) GetMailTaskListWithOptions(request *GetMailTaskListRequest, runtime *dara.RuntimeOptions) (_result *GetMailTaskListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Paused) {
+		query["Paused"] = request.Paused
+	}
+
+	if !dara.IsNil(request.UserNick) {
+		query["UserNick"] = request.UserNick
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMailTaskList"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMailTaskListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取订阅任务列表信息
+//
+// @param request - GetMailTaskListRequest
+//
+// @return GetMailTaskListResponse
+func (client *Client) GetMailTaskList(request *GetMailTaskListRequest) (_result *GetMailTaskListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetMailTaskListResponse{}
+	_body, _err := client.GetMailTaskListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Check the running status of mail tasks within an organization
 //
 // @param request - GetMailTaskStatusRequest
@@ -4149,6 +4223,68 @@ func (client *Client) ListUserGroupsByUserId(request *ListUserGroupsByUserIdRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListUserGroupsByUserIdResponse{}
 	_body, _err := client.ListUserGroupsByUserIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据门户菜单的白名单列表
+//
+// @param request - ListWhitePortalMenuRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWhitePortalMenuResponse
+func (client *Client) ListWhitePortalMenuWithOptions(request *ListWhitePortalMenuRequest, runtime *dara.RuntimeOptions) (_result *ListWhitePortalMenuResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DataportalId) {
+		query["DataportalId"] = request.DataportalId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWhitePortalMenu"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWhitePortalMenuResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据门户菜单的白名单列表
+//
+// @param request - ListWhitePortalMenuRequest
+//
+// @return ListWhitePortalMenuResponse
+func (client *Client) ListWhitePortalMenu(request *ListWhitePortalMenuRequest) (_result *ListWhitePortalMenuResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListWhitePortalMenuResponse{}
+	_body, _err := client.ListWhitePortalMenuWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6778,6 +6914,72 @@ func (client *Client) QueryTicketInfo(request *QueryTicketInfoRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &QueryTicketInfoResponse{}
 	_body, _err := client.QueryTicketInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据绑定的第三方账号ID查询UserId
+//
+// @param request - QueryUserByMobileAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUserByMobileAccountResponse
+func (client *Client) QueryUserByMobileAccountWithOptions(request *QueryUserByMobileAccountRequest, runtime *dara.RuntimeOptions) (_result *QueryUserByMobileAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MobileType) {
+		query["MobileType"] = request.MobileType
+	}
+
+	if !dara.IsNil(request.MobileUserId) {
+		query["MobileUserId"] = request.MobileUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryUserByMobileAccount"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryUserByMobileAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据绑定的第三方账号ID查询UserId
+//
+// @param request - QueryUserByMobileAccountRequest
+//
+// @return QueryUserByMobileAccountResponse
+func (client *Client) QueryUserByMobileAccount(request *QueryUserByMobileAccountRequest) (_result *QueryUserByMobileAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryUserByMobileAccountResponse{}
+	_body, _err := client.QueryUserByMobileAccountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

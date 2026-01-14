@@ -252,6 +252,10 @@ type QueryOrganizationWorkspaceListResponseBodyResultData struct {
 	//
 	// pop****@aliyun.com
 	OwnerAccountName *string `json:"OwnerAccountName,omitempty" xml:"OwnerAccountName,omitempty"`
+	// example:
+	//
+	// test
+	RealOwnerAccountName *string `json:"RealOwnerAccountName,omitempty" xml:"RealOwnerAccountName,omitempty"`
 	// Workspace description.
 	//
 	// example:
@@ -324,6 +328,10 @@ func (s *QueryOrganizationWorkspaceListResponseBodyResultData) GetOwnerAccountNa
 	return s.OwnerAccountName
 }
 
+func (s *QueryOrganizationWorkspaceListResponseBodyResultData) GetRealOwnerAccountName() *string {
+	return s.RealOwnerAccountName
+}
+
 func (s *QueryOrganizationWorkspaceListResponseBodyResultData) GetWorkspaceDescription() *string {
 	return s.WorkspaceDescription
 }
@@ -388,6 +396,11 @@ func (s *QueryOrganizationWorkspaceListResponseBodyResultData) SetOwner(v string
 
 func (s *QueryOrganizationWorkspaceListResponseBodyResultData) SetOwnerAccountName(v string) *QueryOrganizationWorkspaceListResponseBodyResultData {
 	s.OwnerAccountName = &v
+	return s
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultData) SetRealOwnerAccountName(v string) *QueryOrganizationWorkspaceListResponseBodyResultData {
+	s.RealOwnerAccountName = &v
 	return s
 }
 
