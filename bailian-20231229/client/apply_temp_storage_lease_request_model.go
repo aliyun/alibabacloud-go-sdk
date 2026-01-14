@@ -16,12 +16,16 @@ type iApplyTempStorageLeaseRequest interface {
 }
 
 type ApplyTempStorageLeaseRequest struct {
+	// The file name, including the file extension.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The size of the file, in bytes.
+	//
 	// This parameter is required.
 	//
 	// example:

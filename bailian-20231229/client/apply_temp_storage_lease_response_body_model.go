@@ -24,24 +24,34 @@ type iApplyTempStorageLeaseResponseBody interface {
 }
 
 type ApplyTempStorageLeaseResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// DataCenter.FileTooLarge
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data fields.
 	Data *ApplyTempStorageLeaseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// User not authorized to operate on the specified resource
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 778C0B3B-xxxx-5FC1-A947-36EDD13606AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ApplyTempStorageLeaseResponseBody) String() string {
@@ -116,7 +126,10 @@ func (s *ApplyTempStorageLeaseResponseBody) Validate() error {
 }
 
 type ApplyTempStorageLeaseResponseBodyData struct {
+	// HTTP parameters used for uploading the file.
 	Param *ApplyTempStorageLeaseResponseBodyDataParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	// Unique lease ID. This parameter is required when retrieving the uploaded file within the application later.
+	//
 	// example:
 	//
 	// 1e6a159107384782be5e45ac4759b247.1719325231035
@@ -159,14 +172,20 @@ func (s *ApplyTempStorageLeaseResponseBodyData) Validate() error {
 }
 
 type ApplyTempStorageLeaseResponseBodyDataParam struct {
+	// K-V fields to be included in the Header; both Key and Value are strings.
+	//
 	// example:
 	//
 	// Content-Type: application/json
 	Headers interface{} `json:"Headers,omitempty" xml:"Headers,omitempty"`
+	// HTTP method for the call. Valid values: PUT POST
+	//
 	// example:
 	//
 	// PUT
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// Authorized URL for the file upload.
+	//
 	// example:
 	//
 	// https://bailian-datahub-data-origin-prod.oss-cn-hangzhou.aliyuncs.com/1005426495169178/10024405/68abd1dea7b6404d8f7d7b9f7fbd332d.1716698936847.pdf?Expires=1716699536&OSSAccessKeyId=TestID&Signature=HfwPUZo4pR6DatSDym0zFKVh9Wg%3D
