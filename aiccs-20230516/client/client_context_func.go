@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("central")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("aiccs"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -65,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddAgentResponse
-func (client *Client) AddAgentWithOptions(request *AddAgentRequest, runtime *dara.RuntimeOptions) (_result *AddAgentResponse, _err error) {
+func (client *Client) AddAgentWithContext(ctx context.Context, request *AddAgentRequest, runtime *dara.RuntimeOptions) (_result *AddAgentResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -120,29 +71,11 @@ func (client *Client) AddAgentWithOptions(request *AddAgentRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddAgentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建坐席
-//
-// @param request - AddAgentRequest
-//
-// @return AddAgentResponse
-func (client *Client) AddAgent(request *AddAgentRequest) (_result *AddAgentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddAgentResponse{}
-	_body, _err := client.AddAgentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -155,7 +88,7 @@ func (client *Client) AddAgent(request *AddAgentRequest) (_result *AddAgentRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddAgentGroupResponse
-func (client *Client) AddAgentGroupWithOptions(request *AddAgentGroupRequest, runtime *dara.RuntimeOptions) (_result *AddAgentGroupResponse, _err error) {
+func (client *Client) AddAgentGroupWithContext(ctx context.Context, request *AddAgentGroupRequest, runtime *dara.RuntimeOptions) (_result *AddAgentGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -194,29 +127,11 @@ func (client *Client) AddAgentGroupWithOptions(request *AddAgentGroupRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddAgentGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建坐席组接口
-//
-// @param request - AddAgentGroupRequest
-//
-// @return AddAgentGroupResponse
-func (client *Client) AddAgentGroup(request *AddAgentGroupRequest) (_result *AddAgentGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddAgentGroupResponse{}
-	_body, _err := client.AddAgentGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -229,7 +144,7 @@ func (client *Client) AddAgentGroup(request *AddAgentGroupRequest) (_result *Add
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddBlacklistResponse
-func (client *Client) AddBlacklistWithOptions(tmpReq *AddBlacklistRequest, runtime *dara.RuntimeOptions) (_result *AddBlacklistResponse, _err error) {
+func (client *Client) AddBlacklistWithContext(ctx context.Context, tmpReq *AddBlacklistRequest, runtime *dara.RuntimeOptions) (_result *AddBlacklistResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -282,29 +197,11 @@ func (client *Client) AddBlacklistWithOptions(tmpReq *AddBlacklistRequest, runti
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddBlacklistResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 添加黑名单接口
-//
-// @param request - AddBlacklistRequest
-//
-// @return AddBlacklistResponse
-func (client *Client) AddBlacklist(request *AddBlacklistRequest) (_result *AddBlacklistResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddBlacklistResponse{}
-	_body, _err := client.AddBlacklistWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -317,7 +214,7 @@ func (client *Client) AddBlacklist(request *AddBlacklistRequest) (_result *AddBl
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddTaskResponse
-func (client *Client) AddTaskWithOptions(tmpReq *AddTaskRequest, runtime *dara.RuntimeOptions) (_result *AddTaskResponse, _err error) {
+func (client *Client) AddTaskWithContext(ctx context.Context, tmpReq *AddTaskRequest, runtime *dara.RuntimeOptions) (_result *AddTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -446,29 +343,11 @@ func (client *Client) AddTaskWithOptions(tmpReq *AddTaskRequest, runtime *dara.R
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建任务接口
-//
-// @param request - AddTaskRequest
-//
-// @return AddTaskResponse
-func (client *Client) AddTask(request *AddTaskRequest) (_result *AddTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddTaskResponse{}
-	_body, _err := client.AddTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -481,7 +360,7 @@ func (client *Client) AddTask(request *AddTaskRequest) (_result *AddTaskResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AgentCallListResponse
-func (client *Client) AgentCallListWithOptions(tmpReq *AgentCallListRequest, runtime *dara.RuntimeOptions) (_result *AgentCallListResponse, _err error) {
+func (client *Client) AgentCallListWithContext(ctx context.Context, tmpReq *AgentCallListRequest, runtime *dara.RuntimeOptions) (_result *AgentCallListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -566,29 +445,11 @@ func (client *Client) AgentCallListWithOptions(tmpReq *AgentCallListRequest, run
 		BodyType:    dara.String("json"),
 	}
 	_result = &AgentCallListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 坐席外呼查询外呼记录
-//
-// @param request - AgentCallListRequest
-//
-// @return AgentCallListResponse
-func (client *Client) AgentCallList(request *AgentCallListRequest) (_result *AgentCallListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AgentCallListResponse{}
-	_body, _err := client.AgentCallListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -601,7 +462,7 @@ func (client *Client) AgentCallList(request *AgentCallListRequest) (_result *Age
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AgentCancelCallResponse
-func (client *Client) AgentCancelCallWithOptions(tmpReq *AgentCancelCallRequest, runtime *dara.RuntimeOptions) (_result *AgentCancelCallResponse, _err error) {
+func (client *Client) AgentCancelCallWithContext(ctx context.Context, tmpReq *AgentCancelCallRequest, runtime *dara.RuntimeOptions) (_result *AgentCancelCallResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -662,29 +523,11 @@ func (client *Client) AgentCancelCallWithOptions(tmpReq *AgentCancelCallRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &AgentCancelCallResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 坐席取消号码外呼
-//
-// @param request - AgentCancelCallRequest
-//
-// @return AgentCancelCallResponse
-func (client *Client) AgentCancelCall(request *AgentCancelCallRequest) (_result *AgentCancelCallResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AgentCancelCallResponse{}
-	_body, _err := client.AgentCancelCallWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -697,7 +540,7 @@ func (client *Client) AgentCancelCall(request *AgentCancelCallRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AgentGroupPageResponse
-func (client *Client) AgentGroupPageWithOptions(request *AgentGroupPageRequest, runtime *dara.RuntimeOptions) (_result *AgentGroupPageResponse, _err error) {
+func (client *Client) AgentGroupPageWithContext(ctx context.Context, request *AgentGroupPageRequest, runtime *dara.RuntimeOptions) (_result *AgentGroupPageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -744,29 +587,11 @@ func (client *Client) AgentGroupPageWithOptions(request *AgentGroupPageRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &AgentGroupPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 坐席组分页查询
-//
-// @param request - AgentGroupPageRequest
-//
-// @return AgentGroupPageResponse
-func (client *Client) AgentGroupPage(request *AgentGroupPageRequest) (_result *AgentGroupPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AgentGroupPageResponse{}
-	_body, _err := client.AgentGroupPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -779,7 +604,7 @@ func (client *Client) AgentGroupPage(request *AgentGroupPageRequest) (_result *A
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AgentImportNumberResponse
-func (client *Client) AgentImportNumberWithOptions(tmpReq *AgentImportNumberRequest, runtime *dara.RuntimeOptions) (_result *AgentImportNumberResponse, _err error) {
+func (client *Client) AgentImportNumberWithContext(ctx context.Context, tmpReq *AgentImportNumberRequest, runtime *dara.RuntimeOptions) (_result *AgentImportNumberResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -848,29 +673,11 @@ func (client *Client) AgentImportNumberWithOptions(tmpReq *AgentImportNumberRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &AgentImportNumberResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 坐席外呼导入号码
-//
-// @param request - AgentImportNumberRequest
-//
-// @return AgentImportNumberResponse
-func (client *Client) AgentImportNumber(request *AgentImportNumberRequest) (_result *AgentImportNumberResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AgentImportNumberResponse{}
-	_body, _err := client.AgentImportNumberWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -883,7 +690,7 @@ func (client *Client) AgentImportNumber(request *AgentImportNumberRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AgentRecoverCallResponse
-func (client *Client) AgentRecoverCallWithOptions(tmpReq *AgentRecoverCallRequest, runtime *dara.RuntimeOptions) (_result *AgentRecoverCallResponse, _err error) {
+func (client *Client) AgentRecoverCallWithContext(ctx context.Context, tmpReq *AgentRecoverCallRequest, runtime *dara.RuntimeOptions) (_result *AgentRecoverCallResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -952,29 +759,11 @@ func (client *Client) AgentRecoverCallWithOptions(tmpReq *AgentRecoverCallReques
 		BodyType:    dara.String("json"),
 	}
 	_result = &AgentRecoverCallResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 坐席任务恢复号码
-//
-// @param request - AgentRecoverCallRequest
-//
-// @return AgentRecoverCallResponse
-func (client *Client) AgentRecoverCall(request *AgentRecoverCallRequest) (_result *AgentRecoverCallResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AgentRecoverCallResponse{}
-	_body, _err := client.AgentRecoverCallWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -987,7 +776,7 @@ func (client *Client) AgentRecoverCall(request *AgentRecoverCallRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CallChatListResponse
-func (client *Client) CallChatListWithOptions(request *CallChatListRequest, runtime *dara.RuntimeOptions) (_result *CallChatListResponse, _err error) {
+func (client *Client) CallChatListWithContext(ctx context.Context, request *CallChatListRequest, runtime *dara.RuntimeOptions) (_result *CallChatListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1030,29 +819,11 @@ func (client *Client) CallChatListWithOptions(request *CallChatListRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &CallChatListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取聊天内容
-//
-// @param request - CallChatListRequest
-//
-// @return CallChatListResponse
-func (client *Client) CallChatList(request *CallChatListRequest) (_result *CallChatListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CallChatListResponse{}
-	_body, _err := client.CallChatListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1065,7 +836,7 @@ func (client *Client) CallChatList(request *CallChatListRequest) (_result *CallC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CallNumberDetailResponse
-func (client *Client) CallNumberDetailWithOptions(request *CallNumberDetailRequest, runtime *dara.RuntimeOptions) (_result *CallNumberDetailResponse, _err error) {
+func (client *Client) CallNumberDetailWithContext(ctx context.Context, request *CallNumberDetailRequest, runtime *dara.RuntimeOptions) (_result *CallNumberDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1108,29 +879,11 @@ func (client *Client) CallNumberDetailWithOptions(request *CallNumberDetailReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CallNumberDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取号码外呼详情
-//
-// @param request - CallNumberDetailRequest
-//
-// @return CallNumberDetailResponse
-func (client *Client) CallNumberDetail(request *CallNumberDetailRequest) (_result *CallNumberDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CallNumberDetailResponse{}
-	_body, _err := client.CallNumberDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1143,7 +896,7 @@ func (client *Client) CallNumberDetail(request *CallNumberDetailRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetailsResponse
-func (client *Client) DetailsWithOptions(tmpReq *DetailsRequest, runtime *dara.RuntimeOptions) (_result *DetailsResponse, _err error) {
+func (client *Client) DetailsWithContext(ctx context.Context, tmpReq *DetailsRequest, runtime *dara.RuntimeOptions) (_result *DetailsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1216,29 +969,11 @@ func (client *Client) DetailsWithOptions(tmpReq *DetailsRequest, runtime *dara.R
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # AI批量任务查询号码状态接口
-//
-// @param request - DetailsRequest
-//
-// @return DetailsResponse
-func (client *Client) Details(request *DetailsRequest) (_result *DetailsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetailsResponse{}
-	_body, _err := client.DetailsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1251,7 +986,7 @@ func (client *Client) Details(request *DetailsRequest) (_result *DetailsResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EditTaskResponse
-func (client *Client) EditTaskWithOptions(tmpReq *EditTaskRequest, runtime *dara.RuntimeOptions) (_result *EditTaskResponse, _err error) {
+func (client *Client) EditTaskWithContext(ctx context.Context, tmpReq *EditTaskRequest, runtime *dara.RuntimeOptions) (_result *EditTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1380,29 +1115,11 @@ func (client *Client) EditTaskWithOptions(tmpReq *EditTaskRequest, runtime *dara
 		BodyType:    dara.String("json"),
 	}
 	_result = &EditTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 编辑任务接口
-//
-// @param request - EditTaskRequest
-//
-// @return EditTaskResponse
-func (client *Client) EditTask(request *EditTaskRequest) (_result *EditTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EditTaskResponse{}
-	_body, _err := client.EditTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1415,7 +1132,7 @@ func (client *Client) EditTask(request *EditTaskRequest) (_result *EditTaskRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ImportNumberResponse
-func (client *Client) ImportNumberWithOptions(tmpReq *ImportNumberRequest, runtime *dara.RuntimeOptions) (_result *ImportNumberResponse, _err error) {
+func (client *Client) ImportNumberWithContext(ctx context.Context, tmpReq *ImportNumberRequest, runtime *dara.RuntimeOptions) (_result *ImportNumberResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1472,29 +1189,11 @@ func (client *Client) ImportNumberWithOptions(tmpReq *ImportNumberRequest, runti
 		BodyType:    dara.String("json"),
 	}
 	_result = &ImportNumberResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 导入号码
-//
-// @param request - ImportNumberRequest
-//
-// @return ImportNumberResponse
-func (client *Client) ImportNumber(request *ImportNumberRequest) (_result *ImportNumberResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ImportNumberResponse{}
-	_body, _err := client.ImportNumberWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1507,7 +1206,7 @@ func (client *Client) ImportNumber(request *ImportNumberRequest) (_result *Impor
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ImportNumberV2Response
-func (client *Client) ImportNumberV2WithOptions(tmpReq *ImportNumberV2Request, runtime *dara.RuntimeOptions) (_result *ImportNumberV2Response, _err error) {
+func (client *Client) ImportNumberV2WithContext(ctx context.Context, tmpReq *ImportNumberV2Request, runtime *dara.RuntimeOptions) (_result *ImportNumberV2Response, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1566,29 +1265,11 @@ func (client *Client) ImportNumberV2WithOptions(tmpReq *ImportNumberV2Request, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &ImportNumberV2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 导入号码
-//
-// @param request - ImportNumberV2Request
-//
-// @return ImportNumberV2Response
-func (client *Client) ImportNumberV2(request *ImportNumberV2Request) (_result *ImportNumberV2Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ImportNumberV2Response{}
-	_body, _err := client.ImportNumberV2WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1601,7 +1282,7 @@ func (client *Client) ImportNumberV2(request *ImportNumberV2Request) (_result *I
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return JoinAgentGroupResponse
-func (client *Client) JoinAgentGroupWithOptions(tmpReq *JoinAgentGroupRequest, runtime *dara.RuntimeOptions) (_result *JoinAgentGroupResponse, _err error) {
+func (client *Client) JoinAgentGroupWithContext(ctx context.Context, tmpReq *JoinAgentGroupRequest, runtime *dara.RuntimeOptions) (_result *JoinAgentGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1650,29 +1331,11 @@ func (client *Client) JoinAgentGroupWithOptions(tmpReq *JoinAgentGroupRequest, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &JoinAgentGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 绑定坐席组
-//
-// @param request - JoinAgentGroupRequest
-//
-// @return JoinAgentGroupResponse
-func (client *Client) JoinAgentGroup(request *JoinAgentGroupRequest) (_result *JoinAgentGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &JoinAgentGroupResponse{}
-	_body, _err := client.JoinAgentGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1685,7 +1348,7 @@ func (client *Client) JoinAgentGroup(request *JoinAgentGroupRequest) (_result *J
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PageResponse
-func (client *Client) PageWithOptions(tmpReq *PageRequest, runtime *dara.RuntimeOptions) (_result *PageResponse, _err error) {
+func (client *Client) PageWithContext(ctx context.Context, tmpReq *PageRequest, runtime *dara.RuntimeOptions) (_result *PageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1738,29 +1401,11 @@ func (client *Client) PageWithOptions(tmpReq *PageRequest, runtime *dara.Runtime
 		BodyType:    dara.String("json"),
 	}
 	_result = &PageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询企业黑名单
-//
-// @param request - PageRequest
-//
-// @return PageResponse
-func (client *Client) Page(request *PageRequest) (_result *PageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PageResponse{}
-	_body, _err := client.PageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1773,7 +1418,7 @@ func (client *Client) Page(request *PageRequest) (_result *PageResponse, _err er
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryAgentInfoResponse
-func (client *Client) QueryAgentInfoWithOptions(request *QueryAgentInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryAgentInfoResponse, _err error) {
+func (client *Client) QueryAgentInfoWithContext(ctx context.Context, request *QueryAgentInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryAgentInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1816,29 +1461,11 @@ func (client *Client) QueryAgentInfoWithOptions(request *QueryAgentInfoRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryAgentInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询坐席具体信息
-//
-// @param request - QueryAgentInfoRequest
-//
-// @return QueryAgentInfoResponse
-func (client *Client) QueryAgentInfo(request *QueryAgentInfoRequest) (_result *QueryAgentInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryAgentInfoResponse{}
-	_body, _err := client.QueryAgentInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1851,7 +1478,7 @@ func (client *Client) QueryAgentInfo(request *QueryAgentInfoRequest) (_result *Q
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuickAddTaskResponse
-func (client *Client) QuickAddTaskWithOptions(tmpReq *QuickAddTaskRequest, runtime *dara.RuntimeOptions) (_result *QuickAddTaskResponse, _err error) {
+func (client *Client) QuickAddTaskWithContext(ctx context.Context, tmpReq *QuickAddTaskRequest, runtime *dara.RuntimeOptions) (_result *QuickAddTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1924,29 +1551,11 @@ func (client *Client) QuickAddTaskWithOptions(tmpReq *QuickAddTaskRequest, runti
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuickAddTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 快速创建任务接口
-//
-// @param request - QuickAddTaskRequest
-//
-// @return QuickAddTaskResponse
-func (client *Client) QuickAddTask(request *QuickAddTaskRequest) (_result *QuickAddTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuickAddTaskResponse{}
-	_body, _err := client.QuickAddTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1959,7 +1568,7 @@ func (client *Client) QuickAddTask(request *QuickAddTaskRequest) (_result *Quick
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuitAgentGroupResponse
-func (client *Client) QuitAgentGroupWithOptions(tmpReq *QuitAgentGroupRequest, runtime *dara.RuntimeOptions) (_result *QuitAgentGroupResponse, _err error) {
+func (client *Client) QuitAgentGroupWithContext(ctx context.Context, tmpReq *QuitAgentGroupRequest, runtime *dara.RuntimeOptions) (_result *QuitAgentGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2008,29 +1617,11 @@ func (client *Client) QuitAgentGroupWithOptions(tmpReq *QuitAgentGroupRequest, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuitAgentGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 解绑坐席组
-//
-// @param request - QuitAgentGroupRequest
-//
-// @return QuitAgentGroupResponse
-func (client *Client) QuitAgentGroup(request *QuitAgentGroupRequest) (_result *QuitAgentGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuitAgentGroupResponse{}
-	_body, _err := client.QuitAgentGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2043,7 +1634,7 @@ func (client *Client) QuitAgentGroup(request *QuitAgentGroupRequest) (_result *Q
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SmsTemplateCreateResponse
-func (client *Client) SmsTemplateCreateWithOptions(request *SmsTemplateCreateRequest, runtime *dara.RuntimeOptions) (_result *SmsTemplateCreateResponse, _err error) {
+func (client *Client) SmsTemplateCreateWithContext(ctx context.Context, request *SmsTemplateCreateRequest, runtime *dara.RuntimeOptions) (_result *SmsTemplateCreateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2098,29 +1689,11 @@ func (client *Client) SmsTemplateCreateWithOptions(request *SmsTemplateCreateReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &SmsTemplateCreateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 短信模板创建
-//
-// @param request - SmsTemplateCreateRequest
-//
-// @return SmsTemplateCreateResponse
-func (client *Client) SmsTemplateCreate(request *SmsTemplateCreateRequest) (_result *SmsTemplateCreateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SmsTemplateCreateResponse{}
-	_body, _err := client.SmsTemplateCreateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2133,7 +1706,7 @@ func (client *Client) SmsTemplateCreate(request *SmsTemplateCreateRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SmsTemplatePageListResponse
-func (client *Client) SmsTemplatePageListWithOptions(request *SmsTemplatePageListRequest, runtime *dara.RuntimeOptions) (_result *SmsTemplatePageListResponse, _err error) {
+func (client *Client) SmsTemplatePageListWithContext(ctx context.Context, request *SmsTemplatePageListRequest, runtime *dara.RuntimeOptions) (_result *SmsTemplatePageListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2196,29 +1769,11 @@ func (client *Client) SmsTemplatePageListWithOptions(request *SmsTemplatePageLis
 		BodyType:    dara.String("json"),
 	}
 	_result = &SmsTemplatePageListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 短信模板列表查询
-//
-// @param request - SmsTemplatePageListRequest
-//
-// @return SmsTemplatePageListResponse
-func (client *Client) SmsTemplatePageList(request *SmsTemplatePageListRequest) (_result *SmsTemplatePageListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SmsTemplatePageListResponse{}
-	_body, _err := client.SmsTemplatePageListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2231,7 +1786,7 @@ func (client *Client) SmsTemplatePageList(request *SmsTemplatePageListRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TaskCallChatsResponse
-func (client *Client) TaskCallChatsWithOptions(request *TaskCallChatsRequest, runtime *dara.RuntimeOptions) (_result *TaskCallChatsResponse, _err error) {
+func (client *Client) TaskCallChatsWithContext(ctx context.Context, request *TaskCallChatsRequest, runtime *dara.RuntimeOptions) (_result *TaskCallChatsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2282,29 +1837,11 @@ func (client *Client) TaskCallChatsWithOptions(request *TaskCallChatsRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &TaskCallChatsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询聊天记录接口
-//
-// @param request - TaskCallChatsRequest
-//
-// @return TaskCallChatsResponse
-func (client *Client) TaskCallChats(request *TaskCallChatsRequest) (_result *TaskCallChatsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TaskCallChatsResponse{}
-	_body, _err := client.TaskCallChatsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2317,7 +1854,7 @@ func (client *Client) TaskCallChats(request *TaskCallChatsRequest) (_result *Tas
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TaskCallInfoResponse
-func (client *Client) TaskCallInfoWithOptions(request *TaskCallInfoRequest, runtime *dara.RuntimeOptions) (_result *TaskCallInfoResponse, _err error) {
+func (client *Client) TaskCallInfoWithContext(ctx context.Context, request *TaskCallInfoRequest, runtime *dara.RuntimeOptions) (_result *TaskCallInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2356,29 +1893,11 @@ func (client *Client) TaskCallInfoWithOptions(request *TaskCallInfoRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &TaskCallInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取任务外呼情况接口
-//
-// @param request - TaskCallInfoRequest
-//
-// @return TaskCallInfoResponse
-func (client *Client) TaskCallInfo(request *TaskCallInfoRequest) (_result *TaskCallInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TaskCallInfoResponse{}
-	_body, _err := client.TaskCallInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2391,7 +1910,7 @@ func (client *Client) TaskCallInfo(request *TaskCallInfoRequest) (_result *TaskC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TaskCallListResponse
-func (client *Client) TaskCallListWithOptions(tmpReq *TaskCallListRequest, runtime *dara.RuntimeOptions) (_result *TaskCallListResponse, _err error) {
+func (client *Client) TaskCallListWithContext(ctx context.Context, tmpReq *TaskCallListRequest, runtime *dara.RuntimeOptions) (_result *TaskCallListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2468,29 +1987,11 @@ func (client *Client) TaskCallListWithOptions(tmpReq *TaskCallListRequest, runti
 		BodyType:    dara.String("json"),
 	}
 	_result = &TaskCallListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # AI批量任务查询外呼记录接口
-//
-// @param request - TaskCallListRequest
-//
-// @return TaskCallListResponse
-func (client *Client) TaskCallList(request *TaskCallListRequest) (_result *TaskCallListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TaskCallListResponse{}
-	_body, _err := client.TaskCallListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2503,7 +2004,7 @@ func (client *Client) TaskCallList(request *TaskCallListRequest) (_result *TaskC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TaskCancelCallResponse
-func (client *Client) TaskCancelCallWithOptions(tmpReq *TaskCancelCallRequest, runtime *dara.RuntimeOptions) (_result *TaskCancelCallResponse, _err error) {
+func (client *Client) TaskCancelCallWithContext(ctx context.Context, tmpReq *TaskCancelCallRequest, runtime *dara.RuntimeOptions) (_result *TaskCancelCallResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2560,29 +2061,11 @@ func (client *Client) TaskCancelCallWithOptions(tmpReq *TaskCancelCallRequest, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &TaskCancelCallResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 批量任务取消号码外呼
-//
-// @param request - TaskCancelCallRequest
-//
-// @return TaskCancelCallResponse
-func (client *Client) TaskCancelCall(request *TaskCancelCallRequest) (_result *TaskCancelCallResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TaskCancelCallResponse{}
-	_body, _err := client.TaskCancelCallWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2595,7 +2078,7 @@ func (client *Client) TaskCancelCall(request *TaskCancelCallRequest) (_result *T
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TaskListResponse
-func (client *Client) TaskListWithOptions(request *TaskListRequest, runtime *dara.RuntimeOptions) (_result *TaskListResponse, _err error) {
+func (client *Client) TaskListWithContext(ctx context.Context, request *TaskListRequest, runtime *dara.RuntimeOptions) (_result *TaskListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2646,29 +2129,11 @@ func (client *Client) TaskListWithOptions(request *TaskListRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &TaskListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询任务列表接口
-//
-// @param request - TaskListRequest
-//
-// @return TaskListResponse
-func (client *Client) TaskList(request *TaskListRequest) (_result *TaskListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TaskListResponse{}
-	_body, _err := client.TaskListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2681,7 +2146,7 @@ func (client *Client) TaskList(request *TaskListRequest) (_result *TaskListRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TaskRecoverCallResponse
-func (client *Client) TaskRecoverCallWithOptions(tmpReq *TaskRecoverCallRequest, runtime *dara.RuntimeOptions) (_result *TaskRecoverCallResponse, _err error) {
+func (client *Client) TaskRecoverCallWithContext(ctx context.Context, tmpReq *TaskRecoverCallRequest, runtime *dara.RuntimeOptions) (_result *TaskRecoverCallResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2746,29 +2211,11 @@ func (client *Client) TaskRecoverCallWithOptions(tmpReq *TaskRecoverCallRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &TaskRecoverCallResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 批量任务恢复号码
-//
-// @param request - TaskRecoverCallRequest
-//
-// @return TaskRecoverCallResponse
-func (client *Client) TaskRecoverCall(request *TaskRecoverCallRequest) (_result *TaskRecoverCallResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TaskRecoverCallResponse{}
-	_body, _err := client.TaskRecoverCallWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2781,7 +2228,7 @@ func (client *Client) TaskRecoverCall(request *TaskRecoverCallRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TemplateListResponse
-func (client *Client) TemplateListWithOptions(request *TemplateListRequest, runtime *dara.RuntimeOptions) (_result *TemplateListResponse, _err error) {
+func (client *Client) TemplateListWithContext(ctx context.Context, request *TemplateListRequest, runtime *dara.RuntimeOptions) (_result *TemplateListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2820,29 +2267,11 @@ func (client *Client) TemplateListWithOptions(request *TemplateListRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &TemplateListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 话术模板列表查询接口
-//
-// @param request - TemplateListRequest
-//
-// @return TemplateListResponse
-func (client *Client) TemplateList(request *TemplateListRequest) (_result *TemplateListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TemplateListResponse{}
-	_body, _err := client.TemplateListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2855,7 +2284,7 @@ func (client *Client) TemplateList(request *TemplateListRequest) (_result *Templ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAgentStatusResponse
-func (client *Client) UpdateAgentStatusWithOptions(request *UpdateAgentStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateAgentStatusResponse, _err error) {
+func (client *Client) UpdateAgentStatusWithContext(ctx context.Context, request *UpdateAgentStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateAgentStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2902,29 +2331,11 @@ func (client *Client) UpdateAgentStatusWithOptions(request *UpdateAgentStatusReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAgentStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改坐席状态
-//
-// @param request - UpdateAgentStatusRequest
-//
-// @return UpdateAgentStatusResponse
-func (client *Client) UpdateAgentStatus(request *UpdateAgentStatusRequest) (_result *UpdateAgentStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateAgentStatusResponse{}
-	_body, _err := client.UpdateAgentStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2937,7 +2348,7 @@ func (client *Client) UpdateAgentStatus(request *UpdateAgentStatusRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateTaskCustomerResponse
-func (client *Client) UpdateTaskCustomerWithOptions(tmpReq *UpdateTaskCustomerRequest, runtime *dara.RuntimeOptions) (_result *UpdateTaskCustomerResponse, _err error) {
+func (client *Client) UpdateTaskCustomerWithContext(ctx context.Context, tmpReq *UpdateTaskCustomerRequest, runtime *dara.RuntimeOptions) (_result *UpdateTaskCustomerResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2986,28 +2397,10 @@ func (client *Client) UpdateTaskCustomerWithOptions(tmpReq *UpdateTaskCustomerRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateTaskCustomerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新当天导入的号码
-//
-// @param request - UpdateTaskCustomerRequest
-//
-// @return UpdateTaskCustomerResponse
-func (client *Client) UpdateTaskCustomer(request *UpdateTaskCustomerRequest) (_result *UpdateTaskCustomerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateTaskCustomerResponse{}
-	_body, _err := client.UpdateTaskCustomerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
