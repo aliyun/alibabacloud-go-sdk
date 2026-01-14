@@ -4575,6 +4575,82 @@ func (client *Client) CreateRCDiskWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
+// Creates a custom image for an RDS Custom instance.
+//
+// Description:
+//
+// ### [](#)Supported database engines
+//
+//   - RDS MySQL
+//
+//   - RDS SQL Server
+//
+// ### [](#)References
+//
+//   - [Introduction to RDS Custom for MySQL](https://help.aliyun.com/document_detail/2844223.html)
+//
+//   - [Introduction to RDS Custom for SQL Server](https://help.aliyun.com/document_detail/2864363.html)
+//
+// ### [](#)Usage
+//
+//   - Method 1: Create a custom image by using a snapshot generated from the **system disk**. In this case, specify the SnapshotId and ImageName parameters at the same time in the request.
+//
+//   - Method 2: Create a custom image by using an RDS Custom instance. In this case, specify the InstanceId and ImageName parameters at the same time in the request.
+//
+// @param request - CreateRCImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRCImageResponse
+func (client *Client) CreateRCImageWithContext(ctx context.Context, request *CreateRCImageRequest, runtime *dara.RuntimeOptions) (_result *CreateRCImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageName) {
+		query["ImageName"] = request.ImageName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SnapshotId) {
+		query["SnapshotId"] = request.SnapshotId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRCImage"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRCImageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an edge node pool in the Container Service for Kubernetes (ACK) Edge cluster to which the RDS Custom instance belongs.
 //
 // @param tmpReq - CreateRCNodePoolRequest
@@ -24121,6 +24197,54 @@ func (client *Client) ModifyDBInstanceTDEWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 修改实例向量支持状态
+//
+// @param request - ModifyDBInstanceVectorSupportStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceVectorSupportStatusResponse
+func (client *Client) ModifyDBInstanceVectorSupportStatusWithContext(ctx context.Context, request *ModifyDBInstanceVectorSupportStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceVectorSupportStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyDBInstanceVectorSupportStatus"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyDBInstanceVectorSupportStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Changes the specifications, storage type, and storage capacity of an ApsaraDB RDS for MySQL instance that runs RDS Cluster Edition.
 //
 // Description:
@@ -25980,12 +26104,20 @@ func (client *Client) ModifyRCDiskChargeTypeWithContext(ctx context.Context, req
 		query["PayType"] = request.PayType
 	}
 
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
 	if !dara.IsNil(request.PromotionCode) {
 		query["PromotionCode"] = request.PromotionCode
 	}
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.UsedTime) {
+		query["UsedTime"] = request.UsedTime
 	}
 
 	req := &openapiutil.OpenApiRequest{
