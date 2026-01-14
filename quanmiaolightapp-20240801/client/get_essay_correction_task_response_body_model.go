@@ -126,7 +126,8 @@ type GetEssayCorrectionTaskResponseBodyData struct {
 	// example:
 	//
 	// PENDING
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status     *string     `json:"status,omitempty" xml:"status,omitempty"`
+	TotalUsage *ModelUsage `json:"totalUsage,omitempty" xml:"totalUsage,omitempty"`
 }
 
 func (s GetEssayCorrectionTaskResponseBodyData) String() string {
@@ -149,6 +150,10 @@ func (s *GetEssayCorrectionTaskResponseBodyData) GetStatus() *string {
 	return s.Status
 }
 
+func (s *GetEssayCorrectionTaskResponseBodyData) GetTotalUsage() *ModelUsage {
+	return s.TotalUsage
+}
+
 func (s *GetEssayCorrectionTaskResponseBodyData) SetErrorMessage(v string) *GetEssayCorrectionTaskResponseBodyData {
 	s.ErrorMessage = &v
 	return s
@@ -164,6 +169,11 @@ func (s *GetEssayCorrectionTaskResponseBodyData) SetStatus(v string) *GetEssayCo
 	return s
 }
 
+func (s *GetEssayCorrectionTaskResponseBodyData) SetTotalUsage(v *ModelUsage) *GetEssayCorrectionTaskResponseBodyData {
+	s.TotalUsage = v
+	return s
+}
+
 func (s *GetEssayCorrectionTaskResponseBodyData) Validate() error {
 	if s.Results != nil {
 		for _, item := range s.Results {
@@ -172,6 +182,11 @@ func (s *GetEssayCorrectionTaskResponseBodyData) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.TotalUsage != nil {
+		if err := s.TotalUsage.Validate(); err != nil {
+			return err
 		}
 	}
 	return nil
@@ -188,7 +203,8 @@ type GetEssayCorrectionTaskResponseBodyDataResults struct {
 	// example:
 	//
 	// 58
-	Score *int32 `json:"score,omitempty" xml:"score,omitempty"`
+	Score *int32      `json:"score,omitempty" xml:"score,omitempty"`
+	Usage *ModelUsage `json:"usage,omitempty" xml:"usage,omitempty"`
 }
 
 func (s GetEssayCorrectionTaskResponseBodyDataResults) String() string {
@@ -211,6 +227,10 @@ func (s *GetEssayCorrectionTaskResponseBodyDataResults) GetScore() *int32 {
 	return s.Score
 }
 
+func (s *GetEssayCorrectionTaskResponseBodyDataResults) GetUsage() *ModelUsage {
+	return s.Usage
+}
+
 func (s *GetEssayCorrectionTaskResponseBodyDataResults) SetCustomId(v string) *GetEssayCorrectionTaskResponseBodyDataResults {
 	s.CustomId = &v
 	return s
@@ -226,6 +246,16 @@ func (s *GetEssayCorrectionTaskResponseBodyDataResults) SetScore(v int32) *GetEs
 	return s
 }
 
+func (s *GetEssayCorrectionTaskResponseBodyDataResults) SetUsage(v *ModelUsage) *GetEssayCorrectionTaskResponseBodyDataResults {
+	s.Usage = v
+	return s
+}
+
 func (s *GetEssayCorrectionTaskResponseBodyDataResults) Validate() error {
-	return dara.Validate(s)
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
