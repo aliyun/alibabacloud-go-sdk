@@ -15,6 +15,10 @@ type iDescribeUserEncryptionKeyListRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeUserEncryptionKeyListRequest
 	GetOwnerId() *int64
+	SetPageNumber(v int32) *DescribeUserEncryptionKeyListRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeUserEncryptionKeyListRequest
+	GetPageSize() *int32
 	SetRegionId(v string) *DescribeUserEncryptionKeyListRequest
 	GetRegionId() *string
 	SetResourceOwnerAccount(v string) *DescribeUserEncryptionKeyListRequest
@@ -36,6 +40,14 @@ type DescribeUserEncryptionKeyListRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region.
 	//
 	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available for your account, such as the region ID.
@@ -74,6 +86,14 @@ func (s *DescribeUserEncryptionKeyListRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
 
+func (s *DescribeUserEncryptionKeyListRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeUserEncryptionKeyListRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
 func (s *DescribeUserEncryptionKeyListRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -102,6 +122,16 @@ func (s *DescribeUserEncryptionKeyListRequest) SetOwnerAccount(v string) *Descri
 
 func (s *DescribeUserEncryptionKeyListRequest) SetOwnerId(v int64) *DescribeUserEncryptionKeyListRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeUserEncryptionKeyListRequest) SetPageNumber(v int32) *DescribeUserEncryptionKeyListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeUserEncryptionKeyListRequest) SetPageSize(v int32) *DescribeUserEncryptionKeyListRequest {
+	s.PageSize = &v
 	return s
 }
 

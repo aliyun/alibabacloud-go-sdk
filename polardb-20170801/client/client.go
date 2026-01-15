@@ -16209,6 +16209,14 @@ func (client *Client) DescribeUserEncryptionKeyListWithOptions(request *Describe
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
