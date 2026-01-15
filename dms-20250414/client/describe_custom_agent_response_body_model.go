@@ -123,6 +123,7 @@ type DescribeCustomAgentResponseBodyData struct {
 	// ca-4y3ca4khkcu**********ysf
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
 	DataJson      *string `json:"DataJson,omitempty" xml:"DataJson,omitempty"`
+	DefaultAgent  *int32  `json:"DefaultAgent,omitempty" xml:"DefaultAgent,omitempty"`
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
@@ -199,6 +200,10 @@ func (s *DescribeCustomAgentResponseBodyData) GetCustomAgentId() *string {
 
 func (s *DescribeCustomAgentResponseBodyData) GetDataJson() *string {
 	return s.DataJson
+}
+
+func (s *DescribeCustomAgentResponseBodyData) GetDefaultAgent() *int32 {
+	return s.DefaultAgent
 }
 
 func (s *DescribeCustomAgentResponseBodyData) GetDescription() *string {
@@ -295,6 +300,11 @@ func (s *DescribeCustomAgentResponseBodyData) SetCustomAgentId(v string) *Descri
 
 func (s *DescribeCustomAgentResponseBodyData) SetDataJson(v string) *DescribeCustomAgentResponseBodyData {
 	s.DataJson = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyData) SetDefaultAgent(v int32) *DescribeCustomAgentResponseBodyData {
+	s.DefaultAgent = &v
 	return s
 }
 
