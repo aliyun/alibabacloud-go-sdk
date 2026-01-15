@@ -3011,6 +3011,10 @@ func (client *Client) ExportCustomSourceAnalysisTaskWithOptions(request *ExportC
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExportType) {
+		body["ExportType"] = request.ExportType
+	}
+
 	if !dara.IsNil(request.TaskId) {
 		body["TaskId"] = request.TaskId
 	}
@@ -14803,6 +14807,10 @@ func (client *Client) SubmitCustomSourceTopicAnalysisWithOptions(tmpReq *SubmitC
 		request.NewsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.News, dara.String("News"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.Topics) {
+		request.TopicsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Topics, dara.String("Topics"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AnalysisTypesShrink) {
 		body["AnalysisTypes"] = request.AnalysisTypesShrink
@@ -14822,6 +14830,14 @@ func (client *Client) SubmitCustomSourceTopicAnalysisWithOptions(tmpReq *SubmitC
 
 	if !dara.IsNil(request.NewsShrink) {
 		body["News"] = request.NewsShrink
+	}
+
+	if !dara.IsNil(request.TopicsShrink) {
+		body["Topics"] = request.TopicsShrink
+	}
+
+	if !dara.IsNil(request.TopicsFileUrl) {
+		body["TopicsFileUrl"] = request.TopicsFileUrl
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {

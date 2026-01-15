@@ -9,6 +9,8 @@ type iExportCustomSourceAnalysisTaskRequest interface {
   dara.Model
   String() string
   GoString() string
+  SetExportType(v string) *ExportCustomSourceAnalysisTaskRequest
+  GetExportType() *string 
   SetTaskId(v string) *ExportCustomSourceAnalysisTaskRequest
   GetTaskId() *string 
   SetWorkspaceId(v string) *ExportCustomSourceAnalysisTaskRequest
@@ -16,6 +18,10 @@ type iExportCustomSourceAnalysisTaskRequest interface {
 }
 
 type ExportCustomSourceAnalysisTaskRequest struct {
+  // example:
+  // 
+  // jsonLine
+  ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
   // This parameter is required.
   // 
   // example:
@@ -38,12 +44,21 @@ func (s ExportCustomSourceAnalysisTaskRequest) GoString() string {
   return s.String()
 }
 
+func (s *ExportCustomSourceAnalysisTaskRequest) GetExportType() *string  {
+  return s.ExportType
+}
+
 func (s *ExportCustomSourceAnalysisTaskRequest) GetTaskId() *string  {
   return s.TaskId
 }
 
 func (s *ExportCustomSourceAnalysisTaskRequest) GetWorkspaceId() *string  {
   return s.WorkspaceId
+}
+
+func (s *ExportCustomSourceAnalysisTaskRequest) SetExportType(v string) *ExportCustomSourceAnalysisTaskRequest {
+  s.ExportType = &v
+  return s
 }
 
 func (s *ExportCustomSourceAnalysisTaskRequest) SetTaskId(v string) *ExportCustomSourceAnalysisTaskRequest {

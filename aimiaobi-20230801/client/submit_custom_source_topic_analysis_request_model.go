@@ -19,6 +19,10 @@ type iSubmitCustomSourceTopicAnalysisRequest interface {
 	GetMaxTopicSize() *int32
 	SetNews(v []*SubmitCustomSourceTopicAnalysisRequestNews) *SubmitCustomSourceTopicAnalysisRequest
 	GetNews() []*SubmitCustomSourceTopicAnalysisRequestNews
+	SetTopics(v []*SubmitCustomSourceTopicAnalysisRequestTopics) *SubmitCustomSourceTopicAnalysisRequest
+	GetTopics() []*SubmitCustomSourceTopicAnalysisRequestTopics
+	SetTopicsFileUrl(v string) *SubmitCustomSourceTopicAnalysisRequest
+	GetTopicsFileUrl() *string
 	SetWorkspaceId(v string) *SubmitCustomSourceTopicAnalysisRequest
 	GetWorkspaceId() *string
 }
@@ -36,8 +40,13 @@ type SubmitCustomSourceTopicAnalysisRequest struct {
 	// example:
 	//
 	// 50
-	MaxTopicSize *int32                                        `json:"MaxTopicSize,omitempty" xml:"MaxTopicSize,omitempty"`
-	News         []*SubmitCustomSourceTopicAnalysisRequestNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
+	MaxTopicSize *int32                                          `json:"MaxTopicSize,omitempty" xml:"MaxTopicSize,omitempty"`
+	News         []*SubmitCustomSourceTopicAnalysisRequestNews   `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
+	Topics       []*SubmitCustomSourceTopicAnalysisRequestTopics `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http://www.example.com/xxx.jsonline
+	TopicsFileUrl *string `json:"TopicsFileUrl,omitempty" xml:"TopicsFileUrl,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -74,6 +83,14 @@ func (s *SubmitCustomSourceTopicAnalysisRequest) GetNews() []*SubmitCustomSource
 	return s.News
 }
 
+func (s *SubmitCustomSourceTopicAnalysisRequest) GetTopics() []*SubmitCustomSourceTopicAnalysisRequestTopics {
+	return s.Topics
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequest) GetTopicsFileUrl() *string {
+	return s.TopicsFileUrl
+}
+
 func (s *SubmitCustomSourceTopicAnalysisRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -103,6 +120,16 @@ func (s *SubmitCustomSourceTopicAnalysisRequest) SetNews(v []*SubmitCustomSource
 	return s
 }
 
+func (s *SubmitCustomSourceTopicAnalysisRequest) SetTopics(v []*SubmitCustomSourceTopicAnalysisRequestTopics) *SubmitCustomSourceTopicAnalysisRequest {
+	s.Topics = v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequest) SetTopicsFileUrl(v string) *SubmitCustomSourceTopicAnalysisRequest {
+	s.TopicsFileUrl = &v
+	return s
+}
+
 func (s *SubmitCustomSourceTopicAnalysisRequest) SetWorkspaceId(v string) *SubmitCustomSourceTopicAnalysisRequest {
 	s.WorkspaceId = &v
 	return s
@@ -111,6 +138,15 @@ func (s *SubmitCustomSourceTopicAnalysisRequest) SetWorkspaceId(v string) *Submi
 func (s *SubmitCustomSourceTopicAnalysisRequest) Validate() error {
 	if s.News != nil {
 		for _, item := range s.News {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Topics != nil {
+		for _, item := range s.Topics {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -234,4 +270,51 @@ func (s *SubmitCustomSourceTopicAnalysisRequestNewsComments) SetText(v string) *
 
 func (s *SubmitCustomSourceTopicAnalysisRequestNewsComments) Validate() error {
 	return dara.Validate(s)
+}
+
+type SubmitCustomSourceTopicAnalysisRequestTopics struct {
+	News []*HottopicNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 话题名称
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s SubmitCustomSourceTopicAnalysisRequestTopics) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitCustomSourceTopicAnalysisRequestTopics) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequestTopics) GetNews() []*HottopicNews {
+	return s.News
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequestTopics) GetTopic() *string {
+	return s.Topic
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequestTopics) SetNews(v []*HottopicNews) *SubmitCustomSourceTopicAnalysisRequestTopics {
+	s.News = v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequestTopics) SetTopic(v string) *SubmitCustomSourceTopicAnalysisRequestTopics {
+	s.Topic = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequestTopics) Validate() error {
+	if s.News != nil {
+		for _, item := range s.News {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
