@@ -65,6 +65,10 @@ type iCreateNatGatewayRequest interface {
 
 type CreateNatGatewayRequest struct {
 	// The access mode for reverse access to the VPC NAT gateway.
+	//
+	// example:
+	//
+	// MULTI_BINDED
 	AccessMode *CreateNatGatewayRequestAccessMode `json:"AccessMode,omitempty" xml:"AccessMode,omitempty" type:"Struct"`
 	// Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
 	//
@@ -134,7 +138,12 @@ type CreateNatGatewayRequest struct {
 	//
 	// PayByLcu
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	Ipv4Prefix         *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
+	// Create an IP prefix address segment for batch creation of NAT IPs. Please use the reserved and unallocated network segments in the VSwitch where the NAT is located.
+	//
+	// example:
+	//
+	// 192.168.0.0/28
+	Ipv4Prefix *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
 	// The name of the NAT gateway.
 	//
 	// The name must be 2 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
@@ -144,7 +153,12 @@ type CreateNatGatewayRequest struct {
 	// example:
 	//
 	// fortest
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The private IP address occupied by the NAT gateway. Please use an unassigned IP from the subnet where the NAT is located. If left empty, an IP address will be randomly assigned.
+	//
+	// example:
+	//
+	// 192.168.0.x
 	NatIp *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
 	// The type of NAT gateway. Set the value to **Enhanced**, which specifies enhanced NAT gateway.
 	//
@@ -171,6 +185,10 @@ type CreateNatGatewayRequest struct {
 	// Invalid parameter.
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	// PrivateLink is not supported by default. If you set the value to true, PrivateLink is supported.
+	//
+	// example:
+	//
+	// false
 	PrivateLinkEnabled *bool `json:"PrivateLinkEnabled,omitempty" xml:"PrivateLinkEnabled,omitempty"`
 	// The region ID of the NAT gateway.
 	//
@@ -508,6 +526,10 @@ type CreateNatGatewayRequestAccessMode struct {
 	// - **geneve**: Geneve type
 	//
 	// > This value takes effect if the access mode is the tunnel mode.
+	//
+	// example:
+	//
+	// geneve
 	TunnelType *string `json:"TunnelType,omitempty" xml:"TunnelType,omitempty"`
 }
 

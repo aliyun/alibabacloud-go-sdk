@@ -49,7 +49,8 @@ type DescribeSnatTableEntriesRequest struct {
 	// example:
 	//
 	// ngw-bp1uewa15k4iy5770****
-	NatGatewayId        *string   `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The ID of the elastic network interface to be queried.
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
 	OwnerAccount        *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId             *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

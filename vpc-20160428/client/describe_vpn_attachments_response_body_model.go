@@ -179,6 +179,7 @@ type DescribeVpnAttachmentsResponseBodyVpnAttachments struct {
 	//
 	// nametest2
 	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
+	TunnelBandwidth   *string `json:"TunnelBandwidth,omitempty" xml:"TunnelBandwidth,omitempty"`
 }
 
 func (s DescribeVpnAttachmentsResponseBodyVpnAttachments) String() string {
@@ -225,6 +226,10 @@ func (s *DescribeVpnAttachmentsResponseBodyVpnAttachments) GetTransitRouterName(
 	return s.TransitRouterName
 }
 
+func (s *DescribeVpnAttachmentsResponseBodyVpnAttachments) GetTunnelBandwidth() *string {
+	return s.TunnelBandwidth
+}
+
 func (s *DescribeVpnAttachmentsResponseBodyVpnAttachments) SetAttachType(v string) *DescribeVpnAttachmentsResponseBodyVpnAttachments {
 	s.AttachType = &v
 	return s
@@ -267,6 +272,11 @@ func (s *DescribeVpnAttachmentsResponseBodyVpnAttachments) SetTransitRouterId(v 
 
 func (s *DescribeVpnAttachmentsResponseBodyVpnAttachments) SetTransitRouterName(v string) *DescribeVpnAttachmentsResponseBodyVpnAttachments {
 	s.TransitRouterName = &v
+	return s
+}
+
+func (s *DescribeVpnAttachmentsResponseBodyVpnAttachments) SetTunnelBandwidth(v string) *DescribeVpnAttachmentsResponseBodyVpnAttachments {
+	s.TunnelBandwidth = &v
 	return s
 }
 

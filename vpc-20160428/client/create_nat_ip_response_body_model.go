@@ -22,6 +22,8 @@ type iCreateNatIpResponseBody interface {
 }
 
 type CreateNatIpResponseBody struct {
+	// The IPv4Prefix returned by the previous API is obsolete.
+	//
 	// example:
 	//
 	// ""
@@ -37,8 +39,9 @@ type CreateNatIpResponseBody struct {
 	// example:
 	//
 	// vpcnatip-gw8y7q3cpk3fggs8****
-	NatIpId *string                          `json:"NatIpId,omitempty" xml:"NatIpId,omitempty"`
-	NatIps  []*CreateNatIpResponseBodyNatIps `json:"NatIps,omitempty" xml:"NatIps,omitempty" type:"Repeated"`
+	NatIpId *string `json:"NatIpId,omitempty" xml:"NatIpId,omitempty"`
+	// The NatIp parameter that is returned after you create a NatIp. If you use IPv4Prefix to create a NatIp, the information about all NatIp is returned. We recommend that you use this parameter to obtain the information about a NatIp when you create a NatIp.
+	NatIps []*CreateNatIpResponseBodyNatIps `json:"NatIps,omitempty" xml:"NatIps,omitempty" type:"Repeated"`
 	// The request ID.
 	//
 	// example:
@@ -114,6 +117,8 @@ func (s *CreateNatIpResponseBody) Validate() error {
 }
 
 type CreateNatIpResponseBodyNatIps struct {
+	// The Ipv4Prefix of the created NatIpList list is returned when Ipv4Preix is created.
+	//
 	// if can be null:
 	// true
 	//
@@ -121,10 +126,14 @@ type CreateNatIpResponseBodyNatIps struct {
 	//
 	// 192.168.1.128/28
 	Ipv4Prefix *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
+	// Returns the NatIp address of the created NatIpList list when Ipv4Preix is created.
+	//
 	// example:
 	//
 	// 192.168.2.128
 	NatIp *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
+	// Returns the NatIpId of the created NatIpList list when Ipv4Preix is created.
+	//
 	// example:
 	//
 	// vpcnatip-xxxxxxxx

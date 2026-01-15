@@ -59,6 +59,8 @@ type iDescribeVpnConnectionResponseBody interface {
 	GetTransitRouterId() *string
 	SetTransitRouterName(v string) *DescribeVpnConnectionResponseBody
 	GetTransitRouterName() *string
+	SetTunnelBandwidth(v string) *DescribeVpnConnectionResponseBody
+	GetTunnelBandwidth() *string
 	SetTunnelOptionsSpecification(v *DescribeVpnConnectionResponseBodyTunnelOptionsSpecification) *DescribeVpnConnectionResponseBody
 	GetTunnelOptionsSpecification() *DescribeVpnConnectionResponseBodyTunnelOptionsSpecification
 	SetVcoHealthCheck(v *DescribeVpnConnectionResponseBodyVcoHealthCheck) *DescribeVpnConnectionResponseBody
@@ -282,6 +284,7 @@ type DescribeVpnConnectionResponseBody struct {
 	//
 	// nametest
 	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
+	TunnelBandwidth   *string `json:"TunnelBandwidth,omitempty" xml:"TunnelBandwidth,omitempty"`
 	// The tunnel configurations of the IPsec-VPN connection.
 	//
 	// Parameters in **TunnelOptionsSpecification*	- are returned only if you query an IPsec-VPN connection in dual-tunnel mode.
@@ -418,6 +421,10 @@ func (s *DescribeVpnConnectionResponseBody) GetTransitRouterId() *string {
 
 func (s *DescribeVpnConnectionResponseBody) GetTransitRouterName() *string {
 	return s.TransitRouterName
+}
+
+func (s *DescribeVpnConnectionResponseBody) GetTunnelBandwidth() *string {
+	return s.TunnelBandwidth
 }
 
 func (s *DescribeVpnConnectionResponseBody) GetTunnelOptionsSpecification() *DescribeVpnConnectionResponseBodyTunnelOptionsSpecification {
@@ -566,6 +573,11 @@ func (s *DescribeVpnConnectionResponseBody) SetTransitRouterId(v string) *Descri
 
 func (s *DescribeVpnConnectionResponseBody) SetTransitRouterName(v string) *DescribeVpnConnectionResponseBody {
 	s.TransitRouterName = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBody) SetTunnelBandwidth(v string) *DescribeVpnConnectionResponseBody {
+	s.TunnelBandwidth = &v
 	return s
 }
 

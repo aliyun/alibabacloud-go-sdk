@@ -225,6 +225,7 @@ type DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ENIs created by the system for the VPN gateway.
 	EniInstanceIds *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayEniInstanceIds `json:"EniInstanceIds,omitempty" xml:"EniInstanceIds,omitempty" type:"Struct"`
+	GatewayType    *string                                                             `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 	// 	- If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the value of this parameter is the IP address of the VPN gateway, which can be used to create IPsec-VPN or SSL-VPN connections.
 	//
 	// 	- If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the value of this parameter is the first IP address that is used to create an IPsec-VPN connection. The IP address cannot be used to create SSL-VPN connections.
@@ -437,6 +438,10 @@ func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) GetEniInstanceIds
 	return s.EniInstanceIds
 }
 
+func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) GetGatewayType() *string {
+	return s.GatewayType
+}
+
 func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) GetInternetIp() *string {
 	return s.InternetIp
 }
@@ -552,6 +557,11 @@ func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) SetEndTime(v int6
 
 func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) SetEniInstanceIds(v *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayEniInstanceIds) *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway {
 	s.EniInstanceIds = v
+	return s
+}
+
+func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) SetGatewayType(v string) *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway {
+	s.GatewayType = &v
 	return s
 }
 

@@ -60,11 +60,18 @@ type CreateNatIpRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The created IP prefix address segment must be within the reserved network segment of the switch where the NAT is located, and the reserved network segment cannot be occupied. The IP prefix mask must be /28.
+	//
 	// example:
 	//
 	// null
-	Ipv4Prefix      *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
-	Ipv4PrefixCount *int64  `json:"Ipv4PrefixCount,omitempty" xml:"Ipv4PrefixCount,omitempty"`
+	Ipv4Prefix *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
+	// The number of automatically assigned IP prefixes. These are randomly allocated from the unassigned reserved segments of the switch where the NAT is located. Value range: 1 to 10.
+	//
+	// example:
+	//
+	// 1
+	Ipv4PrefixCount *int64 `json:"Ipv4PrefixCount,omitempty" xml:"Ipv4PrefixCount,omitempty"`
 	// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
 	//
 	// This parameter is required.

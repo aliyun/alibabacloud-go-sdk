@@ -47,9 +47,34 @@ type ModifySnatEntryRequest struct {
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-001****
-	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun             *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EipAffinity        *int32  `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Whether to perform a dry run of this request, with values:
+	//
+	// - **true**: Sends a check request without modifying the SNAT entry. The checks include whether the required parameters are filled in, the request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, an error code `DryRunOperation` is returned.
+	//
+	// - **false*	- (default): Sends a normal request. After passing the check, it returns a 2xx HTTP status code and modifies the SNAT entry.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Whether to enable IP affinity. Values:
+	//
+	// - **0**: Disable IP affinity.
+	//
+	//  - **1**: Enable IP affinity.
+	//
+	// > After enabling the IP affinity switch, if an SNAT entry is bound to multiple EIPs or NAT IPs, the same client will use the same EIP or NAT IP for access; otherwise, the client will randomly select from the bound EIPs or NAT IPs for access.
+	//
+	// example:
+	//
+	// 1
+	EipAffinity *int32 `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
+	// Elastic Network Interface ID. The IPv4 address set of the elastic network interface will be used as the SNAT address.
+	//
+	// example:
+	//
+	// eni-gw8g131ef2dnbu3k****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

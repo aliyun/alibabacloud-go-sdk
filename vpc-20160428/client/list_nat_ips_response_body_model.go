@@ -104,6 +104,11 @@ func (s *ListNatIpsResponseBody) Validate() error {
 }
 
 type ListNatIpsResponseBodyNatIps struct {
+	// The IP prefix address range to which the queried NAT IP address belongs.
+	//
+	// example:
+	//
+	// 192.168.0.0/28
 	Ipv4Prefix *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
 	// Indicates whether the IP address is the default IP address of the NAT gateway. Valid values:
 	//

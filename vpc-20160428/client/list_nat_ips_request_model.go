@@ -64,10 +64,17 @@ type ListNatIpsRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The enumeration of the fields used to describe the source of the NatIp. Prefix indicates the NatIp that belongs to the IPv4Prefix. The value cidr indicates isolated NatIp. The value control indicates all NatIp.
+	//
 	// example:
 	//
 	// cidr
-	IpOrigin   *string `json:"IpOrigin,omitempty" xml:"IpOrigin,omitempty"`
+	IpOrigin *string `json:"IpOrigin,omitempty" xml:"IpOrigin,omitempty"`
+	// The IP prefix address range.
+	//
+	// example:
+	//
+	// 192.168.0.0/28
 	Ipv4Prefix *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
 	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
 	//

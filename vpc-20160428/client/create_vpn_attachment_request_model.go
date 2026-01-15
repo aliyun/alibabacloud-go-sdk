@@ -55,6 +55,8 @@ type iCreateVpnAttachmentRequest interface {
 	GetResourceOwnerId() *int64
 	SetTags(v []*CreateVpnAttachmentRequestTags) *CreateVpnAttachmentRequest
 	GetTags() []*CreateVpnAttachmentRequestTags
+	SetTunnelBandwidth(v string) *CreateVpnAttachmentRequest
+	GetTunnelBandwidth() *string
 	SetTunnelOptionsSpecification(v []*CreateVpnAttachmentRequestTunnelOptionsSpecification) *CreateVpnAttachmentRequest
 	GetTunnelOptionsSpecification() []*CreateVpnAttachmentRequestTunnelOptionsSpecification
 }
@@ -313,7 +315,8 @@ type CreateVpnAttachmentRequest struct {
 	// The tag value can be an empty string and cannot exceed 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// Each tag key corresponds to one tag value. You can specify up to 20 tag values in each call.
-	Tags []*CreateVpnAttachmentRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Tags            []*CreateVpnAttachmentRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TunnelBandwidth *string                           `json:"TunnelBandwidth,omitempty" xml:"TunnelBandwidth,omitempty"`
 	// The tunnel configurations.
 	//
 	// 	- You can specify parameters in the **TunnelOptionsSpecification*	- array when you create an IPsec-VPN connection in dual tunnel mode.
@@ -423,6 +426,10 @@ func (s *CreateVpnAttachmentRequest) GetResourceOwnerId() *int64 {
 
 func (s *CreateVpnAttachmentRequest) GetTags() []*CreateVpnAttachmentRequestTags {
 	return s.Tags
+}
+
+func (s *CreateVpnAttachmentRequest) GetTunnelBandwidth() *string {
+	return s.TunnelBandwidth
 }
 
 func (s *CreateVpnAttachmentRequest) GetTunnelOptionsSpecification() []*CreateVpnAttachmentRequestTunnelOptionsSpecification {
@@ -541,6 +548,11 @@ func (s *CreateVpnAttachmentRequest) SetResourceOwnerId(v int64) *CreateVpnAttac
 
 func (s *CreateVpnAttachmentRequest) SetTags(v []*CreateVpnAttachmentRequestTags) *CreateVpnAttachmentRequest {
 	s.Tags = v
+	return s
+}
+
+func (s *CreateVpnAttachmentRequest) SetTunnelBandwidth(v string) *CreateVpnAttachmentRequest {
+	s.TunnelBandwidth = &v
 	return s
 }
 

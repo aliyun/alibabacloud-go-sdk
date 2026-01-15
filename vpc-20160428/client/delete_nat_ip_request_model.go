@@ -51,8 +51,18 @@ type DeleteNatIpRequest struct {
 	// example:
 	//
 	// false
-	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	Ipv4Prefix   *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The IP prefix address to be deleted.
+	//
+	// example:
+	//
+	// 192.168.0.0/28
+	Ipv4Prefix *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
+	// The ID of the NAT gateway instance to which the IP prefix to be deleted belongs. Required when deleting an IP prefix.
+	//
+	// example:
+	//
+	// ngw-gw8v16wgvtq26vh59****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	// The ID of the NAT IP address that you want to delete.
 	//

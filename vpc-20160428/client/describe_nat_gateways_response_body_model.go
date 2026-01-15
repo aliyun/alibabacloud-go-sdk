@@ -147,6 +147,7 @@ func (s *DescribeNatGatewaysResponseBodyNatGateways) Validate() error {
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGateway struct {
+	// Access mode for reverse access to VPC NAT gateway.
 	AccessMode *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayAccessMode `json:"AccessMode,omitempty" xml:"AccessMode,omitempty" type:"Struct"`
 	// Indicates whether automatic payment is enabled. Valid values:
 	//
@@ -211,7 +212,16 @@ type DescribeNatGatewaysResponseBodyNatGatewaysNatGateway struct {
 	// example:
 	//
 	// MULTI_BINDED
-	EipBindMode      *string `json:"EipBindMode,omitempty" xml:"EipBindMode,omitempty"`
+	EipBindMode *string `json:"EipBindMode,omitempty" xml:"EipBindMode,omitempty"`
+	// Whether to enable session logging, with values:
+	//
+	// - **true**: Session logging is enabled.
+	//
+	// - **false**: Session logging is disabled.
+	//
+	// example:
+	//
+	// true
 	EnableSessionLog *string `json:"EnableSessionLog,omitempty" xml:"EnableSessionLog,omitempty"`
 	// The time when the NAT gateway expires.
 	//
@@ -250,7 +260,8 @@ type DescribeNatGatewaysResponseBodyNatGatewaysNatGateway struct {
 	// PayByLcu
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The list of elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
-	IpLists      *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpLists      `json:"IpLists,omitempty" xml:"IpLists,omitempty" type:"Struct"`
+	IpLists *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpLists `json:"IpLists,omitempty" xml:"IpLists,omitempty" type:"Struct"`
+	// List of NAT IP prefix address segments.
 	IpPrefixList *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixList `json:"IpPrefixList,omitempty" xml:"IpPrefixList,omitempty" type:"Struct"`
 	// The name of the NAT gateway.
 	//
@@ -703,7 +714,23 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) Validate() error 
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayAccessMode struct {
-	ModeValue  *string `json:"ModeValue,omitempty" xml:"ModeValue,omitempty"`
+	// Access mode, with values:
+	//
+	// - **route**: Route mode.
+	//
+	// - **tunnel**: Tunnel mode.
+	//
+	// example:
+	//
+	// route
+	ModeValue *string `json:"ModeValue,omitempty" xml:"ModeValue,omitempty"`
+	// Tunnel mode type:
+	//
+	// - **geneve**: Geneve type.
+	//
+	// example:
+	//
+	// geneve
 	TunnelType *string `json:"TunnelType,omitempty" xml:"TunnelType,omitempty"`
 }
 
@@ -958,6 +985,11 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixList) Valid
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixListIpPrefixList struct {
+	// NAT IP prefix address range
+	//
+	// example:
+	//
+	// 192.168.0.0/28
 	IpPrefix *string `json:"IpPrefix,omitempty" xml:"IpPrefix,omitempty"`
 }
 

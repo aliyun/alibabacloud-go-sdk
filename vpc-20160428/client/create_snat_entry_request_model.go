@@ -52,7 +52,16 @@ type CreateSnatEntryRequest struct {
 	//
 	// 02fb3da4-130e-11e9-8e44****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Indicates whether to only precheck this request. Values:
+	//
+	// - **true**: Sends a precheck request and does not create an SNAT entry. The precheck includes verifying if the AccessKey is valid, checking the RAM user\\"s authorization, and ensuring that all required parameters are filled out. If the precheck fails, the corresponding error is returned. If the precheck passes, the error code `DryRunOperation` is returned.
+	//
+	// - **false*	- (default): Sends a normal request. After passing the precheck, it returns a 2xx HTTP status code and creates an SNAT entry.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to enable EIP affinity. Valid values:
 	//
 	// 	- **0**: no
@@ -66,7 +75,14 @@ type CreateSnatEntryRequest struct {
 	// example:
 	//
 	// 1
-	EipAffinity        *int32  `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
+	EipAffinity *int32 `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
+	// Elastic Network Interface ID.
+	//
+	// > The IPv4 address set of the elastic network interface will be used as the SNAT address.
+	//
+	// example:
+	//
+	// eni-gw8g131ef2dnbu3k****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

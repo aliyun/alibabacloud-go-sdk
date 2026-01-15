@@ -210,7 +210,12 @@ type DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInt
 	// example:
 	//
 	// PrivateLink
-	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// VPC ID of the service resource
+	//
+	// example:
+	//
+	// vpc-bp1di7uewzmtvfuq8****
 	ResourceVpcId *string `json:"ResourceVpcId,omitempty" xml:"ResourceVpcId,omitempty"`
 	// The ID of the tunnel index.
 	//

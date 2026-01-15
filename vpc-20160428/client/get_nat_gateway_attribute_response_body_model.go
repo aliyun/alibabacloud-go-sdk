@@ -64,6 +64,7 @@ type iGetNatGatewayAttributeResponseBody interface {
 }
 
 type GetNatGatewayAttributeResponseBody struct {
+	// Access mode for reverse access to VPC NAT gateway.
 	AccessMode *GetNatGatewayAttributeResponseBodyAccessMode `json:"AccessMode,omitempty" xml:"AccessMode,omitempty" type:"Struct"`
 	// The billing information.
 	BillingConfig *GetNatGatewayAttributeResponseBodyBillingConfig `json:"BillingConfig,omitempty" xml:"BillingConfig,omitempty" type:"Struct"`
@@ -101,6 +102,15 @@ type GetNatGatewayAttributeResponseBody struct {
 	//
 	// true
 	EcsMetricEnabled *bool `json:"EcsMetricEnabled,omitempty" xml:"EcsMetricEnabled,omitempty"`
+	// Whether to enable session log, with values:
+	//
+	// - **true**: Session logging is enabled.
+	//
+	// - **false**: Session logging is disabled.
+	//
+	// example:
+	//
+	// true
 	EnableSessionLog *bool `json:"EnableSessionLog,omitempty" xml:"EnableSessionLog,omitempty"`
 	// The time when the NAT gateway expires.
 	//
@@ -113,7 +123,8 @@ type GetNatGatewayAttributeResponseBody struct {
 	// The information about the FULLNAT table.
 	FullNatTable *GetNatGatewayAttributeResponseBodyFullNatTable `json:"FullNatTable,omitempty" xml:"FullNatTable,omitempty" type:"Struct"`
 	// The elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
-	IpList      []*GetNatGatewayAttributeResponseBodyIpList    `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	IpList []*GetNatGatewayAttributeResponseBodyIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	// Session log configuration information.
 	LogDelivery *GetNatGatewayAttributeResponseBodyLogDelivery `json:"LogDelivery,omitempty" xml:"LogDelivery,omitempty" type:"Struct"`
 	// The name of the NAT gateway.
 	//
@@ -505,7 +516,23 @@ func (s *GetNatGatewayAttributeResponseBody) Validate() error {
 }
 
 type GetNatGatewayAttributeResponseBodyAccessMode struct {
-	ModeValue  *string `json:"ModeValue,omitempty" xml:"ModeValue,omitempty"`
+	// Access mode values:
+	//
+	// - **route**: Route mode.
+	//
+	// - **tunnel**: Tunnel mode.
+	//
+	// example:
+	//
+	// route
+	ModeValue *string `json:"ModeValue,omitempty" xml:"ModeValue,omitempty"`
+	// Tunnel mode type:
+	//
+	// - **geneve**: Geneve type.
+	//
+	// example:
+	//
+	// geneve
 	TunnelType *string `json:"TunnelType,omitempty" xml:"TunnelType,omitempty"`
 }
 
@@ -823,10 +850,34 @@ func (s *GetNatGatewayAttributeResponseBodyIpList) Validate() error {
 }
 
 type GetNatGatewayAttributeResponseBodyLogDelivery struct {
+	// Error message for session log write failure.
+	//
+	// example:
+	//
+	// LogStoreNotExist: logstore session_log_test does not exist
 	DeliverLogsErrorMessage *string `json:"DeliverLogsErrorMessage,omitempty" xml:"DeliverLogsErrorMessage,omitempty"`
-	DeliveryStatus          *string `json:"DeliveryStatus,omitempty" xml:"DeliveryStatus,omitempty"`
-	LogDeliveryType         *string `json:"LogDeliveryType,omitempty" xml:"LogDeliveryType,omitempty"`
-	LogDestination          *string `json:"LogDestination,omitempty" xml:"LogDestination,omitempty"`
+	// Session log write status. Values:
+	//
+	// - **Success**: Success.
+	//
+	// - **Failure**: Failure.
+	//
+	// example:
+	//
+	// Failure
+	DeliveryStatus *string `json:"DeliveryStatus,omitempty" xml:"DeliveryStatus,omitempty"`
+	// Session log delivery destination type. Value: **sls**, Alibaba Cloud Log Service SLS.
+	//
+	// example:
+	//
+	// sls
+	LogDeliveryType *string `json:"LogDeliveryType,omitempty" xml:"LogDeliveryType,omitempty"`
+	// Destination address for session log writing
+	//
+	// example:
+	//
+	// acs:log:cn-hangzhou:0000:project/nat_session_log_project/logstore/session_log_test
+	LogDestination *string `json:"LogDestination,omitempty" xml:"LogDestination,omitempty"`
 }
 
 func (s GetNatGatewayAttributeResponseBodyLogDelivery) String() string {

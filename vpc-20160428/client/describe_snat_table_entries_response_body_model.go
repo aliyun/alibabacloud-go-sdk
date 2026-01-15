@@ -147,13 +147,27 @@ func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) Validate() error 
 }
 
 type DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry struct {
+	// Whether to enable IP affinity. Values:
+	//
+	// - **0**: Disable IP affinity. - **1**: Enable IP affinity.
+	//
+	// > After enabling the IP affinity switch, if an SNAT entry is bound to multiple EIPs or NAT IPs, the same client will use the same EIP or NAT IP for access. Otherwise, the client will randomly select from the bound EIPs or NAT IPs for access.
+	//
+	// example:
+	//
+	// 1
 	EipAffinity *string `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
 	// The ID of the NAT gateway to which the SNAT entry belongs.
 	//
 	// example:
 	//
 	// ngw-bp1uewa15k4iy5770****
-	NatGatewayId       *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// Elastic Network Interface ID
+	//
+	// example:
+	//
+	// eni-gw8g131ef2dnbu3k****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	// The ID of the SNAT entry.
 	//

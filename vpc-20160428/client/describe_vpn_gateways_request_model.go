@@ -11,6 +11,8 @@ type iDescribeVpnGatewaysRequest interface {
 	GoString() string
 	SetBusinessStatus(v string) *DescribeVpnGatewaysRequest
 	GetBusinessStatus() *string
+	SetGatewayType(v string) *DescribeVpnGatewaysRequest
+	GetGatewayType() *string
 	SetIncludeReservationData(v bool) *DescribeVpnGatewaysRequest
 	GetIncludeReservationData() *bool
 	SetOwnerAccount(v string) *DescribeVpnGatewaysRequest
@@ -50,6 +52,7 @@ type DescribeVpnGatewaysRequest struct {
 	//
 	// Normal
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	GatewayType    *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 	// Specifies whether to return information about pending orders. Valid values:
 	//
 	// 	- **false*	- (default)
@@ -138,6 +141,10 @@ func (s *DescribeVpnGatewaysRequest) GetBusinessStatus() *string {
 	return s.BusinessStatus
 }
 
+func (s *DescribeVpnGatewaysRequest) GetGatewayType() *string {
+	return s.GatewayType
+}
+
 func (s *DescribeVpnGatewaysRequest) GetIncludeReservationData() *bool {
 	return s.IncludeReservationData
 }
@@ -192,6 +199,11 @@ func (s *DescribeVpnGatewaysRequest) GetVpnGatewayId() *string {
 
 func (s *DescribeVpnGatewaysRequest) SetBusinessStatus(v string) *DescribeVpnGatewaysRequest {
 	s.BusinessStatus = &v
+	return s
+}
+
+func (s *DescribeVpnGatewaysRequest) SetGatewayType(v string) *DescribeVpnGatewaysRequest {
+	s.GatewayType = &v
 	return s
 }
 

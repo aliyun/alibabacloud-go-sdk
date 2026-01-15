@@ -29,6 +29,8 @@ type iDescribeVpnGatewayResponseBody interface {
 	GetEndTime() *int64
 	SetEniInstanceIds(v *DescribeVpnGatewayResponseBodyEniInstanceIds) *DescribeVpnGatewayResponseBody
 	GetEniInstanceIds() *DescribeVpnGatewayResponseBodyEniInstanceIds
+	SetGatewayType(v string) *DescribeVpnGatewayResponseBody
+	GetGatewayType() *string
 	SetInternetIp(v string) *DescribeVpnGatewayResponseBody
 	GetInternetIp() *string
 	SetIpsecVpn(v string) *DescribeVpnGatewayResponseBody
@@ -146,6 +148,7 @@ type DescribeVpnGatewayResponseBody struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ENIs created by the system for the VPN gateway.
 	EniInstanceIds *DescribeVpnGatewayResponseBodyEniInstanceIds `json:"EniInstanceIds,omitempty" xml:"EniInstanceIds,omitempty" type:"Struct"`
+	GatewayType    *string                                       `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 	// 	- If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
 	//
 	// 	- If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection.
@@ -362,6 +365,10 @@ func (s *DescribeVpnGatewayResponseBody) GetEniInstanceIds() *DescribeVpnGateway
 	return s.EniInstanceIds
 }
 
+func (s *DescribeVpnGatewayResponseBody) GetGatewayType() *string {
+	return s.GatewayType
+}
+
 func (s *DescribeVpnGatewayResponseBody) GetInternetIp() *string {
 	return s.InternetIp
 }
@@ -481,6 +488,11 @@ func (s *DescribeVpnGatewayResponseBody) SetEndTime(v int64) *DescribeVpnGateway
 
 func (s *DescribeVpnGatewayResponseBody) SetEniInstanceIds(v *DescribeVpnGatewayResponseBodyEniInstanceIds) *DescribeVpnGatewayResponseBody {
 	s.EniInstanceIds = v
+	return s
+}
+
+func (s *DescribeVpnGatewayResponseBody) SetGatewayType(v string) *DescribeVpnGatewayResponseBody {
+	s.GatewayType = &v
 	return s
 }
 

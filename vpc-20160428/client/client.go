@@ -11792,6 +11792,10 @@ func (client *Client) CreateVpnAttachmentWithOptions(request *CreateVpnAttachmen
 		query["Tags"] = request.Tags
 	}
 
+	if !dara.IsNil(request.TunnelBandwidth) {
+		query["TunnelBandwidth"] = request.TunnelBandwidth
+	}
+
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
 	if !dara.IsNil(request.TunnelOptionsSpecification) {
@@ -25998,6 +26002,10 @@ func (client *Client) DescribeVpnGatewaysWithOptions(request *DescribeVpnGateway
 		query["BusinessStatus"] = request.BusinessStatus
 	}
 
+	if !dara.IsNil(request.GatewayType) {
+		query["GatewayType"] = request.GatewayType
+	}
+
 	if !dara.IsNil(request.IncludeReservationData) {
 		query["IncludeReservationData"] = request.IncludeReservationData
 	}
@@ -27971,7 +27979,7 @@ func (client *Client) GetIpv4GatewayAttribute(request *GetIpv4GatewayAttributeRe
 
 // Summary:
 //
-// 查询NAT详情信息
+// Queries information about a NAT gateway.
 //
 // Description:
 //
@@ -28043,7 +28051,7 @@ func (client *Client) GetNatGatewayAttributeWithOptions(request *GetNatGatewayAt
 
 // Summary:
 //
-// 查询NAT详情信息
+// Queries information about a NAT gateway.
 //
 // Description:
 //
@@ -28056,6 +28064,198 @@ func (client *Client) GetNatGatewayAttribute(request *GetNatGatewayAttributeRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetNatGatewayAttributeResponse{}
 	_body, _err := client.GetNatGatewayAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Call GetNatIpAttribute to query the VPC NAT network to obtain information on each NAT IP address.
+//
+// @param request - GetNatIpAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNatIpAttributeResponse
+func (client *Client) GetNatIpAttributeWithOptions(request *GetNatIpAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetNatIpAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.NatIpId) {
+		query["NatIpId"] = request.NatIpId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetNatIpAttribute"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetNatIpAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Call GetNatIpAttribute to query the VPC NAT network to obtain information on each NAT IP address.
+//
+// @param request - GetNatIpAttributeRequest
+//
+// @return GetNatIpAttributeResponse
+func (client *Client) GetNatIpAttribute(request *GetNatIpAttributeRequest) (_result *GetNatIpAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetNatIpAttributeResponse{}
+	_body, _err := client.GetNatIpAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Call GetNatIpCidrAttribute to query the VPC NAT network to obtain information on each NAT IP cidr address.
+//
+// @param request - GetNatIpCidrAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNatIpCidrAttributeResponse
+func (client *Client) GetNatIpCidrAttributeWithOptions(request *GetNatIpCidrAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetNatIpCidrAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.NatGatewayId) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !dara.IsNil(request.NatIpCidr) {
+		query["NatIpCidr"] = request.NatIpCidr
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetNatIpCidrAttribute"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetNatIpCidrAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Call GetNatIpCidrAttribute to query the VPC NAT network to obtain information on each NAT IP cidr address.
+//
+// @param request - GetNatIpCidrAttributeRequest
+//
+// @return GetNatIpCidrAttributeResponse
+func (client *Client) GetNatIpCidrAttribute(request *GetNatIpCidrAttributeRequest) (_result *GetNatIpCidrAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetNatIpCidrAttributeResponse{}
+	_body, _err := client.GetNatIpCidrAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

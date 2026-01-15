@@ -52,7 +52,16 @@ type CreateForwardEntryRequest struct {
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe6****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Indicates whether to perform a dry run of the request. Values:
+	//
+	// - **true**: Sends a check request without creating a DNAT entry. The checks include whether the AccessKey is valid, the RAM user\\"s authorization status, and if all required parameters are filled out. If any check fails, the corresponding error is returned. If all checks pass, an error code `DryRunOperation` is returned.
+	//
+	// - **false*	- (default): Sends a normal request. After passing the checks, it returns a 2xx HTTP status code and creates a DNAT entry.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 	- The EIP that can be accessed over the Internet when you configure a DNAT entry for an Internet NAT gateway.
 	//
 	// 	- The NAT IP address that can be accessed by external networks when you configure a DNAT entry for a VPC NAT gateway.
@@ -135,13 +144,13 @@ type CreateForwardEntryRequest struct {
 	IpProtocol   *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to remove limits on the port range. Valid values:
+	// Whether to enable port breakthrough, with values:
 	//
-	// 	- **true**
+	// - **true**: Enable port breakthrough.
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): Do not enable port breakthrough.
 	//
-	// >  If a DNAT entry and an SNAT entry have the same public IP address, ou must specify a port that is larger that 1024, and set **PortBreak*	- to **true**.
+	// >When both DNAT and SNAT entries use the same public IP address, if you need to configure a port number greater than 1024, you must set **PortBreak*	- to **true**.
 	//
 	// example:
 	//
