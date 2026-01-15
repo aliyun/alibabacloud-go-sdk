@@ -163,7 +163,8 @@ type DescribeFileResponseBodyData struct {
 	// example:
 	//
 	// pdf
-	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileType               *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	ParseResultDownloadUrl *string `json:"ParseResultDownloadUrl,omitempty" xml:"ParseResultDownloadUrl,omitempty"`
 	// The parser that is used to parse the document. Valid value:
 	//
 	// 	- DASHSCOPE_DOCMIND: The default document parser.
@@ -224,6 +225,10 @@ func (s *DescribeFileResponseBodyData) GetFileType() *string {
 	return s.FileType
 }
 
+func (s *DescribeFileResponseBodyData) GetParseResultDownloadUrl() *string {
+	return s.ParseResultDownloadUrl
+}
+
 func (s *DescribeFileResponseBodyData) GetParser() *string {
 	return s.Parser
 }
@@ -262,6 +267,11 @@ func (s *DescribeFileResponseBodyData) SetFileName(v string) *DescribeFileRespon
 
 func (s *DescribeFileResponseBodyData) SetFileType(v string) *DescribeFileResponseBodyData {
 	s.FileType = &v
+	return s
+}
+
+func (s *DescribeFileResponseBodyData) SetParseResultDownloadUrl(v string) *DescribeFileResponseBodyData {
+	s.ParseResultDownloadUrl = &v
 	return s
 }
 
