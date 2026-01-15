@@ -11,6 +11,8 @@ type iResetAndroidInstancesInGroupRequest interface {
 	GoString() string
 	SetAndroidInstanceIds(v []*string) *ResetAndroidInstancesInGroupRequest
 	GetAndroidInstanceIds() []*string
+	SetIgnoreParamValidation(v bool) *ResetAndroidInstancesInGroupRequest
+	GetIgnoreParamValidation() *bool
 	SetSaleMode(v string) *ResetAndroidInstancesInGroupRequest
 	GetSaleMode() *string
 	SetSettingResetType(v int32) *ResetAndroidInstancesInGroupRequest
@@ -19,9 +21,10 @@ type iResetAndroidInstancesInGroupRequest interface {
 
 type ResetAndroidInstancesInGroupRequest struct {
 	// The IDs of the cloud phone instances.
-	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
-	SaleMode           *string   `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
-	SettingResetType   *int32    `json:"SettingResetType,omitempty" xml:"SettingResetType,omitempty"`
+	AndroidInstanceIds    []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
+	IgnoreParamValidation *bool     `json:"IgnoreParamValidation,omitempty" xml:"IgnoreParamValidation,omitempty"`
+	SaleMode              *string   `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
+	SettingResetType      *int32    `json:"SettingResetType,omitempty" xml:"SettingResetType,omitempty"`
 }
 
 func (s ResetAndroidInstancesInGroupRequest) String() string {
@@ -36,6 +39,10 @@ func (s *ResetAndroidInstancesInGroupRequest) GetAndroidInstanceIds() []*string 
 	return s.AndroidInstanceIds
 }
 
+func (s *ResetAndroidInstancesInGroupRequest) GetIgnoreParamValidation() *bool {
+	return s.IgnoreParamValidation
+}
+
 func (s *ResetAndroidInstancesInGroupRequest) GetSaleMode() *string {
 	return s.SaleMode
 }
@@ -46,6 +53,11 @@ func (s *ResetAndroidInstancesInGroupRequest) GetSettingResetType() *int32 {
 
 func (s *ResetAndroidInstancesInGroupRequest) SetAndroidInstanceIds(v []*string) *ResetAndroidInstancesInGroupRequest {
 	s.AndroidInstanceIds = v
+	return s
+}
+
+func (s *ResetAndroidInstancesInGroupRequest) SetIgnoreParamValidation(v bool) *ResetAndroidInstancesInGroupRequest {
+	s.IgnoreParamValidation = &v
 	return s
 }
 

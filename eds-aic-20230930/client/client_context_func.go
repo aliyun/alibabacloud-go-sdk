@@ -344,6 +344,10 @@ func (client *Client) BatchGetAcpConnectionTicketWithContext(ctx context.Context
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectionMode) {
+		query["ConnectionMode"] = request.ConnectionMode
+	}
+
 	if !dara.IsNil(request.EndUserId) {
 		query["EndUserId"] = request.EndUserId
 	}
@@ -4542,6 +4546,10 @@ func (client *Client) RebootAndroidInstancesInGroupWithContext(ctx context.Conte
 		query["ForceStop"] = request.ForceStop
 	}
 
+	if !dara.IsNil(request.IgnoreParamValidation) {
+		query["IgnoreParamValidation"] = request.IgnoreParamValidation
+	}
+
 	if !dara.IsNil(request.SaleMode) {
 		query["SaleMode"] = request.SaleMode
 	}
@@ -4906,6 +4914,10 @@ func (client *Client) ResetAndroidInstancesInGroupWithContext(ctx context.Contex
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceIds) {
 		query["AndroidInstanceIds"] = request.AndroidInstanceIds
+	}
+
+	if !dara.IsNil(request.IgnoreParamValidation) {
+		query["IgnoreParamValidation"] = request.IgnoreParamValidation
 	}
 
 	if !dara.IsNil(request.SaleMode) {
@@ -5702,6 +5714,10 @@ func (client *Client) UpdateInstanceImageWithContext(ctx context.Context, reques
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.IgnoreParamValidation) {
+		query["IgnoreParamValidation"] = request.IgnoreParamValidation
+	}
+
 	if !dara.IsNil(request.ImageId) {
 		query["ImageId"] = request.ImageId
 	}

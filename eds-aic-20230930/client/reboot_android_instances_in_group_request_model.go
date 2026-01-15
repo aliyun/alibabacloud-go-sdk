@@ -13,6 +13,8 @@ type iRebootAndroidInstancesInGroupRequest interface {
 	GetAndroidInstanceIds() []*string
 	SetForceStop(v bool) *RebootAndroidInstancesInGroupRequest
 	GetForceStop() *bool
+	SetIgnoreParamValidation(v bool) *RebootAndroidInstancesInGroupRequest
+	GetIgnoreParamValidation() *bool
 	SetSaleMode(v string) *RebootAndroidInstancesInGroupRequest
 	GetSaleMode() *string
 }
@@ -31,8 +33,9 @@ type RebootAndroidInstancesInGroupRequest struct {
 	// example:
 	//
 	// false
-	ForceStop *bool   `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
-	SaleMode  *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
+	ForceStop             *bool   `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	IgnoreParamValidation *bool   `json:"IgnoreParamValidation,omitempty" xml:"IgnoreParamValidation,omitempty"`
+	SaleMode              *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 }
 
 func (s RebootAndroidInstancesInGroupRequest) String() string {
@@ -51,6 +54,10 @@ func (s *RebootAndroidInstancesInGroupRequest) GetForceStop() *bool {
 	return s.ForceStop
 }
 
+func (s *RebootAndroidInstancesInGroupRequest) GetIgnoreParamValidation() *bool {
+	return s.IgnoreParamValidation
+}
+
 func (s *RebootAndroidInstancesInGroupRequest) GetSaleMode() *string {
 	return s.SaleMode
 }
@@ -62,6 +69,11 @@ func (s *RebootAndroidInstancesInGroupRequest) SetAndroidInstanceIds(v []*string
 
 func (s *RebootAndroidInstancesInGroupRequest) SetForceStop(v bool) *RebootAndroidInstancesInGroupRequest {
 	s.ForceStop = &v
+	return s
+}
+
+func (s *RebootAndroidInstancesInGroupRequest) SetIgnoreParamValidation(v bool) *RebootAndroidInstancesInGroupRequest {
+	s.IgnoreParamValidation = &v
 	return s
 }
 

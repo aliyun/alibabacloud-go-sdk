@@ -81,6 +81,7 @@ type BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels struct {
 	// acp-ajxvwo1u0hqvd****
 	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PersistentAppInstanceId *string `json:"PersistentAppInstanceId,omitempty" xml:"PersistentAppInstanceId,omitempty"`
+	Port                    *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The ID of the task.
 	//
 	// example:
@@ -129,6 +130,10 @@ func (s *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) GetPer
 	return s.PersistentAppInstanceId
 }
 
+func (s *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) GetPort() *int32 {
+	return s.Port
+}
+
 func (s *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) GetTaskId() *string {
 	return s.TaskId
 }
@@ -163,6 +168,11 @@ func (s *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) SetIns
 
 func (s *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) SetPersistentAppInstanceId(v string) *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels {
 	s.PersistentAppInstanceId = &v
+	return s
+}
+
+func (s *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) SetPort(v int32) *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels {
+	s.Port = &v
 	return s
 }
 

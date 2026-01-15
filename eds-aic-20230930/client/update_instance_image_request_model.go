@@ -9,6 +9,8 @@ type iUpdateInstanceImageRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetIgnoreParamValidation(v bool) *UpdateInstanceImageRequest
+	GetIgnoreParamValidation() *bool
 	SetImageId(v string) *UpdateInstanceImageRequest
 	GetImageId() *string
 	SetInstanceIdList(v []*string) *UpdateInstanceImageRequest
@@ -18,6 +20,7 @@ type iUpdateInstanceImageRequest interface {
 }
 
 type UpdateInstanceImageRequest struct {
+	IgnoreParamValidation *bool `json:"IgnoreParamValidation,omitempty" xml:"IgnoreParamValidation,omitempty"`
 	// example:
 	//
 	// imgc-075cllfeuazh0****
@@ -34,6 +37,10 @@ func (s UpdateInstanceImageRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateInstanceImageRequest) GetIgnoreParamValidation() *bool {
+	return s.IgnoreParamValidation
+}
+
 func (s *UpdateInstanceImageRequest) GetImageId() *string {
 	return s.ImageId
 }
@@ -44,6 +51,11 @@ func (s *UpdateInstanceImageRequest) GetInstanceIdList() []*string {
 
 func (s *UpdateInstanceImageRequest) GetReset() *bool {
 	return s.Reset
+}
+
+func (s *UpdateInstanceImageRequest) SetIgnoreParamValidation(v bool) *UpdateInstanceImageRequest {
+	s.IgnoreParamValidation = &v
+	return s
 }
 
 func (s *UpdateInstanceImageRequest) SetImageId(v string) *UpdateInstanceImageRequest {

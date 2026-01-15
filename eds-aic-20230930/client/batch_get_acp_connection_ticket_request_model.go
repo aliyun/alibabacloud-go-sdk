@@ -9,6 +9,8 @@ type iBatchGetAcpConnectionTicketRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetConnectionMode(v string) *BatchGetAcpConnectionTicketRequest
+	GetConnectionMode() *string
 	SetEndUserId(v string) *BatchGetAcpConnectionTicketRequest
 	GetEndUserId() *string
 	SetInstanceGroupId(v string) *BatchGetAcpConnectionTicketRequest
@@ -20,6 +22,7 @@ type iBatchGetAcpConnectionTicketRequest interface {
 }
 
 type BatchGetAcpConnectionTicketRequest struct {
+	ConnectionMode *string `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
 	// The ID of the user to whom the cloud phone instance is assigned.
 	//
 	// example:
@@ -46,6 +49,10 @@ func (s BatchGetAcpConnectionTicketRequest) GoString() string {
 	return s.String()
 }
 
+func (s *BatchGetAcpConnectionTicketRequest) GetConnectionMode() *string {
+	return s.ConnectionMode
+}
+
 func (s *BatchGetAcpConnectionTicketRequest) GetEndUserId() *string {
 	return s.EndUserId
 }
@@ -60,6 +67,11 @@ func (s *BatchGetAcpConnectionTicketRequest) GetInstanceIds() []*string {
 
 func (s *BatchGetAcpConnectionTicketRequest) GetInstanceTasks() []*BatchGetAcpConnectionTicketRequestInstanceTasks {
 	return s.InstanceTasks
+}
+
+func (s *BatchGetAcpConnectionTicketRequest) SetConnectionMode(v string) *BatchGetAcpConnectionTicketRequest {
+	s.ConnectionMode = &v
+	return s
 }
 
 func (s *BatchGetAcpConnectionTicketRequest) SetEndUserId(v string) *BatchGetAcpConnectionTicketRequest {
