@@ -9,11 +9,14 @@ type iGetInstanceGroupInspectReportDetailRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentId(v string) *GetInstanceGroupInspectReportDetailRequest
+	GetAgentId() *string
 	SetReportId(v string) *GetInstanceGroupInspectReportDetailRequest
 	GetReportId() *string
 }
 
 type GetInstanceGroupInspectReportDetailRequest struct {
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -30,8 +33,17 @@ func (s GetInstanceGroupInspectReportDetailRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetInstanceGroupInspectReportDetailRequest) GetAgentId() *string {
+	return s.AgentId
+}
+
 func (s *GetInstanceGroupInspectReportDetailRequest) GetReportId() *string {
 	return s.ReportId
+}
+
+func (s *GetInstanceGroupInspectReportDetailRequest) SetAgentId(v string) *GetInstanceGroupInspectReportDetailRequest {
+	s.AgentId = &v
+	return s
 }
 
 func (s *GetInstanceGroupInspectReportDetailRequest) SetReportId(v string) *GetInstanceGroupInspectReportDetailRequest {

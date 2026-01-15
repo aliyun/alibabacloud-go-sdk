@@ -6900,13 +6900,19 @@ func (client *Client) GetInstanceGroupInspectReportDetailWithOptions(request *Ge
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ReportId) {
 		body["ReportId"] = request.ReportId
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GetInstanceGroupInspectReportDetail"),
