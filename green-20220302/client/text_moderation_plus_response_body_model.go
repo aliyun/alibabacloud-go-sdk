@@ -530,7 +530,8 @@ type TextModerationPlusResponseBodyDataResult struct {
 	// example:
 	//
 	// porn
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Label         *string                                                  `json:"Label,omitempty" xml:"Label,omitempty"`
+	RiskPositions []*TextModerationPlusResponseBodyDataResultRiskPositions `json:"RiskPositions,omitempty" xml:"RiskPositions,omitempty" type:"Repeated"`
 	// The term hit by the moderated content.
 	//
 	// example:
@@ -563,6 +564,10 @@ func (s *TextModerationPlusResponseBodyDataResult) GetLabel() *string {
 	return s.Label
 }
 
+func (s *TextModerationPlusResponseBodyDataResult) GetRiskPositions() []*TextModerationPlusResponseBodyDataResultRiskPositions {
+	return s.RiskPositions
+}
+
 func (s *TextModerationPlusResponseBodyDataResult) GetRiskWords() *string {
 	return s.RiskWords
 }
@@ -587,6 +592,11 @@ func (s *TextModerationPlusResponseBodyDataResult) SetLabel(v string) *TextModer
 	return s
 }
 
+func (s *TextModerationPlusResponseBodyDataResult) SetRiskPositions(v []*TextModerationPlusResponseBodyDataResultRiskPositions) *TextModerationPlusResponseBodyDataResult {
+	s.RiskPositions = v
+	return s
+}
+
 func (s *TextModerationPlusResponseBodyDataResult) SetRiskWords(v string) *TextModerationPlusResponseBodyDataResult {
 	s.RiskWords = &v
 	return s
@@ -595,6 +605,15 @@ func (s *TextModerationPlusResponseBodyDataResult) SetRiskWords(v string) *TextM
 func (s *TextModerationPlusResponseBodyDataResult) Validate() error {
 	if s.CustomizedHit != nil {
 		for _, item := range s.CustomizedHit {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RiskPositions != nil {
+		for _, item := range s.RiskPositions {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -647,6 +666,51 @@ func (s *TextModerationPlusResponseBodyDataResultCustomizedHit) SetLibName(v str
 }
 
 func (s *TextModerationPlusResponseBodyDataResultCustomizedHit) Validate() error {
+	return dara.Validate(s)
+}
+
+type TextModerationPlusResponseBodyDataResultRiskPositions struct {
+	EndPos   *int32  `json:"EndPos,omitempty" xml:"EndPos,omitempty"`
+	RiskWord *string `json:"RiskWord,omitempty" xml:"RiskWord,omitempty"`
+	StartPos *int32  `json:"StartPos,omitempty" xml:"StartPos,omitempty"`
+}
+
+func (s TextModerationPlusResponseBodyDataResultRiskPositions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s TextModerationPlusResponseBodyDataResultRiskPositions) GoString() string {
+	return s.String()
+}
+
+func (s *TextModerationPlusResponseBodyDataResultRiskPositions) GetEndPos() *int32 {
+	return s.EndPos
+}
+
+func (s *TextModerationPlusResponseBodyDataResultRiskPositions) GetRiskWord() *string {
+	return s.RiskWord
+}
+
+func (s *TextModerationPlusResponseBodyDataResultRiskPositions) GetStartPos() *int32 {
+	return s.StartPos
+}
+
+func (s *TextModerationPlusResponseBodyDataResultRiskPositions) SetEndPos(v int32) *TextModerationPlusResponseBodyDataResultRiskPositions {
+	s.EndPos = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyDataResultRiskPositions) SetRiskWord(v string) *TextModerationPlusResponseBodyDataResultRiskPositions {
+	s.RiskWord = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyDataResultRiskPositions) SetStartPos(v int32) *TextModerationPlusResponseBodyDataResultRiskPositions {
+	s.StartPos = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyDataResultRiskPositions) Validate() error {
 	return dara.Validate(s)
 }
 
