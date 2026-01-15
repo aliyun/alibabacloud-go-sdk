@@ -65,6 +65,134 @@ func (client *Client) BindAppDomainWithContext(ctx context.Context, request *Bin
 
 // Summary:
 //
+// # Create a website instance
+//
+// @param request - CreateAppInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppInstanceResponse
+func (client *Client) CreateAppInstanceWithContext(ctx context.Context, request *CreateAppInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateAppInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationType) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DeployArea) {
+		query["DeployArea"] = request.DeployArea
+	}
+
+	if !dara.IsNil(request.Duration) {
+		query["Duration"] = request.Duration
+	}
+
+	if !dara.IsNil(request.Extend) {
+		query["Extend"] = request.Extend
+	}
+
+	if !dara.IsNil(request.PaymentType) {
+		query["PaymentType"] = request.PaymentType
+	}
+
+	if !dara.IsNil(request.PricingCycle) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !dara.IsNil(request.Quantity) {
+		query["Quantity"] = request.Quantity
+	}
+
+	if !dara.IsNil(request.SiteVersion) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAppInstance"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAppInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 免登ticket
+//
+// @param request - CreateAppInstanceTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppInstanceTicketResponse
+func (client *Client) CreateAppInstanceTicketWithContext(ctx context.Context, request *CreateAppInstanceTicketRequest, runtime *dara.RuntimeOptions) (_result *CreateAppInstanceTicketResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.ClientId) {
+		query["ClientId"] = request.ClientId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAppInstanceTicket"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAppInstanceTicketResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 提交创建Logo任务
 //
 // @param request - CreateLogoTaskRequest
@@ -319,6 +447,50 @@ func (client *Client) DispatchConsoleAPIForPartnerWithContext(ctx context.Contex
 		BodyType:    dara.String("json"),
 	}
 	_result = &DispatchConsoleAPIForPartnerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询应用实例详情
+//
+// @param request - GetAppInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppInstanceResponse
+func (client *Client) GetAppInstanceWithContext(ctx context.Context, request *GetAppInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetAppInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppInstance"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppInstanceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -701,6 +873,168 @@ func (client *Client) ListAppInstanceDomainsWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 建站实例列表查询
+//
+// @param tmpReq - ListAppInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppInstancesResponse
+func (client *Client) ListAppInstancesWithContext(ctx context.Context, tmpReq *ListAppInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListAppInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListAppInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.StatusList) {
+		request.StatusListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StatusList, dara.String("StatusList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.EndTimeBegin) {
+		query["EndTimeBegin"] = request.EndTimeBegin
+	}
+
+	if !dara.IsNil(request.EndTimeEnd) {
+		query["EndTimeEnd"] = request.EndTimeEnd
+	}
+
+	if !dara.IsNil(request.Extend) {
+		query["Extend"] = request.Extend
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OrderColumn) {
+		query["OrderColumn"] = request.OrderColumn
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.StatusListShrink) {
+		query["StatusList"] = request.StatusListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppInstances"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 建站实例变配
+//
+// @param request - ModifyAppInstanceSpecRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppInstanceSpecResponse
+func (client *Client) ModifyAppInstanceSpecWithContext(ctx context.Context, request *ModifyAppInstanceSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyAppInstanceSpecResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationType) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DeployArea) {
+		query["DeployArea"] = request.DeployArea
+	}
+
+	if !dara.IsNil(request.Extend) {
+		query["Extend"] = request.Extend
+	}
+
+	if !dara.IsNil(request.PaymentType) {
+		query["PaymentType"] = request.PaymentType
+	}
+
+	if !dara.IsNil(request.SiteVersion) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAppInstanceSpec"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAppInstanceSpecResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 合作伙伴操作应用
 //
 // @param request - OperateAppInstanceForPartnerRequest
@@ -795,6 +1129,122 @@ func (client *Client) OperateAppServiceForPartnerWithContext(ctx context.Context
 		BodyType:    dara.String("json"),
 	}
 	_result = &OperateAppServiceForPartnerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 刷新ticket
+//
+// @param request - RefreshAppInstanceTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshAppInstanceTicketResponse
+func (client *Client) RefreshAppInstanceTicketWithContext(ctx context.Context, request *RefreshAppInstanceTicketRequest, runtime *dara.RuntimeOptions) (_result *RefreshAppInstanceTicketResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Token) {
+		query["Token"] = request.Token
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RefreshAppInstanceTicket"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RefreshAppInstanceTicketResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 建站实例续费
+//
+// @param request - RenewAppInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewAppInstanceResponse
+func (client *Client) RenewAppInstanceWithContext(ctx context.Context, request *RenewAppInstanceRequest, runtime *dara.RuntimeOptions) (_result *RenewAppInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Duration) {
+		query["Duration"] = request.Duration
+	}
+
+	if !dara.IsNil(request.Extend) {
+		query["Extend"] = request.Extend
+	}
+
+	if !dara.IsNil(request.PaymentType) {
+		query["PaymentType"] = request.PaymentType
+	}
+
+	if !dara.IsNil(request.PricingCycle) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RenewAppInstance"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RenewAppInstanceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
