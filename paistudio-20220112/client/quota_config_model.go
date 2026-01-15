@@ -13,6 +13,8 @@ type iQuotaConfig interface {
 	GetACS() *ACS
 	SetClusterId(v string) *QuotaConfig
 	GetClusterId() *string
+	SetControlPlaneClusterId(v string) *QuotaConfig
+	GetControlPlaneClusterId() *string
 	SetDefaultGPUDriver(v string) *QuotaConfig
 	GetDefaultGPUDriver() *string
 	SetEnableGPUShare(v bool) *QuotaConfig
@@ -25,8 +27,8 @@ type iQuotaConfig interface {
 	GetEnableSubQuotaPreemption() *bool
 	SetEniCacheConfig(v *EniCacheConfig) *QuotaConfig
 	GetEniCacheConfig() *EniCacheConfig
-	SetOversoldUsageInfo(v *OversoldUsageConfig) *QuotaConfig
-	GetOversoldUsageInfo() *OversoldUsageConfig
+	SetOversoldUsageConfig(v *OversoldUsageConfig) *QuotaConfig
+	GetOversoldUsageConfig() *OversoldUsageConfig
 	SetResourceSpecs(v []*WorkspaceSpecs) *QuotaConfig
 	GetResourceSpecs() []*WorkspaceSpecs
 	SetSandboxCacheConfig(v *SandboxCacheConfig) *QuotaConfig
@@ -50,7 +52,8 @@ type QuotaConfig struct {
 	// example:
 	//
 	// ceeb37xxxx
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId             *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ControlPlaneClusterId *string `json:"ControlPlaneClusterId,omitempty" xml:"ControlPlaneClusterId,omitempty"`
 	// example:
 	//
 	// 470.199.02
@@ -60,7 +63,7 @@ type QuotaConfig struct {
 	EnableSelfQuotaPreemption      *bool                      `json:"EnableSelfQuotaPreemption,omitempty" xml:"EnableSelfQuotaPreemption,omitempty"`
 	EnableSubQuotaPreemption       *bool                      `json:"EnableSubQuotaPreemption,omitempty" xml:"EnableSubQuotaPreemption,omitempty"`
 	EniCacheConfig                 *EniCacheConfig            `json:"EniCacheConfig,omitempty" xml:"EniCacheConfig,omitempty"`
-	OversoldUsageInfo              *OversoldUsageConfig       `json:"OversoldUsageInfo,omitempty" xml:"OversoldUsageInfo,omitempty"`
+	OversoldUsageConfig            *OversoldUsageConfig       `json:"OversoldUsageConfig,omitempty" xml:"OversoldUsageConfig,omitempty"`
 	ResourceSpecs                  []*WorkspaceSpecs          `json:"ResourceSpecs,omitempty" xml:"ResourceSpecs,omitempty" type:"Repeated"`
 	SandboxCacheConfig             *SandboxCacheConfig        `json:"SandboxCacheConfig,omitempty" xml:"SandboxCacheConfig,omitempty"`
 	SelfQuotaPreemptionConfig      *SelfQuotaPreemptionConfig `json:"SelfQuotaPreemptionConfig,omitempty" xml:"SelfQuotaPreemptionConfig,omitempty"`
@@ -90,6 +93,10 @@ func (s *QuotaConfig) GetClusterId() *string {
 	return s.ClusterId
 }
 
+func (s *QuotaConfig) GetControlPlaneClusterId() *string {
+	return s.ControlPlaneClusterId
+}
+
 func (s *QuotaConfig) GetDefaultGPUDriver() *string {
 	return s.DefaultGPUDriver
 }
@@ -114,8 +121,8 @@ func (s *QuotaConfig) GetEniCacheConfig() *EniCacheConfig {
 	return s.EniCacheConfig
 }
 
-func (s *QuotaConfig) GetOversoldUsageInfo() *OversoldUsageConfig {
-	return s.OversoldUsageInfo
+func (s *QuotaConfig) GetOversoldUsageConfig() *OversoldUsageConfig {
+	return s.OversoldUsageConfig
 }
 
 func (s *QuotaConfig) GetResourceSpecs() []*WorkspaceSpecs {
@@ -160,6 +167,11 @@ func (s *QuotaConfig) SetClusterId(v string) *QuotaConfig {
 	return s
 }
 
+func (s *QuotaConfig) SetControlPlaneClusterId(v string) *QuotaConfig {
+	s.ControlPlaneClusterId = &v
+	return s
+}
+
 func (s *QuotaConfig) SetDefaultGPUDriver(v string) *QuotaConfig {
 	s.DefaultGPUDriver = &v
 	return s
@@ -190,8 +202,8 @@ func (s *QuotaConfig) SetEniCacheConfig(v *EniCacheConfig) *QuotaConfig {
 	return s
 }
 
-func (s *QuotaConfig) SetOversoldUsageInfo(v *OversoldUsageConfig) *QuotaConfig {
-	s.OversoldUsageInfo = v
+func (s *QuotaConfig) SetOversoldUsageConfig(v *OversoldUsageConfig) *QuotaConfig {
+	s.OversoldUsageConfig = v
 	return s
 }
 
@@ -246,8 +258,8 @@ func (s *QuotaConfig) Validate() error {
 			return err
 		}
 	}
-	if s.OversoldUsageInfo != nil {
-		if err := s.OversoldUsageInfo.Validate(); err != nil {
+	if s.OversoldUsageConfig != nil {
+		if err := s.OversoldUsageConfig.Validate(); err != nil {
 			return err
 		}
 	}
