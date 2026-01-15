@@ -26,6 +26,8 @@ type DeleteCertificateRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The ID of the workspace to which the certificate file belongs.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 106560

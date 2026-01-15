@@ -84,7 +84,12 @@ type ListDIJobsRequest struct {
 	//
 	// MySQL
 	SourceDataSourceType *string `json:"SourceDataSourceType,omitempty" xml:"SourceDataSourceType,omitempty"`
-	SpecType             *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	// The task configuration specification type. Valid values: FILESPEC, CLASSIC, ALL. FILESPEC: New-style task based on structured filespec; CLASSIC: Task using traditional configuration mode.
+	//
+	// example:
+	//
+	// FILESPEC
+	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
 }
 
 func (s ListDIJobsRequest) String() string {
