@@ -207,11 +207,11 @@ func (client *Client) AddFolder(request *AddFolderRequest) (_result *AddFolderRe
 
 // Summary:
 //
-// # Get Document Results
+// Obtains the real-time parsing result of the Qwen VL model.
 //
 // Description:
 //
-// Users obtain real-time VL results by uploading a document URL.
+// You need to upload a document URL to obtain the real-time parsing result of the Qwen VL model.
 //
 // @param request - AnalyzeVlRealtimeRequest
 //
@@ -228,6 +228,10 @@ func (client *Client) AnalyzeVlRealtimeWithOptions(request *AnalyzeVlRealtimeReq
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileName) {
+		query["fileName"] = request.FileName
+	}
+
 	if !dara.IsNil(request.FileUrl) {
 		query["fileUrl"] = request.FileUrl
 	}
@@ -266,11 +270,11 @@ func (client *Client) AnalyzeVlRealtimeWithOptions(request *AnalyzeVlRealtimeReq
 
 // Summary:
 //
-// # Get Document Results
+// Obtains the real-time parsing result of the Qwen VL model.
 //
 // Description:
 //
-// Users obtain real-time VL results by uploading a document URL.
+// You need to upload a document URL to obtain the real-time parsing result of the Qwen VL model.
 //
 // @param request - AnalyzeVlRealtimeRequest
 //

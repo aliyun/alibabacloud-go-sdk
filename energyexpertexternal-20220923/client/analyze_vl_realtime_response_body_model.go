@@ -16,9 +16,9 @@ type iAnalyzeVlRealtimeResponseBody interface {
 }
 
 type AnalyzeVlRealtimeResponseBody struct {
-	// Return result.
+	// The returned result.
 	Data *AnalyzeVlRealtimeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *AnalyzeVlRealtimeResponseBody) Validate() error {
 }
 
 type AnalyzeVlRealtimeResponseBodyData struct {
-	// Document parsing result details
+	// The details of the document extraction result.
 	KvListInfo []*AnalyzeVlRealtimeResponseBodyDataKvListInfo `json:"kvListInfo,omitempty" xml:"kvListInfo,omitempty" type:"Repeated"`
 }
 
@@ -97,15 +97,15 @@ func (s *AnalyzeVlRealtimeResponseBodyData) Validate() error {
 }
 
 type AnalyzeVlRealtimeResponseBodyDataKvListInfo struct {
-	// Recall content
+	// The recalled content.
 	Context *AnalyzeVlRealtimeResponseBodyDataKvListInfoContext `json:"context,omitempty" xml:"context,omitempty" type:"Struct"`
-	// Field Key name
+	// The name of the key.
 	//
 	// example:
 	//
 	// username
 	KeyName *string `json:"keyName,omitempty" xml:"keyName,omitempty"`
-	// Field key value
+	// The value of the key.
 	//
 	// example:
 	//
@@ -158,11 +158,11 @@ func (s *AnalyzeVlRealtimeResponseBodyDataKvListInfo) Validate() error {
 }
 
 type AnalyzeVlRealtimeResponseBodyDataKvListInfoContext struct {
-	// Confidence
+	// The confidence level.
 	Confidence *AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence `json:"confidence,omitempty" xml:"confidence,omitempty" type:"Struct"`
-	// Key recall information details
+	// The details of the recalled key information.
 	Key []*ContentItem `json:"key,omitempty" xml:"key,omitempty" type:"Repeated"`
-	// Value recall information details
+	// The details of the recalled value information.
 	Value []*ContentItem `json:"value,omitempty" xml:"value,omitempty" type:"Repeated"`
 }
 
@@ -229,13 +229,13 @@ func (s *AnalyzeVlRealtimeResponseBodyDataKvListInfoContext) Validate() error {
 }
 
 type AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence struct {
-	// Key confidence
+	// The confidence level of the key.
 	//
 	// example:
 	//
 	// 0.9994202852249146
 	KeyConfidence *float64 `json:"keyConfidence,omitempty" xml:"keyConfidence,omitempty"`
-	// Value confidence
+	// The confidence level of the value.
 	//
 	// example:
 	//

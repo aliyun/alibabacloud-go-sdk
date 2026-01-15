@@ -9,6 +9,8 @@ type iAnalyzeVlRealtimeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetFileName(v string) *AnalyzeVlRealtimeRequest
+	GetFileName() *string
 	SetFileUrl(v string) *AnalyzeVlRealtimeRequest
 	GetFileUrl() *string
 	SetLanguage(v string) *AnalyzeVlRealtimeRequest
@@ -18,37 +20,41 @@ type iAnalyzeVlRealtimeRequest interface {
 }
 
 type AnalyzeVlRealtimeRequest struct {
-	// Choose one of fileUrl or fileUrlObject:
-	//
-	// - fileUrl: Use in the form of a document URL, for a single document (supports up to 1000 pages and 100MB)
-	//
-	// - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages and 100 MB)
-	//
-	// > The relationship between file parsing methods and supported document types
-	//
-	// > - Long Text RAG: Supports pdf, doc/docx, up to 1000 pages
-	//
-	// > - Image Processing: Supports pdf, jpg, jpeg, png, bmp
-	//
-	// > - Long Text Understanding: Supports pdf, doc/docx, xls/xlsx
+	// 文件名需带文件类型后缀
 	//
 	// example:
 	//
-	// fileUrl：https://example.com/example.pdf
+	// test.png
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// Valid values: fileUrl and fileUrlObject.
 	//
-	// fileUrlObject：本地文件生成的FileInputStream
+	// 	- fileUrl: used as a document URL. A single document with not more than 1,000 pages and whose size does not exceed 100 MB is supported.
+	//
+	// 	- fileUrlObject: used when the operation is called in local file upload mode. A single document with not more than 1,000 pages and whose size does not exceed 100 MB is supported.
+	//
+	// > The relationship between file extraction methods and supported document types
+	//
+	// > - Long text RAG: Supports pdf, doc/docx, xlsx, csv, txt, up to 1000 pages
+	//
+	// > - Image processing: Supports pdf, jpg, jpeg, png, bmp, jpe, tif, tiff, webp, heic
+	//
+	// > - Long text understanding: Supports doc/docx, xlsx, pdf, csv, txt
+	//
+	// example:
+	//
+	// fileUrl: https://example.com/example.pdf fileUrlObject: FileInputStream generated for a local file
 	FileUrl *string `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
-	// Language, parameters that can be passed
+	// The language, which can be transferred. Valid values:
 	//
-	// - zh-CN: Chinese (default)
+	// 	- zh-CN (default)
 	//
-	// - en-US: English
+	// 	- en-US
 	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// A unique parsing template ID used to specify the key-value pairs to be extracted from the document. You need to log in to the template management page, configure the template, and then get the corresponding template ID.
+	// The unique ID of an extraction template, which is used to specify the content to be extracted from a document. You must log on to the Template Management page to configure the template and then obtain the corresponding template ID.
 	//
 	// example:
 	//
@@ -64,6 +70,10 @@ func (s AnalyzeVlRealtimeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *AnalyzeVlRealtimeRequest) GetFileName() *string {
+	return s.FileName
+}
+
 func (s *AnalyzeVlRealtimeRequest) GetFileUrl() *string {
 	return s.FileUrl
 }
@@ -74,6 +84,11 @@ func (s *AnalyzeVlRealtimeRequest) GetLanguage() *string {
 
 func (s *AnalyzeVlRealtimeRequest) GetTemplateId() *string {
 	return s.TemplateId
+}
+
+func (s *AnalyzeVlRealtimeRequest) SetFileName(v string) *AnalyzeVlRealtimeRequest {
+	s.FileName = &v
+	return s
 }
 
 func (s *AnalyzeVlRealtimeRequest) SetFileUrl(v string) *AnalyzeVlRealtimeRequest {
