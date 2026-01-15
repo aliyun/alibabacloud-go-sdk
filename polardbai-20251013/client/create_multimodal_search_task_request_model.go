@@ -15,6 +15,8 @@ type iCreateMultimodalSearchTaskRequest interface {
 	GetDatasetIds() []*string
 	SetEmbeddingModel(v string) *CreateMultimodalSearchTaskRequest
 	GetEmbeddingModel() *string
+	SetModelMode(v string) *CreateMultimodalSearchTaskRequest
+	GetModelMode() *string
 	SetQuery(v string) *CreateMultimodalSearchTaskRequest
 	GetQuery() *string
 	SetSearchModel(v string) *CreateMultimodalSearchTaskRequest
@@ -38,6 +40,10 @@ type CreateMultimodalSearchTaskRequest struct {
 	//
 	// Multimodal-Embedding
 	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
+	// example:
+	//
+	// flash
+	ModelMode *string `json:"ModelMode,omitempty" xml:"ModelMode,omitempty"`
 	// example:
 	//
 	// 指示牌
@@ -72,6 +78,10 @@ func (s *CreateMultimodalSearchTaskRequest) GetEmbeddingModel() *string {
 	return s.EmbeddingModel
 }
 
+func (s *CreateMultimodalSearchTaskRequest) GetModelMode() *string {
+	return s.ModelMode
+}
+
 func (s *CreateMultimodalSearchTaskRequest) GetQuery() *string {
 	return s.Query
 }
@@ -96,6 +106,11 @@ func (s *CreateMultimodalSearchTaskRequest) SetDatasetIds(v []*string) *CreateMu
 
 func (s *CreateMultimodalSearchTaskRequest) SetEmbeddingModel(v string) *CreateMultimodalSearchTaskRequest {
 	s.EmbeddingModel = &v
+	return s
+}
+
+func (s *CreateMultimodalSearchTaskRequest) SetModelMode(v string) *CreateMultimodalSearchTaskRequest {
+	s.ModelMode = &v
 	return s
 }
 

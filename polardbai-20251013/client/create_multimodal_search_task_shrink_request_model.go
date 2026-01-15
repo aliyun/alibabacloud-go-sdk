@@ -15,6 +15,8 @@ type iCreateMultimodalSearchTaskShrinkRequest interface {
 	GetDatasetIdsShrink() *string
 	SetEmbeddingModel(v string) *CreateMultimodalSearchTaskShrinkRequest
 	GetEmbeddingModel() *string
+	SetModelMode(v string) *CreateMultimodalSearchTaskShrinkRequest
+	GetModelMode() *string
 	SetQuery(v string) *CreateMultimodalSearchTaskShrinkRequest
 	GetQuery() *string
 	SetSearchModel(v string) *CreateMultimodalSearchTaskShrinkRequest
@@ -38,6 +40,10 @@ type CreateMultimodalSearchTaskShrinkRequest struct {
 	//
 	// Multimodal-Embedding
 	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
+	// example:
+	//
+	// flash
+	ModelMode *string `json:"ModelMode,omitempty" xml:"ModelMode,omitempty"`
 	// example:
 	//
 	// 指示牌
@@ -72,6 +78,10 @@ func (s *CreateMultimodalSearchTaskShrinkRequest) GetEmbeddingModel() *string {
 	return s.EmbeddingModel
 }
 
+func (s *CreateMultimodalSearchTaskShrinkRequest) GetModelMode() *string {
+	return s.ModelMode
+}
+
 func (s *CreateMultimodalSearchTaskShrinkRequest) GetQuery() *string {
 	return s.Query
 }
@@ -96,6 +106,11 @@ func (s *CreateMultimodalSearchTaskShrinkRequest) SetDatasetIdsShrink(v string) 
 
 func (s *CreateMultimodalSearchTaskShrinkRequest) SetEmbeddingModel(v string) *CreateMultimodalSearchTaskShrinkRequest {
 	s.EmbeddingModel = &v
+	return s
+}
+
+func (s *CreateMultimodalSearchTaskShrinkRequest) SetModelMode(v string) *CreateMultimodalSearchTaskShrinkRequest {
+	s.ModelMode = &v
 	return s
 }
 

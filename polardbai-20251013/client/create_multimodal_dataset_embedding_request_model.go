@@ -15,6 +15,8 @@ type iCreateMultimodalDatasetEmbeddingRequest interface {
 	GetDatasetId() *string
 	SetModel(v string) *CreateMultimodalDatasetEmbeddingRequest
 	GetModel() *string
+	SetModelMode(v string) *CreateMultimodalDatasetEmbeddingRequest
+	GetModelMode() *string
 }
 
 type CreateMultimodalDatasetEmbeddingRequest struct {
@@ -34,6 +36,10 @@ type CreateMultimodalDatasetEmbeddingRequest struct {
 	//
 	// default
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// flash
+	ModelMode *string `json:"ModelMode,omitempty" xml:"ModelMode,omitempty"`
 }
 
 func (s CreateMultimodalDatasetEmbeddingRequest) String() string {
@@ -56,6 +62,10 @@ func (s *CreateMultimodalDatasetEmbeddingRequest) GetModel() *string {
 	return s.Model
 }
 
+func (s *CreateMultimodalDatasetEmbeddingRequest) GetModelMode() *string {
+	return s.ModelMode
+}
+
 func (s *CreateMultimodalDatasetEmbeddingRequest) SetDBClusterId(v string) *CreateMultimodalDatasetEmbeddingRequest {
 	s.DBClusterId = &v
 	return s
@@ -68,6 +78,11 @@ func (s *CreateMultimodalDatasetEmbeddingRequest) SetDatasetId(v string) *Create
 
 func (s *CreateMultimodalDatasetEmbeddingRequest) SetModel(v string) *CreateMultimodalDatasetEmbeddingRequest {
 	s.Model = &v
+	return s
+}
+
+func (s *CreateMultimodalDatasetEmbeddingRequest) SetModelMode(v string) *CreateMultimodalDatasetEmbeddingRequest {
+	s.ModelMode = &v
 	return s
 }
 

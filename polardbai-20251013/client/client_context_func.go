@@ -1626,6 +1626,10 @@ func (client *Client) CreateMultimodalDatasetEmbeddingWithContext(ctx context.Co
 		query["Model"] = request.Model
 	}
 
+	if !dara.IsNil(request.ModelMode) {
+		query["ModelMode"] = request.ModelMode
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1682,6 +1686,10 @@ func (client *Client) CreateMultimodalSearchTaskWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.EmbeddingModel) {
 		query["EmbeddingModel"] = request.EmbeddingModel
+	}
+
+	if !dara.IsNil(request.ModelMode) {
+		query["ModelMode"] = request.ModelMode
 	}
 
 	if !dara.IsNil(request.Query) {
@@ -2015,6 +2023,102 @@ func (client *Client) ListMultimodalEmbeddingModelWithContext(ctx context.Contex
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListMultimodalEmbeddingModelResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模型mode可选列表
+//
+// @param request - ListMultimodalEmbeddingModelModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMultimodalEmbeddingModelModeResponse
+func (client *Client) ListMultimodalEmbeddingModelModeWithContext(ctx context.Context, request *ListMultimodalEmbeddingModelModeRequest, runtime *dara.RuntimeOptions) (_result *ListMultimodalEmbeddingModelModeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMultimodalEmbeddingModelMode"),
+		Version:     dara.String("2025-10-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMultimodalEmbeddingModelModeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询search模型列表
+//
+// @param request - ListMultimodalSearchModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMultimodalSearchModelResponse
+func (client *Client) ListMultimodalSearchModelWithContext(ctx context.Context, request *ListMultimodalSearchModelRequest, runtime *dara.RuntimeOptions) (_result *ListMultimodalSearchModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMultimodalSearchModel"),
+		Version:     dara.String("2025-10-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMultimodalSearchModelResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
