@@ -206,6 +206,10 @@ type ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig struct
 	//
 	// Config-000**11
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// ENABLE
+	ConfigLoggingSwitchStatus *string `json:"ConfigLoggingSwitchStatus,omitempty" xml:"ConfigLoggingSwitchStatus,omitempty"`
 	// Instance configuration creation time.
 	//
 	// example:
@@ -360,6 +364,10 @@ func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) G
 	return s.ConfigId
 }
 
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) GetConfigLoggingSwitchStatus() *string {
+	return s.ConfigLoggingSwitchStatus
+}
+
 func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -446,6 +454,11 @@ func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) S
 
 func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetConfigId(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
 	s.ConfigId = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetConfigLoggingSwitchStatus(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.ConfigLoggingSwitchStatus = &v
 	return s
 }
 

@@ -187,6 +187,7 @@ type DescribeInternetDnsLogsResponseBodyLogsLog struct {
 	//
 	// 3583
 	DnsMsgId *string `json:"DnsMsgId,omitempty" xml:"DnsMsgId,omitempty"`
+	Flags    *string `json:"Flags,omitempty" xml:"Flags,omitempty"`
 	// Parse timestamp.
 	//
 	// example:
@@ -208,7 +209,8 @@ type DescribeInternetDnsLogsResponseBodyLogsLog struct {
 	// example:
 	//
 	// UDP
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Protocol   *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	QueryFlags *string `json:"QueryFlags,omitempty" xml:"QueryFlags,omitempty"`
 	// The domain name for which you want to query Domain Name System (DNS) records.
 	//
 	// example:
@@ -220,7 +222,8 @@ type DescribeInternetDnsLogsResponseBodyLogsLog struct {
 	// example:
 	//
 	// A
-	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	QueryType         *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	ResponseTimestamp *string `json:"ResponseTimestamp,omitempty" xml:"ResponseTimestamp,omitempty"`
 	// Parse response time.
 	//
 	// example:
@@ -273,6 +276,10 @@ func (s *DescribeInternetDnsLogsResponseBodyLogsLog) GetDnsMsgId() *string {
 	return s.DnsMsgId
 }
 
+func (s *DescribeInternetDnsLogsResponseBodyLogsLog) GetFlags() *string {
+	return s.Flags
+}
+
 func (s *DescribeInternetDnsLogsResponseBodyLogsLog) GetLogTime() *int64 {
 	return s.LogTime
 }
@@ -281,12 +288,20 @@ func (s *DescribeInternetDnsLogsResponseBodyLogsLog) GetProtocol() *string {
 	return s.Protocol
 }
 
+func (s *DescribeInternetDnsLogsResponseBodyLogsLog) GetQueryFlags() *string {
+	return s.QueryFlags
+}
+
 func (s *DescribeInternetDnsLogsResponseBodyLogsLog) GetQueryName() *string {
 	return s.QueryName
 }
 
 func (s *DescribeInternetDnsLogsResponseBodyLogsLog) GetQueryType() *string {
 	return s.QueryType
+}
+
+func (s *DescribeInternetDnsLogsResponseBodyLogsLog) GetResponseTimestamp() *string {
+	return s.ResponseTimestamp
 }
 
 func (s *DescribeInternetDnsLogsResponseBodyLogsLog) GetRt() *int32 {
@@ -322,6 +337,11 @@ func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetDnsMsgId(v string) *Desc
 	return s
 }
 
+func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetFlags(v string) *DescribeInternetDnsLogsResponseBodyLogsLog {
+	s.Flags = &v
+	return s
+}
+
 func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetLogTime(v int64) *DescribeInternetDnsLogsResponseBodyLogsLog {
 	s.LogTime = &v
 	return s
@@ -332,6 +352,11 @@ func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetProtocol(v string) *Desc
 	return s
 }
 
+func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetQueryFlags(v string) *DescribeInternetDnsLogsResponseBodyLogsLog {
+	s.QueryFlags = &v
+	return s
+}
+
 func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetQueryName(v string) *DescribeInternetDnsLogsResponseBodyLogsLog {
 	s.QueryName = &v
 	return s
@@ -339,6 +364,11 @@ func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetQueryName(v string) *Des
 
 func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetQueryType(v string) *DescribeInternetDnsLogsResponseBodyLogsLog {
 	s.QueryType = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetResponseTimestamp(v string) *DescribeInternetDnsLogsResponseBodyLogsLog {
+	s.ResponseTimestamp = &v
 	return s
 }
 

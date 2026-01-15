@@ -3930,6 +3930,10 @@ func (client *Client) DescribeCloudGtmAddressReference(request *DescribeCloudGtm
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询全局流量管理告警配置
+//
 // @param request - DescribeCloudGtmGlobalAlertRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3974,6 +3978,10 @@ func (client *Client) DescribeCloudGtmGlobalAlertWithOptions(request *DescribeCl
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询全局流量管理告警配置
+//
 // @param request - DescribeCloudGtmGlobalAlertRequest
 //
 // @return DescribeCloudGtmGlobalAlertResponse
@@ -15027,6 +15035,10 @@ func (client *Client) UpdateCloudGtmAddressRemark(request *UpdateCloudGtmAddress
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新全局流量管理告警设置
+//
 // @param tmpReq - UpdateCloudGtmGlobalAlertRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15089,6 +15101,10 @@ func (client *Client) UpdateCloudGtmGlobalAlertWithOptions(tmpReq *UpdateCloudGt
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新全局流量管理告警设置
+//
 // @param request - UpdateCloudGtmGlobalAlertRequest
 //
 // @return UpdateCloudGtmGlobalAlertResponse

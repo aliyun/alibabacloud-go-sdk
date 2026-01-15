@@ -2973,6 +2973,10 @@ func (client *Client) DescribeCloudGtmAddressReferenceWithContext(ctx context.Co
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询全局流量管理告警配置
+//
 // @param request - DescribeCloudGtmGlobalAlertRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11401,6 +11405,10 @@ func (client *Client) UpdateCloudGtmAddressRemarkWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新全局流量管理告警设置
+//
 // @param tmpReq - UpdateCloudGtmGlobalAlertRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions

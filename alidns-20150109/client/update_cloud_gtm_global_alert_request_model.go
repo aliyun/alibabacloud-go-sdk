@@ -146,6 +146,10 @@ type UpdateCloudGtmGlobalAlertRequestAlertConfig struct {
 	//
 	// true
 	SmsNotice *bool `json:"SmsNotice,omitempty" xml:"SmsNotice,omitempty"`
+	// example:
+	//
+	// 100
+	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s UpdateCloudGtmGlobalAlertRequestAlertConfig) String() string {
@@ -172,6 +176,10 @@ func (s *UpdateCloudGtmGlobalAlertRequestAlertConfig) GetSmsNotice() *bool {
 	return s.SmsNotice
 }
 
+func (s *UpdateCloudGtmGlobalAlertRequestAlertConfig) GetThreshold() *int32 {
+	return s.Threshold
+}
+
 func (s *UpdateCloudGtmGlobalAlertRequestAlertConfig) SetDingtalkNotice(v bool) *UpdateCloudGtmGlobalAlertRequestAlertConfig {
 	s.DingtalkNotice = &v
 	return s
@@ -189,6 +197,11 @@ func (s *UpdateCloudGtmGlobalAlertRequestAlertConfig) SetNoticeType(v string) *U
 
 func (s *UpdateCloudGtmGlobalAlertRequestAlertConfig) SetSmsNotice(v bool) *UpdateCloudGtmGlobalAlertRequestAlertConfig {
 	s.SmsNotice = &v
+	return s
+}
+
+func (s *UpdateCloudGtmGlobalAlertRequestAlertConfig) SetThreshold(v int32) *UpdateCloudGtmGlobalAlertRequestAlertConfig {
+	s.Threshold = &v
 	return s
 }
 

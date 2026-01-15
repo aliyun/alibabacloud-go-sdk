@@ -160,6 +160,10 @@ type DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig struct {
 	//
 	// true
 	SmsNotice *bool `json:"SmsNotice,omitempty" xml:"SmsNotice,omitempty"`
+	// example:
+	//
+	// 50
+	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) String() string {
@@ -186,6 +190,10 @@ func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) GetSmsNo
 	return s.SmsNotice
 }
 
+func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) GetThreshold() *int32 {
+	return s.Threshold
+}
+
 func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) SetDingtalkNotice(v bool) *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig {
 	s.DingtalkNotice = &v
 	return s
@@ -203,6 +211,11 @@ func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) SetNotic
 
 func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) SetSmsNotice(v bool) *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig {
 	s.SmsNotice = &v
+	return s
+}
+
+func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) SetThreshold(v int32) *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig {
+	s.Threshold = &v
 	return s
 }
 

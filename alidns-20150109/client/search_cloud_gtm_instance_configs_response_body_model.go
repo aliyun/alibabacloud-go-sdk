@@ -206,6 +206,10 @@ type SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig stru
 	//
 	// Config-000**11
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// ENABLE
+	ConfigLoggingSwitchStatus *string `json:"ConfigLoggingSwitchStatus,omitempty" xml:"ConfigLoggingSwitchStatus,omitempty"`
 	// Domain instance creation time.
 	//
 	// example:
@@ -360,6 +364,10 @@ func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig)
 	return s.ConfigId
 }
 
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) GetConfigLoggingSwitchStatus() *string {
+	return s.ConfigLoggingSwitchStatus
+}
+
 func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -446,6 +454,11 @@ func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig)
 
 func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetConfigId(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
 	s.ConfigId = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetConfigLoggingSwitchStatus(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.ConfigLoggingSwitchStatus = &v
 	return s
 }
 
