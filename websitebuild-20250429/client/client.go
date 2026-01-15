@@ -1618,6 +1618,76 @@ func (client *Client) RefreshAppInstanceTicket(request *RefreshAppInstanceTicket
 
 // Summary:
 //
+// 渠道业务退款接口
+//
+// @param request - RefundAppInstanceForPartnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefundAppInstanceForPartnerResponse
+func (client *Client) RefundAppInstanceForPartnerWithOptions(request *RefundAppInstanceForPartnerRequest, runtime *dara.RuntimeOptions) (_result *RefundAppInstanceForPartnerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.RefundReason) {
+		query["RefundReason"] = request.RefundReason
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RefundAppInstanceForPartner"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RefundAppInstanceForPartnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 渠道业务退款接口
+//
+// @param request - RefundAppInstanceForPartnerRequest
+//
+// @return RefundAppInstanceForPartnerResponse
+func (client *Client) RefundAppInstanceForPartner(request *RefundAppInstanceForPartnerRequest) (_result *RefundAppInstanceForPartnerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RefundAppInstanceForPartnerResponse{}
+	_body, _err := client.RefundAppInstanceForPartnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 建站实例续费
 //
 // @param request - RenewAppInstanceRequest

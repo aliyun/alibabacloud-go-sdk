@@ -1,3 +1,7 @@
+2026-01-15 Version: v2.8.0
+- Support API RefundAppInstanceForPartner.
+
+
 2026-01-15 Version: v2.7.0
 - Support API CreateAppInstance.
 - Support API CreateAppInstanceTicket.
