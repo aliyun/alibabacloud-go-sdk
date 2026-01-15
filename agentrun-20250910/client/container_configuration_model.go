@@ -17,6 +17,8 @@ type iContainerConfiguration interface {
 	GetImage() *string
 	SetImageRegistryType(v string) *ContainerConfiguration
 	GetImageRegistryType() *string
+	SetPort(v int32) *ContainerConfiguration
+	GetPort() *int32
 }
 
 type ContainerConfiguration struct {
@@ -42,6 +44,7 @@ type ContainerConfiguration struct {
 	//
 	// ACR
 	ImageRegistryType *string `json:"imageRegistryType,omitempty" xml:"imageRegistryType,omitempty"`
+	Port              *int32  `json:"port,omitempty" xml:"port,omitempty"`
 }
 
 func (s ContainerConfiguration) String() string {
@@ -68,6 +71,10 @@ func (s *ContainerConfiguration) GetImageRegistryType() *string {
 	return s.ImageRegistryType
 }
 
+func (s *ContainerConfiguration) GetPort() *int32 {
+	return s.Port
+}
+
 func (s *ContainerConfiguration) SetAcrInstanceId(v string) *ContainerConfiguration {
 	s.AcrInstanceId = &v
 	return s
@@ -85,6 +92,11 @@ func (s *ContainerConfiguration) SetImage(v string) *ContainerConfiguration {
 
 func (s *ContainerConfiguration) SetImageRegistryType(v string) *ContainerConfiguration {
 	s.ImageRegistryType = &v
+	return s
+}
+
+func (s *ContainerConfiguration) SetPort(v int32) *ContainerConfiguration {
+	s.Port = &v
 	return s
 }
 
