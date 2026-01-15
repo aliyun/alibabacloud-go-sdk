@@ -1133,7 +1133,8 @@ func (s *HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigRules) Validate()
 }
 
 type HttpApiDeployConfigServiceConfigs struct {
-	IntentCode *string `json:"intentCode,omitempty" xml:"intentCode,omitempty"`
+	IntentCode *string                        `json:"intentCode,omitempty" xml:"intentCode,omitempty"`
+	Match      *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
 	// example:
 	//
 	// qwen-max
@@ -1164,6 +1165,10 @@ func (s *HttpApiDeployConfigServiceConfigs) GetIntentCode() *string {
 	return s.IntentCode
 }
 
+func (s *HttpApiDeployConfigServiceConfigs) GetMatch() *HttpApiBackendMatchConditions {
+	return s.Match
+}
+
 func (s *HttpApiDeployConfigServiceConfigs) GetModelName() *string {
 	return s.ModelName
 }
@@ -1182,6 +1187,11 @@ func (s *HttpApiDeployConfigServiceConfigs) GetWeight() *int64 {
 
 func (s *HttpApiDeployConfigServiceConfigs) SetIntentCode(v string) *HttpApiDeployConfigServiceConfigs {
 	s.IntentCode = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) SetMatch(v *HttpApiBackendMatchConditions) *HttpApiDeployConfigServiceConfigs {
+	s.Match = v
 	return s
 }
 
@@ -1206,7 +1216,12 @@ func (s *HttpApiDeployConfigServiceConfigs) SetWeight(v int64) *HttpApiDeployCon
 }
 
 func (s *HttpApiDeployConfigServiceConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HttpApiDeployConfigSubDomains struct {

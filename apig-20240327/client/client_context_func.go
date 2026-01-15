@@ -2706,6 +2706,39 @@ func (client *Client) GetResourceOverviewWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 查询密钥
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSecretResponse
+func (client *Client) GetSecretWithContext(ctx context.Context, secretId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSecretResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSecret"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/secrets/" + dara.PercentEncode(dara.StringValue(secretId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSecretResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询密钥值
 //
 // @param headers - map
