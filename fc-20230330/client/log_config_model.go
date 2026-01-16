@@ -11,6 +11,8 @@ type iLogConfig interface {
 	GoString() string
 	SetEnableInstanceMetrics(v bool) *LogConfig
 	GetEnableInstanceMetrics() *bool
+	SetEnableLlmMetrics(v bool) *LogConfig
+	GetEnableLlmMetrics() *bool
 	SetEnableRequestMetrics(v bool) *LogConfig
 	GetEnableRequestMetrics() *bool
 	SetLogBeginRule(v string) *LogConfig
@@ -26,6 +28,7 @@ type LogConfig struct {
 	//
 	// true
 	EnableInstanceMetrics *bool `json:"enableInstanceMetrics,omitempty" xml:"enableInstanceMetrics,omitempty"`
+	EnableLlmMetrics      *bool `json:"enableLlmMetrics,omitempty" xml:"enableLlmMetrics,omitempty"`
 	// example:
 	//
 	// true
@@ -56,6 +59,10 @@ func (s *LogConfig) GetEnableInstanceMetrics() *bool {
 	return s.EnableInstanceMetrics
 }
 
+func (s *LogConfig) GetEnableLlmMetrics() *bool {
+	return s.EnableLlmMetrics
+}
+
 func (s *LogConfig) GetEnableRequestMetrics() *bool {
 	return s.EnableRequestMetrics
 }
@@ -74,6 +81,11 @@ func (s *LogConfig) GetProject() *string {
 
 func (s *LogConfig) SetEnableInstanceMetrics(v bool) *LogConfig {
 	s.EnableInstanceMetrics = &v
+	return s
+}
+
+func (s *LogConfig) SetEnableLlmMetrics(v bool) *LogConfig {
+	s.EnableLlmMetrics = &v
 	return s
 }
 
