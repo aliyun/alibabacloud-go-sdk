@@ -13355,6 +13355,80 @@ func (client *Client) SearchRecursionZones(request *SearchRecursionZonesRequest)
 
 // Summary:
 //
+// 设置全局流量管理实例配置日志开关
+//
+// @param request - SetCloudGtmInstanceConfigLogSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetCloudGtmInstanceConfigLogSwitchResponse
+func (client *Client) SetCloudGtmInstanceConfigLogSwitchWithOptions(request *SetCloudGtmInstanceConfigLogSwitchRequest, runtime *dara.RuntimeOptions) (_result *SetCloudGtmInstanceConfigLogSwitchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ConfigId) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetCloudGtmInstanceConfigLogSwitch"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetCloudGtmInstanceConfigLogSwitchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置全局流量管理实例配置日志开关
+//
+// @param request - SetCloudGtmInstanceConfigLogSwitchRequest
+//
+// @return SetCloudGtmInstanceConfigLogSwitchResponse
+func (client *Client) SetCloudGtmInstanceConfigLogSwitch(request *SetCloudGtmInstanceConfigLogSwitchRequest) (_result *SetCloudGtmInstanceConfigLogSwitchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SetCloudGtmInstanceConfigLogSwitchResponse{}
+	_body, _err := client.SetCloudGtmInstanceConfigLogSwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables or disables weighted round-robin based on the specified parameters.
 //
 // @param request - SetDNSSLBStatusRequest
