@@ -17,25 +17,26 @@ type iEnableKibanaPvlNetworkRequest interface {
   GetVSwitchIdsZone() []*EnableKibanaPvlNetworkRequestVSwitchIdsZone 
   SetVpcId(v string) *EnableKibanaPvlNetworkRequest
   GetVpcId() *string 
+  SetClientToken(v string) *EnableKibanaPvlNetworkRequest
+  GetClientToken() *string 
 }
 
 type EnableKibanaPvlNetworkRequest struct {
-  // This parameter is required.
-  // 
   // example:
   // 
   // es-cn-27a3mul6l000xxx-kibana-endpoint
   EndpointName *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
   // This parameter is required.
   SecurityGroups []*string `json:"securityGroups,omitempty" xml:"securityGroups,omitempty" type:"Repeated"`
-  // This parameter is required.
   VSwitchIdsZone []*EnableKibanaPvlNetworkRequestVSwitchIdsZone `json:"vSwitchIdsZone,omitempty" xml:"vSwitchIdsZone,omitempty" type:"Repeated"`
-  // This parameter is required.
-  // 
   // example:
   // 
   // vpc-xxx
   VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+  // example:
+  // 
+  // xxxxx
+  ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
 func (s EnableKibanaPvlNetworkRequest) String() string {
@@ -62,6 +63,10 @@ func (s *EnableKibanaPvlNetworkRequest) GetVpcId() *string  {
   return s.VpcId
 }
 
+func (s *EnableKibanaPvlNetworkRequest) GetClientToken() *string  {
+  return s.ClientToken
+}
+
 func (s *EnableKibanaPvlNetworkRequest) SetEndpointName(v string) *EnableKibanaPvlNetworkRequest {
   s.EndpointName = &v
   return s
@@ -82,6 +87,11 @@ func (s *EnableKibanaPvlNetworkRequest) SetVpcId(v string) *EnableKibanaPvlNetwo
   return s
 }
 
+func (s *EnableKibanaPvlNetworkRequest) SetClientToken(v string) *EnableKibanaPvlNetworkRequest {
+  s.ClientToken = &v
+  return s
+}
+
 func (s *EnableKibanaPvlNetworkRequest) Validate() error {
   if s.VSwitchIdsZone != nil {
     for _, item := range s.VSwitchIdsZone {
@@ -96,14 +106,10 @@ func (s *EnableKibanaPvlNetworkRequest) Validate() error {
 }
 
 type EnableKibanaPvlNetworkRequestVSwitchIdsZone struct {
-  // This parameter is required.
-  // 
   // example:
   // 
   // vsw-xxxx
   VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
-  // This parameter is required.
-  // 
   // example:
   // 
   // cn-hangzhou-h

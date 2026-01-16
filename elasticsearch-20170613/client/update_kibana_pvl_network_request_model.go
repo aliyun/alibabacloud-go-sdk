@@ -13,6 +13,8 @@ type iUpdateKibanaPvlNetworkRequest interface {
 	GetEndpointName() *string
 	SetSecurityGroups(v []*string) *UpdateKibanaPvlNetworkRequest
 	GetSecurityGroups() []*string
+	SetClientToken(v string) *UpdateKibanaPvlNetworkRequest
+	GetClientToken() *string
 	SetPvlId(v string) *UpdateKibanaPvlNetworkRequest
 	GetPvlId() *string
 }
@@ -23,8 +25,10 @@ type UpdateKibanaPvlNetworkRequest struct {
 	// es-cn-27a3mul6l00***-kibana
 	EndpointName   *string   `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
 	SecurityGroups []*string `json:"securityGroups,omitempty" xml:"securityGroups,omitempty" type:"Repeated"`
-	// This parameter is required.
+	// example:
 	//
+	// xxxx
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	// example:
 	//
 	// es-cn-27a3mul6l0***-kibana-internal
@@ -47,6 +51,10 @@ func (s *UpdateKibanaPvlNetworkRequest) GetSecurityGroups() []*string {
 	return s.SecurityGroups
 }
 
+func (s *UpdateKibanaPvlNetworkRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *UpdateKibanaPvlNetworkRequest) GetPvlId() *string {
 	return s.PvlId
 }
@@ -58,6 +66,11 @@ func (s *UpdateKibanaPvlNetworkRequest) SetEndpointName(v string) *UpdateKibanaP
 
 func (s *UpdateKibanaPvlNetworkRequest) SetSecurityGroups(v []*string) *UpdateKibanaPvlNetworkRequest {
 	s.SecurityGroups = v
+	return s
+}
+
+func (s *UpdateKibanaPvlNetworkRequest) SetClientToken(v string) *UpdateKibanaPvlNetworkRequest {
+	s.ClientToken = &v
 	return s
 }
 

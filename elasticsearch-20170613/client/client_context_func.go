@@ -2454,6 +2454,11 @@ func (client *Client) EnableKibanaPvlNetworkWithContext(ctx context.Context, Ins
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EndpointName) {
 		body["endpointName"] = request.EndpointName
@@ -2473,6 +2478,7 @@ func (client *Client) EnableKibanaPvlNetworkWithContext(ctx context.Context, Ins
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -8363,6 +8369,10 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, InstanceId 
 		body["nodeSpec"] = request.NodeSpec
 	}
 
+	if !dara.IsNil(request.UpdateType) {
+		body["updateType"] = request.UpdateType
+	}
+
 	if !dara.IsNil(request.WarmNodeConfiguration) {
 		body["warmNodeConfiguration"] = request.WarmNodeConfiguration
 	}
@@ -8415,10 +8425,19 @@ func (client *Client) UpdateInstanceChargeTypeWithContext(ctx context.Context, I
 		query["clientToken"] = request.ClientToken
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PaymentInfo) {
+		body["paymentInfo"] = request.PaymentInfo
+	}
+
+	if !dara.IsNil(request.PaymentType) {
+		body["paymentType"] = request.PaymentType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("UpdateInstanceChargeType"),
@@ -8477,10 +8496,15 @@ func (client *Client) UpdateInstanceSettingsWithContext(ctx context.Context, Ins
 		query["updateStrategy"] = request.UpdateStrategy
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EsConfig) {
+		body["esConfig"] = request.EsConfig
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("UpdateInstanceSettings"),
@@ -8521,6 +8545,10 @@ func (client *Client) UpdateKibanaPvlNetworkWithContext(ctx context.Context, Ins
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.PvlId) {
 		query["pvlId"] = request.PvlId
 	}

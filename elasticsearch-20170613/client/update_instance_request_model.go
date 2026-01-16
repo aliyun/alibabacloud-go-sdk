@@ -23,6 +23,8 @@ type iUpdateInstanceRequest interface {
 	GetNodeAmount() *int32
 	SetNodeSpec(v *NodeSpec) *UpdateInstanceRequest
 	GetNodeSpec() *NodeSpec
+	SetUpdateType(v string) *UpdateInstanceRequest
+	GetUpdateType() *string
 	SetWarmNodeConfiguration(v *WarmNodeConfiguration) *UpdateInstanceRequest
 	GetWarmNodeConfiguration() *WarmNodeConfiguration
 	SetClientToken(v string) *UpdateInstanceRequest
@@ -47,6 +49,7 @@ type UpdateInstanceRequest struct {
 	// 3
 	NodeAmount            *int32                 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
 	NodeSpec              *NodeSpec              `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty"`
+	UpdateType            *string                `json:"updateType,omitempty" xml:"updateType,omitempty"`
 	WarmNodeConfiguration *WarmNodeConfiguration `json:"warmNodeConfiguration,omitempty" xml:"warmNodeConfiguration,omitempty"`
 	// The result of the request.
 	//
@@ -102,6 +105,10 @@ func (s *UpdateInstanceRequest) GetNodeSpec() *NodeSpec {
 	return s.NodeSpec
 }
 
+func (s *UpdateInstanceRequest) GetUpdateType() *string {
+	return s.UpdateType
+}
+
 func (s *UpdateInstanceRequest) GetWarmNodeConfiguration() *WarmNodeConfiguration {
 	return s.WarmNodeConfiguration
 }
@@ -150,6 +157,11 @@ func (s *UpdateInstanceRequest) SetNodeAmount(v int32) *UpdateInstanceRequest {
 
 func (s *UpdateInstanceRequest) SetNodeSpec(v *NodeSpec) *UpdateInstanceRequest {
 	s.NodeSpec = v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetUpdateType(v string) *UpdateInstanceRequest {
+	s.UpdateType = &v
 	return s
 }
 
