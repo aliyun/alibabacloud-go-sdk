@@ -19,16 +19,26 @@ type iListJobsRequest interface {
 	GetDisplayName() *string
 	SetDisplayNameSearchMode(v string) *ListJobsRequest
 	GetDisplayNameSearchMode() *string
+	SetEnableAssignNode(v string) *ListJobsRequest
+	GetEnableAssignNode() *string
 	SetEndTime(v string) *ListJobsRequest
 	GetEndTime() *string
 	SetFromAllWorkspaces(v bool) *ListJobsRequest
 	GetFromAllWorkspaces() *bool
+	SetImageSearch(v string) *ListJobsRequest
+	GetImageSearch() *string
 	SetJobId(v string) *ListJobsRequest
 	GetJobId() *string
 	SetJobIds(v string) *ListJobsRequest
 	GetJobIds() *string
 	SetJobType(v string) *ListJobsRequest
 	GetJobType() *string
+	SetNumericRangeField(v string) *ListJobsRequest
+	GetNumericRangeField() *string
+	SetNumericRangeMax(v int64) *ListJobsRequest
+	GetNumericRangeMax() *int64
+	SetNumericRangeMin(v int64) *ListJobsRequest
+	GetNumericRangeMin() *int64
 	SetOrder(v string) *ListJobsRequest
 	GetOrder() *string
 	SetOversoldInfo(v string) *ListJobsRequest
@@ -41,6 +51,8 @@ type iListJobsRequest interface {
 	GetPaymentType() *string
 	SetPipelineId(v string) *ListJobsRequest
 	GetPipelineId() *string
+	SetReasonSearch(v string) *ListJobsRequest
+	GetReasonSearch() *string
 	SetResourceId(v string) *ListJobsRequest
 	GetResourceId() *string
 	SetResourceQuotaName(v string) *ListJobsRequest
@@ -55,6 +67,10 @@ type iListJobsRequest interface {
 	GetStatus() *string
 	SetTags(v map[string]*string) *ListJobsRequest
 	GetTags() map[string]*string
+	SetTimeRangeField(v string) *ListJobsRequest
+	GetTimeRangeField() *string
+	SetUserCommandSearch(v string) *ListJobsRequest
+	GetUserCommandSearch() *string
 	SetUserIdForFilter(v string) *ListJobsRequest
 	GetUserIdForFilter() *string
 	SetUsername(v string) *ListJobsRequest
@@ -93,6 +109,7 @@ type ListJobsRequest struct {
 	// tf-mnist-test
 	DisplayName           *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	DisplayNameSearchMode *string `json:"DisplayNameSearchMode,omitempty" xml:"DisplayNameSearchMode,omitempty"`
+	EnableAssignNode      *string `json:"EnableAssignNode,omitempty" xml:"EnableAssignNode,omitempty"`
 	// The end time of the query. Use the job creation time to filter data. The default value is the current time.
 	//
 	// example:
@@ -104,7 +121,8 @@ type ListJobsRequest struct {
 	// example:
 	//
 	// false
-	FromAllWorkspaces *bool `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
+	FromAllWorkspaces *bool   `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
+	ImageSearch       *string `json:"ImageSearch,omitempty" xml:"ImageSearch,omitempty"`
 	// The job ID. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. The default value null indicates any job ID.
 	//
 	// example:
@@ -127,7 +145,10 @@ type ListJobsRequest struct {
 	// example:
 	//
 	// TFJob
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	JobType           *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	NumericRangeField *string `json:"NumericRangeField,omitempty" xml:"NumericRangeField,omitempty"`
+	NumericRangeMax   *int64  `json:"NumericRangeMax,omitempty" xml:"NumericRangeMax,omitempty"`
+	NumericRangeMin   *int64  `json:"NumericRangeMin,omitempty" xml:"NumericRangeMin,omitempty"`
 	// The sorting order. Valid values:
 	//
 	// 	- desc (default)
@@ -181,7 +202,8 @@ type ListJobsRequest struct {
 	// example:
 	//
 	// flow-*******
-	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	PipelineId   *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	ReasonSearch *string `json:"ReasonSearch,omitempty" xml:"ReasonSearch,omitempty"`
 	// The resource group ID. For information about how to obtain the ID of a dedicated resource group, see [Manage resource quota](https://help.aliyun.com/document_detail/2651299.html).
 	//
 	// example:
@@ -255,7 +277,9 @@ type ListJobsRequest struct {
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags.
-	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Tags              map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TimeRangeField    *string            `json:"TimeRangeField,omitempty" xml:"TimeRangeField,omitempty"`
+	UserCommandSearch *string            `json:"UserCommandSearch,omitempty" xml:"UserCommandSearch,omitempty"`
 	// The user ID used to filter jobs.
 	//
 	// example:
@@ -304,12 +328,20 @@ func (s *ListJobsRequest) GetDisplayNameSearchMode() *string {
 	return s.DisplayNameSearchMode
 }
 
+func (s *ListJobsRequest) GetEnableAssignNode() *string {
+	return s.EnableAssignNode
+}
+
 func (s *ListJobsRequest) GetEndTime() *string {
 	return s.EndTime
 }
 
 func (s *ListJobsRequest) GetFromAllWorkspaces() *bool {
 	return s.FromAllWorkspaces
+}
+
+func (s *ListJobsRequest) GetImageSearch() *string {
+	return s.ImageSearch
 }
 
 func (s *ListJobsRequest) GetJobId() *string {
@@ -322,6 +354,18 @@ func (s *ListJobsRequest) GetJobIds() *string {
 
 func (s *ListJobsRequest) GetJobType() *string {
 	return s.JobType
+}
+
+func (s *ListJobsRequest) GetNumericRangeField() *string {
+	return s.NumericRangeField
+}
+
+func (s *ListJobsRequest) GetNumericRangeMax() *int64 {
+	return s.NumericRangeMax
+}
+
+func (s *ListJobsRequest) GetNumericRangeMin() *int64 {
+	return s.NumericRangeMin
 }
 
 func (s *ListJobsRequest) GetOrder() *string {
@@ -346,6 +390,10 @@ func (s *ListJobsRequest) GetPaymentType() *string {
 
 func (s *ListJobsRequest) GetPipelineId() *string {
 	return s.PipelineId
+}
+
+func (s *ListJobsRequest) GetReasonSearch() *string {
+	return s.ReasonSearch
 }
 
 func (s *ListJobsRequest) GetResourceId() *string {
@@ -374,6 +422,14 @@ func (s *ListJobsRequest) GetStatus() *string {
 
 func (s *ListJobsRequest) GetTags() map[string]*string {
 	return s.Tags
+}
+
+func (s *ListJobsRequest) GetTimeRangeField() *string {
+	return s.TimeRangeField
+}
+
+func (s *ListJobsRequest) GetUserCommandSearch() *string {
+	return s.UserCommandSearch
 }
 
 func (s *ListJobsRequest) GetUserIdForFilter() *string {
@@ -413,6 +469,11 @@ func (s *ListJobsRequest) SetDisplayNameSearchMode(v string) *ListJobsRequest {
 	return s
 }
 
+func (s *ListJobsRequest) SetEnableAssignNode(v string) *ListJobsRequest {
+	s.EnableAssignNode = &v
+	return s
+}
+
 func (s *ListJobsRequest) SetEndTime(v string) *ListJobsRequest {
 	s.EndTime = &v
 	return s
@@ -420,6 +481,11 @@ func (s *ListJobsRequest) SetEndTime(v string) *ListJobsRequest {
 
 func (s *ListJobsRequest) SetFromAllWorkspaces(v bool) *ListJobsRequest {
 	s.FromAllWorkspaces = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetImageSearch(v string) *ListJobsRequest {
+	s.ImageSearch = &v
 	return s
 }
 
@@ -435,6 +501,21 @@ func (s *ListJobsRequest) SetJobIds(v string) *ListJobsRequest {
 
 func (s *ListJobsRequest) SetJobType(v string) *ListJobsRequest {
 	s.JobType = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetNumericRangeField(v string) *ListJobsRequest {
+	s.NumericRangeField = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetNumericRangeMax(v int64) *ListJobsRequest {
+	s.NumericRangeMax = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetNumericRangeMin(v int64) *ListJobsRequest {
+	s.NumericRangeMin = &v
 	return s
 }
 
@@ -465,6 +546,11 @@ func (s *ListJobsRequest) SetPaymentType(v string) *ListJobsRequest {
 
 func (s *ListJobsRequest) SetPipelineId(v string) *ListJobsRequest {
 	s.PipelineId = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetReasonSearch(v string) *ListJobsRequest {
+	s.ReasonSearch = &v
 	return s
 }
 
@@ -500,6 +586,16 @@ func (s *ListJobsRequest) SetStatus(v string) *ListJobsRequest {
 
 func (s *ListJobsRequest) SetTags(v map[string]*string) *ListJobsRequest {
 	s.Tags = v
+	return s
+}
+
+func (s *ListJobsRequest) SetTimeRangeField(v string) *ListJobsRequest {
+	s.TimeRangeField = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetUserCommandSearch(v string) *ListJobsRequest {
+	s.UserCommandSearch = &v
 	return s
 }
 

@@ -19,16 +19,26 @@ type iListJobsShrinkRequest interface {
 	GetDisplayName() *string
 	SetDisplayNameSearchMode(v string) *ListJobsShrinkRequest
 	GetDisplayNameSearchMode() *string
+	SetEnableAssignNode(v string) *ListJobsShrinkRequest
+	GetEnableAssignNode() *string
 	SetEndTime(v string) *ListJobsShrinkRequest
 	GetEndTime() *string
 	SetFromAllWorkspaces(v bool) *ListJobsShrinkRequest
 	GetFromAllWorkspaces() *bool
+	SetImageSearch(v string) *ListJobsShrinkRequest
+	GetImageSearch() *string
 	SetJobId(v string) *ListJobsShrinkRequest
 	GetJobId() *string
 	SetJobIds(v string) *ListJobsShrinkRequest
 	GetJobIds() *string
 	SetJobType(v string) *ListJobsShrinkRequest
 	GetJobType() *string
+	SetNumericRangeField(v string) *ListJobsShrinkRequest
+	GetNumericRangeField() *string
+	SetNumericRangeMax(v int64) *ListJobsShrinkRequest
+	GetNumericRangeMax() *int64
+	SetNumericRangeMin(v int64) *ListJobsShrinkRequest
+	GetNumericRangeMin() *int64
 	SetOrder(v string) *ListJobsShrinkRequest
 	GetOrder() *string
 	SetOversoldInfo(v string) *ListJobsShrinkRequest
@@ -41,6 +51,8 @@ type iListJobsShrinkRequest interface {
 	GetPaymentType() *string
 	SetPipelineId(v string) *ListJobsShrinkRequest
 	GetPipelineId() *string
+	SetReasonSearch(v string) *ListJobsShrinkRequest
+	GetReasonSearch() *string
 	SetResourceId(v string) *ListJobsShrinkRequest
 	GetResourceId() *string
 	SetResourceQuotaName(v string) *ListJobsShrinkRequest
@@ -55,6 +67,10 @@ type iListJobsShrinkRequest interface {
 	GetStatus() *string
 	SetTagsShrink(v string) *ListJobsShrinkRequest
 	GetTagsShrink() *string
+	SetTimeRangeField(v string) *ListJobsShrinkRequest
+	GetTimeRangeField() *string
+	SetUserCommandSearch(v string) *ListJobsShrinkRequest
+	GetUserCommandSearch() *string
 	SetUserIdForFilter(v string) *ListJobsShrinkRequest
 	GetUserIdForFilter() *string
 	SetUsername(v string) *ListJobsShrinkRequest
@@ -93,6 +109,7 @@ type ListJobsShrinkRequest struct {
 	// tf-mnist-test
 	DisplayName           *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	DisplayNameSearchMode *string `json:"DisplayNameSearchMode,omitempty" xml:"DisplayNameSearchMode,omitempty"`
+	EnableAssignNode      *string `json:"EnableAssignNode,omitempty" xml:"EnableAssignNode,omitempty"`
 	// The end time of the query. Use the job creation time to filter data. The default value is the current time.
 	//
 	// example:
@@ -104,7 +121,8 @@ type ListJobsShrinkRequest struct {
 	// example:
 	//
 	// false
-	FromAllWorkspaces *bool `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
+	FromAllWorkspaces *bool   `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
+	ImageSearch       *string `json:"ImageSearch,omitempty" xml:"ImageSearch,omitempty"`
 	// The job ID. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. The default value null indicates any job ID.
 	//
 	// example:
@@ -127,7 +145,10 @@ type ListJobsShrinkRequest struct {
 	// example:
 	//
 	// TFJob
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	JobType           *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	NumericRangeField *string `json:"NumericRangeField,omitempty" xml:"NumericRangeField,omitempty"`
+	NumericRangeMax   *int64  `json:"NumericRangeMax,omitempty" xml:"NumericRangeMax,omitempty"`
+	NumericRangeMin   *int64  `json:"NumericRangeMin,omitempty" xml:"NumericRangeMin,omitempty"`
 	// The sorting order. Valid values:
 	//
 	// 	- desc (default)
@@ -181,7 +202,8 @@ type ListJobsShrinkRequest struct {
 	// example:
 	//
 	// flow-*******
-	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	PipelineId   *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	ReasonSearch *string `json:"ReasonSearch,omitempty" xml:"ReasonSearch,omitempty"`
 	// The resource group ID. For information about how to obtain the ID of a dedicated resource group, see [Manage resource quota](https://help.aliyun.com/document_detail/2651299.html).
 	//
 	// example:
@@ -255,7 +277,9 @@ type ListJobsShrinkRequest struct {
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags.
-	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TagsShrink        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TimeRangeField    *string `json:"TimeRangeField,omitempty" xml:"TimeRangeField,omitempty"`
+	UserCommandSearch *string `json:"UserCommandSearch,omitempty" xml:"UserCommandSearch,omitempty"`
 	// The user ID used to filter jobs.
 	//
 	// example:
@@ -304,12 +328,20 @@ func (s *ListJobsShrinkRequest) GetDisplayNameSearchMode() *string {
 	return s.DisplayNameSearchMode
 }
 
+func (s *ListJobsShrinkRequest) GetEnableAssignNode() *string {
+	return s.EnableAssignNode
+}
+
 func (s *ListJobsShrinkRequest) GetEndTime() *string {
 	return s.EndTime
 }
 
 func (s *ListJobsShrinkRequest) GetFromAllWorkspaces() *bool {
 	return s.FromAllWorkspaces
+}
+
+func (s *ListJobsShrinkRequest) GetImageSearch() *string {
+	return s.ImageSearch
 }
 
 func (s *ListJobsShrinkRequest) GetJobId() *string {
@@ -322,6 +354,18 @@ func (s *ListJobsShrinkRequest) GetJobIds() *string {
 
 func (s *ListJobsShrinkRequest) GetJobType() *string {
 	return s.JobType
+}
+
+func (s *ListJobsShrinkRequest) GetNumericRangeField() *string {
+	return s.NumericRangeField
+}
+
+func (s *ListJobsShrinkRequest) GetNumericRangeMax() *int64 {
+	return s.NumericRangeMax
+}
+
+func (s *ListJobsShrinkRequest) GetNumericRangeMin() *int64 {
+	return s.NumericRangeMin
 }
 
 func (s *ListJobsShrinkRequest) GetOrder() *string {
@@ -346,6 +390,10 @@ func (s *ListJobsShrinkRequest) GetPaymentType() *string {
 
 func (s *ListJobsShrinkRequest) GetPipelineId() *string {
 	return s.PipelineId
+}
+
+func (s *ListJobsShrinkRequest) GetReasonSearch() *string {
+	return s.ReasonSearch
 }
 
 func (s *ListJobsShrinkRequest) GetResourceId() *string {
@@ -374,6 +422,14 @@ func (s *ListJobsShrinkRequest) GetStatus() *string {
 
 func (s *ListJobsShrinkRequest) GetTagsShrink() *string {
 	return s.TagsShrink
+}
+
+func (s *ListJobsShrinkRequest) GetTimeRangeField() *string {
+	return s.TimeRangeField
+}
+
+func (s *ListJobsShrinkRequest) GetUserCommandSearch() *string {
+	return s.UserCommandSearch
 }
 
 func (s *ListJobsShrinkRequest) GetUserIdForFilter() *string {
@@ -413,6 +469,11 @@ func (s *ListJobsShrinkRequest) SetDisplayNameSearchMode(v string) *ListJobsShri
 	return s
 }
 
+func (s *ListJobsShrinkRequest) SetEnableAssignNode(v string) *ListJobsShrinkRequest {
+	s.EnableAssignNode = &v
+	return s
+}
+
 func (s *ListJobsShrinkRequest) SetEndTime(v string) *ListJobsShrinkRequest {
 	s.EndTime = &v
 	return s
@@ -420,6 +481,11 @@ func (s *ListJobsShrinkRequest) SetEndTime(v string) *ListJobsShrinkRequest {
 
 func (s *ListJobsShrinkRequest) SetFromAllWorkspaces(v bool) *ListJobsShrinkRequest {
 	s.FromAllWorkspaces = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetImageSearch(v string) *ListJobsShrinkRequest {
+	s.ImageSearch = &v
 	return s
 }
 
@@ -435,6 +501,21 @@ func (s *ListJobsShrinkRequest) SetJobIds(v string) *ListJobsShrinkRequest {
 
 func (s *ListJobsShrinkRequest) SetJobType(v string) *ListJobsShrinkRequest {
 	s.JobType = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetNumericRangeField(v string) *ListJobsShrinkRequest {
+	s.NumericRangeField = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetNumericRangeMax(v int64) *ListJobsShrinkRequest {
+	s.NumericRangeMax = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetNumericRangeMin(v int64) *ListJobsShrinkRequest {
+	s.NumericRangeMin = &v
 	return s
 }
 
@@ -465,6 +546,11 @@ func (s *ListJobsShrinkRequest) SetPaymentType(v string) *ListJobsShrinkRequest 
 
 func (s *ListJobsShrinkRequest) SetPipelineId(v string) *ListJobsShrinkRequest {
 	s.PipelineId = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetReasonSearch(v string) *ListJobsShrinkRequest {
+	s.ReasonSearch = &v
 	return s
 }
 
@@ -500,6 +586,16 @@ func (s *ListJobsShrinkRequest) SetStatus(v string) *ListJobsShrinkRequest {
 
 func (s *ListJobsShrinkRequest) SetTagsShrink(v string) *ListJobsShrinkRequest {
 	s.TagsShrink = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetTimeRangeField(v string) *ListJobsShrinkRequest {
+	s.TimeRangeField = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetUserCommandSearch(v string) *ListJobsShrinkRequest {
+	s.UserCommandSearch = &v
 	return s
 }
 

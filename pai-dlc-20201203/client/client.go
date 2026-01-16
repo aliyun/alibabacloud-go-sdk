@@ -1610,12 +1610,20 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 		query["DisplayNameSearchMode"] = request.DisplayNameSearchMode
 	}
 
+	if !dara.IsNil(request.EnableAssignNode) {
+		query["EnableAssignNode"] = request.EnableAssignNode
+	}
+
 	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
 	}
 
 	if !dara.IsNil(request.FromAllWorkspaces) {
 		query["FromAllWorkspaces"] = request.FromAllWorkspaces
+	}
+
+	if !dara.IsNil(request.ImageSearch) {
+		query["ImageSearch"] = request.ImageSearch
 	}
 
 	if !dara.IsNil(request.JobId) {
@@ -1628,6 +1636,18 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 
 	if !dara.IsNil(request.JobType) {
 		query["JobType"] = request.JobType
+	}
+
+	if !dara.IsNil(request.NumericRangeField) {
+		query["NumericRangeField"] = request.NumericRangeField
+	}
+
+	if !dara.IsNil(request.NumericRangeMax) {
+		query["NumericRangeMax"] = request.NumericRangeMax
+	}
+
+	if !dara.IsNil(request.NumericRangeMin) {
+		query["NumericRangeMin"] = request.NumericRangeMin
 	}
 
 	if !dara.IsNil(request.Order) {
@@ -1652,6 +1672,10 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 
 	if !dara.IsNil(request.PipelineId) {
 		query["PipelineId"] = request.PipelineId
+	}
+
+	if !dara.IsNil(request.ReasonSearch) {
+		query["ReasonSearch"] = request.ReasonSearch
 	}
 
 	if !dara.IsNil(request.ResourceId) {
@@ -1680,6 +1704,14 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 
 	if !dara.IsNil(request.TagsShrink) {
 		query["Tags"] = request.TagsShrink
+	}
+
+	if !dara.IsNil(request.TimeRangeField) {
+		query["TimeRangeField"] = request.TimeRangeField
+	}
+
+	if !dara.IsNil(request.UserCommandSearch) {
+		query["UserCommandSearch"] = request.UserCommandSearch
 	}
 
 	if !dara.IsNil(request.UserIdForFilter) {
