@@ -3354,6 +3354,26 @@ func (client *Client) DescribeVerifySearchPageListWithContext(ctx context.Contex
 		query["ProductCode"] = request.ProductCode
 	}
 
+	if !dara.IsNil(request.RiskBizScenario) {
+		query["RiskBizScenario"] = request.RiskBizScenario
+	}
+
+	if !dara.IsNil(request.RiskDevice) {
+		query["RiskDevice"] = request.RiskDevice
+	}
+
+	if !dara.IsNil(request.RiskDeviceToken) {
+		query["RiskDeviceToken"] = request.RiskDeviceToken
+	}
+
+	if !dara.IsNil(request.RiskGeneric) {
+		query["RiskGeneric"] = request.RiskGeneric
+	}
+
+	if !dara.IsNil(request.RiskModelMining) {
+		query["RiskModelMining"] = request.RiskModelMining
+	}
+
 	if !dara.IsNil(request.Root) {
 		query["Root"] = request.Root
 	}

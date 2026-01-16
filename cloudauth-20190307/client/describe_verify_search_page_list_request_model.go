@@ -29,6 +29,16 @@ type iDescribeVerifySearchPageListRequest interface {
 	GetPassed() *string
 	SetProductCode(v string) *DescribeVerifySearchPageListRequest
 	GetProductCode() *string
+	SetRiskBizScenario(v int32) *DescribeVerifySearchPageListRequest
+	GetRiskBizScenario() *int32
+	SetRiskDevice(v int32) *DescribeVerifySearchPageListRequest
+	GetRiskDevice() *int32
+	SetRiskDeviceToken(v int32) *DescribeVerifySearchPageListRequest
+	GetRiskDeviceToken() *int32
+	SetRiskGeneric(v int32) *DescribeVerifySearchPageListRequest
+	GetRiskGeneric() *int32
+	SetRiskModelMining(v int32) *DescribeVerifySearchPageListRequest
+	GetRiskModelMining() *int32
 	SetRoot(v int32) *DescribeVerifySearchPageListRequest
 	GetRoot() *int32
 	SetSceneId(v string) *DescribeVerifySearchPageListRequest
@@ -113,7 +123,12 @@ type DescribeVerifySearchPageListRequest struct {
 	// example:
 	//
 	// ID_PRO
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductCode     *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	RiskBizScenario *int32  `json:"RiskBizScenario,omitempty" xml:"RiskBizScenario,omitempty"`
+	RiskDevice      *int32  `json:"RiskDevice,omitempty" xml:"RiskDevice,omitempty"`
+	RiskDeviceToken *int32  `json:"RiskDeviceToken,omitempty" xml:"RiskDeviceToken,omitempty"`
+	RiskGeneric     *int32  `json:"RiskGeneric,omitempty" xml:"RiskGeneric,omitempty"`
+	RiskModelMining *int32  `json:"RiskModelMining,omitempty" xml:"RiskModelMining,omitempty"`
 	// Whether it is rooted (pass 1 if selected, otherwise do not pass; corresponds to identity label risk type).
 	//
 	// example:
@@ -206,6 +221,26 @@ func (s *DescribeVerifySearchPageListRequest) GetProductCode() *string {
 	return s.ProductCode
 }
 
+func (s *DescribeVerifySearchPageListRequest) GetRiskBizScenario() *int32 {
+	return s.RiskBizScenario
+}
+
+func (s *DescribeVerifySearchPageListRequest) GetRiskDevice() *int32 {
+	return s.RiskDevice
+}
+
+func (s *DescribeVerifySearchPageListRequest) GetRiskDeviceToken() *int32 {
+	return s.RiskDeviceToken
+}
+
+func (s *DescribeVerifySearchPageListRequest) GetRiskGeneric() *int32 {
+	return s.RiskGeneric
+}
+
+func (s *DescribeVerifySearchPageListRequest) GetRiskModelMining() *int32 {
+	return s.RiskModelMining
+}
+
 func (s *DescribeVerifySearchPageListRequest) GetRoot() *int32 {
 	return s.Root
 }
@@ -281,6 +316,31 @@ func (s *DescribeVerifySearchPageListRequest) SetPassed(v string) *DescribeVerif
 
 func (s *DescribeVerifySearchPageListRequest) SetProductCode(v string) *DescribeVerifySearchPageListRequest {
 	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeVerifySearchPageListRequest) SetRiskBizScenario(v int32) *DescribeVerifySearchPageListRequest {
+	s.RiskBizScenario = &v
+	return s
+}
+
+func (s *DescribeVerifySearchPageListRequest) SetRiskDevice(v int32) *DescribeVerifySearchPageListRequest {
+	s.RiskDevice = &v
+	return s
+}
+
+func (s *DescribeVerifySearchPageListRequest) SetRiskDeviceToken(v int32) *DescribeVerifySearchPageListRequest {
+	s.RiskDeviceToken = &v
+	return s
+}
+
+func (s *DescribeVerifySearchPageListRequest) SetRiskGeneric(v int32) *DescribeVerifySearchPageListRequest {
+	s.RiskGeneric = &v
+	return s
+}
+
+func (s *DescribeVerifySearchPageListRequest) SetRiskModelMining(v int32) *DescribeVerifySearchPageListRequest {
+	s.RiskModelMining = &v
 	return s
 }
 
