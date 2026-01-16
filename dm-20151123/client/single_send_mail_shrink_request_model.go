@@ -19,6 +19,8 @@ type iSingleSendMailShrinkRequest interface {
 	GetBccAddress() *string
 	SetClickTrace(v string) *SingleSendMailShrinkRequest
 	GetClickTrace() *string
+	SetDomainAuth(v bool) *SingleSendMailShrinkRequest
+	GetDomainAuth() *bool
 	SetFromAlias(v string) *SingleSendMailShrinkRequest
 	GetFromAlias() *string
 	SetHeaders(v string) *SingleSendMailShrinkRequest
@@ -69,6 +71,7 @@ type SingleSendMailShrinkRequest struct {
 	// 1@example.com,2@example.com
 	BccAddress        *string `json:"BccAddress,omitempty" xml:"BccAddress,omitempty"`
 	ClickTrace        *string `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
+	DomainAuth        *bool   `json:"DomainAuth,omitempty" xml:"DomainAuth,omitempty"`
 	FromAlias         *string `json:"FromAlias,omitempty" xml:"FromAlias,omitempty"`
 	Headers           *string `json:"Headers,omitempty" xml:"Headers,omitempty"`
 	HtmlBody          *string `json:"HtmlBody,omitempty" xml:"HtmlBody,omitempty"`
@@ -117,6 +120,10 @@ func (s *SingleSendMailShrinkRequest) GetBccAddress() *string {
 
 func (s *SingleSendMailShrinkRequest) GetClickTrace() *string {
 	return s.ClickTrace
+}
+
+func (s *SingleSendMailShrinkRequest) GetDomainAuth() *bool {
+	return s.DomainAuth
 }
 
 func (s *SingleSendMailShrinkRequest) GetFromAlias() *string {
@@ -209,6 +216,11 @@ func (s *SingleSendMailShrinkRequest) SetBccAddress(v string) *SingleSendMailShr
 
 func (s *SingleSendMailShrinkRequest) SetClickTrace(v string) *SingleSendMailShrinkRequest {
 	s.ClickTrace = &v
+	return s
+}
+
+func (s *SingleSendMailShrinkRequest) SetDomainAuth(v bool) *SingleSendMailShrinkRequest {
+	s.DomainAuth = &v
 	return s
 }
 

@@ -20,6 +20,8 @@ type iSingleSendMailAdvanceRequest interface {
 	GetBccAddress() *string
 	SetClickTrace(v string) *SingleSendMailAdvanceRequest
 	GetClickTrace() *string
+	SetDomainAuth(v bool) *SingleSendMailAdvanceRequest
+	GetDomainAuth() *bool
 	SetFromAlias(v string) *SingleSendMailAdvanceRequest
 	GetFromAlias() *string
 	SetHeaders(v string) *SingleSendMailAdvanceRequest
@@ -70,6 +72,7 @@ type SingleSendMailAdvanceRequest struct {
 	// 1@example.com,2@example.com
 	BccAddress        *string `json:"BccAddress,omitempty" xml:"BccAddress,omitempty"`
 	ClickTrace        *string `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
+	DomainAuth        *bool   `json:"DomainAuth,omitempty" xml:"DomainAuth,omitempty"`
 	FromAlias         *string `json:"FromAlias,omitempty" xml:"FromAlias,omitempty"`
 	Headers           *string `json:"Headers,omitempty" xml:"Headers,omitempty"`
 	HtmlBody          *string `json:"HtmlBody,omitempty" xml:"HtmlBody,omitempty"`
@@ -118,6 +121,10 @@ func (s *SingleSendMailAdvanceRequest) GetBccAddress() *string {
 
 func (s *SingleSendMailAdvanceRequest) GetClickTrace() *string {
 	return s.ClickTrace
+}
+
+func (s *SingleSendMailAdvanceRequest) GetDomainAuth() *bool {
+	return s.DomainAuth
 }
 
 func (s *SingleSendMailAdvanceRequest) GetFromAlias() *string {
@@ -210,6 +217,11 @@ func (s *SingleSendMailAdvanceRequest) SetBccAddress(v string) *SingleSendMailAd
 
 func (s *SingleSendMailAdvanceRequest) SetClickTrace(v string) *SingleSendMailAdvanceRequest {
 	s.ClickTrace = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetDomainAuth(v bool) *SingleSendMailAdvanceRequest {
+	s.DomainAuth = &v
 	return s
 }
 

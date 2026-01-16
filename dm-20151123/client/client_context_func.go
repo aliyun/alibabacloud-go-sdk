@@ -148,6 +148,10 @@ func (client *Client) BatchSendMailWithContext(ctx context.Context, request *Bat
 		query["ClickTrace"] = request.ClickTrace
 	}
 
+	if !dara.IsNil(request.DomainAuth) {
+		query["DomainAuth"] = request.DomainAuth
+	}
+
 	if !dara.IsNil(request.Headers) {
 		query["Headers"] = request.Headers
 	}
@@ -4121,6 +4125,10 @@ func (client *Client) SingleSendMailWithContext(ctx context.Context, tmpReq *Sin
 
 	if !dara.IsNil(request.ClickTrace) {
 		body["ClickTrace"] = request.ClickTrace
+	}
+
+	if !dara.IsNil(request.DomainAuth) {
+		body["DomainAuth"] = request.DomainAuth
 	}
 
 	if !dara.IsNil(request.FromAlias) {

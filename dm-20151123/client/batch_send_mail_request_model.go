@@ -15,6 +15,8 @@ type iBatchSendMailRequest interface {
 	GetAddressType() *int32
 	SetClickTrace(v string) *BatchSendMailRequest
 	GetClickTrace() *string
+	SetDomainAuth(v bool) *BatchSendMailRequest
+	GetDomainAuth() *bool
 	SetHeaders(v string) *BatchSendMailRequest
 	GetHeaders() *string
 	SetIpPoolId(v string) *BatchSendMailRequest
@@ -68,6 +70,7 @@ type BatchSendMailRequest struct {
 	//
 	// 0
 	ClickTrace *string `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
+	DomainAuth *bool   `json:"DomainAuth,omitempty" xml:"DomainAuth,omitempty"`
 	// Currently, the standard fields that can be added to the email header are Message-ID, List-Unsubscribe, and List-Unsubscribe-Post. Standard fields will overwrite the existing values in the email header, while non-standard fields must start with X-User- and will be appended to the email header. Currently, up to 10 headers can be passed in JSON format, and both standard and non-standard fields must comply with the syntax requirements for headers.
 	//
 	// example:
@@ -181,6 +184,10 @@ func (s *BatchSendMailRequest) GetClickTrace() *string {
 	return s.ClickTrace
 }
 
+func (s *BatchSendMailRequest) GetDomainAuth() *bool {
+	return s.DomainAuth
+}
+
 func (s *BatchSendMailRequest) GetHeaders() *string {
 	return s.Headers
 }
@@ -241,6 +248,11 @@ func (s *BatchSendMailRequest) SetAddressType(v int32) *BatchSendMailRequest {
 
 func (s *BatchSendMailRequest) SetClickTrace(v string) *BatchSendMailRequest {
 	s.ClickTrace = &v
+	return s
+}
+
+func (s *BatchSendMailRequest) SetDomainAuth(v bool) *BatchSendMailRequest {
+	s.DomainAuth = &v
 	return s
 }
 
