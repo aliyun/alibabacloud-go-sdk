@@ -1996,6 +1996,94 @@ func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *Cre
 
 // Summary:
 //
+// 创建集群节点池
+//
+// @param tmpReq - CreateClusterNodePoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateClusterNodePoolResponse
+func (client *Client) CreateClusterNodePoolWithOptions(tmpReq *CreateClusterNodePoolRequest, runtime *dara.RuntimeOptions) (_result *CreateClusterNodePoolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateClusterNodePoolShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.KubernetesConfig) {
+		request.KubernetesConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KubernetesConfig, dara.String("KubernetesConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.NodepoolInfo) {
+		request.NodepoolInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodepoolInfo, dara.String("NodepoolInfo"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ScalingGroup) {
+		request.ScalingGroupShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScalingGroup, dara.String("ScalingGroup"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.KubernetesConfigShrink) {
+		query["KubernetesConfig"] = request.KubernetesConfigShrink
+	}
+
+	if !dara.IsNil(request.NodepoolInfoShrink) {
+		query["NodepoolInfo"] = request.NodepoolInfoShrink
+	}
+
+	if !dara.IsNil(request.ScalingGroupShrink) {
+		query["ScalingGroup"] = request.ScalingGroupShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateClusterNodePool"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateClusterNodePoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建集群节点池
+//
+// @param request - CreateClusterNodePoolRequest
+//
+// @return CreateClusterNodePoolResponse
+func (client *Client) CreateClusterNodePool(request *CreateClusterNodePoolRequest) (_result *CreateClusterNodePoolResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateClusterNodePoolResponse{}
+	_body, _err := client.CreateClusterNodePoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a pay-as-you-go or subscription data disk.
 //
 // @param request - CreateDiskRequest
@@ -5312,6 +5400,144 @@ func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *Del
 
 // Summary:
 //
+// 删除节点池
+//
+// @param request - DeleteClusterNodePoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteClusterNodePoolResponse
+func (client *Client) DeleteClusterNodePoolWithOptions(request *DeleteClusterNodePoolRequest, runtime *dara.RuntimeOptions) (_result *DeleteClusterNodePoolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.NodepoolId) {
+		query["NodepoolId"] = request.NodepoolId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteClusterNodePool"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteClusterNodePoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除节点池
+//
+// @param request - DeleteClusterNodePoolRequest
+//
+// @return DeleteClusterNodePoolResponse
+func (client *Client) DeleteClusterNodePool(request *DeleteClusterNodePoolRequest) (_result *DeleteClusterNodePoolResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteClusterNodePoolResponse{}
+	_body, _err := client.DeleteClusterNodePoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除节点池指定节点
+//
+// @param tmpReq - DeleteClusterNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteClusterNodesResponse
+func (client *Client) DeleteClusterNodesWithOptions(tmpReq *DeleteClusterNodesRequest, runtime *dara.RuntimeOptions) (_result *DeleteClusterNodesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteClusterNodesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Body) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, dara.String("Body"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BodyShrink) {
+		query["Body"] = request.BodyShrink
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteClusterNodes"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteClusterNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除节点池指定节点
+//
+// @param request - DeleteClusterNodesRequest
+//
+// @return DeleteClusterNodesResponse
+func (client *Client) DeleteClusterNodes(request *DeleteClusterNodesRequest) (_result *DeleteClusterNodesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteClusterNodesResponse{}
+	_body, _err := client.DeleteClusterNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a disk.
 //
 // Description:
@@ -7538,6 +7764,72 @@ func (client *Client) DescribeARMServerInstances(request *DescribeARMServerInsta
 
 // Summary:
 //
+// 查询指定组件的信息
+//
+// @param request - DescribeAddonRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAddonResponse
+func (client *Client) DescribeAddonWithOptions(request *DescribeAddonRequest, runtime *dara.RuntimeOptions) (_result *DescribeAddonResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddonName) {
+		query["AddonName"] = request.AddonName
+	}
+
+	if !dara.IsNil(request.AddonVersion) {
+		query["AddonVersion"] = request.AddonVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAddon"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAddonResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定组件的信息
+//
+// @param request - DescribeAddonRequest
+//
+// @return DescribeAddonResponse
+func (client *Client) DescribeAddon(request *DescribeAddonRequest) (_result *DescribeAddonResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAddonResponse{}
+	_body, _err := client.DescribeAddonWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the basic properties, resources, and container status of an application.
 //
 // @param request - DescribeApplicationRequest
@@ -8012,6 +8304,68 @@ func (client *Client) DescribeCluster(request *DescribeClusterRequest) (_result 
 
 // Summary:
 //
+// 查询集群详细信息
+//
+// @param request - DescribeClusterDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClusterDetailResponse
+func (client *Client) DescribeClusterDetailWithOptions(request *DescribeClusterDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeClusterDetail"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeClusterDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询集群详细信息
+//
+// @param request - DescribeClusterDetailRequest
+//
+// @return DescribeClusterDetailResponse
+func (client *Client) DescribeClusterDetail(request *DescribeClusterDetailRequest) (_result *DescribeClusterDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeClusterDetailResponse{}
+	_body, _err := client.DescribeClusterDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the certificate of a Container Service for Kubernetes (ACK) edge cluster.
 //
 // Description:
@@ -8073,6 +8427,212 @@ func (client *Client) DescribeClusterKubeConfig(request *DescribeClusterKubeConf
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeClusterKubeConfigResponse{}
 	_body, _err := client.DescribeClusterKubeConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询集群节点池信息
+//
+// @param request - DescribeClusterNodePoolsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClusterNodePoolsResponse
+func (client *Client) DescribeClusterNodePoolsWithOptions(request *DescribeClusterNodePoolsRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterNodePoolsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeClusterNodePools"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeClusterNodePoolsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询集群节点池信息
+//
+// @param request - DescribeClusterNodePoolsRequest
+//
+// @return DescribeClusterNodePoolsResponse
+func (client *Client) DescribeClusterNodePools(request *DescribeClusterNodePoolsRequest) (_result *DescribeClusterNodePoolsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeClusterNodePoolsResponse{}
+	_body, _err := client.DescribeClusterNodePoolsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询节点池节点
+//
+// @param request - DescribeClusterNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClusterNodesResponse
+func (client *Client) DescribeClusterNodesWithOptions(request *DescribeClusterNodesRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterNodesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.NodepoolId) {
+		query["NodepoolId"] = request.NodepoolId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeClusterNodes"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeClusterNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询节点池节点
+//
+// @param request - DescribeClusterNodesRequest
+//
+// @return DescribeClusterNodesResponse
+func (client *Client) DescribeClusterNodes(request *DescribeClusterNodesRequest) (_result *DescribeClusterNodesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeClusterNodesResponse{}
+	_body, _err := client.DescribeClusterNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询集群KubeConfig
+//
+// @param request - DescribeClusterUserKubeconfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClusterUserKubeconfigResponse
+func (client *Client) DescribeClusterUserKubeconfigWithOptions(request *DescribeClusterUserKubeconfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterUserKubeconfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeClusterUserKubeconfig"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeClusterUserKubeconfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询集群KubeConfig
+//
+// @param request - DescribeClusterUserKubeconfigRequest
+//
+// @return DescribeClusterUserKubeconfigResponse
+func (client *Client) DescribeClusterUserKubeconfig(request *DescribeClusterUserKubeconfigRequest) (_result *DescribeClusterUserKubeconfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeClusterUserKubeconfigResponse{}
+	_body, _err := client.DescribeClusterUserKubeconfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15868,6 +16428,72 @@ func (client *Client) GetBucketLifecycle(request *GetBucketLifecycleRequest) (_r
 
 // Summary:
 //
+// 查询集群内指定组件实例信息
+//
+// @param request - GetClusterAddonInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetClusterAddonInstanceResponse
+func (client *Client) GetClusterAddonInstanceWithOptions(request *GetClusterAddonInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetClusterAddonInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetClusterAddonInstance"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetClusterAddonInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询集群内指定组件实例信息
+//
+// @param request - GetClusterAddonInstanceRequest
+//
+// @return GetClusterAddonInstanceResponse
+func (client *Client) GetClusterAddonInstance(request *GetClusterAddonInstanceRequest) (_result *GetClusterAddonInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetClusterAddonInstanceResponse{}
+	_body, _err := client.GetClusterAddonInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the storage usage in the previous billing cycle and the cumulative number of calls in this month.
 //
 // @param request - GetOssStorageAndAccByBucketsRequest
@@ -16224,6 +16850,78 @@ func (client *Client) InitializeENSECKServiceRole() (_result *InitializeENSECKSe
 	runtime := &dara.RuntimeOptions{}
 	_result = &InitializeENSECKServiceRoleResponse{}
 	_body, _err := client.InitializeENSECKServiceRoleWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 安装集群组件
+//
+// @param tmpReq - InstallClusterAddonsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InstallClusterAddonsResponse
+func (client *Client) InstallClusterAddonsWithOptions(tmpReq *InstallClusterAddonsRequest, runtime *dara.RuntimeOptions) (_result *InstallClusterAddonsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &InstallClusterAddonsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Addons) {
+		request.AddonsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Addons, dara.String("Addons"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddonsShrink) {
+		query["Addons"] = request.AddonsShrink
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InstallClusterAddons"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InstallClusterAddonsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 安装集群组件
+//
+// @param request - InstallClusterAddonsRequest
+//
+// @return InstallClusterAddonsResponse
+func (client *Client) InstallClusterAddons(request *InstallClusterAddonsRequest) (_result *InstallClusterAddonsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &InstallClusterAddonsResponse{}
+	_body, _err := client.InstallClusterAddonsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17230,6 +17928,170 @@ func (client *Client) ManageAICLogin(request *ManageAICLoginRequest) (_result *M
 	runtime := &dara.RuntimeOptions{}
 	_result = &ManageAICLoginResponse{}
 	_body, _err := client.ManageAICLoginWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改集群组件实例配置
+//
+// @param tmpReq - ModifyClusterAddonRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyClusterAddonResponse
+func (client *Client) ModifyClusterAddonWithOptions(tmpReq *ModifyClusterAddonRequest, runtime *dara.RuntimeOptions) (_result *ModifyClusterAddonResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyClusterAddonShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Addon) {
+		request.AddonShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Addon, dara.String("Addon"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddonShrink) {
+		query["Addon"] = request.AddonShrink
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.ComponentName) {
+		query["ComponentName"] = request.ComponentName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyClusterAddon"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyClusterAddonResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改集群组件实例配置
+//
+// @param request - ModifyClusterAddonRequest
+//
+// @return ModifyClusterAddonResponse
+func (client *Client) ModifyClusterAddon(request *ModifyClusterAddonRequest) (_result *ModifyClusterAddonResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyClusterAddonResponse{}
+	_body, _err := client.ModifyClusterAddonWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新集群节点池
+//
+// @param tmpReq - ModifyClusterNodePoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyClusterNodePoolResponse
+func (client *Client) ModifyClusterNodePoolWithOptions(tmpReq *ModifyClusterNodePoolRequest, runtime *dara.RuntimeOptions) (_result *ModifyClusterNodePoolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyClusterNodePoolShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.KubernetesConfig) {
+		request.KubernetesConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KubernetesConfig, dara.String("KubernetesConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.NodepoolInfo) {
+		request.NodepoolInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodepoolInfo, dara.String("NodepoolInfo"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ScalingGroup) {
+		request.ScalingGroupShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScalingGroup, dara.String("ScalingGroup"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.KubernetesConfigShrink) {
+		query["KubernetesConfig"] = request.KubernetesConfigShrink
+	}
+
+	if !dara.IsNil(request.NodepoolInfoShrink) {
+		query["NodepoolInfo"] = request.NodepoolInfoShrink
+	}
+
+	if !dara.IsNil(request.ScalingGroupShrink) {
+		query["ScalingGroup"] = request.ScalingGroupShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyClusterNodePool"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyClusterNodePoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新集群节点池
+//
+// @param request - ModifyClusterNodePoolRequest
+//
+// @return ModifyClusterNodePoolResponse
+func (client *Client) ModifyClusterNodePool(request *ModifyClusterNodePoolRequest) (_result *ModifyClusterNodePoolResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyClusterNodePoolResponse{}
+	_body, _err := client.ModifyClusterNodePoolWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21911,6 +22773,82 @@ func (client *Client) SaveSDG(request *SaveSDGRequest) (_result *SaveSDGResponse
 
 // Summary:
 //
+// 调整节点池节点数
+//
+// @param tmpReq - ScaleClusterNodePoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ScaleClusterNodePoolResponse
+func (client *Client) ScaleClusterNodePoolWithOptions(tmpReq *ScaleClusterNodePoolRequest, runtime *dara.RuntimeOptions) (_result *ScaleClusterNodePoolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ScaleClusterNodePoolShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Body) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, dara.String("Body"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BodyShrink) {
+		query["Body"] = request.BodyShrink
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.NodepoolId) {
+		query["NodepoolId"] = request.NodepoolId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ScaleClusterNodePool"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ScaleClusterNodePoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 调整节点池节点数
+//
+// @param request - ScaleClusterNodePoolRequest
+//
+// @return ScaleClusterNodePoolResponse
+func (client *Client) ScaleClusterNodePool(request *ScaleClusterNodePoolRequest) (_result *ScaleClusterNodePoolResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ScaleClusterNodePoolResponse{}
+	_body, _err := client.ScaleClusterNodePoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Sets the weights of backend servers.
 //
 // Description:
@@ -23537,6 +24475,78 @@ func (client *Client) UnAssociateEnsEipAddress(request *UnAssociateEnsEipAddress
 
 // Summary:
 //
+// 卸载集群组件
+//
+// @param tmpReq - UnInstallClusterAddonsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnInstallClusterAddonsResponse
+func (client *Client) UnInstallClusterAddonsWithOptions(tmpReq *UnInstallClusterAddonsRequest, runtime *dara.RuntimeOptions) (_result *UnInstallClusterAddonsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UnInstallClusterAddonsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Addons) {
+		request.AddonsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Addons, dara.String("Addons"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddonsShrink) {
+		query["Addons"] = request.AddonsShrink
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UnInstallClusterAddons"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UnInstallClusterAddonsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 卸载集群组件
+//
+// @param request - UnInstallClusterAddonsRequest
+//
+// @return UnInstallClusterAddonsResponse
+func (client *Client) UnInstallClusterAddons(request *UnInstallClusterAddonsRequest) (_result *UnInstallClusterAddonsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UnInstallClusterAddonsResponse{}
+	_body, _err := client.UnInstallClusterAddonsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Unassigns secondary private IP addresses from an elastic network interface (ENI).
 //
 // @param request - UnassignPrivateIpAddressesRequest
@@ -24166,6 +25176,78 @@ func (client *Client) UpgradeApplication(request *UpgradeApplicationRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpgradeApplicationResponse{}
 	_body, _err := client.UpgradeApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 升级集群实例组件
+//
+// @param tmpReq - UpgradeClusterAddonsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeClusterAddonsResponse
+func (client *Client) UpgradeClusterAddonsWithOptions(tmpReq *UpgradeClusterAddonsRequest, runtime *dara.RuntimeOptions) (_result *UpgradeClusterAddonsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpgradeClusterAddonsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Addons) {
+		request.AddonsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Addons, dara.String("Addons"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddonsShrink) {
+		query["Addons"] = request.AddonsShrink
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpgradeClusterAddons"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpgradeClusterAddonsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 升级集群实例组件
+//
+// @param request - UpgradeClusterAddonsRequest
+//
+// @return UpgradeClusterAddonsResponse
+func (client *Client) UpgradeClusterAddons(request *UpgradeClusterAddonsRequest) (_result *UpgradeClusterAddonsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpgradeClusterAddonsResponse{}
+	_body, _err := client.UpgradeClusterAddonsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

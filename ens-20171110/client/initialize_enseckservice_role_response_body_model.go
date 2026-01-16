@@ -14,7 +14,7 @@ type iInitializeENSECKServiceRoleResponseBody interface {
 }
 
 type InitializeENSECKServiceRoleResponseBody struct {
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
