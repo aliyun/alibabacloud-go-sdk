@@ -653,6 +653,14 @@ func (client *Client) CreateIndexWithContext(ctx context.Context, WorkspaceId *s
 		query["chunkMode"] = request.ChunkMode
 	}
 
+	if !dara.IsNil(request.Database) {
+		query["database"] = request.Database
+	}
+
+	if !dara.IsNil(request.DatasourceCode) {
+		query["datasourceCode"] = request.DatasourceCode
+	}
+
 	if !dara.IsNil(request.EnableHeaders) {
 		query["enableHeaders"] = request.EnableHeaders
 	}
@@ -671,6 +679,10 @@ func (client *Client) CreateIndexWithContext(ctx context.Context, WorkspaceId *s
 
 	if !dara.IsNil(request.PipelineRetrieveRateLimitStrategy) {
 		query["pipelineRetrieveRateLimitStrategy"] = request.PipelineRetrieveRateLimitStrategy
+	}
+
+	if !dara.IsNil(request.Table) {
+		query["table"] = request.Table
 	}
 
 	req := &openapiutil.OpenApiRequest{

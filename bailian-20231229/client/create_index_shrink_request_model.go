@@ -51,6 +51,10 @@ type iCreateIndexShrinkRequest interface {
 	GetTableIdsShrink() *string
 	SetChunkMode(v string) *CreateIndexShrinkRequest
 	GetChunkMode() *string
+	SetDatabase(v string) *CreateIndexShrinkRequest
+	GetDatabase() *string
+	SetDatasourceCode(v string) *CreateIndexShrinkRequest
+	GetDatasourceCode() *string
 	SetEnableHeaders(v bool) *CreateIndexShrinkRequest
 	GetEnableHeaders() *bool
 	SetMetaExtractColumnsShrink(v string) *CreateIndexShrinkRequest
@@ -61,6 +65,8 @@ type iCreateIndexShrinkRequest interface {
 	GetPipelineCommercialType() *string
 	SetPipelineRetrieveRateLimitStrategy(v string) *CreateIndexShrinkRequest
 	GetPipelineRetrieveRateLimitStrategy() *string
+	SetTable(v string) *CreateIndexShrinkRequest
+	GetTable() *string
 }
 
 type CreateIndexShrinkRequest struct {
@@ -213,7 +219,9 @@ type CreateIndexShrinkRequest struct {
 	// example:
 	//
 	// regex
-	ChunkMode *string `json:"chunkMode,omitempty" xml:"chunkMode,omitempty"`
+	ChunkMode      *string `json:"chunkMode,omitempty" xml:"chunkMode,omitempty"`
+	Database       *string `json:"database,omitempty" xml:"database,omitempty"`
+	DatasourceCode *string `json:"datasourceCode,omitempty" xml:"datasourceCode,omitempty"`
 	// Whether to treat the first row of all .xlsx and .xls files as headers and concatenate them into each text chunk. This prevents the models from mistakenly interpreting headers as regular data rows.
 	//
 	// > Enable this feature only when all imported files are in .xlsx or .xls format and contain headers. Otherwise, leave it disabled.
@@ -244,6 +252,7 @@ type CreateIndexShrinkRequest struct {
 	//
 	// downgrade
 	PipelineRetrieveRateLimitStrategy *string `json:"pipelineRetrieveRateLimitStrategy,omitempty" xml:"pipelineRetrieveRateLimitStrategy,omitempty"`
+	Table                             *string `json:"table,omitempty" xml:"table,omitempty"`
 }
 
 func (s CreateIndexShrinkRequest) String() string {
@@ -338,6 +347,14 @@ func (s *CreateIndexShrinkRequest) GetChunkMode() *string {
 	return s.ChunkMode
 }
 
+func (s *CreateIndexShrinkRequest) GetDatabase() *string {
+	return s.Database
+}
+
+func (s *CreateIndexShrinkRequest) GetDatasourceCode() *string {
+	return s.DatasourceCode
+}
+
 func (s *CreateIndexShrinkRequest) GetEnableHeaders() *bool {
 	return s.EnableHeaders
 }
@@ -356,6 +373,10 @@ func (s *CreateIndexShrinkRequest) GetPipelineCommercialType() *string {
 
 func (s *CreateIndexShrinkRequest) GetPipelineRetrieveRateLimitStrategy() *string {
 	return s.PipelineRetrieveRateLimitStrategy
+}
+
+func (s *CreateIndexShrinkRequest) GetTable() *string {
+	return s.Table
 }
 
 func (s *CreateIndexShrinkRequest) SetCategoryIdsShrink(v string) *CreateIndexShrinkRequest {
@@ -463,6 +484,16 @@ func (s *CreateIndexShrinkRequest) SetChunkMode(v string) *CreateIndexShrinkRequ
 	return s
 }
 
+func (s *CreateIndexShrinkRequest) SetDatabase(v string) *CreateIndexShrinkRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *CreateIndexShrinkRequest) SetDatasourceCode(v string) *CreateIndexShrinkRequest {
+	s.DatasourceCode = &v
+	return s
+}
+
 func (s *CreateIndexShrinkRequest) SetEnableHeaders(v bool) *CreateIndexShrinkRequest {
 	s.EnableHeaders = &v
 	return s
@@ -485,6 +516,11 @@ func (s *CreateIndexShrinkRequest) SetPipelineCommercialType(v string) *CreateIn
 
 func (s *CreateIndexShrinkRequest) SetPipelineRetrieveRateLimitStrategy(v string) *CreateIndexShrinkRequest {
 	s.PipelineRetrieveRateLimitStrategy = &v
+	return s
+}
+
+func (s *CreateIndexShrinkRequest) SetTable(v string) *CreateIndexShrinkRequest {
+	s.Table = &v
 	return s
 }
 

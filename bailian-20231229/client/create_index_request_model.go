@@ -51,6 +51,10 @@ type iCreateIndexRequest interface {
 	GetTableIds() []*string
 	SetChunkMode(v string) *CreateIndexRequest
 	GetChunkMode() *string
+	SetDatabase(v string) *CreateIndexRequest
+	GetDatabase() *string
+	SetDatasourceCode(v string) *CreateIndexRequest
+	GetDatasourceCode() *string
 	SetEnableHeaders(v bool) *CreateIndexRequest
 	GetEnableHeaders() *bool
 	SetMetaExtractColumns(v []*CreateIndexRequestMetaExtractColumns) *CreateIndexRequest
@@ -61,6 +65,8 @@ type iCreateIndexRequest interface {
 	GetPipelineCommercialType() *string
 	SetPipelineRetrieveRateLimitStrategy(v string) *CreateIndexRequest
 	GetPipelineRetrieveRateLimitStrategy() *string
+	SetTable(v string) *CreateIndexRequest
+	GetTable() *string
 }
 
 type CreateIndexRequest struct {
@@ -213,7 +219,9 @@ type CreateIndexRequest struct {
 	// example:
 	//
 	// regex
-	ChunkMode *string `json:"chunkMode,omitempty" xml:"chunkMode,omitempty"`
+	ChunkMode      *string `json:"chunkMode,omitempty" xml:"chunkMode,omitempty"`
+	Database       *string `json:"database,omitempty" xml:"database,omitempty"`
+	DatasourceCode *string `json:"datasourceCode,omitempty" xml:"datasourceCode,omitempty"`
 	// Whether to treat the first row of all .xlsx and .xls files as headers and concatenate them into each text chunk. This prevents the models from mistakenly interpreting headers as regular data rows.
 	//
 	// > Enable this feature only when all imported files are in .xlsx or .xls format and contain headers. Otherwise, leave it disabled.
@@ -244,6 +252,7 @@ type CreateIndexRequest struct {
 	//
 	// downgrade
 	PipelineRetrieveRateLimitStrategy *string `json:"pipelineRetrieveRateLimitStrategy,omitempty" xml:"pipelineRetrieveRateLimitStrategy,omitempty"`
+	Table                             *string `json:"table,omitempty" xml:"table,omitempty"`
 }
 
 func (s CreateIndexRequest) String() string {
@@ -338,6 +347,14 @@ func (s *CreateIndexRequest) GetChunkMode() *string {
 	return s.ChunkMode
 }
 
+func (s *CreateIndexRequest) GetDatabase() *string {
+	return s.Database
+}
+
+func (s *CreateIndexRequest) GetDatasourceCode() *string {
+	return s.DatasourceCode
+}
+
 func (s *CreateIndexRequest) GetEnableHeaders() *bool {
 	return s.EnableHeaders
 }
@@ -356,6 +373,10 @@ func (s *CreateIndexRequest) GetPipelineCommercialType() *string {
 
 func (s *CreateIndexRequest) GetPipelineRetrieveRateLimitStrategy() *string {
 	return s.PipelineRetrieveRateLimitStrategy
+}
+
+func (s *CreateIndexRequest) GetTable() *string {
+	return s.Table
 }
 
 func (s *CreateIndexRequest) SetCategoryIds(v []*string) *CreateIndexRequest {
@@ -463,6 +484,16 @@ func (s *CreateIndexRequest) SetChunkMode(v string) *CreateIndexRequest {
 	return s
 }
 
+func (s *CreateIndexRequest) SetDatabase(v string) *CreateIndexRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *CreateIndexRequest) SetDatasourceCode(v string) *CreateIndexRequest {
+	s.DatasourceCode = &v
+	return s
+}
+
 func (s *CreateIndexRequest) SetEnableHeaders(v bool) *CreateIndexRequest {
 	s.EnableHeaders = &v
 	return s
@@ -485,6 +516,11 @@ func (s *CreateIndexRequest) SetPipelineCommercialType(v string) *CreateIndexReq
 
 func (s *CreateIndexRequest) SetPipelineRetrieveRateLimitStrategy(v string) *CreateIndexRequest {
 	s.PipelineRetrieveRateLimitStrategy = &v
+	return s
+}
+
+func (s *CreateIndexRequest) SetTable(v string) *CreateIndexRequest {
+	s.Table = &v
 	return s
 }
 
