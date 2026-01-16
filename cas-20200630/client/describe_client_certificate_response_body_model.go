@@ -80,6 +80,7 @@ type DescribeClientCertificateResponseBodyCertificate struct {
 	//
 	// RSA
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	// The issuance date of the certificate. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
@@ -117,7 +118,9 @@ type DescribeClientCertificateResponseBodyCertificate struct {
 	// example:
 	//
 	// 365
-	Days *int32 `json:"Days,omitempty" xml:"Days,omitempty"`
+	Days          *int32  `json:"Days,omitempty" xml:"Days,omitempty"`
+	FullAlgorithm *string `json:"FullAlgorithm,omitempty" xml:"FullAlgorithm,omitempty"`
+	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The unique identifier of the certificate.
 	//
 	// example:
@@ -232,8 +235,9 @@ type DescribeClientCertificateResponseBodyCertificate struct {
 	// example:
 	//
 	// C=CN,O=Alibaba Cloud Computing Co., Ltd.,OU=Security,L=Hangzhou,ST=Zhejiang,CN=Aliyun
-	SubjectDN *string                                                 `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
-	Tags      []*DescribeClientCertificateResponseBodyCertificateTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SubjectDN  *string                                                 `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
+	Tags       []*DescribeClientCertificateResponseBodyCertificateTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	UploadFlag *int32                                                  `json:"UploadFlag,omitempty" xml:"UploadFlag,omitempty"`
 	// The content of the certificate.
 	//
 	// example:
@@ -256,6 +260,10 @@ func (s *DescribeClientCertificateResponseBodyCertificate) GetAfterDate() *int64
 
 func (s *DescribeClientCertificateResponseBodyCertificate) GetAlgorithm() *string {
 	return s.Algorithm
+}
+
+func (s *DescribeClientCertificateResponseBodyCertificate) GetAliasName() *string {
+	return s.AliasName
 }
 
 func (s *DescribeClientCertificateResponseBodyCertificate) GetBeforeDate() *int64 {
@@ -284,6 +292,14 @@ func (s *DescribeClientCertificateResponseBodyCertificate) GetCustomIdentifier()
 
 func (s *DescribeClientCertificateResponseBodyCertificate) GetDays() *int32 {
 	return s.Days
+}
+
+func (s *DescribeClientCertificateResponseBodyCertificate) GetFullAlgorithm() *string {
+	return s.FullAlgorithm
+}
+
+func (s *DescribeClientCertificateResponseBodyCertificate) GetId() *int64 {
+	return s.Id
 }
 
 func (s *DescribeClientCertificateResponseBodyCertificate) GetIdentifier() *string {
@@ -350,6 +366,10 @@ func (s *DescribeClientCertificateResponseBodyCertificate) GetTags() []*Describe
 	return s.Tags
 }
 
+func (s *DescribeClientCertificateResponseBodyCertificate) GetUploadFlag() *int32 {
+	return s.UploadFlag
+}
+
 func (s *DescribeClientCertificateResponseBodyCertificate) GetX509Certificate() *string {
 	return s.X509Certificate
 }
@@ -361,6 +381,11 @@ func (s *DescribeClientCertificateResponseBodyCertificate) SetAfterDate(v int64)
 
 func (s *DescribeClientCertificateResponseBodyCertificate) SetAlgorithm(v string) *DescribeClientCertificateResponseBodyCertificate {
 	s.Algorithm = &v
+	return s
+}
+
+func (s *DescribeClientCertificateResponseBodyCertificate) SetAliasName(v string) *DescribeClientCertificateResponseBodyCertificate {
+	s.AliasName = &v
 	return s
 }
 
@@ -396,6 +421,16 @@ func (s *DescribeClientCertificateResponseBodyCertificate) SetCustomIdentifier(v
 
 func (s *DescribeClientCertificateResponseBodyCertificate) SetDays(v int32) *DescribeClientCertificateResponseBodyCertificate {
 	s.Days = &v
+	return s
+}
+
+func (s *DescribeClientCertificateResponseBodyCertificate) SetFullAlgorithm(v string) *DescribeClientCertificateResponseBodyCertificate {
+	s.FullAlgorithm = &v
+	return s
+}
+
+func (s *DescribeClientCertificateResponseBodyCertificate) SetId(v int64) *DescribeClientCertificateResponseBodyCertificate {
+	s.Id = &v
 	return s
 }
 
@@ -476,6 +511,11 @@ func (s *DescribeClientCertificateResponseBodyCertificate) SetSubjectDN(v string
 
 func (s *DescribeClientCertificateResponseBodyCertificate) SetTags(v []*DescribeClientCertificateResponseBodyCertificateTags) *DescribeClientCertificateResponseBodyCertificate {
 	s.Tags = v
+	return s
+}
+
+func (s *DescribeClientCertificateResponseBodyCertificate) SetUploadFlag(v int32) *DescribeClientCertificateResponseBodyCertificate {
+	s.UploadFlag = &v
 	return s
 }
 

@@ -21,6 +21,8 @@ type iListCertRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListCertRequest
 	GetNextToken() *string
+	SetParentIdentifier(v string) *ListCertRequest
+	GetParentIdentifier() *string
 	SetShowSize(v int32) *ListCertRequest
 	GetShowSize() *int32
 	SetStatus(v string) *ListCertRequest
@@ -53,7 +55,8 @@ type ListCertRequest struct {
 	// example:
 	//
 	// 1d2db86sca4384811e0b5e8707e68181f
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
 	// example:
 	//
 	// 50
@@ -100,6 +103,10 @@ func (s *ListCertRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListCertRequest) GetParentIdentifier() *string {
+	return s.ParentIdentifier
+}
+
 func (s *ListCertRequest) GetShowSize() *int32 {
 	return s.ShowSize
 }
@@ -139,6 +146,11 @@ func (s *ListCertRequest) SetMaxResults(v int32) *ListCertRequest {
 
 func (s *ListCertRequest) SetNextToken(v string) *ListCertRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListCertRequest) SetParentIdentifier(v string) *ListCertRequest {
+	s.ParentIdentifier = &v
 	return s
 }
 

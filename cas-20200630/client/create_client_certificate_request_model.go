@@ -13,8 +13,12 @@ type iCreateClientCertificateRequest interface {
 	GetAfterTime() *int64
 	SetAlgorithm(v string) *CreateClientCertificateRequest
 	GetAlgorithm() *string
+	SetAliasName(v string) *CreateClientCertificateRequest
+	GetAliasName() *string
 	SetBeforeTime(v int64) *CreateClientCertificateRequest
 	GetBeforeTime() *int64
+	SetClientToken(v string) *CreateClientCertificateRequest
+	GetClientToken() *string
 	SetCommonName(v string) *CreateClientCertificateRequest
 	GetCommonName() *string
 	SetCountry(v string) *CreateClientCertificateRequest
@@ -84,6 +88,7 @@ type CreateClientCertificateRequest struct {
 	//
 	// RSA_2048
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	// The issuance time of the client certificate. This value is a UNIX timestamp. The default value is the time when you call this operation. Unit: seconds.
 	//
 	// >  The **BeforeTime*	- and **AfterTime*	- parameters must be both empty or both specified.
@@ -91,7 +96,8 @@ type CreateClientCertificateRequest struct {
 	// example:
 	//
 	// 1634283958
-	BeforeTime *int64 `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
+	BeforeTime  *int64  `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The name of the client certificate user. In most cases, the user of a client certificate is an individual, a company, an organization, or an application. We recommend that you enter the common name of a user. Examples: Bob, Alibaba, Alibaba Cloud password platform, and Tmall Genie.
 	//
 	// example:
@@ -223,8 +229,16 @@ func (s *CreateClientCertificateRequest) GetAlgorithm() *string {
 	return s.Algorithm
 }
 
+func (s *CreateClientCertificateRequest) GetAliasName() *string {
+	return s.AliasName
+}
+
 func (s *CreateClientCertificateRequest) GetBeforeTime() *int64 {
 	return s.BeforeTime
+}
+
+func (s *CreateClientCertificateRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *CreateClientCertificateRequest) GetCommonName() *string {
@@ -305,8 +319,18 @@ func (s *CreateClientCertificateRequest) SetAlgorithm(v string) *CreateClientCer
 	return s
 }
 
+func (s *CreateClientCertificateRequest) SetAliasName(v string) *CreateClientCertificateRequest {
+	s.AliasName = &v
+	return s
+}
+
 func (s *CreateClientCertificateRequest) SetBeforeTime(v int64) *CreateClientCertificateRequest {
 	s.BeforeTime = &v
+	return s
+}
+
+func (s *CreateClientCertificateRequest) SetClientToken(v string) *CreateClientCertificateRequest {
+	s.ClientToken = &v
 	return s
 }
 

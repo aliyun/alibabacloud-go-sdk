@@ -88,6 +88,10 @@ func (client *Client) CreateClientCertificateWithContext(ctx context.Context, re
 		query["Algorithm"] = request.Algorithm
 	}
 
+	if !dara.IsNil(request.AliasName) {
+		query["AliasName"] = request.AliasName
+	}
+
 	if !dara.IsNil(request.BeforeTime) {
 		query["BeforeTime"] = request.BeforeTime
 	}
@@ -160,8 +164,14 @@ func (client *Client) CreateClientCertificateWithContext(ctx context.Context, re
 		query["Years"] = request.Years
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateClientCertificate"),
@@ -1730,6 +1740,10 @@ func (client *Client) ListCertWithContext(ctx context.Context, request *ListCert
 
 	if !dara.IsNil(request.NextToken) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ParentIdentifier) {
+		query["ParentIdentifier"] = request.ParentIdentifier
 	}
 
 	if !dara.IsNil(request.ShowSize) {

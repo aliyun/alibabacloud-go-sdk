@@ -190,7 +190,7 @@ type ListCertResponseBodyList struct {
 	// example:
 	//
 	// 1806958
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// example:
 	//
 	// 1ef539a8-1e1f-6b88-8c11-21cf01a203e9
@@ -264,7 +264,7 @@ func (s *ListCertResponseBodyList) GetExtra() *string {
 	return s.Extra
 }
 
-func (s *ListCertResponseBodyList) GetId() *string {
+func (s *ListCertResponseBodyList) GetId() *int64 {
 	return s.Id
 }
 
@@ -350,7 +350,7 @@ func (s *ListCertResponseBodyList) SetExtra(v string) *ListCertResponseBodyList 
 	return s
 }
 
-func (s *ListCertResponseBodyList) SetId(v string) *ListCertResponseBodyList {
+func (s *ListCertResponseBodyList) SetId(v int64) *ListCertResponseBodyList {
 	s.Id = &v
 	return s
 }

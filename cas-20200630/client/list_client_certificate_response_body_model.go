@@ -13,6 +13,8 @@ type iListClientCertificateResponseBody interface {
 	GetCertificateList() []*ListClientCertificateResponseBodyCertificateList
 	SetCurrentPage(v int32) *ListClientCertificateResponseBody
 	GetCurrentPage() *int32
+	SetMaxResults(v int32) *ListClientCertificateResponseBody
+	GetMaxResults() *int32
 	SetPageCount(v int32) *ListClientCertificateResponseBody
 	GetPageCount() *int32
 	SetRequestId(v string) *ListClientCertificateResponseBody
@@ -32,6 +34,7 @@ type ListClientCertificateResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	MaxResults  *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The total number of pages returned.
 	//
 	// example:
@@ -74,6 +77,10 @@ func (s *ListClientCertificateResponseBody) GetCurrentPage() *int32 {
 	return s.CurrentPage
 }
 
+func (s *ListClientCertificateResponseBody) GetMaxResults() *int32 {
+	return s.MaxResults
+}
+
 func (s *ListClientCertificateResponseBody) GetPageCount() *int32 {
 	return s.PageCount
 }
@@ -97,6 +104,11 @@ func (s *ListClientCertificateResponseBody) SetCertificateList(v []*ListClientCe
 
 func (s *ListClientCertificateResponseBody) SetCurrentPage(v int32) *ListClientCertificateResponseBody {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListClientCertificateResponseBody) SetMaxResults(v int32) *ListClientCertificateResponseBody {
+	s.MaxResults = &v
 	return s
 }
 
@@ -152,6 +164,7 @@ type ListClientCertificateResponseBodyCertificateList struct {
 	//
 	// RSA
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	// The issuance date of the certificate. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
@@ -189,6 +202,7 @@ type ListClientCertificateResponseBodyCertificateList struct {
 	//
 	// 365
 	Days *int32 `json:"Days,omitempty" xml:"Days,omitempty"`
+	Id   *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The unique identifier of the certificate.
 	//
 	// example:
@@ -328,6 +342,10 @@ func (s *ListClientCertificateResponseBodyCertificateList) GetAlgorithm() *strin
 	return s.Algorithm
 }
 
+func (s *ListClientCertificateResponseBodyCertificateList) GetAliasName() *string {
+	return s.AliasName
+}
+
 func (s *ListClientCertificateResponseBodyCertificateList) GetBeforeDate() *int64 {
 	return s.BeforeDate
 }
@@ -350,6 +368,10 @@ func (s *ListClientCertificateResponseBodyCertificateList) GetCustomIdentifier()
 
 func (s *ListClientCertificateResponseBodyCertificateList) GetDays() *int32 {
 	return s.Days
+}
+
+func (s *ListClientCertificateResponseBodyCertificateList) GetId() *int64 {
+	return s.Id
 }
 
 func (s *ListClientCertificateResponseBodyCertificateList) GetIdentifier() *string {
@@ -426,6 +448,11 @@ func (s *ListClientCertificateResponseBodyCertificateList) SetAlgorithm(v string
 	return s
 }
 
+func (s *ListClientCertificateResponseBodyCertificateList) SetAliasName(v string) *ListClientCertificateResponseBodyCertificateList {
+	s.AliasName = &v
+	return s
+}
+
 func (s *ListClientCertificateResponseBodyCertificateList) SetBeforeDate(v int64) *ListClientCertificateResponseBodyCertificateList {
 	s.BeforeDate = &v
 	return s
@@ -453,6 +480,11 @@ func (s *ListClientCertificateResponseBodyCertificateList) SetCustomIdentifier(v
 
 func (s *ListClientCertificateResponseBodyCertificateList) SetDays(v int32) *ListClientCertificateResponseBodyCertificateList {
 	s.Days = &v
+	return s
+}
+
+func (s *ListClientCertificateResponseBodyCertificateList) SetId(v int64) *ListClientCertificateResponseBodyCertificateList {
+	s.Id = &v
 	return s
 }
 
