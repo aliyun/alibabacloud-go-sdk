@@ -795,9 +795,21 @@ func (s *GetResultResponseBodyDataResultInfoHitResult) Validate() error {
 }
 
 type GetResultResponseBodyDataResultInfoHitResultHitResult struct {
-	Conditions *GetResultResponseBodyDataResultInfoHitResultHitResultConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Struct"`
-	Hits       *GetResultResponseBodyDataResultInfoHitResultHitResultHits       `json:"Hits,omitempty" xml:"Hits,omitempty" type:"Struct"`
-	Name       *string                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// turn
+	ArtificialRule *string                                                          `json:"ArtificialRule,omitempty" xml:"ArtificialRule,omitempty"`
+	Conditions     *GetResultResponseBodyDataResultInfoHitResultHitResultConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	FinalHitResult *string                                                    `json:"FinalHitResult,omitempty" xml:"FinalHitResult,omitempty"`
+	Hits           *GetResultResponseBodyDataResultInfoHitResultHitResultHits `json:"Hits,omitempty" xml:"Hits,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	MachineHitResult *string `json:"MachineHitResult,omitempty" xml:"MachineHitResult,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// example:
 	//
 	// 0
@@ -826,12 +838,24 @@ func (s GetResultResponseBodyDataResultInfoHitResultHitResult) GoString() string
 	return s.String()
 }
 
+func (s *GetResultResponseBodyDataResultInfoHitResultHitResult) GetArtificialRule() *string {
+	return s.ArtificialRule
+}
+
 func (s *GetResultResponseBodyDataResultInfoHitResultHitResult) GetConditions() *GetResultResponseBodyDataResultInfoHitResultHitResultConditions {
 	return s.Conditions
 }
 
+func (s *GetResultResponseBodyDataResultInfoHitResultHitResult) GetFinalHitResult() *string {
+	return s.FinalHitResult
+}
+
 func (s *GetResultResponseBodyDataResultInfoHitResultHitResult) GetHits() *GetResultResponseBodyDataResultInfoHitResultHitResultHits {
 	return s.Hits
+}
+
+func (s *GetResultResponseBodyDataResultInfoHitResultHitResult) GetMachineHitResult() *string {
+	return s.MachineHitResult
 }
 
 func (s *GetResultResponseBodyDataResultInfoHitResultHitResult) GetName() *string {
@@ -862,13 +886,28 @@ func (s *GetResultResponseBodyDataResultInfoHitResultHitResult) GetType() *strin
 	return s.Type
 }
 
+func (s *GetResultResponseBodyDataResultInfoHitResultHitResult) SetArtificialRule(v string) *GetResultResponseBodyDataResultInfoHitResultHitResult {
+	s.ArtificialRule = &v
+	return s
+}
+
 func (s *GetResultResponseBodyDataResultInfoHitResultHitResult) SetConditions(v *GetResultResponseBodyDataResultInfoHitResultHitResultConditions) *GetResultResponseBodyDataResultInfoHitResultHitResult {
 	s.Conditions = v
 	return s
 }
 
+func (s *GetResultResponseBodyDataResultInfoHitResultHitResult) SetFinalHitResult(v string) *GetResultResponseBodyDataResultInfoHitResultHitResult {
+	s.FinalHitResult = &v
+	return s
+}
+
 func (s *GetResultResponseBodyDataResultInfoHitResultHitResult) SetHits(v *GetResultResponseBodyDataResultInfoHitResultHitResultHits) *GetResultResponseBodyDataResultInfoHitResultHitResult {
 	s.Hits = v
+	return s
+}
+
+func (s *GetResultResponseBodyDataResultInfoHitResultHitResult) SetMachineHitResult(v string) *GetResultResponseBodyDataResultInfoHitResultHitResult {
+	s.MachineHitResult = &v
 	return s
 }
 

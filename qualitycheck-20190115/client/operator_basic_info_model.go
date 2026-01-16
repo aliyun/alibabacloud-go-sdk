@@ -116,59 +116,64 @@ func (s *OperatorBasicInfo) Validate() error {
 }
 
 type OperatorBasicInfoParam struct {
-	AnswerThreshold       *string              `json:"AnswerThreshold,omitempty" xml:"AnswerThreshold,omitempty"`
-	AntModelInfo          map[string]*string   `json:"AntModelInfo,omitempty" xml:"AntModelInfo,omitempty"`
-	Average               *bool                `json:"Average,omitempty" xml:"Average,omitempty"`
-	BeginType             *string              `json:"BeginType,omitempty" xml:"BeginType,omitempty"`
-	BotId                 *string              `json:"BotId,omitempty" xml:"BotId,omitempty"`
-	CaseSensitive         *bool                `json:"Case_sensitive,omitempty" xml:"Case_sensitive,omitempty"`
-	CategoryPathCode      *string              `json:"CategoryPathCode,omitempty" xml:"CategoryPathCode,omitempty"`
-	CheckFirstSentence    *bool                `json:"CheckFirstSentence,omitempty" xml:"CheckFirstSentence,omitempty"`
-	CheckType             *int32               `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	CompareOperator       *string              `json:"CompareOperator,omitempty" xml:"CompareOperator,omitempty"`
-	ContextChatMatch      *bool                `json:"ContextChatMatch,omitempty" xml:"ContextChatMatch,omitempty"`
-	CustomerParam         *JudgeNodeMetaDesc   `json:"CustomerParam,omitempty" xml:"CustomerParam,omitempty"`
-	DelayTime             *int32               `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
-	DifferentRole         *bool                `json:"Different_role,omitempty" xml:"Different_role,omitempty"`
-	EndType               *string              `json:"EndType,omitempty" xml:"EndType,omitempty"`
-	Excludes              []*string            `json:"Excludes,omitempty" xml:"Excludes,omitempty" type:"Repeated"`
-	From                  *int32               `json:"From,omitempty" xml:"From,omitempty"`
-	FromEnd               *bool                `json:"From_end,omitempty" xml:"From_end,omitempty"`
-	HitTime               *int32               `json:"Hit_time,omitempty" xml:"Hit_time,omitempty"`
-	InSentence            *bool                `json:"In_sentence,omitempty" xml:"In_sentence,omitempty"`
-	Interval              *int32               `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	IntervalEnd           *int32               `json:"IntervalEnd,omitempty" xml:"IntervalEnd,omitempty"`
-	KeywordExtension      *int32               `json:"KeywordExtension,omitempty" xml:"KeywordExtension,omitempty"`
-	KeywordMatchSize      *int32               `json:"KeywordMatchSize,omitempty" xml:"KeywordMatchSize,omitempty"`
-	Keywords              []*string            `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
-	KnowledgeInfo         *string              `json:"KnowledgeInfo,omitempty" xml:"KnowledgeInfo,omitempty"`
-	KnowledgeSentenceNum  *int32               `json:"KnowledgeSentenceNum,omitempty" xml:"KnowledgeSentenceNum,omitempty"`
-	KnowledgeTargetId     *string              `json:"KnowledgeTargetId,omitempty" xml:"KnowledgeTargetId,omitempty"`
-	KnowledgeTargetName   *string              `json:"KnowledgeTargetName,omitempty" xml:"KnowledgeTargetName,omitempty"`
-	KnowledgeTargetType   *int32               `json:"KnowledgeTargetType,omitempty" xml:"KnowledgeTargetType,omitempty"`
-	LgfSentences          []*string            `json:"LgfSentences,omitempty" xml:"LgfSentences,omitempty" type:"Repeated"`
-	MaxEmotionChangeValue *int32               `json:"MaxEmotionChangeValue,omitempty" xml:"MaxEmotionChangeValue,omitempty"`
-	MinWordSize           *int32               `json:"MinWordSize,omitempty" xml:"MinWordSize,omitempty"`
-	NearDialogue          *bool                `json:"Near_dialogue,omitempty" xml:"Near_dialogue,omitempty"`
-	NotRegex              *string              `json:"NotRegex,omitempty" xml:"NotRegex,omitempty"`
-	Phrase                *string              `json:"Phrase,omitempty" xml:"Phrase,omitempty"`
-	Pkey                  *string              `json:"Pkey,omitempty" xml:"Pkey,omitempty"`
-	PoutputType           *int32               `json:"Poutput_type,omitempty" xml:"Poutput_type,omitempty"`
-	Pvalues               []*string            `json:"Pvalues,omitempty" xml:"Pvalues,omitempty" type:"Repeated"`
-	QuestionThreshold     *string              `json:"QuestionThreshold,omitempty" xml:"QuestionThreshold,omitempty"`
-	References            []*string            `json:"References,omitempty" xml:"References,omitempty" type:"Repeated"`
-	Regex                 *string              `json:"Regex,omitempty" xml:"Regex,omitempty"`
-	RoleId                *int32               `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	Score                 *int32               `json:"Score,omitempty" xml:"Score,omitempty"`
-	SimilarityThreshold   *float64             `json:"Similarity_threshold,omitempty" xml:"Similarity_threshold,omitempty"`
-	SimilarlySentences    []*string            `json:"SimilarlySentences,omitempty" xml:"SimilarlySentences,omitempty" type:"Repeated"`
-	Synonyms              map[string][]*string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty"`
-	Target                *int32               `json:"Target,omitempty" xml:"Target,omitempty"`
-	TargetRole            *string              `json:"Target_role,omitempty" xml:"Target_role,omitempty"`
-	Threshold             *float32             `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	UseEasAlgorithm       *bool                `json:"UseEasAlgorithm,omitempty" xml:"UseEasAlgorithm,omitempty"`
-	Velocity              *float64             `json:"Velocity,omitempty" xml:"Velocity,omitempty"`
-	VelocityInMint        *int32               `json:"VelocityInMint,omitempty" xml:"VelocityInMint,omitempty"`
+	AnswerThreshold       *string                             `json:"AnswerThreshold,omitempty" xml:"AnswerThreshold,omitempty"`
+	AntModelInfo          map[string]*string                  `json:"AntModelInfo,omitempty" xml:"AntModelInfo,omitempty"`
+	Average               *bool                               `json:"Average,omitempty" xml:"Average,omitempty"`
+	BeginType             *string                             `json:"BeginType,omitempty" xml:"BeginType,omitempty"`
+	BotId                 *string                             `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	CaseSensitive         *bool                               `json:"Case_sensitive,omitempty" xml:"Case_sensitive,omitempty"`
+	CategoryPathCode      *string                             `json:"CategoryPathCode,omitempty" xml:"CategoryPathCode,omitempty"`
+	CheckFirstSentence    *bool                               `json:"CheckFirstSentence,omitempty" xml:"CheckFirstSentence,omitempty"`
+	CheckType             *int32                              `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	CompareOperator       *string                             `json:"CompareOperator,omitempty" xml:"CompareOperator,omitempty"`
+	ContextChatMatch      *bool                               `json:"ContextChatMatch,omitempty" xml:"ContextChatMatch,omitempty"`
+	CustomerParam         *JudgeNodeMetaDesc                  `json:"CustomerParam,omitempty" xml:"CustomerParam,omitempty"`
+	DelayTime             *int32                              `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	DifferentRole         *bool                               `json:"Different_role,omitempty" xml:"Different_role,omitempty"`
+	Dimensions            []*OperatorBasicInfoParamDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	EndType               *string                             `json:"EndType,omitempty" xml:"EndType,omitempty"`
+	Excludes              []*string                           `json:"Excludes,omitempty" xml:"Excludes,omitempty" type:"Repeated"`
+	From                  *int32                              `json:"From,omitempty" xml:"From,omitempty"`
+	FromEnd               *bool                               `json:"From_end,omitempty" xml:"From_end,omitempty"`
+	HitCondition          *string                             `json:"HitCondition,omitempty" xml:"HitCondition,omitempty"`
+	HitTime               *int32                              `json:"Hit_time,omitempty" xml:"Hit_time,omitempty"`
+	InSentence            *bool                               `json:"In_sentence,omitempty" xml:"In_sentence,omitempty"`
+	Interval              *int32                              `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IntervalEnd           *int32                              `json:"IntervalEnd,omitempty" xml:"IntervalEnd,omitempty"`
+	KeywordExtension      *int32                              `json:"KeywordExtension,omitempty" xml:"KeywordExtension,omitempty"`
+	KeywordMatchSize      *int32                              `json:"KeywordMatchSize,omitempty" xml:"KeywordMatchSize,omitempty"`
+	Keywords              []*string                           `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
+	KnowledgeInfo         *string                             `json:"KnowledgeInfo,omitempty" xml:"KnowledgeInfo,omitempty"`
+	KnowledgeSentenceNum  *int32                              `json:"KnowledgeSentenceNum,omitempty" xml:"KnowledgeSentenceNum,omitempty"`
+	KnowledgeTargetId     *string                             `json:"KnowledgeTargetId,omitempty" xml:"KnowledgeTargetId,omitempty"`
+	KnowledgeTargetName   *string                             `json:"KnowledgeTargetName,omitempty" xml:"KnowledgeTargetName,omitempty"`
+	KnowledgeTargetType   *int32                              `json:"KnowledgeTargetType,omitempty" xml:"KnowledgeTargetType,omitempty"`
+	Knowledges            *string                             `json:"Knowledges,omitempty" xml:"Knowledges,omitempty"`
+	LgfSentences          []*string                           `json:"LgfSentences,omitempty" xml:"LgfSentences,omitempty" type:"Repeated"`
+	LlmModelCode          *string                             `json:"LlmModelCode,omitempty" xml:"LlmModelCode,omitempty"`
+	MaxEmotionChangeValue *int32                              `json:"MaxEmotionChangeValue,omitempty" xml:"MaxEmotionChangeValue,omitempty"`
+	MinWordSize           *int32                              `json:"MinWordSize,omitempty" xml:"MinWordSize,omitempty"`
+	NearDialogue          *bool                               `json:"Near_dialogue,omitempty" xml:"Near_dialogue,omitempty"`
+	NotRegex              *string                             `json:"NotRegex,omitempty" xml:"NotRegex,omitempty"`
+	Phrase                *string                             `json:"Phrase,omitempty" xml:"Phrase,omitempty"`
+	Pkey                  *string                             `json:"Pkey,omitempty" xml:"Pkey,omitempty"`
+	PoutputType           *int32                              `json:"Poutput_type,omitempty" xml:"Poutput_type,omitempty"`
+	Pvalues               []*string                           `json:"Pvalues,omitempty" xml:"Pvalues,omitempty" type:"Repeated"`
+	QuestionThreshold     *string                             `json:"QuestionThreshold,omitempty" xml:"QuestionThreshold,omitempty"`
+	References            []*string                           `json:"References,omitempty" xml:"References,omitempty" type:"Repeated"`
+	Regex                 *string                             `json:"Regex,omitempty" xml:"Regex,omitempty"`
+	RoleId                *int32                              `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	SceneName             *string                             `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	Score                 *int32                              `json:"Score,omitempty" xml:"Score,omitempty"`
+	SimilarityThreshold   *float64                            `json:"Similarity_threshold,omitempty" xml:"Similarity_threshold,omitempty"`
+	SimilarlySentences    []*string                           `json:"SimilarlySentences,omitempty" xml:"SimilarlySentences,omitempty" type:"Repeated"`
+	Synonyms              map[string][]*string                `json:"Synonyms,omitempty" xml:"Synonyms,omitempty"`
+	Target                *int32                              `json:"Target,omitempty" xml:"Target,omitempty"`
+	TargetRole            *string                             `json:"Target_role,omitempty" xml:"Target_role,omitempty"`
+	Threshold             *float32                            `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	UseEasAlgorithm       *bool                               `json:"UseEasAlgorithm,omitempty" xml:"UseEasAlgorithm,omitempty"`
+	Velocity              *float64                            `json:"Velocity,omitempty" xml:"Velocity,omitempty"`
+	VelocityInMint        *int32                              `json:"VelocityInMint,omitempty" xml:"VelocityInMint,omitempty"`
 }
 
 func (s OperatorBasicInfoParam) String() string {
@@ -235,6 +240,10 @@ func (s *OperatorBasicInfoParam) GetDifferentRole() *bool {
 	return s.DifferentRole
 }
 
+func (s *OperatorBasicInfoParam) GetDimensions() []*OperatorBasicInfoParamDimensions {
+	return s.Dimensions
+}
+
 func (s *OperatorBasicInfoParam) GetEndType() *string {
 	return s.EndType
 }
@@ -249,6 +258,10 @@ func (s *OperatorBasicInfoParam) GetFrom() *int32 {
 
 func (s *OperatorBasicInfoParam) GetFromEnd() *bool {
 	return s.FromEnd
+}
+
+func (s *OperatorBasicInfoParam) GetHitCondition() *string {
+	return s.HitCondition
 }
 
 func (s *OperatorBasicInfoParam) GetHitTime() *int32 {
@@ -299,8 +312,16 @@ func (s *OperatorBasicInfoParam) GetKnowledgeTargetType() *int32 {
 	return s.KnowledgeTargetType
 }
 
+func (s *OperatorBasicInfoParam) GetKnowledges() *string {
+	return s.Knowledges
+}
+
 func (s *OperatorBasicInfoParam) GetLgfSentences() []*string {
 	return s.LgfSentences
+}
+
+func (s *OperatorBasicInfoParam) GetLlmModelCode() *string {
+	return s.LlmModelCode
 }
 
 func (s *OperatorBasicInfoParam) GetMaxEmotionChangeValue() *int32 {
@@ -349,6 +370,10 @@ func (s *OperatorBasicInfoParam) GetRegex() *string {
 
 func (s *OperatorBasicInfoParam) GetRoleId() *int32 {
 	return s.RoleId
+}
+
+func (s *OperatorBasicInfoParam) GetSceneName() *string {
+	return s.SceneName
 }
 
 func (s *OperatorBasicInfoParam) GetScore() *int32 {
@@ -461,6 +486,11 @@ func (s *OperatorBasicInfoParam) SetDifferentRole(v bool) *OperatorBasicInfoPara
 	return s
 }
 
+func (s *OperatorBasicInfoParam) SetDimensions(v []*OperatorBasicInfoParamDimensions) *OperatorBasicInfoParam {
+	s.Dimensions = v
+	return s
+}
+
 func (s *OperatorBasicInfoParam) SetEndType(v string) *OperatorBasicInfoParam {
 	s.EndType = &v
 	return s
@@ -478,6 +508,11 @@ func (s *OperatorBasicInfoParam) SetFrom(v int32) *OperatorBasicInfoParam {
 
 func (s *OperatorBasicInfoParam) SetFromEnd(v bool) *OperatorBasicInfoParam {
 	s.FromEnd = &v
+	return s
+}
+
+func (s *OperatorBasicInfoParam) SetHitCondition(v string) *OperatorBasicInfoParam {
+	s.HitCondition = &v
 	return s
 }
 
@@ -541,8 +576,18 @@ func (s *OperatorBasicInfoParam) SetKnowledgeTargetType(v int32) *OperatorBasicI
 	return s
 }
 
+func (s *OperatorBasicInfoParam) SetKnowledges(v string) *OperatorBasicInfoParam {
+	s.Knowledges = &v
+	return s
+}
+
 func (s *OperatorBasicInfoParam) SetLgfSentences(v []*string) *OperatorBasicInfoParam {
 	s.LgfSentences = v
+	return s
+}
+
+func (s *OperatorBasicInfoParam) SetLlmModelCode(v string) *OperatorBasicInfoParam {
+	s.LlmModelCode = &v
 	return s
 }
 
@@ -606,6 +651,11 @@ func (s *OperatorBasicInfoParam) SetRoleId(v int32) *OperatorBasicInfoParam {
 	return s
 }
 
+func (s *OperatorBasicInfoParam) SetSceneName(v string) *OperatorBasicInfoParam {
+	s.SceneName = &v
+	return s
+}
+
 func (s *OperatorBasicInfoParam) SetScore(v int32) *OperatorBasicInfoParam {
 	s.Score = &v
 	return s
@@ -662,5 +712,69 @@ func (s *OperatorBasicInfoParam) Validate() error {
 			return err
 		}
 	}
+	if s.Dimensions != nil {
+		for _, item := range s.Dimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
+}
+
+type OperatorBasicInfoParamDimensions struct {
+	Desc             *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Dimension        *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	ExcludeCondition *string `json:"ExcludeCondition,omitempty" xml:"ExcludeCondition,omitempty"`
+	IncludeCondition *string `json:"IncludeCondition,omitempty" xml:"IncludeCondition,omitempty"`
+}
+
+func (s OperatorBasicInfoParamDimensions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s OperatorBasicInfoParamDimensions) GoString() string {
+	return s.String()
+}
+
+func (s *OperatorBasicInfoParamDimensions) GetDesc() *string {
+	return s.Desc
+}
+
+func (s *OperatorBasicInfoParamDimensions) GetDimension() *string {
+	return s.Dimension
+}
+
+func (s *OperatorBasicInfoParamDimensions) GetExcludeCondition() *string {
+	return s.ExcludeCondition
+}
+
+func (s *OperatorBasicInfoParamDimensions) GetIncludeCondition() *string {
+	return s.IncludeCondition
+}
+
+func (s *OperatorBasicInfoParamDimensions) SetDesc(v string) *OperatorBasicInfoParamDimensions {
+	s.Desc = &v
+	return s
+}
+
+func (s *OperatorBasicInfoParamDimensions) SetDimension(v string) *OperatorBasicInfoParamDimensions {
+	s.Dimension = &v
+	return s
+}
+
+func (s *OperatorBasicInfoParamDimensions) SetExcludeCondition(v string) *OperatorBasicInfoParamDimensions {
+	s.ExcludeCondition = &v
+	return s
+}
+
+func (s *OperatorBasicInfoParamDimensions) SetIncludeCondition(v string) *OperatorBasicInfoParamDimensions {
+	s.IncludeCondition = &v
+	return s
+}
+
+func (s *OperatorBasicInfoParamDimensions) Validate() error {
+	return dara.Validate(s)
 }

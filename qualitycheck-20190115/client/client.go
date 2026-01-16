@@ -2539,6 +2539,10 @@ func (client *Client) GetQualityCheckScheme(request *GetQualityCheckSchemeReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取质检结果
+//
 // @param request - GetResultRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2583,6 +2587,10 @@ func (client *Client) GetResultWithOptions(request *GetResultRequest, runtime *d
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取质检结果
+//
 // @param request - GetResultRequest
 //
 // @return GetResultResponse

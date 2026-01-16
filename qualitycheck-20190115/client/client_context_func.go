@@ -1849,6 +1849,10 @@ func (client *Client) GetQualityCheckSchemeWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取质检结果
+//
 // @param request - GetResultRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
