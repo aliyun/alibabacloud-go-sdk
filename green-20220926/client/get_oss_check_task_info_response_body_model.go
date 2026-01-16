@@ -266,6 +266,7 @@ func (s *GetOssCheckTaskInfoResponseBody) Validate() error {
 }
 
 type GetOssCheckTaskInfoResponseBodyConfig struct {
+	BucketPrefixFilterConfig map[string]*ConfigBucketPrefixFilterConfigValue `json:"BucketPrefixFilterConfig,omitempty" xml:"BucketPrefixFilterConfig,omitempty"`
 	// example:
 	//
 	// 188
@@ -362,6 +363,10 @@ func (s GetOssCheckTaskInfoResponseBodyConfig) GoString() string {
 	return s.String()
 }
 
+func (s *GetOssCheckTaskInfoResponseBodyConfig) GetBucketPrefixFilterConfig() map[string]*ConfigBucketPrefixFilterConfigValue {
+	return s.BucketPrefixFilterConfig
+}
+
 func (s *GetOssCheckTaskInfoResponseBodyConfig) GetCallbackId() *int64 {
 	return s.CallbackId
 }
@@ -456,6 +461,11 @@ func (s *GetOssCheckTaskInfoResponseBodyConfig) GetTaskCycle() *int32 {
 
 func (s *GetOssCheckTaskInfoResponseBodyConfig) GetUserFreezeConfig() *GetOssCheckTaskInfoResponseBodyConfigUserFreezeConfig {
 	return s.UserFreezeConfig
+}
+
+func (s *GetOssCheckTaskInfoResponseBodyConfig) SetBucketPrefixFilterConfig(v map[string]*ConfigBucketPrefixFilterConfigValue) *GetOssCheckTaskInfoResponseBodyConfig {
+	s.BucketPrefixFilterConfig = v
+	return s
 }
 
 func (s *GetOssCheckTaskInfoResponseBodyConfig) SetCallbackId(v int64) *GetOssCheckTaskInfoResponseBodyConfig {

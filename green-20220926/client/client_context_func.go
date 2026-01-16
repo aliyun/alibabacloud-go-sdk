@@ -473,6 +473,10 @@ func (client *Client) CreatStockOssCheckTaskWithContext(ctx context.Context, req
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BucketPrefixFilterConfig) {
+		query["BucketPrefixFilterConfig"] = request.BucketPrefixFilterConfig
+	}
+
 	if !dara.IsNil(request.Buckets) {
 		query["Buckets"] = request.Buckets
 	}
@@ -810,6 +814,10 @@ func (client *Client) CreatePreCheckWithContext(ctx context.Context, request *Cr
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.BucketPrefixFilterConfig) {
+		body["BucketPrefixFilterConfig"] = request.BucketPrefixFilterConfig
+	}
+
 	if !dara.IsNil(request.Buckets) {
 		body["Buckets"] = request.Buckets
 	}

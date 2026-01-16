@@ -9,6 +9,8 @@ type iCreatStockOssCheckTaskRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBucketPrefixFilterConfig(v string) *CreatStockOssCheckTaskRequest
+	GetBucketPrefixFilterConfig() *string
 	SetBuckets(v string) *CreatStockOssCheckTaskRequest
 	GetBuckets() *string
 	SetCallbackId(v string) *CreatStockOssCheckTaskRequest
@@ -68,6 +70,7 @@ type iCreatStockOssCheckTaskRequest interface {
 }
 
 type CreatStockOssCheckTaskRequest struct {
+	BucketPrefixFilterConfig *string `json:"BucketPrefixFilterConfig,omitempty" xml:"BucketPrefixFilterConfig,omitempty"`
 	// OSS buckets
 	//
 	// example:
@@ -246,6 +249,10 @@ func (s CreatStockOssCheckTaskRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreatStockOssCheckTaskRequest) GetBucketPrefixFilterConfig() *string {
+	return s.BucketPrefixFilterConfig
+}
+
 func (s *CreatStockOssCheckTaskRequest) GetBuckets() *string {
 	return s.Buckets
 }
@@ -356,6 +363,11 @@ func (s *CreatStockOssCheckTaskRequest) GetTaskName() *string {
 
 func (s *CreatStockOssCheckTaskRequest) GetTaskType() *string {
 	return s.TaskType
+}
+
+func (s *CreatStockOssCheckTaskRequest) SetBucketPrefixFilterConfig(v string) *CreatStockOssCheckTaskRequest {
+	s.BucketPrefixFilterConfig = &v
+	return s
 }
 
 func (s *CreatStockOssCheckTaskRequest) SetBuckets(v string) *CreatStockOssCheckTaskRequest {

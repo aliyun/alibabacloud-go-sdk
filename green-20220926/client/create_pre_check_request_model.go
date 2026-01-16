@@ -9,6 +9,8 @@ type iCreatePreCheckRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBucketPrefixFilterConfig(v string) *CreatePreCheckRequest
+	GetBucketPrefixFilterConfig() *string
 	SetBuckets(v string) *CreatePreCheckRequest
 	GetBuckets() *string
 	SetDistinctHistoryTasks(v bool) *CreatePreCheckRequest
@@ -40,6 +42,7 @@ type iCreatePreCheckRequest interface {
 }
 
 type CreatePreCheckRequest struct {
+	BucketPrefixFilterConfig *string `json:"BucketPrefixFilterConfig,omitempty" xml:"BucketPrefixFilterConfig,omitempty"`
 	// Buckets.
 	//
 	// example:
@@ -134,6 +137,10 @@ func (s CreatePreCheckRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreatePreCheckRequest) GetBucketPrefixFilterConfig() *string {
+	return s.BucketPrefixFilterConfig
+}
+
 func (s *CreatePreCheckRequest) GetBuckets() *string {
 	return s.Buckets
 }
@@ -188,6 +195,11 @@ func (s *CreatePreCheckRequest) GetStartTime() *string {
 
 func (s *CreatePreCheckRequest) GetTaskName() *string {
 	return s.TaskName
+}
+
+func (s *CreatePreCheckRequest) SetBucketPrefixFilterConfig(v string) *CreatePreCheckRequest {
+	s.BucketPrefixFilterConfig = &v
+	return s
 }
 
 func (s *CreatePreCheckRequest) SetBuckets(v string) *CreatePreCheckRequest {
