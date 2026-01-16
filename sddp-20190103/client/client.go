@@ -592,6 +592,10 @@ func (client *Client) CreateSlrRoleWithOptions(request *CreateSlrRoleRequest, ru
 		query["Lang"] = request.Lang
 	}
 
+	if !dara.IsNil(request.ServiceName) {
+		query["ServiceName"] = request.ServiceName
+	}
+
 	if !dara.IsNil(request.SourceIp) {
 		query["SourceIp"] = request.SourceIp
 	}

@@ -67,7 +67,8 @@ type DescribeUserStatusResponseBodyUserStatus struct {
 	// example:
 	//
 	// yourAccessKeyID
-	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	AssetRoleAuthed *bool   `json:"AssetRoleAuthed,omitempty" xml:"AssetRoleAuthed,omitempty"`
 	// Indicates whether the SQL Explorer feature can be disabled. Valid values:
 	//
 	// 	- **true**: yes
@@ -232,6 +233,10 @@ func (s *DescribeUserStatusResponseBodyUserStatus) GetAccessKeyId() *string {
 	return s.AccessKeyId
 }
 
+func (s *DescribeUserStatusResponseBodyUserStatus) GetAssetRoleAuthed() *bool {
+	return s.AssetRoleAuthed
+}
+
 func (s *DescribeUserStatusResponseBodyUserStatus) GetAuditClosable() *bool {
 	return s.AuditClosable
 }
@@ -310,6 +315,11 @@ func (s *DescribeUserStatusResponseBodyUserStatus) GetUseOssSize() *int64 {
 
 func (s *DescribeUserStatusResponseBodyUserStatus) SetAccessKeyId(v string) *DescribeUserStatusResponseBodyUserStatus {
 	s.AccessKeyId = &v
+	return s
+}
+
+func (s *DescribeUserStatusResponseBodyUserStatus) SetAssetRoleAuthed(v bool) *DescribeUserStatusResponseBodyUserStatus {
+	s.AssetRoleAuthed = &v
 	return s
 }
 

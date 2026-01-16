@@ -13,6 +13,8 @@ type iCreateSlrRoleRequest interface {
 	GetFeatureType() *int32
 	SetLang(v string) *CreateSlrRoleRequest
 	GetLang() *string
+	SetServiceName(v string) *CreateSlrRoleRequest
+	GetServiceName() *string
 	SetSourceIp(v string) *CreateSlrRoleRequest
 	GetSourceIp() *string
 }
@@ -33,7 +35,8 @@ type CreateSlrRoleRequest struct {
 	// example:
 	//
 	// zh_cn
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// This parameter is deprecated.
 	//
 	// example:
@@ -58,6 +61,10 @@ func (s *CreateSlrRoleRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *CreateSlrRoleRequest) GetServiceName() *string {
+	return s.ServiceName
+}
+
 func (s *CreateSlrRoleRequest) GetSourceIp() *string {
 	return s.SourceIp
 }
@@ -69,6 +76,11 @@ func (s *CreateSlrRoleRequest) SetFeatureType(v int32) *CreateSlrRoleRequest {
 
 func (s *CreateSlrRoleRequest) SetLang(v string) *CreateSlrRoleRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *CreateSlrRoleRequest) SetServiceName(v string) *CreateSlrRoleRequest {
+	s.ServiceName = &v
 	return s
 }
 
