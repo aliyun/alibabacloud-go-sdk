@@ -49,8 +49,12 @@ type iAppInstanceAggregate interface {
 	GetIconUrl() *string
 	SetName(v string) *AppInstanceAggregate
 	GetName() *string
+	SetPartnerDetail(v *AppInstanceAggregatePartnerDetail) *AppInstanceAggregate
+	GetPartnerDetail() *AppInstanceAggregatePartnerDetail
 	SetProfile(v *AppInstanceProfile) *AppInstanceAggregate
 	GetProfile() *AppInstanceProfile
+	SetResourceGroupId(v string) *AppInstanceAggregate
+	GetResourceGroupId() *string
 	SetSiteHost(v string) *AppInstanceAggregate
 	GetSiteHost() *string
 	SetSlug(v string) *AppInstanceAggregate
@@ -63,6 +67,8 @@ type iAppInstanceAggregate interface {
 	GetStatus() *string
 	SetStatusText(v string) *AppInstanceAggregate
 	GetStatusText() *string
+	SetTags(v []*AppInstanceAggregateTags) *AppInstanceAggregate
+	GetTags() []*AppInstanceAggregateTags
 	SetThumbnailUrl(v string) *AppInstanceAggregate
 	GetThumbnailUrl() *string
 	SetUserId(v string) *AppInstanceAggregate
@@ -70,36 +76,39 @@ type iAppInstanceAggregate interface {
 }
 
 type AppInstanceAggregate struct {
-	AiStaffList         []*AppAiStaff          `json:"AiStaffList,omitempty" xml:"AiStaffList,omitempty" type:"Repeated"`
-	AppOperationAddress *AppOperationAddress   `json:"AppOperationAddress,omitempty" xml:"AppOperationAddress,omitempty"`
-	AppServiceList      []*AppServiceAggregate `json:"AppServiceList,omitempty" xml:"AppServiceList,omitempty" type:"Repeated"`
-	AppSubType          *string                `json:"AppSubType,omitempty" xml:"AppSubType,omitempty"`
-	AppType             *string                `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	BizId               *string                `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BuildType           *string                `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
-	CreateTime          *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Deleted             *int32                 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	Description         *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	DesignSpecBizId     *string                `json:"DesignSpecBizId,omitempty" xml:"DesignSpecBizId,omitempty"`
-	DesignSpecId        *string                `json:"DesignSpecId,omitempty" xml:"DesignSpecId,omitempty"`
-	Domain              *string                `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	EndTime             *string                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EspBizId            *string                `json:"EspBizId,omitempty" xml:"EspBizId,omitempty"`
-	GmtDelete           *string                `json:"GmtDelete,omitempty" xml:"GmtDelete,omitempty"`
-	GmtModified         *string                `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	GmtPublish          *string                `json:"GmtPublish,omitempty" xml:"GmtPublish,omitempty"`
-	IconUrl             *string                `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
-	Name                *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Profile             *AppInstanceProfile    `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	SiteHost            *string                `json:"SiteHost,omitempty" xml:"SiteHost,omitempty"`
-	Slug                *string                `json:"Slug,omitempty" xml:"Slug,omitempty"`
-	SourceType          *string                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	StartTime           *string                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	AiStaffList         []*AppAiStaff                      `json:"AiStaffList,omitempty" xml:"AiStaffList,omitempty" type:"Repeated"`
+	AppOperationAddress *AppOperationAddress               `json:"AppOperationAddress,omitempty" xml:"AppOperationAddress,omitempty"`
+	AppServiceList      []*AppServiceAggregate             `json:"AppServiceList,omitempty" xml:"AppServiceList,omitempty" type:"Repeated"`
+	AppSubType          *string                            `json:"AppSubType,omitempty" xml:"AppSubType,omitempty"`
+	AppType             *string                            `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	BizId               *string                            `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BuildType           *string                            `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
+	CreateTime          *string                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Deleted             *int32                             `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	Description         *string                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	DesignSpecBizId     *string                            `json:"DesignSpecBizId,omitempty" xml:"DesignSpecBizId,omitempty"`
+	DesignSpecId        *string                            `json:"DesignSpecId,omitempty" xml:"DesignSpecId,omitempty"`
+	Domain              *string                            `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	EndTime             *string                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EspBizId            *string                            `json:"EspBizId,omitempty" xml:"EspBizId,omitempty"`
+	GmtDelete           *string                            `json:"GmtDelete,omitempty" xml:"GmtDelete,omitempty"`
+	GmtModified         *string                            `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtPublish          *string                            `json:"GmtPublish,omitempty" xml:"GmtPublish,omitempty"`
+	IconUrl             *string                            `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
+	Name                *string                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	PartnerDetail       *AppInstanceAggregatePartnerDetail `json:"PartnerDetail,omitempty" xml:"PartnerDetail,omitempty" type:"Struct"`
+	Profile             *AppInstanceProfile                `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	ResourceGroupId     *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SiteHost            *string                            `json:"SiteHost,omitempty" xml:"SiteHost,omitempty"`
+	Slug                *string                            `json:"Slug,omitempty" xml:"Slug,omitempty"`
+	SourceType          *string                            `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	StartTime           *string                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// trial,draft,live,refunded,expired,released
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusText   *string `json:"StatusText,omitempty" xml:"StatusText,omitempty"`
-	ThumbnailUrl *string `json:"ThumbnailUrl,omitempty" xml:"ThumbnailUrl,omitempty"`
-	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Status       *string                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusText   *string                     `json:"StatusText,omitempty" xml:"StatusText,omitempty"`
+	Tags         []*AppInstanceAggregateTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ThumbnailUrl *string                     `json:"ThumbnailUrl,omitempty" xml:"ThumbnailUrl,omitempty"`
+	UserId       *string                     `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s AppInstanceAggregate) String() string {
@@ -190,8 +199,16 @@ func (s *AppInstanceAggregate) GetName() *string {
 	return s.Name
 }
 
+func (s *AppInstanceAggregate) GetPartnerDetail() *AppInstanceAggregatePartnerDetail {
+	return s.PartnerDetail
+}
+
 func (s *AppInstanceAggregate) GetProfile() *AppInstanceProfile {
 	return s.Profile
+}
+
+func (s *AppInstanceAggregate) GetResourceGroupId() *string {
+	return s.ResourceGroupId
 }
 
 func (s *AppInstanceAggregate) GetSiteHost() *string {
@@ -216,6 +233,10 @@ func (s *AppInstanceAggregate) GetStatus() *string {
 
 func (s *AppInstanceAggregate) GetStatusText() *string {
 	return s.StatusText
+}
+
+func (s *AppInstanceAggregate) GetTags() []*AppInstanceAggregateTags {
+	return s.Tags
 }
 
 func (s *AppInstanceAggregate) GetThumbnailUrl() *string {
@@ -326,8 +347,18 @@ func (s *AppInstanceAggregate) SetName(v string) *AppInstanceAggregate {
 	return s
 }
 
+func (s *AppInstanceAggregate) SetPartnerDetail(v *AppInstanceAggregatePartnerDetail) *AppInstanceAggregate {
+	s.PartnerDetail = v
+	return s
+}
+
 func (s *AppInstanceAggregate) SetProfile(v *AppInstanceProfile) *AppInstanceAggregate {
 	s.Profile = v
+	return s
+}
+
+func (s *AppInstanceAggregate) SetResourceGroupId(v string) *AppInstanceAggregate {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -358,6 +389,11 @@ func (s *AppInstanceAggregate) SetStatus(v string) *AppInstanceAggregate {
 
 func (s *AppInstanceAggregate) SetStatusText(v string) *AppInstanceAggregate {
 	s.StatusText = &v
+	return s
+}
+
+func (s *AppInstanceAggregate) SetTags(v []*AppInstanceAggregateTags) *AppInstanceAggregate {
+	s.Tags = v
 	return s
 }
 
@@ -395,10 +431,204 @@ func (s *AppInstanceAggregate) Validate() error {
 			}
 		}
 	}
+	if s.PartnerDetail != nil {
+		if err := s.PartnerDetail.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Profile != nil {
 		if err := s.Profile.Validate(); err != nil {
 			return err
 		}
 	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
+}
+
+type AppInstanceAggregatePartnerDetail struct {
+	BindData  *AppInstanceAggregatePartnerDetailBindData `json:"BindData,omitempty" xml:"BindData,omitempty" type:"Struct"`
+	PartnerId *string                                    `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
+	Status    *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s AppInstanceAggregatePartnerDetail) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AppInstanceAggregatePartnerDetail) GoString() string {
+	return s.String()
+}
+
+func (s *AppInstanceAggregatePartnerDetail) GetBindData() *AppInstanceAggregatePartnerDetailBindData {
+	return s.BindData
+}
+
+func (s *AppInstanceAggregatePartnerDetail) GetPartnerId() *string {
+	return s.PartnerId
+}
+
+func (s *AppInstanceAggregatePartnerDetail) GetStatus() *string {
+	return s.Status
+}
+
+func (s *AppInstanceAggregatePartnerDetail) SetBindData(v *AppInstanceAggregatePartnerDetailBindData) *AppInstanceAggregatePartnerDetail {
+	s.BindData = v
+	return s
+}
+
+func (s *AppInstanceAggregatePartnerDetail) SetPartnerId(v string) *AppInstanceAggregatePartnerDetail {
+	s.PartnerId = &v
+	return s
+}
+
+func (s *AppInstanceAggregatePartnerDetail) SetStatus(v string) *AppInstanceAggregatePartnerDetail {
+	s.Status = &v
+	return s
+}
+
+func (s *AppInstanceAggregatePartnerDetail) Validate() error {
+	if s.BindData != nil {
+		if err := s.BindData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type AppInstanceAggregatePartnerDetailBindData struct {
+	BizId       *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	ParentPk    *string `json:"ParentPk,omitempty" xml:"ParentPk,omitempty"`
+	PartnerId   *string `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s AppInstanceAggregatePartnerDetailBindData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AppInstanceAggregatePartnerDetailBindData) GoString() string {
+	return s.String()
+}
+
+func (s *AppInstanceAggregatePartnerDetailBindData) GetBizId() *string {
+	return s.BizId
+}
+
+func (s *AppInstanceAggregatePartnerDetailBindData) GetGmtCreate() *string {
+	return s.GmtCreate
+}
+
+func (s *AppInstanceAggregatePartnerDetailBindData) GetGmtModified() *string {
+	return s.GmtModified
+}
+
+func (s *AppInstanceAggregatePartnerDetailBindData) GetId() *string {
+	return s.Id
+}
+
+func (s *AppInstanceAggregatePartnerDetailBindData) GetMobile() *string {
+	return s.Mobile
+}
+
+func (s *AppInstanceAggregatePartnerDetailBindData) GetParentPk() *string {
+	return s.ParentPk
+}
+
+func (s *AppInstanceAggregatePartnerDetailBindData) GetPartnerId() *string {
+	return s.PartnerId
+}
+
+func (s *AppInstanceAggregatePartnerDetailBindData) GetUserId() *string {
+	return s.UserId
+}
+
+func (s *AppInstanceAggregatePartnerDetailBindData) SetBizId(v string) *AppInstanceAggregatePartnerDetailBindData {
+	s.BizId = &v
+	return s
+}
+
+func (s *AppInstanceAggregatePartnerDetailBindData) SetGmtCreate(v string) *AppInstanceAggregatePartnerDetailBindData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *AppInstanceAggregatePartnerDetailBindData) SetGmtModified(v string) *AppInstanceAggregatePartnerDetailBindData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *AppInstanceAggregatePartnerDetailBindData) SetId(v string) *AppInstanceAggregatePartnerDetailBindData {
+	s.Id = &v
+	return s
+}
+
+func (s *AppInstanceAggregatePartnerDetailBindData) SetMobile(v string) *AppInstanceAggregatePartnerDetailBindData {
+	s.Mobile = &v
+	return s
+}
+
+func (s *AppInstanceAggregatePartnerDetailBindData) SetParentPk(v string) *AppInstanceAggregatePartnerDetailBindData {
+	s.ParentPk = &v
+	return s
+}
+
+func (s *AppInstanceAggregatePartnerDetailBindData) SetPartnerId(v string) *AppInstanceAggregatePartnerDetailBindData {
+	s.PartnerId = &v
+	return s
+}
+
+func (s *AppInstanceAggregatePartnerDetailBindData) SetUserId(v string) *AppInstanceAggregatePartnerDetailBindData {
+	s.UserId = &v
+	return s
+}
+
+func (s *AppInstanceAggregatePartnerDetailBindData) Validate() error {
+	return dara.Validate(s)
+}
+
+type AppInstanceAggregateTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s AppInstanceAggregateTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AppInstanceAggregateTags) GoString() string {
+	return s.String()
+}
+
+func (s *AppInstanceAggregateTags) GetTagKey() *string {
+	return s.TagKey
+}
+
+func (s *AppInstanceAggregateTags) GetTagValue() *string {
+	return s.TagValue
+}
+
+func (s *AppInstanceAggregateTags) SetTagKey(v string) *AppInstanceAggregateTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *AppInstanceAggregateTags) SetTagValue(v string) *AppInstanceAggregateTags {
+	s.TagValue = &v
+	return s
+}
+
+func (s *AppInstanceAggregateTags) Validate() error {
+	return dara.Validate(s)
 }

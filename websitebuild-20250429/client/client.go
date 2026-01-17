@@ -134,18 +134,24 @@ func (client *Client) BindAppDomain(request *BindAppDomainRequest) (_result *Bin
 //
 // # Create a website instance
 //
-// @param request - CreateAppInstanceRequest
+// @param tmpReq - CreateAppInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAppInstanceResponse
-func (client *Client) CreateAppInstanceWithOptions(request *CreateAppInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateAppInstanceResponse, _err error) {
+func (client *Client) CreateAppInstanceWithOptions(tmpReq *CreateAppInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateAppInstanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &CreateAppInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationType) {
 		query["ApplicationType"] = request.ApplicationType
@@ -187,8 +193,18 @@ func (client *Client) CreateAppInstanceWithOptions(request *CreateAppInstanceReq
 		query["SiteVersion"] = request.SiteVersion
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.TagsShrink) {
+		body["Tags"] = request.TagsShrink
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateAppInstance"),

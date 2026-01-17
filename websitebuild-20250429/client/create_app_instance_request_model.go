@@ -27,8 +27,12 @@ type iCreateAppInstanceRequest interface {
 	GetPricingCycle() *string
 	SetQuantity(v int32) *CreateAppInstanceRequest
 	GetQuantity() *int32
+	SetResourceGroupId(v string) *CreateAppInstanceRequest
+	GetResourceGroupId() *string
 	SetSiteVersion(v string) *CreateAppInstanceRequest
 	GetSiteVersion() *string
+	SetTags(v []*CreateAppInstanceRequestTags) *CreateAppInstanceRequest
+	GetTags() []*CreateAppInstanceRequestTags
 }
 
 type CreateAppInstanceRequest struct {
@@ -85,13 +89,15 @@ type CreateAppInstanceRequest struct {
 	// example:
 	//
 	// 1
-	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	Quantity        *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Site version
 	//
 	// example:
 	//
 	// Basic_Edition
-	SiteVersion *string `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	SiteVersion *string                         `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	Tags        []*CreateAppInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s CreateAppInstanceRequest) String() string {
@@ -138,8 +144,16 @@ func (s *CreateAppInstanceRequest) GetQuantity() *int32 {
 	return s.Quantity
 }
 
+func (s *CreateAppInstanceRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *CreateAppInstanceRequest) GetSiteVersion() *string {
 	return s.SiteVersion
+}
+
+func (s *CreateAppInstanceRequest) GetTags() []*CreateAppInstanceRequestTags {
+	return s.Tags
 }
 
 func (s *CreateAppInstanceRequest) SetApplicationType(v string) *CreateAppInstanceRequest {
@@ -187,11 +201,65 @@ func (s *CreateAppInstanceRequest) SetQuantity(v int32) *CreateAppInstanceReques
 	return s
 }
 
+func (s *CreateAppInstanceRequest) SetResourceGroupId(v string) *CreateAppInstanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateAppInstanceRequest) SetSiteVersion(v string) *CreateAppInstanceRequest {
 	s.SiteVersion = &v
 	return s
 }
 
+func (s *CreateAppInstanceRequest) SetTags(v []*CreateAppInstanceRequestTags) *CreateAppInstanceRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateAppInstanceRequest) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateAppInstanceRequestTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s CreateAppInstanceRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateAppInstanceRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppInstanceRequestTags) GetTagKey() *string {
+	return s.TagKey
+}
+
+func (s *CreateAppInstanceRequestTags) GetTagValue() *string {
+	return s.TagValue
+}
+
+func (s *CreateAppInstanceRequestTags) SetTagKey(v string) *CreateAppInstanceRequestTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateAppInstanceRequestTags) SetTagValue(v string) *CreateAppInstanceRequestTags {
+	s.TagValue = &v
+	return s
+}
+
+func (s *CreateAppInstanceRequestTags) Validate() error {
 	return dara.Validate(s)
 }
