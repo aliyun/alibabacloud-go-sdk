@@ -7532,6 +7532,14 @@ func (client *Client) DescribeListPocWithContext(ctx context.Context, request *D
 		query["RegId"] = request.RegId
 	}
 
+	if !dara.IsNil(request.TaskName) {
+		query["TaskName"] = request.TaskName
+	}
+
+	if !dara.IsNil(request.TaskStatus) {
+		query["TaskStatus"] = request.TaskStatus
+	}
+
 	if !dara.IsNil(request.Type) {
 		query["Type"] = request.Type
 	}
