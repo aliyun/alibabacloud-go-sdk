@@ -389,6 +389,294 @@ func (client *Client) AuthorizeApplicationToUsersWithContext(ctx context.Context
 
 // Summary:
 //
+// 授权指定ResourceServer下的Scope给Client
+//
+// @param request - AuthorizeResourceServerScopesToClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuthorizeResourceServerScopesToClientResponse
+func (client *Client) AuthorizeResourceServerScopesToClientWithContext(ctx context.Context, request *AuthorizeResourceServerScopesToClientRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeResourceServerScopesToClientResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientApplicationId) {
+		query["ClientApplicationId"] = request.ClientApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ResourceServerApplicationId) {
+		query["ResourceServerApplicationId"] = request.ResourceServerApplicationId
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeIds) {
+		query["ResourceServerScopeIds"] = request.ResourceServerScopeIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AuthorizeResourceServerScopesToClient"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AuthorizeResourceServerScopesToClientResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 授予组ResourceServerScope权限
+//
+// @param request - AuthorizeResourceServerScopesToGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuthorizeResourceServerScopesToGroupResponse
+func (client *Client) AuthorizeResourceServerScopesToGroupWithContext(ctx context.Context, request *AuthorizeResourceServerScopesToGroupRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeResourceServerScopesToGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeIds) {
+		query["ResourceServerScopeIds"] = request.ResourceServerScopeIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AuthorizeResourceServerScopesToGroup"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AuthorizeResourceServerScopesToGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 授予组织ResourceServerScope权限
+//
+// @param request - AuthorizeResourceServerScopesToOrganizationalUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuthorizeResourceServerScopesToOrganizationalUnitResponse
+func (client *Client) AuthorizeResourceServerScopesToOrganizationalUnitWithContext(ctx context.Context, request *AuthorizeResourceServerScopesToOrganizationalUnitRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeResourceServerScopesToOrganizationalUnitResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OrganizationalUnitId) {
+		query["OrganizationalUnitId"] = request.OrganizationalUnitId
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeIds) {
+		query["ResourceServerScopeIds"] = request.ResourceServerScopeIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AuthorizeResourceServerScopesToOrganizationalUnit"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AuthorizeResourceServerScopesToOrganizationalUnitResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 授予用户ResourceServerScope权限
+//
+// @param request - AuthorizeResourceServerScopesToUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuthorizeResourceServerScopesToUserResponse
+func (client *Client) AuthorizeResourceServerScopesToUserWithContext(ctx context.Context, request *AuthorizeResourceServerScopesToUserRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeResourceServerScopesToUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeIds) {
+		query["ResourceServerScopeIds"] = request.ResourceServerScopeIds
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AuthorizeResourceServerScopesToUser"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AuthorizeResourceServerScopesToUserResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 授权指定ResourceServer给Client
+//
+// @param request - AuthorizeResourceServerToClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuthorizeResourceServerToClientResponse
+func (client *Client) AuthorizeResourceServerToClientWithContext(ctx context.Context, request *AuthorizeResourceServerToClientRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeResourceServerToClientResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientApplicationId) {
+		query["ClientApplicationId"] = request.ClientApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ResourceServerApplicationId) {
+		query["ResourceServerApplicationId"] = request.ResourceServerApplicationId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AuthorizeResourceServerToClient"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AuthorizeResourceServerToClientResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 绑定三方登录账户
 //
 // @param request - BindUserAuthnSourceMappingRequest
@@ -641,6 +929,66 @@ func (client *Client) CreateApplicationFederatedCredentialWithContext(ctx contex
 
 // Summary:
 //
+// 创建应用角色
+//
+// @param request - CreateApplicationRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApplicationRoleResponse
+func (client *Client) CreateApplicationRoleWithContext(ctx context.Context, request *CreateApplicationRoleRequest, runtime *dara.RuntimeOptions) (_result *CreateApplicationRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationRoleName) {
+		query["ApplicationRoleName"] = request.ApplicationRoleName
+	}
+
+	if !dara.IsNil(request.ApplicationRoleValue) {
+		query["ApplicationRoleValue"] = request.ApplicationRoleValue
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateApplicationRole"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateApplicationRoleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建应用Token
 //
 // @param request - CreateApplicationTokenRequest
@@ -735,6 +1083,198 @@ func (client *Client) CreateBrandWithContext(ctx context.Context, request *Creat
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateBrandResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用ClientPublicKey
+//
+// @param request - CreateClientPublicKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateClientPublicKeyResponse
+func (client *Client) CreateClientPublicKeyWithContext(ctx context.Context, request *CreateClientPublicKeyRequest, runtime *dara.RuntimeOptions) (_result *CreateClientPublicKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlgorithmType) {
+		query["AlgorithmType"] = request.AlgorithmType
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PublicKey) {
+		query["PublicKey"] = request.PublicKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateClientPublicKey"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateClientPublicKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建云账号
+//
+// @param request - CreateCloudAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCloudAccountResponse
+func (client *Client) CreateCloudAccountWithContext(ctx context.Context, request *CreateCloudAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateCloudAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountExternalId) {
+		query["CloudAccountExternalId"] = request.CloudAccountExternalId
+	}
+
+	if !dara.IsNil(request.CloudAccountName) {
+		query["CloudAccountName"] = request.CloudAccountName
+	}
+
+	if !dara.IsNil(request.CloudAccountProviderName) {
+		query["CloudAccountProviderName"] = request.CloudAccountProviderName
+	}
+
+	if !dara.IsNil(request.CloudAccountVendorType) {
+		query["CloudAccountVendorType"] = request.CloudAccountVendorType
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCloudAccount"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCloudAccountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建云角色
+//
+// @param request - CreateCloudAccountRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCloudAccountRoleResponse
+func (client *Client) CreateCloudAccountRoleWithContext(ctx context.Context, request *CreateCloudAccountRoleRequest, runtime *dara.RuntimeOptions) (_result *CreateCloudAccountRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudAccountRoleName) {
+		query["CloudAccountRoleName"] = request.CloudAccountRoleName
+	}
+
+	if !dara.IsNil(request.CloudAccountRoleType) {
+		query["CloudAccountRoleType"] = request.CloudAccountRoleType
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCloudAccountRole"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCloudAccountRoleResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1521,6 +2061,70 @@ func (client *Client) CreateOrganizationalUnitWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 创建指定ResourceServer下的Scope
+//
+// @param request - CreateResourceServerScopeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateResourceServerScopeResponse
+func (client *Client) CreateResourceServerScopeWithContext(ctx context.Context, request *CreateResourceServerScopeRequest, runtime *dara.RuntimeOptions) (_result *CreateResourceServerScopeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.AuthorizationType) {
+		query["AuthorizationType"] = request.AuthorizationType
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeName) {
+		query["ResourceServerScopeName"] = request.ResourceServerScopeName
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeType) {
+		query["ResourceServerScopeType"] = request.ResourceServerScopeType
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeValue) {
+		query["ResourceServerScopeValue"] = request.ResourceServerScopeValue
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateResourceServerScope"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateResourceServerScopeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an account in an Identity as a Service (IDaaS) Enterprise Identity Access Management (EIAM) instance.
 //
 // @param request - CreateUserRequest
@@ -1781,6 +2385,58 @@ func (client *Client) DeleteApplicationFederatedCredentialWithContext(ctx contex
 
 // Summary:
 //
+// 删除应用角色
+//
+// @param request - DeleteApplicationRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApplicationRoleResponse
+func (client *Client) DeleteApplicationRoleWithContext(ctx context.Context, request *DeleteApplicationRoleRequest, runtime *dara.RuntimeOptions) (_result *DeleteApplicationRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationRoleId) {
+		query["ApplicationRoleId"] = request.ApplicationRoleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteApplicationRole"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteApplicationRoleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除ApplicationToken
 //
 // @param request - DeleteApplicationTokenRequest
@@ -1871,6 +2527,158 @@ func (client *Client) DeleteBrandWithContext(ctx context.Context, request *Delet
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteBrandResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定的应用ClientPublicKey
+//
+// @param request - DeleteClientPublicKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteClientPublicKeyResponse
+func (client *Client) DeleteClientPublicKeyWithContext(ctx context.Context, request *DeleteClientPublicKeyRequest, runtime *dara.RuntimeOptions) (_result *DeleteClientPublicKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ClientPublicKeyId) {
+		query["ClientPublicKeyId"] = request.ClientPublicKeyId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteClientPublicKey"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteClientPublicKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除云账号
+//
+// @param request - DeleteCloudAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudAccountResponse
+func (client *Client) DeleteCloudAccountWithContext(ctx context.Context, request *DeleteCloudAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteCloudAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCloudAccount"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCloudAccountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除云角色
+//
+// @param request - DeleteCloudAccountRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudAccountRoleResponse
+func (client *Client) DeleteCloudAccountRoleWithContext(ctx context.Context, request *DeleteCloudAccountRoleRequest, runtime *dara.RuntimeOptions) (_result *DeleteCloudAccountRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudAccountRoleId) {
+		query["CloudAccountRoleId"] = request.CloudAccountRoleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCloudAccountRole"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCloudAccountRoleResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2465,6 +3273,58 @@ func (client *Client) DeleteOrganizationalUnitChildrenWithContext(ctx context.Co
 
 // Summary:
 //
+// 删除指定ResourceServer下的Scope
+//
+// @param request - DeleteResourceServerScopeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteResourceServerScopeResponse
+func (client *Client) DeleteResourceServerScopeWithContext(ctx context.Context, request *DeleteResourceServerScopeRequest, runtime *dara.RuntimeOptions) (_result *DeleteResourceServerScopeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeId) {
+		query["ResourceServerScopeId"] = request.ResourceServerScopeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteResourceServerScope"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteResourceServerScopeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS). The information related to the account is cleared.
 //
 // @param request - DeleteUserRequest
@@ -2817,6 +3677,54 @@ func (client *Client) DisableApplicationFederatedCredentialWithContext(ctx conte
 
 // Summary:
 //
+// 禁用M2M Client 能力
+//
+// @param request - DisableApplicationM2MClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableApplicationM2MClientResponse
+func (client *Client) DisableApplicationM2MClientWithContext(ctx context.Context, request *DisableApplicationM2MClientRequest, runtime *dara.RuntimeOptions) (_result *DisableApplicationM2MClientResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableApplicationM2MClient"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableApplicationM2MClientResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
 //
 // @param request - DisableApplicationProvisioningRequest
@@ -2855,6 +3763,54 @@ func (client *Client) DisableApplicationProvisioningWithContext(ctx context.Cont
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableApplicationProvisioningResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用ResourceServer能力
+//
+// @param request - DisableApplicationResourceServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableApplicationResourceServerResponse
+func (client *Client) DisableApplicationResourceServerWithContext(ctx context.Context, request *DisableApplicationResourceServerRequest, runtime *dara.RuntimeOptions) (_result *DisableApplicationResourceServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableApplicationResourceServer"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableApplicationResourceServerResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3003,6 +3959,118 @@ func (client *Client) DisableBrandWithContext(ctx context.Context, request *Disa
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableBrandResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用指定的应用ClientPublicKey
+//
+// @param request - DisableClientPublicKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableClientPublicKeyResponse
+func (client *Client) DisableClientPublicKeyWithContext(ctx context.Context, request *DisableClientPublicKeyRequest, runtime *dara.RuntimeOptions) (_result *DisableClientPublicKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ClientPublicKeyId) {
+		query["ClientPublicKeyId"] = request.ClientPublicKeyId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableClientPublicKey"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableClientPublicKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用云角色
+//
+// @param request - DisableCloudAccountRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableCloudAccountRoleResponse
+func (client *Client) DisableCloudAccountRoleWithContext(ctx context.Context, request *DisableCloudAccountRoleRequest, runtime *dara.RuntimeOptions) (_result *DisableCloudAccountRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudAccountRoleId) {
+		query["CloudAccountRoleId"] = request.CloudAccountRoleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableCloudAccountRole"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableCloudAccountRoleResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3449,6 +4517,54 @@ func (client *Client) DisableInternalAuthenticationSourceWithContext(ctx context
 
 // Summary:
 //
+// 禁用资源服务器自定义主体
+//
+// @param request - DisableResourceServerCustomSubjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableResourceServerCustomSubjectResponse
+func (client *Client) DisableResourceServerCustomSubjectWithContext(ctx context.Context, request *DisableResourceServerCustomSubjectRequest, runtime *dara.RuntimeOptions) (_result *DisableResourceServerCustomSubjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableResourceServerCustomSubject"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableResourceServerCustomSubjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables an Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) account. If the account is disabled, a success message is returned.
 //
 // @param request - DisableUserRequest
@@ -3697,6 +4813,54 @@ func (client *Client) EnableApplicationFederatedCredentialWithContext(ctx contex
 
 // Summary:
 //
+// 启用M2M Client 能力
+//
+// @param request - EnableApplicationM2MClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableApplicationM2MClientResponse
+func (client *Client) EnableApplicationM2MClientWithContext(ctx context.Context, request *EnableApplicationM2MClientRequest, runtime *dara.RuntimeOptions) (_result *EnableApplicationM2MClientResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableApplicationM2MClient"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableApplicationM2MClientResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
 //
 // @param request - EnableApplicationProvisioningRequest
@@ -3735,6 +4899,54 @@ func (client *Client) EnableApplicationProvisioningWithContext(ctx context.Conte
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableApplicationProvisioningResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用ResourceServer能力
+//
+// @param request - EnableApplicationResourceServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableApplicationResourceServerResponse
+func (client *Client) EnableApplicationResourceServerWithContext(ctx context.Context, request *EnableApplicationResourceServerRequest, runtime *dara.RuntimeOptions) (_result *EnableApplicationResourceServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableApplicationResourceServer"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableApplicationResourceServerResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3883,6 +5095,118 @@ func (client *Client) EnableBrandWithContext(ctx context.Context, request *Enabl
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableBrandResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用指定的应用ClientPublicKey
+//
+// @param request - EnableClientPublicKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableClientPublicKeyResponse
+func (client *Client) EnableClientPublicKeyWithContext(ctx context.Context, request *EnableClientPublicKeyRequest, runtime *dara.RuntimeOptions) (_result *EnableClientPublicKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ClientPublicKeyId) {
+		query["ClientPublicKeyId"] = request.ClientPublicKeyId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableClientPublicKey"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableClientPublicKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用云角色
+//
+// @param request - EnableCloudAccountRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableCloudAccountRoleResponse
+func (client *Client) EnableCloudAccountRoleWithContext(ctx context.Context, request *EnableCloudAccountRoleRequest, runtime *dara.RuntimeOptions) (_result *EnableCloudAccountRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudAccountRoleId) {
+		query["CloudAccountRoleId"] = request.CloudAccountRoleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableCloudAccountRole"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableCloudAccountRoleResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4319,6 +5643,54 @@ func (client *Client) EnableInternalAuthenticationSourceWithContext(ctx context.
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableInternalAuthenticationSourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用资源服务器自定义主体
+//
+// @param request - EnableResourceServerCustomSubjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableResourceServerCustomSubjectResponse
+func (client *Client) EnableResourceServerCustomSubjectWithContext(ctx context.Context, request *EnableResourceServerCustomSubjectRequest, runtime *dara.RuntimeOptions) (_result *EnableResourceServerCustomSubjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableResourceServerCustomSubject"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableResourceServerCustomSubjectResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4817,6 +6189,58 @@ func (client *Client) GetApplicationProvisioningScopeWithContext(ctx context.Con
 
 // Summary:
 //
+// 获取角色信息
+//
+// @param request - GetApplicationRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApplicationRoleResponse
+func (client *Client) GetApplicationRoleWithContext(ctx context.Context, request *GetApplicationRoleRequest, runtime *dara.RuntimeOptions) (_result *GetApplicationRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationRoleId) {
+		query["ApplicationRoleId"] = request.ApplicationRoleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetApplicationRole"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetApplicationRoleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the single sign-on (SSO) configuration attributes of an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
 //
 // @param request - GetApplicationSsoConfigRequest
@@ -4947,6 +6371,158 @@ func (client *Client) GetBrandWithContext(ctx context.Context, request *GetBrand
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetBrandResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定应用ClientPublicKey
+//
+// @param request - GetClientPublicKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetClientPublicKeyResponse
+func (client *Client) GetClientPublicKeyWithContext(ctx context.Context, request *GetClientPublicKeyRequest, runtime *dara.RuntimeOptions) (_result *GetClientPublicKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ClientPublicKeyId) {
+		query["ClientPublicKeyId"] = request.ClientPublicKeyId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetClientPublicKey"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetClientPublicKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取云账号
+//
+// @param request - GetCloudAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCloudAccountResponse
+func (client *Client) GetCloudAccountWithContext(ctx context.Context, request *GetCloudAccountRequest, runtime *dara.RuntimeOptions) (_result *GetCloudAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCloudAccount"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCloudAccountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取云角色
+//
+// @param request - GetCloudAccountRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCloudAccountRoleResponse
+func (client *Client) GetCloudAccountRoleWithContext(ctx context.Context, request *GetCloudAccountRoleRequest, runtime *dara.RuntimeOptions) (_result *GetCloudAccountRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudAccountRoleId) {
+		query["CloudAccountRoleId"] = request.CloudAccountRoleId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCloudAccountRole"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCloudAccountRoleResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5849,6 +7425,58 @@ func (client *Client) GetPasswordInitializationConfigurationWithContext(ctx cont
 
 // Summary:
 //
+// 查询指定ResourceServer下的Scope
+//
+// @param request - GetResourceServerScopeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourceServerScopeResponse
+func (client *Client) GetResourceServerScopeWithContext(ctx context.Context, request *GetResourceServerScopeRequest, runtime *dara.RuntimeOptions) (_result *GetResourceServerScopeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeId) {
+		query["ResourceServerScopeId"] = request.ResourceServerScopeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetResourceServerScope"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetResourceServerScopeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about the root organizational unit in Identity as a Service (IDaaS) Employee IAM (EIAM).
 //
 // @param request - GetRootOrganizationalUnitRequest
@@ -6259,6 +7887,66 @@ func (client *Client) ListApplicationFederatedCredentialsForProviderWithContext(
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListApplicationFederatedCredentialsForProviderResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 游标分页查询应用角色
+//
+// @param request - ListApplicationRolesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationRolesResponse
+func (client *Client) ListApplicationRolesWithContext(ctx context.Context, request *ListApplicationRolesRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationRolesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApplicationRoles"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApplicationRolesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6803,6 +8491,178 @@ func (client *Client) ListBrandsWithContext(ctx context.Context, request *ListBr
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListBrandsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定应用所属的全部ClientPublicKey
+//
+// @param request - ListClientPublicKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListClientPublicKeysResponse
+func (client *Client) ListClientPublicKeysWithContext(ctx context.Context, request *ListClientPublicKeysRequest, runtime *dara.RuntimeOptions) (_result *ListClientPublicKeysResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListClientPublicKeys"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListClientPublicKeysResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云角色列表
+//
+// @param request - ListCloudAccountRolesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudAccountRolesResponse
+func (client *Client) ListCloudAccountRolesWithContext(ctx context.Context, request *ListCloudAccountRolesRequest, runtime *dara.RuntimeOptions) (_result *ListCloudAccountRolesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCloudAccountRoles"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCloudAccountRolesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云账号列表
+//
+// @param request - ListCloudAccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudAccountsResponse
+func (client *Client) ListCloudAccountsWithContext(ctx context.Context, request *ListCloudAccountsRequest, runtime *dara.RuntimeOptions) (_result *ListCloudAccountsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCloudAccounts"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCloudAccountsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7481,6 +9341,66 @@ func (client *Client) ListGroupsForApplicationWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 查询ResourceServer授权的组和Scope权限
+//
+// @param request - ListGroupsForResourceServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGroupsForResourceServerResponse
+func (client *Client) ListGroupsForResourceServerWithContext(ctx context.Context, request *ListGroupsForResourceServerRequest, runtime *dara.RuntimeOptions) (_result *ListGroupsForResourceServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGroupsForResourceServer"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGroupsForResourceServerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of account groups to which an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) belongs.
 //
 // @param request - ListGroupsForUserRequest
@@ -8105,6 +10025,126 @@ func (client *Client) ListOrganizationalUnitsForApplicationWithContext(ctx conte
 
 // Summary:
 //
+// 查询被授权到组织的ResourceServers和Scopes权限
+//
+// @param request - ListOrganizationalUnitsForResourceServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOrganizationalUnitsForResourceServerResponse
+func (client *Client) ListOrganizationalUnitsForResourceServerWithContext(ctx context.Context, request *ListOrganizationalUnitsForResourceServerRequest, runtime *dara.RuntimeOptions) (_result *ListOrganizationalUnitsForResourceServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListOrganizationalUnitsForResourceServer"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListOrganizationalUnitsForResourceServerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户的被授予ResourceServers和Scopes的权限
+//
+// @param request - ListResourceServersForUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourceServersForUserResponse
+func (client *Client) ListResourceServersForUserWithContext(ctx context.Context, request *ListResourceServersForUserRequest, runtime *dara.RuntimeOptions) (_result *ListResourceServersForUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListResourceServersForUser"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListResourceServersForUserResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询同步任务
 //
 // @param request - ListSynchronizationJobsRequest
@@ -8471,6 +10511,66 @@ func (client *Client) ListUsersForGroupWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListUsersForGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询ResourceServer授权的用户和Scope权限
+//
+// @param request - ListUsersForResourceServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersForResourceServerResponse
+func (client *Client) ListUsersForResourceServerWithContext(ctx context.Context, request *ListUsersForResourceServerRequest, runtime *dara.RuntimeOptions) (_result *ListUsersForResourceServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUsersForResourceServer"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUsersForResourceServerResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9017,6 +11117,282 @@ func (client *Client) RevokeApplicationFromUsersWithContext(ctx context.Context,
 
 // Summary:
 //
+// 解除指定ResourceServer到Client的授权
+//
+// @param request - RevokeResourceServerFromClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeResourceServerFromClientResponse
+func (client *Client) RevokeResourceServerFromClientWithContext(ctx context.Context, request *RevokeResourceServerFromClientRequest, runtime *dara.RuntimeOptions) (_result *RevokeResourceServerFromClientResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientApplicationId) {
+		query["ClientApplicationId"] = request.ClientApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ResourceServerApplicationId) {
+		query["ResourceServerApplicationId"] = request.ResourceServerApplicationId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeResourceServerFromClient"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeResourceServerFromClientResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 解除指定ResourceServer下的Scope给Client
+//
+// @param request - RevokeResourceServerScopesFromClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeResourceServerScopesFromClientResponse
+func (client *Client) RevokeResourceServerScopesFromClientWithContext(ctx context.Context, request *RevokeResourceServerScopesFromClientRequest, runtime *dara.RuntimeOptions) (_result *RevokeResourceServerScopesFromClientResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientApplicationId) {
+		query["ClientApplicationId"] = request.ClientApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ResourceServerApplicationId) {
+		query["ResourceServerApplicationId"] = request.ResourceServerApplicationId
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeIds) {
+		query["ResourceServerScopeIds"] = request.ResourceServerScopeIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeResourceServerScopesFromClient"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeResourceServerScopesFromClientResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消被授予到组的ResourceServerScope权限
+//
+// @param request - RevokeResourceServerScopesFromGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeResourceServerScopesFromGroupResponse
+func (client *Client) RevokeResourceServerScopesFromGroupWithContext(ctx context.Context, request *RevokeResourceServerScopesFromGroupRequest, runtime *dara.RuntimeOptions) (_result *RevokeResourceServerScopesFromGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeIds) {
+		query["ResourceServerScopeIds"] = request.ResourceServerScopeIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeResourceServerScopesFromGroup"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeResourceServerScopesFromGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消被授予到组织的ResourceServerScope权限
+//
+// @param request - RevokeResourceServerScopesFromOrganizationalUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeResourceServerScopesFromOrganizationalUnitResponse
+func (client *Client) RevokeResourceServerScopesFromOrganizationalUnitWithContext(ctx context.Context, request *RevokeResourceServerScopesFromOrganizationalUnitRequest, runtime *dara.RuntimeOptions) (_result *RevokeResourceServerScopesFromOrganizationalUnitResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OrganizationalUnitId) {
+		query["OrganizationalUnitId"] = request.OrganizationalUnitId
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeIds) {
+		query["ResourceServerScopeIds"] = request.ResourceServerScopeIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeResourceServerScopesFromOrganizationalUnit"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeResourceServerScopesFromOrganizationalUnitResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消被授予用户的ResourceServerScope权限
+//
+// @param request - RevokeResourceServerScopesFromUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeResourceServerScopesFromUserResponse
+func (client *Client) RevokeResourceServerScopesFromUserWithContext(ctx context.Context, request *RevokeResourceServerScopesFromUserRequest, runtime *dara.RuntimeOptions) (_result *RevokeResourceServerScopesFromUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeIds) {
+		query["ResourceServerScopeIds"] = request.ResourceServerScopeIds
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeResourceServerScopesFromUser"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeResourceServerScopesFromUserResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a synchronization job and immediately runs the job.
 //
 // @param request - RunSynchronizationJobRequest
@@ -9303,6 +11679,62 @@ func (client *Client) SetApplicationProvisioningUserPrimaryOrganizationalUnitWit
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetApplicationProvisioningUserPrimaryOrganizationalUnitResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置ResourceServer的Identifier
+//
+// @param request - SetApplicationResourceServerIdentifierRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetApplicationResourceServerIdentifierResponse
+func (client *Client) SetApplicationResourceServerIdentifierWithContext(ctx context.Context, request *SetApplicationResourceServerIdentifierRequest, runtime *dara.RuntimeOptions) (_result *SetApplicationResourceServerIdentifierResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ResourceServerIdentifier) {
+		query["ResourceServerIdentifier"] = request.ResourceServerIdentifier
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetApplicationResourceServerIdentifier"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetApplicationResourceServerIdentifierResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9843,6 +12275,62 @@ func (client *Client) SetPasswordInitializationConfigurationWithContext(ctx cont
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetPasswordInitializationConfigurationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置指定的应用ClientPublicKey优先启用状态
+//
+// @param request - SetPrimaryClientPublicKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetPrimaryClientPublicKeyResponse
+func (client *Client) SetPrimaryClientPublicKeyWithContext(ctx context.Context, request *SetPrimaryClientPublicKeyRequest, runtime *dara.RuntimeOptions) (_result *SetPrimaryClientPublicKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ClientPublicKeyId) {
+		query["ClientPublicKeyId"] = request.ClientPublicKeyId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetPrimaryClientPublicKey"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetPrimaryClientPublicKeyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10401,6 +12889,122 @@ func (client *Client) UpdateApplicationInfoWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// 修改应用角色
+//
+// @param request - UpdateApplicationRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApplicationRoleResponse
+func (client *Client) UpdateApplicationRoleWithContext(ctx context.Context, request *UpdateApplicationRoleRequest, runtime *dara.RuntimeOptions) (_result *UpdateApplicationRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationRoleId) {
+		query["ApplicationRoleId"] = request.ApplicationRoleId
+	}
+
+	if !dara.IsNil(request.ApplicationRoleName) {
+		query["ApplicationRoleName"] = request.ApplicationRoleName
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateApplicationRole"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateApplicationRoleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改应用角色描述
+//
+// @param request - UpdateApplicationRoleDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApplicationRoleDescriptionResponse
+func (client *Client) UpdateApplicationRoleDescriptionWithContext(ctx context.Context, request *UpdateApplicationRoleDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateApplicationRoleDescriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationRoleId) {
+		query["ApplicationRoleId"] = request.ApplicationRoleId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateApplicationRoleDescription"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateApplicationRoleDescriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新模板应用的SSO参数
 //
 // @param request - UpdateApplicationSsoFormParamsRequest
@@ -10551,6 +13155,178 @@ func (client *Client) UpdateBrandWithContext(ctx context.Context, request *Updat
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateBrandResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新云账号
+//
+// @param request - UpdateCloudAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudAccountResponse
+func (client *Client) UpdateCloudAccountWithContext(ctx context.Context, request *UpdateCloudAccountRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudAccountName) {
+		query["CloudAccountName"] = request.CloudAccountName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCloudAccount"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCloudAccountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新云账号描述
+//
+// @param request - UpdateCloudAccountDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudAccountDescriptionResponse
+func (client *Client) UpdateCloudAccountDescriptionWithContext(ctx context.Context, request *UpdateCloudAccountDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudAccountDescriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCloudAccountDescription"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCloudAccountDescriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新云角色描述
+//
+// @param request - UpdateCloudAccountRoleDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudAccountRoleDescriptionResponse
+func (client *Client) UpdateCloudAccountRoleDescriptionWithContext(ctx context.Context, request *UpdateCloudAccountRoleDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudAccountRoleDescriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudAccountRoleId) {
+		query["CloudAccountRoleId"] = request.CloudAccountRoleId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCloudAccountRoleDescription"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCloudAccountRoleDescriptionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11547,6 +14323,62 @@ func (client *Client) UpdateOrganizationalUnitParentIdWithContext(ctx context.Co
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateOrganizationalUnitParentIdResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新指定ResourceServer下的Scope
+//
+// @param request - UpdateResourceServerScopeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateResourceServerScopeResponse
+func (client *Client) UpdateResourceServerScopeWithContext(ctx context.Context, request *UpdateResourceServerScopeRequest, runtime *dara.RuntimeOptions) (_result *UpdateResourceServerScopeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeId) {
+		query["ResourceServerScopeId"] = request.ResourceServerScopeId
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeName) {
+		query["ResourceServerScopeName"] = request.ResourceServerScopeName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateResourceServerScope"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateResourceServerScopeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
