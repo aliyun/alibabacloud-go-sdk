@@ -1571,6 +1571,62 @@ func (client *Client) ListUsersForGroupWithContext(ctx context.Context, instance
 
 // Summary:
 //
+// 获取云角色（CloudAccountRole）的临时访问凭证
+//
+// @param request - ObtainCloudAccountRoleAccessCredentialRequest
+//
+// @param headers - ObtainCloudAccountRoleAccessCredentialHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ObtainCloudAccountRoleAccessCredentialResponse
+func (client *Client) ObtainCloudAccountRoleAccessCredentialWithContext(ctx context.Context, instanceId *string, request *ObtainCloudAccountRoleAccessCredentialRequest, headers *ObtainCloudAccountRoleAccessCredentialHeaders, runtime *dara.RuntimeOptions) (_result *ObtainCloudAccountRoleAccessCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountRoleExternalId) {
+		query["cloudAccountRoleExternalId"] = request.CloudAccountRoleExternalId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Authorization) {
+		realHeaders["Authorization"] = dara.String(dara.ToString(dara.StringValue(headers.Authorization)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ObtainCloudAccountRoleAccessCredential"),
+		Version:     dara.String("2022-02-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/cloudAccountRoles/_/actions/obtainAccessCredential"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("Anonymous"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ObtainCloudAccountRoleAccessCredentialResponse{}
+	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies information about an Employee Identity and Access Management (EIAM) group.
 //
 // @param request - PatchGroupRequest
