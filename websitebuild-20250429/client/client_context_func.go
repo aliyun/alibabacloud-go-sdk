@@ -1226,6 +1226,10 @@ func (client *Client) RefundAppInstanceForPartnerWithContext(ctx context.Context
 		query["BizId"] = request.BizId
 	}
 
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.RefundReason) {
 		query["RefundReason"] = request.RefundReason
 	}

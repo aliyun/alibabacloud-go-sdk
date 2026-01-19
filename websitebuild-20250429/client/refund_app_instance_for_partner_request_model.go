@@ -11,6 +11,8 @@ type iRefundAppInstanceForPartnerRequest interface {
 	GoString() string
 	SetBizId(v string) *RefundAppInstanceForPartnerRequest
 	GetBizId() *string
+	SetClientToken(v string) *RefundAppInstanceForPartnerRequest
+	GetClientToken() *string
 	SetRefundReason(v string) *RefundAppInstanceForPartnerRequest
 	GetRefundReason() *string
 	SetUserId(v string) *RefundAppInstanceForPartnerRequest
@@ -22,6 +24,7 @@ type RefundAppInstanceForPartnerRequest struct {
 	//
 	// WD20250703155602000001
 	BizId        *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	RefundReason *string `json:"RefundReason,omitempty" xml:"RefundReason,omitempty"`
 	// example:
 	//
@@ -41,6 +44,10 @@ func (s *RefundAppInstanceForPartnerRequest) GetBizId() *string {
 	return s.BizId
 }
 
+func (s *RefundAppInstanceForPartnerRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *RefundAppInstanceForPartnerRequest) GetRefundReason() *string {
 	return s.RefundReason
 }
@@ -51,6 +58,11 @@ func (s *RefundAppInstanceForPartnerRequest) GetUserId() *string {
 
 func (s *RefundAppInstanceForPartnerRequest) SetBizId(v string) *RefundAppInstanceForPartnerRequest {
 	s.BizId = &v
+	return s
+}
+
+func (s *RefundAppInstanceForPartnerRequest) SetClientToken(v string) *RefundAppInstanceForPartnerRequest {
+	s.ClientToken = &v
 	return s
 }
 
