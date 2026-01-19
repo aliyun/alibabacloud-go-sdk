@@ -5623,6 +5623,150 @@ func (client *Client) DescribeAIDBClusterPerformanceWithContext(ctx context.Cont
 
 // Summary:
 //
+// 查询模型算子日志
+//
+// @param request - DescribeAIDBClusterTaskLogFilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAIDBClusterTaskLogFilesResponse
+func (client *Client) DescribeAIDBClusterTaskLogFilesWithContext(ctx context.Context, request *DescribeAIDBClusterTaskLogFilesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAIDBClusterTaskLogFilesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.LogType) {
+		query["LogType"] = request.LogType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RelativeDBClusterId) {
+		query["RelativeDBClusterId"] = request.RelativeDBClusterId
+	}
+
+	if !dara.IsNil(request.Reverse) {
+		query["Reverse"] = request.Reverse
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAIDBClusterTaskLogFiles"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAIDBClusterTaskLogFilesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模型算子指标
+//
+// @param request - DescribeAIDBClusterTaskMetricsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAIDBClusterTaskMetricsResponse
+func (client *Client) DescribeAIDBClusterTaskMetricsWithContext(ctx context.Context, request *DescribeAIDBClusterTaskMetricsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAIDBClusterTaskMetricsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.MetricType) {
+		query["MetricType"] = request.MetricType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RelativeDBClusterId) {
+		query["RelativeDBClusterId"] = request.RelativeDBClusterId
+	}
+
+	if !dara.IsNil(request.Reverse) {
+		query["Reverse"] = request.Reverse
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAIDBClusterTaskMetrics"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAIDBClusterTaskMetricsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查看custom集群列表
 //
 // @param request - DescribeAIDBClustersRequest
