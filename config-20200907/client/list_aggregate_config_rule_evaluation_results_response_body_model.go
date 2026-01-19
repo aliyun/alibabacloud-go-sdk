@@ -181,6 +181,13 @@ type ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvalua
 	//
 	// ScheduledNotification
 	InvokingEventMessageType *string `json:"InvokingEventMessageType,omitempty" xml:"InvokingEventMessageType,omitempty"`
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// 1768788515725
+	LastCompliantFixedTimestamp *int64 `json:"LastCompliantFixedTimestamp,omitempty" xml:"LastCompliantFixedTimestamp,omitempty"`
 	// example:
 	//
 	// 1744696393000
@@ -247,6 +254,10 @@ func (s *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEv
 	return s.InvokingEventMessageType
 }
 
+func (s *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) GetLastCompliantFixedTimestamp() *int64 {
+	return s.LastCompliantFixedTimestamp
+}
+
 func (s *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) GetLastNonCompliantRecordTimestamp() *int64 {
 	return s.LastNonCompliantRecordTimestamp
 }
@@ -290,6 +301,11 @@ func (s *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEv
 
 func (s *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) SetInvokingEventMessageType(v string) *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList {
 	s.InvokingEventMessageType = &v
+	return s
+}
+
+func (s *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) SetLastCompliantFixedTimestamp(v int64) *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList {
+	s.LastCompliantFixedTimestamp = &v
 	return s
 }
 

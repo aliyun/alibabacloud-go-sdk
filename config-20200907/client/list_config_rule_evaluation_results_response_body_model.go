@@ -185,6 +185,10 @@ type ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResul
 	InvokingEventMessageType *string `json:"InvokingEventMessageType,omitempty" xml:"InvokingEventMessageType,omitempty"`
 	// example:
 	//
+	// 1768788515725
+	LastCompliantFixedTimestamp *int64 `json:"LastCompliantFixedTimestamp,omitempty" xml:"LastCompliantFixedTimestamp,omitempty"`
+	// example:
+	//
 	// 1744696665000
 	LastNonCompliantRecordTimestamp *int64 `json:"LastNonCompliantRecordTimestamp,omitempty" xml:"LastNonCompliantRecordTimestamp,omitempty"`
 	// Indicates whether the remediation template is enabled. Valid values:
@@ -249,6 +253,10 @@ func (s *ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationR
 	return s.InvokingEventMessageType
 }
 
+func (s *ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) GetLastCompliantFixedTimestamp() *int64 {
+	return s.LastCompliantFixedTimestamp
+}
+
 func (s *ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) GetLastNonCompliantRecordTimestamp() *int64 {
 	return s.LastNonCompliantRecordTimestamp
 }
@@ -292,6 +300,11 @@ func (s *ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationR
 
 func (s *ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) SetInvokingEventMessageType(v string) *ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList {
 	s.InvokingEventMessageType = &v
+	return s
+}
+
+func (s *ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) SetLastCompliantFixedTimestamp(v int64) *ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList {
+	s.LastCompliantFixedTimestamp = &v
 	return s
 }
 
