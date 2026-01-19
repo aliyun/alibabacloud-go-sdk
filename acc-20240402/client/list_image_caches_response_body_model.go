@@ -95,7 +95,16 @@ func (s *ListImageCachesResponseBody) SetTotalCount(v int32) *ListImageCachesRes
 }
 
 func (s *ListImageCachesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImageCaches != nil {
+		for _, item := range s.ImageCaches {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListImageCachesResponseBodyImageCaches struct {

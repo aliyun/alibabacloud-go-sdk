@@ -221,7 +221,30 @@ func (s *GetImageCacheResponseBody) SetTags(v []*GetImageCacheResponseBodyTags) 
 }
 
 func (s *GetImageCacheResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Events != nil {
+		for _, item := range s.Events {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NetworkConfig != nil {
+		if err := s.NetworkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetImageCacheResponseBodyEvents struct {
@@ -375,7 +398,12 @@ func (s *GetImageCacheResponseBodyNetworkConfig) SetVSwitchIds(v []*string) *Get
 }
 
 func (s *GetImageCacheResponseBodyNetworkConfig) Validate() error {
-	return dara.Validate(s)
+	if s.EipInstance != nil {
+		if err := s.EipInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetImageCacheResponseBodyNetworkConfigEipInstance struct {

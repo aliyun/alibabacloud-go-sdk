@@ -17,9 +17,11 @@ import (
 //
 // @return CreateImageCacheResponse
 func (client *Client) CreateImageCacheWithContext(ctx context.Context, tmpReq *CreateImageCacheRequest, runtime *dara.RuntimeOptions) (_result *CreateImageCacheResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateImageCacheShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -97,9 +99,11 @@ func (client *Client) CreateImageCacheWithContext(ctx context.Context, tmpReq *C
 //
 // @return DeleteImageCacheResponse
 func (client *Client) DeleteImageCacheWithContext(ctx context.Context, request *DeleteImageCacheRequest, runtime *dara.RuntimeOptions) (_result *DeleteImageCacheResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Force) {
@@ -147,9 +151,11 @@ func (client *Client) DeleteImageCacheWithContext(ctx context.Context, request *
 //
 // @return GetImageCacheResponse
 func (client *Client) GetImageCacheWithContext(ctx context.Context, request *GetImageCacheRequest, runtime *dara.RuntimeOptions) (_result *GetImageCacheResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageCacheId) {
@@ -193,9 +199,11 @@ func (client *Client) GetImageCacheWithContext(ctx context.Context, request *Get
 //
 // @return ListImageCachesResponse
 func (client *Client) ListImageCachesWithContext(ctx context.Context, request *ListImageCachesRequest, runtime *dara.RuntimeOptions) (_result *ListImageCachesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageCacheName) {

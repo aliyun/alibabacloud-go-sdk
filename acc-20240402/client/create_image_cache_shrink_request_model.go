@@ -149,7 +149,34 @@ func (s *CreateImageCacheShrinkRequest) SetTags(v []*CreateImageCacheShrinkReque
 }
 
 func (s *CreateImageCacheShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AcrRegistryInfos != nil {
+		for _, item := range s.AcrRegistryInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ImageRegistryCredentials != nil {
+		for _, item := range s.ImageRegistryCredentials {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateImageCacheShrinkRequestAcrRegistryInfos struct {

@@ -149,7 +149,39 @@ func (s *CreateImageCacheRequest) SetTags(v []*CreateImageCacheRequestTags) *Cre
 }
 
 func (s *CreateImageCacheRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AcrRegistryInfos != nil {
+		for _, item := range s.AcrRegistryInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ImageRegistryCredentials != nil {
+		for _, item := range s.ImageRegistryCredentials {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NetworkConfig != nil {
+		if err := s.NetworkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateImageCacheRequestAcrRegistryInfos struct {
@@ -321,7 +353,12 @@ func (s *CreateImageCacheRequestNetworkConfig) SetVSwitchIds(v []*string) *Creat
 }
 
 func (s *CreateImageCacheRequestNetworkConfig) Validate() error {
-	return dara.Validate(s)
+	if s.EipInstance != nil {
+		if err := s.EipInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateImageCacheRequestNetworkConfigEipInstance struct {

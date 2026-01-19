@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -23,7 +24,45 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"ap-northeast-2-pop":          dara.String("acc.aliyuncs.com"),
+		"ap-south-1":                  dara.String("acc.aliyuncs.com"),
+		"ap-southeast-2":              dara.String("acc.aliyuncs.com"),
+		"cn-beijing-finance-1":        dara.String("acc.aliyuncs.com"),
+		"cn-beijing-finance-pop":      dara.String("acc.aliyuncs.com"),
+		"cn-beijing-gov-1":            dara.String("acc.aliyuncs.com"),
+		"cn-beijing-nu16-b01":         dara.String("acc.aliyuncs.com"),
+		"cn-edge-1":                   dara.String("acc.aliyuncs.com"),
+		"cn-fujian":                   dara.String("acc.aliyuncs.com"),
+		"cn-haidian-cm12-c01":         dara.String("acc.aliyuncs.com"),
+		"cn-hangzhou-bj-b01":          dara.String("acc.aliyuncs.com"),
+		"cn-hangzhou-finance":         dara.String("acc.aliyuncs.com"),
+		"cn-hangzhou-internal-prod-1": dara.String("acc.aliyuncs.com"),
+		"cn-hangzhou-internal-test-1": dara.String("acc.aliyuncs.com"),
+		"cn-hangzhou-internal-test-2": dara.String("acc.aliyuncs.com"),
+		"cn-hangzhou-internal-test-3": dara.String("acc.aliyuncs.com"),
+		"cn-hangzhou-test-306":        dara.String("acc.aliyuncs.com"),
+		"cn-hongkong-finance-pop":     dara.String("acc.aliyuncs.com"),
+		"cn-huhehaote-nebula-1":       dara.String("acc.aliyuncs.com"),
+		"cn-qingdao-nebula":           dara.String("acc.aliyuncs.com"),
+		"cn-shanghai-et15-b01":        dara.String("acc.aliyuncs.com"),
+		"cn-shanghai-et2-b01":         dara.String("acc.aliyuncs.com"),
+		"cn-shanghai-inner":           dara.String("acc.aliyuncs.com"),
+		"cn-shanghai-internal-test-1": dara.String("acc.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       dara.String("acc.aliyuncs.com"),
+		"cn-shenzhen-inner":           dara.String("acc.aliyuncs.com"),
+		"cn-shenzhen-st4-d01":         dara.String("acc.aliyuncs.com"),
+		"cn-shenzhen-su18-b01":        dara.String("acc.aliyuncs.com"),
+		"cn-wuhan":                    dara.String("acc.aliyuncs.com"),
+		"cn-yushanfang":               dara.String("acc.aliyuncs.com"),
+		"cn-zhangbei":                 dara.String("acc.aliyuncs.com"),
+		"cn-zhangbei-na61-b01":        dara.String("acc.aliyuncs.com"),
+		"cn-zhangjiakou-na62-a01":     dara.String("acc.aliyuncs.com"),
+		"cn-zhengzhou-nebula-1":       dara.String("acc.aliyuncs.com"),
+		"eu-west-1-oxs":               dara.String("acc.aliyuncs.com"),
+		"rus-west-1-pop":              dara.String("acc.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -65,9 +104,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return CreateImageCacheResponse
 func (client *Client) CreateImageCacheWithOptions(tmpReq *CreateImageCacheRequest, runtime *dara.RuntimeOptions) (_result *CreateImageCacheResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateImageCacheShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -163,9 +204,11 @@ func (client *Client) CreateImageCache(request *CreateImageCacheRequest) (_resul
 //
 // @return DeleteImageCacheResponse
 func (client *Client) DeleteImageCacheWithOptions(request *DeleteImageCacheRequest, runtime *dara.RuntimeOptions) (_result *DeleteImageCacheResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Force) {
@@ -231,9 +274,11 @@ func (client *Client) DeleteImageCache(request *DeleteImageCacheRequest) (_resul
 //
 // @return GetImageCacheResponse
 func (client *Client) GetImageCacheWithOptions(request *GetImageCacheRequest, runtime *dara.RuntimeOptions) (_result *GetImageCacheResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageCacheId) {
@@ -295,9 +340,11 @@ func (client *Client) GetImageCache(request *GetImageCacheRequest) (_result *Get
 //
 // @return ListImageCachesResponse
 func (client *Client) ListImageCachesWithOptions(request *ListImageCachesRequest, runtime *dara.RuntimeOptions) (_result *ListImageCachesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageCacheName) {
