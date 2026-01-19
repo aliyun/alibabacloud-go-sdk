@@ -21,6 +21,8 @@ type iCreateDBInstanceRequest interface {
 	GetClusterNodeCount() *int32
 	SetClusterNodeType(v string) *CreateDBInstanceRequest
 	GetClusterNodeType() *string
+	SetConfigPatternType(v string) *CreateDBInstanceRequest
+	GetConfigPatternType() *string
 	SetConnectionString(v string) *CreateDBInstanceRequest
 	GetConnectionString() *string
 	SetDBInstanceClass(v string) *CreateDBInstanceRequest
@@ -97,9 +99,10 @@ type CreateDBInstanceRequest struct {
 	// example:
 	//
 	// AB
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClusterNodeCount *int32  `json:"ClusterNodeCount,omitempty" xml:"ClusterNodeCount,omitempty"`
-	ClusterNodeType  *string `json:"ClusterNodeType,omitempty" xml:"ClusterNodeType,omitempty"`
+	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClusterNodeCount  *int32  `json:"ClusterNodeCount,omitempty" xml:"ClusterNodeCount,omitempty"`
+	ClusterNodeType   *string `json:"ClusterNodeType,omitempty" xml:"ClusterNodeType,omitempty"`
+	ConfigPatternType *string `json:"ConfigPatternType,omitempty" xml:"ConfigPatternType,omitempty"`
 	// The instance endpoint.
 	//
 	// example:
@@ -256,6 +259,10 @@ func (s *CreateDBInstanceRequest) GetClusterNodeType() *string {
 	return s.ClusterNodeType
 }
 
+func (s *CreateDBInstanceRequest) GetConfigPatternType() *string {
+	return s.ConfigPatternType
+}
+
 func (s *CreateDBInstanceRequest) GetConnectionString() *string {
 	return s.ConnectionString
 }
@@ -359,6 +366,11 @@ func (s *CreateDBInstanceRequest) SetClusterNodeCount(v int32) *CreateDBInstance
 
 func (s *CreateDBInstanceRequest) SetClusterNodeType(v string) *CreateDBInstanceRequest {
 	s.ClusterNodeType = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetConfigPatternType(v string) *CreateDBInstanceRequest {
+	s.ConfigPatternType = &v
 	return s
 }
 

@@ -739,6 +739,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 		query["ClusterNodeType"] = request.ClusterNodeType
 	}
 
+	if !dara.IsNil(request.ConfigPatternType) {
+		query["ConfigPatternType"] = request.ConfigPatternType
+	}
+
 	if !dara.IsNil(request.ConnectionString) {
 		query["ConnectionString"] = request.ConnectionString
 	}

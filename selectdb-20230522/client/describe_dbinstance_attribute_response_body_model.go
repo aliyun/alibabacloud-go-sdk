@@ -13,6 +13,8 @@ type iDescribeDBInstanceAttributeResponseBody interface {
 	GetCanUpgradeVersions() []*string
 	SetChargeType(v string) *DescribeDBInstanceAttributeResponseBody
 	GetChargeType() *string
+	SetConfigPatternType(v string) *DescribeDBInstanceAttributeResponseBody
+	GetConfigPatternType() *string
 	SetCreateTime(v string) *DescribeDBInstanceAttributeResponseBody
 	GetCreateTime() *string
 	SetDBClusterList(v []*DescribeDBInstanceAttributeResponseBodyDBClusterList) *DescribeDBInstanceAttributeResponseBody
@@ -87,7 +89,8 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// Prepaid
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ChargeType        *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ConfigPatternType *string `json:"ConfigPatternType,omitempty" xml:"ConfigPatternType,omitempty"`
 	// The time when the instance was created.
 	//
 	// example:
@@ -274,6 +277,10 @@ func (s *DescribeDBInstanceAttributeResponseBody) GetChargeType() *string {
 	return s.ChargeType
 }
 
+func (s *DescribeDBInstanceAttributeResponseBody) GetConfigPatternType() *string {
+	return s.ConfigPatternType
+}
+
 func (s *DescribeDBInstanceAttributeResponseBody) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -401,6 +408,11 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetCanUpgradeVersions(v []*str
 
 func (s *DescribeDBInstanceAttributeResponseBody) SetChargeType(v string) *DescribeDBInstanceAttributeResponseBody {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBody) SetConfigPatternType(v string) *DescribeDBInstanceAttributeResponseBody {
+	s.ConfigPatternType = &v
 	return s
 }
 

@@ -552,6 +552,10 @@ func (client *Client) CreateDBInstanceWithContext(ctx context.Context, tmpReq *C
 		query["ClusterNodeType"] = request.ClusterNodeType
 	}
 
+	if !dara.IsNil(request.ConfigPatternType) {
+		query["ConfigPatternType"] = request.ConfigPatternType
+	}
+
 	if !dara.IsNil(request.ConnectionString) {
 		query["ConnectionString"] = request.ConnectionString
 	}
