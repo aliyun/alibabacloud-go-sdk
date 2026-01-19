@@ -708,7 +708,8 @@ type DescribeApiGroupResponseBodyCustomDomainsDomainItem struct {
 	// example:
 	//
 	// 1689043476000
-	CertificateValidStart *int64 `json:"CertificateValidStart,omitempty" xml:"CertificateValidStart,omitempty"`
+	CertificateValidStart    *int64 `json:"CertificateValidStart,omitempty" xml:"CertificateValidStart,omitempty"`
+	ClientCertSDnPassThrough *bool  `json:"ClientCertSDnPassThrough,omitempty" xml:"ClientCertSDnPassThrough,omitempty"`
 	// The type of the custom domain name.
 	//
 	// example:
@@ -768,7 +769,10 @@ type DescribeApiGroupResponseBodyCustomDomainsDomainItem struct {
 	// example:
 	//
 	// false
-	IsHttpRedirectToHttps *bool `json:"IsHttpRedirectToHttps,omitempty" xml:"IsHttpRedirectToHttps,omitempty"`
+	IsHttpRedirectToHttps *bool  `json:"IsHttpRedirectToHttps,omitempty" xml:"IsHttpRedirectToHttps,omitempty"`
+	SslOcspCacheEnable    *bool  `json:"SslOcspCacheEnable,omitempty" xml:"SslOcspCacheEnable,omitempty"`
+	SslOcspEnable         *bool  `json:"SslOcspEnable,omitempty" xml:"SslOcspEnable,omitempty"`
+	SslVerifyDepth        *int32 `json:"SslVerifyDepth,omitempty" xml:"SslVerifyDepth,omitempty"`
 	// The wildcard domain name mode.
 	//
 	// example:
@@ -809,6 +813,10 @@ func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) GetCertificateVali
 	return s.CertificateValidStart
 }
 
+func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) GetClientCertSDnPassThrough() *bool {
+	return s.ClientCertSDnPassThrough
+}
+
 func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) GetCustomDomainType() *string {
 	return s.CustomDomainType
 }
@@ -839,6 +847,18 @@ func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) GetDomainWebSocket
 
 func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) GetIsHttpRedirectToHttps() *bool {
 	return s.IsHttpRedirectToHttps
+}
+
+func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) GetSslOcspCacheEnable() *bool {
+	return s.SslOcspCacheEnable
+}
+
+func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) GetSslOcspEnable() *bool {
+	return s.SslOcspEnable
+}
+
+func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) GetSslVerifyDepth() *int32 {
+	return s.SslVerifyDepth
 }
 
 func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) GetWildcardDomainPatterns() *string {
@@ -872,6 +892,11 @@ func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) SetCertificateVali
 
 func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) SetCertificateValidStart(v int64) *DescribeApiGroupResponseBodyCustomDomainsDomainItem {
 	s.CertificateValidStart = &v
+	return s
+}
+
+func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) SetClientCertSDnPassThrough(v bool) *DescribeApiGroupResponseBodyCustomDomainsDomainItem {
+	s.ClientCertSDnPassThrough = &v
 	return s
 }
 
@@ -912,6 +937,21 @@ func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) SetDomainWebSocket
 
 func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) SetIsHttpRedirectToHttps(v bool) *DescribeApiGroupResponseBodyCustomDomainsDomainItem {
 	s.IsHttpRedirectToHttps = &v
+	return s
+}
+
+func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) SetSslOcspCacheEnable(v bool) *DescribeApiGroupResponseBodyCustomDomainsDomainItem {
+	s.SslOcspCacheEnable = &v
+	return s
+}
+
+func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) SetSslOcspEnable(v bool) *DescribeApiGroupResponseBodyCustomDomainsDomainItem {
+	s.SslOcspEnable = &v
+	return s
+}
+
+func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) SetSslVerifyDepth(v int32) *DescribeApiGroupResponseBodyCustomDomainsDomainItem {
+	s.SslVerifyDepth = &v
 	return s
 }
 
