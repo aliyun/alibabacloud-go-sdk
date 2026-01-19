@@ -6631,6 +6631,10 @@ func (client *Client) UpdateResourceInstanceWithOptions(ClusterId *string, Resou
 		body["Action"] = request.Action
 	}
 
+	if !dara.IsNil(request.NewDiskSize) {
+		body["NewDiskSize"] = request.NewDiskSize
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),

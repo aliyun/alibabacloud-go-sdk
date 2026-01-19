@@ -33,6 +33,8 @@ type iResourceInstance interface {
 	GetInstanceMemory() *string
 	SetInstanceName(v string) *ResourceInstance
 	GetInstanceName() *string
+	SetInstancePhase(v string) *ResourceInstance
+	GetInstancePhase() *string
 	SetInstanceStatus(v string) *ResourceInstance
 	GetInstanceStatus() *string
 	SetInstanceSystemDiskSize(v int32) *ResourceInstance
@@ -72,6 +74,7 @@ type ResourceInstance struct {
 	InstanceIp             *string                   `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
 	InstanceMemory         *string                   `json:"InstanceMemory,omitempty" xml:"InstanceMemory,omitempty"`
 	InstanceName           *string                   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstancePhase          *string                   `json:"InstancePhase,omitempty" xml:"InstancePhase,omitempty"`
 	InstanceStatus         *string                   `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	InstanceSystemDiskSize *int32                    `json:"InstanceSystemDiskSize,omitempty" xml:"InstanceSystemDiskSize,omitempty"`
 	InstanceTenantIp       *string                   `json:"InstanceTenantIp,omitempty" xml:"InstanceTenantIp,omitempty"`
@@ -140,6 +143,10 @@ func (s *ResourceInstance) GetInstanceMemory() *string {
 
 func (s *ResourceInstance) GetInstanceName() *string {
 	return s.InstanceName
+}
+
+func (s *ResourceInstance) GetInstancePhase() *string {
+	return s.InstancePhase
 }
 
 func (s *ResourceInstance) GetInstanceStatus() *string {
@@ -247,6 +254,11 @@ func (s *ResourceInstance) SetInstanceMemory(v string) *ResourceInstance {
 
 func (s *ResourceInstance) SetInstanceName(v string) *ResourceInstance {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *ResourceInstance) SetInstancePhase(v string) *ResourceInstance {
+	s.InstancePhase = &v
 	return s
 }
 
