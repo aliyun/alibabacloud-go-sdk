@@ -504,7 +504,8 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	// example:
 	//
 	// Basic
-	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	VpcType    *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	VplVersion *string `json:"VplVersion,omitempty" xml:"VplVersion,omitempty"`
 }
 
 func (s DescribeOfficeSitesResponseBodyOfficeSites) String() string {
@@ -773,6 +774,10 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetVpcId() *string {
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetVpcType() *string {
 	return s.VpcType
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetVplVersion() *string {
+	return s.VplVersion
 }
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetADConnectors(v []*DescribeOfficeSitesResponseBodyOfficeSitesADConnectors) *DescribeOfficeSitesResponseBodyOfficeSites {
@@ -1097,6 +1102,11 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetVpcId(v string) *Describ
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetVpcType(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
 	s.VpcType = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetVplVersion(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.VplVersion = &v
 	return s
 }
 
