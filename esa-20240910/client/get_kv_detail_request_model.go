@@ -16,12 +16,16 @@ type iGetKvDetailRequest interface {
 }
 
 type GetKvDetailRequest struct {
+	// The key name for the query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:

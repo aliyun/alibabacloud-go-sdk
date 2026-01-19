@@ -14,6 +14,8 @@ type iListEdgeContainerAppImageSecretsRequest interface {
 }
 
 type ListEdgeContainerAppImageSecretsRequest struct {
+	// Application ID, which can be obtained using the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:

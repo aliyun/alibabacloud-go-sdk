@@ -20,24 +20,32 @@ type iCreateEdgeContainerAppImageSecretRequest interface {
 }
 
 type CreateEdgeContainerAppImageSecretRequest struct {
+	// Application ID, which can be obtained using the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Image repository password.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ***
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Image repository address.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cr-cn-shanghai.edas.aliyuncs.com
 	Registry *string `json:"Registry,omitempty" xml:"Registry,omitempty"`
+	// Image repository username.
+	//
 	// This parameter is required.
 	//
 	// example:

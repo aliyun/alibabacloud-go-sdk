@@ -18,18 +18,24 @@ type iDeleteHttpDDoSIntelligentRuleRequest interface {
 }
 
 type DeleteHttpDDoSIntelligentRuleRequest struct {
+	// Record name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// www.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// Rule ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20928021
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:

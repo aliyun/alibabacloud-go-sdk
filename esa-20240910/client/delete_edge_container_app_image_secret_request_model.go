@@ -16,12 +16,16 @@ type iDeleteEdgeContainerAppImageSecretRequest interface {
 }
 
 type DeleteEdgeContainerAppImageSecretRequest struct {
+	// Application ID, which can be obtained using the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Name of the image secret.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,14 +18,20 @@ type iGetKvDetailResponseBody interface {
 }
 
 type GetKvDetailResponseBody struct {
+	// The expiration time of the key. Unit: seconds.
+	//
 	// example:
 	//
 	// 3600
 	ExpirationTtl *string `json:"ExpirationTtl,omitempty" xml:"ExpirationTtl,omitempty"`
+	// The expiration time of the key. Unit: seconds.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The value of the key. The value of the root node.
+	//
 	// example:
 	//
 	// test_value

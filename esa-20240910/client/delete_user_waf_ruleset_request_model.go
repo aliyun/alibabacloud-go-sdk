@@ -16,12 +16,16 @@ type iDeleteUserWafRulesetRequest interface {
 }
 
 type DeleteUserWafRulesetRequest struct {
+	// WAF ruleset ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

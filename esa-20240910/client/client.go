@@ -2406,7 +2406,7 @@ func (client *Client) CreateEdgeContainerApp(request *CreateEdgeContainerAppRequ
 
 // Summary:
 //
-// 创建边缘容器应用的镜像秘钥
+// # Create an image secret for the edge container application
 //
 // @param request - CreateEdgeContainerAppImageSecretRequest
 //
@@ -2462,7 +2462,7 @@ func (client *Client) CreateEdgeContainerAppImageSecretWithOptions(request *Crea
 
 // Summary:
 //
-// 创建边缘容器应用的镜像秘钥
+// # Create an image secret for the edge container application
 //
 // @param request - CreateEdgeContainerAppImageSecretRequest
 //
@@ -6941,7 +6941,7 @@ func (client *Client) DeleteEdgeContainerApp(request *DeleteEdgeContainerAppRequ
 
 // Summary:
 //
-// 删除边缘容器应用的镜像秘钥
+// # Delete the image secret of an edge container application
 //
 // @param request - DeleteEdgeContainerAppImageSecretRequest
 //
@@ -6989,7 +6989,7 @@ func (client *Client) DeleteEdgeContainerAppImageSecretWithOptions(request *Dele
 
 // Summary:
 //
-// 删除边缘容器应用的镜像秘钥
+// # Delete the image secret of an edge container application
 //
 // @param request - DeleteEdgeContainerAppImageSecretRequest
 //
@@ -7143,7 +7143,7 @@ func (client *Client) DeleteEdgeContainerAppVersion(request *DeleteEdgeContainer
 
 // Summary:
 //
-// 删除深度学习和防护下发的规则
+// # Delete rules for deep learning and protection distribution
 //
 // @param request - DeleteHttpDDoSIntelligentRuleRequest
 //
@@ -7195,7 +7195,7 @@ func (client *Client) DeleteHttpDDoSIntelligentRuleWithOptions(request *DeleteHt
 
 // Summary:
 //
-// 删除深度学习和防护下发的规则
+// # Delete rules for deep learning and protection distribution
 //
 // @param request - DeleteHttpDDoSIntelligentRuleRequest
 //
@@ -9369,27 +9369,13 @@ func (client *Client) DeleteUserDeliveryTask(request *DeleteUserDeliveryTaskRequ
 
 // Summary:
 //
-// 用于删除实例级别的Web应用防火墙规则集。
+// Used for deleting an instance-level Web Application Firewall (WAF) ruleset.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request Description
 //
-// - 本API允许用户为指定实例创建新的WAF（Web Application Firewall）规则集。
-//
-// - `InstanceId` 是必需参数，指定了要为其创建规则集的具体实例。
-//
-// - `Phase` 参数定义了规则集的应用阶段，例如自定义规则、频次控制等。
-//
-// - `Name` 和 `Expression` 是必填项，分别代表规则集的名字和具体的匹配表达式。
-//
-// - 可选参数 `Description` 提供了对规则集功能或用途的文字描述。
-//
-// - `Status` 控制着规则集是否立即生效 (`on`) 或者处于关闭状态 (`off`)。
-//
-// - 通过 `Rules` 参数可以进一步配置更详细的规则列表，每个规则都包含名称、位置、表达式及动作等属性。
-//
-// - 成功响应将返回新创建规则集的唯一标识符 `Id` 以及所有关联规则的ID列表 `RuleIds`。
+// - `InstanceId` and `Id` are required parameters, specifying the WAF instance ID to be operated on and the specific ruleset ID, respectively.
 //
 // @param request - DeleteUserWafRulesetRequest
 //
@@ -9439,27 +9425,13 @@ func (client *Client) DeleteUserWafRulesetWithOptions(request *DeleteUserWafRule
 
 // Summary:
 //
-// 用于删除实例级别的Web应用防火墙规则集。
+// Used for deleting an instance-level Web Application Firewall (WAF) ruleset.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request Description
 //
-// - 本API允许用户为指定实例创建新的WAF（Web Application Firewall）规则集。
-//
-// - `InstanceId` 是必需参数，指定了要为其创建规则集的具体实例。
-//
-// - `Phase` 参数定义了规则集的应用阶段，例如自定义规则、频次控制等。
-//
-// - `Name` 和 `Expression` 是必填项，分别代表规则集的名字和具体的匹配表达式。
-//
-// - 可选参数 `Description` 提供了对规则集功能或用途的文字描述。
-//
-// - `Status` 控制着规则集是否立即生效 (`on`) 或者处于关闭状态 (`off`)。
-//
-// - 通过 `Rules` 参数可以进一步配置更详细的规则列表，每个规则都包含名称、位置、表达式及动作等属性。
-//
-// - 成功响应将返回新创建规则集的唯一标识符 `Id` 以及所有关联规则的ID列表 `RuleIds`。
+// - `InstanceId` and `Id` are required parameters, specifying the WAF instance ID to be operated on and the specific ruleset ID, respectively.
 //
 // @param request - DeleteUserWafRulesetRequest
 //
@@ -10173,6 +10145,64 @@ func (client *Client) DescribeDDoSL7QpsList(request *DescribeDDoSL7QpsListReques
 
 // Summary:
 //
+// 查询当前实例设置的Ddos最大防护弹性值
+//
+// @param request - DescribeDdosMaxBurstGbpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDdosMaxBurstGbpsResponse
+func (client *Client) DescribeDdosMaxBurstGbpsWithOptions(request *DescribeDdosMaxBurstGbpsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDdosMaxBurstGbpsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDdosMaxBurstGbps"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDdosMaxBurstGbpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询当前实例设置的Ddos最大防护弹性值
+//
+// @param request - DescribeDdosMaxBurstGbpsRequest
+//
+// @return DescribeDdosMaxBurstGbpsResponse
+func (client *Client) DescribeDdosMaxBurstGbps(request *DescribeDdosMaxBurstGbpsRequest) (_result *DescribeDdosMaxBurstGbpsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDdosMaxBurstGbpsResponse{}
+	_body, _err := client.DescribeDdosMaxBurstGbpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Provides monitoring data for metrics of ESA edge containers.
 //
 // @param request - DescribeEdgeContainerAppStatsRequest
@@ -10346,6 +10376,224 @@ func (client *Client) DescribeHttpDDoSAttackProtection(request *DescribeHttpDDoS
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeHttpDDoSAttackProtectionResponse{}
 	_body, _err := client.DescribeHttpDDoSAttackProtectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询HTTP DDoS攻击防护规则
+//
+// @param request - DescribeHttpDDoSAttackRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHttpDDoSAttackRulesResponse
+func (client *Client) DescribeHttpDDoSAttackRulesWithOptions(request *DescribeHttpDDoSAttackRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeHttpDDoSAttackRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeHttpDDoSAttackRules"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeHttpDDoSAttackRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询HTTP DDoS攻击防护规则
+//
+// @param request - DescribeHttpDDoSAttackRulesRequest
+//
+// @return DescribeHttpDDoSAttackRulesResponse
+func (client *Client) DescribeHttpDDoSAttackRules(request *DescribeHttpDDoSAttackRulesRequest) (_result *DescribeHttpDDoSAttackRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeHttpDDoSAttackRulesResponse{}
+	_body, _err := client.DescribeHttpDDoSAttackRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询深度学习和防护下发的精准访问控制规则
+//
+// @param request - DescribeHttpDDoSIntelligentAclRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHttpDDoSIntelligentAclRulesResponse
+func (client *Client) DescribeHttpDDoSIntelligentAclRulesWithOptions(request *DescribeHttpDDoSIntelligentAclRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeHttpDDoSIntelligentAclRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RuleType) {
+		query["RuleType"] = request.RuleType
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeHttpDDoSIntelligentAclRules"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeHttpDDoSIntelligentAclRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询深度学习和防护下发的精准访问控制规则
+//
+// @param request - DescribeHttpDDoSIntelligentAclRulesRequest
+//
+// @return DescribeHttpDDoSIntelligentAclRulesResponse
+func (client *Client) DescribeHttpDDoSIntelligentAclRules(request *DescribeHttpDDoSIntelligentAclRulesRequest) (_result *DescribeHttpDDoSIntelligentAclRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeHttpDDoSIntelligentAclRulesResponse{}
+	_body, _err := client.DescribeHttpDDoSIntelligentAclRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询深度学习和防护下发的频率控制规则
+//
+// @param request - DescribeHttpDDoSIntelligentRateLimitRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHttpDDoSIntelligentRateLimitRulesResponse
+func (client *Client) DescribeHttpDDoSIntelligentRateLimitRulesWithOptions(request *DescribeHttpDDoSIntelligentRateLimitRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeHttpDDoSIntelligentRateLimitRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RuleType) {
+		query["RuleType"] = request.RuleType
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeHttpDDoSIntelligentRateLimitRules"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeHttpDDoSIntelligentRateLimitRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询深度学习和防护下发的频率控制规则
+//
+// @param request - DescribeHttpDDoSIntelligentRateLimitRulesRequest
+//
+// @return DescribeHttpDDoSIntelligentRateLimitRulesResponse
+func (client *Client) DescribeHttpDDoSIntelligentRateLimitRules(request *DescribeHttpDDoSIntelligentRateLimitRulesRequest) (_result *DescribeHttpDDoSIntelligentRateLimitRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeHttpDDoSIntelligentRateLimitRulesResponse{}
+	_body, _err := client.DescribeHttpDDoSIntelligentRateLimitRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13296,7 +13544,7 @@ func (client *Client) GetKvAccount() (_result *GetKvAccountResponse, _err error)
 
 // Summary:
 //
-// 查询Key-Value对的某个Key的详情
+// Queries the value and time to live (TTL) of a key.
 //
 // @param request - GetKvDetailRequest
 //
@@ -13344,7 +13592,7 @@ func (client *Client) GetKvDetailWithOptions(request *GetKvDetailRequest, runtim
 
 // Summary:
 //
-// 查询Key-Value对的某个Key的详情
+// Queries the value and time to live (TTL) of a key.
 //
 // @param request - GetKvDetailRequest
 //
@@ -16785,7 +17033,7 @@ func (client *Client) ListESAIPInfo(request *ListESAIPInfoRequest) (_result *Lis
 
 // Summary:
 //
-// 获取边缘容器应用的镜像秘钥列表
+// # Retrieve the list of image secrets for edge container applications
 //
 // @param request - ListEdgeContainerAppImageSecretsRequest
 //
@@ -16829,7 +17077,7 @@ func (client *Client) ListEdgeContainerAppImageSecretsWithOptions(request *ListE
 
 // Summary:
 //
-// 获取边缘容器应用的镜像秘钥列表
+// # Retrieve the list of image secrets for edge container applications
 //
 // @param request - ListEdgeContainerAppImageSecretsRequest
 //
@@ -22094,6 +22342,72 @@ func (client *Client) SetClientCertificateHostnames(request *SetClientCertificat
 
 // Summary:
 //
+// 设置Ddos实例的最大防护弹性值
+//
+// @param request - SetDdosMaxBurstGbpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetDdosMaxBurstGbpsResponse
+func (client *Client) SetDdosMaxBurstGbpsWithOptions(request *SetDdosMaxBurstGbpsRequest, runtime *dara.RuntimeOptions) (_result *SetDdosMaxBurstGbpsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxBurstGbps) {
+		query["MaxBurstGbps"] = request.MaxBurstGbps
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetDdosMaxBurstGbps"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetDdosMaxBurstGbpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置Ddos实例的最大防护弹性值
+//
+// @param request - SetDdosMaxBurstGbpsRequest
+//
+// @return SetDdosMaxBurstGbpsResponse
+func (client *Client) SetDdosMaxBurstGbps(request *SetDdosMaxBurstGbpsRequest) (_result *SetDdosMaxBurstGbpsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SetDdosMaxBurstGbpsResponse{}
+	_body, _err := client.SetDdosMaxBurstGbpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Configures smart HTTP DDoS protection.
 //
 // @param request - SetHttpDDoSAttackIntelligentProtectionRequest
@@ -22230,7 +22544,7 @@ func (client *Client) SetHttpDDoSAttackProtection(request *SetHttpDDoSAttackProt
 
 // Summary:
 //
-// 设置HTTP DDoS攻击防护指定规则防护动作
+// # Set the Protection Action for Specified HTTP DDoS Attack Rules
 //
 // @param request - SetHttpDDoSAttackRuleActionRequest
 //
@@ -22282,7 +22596,7 @@ func (client *Client) SetHttpDDoSAttackRuleActionWithOptions(request *SetHttpDDo
 
 // Summary:
 //
-// 设置HTTP DDoS攻击防护指定规则防护动作
+// # Set the Protection Action for Specified HTTP DDoS Attack Rules
 //
 // @param request - SetHttpDDoSAttackRuleActionRequest
 //
@@ -22300,7 +22614,7 @@ func (client *Client) SetHttpDDoSAttackRuleAction(request *SetHttpDDoSAttackRule
 
 // Summary:
 //
-// 设置HTTP DDoS攻击防护指定规则防护状态
+// # Set the Protection Status of Specified HTTP DDoS Attack Rules
 //
 // @param request - SetHttpDDoSAttackRuleStatusRequest
 //
@@ -22352,7 +22666,7 @@ func (client *Client) SetHttpDDoSAttackRuleStatusWithOptions(request *SetHttpDDo
 
 // Summary:
 //
-// 设置HTTP DDoS攻击防护指定规则防护状态
+// # Set the Protection Status of Specified HTTP DDoS Attack Rules
 //
 // @param request - SetHttpDDoSAttackRuleStatusRequest
 //
