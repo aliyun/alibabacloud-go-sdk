@@ -187,6 +187,7 @@ type ListClusterKubeconfigStatesResponseBodyStates struct {
 	//
 	// Expired
 	CertState         *string                                                           `json:"cert_state,omitempty" xml:"cert_state,omitempty"`
+	CloudServiceName  *string                                                           `json:"cloud_service_name,omitempty" xml:"cloud_service_name,omitempty"`
 	CloudServiceRoles []*ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles `json:"cloud_service_roles,omitempty" xml:"cloud_service_roles,omitempty" type:"Repeated"`
 	// Indicates whether the client certificate for the kubeconfig file can be revoked.
 	//
@@ -232,6 +233,10 @@ func (s *ListClusterKubeconfigStatesResponseBodyStates) GetCertState() *string {
 	return s.CertState
 }
 
+func (s *ListClusterKubeconfigStatesResponseBodyStates) GetCloudServiceName() *string {
+	return s.CloudServiceName
+}
+
 func (s *ListClusterKubeconfigStatesResponseBodyStates) GetCloudServiceRoles() []*ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles {
 	return s.CloudServiceRoles
 }
@@ -272,6 +277,11 @@ func (s *ListClusterKubeconfigStatesResponseBodyStates) SetCertExpireTime(v stri
 
 func (s *ListClusterKubeconfigStatesResponseBodyStates) SetCertState(v string) *ListClusterKubeconfigStatesResponseBodyStates {
 	s.CertState = &v
+	return s
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyStates) SetCloudServiceName(v string) *ListClusterKubeconfigStatesResponseBodyStates {
+	s.CloudServiceName = &v
 	return s
 }
 
