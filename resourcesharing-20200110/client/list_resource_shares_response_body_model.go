@@ -70,7 +70,16 @@ func (s *ListResourceSharesResponseBody) SetResourceShares(v []*ListResourceShar
 }
 
 func (s *ListResourceSharesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceShares != nil {
+		for _, item := range s.ResourceShares {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceSharesResponseBodyResourceShares struct {
@@ -230,7 +239,16 @@ func (s *ListResourceSharesResponseBodyResourceShares) SetUpdateTime(v string) *
 }
 
 func (s *ListResourceSharesResponseBodyResourceShares) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceSharesResponseBodyResourceSharesTags struct {

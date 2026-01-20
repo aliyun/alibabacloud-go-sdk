@@ -70,7 +70,16 @@ func (s *ListResourceShareInvitationsResponseBody) SetResourceShareInvitations(v
 }
 
 func (s *ListResourceShareInvitationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceShareInvitations != nil {
+		for _, item := range s.ResourceShareInvitations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceShareInvitationsResponseBodyResourceShareInvitations struct {
@@ -213,7 +222,16 @@ func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitations) SetSt
 }
 
 func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitations) Validate() error {
-	return dara.Validate(s)
+	if s.InvitationFailedDetails != nil {
+		for _, item := range s.InvitationFailedDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails struct {

@@ -59,5 +59,10 @@ func (s *AssociateResourceSharePermissionResponse) SetBody(v *AssociateResourceS
 }
 
 func (s *AssociateResourceSharePermissionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

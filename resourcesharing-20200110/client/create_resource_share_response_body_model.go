@@ -53,7 +53,12 @@ func (s *CreateResourceShareResponseBody) SetResourceShare(v *CreateResourceShar
 }
 
 func (s *CreateResourceShareResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceShare != nil {
+		if err := s.ResourceShare.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateResourceShareResponseBodyResourceShare struct {

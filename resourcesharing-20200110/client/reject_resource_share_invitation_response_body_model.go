@@ -53,7 +53,12 @@ func (s *RejectResourceShareInvitationResponseBody) SetResourceShareInvitation(v
 }
 
 func (s *RejectResourceShareInvitationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceShareInvitation != nil {
+		if err := s.ResourceShareInvitation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RejectResourceShareInvitationResponseBodyResourceShareInvitation struct {

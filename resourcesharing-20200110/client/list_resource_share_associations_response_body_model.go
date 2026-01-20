@@ -70,7 +70,16 @@ func (s *ListResourceShareAssociationsResponseBody) SetResourceShareAssociations
 }
 
 func (s *ListResourceShareAssociationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceShareAssociations != nil {
+		for _, item := range s.ResourceShareAssociations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceShareAssociationsResponseBodyResourceShareAssociations struct {
@@ -151,6 +160,10 @@ type ListResourceShareAssociationsResponseBodyResourceShareAssociations struct {
 	// false
 	External    *bool   `json:"External,omitempty" xml:"External,omitempty"`
 	ResourceArn *string `json:"ResourceArn,omitempty" xml:"ResourceArn,omitempty"`
+	// example:
+	//
+	// {"sharePrincipals":true,"shareTagOptions":false}
+	ResourceProperty *string `json:"ResourceProperty,omitempty" xml:"ResourceProperty,omitempty"`
 	// The ID of the resource share.
 	//
 	// example:
@@ -245,6 +258,10 @@ func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociations) Get
 	return s.ResourceArn
 }
 
+func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociations) GetResourceProperty() *string {
+	return s.ResourceProperty
+}
+
 func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociations) GetResourceShareId() *string {
 	return s.ResourceShareId
 }
@@ -306,6 +323,11 @@ func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociations) Set
 	return s
 }
 
+func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociations) SetResourceProperty(v string) *ListResourceShareAssociationsResponseBodyResourceShareAssociations {
+	s.ResourceProperty = &v
+	return s
+}
+
 func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociations) SetResourceShareId(v string) *ListResourceShareAssociationsResponseBodyResourceShareAssociations {
 	s.ResourceShareId = &v
 	return s
@@ -327,7 +349,16 @@ func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociations) Set
 }
 
 func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociations) Validate() error {
-	return dara.Validate(s)
+	if s.AssociationFailedDetails != nil {
+		for _, item := range s.AssociationFailedDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails struct {

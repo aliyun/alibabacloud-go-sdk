@@ -17,6 +17,8 @@ type iCreateResourceShareRequest interface {
 	GetResourceArns() []*string
 	SetResourceGroupId(v string) *CreateResourceShareRequest
 	GetResourceGroupId() *string
+	SetResourceProperties(v []*CreateResourceShareRequestResourceProperties) *CreateResourceShareRequest
+	GetResourceProperties() []*CreateResourceShareRequestResourceProperties
 	SetResourceShareName(v string) *CreateResourceShareRequest
 	GetResourceShareName() *string
 	SetResources(v []*CreateResourceShareRequestResources) *CreateResourceShareRequest
@@ -48,7 +50,8 @@ type CreateResourceShareRequest struct {
 	// example:
 	//
 	// rg-aekz5nlvlak****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId    *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceProperties []*CreateResourceShareRequestResourceProperties `json:"ResourceProperties,omitempty" xml:"ResourceProperties,omitempty" type:"Repeated"`
 	// The name of the resource share.
 	//
 	// The name must be 1 to 50 characters in length.
@@ -101,6 +104,10 @@ func (s *CreateResourceShareRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
+func (s *CreateResourceShareRequest) GetResourceProperties() []*CreateResourceShareRequestResourceProperties {
+	return s.ResourceProperties
+}
+
 func (s *CreateResourceShareRequest) GetResourceShareName() *string {
 	return s.ResourceShareName
 }
@@ -141,6 +148,11 @@ func (s *CreateResourceShareRequest) SetResourceGroupId(v string) *CreateResourc
 	return s
 }
 
+func (s *CreateResourceShareRequest) SetResourceProperties(v []*CreateResourceShareRequestResourceProperties) *CreateResourceShareRequest {
+	s.ResourceProperties = v
+	return s
+}
+
 func (s *CreateResourceShareRequest) SetResourceShareName(v string) *CreateResourceShareRequest {
 	s.ResourceShareName = &v
 	return s
@@ -167,6 +179,83 @@ func (s *CreateResourceShareRequest) SetTargets(v []*string) *CreateResourceShar
 }
 
 func (s *CreateResourceShareRequest) Validate() error {
+	if s.ResourceProperties != nil {
+		for _, item := range s.ResourceProperties {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TargetProperties != nil {
+		for _, item := range s.TargetProperties {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateResourceShareRequestResourceProperties struct {
+	// example:
+	//
+	// {"sharePrincipals":true,"shareTagOptions":false}
+	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// example:
+	//
+	// acs:vpc:cn-shanghai:103755469187****:vswitch/vsw-uf62b11ue4m8oz2di****
+	ResourceArn *string `json:"ResourceArn,omitempty" xml:"ResourceArn,omitempty"`
+}
+
+func (s CreateResourceShareRequestResourceProperties) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateResourceShareRequestResourceProperties) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceShareRequestResourceProperties) GetProperty() *string {
+	return s.Property
+}
+
+func (s *CreateResourceShareRequestResourceProperties) GetResourceArn() *string {
+	return s.ResourceArn
+}
+
+func (s *CreateResourceShareRequestResourceProperties) SetProperty(v string) *CreateResourceShareRequestResourceProperties {
+	s.Property = &v
+	return s
+}
+
+func (s *CreateResourceShareRequestResourceProperties) SetResourceArn(v string) *CreateResourceShareRequestResourceProperties {
+	s.ResourceArn = &v
+	return s
+}
+
+func (s *CreateResourceShareRequestResourceProperties) Validate() error {
 	return dara.Validate(s)
 }
 

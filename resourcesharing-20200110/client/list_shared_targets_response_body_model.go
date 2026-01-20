@@ -70,7 +70,16 @@ func (s *ListSharedTargetsResponseBody) SetSharedTargets(v []*ListSharedTargetsR
 }
 
 func (s *ListSharedTargetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SharedTargets != nil {
+		for _, item := range s.SharedTargets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSharedTargetsResponseBodySharedTargets struct {

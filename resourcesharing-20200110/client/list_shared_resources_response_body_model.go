@@ -70,7 +70,16 @@ func (s *ListSharedResourcesResponseBody) SetSharedResources(v []*ListSharedReso
 }
 
 func (s *ListSharedResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SharedResources != nil {
+		for _, item := range s.SharedResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSharedResourcesResponseBodySharedResources struct {

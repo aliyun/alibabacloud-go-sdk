@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -75,9 +76,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AcceptResourceShareInvitationResponse
 func (client *Client) AcceptResourceShareInvitationWithOptions(request *AcceptResourceShareInvitationRequest, runtime *dara.RuntimeOptions) (_result *AcceptResourceShareInvitationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceShareInvitationId) {
@@ -149,9 +152,11 @@ func (client *Client) AcceptResourceShareInvitation(request *AcceptResourceShare
 //
 // @return AssociateResourceShareResponse
 func (client *Client) AssociateResourceShareWithOptions(request *AssociateResourceShareRequest, runtime *dara.RuntimeOptions) (_result *AssociateResourceShareResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PermissionNames) {
@@ -160,6 +165,10 @@ func (client *Client) AssociateResourceShareWithOptions(request *AssociateResour
 
 	if !dara.IsNil(request.ResourceArns) {
 		query["ResourceArns"] = request.ResourceArns
+	}
+
+	if !dara.IsNil(request.ResourceProperties) {
+		query["ResourceProperties"] = request.ResourceProperties
 	}
 
 	if !dara.IsNil(request.ResourceShareId) {
@@ -237,9 +246,11 @@ func (client *Client) AssociateResourceShare(request *AssociateResourceShareRequ
 //
 // @return AssociateResourceSharePermissionResponse
 func (client *Client) AssociateResourceSharePermissionWithOptions(request *AssociateResourceSharePermissionRequest, runtime *dara.RuntimeOptions) (_result *AssociateResourceSharePermissionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PermissionName) {
@@ -309,9 +320,11 @@ func (client *Client) AssociateResourceSharePermission(request *AssociateResourc
 //
 // @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceGroupId) {
@@ -430,9 +443,11 @@ func (client *Client) CheckSharingWithResourceDirectoryStatus() (_result *CheckS
 //
 // @return CreateResourceShareResponse
 func (client *Client) CreateResourceShareWithOptions(request *CreateResourceShareRequest, runtime *dara.RuntimeOptions) (_result *CreateResourceShareResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllowExternalTargets) {
@@ -449,6 +464,10 @@ func (client *Client) CreateResourceShareWithOptions(request *CreateResourceShar
 
 	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceProperties) {
+		query["ResourceProperties"] = request.ResourceProperties
 	}
 
 	if !dara.IsNil(request.ResourceShareName) {
@@ -536,9 +555,11 @@ func (client *Client) CreateResourceShare(request *CreateResourceShareRequest) (
 //
 // @return DeleteResourceShareResponse
 func (client *Client) DeleteResourceShareWithOptions(request *DeleteResourceShareRequest, runtime *dara.RuntimeOptions) (_result *DeleteResourceShareResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceShareId) {
@@ -604,9 +625,11 @@ func (client *Client) DeleteResourceShare(request *DeleteResourceShareRequest) (
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -672,9 +695,11 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 //
 // @return DisassociateResourceShareResponse
 func (client *Client) DisassociateResourceShareWithOptions(request *DisassociateResourceShareRequest, runtime *dara.RuntimeOptions) (_result *DisassociateResourceShareResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceArns) {
@@ -760,9 +785,11 @@ func (client *Client) DisassociateResourceShare(request *DisassociateResourceSha
 //
 // @return DisassociateResourceSharePermissionResponse
 func (client *Client) DisassociateResourceSharePermissionWithOptions(request *DisassociateResourceSharePermissionRequest, runtime *dara.RuntimeOptions) (_result *DisassociateResourceSharePermissionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PermissionName) {
@@ -891,9 +918,11 @@ func (client *Client) EnableSharingWithResourceDirectory() (_result *EnableShari
 //
 // @return GetPermissionResponse
 func (client *Client) GetPermissionWithOptions(request *GetPermissionRequest, runtime *dara.RuntimeOptions) (_result *GetPermissionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PermissionName) {
@@ -963,9 +992,11 @@ func (client *Client) GetPermission(request *GetPermissionRequest) (_result *Get
 //
 // @return ListPermissionVersionsResponse
 func (client *Client) ListPermissionVersionsWithOptions(request *ListPermissionVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListPermissionVersionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -1039,9 +1070,11 @@ func (client *Client) ListPermissionVersions(request *ListPermissionVersionsRequ
 //
 // @return ListPermissionsResponse
 func (client *Client) ListPermissionsWithOptions(request *ListPermissionsRequest, runtime *dara.RuntimeOptions) (_result *ListPermissionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -1119,9 +1152,11 @@ func (client *Client) ListPermissions(request *ListPermissionsRequest) (_result 
 //
 // @return ListResourceShareAssociationsResponse
 func (client *Client) ListResourceShareAssociationsWithOptions(request *ListResourceShareAssociationsRequest, runtime *dara.RuntimeOptions) (_result *ListResourceShareAssociationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AssociationStatus) {
@@ -1221,9 +1256,11 @@ func (client *Client) ListResourceShareAssociations(request *ListResourceShareAs
 //
 // @return ListResourceShareInvitationsResponse
 func (client *Client) ListResourceShareInvitationsWithOptions(request *ListResourceShareInvitationsRequest, runtime *dara.RuntimeOptions) (_result *ListResourceShareInvitationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -1303,9 +1340,11 @@ func (client *Client) ListResourceShareInvitations(request *ListResourceShareInv
 //
 // @return ListResourceSharePermissionsResponse
 func (client *Client) ListResourceSharePermissionsWithOptions(request *ListResourceSharePermissionsRequest, runtime *dara.RuntimeOptions) (_result *ListResourceSharePermissionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -1387,9 +1426,11 @@ func (client *Client) ListResourceSharePermissions(request *ListResourceSharePer
 //
 // @return ListResourceSharesResponse
 func (client *Client) ListResourceSharesWithOptions(request *ListResourceSharesRequest, runtime *dara.RuntimeOptions) (_result *ListResourceSharesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -1491,9 +1532,11 @@ func (client *Client) ListResourceShares(request *ListResourceSharesRequest) (_r
 //
 // @return ListSharedResourcesResponse
 func (client *Client) ListSharedResourcesWithOptions(request *ListSharedResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListSharedResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -1589,9 +1632,11 @@ func (client *Client) ListSharedResources(request *ListSharedResourcesRequest) (
 //
 // @return ListSharedTargetsResponse
 func (client *Client) ListSharedTargetsWithOptions(request *ListSharedTargetsRequest, runtime *dara.RuntimeOptions) (_result *ListSharedTargetsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -1683,9 +1728,11 @@ func (client *Client) ListSharedTargets(request *ListSharedTargetsRequest) (_res
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextToken) {
@@ -1763,9 +1810,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // @return RejectResourceShareInvitationResponse
 func (client *Client) RejectResourceShareInvitationWithOptions(request *RejectResourceShareInvitationRequest, runtime *dara.RuntimeOptions) (_result *RejectResourceShareInvitationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceShareInvitationId) {
@@ -1827,9 +1876,11 @@ func (client *Client) RejectResourceShareInvitation(request *RejectResourceShare
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1899,9 +1950,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -1981,9 +2034,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // @return UpdateResourceShareResponse
 func (client *Client) UpdateResourceShareWithOptions(request *UpdateResourceShareRequest, runtime *dara.RuntimeOptions) (_result *UpdateResourceShareResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllowExternalTargets) {

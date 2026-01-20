@@ -53,7 +53,12 @@ func (s *UpdateResourceShareResponseBody) SetResourceShare(v *UpdateResourceShar
 }
 
 func (s *UpdateResourceShareResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceShare != nil {
+		if err := s.ResourceShare.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateResourceShareResponseBodyResourceShare struct {

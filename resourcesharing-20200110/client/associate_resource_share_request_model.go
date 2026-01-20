@@ -13,6 +13,8 @@ type iAssociateResourceShareRequest interface {
 	GetPermissionNames() []*string
 	SetResourceArns(v []*string) *AssociateResourceShareRequest
 	GetResourceArns() []*string
+	SetResourceProperties(v []*AssociateResourceShareRequestResourceProperties) *AssociateResourceShareRequest
+	GetResourceProperties() []*AssociateResourceShareRequestResourceProperties
 	SetResourceShareId(v string) *AssociateResourceShareRequest
 	GetResourceShareId() *string
 	SetResources(v []*AssociateResourceShareRequestResources) *AssociateResourceShareRequest
@@ -25,8 +27,9 @@ type iAssociateResourceShareRequest interface {
 
 type AssociateResourceShareRequest struct {
 	// The information about the permissions. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share. For more information, see [Permission library](https://help.aliyun.com/document_detail/465474.html).
-	PermissionNames []*string `json:"PermissionNames,omitempty" xml:"PermissionNames,omitempty" type:"Repeated"`
-	ResourceArns    []*string `json:"ResourceArns,omitempty" xml:"ResourceArns,omitempty" type:"Repeated"`
+	PermissionNames    []*string                                          `json:"PermissionNames,omitempty" xml:"PermissionNames,omitempty" type:"Repeated"`
+	ResourceArns       []*string                                          `json:"ResourceArns,omitempty" xml:"ResourceArns,omitempty" type:"Repeated"`
+	ResourceProperties []*AssociateResourceShareRequestResourceProperties `json:"ResourceProperties,omitempty" xml:"ResourceProperties,omitempty" type:"Repeated"`
 	// The ID of the resource share.
 	//
 	// This parameter is required.
@@ -65,6 +68,10 @@ func (s *AssociateResourceShareRequest) GetResourceArns() []*string {
 	return s.ResourceArns
 }
 
+func (s *AssociateResourceShareRequest) GetResourceProperties() []*AssociateResourceShareRequestResourceProperties {
+	return s.ResourceProperties
+}
+
 func (s *AssociateResourceShareRequest) GetResourceShareId() *string {
 	return s.ResourceShareId
 }
@@ -91,6 +98,11 @@ func (s *AssociateResourceShareRequest) SetResourceArns(v []*string) *AssociateR
 	return s
 }
 
+func (s *AssociateResourceShareRequest) SetResourceProperties(v []*AssociateResourceShareRequestResourceProperties) *AssociateResourceShareRequest {
+	s.ResourceProperties = v
+	return s
+}
+
 func (s *AssociateResourceShareRequest) SetResourceShareId(v string) *AssociateResourceShareRequest {
 	s.ResourceShareId = &v
 	return s
@@ -112,6 +124,74 @@ func (s *AssociateResourceShareRequest) SetTargets(v []*string) *AssociateResour
 }
 
 func (s *AssociateResourceShareRequest) Validate() error {
+	if s.ResourceProperties != nil {
+		for _, item := range s.ResourceProperties {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TargetProperties != nil {
+		for _, item := range s.TargetProperties {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type AssociateResourceShareRequestResourceProperties struct {
+	// example:
+	//
+	// {"sharePrincipals":true,"shareTagOptions":false}
+	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// example:
+	//
+	// acs:vpc:cn-shanghai:103755469187****:vswitch/vsw-uf62b11ue4m8oz2di****
+	ResourceArn *string `json:"ResourceArn,omitempty" xml:"ResourceArn,omitempty"`
+}
+
+func (s AssociateResourceShareRequestResourceProperties) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AssociateResourceShareRequestResourceProperties) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateResourceShareRequestResourceProperties) GetProperty() *string {
+	return s.Property
+}
+
+func (s *AssociateResourceShareRequestResourceProperties) GetResourceArn() *string {
+	return s.ResourceArn
+}
+
+func (s *AssociateResourceShareRequestResourceProperties) SetProperty(v string) *AssociateResourceShareRequestResourceProperties {
+	s.Property = &v
+	return s
+}
+
+func (s *AssociateResourceShareRequestResourceProperties) SetResourceArn(v string) *AssociateResourceShareRequestResourceProperties {
+	s.ResourceArn = &v
+	return s
+}
+
+func (s *AssociateResourceShareRequestResourceProperties) Validate() error {
 	return dara.Validate(s)
 }
 

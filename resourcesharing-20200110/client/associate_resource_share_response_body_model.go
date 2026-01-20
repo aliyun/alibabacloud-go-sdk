@@ -53,7 +53,16 @@ func (s *AssociateResourceShareResponseBody) SetResourceShareAssociations(v []*A
 }
 
 func (s *AssociateResourceShareResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceShareAssociations != nil {
+		for _, item := range s.ResourceShareAssociations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AssociateResourceShareResponseBodyResourceShareAssociations struct {
@@ -122,6 +131,10 @@ type AssociateResourceShareResponseBodyResourceShareAssociations struct {
 	// VSwitch
 	EntityType  *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	ResourceArn *string `json:"ResourceArn,omitempty" xml:"ResourceArn,omitempty"`
+	// example:
+	//
+	// {"sharePrincipals":true,"shareTagOptions":false}
+	ResourceProperty *string `json:"ResourceProperty,omitempty" xml:"ResourceProperty,omitempty"`
 	// The ID of the resource share.
 	//
 	// example:
@@ -204,6 +217,10 @@ func (s *AssociateResourceShareResponseBodyResourceShareAssociations) GetResourc
 	return s.ResourceArn
 }
 
+func (s *AssociateResourceShareResponseBodyResourceShareAssociations) GetResourceProperty() *string {
+	return s.ResourceProperty
+}
+
 func (s *AssociateResourceShareResponseBodyResourceShareAssociations) GetResourceShareId() *string {
 	return s.ResourceShareId
 }
@@ -252,6 +269,11 @@ func (s *AssociateResourceShareResponseBodyResourceShareAssociations) SetEntityT
 
 func (s *AssociateResourceShareResponseBodyResourceShareAssociations) SetResourceArn(v string) *AssociateResourceShareResponseBodyResourceShareAssociations {
 	s.ResourceArn = &v
+	return s
+}
+
+func (s *AssociateResourceShareResponseBodyResourceShareAssociations) SetResourceProperty(v string) *AssociateResourceShareResponseBodyResourceShareAssociations {
+	s.ResourceProperty = &v
 	return s
 }
 
