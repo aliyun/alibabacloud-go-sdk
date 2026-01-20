@@ -57,6 +57,8 @@ type iDescribeAuditLogsRequest interface {
 	GetRuleCategory() *string
 	SetRuleID(v string) *DescribeAuditLogsRequest
 	GetRuleID() *string
+	SetRuleId(v string) *DescribeAuditLogsRequest
+	GetRuleId() *string
 	SetRuleName(v string) *DescribeAuditLogsRequest
 	GetRuleName() *string
 	SetSqlText(v string) *DescribeAuditLogsRequest
@@ -161,6 +163,7 @@ type DescribeAuditLogsRequest struct {
 	//
 	// 994007
 	RuleID   *string `json:"RuleID,omitempty" xml:"RuleID,omitempty"`
+	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// example:
 	//
@@ -278,6 +281,10 @@ func (s *DescribeAuditLogsRequest) GetRuleCategory() *string {
 
 func (s *DescribeAuditLogsRequest) GetRuleID() *string {
 	return s.RuleID
+}
+
+func (s *DescribeAuditLogsRequest) GetRuleId() *string {
+	return s.RuleId
 }
 
 func (s *DescribeAuditLogsRequest) GetRuleName() *string {
@@ -413,6 +420,11 @@ func (s *DescribeAuditLogsRequest) SetRuleCategory(v string) *DescribeAuditLogsR
 
 func (s *DescribeAuditLogsRequest) SetRuleID(v string) *DescribeAuditLogsRequest {
 	s.RuleID = &v
+	return s
+}
+
+func (s *DescribeAuditLogsRequest) SetRuleId(v string) *DescribeAuditLogsRequest {
+	s.RuleId = &v
 	return s
 }
 

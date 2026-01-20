@@ -712,6 +712,10 @@ func (client *Client) DescribeAuditLogsWithContext(ctx context.Context, request 
 		query["RuleID"] = request.RuleID
 	}
 
+	if !dara.IsNil(request.RuleId) {
+		query["RuleId"] = request.RuleId
+	}
+
 	if !dara.IsNil(request.RuleName) {
 		query["RuleName"] = request.RuleName
 	}

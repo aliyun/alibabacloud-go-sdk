@@ -926,6 +926,10 @@ func (client *Client) DescribeAuditLogsWithOptions(request *DescribeAuditLogsReq
 		query["RuleID"] = request.RuleID
 	}
 
+	if !dara.IsNil(request.RuleId) {
+		query["RuleId"] = request.RuleId
+	}
+
 	if !dara.IsNil(request.RuleName) {
 		query["RuleName"] = request.RuleName
 	}
