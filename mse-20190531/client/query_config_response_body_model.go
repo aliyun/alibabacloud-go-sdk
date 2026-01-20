@@ -759,6 +759,7 @@ func (s *QueryConfigResponseBodyDataNacosRunningEnv) Validate() error {
 type QueryConfigResponseBodyDataNacosRunningEnvFencePolicy struct {
 	EnabledModules  []*string          `json:"enabledModules,omitempty" xml:"enabledModules,omitempty" type:"Repeated"`
 	InterceptPolicy map[string]*string `json:"interceptPolicy,omitempty" xml:"interceptPolicy,omitempty"`
+	ServiceName     *string            `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s QueryConfigResponseBodyDataNacosRunningEnvFencePolicy) String() string {
@@ -777,6 +778,10 @@ func (s *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy) GetInterceptPoli
 	return s.InterceptPolicy
 }
 
+func (s *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy) GetServiceName() *string {
+	return s.ServiceName
+}
+
 func (s *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy) SetEnabledModules(v []*string) *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy {
 	s.EnabledModules = v
 	return s
@@ -784,6 +789,11 @@ func (s *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy) SetEnabledModule
 
 func (s *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy) SetInterceptPolicy(v map[string]*string) *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy {
 	s.InterceptPolicy = v
+	return s
+}
+
+func (s *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy) SetServiceName(v string) *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy {
+	s.ServiceName = &v
 	return s
 }
 
