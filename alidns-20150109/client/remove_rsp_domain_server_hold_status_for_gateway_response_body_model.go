@@ -215,7 +215,8 @@ type RemoveRspDomainServerHoldStatusForGatewayResponseBodyData struct {
 	// example:
 	//
 	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainName       *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ServerHoldStatus *string `json:"ServerHoldStatus,omitempty" xml:"ServerHoldStatus,omitempty"`
 }
 
 func (s RemoveRspDomainServerHoldStatusForGatewayResponseBodyData) String() string {
@@ -230,8 +231,17 @@ func (s *RemoveRspDomainServerHoldStatusForGatewayResponseBodyData) GetDomainNam
 	return s.DomainName
 }
 
+func (s *RemoveRspDomainServerHoldStatusForGatewayResponseBodyData) GetServerHoldStatus() *string {
+	return s.ServerHoldStatus
+}
+
 func (s *RemoveRspDomainServerHoldStatusForGatewayResponseBodyData) SetDomainName(v string) *RemoveRspDomainServerHoldStatusForGatewayResponseBodyData {
 	s.DomainName = &v
+	return s
+}
+
+func (s *RemoveRspDomainServerHoldStatusForGatewayResponseBodyData) SetServerHoldStatus(v string) *RemoveRspDomainServerHoldStatusForGatewayResponseBodyData {
+	s.ServerHoldStatus = &v
 	return s
 }
 

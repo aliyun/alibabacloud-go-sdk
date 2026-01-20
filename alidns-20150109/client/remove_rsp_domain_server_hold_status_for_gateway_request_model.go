@@ -30,8 +30,7 @@ type RemoveRspDomainServerHoldStatusForGatewayRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// This parameter is required.
-	StatusMsg *string `json:"StatusMsg,omitempty" xml:"StatusMsg,omitempty"`
+	StatusMsg  *string `json:"StatusMsg,omitempty" xml:"StatusMsg,omitempty"`
 }
 
 func (s RemoveRspDomainServerHoldStatusForGatewayRequest) String() string {
