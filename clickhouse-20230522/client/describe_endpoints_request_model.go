@@ -9,6 +9,8 @@ type iDescribeEndpointsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetComputingGroupId(v string) *DescribeEndpointsRequest
+	GetComputingGroupId() *string
 	SetDBInstanceId(v string) *DescribeEndpointsRequest
 	GetDBInstanceId() *string
 	SetRegionId(v string) *DescribeEndpointsRequest
@@ -16,6 +18,10 @@ type iDescribeEndpointsRequest interface {
 }
 
 type DescribeEndpointsRequest struct {
+	// example:
+	//
+	// cc-*****-clickhouse
+	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
 	// The cluster ID.
 	//
 	// This parameter is required.
@@ -40,12 +46,21 @@ func (s DescribeEndpointsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeEndpointsRequest) GetComputingGroupId() *string {
+	return s.ComputingGroupId
+}
+
 func (s *DescribeEndpointsRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
 }
 
 func (s *DescribeEndpointsRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DescribeEndpointsRequest) SetComputingGroupId(v string) *DescribeEndpointsRequest {
+	s.ComputingGroupId = &v
+	return s
 }
 
 func (s *DescribeEndpointsRequest) SetDBInstanceId(v string) *DescribeEndpointsRequest {

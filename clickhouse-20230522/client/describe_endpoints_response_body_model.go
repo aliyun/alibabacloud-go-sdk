@@ -126,6 +126,10 @@ type DescribeEndpointsResponseBodyDataEndpoints struct {
 	//
 	// cc-****-clickhouse.clickhouseserver.pre.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// example:
+	//
+	// cc-*****-clickhouse
+	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
 	// The IP address.
 	//
 	// example:
@@ -186,6 +190,10 @@ func (s *DescribeEndpointsResponseBodyDataEndpoints) GetConnectionString() *stri
 	return s.ConnectionString
 }
 
+func (s *DescribeEndpointsResponseBodyDataEndpoints) GetEndpointName() *string {
+	return s.EndpointName
+}
+
 func (s *DescribeEndpointsResponseBodyDataEndpoints) GetIPAddress() *string {
 	return s.IPAddress
 }
@@ -221,6 +229,11 @@ func (s *DescribeEndpointsResponseBodyDataEndpoints) SetComputingGroupId(v strin
 
 func (s *DescribeEndpointsResponseBodyDataEndpoints) SetConnectionString(v string) *DescribeEndpointsResponseBodyDataEndpoints {
 	s.ConnectionString = &v
+	return s
+}
+
+func (s *DescribeEndpointsResponseBodyDataEndpoints) SetEndpointName(v string) *DescribeEndpointsResponseBodyDataEndpoints {
+	s.EndpointName = &v
 	return s
 }
 

@@ -1887,6 +1887,10 @@ func (client *Client) DescribeEndpointsWithOptions(request *DescribeEndpointsReq
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ComputingGroupId) {
+		query["ComputingGroupId"] = request.ComputingGroupId
+	}
+
 	if !dara.IsNil(request.DBInstanceId) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
