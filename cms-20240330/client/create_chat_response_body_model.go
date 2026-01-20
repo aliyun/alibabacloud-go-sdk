@@ -78,7 +78,8 @@ func (s *CreateChatResponseBody) Validate() error {
 }
 
 type CreateChatResponseBodyMessages struct {
-	Agents []map[string]interface{} `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
+	Agents    []map[string]interface{} `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
+	Artifacts []map[string]interface{} `json:"artifacts,omitempty" xml:"artifacts,omitempty" type:"Repeated"`
 	// example:
 	//
 	// call_search_001
@@ -87,7 +88,8 @@ type CreateChatResponseBodyMessages struct {
 	// example:
 	//
 	// test
-	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
+	Detail *string                  `json:"detail,omitempty" xml:"detail,omitempty"`
+	Events []map[string]interface{} `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
 	// example:
 	//
 	// sess_abc123
@@ -103,12 +105,13 @@ type CreateChatResponseBodyMessages struct {
 	// example:
 	//
 	// 1765000005
-	Timestamp *int64                   `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	Timestamp *string                  `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
 	Tools     []map[string]interface{} `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
 	// example:
 	//
 	// done
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s CreateChatResponseBodyMessages) String() string {
@@ -123,6 +126,10 @@ func (s *CreateChatResponseBodyMessages) GetAgents() []map[string]interface{} {
 	return s.Agents
 }
 
+func (s *CreateChatResponseBodyMessages) GetArtifacts() []map[string]interface{} {
+	return s.Artifacts
+}
+
 func (s *CreateChatResponseBodyMessages) GetCallId() *string {
 	return s.CallId
 }
@@ -133,6 +140,10 @@ func (s *CreateChatResponseBodyMessages) GetContents() []map[string]interface{} 
 
 func (s *CreateChatResponseBodyMessages) GetDetail() *string {
 	return s.Detail
+}
+
+func (s *CreateChatResponseBodyMessages) GetEvents() []map[string]interface{} {
+	return s.Events
 }
 
 func (s *CreateChatResponseBodyMessages) GetParentCallId() *string {
@@ -147,7 +158,7 @@ func (s *CreateChatResponseBodyMessages) GetSeq() *int32 {
 	return s.Seq
 }
 
-func (s *CreateChatResponseBodyMessages) GetTimestamp() *int64 {
+func (s *CreateChatResponseBodyMessages) GetTimestamp() *string {
 	return s.Timestamp
 }
 
@@ -159,8 +170,17 @@ func (s *CreateChatResponseBodyMessages) GetType() *string {
 	return s.Type
 }
 
+func (s *CreateChatResponseBodyMessages) GetVersion() *string {
+	return s.Version
+}
+
 func (s *CreateChatResponseBodyMessages) SetAgents(v []map[string]interface{}) *CreateChatResponseBodyMessages {
 	s.Agents = v
+	return s
+}
+
+func (s *CreateChatResponseBodyMessages) SetArtifacts(v []map[string]interface{}) *CreateChatResponseBodyMessages {
+	s.Artifacts = v
 	return s
 }
 
@@ -179,6 +199,11 @@ func (s *CreateChatResponseBodyMessages) SetDetail(v string) *CreateChatResponse
 	return s
 }
 
+func (s *CreateChatResponseBodyMessages) SetEvents(v []map[string]interface{}) *CreateChatResponseBodyMessages {
+	s.Events = v
+	return s
+}
+
 func (s *CreateChatResponseBodyMessages) SetParentCallId(v string) *CreateChatResponseBodyMessages {
 	s.ParentCallId = &v
 	return s
@@ -194,7 +219,7 @@ func (s *CreateChatResponseBodyMessages) SetSeq(v int32) *CreateChatResponseBody
 	return s
 }
 
-func (s *CreateChatResponseBodyMessages) SetTimestamp(v int64) *CreateChatResponseBodyMessages {
+func (s *CreateChatResponseBodyMessages) SetTimestamp(v string) *CreateChatResponseBodyMessages {
 	s.Timestamp = &v
 	return s
 }
@@ -206,6 +231,11 @@ func (s *CreateChatResponseBodyMessages) SetTools(v []map[string]interface{}) *C
 
 func (s *CreateChatResponseBodyMessages) SetType(v string) *CreateChatResponseBodyMessages {
 	s.Type = &v
+	return s
+}
+
+func (s *CreateChatResponseBodyMessages) SetVersion(v string) *CreateChatResponseBodyMessages {
+	s.Version = &v
 	return s
 }
 

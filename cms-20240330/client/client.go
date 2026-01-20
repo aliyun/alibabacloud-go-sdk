@@ -4399,6 +4399,10 @@ func (client *Client) ListDigitalEmployeesWithOptions(request *ListDigitalEmploy
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DisplayName) {
+		query["displayName"] = request.DisplayName
+	}
+
 	if !dara.IsNil(request.EmployeeType) {
 		query["employeeType"] = request.EmployeeType
 	}

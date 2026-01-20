@@ -9,6 +9,8 @@ type iListDigitalEmployeesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDisplayName(v string) *ListDigitalEmployeesRequest
+	GetDisplayName() *string
 	SetEmployeeType(v string) *ListDigitalEmployeesRequest
 	GetEmployeeType() *string
 	SetMaxResults(v int32) *ListDigitalEmployeesRequest
@@ -20,6 +22,7 @@ type iListDigitalEmployeesRequest interface {
 }
 
 type ListDigitalEmployeesRequest struct {
+	DisplayName  *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	EmployeeType *string `json:"employeeType,omitempty" xml:"employeeType,omitempty"`
 	// example:
 	//
@@ -43,6 +46,10 @@ func (s ListDigitalEmployeesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListDigitalEmployeesRequest) GetDisplayName() *string {
+	return s.DisplayName
+}
+
 func (s *ListDigitalEmployeesRequest) GetEmployeeType() *string {
 	return s.EmployeeType
 }
@@ -57,6 +64,11 @@ func (s *ListDigitalEmployeesRequest) GetName() *string {
 
 func (s *ListDigitalEmployeesRequest) GetNextToken() *string {
 	return s.NextToken
+}
+
+func (s *ListDigitalEmployeesRequest) SetDisplayName(v string) *ListDigitalEmployeesRequest {
+	s.DisplayName = &v
+	return s
 }
 
 func (s *ListDigitalEmployeesRequest) SetEmployeeType(v string) *ListDigitalEmployeesRequest {

@@ -244,6 +244,7 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) Validate() error {
 
 type ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges struct {
 	Bailian []*ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian `json:"bailian,omitempty" xml:"bailian,omitempty" type:"Repeated"`
+	Sop     []map[string]interface{}                                             `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
 }
 
 func (s ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges) String() string {
@@ -258,8 +259,17 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges) GetBailian(
 	return s.Bailian
 }
 
+func (s *ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges) GetSop() []map[string]interface{} {
+	return s.Sop
+}
+
 func (s *ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges) SetBailian(v []*ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian) *ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges {
 	s.Bailian = v
+	return s
+}
+
+func (s *ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges) SetSop(v []map[string]interface{}) *ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges {
+	s.Sop = v
 	return s
 }
 

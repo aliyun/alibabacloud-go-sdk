@@ -9,12 +9,12 @@ type iGetThreadDataResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetData(v []*GetThreadDataResponseBodyData) *GetThreadDataResponseBody
+	GetData() []*GetThreadDataResponseBodyData
 	SetDigitalEmployeeName(v string) *GetThreadDataResponseBody
 	GetDigitalEmployeeName() *string
 	SetMaxResults(v int64) *GetThreadDataResponseBody
 	GetMaxResults() *int64
-	SetMessages(v []*GetThreadDataResponseBodyMessages) *GetThreadDataResponseBody
-	GetMessages() []*GetThreadDataResponseBodyMessages
 	SetNextToken(v string) *GetThreadDataResponseBody
 	GetNextToken() *string
 	SetRequestId(v string) *GetThreadDataResponseBody
@@ -24,6 +24,7 @@ type iGetThreadDataResponseBody interface {
 }
 
 type GetThreadDataResponseBody struct {
+	Data []*GetThreadDataResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// example:
 	//
 	// test
@@ -31,8 +32,7 @@ type GetThreadDataResponseBody struct {
 	// example:
 	//
 	// 2
-	MaxResults *int64                               `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	Messages   []*GetThreadDataResponseBodyMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
+	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// example:
 	//
 	// xxxxxxxxx
@@ -57,16 +57,16 @@ func (s GetThreadDataResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetThreadDataResponseBody) GetData() []*GetThreadDataResponseBodyData {
+	return s.Data
+}
+
 func (s *GetThreadDataResponseBody) GetDigitalEmployeeName() *string {
 	return s.DigitalEmployeeName
 }
 
 func (s *GetThreadDataResponseBody) GetMaxResults() *int64 {
 	return s.MaxResults
-}
-
-func (s *GetThreadDataResponseBody) GetMessages() []*GetThreadDataResponseBodyMessages {
-	return s.Messages
 }
 
 func (s *GetThreadDataResponseBody) GetNextToken() *string {
@@ -81,6 +81,11 @@ func (s *GetThreadDataResponseBody) GetThreadId() *string {
 	return s.ThreadId
 }
 
+func (s *GetThreadDataResponseBody) SetData(v []*GetThreadDataResponseBodyData) *GetThreadDataResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *GetThreadDataResponseBody) SetDigitalEmployeeName(v string) *GetThreadDataResponseBody {
 	s.DigitalEmployeeName = &v
 	return s
@@ -88,11 +93,6 @@ func (s *GetThreadDataResponseBody) SetDigitalEmployeeName(v string) *GetThreadD
 
 func (s *GetThreadDataResponseBody) SetMaxResults(v int64) *GetThreadDataResponseBody {
 	s.MaxResults = &v
-	return s
-}
-
-func (s *GetThreadDataResponseBody) SetMessages(v []*GetThreadDataResponseBodyMessages) *GetThreadDataResponseBody {
-	s.Messages = v
 	return s
 }
 
@@ -112,6 +112,60 @@ func (s *GetThreadDataResponseBody) SetThreadId(v string) *GetThreadDataResponse
 }
 
 func (s *GetThreadDataResponseBody) Validate() error {
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetThreadDataResponseBodyData struct {
+	Messages  []*GetThreadDataResponseBodyDataMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TraceId   *string                                  `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s GetThreadDataResponseBodyData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetThreadDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetThreadDataResponseBodyData) GetMessages() []*GetThreadDataResponseBodyDataMessages {
+	return s.Messages
+}
+
+func (s *GetThreadDataResponseBodyData) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *GetThreadDataResponseBodyData) GetTraceId() *string {
+	return s.TraceId
+}
+
+func (s *GetThreadDataResponseBodyData) SetMessages(v []*GetThreadDataResponseBodyDataMessages) *GetThreadDataResponseBodyData {
+	s.Messages = v
+	return s
+}
+
+func (s *GetThreadDataResponseBodyData) SetRequestId(v string) *GetThreadDataResponseBodyData {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetThreadDataResponseBodyData) SetTraceId(v string) *GetThreadDataResponseBodyData {
+	s.TraceId = &v
+	return s
+}
+
+func (s *GetThreadDataResponseBodyData) Validate() error {
 	if s.Messages != nil {
 		for _, item := range s.Messages {
 			if item != nil {
@@ -124,180 +178,147 @@ func (s *GetThreadDataResponseBody) Validate() error {
 	return nil
 }
 
-type GetThreadDataResponseBodyMessages struct {
-	// example:
-	//
-	// 205190712643664705
-	CallerUid *string `json:"callerUid,omitempty" xml:"callerUid,omitempty"`
-	// example:
-	//
-	// test
-	DigitalEmployeeName *string                  `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	Items               []map[string]interface{} `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 7F0000012B1B668BC3D59A7EF8A00063
-	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
-	// example:
-	//
-	// 1560138499250147
-	OwnerUid *string `json:"ownerUid,omitempty" xml:"ownerUid,omitempty"`
-	// example:
-	//
-	// xxxx
-	ParentMessageId *string `json:"parentMessageId,omitempty" xml:"parentMessageId,omitempty"`
-	// example:
-	//
-	// cn-qingdao
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// example:
-	//
-	// user
-	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// example:
-	//
-	// jr-c2b000da0e41b543
-	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
-	// example:
-	//
-	// 98958d65-6cdb-4f40-8f46-f5e49f13c860
-	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
-	// example:
-	//
-	// 1765359068
-	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
-	// example:
-	//
-	// 3b5287ba17572104610774286d0096
-	TraceId   *string            `json:"traceId,omitempty" xml:"traceId,omitempty"`
-	Variables map[string]*string `json:"variables,omitempty" xml:"variables,omitempty"`
+type GetThreadDataResponseBodyDataMessages struct {
+	Agents       []map[string]interface{} `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
+	Artifacts    []map[string]interface{} `json:"artifacts,omitempty" xml:"artifacts,omitempty" type:"Repeated"`
+	CallId       *string                  `json:"callId,omitempty" xml:"callId,omitempty"`
+	Contents     []map[string]interface{} `json:"contents,omitempty" xml:"contents,omitempty" type:"Repeated"`
+	Detail       *string                  `json:"detail,omitempty" xml:"detail,omitempty"`
+	Events       []map[string]interface{} `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	ParentCallId *string                  `json:"parentCallId,omitempty" xml:"parentCallId,omitempty"`
+	Role         *string                  `json:"role,omitempty" xml:"role,omitempty"`
+	Seq          *int32                   `json:"seq,omitempty" xml:"seq,omitempty"`
+	Timestamp    *string                  `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	Tools        []map[string]interface{} `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
+	Type         *string                  `json:"type,omitempty" xml:"type,omitempty"`
+	Version      *string                  `json:"version,omitempty" xml:"version,omitempty"`
 }
 
-func (s GetThreadDataResponseBodyMessages) String() string {
+func (s GetThreadDataResponseBodyDataMessages) String() string {
 	return dara.Prettify(s)
 }
 
-func (s GetThreadDataResponseBodyMessages) GoString() string {
+func (s GetThreadDataResponseBodyDataMessages) GoString() string {
 	return s.String()
 }
 
-func (s *GetThreadDataResponseBodyMessages) GetCallerUid() *string {
-	return s.CallerUid
+func (s *GetThreadDataResponseBodyDataMessages) GetAgents() []map[string]interface{} {
+	return s.Agents
 }
 
-func (s *GetThreadDataResponseBodyMessages) GetDigitalEmployeeName() *string {
-	return s.DigitalEmployeeName
+func (s *GetThreadDataResponseBodyDataMessages) GetArtifacts() []map[string]interface{} {
+	return s.Artifacts
 }
 
-func (s *GetThreadDataResponseBodyMessages) GetItems() []map[string]interface{} {
-	return s.Items
+func (s *GetThreadDataResponseBodyDataMessages) GetCallId() *string {
+	return s.CallId
 }
 
-func (s *GetThreadDataResponseBodyMessages) GetMessageId() *string {
-	return s.MessageId
+func (s *GetThreadDataResponseBodyDataMessages) GetContents() []map[string]interface{} {
+	return s.Contents
 }
 
-func (s *GetThreadDataResponseBodyMessages) GetOwnerUid() *string {
-	return s.OwnerUid
+func (s *GetThreadDataResponseBodyDataMessages) GetDetail() *string {
+	return s.Detail
 }
 
-func (s *GetThreadDataResponseBodyMessages) GetParentMessageId() *string {
-	return s.ParentMessageId
+func (s *GetThreadDataResponseBodyDataMessages) GetEvents() []map[string]interface{} {
+	return s.Events
 }
 
-func (s *GetThreadDataResponseBodyMessages) GetRegion() *string {
-	return s.Region
+func (s *GetThreadDataResponseBodyDataMessages) GetParentCallId() *string {
+	return s.ParentCallId
 }
 
-func (s *GetThreadDataResponseBodyMessages) GetRole() *string {
+func (s *GetThreadDataResponseBodyDataMessages) GetRole() *string {
 	return s.Role
 }
 
-func (s *GetThreadDataResponseBodyMessages) GetRunId() *string {
-	return s.RunId
+func (s *GetThreadDataResponseBodyDataMessages) GetSeq() *int32 {
+	return s.Seq
 }
 
-func (s *GetThreadDataResponseBodyMessages) GetThreadId() *string {
-	return s.ThreadId
-}
-
-func (s *GetThreadDataResponseBodyMessages) GetTimestamp() *string {
+func (s *GetThreadDataResponseBodyDataMessages) GetTimestamp() *string {
 	return s.Timestamp
 }
 
-func (s *GetThreadDataResponseBodyMessages) GetTraceId() *string {
-	return s.TraceId
+func (s *GetThreadDataResponseBodyDataMessages) GetTools() []map[string]interface{} {
+	return s.Tools
 }
 
-func (s *GetThreadDataResponseBodyMessages) GetVariables() map[string]*string {
-	return s.Variables
+func (s *GetThreadDataResponseBodyDataMessages) GetType() *string {
+	return s.Type
 }
 
-func (s *GetThreadDataResponseBodyMessages) SetCallerUid(v string) *GetThreadDataResponseBodyMessages {
-	s.CallerUid = &v
+func (s *GetThreadDataResponseBodyDataMessages) GetVersion() *string {
+	return s.Version
+}
+
+func (s *GetThreadDataResponseBodyDataMessages) SetAgents(v []map[string]interface{}) *GetThreadDataResponseBodyDataMessages {
+	s.Agents = v
 	return s
 }
 
-func (s *GetThreadDataResponseBodyMessages) SetDigitalEmployeeName(v string) *GetThreadDataResponseBodyMessages {
-	s.DigitalEmployeeName = &v
+func (s *GetThreadDataResponseBodyDataMessages) SetArtifacts(v []map[string]interface{}) *GetThreadDataResponseBodyDataMessages {
+	s.Artifacts = v
 	return s
 }
 
-func (s *GetThreadDataResponseBodyMessages) SetItems(v []map[string]interface{}) *GetThreadDataResponseBodyMessages {
-	s.Items = v
+func (s *GetThreadDataResponseBodyDataMessages) SetCallId(v string) *GetThreadDataResponseBodyDataMessages {
+	s.CallId = &v
 	return s
 }
 
-func (s *GetThreadDataResponseBodyMessages) SetMessageId(v string) *GetThreadDataResponseBodyMessages {
-	s.MessageId = &v
+func (s *GetThreadDataResponseBodyDataMessages) SetContents(v []map[string]interface{}) *GetThreadDataResponseBodyDataMessages {
+	s.Contents = v
 	return s
 }
 
-func (s *GetThreadDataResponseBodyMessages) SetOwnerUid(v string) *GetThreadDataResponseBodyMessages {
-	s.OwnerUid = &v
+func (s *GetThreadDataResponseBodyDataMessages) SetDetail(v string) *GetThreadDataResponseBodyDataMessages {
+	s.Detail = &v
 	return s
 }
 
-func (s *GetThreadDataResponseBodyMessages) SetParentMessageId(v string) *GetThreadDataResponseBodyMessages {
-	s.ParentMessageId = &v
+func (s *GetThreadDataResponseBodyDataMessages) SetEvents(v []map[string]interface{}) *GetThreadDataResponseBodyDataMessages {
+	s.Events = v
 	return s
 }
 
-func (s *GetThreadDataResponseBodyMessages) SetRegion(v string) *GetThreadDataResponseBodyMessages {
-	s.Region = &v
+func (s *GetThreadDataResponseBodyDataMessages) SetParentCallId(v string) *GetThreadDataResponseBodyDataMessages {
+	s.ParentCallId = &v
 	return s
 }
 
-func (s *GetThreadDataResponseBodyMessages) SetRole(v string) *GetThreadDataResponseBodyMessages {
+func (s *GetThreadDataResponseBodyDataMessages) SetRole(v string) *GetThreadDataResponseBodyDataMessages {
 	s.Role = &v
 	return s
 }
 
-func (s *GetThreadDataResponseBodyMessages) SetRunId(v string) *GetThreadDataResponseBodyMessages {
-	s.RunId = &v
+func (s *GetThreadDataResponseBodyDataMessages) SetSeq(v int32) *GetThreadDataResponseBodyDataMessages {
+	s.Seq = &v
 	return s
 }
 
-func (s *GetThreadDataResponseBodyMessages) SetThreadId(v string) *GetThreadDataResponseBodyMessages {
-	s.ThreadId = &v
-	return s
-}
-
-func (s *GetThreadDataResponseBodyMessages) SetTimestamp(v string) *GetThreadDataResponseBodyMessages {
+func (s *GetThreadDataResponseBodyDataMessages) SetTimestamp(v string) *GetThreadDataResponseBodyDataMessages {
 	s.Timestamp = &v
 	return s
 }
 
-func (s *GetThreadDataResponseBodyMessages) SetTraceId(v string) *GetThreadDataResponseBodyMessages {
-	s.TraceId = &v
+func (s *GetThreadDataResponseBodyDataMessages) SetTools(v []map[string]interface{}) *GetThreadDataResponseBodyDataMessages {
+	s.Tools = v
 	return s
 }
 
-func (s *GetThreadDataResponseBodyMessages) SetVariables(v map[string]*string) *GetThreadDataResponseBodyMessages {
-	s.Variables = v
+func (s *GetThreadDataResponseBodyDataMessages) SetType(v string) *GetThreadDataResponseBodyDataMessages {
+	s.Type = &v
 	return s
 }
 
-func (s *GetThreadDataResponseBodyMessages) Validate() error {
+func (s *GetThreadDataResponseBodyDataMessages) SetVersion(v string) *GetThreadDataResponseBodyDataMessages {
+	s.Version = &v
+	return s
+}
+
+func (s *GetThreadDataResponseBodyDataMessages) Validate() error {
 	return dara.Validate(s)
 }

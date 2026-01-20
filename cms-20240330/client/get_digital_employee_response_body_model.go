@@ -196,6 +196,7 @@ func (s *GetDigitalEmployeeResponseBody) Validate() error {
 
 type GetDigitalEmployeeResponseBodyKnowledges struct {
 	Bailian []*GetDigitalEmployeeResponseBodyKnowledgesBailian `json:"bailian,omitempty" xml:"bailian,omitempty" type:"Repeated"`
+	Sop     []map[string]interface{}                           `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
 }
 
 func (s GetDigitalEmployeeResponseBodyKnowledges) String() string {
@@ -210,8 +211,17 @@ func (s *GetDigitalEmployeeResponseBodyKnowledges) GetBailian() []*GetDigitalEmp
 	return s.Bailian
 }
 
+func (s *GetDigitalEmployeeResponseBodyKnowledges) GetSop() []map[string]interface{} {
+	return s.Sop
+}
+
 func (s *GetDigitalEmployeeResponseBodyKnowledges) SetBailian(v []*GetDigitalEmployeeResponseBodyKnowledgesBailian) *GetDigitalEmployeeResponseBodyKnowledges {
 	s.Bailian = v
+	return s
+}
+
+func (s *GetDigitalEmployeeResponseBodyKnowledges) SetSop(v []map[string]interface{}) *GetDigitalEmployeeResponseBodyKnowledges {
+	s.Sop = v
 	return s
 }
 
