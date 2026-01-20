@@ -122,9 +122,13 @@ type DescribeCustomAgentResponseBodyData struct {
 	//
 	// ca-4y3ca4khkcu**********ysf
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	DataJson      *string `json:"DataJson,omitempty" xml:"DataJson,omitempty"`
-	DefaultAgent  *int32  `json:"DefaultAgent,omitempty" xml:"DefaultAgent,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	DMSUnit      *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	DataJson     *string `json:"DataJson,omitempty" xml:"DataJson,omitempty"`
+	DefaultAgent *int32  `json:"DefaultAgent,omitempty" xml:"DefaultAgent,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
 	// cn-hangzhou
@@ -139,6 +143,7 @@ type DescribeCustomAgentResponseBodyData struct {
 	// 2025-12-11T14:04:32.000+00:00
 	GmtModified         *string                                                   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	Instruction         *string                                                   `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
+	IsScheduleTask      *bool                                                     `json:"IsScheduleTask,omitempty" xml:"IsScheduleTask,omitempty"`
 	Knowledge           *string                                                   `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	KnowledgeConfigList []*DescribeCustomAgentResponseBodyDataKnowledgeConfigList `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
 	// example:
@@ -150,6 +155,7 @@ type DescribeCustomAgentResponseBodyData struct {
 	// HaoY*****
 	ModifierUserName *string `json:"ModifierUserName,omitempty" xml:"ModifierUserName,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextRuntime      *int64  `json:"NextRuntime,omitempty" xml:"NextRuntime,omitempty"`
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
@@ -161,7 +167,8 @@ type DescribeCustomAgentResponseBodyData struct {
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
-	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	ReleaseTime        *string                                                `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	ScheduleTaskConfig *DescribeCustomAgentResponseBodyDataScheduleTaskConfig `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// RELEASED
@@ -198,6 +205,10 @@ func (s *DescribeCustomAgentResponseBodyData) GetCustomAgentId() *string {
 	return s.CustomAgentId
 }
 
+func (s *DescribeCustomAgentResponseBodyData) GetDMSUnit() *string {
+	return s.DMSUnit
+}
+
 func (s *DescribeCustomAgentResponseBodyData) GetDataJson() *string {
 	return s.DataJson
 }
@@ -230,6 +241,10 @@ func (s *DescribeCustomAgentResponseBodyData) GetInstruction() *string {
 	return s.Instruction
 }
 
+func (s *DescribeCustomAgentResponseBodyData) GetIsScheduleTask() *bool {
+	return s.IsScheduleTask
+}
+
 func (s *DescribeCustomAgentResponseBodyData) GetKnowledge() *string {
 	return s.Knowledge
 }
@@ -250,6 +265,10 @@ func (s *DescribeCustomAgentResponseBodyData) GetName() *string {
 	return s.Name
 }
 
+func (s *DescribeCustomAgentResponseBodyData) GetNextRuntime() *int64 {
+	return s.NextRuntime
+}
+
 func (s *DescribeCustomAgentResponseBodyData) GetOfflineTime() *string {
 	return s.OfflineTime
 }
@@ -260,6 +279,10 @@ func (s *DescribeCustomAgentResponseBodyData) GetRegion() *string {
 
 func (s *DescribeCustomAgentResponseBodyData) GetReleaseTime() *string {
 	return s.ReleaseTime
+}
+
+func (s *DescribeCustomAgentResponseBodyData) GetScheduleTaskConfig() *DescribeCustomAgentResponseBodyDataScheduleTaskConfig {
+	return s.ScheduleTaskConfig
 }
 
 func (s *DescribeCustomAgentResponseBodyData) GetStatus() *string {
@@ -295,6 +318,11 @@ func (s *DescribeCustomAgentResponseBodyData) SetCreatorUserName(v string) *Desc
 
 func (s *DescribeCustomAgentResponseBodyData) SetCustomAgentId(v string) *DescribeCustomAgentResponseBodyData {
 	s.CustomAgentId = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyData) SetDMSUnit(v string) *DescribeCustomAgentResponseBodyData {
+	s.DMSUnit = &v
 	return s
 }
 
@@ -338,6 +366,11 @@ func (s *DescribeCustomAgentResponseBodyData) SetInstruction(v string) *Describe
 	return s
 }
 
+func (s *DescribeCustomAgentResponseBodyData) SetIsScheduleTask(v bool) *DescribeCustomAgentResponseBodyData {
+	s.IsScheduleTask = &v
+	return s
+}
+
 func (s *DescribeCustomAgentResponseBodyData) SetKnowledge(v string) *DescribeCustomAgentResponseBodyData {
 	s.Knowledge = &v
 	return s
@@ -363,6 +396,11 @@ func (s *DescribeCustomAgentResponseBodyData) SetName(v string) *DescribeCustomA
 	return s
 }
 
+func (s *DescribeCustomAgentResponseBodyData) SetNextRuntime(v int64) *DescribeCustomAgentResponseBodyData {
+	s.NextRuntime = &v
+	return s
+}
+
 func (s *DescribeCustomAgentResponseBodyData) SetOfflineTime(v string) *DescribeCustomAgentResponseBodyData {
 	s.OfflineTime = &v
 	return s
@@ -375,6 +413,11 @@ func (s *DescribeCustomAgentResponseBodyData) SetRegion(v string) *DescribeCusto
 
 func (s *DescribeCustomAgentResponseBodyData) SetReleaseTime(v string) *DescribeCustomAgentResponseBodyData {
 	s.ReleaseTime = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyData) SetScheduleTaskConfig(v *DescribeCustomAgentResponseBodyDataScheduleTaskConfig) *DescribeCustomAgentResponseBodyData {
+	s.ScheduleTaskConfig = v
 	return s
 }
 
@@ -411,6 +454,11 @@ func (s *DescribeCustomAgentResponseBodyData) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.ScheduleTaskConfig != nil {
+		if err := s.ScheduleTaskConfig.Validate(); err != nil {
+			return err
 		}
 	}
 	return nil
@@ -506,5 +554,50 @@ func (s *DescribeCustomAgentResponseBodyDataKnowledgeConfigList) SetMcpServerId(
 }
 
 func (s *DescribeCustomAgentResponseBodyDataKnowledgeConfigList) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeCustomAgentResponseBodyDataScheduleTaskConfig struct {
+	CronExpression   *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	Query            *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	RelatedSessionId *string `json:"RelatedSessionId,omitempty" xml:"RelatedSessionId,omitempty"`
+}
+
+func (s DescribeCustomAgentResponseBodyDataScheduleTaskConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeCustomAgentResponseBodyDataScheduleTaskConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomAgentResponseBodyDataScheduleTaskConfig) GetCronExpression() *string {
+	return s.CronExpression
+}
+
+func (s *DescribeCustomAgentResponseBodyDataScheduleTaskConfig) GetQuery() *string {
+	return s.Query
+}
+
+func (s *DescribeCustomAgentResponseBodyDataScheduleTaskConfig) GetRelatedSessionId() *string {
+	return s.RelatedSessionId
+}
+
+func (s *DescribeCustomAgentResponseBodyDataScheduleTaskConfig) SetCronExpression(v string) *DescribeCustomAgentResponseBodyDataScheduleTaskConfig {
+	s.CronExpression = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyDataScheduleTaskConfig) SetQuery(v string) *DescribeCustomAgentResponseBodyDataScheduleTaskConfig {
+	s.Query = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyDataScheduleTaskConfig) SetRelatedSessionId(v string) *DescribeCustomAgentResponseBodyDataScheduleTaskConfig {
+	s.RelatedSessionId = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyDataScheduleTaskConfig) Validate() error {
 	return dara.Validate(s)
 }
