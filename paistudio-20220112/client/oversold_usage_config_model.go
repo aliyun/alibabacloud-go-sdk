@@ -9,14 +9,14 @@ type iOversoldUsageConfig interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetDisabled(v string) *OversoldUsageConfig
-	GetDisabled() *string
+	SetDisabled(v bool) *OversoldUsageConfig
+	GetDisabled() *bool
 	SetDisabledBy(v string) *OversoldUsageConfig
 	GetDisabledBy() *string
 }
 
 type OversoldUsageConfig struct {
-	Disabled   *string `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	Disabled   *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
 	DisabledBy *string `json:"DisabledBy,omitempty" xml:"DisabledBy,omitempty"`
 }
 
@@ -28,7 +28,7 @@ func (s OversoldUsageConfig) GoString() string {
 	return s.String()
 }
 
-func (s *OversoldUsageConfig) GetDisabled() *string {
+func (s *OversoldUsageConfig) GetDisabled() *bool {
 	return s.Disabled
 }
 
@@ -36,7 +36,7 @@ func (s *OversoldUsageConfig) GetDisabledBy() *string {
 	return s.DisabledBy
 }
 
-func (s *OversoldUsageConfig) SetDisabled(v string) *OversoldUsageConfig {
+func (s *OversoldUsageConfig) SetDisabled(v bool) *OversoldUsageConfig {
 	s.Disabled = &v
 	return s
 }
