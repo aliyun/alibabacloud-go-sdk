@@ -492,9 +492,15 @@ func (s *GetFeatureViewResponseBodyFields) Validate() error {
 }
 
 type GetFeatureViewResponseBodyFieldsTransform struct {
-	Input       []*GetFeatureViewResponseBodyFieldsTransformInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
-	LLMConfigId *int32                                            `json:"LLMConfigId,omitempty" xml:"LLMConfigId,omitempty"`
-	Type        *string                                           `json:"Type,omitempty" xml:"Type,omitempty"`
+	Input []*GetFeatureViewResponseBodyFieldsTransformInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	LLMConfigId *int32 `json:"LLMConfigId,omitempty" xml:"LLMConfigId,omitempty"`
+	// example:
+	//
+	// LLMEmbedding
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetFeatureViewResponseBodyFieldsTransform) String() string {
@@ -546,7 +552,13 @@ func (s *GetFeatureViewResponseBodyFieldsTransform) Validate() error {
 }
 
 type GetFeatureViewResponseBodyFieldsTransformInput struct {
+	// example:
+	//
+	// f1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// STRING
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

@@ -20,6 +20,9 @@ type ExportModelFeatureTrainingSetTableResponseBody struct {
   // 
   // 0FBBE454-9BD1-5D8F-9129-D14DB7FAFE0B
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // example:
+  // 
+  // 1
   TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

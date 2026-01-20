@@ -24,7 +24,13 @@ type iExportModelFeatureTrainingSetTableRequest interface {
 type ExportModelFeatureTrainingSetTableRequest struct {
   FeatureViewConfig map[string]*FeatureViewConfigValue `json:"FeatureViewConfig,omitempty" xml:"FeatureViewConfig,omitempty"`
   LabelInputConfig *ExportModelFeatureTrainingSetTableRequestLabelInputConfig `json:"LabelInputConfig,omitempty" xml:"LabelInputConfig,omitempty" type:"Struct"`
+  // example:
+  // 
+  // 1
   RealTimeIterateInterval *int64 `json:"RealTimeIterateInterval,omitempty" xml:"RealTimeIterateInterval,omitempty"`
+  // example:
+  // 
+  // 5
   RealTimePartitionCountValue *int64 `json:"RealTimePartitionCountValue,omitempty" xml:"RealTimePartitionCountValue,omitempty"`
   TrainingSetConfig *ExportModelFeatureTrainingSetTableRequestTrainingSetConfig `json:"TrainingSetConfig,omitempty" xml:"TrainingSetConfig,omitempty" type:"Struct"`
 }

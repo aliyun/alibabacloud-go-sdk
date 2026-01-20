@@ -42,6 +42,9 @@ type CreateLLMConfigRequest struct {
 	//
 	// 8
 	BatchSize *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
+	// example:
+	//
+	// 8192
 	MaxTokens *int32 `json:"MaxTokens,omitempty" xml:"MaxTokens,omitempty"`
 	// This parameter is required.
 	//

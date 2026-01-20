@@ -20,10 +20,19 @@ type iFeatureViewConfigValuePartitionsValue interface {
 }
 
 type FeatureViewConfigValuePartitionsValue struct {
-	Value      *string   `json:"Value,omitempty" xml:"Value,omitempty"`
-	Values     []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
-	StartValue *string   `json:"StartValue,omitempty" xml:"StartValue,omitempty"`
-	EndValue   *string   `json:"EndValue,omitempty" xml:"EndValue,omitempty"`
+	// example:
+	//
+	// 20250101
+	Value  *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20250101
+	StartValue *string `json:"StartValue,omitempty" xml:"StartValue,omitempty"`
+	// example:
+	//
+	// 20250201
+	EndValue *string `json:"EndValue,omitempty" xml:"EndValue,omitempty"`
 }
 
 func (s FeatureViewConfigValuePartitionsValue) String() string {
