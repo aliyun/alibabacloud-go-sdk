@@ -3086,6 +3086,73 @@ func (client *Client) ListTerraformProviderVersionsWithContext(ctx context.Conte
 
 // Summary:
 //
+// 支持状态文件的资源导入和移除
+//
+// @param request - ManageTerraformStateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ManageTerraformStateResponse
+func (client *Client) ManageTerraformStateWithContext(ctx context.Context, request *ManageTerraformStateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ManageTerraformStateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Action) {
+		body["action"] = request.Action
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Identifier) {
+		body["identifier"] = request.Identifier
+	}
+
+	if !dara.IsNil(request.ImportResourceId) {
+		body["importResourceId"] = request.ImportResourceId
+	}
+
+	if !dara.IsNil(request.ResourceIdentifier) {
+		body["resourceIdentifier"] = request.ResourceIdentifier
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ManageTerraformState"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/terraformState/manage"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ManageTerraformStateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 控制作业
 //
 // @param request - OperateJobRequest
