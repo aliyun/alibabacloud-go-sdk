@@ -603,6 +603,10 @@ func (client *Client) CreateNodesWithOptions(tmpReq *CreateNodesRequest, runtime
 		query["KeepAlive"] = request.KeepAlive
 	}
 
+	if !dara.IsNil(request.MinCount) {
+		query["MinCount"] = request.MinCount
+	}
+
 	if !dara.IsNil(request.QueueName) {
 		query["QueueName"] = request.QueueName
 	}

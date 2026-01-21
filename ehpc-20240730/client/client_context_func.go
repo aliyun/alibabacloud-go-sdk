@@ -442,6 +442,10 @@ func (client *Client) CreateNodesWithContext(ctx context.Context, tmpReq *Create
 		query["KeepAlive"] = request.KeepAlive
 	}
 
+	if !dara.IsNil(request.MinCount) {
+		query["MinCount"] = request.MinCount
+	}
+
 	if !dara.IsNil(request.QueueName) {
 		query["QueueName"] = request.QueueName
 	}

@@ -27,6 +27,8 @@ type iCreateNodesShrinkRequest interface {
 	GetHostnamesShrink() *string
 	SetKeepAlive(v string) *CreateNodesShrinkRequest
 	GetKeepAlive() *string
+	SetMinCount(v int32) *CreateNodesShrinkRequest
+	GetMinCount() *int32
 	SetQueueName(v string) *CreateNodesShrinkRequest
 	GetQueueName() *string
 	SetRamRole(v string) *CreateNodesShrinkRequest
@@ -95,6 +97,10 @@ type CreateNodesShrinkRequest struct {
 	//
 	// false
 	KeepAlive *string `json:"KeepAlive,omitempty" xml:"KeepAlive,omitempty"`
+	// example:
+	//
+	// 10
+	MinCount *int32 `json:"MinCount,omitempty" xml:"MinCount,omitempty"`
 	// The name of the queue for which you want to create compute nodes.
 	//
 	// example:
@@ -165,6 +171,10 @@ func (s *CreateNodesShrinkRequest) GetKeepAlive() *string {
 	return s.KeepAlive
 }
 
+func (s *CreateNodesShrinkRequest) GetMinCount() *int32 {
+	return s.MinCount
+}
+
 func (s *CreateNodesShrinkRequest) GetQueueName() *string {
 	return s.QueueName
 }
@@ -223,6 +233,11 @@ func (s *CreateNodesShrinkRequest) SetHostnamesShrink(v string) *CreateNodesShri
 
 func (s *CreateNodesShrinkRequest) SetKeepAlive(v string) *CreateNodesShrinkRequest {
 	s.KeepAlive = &v
+	return s
+}
+
+func (s *CreateNodesShrinkRequest) SetMinCount(v int32) *CreateNodesShrinkRequest {
+	s.MinCount = &v
 	return s
 }
 
