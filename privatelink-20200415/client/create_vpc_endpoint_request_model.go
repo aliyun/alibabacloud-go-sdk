@@ -13,6 +13,8 @@ type iCreateVpcEndpointRequest interface {
 	GetAddressIpVersion() *string
 	SetClientToken(v string) *CreateVpcEndpointRequest
 	GetClientToken() *string
+	SetCrossRegionBandwidth(v int32) *CreateVpcEndpointRequest
+	GetCrossRegionBandwidth() *int32
 	SetDryRun(v bool) *CreateVpcEndpointRequest
 	GetDryRun() *bool
 	SetEndpointDescription(v string) *CreateVpcEndpointRequest
@@ -35,6 +37,8 @@ type iCreateVpcEndpointRequest interface {
 	GetServiceId() *string
 	SetServiceName(v string) *CreateVpcEndpointRequest
 	GetServiceName() *string
+	SetServiceRegionId(v string) *CreateVpcEndpointRequest
+	GetServiceRegionId() *string
 	SetTag(v []*CreateVpcEndpointRequestTag) *CreateVpcEndpointRequest
 	GetTag() []*CreateVpcEndpointRequestTag
 	SetVpcId(v string) *CreateVpcEndpointRequest
@@ -67,7 +71,8 @@ type CreateVpcEndpointRequest struct {
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CrossRegionBandwidth *int32  `json:"CrossRegionBandwidth,omitempty" xml:"CrossRegionBandwidth,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
 	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
@@ -193,7 +198,8 @@ type CreateVpcEndpointRequest struct {
 	// example:
 	//
 	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3vpx8yqxblby3i****
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceName     *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
 	// The tags to add to the resource.
 	Tag []*CreateVpcEndpointRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC) to which the endpoint belongs.
@@ -229,6 +235,10 @@ func (s *CreateVpcEndpointRequest) GetAddressIpVersion() *string {
 
 func (s *CreateVpcEndpointRequest) GetClientToken() *string {
 	return s.ClientToken
+}
+
+func (s *CreateVpcEndpointRequest) GetCrossRegionBandwidth() *int32 {
+	return s.CrossRegionBandwidth
 }
 
 func (s *CreateVpcEndpointRequest) GetDryRun() *bool {
@@ -275,6 +285,10 @@ func (s *CreateVpcEndpointRequest) GetServiceName() *string {
 	return s.ServiceName
 }
 
+func (s *CreateVpcEndpointRequest) GetServiceRegionId() *string {
+	return s.ServiceRegionId
+}
+
 func (s *CreateVpcEndpointRequest) GetTag() []*CreateVpcEndpointRequestTag {
 	return s.Tag
 }
@@ -302,6 +316,11 @@ func (s *CreateVpcEndpointRequest) SetAddressIpVersion(v string) *CreateVpcEndpo
 
 func (s *CreateVpcEndpointRequest) SetClientToken(v string) *CreateVpcEndpointRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateVpcEndpointRequest) SetCrossRegionBandwidth(v int32) *CreateVpcEndpointRequest {
+	s.CrossRegionBandwidth = &v
 	return s
 }
 
@@ -357,6 +376,11 @@ func (s *CreateVpcEndpointRequest) SetServiceId(v string) *CreateVpcEndpointRequ
 
 func (s *CreateVpcEndpointRequest) SetServiceName(v string) *CreateVpcEndpointRequest {
 	s.ServiceName = &v
+	return s
+}
+
+func (s *CreateVpcEndpointRequest) SetServiceRegionId(v string) *CreateVpcEndpointRequest {
+	s.ServiceRegionId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iUpdateVpcEndpointAttributeRequest interface {
 	GetAddressIpVersion() *string
 	SetClientToken(v string) *UpdateVpcEndpointAttributeRequest
 	GetClientToken() *string
+	SetCrossRegionBandwidth(v int32) *UpdateVpcEndpointAttributeRequest
+	GetCrossRegionBandwidth() *int32
 	SetDryRun(v bool) *UpdateVpcEndpointAttributeRequest
 	GetDryRun() *bool
 	SetEndpointDescription(v string) *UpdateVpcEndpointAttributeRequest
@@ -51,7 +53,8 @@ type UpdateVpcEndpointAttributeRequest struct {
 	// example:
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CrossRegionBandwidth *int32  `json:"CrossRegionBandwidth,omitempty" xml:"CrossRegionBandwidth,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
 	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
@@ -158,6 +161,10 @@ func (s *UpdateVpcEndpointAttributeRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *UpdateVpcEndpointAttributeRequest) GetCrossRegionBandwidth() *int32 {
+	return s.CrossRegionBandwidth
+}
+
 func (s *UpdateVpcEndpointAttributeRequest) GetDryRun() *bool {
 	return s.DryRun
 }
@@ -197,6 +204,11 @@ func (s *UpdateVpcEndpointAttributeRequest) SetAddressIpVersion(v string) *Updat
 
 func (s *UpdateVpcEndpointAttributeRequest) SetClientToken(v string) *UpdateVpcEndpointAttributeRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointAttributeRequest) SetCrossRegionBandwidth(v int32) *UpdateVpcEndpointAttributeRequest {
+	s.CrossRegionBandwidth = &v
 	return s
 }
 

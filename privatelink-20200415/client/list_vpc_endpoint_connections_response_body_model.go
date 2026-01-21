@@ -158,7 +158,8 @@ type ListVpcEndpointConnectionsResponseBodyConnections struct {
 	// example:
 	//
 	// 25346073170691****
-	EndpointOwnerId *int64 `json:"EndpointOwnerId,omitempty" xml:"EndpointOwnerId,omitempty"`
+	EndpointOwnerId  *int64  `json:"EndpointOwnerId,omitempty" xml:"EndpointOwnerId,omitempty"`
+	EndpointRegionId *string `json:"EndpointRegionId,omitempty" xml:"EndpointRegionId,omitempty"`
 	// The ID of the virtual private cloud (VPC) to which the endpoint belongs.
 	//
 	// example:
@@ -193,6 +194,7 @@ type ListVpcEndpointConnectionsResponseBodyConnections struct {
 	//
 	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId          *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceRegionId    *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
 	TrafficControlMode *string `json:"TrafficControlMode,omitempty" xml:"TrafficControlMode,omitempty"`
 	// The zones.
 	Zones []*ListVpcEndpointConnectionsResponseBodyConnectionsZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
@@ -222,6 +224,10 @@ func (s *ListVpcEndpointConnectionsResponseBodyConnections) GetEndpointOwnerId()
 	return s.EndpointOwnerId
 }
 
+func (s *ListVpcEndpointConnectionsResponseBodyConnections) GetEndpointRegionId() *string {
+	return s.EndpointRegionId
+}
+
 func (s *ListVpcEndpointConnectionsResponseBodyConnections) GetEndpointVpcId() *string {
 	return s.EndpointVpcId
 }
@@ -240,6 +246,10 @@ func (s *ListVpcEndpointConnectionsResponseBodyConnections) GetResourceOwner() *
 
 func (s *ListVpcEndpointConnectionsResponseBodyConnections) GetServiceId() *string {
 	return s.ServiceId
+}
+
+func (s *ListVpcEndpointConnectionsResponseBodyConnections) GetServiceRegionId() *string {
+	return s.ServiceRegionId
 }
 
 func (s *ListVpcEndpointConnectionsResponseBodyConnections) GetTrafficControlMode() *string {
@@ -270,6 +280,11 @@ func (s *ListVpcEndpointConnectionsResponseBodyConnections) SetEndpointOwnerId(v
 	return s
 }
 
+func (s *ListVpcEndpointConnectionsResponseBodyConnections) SetEndpointRegionId(v string) *ListVpcEndpointConnectionsResponseBodyConnections {
+	s.EndpointRegionId = &v
+	return s
+}
+
 func (s *ListVpcEndpointConnectionsResponseBodyConnections) SetEndpointVpcId(v string) *ListVpcEndpointConnectionsResponseBodyConnections {
 	s.EndpointVpcId = &v
 	return s
@@ -292,6 +307,11 @@ func (s *ListVpcEndpointConnectionsResponseBodyConnections) SetResourceOwner(v b
 
 func (s *ListVpcEndpointConnectionsResponseBodyConnections) SetServiceId(v string) *ListVpcEndpointConnectionsResponseBodyConnections {
 	s.ServiceId = &v
+	return s
+}
+
+func (s *ListVpcEndpointConnectionsResponseBodyConnections) SetServiceRegionId(v string) *ListVpcEndpointConnectionsResponseBodyConnections {
+	s.ServiceRegionId = &v
 	return s
 }
 

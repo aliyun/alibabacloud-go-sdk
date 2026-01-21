@@ -9,6 +9,8 @@ type iUpdateVpcEndpointServiceAttributeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAddSupportedRegionSet(v []*string) *UpdateVpcEndpointServiceAttributeRequest
+	GetAddSupportedRegionSet() []*string
 	SetAddressIpVersion(v string) *UpdateVpcEndpointServiceAttributeRequest
 	GetAddressIpVersion() *string
 	SetAutoAcceptEnabled(v bool) *UpdateVpcEndpointServiceAttributeRequest
@@ -17,6 +19,8 @@ type iUpdateVpcEndpointServiceAttributeRequest interface {
 	GetClientToken() *string
 	SetConnectBandwidth(v int32) *UpdateVpcEndpointServiceAttributeRequest
 	GetConnectBandwidth() *int32
+	SetDeleteSupportedRegionSet(v []*string) *UpdateVpcEndpointServiceAttributeRequest
+	GetDeleteSupportedRegionSet() []*string
 	SetDryRun(v bool) *UpdateVpcEndpointServiceAttributeRequest
 	GetDryRun() *bool
 	SetRegionId(v string) *UpdateVpcEndpointServiceAttributeRequest
@@ -32,6 +36,7 @@ type iUpdateVpcEndpointServiceAttributeRequest interface {
 }
 
 type UpdateVpcEndpointServiceAttributeRequest struct {
+	AddSupportedRegionSet []*string `json:"AddSupportedRegionSet,omitempty" xml:"AddSupportedRegionSet,omitempty" type:"Repeated"`
 	// The protocol. Valid values:
 	//
 	// 	- **IPv4**
@@ -71,7 +76,8 @@ type UpdateVpcEndpointServiceAttributeRequest struct {
 	// example:
 	//
 	// 200
-	ConnectBandwidth *int32 `json:"ConnectBandwidth,omitempty" xml:"ConnectBandwidth,omitempty"`
+	ConnectBandwidth         *int32    `json:"ConnectBandwidth,omitempty" xml:"ConnectBandwidth,omitempty"`
+	DeleteSupportedRegionSet []*string `json:"DeleteSupportedRegionSet,omitempty" xml:"DeleteSupportedRegionSet,omitempty" type:"Repeated"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
 	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
@@ -138,6 +144,10 @@ func (s UpdateVpcEndpointServiceAttributeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateVpcEndpointServiceAttributeRequest) GetAddSupportedRegionSet() []*string {
+	return s.AddSupportedRegionSet
+}
+
 func (s *UpdateVpcEndpointServiceAttributeRequest) GetAddressIpVersion() *string {
 	return s.AddressIpVersion
 }
@@ -152,6 +162,10 @@ func (s *UpdateVpcEndpointServiceAttributeRequest) GetClientToken() *string {
 
 func (s *UpdateVpcEndpointServiceAttributeRequest) GetConnectBandwidth() *int32 {
 	return s.ConnectBandwidth
+}
+
+func (s *UpdateVpcEndpointServiceAttributeRequest) GetDeleteSupportedRegionSet() []*string {
+	return s.DeleteSupportedRegionSet
 }
 
 func (s *UpdateVpcEndpointServiceAttributeRequest) GetDryRun() *bool {
@@ -178,6 +192,11 @@ func (s *UpdateVpcEndpointServiceAttributeRequest) GetZoneAffinityEnabled() *boo
 	return s.ZoneAffinityEnabled
 }
 
+func (s *UpdateVpcEndpointServiceAttributeRequest) SetAddSupportedRegionSet(v []*string) *UpdateVpcEndpointServiceAttributeRequest {
+	s.AddSupportedRegionSet = v
+	return s
+}
+
 func (s *UpdateVpcEndpointServiceAttributeRequest) SetAddressIpVersion(v string) *UpdateVpcEndpointServiceAttributeRequest {
 	s.AddressIpVersion = &v
 	return s
@@ -195,6 +214,11 @@ func (s *UpdateVpcEndpointServiceAttributeRequest) SetClientToken(v string) *Upd
 
 func (s *UpdateVpcEndpointServiceAttributeRequest) SetConnectBandwidth(v int32) *UpdateVpcEndpointServiceAttributeRequest {
 	s.ConnectBandwidth = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointServiceAttributeRequest) SetDeleteSupportedRegionSet(v []*string) *UpdateVpcEndpointServiceAttributeRequest {
+	s.DeleteSupportedRegionSet = v
 	return s
 }
 

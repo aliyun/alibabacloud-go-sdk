@@ -33,6 +33,8 @@ type iCreateVpcEndpointServiceResponseBody interface {
 	GetServiceStatus() *string
 	SetServiceSupportIPv6(v bool) *CreateVpcEndpointServiceResponseBody
 	GetServiceSupportIPv6() *bool
+	SetSupportedRegionSet(v []*CreateVpcEndpointServiceResponseBodySupportedRegionSet) *CreateVpcEndpointServiceResponseBody
+	GetSupportedRegionSet() []*CreateVpcEndpointServiceResponseBodySupportedRegionSet
 	SetZoneAffinityEnabled(v bool) *CreateVpcEndpointServiceResponseBody
 	GetZoneAffinityEnabled() *bool
 }
@@ -135,7 +137,8 @@ type CreateVpcEndpointServiceResponseBody struct {
 	// example:
 	//
 	// false
-	ServiceSupportIPv6 *bool `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
+	ServiceSupportIPv6 *bool                                                     `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
+	SupportedRegionSet []*CreateVpcEndpointServiceResponseBodySupportedRegionSet `json:"SupportedRegionSet,omitempty" xml:"SupportedRegionSet,omitempty" type:"Repeated"`
 	// Indicates whether the domain name of the nearest endpoint that is associated with the endpoint service is resolved first. Valid values:
 	//
 	// 	- **true**
@@ -204,6 +207,10 @@ func (s *CreateVpcEndpointServiceResponseBody) GetServiceSupportIPv6() *bool {
 	return s.ServiceSupportIPv6
 }
 
+func (s *CreateVpcEndpointServiceResponseBody) GetSupportedRegionSet() []*CreateVpcEndpointServiceResponseBodySupportedRegionSet {
+	return s.SupportedRegionSet
+}
+
 func (s *CreateVpcEndpointServiceResponseBody) GetZoneAffinityEnabled() *bool {
 	return s.ZoneAffinityEnabled
 }
@@ -268,11 +275,70 @@ func (s *CreateVpcEndpointServiceResponseBody) SetServiceSupportIPv6(v bool) *Cr
 	return s
 }
 
+func (s *CreateVpcEndpointServiceResponseBody) SetSupportedRegionSet(v []*CreateVpcEndpointServiceResponseBodySupportedRegionSet) *CreateVpcEndpointServiceResponseBody {
+	s.SupportedRegionSet = v
+	return s
+}
+
 func (s *CreateVpcEndpointServiceResponseBody) SetZoneAffinityEnabled(v bool) *CreateVpcEndpointServiceResponseBody {
 	s.ZoneAffinityEnabled = &v
 	return s
 }
 
 func (s *CreateVpcEndpointServiceResponseBody) Validate() error {
+	if s.SupportedRegionSet != nil {
+		for _, item := range s.SupportedRegionSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateVpcEndpointServiceResponseBodySupportedRegionSet struct {
+	RegionBusinessStatus *string `json:"RegionBusinessStatus,omitempty" xml:"RegionBusinessStatus,omitempty"`
+	RegionServiceStatus  *string `json:"RegionServiceStatus,omitempty" xml:"RegionServiceStatus,omitempty"`
+	ServiceRegionId      *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+}
+
+func (s CreateVpcEndpointServiceResponseBodySupportedRegionSet) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateVpcEndpointServiceResponseBodySupportedRegionSet) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVpcEndpointServiceResponseBodySupportedRegionSet) GetRegionBusinessStatus() *string {
+	return s.RegionBusinessStatus
+}
+
+func (s *CreateVpcEndpointServiceResponseBodySupportedRegionSet) GetRegionServiceStatus() *string {
+	return s.RegionServiceStatus
+}
+
+func (s *CreateVpcEndpointServiceResponseBodySupportedRegionSet) GetServiceRegionId() *string {
+	return s.ServiceRegionId
+}
+
+func (s *CreateVpcEndpointServiceResponseBodySupportedRegionSet) SetRegionBusinessStatus(v string) *CreateVpcEndpointServiceResponseBodySupportedRegionSet {
+	s.RegionBusinessStatus = &v
+	return s
+}
+
+func (s *CreateVpcEndpointServiceResponseBodySupportedRegionSet) SetRegionServiceStatus(v string) *CreateVpcEndpointServiceResponseBodySupportedRegionSet {
+	s.RegionServiceStatus = &v
+	return s
+}
+
+func (s *CreateVpcEndpointServiceResponseBodySupportedRegionSet) SetServiceRegionId(v string) *CreateVpcEndpointServiceResponseBodySupportedRegionSet {
+	s.ServiceRegionId = &v
+	return s
+}
+
+func (s *CreateVpcEndpointServiceResponseBodySupportedRegionSet) Validate() error {
 	return dara.Validate(s)
 }

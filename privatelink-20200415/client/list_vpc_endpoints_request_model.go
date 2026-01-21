@@ -31,6 +31,8 @@ type iListVpcEndpointsRequest interface {
 	GetResourceGroupId() *string
 	SetServiceName(v string) *ListVpcEndpointsRequest
 	GetServiceName() *string
+	SetServiceRegionId(v string) *ListVpcEndpointsRequest
+	GetServiceRegionId() *string
 	SetTag(v []*ListVpcEndpointsRequestTag) *ListVpcEndpointsRequest
 	GetTag() []*ListVpcEndpointsRequestTag
 	SetVpcId(v string) *ListVpcEndpointsRequest
@@ -141,7 +143,8 @@ type ListVpcEndpointsRequest struct {
 	// example:
 	//
 	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3vpx8yqxblby3i****
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceName     *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
 	// The tags.
 	Tag []*ListVpcEndpointsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the VPC to which the endpoint belongs.
@@ -204,6 +207,10 @@ func (s *ListVpcEndpointsRequest) GetServiceName() *string {
 	return s.ServiceName
 }
 
+func (s *ListVpcEndpointsRequest) GetServiceRegionId() *string {
+	return s.ServiceRegionId
+}
+
 func (s *ListVpcEndpointsRequest) GetTag() []*ListVpcEndpointsRequestTag {
 	return s.Tag
 }
@@ -264,6 +271,11 @@ func (s *ListVpcEndpointsRequest) SetResourceGroupId(v string) *ListVpcEndpoints
 
 func (s *ListVpcEndpointsRequest) SetServiceName(v string) *ListVpcEndpointsRequest {
 	s.ServiceName = &v
+	return s
+}
+
+func (s *ListVpcEndpointsRequest) SetServiceRegionId(v string) *ListVpcEndpointsRequest {
+	s.ServiceRegionId = &v
 	return s
 }
 

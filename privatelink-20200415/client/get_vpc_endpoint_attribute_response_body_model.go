@@ -17,6 +17,8 @@ type iGetVpcEndpointAttributeResponseBody interface {
 	GetConnectionStatus() *string
 	SetCreateTime(v string) *GetVpcEndpointAttributeResponseBody
 	GetCreateTime() *string
+	SetCrossRegionBandwidth(v int32) *GetVpcEndpointAttributeResponseBody
+	GetCrossRegionBandwidth() *int32
 	SetEndpointBusinessStatus(v string) *GetVpcEndpointAttributeResponseBody
 	GetEndpointBusinessStatus() *string
 	SetEndpointDescription(v string) *GetVpcEndpointAttributeResponseBody
@@ -47,6 +49,8 @@ type iGetVpcEndpointAttributeResponseBody interface {
 	GetServiceId() *string
 	SetServiceName(v string) *GetVpcEndpointAttributeResponseBody
 	GetServiceName() *string
+	SetServiceRegionId(v string) *GetVpcEndpointAttributeResponseBody
+	GetServiceRegionId() *string
 	SetVpcId(v string) *GetVpcEndpointAttributeResponseBody
 	GetVpcId() *string
 	SetZoneAffinityEnabled(v bool) *GetVpcEndpointAttributeResponseBody
@@ -95,7 +99,8 @@ type GetVpcEndpointAttributeResponseBody struct {
 	// example:
 	//
 	// 2021-09-24T18:00:07Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CrossRegionBandwidth *int32  `json:"CrossRegionBandwidth,omitempty" xml:"CrossRegionBandwidth,omitempty"`
 	// The service state of the endpoint. Valid values:
 	//
 	// 	- **Normal**: The endpoint runs as expected.
@@ -245,7 +250,8 @@ type GetVpcEndpointAttributeResponseBody struct {
 	// example:
 	//
 	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3xdsq46ael67lo****
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceName     *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
 	// The ID of the virtual private cloud (VPC) to which the endpoint belongs.
 	//
 	// example:
@@ -292,6 +298,10 @@ func (s *GetVpcEndpointAttributeResponseBody) GetConnectionStatus() *string {
 
 func (s *GetVpcEndpointAttributeResponseBody) GetCreateTime() *string {
 	return s.CreateTime
+}
+
+func (s *GetVpcEndpointAttributeResponseBody) GetCrossRegionBandwidth() *int32 {
+	return s.CrossRegionBandwidth
 }
 
 func (s *GetVpcEndpointAttributeResponseBody) GetEndpointBusinessStatus() *string {
@@ -354,6 +364,10 @@ func (s *GetVpcEndpointAttributeResponseBody) GetServiceName() *string {
 	return s.ServiceName
 }
 
+func (s *GetVpcEndpointAttributeResponseBody) GetServiceRegionId() *string {
+	return s.ServiceRegionId
+}
+
 func (s *GetVpcEndpointAttributeResponseBody) GetVpcId() *string {
 	return s.VpcId
 }
@@ -383,6 +397,11 @@ func (s *GetVpcEndpointAttributeResponseBody) SetConnectionStatus(v string) *Get
 
 func (s *GetVpcEndpointAttributeResponseBody) SetCreateTime(v string) *GetVpcEndpointAttributeResponseBody {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetVpcEndpointAttributeResponseBody) SetCrossRegionBandwidth(v int32) *GetVpcEndpointAttributeResponseBody {
+	s.CrossRegionBandwidth = &v
 	return s
 }
 
@@ -458,6 +477,11 @@ func (s *GetVpcEndpointAttributeResponseBody) SetServiceId(v string) *GetVpcEndp
 
 func (s *GetVpcEndpointAttributeResponseBody) SetServiceName(v string) *GetVpcEndpointAttributeResponseBody {
 	s.ServiceName = &v
+	return s
+}
+
+func (s *GetVpcEndpointAttributeResponseBody) SetServiceRegionId(v string) *GetVpcEndpointAttributeResponseBody {
+	s.ServiceRegionId = &v
 	return s
 }
 

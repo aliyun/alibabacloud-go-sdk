@@ -21,6 +21,8 @@ type iListVpcEndpointServicesByEndUserRequest interface {
 	GetServiceId() *string
 	SetServiceName(v string) *ListVpcEndpointServicesByEndUserRequest
 	GetServiceName() *string
+	SetServiceRegionId(v string) *ListVpcEndpointServicesByEndUserRequest
+	GetServiceRegionId() *string
 	SetServiceType(v string) *ListVpcEndpointServicesByEndUserRequest
 	GetServiceType() *string
 	SetTag(v []*ListVpcEndpointServicesByEndUserRequestTag) *ListVpcEndpointServicesByEndUserRequest
@@ -71,7 +73,8 @@ type ListVpcEndpointServicesByEndUserRequest struct {
 	// example:
 	//
 	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3xdsq46ael67lo****
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceName     *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
 	// The type of the endpoint service.
 	//
 	// Set the value to **Interface**. You can specify CLB and ALB instances as service resources for the endpoint service.
@@ -116,6 +119,10 @@ func (s *ListVpcEndpointServicesByEndUserRequest) GetServiceName() *string {
 	return s.ServiceName
 }
 
+func (s *ListVpcEndpointServicesByEndUserRequest) GetServiceRegionId() *string {
+	return s.ServiceRegionId
+}
+
 func (s *ListVpcEndpointServicesByEndUserRequest) GetServiceType() *string {
 	return s.ServiceType
 }
@@ -151,6 +158,11 @@ func (s *ListVpcEndpointServicesByEndUserRequest) SetServiceId(v string) *ListVp
 
 func (s *ListVpcEndpointServicesByEndUserRequest) SetServiceName(v string) *ListVpcEndpointServicesByEndUserRequest {
 	s.ServiceName = &v
+	return s
+}
+
+func (s *ListVpcEndpointServicesByEndUserRequest) SetServiceRegionId(v string) *ListVpcEndpointServicesByEndUserRequest {
+	s.ServiceRegionId = &v
 	return s
 }
 

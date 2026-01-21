@@ -17,6 +17,8 @@ type iCreateVpcEndpointResponseBody interface {
 	GetConnectionStatus() *string
 	SetCreateTime(v string) *CreateVpcEndpointResponseBody
 	GetCreateTime() *string
+	SetCrossRegionBandwidth(v int32) *CreateVpcEndpointResponseBody
+	GetCrossRegionBandwidth() *int32
 	SetEndpointBusinessStatus(v string) *CreateVpcEndpointResponseBody
 	GetEndpointBusinessStatus() *string
 	SetEndpointDescription(v string) *CreateVpcEndpointResponseBody
@@ -35,6 +37,8 @@ type iCreateVpcEndpointResponseBody interface {
 	GetServiceId() *string
 	SetServiceName(v string) *CreateVpcEndpointResponseBody
 	GetServiceName() *string
+	SetServiceRegionId(v string) *CreateVpcEndpointResponseBody
+	GetServiceRegionId() *string
 	SetVpcId(v string) *CreateVpcEndpointResponseBody
 	GetVpcId() *string
 	SetZoneAffinityEnabled(v bool) *CreateVpcEndpointResponseBody
@@ -81,7 +85,8 @@ type CreateVpcEndpointResponseBody struct {
 	// example:
 	//
 	// 2022-01-02T19:11:12Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CrossRegionBandwidth *int32  `json:"CrossRegionBandwidth,omitempty" xml:"CrossRegionBandwidth,omitempty"`
 	// The service state of the endpoint. Valid values:
 	//
 	// 	- **Normal**: The endpoint runs as expected.
@@ -147,7 +152,8 @@ type CreateVpcEndpointResponseBody struct {
 	// example:
 	//
 	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3xdsq46ael67lo****
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceName     *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
 	// The ID of the VPC to which the endpoint belongs.
 	//
 	// example:
@@ -179,6 +185,10 @@ func (s *CreateVpcEndpointResponseBody) GetConnectionStatus() *string {
 
 func (s *CreateVpcEndpointResponseBody) GetCreateTime() *string {
 	return s.CreateTime
+}
+
+func (s *CreateVpcEndpointResponseBody) GetCrossRegionBandwidth() *int32 {
+	return s.CrossRegionBandwidth
 }
 
 func (s *CreateVpcEndpointResponseBody) GetEndpointBusinessStatus() *string {
@@ -217,6 +227,10 @@ func (s *CreateVpcEndpointResponseBody) GetServiceName() *string {
 	return s.ServiceName
 }
 
+func (s *CreateVpcEndpointResponseBody) GetServiceRegionId() *string {
+	return s.ServiceRegionId
+}
+
 func (s *CreateVpcEndpointResponseBody) GetVpcId() *string {
 	return s.VpcId
 }
@@ -242,6 +256,11 @@ func (s *CreateVpcEndpointResponseBody) SetConnectionStatus(v string) *CreateVpc
 
 func (s *CreateVpcEndpointResponseBody) SetCreateTime(v string) *CreateVpcEndpointResponseBody {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateVpcEndpointResponseBody) SetCrossRegionBandwidth(v int32) *CreateVpcEndpointResponseBody {
+	s.CrossRegionBandwidth = &v
 	return s
 }
 
@@ -287,6 +306,11 @@ func (s *CreateVpcEndpointResponseBody) SetServiceId(v string) *CreateVpcEndpoin
 
 func (s *CreateVpcEndpointResponseBody) SetServiceName(v string) *CreateVpcEndpointResponseBody {
 	s.ServiceName = &v
+	return s
+}
+
+func (s *CreateVpcEndpointResponseBody) SetServiceRegionId(v string) *CreateVpcEndpointResponseBody {
+	s.ServiceRegionId = &v
 	return s
 }
 

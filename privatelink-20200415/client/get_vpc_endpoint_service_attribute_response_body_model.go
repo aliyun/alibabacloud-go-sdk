@@ -47,6 +47,8 @@ type iGetVpcEndpointServiceAttributeResponseBody interface {
 	GetServiceSupportIPv6() *bool
 	SetServiceType(v string) *GetVpcEndpointServiceAttributeResponseBody
 	GetServiceType() *string
+	SetSupportedRegionSet(v []*GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet) *GetVpcEndpointServiceAttributeResponseBody
+	GetSupportedRegionSet() []*GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet
 	SetZoneAffinityEnabled(v bool) *GetVpcEndpointServiceAttributeResponseBody
 	GetZoneAffinityEnabled() *bool
 	SetZones(v []*string) *GetVpcEndpointServiceAttributeResponseBody
@@ -205,7 +207,8 @@ type GetVpcEndpointServiceAttributeResponseBody struct {
 	// example:
 	//
 	// Interface
-	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	ServiceType        *string                                                         `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	SupportedRegionSet []*GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet `json:"SupportedRegionSet,omitempty" xml:"SupportedRegionSet,omitempty" type:"Repeated"`
 	// Indicates whether the domain name of the nearest endpoint that is associated with the endpoint service is resolved first. Valid values:
 	//
 	// 	- **true*	- (default)
@@ -302,6 +305,10 @@ func (s *GetVpcEndpointServiceAttributeResponseBody) GetServiceSupportIPv6() *bo
 
 func (s *GetVpcEndpointServiceAttributeResponseBody) GetServiceType() *string {
 	return s.ServiceType
+}
+
+func (s *GetVpcEndpointServiceAttributeResponseBody) GetSupportedRegionSet() []*GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet {
+	return s.SupportedRegionSet
 }
 
 func (s *GetVpcEndpointServiceAttributeResponseBody) GetZoneAffinityEnabled() *bool {
@@ -407,6 +414,11 @@ func (s *GetVpcEndpointServiceAttributeResponseBody) SetServiceType(v string) *G
 	return s
 }
 
+func (s *GetVpcEndpointServiceAttributeResponseBody) SetSupportedRegionSet(v []*GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet) *GetVpcEndpointServiceAttributeResponseBody {
+	s.SupportedRegionSet = v
+	return s
+}
+
 func (s *GetVpcEndpointServiceAttributeResponseBody) SetZoneAffinityEnabled(v bool) *GetVpcEndpointServiceAttributeResponseBody {
 	s.ZoneAffinityEnabled = &v
 	return s
@@ -418,5 +430,59 @@ func (s *GetVpcEndpointServiceAttributeResponseBody) SetZones(v []*string) *GetV
 }
 
 func (s *GetVpcEndpointServiceAttributeResponseBody) Validate() error {
+	if s.SupportedRegionSet != nil {
+		for _, item := range s.SupportedRegionSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet struct {
+	RegionBusinessStatus *string `json:"RegionBusinessStatus,omitempty" xml:"RegionBusinessStatus,omitempty"`
+	RegionServiceStatus  *string `json:"RegionServiceStatus,omitempty" xml:"RegionServiceStatus,omitempty"`
+	ServiceRegionId      *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+}
+
+func (s GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet) GoString() string {
+	return s.String()
+}
+
+func (s *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet) GetRegionBusinessStatus() *string {
+	return s.RegionBusinessStatus
+}
+
+func (s *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet) GetRegionServiceStatus() *string {
+	return s.RegionServiceStatus
+}
+
+func (s *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet) GetServiceRegionId() *string {
+	return s.ServiceRegionId
+}
+
+func (s *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet) SetRegionBusinessStatus(v string) *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet {
+	s.RegionBusinessStatus = &v
+	return s
+}
+
+func (s *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet) SetRegionServiceStatus(v string) *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet {
+	s.RegionServiceStatus = &v
+	return s
+}
+
+func (s *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet) SetServiceRegionId(v string) *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet {
+	s.ServiceRegionId = &v
+	return s
+}
+
+func (s *GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet) Validate() error {
 	return dara.Validate(s)
 }

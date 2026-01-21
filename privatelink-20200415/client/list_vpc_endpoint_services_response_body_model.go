@@ -266,7 +266,8 @@ type ListVpcEndpointServicesResponseBodyServices struct {
 	// example:
 	//
 	// Interface
-	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	ServiceType        *string                                                          `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	SupportedRegionSet []*ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet `json:"SupportedRegionSet,omitempty" xml:"SupportedRegionSet,omitempty" type:"Repeated"`
 	// The tags added to the resource.
 	Tags []*ListVpcEndpointServicesResponseBodyServicesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// Indicates whether zone affinity is enabled. Valid values:
@@ -359,6 +360,10 @@ func (s *ListVpcEndpointServicesResponseBodyServices) GetServiceSupportIPv6() *b
 
 func (s *ListVpcEndpointServicesResponseBodyServices) GetServiceType() *string {
 	return s.ServiceType
+}
+
+func (s *ListVpcEndpointServicesResponseBodyServices) GetSupportedRegionSet() []*ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet {
+	return s.SupportedRegionSet
 }
 
 func (s *ListVpcEndpointServicesResponseBodyServices) GetTags() []*ListVpcEndpointServicesResponseBodyServicesTags {
@@ -459,6 +464,11 @@ func (s *ListVpcEndpointServicesResponseBodyServices) SetServiceType(v string) *
 	return s
 }
 
+func (s *ListVpcEndpointServicesResponseBodyServices) SetSupportedRegionSet(v []*ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet) *ListVpcEndpointServicesResponseBodyServices {
+	s.SupportedRegionSet = v
+	return s
+}
+
 func (s *ListVpcEndpointServicesResponseBodyServices) SetTags(v []*ListVpcEndpointServicesResponseBodyServicesTags) *ListVpcEndpointServicesResponseBodyServices {
 	s.Tags = v
 	return s
@@ -470,6 +480,15 @@ func (s *ListVpcEndpointServicesResponseBodyServices) SetZoneAffinityEnabled(v b
 }
 
 func (s *ListVpcEndpointServicesResponseBodyServices) Validate() error {
+	if s.SupportedRegionSet != nil {
+		for _, item := range s.SupportedRegionSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Tags != nil {
 		for _, item := range s.Tags {
 			if item != nil {
@@ -480,6 +499,51 @@ func (s *ListVpcEndpointServicesResponseBodyServices) Validate() error {
 		}
 	}
 	return nil
+}
+
+type ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet struct {
+	RegionBusinessStatus *string `json:"RegionBusinessStatus,omitempty" xml:"RegionBusinessStatus,omitempty"`
+	RegionServiceStatus  *string `json:"RegionServiceStatus,omitempty" xml:"RegionServiceStatus,omitempty"`
+	ServiceRegionId      *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+}
+
+func (s ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet) GoString() string {
+	return s.String()
+}
+
+func (s *ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet) GetRegionBusinessStatus() *string {
+	return s.RegionBusinessStatus
+}
+
+func (s *ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet) GetRegionServiceStatus() *string {
+	return s.RegionServiceStatus
+}
+
+func (s *ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet) GetServiceRegionId() *string {
+	return s.ServiceRegionId
+}
+
+func (s *ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet) SetRegionBusinessStatus(v string) *ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet {
+	s.RegionBusinessStatus = &v
+	return s
+}
+
+func (s *ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet) SetRegionServiceStatus(v string) *ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet {
+	s.RegionServiceStatus = &v
+	return s
+}
+
+func (s *ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet) SetServiceRegionId(v string) *ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet {
+	s.ServiceRegionId = &v
+	return s
+}
+
+func (s *ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListVpcEndpointServicesResponseBodyServicesTags struct {

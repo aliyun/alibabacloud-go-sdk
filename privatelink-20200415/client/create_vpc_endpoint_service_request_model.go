@@ -31,6 +31,8 @@ type iCreateVpcEndpointServiceRequest interface {
 	GetServiceResourceType() *string
 	SetServiceSupportIPv6(v bool) *CreateVpcEndpointServiceRequest
 	GetServiceSupportIPv6() *bool
+	SetSupportedRegionList(v []*string) *CreateVpcEndpointServiceRequest
+	GetSupportedRegionList() []*string
 	SetTag(v []*CreateVpcEndpointServiceRequestTag) *CreateVpcEndpointServiceRequest
 	GetTag() []*CreateVpcEndpointServiceRequestTag
 	SetZoneAffinityEnabled(v bool) *CreateVpcEndpointServiceRequest
@@ -137,7 +139,8 @@ type CreateVpcEndpointServiceRequest struct {
 	// example:
 	//
 	// false
-	ServiceSupportIPv6 *bool `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
+	ServiceSupportIPv6  *bool     `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
+	SupportedRegionList []*string `json:"SupportedRegionList,omitempty" xml:"SupportedRegionList,omitempty" type:"Repeated"`
 	// The tags to add to the resource.
 	Tag []*CreateVpcEndpointServiceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
@@ -204,6 +207,10 @@ func (s *CreateVpcEndpointServiceRequest) GetServiceSupportIPv6() *bool {
 	return s.ServiceSupportIPv6
 }
 
+func (s *CreateVpcEndpointServiceRequest) GetSupportedRegionList() []*string {
+	return s.SupportedRegionList
+}
+
 func (s *CreateVpcEndpointServiceRequest) GetTag() []*CreateVpcEndpointServiceRequestTag {
 	return s.Tag
 }
@@ -264,6 +271,11 @@ func (s *CreateVpcEndpointServiceRequest) SetServiceResourceType(v string) *Crea
 
 func (s *CreateVpcEndpointServiceRequest) SetServiceSupportIPv6(v bool) *CreateVpcEndpointServiceRequest {
 	s.ServiceSupportIPv6 = &v
+	return s
+}
+
+func (s *CreateVpcEndpointServiceRequest) SetSupportedRegionList(v []*string) *CreateVpcEndpointServiceRequest {
+	s.SupportedRegionList = v
 	return s
 }
 

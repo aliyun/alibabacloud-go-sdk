@@ -622,6 +622,10 @@ func (client *Client) CreateVpcEndpointWithOptions(request *CreateVpcEndpointReq
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.CrossRegionBandwidth) {
+		query["CrossRegionBandwidth"] = request.CrossRegionBandwidth
+	}
+
 	if !dara.IsNil(request.DryRun) {
 		query["DryRun"] = request.DryRun
 	}
@@ -668,6 +672,10 @@ func (client *Client) CreateVpcEndpointWithOptions(request *CreateVpcEndpointReq
 
 	if !dara.IsNil(request.ServiceName) {
 		query["ServiceName"] = request.ServiceName
+	}
+
+	if !dara.IsNil(request.ServiceRegionId) {
+		query["ServiceRegionId"] = request.ServiceRegionId
 	}
 
 	if !dara.IsNil(request.Tag) {
@@ -812,6 +820,10 @@ func (client *Client) CreateVpcEndpointServiceWithOptions(request *CreateVpcEndp
 
 	if !dara.IsNil(request.ServiceSupportIPv6) {
 		query["ServiceSupportIPv6"] = request.ServiceSupportIPv6
+	}
+
+	if !dara.IsNil(request.SupportedRegionList) {
+		query["SupportedRegionList"] = request.SupportedRegionList
 	}
 
 	if !dara.IsNil(request.Tag) {
@@ -2606,6 +2618,10 @@ func (client *Client) ListVpcEndpointServicesByEndUserWithOptions(request *ListV
 		query["ServiceName"] = request.ServiceName
 	}
 
+	if !dara.IsNil(request.ServiceRegionId) {
+		query["ServiceRegionId"] = request.ServiceRegionId
+	}
+
 	if !dara.IsNil(request.ServiceType) {
 		query["ServiceType"] = request.ServiceType
 	}
@@ -2796,6 +2812,10 @@ func (client *Client) ListVpcEndpointsWithOptions(request *ListVpcEndpointsReque
 
 	if !dara.IsNil(request.ServiceName) {
 		query["ServiceName"] = request.ServiceName
+	}
+
+	if !dara.IsNil(request.ServiceRegionId) {
+		query["ServiceRegionId"] = request.ServiceRegionId
 	}
 
 	if !dara.IsNil(request.Tag) {
@@ -3324,6 +3344,10 @@ func (client *Client) UpdateVpcEndpointAttributeWithOptions(request *UpdateVpcEn
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.CrossRegionBandwidth) {
+		query["CrossRegionBandwidth"] = request.CrossRegionBandwidth
+	}
+
 	if !dara.IsNil(request.DryRun) {
 		query["DryRun"] = request.DryRun
 	}
@@ -3524,6 +3548,10 @@ func (client *Client) UpdateVpcEndpointServiceAttributeWithOptions(request *Upda
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddSupportedRegionSet) {
+		query["AddSupportedRegionSet"] = request.AddSupportedRegionSet
+	}
+
 	if !dara.IsNil(request.AddressIpVersion) {
 		query["AddressIpVersion"] = request.AddressIpVersion
 	}
@@ -3538,6 +3566,10 @@ func (client *Client) UpdateVpcEndpointServiceAttributeWithOptions(request *Upda
 
 	if !dara.IsNil(request.ConnectBandwidth) {
 		query["ConnectBandwidth"] = request.ConnectBandwidth
+	}
+
+	if !dara.IsNil(request.DeleteSupportedRegionSet) {
+		query["DeleteSupportedRegionSet"] = request.DeleteSupportedRegionSet
 	}
 
 	if !dara.IsNil(request.DryRun) {
