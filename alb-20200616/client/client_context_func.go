@@ -122,12 +122,17 @@ func (client *Client) AddServersToServerGroupWithContext(ctx context.Context, re
 		query["ServerGroupId"] = request.ServerGroupId
 	}
 
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
 	if !dara.IsNil(request.Servers) {
-		query["Servers"] = request.Servers
+		bodyFlat["Servers"] = request.Servers
 	}
 
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("AddServersToServerGroup"),
@@ -4185,10 +4190,6 @@ func (client *Client) ReplaceServersInServerGroupWithContext(ctx context.Context
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.AddedServers) {
-		query["AddedServers"] = request.AddedServers
-	}
-
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -4205,8 +4206,17 @@ func (client *Client) ReplaceServersInServerGroupWithContext(ctx context.Context
 		query["ServerGroupId"] = request.ServerGroupId
 	}
 
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.AddedServers) {
+		bodyFlat["AddedServers"] = request.AddedServers
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ReplaceServersInServerGroup"),
@@ -5564,12 +5574,17 @@ func (client *Client) UpdateServerGroupServersAttributeWithContext(ctx context.C
 		query["ServerGroupId"] = request.ServerGroupId
 	}
 
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
 	if !dara.IsNil(request.Servers) {
-		query["Servers"] = request.Servers
+		bodyFlat["Servers"] = request.Servers
 	}
 
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("UpdateServerGroupServersAttribute"),
