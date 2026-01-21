@@ -605,7 +605,8 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	// example:
 	//
 	// global
-	ClipboardScope *string `json:"ClipboardScope,omitempty" xml:"ClipboardScope,omitempty"`
+	ClipboardScope    *string `json:"ClipboardScope,omitempty" xml:"ClipboardScope,omitempty"`
+	ClipboardSizeUnit *string `json:"ClipboardSizeUnit,omitempty" xml:"ClipboardSizeUnit,omitempty"`
 	// The maximum number of characters allowed when copying to the clipboard.
 	//
 	// example:
@@ -682,6 +683,10 @@ func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) GetClipboardSco
 	return s.ClipboardScope
 }
 
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) GetClipboardSizeUnit() *string {
+	return s.ClipboardSizeUnit
+}
+
 func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) GetClipboardWriteLimit() *int32 {
 	return s.ClipboardWriteLimit
 }
@@ -710,6 +715,11 @@ func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetClipboardRea
 
 func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetClipboardScope(v string) *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy {
 	s.ClipboardScope = &v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetClipboardSizeUnit(v string) *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy {
+	s.ClipboardSizeUnit = &v
 	return s
 }
 
