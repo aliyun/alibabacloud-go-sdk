@@ -96,6 +96,7 @@ func (s *GetDingtalkMeetingMemberEventResponseBody) Validate() error {
 }
 
 type GetDingtalkMeetingMemberEventResponseBodyData struct {
+	ConfModule *string `json:"confModule,omitempty" xml:"confModule,omitempty"`
 	// example:
 	//
 	// event123
@@ -122,6 +123,10 @@ func (s GetDingtalkMeetingMemberEventResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetDingtalkMeetingMemberEventResponseBodyData) GetConfModule() *string {
+	return s.ConfModule
+}
+
 func (s *GetDingtalkMeetingMemberEventResponseBodyData) GetEventId() *string {
 	return s.EventId
 }
@@ -136,6 +141,11 @@ func (s *GetDingtalkMeetingMemberEventResponseBodyData) GetEventType() *string {
 
 func (s *GetDingtalkMeetingMemberEventResponseBodyData) GetTs() *int64 {
 	return s.Ts
+}
+
+func (s *GetDingtalkMeetingMemberEventResponseBodyData) SetConfModule(v string) *GetDingtalkMeetingMemberEventResponseBodyData {
+	s.ConfModule = &v
+	return s
 }
 
 func (s *GetDingtalkMeetingMemberEventResponseBodyData) SetEventId(v string) *GetDingtalkMeetingMemberEventResponseBodyData {

@@ -15,6 +15,8 @@ type iCreateEventResponseBody interface {
 	GetCreateTime() *string
 	SetDescription(v string) *CreateEventResponseBody
 	GetDescription() *string
+	SetEncryptedId(v string) *CreateEventResponseBody
+	GetEncryptedId() *string
 	SetEnd(v *CreateEventResponseBodyEnd) *CreateEventResponseBody
 	GetEnd() *CreateEventResponseBodyEnd
 	SetId(v string) *CreateEventResponseBody
@@ -52,6 +54,7 @@ type CreateEventResponseBody struct {
 	// 2020-01-01T10:15:30+08:00
 	CreateTime  *string                     `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	Description *string                     `json:"description,omitempty" xml:"description,omitempty"`
+	EncryptedId *string                     `json:"encryptedId,omitempty" xml:"encryptedId,omitempty"`
 	End         *CreateEventResponseBodyEnd `json:"end,omitempty" xml:"end,omitempty" type:"Struct"`
 	// example:
 	//
@@ -100,6 +103,10 @@ func (s *CreateEventResponseBody) GetCreateTime() *string {
 
 func (s *CreateEventResponseBody) GetDescription() *string {
 	return s.Description
+}
+
+func (s *CreateEventResponseBody) GetEncryptedId() *string {
+	return s.EncryptedId
 }
 
 func (s *CreateEventResponseBody) GetEnd() *CreateEventResponseBodyEnd {
@@ -170,6 +177,11 @@ func (s *CreateEventResponseBody) SetCreateTime(v string) *CreateEventResponseBo
 
 func (s *CreateEventResponseBody) SetDescription(v string) *CreateEventResponseBody {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateEventResponseBody) SetEncryptedId(v string) *CreateEventResponseBody {
+	s.EncryptedId = &v
 	return s
 }
 
