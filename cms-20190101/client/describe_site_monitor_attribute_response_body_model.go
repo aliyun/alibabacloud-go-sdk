@@ -1128,6 +1128,10 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	//
 	// 110
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// example:
+	//
+	// cert.pem
+	PrivateCrtFileName *string `json:"private_crt_file_name,omitempty" xml:"private_crt_file_name,omitempty"`
 	// The protocol that is used to send the request.
 	//
 	// example:
@@ -1218,6 +1222,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	TrafficHijackElementCount *int32 `json:"traffic_hijack_element_count,omitempty" xml:"traffic_hijack_element_count,omitempty"`
 	// The traffic hijacking whitelist. When redirection occurs, if the URL of the resource loaded by the browser does not match any expression in the whitelist, traffic hijacking is considered to have occurred.
 	TrafficHijackElementWhitelist *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementWhitelist `json:"traffic_hijack_element_whitelist,omitempty" xml:"traffic_hijack_element_whitelist,omitempty" type:"Struct"`
+	UsePrivateCrt                 *bool                                                                                        `json:"use_private_crt,omitempty" xml:"use_private_crt,omitempty"`
 	// The username of the FTP, SMTP, or POP3 protocol.
 	//
 	// example:
@@ -1392,6 +1397,10 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetPort
 	return s.Port
 }
 
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetPrivateCrtFileName() *string {
+	return s.PrivateCrtFileName
+}
+
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetProtocol() *string {
 	return s.Protocol
 }
@@ -1466,6 +1475,10 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetTraf
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetTrafficHijackElementWhitelist() *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementWhitelist {
 	return s.TrafficHijackElementWhitelist
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetUsePrivateCrt() *bool {
+	return s.UsePrivateCrt
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetUsername() *string {
@@ -1666,6 +1679,11 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetPort
 	return s
 }
 
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetPrivateCrtFileName(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.PrivateCrtFileName = &v
+	return s
+}
+
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetProtocol(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.Protocol = &v
 	return s
@@ -1758,6 +1776,11 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetTraf
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetTrafficHijackElementWhitelist(v *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementWhitelist) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.TrafficHijackElementWhitelist = v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetUsePrivateCrt(v bool) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.UsePrivateCrt = &v
 	return s
 }
 
