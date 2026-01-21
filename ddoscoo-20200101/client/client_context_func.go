@@ -7780,6 +7780,10 @@ func (client *Client) DescribeWebPreciseAccessRuleWithContext(ctx context.Contex
 		query["Domains"] = request.Domains
 	}
 
+	if !dara.IsNil(request.Owner) {
+		query["Owner"] = request.Owner
+	}
+
 	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}

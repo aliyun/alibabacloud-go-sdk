@@ -130,6 +130,7 @@ type DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList str
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	// The match conditions.
 	ConditionList []*DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListConditionList `json:"ConditionList,omitempty" xml:"ConditionList,omitempty" type:"Repeated"`
+	ExpirePeriod  *int64                                                                                  `json:"ExpirePeriod,omitempty" xml:"ExpirePeriod,omitempty"`
 	// The validity period of the rule. Unit: seconds. This parameter takes effect only when **action*	- of a rule is **block**. Access requests that match the rule are blocked within the specified validity period of the rule. The value **0*	- indicates that the whitelist takes effect all the time.
 	//
 	// example:
@@ -170,6 +171,10 @@ func (s *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList
 	return s.ConditionList
 }
 
+func (s *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList) GetExpirePeriod() *int64 {
+	return s.ExpirePeriod
+}
+
 func (s *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList) GetExpires() *int64 {
 	return s.Expires
 }
@@ -189,6 +194,11 @@ func (s *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList
 
 func (s *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList) SetConditionList(v []*DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListConditionList) *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList {
 	s.ConditionList = v
+	return s
+}
+
+func (s *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList) SetExpirePeriod(v int64) *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList {
+	s.ExpirePeriod = &v
 	return s
 }
 

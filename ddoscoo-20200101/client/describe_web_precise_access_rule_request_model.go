@@ -11,6 +11,8 @@ type iDescribeWebPreciseAccessRuleRequest interface {
 	GoString() string
 	SetDomains(v []*string) *DescribeWebPreciseAccessRuleRequest
 	GetDomains() []*string
+	SetOwner(v string) *DescribeWebPreciseAccessRuleRequest
+	GetOwner() *string
 	SetResourceGroupId(v string) *DescribeWebPreciseAccessRuleRequest
 	GetResourceGroupId() *string
 }
@@ -26,6 +28,7 @@ type DescribeWebPreciseAccessRuleRequest struct {
 	//
 	// www.aliyun.com
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	Owner   *string   `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// example:
@@ -46,12 +49,21 @@ func (s *DescribeWebPreciseAccessRuleRequest) GetDomains() []*string {
 	return s.Domains
 }
 
+func (s *DescribeWebPreciseAccessRuleRequest) GetOwner() *string {
+	return s.Owner
+}
+
 func (s *DescribeWebPreciseAccessRuleRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
 func (s *DescribeWebPreciseAccessRuleRequest) SetDomains(v []*string) *DescribeWebPreciseAccessRuleRequest {
 	s.Domains = v
+	return s
+}
+
+func (s *DescribeWebPreciseAccessRuleRequest) SetOwner(v string) *DescribeWebPreciseAccessRuleRequest {
+	s.Owner = &v
 	return s
 }
 
