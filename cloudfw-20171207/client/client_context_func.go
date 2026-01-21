@@ -673,6 +673,50 @@ func (client *Client) BatchDeleteVpcFirewallControlPolicyWithContext(ctx context
 
 // Summary:
 //
+// 清空防火墙日志
+//
+// @param request - ClearLogStoreStorageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClearLogStoreStorageResponse
+func (client *Client) ClearLogStoreStorageWithContext(ctx context.Context, request *ClearLogStoreStorageRequest, runtime *dara.RuntimeOptions) (_result *ClearLogStoreStorageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Site) {
+		query["Site"] = request.Site
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClearLogStoreStorage"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClearLogStoreStorageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建ACK集群连接器
 //
 // @param request - CreateAckClusterConnectorRequest
@@ -9505,6 +9549,50 @@ func (client *Client) DescribeRegionInfoWithContext(ctx context.Context, request
 
 // Summary:
 //
+// 查询地域和资产类型引流设置
+//
+// @param request - DescribeRegionResourceTypeAutoEnableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionResourceTypeAutoEnableResponse
+func (client *Client) DescribeRegionResourceTypeAutoEnableWithContext(ctx context.Context, request *DescribeRegionResourceTypeAutoEnableRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionResourceTypeAutoEnableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRegionResourceTypeAutoEnable"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRegionResourceTypeAutoEnableResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询资产类型默认引流
 //
 // @param request - DescribeResourceTypeAutoEnableRequest
@@ -14952,6 +15040,10 @@ func (client *Client) ModifyResourceTypeAutoEnableWithContext(ctx context.Contex
 		query["Lang"] = request.Lang
 	}
 
+	if !dara.IsNil(request.RegionNo) {
+		query["RegionNo"] = request.RegionNo
+	}
+
 	if !dara.IsNil(request.ResourceTypeAutoEnable) {
 		query["ResourceTypeAutoEnable"] = request.ResourceTypeAutoEnable
 	}
@@ -15062,6 +15154,10 @@ func (client *Client) ModifySlsDispatchStatusWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.NewRegionId) {
 		query["NewRegionId"] = request.NewRegionId
+	}
+
+	if !dara.IsNil(request.Site) {
+		query["Site"] = request.Site
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -15420,6 +15516,14 @@ func (client *Client) ModifyUserSlsLogStorageTimeWithContext(ctx context.Context
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.LogVersion) {
+		query["LogVersion"] = request.LogVersion
+	}
+
+	if !dara.IsNil(request.SlsRegionId) {
+		query["SlsRegionId"] = request.SlsRegionId
 	}
 
 	if !dara.IsNil(request.StorageTime) {
@@ -16206,12 +16310,20 @@ func (client *Client) PutDisableFwSwitchWithContext(ctx context.Context, request
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.IpVersion) {
+		query["IpVersion"] = request.IpVersion
+	}
+
 	if !dara.IsNil(request.IpaddrList) {
 		query["IpaddrList"] = request.IpaddrList
 	}
 
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MemberUid) {
+		query["MemberUid"] = request.MemberUid
 	}
 
 	if !dara.IsNil(request.RegionList) {
@@ -16334,12 +16446,20 @@ func (client *Client) PutEnableFwSwitchWithContext(ctx context.Context, request 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.IpVersion) {
+		query["IpVersion"] = request.IpVersion
+	}
+
 	if !dara.IsNil(request.IpaddrList) {
 		query["IpaddrList"] = request.IpaddrList
 	}
 
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MemberUid) {
+		query["MemberUid"] = request.MemberUid
 	}
 
 	if !dara.IsNil(request.RegionList) {
@@ -16617,6 +16737,58 @@ func (client *Client) ResetVpcFirewallRuleHitCountWithContext(ctx context.Contex
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResetVpcFirewallRuleHitCountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启自动保护新入资产
+//
+// @param request - SetAutoProtectNewAssetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAutoProtectNewAssetsResponse
+func (client *Client) SetAutoProtectNewAssetsWithContext(ctx context.Context, request *SetAutoProtectNewAssetsRequest, runtime *dara.RuntimeOptions) (_result *SetAutoProtectNewAssetsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoProtect) {
+		query["AutoProtect"] = request.AutoProtect
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetAutoProtectNewAssets"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetAutoProtectNewAssetsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

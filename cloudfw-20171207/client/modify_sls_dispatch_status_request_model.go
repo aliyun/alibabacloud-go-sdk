@@ -17,6 +17,8 @@ type iModifySlsDispatchStatusRequest interface {
 	GetFilterKeys() *string
 	SetNewRegionId(v string) *ModifySlsDispatchStatusRequest
 	GetNewRegionId() *string
+	SetSite(v string) *ModifySlsDispatchStatusRequest
+	GetSite() *string
 }
 
 type ModifySlsDispatchStatusRequest struct {
@@ -36,6 +38,10 @@ type ModifySlsDispatchStatusRequest struct {
 	//
 	// cn-shanghai
 	NewRegionId *string `json:"NewRegionId,omitempty" xml:"NewRegionId,omitempty"`
+	// example:
+	//
+	// cn
+	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
 }
 
 func (s ModifySlsDispatchStatusRequest) String() string {
@@ -62,6 +68,10 @@ func (s *ModifySlsDispatchStatusRequest) GetNewRegionId() *string {
 	return s.NewRegionId
 }
 
+func (s *ModifySlsDispatchStatusRequest) GetSite() *string {
+	return s.Site
+}
+
 func (s *ModifySlsDispatchStatusRequest) SetDispatchValue(v string) *ModifySlsDispatchStatusRequest {
 	s.DispatchValue = &v
 	return s
@@ -79,6 +89,11 @@ func (s *ModifySlsDispatchStatusRequest) SetFilterKeys(v string) *ModifySlsDispa
 
 func (s *ModifySlsDispatchStatusRequest) SetNewRegionId(v string) *ModifySlsDispatchStatusRequest {
 	s.NewRegionId = &v
+	return s
+}
+
+func (s *ModifySlsDispatchStatusRequest) SetSite(v string) *ModifySlsDispatchStatusRequest {
+	s.Site = &v
 	return s
 }
 

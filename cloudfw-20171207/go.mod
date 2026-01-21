@@ -1,8 +1,8 @@
-module github.com/alibabacloud-go/cloudfw-20171207/v9
+module github.com/alibabacloud-go/cloudfw-20171207/v10
 
 go 1.14
 
 require (
-	github.com/alibabacloud-go/darabonba-openapi/v2 v2.1.13
+	github.com/alibabacloud-go/darabonba-openapi/v2 v2.1.14
 	github.com/alibabacloud-go/tea v1.3.13
 )

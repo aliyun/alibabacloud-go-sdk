@@ -9,10 +9,14 @@ type iPutEnableFwSwitchRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetIpVersion(v string) *PutEnableFwSwitchRequest
+	GetIpVersion() *string
 	SetIpaddrList(v []*string) *PutEnableFwSwitchRequest
 	GetIpaddrList() []*string
 	SetLang(v string) *PutEnableFwSwitchRequest
 	GetLang() *string
+	SetMemberUid(v string) *PutEnableFwSwitchRequest
+	GetMemberUid() *string
 	SetRegionList(v []*string) *PutEnableFwSwitchRequest
 	GetRegionList() []*string
 	SetResourceTypeList(v []*string) *PutEnableFwSwitchRequest
@@ -22,6 +26,10 @@ type iPutEnableFwSwitchRequest interface {
 }
 
 type PutEnableFwSwitchRequest struct {
+	// example:
+	//
+	// 4
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// The IP addresses.
 	//
 	// > You must specify at least one of the IpaddrList, RegionList, and ResourceTypeList parameters.
@@ -40,6 +48,10 @@ type PutEnableFwSwitchRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 1234
+	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The regions.
 	//
 	// > You must specify at least one of the IpaddrList, RegionList, and ResourceTypeList parameters.
@@ -98,12 +110,20 @@ func (s PutEnableFwSwitchRequest) GoString() string {
 	return s.String()
 }
 
+func (s *PutEnableFwSwitchRequest) GetIpVersion() *string {
+	return s.IpVersion
+}
+
 func (s *PutEnableFwSwitchRequest) GetIpaddrList() []*string {
 	return s.IpaddrList
 }
 
 func (s *PutEnableFwSwitchRequest) GetLang() *string {
 	return s.Lang
+}
+
+func (s *PutEnableFwSwitchRequest) GetMemberUid() *string {
+	return s.MemberUid
 }
 
 func (s *PutEnableFwSwitchRequest) GetRegionList() []*string {
@@ -118,6 +138,11 @@ func (s *PutEnableFwSwitchRequest) GetSourceIp() *string {
 	return s.SourceIp
 }
 
+func (s *PutEnableFwSwitchRequest) SetIpVersion(v string) *PutEnableFwSwitchRequest {
+	s.IpVersion = &v
+	return s
+}
+
 func (s *PutEnableFwSwitchRequest) SetIpaddrList(v []*string) *PutEnableFwSwitchRequest {
 	s.IpaddrList = v
 	return s
@@ -125,6 +150,11 @@ func (s *PutEnableFwSwitchRequest) SetIpaddrList(v []*string) *PutEnableFwSwitch
 
 func (s *PutEnableFwSwitchRequest) SetLang(v string) *PutEnableFwSwitchRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *PutEnableFwSwitchRequest) SetMemberUid(v string) *PutEnableFwSwitchRequest {
+	s.MemberUid = &v
 	return s
 }
 
