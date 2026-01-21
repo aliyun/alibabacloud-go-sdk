@@ -13543,6 +13543,46 @@ func (client *Client) ListSiteDeliveryTasksWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// 查询站点回源客户端证书列表
+//
+// @param request - ListSiteOriginClientCertificatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSiteOriginClientCertificatesResponse
+func (client *Client) ListSiteOriginClientCertificatesWithContext(ctx context.Context, request *ListSiteOriginClientCertificatesRequest, runtime *dara.RuntimeOptions) (_result *ListSiteOriginClientCertificatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSiteOriginClientCertificates"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSiteOriginClientCertificatesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the edge function routes for a website.
 //
 // @param request - ListSiteRoutesRequest
