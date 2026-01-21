@@ -124,6 +124,9 @@ type GenerateAssetOperationTokenRequest struct {
 	//
 	// >  This parameter is available only for Bastionhost V3.2.44 and later.
 	//
+	// if can be null:
+	// true
+	//
 	// example:
 	//
 	// SID

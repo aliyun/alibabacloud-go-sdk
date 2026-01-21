@@ -1462,6 +1462,10 @@ func (client *Client) CreateDatabaseAccount(request *CreateDatabaseAccountReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建导出配置的任务
+//
 // @param request - CreateExportConfigJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1506,6 +1510,10 @@ func (client *Client) CreateExportConfigJobWithOptions(request *CreateExportConf
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建导出配置的任务
+//
 // @param request - CreateExportConfigJobRequest
 //
 // @return CreateExportConfigJobResponse
@@ -1966,6 +1974,10 @@ func (client *Client) CreateNetworkDomain(request *CreateNetworkDomainRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建运维审批工单
+//
 // @param request - CreateOperationTicketRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2038,6 +2050,10 @@ func (client *Client) CreateOperationTicketWithOptions(request *CreateOperationT
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建运维审批工单
+//
 // @param request - CreateOperationTicketRequest
 //
 // @return CreateOperationTicketResponse
@@ -4716,6 +4732,10 @@ func (client *Client) GetDatabaseAccount(request *GetDatabaseAccountRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取导出配置任务进度
+//
 // @param request - GetExportConfigJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4764,6 +4784,10 @@ func (client *Client) GetExportConfigJobWithOptions(request *GetExportConfigJobR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取导出配置任务进度
+//
 // @param request - GetExportConfigJobRequest
 //
 // @return GetExportConfigJobResponse
@@ -5210,6 +5234,10 @@ func (client *Client) GetInstanceLDAPAuthServer(request *GetInstanceLDAPAuthServ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取堡垒机实例存储信息
+//
 // @param request - GetInstanceStoreInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5254,6 +5282,10 @@ func (client *Client) GetInstanceStoreInfoWithOptions(request *GetInstanceStoreI
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取堡垒机实例存储信息
+//
 // @param request - GetInstanceStoreInfoRequest
 //
 // @return GetInstanceStoreInfoResponse
@@ -5367,6 +5399,10 @@ func (client *Client) GetNetworkDomainWithOptions(request *GetNetworkDomainReque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CheckProxyState) {
+		query["CheckProxyState"] = request.CheckProxyState
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}

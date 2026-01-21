@@ -191,6 +191,14 @@ type SetPolicyProtocolConfigRequestProtocolConfigRDP struct {
 	//
 	// Enable
 	DiskRedirection *string `json:"DiskRedirection,omitempty" xml:"DiskRedirection,omitempty"`
+	// example:
+	//
+	// Enable
+	DiskRedirectionDownload *string `json:"DiskRedirectionDownload,omitempty" xml:"DiskRedirectionDownload,omitempty"`
+	// example:
+	//
+	// Enable
+	DiskRedirectionUpload *string `json:"DiskRedirectionUpload,omitempty" xml:"DiskRedirectionUpload,omitempty"`
 	// Specifies whether to enable keyboard operation recording. Valid values:
 	//
 	// 	- Enable
@@ -225,6 +233,14 @@ func (s *SetPolicyProtocolConfigRequestProtocolConfigRDP) GetDiskRedirection() *
 	return s.DiskRedirection
 }
 
+func (s *SetPolicyProtocolConfigRequestProtocolConfigRDP) GetDiskRedirectionDownload() *string {
+	return s.DiskRedirectionDownload
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigRDP) GetDiskRedirectionUpload() *string {
+	return s.DiskRedirectionUpload
+}
+
 func (s *SetPolicyProtocolConfigRequestProtocolConfigRDP) GetRecordKeyboard() *string {
 	return s.RecordKeyboard
 }
@@ -244,6 +260,16 @@ func (s *SetPolicyProtocolConfigRequestProtocolConfigRDP) SetDiskRedirection(v s
 	return s
 }
 
+func (s *SetPolicyProtocolConfigRequestProtocolConfigRDP) SetDiskRedirectionDownload(v string) *SetPolicyProtocolConfigRequestProtocolConfigRDP {
+	s.DiskRedirectionDownload = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigRDP) SetDiskRedirectionUpload(v string) *SetPolicyProtocolConfigRequestProtocolConfigRDP {
+	s.DiskRedirectionUpload = &v
+	return s
+}
+
 func (s *SetPolicyProtocolConfigRequestProtocolConfigRDP) SetRecordKeyboard(v string) *SetPolicyProtocolConfigRequestProtocolConfigRDP {
 	s.RecordKeyboard = &v
 	return s
@@ -254,6 +280,14 @@ func (s *SetPolicyProtocolConfigRequestProtocolConfigRDP) Validate() error {
 }
 
 type SetPolicyProtocolConfigRequestProtocolConfigSSH struct {
+	// example:
+	//
+	// Enable
+	AllowDirectTcp *string `json:"AllowDirectTcp,omitempty" xml:"AllowDirectTcp,omitempty"`
+	// example:
+	//
+	// Enable
+	AllowTcpForwarding *string `json:"AllowTcpForwarding,omitempty" xml:"AllowTcpForwarding,omitempty"`
 	// Specifies whether to enable remote command execution. Valid values:
 	//
 	// 	- Enable
@@ -396,6 +430,14 @@ func (s SetPolicyProtocolConfigRequestProtocolConfigSSH) GoString() string {
 	return s.String()
 }
 
+func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) GetAllowDirectTcp() *string {
+	return s.AllowDirectTcp
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) GetAllowTcpForwarding() *string {
+	return s.AllowTcpForwarding
+}
+
 func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) GetExecCommand() *string {
 	return s.ExecCommand
 }
@@ -434,6 +476,16 @@ func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) GetSSHChannel() *strin
 
 func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) GetX11Forwarding() *string {
 	return s.X11Forwarding
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) SetAllowDirectTcp(v string) *SetPolicyProtocolConfigRequestProtocolConfigSSH {
+	s.AllowDirectTcp = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) SetAllowTcpForwarding(v string) *SetPolicyProtocolConfigRequestProtocolConfigSSH {
+	s.AllowTcpForwarding = &v
+	return s
 }
 
 func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) SetExecCommand(v string) *SetPolicyProtocolConfigRequestProtocolConfigSSH {

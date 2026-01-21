@@ -9,6 +9,8 @@ type iGetNetworkDomainRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCheckProxyState(v string) *GetNetworkDomainRequest
+	GetCheckProxyState() *string
 	SetInstanceId(v string) *GetNetworkDomainRequest
 	GetInstanceId() *string
 	SetNetworkDomainId(v string) *GetNetworkDomainRequest
@@ -18,6 +20,7 @@ type iGetNetworkDomainRequest interface {
 }
 
 type GetNetworkDomainRequest struct {
+	CheckProxyState *string `json:"CheckProxyState,omitempty" xml:"CheckProxyState,omitempty"`
 	// The bastion host ID.
 	//
 	// > You can call the [DescribeInstances ](https://help.aliyun.com/document_detail/153281.html)operation to query the bastion host ID.
@@ -56,6 +59,10 @@ func (s GetNetworkDomainRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetNetworkDomainRequest) GetCheckProxyState() *string {
+	return s.CheckProxyState
+}
+
 func (s *GetNetworkDomainRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -66,6 +73,11 @@ func (s *GetNetworkDomainRequest) GetNetworkDomainId() *string {
 
 func (s *GetNetworkDomainRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *GetNetworkDomainRequest) SetCheckProxyState(v string) *GetNetworkDomainRequest {
+	s.CheckProxyState = &v
+	return s
 }
 
 func (s *GetNetworkDomainRequest) SetInstanceId(v string) *GetNetworkDomainRequest {

@@ -1063,6 +1063,10 @@ func (client *Client) CreateDatabaseAccountWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建导出配置的任务
+//
 // @param request - CreateExportConfigJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1463,6 +1467,10 @@ func (client *Client) CreateNetworkDomainWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建运维审批工单
+//
 // @param request - CreateOperationTicketRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3539,6 +3547,10 @@ func (client *Client) GetDatabaseAccountWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取导出配置任务进度
+//
 // @param request - GetExportConfigJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3901,6 +3913,10 @@ func (client *Client) GetInstanceLDAPAuthServerWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取堡垒机实例存储信息
+//
 // @param request - GetInstanceStoreInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4018,6 +4034,10 @@ func (client *Client) GetNetworkDomainWithContext(ctx context.Context, request *
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CheckProxyState) {
+		query["CheckProxyState"] = request.CheckProxyState
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
