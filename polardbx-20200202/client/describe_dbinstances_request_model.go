@@ -11,6 +11,8 @@ type iDescribeDBInstancesRequest interface {
 	GoString() string
 	SetDbVersion(v string) *DescribeDBInstancesRequest
 	GetDbVersion() *string
+	SetDescription(v string) *DescribeDBInstancesRequest
+	GetDescription() *string
 	SetInstanceId(v string) *DescribeDBInstancesRequest
 	GetInstanceId() *string
 	SetMustHasCdc(v bool) *DescribeDBInstancesRequest
@@ -30,7 +32,8 @@ type iDescribeDBInstancesRequest interface {
 }
 
 type DescribeDBInstancesRequest struct {
-	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
+	DbVersion   *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
 	// dinga93c84f4d***
@@ -76,6 +79,10 @@ func (s *DescribeDBInstancesRequest) GetDbVersion() *string {
 	return s.DbVersion
 }
 
+func (s *DescribeDBInstancesRequest) GetDescription() *string {
+	return s.Description
+}
+
 func (s *DescribeDBInstancesRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -110,6 +117,11 @@ func (s *DescribeDBInstancesRequest) GetTags() *string {
 
 func (s *DescribeDBInstancesRequest) SetDbVersion(v string) *DescribeDBInstancesRequest {
 	s.DbVersion = &v
+	return s
+}
+
+func (s *DescribeDBInstancesRequest) SetDescription(v string) *DescribeDBInstancesRequest {
+	s.Description = &v
 	return s
 }
 

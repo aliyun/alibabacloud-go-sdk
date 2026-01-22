@@ -3140,6 +3140,10 @@ func (client *Client) DescribeDBInstancesWithContext(ctx context.Context, reques
 		query["DbVersion"] = request.DbVersion
 	}
 
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
