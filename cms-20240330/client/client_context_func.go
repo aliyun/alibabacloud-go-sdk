@@ -265,6 +265,77 @@ func (client *Client) CreateAggTaskGroupWithContext(ctx context.Context, instanc
 
 // Summary:
 //
+// 创建Webhook
+//
+// @param request - CreateAlertWebhookRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAlertWebhookResponse
+func (client *Client) CreateAlertWebhookWithContext(ctx context.Context, request *CreateAlertWebhookRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAlertWebhookResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContentType) {
+		body["contentType"] = request.ContentType
+	}
+
+	if !dara.IsNil(request.Headers) {
+		body["headers"] = request.Headers
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Method) {
+		body["method"] = request.Method
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Url) {
+		body["url"] = request.Url
+	}
+
+	if !dara.IsNil(request.WebhookId) {
+		body["webhookId"] = request.WebhookId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAlertWebhook"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webhook"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAlertWebhookResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建业务链路
 //
 // @param request - CreateBizTraceRequest
@@ -1184,6 +1255,59 @@ func (client *Client) DeleteAggTaskGroupWithContext(ctx context.Context, instanc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAggTaskGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Webhook
+//
+// @param tmpReq - DeleteAlertWebhooksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAlertWebhooksResponse
+func (client *Client) DeleteAlertWebhooksWithContext(ctx context.Context, tmpReq *DeleteAlertWebhooksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAlertWebhooksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteAlertWebhooksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.WebhookIds) {
+		request.WebhookIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WebhookIds, dara.String("webhookIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WebhookIdsShrink) {
+		query["webhookIds"] = request.WebhookIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAlertWebhooks"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webhooks"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAlertWebhooksResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3080,6 +3204,71 @@ func (client *Client) ListAlertActionsWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
+// 查询Webhook
+//
+// @param tmpReq - ListAlertWebhooksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAlertWebhooksResponse
+func (client *Client) ListAlertWebhooksWithContext(ctx context.Context, tmpReq *ListAlertWebhooksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAlertWebhooksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListAlertWebhooksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.WebhookIds) {
+		request.WebhookIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WebhookIds, dara.String("webhookIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.WebhookIdsShrink) {
+		query["webhookIds"] = request.WebhookIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAlertWebhooks"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webhooks"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAlertWebhooksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 业务链路列表
 //
 // @param request - ListBizTracesRequest
@@ -4638,6 +4827,73 @@ func (client *Client) UpdateAggTaskGroupStatusWithContext(ctx context.Context, i
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAggTaskGroupStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Webhook
+//
+// @param request - UpdateAlertWebhookRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAlertWebhookResponse
+func (client *Client) UpdateAlertWebhookWithContext(ctx context.Context, webhookId *string, request *UpdateAlertWebhookRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAlertWebhookResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContentType) {
+		body["contentType"] = request.ContentType
+	}
+
+	if !dara.IsNil(request.Headers) {
+		body["headers"] = request.Headers
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Method) {
+		body["method"] = request.Method
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Url) {
+		body["url"] = request.Url
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAlertWebhook"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webhook/" + dara.PercentEncode(dara.StringValue(webhookId))),
+		Method:      dara.String("PATCH"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAlertWebhookResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
