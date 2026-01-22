@@ -218,6 +218,10 @@ type RealTimeDialogRequestConversationModel struct {
 	//
 	// 10
 	End *int32 `json:"end,omitempty" xml:"end,omitempty"`
+	// example:
+	//
+	// 1983746378992743
+	IntentionCode *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -268,6 +272,10 @@ func (s *RealTimeDialogRequestConversationModel) GetEnd() *int32 {
 	return s.End
 }
 
+func (s *RealTimeDialogRequestConversationModel) GetIntentionCode() *string {
+	return s.IntentionCode
+}
+
 func (s *RealTimeDialogRequestConversationModel) GetRole() *int32 {
 	return s.Role
 }
@@ -308,6 +316,11 @@ func (s *RealTimeDialogRequestConversationModel) SetCustomerServiceType(v string
 
 func (s *RealTimeDialogRequestConversationModel) SetEnd(v int32) *RealTimeDialogRequestConversationModel {
 	s.End = &v
+	return s
+}
+
+func (s *RealTimeDialogRequestConversationModel) SetIntentionCode(v string) *RealTimeDialogRequestConversationModel {
+	s.IntentionCode = &v
 	return s
 }
 
