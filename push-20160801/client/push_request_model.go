@@ -27,6 +27,8 @@ type iPushRequest interface {
 	GetAndroidExtParameters() *string
 	SetAndroidHonorTargetUserType(v int32) *PushRequest
 	GetAndroidHonorTargetUserType() *int32
+	SetAndroidHuaweiBusinessType(v int32) *PushRequest
+	GetAndroidHuaweiBusinessType() *int32
 	SetAndroidHuaweiLiveNotificationPayload(v string) *PushRequest
 	GetAndroidHuaweiLiveNotificationPayload() *string
 	SetAndroidHuaweiReceiptId(v string) *PushRequest
@@ -260,6 +262,7 @@ type PushRequest struct {
 	// {"key1":"value1","api_name":"PushNoticeToAndroidRequest"}
 	AndroidExtParameters                 *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
 	AndroidHonorTargetUserType           *int32  `json:"AndroidHonorTargetUserType,omitempty" xml:"AndroidHonorTargetUserType,omitempty"`
+	AndroidHuaweiBusinessType            *int32  `json:"AndroidHuaweiBusinessType,omitempty" xml:"AndroidHuaweiBusinessType,omitempty"`
 	AndroidHuaweiLiveNotificationPayload *string `json:"AndroidHuaweiLiveNotificationPayload,omitempty" xml:"AndroidHuaweiLiveNotificationPayload,omitempty"`
 	// example:
 	//
@@ -606,6 +609,10 @@ func (s *PushRequest) GetAndroidExtParameters() *string {
 
 func (s *PushRequest) GetAndroidHonorTargetUserType() *int32 {
 	return s.AndroidHonorTargetUserType
+}
+
+func (s *PushRequest) GetAndroidHuaweiBusinessType() *int32 {
+	return s.AndroidHuaweiBusinessType
 }
 
 func (s *PushRequest) GetAndroidHuaweiLiveNotificationPayload() *string {
@@ -1074,6 +1081,11 @@ func (s *PushRequest) SetAndroidExtParameters(v string) *PushRequest {
 
 func (s *PushRequest) SetAndroidHonorTargetUserType(v int32) *PushRequest {
 	s.AndroidHonorTargetUserType = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidHuaweiBusinessType(v int32) *PushRequest {
+	s.AndroidHuaweiBusinessType = &v
 	return s
 }
 

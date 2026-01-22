@@ -676,6 +676,10 @@ func (client *Client) PushWithContext(ctx context.Context, tmpReq *PushRequest, 
 		query["AndroidHonorTargetUserType"] = request.AndroidHonorTargetUserType
 	}
 
+	if !dara.IsNil(request.AndroidHuaweiBusinessType) {
+		query["AndroidHuaweiBusinessType"] = request.AndroidHuaweiBusinessType
+	}
+
 	if !dara.IsNil(request.AndroidHuaweiLiveNotificationPayload) {
 		query["AndroidHuaweiLiveNotificationPayload"] = request.AndroidHuaweiLiveNotificationPayload
 	}

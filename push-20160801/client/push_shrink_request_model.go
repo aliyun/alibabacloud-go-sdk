@@ -27,6 +27,8 @@ type iPushShrinkRequest interface {
 	GetAndroidExtParameters() *string
 	SetAndroidHonorTargetUserType(v int32) *PushShrinkRequest
 	GetAndroidHonorTargetUserType() *int32
+	SetAndroidHuaweiBusinessType(v int32) *PushShrinkRequest
+	GetAndroidHuaweiBusinessType() *int32
 	SetAndroidHuaweiLiveNotificationPayload(v string) *PushShrinkRequest
 	GetAndroidHuaweiLiveNotificationPayload() *string
 	SetAndroidHuaweiReceiptId(v string) *PushShrinkRequest
@@ -260,6 +262,7 @@ type PushShrinkRequest struct {
 	// {"key1":"value1","api_name":"PushNoticeToAndroidRequest"}
 	AndroidExtParameters                 *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
 	AndroidHonorTargetUserType           *int32  `json:"AndroidHonorTargetUserType,omitempty" xml:"AndroidHonorTargetUserType,omitempty"`
+	AndroidHuaweiBusinessType            *int32  `json:"AndroidHuaweiBusinessType,omitempty" xml:"AndroidHuaweiBusinessType,omitempty"`
 	AndroidHuaweiLiveNotificationPayload *string `json:"AndroidHuaweiLiveNotificationPayload,omitempty" xml:"AndroidHuaweiLiveNotificationPayload,omitempty"`
 	// example:
 	//
@@ -606,6 +609,10 @@ func (s *PushShrinkRequest) GetAndroidExtParameters() *string {
 
 func (s *PushShrinkRequest) GetAndroidHonorTargetUserType() *int32 {
 	return s.AndroidHonorTargetUserType
+}
+
+func (s *PushShrinkRequest) GetAndroidHuaweiBusinessType() *int32 {
+	return s.AndroidHuaweiBusinessType
 }
 
 func (s *PushShrinkRequest) GetAndroidHuaweiLiveNotificationPayload() *string {
@@ -1074,6 +1081,11 @@ func (s *PushShrinkRequest) SetAndroidExtParameters(v string) *PushShrinkRequest
 
 func (s *PushShrinkRequest) SetAndroidHonorTargetUserType(v int32) *PushShrinkRequest {
 	s.AndroidHonorTargetUserType = &v
+	return s
+}
+
+func (s *PushShrinkRequest) SetAndroidHuaweiBusinessType(v int32) *PushShrinkRequest {
+	s.AndroidHuaweiBusinessType = &v
 	return s
 }
 

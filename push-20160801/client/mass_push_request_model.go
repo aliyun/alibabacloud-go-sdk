@@ -102,6 +102,7 @@ type MassPushRequestPushTask struct {
 	// {"key1":"value1","api_name":"PushNoticeToAndroidRequest"}
 	AndroidExtParameters                 *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
 	AndroidHonorTargetUserType           *int32  `json:"AndroidHonorTargetUserType,omitempty" xml:"AndroidHonorTargetUserType,omitempty"`
+	AndroidHuaweiBusinessType            *int32  `json:"AndroidHuaweiBusinessType,omitempty" xml:"AndroidHuaweiBusinessType,omitempty"`
 	AndroidHuaweiLiveNotificationPayload *string `json:"AndroidHuaweiLiveNotificationPayload,omitempty" xml:"AndroidHuaweiLiveNotificationPayload,omitempty"`
 	// example:
 	//
@@ -186,13 +187,16 @@ type MassPushRequestPushTask struct {
 	// example:
 	//
 	// https://xxxx.xxx
-	AndroidOpenUrl                      *string            `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
-	AndroidOppoDeleteIntentData         *string            `json:"AndroidOppoDeleteIntentData,omitempty" xml:"AndroidOppoDeleteIntentData,omitempty"`
-	AndroidOppoIntelligentIntent        *string            `json:"AndroidOppoIntelligentIntent,omitempty" xml:"AndroidOppoIntelligentIntent,omitempty"`
-	AndroidOppoIntentEnv                *int32             `json:"AndroidOppoIntentEnv,omitempty" xml:"AndroidOppoIntentEnv,omitempty"`
+	AndroidOpenUrl               *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
+	AndroidOppoDeleteIntentData  *string `json:"AndroidOppoDeleteIntentData,omitempty" xml:"AndroidOppoDeleteIntentData,omitempty"`
+	AndroidOppoIntelligentIntent *string `json:"AndroidOppoIntelligentIntent,omitempty" xml:"AndroidOppoIntelligentIntent,omitempty"`
+	AndroidOppoIntentEnv         *int32  `json:"AndroidOppoIntentEnv,omitempty" xml:"AndroidOppoIntentEnv,omitempty"`
+	// Deprecated
 	AndroidOppoPrivateContentParameters map[string]*string `json:"AndroidOppoPrivateContentParameters,omitempty" xml:"AndroidOppoPrivateContentParameters,omitempty"`
-	AndroidOppoPrivateMsgTemplateId     *string            `json:"AndroidOppoPrivateMsgTemplateId,omitempty" xml:"AndroidOppoPrivateMsgTemplateId,omitempty"`
-	AndroidOppoPrivateTitleParameters   map[string]*string `json:"AndroidOppoPrivateTitleParameters,omitempty" xml:"AndroidOppoPrivateTitleParameters,omitempty"`
+	// Deprecated
+	AndroidOppoPrivateMsgTemplateId *string `json:"AndroidOppoPrivateMsgTemplateId,omitempty" xml:"AndroidOppoPrivateMsgTemplateId,omitempty"`
+	// Deprecated
+	AndroidOppoPrivateTitleParameters map[string]*string `json:"AndroidOppoPrivateTitleParameters,omitempty" xml:"AndroidOppoPrivateTitleParameters,omitempty"`
 	// example:
 	//
 	// com.alibaba.cloudpushdemo.bizactivity
@@ -427,6 +431,10 @@ func (s *MassPushRequestPushTask) GetAndroidExtParameters() *string {
 
 func (s *MassPushRequestPushTask) GetAndroidHonorTargetUserType() *int32 {
 	return s.AndroidHonorTargetUserType
+}
+
+func (s *MassPushRequestPushTask) GetAndroidHuaweiBusinessType() *int32 {
+	return s.AndroidHuaweiBusinessType
 }
 
 func (s *MassPushRequestPushTask) GetAndroidHuaweiLiveNotificationPayload() *string {
@@ -867,6 +875,11 @@ func (s *MassPushRequestPushTask) SetAndroidExtParameters(v string) *MassPushReq
 
 func (s *MassPushRequestPushTask) SetAndroidHonorTargetUserType(v int32) *MassPushRequestPushTask {
 	s.AndroidHonorTargetUserType = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidHuaweiBusinessType(v int32) *MassPushRequestPushTask {
+	s.AndroidHuaweiBusinessType = &v
 	return s
 }
 

@@ -622,6 +622,7 @@ func (s *PushTaskNotificationAndroidOptionsHonor) Validate() error {
 }
 
 type PushTaskNotificationAndroidOptionsHuawei struct {
+	BusinessType            *int32  `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	Category                *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	Importance              *int32  `json:"Importance,omitempty" xml:"Importance,omitempty"`
 	LiveNotificationPayload *string `json:"LiveNotificationPayload,omitempty" xml:"LiveNotificationPayload,omitempty"`
@@ -635,6 +636,10 @@ func (s PushTaskNotificationAndroidOptionsHuawei) String() string {
 
 func (s PushTaskNotificationAndroidOptionsHuawei) GoString() string {
 	return s.String()
+}
+
+func (s *PushTaskNotificationAndroidOptionsHuawei) GetBusinessType() *int32 {
+	return s.BusinessType
 }
 
 func (s *PushTaskNotificationAndroidOptionsHuawei) GetCategory() *string {
@@ -655,6 +660,11 @@ func (s *PushTaskNotificationAndroidOptionsHuawei) GetReceiptId() *string {
 
 func (s *PushTaskNotificationAndroidOptionsHuawei) GetUrgency() *string {
 	return s.Urgency
+}
+
+func (s *PushTaskNotificationAndroidOptionsHuawei) SetBusinessType(v int32) *PushTaskNotificationAndroidOptionsHuawei {
+	s.BusinessType = &v
+	return s
 }
 
 func (s *PushTaskNotificationAndroidOptionsHuawei) SetCategory(v string) *PushTaskNotificationAndroidOptionsHuawei {

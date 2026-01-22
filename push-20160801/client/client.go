@@ -1049,6 +1049,10 @@ func (client *Client) PushWithOptions(tmpReq *PushRequest, runtime *dara.Runtime
 		query["AndroidHonorTargetUserType"] = request.AndroidHonorTargetUserType
 	}
 
+	if !dara.IsNil(request.AndroidHuaweiBusinessType) {
+		query["AndroidHuaweiBusinessType"] = request.AndroidHuaweiBusinessType
+	}
+
 	if !dara.IsNil(request.AndroidHuaweiLiveNotificationPayload) {
 		query["AndroidHuaweiLiveNotificationPayload"] = request.AndroidHuaweiLiveNotificationPayload
 	}
