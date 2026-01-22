@@ -19,6 +19,8 @@ type iDescribeRenderingInstanceResponseBody interface {
 	GetEgressIp() *string
 	SetHostname(v string) *DescribeRenderingInstanceResponseBody
 	GetHostname() *string
+	SetInstanceChargeType(v string) *DescribeRenderingInstanceResponseBody
+	GetInstanceChargeType() *string
 	SetInternalIp(v string) *DescribeRenderingInstanceResponseBody
 	GetInternalIp() *string
 	SetIsp(v string) *DescribeRenderingInstanceResponseBody
@@ -52,10 +54,14 @@ type DescribeRenderingInstanceResponseBody struct {
 	// example:
 	//
 	// cn-xxx.ecr.aliyuncs.com
-	Hostname     *string                                              `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	InternalIp   *string                                              `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
-	Isp          *string                                              `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	PortMappings []*DescribeRenderingInstanceResponseBodyPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// example:
+	//
+	// PostPaid
+	InstanceChargeType *string                                              `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InternalIp         *string                                              `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	Isp                *string                                              `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	PortMappings       []*DescribeRenderingInstanceResponseBodyPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
@@ -97,6 +103,10 @@ func (s *DescribeRenderingInstanceResponseBody) GetEgressIp() *string {
 
 func (s *DescribeRenderingInstanceResponseBody) GetHostname() *string {
 	return s.Hostname
+}
+
+func (s *DescribeRenderingInstanceResponseBody) GetInstanceChargeType() *string {
+	return s.InstanceChargeType
 }
 
 func (s *DescribeRenderingInstanceResponseBody) GetInternalIp() *string {
@@ -161,6 +171,11 @@ func (s *DescribeRenderingInstanceResponseBody) SetEgressIp(v string) *DescribeR
 
 func (s *DescribeRenderingInstanceResponseBody) SetHostname(v string) *DescribeRenderingInstanceResponseBody {
 	s.Hostname = &v
+	return s
+}
+
+func (s *DescribeRenderingInstanceResponseBody) SetInstanceChargeType(v string) *DescribeRenderingInstanceResponseBody {
+	s.InstanceChargeType = &v
 	return s
 }
 
