@@ -65,7 +65,12 @@ func (s *CreateCostCenterRuleRequest) SetNbid(v string) *CreateCostCenterRuleReq
 }
 
 func (s *CreateCostCenterRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.FilterExpression != nil {
+		if err := s.FilterExpression.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateCostCenterRuleRequestFilterExpression struct {
@@ -136,7 +141,12 @@ func (s *CreateCostCenterRuleRequestFilterExpression) SetOperatorType(v string) 
 }
 
 func (s *CreateCostCenterRuleRequestFilterExpression) Validate() error {
-	return dara.Validate(s)
+	if s.FilterValues != nil {
+		if err := s.FilterValues.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateCostCenterRuleRequestFilterExpressionFilterValues struct {

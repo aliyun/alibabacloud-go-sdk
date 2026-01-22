@@ -95,7 +95,12 @@ func (s *GetOrdersResponseBody) SetSuccess(v bool) *GetOrdersResponseBody {
 }
 
 func (s *GetOrdersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOrdersResponseBodyData struct {
@@ -172,7 +177,12 @@ func (s *GetOrdersResponseBodyData) SetTotalCount(v int32) *GetOrdersResponseBod
 }
 
 func (s *GetOrdersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.OrderList != nil {
+		if err := s.OrderList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOrdersResponseBodyDataOrderList struct {
@@ -197,7 +207,16 @@ func (s *GetOrdersResponseBodyDataOrderList) SetOrder(v []*GetOrdersResponseBody
 }
 
 func (s *GetOrdersResponseBodyDataOrderList) Validate() error {
-	return dara.Validate(s)
+	if s.Order != nil {
+		for _, item := range s.Order {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOrdersResponseBodyDataOrderListOrder struct {

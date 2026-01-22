@@ -47,7 +47,16 @@ func (s *GetSavingPlanDeductableCommodityResponseBody) SetRequestId(v string) *G
 }
 
 func (s *GetSavingPlanDeductableCommodityResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSavingPlanDeductableCommodityResponseBodyData struct {
@@ -222,7 +231,52 @@ func (s *GetSavingPlanDeductableCommodityResponseBodyData) SetStepPriceMap(v map
 }
 
 func (s *GetSavingPlanDeductableCommodityResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CycleList != nil {
+		for _, item := range s.CycleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FilterModules != nil {
+		for _, item := range s.FilterModules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ModuleMapList != nil {
+		for _, item := range s.ModuleMapList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PayModeList != nil {
+		for _, item := range s.PayModeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PricingModules != nil {
+		for _, item := range s.PricingModules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSavingPlanDeductableCommodityResponseBodyDataCycleList struct {
@@ -397,7 +451,34 @@ func (s *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList) SetSpnTy
 }
 
 func (s *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList) Validate() error {
-	return dara.Validate(s)
+	if s.FilterModules != nil {
+		for _, item := range s.FilterModules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ShowModules != nil {
+		for _, item := range s.ShowModules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SpnTypeNameList != nil {
+		for _, item := range s.SpnTypeNameList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListFilterModules struct {

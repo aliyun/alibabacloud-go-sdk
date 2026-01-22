@@ -59,5 +59,10 @@ func (s *CreateCostCenterRuleResponse) SetBody(v *CreateCostCenterRuleResponseBo
 }
 
 func (s *CreateCostCenterRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

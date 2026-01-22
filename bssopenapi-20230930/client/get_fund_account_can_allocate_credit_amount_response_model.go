@@ -59,5 +59,10 @@ func (s *GetFundAccountCanAllocateCreditAmountResponse) SetBody(v *GetFundAccoun
 }
 
 func (s *GetFundAccountCanAllocateCreditAmountResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

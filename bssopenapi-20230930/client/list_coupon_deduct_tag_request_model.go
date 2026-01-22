@@ -59,7 +59,16 @@ func (s *ListCouponDeductTagRequest) SetNbid(v string) *ListCouponDeductTagReque
 }
 
 func (s *ListCouponDeductTagRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EcIdAccountIds != nil {
+		for _, item := range s.EcIdAccountIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCouponDeductTagRequestEcIdAccountIds struct {

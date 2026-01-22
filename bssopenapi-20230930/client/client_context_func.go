@@ -17,9 +17,11 @@ import (
 //
 // @return AddCouponDeductTagResponse
 func (client *Client) AddCouponDeductTagWithContext(ctx context.Context, tmpReq *AddCouponDeductTagRequest, runtime *dara.RuntimeOptions) (_result *AddCouponDeductTagResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddCouponDeductTagShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -81,9 +83,11 @@ func (client *Client) AddCouponDeductTagWithContext(ctx context.Context, tmpReq 
 //
 // @return AllocateCostCenterResourceResponse
 func (client *Client) AllocateCostCenterResourceWithContext(ctx context.Context, tmpReq *AllocateCostCenterResourceRequest, runtime *dara.RuntimeOptions) (_result *AllocateCostCenterResourceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AllocateCostCenterResourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -147,9 +151,11 @@ func (client *Client) AllocateCostCenterResourceWithContext(ctx context.Context,
 //
 // @return CancelFundAccountLowAvailableAmountAlarmResponse
 func (client *Client) CancelFundAccountLowAvailableAmountAlarmWithContext(ctx context.Context, request *CancelFundAccountLowAvailableAmountAlarmRequest, runtime *dara.RuntimeOptions) (_result *CancelFundAccountLowAvailableAmountAlarmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FundAccountId) {
@@ -189,9 +195,11 @@ func (client *Client) CancelFundAccountLowAvailableAmountAlarmWithContext(ctx co
 //
 // @return CheckAccountExistResponse
 func (client *Client) CheckAccountExistWithContext(ctx context.Context, request *CheckAccountExistRequest, runtime *dara.RuntimeOptions) (_result *CheckAccountExistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EcIdAccountIds) {
@@ -245,9 +253,11 @@ func (client *Client) CheckAccountExistWithContext(ctx context.Context, request 
 //
 // @return CreateCostCenterResponse
 func (client *Client) CreateCostCenterWithContext(ctx context.Context, tmpReq *CreateCostCenterRequest, runtime *dara.RuntimeOptions) (_result *CreateCostCenterResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateCostCenterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -297,9 +307,11 @@ func (client *Client) CreateCostCenterWithContext(ctx context.Context, tmpReq *C
 //
 // @return CreateCostCenterRuleResponse
 func (client *Client) CreateCostCenterRuleWithContext(ctx context.Context, tmpReq *CreateCostCenterRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateCostCenterRuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateCostCenterRuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -355,9 +367,11 @@ func (client *Client) CreateCostCenterRuleWithContext(ctx context.Context, tmpRe
 //
 // @return CreateFundAccountPayRelationResponse
 func (client *Client) CreateFundAccountPayRelationWithContext(ctx context.Context, tmpReq *CreateFundAccountPayRelationRequest, runtime *dara.RuntimeOptions) (_result *CreateFundAccountPayRelationResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateFundAccountPayRelationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -413,9 +427,11 @@ func (client *Client) CreateFundAccountPayRelationWithContext(ctx context.Contex
 //
 // @return CreateFundAccountTransferResponse
 func (client *Client) CreateFundAccountTransferWithContext(ctx context.Context, request *CreateFundAccountTransferRequest, runtime *dara.RuntimeOptions) (_result *CreateFundAccountTransferResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Amount) {
@@ -479,9 +495,11 @@ func (client *Client) CreateFundAccountTransferWithContext(ctx context.Context, 
 //
 // @return CreateInvoiceResponse
 func (client *Client) CreateInvoiceWithContext(ctx context.Context, tmpReq *CreateInvoiceRequest, runtime *dara.RuntimeOptions) (_result *CreateInvoiceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateInvoiceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -567,9 +585,11 @@ func (client *Client) CreateInvoiceWithContext(ctx context.Context, tmpReq *Crea
 //
 // @return CreateReportDefinitionResponse
 func (client *Client) CreateReportDefinitionWithContext(ctx context.Context, request *CreateReportDefinitionRequest, runtime *dara.RuntimeOptions) (_result *CreateReportDefinitionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BeginBillingCycle) {
@@ -659,9 +679,11 @@ func (client *Client) CreateReportDefinitionWithContext(ctx context.Context, req
 //
 // @return DeleteCostCenterResponse
 func (client *Client) DeleteCostCenterWithContext(ctx context.Context, request *DeleteCostCenterRequest, runtime *dara.RuntimeOptions) (_result *DeleteCostCenterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CostCenterId) {
@@ -709,9 +731,11 @@ func (client *Client) DeleteCostCenterWithContext(ctx context.Context, request *
 //
 // @return DeleteCostCenterRuleResponse
 func (client *Client) DeleteCostCenterRuleWithContext(ctx context.Context, tmpReq *DeleteCostCenterRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteCostCenterRuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteCostCenterRuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -767,9 +791,11 @@ func (client *Client) DeleteCostCenterRuleWithContext(ctx context.Context, tmpRe
 //
 // @return DeleteCouponDeductTagResponse
 func (client *Client) DeleteCouponDeductTagWithContext(ctx context.Context, tmpReq *DeleteCouponDeductTagRequest, runtime *dara.RuntimeOptions) (_result *DeleteCouponDeductTagResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteCouponDeductTagShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -831,9 +857,11 @@ func (client *Client) DeleteCouponDeductTagWithContext(ctx context.Context, tmpR
 //
 // @return DeleteReportDefinitionResponse
 func (client *Client) DeleteReportDefinitionWithContext(ctx context.Context, request *DeleteReportDefinitionRequest, runtime *dara.RuntimeOptions) (_result *DeleteReportDefinitionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Nbid) {
@@ -877,9 +905,11 @@ func (client *Client) DeleteReportDefinitionWithContext(ctx context.Context, req
 //
 // @return DescribeCouponResponse
 func (client *Client) DescribeCouponWithContext(ctx context.Context, tmpReq *DescribeCouponRequest, runtime *dara.RuntimeOptions) (_result *DescribeCouponResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeCouponShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -921,9 +951,11 @@ func (client *Client) DescribeCouponWithContext(ctx context.Context, tmpReq *Des
 //
 // @return DescribeCouponItemListResponse
 func (client *Client) DescribeCouponItemListWithContext(ctx context.Context, tmpReq *DescribeCouponItemListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCouponItemListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeCouponItemListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -965,9 +997,11 @@ func (client *Client) DescribeCouponItemListWithContext(ctx context.Context, tmp
 //
 // @return DescribeUserSpnSummaryInfoResponse
 func (client *Client) DescribeUserSpnSummaryInfoWithContext(ctx context.Context, tmpReq *DescribeUserSpnSummaryInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserSpnSummaryInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeUserSpnSummaryInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1017,9 +1051,11 @@ func (client *Client) DescribeUserSpnSummaryInfoWithContext(ctx context.Context,
 //
 // @return GetFundAccountAvailableAmountResponse
 func (client *Client) GetFundAccountAvailableAmountWithContext(ctx context.Context, request *GetFundAccountAvailableAmountRequest, runtime *dara.RuntimeOptions) (_result *GetFundAccountAvailableAmountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FundAccountId) {
@@ -1059,9 +1095,11 @@ func (client *Client) GetFundAccountAvailableAmountWithContext(ctx context.Conte
 //
 // @return GetFundAccountCanAllocateCreditAmountResponse
 func (client *Client) GetFundAccountCanAllocateCreditAmountWithContext(ctx context.Context, request *GetFundAccountCanAllocateCreditAmountRequest, runtime *dara.RuntimeOptions) (_result *GetFundAccountCanAllocateCreditAmountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FundAccountId) {
@@ -1101,9 +1139,11 @@ func (client *Client) GetFundAccountCanAllocateCreditAmountWithContext(ctx conte
 //
 // @return GetFundAccountCanRecycleAmountResponse
 func (client *Client) GetFundAccountCanRecycleAmountWithContext(ctx context.Context, request *GetFundAccountCanRecycleAmountRequest, runtime *dara.RuntimeOptions) (_result *GetFundAccountCanRecycleAmountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Currency) {
@@ -1147,9 +1187,11 @@ func (client *Client) GetFundAccountCanRecycleAmountWithContext(ctx context.Cont
 //
 // @return GetFundAccountCanTransferAmountResponse
 func (client *Client) GetFundAccountCanTransferAmountWithContext(ctx context.Context, request *GetFundAccountCanTransferAmountRequest, runtime *dara.RuntimeOptions) (_result *GetFundAccountCanTransferAmountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Currency) {
@@ -1193,9 +1235,11 @@ func (client *Client) GetFundAccountCanTransferAmountWithContext(ctx context.Con
 //
 // @return GetFundAccountCanWithdrawAmountResponse
 func (client *Client) GetFundAccountCanWithdrawAmountWithContext(ctx context.Context, request *GetFundAccountCanWithdrawAmountRequest, runtime *dara.RuntimeOptions) (_result *GetFundAccountCanWithdrawAmountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FundAccountId) {
@@ -1235,9 +1279,11 @@ func (client *Client) GetFundAccountCanWithdrawAmountWithContext(ctx context.Con
 //
 // @return GetFundAccountLowAvailableAmountAlarmResponse
 func (client *Client) GetFundAccountLowAvailableAmountAlarmWithContext(ctx context.Context, request *GetFundAccountLowAvailableAmountAlarmRequest, runtime *dara.RuntimeOptions) (_result *GetFundAccountLowAvailableAmountAlarmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FundAccountId) {
@@ -1277,9 +1323,11 @@ func (client *Client) GetFundAccountLowAvailableAmountAlarmWithContext(ctx conte
 //
 // @return GetFundAccountTransactionDetailsResponse
 func (client *Client) GetFundAccountTransactionDetailsWithContext(ctx context.Context, tmpReq *GetFundAccountTransactionDetailsRequest, runtime *dara.RuntimeOptions) (_result *GetFundAccountTransactionDetailsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetFundAccountTransactionDetailsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1375,9 +1423,11 @@ func (client *Client) GetFundAccountTransactionDetailsWithContext(ctx context.Co
 //
 // @return GetOrderDetailResponse
 func (client *Client) GetOrderDetailWithContext(ctx context.Context, request *GetOrderDetailRequest, runtime *dara.RuntimeOptions) (_result *GetOrderDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MemberUid) {
@@ -1425,9 +1475,11 @@ func (client *Client) GetOrderDetailWithContext(ctx context.Context, request *Ge
 //
 // @return GetOrdersResponse
 func (client *Client) GetOrdersWithContext(ctx context.Context, request *GetOrdersRequest, runtime *dara.RuntimeOptions) (_result *GetOrdersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateTimeEnd) {
@@ -1507,9 +1559,11 @@ func (client *Client) GetOrdersWithContext(ctx context.Context, request *GetOrde
 //
 // @return GetSavingPlanDeductableCommodityResponse
 func (client *Client) GetSavingPlanDeductableCommodityWithContext(ctx context.Context, tmpReq *GetSavingPlanDeductableCommodityRequest, runtime *dara.RuntimeOptions) (_result *GetSavingPlanDeductableCommodityResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetSavingPlanDeductableCommodityShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1559,9 +1613,11 @@ func (client *Client) GetSavingPlanDeductableCommodityWithContext(ctx context.Co
 //
 // @return GetSavingPlanShareAccountsResponse
 func (client *Client) GetSavingPlanShareAccountsWithContext(ctx context.Context, tmpReq *GetSavingPlanShareAccountsRequest, runtime *dara.RuntimeOptions) (_result *GetSavingPlanShareAccountsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetSavingPlanShareAccountsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1623,9 +1679,11 @@ func (client *Client) GetSavingPlanShareAccountsWithContext(ctx context.Context,
 //
 // @return GetSavingPlanUserDeductRuleResponse
 func (client *Client) GetSavingPlanUserDeductRuleWithContext(ctx context.Context, tmpReq *GetSavingPlanUserDeductRuleRequest, runtime *dara.RuntimeOptions) (_result *GetSavingPlanUserDeductRuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetSavingPlanUserDeductRuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1687,9 +1745,11 @@ func (client *Client) GetSavingPlanUserDeductRuleWithContext(ctx context.Context
 //
 // @return ListCouponDeductTagResponse
 func (client *Client) ListCouponDeductTagWithContext(ctx context.Context, tmpReq *ListCouponDeductTagRequest, runtime *dara.RuntimeOptions) (_result *ListCouponDeductTagResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListCouponDeductTagShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1743,9 +1803,11 @@ func (client *Client) ListCouponDeductTagWithContext(ctx context.Context, tmpReq
 //
 // @return ListFundAccountResponse
 func (client *Client) ListFundAccountWithContext(ctx context.Context, request *ListFundAccountRequest, runtime *dara.RuntimeOptions) (_result *ListFundAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Nbid) {
@@ -1795,9 +1857,11 @@ func (client *Client) ListFundAccountWithContext(ctx context.Context, request *L
 //
 // @return ListFundAccountPayRelationResponse
 func (client *Client) ListFundAccountPayRelationWithContext(ctx context.Context, request *ListFundAccountPayRelationRequest, runtime *dara.RuntimeOptions) (_result *ListFundAccountPayRelationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -1855,9 +1919,11 @@ func (client *Client) ListFundAccountPayRelationWithContext(ctx context.Context,
 //
 // @return ListInvoiceCandidateResponse
 func (client *Client) ListInvoiceCandidateWithContext(ctx context.Context, tmpReq *ListInvoiceCandidateRequest, runtime *dara.RuntimeOptions) (_result *ListInvoiceCandidateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListInvoiceCandidateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1963,9 +2029,11 @@ func (client *Client) ListInvoiceCandidateWithContext(ctx context.Context, tmpRe
 //
 // @return ListReportDefinitionsResponse
 func (client *Client) ListReportDefinitionsWithContext(ctx context.Context, request *ListReportDefinitionsRequest, runtime *dara.RuntimeOptions) (_result *ListReportDefinitionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Nbid) {
@@ -2005,9 +2073,11 @@ func (client *Client) ListReportDefinitionsWithContext(ctx context.Context, requ
 //
 // @return ModifyCostCenterResponse
 func (client *Client) ModifyCostCenterWithContext(ctx context.Context, tmpReq *ModifyCostCenterRequest, runtime *dara.RuntimeOptions) (_result *ModifyCostCenterResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyCostCenterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2057,9 +2127,11 @@ func (client *Client) ModifyCostCenterWithContext(ctx context.Context, tmpReq *M
 //
 // @return ModifyCostCenterRuleResponse
 func (client *Client) ModifyCostCenterRuleWithContext(ctx context.Context, tmpReq *ModifyCostCenterRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyCostCenterRuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyCostCenterRuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2119,9 +2191,11 @@ func (client *Client) ModifyCostCenterRuleWithContext(ctx context.Context, tmpRe
 //
 // @return PayOrderResponse
 func (client *Client) PayOrderWithContext(ctx context.Context, request *PayOrderRequest, runtime *dara.RuntimeOptions) (_result *PayOrderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BuyerId) {
@@ -2185,9 +2259,11 @@ func (client *Client) PayOrderWithContext(ctx context.Context, request *PayOrder
 //
 // @return QueryCostCenterResponse
 func (client *Client) QueryCostCenterWithContext(ctx context.Context, tmpReq *QueryCostCenterRequest, runtime *dara.RuntimeOptions) (_result *QueryCostCenterResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryCostCenterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2253,9 +2329,11 @@ func (client *Client) QueryCostCenterWithContext(ctx context.Context, tmpReq *Qu
 //
 // @return QueryCostCenterResourceResponse
 func (client *Client) QueryCostCenterResourceWithContext(ctx context.Context, request *QueryCostCenterResourceRequest, runtime *dara.RuntimeOptions) (_result *QueryCostCenterResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EcIdAccountIds) {
@@ -2317,9 +2395,11 @@ func (client *Client) QueryCostCenterResourceWithContext(ctx context.Context, re
 //
 // @return QueryCostCenterRuleResponse
 func (client *Client) QueryCostCenterRuleWithContext(ctx context.Context, request *QueryCostCenterRuleRequest, runtime *dara.RuntimeOptions) (_result *QueryCostCenterRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EcIdAccountIds) {
@@ -2369,9 +2449,11 @@ func (client *Client) QueryCostCenterRuleWithContext(ctx context.Context, reques
 //
 // @return QueryCostCenterShareRuleResponse
 func (client *Client) QueryCostCenterShareRuleWithContext(ctx context.Context, request *QueryCostCenterShareRuleRequest, runtime *dara.RuntimeOptions) (_result *QueryCostCenterShareRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EcIdAccountIds) {
@@ -2427,9 +2509,11 @@ func (client *Client) QueryCostCenterShareRuleWithContext(ctx context.Context, r
 //
 // @return SaveCostCenterShareRuleResponse
 func (client *Client) SaveCostCenterShareRuleWithContext(ctx context.Context, tmpReq *SaveCostCenterShareRuleRequest, runtime *dara.RuntimeOptions) (_result *SaveCostCenterShareRuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SaveCostCenterShareRuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2499,9 +2583,11 @@ func (client *Client) SaveCostCenterShareRuleWithContext(ctx context.Context, tm
 //
 // @return SetFundAccountCreditAmountResponse
 func (client *Client) SetFundAccountCreditAmountWithContext(ctx context.Context, request *SetFundAccountCreditAmountRequest, runtime *dara.RuntimeOptions) (_result *SetFundAccountCreditAmountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CreditAmount) {
@@ -2549,9 +2635,11 @@ func (client *Client) SetFundAccountCreditAmountWithContext(ctx context.Context,
 //
 // @return SetFundAccountLowAvailableAmountAlarmResponse
 func (client *Client) SetFundAccountLowAvailableAmountAlarmWithContext(ctx context.Context, request *SetFundAccountLowAvailableAmountAlarmRequest, runtime *dara.RuntimeOptions) (_result *SetFundAccountLowAvailableAmountAlarmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FundAccountId) {
@@ -2595,9 +2683,11 @@ func (client *Client) SetFundAccountLowAvailableAmountAlarmWithContext(ctx conte
 //
 // @return SetSavingPlanUserDeductRuleResponse
 func (client *Client) SetSavingPlanUserDeductRuleWithContext(ctx context.Context, tmpReq *SetSavingPlanUserDeductRuleRequest, runtime *dara.RuntimeOptions) (_result *SetSavingPlanUserDeductRuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SetSavingPlanUserDeductRuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)

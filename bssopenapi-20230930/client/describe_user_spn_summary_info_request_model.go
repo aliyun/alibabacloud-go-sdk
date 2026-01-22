@@ -47,7 +47,16 @@ func (s *DescribeUserSpnSummaryInfoRequest) SetNbid(v string) *DescribeUserSpnSu
 }
 
 func (s *DescribeUserSpnSummaryInfoRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EcIdAccountIds != nil {
+		for _, item := range s.EcIdAccountIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUserSpnSummaryInfoRequestEcIdAccountIds struct {

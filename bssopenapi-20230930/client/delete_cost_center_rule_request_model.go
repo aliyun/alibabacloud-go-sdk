@@ -65,7 +65,12 @@ func (s *DeleteCostCenterRuleRequest) SetNbid(v string) *DeleteCostCenterRuleReq
 }
 
 func (s *DeleteCostCenterRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.FilterExpression != nil {
+		if err := s.FilterExpression.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteCostCenterRuleRequestFilterExpression struct {
@@ -136,7 +141,12 @@ func (s *DeleteCostCenterRuleRequestFilterExpression) SetOperatorType(v string) 
 }
 
 func (s *DeleteCostCenterRuleRequestFilterExpression) Validate() error {
-	return dara.Validate(s)
+	if s.FilterValues != nil {
+		if err := s.FilterValues.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteCostCenterRuleRequestFilterExpressionFilterValues struct {

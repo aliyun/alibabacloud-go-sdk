@@ -110,11 +110,24 @@ func (s *QueryCostCenterShareRuleResponseBody) SetTotalCount(v int32) *QueryCost
 }
 
 func (s *QueryCostCenterShareRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryCostCenterShareRuleResponseBodyData struct {
 	FromCostCenterShareRuleDetails []*QueryCostCenterShareRuleResponseBodyDataFromCostCenterShareRuleDetails `json:"FromCostCenterShareRuleDetails,omitempty" xml:"FromCostCenterShareRuleDetails,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2026-01-01 00:00:00
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// example:
 	//
 	// 1529600453335198
@@ -146,6 +159,10 @@ func (s *QueryCostCenterShareRuleResponseBodyData) GetFromCostCenterShareRuleDet
 	return s.FromCostCenterShareRuleDetails
 }
 
+func (s *QueryCostCenterShareRuleResponseBodyData) GetGmtModified() *string {
+	return s.GmtModified
+}
+
 func (s *QueryCostCenterShareRuleResponseBodyData) GetOwnerAccountId() *int64 {
 	return s.OwnerAccountId
 }
@@ -168,6 +185,11 @@ func (s *QueryCostCenterShareRuleResponseBodyData) GetToCostCenterShareRuleDetai
 
 func (s *QueryCostCenterShareRuleResponseBodyData) SetFromCostCenterShareRuleDetails(v []*QueryCostCenterShareRuleResponseBodyDataFromCostCenterShareRuleDetails) *QueryCostCenterShareRuleResponseBodyData {
 	s.FromCostCenterShareRuleDetails = v
+	return s
+}
+
+func (s *QueryCostCenterShareRuleResponseBodyData) SetGmtModified(v string) *QueryCostCenterShareRuleResponseBodyData {
+	s.GmtModified = &v
 	return s
 }
 
@@ -197,7 +219,25 @@ func (s *QueryCostCenterShareRuleResponseBodyData) SetToCostCenterShareRuleDetai
 }
 
 func (s *QueryCostCenterShareRuleResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.FromCostCenterShareRuleDetails != nil {
+		for _, item := range s.FromCostCenterShareRuleDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ToCostCenterShareRuleDetails != nil {
+		for _, item := range s.ToCostCenterShareRuleDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryCostCenterShareRuleResponseBodyDataFromCostCenterShareRuleDetails struct {

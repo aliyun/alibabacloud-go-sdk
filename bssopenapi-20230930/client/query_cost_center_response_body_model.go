@@ -112,7 +112,16 @@ func (s *QueryCostCenterResponseBody) SetTotalCount(v int32) *QueryCostCenterRes
 }
 
 func (s *QueryCostCenterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CostCenterDtoList != nil {
+		for _, item := range s.CostCenterDtoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryCostCenterResponseBodyCostCenterDtoList struct {

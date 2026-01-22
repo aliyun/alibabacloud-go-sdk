@@ -110,7 +110,16 @@ func (s *ListInvoiceCandidateResponseBody) SetTotalCount(v int32) *ListInvoiceCa
 }
 
 func (s *ListInvoiceCandidateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInvoiceCandidateResponseBodyData struct {

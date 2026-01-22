@@ -47,7 +47,16 @@ func (s *GetSavingPlanShareAccountsResponseBody) SetRequestId(v string) *GetSavi
 }
 
 func (s *GetSavingPlanShareAccountsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSavingPlanShareAccountsResponseBodyData struct {
@@ -92,7 +101,16 @@ func (s *GetSavingPlanShareAccountsResponseBodyData) SetShareTimeList(v []*GetSa
 }
 
 func (s *GetSavingPlanShareAccountsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ShareTimeList != nil {
+		for _, item := range s.ShareTimeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSavingPlanShareAccountsResponseBodyDataShareTimeList struct {

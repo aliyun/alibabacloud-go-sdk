@@ -65,7 +65,16 @@ func (s *ModifyCostCenterResponseBody) SetRequestId(v string) *ModifyCostCenterR
 }
 
 func (s *ModifyCostCenterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CostCenterOperateDto != nil {
+		for _, item := range s.CostCenterOperateDto {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyCostCenterResponseBodyCostCenterOperateDto struct {

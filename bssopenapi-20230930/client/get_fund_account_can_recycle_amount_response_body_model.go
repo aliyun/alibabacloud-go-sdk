@@ -125,7 +125,16 @@ func (s *GetFundAccountCanRecycleAmountResponseBody) SetTransferAmount(v string)
 }
 
 func (s *GetFundAccountCanRecycleAmountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecycleToFundAccountList != nil {
+		for _, item := range s.RecycleToFundAccountList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList struct {

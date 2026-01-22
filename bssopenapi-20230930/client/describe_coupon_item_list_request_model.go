@@ -107,7 +107,16 @@ func (s *DescribeCouponItemListRequest) SetPageSize(v int32) *DescribeCouponItem
 }
 
 func (s *DescribeCouponItemListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EcIdAccountIds != nil {
+		for _, item := range s.EcIdAccountIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCouponItemListRequestEcIdAccountIds struct {

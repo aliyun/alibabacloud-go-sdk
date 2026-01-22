@@ -344,7 +344,25 @@ func (s *GetFundAccountAvailableAmountResponseBody) SetUnclearedAmount(v string)
 }
 
 func (s *GetFundAccountAvailableAmountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ExtendLedgerList != nil {
+		for _, item := range s.ExtendLedgerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OriginalCashAmountList != nil {
+		for _, item := range s.OriginalCashAmountList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetFundAccountAvailableAmountResponseBodyExtendLedgerList struct {

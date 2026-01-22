@@ -59,5 +59,10 @@ func (s *CreateFundAccountTransferResponse) SetBody(v *CreateFundAccountTransfer
 }
 
 func (s *CreateFundAccountTransferResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

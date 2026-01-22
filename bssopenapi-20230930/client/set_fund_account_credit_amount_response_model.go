@@ -59,5 +59,10 @@ func (s *SetFundAccountCreditAmountResponse) SetBody(v *SetFundAccountCreditAmou
 }
 
 func (s *SetFundAccountCreditAmountResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

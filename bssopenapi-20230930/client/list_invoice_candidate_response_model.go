@@ -59,5 +59,10 @@ func (s *ListInvoiceCandidateResponse) SetBody(v *ListInvoiceCandidateResponseBo
 }
 
 func (s *ListInvoiceCandidateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

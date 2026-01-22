@@ -187,7 +187,12 @@ func (s *QueryCostCenterRuleResponseBody) SetStatus(v string) *QueryCostCenterRu
 }
 
 func (s *QueryCostCenterRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FilterExpression != nil {
+		if err := s.FilterExpression.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCostCenterRuleResponseBodyFilterExpression struct {
@@ -258,7 +263,12 @@ func (s *QueryCostCenterRuleResponseBodyFilterExpression) SetOperatorType(v stri
 }
 
 func (s *QueryCostCenterRuleResponseBodyFilterExpression) Validate() error {
-	return dara.Validate(s)
+	if s.FilterValues != nil {
+		if err := s.FilterValues.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCostCenterRuleResponseBodyFilterExpressionFilterValues struct {

@@ -95,7 +95,16 @@ func (s *DescribeCouponResponseBody) SetTotalCount(v int32) *DescribeCouponRespo
 }
 
 func (s *DescribeCouponResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCouponResponseBodyData struct {
@@ -405,7 +414,16 @@ func (s *DescribeCouponResponseBodyData) SetYhOrderTypes(v []*string) *DescribeC
 }
 
 func (s *DescribeCouponResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ShareUidList != nil {
+		for _, item := range s.ShareUidList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCouponResponseBodyDataShareUidList struct {

@@ -89,7 +89,25 @@ func (s *SaveCostCenterShareRuleRequest) SetRemoveShareRuleList(v []*int64) *Sav
 }
 
 func (s *SaveCostCenterShareRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CreateShareRuleList != nil {
+		for _, item := range s.CreateShareRuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ModifyShareRuleList != nil {
+		for _, item := range s.ModifyShareRuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SaveCostCenterShareRuleRequestCreateShareRuleList struct {

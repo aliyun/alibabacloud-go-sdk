@@ -71,7 +71,25 @@ func (s *AddCouponDeductTagRequest) SetTags(v []*AddCouponDeductTagRequestTags) 
 }
 
 func (s *AddCouponDeductTagRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EcIdAccountIds != nil {
+		for _, item := range s.EcIdAccountIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddCouponDeductTagRequestEcIdAccountIds struct {

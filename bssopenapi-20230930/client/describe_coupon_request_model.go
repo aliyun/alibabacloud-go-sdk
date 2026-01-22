@@ -204,7 +204,16 @@ func (s *DescribeCouponRequest) SetStatus(v string) *DescribeCouponRequest {
 }
 
 func (s *DescribeCouponRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EcIdAccountIds != nil {
+		for _, item := range s.EcIdAccountIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCouponRequestEcIdAccountIds struct {

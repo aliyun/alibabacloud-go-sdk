@@ -59,5 +59,10 @@ func (s *SetFundAccountLowAvailableAmountAlarmResponse) SetBody(v *SetFundAccoun
 }
 
 func (s *SetFundAccountLowAvailableAmountAlarmResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

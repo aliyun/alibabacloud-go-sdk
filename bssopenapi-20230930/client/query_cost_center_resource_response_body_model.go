@@ -112,10 +112,31 @@ func (s *QueryCostCenterResourceResponseBody) SetTotalCount(v int32) *QueryCostC
 }
 
 func (s *QueryCostCenterResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CostCenterResourceDtoList != nil {
+		for _, item := range s.CostCenterResourceDtoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
+	// example:
+	//
+	// AUTO_ALLOCATE
+	AddStrategy *string `json:"AddStrategy,omitempty" xml:"AddStrategy,omitempty"`
+	// example:
+	//
+	// 自动分配
+	AddStrategyName *string `json:"AddStrategyName,omitempty" xml:"AddStrategyName,omitempty"`
+	// example:
+	//
+	// 3
+	ApplicablePeriodNum *int64 `json:"ApplicablePeriodNum,omitempty" xml:"ApplicablePeriodNum,omitempty"`
 	// example:
 	//
 	// test
@@ -149,11 +170,26 @@ type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
 	//
 	// 2025-05-18 16:12:25
 	CostCenterUpdateTime *string `json:"CostCenterUpdateTime,omitempty" xml:"CostCenterUpdateTime,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 3
+	FinanceUnitRuleVersion *int64  `json:"FinanceUnitRuleVersion,omitempty" xml:"FinanceUnitRuleVersion,omitempty"`
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// ecs
+	MasterCommodityCode *string `json:"MasterCommodityCode,omitempty" xml:"MasterCommodityCode,omitempty"`
+	// example:
+	//
+	// i-xxxxx
+	MasterInstanceId *string `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
 	// example:
 	//
 	// 1234567812345678
-	OwnerAccountId   *int64  `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	// example:
+	//
+	// XXX公司
 	OwnerAccountName *string `json:"OwnerAccountName,omitempty" xml:"OwnerAccountName,omitempty"`
 	// example:
 	//
@@ -162,8 +198,20 @@ type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
 	// example:
 	//
 	// rds
-	PipCode       *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	PipName       *string `json:"PipName,omitempty" xml:"PipName,omitempty"`
+	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	PipName *string `json:"PipName,omitempty" xml:"PipName,omitempty"`
+	// example:
+	//
+	// 202509
+	RecentBillingMonth *int64 `json:"RecentBillingMonth,omitempty" xml:"RecentBillingMonth,omitempty"`
+	// example:
+	//
+	// 上海
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionNo      *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
 	// example:
 	//
@@ -201,6 +249,10 @@ type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
 	//
 	// -1
 	RootCostCenterId *int64 `json:"RootCostCenterId,omitempty" xml:"RootCostCenterId,omitempty"`
+	// example:
+	//
+	// 202509
+	StartBillingMonth *int64 `json:"StartBillingMonth,omitempty" xml:"StartBillingMonth,omitempty"`
 }
 
 func (s QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) String() string {
@@ -209,6 +261,18 @@ func (s QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) String() s
 
 func (s QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GoString() string {
 	return s.String()
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetAddStrategy() *string {
+	return s.AddStrategy
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetAddStrategyName() *string {
+	return s.AddStrategyName
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetApplicablePeriodNum() *int64 {
+	return s.ApplicablePeriodNum
 }
 
 func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetApportionItemCode() *string {
@@ -247,8 +311,20 @@ func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetCostCe
 	return s.CostCenterUpdateTime
 }
 
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetFinanceUnitRuleVersion() *int64 {
+	return s.FinanceUnitRuleVersion
+}
+
 func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetMasterCommodityCode() *string {
+	return s.MasterCommodityCode
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetMasterInstanceId() *string {
+	return s.MasterInstanceId
 }
 
 func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetOwnerAccountId() *int64 {
@@ -269,6 +345,18 @@ func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetPipCod
 
 func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetPipName() *string {
 	return s.PipName
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetRecentBillingMonth() *int64 {
+	return s.RecentBillingMonth
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetRegionName() *string {
+	return s.RegionName
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetRegionNo() *string {
+	return s.RegionNo
 }
 
 func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetResourceGroup() *string {
@@ -309,6 +397,25 @@ func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetResour
 
 func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetRootCostCenterId() *int64 {
 	return s.RootCostCenterId
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GetStartBillingMonth() *int64 {
+	return s.StartBillingMonth
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetAddStrategy(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.AddStrategy = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetAddStrategyName(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.AddStrategyName = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetApplicablePeriodNum(v int64) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.ApplicablePeriodNum = &v
+	return s
 }
 
 func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetApportionItemCode(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
@@ -356,8 +463,23 @@ func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetCostCe
 	return s
 }
 
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetFinanceUnitRuleVersion(v int64) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.FinanceUnitRuleVersion = &v
+	return s
+}
+
 func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetInstanceId(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetMasterCommodityCode(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.MasterCommodityCode = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetMasterInstanceId(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.MasterInstanceId = &v
 	return s
 }
 
@@ -383,6 +505,21 @@ func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetPipCod
 
 func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetPipName(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
 	s.PipName = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetRecentBillingMonth(v int64) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.RecentBillingMonth = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetRegionName(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.RegionName = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetRegionNo(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.RegionNo = &v
 	return s
 }
 
@@ -433,6 +570,11 @@ func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetResour
 
 func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetRootCostCenterId(v int64) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
 	s.RootCostCenterId = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetStartBillingMonth(v int64) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.StartBillingMonth = &v
 	return s
 }
 

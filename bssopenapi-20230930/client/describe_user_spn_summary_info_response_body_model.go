@@ -71,7 +71,25 @@ func (s *DescribeUserSpnSummaryInfoResponseBody) SetSpnCodeAndTypeList(v []*Desc
 }
 
 func (s *DescribeUserSpnSummaryInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RegionList != nil {
+		for _, item := range s.RegionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SpnCodeAndTypeList != nil {
+		for _, item := range s.SpnCodeAndTypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUserSpnSummaryInfoResponseBodyRegionList struct {

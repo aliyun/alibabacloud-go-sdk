@@ -47,7 +47,25 @@ func (s *DataModuleMapListSpnTypeMapListValue) SetShowModules(v []*DataModuleMap
 }
 
 func (s *DataModuleMapListSpnTypeMapListValue) Validate() error {
-	return dara.Validate(s)
+	if s.FilterModules != nil {
+		for _, item := range s.FilterModules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ShowModules != nil {
+		for _, item := range s.ShowModules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DataModuleMapListSpnTypeMapListValueFilterModules struct {

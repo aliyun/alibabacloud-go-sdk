@@ -51,7 +51,16 @@ func (s *CreateCostCenterRequest) SetNbid(v string) *CreateCostCenterRequest {
 }
 
 func (s *CreateCostCenterRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CostCenterEntityList != nil {
+		for _, item := range s.CostCenterEntityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCostCenterRequestCostCenterEntityList struct {

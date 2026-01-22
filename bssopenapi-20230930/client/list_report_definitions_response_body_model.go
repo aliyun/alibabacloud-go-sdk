@@ -62,7 +62,16 @@ func (s *ListReportDefinitionsResponseBody) SetRequestId(v string) *ListReportDe
 }
 
 func (s *ListReportDefinitionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ReportDefinitions != nil {
+		for _, item := range s.ReportDefinitions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListReportDefinitionsResponseBodyReportDefinitions struct {

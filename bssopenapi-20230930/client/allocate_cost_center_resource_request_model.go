@@ -96,7 +96,16 @@ func (s *AllocateCostCenterResourceRequest) SetToCostCenterId(v int64) *Allocate
 }
 
 func (s *AllocateCostCenterResourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceInstanceList != nil {
+		for _, item := range s.ResourceInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AllocateCostCenterResourceRequestResourceInstanceList struct {

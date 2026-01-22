@@ -80,7 +80,12 @@ func (s *ModifyCostCenterRuleRequest) SetOwnerAccountId(v int64) *ModifyCostCent
 }
 
 func (s *ModifyCostCenterRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.FilterExpression != nil {
+		if err := s.FilterExpression.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyCostCenterRuleRequestFilterExpression struct {
@@ -151,7 +156,12 @@ func (s *ModifyCostCenterRuleRequestFilterExpression) SetOperatorType(v string) 
 }
 
 func (s *ModifyCostCenterRuleRequestFilterExpression) Validate() error {
-	return dara.Validate(s)
+	if s.FilterValues != nil {
+		if err := s.FilterValues.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyCostCenterRuleRequestFilterExpressionFilterValues struct {
