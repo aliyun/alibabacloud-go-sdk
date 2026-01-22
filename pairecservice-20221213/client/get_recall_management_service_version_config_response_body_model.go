@@ -282,6 +282,10 @@ type GetRecallManagementServiceVersionConfigResponseBodyRecallConfig struct {
 	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
 	// example:
 	//
+	// age>20
+	ItemConditionExpression *string `json:"ItemConditionExpression,omitempty" xml:"ItemConditionExpression,omitempty"`
+	// example:
+	//
 	// item_embedding
 	ItemVectorField *string `json:"ItemVectorField,omitempty" xml:"ItemVectorField,omitempty"`
 	// example:
@@ -335,6 +339,10 @@ func (s *GetRecallManagementServiceVersionConfigResponseBodyRecallConfig) GetIte
 	return s.ItemConditionArray
 }
 
+func (s *GetRecallManagementServiceVersionConfigResponseBodyRecallConfig) GetItemConditionExpression() *string {
+	return s.ItemConditionExpression
+}
+
 func (s *GetRecallManagementServiceVersionConfigResponseBodyRecallConfig) GetItemVectorField() *string {
 	return s.ItemVectorField
 }
@@ -383,6 +391,11 @@ func (s *GetRecallManagementServiceVersionConfigResponseBodyRecallConfig) SetExt
 
 func (s *GetRecallManagementServiceVersionConfigResponseBodyRecallConfig) SetItemConditionArray(v string) *GetRecallManagementServiceVersionConfigResponseBodyRecallConfig {
 	s.ItemConditionArray = &v
+	return s
+}
+
+func (s *GetRecallManagementServiceVersionConfigResponseBodyRecallConfig) SetItemConditionExpression(v string) *GetRecallManagementServiceVersionConfigResponseBodyRecallConfig {
+	s.ItemConditionExpression = &v
 	return s
 }
 

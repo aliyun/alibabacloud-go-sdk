@@ -17,6 +17,8 @@ type iGetRecallManagementServiceVersionResponseBody interface {
 	GetGmtModifiedTime() *string
 	SetIsDefault(v string) *GetRecallManagementServiceVersionResponseBody
 	GetIsDefault() *string
+	SetIsEffective(v bool) *GetRecallManagementServiceVersionResponseBody
+	GetIsEffective() *bool
 	SetName(v string) *GetRecallManagementServiceVersionResponseBody
 	GetName() *string
 	SetRecallManagementServiceVersionId(v string) *GetRecallManagementServiceVersionResponseBody
@@ -38,7 +40,8 @@ type GetRecallManagementServiceVersionResponseBody struct {
 	// example:
 	//
 	// false
-	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	IsDefault   *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	IsEffective *bool   `json:"IsEffective,omitempty" xml:"IsEffective,omitempty"`
 	// example:
 	//
 	// V1
@@ -79,6 +82,10 @@ func (s *GetRecallManagementServiceVersionResponseBody) GetIsDefault() *string {
 	return s.IsDefault
 }
 
+func (s *GetRecallManagementServiceVersionResponseBody) GetIsEffective() *bool {
+	return s.IsEffective
+}
+
 func (s *GetRecallManagementServiceVersionResponseBody) GetName() *string {
 	return s.Name
 }
@@ -108,6 +115,11 @@ func (s *GetRecallManagementServiceVersionResponseBody) SetGmtModifiedTime(v str
 
 func (s *GetRecallManagementServiceVersionResponseBody) SetIsDefault(v string) *GetRecallManagementServiceVersionResponseBody {
 	s.IsDefault = &v
+	return s
+}
+
+func (s *GetRecallManagementServiceVersionResponseBody) SetIsEffective(v bool) *GetRecallManagementServiceVersionResponseBody {
+	s.IsEffective = &v
 	return s
 }
 
@@ -299,6 +311,10 @@ type GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigs struct {
 	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
 	// example:
 	//
+	// age>20
+	ItemConditionExpression *string `json:"ItemConditionExpression,omitempty" xml:"ItemConditionExpression,omitempty"`
+	// example:
+	//
 	// item_embedding
 	ItemVectorField *string `json:"ItemVectorField,omitempty" xml:"ItemVectorField,omitempty"`
 	// example:
@@ -356,6 +372,10 @@ func (s *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigs) GetI
 	return s.ItemConditionArray
 }
 
+func (s *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigs) GetItemConditionExpression() *string {
+	return s.ItemConditionExpression
+}
+
 func (s *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigs) GetItemVectorField() *string {
 	return s.ItemVectorField
 }
@@ -408,6 +428,11 @@ func (s *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigs) SetE
 
 func (s *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigs) SetItemConditionArray(v string) *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigs {
 	s.ItemConditionArray = &v
+	return s
+}
+
+func (s *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigs) SetItemConditionExpression(v string) *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigs {
+	s.ItemConditionExpression = &v
 	return s
 }
 

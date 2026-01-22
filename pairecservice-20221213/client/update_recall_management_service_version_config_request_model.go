@@ -182,8 +182,16 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestMergeConfig) Validate(
 }
 
 type UpdateRecallManagementServiceVersionConfigRequestRecallConfig struct {
-	Description                       *string                                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExtendedConfig                    *string                                                                   `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExtendedConfig *string `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
+	// example:
+	//
+	// ["type":"equal"]
+	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	// example:
+	//
+	// age>20
+	ItemConditionExpression           *string                                                                   `json:"ItemConditionExpression,omitempty" xml:"ItemConditionExpression,omitempty"`
 	ItemVectorField                   *string                                                                   `json:"ItemVectorField,omitempty" xml:"ItemVectorField,omitempty"`
 	ItemVectorRecallManagementTableId *string                                                                   `json:"ItemVectorRecallManagementTableId,omitempty" xml:"ItemVectorRecallManagementTableId,omitempty"`
 	Name                              *string                                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -209,6 +217,14 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfig) GetDescr
 
 func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfig) GetExtendedConfig() *string {
 	return s.ExtendedConfig
+}
+
+func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfig) GetItemConditionArray() *string {
+	return s.ItemConditionArray
+}
+
+func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfig) GetItemConditionExpression() *string {
+	return s.ItemConditionExpression
 }
 
 func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfig) GetItemVectorField() *string {
@@ -254,6 +270,16 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfig) SetDescr
 
 func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfig) SetExtendedConfig(v string) *UpdateRecallManagementServiceVersionConfigRequestRecallConfig {
 	s.ExtendedConfig = &v
+	return s
+}
+
+func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfig) SetItemConditionArray(v string) *UpdateRecallManagementServiceVersionConfigRequestRecallConfig {
+	s.ItemConditionArray = &v
+	return s
+}
+
+func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfig) SetItemConditionExpression(v string) *UpdateRecallManagementServiceVersionConfigRequestRecallConfig {
+	s.ItemConditionExpression = &v
 	return s
 }
 
