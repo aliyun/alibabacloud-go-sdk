@@ -20,17 +20,26 @@ type iCheckBatchTableAccessPermissionResponseBody interface {
 }
 
 type CheckBatchTableAccessPermissionResponseBody struct {
+	// The dataset.
 	Data []*CheckBatchTableAccessPermissionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Error code.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Id of the request
+	// ID of the request.
 	//
 	// example:
 	//
 	// B43AD641-49C2-5299-9E06-1B37EC1B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -95,14 +104,22 @@ func (s *CheckBatchTableAccessPermissionResponseBody) Validate() error {
 }
 
 type CheckBatchTableAccessPermissionResponseBodyData struct {
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// The productKey is empty.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 	- **true**: Permission granted
+	//
+	// 	- **false**: Permissions denied
+	//
 	// example:
 	//
 	// True
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The name of the table.
+	//
 	// example:
 	//
 	// tab_add_teacher_record

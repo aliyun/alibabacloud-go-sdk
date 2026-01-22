@@ -11,6 +11,8 @@ type iCreateDifyInstanceRequest interface {
 	GoString() string
 	SetAdbpgInstanceMode(v string) *CreateDifyInstanceRequest
 	GetAdbpgInstanceMode() *string
+	SetAutoRenew(v bool) *CreateDifyInstanceRequest
+	GetAutoRenew() *bool
 	SetBackupVSwitchId(v string) *CreateDifyInstanceRequest
 	GetBackupVSwitchId() *string
 	SetClientToken(v string) *CreateDifyInstanceRequest
@@ -131,6 +133,7 @@ type iCreateDifyInstanceRequest interface {
 
 type CreateDifyInstanceRequest struct {
 	AdbpgInstanceMode *string `json:"AdbpgInstanceMode,omitempty" xml:"AdbpgInstanceMode,omitempty"`
+	AutoRenew         *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	BackupVSwitchId   *string `json:"BackupVSwitchId,omitempty" xml:"BackupVSwitchId,omitempty"`
 	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This parameter is required.
@@ -213,6 +216,10 @@ func (s CreateDifyInstanceRequest) GoString() string {
 
 func (s *CreateDifyInstanceRequest) GetAdbpgInstanceMode() *string {
 	return s.AdbpgInstanceMode
+}
+
+func (s *CreateDifyInstanceRequest) GetAutoRenew() *bool {
+	return s.AutoRenew
 }
 
 func (s *CreateDifyInstanceRequest) GetBackupVSwitchId() *string {
@@ -449,6 +456,11 @@ func (s *CreateDifyInstanceRequest) GetZoneId() *string {
 
 func (s *CreateDifyInstanceRequest) SetAdbpgInstanceMode(v string) *CreateDifyInstanceRequest {
 	s.AdbpgInstanceMode = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetAutoRenew(v bool) *CreateDifyInstanceRequest {
+	s.AutoRenew = &v
 	return s
 }
 

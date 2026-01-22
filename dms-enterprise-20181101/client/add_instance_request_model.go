@@ -49,6 +49,8 @@ type iAddInstanceRequest interface {
 	GetPort() *int32
 	SetQueryTimeout(v int32) *AddInstanceRequest
 	GetQueryTimeout() *int32
+	SetRoleArn(v string) *AddInstanceRequest
+	GetRoleArn() *string
 	SetSafeRule(v string) *AddInstanceRequest
 	GetSafeRule() *string
 	SetSid(v string) *AddInstanceRequest
@@ -275,7 +277,8 @@ type AddInstanceRequest struct {
 	// example:
 	//
 	// 7200
-	QueryTimeout *int32 `json:"QueryTimeout,omitempty" xml:"QueryTimeout,omitempty"`
+	QueryTimeout *int32  `json:"QueryTimeout,omitempty" xml:"QueryTimeout,omitempty"`
+	RoleArn      *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	// The name of the security rule set for the database instance. This parameter is required if Security Collaboration is enabled. You can call the[ListStandardGroups](https://help.aliyun.com/document_detail/465940.html) or [GetInstance](https://help.aliyun.com/document_detail/465826.html) operation to obtain the name of the security rule set from GroupName.
 	SafeRule *string `json:"SafeRule,omitempty" xml:"SafeRule,omitempty"`
 	// The system ID (SID) of the database instance.
@@ -444,6 +447,10 @@ func (s *AddInstanceRequest) GetQueryTimeout() *int32 {
 	return s.QueryTimeout
 }
 
+func (s *AddInstanceRequest) GetRoleArn() *string {
+	return s.RoleArn
+}
+
 func (s *AddInstanceRequest) GetSafeRule() *string {
 	return s.SafeRule
 }
@@ -577,6 +584,11 @@ func (s *AddInstanceRequest) SetPort(v int32) *AddInstanceRequest {
 
 func (s *AddInstanceRequest) SetQueryTimeout(v int32) *AddInstanceRequest {
 	s.QueryTimeout = &v
+	return s
+}
+
+func (s *AddInstanceRequest) SetRoleArn(v string) *AddInstanceRequest {
+	s.RoleArn = &v
 	return s
 }
 

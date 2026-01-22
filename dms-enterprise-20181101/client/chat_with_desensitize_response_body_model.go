@@ -22,21 +22,32 @@ type iChatWithDesensitizeResponseBody interface {
 }
 
 type ChatWithDesensitizeResponseBody struct {
+	// The data returned.
 	Data *ChatWithDesensitizeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error code.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
+	// ID of the request.
 	//
 	// example:
 	//
 	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request fails.
+	//
 	// example:
 	//
 	// true
@@ -106,22 +117,40 @@ func (s *ChatWithDesensitizeResponseBody) Validate() error {
 }
 
 type ChatWithDesensitizeResponseBodyData struct {
+	// The candidate array for model-generated content.
 	Choices []*ChatWithDesensitizeResponseBodyDataChoices `json:"Choices,omitempty" xml:"Choices,omitempty" type:"Repeated"`
+	// The Unix timestamp (in seconds) when the request was created.
+	//
 	// example:
 	//
 	// 1763710100
 	Created *string `json:"Created,omitempty" xml:"Created,omitempty"`
+	// Error message, provided when StatusCode is not 200.
+	//
+	// example:
+	//
+	// InvalidParameter
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The model used for this request.
+	//
 	// example:
 	//
 	// qwen-plus
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// Error code, 200 for normal calls, others for exceptions.
+	//
 	// example:
 	//
 	// 200
-	StatusCode *string                                   `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	Type       *string                                   `json:"Type,omitempty" xml:"Type,omitempty"`
-	Usage      *ChatWithDesensitizeResponseBodyDataUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// Error type.
+	//
+	// example:
+	//
+	// invalid_request_error
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The token consumption information of this request.
+	Usage *ChatWithDesensitizeResponseBodyDataUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s ChatWithDesensitizeResponseBodyData) String() string {
@@ -214,15 +243,20 @@ func (s *ChatWithDesensitizeResponseBodyData) Validate() error {
 }
 
 type ChatWithDesensitizeResponseBodyDataChoices struct {
+	// Finish reason: ● stop: The model reached a natural stop point or a specified stop sequence. ● length: Generation ended because the maximum number of tokens was reached. ● tool_calls: The model stopped because it needs to call a tool to proceed.
+	//
 	// example:
 	//
 	// stop
 	FinishReason *string `json:"FinishReason,omitempty" xml:"FinishReason,omitempty"`
+	// Token probability information of model output.
+	//
 	// example:
 	//
 	// {}
-	Logprobs map[string]interface{}                             `json:"Logprobs,omitempty" xml:"Logprobs,omitempty"`
-	Message  *ChatWithDesensitizeResponseBodyDataChoicesMessage `json:"Message,omitempty" xml:"Message,omitempty" type:"Struct"`
+	Logprobs map[string]interface{} `json:"Logprobs,omitempty" xml:"Logprobs,omitempty"`
+	// The message body output by the model.
+	Message *ChatWithDesensitizeResponseBodyDataChoicesMessage `json:"Message,omitempty" xml:"Message,omitempty" type:"Struct"`
 }
 
 func (s ChatWithDesensitizeResponseBodyDataChoices) String() string {
@@ -270,14 +304,20 @@ func (s *ChatWithDesensitizeResponseBodyDataChoices) Validate() error {
 }
 
 type ChatWithDesensitizeResponseBodyDataChoicesMessage struct {
+	// The content of the model\\"s response.
+	//
 	// example:
 	//
 	// 你好呀！
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The internal reasoning content of the model.
+	//
 	// example:
 	//
 	// 嗯，用户发了个“你好”，看起来是想打招呼...
 	ReasoningContent *string `json:"ReasoningContent,omitempty" xml:"ReasoningContent,omitempty"`
+	// Message role.
+	//
 	// example:
 	//
 	// system
@@ -324,22 +364,32 @@ func (s *ChatWithDesensitizeResponseBodyDataChoicesMessage) Validate() error {
 }
 
 type ChatWithDesensitizeResponseBodyDataUsage struct {
+	// The number of output tokens.
+	//
 	// example:
 	//
 	// 10
 	CompletionTokens *string `json:"CompletionTokens,omitempty" xml:"CompletionTokens,omitempty"`
+	// Fine-grained classification of output tokens when using the Qwen-VL model.
+	//
 	// example:
 	//
 	// {}
 	CompletionTokensDetails map[string]*string `json:"CompletionTokensDetails,omitempty" xml:"CompletionTokensDetails,omitempty"`
+	// The number of input tokens.
+	//
 	// example:
 	//
 	// 9
 	PromptTokens *string `json:"PromptTokens,omitempty" xml:"PromptTokens,omitempty"`
+	// Fine-grained classification of input tokens.
+	//
 	// example:
 	//
 	// {}
 	PromptTokensDetails map[string]*string `json:"PromptTokensDetails,omitempty" xml:"PromptTokensDetails,omitempty"`
+	// The total number of tokens consumed.
+	//
 	// example:
 	//
 	// 19

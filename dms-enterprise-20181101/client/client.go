@@ -320,6 +320,10 @@ func (client *Client) AddInstanceWithOptions(request *AddInstanceRequest, runtim
 		query["QueryTimeout"] = request.QueryTimeout
 	}
 
+	if !dara.IsNil(request.RoleArn) {
+		query["RoleArn"] = request.RoleArn
+	}
+
 	if !dara.IsNil(request.SafeRule) {
 		query["SafeRule"] = request.SafeRule
 	}
@@ -1751,11 +1755,11 @@ func (client *Client) ChangeLhDagOwner(request *ChangeLhDagOwnerRequest) (_resul
 
 // Summary:
 //
-// 带有DMS脱敏能力的聊天API接口
+// Chat API with DMS Data Masking capabilities.
 //
 // Description:
 //
-// 带有DMS脱敏能力的聊天API接口
+// Chat API with DMS Data Masking capabilities.
 //
 // @param tmpReq - ChatWithDesensitizeRequest
 //
@@ -1911,11 +1915,11 @@ func (client *Client) ChatWithDesensitizeWithOptions(tmpReq *ChatWithDesensitize
 
 // Summary:
 //
-// 带有DMS脱敏能力的聊天API接口
+// Chat API with DMS Data Masking capabilities.
 //
 // Description:
 //
-// 带有DMS脱敏能力的聊天API接口
+// Chat API with DMS Data Masking capabilities.
 //
 // @param request - ChatWithDesensitizeRequest
 //
@@ -1933,11 +1937,11 @@ func (client *Client) ChatWithDesensitize(request *ChatWithDesensitizeRequest) (
 
 // Summary:
 //
-// 带有DMS脱敏能力的聊天SSE API接口
+// Chat SSE API with DMS Data Masking capability.
 //
 // Description:
 //
-// 带有DMS脱敏能力的聊天SSE API接口
+// Chat SSE API with DMS Data Masking capability.
 //
 // @param tmpReq - ChatWithDesensitizeSSERequest
 //
@@ -1952,11 +1956,11 @@ func (client *Client) ChatWithDesensitizeSSEWithSSE(tmpReq *ChatWithDesensitizeS
 
 // Summary:
 //
-// 带有DMS脱敏能力的聊天SSE API接口
+// Chat SSE API with DMS Data Masking capability.
 //
 // Description:
 //
-// 带有DMS脱敏能力的聊天SSE API接口
+// Chat SSE API with DMS Data Masking capability.
 //
 // @param tmpReq - ChatWithDesensitizeSSERequest
 //
@@ -2132,11 +2136,11 @@ func (client *Client) ChatWithDesensitizeSSEWithOptions(tmpReq *ChatWithDesensit
 
 // Summary:
 //
-// 带有DMS脱敏能力的聊天SSE API接口
+// Chat SSE API with DMS Data Masking capability.
 //
 // Description:
 //
-// 带有DMS脱敏能力的聊天SSE API接口
+// Chat SSE API with DMS Data Masking capability.
 //
 // @param request - ChatWithDesensitizeSSERequest
 //
@@ -2154,7 +2158,11 @@ func (client *Client) ChatWithDesensitizeSSE(request *ChatWithDesensitizeSSERequ
 
 // Summary:
 //
-// 批量校验是否有表访问权限
+// Batch verify table permissions.
+//
+// Description:
+//
+// Verify the permissions on multiple tables at a time.
 //
 // @param tmpReq - CheckBatchTableAccessPermissionRequest
 //
@@ -2220,7 +2228,11 @@ func (client *Client) CheckBatchTableAccessPermissionWithOptions(tmpReq *CheckBa
 
 // Summary:
 //
-// 批量校验是否有表访问权限
+// Batch verify table permissions.
+//
+// Description:
+//
+// Verify the permissions on multiple tables at a time.
 //
 // @param request - CheckBatchTableAccessPermissionRequest
 //
@@ -3639,6 +3651,10 @@ func (client *Client) CreateDifyInstanceWithOptions(request *CreateDifyInstanceR
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdbpgInstanceMode) {
 		query["AdbpgInstanceMode"] = request.AdbpgInstanceMode
+	}
+
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
 	}
 
 	if !dara.IsNil(request.BackupVSwitchId) {

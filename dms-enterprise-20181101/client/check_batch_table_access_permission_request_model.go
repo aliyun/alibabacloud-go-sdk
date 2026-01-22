@@ -22,24 +22,54 @@ type iCheckBatchTableAccessPermissionRequest interface {
 }
 
 type CheckBatchTableAccessPermissionRequest struct {
+	// The database ID. You can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) operation to query the ID of a physical database and the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) operation to query the ID of a logical database.
+	//
+	// >  The value of DatabaseId is that of DbId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 43153
 	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// Specifies whether the database is a logical database. Valid values:
+	//
+	// 	- true: Logical database.
+	//
+	// 	- false: Physical database.
+	//
 	// example:
 	//
 	// false
 	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The type of the permission to be verified.
+	//
+	// Valid values:
+	//
+	// 	- QUERY
+	//
+	// 	- EXPORT
+	//
+	// 	- CORRECT
+	//
+	// 	- LOGIN
+	//
+	// 	- PERF
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// QUERY
 	PermissionType *string `json:"PermissionType,omitempty" xml:"PermissionType,omitempty"`
+	// The name of the table.
+	//
 	// This parameter is required.
 	TableNameList []*string `json:"TableNameList,omitempty" xml:"TableNameList,omitempty" type:"Repeated"`
+	// The ID of the tenant.
+	//
+	// >  View Tenant ID by hovering over your profile icon in the DMS console. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
+	//
 	// example:
 	//
 	// 3***

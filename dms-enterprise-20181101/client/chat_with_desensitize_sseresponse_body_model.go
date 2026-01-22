@@ -22,22 +22,36 @@ type iChatWithDesensitizeSSEResponseBody interface {
 }
 
 type ChatWithDesensitizeSSEResponseBody struct {
+	// The data returned.
+	//
 	// example:
 	//
 	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 283C461F-11D8-48AA-B695-DF092DA32AF3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true

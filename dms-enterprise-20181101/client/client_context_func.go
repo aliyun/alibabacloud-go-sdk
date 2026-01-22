@@ -236,6 +236,10 @@ func (client *Client) AddInstanceWithContext(ctx context.Context, request *AddIn
 		query["QueryTimeout"] = request.QueryTimeout
 	}
 
+	if !dara.IsNil(request.RoleArn) {
+		query["RoleArn"] = request.RoleArn
+	}
+
 	if !dara.IsNil(request.SafeRule) {
 		query["SafeRule"] = request.SafeRule
 	}
@@ -1331,11 +1335,11 @@ func (client *Client) ChangeLhDagOwnerWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 带有DMS脱敏能力的聊天API接口
+// Chat API with DMS Data Masking capabilities.
 //
 // Description:
 //
-// 带有DMS脱敏能力的聊天API接口
+// Chat API with DMS Data Masking capabilities.
 //
 // @param tmpReq - ChatWithDesensitizeRequest
 //
@@ -1491,11 +1495,11 @@ func (client *Client) ChatWithDesensitizeWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 带有DMS脱敏能力的聊天SSE API接口
+// Chat SSE API with DMS Data Masking capability.
 //
 // Description:
 //
-// 带有DMS脱敏能力的聊天SSE API接口
+// Chat SSE API with DMS Data Masking capability.
 //
 // @param tmpReq - ChatWithDesensitizeSSERequest
 //
@@ -1510,11 +1514,11 @@ func (client *Client) ChatWithDesensitizeSSEWithSSECtx(ctx context.Context, tmpR
 
 // Summary:
 //
-// 带有DMS脱敏能力的聊天SSE API接口
+// Chat SSE API with DMS Data Masking capability.
 //
 // Description:
 //
-// 带有DMS脱敏能力的聊天SSE API接口
+// Chat SSE API with DMS Data Masking capability.
 //
 // @param tmpReq - ChatWithDesensitizeSSERequest
 //
@@ -1690,7 +1694,11 @@ func (client *Client) ChatWithDesensitizeSSEWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 批量校验是否有表访问权限
+// Batch verify table permissions.
+//
+// Description:
+//
+// Verify the permissions on multiple tables at a time.
 //
 // @param tmpReq - CheckBatchTableAccessPermissionRequest
 //
@@ -2857,6 +2865,10 @@ func (client *Client) CreateDifyInstanceWithContext(ctx context.Context, request
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdbpgInstanceMode) {
 		query["AdbpgInstanceMode"] = request.AdbpgInstanceMode
+	}
+
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
 	}
 
 	if !dara.IsNil(request.BackupVSwitchId) {
