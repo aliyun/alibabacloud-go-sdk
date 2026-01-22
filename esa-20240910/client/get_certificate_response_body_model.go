@@ -185,7 +185,8 @@ type GetCertificateResponseBodyResult struct {
 	// example:
 	//
 	// DigiCert Global Root CA
-	IssuerCN *string `json:"IssuerCN,omitempty" xml:"IssuerCN,omitempty"`
+	IssuerCN    *string `json:"IssuerCN,omitempty" xml:"IssuerCN,omitempty"`
+	KeyServerId *string `json:"KeyServerId,omitempty" xml:"KeyServerId,omitempty"`
 	// Certificate name.
 	//
 	// example:
@@ -302,6 +303,10 @@ func (s *GetCertificateResponseBodyResult) GetIssuerCN() *string {
 	return s.IssuerCN
 }
 
+func (s *GetCertificateResponseBodyResult) GetKeyServerId() *string {
+	return s.KeyServerId
+}
+
 func (s *GetCertificateResponseBodyResult) GetName() *string {
 	return s.Name
 }
@@ -393,6 +398,11 @@ func (s *GetCertificateResponseBodyResult) SetIssuer(v string) *GetCertificateRe
 
 func (s *GetCertificateResponseBodyResult) SetIssuerCN(v string) *GetCertificateResponseBodyResult {
 	s.IssuerCN = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetKeyServerId(v string) *GetCertificateResponseBodyResult {
+	s.KeyServerId = &v
 	return s
 }
 

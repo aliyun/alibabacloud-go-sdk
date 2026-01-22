@@ -107,7 +107,19 @@ func (client *Client) ApplyCertificateWithContext(ctx context.Context, request *
 			return _result, _err
 		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Domains) {
+		query["Domains"] = request.Domains
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -116,7 +128,7 @@ func (client *Client) ApplyCertificateWithContext(ctx context.Context, request *
 		Version:     dara.String("2024-09-10"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
@@ -8411,7 +8423,15 @@ func (client *Client) GetCertificateWithContext(ctx context.Context, request *Ge
 			return _result, _err
 		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8420,7 +8440,7 @@ func (client *Client) GetCertificateWithContext(ctx context.Context, request *Ge
 		Version:     dara.String("2024-09-10"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
@@ -11681,7 +11701,27 @@ func (client *Client) ListCertificatesWithContext(ctx context.Context, request *
 			return _result, _err
 		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.ValidOnly) {
+		query["ValidOnly"] = request.ValidOnly
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11690,7 +11730,7 @@ func (client *Client) ListCertificatesWithContext(ctx context.Context, request *
 		Version:     dara.String("2024-09-10"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
@@ -11721,7 +11761,23 @@ func (client *Client) ListCertificatesByRecordWithContext(ctx context.Context, r
 			return _result, _err
 		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Detail) {
+		query["Detail"] = request.Detail
+	}
+
+	if !dara.IsNil(request.RecordName) {
+		query["RecordName"] = request.RecordName
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.ValidOnly) {
+		query["ValidOnly"] = request.ValidOnly
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11730,7 +11786,7 @@ func (client *Client) ListCertificatesByRecordWithContext(ctx context.Context, r
 		Version:     dara.String("2024-09-10"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
@@ -15562,6 +15618,10 @@ func (client *Client) SetCertificateWithContext(ctx context.Context, request *Se
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.KeyServerId) {
+		query["KeyServerId"] = request.KeyServerId
+	}
+
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
 	}

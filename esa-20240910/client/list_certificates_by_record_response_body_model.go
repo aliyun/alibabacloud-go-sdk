@@ -253,7 +253,8 @@ type ListCertificatesByRecordResponseBodyResultCertificates struct {
 	// example:
 	//
 	// GlobalSign Organization Validation CA - SHA256 - G3
-	IssuerCN *string `json:"IssuerCN,omitempty" xml:"IssuerCN,omitempty"`
+	IssuerCN    *string `json:"IssuerCN,omitempty" xml:"IssuerCN,omitempty"`
+	KeyServerId *string `json:"KeyServerId,omitempty" xml:"KeyServerId,omitempty"`
 	// The certificate name.
 	//
 	// example:
@@ -358,6 +359,10 @@ func (s *ListCertificatesByRecordResponseBodyResultCertificates) GetIssuerCN() *
 	return s.IssuerCN
 }
 
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) GetKeyServerId() *string {
+	return s.KeyServerId
+}
+
 func (s *ListCertificatesByRecordResponseBodyResultCertificates) GetName() *string {
 	return s.Name
 }
@@ -434,6 +439,11 @@ func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetIssuer(v str
 
 func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetIssuerCN(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
 	s.IssuerCN = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetKeyServerId(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.KeyServerId = &v
 	return s
 }
 
